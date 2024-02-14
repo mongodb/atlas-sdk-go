@@ -9,6 +9,9 @@ import (
 
 // DiskBackupShardedClusterSnapshot Details of the sharded cluster snapshot that MongoDB Cloud created.
 type DiskBackupShardedClusterSnapshot struct {
+	// Human-readable label that identifies the config server type for this snapshot.
+	// Read only field.
+	ConfigServerType *string `json:"configServerType,omitempty"`
 	// Date and time when MongoDB Cloud took the snapshot. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
@@ -71,6 +74,39 @@ func NewDiskBackupShardedClusterSnapshot() *DiskBackupShardedClusterSnapshot {
 func NewDiskBackupShardedClusterSnapshotWithDefaults() *DiskBackupShardedClusterSnapshot {
 	this := DiskBackupShardedClusterSnapshot{}
 	return &this
+}
+
+// GetConfigServerType returns the ConfigServerType field value if set, zero value otherwise
+func (o *DiskBackupShardedClusterSnapshot) GetConfigServerType() string {
+	if o == nil || IsNil(o.ConfigServerType) {
+		var ret string
+		return ret
+	}
+	return *o.ConfigServerType
+}
+
+// GetConfigServerTypeOk returns a tuple with the ConfigServerType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DiskBackupShardedClusterSnapshot) GetConfigServerTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.ConfigServerType) {
+		return nil, false
+	}
+
+	return o.ConfigServerType, true
+}
+
+// HasConfigServerType returns a boolean if a field has been set.
+func (o *DiskBackupShardedClusterSnapshot) HasConfigServerType() bool {
+	if o != nil && !IsNil(o.ConfigServerType) {
+		return true
+	}
+
+	return false
+}
+
+// SetConfigServerType gets a reference to the given string and assigns it to the ConfigServerType field.
+func (o *DiskBackupShardedClusterSnapshot) SetConfigServerType(v string) {
+	o.ConfigServerType = &v
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise

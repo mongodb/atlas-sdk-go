@@ -27,6 +27,8 @@ type Group struct {
 	OrgId string `json:"orgId"`
 	// Region usage restrictions that designate the project's AWS region.
 	RegionUsageRestrictions *string `json:"regionUsageRestrictions,omitempty"`
+	// List that contains key-value pairs between 1 to 255 characters in length for tagging and categorizing the project.
+	Tags *[]ResourceTag `json:"tags,omitempty"`
 	// Flag that indicates whether to create the project with default alert settings.
 	// Write only field.
 	WithDefaultAlertsSettings *bool `json:"withDefaultAlertsSettings,omitempty"`
@@ -252,6 +254,39 @@ func (o *Group) SetRegionUsageRestrictions(v string) {
 	o.RegionUsageRestrictions = &v
 }
 
+// GetTags returns the Tags field value if set, zero value otherwise
+func (o *Group) GetTags() []ResourceTag {
+	if o == nil || IsNil(o.Tags) {
+		var ret []ResourceTag
+		return ret
+	}
+	return *o.Tags
+}
+
+// GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Group) GetTagsOk() (*[]ResourceTag, bool) {
+	if o == nil || IsNil(o.Tags) {
+		return nil, false
+	}
+
+	return o.Tags, true
+}
+
+// HasTags returns a boolean if a field has been set.
+func (o *Group) HasTags() bool {
+	if o != nil && !IsNil(o.Tags) {
+		return true
+	}
+
+	return false
+}
+
+// SetTags gets a reference to the given []ResourceTag and assigns it to the Tags field.
+func (o *Group) SetTags(v []ResourceTag) {
+	o.Tags = &v
+}
+
 // GetWithDefaultAlertsSettings returns the WithDefaultAlertsSettings field value if set, zero value otherwise
 func (o *Group) GetWithDefaultAlertsSettings() bool {
 	if o == nil || IsNil(o.WithDefaultAlertsSettings) {
@@ -298,6 +333,9 @@ func (o Group) ToMap() (map[string]interface{}, error) {
 	toSerialize["orgId"] = o.OrgId
 	if !IsNil(o.RegionUsageRestrictions) {
 		toSerialize["regionUsageRestrictions"] = o.RegionUsageRestrictions
+	}
+	if !IsNil(o.Tags) {
+		toSerialize["tags"] = o.Tags
 	}
 	if !IsNil(o.WithDefaultAlertsSettings) {
 		toSerialize["withDefaultAlertsSettings"] = o.WithDefaultAlertsSettings

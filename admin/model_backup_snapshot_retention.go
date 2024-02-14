@@ -13,7 +13,7 @@ type BackupSnapshotRetention struct {
 	Links *[]Link `json:"links,omitempty"`
 	// Quantity of time in which MongoDB Cloud measures snapshot retention.
 	RetentionUnit string `json:"retentionUnit"`
-	// Number that indicates the amount of days, weeks, or months that MongoDB Cloud retains the snapshot. For less frequent policy items, MongoDB Cloud requires that you specify a value greater than or equal to the value specified for more frequent policy items. If the hourly policy item specifies a retention of two days, specify two days or greater for the retention of the weekly policy item.
+	// Number that indicates the amount of days, weeks, months, or years that MongoDB Cloud retains the snapshot. For less frequent policy items, MongoDB Cloud requires that you specify a value greater than or equal to the value specified for more frequent policy items. If the hourly policy item specifies a retention of two days, specify two days or greater for the retention of the weekly policy item.
 	RetentionValue int `json:"retentionValue"`
 }
 

@@ -13,7 +13,7 @@ type PaginatedIntegration struct {
 	Links *[]Link `json:"links,omitempty"`
 	// List of returned documents that MongoDB Cloud providers when completing this request.
 	// Read only field.
-	Results *[]ThridPartyIntegration `json:"results,omitempty"`
+	Results *[]ThirdPartyIntegration `json:"results,omitempty"`
 	// Number of documents returned in this response if **includeCount** query param is true.
 	// Read only field.
 	TotalCount *int `json:"totalCount,omitempty"`
@@ -70,9 +70,9 @@ func (o *PaginatedIntegration) SetLinks(v []Link) {
 }
 
 // GetResults returns the Results field value if set, zero value otherwise
-func (o *PaginatedIntegration) GetResults() []ThridPartyIntegration {
+func (o *PaginatedIntegration) GetResults() []ThirdPartyIntegration {
 	if o == nil || IsNil(o.Results) {
-		var ret []ThridPartyIntegration
+		var ret []ThirdPartyIntegration
 		return ret
 	}
 	return *o.Results
@@ -80,7 +80,7 @@ func (o *PaginatedIntegration) GetResults() []ThridPartyIntegration {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedIntegration) GetResultsOk() (*[]ThridPartyIntegration, bool) {
+func (o *PaginatedIntegration) GetResultsOk() (*[]ThirdPartyIntegration, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
@@ -97,8 +97,8 @@ func (o *PaginatedIntegration) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []ThridPartyIntegration and assigns it to the Results field.
-func (o *PaginatedIntegration) SetResults(v []ThridPartyIntegration) {
+// SetResults gets a reference to the given []ThirdPartyIntegration and assigns it to the Results field.
+func (o *PaginatedIntegration) SetResults(v []ThirdPartyIntegration) {
 	o.Results = &v
 }
 

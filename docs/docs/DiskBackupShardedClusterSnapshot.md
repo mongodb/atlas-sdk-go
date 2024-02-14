@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ConfigServerType** | Pointer to **string** | Human-readable label that identifies the config server type for this snapshot. | [optional] [readonly] 
 **CreatedAt** | Pointer to **time.Time** | Date and time when MongoDB Cloud took the snapshot. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
 **Description** | Pointer to **string** | Human-readable phrase or sentence that explains the purpose of the snapshot. The resource returns this parameter when &#x60;\&quot;status\&quot;: \&quot;onDemand\&quot;&#x60;. | [optional] [readonly] 
 **ExpiresAt** | Pointer to **time.Time** | Date and time when MongoDB Cloud deletes the snapshot. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
@@ -39,6 +40,30 @@ NewDiskBackupShardedClusterSnapshotWithDefaults instantiates a new DiskBackupSha
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
+### GetConfigServerType
+
+`func (o *DiskBackupShardedClusterSnapshot) GetConfigServerType() string`
+
+GetConfigServerType returns the ConfigServerType field if non-nil, zero value otherwise.
+
+### GetConfigServerTypeOk
+
+`func (o *DiskBackupShardedClusterSnapshot) GetConfigServerTypeOk() (*string, bool)`
+
+GetConfigServerTypeOk returns a tuple with the ConfigServerType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConfigServerType
+
+`func (o *DiskBackupShardedClusterSnapshot) SetConfigServerType(v string)`
+
+SetConfigServerType sets ConfigServerType field to given value.
+
+### HasConfigServerType
+
+`func (o *DiskBackupShardedClusterSnapshot) HasConfigServerType() bool`
+
+HasConfigServerType returns a boolean if a field has been set.
 ### GetCreatedAt
 
 `func (o *DiskBackupShardedClusterSnapshot) GetCreatedAt() time.Time`

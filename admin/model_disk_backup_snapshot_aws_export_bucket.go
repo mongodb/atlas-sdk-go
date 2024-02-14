@@ -15,7 +15,7 @@ type DiskBackupSnapshotAWSExportBucket struct {
 	BucketName *string `json:"bucketName,omitempty"`
 	// Human-readable label that identifies the cloud provider that stores this snapshot.
 	CloudProvider *string `json:"cloudProvider,omitempty"`
-	// Unique 24-hexadecimal character string that identifies the AWS IAM role that MongoDB Cloud uses to access the AWS S3 bucket.
+	// Unique 24-hexadecimal character string that identifies the <a href='https://www.mongodb.com/docs/atlas/security/set-up-unified-aws-access/' target='_blank'>Unified AWS Access role ID</a>  that MongoDB Cloud uses to access the AWS S3 bucket.
 	IamRoleId *string `json:"iamRoleId,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.

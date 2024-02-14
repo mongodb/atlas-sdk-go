@@ -29,6 +29,8 @@ type ClusterSearchIndex struct {
 	Mappings  *ApiAtlasFTSMappings    `json:"mappings,omitempty"`
 	// Method applied to identify words when searching this index.
 	SearchAnalyzer *string `json:"searchAnalyzer,omitempty"`
+	// Flag that indicates whether to store all fields (true) on Atlas Search. By default, Atlas doesn't store (false) the fields on Atlas Search.  Alternatively, you can specify an object that only contains the list of fields to store (include) or not store (exclude) on Atlas Search. To learn more, see documentation.
+	StoredSource map[string]interface{} `json:"storedSource,omitempty"`
 	// Rule sets that map words to their synonyms in this index.
 	Synonyms *[]SearchSynonymMappingDefinition `json:"synonyms,omitempty"`
 	// Settings that configure the fields, one per object, to index. You must define at least one \"vector\" type field. You can optionally define \"filter\" type fields also.
@@ -366,6 +368,39 @@ func (o *ClusterSearchIndex) SetSearchAnalyzer(v string) {
 	o.SearchAnalyzer = &v
 }
 
+// GetStoredSource returns the StoredSource field value if set, zero value otherwise
+func (o *ClusterSearchIndex) GetStoredSource() map[string]interface{} {
+	if o == nil || IsNil(o.StoredSource) {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.StoredSource
+}
+
+// GetStoredSourceOk returns a tuple with the StoredSource field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterSearchIndex) GetStoredSourceOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.StoredSource) {
+		return map[string]interface{}{}, false
+	}
+
+	return o.StoredSource, true
+}
+
+// HasStoredSource returns a boolean if a field has been set.
+func (o *ClusterSearchIndex) HasStoredSource() bool {
+	if o != nil && !IsNil(o.StoredSource) {
+		return true
+	}
+
+	return false
+}
+
+// SetStoredSource gets a reference to the given map[string]interface{} and assigns it to the StoredSource field.
+func (o *ClusterSearchIndex) SetStoredSource(v map[string]interface{}) {
+	o.StoredSource = v
+}
+
 // GetSynonyms returns the Synonyms field value if set, zero value otherwise
 func (o *ClusterSearchIndex) GetSynonyms() []SearchSynonymMappingDefinition {
 	if o == nil || IsNil(o.Synonyms) {
@@ -458,6 +493,9 @@ func (o ClusterSearchIndex) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SearchAnalyzer) {
 		toSerialize["searchAnalyzer"] = o.SearchAnalyzer
+	}
+	if !IsNil(o.StoredSource) {
+		toSerialize["storedSource"] = o.StoredSource
 	}
 	if !IsNil(o.Synonyms) {
 		toSerialize["synonyms"] = o.Synonyms

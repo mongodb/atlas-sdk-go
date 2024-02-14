@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the Amazon Web Services (AWS) Simple Storage Service (S3) export bucket. | [optional] [readonly] 
 **BucketName** | Pointer to **string** | Human-readable label that identifies the AWS bucket that the role is authorized to access. | [optional] 
 **CloudProvider** | Pointer to **string** | Human-readable label that identifies the cloud provider that stores this snapshot. | [optional] 
-**IamRoleId** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the AWS IAM role that MongoDB Cloud uses to access the AWS S3 bucket. | [optional] 
+**IamRoleId** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the &lt;a href&#x3D;&#39;https://www.mongodb.com/docs/atlas/security/set-up-unified-aws-access/&#39; target&#x3D;&#39;_blank&#39;&gt;Unified AWS Access role ID&lt;/a&gt;  that MongoDB Cloud uses to access the AWS S3 bucket. | [optional] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 
 ## Methods

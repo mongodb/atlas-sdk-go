@@ -13,7 +13,7 @@ info:
     curl --user "{PUBLIC-KEY}:{PRIVATE-KEY}" \
       --digest \
       --header "Accept: application/vnd.atlas.2023-11-15+json" \
-      GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/dbAccessHistory/clusters/{clusterName}?pretty=true"
+      -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/dbAccessHistory/clusters/{clusterName}?pretty=true"
     ```
 
 
@@ -24,7 +24,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 1e5415301ee9ca39eaf1406e632060b3f37aac54
+  x-xgen-sha: 1d36d4db8bf621bc5159f91402a1112225adb2cf
 servers:
   - url: https://cloud.mongodb.com
 tags:
@@ -46,6 +46,16 @@ tags:
     name: Atlas Search
   - description: Returns and edits database auditing settings for MongoDB Cloud projects.
     name: Auditing
+  - description: Returns and edits custom DNS configurations for MongoDB Cloud
+      database deployments on AWS. The resource requires your Project ID. If you
+      use the VPC peering on AWS and you use your own DNS servers instead of
+      Amazon Route 53, enable custom DNS. Before 31 March 2020, applications
+      deployed within AWS using custom DNS services and VPC-peered with MongoDB
+      Cloud couldn't connect over private IP addresses. Custom DNS resolved to
+      public IP addresses. AWS internal DNS resolved to private IP addresses.
+      Applications deployed with custom DNS services in AWS should use Private
+      IP for Peering connection strings.
+    name: AWS Clusters DNS
   - description: Manages Cloud Backup snapshots, snapshot export buckets, restore
       jobs, and schedules. This resource applies only to clusters that use Cloud
       Backups.
@@ -64,16 +74,6 @@ tags:
       cluster configurations can affect costs. This resource requires your
       Project ID.
     name: Clusters
-  - description: Returns and edits custom DNS configurations for MongoDB Cloud
-      database deployments on AWS. The resource requires your Project ID. If you
-      use the VPC peering on AWS and you use your own DNS servers instead of
-      Amazon Route 53, enable custom DNS. Before 31 March 2020, applications
-      deployed within AWS using custom DNS services and VPC-peered with MongoDB
-      Cloud couldn't connect over private IP addresses. Custom DNS resolved to
-      public IP addresses. AWS internal DNS resolved to private IP addresses.
-      Applications deployed with custom DNS services in AWS should use Private
-      IP for Peering connection strings.
-    name: AWS Clusters DNS
   - description: Returns, adds, edits, and removes custom database user privilege
       roles. Use custom roles to specify custom sets of actions that the MongoDB
       Cloud built-in roles can't describe. You define custom roles at the
@@ -86,8 +86,6 @@ tags:
       MongoDB 4.2 clusters, you can't create custom roles that use actions
       introduced in MongoDB 4.4.
     name: Custom Database Roles
-  - description: Returns, adds, edits, and removes database users.
-    name: Database Users
   - description: Returns, adds, edits, and removes Federated Database Instances.
       This resource requires your project ID. Changes to federated database
       instance configurations can affect costs.
@@ -95,6 +93,8 @@ tags:
   - description: Returns, adds, edits, and removes Atlas Data Lake Pipelines and
       associated runs.
     name: Data Lake Pipelines
+  - description: Returns, adds, edits, and removes database users.
+    name: Database Users
   - description: Returns and edits the Encryption at Rest using Customer Key
       Management configuration. MongoDB Cloud encrypts all storage whether or
       not you use your own key management.
@@ -708,17 +708,23 @@ paths:
       x-xgen-experimental: true
   "/api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders":
     get:
-      description: Returns all identity providers with the provided protocol in the
-        specified federation. If no protocol is specified, only SAML identity
-        providers will be returned. To use this resource, the requesting API Key
-        must have the Organization Owner role in one of the connected
-        organizations.
+      description: Returns all identity providers with the provided protocol and type
+        in the specified federation. If no protocol is specified, only SAML
+        identity providers will be returned. If no idpType is specified, only
+        WORKFORCE identity providers will be returned. To use this resource, the
+        requesting API Key must have the Organization Owner role in one of the
+        connected organizations.
       operationId: listIdentityProviders
       parameters:
         - $ref: "#/components/parameters/federationSettingsId"
-        - description: The protocols of the target identity providers.
+        - description: The protocols of the target identity providers. Defaults to SAML.
           in: query
           name: protocol
+          schema:
+            type: string
+        - description: The types of the target identity providers. Defaults to WORKFORCE.
+          in: query
+          name: idpType
           schema:
             type: string
       responses:
@@ -743,7 +749,88 @@ paths:
       tags:
         - Federated Authentication
       x-xgen-experimental: true
+    post:
+      description: >-
+        Creates one identity provider within the specified federation. To use
+        this resource, the requesting API Key must have the Organization Owner
+        role in one of the connected organizations.
+
+
+        **Note**: This resource only supports the creation of OIDC identity providers.
+      operationId: createIdentityProvider
+      parameters:
+        - $ref: "#/components/parameters/federationSettingsId"
+      requestBody:
+        content:
+          application/vnd.atlas.2023-11-15+json:
+            schema:
+              $ref: "#/components/schemas/FederationOidcIdentityProviderUpdate"
+        description: The identity provider that you want to create.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-11-15+json:
+              schema:
+                $ref: "#/components/schemas/FederationOidcIdentityProvider"
+              x-xgen-version: 2023-11-15
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Create one identity provider
+      tags:
+        - Federated Authentication
+      x-xgen-experimental: true
   "/api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}":
+    delete:
+      description: >-
+        Deletes one identity provider in the specified federation. To use this
+        resource, the requesting API Key must have the Organization Owner role
+        in one of the connected organizations. 
+
+
+        **Note**: Requests to this resource will fail if the identity provider has any connected organizations. Before deleting an identity provider, disconnect all organizations and confirm that no organization in your account uses this identity provider. To learn more, see [Manage Organization Mapping for Federated Authentication](https://www.mongodb.com/docs/atlas/security/manage-org-mapping/).
+      operationId: deleteIdentityProvider
+      parameters:
+        - $ref: "#/components/parameters/federationSettingsId"
+        - description: Unique 24-hexadecimal digit string that identifies the identity
+            provider to connect.
+          in: path
+          name: identityProviderId
+          required: true
+          schema:
+            type: string
+            example: 32b6e34b3d91647abb20e7b8
+      responses:
+        "204":
+          content:
+            application/vnd.atlas.2023-11-15+json:
+              x-xgen-version: 2023-11-15
+          description: No Response
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Delete the identity provider.
+      tags:
+        - Federated Authentication
+      x-xgen-experimental: true
     get:
       description: "Returns one identity provider in the specified federation by the
         identity provider's id. To use this resource, the requesting API Key
@@ -752,7 +839,15 @@ paths:
       operationId: getIdentityProvider
       parameters:
         - $ref: "#/components/parameters/federationSettingsId"
-        - $ref: "#/components/parameters/identityProviderId"
+        - description: Unique string that identifies the identity provider to connect. If
+            using an API version before 11-15-2023, use the 20-hexadecimal digit
+            oktaIdpId. For all other versions, use the 24-hexadecimal digit id.
+          in: path
+          name: identityProviderId
+          required: true
+          schema:
+            type: string
+            example: 32b6e34b3d91647abb20e7b8
       responses:
         "200":
           content:
@@ -778,14 +873,25 @@ paths:
         - Federated Authentication
       x-xgen-experimental: true
     patch:
-      description: "Updates one identity provider in the specified federation. To use
-        this resource, the requesting API Key must have the Organization Owner
-        role in one of the connected organizations. Deprecated versions:
-        v2-{2023-01-01}"
+      description: >-
+        Updates one identity provider in the specified federation. To use this
+        resource, the requesting API Key must have the Organization Owner role
+        in one of the connected organizations.
+
+
+        **Note**: Changing authorization types and/or updating authorization claims can prevent current users and/or groups from accessing the database. Deprecated versions: v2-{2023-01-01}
       operationId: updateIdentityProvider
       parameters:
         - $ref: "#/components/parameters/federationSettingsId"
-        - $ref: "#/components/parameters/identityProviderId"
+        - description: Unique string that identifies the identity provider to connect. If
+            using an API version before 11-15-2023, use the 20-hexadecimal digit
+            oktaIdpId. For all other versions, use the 24-hexadecimal digit id.
+          in: path
+          name: identityProviderId
+          required: true
+          schema:
+            type: string
+            example: 32b6e34b3d91647abb20e7b8
       requestBody:
         content:
           application/vnd.atlas.2023-11-15+json:
@@ -812,6 +918,46 @@ paths:
       security:
         - DigestAuth: []
       summary: Update the identity provider.
+      tags:
+        - Federated Authentication
+      x-xgen-experimental: true
+  "/api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}/jwks":
+    delete:
+      description: >-
+        Revokes the JWKS tokens from the requested OIDC identity provider. To
+        use this resource, the requesting API Key must have the Organization
+        Owner role in one of the connected organizations. 
+
+
+        **Note**: Revoking your JWKS tokens immediately refreshes your IdP public keys from all your Atlas clusters, invalidating previously signed access tokens and logging out all users. You may need to restart your MongoDB clients. All organizations connected to the identity provider will be affected. To learn more, see [Configure OIDC Authorization](https://www.mongodb.com/docs/atlas/security-oidc/#revoke-jwks).
+      operationId: revokeJwksFromIdentityProvider
+      parameters:
+        - $ref: "#/components/parameters/federationSettingsId"
+        - description: Unique 24-hexadecimal digit string that identifies the identity
+            provider to connect.
+          in: path
+          name: identityProviderId
+          required: true
+          schema:
+            type: string
+            example: 32b6e34b3d91647abb20e7b8
+      responses:
+        "204":
+          content:
+            application/vnd.atlas.2023-11-15+json:
+              x-xgen-version: 2023-11-15
+          description: No Response
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Revoke the JWKS tokens from an OIDC identity provider.
       tags:
         - Federated Authentication
       x-xgen-experimental: true
@@ -850,9 +996,9 @@ paths:
     get:
       description: Returns details about all projects. Projects group clusters into
         logical collections that support an application environment, workload,
-        or both. Each project can have its own users, teams, security, and alert
-        settings. To use this resource, the requesting API Key must have the
-        Read Write role.
+        or both. Each project can have its own users, teams, security, tags, and
+        alert settings. To use this resource, the requesting API Key must have
+        the Read Write role.
       operationId: listProjects
       parameters:
         - $ref: "#/components/parameters/includeCount"
@@ -880,7 +1026,7 @@ paths:
     post:
       description: Creates one project. Projects group clusters into logical
         collections that support an application environment, workload, or both.
-        Each project can have its own users, teams, security, and alert
+        Each project can have its own users, teams, security, tags, and alert
         settings. To use this resource, the requesting API Key must have the
         Read Write role.
       operationId: createProject
@@ -933,7 +1079,7 @@ paths:
       description: Returns details about the specified project. Projects group
         clusters into logical collections that support an application
         environment, workload, or both. Each project can have its own users,
-        teams, security, and alert settings. To use this resource, the
+        teams, security, tags, and alert settings. To use this resource, the
         requesting API Key must have the Project Read Only role.
       operationId: getProjectByName
       parameters:
@@ -972,7 +1118,7 @@ paths:
     delete:
       description: Removes the specified project. Projects group clusters into logical
         collections that support an application environment, workload, or both.
-        Each project can have its own users, teams, security, and alert
+        Each project can have its own users, teams, security, tags, and alert
         settings. You can delete a project only if there are no Online Archives
         for the clusters in the project. To use this resource, the requesting
         API Key must have the Project Owner role.
@@ -1002,7 +1148,7 @@ paths:
       description: Returns details about the specified project. Projects group
         clusters into logical collections that support an application
         environment, workload, or both. Each project can have its own users,
-        teams, security, and alert settings. To use this resource, the
+        teams, security, tags, and alert settings. To use this resource, the
         requesting API Key must have the Project Read Only role.
       operationId: getProject
       parameters:
@@ -8050,7 +8196,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                $ref: "#/components/schemas/ThridPartyIntegration"
+                $ref: "#/components/schemas/ThirdPartyIntegration"
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -8091,7 +8237,7 @@ paths:
         content:
           application/vnd.atlas.2023-01-01+json:
             schema:
-              $ref: "#/components/schemas/ThridPartyIntegration"
+              $ref: "#/components/schemas/ThirdPartyIntegration"
         description: Third-party integration that you want to configure for your project.
         required: true
       responses:
@@ -8140,7 +8286,7 @@ paths:
         content:
           application/vnd.atlas.2023-01-01+json:
             schema:
-              $ref: "#/components/schemas/ThridPartyIntegration"
+              $ref: "#/components/schemas/ThirdPartyIntegration"
         description: Third-party integration that you want to configure for your project.
         required: true
       responses:
@@ -11866,6 +12012,77 @@ paths:
       summary: Return One Snapshot of One Serverless Instance
       tags:
         - Cloud Backups
+  "/api/atlas/v2/groups/{groupId}/serverless/{clusterName}/performanceAdvisor/autoIndexing":
+    get:
+      description: Get whether the Serverless Auto Indexing feature is enabled.
+      operationId: getServerlessAutoIndexing
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Human-readable label that identifies the cluster.
+          in: path
+          name: clusterName
+          required: true
+          schema:
+            type: string
+            maxLength: 64
+            minLength: 1
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                type: boolean
+              x-xgen-version: 2023-01-01
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Return Serverless Auto Indexing Enabled
+      tags:
+        - Performance Advisor
+      x-xgen-experimental: true
+    post:
+      description: Set whether the Serverless Auto Indexing feature is enabled.
+      operationId: setServerlessAutoIndexing
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Human-readable label that identifies the cluster.
+          in: path
+          name: clusterName
+          required: true
+          schema:
+            type: string
+            maxLength: 64
+            minLength: 1
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+        - description: Value that we want to set for the Serverless Auto Indexing toggle.
+          in: query
+          name: enable
+          required: true
+          schema:
+            type: boolean
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: "#/components/schemas/NoBody"
+              x-xgen-version: 2023-01-01
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Set Serverless Auto Indexing
+      tags:
+        - Performance Advisor
+      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/serverless/{name}":
     delete:
       description: Removes one serverless instance from the specified project. The
@@ -14605,7 +14822,7 @@ paths:
         content:
           application/vnd.atlas.2023-01-01+json:
             schema:
-              $ref: "#/components/schemas/Team"
+              $ref: "#/components/schemas/TeamUpdate"
         description: Details to update on the specified team.
         required: true
       responses:
@@ -14929,6 +15146,8 @@ paths:
       security:
         - Unauthenticated: []
       summary: Return All Control Plane IP Addresses
+      tags:
+        - Root
       x-xgen-experimental: true
   /api/atlas/v2/users:
     post:
@@ -16782,8 +17001,8 @@ components:
           type: integer
           format: int32
           description: >-
-            Duration in days, weeks, or months that MongoDB Cloud retains the
-            snapshot. For less frequent policy items, MongoDB Cloud requires
+            Duration in days, weeks, months, or years that MongoDB Cloud retains
+            the snapshot. For less frequent policy items, MongoDB Cloud requires
             that you specify a value greater than or equal to the value
             specified for more frequent policy items.
 
@@ -16805,6 +17024,9 @@ components:
             Number that indicates the frequency interval for a set of snapshots.
             A value of `1` specifies the first instance of the corresponding
             `frequencyType`.
+
+
+            - In a yearly policy item, `1` indicates that the yearly snapshot occurs on the first day of January and `12` indicates the first day of December.
 
 
             - In a monthly policy item, `1` indicates that the monthly snapshot occurs on the first day of the month and `40` indicates the last day of the month.
@@ -16835,8 +17057,8 @@ components:
           type: integer
           format: int32
           description: >-
-            Duration in days, weeks, or months that MongoDB Cloud retains the
-            snapshot. For less frequent policy items, MongoDB Cloud requires
+            Duration in days, weeks, months, or years that MongoDB Cloud retains
+            the snapshot. For less frequent policy items, MongoDB Cloud requires
             that you specify a value greater than or equal to the value
             specified for more frequent policy items.
 
@@ -17555,12 +17777,12 @@ components:
         retentionValue:
           type: integer
           format: int32
-          description: Number that indicates the amount of days, weeks, or months that
-            MongoDB Cloud retains the snapshot. For less frequent policy items,
-            MongoDB Cloud requires that you specify a value greater than or
-            equal to the value specified for more frequent policy items. If the
-            hourly policy item specifies a retention of two days, specify two
-            days or greater for the retention of the weekly policy item.
+          description: Number that indicates the amount of days, weeks, months, or years
+            that MongoDB Cloud retains the snapshot. For less frequent policy
+            items, MongoDB Cloud requires that you specify a value greater than
+            or equal to the value specified for more frequent policy items. If
+            the hourly policy item specifies a retention of two days, specify
+            two days or greater for the retention of the weekly policy item.
           example: 5
       required:
         - retentionUnit
@@ -19674,6 +19896,20 @@ components:
           type: string
           default: lucene.standard
           description: Method applied to identify words when searching this index.
+        storedSource:
+          type: object
+          description: Flag that indicates whether to store all fields (true) on Atlas
+            Search. By default, Atlas doesn't store (false) the fields on Atlas
+            Search.  Alternatively, you can specify an object that only contains
+            the list of fields to store (include) or not store (exclude) on
+            Atlas Search. To learn more, see documentation.
+          example:
+            include | exclude:
+              - field1
+              - field2
+          externalDocs:
+            description: Stored Source Fields
+            url: https://dochub.mongodb.org/core/atlas-search-stored-source
         synonyms:
           type: array
           description: Rule sets that map words to their synonyms in this index.
@@ -21209,6 +21445,9 @@ components:
             `frequencyType`.
 
 
+            - In a yearly policy item, `1` indicates that the yearly snapshot occurs on the first day of January and `12` indicates the first day of December.
+
+
             - In a monthly policy item, `1` indicates that the monthly snapshot occurs on the first day of the month and `40` indicates the last day of the month.
 
 
@@ -21237,8 +21476,8 @@ components:
           type: integer
           format: int32
           description: >-
-            Duration in days, weeks, or months that MongoDB Cloud retains the
-            snapshot. For less frequent policy items, MongoDB Cloud requires
+            Duration in days, weeks, months, or years that MongoDB Cloud retains
+            the snapshot. For less frequent policy items, MongoDB Cloud requires
             that you specify a value greater than or equal to the value
             specified for more frequent policy items.
 
@@ -21559,6 +21798,11 @@ components:
       type: object
       description: Details of the sharded cluster snapshot that MongoDB Cloud created.
       properties:
+        configServerType:
+          type: string
+          description: Human-readable label that identifies the config server type for
+            this snapshot.
+          readOnly: true
         createdAt:
           type: string
           format: date-time
@@ -21806,6 +22050,11 @@ components:
             MongoDB Cloud took this snapshot. The resource returns this
             parameter when `"type": "replicaSet"`.'
           readOnly: true
+        configServerType:
+          type: string
+          description: Human-readable label that identifies the config server type for
+            this snapshot.
+          readOnly: true
         members:
           type: array
           description: 'List that includes the snapshots and the cloud provider that
@@ -21854,8 +22103,10 @@ components:
             this snapshot.
         iamRoleId:
           type: string
-          description: Unique 24-hexadecimal character string that identifies the AWS IAM
-            role that MongoDB Cloud uses to access the AWS S3 bucket.
+          description: Unique 24-hexadecimal character string that identifies the <a
+            href='https://www.mongodb.com/docs/atlas/security/set-up-unified-aws-access/'
+            target='_blank'>Unified AWS Access role ID</a>  that MongoDB Cloud
+            uses to access the AWS S3 bucket.
           example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
@@ -22904,6 +23155,131 @@ components:
         userClaim:
           type: string
           description: Identifier of the claim which contains the user ID in the token.
+    FederationOidcIdentityProvider:
+      type: object
+      properties:
+        associatedOrgs:
+          type: array
+          description: List that contains the connected organization configurations
+            associated with the identity provider.
+          items:
+            $ref: "#/components/schemas/ConnectedOrgConfig"
+          uniqueItems: true
+        audienceClaim:
+          type: array
+          description: Identifier of the intended recipient of the token.
+          items:
+            type: string
+        createdAt:
+          type: string
+          format: date-time
+          description: Date that the identity provider was created on.
+          readOnly: true
+        description:
+          type: string
+          description: The description of the identity provider.
+        displayName:
+          type: string
+          description: Human-readable label that identifies the identity provider.
+        groupsClaim:
+          type: string
+          description: Identifier of the claim which contains IdP Group IDs in the token.
+        id:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the identity
+            provider.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        issuerUri:
+          type: string
+          description: Unique string that identifies the issuer of the SAML Assertion or
+            OIDC metadata/discovery document URL.
+        oktaIdpId:
+          type: string
+          description: Unique 20-hexadecimal digit string that identifies the identity
+            provider.
+          maxLength: 20
+          minLength: 20
+          pattern: ^([a-f0-9]{20})$
+        protocol:
+          type: string
+          description: The protocol of the identity provider. Either SAML or OIDC.
+        updatedAt:
+          type: string
+          format: date-time
+          description: Date that the identity provider was last updated on.
+          readOnly: true
+        userClaim:
+          type: string
+          description: Identifier of the claim which contains the user ID in the token.
+        associatedDomains:
+          type: array
+          description: List that contains the domains associated with the identity provider.
+          items:
+            type: string
+          uniqueItems: true
+        clientId:
+          type: string
+          description: Client identifier that is assigned to an application by the
+            Identity Provider.
+        requestedScopes:
+          type: array
+          description: Scopes that MongoDB applications will request from the
+            authorization endpoint.
+          items:
+            type: string
+      required:
+        - id
+        - oktaIdpId
+    FederationOidcIdentityProviderUpdate:
+      type: object
+      properties:
+        audienceClaim:
+          type: array
+          description: Identifier of the intended recipient of the token.
+          items:
+            type: string
+        description:
+          type: string
+          description: The description of the identity provider.
+        displayName:
+          type: string
+          description: Human-readable label that identifies the identity provider.
+          maxLength: 50
+          minLength: 1
+        groupsClaim:
+          type: string
+          description: Identifier of the claim which contains IdP Group IDs in the token.
+        issuerUri:
+          type: string
+          description: Unique string that identifies the issuer of the SAML Assertion or
+            OIDC metadata/discovery document URL.
+          example: urn:idp:default
+        protocol:
+          type: string
+          description: The protocol of the identity provider. Either SAML or OIDC.
+        userClaim:
+          type: string
+          description: Identifier of the claim which contains the user ID in the token.
+        associatedDomains:
+          type: array
+          description: List that contains the domains associated with the identity provider.
+          items:
+            type: string
+          uniqueItems: true
+        clientId:
+          type: string
+          description: Client identifier that is assigned to an application by the
+            Identity Provider.
+        requestedScopes:
+          type: array
+          description: Scopes that MongoDB applications will request from the
+            authorization endpoint.
+          items:
+            type: string
     FieldTransformation:
       type: object
       description: Field Transformations during ingestion of a Data Lake Pipeline.
@@ -23071,6 +23447,15 @@ components:
           type: string
           default: NONE
           description: Region usage restrictions that designate the project's AWS region.
+        tags:
+          type: array
+          description: List that contains key-value pairs between 1 to 255 characters in
+            length for tagging and categorizing the project.
+          externalDocs:
+            description: Resource Tags
+            url: https://www.mongodb.com/docs/atlas/tags
+          items:
+            $ref: "#/components/schemas/ResourceTag"
         withDefaultAlertsSettings:
           type: boolean
           description: Flag that indicates whether to create the project with default
@@ -24089,8 +24474,9 @@ components:
             authorization. Use the `{USER}` placeholder in the Uniform Resource
             Locator (URL) to substitute the authenticated username. The query
             relates to the host specified with the hostname. Format this query
-            according to [RFC 4515](https://tools.ietf.org/search/rfc4515) and
-            [RFC 4516](https://datatracker.ietf.org/doc/html/rfc4516).
+            according to [RFC
+            4515](https://datatracker.ietf.org/doc/html/rfc4515) and [RFC
+            4516](https://datatracker.ietf.org/doc/html/rfc4516).
           example: "{USER}?memberOf?base"
         bindPassword:
           type: string
@@ -24215,7 +24601,7 @@ components:
             uses this parameter only for user authorization.
 
 
-            Use the `{USER}` placeholder in the Uniform Resource Locator (URL) to substitute the authenticated username. The query relates to the host specified with the hostname. Format this query per [RFC 4515](https://tools.ietf.org/search/rfc4515) and [RFC 4516](https://datatracker.ietf.org/doc/html/rfc4516).
+            Use the `{USER}` placeholder in the Uniform Resource Locator (URL) to substitute the authenticated username. The query relates to the host specified with the hostname. Format this query per [RFC 4515](https://datatracker.ietf.org/doc/html/rfc4515) and [RFC 4516](https://datatracker.ietf.org/doc/html/rfc4516).
           example: "{USER}?memberOf?base"
           writeOnly: true
         bindPassword:
@@ -27644,6 +28030,26 @@ components:
           maxLength: 24
           minLength: 24
           pattern: ^([a-f0-9]{24})$
+    TeamUpdate:
+      type: object
+      properties:
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        name:
+          type: string
+          description: Human-readable label that identifies the team.
+          writeOnly: true
+      required:
+        - name
     TenantRestore:
       type: object
       properties:
@@ -27754,7 +28160,7 @@ components:
       required:
         - snapshotId
         - targetDeploymentItemName
-    ThridPartyIntegration:
+    ThirdPartyIntegration:
       type: object
       description: Collection of settings that describe third-party integrations.
       properties:
@@ -29688,7 +30094,7 @@ components:
           description: List of returned documents that MongoDB Cloud providers when
             completing this request.
           items:
-            $ref: "#/components/schemas/ThridPartyIntegration"
+            $ref: "#/components/schemas/ThirdPartyIntegration"
           readOnly: true
         totalCount:
           type: integer

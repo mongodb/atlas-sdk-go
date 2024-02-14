@@ -37,7 +37,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115006/admin"
+    "go.mongodb.org/atlas-sdk/v20231115007/admin"
 )
 
 func main() {
@@ -112,7 +112,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115006/admin"
+    "go.mongodb.org/atlas-sdk/v20231115007/admin"
 )
 
 func main() {
@@ -190,7 +190,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115006/admin"
+    "go.mongodb.org/atlas-sdk/v20231115007/admin"
 )
 
 func main() {
@@ -265,7 +265,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115006/admin"
+    "go.mongodb.org/atlas-sdk/v20231115007/admin"
 )
 
 func main() {
@@ -341,7 +341,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115006/admin"
+    "go.mongodb.org/atlas-sdk/v20231115007/admin"
 )
 
 func main() {
@@ -417,7 +417,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115006/admin"
+    "go.mongodb.org/atlas-sdk/v20231115007/admin"
 )
 
 func main() {
@@ -493,7 +493,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115006/admin"
+    "go.mongodb.org/atlas-sdk/v20231115007/admin"
 )
 
 func main() {
@@ -572,7 +572,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115006/admin"
+    "go.mongodb.org/atlas-sdk/v20231115007/admin"
 )
 
 func main() {
@@ -651,7 +651,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115006/admin"
+    "go.mongodb.org/atlas-sdk/v20231115007/admin"
 )
 
 func main() {
@@ -731,7 +731,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115006/admin"
+    "go.mongodb.org/atlas-sdk/v20231115007/admin"
 )
 
 func main() {
@@ -805,7 +805,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115006/admin"
+    "go.mongodb.org/atlas-sdk/v20231115007/admin"
 )
 
 func main() {
@@ -867,7 +867,7 @@ Name | Type | Description  | Notes
 
 ## RenameTeam
 
-> TeamResponse RenameTeam(ctx, orgId, teamId, team Team).Execute()
+> TeamResponse RenameTeam(ctx, orgId, teamId, teamUpdate TeamUpdate).Execute()
 
 Rename One Team
 
@@ -887,7 +887,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115006/admin"
+    "go.mongodb.org/atlas-sdk/v20231115007/admin"
 )
 
 func main() {
@@ -898,9 +898,9 @@ func main() {
 
     orgId := "4888442a3354817a7320eb61" // string | 
     teamId := "teamId_example" // string | 
-    team := *openapiclient.NewTeam("Name_example") // Team | 
+    teamUpdate := *openapiclient.NewTeamUpdate("Name_example") // TeamUpdate | 
 
-    resp, r, err := sdk.TeamsApi.RenameTeam(context.Background(), orgId, teamId, &team).Execute()
+    resp, r, err := sdk.TeamsApi.RenameTeam(context.Background(), orgId, teamId, &teamUpdate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.RenameTeam``: %v\n", err)
         apiError := admin.AsError(err)
@@ -929,7 +929,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **team** | [**Team**](Team.md) | Details to update on the specified team. | 
+ **teamUpdate** | [**TeamUpdate**](TeamUpdate.md) | Details to update on the specified team. | 
 
 ### Return type
 
@@ -965,7 +965,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115006/admin"
+    "go.mongodb.org/atlas-sdk/v20231115007/admin"
 )
 
 func main() {
