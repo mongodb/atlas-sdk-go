@@ -1,4 +1,3 @@
-
 # Error Handling
 
 You can obtain detailed information about errors returned by the API when you use the Atlas Go SDK. Use the error code to determine the cause of the error. To learn more about API error codes, see [Atlas Administration API Error Codes](https://www.mongodb.com/docs/atlas/reference/api-errors/).
@@ -19,7 +18,7 @@ fmt.Println(apiError)
 
 ## Checking for the Existence of a Specific Error Code
 
-To check for the existence of a specific error code, execute the following:
+To check for the existence of a specific error code (e.g. `MAXIMUM_INDEXES_FOR_TENANT_EXCEEDED`), execute the following:
 
 ```go
 import admin "go.mongodb.org/atlas-sdk/v20231115007/admin"
@@ -30,3 +29,16 @@ if admin.IsErrorCode(err, "code"){
 }
 ```
 
+## Checking for the Existence of a Specific Response Status Code
+
+To check for the existence of a specific HTTP response error code, execute the following:
+
+```go
+import admin "go.mongodb.org/atlas-sdk/v20231115007/admin"
+
+projects, response, err := admin.ProjectsApi.ListProjects(ctx).Execute()
+apiError, ok := admin.AsError(err)
+if ok && apiError.GetError() == 404 {
+ // Do something
+}
+```
