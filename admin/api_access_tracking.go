@@ -102,34 +102,14 @@ func (a *AccessTrackingApiService) ListAccessLogsByClusterNameWithParams(ctx con
 }
 
 // Flag that indicates whether the response returns the successful authentication attempts only.
-func (r ListAccessLogsByClusterNameApiRequest) AuthResult(authResult bool) ListAccessLogsByClusterNameApiRequest {
-	r.authResult = &authResult
-	return r
-}
 
 // Date and time when to stop retrieving database history. If you specify **end**, you must also specify **start**. This parameter uses UNIX epoch time in milliseconds.
-func (r ListAccessLogsByClusterNameApiRequest) End(end int64) ListAccessLogsByClusterNameApiRequest {
-	r.end = &end
-	return r
-}
 
 // One Internet Protocol address that attempted to authenticate with the database.
-func (r ListAccessLogsByClusterNameApiRequest) IpAddress(ipAddress string) ListAccessLogsByClusterNameApiRequest {
-	r.ipAddress = &ipAddress
-	return r
-}
 
 // Maximum number of lines from the log to return.
-func (r ListAccessLogsByClusterNameApiRequest) NLogs(nLogs int) ListAccessLogsByClusterNameApiRequest {
-	r.nLogs = &nLogs
-	return r
-}
 
 // Date and time when MongoDB Cloud begins retrieving database history. If you specify **start**, you must also specify **end**. This parameter uses UNIX epoch time in milliseconds.
-func (r ListAccessLogsByClusterNameApiRequest) Start(start int64) ListAccessLogsByClusterNameApiRequest {
-	r.start = &start
-	return r
-}
 
 func (r ListAccessLogsByClusterNameApiRequest) Execute() (*MongoDBAccessLogsList, *http.Response, error) {
 	return r.ApiService.ListAccessLogsByClusterNameExecute(r)
@@ -296,34 +276,14 @@ func (a *AccessTrackingApiService) ListAccessLogsByHostnameWithParams(ctx contex
 }
 
 // Flag that indicates whether the response returns the successful authentication attempts only.
-func (r ListAccessLogsByHostnameApiRequest) AuthResult(authResult bool) ListAccessLogsByHostnameApiRequest {
-	r.authResult = &authResult
-	return r
-}
 
 // Date and time when to stop retrieving database history. If you specify **end**, you must also specify **start**. This parameter uses UNIX epoch time in milliseconds.
-func (r ListAccessLogsByHostnameApiRequest) End(end int64) ListAccessLogsByHostnameApiRequest {
-	r.end = &end
-	return r
-}
 
 // One Internet Protocol address that attempted to authenticate with the database.
-func (r ListAccessLogsByHostnameApiRequest) IpAddress(ipAddress string) ListAccessLogsByHostnameApiRequest {
-	r.ipAddress = &ipAddress
-	return r
-}
 
 // Maximum number of lines from the log to return.
-func (r ListAccessLogsByHostnameApiRequest) NLogs(nLogs int) ListAccessLogsByHostnameApiRequest {
-	r.nLogs = &nLogs
-	return r
-}
 
 // Date and time when MongoDB Cloud begins retrieving database history. If you specify **start**, you must also specify **end**. This parameter uses UNIX epoch time in milliseconds.
-func (r ListAccessLogsByHostnameApiRequest) Start(start int64) ListAccessLogsByHostnameApiRequest {
-	r.start = &start
-	return r
-}
 
 func (r ListAccessLogsByHostnameApiRequest) Execute() (*MongoDBAccessLogsList, *http.Response, error) {
 	return r.ApiService.ListAccessLogsByHostnameExecute(r)

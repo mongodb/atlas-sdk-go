@@ -170,22 +170,10 @@ func (a *ThirdPartyIntegrationsApiService) CreateThirdPartyIntegrationWithParams
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r CreateThirdPartyIntegrationApiRequest) IncludeCount(includeCount bool) CreateThirdPartyIntegrationApiRequest {
-	r.includeCount = &includeCount
-	return r
-}
 
 // Number of items that the response returns per page.
-func (r CreateThirdPartyIntegrationApiRequest) ItemsPerPage(itemsPerPage int) CreateThirdPartyIntegrationApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r CreateThirdPartyIntegrationApiRequest) PageNum(pageNum int) CreateThirdPartyIntegrationApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
 
 func (r CreateThirdPartyIntegrationApiRequest) Execute() (*PaginatedIntegration, *http.Response, error) {
 	return r.ApiService.CreateThirdPartyIntegrationExecute(r)
@@ -611,22 +599,10 @@ func (a *ThirdPartyIntegrationsApiService) ListThirdPartyIntegrationsWithParams(
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListThirdPartyIntegrationsApiRequest) IncludeCount(includeCount bool) ListThirdPartyIntegrationsApiRequest {
-	r.includeCount = &includeCount
-	return r
-}
 
 // Number of items that the response returns per page.
-func (r ListThirdPartyIntegrationsApiRequest) ItemsPerPage(itemsPerPage int) ListThirdPartyIntegrationsApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListThirdPartyIntegrationsApiRequest) PageNum(pageNum int) ListThirdPartyIntegrationsApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
 
 func (r ListThirdPartyIntegrationsApiRequest) Execute() (*PaginatedIntegration, *http.Response, error) {
 	return r.ApiService.ListThirdPartyIntegrationsExecute(r)
@@ -789,22 +765,10 @@ func (a *ThirdPartyIntegrationsApiService) UpdateThirdPartyIntegrationWithParams
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r UpdateThirdPartyIntegrationApiRequest) IncludeCount(includeCount bool) UpdateThirdPartyIntegrationApiRequest {
-	r.includeCount = &includeCount
-	return r
-}
 
 // Number of items that the response returns per page.
-func (r UpdateThirdPartyIntegrationApiRequest) ItemsPerPage(itemsPerPage int) UpdateThirdPartyIntegrationApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r UpdateThirdPartyIntegrationApiRequest) PageNum(pageNum int) UpdateThirdPartyIntegrationApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
 
 func (r UpdateThirdPartyIntegrationApiRequest) Execute() (*PaginatedIntegration, *http.Response, error) {
 	return r.ApiService.UpdateThirdPartyIntegrationExecute(r)

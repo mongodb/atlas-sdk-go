@@ -1029,28 +1029,12 @@ func (a *DataLakePipelinesApiService) ListPipelineRunsWithParams(ctx context.Con
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListPipelineRunsApiRequest) IncludeCount(includeCount bool) ListPipelineRunsApiRequest {
-	r.includeCount = &includeCount
-	return r
-}
 
 // Number of items that the response returns per page.
-func (r ListPipelineRunsApiRequest) ItemsPerPage(itemsPerPage int) ListPipelineRunsApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListPipelineRunsApiRequest) PageNum(pageNum int) ListPipelineRunsApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
 
 // If specified, Atlas returns only Data Lake Pipeline runs initiated before this time and date.
-func (r ListPipelineRunsApiRequest) CreatedBefore(createdBefore time.Time) ListPipelineRunsApiRequest {
-	r.createdBefore = &createdBefore
-	return r
-}
 
 func (r ListPipelineRunsApiRequest) Execute() (*PaginatedPipelineRun, *http.Response, error) {
 	return r.ApiService.ListPipelineRunsExecute(r)
@@ -1349,28 +1333,12 @@ func (a *DataLakePipelinesApiService) ListPipelineSnapshotsWithParams(ctx contex
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListPipelineSnapshotsApiRequest) IncludeCount(includeCount bool) ListPipelineSnapshotsApiRequest {
-	r.includeCount = &includeCount
-	return r
-}
 
 // Number of items that the response returns per page.
-func (r ListPipelineSnapshotsApiRequest) ItemsPerPage(itemsPerPage int) ListPipelineSnapshotsApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListPipelineSnapshotsApiRequest) PageNum(pageNum int) ListPipelineSnapshotsApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
 
 // Date and time after which MongoDB Cloud created the snapshot. If specified, MongoDB Cloud returns available backup snapshots created after this time and date only. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
-func (r ListPipelineSnapshotsApiRequest) CompletedAfter(completedAfter time.Time) ListPipelineSnapshotsApiRequest {
-	r.completedAfter = &completedAfter
-	return r
-}
 
 func (r ListPipelineSnapshotsApiRequest) Execute() (*PaginatedBackupSnapshot, *http.Response, error) {
 	return r.ApiService.ListPipelineSnapshotsExecute(r)

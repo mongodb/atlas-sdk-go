@@ -424,16 +424,16 @@ type ProjectsApi interface {
 	ReturnAllIPAddressesExecute(r ReturnAllIPAddressesApiRequest) (*GroupIPAddresses, *http.Response, error)
 
 	/*
-		SetProjectLimit Set One Project Limit
+			SetProjectLimit Set One Project Limit
 
-		[experimental] Sets the specified project limit. To use this resource, the requesting API Key must have the Project Owner role.
+			[experimental] Sets the specified project limit. To use this resource, the requesting API Key must have the Project Owner role.
 
-	**NOTE**: Increasing the following configuration limits might lead to slower response times in the MongoDB Cloud UI or increased user management overhead leading to authentication or authorization re-architecture. If possible, we recommend that you create additional projects to gain access to more of these resources for a more sustainable growth pattern.
+		**NOTE**: Increasing the following configuration limits might lead to slower response times in the MongoDB Cloud UI or increased user management overhead leading to authentication or authorization re-architecture. If possible, we recommend that you create additional projects to gain access to more of these resources for a more sustainable growth pattern.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param limitName Human-readable label that identifies this project limit.  | Limit Name | Description | Default | API Override Limit | | --- | --- | --- | --- | | atlas.project.deployment.clusters | Limit on the number of clusters in this project | 25 | 90 | | atlas.project.deployment.nodesPerPrivateLinkRegion | Limit on the number of nodes per Private Link region in this project | 50 | 90 | | atlas.project.security.databaseAccess.customRoles | Limit on the number of custom roles in this project | 100 | 1400 | | atlas.project.security.databaseAccess.users | Limit on the number of database users in this project | 100 | 900 | | atlas.project.security.networkAccess.crossRegionEntries | Limit on the number of cross-region network access entries in this project | 40 | 220 | | atlas.project.security.networkAccess.entries | Limit on the number of network access entries in this project | 200 | 20 | | dataFederation.bytesProcessed.query | Limit on the number of bytes processed during a single Data Federation query | N/A | N/A | | dataFederation.bytesProcessed.daily | Limit on the number of bytes processed across all Data Federation tenants for the current day | N/A | N/A | | dataFederation.bytesProcessed.weekly | Limit on the number of bytes processed across all Data Federation tenants for the current week | N/A | N/A | | dataFederation.bytesProcessed.monthly | Limit on the number of bytes processed across all Data Federation tenants for the current month | N/A | N/A | | atlas.project.deployment.privateServiceConnectionsPerRegionGroup | Number of Private Serivce Connections per Region Group | 50 | 100| | atlas.project.deployment.privateServiceConnectionsSubnetMask | Subnet mask for GCP PSC Networks. Has lower limit of 20. | 27 | 27|
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@return SetProjectLimitApiRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param limitName Human-readable label that identifies this project limit.  | Limit Name | Description | Default | API Override Limit | | --- | --- | --- | --- | | atlas.project.deployment.clusters | Limit on the number of clusters in this project | 25 | 90 | | atlas.project.deployment.nodesPerPrivateLinkRegion | Limit on the number of nodes per Private Link region in this project | 50 | 90 | | atlas.project.security.databaseAccess.customRoles | Limit on the number of custom roles in this project | 100 | 1400 | | atlas.project.security.databaseAccess.users | Limit on the number of database users in this project | 100 | 900 | | atlas.project.security.networkAccess.crossRegionEntries | Limit on the number of cross-region network access entries in this project | 40 | 220 | | atlas.project.security.networkAccess.entries | Limit on the number of network access entries in this project | 200 | 20 | | dataFederation.bytesProcessed.query | Limit on the number of bytes processed during a single Data Federation query | N/A | N/A | | dataFederation.bytesProcessed.daily | Limit on the number of bytes processed across all Data Federation tenants for the current day | N/A | N/A | | dataFederation.bytesProcessed.weekly | Limit on the number of bytes processed across all Data Federation tenants for the current week | N/A | N/A | | dataFederation.bytesProcessed.monthly | Limit on the number of bytes processed across all Data Federation tenants for the current month | N/A | N/A | | atlas.project.deployment.privateServiceConnectionsPerRegionGroup | Number of Private Serivce Connections per Region Group | 50 | 100| | atlas.project.deployment.privateServiceConnectionsSubnetMask | Subnet mask for GCP PSC Networks. Has lower limit of 20. | 27 | 27|
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@return SetProjectLimitApiRequest
 	*/
 	SetProjectLimit(ctx context.Context, limitName string, groupId string, dataFederationLimit *DataFederationLimit) SetProjectLimitApiRequest
 	/*
@@ -733,10 +733,6 @@ func (a *ProjectsApiService) CreateProjectWithParams(ctx context.Context, args *
 }
 
 // Unique 24-hexadecimal digit string that identifies the MongoDB Cloud user to whom to grant the Project Owner role on the specified project. If you set this parameter, it overrides the default value of the oldest Organization Owner.
-func (r CreateProjectApiRequest) ProjectOwnerId(projectOwnerId string) CreateProjectApiRequest {
-	r.projectOwnerId = &projectOwnerId
-	return r
-}
 
 func (r CreateProjectApiRequest) Execute() (*Group, *http.Response, error) {
 	return r.ApiService.CreateProjectExecute(r)
@@ -2033,10 +2029,6 @@ func (a *ProjectsApiService) ListProjectInvitationsWithParams(ctx context.Contex
 }
 
 // Email address of the user account invited to this project.
-func (r ListProjectInvitationsApiRequest) Username(username string) ListProjectInvitationsApiRequest {
-	r.username = &username
-	return r
-}
 
 func (r ListProjectInvitationsApiRequest) Execute() ([]GroupInvitation, *http.Response, error) {
 	return r.ApiService.ListProjectInvitationsExecute(r)
@@ -2309,34 +2301,14 @@ func (a *ProjectsApiService) ListProjectUsersWithParams(ctx context.Context, arg
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListProjectUsersApiRequest) IncludeCount(includeCount bool) ListProjectUsersApiRequest {
-	r.includeCount = &includeCount
-	return r
-}
 
 // Number of items that the response returns per page.
-func (r ListProjectUsersApiRequest) ItemsPerPage(itemsPerPage int) ListProjectUsersApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListProjectUsersApiRequest) PageNum(pageNum int) ListProjectUsersApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
 
 // Flag that indicates whether the returned list should include users who belong to a team with a role in this project. You might not have assigned the individual users a role in this project. If &#x60;\&quot;flattenTeams\&quot; : false&#x60;, this resource returns only users with a role in the project.  If &#x60;\&quot;flattenTeams\&quot; : true&#x60;, this resource returns both users with roles in the project and users who belong to teams with roles in the project.
-func (r ListProjectUsersApiRequest) FlattenTeams(flattenTeams bool) ListProjectUsersApiRequest {
-	r.flattenTeams = &flattenTeams
-	return r
-}
 
 // Flag that indicates whether the returned list should include users with implicit access to the project, the Organization Owner or Organization Read Only role. You might not have assigned the individual users a role in this project. If &#x60;\&quot;includeOrgUsers\&quot;: false&#x60;, this resource returns only users with a role in the project. If &#x60;\&quot;includeOrgUsers\&quot;: true&#x60;, this resource returns both users with roles in the project and users who have implicit access to the project through their organization role.
-func (r ListProjectUsersApiRequest) IncludeOrgUsers(includeOrgUsers bool) ListProjectUsersApiRequest {
-	r.includeOrgUsers = &includeOrgUsers
-	return r
-}
 
 func (r ListProjectUsersApiRequest) Execute() (*PaginatedAppUser, *http.Response, error) {
 	return r.ApiService.ListProjectUsersExecute(r)
@@ -2504,22 +2476,10 @@ func (a *ProjectsApiService) ListProjectsWithParams(ctx context.Context, args *L
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListProjectsApiRequest) IncludeCount(includeCount bool) ListProjectsApiRequest {
-	r.includeCount = &includeCount
-	return r
-}
 
 // Number of items that the response returns per page.
-func (r ListProjectsApiRequest) ItemsPerPage(itemsPerPage int) ListProjectsApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListProjectsApiRequest) PageNum(pageNum int) ListProjectsApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
 
 func (r ListProjectsApiRequest) Execute() (*PaginatedAtlasGroup, *http.Response, error) {
 	return r.ApiService.ListProjectsExecute(r)

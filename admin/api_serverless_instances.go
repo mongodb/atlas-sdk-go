@@ -556,22 +556,10 @@ func (a *ServerlessInstancesApiService) ListServerlessInstancesWithParams(ctx co
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListServerlessInstancesApiRequest) IncludeCount(includeCount bool) ListServerlessInstancesApiRequest {
-	r.includeCount = &includeCount
-	return r
-}
 
 // Number of items that the response returns per page.
-func (r ListServerlessInstancesApiRequest) ItemsPerPage(itemsPerPage int) ListServerlessInstancesApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListServerlessInstancesApiRequest) PageNum(pageNum int) ListServerlessInstancesApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
 
 func (r ListServerlessInstancesApiRequest) Execute() (*PaginatedServerlessInstanceDescription, *http.Response, error) {
 	return r.ApiService.ListServerlessInstancesExecute(r)

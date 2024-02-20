@@ -63,16 +63,16 @@ type CloudBackupsApi interface {
 	CreateBackupExportJobExecute(r CreateBackupExportJobApiRequest) (*DiskBackupExportJob, *http.Response, error)
 
 	/*
-		CreateBackupRestoreJob Restore One Snapshot of One Cluster
+			CreateBackupRestoreJob Restore One Snapshot of One Cluster
 
-		Restores one snapshot of one cluster from the specified project. Atlas takes on-demand snapshots immediately and scheduled snapshots at regular intervals. If an on-demand snapshot with a status of **queued** or **inProgress** exists, before taking another snapshot, wait until Atlas completes completes processing the previously taken on-demand snapshot.
+			Restores one snapshot of one cluster from the specified project. Atlas takes on-demand snapshots immediately and scheduled snapshots at regular intervals. If an on-demand snapshot with a status of **queued** or **inProgress** exists, before taking another snapshot, wait until Atlas completes completes processing the previously taken on-demand snapshot.
 
-	 To use this resource, the requesting API Key must have the Project Owner role.
+		 To use this resource, the requesting API Key must have the Project Owner role.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param clusterName Human-readable label that identifies the cluster.
-		@return CreateBackupRestoreJobApiRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param clusterName Human-readable label that identifies the cluster.
+			@return CreateBackupRestoreJobApiRequest
 	*/
 	CreateBackupRestoreJob(ctx context.Context, groupId string, clusterName string, diskBackupSnapshotRestoreJob *DiskBackupSnapshotRestoreJob) CreateBackupRestoreJobApiRequest
 	/*
@@ -622,16 +622,16 @@ type CloudBackupsApi interface {
 	ListShardedClusterBackupsExecute(r ListShardedClusterBackupsApiRequest) (*PaginatedCloudBackupShardedClusterSnapshot, *http.Response, error)
 
 	/*
-		TakeSnapshot Take One On-Demand Snapshot
+			TakeSnapshot Take One On-Demand Snapshot
 
-		Takes one on-demand snapshot for the specified cluster. Atlas takes on-demand snapshots immediately and scheduled snapshots at regular intervals. If an on-demand snapshot with a status of **queued** or **inProgress** exists, before taking another snapshot, wait until Atlas completes completes processing the previously taken on-demand snapshot.
+			Takes one on-demand snapshot for the specified cluster. Atlas takes on-demand snapshots immediately and scheduled snapshots at regular intervals. If an on-demand snapshot with a status of **queued** or **inProgress** exists, before taking another snapshot, wait until Atlas completes completes processing the previously taken on-demand snapshot.
 
-	 To use this resource, the requesting API Key must have the Project Owner role.
+		 To use this resource, the requesting API Key must have the Project Owner role.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param clusterName Human-readable label that identifies the cluster.
-		@return TakeSnapshotApiRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param clusterName Human-readable label that identifies the cluster.
+			@return TakeSnapshotApiRequest
 	*/
 	TakeSnapshot(ctx context.Context, groupId string, clusterName string, diskBackupOnDemandSnapshotRequest *DiskBackupOnDemandSnapshotRequest) TakeSnapshotApiRequest
 	/*
@@ -3174,22 +3174,10 @@ func (a *CloudBackupsApiService) ListBackupExportJobsWithParams(ctx context.Cont
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListBackupExportJobsApiRequest) IncludeCount(includeCount bool) ListBackupExportJobsApiRequest {
-	r.includeCount = &includeCount
-	return r
-}
 
 // Number of items that the response returns per page.
-func (r ListBackupExportJobsApiRequest) ItemsPerPage(itemsPerPage int) ListBackupExportJobsApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListBackupExportJobsApiRequest) PageNum(pageNum int) ListBackupExportJobsApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
 
 func (r ListBackupExportJobsApiRequest) Execute() (*PaginatedApiAtlasDiskBackupExportJob, *http.Response, error) {
 	return r.ApiService.ListBackupExportJobsExecute(r)
@@ -3352,22 +3340,10 @@ func (a *CloudBackupsApiService) ListBackupRestoreJobsWithParams(ctx context.Con
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListBackupRestoreJobsApiRequest) IncludeCount(includeCount bool) ListBackupRestoreJobsApiRequest {
-	r.includeCount = &includeCount
-	return r
-}
 
 // Number of items that the response returns per page.
-func (r ListBackupRestoreJobsApiRequest) ItemsPerPage(itemsPerPage int) ListBackupRestoreJobsApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListBackupRestoreJobsApiRequest) PageNum(pageNum int) ListBackupRestoreJobsApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
 
 func (r ListBackupRestoreJobsApiRequest) Execute() (*PaginatedCloudBackupRestoreJob, *http.Response, error) {
 	return r.ApiService.ListBackupRestoreJobsExecute(r)
@@ -3527,22 +3503,10 @@ func (a *CloudBackupsApiService) ListExportBucketsWithParams(ctx context.Context
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListExportBucketsApiRequest) IncludeCount(includeCount bool) ListExportBucketsApiRequest {
-	r.includeCount = &includeCount
-	return r
-}
 
 // Number of items that the response returns per page.
-func (r ListExportBucketsApiRequest) ItemsPerPage(itemsPerPage int) ListExportBucketsApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListExportBucketsApiRequest) PageNum(pageNum int) ListExportBucketsApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
 
 func (r ListExportBucketsApiRequest) Execute() (*PaginatedBackupSnapshotExportBucket, *http.Response, error) {
 	return r.ApiService.ListExportBucketsExecute(r)
@@ -3702,22 +3666,10 @@ func (a *CloudBackupsApiService) ListReplicaSetBackupsWithParams(ctx context.Con
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListReplicaSetBackupsApiRequest) IncludeCount(includeCount bool) ListReplicaSetBackupsApiRequest {
-	r.includeCount = &includeCount
-	return r
-}
 
 // Number of items that the response returns per page.
-func (r ListReplicaSetBackupsApiRequest) ItemsPerPage(itemsPerPage int) ListReplicaSetBackupsApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListReplicaSetBackupsApiRequest) PageNum(pageNum int) ListReplicaSetBackupsApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
 
 func (r ListReplicaSetBackupsApiRequest) Execute() (*PaginatedCloudBackupReplicaSet, *http.Response, error) {
 	return r.ApiService.ListReplicaSetBackupsExecute(r)
@@ -3880,22 +3832,10 @@ func (a *CloudBackupsApiService) ListServerlessBackupRestoreJobsWithParams(ctx c
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListServerlessBackupRestoreJobsApiRequest) IncludeCount(includeCount bool) ListServerlessBackupRestoreJobsApiRequest {
-	r.includeCount = &includeCount
-	return r
-}
 
 // Number of items that the response returns per page.
-func (r ListServerlessBackupRestoreJobsApiRequest) ItemsPerPage(itemsPerPage int) ListServerlessBackupRestoreJobsApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListServerlessBackupRestoreJobsApiRequest) PageNum(pageNum int) ListServerlessBackupRestoreJobsApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
 
 func (r ListServerlessBackupRestoreJobsApiRequest) Execute() (*PaginatedApiAtlasServerlessBackupRestoreJob, *http.Response, error) {
 	return r.ApiService.ListServerlessBackupRestoreJobsExecute(r)
@@ -4058,22 +3998,10 @@ func (a *CloudBackupsApiService) ListServerlessBackupsWithParams(ctx context.Con
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListServerlessBackupsApiRequest) IncludeCount(includeCount bool) ListServerlessBackupsApiRequest {
-	r.includeCount = &includeCount
-	return r
-}
 
 // Number of items that the response returns per page.
-func (r ListServerlessBackupsApiRequest) ItemsPerPage(itemsPerPage int) ListServerlessBackupsApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListServerlessBackupsApiRequest) PageNum(pageNum int) ListServerlessBackupsApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
 
 func (r ListServerlessBackupsApiRequest) Execute() (*PaginatedApiAtlasServerlessBackupSnapshot, *http.Response, error) {
 	return r.ApiService.ListServerlessBackupsExecute(r)

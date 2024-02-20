@@ -90,21 +90,21 @@ type MonitoringAndLogsApi interface {
 	GetDatabaseMeasurementsExecute(r GetDatabaseMeasurementsApiRequest) (*ApiMeasurementsGeneralViewAtlas, *http.Response, error)
 
 	/*
-		GetDiskMeasurements Return Measurements of One Disk for One MongoDB Process
+			GetDiskMeasurements Return Measurements of One Disk for One MongoDB Process
 
-		Returns the measurements of one disk or partition for the specified host for the specified project. Returned value can be one of the following:
-	- Throughput of I/O operations for the disk partition used for the MongoDB process
-	- Percentage of time during which requests the partition issued and serviced
-	- Latency per operation type of the disk partition used for the MongoDB process
-	- Amount of free and used disk space on the disk partition used for the MongoDB process
+			Returns the measurements of one disk or partition for the specified host for the specified project. Returned value can be one of the following:
+		- Throughput of I/O operations for the disk partition used for the MongoDB process
+		- Percentage of time during which requests the partition issued and serviced
+		- Latency per operation type of the disk partition used for the MongoDB process
+		- Amount of free and used disk space on the disk partition used for the MongoDB process
 
-	To use this resource, the requesting API Key must have the Project Read Only role.
+		To use this resource, the requesting API Key must have the Project Read Only role.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param partitionName Human-readable label of the disk or partition to which the measurements apply.
-		@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
-		@return GetDiskMeasurementsApiRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param partitionName Human-readable label of the disk or partition to which the measurements apply.
+			@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
+			@return GetDiskMeasurementsApiRequest
 	*/
 	GetDiskMeasurements(ctx context.Context, groupId string, partitionName string, processId string) GetDiskMeasurementsApiRequest
 	/*
@@ -146,21 +146,21 @@ type MonitoringAndLogsApi interface {
 	GetHostLogsExecute(r GetHostLogsApiRequest) (io.ReadCloser, *http.Response, error)
 
 	/*
-		GetHostMeasurements Return Measurements for One MongoDB Process
+			GetHostMeasurements Return Measurements for One MongoDB Process
 
-		Returns disk, partition, or host measurements per process for the specified host for the specified project. Returned value can be one of the following:
-	- Throughput of I/O operations for the disk partition used for the MongoDB process
-	- Percentage of time during which requests the partition issued and serviced
-	- Latency per operation type of the disk partition used for the MongoDB process
-	- Amount of free and used disk space on the disk partition used for the MongoDB process
-	- Measurements for the host, such as CPU usage or number of I/O operations
+			Returns disk, partition, or host measurements per process for the specified host for the specified project. Returned value can be one of the following:
+		- Throughput of I/O operations for the disk partition used for the MongoDB process
+		- Percentage of time during which requests the partition issued and serviced
+		- Latency per operation type of the disk partition used for the MongoDB process
+		- Amount of free and used disk space on the disk partition used for the MongoDB process
+		- Measurements for the host, such as CPU usage or number of I/O operations
 
-	To use this resource, the requesting API Key must have the Project Read Only role.
+		To use this resource, the requesting API Key must have the Project Read Only role.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
-		@return GetHostMeasurementsApiRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
+			@return GetHostMeasurementsApiRequest
 	*/
 	GetHostMeasurements(ctx context.Context, groupId string, processId string) GetHostMeasurementsApiRequest
 	/*
@@ -683,34 +683,14 @@ func (a *MonitoringAndLogsApiService) GetDatabaseMeasurementsWithParams(ctx cont
 }
 
 // Duration that specifies the interval at which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC.
-func (r GetDatabaseMeasurementsApiRequest) Granularity(granularity string) GetDatabaseMeasurementsApiRequest {
-	r.granularity = &granularity
-	return r
-}
 
 // One or more types of measurement to request for this MongoDB process. If omitted, the resource returns all measurements. To specify multiple values for &#x60;m&#x60;, repeat the &#x60;m&#x60; parameter for each value. Specify measurements that apply to the specified host. MongoDB Cloud returns an error if you specified any invalid measurements.
-func (r GetDatabaseMeasurementsApiRequest) M(m []string) GetDatabaseMeasurementsApiRequest {
-	r.m = &m
-	return r
-}
 
 // Duration over which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC. Include this parameter when you do not set **start** and **end**.
-func (r GetDatabaseMeasurementsApiRequest) Period(period string) GetDatabaseMeasurementsApiRequest {
-	r.period = &period
-	return r
-}
 
 // Date and time when MongoDB Cloud begins reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**.
-func (r GetDatabaseMeasurementsApiRequest) Start(start time.Time) GetDatabaseMeasurementsApiRequest {
-	r.start = &start
-	return r
-}
 
 // Date and time when MongoDB Cloud stops reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**.
-func (r GetDatabaseMeasurementsApiRequest) End(end time.Time) GetDatabaseMeasurementsApiRequest {
-	r.end = &end
-	return r
-}
 
 func (r GetDatabaseMeasurementsApiRequest) Execute() (*ApiMeasurementsGeneralViewAtlas, *http.Response, error) {
 	return r.ApiService.GetDatabaseMeasurementsExecute(r)
@@ -884,34 +864,14 @@ func (a *MonitoringAndLogsApiService) GetDiskMeasurementsWithParams(ctx context.
 }
 
 // Duration that specifies the interval at which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC.
-func (r GetDiskMeasurementsApiRequest) Granularity(granularity string) GetDiskMeasurementsApiRequest {
-	r.granularity = &granularity
-	return r
-}
 
 // One or more types of measurement to request for this MongoDB process. If omitted, the resource returns all measurements. To specify multiple values for &#x60;m&#x60;, repeat the &#x60;m&#x60; parameter for each value. Specify measurements that apply to the specified host. MongoDB Cloud returns an error if you specified any invalid measurements.
-func (r GetDiskMeasurementsApiRequest) M(m []string) GetDiskMeasurementsApiRequest {
-	r.m = &m
-	return r
-}
 
 // Duration over which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC. Include this parameter when you do not set **start** and **end**.
-func (r GetDiskMeasurementsApiRequest) Period(period string) GetDiskMeasurementsApiRequest {
-	r.period = &period
-	return r
-}
 
 // Date and time when MongoDB Cloud begins reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**.
-func (r GetDiskMeasurementsApiRequest) Start(start time.Time) GetDiskMeasurementsApiRequest {
-	r.start = &start
-	return r
-}
 
 // Date and time when MongoDB Cloud stops reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**.
-func (r GetDiskMeasurementsApiRequest) End(end time.Time) GetDiskMeasurementsApiRequest {
-	r.end = &end
-	return r
-}
 
 func (r GetDiskMeasurementsApiRequest) Execute() (*ApiMeasurementsGeneralViewAtlas, *http.Response, error) {
 	return r.ApiService.GetDiskMeasurementsExecute(r)
@@ -1082,16 +1042,8 @@ func (a *MonitoringAndLogsApiService) GetHostLogsWithParams(ctx context.Context,
 }
 
 // Date and time when the period specifies the inclusive ending point for the range of log messages to retrieve. This parameter expresses its value in the number of seconds that have elapsed since the UNIX epoch.
-func (r GetHostLogsApiRequest) EndDate(endDate int64) GetHostLogsApiRequest {
-	r.endDate = &endDate
-	return r
-}
 
 // Date and time when the period specifies the inclusive starting point for the range of log messages to retrieve. This parameter expresses its value in the number of seconds that have elapsed since the UNIX epoch.
-func (r GetHostLogsApiRequest) StartDate(startDate int64) GetHostLogsApiRequest {
-	r.startDate = &startDate
-	return r
-}
 
 func (r GetHostLogsApiRequest) Execute() (io.ReadCloser, *http.Response, error) {
 	return r.ApiService.GetHostLogsExecute(r)
@@ -1248,34 +1200,14 @@ func (a *MonitoringAndLogsApiService) GetHostMeasurementsWithParams(ctx context.
 }
 
 // Duration that specifies the interval at which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC.
-func (r GetHostMeasurementsApiRequest) Granularity(granularity string) GetHostMeasurementsApiRequest {
-	r.granularity = &granularity
-	return r
-}
 
 // One or more types of measurement to request for this MongoDB process. If omitted, the resource returns all measurements. To specify multiple values for &#x60;m&#x60;, repeat the &#x60;m&#x60; parameter for each value. Specify measurements that apply to the specified host. MongoDB Cloud returns an error if you specified any invalid measurements.
-func (r GetHostMeasurementsApiRequest) M(m []string) GetHostMeasurementsApiRequest {
-	r.m = &m
-	return r
-}
 
 // Duration over which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC. Include this parameter when you do not set **start** and **end**.
-func (r GetHostMeasurementsApiRequest) Period(period string) GetHostMeasurementsApiRequest {
-	r.period = &period
-	return r
-}
 
 // Date and time when MongoDB Cloud begins reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**.
-func (r GetHostMeasurementsApiRequest) Start(start time.Time) GetHostMeasurementsApiRequest {
-	r.start = &start
-	return r
-}
 
 // Date and time when MongoDB Cloud stops reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**.
-func (r GetHostMeasurementsApiRequest) End(end time.Time) GetHostMeasurementsApiRequest {
-	r.end = &end
-	return r
-}
 
 func (r GetHostMeasurementsApiRequest) Execute() (*ApiMeasurementsGeneralViewAtlas, *http.Response, error) {
 	return r.ApiService.GetHostMeasurementsExecute(r)
@@ -1459,34 +1391,14 @@ func (a *MonitoringAndLogsApiService) GetIndexMetricsWithParams(ctx context.Cont
 }
 
 // Duration that specifies the interval at which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC.
-func (r GetIndexMetricsApiRequest) Granularity(granularity string) GetIndexMetricsApiRequest {
-	r.granularity = &granularity
-	return r
-}
 
 // List that contains the measurements that MongoDB Atlas reports for the associated data series.
-func (r GetIndexMetricsApiRequest) Metrics(metrics []string) GetIndexMetricsApiRequest {
-	r.metrics = &metrics
-	return r
-}
 
 // Duration over which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC. Include this parameter when you do not set **start** and **end**.
-func (r GetIndexMetricsApiRequest) Period(period string) GetIndexMetricsApiRequest {
-	r.period = &period
-	return r
-}
 
 // Date and time when MongoDB Cloud begins reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**.
-func (r GetIndexMetricsApiRequest) Start(start time.Time) GetIndexMetricsApiRequest {
-	r.start = &start
-	return r
-}
 
 // Date and time when MongoDB Cloud stops reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**.
-func (r GetIndexMetricsApiRequest) End(end time.Time) GetIndexMetricsApiRequest {
-	r.end = &end
-	return r
-}
 
 func (r GetIndexMetricsApiRequest) Execute() (*MeasurementsIndexes, *http.Response, error) {
 	return r.ApiService.GetIndexMetricsExecute(r)
@@ -1665,34 +1577,14 @@ func (a *MonitoringAndLogsApiService) GetMeasurementsWithParams(ctx context.Cont
 }
 
 // Duration that specifies the interval at which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC.
-func (r GetMeasurementsApiRequest) Granularity(granularity string) GetMeasurementsApiRequest {
-	r.granularity = &granularity
-	return r
-}
 
 // List that contains the metrics that you want MongoDB Atlas to report for the associated data series. If you don&#39;t set this parameter, this resource returns all hardware and status metrics for the associated data series.
-func (r GetMeasurementsApiRequest) Metrics(metrics []string) GetMeasurementsApiRequest {
-	r.metrics = &metrics
-	return r
-}
 
 // Duration over which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC. Include this parameter when you do not set **start** and **end**.
-func (r GetMeasurementsApiRequest) Period(period string) GetMeasurementsApiRequest {
-	r.period = &period
-	return r
-}
 
 // Date and time when MongoDB Cloud begins reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**.
-func (r GetMeasurementsApiRequest) Start(start time.Time) GetMeasurementsApiRequest {
-	r.start = &start
-	return r
-}
 
 // Date and time when MongoDB Cloud stops reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**.
-func (r GetMeasurementsApiRequest) End(end time.Time) GetMeasurementsApiRequest {
-	r.end = &end
-	return r
-}
 
 func (r GetMeasurementsApiRequest) Execute() (*MeasurementsNonIndex, *http.Response, error) {
 	return r.ApiService.GetMeasurementsExecute(r)
@@ -1853,22 +1745,10 @@ func (a *MonitoringAndLogsApiService) ListAtlasProcessesWithParams(ctx context.C
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListAtlasProcessesApiRequest) IncludeCount(includeCount bool) ListAtlasProcessesApiRequest {
-	r.includeCount = &includeCount
-	return r
-}
 
 // Number of items that the response returns per page.
-func (r ListAtlasProcessesApiRequest) ItemsPerPage(itemsPerPage int) ListAtlasProcessesApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListAtlasProcessesApiRequest) PageNum(pageNum int) ListAtlasProcessesApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
 
 func (r ListAtlasProcessesApiRequest) Execute() (*PaginatedHostViewAtlas, *http.Response, error) {
 	return r.ApiService.ListAtlasProcessesExecute(r)
@@ -2028,22 +1908,10 @@ func (a *MonitoringAndLogsApiService) ListDatabasesWithParams(ctx context.Contex
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListDatabasesApiRequest) IncludeCount(includeCount bool) ListDatabasesApiRequest {
-	r.includeCount = &includeCount
-	return r
-}
 
 // Number of items that the response returns per page.
-func (r ListDatabasesApiRequest) ItemsPerPage(itemsPerPage int) ListDatabasesApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListDatabasesApiRequest) PageNum(pageNum int) ListDatabasesApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
 
 func (r ListDatabasesApiRequest) Execute() (*PaginatedDatabase, *http.Response, error) {
 	return r.ApiService.ListDatabasesExecute(r)
@@ -2342,22 +2210,10 @@ func (a *MonitoringAndLogsApiService) ListDiskPartitionsWithParams(ctx context.C
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListDiskPartitionsApiRequest) IncludeCount(includeCount bool) ListDiskPartitionsApiRequest {
-	r.includeCount = &includeCount
-	return r
-}
 
 // Number of items that the response returns per page.
-func (r ListDiskPartitionsApiRequest) ItemsPerPage(itemsPerPage int) ListDiskPartitionsApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListDiskPartitionsApiRequest) PageNum(pageNum int) ListDiskPartitionsApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
 
 func (r ListDiskPartitionsApiRequest) Execute() (*PaginatedDiskPartition, *http.Response, error) {
 	return r.ApiService.ListDiskPartitionsExecute(r)
@@ -2532,34 +2388,14 @@ func (a *MonitoringAndLogsApiService) ListIndexMetricsWithParams(ctx context.Con
 }
 
 // Duration that specifies the interval at which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC.
-func (r ListIndexMetricsApiRequest) Granularity(granularity string) ListIndexMetricsApiRequest {
-	r.granularity = &granularity
-	return r
-}
 
 // List that contains the measurements that MongoDB Atlas reports for the associated data series.
-func (r ListIndexMetricsApiRequest) Metrics(metrics []string) ListIndexMetricsApiRequest {
-	r.metrics = &metrics
-	return r
-}
 
 // Duration over which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC. Include this parameter when you do not set **start** and **end**.
-func (r ListIndexMetricsApiRequest) Period(period string) ListIndexMetricsApiRequest {
-	r.period = &period
-	return r
-}
 
 // Date and time when MongoDB Cloud begins reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**.
-func (r ListIndexMetricsApiRequest) Start(start time.Time) ListIndexMetricsApiRequest {
-	r.start = &start
-	return r
-}
 
 // Date and time when MongoDB Cloud stops reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**.
-func (r ListIndexMetricsApiRequest) End(end time.Time) ListIndexMetricsApiRequest {
-	r.end = &end
-	return r
-}
 
 func (r ListIndexMetricsApiRequest) Execute() (*MeasurementsIndexes, *http.Response, error) {
 	return r.ApiService.ListIndexMetricsExecute(r)

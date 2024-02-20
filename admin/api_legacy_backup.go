@@ -72,19 +72,19 @@ type LegacyBackupApi interface {
 	GetLegacyBackupCheckpointExecute(r GetLegacyBackupCheckpointApiRequest) (*ApiAtlasCheckpoint, *http.Response, error)
 
 	/*
-		GetLegacyBackupRestoreJob Return One Legacy Backup Restore Job
+			GetLegacyBackupRestoreJob Return One Legacy Backup Restore Job
 
-		[experimental] Returns one legacy backup restore job for one cluster in the specified project. To use this resource, the requesting API Key must have the Project Read Only role.
+			[experimental] Returns one legacy backup restore job for one cluster in the specified project. To use this resource, the requesting API Key must have the Project Read Only role.
 
-	 Effective 23 March 2020, all new clusters can use only Cloud Backups. When you upgrade to 4.2, your backup system upgrades to cloud backup if it is currently set to legacy backup. After this upgrade, all your existing legacy backup snapshots remain available. They expire over time in accordance with your retention policy. Your backup policy resets to the default schedule. If you had a custom backup policy in place with legacy backups, you must re-create it with the procedure outlined in the [Cloud Backup documentation](https://www.mongodb.com/docs/atlas/backup/cloud-backup/scheduling/#std-label-cloud-provider-backup-schedule).
+		 Effective 23 March 2020, all new clusters can use only Cloud Backups. When you upgrade to 4.2, your backup system upgrades to cloud backup if it is currently set to legacy backup. After this upgrade, all your existing legacy backup snapshots remain available. They expire over time in accordance with your retention policy. Your backup policy resets to the default schedule. If you had a custom backup policy in place with legacy backups, you must re-create it with the procedure outlined in the [Cloud Backup documentation](https://www.mongodb.com/docs/atlas/backup/cloud-backup/scheduling/#std-label-cloud-provider-backup-schedule).
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param clusterName Human-readable label that identifies the cluster with the snapshot you want to return.
-		@param jobId Unique 24-hexadecimal digit string that identifies the restore job.
-		@return GetLegacyBackupRestoreJobApiRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param clusterName Human-readable label that identifies the cluster with the snapshot you want to return.
+			@param jobId Unique 24-hexadecimal digit string that identifies the restore job.
+			@return GetLegacyBackupRestoreJobApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for LegacyBackupApi
+			Deprecated: this method has been deprecated. Please check the latest resource version for LegacyBackupApi
 	*/
 	GetLegacyBackupRestoreJob(ctx context.Context, groupId string, clusterName string, jobId string) GetLegacyBackupRestoreJobApiRequest
 	/*
@@ -132,18 +132,18 @@ type LegacyBackupApi interface {
 	GetLegacySnapshotExecute(r GetLegacySnapshotApiRequest) (*BackupSnapshot, *http.Response, error)
 
 	/*
-		GetLegacySnapshotSchedule Return One Snapshot Schedule
+			GetLegacySnapshotSchedule Return One Snapshot Schedule
 
-		[experimental] Returns the snapshot schedule for one cluster in the specified project. To use this resource, the requesting API Key must have the Project Read Only role.
+			[experimental] Returns the snapshot schedule for one cluster in the specified project. To use this resource, the requesting API Key must have the Project Read Only role.
 
-	 Effective 23 March 2020, all new clusters can use only Cloud Backups. When you upgrade to 4.2, your backup system upgrades to cloud backup if it is currently set to legacy backup. After this upgrade, all your existing legacy backup snapshots remain available. They expire over time in accordance with your retention policy. Your backup policy resets to the default schedule. If you had a custom backup policy in place with legacy backups, you must re-create it with the procedure outlined in the [Cloud Backup documentation](https://www.mongodb.com/docs/atlas/backup/cloud-backup/scheduling/#std-label-cloud-provider-backup-schedule).
+		 Effective 23 March 2020, all new clusters can use only Cloud Backups. When you upgrade to 4.2, your backup system upgrades to cloud backup if it is currently set to legacy backup. After this upgrade, all your existing legacy backup snapshots remain available. They expire over time in accordance with your retention policy. Your backup policy resets to the default schedule. If you had a custom backup policy in place with legacy backups, you must re-create it with the procedure outlined in the [Cloud Backup documentation](https://www.mongodb.com/docs/atlas/backup/cloud-backup/scheduling/#std-label-cloud-provider-backup-schedule).
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param clusterName Human-readable label that identifies the cluster with the snapshot you want to return.
-		@return GetLegacySnapshotScheduleApiRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param clusterName Human-readable label that identifies the cluster with the snapshot you want to return.
+			@return GetLegacySnapshotScheduleApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for LegacyBackupApi
+			Deprecated: this method has been deprecated. Please check the latest resource version for LegacyBackupApi
 	*/
 	GetLegacySnapshotSchedule(ctx context.Context, groupId string, clusterName string) GetLegacySnapshotScheduleApiRequest
 	/*
@@ -190,18 +190,18 @@ type LegacyBackupApi interface {
 	ListLegacyBackupCheckpointsExecute(r ListLegacyBackupCheckpointsApiRequest) (*PaginatedApiAtlasCheckpoint, *http.Response, error)
 
 	/*
-		ListLegacyBackupRestoreJobs Return All Legacy Backup Restore Jobs
+			ListLegacyBackupRestoreJobs Return All Legacy Backup Restore Jobs
 
-		[experimental] Returns all legacy backup restore jobs for one cluster in the specified project. To use this resource, the requesting API Key must have the Project Read Only role.
+			[experimental] Returns all legacy backup restore jobs for one cluster in the specified project. To use this resource, the requesting API Key must have the Project Read Only role.
 
-	 Effective 23 March 2020, all new clusters can use only Cloud Backups. When you upgrade to 4.2, your backup system upgrades to cloud backup if it is currently set to legacy backup. After this upgrade, all your existing legacy backup snapshots remain available. They expire over time in accordance with your retention policy. Your backup policy resets to the default schedule. If you had a custom backup policy in place with legacy backups, you must re-create it with the procedure outlined in the [Cloud Backup documentation](https://www.mongodb.com/docs/atlas/backup/cloud-backup/scheduling/#std-label-cloud-provider-backup-schedule). If you use the `BATCH-ID` query parameter, you can retrieve all restore jobs in the specified batch. When creating a restore job for a sharded cluster, MongoDB Cloud creates a separate job for each shard, plus another for the config server. Each of those jobs are part of a batch. However, a batch can't include a restore job for a replica set.
+		 Effective 23 March 2020, all new clusters can use only Cloud Backups. When you upgrade to 4.2, your backup system upgrades to cloud backup if it is currently set to legacy backup. After this upgrade, all your existing legacy backup snapshots remain available. They expire over time in accordance with your retention policy. Your backup policy resets to the default schedule. If you had a custom backup policy in place with legacy backups, you must re-create it with the procedure outlined in the [Cloud Backup documentation](https://www.mongodb.com/docs/atlas/backup/cloud-backup/scheduling/#std-label-cloud-provider-backup-schedule). If you use the `BATCH-ID` query parameter, you can retrieve all restore jobs in the specified batch. When creating a restore job for a sharded cluster, MongoDB Cloud creates a separate job for each shard, plus another for the config server. Each of those jobs are part of a batch. However, a batch can't include a restore job for a replica set.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param clusterName Human-readable label that identifies the cluster with the snapshot you want to return.
-		@return ListLegacyBackupRestoreJobsApiRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param clusterName Human-readable label that identifies the cluster with the snapshot you want to return.
+			@return ListLegacyBackupRestoreJobsApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for LegacyBackupApi
+			Deprecated: this method has been deprecated. Please check the latest resource version for LegacyBackupApi
 	*/
 	ListLegacyBackupRestoreJobs(ctx context.Context, groupId string, clusterName string) ListLegacyBackupRestoreJobsApiRequest
 	/*
@@ -277,18 +277,18 @@ type LegacyBackupApi interface {
 	UpdateLegacySnapshotRetentionExecute(r UpdateLegacySnapshotRetentionApiRequest) (*BackupSnapshot, *http.Response, error)
 
 	/*
-		UpdateLegacySnapshotSchedule Update Snapshot Schedule for One Cluster
+			UpdateLegacySnapshotSchedule Update Snapshot Schedule for One Cluster
 
-		[experimental] Updates the snapshot schedule for one cluster in the specified project. To use this resource, the requesting API Key must have the Project Owner role.
+			[experimental] Updates the snapshot schedule for one cluster in the specified project. To use this resource, the requesting API Key must have the Project Owner role.
 
-	 Effective 23 March 2020, all new clusters can use only Cloud Backups. When you upgrade to 4.2, your backup system upgrades to cloud backup if it is currently set to legacy backup. After this upgrade, all your existing legacy backup snapshots remain available. They expire over time in accordance with your retention policy. Your backup policy resets to the default schedule. If you had a custom backup policy in place with legacy backups, you must re-create it with the procedure outlined in the [Cloud Backup documentation](https://www.mongodb.com/docs/atlas/backup/cloud-backup/scheduling/#std-label-cloud-provider-backup-schedule).
+		 Effective 23 March 2020, all new clusters can use only Cloud Backups. When you upgrade to 4.2, your backup system upgrades to cloud backup if it is currently set to legacy backup. After this upgrade, all your existing legacy backup snapshots remain available. They expire over time in accordance with your retention policy. Your backup policy resets to the default schedule. If you had a custom backup policy in place with legacy backups, you must re-create it with the procedure outlined in the [Cloud Backup documentation](https://www.mongodb.com/docs/atlas/backup/cloud-backup/scheduling/#std-label-cloud-provider-backup-schedule).
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param clusterName Human-readable label that identifies the cluster with the snapshot you want to return.
-		@return UpdateLegacySnapshotScheduleApiRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param clusterName Human-readable label that identifies the cluster with the snapshot you want to return.
+			@return UpdateLegacySnapshotScheduleApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for LegacyBackupApi
+			Deprecated: this method has been deprecated. Please check the latest resource version for LegacyBackupApi
 	*/
 	UpdateLegacySnapshotSchedule(ctx context.Context, groupId string, clusterName string, apiAtlasSnapshotSchedule *ApiAtlasSnapshotSchedule) UpdateLegacySnapshotScheduleApiRequest
 	/*
@@ -1039,22 +1039,10 @@ func (a *LegacyBackupApiService) ListLegacyBackupCheckpointsWithParams(ctx conte
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListLegacyBackupCheckpointsApiRequest) IncludeCount(includeCount bool) ListLegacyBackupCheckpointsApiRequest {
-	r.includeCount = &includeCount
-	return r
-}
 
 // Number of items that the response returns per page.
-func (r ListLegacyBackupCheckpointsApiRequest) ItemsPerPage(itemsPerPage int) ListLegacyBackupCheckpointsApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListLegacyBackupCheckpointsApiRequest) PageNum(pageNum int) ListLegacyBackupCheckpointsApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
 
 func (r ListLegacyBackupCheckpointsApiRequest) Execute() (*PaginatedApiAtlasCheckpoint, *http.Response, error) {
 	return r.ApiService.ListLegacyBackupCheckpointsExecute(r)
@@ -1224,28 +1212,12 @@ func (a *LegacyBackupApiService) ListLegacyBackupRestoreJobsWithParams(ctx conte
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListLegacyBackupRestoreJobsApiRequest) IncludeCount(includeCount bool) ListLegacyBackupRestoreJobsApiRequest {
-	r.includeCount = &includeCount
-	return r
-}
 
 // Number of items that the response returns per page.
-func (r ListLegacyBackupRestoreJobsApiRequest) ItemsPerPage(itemsPerPage int) ListLegacyBackupRestoreJobsApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListLegacyBackupRestoreJobsApiRequest) PageNum(pageNum int) ListLegacyBackupRestoreJobsApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
 
 // Unique 24-hexadecimal digit string that identifies the batch of restore jobs to return. Timestamp in ISO 8601 date and time format in UTC when creating a restore job for a sharded cluster, Application creates a separate job for each shard, plus another for the config host. Each of these jobs comprise one batch. A restore job for a replica set can&#39;t be part of a batch.
-func (r ListLegacyBackupRestoreJobsApiRequest) BatchId(batchId string) ListLegacyBackupRestoreJobsApiRequest {
-	r.batchId = &batchId
-	return r
-}
 
 func (r ListLegacyBackupRestoreJobsApiRequest) Execute() (*PaginatedRestoreJob, *http.Response, error) {
 	return r.ApiService.ListLegacyBackupRestoreJobsExecute(r)
@@ -1420,28 +1392,12 @@ func (a *LegacyBackupApiService) ListLegacySnapshotsWithParams(ctx context.Conte
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListLegacySnapshotsApiRequest) IncludeCount(includeCount bool) ListLegacySnapshotsApiRequest {
-	r.includeCount = &includeCount
-	return r
-}
 
 // Number of items that the response returns per page.
-func (r ListLegacySnapshotsApiRequest) ItemsPerPage(itemsPerPage int) ListLegacySnapshotsApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListLegacySnapshotsApiRequest) PageNum(pageNum int) ListLegacySnapshotsApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
 
 // Human-readable label that specifies whether to return only completed, incomplete, or all snapshots. By default, MongoDB Cloud only returns completed snapshots.
-func (r ListLegacySnapshotsApiRequest) Completed(completed string) ListLegacySnapshotsApiRequest {
-	r.completed = &completed
-	return r
-}
 
 func (r ListLegacySnapshotsApiRequest) Execute() (*PaginatedSnapshot, *http.Response, error) {
 	return r.ApiService.ListLegacySnapshotsExecute(r)

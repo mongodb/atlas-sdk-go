@@ -573,16 +573,8 @@ func (a *GlobalClustersApiService) DeleteManagedNamespaceWithParams(ctx context.
 }
 
 // Human-readable label that identifies the database that contains the collection.
-func (r DeleteManagedNamespaceApiRequest) Db(db string) DeleteManagedNamespaceApiRequest {
-	r.db = &db
-	return r
-}
 
 // Human-readable label that identifies the collection associated with the managed namespace.
-func (r DeleteManagedNamespaceApiRequest) Collection(collection string) DeleteManagedNamespaceApiRequest {
-	r.collection = &collection
-	return r
-}
 
 func (r DeleteManagedNamespaceApiRequest) Execute() (*GeoSharding, *http.Response, error) {
 	return r.ApiService.DeleteManagedNamespaceExecute(r)

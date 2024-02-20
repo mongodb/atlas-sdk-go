@@ -59,17 +59,17 @@ type OrganizationsApi interface {
 	CreateOrganizationInvitationExecute(r CreateOrganizationInvitationApiRequest) (*OrganizationInvitation, *http.Response, error)
 
 	/*
-		DeleteOrganization Remove One Organization
+			DeleteOrganization Remove One Organization
 
-		Removes one specified organization. MongoDB Cloud imposes the following limits on this resource:
+			Removes one specified organization. MongoDB Cloud imposes the following limits on this resource:
 
-	 - Organizations with active projects cannot be removed.
-	 - All projects in the organization must be removed before you can remove the organization.
-	 To use this resource, the requesting API Key must have the Organization Owner role.
+		 - Organizations with active projects cannot be removed.
+		 - All projects in the organization must be removed before you can remove the organization.
+		 To use this resource, the requesting API Key must have the Organization Owner role.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-		@return DeleteOrganizationApiRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+			@return DeleteOrganizationApiRequest
 	*/
 	DeleteOrganization(ctx context.Context, orgId string) DeleteOrganizationApiRequest
 	/*
@@ -203,20 +203,20 @@ type OrganizationsApi interface {
 	ListOrganizationInvitationsExecute(r ListOrganizationInvitationsApiRequest) ([]OrganizationInvitation, *http.Response, error)
 
 	/*
-		ListOrganizationProjects Return One or More Projects in One Organization
+			ListOrganizationProjects Return One or More Projects in One Organization
 
-		Returns multiple projects in the specified organization. Each organization can have multiple projects. Use projects to:
+			Returns multiple projects in the specified organization. Each organization can have multiple projects. Use projects to:
 
-	- Isolate different environments, such as development, test, or production environments, from each other.
-	- Associate different MongoDB Cloud users or teams with different environments, or give different permission to MongoDB Cloud users in different environments.
-	- Maintain separate cluster security configurations.
-	- Create different alert settings.
+		- Isolate different environments, such as development, test, or production environments, from each other.
+		- Associate different MongoDB Cloud users or teams with different environments, or give different permission to MongoDB Cloud users in different environments.
+		- Maintain separate cluster security configurations.
+		- Create different alert settings.
 
-	To use this resource, the requesting API Key must have the Organization Member role.
+		To use this resource, the requesting API Key must have the Organization Member role.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-		@return ListOrganizationProjectsApiRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+			@return ListOrganizationProjectsApiRequest
 	*/
 	ListOrganizationProjects(ctx context.Context, orgId string) ListOrganizationProjectsApiRequest
 	/*
@@ -1341,10 +1341,6 @@ func (a *OrganizationsApiService) ListOrganizationInvitationsWithParams(ctx cont
 }
 
 // Email address of the user account invited to this organization. If you exclude this parameter, this resource returns all pending invitations.
-func (r ListOrganizationInvitationsApiRequest) Username(username string) ListOrganizationInvitationsApiRequest {
-	r.username = &username
-	return r
-}
 
 func (r ListOrganizationInvitationsApiRequest) Execute() ([]OrganizationInvitation, *http.Response, error) {
 	return r.ApiService.ListOrganizationInvitationsExecute(r)
@@ -1486,28 +1482,12 @@ func (a *OrganizationsApiService) ListOrganizationProjectsWithParams(ctx context
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListOrganizationProjectsApiRequest) IncludeCount(includeCount bool) ListOrganizationProjectsApiRequest {
-	r.includeCount = &includeCount
-	return r
-}
 
 // Number of items that the response returns per page.
-func (r ListOrganizationProjectsApiRequest) ItemsPerPage(itemsPerPage int) ListOrganizationProjectsApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListOrganizationProjectsApiRequest) PageNum(pageNum int) ListOrganizationProjectsApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
 
 // Human-readable label of the project to use to filter the returned list. Performs a case-insensitive search for a project within the organization which is prefixed by the specified name.
-func (r ListOrganizationProjectsApiRequest) Name(name string) ListOrganizationProjectsApiRequest {
-	r.name = &name
-	return r
-}
 
 func (r ListOrganizationProjectsApiRequest) Execute() (*PaginatedAtlasGroup, *http.Response, error) {
 	return r.ApiService.ListOrganizationProjectsExecute(r)
@@ -1674,22 +1654,10 @@ func (a *OrganizationsApiService) ListOrganizationUsersWithParams(ctx context.Co
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListOrganizationUsersApiRequest) IncludeCount(includeCount bool) ListOrganizationUsersApiRequest {
-	r.includeCount = &includeCount
-	return r
-}
 
 // Number of items that the response returns per page.
-func (r ListOrganizationUsersApiRequest) ItemsPerPage(itemsPerPage int) ListOrganizationUsersApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListOrganizationUsersApiRequest) PageNum(pageNum int) ListOrganizationUsersApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
 
 func (r ListOrganizationUsersApiRequest) Execute() (*PaginatedAppUser, *http.Response, error) {
 	return r.ApiService.ListOrganizationUsersExecute(r)
@@ -1846,28 +1814,12 @@ func (a *OrganizationsApiService) ListOrganizationsWithParams(ctx context.Contex
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListOrganizationsApiRequest) IncludeCount(includeCount bool) ListOrganizationsApiRequest {
-	r.includeCount = &includeCount
-	return r
-}
 
 // Number of items that the response returns per page.
-func (r ListOrganizationsApiRequest) ItemsPerPage(itemsPerPage int) ListOrganizationsApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListOrganizationsApiRequest) PageNum(pageNum int) ListOrganizationsApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
 
 // Human-readable label of the organization to use to filter the returned list. Performs a case-insensitive search for an organization that starts with the specified name.
-func (r ListOrganizationsApiRequest) Name(name string) ListOrganizationsApiRequest {
-	r.name = &name
-	return r
-}
 
 func (r ListOrganizationsApiRequest) Execute() (*PaginatedOrganization, *http.Response, error) {
 	return r.ApiService.ListOrganizationsExecute(r)

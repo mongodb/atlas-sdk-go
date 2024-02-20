@@ -1284,28 +1284,12 @@ func (a *NetworkPeeringApiService) ListPeeringConnectionsWithParams(ctx context.
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListPeeringConnectionsApiRequest) IncludeCount(includeCount bool) ListPeeringConnectionsApiRequest {
-	r.includeCount = &includeCount
-	return r
-}
 
 // Number of items that the response returns per page.
-func (r ListPeeringConnectionsApiRequest) ItemsPerPage(itemsPerPage int) ListPeeringConnectionsApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListPeeringConnectionsApiRequest) PageNum(pageNum int) ListPeeringConnectionsApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
 
 // Cloud service provider to use for this VPC peering connection.
-func (r ListPeeringConnectionsApiRequest) ProviderName(providerName string) ListPeeringConnectionsApiRequest {
-	r.providerName = &providerName
-	return r
-}
 
 func (r ListPeeringConnectionsApiRequest) Execute() (*PaginatedContainerPeer, *http.Response, error) {
 	return r.ApiService.ListPeeringConnectionsExecute(r)
@@ -1472,28 +1456,12 @@ func (a *NetworkPeeringApiService) ListPeeringContainerByCloudProviderWithParams
 }
 
 // Cloud service provider that serves the desired network peering containers.
-func (r ListPeeringContainerByCloudProviderApiRequest) ProviderName(providerName string) ListPeeringContainerByCloudProviderApiRequest {
-	r.providerName = &providerName
-	return r
-}
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListPeeringContainerByCloudProviderApiRequest) IncludeCount(includeCount bool) ListPeeringContainerByCloudProviderApiRequest {
-	r.includeCount = &includeCount
-	return r
-}
 
 // Number of items that the response returns per page.
-func (r ListPeeringContainerByCloudProviderApiRequest) ItemsPerPage(itemsPerPage int) ListPeeringContainerByCloudProviderApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListPeeringContainerByCloudProviderApiRequest) PageNum(pageNum int) ListPeeringContainerByCloudProviderApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
 
 func (r ListPeeringContainerByCloudProviderApiRequest) Execute() (*PaginatedCloudProviderContainer, *http.Response, error) {
 	return r.ApiService.ListPeeringContainerByCloudProviderExecute(r)
@@ -1654,22 +1622,10 @@ func (a *NetworkPeeringApiService) ListPeeringContainersWithParams(ctx context.C
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListPeeringContainersApiRequest) IncludeCount(includeCount bool) ListPeeringContainersApiRequest {
-	r.includeCount = &includeCount
-	return r
-}
 
 // Number of items that the response returns per page.
-func (r ListPeeringContainersApiRequest) ItemsPerPage(itemsPerPage int) ListPeeringContainersApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListPeeringContainersApiRequest) PageNum(pageNum int) ListPeeringContainersApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
 
 func (r ListPeeringContainersApiRequest) Execute() (*PaginatedCloudProviderContainer, *http.Response, error) {
 	return r.ApiService.ListPeeringContainersExecute(r)

@@ -529,10 +529,6 @@ func (a *ClustersApiService) DeleteClusterWithParams(ctx context.Context, args *
 }
 
 // Flag that indicates whether to retain backup snapshots for the deleted dedicated cluster.
-func (r DeleteClusterApiRequest) RetainBackups(retainBackups bool) DeleteClusterApiRequest {
-	r.retainBackups = &retainBackups
-	return r
-}
 
 func (r DeleteClusterApiRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteClusterExecute(r)
@@ -1188,34 +1184,14 @@ func (a *ClustersApiService) ListCloudProviderRegionsWithParams(ctx context.Cont
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListCloudProviderRegionsApiRequest) IncludeCount(includeCount bool) ListCloudProviderRegionsApiRequest {
-	r.includeCount = &includeCount
-	return r
-}
 
 // Number of items that the response returns per page.
-func (r ListCloudProviderRegionsApiRequest) ItemsPerPage(itemsPerPage int) ListCloudProviderRegionsApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListCloudProviderRegionsApiRequest) PageNum(pageNum int) ListCloudProviderRegionsApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
 
 // Cloud providers whose regions to retrieve. When you specify multiple providers, the response can return only tiers and regions that support multi-cloud clusters.
-func (r ListCloudProviderRegionsApiRequest) Providers(providers []string) ListCloudProviderRegionsApiRequest {
-	r.providers = &providers
-	return r
-}
 
 // Cluster tier for which to retrieve the regions.
-func (r ListCloudProviderRegionsApiRequest) Tier(tier string) ListCloudProviderRegionsApiRequest {
-	r.tier = &tier
-	return r
-}
 
 func (r ListCloudProviderRegionsApiRequest) Execute() (*PaginatedApiAtlasProviderRegions, *http.Response, error) {
 	return r.ApiService.ListCloudProviderRegionsExecute(r)
@@ -1385,28 +1361,12 @@ func (a *ClustersApiService) ListClustersWithParams(ctx context.Context, args *L
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListClustersApiRequest) IncludeCount(includeCount bool) ListClustersApiRequest {
-	r.includeCount = &includeCount
-	return r
-}
 
 // Number of items that the response returns per page.
-func (r ListClustersApiRequest) ItemsPerPage(itemsPerPage int) ListClustersApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListClustersApiRequest) PageNum(pageNum int) ListClustersApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
 
 // Flag that indicates whether to return Clusters with retain backups.
-func (r ListClustersApiRequest) IncludeDeletedWithRetainedBackups(includeDeletedWithRetainedBackups bool) ListClustersApiRequest {
-	r.includeDeletedWithRetainedBackups = &includeDeletedWithRetainedBackups
-	return r
-}
 
 func (r ListClustersApiRequest) Execute() (*PaginatedAdvancedClusterDescription, *http.Response, error) {
 	return r.ApiService.ListClustersExecute(r)
@@ -1567,22 +1527,10 @@ func (a *ClustersApiService) ListClustersForAllProjectsWithParams(ctx context.Co
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListClustersForAllProjectsApiRequest) IncludeCount(includeCount bool) ListClustersForAllProjectsApiRequest {
-	r.includeCount = &includeCount
-	return r
-}
 
 // Number of items that the response returns per page.
-func (r ListClustersForAllProjectsApiRequest) ItemsPerPage(itemsPerPage int) ListClustersForAllProjectsApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListClustersForAllProjectsApiRequest) PageNum(pageNum int) ListClustersForAllProjectsApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
 
 func (r ListClustersForAllProjectsApiRequest) Execute() (*PaginatedOrgGroup, *http.Response, error) {
 	return r.ApiService.ListClustersForAllProjectsExecute(r)

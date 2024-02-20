@@ -1149,22 +1149,10 @@ func (a *TeamsApiService) ListOrganizationTeamsWithParams(ctx context.Context, a
 }
 
 // Number of items that the response returns per page.
-func (r ListOrganizationTeamsApiRequest) ItemsPerPage(itemsPerPage int) ListOrganizationTeamsApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListOrganizationTeamsApiRequest) IncludeCount(includeCount bool) ListOrganizationTeamsApiRequest {
-	r.includeCount = &includeCount
-	return r
-}
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListOrganizationTeamsApiRequest) PageNum(pageNum int) ListOrganizationTeamsApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
 
 func (r ListOrganizationTeamsApiRequest) Execute() (*PaginatedTeam, *http.Response, error) {
 	return r.ApiService.ListOrganizationTeamsExecute(r)
@@ -1321,22 +1309,10 @@ func (a *TeamsApiService) ListProjectTeamsWithParams(ctx context.Context, args *
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListProjectTeamsApiRequest) IncludeCount(includeCount bool) ListProjectTeamsApiRequest {
-	r.includeCount = &includeCount
-	return r
-}
 
 // Number of items that the response returns per page.
-func (r ListProjectTeamsApiRequest) ItemsPerPage(itemsPerPage int) ListProjectTeamsApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListProjectTeamsApiRequest) PageNum(pageNum int) ListProjectTeamsApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
 
 func (r ListProjectTeamsApiRequest) Execute() (*PaginatedTeamRole, *http.Response, error) {
 	return r.ApiService.ListProjectTeamsExecute(r)
@@ -1493,16 +1469,8 @@ func (a *TeamsApiService) ListTeamUsersWithParams(ctx context.Context, args *Lis
 }
 
 // Number of items that the response returns per page.
-func (r ListTeamUsersApiRequest) ItemsPerPage(itemsPerPage int) ListTeamUsersApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListTeamUsersApiRequest) PageNum(pageNum int) ListTeamUsersApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
 
 func (r ListTeamUsersApiRequest) Execute() (*PaginatedApiAppUser, *http.Response, error) {
 	return r.ApiService.ListTeamUsersExecute(r)

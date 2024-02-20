@@ -957,10 +957,6 @@ func (a *StreamsApiService) GetStreamInstanceWithParams(ctx context.Context, arg
 }
 
 // Flag to indicate whether connections information should be included in the stream instance.
-func (r GetStreamInstanceApiRequest) IncludeConnections(includeConnections bool) GetStreamInstanceApiRequest {
-	r.includeConnections = &includeConnections
-	return r
-}
 
 func (r GetStreamInstanceApiRequest) Execute() (*StreamsTenant, *http.Response, error) {
 	return r.ApiService.GetStreamInstanceExecute(r)
@@ -1102,16 +1098,8 @@ func (a *StreamsApiService) ListStreamConnectionsWithParams(ctx context.Context,
 }
 
 // Number of items that the response returns per page.
-func (r ListStreamConnectionsApiRequest) ItemsPerPage(itemsPerPage int) ListStreamConnectionsApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListStreamConnectionsApiRequest) PageNum(pageNum int) ListStreamConnectionsApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
 
 func (r ListStreamConnectionsApiRequest) Execute() (*PaginatedApiStreamsConnection, *http.Response, error) {
 	return r.ApiService.ListStreamConnectionsExecute(r)
@@ -1261,16 +1249,8 @@ func (a *StreamsApiService) ListStreamInstancesWithParams(ctx context.Context, a
 }
 
 // Number of items that the response returns per page.
-func (r ListStreamInstancesApiRequest) ItemsPerPage(itemsPerPage int) ListStreamInstancesApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListStreamInstancesApiRequest) PageNum(pageNum int) ListStreamInstancesApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
 
 func (r ListStreamInstancesApiRequest) Execute() (*PaginatedApiStreamsTenant, *http.Response, error) {
 	return r.ApiService.ListStreamInstancesExecute(r)

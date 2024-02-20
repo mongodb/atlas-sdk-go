@@ -166,22 +166,10 @@ func (a *ProjectIPAccessListApiService) CreateProjectIpAccessListWithParams(ctx 
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r CreateProjectIpAccessListApiRequest) IncludeCount(includeCount bool) CreateProjectIpAccessListApiRequest {
-	r.includeCount = &includeCount
-	return r
-}
 
 // Number of items that the response returns per page.
-func (r CreateProjectIpAccessListApiRequest) ItemsPerPage(itemsPerPage int) CreateProjectIpAccessListApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r CreateProjectIpAccessListApiRequest) PageNum(pageNum int) CreateProjectIpAccessListApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
 
 func (r CreateProjectIpAccessListApiRequest) Execute() (*PaginatedNetworkAccess, *http.Response, error) {
 	return r.ApiService.CreateProjectIpAccessListExecute(r)
@@ -734,22 +722,10 @@ func (a *ProjectIPAccessListApiService) ListProjectIpAccessListsWithParams(ctx c
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListProjectIpAccessListsApiRequest) IncludeCount(includeCount bool) ListProjectIpAccessListsApiRequest {
-	r.includeCount = &includeCount
-	return r
-}
 
 // Number of items that the response returns per page.
-func (r ListProjectIpAccessListsApiRequest) ItemsPerPage(itemsPerPage int) ListProjectIpAccessListsApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListProjectIpAccessListsApiRequest) PageNum(pageNum int) ListProjectIpAccessListsApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
 
 func (r ListProjectIpAccessListsApiRequest) Execute() (*PaginatedNetworkAccess, *http.Response, error) {
 	return r.ApiService.ListProjectIpAccessListsExecute(r)

@@ -657,22 +657,10 @@ func (a *ProgrammaticAPIKeysApiService) CreateApiKeyAccessListWithParams(ctx con
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r CreateApiKeyAccessListApiRequest) IncludeCount(includeCount bool) CreateApiKeyAccessListApiRequest {
-	r.includeCount = &includeCount
-	return r
-}
 
 // Number of items that the response returns per page.
-func (r CreateApiKeyAccessListApiRequest) ItemsPerPage(itemsPerPage int) CreateApiKeyAccessListApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r CreateApiKeyAccessListApiRequest) PageNum(pageNum int) CreateApiKeyAccessListApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
 
 func (r CreateApiKeyAccessListApiRequest) Execute() (*PaginatedApiUserAccessList, *http.Response, error) {
 	return r.ApiService.CreateApiKeyAccessListExecute(r)
@@ -1506,22 +1494,10 @@ func (a *ProgrammaticAPIKeysApiService) ListApiKeyAccessListsEntriesWithParams(c
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListApiKeyAccessListsEntriesApiRequest) IncludeCount(includeCount bool) ListApiKeyAccessListsEntriesApiRequest {
-	r.includeCount = &includeCount
-	return r
-}
 
 // Number of items that the response returns per page.
-func (r ListApiKeyAccessListsEntriesApiRequest) ItemsPerPage(itemsPerPage int) ListApiKeyAccessListsEntriesApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListApiKeyAccessListsEntriesApiRequest) PageNum(pageNum int) ListApiKeyAccessListsEntriesApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
 
 func (r ListApiKeyAccessListsEntriesApiRequest) Execute() (*PaginatedApiUserAccessList, *http.Response, error) {
 	return r.ApiService.ListApiKeyAccessListsEntriesExecute(r)
@@ -1681,22 +1657,10 @@ func (a *ProgrammaticAPIKeysApiService) ListApiKeysWithParams(ctx context.Contex
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListApiKeysApiRequest) IncludeCount(includeCount bool) ListApiKeysApiRequest {
-	r.includeCount = &includeCount
-	return r
-}
 
 // Number of items that the response returns per page.
-func (r ListApiKeysApiRequest) ItemsPerPage(itemsPerPage int) ListApiKeysApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListApiKeysApiRequest) PageNum(pageNum int) ListApiKeysApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
 
 func (r ListApiKeysApiRequest) Execute() (*PaginatedApiApiUser, *http.Response, error) {
 	return r.ApiService.ListApiKeysExecute(r)
@@ -1853,22 +1817,10 @@ func (a *ProgrammaticAPIKeysApiService) ListProjectApiKeysWithParams(ctx context
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListProjectApiKeysApiRequest) IncludeCount(includeCount bool) ListProjectApiKeysApiRequest {
-	r.includeCount = &includeCount
-	return r
-}
 
 // Number of items that the response returns per page.
-func (r ListProjectApiKeysApiRequest) ItemsPerPage(itemsPerPage int) ListProjectApiKeysApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListProjectApiKeysApiRequest) PageNum(pageNum int) ListProjectApiKeysApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
 
 func (r ListProjectApiKeysApiRequest) Execute() (*PaginatedApiApiUser, *http.Response, error) {
 	return r.ApiService.ListProjectApiKeysExecute(r)
@@ -2300,22 +2252,10 @@ func (a *ProgrammaticAPIKeysApiService) UpdateApiKeyRolesWithParams(ctx context.
 }
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r UpdateApiKeyRolesApiRequest) PageNum(pageNum int) UpdateApiKeyRolesApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
 
 // Number of items that the response returns per page.
-func (r UpdateApiKeyRolesApiRequest) ItemsPerPage(itemsPerPage int) UpdateApiKeyRolesApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r UpdateApiKeyRolesApiRequest) IncludeCount(includeCount bool) UpdateApiKeyRolesApiRequest {
-	r.includeCount = &includeCount
-	return r
-}
 
 func (r UpdateApiKeyRolesApiRequest) Execute() (*ApiKeyUserDetails, *http.Response, error) {
 	return r.ApiService.UpdateApiKeyRolesExecute(r)

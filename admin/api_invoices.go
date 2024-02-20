@@ -709,22 +709,10 @@ func (a *InvoicesApiService) ListInvoicesWithParams(ctx context.Context, args *L
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListInvoicesApiRequest) IncludeCount(includeCount bool) ListInvoicesApiRequest {
-	r.includeCount = &includeCount
-	return r
-}
 
 // Number of items that the response returns per page.
-func (r ListInvoicesApiRequest) ItemsPerPage(itemsPerPage int) ListInvoicesApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListInvoicesApiRequest) PageNum(pageNum int) ListInvoicesApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
 
 func (r ListInvoicesApiRequest) Execute() (*PaginatedApiInvoice, *http.Response, error) {
 	return r.ApiService.ListInvoicesExecute(r)

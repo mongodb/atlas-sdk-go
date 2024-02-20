@@ -14,16 +14,16 @@ import (
 type AlertsApi interface {
 
 	/*
-		AcknowledgeAlert Acknowledge One Alert from One Project
+			AcknowledgeAlert Acknowledge One Alert from One Project
 
-		Confirms receipt of one existing alert. This alert applies to any component in one project. Acknowledging an alert prevents successive notifications. You receive an alert when a monitored component meets or exceeds a value you set until you acknowledge the alert. To use this resource, the requesting API Key must have the Organization Owner or Project Owner role.
+			Confirms receipt of one existing alert. This alert applies to any component in one project. Acknowledging an alert prevents successive notifications. You receive an alert when a monitored component meets or exceeds a value you set until you acknowledge the alert. To use this resource, the requesting API Key must have the Organization Owner or Project Owner role.
 
-	This resource remains under revision and may change.
+		This resource remains under revision and may change.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param alertId Unique 24-hexadecimal digit string that identifies the alert. Use the [/alerts](#tag/Alerts/operation/listAlerts) endpoint to retrieve all alerts to which the authenticated user has access.
-		@return AcknowledgeAlertApiRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param alertId Unique 24-hexadecimal digit string that identifies the alert. Use the [/alerts](#tag/Alerts/operation/listAlerts) endpoint to retrieve all alerts to which the authenticated user has access.
+			@return AcknowledgeAlertApiRequest
 	*/
 	AcknowledgeAlert(ctx context.Context, groupId string, alertId string, alertViewForNdsGroup *AlertViewForNdsGroup) AcknowledgeAlertApiRequest
 	/*
@@ -40,16 +40,16 @@ type AlertsApi interface {
 	AcknowledgeAlertExecute(r AcknowledgeAlertApiRequest) (*AlertViewForNdsGroup, *http.Response, error)
 
 	/*
-		GetAlert Return One Alert from One Project
+			GetAlert Return One Alert from One Project
 
-		Returns one alert. This alert applies to any component in one project. You receive an alert when a monitored component meets or exceeds a value you set. To use this resource, the requesting API Key must have the Project Read Only role.
+			Returns one alert. This alert applies to any component in one project. You receive an alert when a monitored component meets or exceeds a value you set. To use this resource, the requesting API Key must have the Project Read Only role.
 
-	This resource remains under revision and may change.
+		This resource remains under revision and may change.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param alertId Unique 24-hexadecimal digit string that identifies the alert. Use the [/alerts](#tag/Alerts/operation/listAlerts) endpoint to retrieve all alerts to which the authenticated user has access.
-		@return GetAlertApiRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param alertId Unique 24-hexadecimal digit string that identifies the alert. Use the [/alerts](#tag/Alerts/operation/listAlerts) endpoint to retrieve all alerts to which the authenticated user has access.
+			@return GetAlertApiRequest
 	*/
 	GetAlert(ctx context.Context, groupId string, alertId string) GetAlertApiRequest
 	/*
@@ -66,15 +66,15 @@ type AlertsApi interface {
 	GetAlertExecute(r GetAlertApiRequest) (*AlertViewForNdsGroup, *http.Response, error)
 
 	/*
-		ListAlerts Return All Alerts from One Project
+			ListAlerts Return All Alerts from One Project
 
-		Returns all alerts. These alerts apply to all components in one project. You receive an alert when a monitored component meets or exceeds a value you set. To use this resource, the requesting API Key must have the Project Read Only role.
+			Returns all alerts. These alerts apply to all components in one project. You receive an alert when a monitored component meets or exceeds a value you set. To use this resource, the requesting API Key must have the Project Read Only role.
 
-	This resource remains under revision and may change.
+		This resource remains under revision and may change.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@return ListAlertsApiRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@return ListAlertsApiRequest
 	*/
 	ListAlerts(ctx context.Context, groupId string) ListAlertsApiRequest
 	/*
@@ -91,16 +91,16 @@ type AlertsApi interface {
 	ListAlertsExecute(r ListAlertsApiRequest) (*PaginatedAlert, *http.Response, error)
 
 	/*
-		ListAlertsByAlertConfigurationId Return All Open Alerts for Alert Configuration
+			ListAlertsByAlertConfigurationId Return All Open Alerts for Alert Configuration
 
-		[experimental] Returns all open alerts that the specified alert configuration triggers. These alert configurations apply to the specified project only. Alert configurations define the triggers and notification methods for alerts. Open alerts have been triggered but remain unacknowledged. To use this resource, the requesting API Key must have the Project Read Only role.
+			[experimental] Returns all open alerts that the specified alert configuration triggers. These alert configurations apply to the specified project only. Alert configurations define the triggers and notification methods for alerts. Open alerts have been triggered but remain unacknowledged. To use this resource, the requesting API Key must have the Project Read Only role.
 
-	This resource remains under revision and may change.
+		This resource remains under revision and may change.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param alertConfigId Unique 24-hexadecimal digit string that identifies the alert configuration. Use the [/alertConfigs](#tag/Alert-Configurations/operation/listAlertConfigurations) endpoint to retrieve all alert configurations to which the authenticated user has access.
-		@return ListAlertsByAlertConfigurationIdApiRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param alertConfigId Unique 24-hexadecimal digit string that identifies the alert configuration. Use the [/alertConfigs](#tag/Alert-Configurations/operation/listAlertConfigurations) endpoint to retrieve all alert configurations to which the authenticated user has access.
+			@return ListAlertsByAlertConfigurationIdApiRequest
 	*/
 	ListAlertsByAlertConfigurationId(ctx context.Context, groupId string, alertConfigId string) ListAlertsByAlertConfigurationIdApiRequest
 	/*
@@ -424,28 +424,12 @@ func (a *AlertsApiService) ListAlertsWithParams(ctx context.Context, args *ListA
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListAlertsApiRequest) IncludeCount(includeCount bool) ListAlertsApiRequest {
-	r.includeCount = &includeCount
-	return r
-}
 
 // Number of items that the response returns per page.
-func (r ListAlertsApiRequest) ItemsPerPage(itemsPerPage int) ListAlertsApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListAlertsApiRequest) PageNum(pageNum int) ListAlertsApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
 
 // Status of the alerts to return. Omit to return all alerts in all statuses.
-func (r ListAlertsApiRequest) Status(status string) ListAlertsApiRequest {
-	r.status = &status
-	return r
-}
 
 func (r ListAlertsApiRequest) Execute() (*PaginatedAlert, *http.Response, error) {
 	return r.ApiService.ListAlertsExecute(r)
@@ -610,22 +594,10 @@ func (a *AlertsApiService) ListAlertsByAlertConfigurationIdWithParams(ctx contex
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListAlertsByAlertConfigurationIdApiRequest) IncludeCount(includeCount bool) ListAlertsByAlertConfigurationIdApiRequest {
-	r.includeCount = &includeCount
-	return r
-}
 
 // Number of items that the response returns per page.
-func (r ListAlertsByAlertConfigurationIdApiRequest) ItemsPerPage(itemsPerPage int) ListAlertsByAlertConfigurationIdApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListAlertsByAlertConfigurationIdApiRequest) PageNum(pageNum int) ListAlertsByAlertConfigurationIdApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
 
 func (r ListAlertsByAlertConfigurationIdApiRequest) Execute() (*PaginatedAlert, *http.Response, error) {
 	return r.ApiService.ListAlertsByAlertConfigurationIdExecute(r)

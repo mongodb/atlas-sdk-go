@@ -93,10 +93,6 @@ func (a *{{{classname}}}Service) {{{nickname}}}WithParams(ctx context.Context, a
 {{#isDeprecated}}
 // Deprecated
 {{/isDeprecated}}
-func (r {{operationId}}ApiRequest) {{vendorExtensions.x-export-param-name}}({{paramName}} {{#isModel}}*{{/isModel}}{{dataType}}) {{operationId}}ApiRequest {
-	r.{{paramName}} = {{^isModel}}&{{/isModel}}{{paramName}}
-	return r
-}
 
 {{/isBodyParam}}
 {{/isPathParam}}

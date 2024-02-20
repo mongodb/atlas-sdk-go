@@ -470,22 +470,10 @@ func (a *OnlineArchiveApiService) DownloadOnlineArchiveQueryLogsWithParams(ctx c
 }
 
 // Date and time that specifies the starting point for the range of log messages to return. This resource expresses this value in the number of seconds that have elapsed since the [UNIX epoch](https://en.wikipedia.org/wiki/Unix_time).
-func (r DownloadOnlineArchiveQueryLogsApiRequest) StartDate(startDate int64) DownloadOnlineArchiveQueryLogsApiRequest {
-	r.startDate = &startDate
-	return r
-}
 
 // Date and time that specifies the end point for the range of log messages to return. This resource expresses this value in the number of seconds that have elapsed since the [UNIX epoch](https://en.wikipedia.org/wiki/Unix_time).
-func (r DownloadOnlineArchiveQueryLogsApiRequest) EndDate(endDate int64) DownloadOnlineArchiveQueryLogsApiRequest {
-	r.endDate = &endDate
-	return r
-}
 
 // Flag that indicates whether to download logs for queries against your online archive only or both your online archive and cluster.
-func (r DownloadOnlineArchiveQueryLogsApiRequest) ArchiveOnly(archiveOnly bool) DownloadOnlineArchiveQueryLogsApiRequest {
-	r.archiveOnly = &archiveOnly
-	return r
-}
 
 func (r DownloadOnlineArchiveQueryLogsApiRequest) Execute() (io.ReadCloser, *http.Response, error) {
 	return r.ApiService.DownloadOnlineArchiveQueryLogsExecute(r)
@@ -776,22 +764,10 @@ func (a *OnlineArchiveApiService) ListOnlineArchivesWithParams(ctx context.Conte
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListOnlineArchivesApiRequest) IncludeCount(includeCount bool) ListOnlineArchivesApiRequest {
-	r.includeCount = &includeCount
-	return r
-}
 
 // Number of items that the response returns per page.
-func (r ListOnlineArchivesApiRequest) ItemsPerPage(itemsPerPage int) ListOnlineArchivesApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListOnlineArchivesApiRequest) PageNum(pageNum int) ListOnlineArchivesApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
 
 func (r ListOnlineArchivesApiRequest) Execute() (*PaginatedOnlineArchive, *http.Response, error) {
 	return r.ApiService.ListOnlineArchivesExecute(r)

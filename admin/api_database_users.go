@@ -571,22 +571,10 @@ func (a *DatabaseUsersApiService) ListDatabaseUsersWithParams(ctx context.Contex
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListDatabaseUsersApiRequest) IncludeCount(includeCount bool) ListDatabaseUsersApiRequest {
-	r.includeCount = &includeCount
-	return r
-}
 
 // Number of items that the response returns per page.
-func (r ListDatabaseUsersApiRequest) ItemsPerPage(itemsPerPage int) ListDatabaseUsersApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListDatabaseUsersApiRequest) PageNum(pageNum int) ListDatabaseUsersApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
 
 func (r ListDatabaseUsersApiRequest) Execute() (*PaginatedApiAtlasDatabaseUser, *http.Response, error) {
 	return r.ApiService.ListDatabaseUsersExecute(r)

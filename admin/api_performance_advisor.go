@@ -572,28 +572,12 @@ func (a *PerformanceAdvisorApiService) ListSlowQueriesWithParams(ctx context.Con
 }
 
 // Length of time expressed during which the query finds slow queries among the managed namespaces in the cluster. This parameter expresses its value in milliseconds.  - If you don&#39;t specify the **since** parameter, the endpoint returns data covering the duration before the current time. - If you specify neither the **duration** nor **since** parameters, the endpoint returns data from the previous 24 hours.
-func (r ListSlowQueriesApiRequest) Duration(duration int64) ListSlowQueriesApiRequest {
-	r.duration = &duration
-	return r
-}
 
 // Namespaces from which to retrieve slow queries. A namespace consists of one database and one collection resource written as &#x60;.&#x60;: &#x60;&lt;database&gt;.&lt;collection&gt;&#x60;. To include multiple namespaces, pass the parameter multiple times delimited with an ampersand (&#x60;&amp;&#x60;) between each namespace. Omit this parameter to return results for all namespaces.
-func (r ListSlowQueriesApiRequest) Namespaces(namespaces []string) ListSlowQueriesApiRequest {
-	r.namespaces = &namespaces
-	return r
-}
 
 // Maximum number of lines from the log to return.
-func (r ListSlowQueriesApiRequest) NLogs(nLogs int64) ListSlowQueriesApiRequest {
-	r.nLogs = &nLogs
-	return r
-}
 
 // Date and time from which the query retrieves the slow queries. This parameter expresses its value in the number of seconds that have elapsed since the [UNIX epoch](https://en.wikipedia.org/wiki/Unix_time).  - If you don&#39;t specify the **duration** parameter, the endpoint returns data covering from the **since** value and the current time. - If you specify neither the **duration** nor the **since** parameters, the endpoint returns data from the previous 24 hours.
-func (r ListSlowQueriesApiRequest) Since(since int64) ListSlowQueriesApiRequest {
-	r.since = &since
-	return r
-}
 
 func (r ListSlowQueriesApiRequest) Execute() (*PerformanceAdvisorSlowQueryList, *http.Response, error) {
 	return r.ApiService.ListSlowQueriesExecute(r)
@@ -752,16 +736,8 @@ func (a *PerformanceAdvisorApiService) ListSlowQueryNamespacesWithParams(ctx con
 }
 
 // Length of time expressed during which the query finds suggested indexes among the managed namespaces in the cluster. This parameter expresses its value in milliseconds.  - If you don&#39;t specify the **since** parameter, the endpoint returns data covering the duration before the current time. - If you specify neither the **duration** nor **since** parameters, the endpoint returns data from the previous 24 hours.
-func (r ListSlowQueryNamespacesApiRequest) Duration(duration int64) ListSlowQueryNamespacesApiRequest {
-	r.duration = &duration
-	return r
-}
 
 // Date and time from which the query retrieves the suggested indexes. This parameter expresses its value in the number of seconds that have elapsed since the [UNIX epoch](https://en.wikipedia.org/wiki/Unix_time).  - If you don&#39;t specify the **duration** parameter, the endpoint returns data covering from the **since** value and the current time. - If you specify neither the **duration** nor the **since** parameters, the endpoint returns data from the previous 24 hours.
-func (r ListSlowQueryNamespacesApiRequest) Since(since int64) ListSlowQueryNamespacesApiRequest {
-	r.since = &since
-	return r
-}
 
 func (r ListSlowQueryNamespacesApiRequest) Execute() (*Namespaces, *http.Response, error) {
 	return r.ApiService.ListSlowQueryNamespacesExecute(r)
@@ -924,52 +900,20 @@ func (a *PerformanceAdvisorApiService) ListSuggestedIndexesWithParams(ctx contex
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListSuggestedIndexesApiRequest) IncludeCount(includeCount bool) ListSuggestedIndexesApiRequest {
-	r.includeCount = &includeCount
-	return r
-}
 
 // Number of items that the response returns per page.
-func (r ListSuggestedIndexesApiRequest) ItemsPerPage(itemsPerPage int) ListSuggestedIndexesApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListSuggestedIndexesApiRequest) PageNum(pageNum int) ListSuggestedIndexesApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
 
 // Length of time expressed during which the query finds suggested indexes among the managed namespaces in the cluster. This parameter expresses its value in milliseconds.  - If you don&#39;t specify the **since** parameter, the endpoint returns data covering the duration before the current time. - If you specify neither the **duration** nor **since** parameters, the endpoint returns data from the previous 24 hours.
-func (r ListSuggestedIndexesApiRequest) Duration(duration int64) ListSuggestedIndexesApiRequest {
-	r.duration = &duration
-	return r
-}
 
 // Namespaces from which to retrieve suggested indexes. A namespace consists of one database and one collection resource written as &#x60;.&#x60;: &#x60;&lt;database&gt;.&lt;collection&gt;&#x60;. To include multiple namespaces, pass the parameter multiple times delimited with an ampersand (&#x60;&amp;&#x60;) between each namespace. Omit this parameter to return results for all namespaces.
-func (r ListSuggestedIndexesApiRequest) Namespaces(namespaces []string) ListSuggestedIndexesApiRequest {
-	r.namespaces = &namespaces
-	return r
-}
 
 // Maximum number of example queries that benefit from the suggested index.
-func (r ListSuggestedIndexesApiRequest) NExamples(nExamples int64) ListSuggestedIndexesApiRequest {
-	r.nExamples = &nExamples
-	return r
-}
 
 // Number that indicates the maximum indexes to suggest.
-func (r ListSuggestedIndexesApiRequest) NIndexes(nIndexes int64) ListSuggestedIndexesApiRequest {
-	r.nIndexes = &nIndexes
-	return r
-}
 
 // Date and time from which the query retrieves the suggested indexes. This parameter expresses its value in the number of seconds that have elapsed since the [UNIX epoch](https://en.wikipedia.org/wiki/Unix_time).  - If you don&#39;t specify the **duration** parameter, the endpoint returns data covering from the **since** value and the current time. - If you specify neither the **duration** nor the **since** parameters, the endpoint returns data from the previous 24 hours.
-func (r ListSuggestedIndexesApiRequest) Since(since int64) ListSuggestedIndexesApiRequest {
-	r.since = &since
-	return r
-}
 
 func (r ListSuggestedIndexesApiRequest) Execute() (*PerformanceAdvisorResponse, *http.Response, error) {
 	return r.ApiService.ListSuggestedIndexesExecute(r)
@@ -1149,10 +1093,6 @@ func (a *PerformanceAdvisorApiService) SetServerlessAutoIndexingWithParams(ctx c
 }
 
 // Value that we want to set for the Serverless Auto Indexing toggle.
-func (r SetServerlessAutoIndexingApiRequest) Enable(enable bool) SetServerlessAutoIndexingApiRequest {
-	r.enable = &enable
-	return r
-}
 
 func (r SetServerlessAutoIndexingApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
 	return r.ApiService.SetServerlessAutoIndexingExecute(r)
