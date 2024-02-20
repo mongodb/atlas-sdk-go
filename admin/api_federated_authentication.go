@@ -14,15 +14,15 @@ import (
 type FederatedAuthenticationApi interface {
 
 	/*
-			CreateIdentityProvider Create one identity provider
+		CreateIdentityProvider Create one identity provider
 
-			[experimental] Creates one identity provider within the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
+		[experimental] Creates one identity provider within the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
 
-		**Note**: This resource only supports the creation of OIDC identity providers.
+	**Note**: This resource only supports the creation of OIDC identity providers.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
-			@return CreateIdentityProviderApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
+		@return CreateIdentityProviderApiRequest
 	*/
 	CreateIdentityProvider(ctx context.Context, federationSettingsId string, federationOidcIdentityProviderUpdate *FederationOidcIdentityProviderUpdate) CreateIdentityProviderApiRequest
 	/*
@@ -86,16 +86,16 @@ type FederatedAuthenticationApi interface {
 	DeleteFederationAppExecute(r DeleteFederationAppApiRequest) (*http.Response, error)
 
 	/*
-			DeleteIdentityProvider Delete the identity provider.
+		DeleteIdentityProvider Delete the identity provider.
 
-			[experimental] Deletes one identity provider in the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
+		[experimental] Deletes one identity provider in the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
 
-		**Note**: Requests to this resource will fail if the identity provider has any connected organizations. Before deleting an identity provider, disconnect all organizations and confirm that no organization in your account uses this identity provider. To learn more, see [Manage Organization Mapping for Federated Authentication](https://www.mongodb.com/docs/atlas/security/manage-org-mapping/).
+	**Note**: Requests to this resource will fail if the identity provider has any connected organizations. Before deleting an identity provider, disconnect all organizations and confirm that no organization in your account uses this identity provider. To learn more, see [Manage Organization Mapping for Federated Authentication](https://www.mongodb.com/docs/atlas/security/manage-org-mapping/).
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
-			@param identityProviderId Unique 24-hexadecimal digit string that identifies the identity provider to connect.
-			@return DeleteIdentityProviderApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
+		@param identityProviderId Unique 24-hexadecimal digit string that identifies the identity provider to connect.
+		@return DeleteIdentityProviderApiRequest
 	*/
 	DeleteIdentityProvider(ctx context.Context, federationSettingsId string, identityProviderId string) DeleteIdentityProviderApiRequest
 	/*
@@ -351,16 +351,16 @@ type FederatedAuthenticationApi interface {
 	RemoveConnectedOrgConfigExecute(r RemoveConnectedOrgConfigApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
-			RevokeJwksFromIdentityProvider Revoke the JWKS tokens from an OIDC identity provider.
+		RevokeJwksFromIdentityProvider Revoke the JWKS tokens from an OIDC identity provider.
 
-			[experimental] Revokes the JWKS tokens from the requested OIDC identity provider. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
+		[experimental] Revokes the JWKS tokens from the requested OIDC identity provider. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
 
-		**Note**: Revoking your JWKS tokens immediately refreshes your IdP public keys from all your Atlas clusters, invalidating previously signed access tokens and logging out all users. You may need to restart your MongoDB clients. All organizations connected to the identity provider will be affected. To learn more, see [Configure OIDC Authorization](https://www.mongodb.com/docs/atlas/security-oidc/#revoke-jwks).
+	**Note**: Revoking your JWKS tokens immediately refreshes your IdP public keys from all your Atlas clusters, invalidating previously signed access tokens and logging out all users. You may need to restart your MongoDB clients. All organizations connected to the identity provider will be affected. To learn more, see [Configure OIDC Authorization](https://www.mongodb.com/docs/atlas/security-oidc/#revoke-jwks).
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
-			@param identityProviderId Unique 24-hexadecimal digit string that identifies the identity provider to connect.
-			@return RevokeJwksFromIdentityProviderApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
+		@param identityProviderId Unique 24-hexadecimal digit string that identifies the identity provider to connect.
+		@return RevokeJwksFromIdentityProviderApiRequest
 	*/
 	RevokeJwksFromIdentityProvider(ctx context.Context, federationSettingsId string, identityProviderId string) RevokeJwksFromIdentityProviderApiRequest
 	/*
@@ -377,22 +377,22 @@ type FederatedAuthenticationApi interface {
 	RevokeJwksFromIdentityProviderExecute(r RevokeJwksFromIdentityProviderApiRequest) (*http.Response, error)
 
 	/*
-			UpdateConnectedOrgConfig Update One Org Config Connected to One Federation
+		UpdateConnectedOrgConfig Update One Org Config Connected to One Federation
 
-			[experimental] Updates one connected organization configuration from the specified federation. To use this resource, the requesting API Key must have the Organization Owner role.
+		[experimental] Updates one connected organization configuration from the specified federation. To use this resource, the requesting API Key must have the Organization Owner role.
 
-		**Note** If the organization configuration has no associated identity provider, you can't use this resource to update role mappings or post authorization role grants.
+	**Note** If the organization configuration has no associated identity provider, you can't use this resource to update role mappings or post authorization role grants.
 
-		**Note**: The domainRestrictionEnabled field defaults to false if not provided in the request.
+	**Note**: The domainRestrictionEnabled field defaults to false if not provided in the request.
 
-		**Note**: If the identityProviderId field is not provided, you will disconnect the organization and the identity provider.
+	**Note**: If the identityProviderId field is not provided, you will disconnect the organization and the identity provider.
 
-		**Note**: Currently connected data access identity providers missing from the dataAccessIdentityProviderIds field will be disconnected.
+	**Note**: Currently connected data access identity providers missing from the dataAccessIdentityProviderIds field will be disconnected.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
-			@param orgId Unique 24-hexadecimal digit string that identifies the connected organization configuration to update.
-			@return UpdateConnectedOrgConfigApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
+		@param orgId Unique 24-hexadecimal digit string that identifies the connected organization configuration to update.
+		@return UpdateConnectedOrgConfigApiRequest
 	*/
 	UpdateConnectedOrgConfig(ctx context.Context, federationSettingsId string, orgId string, connectedOrgConfig *ConnectedOrgConfig) UpdateConnectedOrgConfigApiRequest
 	/*
@@ -409,16 +409,16 @@ type FederatedAuthenticationApi interface {
 	UpdateConnectedOrgConfigExecute(r UpdateConnectedOrgConfigApiRequest) (*ConnectedOrgConfig, *http.Response, error)
 
 	/*
-			UpdateIdentityProvider Update the identity provider.
+		UpdateIdentityProvider Update the identity provider.
 
-			[experimental] Updates one identity provider in the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
+		[experimental] Updates one identity provider in the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
 
-		**Note**: Changing authorization types and/or updating authorization claims can prevent current users and/or groups from accessing the database. Deprecated versions: v2-{2023-01-01}
+	**Note**: Changing authorization types and/or updating authorization claims can prevent current users and/or groups from accessing the database. Deprecated versions: v2-{2023-01-01}
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
-			@param identityProviderId Unique string that identifies the identity provider to connect. If using an API version before 11-15-2023, use the 20-hexadecimal digit oktaIdpId. For all other versions, use the 24-hexadecimal digit id.
-			@return UpdateIdentityProviderApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
+		@param identityProviderId Unique string that identifies the identity provider to connect. If using an API version before 11-15-2023, use the 20-hexadecimal digit oktaIdpId. For all other versions, use the 24-hexadecimal digit id.
+		@return UpdateIdentityProviderApiRequest
 	*/
 	UpdateIdentityProvider(ctx context.Context, federationSettingsId string, identityProviderId string, federationIdentityProviderUpdate *FederationIdentityProviderUpdate) UpdateIdentityProviderApiRequest
 	/*
