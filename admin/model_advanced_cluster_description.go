@@ -74,7 +74,7 @@ func NewAdvancedClusterDescription() *AdvancedClusterDescription {
 	this.BackupEnabled = &backupEnabled
 	var diskWarmingMode string = "FULLY_WARMED"
 	this.DiskWarmingMode = &diskWarmingMode
-	var mongoDBMajorVersion string = "6.0"
+	var mongoDBMajorVersion string = "7.0"
 	this.MongoDBMajorVersion = &mongoDBMajorVersion
 	var rootCertType string = "ISRGROOTX1"
 	this.RootCertType = &rootCertType
@@ -94,7 +94,7 @@ func NewAdvancedClusterDescriptionWithDefaults() *AdvancedClusterDescription {
 	this.BackupEnabled = &backupEnabled
 	var diskWarmingMode string = "FULLY_WARMED"
 	this.DiskWarmingMode = &diskWarmingMode
-	var mongoDBMajorVersion string = "6.0"
+	var mongoDBMajorVersion string = "7.0"
 	this.MongoDBMajorVersion = &mongoDBMajorVersion
 	var rootCertType string = "ISRGROOTX1"
 	this.RootCertType = &rootCertType

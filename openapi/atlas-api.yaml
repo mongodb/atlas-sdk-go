@@ -19,7 +19,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 1d36d4db8bf621bc5159f91402a1112225adb2cf
+  x-xgen-sha: 76088c8031312c93862e7b4c7d9d15f4f0e64d4a
 servers:
 - url: https://cloud.mongodb.com
 tags:
@@ -16797,7 +16797,7 @@ components:
           readOnly: true
         mongoDBMajorVersion:
           type: string
-          default: "6.0"
+          default: "7.0"
           description: Major MongoDB version of the cluster. MongoDB Cloud deploys
             the cluster with the latest stable release of the specified version.
           enum:
@@ -29325,7 +29325,9 @@ components:
         - CLUSTER_SERVER_PARAMETERS_UPDATE_SUBMITTED
         - CLUSTER_AUTOMATICALLY_PAUSED
         - CLUSTER_UPDATE_STARTED
+        - CLUSTER_UPDATE_STARTED_INTERNAL
         - CLUSTER_UPDATE_COMPLETED
+        - MATERIAL_CLUSTER_UPDATE_COMPLETED_INTERNAL
         - CLUSTER_DELETE_SUBMITTED
         - CLUSTER_DELETE_SUBMITTED_INTERNAL
         - CLUSTER_DELETED
@@ -29503,6 +29505,7 @@ components:
         - STREAM_TENANT_CONNECTION_DELETED
         - STREAM_TENANT_CONNECTION_CREATED
         - STREAM_TENANT_CONNECTION_VIEWED
+        - STREAM_TENANT_AUDIT_LOGS
         title: NDS Audit Types
       - type: string
         enum:
@@ -34493,7 +34496,7 @@ components:
           readOnly: true
         mongoDBMajorVersion:
           type: string
-          default: "6.0"
+          default: "7.0"
           description: Major MongoDB version of the cluster. MongoDB Cloud deploys
             the cluster with the latest stable release of the specified version.
           enum:
@@ -34766,7 +34769,7 @@ components:
           readOnly: true
         mongoDBMajorVersion:
           type: string
-          default: "6.0"
+          default: "7.0"
           description: Major MongoDB version of the cluster. MongoDB Cloud deploys
             the cluster with the latest stable release of the specified version.
           enum:
@@ -35884,7 +35887,9 @@ components:
       - CLUSTER_SERVER_PARAMETERS_UPDATE_SUBMITTED
       - CLUSTER_AUTOMATICALLY_PAUSED
       - CLUSTER_UPDATE_STARTED
+      - CLUSTER_UPDATE_STARTED_INTERNAL
       - CLUSTER_UPDATE_COMPLETED
+      - MATERIAL_CLUSTER_UPDATE_COMPLETED_INTERNAL
       - CLUSTER_DELETE_SUBMITTED
       - CLUSTER_DELETE_SUBMITTED_INTERNAL
       - CLUSTER_DELETED
@@ -36062,6 +36067,7 @@ components:
       - STREAM_TENANT_CONNECTION_DELETED
       - STREAM_TENANT_CONNECTION_CREATED
       - STREAM_TENANT_CONNECTION_VIEWED
+      - STREAM_TENANT_AUDIT_LOGS
       example: CLUSTER_CREATED
       title: NDS Audit Types
     NDSAuditTypeViewForOrg:

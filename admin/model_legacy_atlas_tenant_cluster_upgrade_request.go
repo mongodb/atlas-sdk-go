@@ -94,7 +94,7 @@ func NewLegacyAtlasTenantClusterUpgradeRequest(name string) *LegacyAtlasTenantCl
 	this := LegacyAtlasTenantClusterUpgradeRequest{}
 	var diskWarmingMode string = "FULLY_WARMED"
 	this.DiskWarmingMode = &diskWarmingMode
-	var mongoDBMajorVersion string = "6.0"
+	var mongoDBMajorVersion string = "7.0"
 	this.MongoDBMajorVersion = &mongoDBMajorVersion
 	this.Name = name
 	var numShards int = 1
@@ -117,7 +117,7 @@ func NewLegacyAtlasTenantClusterUpgradeRequestWithDefaults() *LegacyAtlasTenantC
 	this := LegacyAtlasTenantClusterUpgradeRequest{}
 	var diskWarmingMode string = "FULLY_WARMED"
 	this.DiskWarmingMode = &diskWarmingMode
-	var mongoDBMajorVersion string = "6.0"
+	var mongoDBMajorVersion string = "7.0"
 	this.MongoDBMajorVersion = &mongoDBMajorVersion
 	var numShards int = 1
 	this.NumShards = &numShards

@@ -94,7 +94,7 @@ func NewLegacyAtlasCluster() *LegacyAtlasCluster {
 	this := LegacyAtlasCluster{}
 	var diskWarmingMode string = "FULLY_WARMED"
 	this.DiskWarmingMode = &diskWarmingMode
-	var mongoDBMajorVersion string = "6.0"
+	var mongoDBMajorVersion string = "7.0"
 	this.MongoDBMajorVersion = &mongoDBMajorVersion
 	var numShards int = 1
 	this.NumShards = &numShards
@@ -116,7 +116,7 @@ func NewLegacyAtlasClusterWithDefaults() *LegacyAtlasCluster {
 	this := LegacyAtlasCluster{}
 	var diskWarmingMode string = "FULLY_WARMED"
 	this.DiskWarmingMode = &diskWarmingMode
-	var mongoDBMajorVersion string = "6.0"
+	var mongoDBMajorVersion string = "7.0"
 	this.MongoDBMajorVersion = &mongoDBMajorVersion
 	var numShards int = 1
 	this.NumShards = &numShards

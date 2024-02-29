@@ -24,7 +24,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 1d36d4db8bf621bc5159f91402a1112225adb2cf
+  x-xgen-sha: 76088c8031312c93862e7b4c7d9d15f4f0e64d4a
 servers:
   - url: https://cloud.mongodb.com
 tags:
@@ -15807,7 +15807,7 @@ components:
           readOnly: true
         mongoDBMajorVersion:
           type: string
-          default: "6.0"
+          default: "7.0"
           description: Major MongoDB version of the cluster. MongoDB Cloud deploys the
             cluster with the latest stable release of the specified version.
         mongoDBVersion:
@@ -24783,7 +24783,7 @@ components:
           readOnly: true
         mongoDBMajorVersion:
           type: string
-          default: "6.0"
+          default: "7.0"
           description: Major MongoDB version of the cluster. MongoDB Cloud deploys the
             cluster with the latest stable release of the specified version.
         mongoDBVersion:
@@ -25028,7 +25028,7 @@ components:
           readOnly: true
         mongoDBMajorVersion:
           type: string
-          default: "6.0"
+          default: "7.0"
           description: Major MongoDB version of the cluster. MongoDB Cloud deploys the
             cluster with the latest stable release of the specified version.
         mongoDBVersion:
