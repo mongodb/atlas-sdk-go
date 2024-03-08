@@ -15,7 +15,7 @@ import (
 type ClustersApi interface {
 
 	/*
-		CreateCluster Create One Multi-Cloud Cluster from One Project
+		CreateCluster Create One Cluster from One Project
 
 		Creates one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. This resource can create multi-cloud clusters. Each project supports up to 25 database deployments. To use this resource, the requesting API Key must have the Project Owner role. This feature is not available for serverless clusters. Deprecated versions: v2-{2023-01-01}
 
@@ -25,7 +25,7 @@ type ClustersApi interface {
 	*/
 	CreateCluster(ctx context.Context, groupId string, advancedClusterDescription *AdvancedClusterDescription) CreateClusterApiRequest
 	/*
-		CreateCluster Create One Multi-Cloud Cluster from One Project
+		CreateCluster Create One Cluster from One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -38,9 +38,9 @@ type ClustersApi interface {
 	CreateClusterExecute(r CreateClusterApiRequest) (*AdvancedClusterDescription, *http.Response, error)
 
 	/*
-		DeleteCluster Remove One Multi-Cloud Cluster from One Project
+		DeleteCluster Remove One Cluster from One Project
 
-		Removes one cluster with advanced features from the specified project. The cluster must have termination protection disabled in order to be deleted. To use this resource, the requesting API Key must have the Project Owner role. This feature is not available for serverless clusters. Deprecated versions: v2-{2023-01-01}
+		Removes one cluster from the specified project. The cluster must have termination protection disabled in order to be deleted. To use this resource, the requesting API Key must have the Project Owner role. This feature is not available for serverless clusters. Deprecated versions: v2-{2023-01-01}
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -49,7 +49,7 @@ type ClustersApi interface {
 	*/
 	DeleteCluster(ctx context.Context, groupId string, clusterName string) DeleteClusterApiRequest
 	/*
-		DeleteCluster Remove One Multi-Cloud Cluster from One Project
+		DeleteCluster Remove One Cluster from One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -62,18 +62,18 @@ type ClustersApi interface {
 	DeleteClusterExecute(r DeleteClusterApiRequest) (*http.Response, error)
 
 	/*
-		GetCluster Return One Multi-Cloud Cluster from One Project
+		GetCluster Return One Cluster from One Project
 
 		Returns the details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. The response includes multi-cloud clusters. To use this resource, the requesting API Key must have the Project Read Only role. This feature is not available for serverless clusters. Deprecated versions: v2-{2023-01-01}
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param clusterName Human-readable label that identifies this advanced cluster.
+		@param clusterName Human-readable label that identifies this cluster.
 		@return GetClusterApiRequest
 	*/
 	GetCluster(ctx context.Context, groupId string, clusterName string) GetClusterApiRequest
 	/*
-		GetCluster Return One Multi-Cloud Cluster from One Project
+		GetCluster Return One Cluster from One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -250,7 +250,7 @@ type ClustersApi interface {
 	LoadSampleDatasetExecute(r LoadSampleDatasetApiRequest) (*SampleDatasetStatus, *http.Response, error)
 
 	/*
-		TestFailover Test Failover for One Multi-Cloud Cluster
+		TestFailover Test Failover for One Cluster
 
 		Starts a failover test for the specified cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. A failover test checks how MongoDB Cloud handles the failure of the cluster's primary node. During the test, MongoDB Cloud shuts down the primary node and elects a new primary. To use this resource, the requesting API Key must have the Project Cluster Manager role. Deprecated versions: v2-{2023-01-01}
 
@@ -261,7 +261,7 @@ type ClustersApi interface {
 	*/
 	TestFailover(ctx context.Context, groupId string, clusterName string) TestFailoverApiRequest
 	/*
-		TestFailover Test Failover for One Multi-Cloud Cluster
+		TestFailover Test Failover for One Cluster
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -274,7 +274,7 @@ type ClustersApi interface {
 	TestFailoverExecute(r TestFailoverApiRequest) (*http.Response, error)
 
 	/*
-		UpdateCluster Modify One Multi-Cloud Cluster from One Project
+		UpdateCluster Modify One Cluster from One Project
 
 		Updates the details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. This resource can update multi-cloud clusters. To update a cluster's termination protection, the requesting API Key must have the Project Owner role. For all other updates, the requesting API Key must have the Project Cluster Manager role. You can't modify a paused cluster (`paused : true`). You must call this endpoint to set `paused : false`. After this endpoint responds with `paused : false`, you can call it again with the changes you want to make to the cluster. This feature is not available for serverless clusters. Deprecated versions: v2-{2023-01-01}
 
@@ -285,7 +285,7 @@ type ClustersApi interface {
 	*/
 	UpdateCluster(ctx context.Context, groupId string, clusterName string, advancedClusterDescription *AdvancedClusterDescription) UpdateClusterApiRequest
 	/*
-		UpdateCluster Modify One Multi-Cloud Cluster from One Project
+		UpdateCluster Modify One Cluster from One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -397,7 +397,7 @@ func (r CreateClusterApiRequest) Execute() (*AdvancedClusterDescription, *http.R
 }
 
 /*
-CreateCluster Create One Multi-Cloud Cluster from One Project
+CreateCluster Create One Cluster from One Project
 
 Creates one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. This resource can create multi-cloud clusters. Each project supports up to 25 database deployments. To use this resource, the requesting API Key must have the Project Owner role. This feature is not available for serverless clusters. Deprecated versions: v2-{2023-01-01}
 
@@ -539,9 +539,9 @@ func (r DeleteClusterApiRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteCluster Remove One Multi-Cloud Cluster from One Project
+DeleteCluster Remove One Cluster from One Project
 
-Removes one cluster with advanced features from the specified project. The cluster must have termination protection disabled in order to be deleted. To use this resource, the requesting API Key must have the Project Owner role. This feature is not available for serverless clusters. Deprecated versions: v2-{2023-01-01}
+Removes one cluster from the specified project. The cluster must have termination protection disabled in order to be deleted. To use this resource, the requesting API Key must have the Project Owner role. This feature is not available for serverless clusters. Deprecated versions: v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -660,13 +660,13 @@ func (r GetClusterApiRequest) Execute() (*AdvancedClusterDescription, *http.Resp
 }
 
 /*
-GetCluster Return One Multi-Cloud Cluster from One Project
+GetCluster Return One Cluster from One Project
 
 Returns the details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. The response includes multi-cloud clusters. To use this resource, the requesting API Key must have the Project Read Only role. This feature is not available for serverless clusters. Deprecated versions: v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param clusterName Human-readable label that identifies this advanced cluster.
+	@param clusterName Human-readable label that identifies this cluster.
 	@return GetClusterApiRequest
 */
 func (a *ClustersApiService) GetCluster(ctx context.Context, groupId string, clusterName string) GetClusterApiRequest {
@@ -1864,7 +1864,7 @@ func (r TestFailoverApiRequest) Execute() (*http.Response, error) {
 }
 
 /*
-TestFailover Test Failover for One Multi-Cloud Cluster
+TestFailover Test Failover for One Cluster
 
 Starts a failover test for the specified cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. A failover test checks how MongoDB Cloud handles the failure of the cluster's primary node. During the test, MongoDB Cloud shuts down the primary node and elects a new primary. To use this resource, the requesting API Key must have the Project Cluster Manager role. Deprecated versions: v2-{2023-01-01}
 
@@ -1985,7 +1985,7 @@ func (r UpdateClusterApiRequest) Execute() (*AdvancedClusterDescription, *http.R
 }
 
 /*
-UpdateCluster Modify One Multi-Cloud Cluster from One Project
+UpdateCluster Modify One Cluster from One Project
 
 Updates the details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. This resource can update multi-cloud clusters. To update a cluster's termination protection, the requesting API Key must have the Project Owner role. For all other updates, the requesting API Key must have the Project Cluster Manager role. You can't modify a paused cluster (`paused : true`). You must call this endpoint to set `paused : false`. After this endpoint responds with `paused : false`, you can call it again with the changes you want to make to the cluster. This feature is not available for serverless clusters. Deprecated versions: v2-{2023-01-01}
 

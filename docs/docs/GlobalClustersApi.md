@@ -5,10 +5,10 @@ All URIs are relative to *https://cloud.mongodb.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateCustomZoneMapping**](GlobalClustersApi.md#CreateCustomZoneMapping) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/customZoneMapping | Add One Entry to One Custom Zone Mapping
-[**CreateManagedNamespace**](GlobalClustersApi.md#CreateManagedNamespace) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/managedNamespaces | Create One Managed Namespace in One Global Multi-Cloud Cluster
-[**DeleteAllCustomZoneMappings**](GlobalClustersApi.md#DeleteAllCustomZoneMappings) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/customZoneMapping | Remove All Custom Zone Mappings from One Global Multi-Cloud Cluster
-[**DeleteManagedNamespace**](GlobalClustersApi.md#DeleteManagedNamespace) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/managedNamespaces | Remove One Managed Namespace from One Global Multi-Cloud Cluster
-[**GetManagedNamespace**](GlobalClustersApi.md#GetManagedNamespace) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites | Return One Managed Namespace in One Global Multi-Cloud Cluster
+[**CreateManagedNamespace**](GlobalClustersApi.md#CreateManagedNamespace) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/managedNamespaces | Create One Managed Namespace in One Global Cluster
+[**DeleteAllCustomZoneMappings**](GlobalClustersApi.md#DeleteAllCustomZoneMappings) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/customZoneMapping | Remove All Custom Zone Mappings from One Global Cluster
+[**DeleteManagedNamespace**](GlobalClustersApi.md#DeleteManagedNamespace) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/managedNamespaces | Remove One Managed Namespace from One Global Cluster
+[**GetManagedNamespace**](GlobalClustersApi.md#GetManagedNamespace) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites | Return One Managed Namespace in One Global Cluster
 
 
 
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**clusterName** | **string** | Human-readable label that identifies this advanced cluster. | 
+**clusterName** | **string** | Human-readable label that identifies this cluster. | 
 
 ### Other Parameters
 
@@ -99,7 +99,7 @@ Name | Type | Description  | Notes
 
 > GeoSharding CreateManagedNamespace(ctx, groupId, clusterName, managedNamespace ManagedNamespace).Execute()
 
-Create One Managed Namespace in One Global Multi-Cloud Cluster
+Create One Managed Namespace in One Global Cluster
 
 
 ## Experimental
@@ -148,7 +148,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**clusterName** | **string** | Human-readable label that identifies this advanced cluster. | 
+**clusterName** | **string** | Human-readable label that identifies this cluster. | 
 
 ### Other Parameters
 
@@ -182,7 +182,7 @@ Name | Type | Description  | Notes
 
 > GeoSharding DeleteAllCustomZoneMappings(ctx, groupId, clusterName).Execute()
 
-Remove All Custom Zone Mappings from One Global Multi-Cloud Cluster
+Remove All Custom Zone Mappings from One Global Cluster
 
 
 ## Experimental
@@ -230,7 +230,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**clusterName** | **string** | Human-readable label that identifies this advanced cluster. | 
+**clusterName** | **string** | Human-readable label that identifies this cluster. | 
 
 ### Other Parameters
 
@@ -263,7 +263,7 @@ Name | Type | Description  | Notes
 
 > GeoSharding DeleteManagedNamespace(ctx, clusterName, groupId).Db(db).Collection(collection).Execute()
 
-Remove One Managed Namespace from One Global Multi-Cloud Cluster
+Remove One Managed Namespace from One Global Cluster
 
 
 ## Experimental
@@ -312,7 +312,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**clusterName** | **string** | Human-readable label that identifies this advanced cluster. | 
+**clusterName** | **string** | Human-readable label that identifies this cluster. | 
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
 
 ### Other Parameters
@@ -348,7 +348,7 @@ Name | Type | Description  | Notes
 
 > GeoSharding GetManagedNamespace(ctx, groupId, clusterName).Execute()
 
-Return One Managed Namespace in One Global Multi-Cloud Cluster
+Return One Managed Namespace in One Global Cluster
 
 
 ### Example
@@ -391,7 +391,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**clusterName** | **string** | Human-readable label that identifies this advanced cluster. | 
+**clusterName** | **string** | Human-readable label that identifies this cluster. | 
 
 ### Other Parameters
 

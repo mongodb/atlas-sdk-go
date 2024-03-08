@@ -22,6 +22,7 @@ type PushBasedLogExportProject struct {
 	// S3 directory in which vector will write to in order to store the logs.
 	PrefixPath *string `json:"prefixPath,omitempty"`
 	// Describes whether or not the feature is enabled and what status it is in.
+	// Read only field.
 	State *string `json:"state,omitempty"`
 }
 
@@ -257,9 +258,6 @@ func (o PushBasedLogExportProject) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.PrefixPath) {
 		toSerialize["prefixPath"] = o.PrefixPath
-	}
-	if !IsNil(o.State) {
-		toSerialize["state"] = o.State
 	}
 	return toSerialize, nil
 }

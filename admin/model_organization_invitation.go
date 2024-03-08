@@ -17,7 +17,7 @@ type OrganizationInvitation struct {
 	ExpiresAt *time.Time `json:"expiresAt,omitempty"`
 	// List of projects that the user will be added to when they accept their invitation to the organization.
 	GroupRoleAssignments *[]GroupRole `json:"groupRoleAssignments,omitempty"`
-	// Unique 24-hexadecimal digit string that identifies this organization.
+	// Unique 24-hexadecimal digit string that identifies this invitation.
 	// Read only field.
 	Id *string `json:"id,omitempty"`
 	// Email address of the MongoDB Cloud user who sent the invitation to join the organization.
@@ -31,7 +31,7 @@ type OrganizationInvitation struct {
 	OrgId *string `json:"orgId,omitempty"`
 	// Human-readable label that identifies this organization.
 	OrgName string `json:"orgName"`
-	// One or more organization or project level roles to assign to the MongoDB Cloud user.
+	// One or more organization level roles to assign to the MongoDB Cloud user.
 	Roles *[]string `json:"roles,omitempty"`
 	// List of unique 24-hexadecimal digit strings that identifies each team.
 	// Read only field.

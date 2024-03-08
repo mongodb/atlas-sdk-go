@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Specs** | Pointer to [**[]ApiSearchDeploymentSpec**](ApiSearchDeploymentSpec.md) | List of settings that configure the search nodes for your cluster. | [optional] 
+**Specs** | [**[]ApiSearchDeploymentSpec**](ApiSearchDeploymentSpec.md) | List of settings that configure the search nodes for your cluster. | 
 
 ## Methods
 
 ### NewApiSearchDeploymentRequest
 
-`func NewApiSearchDeploymentRequest() *ApiSearchDeploymentRequest`
+`func NewApiSearchDeploymentRequest(specs []ApiSearchDeploymentSpec, ) *ApiSearchDeploymentRequest`
 
 NewApiSearchDeploymentRequest instantiates a new ApiSearchDeploymentRequest object
 This constructor will assign default values to properties that have it defined,
@@ -44,11 +44,6 @@ and a boolean to check if the value has been set.
 
 SetSpecs sets Specs field to given value.
 
-### HasSpecs
-
-`func (o *ApiSearchDeploymentRequest) HasSpecs() bool`
-
-HasSpecs returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

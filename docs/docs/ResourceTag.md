@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Key** | Pointer to **string** | Constant that defines the set of the tag. For example, &#x60;environment&#x60; in the &#x60;environment : production&#x60; tag. | [optional] 
-**Value** | Pointer to **string** | Variable that belongs to the set of the tag. For example, &#x60;production&#x60; in the &#x60;environment : production&#x60; tag. | [optional] 
+**Key** | **string** | Constant that defines the set of the tag. For example, &#x60;environment&#x60; in the &#x60;environment : production&#x60; tag. | 
+**Value** | **string** | Variable that belongs to the set of the tag. For example, &#x60;production&#x60; in the &#x60;environment : production&#x60; tag. | 
 
 ## Methods
 
 ### NewResourceTag
 
-`func NewResourceTag() *ResourceTag`
+`func NewResourceTag(key string, value string, ) *ResourceTag`
 
 NewResourceTag instantiates a new ResourceTag object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetKey sets Key field to given value.
 
-### HasKey
-
-`func (o *ResourceTag) HasKey() bool`
-
-HasKey returns a boolean if a field has been set.
 ### GetValue
 
 `func (o *ResourceTag) GetValue() string`
@@ -69,11 +64,6 @@ and a boolean to check if the value has been set.
 
 SetValue sets Value field to given value.
 
-### HasValue
-
-`func (o *ResourceTag) HasValue() bool`
-
-HasValue returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

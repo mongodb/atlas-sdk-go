@@ -24,7 +24,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 76088c8031312c93862e7b4c7d9d15f4f0e64d4a
+  x-xgen-sha: 5872b4cc51488757711256c66c6956f57df3d1c7
 servers:
   - url: https://cloud.mongodb.com
 tags:
@@ -74,6 +74,9 @@ tags:
       cluster configurations can affect costs. This resource requires your
       Project ID.
     name: Clusters
+  - description: Returns, adds, and edits pinned namespaces for the specified
+      cluster or process. Also returns collection level latency metric data.
+    name: Collection Level Metrics
   - description: Returns, adds, edits, and removes custom database user privilege
       roles. Use custom roles to specify custom sets of actions that the MongoDB
       Cloud built-in roles can't describe. You define custom roles at the
@@ -238,9 +241,7 @@ paths:
               x-xgen-version: 2023-01-01
           description: OK
         "401":
-          $ref: "#/components/responses/unauthorized"
-        "404":
-          $ref: "#/components/responses/notFound"
+          description: Unauthorized.
         "500":
           $ref: "#/components/responses/internalServerError"
       security:
@@ -717,16 +718,22 @@ paths:
       operationId: listIdentityProviders
       parameters:
         - $ref: "#/components/parameters/federationSettingsId"
-        - description: The protocols of the target identity providers. Defaults to SAML.
+        - description: The protocols of the target identity providers.
           in: query
           name: protocol
           schema:
-            type: string
-        - description: The types of the target identity providers. Defaults to WORKFORCE.
+            type: array
+            items:
+              type: string
+              default: SAML
+        - description: The types of the target identity providers.
           in: query
           name: idpType
           schema:
-            type: string
+            type: array
+            items:
+              type: string
+              default: WORKFORCE
       responses:
         "200":
           content:
@@ -1174,8 +1181,8 @@ paths:
         - Projects
     patch:
       description: Updates the human-readable label that identifies the specified
-        project. To use this resource, the requesting API Key must have the
-        Project Owner role.
+        project, or the tags associated with the project. To use this resource,
+        the requesting API Key must have the Project Owner role.
       operationId: updateProject
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -1183,7 +1190,7 @@ paths:
         content:
           application/vnd.atlas.2023-01-01+json:
             schema:
-              $ref: "#/components/schemas/GroupName"
+              $ref: "#/components/schemas/GroupUpdate"
         description: Project to update.
         required: true
       responses:
@@ -1206,7 +1213,7 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Update One Project Name
+      summary: Update One Project
       tags:
         - Projects
       x-xgen-experimental: true
@@ -1215,8 +1222,11 @@ paths:
       description: Adds one MongoDB Cloud user to the specified project. If the
         MongoDB Cloud user is not a member of the project's organization, then
         the user must accept their invitation to the organization to access
-        information within the specified project. To use this resource, the
-        requesting API Key must have the Group User Admin role.
+        information within the specified project. If the MongoDB Cloud User is
+        already a member of the project's organization, then they will be added
+        to the project immediately and an invitation will not be returned by
+        this resource. To use this resource, the requesting API Key must have
+        the Group User Admin role.
       operationId: addUserToProject
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -1235,6 +1245,11 @@ paths:
                 $ref: "#/components/schemas/OrganizationInvitation"
               x-xgen-version: 2023-02-01
           description: OK
+        "204":
+          content:
+            application/vnd.atlas.2023-02-01+json:
+              x-xgen-version: 2023-02-01
+          description: No Content
         "401":
           $ref: "#/components/responses/unauthorized"
         "500":
@@ -2505,6 +2520,13 @@ paths:
       operationId: updateDataProtectionSettings
       parameters:
         - $ref: "#/components/parameters/groupId"
+        - description: Flag that indicates whether to overwrite non complying backup
+            policies with the new data protection settings or not.
+          in: query
+          name: overwriteBackupPolicies
+          schema:
+            type: boolean
+            default: true
       requestBody:
         content:
           application/vnd.atlas.2023-10-01+json:
@@ -2521,6 +2543,8 @@ paths:
                 $ref: "#/components/schemas/DataProtectionSettings20231001"
               x-xgen-version: 2023-10-01
           description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
         "404":
@@ -2873,7 +2897,7 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Create One Multi-Cloud Cluster from One Project
+      summary: Create One Cluster from One Project
       tags:
         - Clusters
   "/api/atlas/v2/groups/{groupId}/clusters/provider/regions":
@@ -3002,11 +3026,11 @@ paths:
       x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}":
     delete:
-      description: "Removes one cluster with advanced features from the specified
-        project. The cluster must have termination protection disabled in order
-        to be deleted. To use this resource, the requesting API Key must have
-        the Project Owner role. This feature is not available for serverless
-        clusters. Deprecated versions: v2-{2023-01-01}"
+      description: "Removes one cluster from the specified project. The cluster must
+        have termination protection disabled in order to be deleted. To use this
+        resource, the requesting API Key must have the Project Owner role. This
+        feature is not available for serverless clusters. Deprecated versions:
+        v2-{2023-01-01}"
       operationId: deleteCluster
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -3043,7 +3067,7 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Remove One Multi-Cloud Cluster from One Project
+      summary: Remove One Cluster from One Project
       tags:
         - Clusters
     get:
@@ -3056,7 +3080,7 @@ paths:
       operationId: getCluster
       parameters:
         - $ref: "#/components/parameters/groupId"
-        - description: Human-readable label that identifies this advanced cluster.
+        - description: Human-readable label that identifies this cluster.
           in: path
           name: clusterName
           required: true
@@ -3083,7 +3107,7 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return One Multi-Cloud Cluster from One Project
+      summary: Return One Cluster from One Project
       tags:
         - Clusters
     patch:
@@ -3136,7 +3160,7 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Modify One Multi-Cloud Cluster from One Project
+      summary: Modify One Cluster from One Project
       tags:
         - Clusters
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/exports":
@@ -4561,7 +4585,7 @@ paths:
       operationId: getManagedNamespace
       parameters:
         - $ref: "#/components/parameters/groupId"
-        - description: Human-readable label that identifies this advanced cluster.
+        - description: Human-readable label that identifies this cluster.
           in: path
           name: clusterName
           required: true
@@ -4584,7 +4608,7 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return One Managed Namespace in One Global Multi-Cloud Cluster
+      summary: Return One Managed Namespace in One Global Cluster
       tags:
         - Global Clusters
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/customZoneMapping":
@@ -4602,7 +4626,7 @@ paths:
       operationId: deleteAllCustomZoneMappings
       parameters:
         - $ref: "#/components/parameters/groupId"
-        - description: Human-readable label that identifies this advanced cluster.
+        - description: Human-readable label that identifies this cluster.
           in: path
           name: clusterName
           required: true
@@ -4625,7 +4649,7 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Remove All Custom Zone Mappings from One Global Multi-Cloud Cluster
+      summary: Remove All Custom Zone Mappings from One Global Cluster
       tags:
         - Global Clusters
       x-xgen-experimental: true
@@ -4642,7 +4666,7 @@ paths:
       operationId: createCustomZoneMapping
       parameters:
         - $ref: "#/components/parameters/groupId"
-        - description: Human-readable label that identifies this advanced cluster.
+        - description: Human-readable label that identifies this cluster.
           in: path
           name: clusterName
           required: true
@@ -4691,7 +4715,7 @@ paths:
         url: https://www.mongodb.com/docs/atlas/global-clusters/
       operationId: deleteManagedNamespace
       parameters:
-        - description: Human-readable label that identifies this advanced cluster.
+        - description: Human-readable label that identifies this cluster.
           in: path
           name: clusterName
           required: true
@@ -4729,7 +4753,7 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Remove One Managed Namespace from One Global Multi-Cloud Cluster
+      summary: Remove One Managed Namespace from One Global Cluster
       tags:
         - Global Clusters
       x-xgen-experimental: true
@@ -4745,7 +4769,7 @@ paths:
       operationId: createManagedNamespace
       parameters:
         - $ref: "#/components/parameters/groupId"
-        - description: Human-readable label that identifies this advanced cluster.
+        - description: Human-readable label that identifies this cluster.
           in: path
           name: clusterName
           required: true
@@ -4779,7 +4803,7 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Create One Managed Namespace in One Global Multi-Cloud Cluster
+      summary: Create One Managed Namespace in One Global Cluster
       tags:
         - Global Clusters
       x-xgen-experimental: true
@@ -5422,7 +5446,7 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Test Failover for One Multi-Cloud Cluster
+      summary: Test Failover for One Cluster
       tags:
         - Clusters
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/restoreJobs":
@@ -11307,8 +11331,8 @@ paths:
             pattern: ^([0-9]{1,3}\.){3}[0-9]{1,3}|([0-9a-f]{1,4}\:){7}([0-9a-f]{1,4})|(([a-z0-9]+\.){1,10}[a-z]+)?(\:[0-9]{4,5})$
         - description: >-
             Date and time from which the query retrieves the suggested indexes.
-            This parameter expresses its value in the number of seconds that
-            have elapsed since the [UNIX
+            This parameter expresses its value in the number of milliseconds
+            that have elapsed since the [UNIX
             epoch](https://en.wikipedia.org/wiki/Unix_time).
 
 
@@ -11320,7 +11344,7 @@ paths:
           schema:
             type: integer
             format: int64
-            minimum: 1199145600
+            minimum: 1199145600000
       responses:
         "200":
           content:
@@ -11399,8 +11423,8 @@ paths:
             pattern: ^([0-9]{1,3}\.){3}[0-9]{1,3}|([0-9a-f]{1,4}\:){7}([0-9a-f]{1,4})|(([a-z0-9]+\.){1,10}[a-z]+)?(\:[0-9]{4,5})$
         - description: >-
             Date and time from which the query retrieves the slow queries. This
-            parameter expresses its value in the number of seconds that have
-            elapsed since the [UNIX
+            parameter expresses its value in the number of milliseconds that
+            have elapsed since the [UNIX
             epoch](https://en.wikipedia.org/wiki/Unix_time).
 
 
@@ -11412,7 +11436,7 @@ paths:
           schema:
             type: integer
             format: int64
-            minimum: 1199145600
+            minimum: 1199145600000
       responses:
         "200":
           content:
@@ -11496,8 +11520,8 @@ paths:
             pattern: ^([0-9]{1,3}\.){3}[0-9]{1,3}|([0-9a-f]{1,4}\:){7}([0-9a-f]{1,4})|(([a-z0-9]+\.){1,10}[a-z]+)?(\:[0-9]{4,5})$
         - description: >-
             Date and time from which the query retrieves the suggested indexes.
-            This parameter expresses its value in the number of seconds that
-            have elapsed since the [UNIX
+            This parameter expresses its value in the number of milliseconds
+            that have elapsed since the [UNIX
             epoch](https://en.wikipedia.org/wiki/Unix_time).
 
 
@@ -11509,6 +11533,7 @@ paths:
           schema:
             type: integer
             format: int64
+            minimum: 1199145600000
       responses:
         "200":
           content:
@@ -12457,6 +12482,69 @@ paths:
       x-xgen-changelog:
         2023-09-11: The MongoDB Atlas Streams Processing API is now exposed as part of
           private preview, but is subject to change until GA.
+      x-xgen-experimental: true
+  "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/auditLogs":
+    get:
+      description: Downloads the audit logs for the specified Atlas Streams Processing
+        instance. By default, logs cover periods of 30 days. To use this
+        resource, the requesting API Key must have the Project Owner roles or
+        Project Data Access Read Write roles.
+      operationId: downloadStreamTenantAuditLogs
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Timestamp that specifies the end point for the range of log
+            messages to download.  MongoDB Cloud expresses this timestamp in the
+            number of seconds that have elapsed since the UNIX epoch.
+          in: query
+          name: endDate
+          schema:
+            type: integer
+            format: int64
+            example: 1636481348
+            pattern: "1199145600"
+        - description: Timestamp that specifies the starting point for the range of log
+            messages to download. MongoDB Cloud expresses this timestamp in the
+            number of seconds that have elapsed since the UNIX epoch.
+          in: query
+          name: startDate
+          schema:
+            type: integer
+            format: int64
+            example: 1636466948
+            pattern: "1199145600"
+        - description: Human-readable label that identifies the stream instance.
+          in: path
+          name: tenantName
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-02-01+gzip:
+              schema:
+                type: string
+                format: binary
+                description: Compressed archive labeled `auditLogs.gz` downloads
+              x-xgen-version: 2023-02-01
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Download Audit Logs for One Atlas Stream Processing Instance
+      tags:
+        - Streams
       x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections":
     get:
@@ -13587,7 +13675,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                $ref: "#/components/schemas/PaginatedApiUserAccessList"
+                $ref: "#/components/schemas/PaginatedApiUserAccessListResponse"
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -13627,7 +13715,7 @@ paths:
             schema:
               type: array
               items:
-                $ref: "#/components/schemas/UserAccessList"
+                $ref: "#/components/schemas/UserAccessListRequest"
         description: Access list entries to be created for the specified organization
           API key.
         required: true
@@ -13636,7 +13724,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                $ref: "#/components/schemas/PaginatedApiUserAccessList"
+                $ref: "#/components/schemas/PaginatedApiUserAccessListResponse"
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -13748,7 +13836,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                $ref: "#/components/schemas/UserAccessList"
+                $ref: "#/components/schemas/UserAccessListResponse"
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -13767,7 +13855,7 @@ paths:
     post:
       description: Creates a query process within the Cost Explorer for the given
         parameters. A token is returned that can be used to poll the status of
-        the query and eventually retrievethe results.
+        the query and eventually retrieve the results.
       operationId: createCostExplorerQueryProcess
       parameters:
         - $ref: "#/components/parameters/orgId"
@@ -15477,9 +15565,7 @@ components:
             detail: (This is just an example, the exception may not be related to this
               endpoint) No provider AWS exists.
             error: 400
-            errorCode: INVALID_PROVIDER
-            parameters:
-              - AWS
+            errorCode: VALIDATION_ERROR
             reason: Bad Request
           schema:
             $ref: "#/components/schemas/ApiError"
@@ -15492,9 +15578,7 @@ components:
               endpoint) Cannot delete organization link while there is active
               migration in following project ids: 60c4fd418ebe251047c50554"
             error: 409
-            errorCode: CANNOT_DELETE_ORG_LINK_WITH_RUNNING_LIVE_EXPORT
-            parameters:
-              - 60c4fd418ebe251047c50554
+            errorCode: CANNOT_DELETE_ORG_ACTIVE_LIVE_MIGRATION_ATLAS_ORG_LINK
             reason: Conflict
           schema:
             $ref: "#/components/schemas/ApiError"
@@ -15507,8 +15591,6 @@ components:
               endpoint)
             error: 403
             errorCode: CANNOT_CHANGE_GROUP_NAME
-            parameters:
-              - EXAMPLE
             reason: Forbidden
           schema:
             $ref: "#/components/schemas/ApiError"
@@ -15521,8 +15603,6 @@ components:
               in the past.
             error: 410
             errorCode: VERSION_GONE
-            parameters:
-              - EXAMPLE
             reason: Gone
           schema:
             $ref: "#/components/schemas/ApiError"
@@ -15535,8 +15615,6 @@ components:
               endpoint)
             error: 500
             errorCode: UNEXPECTED_ERROR
-            parameters:
-              - EXAMPLE
             reason: Internal Server Error
           schema:
             $ref: "#/components/schemas/ApiError"
@@ -15549,8 +15627,6 @@ components:
               endpoint)
             error: 405
             errorCode: ATLAS_BACKUP_CANCEL_SHARD_RESTORE_JOB_NOT_ALLOWED
-            parameters:
-              - EXAMPLE
             reason: Method Not Allowed
           schema:
             $ref: "#/components/schemas/ApiError"
@@ -15565,8 +15641,6 @@ components:
               endpoint) Cannot find resource AWS
             error: 404
             errorCode: RESOURCE_NOT_FOUND
-            parameters:
-              - AWS
             reason: Not Found
           schema:
             $ref: "#/components/schemas/ApiError"
@@ -15579,8 +15653,6 @@ components:
               endpoint)
             error: 402
             errorCode: NO_PAYMENT_INFORMATION_FOUND
-            parameters:
-              - EXAMPLE
             reason: Payment Required
           schema:
             $ref: "#/components/schemas/ApiError"
@@ -15593,8 +15665,6 @@ components:
               endpoint)
             error: 401
             errorCode: NOT_ORG_GROUP_CREATOR
-            parameters:
-              - EXAMPLE
             reason: Unauthorized
           schema:
             $ref: "#/components/schemas/ApiError"
@@ -16426,21 +16496,18 @@ components:
           type: integer
           format: int32
           description: HTTP status code returned with this error.
-          maximum: 599
-          minimum: 200
+          externalDocs:
+            url: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
         errorCode:
           type: string
           description: Application error code returned with this error.
-          example: TOO_MANY_GROUP_NOTIFICATIONS
         parameters:
           type: array
-          description: Parameter uses to give more information about the error.
+          description: Parameters used to give more information about the error.
           items: {}
         reason:
           type: string
           description: Application error message returned with this error.
-          example: At most one group notification can be specified for an alert
-            configuration.
     ApiHostView_Atlas:
       type: object
       properties:
@@ -18619,10 +18686,11 @@ components:
             $ref: "#/components/schemas/DatabaseUserRole"
         scopes:
           type: array
-          description: List that contains clusters and MongoDB Atlas Data Lakes that this
-            database user can access. If omitted, MongoDB Cloud grants the
-            database user access to all the clusters and MongoDB Atlas Data
-            Lakes in the project.
+          description: List that contains clusters, MongoDB Atlas Data Lakes, and MongoDB
+            Atlas Streams Instances that this database user can access. If
+            omitted, MongoDB Cloud grants the database user access to all the
+            clusters, MongoDB Atlas Data Lakes, and MongoDB Atlas Streams
+            Instances in the project.
           items:
             $ref: "#/components/schemas/UserScope"
         username:
@@ -23765,14 +23833,6 @@ components:
             maintenance.
       required:
         - dayOfWeek
-    GroupName:
-      type: object
-      description: Request view to update the group name.
-      properties:
-        name:
-          type: string
-          description: Human-readable label that identifies the project included in the
-            MongoDB Cloud organization.
     GroupRole:
       type: object
       properties:
@@ -23851,6 +23911,23 @@ components:
           type: boolean
           description: Flag that indicates whether to enable the Schema Advisor for the
             specified project.
+    GroupUpdate:
+      type: object
+      description: Request view to update the group.
+      properties:
+        name:
+          type: string
+          description: Human-readable label that identifies the project included in the
+            MongoDB Cloud organization.
+        tags:
+          type: array
+          description: List that contains key-value pairs between 1 to 255 characters in
+            length for tagging and categorizing the project.
+          externalDocs:
+            description: Resource Tags
+            url: https://www.mongodb.com/docs/atlas/tags
+          items:
+            $ref: "#/components/schemas/ResourceTag"
     HardwareSpec:
       type: object
       description: Hardware specifications for all electable nodes deployed in the
@@ -26069,7 +26146,7 @@ components:
           uniqueItems: true
         id:
           type: string
-          description: Unique 24-hexadecimal digit string that identifies this organization.
+          description: Unique 24-hexadecimal digit string that identifies this invitation.
           example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
@@ -26106,8 +26183,8 @@ components:
           pattern: ^[\p{L}\p{N}\-_.(),:&@+']{1,64}$
         roles:
           type: array
-          description: One or more organization or project level roles to assign to the
-            MongoDB Cloud user.
+          description: One or more organization level roles to assign to the MongoDB Cloud
+            user.
           items:
             type: string
           uniqueItems: true
@@ -26321,8 +26398,8 @@ components:
         totalCount:
           type: integer
           format: int32
-          description: Number of documents returned in this response if **includeCount**
-            query param is true.
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
     PaginatedHostView_Atlas:
@@ -26349,7 +26426,8 @@ components:
         totalCount:
           type: integer
           format: int32
-          description: Number of documents returned in this response.
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
     PemFileInfo:
@@ -26730,6 +26808,7 @@ components:
           type: string
           description: Describes whether or not the feature is enabled and what status it
             is in.
+          readOnly: true
     RawMetricUnits:
       type: string
       default: RAW
@@ -26850,6 +26929,9 @@ components:
             `production` in the `environment : production` tag."
           maxLength: 255
           minLength: 1
+      required:
+        - key
+        - value
       title: Resource Tag
     RestoreJobFileHash:
       type: object
@@ -27718,7 +27800,8 @@ components:
           readOnly: true
         name:
           type: string
-          description: Human-readable label that identifies the stream connection.
+          description: Human-readable label that identifies the stream connection. In the
+            case of the Sample type, this is the name of the sample source.
         type:
           type: string
           description: Type of the connection. Can be either Cluster or Kafka.
@@ -28497,7 +28580,7 @@ components:
           items:
             type: string
           uniqueItems: true
-    UserAccessList:
+    UserAccessListRequest:
       type: object
       properties:
         cidrBlock:
@@ -28507,6 +28590,24 @@ components:
             in classless inter-domain routing (CIDR) notation of Internet
             Protocol version 4 or version 6 addresses. You can set a value for
             this parameter or **ipAddress** but not both in the same request.
+          example: 203.0.113.0/24
+          pattern: ^((([0-9]{1,3}\.){3}[0-9]{1,3})|(:{0,2}([0-9a-f]{1,4}:){0,7}[0-9a-f]{1,4}[:]{0,2}))((%2[fF]|/)[0-9]{1,3})+$
+        ipAddress:
+          type: string
+          description: Network address that you want to add to the access list for the API
+            key. This parameter requires the address to be expressed as one
+            Internet Protocol version 4 or version 6 address. You can set a
+            value for this parameter or **cidrBlock** but not both in the same
+            request.
+          example: 203.0.113.10
+          pattern: ^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)(\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$
+    UserAccessListResponse:
+      type: object
+      properties:
+        cidrBlock:
+          type: string
+          description: Range of IP addresses in Classless Inter-Domain Routing (CIDR)
+            notation in the access list for the API key.
           example: 203.0.113.0/24
           pattern: ^((([0-9]{1,3}\.){3}[0-9]{1,3})|([\:]{0,2}([0-9a-f]{1,4}\:){0,7}[0-9a-f]{1,4}[\:]{0,2}))((%2[fF]|\/)[0-9]{1,3})+$
         count:
@@ -28526,11 +28627,7 @@ components:
           readOnly: true
         ipAddress:
           type: string
-          description: Network address that you want to add to the access list for the API
-            key. This parameter requires the address to be expressed as one
-            Internet Protocol version 4 or version 6 address. You can set a
-            value for this parameter or **cidrBlock** but not both in the same
-            request.
+          description: Network address in the access list for the API key.
           example: 203.0.113.10
           pattern: ^((([0-9]{1,3}\.){3}[0-9]{1,3})|([\:]{0,2}([0-9a-f]{1,4}\:){0,7}[0-9a-f]{1,4}[\:]{0,2}))$
         lastUsed:
@@ -29086,6 +29183,10 @@ components:
           description: List of settings that configure the search nodes for your cluster.
           items:
             $ref: "#/components/schemas/ApiSearchDeploymentSpec"
+          maxItems: 1
+          minItems: 1
+      required:
+        - specs
     ApiSearchDeploymentResponse:
       type: object
       properties:
@@ -29177,7 +29278,7 @@ components:
     Criteria:
       type: object
       description: >-
-        Rules by which MongoDB MongoDB Cloud archives data.
+        Rules by which MongoDB Cloud archives data.
 
 
         Use the **criteria.type** field to choose how MongoDB Cloud selects data to archive. Choose data using the age of the data or a MongoDB query.
@@ -29276,8 +29377,8 @@ components:
         totalCount:
           type: integer
           format: int32
-          description: Number of documents returned in this response if **includeCount**
-            query param is true.
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
     ManagedNamespace:
@@ -29359,8 +29460,8 @@ components:
         totalCount:
           type: integer
           format: int32
-          description: Number of documents returned in this response if **includeCount**
-            query param is true.
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
     PaginatedAdvancedClusterDescription:
@@ -29387,7 +29488,8 @@ components:
         totalCount:
           type: integer
           format: int32
-          description: Number of documents returned in this response.
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
     PaginatedAlertConfig:
@@ -29414,8 +29516,8 @@ components:
         totalCount:
           type: integer
           format: int32
-          description: Number of documents returned in this response if **includeCount**
-            query param is true.
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
     PaginatedAlert:
@@ -29442,8 +29544,8 @@ components:
         totalCount:
           type: integer
           format: int32
-          description: Number of documents returned in this response if **includeCount**
-            query param is true.
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
     PaginatedApiApiUser:
@@ -29470,7 +29572,8 @@ components:
         totalCount:
           type: integer
           format: int32
-          description: Number of documents returned in this response.
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
     PaginatedApiAppUser:
@@ -29497,7 +29600,8 @@ components:
         totalCount:
           type: integer
           format: int32
-          description: Number of documents returned in this response.
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
     PaginatedApiAtlasCheckpoint:
@@ -29524,7 +29628,8 @@ components:
         totalCount:
           type: integer
           format: int32
-          description: Number of documents returned in this response.
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
     PaginatedApiAtlasDatabaseUser:
@@ -29553,7 +29658,8 @@ components:
         totalCount:
           type: integer
           format: int32
-          description: Number of documents returned in this response.
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
     PaginatedApiAtlasDiskBackupExportJob:
@@ -29580,7 +29686,8 @@ components:
         totalCount:
           type: integer
           format: int32
-          description: Number of documents returned in this response.
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
     PaginatedApiAtlasProviderRegions:
@@ -29607,7 +29714,8 @@ components:
         totalCount:
           type: integer
           format: int32
-          description: Number of documents returned in this response.
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
     PaginatedApiAtlasServerlessBackupRestoreJob:
@@ -29634,7 +29742,8 @@ components:
         totalCount:
           type: integer
           format: int32
-          description: Number of documents returned in this response.
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
     PaginatedApiAtlasServerlessBackupSnapshot:
@@ -29661,7 +29770,8 @@ components:
         totalCount:
           type: integer
           format: int32
-          description: Number of documents returned in this response.
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
     PaginatedApiInvoice:
@@ -29688,7 +29798,8 @@ components:
         totalCount:
           type: integer
           format: int32
-          description: Number of documents returned in this response.
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
     PaginatedApiStreamsConnection:
@@ -29715,8 +29826,8 @@ components:
         totalCount:
           type: integer
           format: int32
-          description: Number of documents returned in this response if **includeCount**
-            query param is true.
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
     PaginatedApiStreamsTenant:
@@ -29743,11 +29854,11 @@ components:
         totalCount:
           type: integer
           format: int32
-          description: Number of documents returned in this response if **includeCount**
-            query param is true.
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
-    PaginatedApiUserAccessList:
+    PaginatedApiUserAccessListResponse:
       type: object
       properties:
         links:
@@ -29766,12 +29877,13 @@ components:
           description: List of returned documents that MongoDB Cloud providers when
             completing this request.
           items:
-            $ref: "#/components/schemas/UserAccessList"
+            $ref: "#/components/schemas/UserAccessListResponse"
           readOnly: true
         totalCount:
           type: integer
           format: int32
-          description: Number of documents returned in this response.
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
     PaginatedAppUser:
@@ -29798,7 +29910,8 @@ components:
         totalCount:
           type: integer
           format: int32
-          description: Number of documents returned in this response.
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
     PaginatedAtlasGroup:
@@ -29825,7 +29938,8 @@ components:
         totalCount:
           type: integer
           format: int32
-          description: Number of documents returned in this response.
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
     PaginatedBackupSnapshotExportBucket:
@@ -29852,7 +29966,8 @@ components:
         totalCount:
           type: integer
           format: int32
-          description: Number of documents returned in this response.
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
     PaginatedBackupSnapshot:
@@ -29879,7 +29994,8 @@ components:
         totalCount:
           type: integer
           format: int32
-          description: Number of documents returned in this response.
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
     PaginatedCloudBackupReplicaSet:
@@ -29906,7 +30022,8 @@ components:
         totalCount:
           type: integer
           format: int32
-          description: Number of documents returned in this response.
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
     PaginatedCloudBackupRestoreJob:
@@ -29933,7 +30050,8 @@ components:
         totalCount:
           type: integer
           format: int32
-          description: Number of documents returned in this response.
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
     PaginatedCloudBackupShardedClusterSnapshot:
@@ -29960,7 +30078,8 @@ components:
         totalCount:
           type: integer
           format: int32
-          description: Number of documents returned in this response.
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
     PaginatedCloudProviderContainer:
@@ -29988,7 +30107,8 @@ components:
         totalCount:
           type: integer
           format: int32
-          description: Number of documents returned in this response.
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
       title: Network Peering
@@ -30017,8 +30137,8 @@ components:
         totalCount:
           type: integer
           format: int32
-          description: Number of documents returned in this response if **includeCount**
-            query param is true.
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
     PaginatedDatabase:
@@ -30045,7 +30165,8 @@ components:
         totalCount:
           type: integer
           format: int32
-          description: Number of documents returned in this response.
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
     PaginatedDiskPartition:
@@ -30072,7 +30193,8 @@ components:
         totalCount:
           type: integer
           format: int32
-          description: Number of documents returned in this response.
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
     PaginatedIntegration:
@@ -30099,8 +30221,8 @@ components:
         totalCount:
           type: integer
           format: int32
-          description: Number of documents returned in this response if **includeCount**
-            query param is true.
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
     PaginatedNetworkAccess:
@@ -30127,7 +30249,8 @@ components:
         totalCount:
           type: integer
           format: int32
-          description: Number of documents returned in this response.
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
     PaginatedOnlineArchive:
@@ -30154,7 +30277,8 @@ components:
         totalCount:
           type: integer
           format: int32
-          description: Number of documents returned in this response.
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
     PaginatedOrgGroup:
@@ -30181,7 +30305,8 @@ components:
         totalCount:
           type: integer
           format: int32
-          description: Number of documents returned in this response.
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
     PaginatedOrganization:
@@ -30208,7 +30333,8 @@ components:
         totalCount:
           type: integer
           format: int32
-          description: Number of documents returned in this response.
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
     PaginatedPipelineRun:
@@ -30235,7 +30361,8 @@ components:
         totalCount:
           type: integer
           format: int32
-          description: Number of documents returned in this response.
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
     PaginatedPrivateNetworkEndpointIdEntry:
@@ -30262,8 +30389,8 @@ components:
         totalCount:
           type: integer
           format: int32
-          description: Number of documents returned in this response if **includeCount**
-            query param is true.
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
     PaginatedRestoreJob:
@@ -30290,7 +30417,8 @@ components:
         totalCount:
           type: integer
           format: int32
-          description: Number of documents returned in this response.
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
     PaginatedRoleMapping:
@@ -30319,7 +30447,8 @@ components:
         totalCount:
           type: integer
           format: int32
-          description: Number of documents returned in this response.
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
     PaginatedServerlessInstanceDescription:
@@ -30346,7 +30475,8 @@ components:
         totalCount:
           type: integer
           format: int32
-          description: Number of documents returned in this response.
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
     PaginatedSnapshot:
@@ -30373,7 +30503,8 @@ components:
         totalCount:
           type: integer
           format: int32
-          description: Number of documents returned in this response.
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
     PaginatedTeamRole:
@@ -30400,7 +30531,8 @@ components:
         totalCount:
           type: integer
           format: int32
-          description: Number of documents returned in this response.
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
     PaginatedTeam:
@@ -30427,7 +30559,8 @@ components:
         totalCount:
           type: integer
           format: int32
-          description: Number of documents returned in this response.
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
     PaginatedTenantRestore:
@@ -30454,7 +30587,8 @@ components:
         totalCount:
           type: integer
           format: int32
-          description: Number of documents returned in this response.
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
     PaginatedTenantSnapshot:
@@ -30481,7 +30615,8 @@ components:
         totalCount:
           type: integer
           format: int32
-          description: Number of documents returned in this response.
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
     PaginatedUserCert:
@@ -30508,7 +30643,8 @@ components:
         totalCount:
           type: integer
           format: int32
-          description: Number of documents returned in this response.
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
     PartitionField:

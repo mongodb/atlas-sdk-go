@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**CreateStreamInstance**](StreamsApi.md#CreateStreamInstance) | **Post** /api/atlas/v2/groups/{groupId}/streams | Create One Stream Instance
 [**DeleteStreamConnection**](StreamsApi.md#DeleteStreamConnection) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName} | Delete One Stream Connection
 [**DeleteStreamInstance**](StreamsApi.md#DeleteStreamInstance) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Delete One Stream Instance
+[**DownloadStreamTenantAuditLogs**](StreamsApi.md#DownloadStreamTenantAuditLogs) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/auditLogs | Download Audit Logs for One Atlas Stream Processing Instance
 [**GetStreamConnection**](StreamsApi.md#GetStreamConnection) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName} | Return One Stream Connection
 [**GetStreamInstance**](StreamsApi.md#GetStreamInstance) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Return One Stream Instance
 [**ListStreamConnections**](StreamsApi.md#ListStreamConnections) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections | Return All Connections Of The Stream Instances
@@ -339,6 +340,91 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/vnd.atlas.2023-02-01+json, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DownloadStreamTenantAuditLogs
+
+> io.ReadCloser DownloadStreamTenantAuditLogs(ctx, groupId, tenantName).EndDate(endDate).StartDate(startDate).Execute()
+
+Download Audit Logs for One Atlas Stream Processing Instance
+
+
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20231115007/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    tenantName := "tenantName_example" // string | 
+    endDate := int64(1636481348) // int64 |  (optional)
+    startDate := int64(1636466948) // int64 |  (optional)
+
+    resp, r, err := sdk.StreamsApi.DownloadStreamTenantAuditLogs(context.Background(), groupId, tenantName).EndDate(endDate).StartDate(startDate).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.DownloadStreamTenantAuditLogs``: %v\n", err)
+        apiError := admin.AsError(err)
+        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+    }
+    // response from `DownloadStreamTenantAuditLogs`: io.ReadCloser
+    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.DownloadStreamTenantAuditLogs`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**tenantName** | **string** | Human-readable label that identifies the stream instance. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDownloadStreamTenantAuditLogsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **endDate** | **int64** | Timestamp that specifies the end point for the range of log messages to download.  MongoDB Cloud expresses this timestamp in the number of seconds that have elapsed since the UNIX epoch. | 
+ **startDate** | **int64** | Timestamp that specifies the starting point for the range of log messages to download. MongoDB Cloud expresses this timestamp in the number of seconds that have elapsed since the UNIX epoch. | 
+
+### Return type
+
+[**io.ReadCloser**](io.ReadCloser.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2023-02-01+gzip, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

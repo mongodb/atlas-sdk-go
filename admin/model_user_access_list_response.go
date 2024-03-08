@@ -7,9 +7,9 @@ import (
 	"time"
 )
 
-// UserAccessList struct for UserAccessList
-type UserAccessList struct {
-	// Range of network addresses that you want to add to the access list for the API key. This parameter requires the range to be expressed in classless inter-domain routing (CIDR) notation of Internet Protocol version 4 or version 6 addresses. You can set a value for this parameter or **ipAddress** but not both in the same request.
+// UserAccessListResponse struct for UserAccessListResponse
+type UserAccessListResponse struct {
+	// Range of IP addresses in Classless Inter-Domain Routing (CIDR) notation in the access list for the API key.
 	CidrBlock *string `json:"cidrBlock,omitempty"`
 	// Total number of requests that have originated from the Internet Protocol (IP) address given as the value of the *lastUsedAddress* parameter.
 	// Read only field.
@@ -17,7 +17,7 @@ type UserAccessList struct {
 	// Date and time when someone added the network addresses to the specified API access list. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	Created *time.Time `json:"created,omitempty"`
-	// Network address that you want to add to the access list for the API key. This parameter requires the address to be expressed as one Internet Protocol version 4 or version 6 address. You can set a value for this parameter or **cidrBlock** but not both in the same request.
+	// Network address in the access list for the API key.
 	IpAddress *string `json:"ipAddress,omitempty"`
 	// Date and time when MongoDB Cloud received the most recent request that originated from this Internet Protocol version 4 or version 6 address. The resource returns this parameter when at least one request has originated from this IP address. MongoDB Cloud updates this parameter each time a client accesses the permitted resource. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
@@ -30,25 +30,25 @@ type UserAccessList struct {
 	Links *[]Link `json:"links,omitempty"`
 }
 
-// NewUserAccessList instantiates a new UserAccessList object
+// NewUserAccessListResponse instantiates a new UserAccessListResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserAccessList() *UserAccessList {
-	this := UserAccessList{}
+func NewUserAccessListResponse() *UserAccessListResponse {
+	this := UserAccessListResponse{}
 	return &this
 }
 
-// NewUserAccessListWithDefaults instantiates a new UserAccessList object
+// NewUserAccessListResponseWithDefaults instantiates a new UserAccessListResponse object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewUserAccessListWithDefaults() *UserAccessList {
-	this := UserAccessList{}
+func NewUserAccessListResponseWithDefaults() *UserAccessListResponse {
+	this := UserAccessListResponse{}
 	return &this
 }
 
 // GetCidrBlock returns the CidrBlock field value if set, zero value otherwise
-func (o *UserAccessList) GetCidrBlock() string {
+func (o *UserAccessListResponse) GetCidrBlock() string {
 	if o == nil || IsNil(o.CidrBlock) {
 		var ret string
 		return ret
@@ -58,7 +58,7 @@ func (o *UserAccessList) GetCidrBlock() string {
 
 // GetCidrBlockOk returns a tuple with the CidrBlock field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UserAccessList) GetCidrBlockOk() (*string, bool) {
+func (o *UserAccessListResponse) GetCidrBlockOk() (*string, bool) {
 	if o == nil || IsNil(o.CidrBlock) {
 		return nil, false
 	}
@@ -67,7 +67,7 @@ func (o *UserAccessList) GetCidrBlockOk() (*string, bool) {
 }
 
 // HasCidrBlock returns a boolean if a field has been set.
-func (o *UserAccessList) HasCidrBlock() bool {
+func (o *UserAccessListResponse) HasCidrBlock() bool {
 	if o != nil && !IsNil(o.CidrBlock) {
 		return true
 	}
@@ -76,12 +76,12 @@ func (o *UserAccessList) HasCidrBlock() bool {
 }
 
 // SetCidrBlock gets a reference to the given string and assigns it to the CidrBlock field.
-func (o *UserAccessList) SetCidrBlock(v string) {
+func (o *UserAccessListResponse) SetCidrBlock(v string) {
 	o.CidrBlock = &v
 }
 
 // GetCount returns the Count field value if set, zero value otherwise
-func (o *UserAccessList) GetCount() int {
+func (o *UserAccessListResponse) GetCount() int {
 	if o == nil || IsNil(o.Count) {
 		var ret int
 		return ret
@@ -91,7 +91,7 @@ func (o *UserAccessList) GetCount() int {
 
 // GetCountOk returns a tuple with the Count field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UserAccessList) GetCountOk() (*int, bool) {
+func (o *UserAccessListResponse) GetCountOk() (*int, bool) {
 	if o == nil || IsNil(o.Count) {
 		return nil, false
 	}
@@ -100,7 +100,7 @@ func (o *UserAccessList) GetCountOk() (*int, bool) {
 }
 
 // HasCount returns a boolean if a field has been set.
-func (o *UserAccessList) HasCount() bool {
+func (o *UserAccessListResponse) HasCount() bool {
 	if o != nil && !IsNil(o.Count) {
 		return true
 	}
@@ -109,12 +109,12 @@ func (o *UserAccessList) HasCount() bool {
 }
 
 // SetCount gets a reference to the given int and assigns it to the Count field.
-func (o *UserAccessList) SetCount(v int) {
+func (o *UserAccessListResponse) SetCount(v int) {
 	o.Count = &v
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise
-func (o *UserAccessList) GetCreated() time.Time {
+func (o *UserAccessListResponse) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created) {
 		var ret time.Time
 		return ret
@@ -124,7 +124,7 @@ func (o *UserAccessList) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UserAccessList) GetCreatedOk() (*time.Time, bool) {
+func (o *UserAccessListResponse) GetCreatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -133,7 +133,7 @@ func (o *UserAccessList) GetCreatedOk() (*time.Time, bool) {
 }
 
 // HasCreated returns a boolean if a field has been set.
-func (o *UserAccessList) HasCreated() bool {
+func (o *UserAccessListResponse) HasCreated() bool {
 	if o != nil && !IsNil(o.Created) {
 		return true
 	}
@@ -142,12 +142,12 @@ func (o *UserAccessList) HasCreated() bool {
 }
 
 // SetCreated gets a reference to the given time.Time and assigns it to the Created field.
-func (o *UserAccessList) SetCreated(v time.Time) {
+func (o *UserAccessListResponse) SetCreated(v time.Time) {
 	o.Created = &v
 }
 
 // GetIpAddress returns the IpAddress field value if set, zero value otherwise
-func (o *UserAccessList) GetIpAddress() string {
+func (o *UserAccessListResponse) GetIpAddress() string {
 	if o == nil || IsNil(o.IpAddress) {
 		var ret string
 		return ret
@@ -157,7 +157,7 @@ func (o *UserAccessList) GetIpAddress() string {
 
 // GetIpAddressOk returns a tuple with the IpAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UserAccessList) GetIpAddressOk() (*string, bool) {
+func (o *UserAccessListResponse) GetIpAddressOk() (*string, bool) {
 	if o == nil || IsNil(o.IpAddress) {
 		return nil, false
 	}
@@ -166,7 +166,7 @@ func (o *UserAccessList) GetIpAddressOk() (*string, bool) {
 }
 
 // HasIpAddress returns a boolean if a field has been set.
-func (o *UserAccessList) HasIpAddress() bool {
+func (o *UserAccessListResponse) HasIpAddress() bool {
 	if o != nil && !IsNil(o.IpAddress) {
 		return true
 	}
@@ -175,12 +175,12 @@ func (o *UserAccessList) HasIpAddress() bool {
 }
 
 // SetIpAddress gets a reference to the given string and assigns it to the IpAddress field.
-func (o *UserAccessList) SetIpAddress(v string) {
+func (o *UserAccessListResponse) SetIpAddress(v string) {
 	o.IpAddress = &v
 }
 
 // GetLastUsed returns the LastUsed field value if set, zero value otherwise
-func (o *UserAccessList) GetLastUsed() time.Time {
+func (o *UserAccessListResponse) GetLastUsed() time.Time {
 	if o == nil || IsNil(o.LastUsed) {
 		var ret time.Time
 		return ret
@@ -190,7 +190,7 @@ func (o *UserAccessList) GetLastUsed() time.Time {
 
 // GetLastUsedOk returns a tuple with the LastUsed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UserAccessList) GetLastUsedOk() (*time.Time, bool) {
+func (o *UserAccessListResponse) GetLastUsedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.LastUsed) {
 		return nil, false
 	}
@@ -199,7 +199,7 @@ func (o *UserAccessList) GetLastUsedOk() (*time.Time, bool) {
 }
 
 // HasLastUsed returns a boolean if a field has been set.
-func (o *UserAccessList) HasLastUsed() bool {
+func (o *UserAccessListResponse) HasLastUsed() bool {
 	if o != nil && !IsNil(o.LastUsed) {
 		return true
 	}
@@ -208,12 +208,12 @@ func (o *UserAccessList) HasLastUsed() bool {
 }
 
 // SetLastUsed gets a reference to the given time.Time and assigns it to the LastUsed field.
-func (o *UserAccessList) SetLastUsed(v time.Time) {
+func (o *UserAccessListResponse) SetLastUsed(v time.Time) {
 	o.LastUsed = &v
 }
 
 // GetLastUsedAddress returns the LastUsedAddress field value if set, zero value otherwise
-func (o *UserAccessList) GetLastUsedAddress() string {
+func (o *UserAccessListResponse) GetLastUsedAddress() string {
 	if o == nil || IsNil(o.LastUsedAddress) {
 		var ret string
 		return ret
@@ -223,7 +223,7 @@ func (o *UserAccessList) GetLastUsedAddress() string {
 
 // GetLastUsedAddressOk returns a tuple with the LastUsedAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UserAccessList) GetLastUsedAddressOk() (*string, bool) {
+func (o *UserAccessListResponse) GetLastUsedAddressOk() (*string, bool) {
 	if o == nil || IsNil(o.LastUsedAddress) {
 		return nil, false
 	}
@@ -232,7 +232,7 @@ func (o *UserAccessList) GetLastUsedAddressOk() (*string, bool) {
 }
 
 // HasLastUsedAddress returns a boolean if a field has been set.
-func (o *UserAccessList) HasLastUsedAddress() bool {
+func (o *UserAccessListResponse) HasLastUsedAddress() bool {
 	if o != nil && !IsNil(o.LastUsedAddress) {
 		return true
 	}
@@ -241,12 +241,12 @@ func (o *UserAccessList) HasLastUsedAddress() bool {
 }
 
 // SetLastUsedAddress gets a reference to the given string and assigns it to the LastUsedAddress field.
-func (o *UserAccessList) SetLastUsedAddress(v string) {
+func (o *UserAccessListResponse) SetLastUsedAddress(v string) {
 	o.LastUsedAddress = &v
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
-func (o *UserAccessList) GetLinks() []Link {
+func (o *UserAccessListResponse) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
 		return ret
@@ -256,7 +256,7 @@ func (o *UserAccessList) GetLinks() []Link {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UserAccessList) GetLinksOk() (*[]Link, bool) {
+func (o *UserAccessListResponse) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -265,7 +265,7 @@ func (o *UserAccessList) GetLinksOk() (*[]Link, bool) {
 }
 
 // HasLinks returns a boolean if a field has been set.
-func (o *UserAccessList) HasLinks() bool {
+func (o *UserAccessListResponse) HasLinks() bool {
 	if o != nil && !IsNil(o.Links) {
 		return true
 	}
@@ -274,18 +274,18 @@ func (o *UserAccessList) HasLinks() bool {
 }
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
-func (o *UserAccessList) SetLinks(v []Link) {
+func (o *UserAccessListResponse) SetLinks(v []Link) {
 	o.Links = &v
 }
 
-func (o UserAccessList) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o UserAccessListResponse) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o UserAccessList) ToMap() (map[string]interface{}, error) {
+func (o UserAccessListResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.CidrBlock) {
 		toSerialize["cidrBlock"] = o.CidrBlock

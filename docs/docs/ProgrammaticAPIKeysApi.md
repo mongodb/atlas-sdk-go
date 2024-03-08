@@ -181,7 +181,7 @@ Name | Type | Description  | Notes
 
 ## CreateApiKeyAccessList
 
-> PaginatedApiUserAccessList CreateApiKeyAccessList(ctx, orgId, apiUserId, userAccessList []UserAccessList).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+> PaginatedApiUserAccessListResponse CreateApiKeyAccessList(ctx, orgId, apiUserId, userAccessListRequest []UserAccessListRequest).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
 Create Access List Entries for One Organization API Key
 
@@ -207,18 +207,18 @@ func main() {
 
     orgId := "4888442a3354817a7320eb61" // string | 
     apiUserId := "apiUserId_example" // string | 
-    userAccessList := []openapiclient.UserAccessList{*openapiclient.NewUserAccessList()} // []UserAccessList | 
+    userAccessListRequest := []openapiclient.UserAccessListRequest{*openapiclient.NewUserAccessListRequest()} // []UserAccessListRequest | 
     includeCount := true // bool |  (optional) (default to true)
     itemsPerPage := int(100) // int |  (optional) (default to 100)
     pageNum := int(1) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.ProgrammaticAPIKeysApi.CreateApiKeyAccessList(context.Background(), orgId, apiUserId, &userAccessList).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.ProgrammaticAPIKeysApi.CreateApiKeyAccessList(context.Background(), orgId, apiUserId, &userAccessListRequest).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.CreateApiKeyAccessList``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `CreateApiKeyAccessList`: PaginatedApiUserAccessList
+    // response from `CreateApiKeyAccessList`: PaginatedApiUserAccessListResponse
     fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.CreateApiKeyAccessList`: %v\n", resp)
 }
 ```
@@ -241,14 +241,14 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **userAccessList** | [**[]UserAccessList**](UserAccessList.md) | Access list entries to be created for the specified organization API key. | 
+ **userAccessListRequest** | [**[]UserAccessListRequest**](UserAccessListRequest.md) | Access list entries to be created for the specified organization API key. | 
  **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (**totalCount**) in the response. | [default to true]
  **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
  **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
 
 ### Return type
 
-[**PaginatedApiUserAccessList**](PaginatedApiUserAccessList.md)
+[**PaginatedApiUserAccessListResponse**](PaginatedApiUserAccessListResponse.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -571,7 +571,7 @@ Name | Type | Description  | Notes
 
 ## GetApiKeyAccessList
 
-> UserAccessList GetApiKeyAccessList(ctx, orgId, ipAddress, apiUserId).Execute()
+> UserAccessListResponse GetApiKeyAccessList(ctx, orgId, ipAddress, apiUserId).Execute()
 
 Return One Access List Entry for One Organization API Key
 
@@ -610,7 +610,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `GetApiKeyAccessList`: UserAccessList
+    // response from `GetApiKeyAccessList`: UserAccessListResponse
     fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.GetApiKeyAccessList`: %v\n", resp)
 }
 ```
@@ -638,7 +638,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UserAccessList**](UserAccessList.md)
+[**UserAccessListResponse**](UserAccessListResponse.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -655,7 +655,7 @@ Name | Type | Description  | Notes
 
 ## ListApiKeyAccessListsEntries
 
-> PaginatedApiUserAccessList ListApiKeyAccessListsEntries(ctx, orgId, apiUserId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+> PaginatedApiUserAccessListResponse ListApiKeyAccessListsEntries(ctx, orgId, apiUserId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
 Return All Access List Entries for One Organization API Key
 
@@ -691,7 +691,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `ListApiKeyAccessListsEntries`: PaginatedApiUserAccessList
+    // response from `ListApiKeyAccessListsEntries`: PaginatedApiUserAccessListResponse
     fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.ListApiKeyAccessListsEntries`: %v\n", resp)
 }
 ```
@@ -720,7 +720,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PaginatedApiUserAccessList**](PaginatedApiUserAccessList.md)
+[**PaginatedApiUserAccessListResponse**](PaginatedApiUserAccessListResponse.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

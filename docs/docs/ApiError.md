@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Detail** | Pointer to **string** | Describes the specific conditions or reasons that cause each type of error. | [optional] 
 **Error** | Pointer to **int** | HTTP status code returned with this error. | [optional] 
 **ErrorCode** | Pointer to **string** | Application error code returned with this error. | [optional] 
-**Parameters** | Pointer to **[]interface{}** | Parameter uses to give more information about the error. | [optional] 
+**Parameters** | Pointer to **[]interface{}** | Parameters used to give more information about the error. | [optional] 
 **Reason** | Pointer to **string** | Application error message returned with this error. | [optional] 
 
 ## Methods

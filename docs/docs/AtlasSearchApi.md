@@ -49,7 +49,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
-    apiSearchDeploymentRequest := *openapiclient.NewApiSearchDeploymentRequest() // ApiSearchDeploymentRequest | 
+    apiSearchDeploymentRequest := *openapiclient.NewApiSearchDeploymentRequest([]openapiclient.ApiSearchDeploymentSpec{*openapiclient.NewApiSearchDeploymentSpec("InstanceSize_example", int(2))}) // ApiSearchDeploymentRequest | 
 
     resp, r, err := sdk.AtlasSearchApi.CreateAtlasSearchDeployment(context.Background(), groupId, clusterName, &apiSearchDeploymentRequest).Execute()
     if err != nil {
@@ -610,7 +610,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
-    apiSearchDeploymentRequest := *openapiclient.NewApiSearchDeploymentRequest() // ApiSearchDeploymentRequest | 
+    apiSearchDeploymentRequest := *openapiclient.NewApiSearchDeploymentRequest([]openapiclient.ApiSearchDeploymentSpec{*openapiclient.NewApiSearchDeploymentSpec("InstanceSize_example", int(2))}) // ApiSearchDeploymentRequest | 
 
     resp, r, err := sdk.AtlasSearchApi.UpdateAtlasSearchDeployment(context.Background(), groupId, clusterName, &apiSearchDeploymentRequest).Execute()
     if err != nil {

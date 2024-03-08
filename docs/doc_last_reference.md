@@ -78,9 +78,9 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
 *ClusterOutageSimulationApi* | [EndOutageSimulation](./docs/ClusterOutageSimulationApi.md#endoutagesimulation) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/outageSimulation | End an Outage Simulation | Experimental
 *ClusterOutageSimulationApi* | [GetOutageSimulation](./docs/ClusterOutageSimulationApi.md#getoutagesimulation) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/outageSimulation | Return One Outage Simulation | Experimental
 *ClusterOutageSimulationApi* | [StartOutageSimulation](./docs/ClusterOutageSimulationApi.md#startoutagesimulation) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/outageSimulation | Start an Outage Simulation | Experimental
-*ClustersApi* | [CreateCluster](./docs/ClustersApi.md#createcluster) | **Post** /api/atlas/v2/groups/{groupId}/clusters | Create One Multi-Cloud Cluster from One Project | Stable
-*ClustersApi* | [DeleteCluster](./docs/ClustersApi.md#deletecluster) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName} | Remove One Multi-Cloud Cluster from One Project | Stable
-*ClustersApi* | [GetCluster](./docs/ClustersApi.md#getcluster) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName} | Return One Multi-Cloud Cluster from One Project | Stable
+*ClustersApi* | [CreateCluster](./docs/ClustersApi.md#createcluster) | **Post** /api/atlas/v2/groups/{groupId}/clusters | Create One Cluster from One Project | Stable
+*ClustersApi* | [DeleteCluster](./docs/ClustersApi.md#deletecluster) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName} | Remove One Cluster from One Project | Stable
+*ClustersApi* | [GetCluster](./docs/ClustersApi.md#getcluster) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName} | Return One Cluster from One Project | Stable
 *ClustersApi* | [GetClusterAdvancedConfiguration](./docs/ClustersApi.md#getclusteradvancedconfiguration) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/processArgs | Return One Advanced Configuration Options for One Cluster | Stable
 *ClustersApi* | [GetClusterStatus](./docs/ClustersApi.md#getclusterstatus) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/status | Return Status of All Cluster Operations | Experimental
 *ClustersApi* | [GetSampleDatasetLoadStatus](./docs/ClustersApi.md#getsampledatasetloadstatus) | **Get** /api/atlas/v2/groups/{groupId}/sampleDatasetLoad/{sampleDatasetId} | Check Status of Cluster Sample Dataset Request | Stable
@@ -88,8 +88,8 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
 *ClustersApi* | [ListClusters](./docs/ClustersApi.md#listclusters) | **Get** /api/atlas/v2/groups/{groupId}/clusters | Return All Clusters in One Project | Stable
 *ClustersApi* | [ListClustersForAllProjects](./docs/ClustersApi.md#listclustersforallprojects) | **Get** /api/atlas/v2/clusters | Return All Authorized Clusters in All Projects | Experimental
 *ClustersApi* | [LoadSampleDataset](./docs/ClustersApi.md#loadsampledataset) | **Post** /api/atlas/v2/groups/{groupId}/sampleDatasetLoad/{name} | Load Sample Dataset Request into Cluster | Stable
-*ClustersApi* | [TestFailover](./docs/ClustersApi.md#testfailover) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/restartPrimaries | Test Failover for One Multi-Cloud Cluster | Stable
-*ClustersApi* | [UpdateCluster](./docs/ClustersApi.md#updatecluster) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName} | Modify One Multi-Cloud Cluster from One Project | Stable
+*ClustersApi* | [TestFailover](./docs/ClustersApi.md#testfailover) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/restartPrimaries | Test Failover for One Cluster | Stable
+*ClustersApi* | [UpdateCluster](./docs/ClustersApi.md#updatecluster) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName} | Modify One Cluster from One Project | Stable
 *ClustersApi* | [UpdateClusterAdvancedConfiguration](./docs/ClustersApi.md#updateclusteradvancedconfiguration) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/processArgs | Update Advanced Configuration Options for One Cluster | Stable
 *ClustersApi* | [UpgradeSharedCluster](./docs/ClustersApi.md#upgradesharedcluster) | **Post** /api/atlas/v2/groups/{groupId}/clusters/tenantUpgrade | Upgrade One Shared-tier Cluster | Experimental
 *ClustersApi* | [UpgradeSharedClusterToServerless](./docs/ClustersApi.md#upgradesharedclustertoserverless) | **Post** /api/atlas/v2/groups/{groupId}/clusters/tenantUpgradeToServerless | Upgrades One Shared-Tier Cluster to the Serverless Instance | Experimental
@@ -155,10 +155,10 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
 *FederatedAuthenticationApi* | [UpdateIdentityProvider](./docs/FederatedAuthenticationApi.md#updateidentityprovider) | **Patch** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId} | Update the identity provider. | Experimental
 *FederatedAuthenticationApi* | [UpdateRoleMapping](./docs/FederatedAuthenticationApi.md#updaterolemapping) | **Put** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings/{id} | Update One Role Mapping in One Organization | Experimental
 *GlobalClustersApi* | [CreateCustomZoneMapping](./docs/GlobalClustersApi.md#createcustomzonemapping) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/customZoneMapping | Add One Entry to One Custom Zone Mapping | Experimental
-*GlobalClustersApi* | [CreateManagedNamespace](./docs/GlobalClustersApi.md#createmanagednamespace) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/managedNamespaces | Create One Managed Namespace in One Global Multi-Cloud Cluster | Experimental
-*GlobalClustersApi* | [DeleteAllCustomZoneMappings](./docs/GlobalClustersApi.md#deleteallcustomzonemappings) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/customZoneMapping | Remove All Custom Zone Mappings from One Global Multi-Cloud Cluster | Experimental
-*GlobalClustersApi* | [DeleteManagedNamespace](./docs/GlobalClustersApi.md#deletemanagednamespace) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/managedNamespaces | Remove One Managed Namespace from One Global Multi-Cloud Cluster | Experimental
-*GlobalClustersApi* | [GetManagedNamespace](./docs/GlobalClustersApi.md#getmanagednamespace) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites | Return One Managed Namespace in One Global Multi-Cloud Cluster | Stable
+*GlobalClustersApi* | [CreateManagedNamespace](./docs/GlobalClustersApi.md#createmanagednamespace) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/managedNamespaces | Create One Managed Namespace in One Global Cluster | Experimental
+*GlobalClustersApi* | [DeleteAllCustomZoneMappings](./docs/GlobalClustersApi.md#deleteallcustomzonemappings) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/customZoneMapping | Remove All Custom Zone Mappings from One Global Cluster | Experimental
+*GlobalClustersApi* | [DeleteManagedNamespace](./docs/GlobalClustersApi.md#deletemanagednamespace) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/managedNamespaces | Remove One Managed Namespace from One Global Cluster | Experimental
+*GlobalClustersApi* | [GetManagedNamespace](./docs/GlobalClustersApi.md#getmanagednamespace) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites | Return One Managed Namespace in One Global Cluster | Stable
 *InvoicesApi* | [CreateCostExplorerQueryProcess](./docs/InvoicesApi.md#createcostexplorerqueryprocess) | **Post** /api/atlas/v2/orgs/{orgId}/billing/costExplorer/usage | Create Cost Explorer query process | Experimental
 *InvoicesApi* | [CreateCostExplorerQueryProcess1](./docs/InvoicesApi.md#createcostexplorerqueryprocess1) | **Get** /api/atlas/v2/orgs/{orgId}/billing/costExplorer/usage/{token} | Return results from a given Cost Explorer query, or notify that the results are not ready yet. | Experimental
 *InvoicesApi* | [DownloadInvoiceCSV](./docs/InvoicesApi.md#downloadinvoicecsv) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/csv | Return One Organization Invoice as CSV | Experimental
@@ -292,7 +292,7 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
 *ProjectsApi* | [RemoveProjectUser](./docs/ProjectsApi.md#removeprojectuser) | **Delete** /api/atlas/v2/groups/{groupId}/users/{userId} | Remove One User from One Project | Stable
 *ProjectsApi* | [ReturnAllIPAddresses](./docs/ProjectsApi.md#returnallipaddresses) | **Get** /api/atlas/v2/groups/{groupId}/ipAddresses | Return All IP Addresses for One Project | Experimental
 *ProjectsApi* | [SetProjectLimit](./docs/ProjectsApi.md#setprojectlimit) | **Patch** /api/atlas/v2/groups/{groupId}/limits/{limitName} | Set One Project Limit | Experimental
-*ProjectsApi* | [UpdateProject](./docs/ProjectsApi.md#updateproject) | **Patch** /api/atlas/v2/groups/{groupId} | Update One Project Name | Experimental
+*ProjectsApi* | [UpdateProject](./docs/ProjectsApi.md#updateproject) | **Patch** /api/atlas/v2/groups/{groupId} | Update One Project | Experimental
 *ProjectsApi* | [UpdateProjectInvitation](./docs/ProjectsApi.md#updateprojectinvitation) | **Patch** /api/atlas/v2/groups/{groupId}/invites | Update One Project Invitation | Stable
 *ProjectsApi* | [UpdateProjectInvitationById](./docs/ProjectsApi.md#updateprojectinvitationbyid) | **Patch** /api/atlas/v2/groups/{groupId}/invites/{invitationId} | Update One Project Invitation by Invitation ID | Stable
 *ProjectsApi* | [UpdateProjectRoles](./docs/ProjectsApi.md#updateprojectroles) | **Put** /api/atlas/v2/groups/{groupId}/users/{userId}/roles | Update Project Roles for One MongoDB Cloud User | Experimental
@@ -324,6 +324,7 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
 *StreamsApi* | [CreateStreamInstance](./docs/StreamsApi.md#createstreaminstance) | **Post** /api/atlas/v2/groups/{groupId}/streams | Create One Stream Instance | Experimental
 *StreamsApi* | [DeleteStreamConnection](./docs/StreamsApi.md#deletestreamconnection) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName} | Delete One Stream Connection | Experimental
 *StreamsApi* | [DeleteStreamInstance](./docs/StreamsApi.md#deletestreaminstance) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Delete One Stream Instance | Experimental
+*StreamsApi* | [DownloadStreamTenantAuditLogs](./docs/StreamsApi.md#downloadstreamtenantauditlogs) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/auditLogs | Download Audit Logs for One Atlas Stream Processing Instance | Experimental
 *StreamsApi* | [GetStreamConnection](./docs/StreamsApi.md#getstreamconnection) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName} | Return One Stream Connection | Experimental
 *StreamsApi* | [GetStreamInstance](./docs/StreamsApi.md#getstreaminstance) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Return One Stream Instance | Experimental
 *StreamsApi* | [ListStreamConnections](./docs/StreamsApi.md#liststreamconnections) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections | Return All Connections Of The Stream Instances | Experimental
@@ -518,11 +519,11 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
  - [GroupInvitationRequest](./docs/GroupInvitationRequest.md)
  - [GroupInvitationUpdateRequest](./docs/GroupInvitationUpdateRequest.md)
  - [GroupMaintenanceWindow](./docs/GroupMaintenanceWindow.md)
- - [GroupName](./docs/GroupName.md)
  - [GroupPaginatedEvent](./docs/GroupPaginatedEvent.md)
  - [GroupRole](./docs/GroupRole.md)
  - [GroupService](./docs/GroupService.md)
  - [GroupSettings](./docs/GroupSettings.md)
+ - [GroupUpdate](./docs/GroupUpdate.md)
  - [HardwareSpec](./docs/HardwareSpec.md)
  - [InboundControlPlaneCloudProviderIPAddresses](./docs/InboundControlPlaneCloudProviderIPAddresses.md)
  - [IndexOptions](./docs/IndexOptions.md)
@@ -584,7 +585,7 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
  - [PaginatedApiInvoice](./docs/PaginatedApiInvoice.md)
  - [PaginatedApiStreamsConnection](./docs/PaginatedApiStreamsConnection.md)
  - [PaginatedApiStreamsTenant](./docs/PaginatedApiStreamsTenant.md)
- - [PaginatedApiUserAccessList](./docs/PaginatedApiUserAccessList.md)
+ - [PaginatedApiUserAccessListResponse](./docs/PaginatedApiUserAccessListResponse.md)
  - [PaginatedAppUser](./docs/PaginatedAppUser.md)
  - [PaginatedAtlasGroup](./docs/PaginatedAtlasGroup.md)
  - [PaginatedBackupSnapshot](./docs/PaginatedBackupSnapshot.md)
@@ -678,7 +679,8 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
  - [UpdateCustomDBRole](./docs/UpdateCustomDBRole.md)
  - [UpdateGroupRolesForUser](./docs/UpdateGroupRolesForUser.md)
  - [UpdateOrgRolesForUser](./docs/UpdateOrgRolesForUser.md)
- - [UserAccessList](./docs/UserAccessList.md)
+ - [UserAccessListRequest](./docs/UserAccessListRequest.md)
+ - [UserAccessListResponse](./docs/UserAccessListResponse.md)
  - [UserAccessRoleAssignment](./docs/UserAccessRoleAssignment.md)
  - [UserCert](./docs/UserCert.md)
  - [UserCustomDBRole](./docs/UserCustomDBRole.md)
