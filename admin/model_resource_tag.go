@@ -9,17 +9,19 @@ import (
 // ResourceTag Key-value pair that tags and categorizes a MongoDB Cloud organization, project, or cluster. For example, `environment : production`.
 type ResourceTag struct {
 	// Constant that defines the set of the tag. For example, `environment` in the `environment : production` tag.
-	Key *string `json:"key,omitempty"`
+	Key string `json:"key"`
 	// Variable that belongs to the set of the tag. For example, `production` in the `environment : production` tag.
-	Value *string `json:"value,omitempty"`
+	Value string `json:"value"`
 }
 
 // NewResourceTag instantiates a new ResourceTag object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewResourceTag() *ResourceTag {
+func NewResourceTag(key string, value string) *ResourceTag {
 	this := ResourceTag{}
+	this.Key = key
+	this.Value = value
 	return &this
 }
 
@@ -31,70 +33,52 @@ func NewResourceTagWithDefaults() *ResourceTag {
 	return &this
 }
 
-// GetKey returns the Key field value if set, zero value otherwise
+// GetKey returns the Key field value
 func (o *ResourceTag) GetKey() string {
-	if o == nil || IsNil(o.Key) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Key
+
+	return o.Key
 }
 
-// GetKeyOk returns a tuple with the Key field value if set, nil otherwise
+// GetKeyOk returns a tuple with the Key field value
 // and a boolean to check if the value has been set.
 func (o *ResourceTag) GetKeyOk() (*string, bool) {
-	if o == nil || IsNil(o.Key) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.Key, true
+	return &o.Key, true
 }
 
-// HasKey returns a boolean if a field has been set.
-func (o *ResourceTag) HasKey() bool {
-	if o != nil && !IsNil(o.Key) {
-		return true
-	}
-
-	return false
-}
-
-// SetKey gets a reference to the given string and assigns it to the Key field.
+// SetKey sets field value
 func (o *ResourceTag) SetKey(v string) {
-	o.Key = &v
+	o.Key = v
 }
 
-// GetValue returns the Value field value if set, zero value otherwise
+// GetValue returns the Value field value
 func (o *ResourceTag) GetValue() string {
-	if o == nil || IsNil(o.Value) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Value
+
+	return o.Value
 }
 
-// GetValueOk returns a tuple with the Value field value if set, nil otherwise
+// GetValueOk returns a tuple with the Value field value
 // and a boolean to check if the value has been set.
 func (o *ResourceTag) GetValueOk() (*string, bool) {
-	if o == nil || IsNil(o.Value) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.Value, true
+	return &o.Value, true
 }
 
-// HasValue returns a boolean if a field has been set.
-func (o *ResourceTag) HasValue() bool {
-	if o != nil && !IsNil(o.Value) {
-		return true
-	}
-
-	return false
-}
-
-// SetValue gets a reference to the given string and assigns it to the Value field.
+// SetValue sets field value
 func (o *ResourceTag) SetValue(v string) {
-	o.Value = &v
+	o.Value = v
 }
 
 func (o ResourceTag) MarshalJSONWithoutReadOnly() ([]byte, error) {
@@ -106,11 +90,7 @@ func (o ResourceTag) MarshalJSONWithoutReadOnly() ([]byte, error) {
 }
 func (o ResourceTag) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Key) {
-		toSerialize["key"] = o.Key
-	}
-	if !IsNil(o.Value) {
-		toSerialize["value"] = o.Value
-	}
+	toSerialize["key"] = o.Key
+	toSerialize["value"] = o.Value
 	return toSerialize, nil
 }

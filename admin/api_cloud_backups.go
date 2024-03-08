@@ -4620,11 +4620,13 @@ type UpdateDataProtectionSettingsApiRequest struct {
 	ApiService                     CloudBackupsApi
 	groupId                        string
 	dataProtectionSettings20231001 *DataProtectionSettings20231001
+	overwriteBackupPolicies        *bool
 }
 
 type UpdateDataProtectionSettingsApiParams struct {
 	GroupId                        string
 	DataProtectionSettings20231001 *DataProtectionSettings20231001
+	OverwriteBackupPolicies        *bool
 }
 
 func (a *CloudBackupsApiService) UpdateDataProtectionSettingsWithParams(ctx context.Context, args *UpdateDataProtectionSettingsApiParams) UpdateDataProtectionSettingsApiRequest {
@@ -4633,7 +4635,14 @@ func (a *CloudBackupsApiService) UpdateDataProtectionSettingsWithParams(ctx cont
 		ctx:                            ctx,
 		groupId:                        args.GroupId,
 		dataProtectionSettings20231001: args.DataProtectionSettings20231001,
+		overwriteBackupPolicies:        args.OverwriteBackupPolicies,
 	}
+}
+
+// Flag that indicates whether to overwrite non complying backup policies with the new data protection settings or not.
+func (r UpdateDataProtectionSettingsApiRequest) OverwriteBackupPolicies(overwriteBackupPolicies bool) UpdateDataProtectionSettingsApiRequest {
+	r.overwriteBackupPolicies = &overwriteBackupPolicies
+	return r
 }
 
 func (r UpdateDataProtectionSettingsApiRequest) Execute() (*DataProtectionSettings20231001, *http.Response, error) {
@@ -4684,6 +4693,13 @@ func (a *CloudBackupsApiService) UpdateDataProtectionSettingsExecute(r UpdateDat
 		return localVarReturnValue, nil, reportError("dataProtectionSettings20231001 is required and must be specified")
 	}
 
+	if r.overwriteBackupPolicies != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "overwriteBackupPolicies", r.overwriteBackupPolicies, "")
+	} else {
+		var defaultValue bool = true
+		r.overwriteBackupPolicies = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "overwriteBackupPolicies", r.overwriteBackupPolicies, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-10-01+json"}
 

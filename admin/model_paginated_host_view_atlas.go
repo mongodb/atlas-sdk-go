@@ -14,7 +14,7 @@ type PaginatedHostViewAtlas struct {
 	// List of returned documents that MongoDB Cloud providers when completing this request.
 	// Read only field.
 	Results *[]ApiHostViewAtlas `json:"results,omitempty"`
-	// Number of documents returned in this response.
+	// Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`.
 	// Read only field.
 	TotalCount *int `json:"totalCount,omitempty"`
 }

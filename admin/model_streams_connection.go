@@ -11,7 +11,7 @@ type StreamsConnection struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
-	// Human-readable label that identifies the stream connection.
+	// Human-readable label that identifies the stream connection. In the case of the Sample type, this is the name of the sample source.
 	Name *string `json:"name,omitempty"`
 	// Type of the connection. Can be either Cluster or Kafka.
 	Type *string `json:"type,omitempty"`

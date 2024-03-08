@@ -20,7 +20,7 @@ type GlobalClustersApi interface {
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param clusterName Human-readable label that identifies this advanced cluster.
+		@param clusterName Human-readable label that identifies this cluster.
 		@return CreateCustomZoneMappingApiRequest
 	*/
 	CreateCustomZoneMapping(ctx context.Context, groupId string, clusterName string, customZoneMappings *CustomZoneMappings) CreateCustomZoneMappingApiRequest
@@ -38,18 +38,18 @@ type GlobalClustersApi interface {
 	CreateCustomZoneMappingExecute(r CreateCustomZoneMappingApiRequest) (*GeoSharding, *http.Response, error)
 
 	/*
-		CreateManagedNamespace Create One Managed Namespace in One Global Multi-Cloud Cluster
+		CreateManagedNamespace Create One Managed Namespace in One Global Cluster
 
 		[experimental] Creates one managed namespace within the specified global cluster. A managed namespace identifies a collection using the database name, the dot separator, and the collection name. To use this resource, the requesting API Key must have the Project Data Access Admin role. Deprecated versions: v2-{2023-01-01}
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param clusterName Human-readable label that identifies this advanced cluster.
+		@param clusterName Human-readable label that identifies this cluster.
 		@return CreateManagedNamespaceApiRequest
 	*/
 	CreateManagedNamespace(ctx context.Context, groupId string, clusterName string, managedNamespace *ManagedNamespace) CreateManagedNamespaceApiRequest
 	/*
-		CreateManagedNamespace Create One Managed Namespace in One Global Multi-Cloud Cluster
+		CreateManagedNamespace Create One Managed Namespace in One Global Cluster
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -62,18 +62,18 @@ type GlobalClustersApi interface {
 	CreateManagedNamespaceExecute(r CreateManagedNamespaceApiRequest) (*GeoSharding, *http.Response, error)
 
 	/*
-		DeleteAllCustomZoneMappings Remove All Custom Zone Mappings from One Global Multi-Cloud Cluster
+		DeleteAllCustomZoneMappings Remove All Custom Zone Mappings from One Global Cluster
 
 		[experimental] Removes all custom zone mappings for the specified global cluster. A custom zone mapping matches one ISO 3166-2 location code to a zone in your global cluster. Removing the custom zone mappings restores the default mapping. By default, MongoDB Cloud maps each location code to the closest geographical zone. To use this resource, the requesting API Key must have the Project Owner role. Deprecated versions: v2-{2023-01-01}
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param clusterName Human-readable label that identifies this advanced cluster.
+		@param clusterName Human-readable label that identifies this cluster.
 		@return DeleteAllCustomZoneMappingsApiRequest
 	*/
 	DeleteAllCustomZoneMappings(ctx context.Context, groupId string, clusterName string) DeleteAllCustomZoneMappingsApiRequest
 	/*
-		DeleteAllCustomZoneMappings Remove All Custom Zone Mappings from One Global Multi-Cloud Cluster
+		DeleteAllCustomZoneMappings Remove All Custom Zone Mappings from One Global Cluster
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -86,18 +86,18 @@ type GlobalClustersApi interface {
 	DeleteAllCustomZoneMappingsExecute(r DeleteAllCustomZoneMappingsApiRequest) (*GeoSharding, *http.Response, error)
 
 	/*
-		DeleteManagedNamespace Remove One Managed Namespace from One Global Multi-Cloud Cluster
+		DeleteManagedNamespace Remove One Managed Namespace from One Global Cluster
 
 		[experimental] Removes one managed namespace within the specified global cluster. A managed namespace identifies a collection using the database name, the dot separator, and the collection name. Deleting a managed namespace does not remove the associated collection or data. To use this resource, the requesting API Key must have the Project Data Access Admin role. Deprecated versions: v2-{2023-01-01}
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param clusterName Human-readable label that identifies this advanced cluster.
+		@param clusterName Human-readable label that identifies this cluster.
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@return DeleteManagedNamespaceApiRequest
 	*/
 	DeleteManagedNamespace(ctx context.Context, clusterName string, groupId string) DeleteManagedNamespaceApiRequest
 	/*
-		DeleteManagedNamespace Remove One Managed Namespace from One Global Multi-Cloud Cluster
+		DeleteManagedNamespace Remove One Managed Namespace from One Global Cluster
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -110,18 +110,18 @@ type GlobalClustersApi interface {
 	DeleteManagedNamespaceExecute(r DeleteManagedNamespaceApiRequest) (*GeoSharding, *http.Response, error)
 
 	/*
-		GetManagedNamespace Return One Managed Namespace in One Global Multi-Cloud Cluster
+		GetManagedNamespace Return One Managed Namespace in One Global Cluster
 
 		Returns one managed namespace within the specified global cluster. A managed namespace identifies a collection using the database name, the dot separator, and the collection name. To use this resource, the requesting API Key must have the Project Read Only role. Deprecated versions: v2-{2023-01-01}
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param clusterName Human-readable label that identifies this advanced cluster.
+		@param clusterName Human-readable label that identifies this cluster.
 		@return GetManagedNamespaceApiRequest
 	*/
 	GetManagedNamespace(ctx context.Context, groupId string, clusterName string) GetManagedNamespaceApiRequest
 	/*
-		GetManagedNamespace Return One Managed Namespace in One Global Multi-Cloud Cluster
+		GetManagedNamespace Return One Managed Namespace in One Global Cluster
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -172,7 +172,7 @@ CreateCustomZoneMapping Add One Entry to One Custom Zone Mapping
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param clusterName Human-readable label that identifies this advanced cluster.
+	@param clusterName Human-readable label that identifies this cluster.
 	@return CreateCustomZoneMappingApiRequest
 */
 func (a *GlobalClustersApiService) CreateCustomZoneMapping(ctx context.Context, groupId string, clusterName string, customZoneMappings *CustomZoneMappings) CreateCustomZoneMappingApiRequest {
@@ -305,13 +305,13 @@ func (r CreateManagedNamespaceApiRequest) Execute() (*GeoSharding, *http.Respons
 }
 
 /*
-CreateManagedNamespace Create One Managed Namespace in One Global Multi-Cloud Cluster
+CreateManagedNamespace Create One Managed Namespace in One Global Cluster
 
 [experimental] Creates one managed namespace within the specified global cluster. A managed namespace identifies a collection using the database name, the dot separator, and the collection name. To use this resource, the requesting API Key must have the Project Data Access Admin role. Deprecated versions: v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param clusterName Human-readable label that identifies this advanced cluster.
+	@param clusterName Human-readable label that identifies this cluster.
 	@return CreateManagedNamespaceApiRequest
 */
 func (a *GlobalClustersApiService) CreateManagedNamespace(ctx context.Context, groupId string, clusterName string, managedNamespace *ManagedNamespace) CreateManagedNamespaceApiRequest {
@@ -441,13 +441,13 @@ func (r DeleteAllCustomZoneMappingsApiRequest) Execute() (*GeoSharding, *http.Re
 }
 
 /*
-DeleteAllCustomZoneMappings Remove All Custom Zone Mappings from One Global Multi-Cloud Cluster
+DeleteAllCustomZoneMappings Remove All Custom Zone Mappings from One Global Cluster
 
 [experimental] Removes all custom zone mappings for the specified global cluster. A custom zone mapping matches one ISO 3166-2 location code to a zone in your global cluster. Removing the custom zone mappings restores the default mapping. By default, MongoDB Cloud maps each location code to the closest geographical zone. To use this resource, the requesting API Key must have the Project Owner role. Deprecated versions: v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param clusterName Human-readable label that identifies this advanced cluster.
+	@param clusterName Human-readable label that identifies this cluster.
 	@return DeleteAllCustomZoneMappingsApiRequest
 */
 func (a *GlobalClustersApiService) DeleteAllCustomZoneMappings(ctx context.Context, groupId string, clusterName string) DeleteAllCustomZoneMappingsApiRequest {
@@ -589,12 +589,12 @@ func (r DeleteManagedNamespaceApiRequest) Execute() (*GeoSharding, *http.Respons
 }
 
 /*
-DeleteManagedNamespace Remove One Managed Namespace from One Global Multi-Cloud Cluster
+DeleteManagedNamespace Remove One Managed Namespace from One Global Cluster
 
 [experimental] Removes one managed namespace within the specified global cluster. A managed namespace identifies a collection using the database name, the dot separator, and the collection name. Deleting a managed namespace does not remove the associated collection or data. To use this resource, the requesting API Key must have the Project Data Access Admin role. Deprecated versions: v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param clusterName Human-readable label that identifies this advanced cluster.
+	@param clusterName Human-readable label that identifies this cluster.
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return DeleteManagedNamespaceApiRequest
 */
@@ -725,13 +725,13 @@ func (r GetManagedNamespaceApiRequest) Execute() (*GeoSharding, *http.Response, 
 }
 
 /*
-GetManagedNamespace Return One Managed Namespace in One Global Multi-Cloud Cluster
+GetManagedNamespace Return One Managed Namespace in One Global Cluster
 
 Returns one managed namespace within the specified global cluster. A managed namespace identifies a collection using the database name, the dot separator, and the collection name. To use this resource, the requesting API Key must have the Project Read Only role. Deprecated versions: v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param clusterName Human-readable label that identifies this advanced cluster.
+	@param clusterName Human-readable label that identifies this cluster.
 	@return GetManagedNamespaceApiRequest
 */
 func (a *GlobalClustersApiService) GetManagedNamespace(ctx context.Context, groupId string, clusterName string) GetManagedNamespaceApiRequest {

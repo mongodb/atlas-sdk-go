@@ -38,7 +38,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115007/admin"
+    "go.mongodb.org/atlas-sdk/v20231115008/admin"
 )
 
 func main() {
@@ -49,7 +49,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
-    apiSearchDeploymentRequest := *openapiclient.NewApiSearchDeploymentRequest() // ApiSearchDeploymentRequest | 
+    apiSearchDeploymentRequest := *openapiclient.NewApiSearchDeploymentRequest([]openapiclient.ApiSearchDeploymentSpec{*openapiclient.NewApiSearchDeploymentSpec("InstanceSize_example", int(2))}) // ApiSearchDeploymentRequest | 
 
     resp, r, err := sdk.AtlasSearchApi.CreateAtlasSearchDeployment(context.Background(), groupId, clusterName, &apiSearchDeploymentRequest).Execute()
     if err != nil {
@@ -116,7 +116,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115007/admin"
+    "go.mongodb.org/atlas-sdk/v20231115008/admin"
 )
 
 func main() {
@@ -199,7 +199,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115007/admin"
+    "go.mongodb.org/atlas-sdk/v20231115008/admin"
 )
 
 func main() {
@@ -273,7 +273,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115007/admin"
+    "go.mongodb.org/atlas-sdk/v20231115008/admin"
 )
 
 func main() {
@@ -357,7 +357,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115007/admin"
+    "go.mongodb.org/atlas-sdk/v20231115008/admin"
 )
 
 func main() {
@@ -433,7 +433,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115007/admin"
+    "go.mongodb.org/atlas-sdk/v20231115008/admin"
 )
 
 func main() {
@@ -512,7 +512,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115007/admin"
+    "go.mongodb.org/atlas-sdk/v20231115008/admin"
 )
 
 func main() {
@@ -599,7 +599,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115007/admin"
+    "go.mongodb.org/atlas-sdk/v20231115008/admin"
 )
 
 func main() {
@@ -610,7 +610,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
-    apiSearchDeploymentRequest := *openapiclient.NewApiSearchDeploymentRequest() // ApiSearchDeploymentRequest | 
+    apiSearchDeploymentRequest := *openapiclient.NewApiSearchDeploymentRequest([]openapiclient.ApiSearchDeploymentSpec{*openapiclient.NewApiSearchDeploymentSpec("InstanceSize_example", int(2))}) // ApiSearchDeploymentRequest | 
 
     resp, r, err := sdk.AtlasSearchApi.UpdateAtlasSearchDeployment(context.Background(), groupId, clusterName, &apiSearchDeploymentRequest).Execute()
     if err != nil {
@@ -677,7 +677,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115007/admin"
+    "go.mongodb.org/atlas-sdk/v20231115008/admin"
 )
 
 func main() {

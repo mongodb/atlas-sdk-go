@@ -16,7 +16,7 @@ type ProjectsApi interface {
 	/*
 		AddUserToProject Add One MongoDB Cloud User to One Project
 
-		[experimental] Adds one MongoDB Cloud user to the specified project. If the MongoDB Cloud user is not a member of the project's organization, then the user must accept their invitation to the organization to access information within the specified project. To use this resource, the requesting API Key must have the Group User Admin role.
+		[experimental] Adds one MongoDB Cloud user to the specified project. If the MongoDB Cloud user is not a member of the project's organization, then the user must accept their invitation to the organization to access information within the specified project. If the MongoDB Cloud User is already a member of the project's organization, then they will be added to the project immediately and an invitation will not be returned by this resource. To use this resource, the requesting API Key must have the Group User Admin role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -450,17 +450,17 @@ type ProjectsApi interface {
 	SetProjectLimitExecute(r SetProjectLimitApiRequest) (*DataFederationLimit, *http.Response, error)
 
 	/*
-		UpdateProject Update One Project Name
+		UpdateProject Update One Project
 
-		[experimental] Updates the human-readable label that identifies the specified project. To use this resource, the requesting API Key must have the Project Owner role.
+		[experimental] Updates the human-readable label that identifies the specified project, or the tags associated with the project. To use this resource, the requesting API Key must have the Project Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@return UpdateProjectApiRequest
 	*/
-	UpdateProject(ctx context.Context, groupId string, groupName *GroupName) UpdateProjectApiRequest
+	UpdateProject(ctx context.Context, groupId string, groupUpdate *GroupUpdate) UpdateProjectApiRequest
 	/*
-		UpdateProject Update One Project Name
+		UpdateProject Update One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -606,7 +606,7 @@ func (r AddUserToProjectApiRequest) Execute() (*OrganizationInvitation, *http.Re
 /*
 AddUserToProject Add One MongoDB Cloud User to One Project
 
-[experimental] Adds one MongoDB Cloud user to the specified project. If the MongoDB Cloud user is not a member of the project's organization, then the user must accept their invitation to the organization to access information within the specified project. To use this resource, the requesting API Key must have the Group User Admin role.
+[experimental] Adds one MongoDB Cloud user to the specified project. If the MongoDB Cloud user is not a member of the project's organization, then the user must accept their invitation to the organization to access information within the specified project. If the MongoDB Cloud User is already a member of the project's organization, then they will be added to the project immediately and an invitation will not be returned by this resource. To use this resource, the requesting API Key must have the Group User Admin role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -3029,23 +3029,23 @@ func (a *ProjectsApiService) SetProjectLimitExecute(r SetProjectLimitApiRequest)
 }
 
 type UpdateProjectApiRequest struct {
-	ctx        context.Context
-	ApiService ProjectsApi
-	groupId    string
-	groupName  *GroupName
+	ctx         context.Context
+	ApiService  ProjectsApi
+	groupId     string
+	groupUpdate *GroupUpdate
 }
 
 type UpdateProjectApiParams struct {
-	GroupId   string
-	GroupName *GroupName
+	GroupId     string
+	GroupUpdate *GroupUpdate
 }
 
 func (a *ProjectsApiService) UpdateProjectWithParams(ctx context.Context, args *UpdateProjectApiParams) UpdateProjectApiRequest {
 	return UpdateProjectApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		groupId:    args.GroupId,
-		groupName:  args.GroupName,
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     args.GroupId,
+		groupUpdate: args.GroupUpdate,
 	}
 }
 
@@ -3054,20 +3054,20 @@ func (r UpdateProjectApiRequest) Execute() (*Group, *http.Response, error) {
 }
 
 /*
-UpdateProject Update One Project Name
+UpdateProject Update One Project
 
-[experimental] Updates the human-readable label that identifies the specified project. To use this resource, the requesting API Key must have the Project Owner role.
+[experimental] Updates the human-readable label that identifies the specified project, or the tags associated with the project. To use this resource, the requesting API Key must have the Project Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return UpdateProjectApiRequest
 */
-func (a *ProjectsApiService) UpdateProject(ctx context.Context, groupId string, groupName *GroupName) UpdateProjectApiRequest {
+func (a *ProjectsApiService) UpdateProject(ctx context.Context, groupId string, groupUpdate *GroupUpdate) UpdateProjectApiRequest {
 	return UpdateProjectApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		groupId:    groupId,
-		groupName:  groupName,
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     groupId,
+		groupUpdate: groupUpdate,
 	}
 }
 
@@ -3093,8 +3093,8 @@ func (a *ProjectsApiService) UpdateProjectExecute(r UpdateProjectApiRequest) (*G
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.groupName == nil {
-		return localVarReturnValue, nil, reportError("groupName is required and must be specified")
+	if r.groupUpdate == nil {
+		return localVarReturnValue, nil, reportError("groupUpdate is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -3115,7 +3115,7 @@ func (a *ProjectsApiService) UpdateProjectExecute(r UpdateProjectApiRequest) (*G
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.groupName
+	localVarPostBody = r.groupUpdate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

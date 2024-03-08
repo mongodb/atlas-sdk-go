@@ -14,7 +14,7 @@ type GroupPaginatedEvent struct {
 	// List of returned documents that MongoDB Cloud providers when completing this request.
 	// Read only field.
 	Results *[]EventViewForNdsGroup `json:"results,omitempty"`
-	// Number of documents returned in this response if **includeCount** query param is true.
+	// Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`.
 	// Read only field.
 	TotalCount *int `json:"totalCount,omitempty"`
 }

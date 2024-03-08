@@ -8,6 +8,7 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+	"reflect"
 	"strings"
 )
 
@@ -1871,14 +1872,14 @@ type ListIdentityProvidersApiRequest struct {
 	ctx                  context.Context
 	ApiService           FederatedAuthenticationApi
 	federationSettingsId string
-	protocol             *string
-	idpType              *string
+	protocol             *[]string
+	idpType              *[]string
 }
 
 type ListIdentityProvidersApiParams struct {
 	FederationSettingsId string
-	Protocol             *string
-	IdpType              *string
+	Protocol             *[]string
+	IdpType              *[]string
 }
 
 func (a *FederatedAuthenticationApiService) ListIdentityProvidersWithParams(ctx context.Context, args *ListIdentityProvidersApiParams) ListIdentityProvidersApiRequest {
@@ -1891,14 +1892,14 @@ func (a *FederatedAuthenticationApiService) ListIdentityProvidersWithParams(ctx 
 	}
 }
 
-// The protocols of the target identity providers. Defaults to SAML.
-func (r ListIdentityProvidersApiRequest) Protocol(protocol string) ListIdentityProvidersApiRequest {
+// The protocols of the target identity providers.
+func (r ListIdentityProvidersApiRequest) Protocol(protocol []string) ListIdentityProvidersApiRequest {
 	r.protocol = &protocol
 	return r
 }
 
-// The types of the target identity providers. Defaults to WORKFORCE.
-func (r ListIdentityProvidersApiRequest) IdpType(idpType string) ListIdentityProvidersApiRequest {
+// The types of the target identity providers.
+func (r ListIdentityProvidersApiRequest) IdpType(idpType []string) ListIdentityProvidersApiRequest {
 	r.idpType = &idpType
 	return r
 }
@@ -1948,10 +1949,18 @@ func (a *FederatedAuthenticationApiService) ListIdentityProvidersExecute(r ListI
 	localVarFormParams := url.Values{}
 
 	if r.protocol != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "protocol", r.protocol, "")
+		t := *r.protocol
+		// Workaround for unused import
+		_ = reflect.Append
+		parameterAddToHeaderOrQuery(localVarQueryParams, "protocol", t, "multi")
+
 	}
 	if r.idpType != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "idpType", r.idpType, "")
+		t := *r.idpType
+		// Workaround for unused import
+		_ = reflect.Append
+		parameterAddToHeaderOrQuery(localVarQueryParams, "idpType", t, "multi")
+
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

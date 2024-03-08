@@ -70,7 +70,7 @@ type ProgrammaticAPIKeysApi interface {
 		@param apiUserId Unique 24-hexadecimal digit string that identifies this organization API key for which you want to create a new access list entry.
 		@return CreateApiKeyAccessListApiRequest
 	*/
-	CreateApiKeyAccessList(ctx context.Context, orgId string, apiUserId string, userAccessList *[]UserAccessList) CreateApiKeyAccessListApiRequest
+	CreateApiKeyAccessList(ctx context.Context, orgId string, apiUserId string, userAccessListRequest *[]UserAccessListRequest) CreateApiKeyAccessListApiRequest
 	/*
 		CreateApiKeyAccessList Create Access List Entries for One Organization API Key
 
@@ -82,7 +82,7 @@ type ProgrammaticAPIKeysApi interface {
 	CreateApiKeyAccessListWithParams(ctx context.Context, args *CreateApiKeyAccessListApiParams) CreateApiKeyAccessListApiRequest
 
 	// Method available only for mocking purposes
-	CreateApiKeyAccessListExecute(r CreateApiKeyAccessListApiRequest) (*PaginatedApiUserAccessList, *http.Response, error)
+	CreateApiKeyAccessListExecute(r CreateApiKeyAccessListApiRequest) (*PaginatedApiUserAccessListResponse, *http.Response, error)
 
 	/*
 		CreateProjectApiKey Create and Assign One Organization API Key to One Project
@@ -203,7 +203,7 @@ type ProgrammaticAPIKeysApi interface {
 	GetApiKeyAccessListWithParams(ctx context.Context, args *GetApiKeyAccessListApiParams) GetApiKeyAccessListApiRequest
 
 	// Method available only for mocking purposes
-	GetApiKeyAccessListExecute(r GetApiKeyAccessListApiRequest) (*UserAccessList, *http.Response, error)
+	GetApiKeyAccessListExecute(r GetApiKeyAccessListApiRequest) (*UserAccessListResponse, *http.Response, error)
 
 	/*
 		ListApiKeyAccessListsEntries Return All Access List Entries for One Organization API Key
@@ -227,7 +227,7 @@ type ProgrammaticAPIKeysApi interface {
 	ListApiKeyAccessListsEntriesWithParams(ctx context.Context, args *ListApiKeyAccessListsEntriesApiParams) ListApiKeyAccessListsEntriesApiRequest
 
 	// Method available only for mocking purposes
-	ListApiKeyAccessListsEntriesExecute(r ListApiKeyAccessListsEntriesApiRequest) (*PaginatedApiUserAccessList, *http.Response, error)
+	ListApiKeyAccessListsEntriesExecute(r ListApiKeyAccessListsEntriesApiRequest) (*PaginatedApiUserAccessListResponse, *http.Response, error)
 
 	/*
 		ListApiKeys Return All Organization API Keys
@@ -624,35 +624,35 @@ func (a *ProgrammaticAPIKeysApiService) CreateApiKeyExecute(r CreateApiKeyApiReq
 }
 
 type CreateApiKeyAccessListApiRequest struct {
-	ctx            context.Context
-	ApiService     ProgrammaticAPIKeysApi
-	orgId          string
-	apiUserId      string
-	userAccessList *[]UserAccessList
-	includeCount   *bool
-	itemsPerPage   *int
-	pageNum        *int
+	ctx                   context.Context
+	ApiService            ProgrammaticAPIKeysApi
+	orgId                 string
+	apiUserId             string
+	userAccessListRequest *[]UserAccessListRequest
+	includeCount          *bool
+	itemsPerPage          *int
+	pageNum               *int
 }
 
 type CreateApiKeyAccessListApiParams struct {
-	OrgId          string
-	ApiUserId      string
-	UserAccessList *[]UserAccessList
-	IncludeCount   *bool
-	ItemsPerPage   *int
-	PageNum        *int
+	OrgId                 string
+	ApiUserId             string
+	UserAccessListRequest *[]UserAccessListRequest
+	IncludeCount          *bool
+	ItemsPerPage          *int
+	PageNum               *int
 }
 
 func (a *ProgrammaticAPIKeysApiService) CreateApiKeyAccessListWithParams(ctx context.Context, args *CreateApiKeyAccessListApiParams) CreateApiKeyAccessListApiRequest {
 	return CreateApiKeyAccessListApiRequest{
-		ApiService:     a,
-		ctx:            ctx,
-		orgId:          args.OrgId,
-		apiUserId:      args.ApiUserId,
-		userAccessList: args.UserAccessList,
-		includeCount:   args.IncludeCount,
-		itemsPerPage:   args.ItemsPerPage,
-		pageNum:        args.PageNum,
+		ApiService:            a,
+		ctx:                   ctx,
+		orgId:                 args.OrgId,
+		apiUserId:             args.ApiUserId,
+		userAccessListRequest: args.UserAccessListRequest,
+		includeCount:          args.IncludeCount,
+		itemsPerPage:          args.ItemsPerPage,
+		pageNum:               args.PageNum,
 	}
 }
 
@@ -674,7 +674,7 @@ func (r CreateApiKeyAccessListApiRequest) PageNum(pageNum int) CreateApiKeyAcces
 	return r
 }
 
-func (r CreateApiKeyAccessListApiRequest) Execute() (*PaginatedApiUserAccessList, *http.Response, error) {
+func (r CreateApiKeyAccessListApiRequest) Execute() (*PaginatedApiUserAccessListResponse, *http.Response, error) {
 	return r.ApiService.CreateApiKeyAccessListExecute(r)
 }
 
@@ -688,25 +688,25 @@ Creates the access list entries for the specified organization API key. Resource
 	@param apiUserId Unique 24-hexadecimal digit string that identifies this organization API key for which you want to create a new access list entry.
 	@return CreateApiKeyAccessListApiRequest
 */
-func (a *ProgrammaticAPIKeysApiService) CreateApiKeyAccessList(ctx context.Context, orgId string, apiUserId string, userAccessList *[]UserAccessList) CreateApiKeyAccessListApiRequest {
+func (a *ProgrammaticAPIKeysApiService) CreateApiKeyAccessList(ctx context.Context, orgId string, apiUserId string, userAccessListRequest *[]UserAccessListRequest) CreateApiKeyAccessListApiRequest {
 	return CreateApiKeyAccessListApiRequest{
-		ApiService:     a,
-		ctx:            ctx,
-		orgId:          orgId,
-		apiUserId:      apiUserId,
-		userAccessList: userAccessList,
+		ApiService:            a,
+		ctx:                   ctx,
+		orgId:                 orgId,
+		apiUserId:             apiUserId,
+		userAccessListRequest: userAccessListRequest,
 	}
 }
 
 // Execute executes the request
 //
-//	@return PaginatedApiUserAccessList
-func (a *ProgrammaticAPIKeysApiService) CreateApiKeyAccessListExecute(r CreateApiKeyAccessListApiRequest) (*PaginatedApiUserAccessList, *http.Response, error) {
+//	@return PaginatedApiUserAccessListResponse
+func (a *ProgrammaticAPIKeysApiService) CreateApiKeyAccessListExecute(r CreateApiKeyAccessListApiRequest) (*PaginatedApiUserAccessListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *PaginatedApiUserAccessList
+		localVarReturnValue *PaginatedApiUserAccessListResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProgrammaticAPIKeysApiService.CreateApiKeyAccessList")
@@ -721,8 +721,8 @@ func (a *ProgrammaticAPIKeysApiService) CreateApiKeyAccessListExecute(r CreateAp
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.userAccessList == nil {
-		return localVarReturnValue, nil, reportError("userAccessList is required and must be specified")
+	if r.userAccessListRequest == nil {
+		return localVarReturnValue, nil, reportError("userAccessListRequest is required and must be specified")
 	}
 
 	if r.includeCount != nil {
@@ -764,7 +764,7 @@ func (a *ProgrammaticAPIKeysApiService) CreateApiKeyAccessListExecute(r CreateAp
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.userAccessList
+	localVarPostBody = r.userAccessListRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1363,7 +1363,7 @@ func (a *ProgrammaticAPIKeysApiService) GetApiKeyAccessListWithParams(ctx contex
 	}
 }
 
-func (r GetApiKeyAccessListApiRequest) Execute() (*UserAccessList, *http.Response, error) {
+func (r GetApiKeyAccessListApiRequest) Execute() (*UserAccessListResponse, *http.Response, error) {
 	return r.ApiService.GetApiKeyAccessListExecute(r)
 }
 
@@ -1390,13 +1390,13 @@ func (a *ProgrammaticAPIKeysApiService) GetApiKeyAccessList(ctx context.Context,
 
 // Execute executes the request
 //
-//	@return UserAccessList
-func (a *ProgrammaticAPIKeysApiService) GetApiKeyAccessListExecute(r GetApiKeyAccessListApiRequest) (*UserAccessList, *http.Response, error) {
+//	@return UserAccessListResponse
+func (a *ProgrammaticAPIKeysApiService) GetApiKeyAccessListExecute(r GetApiKeyAccessListApiRequest) (*UserAccessListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *UserAccessList
+		localVarReturnValue *UserAccessListResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProgrammaticAPIKeysApiService.GetApiKeyAccessList")
@@ -1523,7 +1523,7 @@ func (r ListApiKeyAccessListsEntriesApiRequest) PageNum(pageNum int) ListApiKeyA
 	return r
 }
 
-func (r ListApiKeyAccessListsEntriesApiRequest) Execute() (*PaginatedApiUserAccessList, *http.Response, error) {
+func (r ListApiKeyAccessListsEntriesApiRequest) Execute() (*PaginatedApiUserAccessListResponse, *http.Response, error) {
 	return r.ApiService.ListApiKeyAccessListsEntriesExecute(r)
 }
 
@@ -1548,13 +1548,13 @@ func (a *ProgrammaticAPIKeysApiService) ListApiKeyAccessListsEntries(ctx context
 
 // Execute executes the request
 //
-//	@return PaginatedApiUserAccessList
-func (a *ProgrammaticAPIKeysApiService) ListApiKeyAccessListsEntriesExecute(r ListApiKeyAccessListsEntriesApiRequest) (*PaginatedApiUserAccessList, *http.Response, error) {
+//	@return PaginatedApiUserAccessListResponse
+func (a *ProgrammaticAPIKeysApiService) ListApiKeyAccessListsEntriesExecute(r ListApiKeyAccessListsEntriesApiRequest) (*PaginatedApiUserAccessListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *PaginatedApiUserAccessList
+		localVarReturnValue *PaginatedApiUserAccessListResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProgrammaticAPIKeysApiService.ListApiKeyAccessListsEntries")

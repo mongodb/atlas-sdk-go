@@ -58,7 +58,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115007/admin"
+    "go.mongodb.org/atlas-sdk/v20231115008/admin"
 )
 
 func main() {
@@ -137,7 +137,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115007/admin"
+    "go.mongodb.org/atlas-sdk/v20231115008/admin"
 )
 
 func main() {
@@ -215,7 +215,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115007/admin"
+    "go.mongodb.org/atlas-sdk/v20231115008/admin"
 )
 
 func main() {
@@ -293,7 +293,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115007/admin"
+    "go.mongodb.org/atlas-sdk/v20231115008/admin"
 )
 
 func main() {
@@ -368,7 +368,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115007/admin"
+    "go.mongodb.org/atlas-sdk/v20231115008/admin"
 )
 
 func main() {
@@ -446,7 +446,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115007/admin"
+    "go.mongodb.org/atlas-sdk/v20231115008/admin"
 )
 
 func main() {
@@ -522,7 +522,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115007/admin"
+    "go.mongodb.org/atlas-sdk/v20231115008/admin"
 )
 
 func main() {
@@ -598,7 +598,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115007/admin"
+    "go.mongodb.org/atlas-sdk/v20231115008/admin"
 )
 
 func main() {
@@ -682,7 +682,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115007/admin"
+    "go.mongodb.org/atlas-sdk/v20231115008/admin"
 )
 
 func main() {
@@ -761,7 +761,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115007/admin"
+    "go.mongodb.org/atlas-sdk/v20231115008/admin"
 )
 
 func main() {
@@ -840,7 +840,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115007/admin"
+    "go.mongodb.org/atlas-sdk/v20231115008/admin"
 )
 
 func main() {
@@ -919,7 +919,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115007/admin"
+    "go.mongodb.org/atlas-sdk/v20231115008/admin"
 )
 
 func main() {
@@ -995,7 +995,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115007/admin"
+    "go.mongodb.org/atlas-sdk/v20231115008/admin"
 )
 
 func main() {
@@ -1068,7 +1068,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115007/admin"
+    "go.mongodb.org/atlas-sdk/v20231115008/admin"
 )
 
 func main() {
@@ -1144,7 +1144,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115007/admin"
+    "go.mongodb.org/atlas-sdk/v20231115008/admin"
 )
 
 func main() {
@@ -1223,7 +1223,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115007/admin"
+    "go.mongodb.org/atlas-sdk/v20231115008/admin"
 )
 
 func main() {
@@ -1302,7 +1302,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115007/admin"
+    "go.mongodb.org/atlas-sdk/v20231115008/admin"
 )
 
 func main() {
@@ -1386,7 +1386,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115007/admin"
+    "go.mongodb.org/atlas-sdk/v20231115008/admin"
 )
 
 func main() {
@@ -1465,7 +1465,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115007/admin"
+    "go.mongodb.org/atlas-sdk/v20231115008/admin"
 )
 
 func main() {
@@ -1547,7 +1547,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115007/admin"
+    "go.mongodb.org/atlas-sdk/v20231115008/admin"
 )
 
 func main() {
@@ -1629,7 +1629,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115007/admin"
+    "go.mongodb.org/atlas-sdk/v20231115008/admin"
 )
 
 func main() {
@@ -1708,7 +1708,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115007/admin"
+    "go.mongodb.org/atlas-sdk/v20231115008/admin"
 )
 
 func main() {
@@ -1790,7 +1790,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115007/admin"
+    "go.mongodb.org/atlas-sdk/v20231115008/admin"
 )
 
 func main() {
@@ -1872,7 +1872,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115007/admin"
+    "go.mongodb.org/atlas-sdk/v20231115008/admin"
 )
 
 func main() {
@@ -1959,7 +1959,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115007/admin"
+    "go.mongodb.org/atlas-sdk/v20231115008/admin"
 )
 
 func main() {
@@ -2035,7 +2035,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115007/admin"
+    "go.mongodb.org/atlas-sdk/v20231115008/admin"
 )
 
 func main() {
@@ -2113,7 +2113,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115007/admin"
+    "go.mongodb.org/atlas-sdk/v20231115008/admin"
 )
 
 func main() {
@@ -2176,7 +2176,7 @@ Name | Type | Description  | Notes
 
 ## UpdateDataProtectionSettings
 
-> DataProtectionSettings20231001 UpdateDataProtectionSettings(ctx, groupId, dataProtectionSettings20231001 DataProtectionSettings20231001).Execute()
+> DataProtectionSettings20231001 UpdateDataProtectionSettings(ctx, groupId, dataProtectionSettings20231001 DataProtectionSettings20231001).OverwriteBackupPolicies(overwriteBackupPolicies).Execute()
 
 Update or enable the Backup Compliance Policy settings
 
@@ -2191,7 +2191,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115007/admin"
+    "go.mongodb.org/atlas-sdk/v20231115008/admin"
 )
 
 func main() {
@@ -2202,8 +2202,9 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     dataProtectionSettings20231001 := *openapiclient.NewDataProtectionSettings20231001("AuthorizedEmail_example", "AuthorizedUserFirstName_example", "AuthorizedUserLastName_example") // DataProtectionSettings20231001 | 
+    overwriteBackupPolicies := true // bool |  (optional) (default to true)
 
-    resp, r, err := sdk.CloudBackupsApi.UpdateDataProtectionSettings(context.Background(), groupId, &dataProtectionSettings20231001).Execute()
+    resp, r, err := sdk.CloudBackupsApi.UpdateDataProtectionSettings(context.Background(), groupId, &dataProtectionSettings20231001).OverwriteBackupPolicies(overwriteBackupPolicies).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.UpdateDataProtectionSettings``: %v\n", err)
         apiError := admin.AsError(err)
@@ -2231,6 +2232,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **dataProtectionSettings20231001** | [**DataProtectionSettings20231001**](DataProtectionSettings20231001.md) | The new Backup Compliance Policy settings. | 
+ **overwriteBackupPolicies** | **bool** | Flag that indicates whether to overwrite non complying backup policies with the new data protection settings or not. | [default to true]
 
 ### Return type
 
@@ -2271,7 +2273,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115007/admin"
+    "go.mongodb.org/atlas-sdk/v20231115008/admin"
 )
 
 func main() {

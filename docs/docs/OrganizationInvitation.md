@@ -7,12 +7,12 @@ Name | Type | Description | Notes
 **CreatedAt** | Pointer to **time.Time** | Date and time when MongoDB Cloud sent the invitation. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC. | [optional] [readonly] 
 **ExpiresAt** | Pointer to **time.Time** | Date and time when the invitation from MongoDB Cloud expires. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC. | [optional] [readonly] 
 **GroupRoleAssignments** | Pointer to [**[]GroupRole**](GroupRole.md) | List of projects that the user will be added to when they accept their invitation to the organization. | [optional] 
-**Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies this organization. | [optional] [readonly] 
+**Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies this invitation. | [optional] [readonly] 
 **InviterUsername** | Pointer to **string** | Email address of the MongoDB Cloud user who sent the invitation to join the organization. | [optional] [readonly] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **OrgId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the organization. | [optional] [readonly] 
 **OrgName** | **string** | Human-readable label that identifies this organization. | 
-**Roles** | Pointer to **[]string** | One or more organization or project level roles to assign to the MongoDB Cloud user. | [optional] 
+**Roles** | Pointer to **[]string** | One or more organization level roles to assign to the MongoDB Cloud user. | [optional] 
 **TeamIds** | Pointer to **[]string** | List of unique 24-hexadecimal digit strings that identifies each team. | [optional] [readonly] 
 **Username** | Pointer to **string** | Email address of the MongoDB Cloud user invited to join the organization. | [optional] 
 

@@ -6,7 +6,7 @@ import (
 	"encoding/json"
 )
 
-// Criteria Rules by which MongoDB MongoDB Cloud archives data.  Use the **criteria.type** field to choose how MongoDB Cloud selects data to archive. Choose data using the age of the data or a MongoDB query. **\"criteria.type\": \"DATE\"** selects documents to archive based on a date. **\"criteria.type\": \"CUSTOM\"** selects documents to archive based on a custom JSON query. MongoDB Cloud doesn't support **\"criteria.type\": \"CUSTOM\"** when **\"collectionType\": \"TIMESERIES\"**.
+// Criteria Rules by which MongoDB Cloud archives data.  Use the **criteria.type** field to choose how MongoDB Cloud selects data to archive. Choose data using the age of the data or a MongoDB query. **\"criteria.type\": \"DATE\"** selects documents to archive based on a date. **\"criteria.type\": \"CUSTOM\"** selects documents to archive based on a custom JSON query. MongoDB Cloud doesn't support **\"criteria.type\": \"CUSTOM\"** when **\"collectionType\": \"TIMESERIES\"**.
 type Criteria struct {
 	// Means by which MongoDB Cloud selects data to archive. Data can be chosen using the age of the data or a MongoDB query. **DATE** selects documents to archive based on a date. **CUSTOM** selects documents to archive based on a custom JSON query. MongoDB Cloud doesn't support **CUSTOM** when `\"collectionType\": \"TIMESERIES\"`.
 	Type *string `json:"type,omitempty"`

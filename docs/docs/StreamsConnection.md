@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
-**Name** | Pointer to **string** | Human-readable label that identifies the stream connection. | [optional] 
+**Name** | Pointer to **string** | Human-readable label that identifies the stream connection. In the case of the Sample type, this is the name of the sample source. | [optional] 
 **Type** | Pointer to **string** | Type of the connection. Can be either Cluster or Kafka. | [optional] 
 **ClusterName** | Pointer to **string** | Name of the cluster configured for this connection. | [optional] 
 **DbRoleToExecute** | Pointer to [**DBRoleToExecute**](DBRoleToExecute.md) |  | [optional] 
