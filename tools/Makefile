@@ -41,3 +41,8 @@ new-release:
 update-version:
 	## When manually updating major version
 	./releaser/scripts/update-version.sh
+
+.PHONY: generate_mocks
+generate_mocks:	
+	go install github.com/vektra/mockery/v2@v2.42.0 && mockery
+
