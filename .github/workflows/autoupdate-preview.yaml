@@ -1,7 +1,8 @@
-name: Generate Preview SDK
-run-name: Generate Preview SDK - test
+name: Generate Preview SDK 
 on:
   workflow_dispatch:
+  schedule:
+   - cron: '30 8 * * 1,3,5'
   
 jobs:
   generate-client:
@@ -32,6 +33,45 @@ jobs:
         working-directory: ./tools
         if: steps.verify-changed-files.outputs.files_changed == 'true'
         run: make generate_mocks_linux  
+      - uses: peter-evans/create-pull-request@v6
+        if: steps.verify-changed-files.outputs.files_changed == 'true'
+        env:
+           GITHUB_TOKEN: ${{ secrets.REPO_SCOPED_GITHUB_TOKEN }}
+        with:
+          title: "APIBot: GO SDK Dev Preview"
+          commit-message: "temp: client update"
+          delete-branch: true
+          draft: true
+          branch: dev-latest
+          body: |
+            Automatic update for MongoDB Atlas Go Client based on *release candidate* OpenAPI file.
+            **DO NOT MERGE THIS PR TO THE MAIN BRANCH**
+
+            > NOTE: This PR provides notifications for stability of the RC OpenAPI files
+            > It is not intented to be merged!
+            > When PR is closed the new PR will be automatically regenerated
+            
+            ## Using early preview changes
+
+            ```sh
+            go get go.mongodb.org/atlas-sdk/v20230201003@dev-latest   
+            ```
+
+            ## Automated checks done for preview sdk
+
+            1. Compilation and unit tests
+            2. Documentation style
+            3. Transformation engine linting
+
+            ## Breaking Changes
+            
+            For list of possible breaking changes please refer to `Detect Breaking Changes` job.
+
+            ## Release schedule
+            
+            PR is updated 3 times a week with latest changes from the RC for the API.
+            PR can be updated manually by running workflow: https://github.com/mongodb/atlas-sdk-go/actions/workflows/autoupdate-preview.yaml
+
 
             
 
