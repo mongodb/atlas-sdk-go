@@ -84,6 +84,7 @@ Repository contains following SDKs
 - `tools`: tooling used to generate Atlas Admin SDK. See [./tools](./tools) for more information.
 - `examples`: SDK examples
 - `internal`: folder for hosting non user facing SDK methods and core helpers
+- `mockadmin`: [Testify mocks](https://pkg.go.dev/github.com/stretchr/testify/mock) generated with [Mockery](https://github.com/vektra/mockery) for API interfaces
 
 ## VSCode debugging configuration
 VSCode developers might use following debugging configuration for transformer and go debugging
