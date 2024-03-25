@@ -14,8 +14,8 @@ go run ./aws_cluster/aws.go
 
 ## Running Examples with Mocked Backend
 
-SDK provides mocks using mockery. 
-One of the SDK examples cover usage of the mockery within tests
+SDK provides mocks using Testify and Mockery. 
+One of the SDK examples covers usage of the mockery within tests.
 
 ```bash
 go test ./mock/cluster_test.go 
