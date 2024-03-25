@@ -1,6 +1,6 @@
 with-expecter: true
 disable-version-string: true
-dir: ../mockadmin
+dir: mockadmin
 outpkg: mockadmin
 filename: "{{ .InterfaceName | snakecase }}.go"
 mockname: "{{.InterfaceName}}"
