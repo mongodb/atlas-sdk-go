@@ -55,6 +55,12 @@ Please refer to the [docs](./docs)
 
 See [examples](./examples)
 
+## Test Support
+
+[Testify Mock](https://pkg.go.dev/github.com/stretchr/testify/mock) files are generated using [Mockery](https://github.com/vektra/mockery) to help to unit test clients using Atlas Go SDK.
+
+See [test example with mocks](./examples/mock/cluster_test.go)
+
 ## Contributing
 
 See our [CONTRIBUTING.md](CONTRIBUTING.md) Guide.
