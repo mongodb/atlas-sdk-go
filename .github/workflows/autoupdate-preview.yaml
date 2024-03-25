@@ -3,6 +3,8 @@ on:
   workflow_dispatch:
   schedule:
    - cron: '30 8 * * 1,3,5'
+   branch: 
+     - 
   
 jobs:
   generate-client:
@@ -35,8 +37,6 @@ jobs:
         run: make generate_mocks  
       - uses: peter-evans/create-pull-request@v6
         if: steps.verify-changed-files.outputs.files_changed == 'true'
-        env:
-           GITHUB_TOKEN: ${{ secrets.REPO_SCOPED_GITHUB_TOKEN }}
         with:
           title: "APIBot: GO SDK Dev Preview"
           commit-message: "temp: client update"
