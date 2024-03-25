@@ -1,10 +1,13 @@
 name: Generate Preview SDK 
 on:
+  push:
+     branches:
+        - task-secret
   workflow_dispatch:
   schedule:
    - cron: '30 8 * * 1,3,5'
-   branch: 
-     - 
+    
+ 
   
 jobs:
   generate-client:
