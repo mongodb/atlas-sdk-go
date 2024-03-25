@@ -1,0 +1,11 @@
+with-expecter: true
+disable-version-string: true
+dir: ../mockadmin
+outpkg: mockadmin
+filename: "{{ .InterfaceName | snakecase }}.go"
+mockname: "{{.InterfaceName}}"
+
+packages:
+  go.mongodb.org/atlas-sdk/v20231115008/admin:
+    config:
+      include-regex: ".*Api"

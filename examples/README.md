@@ -10,3 +10,13 @@ export MONGODB_ATLAS_PUBLIC_KEY=somekey
 export MONGODB_ATLAS_PRIVATE_KEY=some-secret-key-for-gosdkapi
 go run ./aws_cluster/aws.go
 ```
+
+
+## Running Examples with Mocked Backend
+
+SDK provides mocks using Testify and Mockery. 
+One of the SDK examples covers usage of the mockery within tests.
+
+```bash
+go test ./mock/cluster_test.go 
+```
