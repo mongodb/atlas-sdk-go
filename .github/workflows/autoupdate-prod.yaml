@@ -53,7 +53,7 @@ jobs:
       - name: Run mock generation
         working-directory: ./tools
         if: steps.verify-changed-files.outputs.files_changed == 'true'
-        run: make generate_mocks  
+        run: make generate_mocks_linux  
       - uses: peter-evans/create-pull-request@v6
         if: steps.verify-changed-files.outputs.files_changed == 'true'
         env:

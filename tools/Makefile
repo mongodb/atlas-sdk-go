@@ -42,8 +42,10 @@ update-version:
 	## When manually updating major version
 	./releaser/scripts/update-version.sh
 
-.PHONY: generate_mocks
-generate_mocks:	
-	go install github.com/vektra/mockery/v2@v2.42.1
+.PHONY: generate_mocks_linux
+generate_mocks_linux:	
 	rm -Rf ../mockadmin
-	mockery
+	curl -L -o mockery.tar.gz https://github.com/vektra/mockery/releases/download/v2.42.1/mockery_2.42.1_Linux_x86_64.tar.gz
+	tar -xzf mockery.tar.gz
+	chmod +x mockery
+	./mockery
