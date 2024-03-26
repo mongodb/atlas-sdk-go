@@ -61,11 +61,7 @@ func main() {
 
 func createRetryableClient(retryClient *retryablehttp.Client, apiKey string, apiSecret string) *http.Client {
 	var transport http.RoundTripper = &retryablehttp.RoundTripper{Client: retryClient}
-	digestRetryAbleTransport := &digest.Transport{
-		Username:  apiKey,
-		Password:  apiSecret,
-		Transport: transport,
-	}
+	digestRetryAbleTransport := digest.NewTransportWithHTTPRoundTripper(apiKey, apiSecret,transport)
 	retryableClient, err := digestRetryAbleTransport.Client()
 	if err != nil {
 		log.Fatal("Cannot instantiate client")
