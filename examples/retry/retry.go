@@ -37,16 +37,7 @@ func main() {
 	retryClient := retryablehttp.NewClient()
 	retryClient.RetryMax = 3
 
-	var transport http.RoundTripper = &retryablehttp.RoundTripper{Client: retryClient};
-	digestRetryAbleTransport := &digest.Transport{
-		Username:  apiKey,
-		Password:  apiSecret,
-		Transport: transport,
-	}
-	retryableClient, err := digestRetryAbleTransport.Client()
-	if err != nil{
-		log.Fatal("Cannot instantiate client")
-	}
+	retryableClient := createRetryableClient(retryClient, apiKey, apiSecret)
 	sdk, err := admin.NewClient(
 		admin.UseHTTPClient(retryableClient),
 		admin.UseBaseURL(url),
@@ -66,4 +57,18 @@ func main() {
 		log.Fatal("account should have at least single project")
 	}
 
+}
+
+func createRetryableClient(retryClient *retryablehttp.Client, apiKey string, apiSecret string) *http.Client {
+	var transport http.RoundTripper = &retryablehttp.RoundTripper{Client: retryClient}
+	digestRetryAbleTransport := &digest.Transport{
+		Username:  apiKey,
+		Password:  apiSecret,
+		Transport: transport,
+	}
+	retryableClient, err := digestRetryAbleTransport.Client()
+	if err != nil {
+		log.Fatal("Cannot instantiate client")
+	}
+	return retryableClient
 }
