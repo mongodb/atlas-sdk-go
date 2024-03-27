@@ -5,8 +5,8 @@ go 1.22.1
 require (
 	github.com/go-test/deep v1.1.0
 	github.com/mongodb-forks/digest v1.1.0
-    go.mongodb.org/atlas-sdk/v20231115008 v20231115008.1.0
-    github.com/hashicorp/go-retryablehttp v0.7.5 
+    go.mongodb.org/atlas-sdk/v20231115008 v20231115008.1.0 
+	github.com/hashicorp/go-retryablehttp v0.7.5 
 )
 
 require (
