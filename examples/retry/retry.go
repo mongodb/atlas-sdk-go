@@ -8,7 +8,6 @@ import (
 	"context"
 
 	"go.mongodb.org/atlas-sdk/v20231115008/admin"
-	"go.mongodb.org/atlas-sdk/v20231115008/examples"
 
 	retryablehttp "github.com/hashicorp/go-retryablehttp"
 	"github.com/mongodb-forks/digest"
@@ -37,12 +36,17 @@ func main() {
 	retryClient := retryablehttp.NewClient()
 	retryClient.RetryMax = 3
 
-	retryableClient := newRetryableClient(retryClient, apiKey, apiSecret)
+	retryableClient, err := newRetryableClient(retryClient, apiKey, apiSecret)
+	if err != nil{
+		log.Fatal("Cannot instantiate client")
+	}
 	sdk, err := admin.NewClient(
 		admin.UseHTTPClient(retryableClient),
 		admin.UseBaseURL(url),
 		admin.UseDebug(false))
-	examples.HandleErr(err, nil)
+		if err != nil{
+			log.Fatal(err)
+		}
 
 	request := sdk.ProjectsApi.ListProjectsWithParams(ctx,
 		&admin.ListProjectsApiParams{
@@ -50,8 +54,10 @@ func main() {
 			IncludeCount: admin.PtrBool(true),
 			PageNum:      admin.PtrInt(1),
 		})
-	projects, response, err := request.Execute()
-	examples.HandleErr(err, response)
+	projects, _, err := request.Execute()
+	if err != nil{
+		log.Fatal(err)
+	}
 
 	if projects.GetTotalCount() == 0 {
 		log.Fatal("account should have at least single project")
@@ -59,12 +65,12 @@ func main() {
 
 }
 
-func newRetryableClient(retryClient *retryablehttp.Client, apiKey string, apiSecret string) *http.Client {
+func newRetryableClient(retryClient *retryablehttp.Client, apiKey string, apiSecret string) (*http.Client, error) {
 	var transport http.RoundTripper = &retryablehttp.RoundTripper{Client: retryClient}
 	digestRetryAbleTransport := digest.NewTransportWithHTTPRoundTripper(apiKey, apiSecret,transport)
 	retryableClient, err := digestRetryAbleTransport.Client()
 	if err != nil {
-		log.Fatal("Cannot instantiate client")
+		return nil, err;
 	}
-	return retryableClient
+	return retryableClient, nil
 }
