@@ -26,4 +26,6 @@ go test ./mock/cluster_test.go
 
 Example provides automatic retries for all HTTP 500, 429 HTTP status errors.
 
-`go run ./retry/retry.go`
+```bash
+go run ./retry/retry.go
+```
