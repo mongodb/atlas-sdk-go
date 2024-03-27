@@ -37,7 +37,7 @@ func main() {
 	retryClient := retryablehttp.NewClient()
 	retryClient.RetryMax = 3
 
-	retryableClient := createRetryableClient(retryClient, apiKey, apiSecret)
+	retryableClient := newRetryableClient(retryClient, apiKey, apiSecret)
 	sdk, err := admin.NewClient(
 		admin.UseHTTPClient(retryableClient),
 		admin.UseBaseURL(url),
@@ -59,7 +59,7 @@ func main() {
 
 }
 
-func createRetryableClient(retryClient *retryablehttp.Client, apiKey string, apiSecret string) *http.Client {
+func newRetryableClient(retryClient *retryablehttp.Client, apiKey string, apiSecret string) *http.Client {
 	var transport http.RoundTripper = &retryablehttp.RoundTripper{Client: retryClient}
 	digestRetryAbleTransport := digest.NewTransportWithHTTPRoundTripper(apiKey, apiSecret,transport)
 	retryableClient, err := digestRetryAbleTransport.Client()
