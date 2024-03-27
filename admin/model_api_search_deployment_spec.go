@@ -8,9 +8,9 @@ import (
 
 // ApiSearchDeploymentSpec struct for ApiSearchDeploymentSpec
 type ApiSearchDeploymentSpec struct {
-	// Hardware specification for the search node instance sizes.
+	// Hardware specification for the Search Node instance sizes.
 	InstanceSize string `json:"instanceSize"`
-	// Number of search nodes in the cluster.
+	// Number of Search Nodes in the cluster.
 	NodeCount int `json:"nodeCount"`
 }
 

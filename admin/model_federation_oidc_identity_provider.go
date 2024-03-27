@@ -12,6 +12,9 @@ type FederationOidcIdentityProvider struct {
 	// List that contains the connected organization configurations associated with the identity provider.
 	AssociatedOrgs *[]ConnectedOrgConfig `json:"associatedOrgs,omitempty"`
 	// Identifier of the intended recipient of the token.
+	Audience *string `json:"audience,omitempty"`
+	// Identifier of the intended recipient of the token. The audienceClaim field is deprecated and will be removed in the 04/17/2024 release, use the audience field instead.
+	// Deprecated
 	AudienceClaim *[]string `json:"audienceClaim,omitempty"`
 	// Date that the identity provider was created on.
 	// Read only field.
@@ -96,7 +99,41 @@ func (o *FederationOidcIdentityProvider) SetAssociatedOrgs(v []ConnectedOrgConfi
 	o.AssociatedOrgs = &v
 }
 
+// GetAudience returns the Audience field value if set, zero value otherwise
+func (o *FederationOidcIdentityProvider) GetAudience() string {
+	if o == nil || IsNil(o.Audience) {
+		var ret string
+		return ret
+	}
+	return *o.Audience
+}
+
+// GetAudienceOk returns a tuple with the Audience field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FederationOidcIdentityProvider) GetAudienceOk() (*string, bool) {
+	if o == nil || IsNil(o.Audience) {
+		return nil, false
+	}
+
+	return o.Audience, true
+}
+
+// HasAudience returns a boolean if a field has been set.
+func (o *FederationOidcIdentityProvider) HasAudience() bool {
+	if o != nil && !IsNil(o.Audience) {
+		return true
+	}
+
+	return false
+}
+
+// SetAudience gets a reference to the given string and assigns it to the Audience field.
+func (o *FederationOidcIdentityProvider) SetAudience(v string) {
+	o.Audience = &v
+}
+
 // GetAudienceClaim returns the AudienceClaim field value if set, zero value otherwise
+// Deprecated
 func (o *FederationOidcIdentityProvider) GetAudienceClaim() []string {
 	if o == nil || IsNil(o.AudienceClaim) {
 		var ret []string
@@ -107,6 +144,7 @@ func (o *FederationOidcIdentityProvider) GetAudienceClaim() []string {
 
 // GetAudienceClaimOk returns a tuple with the AudienceClaim field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *FederationOidcIdentityProvider) GetAudienceClaimOk() (*[]string, bool) {
 	if o == nil || IsNil(o.AudienceClaim) {
 		return nil, false
@@ -125,6 +163,7 @@ func (o *FederationOidcIdentityProvider) HasAudienceClaim() bool {
 }
 
 // SetAudienceClaim gets a reference to the given []string and assigns it to the AudienceClaim field.
+// Deprecated
 func (o *FederationOidcIdentityProvider) SetAudienceClaim(v []string) {
 	o.AudienceClaim = &v
 }
@@ -551,6 +590,9 @@ func (o FederationOidcIdentityProvider) ToMap() (map[string]interface{}, error) 
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.AssociatedOrgs) {
 		toSerialize["associatedOrgs"] = o.AssociatedOrgs
+	}
+	if !IsNil(o.Audience) {
+		toSerialize["audience"] = o.Audience
 	}
 	if !IsNil(o.AudienceClaim) {
 		toSerialize["audienceClaim"] = o.AudienceClaim

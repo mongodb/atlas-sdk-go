@@ -6,7 +6,7 @@ import (
 	"encoding/json"
 )
 
-// ClusterCloudProviderInstanceSize List of instances sizes that this cloud provider supports.
+// ClusterCloudProviderInstanceSize struct for ClusterCloudProviderInstanceSize
 type ClusterCloudProviderInstanceSize struct {
 	// List of regions that this cloud provider supports for this instance size.
 	// Read only field.

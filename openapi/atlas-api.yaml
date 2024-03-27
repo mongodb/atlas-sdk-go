@@ -19,7 +19,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 5872b4cc51488757711256c66c6956f57df3d1c7
+  x-xgen-sha: 457acee677a1b862a5445de57923c097e86a9417
 servers:
 - url: https://cloud.mongodb.com
 tags:
@@ -4862,6 +4862,71 @@ paths:
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
+            examples:
+              "2dspere Index":
+                description: 2dspere Index
+                value:
+                  collation:
+                    alternate: non-ignorable
+                    backwards: false
+                    caseFirst: lower
+                    caseLevel: false
+                    locale: af
+                    maxVariable: punct
+                    normalization: false
+                    numericOrdering: false
+                    strength: 3
+                  collection: accounts
+                  db: sample_airbnb
+                  keys:
+                  - property_type: "1"
+                  options:
+                    name: PartialIndexTest
+                    partialFilterExpression:
+                      limit:
+                        $gt: 900
+              Partial Index:
+                description: Partial Index
+                value:
+                  collation:
+                    alternate: non-ignorable
+                    backwards: false
+                    caseFirst: lower
+                    caseLevel: false
+                    locale: af
+                    maxVariable: punct
+                    normalization: false
+                    numericOrdering: false
+                    strength: 3
+                  collection: accounts
+                  db: sample_airbnb
+                  keys:
+                  - property_type: "1"
+                  options:
+                    name: PartialIndexTest
+                    partialFilterExpression:
+                      limit:
+                        $gt: 900
+              Sparse Index:
+                description: Sparse Index
+                value:
+                  collation:
+                    alternate: non-ignorable
+                    backwards: false
+                    caseFirst: lower
+                    caseLevel: false
+                    locale: af
+                    maxVariable: punct
+                    normalization: false
+                    numericOrdering: false
+                    strength: 3
+                  collection: accounts
+                  db: sample_airbnb
+                  keys:
+                  - test_field: "1"
+                  options:
+                    name: SparseIndexTest
+                    sparse: true
             schema:
               $ref: '#/components/schemas/DatabaseRollingIndexRequest'
         description: Rolling index to create on the specified cluster.
@@ -5657,7 +5722,7 @@ paths:
       - Legacy Backup
   /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/deployment:
     delete:
-      description: Deletes the search nodes for the specified cluster.
+      description: Deletes the Search Nodes for the specified cluster.
       operationId: deleteAtlasSearchDeployment
       parameters:
       - $ref: '#/components/parameters/envelope'
@@ -5690,13 +5755,13 @@ paths:
       tags:
       - Atlas Search
     get:
-      description: Return the search nodes for the specified cluster.
+      description: Return the Search Nodes for the specified cluster.
       operationId: getAtlasSearchDeployment
       parameters:
       - $ref: '#/components/parameters/envelope'
       - $ref: '#/components/parameters/pretty'
       - $ref: '#/components/parameters/groupId'
-      - description: Label that identifies the cluster to return the search nodes
+      - description: Label that identifies the cluster to return the Search Nodes
           for.
         in: path
         name: clusterName
@@ -5726,13 +5791,13 @@ paths:
       tags:
       - Atlas Search
     patch:
-      description: Updates the search nodes for the specified cluster.
+      description: Updates the Search Nodes for the specified cluster.
       operationId: updateAtlasSearchDeployment
       parameters:
       - $ref: '#/components/parameters/envelope'
       - $ref: '#/components/parameters/pretty'
       - $ref: '#/components/parameters/groupId'
-      - description: Label that identifies the cluster to update the search nodes
+      - description: Label that identifies the cluster to update the Search Nodes
           for.
         in: path
         name: clusterName
@@ -5747,7 +5812,7 @@ paths:
           application/vnd.atlas.2023-01-01+json:
             schema:
               $ref: '#/components/schemas/ApiSearchDeploymentRequestView'
-        description: Updates the search nodes for the specified cluster.
+        description: Updates the Search Nodes for the specified cluster.
         required: true
       responses:
         "200":
@@ -5769,13 +5834,13 @@ paths:
       tags:
       - Atlas Search
     post:
-      description: Creates search nodes for the specified cluster.
+      description: Creates Search Nodes for the specified cluster.
       operationId: createAtlasSearchDeployment
       parameters:
       - $ref: '#/components/parameters/envelope'
       - $ref: '#/components/parameters/pretty'
       - $ref: '#/components/parameters/groupId'
-      - description: Label that identifies the cluster to create search nodes for.
+      - description: Label that identifies the cluster to create Search Nodes for.
         in: path
         name: clusterName
         required: true
@@ -5789,7 +5854,7 @@ paths:
           application/vnd.atlas.2023-01-01+json:
             schema:
               $ref: '#/components/schemas/ApiSearchDeploymentRequestView'
-        description: Creates search nodes for the specified cluster.
+        description: Creates Search Nodes for the specified cluster.
         required: true
       responses:
         "200":
@@ -10149,7 +10214,12 @@ paths:
         \ for the project. When you create a private endpoint service, MongoDB Cloud\
         \ creates a network container in the project for the cloud provider for which\
         \ you create the private endpoint service if one doesn't already exist. To\
-        \ use this resource, the requesting API Key must have the Project Owner role."
+        \ learn more about private endpoint terminology in MongoDB Cloud, see Private\
+        \ Endpoint Concepts. To use this resource, the requesting API Key must have\
+        \ the Project Owner role."
+      externalDocs:
+        description: Private Endpoint Concepts
+        url: https://dochub.mongodb.org/core/private-endpoint-concepts
       operationId: createPrivateEndpointService
       parameters:
       - $ref: '#/components/parameters/envelope'
@@ -12620,6 +12690,222 @@ paths:
       summary: Update One Serverless Instance in One Project
       tags:
       - Serverless Instances
+  /api/atlas/v2/groups/{groupId}/serviceAccounts:
+    get:
+      description: Returns list of Service Accounts for a project with service account
+        details.
+      operationId: listProjectServiceAccounts
+      parameters:
+      - $ref: '#/components/parameters/groupId'
+      - $ref: '#/components/parameters/itemsPerPage'
+      - $ref: '#/components/parameters/pageNum'
+      - $ref: '#/components/parameters/pretty'
+      - $ref: '#/components/parameters/envelope'
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-10-01+json:
+              schema:
+                $ref: '#/components/schemas/PaginatedGroupServiceAccounts'
+              x-xgen-version: 2023-10-01
+          description: OK
+        "401":
+          $ref: '#/components/responses/unauthorized'
+        "403":
+          $ref: '#/components/responses/forbidden'
+        "500":
+          $ref: '#/components/responses/internalServerError'
+      security:
+      - DigestAuth: []
+      summary: Return All project Service Accounts
+      tags:
+      - Groups
+    post:
+      description: Creates and assigns the specified Service Account to the specified
+        Project.
+      operationId: createProjectServiceAccount
+      parameters:
+      - $ref: '#/components/parameters/groupId'
+      - $ref: '#/components/parameters/envelope'
+      - $ref: '#/components/parameters/pretty'
+      requestBody:
+        content:
+          application/vnd.atlas.2023-10-01+json:
+            schema:
+              $ref: '#/components/schemas/GroupServiceAccountRequest'
+            x-xgen-version: 2023-10-01
+        description: Details to create service account and add to the specified project.
+        required: true
+      responses:
+        "201":
+          content:
+            application/vnd.atlas.2023-10-01+json:
+              schema:
+                $ref: '#/components/schemas/GroupServiceAccount'
+              x-xgen-version: 2023-10-01
+          description: Created
+        "400":
+          $ref: '#/components/responses/badRequest'
+        "401":
+          $ref: '#/components/responses/unauthorized'
+        "500":
+          $ref: '#/components/responses/internalServerError'
+      security:
+      - DigestAuth: []
+      summary: Create and Assign one Service Account to one project
+      tags:
+      - Groups
+  /api/atlas/v2/groups/{groupId}/serviceAccounts/{serviceAccountId}:
+    delete:
+      description: Removes one Service Account from the specified project.
+      operationId: deleteProjectServiceAccount
+      parameters:
+      - description: Id of the service account.
+        in: path
+        name: serviceAccountId
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/groupId'
+      - $ref: '#/components/parameters/envelope'
+      - $ref: '#/components/parameters/pretty'
+      responses:
+        "204":
+          content:
+            application/vnd.atlas.2023-10-01+json:
+              schema:
+                $ref: '#/components/schemas/NoBody'
+              x-xgen-version: 2023-10-01
+          description: This endpoint does not return a response body.
+          x-xgen-version: 2023-10-01
+        "401":
+          $ref: '#/components/responses/unauthorized'
+        "404":
+          $ref: '#/components/responses/notFound'
+        "500":
+          $ref: '#/components/responses/internalServerError'
+      security:
+      - DigestAuth: []
+      summary: Unassign One Service Account from One Project.
+      tags:
+      - Groups
+    get:
+      description: Get project Service Account Details.
+      operationId: getProjectServiceAccount
+      parameters:
+      - $ref: '#/components/parameters/groupId'
+      - description: Id of the service account.
+        in: path
+        name: serviceAccountId
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/envelope'
+      - $ref: '#/components/parameters/pretty'
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-10-01+json:
+              schema:
+                $ref: '#/components/schemas/GroupServiceAccountDetails'
+              x-xgen-version: 2023-10-01
+          description: OK
+        "401":
+          $ref: '#/components/responses/unauthorized'
+        "404":
+          $ref: '#/components/responses/notFound'
+        "500":
+          $ref: '#/components/responses/internalServerError'
+      security:
+      - DigestAuth: []
+      summary: Service Account Fetching
+      tags:
+      - Groups
+    patch:
+      description: Update Service Account in Project.
+      operationId: updateProjectServiceAccount
+      parameters:
+      - description: Id of the service account.
+        in: path
+        name: serviceAccountId
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/groupId'
+      - $ref: '#/components/parameters/envelope'
+      - $ref: '#/components/parameters/pretty'
+      requestBody:
+        content:
+          application/vnd.atlas.2023-10-01+json:
+            schema:
+              $ref: '#/components/schemas/GroupServiceAccountUpdateRequest'
+        description: Details to update service account in the specified Project.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-10-01+json:
+              schema:
+                $ref: '#/components/schemas/GroupServiceAccountDetails'
+              x-xgen-version: 2023-10-01
+          description: OK
+        "400":
+          $ref: '#/components/responses/badRequest'
+        "401":
+          $ref: '#/components/responses/unauthorized'
+        "404":
+          $ref: '#/components/responses/notFound'
+        "500":
+          $ref: '#/components/responses/internalServerError'
+      security:
+      - DigestAuth: []
+      summary: Service Account Update in Project
+      tags:
+      - Groups
+    post:
+      description: Assigns the specified organization Service Account to the specified
+        project.
+      operationId: addProjectServiceAccount
+      parameters:
+      - description: Id of the service account.
+        in: path
+        name: serviceAccountId
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/groupId'
+      - $ref: '#/components/parameters/envelope'
+      - $ref: '#/components/parameters/pretty'
+      requestBody:
+        content:
+          application/vnd.atlas.2023-10-01+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/GroupServiceAccountRoleAssignment'
+            x-xgen-version: 2023-10-01
+        description: Service Account Roles to be assigned to the specified project.
+        required: true
+      responses:
+        "204":
+          content:
+            application/vnd.atlas.2023-10-01+json:
+              schema:
+                $ref: '#/components/schemas/NoBody'
+              x-xgen-version: 2023-10-01
+          description: This endpoint does not return a response body.
+          x-xgen-version: 2023-10-01
+        "401":
+          $ref: '#/components/responses/unauthorized'
+        "404":
+          $ref: '#/components/responses/notFound'
+        "500":
+          $ref: '#/components/responses/internalServerError'
+      security:
+      - DigestAuth: []
+      summary: Assign One Service Account to One Project
+      tags:
+      - Groups
   /api/atlas/v2/groups/{groupId}/settings:
     get:
       description: "Returns details about the specified project's settings. To use\
@@ -15067,6 +15353,284 @@ paths:
       summary: Create One Link-Token
       tags:
       - Cloud Migration Service
+  /api/atlas/v2/orgs/{orgId}/serviceAccounts:
+    get:
+      description: Returns list of Service Accounts with service account details.
+      operationId: listServiceAccounts
+      parameters:
+      - $ref: '#/components/parameters/orgId'
+      - $ref: '#/components/parameters/itemsPerPage'
+      - $ref: '#/components/parameters/pageNum'
+      - $ref: '#/components/parameters/pretty'
+      - $ref: '#/components/parameters/envelope'
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-10-01+json:
+              schema:
+                $ref: '#/components/schemas/PaginatedOrgServiceAccounts'
+              x-xgen-version: 2023-10-01
+          description: OK
+        "401":
+          $ref: '#/components/responses/unauthorized'
+        "403":
+          $ref: '#/components/responses/forbidden'
+        "500":
+          $ref: '#/components/responses/internalServerError'
+      security:
+      - DigestAuth: []
+      summary: Return All Service Accounts
+      tags:
+      - Organizations
+    post:
+      description: Create Service Account containing client id and client secrets.
+      operationId: createServiceAccount
+      parameters:
+      - $ref: '#/components/parameters/orgId'
+      - $ref: '#/components/parameters/envelope'
+      - $ref: '#/components/parameters/pretty'
+      requestBody:
+        content:
+          application/vnd.atlas.2023-10-01+json:
+            schema:
+              $ref: '#/components/schemas/OrgServiceAccountRequest'
+        description: Details to create service account in the specified organization.
+        required: true
+      responses:
+        "201":
+          content:
+            application/vnd.atlas.2023-10-01+json:
+              schema:
+                $ref: '#/components/schemas/OrgServiceAccount'
+              x-xgen-version: 2023-10-01
+          description: Created
+        "400":
+          $ref: '#/components/responses/badRequest'
+        "401":
+          $ref: '#/components/responses/unauthorized'
+        "500":
+          $ref: '#/components/responses/internalServerError'
+      security:
+      - DigestAuth: []
+      summary: Service Account Creation
+      tags:
+      - Organizations
+  /api/atlas/v2/orgs/{orgId}/serviceAccounts/{serviceAccountId}:
+    delete:
+      description: Delete Service Account.
+      operationId: deleteServiceAccount
+      parameters:
+      - description: Id of the service account.
+        in: path
+        name: serviceAccountId
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/orgId'
+      - $ref: '#/components/parameters/envelope'
+      - $ref: '#/components/parameters/pretty'
+      responses:
+        "204":
+          content:
+            application/vnd.atlas.2023-10-01+json:
+              x-xgen-version: 2023-10-01
+          description: This endpoint does not return a response body.
+        "401":
+          $ref: '#/components/responses/unauthorized'
+        "404":
+          $ref: '#/components/responses/notFound'
+        "500":
+          $ref: '#/components/responses/internalServerError'
+      security:
+      - DigestAuth: []
+      summary: Service Account Deletion.
+      tags:
+      - Organizations
+    get:
+      description: Get Service Account Details.
+      operationId: getServiceAccount
+      parameters:
+      - $ref: '#/components/parameters/orgId'
+      - description: Id of the service account.
+        in: path
+        name: serviceAccountId
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/envelope'
+      - $ref: '#/components/parameters/pretty'
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-10-01+json:
+              schema:
+                $ref: '#/components/schemas/OrgServiceAccountDetails'
+              x-xgen-version: 2023-10-01
+          description: OK
+        "401":
+          $ref: '#/components/responses/unauthorized'
+        "404":
+          $ref: '#/components/responses/notFound'
+        "500":
+          $ref: '#/components/responses/internalServerError'
+      security:
+      - DigestAuth: []
+      summary: Service Account Fetching
+      tags:
+      - Organizations
+    patch:
+      description: Update Service Account.
+      operationId: updateServiceAccount
+      parameters:
+      - description: Id of the service account.
+        in: path
+        name: serviceAccountId
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/orgId'
+      - $ref: '#/components/parameters/envelope'
+      - $ref: '#/components/parameters/pretty'
+      requestBody:
+        content:
+          application/vnd.atlas.2023-10-01+json:
+            schema:
+              $ref: '#/components/schemas/OrgServiceAccountUpdateRequest'
+        description: Details to update service account in the specified organization.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-10-01+json:
+              schema:
+                $ref: '#/components/schemas/OrgServiceAccountDetails'
+              x-xgen-version: 2023-10-01
+          description: OK
+        "400":
+          $ref: '#/components/responses/badRequest'
+        "401":
+          $ref: '#/components/responses/unauthorized'
+        "404":
+          $ref: '#/components/responses/notFound'
+        "500":
+          $ref: '#/components/responses/internalServerError'
+      security:
+      - DigestAuth: []
+      summary: Service Account Update
+      tags:
+      - Organizations
+  /api/atlas/v2/orgs/{orgId}/serviceAccounts/{serviceAccountId}/groups:
+    get:
+      description: Returns list of Service Account projects.
+      operationId: listServiceAccountProjects
+      parameters:
+      - $ref: '#/components/parameters/orgId'
+      - description: Id of the service account.
+        in: path
+        name: serviceAccountId
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/itemsPerPage'
+      - $ref: '#/components/parameters/pageNum'
+      - $ref: '#/components/parameters/pretty'
+      - $ref: '#/components/parameters/envelope'
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-10-01+json:
+              schema:
+                $ref: '#/components/schemas/PaginatedServiceAccountGroup'
+              x-xgen-version: 2023-10-01
+          description: OK
+        "401":
+          $ref: '#/components/responses/unauthorized'
+        "403":
+          $ref: '#/components/responses/forbidden'
+        "500":
+          $ref: '#/components/responses/internalServerError'
+      security:
+      - DigestAuth: []
+      summary: Return All Service Account projects
+      tags:
+      - Organizations
+  /api/atlas/v2/orgs/{orgId}/serviceAccounts/{serviceAccountId}/secrets:
+    post:
+      description: Create Service Account secret.
+      operationId: createServiceAccountSecret
+      parameters:
+      - $ref: '#/components/parameters/orgId'
+      - description: Id of the service account.
+        in: path
+        name: serviceAccountId
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/envelope'
+      - $ref: '#/components/parameters/pretty'
+      requestBody:
+        content:
+          application/vnd.atlas.2023-10-01+json:
+            schema:
+              $ref: '#/components/schemas/ServiceAccountSecretRequest'
+        description: Details to create secret in the specified service account.
+        required: true
+      responses:
+        "201":
+          content:
+            application/vnd.atlas.2023-10-01+json:
+              schema:
+                $ref: '#/components/schemas/ServiceAccountSecret'
+              x-xgen-version: 2023-10-01
+          description: Created
+        "400":
+          $ref: '#/components/responses/badRequest'
+        "401":
+          $ref: '#/components/responses/unauthorized'
+        "500":
+          $ref: '#/components/responses/internalServerError'
+      security:
+      - DigestAuth: []
+      summary: Service Account Secret Creation
+      tags:
+      - Organizations
+  /api/atlas/v2/orgs/{orgId}/serviceAccounts/{serviceAccountId}/secrets/{secretId}:
+    delete:
+      description: Delete Service Account Secret.
+      operationId: deleteServiceAccountSecret
+      parameters:
+      - description: Id of the service account.
+        in: path
+        name: serviceAccountId
+        required: true
+        schema:
+          type: string
+      - description: Id of the secret.
+        in: path
+        name: secretId
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/orgId'
+      - $ref: '#/components/parameters/envelope'
+      - $ref: '#/components/parameters/pretty'
+      responses:
+        "204":
+          content:
+            application/vnd.atlas.2023-10-01+json:
+              x-xgen-version: 2023-10-01
+          description: This endpoint does not return a response body.
+        "401":
+          $ref: '#/components/responses/unauthorized'
+        "404":
+          $ref: '#/components/responses/notFound'
+        "500":
+          $ref: '#/components/responses/internalServerError'
+      security:
+      - DigestAuth: []
+      summary: Service Account Secret Deletion.
+      tags:
+      - Organizations
   /api/atlas/v2/orgs/{orgId}/settings:
     get:
       description: "Returns details about the specified organization's settings. To\
@@ -17527,6 +18091,8 @@ components:
           - million
           - billion
           - ""
+          - ""
+          - ""
       title: Threshold
     AlertsToggle:
       type: object
@@ -18247,7 +18813,7 @@ components:
       properties:
         specs:
           type: array
-          description: List of settings that configure the search nodes for your cluster.
+          description: List of settings that configure the Search Nodes for your cluster.
           items:
             $ref: '#/components/schemas/ApiSearchDeploymentSpecView'
           maxItems: 1
@@ -18277,7 +18843,7 @@ components:
           readOnly: true
         specs:
           type: array
-          description: List of settings that configure the search nodes for your cluster.
+          description: List of settings that configure the Search Nodes for your cluster.
           items:
             $ref: '#/components/schemas/ApiSearchDeploymentSpecView'
           readOnly: true
@@ -18295,7 +18861,7 @@ components:
       properties:
         instanceSize:
           type: string
-          description: Hardware specification for the search node instance sizes.
+          description: Hardware specification for the Search Node instance sizes.
           enum:
           - S20_HIGHCPU_NVME
           - S30_HIGHCPU_NVME
@@ -18314,11 +18880,12 @@ components:
           - S110_LOWCPU_NVME
           - S120_LOWCPU_NVME
           - S130_LOWCPU_NVME
+          - S135_LOWCPU_NVME
           - S140_LOWCPU_NVME
         nodeCount:
           type: integer
           format: int32
-          description: Number of search nodes in the cluster.
+          description: Number of Search Nodes in the cluster.
           example: 2
           maximum: 32
           minimum: 2
@@ -19119,6 +19686,8 @@ components:
           - million
           - billion
           - ""
+          - ""
+          - ""
       required:
       - metricName
       title: App Services Metric Threshold
@@ -19381,8 +19950,6 @@ components:
       title: Automation Config Events
     AvailableCloudProviderRegion:
       type: object
-      description: List of regions that this cloud provider supports for this instance
-        size.
       properties:
         default:
           type: boolean
@@ -19394,7 +19961,6 @@ components:
           type: string
           description: Human-readable label that identifies the supported region.
           readOnly: true
-      readOnly: true
     AvailableClustersDeployment:
       type: object
       description: Deployments that can be migrated to MongoDB Atlas.
@@ -19594,6 +20160,7 @@ components:
             - US_CENTRAL
             - US_EAST
             - US_EAST_2
+            - US_EAST_2_EUAP
             - US_NORTH_CENTRAL
             - US_WEST
             - US_SOUTH_CENTRAL
@@ -22809,7 +23376,7 @@ components:
           description: Human-readable label that identifies the Cloud provider.
           enum:
           - AWS
-          - GSP
+          - GCP
           - AZURE
     CloudRegionConfig:
       type: object
@@ -23296,7 +23863,6 @@ components:
       title: Automatic Cluster Scaling Settings
     ClusterCloudProviderInstanceSize:
       type: object
-      description: List of instances sizes that this cloud provider supports.
       properties:
         availableRegions:
           type: array
@@ -23310,7 +23876,6 @@ components:
           description: Human-readable label that identifies the instance size or cluster
             tier.
           readOnly: true
-      readOnly: true
     ClusterComputeAutoScaling:
       type: object
       description: Collection of settings that configures how a cluster might scale
@@ -29617,6 +30182,7 @@ components:
         - NODE_ROLLING_RESYNC_SCHEDULED
         - CLUSTER_ROLLING_RESYNC_CANCELED
         - CLUSTER_OS_UPDATED
+        - CLUSTER_INSTANCE_FAMILY_UPDATED
         - PUSH_BASED_LOG_EXPORT_ENABLED
         - PUSH_BASED_LOG_EXPORT_CONFIGURATION_UPDATED
         - PUSH_BASED_LOG_EXPORT_DISABLED
@@ -30076,6 +30642,7 @@ components:
         - USER_ROLES_CHANGED_AUDIT
         - ORG_FLEX_CONSULTING_PURCHASED
         - ORG_FLEX_CONSULTING_PURCHASE_FAILED
+        - INVITED_TO_TEAM
         title: User Event Types
       - type: string
         enum:
@@ -30501,9 +31068,15 @@ components:
           items:
             $ref: '#/components/schemas/ConnectedOrgConfig'
           uniqueItems: true
+        audience:
+          type: string
+          description: Identifier of the intended recipient of the token.
         audienceClaim:
           type: array
-          description: Identifier of the intended recipient of the token.
+          deprecated: true
+          description: "Identifier of the intended recipient of the token. The audienceClaim\
+            \ field is deprecated and will be removed in the 04/17/2024 release, use\
+            \ the audience field instead."
           items:
             type: string
         createdAt:
@@ -30560,9 +31133,15 @@ components:
       oneOf:
       - $ref: '#/components/schemas/FederationOidcWorkforceIdentityProviderUpdate'
       properties:
+        audience:
+          type: string
+          description: Identifier of the intended recipient of the token.
         audienceClaim:
           type: array
-          description: Identifier of the intended recipient of the token.
+          deprecated: true
+          description: "Identifier of the intended recipient of the token. The audienceClaim\
+            \ field is deprecated and will be removed in the 04/17/2024 release, use\
+            \ the audience field instead."
           items:
             type: string
         description:
@@ -30605,9 +31184,15 @@ components:
           items:
             $ref: '#/components/schemas/ConnectedOrgConfig'
           uniqueItems: true
+        audience:
+          type: string
+          description: Identifier of the intended recipient of the token.
         audienceClaim:
           type: array
-          description: Identifier of the intended recipient of the token.
+          deprecated: true
+          description: "Identifier of the intended recipient of the token. The audienceClaim\
+            \ field is deprecated and will be removed in the 04/17/2024 release, use\
+            \ the audience field instead."
           items:
             type: string
         clientId:
@@ -30680,9 +31265,15 @@ components:
           items:
             type: string
           uniqueItems: true
+        audience:
+          type: string
+          description: Identifier of the intended recipient of the token.
         audienceClaim:
           type: array
-          description: Identifier of the intended recipient of the token.
+          deprecated: true
+          description: "Identifier of the intended recipient of the token. The audienceClaim\
+            \ field is deprecated and will be removed in the 04/17/2024 release, use\
+            \ the audience field instead."
           items:
             type: string
         clientId:
@@ -31950,6 +32541,190 @@ components:
           readOnly: true
       readOnly: true
       title: Group Service IP Addresses
+    GroupServiceAccount:
+      type: object
+      properties:
+        createdAt:
+          type: string
+          format: date-time
+          description: Service account creation time.
+        description:
+          type: string
+          description: Description of the service account.
+        id:
+          type: string
+          description: ID for the service account.
+          pattern: "^mdb_sa_id_[a-fA-F\\d]{24}$"
+        name:
+          type: string
+          description: Name for service account.
+        roleNames:
+          type: array
+          description: Roles assigned to the Service Account group.
+          items:
+            type: string
+            enum:
+            - GROUP_ATLAS_ADMIN
+            - GROUP_AUTOMATION_ADMIN
+            - GROUP_BACKUP_ADMIN
+            - GROUP_MONITORING_ADMIN
+            - GROUP_OWNER
+            - GROUP_READ_ONLY
+            - GROUP_USER_ADMIN
+            - GROUP_BILLING_ADMIN
+            - GROUP_DATA_ACCESS_ADMIN
+            - GROUP_DATA_ACCESS_READ_ONLY
+            - GROUP_DATA_ACCESS_READ_WRITE
+            - GROUP_CHARTS_ADMIN
+            - GROUP_CLUSTER_MANAGER
+            - GROUP_SEARCH_INDEX_EDITOR
+            - GROUP_STREAM_PROCESSING_OWNER
+          uniqueItems: true
+        secrets:
+          type: array
+          description: List of secrets.
+          items:
+            $ref: '#/components/schemas/ServiceAccountSecret'
+          uniqueItems: true
+    GroupServiceAccountDetails:
+      type: object
+      properties:
+        createdAt:
+          type: string
+          format: date-time
+          description: Timestamp representing creation time.
+        description:
+          type: string
+          description: Description of the service account.
+        id:
+          type: string
+          description: Service account client id.
+          pattern: "^mdb_sa_id_[a-fA-F\\d]{24}$"
+        name:
+          type: string
+          description: Service account name.
+        roleNames:
+          type: array
+          description: Roles assigned to the Service Account group.
+          items:
+            type: string
+            enum:
+            - GROUP_ATLAS_ADMIN
+            - GROUP_AUTOMATION_ADMIN
+            - GROUP_BACKUP_ADMIN
+            - GROUP_MONITORING_ADMIN
+            - GROUP_OWNER
+            - GROUP_READ_ONLY
+            - GROUP_USER_ADMIN
+            - GROUP_BILLING_ADMIN
+            - GROUP_DATA_ACCESS_ADMIN
+            - GROUP_DATA_ACCESS_READ_ONLY
+            - GROUP_DATA_ACCESS_READ_WRITE
+            - GROUP_CHARTS_ADMIN
+            - GROUP_CLUSTER_MANAGER
+            - GROUP_SEARCH_INDEX_EDITOR
+            - GROUP_STREAM_PROCESSING_OWNER
+          uniqueItems: true
+        secrets:
+          type: array
+          description: List of Client Secret Public details.
+          items:
+            $ref: '#/components/schemas/ServiceAccountSecretDetails'
+          maxItems: 2
+          uniqueItems: true
+    GroupServiceAccountRequest:
+      type: object
+      properties:
+        description:
+          type: string
+          description: Human readable description for service account.
+        name:
+          type: string
+          description: Human readable name for service account.
+        roleNames:
+          type: array
+          description: Project roles associated with Service account.
+          items:
+            type: string
+            enum:
+            - GROUP_ATLAS_ADMIN
+            - GROUP_AUTOMATION_ADMIN
+            - GROUP_BACKUP_ADMIN
+            - GROUP_MONITORING_ADMIN
+            - GROUP_OWNER
+            - GROUP_READ_ONLY
+            - GROUP_USER_ADMIN
+            - GROUP_BILLING_ADMIN
+            - GROUP_DATA_ACCESS_ADMIN
+            - GROUP_DATA_ACCESS_READ_ONLY
+            - GROUP_DATA_ACCESS_READ_WRITE
+            - GROUP_CHARTS_ADMIN
+            - GROUP_CLUSTER_MANAGER
+            - GROUP_SEARCH_INDEX_EDITOR
+            - GROUP_STREAM_PROCESSING_OWNER
+        secretExpiresAt:
+          type: string
+          format: date-time
+          description: Secret expiration time.
+      required:
+      - description
+      - name
+      - secretExpiresAt
+    GroupServiceAccountRoleAssignment:
+      type: object
+      properties:
+        roleNames:
+          type: array
+          description: Group access roles.
+          items:
+            type: string
+            enum:
+            - GROUP_ATLAS_ADMIN
+            - GROUP_AUTOMATION_ADMIN
+            - GROUP_BACKUP_ADMIN
+            - GROUP_MONITORING_ADMIN
+            - GROUP_OWNER
+            - GROUP_READ_ONLY
+            - GROUP_USER_ADMIN
+            - GROUP_BILLING_ADMIN
+            - GROUP_DATA_ACCESS_ADMIN
+            - GROUP_DATA_ACCESS_READ_ONLY
+            - GROUP_DATA_ACCESS_READ_WRITE
+            - GROUP_CHARTS_ADMIN
+            - GROUP_CLUSTER_MANAGER
+            - GROUP_SEARCH_INDEX_EDITOR
+            - GROUP_STREAM_PROCESSING_OWNER
+          uniqueItems: true
+    GroupServiceAccountUpdateRequest:
+      type: object
+      properties:
+        description:
+          type: string
+          description: Description of the service account client.
+        name:
+          type: string
+          description: Client name for service account.
+        roleNames:
+          type: array
+          description: Project roles associated with Service account.
+          items:
+            type: string
+            enum:
+            - GROUP_ATLAS_ADMIN
+            - GROUP_AUTOMATION_ADMIN
+            - GROUP_BACKUP_ADMIN
+            - GROUP_MONITORING_ADMIN
+            - GROUP_OWNER
+            - GROUP_READ_ONLY
+            - GROUP_USER_ADMIN
+            - GROUP_BILLING_ADMIN
+            - GROUP_DATA_ACCESS_ADMIN
+            - GROUP_DATA_ACCESS_READ_ONLY
+            - GROUP_DATA_ACCESS_READ_WRITE
+            - GROUP_CHARTS_ADMIN
+            - GROUP_CLUSTER_MANAGER
+            - GROUP_SEARCH_INDEX_EDITOR
+            - GROUP_STREAM_PROCESSING_OWNER
     GroupSettings:
       type: object
       description: Collection of settings that configures the project.
@@ -33401,6 +34176,8 @@ components:
           - million
           - billion
           - ""
+          - ""
+          - ""
       required:
       - metricName
       title: Host Metric Threshold
@@ -33453,6 +34230,8 @@ components:
           - thousand
           - million
           - billion
+          - ""
+          - ""
           - ""
           readOnly: true
       readOnly: true
@@ -34097,6 +34876,22 @@ components:
           - ATLAS_AZURE_INSTANCE_R200_PAUSED
           - ATLAS_AZURE_INSTANCE_R300_PAUSED
           - ATLAS_AZURE_INSTANCE_R400_PAUSED
+          - ATLAS_AZURE_SEARCH_INSTANCE_S20_COMPUTE_LOCALSSD
+          - ATLAS_AZURE_SEARCH_INSTANCE_S30_COMPUTE_LOCALSSD
+          - ATLAS_AZURE_SEARCH_INSTANCE_S40_COMPUTE_LOCALSSD
+          - ATLAS_AZURE_SEARCH_INSTANCE_S50_COMPUTE_LOCALSSD
+          - ATLAS_AZURE_SEARCH_INSTANCE_S60_COMPUTE_LOCALSSD
+          - ATLAS_AZURE_SEARCH_INSTANCE_S70_COMPUTE_LOCALSSD
+          - ATLAS_AZURE_SEARCH_INSTANCE_S80_COMPUTE_LOCALSSD
+          - ATLAS_AZURE_SEARCH_INSTANCE_S40_MEMORY_LOCALSSD
+          - ATLAS_AZURE_SEARCH_INSTANCE_S50_MEMORY_LOCALSSD
+          - ATLAS_AZURE_SEARCH_INSTANCE_S60_MEMORY_LOCALSSD
+          - ATLAS_AZURE_SEARCH_INSTANCE_S80_MEMORY_LOCALSSD
+          - ATLAS_AZURE_SEARCH_INSTANCE_S90_MEMORY_LOCALSSD
+          - ATLAS_AZURE_SEARCH_INSTANCE_S100_MEMORY_LOCALSSD
+          - ATLAS_AZURE_SEARCH_INSTANCE_S110_MEMORY_LOCALSSD
+          - ATLAS_AZURE_SEARCH_INSTANCE_S130_MEMORY_LOCALSSD
+          - ATLAS_AZURE_SEARCH_INSTANCE_S135_MEMORY_LOCALSSD
           - ATLAS_AZURE_STORAGE_P2
           - ATLAS_AZURE_STORAGE_P3
           - ATLAS_AZURE_STORAGE_P4
@@ -35112,12 +35907,10 @@ components:
           type: integer
           format: int32
           default: 1
-          description: "Positive integer that specifies the number of shards to deploy\
-            \ in each specified zone If you set this value to `1` and **clusterType**\
-            \ is `SHARDED`, MongoDB Cloud deploys a single-shard sharded cluster.\
-            \ Don't create a sharded cluster with a single shard for production environments.\
-            \ Single-shard sharded clusters don't provide the same benefits as multi-shard\
-            \ configurations."
+          description: |-
+            Positive integer that specifies the number of shards to deploy in each specified zone If you set this value to `1` and **clusterType** is `SHARDED`, MongoDB Cloud deploys a single-shard sharded cluster. Don't create a sharded cluster with a single shard for production environments. Single-shard sharded clusters don't provide the same benefits as multi-shard configurations.
+
+             If you are upgrading a replica set to a sharded cluster, you cannot increase the number of shards in the same update request.  You should wait until after the cluster has completed upgrading to sharded and you have reconnected all application clients to the MongoDB router before adding additional shards. Otherwise, your data might become inconsistent once MongoDB Cloud begins distributing data across shards.
         regionsConfig:
           type: object
           additionalProperties:
@@ -36214,6 +37007,7 @@ components:
       - NODE_ROLLING_RESYNC_SCHEDULED
       - CLUSTER_ROLLING_RESYNC_CANCELED
       - CLUSTER_OS_UPDATED
+      - CLUSTER_INSTANCE_FAMILY_UPDATED
       - PUSH_BASED_LOG_EXPORT_ENABLED
       - PUSH_BASED_LOG_EXPORT_CONFIGURATION_UPDATED
       - PUSH_BASED_LOG_EXPORT_DISABLED
@@ -37981,6 +38775,133 @@ components:
             value if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
+    OrgServiceAccount:
+      type: object
+      properties:
+        createdAt:
+          type: string
+          format: date-time
+          description: Service account creation time.
+        description:
+          type: string
+          description: Description of the service account.
+        id:
+          type: string
+          description: ID for the service account.
+          pattern: "^mdb_sa_id_[a-fA-F\\d]{24}$"
+        name:
+          type: string
+          description: Name for service account.
+        roleNames:
+          type: array
+          description: Organization roles assigned to the Service Account.
+          items:
+            type: string
+            enum:
+            - ORG_MEMBER
+            - ORG_READ_ONLY
+            - ORG_BILLING_ADMIN
+            - ORG_BILLING_READ_ONLY
+            - ORG_GROUP_CREATOR
+            - ORG_OWNER
+            - ORG_TEAM_MEMBERS_ADMIN
+          uniqueItems: true
+        secrets:
+          type: array
+          description: List of secrets.
+          items:
+            $ref: '#/components/schemas/ServiceAccountSecret'
+          uniqueItems: true
+    OrgServiceAccountDetails:
+      type: object
+      properties:
+        createdAt:
+          type: string
+          format: date-time
+          description: Timestamp representing creation time.
+        description:
+          type: string
+          description: Description of the service account.
+        id:
+          type: string
+          description: Service account client id.
+          pattern: "^mdb_sa_id_[a-fA-F\\d]{24}$"
+        name:
+          type: string
+          description: Service account name.
+        roleNames:
+          type: array
+          description: Roles assigned to the Service Account group.
+          items:
+            type: string
+            enum:
+            - ORG_MEMBER
+            - ORG_READ_ONLY
+            - ORG_BILLING_ADMIN
+            - ORG_BILLING_READ_ONLY
+            - ORG_GROUP_CREATOR
+            - ORG_OWNER
+            - ORG_TEAM_MEMBERS_ADMIN
+          uniqueItems: true
+        secrets:
+          type: array
+          description: List of Client Secret Public details.
+          items:
+            $ref: '#/components/schemas/ServiceAccountSecretDetails'
+          maxItems: 2
+          uniqueItems: true
+    OrgServiceAccountRequest:
+      type: object
+      properties:
+        description:
+          type: string
+          description: Human readable description for service account.
+        name:
+          type: string
+          description: Human readable name for service account.
+        roleNames:
+          type: array
+          description: Project roles associated with Service account.
+          items:
+            type: string
+            enum:
+            - ORG_MEMBER
+            - ORG_READ_ONLY
+            - ORG_BILLING_ADMIN
+            - ORG_BILLING_READ_ONLY
+            - ORG_GROUP_CREATOR
+            - ORG_OWNER
+            - ORG_TEAM_MEMBERS_ADMIN
+        secretExpiresAt:
+          type: string
+          format: date-time
+          description: Secret expiration time.
+      required:
+      - description
+      - name
+      - secretExpiresAt
+    OrgServiceAccountUpdateRequest:
+      type: object
+      properties:
+        description:
+          type: string
+          description: Description of the service account client.
+        name:
+          type: string
+          description: Client name for service account.
+        roleNames:
+          type: array
+          description: Project roles associated with Service account.
+          items:
+            type: string
+            enum:
+            - ORG_MEMBER
+            - ORG_READ_ONLY
+            - ORG_BILLING_ADMIN
+            - ORG_BILLING_READ_ONLY
+            - ORG_GROUP_CREATOR
+            - ORG_OWNER
+            - ORG_TEAM_MEMBERS_ADMIN
     OrganizationInvitation:
       type: object
       properties:
@@ -39104,6 +40025,35 @@ components:
             value if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
+    PaginatedGroupServiceAccounts:
+      type: object
+      description: List of Service Accounts
+      properties:
+        links:
+          type: array
+          description: "List of one or more Uniform Resource Locators (URLs) that\
+            \ point to API sub-resources, related API resources, or both. RFC 5988\
+            \ outlines these relationships."
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: '#/components/schemas/Link'
+          readOnly: true
+        results:
+          type: array
+          description: List of returned documents that MongoDB Cloud providers when
+            completing this request.
+          items:
+            $ref: '#/components/schemas/GroupServiceAccountDetails'
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+          description: Total number of documents available. MongoDB Cloud omits this
+            value if `includeCount` is set to `false`.
+          minimum: 0
+          readOnly: true
     PaginatedHostView_Atlas:
       type: object
       properties:
@@ -39264,6 +40214,35 @@ components:
             completing this request.
           items:
             $ref: '#/components/schemas/OrgGroup'
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+          description: Total number of documents available. MongoDB Cloud omits this
+            value if `includeCount` is set to `false`.
+          minimum: 0
+          readOnly: true
+    PaginatedOrgServiceAccounts:
+      type: object
+      description: List of Service Accounts
+      properties:
+        links:
+          type: array
+          description: "List of one or more Uniform Resource Locators (URLs) that\
+            \ point to API sub-resources, related API resources, or both. RFC 5988\
+            \ outlines these relationships."
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: '#/components/schemas/Link'
+          readOnly: true
+        results:
+          type: array
+          description: List of returned documents that MongoDB Cloud providers when
+            completing this request.
+          items:
+            $ref: '#/components/schemas/OrgServiceAccountDetails'
           readOnly: true
         totalCount:
           type: integer
@@ -39434,6 +40413,35 @@ components:
             completing this request.
           items:
             $ref: '#/components/schemas/ServerlessInstanceDescription'
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+          description: Total number of documents available. MongoDB Cloud omits this
+            value if `includeCount` is set to `false`.
+          minimum: 0
+          readOnly: true
+    PaginatedServiceAccountGroup:
+      type: object
+      description: List of Service Account projects.
+      properties:
+        links:
+          type: array
+          description: "List of one or more Uniform Resource Locators (URLs) that\
+            \ point to API sub-resources, related API resources, or both. RFC 5988\
+            \ outlines these relationships."
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: '#/components/schemas/Link'
+          readOnly: true
+        results:
+          type: array
+          description: List of returned documents that MongoDB Cloud providers when
+            completing this request.
+          items:
+            $ref: '#/components/schemas/ServiceAccountGroup'
           readOnly: true
         totalCount:
           type: integer
@@ -41006,12 +42014,10 @@ components:
         numShards:
           type: integer
           format: int32
-          description: "Positive integer that specifies the number of shards to deploy\
-            \ in each specified zone. If you set this value to `1` and **clusterType**\
-            \ is `SHARDED`, MongoDB Cloud deploys a single-shard sharded cluster.\
-            \ Don't create a sharded cluster with a single shard for production environments.\
-            \ Single-shard sharded clusters don't provide the same benefits as multi-shard\
-            \ configurations."
+          description: |-
+            Positive integer that specifies the number of shards to deploy in each specified zone. If you set this value to `1` and **clusterType** is `SHARDED`, MongoDB Cloud deploys a single-shard sharded cluster. Don't create a sharded cluster with a single shard for production environments. Single-shard sharded clusters don't provide the same benefits as multi-shard configurations.
+
+             If you are upgrading a replica set to a sharded cluster, you cannot increase the number of shards in the same update request.  You should wait until after the cluster has completed upgrading to sharded and you have reconnected all application clients to the MongoDB router before adding additional shards. Otherwise, your data might become inconsistent once MongoDB Cloud begins distributing data across shards.
           minimum: 1
         regionConfigs:
           type: array
@@ -42463,6 +43469,8 @@ components:
           - million
           - billion
           - ""
+          - ""
+          - ""
       required:
       - metricName
       title: Serverless Metric Threshold
@@ -42619,6 +43627,17 @@ components:
       - SERVICE_ACCOUNT_SECRET_ADDED
       - SERVICE_ACCOUNT_SECRET_DELETED
       title: Service Account Event Types
+    ServiceAccountGroup:
+      type: object
+      properties:
+        groupId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the project.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+          readOnly: true
     ServiceAccountGroupEvents:
       type: object
       description: Service Account event identifies different activities around user
@@ -42833,6 +43852,84 @@ components:
       - eventTypeName
       - id
       title: ServiceAccount Events
+    ServiceAccountSecret:
+      type: object
+      properties:
+        createdAt:
+          type: string
+          format: date-time
+          description: Timestamp representing creation time.
+          readOnly: true
+        expiresAt:
+          type: string
+          format: date-time
+          description: Timestamp representing secret expiration time.
+          readOnly: true
+        id:
+          type: string
+          description: Unique 24-hexadecimal character string that identifies the
+            secret.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
+          readOnly: true
+        lastUsedAt:
+          type: string
+          format: date-time
+          description: Timestamp representing last time secret usage.
+          readOnly: true
+        secret:
+          type: string
+          description: Secret for the service account.
+          pattern: "^mdb_sa_sk_[0-9a-fA-F]{8}\\b-[0-9a-fA-F]{4}\\b-[0-9a-fA-F]{4}\\\
+            b-[0-9a-fA-F]{4}\\b-[0-9a-fA-F]{12}$"
+      required:
+      - createdAt
+      - expiresAt
+      - id
+    ServiceAccountSecretDetails:
+      type: object
+      properties:
+        createdAt:
+          type: string
+          format: date-time
+          description: Timestamp representing creation time.
+          readOnly: true
+        expiresAt:
+          type: string
+          format: date-time
+          description: Timestamp representing secret expiration time.
+          readOnly: true
+        id:
+          type: string
+          description: Unique 24-hexadecimal character string that identifies the
+            secret.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
+          readOnly: true
+        lastUsedAt:
+          type: string
+          format: date-time
+          description: Timestamp representing last time secret usage.
+          readOnly: true
+        maskedSecretValue:
+          type: string
+          description: Value of client secret with masked values of the first 20 characters.
+          example: mdb_ic_sk_xxxxxxxx-xxxx-xxxx-xxxxxxxx12ce
+          readOnly: true
+      required:
+      - createdAt
+      - expiresAt
+      - id
+      - maskedSecretValue
+    ServiceAccountSecretRequest:
+      type: object
+      properties:
+        secretExpiresAfterHours:
+          type: integer
+          format: int32
+          description: Number of hours representing validity duration for secret.
+      required:
+      - secretExpiresAfterHours
     ShardEntry:
       type: object
       description: Sharding configuration for a collection to be sharded on the destination
@@ -44713,6 +45810,7 @@ components:
       - USER_ROLES_CHANGED_AUDIT
       - ORG_FLEX_CONSULTING_PURCHASED
       - ORG_FLEX_CONSULTING_PURCHASE_FAILED
+      - INVITED_TO_TEAM
       example: JOINED_ORG
       title: User Event Types
     UserEventViewForNdsGroup:
