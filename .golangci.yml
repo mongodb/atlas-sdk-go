@@ -20,10 +20,6 @@ linters-settings:
       - typeAssertChain
   gocyclo:
     min-complexity: 15
-  govet:
-    check-shadowing: true
-  maligned:
-    suggest-new: true
   revive:
     # see https://github.com/mgechev/revive#available-rules for details.
     ignore-generated-header: true
