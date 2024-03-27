@@ -68,9 +68,5 @@ func main() {
 func newRetryableClient(retryClient *retryablehttp.Client, apiKey string, apiSecret string) (*http.Client, error) {
 	var transport http.RoundTripper = &retryablehttp.RoundTripper{Client: retryClient}
 	digestRetryAbleTransport := digest.NewTransportWithHTTPRoundTripper(apiKey, apiSecret,transport)
-	retryableClient, err := digestRetryAbleTransport.Client()
-	if err != nil {
-		return nil, err;
-	}
-	return retryableClient, nil
+	return digestRetryAbleTransport.Client()
 }
