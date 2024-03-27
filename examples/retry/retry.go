@@ -44,9 +44,9 @@ func main() {
 		admin.UseHTTPClient(retryableClient),
 		admin.UseBaseURL(url),
 		admin.UseDebug(false))
-		if err != nil{
-			log.Fatal(err)
-		}
+	if err != nil{
+		log.Fatal(err)
+	}
 
 	request := sdk.ProjectsApi.ListProjectsWithParams(ctx,
 		&admin.ListProjectsApiParams{
