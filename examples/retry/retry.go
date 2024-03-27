@@ -59,9 +59,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	if projects.GetTotalCount() == 0 {
-		log.Fatal("account should have at least single project")
-	}
+	log.Info("Total Projects", projects.GetTotalCount())
 
 }
 
