@@ -12,4 +12,4 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run ShellCheck
-        uses: bewuethr/shellcheck-action@1cec217c994d159d2530eaae4bd5a5fb3b64673d
+        uses: bewuethr/shellcheck-action@e216f901354ce8c494ae2b4507f4c89639b6d524
