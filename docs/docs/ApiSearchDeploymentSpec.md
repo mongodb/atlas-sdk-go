@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**InstanceSize** | **string** | Hardware specification for the search node instance sizes. | 
-**NodeCount** | **int** | Number of search nodes in the cluster. | 
+**InstanceSize** | **string** | Hardware specification for the Search Node instance sizes. | 
+**NodeCount** | **int** | Number of Search Nodes in the cluster. | 
 
 ## Methods
 

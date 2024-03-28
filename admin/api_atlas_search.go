@@ -16,11 +16,11 @@ type AtlasSearchApi interface {
 	/*
 		CreateAtlasSearchDeployment Create Search Nodes
 
-		[experimental] Creates search nodes for the specified cluster.
+		[experimental] Creates Search Nodes for the specified cluster.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param clusterName Label that identifies the cluster to create search nodes for.
+		@param clusterName Label that identifies the cluster to create Search Nodes for.
 		@return CreateAtlasSearchDeploymentApiRequest
 	*/
 	CreateAtlasSearchDeployment(ctx context.Context, groupId string, clusterName string, apiSearchDeploymentRequest *ApiSearchDeploymentRequest) CreateAtlasSearchDeploymentApiRequest
@@ -64,7 +64,7 @@ type AtlasSearchApi interface {
 	/*
 		DeleteAtlasSearchDeployment Delete Search Nodes
 
-		[experimental] Deletes the search nodes for the specified cluster.
+		[experimental] Deletes the Search Nodes for the specified cluster.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -113,11 +113,11 @@ type AtlasSearchApi interface {
 	/*
 		GetAtlasSearchDeployment Return Search Nodes
 
-		[experimental] Return the search nodes for the specified cluster.
+		[experimental] Return the Search Nodes for the specified cluster.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param clusterName Label that identifies the cluster to return the search nodes for.
+		@param clusterName Label that identifies the cluster to return the Search Nodes for.
 		@return GetAtlasSearchDeploymentApiRequest
 	*/
 	GetAtlasSearchDeployment(ctx context.Context, groupId string, clusterName string) GetAtlasSearchDeploymentApiRequest
@@ -188,11 +188,11 @@ type AtlasSearchApi interface {
 	/*
 		UpdateAtlasSearchDeployment Update Search Nodes
 
-		[experimental] Updates the search nodes for the specified cluster.
+		[experimental] Updates the Search Nodes for the specified cluster.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param clusterName Label that identifies the cluster to update the search nodes for.
+		@param clusterName Label that identifies the cluster to update the Search Nodes for.
 		@return UpdateAtlasSearchDeploymentApiRequest
 	*/
 	UpdateAtlasSearchDeployment(ctx context.Context, groupId string, clusterName string, apiSearchDeploymentRequest *ApiSearchDeploymentRequest) UpdateAtlasSearchDeploymentApiRequest
@@ -269,11 +269,11 @@ func (r CreateAtlasSearchDeploymentApiRequest) Execute() (*ApiSearchDeploymentRe
 /*
 CreateAtlasSearchDeployment Create Search Nodes
 
-[experimental] Creates search nodes for the specified cluster.
+[experimental] Creates Search Nodes for the specified cluster.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param clusterName Label that identifies the cluster to create search nodes for.
+	@param clusterName Label that identifies the cluster to create Search Nodes for.
 	@return CreateAtlasSearchDeploymentApiRequest
 */
 func (a *AtlasSearchApiService) CreateAtlasSearchDeployment(ctx context.Context, groupId string, clusterName string, apiSearchDeploymentRequest *ApiSearchDeploymentRequest) CreateAtlasSearchDeploymentApiRequest {
@@ -544,7 +544,7 @@ func (r DeleteAtlasSearchDeploymentApiRequest) Execute() (*http.Response, error)
 /*
 DeleteAtlasSearchDeployment Delete Search Nodes
 
-[experimental] Deletes the search nodes for the specified cluster.
+[experimental] Deletes the Search Nodes for the specified cluster.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -798,11 +798,11 @@ func (r GetAtlasSearchDeploymentApiRequest) Execute() (*ApiSearchDeploymentRespo
 /*
 GetAtlasSearchDeployment Return Search Nodes
 
-[experimental] Return the search nodes for the specified cluster.
+[experimental] Return the Search Nodes for the specified cluster.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param clusterName Label that identifies the cluster to return the search nodes for.
+	@param clusterName Label that identifies the cluster to return the Search Nodes for.
 	@return GetAtlasSearchDeploymentApiRequest
 */
 func (a *AtlasSearchApiService) GetAtlasSearchDeployment(ctx context.Context, groupId string, clusterName string) GetAtlasSearchDeploymentApiRequest {
@@ -1209,11 +1209,11 @@ func (r UpdateAtlasSearchDeploymentApiRequest) Execute() (*ApiSearchDeploymentRe
 /*
 UpdateAtlasSearchDeployment Update Search Nodes
 
-[experimental] Updates the search nodes for the specified cluster.
+[experimental] Updates the Search Nodes for the specified cluster.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param clusterName Label that identifies the cluster to update the search nodes for.
+	@param clusterName Label that identifies the cluster to update the Search Nodes for.
 	@return UpdateAtlasSearchDeploymentApiRequest
 */
 func (a *AtlasSearchApiService) UpdateAtlasSearchDeployment(ctx context.Context, groupId string, clusterName string, apiSearchDeploymentRequest *ApiSearchDeploymentRequest) UpdateAtlasSearchDeploymentApiRequest {

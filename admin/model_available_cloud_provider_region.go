@@ -6,7 +6,7 @@ import (
 	"encoding/json"
 )
 
-// AvailableCloudProviderRegion List of regions that this cloud provider supports for this instance size.
+// AvailableCloudProviderRegion struct for AvailableCloudProviderRegion
 type AvailableCloudProviderRegion struct {
 	// Flag that indicates whether the cloud provider sets this region as its default. AWS defaults to US_EAST_1, GCP defaults to CENTRAL_US, and AZURE defaults to US_WEST_2.
 	// Read only field.

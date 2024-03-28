@@ -23,7 +23,8 @@ Name | Type | Description | Notes
 **SsoDebugEnabled** | Pointer to **bool** | Flag that indicates whether the identity provider has SSO debug enabled. | [optional] 
 **SsoUrl** | Pointer to **string** | URL that points to the receiver of the SAML authentication request. | [optional] 
 **Status** | Pointer to **string** | String enum that indicates whether the identity provider is active. | [optional] 
-**AudienceClaim** | Pointer to **[]string** | Identifier of the intended recipient of the token. | [optional] 
+**Audience** | Pointer to **string** | Identifier of the intended recipient of the token. | [optional] 
+**AudienceClaim** | Pointer to **[]string** | Identifier of the intended recipient of the token. The audienceClaim field is deprecated and will be removed in the 04/17/2024 release, use the audience field instead. | [optional] 
 **ClientId** | Pointer to **string** | Client identifier that is assigned to an application by the Identity Provider. | [optional] 
 **GroupsClaim** | Pointer to **string** | Identifier of the claim which contains IdP Group IDs in the token. | [optional] 
 **RequestedScopes** | Pointer to **[]string** | Scopes that MongoDB applications will request from the authorization endpoint. | [optional] 
@@ -494,6 +495,30 @@ SetStatus sets Status field to given value.
 `func (o *FederationIdentityProvider) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+### GetAudience
+
+`func (o *FederationIdentityProvider) GetAudience() string`
+
+GetAudience returns the Audience field if non-nil, zero value otherwise.
+
+### GetAudienceOk
+
+`func (o *FederationIdentityProvider) GetAudienceOk() (*string, bool)`
+
+GetAudienceOk returns a tuple with the Audience field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAudience
+
+`func (o *FederationIdentityProvider) SetAudience(v string)`
+
+SetAudience sets Audience field to given value.
+
+### HasAudience
+
+`func (o *FederationIdentityProvider) HasAudience() bool`
+
+HasAudience returns a boolean if a field has been set.
 ### GetAudienceClaim
 
 `func (o *FederationIdentityProvider) GetAudienceClaim() []string`

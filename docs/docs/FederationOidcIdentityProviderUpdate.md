@@ -4,7 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AudienceClaim** | Pointer to **[]string** | Identifier of the intended recipient of the token. | [optional] 
+**Audience** | Pointer to **string** | Identifier of the intended recipient of the token. | [optional] 
+**AudienceClaim** | Pointer to **[]string** | Identifier of the intended recipient of the token. The audienceClaim field is deprecated and will be removed in the 04/17/2024 release, use the audience field instead. | [optional] 
 **Description** | Pointer to **string** | The description of the identity provider. | [optional] 
 **DisplayName** | Pointer to **string** | Human-readable label that identifies the identity provider. | [optional] 
 **GroupsClaim** | Pointer to **string** | Identifier of the claim which contains IdP Group IDs in the token. | [optional] 
@@ -34,6 +35,30 @@ NewFederationOidcIdentityProviderUpdateWithDefaults instantiates a new Federatio
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
+### GetAudience
+
+`func (o *FederationOidcIdentityProviderUpdate) GetAudience() string`
+
+GetAudience returns the Audience field if non-nil, zero value otherwise.
+
+### GetAudienceOk
+
+`func (o *FederationOidcIdentityProviderUpdate) GetAudienceOk() (*string, bool)`
+
+GetAudienceOk returns a tuple with the Audience field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAudience
+
+`func (o *FederationOidcIdentityProviderUpdate) SetAudience(v string)`
+
+SetAudience sets Audience field to given value.
+
+### HasAudience
+
+`func (o *FederationOidcIdentityProviderUpdate) HasAudience() bool`
+
+HasAudience returns a boolean if a field has been set.
 ### GetAudienceClaim
 
 `func (o *FederationOidcIdentityProviderUpdate) GetAudienceClaim() []string`
