@@ -5,6 +5,12 @@ updates:
     schedule:
       interval: weekly
       day: monday
+  - package-ecosystem: gomod
+    directory: "/examples"
+    schedule:
+      interval: monthly
+    ignore:
+      - dependency-name: "*"
   - package-ecosystem: github-actions
     directory: "/"
     schedule:
