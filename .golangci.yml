@@ -20,6 +20,10 @@ linters-settings:
       - typeAssertChain
   gocyclo:
     min-complexity: 15
+  govet:
+    check-shadowing: true
+  maligned:
+    suggest-new: true
   revive:
     # see https://github.com/mgechev/revive#available-rules for details.
     ignore-generated-header: true
@@ -69,7 +73,7 @@ linters:
   disable-all: true
   enable:
     - bodyclose # checks whether HTTP response body is closed successfully [fast: false, auto-fix: false]
-    #- depguard # Go linter that checks if package imports are in a list of acceptable packages [fast: false, auto-fix: false]
+    - depguard # Go linter that checks if package imports are in a list of acceptable packages [fast: false, auto-fix: false]
     - dogsled # Checks assignments with too many blank identifiers (e.g. x, _, _, _, := f()) [fast: true, auto-fix: false]
     - errcheck # Errcheck is a program for checking for unchecked errors in go programs. These unchecked errors can be critical bugs in some cases [fast: false, auto-fix: false]
     - errorlint # errorlint is a linter for that can be used to find code that will cause problems with the error wrapping scheme introduced in Go 1.13. [fast: false, auto-fix: false]
