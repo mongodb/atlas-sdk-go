@@ -5,7 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AssociatedOrgs** | Pointer to [**[]ConnectedOrgConfig**](ConnectedOrgConfig.md) | List that contains the connected organization configurations associated with the identity provider. | [optional] 
-**AudienceClaim** | Pointer to **[]string** | Identifier of the intended recipient of the token. | [optional] 
+**Audience** | Pointer to **string** | Identifier of the intended recipient of the token. | [optional] 
+**AudienceClaim** | Pointer to **[]string** | Identifier of the intended recipient of the token. The audienceClaim field is deprecated and will be removed in the 04/17/2024 release, use the audience field instead. | [optional] 
 **CreatedAt** | Pointer to **time.Time** | Date that the identity provider was created on. | [optional] [readonly] 
 **Description** | Pointer to **string** | The description of the identity provider. | [optional] 
 **DisplayName** | Pointer to **string** | Human-readable label that identifies the identity provider. | [optional] 
@@ -63,6 +64,30 @@ SetAssociatedOrgs sets AssociatedOrgs field to given value.
 `func (o *FederationOidcIdentityProvider) HasAssociatedOrgs() bool`
 
 HasAssociatedOrgs returns a boolean if a field has been set.
+### GetAudience
+
+`func (o *FederationOidcIdentityProvider) GetAudience() string`
+
+GetAudience returns the Audience field if non-nil, zero value otherwise.
+
+### GetAudienceOk
+
+`func (o *FederationOidcIdentityProvider) GetAudienceOk() (*string, bool)`
+
+GetAudienceOk returns a tuple with the Audience field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAudience
+
+`func (o *FederationOidcIdentityProvider) SetAudience(v string)`
+
+SetAudience sets Audience field to given value.
+
+### HasAudience
+
+`func (o *FederationOidcIdentityProvider) HasAudience() bool`
+
+HasAudience returns a boolean if a field has been set.
 ### GetAudienceClaim
 
 `func (o *FederationOidcIdentityProvider) GetAudienceClaim() []string`

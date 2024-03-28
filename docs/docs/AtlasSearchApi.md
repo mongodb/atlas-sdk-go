@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**clusterName** | **string** | Label that identifies the cluster to create search nodes for. | 
+**clusterName** | **string** | Label that identifies the cluster to create Search Nodes for. | 
 
 ### Other Parameters
 
@@ -80,7 +80,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **apiSearchDeploymentRequest** | [**ApiSearchDeploymentRequest**](ApiSearchDeploymentRequest.md) | Creates search nodes for the specified cluster. | 
+ **apiSearchDeploymentRequest** | [**ApiSearchDeploymentRequest**](ApiSearchDeploymentRequest.md) | Creates Search Nodes for the specified cluster. | 
 
 ### Return type
 
@@ -387,7 +387,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**clusterName** | **string** | Label that identifies the cluster to return the search nodes for. | 
+**clusterName** | **string** | Label that identifies the cluster to return the Search Nodes for. | 
 
 ### Other Parameters
 
@@ -630,7 +630,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**clusterName** | **string** | Label that identifies the cluster to update the search nodes for. | 
+**clusterName** | **string** | Label that identifies the cluster to update the Search Nodes for. | 
 
 ### Other Parameters
 
@@ -641,7 +641,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **apiSearchDeploymentRequest** | [**ApiSearchDeploymentRequest**](ApiSearchDeploymentRequest.md) | Updates the search nodes for the specified cluster. | 
+ **apiSearchDeploymentRequest** | [**ApiSearchDeploymentRequest**](ApiSearchDeploymentRequest.md) | Updates the Search Nodes for the specified cluster. | 
 
 ### Return type
 
