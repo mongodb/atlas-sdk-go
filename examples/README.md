@@ -1,4 +1,4 @@
-## Go SDK examples
+# Go SDK examples
 
 ## Running Examples
 
@@ -11,7 +11,6 @@ export MONGODB_ATLAS_PRIVATE_KEY=some-secret-key-for-gosdkapi
 go run ./aws_cluster/aws.go
 ```
 
-
 ## Running Examples with Mocked Backend
 
 SDK provides mocks using Testify and Mockery. 
@@ -19,4 +18,14 @@ One of the SDK examples covers usage of the mockery within tests.
 
 ```bash
 go test ./mock/cluster_test.go 
+```
+
+## Examples Reference
+
+### Retry Example
+
+Example provides automatic retries for all HTTP 500, 429 HTTP status errors.
+
+```bash
+go run ./retry/retry.go
 ```
