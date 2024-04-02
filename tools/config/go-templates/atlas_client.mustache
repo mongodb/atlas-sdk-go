@@ -67,8 +67,8 @@ func UseDigestAuth(apiKey, apiSecret string) ClientModifier {
 //  UseHTTPClient overrides UseDigestAuth method.
 //  To override client with diggest support use: 
 //   
-//   transport := digest.NewTransportWithHTTPRoundTripper(apiKey, apiSecret, transport)
-//   client :=UseHTTPClient(transport.Client())
+//   transport := digest.NewTransportWithHTTPRoundTripper(apiKey, apiSecret, yourHttpTransport)
+//   client := UseHTTPClient(transport.Client())
 func UseHTTPClient(client *http.Client) ClientModifier {
 	return func(c *Configuration) error {
 		c.HTTPClient = client
