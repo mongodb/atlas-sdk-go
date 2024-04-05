@@ -24,7 +24,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: ca8a36c792879bca90080dbf0e3f096c2a564d77
+  x-xgen-sha: fc06929ab7673db012eaf62230f78d640401de9e
 servers:
   - url: https://cloud.mongodb.com
 tags:
@@ -23602,8 +23602,26 @@ components:
           pattern: ^([a-f0-9]{24})$
         regionUsageRestrictions:
           type: string
-          default: NONE
-          description: Region usage restrictions that designate the project's AWS region.
+          default: COMMERCIAL_FEDRAMP_REGIONS_ONLY
+          description: >-
+            Applies to Atlas for Government only.
+
+
+            In Commercial Atlas, this field will be rejected in requests and missing in responses.
+
+
+            This field sets restrictions on available regions in the project.
+
+
+            | Value                             | Available Regions |
+
+            |-----------------------------------|------------|
+
+            | `COMMERCIAL_FEDRAMP_REGIONS_ONLY` | Only allows deployments in FedRAMP Moderate regions.|
+
+            | `GOV_REGIONS_ONLY`                | Only allows deployments in GovCloud regions.|
+          externalDocs:
+            url: https://www.mongodb.com/docs/atlas/government/overview/supported-regions/#supported-cloud-providers-and-regions
         tags:
           type: array
           description: List that contains key-value pairs between 1 to 255 characters in
