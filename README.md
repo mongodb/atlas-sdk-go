@@ -1,6 +1,7 @@
 # atlas-sdk-go
 [![PkgGoDev](https://pkg.go.dev/badge/go.mongodb.org/atlas-sdk)](https://pkg.go.dev/go.mongodb.org/atlas-sdk)
 ![CI](https://github.com/mongodb/atlas-sdk-go/workflows/CI/badge.svg)
+![Go](https://img.shields.io/github/go-mod/go-version/mongodb/atlas-sdk-go)
 
 A Go SDK for the [MongoDB Atlas API](https://docs.atlas.mongodb.com/api/).
 
