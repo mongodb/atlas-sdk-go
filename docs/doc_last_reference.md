@@ -93,6 +93,15 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
 *ClustersApi* | [UpdateClusterAdvancedConfiguration](./docs/ClustersApi.md#updateclusteradvancedconfiguration) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/processArgs | Update Advanced Configuration Options for One Cluster | Stable
 *ClustersApi* | [UpgradeSharedCluster](./docs/ClustersApi.md#upgradesharedcluster) | **Post** /api/atlas/v2/groups/{groupId}/clusters/tenantUpgrade | Upgrade One Shared-tier Cluster | Experimental
 *ClustersApi* | [UpgradeSharedClusterToServerless](./docs/ClustersApi.md#upgradesharedclustertoserverless) | **Post** /api/atlas/v2/groups/{groupId}/clusters/tenantUpgradeToServerless | Upgrades One Shared-Tier Cluster to the Serverless Instance | Experimental
+*CollectionLevelMetricsApi* | [GetCollStatsLatencyNamespaceClusterMeasurements](./docs/CollectionLevelMetricsApi.md#getcollstatslatencynamespaceclustermeasurements) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/{clusterView}/{databaseName}/{collectionName}/collStats/measurements | Return Cluster-Level Query Latency | Experimental
+*CollectionLevelMetricsApi* | [GetCollStatsLatencyNamespaceHostMeasurements](./docs/CollectionLevelMetricsApi.md#getcollstatslatencynamespacehostmeasurements) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/{databaseName}/{collectionName}/collStats/measurements | Return Host-Level Query Latency | Experimental
+*CollectionLevelMetricsApi* | [GetCollStatsLatencyNamespaceMetrics](./docs/CollectionLevelMetricsApi.md#getcollstatslatencynamespacemetrics) | **Get** /api/atlas/v2/groups/{groupId}/collStats/metrics | Return all metric names | Experimental
+*CollectionLevelMetricsApi* | [GetCollStatsLatencyNamespacesForCluster](./docs/CollectionLevelMetricsApi.md#getcollstatslatencynamespacesforcluster) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/{clusterView}/collStats/namespaces | Return Ranked Namespaces from a Cluster | Experimental
+*CollectionLevelMetricsApi* | [GetCollStatsLatencyNamespacesForHost](./docs/CollectionLevelMetricsApi.md#getcollstatslatencynamespacesforhost) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/collStats/namespaces | Return Ranked Namespaces from a Host | Experimental
+*CollectionLevelMetricsApi* | [GetPinnedNamespaces](./docs/CollectionLevelMetricsApi.md#getpinnednamespaces) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collStats/pinned | Return Pinned Namespaces | Experimental
+*CollectionLevelMetricsApi* | [PinNamespacesPatch](./docs/CollectionLevelMetricsApi.md#pinnamespacespatch) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collStats/pinned | Add Pinned Namespaces | Experimental
+*CollectionLevelMetricsApi* | [PinNamespacesPut](./docs/CollectionLevelMetricsApi.md#pinnamespacesput) | **Put** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collStats/pinned | Pin Namespaces | Experimental
+*CollectionLevelMetricsApi* | [UnpinNamespaces](./docs/CollectionLevelMetricsApi.md#unpinnamespaces) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collStats/unpin | Unpin namespaces | Experimental
 *CustomDatabaseRolesApi* | [CreateCustomDatabaseRole](./docs/CustomDatabaseRolesApi.md#createcustomdatabaserole) | **Post** /api/atlas/v2/groups/{groupId}/customDBRoles/roles | Create One Custom Role | Stable
 *CustomDatabaseRolesApi* | [DeleteCustomDatabaseRole](./docs/CustomDatabaseRolesApi.md#deletecustomdatabaserole) | **Delete** /api/atlas/v2/groups/{groupId}/customDBRoles/roles/{roleName} | Remove One Custom Role from One Project | Stable
 *CustomDatabaseRolesApi* | [GetCustomDatabaseRole](./docs/CustomDatabaseRolesApi.md#getcustomdatabaserole) | **Get** /api/atlas/v2/groups/{groupId}/customDBRoles/roles/{roleName} | Return One Custom Role in One Project | Stable
@@ -435,6 +444,7 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
  - [ClusterSearchIndex](./docs/ClusterSearchIndex.md)
  - [ClusterServerlessBackupOptions](./docs/ClusterServerlessBackupOptions.md)
  - [ClusterStatus](./docs/ClusterStatus.md)
+ - [CollStatsRankedNamespaces](./docs/CollStatsRankedNamespaces.md)
  - [Collation](./docs/Collation.md)
  - [ComponentLabel](./docs/ComponentLabel.md)
  - [ConnectedOrgConfig](./docs/ConnectedOrgConfig.md)
@@ -547,6 +557,8 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
  - [ManagedNamespace](./docs/ManagedNamespace.md)
  - [ManagedNamespaces](./docs/ManagedNamespaces.md)
  - [MeasurementDiskPartition](./docs/MeasurementDiskPartition.md)
+ - [MeasurementsCollStatsLatencyCluster](./docs/MeasurementsCollStatsLatencyCluster.md)
+ - [MeasurementsCollStatsLatencyHost](./docs/MeasurementsCollStatsLatencyHost.md)
  - [MeasurementsIndexes](./docs/MeasurementsIndexes.md)
  - [MeasurementsNonIndex](./docs/MeasurementsNonIndex.md)
  - [MesurementsDatabase](./docs/MesurementsDatabase.md)
@@ -558,6 +570,7 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
  - [MongoDBAccessLogsList](./docs/MongoDBAccessLogsList.md)
  - [NamespaceObj](./docs/NamespaceObj.md)
  - [Namespaces](./docs/Namespaces.md)
+ - [NamespacesRequest](./docs/NamespacesRequest.md)
  - [NetworkPermissionEntry](./docs/NetworkPermissionEntry.md)
  - [NetworkPermissionEntryStatus](./docs/NetworkPermissionEntryStatus.md)
  - [NumberMetricValue](./docs/NumberMetricValue.md)
@@ -625,6 +638,7 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
  - [PerformanceAdvisorShape](./docs/PerformanceAdvisorShape.md)
  - [PerformanceAdvisorSlowQuery](./docs/PerformanceAdvisorSlowQuery.md)
  - [PerformanceAdvisorSlowQueryList](./docs/PerformanceAdvisorSlowQueryList.md)
+ - [PinnedNamespaces](./docs/PinnedNamespaces.md)
  - [PipelineRunStats](./docs/PipelineRunStats.md)
  - [PrivateEndpointHostname](./docs/PrivateEndpointHostname.md)
  - [PrivateIPMode](./docs/PrivateIPMode.md)

@@ -61,6 +61,8 @@ type APIClient struct {
 
 	ClustersApi ClustersApi
 
+	CollectionLevelMetricsApi CollectionLevelMetricsApi
+
 	CustomDatabaseRolesApi CustomDatabaseRolesApi
 
 	DataFederationApi DataFederationApi
@@ -157,6 +159,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.CloudProviderAccessApi = (*CloudProviderAccessApiService)(&c.common)
 	c.ClusterOutageSimulationApi = (*ClusterOutageSimulationApiService)(&c.common)
 	c.ClustersApi = (*ClustersApiService)(&c.common)
+	c.CollectionLevelMetricsApi = (*CollectionLevelMetricsApiService)(&c.common)
 	c.CustomDatabaseRolesApi = (*CustomDatabaseRolesApiService)(&c.common)
 	c.DataFederationApi = (*DataFederationApiService)(&c.common)
 	c.DataLakePipelinesApi = (*DataLakePipelinesApiService)(&c.common)
