@@ -19,7 +19,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: fc06929ab7673db012eaf62230f78d640401de9e
+  x-xgen-sha: 52f8d80db35cb5952fbbd214087b24536f32bd6e
 servers:
 - url: https://cloud.mongodb.com
 tags:
@@ -4321,6 +4321,199 @@ paths:
       summary: Return One Legacy Backup Checkpoint
       tags:
       - Legacy Backup
+  /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collStats/pinned:
+    get:
+      description: "Returns a list of given cluster's pinned namespaces, a set of\
+        \ namespaces manually selected by users to collect query latency metrics on."
+      operationId: getPinnedNamespaces
+      parameters:
+      - $ref: '#/components/parameters/groupId'
+      - $ref: '#/components/parameters/envelope'
+      - description: Human-readable label that identifies the cluster to retrieve
+          pinned namespaces for.
+        in: path
+        name: clusterName
+        required: true
+        schema:
+          type: string
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9][a-zA-Z0-9-]*$"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-11-15+json:
+              schema:
+                $ref: '#/components/schemas/PinnedNamespaces'
+              x-xgen-version: 2023-11-15
+          description: OK
+        "400":
+          $ref: '#/components/responses/badRequest'
+        "403":
+          $ref: '#/components/responses/forbidden'
+        "404":
+          $ref: '#/components/responses/notFound'
+        "500":
+          $ref: '#/components/responses/internalServerError'
+      security:
+      - DigestAuth: []
+      summary: Return Pinned Namespaces
+      tags:
+      - Collection Level Metrics
+    patch:
+      description: Add provided list of namespaces to existing pinned namespaces list
+        for collection-level latency metrics collection for the given Group and Cluster
+      operationId: pinNamespacesPatch
+      parameters:
+      - $ref: '#/components/parameters/groupId'
+      - $ref: '#/components/parameters/envelope'
+      - description: Human-readable label that identifies the cluster to pin namespaces
+          to.
+        in: path
+        name: clusterName
+        required: true
+        schema:
+          type: string
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9][a-zA-Z0-9-]*$"
+      requestBody:
+        content:
+          application/vnd.atlas.2023-11-15+json:
+            schema:
+              $ref: '#/components/schemas/NamespacesRequest'
+        description: List of namespace strings (combination of database and collection
+          name) to pin for query latency metric collection.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-11-15+json:
+              schema:
+                $ref: '#/components/schemas/PinnedNamespaces'
+              x-xgen-version: 2023-11-15
+          description: OK
+        "201":
+          content:
+            application/vnd.atlas.2023-11-15+json:
+              schema:
+                $ref: '#/components/schemas/PinnedNamespaces'
+              x-xgen-version: 2023-11-15
+          description: Created
+        "400":
+          $ref: '#/components/responses/badRequest'
+        "403":
+          $ref: '#/components/responses/forbidden'
+        "404":
+          $ref: '#/components/responses/notFound'
+        "500":
+          $ref: '#/components/responses/internalServerError'
+      security:
+      - DigestAuth: []
+      summary: Add Pinned Namespaces
+      tags:
+      - Collection Level Metrics
+    put:
+      description: Pin provided list of namespaces for collection-level latency metrics
+        collection for the given Group and Cluster. This initializes a pinned namespaces
+        list or replaces any existing pinned namespaces list for the Group and Cluster.
+      operationId: pinNamespacesPut
+      parameters:
+      - $ref: '#/components/parameters/groupId'
+      - $ref: '#/components/parameters/envelope'
+      - description: Human-readable label that identifies the cluster to pin namespaces
+          to.
+        in: path
+        name: clusterName
+        required: true
+        schema:
+          type: string
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9][a-zA-Z0-9-]*$"
+      requestBody:
+        content:
+          application/vnd.atlas.2023-11-15+json:
+            schema:
+              $ref: '#/components/schemas/NamespacesRequest'
+        description: List of namespace strings (combination of database and collection
+          name) to pin for query latency metric collection.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-11-15+json:
+              schema:
+                $ref: '#/components/schemas/PinnedNamespaces'
+              x-xgen-version: 2023-11-15
+          description: OK
+        "201":
+          content:
+            application/vnd.atlas.2023-11-15+json:
+              schema:
+                $ref: '#/components/schemas/PinnedNamespaces'
+              x-xgen-version: 2023-11-15
+          description: Created
+        "400":
+          $ref: '#/components/responses/badRequest'
+        "403":
+          $ref: '#/components/responses/forbidden'
+        "404":
+          $ref: '#/components/responses/notFound'
+        "500":
+          $ref: '#/components/responses/internalServerError'
+      security:
+      - DigestAuth: []
+      summary: Pin Namespaces
+      tags:
+      - Collection Level Metrics
+  /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collStats/unpin:
+    patch:
+      description: Unpin provided list of namespaces for collection-level latency
+        metrics collection for the given Group and Cluster
+      operationId: unpinNamespaces
+      parameters:
+      - $ref: '#/components/parameters/groupId'
+      - $ref: '#/components/parameters/envelope'
+      - description: Human-readable label that identifies the cluster to unpin namespaces
+          from.
+        in: path
+        name: clusterName
+        required: true
+        schema:
+          type: string
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9][a-zA-Z0-9-]*$"
+      requestBody:
+        content:
+          application/vnd.atlas.2023-11-15+json:
+            schema:
+              $ref: '#/components/schemas/NamespacesRequest'
+        description: List of namespace strings (combination of database and collection
+          name) to pin for query latency metric collection.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-11-15+json:
+              schema:
+                $ref: '#/components/schemas/PinnedNamespaces'
+              x-xgen-version: 2023-11-15
+          description: OK
+        "400":
+          $ref: '#/components/responses/badRequest'
+        "403":
+          $ref: '#/components/responses/forbidden'
+        "404":
+          $ref: '#/components/responses/notFound'
+        "500":
+          $ref: '#/components/responses/internalServerError'
+      security:
+      - DigestAuth: []
+      summary: Unpin namespaces
+      tags:
+      - Collection Level Metrics
   /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes:
     post:
       description: "Creates one Atlas Search index on the specified collection. Atlas\
@@ -6223,6 +6416,147 @@ paths:
       summary: Return Status of All Cluster Operations
       tags:
       - Clusters
+  /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/{clusterView}/collStats/namespaces:
+    get:
+      description: Return the subset of namespaces from the given cluster sorted by
+        highest total execution time (descending) within the given time window.
+      operationId: getCollStatsLatencyNamespacesForCluster
+      parameters:
+      - $ref: '#/components/parameters/groupId'
+      - description: Human-readable label that identifies the cluster to pin namespaces
+          to.
+        in: path
+        name: clusterName
+        required: true
+        schema:
+          type: string
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9][a-zA-Z0-9-]*$"
+      - description: Human-readable label that identifies the cluster topology to
+          retrieve metrics for.
+        in: path
+        name: clusterView
+        required: true
+        schema:
+          type: string
+          enum:
+          - PRIMARY
+          - SECONDARY
+          - INDIVIDUAL_PROCESS
+      - $ref: '#/components/parameters/envelope'
+      - $ref: '#/components/parameters/start'
+      - $ref: '#/components/parameters/end'
+      - $ref: '#/components/parameters/period'
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-11-15+json:
+              schema:
+                $ref: '#/components/schemas/CollStatsRankedNamespacesView'
+              x-xgen-version: 2023-11-15
+          description: Succeeded
+        "403":
+          $ref: '#/components/responses/forbidden'
+        "500":
+          $ref: '#/components/responses/internalServerError'
+      security:
+      - DigestAuth: []
+      summary: Return Ranked Namespaces from a Cluster
+      tags:
+      - Collection Level Metrics
+  /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/{clusterView}/{databaseName}/{collectionName}/collStats/measurements:
+    get:
+      description: Get a list of the Coll Stats Latency cluster-level measurements
+        for the given namespace.
+      operationId: getCollStatsLatencyNamespaceClusterMeasurements
+      parameters:
+      - $ref: '#/components/parameters/groupId'
+      - description: Human-readable label that identifies the cluster to retrieve
+          metrics for.
+        in: path
+        name: clusterName
+        required: true
+        schema:
+          type: string
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9][a-zA-Z0-9-]*$"
+      - description: Human-readable label that identifies the cluster topology to
+          retrieve metrics for.
+        in: path
+        name: clusterView
+        required: true
+        schema:
+          type: string
+          enum:
+          - PRIMARY
+          - SECONDARY
+          - INDIVIDUAL_PROCESS
+      - $ref: '#/components/parameters/databaseName'
+      - $ref: '#/components/parameters/collectionName'
+      - $ref: '#/components/parameters/envelope'
+      - description: "List that contains the metrics that you want to retrieve for\
+          \ the associated data series. If you don't set this parameter, this resource\
+          \ returns data series for all Coll Stats Latency metrics."
+        in: query
+        name: metrics
+        schema:
+          type: array
+          items:
+            type: string
+            description: Metric requested for the given cluster
+            enum:
+            - READS_OPS
+            - READS_LATENCY
+            - AVERAGE_READS_LATENCY
+            - READS_P50_VALUE
+            - READS_P95_VALUE
+            - READS_P99_VALUE
+            - WRITES_OPS
+            - WRITES_LATENCY
+            - AVERAGE_WRITES_LATENCY
+            - WRITES_P50_VALUE
+            - WRITES_P95_VALUE
+            - WRITES_P99_VALUE
+            - COMMANDS_OPS
+            - COMMANDS_LATENCY
+            - AVERAGE_COMMANDS_LATENCY
+            - COMMANDS_P50_VALUE
+            - COMMANDS_P95_VALUE
+            - COMMANDS_P99_VALUE
+            - TOTAL_OPS
+            - TOTAL_LATENCY
+            - AVERAGE_TOTAL_OPS_LATENCY
+            - TOTAL_OPS_P50_VALUE
+            - TOTAL_OPS_P95_VALUE
+            - TOTAL_OPS_P99_VALUE
+          uniqueItems: true
+        style: form
+      - $ref: '#/components/parameters/start'
+      - $ref: '#/components/parameters/end'
+      - $ref: '#/components/parameters/period'
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-11-15+json:
+              schema:
+                $ref: '#/components/schemas/MeasurementsCollStatsLatencyCluster'
+              x-xgen-version: 2023-11-15
+          description: Succeeded
+        "400":
+          $ref: '#/components/responses/badRequest'
+        "403":
+          $ref: '#/components/responses/forbidden'
+        "404":
+          $ref: '#/components/responses/notFound'
+        "500":
+          $ref: '#/components/responses/internalServerError'
+      security:
+      - DigestAuth: []
+      summary: Return Cluster-Level Query Latency
+      tags:
+      - Collection Level Metrics
   /api/atlas/v2/groups/{groupId}/clusters/{hostName}/logs/{logName}.gz:
     get:
       description: "Returns a compressed (.gz) log file that contains a range of log\
@@ -6310,6 +6644,35 @@ paths:
       summary: Download Logs for One Cluster Host in One Project
       tags:
       - Monitoring and Logs
+  /api/atlas/v2/groups/{groupId}/collStats/metrics:
+    get:
+      description: Returns all available Coll Stats Latency metric names and their
+        respective units for the specified project at the time of request.
+      operationId: getCollStatsLatencyNamespaceMetrics
+      parameters:
+      - $ref: '#/components/parameters/groupId'
+      - $ref: '#/components/parameters/envelope'
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-11-15+json:
+              schema:
+                $ref: '#/components/schemas/NoBody'
+              x-xgen-version: 2023-11-15
+          description: Succeeded
+        "400":
+          $ref: '#/components/responses/badRequest'
+        "403":
+          $ref: '#/components/responses/forbidden'
+        "404":
+          $ref: '#/components/responses/notFound'
+        "500":
+          $ref: '#/components/responses/internalServerError'
+      security:
+      - DigestAuth: []
+      summary: Return all metric names
+      tags:
+      - Collection Level Metrics
   /api/atlas/v2/groups/{groupId}/containers:
     get:
       description: "Returns details about all network peering containers in the specified\
@@ -11194,6 +11557,35 @@ paths:
       summary: Return One MongoDB Process by ID
       tags:
       - Monitoring and Logs
+  /api/atlas/v2/groups/{groupId}/processes/{processId}/collStats/namespaces:
+    get:
+      description: Return the subset of namespaces from the given process ranked by
+        highest total execution time (descending) within the given time window.
+      operationId: getCollStatsLatencyNamespacesForHost
+      parameters:
+      - $ref: '#/components/parameters/groupId'
+      - $ref: '#/components/parameters/processId'
+      - $ref: '#/components/parameters/envelope'
+      - $ref: '#/components/parameters/start'
+      - $ref: '#/components/parameters/end'
+      - $ref: '#/components/parameters/period'
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-11-15+json:
+              schema:
+                $ref: '#/components/schemas/CollStatsRankedNamespacesView'
+              x-xgen-version: 2023-11-15
+          description: Succeeded
+        "403":
+          $ref: '#/components/responses/forbidden'
+        "500":
+          $ref: '#/components/responses/internalServerError'
+      security:
+      - DigestAuth: []
+      summary: Return Ranked Namespaces from a Host
+      tags:
+      - Collection Level Metrics
   /api/atlas/v2/groups/{groupId}/processes/{processId}/databases:
     get:
       description: "Returns the list of databases running on the specified host for\
@@ -11989,6 +12381,77 @@ paths:
       summary: Return Suggested Indexes
       tags:
       - Performance Advisor
+  /api/atlas/v2/groups/{groupId}/processes/{processId}/{databaseName}/{collectionName}/collStats/measurements:
+    get:
+      description: Get a list of the Coll Stats Latency process-level measurements
+        for the given namespace
+      operationId: getCollStatsLatencyNamespaceHostMeasurements
+      parameters:
+      - $ref: '#/components/parameters/groupId'
+      - $ref: '#/components/parameters/processId'
+      - $ref: '#/components/parameters/databaseName'
+      - $ref: '#/components/parameters/collectionName'
+      - $ref: '#/components/parameters/envelope'
+      - description: "List that contains the metrics that you want to retrieve for\
+          \ the associated data series. If you don't set this parameter, this resource\
+          \ returns data series for all Coll Stats Latency metrics."
+        in: query
+        name: metrics
+        schema:
+          type: array
+          items:
+            type: string
+            description: Metric requested for the given process
+            enum:
+            - READS_OPS
+            - READS_LATENCY
+            - AVERAGE_READS_LATENCY
+            - READS_P50_VALUE
+            - READS_P95_VALUE
+            - READS_P99_VALUE
+            - WRITES_OPS
+            - WRITES_LATENCY
+            - AVERAGE_WRITES_LATENCY
+            - WRITES_P50_VALUE
+            - WRITES_P95_VALUE
+            - WRITES_P99_VALUE
+            - COMMANDS_OPS
+            - COMMANDS_LATENCY
+            - AVERAGE_COMMANDS_LATENCY
+            - COMMANDS_P50_VALUE
+            - COMMANDS_P95_VALUE
+            - COMMANDS_P99_VALUE
+            - TOTAL_OPS
+            - TOTAL_LATENCY
+            - AVERAGE_TOTAL_OPS_LATENCY
+            - TOTAL_OPS_P50_VALUE
+            - TOTAL_OPS_P95_VALUE
+            - TOTAL_OPS_P99_VALUE
+          uniqueItems: true
+      - $ref: '#/components/parameters/start'
+      - $ref: '#/components/parameters/end'
+      - $ref: '#/components/parameters/period'
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-11-15+json:
+              schema:
+                $ref: '#/components/schemas/MeasurementsCollStatsLatencyHost'
+              x-xgen-version: 2023-11-15
+          description: Succeeded
+        "400":
+          $ref: '#/components/responses/badRequest'
+        "403":
+          $ref: '#/components/responses/forbidden'
+        "404":
+          $ref: '#/components/responses/notFound'
+        "500":
+          $ref: '#/components/responses/internalServerError'
+      security:
+      - DigestAuth: []
+      summary: Return Host-Level Query Latency
+      tags:
+      - Collection Level Metrics
   /api/atlas/v2/groups/{groupId}/pushBasedLogExport:
     delete:
       description: Disables the push-based log export feature by resetting the project
@@ -24114,6 +24577,27 @@ components:
           items:
             $ref: '#/components/schemas/Link'
           readOnly: true
+    CollStatsRankedNamespacesView:
+      type: object
+      properties:
+        groupId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the request
+            project.
+          readOnly: true
+        identifierId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the request
+            process.
+          readOnly: true
+        rankedNamespaces:
+          type: array
+          description: "Ordered list of the hottest namespaces, highest value first."
+          items:
+            type: string
+            description: A single namespace.
+            readOnly: true
+          readOnly: true
     Collation:
       type: object
       description: One or more settings that specify language-specific rules to compare
@@ -35898,6 +36382,172 @@ components:
           description: Human-readable label of the disk or partition to which the
             measurements apply.
           readOnly: true
+    MeasurementsCollStatsLatencyCluster:
+      type: object
+      properties:
+        clusterId:
+          type: string
+          description: Unique identifier for Clusters.
+          readOnly: true
+        clusterView:
+          type: string
+          description: Cluster topology view.
+          readOnly: true
+        collectionName:
+          type: string
+          description: Human-readable label that identifies the collection.
+          readOnly: true
+        databaseName:
+          type: string
+          description: Human-readable label that identifies the database that the
+            specified MongoDB process serves.
+          readOnly: true
+        end:
+          type: string
+          format: date-time
+          description: "Date and time that specifies when to stop retrieving measurements.\
+            \ If you set **end**, you must set **start**. You can't set this parameter\
+            \ and **period** in the same request. This parameter expresses its value\
+            \ in the ISO 8601 timestamp format in UTC."
+          readOnly: true
+        granularity:
+          type: string
+          description: "Duration that specifies the interval between measurement data\
+            \ points. The parameter expresses its value in ISO 8601 timestamp format\
+            \ in UTC. If you set this parameter, you must set either **period** or\
+            \ **start** and **end**."
+          enum:
+          - PT1M
+          - PT5M
+          - PT1H
+          - P1D
+          readOnly: true
+        groupId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the project.
+            The project contains MongoDB processes that you want to return. The MongoDB
+            process can be either the `mongod` or `mongos`.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+          readOnly: true
+        links:
+          type: array
+          description: "List of one or more Uniform Resource Locators (URLs) that\
+            \ point to API sub-resources, related API resources, or both. RFC 5988\
+            \ outlines these relationships."
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: '#/components/schemas/Link'
+          readOnly: true
+        measurements:
+          type: array
+          description: List that contains measurements and their data points.
+          items:
+            $ref: '#/components/schemas/MetricsMeasurement'
+          readOnly: true
+        processId:
+          type: string
+          description: "Combination of hostname and Internet Assigned Numbers Authority\
+            \ (IANA) port that serves the MongoDB process. The host must be the hostname,\
+            \ fully qualified domain name (FQDN), or Internet Protocol address (IPv4\
+            \ or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`).\
+            \ The port must be the IANA port on which the MongoDB process listens\
+            \ for requests."
+          example: mongodb.example.com:27017
+          pattern: "^([0-9]{1,3}\\.){3}[0-9]{1,3}|([0-9a-f]{1,4}\\:){7}([0-9a-f]{1,4})|(([a-z0-9]+\\\
+            .){1,10}[a-z]+)?(\\:[0-9]{4,5})$"
+          readOnly: true
+        start:
+          type: string
+          format: date-time
+          description: "Date and time that specifies when to start retrieving measurements.\
+            \ If you set **start**, you must set **end**. You can't set this parameter\
+            \ and **period** in the same request. This parameter expresses its value\
+            \ in the ISO 8601 timestamp format in UTC."
+          readOnly: true
+    MeasurementsCollStatsLatencyHost:
+      type: object
+      properties:
+        collectionName:
+          type: string
+          description: Human-readable label that identifies the collection.
+          readOnly: true
+        databaseName:
+          type: string
+          description: Human-readable label that identifies the database that the
+            specified MongoDB process serves.
+          readOnly: true
+        end:
+          type: string
+          format: date-time
+          description: "Date and time that specifies when to stop retrieving measurements.\
+            \ If you set **end**, you must set **start**. You can't set this parameter\
+            \ and **period** in the same request. This parameter expresses its value\
+            \ in the ISO 8601 timestamp format in UTC."
+          readOnly: true
+        granularity:
+          type: string
+          description: "Duration that specifies the interval between measurement data\
+            \ points. The parameter expresses its value in ISO 8601 timestamp format\
+            \ in UTC. If you set this parameter, you must set either **period** or\
+            \ **start** and **end**."
+          enum:
+          - PT1M
+          - PT5M
+          - PT1H
+          - P1D
+          readOnly: true
+        groupId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the project.
+            The project contains MongoDB processes that you want to return. The MongoDB
+            process can be either the `mongod` or `mongos`.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+          readOnly: true
+        links:
+          type: array
+          description: "List of one or more Uniform Resource Locators (URLs) that\
+            \ point to API sub-resources, related API resources, or both. RFC 5988\
+            \ outlines these relationships."
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: '#/components/schemas/Link'
+          readOnly: true
+        measurements:
+          type: array
+          description: List that contains measurements and their data points.
+          items:
+            $ref: '#/components/schemas/MetricsMeasurement'
+          readOnly: true
+        processId:
+          type: string
+          description: "Combination of hostname and Internet Assigned Numbers Authority\
+            \ (IANA) port that serves the MongoDB process. The host must be the hostname,\
+            \ fully qualified domain name (FQDN), or Internet Protocol address (IPv4\
+            \ or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`).\
+            \ The port must be the IANA port on which the MongoDB process listens\
+            \ for requests."
+          example: mongodb.example.com:27017
+          pattern: "^([0-9]{1,3}\\.){3}[0-9]{1,3}|([0-9a-f]{1,4}\\:){7}([0-9a-f]{1,4})|(([a-z0-9]+\\\
+            .){1,10}[a-z]+)?(\\:[0-9]{4,5})$"
+          readOnly: true
+        start:
+          type: string
+          format: date-time
+          description: "Date and time that specifies when to start retrieving measurements.\
+            \ If you set **start**, you must set **end**. You can't set this parameter\
+            \ and **period** in the same request. This parameter expresses its value\
+            \ in the ISO 8601 timestamp format in UTC."
+          readOnly: true
     MeasurementsIndexes:
       type: object
       properties:
@@ -37313,6 +37963,21 @@ components:
             $ref: '#/components/schemas/NamespaceObj'
           readOnly: true
           uniqueItems: true
+    NamespacesRequest:
+      type: object
+      properties:
+        namespaces:
+          type: array
+          description: List of namespace strings (combination of database and collection)
+            on the specified host or cluster.
+          items:
+            type: string
+            description: Human-readable label that identifies the namespace on the
+              specified host or cluster. The resource expresses this parameter value
+              as `<database>.<collection>`.
+            writeOnly: true
+          uniqueItems: true
+          writeOnly: true
     NetworkPermissionEntry:
       type: object
       properties:
@@ -40444,6 +41109,28 @@ components:
             pattern: "^([a-f0-9]{24})$"
       description: Scheduled Cloud Provider Snapshot as Source for a Data Lake Pipeline.
       title: Periodic Cloud Provider Snapshot Source
+    PinnedNamespaces:
+      type: object
+      description: Pinned namespaces view for cluster
+      properties:
+        clusterId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the request
+            cluster.
+          readOnly: true
+        groupId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the request
+            project.
+          readOnly: true
+        pinnedNamespaces:
+          type: array
+          description: List of all pinned namespaces.
+          items:
+            type: string
+            description: A single pinned namespace.
+            readOnly: true
+          readOnly: true
     PipelineRunStats:
       type: object
       description: Runtime statistics for this Data Lake Pipeline run.
