@@ -6,7 +6,7 @@ import (
 	"encoding/json"
 )
 
-// DataProcessRegion Settings related to the region where you to store your archived data.
+// DataProcessRegion Settings to configure the region where you wish to store your archived data.
 type DataProcessRegion struct {
 	// Human-readable label that identifies the Cloud service provider where you store your archived data.
 	// Read only field.

@@ -191,7 +191,7 @@ type FederatedAuthenticationApi interface {
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
-		@param identityProviderId Unique string that identifies the identity provider to connect. If using an API version before 11-15-2023, use the 20-hexadecimal digit oktaIdpId. For all other versions, use the 24-hexadecimal digit id.
+		@param identityProviderId Unique string that identifies the identity provider to connect. If using an API version before 11-15-2023, use the legacy 20-hexadecimal digit id. This id can be found within the Federation Management Console > Identity Providers tab by clicking the info icon in the IdP ID row of a configured identity provider. For all other versions, use the 24-hexadecimal digit id.
 		@return GetIdentityProviderApiRequest
 	*/
 	GetIdentityProvider(ctx context.Context, federationSettingsId string, identityProviderId string) GetIdentityProviderApiRequest
@@ -215,7 +215,7 @@ type FederatedAuthenticationApi interface {
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
-		@param identityProviderId Unique 20-hexadecimal digit string that identifies the identity provider.
+		@param identityProviderId Legacy 20-hexadecimal digit string that identifies the identity provider. This id can be found within the Federation Management Console > Identity Providers tab by clicking the info icon in the IdP ID row of a configured identity provider.
 		@return GetIdentityProviderMetadataApiRequest
 	*/
 	GetIdentityProviderMetadata(ctx context.Context, federationSettingsId string, identityProviderId string) GetIdentityProviderMetadataApiRequest
@@ -418,7 +418,7 @@ type FederatedAuthenticationApi interface {
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
-		@param identityProviderId Unique string that identifies the identity provider to connect. If using an API version before 11-15-2023, use the 20-hexadecimal digit oktaIdpId. For all other versions, use the 24-hexadecimal digit id.
+		@param identityProviderId Unique string that identifies the identity provider to connect. If using an API version before 11-15-2023, use the legacy 20-hexadecimal digit id. This id can be found within the Federation Management Console > Identity Providers tab by clicking the info icon in the IdP ID row of a configured identity provider. For all other versions, use the 24-hexadecimal digit id.
 		@return UpdateIdentityProviderApiRequest
 	*/
 	UpdateIdentityProvider(ctx context.Context, federationSettingsId string, identityProviderId string, federationIdentityProviderUpdate *FederationIdentityProviderUpdate) UpdateIdentityProviderApiRequest
@@ -1380,7 +1380,7 @@ GetIdentityProvider Return one identity provider from the specified federation b
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
-	@param identityProviderId Unique string that identifies the identity provider to connect. If using an API version before 11-15-2023, use the 20-hexadecimal digit oktaIdpId. For all other versions, use the 24-hexadecimal digit id.
+	@param identityProviderId Unique string that identifies the identity provider to connect. If using an API version before 11-15-2023, use the legacy 20-hexadecimal digit id. This id can be found within the Federation Management Console > Identity Providers tab by clicking the info icon in the IdP ID row of a configured identity provider. For all other versions, use the 24-hexadecimal digit id.
 	@return GetIdentityProviderApiRequest
 */
 func (a *FederatedAuthenticationApiService) GetIdentityProvider(ctx context.Context, federationSettingsId string, identityProviderId string) GetIdentityProviderApiRequest {
@@ -1510,7 +1510,7 @@ GetIdentityProviderMetadata Return the metadata of one identity provider in the 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
-	@param identityProviderId Unique 20-hexadecimal digit string that identifies the identity provider.
+	@param identityProviderId Legacy 20-hexadecimal digit string that identifies the identity provider. This id can be found within the Federation Management Console > Identity Providers tab by clicking the info icon in the IdP ID row of a configured identity provider.
 	@return GetIdentityProviderMetadataApiRequest
 */
 func (a *FederatedAuthenticationApiService) GetIdentityProviderMetadata(ctx context.Context, federationSettingsId string, identityProviderId string) GetIdentityProviderMetadataApiRequest {
@@ -2588,7 +2588,7 @@ UpdateIdentityProvider Update the identity provider.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
-	@param identityProviderId Unique string that identifies the identity provider to connect. If using an API version before 11-15-2023, use the 20-hexadecimal digit oktaIdpId. For all other versions, use the 24-hexadecimal digit id.
+	@param identityProviderId Unique string that identifies the identity provider to connect. If using an API version before 11-15-2023, use the legacy 20-hexadecimal digit id. This id can be found within the Federation Management Console > Identity Providers tab by clicking the info icon in the IdP ID row of a configured identity provider. For all other versions, use the 24-hexadecimal digit id.
 	@return UpdateIdentityProviderApiRequest
 */
 func (a *FederatedAuthenticationApiService) UpdateIdentityProvider(ctx context.Context, federationSettingsId string, identityProviderId string, federationIdentityProviderUpdate *FederationIdentityProviderUpdate) UpdateIdentityProviderApiRequest {

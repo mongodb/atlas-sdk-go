@@ -24,7 +24,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 52f8d80db35cb5952fbbd214087b24536f32bd6e
+  x-xgen-sha: d774a2a6bbac8dd50169a5f7d5dc620265f26a8b
 servers:
   - url: https://cloud.mongodb.com
 tags:
@@ -177,6 +177,9 @@ tags:
   - description: Returns, adds, and edits collections of clusters and users in
       MongoDB Cloud.
     name: Projects
+  - description: You can continually push logs from mongod, mongos, and audit logs
+      to an AWS S3 bucket. Atlas exports logs every 5 minutes.
+    name: Push-Based Log Export
   - description: Creates one index to a database deployment in a rolling manner. You
       can't create a rolling index on an `M0` free cluster or `M2/M5` shared
       cluster.
@@ -847,8 +850,11 @@ paths:
       parameters:
         - $ref: "#/components/parameters/federationSettingsId"
         - description: Unique string that identifies the identity provider to connect. If
-            using an API version before 11-15-2023, use the 20-hexadecimal digit
-            oktaIdpId. For all other versions, use the 24-hexadecimal digit id.
+            using an API version before 11-15-2023, use the legacy
+            20-hexadecimal digit id. This id can be found within the Federation
+            Management Console > Identity Providers tab by clicking the info
+            icon in the IdP ID row of a configured identity provider. For all
+            other versions, use the 24-hexadecimal digit id.
           in: path
           name: identityProviderId
           required: true
@@ -891,8 +897,11 @@ paths:
       parameters:
         - $ref: "#/components/parameters/federationSettingsId"
         - description: Unique string that identifies the identity provider to connect. If
-            using an API version before 11-15-2023, use the 20-hexadecimal digit
-            oktaIdpId. For all other versions, use the 24-hexadecimal digit id.
+            using an API version before 11-15-2023, use the legacy
+            20-hexadecimal digit id. This id can be found within the Federation
+            Management Console > Identity Providers tab by clicking the info
+            icon in the IdP ID row of a configured identity provider. For all
+            other versions, use the 24-hexadecimal digit id.
           in: path
           name: identityProviderId
           required: true
@@ -5825,7 +5834,7 @@ paths:
         - DigestAuth: []
       summary: Create One Legacy Backup Restore Job
       tags:
-        - Legacy Backup Restore Jobs
+        - Legacy Backup
       x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/restoreJobs/{jobId}":
     get:
@@ -15913,7 +15922,10 @@ components:
         minLength: 24
         pattern: ^([a-f0-9]{24})$
     identityProviderId:
-      description: Unique 20-hexadecimal digit string that identifies the identity provider.
+      description: Legacy 20-hexadecimal digit string that identifies the identity
+        provider. This id can be found within the Federation Management Console
+        > Identity Providers tab by clicking the info icon in the IdP ID row of
+        a configured identity provider.
       in: path
       name: identityProviderId
       required: true
@@ -20690,8 +20702,11 @@ components:
             connected org.
         identityProviderId:
           type: string
-          description: Unique 20-hexadecimal digit string that identifies the UI access
+          description: Legacy 20-hexadecimal digit string that identifies the UI access
             identity provider that this connected org config is associated with.
+            This id can be found within the Federation Management Console >
+            Identity Providers tab by clicking the info icon in the IdP ID row
+            of a configured identity provider.
           maxLength: 20
           minLength: 20
           pattern: ^([a-f0-9]{20})$
@@ -23545,13 +23560,17 @@ components:
           minLength: 24
           pattern: ^([a-f0-9]{24})$
           readOnly: true
+        idpType:
+          type: string
+          description: String enum that indicates the type of the identity provider.
+            Default is WORKFORCE.
         issuerUri:
           type: string
           description: Unique string that identifies the issuer of the SAML Assertion or
             OIDC metadata/discovery document URL.
         oktaIdpId:
           type: string
-          description: Unique 20-hexadecimal digit string that identifies the identity
+          description: Legacy 20-hexadecimal digit string that identifies the identity
             provider.
           maxLength: 20
           minLength: 20
@@ -23604,14 +23623,10 @@ components:
         audience:
           type: string
           description: Identifier of the intended recipient of the token.
-        audienceClaim:
-          type: array
-          deprecated: true
-          description: Identifier of the intended recipient of the token. The
-            audienceClaim field is deprecated and will be removed in the
-            04/17/2024 release, use the audience field instead.
-          items:
-            type: string
+        authorizationType:
+          type: string
+          description: Indicates whether authorization is granted based on group
+            membership or user ID.
         clientId:
           type: string
           description: Client identifier that is assigned to an application by the
@@ -23642,6 +23657,10 @@ components:
           description: Human-readable label that identifies the identity provider.
           maxLength: 50
           minLength: 1
+        idpType:
+          type: string
+          description: String enum that indicates the type of the identity provider.
+            Default is WORKFORCE.
         issuerUri:
           type: string
           description: Unique string that identifies the issuer of the SAML Assertion or
@@ -23684,14 +23703,10 @@ components:
         audience:
           type: string
           description: Identifier of the intended recipient of the token.
-        audienceClaim:
-          type: array
-          deprecated: true
-          description: Identifier of the intended recipient of the token. The
-            audienceClaim field is deprecated and will be removed in the
-            04/17/2024 release, use the audience field instead.
-          items:
-            type: string
+        authorizationType:
+          type: string
+          description: Indicates whether authorization is granted based on group
+            membership or user ID.
         clientId:
           type: string
           description: Client identifier that is assigned to an application by the
@@ -23721,14 +23736,10 @@ components:
         audience:
           type: string
           description: Identifier of the intended recipient of the token.
-        audienceClaim:
-          type: array
-          deprecated: true
-          description: Identifier of the intended recipient of the token. The
-            audienceClaim field is deprecated and will be removed in the
-            04/17/2024 release, use the audience field instead.
-          items:
-            type: string
+        authorizationType:
+          type: string
+          description: Indicates whether authorization is granted based on group
+            membership or user ID.
         createdAt:
           type: string
           format: date-time
@@ -23752,13 +23763,17 @@ components:
           minLength: 24
           pattern: ^([a-f0-9]{24})$
           readOnly: true
+        idpType:
+          type: string
+          description: String enum that indicates the type of the identity provider.
+            Default is WORKFORCE.
         issuerUri:
           type: string
           description: Unique string that identifies the issuer of the SAML Assertion or
             OIDC metadata/discovery document URL.
         oktaIdpId:
           type: string
-          description: Unique 20-hexadecimal digit string that identifies the identity
+          description: Legacy 20-hexadecimal digit string that identifies the identity
             provider.
           maxLength: 20
           minLength: 20
@@ -23799,14 +23814,10 @@ components:
         audience:
           type: string
           description: Identifier of the intended recipient of the token.
-        audienceClaim:
-          type: array
-          deprecated: true
-          description: Identifier of the intended recipient of the token. The
-            audienceClaim field is deprecated and will be removed in the
-            04/17/2024 release, use the audience field instead.
-          items:
-            type: string
+        authorizationType:
+          type: string
+          description: Indicates whether authorization is granted based on group
+            membership or user ID.
         description:
           type: string
           description: The description of the identity provider.
@@ -23818,6 +23829,10 @@ components:
         groupsClaim:
           type: string
           description: Identifier of the claim which contains IdP Group IDs in the token.
+        idpType:
+          type: string
+          description: String enum that indicates the type of the identity provider.
+            Default is WORKFORCE.
         issuerUri:
           type: string
           description: Unique string that identifies the issuer of the SAML Assertion or
@@ -23910,6 +23925,15 @@ components:
             manages this cluster.
           items:
             $ref: "#/components/schemas/ManagedNamespaces"
+          readOnly: true
+        selfManagedSharding:
+          type: boolean
+          description: Boolean that controls which management mode the Global Cluster is
+            operating under. If this parameter is true Self-Managed Sharding is
+            enabled and users are in control of the zone sharding within the
+            Global Cluster. If this parameter is false Atlas-Managed Sharding is
+            enabled and Atlas is control of zone sharding within the Global
+            Cluster.
           readOnly: true
     GoogleCloudKMS:
       type: object
@@ -26749,7 +26773,7 @@ components:
           readOnly: true
         identityProviderId:
           type: string
-          description: Unique 20-hexadecimal digit string that identifies the identity
+          description: Legacy 20-hexadecimal digit string that identifies the identity
             provider connected to this organization.
           example: c2777a9eca931f29fc2f
           maxLength: 20
@@ -30002,7 +30026,10 @@ components:
         cloudProvider:
           type: string
           description: Human-readable label that identifies the Cloud service provider
-            where you wish to store your archived data.
+            where you wish to store your archived data. **AZURE** may be
+            selected only if **AZURE** is the Cloud service provider for the
+            cluster and no **AWS** online archive has been created for the
+            cluster.
         region:
           type: string
           description: Human-readable label that identifies the geographic location of the
@@ -30073,7 +30100,8 @@ components:
           minimum: 7
     DataProcessRegion:
       type: object
-      description: Settings related to the region where you to store your archived data.
+      description: Settings to configure the region where you wish to store your
+        archived data.
       properties:
         cloudProvider:
           type: string

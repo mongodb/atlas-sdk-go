@@ -12,6 +12,8 @@ type FederationIdentityProviderUpdate struct {
 	Description *string `json:"description,omitempty"`
 	// Human-readable label that identifies the identity provider.
 	DisplayName *string `json:"displayName,omitempty"`
+	// String enum that indicates the type of the identity provider. Default is WORKFORCE.
+	IdpType *string `json:"idpType,omitempty"`
 	// Unique string that identifies the issuer of the SAML Assertion or OIDC metadata/discovery document URL.
 	IssuerUri *string `json:"issuerUri,omitempty"`
 	// The protocol of the identity provider. Either SAML or OIDC.
@@ -33,9 +35,8 @@ type FederationIdentityProviderUpdate struct {
 	Status *string `json:"status,omitempty"`
 	// Identifier of the intended recipient of the token.
 	Audience *string `json:"audience,omitempty"`
-	// Identifier of the intended recipient of the token. The audienceClaim field is deprecated and will be removed in the 04/17/2024 release, use the audience field instead.
-	// Deprecated
-	AudienceClaim *[]string `json:"audienceClaim,omitempty"`
+	// Indicates whether authorization is granted based on group membership or user ID.
+	AuthorizationType *string `json:"authorizationType,omitempty"`
 	// Client identifier that is assigned to an application by the Identity Provider.
 	ClientId *string `json:"clientId,omitempty"`
 	// Identifier of the claim which contains IdP Group IDs in the token.
@@ -127,6 +128,39 @@ func (o *FederationIdentityProviderUpdate) HasDisplayName() bool {
 // SetDisplayName gets a reference to the given string and assigns it to the DisplayName field.
 func (o *FederationIdentityProviderUpdate) SetDisplayName(v string) {
 	o.DisplayName = &v
+}
+
+// GetIdpType returns the IdpType field value if set, zero value otherwise
+func (o *FederationIdentityProviderUpdate) GetIdpType() string {
+	if o == nil || IsNil(o.IdpType) {
+		var ret string
+		return ret
+	}
+	return *o.IdpType
+}
+
+// GetIdpTypeOk returns a tuple with the IdpType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FederationIdentityProviderUpdate) GetIdpTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.IdpType) {
+		return nil, false
+	}
+
+	return o.IdpType, true
+}
+
+// HasIdpType returns a boolean if a field has been set.
+func (o *FederationIdentityProviderUpdate) HasIdpType() bool {
+	if o != nil && !IsNil(o.IdpType) {
+		return true
+	}
+
+	return false
+}
+
+// SetIdpType gets a reference to the given string and assigns it to the IdpType field.
+func (o *FederationIdentityProviderUpdate) SetIdpType(v string) {
+	o.IdpType = &v
 }
 
 // GetIssuerUri returns the IssuerUri field value if set, zero value otherwise
@@ -492,40 +526,37 @@ func (o *FederationIdentityProviderUpdate) SetAudience(v string) {
 	o.Audience = &v
 }
 
-// GetAudienceClaim returns the AudienceClaim field value if set, zero value otherwise
-// Deprecated
-func (o *FederationIdentityProviderUpdate) GetAudienceClaim() []string {
-	if o == nil || IsNil(o.AudienceClaim) {
-		var ret []string
+// GetAuthorizationType returns the AuthorizationType field value if set, zero value otherwise
+func (o *FederationIdentityProviderUpdate) GetAuthorizationType() string {
+	if o == nil || IsNil(o.AuthorizationType) {
+		var ret string
 		return ret
 	}
-	return *o.AudienceClaim
+	return *o.AuthorizationType
 }
 
-// GetAudienceClaimOk returns a tuple with the AudienceClaim field value if set, nil otherwise
+// GetAuthorizationTypeOk returns a tuple with the AuthorizationType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// Deprecated
-func (o *FederationIdentityProviderUpdate) GetAudienceClaimOk() (*[]string, bool) {
-	if o == nil || IsNil(o.AudienceClaim) {
+func (o *FederationIdentityProviderUpdate) GetAuthorizationTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.AuthorizationType) {
 		return nil, false
 	}
 
-	return o.AudienceClaim, true
+	return o.AuthorizationType, true
 }
 
-// HasAudienceClaim returns a boolean if a field has been set.
-func (o *FederationIdentityProviderUpdate) HasAudienceClaim() bool {
-	if o != nil && !IsNil(o.AudienceClaim) {
+// HasAuthorizationType returns a boolean if a field has been set.
+func (o *FederationIdentityProviderUpdate) HasAuthorizationType() bool {
+	if o != nil && !IsNil(o.AuthorizationType) {
 		return true
 	}
 
 	return false
 }
 
-// SetAudienceClaim gets a reference to the given []string and assigns it to the AudienceClaim field.
-// Deprecated
-func (o *FederationIdentityProviderUpdate) SetAudienceClaim(v []string) {
-	o.AudienceClaim = &v
+// SetAuthorizationType gets a reference to the given string and assigns it to the AuthorizationType field.
+func (o *FederationIdentityProviderUpdate) SetAuthorizationType(v string) {
+	o.AuthorizationType = &v
 }
 
 // GetClientId returns the ClientId field value if set, zero value otherwise
@@ -675,6 +706,9 @@ func (o FederationIdentityProviderUpdate) ToMap() (map[string]interface{}, error
 	if !IsNil(o.DisplayName) {
 		toSerialize["displayName"] = o.DisplayName
 	}
+	if !IsNil(o.IdpType) {
+		toSerialize["idpType"] = o.IdpType
+	}
 	if !IsNil(o.IssuerUri) {
 		toSerialize["issuerUri"] = o.IssuerUri
 	}
@@ -708,8 +742,8 @@ func (o FederationIdentityProviderUpdate) ToMap() (map[string]interface{}, error
 	if !IsNil(o.Audience) {
 		toSerialize["audience"] = o.Audience
 	}
-	if !IsNil(o.AudienceClaim) {
-		toSerialize["audienceClaim"] = o.AudienceClaim
+	if !IsNil(o.AuthorizationType) {
+		toSerialize["authorizationType"] = o.AuthorizationType
 	}
 	if !IsNil(o.ClientId) {
 		toSerialize["clientId"] = o.ClientId

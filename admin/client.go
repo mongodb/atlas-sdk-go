@@ -85,8 +85,6 @@ type APIClient struct {
 
 	LegacyBackupApi LegacyBackupApi
 
-	LegacyBackupRestoreJobsApi LegacyBackupRestoreJobsApi
-
 	MaintenanceWindowsApi MaintenanceWindowsApi
 
 	MongoDBCloudUsersApi MongoDBCloudUsersApi
@@ -171,7 +169,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.InvoicesApi = (*InvoicesApiService)(&c.common)
 	c.LDAPConfigurationApi = (*LDAPConfigurationApiService)(&c.common)
 	c.LegacyBackupApi = (*LegacyBackupApiService)(&c.common)
-	c.LegacyBackupRestoreJobsApi = (*LegacyBackupRestoreJobsApiService)(&c.common)
 	c.MaintenanceWindowsApi = (*MaintenanceWindowsApiService)(&c.common)
 	c.MongoDBCloudUsersApi = (*MongoDBCloudUsersApiService)(&c.common)
 	c.MonitoringAndLogsApi = (*MonitoringAndLogsApiService)(&c.common)

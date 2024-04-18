@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Description** | Pointer to **string** | The description of the identity provider. | [optional] 
 **DisplayName** | Pointer to **string** | Human-readable label that identifies the identity provider. | [optional] 
+**IdpType** | Pointer to **string** | String enum that indicates the type of the identity provider. Default is WORKFORCE. | [optional] 
 **IssuerUri** | Pointer to **string** | Unique string that identifies the issuer of the SAML Assertion or OIDC metadata/discovery document URL. | [optional] 
 **Protocol** | Pointer to **string** | The protocol of the identity provider. Either SAML or OIDC. | [optional] 
 **AssociatedDomains** | Pointer to **[]string** | List that contains the domains associated with the identity provider. | [optional] 
@@ -17,7 +18,7 @@ Name | Type | Description | Notes
 **SsoUrl** | Pointer to **string** | URL that points to the receiver of the SAML authentication request. | [optional] 
 **Status** | Pointer to **string** | String enum that indicates whether the identity provider is active. | [optional] 
 **Audience** | Pointer to **string** | Identifier of the intended recipient of the token. | [optional] 
-**AudienceClaim** | Pointer to **[]string** | Identifier of the intended recipient of the token. The audienceClaim field is deprecated and will be removed in the 04/17/2024 release, use the audience field instead. | [optional] 
+**AuthorizationType** | Pointer to **string** | Indicates whether authorization is granted based on group membership or user ID. | [optional] 
 **ClientId** | Pointer to **string** | Client identifier that is assigned to an application by the Identity Provider. | [optional] 
 **GroupsClaim** | Pointer to **string** | Identifier of the claim which contains IdP Group IDs in the token. | [optional] 
 **RequestedScopes** | Pointer to **[]string** | Scopes that MongoDB applications will request from the authorization endpoint. | [optional] 
@@ -90,6 +91,30 @@ SetDisplayName sets DisplayName field to given value.
 `func (o *FederationIdentityProviderUpdate) HasDisplayName() bool`
 
 HasDisplayName returns a boolean if a field has been set.
+### GetIdpType
+
+`func (o *FederationIdentityProviderUpdate) GetIdpType() string`
+
+GetIdpType returns the IdpType field if non-nil, zero value otherwise.
+
+### GetIdpTypeOk
+
+`func (o *FederationIdentityProviderUpdate) GetIdpTypeOk() (*string, bool)`
+
+GetIdpTypeOk returns a tuple with the IdpType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIdpType
+
+`func (o *FederationIdentityProviderUpdate) SetIdpType(v string)`
+
+SetIdpType sets IdpType field to given value.
+
+### HasIdpType
+
+`func (o *FederationIdentityProviderUpdate) HasIdpType() bool`
+
+HasIdpType returns a boolean if a field has been set.
 ### GetIssuerUri
 
 `func (o *FederationIdentityProviderUpdate) GetIssuerUri() string`
@@ -354,30 +379,30 @@ SetAudience sets Audience field to given value.
 `func (o *FederationIdentityProviderUpdate) HasAudience() bool`
 
 HasAudience returns a boolean if a field has been set.
-### GetAudienceClaim
+### GetAuthorizationType
 
-`func (o *FederationIdentityProviderUpdate) GetAudienceClaim() []string`
+`func (o *FederationIdentityProviderUpdate) GetAuthorizationType() string`
 
-GetAudienceClaim returns the AudienceClaim field if non-nil, zero value otherwise.
+GetAuthorizationType returns the AuthorizationType field if non-nil, zero value otherwise.
 
-### GetAudienceClaimOk
+### GetAuthorizationTypeOk
 
-`func (o *FederationIdentityProviderUpdate) GetAudienceClaimOk() (*[]string, bool)`
+`func (o *FederationIdentityProviderUpdate) GetAuthorizationTypeOk() (*string, bool)`
 
-GetAudienceClaimOk returns a tuple with the AudienceClaim field if it's non-nil, zero value otherwise
+GetAuthorizationTypeOk returns a tuple with the AuthorizationType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAudienceClaim
+### SetAuthorizationType
 
-`func (o *FederationIdentityProviderUpdate) SetAudienceClaim(v []string)`
+`func (o *FederationIdentityProviderUpdate) SetAuthorizationType(v string)`
 
-SetAudienceClaim sets AudienceClaim field to given value.
+SetAuthorizationType sets AuthorizationType field to given value.
 
-### HasAudienceClaim
+### HasAuthorizationType
 
-`func (o *FederationIdentityProviderUpdate) HasAudienceClaim() bool`
+`func (o *FederationIdentityProviderUpdate) HasAuthorizationType() bool`
 
-HasAudienceClaim returns a boolean if a field has been set.
+HasAuthorizationType returns a boolean if a field has been set.
 ### GetClientId
 
 `func (o *FederationIdentityProviderUpdate) GetClientId() string`

@@ -14,6 +14,9 @@ type GeoSharding struct {
 	// List that contains a namespace for a Global Cluster. MongoDB Cloud manages this cluster.
 	// Read only field.
 	ManagedNamespaces *[]ManagedNamespaces `json:"managedNamespaces,omitempty"`
+	// Boolean that controls which management mode the Global Cluster is operating under. If this parameter is true Self-Managed Sharding is enabled and users are in control of the zone sharding within the Global Cluster. If this parameter is false Atlas-Managed Sharding is enabled and Atlas is control of zone sharding within the Global Cluster.
+	// Read only field.
+	SelfManagedSharding *bool `json:"selfManagedSharding,omitempty"`
 }
 
 // NewGeoSharding instantiates a new GeoSharding object
@@ -97,6 +100,39 @@ func (o *GeoSharding) HasManagedNamespaces() bool {
 // SetManagedNamespaces gets a reference to the given []ManagedNamespaces and assigns it to the ManagedNamespaces field.
 func (o *GeoSharding) SetManagedNamespaces(v []ManagedNamespaces) {
 	o.ManagedNamespaces = &v
+}
+
+// GetSelfManagedSharding returns the SelfManagedSharding field value if set, zero value otherwise
+func (o *GeoSharding) GetSelfManagedSharding() bool {
+	if o == nil || IsNil(o.SelfManagedSharding) {
+		var ret bool
+		return ret
+	}
+	return *o.SelfManagedSharding
+}
+
+// GetSelfManagedShardingOk returns a tuple with the SelfManagedSharding field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GeoSharding) GetSelfManagedShardingOk() (*bool, bool) {
+	if o == nil || IsNil(o.SelfManagedSharding) {
+		return nil, false
+	}
+
+	return o.SelfManagedSharding, true
+}
+
+// HasSelfManagedSharding returns a boolean if a field has been set.
+func (o *GeoSharding) HasSelfManagedSharding() bool {
+	if o != nil && !IsNil(o.SelfManagedSharding) {
+		return true
+	}
+
+	return false
+}
+
+// SetSelfManagedSharding gets a reference to the given bool and assigns it to the SelfManagedSharding field.
+func (o *GeoSharding) SetSelfManagedSharding(v bool) {
+	o.SelfManagedSharding = &v
 }
 
 func (o GeoSharding) MarshalJSONWithoutReadOnly() ([]byte, error) {

@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20231115008/admin"
+	admin "go.mongodb.org/atlas-sdk/v20231115009/admin"
 
 	http "net/http"
 
@@ -23,6 +23,169 @@ type LegacyBackupApi_Expecter struct {
 
 func (_m *LegacyBackupApi) EXPECT() *LegacyBackupApi_Expecter {
 	return &LegacyBackupApi_Expecter{mock: &_m.Mock}
+}
+
+// CreateLegacyBackupRestoreJob provides a mock function with given fields: ctx, groupId, clusterName, backupRestoreJob
+func (_m *LegacyBackupApi) CreateLegacyBackupRestoreJob(ctx context.Context, groupId string, clusterName string, backupRestoreJob *admin.BackupRestoreJob) admin.CreateLegacyBackupRestoreJobApiRequest {
+	ret := _m.Called(ctx, groupId, clusterName, backupRestoreJob)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateLegacyBackupRestoreJob")
+	}
+
+	var r0 admin.CreateLegacyBackupRestoreJobApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.BackupRestoreJob) admin.CreateLegacyBackupRestoreJobApiRequest); ok {
+		r0 = rf(ctx, groupId, clusterName, backupRestoreJob)
+	} else {
+		r0 = ret.Get(0).(admin.CreateLegacyBackupRestoreJobApiRequest)
+	}
+
+	return r0
+}
+
+// LegacyBackupApi_CreateLegacyBackupRestoreJob_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateLegacyBackupRestoreJob'
+type LegacyBackupApi_CreateLegacyBackupRestoreJob_Call struct {
+	*mock.Call
+}
+
+// CreateLegacyBackupRestoreJob is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - clusterName string
+//   - backupRestoreJob *admin.BackupRestoreJob
+func (_e *LegacyBackupApi_Expecter) CreateLegacyBackupRestoreJob(ctx interface{}, groupId interface{}, clusterName interface{}, backupRestoreJob interface{}) *LegacyBackupApi_CreateLegacyBackupRestoreJob_Call {
+	return &LegacyBackupApi_CreateLegacyBackupRestoreJob_Call{Call: _e.mock.On("CreateLegacyBackupRestoreJob", ctx, groupId, clusterName, backupRestoreJob)}
+}
+
+func (_c *LegacyBackupApi_CreateLegacyBackupRestoreJob_Call) Run(run func(ctx context.Context, groupId string, clusterName string, backupRestoreJob *admin.BackupRestoreJob)) *LegacyBackupApi_CreateLegacyBackupRestoreJob_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.BackupRestoreJob))
+	})
+	return _c
+}
+
+func (_c *LegacyBackupApi_CreateLegacyBackupRestoreJob_Call) Return(_a0 admin.CreateLegacyBackupRestoreJobApiRequest) *LegacyBackupApi_CreateLegacyBackupRestoreJob_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *LegacyBackupApi_CreateLegacyBackupRestoreJob_Call) RunAndReturn(run func(context.Context, string, string, *admin.BackupRestoreJob) admin.CreateLegacyBackupRestoreJobApiRequest) *LegacyBackupApi_CreateLegacyBackupRestoreJob_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreateLegacyBackupRestoreJobExecute provides a mock function with given fields: r
+func (_m *LegacyBackupApi) CreateLegacyBackupRestoreJobExecute(r admin.CreateLegacyBackupRestoreJobApiRequest) (*admin.PaginatedRestoreJob, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateLegacyBackupRestoreJobExecute")
+	}
+
+	var r0 *admin.PaginatedRestoreJob
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.CreateLegacyBackupRestoreJobApiRequest) (*admin.PaginatedRestoreJob, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.CreateLegacyBackupRestoreJobApiRequest) *admin.PaginatedRestoreJob); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.PaginatedRestoreJob)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.CreateLegacyBackupRestoreJobApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.CreateLegacyBackupRestoreJobApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// LegacyBackupApi_CreateLegacyBackupRestoreJobExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateLegacyBackupRestoreJobExecute'
+type LegacyBackupApi_CreateLegacyBackupRestoreJobExecute_Call struct {
+	*mock.Call
+}
+
+// CreateLegacyBackupRestoreJobExecute is a helper method to define mock.On call
+//   - r admin.CreateLegacyBackupRestoreJobApiRequest
+func (_e *LegacyBackupApi_Expecter) CreateLegacyBackupRestoreJobExecute(r interface{}) *LegacyBackupApi_CreateLegacyBackupRestoreJobExecute_Call {
+	return &LegacyBackupApi_CreateLegacyBackupRestoreJobExecute_Call{Call: _e.mock.On("CreateLegacyBackupRestoreJobExecute", r)}
+}
+
+func (_c *LegacyBackupApi_CreateLegacyBackupRestoreJobExecute_Call) Run(run func(r admin.CreateLegacyBackupRestoreJobApiRequest)) *LegacyBackupApi_CreateLegacyBackupRestoreJobExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.CreateLegacyBackupRestoreJobApiRequest))
+	})
+	return _c
+}
+
+func (_c *LegacyBackupApi_CreateLegacyBackupRestoreJobExecute_Call) Return(_a0 *admin.PaginatedRestoreJob, _a1 *http.Response, _a2 error) *LegacyBackupApi_CreateLegacyBackupRestoreJobExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *LegacyBackupApi_CreateLegacyBackupRestoreJobExecute_Call) RunAndReturn(run func(admin.CreateLegacyBackupRestoreJobApiRequest) (*admin.PaginatedRestoreJob, *http.Response, error)) *LegacyBackupApi_CreateLegacyBackupRestoreJobExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreateLegacyBackupRestoreJobWithParams provides a mock function with given fields: ctx, args
+func (_m *LegacyBackupApi) CreateLegacyBackupRestoreJobWithParams(ctx context.Context, args *admin.CreateLegacyBackupRestoreJobApiParams) admin.CreateLegacyBackupRestoreJobApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateLegacyBackupRestoreJobWithParams")
+	}
+
+	var r0 admin.CreateLegacyBackupRestoreJobApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateLegacyBackupRestoreJobApiParams) admin.CreateLegacyBackupRestoreJobApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.CreateLegacyBackupRestoreJobApiRequest)
+	}
+
+	return r0
+}
+
+// LegacyBackupApi_CreateLegacyBackupRestoreJobWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateLegacyBackupRestoreJobWithParams'
+type LegacyBackupApi_CreateLegacyBackupRestoreJobWithParams_Call struct {
+	*mock.Call
+}
+
+// CreateLegacyBackupRestoreJobWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.CreateLegacyBackupRestoreJobApiParams
+func (_e *LegacyBackupApi_Expecter) CreateLegacyBackupRestoreJobWithParams(ctx interface{}, args interface{}) *LegacyBackupApi_CreateLegacyBackupRestoreJobWithParams_Call {
+	return &LegacyBackupApi_CreateLegacyBackupRestoreJobWithParams_Call{Call: _e.mock.On("CreateLegacyBackupRestoreJobWithParams", ctx, args)}
+}
+
+func (_c *LegacyBackupApi_CreateLegacyBackupRestoreJobWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateLegacyBackupRestoreJobApiParams)) *LegacyBackupApi_CreateLegacyBackupRestoreJobWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.CreateLegacyBackupRestoreJobApiParams))
+	})
+	return _c
+}
+
+func (_c *LegacyBackupApi_CreateLegacyBackupRestoreJobWithParams_Call) Return(_a0 admin.CreateLegacyBackupRestoreJobApiRequest) *LegacyBackupApi_CreateLegacyBackupRestoreJobWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *LegacyBackupApi_CreateLegacyBackupRestoreJobWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateLegacyBackupRestoreJobApiParams) admin.CreateLegacyBackupRestoreJobApiRequest) *LegacyBackupApi_CreateLegacyBackupRestoreJobWithParams_Call {
+	_c.Call.Return(run)
+	return _c
 }
 
 // DeleteLegacySnapshot provides a mock function with given fields: ctx, groupId, clusterName, snapshotId
