@@ -6,14 +6,15 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AssociatedOrgs** | Pointer to [**[]ConnectedOrgConfig**](ConnectedOrgConfig.md) | List that contains the connected organization configurations associated with the identity provider. | [optional] 
 **Audience** | Pointer to **string** | Identifier of the intended recipient of the token. | [optional] 
-**AudienceClaim** | Pointer to **[]string** | Identifier of the intended recipient of the token. The audienceClaim field is deprecated and will be removed in the 04/17/2024 release, use the audience field instead. | [optional] 
+**AuthorizationType** | Pointer to **string** | Indicates whether authorization is granted based on group membership or user ID. | [optional] 
 **CreatedAt** | Pointer to **time.Time** | Date that the identity provider was created on. | [optional] [readonly] 
 **Description** | Pointer to **string** | The description of the identity provider. | [optional] 
 **DisplayName** | Pointer to **string** | Human-readable label that identifies the identity provider. | [optional] 
 **GroupsClaim** | Pointer to **string** | Identifier of the claim which contains IdP Group IDs in the token. | [optional] 
 **Id** | **string** | Unique 24-hexadecimal digit string that identifies the identity provider. | [readonly] 
+**IdpType** | Pointer to **string** | String enum that indicates the type of the identity provider. Default is WORKFORCE. | [optional] 
 **IssuerUri** | Pointer to **string** | Unique string that identifies the issuer of the SAML Assertion or OIDC metadata/discovery document URL. | [optional] 
-**OktaIdpId** | **string** | Unique 20-hexadecimal digit string that identifies the identity provider. | 
+**OktaIdpId** | **string** | Legacy 20-hexadecimal digit string that identifies the identity provider. | 
 **Protocol** | Pointer to **string** | The protocol of the identity provider. Either SAML or OIDC. | [optional] 
 **UpdatedAt** | Pointer to **time.Time** | Date that the identity provider was last updated on. | [optional] [readonly] 
 **UserClaim** | Pointer to **string** | Identifier of the claim which contains the user ID in the token. | [optional] 
@@ -88,30 +89,30 @@ SetAudience sets Audience field to given value.
 `func (o *FederationOidcIdentityProvider) HasAudience() bool`
 
 HasAudience returns a boolean if a field has been set.
-### GetAudienceClaim
+### GetAuthorizationType
 
-`func (o *FederationOidcIdentityProvider) GetAudienceClaim() []string`
+`func (o *FederationOidcIdentityProvider) GetAuthorizationType() string`
 
-GetAudienceClaim returns the AudienceClaim field if non-nil, zero value otherwise.
+GetAuthorizationType returns the AuthorizationType field if non-nil, zero value otherwise.
 
-### GetAudienceClaimOk
+### GetAuthorizationTypeOk
 
-`func (o *FederationOidcIdentityProvider) GetAudienceClaimOk() (*[]string, bool)`
+`func (o *FederationOidcIdentityProvider) GetAuthorizationTypeOk() (*string, bool)`
 
-GetAudienceClaimOk returns a tuple with the AudienceClaim field if it's non-nil, zero value otherwise
+GetAuthorizationTypeOk returns a tuple with the AuthorizationType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAudienceClaim
+### SetAuthorizationType
 
-`func (o *FederationOidcIdentityProvider) SetAudienceClaim(v []string)`
+`func (o *FederationOidcIdentityProvider) SetAuthorizationType(v string)`
 
-SetAudienceClaim sets AudienceClaim field to given value.
+SetAuthorizationType sets AuthorizationType field to given value.
 
-### HasAudienceClaim
+### HasAuthorizationType
 
-`func (o *FederationOidcIdentityProvider) HasAudienceClaim() bool`
+`func (o *FederationOidcIdentityProvider) HasAuthorizationType() bool`
 
-HasAudienceClaim returns a boolean if a field has been set.
+HasAuthorizationType returns a boolean if a field has been set.
 ### GetCreatedAt
 
 `func (o *FederationOidcIdentityProvider) GetCreatedAt() time.Time`
@@ -227,6 +228,30 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
+### GetIdpType
+
+`func (o *FederationOidcIdentityProvider) GetIdpType() string`
+
+GetIdpType returns the IdpType field if non-nil, zero value otherwise.
+
+### GetIdpTypeOk
+
+`func (o *FederationOidcIdentityProvider) GetIdpTypeOk() (*string, bool)`
+
+GetIdpTypeOk returns a tuple with the IdpType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIdpType
+
+`func (o *FederationOidcIdentityProvider) SetIdpType(v string)`
+
+SetIdpType sets IdpType field to given value.
+
+### HasIdpType
+
+`func (o *FederationOidcIdentityProvider) HasIdpType() bool`
+
+HasIdpType returns a boolean if a field has been set.
 ### GetIssuerUri
 
 `func (o *FederationOidcIdentityProvider) GetIssuerUri() string`

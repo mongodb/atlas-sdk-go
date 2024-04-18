@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **FederatedDomains** | Pointer to **[]string** | List of domains associated with the organization&#39;s identity provider. | [optional] 
 **HasRoleMappings** | Pointer to **bool** | Flag that indicates whether this organization has role mappings configured. | [optional] 
 **Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies this federation. | [optional] [readonly] 
-**IdentityProviderId** | Pointer to **string** | Unique 20-hexadecimal digit string that identifies the identity provider connected to this organization. | [optional] 
+**IdentityProviderId** | Pointer to **string** | Legacy 20-hexadecimal digit string that identifies the identity provider connected to this organization. | [optional] 
 **IdentityProviderStatus** | Pointer to **string** | String enum that indicates whether the identity provider is active. | [optional] 
 
 ## Methods

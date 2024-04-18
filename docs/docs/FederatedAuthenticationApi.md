@@ -636,7 +636,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **federationSettingsId** | **string** | Unique 24-hexadecimal digit string that identifies your federation. | 
-**identityProviderId** | **string** | Unique string that identifies the identity provider to connect. If using an API version before 11-15-2023, use the 20-hexadecimal digit oktaIdpId. For all other versions, use the 24-hexadecimal digit id. | 
+**identityProviderId** | **string** | Unique string that identifies the identity provider to connect. If using an API version before 11-15-2023, use the legacy 20-hexadecimal digit id. This id can be found within the Federation Management Console &gt; Identity Providers tab by clicking the info icon in the IdP ID row of a configured identity provider. For all other versions, use the 24-hexadecimal digit id. | 
 
 ### Other Parameters
 
@@ -717,7 +717,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **federationSettingsId** | **string** | Unique 24-hexadecimal digit string that identifies your federation. | 
-**identityProviderId** | **string** | Unique 20-hexadecimal digit string that identifies the identity provider. | 
+**identityProviderId** | **string** | Legacy 20-hexadecimal digit string that identifies the identity provider. This id can be found within the Federation Management Console &gt; Identity Providers tab by clicking the info icon in the IdP ID row of a configured identity provider. | 
 
 ### Other Parameters
 
@@ -1367,7 +1367,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **federationSettingsId** | **string** | Unique 24-hexadecimal digit string that identifies your federation. | 
-**identityProviderId** | **string** | Unique string that identifies the identity provider to connect. If using an API version before 11-15-2023, use the 20-hexadecimal digit oktaIdpId. For all other versions, use the 24-hexadecimal digit id. | 
+**identityProviderId** | **string** | Unique string that identifies the identity provider to connect. If using an API version before 11-15-2023, use the legacy 20-hexadecimal digit id. This id can be found within the Federation Management Console &gt; Identity Providers tab by clicking the info icon in the IdP ID row of a configured identity provider. For all other versions, use the 24-hexadecimal digit id. | 
 
 ### Other Parameters
 

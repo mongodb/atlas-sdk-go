@@ -5,10 +5,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Audience** | Pointer to **string** | Identifier of the intended recipient of the token. | [optional] 
-**AudienceClaim** | Pointer to **[]string** | Identifier of the intended recipient of the token. The audienceClaim field is deprecated and will be removed in the 04/17/2024 release, use the audience field instead. | [optional] 
+**AuthorizationType** | Pointer to **string** | Indicates whether authorization is granted based on group membership or user ID. | [optional] 
 **Description** | Pointer to **string** | The description of the identity provider. | [optional] 
 **DisplayName** | Pointer to **string** | Human-readable label that identifies the identity provider. | [optional] 
 **GroupsClaim** | Pointer to **string** | Identifier of the claim which contains IdP Group IDs in the token. | [optional] 
+**IdpType** | Pointer to **string** | String enum that indicates the type of the identity provider. Default is WORKFORCE. | [optional] 
 **IssuerUri** | Pointer to **string** | Unique string that identifies the issuer of the SAML Assertion or OIDC metadata/discovery document URL. | [optional] 
 **Protocol** | Pointer to **string** | The protocol of the identity provider. Either SAML or OIDC. | [optional] 
 **UserClaim** | Pointer to **string** | Identifier of the claim which contains the user ID in the token. | [optional] 
@@ -59,30 +60,30 @@ SetAudience sets Audience field to given value.
 `func (o *FederationOidcIdentityProviderUpdate) HasAudience() bool`
 
 HasAudience returns a boolean if a field has been set.
-### GetAudienceClaim
+### GetAuthorizationType
 
-`func (o *FederationOidcIdentityProviderUpdate) GetAudienceClaim() []string`
+`func (o *FederationOidcIdentityProviderUpdate) GetAuthorizationType() string`
 
-GetAudienceClaim returns the AudienceClaim field if non-nil, zero value otherwise.
+GetAuthorizationType returns the AuthorizationType field if non-nil, zero value otherwise.
 
-### GetAudienceClaimOk
+### GetAuthorizationTypeOk
 
-`func (o *FederationOidcIdentityProviderUpdate) GetAudienceClaimOk() (*[]string, bool)`
+`func (o *FederationOidcIdentityProviderUpdate) GetAuthorizationTypeOk() (*string, bool)`
 
-GetAudienceClaimOk returns a tuple with the AudienceClaim field if it's non-nil, zero value otherwise
+GetAuthorizationTypeOk returns a tuple with the AuthorizationType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAudienceClaim
+### SetAuthorizationType
 
-`func (o *FederationOidcIdentityProviderUpdate) SetAudienceClaim(v []string)`
+`func (o *FederationOidcIdentityProviderUpdate) SetAuthorizationType(v string)`
 
-SetAudienceClaim sets AudienceClaim field to given value.
+SetAuthorizationType sets AuthorizationType field to given value.
 
-### HasAudienceClaim
+### HasAuthorizationType
 
-`func (o *FederationOidcIdentityProviderUpdate) HasAudienceClaim() bool`
+`func (o *FederationOidcIdentityProviderUpdate) HasAuthorizationType() bool`
 
-HasAudienceClaim returns a boolean if a field has been set.
+HasAuthorizationType returns a boolean if a field has been set.
 ### GetDescription
 
 `func (o *FederationOidcIdentityProviderUpdate) GetDescription() string`
@@ -155,6 +156,30 @@ SetGroupsClaim sets GroupsClaim field to given value.
 `func (o *FederationOidcIdentityProviderUpdate) HasGroupsClaim() bool`
 
 HasGroupsClaim returns a boolean if a field has been set.
+### GetIdpType
+
+`func (o *FederationOidcIdentityProviderUpdate) GetIdpType() string`
+
+GetIdpType returns the IdpType field if non-nil, zero value otherwise.
+
+### GetIdpTypeOk
+
+`func (o *FederationOidcIdentityProviderUpdate) GetIdpTypeOk() (*string, bool)`
+
+GetIdpTypeOk returns a tuple with the IdpType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIdpType
+
+`func (o *FederationOidcIdentityProviderUpdate) SetIdpType(v string)`
+
+SetIdpType sets IdpType field to given value.
+
+### HasIdpType
+
+`func (o *FederationOidcIdentityProviderUpdate) HasIdpType() bool`
+
+HasIdpType returns a boolean if a field has been set.
 ### GetIssuerUri
 
 `func (o *FederationOidcIdentityProviderUpdate) GetIssuerUri() string`
