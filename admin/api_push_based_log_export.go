@@ -22,7 +22,7 @@ type PushBasedLogExportApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@return CreatePushBasedLogConfigurationApiRequest
 	*/
-	CreatePushBasedLogConfiguration(ctx context.Context, groupId string, pushBasedLogExportProject *PushBasedLogExportProject) CreatePushBasedLogConfigurationApiRequest
+	CreatePushBasedLogConfiguration(ctx context.Context, groupId string, createPushBasedLogExportProjectRequest *CreatePushBasedLogExportProjectRequest) CreatePushBasedLogConfigurationApiRequest
 	/*
 		CreatePushBasedLogConfiguration Enable the push-based log export feature for a project
 
@@ -110,23 +110,23 @@ type PushBasedLogExportApi interface {
 type PushBasedLogExportApiService service
 
 type CreatePushBasedLogConfigurationApiRequest struct {
-	ctx                       context.Context
-	ApiService                PushBasedLogExportApi
-	groupId                   string
-	pushBasedLogExportProject *PushBasedLogExportProject
+	ctx                                    context.Context
+	ApiService                             PushBasedLogExportApi
+	groupId                                string
+	createPushBasedLogExportProjectRequest *CreatePushBasedLogExportProjectRequest
 }
 
 type CreatePushBasedLogConfigurationApiParams struct {
-	GroupId                   string
-	PushBasedLogExportProject *PushBasedLogExportProject
+	GroupId                                string
+	CreatePushBasedLogExportProjectRequest *CreatePushBasedLogExportProjectRequest
 }
 
 func (a *PushBasedLogExportApiService) CreatePushBasedLogConfigurationWithParams(ctx context.Context, args *CreatePushBasedLogConfigurationApiParams) CreatePushBasedLogConfigurationApiRequest {
 	return CreatePushBasedLogConfigurationApiRequest{
-		ApiService:                a,
-		ctx:                       ctx,
-		groupId:                   args.GroupId,
-		pushBasedLogExportProject: args.PushBasedLogExportProject,
+		ApiService:                             a,
+		ctx:                                    ctx,
+		groupId:                                args.GroupId,
+		createPushBasedLogExportProjectRequest: args.CreatePushBasedLogExportProjectRequest,
 	}
 }
 
@@ -143,12 +143,12 @@ CreatePushBasedLogConfiguration Enable the push-based log export feature for a p
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return CreatePushBasedLogConfigurationApiRequest
 */
-func (a *PushBasedLogExportApiService) CreatePushBasedLogConfiguration(ctx context.Context, groupId string, pushBasedLogExportProject *PushBasedLogExportProject) CreatePushBasedLogConfigurationApiRequest {
+func (a *PushBasedLogExportApiService) CreatePushBasedLogConfiguration(ctx context.Context, groupId string, createPushBasedLogExportProjectRequest *CreatePushBasedLogExportProjectRequest) CreatePushBasedLogConfigurationApiRequest {
 	return CreatePushBasedLogConfigurationApiRequest{
-		ApiService:                a,
-		ctx:                       ctx,
-		groupId:                   groupId,
-		pushBasedLogExportProject: pushBasedLogExportProject,
+		ApiService:                             a,
+		ctx:                                    ctx,
+		groupId:                                groupId,
+		createPushBasedLogExportProjectRequest: createPushBasedLogExportProjectRequest,
 	}
 }
 
@@ -171,8 +171,8 @@ func (a *PushBasedLogExportApiService) CreatePushBasedLogConfigurationExecute(r 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.pushBasedLogExportProject == nil {
-		return nil, reportError("pushBasedLogExportProject is required and must be specified")
+	if r.createPushBasedLogExportProjectRequest == nil {
+		return nil, reportError("createPushBasedLogExportProjectRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -193,7 +193,7 @@ func (a *PushBasedLogExportApiService) CreatePushBasedLogConfigurationExecute(r 
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.pushBasedLogExportProject
+	localVarPostBody = r.createPushBasedLogExportProjectRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err

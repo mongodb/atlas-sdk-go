@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20231115009/admin"
+	admin "go.mongodb.org/atlas-sdk/v20231115010/admin"
 
 	http "net/http"
 
@@ -25,17 +25,17 @@ func (_m *PushBasedLogExportApi) EXPECT() *PushBasedLogExportApi_Expecter {
 	return &PushBasedLogExportApi_Expecter{mock: &_m.Mock}
 }
 
-// CreatePushBasedLogConfiguration provides a mock function with given fields: ctx, groupId, pushBasedLogExportProject
-func (_m *PushBasedLogExportApi) CreatePushBasedLogConfiguration(ctx context.Context, groupId string, pushBasedLogExportProject *admin.PushBasedLogExportProject) admin.CreatePushBasedLogConfigurationApiRequest {
-	ret := _m.Called(ctx, groupId, pushBasedLogExportProject)
+// CreatePushBasedLogConfiguration provides a mock function with given fields: ctx, groupId, createPushBasedLogExportProjectRequest
+func (_m *PushBasedLogExportApi) CreatePushBasedLogConfiguration(ctx context.Context, groupId string, createPushBasedLogExportProjectRequest *admin.CreatePushBasedLogExportProjectRequest) admin.CreatePushBasedLogConfigurationApiRequest {
+	ret := _m.Called(ctx, groupId, createPushBasedLogExportProjectRequest)
 
 	if len(ret) == 0 {
 		panic("no return value specified for CreatePushBasedLogConfiguration")
 	}
 
 	var r0 admin.CreatePushBasedLogConfigurationApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.PushBasedLogExportProject) admin.CreatePushBasedLogConfigurationApiRequest); ok {
-		r0 = rf(ctx, groupId, pushBasedLogExportProject)
+	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.CreatePushBasedLogExportProjectRequest) admin.CreatePushBasedLogConfigurationApiRequest); ok {
+		r0 = rf(ctx, groupId, createPushBasedLogExportProjectRequest)
 	} else {
 		r0 = ret.Get(0).(admin.CreatePushBasedLogConfigurationApiRequest)
 	}
@@ -51,14 +51,14 @@ type PushBasedLogExportApi_CreatePushBasedLogConfiguration_Call struct {
 // CreatePushBasedLogConfiguration is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-//   - pushBasedLogExportProject *admin.PushBasedLogExportProject
-func (_e *PushBasedLogExportApi_Expecter) CreatePushBasedLogConfiguration(ctx interface{}, groupId interface{}, pushBasedLogExportProject interface{}) *PushBasedLogExportApi_CreatePushBasedLogConfiguration_Call {
-	return &PushBasedLogExportApi_CreatePushBasedLogConfiguration_Call{Call: _e.mock.On("CreatePushBasedLogConfiguration", ctx, groupId, pushBasedLogExportProject)}
+//   - createPushBasedLogExportProjectRequest *admin.CreatePushBasedLogExportProjectRequest
+func (_e *PushBasedLogExportApi_Expecter) CreatePushBasedLogConfiguration(ctx interface{}, groupId interface{}, createPushBasedLogExportProjectRequest interface{}) *PushBasedLogExportApi_CreatePushBasedLogConfiguration_Call {
+	return &PushBasedLogExportApi_CreatePushBasedLogConfiguration_Call{Call: _e.mock.On("CreatePushBasedLogConfiguration", ctx, groupId, createPushBasedLogExportProjectRequest)}
 }
 
-func (_c *PushBasedLogExportApi_CreatePushBasedLogConfiguration_Call) Run(run func(ctx context.Context, groupId string, pushBasedLogExportProject *admin.PushBasedLogExportProject)) *PushBasedLogExportApi_CreatePushBasedLogConfiguration_Call {
+func (_c *PushBasedLogExportApi_CreatePushBasedLogConfiguration_Call) Run(run func(ctx context.Context, groupId string, createPushBasedLogExportProjectRequest *admin.CreatePushBasedLogExportProjectRequest)) *PushBasedLogExportApi_CreatePushBasedLogConfiguration_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(*admin.PushBasedLogExportProject))
+		run(args[0].(context.Context), args[1].(string), args[2].(*admin.CreatePushBasedLogExportProjectRequest))
 	})
 	return _c
 }
@@ -68,7 +68,7 @@ func (_c *PushBasedLogExportApi_CreatePushBasedLogConfiguration_Call) Return(_a0
 	return _c
 }
 
-func (_c *PushBasedLogExportApi_CreatePushBasedLogConfiguration_Call) RunAndReturn(run func(context.Context, string, *admin.PushBasedLogExportProject) admin.CreatePushBasedLogConfigurationApiRequest) *PushBasedLogExportApi_CreatePushBasedLogConfiguration_Call {
+func (_c *PushBasedLogExportApi_CreatePushBasedLogConfiguration_Call) RunAndReturn(run func(context.Context, string, *admin.CreatePushBasedLogExportProjectRequest) admin.CreatePushBasedLogConfigurationApiRequest) *PushBasedLogExportApi_CreatePushBasedLogConfiguration_Call {
 	_c.Call.Return(run)
 	return _c
 }

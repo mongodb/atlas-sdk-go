@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## CreatePushBasedLogConfiguration
 
-> CreatePushBasedLogConfiguration(ctx, groupId, pushBasedLogExportProject PushBasedLogExportProject).Execute()
+> CreatePushBasedLogConfiguration(ctx, groupId, createPushBasedLogExportProjectRequest CreatePushBasedLogExportProjectRequest).Execute()
 
 Enable the push-based log export feature for a project
 
@@ -33,7 +33,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115009/admin"
+    "go.mongodb.org/atlas-sdk/v20231115010/admin"
 )
 
 func main() {
@@ -43,9 +43,9 @@ func main() {
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    pushBasedLogExportProject := *openapiclient.NewPushBasedLogExportProject() // PushBasedLogExportProject | 
+    createPushBasedLogExportProjectRequest := *openapiclient.NewCreatePushBasedLogExportProjectRequest("BucketName_example", "IamRoleId_example", "PrefixPath_example") // CreatePushBasedLogExportProjectRequest | 
 
-    r, err := sdk.PushBasedLogExportApi.CreatePushBasedLogConfiguration(context.Background(), groupId, &pushBasedLogExportProject).Execute()
+    r, err := sdk.PushBasedLogExportApi.CreatePushBasedLogConfiguration(context.Background(), groupId, &createPushBasedLogExportProjectRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PushBasedLogExportApi.CreatePushBasedLogConfiguration``: %v\n", err)
         apiError := admin.AsError(err)
@@ -70,7 +70,7 @@ Other parameters are passed through a pointer to a apiCreatePushBasedLogConfigur
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **pushBasedLogExportProject** | [**PushBasedLogExportProject**](PushBasedLogExportProject.md) | The project configuration details. The S3 bucket name, IAM role ID, and prefix path fields are required. | 
+ **createPushBasedLogExportProjectRequest** | [**CreatePushBasedLogExportProjectRequest**](CreatePushBasedLogExportProjectRequest.md) | The project configuration details. The S3 bucket name, IAM role ID, and prefix path fields are required. | 
 
 ### Return type
 
@@ -111,7 +111,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115009/admin"
+    "go.mongodb.org/atlas-sdk/v20231115010/admin"
 )
 
 func main() {
@@ -187,7 +187,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115009/admin"
+    "go.mongodb.org/atlas-sdk/v20231115010/admin"
 )
 
 func main() {
@@ -265,7 +265,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115009/admin"
+    "go.mongodb.org/atlas-sdk/v20231115010/admin"
 )
 
 func main() {

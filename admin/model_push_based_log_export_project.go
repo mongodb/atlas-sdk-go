@@ -19,7 +19,7 @@ type PushBasedLogExportProject struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
-	// S3 directory in which vector will write to in order to store the logs.
+	// S3 directory in which vector will write to in order to store the logs. An empty string denotes the root directory.
 	PrefixPath *string `json:"prefixPath,omitempty"`
 	// Describes whether or not the feature is enabled and what status it is in.
 	// Read only field.

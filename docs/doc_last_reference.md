@@ -458,6 +458,7 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
  - [CreateGCPForwardingRuleRequest](./docs/CreateGCPForwardingRuleRequest.md)
  - [CreateOrganizationRequest](./docs/CreateOrganizationRequest.md)
  - [CreateOrganizationResponse](./docs/CreateOrganizationResponse.md)
+ - [CreatePushBasedLogExportProjectRequest](./docs/CreatePushBasedLogExportProjectRequest.md)
  - [Criteria](./docs/Criteria.md)
  - [CustomZoneMappings](./docs/CustomZoneMappings.md)
  - [DBRoleToExecute](./docs/DBRoleToExecute.md)
