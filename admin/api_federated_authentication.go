@@ -1872,12 +1872,16 @@ type ListIdentityProvidersApiRequest struct {
 	ctx                  context.Context
 	ApiService           FederatedAuthenticationApi
 	federationSettingsId string
+	itemsPerPage         *int
+	pageNum              *int
 	protocol             *[]string
 	idpType              *[]string
 }
 
 type ListIdentityProvidersApiParams struct {
 	FederationSettingsId string
+	ItemsPerPage         *int
+	PageNum              *int
 	Protocol             *[]string
 	IdpType              *[]string
 }
@@ -1887,9 +1891,23 @@ func (a *FederatedAuthenticationApiService) ListIdentityProvidersWithParams(ctx 
 		ApiService:           a,
 		ctx:                  ctx,
 		federationSettingsId: args.FederationSettingsId,
+		itemsPerPage:         args.ItemsPerPage,
+		pageNum:              args.PageNum,
 		protocol:             args.Protocol,
 		idpType:              args.IdpType,
 	}
+}
+
+// Number of items that the response returns per page.
+func (r ListIdentityProvidersApiRequest) ItemsPerPage(itemsPerPage int) ListIdentityProvidersApiRequest {
+	r.itemsPerPage = &itemsPerPage
+	return r
+}
+
+// Number of the page that displays the current set of the total objects that the response returns.
+func (r ListIdentityProvidersApiRequest) PageNum(pageNum int) ListIdentityProvidersApiRequest {
+	r.pageNum = &pageNum
+	return r
 }
 
 // The protocols of the target identity providers.
@@ -1948,6 +1966,20 @@ func (a *FederatedAuthenticationApiService) ListIdentityProvidersExecute(r ListI
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.itemsPerPage != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	} else {
+		var defaultValue int = 100
+		r.itemsPerPage = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	}
+	if r.pageNum != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	} else {
+		var defaultValue int = 1
+		r.pageNum = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	}
 	if r.protocol != nil {
 		t := *r.protocol
 		// Workaround for unused import
