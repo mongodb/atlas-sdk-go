@@ -910,7 +910,7 @@ Name | Type | Description  | Notes
 
 ## ListIdentityProviders
 
-> PaginatedFederationIdentityProvider ListIdentityProviders(ctx, federationSettingsId).Protocol(protocol).IdpType(idpType).Execute()
+> PaginatedFederationIdentityProvider ListIdentityProviders(ctx, federationSettingsId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Protocol(protocol).IdpType(idpType).Execute()
 
 Return all identity providers from the specified federation.
 
@@ -940,10 +940,12 @@ func main() {
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
     federationSettingsId := "55fa922fb343282757d9554e" // string | 
+    itemsPerPage := int(100) // int |  (optional) (default to 100)
+    pageNum := int(1) // int |  (optional) (default to 1)
     protocol := []string{"Inner_example"} // []string |  (optional)
     idpType := []string{"Inner_example"} // []string |  (optional)
 
-    resp, r, err := sdk.FederatedAuthenticationApi.ListIdentityProviders(context.Background(), federationSettingsId).Protocol(protocol).IdpType(idpType).Execute()
+    resp, r, err := sdk.FederatedAuthenticationApi.ListIdentityProviders(context.Background(), federationSettingsId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Protocol(protocol).IdpType(idpType).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.ListIdentityProviders``: %v\n", err)
         apiError := admin.AsError(err)
@@ -970,6 +972,8 @@ Other parameters are passed through a pointer to a apiListIdentityProvidersReque
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
+ **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
  **protocol** | **[]string** | The protocols of the target identity providers. | 
  **idpType** | **[]string** | The types of the target identity providers. | 
 

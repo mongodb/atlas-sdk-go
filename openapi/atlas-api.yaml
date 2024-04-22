@@ -19,7 +19,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 52fd2148c07c19ed5d60c3a1c1745843bbd95526
+  x-xgen-sha: e92ce767fce643fdec5a166f886fd1e58620bf0d
 servers:
 - url: https://cloud.mongodb.com
 tags:
@@ -689,6 +689,8 @@ paths:
       parameters:
       - $ref: '#/components/parameters/federationSettingsId'
       - $ref: '#/components/parameters/envelope'
+      - $ref: '#/components/parameters/itemsPerPage'
+      - $ref: '#/components/parameters/pageNum'
       - description: The protocols of the target identity providers.
         in: query
         name: protocol
