@@ -18,7 +18,7 @@ The Atlas Go SDK doesn't rely on the deprecated [go-client-mongodb-atlas](https:
 The Atlas Go SDK has different methods for the initialization of the clients:
 
 ```go
-import admin "go.mongodb.org/atlas-sdk/v20231115010/admin" 
+import admin "go.mongodb.org/atlas-sdk/v20231115009/admin" 
 sdk, err := admin.NewClient(
     // Authentication using ApiKey and ApiSecret
     admin.UseDigestAuth(apiKey, apiSecret))

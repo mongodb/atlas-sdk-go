@@ -11,7 +11,7 @@ Construct a new Atlas SDK client, then use the services on the client to
 access different parts of the Atlas Admin API. For example:
 
 ```go
-import "go.mongodb.org/atlas-sdk/v20231115010/admin"
+import "go.mongodb.org/atlas-sdk/v20231115009/admin"
 
 func example() {
 	ctx := context.Background()
