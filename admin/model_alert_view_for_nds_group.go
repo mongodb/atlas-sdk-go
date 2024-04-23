@@ -68,6 +68,18 @@ type AlertViewForNdsGroup struct {
 	// Unique 24-hexadecimal character string that identifies the parent cluster to which this alert applies. The parent cluster contains the sharded nodes. MongoDB Cloud returns this parameter only for alerts of events impacting sharded clusters.
 	// Read only field.
 	ParentClusterId *string `json:"parentClusterId,omitempty"`
+	// The name of the Stream Processing Instance to which this alert applies. The resource returns this parameter for alerts of events impacting Stream Processing Instances.
+	// Read only field.
+	InstanceName *string `json:"instanceName,omitempty"`
+	// The error message associated with the Stream Processor to which this alert applies.
+	// Read only field.
+	ProcessorErrorMsg *string `json:"processorErrorMsg,omitempty"`
+	// The name of the Stream Processor to which this alert applies. The resource returns this parameter for alerts of events impacting Stream Processors.
+	// Read only field.
+	ProcessorName *string `json:"processorName,omitempty"`
+	// The state of the Stream Processor to which this alert applies. The resource returns this parameter for alerts of events impacting Stream Processors.
+	// Read only field.
+	ProcessorState *string `json:"processorState,omitempty"`
 }
 
 // NewAlertViewForNdsGroup instantiates a new AlertViewForNdsGroup object
@@ -778,6 +790,138 @@ func (o *AlertViewForNdsGroup) HasParentClusterId() bool {
 // SetParentClusterId gets a reference to the given string and assigns it to the ParentClusterId field.
 func (o *AlertViewForNdsGroup) SetParentClusterId(v string) {
 	o.ParentClusterId = &v
+}
+
+// GetInstanceName returns the InstanceName field value if set, zero value otherwise
+func (o *AlertViewForNdsGroup) GetInstanceName() string {
+	if o == nil || IsNil(o.InstanceName) {
+		var ret string
+		return ret
+	}
+	return *o.InstanceName
+}
+
+// GetInstanceNameOk returns a tuple with the InstanceName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AlertViewForNdsGroup) GetInstanceNameOk() (*string, bool) {
+	if o == nil || IsNil(o.InstanceName) {
+		return nil, false
+	}
+
+	return o.InstanceName, true
+}
+
+// HasInstanceName returns a boolean if a field has been set.
+func (o *AlertViewForNdsGroup) HasInstanceName() bool {
+	if o != nil && !IsNil(o.InstanceName) {
+		return true
+	}
+
+	return false
+}
+
+// SetInstanceName gets a reference to the given string and assigns it to the InstanceName field.
+func (o *AlertViewForNdsGroup) SetInstanceName(v string) {
+	o.InstanceName = &v
+}
+
+// GetProcessorErrorMsg returns the ProcessorErrorMsg field value if set, zero value otherwise
+func (o *AlertViewForNdsGroup) GetProcessorErrorMsg() string {
+	if o == nil || IsNil(o.ProcessorErrorMsg) {
+		var ret string
+		return ret
+	}
+	return *o.ProcessorErrorMsg
+}
+
+// GetProcessorErrorMsgOk returns a tuple with the ProcessorErrorMsg field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AlertViewForNdsGroup) GetProcessorErrorMsgOk() (*string, bool) {
+	if o == nil || IsNil(o.ProcessorErrorMsg) {
+		return nil, false
+	}
+
+	return o.ProcessorErrorMsg, true
+}
+
+// HasProcessorErrorMsg returns a boolean if a field has been set.
+func (o *AlertViewForNdsGroup) HasProcessorErrorMsg() bool {
+	if o != nil && !IsNil(o.ProcessorErrorMsg) {
+		return true
+	}
+
+	return false
+}
+
+// SetProcessorErrorMsg gets a reference to the given string and assigns it to the ProcessorErrorMsg field.
+func (o *AlertViewForNdsGroup) SetProcessorErrorMsg(v string) {
+	o.ProcessorErrorMsg = &v
+}
+
+// GetProcessorName returns the ProcessorName field value if set, zero value otherwise
+func (o *AlertViewForNdsGroup) GetProcessorName() string {
+	if o == nil || IsNil(o.ProcessorName) {
+		var ret string
+		return ret
+	}
+	return *o.ProcessorName
+}
+
+// GetProcessorNameOk returns a tuple with the ProcessorName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AlertViewForNdsGroup) GetProcessorNameOk() (*string, bool) {
+	if o == nil || IsNil(o.ProcessorName) {
+		return nil, false
+	}
+
+	return o.ProcessorName, true
+}
+
+// HasProcessorName returns a boolean if a field has been set.
+func (o *AlertViewForNdsGroup) HasProcessorName() bool {
+	if o != nil && !IsNil(o.ProcessorName) {
+		return true
+	}
+
+	return false
+}
+
+// SetProcessorName gets a reference to the given string and assigns it to the ProcessorName field.
+func (o *AlertViewForNdsGroup) SetProcessorName(v string) {
+	o.ProcessorName = &v
+}
+
+// GetProcessorState returns the ProcessorState field value if set, zero value otherwise
+func (o *AlertViewForNdsGroup) GetProcessorState() string {
+	if o == nil || IsNil(o.ProcessorState) {
+		var ret string
+		return ret
+	}
+	return *o.ProcessorState
+}
+
+// GetProcessorStateOk returns a tuple with the ProcessorState field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AlertViewForNdsGroup) GetProcessorStateOk() (*string, bool) {
+	if o == nil || IsNil(o.ProcessorState) {
+		return nil, false
+	}
+
+	return o.ProcessorState, true
+}
+
+// HasProcessorState returns a boolean if a field has been set.
+func (o *AlertViewForNdsGroup) HasProcessorState() bool {
+	if o != nil && !IsNil(o.ProcessorState) {
+		return true
+	}
+
+	return false
+}
+
+// SetProcessorState gets a reference to the given string and assigns it to the ProcessorState field.
+func (o *AlertViewForNdsGroup) SetProcessorState(v string) {
+	o.ProcessorState = &v
 }
 
 func (o AlertViewForNdsGroup) MarshalJSONWithoutReadOnly() ([]byte, error) {

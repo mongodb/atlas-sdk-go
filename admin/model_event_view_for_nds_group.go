@@ -102,6 +102,18 @@ type EventViewForNdsGroup struct {
 	ResourceId *string `json:"resourceId,omitempty"`
 	// Unique identifier of resource type.
 	ResourceType *string `json:"resourceType,omitempty"`
+	// Name of the stream processing instance associated with the event.
+	// Read only field.
+	InstanceName *string `json:"instanceName,omitempty"`
+	// Error message linked to the stream processor associated with the event.
+	// Read only field.
+	ProcessorErrorMsg *string `json:"processorErrorMsg,omitempty"`
+	// Name of the stream processor associated with the event.
+	// Read only field.
+	ProcessorName *string `json:"processorName,omitempty"`
+	// State of the stream processor associated with the event.
+	// Read only field.
+	ProcessorState *string `json:"processorState,omitempty"`
 }
 
 // NewEventViewForNdsGroup instantiates a new EventViewForNdsGroup object
@@ -1208,6 +1220,138 @@ func (o *EventViewForNdsGroup) HasResourceType() bool {
 // SetResourceType gets a reference to the given string and assigns it to the ResourceType field.
 func (o *EventViewForNdsGroup) SetResourceType(v string) {
 	o.ResourceType = &v
+}
+
+// GetInstanceName returns the InstanceName field value if set, zero value otherwise
+func (o *EventViewForNdsGroup) GetInstanceName() string {
+	if o == nil || IsNil(o.InstanceName) {
+		var ret string
+		return ret
+	}
+	return *o.InstanceName
+}
+
+// GetInstanceNameOk returns a tuple with the InstanceName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EventViewForNdsGroup) GetInstanceNameOk() (*string, bool) {
+	if o == nil || IsNil(o.InstanceName) {
+		return nil, false
+	}
+
+	return o.InstanceName, true
+}
+
+// HasInstanceName returns a boolean if a field has been set.
+func (o *EventViewForNdsGroup) HasInstanceName() bool {
+	if o != nil && !IsNil(o.InstanceName) {
+		return true
+	}
+
+	return false
+}
+
+// SetInstanceName gets a reference to the given string and assigns it to the InstanceName field.
+func (o *EventViewForNdsGroup) SetInstanceName(v string) {
+	o.InstanceName = &v
+}
+
+// GetProcessorErrorMsg returns the ProcessorErrorMsg field value if set, zero value otherwise
+func (o *EventViewForNdsGroup) GetProcessorErrorMsg() string {
+	if o == nil || IsNil(o.ProcessorErrorMsg) {
+		var ret string
+		return ret
+	}
+	return *o.ProcessorErrorMsg
+}
+
+// GetProcessorErrorMsgOk returns a tuple with the ProcessorErrorMsg field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EventViewForNdsGroup) GetProcessorErrorMsgOk() (*string, bool) {
+	if o == nil || IsNil(o.ProcessorErrorMsg) {
+		return nil, false
+	}
+
+	return o.ProcessorErrorMsg, true
+}
+
+// HasProcessorErrorMsg returns a boolean if a field has been set.
+func (o *EventViewForNdsGroup) HasProcessorErrorMsg() bool {
+	if o != nil && !IsNil(o.ProcessorErrorMsg) {
+		return true
+	}
+
+	return false
+}
+
+// SetProcessorErrorMsg gets a reference to the given string and assigns it to the ProcessorErrorMsg field.
+func (o *EventViewForNdsGroup) SetProcessorErrorMsg(v string) {
+	o.ProcessorErrorMsg = &v
+}
+
+// GetProcessorName returns the ProcessorName field value if set, zero value otherwise
+func (o *EventViewForNdsGroup) GetProcessorName() string {
+	if o == nil || IsNil(o.ProcessorName) {
+		var ret string
+		return ret
+	}
+	return *o.ProcessorName
+}
+
+// GetProcessorNameOk returns a tuple with the ProcessorName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EventViewForNdsGroup) GetProcessorNameOk() (*string, bool) {
+	if o == nil || IsNil(o.ProcessorName) {
+		return nil, false
+	}
+
+	return o.ProcessorName, true
+}
+
+// HasProcessorName returns a boolean if a field has been set.
+func (o *EventViewForNdsGroup) HasProcessorName() bool {
+	if o != nil && !IsNil(o.ProcessorName) {
+		return true
+	}
+
+	return false
+}
+
+// SetProcessorName gets a reference to the given string and assigns it to the ProcessorName field.
+func (o *EventViewForNdsGroup) SetProcessorName(v string) {
+	o.ProcessorName = &v
+}
+
+// GetProcessorState returns the ProcessorState field value if set, zero value otherwise
+func (o *EventViewForNdsGroup) GetProcessorState() string {
+	if o == nil || IsNil(o.ProcessorState) {
+		var ret string
+		return ret
+	}
+	return *o.ProcessorState
+}
+
+// GetProcessorStateOk returns a tuple with the ProcessorState field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EventViewForNdsGroup) GetProcessorStateOk() (*string, bool) {
+	if o == nil || IsNil(o.ProcessorState) {
+		return nil, false
+	}
+
+	return o.ProcessorState, true
+}
+
+// HasProcessorState returns a boolean if a field has been set.
+func (o *EventViewForNdsGroup) HasProcessorState() bool {
+	if o != nil && !IsNil(o.ProcessorState) {
+		return true
+	}
+
+	return false
+}
+
+// SetProcessorState gets a reference to the given string and assigns it to the ProcessorState field.
+func (o *EventViewForNdsGroup) SetProcessorState(v string) {
+	o.ProcessorState = &v
 }
 
 func (o EventViewForNdsGroup) MarshalJSONWithoutReadOnly() ([]byte, error) {
