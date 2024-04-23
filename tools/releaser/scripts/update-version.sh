@@ -12,9 +12,14 @@ echo "Current Resource Version: $NEW_RESOURCE_VERSION"
 
 major_version_breaking_changes="${SDK_MAJOR_VERSION: -3}"
 # Remove leading zeros from the variable
-major_version_breaking_changes=${major_version_breaking_changes#00}
-major_version_bump=$((major_version_breaking_changes+1))
-major_version_bump=$(printf "%03d" "$major_version_bump")
+major_version_breaking_changes=$((10#$major_version_breaking_changes))
+echo $major_version_breaking_changes "major_version_breaking_changes"
+# Change value
+((major_version_breaking_changes++))
+# Ensure the value stays within the range 1-999
+major_version_breaking_changes=$((major_version_breaking_changes % 1000))
+
+major_version_bump=$(printf "%03d" "$major_version_breaking_changes")
 BUMPED_MAJOR_VERSION="v${SDK_RESOURCE_VERSION}${major_version_bump}"
 
 mkdir -p "$script_path/../breaking_changes/"
