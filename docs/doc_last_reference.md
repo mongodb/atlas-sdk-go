@@ -677,6 +677,7 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
  - [StreamsDataProcessRegion](./docs/StreamsDataProcessRegion.md)
  - [StreamsKafkaAuthentication](./docs/StreamsKafkaAuthentication.md)
  - [StreamsKafkaSecurity](./docs/StreamsKafkaSecurity.md)
+ - [StreamsMatcher](./docs/StreamsMatcher.md)
  - [StreamsTenant](./docs/StreamsTenant.md)
  - [SynonymSource](./docs/SynonymSource.md)
  - [SystemStatus](./docs/SystemStatus.md)

@@ -37,6 +37,10 @@ Name | Type | Description | Notes
 **TargetUsername** | Pointer to **string** | Email address for the console user that this event targets. The resource returns this parameter when &#x60;\&quot;eventTypeName\&quot; : \&quot;USER\&quot;&#x60;. | [optional] [readonly] 
 **ResourceId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the resource associated with the event. | [optional] [readonly] 
 **ResourceType** | Pointer to **string** | Unique identifier of resource type. | [optional] 
+**InstanceName** | Pointer to **string** | Name of the stream processing instance associated with the event. | [optional] [readonly] 
+**ProcessorErrorMsg** | Pointer to **string** | Error message linked to the stream processor associated with the event. | [optional] [readonly] 
+**ProcessorName** | Pointer to **string** | Name of the stream processor associated with the event. | [optional] [readonly] 
+**ProcessorState** | Pointer to **string** | State of the stream processor associated with the event. | [optional] [readonly] 
 
 ## Methods
 
@@ -849,6 +853,102 @@ SetResourceType sets ResourceType field to given value.
 `func (o *EventViewForNdsGroup) HasResourceType() bool`
 
 HasResourceType returns a boolean if a field has been set.
+### GetInstanceName
+
+`func (o *EventViewForNdsGroup) GetInstanceName() string`
+
+GetInstanceName returns the InstanceName field if non-nil, zero value otherwise.
+
+### GetInstanceNameOk
+
+`func (o *EventViewForNdsGroup) GetInstanceNameOk() (*string, bool)`
+
+GetInstanceNameOk returns a tuple with the InstanceName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInstanceName
+
+`func (o *EventViewForNdsGroup) SetInstanceName(v string)`
+
+SetInstanceName sets InstanceName field to given value.
+
+### HasInstanceName
+
+`func (o *EventViewForNdsGroup) HasInstanceName() bool`
+
+HasInstanceName returns a boolean if a field has been set.
+### GetProcessorErrorMsg
+
+`func (o *EventViewForNdsGroup) GetProcessorErrorMsg() string`
+
+GetProcessorErrorMsg returns the ProcessorErrorMsg field if non-nil, zero value otherwise.
+
+### GetProcessorErrorMsgOk
+
+`func (o *EventViewForNdsGroup) GetProcessorErrorMsgOk() (*string, bool)`
+
+GetProcessorErrorMsgOk returns a tuple with the ProcessorErrorMsg field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProcessorErrorMsg
+
+`func (o *EventViewForNdsGroup) SetProcessorErrorMsg(v string)`
+
+SetProcessorErrorMsg sets ProcessorErrorMsg field to given value.
+
+### HasProcessorErrorMsg
+
+`func (o *EventViewForNdsGroup) HasProcessorErrorMsg() bool`
+
+HasProcessorErrorMsg returns a boolean if a field has been set.
+### GetProcessorName
+
+`func (o *EventViewForNdsGroup) GetProcessorName() string`
+
+GetProcessorName returns the ProcessorName field if non-nil, zero value otherwise.
+
+### GetProcessorNameOk
+
+`func (o *EventViewForNdsGroup) GetProcessorNameOk() (*string, bool)`
+
+GetProcessorNameOk returns a tuple with the ProcessorName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProcessorName
+
+`func (o *EventViewForNdsGroup) SetProcessorName(v string)`
+
+SetProcessorName sets ProcessorName field to given value.
+
+### HasProcessorName
+
+`func (o *EventViewForNdsGroup) HasProcessorName() bool`
+
+HasProcessorName returns a boolean if a field has been set.
+### GetProcessorState
+
+`func (o *EventViewForNdsGroup) GetProcessorState() string`
+
+GetProcessorState returns the ProcessorState field if non-nil, zero value otherwise.
+
+### GetProcessorStateOk
+
+`func (o *EventViewForNdsGroup) GetProcessorStateOk() (*string, bool)`
+
+GetProcessorStateOk returns a tuple with the ProcessorState field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProcessorState
+
+`func (o *EventViewForNdsGroup) SetProcessorState(v string)`
+
+SetProcessorState sets ProcessorState field to given value.
+
+### HasProcessorState
+
+`func (o *EventViewForNdsGroup) HasProcessorState() bool`
+
+HasProcessorState returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
