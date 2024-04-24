@@ -24,7 +24,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: e92ce767fce643fdec5a166f886fd1e58620bf0d
+  x-xgen-sha: 5ac2d1ed493a05f9f4e5e7afb6b966eb080c4773
 servers:
   - url: https://cloud.mongodb.com
 tags:
@@ -16666,6 +16666,35 @@ components:
           minLength: 1
           pattern: ^([a-f0-9]{24})$
           readOnly: true
+        instanceName:
+          type: string
+          description: The name of the Stream Processing Instance to which this alert
+            applies. The resource returns this parameter for alerts of events
+            impacting Stream Processing Instances.
+          example: foobar
+          readOnly: true
+        processorErrorMsg:
+          type: string
+          description: The error message associated with the Stream Processor to which
+            this alert applies.
+          example: "MongoServerError: Failed to start stream processor: (Location77175)
+            Could not connect to the Kafka topic with kafka error code: -195,
+            message: Local: Broker transport failure.: (Location77175)"
+          readOnly: true
+        processorName:
+          type: string
+          description: The name of the Stream Processor to which this alert applies. The
+            resource returns this parameter for alerts of events impacting
+            Stream Processors.
+          example: foobar
+          readOnly: true
+        processorState:
+          type: string
+          description: The state of the Stream Processor to which this alert applies. The
+            resource returns this parameter for alerts of events impacting
+            Stream Processors.
+          example: STARTED
+          readOnly: true
     AlertsNotificationRootForGroup:
       type: object
       description: One target that MongoDB Cloud sends notifications when an alert triggers.
@@ -23092,7 +23121,7 @@ components:
             format in UTC.
           readOnly: true
         eventTypeName:
-          $ref: "#/components/schemas/ResourceEventType"
+          $ref: "#/components/schemas/StreamProcessorEventTypeViewForNdsGroup"
         groupId:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the project in
@@ -23308,6 +23337,27 @@ components:
           type: string
           description: Unique identifier of resource type.
           example: cluster
+        instanceName:
+          type: string
+          description: Name of the stream processing instance associated with the event.
+          example: foobar
+          readOnly: true
+        processorErrorMsg:
+          type: string
+          description: Error message linked to the stream processor associated with the
+            event.
+          example: invalid auth
+          readOnly: true
+        processorName:
+          type: string
+          description: Name of the stream processor associated with the event.
+          example: foobar
+          readOnly: true
+        processorState:
+          type: string
+          description: State of the stream processor associated with the event.
+          example: FAILED
+          readOnly: true
     EventViewForOrg:
       type: object
       properties:
@@ -24128,7 +24178,7 @@ components:
           description: Flag that indicates whether someone enabled this alert
             configuration for the specified project.
         eventTypeName:
-          $ref: "#/components/schemas/ServerlessEventTypeViewAlertable"
+          $ref: "#/components/schemas/StreamProcessorEventTypeViewAlertable"
         groupId:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the project that
@@ -24223,9 +24273,13 @@ components:
             Alternatively:
 
             No matchers are available for these alert types. The list is always empty.
+
+
+            Alternatively:
+
+            List of rules that determine whether MongoDB Cloud checks an object for the alert configuration.
           items:
-            type: object
-          readOnly: true
+            $ref: "#/components/schemas/StreamsMatcher"
         notifications:
           type: array
           description: List that contains the targets that MongoDB Cloud sends
@@ -28099,11 +28153,6 @@ components:
           description: MongoDB process type to which your application connects.
           readOnly: true
       title: Serverless Instance Private Endpoint Connection String
-    ServerlessEventTypeViewAlertable:
-      type: string
-      description: Event type that triggers an alert.
-      example: OUTSIDE_SERVERLESS_METRIC_THRESHOLD
-      title: Serverless Event Types
     ServerlessInstanceDescription:
       type: object
       description: Group of settings that configure a MongoDB serverless instance.
@@ -28557,6 +28606,16 @@ components:
           description: Selected tier for the Stream Instance. Configures Memory / VCPU
             allowances.
           title: Stream Instance Tier
+    StreamProcessorEventTypeViewAlertable:
+      type: string
+      description: Event type that triggers an alert.
+      example: STREAM_PROCESSOR_STATE_IS_FAILED
+      title: Stream Processor Event Types
+    StreamProcessorEventTypeViewForNdsGroup:
+      type: string
+      description: Unique identifier of event type.
+      example: STREAM_PROCESSOR_STATE_IS_FAILED
+      title: Stream Processor Event Types
     StreamsConnection:
       type: object
       description: Settings that define a connection to an external data store.
@@ -28681,6 +28740,33 @@ components:
         protocol:
           type: string
           description: Describes the transport type. Can be either PLAINTEXT or SSL.
+    StreamsMatcher:
+      type: object
+      description: Rules to apply when comparing a stream processing instance or
+        stream processor against this alert configuration.
+      properties:
+        fieldName:
+          $ref: "#/components/schemas/StreamsMatcherField"
+        operator:
+          type: string
+          description: Comparison operator to apply when checking the current metric value
+            against **matcher[n].value**.
+        value:
+          type: string
+          description: Value to match or exceed using the specified **matchers.operator**.
+          example: event-replica-set
+      required:
+        - fieldName
+        - operator
+        - value
+      title: Matchers
+    StreamsMatcherField:
+      type: string
+      description: Name of the parameter in the target object that MongoDB Cloud
+        checks. The parameter must match all rules for MongoDB Cloud to check
+        for alert configurations.
+      example: INSTANCE_NAME
+      title: Streams Matcher Fields
     StreamsTenant:
       type: object
       properties:
@@ -31525,11 +31611,6 @@ components:
             - Set this value to `false` to disable regionalized private endpoints.
       required:
         - enabled
-    ResourceEventType:
-      type: string
-      description: Unique identifier of event type.
-      example: TAGS_MODIFIED
-      title: Resource Event Types
     ApiAtlasFTSAnalyzers:
       type: object
       description: Settings that describe one Atlas Search custom analyzer.
