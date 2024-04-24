@@ -15,7 +15,7 @@ type ConnectedOrgConfig struct {
 	// Value that indicates whether domain restriction is enabled for this connected org.
 	DomainRestrictionEnabled bool `json:"domainRestrictionEnabled"`
 	// Legacy 20-hexadecimal digit string that identifies the UI access identity provider that this connected org config is associated with. This id can be found within the Federation Management Console > Identity Providers tab by clicking the info icon in the IdP ID row of a configured identity provider.
-	IdentityProviderId string `json:"identityProviderId"`
+	IdentityProviderId *string `json:"identityProviderId,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the connected organization configuration.
 	// Read only field.
 	OrgId string `json:"orgId"`
@@ -31,10 +31,9 @@ type ConnectedOrgConfig struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewConnectedOrgConfig(domainRestrictionEnabled bool, identityProviderId string, orgId string) *ConnectedOrgConfig {
+func NewConnectedOrgConfig(domainRestrictionEnabled bool, orgId string) *ConnectedOrgConfig {
 	this := ConnectedOrgConfig{}
 	this.DomainRestrictionEnabled = domainRestrictionEnabled
-	this.IdentityProviderId = identityProviderId
 	this.OrgId = orgId
 	return &this
 }
@@ -137,28 +136,37 @@ func (o *ConnectedOrgConfig) SetDomainRestrictionEnabled(v bool) {
 	o.DomainRestrictionEnabled = v
 }
 
-// GetIdentityProviderId returns the IdentityProviderId field value
+// GetIdentityProviderId returns the IdentityProviderId field value if set, zero value otherwise
 func (o *ConnectedOrgConfig) GetIdentityProviderId() string {
-	if o == nil {
+	if o == nil || IsNil(o.IdentityProviderId) {
 		var ret string
 		return ret
 	}
-
-	return o.IdentityProviderId
+	return *o.IdentityProviderId
 }
 
-// GetIdentityProviderIdOk returns a tuple with the IdentityProviderId field value
+// GetIdentityProviderIdOk returns a tuple with the IdentityProviderId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConnectedOrgConfig) GetIdentityProviderIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.IdentityProviderId) {
 		return nil, false
 	}
-	return &o.IdentityProviderId, true
+
+	return o.IdentityProviderId, true
 }
 
-// SetIdentityProviderId sets field value
+// HasIdentityProviderId returns a boolean if a field has been set.
+func (o *ConnectedOrgConfig) HasIdentityProviderId() bool {
+	if o != nil && !IsNil(o.IdentityProviderId) {
+		return true
+	}
+
+	return false
+}
+
+// SetIdentityProviderId gets a reference to the given string and assigns it to the IdentityProviderId field.
 func (o *ConnectedOrgConfig) SetIdentityProviderId(v string) {
-	o.IdentityProviderId = v
+	o.IdentityProviderId = &v
 }
 
 // GetOrgId returns the OrgId field value
@@ -300,7 +308,9 @@ func (o ConnectedOrgConfig) ToMap() (map[string]interface{}, error) {
 		toSerialize["domainAllowList"] = o.DomainAllowList
 	}
 	toSerialize["domainRestrictionEnabled"] = o.DomainRestrictionEnabled
-	toSerialize["identityProviderId"] = o.IdentityProviderId
+	if !IsNil(o.IdentityProviderId) {
+		toSerialize["identityProviderId"] = o.IdentityProviderId
+	}
 	if !IsNil(o.PostAuthRoleGrants) {
 		toSerialize["postAuthRoleGrants"] = o.PostAuthRoleGrants
 	}

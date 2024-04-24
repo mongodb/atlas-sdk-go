@@ -24,7 +24,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 5ac2d1ed493a05f9f4e5e7afb6b966eb080c4773
+  x-xgen-sha: f37d3212e72e54807be6b0c0d1b6c2f47c7b8c83
 servers:
   - url: https://cloud.mongodb.com
 tags:
@@ -16731,6 +16731,11 @@ components:
           format: int32
           description: Number of minutes that MongoDB Cloud waits after detecting an alert
             condition before it sends out the first notification.
+        integrationId:
+          type: string
+          description: The id of the associated integration, the credentials of which to
+            use for requests.
+          example: 32b6e34b3d91647abb20e7b8
         intervalMin:
           type: integer
           format: int32
@@ -16747,7 +16752,7 @@ components:
           description: The notifierId is a system-generated unique identifier assigned to
             each notification method. This is needed when updating third-party
             notifications without requiring explicit authentication credentials.
-          example: 6462742adc47d365036da07c
+          example: 32b6e34b3d91647abb20e7b8
         typeName:
           type: string
           description: Human-readable label that displays the alert notification type.
@@ -20782,7 +20787,6 @@ components:
             $ref: "#/components/schemas/FederatedUser"
       required:
         - domainRestrictionEnabled
-        - identityProviderId
         - orgId
     ControlPlaneIPAddresses:
       type: object
@@ -29107,6 +29111,9 @@ components:
       type: object
       description: Collection of settings that describe third-party integrations.
       properties:
+        id:
+          type: string
+          description: Integration id.
         type:
           type: string
           description: >-
