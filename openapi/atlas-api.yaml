@@ -19,7 +19,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: e92ce767fce643fdec5a166f886fd1e58620bf0d
+  x-xgen-sha: 5ac2d1ed493a05f9f4e5e7afb6b966eb080c4773
 servers:
 - url: https://cloud.mongodb.com
 tags:
@@ -18031,6 +18031,7 @@ components:
       - $ref: '#/components/schemas/HostAlertViewForNdsGroup'
       - $ref: '#/components/schemas/HostMetricAlert'
       - $ref: '#/components/schemas/ReplicaSetAlertViewForNdsGroup'
+      - $ref: '#/components/schemas/StreamProcessorAlertViewForNdsGroup'
       - $ref: '#/components/schemas/DefaultAlertViewForNdsGroup'
     AlertsNotificationBase:
       type: object
@@ -18927,25 +18928,7 @@ components:
       type: string
       description: Atlas Streams AWS Regions.
       enum:
-      - SYDNEY_AUS
-      - MUMBAI_IND
-      - FRANKFURT_DEU
-      - DUBLIN_IRL
-      - LONDON_GBR
       - VIRGINIA_USA
-      - OREGON_USA
-      - SAOPAULO_BRA
-      - SINGAPORE_SGP
-    ApiStreamsAzureRegionView:
-      type: string
-      description: Atlas Streams Azure Regions.
-      enum:
-      - VIRGINIA_USA
-      - CALIFORNIA_USA
-      - SINGAPORE_SGP
-      - DUBLIN_IRL
-      - AMSTERDAM_NLD
-      - SYDNEY_AUS
     ApiUserEventTypeViewForNdsGroup:
       type: string
       description: Unique identifier of event type.
@@ -21843,7 +21826,6 @@ components:
       description: Name of the cloud provider region hosting Atlas Stream Processing.
       oneOf:
       - $ref: '#/components/schemas/ApiStreamsAWSRegionView'
-      - $ref: '#/components/schemas/ApiStreamsAzureRegionView'
     BasicBSONList:
       type: array
       description: "List that contains the search criteria that the query uses. To\
@@ -27728,6 +27710,10 @@ components:
             - TAGS_MODIFIED
             - GROUP_TAGS_MODIFIED
             title: Resource Event Types
+          - type: string
+            enum:
+            - STREAM_PROCESSOR_STATE_IS_FAILED
+            title: Stream Processor Event Types
         groupId:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the project
@@ -27923,6 +27909,10 @@ components:
             - TAGS_MODIFIED
             - GROUP_TAGS_MODIFIED
             title: Resource Event Types
+          - type: string
+            enum:
+            - STREAM_PROCESSOR_STATE_IS_FAILED
+            title: Stream Processor Event Types
           readOnly: true
         groupId:
           type: string
@@ -28284,6 +28274,14 @@ components:
             enum:
             - SETUP_SERVERLESS_INITIATED
             title: Setup Serverless Audit Types
+          - type: string
+            enum:
+            - MAX_PROCESSOR_COUNT_REACHED
+            title: Streams Event Types
+          - type: string
+            enum:
+            - STREAM_PROCESSOR_STATE_IS_FAILED
+            title: Stream Processor Event Types
           - type: string
             enum:
             - CASE_CREATED
@@ -30467,6 +30465,14 @@ components:
         title: Setup Serverless Audit Types
       - type: string
         enum:
+        - MAX_PROCESSOR_COUNT_REACHED
+        title: Streams Event Types
+      - type: string
+        enum:
+        - STREAM_PROCESSOR_STATE_IS_FAILED
+        title: Stream Processor Event Types
+      - type: string
+        enum:
         - CASE_CREATED
         title: Support Case Event Types
       - type: string
@@ -30804,6 +30810,8 @@ components:
       - $ref: '#/components/schemas/TeamEventViewForNdsGroup'
       - $ref: '#/components/schemas/UserEventViewForNdsGroup'
       - $ref: '#/components/schemas/ResourceEventViewForNdsGroup'
+      - $ref: '#/components/schemas/StreamsEventViewForNdsGroup'
+      - $ref: '#/components/schemas/StreamProcessorEventViewForNdsGroup'
     EventViewForOrg:
       type: object
       oneOf:
@@ -32540,6 +32548,7 @@ components:
       - $ref: '#/components/schemas/ReplicaSetAlertConfigViewForNdsGroup'
       - $ref: '#/components/schemas/ReplicaSetThresholdAlertConfigViewForNdsGroup'
       - $ref: '#/components/schemas/ServerlessMetricAlertConfigViewForNdsGroup'
+      - $ref: '#/components/schemas/StreamProcessorAlertConfigViewForNdsGroup'
     GroupIPAddresses:
       type: object
       description: List of IP addresses in a project.
@@ -36683,6 +36692,11 @@ components:
         - SHARD_NAME
         - CLUSTER_NAME
         title: Replica Set Matcher Fields
+      - type: string
+        enum:
+        - INSTANCE_NAME
+        - PROCESSOR_NAME
+        title: Streams Matcher Fields
     MatcherHostType:
       type: string
       description: Value to match or exceed using the specified **matchers.operator**.
@@ -44706,6 +44720,329 @@ components:
           - SP30
           - SP10
           title: Stream Instance Tier
+    StreamProcessorAlertConfigViewForNdsGroup:
+      type: object
+      description: Host metric alert configuration allows to select which Atlas streams
+        processors trigger alerts and how users are notified.
+      properties:
+        created:
+          type: string
+          format: date-time
+          description: Date and time when MongoDB Cloud created the alert configuration.
+            This parameter expresses its value in the <a href="https://en.wikipedia.org/wiki/ISO_8601"
+            target="_blank" rel="noopener noreferrer">ISO 8601</a> timestamp format
+            in UTC.
+          readOnly: true
+        enabled:
+          type: boolean
+          default: false
+          description: Flag that indicates whether someone enabled this alert configuration
+            for the specified project.
+        eventTypeName:
+          $ref: '#/components/schemas/StreamProcessorEventTypeViewAlertable'
+        groupId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the project
+            that owns this alert configuration.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+          readOnly: true
+        id:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies this alert
+            configuration.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+          readOnly: true
+        links:
+          type: array
+          description: "List of one or more Uniform Resource Locators (URLs) that\
+            \ point to API sub-resources, related API resources, or both. RFC 5988\
+            \ outlines these relationships."
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: '#/components/schemas/Link'
+          readOnly: true
+        matchers:
+          type: array
+          description: List of rules that determine whether MongoDB Cloud checks an
+            object for the alert configuration.
+          items:
+            $ref: '#/components/schemas/StreamsMatcher'
+        notifications:
+          type: array
+          description: List that contains the targets that MongoDB Cloud sends notifications.
+          items:
+            $ref: '#/components/schemas/AlertsNotificationRootForGroup'
+        updated:
+          type: string
+          format: date-time
+          description: Date and time when someone last updated this alert configuration.
+            This parameter expresses its value in the <a href="https://en.wikipedia.org/wiki/ISO_8601"
+            target="_blank" rel="noopener noreferrer">ISO 8601</a> timestamp format
+            in UTC.
+          readOnly: true
+      required:
+      - eventTypeName
+      - notifications
+      title: Stream Processor Alert Configuration
+    StreamProcessorAlertViewForNdsGroup:
+      type: object
+      description: Stream Processor alert notifies about activities on Stream Processor
+        in AtlasStreams.
+      properties:
+        acknowledgedUntil:
+          type: string
+          format: date-time
+          description: |-
+            Date and time until which this alert has been acknowledged. This parameter expresses its value in the <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank" rel="noopener noreferrer">ISO 8601</a> timestamp format in UTC. The resource returns this parameter if a MongoDB User previously acknowledged this alert.
+
+            - To acknowledge this alert forever, set the parameter value to 100 years in the future.
+
+            - To unacknowledge a previously acknowledged alert, set the parameter value to a date in the past.
+        acknowledgementComment:
+          type: string
+          description: Comment that a MongoDB Cloud user submitted when acknowledging
+            the alert.
+          example: Expiration on 3/19.  Silencing for 7days.
+          maxLength: 200
+        acknowledgingUsername:
+          type: string
+          format: email
+          description: MongoDB Cloud username of the person who acknowledged the alert.
+            The response returns this parameter if a MongoDB Cloud user previously
+            acknowledged this alert.
+          readOnly: true
+        alertConfigId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the alert
+            configuration that sets this alert.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+          readOnly: true
+        created:
+          type: string
+          format: date-time
+          description: Date and time when MongoDB Cloud created this alert. This parameter
+            expresses its value in the <a href="https://en.wikipedia.org/wiki/ISO_8601"
+            target="_blank" rel="noopener noreferrer">ISO 8601</a> timestamp format
+            in UTC.
+          readOnly: true
+        eventTypeName:
+          $ref: '#/components/schemas/HostEventTypeViewForNdsGroupAlertable'
+        groupId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the project
+            that owns this alert.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+          readOnly: true
+        id:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies this alert.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+          readOnly: true
+        instanceName:
+          type: string
+          description: The name of the Stream Processing Instance to which this alert
+            applies. The resource returns this parameter for alerts of events impacting
+            Stream Processing Instances.
+          example: foobar
+          readOnly: true
+        lastNotified:
+          type: string
+          format: date-time
+          description: Date and time that any notifications were last sent for this
+            alert. This parameter expresses its value in the <a href="https://en.wikipedia.org/wiki/ISO_8601"
+            target="_blank" rel="noopener noreferrer">ISO 8601</a> timestamp format
+            in UTC. The resource returns this parameter if MongoDB Cloud has sent
+            notifications for this alert.
+          readOnly: true
+        links:
+          type: array
+          description: "List of one or more Uniform Resource Locators (URLs) that\
+            \ point to API sub-resources, related API resources, or both. RFC 5988\
+            \ outlines these relationships."
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: '#/components/schemas/Link'
+          readOnly: true
+        orgId:
+          type: string
+          description: Unique 24-hexadecimal character string that identifies the
+            organization that owns the project to which this alert applies.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+          readOnly: true
+        processorErrorMsg:
+          type: string
+          description: The error message associated with the Stream Processor to which
+            this alert applies.
+          example: "MongoServerError: Failed to start stream processor: (Location77175)\
+            \ Could not connect to the Kafka topic with kafka error code: -195, message:\
+            \ Local: Broker transport failure.: (Location77175)"
+          readOnly: true
+        processorName:
+          type: string
+          description: The name of the Stream Processor to which this alert applies.
+            The resource returns this parameter for alerts of events impacting Stream
+            Processors.
+          example: foobar
+          readOnly: true
+        processorState:
+          type: string
+          description: The state of the Stream Processor to which this alert applies.
+            The resource returns this parameter for alerts of events impacting Stream
+            Processors.
+          example: STARTED
+          readOnly: true
+        resolved:
+          type: string
+          format: date-time
+          description: "Date and time that this alert changed to `\"status\" : \"\
+            CLOSED\"`. This parameter expresses its value in the <a href=\"https://en.wikipedia.org/wiki/ISO_8601\"\
+            \ target=\"_blank\" rel=\"noopener noreferrer\">ISO 8601</a> timestamp\
+            \ format in UTC. The resource returns this parameter once `\"status\"\
+            \ : \"CLOSED\"`."
+          readOnly: true
+        status:
+          type: string
+          description: State of this alert at the time you requested its details.
+          enum:
+          - CANCELLED
+          - CLOSED
+          - OPEN
+          - TRACKING
+          example: OPEN
+          readOnly: true
+        updated:
+          type: string
+          format: date-time
+          description: Date and time when someone last updated this alert. This parameter
+            expresses its value in the <a href="https://en.wikipedia.org/wiki/ISO_8601"
+            target="_blank" rel="noopener noreferrer">ISO 8601</a> timestamp format
+            in UTC.
+          readOnly: true
+      required:
+      - acknowledgedUntil
+      - alertConfigId
+      - created
+      - eventTypeName
+      - id
+      - status
+      - updated
+      title: Stream Processor Alerts
+    StreamProcessorEventTypeViewAlertable:
+      type: string
+      description: Event type that triggers an alert.
+      enum:
+      - STREAM_PROCESSOR_STATE_IS_FAILED
+      example: STREAM_PROCESSOR_STATE_IS_FAILED
+      title: Stream Processor Event Types
+    StreamProcessorEventTypeViewForNdsGroup:
+      type: string
+      description: Unique identifier of event type.
+      enum:
+      - STREAM_PROCESSOR_STATE_IS_FAILED
+      example: STREAM_PROCESSOR_STATE_IS_FAILED
+      title: Stream Processor Event Types
+    StreamProcessorEventViewForNdsGroup:
+      type: object
+      description: Stream Processor event identifies different activities about a
+        stream processor in Atlas Streams.
+      properties:
+        created:
+          type: string
+          format: date-time
+          description: Date and time when this event occurred. This parameter expresses
+            its value in the <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank"
+            rel="noopener noreferrer">ISO 8601</a> timestamp format in UTC.
+          readOnly: true
+        eventTypeName:
+          $ref: '#/components/schemas/StreamProcessorEventTypeViewForNdsGroup'
+        groupId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the project
+            in which the event occurred. The **eventId** identifies the specific event.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+          readOnly: true
+        id:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the event.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+          readOnly: true
+        instanceName:
+          type: string
+          description: Name of the stream processing instance associated with the
+            event.
+          example: foobar
+          readOnly: true
+        links:
+          type: array
+          description: "List of one or more Uniform Resource Locators (URLs) that\
+            \ point to API sub-resources, related API resources, or both. RFC 5988\
+            \ outlines these relationships."
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: '#/components/schemas/Link'
+          readOnly: true
+        orgId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the organization
+            to which these events apply.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+          readOnly: true
+        processorErrorMsg:
+          type: string
+          description: Error message linked to the stream processor associated with
+            the event.
+          example: invalid auth
+          readOnly: true
+        processorName:
+          type: string
+          description: Name of the stream processor associated with the event.
+          example: foobar
+          readOnly: true
+        processorState:
+          type: string
+          description: State of the stream processor associated with the event.
+          example: FAILED
+          readOnly: true
+        raw:
+          $ref: '#/components/schemas/raw'
+      required:
+      - created
+      - eventTypeName
+      - id
+      title: Stream Processor Events
     StreamsClusterConnection:
       type: object
       allOf:
@@ -44786,6 +45123,76 @@ components:
       required:
       - cloudProvider
       - region
+    StreamsEventTypeViewForNdsGroup:
+      type: string
+      description: Unique identifier of event type.
+      enum:
+      - MAX_PROCESSOR_COUNT_REACHED
+      example: MAX_PROCESSOR_COUNT_REACHED
+      title: Streams Event Types
+    StreamsEventViewForNdsGroup:
+      type: object
+      description: Streams event identifies different activities about Atlas Streams.
+      properties:
+        created:
+          type: string
+          format: date-time
+          description: Date and time when this event occurred. This parameter expresses
+            its value in the <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank"
+            rel="noopener noreferrer">ISO 8601</a> timestamp format in UTC.
+          readOnly: true
+        eventTypeName:
+          $ref: '#/components/schemas/StreamsEventTypeViewForNdsGroup'
+        groupId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the project
+            in which the event occurred. The **eventId** identifies the specific event.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+          readOnly: true
+        id:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the event.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+          readOnly: true
+        instanceName:
+          type: string
+          description: Name of the stream processing instance associated with the
+            event.
+          example: foobar
+          readOnly: true
+        links:
+          type: array
+          description: "List of one or more Uniform Resource Locators (URLs) that\
+            \ point to API sub-resources, related API resources, or both. RFC 5988\
+            \ outlines these relationships."
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: '#/components/schemas/Link'
+          readOnly: true
+        orgId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the organization
+            to which these events apply.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+          readOnly: true
+        raw:
+          $ref: '#/components/schemas/raw'
+      required:
+      - created
+      - eventTypeName
+      - id
+      title: Streams Events
     StreamsKafkaAuthentication:
       type: object
       description: "User credentials required to connect to a Kafka Cluster. Includes\
@@ -44864,6 +45271,43 @@ components:
         protocol:
           type: string
           description: Describes the transport type. Can be either PLAINTEXT or SSL.
+    StreamsMatcher:
+      type: object
+      description: Rules to apply when comparing a stream processing instance or stream
+        processor against this alert configuration.
+      properties:
+        fieldName:
+          $ref: '#/components/schemas/StreamsMatcherField'
+        operator:
+          type: string
+          description: "Comparison operator to apply when checking the current metric\
+            \ value against **matcher[n].value**."
+          enum:
+          - EQUALS
+          - CONTAINS
+          - STARTS_WITH
+          - ENDS_WITH
+          - NOT_EQUALS
+          - NOT_CONTAINS
+          - REGEX
+        value:
+          type: string
+          description: Value to match or exceed using the specified **matchers.operator**.
+          example: event-replica-set
+      required:
+      - fieldName
+      - operator
+      - value
+      title: Matchers
+    StreamsMatcherField:
+      type: string
+      description: Name of the parameter in the target object that MongoDB Cloud checks.
+        The parameter must match all rules for MongoDB Cloud to check for alert configurations.
+      enum:
+      - INSTANCE_NAME
+      - PROCESSOR_NAME
+      example: INSTANCE_NAME
+      title: Streams Matcher Fields
     StreamsSampleConnection:
       type: object
       allOf:
