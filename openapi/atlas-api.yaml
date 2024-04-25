@@ -19,7 +19,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 5ac2d1ed493a05f9f4e5e7afb6b966eb080c4773
+  x-xgen-sha: f37d3212e72e54807be6b0c0d1b6c2f47c7b8c83
 servers:
 - url: https://cloud.mongodb.com
 tags:
@@ -24983,7 +24983,6 @@ components:
             $ref: '#/components/schemas/FederatedUser'
       required:
       - domainRestrictionEnabled
-      - identityProviderId
       - orgId
     ControlPlaneIPAddresses:
       type: object
@@ -27464,6 +27463,10 @@ components:
 
             * Query the alert for the notification through the Atlas Administration API.
           example: '****************************a23c'
+        id:
+          type: string
+          description: Integration id.
+          nullable: true
         region:
           type: string
           description: |-
@@ -27520,6 +27523,11 @@ components:
           format: int32
           description: Number of minutes that MongoDB Cloud waits after detecting
             an alert condition before it sends out the first notification.
+        integrationId:
+          type: string
+          description: "The id of the associated integration, the credentials of which\
+            \ to use for requests."
+          example: 32b6e34b3d91647abb20e7b8
         intervalMin:
           type: integer
           format: int32
@@ -27533,7 +27541,7 @@ components:
           description: The notifierId is a system-generated unique identifier assigned
             to each notification method. This is needed when updating third-party
             notifications without requiring explicit authentication credentials.
-          example: 6462742adc47d365036da07c
+          example: 32b6e34b3d91647abb20e7b8
         typeName:
           type: string
           description: Human-readable label that displays the alert notification type.
@@ -29706,7 +29714,7 @@ components:
           description: The notifierId is a system-generated unique identifier assigned
             to each notification method. This is needed when updating third-party
             notifications without requiring explicit authentication credentials.
-          example: 6462742adc47d365036da07c
+          example: 32b6e34b3d91647abb20e7b8
         typeName:
           type: string
           description: Human-readable label that displays the alert notification type.
@@ -32759,7 +32767,7 @@ components:
           description: The notifierId is a system-generated unique identifier assigned
             to each notification method. This is needed when updating third-party
             notifications without requiring explicit authentication credentials.
-          example: 6462742adc47d365036da07c
+          example: 32b6e34b3d91647abb20e7b8
         roles:
           type: array
           description: "List that contains the one or more [organization](https://dochub.mongodb.org/core/atlas-org-roles)\
@@ -33129,6 +33137,11 @@ components:
           format: int32
           description: Number of minutes that MongoDB Cloud waits after detecting
             an alert condition before it sends out the first notification.
+        integrationId:
+          type: string
+          description: "The id of the associated integration, the credentials of which\
+            \ to use for requests."
+          example: 32b6e34b3d91647abb20e7b8
         intervalMin:
           type: integer
           format: int32
@@ -33153,7 +33166,7 @@ components:
           description: The notifierId is a system-generated unique identifier assigned
             to each notification method. This is needed when updating third-party
             notifications without requiring explicit authentication credentials.
-          example: 6462742adc47d365036da07c
+          example: 32b6e34b3d91647abb20e7b8
         roomName:
           type: string
           description: "HipChat API room name to which MongoDB Cloud sends alert notifications.\
@@ -37183,6 +37196,10 @@ components:
       description: Details to integrate one Microsoft Teams account with one MongoDB
         Cloud project.
       properties:
+        id:
+          type: string
+          description: Integration id.
+          nullable: true
         microsoftTeamsWebhookUrl:
           type: string
           description: |-
@@ -37210,6 +37227,11 @@ components:
           format: int32
           description: Number of minutes that MongoDB Cloud waits after detecting
             an alert condition before it sends out the first notification.
+        integrationId:
+          type: string
+          description: "The id of the associated integration, the credentials of which\
+            \ to use for requests."
+          example: 32b6e34b3d91647abb20e7b8
         intervalMin:
           type: integer
           format: int32
@@ -37230,7 +37252,7 @@ components:
           description: The notifierId is a system-generated unique identifier assigned
             to each notification method. This is needed when updating third-party
             notifications without requiring explicit authentication credentials.
-          example: 6462742adc47d365036da07c
+          example: 32b6e34b3d91647abb20e7b8
         typeName:
           type: string
           description: Human-readable label that displays the alert notification type.
@@ -37922,7 +37944,7 @@ components:
           description: The notifierId is a system-generated unique identifier assigned
             to each notification method. This is needed when updating third-party
             notifications without requiring explicit authentication credentials.
-          example: 6462742adc47d365036da07c
+          example: 32b6e34b3d91647abb20e7b8
         severity:
           type: string
           description: Degree of seriousness given to this notification.
@@ -38426,6 +38448,10 @@ components:
           maxLength: 40
           minLength: 40
           pattern: "^([0-9a-f]){40}$"
+        id:
+          type: string
+          description: Integration id.
+          nullable: true
         licenseKey:
           type: string
           description: |-
@@ -38875,6 +38901,10 @@ components:
 
             * Query the alert for the notification through the Atlas Administration API.
           example: '********************************a111'
+        id:
+          type: string
+          description: Integration id.
+          nullable: true
         region:
           type: string
           default: US
@@ -38903,6 +38933,11 @@ components:
           format: int32
           description: Number of minutes that MongoDB Cloud waits after detecting
             an alert condition before it sends out the first notification.
+        integrationId:
+          type: string
+          description: "The id of the associated integration, the credentials of which\
+            \ to use for requests."
+          example: 32b6e34b3d91647abb20e7b8
         intervalMin:
           type: integer
           format: int32
@@ -38916,7 +38951,7 @@ components:
           description: The notifierId is a system-generated unique identifier assigned
             to each notification method. This is needed when updating third-party
             notifications without requiring explicit authentication credentials.
-          example: 6462742adc47d365036da07c
+          example: 32b6e34b3d91647abb20e7b8
         opsGenieApiKey:
           type: string
           description: |-
@@ -39233,7 +39268,7 @@ components:
           description: The notifierId is a system-generated unique identifier assigned
             to each notification method. This is needed when updating third-party
             notifications without requiring explicit authentication credentials.
-          example: 6462742adc47d365036da07c
+          example: 32b6e34b3d91647abb20e7b8
         roles:
           type: array
           description: "List that contains the one or more [organization](https://dochub.mongodb.org/core/atlas-org-roles)\
@@ -39715,6 +39750,10 @@ components:
       description: Details to integrate one PagerDuty account with one MongoDB Cloud
         project.
       properties:
+        id:
+          type: string
+          description: Integration id.
+          nullable: true
         region:
           type: string
           description: PagerDuty region that indicates the API Uniform Resource Locator
@@ -39753,6 +39792,11 @@ components:
           format: int32
           description: Number of minutes that MongoDB Cloud waits after detecting
             an alert condition before it sends out the first notification.
+        integrationId:
+          type: string
+          description: "The id of the associated integration, the credentials of which\
+            \ to use for requests."
+          example: 32b6e34b3d91647abb20e7b8
         intervalMin:
           type: integer
           format: int32
@@ -39766,7 +39810,7 @@ components:
           description: The notifierId is a system-generated unique identifier assigned
             to each notification method. This is needed when updating third-party
             notifications without requiring explicit authentication credentials.
-          example: 6462742adc47d365036da07c
+          example: 32b6e34b3d91647abb20e7b8
         region:
           type: string
           default: US
@@ -41670,6 +41714,10 @@ components:
           type: boolean
           description: Flag that indicates whether someone has activated the Prometheus
             integration.
+        id:
+          type: string
+          description: Integration id.
+          nullable: true
         password:
           type: string
           description: Password needed to allow MongoDB Cloud to access your Prometheus
@@ -42986,7 +43034,7 @@ components:
           description: The notifierId is a system-generated unique identifier assigned
             to each notification method. This is needed when updating third-party
             notifications without requiring explicit authentication credentials.
-          example: 6462742adc47d365036da07c
+          example: 32b6e34b3d91647abb20e7b8
         typeName:
           type: string
           description: Human-readable label that displays the alert notification type.
@@ -44567,6 +44615,10 @@ components:
           maxLength: 80
           minLength: 1
           nullable: true
+        id:
+          type: string
+          description: Integration id.
+          nullable: true
         teamName:
           type: string
           description: Human-readable label that identifies your Slack team. Set this
@@ -44611,6 +44663,11 @@ components:
           format: int32
           description: Number of minutes that MongoDB Cloud waits after detecting
             an alert condition before it sends out the first notification.
+        integrationId:
+          type: string
+          description: "The id of the associated integration, the credentials of which\
+            \ to use for requests."
+          example: 32b6e34b3d91647abb20e7b8
         intervalMin:
           type: integer
           format: int32
@@ -44624,7 +44681,7 @@ components:
           description: The notifierId is a system-generated unique identifier assigned
             to each notification method. This is needed when updating third-party
             notifications without requiring explicit authentication credentials.
-          example: 6462742adc47d365036da07c
+          example: 32b6e34b3d91647abb20e7b8
         typeName:
           type: string
           description: Human-readable label that displays the alert notification type.
@@ -45400,7 +45457,7 @@ components:
           description: The notifierId is a system-generated unique identifier assigned
             to each notification method. This is needed when updating third-party
             notifications without requiring explicit authentication credentials.
-          example: 6462742adc47d365036da07c
+          example: 32b6e34b3d91647abb20e7b8
         typeName:
           type: string
           description: Human-readable label that displays the alert notification type.
@@ -45799,7 +45856,7 @@ components:
           description: The notifierId is a system-generated unique identifier assigned
             to each notification method. This is needed when updating third-party
             notifications without requiring explicit authentication credentials.
-          example: 6462742adc47d365036da07c
+          example: 32b6e34b3d91647abb20e7b8
         smsEnabled:
           type: boolean
           description: |-
@@ -46079,6 +46136,10 @@ components:
           WEBHOOK: '#/components/schemas/Webhook'
         propertyName: type
       properties:
+        id:
+          type: string
+          description: Integration id.
+          nullable: true
         type:
           type: string
           description: Integration type
@@ -47055,7 +47116,7 @@ components:
           description: The notifierId is a system-generated unique identifier assigned
             to each notification method. This is needed when updating third-party
             notifications without requiring explicit authentication credentials.
-          example: 6462742adc47d365036da07c
+          example: 32b6e34b3d91647abb20e7b8
         smsEnabled:
           type: boolean
           description: |-
@@ -47184,6 +47245,10 @@ components:
 
             * Query the alert for the notification through the Atlas Administration API.
           example: '********************************9abc'
+        id:
+          type: string
+          description: Integration id.
+          nullable: true
         routingKey:
           type: string
           description: Routing key associated with your Splunk On-Call account.
@@ -47208,6 +47273,11 @@ components:
           format: int32
           description: Number of minutes that MongoDB Cloud waits after detecting
             an alert condition before it sends out the first notification.
+        integrationId:
+          type: string
+          description: "The id of the associated integration, the credentials of which\
+            \ to use for requests."
+          example: 32b6e34b3d91647abb20e7b8
         intervalMin:
           type: integer
           format: int32
@@ -47221,7 +47291,7 @@ components:
           description: The notifierId is a system-generated unique identifier assigned
             to each notification method. This is needed when updating third-party
             notifications without requiring explicit authentication credentials.
-          example: 6462742adc47d365036da07c
+          example: 32b6e34b3d91647abb20e7b8
         typeName:
           type: string
           description: Human-readable label that displays the alert notification type.
@@ -47253,6 +47323,10 @@ components:
       type: object
       description: Details to integrate one webhook with one MongoDB Cloud project.
       properties:
+        id:
+          type: string
+          description: Integration id.
+          nullable: true
         secret:
           type: string
           description: |-
@@ -47287,6 +47361,11 @@ components:
           format: int32
           description: Number of minutes that MongoDB Cloud waits after detecting
             an alert condition before it sends out the first notification.
+        integrationId:
+          type: string
+          description: "The id of the associated integration, the credentials of which\
+            \ to use for requests."
+          example: 32b6e34b3d91647abb20e7b8
         intervalMin:
           type: integer
           format: int32
@@ -47300,7 +47379,7 @@ components:
           description: The notifierId is a system-generated unique identifier assigned
             to each notification method. This is needed when updating third-party
             notifications without requiring explicit authentication credentials.
-          example: 6462742adc47d365036da07c
+          example: 32b6e34b3d91647abb20e7b8
         typeName:
           type: string
           description: Human-readable label that displays the alert notification type.

@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **DatadogApiKey** | Pointer to **string** | Datadog API Key that MongoDB Cloud needs to send alert notifications to Datadog. You can find this API key in the Datadog dashboard. The resource requires this parameter when &#x60;\&quot;notifications.[n].typeName\&quot; : \&quot;DATADOG\&quot;&#x60;.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API. | [optional] 
 **DatadogRegion** | Pointer to **string** | Datadog region that indicates which API Uniform Resource Locator (URL) to use. The resource requires this parameter when &#x60;\&quot;notifications.[n].typeName\&quot; : \&quot;DATADOG\&quot;&#x60;.  To learn more about Datadog&#39;s regions, see &lt;a href&#x3D;\&quot;https://docs.datadoghq.com/getting_started/site/\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;Datadog Sites&lt;/a&gt;. | [optional] [default to "US"]
 **DelayMin** | Pointer to **int** | Number of minutes that MongoDB Cloud waits after detecting an alert condition before it sends out the first notification. | [optional] 
+**IntegrationId** | Pointer to **string** | The id of the associated integration, the credentials of which to use for requests. | [optional] 
 **IntervalMin** | Pointer to **int** | Number of minutes to wait between successive notifications. MongoDB Cloud sends notifications until someone acknowledges the unacknowledged alert.  PagerDuty, VictorOps, and OpsGenie notifications don&#39;t return this element. Configure and manage the notification interval within each of those services. | [optional] 
 **NotifierId** | Pointer to **string** | The notifierId is a system-generated unique identifier assigned to each notification method. This is needed when updating third-party notifications without requiring explicit authentication credentials. | [optional] 
 **TypeName** | Pointer to **string** | Human-readable label that displays the alert notification type. | [optional] 
@@ -123,6 +124,30 @@ SetDelayMin sets DelayMin field to given value.
 `func (o *AlertsNotificationRootForGroup) HasDelayMin() bool`
 
 HasDelayMin returns a boolean if a field has been set.
+### GetIntegrationId
+
+`func (o *AlertsNotificationRootForGroup) GetIntegrationId() string`
+
+GetIntegrationId returns the IntegrationId field if non-nil, zero value otherwise.
+
+### GetIntegrationIdOk
+
+`func (o *AlertsNotificationRootForGroup) GetIntegrationIdOk() (*string, bool)`
+
+GetIntegrationIdOk returns a tuple with the IntegrationId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIntegrationId
+
+`func (o *AlertsNotificationRootForGroup) SetIntegrationId(v string)`
+
+SetIntegrationId sets IntegrationId field to given value.
+
+### HasIntegrationId
+
+`func (o *AlertsNotificationRootForGroup) HasIntegrationId() bool`
+
+HasIntegrationId returns a boolean if a field has been set.
 ### GetIntervalMin
 
 `func (o *AlertsNotificationRootForGroup) GetIntervalMin() int`

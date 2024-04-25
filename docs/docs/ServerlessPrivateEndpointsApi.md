@@ -34,7 +34,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115011/admin"
+    "go.mongodb.org/atlas-sdk/v20231115012/admin"
 )
 
 func main() {
@@ -117,7 +117,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115011/admin"
+    "go.mongodb.org/atlas-sdk/v20231115012/admin"
 )
 
 func main() {
@@ -201,7 +201,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115011/admin"
+    "go.mongodb.org/atlas-sdk/v20231115012/admin"
 )
 
 func main() {
@@ -280,7 +280,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115011/admin"
+    "go.mongodb.org/atlas-sdk/v20231115012/admin"
 )
 
 func main() {
@@ -361,7 +361,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115011/admin"
+    "go.mongodb.org/atlas-sdk/v20231115012/admin"
 )
 
 func main() {

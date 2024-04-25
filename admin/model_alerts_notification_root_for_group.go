@@ -14,6 +14,8 @@ type AlertsNotificationRootForGroup struct {
 	DatadogRegion *string `json:"datadogRegion,omitempty"`
 	// Number of minutes that MongoDB Cloud waits after detecting an alert condition before it sends out the first notification.
 	DelayMin *int `json:"delayMin,omitempty"`
+	// The id of the associated integration, the credentials of which to use for requests.
+	IntegrationId *string `json:"integrationId,omitempty"`
 	// Number of minutes to wait between successive notifications. MongoDB Cloud sends notifications until someone acknowledges the unacknowledged alert.  PagerDuty, VictorOps, and OpsGenie notifications don't return this element. Configure and manage the notification interval within each of those services.
 	IntervalMin *int `json:"intervalMin,omitempty"`
 	// The notifierId is a system-generated unique identifier assigned to each notification method. This is needed when updating third-party notifications without requiring explicit authentication credentials.
@@ -190,6 +192,39 @@ func (o *AlertsNotificationRootForGroup) HasDelayMin() bool {
 // SetDelayMin gets a reference to the given int and assigns it to the DelayMin field.
 func (o *AlertsNotificationRootForGroup) SetDelayMin(v int) {
 	o.DelayMin = &v
+}
+
+// GetIntegrationId returns the IntegrationId field value if set, zero value otherwise
+func (o *AlertsNotificationRootForGroup) GetIntegrationId() string {
+	if o == nil || IsNil(o.IntegrationId) {
+		var ret string
+		return ret
+	}
+	return *o.IntegrationId
+}
+
+// GetIntegrationIdOk returns a tuple with the IntegrationId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AlertsNotificationRootForGroup) GetIntegrationIdOk() (*string, bool) {
+	if o == nil || IsNil(o.IntegrationId) {
+		return nil, false
+	}
+
+	return o.IntegrationId, true
+}
+
+// HasIntegrationId returns a boolean if a field has been set.
+func (o *AlertsNotificationRootForGroup) HasIntegrationId() bool {
+	if o != nil && !IsNil(o.IntegrationId) {
+		return true
+	}
+
+	return false
+}
+
+// SetIntegrationId gets a reference to the given string and assigns it to the IntegrationId field.
+func (o *AlertsNotificationRootForGroup) SetIntegrationId(v string) {
+	o.IntegrationId = &v
 }
 
 // GetIntervalMin returns the IntervalMin field value if set, zero value otherwise
@@ -1001,6 +1036,9 @@ func (o AlertsNotificationRootForGroup) ToMap() (map[string]interface{}, error) 
 	}
 	if !IsNil(o.DelayMin) {
 		toSerialize["delayMin"] = o.DelayMin
+	}
+	if !IsNil(o.IntegrationId) {
+		toSerialize["integrationId"] = o.IntegrationId
 	}
 	if !IsNil(o.IntervalMin) {
 		toSerialize["intervalMin"] = o.IntervalMin
