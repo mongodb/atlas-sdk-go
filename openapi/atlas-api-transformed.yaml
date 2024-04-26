@@ -24,7 +24,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: f37d3212e72e54807be6b0c0d1b6c2f47c7b8c83
+  x-xgen-sha: 81ae033a0e918a6c75ad4758f8f4d779816a2c26
 servers:
   - url: https://cloud.mongodb.com
 tags:
@@ -7543,21 +7543,6 @@ paths:
                     - name: myCluster
                       type: CLUSTER
                   username: arn:aws:iam::358363220050:user/mongodb-aws-iam-auth-test-user
-              Federated Authentication:
-                description: Federated Authentication
-                value:
-                  databaseName: admin
-                  groupId: 32b6e34b3d91647abb20e7b8
-                  oidcAuthType: IDP_GROUP
-                  roles:
-                    - databaseName: sales
-                      roleName: readWrite
-                    - databaseName: marketing
-                      roleName: read
-                  scopes:
-                    - name: myCluster
-                      type: CLUSTER
-                  username: 5dd7496c7a3e5a648454341c/sales
               LDAP Authentication:
                 description: LDAP Authentication
                 value:
@@ -7573,6 +7558,36 @@ paths:
                     - name: myCluster
                       type: CLUSTER
                   username: CN=marketing,OU=groups,DC=example,DC=com
+              OIDC Workforce Federated Authentication:
+                description: OIDC Workforce Federated Authentication
+                value:
+                  databaseName: admin
+                  groupId: 32b6e34b3d91647abb20e7b8
+                  oidcAuthType: IDP_GROUP
+                  roles:
+                    - databaseName: sales
+                      roleName: readWrite
+                    - databaseName: marketing
+                      roleName: read
+                  scopes:
+                    - name: myCluster
+                      type: CLUSTER
+                  username: 5dd7496c7a3e5a648454341c/sales
+              OIDC Workload Federated Authentication:
+                description: OIDC Workload Federated Authentication
+                value:
+                  databaseName: $external
+                  groupId: 32b6e34b3d91647abb20e7b8
+                  oidcAuthType: USER
+                  roles:
+                    - databaseName: sales
+                      roleName: readWrite
+                    - databaseName: marketing
+                      roleName: read
+                  scopes:
+                    - name: myCluster
+                      type: CLUSTER
+                  username: 5dd7496c7a3e5a648454341c/sales
               SCRAM-SHA Authentication:
                 description: SCRAM-SHA Authentication
                 value:
@@ -7639,12 +7654,12 @@ paths:
       operationId: deleteDatabaseUser
       parameters:
         - $ref: "#/components/parameters/groupId"
-        - description: Human-readable label that identifies the database against which the
-            database user authenticates. Database users must provide both a
-            username and authentication database to log into MongoDB. If the
-            user authenticates with AWS IAM, x.509, or LDAP, this value should
-            be `$external`. If the user authenticates with SCRAM-SHA or OIDC,
-            this value should be `admin`.
+        - description: The database against which the database user authenticates.
+            Database users must provide both a username and authentication
+            database to log into MongoDB. If the user authenticates with AWS
+            IAM, x.509, LDAP, or OIDC Workload this value should be `$external`.
+            If the user authenticates with SCRAM-SHA or OIDC Workforce, this
+            value should be `admin`.
           in: path
           name: databaseName
           required: true
@@ -7660,9 +7675,9 @@ paths:
 
             |---|---|---|---|
 
-            | AWS IAM | awsType | ROLE | <abbr title="Amazon Resource Name">ARN</abbr> |
+            | AWS IAM | awsIAMType | ROLE | <abbr title="Amazon Resource Name">ARN</abbr> |
 
-            | AWS IAM | awsType | USER | <abbr title="Amazon Resource Name">ARN</abbr> |
+            | AWS IAM | awsIAMType | USER | <abbr title="Amazon Resource Name">ARN</abbr> |
 
             | x.509 | x509Type | CUSTOMER | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name |
 
@@ -7672,9 +7687,11 @@ paths:
 
             | LDAP | ldapAuthType | GROUP | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name |
 
-            | OIDC | oidcAuthType | IDP_GROUP | Atlas OIDC IdP ID (found in federation settings), followed by a '/', followed by the IdP group name |
+            | OIDC Workforce | oidcAuthType | IDP_GROUP | Atlas OIDC IdP ID (found in federation settings), followed by a '/', followed by the IdP group name |
 
-            | SCRAM-SHA | awsType, x509Type, ldapAuthType, oidcAuthType | NONE | Alphanumeric string |
+            | OIDC Workload | oidcAuthType | USER | Atlas OIDC IdP ID (found in federation settings), followed by a '/', followed by the IdP user name |
+
+            | SCRAM-SHA | awsIAMType, x509Type, ldapAuthType, oidcAuthType | NONE | Alphanumeric string |
           in: path
           name: username
           required: true
@@ -7713,12 +7730,12 @@ paths:
       operationId: getDatabaseUser
       parameters:
         - $ref: "#/components/parameters/groupId"
-        - description: Human-readable label that identifies the database against which the
-            database user authenticates. Database users must provide both a
-            username and authentication database to log into MongoDB. If the
-            user authenticates with AWS IAM, x.509, or LDAP, this value should
-            be `$external`. If the user authenticates with SCRAM-SHA or OIDC,
-            this value should be `admin`.
+        - description: The database against which the database user authenticates.
+            Database users must provide both a username and authentication
+            database to log into MongoDB. If the user authenticates with AWS
+            IAM, x.509, LDAP, or OIDC Workload this value should be `$external`.
+            If the user authenticates with SCRAM-SHA or OIDC Workforce, this
+            value should be `admin`.
           in: path
           name: databaseName
           required: true
@@ -7734,9 +7751,9 @@ paths:
 
             |---|---|---|---|
 
-            | AWS IAM | awsType | ROLE | <abbr title="Amazon Resource Name">ARN</abbr> |
+            | AWS IAM | awsIAMType | ROLE | <abbr title="Amazon Resource Name">ARN</abbr> |
 
-            | AWS IAM | awsType | USER | <abbr title="Amazon Resource Name">ARN</abbr> |
+            | AWS IAM | awsIAMType | USER | <abbr title="Amazon Resource Name">ARN</abbr> |
 
             | x.509 | x509Type | CUSTOMER | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name |
 
@@ -7746,9 +7763,11 @@ paths:
 
             | LDAP | ldapAuthType | GROUP | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name |
 
-            | OIDC | oidcAuthType | IDP_GROUP | Atlas OIDC IdP ID (found in federation settings), followed by a '/', followed by the IdP group name |
+            | OIDC Workforce | oidcAuthType | IDP_GROUP | Atlas OIDC IdP ID (found in federation settings), followed by a '/', followed by the IdP group name |
 
-            | SCRAM-SHA | awsType, x509Type, ldapAuthType, oidcAuthType | NONE | Alphanumeric string |
+            | OIDC Workload | oidcAuthType | USER | Atlas OIDC IdP ID (found in federation settings), followed by a '/', followed by the IdP user name |
+
+            | SCRAM-SHA | awsIAMType, x509Type, ldapAuthType, oidcAuthType | NONE | Alphanumeric string |
           in: path
           name: username
           required: true
@@ -7785,12 +7804,12 @@ paths:
       operationId: updateDatabaseUser
       parameters:
         - $ref: "#/components/parameters/groupId"
-        - description: Human-readable label that identifies the database against which the
-            database user authenticates. Database users must provide both a
-            username and authentication database to log into MongoDB. If the
-            user authenticates with AWS IAM, x.509, or LDAP, this value should
-            be `$external`. If the user authenticates with SCRAM-SHA or OIDC,
-            this value should be `admin`.
+        - description: The database against which the database user authenticates.
+            Database users must provide both a username and authentication
+            database to log into MongoDB. If the user authenticates with AWS
+            IAM, x.509, LDAP, or OIDC Workload this value should be `$external`.
+            If the user authenticates with SCRAM-SHA or OIDC Workforce, this
+            value should be `admin`.
           in: path
           name: databaseName
           required: true
@@ -7806,9 +7825,9 @@ paths:
 
             |---|---|---|---|
 
-            | AWS IAM | awsType | ROLE | <abbr title="Amazon Resource Name">ARN</abbr> |
+            | AWS IAM | awsIAMType | ROLE | <abbr title="Amazon Resource Name">ARN</abbr> |
 
-            | AWS IAM | awsType | USER | <abbr title="Amazon Resource Name">ARN</abbr> |
+            | AWS IAM | awsIAMType | USER | <abbr title="Amazon Resource Name">ARN</abbr> |
 
             | x.509 | x509Type | CUSTOMER | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name |
 
@@ -7818,9 +7837,11 @@ paths:
 
             | LDAP | ldapAuthType | GROUP | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name |
 
-            | OIDC | oidcAuthType | IDP_GROUP | Atlas OIDC IdP ID (found in federation settings), followed by a '/', followed by the IdP group name |
+            | OIDC Workforce | oidcAuthType | IDP_GROUP | Atlas OIDC IdP ID (found in federation settings), followed by a '/', followed by the IdP group name |
 
-            | SCRAM-SHA | awsType, x509Type, ldapAuthType, oidcAuthType | NONE | Alphanumeric string |
+            | OIDC Workload | oidcAuthType | USER | Atlas OIDC IdP ID (found in federation settings), followed by a '/', followed by the IdP user name |
+
+            | SCRAM-SHA | awsIAMType, x509Type, ldapAuthType, oidcAuthType | NONE | Alphanumeric string |
           in: path
           name: username
           required: true
@@ -19148,9 +19169,12 @@ components:
         databaseName:
           type: string
           default: admin
-          description: Database against which the database user authenticates. Database
-            users must provide both a username and authentication database to
-            log into MongoDB.
+          description: The database against which the database user authenticates.
+            Database users must provide both a username and authentication
+            database to log into MongoDB. If the user authenticates with AWS
+            IAM, x.509, LDAP, or OIDC Workload this value should be `$external`.
+            If the user authenticates with SCRAM-SHA or OIDC Workforce, this
+            value should be `admin`.
         deleteAfterDate:
           type: string
           format: date-time
@@ -19195,9 +19219,10 @@ components:
           type: string
           default: NONE
           description: Human-readable label that indicates whether the new database user
-            authenticates with OIDC federated authentication. To create a
-            federated authentication user, specify the value of IDP_GROUP for
-            this field.
+            or group authenticates with OIDC federated authentication. To create
+            a federated authentication user, specify the value of USER in this
+            field. To create a federated authentication group, specify the value
+            of IDP_GROUP in this field.
         password:
           type: string
           description: Alphanumeric string that authenticates this database user against
@@ -19236,9 +19261,9 @@ components:
 
             |---|---|---|---|
 
-            | AWS IAM | awsType | ROLE | <abbr title="Amazon Resource Name">ARN</abbr> |
+            | AWS IAM | awsIAMType | ROLE | <abbr title="Amazon Resource Name">ARN</abbr> |
 
-            | AWS IAM | awsType | USER | <abbr title="Amazon Resource Name">ARN</abbr> |
+            | AWS IAM | awsIAMType | USER | <abbr title="Amazon Resource Name">ARN</abbr> |
 
             | x.509 | x509Type | CUSTOMER | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name |
 
@@ -19248,9 +19273,11 @@ components:
 
             | LDAP | ldapAuthType | GROUP | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name |
 
-            | OIDC | oidcAuthType | IDP_GROUP | Atlas OIDC IdP ID (found in federation settings), followed by a '/', followed by the IdP group name |
+            | OIDC Workforce | oidcAuthType | IDP_GROUP | Atlas OIDC IdP ID (found in federation settings), followed by a '/', followed by the IdP group name |
 
-            | SCRAM-SHA | awsType, x509Type, ldapAuthType, oidcAuthType | NONE | Alphanumeric string |
+            | OIDC Workload | oidcAuthType | USER | Atlas OIDC IdP ID (found in federation settings), followed by a '/', followed by the IdP user name |
+
+            | SCRAM-SHA | awsIAMType, x509Type, ldapAuthType, oidcAuthType | NONE | Alphanumeric string |
           maxLength: 1024
         x509Type:
           type: string
