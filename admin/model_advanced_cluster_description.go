@@ -26,10 +26,12 @@ type AdvancedClusterDescription struct {
 	DiskWarmingMode *string `json:"diskWarmingMode,omitempty"`
 	// Cloud service provider that manages your customer keys to provide an additional layer of encryption at rest for the cluster. To enable customer key management for encryption at rest, the cluster **replicationSpecs[n].regionConfigs[m].{type}Specs.instanceSize** setting must be `M10` or higher and `\"backupEnabled\" : false` or omitted entirely.
 	EncryptionAtRestProvider *string `json:"encryptionAtRestProvider,omitempty"`
+	// Set this field to configure the Sharding Management Mode when creating a new Global Cluster.  When set to false, the management mode is set to Atlas-Managed Sharding. This mode fully manages the sharding of your Global Cluster and is built to provide a seamless deployment experience.  When set to true, the management mode is set to Self-Managed Sharding. This mode leaves the management of shards in your hands and is built to provide an advanced and flexible deployment experience.  This setting cannot be changed once the cluster is deployed.
+	GlobalClusterSelfManagedSharding *bool `json:"globalClusterSelfManagedSharding,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the project.
 	// Read only field.
 	GroupId *string `json:"groupId,omitempty"`
-	// Unique 24-hexadecimal digit string that identifies the replication object for a zone in a Global Cluster. If you include existing zones in the request, you must specify this parameter. If you add a new zone to an existing Global Cluster, you may specify this parameter. The request deletes any existing zones in a Global Cluster that you exclude from the request.
+	// Unique 24-hexadecimal digit string that identifies the cluster.
 	// Read only field.
 	Id *string `json:"id,omitempty"`
 	// Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster. The MongoDB Cloud console doesn't display your labels.  Cluster labels are deprecated and will be removed in a future release. We strongly recommend that you use [resource tags](https://dochub.mongodb.org/core/add-cluster-tag-atlas) instead.
@@ -400,6 +402,39 @@ func (o *AdvancedClusterDescription) HasEncryptionAtRestProvider() bool {
 // SetEncryptionAtRestProvider gets a reference to the given string and assigns it to the EncryptionAtRestProvider field.
 func (o *AdvancedClusterDescription) SetEncryptionAtRestProvider(v string) {
 	o.EncryptionAtRestProvider = &v
+}
+
+// GetGlobalClusterSelfManagedSharding returns the GlobalClusterSelfManagedSharding field value if set, zero value otherwise
+func (o *AdvancedClusterDescription) GetGlobalClusterSelfManagedSharding() bool {
+	if o == nil || IsNil(o.GlobalClusterSelfManagedSharding) {
+		var ret bool
+		return ret
+	}
+	return *o.GlobalClusterSelfManagedSharding
+}
+
+// GetGlobalClusterSelfManagedShardingOk returns a tuple with the GlobalClusterSelfManagedSharding field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdvancedClusterDescription) GetGlobalClusterSelfManagedShardingOk() (*bool, bool) {
+	if o == nil || IsNil(o.GlobalClusterSelfManagedSharding) {
+		return nil, false
+	}
+
+	return o.GlobalClusterSelfManagedSharding, true
+}
+
+// HasGlobalClusterSelfManagedSharding returns a boolean if a field has been set.
+func (o *AdvancedClusterDescription) HasGlobalClusterSelfManagedSharding() bool {
+	if o != nil && !IsNil(o.GlobalClusterSelfManagedSharding) {
+		return true
+	}
+
+	return false
+}
+
+// SetGlobalClusterSelfManagedSharding gets a reference to the given bool and assigns it to the GlobalClusterSelfManagedSharding field.
+func (o *AdvancedClusterDescription) SetGlobalClusterSelfManagedSharding(v bool) {
+	o.GlobalClusterSelfManagedSharding = &v
 }
 
 // GetGroupId returns the GroupId field value if set, zero value otherwise
@@ -932,6 +967,9 @@ func (o AdvancedClusterDescription) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.EncryptionAtRestProvider) {
 		toSerialize["encryptionAtRestProvider"] = o.EncryptionAtRestProvider
+	}
+	if !IsNil(o.GlobalClusterSelfManagedSharding) {
+		toSerialize["globalClusterSelfManagedSharding"] = o.GlobalClusterSelfManagedSharding
 	}
 	if !IsNil(o.Labels) {
 		toSerialize["labels"] = o.Labels

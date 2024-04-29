@@ -9,7 +9,7 @@ import (
 
 // BillingInvoice struct for BillingInvoice
 type BillingInvoice struct {
-	// Sum of services that the specified organization consumed in the period covered in this invoice. This parameter expresses its value in cents (100ths of one US Dollar) and calculates its value as **subtotalCents** + **salesTaxCents** - **startingBalanceCents**.
+	// Sum of services that the specified organization consumed in the period covered in this invoice. This parameter expresses its value in cents (100ths of one US Dollar).
 	// Read only field.
 	AmountBilledCents *int64 `json:"amountBilledCents,omitempty"`
 	// Sum that the specified organization paid toward this invoice. This parameter expresses its value in cents (100ths of one US Dollar).

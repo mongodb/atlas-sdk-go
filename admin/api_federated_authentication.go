@@ -15,7 +15,7 @@ import (
 type FederatedAuthenticationApi interface {
 
 	/*
-		CreateIdentityProvider Create one identity provider
+		CreateIdentityProvider Create One Identity Provider
 
 		[experimental] Creates one identity provider within the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
 
@@ -27,7 +27,7 @@ type FederatedAuthenticationApi interface {
 	*/
 	CreateIdentityProvider(ctx context.Context, federationSettingsId string, federationOidcIdentityProviderUpdate *FederationOidcIdentityProviderUpdate) CreateIdentityProviderApiRequest
 	/*
-		CreateIdentityProvider Create one identity provider
+		CreateIdentityProvider Create One Identity Provider
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -64,7 +64,7 @@ type FederatedAuthenticationApi interface {
 	CreateRoleMappingExecute(r CreateRoleMappingApiRequest) (*AuthFederationRoleMapping, *http.Response, error)
 
 	/*
-		DeleteFederationApp Delete the federation settings instance.
+		DeleteFederationApp Delete One Federation Settings Instance
 
 		[experimental] Deletes the federation settings instance and all associated data, including identity providers and domains. To use this resource, the requesting API Key must have the Organization Owner role in the last remaining connected organization. **Note**: requests to this resource will fail if there is more than one connected organization in the federation.
 
@@ -74,7 +74,7 @@ type FederatedAuthenticationApi interface {
 	*/
 	DeleteFederationApp(ctx context.Context, federationSettingsId string) DeleteFederationAppApiRequest
 	/*
-		DeleteFederationApp Delete the federation settings instance.
+		DeleteFederationApp Delete One Federation Settings Instance
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -87,7 +87,7 @@ type FederatedAuthenticationApi interface {
 	DeleteFederationAppExecute(r DeleteFederationAppApiRequest) (*http.Response, error)
 
 	/*
-		DeleteIdentityProvider Delete the identity provider.
+		DeleteIdentityProvider Delete One Identity Provider
 
 		[experimental] Deletes one identity provider in the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
 
@@ -100,7 +100,7 @@ type FederatedAuthenticationApi interface {
 	*/
 	DeleteIdentityProvider(ctx context.Context, federationSettingsId string, identityProviderId string) DeleteIdentityProviderApiRequest
 	/*
-		DeleteIdentityProvider Delete the identity provider.
+		DeleteIdentityProvider Delete One Identity Provider
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -185,7 +185,7 @@ type FederatedAuthenticationApi interface {
 	GetFederationSettingsExecute(r GetFederationSettingsApiRequest) (*OrgFederationSettings, *http.Response, error)
 
 	/*
-		GetIdentityProvider Return one identity provider from the specified federation by id.
+		GetIdentityProvider Return One Identity Provider by ID
 
 		[experimental] Returns one identity provider in the specified federation by the identity provider's id. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations. Deprecated versions: v2-{2023-01-01}
 
@@ -196,7 +196,7 @@ type FederatedAuthenticationApi interface {
 	*/
 	GetIdentityProvider(ctx context.Context, federationSettingsId string, identityProviderId string) GetIdentityProviderApiRequest
 	/*
-		GetIdentityProvider Return one identity provider from the specified federation by id.
+		GetIdentityProvider Return One Identity Provider by ID
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -209,7 +209,7 @@ type FederatedAuthenticationApi interface {
 	GetIdentityProviderExecute(r GetIdentityProviderApiRequest) (*FederationIdentityProvider, *http.Response, error)
 
 	/*
-		GetIdentityProviderMetadata Return the metadata of one identity provider in the specified federation.
+		GetIdentityProviderMetadata Return the Metadata of One Identity Provider
 
 		[experimental] Returns the metadata of one identity provider in the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
 
@@ -220,7 +220,7 @@ type FederatedAuthenticationApi interface {
 	*/
 	GetIdentityProviderMetadata(ctx context.Context, federationSettingsId string, identityProviderId string) GetIdentityProviderMetadataApiRequest
 	/*
-		GetIdentityProviderMetadata Return the metadata of one identity provider in the specified federation.
+		GetIdentityProviderMetadata Return the Metadata of One Identity Provider
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -258,7 +258,7 @@ type FederatedAuthenticationApi interface {
 	GetRoleMappingExecute(r GetRoleMappingApiRequest) (*AuthFederationRoleMapping, *http.Response, error)
 
 	/*
-		ListConnectedOrgConfigs Return All Connected Org Configs from the Federation
+		ListConnectedOrgConfigs Return All Connected Org Configs from One Federation
 
 		[experimental] Returns all connected org configs in the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected orgs.
 
@@ -268,7 +268,7 @@ type FederatedAuthenticationApi interface {
 	*/
 	ListConnectedOrgConfigs(ctx context.Context, federationSettingsId string) ListConnectedOrgConfigsApiRequest
 	/*
-		ListConnectedOrgConfigs Return All Connected Org Configs from the Federation
+		ListConnectedOrgConfigs Return All Connected Org Configs from One Federation
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -281,7 +281,7 @@ type FederatedAuthenticationApi interface {
 	ListConnectedOrgConfigsExecute(r ListConnectedOrgConfigsApiRequest) ([]ConnectedOrgConfig, *http.Response, error)
 
 	/*
-		ListIdentityProviders Return all identity providers from the specified federation.
+		ListIdentityProviders Return All Identity Providers in One Federation
 
 		[experimental] Returns all identity providers with the provided protocol and type in the specified federation. If no protocol is specified, only SAML identity providers will be returned. If no idpType is specified, only WORKFORCE identity providers will be returned. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
 
@@ -291,7 +291,7 @@ type FederatedAuthenticationApi interface {
 	*/
 	ListIdentityProviders(ctx context.Context, federationSettingsId string) ListIdentityProvidersApiRequest
 	/*
-		ListIdentityProviders Return all identity providers from the specified federation.
+		ListIdentityProviders Return All Identity Providers in One Federation
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -352,7 +352,7 @@ type FederatedAuthenticationApi interface {
 	RemoveConnectedOrgConfigExecute(r RemoveConnectedOrgConfigApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
-		RevokeJwksFromIdentityProvider Revoke the JWKS tokens from an OIDC identity provider.
+		RevokeJwksFromIdentityProvider Revoke the JWKS from One OIDC Identity Provider
 
 		[experimental] Revokes the JWKS tokens from the requested OIDC identity provider. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
 
@@ -365,7 +365,7 @@ type FederatedAuthenticationApi interface {
 	*/
 	RevokeJwksFromIdentityProvider(ctx context.Context, federationSettingsId string, identityProviderId string) RevokeJwksFromIdentityProviderApiRequest
 	/*
-		RevokeJwksFromIdentityProvider Revoke the JWKS tokens from an OIDC identity provider.
+		RevokeJwksFromIdentityProvider Revoke the JWKS from One OIDC Identity Provider
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -410,7 +410,7 @@ type FederatedAuthenticationApi interface {
 	UpdateConnectedOrgConfigExecute(r UpdateConnectedOrgConfigApiRequest) (*ConnectedOrgConfig, *http.Response, error)
 
 	/*
-		UpdateIdentityProvider Update the identity provider.
+		UpdateIdentityProvider Update One Identity Provider
 
 		[experimental] Updates one identity provider in the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
 
@@ -423,7 +423,7 @@ type FederatedAuthenticationApi interface {
 	*/
 	UpdateIdentityProvider(ctx context.Context, federationSettingsId string, identityProviderId string, federationIdentityProviderUpdate *FederationIdentityProviderUpdate) UpdateIdentityProviderApiRequest
 	/*
-		UpdateIdentityProvider Update the identity provider.
+		UpdateIdentityProvider Update One Identity Provider
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -490,7 +490,7 @@ func (r CreateIdentityProviderApiRequest) Execute() (*FederationOidcIdentityProv
 }
 
 /*
-CreateIdentityProvider Create one identity provider
+CreateIdentityProvider Create One Identity Provider
 
 [experimental] Creates one identity provider within the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
 
@@ -761,7 +761,7 @@ func (r DeleteFederationAppApiRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteFederationApp Delete the federation settings instance.
+DeleteFederationApp Delete One Federation Settings Instance
 
 [experimental] Deletes the federation settings instance and all associated data, including identity providers and domains. To use this resource, the requesting API Key must have the Organization Owner role in the last remaining connected organization. **Note**: requests to this resource will fail if there is more than one connected organization in the federation.
 
@@ -876,7 +876,7 @@ func (r DeleteIdentityProviderApiRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteIdentityProvider Delete the identity provider.
+DeleteIdentityProvider Delete One Identity Provider
 
 [experimental] Deletes one identity provider in the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
 
@@ -1374,7 +1374,7 @@ func (r GetIdentityProviderApiRequest) Execute() (*FederationIdentityProvider, *
 }
 
 /*
-GetIdentityProvider Return one identity provider from the specified federation by id.
+GetIdentityProvider Return One Identity Provider by ID
 
 [experimental] Returns one identity provider in the specified federation by the identity provider's id. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations. Deprecated versions: v2-{2023-01-01}
 
@@ -1504,7 +1504,7 @@ func (r GetIdentityProviderMetadataApiRequest) Execute() (string, *http.Response
 }
 
 /*
-GetIdentityProviderMetadata Return the metadata of one identity provider in the specified federation.
+GetIdentityProviderMetadata Return the Metadata of One Identity Provider
 
 [experimental] Returns the metadata of one identity provider in the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
 
@@ -1767,7 +1767,7 @@ func (r ListConnectedOrgConfigsApiRequest) Execute() ([]ConnectedOrgConfig, *htt
 }
 
 /*
-ListConnectedOrgConfigs Return All Connected Org Configs from the Federation
+ListConnectedOrgConfigs Return All Connected Org Configs from One Federation
 
 [experimental] Returns all connected org configs in the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected orgs.
 
@@ -1927,7 +1927,7 @@ func (r ListIdentityProvidersApiRequest) Execute() (*PaginatedFederationIdentity
 }
 
 /*
-ListIdentityProviders Return all identity providers from the specified federation.
+ListIdentityProviders Return All Identity Providers in One Federation
 
 [experimental] Returns all identity providers with the provided protocol and type in the specified federation. If no protocol is specified, only SAML identity providers will be returned. If no idpType is specified, only WORKFORCE identity providers will be returned. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
 
@@ -2342,7 +2342,7 @@ func (r RevokeJwksFromIdentityProviderApiRequest) Execute() (*http.Response, err
 }
 
 /*
-RevokeJwksFromIdentityProvider Revoke the JWKS tokens from an OIDC identity provider.
+RevokeJwksFromIdentityProvider Revoke the JWKS from One OIDC Identity Provider
 
 [experimental] Revokes the JWKS tokens from the requested OIDC identity provider. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
 
@@ -2612,7 +2612,7 @@ func (r UpdateIdentityProviderApiRequest) Execute() (*FederationIdentityProvider
 }
 
 /*
-UpdateIdentityProvider Update the identity provider.
+UpdateIdentityProvider Update One Identity Provider
 
 [experimental] Updates one identity provider in the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
 

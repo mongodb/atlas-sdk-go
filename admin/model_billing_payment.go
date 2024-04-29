@@ -9,7 +9,7 @@ import (
 
 // BillingPayment Funds transferred to MongoDB to cover the specified service in this invoice.
 type BillingPayment struct {
-	// Sum of services that the specified organization consumed in the period covered in this invoice. This parameter expresses its value in cents (100ths of one US Dollar) and calculates its value as **subtotalCents** + **salesTaxCents** - **startingBalanceCents**.
+	// Sum of services that the specified organization consumed in the period covered in this invoice. This parameter expresses its value in cents (100ths of one US Dollar).
 	// Read only field.
 	AmountBilledCents *int64 `json:"amountBilledCents,omitempty"`
 	// Sum that the specified organization paid toward the associated invoice. This parameter expresses its value in cents (100ths of one US Dollar).
@@ -18,6 +18,9 @@ type BillingPayment struct {
 	// Date and time when the customer made this payment attempt. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	Created *time.Time `json:"created,omitempty"`
+	// The currency in which payment was paid. This parameter expresses its value in 3-letter ISO 4217 currency code.
+	// Read only field.
+	Currency *string `json:"currency,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies this payment toward the associated invoice.
 	// Read only field.
 	Id *string `json:"id,omitempty"`
@@ -29,6 +32,9 @@ type BillingPayment struct {
 	// Sum of all positive invoice line items contained in this invoice. This parameter expresses its value in cents (100ths of one US Dollar).
 	// Read only field.
 	SubtotalCents *int64 `json:"subtotalCents,omitempty"`
+	// The unit price applied to amountBilledCents to compute total payment amount. This value is represented as a decimal string.
+	// Read only field.
+	UnitPrice *string `json:"unitPrice,omitempty"`
 	// Date and time when the customer made an update to this payment attempt. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	Updated *time.Time `json:"updated,omitempty"`
@@ -148,6 +154,39 @@ func (o *BillingPayment) HasCreated() bool {
 // SetCreated gets a reference to the given time.Time and assigns it to the Created field.
 func (o *BillingPayment) SetCreated(v time.Time) {
 	o.Created = &v
+}
+
+// GetCurrency returns the Currency field value if set, zero value otherwise
+func (o *BillingPayment) GetCurrency() string {
+	if o == nil || IsNil(o.Currency) {
+		var ret string
+		return ret
+	}
+	return *o.Currency
+}
+
+// GetCurrencyOk returns a tuple with the Currency field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BillingPayment) GetCurrencyOk() (*string, bool) {
+	if o == nil || IsNil(o.Currency) {
+		return nil, false
+	}
+
+	return o.Currency, true
+}
+
+// HasCurrency returns a boolean if a field has been set.
+func (o *BillingPayment) HasCurrency() bool {
+	if o != nil && !IsNil(o.Currency) {
+		return true
+	}
+
+	return false
+}
+
+// SetCurrency gets a reference to the given string and assigns it to the Currency field.
+func (o *BillingPayment) SetCurrency(v string) {
+	o.Currency = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise
@@ -280,6 +319,39 @@ func (o *BillingPayment) HasSubtotalCents() bool {
 // SetSubtotalCents gets a reference to the given int64 and assigns it to the SubtotalCents field.
 func (o *BillingPayment) SetSubtotalCents(v int64) {
 	o.SubtotalCents = &v
+}
+
+// GetUnitPrice returns the UnitPrice field value if set, zero value otherwise
+func (o *BillingPayment) GetUnitPrice() string {
+	if o == nil || IsNil(o.UnitPrice) {
+		var ret string
+		return ret
+	}
+	return *o.UnitPrice
+}
+
+// GetUnitPriceOk returns a tuple with the UnitPrice field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BillingPayment) GetUnitPriceOk() (*string, bool) {
+	if o == nil || IsNil(o.UnitPrice) {
+		return nil, false
+	}
+
+	return o.UnitPrice, true
+}
+
+// HasUnitPrice returns a boolean if a field has been set.
+func (o *BillingPayment) HasUnitPrice() bool {
+	if o != nil && !IsNil(o.UnitPrice) {
+		return true
+	}
+
+	return false
+}
+
+// SetUnitPrice gets a reference to the given string and assigns it to the UnitPrice field.
+func (o *BillingPayment) SetUnitPrice(v string) {
+	o.UnitPrice = &v
 }
 
 // GetUpdated returns the Updated field value if set, zero value otherwise

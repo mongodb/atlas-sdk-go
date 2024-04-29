@@ -27,6 +27,8 @@ type LegacyAtlasTenantClusterUpgradeRequest struct {
 	DiskWarmingMode *string `json:"diskWarmingMode,omitempty"`
 	// Cloud service provider that manages your customer keys to provide an additional layer of Encryption at Rest for the cluster.
 	EncryptionAtRestProvider *string `json:"encryptionAtRestProvider,omitempty"`
+	// Set this field to configure the Sharding Management Mode when creating a new Global Cluster.  When set to false, the management mode is set to Atlas-Managed Sharding. This mode fully manages the sharding of your Global Cluster and is built to provide a seamless deployment experience.  When set to true, the management mode is set to Self-Managed Sharding. This mode leaves the management of shards in your hands and is built to provide an advanced and flexible deployment experience.  This setting cannot be changed once the cluster is deployed.
+	GlobalClusterSelfManagedSharding *bool `json:"globalClusterSelfManagedSharding,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the project.
 	// Read only field.
 	GroupId *string `json:"groupId,omitempty"`
@@ -460,6 +462,39 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) HasEncryptionAtRestProvider() b
 // SetEncryptionAtRestProvider gets a reference to the given string and assigns it to the EncryptionAtRestProvider field.
 func (o *LegacyAtlasTenantClusterUpgradeRequest) SetEncryptionAtRestProvider(v string) {
 	o.EncryptionAtRestProvider = &v
+}
+
+// GetGlobalClusterSelfManagedSharding returns the GlobalClusterSelfManagedSharding field value if set, zero value otherwise
+func (o *LegacyAtlasTenantClusterUpgradeRequest) GetGlobalClusterSelfManagedSharding() bool {
+	if o == nil || IsNil(o.GlobalClusterSelfManagedSharding) {
+		var ret bool
+		return ret
+	}
+	return *o.GlobalClusterSelfManagedSharding
+}
+
+// GetGlobalClusterSelfManagedShardingOk returns a tuple with the GlobalClusterSelfManagedSharding field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LegacyAtlasTenantClusterUpgradeRequest) GetGlobalClusterSelfManagedShardingOk() (*bool, bool) {
+	if o == nil || IsNil(o.GlobalClusterSelfManagedSharding) {
+		return nil, false
+	}
+
+	return o.GlobalClusterSelfManagedSharding, true
+}
+
+// HasGlobalClusterSelfManagedSharding returns a boolean if a field has been set.
+func (o *LegacyAtlasTenantClusterUpgradeRequest) HasGlobalClusterSelfManagedSharding() bool {
+	if o != nil && !IsNil(o.GlobalClusterSelfManagedSharding) {
+		return true
+	}
+
+	return false
+}
+
+// SetGlobalClusterSelfManagedSharding gets a reference to the given bool and assigns it to the GlobalClusterSelfManagedSharding field.
+func (o *LegacyAtlasTenantClusterUpgradeRequest) SetGlobalClusterSelfManagedSharding(v bool) {
+	o.GlobalClusterSelfManagedSharding = &v
 }
 
 // GetGroupId returns the GroupId field value if set, zero value otherwise
@@ -1286,6 +1321,9 @@ func (o LegacyAtlasTenantClusterUpgradeRequest) ToMap() (map[string]interface{},
 	}
 	if !IsNil(o.EncryptionAtRestProvider) {
 		toSerialize["encryptionAtRestProvider"] = o.EncryptionAtRestProvider
+	}
+	if !IsNil(o.GlobalClusterSelfManagedSharding) {
+		toSerialize["globalClusterSelfManagedSharding"] = o.GlobalClusterSelfManagedSharding
 	}
 	if !IsNil(o.Labels) {
 		toSerialize["labels"] = o.Labels

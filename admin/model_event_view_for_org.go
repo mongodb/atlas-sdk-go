@@ -29,7 +29,7 @@ type EventViewForOrg struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
-	// Unique 24-hexadecimal digit string that identifies the organization to which these events apply.
+	// Unique 24-hexadecimal digit string that identifies the organization to which these events apply.  Alternatively: Unique 24-digit hexadecimal string that identifies the Organization associated with the event.  Alternatively: Unique 24-hexadecimal digit string that identifies the organization to which these events apply.  Alternatively: Unique 24-hexadecimal digit string that identifies the organization to which these events apply.
 	// Read only field.
 	OrgId *string `json:"orgId,omitempty"`
 	// Public part of the [API Key](https://dochub.mongodb.org/core/atlas-create-prog-api-key) that triggered the event. If this resource returns this parameter, it doesn't return the **username** parameter.
@@ -66,6 +66,27 @@ type EventViewForOrg struct {
 	// Unique 24-hexadecimal digit string that identifies the organization team associated with this event.
 	// Read only field.
 	TeamId *string `json:"teamId,omitempty"`
+	// Email address or public API key for the member which was added or removed from the User Group.
+	ChangedMemberDisplayText *string `json:"changedMemberDisplayText,omitempty"`
+	// Id of the member which was added or removed from the User Group.
+	ChangedMemberId *string `json:"changedMemberId,omitempty"`
+	// Type of User (service account, API key, local user, etc).
+	ChangedMemberType *string `json:"changedMemberType,omitempty"`
+	// New policy IDs after User Group update.
+	// Read only field.
+	NewPolicyIds *[]string `json:"newPolicyIds,omitempty"`
+	// New name of the User Group after renaming.
+	NewUserGroupName *string `json:"newUserGroupName,omitempty"`
+	// Previous policy IDs before User Group update.
+	// Read only field.
+	OldPolicyIds *[]string `json:"oldPolicyIds,omitempty"`
+	// Previous name of the User Group before renaming.
+	OldUserGroupName *string `json:"oldUserGroupName,omitempty"`
+	// Unique 24-digit hexadecimal string that identifies the User Group associated with the event.
+	// Read only field.
+	UserGroupId *string `json:"userGroupId,omitempty"`
+	// Name of the User Group associated with the event.
+	UserGroupName *string `json:"userGroupName,omitempty"`
 	// Email address for the console user that this event targets. The resource returns this parameter when `\"eventTypeName\" : \"USER\"`.
 	// Read only field.
 	TargetUsername *string `json:"targetUsername,omitempty"`
@@ -753,6 +774,303 @@ func (o *EventViewForOrg) SetTeamId(v string) {
 	o.TeamId = &v
 }
 
+// GetChangedMemberDisplayText returns the ChangedMemberDisplayText field value if set, zero value otherwise
+func (o *EventViewForOrg) GetChangedMemberDisplayText() string {
+	if o == nil || IsNil(o.ChangedMemberDisplayText) {
+		var ret string
+		return ret
+	}
+	return *o.ChangedMemberDisplayText
+}
+
+// GetChangedMemberDisplayTextOk returns a tuple with the ChangedMemberDisplayText field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EventViewForOrg) GetChangedMemberDisplayTextOk() (*string, bool) {
+	if o == nil || IsNil(o.ChangedMemberDisplayText) {
+		return nil, false
+	}
+
+	return o.ChangedMemberDisplayText, true
+}
+
+// HasChangedMemberDisplayText returns a boolean if a field has been set.
+func (o *EventViewForOrg) HasChangedMemberDisplayText() bool {
+	if o != nil && !IsNil(o.ChangedMemberDisplayText) {
+		return true
+	}
+
+	return false
+}
+
+// SetChangedMemberDisplayText gets a reference to the given string and assigns it to the ChangedMemberDisplayText field.
+func (o *EventViewForOrg) SetChangedMemberDisplayText(v string) {
+	o.ChangedMemberDisplayText = &v
+}
+
+// GetChangedMemberId returns the ChangedMemberId field value if set, zero value otherwise
+func (o *EventViewForOrg) GetChangedMemberId() string {
+	if o == nil || IsNil(o.ChangedMemberId) {
+		var ret string
+		return ret
+	}
+	return *o.ChangedMemberId
+}
+
+// GetChangedMemberIdOk returns a tuple with the ChangedMemberId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EventViewForOrg) GetChangedMemberIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ChangedMemberId) {
+		return nil, false
+	}
+
+	return o.ChangedMemberId, true
+}
+
+// HasChangedMemberId returns a boolean if a field has been set.
+func (o *EventViewForOrg) HasChangedMemberId() bool {
+	if o != nil && !IsNil(o.ChangedMemberId) {
+		return true
+	}
+
+	return false
+}
+
+// SetChangedMemberId gets a reference to the given string and assigns it to the ChangedMemberId field.
+func (o *EventViewForOrg) SetChangedMemberId(v string) {
+	o.ChangedMemberId = &v
+}
+
+// GetChangedMemberType returns the ChangedMemberType field value if set, zero value otherwise
+func (o *EventViewForOrg) GetChangedMemberType() string {
+	if o == nil || IsNil(o.ChangedMemberType) {
+		var ret string
+		return ret
+	}
+	return *o.ChangedMemberType
+}
+
+// GetChangedMemberTypeOk returns a tuple with the ChangedMemberType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EventViewForOrg) GetChangedMemberTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.ChangedMemberType) {
+		return nil, false
+	}
+
+	return o.ChangedMemberType, true
+}
+
+// HasChangedMemberType returns a boolean if a field has been set.
+func (o *EventViewForOrg) HasChangedMemberType() bool {
+	if o != nil && !IsNil(o.ChangedMemberType) {
+		return true
+	}
+
+	return false
+}
+
+// SetChangedMemberType gets a reference to the given string and assigns it to the ChangedMemberType field.
+func (o *EventViewForOrg) SetChangedMemberType(v string) {
+	o.ChangedMemberType = &v
+}
+
+// GetNewPolicyIds returns the NewPolicyIds field value if set, zero value otherwise
+func (o *EventViewForOrg) GetNewPolicyIds() []string {
+	if o == nil || IsNil(o.NewPolicyIds) {
+		var ret []string
+		return ret
+	}
+	return *o.NewPolicyIds
+}
+
+// GetNewPolicyIdsOk returns a tuple with the NewPolicyIds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EventViewForOrg) GetNewPolicyIdsOk() (*[]string, bool) {
+	if o == nil || IsNil(o.NewPolicyIds) {
+		return nil, false
+	}
+
+	return o.NewPolicyIds, true
+}
+
+// HasNewPolicyIds returns a boolean if a field has been set.
+func (o *EventViewForOrg) HasNewPolicyIds() bool {
+	if o != nil && !IsNil(o.NewPolicyIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetNewPolicyIds gets a reference to the given []string and assigns it to the NewPolicyIds field.
+func (o *EventViewForOrg) SetNewPolicyIds(v []string) {
+	o.NewPolicyIds = &v
+}
+
+// GetNewUserGroupName returns the NewUserGroupName field value if set, zero value otherwise
+func (o *EventViewForOrg) GetNewUserGroupName() string {
+	if o == nil || IsNil(o.NewUserGroupName) {
+		var ret string
+		return ret
+	}
+	return *o.NewUserGroupName
+}
+
+// GetNewUserGroupNameOk returns a tuple with the NewUserGroupName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EventViewForOrg) GetNewUserGroupNameOk() (*string, bool) {
+	if o == nil || IsNil(o.NewUserGroupName) {
+		return nil, false
+	}
+
+	return o.NewUserGroupName, true
+}
+
+// HasNewUserGroupName returns a boolean if a field has been set.
+func (o *EventViewForOrg) HasNewUserGroupName() bool {
+	if o != nil && !IsNil(o.NewUserGroupName) {
+		return true
+	}
+
+	return false
+}
+
+// SetNewUserGroupName gets a reference to the given string and assigns it to the NewUserGroupName field.
+func (o *EventViewForOrg) SetNewUserGroupName(v string) {
+	o.NewUserGroupName = &v
+}
+
+// GetOldPolicyIds returns the OldPolicyIds field value if set, zero value otherwise
+func (o *EventViewForOrg) GetOldPolicyIds() []string {
+	if o == nil || IsNil(o.OldPolicyIds) {
+		var ret []string
+		return ret
+	}
+	return *o.OldPolicyIds
+}
+
+// GetOldPolicyIdsOk returns a tuple with the OldPolicyIds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EventViewForOrg) GetOldPolicyIdsOk() (*[]string, bool) {
+	if o == nil || IsNil(o.OldPolicyIds) {
+		return nil, false
+	}
+
+	return o.OldPolicyIds, true
+}
+
+// HasOldPolicyIds returns a boolean if a field has been set.
+func (o *EventViewForOrg) HasOldPolicyIds() bool {
+	if o != nil && !IsNil(o.OldPolicyIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetOldPolicyIds gets a reference to the given []string and assigns it to the OldPolicyIds field.
+func (o *EventViewForOrg) SetOldPolicyIds(v []string) {
+	o.OldPolicyIds = &v
+}
+
+// GetOldUserGroupName returns the OldUserGroupName field value if set, zero value otherwise
+func (o *EventViewForOrg) GetOldUserGroupName() string {
+	if o == nil || IsNil(o.OldUserGroupName) {
+		var ret string
+		return ret
+	}
+	return *o.OldUserGroupName
+}
+
+// GetOldUserGroupNameOk returns a tuple with the OldUserGroupName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EventViewForOrg) GetOldUserGroupNameOk() (*string, bool) {
+	if o == nil || IsNil(o.OldUserGroupName) {
+		return nil, false
+	}
+
+	return o.OldUserGroupName, true
+}
+
+// HasOldUserGroupName returns a boolean if a field has been set.
+func (o *EventViewForOrg) HasOldUserGroupName() bool {
+	if o != nil && !IsNil(o.OldUserGroupName) {
+		return true
+	}
+
+	return false
+}
+
+// SetOldUserGroupName gets a reference to the given string and assigns it to the OldUserGroupName field.
+func (o *EventViewForOrg) SetOldUserGroupName(v string) {
+	o.OldUserGroupName = &v
+}
+
+// GetUserGroupId returns the UserGroupId field value if set, zero value otherwise
+func (o *EventViewForOrg) GetUserGroupId() string {
+	if o == nil || IsNil(o.UserGroupId) {
+		var ret string
+		return ret
+	}
+	return *o.UserGroupId
+}
+
+// GetUserGroupIdOk returns a tuple with the UserGroupId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EventViewForOrg) GetUserGroupIdOk() (*string, bool) {
+	if o == nil || IsNil(o.UserGroupId) {
+		return nil, false
+	}
+
+	return o.UserGroupId, true
+}
+
+// HasUserGroupId returns a boolean if a field has been set.
+func (o *EventViewForOrg) HasUserGroupId() bool {
+	if o != nil && !IsNil(o.UserGroupId) {
+		return true
+	}
+
+	return false
+}
+
+// SetUserGroupId gets a reference to the given string and assigns it to the UserGroupId field.
+func (o *EventViewForOrg) SetUserGroupId(v string) {
+	o.UserGroupId = &v
+}
+
+// GetUserGroupName returns the UserGroupName field value if set, zero value otherwise
+func (o *EventViewForOrg) GetUserGroupName() string {
+	if o == nil || IsNil(o.UserGroupName) {
+		var ret string
+		return ret
+	}
+	return *o.UserGroupName
+}
+
+// GetUserGroupNameOk returns a tuple with the UserGroupName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EventViewForOrg) GetUserGroupNameOk() (*string, bool) {
+	if o == nil || IsNil(o.UserGroupName) {
+		return nil, false
+	}
+
+	return o.UserGroupName, true
+}
+
+// HasUserGroupName returns a boolean if a field has been set.
+func (o *EventViewForOrg) HasUserGroupName() bool {
+	if o != nil && !IsNil(o.UserGroupName) {
+		return true
+	}
+
+	return false
+}
+
+// SetUserGroupName gets a reference to the given string and assigns it to the UserGroupName field.
+func (o *EventViewForOrg) SetUserGroupName(v string) {
+	o.UserGroupName = &v
+}
+
 // GetTargetUsername returns the TargetUsername field value if set, zero value otherwise
 func (o *EventViewForOrg) GetTargetUsername() string {
 	if o == nil || IsNil(o.TargetUsername) {
@@ -866,6 +1184,24 @@ func (o EventViewForOrg) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Raw) {
 		toSerialize["raw"] = o.Raw
+	}
+	if !IsNil(o.ChangedMemberDisplayText) {
+		toSerialize["changedMemberDisplayText"] = o.ChangedMemberDisplayText
+	}
+	if !IsNil(o.ChangedMemberId) {
+		toSerialize["changedMemberId"] = o.ChangedMemberId
+	}
+	if !IsNil(o.ChangedMemberType) {
+		toSerialize["changedMemberType"] = o.ChangedMemberType
+	}
+	if !IsNil(o.NewUserGroupName) {
+		toSerialize["newUserGroupName"] = o.NewUserGroupName
+	}
+	if !IsNil(o.OldUserGroupName) {
+		toSerialize["oldUserGroupName"] = o.OldUserGroupName
+	}
+	if !IsNil(o.UserGroupName) {
+		toSerialize["userGroupName"] = o.UserGroupName
 	}
 	if !IsNil(o.ResourceType) {
 		toSerialize["resourceType"] = o.ResourceType
