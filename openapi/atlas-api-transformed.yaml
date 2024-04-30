@@ -24,7 +24,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 81ae033a0e918a6c75ad4758f8f4d779816a2c26
+  x-xgen-sha: 2cb256c3cba555b7ab4a5255d87aabfaa10a8329
 servers:
   - url: https://cloud.mongodb.com
 tags:
@@ -16351,6 +16351,23 @@ components:
           externalDocs:
             description: Encryption at Rest using Customer Key Management
             url: https://www.mongodb.com/docs/atlas/security-kms-encryption/
+        globalClusterSelfManagedSharding:
+          type: boolean
+          description: >-
+            Set this field to configure the Sharding Management Mode when
+            creating a new Global Cluster.
+
+
+            When set to false, the management mode is set to Atlas-Managed Sharding. This mode fully manages the sharding of your Global Cluster and is built to provide a seamless deployment experience.
+
+
+            When set to true, the management mode is set to Self-Managed Sharding. This mode leaves the management of shards in your hands and is built to provide an advanced and flexible deployment experience.
+
+
+            This setting cannot be changed once the cluster is deployed.
+          externalDocs:
+            description: Creating a Global Cluster
+            url: https://dochub.mongodb.org/core/global-cluster-management
         groupId:
           type: string
           description: Unique 24-hexadecimal character string that identifies the project.
@@ -25481,6 +25498,23 @@ components:
           externalDocs:
             description: Encryption at Rest using Customer Key Management
             url: https://www.mongodb.com/docs/atlas/security-kms-encryption/
+        globalClusterSelfManagedSharding:
+          type: boolean
+          description: >-
+            Set this field to configure the Sharding Management Mode when
+            creating a new Global Cluster.
+
+
+            When set to false, the management mode is set to Atlas-Managed Sharding. This mode fully manages the sharding of your Global Cluster and is built to provide a seamless deployment experience.
+
+
+            When set to true, the management mode is set to Self-Managed Sharding. This mode leaves the management of shards in your hands and is built to provide an advanced and flexible deployment experience.
+
+
+            This setting cannot be changed once the cluster is deployed.
+          externalDocs:
+            description: Creating a Global Cluster
+            url: https://dochub.mongodb.org/core/global-cluster-management
         groupId:
           type: string
           description: Unique 24-hexadecimal character string that identifies the project.
@@ -25726,6 +25760,23 @@ components:
           externalDocs:
             description: Encryption at Rest using Customer Key Management
             url: https://www.mongodb.com/docs/atlas/security-kms-encryption/
+        globalClusterSelfManagedSharding:
+          type: boolean
+          description: >-
+            Set this field to configure the Sharding Management Mode when
+            creating a new Global Cluster.
+
+
+            When set to false, the management mode is set to Atlas-Managed Sharding. This mode fully manages the sharding of your Global Cluster and is built to provide a seamless deployment experience.
+
+
+            When set to true, the management mode is set to Self-Managed Sharding. This mode leaves the management of shards in your hands and is built to provide an advanced and flexible deployment experience.
+
+
+            This setting cannot be changed once the cluster is deployed.
+          externalDocs:
+            description: Creating a Global Cluster
+            url: https://dochub.mongodb.org/core/global-cluster-management
         groupId:
           type: string
           description: Unique 24-hexadecimal character string that identifies the project.
