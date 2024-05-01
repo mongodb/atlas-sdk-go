@@ -608,6 +608,7 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
  - [PaginatedCloudBackupRestoreJob](./docs/PaginatedCloudBackupRestoreJob.md)
  - [PaginatedCloudBackupShardedClusterSnapshot](./docs/PaginatedCloudBackupShardedClusterSnapshot.md)
  - [PaginatedCloudProviderContainer](./docs/PaginatedCloudProviderContainer.md)
+ - [PaginatedConnectedOrgConfigs](./docs/PaginatedConnectedOrgConfigs.md)
  - [PaginatedContainerPeer](./docs/PaginatedContainerPeer.md)
  - [PaginatedDatabase](./docs/PaginatedDatabase.md)
  - [PaginatedDiskPartition](./docs/PaginatedDiskPartition.md)

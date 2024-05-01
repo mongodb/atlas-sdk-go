@@ -278,7 +278,7 @@ type FederatedAuthenticationApi interface {
 	ListConnectedOrgConfigsWithParams(ctx context.Context, args *ListConnectedOrgConfigsApiParams) ListConnectedOrgConfigsApiRequest
 
 	// Method available only for mocking purposes
-	ListConnectedOrgConfigsExecute(r ListConnectedOrgConfigsApiRequest) ([]ConnectedOrgConfig, *http.Response, error)
+	ListConnectedOrgConfigsExecute(r ListConnectedOrgConfigsApiRequest) (*PaginatedConnectedOrgConfigs, *http.Response, error)
 
 	/*
 		ListIdentityProviders Return all identity providers from the specified federation.
@@ -1748,10 +1748,14 @@ type ListConnectedOrgConfigsApiRequest struct {
 	ctx                  context.Context
 	ApiService           FederatedAuthenticationApi
 	federationSettingsId string
+	itemsPerPage         *int
+	pageNum              *int
 }
 
 type ListConnectedOrgConfigsApiParams struct {
 	FederationSettingsId string
+	ItemsPerPage         *int
+	PageNum              *int
 }
 
 func (a *FederatedAuthenticationApiService) ListConnectedOrgConfigsWithParams(ctx context.Context, args *ListConnectedOrgConfigsApiParams) ListConnectedOrgConfigsApiRequest {
@@ -1759,10 +1763,24 @@ func (a *FederatedAuthenticationApiService) ListConnectedOrgConfigsWithParams(ct
 		ApiService:           a,
 		ctx:                  ctx,
 		federationSettingsId: args.FederationSettingsId,
+		itemsPerPage:         args.ItemsPerPage,
+		pageNum:              args.PageNum,
 	}
 }
 
-func (r ListConnectedOrgConfigsApiRequest) Execute() ([]ConnectedOrgConfig, *http.Response, error) {
+// Number of items that the response returns per page.
+func (r ListConnectedOrgConfigsApiRequest) ItemsPerPage(itemsPerPage int) ListConnectedOrgConfigsApiRequest {
+	r.itemsPerPage = &itemsPerPage
+	return r
+}
+
+// Number of the page that displays the current set of the total objects that the response returns.
+func (r ListConnectedOrgConfigsApiRequest) PageNum(pageNum int) ListConnectedOrgConfigsApiRequest {
+	r.pageNum = &pageNum
+	return r
+}
+
+func (r ListConnectedOrgConfigsApiRequest) Execute() (*PaginatedConnectedOrgConfigs, *http.Response, error) {
 	return r.ApiService.ListConnectedOrgConfigsExecute(r)
 }
 
@@ -1785,13 +1803,13 @@ func (a *FederatedAuthenticationApiService) ListConnectedOrgConfigs(ctx context.
 
 // Execute executes the request
 //
-//	@return []ConnectedOrgConfig
-func (a *FederatedAuthenticationApiService) ListConnectedOrgConfigsExecute(r ListConnectedOrgConfigsApiRequest) ([]ConnectedOrgConfig, *http.Response, error) {
+//	@return PaginatedConnectedOrgConfigs
+func (a *FederatedAuthenticationApiService) ListConnectedOrgConfigsExecute(r ListConnectedOrgConfigsApiRequest) (*PaginatedConnectedOrgConfigs, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue []ConnectedOrgConfig
+		localVarReturnValue *PaginatedConnectedOrgConfigs
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationApiService.ListConnectedOrgConfigs")
@@ -1806,6 +1824,20 @@ func (a *FederatedAuthenticationApiService) ListConnectedOrgConfigsExecute(r Lis
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.itemsPerPage != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	} else {
+		var defaultValue int = 100
+		r.itemsPerPage = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	}
+	if r.pageNum != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	} else {
+		var defaultValue int = 1
+		r.pageNum = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
