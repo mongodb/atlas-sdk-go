@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20231115012/admin"
+	admin "go.mongodb.org/atlas-sdk/v20231115013/admin"
 
 	http "net/http"
 
@@ -1665,24 +1665,24 @@ func (_c *FederatedAuthenticationApi_ListConnectedOrgConfigs_Call) RunAndReturn(
 }
 
 // ListConnectedOrgConfigsExecute provides a mock function with given fields: r
-func (_m *FederatedAuthenticationApi) ListConnectedOrgConfigsExecute(r admin.ListConnectedOrgConfigsApiRequest) ([]admin.ConnectedOrgConfig, *http.Response, error) {
+func (_m *FederatedAuthenticationApi) ListConnectedOrgConfigsExecute(r admin.ListConnectedOrgConfigsApiRequest) (*admin.PaginatedConnectedOrgConfigs, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for ListConnectedOrgConfigsExecute")
 	}
 
-	var r0 []admin.ConnectedOrgConfig
+	var r0 *admin.PaginatedConnectedOrgConfigs
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListConnectedOrgConfigsApiRequest) ([]admin.ConnectedOrgConfig, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListConnectedOrgConfigsApiRequest) (*admin.PaginatedConnectedOrgConfigs, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.ListConnectedOrgConfigsApiRequest) []admin.ConnectedOrgConfig); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListConnectedOrgConfigsApiRequest) *admin.PaginatedConnectedOrgConfigs); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).([]admin.ConnectedOrgConfig)
+			r0 = ret.Get(0).(*admin.PaginatedConnectedOrgConfigs)
 		}
 	}
 
@@ -1721,12 +1721,12 @@ func (_c *FederatedAuthenticationApi_ListConnectedOrgConfigsExecute_Call) Run(ru
 	return _c
 }
 
-func (_c *FederatedAuthenticationApi_ListConnectedOrgConfigsExecute_Call) Return(_a0 []admin.ConnectedOrgConfig, _a1 *http.Response, _a2 error) *FederatedAuthenticationApi_ListConnectedOrgConfigsExecute_Call {
+func (_c *FederatedAuthenticationApi_ListConnectedOrgConfigsExecute_Call) Return(_a0 *admin.PaginatedConnectedOrgConfigs, _a1 *http.Response, _a2 error) *FederatedAuthenticationApi_ListConnectedOrgConfigsExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *FederatedAuthenticationApi_ListConnectedOrgConfigsExecute_Call) RunAndReturn(run func(admin.ListConnectedOrgConfigsApiRequest) ([]admin.ConnectedOrgConfig, *http.Response, error)) *FederatedAuthenticationApi_ListConnectedOrgConfigsExecute_Call {
+func (_c *FederatedAuthenticationApi_ListConnectedOrgConfigsExecute_Call) RunAndReturn(run func(admin.ListConnectedOrgConfigsApiRequest) (*admin.PaginatedConnectedOrgConfigs, *http.Response, error)) *FederatedAuthenticationApi_ListConnectedOrgConfigsExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }

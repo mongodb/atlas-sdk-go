@@ -47,7 +47,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115012/admin"
+    "go.mongodb.org/atlas-sdk/v20231115013/admin"
 )
 
 func main() {
@@ -127,7 +127,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115012/admin"
+    "go.mongodb.org/atlas-sdk/v20231115013/admin"
 )
 
 func main() {
@@ -210,7 +210,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115012/admin"
+    "go.mongodb.org/atlas-sdk/v20231115013/admin"
 )
 
 func main() {
@@ -286,7 +286,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115012/admin"
+    "go.mongodb.org/atlas-sdk/v20231115013/admin"
 )
 
 func main() {
@@ -365,7 +365,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115012/admin"
+    "go.mongodb.org/atlas-sdk/v20231115013/admin"
 )
 
 func main() {
@@ -447,7 +447,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115012/admin"
+    "go.mongodb.org/atlas-sdk/v20231115013/admin"
 )
 
 func main() {
@@ -528,7 +528,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115012/admin"
+    "go.mongodb.org/atlas-sdk/v20231115013/admin"
 )
 
 func main() {
@@ -606,7 +606,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115012/admin"
+    "go.mongodb.org/atlas-sdk/v20231115013/admin"
 )
 
 func main() {
@@ -687,7 +687,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115012/admin"
+    "go.mongodb.org/atlas-sdk/v20231115013/admin"
 )
 
 func main() {
@@ -768,7 +768,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115012/admin"
+    "go.mongodb.org/atlas-sdk/v20231115013/admin"
 )
 
 func main() {
@@ -832,7 +832,7 @@ Name | Type | Description  | Notes
 
 ## ListConnectedOrgConfigs
 
-> []ConnectedOrgConfig ListConnectedOrgConfigs(ctx, federationSettingsId).Execute()
+> PaginatedConnectedOrgConfigs ListConnectedOrgConfigs(ctx, federationSettingsId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
 Return All Connected Org Configs from the Federation
 
@@ -852,7 +852,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115012/admin"
+    "go.mongodb.org/atlas-sdk/v20231115013/admin"
 )
 
 func main() {
@@ -862,14 +862,16 @@ func main() {
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
     federationSettingsId := "55fa922fb343282757d9554e" // string | 
+    itemsPerPage := int(100) // int |  (optional) (default to 100)
+    pageNum := int(1) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.FederatedAuthenticationApi.ListConnectedOrgConfigs(context.Background(), federationSettingsId).Execute()
+    resp, r, err := sdk.FederatedAuthenticationApi.ListConnectedOrgConfigs(context.Background(), federationSettingsId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.ListConnectedOrgConfigs``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `ListConnectedOrgConfigs`: []ConnectedOrgConfig
+    // response from `ListConnectedOrgConfigs`: PaginatedConnectedOrgConfigs
     fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.ListConnectedOrgConfigs`: %v\n", resp)
 }
 ```
@@ -890,10 +892,12 @@ Other parameters are passed through a pointer to a apiListConnectedOrgConfigsReq
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
+ **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
 
 ### Return type
 
-[**[]ConnectedOrgConfig**](ConnectedOrgConfig.md)
+[**PaginatedConnectedOrgConfigs**](PaginatedConnectedOrgConfigs.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -930,7 +934,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115012/admin"
+    "go.mongodb.org/atlas-sdk/v20231115013/admin"
 )
 
 func main() {
@@ -1016,7 +1020,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115012/admin"
+    "go.mongodb.org/atlas-sdk/v20231115013/admin"
 )
 
 func main() {
@@ -1097,7 +1101,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115012/admin"
+    "go.mongodb.org/atlas-sdk/v20231115013/admin"
 )
 
 func main() {
@@ -1178,7 +1182,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115012/admin"
+    "go.mongodb.org/atlas-sdk/v20231115013/admin"
 )
 
 func main() {
@@ -1257,7 +1261,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115012/admin"
+    "go.mongodb.org/atlas-sdk/v20231115013/admin"
 )
 
 func main() {
@@ -1340,7 +1344,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115012/admin"
+    "go.mongodb.org/atlas-sdk/v20231115013/admin"
 )
 
 func main() {
@@ -1423,7 +1427,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115012/admin"
+    "go.mongodb.org/atlas-sdk/v20231115013/admin"
 )
 
 func main() {
