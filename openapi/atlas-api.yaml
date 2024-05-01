@@ -19,7 +19,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 2cb256c3cba555b7ab4a5255d87aabfaa10a8329
+  x-xgen-sha: 0a05ecf5995640c6c0e1634d8e1e37e53f48b800
 servers:
 - url: https://cloud.mongodb.com
 tags:
@@ -322,14 +322,14 @@ paths:
       parameters:
       - $ref: '#/components/parameters/federationSettingsId'
       - $ref: '#/components/parameters/envelope'
+      - $ref: '#/components/parameters/itemsPerPage'
+      - $ref: '#/components/parameters/pageNum'
       responses:
         "200":
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/ConnectedOrgConfig'
+                $ref: '#/components/schemas/PaginatedConnectedOrgConfigsView'
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -40549,6 +40549,34 @@ components:
           minimum: 0
           readOnly: true
       title: Network Peering
+    PaginatedConnectedOrgConfigsView:
+      type: object
+      properties:
+        links:
+          type: array
+          description: "List of one or more Uniform Resource Locators (URLs) that\
+            \ point to API sub-resources, related API resources, or both. RFC 5988\
+            \ outlines these relationships."
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: '#/components/schemas/Link'
+          readOnly: true
+        results:
+          type: array
+          description: List of returned documents that MongoDB Cloud providers when
+            completing this request.
+          items:
+            $ref: '#/components/schemas/ConnectedOrgConfig'
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+          description: Total number of documents available. MongoDB Cloud omits this
+            value if `includeCount` is set to `false`.
+          minimum: 0
+          readOnly: true
     PaginatedContainerPeerView:
       type: object
       description: Group of Network Peering connection settings.
