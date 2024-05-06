@@ -19,7 +19,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 0a05ecf5995640c6c0e1634d8e1e37e53f48b800
+  x-xgen-sha: 87f924347c4d087b309bb1a3cb441e37d7fabda4
 servers:
 - url: https://cloud.mongodb.com
 tags:
@@ -15386,12 +15386,9 @@ paths:
       - Organizations
   /api/atlas/v2/orgs/{orgId}/invoices:
     get:
-      description: "Returns all invoices that MongoDB issued to the specified organization.\
-        \ This list includes all invoices regardless of invoice status. To use this\
-        \ resource, the requesting API Key must have the Organization Billing Viewer,\
-        \ Organization Billing Admin, or Organization Owner role. If you have a cross-organization\
-        \ setup, you can view linked invoices if you have the Organization Billing\
-        \ Admin or Organization Owner role."
+      description: |-
+        Returns all invoices that MongoDB issued to the specified organization. This list includes all invoices regardless of invoice status. To use this resource, the requesting API Key must have the Organization Billing Viewer, Organization Billing Admin, or Organization Owner role. If you have a cross-organization setup, you can view linked invoices if you have the Organization Billing Admin or Organization Owner role.
+        To compute the total owed amount of the invoices - sum up total owed of each invoice. It could be computed as a sum of owed amount of each payment included into the invoice. To compute payment's owed amount - use formula *totalBilledCents* * *unitPrice* + *salesTax* - *startingBalanceCents*.
       operationId: listInvoices
       parameters:
       - $ref: '#/components/parameters/envelope'
@@ -15453,13 +15450,9 @@ paths:
       - Invoices
   /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}:
     get:
-      description: "Returns one invoice that MongoDB issued to the specified organization.\
-        \ A unique 24-hexadecimal digit string identifies the invoice. You can choose\
-        \ to receive this invoice in JSON or CSV format. To use this resource, the\
-        \ requesting API Key must have the Organization Billing Viewer, Organization\
-        \ Billing Admin, or Organization Owner role. If you have a cross-organization\
-        \ setup, you can query for a linked invoice if you have the Organization Billing\
-        \ Admin or Organization Owner role."
+      description: |-
+        Returns one invoice that MongoDB issued to the specified organization. A unique 24-hexadecimal digit string identifies the invoice. You can choose to receive this invoice in JSON or CSV format. To use this resource, the requesting API Key must have the Organization Billing Viewer, Organization Billing Admin, or Organization Owner role. If you have a cross-organization setup, you can query for a linked invoice if you have the Organization Billing Admin or Organization Owner role.
+        To compute the total owed amount of the invoice - sum up total owed amount of each payment included into the invoice. To compute payment's owed amount - use formula *totalBilledCents* * *unitPrice* + *salesTax* - *startingBalanceCents*.
       operationId: getInvoice
       parameters:
       - $ref: '#/components/parameters/envelope'
@@ -15501,12 +15494,9 @@ paths:
       - Invoices
   /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/csv:
     get:
-      description: "Returns one invoice that MongoDB issued to the specified organization\
-        \ in CSV format. A unique 24-hexadecimal digit string identifies the invoice.\
-        \ To use this resource, the requesting API Key have at least the Organization\
-        \ Billing Viewer, Organization Billing Admin, or Organization Owner role.\
-        \ If you have a cross-organization setup, you can query for a linked invoice\
-        \ if you have the Organization Billing Admin or Organization Owner Role."
+      description: |-
+        Returns one invoice that MongoDB issued to the specified organization in CSV format. A unique 24-hexadecimal digit string identifies the invoice. To use this resource, the requesting API Key have at least the Organization Billing Viewer, Organization Billing Admin, or Organization Owner role. If you have a cross-organization setup, you can query for a linked invoice if you have the Organization Billing Admin or Organization Owner Role.
+         To compute the total owed amount of the invoice - sum up total owed amount of each payment included into the invoice. To compute payment's owed amount - use formula *totalBilledCents* * *unitPrice* + *salesTax* - *startingBalanceCents*.
       operationId: downloadInvoiceCSV
       parameters:
       - $ref: '#/components/parameters/envelope'
@@ -22258,8 +22248,7 @@ components:
           format: int64
           description: Sum of services that the specified organization consumed in
             the period covered in this invoice. This parameter expresses its value
-            in cents (100ths of one US Dollar) and calculates its value as **subtotalCents**
-            + **salesTaxCents** - **startingBalanceCents**.
+            in cents (100ths of one US Dollar).
           readOnly: true
         amountPaidCents:
           type: integer
@@ -22420,8 +22409,7 @@ components:
           format: int64
           description: Sum of services that the specified organization consumed in
             the period covered in this invoice. This parameter expresses its value
-            in cents (100ths of one US Dollar) and calculates its value as **subtotalCents**
-            + **salesTaxCents** - **startingBalanceCents**.
+            in cents (100ths of one US Dollar).
           readOnly: true
         amountPaidCents:
           type: integer
@@ -22436,6 +22424,11 @@ components:
           description: Date and time when the customer made this payment attempt.
             This parameter expresses its value in the ISO 8601 timestamp format in
             UTC.
+          readOnly: true
+        currency:
+          type: string
+          description: The currency in which payment was paid. This parameter expresses
+            its value in 3-letter ISO 4217 currency code.
           readOnly: true
         id:
           type: string
@@ -22488,6 +22481,12 @@ components:
           format: int64
           description: Sum of all positive invoice line items contained in this invoice.
             This parameter expresses its value in cents (100ths of one US Dollar).
+          readOnly: true
+        unitPrice:
+          type: number
+          format: double
+          description: The unit price applied to amountBilledCents to compute total
+            payment amount. This parameter expresses its value in floating point value.
           readOnly: true
         updated:
           type: string
