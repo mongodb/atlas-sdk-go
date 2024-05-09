@@ -19,7 +19,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 87f924347c4d087b309bb1a3cb441e37d7fabda4
+  x-xgen-sha: 3240ec50f60cc06b8ca6774011cdf6e5f75d69d8
 servers:
 - url: https://cloud.mongodb.com
 tags:
@@ -310,7 +310,7 @@ paths:
           $ref: '#/components/responses/internalServerError'
       security:
       - DigestAuth: []
-      summary: Delete the federation settings instance.
+      summary: Delete One Federation Settings Instance
       tags:
       - Federated Authentication
   /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs:
@@ -342,7 +342,7 @@ paths:
           $ref: '#/components/responses/internalServerError'
       security:
       - DigestAuth: []
-      summary: Return All Connected Org Configs from the Federation
+      summary: Return All Connected Org Configs from One Federation
       tags:
       - Federated Authentication
   /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}:
@@ -731,7 +731,7 @@ paths:
           $ref: '#/components/responses/internalServerError'
       security:
       - DigestAuth: []
-      summary: Return all identity providers from the specified federation.
+      summary: Return All Identity Providers in One Federation
       tags:
       - Federated Authentication
     post:
@@ -770,7 +770,7 @@ paths:
           $ref: '#/components/responses/internalServerError'
       security:
       - DigestAuth: []
-      summary: Create one identity provider
+      summary: Create One Identity Provider
       tags:
       - Federated Authentication
   /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}:
@@ -810,7 +810,7 @@ paths:
           $ref: '#/components/responses/internalServerError'
       security:
       - DigestAuth: []
-      summary: Delete the identity provider.
+      summary: Delete One Identity Provider
       tags:
       - Federated Authentication
     get:
@@ -854,7 +854,7 @@ paths:
           $ref: '#/components/responses/internalServerError'
       security:
       - DigestAuth: []
-      summary: Return one identity provider from the specified federation by id.
+      summary: Return One Identity Provider by ID
       tags:
       - Federated Authentication
     patch:
@@ -903,7 +903,7 @@ paths:
           $ref: '#/components/responses/internalServerError'
       security:
       - DigestAuth: []
-      summary: Update the identity provider.
+      summary: Update One Identity Provider
       tags:
       - Federated Authentication
   /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}/jwks:
@@ -944,7 +944,7 @@ paths:
           $ref: '#/components/responses/internalServerError'
       security:
       - DigestAuth: []
-      summary: Revoke the JWKS tokens from an OIDC identity provider.
+      summary: Revoke the JWKS from One OIDC Identity Provider
       tags:
       - Federated Authentication
   /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}/metadata.xml:
@@ -974,7 +974,7 @@ paths:
           $ref: '#/components/responses/internalServerError'
       security:
       - DigestAuth: []
-      summary: Return the metadata of one identity provider in the specified federation.
+      summary: Return the Metadata of One Identity Provider
       tags:
       - Federated Authentication
   /api/atlas/v2/groups:
@@ -2735,6 +2735,7 @@ paths:
       - Cloud Provider Access
   /api/atlas/v2/groups/{groupId}/clusters:
     get:
+      deprecated: true
       description: "Returns the details for all clusters in the specific project to\
         \ which you have access. Clusters contain a group of hosts that maintain the\
         \ same data set. The response includes multi-cloud clusters. To use this resource,\
@@ -2771,7 +2772,9 @@ paths:
       summary: Return All Clusters in One Project
       tags:
       - Clusters
+      x-sunset: 2026-03-01
     post:
+      deprecated: true
       description: "Creates one cluster in the specified project. Clusters contain\
         \ a group of hosts that maintain the same data set. This resource can create\
         \ multi-cloud clusters. Each project supports up to 25 database deployments.\
@@ -2896,6 +2899,7 @@ paths:
       summary: Create One Cluster from One Project
       tags:
       - Clusters
+      x-sunset: 2026-03-01
   /api/atlas/v2/groups/{groupId}/clusters/provider/regions:
     get:
       description: "Returns the list of regions available for the specified cloud\
@@ -3072,6 +3076,7 @@ paths:
       tags:
       - Clusters
     get:
+      deprecated: true
       description: "Returns the details for one cluster in the specified project.\
         \ Clusters contain a group of hosts that maintain the same data set. The response\
         \ includes multi-cloud clusters. To use this resource, the requesting API\
@@ -3112,7 +3117,9 @@ paths:
       summary: Return One Cluster from One Project
       tags:
       - Clusters
+      x-sunset: 2026-03-01
     patch:
+      deprecated: true
       description: "Updates the details for one cluster in the specified project.\
         \ Clusters contain a group of hosts that maintain the same data set. This\
         \ resource can update multi-cloud clusters. To update a cluster's termination\
@@ -3167,6 +3174,7 @@ paths:
       summary: Modify One Cluster from One Project
       tags:
       - Clusters
+      x-sunset: 2026-03-01
   /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/exports:
     get:
       description: "Returns all Cloud Backup snapshot export jobs associated with\
@@ -4534,7 +4542,7 @@ paths:
         \ have the Project Data Access Admin role."
       externalDocs:
         description: Atlas Search Indexes
-        url: https://docs.atlas.mongodb.com/reference/atlas-search/index-definitions/
+        url: https://dochub.mongodb.org/core/index-definitions-fts
       operationId: createAtlasSearchIndex
       parameters:
       - $ref: '#/components/parameters/envelope'
@@ -4584,7 +4592,7 @@ paths:
         \ the Project Data Access Read Write role."
       externalDocs:
         description: Atlas Search Indexes
-        url: https://docs.atlas.mongodb.com/reference/atlas-search/index-definitions/
+        url: https://dochub.mongodb.org/core/index-definitions-fts
       operationId: listAtlasSearchIndexes
       parameters:
       - $ref: '#/components/parameters/envelope'
@@ -4640,7 +4648,7 @@ paths:
         \ Access Admin role."
       externalDocs:
         description: Atlas Search Indexes
-        url: https://docs.atlas.mongodb.com/reference/atlas-search/index-definitions/
+        url: https://dochub.mongodb.org/core/index-definitions-fts
       operationId: deleteAtlasSearchIndex
       parameters:
       - $ref: '#/components/parameters/envelope'
@@ -4693,7 +4701,7 @@ paths:
         \ the requesting API Key must have the Project Data Access Read Write role."
       externalDocs:
         description: Atlas Search Indexes
-        url: https://docs.atlas.mongodb.com/reference/atlas-search/index-definitions/
+        url: https://dochub.mongodb.org/core/index-definitions-fts
       operationId: getAtlasSearchIndex
       parameters:
       - $ref: '#/components/parameters/envelope'
@@ -4710,7 +4718,7 @@ paths:
           minLength: 1
           pattern: "^[a-zA-Z0-9][a-zA-Z0-9-]*$"
       - description: "Unique 24-hexadecimal digit string that identifies the Application\
-          \ Search [index](https://docs.atlas.mongodb.com/reference/atlas-search/index-definitions/).\
+          \ Search [index](https://dochub.mongodb.org/core/index-definitions-fts).\
           \ Use the [Get All Application Search Indexes for a Collection API](https://docs.atlas.mongodb.com/reference/api/fts-indexes-get-all/)\
           \ endpoint to find the IDs of all Application Search indexes."
         in: path
@@ -4745,7 +4753,7 @@ paths:
         \ the requesting API Key must have the Project Data Access Admin role."
       externalDocs:
         description: Atlas Search Indexes
-        url: https://docs.atlas.mongodb.com/reference/atlas-search/index-definitions/
+        url: https://dochub.mongodb.org/core/index-definitions-fts
       operationId: updateAtlasSearchIndex
       parameters:
       - $ref: '#/components/parameters/envelope'
@@ -4762,7 +4770,7 @@ paths:
           minLength: 1
           pattern: "^[a-zA-Z0-9][a-zA-Z0-9-]*$"
       - description: "Unique 24-hexadecimal digit string that identifies the Atlas\
-          \ Search [index](https://docs.atlas.mongodb.com/reference/atlas-search/index-definitions/).\
+          \ Search [index](https://dochub.mongodb.org/core/index-definitions-fts).\
           \ Use the [Get All Atlas Search Indexes for a Collection API](https://docs.atlas.mongodb.com/reference/api/fts-indexes-get-all/)\
           \ endpoint to find the IDs of all Atlas Search indexes."
         in: path
@@ -5254,7 +5262,9 @@ paths:
     get:
       description: "Downloads query logs for the specified online archive. To use\
         \ this resource, the requesting API Key must have the Project Data Access\
-        \ Read Only or higher role."
+        \ Read Only or higher role. The API does not support direct calls with the\
+        \ json response schema. You must request a gzip response schema using an accept\
+        \ header of the format: \"Accept: application/vnd.atlas.YYYY-MM-DD+gzip\"."
       externalDocs:
         description: Online Archive
         url: https://docs.atlas.mongodb.com/online-archive/manage-online-archive/#std-label-manage-online-archive
@@ -5625,6 +5635,7 @@ paths:
       - Cluster Outage Simulation
   /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/processArgs:
     get:
+      deprecated: true
       description: "Returns the advanced configuration details for one cluster in\
         \ the specified project. Clusters contain a group of hosts that maintain the\
         \ same data set. Advanced configuration details include the read/write concern,\
@@ -5668,7 +5679,9 @@ paths:
       summary: Return One Advanced Configuration Options for One Cluster
       tags:
       - Clusters
+      x-sunset: 2025-06-01
     patch:
+      deprecated: true
       description: "Updates the advanced configuration details for one cluster in\
         \ the specified project. Clusters contain a group of hosts that maintain the\
         \ same data set. Advanced configuration details include the read/write concern,\
@@ -5698,6 +5711,8 @@ paths:
           application/vnd.atlas.2023-01-01+json:
             schema:
               $ref: '#/components/schemas/ClusterDescriptionProcessArgs'
+            x-sunset: 2025-06-01
+            x-xgen-version: 2023-01-01
         description: Advanced configuration details to add for one cluster in the
           specified project.
         required: true
@@ -5722,6 +5737,7 @@ paths:
       summary: Update Advanced Configuration Options for One Cluster
       tags:
       - Clusters
+      x-sunset: 2025-06-01
   /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/restartPrimaries:
     post:
       description: "Starts a failover test for the specified cluster in the specified\
@@ -6579,7 +6595,10 @@ paths:
         \ log data from the interval between 3:55 UTC and 4:00 UTC. This feature isn't\
         \ available for `M0` free clusters, `M2`, `M5`, or serverless clusters. To\
         \ use this resource, the requesting API Key must have the Project Data Access\
-        \ Read Only or higher role. Deprecated versions: v2-{2023-01-01}"
+        \ Read Only or higher role. The API does not support direct calls with the\
+        \ json response schema. You must request a gzip response schema using an accept\
+        \ header of the format: \"Accept: application/vnd.atlas.YYYY-MM-DD+gzip\"\
+        . Deprecated versions: v2-{2023-01-01}"
       operationId: getHostLogs
       parameters:
       - $ref: '#/components/parameters/envelope'
@@ -7543,7 +7562,10 @@ paths:
     get:
       description: "Downloads the query logs for the specified federated database\
         \ instance. To use this resource, the requesting API Key must have the Project\
-        \ Owner or Project Data Access Read Write roles."
+        \ Owner or Project Data Access Read Write roles. The API does not support\
+        \ direct calls with the json response schema. You must request a gzip response\
+        \ schema using an accept header of the format: \"Accept: application/vnd.atlas.YYYY-MM-DD+gzip\"\
+        ."
       operationId: downloadFederatedDatabaseQueryLogs
       parameters:
       - $ref: '#/components/parameters/groupId'
@@ -12135,8 +12157,6 @@ paths:
             - SYSTEM_NORMALIZED_CPU_SOFTIRQ
             - SYSTEM_NORMALIZED_CPU_STEAL
             - SYSTEM_NORMALIZED_CPU_USER
-            - TICKETS_AVAILABLE_READS
-            - TICKETS_AVAILABLE_WRITE
           maxItems: 10
           minItems: 1
           uniqueItems: true
@@ -13457,7 +13477,10 @@ paths:
       description: "Downloads the audit logs for the specified Atlas Streams Processing\
         \ instance. By default, logs cover periods of 30 days. To use this resource,\
         \ the requesting API Key must have the Project Data Access roles, Project\
-        \ Owner role or Project Stream Processing Owner role."
+        \ Owner role or Project Stream Processing Owner role. The API does not support\
+        \ direct calls with the json response schema. You must request a gzip response\
+        \ schema using an accept header of the format: \"Accept: application/vnd.atlas.YYYY-MM-DD+gzip\"\
+        ."
       operationId: downloadStreamTenantAuditLogs
       parameters:
       - $ref: '#/components/parameters/envelope'
@@ -17447,12 +17470,7 @@ components:
           readOnly: true
         id:
           type: string
-          description: "Unique 24-hexadecimal digit string that identifies the replication\
-            \ object for a zone in a Global Cluster. If you include existing zones\
-            \ in the request, you must specify this parameter. If you add a new zone\
-            \ to an existing Global Cluster, you may specify this parameter. The request\
-            \ deletes any existing zones in a Global Cluster that you exclude from\
-            \ the request."
+          description: Unique 24-hexadecimal digit string that identifies the cluster.
           example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
@@ -18295,17 +18313,24 @@ components:
             - $ref: '#/components/schemas/tokenFilterasciiFolding'
             - $ref: '#/components/schemas/tokenFilterdaitchMokotoffSoundex'
             - $ref: '#/components/schemas/tokenFilteredgeGram'
+            - $ref: '#/components/schemas/TokenFilterEnglishPossessive'
+            - $ref: '#/components/schemas/TokenFilterFlattenGraph'
             - $ref: '#/components/schemas/tokenFiltericuFolding'
             - $ref: '#/components/schemas/tokenFiltericuNormalizer'
+            - $ref: '#/components/schemas/TokenFilterkStemming'
             - $ref: '#/components/schemas/tokenFilterlength'
             - $ref: '#/components/schemas/tokenFilterlowercase'
             - $ref: '#/components/schemas/tokenFilternGram'
+            - $ref: '#/components/schemas/TokenFilterPorterStemming'
             - $ref: '#/components/schemas/tokenFilterregex'
             - $ref: '#/components/schemas/tokenFilterreverse'
             - $ref: '#/components/schemas/tokenFiltershingle'
             - $ref: '#/components/schemas/tokenFiltersnowballStemming'
+            - $ref: '#/components/schemas/TokenFilterSpanishPluralStemming'
+            - $ref: '#/components/schemas/TokenFilterStempel'
             - $ref: '#/components/schemas/tokenFilterstopword'
             - $ref: '#/components/schemas/tokenFiltertrim'
+            - $ref: '#/components/schemas/TokenFilterWordDelimiterGraph'
         tokenizer:
           type: object
           description: Tokenizer that you want to use to create tokens. Tokens determine
@@ -18345,19 +18370,19 @@ components:
             mappings. Required if **mappings.fields** is omitted.
           externalDocs:
             description: Dynamic or Static Mappings
-            url: https://www.mongodb.com/docs/atlas/atlas-search/index-definitions/#field-mapping-examples
+            url: https://dochub.mongodb.org/core/index-definitions-fts#field-mapping-examples
         fields:
           type: object
           additionalProperties:
             type: object
             externalDocs:
               description: Atlas Search Field Mappings
-              url: https://www.mongodb.com/docs/atlas/atlas-search/define-field-mappings/#define-field-mappings
+              url: https://dochub.mongodb.org/core/field-mapping-definition-fts#define-field-mappings
           description: One or more field specifications for the Atlas Search index.
             Required if **mappings.dynamic** is omitted or set to **false**.
           externalDocs:
             description: Atlas Search Index
-            url: https://www.mongodb.com/docs/atlas/atlas-search/index-definitions/
+            url: https://dochub.mongodb.org/core/index-definitions-fts
       title: mappings
     ApiAtlasSnapshotScheduleView:
       type: object
@@ -22483,10 +22508,9 @@ components:
             This parameter expresses its value in cents (100ths of one US Dollar).
           readOnly: true
         unitPrice:
-          type: number
-          format: double
+          type: string
           description: The unit price applied to amountBilledCents to compute total
-            payment amount. This parameter expresses its value in floating point value.
+            payment amount. This value is represented as a decimal string.
           readOnly: true
         updated:
           type: string
@@ -24164,7 +24188,6 @@ components:
         chunkMigrationConcurrency:
           type: integer
           format: int32
-          default: 1
           description: Number of threads on the source shard and the receiving shard
             for chunk migration. The number of threads should not exceed the half
             the total number of CPU cores in the sharded cluster.
@@ -24182,19 +24205,13 @@ components:
           enum:
           - local
           - available
-          - majority
-          - linearizable
-          - snapshot
           externalDocs:
             description: This option corresponds to the global default read concern.
             url: https://docs.mongodb.com/manual/reference/read-concern/
         defaultWriteConcern:
           type: string
-          default: "1"
-          description: |-
-            Default level of acknowledgment requested from MongoDB for write operations set for this cluster.
-
-            MongoDB 4.4 clusters default to `1`. MongoDB 5.0 and later clusters default to `majority`.
+          description: Default level of acknowledgment requested from MongoDB for
+            write operations when none is specified by the driver.
           externalDocs:
             description: This option corresponds to the the implicit default write
               concern.
@@ -24214,16 +24231,11 @@ components:
             url: https://docs.mongodb.com/upcoming/reference/parameters/#mongodb-parameter-param.failIndexKeyTooLong
         javascriptEnabled:
           type: boolean
-          default: true
           description: Flag that indicates whether the cluster allows execution of
             operations that perform server-side executions of JavaScript.
           externalDocs:
-            description: "If your cluster runs a MongoDB version less than 4.4, this\
-              \ option corresponds to modifying the `security.javascriptEnabled` configuration\
-              \ file option for each `mongod` in the cluster. If your cluster runs\
-              \ MongoDB version 4.4 or greater, this option corresponds to modifying\
-              \ the `security.javascriptEnabled` configuration file option for each\
-              \ `mongod` and `mongos` in the cluster."
+            description: This option corresponds to modifying the `security.javascriptEnabled`
+              configuration file option for each `mongod` and `mongos` in the cluster.
             url: https://docs.mongodb.com/upcoming/reference/configuration-options/#mongodb-setting-security.javascriptEnabled
         minimumEnabledTlsProtocol:
           type: string
@@ -24240,7 +24252,6 @@ components:
             url: https://docs.mongodb.com/upcoming/reference/configuration-options/#mongodb-setting-net.ssl.disabledProtocols
         noTableScan:
           type: boolean
-          default: false
           description: Flag that indicates whether the cluster disables executing
             any query that requires a collection scan to return results.
           externalDocs:
@@ -24272,7 +24283,6 @@ components:
         queryStatsLogVerbosity:
           type: integer
           format: int32
-          default: 1
           description: "May be set to 1 (disabled) or 3 (enabled). When set to 3,\
             \ Atlas will include redacted and anonymized $queryStats output in MongoDB\
             \ logs. $queryStats output does not contain literals or field values.\
@@ -24295,7 +24305,6 @@ components:
         sampleSizeBIConnector:
           type: integer
           format: int32
-          default: 1000
           description: Number of documents per database to sample when gathering schema
             information.
           externalDocs:
@@ -24305,7 +24314,6 @@ components:
         transactionLifetimeLimitSeconds:
           type: integer
           format: int64
-          default: 60
           description: "Lifetime, in seconds, of multi-document transactions. Atlas\
             \ considers the transactions that exceed this limit as expired and so\
             \ aborts them through a periodic cleanup process."
@@ -27692,6 +27700,7 @@ components:
             - CPS_SNAPSHOT_STARTED
             - CPS_SNAPSHOT_SUCCESSFUL
             - CPS_SNAPSHOT_FAILED
+            - CPS_CONCURRENT_SNAPSHOT_FAILED_WILL_RETRY
             - CPS_SNAPSHOT_FALLBACK_SUCCESSFUL
             - CPS_SNAPSHOT_FALLBACK_FAILED
             - CPS_COPY_SNAPSHOT_STARTED
@@ -27869,6 +27878,7 @@ components:
             - CPS_SNAPSHOT_STARTED
             - CPS_SNAPSHOT_SUCCESSFUL
             - CPS_SNAPSHOT_FAILED
+            - CPS_CONCURRENT_SNAPSHOT_FAILED_WILL_RETRY
             - CPS_SNAPSHOT_BEHIND
             - CPS_COPY_SNAPSHOT_STARTED
             - CPS_COPY_SNAPSHOT_FAILED
@@ -28105,6 +28115,7 @@ components:
             - CPS_SNAPSHOT_STARTED
             - CPS_SNAPSHOT_SUCCESSFUL
             - CPS_SNAPSHOT_FAILED
+            - CPS_CONCURRENT_SNAPSHOT_FAILED_WILL_RETRY
             - CPS_SNAPSHOT_FALLBACK_SUCCESSFUL
             - CPS_SNAPSHOT_BEHIND
             - CPS_COPY_SNAPSHOT_STARTED
@@ -30017,6 +30028,7 @@ components:
         - CPS_SNAPSHOT_STARTED
         - CPS_SNAPSHOT_SUCCESSFUL
         - CPS_SNAPSHOT_FAILED
+        - CPS_CONCURRENT_SNAPSHOT_FAILED_WILL_RETRY
         - CPS_SNAPSHOT_FALLBACK_SUCCESSFUL
         - CPS_SNAPSHOT_BEHIND
         - CPS_COPY_SNAPSHOT_STARTED
@@ -32938,7 +32950,7 @@ components:
         name:
           type: string
           description: Name for service account.
-        roleNames:
+        roles:
           type: array
           description: Roles assigned to the Service Account group.
           items:
@@ -32983,7 +32995,7 @@ components:
         name:
           type: string
           description: Service account name.
-        roleNames:
+        roles:
           type: array
           description: Roles assigned to the Service Account group.
           items:
@@ -33022,7 +33034,7 @@ components:
           type: string
           description: Human-readable name for the service account. The name name
             is modifiable and does not have to be unique.
-        roleNames:
+        roles:
           type: array
           description: Project roles associated with the service account.
           items:
@@ -33043,18 +33055,18 @@ components:
             - GROUP_CLUSTER_MANAGER
             - GROUP_SEARCH_INDEX_EDITOR
             - GROUP_STREAM_PROCESSING_OWNER
-        secretExpiresAt:
-          type: string
-          format: date-time
+        secretExpiresAfterHours:
+          type: integer
+          format: int32
           description: Secret expiration time.
       required:
       - description
       - name
-      - secretExpiresAt
+      - secretExpiresAfterHours
     GroupServiceAccountRoleAssignment:
       type: object
       properties:
-        roleNames:
+        roles:
           type: array
           description: Group access roles.
           items:
@@ -33086,7 +33098,7 @@ components:
           type: string
           description: Human-readable name for the service account. The name name
             is modifiable and does not have to be unique.
-        roleNames:
+        roles:
           type: array
           description: Project roles associated with the service account.
           items:
@@ -34384,9 +34396,6 @@ components:
           DISK_PARTITION_SPACE_USED_DATA: '#/components/schemas/RawMetricThresholdView'
           DISK_PARTITION_SPACE_USED_INDEX: '#/components/schemas/RawMetricThresholdView'
           DISK_PARTITION_SPACE_USED_JOURNAL: '#/components/schemas/RawMetricThresholdView'
-          DISK_PARTITION_UTILIZATION_DATA: '#/components/schemas/RawMetricThresholdView'
-          DISK_PARTITION_UTILIZATION_INDEX: '#/components/schemas/RawMetricThresholdView'
-          DISK_PARTITION_UTILIZATION_JOURNAL: '#/components/schemas/RawMetricThresholdView'
           DISK_PARTITION_WRITE_IOPS_DATA: '#/components/schemas/RawMetricThresholdView'
           DISK_PARTITION_WRITE_IOPS_INDEX: '#/components/schemas/RawMetricThresholdView'
           DISK_PARTITION_WRITE_IOPS_JOURNAL: '#/components/schemas/RawMetricThresholdView'
@@ -34432,9 +34441,6 @@ components:
           MAX_DISK_PARTITION_SPACE_USED_DATA: '#/components/schemas/RawMetricThresholdView'
           MAX_DISK_PARTITION_SPACE_USED_INDEX: '#/components/schemas/RawMetricThresholdView'
           MAX_DISK_PARTITION_SPACE_USED_JOURNAL: '#/components/schemas/RawMetricThresholdView'
-          MAX_DISK_PARTITION_UTILIZATION_DATA: '#/components/schemas/RawMetricThresholdView'
-          MAX_DISK_PARTITION_UTILIZATION_INDEX: '#/components/schemas/RawMetricThresholdView'
-          MAX_DISK_PARTITION_UTILIZATION_JOURNAL: '#/components/schemas/RawMetricThresholdView'
           MAX_DISK_PARTITION_WRITE_IOPS_DATA: '#/components/schemas/RawMetricThresholdView'
           MAX_DISK_PARTITION_WRITE_IOPS_INDEX: '#/components/schemas/RawMetricThresholdView'
           MAX_DISK_PARTITION_WRITE_IOPS_JOURNAL: '#/components/schemas/RawMetricThresholdView'
@@ -39417,7 +39423,7 @@ components:
         name:
           type: string
           description: Name for service account.
-        roleNames:
+        roles:
           type: array
           description: Organization roles assigned to the Service Account.
           items:
@@ -39454,7 +39460,7 @@ components:
         name:
           type: string
           description: Service account name.
-        roleNames:
+        roles:
           type: array
           description: Roles assigned to the Service Account group.
           items:
@@ -39485,7 +39491,7 @@ components:
           type: string
           description: Human-readable name for the service account. The name name
             is modifiable and does not have to be unique.
-        roleNames:
+        roles:
           type: array
           description: Organization roles associated with the service account.
           items:
@@ -39498,14 +39504,14 @@ components:
             - ORG_GROUP_CREATOR
             - ORG_OWNER
             - ORG_TEAM_MEMBERS_ADMIN
-        secretExpiresAt:
-          type: string
-          format: date-time
+        secretExpiresAfterHours:
+          type: integer
+          format: int32
           description: Secret expiration time.
       required:
       - description
       - name
-      - secretExpiresAt
+      - secretExpiresAfterHours
     OrgServiceAccountUpdateRequest:
       type: object
       properties:
@@ -39516,7 +39522,7 @@ components:
           type: string
           description: Human-readable name for the service account. The name name
             is modifiable and does not have to be unique.
-        roleNames:
+        roles:
           type: array
           description: Organization roles associated with the Service account.
           items:
@@ -43248,14 +43254,14 @@ components:
             - lucene.ukrainian
             externalDocs:
               description: Atlas Search Analyzers
-              url: https://docs.atlas.mongodb.com/atlas-search/analyzers/
+              url: https://dochub.mongodb.org/core/analyzers--fts
           analyzers:
             type: array
             description: List of user-defined methods to convert database field text
               into searchable words.
             externalDocs:
               description: Custom Atlas Search Analyzers
-              url: https://docs.atlas.mongodb.com/atlas-search/analyzers/custom/
+              url: https://dochub.mongodb.org/core/custom-fts
             items:
               $ref: '#/components/schemas/ApiAtlasFTSAnalyzersViewManual'
           mappings:
@@ -43330,7 +43336,7 @@ components:
             description: Rule sets that map words to their synonyms in this index.
             externalDocs:
               description: Synonym Mapping
-              url: https://docs.atlas.mongodb.com/atlas-search/synonyms/
+              url: https://dochub.mongodb.org/core/fts-synonym-mappings
             items:
               $ref: '#/components/schemas/SearchSynonymMappingDefinition'
       required:
@@ -43881,7 +43887,6 @@ components:
           maxLength: 64
           minLength: 1
           pattern: "^[a-zA-Z0-9][a-zA-Z0-9-]*$"
-          readOnly: true
         providerSettings:
           $ref: '#/components/schemas/ServerlessProviderSettings'
         serverlessBackupOptions:
@@ -46585,6 +46590,167 @@ components:
           $ref: '#/components/schemas/TimeMetricUnits'
       readOnly: true
       title: Time Metric Value
+    TokenFilterEnglishPossessive:
+      type: object
+      description: Filter that removes possessives (trailing 's) from words.
+      properties:
+        type:
+          type: string
+          description: Human-readable label that identifies this token filter type.
+          enum:
+          - englishPossessive
+      required:
+      - type
+      title: englishPossessive
+    TokenFilterFlattenGraph:
+      type: object
+      description: "Filter that transforms a token filter graph, such as the token\
+        \ filter graph that the wordDelimiterGraph token filter produces, into a flat\
+        \ form suitable for indexing."
+      properties:
+        type:
+          type: string
+          description: Human-readable label that identifies this token filter type.
+          enum:
+          - flattenGraph
+      required:
+      - type
+      title: flattenGraph
+    TokenFilterPorterStemming:
+      type: object
+      description: Filter that uses the porter stemming algorithm to remove the common
+        morphological and inflectional suffixes from words in English. It expects
+        lowercase text and doesn't work as expected for uppercase text.
+      properties:
+        type:
+          type: string
+          description: Human-readable label that identifies this token filter type.
+          enum:
+          - porterStemming
+      required:
+      - type
+      title: porterStemming
+    TokenFilterSpanishPluralStemming:
+      type: object
+      description: Filter that stems Spanish plural words. It expects lowercase text.
+      properties:
+        type:
+          type: string
+          description: Human-readable label that identifies this token filter type.
+          enum:
+          - spanishPluralStemming
+      required:
+      - type
+      title: spanishPluralStemming
+    TokenFilterStempel:
+      type: object
+      description: Filter that uses Lucene's default Polish stemmer table to stem
+        words in the Polish language. It expects lowercase text.
+      externalDocs:
+        description: Default Polish stemmer table
+        url: https://lucene.apache.org/core/9_2_0/analysis/stempel/org/apache/lucene/analysis/pl/PolishAnalyzer.html#DEFAULT_STEMMER_FILE
+      properties:
+        type:
+          type: string
+          description: Human-readable label that identifies this token filter type.
+          enum:
+          - stempel
+      required:
+      - type
+      title: stempel
+    TokenFilterWordDelimiterGraph:
+      type: object
+      description: Filter that splits tokens into sub-tokens based on configured rules.
+      properties:
+        delimiterOptions:
+          type: object
+          description: Object that contains the rules that determine how to split
+            words into sub-words.
+          properties:
+            concatenateAll:
+              type: boolean
+              default: false
+              description: Flag that indicates whether to concatenate runs.
+            concatenateNumbers:
+              type: boolean
+              default: false
+              description: Flag that indicates whether to concatenate runs of sub-numbers.
+            concatenateWords:
+              type: boolean
+              default: false
+              description: Flag that indicates whether to concatenate runs of sub-words.
+            generateNumberParts:
+              type: boolean
+              default: true
+              description: "Flag that indicates whether to split tokens based on sub-numbers.\
+                \ For example, if `true`, this option splits `100-2` into `100` and\
+                \ `2`."
+            generateWordParts:
+              type: boolean
+              default: true
+              description: Flag that indicates whether to split tokens based on sub-words.
+            ignoreKeywords:
+              type: boolean
+              default: false
+              description: Flag that indicates whether to skip tokens with the `keyword`
+                attribute set to `true`
+            preserveOriginal:
+              type: boolean
+              default: true
+              description: Flag that indicates whether to generate tokens of the original
+                words.
+            splitOnCaseChange:
+              type: boolean
+              default: true
+              description: Flag that indicates whether to split tokens based on letter-case
+                transitions.
+            splitOnNumerics:
+              type: boolean
+              default: true
+              description: Flag that indicates whether to split tokens based on letter-number
+                transitions.
+            stemEnglishPossessive:
+              type: boolean
+              default: true
+              description: Flag that indicates whether to remove trailing possessives
+                from each sub-word.
+        protectedWords:
+          type: object
+          description: Object that contains options for protected words.
+          properties:
+            ignoreCase:
+              type: boolean
+              default: true
+              description: Flag that indicates whether to ignore letter case sensitivity
+                for protected words.
+            words:
+              type: array
+              description: List that contains the tokens to protect from delimination.
+              items:
+                type: string
+          required:
+          - words
+        type:
+          type: string
+          description: Human-readable label that identifies this token filter type.
+          enum:
+          - wordDelimiterGraph
+      required:
+      - type
+      title: wordDelimiterGraph
+    TokenFilterkStemming:
+      type: object
+      description: Filter that combines algorithmic stemming with a built-in dictionary
+        for the English language to stem words.
+      properties:
+        type:
+          type: string
+          description: Human-readable label that identifies this token filter type.
+          enum:
+          - kStemming
+      required:
+      - type
+      title: kStemming
     TriggerIngestionPipelineRequest:
       type: object
       properties:
