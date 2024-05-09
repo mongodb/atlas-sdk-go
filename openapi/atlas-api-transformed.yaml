@@ -24,7 +24,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 87f924347c4d087b309bb1a3cb441e37d7fabda4
+  x-xgen-sha: 3240ec50f60cc06b8ca6774011cdf6e5f75d69d8
 servers:
   - url: https://cloud.mongodb.com
 tags:
@@ -335,7 +335,7 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Delete the federation settings instance.
+      summary: Delete One Federation Settings Instance
       tags:
         - Federated Authentication
       x-xgen-experimental: true
@@ -367,7 +367,7 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return All Connected Org Configs from the Federation
+      summary: Return All Connected Org Configs from One Federation
       tags:
         - Federated Authentication
       x-xgen-experimental: true
@@ -757,7 +757,7 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return all identity providers from the specified federation.
+      summary: Return All Identity Providers in One Federation
       tags:
         - Federated Authentication
       x-xgen-experimental: true
@@ -799,7 +799,7 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Create one identity provider
+      summary: Create One Identity Provider
       tags:
         - Federated Authentication
       x-xgen-experimental: true
@@ -839,7 +839,7 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Delete the identity provider.
+      summary: Delete One Identity Provider
       tags:
         - Federated Authentication
       x-xgen-experimental: true
@@ -883,7 +883,7 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return one identity provider from the specified federation by id.
+      summary: Return One Identity Provider by ID
       tags:
         - Federated Authentication
       x-xgen-experimental: true
@@ -935,7 +935,7 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Update the identity provider.
+      summary: Update One Identity Provider
       tags:
         - Federated Authentication
       x-xgen-experimental: true
@@ -975,7 +975,7 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Revoke the JWKS tokens from an OIDC identity provider.
+      summary: Revoke the JWKS from One OIDC Identity Provider
       tags:
         - Federated Authentication
       x-xgen-experimental: true
@@ -1006,7 +1006,7 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return the metadata of one identity provider in the specified federation.
+      summary: Return the Metadata of One Identity Provider
       tags:
         - Federated Authentication
       x-xgen-experimental: true
@@ -2753,6 +2753,7 @@ paths:
         - Cloud Provider Access
   "/api/atlas/v2/groups/{groupId}/clusters":
     get:
+      deprecated: true
       description: "Returns the details for all clusters in the specific project to
         which you have access. Clusters contain a group of hosts that maintain
         the same data set. The response includes multi-cloud clusters. To use
@@ -2788,7 +2789,9 @@ paths:
       summary: Return All Clusters in One Project
       tags:
         - Clusters
+      x-sunset: 2026-03-01
     post:
+      deprecated: true
       description: "Creates one cluster in the specified project. Clusters contain a
         group of hosts that maintain the same data set. This resource can create
         multi-cloud clusters. Each project supports up to 25 database
@@ -2911,6 +2914,7 @@ paths:
       summary: Create One Cluster from One Project
       tags:
         - Clusters
+      x-sunset: 2026-03-01
   "/api/atlas/v2/groups/{groupId}/clusters/provider/regions":
     get:
       description: Returns the list of regions available for the specified cloud
@@ -3082,6 +3086,7 @@ paths:
       tags:
         - Clusters
     get:
+      deprecated: true
       description: "Returns the details for one cluster in the specified project.
         Clusters contain a group of hosts that maintain the same data set. The
         response includes multi-cloud clusters. To use this resource, the
@@ -3121,7 +3126,9 @@ paths:
       summary: Return One Cluster from One Project
       tags:
         - Clusters
+      x-sunset: 2026-03-01
     patch:
+      deprecated: true
       description: "Updates the details for one cluster in the specified project.
         Clusters contain a group of hosts that maintain the same data set. This
         resource can update multi-cloud clusters. To update a cluster's
@@ -3174,6 +3181,7 @@ paths:
       summary: Modify One Cluster from One Project
       tags:
         - Clusters
+      x-sunset: 2026-03-01
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/exports":
     get:
       description: Returns all Cloud Backup snapshot export jobs associated with the
@@ -4519,7 +4527,7 @@ paths:
         API Key must have the Project Data Access Admin role.
       externalDocs:
         description: Atlas Search Indexes
-        url: https://docs.atlas.mongodb.com/reference/atlas-search/index-definitions/
+        url: https://dochub.mongodb.org/core/index-definitions-fts
       operationId: createAtlasSearchIndex
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -4567,7 +4575,7 @@ paths:
         have the Project Data Access Read Write role.
       externalDocs:
         description: Atlas Search Indexes
-        url: https://docs.atlas.mongodb.com/reference/atlas-search/index-definitions/
+        url: https://dochub.mongodb.org/core/index-definitions-fts
       operationId: listAtlasSearchIndexes
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -4621,7 +4629,7 @@ paths:
         Data Access Admin role.
       externalDocs:
         description: Atlas Search Indexes
-        url: https://docs.atlas.mongodb.com/reference/atlas-search/index-definitions/
+        url: https://dochub.mongodb.org/core/index-definitions-fts
       operationId: deleteAtlasSearchIndex
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -4674,7 +4682,7 @@ paths:
         Write role.
       externalDocs:
         description: Atlas Search Indexes
-        url: https://docs.atlas.mongodb.com/reference/atlas-search/index-definitions/
+        url: https://dochub.mongodb.org/core/index-definitions-fts
       operationId: getAtlasSearchIndex
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -4690,8 +4698,8 @@ paths:
             pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal digit string that identifies the Application
             Search
-            [index](https://docs.atlas.mongodb.com/reference/atlas-search/index-definitions/).
-            Use the [Get All Application Search Indexes for a Collection
+            [index](https://dochub.mongodb.org/core/index-definitions-fts). Use
+            the [Get All Application Search Indexes for a Collection
             API](https://docs.atlas.mongodb.com/reference/api/fts-indexes-get-all/)
             endpoint to find the IDs of all Application Search indexes.
           in: path
@@ -4726,7 +4734,7 @@ paths:
         the requesting API Key must have the Project Data Access Admin role.
       externalDocs:
         description: Atlas Search Indexes
-        url: https://docs.atlas.mongodb.com/reference/atlas-search/index-definitions/
+        url: https://dochub.mongodb.org/core/index-definitions-fts
       operationId: updateAtlasSearchIndex
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -4741,8 +4749,8 @@ paths:
             minLength: 1
             pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal digit string that identifies the Atlas Search
-            [index](https://docs.atlas.mongodb.com/reference/atlas-search/index-definitions/).
-            Use the [Get All Atlas Search Indexes for a Collection
+            [index](https://dochub.mongodb.org/core/index-definitions-fts). Use
+            the [Get All Atlas Search Indexes for a Collection
             API](https://docs.atlas.mongodb.com/reference/api/fts-indexes-get-all/)
             endpoint to find the IDs of all Atlas Search indexes.
           in: path
@@ -5223,9 +5231,11 @@ paths:
           values in partition fields
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/queryLogs.gz":
     get:
-      description: Downloads query logs for the specified online archive. To use this
+      description: 'Downloads query logs for the specified online archive. To use this
         resource, the requesting API Key must have the Project Data Access Read
-        Only or higher role.
+        Only or higher role. The API does not support direct calls with the json
+        response schema. You must request a gzip response schema using an accept
+        header of the format: "Accept: application/vnd.atlas.YYYY-MM-DD+gzip".'
       externalDocs:
         description: Online Archive
         url: https://docs.atlas.mongodb.com/online-archive/manage-online-archive/#std-label-manage-online-archive
@@ -5592,6 +5602,7 @@ paths:
       x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/processArgs":
     get:
+      deprecated: true
       description: Returns the advanced configuration details for one cluster in the
         specified project. Clusters contain a group of hosts that maintain the
         same data set. Advanced configuration details include the read/write
@@ -5633,7 +5644,9 @@ paths:
       summary: Return One Advanced Configuration Options for One Cluster
       tags:
         - Clusters
+      x-sunset: 2025-06-01
     patch:
+      deprecated: true
       description: Updates the advanced configuration details for one cluster in the
         specified project. Clusters contain a group of hosts that maintain the
         same data set. Advanced configuration details include the read/write
@@ -5661,6 +5674,8 @@ paths:
           application/vnd.atlas.2023-01-01+json:
             schema:
               $ref: "#/components/schemas/ClusterDescriptionProcessArgs"
+            x-sunset: 2025-06-01
+            x-xgen-version: 2023-01-01
         description: Advanced configuration details to add for one cluster in the
           specified project.
         required: true
@@ -5685,6 +5700,7 @@ paths:
       summary: Update Advanced Configuration Options for One Cluster
       tags:
         - Clusters
+      x-sunset: 2025-06-01
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/restartPrimaries":
     post:
       description: "Starts a failover test for the specified cluster in the specified
@@ -6504,8 +6520,11 @@ paths:
         poll the API, the API returns log data from the interval between 3:55
         UTC and 4:00 UTC. This feature isn't available for `M0` free clusters,
         `M2`, `M5`, or serverless clusters. To use this resource, the requesting
-        API Key must have the Project Data Access Read Only or higher role.
-        Deprecated versions: v2-{2023-01-01}"
+        API Key must have the Project Data Access Read Only or higher role. The
+        API does not support direct calls with the json response schema. You
+        must request a gzip response schema using an accept header of the
+        format: \"Accept: application/vnd.atlas.YYYY-MM-DD+gzip\". Deprecated
+        versions: v2-{2023-01-01}"
       operationId: getHostLogs
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -7426,9 +7445,12 @@ paths:
         - Data Federation
   "/api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/queryLogs.gz":
     get:
-      description: Downloads the query logs for the specified federated database
+      description: 'Downloads the query logs for the specified federated database
         instance. To use this resource, the requesting API Key must have the
-        Project Owner or Project Data Access Read Write roles.
+        Project Owner or Project Data Access Read Write roles. The API does not
+        support direct calls with the json response schema. You must request a
+        gzip response schema using an accept header of the format: "Accept:
+        application/vnd.atlas.YYYY-MM-DD+gzip".'
       operationId: downloadFederatedDatabaseQueryLogs
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -12998,10 +13020,13 @@ paths:
       x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/auditLogs":
     get:
-      description: Downloads the audit logs for the specified Atlas Streams Processing
-        instance. By default, logs cover periods of 30 days. To use this
-        resource, the requesting API Key must have the Project Data Access
-        roles, Project Owner role or Project Stream Processing Owner role.
+      description: 'Downloads the audit logs for the specified Atlas Streams
+        Processing instance. By default, logs cover periods of 30 days. To use
+        this resource, the requesting API Key must have the Project Data Access
+        roles, Project Owner role or Project Stream Processing Owner role. The
+        API does not support direct calls with the json response schema. You
+        must request a gzip response schema using an accept header of the
+        format: "Accept: application/vnd.atlas.YYYY-MM-DD+gzip".'
       operationId: downloadStreamTenantAuditLogs
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -16384,12 +16409,7 @@ components:
           readOnly: true
         id:
           type: string
-          description: Unique 24-hexadecimal digit string that identifies the replication
-            object for a zone in a Global Cluster. If you include existing zones
-            in the request, you must specify this parameter. If you add a new
-            zone to an existing Global Cluster, you may specify this parameter.
-            The request deletes any existing zones in a Global Cluster that you
-            exclude from the request.
+          description: Unique 24-hexadecimal digit string that identifies the cluster.
           example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
@@ -18902,11 +18922,9 @@ components:
             Dollar).
           readOnly: true
         unitPrice:
-          type: number
-          format: double
+          type: string
           description: The unit price applied to amountBilledCents to compute total
-            payment amount. This parameter expresses its value in floating point
-            value.
+            payment amount. This value is represented as a decimal string.
           readOnly: true
         updated:
           type: string
@@ -20137,7 +20155,6 @@ components:
         chunkMigrationConcurrency:
           type: integer
           format: int32
-          default: 1
           description: Number of threads on the source shard and the receiving shard for
             chunk migration. The number of threads should not exceed the half
             the total number of CPU cores in the sharded cluster.
@@ -20159,13 +20176,8 @@ components:
             url: https://docs.mongodb.com/manual/reference/read-concern/
         defaultWriteConcern:
           type: string
-          default: "1"
-          description: >-
-            Default level of acknowledgment requested from MongoDB for write
-            operations set for this cluster.
-
-
-            MongoDB 4.4 clusters default to `1`. MongoDB 5.0 and later clusters default to `majority`.
+          description: Default level of acknowledgment requested from MongoDB for write
+            operations when none is specified by the driver.
           externalDocs:
             description: This option corresponds to the the implicit default write concern.
             url: https://docs.mongodb.com/manual/reference/write-concern/
@@ -20186,17 +20198,12 @@ components:
             url: https://docs.mongodb.com/upcoming/reference/parameters/#mongodb-parameter-param.failIndexKeyTooLong
         javascriptEnabled:
           type: boolean
-          default: true
           description: Flag that indicates whether the cluster allows execution of
             operations that perform server-side executions of JavaScript.
           externalDocs:
-            description: If your cluster runs a MongoDB version less than 4.4, this option
-              corresponds to modifying the `security.javascriptEnabled`
-              configuration file option for each `mongod` in the cluster. If
-              your cluster runs MongoDB version 4.4 or greater, this option
-              corresponds to modifying the `security.javascriptEnabled`
-              configuration file option for each `mongod` and `mongos` in the
-              cluster.
+            description: This option corresponds to modifying the
+              `security.javascriptEnabled` configuration file option for each
+              `mongod` and `mongos` in the cluster.
             url: https://docs.mongodb.com/upcoming/reference/configuration-options/#mongodb-setting-security.javascriptEnabled
         minimumEnabledTlsProtocol:
           type: string
@@ -20209,7 +20216,6 @@ components:
             url: https://docs.mongodb.com/upcoming/reference/configuration-options/#mongodb-setting-net.ssl.disabledProtocols
         noTableScan:
           type: boolean
-          default: false
           description: Flag that indicates whether the cluster disables executing any
             query that requires a collection scan to return results.
           externalDocs:
@@ -20239,7 +20245,6 @@ components:
         queryStatsLogVerbosity:
           type: integer
           format: int32
-          default: 1
           description: May be set to 1 (disabled) or 3 (enabled). When set to 3, Atlas
             will include redacted and anonymized $queryStats output in MongoDB
             logs. $queryStats output does not contain literals or field values.
@@ -20262,7 +20267,6 @@ components:
         sampleSizeBIConnector:
           type: integer
           format: int32
-          default: 1000
           description: Number of documents per database to sample when gathering schema
             information.
           externalDocs:
@@ -20272,7 +20276,6 @@ components:
         transactionLifetimeLimitSeconds:
           type: integer
           format: int64
-          default: 60
           description: Lifetime, in seconds, of multi-document transactions. Atlas
             considers the transactions that exceed this limit as expired and so
             aborts them through a periodic cleanup process.
@@ -20537,14 +20540,14 @@ components:
              MongoDB Cloud uses the selected process to build the Atlas Search index.
           externalDocs:
             description: Atlas Search Analyzers
-            url: https://docs.atlas.mongodb.com/atlas-search/analyzers/
+            url: https://dochub.mongodb.org/core/analyzers--fts
         analyzers:
           type: array
           description: List of user-defined methods to convert database field text into
             searchable words.
           externalDocs:
             description: Custom Atlas Search Analyzers
-            url: https://docs.atlas.mongodb.com/atlas-search/analyzers/custom/
+            url: https://dochub.mongodb.org/core/custom-fts
           items:
             $ref: "#/components/schemas/ApiAtlasFTSAnalyzers"
         mappings:
@@ -20572,7 +20575,7 @@ components:
           description: Rule sets that map words to their synonyms in this index.
           externalDocs:
             description: Synonym Mapping
-            url: https://docs.atlas.mongodb.com/atlas-search/synonyms/
+            url: https://dochub.mongodb.org/core/fts-synonym-mappings
           items:
             $ref: "#/components/schemas/SearchSynonymMappingDefinition"
         fields:
@@ -28302,7 +28305,6 @@ components:
           maxLength: 64
           minLength: 1
           pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
-          readOnly: true
         providerSettings:
           $ref: "#/components/schemas/ServerlessProviderSettings"
         serverlessBackupOptions:
@@ -31815,18 +31817,18 @@ components:
             mappings. Required if **mappings.fields** is omitted.
           externalDocs:
             description: Dynamic or Static Mappings
-            url: https://www.mongodb.com/docs/atlas/atlas-search/index-definitions/#field-mapping-examples
+            url: https://dochub.mongodb.org/core/index-definitions-fts#field-mapping-examples
         fields:
           type: object
           additionalProperties:
             externalDocs:
               description: Atlas Search Field Mappings
-              url: https://www.mongodb.com/docs/atlas/atlas-search/define-field-mappings/#define-field-mappings
+              url: https://dochub.mongodb.org/core/field-mapping-definition-fts#define-field-mappings
           description: One or more field specifications for the Atlas Search index.
             Required if **mappings.dynamic** is omitted or set to **false**.
           externalDocs:
             description: Atlas Search Index
-            url: https://www.mongodb.com/docs/atlas/atlas-search/index-definitions/
+            url: https://dochub.mongodb.org/core/index-definitions-fts
       title: mappings
   securitySchemes:
     DigestAuth:

@@ -4,19 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ChunkMigrationConcurrency** | Pointer to **int** | Number of threads on the source shard and the receiving shard for chunk migration. The number of threads should not exceed the half the total number of CPU cores in the sharded cluster. | [optional] [default to 1]
+**ChunkMigrationConcurrency** | Pointer to **int** | Number of threads on the source shard and the receiving shard for chunk migration. The number of threads should not exceed the half the total number of CPU cores in the sharded cluster. | [optional] 
 **DefaultReadConcern** | Pointer to **string** | Default level of acknowledgment requested from MongoDB for read operations set for this cluster.  MongoDB 4.4 clusters default to &#x60;available&#x60;. MongoDB 5.0 and later clusters default to &#x60;local&#x60;. | [optional] [default to "available"]
-**DefaultWriteConcern** | Pointer to **string** | Default level of acknowledgment requested from MongoDB for write operations set for this cluster.  MongoDB 4.4 clusters default to &#x60;1&#x60;. MongoDB 5.0 and later clusters default to &#x60;majority&#x60;. | [optional] [default to "1"]
+**DefaultWriteConcern** | Pointer to **string** | Default level of acknowledgment requested from MongoDB for write operations when none is specified by the driver. | [optional] 
 **FailIndexKeyTooLong** | Pointer to **bool** | Flag that indicates whether you can insert or update documents where all indexed entries don&#39;t exceed 1024 bytes. If you set this to false, [mongod](https://docs.mongodb.com/upcoming/reference/program/mongod/#mongodb-binary-bin.mongod) writes documents that exceed this limit but doesn&#39;t index them. This parameter has been removed as of [MongoDB 4.4](https://www.mongodb.com/docs/manual/reference/parameters/#mongodb-parameter-param.failIndexKeyTooLong). | [optional] [default to true]
-**JavascriptEnabled** | Pointer to **bool** | Flag that indicates whether the cluster allows execution of operations that perform server-side executions of JavaScript. | [optional] [default to true]
+**JavascriptEnabled** | Pointer to **bool** | Flag that indicates whether the cluster allows execution of operations that perform server-side executions of JavaScript. | [optional] 
 **MinimumEnabledTlsProtocol** | Pointer to **string** | Minimum Transport Layer Security (TLS) version that the cluster accepts for incoming connections. Clusters using TLS 1.0 or 1.1 should consider setting TLS 1.2 as the minimum TLS protocol version. | [optional] 
-**NoTableScan** | Pointer to **bool** | Flag that indicates whether the cluster disables executing any query that requires a collection scan to return results. | [optional] [default to false]
+**NoTableScan** | Pointer to **bool** | Flag that indicates whether the cluster disables executing any query that requires a collection scan to return results. | [optional] 
 **OplogMinRetentionHours** | Pointer to **float64** | Minimum retention window for cluster&#39;s oplog expressed in hours. A value of null indicates that the cluster uses the default minimum oplog window that MongoDB Cloud calculates. | [optional] 
 **OplogSizeMB** | Pointer to **int** | Storage limit of cluster&#39;s oplog expressed in megabytes. A value of null indicates that the cluster uses the default oplog size that MongoDB Cloud calculates. | [optional] 
-**QueryStatsLogVerbosity** | Pointer to **int** | May be set to 1 (disabled) or 3 (enabled). When set to 3, Atlas will include redacted and anonymized $queryStats output in MongoDB logs. $queryStats output does not contain literals or field values. Enabling this setting might impact the performance of your cluster. | [optional] [default to 1]
+**QueryStatsLogVerbosity** | Pointer to **int** | May be set to 1 (disabled) or 3 (enabled). When set to 3, Atlas will include redacted and anonymized $queryStats output in MongoDB logs. $queryStats output does not contain literals or field values. Enabling this setting might impact the performance of your cluster. | [optional] 
 **SampleRefreshIntervalBIConnector** | Pointer to **int** | Interval in seconds at which the mongosqld process re-samples data to create its relational schema. | [optional] [default to 0]
-**SampleSizeBIConnector** | Pointer to **int** | Number of documents per database to sample when gathering schema information. | [optional] [default to 1000]
-**TransactionLifetimeLimitSeconds** | Pointer to **int64** | Lifetime, in seconds, of multi-document transactions. Atlas considers the transactions that exceed this limit as expired and so aborts them through a periodic cleanup process. | [optional] [default to 60]
+**SampleSizeBIConnector** | Pointer to **int** | Number of documents per database to sample when gathering schema information. | [optional] 
+**TransactionLifetimeLimitSeconds** | Pointer to **int64** | Lifetime, in seconds, of multi-document transactions. Atlas considers the transactions that exceed this limit as expired and so aborts them through a periodic cleanup process. | [optional] 
 
 ## Methods
 

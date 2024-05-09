@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **SalesTaxCents** | Pointer to **int64** | Sum of sales tax applied to this invoice. This parameter expresses its value in cents (100ths of one US Dollar). | [optional] [readonly] 
 **StatusName** | Pointer to **string** | Phase of payment processing for the associated invoice when you made this request.  These phases include:  | Phase Value | Reason | |---|---| | &#x60;CANCELLED&#x60; | Customer or MongoDB cancelled the payment. | | &#x60;ERROR&#x60; | Issue arose when attempting to complete payment. | | &#x60;FAILED&#x60; | MongoDB tried to charge the credit card without success. | | &#x60;FAILED_AUTHENTICATION&#x60; | Strong Customer Authentication has failed. Confirm that your payment method is authenticated. | | &#x60;FORGIVEN&#x60; | Customer initiated payment which MongoDB later forgave. | | &#x60;INVOICED&#x60; | MongoDB issued an invoice that included this line item. | | &#x60;NEW&#x60; | Customer provided a method of payment, but MongoDB hasn&#39;t tried to charge the credit card. | | &#x60;PAID&#x60; | Customer submitted a successful payment. | | &#x60;PARTIAL_PAID&#x60; | Customer paid for part of this line item. |  | [optional] 
 **SubtotalCents** | Pointer to **int64** | Sum of all positive invoice line items contained in this invoice. This parameter expresses its value in cents (100ths of one US Dollar). | [optional] [readonly] 
-**UnitPrice** | Pointer to **float64** | The unit price applied to amountBilledCents to compute total payment amount. This parameter expresses its value in floating point value. | [optional] [readonly] 
+**UnitPrice** | Pointer to **string** | The unit price applied to amountBilledCents to compute total payment amount. This value is represented as a decimal string. | [optional] [readonly] 
 **Updated** | Pointer to **time.Time** | Date and time when the customer made an update to this payment attempt. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
 
 ## Methods
@@ -228,20 +228,20 @@ SetSubtotalCents sets SubtotalCents field to given value.
 HasSubtotalCents returns a boolean if a field has been set.
 ### GetUnitPrice
 
-`func (o *BillingPayment) GetUnitPrice() float64`
+`func (o *BillingPayment) GetUnitPrice() string`
 
 GetUnitPrice returns the UnitPrice field if non-nil, zero value otherwise.
 
 ### GetUnitPriceOk
 
-`func (o *BillingPayment) GetUnitPriceOk() (*float64, bool)`
+`func (o *BillingPayment) GetUnitPriceOk() (*string, bool)`
 
 GetUnitPriceOk returns a tuple with the UnitPrice field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUnitPrice
 
-`func (o *BillingPayment) SetUnitPrice(v float64)`
+`func (o *BillingPayment) SetUnitPrice(v string)`
 
 SetUnitPrice sets UnitPrice field to given value.
 

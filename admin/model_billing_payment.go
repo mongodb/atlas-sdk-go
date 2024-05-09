@@ -32,9 +32,9 @@ type BillingPayment struct {
 	// Sum of all positive invoice line items contained in this invoice. This parameter expresses its value in cents (100ths of one US Dollar).
 	// Read only field.
 	SubtotalCents *int64 `json:"subtotalCents,omitempty"`
-	// The unit price applied to amountBilledCents to compute total payment amount. This parameter expresses its value in floating point value.
+	// The unit price applied to amountBilledCents to compute total payment amount. This value is represented as a decimal string.
 	// Read only field.
-	UnitPrice *float64 `json:"unitPrice,omitempty"`
+	UnitPrice *string `json:"unitPrice,omitempty"`
 	// Date and time when the customer made an update to this payment attempt. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	Updated *time.Time `json:"updated,omitempty"`
@@ -322,9 +322,9 @@ func (o *BillingPayment) SetSubtotalCents(v int64) {
 }
 
 // GetUnitPrice returns the UnitPrice field value if set, zero value otherwise
-func (o *BillingPayment) GetUnitPrice() float64 {
+func (o *BillingPayment) GetUnitPrice() string {
 	if o == nil || IsNil(o.UnitPrice) {
-		var ret float64
+		var ret string
 		return ret
 	}
 	return *o.UnitPrice
@@ -332,7 +332,7 @@ func (o *BillingPayment) GetUnitPrice() float64 {
 
 // GetUnitPriceOk returns a tuple with the UnitPrice field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BillingPayment) GetUnitPriceOk() (*float64, bool) {
+func (o *BillingPayment) GetUnitPriceOk() (*string, bool) {
 	if o == nil || IsNil(o.UnitPrice) {
 		return nil, false
 	}
@@ -349,8 +349,8 @@ func (o *BillingPayment) HasUnitPrice() bool {
 	return false
 }
 
-// SetUnitPrice gets a reference to the given float64 and assigns it to the UnitPrice field.
-func (o *BillingPayment) SetUnitPrice(v float64) {
+// SetUnitPrice gets a reference to the given string and assigns it to the UnitPrice field.
+func (o *BillingPayment) SetUnitPrice(v string) {
 	o.UnitPrice = &v
 }
 

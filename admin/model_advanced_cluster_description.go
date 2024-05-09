@@ -31,7 +31,7 @@ type AdvancedClusterDescription struct {
 	// Unique 24-hexadecimal character string that identifies the project.
 	// Read only field.
 	GroupId *string `json:"groupId,omitempty"`
-	// Unique 24-hexadecimal digit string that identifies the replication object for a zone in a Global Cluster. If you include existing zones in the request, you must specify this parameter. If you add a new zone to an existing Global Cluster, you may specify this parameter. The request deletes any existing zones in a Global Cluster that you exclude from the request.
+	// Unique 24-hexadecimal digit string that identifies the cluster.
 	// Read only field.
 	Id *string `json:"id,omitempty"`
 	// Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster. The MongoDB Cloud console doesn't display your labels.  Cluster labels are deprecated and will be removed in a future release. We strongly recommend that you use [resource tags](https://dochub.mongodb.org/core/add-cluster-tag-atlas) instead.

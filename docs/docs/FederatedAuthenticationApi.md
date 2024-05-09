@@ -4,23 +4,23 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateIdentityProvider**](FederatedAuthenticationApi.md#CreateIdentityProvider) | **Post** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders | Create one identity provider
+[**CreateIdentityProvider**](FederatedAuthenticationApi.md#CreateIdentityProvider) | **Post** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders | Create One Identity Provider
 [**CreateRoleMapping**](FederatedAuthenticationApi.md#CreateRoleMapping) | **Post** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings | Add One Role Mapping to One Organization
-[**DeleteFederationApp**](FederatedAuthenticationApi.md#DeleteFederationApp) | **Delete** /api/atlas/v2/federationSettings/{federationSettingsId} | Delete the federation settings instance.
-[**DeleteIdentityProvider**](FederatedAuthenticationApi.md#DeleteIdentityProvider) | **Delete** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId} | Delete the identity provider.
+[**DeleteFederationApp**](FederatedAuthenticationApi.md#DeleteFederationApp) | **Delete** /api/atlas/v2/federationSettings/{federationSettingsId} | Delete One Federation Settings Instance
+[**DeleteIdentityProvider**](FederatedAuthenticationApi.md#DeleteIdentityProvider) | **Delete** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId} | Delete One Identity Provider
 [**DeleteRoleMapping**](FederatedAuthenticationApi.md#DeleteRoleMapping) | **Delete** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings/{id} | Remove One Role Mapping from One Organization
 [**GetConnectedOrgConfig**](FederatedAuthenticationApi.md#GetConnectedOrgConfig) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId} | Return One Org Config Connected to One Federation
 [**GetFederationSettings**](FederatedAuthenticationApi.md#GetFederationSettings) | **Get** /api/atlas/v2/orgs/{orgId}/federationSettings | Return Federation Settings for One Organization
-[**GetIdentityProvider**](FederatedAuthenticationApi.md#GetIdentityProvider) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId} | Return one identity provider from the specified federation by id.
-[**GetIdentityProviderMetadata**](FederatedAuthenticationApi.md#GetIdentityProviderMetadata) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}/metadata.xml | Return the metadata of one identity provider in the specified federation.
+[**GetIdentityProvider**](FederatedAuthenticationApi.md#GetIdentityProvider) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId} | Return One Identity Provider by ID
+[**GetIdentityProviderMetadata**](FederatedAuthenticationApi.md#GetIdentityProviderMetadata) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}/metadata.xml | Return the Metadata of One Identity Provider
 [**GetRoleMapping**](FederatedAuthenticationApi.md#GetRoleMapping) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings/{id} | Return One Role Mapping from One Organization
-[**ListConnectedOrgConfigs**](FederatedAuthenticationApi.md#ListConnectedOrgConfigs) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs | Return All Connected Org Configs from the Federation
-[**ListIdentityProviders**](FederatedAuthenticationApi.md#ListIdentityProviders) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders | Return all identity providers from the specified federation.
+[**ListConnectedOrgConfigs**](FederatedAuthenticationApi.md#ListConnectedOrgConfigs) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs | Return All Connected Org Configs from One Federation
+[**ListIdentityProviders**](FederatedAuthenticationApi.md#ListIdentityProviders) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders | Return All Identity Providers in One Federation
 [**ListRoleMappings**](FederatedAuthenticationApi.md#ListRoleMappings) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings | Return All Role Mappings from One Organization
 [**RemoveConnectedOrgConfig**](FederatedAuthenticationApi.md#RemoveConnectedOrgConfig) | **Delete** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId} | Remove One Org Config Connected to One Federation
-[**RevokeJwksFromIdentityProvider**](FederatedAuthenticationApi.md#RevokeJwksFromIdentityProvider) | **Delete** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}/jwks | Revoke the JWKS tokens from an OIDC identity provider.
+[**RevokeJwksFromIdentityProvider**](FederatedAuthenticationApi.md#RevokeJwksFromIdentityProvider) | **Delete** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}/jwks | Revoke the JWKS from One OIDC Identity Provider
 [**UpdateConnectedOrgConfig**](FederatedAuthenticationApi.md#UpdateConnectedOrgConfig) | **Patch** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId} | Update One Org Config Connected to One Federation
-[**UpdateIdentityProvider**](FederatedAuthenticationApi.md#UpdateIdentityProvider) | **Patch** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId} | Update the identity provider.
+[**UpdateIdentityProvider**](FederatedAuthenticationApi.md#UpdateIdentityProvider) | **Patch** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId} | Update One Identity Provider
 [**UpdateRoleMapping**](FederatedAuthenticationApi.md#UpdateRoleMapping) | **Put** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings/{id} | Update One Role Mapping in One Organization
 
 
@@ -29,7 +29,7 @@ Method | HTTP request | Description
 
 > FederationOidcIdentityProvider CreateIdentityProvider(ctx, federationSettingsId, federationOidcIdentityProviderUpdate FederationOidcIdentityProviderUpdate).Execute()
 
-Create one identity provider
+Create One Identity Provider
 
 
 ## Experimental
@@ -192,7 +192,7 @@ Name | Type | Description  | Notes
 
 > DeleteFederationApp(ctx, federationSettingsId).Execute()
 
-Delete the federation settings instance.
+Delete One Federation Settings Instance
 
 
 ## Experimental
@@ -268,7 +268,7 @@ Name | Type | Description  | Notes
 
 > DeleteIdentityProvider(ctx, federationSettingsId, identityProviderId).Execute()
 
-Delete the identity provider.
+Delete One Identity Provider
 
 
 ## Experimental
@@ -588,7 +588,7 @@ Name | Type | Description  | Notes
 
 > FederationIdentityProvider GetIdentityProvider(ctx, federationSettingsId, identityProviderId).Execute()
 
-Return one identity provider from the specified federation by id.
+Return One Identity Provider by ID
 
 
 ## Experimental
@@ -669,7 +669,7 @@ Name | Type | Description  | Notes
 
 > string GetIdentityProviderMetadata(ctx, federationSettingsId, identityProviderId).Execute()
 
-Return the metadata of one identity provider in the specified federation.
+Return the Metadata of One Identity Provider
 
 
 ## Experimental
@@ -834,7 +834,7 @@ Name | Type | Description  | Notes
 
 > PaginatedConnectedOrgConfigs ListConnectedOrgConfigs(ctx, federationSettingsId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
-Return All Connected Org Configs from the Federation
+Return All Connected Org Configs from One Federation
 
 
 ## Experimental
@@ -916,7 +916,7 @@ Name | Type | Description  | Notes
 
 > PaginatedFederationIdentityProvider ListIdentityProviders(ctx, federationSettingsId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Protocol(protocol).IdpType(idpType).Execute()
 
-Return all identity providers from the specified federation.
+Return All Identity Providers in One Federation
 
 
 ## Experimental
@@ -1164,7 +1164,7 @@ Name | Type | Description  | Notes
 
 > RevokeJwksFromIdentityProvider(ctx, federationSettingsId, identityProviderId).Execute()
 
-Revoke the JWKS tokens from an OIDC identity provider.
+Revoke the JWKS from One OIDC Identity Provider
 
 
 ## Experimental
@@ -1326,7 +1326,7 @@ Name | Type | Description  | Notes
 
 > FederationIdentityProvider UpdateIdentityProvider(ctx, federationSettingsId, identityProviderId, federationIdentityProviderUpdate FederationIdentityProviderUpdate).Execute()
 
-Update the identity provider.
+Update One Identity Provider
 
 
 ## Experimental
