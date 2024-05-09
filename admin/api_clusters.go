@@ -22,6 +22,8 @@ type ClustersApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@return CreateClusterApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for ClustersApi
 	*/
 	CreateCluster(ctx context.Context, groupId string, advancedClusterDescription *AdvancedClusterDescription) CreateClusterApiRequest
 	/*
@@ -31,6 +33,8 @@ type ClustersApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param CreateClusterApiParams - Parameters for the request
 		@return CreateClusterApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for ClustersApi
 	*/
 	CreateClusterWithParams(ctx context.Context, args *CreateClusterApiParams) CreateClusterApiRequest
 
@@ -70,6 +74,8 @@ type ClustersApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param clusterName Human-readable label that identifies this cluster.
 		@return GetClusterApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for ClustersApi
 	*/
 	GetCluster(ctx context.Context, groupId string, clusterName string) GetClusterApiRequest
 	/*
@@ -79,6 +85,8 @@ type ClustersApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param GetClusterApiParams - Parameters for the request
 		@return GetClusterApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for ClustersApi
 	*/
 	GetClusterWithParams(ctx context.Context, args *GetClusterApiParams) GetClusterApiRequest
 
@@ -94,6 +102,8 @@ type ClustersApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param clusterName Human-readable label that identifies the cluster.
 		@return GetClusterAdvancedConfigurationApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for ClustersApi
 	*/
 	GetClusterAdvancedConfiguration(ctx context.Context, groupId string, clusterName string) GetClusterAdvancedConfigurationApiRequest
 	/*
@@ -103,6 +113,8 @@ type ClustersApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param GetClusterAdvancedConfigurationApiParams - Parameters for the request
 		@return GetClusterAdvancedConfigurationApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for ClustersApi
 	*/
 	GetClusterAdvancedConfigurationWithParams(ctx context.Context, args *GetClusterAdvancedConfigurationApiParams) GetClusterAdvancedConfigurationApiRequest
 
@@ -188,6 +200,8 @@ type ClustersApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@return ListClustersApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for ClustersApi
 	*/
 	ListClusters(ctx context.Context, groupId string) ListClustersApiRequest
 	/*
@@ -197,6 +211,8 @@ type ClustersApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param ListClustersApiParams - Parameters for the request
 		@return ListClustersApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for ClustersApi
 	*/
 	ListClustersWithParams(ctx context.Context, args *ListClustersApiParams) ListClustersApiRequest
 
@@ -282,6 +298,8 @@ type ClustersApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param clusterName Human-readable label that identifies the cluster.
 		@return UpdateClusterApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for ClustersApi
 	*/
 	UpdateCluster(ctx context.Context, groupId string, clusterName string, advancedClusterDescription *AdvancedClusterDescription) UpdateClusterApiRequest
 	/*
@@ -291,6 +309,8 @@ type ClustersApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param UpdateClusterApiParams - Parameters for the request
 		@return UpdateClusterApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for ClustersApi
 	*/
 	UpdateClusterWithParams(ctx context.Context, args *UpdateClusterApiParams) UpdateClusterApiRequest
 
@@ -306,6 +326,8 @@ type ClustersApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param clusterName Human-readable label that identifies the cluster.
 		@return UpdateClusterAdvancedConfigurationApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for ClustersApi
 	*/
 	UpdateClusterAdvancedConfiguration(ctx context.Context, groupId string, clusterName string, clusterDescriptionProcessArgs *ClusterDescriptionProcessArgs) UpdateClusterAdvancedConfigurationApiRequest
 	/*
@@ -315,6 +337,8 @@ type ClustersApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param UpdateClusterAdvancedConfigurationApiParams - Parameters for the request
 		@return UpdateClusterAdvancedConfigurationApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for ClustersApi
 	*/
 	UpdateClusterAdvancedConfigurationWithParams(ctx context.Context, args *UpdateClusterAdvancedConfigurationApiParams) UpdateClusterAdvancedConfigurationApiRequest
 
@@ -404,6 +428,8 @@ Creates one cluster in the specified project. Clusters contain a group of hosts 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return CreateClusterApiRequest
+
+Deprecated
 */
 func (a *ClustersApiService) CreateCluster(ctx context.Context, groupId string, advancedClusterDescription *AdvancedClusterDescription) CreateClusterApiRequest {
 	return CreateClusterApiRequest{
@@ -417,6 +443,8 @@ func (a *ClustersApiService) CreateCluster(ctx context.Context, groupId string, 
 // Execute executes the request
 //
 //	@return AdvancedClusterDescription
+//
+// Deprecated
 func (a *ClustersApiService) CreateClusterExecute(r CreateClusterApiRequest) (*AdvancedClusterDescription, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -668,6 +696,8 @@ Returns the details for one cluster in the specified project. Clusters contain a
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param clusterName Human-readable label that identifies this cluster.
 	@return GetClusterApiRequest
+
+Deprecated
 */
 func (a *ClustersApiService) GetCluster(ctx context.Context, groupId string, clusterName string) GetClusterApiRequest {
 	return GetClusterApiRequest{
@@ -681,6 +711,8 @@ func (a *ClustersApiService) GetCluster(ctx context.Context, groupId string, clu
 // Execute executes the request
 //
 //	@return AdvancedClusterDescription
+//
+// Deprecated
 func (a *ClustersApiService) GetClusterExecute(r GetClusterApiRequest) (*AdvancedClusterDescription, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -798,6 +830,8 @@ Returns the advanced configuration details for one cluster in the specified proj
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param clusterName Human-readable label that identifies the cluster.
 	@return GetClusterAdvancedConfigurationApiRequest
+
+Deprecated
 */
 func (a *ClustersApiService) GetClusterAdvancedConfiguration(ctx context.Context, groupId string, clusterName string) GetClusterAdvancedConfigurationApiRequest {
 	return GetClusterAdvancedConfigurationApiRequest{
@@ -811,6 +845,8 @@ func (a *ClustersApiService) GetClusterAdvancedConfiguration(ctx context.Context
 // Execute executes the request
 //
 //	@return ClusterDescriptionProcessArgs
+//
+// Deprecated
 func (a *ClustersApiService) GetClusterAdvancedConfigurationExecute(r GetClusterAdvancedConfigurationApiRequest) (*ClusterDescriptionProcessArgs, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1420,6 +1456,8 @@ Returns the details for all clusters in the specific project to which you have a
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return ListClustersApiRequest
+
+Deprecated
 */
 func (a *ClustersApiService) ListClusters(ctx context.Context, groupId string) ListClustersApiRequest {
 	return ListClustersApiRequest{
@@ -1432,6 +1470,8 @@ func (a *ClustersApiService) ListClusters(ctx context.Context, groupId string) L
 // Execute executes the request
 //
 //	@return PaginatedAdvancedClusterDescription
+//
+// Deprecated
 func (a *ClustersApiService) ListClustersExecute(r ListClustersApiRequest) (*PaginatedAdvancedClusterDescription, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1993,6 +2033,8 @@ Updates the details for one cluster in the specified project. Clusters contain a
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param clusterName Human-readable label that identifies the cluster.
 	@return UpdateClusterApiRequest
+
+Deprecated
 */
 func (a *ClustersApiService) UpdateCluster(ctx context.Context, groupId string, clusterName string, advancedClusterDescription *AdvancedClusterDescription) UpdateClusterApiRequest {
 	return UpdateClusterApiRequest{
@@ -2007,6 +2049,8 @@ func (a *ClustersApiService) UpdateCluster(ctx context.Context, groupId string, 
 // Execute executes the request
 //
 //	@return AdvancedClusterDescription
+//
+// Deprecated
 func (a *ClustersApiService) UpdateClusterExecute(r UpdateClusterApiRequest) (*AdvancedClusterDescription, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -2132,6 +2176,8 @@ Updates the advanced configuration details for one cluster in the specified proj
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param clusterName Human-readable label that identifies the cluster.
 	@return UpdateClusterAdvancedConfigurationApiRequest
+
+Deprecated
 */
 func (a *ClustersApiService) UpdateClusterAdvancedConfiguration(ctx context.Context, groupId string, clusterName string, clusterDescriptionProcessArgs *ClusterDescriptionProcessArgs) UpdateClusterAdvancedConfigurationApiRequest {
 	return UpdateClusterAdvancedConfigurationApiRequest{
@@ -2146,6 +2192,8 @@ func (a *ClustersApiService) UpdateClusterAdvancedConfiguration(ctx context.Cont
 // Execute executes the request
 //
 //	@return ClusterDescriptionProcessArgs
+//
+// Deprecated
 func (a *ClustersApiService) UpdateClusterAdvancedConfigurationExecute(r UpdateClusterAdvancedConfigurationApiRequest) (*ClusterDescriptionProcessArgs, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch

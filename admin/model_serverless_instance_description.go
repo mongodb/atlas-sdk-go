@@ -26,7 +26,6 @@ type ServerlessInstanceDescription struct {
 	// Read only field.
 	MongoDBVersion *string `json:"mongoDBVersion,omitempty"`
 	// Human-readable label that identifies the serverless instance.
-	// Read only field.
 	Name                    *string                         `json:"name,omitempty"`
 	ProviderSettings        ServerlessProviderSettings      `json:"providerSettings"`
 	ServerlessBackupOptions *ClusterServerlessBackupOptions `json:"serverlessBackupOptions,omitempty"`
@@ -459,6 +458,9 @@ func (o ServerlessInstanceDescription) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.ConnectionStrings) {
 		toSerialize["connectionStrings"] = o.ConnectionStrings
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
 	toSerialize["providerSettings"] = o.ProviderSettings
 	if !IsNil(o.ServerlessBackupOptions) {

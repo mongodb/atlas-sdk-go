@@ -7,8 +7,8 @@ import (
 
 	"context"
 
-	"go.mongodb.org/atlas-sdk/v20231115013/admin"
-	"go.mongodb.org/atlas-sdk/v20231115013/examples"
+	"go.mongodb.org/atlas-sdk/v20231115014/admin"
+	"go.mongodb.org/atlas-sdk/v20231115014/examples"
 )
 
 /*

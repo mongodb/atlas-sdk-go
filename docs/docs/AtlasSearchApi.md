@@ -38,7 +38,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115013/admin"
+    "go.mongodb.org/atlas-sdk/v20231115014/admin"
 )
 
 func main() {
@@ -116,7 +116,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115013/admin"
+    "go.mongodb.org/atlas-sdk/v20231115014/admin"
 )
 
 func main() {
@@ -199,7 +199,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115013/admin"
+    "go.mongodb.org/atlas-sdk/v20231115014/admin"
 )
 
 func main() {
@@ -273,7 +273,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115013/admin"
+    "go.mongodb.org/atlas-sdk/v20231115014/admin"
 )
 
 func main() {
@@ -357,7 +357,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115013/admin"
+    "go.mongodb.org/atlas-sdk/v20231115014/admin"
 )
 
 func main() {
@@ -433,7 +433,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115013/admin"
+    "go.mongodb.org/atlas-sdk/v20231115014/admin"
 )
 
 func main() {
@@ -465,7 +465,7 @@ Name | Type | Description  | Notes
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
 **clusterName** | **string** | Name of the cluster that contains the collection with one or more Atlas Search indexes. | 
-**indexId** | **string** | Unique 24-hexadecimal digit string that identifies the Application Search [index](https://docs.atlas.mongodb.com/reference/atlas-search/index-definitions/). Use the [Get All Application Search Indexes for a Collection API](https://docs.atlas.mongodb.com/reference/api/fts-indexes-get-all/) endpoint to find the IDs of all Application Search indexes. | 
+**indexId** | **string** | Unique 24-hexadecimal digit string that identifies the Application Search [index](https://dochub.mongodb.org/core/index-definitions-fts). Use the [Get All Application Search Indexes for a Collection API](https://docs.atlas.mongodb.com/reference/api/fts-indexes-get-all/) endpoint to find the IDs of all Application Search indexes. | 
 
 ### Other Parameters
 
@@ -512,7 +512,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115013/admin"
+    "go.mongodb.org/atlas-sdk/v20231115014/admin"
 )
 
 func main() {
@@ -599,7 +599,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115013/admin"
+    "go.mongodb.org/atlas-sdk/v20231115014/admin"
 )
 
 func main() {
@@ -677,7 +677,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115013/admin"
+    "go.mongodb.org/atlas-sdk/v20231115014/admin"
 )
 
 func main() {
@@ -710,7 +710,7 @@ Name | Type | Description  | Notes
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
 **clusterName** | **string** | Name of the cluster that contains the collection whose Atlas Search index to update. | 
-**indexId** | **string** | Unique 24-hexadecimal digit string that identifies the Atlas Search [index](https://docs.atlas.mongodb.com/reference/atlas-search/index-definitions/). Use the [Get All Atlas Search Indexes for a Collection API](https://docs.atlas.mongodb.com/reference/api/fts-indexes-get-all/) endpoint to find the IDs of all Atlas Search indexes. | 
+**indexId** | **string** | Unique 24-hexadecimal digit string that identifies the Atlas Search [index](https://dochub.mongodb.org/core/index-definitions-fts). Use the [Get All Atlas Search Indexes for a Collection API](https://docs.atlas.mongodb.com/reference/api/fts-indexes-get-all/) endpoint to find the IDs of all Atlas Search indexes. | 
 
 ### Other Parameters
 

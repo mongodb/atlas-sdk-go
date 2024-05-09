@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the serverless instance. | [optional] [readonly] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **MongoDBVersion** | Pointer to **string** | Version of MongoDB that the serverless instance runs. | [optional] [readonly] 
-**Name** | Pointer to **string** | Human-readable label that identifies the serverless instance. | [optional] [readonly] 
+**Name** | Pointer to **string** | Human-readable label that identifies the serverless instance. | [optional] 
 **ProviderSettings** | [**ServerlessProviderSettings**](ServerlessProviderSettings.md) |  | 
 **ServerlessBackupOptions** | Pointer to [**ClusterServerlessBackupOptions**](ClusterServerlessBackupOptions.md) |  | [optional] 
 **StateName** | Pointer to **string** | Human-readable label that indicates the current operating condition of the serverless instance. | [optional] [readonly] 

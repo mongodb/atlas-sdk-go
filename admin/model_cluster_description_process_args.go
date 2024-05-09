@@ -12,7 +12,7 @@ type ClusterDescriptionProcessArgs struct {
 	ChunkMigrationConcurrency *int `json:"chunkMigrationConcurrency,omitempty"`
 	// Default level of acknowledgment requested from MongoDB for read operations set for this cluster.  MongoDB 4.4 clusters default to `available`. MongoDB 5.0 and later clusters default to `local`.
 	DefaultReadConcern *string `json:"defaultReadConcern,omitempty"`
-	// Default level of acknowledgment requested from MongoDB for write operations set for this cluster.  MongoDB 4.4 clusters default to `1`. MongoDB 5.0 and later clusters default to `majority`.
+	// Default level of acknowledgment requested from MongoDB for write operations when none is specified by the driver.
 	DefaultWriteConcern *string `json:"defaultWriteConcern,omitempty"`
 	// Flag that indicates whether you can insert or update documents where all indexed entries don't exceed 1024 bytes. If you set this to false, [mongod](https://docs.mongodb.com/upcoming/reference/program/mongod/#mongodb-binary-bin.mongod) writes documents that exceed this limit but doesn't index them. This parameter has been removed as of [MongoDB 4.4](https://www.mongodb.com/docs/manual/reference/parameters/#mongodb-parameter-param.failIndexKeyTooLong).
 	// Deprecated
@@ -43,26 +43,12 @@ type ClusterDescriptionProcessArgs struct {
 // will change when the set of required properties is changed
 func NewClusterDescriptionProcessArgs() *ClusterDescriptionProcessArgs {
 	this := ClusterDescriptionProcessArgs{}
-	var chunkMigrationConcurrency int = 1
-	this.ChunkMigrationConcurrency = &chunkMigrationConcurrency
 	var defaultReadConcern string = "available"
 	this.DefaultReadConcern = &defaultReadConcern
-	var defaultWriteConcern string = "1"
-	this.DefaultWriteConcern = &defaultWriteConcern
 	var failIndexKeyTooLong bool = true
 	this.FailIndexKeyTooLong = &failIndexKeyTooLong
-	var javascriptEnabled bool = true
-	this.JavascriptEnabled = &javascriptEnabled
-	var noTableScan bool = false
-	this.NoTableScan = &noTableScan
-	var queryStatsLogVerbosity int = 1
-	this.QueryStatsLogVerbosity = &queryStatsLogVerbosity
 	var sampleRefreshIntervalBIConnector int = 0
 	this.SampleRefreshIntervalBIConnector = &sampleRefreshIntervalBIConnector
-	var sampleSizeBIConnector int = 1000
-	this.SampleSizeBIConnector = &sampleSizeBIConnector
-	var transactionLifetimeLimitSeconds int64 = 60
-	this.TransactionLifetimeLimitSeconds = &transactionLifetimeLimitSeconds
 	return &this
 }
 
@@ -71,26 +57,12 @@ func NewClusterDescriptionProcessArgs() *ClusterDescriptionProcessArgs {
 // but it doesn't guarantee that properties required by API are set
 func NewClusterDescriptionProcessArgsWithDefaults() *ClusterDescriptionProcessArgs {
 	this := ClusterDescriptionProcessArgs{}
-	var chunkMigrationConcurrency int = 1
-	this.ChunkMigrationConcurrency = &chunkMigrationConcurrency
 	var defaultReadConcern string = "available"
 	this.DefaultReadConcern = &defaultReadConcern
-	var defaultWriteConcern string = "1"
-	this.DefaultWriteConcern = &defaultWriteConcern
 	var failIndexKeyTooLong bool = true
 	this.FailIndexKeyTooLong = &failIndexKeyTooLong
-	var javascriptEnabled bool = true
-	this.JavascriptEnabled = &javascriptEnabled
-	var noTableScan bool = false
-	this.NoTableScan = &noTableScan
-	var queryStatsLogVerbosity int = 1
-	this.QueryStatsLogVerbosity = &queryStatsLogVerbosity
 	var sampleRefreshIntervalBIConnector int = 0
 	this.SampleRefreshIntervalBIConnector = &sampleRefreshIntervalBIConnector
-	var sampleSizeBIConnector int = 1000
-	this.SampleSizeBIConnector = &sampleSizeBIConnector
-	var transactionLifetimeLimitSeconds int64 = 60
-	this.TransactionLifetimeLimitSeconds = &transactionLifetimeLimitSeconds
 	return &this
 }
 
