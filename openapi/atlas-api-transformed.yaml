@@ -370,7 +370,6 @@ paths:
       summary: Return All Connected Org Configs from One Federation
       tags:
         - Federated Authentication
-      x-xgen-experimental: true
   "/api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}":
     delete:
       description: "Removes one connected organization configuration from the
@@ -412,7 +411,6 @@ paths:
       summary: Remove One Org Config Connected to One Federation
       tags:
         - Federated Authentication
-      x-xgen-experimental: true
     get:
       description: Returns the specified connected org config from the specified
         federation. To use this resource, the requesting API Key must have the
@@ -452,7 +450,6 @@ paths:
       summary: Return One Org Config Connected to One Federation
       tags:
         - Federated Authentication
-      x-xgen-experimental: true
     patch:
       description: >-
         Updates one connected organization configuration from the specified
@@ -512,7 +509,6 @@ paths:
       summary: Update One Org Config Connected to One Federation
       tags:
         - Federated Authentication
-      x-xgen-experimental: true
   "/api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings":
     get:
       description: Returns all role mappings from the specified organization in the
@@ -760,7 +756,6 @@ paths:
       summary: Return All Identity Providers in One Federation
       tags:
         - Federated Authentication
-      x-xgen-experimental: true
     post:
       description: >-
         Creates one identity provider within the specified federation. To use
@@ -802,7 +797,6 @@ paths:
       summary: Create One Identity Provider
       tags:
         - Federated Authentication
-      x-xgen-experimental: true
   "/api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}":
     delete:
       description: >-
@@ -842,7 +836,6 @@ paths:
       summary: Delete One Identity Provider
       tags:
         - Federated Authentication
-      x-xgen-experimental: true
     get:
       description: "Returns one identity provider in the specified federation by the
         identity provider's id. To use this resource, the requesting API Key
@@ -886,7 +879,6 @@ paths:
       summary: Return One Identity Provider by ID
       tags:
         - Federated Authentication
-      x-xgen-experimental: true
     patch:
       description: >-
         Updates one identity provider in the specified federation. To use this
@@ -938,7 +930,6 @@ paths:
       summary: Update One Identity Provider
       tags:
         - Federated Authentication
-      x-xgen-experimental: true
   "/api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}/jwks":
     delete:
       description: >-
@@ -978,7 +969,6 @@ paths:
       summary: Revoke the JWKS from One OIDC Identity Provider
       tags:
         - Federated Authentication
-      x-xgen-experimental: true
   "/api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}/metadata.xml":
     get:
       description: Returns the metadata of one identity provider in the specified
@@ -1227,7 +1217,6 @@ paths:
       summary: Update One Project
       tags:
         - Projects
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/access":
     post:
       description: Adds one MongoDB Cloud user to the specified project. If the
@@ -1686,7 +1675,6 @@ paths:
       summary: Return One Alert Configuration from One Project
       tags:
         - Alert Configurations
-      x-xgen-experimental: true
     patch:
       description: >-
         Enables or disables the specified alert configuration in the specified
@@ -5937,7 +5925,6 @@ paths:
       summary: Delete Search Nodes
       tags:
         - Atlas Search
-      x-xgen-experimental: true
     get:
       description: Return the Search Nodes for the specified cluster.
       operationId: getAtlasSearchDeployment
@@ -5971,7 +5958,6 @@ paths:
       summary: Return Search Nodes
       tags:
         - Atlas Search
-      x-xgen-experimental: true
     patch:
       description: Updates the Search Nodes for the specified cluster.
       operationId: updateAtlasSearchDeployment
@@ -6012,7 +5998,6 @@ paths:
       summary: Update Search Nodes
       tags:
         - Atlas Search
-      x-xgen-experimental: true
     post:
       description: Creates Search Nodes for the specified cluster.
       operationId: createAtlasSearchDeployment
@@ -6053,7 +6038,6 @@ paths:
       summary: Create Search Nodes
       tags:
         - Atlas Search
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/snapshotSchedule":
     get:
       deprecated: true
@@ -6814,6 +6798,7 @@ paths:
       summary: Return One Network Peering Container
       tags:
         - Network Peering
+      x-xgen-experimental: true
     patch:
       description: Updates the network details and labels of one specified network
         peering container in the specified project. To use this resource, the
@@ -12848,7 +12833,6 @@ paths:
       x-xgen-changelog:
         2023-09-11: The MongoDB Atlas Streams Processing API is now exposed as part of
           private preview, but is subject to change until GA.
-      x-xgen-experimental: true
     post:
       description: Creates one stream instance in the specified project. To use this
         resource, the requesting API Key must have the Project Data Access Admin
@@ -12885,7 +12869,6 @@ paths:
       x-xgen-changelog:
         2023-09-11: The MongoDB Atlas Streams Processing API is now exposed as part of
           private preview, but is subject to change until GA.
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/streams/{tenantName}":
     delete:
       description: Delete one stream instance in the specified project. To use this
@@ -12924,7 +12907,6 @@ paths:
       x-xgen-changelog:
         2023-09-11: The MongoDB Atlas Streams Processing API is now exposed as part of
           private preview, but is subject to change until GA.
-      x-xgen-experimental: true
     get:
       description: Returns the details of one stream instance within the specified
         project. To use this resource, the requesting API Key must have the
@@ -12969,7 +12951,6 @@ paths:
       x-xgen-changelog:
         2023-09-11: The MongoDB Atlas Streams Processing API is now exposed as part of
           private preview, but is subject to change until GA.
-      x-xgen-experimental: true
     patch:
       description: Update one stream instance in the specified project. To use this
         resource, the requesting API Key must have the Project Data Access Admin
@@ -13017,7 +12998,6 @@ paths:
       x-xgen-changelog:
         2023-09-11: The MongoDB Atlas Streams Processing API is now exposed as part of
           private preview, but is subject to change until GA.
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/auditLogs":
     get:
       description: 'Downloads the audit logs for the specified Atlas Streams
@@ -13083,7 +13063,6 @@ paths:
       summary: Download Audit Logs for One Atlas Stream Processing Instance
       tags:
         - Streams
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections":
     get:
       description: Returns all connections of the stream instance for the specified
@@ -13123,7 +13102,6 @@ paths:
       x-xgen-changelog:
         2023-09-11: The MongoDB Atlas Streams Processing API is now exposed as part of
           private preview, but is subject to change until GA.
-      x-xgen-experimental: true
     post:
       description: Creates one connection for a stream instance in the specified
         project. To use this resource, the requesting API Key must have the
@@ -13169,7 +13147,6 @@ paths:
       x-xgen-changelog:
         2023-09-11: The MongoDB Atlas Streams Processing API is now exposed as part of
           private preview, but is subject to change until GA.
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}":
     delete:
       description: Delete one connection of the specified stream instance. To use this
@@ -13214,7 +13191,6 @@ paths:
       x-xgen-changelog:
         2023-09-11: The MongoDB Atlas Streams Processing API is now exposed as part of
           private preview, but is subject to change until GA.
-      x-xgen-experimental: true
     get:
       description: Returns the details of one stream connection within the specified
         stream instance. To use this resource, the requesting API Key must have
@@ -13256,7 +13232,6 @@ paths:
       x-xgen-changelog:
         2023-09-11: The MongoDB Atlas Streams Processing API is now exposed as part of
           private preview, but is subject to change until GA.
-      x-xgen-experimental: true
     patch:
       description: Update one connection for the specified stream instance in the
         specified project. To use this resource, the requesting API Key must
@@ -13310,7 +13285,6 @@ paths:
       x-xgen-changelog:
         2023-09-11: The MongoDB Atlas Streams Processing API is now exposed as part of
           private preview, but is subject to change until GA.
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/teams":
     get:
       description: Returns all teams to which the authenticated user has access in the
@@ -14628,7 +14602,6 @@ paths:
       summary: Return Federation Settings for One Organization
       tags:
         - Federated Authentication
-      x-xgen-experimental: true
   "/api/atlas/v2/orgs/{orgId}/groups":
     get:
       description: >-
@@ -15484,7 +15457,6 @@ paths:
       summary: Rename One Team
       tags:
         - Teams
-      x-xgen-experimental: true
   "/api/atlas/v2/orgs/{orgId}/teams/{teamId}/users":
     get:
       description: Returns all MongoDB Cloud users assigned to the team specified

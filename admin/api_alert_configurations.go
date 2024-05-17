@@ -67,7 +67,7 @@ type AlertConfigurationsApi interface {
 	/*
 		GetAlertConfiguration Return One Alert Configuration from One Project
 
-		[experimental] Returns the specified alert configuration from the specified project. To use this resource, the requesting API Key must have the Project Read Only role.
+		Returns the specified alert configuration from the specified project. To use this resource, the requesting API Key must have the Project Read Only role.
 
 	This resource remains under revision and may change.
 
@@ -506,7 +506,7 @@ func (r GetAlertConfigurationApiRequest) Execute() (*GroupAlertsConfig, *http.Re
 /*
 GetAlertConfiguration Return One Alert Configuration from One Project
 
-[experimental] Returns the specified alert configuration from the specified project. To use this resource, the requesting API Key must have the Project Read Only role.
+Returns the specified alert configuration from the specified project. To use this resource, the requesting API Key must have the Project Read Only role.
 
 This resource remains under revision and may change.
 

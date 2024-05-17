@@ -17,7 +17,7 @@ type FederatedAuthenticationApi interface {
 	/*
 		CreateIdentityProvider Create One Identity Provider
 
-		[experimental] Creates one identity provider within the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
+		Creates one identity provider within the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
 
 	**Note**: This resource only supports the creation of OIDC identity providers.
 
@@ -89,7 +89,7 @@ type FederatedAuthenticationApi interface {
 	/*
 		DeleteIdentityProvider Delete One Identity Provider
 
-		[experimental] Deletes one identity provider in the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
+		Deletes one identity provider in the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
 
 	**Note**: Requests to this resource will fail if the identity provider has any connected organizations. Before deleting an identity provider, disconnect all organizations and confirm that no organization in your account uses this identity provider. To learn more, see [Manage Organization Mapping for Federated Authentication](https://www.mongodb.com/docs/atlas/security/manage-org-mapping/).
 
@@ -140,7 +140,7 @@ type FederatedAuthenticationApi interface {
 	/*
 		GetConnectedOrgConfig Return One Org Config Connected to One Federation
 
-		[experimental] Returns the specified connected org config from the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in the connected org.
+		Returns the specified connected org config from the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in the connected org.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
@@ -164,7 +164,7 @@ type FederatedAuthenticationApi interface {
 	/*
 		GetFederationSettings Return Federation Settings for One Organization
 
-		[experimental] Returns information about the federation settings for the specified organization. To use this resource, the requesting API Key must have the Organization Owner role in the connected org.
+		Returns information about the federation settings for the specified organization. To use this resource, the requesting API Key must have the Organization Owner role in the connected org.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -187,7 +187,7 @@ type FederatedAuthenticationApi interface {
 	/*
 		GetIdentityProvider Return One Identity Provider by ID
 
-		[experimental] Returns one identity provider in the specified federation by the identity provider's id. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations. Deprecated versions: v2-{2023-01-01}
+		Returns one identity provider in the specified federation by the identity provider's id. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations. Deprecated versions: v2-{2023-01-01}
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
@@ -260,7 +260,7 @@ type FederatedAuthenticationApi interface {
 	/*
 		ListConnectedOrgConfigs Return All Connected Org Configs from One Federation
 
-		[experimental] Returns all connected org configs in the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected orgs.
+		Returns all connected org configs in the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected orgs.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
@@ -283,7 +283,7 @@ type FederatedAuthenticationApi interface {
 	/*
 		ListIdentityProviders Return All Identity Providers in One Federation
 
-		[experimental] Returns all identity providers with the provided protocol and type in the specified federation. If no protocol is specified, only SAML identity providers will be returned. If no idpType is specified, only WORKFORCE identity providers will be returned. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
+		Returns all identity providers with the provided protocol and type in the specified federation. If no protocol is specified, only SAML identity providers will be returned. If no idpType is specified, only WORKFORCE identity providers will be returned. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
@@ -330,7 +330,7 @@ type FederatedAuthenticationApi interface {
 	/*
 		RemoveConnectedOrgConfig Remove One Org Config Connected to One Federation
 
-		[experimental] Removes one connected organization configuration from the specified federation. To use this resource, the requesting API Key must have the Organization Owner role. Note: This request fails if only one connected organization exists in the federation.
+		Removes one connected organization configuration from the specified federation. To use this resource, the requesting API Key must have the Organization Owner role. Note: This request fails if only one connected organization exists in the federation.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
@@ -354,7 +354,7 @@ type FederatedAuthenticationApi interface {
 	/*
 		RevokeJwksFromIdentityProvider Revoke the JWKS from One OIDC Identity Provider
 
-		[experimental] Revokes the JWKS tokens from the requested OIDC identity provider. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
+		Revokes the JWKS tokens from the requested OIDC identity provider. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
 
 	**Note**: Revoking your JWKS tokens immediately refreshes your IdP public keys from all your Atlas clusters, invalidating previously signed access tokens and logging out all users. You may need to restart your MongoDB clients. All organizations connected to the identity provider will be affected. To learn more, see [Configure OIDC Authorization](https://www.mongodb.com/docs/atlas/security-oidc/#revoke-jwks).
 
@@ -380,7 +380,7 @@ type FederatedAuthenticationApi interface {
 	/*
 		UpdateConnectedOrgConfig Update One Org Config Connected to One Federation
 
-		[experimental] Updates one connected organization configuration from the specified federation. To use this resource, the requesting API Key must have the Organization Owner role.
+		Updates one connected organization configuration from the specified federation. To use this resource, the requesting API Key must have the Organization Owner role.
 
 	**Note** If the organization configuration has no associated identity provider, you can't use this resource to update role mappings or post authorization role grants.
 
@@ -412,7 +412,7 @@ type FederatedAuthenticationApi interface {
 	/*
 		UpdateIdentityProvider Update One Identity Provider
 
-		[experimental] Updates one identity provider in the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
+		Updates one identity provider in the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
 
 	**Note**: Changing authorization types and/or updating authorization claims can prevent current users and/or groups from accessing the database. Deprecated versions: v2-{2023-01-01}
 
@@ -492,7 +492,7 @@ func (r CreateIdentityProviderApiRequest) Execute() (*FederationOidcIdentityProv
 /*
 CreateIdentityProvider Create One Identity Provider
 
-[experimental] Creates one identity provider within the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
+Creates one identity provider within the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
 
 **Note**: This resource only supports the creation of OIDC identity providers.
 
@@ -878,7 +878,7 @@ func (r DeleteIdentityProviderApiRequest) Execute() (*http.Response, error) {
 /*
 DeleteIdentityProvider Delete One Identity Provider
 
-[experimental] Deletes one identity provider in the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
+Deletes one identity provider in the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
 
 **Note**: Requests to this resource will fail if the identity provider has any connected organizations. Before deleting an identity provider, disconnect all organizations and confirm that no organization in your account uses this identity provider. To learn more, see [Manage Organization Mapping for Federated Authentication](https://www.mongodb.com/docs/atlas/security/manage-org-mapping/).
 
@@ -1122,7 +1122,7 @@ func (r GetConnectedOrgConfigApiRequest) Execute() (*ConnectedOrgConfig, *http.R
 /*
 GetConnectedOrgConfig Return One Org Config Connected to One Federation
 
-[experimental] Returns the specified connected org config from the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in the connected org.
+Returns the specified connected org config from the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in the connected org.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
@@ -1249,7 +1249,7 @@ func (r GetFederationSettingsApiRequest) Execute() (*OrgFederationSettings, *htt
 /*
 GetFederationSettings Return Federation Settings for One Organization
 
-[experimental] Returns information about the federation settings for the specified organization. To use this resource, the requesting API Key must have the Organization Owner role in the connected org.
+Returns information about the federation settings for the specified organization. To use this resource, the requesting API Key must have the Organization Owner role in the connected org.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -1376,7 +1376,7 @@ func (r GetIdentityProviderApiRequest) Execute() (*FederationIdentityProvider, *
 /*
 GetIdentityProvider Return One Identity Provider by ID
 
-[experimental] Returns one identity provider in the specified federation by the identity provider's id. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations. Deprecated versions: v2-{2023-01-01}
+Returns one identity provider in the specified federation by the identity provider's id. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations. Deprecated versions: v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
@@ -1787,7 +1787,7 @@ func (r ListConnectedOrgConfigsApiRequest) Execute() (*PaginatedConnectedOrgConf
 /*
 ListConnectedOrgConfigs Return All Connected Org Configs from One Federation
 
-[experimental] Returns all connected org configs in the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected orgs.
+Returns all connected org configs in the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected orgs.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
@@ -1961,7 +1961,7 @@ func (r ListIdentityProvidersApiRequest) Execute() (*PaginatedFederationIdentity
 /*
 ListIdentityProviders Return All Identity Providers in One Federation
 
-[experimental] Returns all identity providers with the provided protocol and type in the specified federation. If no protocol is specified, only SAML identity providers will be returned. If no idpType is specified, only WORKFORCE identity providers will be returned. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
+Returns all identity providers with the provided protocol and type in the specified federation. If no protocol is specified, only SAML identity providers will be returned. If no idpType is specified, only WORKFORCE identity providers will be returned. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
@@ -2246,7 +2246,7 @@ func (r RemoveConnectedOrgConfigApiRequest) Execute() (map[string]interface{}, *
 /*
 RemoveConnectedOrgConfig Remove One Org Config Connected to One Federation
 
-[experimental] Removes one connected organization configuration from the specified federation. To use this resource, the requesting API Key must have the Organization Owner role. Note: This request fails if only one connected organization exists in the federation.
+Removes one connected organization configuration from the specified federation. To use this resource, the requesting API Key must have the Organization Owner role. Note: This request fails if only one connected organization exists in the federation.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
@@ -2376,7 +2376,7 @@ func (r RevokeJwksFromIdentityProviderApiRequest) Execute() (*http.Response, err
 /*
 RevokeJwksFromIdentityProvider Revoke the JWKS from One OIDC Identity Provider
 
-[experimental] Revokes the JWKS tokens from the requested OIDC identity provider. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
+Revokes the JWKS tokens from the requested OIDC identity provider. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
 
 **Note**: Revoking your JWKS tokens immediately refreshes your IdP public keys from all your Atlas clusters, invalidating previously signed access tokens and logging out all users. You may need to restart your MongoDB clients. All organizations connected to the identity provider will be affected. To learn more, see [Configure OIDC Authorization](https://www.mongodb.com/docs/atlas/security-oidc/#revoke-jwks).
 
@@ -2499,7 +2499,7 @@ func (r UpdateConnectedOrgConfigApiRequest) Execute() (*ConnectedOrgConfig, *htt
 /*
 UpdateConnectedOrgConfig Update One Org Config Connected to One Federation
 
-[experimental] Updates one connected organization configuration from the specified federation. To use this resource, the requesting API Key must have the Organization Owner role.
+Updates one connected organization configuration from the specified federation. To use this resource, the requesting API Key must have the Organization Owner role.
 
 **Note** If the organization configuration has no associated identity provider, you can't use this resource to update role mappings or post authorization role grants.
 
@@ -2646,7 +2646,7 @@ func (r UpdateIdentityProviderApiRequest) Execute() (*FederationIdentityProvider
 /*
 UpdateIdentityProvider Update One Identity Provider
 
-[experimental] Updates one identity provider in the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
+Updates one identity provider in the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
 
 **Note**: Changing authorization types and/or updating authorization claims can prevent current users and/or groups from accessing the database. Deprecated versions: v2-{2023-01-01}
 
