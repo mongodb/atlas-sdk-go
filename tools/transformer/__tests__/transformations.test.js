@@ -4,7 +4,6 @@ const {
   applyModelNameTransformations,
   transformAllOf,
   transformOneOf,
-  applyAddExperimentalTag,
 } = require("../src/transformations");
 const cases = require("./transformations-snapshots");
 
@@ -64,18 +63,3 @@ test("applyModelNameTransformations", () => {
   }
 });
 
-test("applyAddExperimentalTag for stable operationId", () => {
-  api = applyAddExperimentalTag(api);
-  expect(
-    api.paths["/api/atlas/v1.5/groups/{groupId}/clusters"].post[
-      "x-xgen-experimental"
-    ]
-  ).toBeFalsy();
-});
-
-test("applyAddExperimentalTag for experimental operationId", () => {
-  api = applyAddExperimentalTag(api);
-  expect(
-    api.paths["/api/atlas/v2/example/info"].get["x-xgen-experimental"]
-  ).toBeTruthy();
-});

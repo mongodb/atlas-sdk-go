@@ -91,10 +91,6 @@ Enums in current form are hard to ensure backwards compatibility.
 This transformation removes all openapi `nullable` fields from the schema.
 Useful for situations for schemas where nullability handling is not desired.
 
-6. Tag experimental
-
-Add `experimental` field to operations based on `operations.stable.json` file.
-
 ## Transformation Validation
 
 Transformation engine does perform validation for invalid cases.
