@@ -111,7 +111,7 @@ type ThirdPartyIntegrationsApi interface {
 	/*
 		UpdateThirdPartyIntegration Update One Third-Party Service Integration
 
-		[experimental] Updates the settings for configuring integration with one third-party service. These settings apply to all databases managed in one MongoDB Cloud project. To use this resource, the requesting API Key must have the Organization Owner or Project Owner role.
+		Updates the settings for configuring integration with one third-party service. These settings apply to all databases managed in one MongoDB Cloud project. To use this resource, the requesting API Key must have the Organization Owner or Project Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param integrationType Human-readable label that identifies the service which you want to integrate with MongoDB Cloud.
@@ -813,7 +813,7 @@ func (r UpdateThirdPartyIntegrationApiRequest) Execute() (*PaginatedIntegration,
 /*
 UpdateThirdPartyIntegration Update One Third-Party Service Integration
 
-[experimental] Updates the settings for configuring integration with one third-party service. These settings apply to all databases managed in one MongoDB Cloud project. To use this resource, the requesting API Key must have the Organization Owner or Project Owner role.
+Updates the settings for configuring integration with one third-party service. These settings apply to all databases managed in one MongoDB Cloud project. To use this resource, the requesting API Key must have the Organization Owner or Project Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param integrationType Human-readable label that identifies the service which you want to integrate with MongoDB Cloud.

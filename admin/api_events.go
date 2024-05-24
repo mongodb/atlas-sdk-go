@@ -18,7 +18,7 @@ type EventsApi interface {
 	/*
 		GetOrganizationEvent Return One Event from One Organization
 
-		[experimental] Returns one event for the specified organization. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting API Key must have the Organization Member role.
+		Returns one event for the specified organization. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting API Key must have the Organization Member role.
 
 	This resource remains under revision and may change.
 
@@ -44,7 +44,7 @@ type EventsApi interface {
 	/*
 		GetProjectEvent Return One Event from One Project
 
-		[experimental] Returns one event for the specified project. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting API Key must have the Project Read Only role.
+		Returns one event for the specified project. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting API Key must have the Project Read Only role.
 
 	This resource remains under revision and may change.
 
@@ -158,7 +158,7 @@ func (r GetOrganizationEventApiRequest) Execute() (*EventViewForOrg, *http.Respo
 /*
 GetOrganizationEvent Return One Event from One Organization
 
-[experimental] Returns one event for the specified organization. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting API Key must have the Organization Member role.
+Returns one event for the specified organization. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting API Key must have the Organization Member role.
 
 This resource remains under revision and may change.
 
@@ -306,7 +306,7 @@ func (r GetProjectEventApiRequest) Execute() (*EventViewForNdsGroup, *http.Respo
 /*
 GetProjectEvent Return One Event from One Project
 
-[experimental] Returns one event for the specified project. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting API Key must have the Project Read Only role.
+Returns one event for the specified project. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting API Key must have the Project Read Only role.
 
 This resource remains under revision and may change.
 

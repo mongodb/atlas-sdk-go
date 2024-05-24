@@ -4280,8 +4280,6 @@ paths:
       summary: Return One Legacy Backup Checkpoint
       tags:
         - Legacy Backup
-<<<<<<< HEAD
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collStats/pinned":
     get:
       description: Returns a list of given cluster's pinned namespaces, a set of
@@ -4321,7 +4319,6 @@ paths:
       summary: Return Pinned Namespaces
       tags:
         - Collection Level Metrics
-      x-xgen-experimental: true
     patch:
       description: Add provided list of namespaces to existing pinned namespaces list
         for collection-level latency metrics collection for the given Group and
@@ -4375,7 +4372,6 @@ paths:
       summary: Add Pinned Namespaces
       tags:
         - Collection Level Metrics
-      x-xgen-experimental: true
     put:
       description: Pin provided list of namespaces for collection-level latency
         metrics collection for the given Group and Cluster. This initializes a
@@ -4430,7 +4426,6 @@ paths:
       summary: Pin Namespaces
       tags:
         - Collection Level Metrics
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collStats/unpin":
     patch:
       description: Unpin provided list of namespaces for collection-level latency
@@ -4477,9 +4472,6 @@ paths:
       summary: Unpin namespaces
       tags:
         - Collection Level Metrics
-      x-xgen-experimental: true
-=======
->>>>>>> c9d055d5 (CLOUDP-249916: remove experimental labels)
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes":
     post:
       description: Creates one Atlas Search index on the specified collection. Atlas
@@ -5805,12 +5797,7 @@ paths:
         - DigestAuth: []
       summary: Create One Legacy Backup Restore Job
       tags:
-<<<<<<< HEAD
         - Legacy Backup
-      x-xgen-experimental: true
-=======
-        - Legacy Backup Restore Jobs
->>>>>>> c9d055d5 (CLOUDP-249916: remove experimental labels)
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/restoreJobs/{jobId}":
     get:
       deprecated: true
@@ -6346,8 +6333,6 @@ paths:
       summary: Return Status of All Cluster Operations
       tags:
         - Clusters
-<<<<<<< HEAD
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/{clusterView}/collStats/namespaces":
     get:
       description: Return the subset of namespaces from the given cluster sorted by
@@ -6392,7 +6377,6 @@ paths:
       summary: Return Ranked Namespaces from a Cluster
       tags:
         - Collection Level Metrics
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/{clusterView}/{databaseName}/{collectionName}/collStats/measurements":
     get:
       description: Get a list of the Coll Stats Latency cluster-level measurements for
@@ -6455,9 +6439,6 @@ paths:
       summary: Return Cluster-Level Query Latency
       tags:
         - Collection Level Metrics
-      x-xgen-experimental: true
-=======
->>>>>>> c9d055d5 (CLOUDP-249916: remove experimental labels)
   "/api/atlas/v2/groups/{groupId}/clusters/{hostName}/logs/{logName}.gz":
     get:
       description: "Returns a compressed (.gz) log file that contains a range of log
@@ -6572,7 +6553,6 @@ paths:
       summary: Return all metric names
       tags:
         - Collection Level Metrics
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/containers":
     get:
       description: Returns details about all network peering containers in the
@@ -6763,7 +6743,6 @@ paths:
       summary: Return One Network Peering Container
       tags:
         - Network Peering
-      x-xgen-experimental: true
     patch:
       description: Updates the network details and labels of one specified network
         peering container in the specified project. To use this resource, the
@@ -11308,7 +11287,6 @@ paths:
       summary: Return Ranked Namespaces from a Host
       tags:
         - Collection Level Metrics
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/processes/{processId}/databases":
     get:
       description: Returns the list of databases running on the specified host for the
@@ -12008,7 +11986,6 @@ paths:
       summary: Return Host-Level Query Latency
       tags:
         - Collection Level Metrics
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/pushBasedLogExport":
     delete:
       description: Disables the push-based log export feature by resetting the project
