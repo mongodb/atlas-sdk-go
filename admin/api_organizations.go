@@ -159,7 +159,7 @@ type OrganizationsApi interface {
 	/*
 		GetOrganizationSettings Return Settings for One Organization
 
-		[experimental] Returns details about the specified organization's settings. To use this resource, the requesting API Key must have the Organization Owner role.
+		Returns details about the specified organization's settings. To use this resource, the requesting API Key must have the Organization Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -280,7 +280,7 @@ type OrganizationsApi interface {
 	/*
 		RemoveOrganizationUser Remove One MongoDB Cloud User from One Organization
 
-		[experimental] Removes one MongoDB Cloud user from the specified organization. To use this resource, the requesting API Key must have the Organization User Admin role.
+		Removes one MongoDB Cloud user from the specified organization. To use this resource, the requesting API Key must have the Organization User Admin role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -304,7 +304,7 @@ type OrganizationsApi interface {
 	/*
 		RenameOrganization Rename One Organization
 
-		[experimental] Renames one organization. To use this resource, the requesting API Key must have the Organization Owner role.
+		Renames one organization. To use this resource, the requesting API Key must have the Organization Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -374,7 +374,7 @@ type OrganizationsApi interface {
 	/*
 		UpdateOrganizationRoles Update Organization Roles for One MongoDB Cloud User
 
-		[experimental] Updates the roles of the specified user in the specified organization. To specify the user to update, provide the unique 24-hexadecimal digit string that identifies the user in the specified organization. To use this resource, the requesting API Key must have the Organization User Admin role.
+		Updates the roles of the specified user in the specified organization. To specify the user to update, provide the unique 24-hexadecimal digit string that identifies the user in the specified organization. To use this resource, the requesting API Key must have the Organization User Admin role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -398,7 +398,7 @@ type OrganizationsApi interface {
 	/*
 		UpdateOrganizationSettings Update Settings for One Organization
 
-		[experimental] Updates the organization's settings. To use this resource, the requesting API Key must have the Organization Owner role.
+		Updates the organization's settings. To use this resource, the requesting API Key must have the Organization Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -1220,7 +1220,7 @@ func (r GetOrganizationSettingsApiRequest) Execute() (*OrganizationSettings, *ht
 /*
 GetOrganizationSettings Return Settings for One Organization
 
-[experimental] Returns details about the specified organization's settings. To use this resource, the requesting API Key must have the Organization Owner role.
+Returns details about the specified organization's settings. To use this resource, the requesting API Key must have the Organization Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -2024,7 +2024,7 @@ func (r RemoveOrganizationUserApiRequest) Execute() (map[string]interface{}, *ht
 /*
 RemoveOrganizationUser Remove One MongoDB Cloud User from One Organization
 
-[experimental] Removes one MongoDB Cloud user from the specified organization. To use this resource, the requesting API Key must have the Organization User Admin role.
+Removes one MongoDB Cloud user from the specified organization. To use this resource, the requesting API Key must have the Organization User Admin role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -2154,7 +2154,7 @@ func (r RenameOrganizationApiRequest) Execute() (*AtlasOrganization, *http.Respo
 /*
 RenameOrganization Rename One Organization
 
-[experimental] Renames one organization. To use this resource, the requesting API Key must have the Organization Owner role.
+Renames one organization. To use this resource, the requesting API Key must have the Organization Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -2562,7 +2562,7 @@ func (r UpdateOrganizationRolesApiRequest) Execute() (*UpdateOrgRolesForUser, *h
 /*
 UpdateOrganizationRoles Update Organization Roles for One MongoDB Cloud User
 
-[experimental] Updates the roles of the specified user in the specified organization. To specify the user to update, provide the unique 24-hexadecimal digit string that identifies the user in the specified organization. To use this resource, the requesting API Key must have the Organization User Admin role.
+Updates the roles of the specified user in the specified organization. To specify the user to update, provide the unique 24-hexadecimal digit string that identifies the user in the specified organization. To use this resource, the requesting API Key must have the Organization User Admin role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -2698,7 +2698,7 @@ func (r UpdateOrganizationSettingsApiRequest) Execute() (*OrganizationSettings, 
 /*
 UpdateOrganizationSettings Update Settings for One Organization
 
-[experimental] Updates the organization's settings. To use this resource, the requesting API Key must have the Organization Owner role.
+Updates the organization's settings. To use this resource, the requesting API Key must have the Organization Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.

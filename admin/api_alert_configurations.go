@@ -140,7 +140,7 @@ type AlertConfigurationsApi interface {
 	/*
 		ListAlertConfigurationsByAlertId Return All Alert Configurations Set for One Alert
 
-		[experimental] Returns all alert configurations set for the specified alert. To use this resource, the requesting API Key must have the Project Read Only role.
+		Returns all alert configurations set for the specified alert. To use this resource, the requesting API Key must have the Project Read Only role.
 
 	This resource remains under revision and may change.
 
@@ -957,7 +957,7 @@ func (r ListAlertConfigurationsByAlertIdApiRequest) Execute() (*PaginatedAlertCo
 /*
 ListAlertConfigurationsByAlertId Return All Alert Configurations Set for One Alert
 
-[experimental] Returns all alert configurations set for the specified alert. To use this resource, the requesting API Key must have the Project Read Only role.
+Returns all alert configurations set for the specified alert. To use this resource, the requesting API Key must have the Project Read Only role.
 
 This resource remains under revision and may change.
 

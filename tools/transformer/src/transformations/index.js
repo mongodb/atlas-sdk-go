@@ -11,7 +11,6 @@ const { applyRemoveEnumsTransformations } = require("./removeEnums");
 const {
   applyRemoveObjectAdditonalProperties,
 } = require("./additionalPropertiesObject");
-const { applyAddExperimentalTag } = require("./tagExperimental");
 const { applyAnyOfTransformations } = require("./anyOf");
 const { applyRemoveNullableTransformations } = require("./removeNullable");
 const { removeRefsFromParameters } = require("./removeInvalidParams");
@@ -27,7 +26,6 @@ module.exports = {
   applyArrayTransformations,
   applyRemoveEnumsTransformations,
   applyRemoveObjectAdditonalProperties,
-  applyAddExperimentalTag,
   applyAnyOfTransformations,
   applyRemoveNullableTransformations,
   removeRefsFromParameters,

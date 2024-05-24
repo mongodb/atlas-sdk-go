@@ -63,7 +63,7 @@ type PerformanceAdvisorApi interface {
 	/*
 		GetServerlessAutoIndexing Return Serverless Auto Indexing Enabled
 
-		[experimental] Get whether the Serverless Auto Indexing feature is enabled.
+		Get whether the Serverless Auto Indexing feature is enabled.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -159,7 +159,7 @@ type PerformanceAdvisorApi interface {
 	/*
 		SetServerlessAutoIndexing Set Serverless Auto Indexing
 
-		[experimental] Set whether the Serverless Auto Indexing feature is enabled.
+		Set whether the Serverless Auto Indexing feature is enabled.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -436,7 +436,7 @@ func (r GetServerlessAutoIndexingApiRequest) Execute() (bool, *http.Response, er
 /*
 GetServerlessAutoIndexing Return Serverless Auto Indexing Enabled
 
-[experimental] Get whether the Serverless Auto Indexing feature is enabled.
+Get whether the Serverless Auto Indexing feature is enabled.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -1161,7 +1161,7 @@ func (r SetServerlessAutoIndexingApiRequest) Execute() (map[string]interface{}, 
 /*
 SetServerlessAutoIndexing Set Serverless Auto Indexing
 
-[experimental] Set whether the Serverless Auto Indexing feature is enabled.
+Set whether the Serverless Auto Indexing feature is enabled.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.

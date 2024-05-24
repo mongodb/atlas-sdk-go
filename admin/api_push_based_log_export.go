@@ -16,7 +16,7 @@ type PushBasedLogExportApi interface {
 	/*
 		CreatePushBasedLogConfiguration Enable the push-based log export feature for a project
 
-		[experimental] Configures the project level settings for the push-based log export feature.
+		Configures the project level settings for the push-based log export feature.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -39,7 +39,7 @@ type PushBasedLogExportApi interface {
 	/*
 		DeletePushBasedLogConfiguration Disable the push-based log export feature for a project
 
-		[experimental] Disables the push-based log export feature by resetting the project level settings to its default configuration.
+		Disables the push-based log export feature by resetting the project level settings to its default configuration.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -62,7 +62,7 @@ type PushBasedLogExportApi interface {
 	/*
 		GetPushBasedLogConfiguration Get the push-based log export configuration for a project
 
-		[experimental] Fetches the current project level settings for the push-based log export feature.
+		Fetches the current project level settings for the push-based log export feature.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -85,7 +85,7 @@ type PushBasedLogExportApi interface {
 	/*
 		UpdatePushBasedLogConfiguration Update the push-based log export feature for a project
 
-		[experimental] Updates the project level settings for the push-based log export feature.
+		Updates the project level settings for the push-based log export feature.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -137,7 +137,7 @@ func (r CreatePushBasedLogConfigurationApiRequest) Execute() (*http.Response, er
 /*
 CreatePushBasedLogConfiguration Enable the push-based log export feature for a project
 
-[experimental] Configures the project level settings for the push-based log export feature.
+Configures the project level settings for the push-based log export feature.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -255,7 +255,7 @@ func (r DeletePushBasedLogConfigurationApiRequest) Execute() (*http.Response, er
 /*
 DeletePushBasedLogConfiguration Disable the push-based log export feature for a project
 
-[experimental] Disables the push-based log export feature by resetting the project level settings to its default configuration.
+Disables the push-based log export feature by resetting the project level settings to its default configuration.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -367,7 +367,7 @@ func (r GetPushBasedLogConfigurationApiRequest) Execute() (*PushBasedLogExportPr
 /*
 GetPushBasedLogConfiguration Get the push-based log export configuration for a project
 
-[experimental] Fetches the current project level settings for the push-based log export feature.
+Fetches the current project level settings for the push-based log export feature.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -494,7 +494,7 @@ func (r UpdatePushBasedLogConfigurationApiRequest) Execute() (*http.Response, er
 /*
 UpdatePushBasedLogConfiguration Update the push-based log export feature for a project
 
-[experimental] Updates the project level settings for the push-based log export feature.
+Updates the project level settings for the push-based log export feature.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.

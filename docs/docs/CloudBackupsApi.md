@@ -43,11 +43,6 @@ Method | HTTP request | Description
 Cancel One Restore Job of One Cluster
 
 
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
-
 ### Example
 
 ```go
@@ -666,11 +661,6 @@ Name | Type | Description  | Notes
 
 Remove One Sharded Cluster Cloud Backup
 
-
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -1371,11 +1361,6 @@ Name | Type | Description  | Notes
 Return One Sharded Cluster Cloud Backup
 
 
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
-
 ### Example
 
 ```go
@@ -1944,11 +1929,6 @@ Name | Type | Description  | Notes
 Return All Sharded Cluster Cloud Backups
 
 
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
-
 ### Example
 
 ```go
@@ -2257,11 +2237,6 @@ Name | Type | Description  | Notes
 
 Change Expiration Date for One Cloud Backup
 
-
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 

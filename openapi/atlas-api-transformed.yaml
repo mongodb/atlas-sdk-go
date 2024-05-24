@@ -252,7 +252,6 @@ paths:
       summary: Return the status of this MongoDB application
       tags:
         - Root
-      x-xgen-experimental: true
   /api/atlas/v2/alertConfigs/matchers/fieldNames:
     get:
       description: Get all field names that the `matchers.fieldName` parameter accepts
@@ -307,7 +306,6 @@ paths:
       summary: Return All Authorized Clusters in All Projects
       tags:
         - Clusters
-      x-xgen-experimental: true
   "/api/atlas/v2/federationSettings/{federationSettingsId}":
     delete:
       description: "Deletes the federation settings instance and all associated data,
@@ -338,7 +336,6 @@ paths:
       summary: Delete One Federation Settings Instance
       tags:
         - Federated Authentication
-      x-xgen-experimental: true
   "/api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs":
     get:
       description: Returns all connected org configs in the specified federation. To
@@ -539,7 +536,6 @@ paths:
       summary: Return All Role Mappings from One Organization
       tags:
         - Federated Authentication
-      x-xgen-experimental: true
     post:
       description: Adds one role mapping to the specified organization in the
         specified federation. To use this resource, the requesting API Key must
@@ -576,7 +572,6 @@ paths:
       summary: Add One Role Mapping to One Organization
       tags:
         - Federated Authentication
-      x-xgen-experimental: true
   "/api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings/{id}":
     delete:
       description: Removes one role mapping in the specified organization from the
@@ -616,7 +611,6 @@ paths:
       summary: Remove One Role Mapping from One Organization
       tags:
         - Federated Authentication
-      x-xgen-experimental: true
     get:
       description: Returns one role mapping from the specified organization in the
         specified federation. To use this resource, the requesting API Key must
@@ -657,7 +651,6 @@ paths:
       summary: Return One Role Mapping from One Organization
       tags:
         - Federated Authentication
-      x-xgen-experimental: true
     put:
       description: Updates one role mapping in the specified organization in the
         specified federation. To use this resource, the requesting API Key must
@@ -705,7 +698,6 @@ paths:
       summary: Update One Role Mapping in One Organization
       tags:
         - Federated Authentication
-      x-xgen-experimental: true
   "/api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders":
     get:
       description: Returns all identity providers with the provided protocol and type
@@ -999,7 +991,6 @@ paths:
       summary: Return the Metadata of One Identity Provider
       tags:
         - Federated Authentication
-      x-xgen-experimental: true
   /api/atlas/v2/groups:
     get:
       description: Returns details about all projects. Projects group clusters into
@@ -1259,7 +1250,6 @@ paths:
       summary: Add One MongoDB Cloud User to One Project
       tags:
         - Projects
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/accessList":
     get:
       description: Returns all access list entries from the specified project's IP
@@ -1515,7 +1505,6 @@ paths:
       summary: Return Status of One Project IP Access List Entry
       tags:
         - Project IP Access List
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/alertConfigs":
     get:
       description: >-
@@ -1840,7 +1829,6 @@ paths:
       summary: Return All Open Alerts for Alert Configuration
       tags:
         - Alerts
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/alerts":
     get:
       description: >-
@@ -2023,7 +2011,6 @@ paths:
       summary: Return All Alert Configurations Set for One Alert
       tags:
         - Alert Configurations
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/apiKeys":
     get:
       description: Returns all organization API keys that you assigned to the
@@ -2224,7 +2211,6 @@ paths:
       summary: Assign One Organization API Key to One Project
       tags:
         - Programmatic API Keys
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/auditLog":
     get:
       description: Returns the auditing configuration for the specified project. The
@@ -2690,7 +2676,6 @@ paths:
       summary: Return specified Cloud Provider Access Role
       tags:
         - Cloud Provider Access
-      x-xgen-experimental: true
     patch:
       description: Grants access to the specified project for the specified access
         role. To use this resource, the requesting API Key must have the Project
@@ -2985,7 +2970,6 @@ paths:
       summary: Upgrade One Shared-tier Cluster
       tags:
         - Clusters
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/clusters/tenantUpgradeToServerless":
     post:
       description: Upgrades a shared-tier cluster to a serverless instance in the
@@ -3026,7 +3010,6 @@ paths:
       summary: Upgrades One Shared-Tier Cluster to the Serverless Instance
       tags:
         - Clusters
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}":
     delete:
       description: "Removes one cluster from the specified project. The cluster must
@@ -3429,7 +3412,6 @@ paths:
       summary: Cancel One Restore Job of One Cluster
       tags:
         - Cloud Backups
-      x-xgen-experimental: true
     get:
       description: Returns one cloud backup restore job for one cluster from the
         specified project. To use this resource, the requesting API Key must
@@ -3723,7 +3705,6 @@ paths:
       summary: Remove One Sharded Cluster Cloud Backup
       tags:
         - Cloud Backups
-      x-xgen-experimental: true
     get:
       description: Returns one snapshot of one sharded cluster from the specified
         project. To use this resource, the requesting API Key must have the
@@ -3769,7 +3750,6 @@ paths:
       summary: Return One Sharded Cluster Cloud Backup
       tags:
         - Cloud Backups
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/shardedClusters":
     get:
       description: Returns all snapshots of one sharded cluster from the specified
@@ -3806,7 +3786,6 @@ paths:
       summary: Return All Sharded Cluster Cloud Backups
       tags:
         - Cloud Backups
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId}":
     delete:
       description: Removes the specified snapshot. To use this resource, the
@@ -3948,7 +3927,6 @@ paths:
       summary: Change Expiration Date for One Cloud Backup
       tags:
         - Cloud Backups
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/download":
     post:
       description: Requests one snapshot for the specified shared cluster. This
@@ -4000,7 +3978,6 @@ paths:
       summary: Download One M2 or M5 Cluster Snapshot
       tags:
         - Shared-Tier Snapshots
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/restore":
     post:
       description: Restores the specified cluster. MongoDB Cloud limits which clusters
@@ -4052,7 +4029,6 @@ paths:
       summary: Create One Restore Job from One M2 or M5 Cluster
       tags:
         - Shared-Tier Restore Jobs
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/restores":
     get:
       description: Returns all restore jobs for the specified M2 or M5 cluster.
@@ -4089,7 +4065,6 @@ paths:
       summary: Return All Restore Jobs for One M2 or M5 Cluster
       tags:
         - Shared-Tier Restore Jobs
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/restores/{restoreId}":
     get:
       description: Returns the specified restore job. To use this resource, the
@@ -4135,7 +4110,6 @@ paths:
       summary: Return One Restore Job for One M2 or M5 Cluster
       tags:
         - Shared-Tier Restore Jobs
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/snapshots":
     get:
       description: Returns details for all snapshots for the specified shared cluster.
@@ -4172,7 +4146,6 @@ paths:
       summary: Return All Snapshots for One M2 or M5 Cluster
       tags:
         - Shared-Tier Snapshots
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/snapshots/{snapshotId}":
     get:
       description: Returns details for one snapshot for the specified shared cluster.
@@ -4219,7 +4192,6 @@ paths:
       summary: Return One Snapshot for One M2 or M5 Cluster
       tags:
         - Shared-Tier Snapshots
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backupCheckpoints":
     get:
       deprecated: true
@@ -4259,7 +4231,6 @@ paths:
       summary: Return All Legacy Backup Checkpoints
       tags:
         - Legacy Backup
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backupCheckpoints/{checkpointId}":
     get:
       deprecated: true
@@ -4309,7 +4280,6 @@ paths:
       summary: Return One Legacy Backup Checkpoint
       tags:
         - Legacy Backup
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collStats/pinned":
     get:
       description: Returns a list of given cluster's pinned namespaces, a set of
@@ -4349,7 +4319,6 @@ paths:
       summary: Return Pinned Namespaces
       tags:
         - Collection Level Metrics
-      x-xgen-experimental: true
     patch:
       description: Add provided list of namespaces to existing pinned namespaces list
         for collection-level latency metrics collection for the given Group and
@@ -4403,7 +4372,6 @@ paths:
       summary: Add Pinned Namespaces
       tags:
         - Collection Level Metrics
-      x-xgen-experimental: true
     put:
       description: Pin provided list of namespaces for collection-level latency
         metrics collection for the given Group and Cluster. This initializes a
@@ -4458,7 +4426,6 @@ paths:
       summary: Pin Namespaces
       tags:
         - Collection Level Metrics
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collStats/unpin":
     patch:
       description: Unpin provided list of namespaces for collection-level latency
@@ -4505,7 +4472,6 @@ paths:
       summary: Unpin namespaces
       tags:
         - Collection Level Metrics
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes":
     post:
       description: Creates one Atlas Search index on the specified collection. Atlas
@@ -4855,7 +4821,6 @@ paths:
       summary: Remove All Custom Zone Mappings from One Global Cluster
       tags:
         - Global Clusters
-      x-xgen-experimental: true
     post:
       description: "Creates one custom zone mapping for the specified global cluster.
         A custom zone mapping matches one ISO 3166-2 location code to a zone in
@@ -4904,7 +4869,6 @@ paths:
       summary: Add One Entry to One Custom Zone Mapping
       tags:
         - Global Clusters
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/managedNamespaces":
     delete:
       description: "Removes one managed namespace within the specified global cluster.
@@ -4959,7 +4923,6 @@ paths:
       summary: Remove One Managed Namespace from One Global Cluster
       tags:
         - Global Clusters
-      x-xgen-experimental: true
     post:
       description: "Creates one managed namespace within the specified global cluster.
         A managed namespace identifies a collection using the database name, the
@@ -5009,7 +4972,6 @@ paths:
       summary: Create One Managed Namespace in One Global Cluster
       tags:
         - Global Clusters
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/index":
     post:
       description: Creates an index on the cluster identified by its name in a rolling
@@ -5298,7 +5260,6 @@ paths:
       summary: Download Online Archive Query Logs
       tags:
         - Online Archive
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/{archiveId}":
     delete:
       description: Removes one online archive. This archive stores data from one
@@ -5502,7 +5463,6 @@ paths:
       summary: End an Outage Simulation
       tags:
         - Cluster Outage Simulation
-      x-xgen-experimental: true
     get:
       description: Returns one outage simulation for one cluster.
       externalDocs:
@@ -5542,7 +5502,6 @@ paths:
       summary: Return One Outage Simulation
       tags:
         - Cluster Outage Simulation
-      x-xgen-experimental: true
     post:
       description: Starts a cluster outage simulation.
       externalDocs:
@@ -5587,7 +5546,6 @@ paths:
       summary: Start an Outage Simulation
       tags:
         - Cluster Outage Simulation
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/processArgs":
     get:
       deprecated: true
@@ -5782,7 +5740,6 @@ paths:
       summary: Return All Legacy Backup Restore Jobs
       tags:
         - Legacy Backup
-      x-xgen-experimental: true
     post:
       deprecated: true
       description: Restores one legacy backup for one cluster in the specified
@@ -5841,7 +5798,6 @@ paths:
       summary: Create One Legacy Backup Restore Job
       tags:
         - Legacy Backup
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/restoreJobs/{jobId}":
     get:
       deprecated: true
@@ -5892,7 +5848,6 @@ paths:
       summary: Return One Legacy Backup Restore Job
       tags:
         - Legacy Backup
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/deployment":
     delete:
       description: Deletes the Search Nodes for the specified cluster.
@@ -6077,7 +6032,6 @@ paths:
       summary: Return One Snapshot Schedule
       tags:
         - Legacy Backup
-      x-xgen-experimental: true
     patch:
       deprecated: true
       description: >-
@@ -6123,7 +6077,6 @@ paths:
       summary: Update Snapshot Schedule for One Cluster
       tags:
         - Legacy Backup
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/snapshots":
     get:
       deprecated: true
@@ -6178,7 +6131,6 @@ paths:
       summary: Return All Legacy Backup Snapshots
       tags:
         - Legacy Backup
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/snapshots/{snapshotId}":
     delete:
       deprecated: true
@@ -6234,7 +6186,6 @@ paths:
       summary: Remove One Legacy Backup Snapshot
       tags:
         - Legacy Backup
-      x-xgen-experimental: true
     get:
       deprecated: true
       description: Returns one legacy backup snapshot for one cluster in the specified
@@ -6287,7 +6238,6 @@ paths:
       summary: Return One Legacy Backup Snapshot
       tags:
         - Legacy Backup
-      x-xgen-experimental: true
     patch:
       deprecated: true
       description: Changes the expiration date for one legacy backup snapshot for one
@@ -6347,7 +6297,6 @@ paths:
       summary: Change One Legacy Backup Snapshot Expiration
       tags:
         - Legacy Backup
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/status":
     get:
       description: Returns the status of all changes that you made to the specified
@@ -6384,7 +6333,6 @@ paths:
       summary: Return Status of All Cluster Operations
       tags:
         - Clusters
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/{clusterView}/collStats/namespaces":
     get:
       description: Return the subset of namespaces from the given cluster sorted by
@@ -6429,7 +6377,6 @@ paths:
       summary: Return Ranked Namespaces from a Cluster
       tags:
         - Collection Level Metrics
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/{clusterView}/{databaseName}/{collectionName}/collStats/measurements":
     get:
       description: Get a list of the Coll Stats Latency cluster-level measurements for
@@ -6492,7 +6439,6 @@ paths:
       summary: Return Cluster-Level Query Latency
       tags:
         - Collection Level Metrics
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/clusters/{hostName}/logs/{logName}.gz":
     get:
       description: "Returns a compressed (.gz) log file that contains a range of log
@@ -6607,7 +6553,6 @@ paths:
       summary: Return all metric names
       tags:
         - Collection Level Metrics
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/containers":
     get:
       description: Returns details about all network peering containers in the
@@ -6798,7 +6743,6 @@ paths:
       summary: Return One Network Peering Container
       tags:
         - Network Peering
-      x-xgen-experimental: true
     patch:
       description: Updates the network details and labels of one specified network
         peering container in the specified project. To use this resource, the
@@ -6850,7 +6794,6 @@ paths:
       summary: Update One Network Peering Container
       tags:
         - Network Peering
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/customDBRoles/roles":
     get:
       description: Returns all custom roles for the specified project. To use this
@@ -8235,7 +8178,6 @@ paths:
         for One Project
       tags:
         - Encryption at Rest using Customer Key Management
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/events":
     get:
       description: >-
@@ -8381,7 +8323,6 @@ paths:
       summary: Return One Event from One Project
       tags:
         - Events
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics":
     get:
       description: Returns all Atlas Search metric types available for one process in
@@ -8410,7 +8351,6 @@ paths:
       summary: Return All Atlas Search Metric Types for One Process
       tags:
         - Monitoring and Logs
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics/indexes/{databaseName}/{collectionName}/measurements":
     get:
       description: Returns the Atlas Search index metrics within the specified time
@@ -8458,7 +8398,6 @@ paths:
       summary: Return All Atlas Search Index Metrics for One Namespace
       tags:
         - Monitoring and Logs
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics/indexes/{databaseName}/{collectionName}/{indexName}/measurements":
     get:
       description: Returns the Atlas Search metrics data series within the provided
@@ -8509,7 +8448,6 @@ paths:
       summary: Return Atlas Search Metrics for One Index in One Specified Namespace
       tags:
         - Monitoring and Logs
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics/measurements":
     get:
       description: Returns the Atlas Search hardware and status data series within the
@@ -8561,7 +8499,6 @@ paths:
       summary: Return Atlas Search Hardware and Status Metrics
       tags:
         - Monitoring and Logs
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/integrations":
     get:
       description: Returns the settings that permit integrations with all configured
@@ -8771,7 +8708,6 @@ paths:
       summary: Update One Third-Party Service Integration
       tags:
         - Third-Party Integrations
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/invites":
     get:
       deprecated: true
@@ -9027,7 +8963,6 @@ paths:
       summary: Return All IP Addresses for One Project
       tags:
         - Projects
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/limits":
     get:
       description: Returns all the limits for the specified project. To use this
@@ -9060,7 +8995,6 @@ paths:
       summary: Return All Limits for One Project
       tags:
         - Projects
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/limits/{limitName}":
     delete:
       description: Removes the specified project limit. Depending on the limit, Atlas
@@ -9127,7 +9061,6 @@ paths:
       summary: Remove One Project Limit
       tags:
         - Projects
-      x-xgen-experimental: true
     get:
       description: Returns the specified limit for the specified project. To use this
         resource, the requesting API Key must have the Project Read Only role.
@@ -9193,7 +9126,6 @@ paths:
       summary: Return One Limit for One Project
       tags:
         - Projects
-      x-xgen-experimental: true
     patch:
       description: >-
         Sets the specified project limit. To use this resource, the requesting
@@ -9270,7 +9202,6 @@ paths:
       summary: Set One Project Limit
       tags:
         - Projects
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/liveMigrations":
     post:
       description: >-
@@ -9588,7 +9519,6 @@ paths:
       summary: Toggle Automatic Deferral of Maintenance for One Project
       tags:
         - Maintenance Windows
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/maintenanceWindow/defer":
     post:
       description: Defers the maintenance window for the specified project. Urgent
@@ -9887,7 +9817,6 @@ paths:
       summary: Update One New Network Peering Connection
       tags:
         - Network Peering
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/pipelines":
     get:
       description: Returns a list of Data Lake Pipelines. To use this resource, the
@@ -10593,7 +10522,6 @@ paths:
       summary: Create One Private Endpoint for One Serverless Instance
       tags:
         - Serverless Private Endpoints
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint/{endpointId}":
     delete:
       description: Remove one private endpoint from one serverless instance. To use
@@ -10639,7 +10567,6 @@ paths:
       summary: Remove One Private Endpoint for One Serverless Instance
       tags:
         - Serverless Private Endpoints
-      x-xgen-experimental: true
     get:
       description: Return one private endpoint for one serverless instance. Identify
         this endpoint using its unique ID. You must have at least the Project
@@ -10685,7 +10612,6 @@ paths:
       summary: Return One Private Endpoint for One Serverless Instance
       tags:
         - Serverless Private Endpoints
-      x-xgen-experimental: true
     patch:
       description: Updates one private endpoint for one serverless instance. To use
         this resource, the requesting API Key must have the Project Owner role.
@@ -10737,7 +10663,6 @@ paths:
       summary: Update One Private Endpoint for One Serverless Instance
       tags:
         - Serverless Private Endpoints
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService":
     get:
       description: Returns the name, interfaces, and state of all private endpoint
@@ -11057,7 +10982,6 @@ paths:
       summary: Verify Connect via Peering Only Mode for One Project
       tags:
         - Network Peering
-      x-xgen-experimental: true
     patch:
       deprecated: true
       description: Disables Connect via Peering Only mode for the specified project.
@@ -11095,7 +11019,6 @@ paths:
       summary: Disable Connect via Peering Only Mode for One Project
       tags:
         - Network Peering
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/privateNetworkSettings/endpointIds":
     get:
       description: Returns all private endpoints for Federated Database Instances and
@@ -11364,7 +11287,6 @@ paths:
       summary: Return Ranked Namespaces from a Host
       tags:
         - Collection Level Metrics
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/processes/{processId}/databases":
     get:
       description: Returns the list of databases running on the specified host for the
@@ -11454,7 +11376,6 @@ paths:
       summary: Return One Database for a MongoDB Process
       tags:
         - Monitoring and Logs
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/processes/{processId}/databases/{databaseName}/measurements":
     get:
       description: Returns the measurements of one database for the specified host for
@@ -11613,7 +11534,6 @@ paths:
       summary: Return Measurements of One Disk
       tags:
         - Monitoring and Logs
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/processes/{processId}/disks/{partitionName}/measurements":
     get:
       description: >-
@@ -12066,7 +11986,6 @@ paths:
       summary: Return Host-Level Query Latency
       tags:
         - Collection Level Metrics
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/pushBasedLogExport":
     delete:
       description: Disables the push-based log export feature by resetting the project
@@ -12095,7 +12014,6 @@ paths:
       summary: Disable the push-based log export feature for a project
       tags:
         - Push-Based Log Export
-      x-xgen-experimental: true
     get:
       description: Fetches the current project level settings for the push-based log
         export feature.
@@ -12123,7 +12041,6 @@ paths:
       summary: Get the push-based log export configuration for a project
       tags:
         - Push-Based Log Export
-      x-xgen-experimental: true
     patch:
       description: Updates the project level settings for the push-based log export feature.
       operationId: updatePushBasedLogConfiguration
@@ -12160,7 +12077,6 @@ paths:
       summary: Update the push-based log export feature for a project
       tags:
         - Push-Based Log Export
-      x-xgen-experimental: true
     post:
       description: Configures the project level settings for the push-based log export
         feature.
@@ -12197,7 +12113,6 @@ paths:
       summary: Enable the push-based log export feature for a project
       tags:
         - Push-Based Log Export
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/sampleDatasetLoad/{name}":
     post:
       description: Requests loading the MongoDB sample dataset into the specified
@@ -12585,7 +12500,6 @@ paths:
       summary: Return Serverless Auto Indexing Enabled
       tags:
         - Performance Advisor
-      x-xgen-experimental: true
     post:
       description: Set whether the Serverless Auto Indexing feature is enabled.
       operationId: setServerlessAutoIndexing
@@ -12623,7 +12537,6 @@ paths:
       summary: Set Serverless Auto Indexing
       tags:
         - Performance Advisor
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/serverless/{name}":
     delete:
       description: Removes one serverless instance from the specified project. The
@@ -13781,7 +13694,6 @@ paths:
       summary: Update Project Roles for One MongoDB Cloud User
       tags:
         - Projects
-      x-xgen-experimental: true
   /api/atlas/v2/orgs:
     get:
       description: Returns all organizations to which the requesting API Key has
@@ -13967,7 +13879,6 @@ paths:
       summary: Rename One Organization
       tags:
         - Organizations
-      x-xgen-experimental: true
   "/api/atlas/v2/orgs/{orgId}/apiKeys":
     get:
       description: Returns all organization API keys for the specified organization.
@@ -14366,7 +14277,6 @@ paths:
       summary: Return One Access List Entry for One Organization API Key
       tags:
         - Programmatic API Keys
-      x-xgen-experimental: true
   "/api/atlas/v2/orgs/{orgId}/billing/costExplorer/usage":
     post:
       description: Creates a query process within the Cost Explorer for the given
@@ -14401,7 +14311,6 @@ paths:
       summary: Create Cost Explorer query process
       tags:
         - Invoices
-      x-xgen-experimental: true
   "/api/atlas/v2/orgs/{orgId}/billing/costExplorer/usage/{token}":
     get:
       description: Returns the usage details for a Cost Explorer query, if the query
@@ -14448,7 +14357,6 @@ paths:
         results are not ready yet.
       tags:
         - Invoices
-      x-xgen-experimental: true
   "/api/atlas/v2/orgs/{orgId}/events":
     get:
       description: >-
@@ -14572,7 +14480,6 @@ paths:
       summary: Return One Event from One Organization
       tags:
         - Events
-      x-xgen-experimental: true
   "/api/atlas/v2/orgs/{orgId}/federationSettings":
     get:
       description: Returns information about the federation settings for the specified
@@ -14922,7 +14829,6 @@ paths:
       summary: Return All Invoices for One Organization
       tags:
         - Invoices
-      x-xgen-experimental: true
   "/api/atlas/v2/orgs/{orgId}/invoices/pending":
     get:
       description: Returns all invoices accruing charges for the current billing cycle
@@ -14953,7 +14859,6 @@ paths:
       summary: Return All Pending Invoices for One Organization
       tags:
         - Invoices
-      x-xgen-experimental: true
   "/api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}":
     get:
       description: >-
@@ -15003,7 +14908,6 @@ paths:
       summary: Return One Organization Invoice
       tags:
         - Invoices
-      x-xgen-experimental: true
   "/api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/csv":
     get:
       description: >-
@@ -15046,7 +14950,6 @@ paths:
       summary: Return One Organization Invoice as CSV
       tags:
         - Invoices
-      x-xgen-experimental: true
   "/api/atlas/v2/orgs/{orgId}/liveMigrations/availableProjects":
     get:
       description: Return all projects that you can migrate to the specified organization.
@@ -15074,7 +14977,6 @@ paths:
       summary: Return All Projects Available for Migration
       tags:
         - Cloud Migration Service
-      x-xgen-experimental: true
   "/api/atlas/v2/orgs/{orgId}/liveMigrations/linkTokens":
     delete:
       description: Remove one organization link and its associated public API key.
@@ -15168,7 +15070,6 @@ paths:
       summary: Return Settings for One Organization
       tags:
         - Organizations
-      x-xgen-experimental: true
     patch:
       description: Updates the organization's settings. To use this resource, the
         requesting API Key must have the Organization Owner role.
@@ -15203,7 +15104,6 @@ paths:
       summary: Update Settings for One Organization
       tags:
         - Organizations
-      x-xgen-experimental: true
   "/api/atlas/v2/orgs/{orgId}/teams":
     get:
       description: Returns all teams that belong to the specified organization. Teams
@@ -15686,7 +15586,6 @@ paths:
       summary: Remove One MongoDB Cloud User from One Organization
       tags:
         - Organizations
-      x-xgen-experimental: true
   "/api/atlas/v2/orgs/{orgId}/users/{userId}/roles":
     put:
       description: Updates the roles of the specified user in the specified
@@ -15735,7 +15634,6 @@ paths:
       summary: Update Organization Roles for One MongoDB Cloud User
       tags:
         - Organizations
-      x-xgen-experimental: true
   /api/atlas/v2/unauth/controlPlaneIPAddresses:
     get:
       description: Returns all control plane IP addresses.
@@ -15756,7 +15654,6 @@ paths:
       summary: Return All Control Plane IP Addresses
       tags:
         - Root
-      x-xgen-experimental: true
   /api/atlas/v2/users:
     post:
       description: >-

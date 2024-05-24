@@ -163,11 +163,6 @@ Name | Type | Description  | Notes
 Return Serverless Auto Indexing Enabled
 
 
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
-
 ### Example
 
 ```go
@@ -499,11 +494,6 @@ Name | Type | Description  | Notes
 
 Set Serverless Auto Indexing
 
-
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 

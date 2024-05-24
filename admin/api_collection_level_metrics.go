@@ -18,7 +18,7 @@ type CollectionLevelMetricsApi interface {
 	/*
 		GetCollStatsLatencyNamespaceClusterMeasurements Return Cluster-Level Query Latency
 
-		[experimental] Get a list of the Coll Stats Latency cluster-level measurements for the given namespace.
+		Get a list of the Coll Stats Latency cluster-level measurements for the given namespace.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -45,7 +45,7 @@ type CollectionLevelMetricsApi interface {
 	/*
 		GetCollStatsLatencyNamespaceHostMeasurements Return Host-Level Query Latency
 
-		[experimental] Get a list of the Coll Stats Latency process-level measurements for the given namespace
+		Get a list of the Coll Stats Latency process-level measurements for the given namespace
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -71,7 +71,7 @@ type CollectionLevelMetricsApi interface {
 	/*
 		GetCollStatsLatencyNamespaceMetrics Return all metric names
 
-		[experimental] Returns all available Coll Stats Latency metric names and their respective units for the specified project at the time of request.
+		Returns all available Coll Stats Latency metric names and their respective units for the specified project at the time of request.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -94,7 +94,7 @@ type CollectionLevelMetricsApi interface {
 	/*
 		GetCollStatsLatencyNamespacesForCluster Return Ranked Namespaces from a Cluster
 
-		[experimental] Return the subset of namespaces from the given cluster sorted by highest total execution time (descending) within the given time window.
+		Return the subset of namespaces from the given cluster sorted by highest total execution time (descending) within the given time window.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -119,7 +119,7 @@ type CollectionLevelMetricsApi interface {
 	/*
 		GetCollStatsLatencyNamespacesForHost Return Ranked Namespaces from a Host
 
-		[experimental] Return the subset of namespaces from the given process ranked by highest total execution time (descending) within the given time window.
+		Return the subset of namespaces from the given process ranked by highest total execution time (descending) within the given time window.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -143,7 +143,7 @@ type CollectionLevelMetricsApi interface {
 	/*
 		GetPinnedNamespaces Return Pinned Namespaces
 
-		[experimental] Returns a list of given cluster's pinned namespaces, a set of namespaces manually selected by users to collect query latency metrics on.
+		Returns a list of given cluster's pinned namespaces, a set of namespaces manually selected by users to collect query latency metrics on.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -167,7 +167,7 @@ type CollectionLevelMetricsApi interface {
 	/*
 		PinNamespacesPatch Add Pinned Namespaces
 
-		[experimental] Add provided list of namespaces to existing pinned namespaces list for collection-level latency metrics collection for the given Group and Cluster
+		Add provided list of namespaces to existing pinned namespaces list for collection-level latency metrics collection for the given Group and Cluster
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -191,7 +191,7 @@ type CollectionLevelMetricsApi interface {
 	/*
 		PinNamespacesPut Pin Namespaces
 
-		[experimental] Pin provided list of namespaces for collection-level latency metrics collection for the given Group and Cluster. This initializes a pinned namespaces list or replaces any existing pinned namespaces list for the Group and Cluster.
+		Pin provided list of namespaces for collection-level latency metrics collection for the given Group and Cluster. This initializes a pinned namespaces list or replaces any existing pinned namespaces list for the Group and Cluster.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -215,7 +215,7 @@ type CollectionLevelMetricsApi interface {
 	/*
 		UnpinNamespaces Unpin namespaces
 
-		[experimental] Unpin provided list of namespaces for collection-level latency metrics collection for the given Group and Cluster
+		Unpin provided list of namespaces for collection-level latency metrics collection for the given Group and Cluster
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -313,7 +313,7 @@ func (r GetCollStatsLatencyNamespaceClusterMeasurementsApiRequest) Execute() (*M
 /*
 GetCollStatsLatencyNamespaceClusterMeasurements Return Cluster-Level Query Latency
 
-[experimental] Get a list of the Coll Stats Latency cluster-level measurements for the given namespace.
+Get a list of the Coll Stats Latency cluster-level measurements for the given namespace.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -510,7 +510,7 @@ func (r GetCollStatsLatencyNamespaceHostMeasurementsApiRequest) Execute() (*Meas
 /*
 GetCollStatsLatencyNamespaceHostMeasurements Return Host-Level Query Latency
 
-[experimental] Get a list of the Coll Stats Latency process-level measurements for the given namespace
+Get a list of the Coll Stats Latency process-level measurements for the given namespace
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -659,7 +659,7 @@ func (r GetCollStatsLatencyNamespaceMetricsApiRequest) Execute() (map[string]int
 /*
 GetCollStatsLatencyNamespaceMetrics Return all metric names
 
-[experimental] Returns all available Coll Stats Latency metric names and their respective units for the specified project at the time of request.
+Returns all available Coll Stats Latency metric names and their respective units for the specified project at the time of request.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -816,7 +816,7 @@ func (r GetCollStatsLatencyNamespacesForClusterApiRequest) Execute() (*CollStats
 /*
 GetCollStatsLatencyNamespacesForCluster Return Ranked Namespaces from a Cluster
 
-[experimental] Return the subset of namespaces from the given cluster sorted by highest total execution time (descending) within the given time window.
+Return the subset of namespaces from the given cluster sorted by highest total execution time (descending) within the given time window.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -985,7 +985,7 @@ func (r GetCollStatsLatencyNamespacesForHostApiRequest) Execute() (*CollStatsRan
 /*
 GetCollStatsLatencyNamespacesForHost Return Ranked Namespaces from a Host
 
-[experimental] Return the subset of namespaces from the given process ranked by highest total execution time (descending) within the given time window.
+Return the subset of namespaces from the given process ranked by highest total execution time (descending) within the given time window.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -1124,7 +1124,7 @@ func (r GetPinnedNamespacesApiRequest) Execute() (*PinnedNamespaces, *http.Respo
 /*
 GetPinnedNamespaces Return Pinned Namespaces
 
-[experimental] Returns a list of given cluster's pinned namespaces, a set of namespaces manually selected by users to collect query latency metrics on.
+Returns a list of given cluster's pinned namespaces, a set of namespaces manually selected by users to collect query latency metrics on.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -1257,7 +1257,7 @@ func (r PinNamespacesPatchApiRequest) Execute() (*PinnedNamespaces, *http.Respon
 /*
 PinNamespacesPatch Add Pinned Namespaces
 
-[experimental] Add provided list of namespaces to existing pinned namespaces list for collection-level latency metrics collection for the given Group and Cluster
+Add provided list of namespaces to existing pinned namespaces list for collection-level latency metrics collection for the given Group and Cluster
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -1396,7 +1396,7 @@ func (r PinNamespacesPutApiRequest) Execute() (*PinnedNamespaces, *http.Response
 /*
 PinNamespacesPut Pin Namespaces
 
-[experimental] Pin provided list of namespaces for collection-level latency metrics collection for the given Group and Cluster. This initializes a pinned namespaces list or replaces any existing pinned namespaces list for the Group and Cluster.
+Pin provided list of namespaces for collection-level latency metrics collection for the given Group and Cluster. This initializes a pinned namespaces list or replaces any existing pinned namespaces list for the Group and Cluster.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -1535,7 +1535,7 @@ func (r UnpinNamespacesApiRequest) Execute() (*PinnedNamespaces, *http.Response,
 /*
 UnpinNamespaces Unpin namespaces
 
-[experimental] Unpin provided list of namespaces for collection-level latency metrics collection for the given Group and Cluster
+Unpin provided list of namespaces for collection-level latency metrics collection for the given Group and Cluster
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
