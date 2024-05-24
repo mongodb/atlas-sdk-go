@@ -104,11 +104,6 @@ Name | Type | Description  | Notes
 Return One Database for a MongoDB Process
 
 
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
-
 ### Example
 
 ```go
@@ -535,11 +530,6 @@ Name | Type | Description  | Notes
 Return Atlas Search Metrics for One Index in One Specified Namespace
 
 
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
-
 ### Example
 
 ```go
@@ -634,11 +624,6 @@ Name | Type | Description  | Notes
 
 Return Atlas Search Hardware and Status Metrics
 
-
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -887,11 +872,6 @@ Name | Type | Description  | Notes
 Return Measurements of One Disk
 
 
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
-
 ### Example
 
 ```go
@@ -1053,11 +1033,6 @@ Name | Type | Description  | Notes
 Return All Atlas Search Index Metrics for One Namespace
 
 
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
-
 ### Example
 
 ```go
@@ -1149,11 +1124,6 @@ Name | Type | Description  | Notes
 
 Return All Atlas Search Metric Types for One Process
 
-
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 

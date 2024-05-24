@@ -18,11 +18,6 @@ Method | HTTP request | Description
 Enable the push-based log export feature for a project
 
 
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
-
 ### Example
 
 ```go
@@ -96,11 +91,6 @@ Name | Type | Description  | Notes
 Disable the push-based log export feature for a project
 
 
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
-
 ### Example
 
 ```go
@@ -171,11 +161,6 @@ Name | Type | Description  | Notes
 
 Get the push-based log export configuration for a project
 
-
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -249,11 +234,6 @@ Name | Type | Description  | Notes
 
 Update the push-based log export feature for a project
 
-
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 

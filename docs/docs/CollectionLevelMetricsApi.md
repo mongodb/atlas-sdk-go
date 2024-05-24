@@ -23,11 +23,6 @@ Method | HTTP request | Description
 Return Cluster-Level Query Latency
 
 
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
-
 ### Example
 
 ```go
@@ -121,11 +116,6 @@ Name | Type | Description  | Notes
 Return Host-Level Query Latency
 
 
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
-
 ### Example
 
 ```go
@@ -216,11 +206,6 @@ Name | Type | Description  | Notes
 Return all metric names
 
 
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
-
 ### Example
 
 ```go
@@ -293,11 +278,6 @@ Name | Type | Description  | Notes
 
 Return Ranked Namespaces from a Cluster
 
-
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -384,11 +364,6 @@ Name | Type | Description  | Notes
 Return Ranked Namespaces from a Host
 
 
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
-
 ### Example
 
 ```go
@@ -471,11 +446,6 @@ Name | Type | Description  | Notes
 Return Pinned Namespaces
 
 
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
-
 ### Example
 
 ```go
@@ -551,11 +521,6 @@ Name | Type | Description  | Notes
 
 Add Pinned Namespaces
 
-
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -635,11 +600,6 @@ Name | Type | Description  | Notes
 Pin Namespaces
 
 
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
-
 ### Example
 
 ```go
@@ -717,11 +677,6 @@ Name | Type | Description  | Notes
 
 Unpin namespaces
 
-
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 

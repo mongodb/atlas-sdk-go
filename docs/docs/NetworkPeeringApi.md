@@ -329,11 +329,6 @@ Name | Type | Description  | Notes
 Disable Connect via Peering Only Mode for One Project
 
 
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
-
 ### Example
 
 ```go
@@ -802,11 +797,6 @@ Name | Type | Description  | Notes
 Update One New Network Peering Connection
 
 
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
-
 ### Example
 
 ```go
@@ -885,11 +875,6 @@ Name | Type | Description  | Notes
 Update One Network Peering Container
 
 
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
-
 ### Example
 
 ```go
@@ -967,11 +952,6 @@ Name | Type | Description  | Notes
 
 Verify Connect via Peering Only Mode for One Project
 
-
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 

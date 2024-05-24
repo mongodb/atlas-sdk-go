@@ -20,11 +20,6 @@ Method | HTTP request | Description
 Create Cost Explorer query process
 
 
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
-
 ### Example
 
 ```go
@@ -99,11 +94,6 @@ Name | Type | Description  | Notes
 
 Return results from a given Cost Explorer query, or notify that the results are not ready yet.
 
-
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -181,11 +171,6 @@ Name | Type | Description  | Notes
 Return One Organization Invoice as CSV
 
 
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
-
 ### Example
 
 ```go
@@ -262,11 +247,6 @@ Name | Type | Description  | Notes
 Return One Organization Invoice
 
 
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
-
 ### Example
 
 ```go
@@ -342,11 +322,6 @@ Name | Type | Description  | Notes
 
 Return All Invoices for One Organization
 
-
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -426,11 +401,6 @@ Name | Type | Description  | Notes
 
 Return All Pending Invoices for One Organization
 
-
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 

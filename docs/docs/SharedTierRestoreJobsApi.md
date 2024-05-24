@@ -17,11 +17,6 @@ Method | HTTP request | Description
 Create One Restore Job from One M2 or M5 Cluster
 
 
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
-
 ### Example
 
 ```go
@@ -99,11 +94,6 @@ Name | Type | Description  | Notes
 
 Return One Restore Job for One M2 or M5 Cluster
 
-
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -183,11 +173,6 @@ Name | Type | Description  | Notes
 
 Return All Restore Jobs for One M2 or M5 Cluster
 
-
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 

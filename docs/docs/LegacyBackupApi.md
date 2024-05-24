@@ -25,11 +25,6 @@ Method | HTTP request | Description
 Create One Legacy Backup Restore Job
 
 
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
-
 ### Example
 
 ```go
@@ -107,11 +102,6 @@ Name | Type | Description  | Notes
 
 Remove One Legacy Backup Snapshot
 
-
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -192,11 +182,6 @@ Name | Type | Description  | Notes
 Return One Legacy Backup Checkpoint
 
 
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
-
 ### Example
 
 ```go
@@ -275,11 +260,6 @@ Name | Type | Description  | Notes
 
 Return One Legacy Backup Restore Job
 
-
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -360,11 +340,6 @@ Name | Type | Description  | Notes
 Return One Legacy Backup Snapshot
 
 
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
-
 ### Example
 
 ```go
@@ -444,11 +419,6 @@ Name | Type | Description  | Notes
 Return One Snapshot Schedule
 
 
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
-
 ### Example
 
 ```go
@@ -524,11 +494,6 @@ Name | Type | Description  | Notes
 
 Return All Legacy Backup Checkpoints
 
-
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -611,11 +576,6 @@ Name | Type | Description  | Notes
 
 Return All Legacy Backup Restore Jobs
 
-
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -701,11 +661,6 @@ Name | Type | Description  | Notes
 Return All Legacy Backup Snapshots
 
 
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
-
 ### Example
 
 ```go
@@ -790,11 +745,6 @@ Name | Type | Description  | Notes
 Change One Legacy Backup Snapshot Expiration
 
 
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
-
 ### Example
 
 ```go
@@ -875,11 +825,6 @@ Name | Type | Description  | Notes
 
 Update Snapshot Schedule for One Cluster
 
-
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
