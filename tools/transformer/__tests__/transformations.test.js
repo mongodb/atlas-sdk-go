@@ -62,4 +62,3 @@ test("applyModelNameTransformations", () => {
     expect(modelKey.endsWith("View")).toBeFalsy();
   }
 });
-
