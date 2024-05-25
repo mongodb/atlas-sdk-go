@@ -19,7 +19,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 3240ec50f60cc06b8ca6774011cdf6e5f75d69d8
+  x-xgen-sha: 5c28a233e5767c885dc3fb3a1bde2446126591c3
 servers:
 - url: https://cloud.mongodb.com
 tags:
@@ -2735,7 +2735,6 @@ paths:
       - Cloud Provider Access
   /api/atlas/v2/groups/{groupId}/clusters:
     get:
-      deprecated: true
       description: "Returns the details for all clusters in the specific project to\
         \ which you have access. Clusters contain a group of hosts that maintain the\
         \ same data set. The response includes multi-cloud clusters. To use this resource,\
@@ -2772,9 +2771,7 @@ paths:
       summary: Return All Clusters in One Project
       tags:
       - Clusters
-      x-sunset: 2026-03-01
     post:
-      deprecated: true
       description: "Creates one cluster in the specified project. Clusters contain\
         \ a group of hosts that maintain the same data set. This resource can create\
         \ multi-cloud clusters. Each project supports up to 25 database deployments.\
@@ -2899,7 +2896,6 @@ paths:
       summary: Create One Cluster from One Project
       tags:
       - Clusters
-      x-sunset: 2026-03-01
   /api/atlas/v2/groups/{groupId}/clusters/provider/regions:
     get:
       description: "Returns the list of regions available for the specified cloud\
@@ -3076,7 +3072,6 @@ paths:
       tags:
       - Clusters
     get:
-      deprecated: true
       description: "Returns the details for one cluster in the specified project.\
         \ Clusters contain a group of hosts that maintain the same data set. The response\
         \ includes multi-cloud clusters. To use this resource, the requesting API\
@@ -3117,9 +3112,7 @@ paths:
       summary: Return One Cluster from One Project
       tags:
       - Clusters
-      x-sunset: 2026-03-01
     patch:
-      deprecated: true
       description: "Updates the details for one cluster in the specified project.\
         \ Clusters contain a group of hosts that maintain the same data set. This\
         \ resource can update multi-cloud clusters. To update a cluster's termination\
@@ -3174,7 +3167,6 @@ paths:
       summary: Modify One Cluster from One Project
       tags:
       - Clusters
-      x-sunset: 2026-03-01
   /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/exports:
     get:
       description: "Returns all Cloud Backup snapshot export jobs associated with\
@@ -12157,6 +12149,8 @@ paths:
             - SYSTEM_NORMALIZED_CPU_SOFTIRQ
             - SYSTEM_NORMALIZED_CPU_STEAL
             - SYSTEM_NORMALIZED_CPU_USER
+            - TICKETS_AVAILABLE_READS
+            - TICKETS_AVAILABLE_WRITE
           maxItems: 10
           minItems: 1
           uniqueItems: true
@@ -17914,11 +17908,9 @@ components:
           readOnly: true
         matchers:
           type: array
-          description: No matchers are available for these alert types. The list is
-            always empty.
+          description: Matching conditions for target resources.
           items:
-            type: object
-          readOnly: true
+            $ref: '#/components/schemas/AlertMatcher'
         notifications:
           type: array
           description: List that contains the targets that MongoDB Cloud sends notifications.
@@ -17935,6 +17927,37 @@ components:
       required:
       - notifications
       title: Alert Configuration
+    AlertMatcher:
+      type: object
+      description: Rules to apply when comparing an target instance against this alert
+        configuration.
+      properties:
+        fieldName:
+          type: string
+          description: Name of the parameter in the target object that MongoDB Cloud
+            checks. The parameter must match all rules for MongoDB Cloud to check
+            for alert configurations.
+        operator:
+          type: string
+          description: "Comparison operator to apply when checking the current metric\
+            \ value against **matcher[n].value**."
+          enum:
+          - EQUALS
+          - CONTAINS
+          - STARTS_WITH
+          - ENDS_WITH
+          - NOT_EQUALS
+          - NOT_CONTAINS
+          - REGEX
+        value:
+          type: string
+          description: Value to match or exceed using the specified **matchers.operator**.
+          example: event-replica-set
+      required:
+      - fieldName
+      - operator
+      - value
+      title: Matchers
     AlertView:
       type: object
       description: "Alert represents a notice of warning, a threat or a problem in\
@@ -22602,11 +22625,9 @@ components:
           readOnly: true
         matchers:
           type: array
-          description: No matchers are available for these alert types. The list is
-            always empty.
+          description: Matching conditions for target resources.
           items:
-            type: object
-          readOnly: true
+            $ref: '#/components/schemas/AlertMatcher'
         notifications:
           type: array
           description: List that contains the targets that MongoDB Cloud sends notifications.
@@ -25195,11 +25216,9 @@ components:
           readOnly: true
         matchers:
           type: array
-          description: No matchers are available for these alert types. The list is
-            always empty.
+          description: Matching conditions for target resources.
           items:
-            type: object
-          readOnly: true
+            $ref: '#/components/schemas/AlertMatcher'
         notifications:
           type: array
           description: List that contains the targets that MongoDB Cloud sends notifications.
@@ -27798,11 +27817,9 @@ components:
           readOnly: true
         matchers:
           type: array
-          description: No matchers are available for these alert types. The list is
-            always empty.
+          description: Matching conditions for target resources.
           items:
-            type: object
-          readOnly: true
+            $ref: '#/components/schemas/AlertMatcher'
         notifications:
           type: array
           description: List that contains the targets that MongoDB Cloud sends notifications.
@@ -29830,11 +29847,9 @@ components:
           readOnly: true
         matchers:
           type: array
-          description: No matchers are available for these alert types. The list is
-            always empty.
+          description: Matching conditions for target resources.
           items:
-            type: object
-          readOnly: true
+            $ref: '#/components/schemas/AlertMatcher'
         notifications:
           type: array
           description: List that contains the targets that MongoDB Cloud sends notifications.
@@ -38338,11 +38353,9 @@ components:
           readOnly: true
         matchers:
           type: array
-          description: No matchers are available for these alert types. The list is
-            always empty.
+          description: Matching conditions for target resources.
           items:
-            type: object
-          readOnly: true
+            $ref: '#/components/schemas/AlertMatcher'
         notifications:
           type: array
           description: List that contains the targets that MongoDB Cloud sends notifications.
@@ -44061,11 +44074,9 @@ components:
           readOnly: true
         matchers:
           type: array
-          description: No matchers are available for these alert types. The list is
-            always empty.
+          description: Matching conditions for target resources.
           items:
-            type: object
-          readOnly: true
+            $ref: '#/components/schemas/AlertMatcher'
         metricThreshold:
           $ref: '#/components/schemas/ServerlessMetricThreshold'
         notifications:
