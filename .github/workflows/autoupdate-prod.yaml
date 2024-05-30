@@ -26,6 +26,7 @@ jobs:
       - name: Run generation
         working-directory: ./tools
         run: |
+          export PATH=${PATH}:`go env GOPATH`/bin
           make clean_and_generate
       - name: Verify Changed files
         uses: tj-actions/verify-changed-files@fd85a6022db9aa8345ca15c3adb91d486780bfd9
