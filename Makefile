@@ -39,7 +39,7 @@ check: test lint-fix
 .PHONY: tools
 tools:
 	curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s $(GOLANGCI_VERSION)
-	go install golang.org/x/tools/cmd/goimports@0.21.0
+	go install golang.org/x/tools/cmd/goimports@v0.21.0
 
 .PHONY: addcopy
 addcopy:
