@@ -498,9 +498,6 @@ func (c *APIClient) makeApiError(res *http.Response, httpMethod, httpPath string
 }
 
 func (c *APIClient) decode(v interface{}, b io.ReadCloser, contentType string) (err error) {
-	if b == nil {
-		return nil
-	}
 	switch r := v.(type) {
 	case *string:
 		buf, err := io.ReadAll(b)
@@ -521,6 +518,9 @@ func (c *APIClient) decode(v interface{}, b io.ReadCloser, contentType string) (
 		_ = b.Close()
 		if err != nil {
 			return err
+		}
+		if len(buf) == 0 {
+			return nil
 		}
 		if xmlCheck.MatchString(contentType) {
 			return xml.Unmarshal(buf, v);
