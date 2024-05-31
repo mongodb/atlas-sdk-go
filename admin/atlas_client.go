@@ -44,7 +44,6 @@ func NewClient(modifiers ...ClientModifier) (*APIClient, error) {
 // ClientModifiers lets you create function that controls configuration before creating client.
 type ClientModifier func(*Configuration) error
 
-
 // UseDigestAuth provides Digest authentication for Go SDK.
 // UseDigestAuth is provided as helper to create a default HTTP client that supports HTTP Digest authentication.
 // Warning: any previously set httpClient will be overwritten. To fully customize HttpClient use UseHTTPClient method.
@@ -62,14 +61,13 @@ func UseDigestAuth(apiKey, apiSecret string) ClientModifier {
 
 // Advanced modifiers.
 
-
-//  UseHTTPClient set custom http client implementation.
+// UseHTTPClient set custom http client implementation.
 //
-//  Warning: UseHTTPClient overrides any previously set httpClient including the one set by UseDigestAuth.
-//  To set a custom http client with HTTP diggest support use: 
-//   
-//   transport := digest.NewTransportWithHTTPRoundTripper(apiKey, apiSecret, yourHttpTransport)
-//   client := UseHTTPClient(transport.Client())
+// Warning: UseHTTPClient overrides any previously set httpClient including the one set by UseDigestAuth.
+// To set a custom http client with HTTP diggest support use:
+//
+//	transport := digest.NewTransportWithHTTPRoundTripper(apiKey, apiSecret, yourHttpTransport)
+//	client := UseHTTPClient(transport.Client())
 func UseHTTPClient(client *http.Client) ClientModifier {
 	return func(c *Configuration) error {
 		c.HTTPClient = client

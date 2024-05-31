@@ -29,11 +29,11 @@ npm exec openapi-generator-cli -- validate -i "$openapiFileLocation"
 
 echo "# Running Client Generation"
 
-GO_POST_PROCESS_FILE="goimports -w" \
-  npm exec openapi-generator-cli -- generate \
+npm exec openapi-generator-cli -- generate \
     -c "./config/config.yaml" -i "$openapiFileLocation" -o "$SDK_FOLDER" \
     --package-name="$client_package" \
     --type-mappings=integer=int \
     --type-mappings=file=io.ReadCloser \
-    --enable-post-process-file \
     --ignore-file-override=config/.go-ignore
+
+find "$SDK_FOLDER" -name "*.go" -exec goimports -w {} +;
