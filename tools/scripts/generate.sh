@@ -36,4 +36,4 @@ npm exec openapi-generator-cli -- generate \
     --type-mappings=file=io.ReadCloser \
     --ignore-file-override=config/.go-ignore
 
-find "$SDK_FOLDER" -name "*.go" -exec goimports -w {} +;
+goimports -w "$SDK_FOLDER"
