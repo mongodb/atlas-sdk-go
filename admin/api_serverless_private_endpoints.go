@@ -23,6 +23,7 @@ type ServerlessPrivateEndpointsApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param instanceName Human-readable label that identifies the serverless instance for which the tenant endpoint will be created.
+		@param serverlessTenantCreateRequest Information about the Private Endpoint to create for the Serverless Instance.
 		@return CreateServerlessPrivateEndpointApiRequest
 	*/
 	CreateServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string, serverlessTenantCreateRequest *ServerlessTenantCreateRequest) CreateServerlessPrivateEndpointApiRequest
@@ -122,6 +123,7 @@ type ServerlessPrivateEndpointsApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param instanceName Human-readable label that identifies the serverless instance associated with the tenant endpoint that will be updated.
 		@param endpointId Unique 24-hexadecimal digit string that identifies the tenant endpoint which will be updated.
+		@param serverlessTenantEndpointUpdate Object used for update.
 		@return UpdateServerlessPrivateEndpointApiRequest
 	*/
 	UpdateServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string, endpointId string, serverlessTenantEndpointUpdate *ServerlessTenantEndpointUpdate) UpdateServerlessPrivateEndpointApiRequest

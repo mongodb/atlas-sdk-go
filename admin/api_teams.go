@@ -20,6 +20,7 @@ type TeamsApi interface {
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param teamRole Team to add to the specified project.
 		@return AddAllTeamsToProjectApiRequest
 	*/
 	AddAllTeamsToProject(ctx context.Context, groupId string, teamRole *[]TeamRole) AddAllTeamsToProjectApiRequest
@@ -44,6 +45,7 @@ type TeamsApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@param teamId Unique 24-hexadecimal character string that identifies the team to which you want to add MongoDB Cloud users.
+		@param addUserToTeam One or more MongoDB Cloud users that you want to add to the specified team.
 		@return AddTeamUserApiRequest
 	*/
 	AddTeamUser(ctx context.Context, orgId string, teamId string, addUserToTeam *[]AddUserToTeam) AddTeamUserApiRequest
@@ -67,6 +69,7 @@ type TeamsApi interface {
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param team Team that you want to create in the specified organization.
 		@return CreateTeamApiRequest
 	*/
 	CreateTeam(ctx context.Context, orgId string, team *Team) CreateTeamApiRequest
@@ -282,6 +285,7 @@ type TeamsApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@param teamId Unique 24-hexadecimal digit string that identifies the team that you want to rename.
+		@param teamUpdate Details to update on the specified team.
 		@return RenameTeamApiRequest
 	*/
 	RenameTeam(ctx context.Context, orgId string, teamId string, teamUpdate *TeamUpdate) RenameTeamApiRequest
@@ -306,6 +310,7 @@ type TeamsApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param teamId Unique 24-hexadecimal digit string that identifies the team for which you want to update roles.
+		@param teamRole The project roles assigned to the specified team.
 		@return UpdateTeamRolesApiRequest
 	*/
 	UpdateTeamRoles(ctx context.Context, groupId string, teamId string, teamRole *TeamRole) UpdateTeamRolesApiRequest
