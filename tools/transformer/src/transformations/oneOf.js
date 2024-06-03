@@ -135,7 +135,7 @@ function handleDuplicates(parentObject, childObject) {
   ]);
   if (duplicates.length > 0) {
     const duplicatesSource = childObject.title || "";
-    const missmatches = duplicates.filter((e) => e.typeMismatch);
+    const missmatches = duplicates.filter((e) => e.typeRefMismatch);
     if (missmatches.length > 0) {
       throw new Error(
         `${duplicatesSource} missmatch type detected: ${JSON.stringify(
