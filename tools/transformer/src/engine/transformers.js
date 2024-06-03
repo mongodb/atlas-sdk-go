@@ -17,26 +17,26 @@ function filterObjectProperties(object, filter = (_k, _v) => true) {
 function detectDuplicates(objArray) {
   const allKeys = {};
   const duplicates = [];
-  
+
   for (const obj of objArray) {
     if (obj) {
       for (const key of Object.keys(obj)) {
         const currentEntry = obj[key];
         const currentValue = currentEntry.type || currentEntry.$ref;
-        
+
         if (allKeys[key]) {
           const previousEntry = allKeys[key];
           const previousValue = previousEntry.type || previousEntry.$ref;
-          
+
           // Check for typeRefMismatch
           const isTypeRefMismatch = previousValue !== currentValue;
-          
+
           if (isTypeRefMismatch) {
             duplicates.push({
               key,
               firstValue: previousValue,
               secondValue: currentValue,
-              typeRefMismatch: isTypeRefMismatch
+              typeRefMismatch: isTypeRefMismatch,
             });
           }
         } else {
@@ -45,7 +45,7 @@ function detectDuplicates(objArray) {
       }
     }
   }
-  
+
   return duplicates;
 }
 

@@ -138,20 +138,18 @@ function handleDuplicates(parentObject, childObject) {
     const duplicatesSource = childObject.title || "";
     let missmatches = duplicates.filter((e) => e.typeRefMismatch);
     if (missmatches.length > 0) {
-      missmatches = missmatches.filter(missmatch =>{
-        for(const ignoredProperty of ignoredProperties){
-          if(missmatch.key == ignoredProperty ){
-            console.warn("Type missmatch found when merging base types. Ignoring due to known missmatches", JSON.stringify(
-              missmatch,
-              undefined,
-              2
-            ))
+      missmatches = missmatches.filter((missmatch) => {
+        for (const ignoredProperty of ignoredProperties) {
+          if (missmatch.key == ignoredProperty) {
+            console.warn(
+              "Type missmatch found when merging base types. Ignoring due to known missmatches",
+              JSON.stringify(missmatch, undefined, 2)
+            );
           }
         }
-    
-      })
+      });
 
-      if(missmatches.length !==0){
+      if (missmatches.length !== 0) {
         throw new Error(
           `${duplicatesSource} missmatch type detected: ${JSON.stringify(
             missmatches,
