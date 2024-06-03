@@ -91,29 +91,15 @@ function transformOneOfProperties(parentObject, api) {
   for (let childObject of childObjects) {
     if (!childObject.properties) {
       // When we missing props, we need to look at the allOf parent child inheritance
-      childObject.properties = {};
       if (childObject.allOf) {
+        childObject.properties = {};
         for (allOfItem of childObject.allOf) {
           // We only add properties.
           if (allOfItem.properties) {
-            // Detect if we have override.
-            for (const [allOfPropertyName, allOfPropertyValue] of Object.entries(allOfItem.properties)) {
-              if (childObject.properties[allOfPropertyName]) {
-                console.error("Overriding property" + allOfPropertyName);
-                throw new Error(`${errorMessage}. Object: ${refString}`);
-                if (allOfItem.properties[allOfPropertyName]["$ref"]) {
-                  var errorMessage =
-                    "Children of the parent containing references to another children " +
-                    "Please create base class for" +
-                    allOfPropertyName;
-                  var refString = JSON.stringify(childObject, "", 2);
-                  //console.error(errorMessage);
-                  // Disabled for now we want to see those cases but we cannot fail until all are resolved.
-                  throw new Error(`${errorMessage}. Object: ${refString}`);
-                }
-              }
-              childObject.properties[allOfPropertyName] = allOfPropertyValue;
-            }
+            childObject.properties = {
+              ...childObject.properties,
+              ...allOfItem.properties,
+            };
           }
         }
       } else {
