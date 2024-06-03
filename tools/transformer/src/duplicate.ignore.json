@@ -1,0 +1,15 @@
+{
+        "ignoredProperties": [
+                "units",
+                "latestDefinition",
+                "definition",
+                "threshold",
+                "units",
+                "eventTypeName",
+                "currentValue",
+                "metricThreshold",
+                "autoScaling",
+                "featureId",
+                "units"
+        ]
+}

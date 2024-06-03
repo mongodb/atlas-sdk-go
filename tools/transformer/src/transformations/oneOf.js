@@ -6,6 +6,7 @@ const {
   getAllObjects,
 } = require("../engine/readers");
 const { ignoreModels } = require("../oneOf.ignore.json");
+const { ignoredProperties } = require("../duplicate.ignore.json");
 const { detectDuplicates } = require("../engine/transformers");
 
 /**
@@ -135,15 +136,30 @@ function handleDuplicates(parentObject, childObject) {
   ]);
   if (duplicates.length > 0) {
     const duplicatesSource = childObject.title || "";
-    const missmatches = duplicates.filter((e) => e.typeRefMismatch);
+    let missmatches = duplicates.filter((e) => e.typeRefMismatch);
     if (missmatches.length > 0) {
-      throw new Error(
-        `${duplicatesSource} missmatch type detected: ${JSON.stringify(
-          missmatches,
-          undefined,
-          2
-        )}`
-      );
+      missmatches = missmatches.filter(missmatch =>{
+        for(const ignoredProperty of ignoredProperties){
+          if(missmatch.key == ignoredProperty ){
+            console.warn("Type missmatch found when merging base types. Ignoring due to known missmatches", JSON.stringify(
+              missmatch,
+              undefined,
+              2
+            ))
+          }
+        }
+    
+      })
+
+      if(missmatches.length !==0){
+        throw new Error(
+          `${duplicatesSource} missmatch type detected: ${JSON.stringify(
+            missmatches,
+            undefined,
+            2
+          )}`
+        );
+      }
     } else {
       console.info(
         `## ${duplicatesSource} - Detected properties that would be overriden: ${JSON.stringify(
