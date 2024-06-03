@@ -38,6 +38,7 @@ type DataFederationApi interface {
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param privateNetworkEndpointIdEntry Private endpoint for Federated Database Instances and Online Archives to add to the specified project.
 		@return CreateDataFederationPrivateEndpointApiRequest
 	*/
 	CreateDataFederationPrivateEndpoint(ctx context.Context, groupId string, privateNetworkEndpointIdEntry *PrivateNetworkEndpointIdEntry) CreateDataFederationPrivateEndpointApiRequest
@@ -61,6 +62,7 @@ type DataFederationApi interface {
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param dataLakeTenant Details to create one federated database instance in the specified project.
 		@return CreateFederatedDatabaseApiRequest
 	*/
 	CreateFederatedDatabase(ctx context.Context, groupId string, dataLakeTenant *DataLakeTenant) CreateFederatedDatabaseApiRequest
@@ -86,6 +88,7 @@ type DataFederationApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param tenantName Human-readable label that identifies the federated database instance to which the query limit applies.
 		@param limitName Human-readable label that identifies this data federation instance limit.  | Limit Name | Description | Default | | --- | --- | --- | | bytesProcessed.query | Limit on the number of bytes processed during a single data federation query | N/A | | bytesProcessed.daily | Limit on the number of bytes processed for the data federation instance for the current day | N/A | | bytesProcessed.weekly | Limit on the number of bytes processed for the data federation instance for the current week | N/A | | bytesProcessed.monthly | Limit on the number of bytes processed for the data federation instance for the current month | N/A |
+		@param dataFederationTenantQueryLimit Creates or updates one query limit for one federated database instance.
 		@return CreateOneDataFederationQueryLimitApiRequest
 	*/
 	CreateOneDataFederationQueryLimit(ctx context.Context, groupId string, tenantName string, limitName string, dataFederationTenantQueryLimit *DataFederationTenantQueryLimit) CreateOneDataFederationQueryLimitApiRequest
@@ -350,6 +353,7 @@ type DataFederationApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param tenantName Human-readable label that identifies the federated database instance to update.
+		@param dataLakeTenant Details of one Federated Database to update in the specified project.
 		@return UpdateFederatedDatabaseApiRequest
 	*/
 	UpdateFederatedDatabase(ctx context.Context, groupId string, tenantName string, dataLakeTenant *DataLakeTenant) UpdateFederatedDatabaseApiRequest

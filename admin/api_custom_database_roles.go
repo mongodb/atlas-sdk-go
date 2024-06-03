@@ -20,6 +20,7 @@ type CustomDatabaseRolesApi interface {
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param userCustomDBRole Creates one custom role in the specified project.
 		@return CreateCustomDatabaseRoleApiRequest
 	*/
 	CreateCustomDatabaseRole(ctx context.Context, groupId string, userCustomDBRole *UserCustomDBRole) CreateCustomDatabaseRoleApiRequest
@@ -115,6 +116,7 @@ type CustomDatabaseRolesApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param roleName Human-readable label that identifies the role for the request. This name must beunique for this custom role in this project.
+		@param updateCustomDBRole Updates one custom role in the specified project.
 		@return UpdateCustomDatabaseRoleApiRequest
 	*/
 	UpdateCustomDatabaseRole(ctx context.Context, groupId string, roleName string, updateCustomDBRole *UpdateCustomDBRole) UpdateCustomDatabaseRoleApiRequest

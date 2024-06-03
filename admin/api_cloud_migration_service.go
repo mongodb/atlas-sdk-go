@@ -20,6 +20,7 @@ type CloudMigrationServiceApi interface {
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param targetOrgRequest IP address access list entries associated with the migration.
 		@return CreateLinkTokenApiRequest
 	*/
 	CreateLinkToken(ctx context.Context, orgId string, targetOrgRequest *TargetOrgRequest) CreateLinkTokenApiRequest
@@ -49,6 +50,7 @@ type CloudMigrationServiceApi interface {
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param liveMigrationRequest One migration to be created.
 		@return CreatePushMigrationApiRequest
 	*/
 	CreatePushMigration(ctx context.Context, groupId string, liveMigrationRequest *LiveMigrationRequest) CreatePushMigrationApiRequest
@@ -190,6 +192,7 @@ type CloudMigrationServiceApi interface {
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param liveMigrationRequest One migration to be validated.
 		@return ValidateMigrationApiRequest
 	*/
 	ValidateMigration(ctx context.Context, groupId string, liveMigrationRequest *LiveMigrationRequest) ValidateMigrationApiRequest

@@ -20,6 +20,7 @@ type NetworkPeeringApi interface {
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param baseNetworkPeeringConnectionSettings Create one network peering connection.
 		@return CreatePeeringConnectionApiRequest
 	*/
 	CreatePeeringConnection(ctx context.Context, groupId string, baseNetworkPeeringConnectionSettings *BaseNetworkPeeringConnectionSettings) CreatePeeringConnectionApiRequest
@@ -43,6 +44,7 @@ type NetworkPeeringApi interface {
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param cloudProviderContainer Creates one new network peering container in the specified project.
 		@return CreatePeeringContainerApiRequest
 	*/
 	CreatePeeringContainer(ctx context.Context, groupId string, cloudProviderContainer *CloudProviderContainer) CreatePeeringContainerApiRequest
@@ -114,6 +116,7 @@ type NetworkPeeringApi interface {
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param privateIPMode Disables Connect via Peering Only mode for the specified project.
 		@return DisablePeeringApiRequest
 
 		Deprecated: this method has been deprecated. Please check the latest resource version for NetworkPeeringApi
@@ -259,6 +262,7 @@ type NetworkPeeringApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param peerId Unique 24-hexadecimal digit string that identifies the network peering connection that you want to update.
+		@param baseNetworkPeeringConnectionSettings Modify one network peering connection.
 		@return UpdatePeeringConnectionApiRequest
 	*/
 	UpdatePeeringConnection(ctx context.Context, groupId string, peerId string, baseNetworkPeeringConnectionSettings *BaseNetworkPeeringConnectionSettings) UpdatePeeringConnectionApiRequest
@@ -283,6 +287,7 @@ type NetworkPeeringApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param containerId Unique 24-hexadecimal digit string that identifies the MongoDB Cloud network container that you want to remove.
+		@param cloudProviderContainer Updates the network details and labels of one specified network peering container in the specified project.
 		@return UpdatePeeringContainerApiRequest
 	*/
 	UpdatePeeringContainer(ctx context.Context, groupId string, containerId string, cloudProviderContainer *CloudProviderContainer) UpdatePeeringContainerApiRequest

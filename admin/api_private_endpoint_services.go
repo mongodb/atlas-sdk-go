@@ -22,6 +22,7 @@ type PrivateEndpointServicesApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param cloudProvider Cloud service provider that manages this private endpoint.
 		@param endpointServiceId Unique 24-hexadecimal digit string that identifies the private endpoint service for which you want to create a private endpoint.
+		@param createEndpointRequest Creates one private endpoint for the specified cloud service provider.
 		@return CreatePrivateEndpointApiRequest
 	*/
 	CreatePrivateEndpoint(ctx context.Context, groupId string, cloudProvider string, endpointServiceId string, createEndpointRequest *CreateEndpointRequest) CreatePrivateEndpointApiRequest
@@ -45,6 +46,7 @@ type PrivateEndpointServicesApi interface {
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param cloudProviderEndpointServiceRequest Creates one private endpoint for the specified cloud service provider.
 		@return CreatePrivateEndpointServiceApiRequest
 	*/
 	CreatePrivateEndpointService(ctx context.Context, groupId string, cloudProviderEndpointServiceRequest *CloudProviderEndpointServiceRequest) CreatePrivateEndpointServiceApiRequest
@@ -217,6 +219,7 @@ type PrivateEndpointServicesApi interface {
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param projectSettingItem Enables or disables the ability to create multiple private endpoints per region in all cloud service providers in one project.
 		@return ToggleRegionalizedPrivateEndpointSettingApiRequest
 	*/
 	ToggleRegionalizedPrivateEndpointSetting(ctx context.Context, groupId string, projectSettingItem *ProjectSettingItem) ToggleRegionalizedPrivateEndpointSettingApiRequest
