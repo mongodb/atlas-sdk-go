@@ -36,16 +36,10 @@ lint:
 .PHONY: check
 check: test lint-fix
 
-.PHONY: install-golangci-lint
-install-golangci-lint:
-	curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s $(GOLANGCI_VERSION)
-
-.PHONY: install-goimports
-install-goimports:
-	go install golang.org/x/tools/cmd/goimports@v0.21.0
-
 .PHONY: tools
-tools: install-golangci-lint install-goimports
+tools:
+	curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s $(GOLANGCI_VERSION)
+	go install golang.org/x/tools/cmd/goimports@v0.21.0
 
 .PHONY: addcopy
 addcopy:
@@ -57,7 +51,7 @@ check-version:
 	scripts/check-version.sh "$(TAG)"
 
 .PHONY: openapi-pipeline
-openapi-pipeline: install-goimports
+openapi-pipeline:
 	echo "Running OpenAPI Generation and Validation process"
 	$(MAKE) -C tools clean_client
 	echo "Running client generation"
