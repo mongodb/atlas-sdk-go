@@ -20,6 +20,7 @@ type ProgrammaticAPIKeysApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param apiUserId Unique 24-hexadecimal digit string that identifies this organization API key that you want to assign to one project.
+		@param userAccessRoleAssignment Organization API key to be assigned to the specified project.
 		@return AddProjectApiKeyApiRequest
 	*/
 	AddProjectApiKey(ctx context.Context, groupId string, apiUserId string, userAccessRoleAssignment *[]UserAccessRoleAssignment) AddProjectApiKeyApiRequest
@@ -43,6 +44,7 @@ type ProgrammaticAPIKeysApi interface {
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param createAtlasOrganizationApiKey Organization API Key to be created.
 		@return CreateApiKeyApiRequest
 	*/
 	CreateApiKey(ctx context.Context, orgId string, createAtlasOrganizationApiKey *CreateAtlasOrganizationApiKey) CreateApiKeyApiRequest
@@ -67,6 +69,7 @@ type ProgrammaticAPIKeysApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@param apiUserId Unique 24-hexadecimal digit string that identifies this organization API key for which you want to create a new access list entry.
+		@param userAccessListRequest Access list entries to be created for the specified organization API key.
 		@return CreateApiKeyAccessListApiRequest
 	*/
 	CreateApiKeyAccessList(ctx context.Context, orgId string, apiUserId string, userAccessListRequest *[]UserAccessListRequest) CreateApiKeyAccessListApiRequest
@@ -90,6 +93,7 @@ type ProgrammaticAPIKeysApi interface {
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param createAtlasProjectApiKey Organization API key to be created and assigned to the specified project.
 		@return CreateProjectApiKeyApiRequest
 	*/
 	CreateProjectApiKey(ctx context.Context, groupId string, createAtlasProjectApiKey *CreateAtlasProjectApiKey) CreateProjectApiKeyApiRequest
@@ -306,6 +310,7 @@ type ProgrammaticAPIKeysApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@param apiUserId Unique 24-hexadecimal digit string that identifies this organization API key you  want to update.
+		@param updateAtlasOrganizationApiKey Organization API key to be updated. This request requires a minimum of one of the two body parameters.
 		@return UpdateApiKeyApiRequest
 	*/
 	UpdateApiKey(ctx context.Context, orgId string, apiUserId string, updateAtlasOrganizationApiKey *UpdateAtlasOrganizationApiKey) UpdateApiKeyApiRequest
@@ -330,6 +335,7 @@ type ProgrammaticAPIKeysApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param apiUserId Unique 24-hexadecimal digit string that identifies this organization API key that you want to unassign from one project.
+		@param updateAtlasProjectApiKey Organization API Key to be updated. This request requires a minimum of one of the two body parameters.
 		@return UpdateApiKeyRolesApiRequest
 	*/
 	UpdateApiKeyRoles(ctx context.Context, groupId string, apiUserId string, updateAtlasProjectApiKey *UpdateAtlasProjectApiKey) UpdateApiKeyRolesApiRequest

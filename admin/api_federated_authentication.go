@@ -22,6 +22,7 @@ type FederatedAuthenticationApi interface {
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
+			@param federationOidcIdentityProviderUpdate The identity provider that you want to create.
 			@return CreateIdentityProviderApiRequest
 	*/
 	CreateIdentityProvider(ctx context.Context, federationSettingsId string, federationOidcIdentityProviderUpdate *FederationOidcIdentityProviderUpdate) CreateIdentityProviderApiRequest
@@ -46,6 +47,7 @@ type FederatedAuthenticationApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param authFederationRoleMapping The role mapping that you want to create.
 		@return CreateRoleMappingApiRequest
 	*/
 	CreateRoleMapping(ctx context.Context, federationSettingsId string, orgId string, authFederationRoleMapping *AuthFederationRoleMapping) CreateRoleMappingApiRequest
@@ -392,6 +394,7 @@ type FederatedAuthenticationApi interface {
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
 			@param orgId Unique 24-hexadecimal digit string that identifies the connected organization configuration to update.
+			@param connectedOrgConfig The connected organization configuration that you want to update.
 			@return UpdateConnectedOrgConfigApiRequest
 	*/
 	UpdateConnectedOrgConfig(ctx context.Context, federationSettingsId string, orgId string, connectedOrgConfig *ConnectedOrgConfig) UpdateConnectedOrgConfigApiRequest
@@ -418,6 +421,7 @@ type FederatedAuthenticationApi interface {
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
 			@param identityProviderId Unique string that identifies the identity provider to connect. If using an API version before 11-15-2023, use the legacy 20-hexadecimal digit id. This id can be found within the Federation Management Console > Identity Providers tab by clicking the info icon in the IdP ID row of a configured identity provider. For all other versions, use the 24-hexadecimal digit id.
+			@param federationIdentityProviderUpdate The identity provider that you want to update.
 			@return UpdateIdentityProviderApiRequest
 	*/
 	UpdateIdentityProvider(ctx context.Context, federationSettingsId string, identityProviderId string, federationIdentityProviderUpdate *FederationIdentityProviderUpdate) UpdateIdentityProviderApiRequest
@@ -443,6 +447,7 @@ type FederatedAuthenticationApi interface {
 		@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
 		@param id Unique 24-hexadecimal digit string that identifies the role mapping that you want to update.
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param authFederationRoleMapping The role mapping that you want to update.
 		@return UpdateRoleMappingApiRequest
 	*/
 	UpdateRoleMapping(ctx context.Context, federationSettingsId string, id string, orgId string, authFederationRoleMapping *AuthFederationRoleMapping) UpdateRoleMappingApiRequest

@@ -22,6 +22,7 @@ type MongoDBCloudUsersApi interface {
 		 To use this resource, the requesting API Key can have any role.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param cloudAppUser MongoDB Cloud user account to create.
 			@return CreateUserApiRequest
 	*/
 	CreateUser(ctx context.Context, cloudAppUser *CloudAppUser) CreateUserApiRequest
