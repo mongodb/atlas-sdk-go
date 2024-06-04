@@ -31,7 +31,7 @@ type PrivateLinkEndpoint struct {
 	// Unique string that identifies the Azure private endpoint's network interface that someone added to this private endpoint service.
 	// Read only field.
 	PrivateEndpointResourceId *string `json:"privateEndpointResourceId,omitempty"`
-	// State of the Azure Private Link Service connection when MongoDB Cloud received this request.  Alternatively: State of the Google Cloud network endpoint group when MongoDB Cloud received this request.
+	// State of the Google Cloud network endpoint group when MongoDB Cloud received this request.
 	// Read only field.
 	Status *string `json:"status,omitempty"`
 	// Human-readable label that identifies a set of endpoints.
