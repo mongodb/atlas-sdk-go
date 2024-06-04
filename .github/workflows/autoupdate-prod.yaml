@@ -13,6 +13,7 @@ jobs:
       - uses: actions/setup-go@v5
         with:
           go-version-file: 'go.mod'
+      - run: go install golang.org/x/tools/cmd/goimports@v0.21.0
       - name: Fetch changes
         working-directory: ./tools
         run: make fetch_openapi
@@ -25,6 +26,7 @@ jobs:
       - name: Run generation
         working-directory: ./tools
         run: |
+          export PATH=${PATH}:`go env GOPATH`/bin
           make clean_and_generate
       - name: Verify Changed files
         uses: tj-actions/verify-changed-files@4e3fbc4714b4709261bf264cc419a4a75011399b

@@ -13,7 +13,6 @@ set -o nounset
 OPENAPI_FOLDER=${OPENAPI_FOLDER:-./openapi}
 OPENAPI_FILE_NAME=${OPENAPI_FILE_NAME:-atlas-api.yaml}
 SDK_FOLDER=${SDK_FOLDER:-./}
-
 transformed_file="atlas-api-transformed.yaml"
 client_package="admin"
 openapiFileLocation="$OPENAPI_FOLDER/$transformed_file"
@@ -37,4 +36,4 @@ npm exec openapi-generator-cli -- generate \
     --type-mappings=file=io.ReadCloser \
     --ignore-file-override=config/.go-ignore
 
-gofmt -s -w "$SDK_FOLDER/"*.go
+goimports -w "$SDK_FOLDER"
