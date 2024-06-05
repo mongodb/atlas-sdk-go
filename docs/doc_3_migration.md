@@ -18,7 +18,8 @@ The Atlas Go SDK doesn't rely on the deprecated [go-client-mongodb-atlas](https:
 The Atlas Go SDK has different methods for the initialization of the clients:
 
 ```go
-import admin "go.mongodb.org/atlas-sdk/v20231115014/admin" 
+// Surrounding code ignored for brevity
+
 sdk, err := admin.NewClient(
     // Authentication using ApiKey and ApiSecret
     admin.UseDigestAuth(apiKey, apiSecret))
@@ -33,8 +34,10 @@ To learn more, see [Authenticate using the Atlas Go SDK](https://github.com/mong
 Error handling requires developers to use dedicated methods for casting errors to API error objects:
 
 ```go
-    apiErr, _ := admin.AsError(err)
-    log.Fatalf("Error when performing SDK request: %v", apiErr.GetDetail())
+// Surrounding code omitted for brevity
+
+apiErr, _ := admin.AsError(err)
+log.Fatalf("Error when performing SDK request: %v", apiErr.GetDetail())
 ```
 To learn more, see [Error Handling](https://github.com/mongodb/atlas-sdk-go/blob/main/docs/doc_2_error_handling.md).
 
@@ -65,7 +68,8 @@ The Atlas Go SDK improves the clarity for request and response objects. For situ
 
 
 ```go
-//...
+// Surrounding code omitted for brevity
+
 RegionConfig{
  	// Dedicated region config for AWS cloud
     AWSRegionConfig: &mongodbatlas.AWSRegionConfig{
@@ -73,5 +77,4 @@ RegionConfig{
         RegionName:   &regionName, 
     },
 }
-//...
 ```
