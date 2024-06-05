@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"bytes"
 	"context"
 	"io"
 	"net/http"
@@ -21,6 +20,7 @@ type AtlasSearchApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param clusterName Label that identifies the cluster to create Search Nodes for.
+		@param apiSearchDeploymentRequest Creates Search Nodes for the specified cluster.
 		@return CreateAtlasSearchDeploymentApiRequest
 	*/
 	CreateAtlasSearchDeployment(ctx context.Context, groupId string, clusterName string, apiSearchDeploymentRequest *ApiSearchDeploymentRequest) CreateAtlasSearchDeploymentApiRequest
@@ -45,6 +45,7 @@ type AtlasSearchApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param clusterName Name of the cluster that contains the collection on which to create an Atlas Search index.
+		@param clusterSearchIndex Creates one Atlas Search index on the specified collection.
 		@return CreateAtlasSearchIndexApiRequest
 	*/
 	CreateAtlasSearchIndex(ctx context.Context, groupId string, clusterName string, clusterSearchIndex *ClusterSearchIndex) CreateAtlasSearchIndexApiRequest
@@ -193,6 +194,7 @@ type AtlasSearchApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param clusterName Label that identifies the cluster to update the Search Nodes for.
+		@param apiSearchDeploymentRequest Updates the Search Nodes for the specified cluster.
 		@return UpdateAtlasSearchDeploymentApiRequest
 	*/
 	UpdateAtlasSearchDeployment(ctx context.Context, groupId string, clusterName string, apiSearchDeploymentRequest *ApiSearchDeploymentRequest) UpdateAtlasSearchDeploymentApiRequest
@@ -218,6 +220,7 @@ type AtlasSearchApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param clusterName Name of the cluster that contains the collection whose Atlas Search index to update.
 		@param indexId Unique 24-hexadecimal digit string that identifies the Atlas Search [index](https://dochub.mongodb.org/core/index-definitions-fts). Use the [Get All Atlas Search Indexes for a Collection API](https://docs.atlas.mongodb.com/reference/api/fts-indexes-get-all/) endpoint to find the IDs of all Atlas Search indexes.
+		@param clusterSearchIndex Details to update on the Atlas Search index.
 		@return UpdateAtlasSearchIndexApiRequest
 	*/
 	UpdateAtlasSearchIndex(ctx context.Context, groupId string, clusterName string, indexId string, clusterSearchIndex *ClusterSearchIndex) UpdateAtlasSearchIndexApiRequest
@@ -342,33 +345,20 @@ func (a *AtlasSearchApiService) CreateAtlasSearchDeploymentExecute(r CreateAtlas
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
-		newErr.model = v
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
 		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
+			body:  buf,
 			error: err.Error(),
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -481,33 +471,20 @@ func (a *AtlasSearchApiService) CreateAtlasSearchIndexExecute(r CreateAtlasSearc
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
-		newErr.model = v
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
 		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
+			body:  buf,
 			error: err.Error(),
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -608,26 +585,8 @@ func (a *AtlasSearchApiService) DeleteAtlasSearchDeploymentExecute(r DeleteAtlas
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarHTTPResponse, newErr
-		}
-		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
-		newErr.model = v
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarHTTPResponse, newErr
 	}
 
@@ -735,33 +694,20 @@ func (a *AtlasSearchApiService) DeleteAtlasSearchIndexExecute(r DeleteAtlasSearc
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
-		newErr.model = v
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
 		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
+			body:  buf,
 			error: err.Error(),
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -865,33 +811,20 @@ func (a *AtlasSearchApiService) GetAtlasSearchDeploymentExecute(r GetAtlasSearch
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
-		newErr.model = v
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
 		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
+			body:  buf,
 			error: err.Error(),
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1001,33 +934,20 @@ func (a *AtlasSearchApiService) GetAtlasSearchIndexExecute(r GetAtlasSearchIndex
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
-		newErr.model = v
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
 		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
+			body:  buf,
 			error: err.Error(),
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1143,33 +1063,20 @@ func (a *AtlasSearchApiService) ListAtlasSearchIndexesExecute(r ListAtlasSearchI
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
-		newErr.model = v
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
 		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
+			body:  buf,
 			error: err.Error(),
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1282,33 +1189,20 @@ func (a *AtlasSearchApiService) UpdateAtlasSearchDeploymentExecute(r UpdateAtlas
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
-		newErr.model = v
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
 		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
+			body:  buf,
 			error: err.Error(),
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1427,33 +1321,20 @@ func (a *AtlasSearchApiService) UpdateAtlasSearchIndexExecute(r UpdateAtlasSearc
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
-		newErr.model = v
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
 		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
+			body:  buf,
 			error: err.Error(),
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr

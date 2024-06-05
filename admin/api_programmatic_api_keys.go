@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"bytes"
 	"context"
 	"io"
 	"net/http"
@@ -21,6 +20,7 @@ type ProgrammaticAPIKeysApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param apiUserId Unique 24-hexadecimal digit string that identifies this organization API key that you want to assign to one project.
+		@param userAccessRoleAssignment Organization API key to be assigned to the specified project.
 		@return AddProjectApiKeyApiRequest
 	*/
 	AddProjectApiKey(ctx context.Context, groupId string, apiUserId string, userAccessRoleAssignment *[]UserAccessRoleAssignment) AddProjectApiKeyApiRequest
@@ -44,6 +44,7 @@ type ProgrammaticAPIKeysApi interface {
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param createAtlasOrganizationApiKey Organization API Key to be created.
 		@return CreateApiKeyApiRequest
 	*/
 	CreateApiKey(ctx context.Context, orgId string, createAtlasOrganizationApiKey *CreateAtlasOrganizationApiKey) CreateApiKeyApiRequest
@@ -68,6 +69,7 @@ type ProgrammaticAPIKeysApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@param apiUserId Unique 24-hexadecimal digit string that identifies this organization API key for which you want to create a new access list entry.
+		@param userAccessListRequest Access list entries to be created for the specified organization API key.
 		@return CreateApiKeyAccessListApiRequest
 	*/
 	CreateApiKeyAccessList(ctx context.Context, orgId string, apiUserId string, userAccessListRequest *[]UserAccessListRequest) CreateApiKeyAccessListApiRequest
@@ -91,6 +93,7 @@ type ProgrammaticAPIKeysApi interface {
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param createAtlasProjectApiKey Organization API key to be created and assigned to the specified project.
 		@return CreateProjectApiKeyApiRequest
 	*/
 	CreateProjectApiKey(ctx context.Context, groupId string, createAtlasProjectApiKey *CreateAtlasProjectApiKey) CreateProjectApiKeyApiRequest
@@ -307,6 +310,7 @@ type ProgrammaticAPIKeysApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@param apiUserId Unique 24-hexadecimal digit string that identifies this organization API key you  want to update.
+		@param updateAtlasOrganizationApiKey Organization API key to be updated. This request requires a minimum of one of the two body parameters.
 		@return UpdateApiKeyApiRequest
 	*/
 	UpdateApiKey(ctx context.Context, orgId string, apiUserId string, updateAtlasOrganizationApiKey *UpdateAtlasOrganizationApiKey) UpdateApiKeyApiRequest
@@ -331,6 +335,7 @@ type ProgrammaticAPIKeysApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param apiUserId Unique 24-hexadecimal digit string that identifies this organization API key that you want to unassign from one project.
+		@param updateAtlasProjectApiKey Organization API Key to be updated. This request requires a minimum of one of the two body parameters.
 		@return UpdateApiKeyRolesApiRequest
 	*/
 	UpdateApiKeyRoles(ctx context.Context, groupId string, apiUserId string, updateAtlasProjectApiKey *UpdateAtlasProjectApiKey) UpdateApiKeyRolesApiRequest
@@ -455,33 +460,20 @@ func (a *ProgrammaticAPIKeysApiService) AddProjectApiKeyExecute(r AddProjectApiK
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
-		newErr.model = v
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
 		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
+			body:  buf,
 			error: err.Error(),
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -588,33 +580,20 @@ func (a *ProgrammaticAPIKeysApiService) CreateApiKeyExecute(r CreateApiKeyApiReq
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
-		newErr.model = v
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
 		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
+			body:  buf,
 			error: err.Error(),
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -775,33 +754,20 @@ func (a *ProgrammaticAPIKeysApiService) CreateApiKeyAccessListExecute(r CreateAp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
-		newErr.model = v
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
 		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
+			body:  buf,
 			error: err.Error(),
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -908,33 +874,20 @@ func (a *ProgrammaticAPIKeysApiService) CreateProjectApiKeyExecute(r CreateProje
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
-		newErr.model = v
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
 		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
+			body:  buf,
 			error: err.Error(),
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1038,33 +991,20 @@ func (a *ProgrammaticAPIKeysApiService) DeleteApiKeyExecute(r DeleteApiKeyApiReq
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
-		newErr.model = v
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
 		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
+			body:  buf,
 			error: err.Error(),
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1174,33 +1114,20 @@ func (a *ProgrammaticAPIKeysApiService) DeleteApiKeyAccessListEntryExecute(r Del
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
-		newErr.model = v
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
 		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
+			body:  buf,
 			error: err.Error(),
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1304,33 +1231,20 @@ func (a *ProgrammaticAPIKeysApiService) GetApiKeyExecute(r GetApiKeyApiRequest) 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
-		newErr.model = v
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
 		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
+			body:  buf,
 			error: err.Error(),
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1440,33 +1354,20 @@ func (a *ProgrammaticAPIKeysApiService) GetApiKeyAccessListExecute(r GetApiKeyAc
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
-		newErr.model = v
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
 		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
+			body:  buf,
 			error: err.Error(),
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1618,33 +1519,20 @@ func (a *ProgrammaticAPIKeysApiService) ListApiKeyAccessListsEntriesExecute(r Li
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
-		newErr.model = v
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
 		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
+			body:  buf,
 			error: err.Error(),
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1790,33 +1678,20 @@ func (a *ProgrammaticAPIKeysApiService) ListApiKeysExecute(r ListApiKeysApiReque
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
-		newErr.model = v
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
 		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
+			body:  buf,
 			error: err.Error(),
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1962,33 +1837,20 @@ func (a *ProgrammaticAPIKeysApiService) ListProjectApiKeysExecute(r ListProjectA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
-		newErr.model = v
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
 		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
+			body:  buf,
 			error: err.Error(),
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2092,33 +1954,20 @@ func (a *ProgrammaticAPIKeysApiService) RemoveProjectApiKeyExecute(r RemoveProje
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
-		newErr.model = v
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
 		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
+			body:  buf,
 			error: err.Error(),
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2231,33 +2080,20 @@ func (a *ProgrammaticAPIKeysApiService) UpdateApiKeyExecute(r UpdateApiKeyApiReq
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
-		newErr.model = v
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
 		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
+			body:  buf,
 			error: err.Error(),
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2418,33 +2254,20 @@ func (a *ProgrammaticAPIKeysApiService) UpdateApiKeyRolesExecute(r UpdateApiKeyR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
-		newErr.model = v
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
 		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
+			body:  buf,
 			error: err.Error(),
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr

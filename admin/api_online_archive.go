@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"bytes"
 	"context"
 	"io"
 	"net/http"
@@ -21,6 +20,7 @@ type OnlineArchiveApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param clusterName Human-readable label that identifies the cluster that contains the collection for which you want to create one online archive.
+		@param backupOnlineArchiveCreate Creates one online archive.
 		@return CreateOnlineArchiveApiRequest
 	*/
 	CreateOnlineArchive(ctx context.Context, groupId string, clusterName string, backupOnlineArchiveCreate *BackupOnlineArchiveCreate) CreateOnlineArchiveApiRequest
@@ -144,6 +144,7 @@ type OnlineArchiveApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param archiveId Unique 24-hexadecimal digit string that identifies the online archive to update.
 		@param clusterName Human-readable label that identifies the cluster that contains the specified collection from which Application created the online archive.
+		@param backupOnlineArchive Updates, pauses, or resumes one online archive.
 		@return UpdateOnlineArchiveApiRequest
 	*/
 	UpdateOnlineArchive(ctx context.Context, groupId string, archiveId string, clusterName string, backupOnlineArchive *BackupOnlineArchive) UpdateOnlineArchiveApiRequest
@@ -268,33 +269,20 @@ func (a *OnlineArchiveApiService) CreateOnlineArchiveExecute(r CreateOnlineArchi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
-		newErr.model = v
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
 		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
+			body:  buf,
 			error: err.Error(),
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -404,33 +392,20 @@ func (a *OnlineArchiveApiService) DeleteOnlineArchiveExecute(r DeleteOnlineArchi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
-		newErr.model = v
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
 		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
+			body:  buf,
 			error: err.Error(),
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -574,33 +549,20 @@ func (a *OnlineArchiveApiService) DownloadOnlineArchiveQueryLogsExecute(r Downlo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
-		newErr.model = v
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
 		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
+			body:  buf,
 			error: err.Error(),
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -710,33 +672,20 @@ func (a *OnlineArchiveApiService) GetOnlineArchiveExecute(r GetOnlineArchiveApiR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
-		newErr.model = v
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
 		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
+			body:  buf,
 			error: err.Error(),
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -888,33 +837,20 @@ func (a *OnlineArchiveApiService) ListOnlineArchivesExecute(r ListOnlineArchives
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
-		newErr.model = v
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
 		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
+			body:  buf,
 			error: err.Error(),
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1033,33 +969,20 @@ func (a *OnlineArchiveApiService) UpdateOnlineArchiveExecute(r UpdateOnlineArchi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
-		newErr.model = v
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
 		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
+			body:  buf,
 			error: err.Error(),
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr

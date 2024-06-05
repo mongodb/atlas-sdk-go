@@ -13,6 +13,7 @@ jobs:
       - uses: actions/setup-go@v5
         with:
           go-version-file: 'go.mod'
+      - run: go install golang.org/x/tools/cmd/goimports@v0.21.0
       - name: Fetch changes
         working-directory: ./tools
         run: make fetch_openapi
@@ -20,7 +21,7 @@ jobs:
           API_BASE_URL: ${{ secrets.MDB_CURRENT_API_PREVIEW_URL }}
           S3_BUCKET: ${{ secrets.MDB_CURRENT_API_PREVIEW_S3_BUCKET }}
       - name: Verify Changed files
-        uses: tj-actions/verify-changed-files@fd85a6022db9aa8345ca15c3adb91d486780bfd9
+        uses: tj-actions/verify-changed-files@4e3fbc4714b4709261bf264cc419a4a75011399b
         id: verify-changed-files
         with:
           files: |
@@ -28,7 +29,9 @@ jobs:
       - name: Run generation
         if: steps.verify-changed-files.outputs.files_changed == 'true'
         working-directory: ./tools
-        run: make clean_and_generate
+        run: |
+          export PATH=${PATH}:`go env GOPATH`/bin
+          make clean_and_generate
       - name: Run mock generation
         working-directory: ./tools
         if: steps.verify-changed-files.outputs.files_changed == 'true'

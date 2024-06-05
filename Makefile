@@ -1,5 +1,5 @@
 SOURCE_FILES?=./...
-GOLANGCI_VERSION=v1.57.1
+GOLANGCI_VERSION=v1.59.0
 COVERAGE=coverage.out
 
 export GO111MODULE := on
@@ -36,9 +36,16 @@ lint:
 .PHONY: check
 check: test lint-fix
 
-.PHONY: tools
-tools:
+.PHONY: install-golangci-lint
+install-golangci-lint:
 	curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s $(GOLANGCI_VERSION)
+
+.PHONY: install-goimports
+install-goimports:
+	go install golang.org/x/tools/cmd/goimports@v0.21.0
+
+.PHONY: tools
+tools: install-golangci-lint install-goimports
 
 .PHONY: addcopy
 addcopy:
@@ -50,7 +57,7 @@ check-version:
 	scripts/check-version.sh "$(TAG)"
 
 .PHONY: openapi-pipeline
-openapi-pipeline:
+openapi-pipeline: install-goimports
 	echo "Running OpenAPI Generation and Validation process"
 	$(MAKE) -C tools clean_client
 	echo "Running client generation"

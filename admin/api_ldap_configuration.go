@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"bytes"
 	"context"
 	"io"
 	"net/http"
@@ -84,15 +83,16 @@ type LDAPConfigurationApi interface {
 	GetLDAPConfigurationStatusExecute(r GetLDAPConfigurationStatusApiRequest) (*LDAPVerifyConnectivityJobRequest, *http.Response, error)
 
 	/*
-		SaveLDAPConfiguration Edit the LDAP or X.509 Configuration
+			SaveLDAPConfiguration Edit the LDAP or X.509 Configuration
 
-		Edits the LDAP configuration for the specified project. To use this resource, the requesting API Key must have the Project Owner role.
+			Edits the LDAP configuration for the specified project. To use this resource, the requesting API Key must have the Project Owner role.
 
-	Updating this configuration triggers a rolling restart of the database.
+		Updating this configuration triggers a rolling restart of the database.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@return SaveLDAPConfigurationApiRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param userSecurity Updates the LDAP configuration for the specified project.
+			@return SaveLDAPConfigurationApiRequest
 	*/
 	SaveLDAPConfiguration(ctx context.Context, groupId string, userSecurity *UserSecurity) SaveLDAPConfigurationApiRequest
 	/*
@@ -115,6 +115,7 @@ type LDAPConfigurationApi interface {
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param lDAPVerifyConnectivityJobRequestParams The LDAP configuration for the specified project that you want to verify.
 		@return VerifyLDAPConfigurationApiRequest
 	*/
 	VerifyLDAPConfiguration(ctx context.Context, groupId string, lDAPVerifyConnectivityJobRequestParams *LDAPVerifyConnectivityJobRequestParams) VerifyLDAPConfigurationApiRequest
@@ -224,33 +225,20 @@ func (a *LDAPConfigurationApiService) DeleteLDAPConfigurationExecute(r DeleteLDA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
-		newErr.model = v
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
 		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
+			body:  buf,
 			error: err.Error(),
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -348,33 +336,20 @@ func (a *LDAPConfigurationApiService) GetLDAPConfigurationExecute(r GetLDAPConfi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
-		newErr.model = v
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
 		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
+			body:  buf,
 			error: err.Error(),
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -478,33 +453,20 @@ func (a *LDAPConfigurationApiService) GetLDAPConfigurationStatusExecute(r GetLDA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
-		newErr.model = v
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
 		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
+			body:  buf,
 			error: err.Error(),
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -613,33 +575,20 @@ func (a *LDAPConfigurationApiService) SaveLDAPConfigurationExecute(r SaveLDAPCon
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
-		newErr.model = v
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
 		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
+			body:  buf,
 			error: err.Error(),
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -746,33 +695,20 @@ func (a *LDAPConfigurationApiService) VerifyLDAPConfigurationExecute(r VerifyLDA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
-		newErr.model = v
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
 		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
+			body:  buf,
 			error: err.Error(),
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr

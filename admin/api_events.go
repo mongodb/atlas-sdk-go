@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"bytes"
 	"context"
 	"io"
 	"net/http"
@@ -16,16 +15,16 @@ import (
 type EventsApi interface {
 
 	/*
-		GetOrganizationEvent Return One Event from One Organization
+			GetOrganizationEvent Return One Event from One Organization
 
-		Returns one event for the specified organization. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting API Key must have the Organization Member role.
+			Returns one event for the specified organization. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting API Key must have the Organization Member role.
 
-	This resource remains under revision and may change.
+		This resource remains under revision and may change.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-		@param eventId Unique 24-hexadecimal digit string that identifies the event that you want to return. Use the [/events](#tag/Events/operation/listOrganizationEvents) endpoint to retrieve all events to which the authenticated user has access.
-		@return GetOrganizationEventApiRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+			@param eventId Unique 24-hexadecimal digit string that identifies the event that you want to return. Use the [/events](#tag/Events/operation/listOrganizationEvents) endpoint to retrieve all events to which the authenticated user has access.
+			@return GetOrganizationEventApiRequest
 	*/
 	GetOrganizationEvent(ctx context.Context, orgId string, eventId string) GetOrganizationEventApiRequest
 	/*
@@ -42,16 +41,16 @@ type EventsApi interface {
 	GetOrganizationEventExecute(r GetOrganizationEventApiRequest) (*EventViewForOrg, *http.Response, error)
 
 	/*
-		GetProjectEvent Return One Event from One Project
+			GetProjectEvent Return One Event from One Project
 
-		Returns one event for the specified project. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting API Key must have the Project Read Only role.
+			Returns one event for the specified project. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting API Key must have the Project Read Only role.
 
-	This resource remains under revision and may change.
+		This resource remains under revision and may change.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param eventId Unique 24-hexadecimal digit string that identifies the event that you want to return. Use the [/events](#tag/Events/operation/listProjectEvents) endpoint to retrieve all events to which the authenticated user has access.
-		@return GetProjectEventApiRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param eventId Unique 24-hexadecimal digit string that identifies the event that you want to return. Use the [/events](#tag/Events/operation/listProjectEvents) endpoint to retrieve all events to which the authenticated user has access.
+			@return GetProjectEventApiRequest
 	*/
 	GetProjectEvent(ctx context.Context, groupId string, eventId string) GetProjectEventApiRequest
 	/*
@@ -68,15 +67,15 @@ type EventsApi interface {
 	GetProjectEventExecute(r GetProjectEventApiRequest) (*EventViewForNdsGroup, *http.Response, error)
 
 	/*
-		ListOrganizationEvents Return All Events from One Organization
+			ListOrganizationEvents Return All Events from One Organization
 
-		Returns all events for the specified organization. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting API Key must have the Organization Member role.
+			Returns all events for the specified organization. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting API Key must have the Organization Member role.
 
-	This resource remains under revision and may change.
+		This resource remains under revision and may change.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-		@return ListOrganizationEventsApiRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+			@return ListOrganizationEventsApiRequest
 	*/
 	ListOrganizationEvents(ctx context.Context, orgId string) ListOrganizationEventsApiRequest
 	/*
@@ -93,15 +92,15 @@ type EventsApi interface {
 	ListOrganizationEventsExecute(r ListOrganizationEventsApiRequest) (*OrgPaginatedEvent, *http.Response, error)
 
 	/*
-		ListProjectEvents Return All Events from One Project
+			ListProjectEvents Return All Events from One Project
 
-		Returns one event for the specified project. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting API Key must have the Project Read Only role.
+			Returns one event for the specified project. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting API Key must have the Project Read Only role.
 
-	This resource remains under revision and may change.
+		This resource remains under revision and may change.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@return ListProjectEventsApiRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@return ListProjectEventsApiRequest
 	*/
 	ListProjectEvents(ctx context.Context, groupId string) ListProjectEventsApiRequest
 	/*
@@ -234,33 +233,20 @@ func (a *EventsApiService) GetOrganizationEventExecute(r GetOrganizationEventApi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
-		newErr.model = v
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
 		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
+			body:  buf,
 			error: err.Error(),
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -382,33 +368,20 @@ func (a *EventsApiService) GetProjectEventExecute(r GetProjectEventApiRequest) (
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
-		newErr.model = v
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
 		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
+			body:  buf,
 			error: err.Error(),
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -612,33 +585,20 @@ func (a *EventsApiService) ListOrganizationEventsExecute(r ListOrganizationEvent
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
-		newErr.model = v
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
 		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
+			body:  buf,
 			error: err.Error(),
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -874,33 +834,20 @@ func (a *EventsApiService) ListProjectEventsExecute(r ListProjectEventsApiReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		var v ApiError
-		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-		if err != nil {
-			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
-		newErr.model = v
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
 		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
+			body:  buf,
 			error: err.Error(),
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
