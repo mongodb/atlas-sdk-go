@@ -182,12 +182,8 @@ function mergeDuplicates(duplicatesSourceLabel, duplicates, childObject, parentO
     parentProperty = parentObject.properties[duplicate.key];
 
     if (parentProperty.description &&
-      childProperty.description !== parentProperty.description 
-      && childProperty.description)
-      childProperty.description =
-        parentProperty.description +
-        "\n\nAlternatively:\n" +
-        childProperty.description;
+      childProperty.description !== parentProperty.description)
+      childProperty.description = parentProperty.description;
   }
 }
 

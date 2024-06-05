@@ -14,6 +14,8 @@ function filterObjectProperties(object, filter = (_k, _v) => true) {
   return filteredObj;
 }
 
+// Detects duplicates in array of object properties
+// Function detects duplicates in type and $ref values.
 function detectDuplicates(objArray) {
   const allKeys = {};
   const duplicates = [];
