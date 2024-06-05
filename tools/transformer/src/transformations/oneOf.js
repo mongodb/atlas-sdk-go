@@ -140,15 +140,16 @@ function handleDuplicates(parentObject, childObject) {
     if (mismatches.length > 0) {
       mismatches = mismatches.filter((mismatch) => {
         for (const ignoredProperty of ignoredProperties) {
-          if (mismatch.key == ignoredProperty) {
+          if (mismatch.key === ignoredProperty) {
             console.warn(
               "Type mismatch found when merging base types. Ignoring due to known mismatches",
               JSON.stringify(mismatch, undefined, 2)
             );
+            return false;
           }
         }
+        return true
       });
-
       if (mismatches.length !== 0) {
         throw new Error(
           `${duplicatesSource} mismatch type detected: ${JSON.stringify(
@@ -158,27 +159,29 @@ function handleDuplicates(parentObject, childObject) {
           )}`
         );
       }
-    } else {
-      console.info(
-        `## ${duplicatesSource} - Detected properties that would be overriden: ${JSON.stringify(
-          duplicates
-        )}\n`
-      );
+    } 
+    mergeDuplicates(duplicatesSource, duplicates, childObject, parentObject);
+  }
+}
 
-      for (duplicate of duplicates) {
-        childProperty = childObject.properties[duplicate.key];
-        parentProperty = parentObject.properties[duplicate.key];
+// Merge duplicates as they are representing the same type.
+// Add description representing alternative meaning
+function mergeDuplicates(duplicatesSourceLabel, duplicates, childObject, parentObject) {
+  console.info(
+    `## ${duplicatesSourceLabel} - Detected properties that would be overriden: ${JSON.stringify(
+      duplicates
+    )}\n`
+  );
+  for (duplicate of duplicates) {
+    childProperty = childObject.properties[duplicate.key];
+    parentProperty = parentObject.properties[duplicate.key];
 
-        if (
-          parentProperty.description &&
-          childProperty.description !== parentProperty.description
-        )
-          childProperty.description =
-            parentProperty.description +
-            "\n\nAlternatively:\n" +
-            childProperty.description;
-      }
-    }
+    if (parentProperty.description &&
+      childProperty.description !== parentProperty.description && childProperty.description)
+      childProperty.description =
+        parentProperty.description +
+        "\n\nAlternatively:\n" +
+        childProperty.description;
   }
 }
 
