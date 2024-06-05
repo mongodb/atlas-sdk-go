@@ -138,18 +138,7 @@ function handleDuplicates(parentObject, childObject) {
     const duplicatesSource = childObject.title || "";
     let mismatches = duplicates.filter((e) => e.typeRefMismatch);
     if (mismatches.length > 0) {
-      mismatches = mismatches.filter((mismatch) => {
-        for (const ignoredProperty of ignoredProperties) {
-          if (mismatch.key === ignoredProperty) {
-            console.warn(
-              "Type mismatch found when merging base types. Ignoring due to known mismatches",
-              JSON.stringify(mismatch, undefined, 2)
-            );
-            return false;
-          }
-        }
-        return true
-      });
+      mismatches = filterReferenceOrTypeMissmatch(mismatches);
       if (mismatches.length !== 0) {
         throw new Error(
           `${duplicatesSource} mismatch type detected: ${JSON.stringify(
@@ -162,6 +151,22 @@ function handleDuplicates(parentObject, childObject) {
     } 
     mergeDuplicates(duplicatesSource, duplicates, childObject, parentObject);
   }
+} 
+
+// Uses ignore list for known missmatches and removes them
+function filterReferenceOrTypeMissmatch(mismatches){
+ return mismatches.filter((mismatch) => {
+    for (const ignoredProperty of ignoredProperties) {
+      if (mismatch.key === ignoredProperty) {
+        console.warn(
+          "Type mismatch found when merging base types. Ignoring due to known mismatches",
+          JSON.stringify(mismatch, undefined, 2)
+        );
+        return false;
+      }
+    }
+    return true
+  });
 }
 
 // Merge duplicates as they are representing the same type.
@@ -177,7 +182,8 @@ function mergeDuplicates(duplicatesSourceLabel, duplicates, childObject, parentO
     parentProperty = parentObject.properties[duplicate.key];
 
     if (parentProperty.description &&
-      childProperty.description !== parentProperty.description && childProperty.description)
+      childProperty.description !== parentProperty.description 
+      && childProperty.description)
       childProperty.description =
         parentProperty.description +
         "\n\nAlternatively:\n" +
