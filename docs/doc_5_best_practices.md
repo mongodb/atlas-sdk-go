@@ -18,12 +18,16 @@ even if it is set to an empty string (`""`).
 
 Instead of direct assignment:
 ```go
+// Surrounding code omitted for brevity
+
 test := ""
 requestBody.StringPointerValue = test
 ```
 
 Users should always check for empty strings before assigning them:
 ```go
+// Surrounding code omitted for brevity
+
 if test != ""   
     requestBody.StringPointerValue = test
 ```
@@ -41,17 +45,19 @@ The SDK provides a dedicated `HasFieldName` or `GetFieldName` function for each 
 - Use `time.Time` methods to compare date values:
 When you have confirmed that the `time.Time pointer` is non-nil, you can safely use `time.Time` methods to compare the actual date values. Commonly used methods for comparison include `Before`, `After`, and `Equal`:
 ```go
-   if !sdkModel.HasSomeDateField() {
-       return;
-   }
-    datePtr1 := sdkModel.SomeDateField;
-    if datePtr1.Before(*datePtr2) {
-        // datePtr1 is before datePtr2.
-    } else if datePtr1.After(*datePtr2) {
-        // datePtr1 is after datePtr2.
-    } else {
-        // datePtr1 and datePtr2 are equal.
-    }
+// Surrounding code omitted for brevity
+
+if !sdkModel.HasSomeDateField() {
+   return;
+}
+datePtr1 := sdkModel.SomeDateField;
+if datePtr1.Before(*datePtr2) {
+    // datePtr1 is before datePtr2.
+} else if datePtr1.After(*datePtr2) {
+    // datePtr1 is after datePtr2.
+} else {
+    // datePtr1 and datePtr2 are equal.
+}
 ```
 
 ## Working with Pointers
@@ -59,6 +65,8 @@ When you have confirmed that the `time.Time pointer` is non-nil, you can safely 
 The Atlas Go SDK utilizes SDK pointers to denote optional values in the Go programming language:
 
 ```golang
+// Surrounding code omitted for brevity
+
 type Data struct {
     // Represents an optional name
     Name *string `json:"results,omitempty"`
@@ -72,6 +80,8 @@ In the example above, the string value is optional, and it won't be sent to the 
 The Atlas Go SDK represents all arrays as pointers:
 
 ```golang
+// Surrounding code omitted for brevity
+
 type Data struct {
     Results *[]DataRole `json:"results,omitempty"`
 }
@@ -84,6 +94,8 @@ The following scenarios use pointers with arrays:
 If you explicitly set a struct property to an empty array, the SDK will send an empty array request to the Atlas API.
 
 ```golang
+// Surrounding code omitted for brevity
+
 data := Data{
     // Sending an empty array
     Results: &[]DataRole{}
@@ -95,6 +107,8 @@ data := Data{
 When performing an update operation, we recommend that you don't set the struct property.
 
 ```golang
+// Surrounding code omitted for brevity
+
 data := Data{
     // Sending an empty array by not setting field values (value is nil)
     // Results: &[]DataRole{}
@@ -121,14 +135,18 @@ Use dedicated methods for creating new models.
 
 For example, instead of using the following:
 
-```
+```go
+// Surrounding code omitted for brevity
+
 GroupInvitationUpdateRequest{
     ...
 }
 ```
 
 Use the following dedicated method:
-```
+```go
+// Surrounding code omitted for brevity
+
 admin.NewGroupInvitationUpdateRequest(...)
 ```
 

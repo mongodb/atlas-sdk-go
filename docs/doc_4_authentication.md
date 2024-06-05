@@ -11,9 +11,18 @@ Construct a new Atlas SDK client, then use the services on the client to
 access different parts of the Atlas Admin API. For example:
 
 ```go
-import "go.mongodb.org/atlas-sdk/v20231115014/admin"
+package main
 
-func example() {
+import (
+	"context"
+	"fmt"
+	"log"
+	"os"	
+	
+	"go.mongodb.org/atlas-sdk/v20231115014/admin"
+)
+
+func main() {
 	ctx := context.Background()
 
 	apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
@@ -28,5 +37,6 @@ func example() {
 		log.Fatalf("Could not fetch projects: %v", err)
 	}
 	fmt.Printf("Response status: %v\n", response.Status)
+	fmt.Printf("Projects: %v\n", projects)
 }
 ```

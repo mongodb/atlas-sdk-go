@@ -10,26 +10,29 @@ The Atlas Go SDK is flexible because it accepts many different types of argument
 To fetch data, you can execute the `{Api}.{Operation}WithParams()` method:
 
 ```go 
-	// 1. Calling API method
-	request := sdk.ProjectsApi.ListProjectsWithParams(ctx,
-		// 2. We passing struct with all optional query parameters to the request
-		&admin.ListProjectsApiParams{
-			ItemsPerPage: admin.PtrInt(1),
-			IncludeCount: admin.PtrBool(true),
-			PageNum:      admin.PtrInt(1),
-		})
+// Surrounding code omitted for brevity
 
-	// 3. You can also supply values in requests using individual methods
-	// This can be helpful when passing request objects to other methods. 
-	projects, response, err := request.ItemsPerPage(10).Execute()
-	examples.HandleErr(err, response)
+// 1. Calling API method
+request := sdk.ProjectsApi.ListProjectsWithParams(ctx,
+    // 2. Passing a struct with all optional query parameters to the request
+    &admin.ListProjectsApiParams{
+        ItemsPerPage: admin.PtrInt(1),
+        IncludeCount: admin.PtrBool(true),
+        PageNum:      admin.PtrInt(1),
+    })
+
+// 3. You can also supply values in requests using individual methods
+// This can be helpful when passing request objects to other methods. 
+projects, response, err := request.ItemsPerPage(10).Execute()
+examples.HandleErr(err, response)
 ```
 
 Alternatively, you can use the shorter `{Operation}()` method with a builder pattern to supply all arguments:
 
 ```go
-    projects, response, err := sdk.ProjectsApi.ListProjects(ctx).
-	    ItemsPerPage(1).Execute()
+// Surrounding code omitted for brevity
+	
+projects, response, err := sdk.ProjectsApi.ListProjects(ctx).ItemsPerPage(1).Execute()
 ```
 
 Note: The Atlas Go SDK requires path parameters and they must be provided directly in the `{Operation}()` method.
@@ -43,8 +46,10 @@ Use the `{Operation}()` method to perform modifications. For example:
 
 
 ```go
- groupInvitationRequest := *admin.NewGroupInvitationRequest() 
- resp, r, err := sdk.ProjectsApi.CreateProjectInvitation(context.Background(), groupId, &groupInvitationRequest).Execute()
+// Surrounding code omitted for brevity
+
+groupInvitationRequest := admin.NewGroupInvitationRequest() 
+resp, r, err := sdk.ProjectsApi.CreateProjectInvitation(context.Background(), groupId, groupInvitationRequest).Execute()
 ```
 
 ## Read Only and Write Only Fields
