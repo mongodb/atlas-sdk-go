@@ -22973,6 +22973,7 @@ components:
           readOnly: true
         eventTypeName:
           $ref: "#/components/schemas/StreamProcessorEventTypeViewForNdsGroup"
+          description: Unique identifier of event type.
         groupId:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the project in
@@ -23233,6 +23234,7 @@ components:
           readOnly: true
         eventTypeName:
           $ref: "#/components/schemas/ResourceEventTypeViewForOrg"
+          description: Unique identifier of event type.
         groupId:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the project in
@@ -24030,6 +24032,7 @@ components:
             configuration for the specified project.
         eventTypeName:
           $ref: "#/components/schemas/StreamProcessorEventTypeViewAlertable"
+          description: Incident that triggered this alert.
         groupId:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the project that
@@ -28149,6 +28152,8 @@ components:
           description: Value of metric that, when exceeded, triggers an alert.
         units:
           $ref: "#/components/schemas/ServerlessMetricUnits"
+          description: Element used to express the quantity. This can be an element of
+            time, storage capacity, and the like.
       required:
         - metricName
       title: Serverless Metric Threshold
