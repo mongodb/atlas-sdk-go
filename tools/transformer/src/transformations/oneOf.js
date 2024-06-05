@@ -148,14 +148,14 @@ function handleDuplicates(parentObject, childObject) {
           )}`
         );
       }
-    } 
+    }
     mergeDuplicates(duplicatesSource, duplicates, childObject, parentObject);
   }
-} 
+}
 
 // Uses ignore list for known missmatches and removes them
-function filterReferenceOrTypeMissmatch(mismatches){
- return mismatches.filter((mismatch) => {
+function filterReferenceOrTypeMissmatch(mismatches) {
+  return mismatches.filter((mismatch) => {
     for (const ignoredProperty of ignoredProperties) {
       if (mismatch.key === ignoredProperty) {
         console.warn(
@@ -165,13 +165,18 @@ function filterReferenceOrTypeMissmatch(mismatches){
         return false;
       }
     }
-    return true
+    return true;
   });
 }
 
 // Merge duplicates as they are representing the same type.
 // Add description representing alternative meaning
-function mergeDuplicates(duplicatesSourceLabel, duplicates, childObject, parentObject) {
+function mergeDuplicates(
+  duplicatesSourceLabel,
+  duplicates,
+  childObject,
+  parentObject
+) {
   console.info(
     `## ${duplicatesSourceLabel} - Detected properties that would be overriden: ${JSON.stringify(
       duplicates
@@ -181,8 +186,10 @@ function mergeDuplicates(duplicatesSourceLabel, duplicates, childObject, parentO
     childProperty = childObject.properties[duplicate.key];
     parentProperty = parentObject.properties[duplicate.key];
 
-    if (parentProperty.description &&
-      childProperty.description !== parentProperty.description)
+    if (
+      parentProperty.description &&
+      childProperty.description !== parentProperty.description
+    )
       childProperty.description = parentProperty.description;
   }
 }
