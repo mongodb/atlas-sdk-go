@@ -13,9 +13,9 @@ type SearchIndexResponse struct {
 	// Label that identifies the database that contains the collection with one or more Atlas Search indexes.
 	Database *string `json:"database,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies this Atlas Search index.
-	IndexID                 *string                              `json:"indexID,omitempty"`
-	LatestDefinition        *SearchIndexResponseLatestDefinition `json:"latestDefinition,omitempty"`
-	LatestDefinitionVersion *SearchIndexDefinitionVersion        `json:"latestDefinitionVersion,omitempty"`
+	IndexID                 *string                                  `json:"indexID,omitempty"`
+	LatestDefinition        *BaseSearchIndexResponseLatestDefinition `json:"latestDefinition,omitempty"`
+	LatestDefinitionVersion *SearchIndexDefinitionVersion            `json:"latestDefinitionVersion,omitempty"`
 	// Label that identifies this index. Within each namespace, the names of all indexes must be unique.
 	Name *string `json:"name,omitempty"`
 	// Flag that indicates whether the index is queryable on all hosts.
@@ -149,9 +149,9 @@ func (o *SearchIndexResponse) SetIndexID(v string) {
 }
 
 // GetLatestDefinition returns the LatestDefinition field value if set, zero value otherwise
-func (o *SearchIndexResponse) GetLatestDefinition() SearchIndexResponseLatestDefinition {
+func (o *SearchIndexResponse) GetLatestDefinition() BaseSearchIndexResponseLatestDefinition {
 	if o == nil || IsNil(o.LatestDefinition) {
-		var ret SearchIndexResponseLatestDefinition
+		var ret BaseSearchIndexResponseLatestDefinition
 		return ret
 	}
 	return *o.LatestDefinition
@@ -159,7 +159,7 @@ func (o *SearchIndexResponse) GetLatestDefinition() SearchIndexResponseLatestDef
 
 // GetLatestDefinitionOk returns a tuple with the LatestDefinition field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SearchIndexResponse) GetLatestDefinitionOk() (*SearchIndexResponseLatestDefinition, bool) {
+func (o *SearchIndexResponse) GetLatestDefinitionOk() (*BaseSearchIndexResponseLatestDefinition, bool) {
 	if o == nil || IsNil(o.LatestDefinition) {
 		return nil, false
 	}
@@ -176,8 +176,8 @@ func (o *SearchIndexResponse) HasLatestDefinition() bool {
 	return false
 }
 
-// SetLatestDefinition gets a reference to the given SearchIndexResponseLatestDefinition and assigns it to the LatestDefinition field.
-func (o *SearchIndexResponse) SetLatestDefinition(v SearchIndexResponseLatestDefinition) {
+// SetLatestDefinition gets a reference to the given BaseSearchIndexResponseLatestDefinition and assigns it to the LatestDefinition field.
+func (o *SearchIndexResponse) SetLatestDefinition(v BaseSearchIndexResponseLatestDefinition) {
 	o.LatestDefinition = &v
 }
 

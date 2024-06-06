@@ -15,8 +15,8 @@ type SearchIndexCreateRequest struct {
 	// Label that identifies this index. Within each namespace, names of all indexes in the namespace must be unique.
 	Name string `json:"name"`
 	// Type of the index. The default type is search.
-	Type       *string                      `json:"type,omitempty"`
-	Definition *VectorSearchIndexDefinition `json:"definition,omitempty"`
+	Type       *string                                 `json:"type,omitempty"`
+	Definition *BaseSearchIndexCreateRequestDefinition `json:"definition,omitempty"`
 }
 
 // NewSearchIndexCreateRequest instantiates a new SearchIndexCreateRequest object
@@ -145,9 +145,9 @@ func (o *SearchIndexCreateRequest) SetType(v string) {
 }
 
 // GetDefinition returns the Definition field value if set, zero value otherwise
-func (o *SearchIndexCreateRequest) GetDefinition() VectorSearchIndexDefinition {
+func (o *SearchIndexCreateRequest) GetDefinition() BaseSearchIndexCreateRequestDefinition {
 	if o == nil || IsNil(o.Definition) {
-		var ret VectorSearchIndexDefinition
+		var ret BaseSearchIndexCreateRequestDefinition
 		return ret
 	}
 	return *o.Definition
@@ -155,7 +155,7 @@ func (o *SearchIndexCreateRequest) GetDefinition() VectorSearchIndexDefinition {
 
 // GetDefinitionOk returns a tuple with the Definition field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SearchIndexCreateRequest) GetDefinitionOk() (*VectorSearchIndexDefinition, bool) {
+func (o *SearchIndexCreateRequest) GetDefinitionOk() (*BaseSearchIndexCreateRequestDefinition, bool) {
 	if o == nil || IsNil(o.Definition) {
 		return nil, false
 	}
@@ -172,8 +172,8 @@ func (o *SearchIndexCreateRequest) HasDefinition() bool {
 	return false
 }
 
-// SetDefinition gets a reference to the given VectorSearchIndexDefinition and assigns it to the Definition field.
-func (o *SearchIndexCreateRequest) SetDefinition(v VectorSearchIndexDefinition) {
+// SetDefinition gets a reference to the given BaseSearchIndexCreateRequestDefinition and assigns it to the Definition field.
+func (o *SearchIndexCreateRequest) SetDefinition(v BaseSearchIndexCreateRequestDefinition) {
 	o.Definition = &v
 }
 

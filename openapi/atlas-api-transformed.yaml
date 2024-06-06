@@ -28591,7 +28591,7 @@ components:
           type: string
           description: Type of the index. The default type is search.
         definition:
-          $ref: "#/components/schemas/VectorSearchIndexDefinition"
+          $ref: "#/components/schemas/BaseSearchIndexCreateRequestDefinition"
       required:
         - collectionName
         - database
@@ -28631,83 +28631,7 @@ components:
           minLength: 24
           pattern: ^([a-f0-9]{24})$
         latestDefinition:
-          properties:
-            analyzer:
-              type: string
-              default: lucene.standard
-              description: >-
-                Specific pre-defined method chosen to convert database field
-                text into searchable words. This conversion reduces the text of
-                fields into the smallest units of text. These units are called a
-                **term** or **token**. This process, known as tokenization,
-                involves making the following changes to the text in fields:
-
-
-                - extracting words
-
-                - removing punctuation
-
-                - removing accents
-
-                - changing to lowercase
-
-                - removing common words
-
-                - reducing words to their root form (stemming)
-
-                - changing words to their base form (lemmatization)
-                 MongoDB Cloud uses the process you select to build the Atlas Search index.
-              externalDocs:
-                description: Atlas Search Analyzers
-                url: https://dochub.mongodb.org/core/analyzers--fts
-            analyzers:
-              type: array
-              description: List of user-defined methods to convert database field text into
-                searchable words.
-              externalDocs:
-                description: Custom Atlas Search Analyzers
-                url: https://dochub.mongodb.org/core/custom-fts
-              items:
-                $ref: "#/components/schemas/AtlasSearchAnalyzer"
-            mappings:
-              $ref: "#/components/schemas/SearchMappings"
-            searchAnalyzer:
-              type: string
-              default: lucene.standard
-              description: Method applied to identify words when searching this index.
-            storedSource:
-              type: object
-              description: Flag that indicates whether to store all fields (true) on Atlas
-                Search. By default, Atlas doesn't store (false) the fields on
-                Atlas Search.  Alternatively, you can specify an object that
-                only contains the list of fields to store (include) or not store
-                (exclude) on Atlas Search. To learn more, see Stored Source
-                Fields.
-              example:
-                include | exclude:
-                  - field1
-                  - field2
-              externalDocs:
-                description: Stored Source Fields
-                url: https://dochub.mongodb.org/core/atlas-search-stored-source
-            synonyms:
-              type: array
-              description: Rule sets that map words to their synonyms in this index.
-              externalDocs:
-                description: Synonym Mapping
-                url: https://dochub.mongodb.org/core/fts-synonym-mappings
-              items:
-                $ref: "#/components/schemas/SearchSynonymMappingDefinition"
-            fields:
-              type: array
-              description: Settings that configure the fields, one per object, to index. You
-                must define at least one "vector" type field. You can optionally
-                define "filter" type fields also.
-              externalDocs:
-                description: Vector Search Fields
-                url: https://dochub.mongodb.org/core/avs-vector-type
-              items:
-                $ref: "#/components/schemas/BasicDBObject"
+          $ref: "#/components/schemas/BaseSearchIndexResponseLatestDefinition"
         latestDefinitionVersion:
           $ref: "#/components/schemas/SearchIndexDefinitionVersion"
         name:
@@ -30753,6 +30677,160 @@ components:
           type: string
           description: Severity of the event.
       readOnly: true
+    BaseSearchIndexResponseLatestDefinition:
+      properties:
+        analyzer:
+          type: string
+          default: lucene.standard
+          description: >-
+            Specific pre-defined method chosen to convert database field text
+            into searchable words. This conversion reduces the text of fields
+            into the smallest units of text. These units are called a **term**
+            or **token**. This process, known as tokenization, involves making
+            the following changes to the text in fields:
+
+
+            - extracting words
+
+            - removing punctuation
+
+            - removing accents
+
+            - changing to lowercase
+
+            - removing common words
+
+            - reducing words to their root form (stemming)
+
+            - changing words to their base form (lemmatization)
+             MongoDB Cloud uses the process you select to build the Atlas Search index.
+          externalDocs:
+            description: Atlas Search Analyzers
+            url: https://dochub.mongodb.org/core/analyzers--fts
+        analyzers:
+          type: array
+          description: List of user-defined methods to convert database field text into
+            searchable words.
+          externalDocs:
+            description: Custom Atlas Search Analyzers
+            url: https://dochub.mongodb.org/core/custom-fts
+          items:
+            $ref: "#/components/schemas/AtlasSearchAnalyzer"
+        mappings:
+          $ref: "#/components/schemas/SearchMappings"
+        searchAnalyzer:
+          type: string
+          default: lucene.standard
+          description: Method applied to identify words when searching this index.
+        storedSource:
+          type: object
+          description: Flag that indicates whether to store all fields (true) on Atlas
+            Search. By default, Atlas doesn't store (false) the fields on Atlas
+            Search.  Alternatively, you can specify an object that only contains
+            the list of fields to store (include) or not store (exclude) on
+            Atlas Search. To learn more, see Stored Source Fields.
+          example:
+            include | exclude:
+              - field1
+              - field2
+          externalDocs:
+            description: Stored Source Fields
+            url: https://dochub.mongodb.org/core/atlas-search-stored-source
+        synonyms:
+          type: array
+          description: Rule sets that map words to their synonyms in this index.
+          externalDocs:
+            description: Synonym Mapping
+            url: https://dochub.mongodb.org/core/fts-synonym-mappings
+          items:
+            $ref: "#/components/schemas/SearchSynonymMappingDefinition"
+        fields:
+          type: array
+          description: Settings that configure the fields, one per object, to index. You
+            must define at least one "vector" type field. You can optionally
+            define "filter" type fields also.
+          externalDocs:
+            description: Vector Search Fields
+            url: https://dochub.mongodb.org/core/avs-vector-type
+          items:
+            $ref: "#/components/schemas/BasicDBObject"
+    BaseSearchIndexCreateRequestDefinition:
+      properties:
+        analyzer:
+          type: string
+          default: lucene.standard
+          description: >-
+            Specific pre-defined method chosen to convert database field text
+            into searchable words. This conversion reduces the text of fields
+            into the smallest units of text. These units are called a **term**
+            or **token**. This process, known as tokenization, involves making
+            the following changes to the text in fields:
+
+
+            - extracting words
+
+            - removing punctuation
+
+            - removing accents
+
+            - changing to lowercase
+
+            - removing common words
+
+            - reducing words to their root form (stemming)
+
+            - changing words to their base form (lemmatization)
+             MongoDB Cloud uses the process you select to build the Atlas Search index.
+          externalDocs:
+            description: Atlas Search Analyzers
+            url: https://dochub.mongodb.org/core/analyzers--fts
+        analyzers:
+          type: array
+          description: List of user-defined methods to convert database field text into
+            searchable words.
+          externalDocs:
+            description: Custom Atlas Search Analyzers
+            url: https://dochub.mongodb.org/core/custom-fts
+          items:
+            $ref: "#/components/schemas/AtlasSearchAnalyzer"
+        mappings:
+          $ref: "#/components/schemas/SearchMappings"
+        searchAnalyzer:
+          type: string
+          default: lucene.standard
+          description: Method applied to identify words when searching this index.
+        storedSource:
+          type: object
+          description: Flag that indicates whether to store all fields (true) on Atlas
+            Search. By default, Atlas doesn't store (false) the fields on Atlas
+            Search.  Alternatively, you can specify an object that only contains
+            the list of fields to store (include) or not store (exclude) on
+            Atlas Search. To learn more, see Stored Source Fields.
+          example:
+            include | exclude:
+              - field1
+              - field2
+          externalDocs:
+            description: Stored Source Fields
+            url: https://dochub.mongodb.org/core/atlas-search-stored-source
+        synonyms:
+          type: array
+          description: Rule sets that map words to their synonyms in this index.
+          externalDocs:
+            description: Synonym Mapping
+            url: https://dochub.mongodb.org/core/fts-synonym-mappings
+          items:
+            $ref: "#/components/schemas/SearchSynonymMappingDefinition"
+        fields:
+          type: array
+          description: Settings that configure the fields, one per object, to index. You
+            must define at least one "vector" type field. You can optionally
+            define "filter" type fields also.
+          externalDocs:
+            description: Vector Search Fields
+            url: https://dochub.mongodb.org/core/avs-vector-type
+          items:
+            $ref: "#/components/schemas/BasicDBObject"
     AWSCustomDNSEnabled:
       type: object
       properties:
