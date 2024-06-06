@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20231115014/admin"
+	admin "go.mongodb.org/atlas-sdk/v20240530001/admin"
 
 	http "net/http"
 
@@ -2441,6 +2441,168 @@ func (_c *ProjectsApi_ListProjectsWithParams_Call) Return(_a0 admin.ListProjects
 }
 
 func (_c *ProjectsApi_ListProjectsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListProjectsApiParams) admin.ListProjectsApiRequest) *ProjectsApi_ListProjectsWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// MigrateProjectToAnotherOrg provides a mock function with given fields: ctx, groupId, groupMigrationRequest
+func (_m *ProjectsApi) MigrateProjectToAnotherOrg(ctx context.Context, groupId string, groupMigrationRequest *admin.GroupMigrationRequest) admin.MigrateProjectToAnotherOrgApiRequest {
+	ret := _m.Called(ctx, groupId, groupMigrationRequest)
+
+	if len(ret) == 0 {
+		panic("no return value specified for MigrateProjectToAnotherOrg")
+	}
+
+	var r0 admin.MigrateProjectToAnotherOrgApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.GroupMigrationRequest) admin.MigrateProjectToAnotherOrgApiRequest); ok {
+		r0 = rf(ctx, groupId, groupMigrationRequest)
+	} else {
+		r0 = ret.Get(0).(admin.MigrateProjectToAnotherOrgApiRequest)
+	}
+
+	return r0
+}
+
+// ProjectsApi_MigrateProjectToAnotherOrg_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'MigrateProjectToAnotherOrg'
+type ProjectsApi_MigrateProjectToAnotherOrg_Call struct {
+	*mock.Call
+}
+
+// MigrateProjectToAnotherOrg is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - groupMigrationRequest *admin.GroupMigrationRequest
+func (_e *ProjectsApi_Expecter) MigrateProjectToAnotherOrg(ctx interface{}, groupId interface{}, groupMigrationRequest interface{}) *ProjectsApi_MigrateProjectToAnotherOrg_Call {
+	return &ProjectsApi_MigrateProjectToAnotherOrg_Call{Call: _e.mock.On("MigrateProjectToAnotherOrg", ctx, groupId, groupMigrationRequest)}
+}
+
+func (_c *ProjectsApi_MigrateProjectToAnotherOrg_Call) Run(run func(ctx context.Context, groupId string, groupMigrationRequest *admin.GroupMigrationRequest)) *ProjectsApi_MigrateProjectToAnotherOrg_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(*admin.GroupMigrationRequest))
+	})
+	return _c
+}
+
+func (_c *ProjectsApi_MigrateProjectToAnotherOrg_Call) Return(_a0 admin.MigrateProjectToAnotherOrgApiRequest) *ProjectsApi_MigrateProjectToAnotherOrg_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ProjectsApi_MigrateProjectToAnotherOrg_Call) RunAndReturn(run func(context.Context, string, *admin.GroupMigrationRequest) admin.MigrateProjectToAnotherOrgApiRequest) *ProjectsApi_MigrateProjectToAnotherOrg_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// MigrateProjectToAnotherOrgExecute provides a mock function with given fields: r
+func (_m *ProjectsApi) MigrateProjectToAnotherOrgExecute(r admin.MigrateProjectToAnotherOrgApiRequest) (*admin.Group, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for MigrateProjectToAnotherOrgExecute")
+	}
+
+	var r0 *admin.Group
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.MigrateProjectToAnotherOrgApiRequest) (*admin.Group, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.MigrateProjectToAnotherOrgApiRequest) *admin.Group); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.Group)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.MigrateProjectToAnotherOrgApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.MigrateProjectToAnotherOrgApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// ProjectsApi_MigrateProjectToAnotherOrgExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'MigrateProjectToAnotherOrgExecute'
+type ProjectsApi_MigrateProjectToAnotherOrgExecute_Call struct {
+	*mock.Call
+}
+
+// MigrateProjectToAnotherOrgExecute is a helper method to define mock.On call
+//   - r admin.MigrateProjectToAnotherOrgApiRequest
+func (_e *ProjectsApi_Expecter) MigrateProjectToAnotherOrgExecute(r interface{}) *ProjectsApi_MigrateProjectToAnotherOrgExecute_Call {
+	return &ProjectsApi_MigrateProjectToAnotherOrgExecute_Call{Call: _e.mock.On("MigrateProjectToAnotherOrgExecute", r)}
+}
+
+func (_c *ProjectsApi_MigrateProjectToAnotherOrgExecute_Call) Run(run func(r admin.MigrateProjectToAnotherOrgApiRequest)) *ProjectsApi_MigrateProjectToAnotherOrgExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.MigrateProjectToAnotherOrgApiRequest))
+	})
+	return _c
+}
+
+func (_c *ProjectsApi_MigrateProjectToAnotherOrgExecute_Call) Return(_a0 *admin.Group, _a1 *http.Response, _a2 error) *ProjectsApi_MigrateProjectToAnotherOrgExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *ProjectsApi_MigrateProjectToAnotherOrgExecute_Call) RunAndReturn(run func(admin.MigrateProjectToAnotherOrgApiRequest) (*admin.Group, *http.Response, error)) *ProjectsApi_MigrateProjectToAnotherOrgExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// MigrateProjectToAnotherOrgWithParams provides a mock function with given fields: ctx, args
+func (_m *ProjectsApi) MigrateProjectToAnotherOrgWithParams(ctx context.Context, args *admin.MigrateProjectToAnotherOrgApiParams) admin.MigrateProjectToAnotherOrgApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for MigrateProjectToAnotherOrgWithParams")
+	}
+
+	var r0 admin.MigrateProjectToAnotherOrgApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.MigrateProjectToAnotherOrgApiParams) admin.MigrateProjectToAnotherOrgApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.MigrateProjectToAnotherOrgApiRequest)
+	}
+
+	return r0
+}
+
+// ProjectsApi_MigrateProjectToAnotherOrgWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'MigrateProjectToAnotherOrgWithParams'
+type ProjectsApi_MigrateProjectToAnotherOrgWithParams_Call struct {
+	*mock.Call
+}
+
+// MigrateProjectToAnotherOrgWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.MigrateProjectToAnotherOrgApiParams
+func (_e *ProjectsApi_Expecter) MigrateProjectToAnotherOrgWithParams(ctx interface{}, args interface{}) *ProjectsApi_MigrateProjectToAnotherOrgWithParams_Call {
+	return &ProjectsApi_MigrateProjectToAnotherOrgWithParams_Call{Call: _e.mock.On("MigrateProjectToAnotherOrgWithParams", ctx, args)}
+}
+
+func (_c *ProjectsApi_MigrateProjectToAnotherOrgWithParams_Call) Run(run func(ctx context.Context, args *admin.MigrateProjectToAnotherOrgApiParams)) *ProjectsApi_MigrateProjectToAnotherOrgWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.MigrateProjectToAnotherOrgApiParams))
+	})
+	return _c
+}
+
+func (_c *ProjectsApi_MigrateProjectToAnotherOrgWithParams_Call) Return(_a0 admin.MigrateProjectToAnotherOrgApiRequest) *ProjectsApi_MigrateProjectToAnotherOrgWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ProjectsApi_MigrateProjectToAnotherOrgWithParams_Call) RunAndReturn(run func(context.Context, *admin.MigrateProjectToAnotherOrgApiParams) admin.MigrateProjectToAnotherOrgApiRequest) *ProjectsApi_MigrateProjectToAnotherOrgWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }

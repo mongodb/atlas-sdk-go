@@ -5,14 +5,23 @@ All URIs are relative to *https://cloud.mongodb.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateAtlasSearchDeployment**](AtlasSearchApi.md#CreateAtlasSearchDeployment) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/deployment | Create Search Nodes
-[**CreateAtlasSearchIndex**](AtlasSearchApi.md#CreateAtlasSearchIndex) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes | Create One Atlas Search Index
+[**CreateAtlasSearchIndex**](AtlasSearchApi.md#CreateAtlasSearchIndex) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes | Create One Atlas Search Index
+[**CreateAtlasSearchIndexDeprecated**](AtlasSearchApi.md#CreateAtlasSearchIndexDeprecated) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes | Create One Atlas Search Index
 [**DeleteAtlasSearchDeployment**](AtlasSearchApi.md#DeleteAtlasSearchDeployment) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/deployment | Delete Search Nodes
-[**DeleteAtlasSearchIndex**](AtlasSearchApi.md#DeleteAtlasSearchIndex) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes/{indexId} | Remove One Atlas Search Index
+[**DeleteAtlasSearchIndex**](AtlasSearchApi.md#DeleteAtlasSearchIndex) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{indexId} | Remove One Atlas Search Index by Id
+[**DeleteAtlasSearchIndexByName**](AtlasSearchApi.md#DeleteAtlasSearchIndexByName) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{databaseName}/{collectionName}/{indexName} | Remove One Atlas Search Index by Name
+[**DeleteAtlasSearchIndexDeprecated**](AtlasSearchApi.md#DeleteAtlasSearchIndexDeprecated) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes/{indexId} | Remove One Atlas Search Index
 [**GetAtlasSearchDeployment**](AtlasSearchApi.md#GetAtlasSearchDeployment) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/deployment | Return Search Nodes
-[**GetAtlasSearchIndex**](AtlasSearchApi.md#GetAtlasSearchIndex) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes/{indexId} | Return One Atlas Search Index
-[**ListAtlasSearchIndexes**](AtlasSearchApi.md#ListAtlasSearchIndexes) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes/{databaseName}/{collectionName} | Return All Atlas Search Indexes for One Collection
+[**GetAtlasSearchIndex**](AtlasSearchApi.md#GetAtlasSearchIndex) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{indexId} | Return One Atlas Search Index by ID
+[**GetAtlasSearchIndexByName**](AtlasSearchApi.md#GetAtlasSearchIndexByName) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{databaseName}/{collectionName}/{indexName} | Return One Atlas Search Index by Name
+[**GetAtlasSearchIndexDeprecated**](AtlasSearchApi.md#GetAtlasSearchIndexDeprecated) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes/{indexId} | Return One Atlas Search Index
+[**ListAtlasSearchIndexes**](AtlasSearchApi.md#ListAtlasSearchIndexes) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{databaseName}/{collectionName} | Return All Atlas Search Indexes for One Collection
+[**ListAtlasSearchIndexesCluster**](AtlasSearchApi.md#ListAtlasSearchIndexesCluster) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes | Return All Atlas Search Indexes for One Cluster
+[**ListAtlasSearchIndexesDeprecated**](AtlasSearchApi.md#ListAtlasSearchIndexesDeprecated) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes/{databaseName}/{collectionName} | Return All Atlas Search Indexes for One Collection
 [**UpdateAtlasSearchDeployment**](AtlasSearchApi.md#UpdateAtlasSearchDeployment) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/deployment | Update Search Nodes
-[**UpdateAtlasSearchIndex**](AtlasSearchApi.md#UpdateAtlasSearchIndex) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes/{indexId} | Update One Atlas Search Index
+[**UpdateAtlasSearchIndex**](AtlasSearchApi.md#UpdateAtlasSearchIndex) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{indexId} | Update One Atlas Search Index By ID
+[**UpdateAtlasSearchIndexByName**](AtlasSearchApi.md#UpdateAtlasSearchIndexByName) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{databaseName}/{collectionName}/{indexName} | Update One Atlas Search Index By Name
+[**UpdateAtlasSearchIndexDeprecated**](AtlasSearchApi.md#UpdateAtlasSearchIndexDeprecated) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes/{indexId} | Update One Atlas Search Index
 
 
 
@@ -33,7 +42,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115014/admin"
+    "go.mongodb.org/atlas-sdk/v20240530001/admin"
 )
 
 func main() {
@@ -86,8 +95,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/vnd.atlas.2023-01-01+json
-- **Accept**: application/vnd.atlas.2023-01-01+json, application/json
+- **Content-Type**: application/vnd.atlas.2024-05-30+json
+- **Accept**: application/vnd.atlas.2024-05-30+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -96,7 +105,7 @@ Name | Type | Description  | Notes
 
 ## CreateAtlasSearchIndex
 
-> ClusterSearchIndex CreateAtlasSearchIndex(ctx, groupId, clusterName, clusterSearchIndex ClusterSearchIndex).Execute()
+> SearchIndexResponse CreateAtlasSearchIndex(ctx, groupId, clusterName, searchIndexCreateRequest SearchIndexCreateRequest).Execute()
 
 Create One Atlas Search Index
 
@@ -111,7 +120,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115014/admin"
+    "go.mongodb.org/atlas-sdk/v20240530001/admin"
 )
 
 func main() {
@@ -122,15 +131,15 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
-    clusterSearchIndex := *openapiclient.NewClusterSearchIndex("CollectionName_example", "Database_example", "Name_example") // ClusterSearchIndex | 
+    searchIndexCreateRequest := *openapiclient.NewSearchIndexCreateRequest("CollectionName_example", "Database_example", "Name_example") // SearchIndexCreateRequest | 
 
-    resp, r, err := sdk.AtlasSearchApi.CreateAtlasSearchIndex(context.Background(), groupId, clusterName, &clusterSearchIndex).Execute()
+    resp, r, err := sdk.AtlasSearchApi.CreateAtlasSearchIndex(context.Background(), groupId, clusterName, &searchIndexCreateRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.CreateAtlasSearchIndex``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `CreateAtlasSearchIndex`: ClusterSearchIndex
+    // response from `CreateAtlasSearchIndex`: SearchIndexResponse
     fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.CreateAtlasSearchIndex`: %v\n", resp)
 }
 ```
@@ -147,6 +156,84 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiCreateAtlasSearchIndexRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **searchIndexCreateRequest** | [**SearchIndexCreateRequest**](SearchIndexCreateRequest.md) | Creates one Atlas Search index on the specified collection. | 
+
+### Return type
+
+[**SearchIndexResponse**](SearchIndexResponse.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: application/vnd.atlas.2024-05-30+json
+- **Accept**: application/vnd.atlas.2024-05-30+json, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateAtlasSearchIndexDeprecated
+
+> ClusterSearchIndex CreateAtlasSearchIndexDeprecated(ctx, groupId, clusterName, clusterSearchIndex ClusterSearchIndex).Execute()
+
+Create One Atlas Search Index
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20240530001/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    clusterName := "clusterName_example" // string | 
+    clusterSearchIndex := *openapiclient.NewClusterSearchIndex("CollectionName_example", "Database_example", "Name_example") // ClusterSearchIndex | 
+
+    resp, r, err := sdk.AtlasSearchApi.CreateAtlasSearchIndexDeprecated(context.Background(), groupId, clusterName, &clusterSearchIndex).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.CreateAtlasSearchIndexDeprecated``: %v\n", err)
+        apiError := admin.AsError(err)
+        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+    }
+    // response from `CreateAtlasSearchIndexDeprecated`: ClusterSearchIndex
+    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.CreateAtlasSearchIndexDeprecated`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**clusterName** | **string** | Name of the cluster that contains the collection on which to create an Atlas Search index. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateAtlasSearchIndexDeprecatedRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -174,7 +261,7 @@ Name | Type | Description  | Notes
 
 ## DeleteAtlasSearchDeployment
 
-> DeleteAtlasSearchDeployment(ctx, groupId, clusterName).Execute()
+> map[string]interface{} DeleteAtlasSearchDeployment(ctx, groupId, clusterName).Execute()
 
 Delete Search Nodes
 
@@ -189,7 +276,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115014/admin"
+    "go.mongodb.org/atlas-sdk/v20240530001/admin"
 )
 
 func main() {
@@ -201,12 +288,14 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
 
-    r, err := sdk.AtlasSearchApi.DeleteAtlasSearchDeployment(context.Background(), groupId, clusterName).Execute()
+    resp, r, err := sdk.AtlasSearchApi.DeleteAtlasSearchDeployment(context.Background(), groupId, clusterName).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.DeleteAtlasSearchDeployment``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
+    // response from `DeleteAtlasSearchDeployment`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.DeleteAtlasSearchDeployment`: %v\n", resp)
 }
 ```
 
@@ -231,7 +320,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**map[string]interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -239,7 +328,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-01-01+json, application/json
+- **Accept**: application/vnd.atlas.2024-05-30+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -250,7 +339,7 @@ Name | Type | Description  | Notes
 
 > map[string]interface{} DeleteAtlasSearchIndex(ctx, groupId, clusterName, indexId).Execute()
 
-Remove One Atlas Search Index
+Remove One Atlas Search Index by Id
 
 
 ### Example
@@ -263,7 +352,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115014/admin"
+    "go.mongodb.org/atlas-sdk/v20240530001/admin"
 )
 
 func main() {
@@ -318,6 +407,170 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2024-05-30+json, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteAtlasSearchIndexByName
+
+> map[string]interface{} DeleteAtlasSearchIndexByName(ctx, groupId, clusterName, collectionName, databaseName, indexName).Execute()
+
+Remove One Atlas Search Index by Name
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20240530001/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    clusterName := "clusterName_example" // string | 
+    collectionName := "collectionName_example" // string | 
+    databaseName := "databaseName_example" // string | 
+    indexName := "indexName_example" // string | 
+
+    resp, r, err := sdk.AtlasSearchApi.DeleteAtlasSearchIndexByName(context.Background(), groupId, clusterName, collectionName, databaseName, indexName).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.DeleteAtlasSearchIndexByName``: %v\n", err)
+        apiError := admin.AsError(err)
+        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+    }
+    // response from `DeleteAtlasSearchIndexByName`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.DeleteAtlasSearchIndexByName`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**clusterName** | **string** | Name of the cluster that contains the database and collection with one or more Application Search indexes. | 
+**collectionName** | **string** | Name of the collection that contains one or more Atlas Search indexes. | 
+**databaseName** | **string** | Label that identifies the database that contains the collection with one or more Atlas Search indexes. | 
+**indexName** | **string** | Name of the Atlas Search index to delete. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteAtlasSearchIndexByNameRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2024-05-30+json, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteAtlasSearchIndexDeprecated
+
+> map[string]interface{} DeleteAtlasSearchIndexDeprecated(ctx, groupId, clusterName, indexId).Execute()
+
+Remove One Atlas Search Index
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20240530001/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    clusterName := "clusterName_example" // string | 
+    indexId := "indexId_example" // string | 
+
+    resp, r, err := sdk.AtlasSearchApi.DeleteAtlasSearchIndexDeprecated(context.Background(), groupId, clusterName, indexId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.DeleteAtlasSearchIndexDeprecated``: %v\n", err)
+        apiError := admin.AsError(err)
+        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+    }
+    // response from `DeleteAtlasSearchIndexDeprecated`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.DeleteAtlasSearchIndexDeprecated`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**clusterName** | **string** | Name of the cluster that contains the database and collection with one or more Application Search indexes. | 
+**indexId** | **string** | Unique 24-hexadecimal digit string that identifies the Atlas Search index. Use the [Get All Atlas Search Indexes for a Collection API](https://docs.atlas.mongodb.com/reference/api/fts-indexes-get-all/) endpoint to find the IDs of all Atlas Search indexes. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteAtlasSearchIndexDeprecatedRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/vnd.atlas.2023-01-01+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -342,7 +595,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115014/admin"
+    "go.mongodb.org/atlas-sdk/v20240530001/admin"
 )
 
 func main() {
@@ -394,7 +647,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-01-01+json, application/json
+- **Accept**: application/vnd.atlas.2024-05-30+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -403,9 +656,9 @@ Name | Type | Description  | Notes
 
 ## GetAtlasSearchIndex
 
-> ClusterSearchIndex GetAtlasSearchIndex(ctx, groupId, clusterName, indexId).Execute()
+> SearchIndexResponse GetAtlasSearchIndex(ctx, groupId, clusterName, indexId).Execute()
 
-Return One Atlas Search Index
+Return One Atlas Search Index by ID
 
 
 ### Example
@@ -418,7 +671,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115014/admin"
+    "go.mongodb.org/atlas-sdk/v20240530001/admin"
 )
 
 func main() {
@@ -437,7 +690,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `GetAtlasSearchIndex`: ClusterSearchIndex
+    // response from `GetAtlasSearchIndex`: SearchIndexResponse
     fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.GetAtlasSearchIndex`: %v\n", resp)
 }
 ```
@@ -465,6 +718,170 @@ Name | Type | Description  | Notes
 
 ### Return type
 
+[**SearchIndexResponse**](SearchIndexResponse.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2024-05-30+json, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetAtlasSearchIndexByName
+
+> SearchIndexResponse GetAtlasSearchIndexByName(ctx, groupId, clusterName, collectionName, databaseName, indexName).Execute()
+
+Return One Atlas Search Index by Name
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20240530001/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    clusterName := "clusterName_example" // string | 
+    collectionName := "collectionName_example" // string | 
+    databaseName := "databaseName_example" // string | 
+    indexName := "indexName_example" // string | 
+
+    resp, r, err := sdk.AtlasSearchApi.GetAtlasSearchIndexByName(context.Background(), groupId, clusterName, collectionName, databaseName, indexName).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.GetAtlasSearchIndexByName``: %v\n", err)
+        apiError := admin.AsError(err)
+        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+    }
+    // response from `GetAtlasSearchIndexByName`: SearchIndexResponse
+    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.GetAtlasSearchIndexByName`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**clusterName** | **string** | Name of the cluster that contains the collection with one or more Atlas Search indexes. | 
+**collectionName** | **string** | Name of the collection that contains one or more Atlas Search indexes. | 
+**databaseName** | **string** | Label that identifies the database that contains the collection with one or more Atlas Search indexes. | 
+**indexName** | **string** | Name of the Atlas Search index to return. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetAtlasSearchIndexByNameRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+
+
+### Return type
+
+[**SearchIndexResponse**](SearchIndexResponse.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2024-05-30+json, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetAtlasSearchIndexDeprecated
+
+> ClusterSearchIndex GetAtlasSearchIndexDeprecated(ctx, groupId, clusterName, indexId).Execute()
+
+Return One Atlas Search Index
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20240530001/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    clusterName := "clusterName_example" // string | 
+    indexId := "indexId_example" // string | 
+
+    resp, r, err := sdk.AtlasSearchApi.GetAtlasSearchIndexDeprecated(context.Background(), groupId, clusterName, indexId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.GetAtlasSearchIndexDeprecated``: %v\n", err)
+        apiError := admin.AsError(err)
+        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+    }
+    // response from `GetAtlasSearchIndexDeprecated`: ClusterSearchIndex
+    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.GetAtlasSearchIndexDeprecated`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**clusterName** | **string** | Name of the cluster that contains the collection with one or more Atlas Search indexes. | 
+**indexId** | **string** | Unique 24-hexadecimal digit string that identifies the Application Search [index](https://dochub.mongodb.org/core/index-definitions-fts). Use the [Get All Application Search Indexes for a Collection API](https://docs.atlas.mongodb.com/reference/api/fts-indexes-get-all/) endpoint to find the IDs of all Application Search indexes. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetAtlasSearchIndexDeprecatedRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+### Return type
+
 [**ClusterSearchIndex**](ClusterSearchIndex.md)
 
 ### Authorization
@@ -482,7 +899,7 @@ Name | Type | Description  | Notes
 
 ## ListAtlasSearchIndexes
 
-> []ClusterSearchIndex ListAtlasSearchIndexes(ctx, groupId, clusterName, collectionName, databaseName).Execute()
+> []SearchIndexResponse ListAtlasSearchIndexes(ctx, groupId, clusterName, collectionName, databaseName).Execute()
 
 Return All Atlas Search Indexes for One Collection
 
@@ -497,7 +914,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115014/admin"
+    "go.mongodb.org/atlas-sdk/v20240530001/admin"
 )
 
 func main() {
@@ -517,8 +934,166 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `ListAtlasSearchIndexes`: []ClusterSearchIndex
+    // response from `ListAtlasSearchIndexes`: []SearchIndexResponse
     fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.ListAtlasSearchIndexes`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**clusterName** | **string** | Name of the cluster that contains the collection with one or more Atlas Search indexes. | 
+**collectionName** | **string** | Name of the collection that contains one or more Atlas Search indexes. | 
+**databaseName** | **string** | Label that identifies the database that contains the collection with one or more Atlas Search indexes. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListAtlasSearchIndexesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+
+### Return type
+
+[**[]SearchIndexResponse**](SearchIndexResponse.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2024-05-30+json, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListAtlasSearchIndexesCluster
+
+> []SearchIndexResponse ListAtlasSearchIndexesCluster(ctx, groupId, clusterName).Execute()
+
+Return All Atlas Search Indexes for One Cluster
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20240530001/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    clusterName := "clusterName_example" // string | 
+
+    resp, r, err := sdk.AtlasSearchApi.ListAtlasSearchIndexesCluster(context.Background(), groupId, clusterName).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.ListAtlasSearchIndexesCluster``: %v\n", err)
+        apiError := admin.AsError(err)
+        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+    }
+    // response from `ListAtlasSearchIndexesCluster`: []SearchIndexResponse
+    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.ListAtlasSearchIndexesCluster`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**clusterName** | **string** | Name of the cluster that contains the collection with one or more Atlas Search indexes. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListAtlasSearchIndexesClusterRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**[]SearchIndexResponse**](SearchIndexResponse.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2024-05-30+json, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListAtlasSearchIndexesDeprecated
+
+> []ClusterSearchIndex ListAtlasSearchIndexesDeprecated(ctx, groupId, clusterName, collectionName, databaseName).Execute()
+
+Return All Atlas Search Indexes for One Collection
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20240530001/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    clusterName := "clusterName_example" // string | 
+    collectionName := "collectionName_example" // string | 
+    databaseName := "databaseName_example" // string | 
+
+    resp, r, err := sdk.AtlasSearchApi.ListAtlasSearchIndexesDeprecated(context.Background(), groupId, clusterName, collectionName, databaseName).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.ListAtlasSearchIndexesDeprecated``: %v\n", err)
+        apiError := admin.AsError(err)
+        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+    }
+    // response from `ListAtlasSearchIndexesDeprecated`: []ClusterSearchIndex
+    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.ListAtlasSearchIndexesDeprecated`: %v\n", resp)
 }
 ```
 
@@ -535,7 +1110,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListAtlasSearchIndexesRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListAtlasSearchIndexesDeprecatedRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -579,7 +1154,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115014/admin"
+    "go.mongodb.org/atlas-sdk/v20240530001/admin"
 )
 
 func main() {
@@ -632,8 +1207,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/vnd.atlas.2023-01-01+json
-- **Accept**: application/vnd.atlas.2023-01-01+json, application/json
+- **Content-Type**: application/vnd.atlas.2024-05-30+json
+- **Accept**: application/vnd.atlas.2024-05-30+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -642,7 +1217,175 @@ Name | Type | Description  | Notes
 
 ## UpdateAtlasSearchIndex
 
-> ClusterSearchIndex UpdateAtlasSearchIndex(ctx, groupId, clusterName, indexId, clusterSearchIndex ClusterSearchIndex).Execute()
+> SearchIndexResponse UpdateAtlasSearchIndex(ctx, groupId, clusterName, indexId, searchIndexUpdateRequest SearchIndexUpdateRequest).Execute()
+
+Update One Atlas Search Index By ID
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20240530001/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    clusterName := "clusterName_example" // string | 
+    indexId := "indexId_example" // string | 
+    searchIndexUpdateRequest := *openapiclient.NewSearchIndexUpdateRequest(*openapiclient.NewSearchIndexUpdateRequestDefinition()) // SearchIndexUpdateRequest | 
+
+    resp, r, err := sdk.AtlasSearchApi.UpdateAtlasSearchIndex(context.Background(), groupId, clusterName, indexId, &searchIndexUpdateRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.UpdateAtlasSearchIndex``: %v\n", err)
+        apiError := admin.AsError(err)
+        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+    }
+    // response from `UpdateAtlasSearchIndex`: SearchIndexResponse
+    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.UpdateAtlasSearchIndex`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**clusterName** | **string** | Name of the cluster that contains the collection whose Atlas Search index you want to update. | 
+**indexId** | **string** | Unique 24-hexadecimal digit string that identifies the Atlas Search [index](https://dochub.mongodb.org/core/index-definitions-fts). Use the [Get All Atlas Search Indexes for a Collection API](https://docs.atlas.mongodb.com/reference/api/fts-indexes-get-all/) endpoint to find the IDs of all Atlas Search indexes. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateAtlasSearchIndexRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+ **searchIndexUpdateRequest** | [**SearchIndexUpdateRequest**](SearchIndexUpdateRequest.md) | Details to update on the Atlas Search index. | 
+
+### Return type
+
+[**SearchIndexResponse**](SearchIndexResponse.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: application/vnd.atlas.2024-05-30+json
+- **Accept**: application/vnd.atlas.2024-05-30+json, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateAtlasSearchIndexByName
+
+> SearchIndexResponse UpdateAtlasSearchIndexByName(ctx, groupId, clusterName, collectionName, databaseName, indexName, searchIndexUpdateRequest SearchIndexUpdateRequest).Execute()
+
+Update One Atlas Search Index By Name
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20240530001/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    clusterName := "clusterName_example" // string | 
+    collectionName := "collectionName_example" // string | 
+    databaseName := "databaseName_example" // string | 
+    indexName := "indexName_example" // string | 
+    searchIndexUpdateRequest := *openapiclient.NewSearchIndexUpdateRequest(*openapiclient.NewSearchIndexUpdateRequestDefinition()) // SearchIndexUpdateRequest | 
+
+    resp, r, err := sdk.AtlasSearchApi.UpdateAtlasSearchIndexByName(context.Background(), groupId, clusterName, collectionName, databaseName, indexName, &searchIndexUpdateRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.UpdateAtlasSearchIndexByName``: %v\n", err)
+        apiError := admin.AsError(err)
+        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+    }
+    // response from `UpdateAtlasSearchIndexByName`: SearchIndexResponse
+    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.UpdateAtlasSearchIndexByName`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**clusterName** | **string** | Name of the cluster that contains the collection whose Atlas Search index you want to update. | 
+**collectionName** | **string** | Name of the collection that contains one or more Atlas Search indexes. | 
+**databaseName** | **string** | Label that identifies the database that contains the collection with one or more Atlas Search indexes. | 
+**indexName** | **string** | Name of the Atlas Search index to update. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateAtlasSearchIndexByNameRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+
+ **searchIndexUpdateRequest** | [**SearchIndexUpdateRequest**](SearchIndexUpdateRequest.md) | Details to update the Atlas Search index with. | 
+
+### Return type
+
+[**SearchIndexResponse**](SearchIndexResponse.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: application/vnd.atlas.2024-05-30+json
+- **Accept**: application/vnd.atlas.2024-05-30+json, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateAtlasSearchIndexDeprecated
+
+> ClusterSearchIndex UpdateAtlasSearchIndexDeprecated(ctx, groupId, clusterName, indexId, clusterSearchIndex ClusterSearchIndex).Execute()
 
 Update One Atlas Search Index
 
@@ -657,7 +1400,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115014/admin"
+    "go.mongodb.org/atlas-sdk/v20240530001/admin"
 )
 
 func main() {
@@ -671,14 +1414,14 @@ func main() {
     indexId := "indexId_example" // string | 
     clusterSearchIndex := *openapiclient.NewClusterSearchIndex("CollectionName_example", "Database_example", "Name_example") // ClusterSearchIndex | 
 
-    resp, r, err := sdk.AtlasSearchApi.UpdateAtlasSearchIndex(context.Background(), groupId, clusterName, indexId, &clusterSearchIndex).Execute()
+    resp, r, err := sdk.AtlasSearchApi.UpdateAtlasSearchIndexDeprecated(context.Background(), groupId, clusterName, indexId, &clusterSearchIndex).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.UpdateAtlasSearchIndex``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.UpdateAtlasSearchIndexDeprecated``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `UpdateAtlasSearchIndex`: ClusterSearchIndex
-    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.UpdateAtlasSearchIndex`: %v\n", resp)
+    // response from `UpdateAtlasSearchIndexDeprecated`: ClusterSearchIndex
+    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.UpdateAtlasSearchIndexDeprecated`: %v\n", resp)
 }
 ```
 
@@ -694,7 +1437,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUpdateAtlasSearchIndexRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateAtlasSearchIndexDeprecatedRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

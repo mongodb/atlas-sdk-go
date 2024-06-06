@@ -17,15 +17,15 @@ type AlertsApi interface {
 
 			Confirms receipt of one existing alert. This alert applies to any component in one project. Acknowledging an alert prevents successive notifications. You receive an alert when a monitored component meets or exceeds a value you set until you acknowledge the alert. To use this resource, the requesting API Key must have the Organization Owner or Project Owner role.
 
-		This resource remains under revision and may change.
+		This resource remains under revision and may change. Deprecated versions: v2-{2023-01-01}
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 			@param alertId Unique 24-hexadecimal digit string that identifies the alert. Use the [/alerts](#tag/Alerts/operation/listAlerts) endpoint to retrieve all alerts to which the authenticated user has access.
-			@param alertViewForNdsGroup Confirm one alert.
+			@param acknowledgeAlert Acknowledges or unacknowledges one alert.
 			@return AcknowledgeAlertApiRequest
 	*/
-	AcknowledgeAlert(ctx context.Context, groupId string, alertId string, alertViewForNdsGroup *AlertViewForNdsGroup) AcknowledgeAlertApiRequest
+	AcknowledgeAlert(ctx context.Context, groupId string, alertId string, acknowledgeAlert *AcknowledgeAlert) AcknowledgeAlertApiRequest
 	/*
 		AcknowledgeAlert Acknowledge One Alert from One Project
 
@@ -121,26 +121,26 @@ type AlertsApi interface {
 type AlertsApiService service
 
 type AcknowledgeAlertApiRequest struct {
-	ctx                  context.Context
-	ApiService           AlertsApi
-	groupId              string
-	alertId              string
-	alertViewForNdsGroup *AlertViewForNdsGroup
+	ctx              context.Context
+	ApiService       AlertsApi
+	groupId          string
+	alertId          string
+	acknowledgeAlert *AcknowledgeAlert
 }
 
 type AcknowledgeAlertApiParams struct {
-	GroupId              string
-	AlertId              string
-	AlertViewForNdsGroup *AlertViewForNdsGroup
+	GroupId          string
+	AlertId          string
+	AcknowledgeAlert *AcknowledgeAlert
 }
 
 func (a *AlertsApiService) AcknowledgeAlertWithParams(ctx context.Context, args *AcknowledgeAlertApiParams) AcknowledgeAlertApiRequest {
 	return AcknowledgeAlertApiRequest{
-		ApiService:           a,
-		ctx:                  ctx,
-		groupId:              args.GroupId,
-		alertId:              args.AlertId,
-		alertViewForNdsGroup: args.AlertViewForNdsGroup,
+		ApiService:       a,
+		ctx:              ctx,
+		groupId:          args.GroupId,
+		alertId:          args.AlertId,
+		acknowledgeAlert: args.AcknowledgeAlert,
 	}
 }
 
@@ -153,20 +153,20 @@ AcknowledgeAlert Acknowledge One Alert from One Project
 
 Confirms receipt of one existing alert. This alert applies to any component in one project. Acknowledging an alert prevents successive notifications. You receive an alert when a monitored component meets or exceeds a value you set until you acknowledge the alert. To use this resource, the requesting API Key must have the Organization Owner or Project Owner role.
 
-This resource remains under revision and may change.
+This resource remains under revision and may change. Deprecated versions: v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param alertId Unique 24-hexadecimal digit string that identifies the alert. Use the [/alerts](#tag/Alerts/operation/listAlerts) endpoint to retrieve all alerts to which the authenticated user has access.
 	@return AcknowledgeAlertApiRequest
 */
-func (a *AlertsApiService) AcknowledgeAlert(ctx context.Context, groupId string, alertId string, alertViewForNdsGroup *AlertViewForNdsGroup) AcknowledgeAlertApiRequest {
+func (a *AlertsApiService) AcknowledgeAlert(ctx context.Context, groupId string, alertId string, acknowledgeAlert *AcknowledgeAlert) AcknowledgeAlertApiRequest {
 	return AcknowledgeAlertApiRequest{
-		ApiService:           a,
-		ctx:                  ctx,
-		groupId:              groupId,
-		alertId:              alertId,
-		alertViewForNdsGroup: alertViewForNdsGroup,
+		ApiService:       a,
+		ctx:              ctx,
+		groupId:          groupId,
+		alertId:          alertId,
+		acknowledgeAlert: acknowledgeAlert,
 	}
 }
 
@@ -193,12 +193,12 @@ func (a *AlertsApiService) AcknowledgeAlertExecute(r AcknowledgeAlertApiRequest)
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.alertViewForNdsGroup == nil {
-		return localVarReturnValue, nil, reportError("alertViewForNdsGroup is required and must be specified")
+	if r.acknowledgeAlert == nil {
+		return localVarReturnValue, nil, reportError("acknowledgeAlert is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2024-05-30+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -207,7 +207,7 @@ func (a *AlertsApiService) AcknowledgeAlertExecute(r AcknowledgeAlertApiRequest)
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json", "application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-05-30+json", "application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -215,7 +215,7 @@ func (a *AlertsApiService) AcknowledgeAlertExecute(r AcknowledgeAlertApiRequest)
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.alertViewForNdsGroup
+	localVarPostBody = r.acknowledgeAlert
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

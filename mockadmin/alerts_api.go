@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20231115014/admin"
+	admin "go.mongodb.org/atlas-sdk/v20240530001/admin"
 
 	http "net/http"
 
@@ -25,17 +25,17 @@ func (_m *AlertsApi) EXPECT() *AlertsApi_Expecter {
 	return &AlertsApi_Expecter{mock: &_m.Mock}
 }
 
-// AcknowledgeAlert provides a mock function with given fields: ctx, groupId, alertId, alertViewForNdsGroup
-func (_m *AlertsApi) AcknowledgeAlert(ctx context.Context, groupId string, alertId string, alertViewForNdsGroup *admin.AlertViewForNdsGroup) admin.AcknowledgeAlertApiRequest {
-	ret := _m.Called(ctx, groupId, alertId, alertViewForNdsGroup)
+// AcknowledgeAlert provides a mock function with given fields: ctx, groupId, alertId, acknowledgeAlert
+func (_m *AlertsApi) AcknowledgeAlert(ctx context.Context, groupId string, alertId string, acknowledgeAlert *admin.AcknowledgeAlert) admin.AcknowledgeAlertApiRequest {
+	ret := _m.Called(ctx, groupId, alertId, acknowledgeAlert)
 
 	if len(ret) == 0 {
 		panic("no return value specified for AcknowledgeAlert")
 	}
 
 	var r0 admin.AcknowledgeAlertApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.AlertViewForNdsGroup) admin.AcknowledgeAlertApiRequest); ok {
-		r0 = rf(ctx, groupId, alertId, alertViewForNdsGroup)
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.AcknowledgeAlert) admin.AcknowledgeAlertApiRequest); ok {
+		r0 = rf(ctx, groupId, alertId, acknowledgeAlert)
 	} else {
 		r0 = ret.Get(0).(admin.AcknowledgeAlertApiRequest)
 	}
@@ -52,14 +52,14 @@ type AlertsApi_AcknowledgeAlert_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - alertId string
-//   - alertViewForNdsGroup *admin.AlertViewForNdsGroup
-func (_e *AlertsApi_Expecter) AcknowledgeAlert(ctx interface{}, groupId interface{}, alertId interface{}, alertViewForNdsGroup interface{}) *AlertsApi_AcknowledgeAlert_Call {
-	return &AlertsApi_AcknowledgeAlert_Call{Call: _e.mock.On("AcknowledgeAlert", ctx, groupId, alertId, alertViewForNdsGroup)}
+//   - acknowledgeAlert *admin.AcknowledgeAlert
+func (_e *AlertsApi_Expecter) AcknowledgeAlert(ctx interface{}, groupId interface{}, alertId interface{}, acknowledgeAlert interface{}) *AlertsApi_AcknowledgeAlert_Call {
+	return &AlertsApi_AcknowledgeAlert_Call{Call: _e.mock.On("AcknowledgeAlert", ctx, groupId, alertId, acknowledgeAlert)}
 }
 
-func (_c *AlertsApi_AcknowledgeAlert_Call) Run(run func(ctx context.Context, groupId string, alertId string, alertViewForNdsGroup *admin.AlertViewForNdsGroup)) *AlertsApi_AcknowledgeAlert_Call {
+func (_c *AlertsApi_AcknowledgeAlert_Call) Run(run func(ctx context.Context, groupId string, alertId string, acknowledgeAlert *admin.AcknowledgeAlert)) *AlertsApi_AcknowledgeAlert_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.AlertViewForNdsGroup))
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.AcknowledgeAlert))
 	})
 	return _c
 }
@@ -69,7 +69,7 @@ func (_c *AlertsApi_AcknowledgeAlert_Call) Return(_a0 admin.AcknowledgeAlertApiR
 	return _c
 }
 
-func (_c *AlertsApi_AcknowledgeAlert_Call) RunAndReturn(run func(context.Context, string, string, *admin.AlertViewForNdsGroup) admin.AcknowledgeAlertApiRequest) *AlertsApi_AcknowledgeAlert_Call {
+func (_c *AlertsApi_AcknowledgeAlert_Call) RunAndReturn(run func(context.Context, string, string, *admin.AcknowledgeAlert) admin.AcknowledgeAlertApiRequest) *AlertsApi_AcknowledgeAlert_Call {
 	_c.Call.Return(run)
 	return _c
 }

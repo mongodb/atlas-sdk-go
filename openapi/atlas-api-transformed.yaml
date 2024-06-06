@@ -12,7 +12,7 @@ info:
 
     curl --user "{PUBLIC-KEY}:{PRIVATE-KEY}" \
       --digest \
-      --header "Accept: application/vnd.atlas.2023-11-15+json" \
+      --header "Accept: application/vnd.atlas.2024-05-30+json" \
       -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/dbAccessHistory/clusters/{clusterName}?pretty=true"
     ```
 
@@ -24,7 +24,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 3240ec50f60cc06b8ca6774011cdf6e5f75d69d8
+  x-xgen-sha: 725a0afacc9b395b70f662b50b85087abdaec19d
 servers:
   - url: https://cloud.mongodb.com
 tags:
@@ -997,7 +997,7 @@ paths:
         logical collections that support an application environment, workload,
         or both. Each project can have its own users, teams, security, tags, and
         alert settings. To use this resource, the requesting API Key must have
-        the Read Write role.
+        the Organization Read Only role or higher.
       operationId: listProjects
       parameters:
         - $ref: "#/components/parameters/includeCount"
@@ -1923,7 +1923,7 @@ paths:
         Project Owner role.
 
 
-        This resource remains under revision and may change.
+        This resource remains under revision and may change. Deprecated versions: v2-{2023-01-01}
       operationId: acknowledgeAlert
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -1940,18 +1940,18 @@ paths:
             pattern: ^([a-f0-9]{24})$
       requestBody:
         content:
-          application/vnd.atlas.2023-01-01+json:
+          application/vnd.atlas.2024-05-30+json:
             schema:
-              $ref: "#/components/schemas/AlertViewForNdsGroup"
-        description: Confirm one alert.
+              $ref: "#/components/schemas/AcknowledgeAlert"
+        description: Acknowledges or unacknowledges one alert.
         required: true
       responses:
         "200":
           content:
-            application/vnd.atlas.2023-01-01+json:
+            application/vnd.atlas.2024-05-30+json:
               schema:
                 $ref: "#/components/schemas/AlertViewForNdsGroup"
-              x-xgen-version: 2023-01-01
+              x-xgen-version: 2024-05-30
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
@@ -2333,9 +2333,9 @@ paths:
         - AWS Clusters DNS
   "/api/atlas/v2/groups/{groupId}/backup/exportBuckets":
     get:
-      description: Returns all AWS S3 buckets associated with the specified project.
-        To use this resource, the requesting API Key must have the Project Read
-        Only role.
+      description: "Returns all AWS S3 buckets and Azure Blob Storages associated with
+        the specified project. To use this resource, the requesting API Key must
+        have the Project Read Only role. Deprecated versions: v2-{2023-01-01}"
       operationId: listExportBuckets
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -2345,10 +2345,10 @@ paths:
       responses:
         "200":
           content:
-            application/vnd.atlas.2023-01-01+json:
+            application/vnd.atlas.2024-05-30+json:
               schema:
-                $ref: "#/components/schemas/PaginatedBackupSnapshotExportBucket"
-              x-xgen-version: 2023-01-01
+                $ref: "#/components/schemas/PaginatedBackupSnapshotExportBuckets"
+              x-xgen-version: 2024-05-30
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
@@ -2356,30 +2356,34 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return All AWS S3 Buckets Used for Cloud Backup Snapshot Exports
+      summary: Return All AWS S3 Buckets and Azure Blob Storages Used for Cloud Backup
+        Snapshot Exports
       tags:
         - Cloud Backups
     post:
-      description: Grants MongoDB Cloud access to the specified AWS S3 bucket. This
-        enables this bucket to receive Atlas Cloud Backup snapshots. To use this
-        resource, the requesting API Key must have the Project Owner role.
+      description: "Grants MongoDB Cloud access to the specified AWS S3 bucket or
+        Azure Blob Storage. This enables this bucket to receive Atlas Cloud
+        Backup snapshots. To use this resource, the requesting API Key must have
+        the Project Owner role. Deprecated versions: v2-{2023-01-01}"
       operationId: createExportBucket
       parameters:
         - $ref: "#/components/parameters/groupId"
       requestBody:
         content:
-          application/vnd.atlas.2023-01-01+json:
+          application/vnd.atlas.2024-05-30+json:
             schema:
-              $ref: "#/components/schemas/DiskBackupSnapshotAWSExportBucket"
-        description: Grants MongoDB Cloud access to the specified AWS S3 bucket.
+              $ref: "#/components/schemas/DiskBackupSnapshotExportBucket"
+            x-xgen-version: 2024-05-30
+        description: Grants MongoDB Cloud access to the specified AWS S3 bucket or Azure
+          Blob Storage.
         required: true
       responses:
         "200":
           content:
-            application/vnd.atlas.2023-01-01+json:
+            application/vnd.atlas.2024-05-30+json:
               schema:
-                $ref: "#/components/schemas/DiskBackupSnapshotAWSExportBucket"
-              x-xgen-version: 2023-01-01
+                $ref: "#/components/schemas/DiskBackupSnapshotExportBucket"
+              x-xgen-version: 2024-05-30
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
@@ -2391,7 +2395,8 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Grant Access to AWS S3 Bucket for Cloud Backup Snapshot Exports
+      summary: Grant Access to AWS S3 Bucket or Azure Blob Storage for Cloud Backup
+        Snapshot Exports
       tags:
         - Cloud Backups
   "/api/atlas/v2/groups/{groupId}/backup/exportBuckets/{exportBucketId}":
@@ -2436,14 +2441,14 @@ paths:
       tags:
         - Cloud Backups
     get:
-      description: Returns one AWS S3 bucket associated with the specified project. To
-        use this resource, the requesting API Key must have the Project Read
-        Only role.
+      description: "Returns one AWS S3 bucket or Azure Blob Storage associated with
+        the specified project. To use this resource, the requesting API Key must
+        have the Project Read Only role. Deprecated versions: v2-{2023-01-01}"
       operationId: getExportBucket
       parameters:
         - $ref: "#/components/parameters/groupId"
-        - description: Unique string that identifies the AWS S3 bucket to which you export
-            your snapshots.
+        - description: Unique string that identifies the AWS S3 bucket or Azure Blob
+            Storage to which you export your snapshots.
           in: path
           name: exportBucketId
           required: true
@@ -2455,10 +2460,10 @@ paths:
       responses:
         "200":
           content:
-            application/vnd.atlas.2023-01-01+json:
+            application/vnd.atlas.2024-05-30+json:
               schema:
-                $ref: "#/components/schemas/DiskBackupSnapshotAWSExportBucket"
-              x-xgen-version: 2023-01-01
+                $ref: "#/components/schemas/DiskBackupSnapshotExportBucket"
+              x-xgen-version: 2024-05-30
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
@@ -2468,7 +2473,8 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return One AWS S3 Bucket Used for Cloud Backup Snapshot Exports
+      summary: Return One AWS S3 Bucket or Azure Blob Storage Used for Cloud Backup
+        Snapshot Exports
       tags:
         - Cloud Backups
   "/api/atlas/v2/groups/{groupId}/backupCompliancePolicy":
@@ -2581,7 +2587,7 @@ paths:
         content:
           application/vnd.atlas.2023-01-01+json:
             schema:
-              $ref: "#/components/schemas/CloudProviderAccessRole"
+              $ref: "#/components/schemas/CloudProviderAccessAWSIAMRoleRequest"
         description: Creates one role for the specified cloud provider.
         required: true
       responses:
@@ -2700,7 +2706,7 @@ paths:
         content:
           application/vnd.atlas.2023-01-01+json:
             schema:
-              $ref: "#/components/schemas/CloudProviderAccessRole"
+              $ref: "#/components/schemas/CloudProviderAccessAWSIAMRoleUpdateRequest"
         description: Grants access to the specified project for the specified access role.
         required: true
       responses:
@@ -2726,7 +2732,6 @@ paths:
         - Cloud Provider Access
   "/api/atlas/v2/groups/{groupId}/clusters":
     get:
-      deprecated: true
       description: "Returns the details for all clusters in the specific project to
         which you have access. Clusters contain a group of hosts that maintain
         the same data set. The response includes multi-cloud clusters. To use
@@ -2762,9 +2767,7 @@ paths:
       summary: Return All Clusters in One Project
       tags:
         - Clusters
-      x-sunset: 2026-03-01
     post:
-      deprecated: true
       description: "Creates one cluster in the specified project. Clusters contain a
         group of hosts that maintain the same data set. This resource can create
         multi-cloud clusters. Each project supports up to 25 database
@@ -2887,7 +2890,6 @@ paths:
       summary: Create One Cluster from One Project
       tags:
         - Clusters
-      x-sunset: 2026-03-01
   "/api/atlas/v2/groups/{groupId}/clusters/provider/regions":
     get:
       description: Returns the list of regions available for the specified cloud
@@ -3057,7 +3059,6 @@ paths:
       tags:
         - Clusters
     get:
-      deprecated: true
       description: "Returns the details for one cluster in the specified project.
         Clusters contain a group of hosts that maintain the same data set. The
         response includes multi-cloud clusters. To use this resource, the
@@ -3097,9 +3098,7 @@ paths:
       summary: Return One Cluster from One Project
       tags:
         - Clusters
-      x-sunset: 2026-03-01
     patch:
-      deprecated: true
       description: "Updates the details for one cluster in the specified project.
         Clusters contain a group of hosts that maintain the same data set. This
         resource can update multi-cloud clusters. To update a cluster's
@@ -3152,7 +3151,6 @@ paths:
       summary: Modify One Cluster from One Project
       tags:
         - Clusters
-      x-sunset: 2026-03-01
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/exports":
     get:
       description: Returns all Cloud Backup snapshot export jobs associated with the
@@ -4474,6 +4472,7 @@ paths:
         - Collection Level Metrics
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes":
     post:
+      deprecated: true
       description: Creates one Atlas Search index on the specified collection. Atlas
         Search indexes define the fields on which to create the index and the
         analyzers to use when creating the index. Only clusters running MongoDB
@@ -4482,7 +4481,7 @@ paths:
       externalDocs:
         description: Atlas Search Indexes
         url: https://dochub.mongodb.org/core/index-definitions-fts
-      operationId: createAtlasSearchIndex
+      operationId: createAtlasSearchIndexDeprecated
       parameters:
         - $ref: "#/components/parameters/groupId"
         - description: Name of the cluster that contains the collection on which to create
@@ -4521,8 +4520,10 @@ paths:
       summary: Create One Atlas Search Index
       tags:
         - Atlas Search
+      x-sunset: 2025-06-01
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes/{databaseName}/{collectionName}":
     get:
+      deprecated: true
       description: Returns all Atlas Search indexes on the specified collection. Atlas
         Search indexes contain the indexed fields and the analyzers used to
         create the indexes. To use this resource, the requesting API Key must
@@ -4530,7 +4531,7 @@ paths:
       externalDocs:
         description: Atlas Search Indexes
         url: https://dochub.mongodb.org/core/index-definitions-fts
-      operationId: listAtlasSearchIndexes
+      operationId: listAtlasSearchIndexesDeprecated
       parameters:
         - $ref: "#/components/parameters/groupId"
         - description: Name of the cluster that contains the collection with one or more
@@ -4576,15 +4577,17 @@ paths:
       summary: Return All Atlas Search Indexes for One Collection
       tags:
         - Atlas Search
+      x-sunset: 2025-06-01
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes/{indexId}":
     delete:
+      deprecated: true
       description: Removes one Atlas Search index that you identified with its unique
         ID. To use this resource, the requesting API Key must have the Project
         Data Access Admin role.
       externalDocs:
         description: Atlas Search Indexes
         url: https://dochub.mongodb.org/core/index-definitions-fts
-      operationId: deleteAtlasSearchIndex
+      operationId: deleteAtlasSearchIndexDeprecated
       parameters:
         - $ref: "#/components/parameters/groupId"
         - description: Name of the cluster that contains the database and collection with
@@ -4628,7 +4631,9 @@ paths:
       summary: Remove One Atlas Search Index
       tags:
         - Atlas Search
+      x-sunset: 2025-06-01
     get:
+      deprecated: true
       description: Returns one Atlas Search index in the specified project. You
         identify this index using its unique ID. Atlas Search index contains the
         indexed fields and the analyzers used to create the index. To use this
@@ -4637,7 +4642,7 @@ paths:
       externalDocs:
         description: Atlas Search Indexes
         url: https://dochub.mongodb.org/core/index-definitions-fts
-      operationId: getAtlasSearchIndex
+      operationId: getAtlasSearchIndexDeprecated
       parameters:
         - $ref: "#/components/parameters/groupId"
         - description: Name of the cluster that contains the collection with one or more
@@ -4681,7 +4686,9 @@ paths:
       summary: Return One Atlas Search Index
       tags:
         - Atlas Search
+      x-sunset: 2025-06-01
     patch:
+      deprecated: true
       description: Updates one Atlas Search index that you identified with its unique
         ID. Atlas Search indexes define the fields on which to create the index
         and the analyzers to use when creating the index. To use this resource,
@@ -4689,7 +4696,7 @@ paths:
       externalDocs:
         description: Atlas Search Indexes
         url: https://dochub.mongodb.org/core/index-definitions-fts
-      operationId: updateAtlasSearchIndex
+      operationId: updateAtlasSearchIndexDeprecated
       parameters:
         - $ref: "#/components/parameters/groupId"
         - description: Name of the cluster that contains the collection whose Atlas Search
@@ -4741,6 +4748,7 @@ paths:
       summary: Update One Atlas Search Index
       tags:
         - Atlas Search
+      x-sunset: 2025-06-01
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites":
     get:
       description: "Returns one managed namespace within the specified global cluster.
@@ -5864,11 +5872,13 @@ paths:
             minLength: 1
             pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
-        "200":
+        "204":
           content:
-            application/vnd.atlas.2023-01-01+json:
-              x-xgen-version: 2023-01-01
-          description: OK
+            application/vnd.atlas.2024-05-30+json:
+              schema:
+                $ref: "#/components/schemas/NoBody"
+              x-xgen-version: 2024-05-30
+          description: This endpoint does not return a response body.
         "400":
           $ref: "#/components/responses/badRequest"
         "404":
@@ -5881,7 +5891,8 @@ paths:
       tags:
         - Atlas Search
     get:
-      description: Return the Search Nodes for the specified cluster.
+      description: "Return the Search Nodes for the specified cluster. Deprecated
+        versions: v2-{2023-01-01}"
       operationId: getAtlasSearchDeployment
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -5897,10 +5908,10 @@ paths:
       responses:
         "200":
           content:
-            application/vnd.atlas.2023-01-01+json:
+            application/vnd.atlas.2024-05-30+json:
               schema:
                 $ref: "#/components/schemas/ApiSearchDeploymentResponse"
-              x-xgen-version: 2023-01-01
+              x-xgen-version: 2024-05-30
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
@@ -5914,7 +5925,8 @@ paths:
       tags:
         - Atlas Search
     patch:
-      description: Updates the Search Nodes for the specified cluster.
+      description: "Updates the Search Nodes for the specified cluster. Deprecated
+        versions: v2-{2023-01-01}"
       operationId: updateAtlasSearchDeployment
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -5929,7 +5941,7 @@ paths:
             pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
-          application/vnd.atlas.2023-01-01+json:
+          application/vnd.atlas.2024-05-30+json:
             schema:
               $ref: "#/components/schemas/ApiSearchDeploymentRequest"
         description: Updates the Search Nodes for the specified cluster.
@@ -5937,15 +5949,17 @@ paths:
       responses:
         "200":
           content:
-            application/vnd.atlas.2023-01-01+json:
+            application/vnd.atlas.2024-05-30+json:
               schema:
                 $ref: "#/components/schemas/ApiSearchDeploymentResponse"
-              x-xgen-version: 2023-01-01
+              x-xgen-version: 2024-05-30
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
         "404":
           $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
       security:
@@ -5969,18 +5983,304 @@ paths:
             pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
-          application/vnd.atlas.2023-01-01+json:
+          application/vnd.atlas.2024-05-30+json:
             schema:
               $ref: "#/components/schemas/ApiSearchDeploymentRequest"
         description: Creates Search Nodes for the specified cluster.
         required: true
       responses:
-        "200":
+        "201":
           content:
-            application/vnd.atlas.2023-01-01+json:
+            application/vnd.atlas.2024-05-30+json:
               schema:
                 $ref: "#/components/schemas/ApiSearchDeploymentResponse"
-              x-xgen-version: 2023-01-01
+              x-xgen-version: 2024-05-30
+          description: Created
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Create Search Nodes
+      tags:
+        - Atlas Search
+  "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes":
+    get:
+      description: Returns all Atlas Search indexes on the specified cluster. Atlas
+        Search indexes contain the indexed fields and the analyzers used to
+        create the indexes. To use this resource, the requesting API Key must
+        have the Project Data Access Read Write role.
+      externalDocs:
+        description: Atlas Search Indexes
+        url: https://dochub.mongodb.org/core/index-definitions-fts
+      operationId: listAtlasSearchIndexesCluster
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Name of the cluster that contains the collection with one or more
+            Atlas Search indexes.
+          in: path
+          name: clusterName
+          required: true
+          schema:
+            type: string
+            maxLength: 64
+            minLength: 1
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-05-30+json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/SearchIndexResponse"
+              x-xgen-version: 2024-05-30
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+        "503":
+          content:
+            application/vnd.atlas.2024-05-30+json:
+              schema:
+                $ref: "#/components/schemas/ApiError"
+          description: Service Unavailable.
+      security:
+        - DigestAuth: []
+      summary: Return All Atlas Search Indexes for One Cluster
+      tags:
+        - Atlas Search
+    post:
+      description: Creates one Atlas Search index on the specified collection. Atlas
+        Search indexes define the fields on which to create the index and the
+        analyzers to use when creating the index. Only clusters running MongoDB
+        v4.2 or later can use Atlas Search. To use this resource, the requesting
+        API Key must have the Project Data Access Admin role.
+      externalDocs:
+        description: Atlas Search Indexes
+        url: https://dochub.mongodb.org/core/index-definitions-fts
+      operationId: createAtlasSearchIndex
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Name of the cluster that contains the collection on which to create
+            an Atlas Search index.
+          in: path
+          name: clusterName
+          required: true
+          schema:
+            type: string
+            maxLength: 64
+            minLength: 1
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+      requestBody:
+        content:
+          application/vnd.atlas.2024-05-30+json:
+            schema:
+              $ref: "#/components/schemas/SearchIndexCreateRequest"
+        description: Creates one Atlas Search index on the specified collection.
+        required: true
+      responses:
+        "201":
+          content:
+            application/vnd.atlas.2024-05-30+json:
+              schema:
+                $ref: "#/components/schemas/SearchIndexResponse"
+              x-xgen-version: 2024-05-30
+          description: Created
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Create One Atlas Search Index
+      tags:
+        - Atlas Search
+  "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{databaseName}/{collectionName}":
+    get:
+      description: Returns all Atlas Search indexes on the specified collection. Atlas
+        Search indexes contain the indexed fields and the analyzers used to
+        create the indexes. To use this resource, the requesting API Key must
+        have the Project Data Access Read Write role.
+      externalDocs:
+        description: Atlas Search Indexes
+        url: https://dochub.mongodb.org/core/index-definitions-fts
+      operationId: listAtlasSearchIndexes
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Name of the cluster that contains the collection with one or more
+            Atlas Search indexes.
+          in: path
+          name: clusterName
+          required: true
+          schema:
+            type: string
+            maxLength: 64
+            minLength: 1
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+        - description: Name of the collection that contains one or more Atlas Search
+            indexes.
+          in: path
+          name: collectionName
+          required: true
+          schema:
+            type: string
+        - description: Label that identifies the database that contains the collection
+            with one or more Atlas Search indexes.
+          in: path
+          name: databaseName
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-05-30+json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/SearchIndexResponse"
+              x-xgen-version: 2024-05-30
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+        "503":
+          content:
+            application/vnd.atlas.2024-05-30+json:
+              schema:
+                $ref: "#/components/schemas/ApiError"
+          description: Service Unavailable.
+      security:
+        - DigestAuth: []
+      summary: Return All Atlas Search Indexes for One Collection
+      tags:
+        - Atlas Search
+  "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{databaseName}/{collectionName}/{indexName}":
+    delete:
+      description: Removes one Atlas Search index that you identified with its
+        database, collection, and name. To use this resource, the requesting API
+        key must have the Project Data Access Admin role. This deletion is
+        eventually consistent.
+      externalDocs:
+        description: Atlas Search Indexes
+        url: https://dochub.mongodb.org/core/index-definitions-fts
+      operationId: deleteAtlasSearchIndexByName
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Name of the cluster that contains the database and collection with
+            one or more Application Search indexes.
+          in: path
+          name: clusterName
+          required: true
+          schema:
+            type: string
+            maxLength: 64
+            minLength: 1
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+        - description: Name of the collection that contains one or more Atlas Search
+            indexes.
+          in: path
+          name: collectionName
+          required: true
+          schema:
+            type: string
+        - description: Label that identifies the database that contains the collection
+            with one or more Atlas Search indexes.
+          in: path
+          name: databaseName
+          required: true
+          schema:
+            type: string
+        - description: Name of the Atlas Search index to delete.
+          in: path
+          name: indexName
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          content:
+            application/vnd.atlas.2024-05-30+json:
+              schema:
+                $ref: "#/components/schemas/NoBody"
+              x-xgen-version: 2024-05-30
+          description: This endpoint does not return a response body.
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Remove One Atlas Search Index by Name
+      tags:
+        - Atlas Search
+    get:
+      description: Returns one Atlas Search index in the specified project. You
+        identify this index using its database, collection and name. Atlas
+        Search index contains the indexed fields and the analyzers used to
+        create the index. To use this resource, the requesting API Key must have
+        the Project Data Access Read Write role.
+      externalDocs:
+        description: Atlas Search Indexes
+        url: https://dochub.mongodb.org/core/index-definitions-fts
+      operationId: getAtlasSearchIndexByName
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Name of the cluster that contains the collection with one or more
+            Atlas Search indexes.
+          in: path
+          name: clusterName
+          required: true
+          schema:
+            type: string
+            maxLength: 64
+            minLength: 1
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+        - description: Name of the collection that contains one or more Atlas Search
+            indexes.
+          in: path
+          name: collectionName
+          required: true
+          schema:
+            type: string
+        - description: Label that identifies the database that contains the collection
+            with one or more Atlas Search indexes.
+          in: path
+          name: databaseName
+          required: true
+          schema:
+            type: string
+        - description: Name of the Atlas Search index to return.
+          in: path
+          name: indexName
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-05-30+json:
+              schema:
+                $ref: "#/components/schemas/SearchIndexResponse"
+              x-xgen-version: 2024-05-30
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
@@ -5990,7 +6290,248 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Create Search Nodes
+      summary: Return One Atlas Search Index by Name
+      tags:
+        - Atlas Search
+    patch:
+      description: Updates one Atlas Search index that you identified with its
+        database, collection name, and index name. Atlas Search indexes define
+        the fields on which to create the index and the analyzers to use when
+        creating the index. To use this resource, the requesting API Key must
+        have the Project Data Access Admin role.
+      externalDocs:
+        description: Atlas Search Indexes
+        url: https://dochub.mongodb.org/core/index-definitions-fts
+      operationId: updateAtlasSearchIndexByName
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Name of the cluster that contains the collection whose Atlas Search
+            index you want to update.
+          in: path
+          name: clusterName
+          required: true
+          schema:
+            type: string
+            maxLength: 64
+            minLength: 1
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+        - description: Name of the collection that contains one or more Atlas Search
+            indexes.
+          in: path
+          name: collectionName
+          required: true
+          schema:
+            type: string
+        - description: Label that identifies the database that contains the collection
+            with one or more Atlas Search indexes.
+          in: path
+          name: databaseName
+          required: true
+          schema:
+            type: string
+        - description: Name of the Atlas Search index to update.
+          in: path
+          name: indexName
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/vnd.atlas.2024-05-30+json:
+            schema:
+              $ref: "#/components/schemas/SearchIndexUpdateRequest"
+        description: Details to update the Atlas Search index with.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-05-30+json:
+              schema:
+                $ref: "#/components/schemas/SearchIndexResponse"
+              x-xgen-version: 2024-05-30
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Update One Atlas Search Index By Name
+      tags:
+        - Atlas Search
+  "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{indexId}":
+    delete:
+      description: Removes one Atlas Search index that you identified with its unique
+        ID. To use this resource, the requesting API key must have the Project
+        Data Access Admin role. This deletion is eventually consistent.
+      externalDocs:
+        description: Atlas Search Indexes
+        url: https://dochub.mongodb.org/core/index-definitions-fts
+      operationId: deleteAtlasSearchIndex
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Name of the cluster that contains the database and collection with
+            one or more Application Search indexes.
+          in: path
+          name: clusterName
+          required: true
+          schema:
+            type: string
+            maxLength: 64
+            minLength: 1
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+        - description: Unique 24-hexadecimal digit string that identifies the Atlas Search
+            index. Use the [Get All Atlas Search Indexes for a Collection
+            API](https://docs.atlas.mongodb.com/reference/api/fts-indexes-get-all/)
+            endpoint to find the IDs of all Atlas Search indexes.
+          in: path
+          name: indexId
+          required: true
+          schema:
+            type: string
+            maxLength: 24
+            minLength: 24
+            pattern: ^([a-f0-9]{24})$
+      responses:
+        "204":
+          content:
+            application/vnd.atlas.2024-05-30+json:
+              schema:
+                $ref: "#/components/schemas/NoBody"
+              x-xgen-version: 2024-05-30
+          description: This endpoint does not return a response body.
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Remove One Atlas Search Index by Id
+      tags:
+        - Atlas Search
+    get:
+      description: Returns one Atlas Search index in the specified project. You
+        identify this index using its unique ID. Atlas Search index contains the
+        indexed fields and the analyzers used to create the index. To use this
+        resource, the requesting API Key must have the Project Data Access Read
+        Write role.
+      externalDocs:
+        description: Atlas Search Indexes
+        url: https://dochub.mongodb.org/core/index-definitions-fts
+      operationId: getAtlasSearchIndex
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Name of the cluster that contains the collection with one or more
+            Atlas Search indexes.
+          in: path
+          name: clusterName
+          required: true
+          schema:
+            type: string
+            maxLength: 64
+            minLength: 1
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+        - description: Unique 24-hexadecimal digit string that identifies the Application
+            Search
+            [index](https://dochub.mongodb.org/core/index-definitions-fts). Use
+            the [Get All Application Search Indexes for a Collection
+            API](https://docs.atlas.mongodb.com/reference/api/fts-indexes-get-all/)
+            endpoint to find the IDs of all Application Search indexes.
+          in: path
+          name: indexId
+          required: true
+          schema:
+            type: string
+            maxLength: 24
+            minLength: 24
+            pattern: ^([a-f0-9]{24})$
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-05-30+json:
+              schema:
+                $ref: "#/components/schemas/SearchIndexResponse"
+              x-xgen-version: 2024-05-30
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+        "503":
+          content:
+            application/vnd.atlas.2024-05-30+json:
+              schema:
+                $ref: "#/components/schemas/ApiError"
+          description: Service Unavailable.
+      security:
+        - DigestAuth: []
+      summary: Return One Atlas Search Index by ID
+      tags:
+        - Atlas Search
+    patch:
+      description: Updates one Atlas Search index that you identified with its unique
+        ID. Atlas Search indexes define the fields on which to create the index
+        and the analyzers to use when creating the index. To use this resource,
+        the requesting API Key must have the Project Data Access Admin role.
+      externalDocs:
+        description: Atlas Search Indexes
+        url: https://dochub.mongodb.org/core/index-definitions-fts
+      operationId: updateAtlasSearchIndex
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Name of the cluster that contains the collection whose Atlas Search
+            index you want to update.
+          in: path
+          name: clusterName
+          required: true
+          schema:
+            type: string
+            maxLength: 64
+            minLength: 1
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+        - description: Unique 24-hexadecimal digit string that identifies the Atlas Search
+            [index](https://dochub.mongodb.org/core/index-definitions-fts). Use
+            the [Get All Atlas Search Indexes for a Collection
+            API](https://docs.atlas.mongodb.com/reference/api/fts-indexes-get-all/)
+            endpoint to find the IDs of all Atlas Search indexes.
+          in: path
+          name: indexId
+          required: true
+          schema:
+            type: string
+            maxLength: 24
+            minLength: 24
+            pattern: ^([a-f0-9]{24})$
+      requestBody:
+        content:
+          application/vnd.atlas.2024-05-30+json:
+            schema:
+              $ref: "#/components/schemas/SearchIndexUpdateRequest"
+        description: Details to update on the Atlas Search index.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-05-30+json:
+              schema:
+                $ref: "#/components/schemas/SearchIndexResponse"
+              x-xgen-version: 2024-05-30
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Update One Atlas Search Index By ID
       tags:
         - Atlas Search
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/snapshotSchedule":
@@ -6406,6 +6947,7 @@ paths:
         - description: List that contains the metrics that you want to retrieve for the
             associated data series. If you don't set this parameter, this
             resource returns data series for all Coll Stats Latency metrics.
+          explode: true
           in: query
           name: metrics
           schema:
@@ -9211,24 +9753,25 @@ paths:
 
          You can use this API endpoint for push live migrations only. Your API Key must have the Organization Owner role to successfully call this resource.
 
-         **NOTE**: Migrating time-series collections is not yet supported on MongoDB 6.0 or higher. Migrations on MongoDB 6.0 or higher will skip any time-series collections on the source cluster.
+         **NOTE**: Migrating time-series collections is not yet supported on MongoDB 6.0 or higher. Migrations on MongoDB 6.0 or higher will skip any time-series collections on the source cluster. Deprecated versions: v2-{2023-01-01}
       operationId: createPushMigration
       parameters:
         - $ref: "#/components/parameters/groupId"
       requestBody:
         content:
-          application/vnd.atlas.2023-01-01+json:
+          application/vnd.atlas.2024-05-30+json:
             schema:
               $ref: "#/components/schemas/LiveMigrationRequest"
+            x-xgen-version: 2024-05-30
         description: One migration to be created.
         required: true
       responses:
         "201":
           content:
-            application/vnd.atlas.2023-01-01+json:
+            application/vnd.atlas.2024-05-30+json:
               schema:
                 $ref: "#/components/schemas/LiveMigrationResponse"
-              x-xgen-version: 2023-01-01
+              x-xgen-version: 2024-05-30
           description: Created
         "400":
           $ref: "#/components/responses/badRequest"
@@ -9247,28 +9790,29 @@ paths:
         - Cloud Migration Service
   "/api/atlas/v2/groups/{groupId}/liveMigrations/validate":
     post:
-      description: Verifies whether the provided credentials, available disk space,
+      description: "Verifies whether the provided credentials, available disk space,
         MongoDB versions, and so on meet the requirements of the migration
         request. If the check passes, the migration can proceed. Your API Key
         must have the Organization Owner role to successfully call this
-        resource.
+        resource. Deprecated versions: v2-{2023-01-01}"
       operationId: validateMigration
       parameters:
         - $ref: "#/components/parameters/groupId"
       requestBody:
         content:
-          application/vnd.atlas.2023-01-01+json:
+          application/vnd.atlas.2024-05-30+json:
             schema:
               $ref: "#/components/schemas/LiveMigrationRequest"
+            x-xgen-version: 2024-05-30
         description: One migration to be validated.
         required: true
       responses:
         "200":
           content:
-            application/vnd.atlas.2023-01-01+json:
+            application/vnd.atlas.2024-05-30+json:
               schema:
                 $ref: "#/components/schemas/LiveImportValidation"
-              x-xgen-version: 2023-01-01
+              x-xgen-version: 2024-05-30
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
@@ -9552,6 +10096,29 @@ paths:
       summary: Defer One Maintenance Window for One Project
       tags:
         - Maintenance Windows
+  "/api/atlas/v2/groups/{groupId}/managedSlowMs":
+    get:
+      description: Get whether the Managed Slow MS feature is enabled.
+      operationId: getManagedSlowMs
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              x-xgen-version: 2023-01-01
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Return Managed Slow MS enabled
+      tags:
+        - Performance Advisor
   "/api/atlas/v2/groups/{groupId}/managedSlowMs/disable":
     delete:
       description: Disables the slow operation threshold that MongoDB Cloud calculated
@@ -13694,6 +14261,45 @@ paths:
       summary: Update Project Roles for One MongoDB Cloud User
       tags:
         - Projects
+  "/api/atlas/v2/groups/{groupId}:migrate":
+    post:
+      description: Migrates a project from its current organization to another
+        organization. All project users and their roles will be copied to the
+        same project in the destination organization. You must include an
+        organization API key with the Organization Owner role for the
+        destination organization to verify access to the destination
+        organization when you authenticate with Programmatic API Keys.
+        Otherwise, the requesting user must have the Organization Owner role in
+        both organizations. To use this resource, the requesting API Key must
+        have the Organization Owner role.
+      operationId: migrateProjectToAnotherOrg
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+      requestBody:
+        content:
+          application/vnd.atlas.2024-05-30+json:
+            schema:
+              $ref: "#/components/schemas/GroupMigrationRequest"
+        description: Migrates a project from its current organization to another
+          organization.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-05-30+json:
+              schema:
+                $ref: "#/components/schemas/Group"
+              x-xgen-version: 2024-05-30
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Migrate One Project to Another Organization
+      tags:
+        - Projects
   /api/atlas/v2/orgs:
     get:
       description: Returns all organizations to which the requesting API Key has
@@ -16155,6 +16761,44 @@ components:
             Management Service (KMS) encryption key can encrypt and decrypt
             data.
           readOnly: true
+    AcknowledgeAlert:
+      type: object
+      description: Acknowledging an alert prevents successive notifications. Specify
+        the acknowledgeUntil date and optional comment or unacknowledgeAlert
+        boolean.
+      properties:
+        acknowledgedUntil:
+          type: string
+          format: date-time
+          description: Date and time until which this alert has been acknowledged. This
+            parameter expresses its value in the <a
+            href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank"
+            rel="noopener noreferrer">ISO 8601</a> timestamp format in UTC. The
+            resource returns this parameter if a MongoDB User previously
+            acknowledged this alert.
+        acknowledgementComment:
+          type: string
+          description: Comment that a MongoDB Cloud user submitted when acknowledging the
+            alert.
+          example: Expiration on 3/19.  Silencing for 7days.
+          maxLength: 200
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        unacknowledgeAlert:
+          type: boolean
+          description: Flag that indicates to unacknowledge a previously acknowledged
+            alert. By default this value is set to false. If set to true, it
+            will override the acknowledgedUntil parameter.
+      title: Acknowledge Alert
     AddUserToTeam:
       type: object
       properties:
@@ -16433,7 +17077,7 @@ components:
             - To acknowledge this alert forever, set the parameter value to 100 years in the future.
 
 
-            - To unacknowledge a previously acknowledged alert, set the parameter value to a date in the past.
+            - To unacknowledge a previously acknowledged alert, do not set this parameter value.
         acknowledgementComment:
           type: string
           description: Comment that a MongoDB Cloud user submitted when acknowledging the
@@ -17295,6 +17939,50 @@ components:
           pattern: ^[\p{L}\p{N}\-_.(),:&@+']{1,64}$
       required:
         - name
+    AtlasSearchAnalyzer:
+      type: object
+      properties:
+        charFilters:
+          type: array
+          description: Filters that examine text one character at a time and perform
+            filtering operations.
+          items:
+            $ref: "#/components/schemas/BasicDBObject"
+        name:
+          type: string
+          description: >-
+            Name that identifies the custom analyzer. Names must be unique
+            within an index, and must not start with any of the following
+            strings:
+
+            - `lucene.`
+
+            - `builtin.`
+
+            - `mongodb.`
+        tokenFilters:
+          type: array
+          description: >-
+            Filter that performs operations such as:
+
+
+            - Stemming, which reduces related words, such as "talking", "talked", and "talks" to their root word "talk".
+
+
+            - Redaction, which is the removal of sensitive information from public documents.
+          items:
+            $ref: "#/components/schemas/BasicDBObject"
+        tokenizer:
+          type: object
+          additionalProperties:
+            description: Tokenizer that you want to use to create tokens. Tokens determine
+              how Atlas Search splits up text into discrete chunks for indexing.
+          description: Tokenizer that you want to use to create tokens. Tokens determine
+            how Atlas Search splits up text into discrete chunks for indexing.
+      required:
+        - name
+        - tokenizer
+      title: Atlas Search Analyzer
     AuditLog:
       type: object
       properties:
@@ -18513,11 +19201,7 @@ components:
       description: Name of the cloud provider region hosting Atlas Stream Processing.
     BasicDBObject:
       type: object
-      additionalProperties:
-        description: Fields to index for vector search.
-        title: Field
-      description: Fields to index for vector search.
-      title: Field
+      additionalProperties: {}
     BiConnector:
       type: object
       description: Settings needed to configure the MongoDB Connector for Business
@@ -19035,6 +19719,8 @@ components:
         clusterId:
           type: string
           description: Unique 24-hexadecimal character string that identifies the cluster.
+            Each ``clusterId`` is used only once across all MongoDB Cloud
+            deployments.
           maxLength: 24
           minLength: 24
           pattern: ^([a-f0-9]{24})$
@@ -19332,6 +20018,122 @@ components:
           minLength: 24
           pattern: ^([a-f0-9]{24})$
           readOnly: true
+    CloudProviderAccessAWSIAMRoleRequest:
+      type: object
+      description: Details that describe the features linked to the Amazon Web
+        Services (AWS) Identity and Access Management (IAM) role.
+      properties:
+        atlasAWSAccountArn:
+          type: string
+          description: Amazon Resource Name that identifies the Amazon Web Services (AWS)
+            user account that MongoDB Cloud uses when it assumes the Identity
+            and Access Management (IAM) role.
+          example: arn:aws:iam::772401394250:role/my-test-aws-role
+          maxLength: 2048
+          minLength: 20
+          readOnly: true
+        atlasAssumedRoleExternalId:
+          type: string
+          format: uuid
+          description: Unique external ID that MongoDB Cloud uses when it assumes the IAM
+            role in your Amazon Web Services (AWS) account.
+          readOnly: true
+        authorizedDate:
+          type: string
+          format: date-time
+          description: Date and time when someone authorized this role for the specified
+            cloud service provider. This parameter expresses its value in the
+            ISO 8601 timestamp format in UTC.
+          readOnly: true
+        createdDate:
+          type: string
+          format: date-time
+          description: Date and time when someone created this role for the specified
+            cloud service provider. This parameter expresses its value in the
+            ISO 8601 timestamp format in UTC.
+          readOnly: true
+        featureUsages:
+          type: array
+          description: List that contains application features associated with this Amazon
+            Web Services (AWS) Identity and Access Management (IAM) role.
+          items:
+            $ref: "#/components/schemas/CloudProviderAccessFeatureUsage"
+          readOnly: true
+        providerName:
+          type: string
+          description: Human-readable label that identifies the cloud provider of the role.
+        roleId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the role.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+      required:
+        - providerName
+    CloudProviderAccessAWSIAMRoleUpdateRequest:
+      type: object
+      description: Details that describe the features linked to the Amazon Web
+        Services (AWS) Identity and Access Management (IAM) role.
+      properties:
+        atlasAWSAccountArn:
+          type: string
+          description: Amazon Resource Name that identifies the Amazon Web Services (AWS)
+            user account that MongoDB Cloud uses when it assumes the Identity
+            and Access Management (IAM) role.
+          example: arn:aws:iam::772401394250:role/my-test-aws-role
+          maxLength: 2048
+          minLength: 20
+          readOnly: true
+        atlasAssumedRoleExternalId:
+          type: string
+          format: uuid
+          description: Unique external ID that MongoDB Cloud uses when it assumes the IAM
+            role in your Amazon Web Services (AWS) account.
+          readOnly: true
+        authorizedDate:
+          type: string
+          format: date-time
+          description: Date and time when someone authorized this role for the specified
+            cloud service provider. This parameter expresses its value in the
+            ISO 8601 timestamp format in UTC.
+          readOnly: true
+        createdDate:
+          type: string
+          format: date-time
+          description: Date and time when someone created this role for the specified
+            cloud service provider. This parameter expresses its value in the
+            ISO 8601 timestamp format in UTC.
+          readOnly: true
+        featureUsages:
+          type: array
+          description: List that contains application features associated with this Amazon
+            Web Services (AWS) Identity and Access Management (IAM) role.
+          items:
+            $ref: "#/components/schemas/CloudProviderAccessFeatureUsage"
+          readOnly: true
+        iamAssumedRoleArn:
+          type: string
+          description: Amazon Resource Name (ARN) that identifies the Amazon Web Services
+            (AWS) Identity and Access Management (IAM) role that MongoDB Cloud
+            assumes when it accesses resources in your AWS account.
+          example: arn:aws:iam::123456789012:root
+          maxLength: 2048
+          minLength: 20
+        providerName:
+          type: string
+          description: Human-readable label that identifies the cloud provider of the role.
+        roleId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the role.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+      required:
+        - providerName
     CloudProviderAccessFeatureUsage:
       type: object
       description: MongoDB Cloud features associated with this Amazon Web Services
@@ -21760,9 +22562,7 @@ components:
           description: Collection on which this role applies.
         databaseName:
           type: string
-          description: Database against which the database user authenticates. Database
-            users must provide both a username and authentication database to
-            log into MongoDB.
+          description: Database to which the user is granted access privileges.
         roleName:
           type: string
           description: Human-readable label that identifies a group of privileges assigned
@@ -22555,8 +23355,9 @@ components:
             pattern: ^([a-f0-9]{24})$
             readOnly: true
           readOnly: true
-    DiskBackupSnapshotAWSExportBucket:
+    DiskBackupSnapshotExportBucket:
       type: object
+      description: Disk backup snapshot export bucket.
       properties:
         _id:
           type: string
@@ -22575,16 +23376,6 @@ components:
           type: string
           description: Human-readable label that identifies the cloud provider that stores
             this snapshot.
-        iamRoleId:
-          type: string
-          description: Unique 24-hexadecimal character string that identifies the <a
-            href='https://www.mongodb.com/docs/atlas/security/set-up-unified-aws-access/'
-            target='_blank'>Unified AWS Access role ID</a>  that MongoDB Cloud
-            uses to access the AWS S3 bucket.
-          example: 32b6e34b3d91647abb20e7b8
-          maxLength: 24
-          minLength: 24
-          pattern: ^([a-f0-9]{24})$
         links:
           type: array
           description: List of one or more Uniform Resource Locators (URLs) that point to
@@ -22596,6 +23387,34 @@ components:
           items:
             $ref: "#/components/schemas/Link"
           readOnly: true
+        iamRoleId:
+          type: string
+          description: Unique 24-hexadecimal character string that identifies the <a
+            href='https://www.mongodb.com/docs/atlas/security/set-up-unified-aws-access/'
+            target='_blank'>Unified AWS Access role ID</a>  that MongoDB Cloud
+            uses to access the AWS S3 bucket.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+        roleId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the Azure
+            Service Principal that MongoDB Cloud uses to access the Azure Blob
+            Storage.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+        serviceUrl:
+          type: string
+          description: Url that identifies the Azure Blob Storage Account.
+        tenantId:
+          type: string
+          description: UUID String that identifies the Azure Active Directory Tenant ID.
+          maxLength: 36
+          minLength: 32
+          pattern: ^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$
     DiskBackupSnapshotRestoreJob:
       type: object
       properties:
@@ -24252,6 +25071,36 @@ components:
             maintenance.
       required:
         - dayOfWeek
+    GroupMigrationRequest:
+      type: object
+      properties:
+        destinationOrgId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the organization
+            to move the specified project to.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        destinationOrgPrivateApiKey:
+          type: string
+          description: Unique string that identifies the private part of the [API
+            Key](https://dochub.mongodb.org/core/atlas-create-prog-api-key) used
+            to verify access to the destination organization. This parameter is
+            required only when you authenticate with Programmatic API Keys.
+          example: 55c3bbb6-b4bb-0be1-e66d20841f3e
+          readOnly: true
+        destinationOrgPublicApiKey:
+          type: string
+          description: Unique string that identifies the public part of the [API
+            Key](https://dochub.mongodb.org/core/atlas-create-prog-api-key) used
+            to verify access to the destination organization. This parameter is
+            required only when you authenticate with Programmatic API Keys.
+          example: zmmrboas
+          maxLength: 8
+          minLength: 8
+          readOnly: true
     GroupRole:
       type: object
       properties:
@@ -27416,6 +28265,16 @@ components:
             with this private endpoint.
       required:
         - endpointId
+    ProxyInfo:
+      type: object
+      description: VPC Proxy Information.
+      properties:
+        authKey:
+          type: string
+          description: Authentication key for the proxy.
+        dnsName:
+          type: string
+          description: DNS name to use to reach the proxy/s.
     PushBasedLogExportProject:
       type: object
       properties:
@@ -27713,6 +28572,223 @@ components:
           type: string
           description: Status of the sample dataset load job.
           readOnly: true
+    SearchIndexCreateRequest:
+      type: object
+      properties:
+        collectionName:
+          type: string
+          description: Label that identifies the collection to create an Atlas Search
+            index in.
+        database:
+          type: string
+          description: Label that identifies the database that contains the collection to
+            create an Atlas Search index in.
+        name:
+          type: string
+          description: Label that identifies this index. Within each namespace, names of
+            all indexes in the namespace must be unique.
+        type:
+          type: string
+          description: Type of the index. The default type is search.
+        definition:
+          $ref: "#/components/schemas/BaseSearchIndexCreateRequestDefinition"
+      required:
+        - collectionName
+        - database
+        - name
+    SearchIndexDefinitionVersion:
+      type: object
+      description: Object which includes the version number of the index definition
+        and the time that the index definition was created.
+      properties:
+        createdAt:
+          type: string
+          format: date-time
+          description: The time at which this index definition was created.
+        version:
+          type: integer
+          format: int64
+          description: The version number associated with this index definition when it
+            was created.
+      title: Search Index Definition Version
+    SearchIndexResponse:
+      type: object
+      properties:
+        collectionName:
+          type: string
+          description: Label that identifies the collection that contains one or more
+            Atlas Search indexes.
+        database:
+          type: string
+          description: Label that identifies the database that contains the collection
+            with one or more Atlas Search indexes.
+        indexID:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies this Atlas
+            Search index.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+        latestDefinition:
+          $ref: "#/components/schemas/BaseSearchIndexResponseLatestDefinition"
+        latestDefinitionVersion:
+          $ref: "#/components/schemas/SearchIndexDefinitionVersion"
+        name:
+          type: string
+          description: Label that identifies this index. Within each namespace, the names
+            of all indexes must be unique.
+        queryable:
+          type: boolean
+          description: Flag that indicates whether the index is queryable on all hosts.
+        status:
+          type: string
+          description: >
+            Condition of the search index when you made this request.
+
+             | Status | Index Condition |
+             |---|---|
+             | DELETING | The index is being deleted. |
+             | FAILED | The index build failed. Indexes can enter the FAILED state due to an invalid index definition. |
+             | STALE | The index is queryable but has stopped replicating data from the indexed collection. Searches on the index may return out-of-date data. |
+             | PENDING | Atlas has not yet started building the index. |
+             | BUILDING | Atlas is building or re-building the index after an edit. |
+             | READY | The index is ready and can support queries. |
+        statusDetail:
+          type: array
+          description: List of documents detailing index status on each host.
+          items:
+            $ref: "#/components/schemas/VectorSearchHostStatusDetail"
+        type:
+          type: string
+          description: Type of the index. The default type is search.
+        synonymMappingStatus:
+          type: string
+          description: Status that describes this index's synonym mappings. This status
+            appears only if the index has synonyms defined.
+        synonymMappingStatusDetail:
+          type: array
+          description: A list of documents describing the status of the index's synonym
+            mappings on each search host. Only appears if the index has synonyms
+            defined.
+          items:
+            type: object
+            additionalProperties:
+              $ref: "#/components/schemas/SynonymMappingStatusDetail"
+      title: Search Index Response
+    SearchIndexUpdateRequest:
+      type: object
+      properties:
+        definition:
+          type: object
+          description: The index definition to update the search index to.
+          properties:
+            analyzer:
+              type: string
+              default: lucene.standard
+              description: >-
+                Specific pre-defined method chosen to convert database field
+                text into searchable words. This conversion reduces the text of
+                fields into the smallest units of text. These units are called a
+                **term** or **token**. This process, known as tokenization,
+                involves making the following changes to the text in fields:
+
+
+                - extracting words
+
+                - removing punctuation
+
+                - removing accents
+
+                - changing to lowercase
+
+                - removing common words
+
+                - reducing words to their root form (stemming)
+
+                - changing words to their base form (lemmatization)
+                 MongoDB Cloud uses the process you select to build the Atlas Search index.
+              externalDocs:
+                description: Atlas Search Analyzers
+                url: https://dochub.mongodb.org/core/analyzers--fts
+            analyzers:
+              type: array
+              description: List of user-defined methods to convert database field text into
+                searchable words.
+              externalDocs:
+                description: Custom Atlas Search Analyzers
+                url: https://dochub.mongodb.org/core/custom-fts
+              items:
+                $ref: "#/components/schemas/AtlasSearchAnalyzer"
+            mappings:
+              $ref: "#/components/schemas/SearchMappings"
+            searchAnalyzer:
+              type: string
+              default: lucene.standard
+              description: Method applied to identify words when searching this index.
+            storedSource:
+              type: object
+              description: Flag that indicates whether to store all fields (true) on Atlas
+                Search. By default, Atlas doesn't store (false) the fields on
+                Atlas Search.  Alternatively, you can specify an object that
+                only contains the list of fields to store (include) or not store
+                (exclude) on Atlas Search. To learn more, see Stored Source
+                Fields.
+              example:
+                include | exclude:
+                  - field1
+                  - field2
+              externalDocs:
+                description: Stored Source Fields
+                url: https://dochub.mongodb.org/core/atlas-search-stored-source
+            synonyms:
+              type: array
+              description: Rule sets that map words to their synonyms in this index.
+              externalDocs:
+                description: Synonym Mapping
+                url: https://dochub.mongodb.org/core/fts-synonym-mappings
+              items:
+                $ref: "#/components/schemas/SearchSynonymMappingDefinition"
+            fields:
+              type: array
+              description: Settings that configure the fields, one per object, to index. You
+                must define at least one "vector" type field. You can optionally
+                define "filter" type fields also.
+              externalDocs:
+                description: Vector Search Fields
+                url: https://dochub.mongodb.org/core/avs-vector-type
+              items:
+                $ref: "#/components/schemas/BasicDBObject"
+      required:
+        - definition
+      title: Search Index Update Request
+    SearchMappings:
+      type: object
+      description: Index specifications for the collection's fields.
+      properties:
+        dynamic:
+          type: boolean
+          description: Flag that indicates whether the index uses dynamic or static
+            mappings. Required if **mappings.fields** is omitted.
+          externalDocs:
+            description: Dynamic or Static Mappings
+            url: https://dochub.mongodb.org/core/field-mapping-definition-fts#static-and-dynamic-mappings
+        fields:
+          type: object
+          additionalProperties:
+            description: One or more field specifications for the Atlas Search index.
+              Required if **mappings.dynamic** is omitted or set to **false**.
+            externalDocs:
+              description: Atlas Search Index
+              url: https://dochub.mongodb.org/core/index-definitions-fts
+            x-additionalPropertiesName: Field Name
+          description: One or more field specifications for the Atlas Search index.
+            Required if **mappings.dynamic** is omitted or set to **false**.
+          externalDocs:
+            description: Atlas Search Index
+            url: https://dochub.mongodb.org/core/index-definitions-fts
+          x-additionalPropertiesName: Field Name
+      title: Mappings
     SearchSynonymMappingDefinition:
       type: object
       description: Synonyms used for this full text index.
@@ -27724,8 +28800,8 @@ components:
             searched.
         name:
           type: string
-          description: Human-readable label that identifies the synonym definition. Each
-            **synonym.name** must be unique within the same index definition.
+          description: Label that identifies the synonym definition. Each **synonym.name**
+            must be unique within the same index definition.
         source:
           $ref: "#/components/schemas/SynonymSource"
       required:
@@ -28454,6 +29530,8 @@ components:
           example:
             debug: queue, msg, protocol
             group.protocol.type: consumer
+        proxyInfo:
+          $ref: "#/components/schemas/ProxyInfo"
         security:
           $ref: "#/components/schemas/StreamsKafkaSecurity"
       readOnly: true
@@ -28612,15 +29690,32 @@ components:
           description: Human-readable label that identifies the stream instance.
         streamConfig:
           $ref: "#/components/schemas/StreamConfig"
+    SynonymMappingStatusDetail:
+      type: object
+      description: Contains the status of the index's synonym mappings on each search
+        host. This field (and its subfields) only appear if the index has
+        synonyms defined.
+      properties:
+        message:
+          type: string
+          description: Optional message describing an error.
+        queryable:
+          type: boolean
+          description: Flag that indicates whether the synonym mapping is queryable on a
+            host.
+        status:
+          type: string
+          description: Status that describes this index's synonym mappings. This status
+            appears only if the index has synonyms defined.
+      title: Synonym Mapping Status Detail
     SynonymSource:
       type: object
-      description: Data set that stores the mapping one or more words map to one or
-        more synonyms of those words.
+      description: Data set that stores words and their applicable synonyms.
       properties:
         collection:
           type: string
-          description: Human-readable label that identifies the MongoDB collection that
-            stores words and their applicable synonyms.
+          description: Label that identifies the MongoDB collection that stores words and
+            their applicable synonyms.
       required:
         - collection
     SystemStatus:
@@ -29394,6 +30489,77 @@ components:
       required:
         - match
       title: User to Distinguished Name Mapping
+    VectorSearchHostStatusDetail:
+      type: object
+      properties:
+        hostname:
+          type: string
+          description: Hostname that corresponds to the status detail.
+        mainIndex:
+          $ref: "#/components/schemas/VectorSearchIndexStatusDetail"
+        queryable:
+          type: boolean
+          description: Flag that indicates whether the index is queryable on the host.
+        stagedIndex:
+          $ref: "#/components/schemas/VectorSearchIndexStatusDetail"
+        status:
+          type: string
+          description: >
+            Condition of the search index when you made this request.
+
+             | Status | Index Condition |
+             |---|---|
+             | DELETING | The index is being deleted. |
+             | FAILED | The index build failed. Indexes can enter the FAILED state due to an invalid index definition. |
+             | STALE | The index is queryable but has stopped replicating data from the indexed collection. Searches on the index may return out-of-date data. |
+             | PENDING | Atlas has not yet started building the index. |
+             | BUILDING | Atlas is building or re-building the index after an edit. |
+             | READY | The index is ready and can support queries. |
+      title: Vector Search Host Status Detail
+    VectorSearchIndexDefinition:
+      type: object
+      description: The vector search index definition set by the user.
+      properties:
+        fields:
+          type: array
+          description: Settings that configure the fields, one per object, to index. You
+            must define at least one "vector" type field. You can optionally
+            define "filter" type fields also.
+          externalDocs:
+            description: Vector Search Fields
+            url: https://dochub.mongodb.org/core/avs-vector-type
+          items:
+            $ref: "#/components/schemas/BasicDBObject"
+      title: Vector Search Index Definition
+    VectorSearchIndexStatusDetail:
+      type: object
+      description: Contains status information about a vector search index.
+      properties:
+        definition:
+          $ref: "#/components/schemas/VectorSearchIndexDefinition"
+        definitionVersion:
+          $ref: "#/components/schemas/SearchIndexDefinitionVersion"
+        message:
+          type: string
+          description: Optional message describing an error.
+        queryable:
+          type: boolean
+          description: Flag that indicates whether the index generation is queryable on
+            the host.
+        status:
+          type: string
+          description: >
+            Condition of the search index when you made this request.
+
+             | Status | Index Condition |
+             |---|---|
+             | DELETING | The index is being deleted. |
+             | FAILED | The index build failed. Indexes can enter the FAILED state due to an invalid index definition. |
+             | STALE | The index is queryable but has stopped replicating data from the indexed collection. Searches on the index may return out-of-date data. |
+             | PENDING | Atlas has not yet started building the index. |
+             | BUILDING | Atlas is building or re-building the index after an edit. |
+             | READY | The index is ready and can support queries. |
+      title: Vector Search Index Status Detail
     X509Certificate:
       type: object
       properties:
@@ -29511,6 +30677,160 @@ components:
           type: string
           description: Severity of the event.
       readOnly: true
+    BaseSearchIndexResponseLatestDefinition:
+      properties:
+        analyzer:
+          type: string
+          default: lucene.standard
+          description: >-
+            Specific pre-defined method chosen to convert database field text
+            into searchable words. This conversion reduces the text of fields
+            into the smallest units of text. These units are called a **term**
+            or **token**. This process, known as tokenization, involves making
+            the following changes to the text in fields:
+
+
+            - extracting words
+
+            - removing punctuation
+
+            - removing accents
+
+            - changing to lowercase
+
+            - removing common words
+
+            - reducing words to their root form (stemming)
+
+            - changing words to their base form (lemmatization)
+             MongoDB Cloud uses the process you select to build the Atlas Search index.
+          externalDocs:
+            description: Atlas Search Analyzers
+            url: https://dochub.mongodb.org/core/analyzers--fts
+        analyzers:
+          type: array
+          description: List of user-defined methods to convert database field text into
+            searchable words.
+          externalDocs:
+            description: Custom Atlas Search Analyzers
+            url: https://dochub.mongodb.org/core/custom-fts
+          items:
+            $ref: "#/components/schemas/AtlasSearchAnalyzer"
+        mappings:
+          $ref: "#/components/schemas/SearchMappings"
+        searchAnalyzer:
+          type: string
+          default: lucene.standard
+          description: Method applied to identify words when searching this index.
+        storedSource:
+          type: object
+          description: Flag that indicates whether to store all fields (true) on Atlas
+            Search. By default, Atlas doesn't store (false) the fields on Atlas
+            Search.  Alternatively, you can specify an object that only contains
+            the list of fields to store (include) or not store (exclude) on
+            Atlas Search. To learn more, see Stored Source Fields.
+          example:
+            include | exclude:
+              - field1
+              - field2
+          externalDocs:
+            description: Stored Source Fields
+            url: https://dochub.mongodb.org/core/atlas-search-stored-source
+        synonyms:
+          type: array
+          description: Rule sets that map words to their synonyms in this index.
+          externalDocs:
+            description: Synonym Mapping
+            url: https://dochub.mongodb.org/core/fts-synonym-mappings
+          items:
+            $ref: "#/components/schemas/SearchSynonymMappingDefinition"
+        fields:
+          type: array
+          description: Settings that configure the fields, one per object, to index. You
+            must define at least one "vector" type field. You can optionally
+            define "filter" type fields also.
+          externalDocs:
+            description: Vector Search Fields
+            url: https://dochub.mongodb.org/core/avs-vector-type
+          items:
+            $ref: "#/components/schemas/BasicDBObject"
+    BaseSearchIndexCreateRequestDefinition:
+      properties:
+        analyzer:
+          type: string
+          default: lucene.standard
+          description: >-
+            Specific pre-defined method chosen to convert database field text
+            into searchable words. This conversion reduces the text of fields
+            into the smallest units of text. These units are called a **term**
+            or **token**. This process, known as tokenization, involves making
+            the following changes to the text in fields:
+
+
+            - extracting words
+
+            - removing punctuation
+
+            - removing accents
+
+            - changing to lowercase
+
+            - removing common words
+
+            - reducing words to their root form (stemming)
+
+            - changing words to their base form (lemmatization)
+             MongoDB Cloud uses the process you select to build the Atlas Search index.
+          externalDocs:
+            description: Atlas Search Analyzers
+            url: https://dochub.mongodb.org/core/analyzers--fts
+        analyzers:
+          type: array
+          description: List of user-defined methods to convert database field text into
+            searchable words.
+          externalDocs:
+            description: Custom Atlas Search Analyzers
+            url: https://dochub.mongodb.org/core/custom-fts
+          items:
+            $ref: "#/components/schemas/AtlasSearchAnalyzer"
+        mappings:
+          $ref: "#/components/schemas/SearchMappings"
+        searchAnalyzer:
+          type: string
+          default: lucene.standard
+          description: Method applied to identify words when searching this index.
+        storedSource:
+          type: object
+          description: Flag that indicates whether to store all fields (true) on Atlas
+            Search. By default, Atlas doesn't store (false) the fields on Atlas
+            Search.  Alternatively, you can specify an object that only contains
+            the list of fields to store (include) or not store (exclude) on
+            Atlas Search. To learn more, see Stored Source Fields.
+          example:
+            include | exclude:
+              - field1
+              - field2
+          externalDocs:
+            description: Stored Source Fields
+            url: https://dochub.mongodb.org/core/atlas-search-stored-source
+        synonyms:
+          type: array
+          description: Rule sets that map words to their synonyms in this index.
+          externalDocs:
+            description: Synonym Mapping
+            url: https://dochub.mongodb.org/core/fts-synonym-mappings
+          items:
+            $ref: "#/components/schemas/SearchSynonymMappingDefinition"
+        fields:
+          type: array
+          description: Settings that configure the fields, one per object, to index. You
+            must define at least one "vector" type field. You can optionally
+            define "filter" type fields also.
+          externalDocs:
+            description: Vector Search Fields
+            url: https://dochub.mongodb.org/core/avs-vector-type
+          items:
+            $ref: "#/components/schemas/BasicDBObject"
     AWSCustomDNSEnabled:
       type: object
       properties:
@@ -30538,7 +31858,7 @@ components:
             if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
-    PaginatedBackupSnapshotExportBucket:
+    PaginatedBackupSnapshotExportBuckets:
       type: object
       properties:
         links:
@@ -30557,7 +31877,7 @@ components:
           description: List of returned documents that MongoDB Cloud providers when
             completing this request.
           items:
-            $ref: "#/components/schemas/DiskBackupSnapshotAWSExportBucket"
+            $ref: "#/components/schemas/DiskBackupSnapshotExportBucket"
           readOnly: true
         totalCount:
           type: integer

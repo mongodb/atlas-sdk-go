@@ -10,7 +10,7 @@ import (
 type SearchSynonymMappingDefinition struct {
 	// Specific pre-defined method chosen to apply to the synonyms to be searched.
 	Analyzer string `json:"analyzer"`
-	// Human-readable label that identifies the synonym definition. Each **synonym.name** must be unique within the same index definition.
+	// Label that identifies the synonym definition. Each **synonym.name** must be unique within the same index definition.
 	Name   string        `json:"name"`
 	Source SynonymSource `json:"source"`
 }
