@@ -10,6 +10,8 @@ const {
   removeRefsFromParameters,
 } = require("./transformations");
 
+const { resolveOpenAPIReference } = require("./engine/transformers");
+
 const removeUnusedSchemas = require("./engine/removeUnused");
 
 const ignoredModelNames = require("./name.ignore.json").ignoreModels;
@@ -18,6 +20,8 @@ const ignoredModelNames = require("./name.ignore.json").ignoreModels;
  * Function specifies list of transformations to run
  */
 module.exports = function runTransformations(openapi) {
+  openapi = searchAPIIssuesTransformation(openapi);
+
   openapi = applyDiscriminatorTransformations(openapi);
   openapi = applyOneOfTransformations(openapi);
   openapi = applyAnyOfTransformations(openapi);
@@ -67,3 +71,42 @@ module.exports = function runTransformations(openapi) {
 
   return openapi;
 };
+
+// Temporary transformation until new search version is introduced.
+function searchAPIIssuesTransformation(openapi) {
+  if (openapi.components.schemas.SearchIndexResponse) {
+    const responseParent = openapi.components.schemas.SearchIndexResponse;
+    if (
+      responseParent.properties &&
+      responseParent.properties.latestDefinition
+    ) {
+      if (
+        responseParent.discriminator &&
+        responseParent.discriminator.mapping
+      ) {
+        responseParent.properties.latestDefinition = { oneOf: [] };
+        for (const mappingKey in responseParent.discriminator.mapping) {
+          const ref = responseParent.discriminator.mapping[mappingKey];
+          if (!ref) {
+            continue; // Skip if there's no reference
+          }
+          const reference = resolveOpenAPIReference(openapi, ref);
+          responseParent.properties.latestDefinition.oneOf.push({
+            $ref:
+              reference.allOf &&
+              reference.allOf[1] &&
+              reference.allOf[1].properties &&
+              reference.allOf[1].properties.latestDefinition &&
+              reference.allOf[1].properties.latestDefinition.$ref,
+          });
+          delete reference.allOf[1]?.properties?.latestDefinition;
+        }
+      }
+    }
+  }
+  console.debug(
+    "SearchIndexResponse",
+    openapi.components?.schemas?.SearchIndexResponse
+  );
+  return openapi;
+}

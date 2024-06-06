@@ -127,10 +127,30 @@ function removeParentFromAllOf(child, parentName) {
   return true;
 }
 
+// For string reference fetch object from openapi
+function resolveOpenAPIReference(openapi, ref) {
+  if (!ref.startsWith("#/")) {
+    throw new Error("Invalid reference format: " + ref);
+  }
+  const parts = ref.split("/");
+  // Skip the first empty part
+  parts.shift();
+
+  let current = openapi;
+  for (const part of parts) {
+    if (!current.hasOwnProperty(part)) {
+      throw new Error("Reference not found: + ref");
+    }
+    current = current[part];
+  }
+  return current;
+}
+
 module.exports = {
   removeParentFromAllOf,
   detectDuplicates,
   mergeObjects,
   filterObjectProperties,
   flattenAllOfObject,
+  resolveOpenAPIReference,
 };
