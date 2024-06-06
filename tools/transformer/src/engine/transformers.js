@@ -127,6 +127,7 @@ function removeParentFromAllOf(child, parentName) {
   return true;
 }
 
+// For string reference fetch object from openapi
 function resolveOpenAPIReference(openapi, ref) {
   if (!ref.startsWith("#/")) {
     throw new Error("Invalid reference format: " + ref);
@@ -145,12 +146,11 @@ function resolveOpenAPIReference(openapi, ref) {
   return current;
 }
 
-
 module.exports = {
   removeParentFromAllOf,
   detectDuplicates,
   mergeObjects,
   filterObjectProperties,
   flattenAllOfObject,
-  resolveOpenAPIReference
+  resolveOpenAPIReference,
 };

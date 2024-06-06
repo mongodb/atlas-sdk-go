@@ -10,9 +10,7 @@ const {
   removeRefsFromParameters,
 } = require("./transformations");
 
-const {
-  resolveOpenAPIReference
-} = require("./engine/transformers");
+const { resolveOpenAPIReference } = require("./engine/transformers");
 
 const removeUnusedSchemas = require("./engine/removeUnused");
 
@@ -74,13 +72,18 @@ module.exports = function runTransformations(openapi) {
   return openapi;
 };
 
-// Workarounds for issues in the search API
+// Temporary transformation until new search version is introduced.
 function searchAPIIssuesTransformation(openapi) {
-  // API is overly complex in this case and provides no value as typed interface
   if (openapi.components.schemas.SearchIndexResponse) {
     const responseParent = openapi.components.schemas.SearchIndexResponse;
-    if (responseParent.properties && responseParent.properties.latestDefinition) {
-      if (responseParent.discriminator && responseParent.discriminator.mapping) {
+    if (
+      responseParent.properties &&
+      responseParent.properties.latestDefinition
+    ) {
+      if (
+        responseParent.discriminator &&
+        responseParent.discriminator.mapping
+      ) {
         responseParent.properties.latestDefinition = { oneOf: [] };
         for (const mappingKey in responseParent.discriminator.mapping) {
           const ref = responseParent.discriminator.mapping[mappingKey];
@@ -89,14 +92,21 @@ function searchAPIIssuesTransformation(openapi) {
           }
           const reference = resolveOpenAPIReference(openapi, ref);
           responseParent.properties.latestDefinition.oneOf.push({
-            $ref: reference.allOf && reference.allOf[1] && reference.allOf[1].properties && reference.allOf[1].properties.latestDefinition && reference.allOf[1].properties.latestDefinition.$ref
+            $ref:
+              reference.allOf &&
+              reference.allOf[1] &&
+              reference.allOf[1].properties &&
+              reference.allOf[1].properties.latestDefinition &&
+              reference.allOf[1].properties.latestDefinition.$ref,
           });
           delete reference.allOf[1]?.properties?.latestDefinition;
         }
       }
     }
   }
-  console.debug("SearchIndexResponse", openapi.components?.schemas?.SearchIndexResponse);
+  console.debug(
+    "SearchIndexResponse",
+    openapi.components?.schemas?.SearchIndexResponse
+  );
   return openapi;
 }
-
