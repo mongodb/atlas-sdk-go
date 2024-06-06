@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Database** | **string** | Label that identifies the database that contains the collection to create an Atlas Search index in. | 
 **Name** | **string** | Label that identifies this index. Within each namespace, names of all indexes in the namespace must be unique. | 
 **Type** | Pointer to **string** | Type of the index. The default type is search. | [optional] 
-**Definition** | Pointer to [**VectorSearchIndexDefinition**](VectorSearchIndexDefinition.md) |  | [optional] 
+**Definition** | Pointer to [**BaseSearchIndexCreateRequestDefinition**](BaseSearchIndexCreateRequestDefinition.md) |  | [optional] 
 
 ## Methods
 
@@ -112,20 +112,20 @@ SetType sets Type field to given value.
 HasType returns a boolean if a field has been set.
 ### GetDefinition
 
-`func (o *SearchIndexCreateRequest) GetDefinition() VectorSearchIndexDefinition`
+`func (o *SearchIndexCreateRequest) GetDefinition() BaseSearchIndexCreateRequestDefinition`
 
 GetDefinition returns the Definition field if non-nil, zero value otherwise.
 
 ### GetDefinitionOk
 
-`func (o *SearchIndexCreateRequest) GetDefinitionOk() (*VectorSearchIndexDefinition, bool)`
+`func (o *SearchIndexCreateRequest) GetDefinitionOk() (*BaseSearchIndexCreateRequestDefinition, bool)`
 
 GetDefinitionOk returns a tuple with the Definition field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDefinition
 
-`func (o *SearchIndexCreateRequest) SetDefinition(v VectorSearchIndexDefinition)`
+`func (o *SearchIndexCreateRequest) SetDefinition(v BaseSearchIndexCreateRequestDefinition)`
 
 SetDefinition sets Definition field to given value.
 

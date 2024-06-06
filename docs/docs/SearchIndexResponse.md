@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **CollectionName** | Pointer to **string** | Label that identifies the collection that contains one or more Atlas Search indexes. | [optional] 
 **Database** | Pointer to **string** | Label that identifies the database that contains the collection with one or more Atlas Search indexes. | [optional] 
 **IndexID** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies this Atlas Search index. | [optional] 
-**LatestDefinition** | Pointer to [**SearchIndexResponseLatestDefinition**](SearchIndexResponseLatestDefinition.md) |  | [optional] 
+**LatestDefinition** | Pointer to [**BaseSearchIndexResponseLatestDefinition**](BaseSearchIndexResponseLatestDefinition.md) |  | [optional] 
 **LatestDefinitionVersion** | Pointer to [**SearchIndexDefinitionVersion**](SearchIndexDefinitionVersion.md) |  | [optional] 
 **Name** | Pointer to **string** | Label that identifies this index. Within each namespace, the names of all indexes must be unique. | [optional] 
 **Queryable** | Pointer to **bool** | Flag that indicates whether the index is queryable on all hosts. | [optional] 
@@ -110,20 +110,20 @@ SetIndexID sets IndexID field to given value.
 HasIndexID returns a boolean if a field has been set.
 ### GetLatestDefinition
 
-`func (o *SearchIndexResponse) GetLatestDefinition() SearchIndexResponseLatestDefinition`
+`func (o *SearchIndexResponse) GetLatestDefinition() BaseSearchIndexResponseLatestDefinition`
 
 GetLatestDefinition returns the LatestDefinition field if non-nil, zero value otherwise.
 
 ### GetLatestDefinitionOk
 
-`func (o *SearchIndexResponse) GetLatestDefinitionOk() (*SearchIndexResponseLatestDefinition, bool)`
+`func (o *SearchIndexResponse) GetLatestDefinitionOk() (*BaseSearchIndexResponseLatestDefinition, bool)`
 
 GetLatestDefinitionOk returns a tuple with the LatestDefinition field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLatestDefinition
 
-`func (o *SearchIndexResponse) SetLatestDefinition(v SearchIndexResponseLatestDefinition)`
+`func (o *SearchIndexResponse) SetLatestDefinition(v BaseSearchIndexResponseLatestDefinition)`
 
 SetLatestDefinition sets LatestDefinition field to given value.
 
