@@ -76,36 +76,45 @@ function searchAPIIssuesTransformation(openapi) {
     {
       modelObject: openapi.components.schemas.SearchIndexResponse,
       property: "latestDefinition",
+         // Default class model are not correct
+      newModelName: "BaseSearchIndexResponseLatestDefinition",
     },
     {
       modelObject: openapi.components.schemas.SearchIndexCreateRequest,
       property: "definition",
+     // Default class model are not correct
+      newModelName: "BaseSearchIndexCreateRequestDefinition",
     },
   ];
   for (model of modelsToFix) {
     const responseParent = model.modelObject;
     if (responseParent) {
-        if (
-          responseParent.discriminator &&
-          responseParent.discriminator.mapping
-        ) {
-          responseParent.properties[model.property] = { oneOf: [] };
-          for (const mappingKey in responseParent.discriminator.mapping) {
-            const ref = responseParent.discriminator.mapping[mappingKey];
-            if (!ref) {
-              continue; // Skip if there's no reference
-            }
-            const reference = resolveOpenAPIReference(openapi, ref);
-            if (
-              reference && 
-              reference.allOf &&
-              reference.allOf[1] &&
-              reference.allOf[1].properties[model.property]
-            ) {
-              responseParent.properties[model.property].oneOf.push({
-                $ref: reference.allOf[1].properties[model.property].$ref,
-              });
-              delete reference.allOf[1].properties[model.property];
+      if (
+        responseParent.discriminator &&
+        responseParent.discriminator.mapping
+      ) {
+        newModel = openapi.components.schemas[model.newModelName] = {
+          oneOf: [],
+        };
+        responseParent.properties[model.property] = {
+          $ref: "#/components/schemas/" + model.newModelName,
+        };
+        for (const mappingKey in responseParent.discriminator.mapping) {
+          const ref = responseParent.discriminator.mapping[mappingKey];
+          if (!ref) {
+            continue; // Skip if there's no reference
+          }
+          const reference = resolveOpenAPIReference(openapi, ref);
+          if (
+            reference &&
+            reference.allOf &&
+            reference.allOf[1] &&
+            reference.allOf[1].properties[model.property]
+          ) {
+            newModel.oneOf.push({
+              $ref: reference.allOf[1].properties[model.property].$ref,
+            });
+            delete reference.allOf[1].properties[model.property];
           }
         }
       }
