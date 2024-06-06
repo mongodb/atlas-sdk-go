@@ -7,8 +7,8 @@ import (
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
-	"go.mongodb.org/atlas-sdk/v20231115014/admin"
-	"go.mongodb.org/atlas-sdk/v20231115014/mockadmin"
+	"go.mongodb.org/atlas-sdk/v20240530001/admin"
+	"go.mongodb.org/atlas-sdk/v20240530001/mockadmin"
 )
 
 func TestListClusters(t *testing.T) {

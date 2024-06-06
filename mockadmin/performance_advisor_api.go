@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20231115014/admin"
+	admin "go.mongodb.org/atlas-sdk/v20240530001/admin"
 
 	http "net/http"
 
@@ -325,6 +325,158 @@ func (_c *PerformanceAdvisorApi_EnableSlowOperationThresholdingWithParams_Call) 
 }
 
 func (_c *PerformanceAdvisorApi_EnableSlowOperationThresholdingWithParams_Call) RunAndReturn(run func(context.Context, *admin.EnableSlowOperationThresholdingApiParams) admin.EnableSlowOperationThresholdingApiRequest) *PerformanceAdvisorApi_EnableSlowOperationThresholdingWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetManagedSlowMs provides a mock function with given fields: ctx, groupId
+func (_m *PerformanceAdvisorApi) GetManagedSlowMs(ctx context.Context, groupId string) admin.GetManagedSlowMsApiRequest {
+	ret := _m.Called(ctx, groupId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetManagedSlowMs")
+	}
+
+	var r0 admin.GetManagedSlowMsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.GetManagedSlowMsApiRequest); ok {
+		r0 = rf(ctx, groupId)
+	} else {
+		r0 = ret.Get(0).(admin.GetManagedSlowMsApiRequest)
+	}
+
+	return r0
+}
+
+// PerformanceAdvisorApi_GetManagedSlowMs_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetManagedSlowMs'
+type PerformanceAdvisorApi_GetManagedSlowMs_Call struct {
+	*mock.Call
+}
+
+// GetManagedSlowMs is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+func (_e *PerformanceAdvisorApi_Expecter) GetManagedSlowMs(ctx interface{}, groupId interface{}) *PerformanceAdvisorApi_GetManagedSlowMs_Call {
+	return &PerformanceAdvisorApi_GetManagedSlowMs_Call{Call: _e.mock.On("GetManagedSlowMs", ctx, groupId)}
+}
+
+func (_c *PerformanceAdvisorApi_GetManagedSlowMs_Call) Run(run func(ctx context.Context, groupId string)) *PerformanceAdvisorApi_GetManagedSlowMs_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string))
+	})
+	return _c
+}
+
+func (_c *PerformanceAdvisorApi_GetManagedSlowMs_Call) Return(_a0 admin.GetManagedSlowMsApiRequest) *PerformanceAdvisorApi_GetManagedSlowMs_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *PerformanceAdvisorApi_GetManagedSlowMs_Call) RunAndReturn(run func(context.Context, string) admin.GetManagedSlowMsApiRequest) *PerformanceAdvisorApi_GetManagedSlowMs_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetManagedSlowMsExecute provides a mock function with given fields: r
+func (_m *PerformanceAdvisorApi) GetManagedSlowMsExecute(r admin.GetManagedSlowMsApiRequest) (*http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetManagedSlowMsExecute")
+	}
+
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.GetManagedSlowMsApiRequest) (*http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.GetManagedSlowMsApiRequest) *http.Response); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.GetManagedSlowMsApiRequest) error); ok {
+		r1 = rf(r)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// PerformanceAdvisorApi_GetManagedSlowMsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetManagedSlowMsExecute'
+type PerformanceAdvisorApi_GetManagedSlowMsExecute_Call struct {
+	*mock.Call
+}
+
+// GetManagedSlowMsExecute is a helper method to define mock.On call
+//   - r admin.GetManagedSlowMsApiRequest
+func (_e *PerformanceAdvisorApi_Expecter) GetManagedSlowMsExecute(r interface{}) *PerformanceAdvisorApi_GetManagedSlowMsExecute_Call {
+	return &PerformanceAdvisorApi_GetManagedSlowMsExecute_Call{Call: _e.mock.On("GetManagedSlowMsExecute", r)}
+}
+
+func (_c *PerformanceAdvisorApi_GetManagedSlowMsExecute_Call) Run(run func(r admin.GetManagedSlowMsApiRequest)) *PerformanceAdvisorApi_GetManagedSlowMsExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.GetManagedSlowMsApiRequest))
+	})
+	return _c
+}
+
+func (_c *PerformanceAdvisorApi_GetManagedSlowMsExecute_Call) Return(_a0 *http.Response, _a1 error) *PerformanceAdvisorApi_GetManagedSlowMsExecute_Call {
+	_c.Call.Return(_a0, _a1)
+	return _c
+}
+
+func (_c *PerformanceAdvisorApi_GetManagedSlowMsExecute_Call) RunAndReturn(run func(admin.GetManagedSlowMsApiRequest) (*http.Response, error)) *PerformanceAdvisorApi_GetManagedSlowMsExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetManagedSlowMsWithParams provides a mock function with given fields: ctx, args
+func (_m *PerformanceAdvisorApi) GetManagedSlowMsWithParams(ctx context.Context, args *admin.GetManagedSlowMsApiParams) admin.GetManagedSlowMsApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetManagedSlowMsWithParams")
+	}
+
+	var r0 admin.GetManagedSlowMsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetManagedSlowMsApiParams) admin.GetManagedSlowMsApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.GetManagedSlowMsApiRequest)
+	}
+
+	return r0
+}
+
+// PerformanceAdvisorApi_GetManagedSlowMsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetManagedSlowMsWithParams'
+type PerformanceAdvisorApi_GetManagedSlowMsWithParams_Call struct {
+	*mock.Call
+}
+
+// GetManagedSlowMsWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.GetManagedSlowMsApiParams
+func (_e *PerformanceAdvisorApi_Expecter) GetManagedSlowMsWithParams(ctx interface{}, args interface{}) *PerformanceAdvisorApi_GetManagedSlowMsWithParams_Call {
+	return &PerformanceAdvisorApi_GetManagedSlowMsWithParams_Call{Call: _e.mock.On("GetManagedSlowMsWithParams", ctx, args)}
+}
+
+func (_c *PerformanceAdvisorApi_GetManagedSlowMsWithParams_Call) Run(run func(ctx context.Context, args *admin.GetManagedSlowMsApiParams)) *PerformanceAdvisorApi_GetManagedSlowMsWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.GetManagedSlowMsApiParams))
+	})
+	return _c
+}
+
+func (_c *PerformanceAdvisorApi_GetManagedSlowMsWithParams_Call) Return(_a0 admin.GetManagedSlowMsApiRequest) *PerformanceAdvisorApi_GetManagedSlowMsWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *PerformanceAdvisorApi_GetManagedSlowMsWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetManagedSlowMsApiParams) admin.GetManagedSlowMsApiRequest) *PerformanceAdvisorApi_GetManagedSlowMsWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
