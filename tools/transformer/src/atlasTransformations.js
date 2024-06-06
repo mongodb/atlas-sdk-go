@@ -94,13 +94,11 @@ function searchAPIIssuesTransformation(openapi) {
       continue; // Skip to the next model if not found.
     }
 
-    if (
-      responseParent.discriminator &&
-      responseParent.discriminator.mapping
-    ) {
-      const transformedModel = openapi.components.schemas[model.newModelName] = {
-        oneOf: [],
-      };
+    if (responseParent.discriminator && responseParent.discriminator.mapping) {
+      const transformedModel = (openapi.components.schemas[model.newModelName] =
+        {
+          oneOf: [],
+        });
       responseParent.properties[model.property] = {
         $ref: "#/components/schemas/" + model.newModelName,
       };
