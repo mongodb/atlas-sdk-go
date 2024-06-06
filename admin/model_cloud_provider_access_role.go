@@ -20,10 +20,10 @@ type CloudProviderAccessRole struct {
 	// Date and time when someone authorized this role for the specified cloud service provider. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	AuthorizedDate *time.Time `json:"authorizedDate,omitempty"`
-	// Date and time when someone created this role for the specified cloud service provider. This parameter expresses its value in the ISO 8601 timestamp format in UTC.  Alternatively: Date and time when this Azure Service Principal was created. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
+	// Date and time when this Azure Service Principal was created. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	CreatedDate *time.Time `json:"createdDate,omitempty"`
-	// List that contains application features associated with this Amazon Web Services (AWS) Identity and Access Management (IAM) role.  Alternatively: List that contains application features associated with this Azure Service Principal.
+	// List that contains application features associated with this Azure Service Principal.
 	// Read only field.
 	FeatureUsages *[]CloudProviderAccessFeatureUsage `json:"featureUsages,omitempty"`
 	// Amazon Resource Name (ARN) that identifies the Amazon Web Services (AWS) Identity and Access Management (IAM) role that MongoDB Cloud assumes when it accesses resources in your AWS account.

@@ -11,13 +11,13 @@ type ServerlessTenantEndpoint struct {
 	// Unique 24-hexadecimal digit string that identifies the private endpoint.
 	// Read only field.
 	Id *string `json:"_id,omitempty"`
-	// Unique string that identifies the private endpoint's network interface.  Alternatively: Unique string that identifies the Azure private endpoint's network interface that someone added to this private endpoint service.
+	// Unique string that identifies the Azure private endpoint's network interface that someone added to this private endpoint service.
 	// Read only field.
 	CloudProviderEndpointId *string `json:"cloudProviderEndpointId,omitempty"`
 	// Human-readable comment associated with the private endpoint.
 	// Read only field.
 	Comment *string `json:"comment,omitempty"`
-	// Unique string that identifies the PrivateLink endpoint service. MongoDB Cloud returns null while it creates the endpoint service.  Alternatively: Unique string that identifies the Amazon Web Services (AWS) PrivateLink endpoint service. MongoDB Cloud returns null while it creates the endpoint service.  Alternatively: Unique string that identifies the Azure private endpoint service. MongoDB Cloud returns null while it creates the endpoint service.
+	// Unique string that identifies the Azure private endpoint service. MongoDB Cloud returns null while it creates the endpoint service.
 	// Read only field.
 	EndpointServiceName *string `json:"endpointServiceName,omitempty"`
 	// Human-readable error message that indicates error condition associated with establishing the private endpoint connection.

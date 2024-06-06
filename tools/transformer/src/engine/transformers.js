@@ -14,28 +14,40 @@ function filterObjectProperties(object, filter = (_k, _v) => true) {
   return filteredObj;
 }
 
+// Detects duplicates in array of object properties
+// Function detects duplicates in type and $ref values.
 function detectDuplicates(objArray) {
   const allKeys = {};
   const duplicates = [];
+
   for (const obj of objArray) {
     if (obj) {
       for (const key of Object.keys(obj)) {
+        const currentEntry = obj[key];
+        const currentValue = currentEntry.type || currentEntry.$ref;
+
         if (allKeys[key]) {
-          const parentType = allKeys[key].type;
-          const childType = obj[key].type;
-          const typeMismatch = parentType ? parentType !== childType : false;
-          duplicates.push({
-            key,
-            childType: obj[key].type,
-            parentType: allKeys[key].type,
-            typeMismatch,
-          });
+          const previousEntry = allKeys[key];
+          const previousValue = previousEntry.type || previousEntry.$ref;
+
+          // Check for typeRefMismatch
+          const isTypeRefMismatch = previousValue !== currentValue;
+
+          if (isTypeRefMismatch) {
+            duplicates.push({
+              key,
+              firstValue: previousValue,
+              secondValue: currentValue,
+              typeRefMismatch: isTypeRefMismatch,
+            });
+          }
         } else {
-          allKeys[key] = obj[key].type;
+          allKeys[key] = currentEntry;
         }
       }
     }
   }
+
   return duplicates;
 }
 

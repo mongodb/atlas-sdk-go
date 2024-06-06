@@ -19396,26 +19396,14 @@ components:
         createdDate:
           type: string
           format: date-time
-          description: >-
-            Date and time when someone created this role for the specified cloud
-            service provider. This parameter expresses its value in the ISO 8601
-            timestamp format in UTC.
-
-
-            Alternatively:
-
-            Date and time when this Azure Service Principal was created. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
+          description: Date and time when this Azure Service Principal was created. This
+            parameter expresses its value in the ISO 8601 timestamp format in
+            UTC.
           readOnly: true
         featureUsages:
           type: array
-          description: >-
-            List that contains application features associated with this Amazon
-            Web Services (AWS) Identity and Access Management (IAM) role.
-
-
-            Alternatively:
-
-            List that contains application features associated with this Azure Service Principal.
+          description: List that contains application features associated with this Azure
+            Service Principal.
           items:
             $ref: "#/components/schemas/CloudProviderAccessFeatureUsage"
           readOnly: true
@@ -19512,44 +19500,6 @@ components:
             deployed to this cloud provider an IP address from this range.
             MongoDB Cloud locks this value if an M10 or greater cluster or a
             network peering connection exists in this project.
-
-
-            These CIDR blocks must fall within the ranges reserved per RFC 1918. AWS and Azure further limit the block to between the `/24` and  `/21` ranges.
-
-
-            To modify the CIDR block, the target project cannot have:
-
-
-            - Any M10 or greater clusters
-
-            - Any other VPC peering connections
-
-             You can also create a new project and create a network peering connection to set the desired MongoDB Cloud network peering container CIDR block for that project. MongoDB Cloud limits the number of MongoDB nodes per network peering connection based on the CIDR block and the region selected for the project.
-
-             **Example:** A project in an Amazon Web Services (AWS) region supporting three availability zones and an MongoDB CIDR network peering container block of limit of `/24` equals 27 three-node replica sets.
-
-            Alternatively:
-
-            IP addresses expressed in Classless Inter-Domain Routing (CIDR) notation that MongoDB Cloud uses for the network peering containers in your project. MongoDB Cloud assigns all of the project's clusters deployed to this cloud provider an IP address from this range. MongoDB Cloud locks this value if an M10 or greater cluster or a network peering connection exists in this project.
-
-
-            These CIDR blocks must fall within the ranges reserved per RFC 1918. GCP further limits the block to a lower bound of the `/18` range.
-
-
-            To modify the CIDR block, the target project cannot have:
-
-
-            - Any M10 or greater clusters
-
-            - Any other VPC peering connections
-
-             You can also create a new project and create a network peering connection to set the desired MongoDB Cloud network peering container CIDR block for that project. MongoDB Cloud limits the number of MongoDB nodes per network peering connection based on the CIDR block and the region selected for the project.
-
-             **Example:** A project in an Google Cloud (GCP) region supporting three availability zones and an MongoDB CIDR network peering container block of limit of `/24` equals 27 three-node replica sets.
-
-            Alternatively:
-
-            IP addresses expressed in Classless Inter-Domain Routing (CIDR) notation that MongoDB Cloud uses for the network peering containers in your project. MongoDB Cloud assigns all of the project's clusters deployed to this cloud provider an IP address from this range. MongoDB Cloud locks this value if an M10 or greater cluster or a network peering connection exists in this project.
 
 
             These CIDR blocks must fall within the ranges reserved per RFC 1918. AWS and Azure further limit the block to between the `/24` and  `/21` ranges.
@@ -20277,42 +20227,21 @@ components:
             the cluster. Clusters always have this setting enabled.
         instanceSizeName:
           type: string
-          description: >-
-            Cluster tier, with a default storage and memory capacity, that
-            applies to all the data-bearing hosts in your cluster.
-
-
-            Alternatively:
-
-            Cluster tier, with a default storage and memory capacity, that applies to all the data-bearing hosts in your cluster. You must set **providerSettings.providerName** to `TENANT` and specify the cloud service provider in **providerSettings.backingProviderName**.
+          description: Cluster tier, with a default storage and memory capacity, that
+            applies to all the data-bearing hosts in your cluster. You must set
+            **providerSettings.providerName** to `TENANT` and specify the cloud
+            service provider in **providerSettings.backingProviderName**.
           title: Tenant Instance Sizes
         regionName:
           type: string
-          description: >-
-            Physical location where MongoDB Cloud deploys your AWS-hosted
-            MongoDB cluster nodes. The region you choose can affect network
-            latency for clients accessing your databases. When MongoDB Cloud
-            deploys a dedicated cluster, it checks if a VPC or VPC connection
-            exists for that provider and region. If not, MongoDB Cloud creates
-            them as part of the deployment. MongoDB Cloud assigns the VPC a CIDR
-            block. To limit a new VPC peering connection to one CIDR block and
-            region, create the connection first. Deploy the cluster after the
-            connection starts.
-
-
-            Alternatively:
-
-            Microsoft Azure Regions.
-
-
-            Alternatively:
-
-            Google Compute Regions.
-
-
-            Alternatively:
-
-            Human-readable label that identifies the geographic location of your MongoDB cluster. The region you choose can affect network latency for clients accessing your databases. For a complete list of region names, see [AWS](https://docs.atlas.mongodb.com/reference/amazon-aws/#std-label-amazon-aws), [GCP](https://docs.atlas.mongodb.com/reference/google-gcp/), and [Azure](https://docs.atlas.mongodb.com/reference/microsoft-azure/). For multi-region clusters, see **replicationSpec.{region}**.
+          description: Human-readable label that identifies the geographic location of
+            your MongoDB cluster. The region you choose can affect network
+            latency for clients accessing your databases. For a complete list of
+            region names, see
+            [AWS](https://docs.atlas.mongodb.com/reference/amazon-aws/#std-label-amazon-aws),
+            [GCP](https://docs.atlas.mongodb.com/reference/google-gcp/), and
+            [Azure](https://docs.atlas.mongodb.com/reference/microsoft-azure/).
+            For multi-region clusters, see **replicationSpec.{region}**.
         volumeType:
           type: string
           description: Disk Input/Output Operations per Second (IOPS) setting for Amazon
@@ -21534,21 +21463,7 @@ components:
             S3 bucket.
         region:
           type: string
-          description: >-
-            Physical location where MongoDB Cloud deploys your AWS-hosted
-            MongoDB cluster nodes. The region you choose can affect network
-            latency for clients accessing your databases. When MongoDB Cloud
-            deploys a dedicated cluster, it checks if a VPC or VPC connection
-            exists for that provider and region. If not, MongoDB Cloud creates
-            them as part of the deployment. MongoDB Cloud assigns the VPC a CIDR
-            block. To limit a new VPC peering connection to one CIDR block and
-            region, create the connection first. Deploy the cluster after the
-            connection starts.
-
-
-            Alternatively:
-
-            Microsoft Azure Regions.
+          description: Microsoft Azure Regions.
           title: Azure Regions
         clusterName:
           type: string
@@ -23058,6 +22973,7 @@ components:
           readOnly: true
         eventTypeName:
           $ref: "#/components/schemas/StreamProcessorEventTypeViewForNdsGroup"
+          description: Unique identifier of event type.
         groupId:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the project in
@@ -23318,6 +23234,7 @@ components:
           readOnly: true
         eventTypeName:
           $ref: "#/components/schemas/ResourceEventTypeViewForOrg"
+          description: Unique identifier of event type.
         groupId:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the project in
@@ -24115,6 +24032,7 @@ components:
             configuration for the specified project.
         eventTypeName:
           $ref: "#/components/schemas/StreamProcessorEventTypeViewAlertable"
+          description: Incident that triggered this alert.
         groupId:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the project that
@@ -24146,74 +24064,8 @@ components:
           readOnly: true
         matchers:
           type: array
-          description: >-
-            No matchers are available for these alert types. The list is always
-            empty.
-
-
-            Alternatively:
-
-            List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. You can filter using the matchers array if the **eventTypeName** specifies an event for a host, replica set, or sharded cluster.
-
-
-            Alternatively:
-
-            List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. You can filter using the matchers array if the **eventTypeName** specifies an event for a host, replica set, or sharded cluster.
-
-
-            Alternatively:
-
-            No matchers are available for these alert types. The list is always empty.
-
-
-            Alternatively:
-
-            List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. You can filter using the matchers array if the **eventTypeName** specifies an event for a host, replica set, or sharded cluster.
-
-
-            Alternatively:
-
-            No matchers are available for these alert types. The list is always empty.
-
-
-            Alternatively:
-
-            No matchers are available for these alert types. The list is always empty.
-
-
-            Alternatively:
-
-            List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. You can filter using the matchers array if the **eventTypeName** specifies an event for a host, replica set, or sharded cluster.
-
-
-            Alternatively:
-
-            List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. You can filter using the matchers array if the **eventTypeName** specifies an event for a host, replica set, or sharded cluster.
-
-
-            Alternatively:
-
-            No matchers are available for these alert types. The list is always empty.
-
-
-            Alternatively:
-
-            List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. You can filter using the matchers array if the **eventTypeName** specifies an event for a host, replica set, or sharded cluster.
-
-
-            Alternatively:
-
-            List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. You can filter using the matchers array if the **eventTypeName** specifies an event for a host, replica set, or sharded cluster.
-
-
-            Alternatively:
-
-            No matchers are available for these alert types. The list is always empty.
-
-
-            Alternatively:
-
-            List of rules that determine whether MongoDB Cloud checks an object for the alert configuration.
+          description: List of rules that determine whether MongoDB Cloud checks an object
+            for the alert configuration.
           items:
             $ref: "#/components/schemas/StreamsMatcher"
         notifications:
@@ -27505,14 +27357,8 @@ components:
           readOnly: true
         status:
           type: string
-          description: >-
-            State of the Azure Private Link Service connection when MongoDB
-            Cloud received this request.
-
-
-            Alternatively:
-
-            State of the Google Cloud network endpoint group when MongoDB Cloud received this request.
+          description: State of the Google Cloud network endpoint group when MongoDB Cloud
+            received this request.
           readOnly: true
         endpointGroupName:
           type: string
@@ -28306,6 +28152,8 @@ components:
           description: Value of metric that, when exceeded, triggers an alert.
         units:
           $ref: "#/components/schemas/ServerlessMetricUnits"
+          description: Element used to express the quantity. This can be an element of
+            time, storage capacity, and the like.
       required:
         - metricName
       title: Serverless Metric Threshold
@@ -28363,14 +28211,8 @@ components:
           readOnly: true
         cloudProviderEndpointId:
           type: string
-          description: >-
-            Unique string that identifies the private endpoint's network
-            interface.
-
-
-            Alternatively:
-
-            Unique string that identifies the Azure private endpoint's network interface that someone added to this private endpoint service.
+          description: Unique string that identifies the Azure private endpoint's network
+            interface that someone added to this private endpoint service.
           pattern: ^/subscriptions/[0-9a-f]{8}-([0-9a-f]{4}-){3}[0-9a-f]{12}/resource[gG]roups/private[Ll]ink/providers/Microsoft\.Network/privateEndpoints/[-\w._()]+$
           readOnly: true
         comment:
@@ -28380,19 +28222,8 @@ components:
           readOnly: true
         endpointServiceName:
           type: string
-          description: >-
-            Unique string that identifies the PrivateLink endpoint service.
+          description: Unique string that identifies the Azure private endpoint service.
             MongoDB Cloud returns null while it creates the endpoint service.
-
-
-            Alternatively:
-
-            Unique string that identifies the Amazon Web Services (AWS) PrivateLink endpoint service. MongoDB Cloud returns null while it creates the endpoint service.
-
-
-            Alternatively:
-
-            Unique string that identifies the Azure private endpoint service. MongoDB Cloud returns null while it creates the endpoint service.
           pattern: ^pls_[0-9a-f]{24}$
           readOnly: true
         errorMessage:
@@ -28437,14 +28268,8 @@ components:
           writeOnly: true
         cloudProviderEndpointId:
           type: string
-          description: >-
-            Unique string that identifies the private endpoint's network
-            interface.
-
-
-            Alternatively:
-
-            Unique string that identifies the Azure private endpoint's network interface for this private endpoint service.
+          description: Unique string that identifies the Azure private endpoint's network
+            interface for this private endpoint service.
           pattern: ^/subscriptions/[0-9a-f]{8}-([0-9a-f]{4}-){3}[0-9a-f]{12}/resource[gG]roups/private[Ll]ink/providers/Microsoft\.Network/privateEndpoints/[-\w._()]+$
           writeOnly: true
         privateEndpointIpAddress:
@@ -29081,84 +28906,12 @@ components:
           description: Integration id.
         type:
           type: string
-          description: >-
-            Integration type
-
-
-            Alternatively:
-
-            Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the third-party service integration type.
-
-
-            Alternatively:
-
-            Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the third-party service integration type.
-
-
-            Alternatively:
-
-            Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the third-party service integration type.
-
-
-            Alternatively:
-
-            Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the third-party service integration type.
-
-
-            Alternatively:
-
-            Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the third-party service integration type.
-
-
-            Alternatively:
-
-            Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the third-party service integration type.
-
-
-            Alternatively:
-
-            Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the third-party service integration type.
-
-
-            Alternatively:
-
-            Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the third-party service integration type.
-
-
-            Alternatively:
-
-            Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the third-party service integration type.
+          description: Human-readable label that identifies the service to which you want
+            to integrate with MongoDB Cloud. The value must match the
+            third-party service integration type.
         apiKey:
           type: string
           description: >-
-            Key that allows MongoDB Cloud to access your Datadog account.
-
-
-            **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:
-
-
-            * View or edit the alert through the Atlas UI.
-
-
-            * Query the alert for the notification through the Atlas Administration API.
-
-
-            Alternatively:
-
-            Key that allows MongoDB Cloud to access your Opsgenie account.
-
-
-            **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:
-
-
-            * View or edit the alert through the Atlas UI.
-
-
-            * Query the alert for the notification through the Atlas Administration API.
-
-
-            Alternatively:
-
             Key that allows MongoDB Cloud to access your VictorOps account.
 
 
@@ -29172,22 +28925,8 @@ components:
           example: "********************************9abc"
         region:
           type: string
-          description: >-
-            Two-letter code that indicates which regional URL MongoDB uses to
-            access the Datadog API.
-
-
-            To learn more about Datadog's regions, see <a href="https://docs.datadoghq.com/getting_started/site/" target="_blank" rel="noopener noreferrer">Datadog Sites</a>.
-
-
-            Alternatively:
-
-            Two-letter code that indicates which regional URL MongoDB uses to access the Opsgenie API.
-
-
-            Alternatively:
-
-            PagerDuty region that indicates the API Uniform Resource Locator (URL) to use.
+          description: PagerDuty region that indicates the API Uniform Resource Locator
+            (URL) to use.
         microsoftTeamsWebhookUrl:
           type: string
           description: >-

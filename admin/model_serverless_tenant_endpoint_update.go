@@ -14,7 +14,7 @@ type ServerlessTenantEndpointUpdate struct {
 	// Human-readable label that identifies the cloud provider of the tenant endpoint.
 	// Write only field.
 	ProviderName string `json:"providerName"`
-	// Unique string that identifies the private endpoint's network interface.  Alternatively: Unique string that identifies the Azure private endpoint's network interface for this private endpoint service.
+	// Unique string that identifies the Azure private endpoint's network interface for this private endpoint service.
 	// Write only field.
 	CloudProviderEndpointId *string `json:"cloudProviderEndpointId,omitempty"`
 	// IPv4 address of the private endpoint in your Azure VNet that someone added to this private endpoint service.

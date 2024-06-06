@@ -6,6 +6,7 @@ const {
   getAllObjects,
 } = require("../engine/readers");
 const { ignoreModels } = require("../oneOf.ignore.json");
+const { ignoredProperties } = require("../duplicate.ignore.json");
 const { detectDuplicates } = require("../engine/transformers");
 
 /**
@@ -135,36 +136,61 @@ function handleDuplicates(parentObject, childObject) {
   ]);
   if (duplicates.length > 0) {
     const duplicatesSource = childObject.title || "";
-    const missmatches = duplicates.filter((e) => e.typeMismatch);
-    if (missmatches.length > 0) {
-      throw new Error(
-        `${duplicatesSource} missmatch type detected: ${JSON.stringify(
-          missmatches,
-          undefined,
-          2
-        )}`
-      );
-    } else {
-      console.info(
-        `## ${duplicatesSource} - Detected properties that would be overriden: ${JSON.stringify(
-          duplicates
-        )}\n`
-      );
-
-      for (duplicate of duplicates) {
-        childProperty = childObject.properties[duplicate.key];
-        parentProperty = parentObject.properties[duplicate.key];
-
-        if (
-          parentProperty.description &&
-          childProperty.description !== parentProperty.description
-        )
-          childProperty.description =
-            parentProperty.description +
-            "\n\nAlternatively:\n" +
-            childProperty.description;
+    let mismatches = duplicates.filter((e) => e.typeRefMismatch);
+    if (mismatches.length > 0) {
+      mismatches = filterReferenceOrTypeMissmatch(mismatches);
+      if (mismatches.length !== 0) {
+        throw new Error(
+          `${duplicatesSource} mismatch type detected: ${JSON.stringify(
+            mismatches,
+            undefined,
+            2
+          )}`
+        );
       }
     }
+    mergeDuplicates(duplicatesSource, duplicates, childObject, parentObject);
+  }
+}
+
+// Uses ignore list for known missmatches and removes them
+function filterReferenceOrTypeMissmatch(mismatches) {
+  return mismatches.filter((mismatch) => {
+    for (const ignoredProperty of ignoredProperties) {
+      if (mismatch.key === ignoredProperty) {
+        console.warn(
+          "Type mismatch found when merging base types. Ignoring due to known mismatches",
+          JSON.stringify(mismatch, undefined, 2)
+        );
+        return false;
+      }
+    }
+    return true;
+  });
+}
+
+// Merge duplicates as they are representing the same type.
+// Add description representing alternative meaning
+function mergeDuplicates(
+  duplicatesSourceLabel,
+  duplicates,
+  childObject,
+  parentObject
+) {
+  console.info(
+    `## ${duplicatesSourceLabel} - Detected properties that would be overriden: ${JSON.stringify(
+      duplicates
+    )}\n`
+  );
+  for (duplicate of duplicates) {
+    childProperty = childObject.properties[duplicate.key];
+    parentProperty = parentObject.properties[duplicate.key];
+
+    if (
+      parentProperty.description &&
+      childProperty.description !== parentProperty.description
+    )
+      childProperty.description = parentProperty.description;
   }
 }
 
