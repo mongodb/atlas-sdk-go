@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## AuthorizeCloudProviderAccessRole
 
-> CloudProviderAccessRole AuthorizeCloudProviderAccessRole(ctx, groupId, roleId, cloudProviderAccessRole CloudProviderAccessRole).Execute()
+> CloudProviderAccessRole AuthorizeCloudProviderAccessRole(ctx, groupId, roleId, cloudProviderAccessAWSIAMRoleUpdateRequest CloudProviderAccessAWSIAMRoleUpdateRequest).Execute()
 
 Authorize One Cloud Provider Access Role
 
@@ -40,9 +40,9 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     roleId := "roleId_example" // string | 
-    cloudProviderAccessRole := *openapiclient.NewCloudProviderAccessRole("ProviderName_example") // CloudProviderAccessRole | 
+    cloudProviderAccessAWSIAMRoleUpdateRequest := *openapiclient.NewCloudProviderAccessAWSIAMRoleUpdateRequest("ProviderName_example") // CloudProviderAccessAWSIAMRoleUpdateRequest | 
 
-    resp, r, err := sdk.CloudProviderAccessApi.AuthorizeCloudProviderAccessRole(context.Background(), groupId, roleId, &cloudProviderAccessRole).Execute()
+    resp, r, err := sdk.CloudProviderAccessApi.AuthorizeCloudProviderAccessRole(context.Background(), groupId, roleId, &cloudProviderAccessAWSIAMRoleUpdateRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAccessApi.AuthorizeCloudProviderAccessRole``: %v\n", err)
         apiError := admin.AsError(err)
@@ -71,7 +71,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **cloudProviderAccessRole** | [**CloudProviderAccessRole**](CloudProviderAccessRole.md) | Grants access to the specified project for the specified access role. | 
+ **cloudProviderAccessAWSIAMRoleUpdateRequest** | [**CloudProviderAccessAWSIAMRoleUpdateRequest**](CloudProviderAccessAWSIAMRoleUpdateRequest.md) | Grants access to the specified project for the specified access role. | 
 
 ### Return type
 
@@ -92,7 +92,7 @@ Name | Type | Description  | Notes
 
 ## CreateCloudProviderAccessRole
 
-> CloudProviderAccessRole CreateCloudProviderAccessRole(ctx, groupId, cloudProviderAccessRole CloudProviderAccessRole).Execute()
+> CloudProviderAccessRole CreateCloudProviderAccessRole(ctx, groupId, cloudProviderAccessAWSIAMRoleRequest CloudProviderAccessAWSIAMRoleRequest).Execute()
 
 Create One Cloud Provider Access Role
 
@@ -117,9 +117,9 @@ func main() {
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    cloudProviderAccessRole := *openapiclient.NewCloudProviderAccessRole("ProviderName_example") // CloudProviderAccessRole | 
+    cloudProviderAccessAWSIAMRoleRequest := *openapiclient.NewCloudProviderAccessAWSIAMRoleRequest("ProviderName_example") // CloudProviderAccessAWSIAMRoleRequest | 
 
-    resp, r, err := sdk.CloudProviderAccessApi.CreateCloudProviderAccessRole(context.Background(), groupId, &cloudProviderAccessRole).Execute()
+    resp, r, err := sdk.CloudProviderAccessApi.CreateCloudProviderAccessRole(context.Background(), groupId, &cloudProviderAccessAWSIAMRoleRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAccessApi.CreateCloudProviderAccessRole``: %v\n", err)
         apiError := admin.AsError(err)
@@ -146,7 +146,7 @@ Other parameters are passed through a pointer to a apiCreateCloudProviderAccessR
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **cloudProviderAccessRole** | [**CloudProviderAccessRole**](CloudProviderAccessRole.md) | Creates one role for the specified cloud provider. | 
+ **cloudProviderAccessAWSIAMRoleRequest** | [**CloudProviderAccessAWSIAMRoleRequest**](CloudProviderAccessAWSIAMRoleRequest.md) | Creates one role for the specified cloud provider. | 
 
 ### Return type
 

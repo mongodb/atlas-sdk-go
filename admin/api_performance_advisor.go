@@ -60,6 +60,29 @@ type PerformanceAdvisorApi interface {
 	EnableSlowOperationThresholdingExecute(r EnableSlowOperationThresholdingApiRequest) (*http.Response, error)
 
 	/*
+		GetManagedSlowMs Return Managed Slow MS enabled
+
+		Get whether the Managed Slow MS feature is enabled.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@return GetManagedSlowMsApiRequest
+	*/
+	GetManagedSlowMs(ctx context.Context, groupId string) GetManagedSlowMsApiRequest
+	/*
+		GetManagedSlowMs Return Managed Slow MS enabled
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetManagedSlowMsApiParams - Parameters for the request
+		@return GetManagedSlowMsApiRequest
+	*/
+	GetManagedSlowMsWithParams(ctx context.Context, args *GetManagedSlowMsApiParams) GetManagedSlowMsApiRequest
+
+	// Method available only for mocking purposes
+	GetManagedSlowMsExecute(r GetManagedSlowMsApiRequest) (*http.Response, error)
+
+	/*
 		GetServerlessAutoIndexing Return Serverless Auto Indexing Enabled
 
 		Get whether the Serverless Auto Indexing feature is enabled.
@@ -330,6 +353,100 @@ func (a *PerformanceAdvisorApiService) EnableSlowOperationThresholdingExecute(r 
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/managedSlowMs/enable"
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json", "application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type GetManagedSlowMsApiRequest struct {
+	ctx        context.Context
+	ApiService PerformanceAdvisorApi
+	groupId    string
+}
+
+type GetManagedSlowMsApiParams struct {
+	GroupId string
+}
+
+func (a *PerformanceAdvisorApiService) GetManagedSlowMsWithParams(ctx context.Context, args *GetManagedSlowMsApiParams) GetManagedSlowMsApiRequest {
+	return GetManagedSlowMsApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    args.GroupId,
+	}
+}
+
+func (r GetManagedSlowMsApiRequest) Execute() (*http.Response, error) {
+	return r.ApiService.GetManagedSlowMsExecute(r)
+}
+
+/*
+GetManagedSlowMs Return Managed Slow MS enabled
+
+Get whether the Managed Slow MS feature is enabled.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return GetManagedSlowMsApiRequest
+*/
+func (a *PerformanceAdvisorApiService) GetManagedSlowMs(ctx context.Context, groupId string) GetManagedSlowMsApiRequest {
+	return GetManagedSlowMsApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    groupId,
+	}
+}
+
+// Execute executes the request
+func (a *PerformanceAdvisorApiService) GetManagedSlowMsExecute(r GetManagedSlowMsApiRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodGet
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PerformanceAdvisorApiService.GetManagedSlowMs")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/managedSlowMs"
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
 
 	localVarHeaderParams := make(map[string]string)

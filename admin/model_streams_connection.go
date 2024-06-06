@@ -22,8 +22,9 @@ type StreamsConnection struct {
 	// Comma separated list of server addresses.
 	BootstrapServers *string `json:"bootstrapServers,omitempty"`
 	// A map of Kafka key-value pairs for optional configuration. This is a flat object, and keys can have '.' characters.
-	Config   *map[string]string    `json:"config,omitempty"`
-	Security *StreamsKafkaSecurity `json:"security,omitempty"`
+	Config    *map[string]string    `json:"config,omitempty"`
+	ProxyInfo *ProxyInfo            `json:"proxyInfo,omitempty"`
+	Security  *StreamsKafkaSecurity `json:"security,omitempty"`
 }
 
 // NewStreamsConnection instantiates a new StreamsConnection object
@@ -307,6 +308,39 @@ func (o *StreamsConnection) SetConfig(v map[string]string) {
 	o.Config = &v
 }
 
+// GetProxyInfo returns the ProxyInfo field value if set, zero value otherwise
+func (o *StreamsConnection) GetProxyInfo() ProxyInfo {
+	if o == nil || IsNil(o.ProxyInfo) {
+		var ret ProxyInfo
+		return ret
+	}
+	return *o.ProxyInfo
+}
+
+// GetProxyInfoOk returns a tuple with the ProxyInfo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsConnection) GetProxyInfoOk() (*ProxyInfo, bool) {
+	if o == nil || IsNil(o.ProxyInfo) {
+		return nil, false
+	}
+
+	return o.ProxyInfo, true
+}
+
+// HasProxyInfo returns a boolean if a field has been set.
+func (o *StreamsConnection) HasProxyInfo() bool {
+	if o != nil && !IsNil(o.ProxyInfo) {
+		return true
+	}
+
+	return false
+}
+
+// SetProxyInfo gets a reference to the given ProxyInfo and assigns it to the ProxyInfo field.
+func (o *StreamsConnection) SetProxyInfo(v ProxyInfo) {
+	o.ProxyInfo = &v
+}
+
 // GetSecurity returns the Security field value if set, zero value otherwise
 func (o *StreamsConnection) GetSecurity() StreamsKafkaSecurity {
 	if o == nil || IsNil(o.Security) {
@@ -369,6 +403,9 @@ func (o StreamsConnection) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Config) {
 		toSerialize["config"] = o.Config
+	}
+	if !IsNil(o.ProxyInfo) {
+		toSerialize["proxyInfo"] = o.ProxyInfo
 	}
 	if !IsNil(o.Security) {
 		toSerialize["security"] = o.Security

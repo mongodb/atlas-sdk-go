@@ -90,18 +90,18 @@ type CloudBackupsApi interface {
 	CreateBackupRestoreJobExecute(r CreateBackupRestoreJobApiRequest) (*DiskBackupSnapshotRestoreJob, *http.Response, error)
 
 	/*
-		CreateExportBucket Grant Access to AWS S3 Bucket for Cloud Backup Snapshot Exports
+		CreateExportBucket Grant Access to AWS S3 Bucket or Azure Blob Storage for Cloud Backup Snapshot Exports
 
-		Grants MongoDB Cloud access to the specified AWS S3 bucket. This enables this bucket to receive Atlas Cloud Backup snapshots. To use this resource, the requesting API Key must have the Project Owner role.
+		Grants MongoDB Cloud access to the specified AWS S3 bucket or Azure Blob Storage. This enables this bucket to receive Atlas Cloud Backup snapshots. To use this resource, the requesting API Key must have the Project Owner role. Deprecated versions: v2-{2023-01-01}
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param diskBackupSnapshotAWSExportBucket Grants MongoDB Cloud access to the specified AWS S3 bucket.
+		@param diskBackupSnapshotExportBucket Grants MongoDB Cloud access to the specified AWS S3 bucket or Azure Blob Storage.
 		@return CreateExportBucketApiRequest
 	*/
-	CreateExportBucket(ctx context.Context, groupId string, diskBackupSnapshotAWSExportBucket *DiskBackupSnapshotAWSExportBucket) CreateExportBucketApiRequest
+	CreateExportBucket(ctx context.Context, groupId string, diskBackupSnapshotExportBucket *DiskBackupSnapshotExportBucket) CreateExportBucketApiRequest
 	/*
-		CreateExportBucket Grant Access to AWS S3 Bucket for Cloud Backup Snapshot Exports
+		CreateExportBucket Grant Access to AWS S3 Bucket or Azure Blob Storage for Cloud Backup Snapshot Exports
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -111,7 +111,7 @@ type CloudBackupsApi interface {
 	CreateExportBucketWithParams(ctx context.Context, args *CreateExportBucketApiParams) CreateExportBucketApiRequest
 
 	// Method available only for mocking purposes
-	CreateExportBucketExecute(r CreateExportBucketApiRequest) (*DiskBackupSnapshotAWSExportBucket, *http.Response, error)
+	CreateExportBucketExecute(r CreateExportBucketApiRequest) (*DiskBackupSnapshotExportBucket, *http.Response, error)
 
 	/*
 		CreateServerlessBackupRestoreJob Restore One Snapshot of One Serverless Instance
@@ -334,18 +334,18 @@ type CloudBackupsApi interface {
 	GetDataProtectionSettingsExecute(r GetDataProtectionSettingsApiRequest) (*DataProtectionSettings20231001, *http.Response, error)
 
 	/*
-		GetExportBucket Return One AWS S3 Bucket Used for Cloud Backup Snapshot Exports
+		GetExportBucket Return One AWS S3 Bucket or Azure Blob Storage Used for Cloud Backup Snapshot Exports
 
-		Returns one AWS S3 bucket associated with the specified project. To use this resource, the requesting API Key must have the Project Read Only role.
+		Returns one AWS S3 bucket or Azure Blob Storage associated with the specified project. To use this resource, the requesting API Key must have the Project Read Only role. Deprecated versions: v2-{2023-01-01}
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param exportBucketId Unique string that identifies the AWS S3 bucket to which you export your snapshots.
+		@param exportBucketId Unique string that identifies the AWS S3 bucket or Azure Blob Storage to which you export your snapshots.
 		@return GetExportBucketApiRequest
 	*/
 	GetExportBucket(ctx context.Context, groupId string, exportBucketId string) GetExportBucketApiRequest
 	/*
-		GetExportBucket Return One AWS S3 Bucket Used for Cloud Backup Snapshot Exports
+		GetExportBucket Return One AWS S3 Bucket or Azure Blob Storage Used for Cloud Backup Snapshot Exports
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -355,7 +355,7 @@ type CloudBackupsApi interface {
 	GetExportBucketWithParams(ctx context.Context, args *GetExportBucketApiParams) GetExportBucketApiRequest
 
 	// Method available only for mocking purposes
-	GetExportBucketExecute(r GetExportBucketApiRequest) (*DiskBackupSnapshotAWSExportBucket, *http.Response, error)
+	GetExportBucketExecute(r GetExportBucketApiRequest) (*DiskBackupSnapshotExportBucket, *http.Response, error)
 
 	/*
 		GetReplicaSetBackup Return One Replica Set Cloud Backup
@@ -506,9 +506,9 @@ type CloudBackupsApi interface {
 	ListBackupRestoreJobsExecute(r ListBackupRestoreJobsApiRequest) (*PaginatedCloudBackupRestoreJob, *http.Response, error)
 
 	/*
-		ListExportBuckets Return All AWS S3 Buckets Used for Cloud Backup Snapshot Exports
+		ListExportBuckets Return All AWS S3 Buckets and Azure Blob Storages Used for Cloud Backup Snapshot Exports
 
-		Returns all AWS S3 buckets associated with the specified project. To use this resource, the requesting API Key must have the Project Read Only role.
+		Returns all AWS S3 buckets and Azure Blob Storages associated with the specified project. To use this resource, the requesting API Key must have the Project Read Only role. Deprecated versions: v2-{2023-01-01}
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -516,7 +516,7 @@ type CloudBackupsApi interface {
 	*/
 	ListExportBuckets(ctx context.Context, groupId string) ListExportBucketsApiRequest
 	/*
-		ListExportBuckets Return All AWS S3 Buckets Used for Cloud Backup Snapshot Exports
+		ListExportBuckets Return All AWS S3 Buckets and Azure Blob Storages Used for Cloud Backup Snapshot Exports
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -526,7 +526,7 @@ type CloudBackupsApi interface {
 	ListExportBucketsWithParams(ctx context.Context, args *ListExportBucketsApiParams) ListExportBucketsApiRequest
 
 	// Method available only for mocking purposes
-	ListExportBucketsExecute(r ListExportBucketsApiRequest) (*PaginatedBackupSnapshotExportBucket, *http.Response, error)
+	ListExportBucketsExecute(r ListExportBucketsApiRequest) (*PaginatedBackupSnapshotExportBuckets, *http.Response, error)
 
 	/*
 		ListReplicaSetBackups Return All Replica Set Cloud Backups
@@ -1108,57 +1108,57 @@ func (a *CloudBackupsApiService) CreateBackupRestoreJobExecute(r CreateBackupRes
 }
 
 type CreateExportBucketApiRequest struct {
-	ctx                               context.Context
-	ApiService                        CloudBackupsApi
-	groupId                           string
-	diskBackupSnapshotAWSExportBucket *DiskBackupSnapshotAWSExportBucket
+	ctx                            context.Context
+	ApiService                     CloudBackupsApi
+	groupId                        string
+	diskBackupSnapshotExportBucket *DiskBackupSnapshotExportBucket
 }
 
 type CreateExportBucketApiParams struct {
-	GroupId                           string
-	DiskBackupSnapshotAWSExportBucket *DiskBackupSnapshotAWSExportBucket
+	GroupId                        string
+	DiskBackupSnapshotExportBucket *DiskBackupSnapshotExportBucket
 }
 
 func (a *CloudBackupsApiService) CreateExportBucketWithParams(ctx context.Context, args *CreateExportBucketApiParams) CreateExportBucketApiRequest {
 	return CreateExportBucketApiRequest{
-		ApiService:                        a,
-		ctx:                               ctx,
-		groupId:                           args.GroupId,
-		diskBackupSnapshotAWSExportBucket: args.DiskBackupSnapshotAWSExportBucket,
+		ApiService:                     a,
+		ctx:                            ctx,
+		groupId:                        args.GroupId,
+		diskBackupSnapshotExportBucket: args.DiskBackupSnapshotExportBucket,
 	}
 }
 
-func (r CreateExportBucketApiRequest) Execute() (*DiskBackupSnapshotAWSExportBucket, *http.Response, error) {
+func (r CreateExportBucketApiRequest) Execute() (*DiskBackupSnapshotExportBucket, *http.Response, error) {
 	return r.ApiService.CreateExportBucketExecute(r)
 }
 
 /*
-CreateExportBucket Grant Access to AWS S3 Bucket for Cloud Backup Snapshot Exports
+CreateExportBucket Grant Access to AWS S3 Bucket or Azure Blob Storage for Cloud Backup Snapshot Exports
 
-Grants MongoDB Cloud access to the specified AWS S3 bucket. This enables this bucket to receive Atlas Cloud Backup snapshots. To use this resource, the requesting API Key must have the Project Owner role.
+Grants MongoDB Cloud access to the specified AWS S3 bucket or Azure Blob Storage. This enables this bucket to receive Atlas Cloud Backup snapshots. To use this resource, the requesting API Key must have the Project Owner role. Deprecated versions: v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return CreateExportBucketApiRequest
 */
-func (a *CloudBackupsApiService) CreateExportBucket(ctx context.Context, groupId string, diskBackupSnapshotAWSExportBucket *DiskBackupSnapshotAWSExportBucket) CreateExportBucketApiRequest {
+func (a *CloudBackupsApiService) CreateExportBucket(ctx context.Context, groupId string, diskBackupSnapshotExportBucket *DiskBackupSnapshotExportBucket) CreateExportBucketApiRequest {
 	return CreateExportBucketApiRequest{
-		ApiService:                        a,
-		ctx:                               ctx,
-		groupId:                           groupId,
-		diskBackupSnapshotAWSExportBucket: diskBackupSnapshotAWSExportBucket,
+		ApiService:                     a,
+		ctx:                            ctx,
+		groupId:                        groupId,
+		diskBackupSnapshotExportBucket: diskBackupSnapshotExportBucket,
 	}
 }
 
 // Execute executes the request
 //
-//	@return DiskBackupSnapshotAWSExportBucket
-func (a *CloudBackupsApiService) CreateExportBucketExecute(r CreateExportBucketApiRequest) (*DiskBackupSnapshotAWSExportBucket, *http.Response, error) {
+//	@return DiskBackupSnapshotExportBucket
+func (a *CloudBackupsApiService) CreateExportBucketExecute(r CreateExportBucketApiRequest) (*DiskBackupSnapshotExportBucket, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *DiskBackupSnapshotAWSExportBucket
+		localVarReturnValue *DiskBackupSnapshotExportBucket
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudBackupsApiService.CreateExportBucket")
@@ -1172,12 +1172,12 @@ func (a *CloudBackupsApiService) CreateExportBucketExecute(r CreateExportBucketA
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.diskBackupSnapshotAWSExportBucket == nil {
-		return localVarReturnValue, nil, reportError("diskBackupSnapshotAWSExportBucket is required and must be specified")
+	if r.diskBackupSnapshotExportBucket == nil {
+		return localVarReturnValue, nil, reportError("diskBackupSnapshotExportBucket is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2024-05-30+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -1186,7 +1186,7 @@ func (a *CloudBackupsApiService) CreateExportBucketExecute(r CreateExportBucketA
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json", "application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-05-30+json", "application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -1194,7 +1194,7 @@ func (a *CloudBackupsApiService) CreateExportBucketExecute(r CreateExportBucketA
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.diskBackupSnapshotAWSExportBucket
+	localVarPostBody = r.diskBackupSnapshotExportBucket
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2328,18 +2328,18 @@ func (a *CloudBackupsApiService) GetExportBucketWithParams(ctx context.Context, 
 	}
 }
 
-func (r GetExportBucketApiRequest) Execute() (*DiskBackupSnapshotAWSExportBucket, *http.Response, error) {
+func (r GetExportBucketApiRequest) Execute() (*DiskBackupSnapshotExportBucket, *http.Response, error) {
 	return r.ApiService.GetExportBucketExecute(r)
 }
 
 /*
-GetExportBucket Return One AWS S3 Bucket Used for Cloud Backup Snapshot Exports
+GetExportBucket Return One AWS S3 Bucket or Azure Blob Storage Used for Cloud Backup Snapshot Exports
 
-Returns one AWS S3 bucket associated with the specified project. To use this resource, the requesting API Key must have the Project Read Only role.
+Returns one AWS S3 bucket or Azure Blob Storage associated with the specified project. To use this resource, the requesting API Key must have the Project Read Only role. Deprecated versions: v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param exportBucketId Unique string that identifies the AWS S3 bucket to which you export your snapshots.
+	@param exportBucketId Unique string that identifies the AWS S3 bucket or Azure Blob Storage to which you export your snapshots.
 	@return GetExportBucketApiRequest
 */
 func (a *CloudBackupsApiService) GetExportBucket(ctx context.Context, groupId string, exportBucketId string) GetExportBucketApiRequest {
@@ -2353,13 +2353,13 @@ func (a *CloudBackupsApiService) GetExportBucket(ctx context.Context, groupId st
 
 // Execute executes the request
 //
-//	@return DiskBackupSnapshotAWSExportBucket
-func (a *CloudBackupsApiService) GetExportBucketExecute(r GetExportBucketApiRequest) (*DiskBackupSnapshotAWSExportBucket, *http.Response, error) {
+//	@return DiskBackupSnapshotExportBucket
+func (a *CloudBackupsApiService) GetExportBucketExecute(r GetExportBucketApiRequest) (*DiskBackupSnapshotExportBucket, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *DiskBackupSnapshotAWSExportBucket
+		localVarReturnValue *DiskBackupSnapshotExportBucket
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudBackupsApiService.GetExportBucket")
@@ -2385,7 +2385,7 @@ func (a *CloudBackupsApiService) GetExportBucketExecute(r GetExportBucketApiRequ
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json", "application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-05-30+json", "application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -3291,14 +3291,14 @@ func (r ListExportBucketsApiRequest) PageNum(pageNum int) ListExportBucketsApiRe
 	return r
 }
 
-func (r ListExportBucketsApiRequest) Execute() (*PaginatedBackupSnapshotExportBucket, *http.Response, error) {
+func (r ListExportBucketsApiRequest) Execute() (*PaginatedBackupSnapshotExportBuckets, *http.Response, error) {
 	return r.ApiService.ListExportBucketsExecute(r)
 }
 
 /*
-ListExportBuckets Return All AWS S3 Buckets Used for Cloud Backup Snapshot Exports
+ListExportBuckets Return All AWS S3 Buckets and Azure Blob Storages Used for Cloud Backup Snapshot Exports
 
-Returns all AWS S3 buckets associated with the specified project. To use this resource, the requesting API Key must have the Project Read Only role.
+Returns all AWS S3 buckets and Azure Blob Storages associated with the specified project. To use this resource, the requesting API Key must have the Project Read Only role. Deprecated versions: v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -3314,13 +3314,13 @@ func (a *CloudBackupsApiService) ListExportBuckets(ctx context.Context, groupId 
 
 // Execute executes the request
 //
-//	@return PaginatedBackupSnapshotExportBucket
-func (a *CloudBackupsApiService) ListExportBucketsExecute(r ListExportBucketsApiRequest) (*PaginatedBackupSnapshotExportBucket, *http.Response, error) {
+//	@return PaginatedBackupSnapshotExportBuckets
+func (a *CloudBackupsApiService) ListExportBucketsExecute(r ListExportBucketsApiRequest) (*PaginatedBackupSnapshotExportBuckets, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *PaginatedBackupSnapshotExportBucket
+		localVarReturnValue *PaginatedBackupSnapshotExportBuckets
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudBackupsApiService.ListExportBuckets")
@@ -3366,7 +3366,7 @@ func (a *CloudBackupsApiService) ListExportBucketsExecute(r ListExportBucketsApi
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json", "application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-05-30+json", "application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)

@@ -9,7 +9,7 @@ import (
 
 // AlertViewForNdsGroup struct for AlertViewForNdsGroup
 type AlertViewForNdsGroup struct {
-	// Date and time until which this alert has been acknowledged. This parameter expresses its value in the <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\" rel=\"noopener noreferrer\">ISO 8601</a> timestamp format in UTC. The resource returns this parameter if a MongoDB User previously acknowledged this alert.  - To acknowledge this alert forever, set the parameter value to 100 years in the future.  - To unacknowledge a previously acknowledged alert, set the parameter value to a date in the past.
+	// Date and time until which this alert has been acknowledged. This parameter expresses its value in the <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\" rel=\"noopener noreferrer\">ISO 8601</a> timestamp format in UTC. The resource returns this parameter if a MongoDB User previously acknowledged this alert.  - To acknowledge this alert forever, set the parameter value to 100 years in the future.  - To unacknowledge a previously acknowledged alert, do not set this parameter value.
 	AcknowledgedUntil *time.Time `json:"acknowledgedUntil,omitempty"`
 	// Comment that a MongoDB Cloud user submitted when acknowledging the alert.
 	AcknowledgementComment *string `json:"acknowledgementComment,omitempty"`

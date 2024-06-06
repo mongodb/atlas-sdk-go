@@ -6,38 +6,38 @@ import (
 	"encoding/json"
 )
 
-// PaginatedBackupSnapshotExportBucket struct for PaginatedBackupSnapshotExportBucket
-type PaginatedBackupSnapshotExportBucket struct {
+// PaginatedBackupSnapshotExportBuckets struct for PaginatedBackupSnapshotExportBuckets
+type PaginatedBackupSnapshotExportBuckets struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
 	// List of returned documents that MongoDB Cloud providers when completing this request.
 	// Read only field.
-	Results *[]DiskBackupSnapshotAWSExportBucket `json:"results,omitempty"`
+	Results *[]DiskBackupSnapshotExportBucket `json:"results,omitempty"`
 	// Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`.
 	// Read only field.
 	TotalCount *int `json:"totalCount,omitempty"`
 }
 
-// NewPaginatedBackupSnapshotExportBucket instantiates a new PaginatedBackupSnapshotExportBucket object
+// NewPaginatedBackupSnapshotExportBuckets instantiates a new PaginatedBackupSnapshotExportBuckets object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedBackupSnapshotExportBucket() *PaginatedBackupSnapshotExportBucket {
-	this := PaginatedBackupSnapshotExportBucket{}
+func NewPaginatedBackupSnapshotExportBuckets() *PaginatedBackupSnapshotExportBuckets {
+	this := PaginatedBackupSnapshotExportBuckets{}
 	return &this
 }
 
-// NewPaginatedBackupSnapshotExportBucketWithDefaults instantiates a new PaginatedBackupSnapshotExportBucket object
+// NewPaginatedBackupSnapshotExportBucketsWithDefaults instantiates a new PaginatedBackupSnapshotExportBuckets object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewPaginatedBackupSnapshotExportBucketWithDefaults() *PaginatedBackupSnapshotExportBucket {
-	this := PaginatedBackupSnapshotExportBucket{}
+func NewPaginatedBackupSnapshotExportBucketsWithDefaults() *PaginatedBackupSnapshotExportBuckets {
+	this := PaginatedBackupSnapshotExportBuckets{}
 	return &this
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
-func (o *PaginatedBackupSnapshotExportBucket) GetLinks() []Link {
+func (o *PaginatedBackupSnapshotExportBuckets) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
 		return ret
@@ -47,7 +47,7 @@ func (o *PaginatedBackupSnapshotExportBucket) GetLinks() []Link {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedBackupSnapshotExportBucket) GetLinksOk() (*[]Link, bool) {
+func (o *PaginatedBackupSnapshotExportBuckets) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -56,7 +56,7 @@ func (o *PaginatedBackupSnapshotExportBucket) GetLinksOk() (*[]Link, bool) {
 }
 
 // HasLinks returns a boolean if a field has been set.
-func (o *PaginatedBackupSnapshotExportBucket) HasLinks() bool {
+func (o *PaginatedBackupSnapshotExportBuckets) HasLinks() bool {
 	if o != nil && !IsNil(o.Links) {
 		return true
 	}
@@ -65,14 +65,14 @@ func (o *PaginatedBackupSnapshotExportBucket) HasLinks() bool {
 }
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
-func (o *PaginatedBackupSnapshotExportBucket) SetLinks(v []Link) {
+func (o *PaginatedBackupSnapshotExportBuckets) SetLinks(v []Link) {
 	o.Links = &v
 }
 
 // GetResults returns the Results field value if set, zero value otherwise
-func (o *PaginatedBackupSnapshotExportBucket) GetResults() []DiskBackupSnapshotAWSExportBucket {
+func (o *PaginatedBackupSnapshotExportBuckets) GetResults() []DiskBackupSnapshotExportBucket {
 	if o == nil || IsNil(o.Results) {
-		var ret []DiskBackupSnapshotAWSExportBucket
+		var ret []DiskBackupSnapshotExportBucket
 		return ret
 	}
 	return *o.Results
@@ -80,7 +80,7 @@ func (o *PaginatedBackupSnapshotExportBucket) GetResults() []DiskBackupSnapshotA
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedBackupSnapshotExportBucket) GetResultsOk() (*[]DiskBackupSnapshotAWSExportBucket, bool) {
+func (o *PaginatedBackupSnapshotExportBuckets) GetResultsOk() (*[]DiskBackupSnapshotExportBucket, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
@@ -89,7 +89,7 @@ func (o *PaginatedBackupSnapshotExportBucket) GetResultsOk() (*[]DiskBackupSnaps
 }
 
 // HasResults returns a boolean if a field has been set.
-func (o *PaginatedBackupSnapshotExportBucket) HasResults() bool {
+func (o *PaginatedBackupSnapshotExportBuckets) HasResults() bool {
 	if o != nil && !IsNil(o.Results) {
 		return true
 	}
@@ -97,13 +97,13 @@ func (o *PaginatedBackupSnapshotExportBucket) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []DiskBackupSnapshotAWSExportBucket and assigns it to the Results field.
-func (o *PaginatedBackupSnapshotExportBucket) SetResults(v []DiskBackupSnapshotAWSExportBucket) {
+// SetResults gets a reference to the given []DiskBackupSnapshotExportBucket and assigns it to the Results field.
+func (o *PaginatedBackupSnapshotExportBuckets) SetResults(v []DiskBackupSnapshotExportBucket) {
 	o.Results = &v
 }
 
 // GetTotalCount returns the TotalCount field value if set, zero value otherwise
-func (o *PaginatedBackupSnapshotExportBucket) GetTotalCount() int {
+func (o *PaginatedBackupSnapshotExportBuckets) GetTotalCount() int {
 	if o == nil || IsNil(o.TotalCount) {
 		var ret int
 		return ret
@@ -113,7 +113,7 @@ func (o *PaginatedBackupSnapshotExportBucket) GetTotalCount() int {
 
 // GetTotalCountOk returns a tuple with the TotalCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedBackupSnapshotExportBucket) GetTotalCountOk() (*int, bool) {
+func (o *PaginatedBackupSnapshotExportBuckets) GetTotalCountOk() (*int, bool) {
 	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
@@ -122,7 +122,7 @@ func (o *PaginatedBackupSnapshotExportBucket) GetTotalCountOk() (*int, bool) {
 }
 
 // HasTotalCount returns a boolean if a field has been set.
-func (o *PaginatedBackupSnapshotExportBucket) HasTotalCount() bool {
+func (o *PaginatedBackupSnapshotExportBuckets) HasTotalCount() bool {
 	if o != nil && !IsNil(o.TotalCount) {
 		return true
 	}
@@ -131,18 +131,18 @@ func (o *PaginatedBackupSnapshotExportBucket) HasTotalCount() bool {
 }
 
 // SetTotalCount gets a reference to the given int and assigns it to the TotalCount field.
-func (o *PaginatedBackupSnapshotExportBucket) SetTotalCount(v int) {
+func (o *PaginatedBackupSnapshotExportBuckets) SetTotalCount(v int) {
 	o.TotalCount = &v
 }
 
-func (o PaginatedBackupSnapshotExportBucket) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o PaginatedBackupSnapshotExportBuckets) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o PaginatedBackupSnapshotExportBucket) ToMap() (map[string]interface{}, error) {
+func (o PaginatedBackupSnapshotExportBuckets) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

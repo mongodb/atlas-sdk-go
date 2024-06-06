@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## AcknowledgeAlert
 
-> AlertViewForNdsGroup AcknowledgeAlert(ctx, groupId, alertId, alertViewForNdsGroup AlertViewForNdsGroup).Execute()
+> AlertViewForNdsGroup AcknowledgeAlert(ctx, groupId, alertId, acknowledgeAlert AcknowledgeAlert).Execute()
 
 Acknowledge One Alert from One Project
 
@@ -39,9 +39,9 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     alertId := "alertId_example" // string | 
-    alertViewForNdsGroup := *openapiclient.NewAlertViewForNdsGroup() // AlertViewForNdsGroup | 
+    acknowledgeAlert := *openapiclient.NewAcknowledgeAlert() // AcknowledgeAlert | 
 
-    resp, r, err := sdk.AlertsApi.AcknowledgeAlert(context.Background(), groupId, alertId, &alertViewForNdsGroup).Execute()
+    resp, r, err := sdk.AlertsApi.AcknowledgeAlert(context.Background(), groupId, alertId, &acknowledgeAlert).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AlertsApi.AcknowledgeAlert``: %v\n", err)
         apiError := admin.AsError(err)
@@ -70,7 +70,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **alertViewForNdsGroup** | [**AlertViewForNdsGroup**](AlertViewForNdsGroup.md) | Confirm one alert. | 
+ **acknowledgeAlert** | [**AcknowledgeAlert**](AcknowledgeAlert.md) | Acknowledges or unacknowledges one alert. | 
 
 ### Return type
 
@@ -81,8 +81,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/vnd.atlas.2023-01-01+json
-- **Accept**: application/vnd.atlas.2023-01-01+json, application/json
+- **Content-Type**: application/vnd.atlas.2024-05-30+json
+- **Accept**: application/vnd.atlas.2024-05-30+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

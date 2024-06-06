@@ -359,7 +359,7 @@ type ProjectsApi interface {
 	/*
 		ListProjects Return All Projects
 
-		Returns details about all projects. Projects group clusters into logical collections that support an application environment, workload, or both. Each project can have its own users, teams, security, tags, and alert settings. To use this resource, the requesting API Key must have the Read Write role.
+		Returns details about all projects. Projects group clusters into logical collections that support an application environment, workload, or both. Each project can have its own users, teams, security, tags, and alert settings. To use this resource, the requesting API Key must have the Organization Read Only role or higher.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@return ListProjectsApiRequest
@@ -377,6 +377,30 @@ type ProjectsApi interface {
 
 	// Method available only for mocking purposes
 	ListProjectsExecute(r ListProjectsApiRequest) (*PaginatedAtlasGroup, *http.Response, error)
+
+	/*
+		MigrateProjectToAnotherOrg Migrate One Project to Another Organization
+
+		Migrates a project from its current organization to another organization. All project users and their roles will be copied to the same project in the destination organization. You must include an organization API key with the Organization Owner role for the destination organization to verify access to the destination organization when you authenticate with Programmatic API Keys. Otherwise, the requesting user must have the Organization Owner role in both organizations. To use this resource, the requesting API Key must have the Organization Owner role.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param groupMigrationRequest Migrates a project from its current organization to another organization.
+		@return MigrateProjectToAnotherOrgApiRequest
+	*/
+	MigrateProjectToAnotherOrg(ctx context.Context, groupId string, groupMigrationRequest *GroupMigrationRequest) MigrateProjectToAnotherOrgApiRequest
+	/*
+		MigrateProjectToAnotherOrg Migrate One Project to Another Organization
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param MigrateProjectToAnotherOrgApiParams - Parameters for the request
+		@return MigrateProjectToAnotherOrgApiRequest
+	*/
+	MigrateProjectToAnotherOrgWithParams(ctx context.Context, args *MigrateProjectToAnotherOrgApiParams) MigrateProjectToAnotherOrgApiRequest
+
+	// Method available only for mocking purposes
+	MigrateProjectToAnotherOrgExecute(r MigrateProjectToAnotherOrgApiRequest) (*Group, *http.Response, error)
 
 	/*
 		RemoveProjectUser Remove One User from One Project
@@ -2354,7 +2378,7 @@ func (r ListProjectsApiRequest) Execute() (*PaginatedAtlasGroup, *http.Response,
 /*
 ListProjects Return All Projects
 
-Returns details about all projects. Projects group clusters into logical collections that support an application environment, workload, or both. Each project can have its own users, teams, security, tags, and alert settings. To use this resource, the requesting API Key must have the Read Write role.
+Returns details about all projects. Projects group clusters into logical collections that support an application environment, workload, or both. Each project can have its own users, teams, security, tags, and alert settings. To use this resource, the requesting API Key must have the Organization Read Only role or higher.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ListProjectsApiRequest
@@ -2426,6 +2450,126 @@ func (a *ProjectsApiService) ListProjectsExecute(r ListProjectsApiRequest) (*Pag
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type MigrateProjectToAnotherOrgApiRequest struct {
+	ctx                   context.Context
+	ApiService            ProjectsApi
+	groupId               string
+	groupMigrationRequest *GroupMigrationRequest
+}
+
+type MigrateProjectToAnotherOrgApiParams struct {
+	GroupId               string
+	GroupMigrationRequest *GroupMigrationRequest
+}
+
+func (a *ProjectsApiService) MigrateProjectToAnotherOrgWithParams(ctx context.Context, args *MigrateProjectToAnotherOrgApiParams) MigrateProjectToAnotherOrgApiRequest {
+	return MigrateProjectToAnotherOrgApiRequest{
+		ApiService:            a,
+		ctx:                   ctx,
+		groupId:               args.GroupId,
+		groupMigrationRequest: args.GroupMigrationRequest,
+	}
+}
+
+func (r MigrateProjectToAnotherOrgApiRequest) Execute() (*Group, *http.Response, error) {
+	return r.ApiService.MigrateProjectToAnotherOrgExecute(r)
+}
+
+/*
+MigrateProjectToAnotherOrg Migrate One Project to Another Organization
+
+Migrates a project from its current organization to another organization. All project users and their roles will be copied to the same project in the destination organization. You must include an organization API key with the Organization Owner role for the destination organization to verify access to the destination organization when you authenticate with Programmatic API Keys. Otherwise, the requesting user must have the Organization Owner role in both organizations. To use this resource, the requesting API Key must have the Organization Owner role.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return MigrateProjectToAnotherOrgApiRequest
+*/
+func (a *ProjectsApiService) MigrateProjectToAnotherOrg(ctx context.Context, groupId string, groupMigrationRequest *GroupMigrationRequest) MigrateProjectToAnotherOrgApiRequest {
+	return MigrateProjectToAnotherOrgApiRequest{
+		ApiService:            a,
+		ctx:                   ctx,
+		groupId:               groupId,
+		groupMigrationRequest: groupMigrationRequest,
+	}
+}
+
+// Execute executes the request
+//
+//	@return Group
+func (a *ProjectsApiService) MigrateProjectToAnotherOrgExecute(r MigrateProjectToAnotherOrgApiRequest) (*Group, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Group
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.MigrateProjectToAnotherOrg")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}:migrate"
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.groupMigrationRequest == nil {
+		return localVarReturnValue, nil, reportError("groupMigrationRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2024-05-30+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-05-30+json", "application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.groupMigrationRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
