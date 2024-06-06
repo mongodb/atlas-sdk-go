@@ -9,7 +9,6 @@ const {
   applyRemoveNullableTransformations,
   removeRefsFromParameters,
 } = require("./transformations");
-
 const { resolveOpenAPIReference } = require("./engine/transformers");
 
 const removeUnusedSchemas = require("./engine/removeUnused");
@@ -21,7 +20,6 @@ const ignoredModelNames = require("./name.ignore.json").ignoreModels;
  */
 module.exports = function runTransformations(openapi) {
   openapi = searchAPIIssuesTransformation(openapi);
-
   openapi = applyDiscriminatorTransformations(openapi);
   openapi = applyOneOfTransformations(openapi);
   openapi = applyAnyOfTransformations(openapi);
@@ -74,39 +72,45 @@ module.exports = function runTransformations(openapi) {
 
 // Temporary transformation until new search version is introduced.
 function searchAPIIssuesTransformation(openapi) {
-  if (openapi.components.schemas.SearchIndexResponse) {
-    const responseParent = openapi.components.schemas.SearchIndexResponse;
-    if (
-      responseParent.properties &&
-      responseParent.properties.latestDefinition
-    ) {
-      if (
-        responseParent.discriminator &&
-        responseParent.discriminator.mapping
-      ) {
-        responseParent.properties.latestDefinition = { oneOf: [] };
-        for (const mappingKey in responseParent.discriminator.mapping) {
-          const ref = responseParent.discriminator.mapping[mappingKey];
-          if (!ref) {
-            continue; // Skip if there's no reference
-          }
-          const reference = resolveOpenAPIReference(openapi, ref);
-          responseParent.properties.latestDefinition.oneOf.push({
-            $ref:
+  var modelsToFix = [
+    {
+      modelObject: openapi.components.schemas.SearchIndexResponse,
+      property: "latestDefinition",
+    },
+    {
+      modelObject: openapi.components.schemas.SearchIndexCreateRequest,
+      property: "definition",
+    },
+  ];
+  for (model of modelsToFix) {
+    const responseParent = model.modelObject;
+    if (responseParent) {
+        if (
+          responseParent.discriminator &&
+          responseParent.discriminator.mapping
+        ) {
+          responseParent.properties[model.property] = { oneOf: [] };
+          for (const mappingKey in responseParent.discriminator.mapping) {
+            const ref = responseParent.discriminator.mapping[mappingKey];
+            if (!ref) {
+              continue; // Skip if there's no reference
+            }
+            const reference = resolveOpenAPIReference(openapi, ref);
+            if (
+              reference && 
               reference.allOf &&
               reference.allOf[1] &&
-              reference.allOf[1].properties &&
-              reference.allOf[1].properties.latestDefinition &&
-              reference.allOf[1].properties.latestDefinition.$ref,
-          });
-          delete reference.allOf[1]?.properties?.latestDefinition;
+              reference.allOf[1].properties[model.property]
+            ) {
+              responseParent.properties[model.property].oneOf.push({
+                $ref: reference.allOf[1].properties[model.property].$ref,
+              });
+              delete reference.allOf[1].properties[model.property];
+          }
         }
       }
     }
+    console.error("SearchTransformation", responseParent);
   }
-  console.debug(
-    "SearchIndexResponse",
-    openapi.components?.schemas?.SearchIndexResponse
-  );
   return openapi;
 }
