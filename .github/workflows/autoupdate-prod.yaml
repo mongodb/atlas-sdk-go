@@ -89,7 +89,8 @@ jobs:
             2. If PR contains breaking changes, review `./releaser/breaking_changes/{release_version}.md` file
             3. Approve and merge PR into the main branch 
             4. After the merge automated release process will be triggered. 
-            
-          
 
+            ## Troubleshooting 
 
+            To skip release process after merge please revert changes from `version.go` file.
+            Release can be triggered by restoring changes in version.go.
