@@ -94,6 +94,3 @@ jobs:
 
             To skip release process after merge please revert changes from `version.go` file.
             Release can be triggered by restoring changes in version.go.
-
-            
-            
