@@ -1,8 +1,6 @@
 {
   "ignoredProperties": [
     "units",
-    "latestDefinition",
-    "definition",
     "threshold",
     "eventTypeName",
     "currentValue",
