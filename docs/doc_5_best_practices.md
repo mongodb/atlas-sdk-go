@@ -44,6 +44,7 @@ The SDK provides a dedicated `HasFieldName` or `GetFieldName` function for each 
 
 - Use `time.Time` methods to compare date values:
 When you have confirmed that the `time.Time pointer` is non-nil, you can safely use `time.Time` methods to compare the actual date values. Commonly used methods for comparison include `Before`, `After`, and `Equal`:
+
 ```go
 // Surrounding code omitted for brevity
 
