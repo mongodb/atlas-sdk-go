@@ -17974,9 +17974,6 @@ components:
             $ref: "#/components/schemas/BasicDBObject"
         tokenizer:
           type: object
-          additionalProperties:
-            description: Tokenizer that you want to use to create tokens. Tokens determine
-              how Atlas Search splits up text into discrete chunks for indexing.
           description: Tokenizer that you want to use to create tokens. Tokens determine
             how Atlas Search splits up text into discrete chunks for indexing.
       required:
@@ -19201,7 +19198,6 @@ components:
       description: Name of the cloud provider region hosting Atlas Stream Processing.
     BasicDBObject:
       type: object
-      additionalProperties: {}
     BiConnector:
       type: object
       description: Settings needed to configure the MongoDB Connector for Business
@@ -25425,24 +25421,6 @@ components:
             applies to all index types.
         partialFilterExpression:
           type: object
-          additionalProperties:
-            description: >-
-              Rules that limit the documents that the index references to a
-              filter expression. All MongoDB index types accept a
-              **partialFilterExpression** option. **partialFilterExpression**
-              can include following expressions:
-
-
-              - equality (`"parameter" : "value"` or using the `$eq` operator)
-
-              - `"$exists": true`
-
-              , maximum: `$gt`, `$gte`, `$lt`, `$lte` comparisons
-
-              - `$type`
-
-              - `$and` (top-level only)
-               This option applies to all index types.
           description: >-
             Rules that limit the documents that the index references to a filter
             expression. All MongoDB index types accept a
@@ -25474,17 +25452,6 @@ components:
             Compound indexes that includes one or more indexes with `2dsphere` keys alongside other key types, only the `2dsphere` index parameters determine which documents the index references. If you run MongoDB 3.2 or later, use partial indexes. This option applies to all index types.
         storageEngine:
           type: object
-          additionalProperties:
-            description: 'Storage engine set for the specific index. This value can be set
-              only at creation. This option uses the following format:
-              `"storageEngine" : { "<storage-engine-name>" : "<options>" }`
-              MongoDB validates storage engine configuration options when
-              creating indexes. To support replica sets with members with
-              different storage engines, MongoDB logs these options to the oplog
-              during replication. This option applies to all index types.'
-            externalDocs:
-              description: MongoDB Server Storage Engines
-              url: https://docs.mongodb.com/manual/core/storage-engines/
           description: 'Storage engine set for the specific index. This value can be set
             only at creation. This option uses the following format:
             `"storageEngine" : { "<storage-engine-name>" : "<options>" }`
@@ -25513,13 +25480,6 @@ components:
             indexes."
         weights:
           type: object
-          additionalProperties:
-            description: Relative importance to place upon provided index parameters. This
-              object expresses this as key/value pairs of index parameter and
-              weight to apply to that parameter. You can specify weights for
-              some or all the indexed parameters. The weight must be an integer
-              between 1 and 99,999. MongoDB 5.0 and later can apply **weights**
-              to **text** indexes only.
           description: Relative importance to place upon provided index parameters. This
             object expresses this as key/value pairs of index parameter and
             weight to apply to that parameter. You can specify weights for some
@@ -28775,13 +28735,6 @@ components:
             url: https://dochub.mongodb.org/core/field-mapping-definition-fts#static-and-dynamic-mappings
         fields:
           type: object
-          additionalProperties:
-            description: One or more field specifications for the Atlas Search index.
-              Required if **mappings.dynamic** is omitted or set to **false**.
-            externalDocs:
-              description: Atlas Search Index
-              url: https://dochub.mongodb.org/core/index-definitions-fts
-            x-additionalPropertiesName: Field Name
           description: One or more field specifications for the Atlas Search index.
             Required if **mappings.dynamic** is omitted or set to **false**.
           externalDocs:
@@ -29386,7 +29339,6 @@ components:
           description: List of fields to use for the shard key.
           items:
             type: object
-            additionalProperties: {}
           uniqueItems: true
           writeOnly: true
       writeOnly: true
@@ -32748,10 +32700,6 @@ components:
             url: https://dochub.mongodb.org/core/index-definitions-fts#field-mapping-examples
         fields:
           type: object
-          additionalProperties:
-            externalDocs:
-              description: Atlas Search Field Mappings
-              url: https://dochub.mongodb.org/core/field-mapping-definition-fts#define-field-mappings
           description: One or more field specifications for the Atlas Search index.
             Required if **mappings.dynamic** is omitted or set to **false**.
           externalDocs:

@@ -27,7 +27,7 @@ function applyRemoveObjectAdditonalProperties(api) {
       // Remove enum field if present
       if (obj.hasOwnProperty("additionalProperties")) {
         if (obj.additionalProperties.type === "object") {
-          delete obj.additionalProperties.type;
+          delete obj.additionalProperties;
         }
       }
 
