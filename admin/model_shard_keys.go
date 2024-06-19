@@ -10,7 +10,7 @@ import (
 type ShardKeys struct {
 	// List of fields to use for the shard key.
 	// Write only field.
-	Key *[]map[string]interface{} `json:"key,omitempty"`
+	Key *[]interface{} `json:"key,omitempty"`
 }
 
 // NewShardKeys instantiates a new ShardKeys object
@@ -31,9 +31,9 @@ func NewShardKeysWithDefaults() *ShardKeys {
 }
 
 // GetKey returns the Key field value if set, zero value otherwise
-func (o *ShardKeys) GetKey() []map[string]interface{} {
+func (o *ShardKeys) GetKey() []interface{} {
 	if o == nil || IsNil(o.Key) {
-		var ret []map[string]interface{}
+		var ret []interface{}
 		return ret
 	}
 	return *o.Key
@@ -41,7 +41,7 @@ func (o *ShardKeys) GetKey() []map[string]interface{} {
 
 // GetKeyOk returns a tuple with the Key field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ShardKeys) GetKeyOk() (*[]map[string]interface{}, bool) {
+func (o *ShardKeys) GetKeyOk() (*[]interface{}, bool) {
 	if o == nil || IsNil(o.Key) {
 		return nil, false
 	}
@@ -58,8 +58,8 @@ func (o *ShardKeys) HasKey() bool {
 	return false
 }
 
-// SetKey gets a reference to the given []map[string]interface{} and assigns it to the Key field.
-func (o *ShardKeys) SetKey(v []map[string]interface{}) {
+// SetKey gets a reference to the given []interface{} and assigns it to the Key field.
+func (o *ShardKeys) SetKey(v []interface{}) {
 	o.Key = &v
 }
 

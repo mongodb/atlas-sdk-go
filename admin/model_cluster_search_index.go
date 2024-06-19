@@ -34,7 +34,7 @@ type ClusterSearchIndex struct {
 	// Rule sets that map words to their synonyms in this index.
 	Synonyms *[]SearchSynonymMappingDefinition `json:"synonyms,omitempty"`
 	// Settings that configure the fields, one per object, to index. You must define at least one \"vector\" type field. You can optionally define \"filter\" type fields also.
-	Fields *[]map[string]interface{} `json:"fields,omitempty"`
+	Fields *[]interface{} `json:"fields,omitempty"`
 }
 
 // NewClusterSearchIndex instantiates a new ClusterSearchIndex object
@@ -436,9 +436,9 @@ func (o *ClusterSearchIndex) SetSynonyms(v []SearchSynonymMappingDefinition) {
 }
 
 // GetFields returns the Fields field value if set, zero value otherwise
-func (o *ClusterSearchIndex) GetFields() []map[string]interface{} {
+func (o *ClusterSearchIndex) GetFields() []interface{} {
 	if o == nil || IsNil(o.Fields) {
-		var ret []map[string]interface{}
+		var ret []interface{}
 		return ret
 	}
 	return *o.Fields
@@ -446,7 +446,7 @@ func (o *ClusterSearchIndex) GetFields() []map[string]interface{} {
 
 // GetFieldsOk returns a tuple with the Fields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterSearchIndex) GetFieldsOk() (*[]map[string]interface{}, bool) {
+func (o *ClusterSearchIndex) GetFieldsOk() (*[]interface{}, bool) {
 	if o == nil || IsNil(o.Fields) {
 		return nil, false
 	}
@@ -463,8 +463,8 @@ func (o *ClusterSearchIndex) HasFields() bool {
 	return false
 }
 
-// SetFields gets a reference to the given []map[string]interface{} and assigns it to the Fields field.
-func (o *ClusterSearchIndex) SetFields(v []map[string]interface{}) {
+// SetFields gets a reference to the given []interface{} and assigns it to the Fields field.
+func (o *ClusterSearchIndex) SetFields(v []interface{}) {
 	o.Fields = &v
 }
 

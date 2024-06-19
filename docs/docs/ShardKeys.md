@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Key** | Pointer to **[]map[string]interface{}** | List of fields to use for the shard key. | [optional] 
+**Key** | Pointer to **[]interface{}** | List of fields to use for the shard key. | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetKey
 
-`func (o *ShardKeys) GetKey() []map[string]interface{}`
+`func (o *ShardKeys) GetKey() []interface{}`
 
 GetKey returns the Key field if non-nil, zero value otherwise.
 
 ### GetKeyOk
 
-`func (o *ShardKeys) GetKeyOk() (*[]map[string]interface{}, bool)`
+`func (o *ShardKeys) GetKeyOk() (*[]interface{}, bool)`
 
 GetKeyOk returns a tuple with the Key field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetKey
 
-`func (o *ShardKeys) SetKey(v []map[string]interface{})`
+`func (o *ShardKeys) SetKey(v []interface{})`
 
 SetKey sets Key field to given value.
 

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Dynamic** | Pointer to **bool** | Flag that indicates whether the index uses dynamic or static mappings. Required if **mappings.fields** is omitted. | [optional] 
-**Fields** | Pointer to **map[string]interface{}** | One or more field specifications for the Atlas Search index. Required if **mappings.dynamic** is omitted or set to **false**. | [optional] 
+**Fields** | Pointer to **interface{}** | One or more field specifications for the Atlas Search index. Required if **mappings.dynamic** is omitted or set to **false**. | [optional] 
 
 ## Methods
 
@@ -52,20 +52,20 @@ SetDynamic sets Dynamic field to given value.
 HasDynamic returns a boolean if a field has been set.
 ### GetFields
 
-`func (o *SearchMappings) GetFields() map[string]interface{}`
+`func (o *SearchMappings) GetFields() interface{}`
 
 GetFields returns the Fields field if non-nil, zero value otherwise.
 
 ### GetFieldsOk
 
-`func (o *SearchMappings) GetFieldsOk() (*map[string]interface{}, bool)`
+`func (o *SearchMappings) GetFieldsOk() (*interface{}, bool)`
 
 GetFieldsOk returns a tuple with the Fields field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFields
 
-`func (o *SearchMappings) SetFields(v map[string]interface{})`
+`func (o *SearchMappings) SetFields(v interface{})`
 
 SetFields sets Fields field to given value.
 

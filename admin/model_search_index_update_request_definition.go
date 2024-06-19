@@ -20,7 +20,7 @@ type SearchIndexUpdateRequestDefinition struct {
 	// Rule sets that map words to their synonyms in this index.
 	Synonyms *[]SearchSynonymMappingDefinition `json:"synonyms,omitempty"`
 	// Settings that configure the fields, one per object, to index. You must define at least one \"vector\" type field. You can optionally define \"filter\" type fields also.
-	Fields *[]map[string]interface{} `json:"fields,omitempty"`
+	Fields *[]interface{} `json:"fields,omitempty"`
 }
 
 // NewSearchIndexUpdateRequestDefinition instantiates a new SearchIndexUpdateRequestDefinition object
@@ -248,9 +248,9 @@ func (o *SearchIndexUpdateRequestDefinition) SetSynonyms(v []SearchSynonymMappin
 }
 
 // GetFields returns the Fields field value if set, zero value otherwise
-func (o *SearchIndexUpdateRequestDefinition) GetFields() []map[string]interface{} {
+func (o *SearchIndexUpdateRequestDefinition) GetFields() []interface{} {
 	if o == nil || IsNil(o.Fields) {
-		var ret []map[string]interface{}
+		var ret []interface{}
 		return ret
 	}
 	return *o.Fields
@@ -258,7 +258,7 @@ func (o *SearchIndexUpdateRequestDefinition) GetFields() []map[string]interface{
 
 // GetFieldsOk returns a tuple with the Fields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SearchIndexUpdateRequestDefinition) GetFieldsOk() (*[]map[string]interface{}, bool) {
+func (o *SearchIndexUpdateRequestDefinition) GetFieldsOk() (*[]interface{}, bool) {
 	if o == nil || IsNil(o.Fields) {
 		return nil, false
 	}
@@ -275,8 +275,8 @@ func (o *SearchIndexUpdateRequestDefinition) HasFields() bool {
 	return false
 }
 
-// SetFields gets a reference to the given []map[string]interface{} and assigns it to the Fields field.
-func (o *SearchIndexUpdateRequestDefinition) SetFields(v []map[string]interface{}) {
+// SetFields gets a reference to the given []interface{} and assigns it to the Fields field.
+func (o *SearchIndexUpdateRequestDefinition) SetFields(v []interface{}) {
 	o.Fields = &v
 }
 
