@@ -81,7 +81,8 @@ func (o *ApiAtlasFTSMappings) GetFields() map[string]interface{} {
 // and a boolean to check if the value has been set.
 func (o *ApiAtlasFTSMappings) GetFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Fields) {
-		return map[string]interface{}, false
+		var ret map[string]interface{}
+		return ret, false
 	}
 
 	return o.Fields, true

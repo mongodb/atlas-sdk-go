@@ -193,7 +193,8 @@ func (o *SearchIndexUpdateRequestDefinition) GetStoredSource() interface{} {
 // and a boolean to check if the value has been set.
 func (o *SearchIndexUpdateRequestDefinition) GetStoredSourceOk() (interface{}, bool) {
 	if o == nil || IsNil(o.StoredSource) {
-		return interface{}, false
+		var ret interface{}
+		return ret, false
 	}
 
 	return o.StoredSource, true
