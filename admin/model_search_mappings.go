@@ -77,7 +77,7 @@ func (o *SearchMappings) GetFields() map[string]interface{} {
 // and a boolean to check if the value has been set.
 func (o *SearchMappings) GetFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Fields) {
-		return map[string]interface{}{}, false
+		return map[string]interface{}, false
 	}
 
 	return o.Fields, true

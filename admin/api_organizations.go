@@ -84,7 +84,7 @@ type OrganizationsApi interface {
 	DeleteOrganizationWithParams(ctx context.Context, args *DeleteOrganizationApiParams) DeleteOrganizationApiRequest
 
 	// Method available only for mocking purposes
-	DeleteOrganizationExecute(r DeleteOrganizationApiRequest) (map[string]interface{}, *http.Response, error)
+	DeleteOrganizationExecute(r DeleteOrganizationApiRequest) (interface{}, *http.Response, error)
 
 	/*
 		DeleteOrganizationInvitation Cancel One Organization Invitation
@@ -108,7 +108,7 @@ type OrganizationsApi interface {
 	DeleteOrganizationInvitationWithParams(ctx context.Context, args *DeleteOrganizationInvitationApiParams) DeleteOrganizationInvitationApiRequest
 
 	// Method available only for mocking purposes
-	DeleteOrganizationInvitationExecute(r DeleteOrganizationInvitationApiRequest) (map[string]interface{}, *http.Response, error)
+	DeleteOrganizationInvitationExecute(r DeleteOrganizationInvitationApiRequest) (interface{}, *http.Response, error)
 
 	/*
 		GetOrganization Return One Organization
@@ -300,7 +300,7 @@ type OrganizationsApi interface {
 	RemoveOrganizationUserWithParams(ctx context.Context, args *RemoveOrganizationUserApiParams) RemoveOrganizationUserApiRequest
 
 	// Method available only for mocking purposes
-	RemoveOrganizationUserExecute(r RemoveOrganizationUserApiRequest) (map[string]interface{}, *http.Response, error)
+	RemoveOrganizationUserExecute(r RemoveOrganizationUserApiRequest) (interface{}, *http.Response, error)
 
 	/*
 		RenameOrganization Rename One Organization
@@ -680,7 +680,7 @@ func (a *OrganizationsApiService) DeleteOrganizationWithParams(ctx context.Conte
 	}
 }
 
-func (r DeleteOrganizationApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r DeleteOrganizationApiRequest) Execute() (interface{}, *http.Response, error) {
 	return r.ApiService.DeleteOrganizationExecute(r)
 }
 
@@ -708,13 +708,13 @@ func (a *OrganizationsApiService) DeleteOrganization(ctx context.Context, orgId 
 
 // Execute executes the request
 //
-//	@return map[string]interface{}
-func (a *OrganizationsApiService) DeleteOrganizationExecute(r DeleteOrganizationApiRequest) (map[string]interface{}, *http.Response, error) {
+//	@return interface{}
+func (a *OrganizationsApiService) DeleteOrganizationExecute(r DeleteOrganizationApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarReturnValue interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.DeleteOrganization")
@@ -799,7 +799,7 @@ func (a *OrganizationsApiService) DeleteOrganizationInvitationWithParams(ctx con
 	}
 }
 
-func (r DeleteOrganizationInvitationApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r DeleteOrganizationInvitationApiRequest) Execute() (interface{}, *http.Response, error) {
 	return r.ApiService.DeleteOrganizationInvitationExecute(r)
 }
 
@@ -824,13 +824,13 @@ func (a *OrganizationsApiService) DeleteOrganizationInvitation(ctx context.Conte
 
 // Execute executes the request
 //
-//	@return map[string]interface{}
-func (a *OrganizationsApiService) DeleteOrganizationInvitationExecute(r DeleteOrganizationInvitationApiRequest) (map[string]interface{}, *http.Response, error) {
+//	@return interface{}
+func (a *OrganizationsApiService) DeleteOrganizationInvitationExecute(r DeleteOrganizationInvitationApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarReturnValue interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.DeleteOrganizationInvitation")
@@ -1880,7 +1880,7 @@ func (a *OrganizationsApiService) RemoveOrganizationUserWithParams(ctx context.C
 	}
 }
 
-func (r RemoveOrganizationUserApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r RemoveOrganizationUserApiRequest) Execute() (interface{}, *http.Response, error) {
 	return r.ApiService.RemoveOrganizationUserExecute(r)
 }
 
@@ -1905,13 +1905,13 @@ func (a *OrganizationsApiService) RemoveOrganizationUser(ctx context.Context, or
 
 // Execute executes the request
 //
-//	@return map[string]interface{}
-func (a *OrganizationsApiService) RemoveOrganizationUserExecute(r RemoveOrganizationUserApiRequest) (map[string]interface{}, *http.Response, error) {
+//	@return interface{}
+func (a *OrganizationsApiService) RemoveOrganizationUserExecute(r RemoveOrganizationUserApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarReturnValue interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.RemoveOrganizationUser")

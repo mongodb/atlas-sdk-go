@@ -59,7 +59,7 @@ type DataLakePipelinesApi interface {
 	DeletePipelineWithParams(ctx context.Context, args *DeletePipelineApiParams) DeletePipelineApiRequest
 
 	// Method available only for mocking purposes
-	DeletePipelineExecute(r DeletePipelineApiRequest) (map[string]interface{}, *http.Response, error)
+	DeletePipelineExecute(r DeletePipelineApiRequest) (interface{}, *http.Response, error)
 
 	/*
 		DeletePipelineRunDataset Delete Pipeline Run Dataset
@@ -84,7 +84,7 @@ type DataLakePipelinesApi interface {
 	DeletePipelineRunDatasetWithParams(ctx context.Context, args *DeletePipelineRunDatasetApiParams) DeletePipelineRunDatasetApiRequest
 
 	// Method available only for mocking purposes
-	DeletePipelineRunDatasetExecute(r DeletePipelineRunDatasetApiRequest) (map[string]interface{}, *http.Response, error)
+	DeletePipelineRunDatasetExecute(r DeletePipelineRunDatasetApiRequest) (interface{}, *http.Response, error)
 
 	/*
 		GetPipeline Return One Data Lake Pipeline
@@ -473,7 +473,7 @@ func (a *DataLakePipelinesApiService) DeletePipelineWithParams(ctx context.Conte
 	}
 }
 
-func (r DeletePipelineApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r DeletePipelineApiRequest) Execute() (interface{}, *http.Response, error) {
 	return r.ApiService.DeletePipelineExecute(r)
 }
 
@@ -498,13 +498,13 @@ func (a *DataLakePipelinesApiService) DeletePipeline(ctx context.Context, groupI
 
 // Execute executes the request
 //
-//	@return map[string]interface{}
-func (a *DataLakePipelinesApiService) DeletePipelineExecute(r DeletePipelineApiRequest) (map[string]interface{}, *http.Response, error) {
+//	@return interface{}
+func (a *DataLakePipelinesApiService) DeletePipelineExecute(r DeletePipelineApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarReturnValue interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataLakePipelinesApiService.DeletePipeline")
@@ -593,7 +593,7 @@ func (a *DataLakePipelinesApiService) DeletePipelineRunDatasetWithParams(ctx con
 	}
 }
 
-func (r DeletePipelineRunDatasetApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r DeletePipelineRunDatasetApiRequest) Execute() (interface{}, *http.Response, error) {
 	return r.ApiService.DeletePipelineRunDatasetExecute(r)
 }
 
@@ -620,13 +620,13 @@ func (a *DataLakePipelinesApiService) DeletePipelineRunDataset(ctx context.Conte
 
 // Execute executes the request
 //
-//	@return map[string]interface{}
-func (a *DataLakePipelinesApiService) DeletePipelineRunDatasetExecute(r DeletePipelineRunDatasetApiRequest) (map[string]interface{}, *http.Response, error) {
+//	@return interface{}
+func (a *DataLakePipelinesApiService) DeletePipelineRunDatasetExecute(r DeletePipelineRunDatasetApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarReturnValue interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataLakePipelinesApiService.DeletePipelineRunDataset")

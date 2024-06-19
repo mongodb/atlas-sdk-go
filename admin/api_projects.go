@@ -108,7 +108,7 @@ type ProjectsApi interface {
 	DeleteProjectWithParams(ctx context.Context, args *DeleteProjectApiParams) DeleteProjectApiRequest
 
 	// Method available only for mocking purposes
-	DeleteProjectExecute(r DeleteProjectApiRequest) (map[string]interface{}, *http.Response, error)
+	DeleteProjectExecute(r DeleteProjectApiRequest) (interface{}, *http.Response, error)
 
 	/*
 		DeleteProjectInvitation Cancel One Project Invitation
@@ -136,7 +136,7 @@ type ProjectsApi interface {
 	DeleteProjectInvitationWithParams(ctx context.Context, args *DeleteProjectInvitationApiParams) DeleteProjectInvitationApiRequest
 
 	// Method available only for mocking purposes
-	DeleteProjectInvitationExecute(r DeleteProjectInvitationApiRequest) (map[string]interface{}, *http.Response, error)
+	DeleteProjectInvitationExecute(r DeleteProjectInvitationApiRequest) (interface{}, *http.Response, error)
 
 	/*
 		DeleteProjectLimit Remove One Project Limit
@@ -160,7 +160,7 @@ type ProjectsApi interface {
 	DeleteProjectLimitWithParams(ctx context.Context, args *DeleteProjectLimitApiParams) DeleteProjectLimitApiRequest
 
 	// Method available only for mocking purposes
-	DeleteProjectLimitExecute(r DeleteProjectLimitApiRequest) (map[string]interface{}, *http.Response, error)
+	DeleteProjectLimitExecute(r DeleteProjectLimitApiRequest) (interface{}, *http.Response, error)
 
 	/*
 		GetProject Return One Project
@@ -998,7 +998,7 @@ func (a *ProjectsApiService) DeleteProjectWithParams(ctx context.Context, args *
 	}
 }
 
-func (r DeleteProjectApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r DeleteProjectApiRequest) Execute() (interface{}, *http.Response, error) {
 	return r.ApiService.DeleteProjectExecute(r)
 }
 
@@ -1021,13 +1021,13 @@ func (a *ProjectsApiService) DeleteProject(ctx context.Context, groupId string) 
 
 // Execute executes the request
 //
-//	@return map[string]interface{}
-func (a *ProjectsApiService) DeleteProjectExecute(r DeleteProjectApiRequest) (map[string]interface{}, *http.Response, error) {
+//	@return interface{}
+func (a *ProjectsApiService) DeleteProjectExecute(r DeleteProjectApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarReturnValue interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.DeleteProject")
@@ -1112,7 +1112,7 @@ func (a *ProjectsApiService) DeleteProjectInvitationWithParams(ctx context.Conte
 	}
 }
 
-func (r DeleteProjectInvitationApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r DeleteProjectInvitationApiRequest) Execute() (interface{}, *http.Response, error) {
 	return r.ApiService.DeleteProjectInvitationExecute(r)
 }
 
@@ -1139,15 +1139,15 @@ func (a *ProjectsApiService) DeleteProjectInvitation(ctx context.Context, groupI
 
 // Execute executes the request
 //
-//	@return map[string]interface{}
+//	@return interface{}
 //
 // Deprecated
-func (a *ProjectsApiService) DeleteProjectInvitationExecute(r DeleteProjectInvitationApiRequest) (map[string]interface{}, *http.Response, error) {
+func (a *ProjectsApiService) DeleteProjectInvitationExecute(r DeleteProjectInvitationApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarReturnValue interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.DeleteProjectInvitation")
@@ -1233,7 +1233,7 @@ func (a *ProjectsApiService) DeleteProjectLimitWithParams(ctx context.Context, a
 	}
 }
 
-func (r DeleteProjectLimitApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r DeleteProjectLimitApiRequest) Execute() (interface{}, *http.Response, error) {
 	return r.ApiService.DeleteProjectLimitExecute(r)
 }
 
@@ -1258,13 +1258,13 @@ func (a *ProjectsApiService) DeleteProjectLimit(ctx context.Context, limitName s
 
 // Execute executes the request
 //
-//	@return map[string]interface{}
-func (a *ProjectsApiService) DeleteProjectLimitExecute(r DeleteProjectLimitApiRequest) (map[string]interface{}, *http.Response, error) {
+//	@return interface{}
+func (a *ProjectsApiService) DeleteProjectLimitExecute(r DeleteProjectLimitApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarReturnValue interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.DeleteProjectLimit")

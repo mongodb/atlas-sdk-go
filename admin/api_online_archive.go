@@ -60,7 +60,7 @@ type OnlineArchiveApi interface {
 	DeleteOnlineArchiveWithParams(ctx context.Context, args *DeleteOnlineArchiveApiParams) DeleteOnlineArchiveApiRequest
 
 	// Method available only for mocking purposes
-	DeleteOnlineArchiveExecute(r DeleteOnlineArchiveApiRequest) (map[string]interface{}, *http.Response, error)
+	DeleteOnlineArchiveExecute(r DeleteOnlineArchiveApiRequest) (interface{}, *http.Response, error)
 
 	/*
 		DownloadOnlineArchiveQueryLogs Download Online Archive Query Logs
@@ -315,7 +315,7 @@ func (a *OnlineArchiveApiService) DeleteOnlineArchiveWithParams(ctx context.Cont
 	}
 }
 
-func (r DeleteOnlineArchiveApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r DeleteOnlineArchiveApiRequest) Execute() (interface{}, *http.Response, error) {
 	return r.ApiService.DeleteOnlineArchiveExecute(r)
 }
 
@@ -342,13 +342,13 @@ func (a *OnlineArchiveApiService) DeleteOnlineArchive(ctx context.Context, group
 
 // Execute executes the request
 //
-//	@return map[string]interface{}
-func (a *OnlineArchiveApiService) DeleteOnlineArchiveExecute(r DeleteOnlineArchiveApiRequest) (map[string]interface{}, *http.Response, error) {
+//	@return interface{}
+func (a *OnlineArchiveApiService) DeleteOnlineArchiveExecute(r DeleteOnlineArchiveApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarReturnValue interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OnlineArchiveApiService.DeleteOnlineArchive")

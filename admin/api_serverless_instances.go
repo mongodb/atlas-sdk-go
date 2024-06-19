@@ -58,7 +58,7 @@ type ServerlessInstancesApi interface {
 	DeleteServerlessInstanceWithParams(ctx context.Context, args *DeleteServerlessInstanceApiParams) DeleteServerlessInstanceApiRequest
 
 	// Method available only for mocking purposes
-	DeleteServerlessInstanceExecute(r DeleteServerlessInstanceApiRequest) (map[string]interface{}, *http.Response, error)
+	DeleteServerlessInstanceExecute(r DeleteServerlessInstanceApiRequest) (interface{}, *http.Response, error)
 
 	/*
 		GetServerlessInstance Return One Serverless Instance from One Project
@@ -277,7 +277,7 @@ func (a *ServerlessInstancesApiService) DeleteServerlessInstanceWithParams(ctx c
 	}
 }
 
-func (r DeleteServerlessInstanceApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r DeleteServerlessInstanceApiRequest) Execute() (interface{}, *http.Response, error) {
 	return r.ApiService.DeleteServerlessInstanceExecute(r)
 }
 
@@ -302,13 +302,13 @@ func (a *ServerlessInstancesApiService) DeleteServerlessInstance(ctx context.Con
 
 // Execute executes the request
 //
-//	@return map[string]interface{}
-func (a *ServerlessInstancesApiService) DeleteServerlessInstanceExecute(r DeleteServerlessInstanceApiRequest) (map[string]interface{}, *http.Response, error) {
+//	@return interface{}
+func (a *ServerlessInstancesApiService) DeleteServerlessInstanceExecute(r DeleteServerlessInstanceApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarReturnValue interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServerlessInstancesApiService.DeleteServerlessInstance")

@@ -200,7 +200,7 @@ type PerformanceAdvisorApi interface {
 	SetServerlessAutoIndexingWithParams(ctx context.Context, args *SetServerlessAutoIndexingApiParams) SetServerlessAutoIndexingApiRequest
 
 	// Method available only for mocking purposes
-	SetServerlessAutoIndexingExecute(r SetServerlessAutoIndexingApiRequest) (map[string]interface{}, *http.Response, error)
+	SetServerlessAutoIndexingExecute(r SetServerlessAutoIndexingApiRequest) (interface{}, *http.Response, error)
 }
 
 // PerformanceAdvisorApiService PerformanceAdvisorApi service
@@ -1182,7 +1182,7 @@ func (r SetServerlessAutoIndexingApiRequest) Enable(enable bool) SetServerlessAu
 	return r
 }
 
-func (r SetServerlessAutoIndexingApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r SetServerlessAutoIndexingApiRequest) Execute() (interface{}, *http.Response, error) {
 	return r.ApiService.SetServerlessAutoIndexingExecute(r)
 }
 
@@ -1207,13 +1207,13 @@ func (a *PerformanceAdvisorApiService) SetServerlessAutoIndexing(ctx context.Con
 
 // Execute executes the request
 //
-//	@return map[string]interface{}
-func (a *PerformanceAdvisorApiService) SetServerlessAutoIndexingExecute(r SetServerlessAutoIndexingApiRequest) (map[string]interface{}, *http.Response, error) {
+//	@return interface{}
+func (a *PerformanceAdvisorApiService) SetServerlessAutoIndexingExecute(r SetServerlessAutoIndexingApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarReturnValue interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PerformanceAdvisorApiService.SetServerlessAutoIndexing")

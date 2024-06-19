@@ -126,7 +126,7 @@ type MaintenanceWindowsApi interface {
 	UpdateMaintenanceWindowWithParams(ctx context.Context, args *UpdateMaintenanceWindowApiParams) UpdateMaintenanceWindowApiRequest
 
 	// Method available only for mocking purposes
-	UpdateMaintenanceWindowExecute(r UpdateMaintenanceWindowApiRequest) (map[string]interface{}, *http.Response, error)
+	UpdateMaintenanceWindowExecute(r UpdateMaintenanceWindowApiRequest) (interface{}, *http.Response, error)
 }
 
 // MaintenanceWindowsApiService MaintenanceWindowsApi service
@@ -546,7 +546,7 @@ func (a *MaintenanceWindowsApiService) UpdateMaintenanceWindowWithParams(ctx con
 	}
 }
 
-func (r UpdateMaintenanceWindowApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r UpdateMaintenanceWindowApiRequest) Execute() (interface{}, *http.Response, error) {
 	return r.ApiService.UpdateMaintenanceWindowExecute(r)
 }
 
@@ -570,13 +570,13 @@ func (a *MaintenanceWindowsApiService) UpdateMaintenanceWindow(ctx context.Conte
 
 // Execute executes the request
 //
-//	@return map[string]interface{}
-func (a *MaintenanceWindowsApiService) UpdateMaintenanceWindowExecute(r UpdateMaintenanceWindowApiRequest) (map[string]interface{}, *http.Response, error) {
+//	@return interface{}
+func (a *MaintenanceWindowsApiService) UpdateMaintenanceWindowExecute(r UpdateMaintenanceWindowApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarReturnValue interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MaintenanceWindowsApiService.UpdateMaintenanceWindow")

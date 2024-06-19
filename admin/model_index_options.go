@@ -516,7 +516,7 @@ func (o *IndexOptions) GetPartialFilterExpression() map[string]interface{} {
 // and a boolean to check if the value has been set.
 func (o *IndexOptions) GetPartialFilterExpressionOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.PartialFilterExpression) {
-		return map[string]interface{}{}, false
+		return map[string]interface{}, false
 	}
 
 	return o.PartialFilterExpression, true
@@ -582,7 +582,7 @@ func (o *IndexOptions) GetStorageEngine() map[string]interface{} {
 // and a boolean to check if the value has been set.
 func (o *IndexOptions) GetStorageEngineOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.StorageEngine) {
-		return map[string]interface{}{}, false
+		return map[string]interface{}, false
 	}
 
 	return o.StorageEngine, true
@@ -681,7 +681,7 @@ func (o *IndexOptions) GetWeights() map[string]interface{} {
 // and a boolean to check if the value has been set.
 func (o *IndexOptions) GetWeightsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Weights) {
-		return map[string]interface{}{}, false
+		return map[string]interface{}, false
 	}
 
 	return o.Weights, true

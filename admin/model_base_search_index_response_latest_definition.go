@@ -16,7 +16,7 @@ type BaseSearchIndexResponseLatestDefinition struct {
 	// Method applied to identify words when searching this index.
 	SearchAnalyzer *string `json:"searchAnalyzer,omitempty"`
 	// Flag that indicates whether to store all fields (true) on Atlas Search. By default, Atlas doesn't store (false) the fields on Atlas Search.  Alternatively, you can specify an object that only contains the list of fields to store (include) or not store (exclude) on Atlas Search. To learn more, see Stored Source Fields.
-	StoredSource map[string]interface{} `json:"storedSource,omitempty"`
+	StoredSource interface{} `json:"storedSource,omitempty"`
 	// Rule sets that map words to their synonyms in this index.
 	Synonyms *[]SearchSynonymMappingDefinition `json:"synonyms,omitempty"`
 	// Settings that configure the fields, one per object, to index. You must define at least one \"vector\" type field. You can optionally define \"filter\" type fields also.
@@ -181,9 +181,9 @@ func (o *BaseSearchIndexResponseLatestDefinition) SetSearchAnalyzer(v string) {
 }
 
 // GetStoredSource returns the StoredSource field value if set, zero value otherwise
-func (o *BaseSearchIndexResponseLatestDefinition) GetStoredSource() map[string]interface{} {
+func (o *BaseSearchIndexResponseLatestDefinition) GetStoredSource() interface{} {
 	if o == nil || IsNil(o.StoredSource) {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 	return o.StoredSource
@@ -191,9 +191,9 @@ func (o *BaseSearchIndexResponseLatestDefinition) GetStoredSource() map[string]i
 
 // GetStoredSourceOk returns a tuple with the StoredSource field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BaseSearchIndexResponseLatestDefinition) GetStoredSourceOk() (map[string]interface{}, bool) {
+func (o *BaseSearchIndexResponseLatestDefinition) GetStoredSourceOk() (interface{}, bool) {
 	if o == nil || IsNil(o.StoredSource) {
-		return map[string]interface{}{}, false
+		return interface{}, false
 	}
 
 	return o.StoredSource, true
@@ -208,8 +208,8 @@ func (o *BaseSearchIndexResponseLatestDefinition) HasStoredSource() bool {
 	return false
 }
 
-// SetStoredSource gets a reference to the given map[string]interface{} and assigns it to the StoredSource field.
-func (o *BaseSearchIndexResponseLatestDefinition) SetStoredSource(v map[string]interface{}) {
+// SetStoredSource gets a reference to the given interface{} and assigns it to the StoredSource field.
+func (o *BaseSearchIndexResponseLatestDefinition) SetStoredSource(v interface{}) {
 	o.StoredSource = v
 }
 
