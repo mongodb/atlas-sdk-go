@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Analyzers** | Pointer to [**[]AtlasSearchAnalyzer**](AtlasSearchAnalyzer.md) | List of user-defined methods to convert database field text into searchable words. | [optional] 
 **Mappings** | Pointer to [**SearchMappings**](SearchMappings.md) |  | [optional] 
 **SearchAnalyzer** | Pointer to **string** | Method applied to identify words when searching this index. | [optional] [default to "lucene.standard"]
-**StoredSource** | Pointer to **map[string]interface{}** | Flag that indicates whether to store all fields (true) on Atlas Search. By default, Atlas doesn&#39;t store (false) the fields on Atlas Search.  Alternatively, you can specify an object that only contains the list of fields to store (include) or not store (exclude) on Atlas Search. To learn more, see Stored Source Fields. | [optional] 
+**StoredSource** | Pointer to **interface{}** | Flag that indicates whether to store all fields (true) on Atlas Search. By default, Atlas doesn&#39;t store (false) the fields on Atlas Search.  Alternatively, you can specify an object that only contains the list of fields to store (include) or not store (exclude) on Atlas Search. To learn more, see Stored Source Fields. | [optional] 
 **Synonyms** | Pointer to [**[]SearchSynonymMappingDefinition**](SearchSynonymMappingDefinition.md) | Rule sets that map words to their synonyms in this index. | [optional] 
 **Fields** | Pointer to **[]map[string]interface{}** | Settings that configure the fields, one per object, to index. You must define at least one \&quot;vector\&quot; type field. You can optionally define \&quot;filter\&quot; type fields also. | [optional] 
 
@@ -129,20 +129,20 @@ SetSearchAnalyzer sets SearchAnalyzer field to given value.
 HasSearchAnalyzer returns a boolean if a field has been set.
 ### GetStoredSource
 
-`func (o *SearchIndexUpdateRequestDefinition) GetStoredSource() map[string]interface{}`
+`func (o *SearchIndexUpdateRequestDefinition) GetStoredSource() interface{}`
 
 GetStoredSource returns the StoredSource field if non-nil, zero value otherwise.
 
 ### GetStoredSourceOk
 
-`func (o *SearchIndexUpdateRequestDefinition) GetStoredSourceOk() (*map[string]interface{}, bool)`
+`func (o *SearchIndexUpdateRequestDefinition) GetStoredSourceOk() (*interface{}, bool)`
 
 GetStoredSourceOk returns a tuple with the StoredSource field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStoredSource
 
-`func (o *SearchIndexUpdateRequestDefinition) SetStoredSource(v map[string]interface{})`
+`func (o *SearchIndexUpdateRequestDefinition) SetStoredSource(v interface{})`
 
 SetStoredSource sets StoredSource field to given value.
 

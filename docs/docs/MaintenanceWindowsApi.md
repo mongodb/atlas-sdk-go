@@ -300,7 +300,7 @@ Name | Type | Description  | Notes
 
 ## UpdateMaintenanceWindow
 
-> map[string]interface{} UpdateMaintenanceWindow(ctx, groupId, groupMaintenanceWindow GroupMaintenanceWindow).Execute()
+> interface{} UpdateMaintenanceWindow(ctx, groupId, groupMaintenanceWindow GroupMaintenanceWindow).Execute()
 
 Update Maintenance Window for One Project
 
@@ -333,7 +333,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `UpdateMaintenanceWindow`: map[string]interface{}
+    // response from `UpdateMaintenanceWindow`: interface{}
     fmt.Fprintf(os.Stdout, "Response from `MaintenanceWindowsApi.UpdateMaintenanceWindow`: %v\n", resp)
 }
 ```
@@ -358,7 +358,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+**interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

@@ -174,7 +174,7 @@ Name | Type | Description  | Notes
 
 ## DeletePrivateEndpoint
 
-> map[string]interface{} DeletePrivateEndpoint(ctx, groupId, cloudProvider, endpointId, endpointServiceId).Execute()
+> interface{} DeletePrivateEndpoint(ctx, groupId, cloudProvider, endpointId, endpointServiceId).Execute()
 
 Remove One Private Endpoint for One Provider
 
@@ -209,7 +209,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `DeletePrivateEndpoint`: map[string]interface{}
+    // response from `DeletePrivateEndpoint`: interface{}
     fmt.Fprintf(os.Stdout, "Response from `PrivateEndpointServicesApi.DeletePrivateEndpoint`: %v\n", resp)
 }
 ```
@@ -239,7 +239,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+**interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -256,7 +256,7 @@ Name | Type | Description  | Notes
 
 ## DeletePrivateEndpointService
 
-> map[string]interface{} DeletePrivateEndpointService(ctx, groupId, cloudProvider, endpointServiceId).Execute()
+> interface{} DeletePrivateEndpointService(ctx, groupId, cloudProvider, endpointServiceId).Execute()
 
 Remove One Private Endpoint Service for One Provider
 
@@ -290,7 +290,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `DeletePrivateEndpointService`: map[string]interface{}
+    // response from `DeletePrivateEndpointService`: interface{}
     fmt.Fprintf(os.Stdout, "Response from `PrivateEndpointServicesApi.DeletePrivateEndpointService`: %v\n", resp)
 }
 ```
@@ -318,7 +318,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+**interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

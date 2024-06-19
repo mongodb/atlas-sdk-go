@@ -256,7 +256,7 @@ Name | Type | Description  | Notes
 
 ## DeleteDataFederationPrivateEndpoint
 
-> map[string]interface{} DeleteDataFederationPrivateEndpoint(ctx, groupId, endpointId).Execute()
+> interface{} DeleteDataFederationPrivateEndpoint(ctx, groupId, endpointId).Execute()
 
 Remove One Federated Database Instance and Online Archive Private Endpoint from One Project
 
@@ -289,7 +289,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `DeleteDataFederationPrivateEndpoint`: map[string]interface{}
+    // response from `DeleteDataFederationPrivateEndpoint`: interface{}
     fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.DeleteDataFederationPrivateEndpoint`: %v\n", resp)
 }
 ```
@@ -315,7 +315,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+**interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -332,7 +332,7 @@ Name | Type | Description  | Notes
 
 ## DeleteFederatedDatabase
 
-> map[string]interface{} DeleteFederatedDatabase(ctx, groupId, tenantName).Execute()
+> interface{} DeleteFederatedDatabase(ctx, groupId, tenantName).Execute()
 
 Remove One Federated Database Instance from One Project
 
@@ -365,7 +365,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `DeleteFederatedDatabase`: map[string]interface{}
+    // response from `DeleteFederatedDatabase`: interface{}
     fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.DeleteFederatedDatabase`: %v\n", resp)
 }
 ```
@@ -391,7 +391,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+**interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -408,7 +408,7 @@ Name | Type | Description  | Notes
 
 ## DeleteOneDataFederationInstanceQueryLimit
 
-> map[string]interface{} DeleteOneDataFederationInstanceQueryLimit(ctx, groupId, tenantName, limitName).Execute()
+> interface{} DeleteOneDataFederationInstanceQueryLimit(ctx, groupId, tenantName, limitName).Execute()
 
 Delete One Query Limit For One Federated Database Instance
 
@@ -442,7 +442,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `DeleteOneDataFederationInstanceQueryLimit`: map[string]interface{}
+    // response from `DeleteOneDataFederationInstanceQueryLimit`: interface{}
     fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.DeleteOneDataFederationInstanceQueryLimit`: %v\n", resp)
 }
 ```
@@ -470,7 +470,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+**interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
