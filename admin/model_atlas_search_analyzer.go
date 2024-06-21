@@ -141,7 +141,8 @@ func (o *AtlasSearchAnalyzer) GetTokenizer() interface{} {
 // and a boolean to check if the value has been set.
 func (o *AtlasSearchAnalyzer) GetTokenizerOk() (interface{}, bool) {
 	if o == nil {
-		return interface{}, false
+		var ret interface{}
+		return ret, false
 	}
 	return o.Tokenizer, true
 }
