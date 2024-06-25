@@ -57,7 +57,9 @@ Reviewers, please ensure that the CLA has been signed by referring to [the contr
 
 #### Prerequisite Tools
 - [Git](https://git-scm.com/)
-- [Go (at least Go 1.14)](https://golang.org/dl/)
+- [Golang (at least Go 1.21)](https://golang.org/dl/)
+    - Repository uses https://asdf-vm.com for golang version management
+- Run `make tools` to install all required binaries
 
 #### Environment
 - Fork the repository.
