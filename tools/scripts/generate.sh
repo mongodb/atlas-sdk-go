@@ -42,5 +42,4 @@ if ! command -v goimports &> /dev/null; then
   exit 1
 fi
 
-
 goimports -w "$SDK_FOLDER"
