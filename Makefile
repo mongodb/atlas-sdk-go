@@ -1,5 +1,6 @@
 SOURCE_FILES?=./...
 GOLANGCI_VERSION=v1.59.0
+GOIMPORTS_VERSION=v0.21.0
 COVERAGE=coverage.out
 
 export GO111MODULE := on
@@ -42,7 +43,7 @@ install-golangci-lint:
 
 .PHONY: install-goimports
 install-goimports:
-	go install golang.org/x/tools/cmd/goimports@v0.21.0
+	go install golang.org/x/tools/cmd/goimports@$(GOIMPORTS_VERSION)
 
 .PHONY: tools
 tools: install-golangci-lint install-goimports
