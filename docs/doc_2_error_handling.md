@@ -42,3 +42,21 @@ if ok && apiError.GetError() == 404 {
  // Do something
 }
 ```
+
+## Mocking Errors
+
+SDK errors can be mocked by creating instance of `GenericOpenAPIError` struct. 
+
+```go
+apiError := admin.GenericOpenAPIError{}
+apiError.SetModel(admin.ApiError{
+    Detail: admin.PtrString("Error when listing clusters"),
+    Error: admin.PtrInt(400),
+    ErrorCode: admin.PtrString("CLUSTERS_UNREACHABLE"),
+    Reason: admin.PtrString("Clusters unreachable"),
+    
+})
+apiError.SetError("Mocked error")
+```
+
+Struct can be passed as `error` for all SDK mocked methods. 
