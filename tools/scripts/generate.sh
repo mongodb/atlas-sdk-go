@@ -36,4 +36,10 @@ npm exec openapi-generator-cli -- generate \
     --type-mappings=file=io.ReadCloser \
     --ignore-file-override=config/.go-ignore
 
+# Check if goimports exists and is executable
+if ! command -v goimports &> /dev/null; then
+  echo "Error: goimports command not found. Please install goimports by running 'make install-goimports' before running this script."
+  exit 1
+fi
+
 goimports -w "$SDK_FOLDER"
