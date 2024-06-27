@@ -48,6 +48,8 @@ if ok && apiError.GetError() == 404 {
 SDK errors can be mocked by creating instance of `GenericOpenAPIError` struct. 
 
 ```go
+// Surrounding code omitted for brevity
+
 apiError := admin.GenericOpenAPIError{}
 apiError.SetModel(admin.ApiError{
     Detail: admin.PtrString("Error when listing clusters"),
@@ -59,4 +61,4 @@ apiError.SetModel(admin.ApiError{
 apiError.SetError("Mocked error")
 ```
 
-Struct can be passed as `error` for all SDK mocked methods. 
+Struct can be passed as `error` for the all SDK mocked methods. 

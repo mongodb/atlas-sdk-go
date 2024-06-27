@@ -12,7 +12,7 @@ import (
 )
 
 
-func MyFunctionCallingListClusters(clusterAPI admin.ClustersApi) (int, error) {
+func myFunctionCallingListClusters(clusterAPI admin.ClustersApi) (int, error) {
 	clusters, _, err := clusterAPI.ListClusters(context.Background(), "my_group_id").Execute()
 	if err !=nil {
 		return 0, err;
@@ -36,7 +36,7 @@ func TestListClusters(t *testing.T) {
 	clusterAPI.EXPECT().ListClustersExecute(mock.Anything).Return(list, &http.Response{StatusCode: 200}, nil)
 
 	// Call functions using the API, they won't make real calls to Atlas API.
-	clusterCount, err := MyFunctionCallingListClusters(clusterAPI)
+	clusterCount, err := myFunctionCallingListClusters(clusterAPI)
 
 	// Assert expectations.
 	assert.Nil(t, err)
@@ -62,7 +62,7 @@ func TestListClustersErrorMocks(t *testing.T) {
 	clusterAPI.EXPECT().ListClustersExecute(mock.Anything).Return(nil, &http.Response{StatusCode: 400}, apiError)
 
 	// Call functions using the API, they won't make real calls to Atlas API.
-	_, err := MyFunctionCallingListClusters(clusterAPI)
+	_, err := myFunctionCallingListClusters(clusterAPI)
 
 	// Assert expectations.
 	assert.Equal(t, err, apiError)
