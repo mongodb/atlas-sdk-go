@@ -14,7 +14,7 @@ type DiskBackupSnapshotRestoreJob struct {
 	Cancelled *bool `json:"cancelled,omitempty"`
 	// Information on the restore job for each replica set in the sharded cluster.
 	// Read only field.
-	Components *[]DiskBackupBaseRestoreMember `json:"components,omitempty"`
+	Components *[]DiskBackupRestoreMember `json:"components,omitempty"`
 	// Human-readable label that categorizes the restore job to create.
 	DeliveryType string `json:"deliveryType"`
 	// One or more Uniform Resource Locators (URLs) that point to the compressed snapshot files for manual download. MongoDB Cloud returns this parameter when `\"deliveryType\" : \"download\"`.
@@ -108,9 +108,9 @@ func (o *DiskBackupSnapshotRestoreJob) SetCancelled(v bool) {
 }
 
 // GetComponents returns the Components field value if set, zero value otherwise
-func (o *DiskBackupSnapshotRestoreJob) GetComponents() []DiskBackupBaseRestoreMember {
+func (o *DiskBackupSnapshotRestoreJob) GetComponents() []DiskBackupRestoreMember {
 	if o == nil || IsNil(o.Components) {
-		var ret []DiskBackupBaseRestoreMember
+		var ret []DiskBackupRestoreMember
 		return ret
 	}
 	return *o.Components
@@ -118,7 +118,7 @@ func (o *DiskBackupSnapshotRestoreJob) GetComponents() []DiskBackupBaseRestoreMe
 
 // GetComponentsOk returns a tuple with the Components field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiskBackupSnapshotRestoreJob) GetComponentsOk() (*[]DiskBackupBaseRestoreMember, bool) {
+func (o *DiskBackupSnapshotRestoreJob) GetComponentsOk() (*[]DiskBackupRestoreMember, bool) {
 	if o == nil || IsNil(o.Components) {
 		return nil, false
 	}
@@ -135,8 +135,8 @@ func (o *DiskBackupSnapshotRestoreJob) HasComponents() bool {
 	return false
 }
 
-// SetComponents gets a reference to the given []DiskBackupBaseRestoreMember and assigns it to the Components field.
-func (o *DiskBackupSnapshotRestoreJob) SetComponents(v []DiskBackupBaseRestoreMember) {
+// SetComponents gets a reference to the given []DiskBackupRestoreMember and assigns it to the Components field.
+func (o *DiskBackupSnapshotRestoreJob) SetComponents(v []DiskBackupRestoreMember) {
 	o.Components = &v
 }
 

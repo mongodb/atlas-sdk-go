@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20240530001/admin"
+	admin "go.mongodb.org/atlas-sdk/v20240530002/admin"
 
 	http "net/http"
 
@@ -396,24 +396,24 @@ func (_c *OrganizationsApi_DeleteOrganization_Call) RunAndReturn(run func(contex
 }
 
 // DeleteOrganizationExecute provides a mock function with given fields: r
-func (_m *OrganizationsApi) DeleteOrganizationExecute(r admin.DeleteOrganizationApiRequest) (map[string]interface{}, *http.Response, error) {
+func (_m *OrganizationsApi) DeleteOrganizationExecute(r admin.DeleteOrganizationApiRequest) (interface{}, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteOrganizationExecute")
 	}
 
-	var r0 map[string]interface{}
+	var r0 interface{}
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteOrganizationApiRequest) (map[string]interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteOrganizationApiRequest) (interface{}, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteOrganizationApiRequest) map[string]interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteOrganizationApiRequest) interface{}); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(map[string]interface{})
+			r0 = ret.Get(0).(interface{})
 		}
 	}
 
@@ -452,12 +452,12 @@ func (_c *OrganizationsApi_DeleteOrganizationExecute_Call) Run(run func(r admin.
 	return _c
 }
 
-func (_c *OrganizationsApi_DeleteOrganizationExecute_Call) Return(_a0 map[string]interface{}, _a1 *http.Response, _a2 error) *OrganizationsApi_DeleteOrganizationExecute_Call {
+func (_c *OrganizationsApi_DeleteOrganizationExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *OrganizationsApi_DeleteOrganizationExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *OrganizationsApi_DeleteOrganizationExecute_Call) RunAndReturn(run func(admin.DeleteOrganizationApiRequest) (map[string]interface{}, *http.Response, error)) *OrganizationsApi_DeleteOrganizationExecute_Call {
+func (_c *OrganizationsApi_DeleteOrganizationExecute_Call) RunAndReturn(run func(admin.DeleteOrganizationApiRequest) (interface{}, *http.Response, error)) *OrganizationsApi_DeleteOrganizationExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -511,24 +511,24 @@ func (_c *OrganizationsApi_DeleteOrganizationInvitation_Call) RunAndReturn(run f
 }
 
 // DeleteOrganizationInvitationExecute provides a mock function with given fields: r
-func (_m *OrganizationsApi) DeleteOrganizationInvitationExecute(r admin.DeleteOrganizationInvitationApiRequest) (map[string]interface{}, *http.Response, error) {
+func (_m *OrganizationsApi) DeleteOrganizationInvitationExecute(r admin.DeleteOrganizationInvitationApiRequest) (interface{}, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteOrganizationInvitationExecute")
 	}
 
-	var r0 map[string]interface{}
+	var r0 interface{}
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteOrganizationInvitationApiRequest) (map[string]interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteOrganizationInvitationApiRequest) (interface{}, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteOrganizationInvitationApiRequest) map[string]interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteOrganizationInvitationApiRequest) interface{}); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(map[string]interface{})
+			r0 = ret.Get(0).(interface{})
 		}
 	}
 
@@ -567,12 +567,12 @@ func (_c *OrganizationsApi_DeleteOrganizationInvitationExecute_Call) Run(run fun
 	return _c
 }
 
-func (_c *OrganizationsApi_DeleteOrganizationInvitationExecute_Call) Return(_a0 map[string]interface{}, _a1 *http.Response, _a2 error) *OrganizationsApi_DeleteOrganizationInvitationExecute_Call {
+func (_c *OrganizationsApi_DeleteOrganizationInvitationExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *OrganizationsApi_DeleteOrganizationInvitationExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *OrganizationsApi_DeleteOrganizationInvitationExecute_Call) RunAndReturn(run func(admin.DeleteOrganizationInvitationApiRequest) (map[string]interface{}, *http.Response, error)) *OrganizationsApi_DeleteOrganizationInvitationExecute_Call {
+func (_c *OrganizationsApi_DeleteOrganizationInvitationExecute_Call) RunAndReturn(run func(admin.DeleteOrganizationInvitationApiRequest) (interface{}, *http.Response, error)) *OrganizationsApi_DeleteOrganizationInvitationExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1847,24 +1847,24 @@ func (_c *OrganizationsApi_RemoveOrganizationUser_Call) RunAndReturn(run func(co
 }
 
 // RemoveOrganizationUserExecute provides a mock function with given fields: r
-func (_m *OrganizationsApi) RemoveOrganizationUserExecute(r admin.RemoveOrganizationUserApiRequest) (map[string]interface{}, *http.Response, error) {
+func (_m *OrganizationsApi) RemoveOrganizationUserExecute(r admin.RemoveOrganizationUserApiRequest) (interface{}, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for RemoveOrganizationUserExecute")
 	}
 
-	var r0 map[string]interface{}
+	var r0 interface{}
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.RemoveOrganizationUserApiRequest) (map[string]interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.RemoveOrganizationUserApiRequest) (interface{}, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.RemoveOrganizationUserApiRequest) map[string]interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.RemoveOrganizationUserApiRequest) interface{}); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(map[string]interface{})
+			r0 = ret.Get(0).(interface{})
 		}
 	}
 
@@ -1903,12 +1903,12 @@ func (_c *OrganizationsApi_RemoveOrganizationUserExecute_Call) Run(run func(r ad
 	return _c
 }
 
-func (_c *OrganizationsApi_RemoveOrganizationUserExecute_Call) Return(_a0 map[string]interface{}, _a1 *http.Response, _a2 error) *OrganizationsApi_RemoveOrganizationUserExecute_Call {
+func (_c *OrganizationsApi_RemoveOrganizationUserExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *OrganizationsApi_RemoveOrganizationUserExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *OrganizationsApi_RemoveOrganizationUserExecute_Call) RunAndReturn(run func(admin.RemoveOrganizationUserApiRequest) (map[string]interface{}, *http.Response, error)) *OrganizationsApi_RemoveOrganizationUserExecute_Call {
+func (_c *OrganizationsApi_RemoveOrganizationUserExecute_Call) RunAndReturn(run func(admin.RemoveOrganizationUserApiRequest) (interface{}, *http.Response, error)) *OrganizationsApi_RemoveOrganizationUserExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }

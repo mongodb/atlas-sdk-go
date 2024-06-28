@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20240530001/admin"
+	admin "go.mongodb.org/atlas-sdk/v20240530002/admin"
 
 	http "net/http"
 
@@ -715,24 +715,24 @@ func (_c *InvoicesApi_ListInvoices_Call) RunAndReturn(run func(context.Context, 
 }
 
 // ListInvoicesExecute provides a mock function with given fields: r
-func (_m *InvoicesApi) ListInvoicesExecute(r admin.ListInvoicesApiRequest) (*admin.PaginatedApiInvoice, *http.Response, error) {
+func (_m *InvoicesApi) ListInvoicesExecute(r admin.ListInvoicesApiRequest) (*admin.PaginatedApiInvoiceMetadata, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for ListInvoicesExecute")
 	}
 
-	var r0 *admin.PaginatedApiInvoice
+	var r0 *admin.PaginatedApiInvoiceMetadata
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListInvoicesApiRequest) (*admin.PaginatedApiInvoice, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListInvoicesApiRequest) (*admin.PaginatedApiInvoiceMetadata, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.ListInvoicesApiRequest) *admin.PaginatedApiInvoice); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListInvoicesApiRequest) *admin.PaginatedApiInvoiceMetadata); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.PaginatedApiInvoice)
+			r0 = ret.Get(0).(*admin.PaginatedApiInvoiceMetadata)
 		}
 	}
 
@@ -771,12 +771,12 @@ func (_c *InvoicesApi_ListInvoicesExecute_Call) Run(run func(r admin.ListInvoice
 	return _c
 }
 
-func (_c *InvoicesApi_ListInvoicesExecute_Call) Return(_a0 *admin.PaginatedApiInvoice, _a1 *http.Response, _a2 error) *InvoicesApi_ListInvoicesExecute_Call {
+func (_c *InvoicesApi_ListInvoicesExecute_Call) Return(_a0 *admin.PaginatedApiInvoiceMetadata, _a1 *http.Response, _a2 error) *InvoicesApi_ListInvoicesExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *InvoicesApi_ListInvoicesExecute_Call) RunAndReturn(run func(admin.ListInvoicesApiRequest) (*admin.PaginatedApiInvoice, *http.Response, error)) *InvoicesApi_ListInvoicesExecute_Call {
+func (_c *InvoicesApi_ListInvoicesExecute_Call) RunAndReturn(run func(admin.ListInvoicesApiRequest) (*admin.PaginatedApiInvoiceMetadata, *http.Response, error)) *InvoicesApi_ListInvoicesExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }

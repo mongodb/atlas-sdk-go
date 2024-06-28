@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## AuthorizeCloudProviderAccessRole
 
-> CloudProviderAccessRole AuthorizeCloudProviderAccessRole(ctx, groupId, roleId, cloudProviderAccessAWSIAMRoleUpdateRequest CloudProviderAccessAWSIAMRoleUpdateRequest).Execute()
+> CloudProviderAccessRole AuthorizeCloudProviderAccessRole(ctx, groupId, roleId, cloudProviderAccessRole CloudProviderAccessRole).Execute()
 
 Authorize One Cloud Provider Access Role
 
@@ -29,7 +29,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530001/admin"
+    "go.mongodb.org/atlas-sdk/v20240530002/admin"
 )
 
 func main() {
@@ -40,9 +40,9 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     roleId := "roleId_example" // string | 
-    cloudProviderAccessAWSIAMRoleUpdateRequest := *openapiclient.NewCloudProviderAccessAWSIAMRoleUpdateRequest("ProviderName_example") // CloudProviderAccessAWSIAMRoleUpdateRequest | 
+    cloudProviderAccessRole := *openapiclient.NewCloudProviderAccessRole("ProviderName_example") // CloudProviderAccessRole | 
 
-    resp, r, err := sdk.CloudProviderAccessApi.AuthorizeCloudProviderAccessRole(context.Background(), groupId, roleId, &cloudProviderAccessAWSIAMRoleUpdateRequest).Execute()
+    resp, r, err := sdk.CloudProviderAccessApi.AuthorizeCloudProviderAccessRole(context.Background(), groupId, roleId, &cloudProviderAccessRole).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAccessApi.AuthorizeCloudProviderAccessRole``: %v\n", err)
         apiError := admin.AsError(err)
@@ -71,7 +71,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **cloudProviderAccessAWSIAMRoleUpdateRequest** | [**CloudProviderAccessAWSIAMRoleUpdateRequest**](CloudProviderAccessAWSIAMRoleUpdateRequest.md) | Grants access to the specified project for the specified access role. | 
+ **cloudProviderAccessRole** | [**CloudProviderAccessRole**](CloudProviderAccessRole.md) | Grants access to the specified project for the specified access role. | 
 
 ### Return type
 
@@ -92,7 +92,7 @@ Name | Type | Description  | Notes
 
 ## CreateCloudProviderAccessRole
 
-> CloudProviderAccessRole CreateCloudProviderAccessRole(ctx, groupId, cloudProviderAccessAWSIAMRoleRequest CloudProviderAccessAWSIAMRoleRequest).Execute()
+> CloudProviderAccessRole CreateCloudProviderAccessRole(ctx, groupId, cloudProviderAccessRole CloudProviderAccessRole).Execute()
 
 Create One Cloud Provider Access Role
 
@@ -107,7 +107,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530001/admin"
+    "go.mongodb.org/atlas-sdk/v20240530002/admin"
 )
 
 func main() {
@@ -117,9 +117,9 @@ func main() {
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    cloudProviderAccessAWSIAMRoleRequest := *openapiclient.NewCloudProviderAccessAWSIAMRoleRequest("ProviderName_example") // CloudProviderAccessAWSIAMRoleRequest | 
+    cloudProviderAccessRole := *openapiclient.NewCloudProviderAccessRole("ProviderName_example") // CloudProviderAccessRole | 
 
-    resp, r, err := sdk.CloudProviderAccessApi.CreateCloudProviderAccessRole(context.Background(), groupId, &cloudProviderAccessAWSIAMRoleRequest).Execute()
+    resp, r, err := sdk.CloudProviderAccessApi.CreateCloudProviderAccessRole(context.Background(), groupId, &cloudProviderAccessRole).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAccessApi.CreateCloudProviderAccessRole``: %v\n", err)
         apiError := admin.AsError(err)
@@ -146,7 +146,7 @@ Other parameters are passed through a pointer to a apiCreateCloudProviderAccessR
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **cloudProviderAccessAWSIAMRoleRequest** | [**CloudProviderAccessAWSIAMRoleRequest**](CloudProviderAccessAWSIAMRoleRequest.md) | Creates one role for the specified cloud provider. | 
+ **cloudProviderAccessRole** | [**CloudProviderAccessRole**](CloudProviderAccessRole.md) | Creates one role for the specified cloud provider. | 
 
 ### Return type
 
@@ -182,7 +182,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530001/admin"
+    "go.mongodb.org/atlas-sdk/v20240530002/admin"
 )
 
 func main() {
@@ -259,7 +259,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530001/admin"
+    "go.mongodb.org/atlas-sdk/v20240530002/admin"
 )
 
 func main() {
@@ -335,7 +335,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530001/admin"
+    "go.mongodb.org/atlas-sdk/v20240530002/admin"
 )
 
 func main() {

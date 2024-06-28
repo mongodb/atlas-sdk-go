@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20240530001/admin"
+	admin "go.mongodb.org/atlas-sdk/v20240530002/admin"
 
 	http "net/http"
 
@@ -558,24 +558,24 @@ func (_c *ProjectsApi_DeleteProject_Call) RunAndReturn(run func(context.Context,
 }
 
 // DeleteProjectExecute provides a mock function with given fields: r
-func (_m *ProjectsApi) DeleteProjectExecute(r admin.DeleteProjectApiRequest) (map[string]interface{}, *http.Response, error) {
+func (_m *ProjectsApi) DeleteProjectExecute(r admin.DeleteProjectApiRequest) (interface{}, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteProjectExecute")
 	}
 
-	var r0 map[string]interface{}
+	var r0 interface{}
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteProjectApiRequest) (map[string]interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteProjectApiRequest) (interface{}, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteProjectApiRequest) map[string]interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteProjectApiRequest) interface{}); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(map[string]interface{})
+			r0 = ret.Get(0).(interface{})
 		}
 	}
 
@@ -614,12 +614,12 @@ func (_c *ProjectsApi_DeleteProjectExecute_Call) Run(run func(r admin.DeleteProj
 	return _c
 }
 
-func (_c *ProjectsApi_DeleteProjectExecute_Call) Return(_a0 map[string]interface{}, _a1 *http.Response, _a2 error) *ProjectsApi_DeleteProjectExecute_Call {
+func (_c *ProjectsApi_DeleteProjectExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *ProjectsApi_DeleteProjectExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ProjectsApi_DeleteProjectExecute_Call) RunAndReturn(run func(admin.DeleteProjectApiRequest) (map[string]interface{}, *http.Response, error)) *ProjectsApi_DeleteProjectExecute_Call {
+func (_c *ProjectsApi_DeleteProjectExecute_Call) RunAndReturn(run func(admin.DeleteProjectApiRequest) (interface{}, *http.Response, error)) *ProjectsApi_DeleteProjectExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -673,24 +673,24 @@ func (_c *ProjectsApi_DeleteProjectInvitation_Call) RunAndReturn(run func(contex
 }
 
 // DeleteProjectInvitationExecute provides a mock function with given fields: r
-func (_m *ProjectsApi) DeleteProjectInvitationExecute(r admin.DeleteProjectInvitationApiRequest) (map[string]interface{}, *http.Response, error) {
+func (_m *ProjectsApi) DeleteProjectInvitationExecute(r admin.DeleteProjectInvitationApiRequest) (interface{}, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteProjectInvitationExecute")
 	}
 
-	var r0 map[string]interface{}
+	var r0 interface{}
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteProjectInvitationApiRequest) (map[string]interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteProjectInvitationApiRequest) (interface{}, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteProjectInvitationApiRequest) map[string]interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteProjectInvitationApiRequest) interface{}); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(map[string]interface{})
+			r0 = ret.Get(0).(interface{})
 		}
 	}
 
@@ -729,12 +729,12 @@ func (_c *ProjectsApi_DeleteProjectInvitationExecute_Call) Run(run func(r admin.
 	return _c
 }
 
-func (_c *ProjectsApi_DeleteProjectInvitationExecute_Call) Return(_a0 map[string]interface{}, _a1 *http.Response, _a2 error) *ProjectsApi_DeleteProjectInvitationExecute_Call {
+func (_c *ProjectsApi_DeleteProjectInvitationExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *ProjectsApi_DeleteProjectInvitationExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ProjectsApi_DeleteProjectInvitationExecute_Call) RunAndReturn(run func(admin.DeleteProjectInvitationApiRequest) (map[string]interface{}, *http.Response, error)) *ProjectsApi_DeleteProjectInvitationExecute_Call {
+func (_c *ProjectsApi_DeleteProjectInvitationExecute_Call) RunAndReturn(run func(admin.DeleteProjectInvitationApiRequest) (interface{}, *http.Response, error)) *ProjectsApi_DeleteProjectInvitationExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -835,24 +835,24 @@ func (_c *ProjectsApi_DeleteProjectLimit_Call) RunAndReturn(run func(context.Con
 }
 
 // DeleteProjectLimitExecute provides a mock function with given fields: r
-func (_m *ProjectsApi) DeleteProjectLimitExecute(r admin.DeleteProjectLimitApiRequest) (map[string]interface{}, *http.Response, error) {
+func (_m *ProjectsApi) DeleteProjectLimitExecute(r admin.DeleteProjectLimitApiRequest) (interface{}, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteProjectLimitExecute")
 	}
 
-	var r0 map[string]interface{}
+	var r0 interface{}
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteProjectLimitApiRequest) (map[string]interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteProjectLimitApiRequest) (interface{}, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteProjectLimitApiRequest) map[string]interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteProjectLimitApiRequest) interface{}); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(map[string]interface{})
+			r0 = ret.Get(0).(interface{})
 		}
 	}
 
@@ -891,12 +891,12 @@ func (_c *ProjectsApi_DeleteProjectLimitExecute_Call) Run(run func(r admin.Delet
 	return _c
 }
 
-func (_c *ProjectsApi_DeleteProjectLimitExecute_Call) Return(_a0 map[string]interface{}, _a1 *http.Response, _a2 error) *ProjectsApi_DeleteProjectLimitExecute_Call {
+func (_c *ProjectsApi_DeleteProjectLimitExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *ProjectsApi_DeleteProjectLimitExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ProjectsApi_DeleteProjectLimitExecute_Call) RunAndReturn(run func(admin.DeleteProjectLimitApiRequest) (map[string]interface{}, *http.Response, error)) *ProjectsApi_DeleteProjectLimitExecute_Call {
+func (_c *ProjectsApi_DeleteProjectLimitExecute_Call) RunAndReturn(run func(admin.DeleteProjectLimitApiRequest) (interface{}, *http.Response, error)) *ProjectsApi_DeleteProjectLimitExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }

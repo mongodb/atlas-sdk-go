@@ -32,8 +32,6 @@ func NewSearchSynonymMappingDefinition(analyzer string, name string, source Syno
 // but it doesn't guarantee that properties required by API are set
 func NewSearchSynonymMappingDefinitionWithDefaults() *SearchSynonymMappingDefinition {
 	this := SearchSynonymMappingDefinition{}
-	var analyzer string = "lucene.standard"
-	this.Analyzer = analyzer
 	return &this
 }
 

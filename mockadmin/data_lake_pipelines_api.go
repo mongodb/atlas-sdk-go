@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20240530001/admin"
+	admin "go.mongodb.org/atlas-sdk/v20240530002/admin"
 
 	http "net/http"
 
@@ -236,24 +236,24 @@ func (_c *DataLakePipelinesApi_DeletePipeline_Call) RunAndReturn(run func(contex
 }
 
 // DeletePipelineExecute provides a mock function with given fields: r
-func (_m *DataLakePipelinesApi) DeletePipelineExecute(r admin.DeletePipelineApiRequest) (map[string]interface{}, *http.Response, error) {
+func (_m *DataLakePipelinesApi) DeletePipelineExecute(r admin.DeletePipelineApiRequest) (interface{}, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeletePipelineExecute")
 	}
 
-	var r0 map[string]interface{}
+	var r0 interface{}
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeletePipelineApiRequest) (map[string]interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeletePipelineApiRequest) (interface{}, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeletePipelineApiRequest) map[string]interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeletePipelineApiRequest) interface{}); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(map[string]interface{})
+			r0 = ret.Get(0).(interface{})
 		}
 	}
 
@@ -292,12 +292,12 @@ func (_c *DataLakePipelinesApi_DeletePipelineExecute_Call) Run(run func(r admin.
 	return _c
 }
 
-func (_c *DataLakePipelinesApi_DeletePipelineExecute_Call) Return(_a0 map[string]interface{}, _a1 *http.Response, _a2 error) *DataLakePipelinesApi_DeletePipelineExecute_Call {
+func (_c *DataLakePipelinesApi_DeletePipelineExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *DataLakePipelinesApi_DeletePipelineExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *DataLakePipelinesApi_DeletePipelineExecute_Call) RunAndReturn(run func(admin.DeletePipelineApiRequest) (map[string]interface{}, *http.Response, error)) *DataLakePipelinesApi_DeletePipelineExecute_Call {
+func (_c *DataLakePipelinesApi_DeletePipelineExecute_Call) RunAndReturn(run func(admin.DeletePipelineApiRequest) (interface{}, *http.Response, error)) *DataLakePipelinesApi_DeletePipelineExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -352,24 +352,24 @@ func (_c *DataLakePipelinesApi_DeletePipelineRunDataset_Call) RunAndReturn(run f
 }
 
 // DeletePipelineRunDatasetExecute provides a mock function with given fields: r
-func (_m *DataLakePipelinesApi) DeletePipelineRunDatasetExecute(r admin.DeletePipelineRunDatasetApiRequest) (map[string]interface{}, *http.Response, error) {
+func (_m *DataLakePipelinesApi) DeletePipelineRunDatasetExecute(r admin.DeletePipelineRunDatasetApiRequest) (interface{}, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeletePipelineRunDatasetExecute")
 	}
 
-	var r0 map[string]interface{}
+	var r0 interface{}
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeletePipelineRunDatasetApiRequest) (map[string]interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeletePipelineRunDatasetApiRequest) (interface{}, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeletePipelineRunDatasetApiRequest) map[string]interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeletePipelineRunDatasetApiRequest) interface{}); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(map[string]interface{})
+			r0 = ret.Get(0).(interface{})
 		}
 	}
 
@@ -408,12 +408,12 @@ func (_c *DataLakePipelinesApi_DeletePipelineRunDatasetExecute_Call) Run(run fun
 	return _c
 }
 
-func (_c *DataLakePipelinesApi_DeletePipelineRunDatasetExecute_Call) Return(_a0 map[string]interface{}, _a1 *http.Response, _a2 error) *DataLakePipelinesApi_DeletePipelineRunDatasetExecute_Call {
+func (_c *DataLakePipelinesApi_DeletePipelineRunDatasetExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *DataLakePipelinesApi_DeletePipelineRunDatasetExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *DataLakePipelinesApi_DeletePipelineRunDatasetExecute_Call) RunAndReturn(run func(admin.DeletePipelineRunDatasetApiRequest) (map[string]interface{}, *http.Response, error)) *DataLakePipelinesApi_DeletePipelineRunDatasetExecute_Call {
+func (_c *DataLakePipelinesApi_DeletePipelineRunDatasetExecute_Call) RunAndReturn(run func(admin.DeletePipelineRunDatasetApiRequest) (interface{}, *http.Response, error)) *DataLakePipelinesApi_DeletePipelineRunDatasetExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }

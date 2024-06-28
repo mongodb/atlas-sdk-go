@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **Authentication** | Pointer to [**StreamsKafkaAuthentication**](StreamsKafkaAuthentication.md) |  | [optional] 
 **BootstrapServers** | Pointer to **string** | Comma separated list of server addresses. | [optional] 
 **Config** | Pointer to **map[string]string** | A map of Kafka key-value pairs for optional configuration. This is a flat object, and keys can have &#39;.&#39; characters. | [optional] 
+**Networking** | Pointer to [**StreamsKafkaNetworking**](StreamsKafkaNetworking.md) |  | [optional] 
 **ProxyInfo** | Pointer to [**ProxyInfo**](ProxyInfo.md) |  | [optional] 
 **Security** | Pointer to [**StreamsKafkaSecurity**](StreamsKafkaSecurity.md) |  | [optional] 
 
@@ -226,6 +227,30 @@ SetConfig sets Config field to given value.
 `func (o *StreamsConnection) HasConfig() bool`
 
 HasConfig returns a boolean if a field has been set.
+### GetNetworking
+
+`func (o *StreamsConnection) GetNetworking() StreamsKafkaNetworking`
+
+GetNetworking returns the Networking field if non-nil, zero value otherwise.
+
+### GetNetworkingOk
+
+`func (o *StreamsConnection) GetNetworkingOk() (*StreamsKafkaNetworking, bool)`
+
+GetNetworkingOk returns a tuple with the Networking field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetworking
+
+`func (o *StreamsConnection) SetNetworking(v StreamsKafkaNetworking)`
+
+SetNetworking sets Networking field to given value.
+
+### HasNetworking
+
+`func (o *StreamsConnection) HasNetworking() bool`
+
+HasNetworking returns a boolean if a field has been set.
 ### GetProxyInfo
 
 `func (o *StreamsConnection) GetProxyInfo() ProxyInfo`

@@ -24,7 +24,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 725a0afacc9b395b70f662b50b85087abdaec19d
+  x-xgen-sha: b3f2a193974330cd87b716f19cdb87cc23214b79
 servers:
   - url: https://cloud.mongodb.com
 tags:
@@ -2587,7 +2587,7 @@ paths:
         content:
           application/vnd.atlas.2023-01-01+json:
             schema:
-              $ref: "#/components/schemas/CloudProviderAccessAWSIAMRoleRequest"
+              $ref: "#/components/schemas/CloudProviderAccessRole"
         description: Creates one role for the specified cloud provider.
         required: true
       responses:
@@ -2706,7 +2706,7 @@ paths:
         content:
           application/vnd.atlas.2023-01-01+json:
             schema:
-              $ref: "#/components/schemas/CloudProviderAccessAWSIAMRoleUpdateRequest"
+              $ref: "#/components/schemas/CloudProviderAccessRole"
         description: Grants access to the specified project for the specified access role.
         required: true
       responses:
@@ -2767,6 +2767,9 @@ paths:
       summary: Return All Clusters in One Project
       tags:
         - Clusters
+      x-xgen-changelog:
+        2024-07-11: Only clusters supported by the current API version are returned in
+          response
     post:
       description: "Creates one cluster in the specified project. Clusters contain a
         group of hosts that maintain the same data set. This resource can create
@@ -3251,8 +3254,7 @@ paths:
             maxLength: 64
             minLength: 1
             pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
-        - description: Unique string that identifies the AWS S3 bucket to which you export
-            your snapshots.
+        - description: Unique string that identifies the export job to return.
           in: path
           name: exportId
           required: true
@@ -4513,6 +4515,8 @@ paths:
           $ref: "#/components/responses/badRequest"
         "404":
           $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
       security:
@@ -4741,6 +4745,8 @@ paths:
           $ref: "#/components/responses/badRequest"
         "404":
           $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
       security:
@@ -5556,7 +5562,6 @@ paths:
         - Cluster Outage Simulation
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/processArgs":
     get:
-      deprecated: true
       description: Returns the advanced configuration details for one cluster in the
         specified project. Clusters contain a group of hosts that maintain the
         same data set. Advanced configuration details include the read/write
@@ -5598,9 +5603,7 @@ paths:
       summary: Return One Advanced Configuration Options for One Cluster
       tags:
         - Clusters
-      x-sunset: 2025-06-01
     patch:
-      deprecated: true
       description: Updates the advanced configuration details for one cluster in the
         specified project. Clusters contain a group of hosts that maintain the
         same data set. Advanced configuration details include the read/write
@@ -5654,7 +5657,6 @@ paths:
       summary: Update Advanced Configuration Options for One Cluster
       tags:
         - Clusters
-      x-sunset: 2025-06-01
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/restartPrimaries":
     post:
       description: "Starts a failover test for the specified cluster in the specified
@@ -5883,6 +5885,8 @@ paths:
           $ref: "#/components/responses/badRequest"
         "404":
           $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
       security:
@@ -6354,6 +6358,8 @@ paths:
           $ref: "#/components/responses/badRequest"
         "404":
           $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
       security:
@@ -6527,6 +6533,8 @@ paths:
           $ref: "#/components/responses/badRequest"
         "404":
           $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
       security:
@@ -9761,7 +9769,7 @@ paths:
         content:
           application/vnd.atlas.2024-05-30+json:
             schema:
-              $ref: "#/components/schemas/LiveMigrationRequest"
+              $ref: "#/components/schemas/LiveMigrationRequest20240530"
             x-xgen-version: 2024-05-30
         description: One migration to be created.
         required: true
@@ -9802,7 +9810,7 @@ paths:
         content:
           application/vnd.atlas.2024-05-30+json:
             schema:
-              $ref: "#/components/schemas/LiveMigrationRequest"
+              $ref: "#/components/schemas/LiveMigrationRequest20240530"
             x-xgen-version: 2024-05-30
         description: One migration to be validated.
         required: true
@@ -15421,7 +15429,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                $ref: "#/components/schemas/PaginatedApiInvoice"
+                $ref: "#/components/schemas/PaginatedApiInvoiceMetadata"
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -18031,7 +18039,10 @@ components:
         roleAssignments:
           type: array
           description: Atlas roles and the unique identifiers of the groups and
-            organizations associated with each role.
+            organizations associated with each role. The array must include at
+            least one element with an Organization role and its respective
+            **orgId**. Each element in the array can have a value for **orgId**
+            or **groupId**, but not both.
           items:
             $ref: "#/components/schemas/RoleAssignment"
           uniqueItems: true
@@ -19386,6 +19397,150 @@ components:
             payment. This parameter expresses its value in the ISO 8601
             timestamp format in UTC.
           readOnly: true
+    BillingInvoiceMetadata:
+      type: object
+      properties:
+        amountBilledCents:
+          type: integer
+          format: int64
+          description: Sum of services that the specified organization consumed in the
+            period covered in this invoice. This parameter expresses its value
+            in cents (100ths of one US Dollar).
+          readOnly: true
+        amountPaidCents:
+          type: integer
+          format: int64
+          description: Sum that the specified organization paid toward this invoice. This
+            parameter expresses its value in cents (100ths of one US Dollar).
+          readOnly: true
+        created:
+          type: string
+          format: date-time
+          description: Date and time when MongoDB Cloud created this invoice. This
+            parameter expresses its value in the ISO 8601 timestamp format in
+            UTC.
+          readOnly: true
+        creditsCents:
+          type: integer
+          format: int64
+          description: Sum that MongoDB credited the specified organization toward this
+            invoice. This parameter expresses its value in cents (100ths of one
+            US Dollar).
+          readOnly: true
+        endDate:
+          type: string
+          format: date-time
+          description: Date and time when MongoDB Cloud finished the billing period that
+            this invoice covers. This parameter expresses its value in the ISO
+            8601 timestamp format in UTC.
+          readOnly: true
+        groupId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the project
+            associated to this invoice. This identifying string doesn't appear
+            on all invoices.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        id:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the invoice
+            submitted to the specified organization. Charges typically post the
+            next day.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        linkedInvoices:
+          type: array
+          description: List that contains the invoices for organizations linked to the
+            paying organization.
+          items:
+            $ref: "#/components/schemas/BillingInvoiceMetadata"
+          readOnly: true
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        orgId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the organization
+            charged for services consumed from MongoDB Cloud.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        salesTaxCents:
+          type: integer
+          format: int64
+          description: Sum of sales tax applied to this invoice. This parameter expresses
+            its value in cents (100ths of one US Dollar).
+          readOnly: true
+        startDate:
+          type: string
+          format: date-time
+          description: Date and time when MongoDB Cloud began the billing period that this
+            invoice covers. This parameter expresses its value in the ISO 8601
+            timestamp format in UTC.
+          readOnly: true
+        startingBalanceCents:
+          type: integer
+          format: int64
+          description: Sum that the specified organization owed to MongoDB when MongoDB
+            issued this invoice. This parameter expresses its value in US
+            Dollars.
+          readOnly: true
+        statusName:
+          type: string
+          description: >
+            Phase of payment processing in which this invoice exists when you
+            made this request. Accepted phases include:
+
+
+            | Phase Value | Reason |
+
+            |---|---|
+
+            | CLOSED | MongoDB finalized all charges in the billing cycle but has yet to charge the customer. |
+
+            | FAILED | MongoDB attempted to charge the provided credit card but charge for that amount failed. |
+
+            | FORGIVEN | Customer initiated payment which MongoDB later forgave. |
+
+            | FREE | All charges totalled zero so the customer won't be charged. |
+
+            | INVOICED | MongoDB handled these charges using elastic invoicing. |
+
+            | PAID | MongoDB succeeded in charging the provided credit card. |
+
+            | PENDING | Invoice includes charges for the current billing cycle. |
+
+            | PREPAID | Customer has a pre-paid plan so they won't be charged. |
+        subtotalCents:
+          type: integer
+          format: int64
+          description: Sum of all positive invoice line items contained in this invoice.
+            This parameter expresses its value in cents (100ths of one US
+            Dollar).
+          readOnly: true
+        updated:
+          type: string
+          format: date-time
+          description: Date and time when MongoDB Cloud last updated the value of this
+            payment. This parameter expresses its value in the ISO 8601
+            timestamp format in UTC.
+          readOnly: true
     BillingPayment:
       type: object
       description: Funds transferred to MongoDB to cover the specified service in this
@@ -20014,122 +20169,6 @@ components:
           minLength: 24
           pattern: ^([a-f0-9]{24})$
           readOnly: true
-    CloudProviderAccessAWSIAMRoleRequest:
-      type: object
-      description: Details that describe the features linked to the Amazon Web
-        Services (AWS) Identity and Access Management (IAM) role.
-      properties:
-        atlasAWSAccountArn:
-          type: string
-          description: Amazon Resource Name that identifies the Amazon Web Services (AWS)
-            user account that MongoDB Cloud uses when it assumes the Identity
-            and Access Management (IAM) role.
-          example: arn:aws:iam::772401394250:role/my-test-aws-role
-          maxLength: 2048
-          minLength: 20
-          readOnly: true
-        atlasAssumedRoleExternalId:
-          type: string
-          format: uuid
-          description: Unique external ID that MongoDB Cloud uses when it assumes the IAM
-            role in your Amazon Web Services (AWS) account.
-          readOnly: true
-        authorizedDate:
-          type: string
-          format: date-time
-          description: Date and time when someone authorized this role for the specified
-            cloud service provider. This parameter expresses its value in the
-            ISO 8601 timestamp format in UTC.
-          readOnly: true
-        createdDate:
-          type: string
-          format: date-time
-          description: Date and time when someone created this role for the specified
-            cloud service provider. This parameter expresses its value in the
-            ISO 8601 timestamp format in UTC.
-          readOnly: true
-        featureUsages:
-          type: array
-          description: List that contains application features associated with this Amazon
-            Web Services (AWS) Identity and Access Management (IAM) role.
-          items:
-            $ref: "#/components/schemas/CloudProviderAccessFeatureUsage"
-          readOnly: true
-        providerName:
-          type: string
-          description: Human-readable label that identifies the cloud provider of the role.
-        roleId:
-          type: string
-          description: Unique 24-hexadecimal digit string that identifies the role.
-          example: 32b6e34b3d91647abb20e7b8
-          maxLength: 24
-          minLength: 24
-          pattern: ^([a-f0-9]{24})$
-          readOnly: true
-      required:
-        - providerName
-    CloudProviderAccessAWSIAMRoleUpdateRequest:
-      type: object
-      description: Details that describe the features linked to the Amazon Web
-        Services (AWS) Identity and Access Management (IAM) role.
-      properties:
-        atlasAWSAccountArn:
-          type: string
-          description: Amazon Resource Name that identifies the Amazon Web Services (AWS)
-            user account that MongoDB Cloud uses when it assumes the Identity
-            and Access Management (IAM) role.
-          example: arn:aws:iam::772401394250:role/my-test-aws-role
-          maxLength: 2048
-          minLength: 20
-          readOnly: true
-        atlasAssumedRoleExternalId:
-          type: string
-          format: uuid
-          description: Unique external ID that MongoDB Cloud uses when it assumes the IAM
-            role in your Amazon Web Services (AWS) account.
-          readOnly: true
-        authorizedDate:
-          type: string
-          format: date-time
-          description: Date and time when someone authorized this role for the specified
-            cloud service provider. This parameter expresses its value in the
-            ISO 8601 timestamp format in UTC.
-          readOnly: true
-        createdDate:
-          type: string
-          format: date-time
-          description: Date and time when someone created this role for the specified
-            cloud service provider. This parameter expresses its value in the
-            ISO 8601 timestamp format in UTC.
-          readOnly: true
-        featureUsages:
-          type: array
-          description: List that contains application features associated with this Amazon
-            Web Services (AWS) Identity and Access Management (IAM) role.
-          items:
-            $ref: "#/components/schemas/CloudProviderAccessFeatureUsage"
-          readOnly: true
-        iamAssumedRoleArn:
-          type: string
-          description: Amazon Resource Name (ARN) that identifies the Amazon Web Services
-            (AWS) Identity and Access Management (IAM) role that MongoDB Cloud
-            assumes when it accesses resources in your AWS account.
-          example: arn:aws:iam::123456789012:root
-          maxLength: 2048
-          minLength: 20
-        providerName:
-          type: string
-          description: Human-readable label that identifies the cloud provider of the role.
-        roleId:
-          type: string
-          description: Unique 24-hexadecimal digit string that identifies the role.
-          example: 32b6e34b3d91647abb20e7b8
-          maxLength: 24
-          minLength: 24
-          pattern: ^([a-f0-9]{24})$
-          readOnly: true
-      required:
-        - providerName
     CloudProviderAccessFeatureUsage:
       type: object
       description: MongoDB Cloud features associated with this Amazon Web Services
@@ -22758,14 +22797,6 @@ components:
         - frequencyType
         - retentionUnit
         - retentionValue
-    DiskBackupBaseRestoreMember:
-      type: object
-      properties:
-        replicaSetName:
-          type: string
-          description: Human-readable label that identifies the replica set on the sharded
-            cluster.
-          readOnly: true
     DiskBackupCopySetting:
       type: object
       description: Copy setting item in the desired backup policy.
@@ -22806,7 +22837,7 @@ components:
           description: Information on the export job for each replica set in the sharded
             cluster.
           items:
-            $ref: "#/components/schemas/DiskBackupBaseRestoreMember"
+            $ref: "#/components/schemas/DiskBackupExportMember"
           readOnly: true
         createdAt:
           type: string
@@ -22929,6 +22960,24 @@ components:
       required:
         - exportBucketId
         - snapshotId
+    DiskBackupExportMember:
+      type: object
+      properties:
+        exportId:
+          type: string
+          description: Unique 24-hexadecimal character string that identifies the the
+            Cloud Backup snapshot export job for each shard in a sharded
+            cluster.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        replicaSetName:
+          type: string
+          description: Human-readable label that identifies the replica set on the sharded
+            cluster.
+          readOnly: true
     DiskBackupOnDemandSnapshotRequest:
       type: object
       properties:
@@ -23064,6 +23113,20 @@ components:
             or sharded cluster.
           readOnly: true
       title: Replica Set Snapshot
+    DiskBackupRestoreMember:
+      type: object
+      properties:
+        downloadUrl:
+          type: string
+          description: 'One Uniform Resource Locator that point to the compressed snapshot
+            files for manual download. MongoDB Cloud returns this parameter when
+            `"deliveryType" : "download"`.'
+          readOnly: true
+        replicaSetName:
+          type: string
+          description: Human-readable label that identifies the replica set on the sharded
+            cluster.
+          readOnly: true
     DiskBackupShardedClusterSnapshot:
       type: object
       description: Details of the sharded cluster snapshot that MongoDB Cloud created.
@@ -23423,7 +23486,7 @@ components:
           description: Information on the restore job for each replica set in the sharded
             cluster.
           items:
-            $ref: "#/components/schemas/DiskBackupBaseRestoreMember"
+            $ref: "#/components/schemas/DiskBackupRestoreMember"
           readOnly: true
         deliveryType:
           type: string
@@ -26646,7 +26709,7 @@ components:
           description: State of the specified validation job returned at the time of the
             request.
           readOnly: true
-    LiveMigrationRequest:
+    LiveMigrationRequest20240530:
       type: object
       properties:
         _id:
@@ -26660,12 +26723,24 @@ components:
           readOnly: true
         destination:
           $ref: "#/components/schemas/Destination"
-        dropEnabled:
+        dropDestinationData:
           type: boolean
+          default: false
           description: Flag that indicates whether the migration process drops all
             collections from the destination cluster before the migration
             starts.
           writeOnly: true
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
         migrationHosts:
           type: array
           description: List of migration hosts used for this migration.
@@ -26680,7 +26755,6 @@ components:
           $ref: "#/components/schemas/Source"
       required:
         - destination
-        - dropEnabled
         - source
     LiveMigrationResponse:
       type: object
@@ -28433,8 +28507,8 @@ components:
         groupId:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the project to
-            which this role belongs. You can set a value for this parameter or
-            **orgId** but not both in the same request.
+            which this role belongs. Each element within **roleAssignments** can
+            have a value for **groupId** or **orgId**, but not both.
           example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
@@ -28442,8 +28516,8 @@ components:
         orgId:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the organization
-            to which this role belongs. You can set a value for this parameter
-            or **groupId** but not both in the same request.
+            to which this role belongs. Each element within **roleAssignments**
+            can have a value for **orgId** or **groupId**, but not both.
           example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
@@ -28748,7 +28822,6 @@ components:
       properties:
         analyzer:
           type: string
-          default: lucene.standard
           description: Specific pre-defined method chosen to apply to the synonyms to be
             searched.
         name:
@@ -29482,6 +29555,8 @@ components:
           example:
             debug: queue, msg, protocol
             group.protocol.type: consumer
+        networking:
+          $ref: "#/components/schemas/StreamsKafkaNetworking"
         proxyInfo:
           $ref: "#/components/schemas/ProxyInfo"
         security:
@@ -29542,6 +29617,47 @@ components:
         username:
           type: string
           description: Username of the account to connect to the Kafka cluster.
+    StreamsKafkaNetworking:
+      type: object
+      description: Networking Access Type can either be 'PUBLIC' (default) or VPC. VPC
+        type is in public preview, please file a support ticket to enable VPC
+        Network Access
+      properties:
+        access:
+          $ref: "#/components/schemas/StreamsKafkaNetworkingAccess"
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+    StreamsKafkaNetworkingAccess:
+      type: object
+      description: Information about the networking access.
+      properties:
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        name:
+          type: string
+          description: Id of the vpc peer when the type is VPC.
+        type:
+          type: string
+          description: Selected networking type. Either PUBLIC or VPC. Defaults to PUBLIC
+          title: Networking Access Type
     StreamsKafkaSecurity:
       type: object
       description: Properties for the secure transport connection to Kafka. For SSL,
@@ -31634,6 +31750,34 @@ components:
             completing this request.
           items:
             $ref: "#/components/schemas/ServerlessBackupSnapshot"
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
+          minimum: 0
+          readOnly: true
+    PaginatedApiInvoiceMetadata:
+      type: object
+      properties:
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        results:
+          type: array
+          description: List of returned documents that MongoDB Cloud providers when
+            completing this request.
+          items:
+            $ref: "#/components/schemas/BillingInvoiceMetadata"
           readOnly: true
         totalCount:
           type: integer

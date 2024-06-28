@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20240530001/admin"
+	admin "go.mongodb.org/atlas-sdk/v20240530002/admin"
 
 	http "net/http"
 
@@ -402,24 +402,24 @@ func (_c *PrivateEndpointServicesApi_DeletePrivateEndpoint_Call) RunAndReturn(ru
 }
 
 // DeletePrivateEndpointExecute provides a mock function with given fields: r
-func (_m *PrivateEndpointServicesApi) DeletePrivateEndpointExecute(r admin.DeletePrivateEndpointApiRequest) (map[string]interface{}, *http.Response, error) {
+func (_m *PrivateEndpointServicesApi) DeletePrivateEndpointExecute(r admin.DeletePrivateEndpointApiRequest) (interface{}, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeletePrivateEndpointExecute")
 	}
 
-	var r0 map[string]interface{}
+	var r0 interface{}
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeletePrivateEndpointApiRequest) (map[string]interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeletePrivateEndpointApiRequest) (interface{}, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeletePrivateEndpointApiRequest) map[string]interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeletePrivateEndpointApiRequest) interface{}); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(map[string]interface{})
+			r0 = ret.Get(0).(interface{})
 		}
 	}
 
@@ -458,12 +458,12 @@ func (_c *PrivateEndpointServicesApi_DeletePrivateEndpointExecute_Call) Run(run 
 	return _c
 }
 
-func (_c *PrivateEndpointServicesApi_DeletePrivateEndpointExecute_Call) Return(_a0 map[string]interface{}, _a1 *http.Response, _a2 error) *PrivateEndpointServicesApi_DeletePrivateEndpointExecute_Call {
+func (_c *PrivateEndpointServicesApi_DeletePrivateEndpointExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *PrivateEndpointServicesApi_DeletePrivateEndpointExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *PrivateEndpointServicesApi_DeletePrivateEndpointExecute_Call) RunAndReturn(run func(admin.DeletePrivateEndpointApiRequest) (map[string]interface{}, *http.Response, error)) *PrivateEndpointServicesApi_DeletePrivateEndpointExecute_Call {
+func (_c *PrivateEndpointServicesApi_DeletePrivateEndpointExecute_Call) RunAndReturn(run func(admin.DeletePrivateEndpointApiRequest) (interface{}, *http.Response, error)) *PrivateEndpointServicesApi_DeletePrivateEndpointExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -518,24 +518,24 @@ func (_c *PrivateEndpointServicesApi_DeletePrivateEndpointService_Call) RunAndRe
 }
 
 // DeletePrivateEndpointServiceExecute provides a mock function with given fields: r
-func (_m *PrivateEndpointServicesApi) DeletePrivateEndpointServiceExecute(r admin.DeletePrivateEndpointServiceApiRequest) (map[string]interface{}, *http.Response, error) {
+func (_m *PrivateEndpointServicesApi) DeletePrivateEndpointServiceExecute(r admin.DeletePrivateEndpointServiceApiRequest) (interface{}, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeletePrivateEndpointServiceExecute")
 	}
 
-	var r0 map[string]interface{}
+	var r0 interface{}
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeletePrivateEndpointServiceApiRequest) (map[string]interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeletePrivateEndpointServiceApiRequest) (interface{}, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeletePrivateEndpointServiceApiRequest) map[string]interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeletePrivateEndpointServiceApiRequest) interface{}); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(map[string]interface{})
+			r0 = ret.Get(0).(interface{})
 		}
 	}
 
@@ -574,12 +574,12 @@ func (_c *PrivateEndpointServicesApi_DeletePrivateEndpointServiceExecute_Call) R
 	return _c
 }
 
-func (_c *PrivateEndpointServicesApi_DeletePrivateEndpointServiceExecute_Call) Return(_a0 map[string]interface{}, _a1 *http.Response, _a2 error) *PrivateEndpointServicesApi_DeletePrivateEndpointServiceExecute_Call {
+func (_c *PrivateEndpointServicesApi_DeletePrivateEndpointServiceExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *PrivateEndpointServicesApi_DeletePrivateEndpointServiceExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *PrivateEndpointServicesApi_DeletePrivateEndpointServiceExecute_Call) RunAndReturn(run func(admin.DeletePrivateEndpointServiceApiRequest) (map[string]interface{}, *http.Response, error)) *PrivateEndpointServicesApi_DeletePrivateEndpointServiceExecute_Call {
+func (_c *PrivateEndpointServicesApi_DeletePrivateEndpointServiceExecute_Call) RunAndReturn(run func(admin.DeletePrivateEndpointServiceApiRequest) (interface{}, *http.Response, error)) *PrivateEndpointServicesApi_DeletePrivateEndpointServiceExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }

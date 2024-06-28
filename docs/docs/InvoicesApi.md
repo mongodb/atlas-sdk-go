@@ -30,7 +30,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530001/admin"
+    "go.mongodb.org/atlas-sdk/v20240530002/admin"
 )
 
 func main() {
@@ -105,7 +105,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530001/admin"
+    "go.mongodb.org/atlas-sdk/v20240530002/admin"
 )
 
 func main() {
@@ -181,7 +181,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530001/admin"
+    "go.mongodb.org/atlas-sdk/v20240530002/admin"
 )
 
 func main() {
@@ -257,7 +257,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530001/admin"
+    "go.mongodb.org/atlas-sdk/v20240530002/admin"
 )
 
 func main() {
@@ -318,7 +318,7 @@ Name | Type | Description  | Notes
 
 ## ListInvoices
 
-> PaginatedApiInvoice ListInvoices(ctx, orgId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+> PaginatedApiInvoiceMetadata ListInvoices(ctx, orgId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
 Return All Invoices for One Organization
 
@@ -333,7 +333,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530001/admin"
+    "go.mongodb.org/atlas-sdk/v20240530002/admin"
 )
 
 func main() {
@@ -353,7 +353,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `ListInvoices`: PaginatedApiInvoice
+    // response from `ListInvoices`: PaginatedApiInvoiceMetadata
     fmt.Fprintf(os.Stdout, "Response from `InvoicesApi.ListInvoices`: %v\n", resp)
 }
 ```
@@ -380,7 +380,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PaginatedApiInvoice**](PaginatedApiInvoice.md)
+[**PaginatedApiInvoiceMetadata**](PaginatedApiInvoiceMetadata.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -412,7 +412,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530001/admin"
+    "go.mongodb.org/atlas-sdk/v20240530002/admin"
 )
 
 func main() {
