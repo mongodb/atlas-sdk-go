@@ -5,7 +5,7 @@ package core
 // For more information please see: https://github.com/mongodb/atlas-sdk-go/blob/main/docs/doc_1_concepts.md
 const (
 	// SDK release tag version.
-	Version = "v20240530001.0.0"
+	Version = "v20240530002.0.0"
 	// Resource Version.
 	Resource = "20240530"
 )
