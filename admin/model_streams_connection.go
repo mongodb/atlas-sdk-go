@@ -22,9 +22,10 @@ type StreamsConnection struct {
 	// Comma separated list of server addresses.
 	BootstrapServers *string `json:"bootstrapServers,omitempty"`
 	// A map of Kafka key-value pairs for optional configuration. This is a flat object, and keys can have '.' characters.
-	Config    *map[string]string    `json:"config,omitempty"`
-	ProxyInfo *ProxyInfo            `json:"proxyInfo,omitempty"`
-	Security  *StreamsKafkaSecurity `json:"security,omitempty"`
+	Config     *map[string]string      `json:"config,omitempty"`
+	Networking *StreamsKafkaNetworking `json:"networking,omitempty"`
+	ProxyInfo  *ProxyInfo              `json:"proxyInfo,omitempty"`
+	Security   *StreamsKafkaSecurity   `json:"security,omitempty"`
 }
 
 // NewStreamsConnection instantiates a new StreamsConnection object
@@ -308,6 +309,39 @@ func (o *StreamsConnection) SetConfig(v map[string]string) {
 	o.Config = &v
 }
 
+// GetNetworking returns the Networking field value if set, zero value otherwise
+func (o *StreamsConnection) GetNetworking() StreamsKafkaNetworking {
+	if o == nil || IsNil(o.Networking) {
+		var ret StreamsKafkaNetworking
+		return ret
+	}
+	return *o.Networking
+}
+
+// GetNetworkingOk returns a tuple with the Networking field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsConnection) GetNetworkingOk() (*StreamsKafkaNetworking, bool) {
+	if o == nil || IsNil(o.Networking) {
+		return nil, false
+	}
+
+	return o.Networking, true
+}
+
+// HasNetworking returns a boolean if a field has been set.
+func (o *StreamsConnection) HasNetworking() bool {
+	if o != nil && !IsNil(o.Networking) {
+		return true
+	}
+
+	return false
+}
+
+// SetNetworking gets a reference to the given StreamsKafkaNetworking and assigns it to the Networking field.
+func (o *StreamsConnection) SetNetworking(v StreamsKafkaNetworking) {
+	o.Networking = &v
+}
+
 // GetProxyInfo returns the ProxyInfo field value if set, zero value otherwise
 func (o *StreamsConnection) GetProxyInfo() ProxyInfo {
 	if o == nil || IsNil(o.ProxyInfo) {
@@ -403,6 +437,9 @@ func (o StreamsConnection) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Config) {
 		toSerialize["config"] = o.Config
+	}
+	if !IsNil(o.Networking) {
+		toSerialize["networking"] = o.Networking
 	}
 	if !IsNil(o.ProxyInfo) {
 		toSerialize["proxyInfo"] = o.ProxyInfo

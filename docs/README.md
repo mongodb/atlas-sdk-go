@@ -17,6 +17,7 @@
    * [Fetching Error Object](./doc_2_error_handling.md#fetching-error-object)
    * [Checking for the Existence of a Specific Error Code](./doc_2_error_handling.md#checking-for-the-existence-of-a-specific-error-code)
    * [Checking for the Existence of a Specific Response Status Code](./doc_2_error_handling.md#checking-for-the-existence-of-a-specific-response-status-code)
+   * [Mocking Errors](./doc_2_error_handling.md#mocking-errors)
 
 * [Migrate from the Go HTTP Client to the Atlas Go SDK](./doc_3_migration.md#migrate-from-the-go-http-client-to-the-atlas-go-sdk)
    * [Background](./doc_3_migration.md#background)

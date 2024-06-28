@@ -783,7 +783,7 @@ Name | Type | Description  | Notes
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
 **clusterName** | **string** | Human-readable label that identifies the cluster. | 
-**exportId** | **string** | Unique string that identifies the AWS S3 bucket to which you export your snapshots. | 
+**exportId** | **string** | Unique string that identifies the export job to return. | 
 
 ### Other Parameters
 

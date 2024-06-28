@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Components** | Pointer to [**[]DiskBackupBaseRestoreMember**](DiskBackupBaseRestoreMember.md) | Information on the export job for each replica set in the sharded cluster. | [optional] [readonly] 
+**Components** | Pointer to [**[]DiskBackupExportMember**](DiskBackupExportMember.md) | Information on the export job for each replica set in the sharded cluster. | [optional] [readonly] 
 **CreatedAt** | Pointer to **time.Time** | Date and time when someone created this export job. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC. | [optional] [readonly] 
 **CustomData** | Pointer to [**[]BackupLabel**](BackupLabel.md) | Collection of key-value pairs that represent custom data for the metadata file that MongoDB Cloud uploads to the bucket when the export job finishes. | [optional] 
 **DeliveryUrl** | Pointer to **[]string** | One or more Uniform Resource Locators (URLs) that point to the compressed snapshot files for manual download. MongoDB Cloud returns this parameter when &#x60;\&quot;deliveryType\&quot; : \&quot;download\&quot;&#x60;. | [optional] [readonly] 
@@ -38,20 +38,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetComponents
 
-`func (o *DiskBackupExportJob) GetComponents() []DiskBackupBaseRestoreMember`
+`func (o *DiskBackupExportJob) GetComponents() []DiskBackupExportMember`
 
 GetComponents returns the Components field if non-nil, zero value otherwise.
 
 ### GetComponentsOk
 
-`func (o *DiskBackupExportJob) GetComponentsOk() (*[]DiskBackupBaseRestoreMember, bool)`
+`func (o *DiskBackupExportJob) GetComponentsOk() (*[]DiskBackupExportMember, bool)`
 
 GetComponentsOk returns a tuple with the Components field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetComponents
 
-`func (o *DiskBackupExportJob) SetComponents(v []DiskBackupBaseRestoreMember)`
+`func (o *DiskBackupExportJob) SetComponents(v []DiskBackupExportMember)`
 
 SetComponents sets Components field to given value.
 

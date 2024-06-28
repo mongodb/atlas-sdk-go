@@ -20,10 +20,10 @@ type CloudProviderAccessApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param roleId Unique 24-hexadecimal digit string that identifies the role.
-		@param cloudProviderAccessAWSIAMRoleUpdateRequest Grants access to the specified project for the specified access role.
+		@param cloudProviderAccessRole Grants access to the specified project for the specified access role.
 		@return AuthorizeCloudProviderAccessRoleApiRequest
 	*/
-	AuthorizeCloudProviderAccessRole(ctx context.Context, groupId string, roleId string, cloudProviderAccessAWSIAMRoleUpdateRequest *CloudProviderAccessAWSIAMRoleUpdateRequest) AuthorizeCloudProviderAccessRoleApiRequest
+	AuthorizeCloudProviderAccessRole(ctx context.Context, groupId string, roleId string, cloudProviderAccessRole *CloudProviderAccessRole) AuthorizeCloudProviderAccessRoleApiRequest
 	/*
 		AuthorizeCloudProviderAccessRole Authorize One Cloud Provider Access Role
 
@@ -44,10 +44,10 @@ type CloudProviderAccessApi interface {
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param cloudProviderAccessAWSIAMRoleRequest Creates one role for the specified cloud provider.
+		@param cloudProviderAccessRole Creates one role for the specified cloud provider.
 		@return CreateCloudProviderAccessRoleApiRequest
 	*/
-	CreateCloudProviderAccessRole(ctx context.Context, groupId string, cloudProviderAccessAWSIAMRoleRequest *CloudProviderAccessAWSIAMRoleRequest) CreateCloudProviderAccessRoleApiRequest
+	CreateCloudProviderAccessRole(ctx context.Context, groupId string, cloudProviderAccessRole *CloudProviderAccessRole) CreateCloudProviderAccessRoleApiRequest
 	/*
 		CreateCloudProviderAccessRole Create One Cloud Provider Access Role
 
@@ -138,26 +138,26 @@ type CloudProviderAccessApi interface {
 type CloudProviderAccessApiService service
 
 type AuthorizeCloudProviderAccessRoleApiRequest struct {
-	ctx                                        context.Context
-	ApiService                                 CloudProviderAccessApi
-	groupId                                    string
-	roleId                                     string
-	cloudProviderAccessAWSIAMRoleUpdateRequest *CloudProviderAccessAWSIAMRoleUpdateRequest
+	ctx                     context.Context
+	ApiService              CloudProviderAccessApi
+	groupId                 string
+	roleId                  string
+	cloudProviderAccessRole *CloudProviderAccessRole
 }
 
 type AuthorizeCloudProviderAccessRoleApiParams struct {
-	GroupId                                    string
-	RoleId                                     string
-	CloudProviderAccessAWSIAMRoleUpdateRequest *CloudProviderAccessAWSIAMRoleUpdateRequest
+	GroupId                 string
+	RoleId                  string
+	CloudProviderAccessRole *CloudProviderAccessRole
 }
 
 func (a *CloudProviderAccessApiService) AuthorizeCloudProviderAccessRoleWithParams(ctx context.Context, args *AuthorizeCloudProviderAccessRoleApiParams) AuthorizeCloudProviderAccessRoleApiRequest {
 	return AuthorizeCloudProviderAccessRoleApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		groupId:    args.GroupId,
-		roleId:     args.RoleId,
-		cloudProviderAccessAWSIAMRoleUpdateRequest: args.CloudProviderAccessAWSIAMRoleUpdateRequest,
+		ApiService:              a,
+		ctx:                     ctx,
+		groupId:                 args.GroupId,
+		roleId:                  args.RoleId,
+		cloudProviderAccessRole: args.CloudProviderAccessRole,
 	}
 }
 
@@ -175,13 +175,13 @@ Grants access to the specified project for the specified access role. To use thi
 	@param roleId Unique 24-hexadecimal digit string that identifies the role.
 	@return AuthorizeCloudProviderAccessRoleApiRequest
 */
-func (a *CloudProviderAccessApiService) AuthorizeCloudProviderAccessRole(ctx context.Context, groupId string, roleId string, cloudProviderAccessAWSIAMRoleUpdateRequest *CloudProviderAccessAWSIAMRoleUpdateRequest) AuthorizeCloudProviderAccessRoleApiRequest {
+func (a *CloudProviderAccessApiService) AuthorizeCloudProviderAccessRole(ctx context.Context, groupId string, roleId string, cloudProviderAccessRole *CloudProviderAccessRole) AuthorizeCloudProviderAccessRoleApiRequest {
 	return AuthorizeCloudProviderAccessRoleApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		groupId:    groupId,
-		roleId:     roleId,
-		cloudProviderAccessAWSIAMRoleUpdateRequest: cloudProviderAccessAWSIAMRoleUpdateRequest,
+		ApiService:              a,
+		ctx:                     ctx,
+		groupId:                 groupId,
+		roleId:                  roleId,
+		cloudProviderAccessRole: cloudProviderAccessRole,
 	}
 }
 
@@ -208,8 +208,8 @@ func (a *CloudProviderAccessApiService) AuthorizeCloudProviderAccessRoleExecute(
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.cloudProviderAccessAWSIAMRoleUpdateRequest == nil {
-		return localVarReturnValue, nil, reportError("cloudProviderAccessAWSIAMRoleUpdateRequest is required and must be specified")
+	if r.cloudProviderAccessRole == nil {
+		return localVarReturnValue, nil, reportError("cloudProviderAccessRole is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -230,7 +230,7 @@ func (a *CloudProviderAccessApiService) AuthorizeCloudProviderAccessRoleExecute(
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.cloudProviderAccessAWSIAMRoleUpdateRequest
+	localVarPostBody = r.cloudProviderAccessRole
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -264,23 +264,23 @@ func (a *CloudProviderAccessApiService) AuthorizeCloudProviderAccessRoleExecute(
 }
 
 type CreateCloudProviderAccessRoleApiRequest struct {
-	ctx                                  context.Context
-	ApiService                           CloudProviderAccessApi
-	groupId                              string
-	cloudProviderAccessAWSIAMRoleRequest *CloudProviderAccessAWSIAMRoleRequest
+	ctx                     context.Context
+	ApiService              CloudProviderAccessApi
+	groupId                 string
+	cloudProviderAccessRole *CloudProviderAccessRole
 }
 
 type CreateCloudProviderAccessRoleApiParams struct {
-	GroupId                              string
-	CloudProviderAccessAWSIAMRoleRequest *CloudProviderAccessAWSIAMRoleRequest
+	GroupId                 string
+	CloudProviderAccessRole *CloudProviderAccessRole
 }
 
 func (a *CloudProviderAccessApiService) CreateCloudProviderAccessRoleWithParams(ctx context.Context, args *CreateCloudProviderAccessRoleApiParams) CreateCloudProviderAccessRoleApiRequest {
 	return CreateCloudProviderAccessRoleApiRequest{
-		ApiService:                           a,
-		ctx:                                  ctx,
-		groupId:                              args.GroupId,
-		cloudProviderAccessAWSIAMRoleRequest: args.CloudProviderAccessAWSIAMRoleRequest,
+		ApiService:              a,
+		ctx:                     ctx,
+		groupId:                 args.GroupId,
+		cloudProviderAccessRole: args.CloudProviderAccessRole,
 	}
 }
 
@@ -297,12 +297,12 @@ Creates one access role for the specified cloud provider. Some MongoDB Cloud fea
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return CreateCloudProviderAccessRoleApiRequest
 */
-func (a *CloudProviderAccessApiService) CreateCloudProviderAccessRole(ctx context.Context, groupId string, cloudProviderAccessAWSIAMRoleRequest *CloudProviderAccessAWSIAMRoleRequest) CreateCloudProviderAccessRoleApiRequest {
+func (a *CloudProviderAccessApiService) CreateCloudProviderAccessRole(ctx context.Context, groupId string, cloudProviderAccessRole *CloudProviderAccessRole) CreateCloudProviderAccessRoleApiRequest {
 	return CreateCloudProviderAccessRoleApiRequest{
-		ApiService:                           a,
-		ctx:                                  ctx,
-		groupId:                              groupId,
-		cloudProviderAccessAWSIAMRoleRequest: cloudProviderAccessAWSIAMRoleRequest,
+		ApiService:              a,
+		ctx:                     ctx,
+		groupId:                 groupId,
+		cloudProviderAccessRole: cloudProviderAccessRole,
 	}
 }
 
@@ -328,8 +328,8 @@ func (a *CloudProviderAccessApiService) CreateCloudProviderAccessRoleExecute(r C
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.cloudProviderAccessAWSIAMRoleRequest == nil {
-		return localVarReturnValue, nil, reportError("cloudProviderAccessAWSIAMRoleRequest is required and must be specified")
+	if r.cloudProviderAccessRole == nil {
+		return localVarReturnValue, nil, reportError("cloudProviderAccessRole is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -350,7 +350,7 @@ func (a *CloudProviderAccessApiService) CreateCloudProviderAccessRoleExecute(r C
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.cloudProviderAccessAWSIAMRoleRequest
+	localVarPostBody = r.cloudProviderAccessRole
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
