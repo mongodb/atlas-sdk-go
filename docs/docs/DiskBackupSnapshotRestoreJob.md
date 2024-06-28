@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Cancelled** | Pointer to **bool** | Flag that indicates whether someone canceled this restore job. | [optional] [readonly] 
-**Components** | Pointer to [**[]DiskBackupBaseRestoreMember**](DiskBackupBaseRestoreMember.md) | Information on the restore job for each replica set in the sharded cluster. | [optional] [readonly] 
+**Components** | Pointer to [**[]DiskBackupRestoreMember**](DiskBackupRestoreMember.md) | Information on the restore job for each replica set in the sharded cluster. | [optional] [readonly] 
 **DeliveryType** | **string** | Human-readable label that categorizes the restore job to create. | 
 **DeliveryUrl** | Pointer to **[]string** | One or more Uniform Resource Locators (URLs) that point to the compressed snapshot files for manual download. MongoDB Cloud returns this parameter when &#x60;\&quot;deliveryType\&quot; : \&quot;download\&quot;&#x60;. | [optional] [readonly] 
 **DesiredTimestamp** | Pointer to [**ApiBSONTimestamp**](ApiBSONTimestamp.md) |  | [optional] 
@@ -68,20 +68,20 @@ SetCancelled sets Cancelled field to given value.
 HasCancelled returns a boolean if a field has been set.
 ### GetComponents
 
-`func (o *DiskBackupSnapshotRestoreJob) GetComponents() []DiskBackupBaseRestoreMember`
+`func (o *DiskBackupSnapshotRestoreJob) GetComponents() []DiskBackupRestoreMember`
 
 GetComponents returns the Components field if non-nil, zero value otherwise.
 
 ### GetComponentsOk
 
-`func (o *DiskBackupSnapshotRestoreJob) GetComponentsOk() (*[]DiskBackupBaseRestoreMember, bool)`
+`func (o *DiskBackupSnapshotRestoreJob) GetComponentsOk() (*[]DiskBackupRestoreMember, bool)`
 
 GetComponentsOk returns a tuple with the Components field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetComponents
 
-`func (o *DiskBackupSnapshotRestoreJob) SetComponents(v []DiskBackupBaseRestoreMember)`
+`func (o *DiskBackupSnapshotRestoreJob) SetComponents(v []DiskBackupRestoreMember)`
 
 SetComponents sets Components field to given value.
 

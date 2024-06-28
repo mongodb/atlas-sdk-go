@@ -132,7 +132,7 @@ type InvoicesApi interface {
 	ListInvoicesWithParams(ctx context.Context, args *ListInvoicesApiParams) ListInvoicesApiRequest
 
 	// Method available only for mocking purposes
-	ListInvoicesExecute(r ListInvoicesApiRequest) (*PaginatedApiInvoice, *http.Response, error)
+	ListInvoicesExecute(r ListInvoicesApiRequest) (*PaginatedApiInvoiceMetadata, *http.Response, error)
 
 	/*
 		ListPendingInvoices Return All Pending Invoices for One Organization
@@ -680,7 +680,7 @@ func (r ListInvoicesApiRequest) PageNum(pageNum int) ListInvoicesApiRequest {
 	return r
 }
 
-func (r ListInvoicesApiRequest) Execute() (*PaginatedApiInvoice, *http.Response, error) {
+func (r ListInvoicesApiRequest) Execute() (*PaginatedApiInvoiceMetadata, *http.Response, error) {
 	return r.ApiService.ListInvoicesExecute(r)
 }
 
@@ -704,13 +704,13 @@ func (a *InvoicesApiService) ListInvoices(ctx context.Context, orgId string) Lis
 
 // Execute executes the request
 //
-//	@return PaginatedApiInvoice
-func (a *InvoicesApiService) ListInvoicesExecute(r ListInvoicesApiRequest) (*PaginatedApiInvoice, *http.Response, error) {
+//	@return PaginatedApiInvoiceMetadata
+func (a *InvoicesApiService) ListInvoicesExecute(r ListInvoicesApiRequest) (*PaginatedApiInvoiceMetadata, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *PaginatedApiInvoice
+		localVarReturnValue *PaginatedApiInvoiceMetadata
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InvoicesApiService.ListInvoices")

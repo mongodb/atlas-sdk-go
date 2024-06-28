@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Analyzer** | **string** | Specific pre-defined method chosen to apply to the synonyms to be searched. | [default to "lucene.standard"]
+**Analyzer** | **string** | Specific pre-defined method chosen to apply to the synonyms to be searched. | 
 **Name** | **string** | Label that identifies the synonym definition. Each **synonym.name** must be unique within the same index definition. | 
 **Source** | [**SynonymSource**](SynonymSource.md) |  | 
 

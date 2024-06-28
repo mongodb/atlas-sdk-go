@@ -92,7 +92,7 @@ Name | Type | Description  | Notes
 
 ## CreatePushMigration
 
-> LiveMigrationResponse CreatePushMigration(ctx, groupId, liveMigrationRequest LiveMigrationRequest).Execute()
+> LiveMigrationResponse CreatePushMigration(ctx, groupId, liveMigrationRequest20240530 LiveMigrationRequest20240530).Execute()
 
 Migrate One Local Managed Cluster to MongoDB Atlas
 
@@ -117,9 +117,9 @@ func main() {
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    liveMigrationRequest := *openapiclient.NewLiveMigrationRequest(*openapiclient.NewDestination("ClusterName_example", "9b43a5b329223c3a1591a678", "HostnameSchemaType_example"), false, *openapiclient.NewSource("ClusterName_example", "9b43a5b329223c3a1591a678", false, false)) // LiveMigrationRequest | 
+    liveMigrationRequest20240530 := *openapiclient.NewLiveMigrationRequest20240530(*openapiclient.NewDestination("ClusterName_example", "9b43a5b329223c3a1591a678", "HostnameSchemaType_example"), *openapiclient.NewSource("ClusterName_example", "9b43a5b329223c3a1591a678", false, false)) // LiveMigrationRequest20240530 | 
 
-    resp, r, err := sdk.CloudMigrationServiceApi.CreatePushMigration(context.Background(), groupId, &liveMigrationRequest).Execute()
+    resp, r, err := sdk.CloudMigrationServiceApi.CreatePushMigration(context.Background(), groupId, &liveMigrationRequest20240530).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CloudMigrationServiceApi.CreatePushMigration``: %v\n", err)
         apiError := admin.AsError(err)
@@ -146,7 +146,7 @@ Other parameters are passed through a pointer to a apiCreatePushMigrationRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **liveMigrationRequest** | [**LiveMigrationRequest**](LiveMigrationRequest.md) | One migration to be created. | 
+ **liveMigrationRequest20240530** | [**LiveMigrationRequest20240530**](LiveMigrationRequest20240530.md) | One migration to be created. | 
 
 ### Return type
 
@@ -539,7 +539,7 @@ Name | Type | Description  | Notes
 
 ## ValidateMigration
 
-> LiveImportValidation ValidateMigration(ctx, groupId, liveMigrationRequest LiveMigrationRequest).Execute()
+> LiveImportValidation ValidateMigration(ctx, groupId, liveMigrationRequest20240530 LiveMigrationRequest20240530).Execute()
 
 Validate One Migration Request
 
@@ -564,9 +564,9 @@ func main() {
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    liveMigrationRequest := *openapiclient.NewLiveMigrationRequest(*openapiclient.NewDestination("ClusterName_example", "9b43a5b329223c3a1591a678", "HostnameSchemaType_example"), false, *openapiclient.NewSource("ClusterName_example", "9b43a5b329223c3a1591a678", false, false)) // LiveMigrationRequest | 
+    liveMigrationRequest20240530 := *openapiclient.NewLiveMigrationRequest20240530(*openapiclient.NewDestination("ClusterName_example", "9b43a5b329223c3a1591a678", "HostnameSchemaType_example"), *openapiclient.NewSource("ClusterName_example", "9b43a5b329223c3a1591a678", false, false)) // LiveMigrationRequest20240530 | 
 
-    resp, r, err := sdk.CloudMigrationServiceApi.ValidateMigration(context.Background(), groupId, &liveMigrationRequest).Execute()
+    resp, r, err := sdk.CloudMigrationServiceApi.ValidateMigration(context.Background(), groupId, &liveMigrationRequest20240530).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CloudMigrationServiceApi.ValidateMigration``: %v\n", err)
         apiError := admin.AsError(err)
@@ -593,7 +593,7 @@ Other parameters are passed through a pointer to a apiValidateMigrationRequest s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **liveMigrationRequest** | [**LiveMigrationRequest**](LiveMigrationRequest.md) | One migration to be validated. | 
+ **liveMigrationRequest20240530** | [**LiveMigrationRequest20240530**](LiveMigrationRequest20240530.md) | One migration to be validated. | 
 
 ### Return type
 

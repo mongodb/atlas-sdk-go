@@ -11,7 +11,7 @@ import (
 type DiskBackupExportJob struct {
 	// Information on the export job for each replica set in the sharded cluster.
 	// Read only field.
-	Components *[]DiskBackupBaseRestoreMember `json:"components,omitempty"`
+	Components *[]DiskBackupExportMember `json:"components,omitempty"`
 	// Date and time when someone created this export job. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC.
 	// Read only field.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
@@ -62,9 +62,9 @@ func NewDiskBackupExportJobWithDefaults() *DiskBackupExportJob {
 }
 
 // GetComponents returns the Components field value if set, zero value otherwise
-func (o *DiskBackupExportJob) GetComponents() []DiskBackupBaseRestoreMember {
+func (o *DiskBackupExportJob) GetComponents() []DiskBackupExportMember {
 	if o == nil || IsNil(o.Components) {
-		var ret []DiskBackupBaseRestoreMember
+		var ret []DiskBackupExportMember
 		return ret
 	}
 	return *o.Components
@@ -72,7 +72,7 @@ func (o *DiskBackupExportJob) GetComponents() []DiskBackupBaseRestoreMember {
 
 // GetComponentsOk returns a tuple with the Components field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiskBackupExportJob) GetComponentsOk() (*[]DiskBackupBaseRestoreMember, bool) {
+func (o *DiskBackupExportJob) GetComponentsOk() (*[]DiskBackupExportMember, bool) {
 	if o == nil || IsNil(o.Components) {
 		return nil, false
 	}
@@ -89,8 +89,8 @@ func (o *DiskBackupExportJob) HasComponents() bool {
 	return false
 }
 
-// SetComponents gets a reference to the given []DiskBackupBaseRestoreMember and assigns it to the Components field.
-func (o *DiskBackupExportJob) SetComponents(v []DiskBackupBaseRestoreMember) {
+// SetComponents gets a reference to the given []DiskBackupExportMember and assigns it to the Components field.
+func (o *DiskBackupExportJob) SetComponents(v []DiskBackupExportMember) {
 	o.Components = &v
 }
 
