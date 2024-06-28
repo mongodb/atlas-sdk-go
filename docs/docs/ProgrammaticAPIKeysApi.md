@@ -335,7 +335,7 @@ Name | Type | Description  | Notes
 
 ## DeleteApiKey
 
-> map[string]interface{} DeleteApiKey(ctx, orgId, apiUserId).Execute()
+> interface{} DeleteApiKey(ctx, orgId, apiUserId).Execute()
 
 Remove One Organization API Key
 
@@ -368,7 +368,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `DeleteApiKey`: map[string]interface{}
+    // response from `DeleteApiKey`: interface{}
     fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.DeleteApiKey`: %v\n", resp)
 }
 ```
@@ -394,7 +394,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+**interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -411,7 +411,7 @@ Name | Type | Description  | Notes
 
 ## DeleteApiKeyAccessListEntry
 
-> map[string]interface{} DeleteApiKeyAccessListEntry(ctx, orgId, apiUserId, ipAddress).Execute()
+> interface{} DeleteApiKeyAccessListEntry(ctx, orgId, apiUserId, ipAddress).Execute()
 
 Remove One Access List Entry for One Organization API Key
 
@@ -445,7 +445,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `DeleteApiKeyAccessListEntry`: map[string]interface{}
+    // response from `DeleteApiKeyAccessListEntry`: interface{}
     fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.DeleteApiKeyAccessListEntry`: %v\n", resp)
 }
 ```
@@ -473,7 +473,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+**interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -885,7 +885,7 @@ Name | Type | Description  | Notes
 
 ## RemoveProjectApiKey
 
-> map[string]interface{} RemoveProjectApiKey(ctx, groupId, apiUserId).Execute()
+> interface{} RemoveProjectApiKey(ctx, groupId, apiUserId).Execute()
 
 Unassign One Organization API Key from One Project
 
@@ -918,7 +918,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `RemoveProjectApiKey`: map[string]interface{}
+    // response from `RemoveProjectApiKey`: interface{}
     fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.RemoveProjectApiKey`: %v\n", resp)
 }
 ```
@@ -944,7 +944,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+**interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

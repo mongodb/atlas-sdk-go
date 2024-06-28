@@ -105,7 +105,8 @@ func (o *{{classname}}) Get{{name}}Ok() ({{^isFreeFormObject}}*{{/isFreeFormObje
 		return nil, false
 	{{/isFreeFormObject}}
 	{{#isFreeFormObject}}
-		return {{vendorExtensions.x-go-base-type}}{}, false
+		var ret {{vendorExtensions.x-go-base-type}}
+		return ret, false
 	{{/isFreeFormObject}}
 	}
 	return {{^isFreeFormObject}}&{{/isFreeFormObject}}o.{{name}}, true
@@ -144,7 +145,8 @@ func (o *{{classname}}) Get{{name}}Ok() ({{^isFreeFormObject}}*{{/isFreeFormObje
 		return nil, false
 	{{/isFreeFormObject}}
 	{{#isFreeFormObject}}
-		return {{vendorExtensions.x-go-base-type}}{}, false
+		var ret {{vendorExtensions.x-go-base-type}}
+		return ret, false
 	{{/isFreeFormObject}}
 	}
 

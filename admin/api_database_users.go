@@ -59,7 +59,7 @@ type DatabaseUsersApi interface {
 	DeleteDatabaseUserWithParams(ctx context.Context, args *DeleteDatabaseUserApiParams) DeleteDatabaseUserApiRequest
 
 	// Method available only for mocking purposes
-	DeleteDatabaseUserExecute(r DeleteDatabaseUserApiRequest) (map[string]interface{}, *http.Response, error)
+	DeleteDatabaseUserExecute(r DeleteDatabaseUserApiRequest) (interface{}, *http.Response, error)
 
 	/*
 		GetDatabaseUser Return One Database User from One Project
@@ -283,7 +283,7 @@ func (a *DatabaseUsersApiService) DeleteDatabaseUserWithParams(ctx context.Conte
 	}
 }
 
-func (r DeleteDatabaseUserApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r DeleteDatabaseUserApiRequest) Execute() (interface{}, *http.Response, error) {
 	return r.ApiService.DeleteDatabaseUserExecute(r)
 }
 
@@ -310,13 +310,13 @@ func (a *DatabaseUsersApiService) DeleteDatabaseUser(ctx context.Context, groupI
 
 // Execute executes the request
 //
-//	@return map[string]interface{}
-func (a *DatabaseUsersApiService) DeleteDatabaseUserExecute(r DeleteDatabaseUserApiRequest) (map[string]interface{}, *http.Response, error) {
+//	@return interface{}
+func (a *DatabaseUsersApiService) DeleteDatabaseUserExecute(r DeleteDatabaseUserApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarReturnValue interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseUsersApiService.DeleteDatabaseUser")

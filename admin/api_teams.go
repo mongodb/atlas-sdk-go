@@ -107,7 +107,7 @@ type TeamsApi interface {
 	DeleteTeamWithParams(ctx context.Context, args *DeleteTeamApiParams) DeleteTeamApiRequest
 
 	// Method available only for mocking purposes
-	DeleteTeamExecute(r DeleteTeamApiRequest) (map[string]interface{}, *http.Response, error)
+	DeleteTeamExecute(r DeleteTeamApiRequest) (interface{}, *http.Response, error)
 
 	/*
 		GetTeamById Return One Team using its ID
@@ -717,7 +717,7 @@ func (a *TeamsApiService) DeleteTeamWithParams(ctx context.Context, args *Delete
 	}
 }
 
-func (r DeleteTeamApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r DeleteTeamApiRequest) Execute() (interface{}, *http.Response, error) {
 	return r.ApiService.DeleteTeamExecute(r)
 }
 
@@ -742,13 +742,13 @@ func (a *TeamsApiService) DeleteTeam(ctx context.Context, orgId string, teamId s
 
 // Execute executes the request
 //
-//	@return map[string]interface{}
-func (a *TeamsApiService) DeleteTeamExecute(r DeleteTeamApiRequest) (map[string]interface{}, *http.Response, error) {
+//	@return interface{}
+func (a *TeamsApiService) DeleteTeamExecute(r DeleteTeamApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarReturnValue interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamsApiService.DeleteTeam")

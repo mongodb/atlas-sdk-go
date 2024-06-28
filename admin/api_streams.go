@@ -84,7 +84,7 @@ type StreamsApi interface {
 	DeleteStreamConnectionWithParams(ctx context.Context, args *DeleteStreamConnectionApiParams) DeleteStreamConnectionApiRequest
 
 	// Method available only for mocking purposes
-	DeleteStreamConnectionExecute(r DeleteStreamConnectionApiRequest) (map[string]interface{}, *http.Response, error)
+	DeleteStreamConnectionExecute(r DeleteStreamConnectionApiRequest) (interface{}, *http.Response, error)
 
 	/*
 		DeleteStreamInstance Delete One Stream Instance
@@ -108,7 +108,7 @@ type StreamsApi interface {
 	DeleteStreamInstanceWithParams(ctx context.Context, args *DeleteStreamInstanceApiParams) DeleteStreamInstanceApiRequest
 
 	// Method available only for mocking purposes
-	DeleteStreamInstanceExecute(r DeleteStreamInstanceApiRequest) (map[string]interface{}, *http.Response, error)
+	DeleteStreamInstanceExecute(r DeleteStreamInstanceApiRequest) (interface{}, *http.Response, error)
 
 	/*
 		DownloadStreamTenantAuditLogs Download Audit Logs for One Atlas Stream Processing Instance
@@ -555,7 +555,7 @@ func (a *StreamsApiService) DeleteStreamConnectionWithParams(ctx context.Context
 	}
 }
 
-func (r DeleteStreamConnectionApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r DeleteStreamConnectionApiRequest) Execute() (interface{}, *http.Response, error) {
 	return r.ApiService.DeleteStreamConnectionExecute(r)
 }
 
@@ -582,13 +582,13 @@ func (a *StreamsApiService) DeleteStreamConnection(ctx context.Context, groupId 
 
 // Execute executes the request
 //
-//	@return map[string]interface{}
-func (a *StreamsApiService) DeleteStreamConnectionExecute(r DeleteStreamConnectionApiRequest) (map[string]interface{}, *http.Response, error) {
+//	@return interface{}
+func (a *StreamsApiService) DeleteStreamConnectionExecute(r DeleteStreamConnectionApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarReturnValue interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.DeleteStreamConnection")
@@ -675,7 +675,7 @@ func (a *StreamsApiService) DeleteStreamInstanceWithParams(ctx context.Context, 
 	}
 }
 
-func (r DeleteStreamInstanceApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r DeleteStreamInstanceApiRequest) Execute() (interface{}, *http.Response, error) {
 	return r.ApiService.DeleteStreamInstanceExecute(r)
 }
 
@@ -700,13 +700,13 @@ func (a *StreamsApiService) DeleteStreamInstance(ctx context.Context, groupId st
 
 // Execute executes the request
 //
-//	@return map[string]interface{}
-func (a *StreamsApiService) DeleteStreamInstanceExecute(r DeleteStreamInstanceApiRequest) (map[string]interface{}, *http.Response, error) {
+//	@return interface{}
+func (a *StreamsApiService) DeleteStreamInstanceExecute(r DeleteStreamInstanceApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarReturnValue interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.DeleteStreamInstance")

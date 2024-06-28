@@ -170,7 +170,7 @@ Name | Type | Description  | Notes
 
 ## DeleteOrganization
 
-> map[string]interface{} DeleteOrganization(ctx, orgId).Execute()
+> interface{} DeleteOrganization(ctx, orgId).Execute()
 
 Remove One Organization
 
@@ -202,7 +202,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `DeleteOrganization`: map[string]interface{}
+    // response from `DeleteOrganization`: interface{}
     fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.DeleteOrganization`: %v\n", resp)
 }
 ```
@@ -226,7 +226,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+**interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -243,7 +243,7 @@ Name | Type | Description  | Notes
 
 ## DeleteOrganizationInvitation
 
-> map[string]interface{} DeleteOrganizationInvitation(ctx, orgId, invitationId).Execute()
+> interface{} DeleteOrganizationInvitation(ctx, orgId, invitationId).Execute()
 
 Cancel One Organization Invitation
 
@@ -276,7 +276,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `DeleteOrganizationInvitation`: map[string]interface{}
+    // response from `DeleteOrganizationInvitation`: interface{}
     fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.DeleteOrganizationInvitation`: %v\n", resp)
 }
 ```
@@ -302,7 +302,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+**interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -851,7 +851,7 @@ Name | Type | Description  | Notes
 
 ## RemoveOrganizationUser
 
-> map[string]interface{} RemoveOrganizationUser(ctx, orgId, userId).Execute()
+> interface{} RemoveOrganizationUser(ctx, orgId, userId).Execute()
 
 Remove One MongoDB Cloud User from One Organization
 
@@ -884,7 +884,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `RemoveOrganizationUser`: map[string]interface{}
+    // response from `RemoveOrganizationUser`: interface{}
     fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.RemoveOrganizationUser`: %v\n", resp)
 }
 ```
@@ -910,7 +910,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+**interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

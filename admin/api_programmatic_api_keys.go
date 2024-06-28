@@ -132,7 +132,7 @@ type ProgrammaticAPIKeysApi interface {
 	DeleteApiKeyWithParams(ctx context.Context, args *DeleteApiKeyApiParams) DeleteApiKeyApiRequest
 
 	// Method available only for mocking purposes
-	DeleteApiKeyExecute(r DeleteApiKeyApiRequest) (map[string]interface{}, *http.Response, error)
+	DeleteApiKeyExecute(r DeleteApiKeyApiRequest) (interface{}, *http.Response, error)
 
 	/*
 		DeleteApiKeyAccessListEntry Remove One Access List Entry for One Organization API Key
@@ -157,7 +157,7 @@ type ProgrammaticAPIKeysApi interface {
 	DeleteApiKeyAccessListEntryWithParams(ctx context.Context, args *DeleteApiKeyAccessListEntryApiParams) DeleteApiKeyAccessListEntryApiRequest
 
 	// Method available only for mocking purposes
-	DeleteApiKeyAccessListEntryExecute(r DeleteApiKeyAccessListEntryApiRequest) (map[string]interface{}, *http.Response, error)
+	DeleteApiKeyAccessListEntryExecute(r DeleteApiKeyAccessListEntryApiRequest) (interface{}, *http.Response, error)
 
 	/*
 		GetApiKey Return One Organization API Key
@@ -300,7 +300,7 @@ type ProgrammaticAPIKeysApi interface {
 	RemoveProjectApiKeyWithParams(ctx context.Context, args *RemoveProjectApiKeyApiParams) RemoveProjectApiKeyApiRequest
 
 	// Method available only for mocking purposes
-	RemoveProjectApiKeyExecute(r RemoveProjectApiKeyApiRequest) (map[string]interface{}, *http.Response, error)
+	RemoveProjectApiKeyExecute(r RemoveProjectApiKeyApiRequest) (interface{}, *http.Response, error)
 
 	/*
 		UpdateApiKey Update One Organization API Key
@@ -917,7 +917,7 @@ func (a *ProgrammaticAPIKeysApiService) DeleteApiKeyWithParams(ctx context.Conte
 	}
 }
 
-func (r DeleteApiKeyApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r DeleteApiKeyApiRequest) Execute() (interface{}, *http.Response, error) {
 	return r.ApiService.DeleteApiKeyExecute(r)
 }
 
@@ -942,13 +942,13 @@ func (a *ProgrammaticAPIKeysApiService) DeleteApiKey(ctx context.Context, orgId 
 
 // Execute executes the request
 //
-//	@return map[string]interface{}
-func (a *ProgrammaticAPIKeysApiService) DeleteApiKeyExecute(r DeleteApiKeyApiRequest) (map[string]interface{}, *http.Response, error) {
+//	@return interface{}
+func (a *ProgrammaticAPIKeysApiService) DeleteApiKeyExecute(r DeleteApiKeyApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarReturnValue interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProgrammaticAPIKeysApiService.DeleteApiKey")
@@ -1037,7 +1037,7 @@ func (a *ProgrammaticAPIKeysApiService) DeleteApiKeyAccessListEntryWithParams(ct
 	}
 }
 
-func (r DeleteApiKeyAccessListEntryApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r DeleteApiKeyAccessListEntryApiRequest) Execute() (interface{}, *http.Response, error) {
 	return r.ApiService.DeleteApiKeyAccessListEntryExecute(r)
 }
 
@@ -1064,13 +1064,13 @@ func (a *ProgrammaticAPIKeysApiService) DeleteApiKeyAccessListEntry(ctx context.
 
 // Execute executes the request
 //
-//	@return map[string]interface{}
-func (a *ProgrammaticAPIKeysApiService) DeleteApiKeyAccessListEntryExecute(r DeleteApiKeyAccessListEntryApiRequest) (map[string]interface{}, *http.Response, error) {
+//	@return interface{}
+func (a *ProgrammaticAPIKeysApiService) DeleteApiKeyAccessListEntryExecute(r DeleteApiKeyAccessListEntryApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarReturnValue interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProgrammaticAPIKeysApiService.DeleteApiKeyAccessListEntry")
@@ -1880,7 +1880,7 @@ func (a *ProgrammaticAPIKeysApiService) RemoveProjectApiKeyWithParams(ctx contex
 	}
 }
 
-func (r RemoveProjectApiKeyApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r RemoveProjectApiKeyApiRequest) Execute() (interface{}, *http.Response, error) {
 	return r.ApiService.RemoveProjectApiKeyExecute(r)
 }
 
@@ -1905,13 +1905,13 @@ func (a *ProgrammaticAPIKeysApiService) RemoveProjectApiKey(ctx context.Context,
 
 // Execute executes the request
 //
-//	@return map[string]interface{}
-func (a *ProgrammaticAPIKeysApiService) RemoveProjectApiKeyExecute(r RemoveProjectApiKeyApiRequest) (map[string]interface{}, *http.Response, error) {
+//	@return interface{}
+func (a *ProgrammaticAPIKeysApiService) RemoveProjectApiKeyExecute(r RemoveProjectApiKeyApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarReturnValue interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProgrammaticAPIKeysApiService.RemoveProjectApiKey")

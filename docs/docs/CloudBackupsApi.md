@@ -38,7 +38,7 @@ Method | HTTP request | Description
 
 ## CancelBackupRestoreJob
 
-> map[string]interface{} CancelBackupRestoreJob(ctx, groupId, clusterName, restoreJobId).Execute()
+> interface{} CancelBackupRestoreJob(ctx, groupId, clusterName, restoreJobId).Execute()
 
 Cancel One Restore Job of One Cluster
 
@@ -72,7 +72,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `CancelBackupRestoreJob`: map[string]interface{}
+    // response from `CancelBackupRestoreJob`: interface{}
     fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.CancelBackupRestoreJob`: %v\n", resp)
 }
 ```
@@ -100,7 +100,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+**interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -502,7 +502,7 @@ Name | Type | Description  | Notes
 
 ## DeleteExportBucket
 
-> map[string]interface{} DeleteExportBucket(ctx, groupId, exportBucketId).Execute()
+> interface{} DeleteExportBucket(ctx, groupId, exportBucketId).Execute()
 
 Revoke Access to AWS S3 Bucket for Cloud Backup Snapshot Exports
 
@@ -535,7 +535,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `DeleteExportBucket`: map[string]interface{}
+    // response from `DeleteExportBucket`: interface{}
     fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.DeleteExportBucket`: %v\n", resp)
 }
 ```
@@ -561,7 +561,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+**interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -578,7 +578,7 @@ Name | Type | Description  | Notes
 
 ## DeleteReplicaSetBackup
 
-> map[string]interface{} DeleteReplicaSetBackup(ctx, groupId, clusterName, snapshotId).Execute()
+> interface{} DeleteReplicaSetBackup(ctx, groupId, clusterName, snapshotId).Execute()
 
 Remove One Replica Set Cloud Backup
 
@@ -612,7 +612,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `DeleteReplicaSetBackup`: map[string]interface{}
+    // response from `DeleteReplicaSetBackup`: interface{}
     fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.DeleteReplicaSetBackup`: %v\n", resp)
 }
 ```
@@ -640,7 +640,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+**interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -657,7 +657,7 @@ Name | Type | Description  | Notes
 
 ## DeleteShardedClusterBackup
 
-> map[string]interface{} DeleteShardedClusterBackup(ctx, groupId, clusterName, snapshotId).Execute()
+> interface{} DeleteShardedClusterBackup(ctx, groupId, clusterName, snapshotId).Execute()
 
 Remove One Sharded Cluster Cloud Backup
 
@@ -691,7 +691,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `DeleteShardedClusterBackup`: map[string]interface{}
+    // response from `DeleteShardedClusterBackup`: interface{}
     fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.DeleteShardedClusterBackup`: %v\n", resp)
 }
 ```
@@ -719,7 +719,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+**interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

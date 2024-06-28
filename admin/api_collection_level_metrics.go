@@ -88,7 +88,7 @@ type CollectionLevelMetricsApi interface {
 	GetCollStatsLatencyNamespaceMetricsWithParams(ctx context.Context, args *GetCollStatsLatencyNamespaceMetricsApiParams) GetCollStatsLatencyNamespaceMetricsApiRequest
 
 	// Method available only for mocking purposes
-	GetCollStatsLatencyNamespaceMetricsExecute(r GetCollStatsLatencyNamespaceMetricsApiRequest) (map[string]interface{}, *http.Response, error)
+	GetCollStatsLatencyNamespaceMetricsExecute(r GetCollStatsLatencyNamespaceMetricsApiRequest) (interface{}, *http.Response, error)
 
 	/*
 		GetCollStatsLatencyNamespacesForCluster Return Ranked Namespaces from a Cluster
@@ -628,7 +628,7 @@ func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespaceMetricsWi
 	}
 }
 
-func (r GetCollStatsLatencyNamespaceMetricsApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r GetCollStatsLatencyNamespaceMetricsApiRequest) Execute() (interface{}, *http.Response, error) {
 	return r.ApiService.GetCollStatsLatencyNamespaceMetricsExecute(r)
 }
 
@@ -651,13 +651,13 @@ func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespaceMetrics(c
 
 // Execute executes the request
 //
-//	@return map[string]interface{}
-func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespaceMetricsExecute(r GetCollStatsLatencyNamespaceMetricsApiRequest) (map[string]interface{}, *http.Response, error) {
+//	@return interface{}
+func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespaceMetricsExecute(r GetCollStatsLatencyNamespaceMetricsApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarReturnValue interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionLevelMetricsApiService.GetCollStatsLatencyNamespaceMetrics")

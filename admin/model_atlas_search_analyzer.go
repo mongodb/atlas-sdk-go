@@ -9,20 +9,20 @@ import (
 // AtlasSearchAnalyzer struct for AtlasSearchAnalyzer
 type AtlasSearchAnalyzer struct {
 	// Filters that examine text one character at a time and perform filtering operations.
-	CharFilters *[]map[string]interface{} `json:"charFilters,omitempty"`
+	CharFilters *[]interface{} `json:"charFilters,omitempty"`
 	// Name that identifies the custom analyzer. Names must be unique within an index, and must not start with any of the following strings: - `lucene.` - `builtin.` - `mongodb.`
 	Name string `json:"name"`
 	// Filter that performs operations such as:  - Stemming, which reduces related words, such as \"talking\", \"talked\", and \"talks\" to their root word \"talk\".  - Redaction, which is the removal of sensitive information from public documents.
-	TokenFilters *[]map[string]interface{} `json:"tokenFilters,omitempty"`
+	TokenFilters *[]interface{} `json:"tokenFilters,omitempty"`
 	// Tokenizer that you want to use to create tokens. Tokens determine how Atlas Search splits up text into discrete chunks for indexing.
-	Tokenizer map[string]interface{} `json:"tokenizer"`
+	Tokenizer interface{} `json:"tokenizer"`
 }
 
 // NewAtlasSearchAnalyzer instantiates a new AtlasSearchAnalyzer object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAtlasSearchAnalyzer(name string, tokenizer map[string]interface{}) *AtlasSearchAnalyzer {
+func NewAtlasSearchAnalyzer(name string, tokenizer interface{}) *AtlasSearchAnalyzer {
 	this := AtlasSearchAnalyzer{}
 	this.Name = name
 	this.Tokenizer = tokenizer
@@ -38,9 +38,9 @@ func NewAtlasSearchAnalyzerWithDefaults() *AtlasSearchAnalyzer {
 }
 
 // GetCharFilters returns the CharFilters field value if set, zero value otherwise
-func (o *AtlasSearchAnalyzer) GetCharFilters() []map[string]interface{} {
+func (o *AtlasSearchAnalyzer) GetCharFilters() []interface{} {
 	if o == nil || IsNil(o.CharFilters) {
-		var ret []map[string]interface{}
+		var ret []interface{}
 		return ret
 	}
 	return *o.CharFilters
@@ -48,7 +48,7 @@ func (o *AtlasSearchAnalyzer) GetCharFilters() []map[string]interface{} {
 
 // GetCharFiltersOk returns a tuple with the CharFilters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AtlasSearchAnalyzer) GetCharFiltersOk() (*[]map[string]interface{}, bool) {
+func (o *AtlasSearchAnalyzer) GetCharFiltersOk() (*[]interface{}, bool) {
 	if o == nil || IsNil(o.CharFilters) {
 		return nil, false
 	}
@@ -65,8 +65,8 @@ func (o *AtlasSearchAnalyzer) HasCharFilters() bool {
 	return false
 }
 
-// SetCharFilters gets a reference to the given []map[string]interface{} and assigns it to the CharFilters field.
-func (o *AtlasSearchAnalyzer) SetCharFilters(v []map[string]interface{}) {
+// SetCharFilters gets a reference to the given []interface{} and assigns it to the CharFilters field.
+func (o *AtlasSearchAnalyzer) SetCharFilters(v []interface{}) {
 	o.CharFilters = &v
 }
 
@@ -95,9 +95,9 @@ func (o *AtlasSearchAnalyzer) SetName(v string) {
 }
 
 // GetTokenFilters returns the TokenFilters field value if set, zero value otherwise
-func (o *AtlasSearchAnalyzer) GetTokenFilters() []map[string]interface{} {
+func (o *AtlasSearchAnalyzer) GetTokenFilters() []interface{} {
 	if o == nil || IsNil(o.TokenFilters) {
-		var ret []map[string]interface{}
+		var ret []interface{}
 		return ret
 	}
 	return *o.TokenFilters
@@ -105,7 +105,7 @@ func (o *AtlasSearchAnalyzer) GetTokenFilters() []map[string]interface{} {
 
 // GetTokenFiltersOk returns a tuple with the TokenFilters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AtlasSearchAnalyzer) GetTokenFiltersOk() (*[]map[string]interface{}, bool) {
+func (o *AtlasSearchAnalyzer) GetTokenFiltersOk() (*[]interface{}, bool) {
 	if o == nil || IsNil(o.TokenFilters) {
 		return nil, false
 	}
@@ -122,15 +122,15 @@ func (o *AtlasSearchAnalyzer) HasTokenFilters() bool {
 	return false
 }
 
-// SetTokenFilters gets a reference to the given []map[string]interface{} and assigns it to the TokenFilters field.
-func (o *AtlasSearchAnalyzer) SetTokenFilters(v []map[string]interface{}) {
+// SetTokenFilters gets a reference to the given []interface{} and assigns it to the TokenFilters field.
+func (o *AtlasSearchAnalyzer) SetTokenFilters(v []interface{}) {
 	o.TokenFilters = &v
 }
 
 // GetTokenizer returns the Tokenizer field value
-func (o *AtlasSearchAnalyzer) GetTokenizer() map[string]interface{} {
+func (o *AtlasSearchAnalyzer) GetTokenizer() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 
@@ -139,15 +139,16 @@ func (o *AtlasSearchAnalyzer) GetTokenizer() map[string]interface{} {
 
 // GetTokenizerOk returns a tuple with the Tokenizer field value
 // and a boolean to check if the value has been set.
-func (o *AtlasSearchAnalyzer) GetTokenizerOk() (map[string]interface{}, bool) {
+func (o *AtlasSearchAnalyzer) GetTokenizerOk() (interface{}, bool) {
 	if o == nil {
-		return map[string]interface{}{}, false
+		var ret interface{}
+		return ret, false
 	}
 	return o.Tokenizer, true
 }
 
 // SetTokenizer sets field value
-func (o *AtlasSearchAnalyzer) SetTokenizer(v map[string]interface{}) {
+func (o *AtlasSearchAnalyzer) SetTokenizer(v interface{}) {
 	o.Tokenizer = v
 }
 

@@ -16,11 +16,11 @@ type BaseSearchIndexCreateRequestDefinition struct {
 	// Method applied to identify words when searching this index.
 	SearchAnalyzer *string `json:"searchAnalyzer,omitempty"`
 	// Flag that indicates whether to store all fields (true) on Atlas Search. By default, Atlas doesn't store (false) the fields on Atlas Search.  Alternatively, you can specify an object that only contains the list of fields to store (include) or not store (exclude) on Atlas Search. To learn more, see Stored Source Fields.
-	StoredSource map[string]interface{} `json:"storedSource,omitempty"`
+	StoredSource interface{} `json:"storedSource,omitempty"`
 	// Rule sets that map words to their synonyms in this index.
 	Synonyms *[]SearchSynonymMappingDefinition `json:"synonyms,omitempty"`
 	// Settings that configure the fields, one per object, to index. You must define at least one \"vector\" type field. You can optionally define \"filter\" type fields also.
-	Fields *[]map[string]interface{} `json:"fields,omitempty"`
+	Fields *[]interface{} `json:"fields,omitempty"`
 }
 
 // NewBaseSearchIndexCreateRequestDefinition instantiates a new BaseSearchIndexCreateRequestDefinition object
@@ -181,9 +181,9 @@ func (o *BaseSearchIndexCreateRequestDefinition) SetSearchAnalyzer(v string) {
 }
 
 // GetStoredSource returns the StoredSource field value if set, zero value otherwise
-func (o *BaseSearchIndexCreateRequestDefinition) GetStoredSource() map[string]interface{} {
+func (o *BaseSearchIndexCreateRequestDefinition) GetStoredSource() interface{} {
 	if o == nil || IsNil(o.StoredSource) {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 	return o.StoredSource
@@ -191,9 +191,10 @@ func (o *BaseSearchIndexCreateRequestDefinition) GetStoredSource() map[string]in
 
 // GetStoredSourceOk returns a tuple with the StoredSource field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BaseSearchIndexCreateRequestDefinition) GetStoredSourceOk() (map[string]interface{}, bool) {
+func (o *BaseSearchIndexCreateRequestDefinition) GetStoredSourceOk() (interface{}, bool) {
 	if o == nil || IsNil(o.StoredSource) {
-		return map[string]interface{}{}, false
+		var ret interface{}
+		return ret, false
 	}
 
 	return o.StoredSource, true
@@ -208,8 +209,8 @@ func (o *BaseSearchIndexCreateRequestDefinition) HasStoredSource() bool {
 	return false
 }
 
-// SetStoredSource gets a reference to the given map[string]interface{} and assigns it to the StoredSource field.
-func (o *BaseSearchIndexCreateRequestDefinition) SetStoredSource(v map[string]interface{}) {
+// SetStoredSource gets a reference to the given interface{} and assigns it to the StoredSource field.
+func (o *BaseSearchIndexCreateRequestDefinition) SetStoredSource(v interface{}) {
 	o.StoredSource = v
 }
 
@@ -247,9 +248,9 @@ func (o *BaseSearchIndexCreateRequestDefinition) SetSynonyms(v []SearchSynonymMa
 }
 
 // GetFields returns the Fields field value if set, zero value otherwise
-func (o *BaseSearchIndexCreateRequestDefinition) GetFields() []map[string]interface{} {
+func (o *BaseSearchIndexCreateRequestDefinition) GetFields() []interface{} {
 	if o == nil || IsNil(o.Fields) {
-		var ret []map[string]interface{}
+		var ret []interface{}
 		return ret
 	}
 	return *o.Fields
@@ -257,7 +258,7 @@ func (o *BaseSearchIndexCreateRequestDefinition) GetFields() []map[string]interf
 
 // GetFieldsOk returns a tuple with the Fields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BaseSearchIndexCreateRequestDefinition) GetFieldsOk() (*[]map[string]interface{}, bool) {
+func (o *BaseSearchIndexCreateRequestDefinition) GetFieldsOk() (*[]interface{}, bool) {
 	if o == nil || IsNil(o.Fields) {
 		return nil, false
 	}
@@ -274,8 +275,8 @@ func (o *BaseSearchIndexCreateRequestDefinition) HasFields() bool {
 	return false
 }
 
-// SetFields gets a reference to the given []map[string]interface{} and assigns it to the Fields field.
-func (o *BaseSearchIndexCreateRequestDefinition) SetFields(v []map[string]interface{}) {
+// SetFields gets a reference to the given []interface{} and assigns it to the Fields field.
+func (o *BaseSearchIndexCreateRequestDefinition) SetFields(v []interface{}) {
 	o.Fields = &v
 }
 

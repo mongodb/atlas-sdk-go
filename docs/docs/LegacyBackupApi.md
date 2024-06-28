@@ -98,7 +98,7 @@ Name | Type | Description  | Notes
 
 ## DeleteLegacySnapshot
 
-> map[string]interface{} DeleteLegacySnapshot(ctx, groupId, clusterName, snapshotId).Execute()
+> interface{} DeleteLegacySnapshot(ctx, groupId, clusterName, snapshotId).Execute()
 
 Remove One Legacy Backup Snapshot
 
@@ -132,7 +132,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `DeleteLegacySnapshot`: map[string]interface{}
+    // response from `DeleteLegacySnapshot`: interface{}
     fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.DeleteLegacySnapshot`: %v\n", resp)
 }
 ```
@@ -160,7 +160,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+**interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

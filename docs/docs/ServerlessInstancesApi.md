@@ -89,7 +89,7 @@ Name | Type | Description  | Notes
 
 ## DeleteServerlessInstance
 
-> map[string]interface{} DeleteServerlessInstance(ctx, groupId, name).Execute()
+> interface{} DeleteServerlessInstance(ctx, groupId, name).Execute()
 
 Remove One Serverless Instance from One Project
 
@@ -122,7 +122,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `DeleteServerlessInstance`: map[string]interface{}
+    // response from `DeleteServerlessInstance`: interface{}
     fmt.Fprintf(os.Stdout, "Response from `ServerlessInstancesApi.DeleteServerlessInstance`: %v\n", resp)
 }
 ```
@@ -148,7 +148,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+**interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

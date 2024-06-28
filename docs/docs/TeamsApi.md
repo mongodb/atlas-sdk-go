@@ -250,7 +250,7 @@ Name | Type | Description  | Notes
 
 ## DeleteTeam
 
-> map[string]interface{} DeleteTeam(ctx, orgId, teamId).Execute()
+> interface{} DeleteTeam(ctx, orgId, teamId).Execute()
 
 Remove One Team from One Organization
 
@@ -283,7 +283,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `DeleteTeam`: map[string]interface{}
+    // response from `DeleteTeam`: interface{}
     fmt.Fprintf(os.Stdout, "Response from `TeamsApi.DeleteTeam`: %v\n", resp)
 }
 ```
@@ -309,7 +309,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+**interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

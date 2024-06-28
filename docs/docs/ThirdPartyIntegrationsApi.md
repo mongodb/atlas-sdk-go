@@ -98,7 +98,7 @@ Name | Type | Description  | Notes
 
 ## DeleteThirdPartyIntegration
 
-> map[string]interface{} DeleteThirdPartyIntegration(ctx, integrationType, groupId).Execute()
+> interface{} DeleteThirdPartyIntegration(ctx, integrationType, groupId).Execute()
 
 Remove One Third-Party Service Integration
 
@@ -131,7 +131,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `DeleteThirdPartyIntegration`: map[string]interface{}
+    // response from `DeleteThirdPartyIntegration`: interface{}
     fmt.Fprintf(os.Stdout, "Response from `ThirdPartyIntegrationsApi.DeleteThirdPartyIntegration`: %v\n", resp)
 }
 ```
@@ -157,7 +157,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+**interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

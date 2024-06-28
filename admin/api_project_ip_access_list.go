@@ -58,7 +58,7 @@ type ProjectIPAccessListApi interface {
 	DeleteProjectIpAccessListWithParams(ctx context.Context, args *DeleteProjectIpAccessListApiParams) DeleteProjectIpAccessListApiRequest
 
 	// Method available only for mocking purposes
-	DeleteProjectIpAccessListExecute(r DeleteProjectIpAccessListApiRequest) (map[string]interface{}, *http.Response, error)
+	DeleteProjectIpAccessListExecute(r DeleteProjectIpAccessListApiRequest) (interface{}, *http.Response, error)
 
 	/*
 		GetProjectIpAccessListStatus Return Status of One Project IP Access List Entry
@@ -324,7 +324,7 @@ func (a *ProjectIPAccessListApiService) DeleteProjectIpAccessListWithParams(ctx 
 	}
 }
 
-func (r DeleteProjectIpAccessListApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r DeleteProjectIpAccessListApiRequest) Execute() (interface{}, *http.Response, error) {
 	return r.ApiService.DeleteProjectIpAccessListExecute(r)
 }
 
@@ -349,13 +349,13 @@ func (a *ProjectIPAccessListApiService) DeleteProjectIpAccessList(ctx context.Co
 
 // Execute executes the request
 //
-//	@return map[string]interface{}
-func (a *ProjectIPAccessListApiService) DeleteProjectIpAccessListExecute(r DeleteProjectIpAccessListApiRequest) (map[string]interface{}, *http.Response, error) {
+//	@return interface{}
+func (a *ProjectIPAccessListApiService) DeleteProjectIpAccessListExecute(r DeleteProjectIpAccessListApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarReturnValue interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectIPAccessListApiService.DeleteProjectIpAccessList")

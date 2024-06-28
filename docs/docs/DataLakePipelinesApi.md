@@ -97,7 +97,7 @@ Name | Type | Description  | Notes
 
 ## DeletePipeline
 
-> map[string]interface{} DeletePipeline(ctx, groupId, pipelineName).Execute()
+> interface{} DeletePipeline(ctx, groupId, pipelineName).Execute()
 
 Remove One Data Lake Pipeline
 
@@ -130,7 +130,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `DeletePipeline`: map[string]interface{}
+    // response from `DeletePipeline`: interface{}
     fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.DeletePipeline`: %v\n", resp)
 }
 ```
@@ -156,7 +156,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+**interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -173,7 +173,7 @@ Name | Type | Description  | Notes
 
 ## DeletePipelineRunDataset
 
-> map[string]interface{} DeletePipelineRunDataset(ctx, groupId, pipelineName, pipelineRunId).Execute()
+> interface{} DeletePipelineRunDataset(ctx, groupId, pipelineName, pipelineRunId).Execute()
 
 Delete Pipeline Run Dataset
 
@@ -207,7 +207,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `DeletePipelineRunDataset`: map[string]interface{}
+    // response from `DeletePipelineRunDataset`: interface{}
     fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.DeletePipelineRunDataset`: %v\n", resp)
 }
 ```
@@ -235,7 +235,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+**interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

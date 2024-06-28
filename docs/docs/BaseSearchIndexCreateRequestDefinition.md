@@ -8,9 +8,9 @@ Name | Type | Description | Notes
 **Analyzers** | Pointer to [**[]AtlasSearchAnalyzer**](AtlasSearchAnalyzer.md) | List of user-defined methods to convert database field text into searchable words. | [optional] 
 **Mappings** | Pointer to [**SearchMappings**](SearchMappings.md) |  | [optional] 
 **SearchAnalyzer** | Pointer to **string** | Method applied to identify words when searching this index. | [optional] [default to "lucene.standard"]
-**StoredSource** | Pointer to **map[string]interface{}** | Flag that indicates whether to store all fields (true) on Atlas Search. By default, Atlas doesn&#39;t store (false) the fields on Atlas Search.  Alternatively, you can specify an object that only contains the list of fields to store (include) or not store (exclude) on Atlas Search. To learn more, see Stored Source Fields. | [optional] 
+**StoredSource** | Pointer to **interface{}** | Flag that indicates whether to store all fields (true) on Atlas Search. By default, Atlas doesn&#39;t store (false) the fields on Atlas Search.  Alternatively, you can specify an object that only contains the list of fields to store (include) or not store (exclude) on Atlas Search. To learn more, see Stored Source Fields. | [optional] 
 **Synonyms** | Pointer to [**[]SearchSynonymMappingDefinition**](SearchSynonymMappingDefinition.md) | Rule sets that map words to their synonyms in this index. | [optional] 
-**Fields** | Pointer to **[]map[string]interface{}** | Settings that configure the fields, one per object, to index. You must define at least one \&quot;vector\&quot; type field. You can optionally define \&quot;filter\&quot; type fields also. | [optional] 
+**Fields** | Pointer to **[]interface{}** | Settings that configure the fields, one per object, to index. You must define at least one \&quot;vector\&quot; type field. You can optionally define \&quot;filter\&quot; type fields also. | [optional] 
 
 ## Methods
 
@@ -129,20 +129,20 @@ SetSearchAnalyzer sets SearchAnalyzer field to given value.
 HasSearchAnalyzer returns a boolean if a field has been set.
 ### GetStoredSource
 
-`func (o *BaseSearchIndexCreateRequestDefinition) GetStoredSource() map[string]interface{}`
+`func (o *BaseSearchIndexCreateRequestDefinition) GetStoredSource() interface{}`
 
 GetStoredSource returns the StoredSource field if non-nil, zero value otherwise.
 
 ### GetStoredSourceOk
 
-`func (o *BaseSearchIndexCreateRequestDefinition) GetStoredSourceOk() (*map[string]interface{}, bool)`
+`func (o *BaseSearchIndexCreateRequestDefinition) GetStoredSourceOk() (*interface{}, bool)`
 
 GetStoredSourceOk returns a tuple with the StoredSource field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStoredSource
 
-`func (o *BaseSearchIndexCreateRequestDefinition) SetStoredSource(v map[string]interface{})`
+`func (o *BaseSearchIndexCreateRequestDefinition) SetStoredSource(v interface{})`
 
 SetStoredSource sets StoredSource field to given value.
 
@@ -177,20 +177,20 @@ SetSynonyms sets Synonyms field to given value.
 HasSynonyms returns a boolean if a field has been set.
 ### GetFields
 
-`func (o *BaseSearchIndexCreateRequestDefinition) GetFields() []map[string]interface{}`
+`func (o *BaseSearchIndexCreateRequestDefinition) GetFields() []interface{}`
 
 GetFields returns the Fields field if non-nil, zero value otherwise.
 
 ### GetFieldsOk
 
-`func (o *BaseSearchIndexCreateRequestDefinition) GetFieldsOk() (*[]map[string]interface{}, bool)`
+`func (o *BaseSearchIndexCreateRequestDefinition) GetFieldsOk() (*[]interface{}, bool)`
 
 GetFieldsOk returns a tuple with the Fields field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFields
 
-`func (o *BaseSearchIndexCreateRequestDefinition) SetFields(v []map[string]interface{})`
+`func (o *BaseSearchIndexCreateRequestDefinition) SetFields(v []interface{})`
 
 SetFields sets Fields field to given value.
 

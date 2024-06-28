@@ -261,7 +261,7 @@ Name | Type | Description  | Notes
 
 ## DeleteAtlasSearchDeployment
 
-> map[string]interface{} DeleteAtlasSearchDeployment(ctx, groupId, clusterName).Execute()
+> interface{} DeleteAtlasSearchDeployment(ctx, groupId, clusterName).Execute()
 
 Delete Search Nodes
 
@@ -294,7 +294,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `DeleteAtlasSearchDeployment`: map[string]interface{}
+    // response from `DeleteAtlasSearchDeployment`: interface{}
     fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.DeleteAtlasSearchDeployment`: %v\n", resp)
 }
 ```
@@ -320,7 +320,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+**interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -337,7 +337,7 @@ Name | Type | Description  | Notes
 
 ## DeleteAtlasSearchIndex
 
-> map[string]interface{} DeleteAtlasSearchIndex(ctx, groupId, clusterName, indexId).Execute()
+> interface{} DeleteAtlasSearchIndex(ctx, groupId, clusterName, indexId).Execute()
 
 Remove One Atlas Search Index by Id
 
@@ -371,7 +371,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `DeleteAtlasSearchIndex`: map[string]interface{}
+    // response from `DeleteAtlasSearchIndex`: interface{}
     fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.DeleteAtlasSearchIndex`: %v\n", resp)
 }
 ```
@@ -399,7 +399,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+**interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -416,7 +416,7 @@ Name | Type | Description  | Notes
 
 ## DeleteAtlasSearchIndexByName
 
-> map[string]interface{} DeleteAtlasSearchIndexByName(ctx, groupId, clusterName, collectionName, databaseName, indexName).Execute()
+> interface{} DeleteAtlasSearchIndexByName(ctx, groupId, clusterName, collectionName, databaseName, indexName).Execute()
 
 Remove One Atlas Search Index by Name
 
@@ -452,7 +452,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `DeleteAtlasSearchIndexByName`: map[string]interface{}
+    // response from `DeleteAtlasSearchIndexByName`: interface{}
     fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.DeleteAtlasSearchIndexByName`: %v\n", resp)
 }
 ```
@@ -484,7 +484,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+**interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -501,7 +501,7 @@ Name | Type | Description  | Notes
 
 ## DeleteAtlasSearchIndexDeprecated
 
-> map[string]interface{} DeleteAtlasSearchIndexDeprecated(ctx, groupId, clusterName, indexId).Execute()
+> interface{} DeleteAtlasSearchIndexDeprecated(ctx, groupId, clusterName, indexId).Execute()
 
 Remove One Atlas Search Index
 
@@ -535,7 +535,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `DeleteAtlasSearchIndexDeprecated`: map[string]interface{}
+    // response from `DeleteAtlasSearchIndexDeprecated`: interface{}
     fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.DeleteAtlasSearchIndexDeprecated`: %v\n", resp)
 }
 ```
@@ -563,7 +563,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+**interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

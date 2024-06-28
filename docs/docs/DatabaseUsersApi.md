@@ -89,7 +89,7 @@ Name | Type | Description  | Notes
 
 ## DeleteDatabaseUser
 
-> map[string]interface{} DeleteDatabaseUser(ctx, groupId, databaseName, username).Execute()
+> interface{} DeleteDatabaseUser(ctx, groupId, databaseName, username).Execute()
 
 Remove One Database User from One Project
 
@@ -123,7 +123,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `DeleteDatabaseUser`: map[string]interface{}
+    // response from `DeleteDatabaseUser`: interface{}
     fmt.Fprintf(os.Stdout, "Response from `DatabaseUsersApi.DeleteDatabaseUser`: %v\n", resp)
 }
 ```
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+**interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

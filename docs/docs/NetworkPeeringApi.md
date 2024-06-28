@@ -172,7 +172,7 @@ Name | Type | Description  | Notes
 
 ## DeletePeeringConnection
 
-> map[string]interface{} DeletePeeringConnection(ctx, groupId, peerId).Execute()
+> interface{} DeletePeeringConnection(ctx, groupId, peerId).Execute()
 
 Remove One Existing Network Peering Connection
 
@@ -205,7 +205,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `DeletePeeringConnection`: map[string]interface{}
+    // response from `DeletePeeringConnection`: interface{}
     fmt.Fprintf(os.Stdout, "Response from `NetworkPeeringApi.DeletePeeringConnection`: %v\n", resp)
 }
 ```
@@ -231,7 +231,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+**interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -248,7 +248,7 @@ Name | Type | Description  | Notes
 
 ## DeletePeeringContainer
 
-> map[string]interface{} DeletePeeringContainer(ctx, groupId, containerId).Execute()
+> interface{} DeletePeeringContainer(ctx, groupId, containerId).Execute()
 
 Remove One Network Peering Container
 
@@ -281,7 +281,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `DeletePeeringContainer`: map[string]interface{}
+    // response from `DeletePeeringContainer`: interface{}
     fmt.Fprintf(os.Stdout, "Response from `NetworkPeeringApi.DeletePeeringContainer`: %v\n", resp)
 }
 ```
@@ -307,7 +307,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+**interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

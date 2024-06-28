@@ -562,7 +562,7 @@ Name | Type | Description  | Notes
 
 ## SetServerlessAutoIndexing
 
-> map[string]interface{} SetServerlessAutoIndexing(ctx, groupId, clusterName).Enable(enable).Execute()
+> interface{} SetServerlessAutoIndexing(ctx, groupId, clusterName).Enable(enable).Execute()
 
 Set Serverless Auto Indexing
 
@@ -596,7 +596,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `SetServerlessAutoIndexing`: map[string]interface{}
+    // response from `SetServerlessAutoIndexing`: interface{}
     fmt.Fprintf(os.Stdout, "Response from `PerformanceAdvisorApi.SetServerlessAutoIndexing`: %v\n", resp)
 }
 ```
@@ -623,7 +623,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+**interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

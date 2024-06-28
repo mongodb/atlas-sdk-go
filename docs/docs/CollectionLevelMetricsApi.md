@@ -201,7 +201,7 @@ Name | Type | Description  | Notes
 
 ## GetCollStatsLatencyNamespaceMetrics
 
-> map[string]interface{} GetCollStatsLatencyNamespaceMetrics(ctx, groupId).Execute()
+> interface{} GetCollStatsLatencyNamespaceMetrics(ctx, groupId).Execute()
 
 Return all metric names
 
@@ -233,7 +233,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `GetCollStatsLatencyNamespaceMetrics`: map[string]interface{}
+    // response from `GetCollStatsLatencyNamespaceMetrics`: interface{}
     fmt.Fprintf(os.Stdout, "Response from `CollectionLevelMetricsApi.GetCollStatsLatencyNamespaceMetrics`: %v\n", resp)
 }
 ```
@@ -257,7 +257,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+**interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

@@ -254,7 +254,7 @@ Name | Type | Description  | Notes
 
 ## DeleteProject
 
-> map[string]interface{} DeleteProject(ctx, groupId).Execute()
+> interface{} DeleteProject(ctx, groupId).Execute()
 
 Remove One Project
 
@@ -286,7 +286,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `DeleteProject`: map[string]interface{}
+    // response from `DeleteProject`: interface{}
     fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.DeleteProject`: %v\n", resp)
 }
 ```
@@ -310,7 +310,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+**interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -327,7 +327,7 @@ Name | Type | Description  | Notes
 
 ## DeleteProjectInvitation
 
-> map[string]interface{} DeleteProjectInvitation(ctx, groupId, invitationId).Execute()
+> interface{} DeleteProjectInvitation(ctx, groupId, invitationId).Execute()
 
 Cancel One Project Invitation
 
@@ -360,7 +360,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `DeleteProjectInvitation`: map[string]interface{}
+    // response from `DeleteProjectInvitation`: interface{}
     fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.DeleteProjectInvitation`: %v\n", resp)
 }
 ```
@@ -386,7 +386,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+**interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -403,7 +403,7 @@ Name | Type | Description  | Notes
 
 ## DeleteProjectLimit
 
-> map[string]interface{} DeleteProjectLimit(ctx, limitName, groupId).Execute()
+> interface{} DeleteProjectLimit(ctx, limitName, groupId).Execute()
 
 Remove One Project Limit
 
@@ -436,7 +436,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `DeleteProjectLimit`: map[string]interface{}
+    // response from `DeleteProjectLimit`: interface{}
     fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.DeleteProjectLimit`: %v\n", resp)
 }
 ```
@@ -462,7 +462,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+**interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

@@ -173,7 +173,7 @@ Name | Type | Description  | Notes
 
 ## DeleteStreamConnection
 
-> map[string]interface{} DeleteStreamConnection(ctx, groupId, tenantName, connectionName).Execute()
+> interface{} DeleteStreamConnection(ctx, groupId, tenantName, connectionName).Execute()
 
 Delete One Stream Connection
 
@@ -207,7 +207,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `DeleteStreamConnection`: map[string]interface{}
+    // response from `DeleteStreamConnection`: interface{}
     fmt.Fprintf(os.Stdout, "Response from `StreamsApi.DeleteStreamConnection`: %v\n", resp)
 }
 ```
@@ -235,7 +235,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+**interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -252,7 +252,7 @@ Name | Type | Description  | Notes
 
 ## DeleteStreamInstance
 
-> map[string]interface{} DeleteStreamInstance(ctx, groupId, tenantName).Execute()
+> interface{} DeleteStreamInstance(ctx, groupId, tenantName).Execute()
 
 Delete One Stream Instance
 
@@ -285,7 +285,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `DeleteStreamInstance`: map[string]interface{}
+    // response from `DeleteStreamInstance`: interface{}
     fmt.Fprintf(os.Stdout, "Response from `StreamsApi.DeleteStreamInstance`: %v\n", resp)
 }
 ```
@@ -311,7 +311,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+**interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

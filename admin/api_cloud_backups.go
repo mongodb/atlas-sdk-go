@@ -35,7 +35,7 @@ type CloudBackupsApi interface {
 	CancelBackupRestoreJobWithParams(ctx context.Context, args *CancelBackupRestoreJobApiParams) CancelBackupRestoreJobApiRequest
 
 	// Method available only for mocking purposes
-	CancelBackupRestoreJobExecute(r CancelBackupRestoreJobApiRequest) (map[string]interface{}, *http.Response, error)
+	CancelBackupRestoreJobExecute(r CancelBackupRestoreJobApiRequest) (interface{}, *http.Response, error)
 
 	/*
 		CreateBackupExportJob Create One Cloud Backup Snapshot Export Job
@@ -184,7 +184,7 @@ type CloudBackupsApi interface {
 	DeleteExportBucketWithParams(ctx context.Context, args *DeleteExportBucketApiParams) DeleteExportBucketApiRequest
 
 	// Method available only for mocking purposes
-	DeleteExportBucketExecute(r DeleteExportBucketApiRequest) (map[string]interface{}, *http.Response, error)
+	DeleteExportBucketExecute(r DeleteExportBucketApiRequest) (interface{}, *http.Response, error)
 
 	/*
 		DeleteReplicaSetBackup Remove One Replica Set Cloud Backup
@@ -209,7 +209,7 @@ type CloudBackupsApi interface {
 	DeleteReplicaSetBackupWithParams(ctx context.Context, args *DeleteReplicaSetBackupApiParams) DeleteReplicaSetBackupApiRequest
 
 	// Method available only for mocking purposes
-	DeleteReplicaSetBackupExecute(r DeleteReplicaSetBackupApiRequest) (map[string]interface{}, *http.Response, error)
+	DeleteReplicaSetBackupExecute(r DeleteReplicaSetBackupApiRequest) (interface{}, *http.Response, error)
 
 	/*
 		DeleteShardedClusterBackup Remove One Sharded Cluster Cloud Backup
@@ -234,7 +234,7 @@ type CloudBackupsApi interface {
 	DeleteShardedClusterBackupWithParams(ctx context.Context, args *DeleteShardedClusterBackupApiParams) DeleteShardedClusterBackupApiRequest
 
 	// Method available only for mocking purposes
-	DeleteShardedClusterBackupExecute(r DeleteShardedClusterBackupApiRequest) (map[string]interface{}, *http.Response, error)
+	DeleteShardedClusterBackupExecute(r DeleteShardedClusterBackupApiRequest) (interface{}, *http.Response, error)
 
 	/*
 		GetBackupExportJob Return One Cloud Backup Snapshot Export Job
@@ -754,7 +754,7 @@ func (a *CloudBackupsApiService) CancelBackupRestoreJobWithParams(ctx context.Co
 	}
 }
 
-func (r CancelBackupRestoreJobApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r CancelBackupRestoreJobApiRequest) Execute() (interface{}, *http.Response, error) {
 	return r.ApiService.CancelBackupRestoreJobExecute(r)
 }
 
@@ -781,13 +781,13 @@ func (a *CloudBackupsApiService) CancelBackupRestoreJob(ctx context.Context, gro
 
 // Execute executes the request
 //
-//	@return map[string]interface{}
-func (a *CloudBackupsApiService) CancelBackupRestoreJobExecute(r CancelBackupRestoreJobApiRequest) (map[string]interface{}, *http.Response, error) {
+//	@return interface{}
+func (a *CloudBackupsApiService) CancelBackupRestoreJobExecute(r CancelBackupRestoreJobApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarReturnValue interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudBackupsApiService.CancelBackupRestoreJob")
@@ -1491,7 +1491,7 @@ func (a *CloudBackupsApiService) DeleteExportBucketWithParams(ctx context.Contex
 	}
 }
 
-func (r DeleteExportBucketApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r DeleteExportBucketApiRequest) Execute() (interface{}, *http.Response, error) {
 	return r.ApiService.DeleteExportBucketExecute(r)
 }
 
@@ -1516,13 +1516,13 @@ func (a *CloudBackupsApiService) DeleteExportBucket(ctx context.Context, groupId
 
 // Execute executes the request
 //
-//	@return map[string]interface{}
-func (a *CloudBackupsApiService) DeleteExportBucketExecute(r DeleteExportBucketApiRequest) (map[string]interface{}, *http.Response, error) {
+//	@return interface{}
+func (a *CloudBackupsApiService) DeleteExportBucketExecute(r DeleteExportBucketApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarReturnValue interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudBackupsApiService.DeleteExportBucket")
@@ -1611,7 +1611,7 @@ func (a *CloudBackupsApiService) DeleteReplicaSetBackupWithParams(ctx context.Co
 	}
 }
 
-func (r DeleteReplicaSetBackupApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r DeleteReplicaSetBackupApiRequest) Execute() (interface{}, *http.Response, error) {
 	return r.ApiService.DeleteReplicaSetBackupExecute(r)
 }
 
@@ -1638,13 +1638,13 @@ func (a *CloudBackupsApiService) DeleteReplicaSetBackup(ctx context.Context, gro
 
 // Execute executes the request
 //
-//	@return map[string]interface{}
-func (a *CloudBackupsApiService) DeleteReplicaSetBackupExecute(r DeleteReplicaSetBackupApiRequest) (map[string]interface{}, *http.Response, error) {
+//	@return interface{}
+func (a *CloudBackupsApiService) DeleteReplicaSetBackupExecute(r DeleteReplicaSetBackupApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarReturnValue interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudBackupsApiService.DeleteReplicaSetBackup")
@@ -1734,7 +1734,7 @@ func (a *CloudBackupsApiService) DeleteShardedClusterBackupWithParams(ctx contex
 	}
 }
 
-func (r DeleteShardedClusterBackupApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r DeleteShardedClusterBackupApiRequest) Execute() (interface{}, *http.Response, error) {
 	return r.ApiService.DeleteShardedClusterBackupExecute(r)
 }
 
@@ -1761,13 +1761,13 @@ func (a *CloudBackupsApiService) DeleteShardedClusterBackup(ctx context.Context,
 
 // Execute executes the request
 //
-//	@return map[string]interface{}
-func (a *CloudBackupsApiService) DeleteShardedClusterBackupExecute(r DeleteShardedClusterBackupApiRequest) (map[string]interface{}, *http.Response, error) {
+//	@return interface{}
+func (a *CloudBackupsApiService) DeleteShardedClusterBackupExecute(r DeleteShardedClusterBackupApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarReturnValue interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudBackupsApiService.DeleteShardedClusterBackup")
