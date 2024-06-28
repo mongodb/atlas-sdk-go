@@ -237,6 +237,29 @@ type ProjectsApi interface {
 	GetProjectInvitationExecute(r GetProjectInvitationApiRequest) (*GroupInvitation, *http.Response, error)
 
 	/*
+		GetProjectLTSVersions Return Available MongoDB LTS Versions for clusters in One Project
+
+		Returns the MongoDB Long Term Support Major Versions available to new clusters in this project.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@return GetProjectLTSVersionsApiRequest
+	*/
+	GetProjectLTSVersions(ctx context.Context, groupId string) GetProjectLTSVersionsApiRequest
+	/*
+		GetProjectLTSVersions Return Available MongoDB LTS Versions for clusters in One Project
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetProjectLTSVersionsApiParams - Parameters for the request
+		@return GetProjectLTSVersionsApiRequest
+	*/
+	GetProjectLTSVersionsWithParams(ctx context.Context, args *GetProjectLTSVersionsApiParams) GetProjectLTSVersionsApiRequest
+
+	// Method available only for mocking purposes
+	GetProjectLTSVersionsExecute(r GetProjectLTSVersionsApiRequest) (*PaginatedAvailableVersion, *http.Response, error)
+
+	/*
 		GetProjectLimit Return One Limit for One Project
 
 		Returns the specified limit for the specified project. To use this resource, the requesting API Key must have the Project Read Only role.
@@ -1623,6 +1646,185 @@ func (a *ProjectsApiService) GetProjectInvitationExecute(r GetProjectInvitationA
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json", "application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type GetProjectLTSVersionsApiRequest struct {
+	ctx           context.Context
+	ApiService    ProjectsApi
+	groupId       string
+	cloudProvider *string
+	instanceSize  *string
+	defaultStatus *string
+	itemsPerPage  *int64
+	pageNum       *int
+}
+
+type GetProjectLTSVersionsApiParams struct {
+	GroupId       string
+	CloudProvider *string
+	InstanceSize  *string
+	DefaultStatus *string
+	ItemsPerPage  *int64
+	PageNum       *int
+}
+
+func (a *ProjectsApiService) GetProjectLTSVersionsWithParams(ctx context.Context, args *GetProjectLTSVersionsApiParams) GetProjectLTSVersionsApiRequest {
+	return GetProjectLTSVersionsApiRequest{
+		ApiService:    a,
+		ctx:           ctx,
+		groupId:       args.GroupId,
+		cloudProvider: args.CloudProvider,
+		instanceSize:  args.InstanceSize,
+		defaultStatus: args.DefaultStatus,
+		itemsPerPage:  args.ItemsPerPage,
+		pageNum:       args.PageNum,
+	}
+}
+
+// Filter results to only one cloud provider.
+func (r GetProjectLTSVersionsApiRequest) CloudProvider(cloudProvider string) GetProjectLTSVersionsApiRequest {
+	r.cloudProvider = &cloudProvider
+	return r
+}
+
+// Filter results to only one instance size.
+func (r GetProjectLTSVersionsApiRequest) InstanceSize(instanceSize string) GetProjectLTSVersionsApiRequest {
+	r.instanceSize = &instanceSize
+	return r
+}
+
+// Filter results to only the default values per tier. This value must be DEFAULT.
+func (r GetProjectLTSVersionsApiRequest) DefaultStatus(defaultStatus string) GetProjectLTSVersionsApiRequest {
+	r.defaultStatus = &defaultStatus
+	return r
+}
+
+// Number of items that the response returns per page.
+func (r GetProjectLTSVersionsApiRequest) ItemsPerPage(itemsPerPage int64) GetProjectLTSVersionsApiRequest {
+	r.itemsPerPage = &itemsPerPage
+	return r
+}
+
+// Number of the page that displays the current set of the total objects that the response returns.
+func (r GetProjectLTSVersionsApiRequest) PageNum(pageNum int) GetProjectLTSVersionsApiRequest {
+	r.pageNum = &pageNum
+	return r
+}
+
+func (r GetProjectLTSVersionsApiRequest) Execute() (*PaginatedAvailableVersion, *http.Response, error) {
+	return r.ApiService.GetProjectLTSVersionsExecute(r)
+}
+
+/*
+GetProjectLTSVersions Return Available MongoDB LTS Versions for clusters in One Project
+
+Returns the MongoDB Long Term Support Major Versions available to new clusters in this project.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return GetProjectLTSVersionsApiRequest
+*/
+func (a *ProjectsApiService) GetProjectLTSVersions(ctx context.Context, groupId string) GetProjectLTSVersionsApiRequest {
+	return GetProjectLTSVersionsApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    groupId,
+	}
+}
+
+// Execute executes the request
+//
+//	@return PaginatedAvailableVersion
+func (a *ProjectsApiService) GetProjectLTSVersionsExecute(r GetProjectLTSVersionsApiRequest) (*PaginatedAvailableVersion, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedAvailableVersion
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.GetProjectLTSVersions")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/mongoDBVersions"
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.cloudProvider != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "cloudProvider", r.cloudProvider, "")
+	}
+	if r.instanceSize != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "instanceSize", r.instanceSize, "")
+	}
+	if r.defaultStatus != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "defaultStatus", r.defaultStatus, "")
+	}
+	if r.itemsPerPage != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	} else {
+		var defaultValue int64 = 100
+		r.itemsPerPage = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	}
+	if r.pageNum != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	} else {
+		var defaultValue int = 1
+		r.pageNum = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

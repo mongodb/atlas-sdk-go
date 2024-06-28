@@ -24,7 +24,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 725a0afacc9b395b70f662b50b85087abdaec19d
+  x-xgen-sha: 3af5dc19f5dab79c97c3b115398d66b2f9e4d81c
 servers:
   - url: https://cloud.mongodb.com
 tags:
@@ -2587,7 +2587,7 @@ paths:
         content:
           application/vnd.atlas.2023-01-01+json:
             schema:
-              $ref: "#/components/schemas/CloudProviderAccessAWSIAMRoleRequest"
+              $ref: "#/components/schemas/CloudProviderAccessRole"
         description: Creates one role for the specified cloud provider.
         required: true
       responses:
@@ -2706,7 +2706,7 @@ paths:
         content:
           application/vnd.atlas.2023-01-01+json:
             schema:
-              $ref: "#/components/schemas/CloudProviderAccessAWSIAMRoleUpdateRequest"
+              $ref: "#/components/schemas/CloudProviderAccessRole"
         description: Grants access to the specified project for the specified access role.
         required: true
       responses:
@@ -2767,6 +2767,9 @@ paths:
       summary: Return All Clusters in One Project
       tags:
         - Clusters
+      x-xgen-changelog:
+        2024-07-11: Only clusters supported by the current API version are returned in
+          response
     post:
       description: "Creates one cluster in the specified project. Clusters contain a
         group of hosts that maintain the same data set. This resource can create
@@ -3251,8 +3254,7 @@ paths:
             maxLength: 64
             minLength: 1
             pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
-        - description: Unique string that identifies the AWS S3 bucket to which you export
-            your snapshots.
+        - description: Unique string that identifies the export job to return.
           in: path
           name: exportId
           required: true
@@ -4513,6 +4515,8 @@ paths:
           $ref: "#/components/responses/badRequest"
         "404":
           $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
       security:
@@ -4741,6 +4745,8 @@ paths:
           $ref: "#/components/responses/badRequest"
         "404":
           $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
       security:
@@ -5556,7 +5562,6 @@ paths:
         - Cluster Outage Simulation
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/processArgs":
     get:
-      deprecated: true
       description: Returns the advanced configuration details for one cluster in the
         specified project. Clusters contain a group of hosts that maintain the
         same data set. Advanced configuration details include the read/write
@@ -5598,9 +5603,7 @@ paths:
       summary: Return One Advanced Configuration Options for One Cluster
       tags:
         - Clusters
-      x-sunset: 2025-06-01
     patch:
-      deprecated: true
       description: Updates the advanced configuration details for one cluster in the
         specified project. Clusters contain a group of hosts that maintain the
         same data set. Advanced configuration details include the read/write
@@ -5654,7 +5657,6 @@ paths:
       summary: Update Advanced Configuration Options for One Cluster
       tags:
         - Clusters
-      x-sunset: 2025-06-01
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/restartPrimaries":
     post:
       description: "Starts a failover test for the specified cluster in the specified
@@ -5883,6 +5885,8 @@ paths:
           $ref: "#/components/responses/badRequest"
         "404":
           $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
       security:
@@ -6354,6 +6358,8 @@ paths:
           $ref: "#/components/responses/badRequest"
         "404":
           $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
       security:
@@ -6527,6 +6533,8 @@ paths:
           $ref: "#/components/responses/badRequest"
         "404":
           $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
       security:
@@ -9761,7 +9769,7 @@ paths:
         content:
           application/vnd.atlas.2024-05-30+json:
             schema:
-              $ref: "#/components/schemas/LiveMigrationRequest"
+              $ref: "#/components/schemas/LiveMigrationRequest20240530"
             x-xgen-version: 2024-05-30
         description: One migration to be created.
         required: true
@@ -9802,7 +9810,7 @@ paths:
         content:
           application/vnd.atlas.2024-05-30+json:
             schema:
-              $ref: "#/components/schemas/LiveMigrationRequest"
+              $ref: "#/components/schemas/LiveMigrationRequest20240530"
             x-xgen-version: 2024-05-30
         description: One migration to be validated.
         required: true
@@ -10183,6 +10191,65 @@ paths:
       summary: Enable Managed Slow Operation Threshold
       tags:
         - Performance Advisor
+  "/api/atlas/v2/groups/{groupId}/mongoDBVersions":
+    get:
+      description: Returns the MongoDB Long Term Support Major Versions available to
+        new clusters in this project.
+      operationId: getProjectLTSVersions
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Filter results to only one cloud provider.
+          in: query
+          name: cloudProvider
+          schema:
+            type: string
+        - description: Filter results to only one instance size.
+          in: query
+          name: instanceSize
+          schema:
+            type: string
+            example: M10
+        - description: Filter results to only the default values per tier. This value must
+            be DEFAULT.
+          in: query
+          name: defaultStatus
+          schema:
+            type: string
+        - description: Number of items that the response returns per page.
+          in: query
+          name: itemsPerPage
+          schema:
+            type: integer
+            format: int64
+            default: 100
+            example: 100
+            minimum: 1
+        - $ref: "#/components/parameters/pageNum"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedAvailableVersion"
+              x-xgen-version: 2023-01-01
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Return Available MongoDB LTS Versions for clusters in One Project
+      tags:
+        - Projects
   "/api/atlas/v2/groups/{groupId}/peers":
     get:
       description: Returns details about all network peering connections in the
@@ -13221,6 +13288,210 @@ paths:
       summary: Update One Serverless Instance in One Project
       tags:
         - Serverless Instances
+  "/api/atlas/v2/groups/{groupId}/serviceAccounts":
+    get:
+      description: Returns list of Service Accounts for a project with service account
+        details.
+      operationId: listProjectServiceAccounts
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - $ref: "#/components/parameters/itemsPerPage"
+        - $ref: "#/components/parameters/pageNum"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-10-01+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedGroupServiceAccounts"
+              x-xgen-version: 2023-10-01
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Return All project Service Accounts
+      tags:
+        - Groups
+    post:
+      description: Creates and assigns the specified Service Account to the specified
+        Project.
+      operationId: createProjectServiceAccount
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+      requestBody:
+        content:
+          application/vnd.atlas.2023-10-01+json:
+            schema:
+              $ref: "#/components/schemas/GroupServiceAccountRequest"
+            x-xgen-version: 2023-10-01
+        description: Details to create service account and add to the specified project.
+        required: true
+      responses:
+        "201":
+          content:
+            application/vnd.atlas.2023-10-01+json:
+              schema:
+                $ref: "#/components/schemas/GroupServiceAccount"
+              x-xgen-version: 2023-10-01
+          description: Created
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Create and Assign one Service Account to one project
+      tags:
+        - Groups
+  "/api/atlas/v2/groups/{groupId}/serviceAccounts/{serviceAccountId}":
+    delete:
+      description: Removes one Service Account from the specified project.
+      operationId: deleteProjectServiceAccount
+      parameters:
+        - description: Id of the service account.
+          in: path
+          name: serviceAccountId
+          required: true
+          schema:
+            type: string
+        - $ref: "#/components/parameters/groupId"
+      responses:
+        "204":
+          content:
+            application/vnd.atlas.2023-10-01+json:
+              schema:
+                $ref: "#/components/schemas/NoBody"
+              x-xgen-version: 2023-10-01
+          description: This endpoint does not return a response body.
+          x-xgen-version: 2023-10-01
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Unassign One Service Account from One Project.
+      tags:
+        - Groups
+    get:
+      description: Get project Service Account Details.
+      operationId: getProjectServiceAccount
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Id of the service account.
+          in: path
+          name: serviceAccountId
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-10-01+json:
+              schema:
+                $ref: "#/components/schemas/GroupServiceAccount"
+              x-xgen-version: 2023-10-01
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Service Account Fetching
+      tags:
+        - Groups
+    patch:
+      description: Update Service Account in Project.
+      operationId: updateProjectServiceAccount
+      parameters:
+        - description: Id of the service account.
+          in: path
+          name: serviceAccountId
+          required: true
+          schema:
+            type: string
+        - $ref: "#/components/parameters/groupId"
+      requestBody:
+        content:
+          application/vnd.atlas.2023-10-01+json:
+            schema:
+              $ref: "#/components/schemas/GroupServiceAccountUpdateRequest"
+        description: Details to update service account in the specified Project.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-10-01+json:
+              schema:
+                $ref: "#/components/schemas/GroupServiceAccount"
+              x-xgen-version: 2023-10-01
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Service Account Update in Project
+      tags:
+        - Groups
+    post:
+      description: Assigns the specified organization Service Account to the specified
+        project.
+      operationId: addProjectServiceAccount
+      parameters:
+        - description: Id of the service account.
+          in: path
+          name: serviceAccountId
+          required: true
+          schema:
+            type: string
+        - $ref: "#/components/parameters/groupId"
+      requestBody:
+        content:
+          application/vnd.atlas.2023-10-01+json:
+            schema:
+              type: array
+              items:
+                $ref: "#/components/schemas/GroupServiceAccountRoleAssignment"
+            x-xgen-version: 2023-10-01
+        description: Service Account Roles to be assigned to the specified project.
+        required: true
+      responses:
+        "204":
+          content:
+            application/vnd.atlas.2023-10-01+json:
+              schema:
+                $ref: "#/components/schemas/NoBody"
+              x-xgen-version: 2023-10-01
+          description: This endpoint does not return a response body.
+          x-xgen-version: 2023-10-01
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Assign One Service Account to One Project
+      tags:
+        - Groups
   "/api/atlas/v2/groups/{groupId}/settings":
     get:
       description: Returns details about the specified project's settings. To use this
@@ -15421,7 +15692,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                $ref: "#/components/schemas/PaginatedApiInvoice"
+                $ref: "#/components/schemas/PaginatedApiInvoiceMetadata"
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -15647,6 +15918,268 @@ paths:
       summary: Create One Link-Token
       tags:
         - Cloud Migration Service
+  "/api/atlas/v2/orgs/{orgId}/serviceAccounts":
+    get:
+      description: Returns list of Service Accounts with service account details.
+      operationId: listServiceAccounts
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/itemsPerPage"
+        - $ref: "#/components/parameters/pageNum"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-10-01+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedOrgServiceAccounts"
+              x-xgen-version: 2023-10-01
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Return All Service Accounts
+      tags:
+        - Organizations
+    post:
+      description: Create Service Account containing client id and client secrets.
+      operationId: createServiceAccount
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+      requestBody:
+        content:
+          application/vnd.atlas.2023-10-01+json:
+            schema:
+              $ref: "#/components/schemas/OrgServiceAccountRequest"
+        description: Details to create service account in the specified organization.
+        required: true
+      responses:
+        "201":
+          content:
+            application/vnd.atlas.2023-10-01+json:
+              schema:
+                $ref: "#/components/schemas/OrgServiceAccount"
+              x-xgen-version: 2023-10-01
+          description: Created
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Service Account Creation
+      tags:
+        - Organizations
+  "/api/atlas/v2/orgs/{orgId}/serviceAccounts/{serviceAccountId}":
+    delete:
+      description: Delete Service Account.
+      operationId: deleteServiceAccount
+      parameters:
+        - description: Id of the service account.
+          in: path
+          name: serviceAccountId
+          required: true
+          schema:
+            type: string
+        - $ref: "#/components/parameters/orgId"
+      responses:
+        "204":
+          content:
+            application/vnd.atlas.2023-10-01+json:
+              x-xgen-version: 2023-10-01
+          description: This endpoint does not return a response body.
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Service Account Deletion.
+      tags:
+        - Organizations
+    get:
+      description: Get Service Account Details.
+      operationId: getServiceAccount
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - description: Id of the service account.
+          in: path
+          name: serviceAccountId
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-10-01+json:
+              schema:
+                $ref: "#/components/schemas/OrgServiceAccount"
+              x-xgen-version: 2023-10-01
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Service Account Fetching
+      tags:
+        - Organizations
+    patch:
+      description: Update Service Account.
+      operationId: updateServiceAccount
+      parameters:
+        - description: Id of the service account.
+          in: path
+          name: serviceAccountId
+          required: true
+          schema:
+            type: string
+        - $ref: "#/components/parameters/orgId"
+      requestBody:
+        content:
+          application/vnd.atlas.2023-10-01+json:
+            schema:
+              $ref: "#/components/schemas/OrgServiceAccountUpdateRequest"
+        description: Details to update service account in the specified organization.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-10-01+json:
+              schema:
+                $ref: "#/components/schemas/OrgServiceAccount"
+              x-xgen-version: 2023-10-01
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Service Account Update
+      tags:
+        - Organizations
+  "/api/atlas/v2/orgs/{orgId}/serviceAccounts/{serviceAccountId}/groups":
+    get:
+      description: Returns list of Service Account projects.
+      operationId: listServiceAccountProjects
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - description: Id of the service account.
+          in: path
+          name: serviceAccountId
+          required: true
+          schema:
+            type: string
+        - $ref: "#/components/parameters/itemsPerPage"
+        - $ref: "#/components/parameters/pageNum"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-10-01+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedServiceAccountGroup"
+              x-xgen-version: 2023-10-01
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Return All Service Account projects
+      tags:
+        - Organizations
+  "/api/atlas/v2/orgs/{orgId}/serviceAccounts/{serviceAccountId}/secrets":
+    post:
+      description: Create Service Account secret.
+      operationId: createServiceAccountSecret
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - description: Id of the service account.
+          in: path
+          name: serviceAccountId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/vnd.atlas.2023-10-01+json:
+            schema:
+              $ref: "#/components/schemas/ServiceAccountSecretRequest"
+        description: Details to create secret in the specified service account.
+        required: true
+      responses:
+        "201":
+          content:
+            application/vnd.atlas.2023-10-01+json:
+              schema:
+                $ref: "#/components/schemas/ServiceAccountSecret"
+              x-xgen-version: 2023-10-01
+          description: Created
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Service Account Secret Creation
+      tags:
+        - Organizations
+  "/api/atlas/v2/orgs/{orgId}/serviceAccounts/{serviceAccountId}/secrets/{secretId}":
+    delete:
+      description: Delete Service Account Secret.
+      operationId: deleteServiceAccountSecret
+      parameters:
+        - description: Id of the service account.
+          in: path
+          name: serviceAccountId
+          required: true
+          schema:
+            type: string
+        - description: Id of the secret.
+          in: path
+          name: secretId
+          required: true
+          schema:
+            type: string
+        - $ref: "#/components/parameters/orgId"
+      responses:
+        "204":
+          content:
+            application/vnd.atlas.2023-10-01+json:
+              x-xgen-version: 2023-10-01
+          description: This endpoint does not return a response body.
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Service Account Secret Deletion.
+      tags:
+        - Organizations
   "/api/atlas/v2/orgs/{orgId}/settings":
     get:
       description: Returns details about the specified organization's settings. To use
@@ -16953,9 +17486,16 @@ components:
           readOnly: true
         mongoDBMajorVersion:
           type: string
-          default: "7.0"
-          description: Major MongoDB version of the cluster. MongoDB Cloud deploys the
-            cluster with the latest stable release of the specified version.
+          description: >-
+            MongoDB major version of the cluster.
+
+
+            On creation: Choose from the available versions of MongoDB, or leave unspecified for the current recommended default in the MongoDB Cloud platform. The recommended version is a recent Long Term Support version. The default is not guaranteed to be the most recently released version throughout the entire release cycle. For versions available in a specific project, see the linked documentation or use the API endpoint for [project LTS versions endpoint](#tag/Projects/operation/getProjectLTSVersions).
+
+             On update: Increase version only by 1 major version at a time.
+          externalDocs:
+            description: Available MongoDB Versions in Atlas
+            url: https://www.mongodb.com/docs/atlas/reference/faq/database/#which-versions-of-mongodb-do-service-clusters-use-
         mongoDBVersion:
           type: string
           description: Version of MongoDB that the cluster runs.
@@ -18034,7 +18574,10 @@ components:
         roleAssignments:
           type: array
           description: Atlas roles and the unique identifiers of the groups and
-            organizations associated with each role.
+            organizations associated with each role. The array must include at
+            least one element with an Organization role and its respective
+            **orgId**. Each element in the array can have a value for **orgId**
+            or **groupId**, but not both.
           items:
             $ref: "#/components/schemas/RoleAssignment"
           uniqueItems: true
@@ -19263,16 +19806,6 @@ components:
             this invoice covers. This parameter expresses its value in the ISO
             8601 timestamp format in UTC.
           readOnly: true
-        groupId:
-          type: string
-          description: Unique 24-hexadecimal digit string that identifies the project
-            associated to this invoice. This identifying string doesn't appear
-            on all invoices.
-          example: 32b6e34b3d91647abb20e7b8
-          maxLength: 24
-          minLength: 24
-          pattern: ^([a-f0-9]{24})$
-          readOnly: true
         id:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the invoice
@@ -19329,6 +19862,140 @@ components:
             organization for this invoice.
           items:
             $ref: "#/components/schemas/BillingRefund"
+          readOnly: true
+        salesTaxCents:
+          type: integer
+          format: int64
+          description: Sum of sales tax applied to this invoice. This parameter expresses
+            its value in cents (100ths of one US Dollar).
+          readOnly: true
+        startDate:
+          type: string
+          format: date-time
+          description: Date and time when MongoDB Cloud began the billing period that this
+            invoice covers. This parameter expresses its value in the ISO 8601
+            timestamp format in UTC.
+          readOnly: true
+        startingBalanceCents:
+          type: integer
+          format: int64
+          description: Sum that the specified organization owed to MongoDB when MongoDB
+            issued this invoice. This parameter expresses its value in US
+            Dollars.
+          readOnly: true
+        statusName:
+          type: string
+          description: >
+            Phase of payment processing in which this invoice exists when you
+            made this request. Accepted phases include:
+
+
+            | Phase Value | Reason |
+
+            |---|---|
+
+            | CLOSED | MongoDB finalized all charges in the billing cycle but has yet to charge the customer. |
+
+            | FAILED | MongoDB attempted to charge the provided credit card but charge for that amount failed. |
+
+            | FORGIVEN | Customer initiated payment which MongoDB later forgave. |
+
+            | FREE | All charges totalled zero so the customer won't be charged. |
+
+            | INVOICED | MongoDB handled these charges using elastic invoicing. |
+
+            | PAID | MongoDB succeeded in charging the provided credit card. |
+
+            | PENDING | Invoice includes charges for the current billing cycle. |
+
+            | PREPAID | Customer has a pre-paid plan so they won't be charged. |
+        subtotalCents:
+          type: integer
+          format: int64
+          description: Sum of all positive invoice line items contained in this invoice.
+            This parameter expresses its value in cents (100ths of one US
+            Dollar).
+          readOnly: true
+        updated:
+          type: string
+          format: date-time
+          description: Date and time when MongoDB Cloud last updated the value of this
+            payment. This parameter expresses its value in the ISO 8601
+            timestamp format in UTC.
+          readOnly: true
+    BillingInvoiceMetadata:
+      type: object
+      properties:
+        amountBilledCents:
+          type: integer
+          format: int64
+          description: Sum of services that the specified organization consumed in the
+            period covered in this invoice. This parameter expresses its value
+            in cents (100ths of one US Dollar).
+          readOnly: true
+        amountPaidCents:
+          type: integer
+          format: int64
+          description: Sum that the specified organization paid toward this invoice. This
+            parameter expresses its value in cents (100ths of one US Dollar).
+          readOnly: true
+        created:
+          type: string
+          format: date-time
+          description: Date and time when MongoDB Cloud created this invoice. This
+            parameter expresses its value in the ISO 8601 timestamp format in
+            UTC.
+          readOnly: true
+        creditsCents:
+          type: integer
+          format: int64
+          description: Sum that MongoDB credited the specified organization toward this
+            invoice. This parameter expresses its value in cents (100ths of one
+            US Dollar).
+          readOnly: true
+        endDate:
+          type: string
+          format: date-time
+          description: Date and time when MongoDB Cloud finished the billing period that
+            this invoice covers. This parameter expresses its value in the ISO
+            8601 timestamp format in UTC.
+          readOnly: true
+        id:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the invoice
+            submitted to the specified organization. Charges typically post the
+            next day.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        linkedInvoices:
+          type: array
+          description: List that contains the invoices for organizations linked to the
+            paying organization.
+          items:
+            $ref: "#/components/schemas/BillingInvoiceMetadata"
+          readOnly: true
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        orgId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the organization
+            charged for services consumed from MongoDB Cloud.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
           readOnly: true
         salesTaxCents:
           type: integer
@@ -20018,122 +20685,6 @@ components:
           minLength: 24
           pattern: ^([a-f0-9]{24})$
           readOnly: true
-    CloudProviderAccessAWSIAMRoleRequest:
-      type: object
-      description: Details that describe the features linked to the Amazon Web
-        Services (AWS) Identity and Access Management (IAM) role.
-      properties:
-        atlasAWSAccountArn:
-          type: string
-          description: Amazon Resource Name that identifies the Amazon Web Services (AWS)
-            user account that MongoDB Cloud uses when it assumes the Identity
-            and Access Management (IAM) role.
-          example: arn:aws:iam::772401394250:role/my-test-aws-role
-          maxLength: 2048
-          minLength: 20
-          readOnly: true
-        atlasAssumedRoleExternalId:
-          type: string
-          format: uuid
-          description: Unique external ID that MongoDB Cloud uses when it assumes the IAM
-            role in your Amazon Web Services (AWS) account.
-          readOnly: true
-        authorizedDate:
-          type: string
-          format: date-time
-          description: Date and time when someone authorized this role for the specified
-            cloud service provider. This parameter expresses its value in the
-            ISO 8601 timestamp format in UTC.
-          readOnly: true
-        createdDate:
-          type: string
-          format: date-time
-          description: Date and time when someone created this role for the specified
-            cloud service provider. This parameter expresses its value in the
-            ISO 8601 timestamp format in UTC.
-          readOnly: true
-        featureUsages:
-          type: array
-          description: List that contains application features associated with this Amazon
-            Web Services (AWS) Identity and Access Management (IAM) role.
-          items:
-            $ref: "#/components/schemas/CloudProviderAccessFeatureUsage"
-          readOnly: true
-        providerName:
-          type: string
-          description: Human-readable label that identifies the cloud provider of the role.
-        roleId:
-          type: string
-          description: Unique 24-hexadecimal digit string that identifies the role.
-          example: 32b6e34b3d91647abb20e7b8
-          maxLength: 24
-          minLength: 24
-          pattern: ^([a-f0-9]{24})$
-          readOnly: true
-      required:
-        - providerName
-    CloudProviderAccessAWSIAMRoleUpdateRequest:
-      type: object
-      description: Details that describe the features linked to the Amazon Web
-        Services (AWS) Identity and Access Management (IAM) role.
-      properties:
-        atlasAWSAccountArn:
-          type: string
-          description: Amazon Resource Name that identifies the Amazon Web Services (AWS)
-            user account that MongoDB Cloud uses when it assumes the Identity
-            and Access Management (IAM) role.
-          example: arn:aws:iam::772401394250:role/my-test-aws-role
-          maxLength: 2048
-          minLength: 20
-          readOnly: true
-        atlasAssumedRoleExternalId:
-          type: string
-          format: uuid
-          description: Unique external ID that MongoDB Cloud uses when it assumes the IAM
-            role in your Amazon Web Services (AWS) account.
-          readOnly: true
-        authorizedDate:
-          type: string
-          format: date-time
-          description: Date and time when someone authorized this role for the specified
-            cloud service provider. This parameter expresses its value in the
-            ISO 8601 timestamp format in UTC.
-          readOnly: true
-        createdDate:
-          type: string
-          format: date-time
-          description: Date and time when someone created this role for the specified
-            cloud service provider. This parameter expresses its value in the
-            ISO 8601 timestamp format in UTC.
-          readOnly: true
-        featureUsages:
-          type: array
-          description: List that contains application features associated with this Amazon
-            Web Services (AWS) Identity and Access Management (IAM) role.
-          items:
-            $ref: "#/components/schemas/CloudProviderAccessFeatureUsage"
-          readOnly: true
-        iamAssumedRoleArn:
-          type: string
-          description: Amazon Resource Name (ARN) that identifies the Amazon Web Services
-            (AWS) Identity and Access Management (IAM) role that MongoDB Cloud
-            assumes when it accesses resources in your AWS account.
-          example: arn:aws:iam::123456789012:root
-          maxLength: 2048
-          minLength: 20
-        providerName:
-          type: string
-          description: Human-readable label that identifies the cloud provider of the role.
-        roleId:
-          type: string
-          description: Unique 24-hexadecimal digit string that identifies the role.
-          example: 32b6e34b3d91647abb20e7b8
-          maxLength: 24
-          minLength: 24
-          pattern: ^([a-f0-9]{24})$
-          readOnly: true
-      required:
-        - providerName
     CloudProviderAccessFeatureUsage:
       type: object
       description: MongoDB Cloud features associated with this Amazon Web Services
@@ -22762,14 +23313,6 @@ components:
         - frequencyType
         - retentionUnit
         - retentionValue
-    DiskBackupBaseRestoreMember:
-      type: object
-      properties:
-        replicaSetName:
-          type: string
-          description: Human-readable label that identifies the replica set on the sharded
-            cluster.
-          readOnly: true
     DiskBackupCopySetting:
       type: object
       description: Copy setting item in the desired backup policy.
@@ -22810,7 +23353,7 @@ components:
           description: Information on the export job for each replica set in the sharded
             cluster.
           items:
-            $ref: "#/components/schemas/DiskBackupBaseRestoreMember"
+            $ref: "#/components/schemas/DiskBackupExportMember"
           readOnly: true
         createdAt:
           type: string
@@ -22933,6 +23476,24 @@ components:
       required:
         - exportBucketId
         - snapshotId
+    DiskBackupExportMember:
+      type: object
+      properties:
+        exportId:
+          type: string
+          description: Unique 24-hexadecimal character string that identifies the the
+            Cloud Backup snapshot export job for each shard in a sharded
+            cluster.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        replicaSetName:
+          type: string
+          description: Human-readable label that identifies the replica set on the sharded
+            cluster.
+          readOnly: true
     DiskBackupOnDemandSnapshotRequest:
       type: object
       properties:
@@ -23068,6 +23629,20 @@ components:
             or sharded cluster.
           readOnly: true
       title: Replica Set Snapshot
+    DiskBackupRestoreMember:
+      type: object
+      properties:
+        downloadUrl:
+          type: string
+          description: 'One Uniform Resource Locator that point to the compressed snapshot
+            files for manual download. MongoDB Cloud returns this parameter when
+            `"deliveryType" : "download"`.'
+          readOnly: true
+        replicaSetName:
+          type: string
+          description: Human-readable label that identifies the replica set on the sharded
+            cluster.
+          readOnly: true
     DiskBackupShardedClusterSnapshot:
       type: object
       description: Details of the sharded cluster snapshot that MongoDB Cloud created.
@@ -23427,7 +24002,7 @@ components:
           description: Information on the restore job for each replica set in the sharded
             cluster.
           items:
-            $ref: "#/components/schemas/DiskBackupBaseRestoreMember"
+            $ref: "#/components/schemas/DiskBackupRestoreMember"
           readOnly: true
         deliveryType:
           type: string
@@ -25151,6 +25726,94 @@ components:
           readOnly: true
       readOnly: true
       title: Group Service IP Addresses
+    GroupServiceAccount:
+      type: object
+      properties:
+        createdAt:
+          type: string
+          format: date-time
+          description: Service account creation time.
+        description:
+          type: string
+          description: Description of the service account.
+        id:
+          type: string
+          description: ID for the service account.
+          pattern: ^mdb_sa_id_[a-fA-F\d]{24}$
+        name:
+          type: string
+          description: Name for service account.
+        roles:
+          type: array
+          description: Roles assigned to the Service Account group.
+          items:
+            type: string
+            description: Project roles associated with the service account.
+          uniqueItems: true
+        secrets:
+          type: array
+          description: List of secrets.
+          items:
+            $ref: "#/components/schemas/ServiceAccountSecret"
+          uniqueItems: true
+    GroupServiceAccountRequest:
+      type: object
+      properties:
+        description:
+          type: string
+          description: Human readable description for the service account.
+          maxLength: 250
+          minLength: 1
+        name:
+          type: string
+          description: Human-readable name for the service account. The name is modifiable
+            and does not have to be unique.
+          maxLength: 64
+          minLength: 1
+        roles:
+          type: array
+          description: Project roles associated with the service account.
+          items:
+            type: string
+            description: Project roles associated with the service account.
+        secretExpiresAfterHours:
+          type: integer
+          format: int32
+          description: Secret expiration time.
+      required:
+        - description
+        - name
+        - secretExpiresAfterHours
+    GroupServiceAccountRoleAssignment:
+      type: object
+      properties:
+        roles:
+          type: array
+          description: Group access roles.
+          items:
+            type: string
+            description: Project roles associated with the service account.
+          uniqueItems: true
+    GroupServiceAccountUpdateRequest:
+      type: object
+      properties:
+        description:
+          type: string
+          description: Human readable description for the service account.
+          maxLength: 250
+          minLength: 1
+        name:
+          type: string
+          description: Human-readable name for the service account. The name is modifiable
+            and does not have to be unique.
+          maxLength: 64
+          minLength: 1
+        roles:
+          type: array
+          description: Project roles associated with the service account.
+          items:
+            type: string
+            description: Project roles associated with the service account.
     GroupSettings:
       type: object
       description: Collection of settings that configures the project.
@@ -26145,9 +26808,16 @@ components:
           readOnly: true
         mongoDBMajorVersion:
           type: string
-          default: "7.0"
-          description: Major MongoDB version of the cluster. MongoDB Cloud deploys the
-            cluster with the latest stable release of the specified version.
+          description: >-
+            MongoDB major version of the cluster.
+
+
+            On creation: Choose from the available versions of MongoDB, or leave unspecified for the current recommended default in the MongoDB Cloud platform. The recommended version is a recent Long Term Support version. The default is not guaranteed to be the most recently released version throughout the entire release cycle. For versions available in a specific project, see the linked documentation or use the API endpoint for [project LTS versions endpoint](#tag/Projects/operation/getProjectLTSVersions).
+
+             On update: Increase version only by 1 major version at a time.
+          externalDocs:
+            description: Available MongoDB Versions in Atlas
+            url: https://www.mongodb.com/docs/atlas/reference/faq/database/#which-versions-of-mongodb-do-service-clusters-use-
         mongoDBVersion:
           type: string
           description: Version of MongoDB that the cluster runs.
@@ -26407,9 +27077,16 @@ components:
           readOnly: true
         mongoDBMajorVersion:
           type: string
-          default: "7.0"
-          description: Major MongoDB version of the cluster. MongoDB Cloud deploys the
-            cluster with the latest stable release of the specified version.
+          description: >-
+            MongoDB major version of the cluster.
+
+
+            On creation: Choose from the available versions of MongoDB, or leave unspecified for the current recommended default in the MongoDB Cloud platform. The recommended version is a recent Long Term Support version. The default is not guaranteed to be the most recently released version throughout the entire release cycle. For versions available in a specific project, see the linked documentation or use the API endpoint for [project LTS versions endpoint](#tag/Projects/operation/getProjectLTSVersions).
+
+             On update: Increase version only by 1 major version at a time.
+          externalDocs:
+            description: Available MongoDB Versions in Atlas
+            url: https://www.mongodb.com/docs/atlas/reference/faq/database/#which-versions-of-mongodb-do-service-clusters-use-
         mongoDBVersion:
           type: string
           description: Version of MongoDB that the cluster runs.
@@ -26686,7 +27363,7 @@ components:
           description: State of the specified validation job returned at the time of the
             request.
           readOnly: true
-    LiveMigrationRequest:
+    LiveMigrationRequest20240530:
       type: object
       properties:
         _id:
@@ -26700,12 +27377,24 @@ components:
           readOnly: true
         destination:
           $ref: "#/components/schemas/Destination"
-        dropEnabled:
+        dropDestinationData:
           type: boolean
+          default: false
           description: Flag that indicates whether the migration process drops all
             collections from the destination cluster before the migration
             starts.
           writeOnly: true
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
         migrationHosts:
           type: array
           description: List of migration hosts used for this migration.
@@ -26720,7 +27409,6 @@ components:
           $ref: "#/components/schemas/Source"
       required:
         - destination
-        - dropEnabled
         - source
     LiveMigrationResponse:
       type: object
@@ -26839,6 +27527,36 @@ components:
         - collection
         - customShardKey
         - db
+    MdbAvailableVersion:
+      type: object
+      properties:
+        cloudProvider:
+          type: string
+          description: Cloud service provider on which MongoDB Cloud provisions the hosts.
+            Set dedicated clusters to `AWS`, `GCP`, `AZURE` or `TENANT`.
+        defaultStatus:
+          type: string
+          description: Whether the version is the current default for the Instance Size
+            and Cloud Provider.
+        instanceSize:
+          $ref: "#/components/schemas/BaseCloudProviderInstanceSize"
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        version:
+          type: string
+          description: The MongoDB Major Version in question.
+          externalDocs:
+            description: MongoDB Versioning
+            url: https://www.mongodb.com/docs/manual/reference/versioning/
     MeasurementDiskPartition:
       type: object
       properties:
@@ -27596,6 +28314,81 @@ components:
             type: string
             readOnly: true
           readOnly: true
+    OrgServiceAccount:
+      type: object
+      properties:
+        createdAt:
+          type: string
+          format: date-time
+          description: Service account creation time.
+        description:
+          type: string
+          description: Description of the service account.
+        id:
+          type: string
+          description: ID for the service account.
+          pattern: ^mdb_sa_id_[a-fA-F\d]{24}$
+        name:
+          type: string
+          description: Name for service account.
+        roles:
+          type: array
+          description: Organization roles assigned to the Service Account.
+          items:
+            type: string
+          uniqueItems: true
+        secrets:
+          type: array
+          description: List of secrets.
+          items:
+            $ref: "#/components/schemas/ServiceAccountSecret"
+          uniqueItems: true
+    OrgServiceAccountRequest:
+      type: object
+      properties:
+        description:
+          type: string
+          description: Human readable description for the service account.
+          maxLength: 250
+          minLength: 1
+        name:
+          type: string
+          description: Human-readable name for the service account. The name is modifiable
+            and does not have to be unique.
+          maxLength: 64
+          minLength: 1
+        roles:
+          type: array
+          description: Organization roles associated with the service account.
+          items:
+            type: string
+        secretExpiresAfterHours:
+          type: integer
+          format: int32
+          description: Secret expiration time.
+      required:
+        - description
+        - name
+        - secretExpiresAfterHours
+    OrgServiceAccountUpdateRequest:
+      type: object
+      properties:
+        description:
+          type: string
+          description: Human readable description for the service account.
+          maxLength: 250
+          minLength: 1
+        name:
+          type: string
+          description: Human-readable name for the service account. The name is modifiable
+            and does not have to be unique.
+          maxLength: 64
+          minLength: 1
+        roles:
+          type: array
+          description: Organization roles associated with the Service account.
+          items:
+            type: string
     OrganizationInvitation:
       type: object
       properties:
@@ -27876,6 +28669,35 @@ components:
             if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
+    PaginatedGroupServiceAccounts:
+      type: object
+      description: List of Service Accounts
+      properties:
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        results:
+          type: array
+          description: List of returned documents that MongoDB Cloud providers when
+            completing this request.
+          items:
+            $ref: "#/components/schemas/GroupServiceAccount"
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
+          minimum: 0
+          readOnly: true
     PaginatedHostView_Atlas:
       type: object
       properties:
@@ -27896,6 +28718,64 @@ components:
             completing this request.
           items:
             $ref: "#/components/schemas/ApiHostView_Atlas"
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
+          minimum: 0
+          readOnly: true
+    PaginatedOrgServiceAccounts:
+      type: object
+      description: List of Service Accounts
+      properties:
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        results:
+          type: array
+          description: List of returned documents that MongoDB Cloud providers when
+            completing this request.
+          items:
+            $ref: "#/components/schemas/OrgServiceAccount"
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
+          minimum: 0
+          readOnly: true
+    PaginatedServiceAccountGroup:
+      type: object
+      description: List of Service Account projects.
+      properties:
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        results:
+          type: array
+          description: List of returned documents that MongoDB Cloud providers when
+            completing this request.
+          items:
+            $ref: "#/components/schemas/ServiceAccountGroup"
           readOnly: true
         totalCount:
           type: integer
@@ -28473,8 +29353,8 @@ components:
         groupId:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the project to
-            which this role belongs. You can set a value for this parameter or
-            **orgId** but not both in the same request.
+            which this role belongs. Each element within **roleAssignments** can
+            have a value for **groupId** or **orgId**, but not both.
           example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
@@ -28482,8 +29362,8 @@ components:
         orgId:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the organization
-            to which this role belongs. You can set a value for this parameter
-            or **groupId** but not both in the same request.
+            to which this role belongs. Each element within **roleAssignments**
+            can have a value for **orgId** or **groupId**, but not both.
           example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
@@ -28795,7 +29675,6 @@ components:
       properties:
         analyzer:
           type: string
-          default: lucene.standard
           description: Specific pre-defined method chosen to apply to the synonyms to be
             searched.
         name:
@@ -29356,6 +30235,65 @@ components:
           writeOnly: true
       required:
         - providerName
+    ServiceAccountGroup:
+      type: object
+      properties:
+        groupId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the project.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+    ServiceAccountSecret:
+      type: object
+      properties:
+        createdAt:
+          type: string
+          format: date-time
+          description: Timestamp representing creation time.
+          readOnly: true
+        expiresAt:
+          type: string
+          format: date-time
+          description: Timestamp representing secret expiration time.
+          readOnly: true
+        id:
+          type: string
+          description: Unique 24-hexadecimal character string that identifies the secret.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        lastUsedAt:
+          type: string
+          format: date-time
+          description: Timestamp representing last secret usage.
+          readOnly: true
+        maskedSecretValue:
+          type: string
+          description: Service Account secret with masked values of the first 20 characters.
+          example: mdb_ic_sk_xxxxxxxx-xxxx-xxxx-xxxxxxxx12ce
+          readOnly: true
+        secret:
+          type: string
+          description: Secret for the service account. It will be returned only the first
+            time after service account creation.
+          pattern: ^mdb_sa_sk_[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$
+          readOnly: true
+      required:
+        - createdAt
+        - expiresAt
+        - id
+    ServiceAccountSecretRequest:
+      type: object
+      properties:
+        secretExpiresAfterHours:
+          type: integer
+          format: int32
+          description: Number of hours representing validity duration for secret.
+      required:
+        - secretExpiresAfterHours
     ShardEntry:
       type: object
       description: Sharding configuration for a collection to be sharded on the
@@ -29530,6 +30468,8 @@ components:
           example:
             debug: queue, msg, protocol
             group.protocol.type: consumer
+        networking:
+          $ref: "#/components/schemas/StreamsKafkaNetworking"
         proxyInfo:
           $ref: "#/components/schemas/ProxyInfo"
         security:
@@ -29590,6 +30530,47 @@ components:
         username:
           type: string
           description: Username of the account to connect to the Kafka cluster.
+    StreamsKafkaNetworking:
+      type: object
+      description: Networking Access Type can either be 'PUBLIC' (default) or VPC. VPC
+        type is in public preview, please file a support ticket to enable VPC
+        Network Access
+      properties:
+        access:
+          $ref: "#/components/schemas/StreamsKafkaNetworkingAccess"
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+    StreamsKafkaNetworkingAccess:
+      type: object
+      description: Information about the networking access.
+      properties:
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        name:
+          type: string
+          description: Id of the vpc peer when the type is VPC.
+        type:
+          type: string
+          description: Selected networking type. Either PUBLIC or VPC. Defaults to PUBLIC
+          title: Networking Access Type
     StreamsKafkaSecurity:
       type: object
       description: Properties for the secure transport connection to Kafka. For SSL,
@@ -31690,6 +32671,34 @@ components:
             if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
+    PaginatedApiInvoiceMetadata:
+      type: object
+      properties:
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        results:
+          type: array
+          description: List of returned documents that MongoDB Cloud providers when
+            completing this request.
+          items:
+            $ref: "#/components/schemas/BillingInvoiceMetadata"
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
+          minimum: 0
+          readOnly: true
     PaginatedApiInvoice:
       type: object
       properties:
@@ -31850,6 +32859,34 @@ components:
             completing this request.
           items:
             $ref: "#/components/schemas/Group"
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
+          minimum: 0
+          readOnly: true
+    PaginatedAvailableVersion:
+      type: object
+      properties:
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        results:
+          type: array
+          description: List of returned documents that MongoDB Cloud providers when
+            completing this request.
+          items:
+            $ref: "#/components/schemas/MdbAvailableVersion"
           readOnly: true
         totalCount:
           type: integer

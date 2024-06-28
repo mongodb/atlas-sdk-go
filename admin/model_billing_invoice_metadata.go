@@ -7,8 +7,8 @@ import (
 	"time"
 )
 
-// BillingInvoice struct for BillingInvoice
-type BillingInvoice struct {
+// BillingInvoiceMetadata struct for BillingInvoiceMetadata
+type BillingInvoiceMetadata struct {
 	// Sum of services that the specified organization consumed in the period covered in this invoice. This parameter expresses its value in cents (100ths of one US Dollar).
 	// Read only field.
 	AmountBilledCents *int64 `json:"amountBilledCents,omitempty"`
@@ -27,24 +27,15 @@ type BillingInvoice struct {
 	// Unique 24-hexadecimal digit string that identifies the invoice submitted to the specified organization. Charges typically post the next day.
 	// Read only field.
 	Id *string `json:"id,omitempty"`
-	// List that contains individual services included in this invoice.
-	// Read only field.
-	LineItems *[]InvoiceLineItem `json:"lineItems,omitempty"`
 	// List that contains the invoices for organizations linked to the paying organization.
 	// Read only field.
-	LinkedInvoices *[]BillingInvoice `json:"linkedInvoices,omitempty"`
+	LinkedInvoices *[]BillingInvoiceMetadata `json:"linkedInvoices,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the organization charged for services consumed from MongoDB Cloud.
 	// Read only field.
 	OrgId *string `json:"orgId,omitempty"`
-	// List that contains funds transferred to MongoDB to cover the specified service noted in this invoice.
-	// Read only field.
-	Payments *[]BillingPayment `json:"payments,omitempty"`
-	// List that contains payments that MongoDB returned to the organization for this invoice.
-	// Read only field.
-	Refunds *[]BillingRefund `json:"refunds,omitempty"`
 	// Sum of sales tax applied to this invoice. This parameter expresses its value in cents (100ths of one US Dollar).
 	// Read only field.
 	SalesTaxCents *int64 `json:"salesTaxCents,omitempty"`
@@ -64,25 +55,25 @@ type BillingInvoice struct {
 	Updated *time.Time `json:"updated,omitempty"`
 }
 
-// NewBillingInvoice instantiates a new BillingInvoice object
+// NewBillingInvoiceMetadata instantiates a new BillingInvoiceMetadata object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBillingInvoice() *BillingInvoice {
-	this := BillingInvoice{}
+func NewBillingInvoiceMetadata() *BillingInvoiceMetadata {
+	this := BillingInvoiceMetadata{}
 	return &this
 }
 
-// NewBillingInvoiceWithDefaults instantiates a new BillingInvoice object
+// NewBillingInvoiceMetadataWithDefaults instantiates a new BillingInvoiceMetadata object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewBillingInvoiceWithDefaults() *BillingInvoice {
-	this := BillingInvoice{}
+func NewBillingInvoiceMetadataWithDefaults() *BillingInvoiceMetadata {
+	this := BillingInvoiceMetadata{}
 	return &this
 }
 
 // GetAmountBilledCents returns the AmountBilledCents field value if set, zero value otherwise
-func (o *BillingInvoice) GetAmountBilledCents() int64 {
+func (o *BillingInvoiceMetadata) GetAmountBilledCents() int64 {
 	if o == nil || IsNil(o.AmountBilledCents) {
 		var ret int64
 		return ret
@@ -92,7 +83,7 @@ func (o *BillingInvoice) GetAmountBilledCents() int64 {
 
 // GetAmountBilledCentsOk returns a tuple with the AmountBilledCents field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BillingInvoice) GetAmountBilledCentsOk() (*int64, bool) {
+func (o *BillingInvoiceMetadata) GetAmountBilledCentsOk() (*int64, bool) {
 	if o == nil || IsNil(o.AmountBilledCents) {
 		return nil, false
 	}
@@ -101,7 +92,7 @@ func (o *BillingInvoice) GetAmountBilledCentsOk() (*int64, bool) {
 }
 
 // HasAmountBilledCents returns a boolean if a field has been set.
-func (o *BillingInvoice) HasAmountBilledCents() bool {
+func (o *BillingInvoiceMetadata) HasAmountBilledCents() bool {
 	if o != nil && !IsNil(o.AmountBilledCents) {
 		return true
 	}
@@ -110,12 +101,12 @@ func (o *BillingInvoice) HasAmountBilledCents() bool {
 }
 
 // SetAmountBilledCents gets a reference to the given int64 and assigns it to the AmountBilledCents field.
-func (o *BillingInvoice) SetAmountBilledCents(v int64) {
+func (o *BillingInvoiceMetadata) SetAmountBilledCents(v int64) {
 	o.AmountBilledCents = &v
 }
 
 // GetAmountPaidCents returns the AmountPaidCents field value if set, zero value otherwise
-func (o *BillingInvoice) GetAmountPaidCents() int64 {
+func (o *BillingInvoiceMetadata) GetAmountPaidCents() int64 {
 	if o == nil || IsNil(o.AmountPaidCents) {
 		var ret int64
 		return ret
@@ -125,7 +116,7 @@ func (o *BillingInvoice) GetAmountPaidCents() int64 {
 
 // GetAmountPaidCentsOk returns a tuple with the AmountPaidCents field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BillingInvoice) GetAmountPaidCentsOk() (*int64, bool) {
+func (o *BillingInvoiceMetadata) GetAmountPaidCentsOk() (*int64, bool) {
 	if o == nil || IsNil(o.AmountPaidCents) {
 		return nil, false
 	}
@@ -134,7 +125,7 @@ func (o *BillingInvoice) GetAmountPaidCentsOk() (*int64, bool) {
 }
 
 // HasAmountPaidCents returns a boolean if a field has been set.
-func (o *BillingInvoice) HasAmountPaidCents() bool {
+func (o *BillingInvoiceMetadata) HasAmountPaidCents() bool {
 	if o != nil && !IsNil(o.AmountPaidCents) {
 		return true
 	}
@@ -143,12 +134,12 @@ func (o *BillingInvoice) HasAmountPaidCents() bool {
 }
 
 // SetAmountPaidCents gets a reference to the given int64 and assigns it to the AmountPaidCents field.
-func (o *BillingInvoice) SetAmountPaidCents(v int64) {
+func (o *BillingInvoiceMetadata) SetAmountPaidCents(v int64) {
 	o.AmountPaidCents = &v
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise
-func (o *BillingInvoice) GetCreated() time.Time {
+func (o *BillingInvoiceMetadata) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created) {
 		var ret time.Time
 		return ret
@@ -158,7 +149,7 @@ func (o *BillingInvoice) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BillingInvoice) GetCreatedOk() (*time.Time, bool) {
+func (o *BillingInvoiceMetadata) GetCreatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -167,7 +158,7 @@ func (o *BillingInvoice) GetCreatedOk() (*time.Time, bool) {
 }
 
 // HasCreated returns a boolean if a field has been set.
-func (o *BillingInvoice) HasCreated() bool {
+func (o *BillingInvoiceMetadata) HasCreated() bool {
 	if o != nil && !IsNil(o.Created) {
 		return true
 	}
@@ -176,12 +167,12 @@ func (o *BillingInvoice) HasCreated() bool {
 }
 
 // SetCreated gets a reference to the given time.Time and assigns it to the Created field.
-func (o *BillingInvoice) SetCreated(v time.Time) {
+func (o *BillingInvoiceMetadata) SetCreated(v time.Time) {
 	o.Created = &v
 }
 
 // GetCreditsCents returns the CreditsCents field value if set, zero value otherwise
-func (o *BillingInvoice) GetCreditsCents() int64 {
+func (o *BillingInvoiceMetadata) GetCreditsCents() int64 {
 	if o == nil || IsNil(o.CreditsCents) {
 		var ret int64
 		return ret
@@ -191,7 +182,7 @@ func (o *BillingInvoice) GetCreditsCents() int64 {
 
 // GetCreditsCentsOk returns a tuple with the CreditsCents field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BillingInvoice) GetCreditsCentsOk() (*int64, bool) {
+func (o *BillingInvoiceMetadata) GetCreditsCentsOk() (*int64, bool) {
 	if o == nil || IsNil(o.CreditsCents) {
 		return nil, false
 	}
@@ -200,7 +191,7 @@ func (o *BillingInvoice) GetCreditsCentsOk() (*int64, bool) {
 }
 
 // HasCreditsCents returns a boolean if a field has been set.
-func (o *BillingInvoice) HasCreditsCents() bool {
+func (o *BillingInvoiceMetadata) HasCreditsCents() bool {
 	if o != nil && !IsNil(o.CreditsCents) {
 		return true
 	}
@@ -209,12 +200,12 @@ func (o *BillingInvoice) HasCreditsCents() bool {
 }
 
 // SetCreditsCents gets a reference to the given int64 and assigns it to the CreditsCents field.
-func (o *BillingInvoice) SetCreditsCents(v int64) {
+func (o *BillingInvoiceMetadata) SetCreditsCents(v int64) {
 	o.CreditsCents = &v
 }
 
 // GetEndDate returns the EndDate field value if set, zero value otherwise
-func (o *BillingInvoice) GetEndDate() time.Time {
+func (o *BillingInvoiceMetadata) GetEndDate() time.Time {
 	if o == nil || IsNil(o.EndDate) {
 		var ret time.Time
 		return ret
@@ -224,7 +215,7 @@ func (o *BillingInvoice) GetEndDate() time.Time {
 
 // GetEndDateOk returns a tuple with the EndDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BillingInvoice) GetEndDateOk() (*time.Time, bool) {
+func (o *BillingInvoiceMetadata) GetEndDateOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.EndDate) {
 		return nil, false
 	}
@@ -233,7 +224,7 @@ func (o *BillingInvoice) GetEndDateOk() (*time.Time, bool) {
 }
 
 // HasEndDate returns a boolean if a field has been set.
-func (o *BillingInvoice) HasEndDate() bool {
+func (o *BillingInvoiceMetadata) HasEndDate() bool {
 	if o != nil && !IsNil(o.EndDate) {
 		return true
 	}
@@ -242,12 +233,12 @@ func (o *BillingInvoice) HasEndDate() bool {
 }
 
 // SetEndDate gets a reference to the given time.Time and assigns it to the EndDate field.
-func (o *BillingInvoice) SetEndDate(v time.Time) {
+func (o *BillingInvoiceMetadata) SetEndDate(v time.Time) {
 	o.EndDate = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise
-func (o *BillingInvoice) GetId() string {
+func (o *BillingInvoiceMetadata) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
@@ -257,7 +248,7 @@ func (o *BillingInvoice) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BillingInvoice) GetIdOk() (*string, bool) {
+func (o *BillingInvoiceMetadata) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -266,7 +257,7 @@ func (o *BillingInvoice) GetIdOk() (*string, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *BillingInvoice) HasId() bool {
+func (o *BillingInvoiceMetadata) HasId() bool {
 	if o != nil && !IsNil(o.Id) {
 		return true
 	}
@@ -275,47 +266,14 @@ func (o *BillingInvoice) HasId() bool {
 }
 
 // SetId gets a reference to the given string and assigns it to the Id field.
-func (o *BillingInvoice) SetId(v string) {
+func (o *BillingInvoiceMetadata) SetId(v string) {
 	o.Id = &v
 }
 
-// GetLineItems returns the LineItems field value if set, zero value otherwise
-func (o *BillingInvoice) GetLineItems() []InvoiceLineItem {
-	if o == nil || IsNil(o.LineItems) {
-		var ret []InvoiceLineItem
-		return ret
-	}
-	return *o.LineItems
-}
-
-// GetLineItemsOk returns a tuple with the LineItems field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BillingInvoice) GetLineItemsOk() (*[]InvoiceLineItem, bool) {
-	if o == nil || IsNil(o.LineItems) {
-		return nil, false
-	}
-
-	return o.LineItems, true
-}
-
-// HasLineItems returns a boolean if a field has been set.
-func (o *BillingInvoice) HasLineItems() bool {
-	if o != nil && !IsNil(o.LineItems) {
-		return true
-	}
-
-	return false
-}
-
-// SetLineItems gets a reference to the given []InvoiceLineItem and assigns it to the LineItems field.
-func (o *BillingInvoice) SetLineItems(v []InvoiceLineItem) {
-	o.LineItems = &v
-}
-
 // GetLinkedInvoices returns the LinkedInvoices field value if set, zero value otherwise
-func (o *BillingInvoice) GetLinkedInvoices() []BillingInvoice {
+func (o *BillingInvoiceMetadata) GetLinkedInvoices() []BillingInvoiceMetadata {
 	if o == nil || IsNil(o.LinkedInvoices) {
-		var ret []BillingInvoice
+		var ret []BillingInvoiceMetadata
 		return ret
 	}
 	return *o.LinkedInvoices
@@ -323,7 +281,7 @@ func (o *BillingInvoice) GetLinkedInvoices() []BillingInvoice {
 
 // GetLinkedInvoicesOk returns a tuple with the LinkedInvoices field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BillingInvoice) GetLinkedInvoicesOk() (*[]BillingInvoice, bool) {
+func (o *BillingInvoiceMetadata) GetLinkedInvoicesOk() (*[]BillingInvoiceMetadata, bool) {
 	if o == nil || IsNil(o.LinkedInvoices) {
 		return nil, false
 	}
@@ -332,7 +290,7 @@ func (o *BillingInvoice) GetLinkedInvoicesOk() (*[]BillingInvoice, bool) {
 }
 
 // HasLinkedInvoices returns a boolean if a field has been set.
-func (o *BillingInvoice) HasLinkedInvoices() bool {
+func (o *BillingInvoiceMetadata) HasLinkedInvoices() bool {
 	if o != nil && !IsNil(o.LinkedInvoices) {
 		return true
 	}
@@ -340,13 +298,13 @@ func (o *BillingInvoice) HasLinkedInvoices() bool {
 	return false
 }
 
-// SetLinkedInvoices gets a reference to the given []BillingInvoice and assigns it to the LinkedInvoices field.
-func (o *BillingInvoice) SetLinkedInvoices(v []BillingInvoice) {
+// SetLinkedInvoices gets a reference to the given []BillingInvoiceMetadata and assigns it to the LinkedInvoices field.
+func (o *BillingInvoiceMetadata) SetLinkedInvoices(v []BillingInvoiceMetadata) {
 	o.LinkedInvoices = &v
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
-func (o *BillingInvoice) GetLinks() []Link {
+func (o *BillingInvoiceMetadata) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
 		return ret
@@ -356,7 +314,7 @@ func (o *BillingInvoice) GetLinks() []Link {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BillingInvoice) GetLinksOk() (*[]Link, bool) {
+func (o *BillingInvoiceMetadata) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -365,7 +323,7 @@ func (o *BillingInvoice) GetLinksOk() (*[]Link, bool) {
 }
 
 // HasLinks returns a boolean if a field has been set.
-func (o *BillingInvoice) HasLinks() bool {
+func (o *BillingInvoiceMetadata) HasLinks() bool {
 	if o != nil && !IsNil(o.Links) {
 		return true
 	}
@@ -374,12 +332,12 @@ func (o *BillingInvoice) HasLinks() bool {
 }
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
-func (o *BillingInvoice) SetLinks(v []Link) {
+func (o *BillingInvoiceMetadata) SetLinks(v []Link) {
 	o.Links = &v
 }
 
 // GetOrgId returns the OrgId field value if set, zero value otherwise
-func (o *BillingInvoice) GetOrgId() string {
+func (o *BillingInvoiceMetadata) GetOrgId() string {
 	if o == nil || IsNil(o.OrgId) {
 		var ret string
 		return ret
@@ -389,7 +347,7 @@ func (o *BillingInvoice) GetOrgId() string {
 
 // GetOrgIdOk returns a tuple with the OrgId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BillingInvoice) GetOrgIdOk() (*string, bool) {
+func (o *BillingInvoiceMetadata) GetOrgIdOk() (*string, bool) {
 	if o == nil || IsNil(o.OrgId) {
 		return nil, false
 	}
@@ -398,7 +356,7 @@ func (o *BillingInvoice) GetOrgIdOk() (*string, bool) {
 }
 
 // HasOrgId returns a boolean if a field has been set.
-func (o *BillingInvoice) HasOrgId() bool {
+func (o *BillingInvoiceMetadata) HasOrgId() bool {
 	if o != nil && !IsNil(o.OrgId) {
 		return true
 	}
@@ -407,78 +365,12 @@ func (o *BillingInvoice) HasOrgId() bool {
 }
 
 // SetOrgId gets a reference to the given string and assigns it to the OrgId field.
-func (o *BillingInvoice) SetOrgId(v string) {
+func (o *BillingInvoiceMetadata) SetOrgId(v string) {
 	o.OrgId = &v
 }
 
-// GetPayments returns the Payments field value if set, zero value otherwise
-func (o *BillingInvoice) GetPayments() []BillingPayment {
-	if o == nil || IsNil(o.Payments) {
-		var ret []BillingPayment
-		return ret
-	}
-	return *o.Payments
-}
-
-// GetPaymentsOk returns a tuple with the Payments field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BillingInvoice) GetPaymentsOk() (*[]BillingPayment, bool) {
-	if o == nil || IsNil(o.Payments) {
-		return nil, false
-	}
-
-	return o.Payments, true
-}
-
-// HasPayments returns a boolean if a field has been set.
-func (o *BillingInvoice) HasPayments() bool {
-	if o != nil && !IsNil(o.Payments) {
-		return true
-	}
-
-	return false
-}
-
-// SetPayments gets a reference to the given []BillingPayment and assigns it to the Payments field.
-func (o *BillingInvoice) SetPayments(v []BillingPayment) {
-	o.Payments = &v
-}
-
-// GetRefunds returns the Refunds field value if set, zero value otherwise
-func (o *BillingInvoice) GetRefunds() []BillingRefund {
-	if o == nil || IsNil(o.Refunds) {
-		var ret []BillingRefund
-		return ret
-	}
-	return *o.Refunds
-}
-
-// GetRefundsOk returns a tuple with the Refunds field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BillingInvoice) GetRefundsOk() (*[]BillingRefund, bool) {
-	if o == nil || IsNil(o.Refunds) {
-		return nil, false
-	}
-
-	return o.Refunds, true
-}
-
-// HasRefunds returns a boolean if a field has been set.
-func (o *BillingInvoice) HasRefunds() bool {
-	if o != nil && !IsNil(o.Refunds) {
-		return true
-	}
-
-	return false
-}
-
-// SetRefunds gets a reference to the given []BillingRefund and assigns it to the Refunds field.
-func (o *BillingInvoice) SetRefunds(v []BillingRefund) {
-	o.Refunds = &v
-}
-
 // GetSalesTaxCents returns the SalesTaxCents field value if set, zero value otherwise
-func (o *BillingInvoice) GetSalesTaxCents() int64 {
+func (o *BillingInvoiceMetadata) GetSalesTaxCents() int64 {
 	if o == nil || IsNil(o.SalesTaxCents) {
 		var ret int64
 		return ret
@@ -488,7 +380,7 @@ func (o *BillingInvoice) GetSalesTaxCents() int64 {
 
 // GetSalesTaxCentsOk returns a tuple with the SalesTaxCents field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BillingInvoice) GetSalesTaxCentsOk() (*int64, bool) {
+func (o *BillingInvoiceMetadata) GetSalesTaxCentsOk() (*int64, bool) {
 	if o == nil || IsNil(o.SalesTaxCents) {
 		return nil, false
 	}
@@ -497,7 +389,7 @@ func (o *BillingInvoice) GetSalesTaxCentsOk() (*int64, bool) {
 }
 
 // HasSalesTaxCents returns a boolean if a field has been set.
-func (o *BillingInvoice) HasSalesTaxCents() bool {
+func (o *BillingInvoiceMetadata) HasSalesTaxCents() bool {
 	if o != nil && !IsNil(o.SalesTaxCents) {
 		return true
 	}
@@ -506,12 +398,12 @@ func (o *BillingInvoice) HasSalesTaxCents() bool {
 }
 
 // SetSalesTaxCents gets a reference to the given int64 and assigns it to the SalesTaxCents field.
-func (o *BillingInvoice) SetSalesTaxCents(v int64) {
+func (o *BillingInvoiceMetadata) SetSalesTaxCents(v int64) {
 	o.SalesTaxCents = &v
 }
 
 // GetStartDate returns the StartDate field value if set, zero value otherwise
-func (o *BillingInvoice) GetStartDate() time.Time {
+func (o *BillingInvoiceMetadata) GetStartDate() time.Time {
 	if o == nil || IsNil(o.StartDate) {
 		var ret time.Time
 		return ret
@@ -521,7 +413,7 @@ func (o *BillingInvoice) GetStartDate() time.Time {
 
 // GetStartDateOk returns a tuple with the StartDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BillingInvoice) GetStartDateOk() (*time.Time, bool) {
+func (o *BillingInvoiceMetadata) GetStartDateOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.StartDate) {
 		return nil, false
 	}
@@ -530,7 +422,7 @@ func (o *BillingInvoice) GetStartDateOk() (*time.Time, bool) {
 }
 
 // HasStartDate returns a boolean if a field has been set.
-func (o *BillingInvoice) HasStartDate() bool {
+func (o *BillingInvoiceMetadata) HasStartDate() bool {
 	if o != nil && !IsNil(o.StartDate) {
 		return true
 	}
@@ -539,12 +431,12 @@ func (o *BillingInvoice) HasStartDate() bool {
 }
 
 // SetStartDate gets a reference to the given time.Time and assigns it to the StartDate field.
-func (o *BillingInvoice) SetStartDate(v time.Time) {
+func (o *BillingInvoiceMetadata) SetStartDate(v time.Time) {
 	o.StartDate = &v
 }
 
 // GetStartingBalanceCents returns the StartingBalanceCents field value if set, zero value otherwise
-func (o *BillingInvoice) GetStartingBalanceCents() int64 {
+func (o *BillingInvoiceMetadata) GetStartingBalanceCents() int64 {
 	if o == nil || IsNil(o.StartingBalanceCents) {
 		var ret int64
 		return ret
@@ -554,7 +446,7 @@ func (o *BillingInvoice) GetStartingBalanceCents() int64 {
 
 // GetStartingBalanceCentsOk returns a tuple with the StartingBalanceCents field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BillingInvoice) GetStartingBalanceCentsOk() (*int64, bool) {
+func (o *BillingInvoiceMetadata) GetStartingBalanceCentsOk() (*int64, bool) {
 	if o == nil || IsNil(o.StartingBalanceCents) {
 		return nil, false
 	}
@@ -563,7 +455,7 @@ func (o *BillingInvoice) GetStartingBalanceCentsOk() (*int64, bool) {
 }
 
 // HasStartingBalanceCents returns a boolean if a field has been set.
-func (o *BillingInvoice) HasStartingBalanceCents() bool {
+func (o *BillingInvoiceMetadata) HasStartingBalanceCents() bool {
 	if o != nil && !IsNil(o.StartingBalanceCents) {
 		return true
 	}
@@ -572,12 +464,12 @@ func (o *BillingInvoice) HasStartingBalanceCents() bool {
 }
 
 // SetStartingBalanceCents gets a reference to the given int64 and assigns it to the StartingBalanceCents field.
-func (o *BillingInvoice) SetStartingBalanceCents(v int64) {
+func (o *BillingInvoiceMetadata) SetStartingBalanceCents(v int64) {
 	o.StartingBalanceCents = &v
 }
 
 // GetStatusName returns the StatusName field value if set, zero value otherwise
-func (o *BillingInvoice) GetStatusName() string {
+func (o *BillingInvoiceMetadata) GetStatusName() string {
 	if o == nil || IsNil(o.StatusName) {
 		var ret string
 		return ret
@@ -587,7 +479,7 @@ func (o *BillingInvoice) GetStatusName() string {
 
 // GetStatusNameOk returns a tuple with the StatusName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BillingInvoice) GetStatusNameOk() (*string, bool) {
+func (o *BillingInvoiceMetadata) GetStatusNameOk() (*string, bool) {
 	if o == nil || IsNil(o.StatusName) {
 		return nil, false
 	}
@@ -596,7 +488,7 @@ func (o *BillingInvoice) GetStatusNameOk() (*string, bool) {
 }
 
 // HasStatusName returns a boolean if a field has been set.
-func (o *BillingInvoice) HasStatusName() bool {
+func (o *BillingInvoiceMetadata) HasStatusName() bool {
 	if o != nil && !IsNil(o.StatusName) {
 		return true
 	}
@@ -605,12 +497,12 @@ func (o *BillingInvoice) HasStatusName() bool {
 }
 
 // SetStatusName gets a reference to the given string and assigns it to the StatusName field.
-func (o *BillingInvoice) SetStatusName(v string) {
+func (o *BillingInvoiceMetadata) SetStatusName(v string) {
 	o.StatusName = &v
 }
 
 // GetSubtotalCents returns the SubtotalCents field value if set, zero value otherwise
-func (o *BillingInvoice) GetSubtotalCents() int64 {
+func (o *BillingInvoiceMetadata) GetSubtotalCents() int64 {
 	if o == nil || IsNil(o.SubtotalCents) {
 		var ret int64
 		return ret
@@ -620,7 +512,7 @@ func (o *BillingInvoice) GetSubtotalCents() int64 {
 
 // GetSubtotalCentsOk returns a tuple with the SubtotalCents field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BillingInvoice) GetSubtotalCentsOk() (*int64, bool) {
+func (o *BillingInvoiceMetadata) GetSubtotalCentsOk() (*int64, bool) {
 	if o == nil || IsNil(o.SubtotalCents) {
 		return nil, false
 	}
@@ -629,7 +521,7 @@ func (o *BillingInvoice) GetSubtotalCentsOk() (*int64, bool) {
 }
 
 // HasSubtotalCents returns a boolean if a field has been set.
-func (o *BillingInvoice) HasSubtotalCents() bool {
+func (o *BillingInvoiceMetadata) HasSubtotalCents() bool {
 	if o != nil && !IsNil(o.SubtotalCents) {
 		return true
 	}
@@ -638,12 +530,12 @@ func (o *BillingInvoice) HasSubtotalCents() bool {
 }
 
 // SetSubtotalCents gets a reference to the given int64 and assigns it to the SubtotalCents field.
-func (o *BillingInvoice) SetSubtotalCents(v int64) {
+func (o *BillingInvoiceMetadata) SetSubtotalCents(v int64) {
 	o.SubtotalCents = &v
 }
 
 // GetUpdated returns the Updated field value if set, zero value otherwise
-func (o *BillingInvoice) GetUpdated() time.Time {
+func (o *BillingInvoiceMetadata) GetUpdated() time.Time {
 	if o == nil || IsNil(o.Updated) {
 		var ret time.Time
 		return ret
@@ -653,7 +545,7 @@ func (o *BillingInvoice) GetUpdated() time.Time {
 
 // GetUpdatedOk returns a tuple with the Updated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BillingInvoice) GetUpdatedOk() (*time.Time, bool) {
+func (o *BillingInvoiceMetadata) GetUpdatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Updated) {
 		return nil, false
 	}
@@ -662,7 +554,7 @@ func (o *BillingInvoice) GetUpdatedOk() (*time.Time, bool) {
 }
 
 // HasUpdated returns a boolean if a field has been set.
-func (o *BillingInvoice) HasUpdated() bool {
+func (o *BillingInvoiceMetadata) HasUpdated() bool {
 	if o != nil && !IsNil(o.Updated) {
 		return true
 	}
@@ -671,18 +563,18 @@ func (o *BillingInvoice) HasUpdated() bool {
 }
 
 // SetUpdated gets a reference to the given time.Time and assigns it to the Updated field.
-func (o *BillingInvoice) SetUpdated(v time.Time) {
+func (o *BillingInvoiceMetadata) SetUpdated(v time.Time) {
 	o.Updated = &v
 }
 
-func (o BillingInvoice) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o BillingInvoiceMetadata) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o BillingInvoice) ToMap() (map[string]interface{}, error) {
+func (o BillingInvoiceMetadata) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.StatusName) {
 		toSerialize["statusName"] = o.StatusName
