@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20240530001/admin"
+	admin "go.mongodb.org/atlas-sdk/v20240530002/admin"
 
 	http "net/http"
 
@@ -564,24 +564,24 @@ func (_c *DataFederationApi_DeleteDataFederationPrivateEndpoint_Call) RunAndRetu
 }
 
 // DeleteDataFederationPrivateEndpointExecute provides a mock function with given fields: r
-func (_m *DataFederationApi) DeleteDataFederationPrivateEndpointExecute(r admin.DeleteDataFederationPrivateEndpointApiRequest) (map[string]interface{}, *http.Response, error) {
+func (_m *DataFederationApi) DeleteDataFederationPrivateEndpointExecute(r admin.DeleteDataFederationPrivateEndpointApiRequest) (interface{}, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteDataFederationPrivateEndpointExecute")
 	}
 
-	var r0 map[string]interface{}
+	var r0 interface{}
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteDataFederationPrivateEndpointApiRequest) (map[string]interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteDataFederationPrivateEndpointApiRequest) (interface{}, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteDataFederationPrivateEndpointApiRequest) map[string]interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteDataFederationPrivateEndpointApiRequest) interface{}); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(map[string]interface{})
+			r0 = ret.Get(0).(interface{})
 		}
 	}
 
@@ -620,12 +620,12 @@ func (_c *DataFederationApi_DeleteDataFederationPrivateEndpointExecute_Call) Run
 	return _c
 }
 
-func (_c *DataFederationApi_DeleteDataFederationPrivateEndpointExecute_Call) Return(_a0 map[string]interface{}, _a1 *http.Response, _a2 error) *DataFederationApi_DeleteDataFederationPrivateEndpointExecute_Call {
+func (_c *DataFederationApi_DeleteDataFederationPrivateEndpointExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *DataFederationApi_DeleteDataFederationPrivateEndpointExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *DataFederationApi_DeleteDataFederationPrivateEndpointExecute_Call) RunAndReturn(run func(admin.DeleteDataFederationPrivateEndpointApiRequest) (map[string]interface{}, *http.Response, error)) *DataFederationApi_DeleteDataFederationPrivateEndpointExecute_Call {
+func (_c *DataFederationApi_DeleteDataFederationPrivateEndpointExecute_Call) RunAndReturn(run func(admin.DeleteDataFederationPrivateEndpointApiRequest) (interface{}, *http.Response, error)) *DataFederationApi_DeleteDataFederationPrivateEndpointExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -726,24 +726,24 @@ func (_c *DataFederationApi_DeleteFederatedDatabase_Call) RunAndReturn(run func(
 }
 
 // DeleteFederatedDatabaseExecute provides a mock function with given fields: r
-func (_m *DataFederationApi) DeleteFederatedDatabaseExecute(r admin.DeleteFederatedDatabaseApiRequest) (map[string]interface{}, *http.Response, error) {
+func (_m *DataFederationApi) DeleteFederatedDatabaseExecute(r admin.DeleteFederatedDatabaseApiRequest) (interface{}, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteFederatedDatabaseExecute")
 	}
 
-	var r0 map[string]interface{}
+	var r0 interface{}
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteFederatedDatabaseApiRequest) (map[string]interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteFederatedDatabaseApiRequest) (interface{}, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteFederatedDatabaseApiRequest) map[string]interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteFederatedDatabaseApiRequest) interface{}); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(map[string]interface{})
+			r0 = ret.Get(0).(interface{})
 		}
 	}
 
@@ -782,12 +782,12 @@ func (_c *DataFederationApi_DeleteFederatedDatabaseExecute_Call) Run(run func(r 
 	return _c
 }
 
-func (_c *DataFederationApi_DeleteFederatedDatabaseExecute_Call) Return(_a0 map[string]interface{}, _a1 *http.Response, _a2 error) *DataFederationApi_DeleteFederatedDatabaseExecute_Call {
+func (_c *DataFederationApi_DeleteFederatedDatabaseExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *DataFederationApi_DeleteFederatedDatabaseExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *DataFederationApi_DeleteFederatedDatabaseExecute_Call) RunAndReturn(run func(admin.DeleteFederatedDatabaseApiRequest) (map[string]interface{}, *http.Response, error)) *DataFederationApi_DeleteFederatedDatabaseExecute_Call {
+func (_c *DataFederationApi_DeleteFederatedDatabaseExecute_Call) RunAndReturn(run func(admin.DeleteFederatedDatabaseApiRequest) (interface{}, *http.Response, error)) *DataFederationApi_DeleteFederatedDatabaseExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -889,24 +889,24 @@ func (_c *DataFederationApi_DeleteOneDataFederationInstanceQueryLimit_Call) RunA
 }
 
 // DeleteOneDataFederationInstanceQueryLimitExecute provides a mock function with given fields: r
-func (_m *DataFederationApi) DeleteOneDataFederationInstanceQueryLimitExecute(r admin.DeleteOneDataFederationInstanceQueryLimitApiRequest) (map[string]interface{}, *http.Response, error) {
+func (_m *DataFederationApi) DeleteOneDataFederationInstanceQueryLimitExecute(r admin.DeleteOneDataFederationInstanceQueryLimitApiRequest) (interface{}, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteOneDataFederationInstanceQueryLimitExecute")
 	}
 
-	var r0 map[string]interface{}
+	var r0 interface{}
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteOneDataFederationInstanceQueryLimitApiRequest) (map[string]interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteOneDataFederationInstanceQueryLimitApiRequest) (interface{}, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteOneDataFederationInstanceQueryLimitApiRequest) map[string]interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteOneDataFederationInstanceQueryLimitApiRequest) interface{}); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(map[string]interface{})
+			r0 = ret.Get(0).(interface{})
 		}
 	}
 
@@ -945,12 +945,12 @@ func (_c *DataFederationApi_DeleteOneDataFederationInstanceQueryLimitExecute_Cal
 	return _c
 }
 
-func (_c *DataFederationApi_DeleteOneDataFederationInstanceQueryLimitExecute_Call) Return(_a0 map[string]interface{}, _a1 *http.Response, _a2 error) *DataFederationApi_DeleteOneDataFederationInstanceQueryLimitExecute_Call {
+func (_c *DataFederationApi_DeleteOneDataFederationInstanceQueryLimitExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *DataFederationApi_DeleteOneDataFederationInstanceQueryLimitExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *DataFederationApi_DeleteOneDataFederationInstanceQueryLimitExecute_Call) RunAndReturn(run func(admin.DeleteOneDataFederationInstanceQueryLimitApiRequest) (map[string]interface{}, *http.Response, error)) *DataFederationApi_DeleteOneDataFederationInstanceQueryLimitExecute_Call {
+func (_c *DataFederationApi_DeleteOneDataFederationInstanceQueryLimitExecute_Call) RunAndReturn(run func(admin.DeleteOneDataFederationInstanceQueryLimitApiRequest) (interface{}, *http.Response, error)) *DataFederationApi_DeleteOneDataFederationInstanceQueryLimitExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }

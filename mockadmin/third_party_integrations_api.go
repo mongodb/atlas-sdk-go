@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20240530001/admin"
+	admin "go.mongodb.org/atlas-sdk/v20240530002/admin"
 
 	http "net/http"
 
@@ -237,24 +237,24 @@ func (_c *ThirdPartyIntegrationsApi_DeleteThirdPartyIntegration_Call) RunAndRetu
 }
 
 // DeleteThirdPartyIntegrationExecute provides a mock function with given fields: r
-func (_m *ThirdPartyIntegrationsApi) DeleteThirdPartyIntegrationExecute(r admin.DeleteThirdPartyIntegrationApiRequest) (map[string]interface{}, *http.Response, error) {
+func (_m *ThirdPartyIntegrationsApi) DeleteThirdPartyIntegrationExecute(r admin.DeleteThirdPartyIntegrationApiRequest) (interface{}, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteThirdPartyIntegrationExecute")
 	}
 
-	var r0 map[string]interface{}
+	var r0 interface{}
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteThirdPartyIntegrationApiRequest) (map[string]interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteThirdPartyIntegrationApiRequest) (interface{}, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteThirdPartyIntegrationApiRequest) map[string]interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteThirdPartyIntegrationApiRequest) interface{}); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(map[string]interface{})
+			r0 = ret.Get(0).(interface{})
 		}
 	}
 
@@ -293,12 +293,12 @@ func (_c *ThirdPartyIntegrationsApi_DeleteThirdPartyIntegrationExecute_Call) Run
 	return _c
 }
 
-func (_c *ThirdPartyIntegrationsApi_DeleteThirdPartyIntegrationExecute_Call) Return(_a0 map[string]interface{}, _a1 *http.Response, _a2 error) *ThirdPartyIntegrationsApi_DeleteThirdPartyIntegrationExecute_Call {
+func (_c *ThirdPartyIntegrationsApi_DeleteThirdPartyIntegrationExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *ThirdPartyIntegrationsApi_DeleteThirdPartyIntegrationExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ThirdPartyIntegrationsApi_DeleteThirdPartyIntegrationExecute_Call) RunAndReturn(run func(admin.DeleteThirdPartyIntegrationApiRequest) (map[string]interface{}, *http.Response, error)) *ThirdPartyIntegrationsApi_DeleteThirdPartyIntegrationExecute_Call {
+func (_c *ThirdPartyIntegrationsApi_DeleteThirdPartyIntegrationExecute_Call) RunAndReturn(run func(admin.DeleteThirdPartyIntegrationApiRequest) (interface{}, *http.Response, error)) *ThirdPartyIntegrationsApi_DeleteThirdPartyIntegrationExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }

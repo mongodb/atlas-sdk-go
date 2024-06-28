@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20240530001/admin"
+	admin "go.mongodb.org/atlas-sdk/v20240530002/admin"
 
 	http "net/http"
 
@@ -773,24 +773,24 @@ func (_c *ProgrammaticAPIKeysApi_DeleteApiKeyAccessListEntry_Call) RunAndReturn(
 }
 
 // DeleteApiKeyAccessListEntryExecute provides a mock function with given fields: r
-func (_m *ProgrammaticAPIKeysApi) DeleteApiKeyAccessListEntryExecute(r admin.DeleteApiKeyAccessListEntryApiRequest) (map[string]interface{}, *http.Response, error) {
+func (_m *ProgrammaticAPIKeysApi) DeleteApiKeyAccessListEntryExecute(r admin.DeleteApiKeyAccessListEntryApiRequest) (interface{}, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteApiKeyAccessListEntryExecute")
 	}
 
-	var r0 map[string]interface{}
+	var r0 interface{}
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteApiKeyAccessListEntryApiRequest) (map[string]interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteApiKeyAccessListEntryApiRequest) (interface{}, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteApiKeyAccessListEntryApiRequest) map[string]interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteApiKeyAccessListEntryApiRequest) interface{}); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(map[string]interface{})
+			r0 = ret.Get(0).(interface{})
 		}
 	}
 
@@ -829,12 +829,12 @@ func (_c *ProgrammaticAPIKeysApi_DeleteApiKeyAccessListEntryExecute_Call) Run(ru
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_DeleteApiKeyAccessListEntryExecute_Call) Return(_a0 map[string]interface{}, _a1 *http.Response, _a2 error) *ProgrammaticAPIKeysApi_DeleteApiKeyAccessListEntryExecute_Call {
+func (_c *ProgrammaticAPIKeysApi_DeleteApiKeyAccessListEntryExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *ProgrammaticAPIKeysApi_DeleteApiKeyAccessListEntryExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_DeleteApiKeyAccessListEntryExecute_Call) RunAndReturn(run func(admin.DeleteApiKeyAccessListEntryApiRequest) (map[string]interface{}, *http.Response, error)) *ProgrammaticAPIKeysApi_DeleteApiKeyAccessListEntryExecute_Call {
+func (_c *ProgrammaticAPIKeysApi_DeleteApiKeyAccessListEntryExecute_Call) RunAndReturn(run func(admin.DeleteApiKeyAccessListEntryApiRequest) (interface{}, *http.Response, error)) *ProgrammaticAPIKeysApi_DeleteApiKeyAccessListEntryExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -887,24 +887,24 @@ func (_c *ProgrammaticAPIKeysApi_DeleteApiKeyAccessListEntryWithParams_Call) Run
 }
 
 // DeleteApiKeyExecute provides a mock function with given fields: r
-func (_m *ProgrammaticAPIKeysApi) DeleteApiKeyExecute(r admin.DeleteApiKeyApiRequest) (map[string]interface{}, *http.Response, error) {
+func (_m *ProgrammaticAPIKeysApi) DeleteApiKeyExecute(r admin.DeleteApiKeyApiRequest) (interface{}, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteApiKeyExecute")
 	}
 
-	var r0 map[string]interface{}
+	var r0 interface{}
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteApiKeyApiRequest) (map[string]interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteApiKeyApiRequest) (interface{}, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteApiKeyApiRequest) map[string]interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteApiKeyApiRequest) interface{}); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(map[string]interface{})
+			r0 = ret.Get(0).(interface{})
 		}
 	}
 
@@ -943,12 +943,12 @@ func (_c *ProgrammaticAPIKeysApi_DeleteApiKeyExecute_Call) Run(run func(r admin.
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_DeleteApiKeyExecute_Call) Return(_a0 map[string]interface{}, _a1 *http.Response, _a2 error) *ProgrammaticAPIKeysApi_DeleteApiKeyExecute_Call {
+func (_c *ProgrammaticAPIKeysApi_DeleteApiKeyExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *ProgrammaticAPIKeysApi_DeleteApiKeyExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_DeleteApiKeyExecute_Call) RunAndReturn(run func(admin.DeleteApiKeyApiRequest) (map[string]interface{}, *http.Response, error)) *ProgrammaticAPIKeysApi_DeleteApiKeyExecute_Call {
+func (_c *ProgrammaticAPIKeysApi_DeleteApiKeyExecute_Call) RunAndReturn(run func(admin.DeleteApiKeyApiRequest) (interface{}, *http.Response, error)) *ProgrammaticAPIKeysApi_DeleteApiKeyExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1858,24 +1858,24 @@ func (_c *ProgrammaticAPIKeysApi_RemoveProjectApiKey_Call) RunAndReturn(run func
 }
 
 // RemoveProjectApiKeyExecute provides a mock function with given fields: r
-func (_m *ProgrammaticAPIKeysApi) RemoveProjectApiKeyExecute(r admin.RemoveProjectApiKeyApiRequest) (map[string]interface{}, *http.Response, error) {
+func (_m *ProgrammaticAPIKeysApi) RemoveProjectApiKeyExecute(r admin.RemoveProjectApiKeyApiRequest) (interface{}, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for RemoveProjectApiKeyExecute")
 	}
 
-	var r0 map[string]interface{}
+	var r0 interface{}
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.RemoveProjectApiKeyApiRequest) (map[string]interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.RemoveProjectApiKeyApiRequest) (interface{}, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.RemoveProjectApiKeyApiRequest) map[string]interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.RemoveProjectApiKeyApiRequest) interface{}); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(map[string]interface{})
+			r0 = ret.Get(0).(interface{})
 		}
 	}
 
@@ -1914,12 +1914,12 @@ func (_c *ProgrammaticAPIKeysApi_RemoveProjectApiKeyExecute_Call) Run(run func(r
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_RemoveProjectApiKeyExecute_Call) Return(_a0 map[string]interface{}, _a1 *http.Response, _a2 error) *ProgrammaticAPIKeysApi_RemoveProjectApiKeyExecute_Call {
+func (_c *ProgrammaticAPIKeysApi_RemoveProjectApiKeyExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *ProgrammaticAPIKeysApi_RemoveProjectApiKeyExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_RemoveProjectApiKeyExecute_Call) RunAndReturn(run func(admin.RemoveProjectApiKeyApiRequest) (map[string]interface{}, *http.Response, error)) *ProgrammaticAPIKeysApi_RemoveProjectApiKeyExecute_Call {
+func (_c *ProgrammaticAPIKeysApi_RemoveProjectApiKeyExecute_Call) RunAndReturn(run func(admin.RemoveProjectApiKeyApiRequest) (interface{}, *http.Response, error)) *ProgrammaticAPIKeysApi_RemoveProjectApiKeyExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }

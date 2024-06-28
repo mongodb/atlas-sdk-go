@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20240530001/admin"
+	admin "go.mongodb.org/atlas-sdk/v20240530002/admin"
 
 	http "net/http"
 
@@ -75,24 +75,24 @@ func (_c *CloudBackupsApi_CancelBackupRestoreJob_Call) RunAndReturn(run func(con
 }
 
 // CancelBackupRestoreJobExecute provides a mock function with given fields: r
-func (_m *CloudBackupsApi) CancelBackupRestoreJobExecute(r admin.CancelBackupRestoreJobApiRequest) (map[string]interface{}, *http.Response, error) {
+func (_m *CloudBackupsApi) CancelBackupRestoreJobExecute(r admin.CancelBackupRestoreJobApiRequest) (interface{}, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for CancelBackupRestoreJobExecute")
 	}
 
-	var r0 map[string]interface{}
+	var r0 interface{}
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.CancelBackupRestoreJobApiRequest) (map[string]interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.CancelBackupRestoreJobApiRequest) (interface{}, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.CancelBackupRestoreJobApiRequest) map[string]interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.CancelBackupRestoreJobApiRequest) interface{}); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(map[string]interface{})
+			r0 = ret.Get(0).(interface{})
 		}
 	}
 
@@ -131,12 +131,12 @@ func (_c *CloudBackupsApi_CancelBackupRestoreJobExecute_Call) Run(run func(r adm
 	return _c
 }
 
-func (_c *CloudBackupsApi_CancelBackupRestoreJobExecute_Call) Return(_a0 map[string]interface{}, _a1 *http.Response, _a2 error) *CloudBackupsApi_CancelBackupRestoreJobExecute_Call {
+func (_c *CloudBackupsApi_CancelBackupRestoreJobExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *CloudBackupsApi_CancelBackupRestoreJobExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *CloudBackupsApi_CancelBackupRestoreJobExecute_Call) RunAndReturn(run func(admin.CancelBackupRestoreJobApiRequest) (map[string]interface{}, *http.Response, error)) *CloudBackupsApi_CancelBackupRestoreJobExecute_Call {
+func (_c *CloudBackupsApi_CancelBackupRestoreJobExecute_Call) RunAndReturn(run func(admin.CancelBackupRestoreJobApiRequest) (interface{}, *http.Response, error)) *CloudBackupsApi_CancelBackupRestoreJobExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1050,24 +1050,24 @@ func (_c *CloudBackupsApi_DeleteExportBucket_Call) RunAndReturn(run func(context
 }
 
 // DeleteExportBucketExecute provides a mock function with given fields: r
-func (_m *CloudBackupsApi) DeleteExportBucketExecute(r admin.DeleteExportBucketApiRequest) (map[string]interface{}, *http.Response, error) {
+func (_m *CloudBackupsApi) DeleteExportBucketExecute(r admin.DeleteExportBucketApiRequest) (interface{}, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteExportBucketExecute")
 	}
 
-	var r0 map[string]interface{}
+	var r0 interface{}
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteExportBucketApiRequest) (map[string]interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteExportBucketApiRequest) (interface{}, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteExportBucketApiRequest) map[string]interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteExportBucketApiRequest) interface{}); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(map[string]interface{})
+			r0 = ret.Get(0).(interface{})
 		}
 	}
 
@@ -1106,12 +1106,12 @@ func (_c *CloudBackupsApi_DeleteExportBucketExecute_Call) Run(run func(r admin.D
 	return _c
 }
 
-func (_c *CloudBackupsApi_DeleteExportBucketExecute_Call) Return(_a0 map[string]interface{}, _a1 *http.Response, _a2 error) *CloudBackupsApi_DeleteExportBucketExecute_Call {
+func (_c *CloudBackupsApi_DeleteExportBucketExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *CloudBackupsApi_DeleteExportBucketExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *CloudBackupsApi_DeleteExportBucketExecute_Call) RunAndReturn(run func(admin.DeleteExportBucketApiRequest) (map[string]interface{}, *http.Response, error)) *CloudBackupsApi_DeleteExportBucketExecute_Call {
+func (_c *CloudBackupsApi_DeleteExportBucketExecute_Call) RunAndReturn(run func(admin.DeleteExportBucketApiRequest) (interface{}, *http.Response, error)) *CloudBackupsApi_DeleteExportBucketExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1213,24 +1213,24 @@ func (_c *CloudBackupsApi_DeleteReplicaSetBackup_Call) RunAndReturn(run func(con
 }
 
 // DeleteReplicaSetBackupExecute provides a mock function with given fields: r
-func (_m *CloudBackupsApi) DeleteReplicaSetBackupExecute(r admin.DeleteReplicaSetBackupApiRequest) (map[string]interface{}, *http.Response, error) {
+func (_m *CloudBackupsApi) DeleteReplicaSetBackupExecute(r admin.DeleteReplicaSetBackupApiRequest) (interface{}, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteReplicaSetBackupExecute")
 	}
 
-	var r0 map[string]interface{}
+	var r0 interface{}
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteReplicaSetBackupApiRequest) (map[string]interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteReplicaSetBackupApiRequest) (interface{}, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteReplicaSetBackupApiRequest) map[string]interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteReplicaSetBackupApiRequest) interface{}); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(map[string]interface{})
+			r0 = ret.Get(0).(interface{})
 		}
 	}
 
@@ -1269,12 +1269,12 @@ func (_c *CloudBackupsApi_DeleteReplicaSetBackupExecute_Call) Run(run func(r adm
 	return _c
 }
 
-func (_c *CloudBackupsApi_DeleteReplicaSetBackupExecute_Call) Return(_a0 map[string]interface{}, _a1 *http.Response, _a2 error) *CloudBackupsApi_DeleteReplicaSetBackupExecute_Call {
+func (_c *CloudBackupsApi_DeleteReplicaSetBackupExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *CloudBackupsApi_DeleteReplicaSetBackupExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *CloudBackupsApi_DeleteReplicaSetBackupExecute_Call) RunAndReturn(run func(admin.DeleteReplicaSetBackupApiRequest) (map[string]interface{}, *http.Response, error)) *CloudBackupsApi_DeleteReplicaSetBackupExecute_Call {
+func (_c *CloudBackupsApi_DeleteReplicaSetBackupExecute_Call) RunAndReturn(run func(admin.DeleteReplicaSetBackupApiRequest) (interface{}, *http.Response, error)) *CloudBackupsApi_DeleteReplicaSetBackupExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1376,24 +1376,24 @@ func (_c *CloudBackupsApi_DeleteShardedClusterBackup_Call) RunAndReturn(run func
 }
 
 // DeleteShardedClusterBackupExecute provides a mock function with given fields: r
-func (_m *CloudBackupsApi) DeleteShardedClusterBackupExecute(r admin.DeleteShardedClusterBackupApiRequest) (map[string]interface{}, *http.Response, error) {
+func (_m *CloudBackupsApi) DeleteShardedClusterBackupExecute(r admin.DeleteShardedClusterBackupApiRequest) (interface{}, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteShardedClusterBackupExecute")
 	}
 
-	var r0 map[string]interface{}
+	var r0 interface{}
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteShardedClusterBackupApiRequest) (map[string]interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteShardedClusterBackupApiRequest) (interface{}, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteShardedClusterBackupApiRequest) map[string]interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteShardedClusterBackupApiRequest) interface{}); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(map[string]interface{})
+			r0 = ret.Get(0).(interface{})
 		}
 	}
 
@@ -1432,12 +1432,12 @@ func (_c *CloudBackupsApi_DeleteShardedClusterBackupExecute_Call) Run(run func(r
 	return _c
 }
 
-func (_c *CloudBackupsApi_DeleteShardedClusterBackupExecute_Call) Return(_a0 map[string]interface{}, _a1 *http.Response, _a2 error) *CloudBackupsApi_DeleteShardedClusterBackupExecute_Call {
+func (_c *CloudBackupsApi_DeleteShardedClusterBackupExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *CloudBackupsApi_DeleteShardedClusterBackupExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *CloudBackupsApi_DeleteShardedClusterBackupExecute_Call) RunAndReturn(run func(admin.DeleteShardedClusterBackupApiRequest) (map[string]interface{}, *http.Response, error)) *CloudBackupsApi_DeleteShardedClusterBackupExecute_Call {
+func (_c *CloudBackupsApi_DeleteShardedClusterBackupExecute_Call) RunAndReturn(run func(admin.DeleteShardedClusterBackupApiRequest) (interface{}, *http.Response, error)) *CloudBackupsApi_DeleteShardedClusterBackupExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }

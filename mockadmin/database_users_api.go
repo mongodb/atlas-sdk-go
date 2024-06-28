@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20240530001/admin"
+	admin "go.mongodb.org/atlas-sdk/v20240530002/admin"
 
 	http "net/http"
 
@@ -237,24 +237,24 @@ func (_c *DatabaseUsersApi_DeleteDatabaseUser_Call) RunAndReturn(run func(contex
 }
 
 // DeleteDatabaseUserExecute provides a mock function with given fields: r
-func (_m *DatabaseUsersApi) DeleteDatabaseUserExecute(r admin.DeleteDatabaseUserApiRequest) (map[string]interface{}, *http.Response, error) {
+func (_m *DatabaseUsersApi) DeleteDatabaseUserExecute(r admin.DeleteDatabaseUserApiRequest) (interface{}, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteDatabaseUserExecute")
 	}
 
-	var r0 map[string]interface{}
+	var r0 interface{}
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteDatabaseUserApiRequest) (map[string]interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteDatabaseUserApiRequest) (interface{}, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteDatabaseUserApiRequest) map[string]interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteDatabaseUserApiRequest) interface{}); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(map[string]interface{})
+			r0 = ret.Get(0).(interface{})
 		}
 	}
 
@@ -293,12 +293,12 @@ func (_c *DatabaseUsersApi_DeleteDatabaseUserExecute_Call) Run(run func(r admin.
 	return _c
 }
 
-func (_c *DatabaseUsersApi_DeleteDatabaseUserExecute_Call) Return(_a0 map[string]interface{}, _a1 *http.Response, _a2 error) *DatabaseUsersApi_DeleteDatabaseUserExecute_Call {
+func (_c *DatabaseUsersApi_DeleteDatabaseUserExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *DatabaseUsersApi_DeleteDatabaseUserExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *DatabaseUsersApi_DeleteDatabaseUserExecute_Call) RunAndReturn(run func(admin.DeleteDatabaseUserApiRequest) (map[string]interface{}, *http.Response, error)) *DatabaseUsersApi_DeleteDatabaseUserExecute_Call {
+func (_c *DatabaseUsersApi_DeleteDatabaseUserExecute_Call) RunAndReturn(run func(admin.DeleteDatabaseUserApiRequest) (interface{}, *http.Response, error)) *DatabaseUsersApi_DeleteDatabaseUserExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
