@@ -29,7 +29,7 @@ jobs:
           export PATH=${PATH}:`go env GOPATH`/bin
           make clean_and_generate
       - name: Verify Changed files
-        uses: tj-actions/verify-changed-files@4e3fbc4714b4709261bf264cc419a4a75011399b
+        uses: tj-actions/verify-changed-files@11ea2b36f98609331b8dc9c5ad9071ee317c6d28
         id: verify-changed-files
         with:
           files: |
