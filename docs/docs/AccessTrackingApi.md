@@ -33,7 +33,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -45,12 +49,15 @@ func main() {
 
     resp, r, err := sdk.AccessTrackingApi.ListAccessLogsByClusterName(context.Background(), groupId, clusterName).AuthResult(authResult).End(end).IpAddress(ipAddress).NLogs(nLogs).Start(start).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccessTrackingApi.ListAccessLogsByClusterName``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `AccessTrackingApi.ListAccessLogsByClusterName`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `ListAccessLogsByClusterName`: MongoDBAccessLogsList
-    fmt.Fprintf(os.Stdout, "Response from `AccessTrackingApi.ListAccessLogsByClusterName`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AccessTrackingApi.ListAccessLogsByClusterName`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -119,7 +126,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     hostname := "hostname_example" // string | 
@@ -131,12 +142,15 @@ func main() {
 
     resp, r, err := sdk.AccessTrackingApi.ListAccessLogsByHostname(context.Background(), groupId, hostname).AuthResult(authResult).End(end).IpAddress(ipAddress).NLogs(nLogs).Start(start).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccessTrackingApi.ListAccessLogsByHostname``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `AccessTrackingApi.ListAccessLogsByHostname`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `ListAccessLogsByHostname`: MongoDBAccessLogsList
-    fmt.Fprintf(os.Stdout, "Response from `AccessTrackingApi.ListAccessLogsByHostname`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AccessTrackingApi.ListAccessLogsByHostname`: %v (%v)\n", resp, r)
 }
 ```
 

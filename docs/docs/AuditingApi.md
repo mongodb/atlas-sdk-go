@@ -33,18 +33,25 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
     resp, r, err := sdk.AuditingApi.GetAuditingConfiguration(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuditingApi.GetAuditingConfiguration``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `AuditingApi.GetAuditingConfiguration`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `GetAuditingConfiguration`: AuditLog
-    fmt.Fprintf(os.Stdout, "Response from `AuditingApi.GetAuditingConfiguration`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AuditingApi.GetAuditingConfiguration`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -106,19 +113,26 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     auditLog := *openapiclient.NewAuditLog() // AuditLog | 
 
     resp, r, err := sdk.AuditingApi.UpdateAuditingConfiguration(context.Background(), groupId, &auditLog).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuditingApi.UpdateAuditingConfiguration``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `AuditingApi.UpdateAuditingConfiguration`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `UpdateAuditingConfiguration`: AuditLog
-    fmt.Fprintf(os.Stdout, "Response from `AuditingApi.UpdateAuditingConfiguration`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AuditingApi.UpdateAuditingConfiguration`: %v (%v)\n", resp, r)
 }
 ```
 

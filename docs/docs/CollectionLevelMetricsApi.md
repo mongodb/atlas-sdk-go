@@ -40,7 +40,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -54,12 +58,15 @@ func main() {
 
     resp, r, err := sdk.CollectionLevelMetricsApi.GetCollStatsLatencyNamespaceClusterMeasurements(context.Background(), groupId, clusterName, clusterView, databaseName, collectionName).Metrics(metrics).Start(start).End(end).Period(period).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CollectionLevelMetricsApi.GetCollStatsLatencyNamespaceClusterMeasurements``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `CollectionLevelMetricsApi.GetCollStatsLatencyNamespaceClusterMeasurements`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `GetCollStatsLatencyNamespaceClusterMeasurements`: MeasurementsCollStatsLatencyCluster
-    fmt.Fprintf(os.Stdout, "Response from `CollectionLevelMetricsApi.GetCollStatsLatencyNamespaceClusterMeasurements`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CollectionLevelMetricsApi.GetCollStatsLatencyNamespaceClusterMeasurements`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -133,7 +140,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     processId := "my.host.name.com:27017" // string | 
@@ -146,12 +157,15 @@ func main() {
 
     resp, r, err := sdk.CollectionLevelMetricsApi.GetCollStatsLatencyNamespaceHostMeasurements(context.Background(), groupId, processId, databaseName, collectionName).Metrics(metrics).Start(start).End(end).Period(period).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CollectionLevelMetricsApi.GetCollStatsLatencyNamespaceHostMeasurements``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `CollectionLevelMetricsApi.GetCollStatsLatencyNamespaceHostMeasurements`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `GetCollStatsLatencyNamespaceHostMeasurements`: MeasurementsCollStatsLatencyHost
-    fmt.Fprintf(os.Stdout, "Response from `CollectionLevelMetricsApi.GetCollStatsLatencyNamespaceHostMeasurements`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CollectionLevelMetricsApi.GetCollStatsLatencyNamespaceHostMeasurements`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -223,18 +237,25 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
     resp, r, err := sdk.CollectionLevelMetricsApi.GetCollStatsLatencyNamespaceMetrics(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CollectionLevelMetricsApi.GetCollStatsLatencyNamespaceMetrics``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `CollectionLevelMetricsApi.GetCollStatsLatencyNamespaceMetrics`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `GetCollStatsLatencyNamespaceMetrics`: interface{}
-    fmt.Fprintf(os.Stdout, "Response from `CollectionLevelMetricsApi.GetCollStatsLatencyNamespaceMetrics`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CollectionLevelMetricsApi.GetCollStatsLatencyNamespaceMetrics`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -296,7 +317,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -307,12 +332,15 @@ func main() {
 
     resp, r, err := sdk.CollectionLevelMetricsApi.GetCollStatsLatencyNamespacesForCluster(context.Background(), groupId, clusterName, clusterView).Start(start).End(end).Period(period).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CollectionLevelMetricsApi.GetCollStatsLatencyNamespacesForCluster``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `CollectionLevelMetricsApi.GetCollStatsLatencyNamespacesForCluster`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `GetCollStatsLatencyNamespacesForCluster`: CollStatsRankedNamespaces
-    fmt.Fprintf(os.Stdout, "Response from `CollectionLevelMetricsApi.GetCollStatsLatencyNamespacesForCluster`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CollectionLevelMetricsApi.GetCollStatsLatencyNamespacesForCluster`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -381,7 +409,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     processId := "my.host.name.com:27017" // string | 
@@ -391,12 +423,15 @@ func main() {
 
     resp, r, err := sdk.CollectionLevelMetricsApi.GetCollStatsLatencyNamespacesForHost(context.Background(), groupId, processId).Start(start).End(end).Period(period).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CollectionLevelMetricsApi.GetCollStatsLatencyNamespacesForHost``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `CollectionLevelMetricsApi.GetCollStatsLatencyNamespacesForHost`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `GetCollStatsLatencyNamespacesForHost`: CollStatsRankedNamespaces
-    fmt.Fprintf(os.Stdout, "Response from `CollectionLevelMetricsApi.GetCollStatsLatencyNamespacesForHost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CollectionLevelMetricsApi.GetCollStatsLatencyNamespacesForHost`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -463,19 +498,26 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
 
     resp, r, err := sdk.CollectionLevelMetricsApi.GetPinnedNamespaces(context.Background(), groupId, clusterName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CollectionLevelMetricsApi.GetPinnedNamespaces``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `CollectionLevelMetricsApi.GetPinnedNamespaces`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `GetPinnedNamespaces`: PinnedNamespaces
-    fmt.Fprintf(os.Stdout, "Response from `CollectionLevelMetricsApi.GetPinnedNamespaces`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CollectionLevelMetricsApi.GetPinnedNamespaces`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -539,7 +581,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -547,12 +593,15 @@ func main() {
 
     resp, r, err := sdk.CollectionLevelMetricsApi.PinNamespacesPatch(context.Background(), groupId, clusterName, &namespacesRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CollectionLevelMetricsApi.PinNamespacesPatch``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `CollectionLevelMetricsApi.PinNamespacesPatch`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `PinNamespacesPatch`: PinnedNamespaces
-    fmt.Fprintf(os.Stdout, "Response from `CollectionLevelMetricsApi.PinNamespacesPatch`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CollectionLevelMetricsApi.PinNamespacesPatch`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -617,7 +666,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -625,12 +678,15 @@ func main() {
 
     resp, r, err := sdk.CollectionLevelMetricsApi.PinNamespacesPut(context.Background(), groupId, clusterName, &namespacesRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CollectionLevelMetricsApi.PinNamespacesPut``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `CollectionLevelMetricsApi.PinNamespacesPut`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `PinNamespacesPut`: PinnedNamespaces
-    fmt.Fprintf(os.Stdout, "Response from `CollectionLevelMetricsApi.PinNamespacesPut`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CollectionLevelMetricsApi.PinNamespacesPut`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -695,7 +751,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -703,12 +763,15 @@ func main() {
 
     resp, r, err := sdk.CollectionLevelMetricsApi.UnpinNamespaces(context.Background(), groupId, clusterName, &namespacesRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CollectionLevelMetricsApi.UnpinNamespaces``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `CollectionLevelMetricsApi.UnpinNamespaces`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `UnpinNamespaces`: PinnedNamespaces
-    fmt.Fprintf(os.Stdout, "Response from `CollectionLevelMetricsApi.UnpinNamespaces`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CollectionLevelMetricsApi.UnpinNamespaces`: %v (%v)\n", resp, r)
 }
 ```
 

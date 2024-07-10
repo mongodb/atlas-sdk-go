@@ -34,7 +34,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     clusterName := "clusterName_example" // string | 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -42,12 +46,15 @@ func main() {
 
     resp, r, err := sdk.SharedTierRestoreJobsApi.CreateSharedClusterBackupRestoreJob(context.Background(), clusterName, groupId, &tenantRestore).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SharedTierRestoreJobsApi.CreateSharedClusterBackupRestoreJob``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `SharedTierRestoreJobsApi.CreateSharedClusterBackupRestoreJob`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `CreateSharedClusterBackupRestoreJob`: TenantRestore
-    fmt.Fprintf(os.Stdout, "Response from `SharedTierRestoreJobsApi.CreateSharedClusterBackupRestoreJob`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SharedTierRestoreJobsApi.CreateSharedClusterBackupRestoreJob`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -112,7 +119,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     clusterName := "clusterName_example" // string | 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -120,12 +131,15 @@ func main() {
 
     resp, r, err := sdk.SharedTierRestoreJobsApi.GetSharedClusterBackupRestoreJob(context.Background(), clusterName, groupId, restoreId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SharedTierRestoreJobsApi.GetSharedClusterBackupRestoreJob``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `SharedTierRestoreJobsApi.GetSharedClusterBackupRestoreJob`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `GetSharedClusterBackupRestoreJob`: TenantRestore
-    fmt.Fprintf(os.Stdout, "Response from `SharedTierRestoreJobsApi.GetSharedClusterBackupRestoreJob`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SharedTierRestoreJobsApi.GetSharedClusterBackupRestoreJob`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -191,19 +205,26 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     clusterName := "clusterName_example" // string | 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
     resp, r, err := sdk.SharedTierRestoreJobsApi.ListSharedClusterBackupRestoreJobs(context.Background(), clusterName, groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SharedTierRestoreJobsApi.ListSharedClusterBackupRestoreJobs``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `SharedTierRestoreJobsApi.ListSharedClusterBackupRestoreJobs`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `ListSharedClusterBackupRestoreJobs`: PaginatedTenantRestore
-    fmt.Fprintf(os.Stdout, "Response from `SharedTierRestoreJobsApi.ListSharedClusterBackupRestoreJobs`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SharedTierRestoreJobsApi.ListSharedClusterBackupRestoreJobs`: %v (%v)\n", resp, r)
 }
 ```
 

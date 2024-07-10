@@ -45,7 +45,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     apiUserId := "apiUserId_example" // string | 
@@ -53,12 +57,15 @@ func main() {
 
     resp, r, err := sdk.ProgrammaticAPIKeysApi.AddProjectApiKey(context.Background(), groupId, apiUserId, &userAccessRoleAssignment).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.AddProjectApiKey``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.AddProjectApiKey`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `AddProjectApiKey`: ApiKeyUserDetails
-    fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.AddProjectApiKey`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.AddProjectApiKey`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -123,19 +130,26 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     orgId := "4888442a3354817a7320eb61" // string | 
     createAtlasOrganizationApiKey := *openapiclient.NewCreateAtlasOrganizationApiKey("Desc_example", []string{"Roles_example"}) // CreateAtlasOrganizationApiKey | 
 
     resp, r, err := sdk.ProgrammaticAPIKeysApi.CreateApiKey(context.Background(), orgId, &createAtlasOrganizationApiKey).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.CreateApiKey``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.CreateApiKey`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `CreateApiKey`: ApiKeyUserDetails
-    fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.CreateApiKey`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.CreateApiKey`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -198,7 +212,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     orgId := "4888442a3354817a7320eb61" // string | 
     apiUserId := "apiUserId_example" // string | 
@@ -209,12 +227,15 @@ func main() {
 
     resp, r, err := sdk.ProgrammaticAPIKeysApi.CreateApiKeyAccessList(context.Background(), orgId, apiUserId, &userAccessListRequest).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.CreateApiKeyAccessList``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.CreateApiKeyAccessList`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `CreateApiKeyAccessList`: PaginatedApiUserAccessListResponse
-    fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.CreateApiKeyAccessList`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.CreateApiKeyAccessList`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -282,19 +303,26 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     createAtlasProjectApiKey := *openapiclient.NewCreateAtlasProjectApiKey("Desc_example", []string{"Roles_example"}) // CreateAtlasProjectApiKey | 
 
     resp, r, err := sdk.ProgrammaticAPIKeysApi.CreateProjectApiKey(context.Background(), groupId, &createAtlasProjectApiKey).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.CreateProjectApiKey``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.CreateProjectApiKey`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `CreateProjectApiKey`: ApiKeyUserDetails
-    fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.CreateProjectApiKey`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.CreateProjectApiKey`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -357,19 +385,26 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     orgId := "4888442a3354817a7320eb61" // string | 
     apiUserId := "apiUserId_example" // string | 
 
     resp, r, err := sdk.ProgrammaticAPIKeysApi.DeleteApiKey(context.Background(), orgId, apiUserId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.DeleteApiKey``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.DeleteApiKey`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `DeleteApiKey`: interface{}
-    fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.DeleteApiKey`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.DeleteApiKey`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -433,7 +468,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     orgId := "4888442a3354817a7320eb61" // string | 
     apiUserId := "apiUserId_example" // string | 
@@ -441,12 +480,15 @@ func main() {
 
     resp, r, err := sdk.ProgrammaticAPIKeysApi.DeleteApiKeyAccessListEntry(context.Background(), orgId, apiUserId, ipAddress).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.DeleteApiKeyAccessListEntry``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.DeleteApiKeyAccessListEntry`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `DeleteApiKeyAccessListEntry`: interface{}
-    fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.DeleteApiKeyAccessListEntry`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.DeleteApiKeyAccessListEntry`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -512,19 +554,26 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     orgId := "4888442a3354817a7320eb61" // string | 
     apiUserId := "apiUserId_example" // string | 
 
     resp, r, err := sdk.ProgrammaticAPIKeysApi.GetApiKey(context.Background(), orgId, apiUserId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.GetApiKey``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.GetApiKey`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `GetApiKey`: ApiKeyUserDetails
-    fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.GetApiKey`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.GetApiKey`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -588,7 +637,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     orgId := "4888442a3354817a7320eb61" // string | 
     ipAddress := "192.0.2.0%2F24" // string | 
@@ -596,12 +649,15 @@ func main() {
 
     resp, r, err := sdk.ProgrammaticAPIKeysApi.GetApiKeyAccessList(context.Background(), orgId, ipAddress, apiUserId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.GetApiKeyAccessList``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.GetApiKeyAccessList`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `GetApiKeyAccessList`: UserAccessListResponse
-    fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.GetApiKeyAccessList`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.GetApiKeyAccessList`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -667,7 +723,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     orgId := "4888442a3354817a7320eb61" // string | 
     apiUserId := "apiUserId_example" // string | 
@@ -677,12 +737,15 @@ func main() {
 
     resp, r, err := sdk.ProgrammaticAPIKeysApi.ListApiKeyAccessListsEntries(context.Background(), orgId, apiUserId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.ListApiKeyAccessListsEntries``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.ListApiKeyAccessListsEntries`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `ListApiKeyAccessListsEntries`: PaginatedApiUserAccessListResponse
-    fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.ListApiKeyAccessListsEntries`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.ListApiKeyAccessListsEntries`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -749,7 +812,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     orgId := "4888442a3354817a7320eb61" // string | 
     includeCount := true // bool |  (optional) (default to true)
@@ -758,12 +825,15 @@ func main() {
 
     resp, r, err := sdk.ProgrammaticAPIKeysApi.ListApiKeys(context.Background(), orgId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.ListApiKeys``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.ListApiKeys`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `ListApiKeys`: PaginatedApiApiUser
-    fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.ListApiKeys`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.ListApiKeys`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -828,7 +898,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     includeCount := true // bool |  (optional) (default to true)
@@ -837,12 +911,15 @@ func main() {
 
     resp, r, err := sdk.ProgrammaticAPIKeysApi.ListProjectApiKeys(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.ListProjectApiKeys``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.ListProjectApiKeys`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `ListProjectApiKeys`: PaginatedApiApiUser
-    fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.ListProjectApiKeys`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.ListProjectApiKeys`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -907,19 +984,26 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     apiUserId := "apiUserId_example" // string | 
 
     resp, r, err := sdk.ProgrammaticAPIKeysApi.RemoveProjectApiKey(context.Background(), groupId, apiUserId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.RemoveProjectApiKey``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.RemoveProjectApiKey`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `RemoveProjectApiKey`: interface{}
-    fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.RemoveProjectApiKey`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.RemoveProjectApiKey`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -983,7 +1067,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     orgId := "4888442a3354817a7320eb61" // string | 
     apiUserId := "apiUserId_example" // string | 
@@ -991,12 +1079,15 @@ func main() {
 
     resp, r, err := sdk.ProgrammaticAPIKeysApi.UpdateApiKey(context.Background(), orgId, apiUserId, &updateAtlasOrganizationApiKey).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.UpdateApiKey``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.UpdateApiKey`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `UpdateApiKey`: ApiKeyUserDetails
-    fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.UpdateApiKey`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.UpdateApiKey`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1061,7 +1152,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     apiUserId := "apiUserId_example" // string | 
@@ -1072,12 +1167,15 @@ func main() {
 
     resp, r, err := sdk.ProgrammaticAPIKeysApi.UpdateApiKeyRoles(context.Background(), groupId, apiUserId, &updateAtlasProjectApiKey).PageNum(pageNum).ItemsPerPage(itemsPerPage).IncludeCount(includeCount).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.UpdateApiKeyRoles``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.UpdateApiKeyRoles`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `UpdateApiKeyRoles`: ApiKeyUserDetails
-    fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.UpdateApiKeyRoles`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.UpdateApiKeyRoles`: %v (%v)\n", resp, r)
 }
 ```
 

@@ -36,7 +36,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     instanceName := "instanceName_example" // string | 
@@ -44,12 +48,15 @@ func main() {
 
     resp, r, err := sdk.ServerlessPrivateEndpointsApi.CreateServerlessPrivateEndpoint(context.Background(), groupId, instanceName, &serverlessTenantCreateRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ServerlessPrivateEndpointsApi.CreateServerlessPrivateEndpoint``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `ServerlessPrivateEndpointsApi.CreateServerlessPrivateEndpoint`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `CreateServerlessPrivateEndpoint`: ServerlessTenantEndpoint
-    fmt.Fprintf(os.Stdout, "Response from `ServerlessPrivateEndpointsApi.CreateServerlessPrivateEndpoint`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ServerlessPrivateEndpointsApi.CreateServerlessPrivateEndpoint`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -114,7 +121,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     instanceName := "instanceName_example" // string | 
@@ -122,12 +133,15 @@ func main() {
 
     resp, r, err := sdk.ServerlessPrivateEndpointsApi.DeleteServerlessPrivateEndpoint(context.Background(), groupId, instanceName, endpointId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ServerlessPrivateEndpointsApi.DeleteServerlessPrivateEndpoint``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `ServerlessPrivateEndpointsApi.DeleteServerlessPrivateEndpoint`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `DeleteServerlessPrivateEndpoint`: interface{}
-    fmt.Fprintf(os.Stdout, "Response from `ServerlessPrivateEndpointsApi.DeleteServerlessPrivateEndpoint`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ServerlessPrivateEndpointsApi.DeleteServerlessPrivateEndpoint`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -193,7 +207,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     instanceName := "instanceName_example" // string | 
@@ -201,12 +219,15 @@ func main() {
 
     resp, r, err := sdk.ServerlessPrivateEndpointsApi.GetServerlessPrivateEndpoint(context.Background(), groupId, instanceName, endpointId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ServerlessPrivateEndpointsApi.GetServerlessPrivateEndpoint``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `ServerlessPrivateEndpointsApi.GetServerlessPrivateEndpoint`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `GetServerlessPrivateEndpoint`: ServerlessTenantEndpoint
-    fmt.Fprintf(os.Stdout, "Response from `ServerlessPrivateEndpointsApi.GetServerlessPrivateEndpoint`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ServerlessPrivateEndpointsApi.GetServerlessPrivateEndpoint`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -272,19 +293,26 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     instanceName := "instanceName_example" // string | 
 
     resp, r, err := sdk.ServerlessPrivateEndpointsApi.ListServerlessPrivateEndpoints(context.Background(), groupId, instanceName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ServerlessPrivateEndpointsApi.ListServerlessPrivateEndpoints``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `ServerlessPrivateEndpointsApi.ListServerlessPrivateEndpoints`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `ListServerlessPrivateEndpoints`: []ServerlessTenantEndpoint
-    fmt.Fprintf(os.Stdout, "Response from `ServerlessPrivateEndpointsApi.ListServerlessPrivateEndpoints`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ServerlessPrivateEndpointsApi.ListServerlessPrivateEndpoints`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -348,7 +376,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     instanceName := "instanceName_example" // string | 
@@ -357,12 +389,15 @@ func main() {
 
     resp, r, err := sdk.ServerlessPrivateEndpointsApi.UpdateServerlessPrivateEndpoint(context.Background(), groupId, instanceName, endpointId, &serverlessTenantEndpointUpdate).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ServerlessPrivateEndpointsApi.UpdateServerlessPrivateEndpoint``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `ServerlessPrivateEndpointsApi.UpdateServerlessPrivateEndpoint`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `UpdateServerlessPrivateEndpoint`: ServerlessTenantEndpoint
-    fmt.Fprintf(os.Stdout, "Response from `ServerlessPrivateEndpointsApi.UpdateServerlessPrivateEndpoint`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ServerlessPrivateEndpointsApi.UpdateServerlessPrivateEndpoint`: %v (%v)\n", resp, r)
 }
 ```
 

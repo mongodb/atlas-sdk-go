@@ -44,19 +44,26 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     teamRole := []openapiclient.TeamRole{*openapiclient.NewTeamRole()} // []TeamRole | 
 
     resp, r, err := sdk.TeamsApi.AddAllTeamsToProject(context.Background(), groupId, &teamRole).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.AddAllTeamsToProject``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.AddAllTeamsToProject`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `AddAllTeamsToProject`: PaginatedTeamRole
-    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.AddAllTeamsToProject`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.AddAllTeamsToProject`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -119,7 +126,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     orgId := "4888442a3354817a7320eb61" // string | 
     teamId := "teamId_example" // string | 
@@ -127,12 +138,15 @@ func main() {
 
     resp, r, err := sdk.TeamsApi.AddTeamUser(context.Background(), orgId, teamId, &addUserToTeam).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.AddTeamUser``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.AddTeamUser`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `AddTeamUser`: PaginatedApiAppUser
-    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.AddTeamUser`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.AddTeamUser`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -197,19 +211,26 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     orgId := "4888442a3354817a7320eb61" // string | 
     team := *openapiclient.NewTeam("Name_example") // Team | 
 
     resp, r, err := sdk.TeamsApi.CreateTeam(context.Background(), orgId, &team).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.CreateTeam``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.CreateTeam`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `CreateTeam`: Team
-    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.CreateTeam`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.CreateTeam`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -272,19 +293,26 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     orgId := "4888442a3354817a7320eb61" // string | 
     teamId := "teamId_example" // string | 
 
     resp, r, err := sdk.TeamsApi.DeleteTeam(context.Background(), orgId, teamId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.DeleteTeam``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.DeleteTeam`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `DeleteTeam`: interface{}
-    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.DeleteTeam`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.DeleteTeam`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -348,19 +376,26 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     orgId := "4888442a3354817a7320eb61" // string | 
     teamId := "teamId_example" // string | 
 
     resp, r, err := sdk.TeamsApi.GetTeamById(context.Background(), orgId, teamId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.GetTeamById``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.GetTeamById`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `GetTeamById`: TeamResponse
-    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.GetTeamById`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.GetTeamById`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -424,19 +459,26 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     orgId := "4888442a3354817a7320eb61" // string | 
     teamName := "teamName_example" // string | 
 
     resp, r, err := sdk.TeamsApi.GetTeamByName(context.Background(), orgId, teamName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.GetTeamByName``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.GetTeamByName`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `GetTeamByName`: TeamResponse
-    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.GetTeamByName`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.GetTeamByName`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -500,7 +542,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     orgId := "4888442a3354817a7320eb61" // string | 
     itemsPerPage := int(100) // int |  (optional) (default to 100)
@@ -509,12 +555,15 @@ func main() {
 
     resp, r, err := sdk.TeamsApi.ListOrganizationTeams(context.Background(), orgId).ItemsPerPage(itemsPerPage).IncludeCount(includeCount).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.ListOrganizationTeams``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.ListOrganizationTeams`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `ListOrganizationTeams`: PaginatedTeam
-    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.ListOrganizationTeams`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.ListOrganizationTeams`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -579,7 +628,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     includeCount := true // bool |  (optional) (default to true)
@@ -588,12 +641,15 @@ func main() {
 
     resp, r, err := sdk.TeamsApi.ListProjectTeams(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.ListProjectTeams``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.ListProjectTeams`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `ListProjectTeams`: PaginatedTeamRole
-    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.ListProjectTeams`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.ListProjectTeams`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -658,7 +714,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     orgId := "4888442a3354817a7320eb61" // string | 
     teamId := "teamId_example" // string | 
@@ -667,12 +727,15 @@ func main() {
 
     resp, r, err := sdk.TeamsApi.ListTeamUsers(context.Background(), orgId, teamId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.ListTeamUsers``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.ListTeamUsers`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `ListTeamUsers`: PaginatedApiAppUser
-    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.ListTeamUsers`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.ListTeamUsers`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -738,16 +801,23 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     teamId := "teamId_example" // string | 
 
     r, err := sdk.TeamsApi.RemoveProjectTeam(context.Background(), groupId, teamId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.RemoveProjectTeam``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.RemoveProjectTeam`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
 }
 ```
@@ -812,7 +882,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     orgId := "4888442a3354817a7320eb61" // string | 
     teamId := "teamId_example" // string | 
@@ -820,9 +894,12 @@ func main() {
 
     r, err := sdk.TeamsApi.RemoveTeamUser(context.Background(), orgId, teamId, userId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.RemoveTeamUser``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.RemoveTeamUser`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
 }
 ```
@@ -889,7 +966,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     orgId := "4888442a3354817a7320eb61" // string | 
     teamId := "teamId_example" // string | 
@@ -897,12 +978,15 @@ func main() {
 
     resp, r, err := sdk.TeamsApi.RenameTeam(context.Background(), orgId, teamId, &teamUpdate).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.RenameTeam``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.RenameTeam`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `RenameTeam`: TeamResponse
-    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.RenameTeam`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.RenameTeam`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -967,7 +1051,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     teamId := "teamId_example" // string | 
@@ -975,12 +1063,15 @@ func main() {
 
     resp, r, err := sdk.TeamsApi.UpdateTeamRoles(context.Background(), groupId, teamId, &teamRole).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.UpdateTeamRoles``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.UpdateTeamRoles`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `UpdateTeamRoles`: PaginatedTeamRole
-    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.UpdateTeamRoles`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.UpdateTeamRoles`: %v (%v)\n", resp, r)
 }
 ```
 

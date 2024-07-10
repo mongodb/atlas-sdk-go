@@ -39,15 +39,22 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
     r, err := sdk.PerformanceAdvisorApi.DisableSlowOperationThresholding(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorApi.DisableSlowOperationThresholding``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorApi.DisableSlowOperationThresholding`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
 }
 ```
@@ -110,15 +117,22 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
     r, err := sdk.PerformanceAdvisorApi.EnableSlowOperationThresholding(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorApi.EnableSlowOperationThresholding``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorApi.EnableSlowOperationThresholding`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
 }
 ```
@@ -181,15 +195,22 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
     r, err := sdk.PerformanceAdvisorApi.GetManagedSlowMs(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorApi.GetManagedSlowMs``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorApi.GetManagedSlowMs`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
 }
 ```
@@ -252,19 +273,26 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
 
     resp, r, err := sdk.PerformanceAdvisorApi.GetServerlessAutoIndexing(context.Background(), groupId, clusterName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorApi.GetServerlessAutoIndexing``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorApi.GetServerlessAutoIndexing`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `GetServerlessAutoIndexing`: bool
-    fmt.Fprintf(os.Stdout, "Response from `PerformanceAdvisorApi.GetServerlessAutoIndexing`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `PerformanceAdvisorApi.GetServerlessAutoIndexing`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -328,7 +356,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     processId := "processId_example" // string | 
@@ -339,12 +371,15 @@ func main() {
 
     resp, r, err := sdk.PerformanceAdvisorApi.ListSlowQueries(context.Background(), groupId, processId).Duration(duration).Namespaces(namespaces).NLogs(nLogs).Since(since).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorApi.ListSlowQueries``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorApi.ListSlowQueries`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `ListSlowQueries`: PerformanceAdvisorSlowQueryList
-    fmt.Fprintf(os.Stdout, "Response from `PerformanceAdvisorApi.ListSlowQueries`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `PerformanceAdvisorApi.ListSlowQueries`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -412,7 +447,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     processId := "processId_example" // string | 
@@ -421,12 +460,15 @@ func main() {
 
     resp, r, err := sdk.PerformanceAdvisorApi.ListSlowQueryNamespaces(context.Background(), groupId, processId).Duration(duration).Since(since).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorApi.ListSlowQueryNamespaces``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorApi.ListSlowQueryNamespaces`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `ListSlowQueryNamespaces`: Namespaces
-    fmt.Fprintf(os.Stdout, "Response from `PerformanceAdvisorApi.ListSlowQueryNamespaces`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `PerformanceAdvisorApi.ListSlowQueryNamespaces`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -492,7 +534,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     processId := "processId_example" // string | 
@@ -507,12 +553,15 @@ func main() {
 
     resp, r, err := sdk.PerformanceAdvisorApi.ListSuggestedIndexes(context.Background(), groupId, processId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Duration(duration).Namespaces(namespaces).NExamples(nExamples).NIndexes(nIndexes).Since(since).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorApi.ListSuggestedIndexes``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorApi.ListSuggestedIndexes`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `ListSuggestedIndexes`: PerformanceAdvisorResponse
-    fmt.Fprintf(os.Stdout, "Response from `PerformanceAdvisorApi.ListSuggestedIndexes`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `PerformanceAdvisorApi.ListSuggestedIndexes`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -584,7 +633,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -592,12 +645,15 @@ func main() {
 
     resp, r, err := sdk.PerformanceAdvisorApi.SetServerlessAutoIndexing(context.Background(), groupId, clusterName).Enable(enable).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorApi.SetServerlessAutoIndexing``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorApi.SetServerlessAutoIndexing`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `SetServerlessAutoIndexing`: interface{}
-    fmt.Fprintf(os.Stdout, "Response from `PerformanceAdvisorApi.SetServerlessAutoIndexing`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `PerformanceAdvisorApi.SetServerlessAutoIndexing`: %v (%v)\n", resp, r)
 }
 ```
 

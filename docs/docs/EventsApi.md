@@ -35,7 +35,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     orgId := "4888442a3354817a7320eb61" // string | 
     eventId := "eventId_example" // string | 
@@ -43,12 +47,15 @@ func main() {
 
     resp, r, err := sdk.EventsApi.GetOrganizationEvent(context.Background(), orgId, eventId).IncludeRaw(includeRaw).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.GetOrganizationEvent``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.GetOrganizationEvent`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `GetOrganizationEvent`: EventViewForOrg
-    fmt.Fprintf(os.Stdout, "Response from `EventsApi.GetOrganizationEvent`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `EventsApi.GetOrganizationEvent`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -113,7 +120,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     eventId := "eventId_example" // string | 
@@ -121,12 +132,15 @@ func main() {
 
     resp, r, err := sdk.EventsApi.GetProjectEvent(context.Background(), groupId, eventId).IncludeRaw(includeRaw).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.GetProjectEvent``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.GetProjectEvent`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `GetProjectEvent`: EventViewForNdsGroup
-    fmt.Fprintf(os.Stdout, "Response from `EventsApi.GetProjectEvent`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `EventsApi.GetProjectEvent`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -191,7 +205,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     orgId := "4888442a3354817a7320eb61" // string | 
     includeCount := true // bool |  (optional) (default to true)
@@ -204,12 +222,15 @@ func main() {
 
     resp, r, err := sdk.EventsApi.ListOrganizationEvents(context.Background(), orgId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).EventType(eventType).IncludeRaw(includeRaw).MaxDate(maxDate).MinDate(minDate).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.ListOrganizationEvents``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.ListOrganizationEvents`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `ListOrganizationEvents`: OrgPaginatedEvent
-    fmt.Fprintf(os.Stdout, "Response from `EventsApi.ListOrganizationEvents`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `EventsApi.ListOrganizationEvents`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -278,7 +299,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     includeCount := true // bool |  (optional) (default to true)
@@ -293,12 +318,15 @@ func main() {
 
     resp, r, err := sdk.EventsApi.ListProjectEvents(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).ClusterNames(clusterNames).EventType(eventType).ExcludedEventType(excludedEventType).IncludeRaw(includeRaw).MaxDate(maxDate).MinDate(minDate).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.ListProjectEvents``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.ListProjectEvents`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `ListProjectEvents`: GroupPaginatedEvent
-    fmt.Fprintf(os.Stdout, "Response from `EventsApi.ListProjectEvents`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `EventsApi.ListProjectEvents`: %v (%v)\n", resp, r)
 }
 ```
 

@@ -36,7 +36,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     {{#allParams}}
     {{paramName}} := {{{vendorExtensions.x-go-example}}} // {{{dataType}}} | {{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
@@ -44,13 +48,16 @@ func main() {
 
     {{#returnType}}resp, {{/returnType}}r, err := sdk.{{classname}}.{{operationId}}(context.Background(){{#pathParams}}, {{paramName}}{{/pathParams}}{{#bodyParams}}, &{{paramName}}{{/bodyParams}}){{#allParams}}{{^isBodyParam}}{{^isPathParam}}.{{vendorExtensions.x-export-param-name}}({{paramName}}){{/isPathParam}}{{/isBodyParam}}{{/allParams}}.Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `{{classname}}.{{operationId}}``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `{{classname}}.{{operationId}}`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     {{#returnType}}
     // response from `{{operationId}}`: {{{.}}}
-    fmt.Fprintf(os.Stdout, "Response from `{{classname}}.{{operationId}}`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `{{classname}}.{{operationId}}`: %v (%v)\n", resp, r)
     {{/returnType}}
 }
 ```

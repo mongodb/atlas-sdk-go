@@ -36,7 +36,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     networkPermissionEntry := []openapiclient.NetworkPermissionEntry{*openapiclient.NewNetworkPermissionEntry()} // []NetworkPermissionEntry | 
@@ -46,12 +50,15 @@ func main() {
 
     resp, r, err := sdk.ProjectIPAccessListApi.CreateProjectIpAccessList(context.Background(), groupId, &networkPermissionEntry).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectIPAccessListApi.CreateProjectIpAccessList``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectIPAccessListApi.CreateProjectIpAccessList`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `CreateProjectIpAccessList`: PaginatedNetworkAccess
-    fmt.Fprintf(os.Stdout, "Response from `ProjectIPAccessListApi.CreateProjectIpAccessList`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ProjectIPAccessListApi.CreateProjectIpAccessList`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -117,19 +124,26 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     entryValue := "IPv4: 192.0.2.0%2F24 or IPv6: 2001:db8:85a3:8d3:1319:8a2e:370:7348 or IPv4 CIDR: 198.51.100.0%2f24 or IPv6 CIDR: 2001:db8::%2f58 or AWS SG: sg-903004f8" // string | 
 
     resp, r, err := sdk.ProjectIPAccessListApi.DeleteProjectIpAccessList(context.Background(), groupId, entryValue).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectIPAccessListApi.DeleteProjectIpAccessList``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectIPAccessListApi.DeleteProjectIpAccessList`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `DeleteProjectIpAccessList`: interface{}
-    fmt.Fprintf(os.Stdout, "Response from `ProjectIPAccessListApi.DeleteProjectIpAccessList`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ProjectIPAccessListApi.DeleteProjectIpAccessList`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -193,19 +207,26 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     entryValue := "IPv4: 192.0.2.0%2F24 or IPv6: 2001:db8:85a3:8d3:1319:8a2e:370:7348 or IPv4 CIDR: 198.51.100.0%2f24 or IPv6 CIDR: 2001:db8::%2f58 or AWS SG: sg-903004f8" // string | 
 
     resp, r, err := sdk.ProjectIPAccessListApi.GetProjectIpAccessListStatus(context.Background(), groupId, entryValue).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectIPAccessListApi.GetProjectIpAccessListStatus``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectIPAccessListApi.GetProjectIpAccessListStatus`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `GetProjectIpAccessListStatus`: NetworkPermissionEntryStatus
-    fmt.Fprintf(os.Stdout, "Response from `ProjectIPAccessListApi.GetProjectIpAccessListStatus`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ProjectIPAccessListApi.GetProjectIpAccessListStatus`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -269,19 +290,26 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     entryValue := "IPv4: 192.0.2.0%2F24 or IPv6: 2001:db8:85a3:8d3:1319:8a2e:370:7348 or IPv4 CIDR: 198.51.100.0%2f24 or IPv6 CIDR: 2001:db8::%2f58 or AWS SG: sg-903004f8" // string | 
 
     resp, r, err := sdk.ProjectIPAccessListApi.GetProjectIpList(context.Background(), groupId, entryValue).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectIPAccessListApi.GetProjectIpList``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectIPAccessListApi.GetProjectIpList`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `GetProjectIpList`: NetworkPermissionEntry
-    fmt.Fprintf(os.Stdout, "Response from `ProjectIPAccessListApi.GetProjectIpList`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ProjectIPAccessListApi.GetProjectIpList`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -345,7 +373,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     includeCount := true // bool |  (optional) (default to true)
@@ -354,12 +386,15 @@ func main() {
 
     resp, r, err := sdk.ProjectIPAccessListApi.ListProjectIpAccessLists(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectIPAccessListApi.ListProjectIpAccessLists``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectIPAccessListApi.ListProjectIpAccessLists`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `ListProjectIpAccessLists`: PaginatedNetworkAccess
-    fmt.Fprintf(os.Stdout, "Response from `ProjectIPAccessListApi.ListProjectIpAccessLists`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ProjectIPAccessListApi.ListProjectIpAccessLists`: %v (%v)\n", resp, r)
 }
 ```
 

@@ -33,17 +33,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
 
     resp, r, err := sdk.RootApi.GetSystemStatus(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RootApi.GetSystemStatus``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `RootApi.GetSystemStatus`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `GetSystemStatus`: SystemStatus
-    fmt.Fprintf(os.Stdout, "Response from `RootApi.GetSystemStatus`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `RootApi.GetSystemStatus`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -97,17 +104,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
 
     resp, r, err := sdk.RootApi.ReturnAllControlPlaneIPAddresses(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RootApi.ReturnAllControlPlaneIPAddresses``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `RootApi.ReturnAllControlPlaneIPAddresses`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `ReturnAllControlPlaneIPAddresses`: ControlPlaneIPAddresses
-    fmt.Fprintf(os.Stdout, "Response from `RootApi.ReturnAllControlPlaneIPAddresses`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `RootApi.ReturnAllControlPlaneIPAddresses`: %v (%v)\n", resp, r)
 }
 ```
 

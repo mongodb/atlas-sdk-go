@@ -36,19 +36,26 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     cloudDatabaseUser := *openapiclient.NewCloudDatabaseUser("DatabaseName_example", "32b6e34b3d91647abb20e7b8", "Username_example") // CloudDatabaseUser | 
 
     resp, r, err := sdk.DatabaseUsersApi.CreateDatabaseUser(context.Background(), groupId, &cloudDatabaseUser).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DatabaseUsersApi.CreateDatabaseUser``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `DatabaseUsersApi.CreateDatabaseUser`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `CreateDatabaseUser`: CloudDatabaseUser
-    fmt.Fprintf(os.Stdout, "Response from `DatabaseUsersApi.CreateDatabaseUser`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DatabaseUsersApi.CreateDatabaseUser`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -111,7 +118,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     databaseName := "databaseName_example" // string | 
@@ -119,12 +130,15 @@ func main() {
 
     resp, r, err := sdk.DatabaseUsersApi.DeleteDatabaseUser(context.Background(), groupId, databaseName, username).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DatabaseUsersApi.DeleteDatabaseUser``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `DatabaseUsersApi.DeleteDatabaseUser`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `DeleteDatabaseUser`: interface{}
-    fmt.Fprintf(os.Stdout, "Response from `DatabaseUsersApi.DeleteDatabaseUser`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DatabaseUsersApi.DeleteDatabaseUser`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -190,7 +204,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     databaseName := "databaseName_example" // string | 
@@ -198,12 +216,15 @@ func main() {
 
     resp, r, err := sdk.DatabaseUsersApi.GetDatabaseUser(context.Background(), groupId, databaseName, username).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DatabaseUsersApi.GetDatabaseUser``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `DatabaseUsersApi.GetDatabaseUser`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `GetDatabaseUser`: CloudDatabaseUser
-    fmt.Fprintf(os.Stdout, "Response from `DatabaseUsersApi.GetDatabaseUser`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DatabaseUsersApi.GetDatabaseUser`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -269,7 +290,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     includeCount := true // bool |  (optional) (default to true)
@@ -278,12 +303,15 @@ func main() {
 
     resp, r, err := sdk.DatabaseUsersApi.ListDatabaseUsers(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DatabaseUsersApi.ListDatabaseUsers``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `DatabaseUsersApi.ListDatabaseUsers`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `ListDatabaseUsers`: PaginatedApiAtlasDatabaseUser
-    fmt.Fprintf(os.Stdout, "Response from `DatabaseUsersApi.ListDatabaseUsers`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DatabaseUsersApi.ListDatabaseUsers`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -348,7 +376,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     databaseName := "databaseName_example" // string | 
@@ -357,12 +389,15 @@ func main() {
 
     resp, r, err := sdk.DatabaseUsersApi.UpdateDatabaseUser(context.Background(), groupId, databaseName, username, &cloudDatabaseUser).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DatabaseUsersApi.UpdateDatabaseUser``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `DatabaseUsersApi.UpdateDatabaseUser`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `UpdateDatabaseUser`: CloudDatabaseUser
-    fmt.Fprintf(os.Stdout, "Response from `DatabaseUsersApi.UpdateDatabaseUser`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DatabaseUsersApi.UpdateDatabaseUser`: %v (%v)\n", resp, r)
 }
 ```
 

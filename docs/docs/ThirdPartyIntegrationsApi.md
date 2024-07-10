@@ -36,7 +36,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     integrationType := "integrationType_example" // string | 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -47,12 +51,15 @@ func main() {
 
     resp, r, err := sdk.ThirdPartyIntegrationsApi.CreateThirdPartyIntegration(context.Background(), integrationType, groupId, &thirdPartyIntegration).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ThirdPartyIntegrationsApi.CreateThirdPartyIntegration``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `ThirdPartyIntegrationsApi.CreateThirdPartyIntegration`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `CreateThirdPartyIntegration`: PaginatedIntegration
-    fmt.Fprintf(os.Stdout, "Response from `ThirdPartyIntegrationsApi.CreateThirdPartyIntegration`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ThirdPartyIntegrationsApi.CreateThirdPartyIntegration`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -120,19 +127,26 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     integrationType := "integrationType_example" // string | 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
     resp, r, err := sdk.ThirdPartyIntegrationsApi.DeleteThirdPartyIntegration(context.Background(), integrationType, groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ThirdPartyIntegrationsApi.DeleteThirdPartyIntegration``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `ThirdPartyIntegrationsApi.DeleteThirdPartyIntegration`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `DeleteThirdPartyIntegration`: interface{}
-    fmt.Fprintf(os.Stdout, "Response from `ThirdPartyIntegrationsApi.DeleteThirdPartyIntegration`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ThirdPartyIntegrationsApi.DeleteThirdPartyIntegration`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -196,19 +210,26 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     integrationType := "integrationType_example" // string | 
 
     resp, r, err := sdk.ThirdPartyIntegrationsApi.GetThirdPartyIntegration(context.Background(), groupId, integrationType).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ThirdPartyIntegrationsApi.GetThirdPartyIntegration``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `ThirdPartyIntegrationsApi.GetThirdPartyIntegration`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `GetThirdPartyIntegration`: ThirdPartyIntegration
-    fmt.Fprintf(os.Stdout, "Response from `ThirdPartyIntegrationsApi.GetThirdPartyIntegration`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ThirdPartyIntegrationsApi.GetThirdPartyIntegration`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -272,7 +293,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     includeCount := true // bool |  (optional) (default to true)
@@ -281,12 +306,15 @@ func main() {
 
     resp, r, err := sdk.ThirdPartyIntegrationsApi.ListThirdPartyIntegrations(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ThirdPartyIntegrationsApi.ListThirdPartyIntegrations``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `ThirdPartyIntegrationsApi.ListThirdPartyIntegrations`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `ListThirdPartyIntegrations`: PaginatedIntegration
-    fmt.Fprintf(os.Stdout, "Response from `ThirdPartyIntegrationsApi.ListThirdPartyIntegrations`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ThirdPartyIntegrationsApi.ListThirdPartyIntegrations`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -351,7 +379,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     integrationType := "integrationType_example" // string | 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -362,12 +394,15 @@ func main() {
 
     resp, r, err := sdk.ThirdPartyIntegrationsApi.UpdateThirdPartyIntegration(context.Background(), integrationType, groupId, &thirdPartyIntegration).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ThirdPartyIntegrationsApi.UpdateThirdPartyIntegration``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `ThirdPartyIntegrationsApi.UpdateThirdPartyIntegration`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `UpdateThirdPartyIntegration`: PaginatedIntegration
-    fmt.Fprintf(os.Stdout, "Response from `ThirdPartyIntegrationsApi.UpdateThirdPartyIntegration`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ThirdPartyIntegrationsApi.UpdateThirdPartyIntegration`: %v (%v)\n", resp, r)
 }
 ```
 

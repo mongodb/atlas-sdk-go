@@ -42,7 +42,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -50,12 +54,15 @@ func main() {
 
     resp, r, err := sdk.LegacyBackupApi.CreateLegacyBackupRestoreJob(context.Background(), groupId, clusterName, &backupRestoreJob).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.CreateLegacyBackupRestoreJob``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.CreateLegacyBackupRestoreJob`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `CreateLegacyBackupRestoreJob`: PaginatedRestoreJob
-    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.CreateLegacyBackupRestoreJob`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.CreateLegacyBackupRestoreJob`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -120,7 +127,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -128,12 +139,15 @@ func main() {
 
     resp, r, err := sdk.LegacyBackupApi.DeleteLegacySnapshot(context.Background(), groupId, clusterName, snapshotId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.DeleteLegacySnapshot``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.DeleteLegacySnapshot`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `DeleteLegacySnapshot`: interface{}
-    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.DeleteLegacySnapshot`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.DeleteLegacySnapshot`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -199,7 +213,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     checkpointId := "checkpointId_example" // string | 
@@ -207,12 +225,15 @@ func main() {
 
     resp, r, err := sdk.LegacyBackupApi.GetLegacyBackupCheckpoint(context.Background(), groupId, checkpointId, clusterName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.GetLegacyBackupCheckpoint``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.GetLegacyBackupCheckpoint`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `GetLegacyBackupCheckpoint`: ApiAtlasCheckpoint
-    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.GetLegacyBackupCheckpoint`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.GetLegacyBackupCheckpoint`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -278,7 +299,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -286,12 +311,15 @@ func main() {
 
     resp, r, err := sdk.LegacyBackupApi.GetLegacyBackupRestoreJob(context.Background(), groupId, clusterName, jobId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.GetLegacyBackupRestoreJob``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.GetLegacyBackupRestoreJob`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `GetLegacyBackupRestoreJob`: BackupRestoreJob
-    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.GetLegacyBackupRestoreJob`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.GetLegacyBackupRestoreJob`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -357,7 +385,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -365,12 +397,15 @@ func main() {
 
     resp, r, err := sdk.LegacyBackupApi.GetLegacySnapshot(context.Background(), groupId, clusterName, snapshotId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.GetLegacySnapshot``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.GetLegacySnapshot`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `GetLegacySnapshot`: BackupSnapshot
-    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.GetLegacySnapshot`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.GetLegacySnapshot`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -436,19 +471,26 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
 
     resp, r, err := sdk.LegacyBackupApi.GetLegacySnapshotSchedule(context.Background(), groupId, clusterName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.GetLegacySnapshotSchedule``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.GetLegacySnapshotSchedule`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `GetLegacySnapshotSchedule`: ApiAtlasSnapshotSchedule
-    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.GetLegacySnapshotSchedule`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.GetLegacySnapshotSchedule`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -512,7 +554,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -522,12 +568,15 @@ func main() {
 
     resp, r, err := sdk.LegacyBackupApi.ListLegacyBackupCheckpoints(context.Background(), groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.ListLegacyBackupCheckpoints``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.ListLegacyBackupCheckpoints`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `ListLegacyBackupCheckpoints`: PaginatedApiAtlasCheckpoint
-    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.ListLegacyBackupCheckpoints`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.ListLegacyBackupCheckpoints`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -594,7 +643,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -605,12 +658,15 @@ func main() {
 
     resp, r, err := sdk.LegacyBackupApi.ListLegacyBackupRestoreJobs(context.Background(), groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).BatchId(batchId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.ListLegacyBackupRestoreJobs``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.ListLegacyBackupRestoreJobs`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `ListLegacyBackupRestoreJobs`: PaginatedRestoreJob
-    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.ListLegacyBackupRestoreJobs`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.ListLegacyBackupRestoreJobs`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -678,7 +734,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -689,12 +749,15 @@ func main() {
 
     resp, r, err := sdk.LegacyBackupApi.ListLegacySnapshots(context.Background(), groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Completed(completed).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.ListLegacySnapshots``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.ListLegacySnapshots`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `ListLegacySnapshots`: PaginatedSnapshot
-    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.ListLegacySnapshots`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.ListLegacySnapshots`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -762,7 +825,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -771,12 +838,15 @@ func main() {
 
     resp, r, err := sdk.LegacyBackupApi.UpdateLegacySnapshotRetention(context.Background(), groupId, clusterName, snapshotId, &backupSnapshot).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.UpdateLegacySnapshotRetention``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.UpdateLegacySnapshotRetention`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `UpdateLegacySnapshotRetention`: BackupSnapshot
-    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.UpdateLegacySnapshotRetention`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.UpdateLegacySnapshotRetention`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -843,7 +913,11 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -851,12 +925,15 @@ func main() {
 
     resp, r, err := sdk.LegacyBackupApi.UpdateLegacySnapshotSchedule(context.Background(), groupId, clusterName, &apiAtlasSnapshotSchedule).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.UpdateLegacySnapshotSchedule``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.UpdateLegacySnapshotSchedule`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `UpdateLegacySnapshotSchedule`: ApiAtlasSnapshotSchedule
-    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.UpdateLegacySnapshotSchedule`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.UpdateLegacySnapshotSchedule`: %v (%v)\n", resp, r)
 }
 ```
 

@@ -33,18 +33,25 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
     resp, r, err := sdk.AWSClustersDNSApi.GetAWSCustomDNS(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AWSClustersDNSApi.GetAWSCustomDNS``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `AWSClustersDNSApi.GetAWSCustomDNS`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `GetAWSCustomDNS`: AWSCustomDNSEnabled
-    fmt.Fprintf(os.Stdout, "Response from `AWSClustersDNSApi.GetAWSCustomDNS`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AWSClustersDNSApi.GetAWSCustomDNS`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -106,19 +113,26 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     aWSCustomDNSEnabled := *openapiclient.NewAWSCustomDNSEnabled(false) // AWSCustomDNSEnabled | 
 
     resp, r, err := sdk.AWSClustersDNSApi.ToggleAWSCustomDNS(context.Background(), groupId, &aWSCustomDNSEnabled).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AWSClustersDNSApi.ToggleAWSCustomDNS``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `AWSClustersDNSApi.ToggleAWSCustomDNS`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
     }
     // response from `ToggleAWSCustomDNS`: AWSCustomDNSEnabled
-    fmt.Fprintf(os.Stdout, "Response from `AWSClustersDNSApi.ToggleAWSCustomDNS`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AWSClustersDNSApi.ToggleAWSCustomDNS`: %v (%v)\n", resp, r)
 }
 ```
 
