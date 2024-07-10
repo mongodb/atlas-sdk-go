@@ -41,7 +41,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -52,8 +53,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `AlertConfigurationsApi.CreateAlertConfiguration`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `CreateAlertConfiguration`: GroupAlertsConfig
     fmt.Fprintf(os.Stdout, "Response from `AlertConfigurationsApi.CreateAlertConfiguration`: %v (%v)\n", resp, r)
@@ -121,7 +123,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -132,8 +135,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `AlertConfigurationsApi.DeleteAlertConfiguration`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
 }
 ```
@@ -200,7 +204,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -211,8 +216,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `AlertConfigurationsApi.GetAlertConfiguration`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `GetAlertConfiguration`: GroupAlertsConfig
     fmt.Fprintf(os.Stdout, "Response from `AlertConfigurationsApi.GetAlertConfiguration`: %v (%v)\n", resp, r)
@@ -281,7 +287,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
 
@@ -290,8 +297,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `AlertConfigurationsApi.ListAlertConfigurationMatchersFieldNames`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `ListAlertConfigurationMatchersFieldNames`: []string
     fmt.Fprintf(os.Stdout, "Response from `AlertConfigurationsApi.ListAlertConfigurationMatchersFieldNames`: %v (%v)\n", resp, r)
@@ -350,7 +358,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -363,8 +372,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `AlertConfigurationsApi.ListAlertConfigurations`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `ListAlertConfigurations`: PaginatedAlertConfig
     fmt.Fprintf(os.Stdout, "Response from `AlertConfigurationsApi.ListAlertConfigurations`: %v (%v)\n", resp, r)
@@ -434,7 +444,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -448,8 +459,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `AlertConfigurationsApi.ListAlertConfigurationsByAlertId`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `ListAlertConfigurationsByAlertId`: PaginatedAlertConfig
     fmt.Fprintf(os.Stdout, "Response from `AlertConfigurationsApi.ListAlertConfigurationsByAlertId`: %v (%v)\n", resp, r)
@@ -521,7 +533,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -533,8 +546,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `AlertConfigurationsApi.ToggleAlertConfiguration`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `ToggleAlertConfiguration`: GroupAlertsConfig
     fmt.Fprintf(os.Stdout, "Response from `AlertConfigurationsApi.ToggleAlertConfiguration`: %v (%v)\n", resp, r)
@@ -604,7 +618,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -616,8 +631,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `AlertConfigurationsApi.UpdateAlertConfiguration`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `UpdateAlertConfiguration`: GroupAlertsConfig
     fmt.Fprintf(os.Stdout, "Response from `AlertConfigurationsApi.UpdateAlertConfiguration`: %v (%v)\n", resp, r)

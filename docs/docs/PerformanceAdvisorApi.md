@@ -41,7 +41,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -51,8 +52,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorApi.DisableSlowOperationThresholding`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
 }
 ```
@@ -117,7 +119,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -127,8 +130,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorApi.EnableSlowOperationThresholding`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
 }
 ```
@@ -193,7 +197,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -203,8 +208,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorApi.GetManagedSlowMs`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
 }
 ```
@@ -269,7 +275,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -280,8 +287,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorApi.GetServerlessAutoIndexing`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `GetServerlessAutoIndexing`: bool
     fmt.Fprintf(os.Stdout, "Response from `PerformanceAdvisorApi.GetServerlessAutoIndexing`: %v (%v)\n", resp, r)
@@ -350,7 +358,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -365,8 +374,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorApi.ListSlowQueries`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `ListSlowQueries`: PerformanceAdvisorSlowQueryList
     fmt.Fprintf(os.Stdout, "Response from `PerformanceAdvisorApi.ListSlowQueries`: %v (%v)\n", resp, r)
@@ -439,7 +449,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -452,8 +463,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorApi.ListSlowQueryNamespaces`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `ListSlowQueryNamespaces`: Namespaces
     fmt.Fprintf(os.Stdout, "Response from `PerformanceAdvisorApi.ListSlowQueryNamespaces`: %v (%v)\n", resp, r)
@@ -524,7 +536,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -543,8 +556,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorApi.ListSuggestedIndexes`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `ListSuggestedIndexes`: PerformanceAdvisorResponse
     fmt.Fprintf(os.Stdout, "Response from `PerformanceAdvisorApi.ListSuggestedIndexes`: %v (%v)\n", resp, r)
@@ -621,7 +635,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -633,8 +648,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorApi.SetServerlessAutoIndexing`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `SetServerlessAutoIndexing`: interface{}
     fmt.Fprintf(os.Stdout, "Response from `PerformanceAdvisorApi.SetServerlessAutoIndexing`: %v (%v)\n", resp, r)

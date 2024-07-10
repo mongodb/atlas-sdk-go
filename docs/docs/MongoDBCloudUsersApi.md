@@ -36,7 +36,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     cloudAppUser := *openapiclient.NewCloudAppUser("Country_example", "EmailAddress_example", "FirstName_example", "LastName_example", "MobileNumber_example", "Password_example", "Username_example") // CloudAppUser | 
@@ -46,8 +47,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `MongoDBCloudUsersApi.CreateUser`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `CreateUser`: CloudAppUser
     fmt.Fprintf(os.Stdout, "Response from `MongoDBCloudUsersApi.CreateUser`: %v (%v)\n", resp, r)
@@ -110,7 +112,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     userId := "userId_example" // string | 
@@ -120,8 +123,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `MongoDBCloudUsersApi.GetUser`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `GetUser`: CloudAppUser
     fmt.Fprintf(os.Stdout, "Response from `MongoDBCloudUsersApi.GetUser`: %v (%v)\n", resp, r)
@@ -188,7 +192,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     userName := "userName_example" // string | 
@@ -198,8 +203,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `MongoDBCloudUsersApi.GetUserByUsername`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `GetUserByUsername`: CloudAppUser
     fmt.Fprintf(os.Stdout, "Response from `MongoDBCloudUsersApi.GetUserByUsername`: %v (%v)\n", resp, r)

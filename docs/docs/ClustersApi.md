@@ -48,7 +48,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -59,8 +60,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.CreateCluster`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `CreateCluster`: AdvancedClusterDescription
     fmt.Fprintf(os.Stdout, "Response from `ClustersApi.CreateCluster`: %v (%v)\n", resp, r)
@@ -128,7 +130,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -140,8 +143,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.DeleteCluster`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
 }
 ```
@@ -209,7 +213,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -220,8 +225,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.GetCluster`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `GetCluster`: AdvancedClusterDescription
     fmt.Fprintf(os.Stdout, "Response from `ClustersApi.GetCluster`: %v (%v)\n", resp, r)
@@ -290,7 +296,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -301,8 +308,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.GetClusterAdvancedConfiguration`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `GetClusterAdvancedConfiguration`: ClusterDescriptionProcessArgs
     fmt.Fprintf(os.Stdout, "Response from `ClustersApi.GetClusterAdvancedConfiguration`: %v (%v)\n", resp, r)
@@ -371,7 +379,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -382,8 +391,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.GetClusterStatus`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `GetClusterStatus`: ClusterStatus
     fmt.Fprintf(os.Stdout, "Response from `ClustersApi.GetClusterStatus`: %v (%v)\n", resp, r)
@@ -452,7 +462,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -463,8 +474,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.GetSampleDatasetLoadStatus`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `GetSampleDatasetLoadStatus`: SampleDatasetStatus
     fmt.Fprintf(os.Stdout, "Response from `ClustersApi.GetSampleDatasetLoadStatus`: %v (%v)\n", resp, r)
@@ -533,7 +545,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -548,8 +561,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.ListCloudProviderRegions`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `ListCloudProviderRegions`: PaginatedApiAtlasProviderRegions
     fmt.Fprintf(os.Stdout, "Response from `ClustersApi.ListCloudProviderRegions`: %v (%v)\n", resp, r)
@@ -621,7 +635,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -635,8 +650,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.ListClusters`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `ListClusters`: PaginatedAdvancedClusterDescription
     fmt.Fprintf(os.Stdout, "Response from `ClustersApi.ListClusters`: %v (%v)\n", resp, r)
@@ -707,7 +723,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     includeCount := true // bool |  (optional) (default to true)
@@ -719,8 +736,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.ListClustersForAllProjects`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `ListClustersForAllProjects`: PaginatedOrgGroup
     fmt.Fprintf(os.Stdout, "Response from `ClustersApi.ListClustersForAllProjects`: %v (%v)\n", resp, r)
@@ -785,7 +803,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -796,8 +815,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.LoadSampleDataset`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `LoadSampleDataset`: SampleDatasetStatus
     fmt.Fprintf(os.Stdout, "Response from `ClustersApi.LoadSampleDataset`: %v (%v)\n", resp, r)
@@ -866,7 +886,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -877,8 +898,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.TestFailover`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
 }
 ```
@@ -945,7 +967,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -957,8 +980,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.UpdateCluster`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `UpdateCluster`: AdvancedClusterDescription
     fmt.Fprintf(os.Stdout, "Response from `ClustersApi.UpdateCluster`: %v (%v)\n", resp, r)
@@ -1028,7 +1052,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -1040,8 +1065,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.UpdateClusterAdvancedConfiguration`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `UpdateClusterAdvancedConfiguration`: ClusterDescriptionProcessArgs
     fmt.Fprintf(os.Stdout, "Response from `ClustersApi.UpdateClusterAdvancedConfiguration`: %v (%v)\n", resp, r)
@@ -1111,7 +1137,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -1122,8 +1149,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.UpgradeSharedCluster`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `UpgradeSharedCluster`: LegacyAtlasCluster
     fmt.Fprintf(os.Stdout, "Response from `ClustersApi.UpgradeSharedCluster`: %v (%v)\n", resp, r)
@@ -1191,7 +1219,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -1202,8 +1231,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.UpgradeSharedClusterToServerless`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `UpgradeSharedClusterToServerless`: ServerlessInstanceDescription
     fmt.Fprintf(os.Stdout, "Response from `ClustersApi.UpgradeSharedClusterToServerless`: %v (%v)\n", resp, r)

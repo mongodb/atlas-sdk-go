@@ -38,7 +38,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     {{#allParams}}
@@ -50,8 +51,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `{{classname}}.{{operationId}}`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     {{#returnType}}
     // response from `{{operationId}}`: {{{.}}}

@@ -38,7 +38,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -49,8 +50,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabaseUsersApi.CreateDatabaseUser`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `CreateDatabaseUser`: CloudDatabaseUser
     fmt.Fprintf(os.Stdout, "Response from `DatabaseUsersApi.CreateDatabaseUser`: %v (%v)\n", resp, r)
@@ -118,7 +120,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -130,8 +133,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabaseUsersApi.DeleteDatabaseUser`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `DeleteDatabaseUser`: interface{}
     fmt.Fprintf(os.Stdout, "Response from `DatabaseUsersApi.DeleteDatabaseUser`: %v (%v)\n", resp, r)
@@ -202,7 +206,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -214,8 +219,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabaseUsersApi.GetDatabaseUser`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `GetDatabaseUser`: CloudDatabaseUser
     fmt.Fprintf(os.Stdout, "Response from `DatabaseUsersApi.GetDatabaseUser`: %v (%v)\n", resp, r)
@@ -286,7 +292,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -299,8 +306,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabaseUsersApi.ListDatabaseUsers`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `ListDatabaseUsers`: PaginatedApiAtlasDatabaseUser
     fmt.Fprintf(os.Stdout, "Response from `DatabaseUsersApi.ListDatabaseUsers`: %v (%v)\n", resp, r)
@@ -370,7 +378,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -383,8 +392,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabaseUsersApi.UpdateDatabaseUser`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `UpdateDatabaseUser`: CloudDatabaseUser
     fmt.Fprintf(os.Stdout, "Response from `DatabaseUsersApi.UpdateDatabaseUser`: %v (%v)\n", resp, r)

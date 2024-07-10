@@ -36,7 +36,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     clusterName := "clusterName_example" // string | 
@@ -48,8 +49,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `SharedTierRestoreJobsApi.CreateSharedClusterBackupRestoreJob`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `CreateSharedClusterBackupRestoreJob`: TenantRestore
     fmt.Fprintf(os.Stdout, "Response from `SharedTierRestoreJobsApi.CreateSharedClusterBackupRestoreJob`: %v (%v)\n", resp, r)
@@ -119,7 +121,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     clusterName := "clusterName_example" // string | 
@@ -131,8 +134,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `SharedTierRestoreJobsApi.GetSharedClusterBackupRestoreJob`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `GetSharedClusterBackupRestoreJob`: TenantRestore
     fmt.Fprintf(os.Stdout, "Response from `SharedTierRestoreJobsApi.GetSharedClusterBackupRestoreJob`: %v (%v)\n", resp, r)
@@ -203,7 +207,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     clusterName := "clusterName_example" // string | 
@@ -214,8 +219,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `SharedTierRestoreJobsApi.ListSharedClusterBackupRestoreJobs`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `ListSharedClusterBackupRestoreJobs`: PaginatedTenantRestore
     fmt.Fprintf(os.Stdout, "Response from `SharedTierRestoreJobsApi.ListSharedClusterBackupRestoreJobs`: %v (%v)\n", resp, r)

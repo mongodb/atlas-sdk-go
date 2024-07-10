@@ -50,7 +50,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     createOrganizationRequest := *openapiclient.NewCreateOrganizationRequest("Name_example") // CreateOrganizationRequest | 
@@ -60,8 +61,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.CreateOrganization`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `CreateOrganization`: CreateOrganizationResponse
     fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.CreateOrganization`: %v (%v)\n", resp, r)
@@ -124,7 +126,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     orgId := "4888442a3354817a7320eb61" // string | 
@@ -135,8 +138,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.CreateOrganizationInvitation`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `CreateOrganizationInvitation`: OrganizationInvitation
     fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.CreateOrganizationInvitation`: %v (%v)\n", resp, r)
@@ -204,7 +208,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     orgId := "4888442a3354817a7320eb61" // string | 
@@ -214,8 +219,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.DeleteOrganization`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `DeleteOrganization`: interface{}
     fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.DeleteOrganization`: %v (%v)\n", resp, r)
@@ -282,7 +288,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     orgId := "4888442a3354817a7320eb61" // string | 
@@ -293,8 +300,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.DeleteOrganizationInvitation`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `DeleteOrganizationInvitation`: interface{}
     fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.DeleteOrganizationInvitation`: %v (%v)\n", resp, r)
@@ -363,7 +371,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     orgId := "4888442a3354817a7320eb61" // string | 
@@ -373,8 +382,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.GetOrganization`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `GetOrganization`: AtlasOrganization
     fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.GetOrganization`: %v (%v)\n", resp, r)
@@ -441,7 +451,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     orgId := "4888442a3354817a7320eb61" // string | 
@@ -452,8 +463,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.GetOrganizationInvitation`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `GetOrganizationInvitation`: OrganizationInvitation
     fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.GetOrganizationInvitation`: %v (%v)\n", resp, r)
@@ -522,7 +534,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     orgId := "4888442a3354817a7320eb61" // string | 
@@ -532,8 +545,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.GetOrganizationSettings`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `GetOrganizationSettings`: OrganizationSettings
     fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.GetOrganizationSettings`: %v (%v)\n", resp, r)
@@ -600,7 +614,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     orgId := "4888442a3354817a7320eb61" // string | 
@@ -611,8 +626,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.ListOrganizationInvitations`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `ListOrganizationInvitations`: []OrganizationInvitation
     fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.ListOrganizationInvitations`: %v (%v)\n", resp, r)
@@ -680,7 +696,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     orgId := "4888442a3354817a7320eb61" // string | 
@@ -694,8 +711,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.ListOrganizationProjects`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `ListOrganizationProjects`: PaginatedAtlasGroup
     fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.ListOrganizationProjects`: %v (%v)\n", resp, r)
@@ -766,7 +784,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     orgId := "4888442a3354817a7320eb61" // string | 
@@ -779,8 +798,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.ListOrganizationUsers`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `ListOrganizationUsers`: PaginatedAppUser
     fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.ListOrganizationUsers`: %v (%v)\n", resp, r)
@@ -850,7 +870,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     includeCount := true // bool |  (optional) (default to true)
@@ -863,8 +884,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.ListOrganizations`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `ListOrganizations`: PaginatedOrganization
     fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.ListOrganizations`: %v (%v)\n", resp, r)
@@ -930,7 +952,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     orgId := "4888442a3354817a7320eb61" // string | 
@@ -941,8 +964,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.RemoveOrganizationUser`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `RemoveOrganizationUser`: interface{}
     fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.RemoveOrganizationUser`: %v (%v)\n", resp, r)
@@ -1011,7 +1035,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     orgId := "4888442a3354817a7320eb61" // string | 
@@ -1022,8 +1047,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.RenameOrganization`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `RenameOrganization`: AtlasOrganization
     fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.RenameOrganization`: %v (%v)\n", resp, r)
@@ -1091,7 +1117,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     orgId := "4888442a3354817a7320eb61" // string | 
@@ -1102,8 +1129,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.UpdateOrganizationInvitation`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `UpdateOrganizationInvitation`: OrganizationInvitation
     fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.UpdateOrganizationInvitation`: %v (%v)\n", resp, r)
@@ -1171,7 +1199,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     orgId := "4888442a3354817a7320eb61" // string | 
@@ -1183,8 +1212,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.UpdateOrganizationInvitationById`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `UpdateOrganizationInvitationById`: OrganizationInvitation
     fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.UpdateOrganizationInvitationById`: %v (%v)\n", resp, r)
@@ -1254,7 +1284,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     orgId := "4888442a3354817a7320eb61" // string | 
@@ -1266,8 +1297,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.UpdateOrganizationRoles`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `UpdateOrganizationRoles`: UpdateOrgRolesForUser
     fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.UpdateOrganizationRoles`: %v (%v)\n", resp, r)
@@ -1337,7 +1369,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     orgId := "4888442a3354817a7320eb61" // string | 
@@ -1348,8 +1381,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.UpdateOrganizationSettings`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `UpdateOrganizationSettings`: OrganizationSettings
     fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.UpdateOrganizationSettings`: %v (%v)\n", resp, r)

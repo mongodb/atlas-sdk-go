@@ -47,7 +47,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -58,8 +59,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.CreateDataFederationPrivateEndpoint`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `CreateDataFederationPrivateEndpoint`: PaginatedPrivateNetworkEndpointIdEntry
     fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.CreateDataFederationPrivateEndpoint`: %v (%v)\n", resp, r)
@@ -127,7 +129,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -139,8 +142,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.CreateFederatedDatabase`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `CreateFederatedDatabase`: DataLakeTenant
     fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.CreateFederatedDatabase`: %v (%v)\n", resp, r)
@@ -209,7 +213,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -222,8 +227,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.CreateOneDataFederationQueryLimit`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `CreateOneDataFederationQueryLimit`: DataFederationTenantQueryLimit
     fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.CreateOneDataFederationQueryLimit`: %v (%v)\n", resp, r)
@@ -295,7 +301,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -306,8 +313,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.DeleteDataFederationPrivateEndpoint`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `DeleteDataFederationPrivateEndpoint`: interface{}
     fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.DeleteDataFederationPrivateEndpoint`: %v (%v)\n", resp, r)
@@ -376,7 +384,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -387,8 +396,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.DeleteFederatedDatabase`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `DeleteFederatedDatabase`: interface{}
     fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.DeleteFederatedDatabase`: %v (%v)\n", resp, r)
@@ -457,7 +467,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -469,8 +480,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.DeleteOneDataFederationInstanceQueryLimit`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `DeleteOneDataFederationInstanceQueryLimit`: interface{}
     fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.DeleteOneDataFederationInstanceQueryLimit`: %v (%v)\n", resp, r)
@@ -541,7 +553,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -554,8 +567,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.DownloadFederatedDatabaseQueryLogs`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `DownloadFederatedDatabaseQueryLogs`: io.ReadCloser
     fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.DownloadFederatedDatabaseQueryLogs`: %v (%v)\n", resp, r)
@@ -626,7 +640,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -637,8 +652,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.GetDataFederationPrivateEndpoint`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `GetDataFederationPrivateEndpoint`: PrivateNetworkEndpointIdEntry
     fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.GetDataFederationPrivateEndpoint`: %v (%v)\n", resp, r)
@@ -707,7 +723,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -718,8 +735,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.GetFederatedDatabase`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `GetFederatedDatabase`: DataLakeTenant
     fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.GetFederatedDatabase`: %v (%v)\n", resp, r)
@@ -788,7 +806,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -801,8 +820,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.ListDataFederationPrivateEndpoints`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `ListDataFederationPrivateEndpoints`: PaginatedPrivateNetworkEndpointIdEntry
     fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.ListDataFederationPrivateEndpoints`: %v (%v)\n", resp, r)
@@ -872,7 +892,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -883,8 +904,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.ListFederatedDatabases`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `ListFederatedDatabases`: []DataLakeTenant
     fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.ListFederatedDatabases`: %v (%v)\n", resp, r)
@@ -952,7 +974,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -964,8 +987,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.ReturnFederatedDatabaseQueryLimit`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `ReturnFederatedDatabaseQueryLimit`: DataFederationTenantQueryLimit
     fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.ReturnFederatedDatabaseQueryLimit`: %v (%v)\n", resp, r)
@@ -1036,7 +1060,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -1047,8 +1072,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.ReturnFederatedDatabaseQueryLimits`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `ReturnFederatedDatabaseQueryLimits`: []DataFederationTenantQueryLimit
     fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.ReturnFederatedDatabaseQueryLimits`: %v (%v)\n", resp, r)
@@ -1117,7 +1143,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -1130,8 +1157,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.UpdateFederatedDatabase`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `UpdateFederatedDatabase`: DataLakeTenant
     fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.UpdateFederatedDatabase`: %v (%v)\n", resp, r)

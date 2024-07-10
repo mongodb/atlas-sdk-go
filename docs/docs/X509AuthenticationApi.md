@@ -36,7 +36,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -48,8 +49,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `X509AuthenticationApi.CreateDatabaseUserCertificate`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `CreateDatabaseUserCertificate`: string
     fmt.Fprintf(os.Stdout, "Response from `X509AuthenticationApi.CreateDatabaseUserCertificate`: %v (%v)\n", resp, r)
@@ -119,7 +121,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -129,8 +132,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `X509AuthenticationApi.DisableCustomerManagedX509`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `DisableCustomerManagedX509`: UserSecurity
     fmt.Fprintf(os.Stdout, "Response from `X509AuthenticationApi.DisableCustomerManagedX509`: %v (%v)\n", resp, r)
@@ -197,7 +201,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -211,8 +216,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `X509AuthenticationApi.ListDatabaseUserCertificates`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `ListDatabaseUserCertificates`: PaginatedUserCert
     fmt.Fprintf(os.Stdout, "Response from `X509AuthenticationApi.ListDatabaseUserCertificates`: %v (%v)\n", resp, r)

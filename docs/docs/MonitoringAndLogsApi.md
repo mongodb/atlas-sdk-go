@@ -47,7 +47,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -58,8 +59,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.GetAtlasProcess`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `GetAtlasProcess`: ApiHostViewAtlas
     fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.GetAtlasProcess`: %v (%v)\n", resp, r)
@@ -128,7 +130,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -140,8 +143,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.GetDatabase`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `GetDatabase`: MesurementsDatabase
     fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.GetDatabase`: %v (%v)\n", resp, r)
@@ -212,7 +216,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -229,8 +234,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.GetDatabaseMeasurements`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `GetDatabaseMeasurements`: ApiMeasurementsGeneralViewAtlas
     fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.GetDatabaseMeasurements`: %v (%v)\n", resp, r)
@@ -306,7 +312,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -323,8 +330,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.GetDiskMeasurements`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `GetDiskMeasurements`: ApiMeasurementsGeneralViewAtlas
     fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.GetDiskMeasurements`: %v (%v)\n", resp, r)
@@ -400,7 +408,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -414,8 +423,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.GetHostLogs`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `GetHostLogs`: io.ReadCloser
     fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.GetHostLogs`: %v (%v)\n", resp, r)
@@ -488,7 +498,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -504,8 +515,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.GetHostMeasurements`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `GetHostMeasurements`: ApiMeasurementsGeneralViewAtlas
     fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.GetHostMeasurements`: %v (%v)\n", resp, r)
@@ -579,7 +591,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     processId := "my.host.name.com:27017" // string | 
@@ -598,8 +611,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.GetIndexMetrics`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `GetIndexMetrics`: MeasurementsIndexes
     fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.GetIndexMetrics`: %v (%v)\n", resp, r)
@@ -679,7 +693,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     processId := "my.host.name.com:27017" // string | 
@@ -695,8 +710,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.GetMeasurements`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `GetMeasurements`: MeasurementsNonIndex
     fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.GetMeasurements`: %v (%v)\n", resp, r)
@@ -770,7 +786,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -783,8 +800,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.ListAtlasProcesses`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `ListAtlasProcesses`: PaginatedHostViewAtlas
     fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.ListAtlasProcesses`: %v (%v)\n", resp, r)
@@ -854,7 +872,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -868,8 +887,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.ListDatabases`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `ListDatabases`: PaginatedDatabase
     fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.ListDatabases`: %v (%v)\n", resp, r)
@@ -941,7 +961,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     partitionName := "partitionName_example" // string | 
@@ -953,8 +974,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.ListDiskMeasurements`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `ListDiskMeasurements`: MeasurementDiskPartition
     fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.ListDiskMeasurements`: %v (%v)\n", resp, r)
@@ -1025,7 +1047,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -1039,8 +1062,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.ListDiskPartitions`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `ListDiskPartitions`: PaginatedDiskPartition
     fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.ListDiskPartitions`: %v (%v)\n", resp, r)
@@ -1112,7 +1136,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     processId := "my.host.name.com:27017" // string | 
@@ -1130,8 +1155,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.ListIndexMetrics`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `ListIndexMetrics`: MeasurementsIndexes
     fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.ListIndexMetrics`: %v (%v)\n", resp, r)
@@ -1209,7 +1235,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     processId := "my.host.name.com:27017" // string | 
@@ -1220,8 +1247,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.ListMetricTypes`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `ListMetricTypes`: CloudSearchMetrics
     fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.ListMetricTypes`: %v (%v)\n", resp, r)

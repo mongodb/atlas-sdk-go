@@ -37,7 +37,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     orgId := "4888442a3354817a7320eb61" // string | 
@@ -49,8 +50,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.GetOrganizationEvent`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `GetOrganizationEvent`: EventViewForOrg
     fmt.Fprintf(os.Stdout, "Response from `EventsApi.GetOrganizationEvent`: %v (%v)\n", resp, r)
@@ -120,7 +122,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -132,8 +135,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.GetProjectEvent`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `GetProjectEvent`: EventViewForNdsGroup
     fmt.Fprintf(os.Stdout, "Response from `EventsApi.GetProjectEvent`: %v (%v)\n", resp, r)
@@ -203,7 +207,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     orgId := "4888442a3354817a7320eb61" // string | 
@@ -220,8 +225,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.ListOrganizationEvents`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `ListOrganizationEvents`: OrgPaginatedEvent
     fmt.Fprintf(os.Stdout, "Response from `EventsApi.ListOrganizationEvents`: %v (%v)\n", resp, r)
@@ -295,7 +301,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -314,8 +321,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.ListProjectEvents`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `ListProjectEvents`: GroupPaginatedEvent
     fmt.Fprintf(os.Stdout, "Response from `EventsApi.ListProjectEvents`: %v (%v)\n", resp, r)

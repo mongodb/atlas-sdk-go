@@ -57,7 +57,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -68,8 +69,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.AddUserToProject`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `AddUserToProject`: OrganizationInvitation
     fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.AddUserToProject`: %v (%v)\n", resp, r)
@@ -137,7 +139,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     group := *openapiclient.NewGroup(int64(123), time.Now(), "Name_example", "32b6e34b3d91647abb20e7b8") // Group | 
@@ -148,8 +151,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.CreateProject`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `CreateProject`: Group
     fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.CreateProject`: %v (%v)\n", resp, r)
@@ -213,7 +217,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -224,8 +229,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.CreateProjectInvitation`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `CreateProjectInvitation`: GroupInvitation
     fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.CreateProjectInvitation`: %v (%v)\n", resp, r)
@@ -293,7 +299,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -303,8 +310,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.DeleteProject`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `DeleteProject`: interface{}
     fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.DeleteProject`: %v (%v)\n", resp, r)
@@ -371,7 +379,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -382,8 +391,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.DeleteProjectInvitation`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `DeleteProjectInvitation`: interface{}
     fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.DeleteProjectInvitation`: %v (%v)\n", resp, r)
@@ -452,7 +462,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     limitName := "limitName_example" // string | 
@@ -463,8 +474,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.DeleteProjectLimit`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `DeleteProjectLimit`: interface{}
     fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.DeleteProjectLimit`: %v (%v)\n", resp, r)
@@ -533,7 +545,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -543,8 +556,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.GetProject`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `GetProject`: Group
     fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.GetProject`: %v (%v)\n", resp, r)
@@ -611,7 +625,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupName := "groupName_example" // string | 
@@ -621,8 +636,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.GetProjectByName`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `GetProjectByName`: Group
     fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.GetProjectByName`: %v (%v)\n", resp, r)
@@ -689,7 +705,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -700,8 +717,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.GetProjectInvitation`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `GetProjectInvitation`: GroupInvitation
     fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.GetProjectInvitation`: %v (%v)\n", resp, r)
@@ -770,7 +788,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     limitName := "limitName_example" // string | 
@@ -781,8 +800,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.GetProjectLimit`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `GetProjectLimit`: DataFederationLimit
     fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.GetProjectLimit`: %v (%v)\n", resp, r)
@@ -851,7 +871,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -861,8 +882,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.GetProjectSettings`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `GetProjectSettings`: GroupSettings
     fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.GetProjectSettings`: %v (%v)\n", resp, r)
@@ -929,7 +951,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -940,8 +963,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.ListProjectInvitations`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `ListProjectInvitations`: []GroupInvitation
     fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.ListProjectInvitations`: %v (%v)\n", resp, r)
@@ -1009,7 +1033,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -1019,8 +1044,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.ListProjectLimits`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `ListProjectLimits`: []DataFederationLimit
     fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.ListProjectLimits`: %v (%v)\n", resp, r)
@@ -1087,7 +1113,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -1102,8 +1129,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.ListProjectUsers`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `ListProjectUsers`: PaginatedAppUser
     fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.ListProjectUsers`: %v (%v)\n", resp, r)
@@ -1175,7 +1203,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     includeCount := true // bool |  (optional) (default to true)
@@ -1187,8 +1216,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.ListProjects`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `ListProjects`: PaginatedAtlasGroup
     fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.ListProjects`: %v (%v)\n", resp, r)
@@ -1253,7 +1283,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -1264,8 +1295,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.MigrateProjectToAnotherOrg`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `MigrateProjectToAnotherOrg`: Group
     fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.MigrateProjectToAnotherOrg`: %v (%v)\n", resp, r)
@@ -1333,7 +1365,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -1344,8 +1377,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.RemoveProjectUser`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
 }
 ```
@@ -1412,7 +1446,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -1422,8 +1457,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.ReturnAllIPAddresses`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `ReturnAllIPAddresses`: GroupIPAddresses
     fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.ReturnAllIPAddresses`: %v (%v)\n", resp, r)
@@ -1490,7 +1526,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     limitName := "limitName_example" // string | 
@@ -1502,8 +1539,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.SetProjectLimit`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `SetProjectLimit`: DataFederationLimit
     fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.SetProjectLimit`: %v (%v)\n", resp, r)
@@ -1573,7 +1611,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -1584,8 +1623,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.UpdateProject`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `UpdateProject`: Group
     fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.UpdateProject`: %v (%v)\n", resp, r)
@@ -1653,7 +1693,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -1664,8 +1705,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.UpdateProjectInvitation`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `UpdateProjectInvitation`: GroupInvitation
     fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.UpdateProjectInvitation`: %v (%v)\n", resp, r)
@@ -1733,7 +1775,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -1745,8 +1788,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.UpdateProjectInvitationById`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `UpdateProjectInvitationById`: GroupInvitation
     fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.UpdateProjectInvitationById`: %v (%v)\n", resp, r)
@@ -1816,7 +1860,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -1828,8 +1873,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.UpdateProjectRoles`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `UpdateProjectRoles`: UpdateGroupRolesForUser
     fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.UpdateProjectRoles`: %v (%v)\n", resp, r)
@@ -1899,7 +1945,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -1910,8 +1957,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.UpdateProjectSettings`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `UpdateProjectSettings`: GroupSettings
     fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.UpdateProjectSettings`: %v (%v)\n", resp, r)

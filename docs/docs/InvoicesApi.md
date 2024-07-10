@@ -39,7 +39,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     orgId := "4888442a3354817a7320eb61" // string | 
@@ -50,8 +51,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `InvoicesApi.CreateCostExplorerQueryProcess`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `CreateCostExplorerQueryProcess`: CostExplorerFilterResponse
     fmt.Fprintf(os.Stdout, "Response from `InvoicesApi.CreateCostExplorerQueryProcess`: %v (%v)\n", resp, r)
@@ -119,7 +121,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     orgId := "4888442a3354817a7320eb61" // string | 
@@ -130,8 +133,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `InvoicesApi.CreateCostExplorerQueryProcess1`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `CreateCostExplorerQueryProcess1`: string
     fmt.Fprintf(os.Stdout, "Response from `InvoicesApi.CreateCostExplorerQueryProcess1`: %v (%v)\n", resp, r)
@@ -200,7 +204,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     orgId := "4888442a3354817a7320eb61" // string | 
@@ -211,8 +216,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `InvoicesApi.DownloadInvoiceCSV`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `DownloadInvoiceCSV`: string
     fmt.Fprintf(os.Stdout, "Response from `InvoicesApi.DownloadInvoiceCSV`: %v (%v)\n", resp, r)
@@ -281,7 +287,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     orgId := "4888442a3354817a7320eb61" // string | 
@@ -292,8 +299,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `InvoicesApi.GetInvoice`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `GetInvoice`: string
     fmt.Fprintf(os.Stdout, "Response from `InvoicesApi.GetInvoice`: %v (%v)\n", resp, r)
@@ -362,7 +370,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     orgId := "4888442a3354817a7320eb61" // string | 
@@ -375,8 +384,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `InvoicesApi.ListInvoices`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `ListInvoices`: PaginatedApiInvoiceMetadata
     fmt.Fprintf(os.Stdout, "Response from `InvoicesApi.ListInvoices`: %v (%v)\n", resp, r)
@@ -446,7 +456,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     orgId := "4888442a3354817a7320eb61" // string | 
@@ -456,8 +467,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `InvoicesApi.ListPendingInvoices`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `ListPendingInvoices`: PaginatedApiInvoice
     fmt.Fprintf(os.Stdout, "Response from `InvoicesApi.ListPendingInvoices`: %v (%v)\n", resp, r)

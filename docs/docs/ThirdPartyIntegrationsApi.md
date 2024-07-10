@@ -38,7 +38,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     integrationType := "integrationType_example" // string | 
@@ -53,8 +54,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ThirdPartyIntegrationsApi.CreateThirdPartyIntegration`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `CreateThirdPartyIntegration`: PaginatedIntegration
     fmt.Fprintf(os.Stdout, "Response from `ThirdPartyIntegrationsApi.CreateThirdPartyIntegration`: %v (%v)\n", resp, r)
@@ -127,7 +129,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     integrationType := "integrationType_example" // string | 
@@ -138,8 +141,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ThirdPartyIntegrationsApi.DeleteThirdPartyIntegration`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `DeleteThirdPartyIntegration`: interface{}
     fmt.Fprintf(os.Stdout, "Response from `ThirdPartyIntegrationsApi.DeleteThirdPartyIntegration`: %v (%v)\n", resp, r)
@@ -208,7 +212,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -219,8 +224,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ThirdPartyIntegrationsApi.GetThirdPartyIntegration`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `GetThirdPartyIntegration`: ThirdPartyIntegration
     fmt.Fprintf(os.Stdout, "Response from `ThirdPartyIntegrationsApi.GetThirdPartyIntegration`: %v (%v)\n", resp, r)
@@ -289,7 +295,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -302,8 +309,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ThirdPartyIntegrationsApi.ListThirdPartyIntegrations`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `ListThirdPartyIntegrations`: PaginatedIntegration
     fmt.Fprintf(os.Stdout, "Response from `ThirdPartyIntegrationsApi.ListThirdPartyIntegrations`: %v (%v)\n", resp, r)
@@ -373,7 +381,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     integrationType := "integrationType_example" // string | 
@@ -388,8 +397,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ThirdPartyIntegrationsApi.UpdateThirdPartyIntegration`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `UpdateThirdPartyIntegration`: PaginatedIntegration
     fmt.Fprintf(os.Stdout, "Response from `ThirdPartyIntegrationsApi.UpdateThirdPartyIntegration`: %v (%v)\n", resp, r)

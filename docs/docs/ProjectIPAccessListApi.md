@@ -38,7 +38,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -52,8 +53,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectIPAccessListApi.CreateProjectIpAccessList`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `CreateProjectIpAccessList`: PaginatedNetworkAccess
     fmt.Fprintf(os.Stdout, "Response from `ProjectIPAccessListApi.CreateProjectIpAccessList`: %v (%v)\n", resp, r)
@@ -124,7 +126,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -135,8 +138,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectIPAccessListApi.DeleteProjectIpAccessList`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `DeleteProjectIpAccessList`: interface{}
     fmt.Fprintf(os.Stdout, "Response from `ProjectIPAccessListApi.DeleteProjectIpAccessList`: %v (%v)\n", resp, r)
@@ -205,7 +209,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -216,8 +221,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectIPAccessListApi.GetProjectIpAccessListStatus`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `GetProjectIpAccessListStatus`: NetworkPermissionEntryStatus
     fmt.Fprintf(os.Stdout, "Response from `ProjectIPAccessListApi.GetProjectIpAccessListStatus`: %v (%v)\n", resp, r)
@@ -286,7 +292,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -297,8 +304,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectIPAccessListApi.GetProjectIpList`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `GetProjectIpList`: NetworkPermissionEntry
     fmt.Fprintf(os.Stdout, "Response from `ProjectIPAccessListApi.GetProjectIpList`: %v (%v)\n", resp, r)
@@ -367,7 +375,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -380,8 +389,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectIPAccessListApi.ListProjectIpAccessLists`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `ListProjectIpAccessLists`: PaginatedNetworkAccess
     fmt.Fprintf(os.Stdout, "Response from `ProjectIPAccessListApi.ListProjectIpAccessLists`: %v (%v)\n", resp, r)

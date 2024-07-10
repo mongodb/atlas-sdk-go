@@ -46,7 +46,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -57,8 +58,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringApi.CreatePeeringConnection`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `CreatePeeringConnection`: BaseNetworkPeeringConnectionSettings
     fmt.Fprintf(os.Stdout, "Response from `NetworkPeeringApi.CreatePeeringConnection`: %v (%v)\n", resp, r)
@@ -126,7 +128,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -137,8 +140,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringApi.CreatePeeringContainer`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `CreatePeeringContainer`: CloudProviderContainer
     fmt.Fprintf(os.Stdout, "Response from `NetworkPeeringApi.CreatePeeringContainer`: %v (%v)\n", resp, r)
@@ -206,7 +210,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -217,8 +222,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringApi.DeletePeeringConnection`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `DeletePeeringConnection`: interface{}
     fmt.Fprintf(os.Stdout, "Response from `NetworkPeeringApi.DeletePeeringConnection`: %v (%v)\n", resp, r)
@@ -287,7 +293,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -298,8 +305,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringApi.DeletePeeringContainer`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `DeletePeeringContainer`: interface{}
     fmt.Fprintf(os.Stdout, "Response from `NetworkPeeringApi.DeletePeeringContainer`: %v (%v)\n", resp, r)
@@ -368,7 +376,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -379,8 +388,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringApi.DisablePeering`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `DisablePeering`: PrivateIPMode
     fmt.Fprintf(os.Stdout, "Response from `NetworkPeeringApi.DisablePeering`: %v (%v)\n", resp, r)
@@ -448,7 +458,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -459,8 +470,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringApi.GetPeeringConnection`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `GetPeeringConnection`: BaseNetworkPeeringConnectionSettings
     fmt.Fprintf(os.Stdout, "Response from `NetworkPeeringApi.GetPeeringConnection`: %v (%v)\n", resp, r)
@@ -529,7 +541,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -540,8 +553,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringApi.GetPeeringContainer`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `GetPeeringContainer`: CloudProviderContainer
     fmt.Fprintf(os.Stdout, "Response from `NetworkPeeringApi.GetPeeringContainer`: %v (%v)\n", resp, r)
@@ -610,7 +624,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -624,8 +639,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringApi.ListPeeringConnections`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `ListPeeringConnections`: PaginatedContainerPeer
     fmt.Fprintf(os.Stdout, "Response from `NetworkPeeringApi.ListPeeringConnections`: %v (%v)\n", resp, r)
@@ -696,7 +712,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -710,8 +727,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringApi.ListPeeringContainerByCloudProvider`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `ListPeeringContainerByCloudProvider`: PaginatedCloudProviderContainer
     fmt.Fprintf(os.Stdout, "Response from `NetworkPeeringApi.ListPeeringContainerByCloudProvider`: %v (%v)\n", resp, r)
@@ -782,7 +800,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -795,8 +814,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringApi.ListPeeringContainers`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `ListPeeringContainers`: PaginatedCloudProviderContainer
     fmt.Fprintf(os.Stdout, "Response from `NetworkPeeringApi.ListPeeringContainers`: %v (%v)\n", resp, r)
@@ -866,7 +886,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -878,8 +899,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringApi.UpdatePeeringConnection`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `UpdatePeeringConnection`: BaseNetworkPeeringConnectionSettings
     fmt.Fprintf(os.Stdout, "Response from `NetworkPeeringApi.UpdatePeeringConnection`: %v (%v)\n", resp, r)
@@ -949,7 +971,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -961,8 +984,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringApi.UpdatePeeringContainer`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `UpdatePeeringContainer`: CloudProviderContainer
     fmt.Fprintf(os.Stdout, "Response from `NetworkPeeringApi.UpdatePeeringContainer`: %v (%v)\n", resp, r)
@@ -1032,7 +1056,8 @@ func main() {
 
     sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
     if err != nil {
-      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -1042,8 +1067,9 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringApi.VerifyConnectViaPeeringOnlyModeForOneProject`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
-          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
+        return
     }
     // response from `VerifyConnectViaPeeringOnlyModeForOneProject`: PrivateIPMode
     fmt.Fprintf(os.Stdout, "Response from `NetworkPeeringApi.VerifyConnectViaPeeringOnlyModeForOneProject`: %v (%v)\n", resp, r)
