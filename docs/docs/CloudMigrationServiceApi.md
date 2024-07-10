@@ -39,19 +39,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     orgId := "4888442a3354817a7320eb61" // string | 
     targetOrgRequest := *openapiclient.NewTargetOrgRequest() // TargetOrgRequest | 
 
     resp, r, err := sdk.CloudMigrationServiceApi.CreateLinkToken(context.Background(), orgId, &targetOrgRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudMigrationServiceApi.CreateLinkToken``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudMigrationServiceApi.CreateLinkToken`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `CreateLinkToken`: TargetOrg
-    fmt.Fprintf(os.Stdout, "Response from `CloudMigrationServiceApi.CreateLinkToken`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CloudMigrationServiceApi.CreateLinkToken`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -114,19 +119,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     liveMigrationRequest20240530 := *openapiclient.NewLiveMigrationRequest20240530(*openapiclient.NewDestination("ClusterName_example", "9b43a5b329223c3a1591a678", "HostnameSchemaType_example"), *openapiclient.NewSource("ClusterName_example", "9b43a5b329223c3a1591a678", false, false)) // LiveMigrationRequest20240530 | 
 
     resp, r, err := sdk.CloudMigrationServiceApi.CreatePushMigration(context.Background(), groupId, &liveMigrationRequest20240530).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudMigrationServiceApi.CreatePushMigration``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudMigrationServiceApi.CreatePushMigration`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `CreatePushMigration`: LiveMigrationResponse
-    fmt.Fprintf(os.Stdout, "Response from `CloudMigrationServiceApi.CreatePushMigration`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CloudMigrationServiceApi.CreatePushMigration`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -189,16 +199,21 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     liveMigrationId := "6296fb4c7c7aa997cf94e9a8" // string | 
 
     r, err := sdk.CloudMigrationServiceApi.CutoverMigration(context.Background(), groupId, liveMigrationId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudMigrationServiceApi.CutoverMigration``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudMigrationServiceApi.CutoverMigration`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
 }
 ```
@@ -263,18 +278,23 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     orgId := "4888442a3354817a7320eb61" // string | 
 
     resp, r, err := sdk.CloudMigrationServiceApi.DeleteLinkToken(context.Background(), orgId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudMigrationServiceApi.DeleteLinkToken``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudMigrationServiceApi.DeleteLinkToken`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `DeleteLinkToken`: interface{}
-    fmt.Fprintf(os.Stdout, "Response from `CloudMigrationServiceApi.DeleteLinkToken`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CloudMigrationServiceApi.DeleteLinkToken`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -336,19 +356,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     liveMigrationId := "6296fb4c7c7aa997cf94e9a8" // string | 
 
     resp, r, err := sdk.CloudMigrationServiceApi.GetPushMigration(context.Background(), groupId, liveMigrationId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudMigrationServiceApi.GetPushMigration``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudMigrationServiceApi.GetPushMigration`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `GetPushMigration`: LiveMigrationResponse
-    fmt.Fprintf(os.Stdout, "Response from `CloudMigrationServiceApi.GetPushMigration`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CloudMigrationServiceApi.GetPushMigration`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -412,19 +437,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     validationId := "507f1f77bcf86cd799439011" // string | 
 
     resp, r, err := sdk.CloudMigrationServiceApi.GetValidationStatus(context.Background(), groupId, validationId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudMigrationServiceApi.GetValidationStatus``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudMigrationServiceApi.GetValidationStatus`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `GetValidationStatus`: LiveImportValidation
-    fmt.Fprintf(os.Stdout, "Response from `CloudMigrationServiceApi.GetValidationStatus`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CloudMigrationServiceApi.GetValidationStatus`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -488,18 +518,23 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     orgId := "4888442a3354817a7320eb61" // string | 
 
     resp, r, err := sdk.CloudMigrationServiceApi.ListSourceProjects(context.Background(), orgId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudMigrationServiceApi.ListSourceProjects``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudMigrationServiceApi.ListSourceProjects`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `ListSourceProjects`: []LiveImportAvailableProject
-    fmt.Fprintf(os.Stdout, "Response from `CloudMigrationServiceApi.ListSourceProjects`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CloudMigrationServiceApi.ListSourceProjects`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -561,19 +596,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     liveMigrationRequest20240530 := *openapiclient.NewLiveMigrationRequest20240530(*openapiclient.NewDestination("ClusterName_example", "9b43a5b329223c3a1591a678", "HostnameSchemaType_example"), *openapiclient.NewSource("ClusterName_example", "9b43a5b329223c3a1591a678", false, false)) // LiveMigrationRequest20240530 | 
 
     resp, r, err := sdk.CloudMigrationServiceApi.ValidateMigration(context.Background(), groupId, &liveMigrationRequest20240530).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudMigrationServiceApi.ValidateMigration``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudMigrationServiceApi.ValidateMigration`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `ValidateMigration`: LiveImportValidation
-    fmt.Fprintf(os.Stdout, "Response from `CloudMigrationServiceApi.ValidateMigration`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CloudMigrationServiceApi.ValidateMigration`: %v (%v)\n", resp, r)
 }
 ```
 

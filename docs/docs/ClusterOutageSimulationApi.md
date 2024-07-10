@@ -34,19 +34,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
 
     resp, r, err := sdk.ClusterOutageSimulationApi.EndOutageSimulation(context.Background(), groupId, clusterName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ClusterOutageSimulationApi.EndOutageSimulation``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `ClusterOutageSimulationApi.EndOutageSimulation`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `EndOutageSimulation`: ClusterOutageSimulation
-    fmt.Fprintf(os.Stdout, "Response from `ClusterOutageSimulationApi.EndOutageSimulation`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ClusterOutageSimulationApi.EndOutageSimulation`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -110,19 +115,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
 
     resp, r, err := sdk.ClusterOutageSimulationApi.GetOutageSimulation(context.Background(), groupId, clusterName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ClusterOutageSimulationApi.GetOutageSimulation``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `ClusterOutageSimulationApi.GetOutageSimulation`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `GetOutageSimulation`: ClusterOutageSimulation
-    fmt.Fprintf(os.Stdout, "Response from `ClusterOutageSimulationApi.GetOutageSimulation`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ClusterOutageSimulationApi.GetOutageSimulation`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -186,7 +196,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -194,12 +207,14 @@ func main() {
 
     resp, r, err := sdk.ClusterOutageSimulationApi.StartOutageSimulation(context.Background(), groupId, clusterName, &clusterOutageSimulation).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ClusterOutageSimulationApi.StartOutageSimulation``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `ClusterOutageSimulationApi.StartOutageSimulation`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `StartOutageSimulation`: ClusterOutageSimulation
-    fmt.Fprintf(os.Stdout, "Response from `ClusterOutageSimulationApi.StartOutageSimulation`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ClusterOutageSimulationApi.StartOutageSimulation`: %v (%v)\n", resp, r)
 }
 ```
 

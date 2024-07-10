@@ -34,7 +34,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     username := "username_example" // string | 
@@ -42,12 +45,14 @@ func main() {
 
     resp, r, err := sdk.X509AuthenticationApi.CreateDatabaseUserCertificate(context.Background(), groupId, username, &userCert).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `X509AuthenticationApi.CreateDatabaseUserCertificate``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `X509AuthenticationApi.CreateDatabaseUserCertificate`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `CreateDatabaseUserCertificate`: string
-    fmt.Fprintf(os.Stdout, "Response from `X509AuthenticationApi.CreateDatabaseUserCertificate`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `X509AuthenticationApi.CreateDatabaseUserCertificate`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -112,18 +117,23 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
     resp, r, err := sdk.X509AuthenticationApi.DisableCustomerManagedX509(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `X509AuthenticationApi.DisableCustomerManagedX509``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `X509AuthenticationApi.DisableCustomerManagedX509`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `DisableCustomerManagedX509`: UserSecurity
-    fmt.Fprintf(os.Stdout, "Response from `X509AuthenticationApi.DisableCustomerManagedX509`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `X509AuthenticationApi.DisableCustomerManagedX509`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -185,7 +195,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     username := "username_example" // string | 
@@ -195,12 +208,14 @@ func main() {
 
     resp, r, err := sdk.X509AuthenticationApi.ListDatabaseUserCertificates(context.Background(), groupId, username).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `X509AuthenticationApi.ListDatabaseUserCertificates``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `X509AuthenticationApi.ListDatabaseUserCertificates`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `ListDatabaseUserCertificates`: PaginatedUserCert
-    fmt.Fprintf(os.Stdout, "Response from `X509AuthenticationApi.ListDatabaseUserCertificates`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `X509AuthenticationApi.ListDatabaseUserCertificates`: %v (%v)\n", resp, r)
 }
 ```
 

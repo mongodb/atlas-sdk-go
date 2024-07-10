@@ -36,19 +36,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     userCustomDBRole := *openapiclient.NewUserCustomDBRole("RoleName_example") // UserCustomDBRole | 
 
     resp, r, err := sdk.CustomDatabaseRolesApi.CreateCustomDatabaseRole(context.Background(), groupId, &userCustomDBRole).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CustomDatabaseRolesApi.CreateCustomDatabaseRole``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `CustomDatabaseRolesApi.CreateCustomDatabaseRole`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `CreateCustomDatabaseRole`: UserCustomDBRole
-    fmt.Fprintf(os.Stdout, "Response from `CustomDatabaseRolesApi.CreateCustomDatabaseRole`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CustomDatabaseRolesApi.CreateCustomDatabaseRole`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -111,16 +116,21 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     roleName := "roleName_example" // string | 
 
     r, err := sdk.CustomDatabaseRolesApi.DeleteCustomDatabaseRole(context.Background(), groupId, roleName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CustomDatabaseRolesApi.DeleteCustomDatabaseRole``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `CustomDatabaseRolesApi.DeleteCustomDatabaseRole`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
 }
 ```
@@ -185,19 +195,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     roleName := "roleName_example" // string | 
 
     resp, r, err := sdk.CustomDatabaseRolesApi.GetCustomDatabaseRole(context.Background(), groupId, roleName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CustomDatabaseRolesApi.GetCustomDatabaseRole``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `CustomDatabaseRolesApi.GetCustomDatabaseRole`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `GetCustomDatabaseRole`: UserCustomDBRole
-    fmt.Fprintf(os.Stdout, "Response from `CustomDatabaseRolesApi.GetCustomDatabaseRole`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CustomDatabaseRolesApi.GetCustomDatabaseRole`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -261,18 +276,23 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
     resp, r, err := sdk.CustomDatabaseRolesApi.ListCustomDatabaseRoles(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CustomDatabaseRolesApi.ListCustomDatabaseRoles``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `CustomDatabaseRolesApi.ListCustomDatabaseRoles`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `ListCustomDatabaseRoles`: []UserCustomDBRole
-    fmt.Fprintf(os.Stdout, "Response from `CustomDatabaseRolesApi.ListCustomDatabaseRoles`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CustomDatabaseRolesApi.ListCustomDatabaseRoles`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -334,7 +354,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     roleName := "roleName_example" // string | 
@@ -342,12 +365,14 @@ func main() {
 
     resp, r, err := sdk.CustomDatabaseRolesApi.UpdateCustomDatabaseRole(context.Background(), groupId, roleName, &updateCustomDBRole).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CustomDatabaseRolesApi.UpdateCustomDatabaseRole``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `CustomDatabaseRolesApi.UpdateCustomDatabaseRole`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `UpdateCustomDatabaseRole`: UserCustomDBRole
-    fmt.Fprintf(os.Stdout, "Response from `CustomDatabaseRolesApi.UpdateCustomDatabaseRole`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CustomDatabaseRolesApi.UpdateCustomDatabaseRole`: %v (%v)\n", resp, r)
 }
 ```
 

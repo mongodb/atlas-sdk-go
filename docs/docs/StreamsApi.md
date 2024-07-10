@@ -42,7 +42,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     tenantName := "tenantName_example" // string | 
@@ -50,12 +53,14 @@ func main() {
 
     resp, r, err := sdk.StreamsApi.CreateStreamConnection(context.Background(), groupId, tenantName, &streamsConnection).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.CreateStreamConnection``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.CreateStreamConnection`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `CreateStreamConnection`: StreamsConnection
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.CreateStreamConnection`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.CreateStreamConnection`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -120,19 +125,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     streamsTenant := *openapiclient.NewStreamsTenant() // StreamsTenant | 
 
     resp, r, err := sdk.StreamsApi.CreateStreamInstance(context.Background(), groupId, &streamsTenant).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.CreateStreamInstance``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.CreateStreamInstance`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `CreateStreamInstance`: StreamsTenant
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.CreateStreamInstance`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.CreateStreamInstance`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -195,7 +205,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     tenantName := "tenantName_example" // string | 
@@ -203,12 +216,14 @@ func main() {
 
     resp, r, err := sdk.StreamsApi.DeleteStreamConnection(context.Background(), groupId, tenantName, connectionName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.DeleteStreamConnection``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.DeleteStreamConnection`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `DeleteStreamConnection`: interface{}
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.DeleteStreamConnection`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.DeleteStreamConnection`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -274,19 +289,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     tenantName := "tenantName_example" // string | 
 
     resp, r, err := sdk.StreamsApi.DeleteStreamInstance(context.Background(), groupId, tenantName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.DeleteStreamInstance``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.DeleteStreamInstance`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `DeleteStreamInstance`: interface{}
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.DeleteStreamInstance`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.DeleteStreamInstance`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -350,7 +370,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     tenantName := "tenantName_example" // string | 
@@ -359,12 +382,14 @@ func main() {
 
     resp, r, err := sdk.StreamsApi.DownloadStreamTenantAuditLogs(context.Background(), groupId, tenantName).EndDate(endDate).StartDate(startDate).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.DownloadStreamTenantAuditLogs``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.DownloadStreamTenantAuditLogs`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `DownloadStreamTenantAuditLogs`: io.ReadCloser
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.DownloadStreamTenantAuditLogs`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.DownloadStreamTenantAuditLogs`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -430,7 +455,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     tenantName := "tenantName_example" // string | 
@@ -438,12 +466,14 @@ func main() {
 
     resp, r, err := sdk.StreamsApi.GetStreamConnection(context.Background(), groupId, tenantName, connectionName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.GetStreamConnection``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.GetStreamConnection`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `GetStreamConnection`: StreamsConnection
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.GetStreamConnection`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.GetStreamConnection`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -509,7 +539,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     tenantName := "tenantName_example" // string | 
@@ -517,12 +550,14 @@ func main() {
 
     resp, r, err := sdk.StreamsApi.GetStreamInstance(context.Background(), groupId, tenantName).IncludeConnections(includeConnections).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.GetStreamInstance``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.GetStreamInstance`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `GetStreamInstance`: StreamsTenant
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.GetStreamInstance`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.GetStreamInstance`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -587,7 +622,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     tenantName := "tenantName_example" // string | 
@@ -596,12 +634,14 @@ func main() {
 
     resp, r, err := sdk.StreamsApi.ListStreamConnections(context.Background(), groupId, tenantName).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.ListStreamConnections``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.ListStreamConnections`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `ListStreamConnections`: PaginatedApiStreamsConnection
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.ListStreamConnections`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.ListStreamConnections`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -667,7 +707,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     itemsPerPage := int(100) // int |  (optional) (default to 100)
@@ -675,12 +718,14 @@ func main() {
 
     resp, r, err := sdk.StreamsApi.ListStreamInstances(context.Background(), groupId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.ListStreamInstances``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.ListStreamInstances`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `ListStreamInstances`: PaginatedApiStreamsTenant
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.ListStreamInstances`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.ListStreamInstances`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -744,7 +789,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     tenantName := "tenantName_example" // string | 
@@ -753,12 +801,14 @@ func main() {
 
     resp, r, err := sdk.StreamsApi.UpdateStreamConnection(context.Background(), groupId, tenantName, connectionName, &streamsConnection).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.UpdateStreamConnection``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.UpdateStreamConnection`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `UpdateStreamConnection`: StreamsConnection
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.UpdateStreamConnection`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.UpdateStreamConnection`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -825,7 +875,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     tenantName := "tenantName_example" // string | 
@@ -833,12 +886,14 @@ func main() {
 
     resp, r, err := sdk.StreamsApi.UpdateStreamInstance(context.Background(), groupId, tenantName, &streamsDataProcessRegion).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.UpdateStreamInstance``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.UpdateStreamInstance`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `UpdateStreamInstance`: StreamsTenant
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.UpdateStreamInstance`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.UpdateStreamInstance`: %v (%v)\n", resp, r)
 }
 ```
 

@@ -34,7 +34,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     clusterName := "clusterName_example" // string | 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -42,12 +45,14 @@ func main() {
 
     resp, r, err := sdk.SharedTierSnapshotsApi.DownloadSharedClusterBackup(context.Background(), clusterName, groupId, &tenantRestore).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SharedTierSnapshotsApi.DownloadSharedClusterBackup``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `SharedTierSnapshotsApi.DownloadSharedClusterBackup`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `DownloadSharedClusterBackup`: TenantRestore
-    fmt.Fprintf(os.Stdout, "Response from `SharedTierSnapshotsApi.DownloadSharedClusterBackup`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SharedTierSnapshotsApi.DownloadSharedClusterBackup`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -112,7 +117,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -120,12 +128,14 @@ func main() {
 
     resp, r, err := sdk.SharedTierSnapshotsApi.GetSharedClusterBackup(context.Background(), groupId, clusterName, snapshotId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SharedTierSnapshotsApi.GetSharedClusterBackup``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `SharedTierSnapshotsApi.GetSharedClusterBackup`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `GetSharedClusterBackup`: BackupTenantSnapshot
-    fmt.Fprintf(os.Stdout, "Response from `SharedTierSnapshotsApi.GetSharedClusterBackup`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SharedTierSnapshotsApi.GetSharedClusterBackup`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -191,19 +201,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
 
     resp, r, err := sdk.SharedTierSnapshotsApi.ListSharedClusterBackups(context.Background(), groupId, clusterName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SharedTierSnapshotsApi.ListSharedClusterBackups``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `SharedTierSnapshotsApi.ListSharedClusterBackups`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `ListSharedClusterBackups`: PaginatedTenantSnapshot
-    fmt.Fprintf(os.Stdout, "Response from `SharedTierSnapshotsApi.ListSharedClusterBackups`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SharedTierSnapshotsApi.ListSharedClusterBackups`: %v (%v)\n", resp, r)
 }
 ```
 

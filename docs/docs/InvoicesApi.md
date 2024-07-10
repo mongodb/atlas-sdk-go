@@ -37,19 +37,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     orgId := "4888442a3354817a7320eb61" // string | 
     costExplorerFilterRequestBody := *openapiclient.NewCostExplorerFilterRequestBody(time.Now(), time.Now()) // CostExplorerFilterRequestBody | 
 
     resp, r, err := sdk.InvoicesApi.CreateCostExplorerQueryProcess(context.Background(), orgId, &costExplorerFilterRequestBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InvoicesApi.CreateCostExplorerQueryProcess``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `InvoicesApi.CreateCostExplorerQueryProcess`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `CreateCostExplorerQueryProcess`: CostExplorerFilterResponse
-    fmt.Fprintf(os.Stdout, "Response from `InvoicesApi.CreateCostExplorerQueryProcess`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `InvoicesApi.CreateCostExplorerQueryProcess`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -112,19 +117,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     orgId := "4888442a3354817a7320eb61" // string | 
     token := "4ABBE973862346D40F3AE859D4BE96E0F895764EB14EAB039E7B82F9D638C05C" // string | 
 
     resp, r, err := sdk.InvoicesApi.CreateCostExplorerQueryProcess1(context.Background(), orgId, token).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InvoicesApi.CreateCostExplorerQueryProcess1``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `InvoicesApi.CreateCostExplorerQueryProcess1`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `CreateCostExplorerQueryProcess1`: string
-    fmt.Fprintf(os.Stdout, "Response from `InvoicesApi.CreateCostExplorerQueryProcess1`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `InvoicesApi.CreateCostExplorerQueryProcess1`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -188,19 +198,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     orgId := "4888442a3354817a7320eb61" // string | 
     invoiceId := "invoiceId_example" // string | 
 
     resp, r, err := sdk.InvoicesApi.DownloadInvoiceCSV(context.Background(), orgId, invoiceId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InvoicesApi.DownloadInvoiceCSV``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `InvoicesApi.DownloadInvoiceCSV`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `DownloadInvoiceCSV`: string
-    fmt.Fprintf(os.Stdout, "Response from `InvoicesApi.DownloadInvoiceCSV`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `InvoicesApi.DownloadInvoiceCSV`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -264,19 +279,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     orgId := "4888442a3354817a7320eb61" // string | 
     invoiceId := "invoiceId_example" // string | 
 
     resp, r, err := sdk.InvoicesApi.GetInvoice(context.Background(), orgId, invoiceId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InvoicesApi.GetInvoice``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `InvoicesApi.GetInvoice`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `GetInvoice`: string
-    fmt.Fprintf(os.Stdout, "Response from `InvoicesApi.GetInvoice`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `InvoicesApi.GetInvoice`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -340,7 +360,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     orgId := "4888442a3354817a7320eb61" // string | 
     includeCount := true // bool |  (optional) (default to true)
@@ -349,12 +372,14 @@ func main() {
 
     resp, r, err := sdk.InvoicesApi.ListInvoices(context.Background(), orgId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InvoicesApi.ListInvoices``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `InvoicesApi.ListInvoices`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `ListInvoices`: PaginatedApiInvoiceMetadata
-    fmt.Fprintf(os.Stdout, "Response from `InvoicesApi.ListInvoices`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `InvoicesApi.ListInvoices`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -419,18 +444,23 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     orgId := "4888442a3354817a7320eb61" // string | 
 
     resp, r, err := sdk.InvoicesApi.ListPendingInvoices(context.Background(), orgId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InvoicesApi.ListPendingInvoices``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `InvoicesApi.ListPendingInvoices`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `ListPendingInvoices`: PaginatedApiInvoice
-    fmt.Fprintf(os.Stdout, "Response from `InvoicesApi.ListPendingInvoices`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `InvoicesApi.ListPendingInvoices`: %v (%v)\n", resp, r)
 }
 ```
 

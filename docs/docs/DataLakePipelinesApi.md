@@ -44,19 +44,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     dataLakeIngestionPipeline := *openapiclient.NewDataLakeIngestionPipeline() // DataLakeIngestionPipeline | 
 
     resp, r, err := sdk.DataLakePipelinesApi.CreatePipeline(context.Background(), groupId, &dataLakeIngestionPipeline).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.CreatePipeline``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.CreatePipeline`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `CreatePipeline`: DataLakeIngestionPipeline
-    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.CreatePipeline`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.CreatePipeline`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -119,19 +124,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     pipelineName := "pipelineName_example" // string | 
 
     resp, r, err := sdk.DataLakePipelinesApi.DeletePipeline(context.Background(), groupId, pipelineName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.DeletePipeline``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.DeletePipeline`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `DeletePipeline`: interface{}
-    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.DeletePipeline`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.DeletePipeline`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -195,7 +205,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     pipelineName := "pipelineName_example" // string | 
@@ -203,12 +216,14 @@ func main() {
 
     resp, r, err := sdk.DataLakePipelinesApi.DeletePipelineRunDataset(context.Background(), groupId, pipelineName, pipelineRunId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.DeletePipelineRunDataset``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.DeletePipelineRunDataset`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `DeletePipelineRunDataset`: interface{}
-    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.DeletePipelineRunDataset`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.DeletePipelineRunDataset`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -274,19 +289,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     pipelineName := "pipelineName_example" // string | 
 
     resp, r, err := sdk.DataLakePipelinesApi.GetPipeline(context.Background(), groupId, pipelineName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.GetPipeline``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.GetPipeline`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `GetPipeline`: DataLakeIngestionPipeline
-    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.GetPipeline`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.GetPipeline`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -350,7 +370,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     pipelineName := "pipelineName_example" // string | 
@@ -358,12 +381,14 @@ func main() {
 
     resp, r, err := sdk.DataLakePipelinesApi.GetPipelineRun(context.Background(), groupId, pipelineName, pipelineRunId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.GetPipelineRun``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.GetPipelineRun`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `GetPipelineRun`: IngestionPipelineRun
-    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.GetPipelineRun`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.GetPipelineRun`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -429,7 +454,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     pipelineName := "pipelineName_example" // string | 
@@ -440,12 +468,14 @@ func main() {
 
     resp, r, err := sdk.DataLakePipelinesApi.ListPipelineRuns(context.Background(), groupId, pipelineName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).CreatedBefore(createdBefore).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.ListPipelineRuns``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.ListPipelineRuns`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `ListPipelineRuns`: PaginatedPipelineRun
-    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.ListPipelineRuns`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.ListPipelineRuns`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -513,19 +543,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     pipelineName := "pipelineName_example" // string | 
 
     resp, r, err := sdk.DataLakePipelinesApi.ListPipelineSchedules(context.Background(), groupId, pipelineName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.ListPipelineSchedules``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.ListPipelineSchedules`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `ListPipelineSchedules`: []DiskBackupApiPolicyItem
-    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.ListPipelineSchedules`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.ListPipelineSchedules`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -589,7 +624,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     pipelineName := "pipelineName_example" // string | 
@@ -600,12 +638,14 @@ func main() {
 
     resp, r, err := sdk.DataLakePipelinesApi.ListPipelineSnapshots(context.Background(), groupId, pipelineName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).CompletedAfter(completedAfter).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.ListPipelineSnapshots``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.ListPipelineSnapshots`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `ListPipelineSnapshots`: PaginatedBackupSnapshot
-    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.ListPipelineSnapshots`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.ListPipelineSnapshots`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -673,18 +713,23 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
     resp, r, err := sdk.DataLakePipelinesApi.ListPipelines(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.ListPipelines``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.ListPipelines`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `ListPipelines`: []DataLakeIngestionPipeline
-    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.ListPipelines`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.ListPipelines`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -746,19 +791,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     pipelineName := "pipelineName_example" // string | 
 
     resp, r, err := sdk.DataLakePipelinesApi.PausePipeline(context.Background(), groupId, pipelineName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.PausePipeline``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.PausePipeline`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `PausePipeline`: DataLakeIngestionPipeline
-    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.PausePipeline`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.PausePipeline`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -822,19 +872,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     pipelineName := "pipelineName_example" // string | 
 
     resp, r, err := sdk.DataLakePipelinesApi.ResumePipeline(context.Background(), groupId, pipelineName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.ResumePipeline``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.ResumePipeline`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `ResumePipeline`: DataLakeIngestionPipeline
-    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.ResumePipeline`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.ResumePipeline`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -898,7 +953,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     pipelineName := "pipelineName_example" // string | 
@@ -906,12 +964,14 @@ func main() {
 
     resp, r, err := sdk.DataLakePipelinesApi.TriggerSnapshotIngestion(context.Background(), groupId, pipelineName, &triggerIngestionPipelineRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.TriggerSnapshotIngestion``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.TriggerSnapshotIngestion`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `TriggerSnapshotIngestion`: IngestionPipelineRun
-    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.TriggerSnapshotIngestion`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.TriggerSnapshotIngestion`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -976,7 +1036,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     pipelineName := "pipelineName_example" // string | 
@@ -984,12 +1047,14 @@ func main() {
 
     resp, r, err := sdk.DataLakePipelinesApi.UpdatePipeline(context.Background(), groupId, pipelineName, &dataLakeIngestionPipeline).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.UpdatePipeline``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.UpdatePipeline`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `UpdatePipeline`: DataLakeIngestionPipeline
-    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.UpdatePipeline`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.UpdatePipeline`: %v (%v)\n", resp, r)
 }
 ```
 

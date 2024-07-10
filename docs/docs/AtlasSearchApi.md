@@ -49,7 +49,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -57,12 +60,14 @@ func main() {
 
     resp, r, err := sdk.AtlasSearchApi.CreateAtlasSearchDeployment(context.Background(), groupId, clusterName, &apiSearchDeploymentRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.CreateAtlasSearchDeployment``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.CreateAtlasSearchDeployment`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `CreateAtlasSearchDeployment`: ApiSearchDeploymentResponse
-    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.CreateAtlasSearchDeployment`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.CreateAtlasSearchDeployment`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -127,7 +132,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -135,12 +143,14 @@ func main() {
 
     resp, r, err := sdk.AtlasSearchApi.CreateAtlasSearchIndex(context.Background(), groupId, clusterName, &searchIndexCreateRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.CreateAtlasSearchIndex``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.CreateAtlasSearchIndex`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `CreateAtlasSearchIndex`: SearchIndexResponse
-    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.CreateAtlasSearchIndex`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.CreateAtlasSearchIndex`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -205,7 +215,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -213,12 +226,14 @@ func main() {
 
     resp, r, err := sdk.AtlasSearchApi.CreateAtlasSearchIndexDeprecated(context.Background(), groupId, clusterName, &clusterSearchIndex).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.CreateAtlasSearchIndexDeprecated``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.CreateAtlasSearchIndexDeprecated`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `CreateAtlasSearchIndexDeprecated`: ClusterSearchIndex
-    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.CreateAtlasSearchIndexDeprecated`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.CreateAtlasSearchIndexDeprecated`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -283,19 +298,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
 
     resp, r, err := sdk.AtlasSearchApi.DeleteAtlasSearchDeployment(context.Background(), groupId, clusterName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.DeleteAtlasSearchDeployment``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.DeleteAtlasSearchDeployment`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `DeleteAtlasSearchDeployment`: interface{}
-    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.DeleteAtlasSearchDeployment`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.DeleteAtlasSearchDeployment`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -359,7 +379,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -367,12 +390,14 @@ func main() {
 
     resp, r, err := sdk.AtlasSearchApi.DeleteAtlasSearchIndex(context.Background(), groupId, clusterName, indexId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.DeleteAtlasSearchIndex``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.DeleteAtlasSearchIndex`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `DeleteAtlasSearchIndex`: interface{}
-    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.DeleteAtlasSearchIndex`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.DeleteAtlasSearchIndex`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -438,7 +463,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -448,12 +476,14 @@ func main() {
 
     resp, r, err := sdk.AtlasSearchApi.DeleteAtlasSearchIndexByName(context.Background(), groupId, clusterName, collectionName, databaseName, indexName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.DeleteAtlasSearchIndexByName``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.DeleteAtlasSearchIndexByName`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `DeleteAtlasSearchIndexByName`: interface{}
-    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.DeleteAtlasSearchIndexByName`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.DeleteAtlasSearchIndexByName`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -523,7 +553,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -531,12 +564,14 @@ func main() {
 
     resp, r, err := sdk.AtlasSearchApi.DeleteAtlasSearchIndexDeprecated(context.Background(), groupId, clusterName, indexId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.DeleteAtlasSearchIndexDeprecated``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.DeleteAtlasSearchIndexDeprecated`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `DeleteAtlasSearchIndexDeprecated`: interface{}
-    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.DeleteAtlasSearchIndexDeprecated`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.DeleteAtlasSearchIndexDeprecated`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -602,19 +637,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
 
     resp, r, err := sdk.AtlasSearchApi.GetAtlasSearchDeployment(context.Background(), groupId, clusterName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.GetAtlasSearchDeployment``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.GetAtlasSearchDeployment`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `GetAtlasSearchDeployment`: ApiSearchDeploymentResponse
-    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.GetAtlasSearchDeployment`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.GetAtlasSearchDeployment`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -678,7 +718,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -686,12 +729,14 @@ func main() {
 
     resp, r, err := sdk.AtlasSearchApi.GetAtlasSearchIndex(context.Background(), groupId, clusterName, indexId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.GetAtlasSearchIndex``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.GetAtlasSearchIndex`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `GetAtlasSearchIndex`: SearchIndexResponse
-    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.GetAtlasSearchIndex`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.GetAtlasSearchIndex`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -757,7 +802,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -767,12 +815,14 @@ func main() {
 
     resp, r, err := sdk.AtlasSearchApi.GetAtlasSearchIndexByName(context.Background(), groupId, clusterName, collectionName, databaseName, indexName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.GetAtlasSearchIndexByName``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.GetAtlasSearchIndexByName`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `GetAtlasSearchIndexByName`: SearchIndexResponse
-    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.GetAtlasSearchIndexByName`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.GetAtlasSearchIndexByName`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -842,7 +892,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -850,12 +903,14 @@ func main() {
 
     resp, r, err := sdk.AtlasSearchApi.GetAtlasSearchIndexDeprecated(context.Background(), groupId, clusterName, indexId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.GetAtlasSearchIndexDeprecated``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.GetAtlasSearchIndexDeprecated`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `GetAtlasSearchIndexDeprecated`: ClusterSearchIndex
-    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.GetAtlasSearchIndexDeprecated`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.GetAtlasSearchIndexDeprecated`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -921,7 +976,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -930,12 +988,14 @@ func main() {
 
     resp, r, err := sdk.AtlasSearchApi.ListAtlasSearchIndexes(context.Background(), groupId, clusterName, collectionName, databaseName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.ListAtlasSearchIndexes``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.ListAtlasSearchIndexes`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `ListAtlasSearchIndexes`: []SearchIndexResponse
-    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.ListAtlasSearchIndexes`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.ListAtlasSearchIndexes`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1003,19 +1063,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
 
     resp, r, err := sdk.AtlasSearchApi.ListAtlasSearchIndexesCluster(context.Background(), groupId, clusterName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.ListAtlasSearchIndexesCluster``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.ListAtlasSearchIndexesCluster`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `ListAtlasSearchIndexesCluster`: []SearchIndexResponse
-    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.ListAtlasSearchIndexesCluster`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.ListAtlasSearchIndexesCluster`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1079,7 +1144,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -1088,12 +1156,14 @@ func main() {
 
     resp, r, err := sdk.AtlasSearchApi.ListAtlasSearchIndexesDeprecated(context.Background(), groupId, clusterName, collectionName, databaseName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.ListAtlasSearchIndexesDeprecated``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.ListAtlasSearchIndexesDeprecated`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `ListAtlasSearchIndexesDeprecated`: []ClusterSearchIndex
-    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.ListAtlasSearchIndexesDeprecated`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.ListAtlasSearchIndexesDeprecated`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1161,7 +1231,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -1169,12 +1242,14 @@ func main() {
 
     resp, r, err := sdk.AtlasSearchApi.UpdateAtlasSearchDeployment(context.Background(), groupId, clusterName, &apiSearchDeploymentRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.UpdateAtlasSearchDeployment``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.UpdateAtlasSearchDeployment`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `UpdateAtlasSearchDeployment`: ApiSearchDeploymentResponse
-    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.UpdateAtlasSearchDeployment`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.UpdateAtlasSearchDeployment`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1239,7 +1314,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -1248,12 +1326,14 @@ func main() {
 
     resp, r, err := sdk.AtlasSearchApi.UpdateAtlasSearchIndex(context.Background(), groupId, clusterName, indexId, &searchIndexUpdateRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.UpdateAtlasSearchIndex``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.UpdateAtlasSearchIndex`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `UpdateAtlasSearchIndex`: SearchIndexResponse
-    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.UpdateAtlasSearchIndex`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.UpdateAtlasSearchIndex`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1320,7 +1400,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -1331,12 +1414,14 @@ func main() {
 
     resp, r, err := sdk.AtlasSearchApi.UpdateAtlasSearchIndexByName(context.Background(), groupId, clusterName, collectionName, databaseName, indexName, &searchIndexUpdateRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.UpdateAtlasSearchIndexByName``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.UpdateAtlasSearchIndexByName`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `UpdateAtlasSearchIndexByName`: SearchIndexResponse
-    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.UpdateAtlasSearchIndexByName`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.UpdateAtlasSearchIndexByName`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1407,7 +1492,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -1416,12 +1504,14 @@ func main() {
 
     resp, r, err := sdk.AtlasSearchApi.UpdateAtlasSearchIndexDeprecated(context.Background(), groupId, clusterName, indexId, &clusterSearchIndex).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.UpdateAtlasSearchIndexDeprecated``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.UpdateAtlasSearchIndexDeprecated`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `UpdateAtlasSearchIndexDeprecated`: ClusterSearchIndex
-    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.UpdateAtlasSearchIndexDeprecated`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.UpdateAtlasSearchIndexDeprecated`: %v (%v)\n", resp, r)
 }
 ```
 

@@ -35,16 +35,21 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     createPushBasedLogExportProjectRequest := *openapiclient.NewCreatePushBasedLogExportProjectRequest("BucketName_example", "IamRoleId_example", "PrefixPath_example") // CreatePushBasedLogExportProjectRequest | 
 
     r, err := sdk.PushBasedLogExportApi.CreatePushBasedLogConfiguration(context.Background(), groupId, &createPushBasedLogExportProjectRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PushBasedLogExportApi.CreatePushBasedLogConfiguration``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `PushBasedLogExportApi.CreatePushBasedLogConfiguration`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
 }
 ```
@@ -108,15 +113,20 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
     r, err := sdk.PushBasedLogExportApi.DeletePushBasedLogConfiguration(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PushBasedLogExportApi.DeletePushBasedLogConfiguration``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `PushBasedLogExportApi.DeletePushBasedLogConfiguration`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
 }
 ```
@@ -179,18 +189,23 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
     resp, r, err := sdk.PushBasedLogExportApi.GetPushBasedLogConfiguration(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PushBasedLogExportApi.GetPushBasedLogConfiguration``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `PushBasedLogExportApi.GetPushBasedLogConfiguration`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `GetPushBasedLogConfiguration`: PushBasedLogExportProject
-    fmt.Fprintf(os.Stdout, "Response from `PushBasedLogExportApi.GetPushBasedLogConfiguration`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `PushBasedLogExportApi.GetPushBasedLogConfiguration`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -252,16 +267,21 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     pushBasedLogExportProject := *openapiclient.NewPushBasedLogExportProject() // PushBasedLogExportProject | 
 
     r, err := sdk.PushBasedLogExportApi.UpdatePushBasedLogConfiguration(context.Background(), groupId, &pushBasedLogExportProject).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PushBasedLogExportApi.UpdatePushBasedLogConfiguration``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `PushBasedLogExportApi.UpdatePushBasedLogConfiguration`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
 }
 ```

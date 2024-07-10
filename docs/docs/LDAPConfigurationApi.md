@@ -36,18 +36,23 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
     resp, r, err := sdk.LDAPConfigurationApi.DeleteLDAPConfiguration(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LDAPConfigurationApi.DeleteLDAPConfiguration``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `LDAPConfigurationApi.DeleteLDAPConfiguration`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `DeleteLDAPConfiguration`: UserSecurity
-    fmt.Fprintf(os.Stdout, "Response from `LDAPConfigurationApi.DeleteLDAPConfiguration`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `LDAPConfigurationApi.DeleteLDAPConfiguration`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -109,18 +114,23 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
     resp, r, err := sdk.LDAPConfigurationApi.GetLDAPConfiguration(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LDAPConfigurationApi.GetLDAPConfiguration``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `LDAPConfigurationApi.GetLDAPConfiguration`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `GetLDAPConfiguration`: UserSecurity
-    fmt.Fprintf(os.Stdout, "Response from `LDAPConfigurationApi.GetLDAPConfiguration`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `LDAPConfigurationApi.GetLDAPConfiguration`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -182,19 +192,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     requestId := "requestId_example" // string | 
 
     resp, r, err := sdk.LDAPConfigurationApi.GetLDAPConfigurationStatus(context.Background(), groupId, requestId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LDAPConfigurationApi.GetLDAPConfigurationStatus``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `LDAPConfigurationApi.GetLDAPConfigurationStatus`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `GetLDAPConfigurationStatus`: LDAPVerifyConnectivityJobRequest
-    fmt.Fprintf(os.Stdout, "Response from `LDAPConfigurationApi.GetLDAPConfigurationStatus`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `LDAPConfigurationApi.GetLDAPConfigurationStatus`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -258,19 +273,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     userSecurity := *openapiclient.NewUserSecurity() // UserSecurity | 
 
     resp, r, err := sdk.LDAPConfigurationApi.SaveLDAPConfiguration(context.Background(), groupId, &userSecurity).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LDAPConfigurationApi.SaveLDAPConfiguration``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `LDAPConfigurationApi.SaveLDAPConfiguration`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `SaveLDAPConfiguration`: UserSecurity
-    fmt.Fprintf(os.Stdout, "Response from `LDAPConfigurationApi.SaveLDAPConfiguration`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `LDAPConfigurationApi.SaveLDAPConfiguration`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -333,19 +353,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     lDAPVerifyConnectivityJobRequestParams := *openapiclient.NewLDAPVerifyConnectivityJobRequestParams("BindPassword_example", "CN=BindUser,CN=Users,DC=myldapserver,DC=mycompany,DC=com", "Hostname_example", int(123)) // LDAPVerifyConnectivityJobRequestParams | 
 
     resp, r, err := sdk.LDAPConfigurationApi.VerifyLDAPConfiguration(context.Background(), groupId, &lDAPVerifyConnectivityJobRequestParams).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LDAPConfigurationApi.VerifyLDAPConfiguration``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `LDAPConfigurationApi.VerifyLDAPConfiguration`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `VerifyLDAPConfiguration`: LDAPVerifyConnectivityJobRequest
-    fmt.Fprintf(os.Stdout, "Response from `LDAPConfigurationApi.VerifyLDAPConfiguration`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `LDAPConfigurationApi.VerifyLDAPConfiguration`: %v (%v)\n", resp, r)
 }
 ```
 

@@ -35,7 +35,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     alertId := "alertId_example" // string | 
@@ -43,12 +46,14 @@ func main() {
 
     resp, r, err := sdk.AlertsApi.AcknowledgeAlert(context.Background(), groupId, alertId, &acknowledgeAlert).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AlertsApi.AcknowledgeAlert``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `AlertsApi.AcknowledgeAlert`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `AcknowledgeAlert`: AlertViewForNdsGroup
-    fmt.Fprintf(os.Stdout, "Response from `AlertsApi.AcknowledgeAlert`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AlertsApi.AcknowledgeAlert`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -113,19 +118,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     alertId := "alertId_example" // string | 
 
     resp, r, err := sdk.AlertsApi.GetAlert(context.Background(), groupId, alertId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AlertsApi.GetAlert``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `AlertsApi.GetAlert`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `GetAlert`: AlertViewForNdsGroup
-    fmt.Fprintf(os.Stdout, "Response from `AlertsApi.GetAlert`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AlertsApi.GetAlert`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -189,7 +199,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     includeCount := true // bool |  (optional) (default to true)
@@ -199,12 +212,14 @@ func main() {
 
     resp, r, err := sdk.AlertsApi.ListAlerts(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Status(status).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AlertsApi.ListAlerts``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `AlertsApi.ListAlerts`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `ListAlerts`: PaginatedAlert
-    fmt.Fprintf(os.Stdout, "Response from `AlertsApi.ListAlerts`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AlertsApi.ListAlerts`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -270,7 +285,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     alertConfigId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -280,12 +298,14 @@ func main() {
 
     resp, r, err := sdk.AlertsApi.ListAlertsByAlertConfigurationId(context.Background(), groupId, alertConfigId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AlertsApi.ListAlertsByAlertConfigurationId``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `AlertsApi.ListAlertsByAlertConfigurationId`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `ListAlertsByAlertConfigurationId`: PaginatedAlert
-    fmt.Fprintf(os.Stdout, "Response from `AlertsApi.ListAlertsByAlertConfigurationId`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AlertsApi.ListAlertsByAlertConfigurationId`: %v (%v)\n", resp, r)
 }
 ```
 

@@ -48,18 +48,23 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     createOrganizationRequest := *openapiclient.NewCreateOrganizationRequest("Name_example") // CreateOrganizationRequest | 
 
     resp, r, err := sdk.OrganizationsApi.CreateOrganization(context.Background(), &createOrganizationRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.CreateOrganization``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.CreateOrganization`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `CreateOrganization`: CreateOrganizationResponse
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.CreateOrganization`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.CreateOrganization`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -117,19 +122,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     orgId := "4888442a3354817a7320eb61" // string | 
     organizationInvitationRequest := *openapiclient.NewOrganizationInvitationRequest() // OrganizationInvitationRequest | 
 
     resp, r, err := sdk.OrganizationsApi.CreateOrganizationInvitation(context.Background(), orgId, &organizationInvitationRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.CreateOrganizationInvitation``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.CreateOrganizationInvitation`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `CreateOrganizationInvitation`: OrganizationInvitation
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.CreateOrganizationInvitation`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.CreateOrganizationInvitation`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -192,18 +202,23 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     orgId := "4888442a3354817a7320eb61" // string | 
 
     resp, r, err := sdk.OrganizationsApi.DeleteOrganization(context.Background(), orgId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.DeleteOrganization``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.DeleteOrganization`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `DeleteOrganization`: interface{}
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.DeleteOrganization`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.DeleteOrganization`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -265,19 +280,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     orgId := "4888442a3354817a7320eb61" // string | 
     invitationId := "invitationId_example" // string | 
 
     resp, r, err := sdk.OrganizationsApi.DeleteOrganizationInvitation(context.Background(), orgId, invitationId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.DeleteOrganizationInvitation``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.DeleteOrganizationInvitation`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `DeleteOrganizationInvitation`: interface{}
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.DeleteOrganizationInvitation`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.DeleteOrganizationInvitation`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -341,18 +361,23 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     orgId := "4888442a3354817a7320eb61" // string | 
 
     resp, r, err := sdk.OrganizationsApi.GetOrganization(context.Background(), orgId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.GetOrganization``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.GetOrganization`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `GetOrganization`: AtlasOrganization
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.GetOrganization`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.GetOrganization`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -414,19 +439,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     orgId := "4888442a3354817a7320eb61" // string | 
     invitationId := "invitationId_example" // string | 
 
     resp, r, err := sdk.OrganizationsApi.GetOrganizationInvitation(context.Background(), orgId, invitationId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.GetOrganizationInvitation``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.GetOrganizationInvitation`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `GetOrganizationInvitation`: OrganizationInvitation
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.GetOrganizationInvitation`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.GetOrganizationInvitation`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -490,18 +520,23 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     orgId := "4888442a3354817a7320eb61" // string | 
 
     resp, r, err := sdk.OrganizationsApi.GetOrganizationSettings(context.Background(), orgId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.GetOrganizationSettings``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.GetOrganizationSettings`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `GetOrganizationSettings`: OrganizationSettings
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.GetOrganizationSettings`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.GetOrganizationSettings`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -563,19 +598,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     orgId := "4888442a3354817a7320eb61" // string | 
     username := "username_example" // string |  (optional)
 
     resp, r, err := sdk.OrganizationsApi.ListOrganizationInvitations(context.Background(), orgId).Username(username).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.ListOrganizationInvitations``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.ListOrganizationInvitations`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `ListOrganizationInvitations`: []OrganizationInvitation
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.ListOrganizationInvitations`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.ListOrganizationInvitations`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -638,7 +678,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     orgId := "4888442a3354817a7320eb61" // string | 
     includeCount := true // bool |  (optional) (default to true)
@@ -648,12 +691,14 @@ func main() {
 
     resp, r, err := sdk.OrganizationsApi.ListOrganizationProjects(context.Background(), orgId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Name(name).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.ListOrganizationProjects``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.ListOrganizationProjects`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `ListOrganizationProjects`: PaginatedAtlasGroup
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.ListOrganizationProjects`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.ListOrganizationProjects`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -719,7 +764,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     orgId := "4888442a3354817a7320eb61" // string | 
     includeCount := true // bool |  (optional) (default to true)
@@ -728,12 +776,14 @@ func main() {
 
     resp, r, err := sdk.OrganizationsApi.ListOrganizationUsers(context.Background(), orgId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.ListOrganizationUsers``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.ListOrganizationUsers`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `ListOrganizationUsers`: PaginatedAppUser
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.ListOrganizationUsers`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.ListOrganizationUsers`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -798,7 +848,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     includeCount := true // bool |  (optional) (default to true)
     itemsPerPage := int(100) // int |  (optional) (default to 100)
@@ -807,12 +860,14 @@ func main() {
 
     resp, r, err := sdk.OrganizationsApi.ListOrganizations(context.Background()).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Name(name).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.ListOrganizations``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.ListOrganizations`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `ListOrganizations`: PaginatedOrganization
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.ListOrganizations`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.ListOrganizations`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -873,19 +928,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     orgId := "4888442a3354817a7320eb61" // string | 
     userId := "userId_example" // string | 
 
     resp, r, err := sdk.OrganizationsApi.RemoveOrganizationUser(context.Background(), orgId, userId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.RemoveOrganizationUser``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.RemoveOrganizationUser`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `RemoveOrganizationUser`: interface{}
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.RemoveOrganizationUser`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.RemoveOrganizationUser`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -949,19 +1009,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     orgId := "4888442a3354817a7320eb61" // string | 
     atlasOrganization := *openapiclient.NewAtlasOrganization("Name_example") // AtlasOrganization | 
 
     resp, r, err := sdk.OrganizationsApi.RenameOrganization(context.Background(), orgId, &atlasOrganization).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.RenameOrganization``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.RenameOrganization`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `RenameOrganization`: AtlasOrganization
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.RenameOrganization`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.RenameOrganization`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1024,19 +1089,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     orgId := "4888442a3354817a7320eb61" // string | 
     organizationInvitationRequest := *openapiclient.NewOrganizationInvitationRequest() // OrganizationInvitationRequest | 
 
     resp, r, err := sdk.OrganizationsApi.UpdateOrganizationInvitation(context.Background(), orgId, &organizationInvitationRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.UpdateOrganizationInvitation``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.UpdateOrganizationInvitation`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `UpdateOrganizationInvitation`: OrganizationInvitation
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.UpdateOrganizationInvitation`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.UpdateOrganizationInvitation`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1099,7 +1169,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     orgId := "4888442a3354817a7320eb61" // string | 
     invitationId := "invitationId_example" // string | 
@@ -1107,12 +1180,14 @@ func main() {
 
     resp, r, err := sdk.OrganizationsApi.UpdateOrganizationInvitationById(context.Background(), orgId, invitationId, &organizationInvitationUpdateRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.UpdateOrganizationInvitationById``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.UpdateOrganizationInvitationById`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `UpdateOrganizationInvitationById`: OrganizationInvitation
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.UpdateOrganizationInvitationById`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.UpdateOrganizationInvitationById`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1177,7 +1252,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     orgId := "4888442a3354817a7320eb61" // string | 
     userId := "userId_example" // string | 
@@ -1185,12 +1263,14 @@ func main() {
 
     resp, r, err := sdk.OrganizationsApi.UpdateOrganizationRoles(context.Background(), orgId, userId, &updateOrgRolesForUser).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.UpdateOrganizationRoles``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.UpdateOrganizationRoles`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `UpdateOrganizationRoles`: UpdateOrgRolesForUser
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.UpdateOrganizationRoles`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.UpdateOrganizationRoles`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1255,19 +1335,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     orgId := "4888442a3354817a7320eb61" // string | 
     organizationSettings := *openapiclient.NewOrganizationSettings() // OrganizationSettings | 
 
     resp, r, err := sdk.OrganizationsApi.UpdateOrganizationSettings(context.Background(), orgId, &organizationSettings).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.UpdateOrganizationSettings``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.UpdateOrganizationSettings`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `UpdateOrganizationSettings`: OrganizationSettings
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.UpdateOrganizationSettings`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.UpdateOrganizationSettings`: %v (%v)\n", resp, r)
 }
 ```
 

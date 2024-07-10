@@ -49,19 +49,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     federationSettingsId := "55fa922fb343282757d9554e" // string | 
     federationOidcIdentityProviderUpdate := *openapiclient.NewFederationOidcIdentityProviderUpdate() // FederationOidcIdentityProviderUpdate | 
 
     resp, r, err := sdk.FederatedAuthenticationApi.CreateIdentityProvider(context.Background(), federationSettingsId, &federationOidcIdentityProviderUpdate).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.CreateIdentityProvider``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.CreateIdentityProvider`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `CreateIdentityProvider`: FederationOidcIdentityProvider
-    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.CreateIdentityProvider`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.CreateIdentityProvider`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -124,7 +129,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     federationSettingsId := "55fa922fb343282757d9554e" // string | 
     orgId := "4888442a3354817a7320eb61" // string | 
@@ -132,12 +140,14 @@ func main() {
 
     resp, r, err := sdk.FederatedAuthenticationApi.CreateRoleMapping(context.Background(), federationSettingsId, orgId, &authFederationRoleMapping).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.CreateRoleMapping``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.CreateRoleMapping`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `CreateRoleMapping`: AuthFederationRoleMapping
-    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.CreateRoleMapping`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.CreateRoleMapping`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -202,15 +212,20 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     federationSettingsId := "55fa922fb343282757d9554e" // string | 
 
     r, err := sdk.FederatedAuthenticationApi.DeleteFederationApp(context.Background(), federationSettingsId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.DeleteFederationApp``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.DeleteFederationApp`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
 }
 ```
@@ -273,16 +288,21 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     federationSettingsId := "55fa922fb343282757d9554e" // string | 
     identityProviderId := "32b6e34b3d91647abb20e7b8" // string | 
 
     r, err := sdk.FederatedAuthenticationApi.DeleteIdentityProvider(context.Background(), federationSettingsId, identityProviderId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.DeleteIdentityProvider``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.DeleteIdentityProvider`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
 }
 ```
@@ -347,7 +367,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     federationSettingsId := "55fa922fb343282757d9554e" // string | 
     id := "32b6e34b3d91647abb20e7b8" // string | 
@@ -355,9 +378,11 @@ func main() {
 
     r, err := sdk.FederatedAuthenticationApi.DeleteRoleMapping(context.Background(), federationSettingsId, id, orgId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.DeleteRoleMapping``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.DeleteRoleMapping`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
 }
 ```
@@ -424,19 +449,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     federationSettingsId := "55fa922fb343282757d9554e" // string | 
     orgId := "32b6e34b3d91647abb20e7b8" // string | 
 
     resp, r, err := sdk.FederatedAuthenticationApi.GetConnectedOrgConfig(context.Background(), federationSettingsId, orgId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.GetConnectedOrgConfig``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.GetConnectedOrgConfig`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `GetConnectedOrgConfig`: ConnectedOrgConfig
-    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.GetConnectedOrgConfig`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.GetConnectedOrgConfig`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -500,18 +530,23 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     orgId := "4888442a3354817a7320eb61" // string | 
 
     resp, r, err := sdk.FederatedAuthenticationApi.GetFederationSettings(context.Background(), orgId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.GetFederationSettings``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.GetFederationSettings`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `GetFederationSettings`: OrgFederationSettings
-    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.GetFederationSettings`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.GetFederationSettings`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -573,19 +608,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     federationSettingsId := "55fa922fb343282757d9554e" // string | 
     identityProviderId := "32b6e34b3d91647abb20e7b8" // string | 
 
     resp, r, err := sdk.FederatedAuthenticationApi.GetIdentityProvider(context.Background(), federationSettingsId, identityProviderId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.GetIdentityProvider``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.GetIdentityProvider`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `GetIdentityProvider`: FederationIdentityProvider
-    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.GetIdentityProvider`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.GetIdentityProvider`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -649,19 +689,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     federationSettingsId := "55fa922fb343282757d9554e" // string | 
     identityProviderId := "c2777a9eca931f29fc2f" // string | 
 
     resp, r, err := sdk.FederatedAuthenticationApi.GetIdentityProviderMetadata(context.Background(), federationSettingsId, identityProviderId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.GetIdentityProviderMetadata``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.GetIdentityProviderMetadata`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `GetIdentityProviderMetadata`: string
-    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.GetIdentityProviderMetadata`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.GetIdentityProviderMetadata`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -725,7 +770,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     federationSettingsId := "55fa922fb343282757d9554e" // string | 
     id := "32b6e34b3d91647abb20e7b8" // string | 
@@ -733,12 +781,14 @@ func main() {
 
     resp, r, err := sdk.FederatedAuthenticationApi.GetRoleMapping(context.Background(), federationSettingsId, id, orgId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.GetRoleMapping``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.GetRoleMapping`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `GetRoleMapping`: AuthFederationRoleMapping
-    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.GetRoleMapping`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.GetRoleMapping`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -804,7 +854,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     federationSettingsId := "55fa922fb343282757d9554e" // string | 
     itemsPerPage := int(100) // int |  (optional) (default to 100)
@@ -812,12 +865,14 @@ func main() {
 
     resp, r, err := sdk.FederatedAuthenticationApi.ListConnectedOrgConfigs(context.Background(), federationSettingsId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.ListConnectedOrgConfigs``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.ListConnectedOrgConfigs`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `ListConnectedOrgConfigs`: PaginatedConnectedOrgConfigs
-    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.ListConnectedOrgConfigs`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.ListConnectedOrgConfigs`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -881,7 +936,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     federationSettingsId := "55fa922fb343282757d9554e" // string | 
     itemsPerPage := int(100) // int |  (optional) (default to 100)
@@ -891,12 +949,14 @@ func main() {
 
     resp, r, err := sdk.FederatedAuthenticationApi.ListIdentityProviders(context.Background(), federationSettingsId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Protocol(protocol).IdpType(idpType).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.ListIdentityProviders``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.ListIdentityProviders`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `ListIdentityProviders`: PaginatedFederationIdentityProvider
-    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.ListIdentityProviders`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.ListIdentityProviders`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -962,19 +1022,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     federationSettingsId := "55fa922fb343282757d9554e" // string | 
     orgId := "4888442a3354817a7320eb61" // string | 
 
     resp, r, err := sdk.FederatedAuthenticationApi.ListRoleMappings(context.Background(), federationSettingsId, orgId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.ListRoleMappings``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.ListRoleMappings`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `ListRoleMappings`: PaginatedRoleMapping
-    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.ListRoleMappings`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.ListRoleMappings`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1038,19 +1103,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     federationSettingsId := "55fa922fb343282757d9554e" // string | 
     orgId := "32b6e34b3d91647abb20e7b8" // string | 
 
     resp, r, err := sdk.FederatedAuthenticationApi.RemoveConnectedOrgConfig(context.Background(), federationSettingsId, orgId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.RemoveConnectedOrgConfig``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.RemoveConnectedOrgConfig`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `RemoveConnectedOrgConfig`: interface{}
-    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.RemoveConnectedOrgConfig`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.RemoveConnectedOrgConfig`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1114,16 +1184,21 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     federationSettingsId := "55fa922fb343282757d9554e" // string | 
     identityProviderId := "32b6e34b3d91647abb20e7b8" // string | 
 
     r, err := sdk.FederatedAuthenticationApi.RevokeJwksFromIdentityProvider(context.Background(), federationSettingsId, identityProviderId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.RevokeJwksFromIdentityProvider``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.RevokeJwksFromIdentityProvider`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
 }
 ```
@@ -1188,7 +1263,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     federationSettingsId := "55fa922fb343282757d9554e" // string | 
     orgId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -1196,12 +1274,14 @@ func main() {
 
     resp, r, err := sdk.FederatedAuthenticationApi.UpdateConnectedOrgConfig(context.Background(), federationSettingsId, orgId, &connectedOrgConfig).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.UpdateConnectedOrgConfig``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.UpdateConnectedOrgConfig`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `UpdateConnectedOrgConfig`: ConnectedOrgConfig
-    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.UpdateConnectedOrgConfig`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.UpdateConnectedOrgConfig`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1266,7 +1346,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     federationSettingsId := "55fa922fb343282757d9554e" // string | 
     identityProviderId := "32b6e34b3d91647abb20e7b8" // string | 
@@ -1274,12 +1357,14 @@ func main() {
 
     resp, r, err := sdk.FederatedAuthenticationApi.UpdateIdentityProvider(context.Background(), federationSettingsId, identityProviderId, &federationIdentityProviderUpdate).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.UpdateIdentityProvider``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.UpdateIdentityProvider`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `UpdateIdentityProvider`: FederationIdentityProvider
-    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.UpdateIdentityProvider`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.UpdateIdentityProvider`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1344,7 +1429,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     federationSettingsId := "55fa922fb343282757d9554e" // string | 
     id := "32b6e34b3d91647abb20e7b8" // string | 
@@ -1353,12 +1441,14 @@ func main() {
 
     resp, r, err := sdk.FederatedAuthenticationApi.UpdateRoleMapping(context.Background(), federationSettingsId, id, orgId, &authFederationRoleMapping).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.UpdateRoleMapping``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.UpdateRoleMapping`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `UpdateRoleMapping`: AuthFederationRoleMapping
-    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.UpdateRoleMapping`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.UpdateRoleMapping`: %v (%v)\n", resp, r)
 }
 ```
 

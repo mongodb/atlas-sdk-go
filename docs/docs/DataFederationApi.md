@@ -45,19 +45,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     privateNetworkEndpointIdEntry := *openapiclient.NewPrivateNetworkEndpointIdEntry("vpce-3bf78b0ddee411ba1") // PrivateNetworkEndpointIdEntry | 
 
     resp, r, err := sdk.DataFederationApi.CreateDataFederationPrivateEndpoint(context.Background(), groupId, &privateNetworkEndpointIdEntry).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.CreateDataFederationPrivateEndpoint``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.CreateDataFederationPrivateEndpoint`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `CreateDataFederationPrivateEndpoint`: PaginatedPrivateNetworkEndpointIdEntry
-    fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.CreateDataFederationPrivateEndpoint`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.CreateDataFederationPrivateEndpoint`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -120,7 +125,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     dataLakeTenant := *openapiclient.NewDataLakeTenant() // DataLakeTenant | 
@@ -128,12 +136,14 @@ func main() {
 
     resp, r, err := sdk.DataFederationApi.CreateFederatedDatabase(context.Background(), groupId, &dataLakeTenant).SkipRoleValidation(skipRoleValidation).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.CreateFederatedDatabase``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.CreateFederatedDatabase`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `CreateFederatedDatabase`: DataLakeTenant
-    fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.CreateFederatedDatabase`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.CreateFederatedDatabase`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -197,7 +207,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     tenantName := "tenantName_example" // string | 
@@ -206,12 +219,14 @@ func main() {
 
     resp, r, err := sdk.DataFederationApi.CreateOneDataFederationQueryLimit(context.Background(), groupId, tenantName, limitName, &dataFederationTenantQueryLimit).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.CreateOneDataFederationQueryLimit``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.CreateOneDataFederationQueryLimit`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `CreateOneDataFederationQueryLimit`: DataFederationTenantQueryLimit
-    fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.CreateOneDataFederationQueryLimit`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.CreateOneDataFederationQueryLimit`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -278,19 +293,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     endpointId := "endpointId_example" // string | 
 
     resp, r, err := sdk.DataFederationApi.DeleteDataFederationPrivateEndpoint(context.Background(), groupId, endpointId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.DeleteDataFederationPrivateEndpoint``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.DeleteDataFederationPrivateEndpoint`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `DeleteDataFederationPrivateEndpoint`: interface{}
-    fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.DeleteDataFederationPrivateEndpoint`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.DeleteDataFederationPrivateEndpoint`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -354,19 +374,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     tenantName := "tenantName_example" // string | 
 
     resp, r, err := sdk.DataFederationApi.DeleteFederatedDatabase(context.Background(), groupId, tenantName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.DeleteFederatedDatabase``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.DeleteFederatedDatabase`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `DeleteFederatedDatabase`: interface{}
-    fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.DeleteFederatedDatabase`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.DeleteFederatedDatabase`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -430,7 +455,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     tenantName := "tenantName_example" // string | 
@@ -438,12 +466,14 @@ func main() {
 
     resp, r, err := sdk.DataFederationApi.DeleteOneDataFederationInstanceQueryLimit(context.Background(), groupId, tenantName, limitName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.DeleteOneDataFederationInstanceQueryLimit``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.DeleteOneDataFederationInstanceQueryLimit`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `DeleteOneDataFederationInstanceQueryLimit`: interface{}
-    fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.DeleteOneDataFederationInstanceQueryLimit`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.DeleteOneDataFederationInstanceQueryLimit`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -509,7 +539,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     tenantName := "tenantName_example" // string | 
@@ -518,12 +551,14 @@ func main() {
 
     resp, r, err := sdk.DataFederationApi.DownloadFederatedDatabaseQueryLogs(context.Background(), groupId, tenantName).EndDate(endDate).StartDate(startDate).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.DownloadFederatedDatabaseQueryLogs``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.DownloadFederatedDatabaseQueryLogs`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `DownloadFederatedDatabaseQueryLogs`: io.ReadCloser
-    fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.DownloadFederatedDatabaseQueryLogs`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.DownloadFederatedDatabaseQueryLogs`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -589,19 +624,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     endpointId := "endpointId_example" // string | 
 
     resp, r, err := sdk.DataFederationApi.GetDataFederationPrivateEndpoint(context.Background(), groupId, endpointId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.GetDataFederationPrivateEndpoint``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.GetDataFederationPrivateEndpoint`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `GetDataFederationPrivateEndpoint`: PrivateNetworkEndpointIdEntry
-    fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.GetDataFederationPrivateEndpoint`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.GetDataFederationPrivateEndpoint`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -665,19 +705,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     tenantName := "tenantName_example" // string | 
 
     resp, r, err := sdk.DataFederationApi.GetFederatedDatabase(context.Background(), groupId, tenantName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.GetFederatedDatabase``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.GetFederatedDatabase`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `GetFederatedDatabase`: DataLakeTenant
-    fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.GetFederatedDatabase`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.GetFederatedDatabase`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -741,7 +786,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     includeCount := true // bool |  (optional) (default to true)
@@ -750,12 +798,14 @@ func main() {
 
     resp, r, err := sdk.DataFederationApi.ListDataFederationPrivateEndpoints(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.ListDataFederationPrivateEndpoints``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.ListDataFederationPrivateEndpoints`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `ListDataFederationPrivateEndpoints`: PaginatedPrivateNetworkEndpointIdEntry
-    fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.ListDataFederationPrivateEndpoints`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.ListDataFederationPrivateEndpoints`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -820,19 +870,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     type_ := "type__example" // string |  (optional) (default to "USER")
 
     resp, r, err := sdk.DataFederationApi.ListFederatedDatabases(context.Background(), groupId).Type_(type_).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.ListFederatedDatabases``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.ListFederatedDatabases`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `ListFederatedDatabases`: []DataLakeTenant
-    fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.ListFederatedDatabases`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.ListFederatedDatabases`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -895,7 +950,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     tenantName := "tenantName_example" // string | 
@@ -903,12 +961,14 @@ func main() {
 
     resp, r, err := sdk.DataFederationApi.ReturnFederatedDatabaseQueryLimit(context.Background(), groupId, tenantName, limitName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.ReturnFederatedDatabaseQueryLimit``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.ReturnFederatedDatabaseQueryLimit`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `ReturnFederatedDatabaseQueryLimit`: DataFederationTenantQueryLimit
-    fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.ReturnFederatedDatabaseQueryLimit`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.ReturnFederatedDatabaseQueryLimit`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -974,19 +1034,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     tenantName := "tenantName_example" // string | 
 
     resp, r, err := sdk.DataFederationApi.ReturnFederatedDatabaseQueryLimits(context.Background(), groupId, tenantName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.ReturnFederatedDatabaseQueryLimits``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.ReturnFederatedDatabaseQueryLimits`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `ReturnFederatedDatabaseQueryLimits`: []DataFederationTenantQueryLimit
-    fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.ReturnFederatedDatabaseQueryLimits`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.ReturnFederatedDatabaseQueryLimits`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1050,7 +1115,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     tenantName := "tenantName_example" // string | 
@@ -1059,12 +1127,14 @@ func main() {
 
     resp, r, err := sdk.DataFederationApi.UpdateFederatedDatabase(context.Background(), groupId, tenantName, &dataLakeTenant).SkipRoleValidation(skipRoleValidation).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.UpdateFederatedDatabase``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.UpdateFederatedDatabase`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `UpdateFederatedDatabase`: DataLakeTenant
-    fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.UpdateFederatedDatabase`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.UpdateFederatedDatabase`: %v (%v)\n", resp, r)
 }
 ```
 

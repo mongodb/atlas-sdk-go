@@ -60,7 +60,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -68,12 +71,14 @@ func main() {
 
     resp, r, err := sdk.CloudBackupsApi.CancelBackupRestoreJob(context.Background(), groupId, clusterName, restoreJobId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.CancelBackupRestoreJob``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.CancelBackupRestoreJob`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `CancelBackupRestoreJob`: interface{}
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.CancelBackupRestoreJob`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.CancelBackupRestoreJob`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -139,7 +144,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -147,12 +155,14 @@ func main() {
 
     resp, r, err := sdk.CloudBackupsApi.CreateBackupExportJob(context.Background(), groupId, clusterName, &diskBackupExportJobRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.CreateBackupExportJob``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.CreateBackupExportJob`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `CreateBackupExportJob`: DiskBackupExportJob
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.CreateBackupExportJob`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.CreateBackupExportJob`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -217,7 +227,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -225,12 +238,14 @@ func main() {
 
     resp, r, err := sdk.CloudBackupsApi.CreateBackupRestoreJob(context.Background(), groupId, clusterName, &diskBackupSnapshotRestoreJob).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.CreateBackupRestoreJob``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.CreateBackupRestoreJob`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `CreateBackupRestoreJob`: DiskBackupSnapshotRestoreJob
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.CreateBackupRestoreJob`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.CreateBackupRestoreJob`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -295,19 +310,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     diskBackupSnapshotExportBucket := *openapiclient.NewDiskBackupSnapshotExportBucket() // DiskBackupSnapshotExportBucket | 
 
     resp, r, err := sdk.CloudBackupsApi.CreateExportBucket(context.Background(), groupId, &diskBackupSnapshotExportBucket).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.CreateExportBucket``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.CreateExportBucket`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `CreateExportBucket`: DiskBackupSnapshotExportBucket
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.CreateExportBucket`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.CreateExportBucket`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -370,7 +390,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -378,12 +401,14 @@ func main() {
 
     resp, r, err := sdk.CloudBackupsApi.CreateServerlessBackupRestoreJob(context.Background(), groupId, clusterName, &serverlessBackupRestoreJob).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.CreateServerlessBackupRestoreJob``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.CreateServerlessBackupRestoreJob`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `CreateServerlessBackupRestoreJob`: ServerlessBackupRestoreJob
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.CreateServerlessBackupRestoreJob`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.CreateServerlessBackupRestoreJob`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -448,19 +473,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
 
     resp, r, err := sdk.CloudBackupsApi.DeleteAllBackupSchedules(context.Background(), groupId, clusterName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.DeleteAllBackupSchedules``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.DeleteAllBackupSchedules`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `DeleteAllBackupSchedules`: DiskBackupSnapshotSchedule
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.DeleteAllBackupSchedules`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.DeleteAllBackupSchedules`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -524,19 +554,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     exportBucketId := "exportBucketId_example" // string | 
 
     resp, r, err := sdk.CloudBackupsApi.DeleteExportBucket(context.Background(), groupId, exportBucketId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.DeleteExportBucket``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.DeleteExportBucket`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `DeleteExportBucket`: interface{}
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.DeleteExportBucket`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.DeleteExportBucket`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -600,7 +635,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -608,12 +646,14 @@ func main() {
 
     resp, r, err := sdk.CloudBackupsApi.DeleteReplicaSetBackup(context.Background(), groupId, clusterName, snapshotId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.DeleteReplicaSetBackup``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.DeleteReplicaSetBackup`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `DeleteReplicaSetBackup`: interface{}
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.DeleteReplicaSetBackup`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.DeleteReplicaSetBackup`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -679,7 +719,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -687,12 +730,14 @@ func main() {
 
     resp, r, err := sdk.CloudBackupsApi.DeleteShardedClusterBackup(context.Background(), groupId, clusterName, snapshotId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.DeleteShardedClusterBackup``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.DeleteShardedClusterBackup`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `DeleteShardedClusterBackup`: interface{}
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.DeleteShardedClusterBackup`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.DeleteShardedClusterBackup`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -758,7 +803,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -766,12 +814,14 @@ func main() {
 
     resp, r, err := sdk.CloudBackupsApi.GetBackupExportJob(context.Background(), groupId, clusterName, exportId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.GetBackupExportJob``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.GetBackupExportJob`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `GetBackupExportJob`: DiskBackupExportJob
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.GetBackupExportJob`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.GetBackupExportJob`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -837,7 +887,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -845,12 +898,14 @@ func main() {
 
     resp, r, err := sdk.CloudBackupsApi.GetBackupRestoreJob(context.Background(), groupId, clusterName, restoreJobId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.GetBackupRestoreJob``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.GetBackupRestoreJob`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `GetBackupRestoreJob`: DiskBackupSnapshotRestoreJob
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.GetBackupRestoreJob`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.GetBackupRestoreJob`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -916,19 +971,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
 
     resp, r, err := sdk.CloudBackupsApi.GetBackupSchedule(context.Background(), groupId, clusterName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.GetBackupSchedule``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.GetBackupSchedule`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `GetBackupSchedule`: DiskBackupSnapshotSchedule
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.GetBackupSchedule`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.GetBackupSchedule`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -992,18 +1052,23 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
     resp, r, err := sdk.CloudBackupsApi.GetDataProtectionSettings(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.GetDataProtectionSettings``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.GetDataProtectionSettings`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `GetDataProtectionSettings`: DataProtectionSettings20231001
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.GetDataProtectionSettings`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.GetDataProtectionSettings`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1065,19 +1130,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     exportBucketId := "exportBucketId_example" // string | 
 
     resp, r, err := sdk.CloudBackupsApi.GetExportBucket(context.Background(), groupId, exportBucketId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.GetExportBucket``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.GetExportBucket`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `GetExportBucket`: DiskBackupSnapshotExportBucket
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.GetExportBucket`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.GetExportBucket`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1141,7 +1211,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -1149,12 +1222,14 @@ func main() {
 
     resp, r, err := sdk.CloudBackupsApi.GetReplicaSetBackup(context.Background(), groupId, clusterName, snapshotId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.GetReplicaSetBackup``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.GetReplicaSetBackup`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `GetReplicaSetBackup`: DiskBackupReplicaSet
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.GetReplicaSetBackup`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.GetReplicaSetBackup`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1220,7 +1295,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -1228,12 +1306,14 @@ func main() {
 
     resp, r, err := sdk.CloudBackupsApi.GetServerlessBackup(context.Background(), groupId, clusterName, snapshotId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.GetServerlessBackup``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.GetServerlessBackup`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `GetServerlessBackup`: ServerlessBackupSnapshot
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.GetServerlessBackup`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.GetServerlessBackup`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1299,7 +1379,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -1307,12 +1390,14 @@ func main() {
 
     resp, r, err := sdk.CloudBackupsApi.GetServerlessBackupRestoreJob(context.Background(), groupId, clusterName, restoreJobId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.GetServerlessBackupRestoreJob``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.GetServerlessBackupRestoreJob`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `GetServerlessBackupRestoreJob`: ServerlessBackupRestoreJob
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.GetServerlessBackupRestoreJob`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.GetServerlessBackupRestoreJob`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1378,7 +1463,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -1386,12 +1474,14 @@ func main() {
 
     resp, r, err := sdk.CloudBackupsApi.GetShardedClusterBackup(context.Background(), groupId, clusterName, snapshotId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.GetShardedClusterBackup``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.GetShardedClusterBackup`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `GetShardedClusterBackup`: DiskBackupShardedClusterSnapshot
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.GetShardedClusterBackup`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.GetShardedClusterBackup`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1457,7 +1547,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -1467,12 +1560,14 @@ func main() {
 
     resp, r, err := sdk.CloudBackupsApi.ListBackupExportJobs(context.Background(), groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.ListBackupExportJobs``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.ListBackupExportJobs`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `ListBackupExportJobs`: PaginatedApiAtlasDiskBackupExportJob
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.ListBackupExportJobs`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.ListBackupExportJobs`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1539,7 +1634,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -1549,12 +1647,14 @@ func main() {
 
     resp, r, err := sdk.CloudBackupsApi.ListBackupRestoreJobs(context.Background(), groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.ListBackupRestoreJobs``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.ListBackupRestoreJobs`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `ListBackupRestoreJobs`: PaginatedCloudBackupRestoreJob
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.ListBackupRestoreJobs`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.ListBackupRestoreJobs`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1621,7 +1721,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     includeCount := true // bool |  (optional) (default to true)
@@ -1630,12 +1733,14 @@ func main() {
 
     resp, r, err := sdk.CloudBackupsApi.ListExportBuckets(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.ListExportBuckets``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.ListExportBuckets`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `ListExportBuckets`: PaginatedBackupSnapshotExportBuckets
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.ListExportBuckets`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.ListExportBuckets`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1700,7 +1805,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -1710,12 +1818,14 @@ func main() {
 
     resp, r, err := sdk.CloudBackupsApi.ListReplicaSetBackups(context.Background(), groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.ListReplicaSetBackups``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.ListReplicaSetBackups`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `ListReplicaSetBackups`: PaginatedCloudBackupReplicaSet
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.ListReplicaSetBackups`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.ListReplicaSetBackups`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1782,7 +1892,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -1792,12 +1905,14 @@ func main() {
 
     resp, r, err := sdk.CloudBackupsApi.ListServerlessBackupRestoreJobs(context.Background(), groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.ListServerlessBackupRestoreJobs``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.ListServerlessBackupRestoreJobs`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `ListServerlessBackupRestoreJobs`: PaginatedApiAtlasServerlessBackupRestoreJob
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.ListServerlessBackupRestoreJobs`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.ListServerlessBackupRestoreJobs`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1864,7 +1979,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -1874,12 +1992,14 @@ func main() {
 
     resp, r, err := sdk.CloudBackupsApi.ListServerlessBackups(context.Background(), groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.ListServerlessBackups``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.ListServerlessBackups`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `ListServerlessBackups`: PaginatedApiAtlasServerlessBackupSnapshot
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.ListServerlessBackups`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.ListServerlessBackups`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1946,19 +2066,24 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
 
     resp, r, err := sdk.CloudBackupsApi.ListShardedClusterBackups(context.Background(), groupId, clusterName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.ListShardedClusterBackups``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.ListShardedClusterBackups`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `ListShardedClusterBackups`: PaginatedCloudBackupShardedClusterSnapshot
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.ListShardedClusterBackups`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.ListShardedClusterBackups`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -2022,7 +2147,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -2030,12 +2158,14 @@ func main() {
 
     resp, r, err := sdk.CloudBackupsApi.TakeSnapshot(context.Background(), groupId, clusterName, &diskBackupOnDemandSnapshotRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.TakeSnapshot``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.TakeSnapshot`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `TakeSnapshot`: DiskBackupSnapshot
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.TakeSnapshot`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.TakeSnapshot`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -2100,7 +2230,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -2108,12 +2241,14 @@ func main() {
 
     resp, r, err := sdk.CloudBackupsApi.UpdateBackupSchedule(context.Background(), groupId, clusterName, &diskBackupSnapshotSchedule).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.UpdateBackupSchedule``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.UpdateBackupSchedule`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `UpdateBackupSchedule`: DiskBackupSnapshotSchedule
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.UpdateBackupSchedule`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.UpdateBackupSchedule`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -2178,7 +2313,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     dataProtectionSettings20231001 := *openapiclient.NewDataProtectionSettings20231001("AuthorizedEmail_example", "AuthorizedUserFirstName_example", "AuthorizedUserLastName_example") // DataProtectionSettings20231001 | 
@@ -2186,12 +2324,14 @@ func main() {
 
     resp, r, err := sdk.CloudBackupsApi.UpdateDataProtectionSettings(context.Background(), groupId, &dataProtectionSettings20231001).OverwriteBackupPolicies(overwriteBackupPolicies).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.UpdateDataProtectionSettings``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.UpdateDataProtectionSettings`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `UpdateDataProtectionSettings`: DataProtectionSettings20231001
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.UpdateDataProtectionSettings`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.UpdateDataProtectionSettings`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -2255,7 +2395,10 @@ func main() {
     apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
     apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+      fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+    }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -2264,12 +2407,14 @@ func main() {
 
     resp, r, err := sdk.CloudBackupsApi.UpdateSnapshotRetention(context.Background(), groupId, clusterName, snapshotId, &backupSnapshotRetention).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.UpdateSnapshotRetention``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.UpdateSnapshotRetention`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+          fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
     }
     // response from `UpdateSnapshotRetention`: DiskBackupReplicaSet
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.UpdateSnapshotRetention`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.UpdateSnapshotRetention`: %v (%v)\n", resp, r)
 }
 ```
 
