@@ -19,7 +19,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: b3f2a193974330cd87b716f19cdb87cc23214b79
+  x-xgen-sha: 6e2e8b0b416f8116ca8fea058d82df13c552c7ee
 servers:
 - url: https://cloud.mongodb.com
 tags:
@@ -284,6 +284,36 @@ paths:
       summary: Return All Authorized Clusters in All Projects
       tags:
       - Clusters
+  /api/atlas/v2/eventTypes:
+    get:
+      description: "Returns a list of all event types, along with a description and\
+        \ additional metadata about each event."
+      operationId: listEventTypes
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/includeCount"
+      - $ref: "#/components/parameters/itemsPerPage"
+      - $ref: "#/components/parameters/pageNum"
+      - $ref: "#/components/parameters/pretty"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/EventTypeDetails"
+              x-xgen-version: 2023-01-01
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+      - DigestAuth: []
+      summary: List All Possible Event Types
+      tags:
+      - Events
   /api/atlas/v2/federationSettings/{federationSettingsId}:
     delete:
       description: "Deletes the federation settings instance and all associated data,\
@@ -2743,9 +2773,10 @@ paths:
     get:
       description: "Returns the details for all clusters in the specific project to\
         \ which you have access. Clusters contain a group of hosts that maintain the\
-        \ same data set. The response includes multi-cloud clusters. To use this resource,\
-        \ the requesting API Key must have the Project Read Only role. This feature\
-        \ is not available for serverless clusters. Deprecated versions: v2-{2023-01-01}"
+        \ same data set. The response includes clusters with asymmetrically-sized\
+        \ shards. To use this resource, the requesting API Key must have the Project\
+        \ Read Only role. This feature is not  available for serverless clusters.\
+        \ Deprecated versions: v2-{2023-01-01}"
       operationId: listClusters
       parameters:
       - $ref: "#/components/parameters/envelope"
@@ -2777,16 +2808,13 @@ paths:
       summary: Return All Clusters in One Project
       tags:
       - Clusters
-      x-xgen-changelog:
-        "2024-07-11": Only clusters supported by the current API version are returned
-          in response
     post:
       description: "Creates one cluster in the specified project. Clusters contain\
         \ a group of hosts that maintain the same data set. This resource can create\
-        \ multi-cloud clusters. Each project supports up to 25 database deployments.\
-        \ To use this resource, the requesting API Key must have the Project Owner\
-        \ role. This feature is not available for serverless clusters. Deprecated\
-        \ versions: v2-{2023-01-01}"
+        \ clusters with asymmetrically-sized shards. Each project supports up to 25\
+        \ database deployments. To use this resource, the requesting API Key must\
+        \ have the Project Owner role. This feature is not available for serverless\
+        \ clusters. Deprecated versions: v2-{2023-01-01}"
       operationId: createCluster
       parameters:
       - $ref: "#/components/parameters/envelope"
@@ -2795,87 +2823,6 @@ paths:
       requestBody:
         content:
           application/vnd.atlas.2023-02-01+json:
-            examples:
-              Multi Cloud Cluster:
-                description: Multi Cloud Cluster
-                value:
-                  clusterType: REPLICASET
-                  links: []
-                  name: multiCloud
-                  replicationSpecs:
-                  - numShards: 1
-                    regionConfigs:
-                    - analyticsAutoScaling:
-                        autoIndexing:
-                          enabled: false
-                        compute:
-                          enabled: true
-                          maxInstanceSize: M40
-                          minInstanceSize: M30
-                          scaleDownEnabled: true
-                        diskGB:
-                          enabled: true
-                      analyticsSpecs:
-                        instanceSize: M30
-                        nodeCount: 0
-                      autoScaling:
-                        autoIndexing:
-                          enabled: false
-                        compute:
-                          enabled: true
-                          maxInstanceSize: M40
-                          minInstanceSize: M30
-                          scaleDownEnabled: true
-                        diskGB:
-                          enabled: true
-                      electableSpecs:
-                        instanceSize: M30
-                        nodeCount: 3
-                      hiddenSecondarySpecs:
-                        instanceSize: M30
-                        nodeCount: 0
-                      priority: 7
-                      providerName: AWS
-                      readOnlySpecs:
-                        instanceSize: M30
-                        nodeCount: 0
-                      regionName: US_EAST_1
-                    - analyticsAutoScaling:
-                        autoIndexing:
-                          enabled: false
-                        compute:
-                          enabled: true
-                          maxInstanceSize: M40
-                          minInstanceSize: M30
-                          scaleDownEnabled: true
-                        diskGB:
-                          enabled: true
-                      analyticsSpecs:
-                        instanceSize: M30
-                        nodeCount: 0
-                      autoScaling:
-                        autoIndexing:
-                          enabled: false
-                        compute:
-                          enabled: true
-                          maxInstanceSize: M40
-                          minInstanceSize: M30
-                          scaleDownEnabled: true
-                        diskGB:
-                          enabled: true
-                      electableSpecs:
-                        instanceSize: M30
-                        nodeCount: 2
-                      hiddenSecondarySpecs:
-                        instanceSize: M30
-                        nodeCount: 0
-                      priority: 6
-                      providerName: GCP
-                      readOnlySpecs:
-                        instanceSize: M30
-                        nodeCount: 0
-                      regionName: EASTERN_US
-                    zoneName: Zone 1
             schema:
               $ref: "#/components/schemas/AdvancedClusterDescription"
         description: Cluster to create in the specific project.
@@ -3083,9 +3030,9 @@ paths:
     get:
       description: "Returns the details for one cluster in the specified project.\
         \ Clusters contain a group of hosts that maintain the same data set. The response\
-        \ includes multi-cloud clusters. To use this resource, the requesting API\
-        \ Key must have the Project Read Only role. This feature is not available\
-        \ for serverless clusters. Deprecated versions: v2-{2023-01-01}"
+        \ includes clusters with asymmetrically-sized shards. To use this resource,\
+        \ the requesting API Key must have the Project Read Only role. This feature\
+        \ is not available for serverless clusters. Deprecated versions: v2-{2023-01-01}"
       operationId: getCluster
       parameters:
       - $ref: "#/components/parameters/envelope"
@@ -3124,14 +3071,14 @@ paths:
     patch:
       description: "Updates the details for one cluster in the specified project.\
         \ Clusters contain a group of hosts that maintain the same data set. This\
-        \ resource can update multi-cloud clusters. To update a cluster's termination\
-        \ protection, the requesting API Key must have the Project Owner role. For\
-        \ all other updates, the requesting API Key must have the Project Cluster\
-        \ Manager role. You can't modify a paused cluster (`paused : true`). You must\
-        \ call this endpoint to set `paused : false`. After this endpoint responds\
-        \ with `paused : false`, you can call it again with the changes you want to\
-        \ make to the cluster. This feature is not available for serverless clusters.\
-        \ Deprecated versions: v2-{2023-01-01}"
+        \ resource can update clusters with asymmetrically-sized shards. To update\
+        \ a cluster's termination protection, the requesting API Key must have the\
+        \ Project Owner role. For all other updates, the requesting API Key must have\
+        \ the Project Cluster Manager role. You can't modify a paused cluster (`paused\
+        \ : true`). You must call this endpoint to set `paused : false`. After this\
+        \ endpoint responds with `paused : false`, you can call it again with the\
+        \ changes you want to make to the cluster. This feature is not available for\
+        \ serverless clusters. Deprecated versions: v2-{2023-01-01}"
       operationId: updateCluster
       parameters:
       - $ref: "#/components/parameters/envelope"
@@ -5722,7 +5669,6 @@ paths:
           application/vnd.atlas.2023-01-01+json:
             schema:
               $ref: "#/components/schemas/ClusterDescriptionProcessArgs"
-            x-sunset: 2025-06-01
             x-xgen-version: 2023-01-01
         description: Advanced configuration details to add for one cluster in the
           specified project.
@@ -7608,7 +7554,6 @@ paths:
         required: true
         schema:
           type: string
-          pattern: "^\\b(?!xgen-)([0-9A-Za-z_\\-]+)\\b(?<!\\atlasAdmin|read|readWrite|dbAdmin|dbOwner|userAdmin|clusterAdmin|clusterManager|clusterMonitor|hostManager|backup|restore|readAnyDatabase|readWriteAnyDatabase|userAdminAnyDatabase|dbAdminAnyDatabase|root|__system)$"
       responses:
         "204":
           content:
@@ -7645,7 +7590,6 @@ paths:
         required: true
         schema:
           type: string
-          pattern: "^\\b(?!xgen-)([0-9A-Za-z_\\-]+)\\b(?<!\\atlasAdmin|read|readWrite|dbAdmin|dbOwner|userAdmin|clusterAdmin|clusterManager|clusterMonitor|hostManager|backup|restore|readAnyDatabase|readWriteAnyDatabase|userAdminAnyDatabase|dbAdminAnyDatabase|root|__system)$"
       responses:
         "200":
           content:
@@ -7680,7 +7624,6 @@ paths:
         required: true
         schema:
           type: string
-          pattern: "^\\b(?!xgen-)([0-9A-Za-z_\\-]+)\\b(?<!\\atlasAdmin|read|readWrite|dbAdmin|dbOwner|userAdmin|clusterAdmin|clusterManager|clusterMonitor|hostManager|backup|restore|readAnyDatabase|readWriteAnyDatabase|userAdminAnyDatabase|dbAdminAnyDatabase|root|__system)$"
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -10462,6 +10405,74 @@ paths:
       summary: Enable Managed Slow Operation Threshold
       tags:
       - Performance Advisor
+  /api/atlas/v2/groups/{groupId}/mongoDBVersions:
+    get:
+      description: Returns the MongoDB Long Term Support Major Versions available
+        to new clusters in this project.
+      operationId: getProjectLTSVersions
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/pretty"
+      - $ref: "#/components/parameters/groupId"
+      - description: Filter results to only one cloud provider.
+        in: query
+        name: cloudProvider
+        schema:
+          type: string
+          enum:
+          - AWS
+          - AZURE
+          - GCP
+          - TENANT
+      - description: Filter results to only one instance size.
+        in: query
+        name: instanceSize
+        schema:
+          type: string
+          example: M10
+      - description: Filter results to only the default values per tier. This value
+          must be DEFAULT.
+        in: query
+        name: defaultStatus
+        schema:
+          type: string
+          enum:
+          - DEFAULT
+      - description: Number of items that the response returns per page.
+        in: query
+        name: itemsPerPage
+        schema:
+          type: integer
+          format: int64
+          default: 100
+          example: 100
+          minimum: 1
+      - $ref: "#/components/parameters/pageNum"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedAvailableVersionView"
+              x-xgen-version: 2023-01-01
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+      - DigestAuth: []
+      summary: Return Available MongoDB LTS Versions for clusters in One Project
+      tags:
+      - Projects
   /api/atlas/v2/groups/{groupId}/peers:
     get:
       description: "Returns details about all network peering connections in the specified\
@@ -14362,6 +14373,50 @@ paths:
       x-xgen-changelog:
         "2023-09-11": "The MongoDB Atlas Streams Processing API is now exposed as\
           \ part of private preview, but is subject to change until GA."
+  /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor:
+    post:
+      description: "Create one Stream Processor within the specified stream instance.\
+        \ To use this resource, the requesting API Key must have the Project Owner\
+        \ role or Project Stream Processing Owner role."
+      operationId: createStreamProcessor
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/pretty"
+      - $ref: "#/components/parameters/groupId"
+      - description: Human-readable label that identifies the stream instance.
+        in: path
+        name: tenantName
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/vnd.atlas.2024-05-30+json:
+            schema:
+              $ref: "#/components/schemas/StreamsProcessor"
+        description: Details to create an Atlas Streams Processor.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-05-30+json:
+              schema:
+                $ref: "#/components/schemas/StreamsProcessor"
+              x-xgen-version: 2024-05-30
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "409":
+          $ref: "#/components/responses/unauthorized"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+      - DigestAuth: []
+      summary: Create One Stream Processor
+      tags:
+      - Streams
   /api/atlas/v2/groups/{groupId}/teams:
     get:
       description: "Returns all teams to which the authenticated user has access in\
@@ -16050,6 +16105,14 @@ paths:
       - $ref: "#/components/parameters/orgId"
       - $ref: "#/components/parameters/pageNum"
       - $ref: "#/components/parameters/pretty"
+      - description: Flag that indicates whether to return linked invoices in the
+          linkedInvoices field.
+        in: query
+        name: viewLinkedInvoices
+        schema:
+          type: boolean
+          default: true
+          example: true
       responses:
         "200":
           content:
@@ -16912,8 +16975,6 @@ paths:
           description: OK
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-      - Unauthenticated: []
       summary: Return All Control Plane IP Addresses
       tags:
       - Root
@@ -17733,6 +17794,91 @@ components:
           description: Number of nodes of the given type for MongoDB Cloud to deploy
             to the region.
       title: AWS Cluster Hardware Settings
+    AWSHardwareSpec20250101:
+      type: object
+      description: Hardware specifications for nodes deployed in the region.
+      properties:
+        diskIOPS:
+          type: integer
+          format: int32
+          description: |-
+            Target throughput desired for storage attached to your AWS-provisioned cluster. Change this parameter only if you:
+
+            - set `"replicationSpecs[n].regionConfigs[m].providerName" : "AWS"`.
+            - set `"replicationSpecs[n].regionConfigs[m].electableSpecs.instanceSize" : "M30"` or greater not including `Mxx_NVME` tiers.
+
+            The maximum input/output operations per second (IOPS) depend on the selected **.instanceSize** and **.diskSizeGB**.
+            This parameter defaults to the cluster tier's standard IOPS value.
+            Changing this value impacts cluster cost.
+            MongoDB Cloud enforces minimum ratios of storage capacity to system memory for given cluster tiers. This keeps cluster performance consistent with large datasets.
+
+            - Instance sizes `M10` to `M40` have a ratio of disk capacity to system memory of 60:1.
+            - Instance sizes greater than `M40` have a ratio of 120:1.
+        diskSizeGB:
+          type: number
+          format: double
+          description: "Storage capacity that the host's root volume possesses expressed\
+            \ in gigabytes. Increase this number to add capacity. MongoDB Cloud requires\
+            \ this parameter if you set **replicationSpecs**. If you specify a disk\
+            \ size below the minimum (10 GB), this parameter defaults to the minimum\
+            \ disk size value. Storage charge calculations depend on whether you choose\
+            \ the default value or a custom value.  The maximum value for disk storage\
+            \ cannot exceed 50 times the maximum RAM for the selected cluster. If\
+            \ you require more storage space, consider upgrading your cluster to a\
+            \ higher tier."
+          maximum: 4096
+          minimum: 10
+        ebsVolumeType:
+          type: string
+          default: STANDARD
+          description: "Type of storage you want to attach to your AWS-provisioned\
+            \ cluster.\n\n- `STANDARD` volume types can't exceed the default input/output\
+            \ operations per second (IOPS) rate for the selected volume size. \n\n\
+            - `PROVISIONED` volume types must fall within the allowable IOPS range\
+            \ for the selected volume size. You must set this value to (`PROVISIONED`)\
+            \ for NVMe clusters."
+          enum:
+          - STANDARD
+          - PROVISIONED
+        instanceSize:
+          type: string
+          description: Hardware specification for the instance sizes in this region.
+            Each instance size has a default storage and memory capacity. The instance
+            size you select applies to all the data-bearing hosts in your instance
+            size.
+          enum:
+          - M10
+          - M20
+          - M30
+          - M40
+          - M50
+          - M60
+          - M80
+          - M100
+          - M140
+          - M200
+          - M300
+          - R40
+          - R50
+          - R60
+          - R80
+          - R200
+          - R300
+          - R400
+          - R700
+          - M40_NVME
+          - M50_NVME
+          - M60_NVME
+          - M80_NVME
+          - M200_NVME
+          - M400_NVME
+          title: AWS Instance Sizes
+        nodeCount:
+          type: integer
+          format: int32
+          description: Number of nodes of the given type for MongoDB Cloud to deploy
+            to the region.
+      title: AWS Cluster Hardware Settings
     AWSInterfaceEndpoint:
       type: object
       description: Group of Private Endpoint settings.
@@ -17957,6 +18103,23 @@ components:
       description: Details that explain how MongoDB Cloud replicates data in one region
         on the specified MongoDB database.
       title: AWS Regional Replication Specifications
+    AWSRegionConfig20250101:
+      type: object
+      allOf:
+      - $ref: "#/components/schemas/CloudRegionConfig20250101"
+      - type: object
+        properties:
+          analyticsAutoScaling:
+            $ref: "#/components/schemas/AdvancedAutoScalingSettings"
+          analyticsSpecs:
+            $ref: "#/components/schemas/DedicatedHardwareSpec20250101"
+          autoScaling:
+            $ref: "#/components/schemas/AdvancedAutoScalingSettings"
+          readOnlySpecs:
+            $ref: "#/components/schemas/DedicatedHardwareSpec20250101"
+      description: Details that explain how MongoDB Cloud replicates data in one region
+        on the specified MongoDB database.
+      title: AWS Regional Replication Specifications
     AccessListItemView:
       type: object
       properties:
@@ -18164,15 +18327,15 @@ components:
           readOnly: true
         mongoDBMajorVersion:
           type: string
-          default: "7.0"
-          description: Major MongoDB version of the cluster. MongoDB Cloud deploys
-            the cluster with the latest stable release of the specified version.
-          enum:
-          - "4.2"
-          - "4.4"
-          - "5.0"
-          - "6.0"
-          - "7.0"
+          description: |-
+            MongoDB major version of the cluster.
+
+            On creation: Choose from the available versions of MongoDB, or leave unspecified for the current recommended default in the MongoDB Cloud platform. The recommended version is a recent Long Term Support version. The default is not guaranteed to be the most recently released version throughout the entire release cycle. For versions available in a specific project, see the linked documentation or use the API endpoint for [project LTS versions endpoint](#tag/Projects/operation/getProjectLTSVersions).
+
+             On update: Increase version only by 1 major version at a time.
+          externalDocs:
+            description: Available MongoDB Versions in Atlas
+            url: https://www.mongodb.com/docs/atlas/reference/faq/database/#which-versions-of-mongodb-do-service-clusters-use-
         mongoDBVersion:
           type: string
           description: Version of MongoDB that the cluster runs.
@@ -18951,7 +19114,7 @@ components:
       nullable: true
     ApiAtlasDataLakeAWSRegionView:
       type: string
-      description: Atlas Data Lake AWS Regions.
+      description: Atlas Data Federation AWS Regions.
       enum:
       - SYDNEY_AUS
       - MUMBAI_IND
@@ -18961,17 +19124,9 @@ components:
       - VIRGINIA_USA
       - OREGON_USA
       - SAOPAULO_BRA
+      - MONTREAL_CAN
+      - TOKYO_JPN
       - SINGAPORE_SGP
-    ApiAtlasDataLakeAzureRegionView:
-      type: string
-      description: Atlas Data Lake Azure Regions.
-      enum:
-      - VIRGINIA_USA
-      - CALIFORNIA_USA
-      - SINGAPORE_SGP
-      - DUBLIN_IRL
-      - AMSTERDAM_NLD
-      - SYDNEY_AUS
     ApiAtlasFTSAnalyzersViewManual:
       type: object
       description: Settings that describe one Atlas Search custom analyzer.
@@ -20468,6 +20623,12 @@ components:
             | `REGION`   | Simulates a cluster outage for a region.|
           enum:
           - REGION
+    AtlasDataFederationAzureRegion:
+      type: string
+      description: Atlas Data Federation Azure Regions.
+      enum:
+      - VIRGINIA_USA
+      - AMSTERDAM_NLD
     AtlasOrganization:
       type: object
       description: Details that describe the organization.
@@ -21545,6 +21706,23 @@ components:
       description: Details that explain how MongoDB Cloud replicates data in one region
         on the specified MongoDB database.
       title: Azure Regional Replication Specifications
+    AzureRegionConfig20250101:
+      type: object
+      allOf:
+      - $ref: "#/components/schemas/CloudRegionConfig20250101"
+      - type: object
+        properties:
+          analyticsAutoScaling:
+            $ref: "#/components/schemas/AdvancedAutoScalingSettings"
+          analyticsSpecs:
+            $ref: "#/components/schemas/DedicatedHardwareSpec20250101"
+          autoScaling:
+            $ref: "#/components/schemas/AdvancedAutoScalingSettings"
+          readOnlySpecs:
+            $ref: "#/components/schemas/DedicatedHardwareSpec20250101"
+      description: Details that explain how MongoDB Cloud replicates data in one region
+        on the specified MongoDB database.
+      title: Azure Regional Replication Specifications
     BackupComplianceOnDemandPolicyItem:
       type: object
       description: Specifications for on-demand policy.
@@ -22371,6 +22549,7 @@ components:
           - REPLICA_SET
           - CONFIG_SERVER
           - CONFIG_SERVER_REPLICA_SET
+          - CONFIG_SHARD_REPLICA_SET
           readOnly: true
       readOnly: true
       title: Snapshot Components
@@ -22478,7 +22657,7 @@ components:
       description: Name of the region to which the data lake routes client connections.
       oneOf:
       - $ref: "#/components/schemas/ApiAtlasDataLakeAWSRegionView"
-      - $ref: "#/components/schemas/ApiAtlasDataLakeAzureRegionView"
+      - $ref: "#/components/schemas/AtlasDataFederationAzureRegion"
     BaseCloudProviderInstanceSize:
       type: object
       description: "Minimum instance size to which your cluster can automatically\
@@ -23031,16 +23210,6 @@ components:
             that this invoice covers. This parameter expresses its value in the ISO
             8601 timestamp format in UTC.
           readOnly: true
-        groupId:
-          type: string
-          description: Unique 24-hexadecimal digit string that identifies the project
-            associated to this invoice. This identifying string doesn't appear on
-            all invoices.
-          example: 32b6e34b3d91647abb20e7b8
-          maxLength: 24
-          minLength: 24
-          pattern: "^([a-f0-9]{24})$"
-          readOnly: true
         id:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the invoice
@@ -23189,16 +23358,6 @@ components:
           description: Date and time when MongoDB Cloud finished the billing period
             that this invoice covers. This parameter expresses its value in the ISO
             8601 timestamp format in UTC.
-          readOnly: true
-        groupId:
-          type: string
-          description: Unique 24-hexadecimal digit string that identifies the project
-            associated to this invoice. This identifying string doesn't appear on
-            all invoices.
-          example: 32b6e34b3d91647abb20e7b8
-          maxLength: 24
-          minLength: 24
-          pattern: "^([a-f0-9]{24})$"
           readOnly: true
         id:
           type: string
@@ -24549,6 +24708,209 @@ components:
             - ASIA_SOUTHEAST_2
             title: GCP Regions
       title: Cloud Service Provider Settings for Multi-Cloud Clusters
+    CloudRegionConfig20250101:
+      type: object
+      description: Cloud service provider on which MongoDB Cloud provisions the hosts.
+      discriminator:
+        mapping:
+          AWS: "#/components/schemas/AWSRegionConfig20250101"
+          AZURE: "#/components/schemas/AzureRegionConfig20250101"
+          GCP: "#/components/schemas/GCPRegionConfig20250101"
+          TENANT: "#/components/schemas/TenantRegionConfig20250101"
+        propertyName: providerName
+      oneOf:
+      - $ref: "#/components/schemas/AWSRegionConfig20250101"
+      - $ref: "#/components/schemas/AzureRegionConfig20250101"
+      - $ref: "#/components/schemas/GCPRegionConfig20250101"
+      - $ref: "#/components/schemas/TenantRegionConfig20250101"
+      properties:
+        electableSpecs:
+          $ref: "#/components/schemas/HardwareSpec20250101"
+        priority:
+          type: integer
+          format: int32
+          description: |-
+            Precedence is given to this region when a primary election occurs. If your **regionConfigs** has only **readOnlySpecs**, **analyticsSpecs**, or both, set this value to `0`. If you have multiple **regionConfigs** objects (your cluster is multi-region or multi-cloud), they must have priorities in descending order. The highest priority is `7`.
+
+            **Example:** If you have three regions, their priorities would be `7`, `6`, and `5` respectively. If you added two more regions for supporting electable nodes, the priorities of those regions would be `4` and `3` respectively.
+          maximum: 7
+          minimum: 0
+        providerName:
+          type: string
+          description: "Cloud service provider on which MongoDB Cloud provisions the\
+            \ hosts. Set dedicated clusters to `AWS`, `GCP`, `AZURE` or `TENANT`."
+          enum:
+          - AWS
+          - AZURE
+          - GCP
+          - TENANT
+        regionName:
+          type: object
+          description: "Physical location of your MongoDB cluster nodes. The region\
+            \ you choose can affect network latency for clients accessing your databases.\
+            \ The region name is only returned in the response for single-region clusters.\
+            \ When MongoDB Cloud deploys a dedicated cluster, it checks if a VPC or\
+            \ VPC connection exists for that provider and region. If not, MongoDB\
+            \ Cloud creates them as part of the deployment. It assigns the VPC a Classless\
+            \ Inter-Domain Routing (CIDR) block. To limit a new VPC peering connection\
+            \ to one Classless Inter-Domain Routing (CIDR) block and region, create\
+            \ the connection first. Deploy the cluster after the connection starts.\
+            \ GCP Clusters and Multi-region clusters require one VPC peering connection\
+            \ for each region. MongoDB nodes can use only the peering connection that\
+            \ resides in the same region as the nodes to communicate with the peered\
+            \ VPC."
+          oneOf:
+          - type: string
+            description: "Physical location where MongoDB Cloud deploys your AWS-hosted\
+              \ MongoDB cluster nodes. The region you choose can affect network latency\
+              \ for clients accessing your databases. When MongoDB Cloud deploys a\
+              \ dedicated cluster, it checks if a VPC or VPC connection exists for\
+              \ that provider and region. If not, MongoDB Cloud creates them as part\
+              \ of the deployment. MongoDB Cloud assigns the VPC a CIDR block. To\
+              \ limit a new VPC peering connection to one CIDR block and region, create\
+              \ the connection first. Deploy the cluster after the connection starts."
+            enum:
+            - US_GOV_WEST_1
+            - US_GOV_EAST_1
+            - US_EAST_1
+            - US_EAST_2
+            - US_WEST_1
+            - US_WEST_2
+            - CA_CENTRAL_1
+            - EU_NORTH_1
+            - EU_WEST_1
+            - EU_WEST_2
+            - EU_WEST_3
+            - EU_CENTRAL_1
+            - EU_CENTRAL_2
+            - AP_EAST_1
+            - AP_NORTHEAST_1
+            - AP_NORTHEAST_2
+            - AP_NORTHEAST_3
+            - AP_SOUTHEAST_1
+            - AP_SOUTHEAST_2
+            - AP_SOUTHEAST_3
+            - AP_SOUTHEAST_4
+            - AP_SOUTH_1
+            - AP_SOUTH_2
+            - SA_EAST_1
+            - CN_NORTH_1
+            - CN_NORTHWEST_1
+            - ME_SOUTH_1
+            - ME_CENTRAL_1
+            - AF_SOUTH_1
+            - EU_SOUTH_1
+            - EU_SOUTH_2
+            - IL_CENTRAL_1
+            - CA_WEST_1
+            - GLOBAL
+            title: AWS Regions
+          - type: string
+            description: Microsoft Azure Regions.
+            enum:
+            - US_CENTRAL
+            - US_EAST
+            - US_EAST_2
+            - US_NORTH_CENTRAL
+            - US_WEST
+            - US_SOUTH_CENTRAL
+            - EUROPE_NORTH
+            - EUROPE_WEST
+            - US_WEST_CENTRAL
+            - US_WEST_2
+            - US_WEST_3
+            - CANADA_EAST
+            - CANADA_CENTRAL
+            - BRAZIL_SOUTH
+            - BRAZIL_SOUTHEAST
+            - AUSTRALIA_CENTRAL
+            - AUSTRALIA_CENTRAL_2
+            - AUSTRALIA_EAST
+            - AUSTRALIA_SOUTH_EAST
+            - GERMANY_CENTRAL
+            - GERMANY_NORTH_EAST
+            - GERMANY_WEST_CENTRAL
+            - GERMANY_NORTH
+            - SWEDEN_CENTRAL
+            - SWEDEN_SOUTH
+            - SWITZERLAND_NORTH
+            - SWITZERLAND_WEST
+            - UK_SOUTH
+            - UK_WEST
+            - NORWAY_EAST
+            - NORWAY_WEST
+            - INDIA_CENTRAL
+            - INDIA_SOUTH
+            - INDIA_WEST
+            - CHINA_EAST
+            - CHINA_NORTH
+            - ASIA_EAST
+            - JAPAN_EAST
+            - JAPAN_WEST
+            - ASIA_SOUTH_EAST
+            - KOREA_CENTRAL
+            - KOREA_SOUTH
+            - FRANCE_CENTRAL
+            - FRANCE_SOUTH
+            - SOUTH_AFRICA_NORTH
+            - SOUTH_AFRICA_WEST
+            - UAE_CENTRAL
+            - UAE_NORTH
+            - QATAR_CENTRAL
+            title: Azure Regions
+          - type: string
+            description: Google Compute Regions.
+            enum:
+            - EASTERN_US
+            - GOV_EASTERN_US
+            - US_EAST_4
+            - GOV_US_EAST_4
+            - US_EAST_5
+            - GOV_US_EAST_5
+            - US_WEST_2
+            - GOV_US_WEST_2
+            - US_WEST_3
+            - GOV_US_WEST_3
+            - US_WEST_4
+            - GOV_US_WEST_4
+            - US_SOUTH_1
+            - GOV_US_SOUTH_1
+            - CENTRAL_US
+            - GOV_CENTRAL_US
+            - WESTERN_US
+            - GOV_WESTERN_US
+            - NORTH_AMERICA_NORTHEAST_1
+            - NORTH_AMERICA_NORTHEAST_2
+            - SOUTH_AMERICA_EAST_1
+            - SOUTH_AMERICA_WEST_1
+            - WESTERN_EUROPE
+            - EUROPE_NORTH_1
+            - EUROPE_WEST_2
+            - EUROPE_WEST_3
+            - EUROPE_WEST_4
+            - EUROPE_WEST_6
+            - EUROPE_WEST_8
+            - EUROPE_WEST_9
+            - EUROPE_WEST_10
+            - EUROPE_WEST_12
+            - EUROPE_SOUTHWEST_1
+            - EUROPE_CENTRAL_2
+            - MIDDLE_EAST_CENTRAL_1
+            - MIDDLE_EAST_CENTRAL_2
+            - MIDDLE_EAST_WEST_1
+            - AUSTRALIA_SOUTHEAST_1
+            - AUSTRALIA_SOUTHEAST_2
+            - EASTERN_ASIA_PACIFIC
+            - NORTHEASTERN_ASIA_PACIFIC
+            - SOUTHEASTERN_ASIA_PACIFIC
+            - ASIA_EAST_2
+            - ASIA_NORTHEAST_2
+            - ASIA_NORTHEAST_3
+            - ASIA_SOUTH_1
+            - ASIA_SOUTH_2
+            - ASIA_SOUTHEAST_2
+            title: GCP Regions
+      title: Cloud Service Provider Settings
     CloudSearchMetrics:
       type: object
       properties:
@@ -24975,6 +25337,204 @@ components:
           readOnly: true
       readOnly: true
       title: Cluster Connection Strings
+    ClusterDescription20250101:
+      type: object
+      properties:
+        acceptDataRisksAndForceReplicaSetReconfig:
+          type: string
+          format: date-time
+          description: "If reconfiguration is necessary to regain a primary due to\
+            \ a regional outage, submit this field alongside your topology reconfiguration\
+            \ to request a new regional outage resistant topology. Forced reconfigurations\
+            \ during an outage of the majority of electable nodes carry a risk of\
+            \ data loss if replicated writes (even majority committed writes) have\
+            \ not been replicated to the new primary node. MongoDB Atlas docs contain\
+            \ more information. To proceed with an operation which carries that risk,\
+            \ set **acceptDataRisksAndForceReplicaSetReconfig** to the current date."
+          externalDocs:
+            description: Reconfiguring a Replica Set during a regional outage
+            url: https://dochub.mongodb.org/core/regional-outage-reconfigure-replica-set
+        backupEnabled:
+          type: boolean
+          default: false
+          description: "Flag that indicates whether the cluster can perform backups.\
+            \ If set to `true`, the cluster can perform backups. You must set this\
+            \ value to `true` for NVMe clusters. Backup uses [Cloud Backups](https://docs.atlas.mongodb.com/backup/cloud-backup/overview/)\
+            \ for dedicated clusters and [Shared Cluster Backups](https://docs.atlas.mongodb.com/backup/shared-tier/overview/)\
+            \ for tenant clusters. If set to `false`, the cluster doesn't use backups."
+        biConnector:
+          $ref: "#/components/schemas/BiConnector"
+        clusterType:
+          type: string
+          description: Configuration of nodes that comprise the cluster.
+          enum:
+          - REPLICASET
+          - SHARDED
+          - GEOSHARDED
+        connectionStrings:
+          $ref: "#/components/schemas/ClusterConnectionStrings"
+        createDate:
+          type: string
+          format: date-time
+          description: Date and time when MongoDB Cloud created this cluster. This
+            parameter expresses its value in ISO 8601 format in UTC.
+          readOnly: true
+        diskWarmingMode:
+          type: string
+          default: FULLY_WARMED
+          description: Disk warming mode selection.
+          enum:
+          - FULLY_WARMED
+          - VISIBLE_EARLIER
+          externalDocs:
+            description: Reduce Secondary Disk Warming Impact
+            url: https://docs.atlas.mongodb.com/reference/replica-set-tags/#reduce-secondary-disk-warming-impact
+        encryptionAtRestProvider:
+          type: string
+          description: "Cloud service provider that manages your customer keys to\
+            \ provide an additional layer of encryption at rest for the cluster. To\
+            \ enable customer key management for encryption at rest, the cluster **replicationSpecs[n].regionConfigs[m].{type}Specs.instanceSize**\
+            \ setting must be `M10` or higher and `\"backupEnabled\" : false` or omitted\
+            \ entirely."
+          enum:
+          - NONE
+          - AWS
+          - AZURE
+          - GCP
+          externalDocs:
+            description: Encryption at Rest using Customer Key Management
+            url: https://www.mongodb.com/docs/atlas/security-kms-encryption/
+        globalClusterSelfManagedSharding:
+          type: boolean
+          description: |-
+            Set this field to configure the Sharding Management Mode when creating a new Global Cluster.
+
+            When set to false, the management mode is set to Atlas-Managed Sharding. This mode fully manages the sharding of your Global Cluster and is built to provide a seamless deployment experience.
+
+            When set to true, the management mode is set to Self-Managed Sharding. This mode leaves the management of shards in your hands and is built to provide an advanced and flexible deployment experience.
+
+            This setting cannot be changed once the cluster is deployed.
+          externalDocs:
+            description: Creating a Global Cluster
+            url: https://dochub.mongodb.org/core/global-cluster-management
+        groupId:
+          type: string
+          description: Unique 24-hexadecimal character string that identifies the
+            project.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+          readOnly: true
+        id:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the cluster.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+          readOnly: true
+        labels:
+          type: array
+          deprecated: true
+          description: |-
+            Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster. The MongoDB Cloud console doesn't display your labels.
+
+            Cluster labels are deprecated and will be removed in a future release. We strongly recommend that you use [resource tags](https://dochub.mongodb.org/core/add-cluster-tag-atlas) instead.
+          items:
+            $ref: "#/components/schemas/ComponentLabel"
+        links:
+          type: array
+          description: "List of one or more Uniform Resource Locators (URLs) that\
+            \ point to API sub-resources, related API resources, or both. RFC 5988\
+            \ outlines these relationships."
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        mongoDBMajorVersion:
+          type: string
+          description: |-
+            MongoDB major version of the cluster.
+
+            On creation: Choose from the available versions of MongoDB, or leave unspecified for the current recommended default in the MongoDB Cloud platform. The recommended version is a recent Long Term Support version. The default is not guaranteed to be the most recently released version throughout the entire release cycle. For versions available in a specific project, see the linked documentation or use the API endpoint for [project LTS versions endpoint](#tag/Projects/operation/getProjectLTSVersions).
+
+             On update: Increase version only by 1 major version at a time.
+          externalDocs:
+            description: Available MongoDB Versions in Atlas
+            url: https://www.mongodb.com/docs/atlas/reference/faq/database/#which-versions-of-mongodb-do-service-clusters-use-
+        mongoDBVersion:
+          type: string
+          description: Version of MongoDB that the cluster runs.
+          pattern: "([\\d]+\\.[\\d]+\\.[\\d]+)"
+          readOnly: true
+        name:
+          type: string
+          description: Human-readable label that identifies the cluster.
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9][a-zA-Z0-9-]*$"
+        paused:
+          type: boolean
+          description: Flag that indicates whether the cluster is paused.
+        pitEnabled:
+          type: boolean
+          description: Flag that indicates whether the cluster uses continuous cloud
+            backups.
+          externalDocs:
+            description: Continuous Cloud Backups
+            url: https://docs.atlas.mongodb.com/backup/cloud-backup/overview/
+        replicationSpecs:
+          type: array
+          description: "List of settings that configure your cluster regions. For\
+            \ Global Clusters, each object in the array represents a zone where your\
+            \ clusters nodes deploy. For non-Global sharded clusters and replica sets,\
+            \ this array has one object representing where your clusters nodes deploy."
+          items:
+            $ref: "#/components/schemas/ReplicationSpec20250101"
+        rootCertType:
+          type: string
+          default: ISRGROOTX1
+          description: Root Certificate Authority that MongoDB Cloud cluster uses.
+            MongoDB Cloud supports Internet Security Research Group.
+          enum:
+          - ISRGROOTX1
+        stateName:
+          type: string
+          description: Human-readable label that indicates the current operating condition
+            of this cluster.
+          enum:
+          - IDLE
+          - CREATING
+          - UPDATING
+          - DELETING
+          - REPAIRING
+          readOnly: true
+        tags:
+          type: array
+          description: List that contains key-value pairs between 1 to 255 characters
+            in length for tagging and categorizing the cluster.
+          externalDocs:
+            description: Resource Tags
+            url: https://dochub.mongodb.org/core/add-cluster-tag-atlas
+          items:
+            $ref: "#/components/schemas/ResourceTag"
+        terminationProtectionEnabled:
+          type: boolean
+          default: false
+          description: "Flag that indicates whether termination protection is enabled\
+            \ on the cluster. If set to `true`, MongoDB Cloud won't delete the cluster.\
+            \ If set to `false`, MongoDB Cloud will delete the cluster."
+        versionReleaseSystem:
+          type: string
+          default: LTS
+          description: "Method by which the cluster maintains the MongoDB versions.\
+            \ If value is `CONTINUOUS`, you must not specify **mongoDBMajorVersion**."
+          enum:
+          - LTS
+          - CONTINUOUS
     ClusterDescriptionConnectionStringsPrivateEndpoint:
       type: object
       description: Private endpoint-aware connection string that you can use to connect
@@ -25096,6 +25656,120 @@ components:
             description: This option corresponds to the `failIndexKeyTooLong` `mongod`
               configuration file option.
             url: https://docs.mongodb.com/upcoming/reference/parameters/#mongodb-parameter-param.failIndexKeyTooLong
+        javascriptEnabled:
+          type: boolean
+          description: Flag that indicates whether the cluster allows execution of
+            operations that perform server-side executions of JavaScript.
+          externalDocs:
+            description: This option corresponds to modifying the `security.javascriptEnabled`
+              configuration file option for each `mongod` and `mongos` in the cluster.
+            url: https://docs.mongodb.com/upcoming/reference/configuration-options/#mongodb-setting-security.javascriptEnabled
+        minimumEnabledTlsProtocol:
+          type: string
+          description: Minimum Transport Layer Security (TLS) version that the cluster
+            accepts for incoming connections. Clusters using TLS 1.0 or 1.1 should
+            consider setting TLS 1.2 as the minimum TLS protocol version.
+          enum:
+          - TLS1_0
+          - TLS1_1
+          - TLS1_2
+          externalDocs:
+            description: This option corresponds to the `net.ssl.disabledProtocols`
+              `mongod` configuration file option.
+            url: https://docs.mongodb.com/upcoming/reference/configuration-options/#mongodb-setting-net.ssl.disabledProtocols
+        noTableScan:
+          type: boolean
+          description: Flag that indicates whether the cluster disables executing
+            any query that requires a collection scan to return results.
+          externalDocs:
+            description: This option corresponds to the `notablescan` `mongod` configuration
+              file option.
+            url: https://docs.mongodb.com/upcoming/reference/parameters/#mongodb-parameter-param.notablescan
+        oplogMinRetentionHours:
+          type: number
+          format: double
+          description: Minimum retention window for cluster's oplog expressed in hours.
+            A value of null indicates that the cluster uses the default minimum oplog
+            window that MongoDB Cloud calculates.
+          externalDocs:
+            description: This option corresponds to the `storage.oplogMinRetentionHours`
+              `mongod` configuration file option.
+            url: https://docs.mongodb.com/upcoming/reference/configuration-options/#mongodb-setting-storage.oplogMinRetentionHours
+          nullable: true
+        oplogSizeMB:
+          type: integer
+          format: int32
+          description: Storage limit of cluster's oplog expressed in megabytes. A
+            value of null indicates that the cluster uses the default oplog size that
+            MongoDB Cloud calculates.
+          externalDocs:
+            description: This option corresponds to the `replication.oplogSizeMB`
+              `mongod` configuration file option.
+            url: https://docs.mongodb.com/upcoming/reference/configuration-options/#mongodb-setting-replication.oplogSizeMB
+          nullable: true
+        queryStatsLogVerbosity:
+          type: integer
+          format: int32
+          description: "May be set to 1 (disabled) or 3 (enabled). When set to 3,\
+            \ Atlas will include redacted and anonymized $queryStats output in MongoDB\
+            \ logs. $queryStats output does not contain literals or field values.\
+            \ Enabling this setting might impact the performance of your cluster."
+          externalDocs:
+            description: This option corresponds to the queryStats component for the
+              logComponentVerbosity server parameter.
+            url: https://www.mongodb.com/docs/manual/reference/parameters/#mongodb-parameter-param.logComponentVerbosity
+        sampleRefreshIntervalBIConnector:
+          type: integer
+          format: int32
+          default: 0
+          description: Interval in seconds at which the mongosqld process re-samples
+            data to create its relational schema.
+          externalDocs:
+            description: This option corresponds to the `sampleRefreshIntervalSecs`
+              `mongosqld` option.
+            url: https://docs.mongodb.com/bi-connector/current/reference/mongosqld/#std-option-mongosqld.--schemaRefreshIntervalSecs
+          minimum: 0
+        sampleSizeBIConnector:
+          type: integer
+          format: int32
+          description: Number of documents per database to sample when gathering schema
+            information.
+          externalDocs:
+            description: This option corresponds to the `sampleSize` `mongosqld` option.
+            url: https://docs.mongodb.com/bi-connector/current/reference/mongosqld/#std-option-mongosqld.--sampleSize
+          minimum: 0
+        transactionLifetimeLimitSeconds:
+          type: integer
+          format: int64
+          description: "Lifetime, in seconds, of multi-document transactions. Atlas\
+            \ considers the transactions that exceed this limit as expired and so\
+            \ aborts them through a periodic cleanup process."
+          externalDocs:
+            description: This option corresponds to the `transactionLifetimeLimitSeconds`
+              `mongod` configuration file option.
+            url: https://www.mongodb.com/docs/upcoming/reference/parameters/#mongodb-parameter-param.transactionLifetimeLimitSeconds
+          minimum: 1
+    ClusterDescriptionProcessArgs20250101:
+      type: object
+      properties:
+        chunkMigrationConcurrency:
+          type: integer
+          format: int32
+          description: Number of threads on the source shard and the receiving shard
+            for chunk migration. The number of threads should not exceed the half
+            the total number of CPU cores in the sharded cluster.
+          externalDocs:
+            description: This option corresponds to the `chunkMigrationConcurrency`
+              `mongod` configuration file option.
+            url: https://www.mongodb.com/docs/manual/reference/parameters/#mongodb-parameter-param.chunkMigrationConcurrency
+        defaultWriteConcern:
+          type: string
+          description: Default level of acknowledgment requested from MongoDB for
+            write operations when none is specified by the driver.
+          externalDocs:
+            description: This option corresponds to the the implicit default write
+              concern.
+            url: https://docs.mongodb.com/manual/reference/write-concern/
         javascriptEnabled:
           type: boolean
           description: Flag that indicates whether the cluster allows execution of
@@ -26669,6 +27343,31 @@ components:
       - eventTypeName
       - id
       title: Data Explorer Accessed Events
+    DataFederationAzureCloudProviderConfig:
+      type: object
+      description: Configuration for running Data Federation in Azure.
+      properties:
+        atlasAppId:
+          type: string
+          description: The App ID generated by Atlas for the Service Principal's access
+            policy.
+          readOnly: true
+        roleId:
+          type: string
+          description: Unique identifier of the role that Data Federation can use
+            to access the data stores.Required if specifying cloudProviderConfig.
+        servicePrincipalId:
+          type: string
+          description: The ID of the Service Principal for which there is an access
+            policyfor Atlas to access Azure resources.
+          readOnly: true
+        tenantId:
+          type: string
+          description: The Azure Active Directory / Entra ID tenant ID associated
+            with the Service Principal.
+          readOnly: true
+      required:
+      - roleId
     DataFederationLimit:
       type: object
       description: Details of user managed limits.
@@ -26822,7 +27521,7 @@ components:
       title: Data Federation Tenant-Level Query Limit
     DataLakeAWSCloudProviderConfig:
       type: object
-      description: Name of the cloud service that hosts the data lake's data stores.
+      description: Configuration for running Data Federation in AWS.
       properties:
         externalId:
           type: string
@@ -27040,12 +27739,12 @@ components:
             description: Service URL.
     DataLakeCloudProviderConfig:
       type: object
-      description: Cloud provider linked to this data lake.
+      description: Cloud provider where this Federated Database Instance is hosted.
       properties:
         aws:
           $ref: "#/components/schemas/DataLakeAWSCloudProviderConfig"
-      required:
-      - aws
+        azure:
+          $ref: "#/components/schemas/DataFederationAzureCloudProviderConfig"
       title: Data Lake Cloud Provider
     DataLakeDLSAWSStore:
       type: object
@@ -27161,18 +27860,16 @@ components:
             title: Azure Regions
     DataLakeDataProcessRegion:
       type: object
-      description: Information about the cloud provider region to which the data lake
-        routes client connections.
+      description: Information about the cloud provider region to which the Federated
+        Database Instance routes client connections.
       properties:
         cloudProvider:
           type: string
-          description: Name of the cloud service that hosts the data lake's data stores.
+          description: Name of the cloud service that hosts the Federated Database
+            Instance's infrastructure.
           enum:
           - AWS
-          - GCP
           - AZURE
-          - TENANT
-          - SERVERLESS
         region:
           $ref: "#/components/schemas/BaseAtlasDataLakeRegion"
       required:
@@ -27578,16 +28275,17 @@ components:
           readOnly: true
         hostnames:
           type: array
-          description: List that contains the hostnames assigned to the Data Lake
-            instance.
+          description: List that contains the hostnames assigned to the Federated
+            Database Instance.
           items:
             type: string
-            description: Unique hostname assigned to the Data Lake instance.
+            description: Unique hostname assigned to the Federated Database Instance.
             readOnly: true
           readOnly: true
         name:
           type: string
-          description: Human-readable label that identifies the data lake.
+          description: Human-readable label that identifies the Federated Database
+            Instance.
         privateEndpointHostnames:
           type: array
           description: List that contains the sets of private endpoints and hostnames.
@@ -27596,7 +28294,7 @@ components:
           readOnly: true
         state:
           type: string
-          description: Label that indicates the status of the Data Lake instance.
+          description: Label that indicates the status of the Federated Database Instance.
           enum:
           - UNVERIFIED
           - ACTIVE
@@ -28164,7 +28862,6 @@ components:
           externalDocs:
             description: MongoDB Built-In Roles
             url: https://docs.mongodb.com/manual/reference/built-in-roles/
-          pattern: "^\\b(?!xgen-)([0-9A-Za-z_\\-]+)\\b(?<!\\atlasAdmin|read|readWrite|dbAdmin|dbOwner|userAdmin|clusterAdmin|clusterManager|clusterMonitor|hostManager|backup|restore|readAnyDatabase|readWriteAnyDatabase|userAdminAnyDatabase|dbAdminAnyDatabase|root|__system)$"
       required:
       - db
       - role
@@ -28532,6 +29229,36 @@ components:
           format: int32
           description: Number of nodes of the given type for MongoDB Cloud to deploy
             to the region.
+    DedicatedHardwareSpec20250101:
+      type: object
+      description: "Hardware specifications for read-only nodes in the region. Read-only\
+        \ nodes can never become the primary member, but can enable local reads. If\
+        \ you don't specify this parameter, no read-only nodes are deployed to the\
+        \ region."
+      oneOf:
+      - $ref: "#/components/schemas/AWSHardwareSpec20250101"
+      - $ref: "#/components/schemas/AzureHardwareSpec"
+      - $ref: "#/components/schemas/GCPHardwareSpec"
+      properties:
+        diskSizeGB:
+          type: number
+          format: double
+          description: "Storage capacity that the host's root volume possesses expressed\
+            \ in gigabytes. Increase this number to add capacity. MongoDB Cloud requires\
+            \ this parameter if you set **replicationSpecs**. If you specify a disk\
+            \ size below the minimum (10 GB), this parameter defaults to the minimum\
+            \ disk size value. Storage charge calculations depend on whether you choose\
+            \ the default value or a custom value.  The maximum value for disk storage\
+            \ cannot exceed 50 times the maximum RAM for the selected cluster. If\
+            \ you require more storage space, consider upgrading your cluster to a\
+            \ higher tier."
+          maximum: 4096
+          minimum: 10
+        nodeCount:
+          type: integer
+          format: int32
+          description: Number of nodes of the given type for MongoDB Cloud to deploy
+            to the region.
     DefaultAlertConfigViewForNdsGroup:
       type: object
       description: Other alerts which don't have extra details beside of basic one.
@@ -28586,7 +29313,6 @@ components:
           - type: string
             enum:
             - USERS_WITHOUT_MULTI_FACTOR_AUTH
-            - MAX_M0_CLUSTERS_PER_GROUP_EXCEEDED
             - ENCRYPTION_AT_REST_KMS_NETWORK_ACCESS_DENIED
             title: Group Event Types
           - type: string
@@ -28632,6 +29358,15 @@ components:
             enum:
             - COMPUTE_AUTO_SCALE_INITIATED_BASE
             - COMPUTE_AUTO_SCALE_INITIATED_ANALYTICS
+            - COMPUTE_AUTO_SCALE_SCALE_DOWN_FAIL_BASE
+            - COMPUTE_AUTO_SCALE_SCALE_DOWN_FAIL_ANALYTICS
+            - COMPUTE_AUTO_SCALE_MAX_INSTANCE_SIZE_FAIL_BASE
+            - COMPUTE_AUTO_SCALE_MAX_INSTANCE_SIZE_FAIL_ANALYTICS
+            - COMPUTE_AUTO_SCALE_OPLOG_FAIL_BASE
+            - COMPUTE_AUTO_SCALE_OPLOG_FAIL_ANALYTICS
+            - DISK_AUTO_SCALE_INITIATED
+            - DISK_AUTO_SCALE_MAX_DISK_SIZE_FAIL
+            - DISK_AUTO_SCALE_OPLOG_FAIL
             title: NDS Auto Scaling Audit Types
         groupId:
           type: string
@@ -28778,7 +29513,6 @@ components:
           - type: string
             enum:
             - USERS_WITHOUT_MULTI_FACTOR_AUTH
-            - MAX_M0_CLUSTERS_PER_GROUP_EXCEEDED
             - ENCRYPTION_AT_REST_KMS_NETWORK_ACCESS_DENIED
             title: Group Event Types
           - type: string
@@ -28834,6 +29568,15 @@ components:
             enum:
             - COMPUTE_AUTO_SCALE_INITIATED_BASE
             - COMPUTE_AUTO_SCALE_INITIATED_ANALYTICS
+            - COMPUTE_AUTO_SCALE_SCALE_DOWN_FAIL_BASE
+            - COMPUTE_AUTO_SCALE_SCALE_DOWN_FAIL_ANALYTICS
+            - COMPUTE_AUTO_SCALE_MAX_INSTANCE_SIZE_FAIL_BASE
+            - COMPUTE_AUTO_SCALE_MAX_INSTANCE_SIZE_FAIL_ANALYTICS
+            - COMPUTE_AUTO_SCALE_OPLOG_FAIL_BASE
+            - COMPUTE_AUTO_SCALE_OPLOG_FAIL_ANALYTICS
+            - DISK_AUTO_SCALE_INITIATED
+            - DISK_AUTO_SCALE_MAX_DISK_SIZE_FAIL
+            - DISK_AUTO_SCALE_OPLOG_FAIL
             title: NDS Auto Scaling Audit Types
           readOnly: true
         groupId:
@@ -29077,8 +29820,6 @@ components:
             - DELINQUENT
             - ALL_USERS_HAVE_MULTI_FACTOR_AUTH
             - USERS_WITHOUT_MULTI_FACTOR_AUTH
-            - M0_CLUSTERS_PER_GROUP_WITHIN_LIMIT
-            - MAX_M0_CLUSTERS_PER_GROUP_EXCEEDED
             - ENCRYPTION_AT_REST_KMS_NETWORK_ACCESS_DENIED
             - ENCRYPTION_AT_REST_KMS_NETWORK_ACCESS_RESTORED
             title: Group Event Types
@@ -29551,6 +30292,45 @@ components:
             \ Id, do a GET request to Return One Cluster in One Project and consult\
             \ the replicationSpecs array [Return One Cluster in One Project](#operation/getLegacyCluster)."
           writeOnly: true
+        zoneId:
+          type: string
+          description: "Unique 24-hexadecimal digit string that identifies the zone\
+            \ in a cluster. For global clusters, there can be multiple zones to choose\
+            \ from. For sharded clusters and replica set clusters, there is only one\
+            \ zone in the cluster. To find the Zone Id, do a GET request to Return\
+            \ One Cluster from One Project and consult the replicationSpecs array\
+            \ [Return One Cluster from One Project](#operation/getCluster)."
+          writeOnly: true
+      writeOnly: true
+    DeleteCopiedBackups20250101:
+      type: object
+      description: Deleted copy setting whose backup copies need to also be deleted.
+      properties:
+        cloudProvider:
+          type: string
+          description: Human-readable label that identifies the cloud provider for
+            the deleted copy setting whose backup copies you want to delete.
+          enum:
+          - AWS
+          - AZURE
+          - GCP
+          writeOnly: true
+        regionName:
+          type: string
+          description: "Target region for the deleted copy setting whose backup copies\
+            \ you want to delete. Please supply the 'Atlas Region' which can be found\
+            \ under [Cloud Providers](https://www.mongodb.com/docs/atlas/reference/cloud-providers/)\
+            \ 'regions' link."
+          writeOnly: true
+        zoneId:
+          type: string
+          description: "Unique 24-hexadecimal digit string that identifies the zone\
+            \ in a cluster. For global clusters, there can be multiple zones to choose\
+            \ from. For sharded clusters and replica set clusters, there is only one\
+            \ zone in the cluster. To find the Zone Id, do a GET request to Return\
+            \ One Cluster from One Project and consult the replicationSpecs array\
+            \ [Return One Cluster from One Project](#operation/getCluster)."
+          writeOnly: true
       writeOnly: true
     Destination:
       type: object
@@ -29714,6 +30494,49 @@ components:
           type: boolean
           description: Flag that indicates whether to copy the oplogs to the target
             region. You can use the oplogs to perform point-in-time restores.
+    DiskBackupCopySetting20250101:
+      type: object
+      description: Copy setting item in the desired backup policy.
+      properties:
+        cloudProvider:
+          type: string
+          description: Human-readable label that identifies the cloud provider that
+            stores the snapshot copy.
+          enum:
+          - AWS
+          - AZURE
+          - GCP
+        frequencies:
+          type: array
+          description: List that describes which types of snapshots to copy.
+          items:
+            type: string
+            enum:
+            - HOURLY
+            - DAILY
+            - WEEKLY
+            - MONTHLY
+            - YEARLY
+            - ON_DEMAND
+        regionName:
+          type: string
+          description: "Target region to copy snapshots belonging to zoneId. Please\
+            \ supply the 'Atlas Region' which can be found under [Cloud Providers](https://www.mongodb.com/docs/atlas/reference/cloud-providers/)\
+            \ 'regions' link."
+        shouldCopyOplogs:
+          type: boolean
+          description: Flag that indicates whether to copy the oplogs to the target
+            region. You can use the oplogs to perform point-in-time restores.
+        zoneId:
+          type: string
+          description: "Unique 24-hexadecimal digit string that identifies the zone\
+            \ in a cluster. For global clusters, there can be multiple zones to choose\
+            \ from. For sharded clusters and replica set clusters, there is only one\
+            \ zone in the cluster. To find the Zone Id, do a GET request to Return\
+            \ One Cluster from One Project and consult the replicationSpecs array\
+            \ [Return One Cluster From One Project](#operation/getCluster)."
+      required:
+      - zoneId
     DiskBackupExportJob:
       type: object
       properties:
@@ -30663,6 +31486,100 @@ components:
           description: Flag that indicates whether to use organization and project
             names instead of organization and project UUIDs in the path to the metadata
             files that MongoDB Cloud uploads to your AWS bucket.
+    DiskBackupSnapshotSchedule20250101:
+      type: object
+      properties:
+        autoExportEnabled:
+          type: boolean
+          description: Flag that indicates whether MongoDB Cloud automatically exports
+            cloud backup snapshots to the AWS bucket.
+        clusterId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the cluster
+            with the snapshot you want to return.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+          readOnly: true
+        clusterName:
+          type: string
+          description: Human-readable label that identifies the cluster with the snapshot
+            you want to return.
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9][a-zA-Z0-9-]*$"
+          readOnly: true
+        copySettings:
+          type: array
+          description: List that contains a document for each copy setting item in
+            the desired backup policy.
+          items:
+            $ref: "#/components/schemas/DiskBackupCopySetting20250101"
+        deleteCopiedBackups:
+          type: array
+          description: List that contains a document for each deleted copy setting
+            whose backup copies you want to delete.
+          items:
+            $ref: "#/components/schemas/DeleteCopiedBackups20250101"
+          writeOnly: true
+        export:
+          $ref: "#/components/schemas/AutoExportPolicyView"
+        extraRetentionSettings:
+          type: array
+          description: List that contains a document for each extra retention setting
+            item in the desired backup policy.
+          items:
+            $ref: "#/components/schemas/ExtraRetentionSetting"
+        links:
+          type: array
+          description: "List of one or more Uniform Resource Locators (URLs) that\
+            \ point to API sub-resources, related API resources, or both. RFC 5988\
+            \ outlines these relationships."
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        nextSnapshot:
+          type: string
+          format: date-time
+          description: Date and time when MongoDB Cloud takes the next snapshot. This
+            parameter expresses its value in the ISO 8601 timestamp format in UTC.
+          readOnly: true
+        policies:
+          type: array
+          description: Rules set for this backup schedule.
+          items:
+            $ref: "#/components/schemas/AdvancedDiskBackupSnapshotSchedulePolicy"
+          maxItems: 1
+        referenceHourOfDay:
+          type: integer
+          format: int32
+          description: Hour of day in Coordinated Universal Time (UTC) that represents
+            when MongoDB Cloud takes the snapshot.
+        referenceMinuteOfHour:
+          type: integer
+          format: int32
+          description: Minute of the **referenceHourOfDay** that represents when MongoDB
+            Cloud takes the snapshot.
+        restoreWindowDays:
+          type: integer
+          format: int32
+          description: "Number of previous days that you can restore back to with\
+            \ Continuous Cloud Backup accuracy. You must specify a positive, non-zero\
+            \ integer. This parameter applies to continuous cloud backups only."
+        updateSnapshots:
+          type: boolean
+          description: Flag that indicates whether to apply the retention changes
+            in the updated backup policy to snapshots that MongoDB Cloud took previously.
+          writeOnly: true
+        useOrgAndGroupNamesInExportPrefix:
+          type: boolean
+          description: Flag that indicates whether to use organization and project
+            names instead of organization and project UUIDs in the path to the metadata
+            files that MongoDB Cloud uploads to your AWS bucket.
     DiskGBAutoScaling:
       type: object
       description: Setting that enables disk auto-scaling.
@@ -30858,6 +31775,35 @@ components:
           readOnly: true
       required:
       - cloudProvider
+    EventTypeDetails:
+      type: object
+      description: A singular type of event
+      properties:
+        alertable:
+          type: boolean
+          description: Whether or not this event type can be configured as an alert
+            via the API.
+          readOnly: true
+        description:
+          type: string
+          description: Description of the event type.
+          readOnly: true
+        eventType:
+          type: string
+          description: Enum representation of the event type.
+          readOnly: true
+        links:
+          type: array
+          description: "List of one or more Uniform Resource Locators (URLs) that\
+            \ point to API sub-resources, related API resources, or both. RFC 5988\
+            \ outlines these relationships."
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+      title: Event type details
     EventTypeForNdsGroup:
       type: object
       oneOf:
@@ -31088,8 +32034,6 @@ components:
         - DELINQUENT
         - ALL_USERS_HAVE_MULTI_FACTOR_AUTH
         - USERS_WITHOUT_MULTI_FACTOR_AUTH
-        - M0_CLUSTERS_PER_GROUP_WITHIN_LIMIT
-        - MAX_M0_CLUSTERS_PER_GROUP_EXCEEDED
         - ENCRYPTION_AT_REST_KMS_NETWORK_ACCESS_DENIED
         - ENCRYPTION_AT_REST_KMS_NETWORK_ACCESS_RESTORED
         title: Group Event Types
@@ -31329,6 +32273,14 @@ components:
         - DISK_AUTO_SCALE_INITIATED
         - COMPUTE_AUTO_SCALE_INITIATED_BASE
         - COMPUTE_AUTO_SCALE_INITIATED_ANALYTICS
+        - COMPUTE_AUTO_SCALE_SCALE_DOWN_FAIL_BASE
+        - COMPUTE_AUTO_SCALE_SCALE_DOWN_FAIL_ANALYTICS
+        - COMPUTE_AUTO_SCALE_MAX_INSTANCE_SIZE_FAIL_BASE
+        - COMPUTE_AUTO_SCALE_MAX_INSTANCE_SIZE_FAIL_ANALYTICS
+        - COMPUTE_AUTO_SCALE_OPLOG_FAIL_BASE
+        - COMPUTE_AUTO_SCALE_OPLOG_FAIL_ANALYTICS
+        - DISK_AUTO_SCALE_MAX_DISK_SIZE_FAIL
+        - DISK_AUTO_SCALE_OPLOG_FAIL
         title: NDS Auto Scaling Audit Types
       - type: string
         enum:
@@ -31805,7 +32757,7 @@ components:
       - $ref: "#/components/schemas/TeamEvent"
       - $ref: "#/components/schemas/UserEventViewForOrg"
       - $ref: "#/components/schemas/ResourceEventViewForOrg"
-    ExampleResourceResponseView20230101:
+    ExampleResourceResponse20230101:
       type: object
       properties:
         data:
@@ -31824,7 +32776,7 @@ components:
           readOnly: true
       required:
       - data
-    ExampleResourceResponseView20230201:
+    ExampleResourceResponse20230201:
       type: object
       properties:
         additionalInfo:
@@ -33151,6 +34103,55 @@ components:
           format: int32
           description: Number of nodes of the given type for MongoDB Cloud to deploy
             to the region.
+    GCPHardwareSpec20250101:
+      type: object
+      properties:
+        diskSizeGB:
+          type: number
+          format: double
+          description: "Storage capacity that the host's root volume possesses expressed\
+            \ in gigabytes. Increase this number to add capacity. MongoDB Cloud requires\
+            \ this parameter if you set **replicationSpecs**. If you specify a disk\
+            \ size below the minimum (10 GB), this parameter defaults to the minimum\
+            \ disk size value. Storage charge calculations depend on whether you choose\
+            \ the default value or a custom value.  The maximum value for disk storage\
+            \ cannot exceed 50 times the maximum RAM for the selected cluster. If\
+            \ you require more storage space, consider upgrading your cluster to a\
+            \ higher tier."
+          maximum: 4096
+          minimum: 10
+        instanceSize:
+          type: string
+          description: Hardware specification for the instance sizes in this region.
+            Each instance size has a default storage and memory capacity. The instance
+            size you select applies to all the data-bearing hosts in the region.
+          enum:
+          - M10
+          - M20
+          - M30
+          - M40
+          - M50
+          - M60
+          - M80
+          - M140
+          - M200
+          - M250
+          - M300
+          - M400
+          - R40
+          - R50
+          - R60
+          - R80
+          - R200
+          - R300
+          - R400
+          - R600
+          title: GCP Instance Sizes
+        nodeCount:
+          type: integer
+          format: int32
+          description: Number of nodes of the given type for MongoDB Cloud to deploy
+            to the region.
     GCPNetworkPeeringConnectionSettings:
       type: object
       description: Group of Network Peering connection settings.
@@ -33229,6 +34230,23 @@ components:
             $ref: "#/components/schemas/AdvancedAutoScalingSettings"
           readOnlySpecs:
             $ref: "#/components/schemas/DedicatedHardwareSpec"
+      description: Details that explain how MongoDB Cloud replicates data in one region
+        on the specified MongoDB database.
+      title: GCP Regional Replication Specifications
+    GCPRegionConfig20250101:
+      type: object
+      allOf:
+      - $ref: "#/components/schemas/CloudRegionConfig20250101"
+      - type: object
+        properties:
+          analyticsAutoScaling:
+            $ref: "#/components/schemas/AdvancedAutoScalingSettings"
+          analyticsSpecs:
+            $ref: "#/components/schemas/DedicatedHardwareSpec20250101"
+          autoScaling:
+            $ref: "#/components/schemas/AdvancedAutoScalingSettings"
+          readOnlySpecs:
+            $ref: "#/components/schemas/DedicatedHardwareSpec20250101"
       description: Details that explain how MongoDB Cloud replicates data in one region
         on the specified MongoDB database.
       title: GCP Regional Replication Specifications
@@ -33908,19 +34926,17 @@ components:
           description: Roles assigned to the Service Account group.
           items:
             type: string
+            description: Project roles associated with the service account.
             enum:
-            - GROUP_ATLAS_ADMIN
             - GROUP_AUTOMATION_ADMIN
             - GROUP_BACKUP_ADMIN
             - GROUP_MONITORING_ADMIN
             - GROUP_OWNER
             - GROUP_READ_ONLY
             - GROUP_USER_ADMIN
-            - GROUP_BILLING_ADMIN
             - GROUP_DATA_ACCESS_ADMIN
             - GROUP_DATA_ACCESS_READ_ONLY
             - GROUP_DATA_ACCESS_READ_WRITE
-            - GROUP_CHARTS_ADMIN
             - GROUP_CLUSTER_MANAGER
             - GROUP_SEARCH_INDEX_EDITOR
             - GROUP_STREAM_PROCESSING_OWNER
@@ -33931,52 +34947,6 @@ components:
           items:
             $ref: "#/components/schemas/ServiceAccountSecret"
           uniqueItems: true
-    GroupServiceAccountDetails:
-      type: object
-      properties:
-        createdAt:
-          type: string
-          format: date-time
-          description: Timestamp representing creation time.
-        description:
-          type: string
-          description: Description of the service account.
-        id:
-          type: string
-          description: Service account client id.
-          pattern: "^mdb_sa_id_[a-fA-F\\d]{24}$"
-        name:
-          type: string
-          description: Service account name.
-        roles:
-          type: array
-          description: Roles assigned to the Service Account group.
-          items:
-            type: string
-            enum:
-            - GROUP_ATLAS_ADMIN
-            - GROUP_AUTOMATION_ADMIN
-            - GROUP_BACKUP_ADMIN
-            - GROUP_MONITORING_ADMIN
-            - GROUP_OWNER
-            - GROUP_READ_ONLY
-            - GROUP_USER_ADMIN
-            - GROUP_BILLING_ADMIN
-            - GROUP_DATA_ACCESS_ADMIN
-            - GROUP_DATA_ACCESS_READ_ONLY
-            - GROUP_DATA_ACCESS_READ_WRITE
-            - GROUP_CHARTS_ADMIN
-            - GROUP_CLUSTER_MANAGER
-            - GROUP_SEARCH_INDEX_EDITOR
-            - GROUP_STREAM_PROCESSING_OWNER
-          uniqueItems: true
-        secrets:
-          type: array
-          description: List of Client Secret Public details.
-          items:
-            $ref: "#/components/schemas/ServiceAccountSecretDetails"
-          maxItems: 2
-          uniqueItems: true
     GroupServiceAccountRequest:
       type: object
       properties:
@@ -33985,30 +34955,30 @@ components:
           description: Human readable description for the service account.
           maxLength: 250
           minLength: 1
+          pattern: "^[\\p{L}\\p{N}\\-_.,' ]*$"
         name:
           type: string
           description: Human-readable name for the service account. The name is modifiable
             and does not have to be unique.
           maxLength: 64
           minLength: 1
+          pattern: "^[\\p{L}\\p{N}\\-_.,' ]*$"
         roles:
           type: array
           description: Project roles associated with the service account.
           items:
             type: string
+            description: Project roles associated with the service account.
             enum:
-            - GROUP_ATLAS_ADMIN
             - GROUP_AUTOMATION_ADMIN
             - GROUP_BACKUP_ADMIN
             - GROUP_MONITORING_ADMIN
             - GROUP_OWNER
             - GROUP_READ_ONLY
             - GROUP_USER_ADMIN
-            - GROUP_BILLING_ADMIN
             - GROUP_DATA_ACCESS_ADMIN
             - GROUP_DATA_ACCESS_READ_ONLY
             - GROUP_DATA_ACCESS_READ_WRITE
-            - GROUP_CHARTS_ADMIN
             - GROUP_CLUSTER_MANAGER
             - GROUP_SEARCH_INDEX_EDITOR
             - GROUP_STREAM_PROCESSING_OWNER
@@ -34028,19 +34998,17 @@ components:
           description: Group access roles.
           items:
             type: string
+            description: Project roles associated with the service account.
             enum:
-            - GROUP_ATLAS_ADMIN
             - GROUP_AUTOMATION_ADMIN
             - GROUP_BACKUP_ADMIN
             - GROUP_MONITORING_ADMIN
             - GROUP_OWNER
             - GROUP_READ_ONLY
             - GROUP_USER_ADMIN
-            - GROUP_BILLING_ADMIN
             - GROUP_DATA_ACCESS_ADMIN
             - GROUP_DATA_ACCESS_READ_ONLY
             - GROUP_DATA_ACCESS_READ_WRITE
-            - GROUP_CHARTS_ADMIN
             - GROUP_CLUSTER_MANAGER
             - GROUP_SEARCH_INDEX_EDITOR
             - GROUP_STREAM_PROCESSING_OWNER
@@ -34053,30 +35021,30 @@ components:
           description: Human readable description for the service account.
           maxLength: 250
           minLength: 1
+          pattern: "^[\\p{L}\\p{N}\\-_.,' ]*$"
         name:
           type: string
           description: Human-readable name for the service account. The name is modifiable
             and does not have to be unique.
           maxLength: 64
           minLength: 1
+          pattern: "^[\\p{L}\\p{N}\\-_.,' ]*$"
         roles:
           type: array
           description: Project roles associated with the service account.
           items:
             type: string
+            description: Project roles associated with the service account.
             enum:
-            - GROUP_ATLAS_ADMIN
             - GROUP_AUTOMATION_ADMIN
             - GROUP_BACKUP_ADMIN
             - GROUP_MONITORING_ADMIN
             - GROUP_OWNER
             - GROUP_READ_ONLY
             - GROUP_USER_ADMIN
-            - GROUP_BILLING_ADMIN
             - GROUP_DATA_ACCESS_ADMIN
             - GROUP_DATA_ACCESS_READ_ONLY
             - GROUP_DATA_ACCESS_READ_WRITE
-            - GROUP_CHARTS_ADMIN
             - GROUP_CLUSTER_MANAGER
             - GROUP_SEARCH_INDEX_EDITOR
             - GROUP_STREAM_PROCESSING_OWNER
@@ -34136,6 +35104,32 @@ components:
       - $ref: "#/components/schemas/AzureHardwareSpec"
       - $ref: "#/components/schemas/GCPHardwareSpec"
       - $ref: "#/components/schemas/TenantHardwareSpec"
+    HardwareSpec20250101:
+      type: object
+      description: "Hardware specifications for all electable nodes deployed in the\
+        \ region. Electable nodes can become the primary and can enable local reads.\
+        \ If you don't specify this option, MongoDB Cloud deploys no electable nodes\
+        \ to the region."
+      oneOf:
+      - $ref: "#/components/schemas/AWSHardwareSpec20250101"
+      - $ref: "#/components/schemas/AzureHardwareSpec"
+      - $ref: "#/components/schemas/GCPHardwareSpec20250101"
+      - $ref: "#/components/schemas/TenantHardwareSpec20250101"
+      properties:
+        diskSizeGB:
+          type: number
+          format: double
+          description: "Storage capacity that the host's root volume possesses expressed\
+            \ in gigabytes. Increase this number to add capacity. MongoDB Cloud requires\
+            \ this parameter if you set **replicationSpecs**. If you specify a disk\
+            \ size below the minimum (10 GB), this parameter defaults to the minimum\
+            \ disk size value. Storage charge calculations depend on whether you choose\
+            \ the default value or a custom value.  The maximum value for disk storage\
+            \ cannot exceed 50 times the maximum RAM for the selected cluster. If\
+            \ you require more storage space, consider upgrading your cluster to a\
+            \ higher tier."
+          maximum: 4096
+          minimum: 10
     HipChatNotification:
       type: object
       description: HipChat notification configuration for MongoDB Cloud to send information
@@ -36312,10 +37306,13 @@ components:
           - ATLAS_NDS_GCP_DATA_LAKE_STORAGE_ACCESS
           - ATLAS_NDS_GCP_DATA_LAKE_STORAGE
           - ATLAS_NDS_AWS_OBJECT_STORAGE_ACCESS
+          - ATLAS_NDS_AWS_COMPRESSED_OBJECT_STORAGE
           - ATLAS_NDS_AZURE_OBJECT_STORAGE_ACCESS
           - ATLAS_NDS_AZURE_OBJECT_STORAGE
+          - ATLAS_NDS_AZURE_COMPRESSED_OBJECT_STORAGE
           - ATLAS_NDS_GCP_OBJECT_STORAGE_ACCESS
           - ATLAS_NDS_GCP_OBJECT_STORAGE
+          - ATLAS_NDS_GCP_COMPRESSED_OBJECT_STORAGE
           - ATLAS_ARCHIVE_ACCESS_PARTITION_LOCATE
           - ATLAS_NDS_AWS_PIT_RESTORE_STORAGE_FREE_TIER
           - ATLAS_NDS_AWS_PIT_RESTORE_STORAGE
@@ -36326,6 +37323,7 @@ components:
           - ATLAS_NDS_AZURE_PRIVATE_ENDPOINT_CAPACITY_UNITS
           - ATLAS_NDS_AWS_OBJECT_STORAGE
           - ATLAS_NDS_AWS_SNAPSHOT_EXPORT_UPLOAD
+          - ATLAS_NDS_AZURE_SNAPSHOT_EXPORT_UPLOAD
           - ATLAS_NDS_AZURE_SNAPSHOT_EXPORT_VM
           - ATLAS_NDS_AZURE_SNAPSHOT_EXPORT_VM_M40
           - ATLAS_NDS_AZURE_SNAPSHOT_EXPORT_VM_M50
@@ -36393,7 +37391,9 @@ components:
           - ATLAS_AWS_STREAM_PROCESSING_INSTANCE_SP10
           - ATLAS_AWS_STREAM_PROCESSING_INSTANCE_SP30
           - ATLAS_AWS_STREAM_PROCESSING_INSTANCE_SP50
+          - ATLAS_AZURE_STREAM_PROCESSING_INSTANCE_SP10
           - ATLAS_AZURE_STREAM_PROCESSING_INSTANCE_SP30
+          - ATLAS_AZURE_STREAM_PROCESSING_INSTANCE_SP50
           - ATLAS_AWS_STREAM_PROCESSING_DATA_TRANSFER
           - ATLAS_AZURE_STREAM_PROCESSING_DATA_TRANSFER
           - ATLAS_AWS_STREAM_PROCESSING_VPC_PEERING
@@ -36818,15 +37818,15 @@ components:
           readOnly: true
         mongoDBMajorVersion:
           type: string
-          default: "7.0"
-          description: Major MongoDB version of the cluster. MongoDB Cloud deploys
-            the cluster with the latest stable release of the specified version.
-          enum:
-          - "4.2"
-          - "4.4"
-          - "5.0"
-          - "6.0"
-          - "7.0"
+          description: |-
+            MongoDB major version of the cluster.
+
+            On creation: Choose from the available versions of MongoDB, or leave unspecified for the current recommended default in the MongoDB Cloud platform. The recommended version is a recent Long Term Support version. The default is not guaranteed to be the most recently released version throughout the entire release cycle. For versions available in a specific project, see the linked documentation or use the API endpoint for [project LTS versions endpoint](#tag/Projects/operation/getProjectLTSVersions).
+
+             On update: Increase version only by 1 major version at a time.
+          externalDocs:
+            description: Available MongoDB Versions in Atlas
+            url: https://www.mongodb.com/docs/atlas/reference/faq/database/#which-versions-of-mongodb-do-service-clusters-use-
         mongoDBVersion:
           type: string
           description: Version of MongoDB that the cluster runs.
@@ -37104,15 +38104,15 @@ components:
           readOnly: true
         mongoDBMajorVersion:
           type: string
-          default: "7.0"
-          description: Major MongoDB version of the cluster. MongoDB Cloud deploys
-            the cluster with the latest stable release of the specified version.
-          enum:
-          - "4.2"
-          - "4.4"
-          - "5.0"
-          - "6.0"
-          - "7.0"
+          description: |-
+            MongoDB major version of the cluster.
+
+            On creation: Choose from the available versions of MongoDB, or leave unspecified for the current recommended default in the MongoDB Cloud platform. The recommended version is a recent Long Term Support version. The default is not guaranteed to be the most recently released version throughout the entire release cycle. For versions available in a specific project, see the linked documentation or use the API endpoint for [project LTS versions endpoint](#tag/Projects/operation/getProjectLTSVersions).
+
+             On update: Increase version only by 1 major version at a time.
+          externalDocs:
+            description: Available MongoDB Versions in Atlas
+            url: https://www.mongodb.com/docs/atlas/reference/faq/database/#which-versions-of-mongodb-do-service-clusters-use-
         mongoDBVersion:
           type: string
           description: Version of MongoDB that the cluster runs.
@@ -37792,6 +38792,44 @@ components:
       - CONFIG
       example: STANDALONE
       title: Matcher Host Types
+    MdbAvailableVersion:
+      type: object
+      properties:
+        cloudProvider:
+          type: string
+          description: "Cloud service provider on which MongoDB Cloud provisions the\
+            \ hosts. Set dedicated clusters to `AWS`, `GCP`, `AZURE` or `TENANT`."
+          enum:
+          - AWS
+          - AZURE
+          - GCP
+          - TENANT
+        defaultStatus:
+          type: string
+          description: Whether the version is the current default for the Instance
+            Size and Cloud Provider.
+          enum:
+          - DEFAULT
+          - NOT_DEFAULT
+        instanceSize:
+          $ref: "#/components/schemas/BaseCloudProviderInstanceSize"
+        links:
+          type: array
+          description: "List of one or more Uniform Resource Locators (URLs) that\
+            \ point to API sub-resources, related API resources, or both. RFC 5988\
+            \ outlines these relationships."
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        version:
+          type: string
+          description: The MongoDB Major Version in question.
+          externalDocs:
+            description: MongoDB Versioning
+            url: https://www.mongodb.com/docs/manual/reference/versioning/
     MeasurementDiskPartition:
       type: object
       properties:
@@ -38871,6 +39909,14 @@ components:
       - DISK_AUTO_SCALE_INITIATED
       - COMPUTE_AUTO_SCALE_INITIATED_BASE
       - COMPUTE_AUTO_SCALE_INITIATED_ANALYTICS
+      - COMPUTE_AUTO_SCALE_SCALE_DOWN_FAIL_BASE
+      - COMPUTE_AUTO_SCALE_SCALE_DOWN_FAIL_ANALYTICS
+      - COMPUTE_AUTO_SCALE_MAX_INSTANCE_SIZE_FAIL_BASE
+      - COMPUTE_AUTO_SCALE_MAX_INSTANCE_SIZE_FAIL_ANALYTICS
+      - COMPUTE_AUTO_SCALE_OPLOG_FAIL_BASE
+      - COMPUTE_AUTO_SCALE_OPLOG_FAIL_ANALYTICS
+      - DISK_AUTO_SCALE_MAX_DISK_SIZE_FAIL
+      - DISK_AUTO_SCALE_OPLOG_FAIL
       example: COMPUTE_AUTO_SCALE_INITIATED
       title: NDS Auto Scaling Audit Types
     NDSAutoScalingAuditViewForNdsGroup:
@@ -40415,6 +41461,7 @@ components:
           description: Organization roles assigned to the Service Account.
           items:
             type: string
+            description: Organization roles associated with the service account.
             enum:
             - ORG_MEMBER
             - ORG_READ_ONLY
@@ -40422,51 +41469,12 @@ components:
             - ORG_BILLING_READ_ONLY
             - ORG_GROUP_CREATOR
             - ORG_OWNER
-            - ORG_TEAM_MEMBERS_ADMIN
           uniqueItems: true
         secrets:
           type: array
           description: List of secrets.
           items:
             $ref: "#/components/schemas/ServiceAccountSecret"
-          uniqueItems: true
-    OrgServiceAccountDetails:
-      type: object
-      properties:
-        createdAt:
-          type: string
-          format: date-time
-          description: Timestamp representing creation time.
-        description:
-          type: string
-          description: Description of the service account.
-        id:
-          type: string
-          description: Service account client id.
-          pattern: "^mdb_sa_id_[a-fA-F\\d]{24}$"
-        name:
-          type: string
-          description: Service account name.
-        roles:
-          type: array
-          description: Roles assigned to the Service Account group.
-          items:
-            type: string
-            enum:
-            - ORG_MEMBER
-            - ORG_READ_ONLY
-            - ORG_BILLING_ADMIN
-            - ORG_BILLING_READ_ONLY
-            - ORG_GROUP_CREATOR
-            - ORG_OWNER
-            - ORG_TEAM_MEMBERS_ADMIN
-          uniqueItems: true
-        secrets:
-          type: array
-          description: List of Client Secret Public details.
-          items:
-            $ref: "#/components/schemas/ServiceAccountSecretDetails"
-          maxItems: 2
           uniqueItems: true
     OrgServiceAccountRequest:
       type: object
@@ -40476,17 +41484,20 @@ components:
           description: Human readable description for the service account.
           maxLength: 250
           minLength: 1
+          pattern: "^[\\p{L}\\p{N}\\-_.,' ]*$"
         name:
           type: string
           description: Human-readable name for the service account. The name is modifiable
             and does not have to be unique.
           maxLength: 64
           minLength: 1
+          pattern: "^[\\p{L}\\p{N}\\-_.,' ]*$"
         roles:
           type: array
           description: Organization roles associated with the service account.
           items:
             type: string
+            description: Organization roles associated with the service account.
             enum:
             - ORG_MEMBER
             - ORG_READ_ONLY
@@ -40494,7 +41505,6 @@ components:
             - ORG_BILLING_READ_ONLY
             - ORG_GROUP_CREATOR
             - ORG_OWNER
-            - ORG_TEAM_MEMBERS_ADMIN
         secretExpiresAfterHours:
           type: integer
           format: int32
@@ -40511,17 +41521,20 @@ components:
           description: Human readable description for the service account.
           maxLength: 250
           minLength: 1
+          pattern: "^[\\p{L}\\p{N}\\-_.,' ]*$"
         name:
           type: string
           description: Human-readable name for the service account. The name is modifiable
             and does not have to be unique.
           maxLength: 64
           minLength: 1
+          pattern: "^[\\p{L}\\p{N}\\-_.,' ]*$"
         roles:
           type: array
           description: Organization roles associated with the Service account.
           items:
             type: string
+            description: Organization roles associated with the service account.
             enum:
             - ORG_MEMBER
             - ORG_READ_ONLY
@@ -40529,7 +41542,6 @@ components:
             - ORG_BILLING_READ_ONLY
             - ORG_GROUP_CREATOR
             - ORG_OWNER
-            - ORG_TEAM_MEMBERS_ADMIN
     OrganizationInvitation:
       type: object
       properties:
@@ -41407,6 +42419,34 @@ components:
             value if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
+    PaginatedAvailableVersionView:
+      type: object
+      properties:
+        links:
+          type: array
+          description: "List of one or more Uniform Resource Locators (URLs) that\
+            \ point to API sub-resources, related API resources, or both. RFC 5988\
+            \ outlines these relationships."
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        results:
+          type: array
+          description: List of returned documents that MongoDB Cloud providers when
+            completing this request.
+          items:
+            $ref: "#/components/schemas/MdbAvailableVersion"
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+          description: Total number of documents available. MongoDB Cloud omits this
+            value if `includeCount` is set to `false`.
+          minimum: 0
+          readOnly: true
     PaginatedBackupSnapshotExportBucketView:
       type: object
       properties:
@@ -41605,6 +42645,34 @@ components:
           minimum: 0
           readOnly: true
       title: Network Peering
+    PaginatedClusterDescription20250101:
+      type: object
+      properties:
+        links:
+          type: array
+          description: "List of one or more Uniform Resource Locators (URLs) that\
+            \ point to API sub-resources, related API resources, or both. RFC 5988\
+            \ outlines these relationships."
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        results:
+          type: array
+          description: List of returned documents that MongoDB Cloud providers when
+            completing this request.
+          items:
+            $ref: "#/components/schemas/ClusterDescription20250101"
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+          description: Total number of documents available. MongoDB Cloud omits this
+            value if `includeCount` is set to `false`.
+          minimum: 0
+          readOnly: true
     PaginatedConnectedOrgConfigsView:
       type: object
       properties:
@@ -41766,7 +42834,7 @@ components:
           description: List of returned documents that MongoDB Cloud providers when
             completing this request.
           items:
-            $ref: "#/components/schemas/GroupServiceAccountDetails"
+            $ref: "#/components/schemas/GroupServiceAccount"
           readOnly: true
         totalCount:
           type: integer
@@ -41963,7 +43031,7 @@ components:
           description: List of returned documents that MongoDB Cloud providers when
             completing this request.
           items:
-            $ref: "#/components/schemas/OrgServiceAccountDetails"
+            $ref: "#/components/schemas/OrgServiceAccount"
           readOnly: true
         totalCount:
           type: integer
@@ -43789,6 +44857,49 @@ components:
           description: "Human-readable label that identifies the zone in a Global\
             \ Cluster. Provide this value only if `\"clusterType\" : \"GEOSHARDED\"\
             `."
+      title: Replication Specifications
+    ReplicationSpec20250101:
+      type: object
+      description: Details that explain how MongoDB Cloud replicates data on the specified
+        MongoDB database.
+      properties:
+        id:
+          type: string
+          description: "Unique 24-hexadecimal digit string that identifies the replication\
+            \ object for a shard in a Cluster. If you include existing shard replication\
+            \ configurations in the request, you must specify this parameter. If you\
+            \ add a new shard to an existing Cluster, you may specify this parameter.\
+            \ The request deletes any existing shards  in the Cluster that you exclude\
+            \ from the request."
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+          readOnly: true
+        regionConfigs:
+          type: array
+          description: |-
+            Hardware specifications for nodes set for a given region. Each **regionConfigs** object describes the region's priority in elections and the number and type of MongoDB nodes that MongoDB Cloud deploys to the region. Each **regionConfigs** object must have either an **analyticsSpecs** object, **electableSpecs** object, or **readOnlySpecs** object. Tenant clusters only require **electableSpecs. Dedicated** clusters can specify any of these specifications, but must have at least one **electableSpecs** object within a **replicationSpec**.
+
+            **Example:**
+
+            If you set `"replicationSpecs[n].regionConfigs[m].analyticsSpecs.instanceSize" : "M30"`, set `"replicationSpecs[n].regionConfigs[m].electableSpecs.instanceSize" : `"M30"` if you have electable nodes and `"replicationSpecs[n].regionConfigs[m].readOnlySpecs.instanceSize" : `"M30"` if you have read-only nodes.
+          items:
+            $ref: "#/components/schemas/CloudRegionConfig20250101"
+        zoneId:
+          type: string
+          description: "Unique 24-hexadecimal digit string that identifies the zone\
+            \ in a Global Cluster. Provide this value only if `\"clusterType\" : \"\
+            GEOSHARDED\"`."
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+          readOnly: true
+        zoneName:
+          type: string
+          description: "Human-readable label that describes the zone in a Global Cluster.\
+            \ Provide this value only if `\"clusterType\" : \"GEOSHARDED\"`."
       title: Replication Specifications
     RequestAccepted:
       type: object
@@ -45896,52 +47007,24 @@ components:
         lastUsedAt:
           type: string
           format: date-time
-          description: Timestamp representing last time secret usage.
-          readOnly: true
-        secret:
-          type: string
-          description: Secret for the service account.
-          pattern: "^mdb_sa_sk_[0-9a-fA-F]{8}\\b-[0-9a-fA-F]{4}\\b-[0-9a-fA-F]{4}\\\
-            b-[0-9a-fA-F]{4}\\b-[0-9a-fA-F]{12}$"
-      required:
-      - createdAt
-      - expiresAt
-      - id
-    ServiceAccountSecretDetails:
-      type: object
-      properties:
-        createdAt:
-          type: string
-          format: date-time
-          description: Timestamp representing creation time.
-          readOnly: true
-        expiresAt:
-          type: string
-          format: date-time
-          description: Timestamp representing secret expiration time.
-          readOnly: true
-        id:
-          type: string
-          description: Unique 24-hexadecimal character string that identifies the
-            secret.
-          example: 32b6e34b3d91647abb20e7b8
-          pattern: "^([a-f0-9]{24})$"
-          readOnly: true
-        lastUsedAt:
-          type: string
-          format: date-time
-          description: Timestamp representing last time secret usage.
+          description: Timestamp representing last secret usage.
           readOnly: true
         maskedSecretValue:
           type: string
-          description: Value of client secret with masked values of the first 20 characters.
+          description: Service Account secret with masked values of the first 20 characters.
           example: mdb_ic_sk_xxxxxxxx-xxxx-xxxx-xxxxxxxx12ce
+          readOnly: true
+        secret:
+          type: string
+          description: Secret for the service account. It will be returned only the
+            first time after service account creation.
+          pattern: "^mdb_sa_sk_[0-9a-fA-F]{8}\\b-[0-9a-fA-F]{4}\\b-[0-9a-fA-F]{4}\\\
+            b-[0-9a-fA-F]{4}\\b-[0-9a-fA-F]{12}$"
           readOnly: true
       required:
       - createdAt
       - expiresAt
       - id
-      - maskedSecretValue
     ServiceAccountSecretRequest:
       type: object
       properties:
@@ -46568,6 +47651,31 @@ components:
           - Cluster
           - Sample
       readOnly: true
+    StreamsDLQ:
+      type: object
+      description: Dead letter queue for the stream processor.
+      properties:
+        coll:
+          type: string
+          description: Name of the collection that will be used for the DLQ.
+        connectionName:
+          type: string
+          description: Connection name that will be used to write DLQ messages to.
+            Has to be an Atlas connection.
+        db:
+          type: string
+          description: Name of the database that will be used for the DLQ.
+        links:
+          type: array
+          description: "List of one or more Uniform Resource Locators (URLs) that\
+            \ point to API sub-resources, related API resources, or both. RFC 5988\
+            \ outlines these relationships."
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
     StreamsDataProcessRegion:
       type: object
       description: Information about the cloud provider region in which MongoDB Cloud
@@ -46834,6 +47942,39 @@ components:
       - PROCESSOR_NAME
       example: INSTANCE_NAME
       title: Streams Matcher Fields
+    StreamsProcessor:
+      type: object
+      description: An atlas stream processor.
+      properties:
+        _id:
+          type: string
+          description: Unique 24-hexadecimal character string that identifies the
+            stream processor.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+          readOnly: true
+        dlq:
+          $ref: "#/components/schemas/StreamsDLQ"
+        links:
+          type: array
+          description: "List of one or more Uniform Resource Locators (URLs) that\
+            \ point to API sub-resources, related API resources, or both. RFC 5988\
+            \ outlines these relationships."
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        name:
+          type: string
+          description: Human-readable name of the stream processor.
+        pipeline:
+          type: string
+          description: Stream aggregation pipeline you want to apply to your streaming
+            data.
     StreamsSampleConnection:
       type: object
       allOf:
@@ -47478,10 +48619,56 @@ components:
           - M2
           - M5
           title: Tenant Instance Sizes
+    TenantHardwareSpec20250101:
+      type: object
+      properties:
+        diskSizeGB:
+          type: number
+          format: double
+          description: "Storage capacity that the host's root volume possesses expressed\
+            \ in gigabytes. Increase this number to add capacity. MongoDB Cloud requires\
+            \ this parameter if you set **replicationSpecs**. If you specify a disk\
+            \ size below the minimum (10 GB), this parameter defaults to the minimum\
+            \ disk size value. Storage charge calculations depend on whether you choose\
+            \ the default value or a custom value.  The maximum value for disk storage\
+            \ cannot exceed 50 times the maximum RAM for the selected cluster. If\
+            \ you require more storage space, consider upgrading your cluster to a\
+            \ higher tier."
+          maximum: 4096
+          minimum: 10
+        instanceSize:
+          type: string
+          description: Hardware specification for the instance sizes in this region.
+            Each instance size has a default storage and memory capacity. The instance
+            size you select applies to all the data-bearing hosts in the region.
+          enum:
+          - M0
+          - M2
+          - M5
+          title: Tenant Instance Sizes
     TenantRegionConfig:
       type: object
       allOf:
       - $ref: "#/components/schemas/CloudRegionConfig"
+      - type: object
+        properties:
+          backingProviderName:
+            type: string
+            description: "Cloud service provider on which MongoDB Cloud provisioned\
+              \ the multi-tenant cluster. The resource returns this parameter when\
+              \ **providerName** is `TENANT` and **electableSpecs.instanceSize** is\
+              \ `M0`, `M2` or `M5`."
+            enum:
+            - AWS
+            - GCP
+            - AZURE
+      description: Details that explain how MongoDB Cloud replicates data in one region
+        on the specified MongoDB database.
+      title: Tenant Regional Replication Specifications
+    TenantRegionConfig20250101:
+      type: object
+      allOf:
+      - $ref: "#/components/schemas/CloudRegionConfig20250101"
       - type: object
         properties:
           backingProviderName:
@@ -48764,7 +49951,6 @@ components:
           type: string
           description: Human-readable label that identifies the role for the request.
             This name must be unique for this custom role in this project.
-          pattern: "^\\b(?!xgen-)([0-9A-Za-z_\\-]+)\\b(?<!\\atlasAdmin|read|readWrite|dbAdmin|dbOwner|userAdmin|clusterAdmin|clusterManager|clusterMonitor|hostManager|backup|restore|readAnyDatabase|readWriteAnyDatabase|userAdminAnyDatabase|dbAdminAnyDatabase|root|__system)$"
       required:
       - roleName
     UserEventTypeViewForNdsGroup:
