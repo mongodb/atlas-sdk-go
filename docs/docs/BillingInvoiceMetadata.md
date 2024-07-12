@@ -9,7 +9,6 @@ Name | Type | Description | Notes
 **Created** | Pointer to **time.Time** | Date and time when MongoDB Cloud created this invoice. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
 **CreditsCents** | Pointer to **int64** | Sum that MongoDB credited the specified organization toward this invoice. This parameter expresses its value in cents (100ths of one US Dollar). | [optional] [readonly] 
 **EndDate** | Pointer to **time.Time** | Date and time when MongoDB Cloud finished the billing period that this invoice covers. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
-**GroupId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the project associated to this invoice. This identifying string doesn&#39;t appear on all invoices. | [optional] [readonly] 
 **Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the invoice submitted to the specified organization. Charges typically post the next day. | [optional] [readonly] 
 **LinkedInvoices** | Pointer to [**[]BillingInvoiceMetadata**](BillingInvoiceMetadata.md) | List that contains the invoices for organizations linked to the paying organization. | [optional] [readonly] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
@@ -160,30 +159,6 @@ SetEndDate sets EndDate field to given value.
 `func (o *BillingInvoiceMetadata) HasEndDate() bool`
 
 HasEndDate returns a boolean if a field has been set.
-### GetGroupId
-
-`func (o *BillingInvoiceMetadata) GetGroupId() string`
-
-GetGroupId returns the GroupId field if non-nil, zero value otherwise.
-
-### GetGroupIdOk
-
-`func (o *BillingInvoiceMetadata) GetGroupIdOk() (*string, bool)`
-
-GetGroupIdOk returns a tuple with the GroupId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGroupId
-
-`func (o *BillingInvoiceMetadata) SetGroupId(v string)`
-
-SetGroupId sets GroupId field to given value.
-
-### HasGroupId
-
-`func (o *BillingInvoiceMetadata) HasGroupId() bool`
-
-HasGroupId returns a boolean if a field has been set.
 ### GetId
 
 `func (o *BillingInvoiceMetadata) GetId() string`

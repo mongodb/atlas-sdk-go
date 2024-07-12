@@ -152,6 +152,7 @@ Class        | Method        | HTTP request  | Description   |
 *EncryptionAtRestUsingCustomerKeyManagementApi* | [UpdateEncryptionAtRest](./docs/EncryptionAtRestUsingCustomerKeyManagementApi.md#updateencryptionatrest) | **Patch** /api/atlas/v2/groups/{groupId}/encryptionAtRest | Update Configuration for Encryption at Rest using Customer-Managed Keys for One Project |
 *EventsApi* | [GetOrganizationEvent](./docs/EventsApi.md#getorganizationevent) | **Get** /api/atlas/v2/orgs/{orgId}/events/{eventId} | Return One Event from One Organization |
 *EventsApi* | [GetProjectEvent](./docs/EventsApi.md#getprojectevent) | **Get** /api/atlas/v2/groups/{groupId}/events/{eventId} | Return One Event from One Project |
+*EventsApi* | [ListEventTypes](./docs/EventsApi.md#listeventtypes) | **Get** /api/atlas/v2/eventTypes | List All Possible Event Types |
 *EventsApi* | [ListOrganizationEvents](./docs/EventsApi.md#listorganizationevents) | **Get** /api/atlas/v2/orgs/{orgId}/events | Return All Events from One Organization |
 *EventsApi* | [ListProjectEvents](./docs/EventsApi.md#listprojectevents) | **Get** /api/atlas/v2/groups/{groupId}/events | Return All Events from One Project |
 *FederatedAuthenticationApi* | [CreateIdentityProvider](./docs/FederatedAuthenticationApi.md#createidentityprovider) | **Post** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders | Create One Identity Provider |
@@ -302,6 +303,7 @@ Class        | Method        | HTTP request  | Description   |
 *ProjectsApi* | [GetProject](./docs/ProjectsApi.md#getproject) | **Get** /api/atlas/v2/groups/{groupId} | Return One Project |
 *ProjectsApi* | [GetProjectByName](./docs/ProjectsApi.md#getprojectbyname) | **Get** /api/atlas/v2/groups/byName/{groupName} | Return One Project using Its Name |
 *ProjectsApi* | [GetProjectInvitation](./docs/ProjectsApi.md#getprojectinvitation) | **Get** /api/atlas/v2/groups/{groupId}/invites/{invitationId} | Return One Project Invitation |
+*ProjectsApi* | [GetProjectLTSVersions](./docs/ProjectsApi.md#getprojectltsversions) | **Get** /api/atlas/v2/groups/{groupId}/mongoDBVersions | Return Available MongoDB LTS Versions for clusters in One Project |
 *ProjectsApi* | [GetProjectLimit](./docs/ProjectsApi.md#getprojectlimit) | **Get** /api/atlas/v2/groups/{groupId}/limits/{limitName} | Return One Limit for One Project |
 *ProjectsApi* | [GetProjectSettings](./docs/ProjectsApi.md#getprojectsettings) | **Get** /api/atlas/v2/groups/{groupId}/settings | Return One Project Settings |
 *ProjectsApi* | [ListProjectInvitations](./docs/ProjectsApi.md#listprojectinvitations) | **Get** /api/atlas/v2/groups/{groupId}/invites | Return All Project Invitations |
@@ -342,6 +344,7 @@ Class        | Method        | HTTP request  | Description   |
 *SharedTierSnapshotsApi* | [ListSharedClusterBackups](./docs/SharedTierSnapshotsApi.md#listsharedclusterbackups) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/snapshots | Return All Snapshots for One M2 or M5 Cluster |
 *StreamsApi* | [CreateStreamConnection](./docs/StreamsApi.md#createstreamconnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections | Create One Connection |
 *StreamsApi* | [CreateStreamInstance](./docs/StreamsApi.md#createstreaminstance) | **Post** /api/atlas/v2/groups/{groupId}/streams | Create One Stream Instance |
+*StreamsApi* | [CreateStreamProcessor](./docs/StreamsApi.md#createstreamprocessor) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor | Create One Stream Processor |
 *StreamsApi* | [DeleteStreamConnection](./docs/StreamsApi.md#deletestreamconnection) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName} | Delete One Stream Connection |
 *StreamsApi* | [DeleteStreamInstance](./docs/StreamsApi.md#deletestreaminstance) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Delete One Stream Instance |
 *StreamsApi* | [DownloadStreamTenantAuditLogs](./docs/StreamsApi.md#downloadstreamtenantauditlogs) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/auditLogs | Download Audit Logs for One Atlas Stream Processing Instance |
@@ -480,6 +483,7 @@ Class        | Method        | HTTP request  | Description   |
  - [DBRoleToExecute](./docs/DBRoleToExecute.md)
  - [DBUserTLSX509Settings](./docs/DBUserTLSX509Settings.md)
  - [DataExpirationRule](./docs/DataExpirationRule.md)
+ - [DataFederationAzureCloudProviderConfig](./docs/DataFederationAzureCloudProviderConfig.md)
  - [DataFederationLimit](./docs/DataFederationLimit.md)
  - [DataFederationTenantQueryLimit](./docs/DataFederationTenantQueryLimit.md)
  - [DataLakeAWSCloudProviderConfig](./docs/DataLakeAWSCloudProviderConfig.md)
@@ -525,6 +529,7 @@ Class        | Method        | HTTP request  | Description   |
  - [DiskGBAutoScaling](./docs/DiskGBAutoScaling.md)
  - [EncryptionAtRest](./docs/EncryptionAtRest.md)
  - [EndpointService](./docs/EndpointService.md)
+ - [EventTypeDetails](./docs/EventTypeDetails.md)
  - [EventViewForNdsGroup](./docs/EventViewForNdsGroup.md)
  - [EventViewForOrg](./docs/EventViewForOrg.md)
  - [ExportStatus](./docs/ExportStatus.md)
@@ -575,6 +580,7 @@ Class        | Method        | HTTP request  | Description   |
  - [LiveMigrationResponse](./docs/LiveMigrationResponse.md)
  - [ManagedNamespace](./docs/ManagedNamespace.md)
  - [ManagedNamespaces](./docs/ManagedNamespaces.md)
+ - [MdbAvailableVersion](./docs/MdbAvailableVersion.md)
  - [MeasurementDiskPartition](./docs/MeasurementDiskPartition.md)
  - [MeasurementsCollStatsLatencyCluster](./docs/MeasurementsCollStatsLatencyCluster.md)
  - [MeasurementsCollStatsLatencyHost](./docs/MeasurementsCollStatsLatencyHost.md)
@@ -621,6 +627,7 @@ Class        | Method        | HTTP request  | Description   |
  - [PaginatedApiUserAccessListResponse](./docs/PaginatedApiUserAccessListResponse.md)
  - [PaginatedAppUser](./docs/PaginatedAppUser.md)
  - [PaginatedAtlasGroup](./docs/PaginatedAtlasGroup.md)
+ - [PaginatedAvailableVersion](./docs/PaginatedAvailableVersion.md)
  - [PaginatedBackupSnapshot](./docs/PaginatedBackupSnapshot.md)
  - [PaginatedBackupSnapshotExportBuckets](./docs/PaginatedBackupSnapshotExportBuckets.md)
  - [PaginatedCloudBackupReplicaSet](./docs/PaginatedCloudBackupReplicaSet.md)
@@ -701,12 +708,14 @@ Class        | Method        | HTTP request  | Description   |
  - [Source](./docs/Source.md)
  - [StreamConfig](./docs/StreamConfig.md)
  - [StreamsConnection](./docs/StreamsConnection.md)
+ - [StreamsDLQ](./docs/StreamsDLQ.md)
  - [StreamsDataProcessRegion](./docs/StreamsDataProcessRegion.md)
  - [StreamsKafkaAuthentication](./docs/StreamsKafkaAuthentication.md)
  - [StreamsKafkaNetworking](./docs/StreamsKafkaNetworking.md)
  - [StreamsKafkaNetworkingAccess](./docs/StreamsKafkaNetworkingAccess.md)
  - [StreamsKafkaSecurity](./docs/StreamsKafkaSecurity.md)
  - [StreamsMatcher](./docs/StreamsMatcher.md)
+ - [StreamsProcessor](./docs/StreamsProcessor.md)
  - [StreamsTenant](./docs/StreamsTenant.md)
  - [SynonymMappingStatusDetail](./docs/SynonymMappingStatusDetail.md)
  - [SynonymSource](./docs/SynonymSource.md)

@@ -4,13 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Aws** | [**DataLakeAWSCloudProviderConfig**](DataLakeAWSCloudProviderConfig.md) |  | 
+**Aws** | Pointer to [**DataLakeAWSCloudProviderConfig**](DataLakeAWSCloudProviderConfig.md) |  | [optional] 
+**Azure** | Pointer to [**DataFederationAzureCloudProviderConfig**](DataFederationAzureCloudProviderConfig.md) |  | [optional] 
 
 ## Methods
 
 ### NewDataLakeCloudProviderConfig
 
-`func NewDataLakeCloudProviderConfig(aws DataLakeAWSCloudProviderConfig, ) *DataLakeCloudProviderConfig`
+`func NewDataLakeCloudProviderConfig() *DataLakeCloudProviderConfig`
 
 NewDataLakeCloudProviderConfig instantiates a new DataLakeCloudProviderConfig object
 This constructor will assign default values to properties that have it defined,
@@ -44,6 +45,35 @@ and a boolean to check if the value has been set.
 
 SetAws sets Aws field to given value.
 
+### HasAws
+
+`func (o *DataLakeCloudProviderConfig) HasAws() bool`
+
+HasAws returns a boolean if a field has been set.
+### GetAzure
+
+`func (o *DataLakeCloudProviderConfig) GetAzure() DataFederationAzureCloudProviderConfig`
+
+GetAzure returns the Azure field if non-nil, zero value otherwise.
+
+### GetAzureOk
+
+`func (o *DataLakeCloudProviderConfig) GetAzureOk() (*DataFederationAzureCloudProviderConfig, bool)`
+
+GetAzureOk returns a tuple with the Azure field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAzure
+
+`func (o *DataLakeCloudProviderConfig) SetAzure(v DataFederationAzureCloudProviderConfig)`
+
+SetAzure sets Azure field to given value.
+
+### HasAzure
+
+`func (o *DataLakeCloudProviderConfig) HasAzure() bool`
+
+HasAzure returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

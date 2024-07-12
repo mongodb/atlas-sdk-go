@@ -17,6 +17,9 @@ type DeleteCopiedBackups struct {
 	// Unique 24-hexadecimal digit string that identifies the replication object for a zone in a cluster. For global clusters, there can be multiple zones to choose from. For sharded clusters and replica setclusters, there is only one zone in the cluster. To find the Replication Spec Id, do a GET request to Return One Cluster in One Project and consult the replicationSpecs array [Return One Cluster in One Project](#operation/getLegacyCluster).
 	// Write only field.
 	ReplicationSpecId *string `json:"replicationSpecId,omitempty"`
+	// Unique 24-hexadecimal digit string that identifies the zone in a cluster. For global clusters, there can be multiple zones to choose from. For sharded clusters and replica set clusters, there is only one zone in the cluster. To find the Zone Id, do a GET request to Return One Cluster from One Project and consult the replicationSpecs array [Return One Cluster from One Project](#operation/getCluster).
+	// Write only field.
+	ZoneId *string `json:"zoneId,omitempty"`
 }
 
 // NewDeleteCopiedBackups instantiates a new DeleteCopiedBackups object
@@ -135,6 +138,39 @@ func (o *DeleteCopiedBackups) SetReplicationSpecId(v string) {
 	o.ReplicationSpecId = &v
 }
 
+// GetZoneId returns the ZoneId field value if set, zero value otherwise
+func (o *DeleteCopiedBackups) GetZoneId() string {
+	if o == nil || IsNil(o.ZoneId) {
+		var ret string
+		return ret
+	}
+	return *o.ZoneId
+}
+
+// GetZoneIdOk returns a tuple with the ZoneId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeleteCopiedBackups) GetZoneIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ZoneId) {
+		return nil, false
+	}
+
+	return o.ZoneId, true
+}
+
+// HasZoneId returns a boolean if a field has been set.
+func (o *DeleteCopiedBackups) HasZoneId() bool {
+	if o != nil && !IsNil(o.ZoneId) {
+		return true
+	}
+
+	return false
+}
+
+// SetZoneId gets a reference to the given string and assigns it to the ZoneId field.
+func (o *DeleteCopiedBackups) SetZoneId(v string) {
+	o.ZoneId = &v
+}
+
 func (o DeleteCopiedBackups) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -152,6 +188,9 @@ func (o DeleteCopiedBackups) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ReplicationSpecId) {
 		toSerialize["replicationSpecId"] = o.ReplicationSpecId
+	}
+	if !IsNil(o.ZoneId) {
+		toSerialize["zoneId"] = o.ZoneId
 	}
 	return toSerialize, nil
 }

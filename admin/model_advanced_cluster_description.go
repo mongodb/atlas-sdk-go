@@ -40,7 +40,7 @@ type AdvancedClusterDescription struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
-	// Major MongoDB version of the cluster. MongoDB Cloud deploys the cluster with the latest stable release of the specified version.
+	// MongoDB major version of the cluster.  On creation: Choose from the available versions of MongoDB, or leave unspecified for the current recommended default in the MongoDB Cloud platform. The recommended version is a recent Long Term Support version. The default is not guaranteed to be the most recently released version throughout the entire release cycle. For versions available in a specific project, see the linked documentation or use the API endpoint for [project LTS versions endpoint](#tag/Projects/operation/getProjectLTSVersions).   On update: Increase version only by 1 major version at a time.
 	MongoDBMajorVersion *string `json:"mongoDBMajorVersion,omitempty"`
 	// Version of MongoDB that the cluster runs.
 	// Read only field.
@@ -76,8 +76,6 @@ func NewAdvancedClusterDescription() *AdvancedClusterDescription {
 	this.BackupEnabled = &backupEnabled
 	var diskWarmingMode string = "FULLY_WARMED"
 	this.DiskWarmingMode = &diskWarmingMode
-	var mongoDBMajorVersion string = "7.0"
-	this.MongoDBMajorVersion = &mongoDBMajorVersion
 	var rootCertType string = "ISRGROOTX1"
 	this.RootCertType = &rootCertType
 	var terminationProtectionEnabled bool = false
@@ -96,8 +94,6 @@ func NewAdvancedClusterDescriptionWithDefaults() *AdvancedClusterDescription {
 	this.BackupEnabled = &backupEnabled
 	var diskWarmingMode string = "FULLY_WARMED"
 	this.DiskWarmingMode = &diskWarmingMode
-	var mongoDBMajorVersion string = "7.0"
-	this.MongoDBMajorVersion = &mongoDBMajorVersion
 	var rootCertType string = "ISRGROOTX1"
 	this.RootCertType = &rootCertType
 	var terminationProtectionEnabled bool = false
