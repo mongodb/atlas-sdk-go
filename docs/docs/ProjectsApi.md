@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**GetProject**](ProjectsApi.md#GetProject) | **Get** /api/atlas/v2/groups/{groupId} | Return One Project
 [**GetProjectByName**](ProjectsApi.md#GetProjectByName) | **Get** /api/atlas/v2/groups/byName/{groupName} | Return One Project using Its Name
 [**GetProjectInvitation**](ProjectsApi.md#GetProjectInvitation) | **Get** /api/atlas/v2/groups/{groupId}/invites/{invitationId} | Return One Project Invitation
+[**GetProjectLTSVersions**](ProjectsApi.md#GetProjectLTSVersions) | **Get** /api/atlas/v2/groups/{groupId}/mongoDBVersions | Return Available MongoDB LTS Versions for clusters in One Project
 [**GetProjectLimit**](ProjectsApi.md#GetProjectLimit) | **Get** /api/atlas/v2/groups/{groupId}/limits/{limitName} | Return One Limit for One Project
 [**GetProjectSettings**](ProjectsApi.md#GetProjectSettings) | **Get** /api/atlas/v2/groups/{groupId}/settings | Return One Project Settings
 [**ListProjectInvitations**](ProjectsApi.md#ListProjectInvitations) | **Get** /api/atlas/v2/groups/{groupId}/invites | Return All Project Invitations
@@ -48,7 +49,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530002/admin"
+    "go.mongodb.org/atlas-sdk/v20240530003/admin"
 )
 
 func main() {
@@ -130,7 +131,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530002/admin"
+    "go.mongodb.org/atlas-sdk/v20240530003/admin"
 )
 
 func main() {
@@ -208,7 +209,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530002/admin"
+    "go.mongodb.org/atlas-sdk/v20240530003/admin"
 )
 
 func main() {
@@ -290,7 +291,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530002/admin"
+    "go.mongodb.org/atlas-sdk/v20240530003/admin"
 )
 
 func main() {
@@ -370,7 +371,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530002/admin"
+    "go.mongodb.org/atlas-sdk/v20240530003/admin"
 )
 
 func main() {
@@ -453,7 +454,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530002/admin"
+    "go.mongodb.org/atlas-sdk/v20240530003/admin"
 )
 
 func main() {
@@ -536,7 +537,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530002/admin"
+    "go.mongodb.org/atlas-sdk/v20240530003/admin"
 )
 
 func main() {
@@ -616,7 +617,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530002/admin"
+    "go.mongodb.org/atlas-sdk/v20240530003/admin"
 )
 
 func main() {
@@ -696,7 +697,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530002/admin"
+    "go.mongodb.org/atlas-sdk/v20240530003/admin"
 )
 
 func main() {
@@ -762,6 +763,96 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## GetProjectLTSVersions
+
+> PaginatedAvailableVersion GetProjectLTSVersions(ctx, groupId).CloudProvider(cloudProvider).InstanceSize(instanceSize).DefaultStatus(defaultStatus).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+
+Return Available MongoDB LTS Versions for clusters in One Project
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20240530003/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    cloudProvider := "cloudProvider_example" // string |  (optional)
+    instanceSize := "M10" // string |  (optional)
+    defaultStatus := "defaultStatus_example" // string |  (optional)
+    itemsPerPage := int64(100) // int64 |  (optional) (default to 100)
+    pageNum := int(1) // int |  (optional) (default to 1)
+
+    resp, r, err := sdk.ProjectsApi.GetProjectLTSVersions(context.Background(), groupId).CloudProvider(cloudProvider).InstanceSize(instanceSize).DefaultStatus(defaultStatus).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.GetProjectLTSVersions`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `GetProjectLTSVersions`: PaginatedAvailableVersion
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.GetProjectLTSVersions`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetProjectLTSVersionsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **cloudProvider** | **string** | Filter results to only one cloud provider. | 
+ **instanceSize** | **string** | Filter results to only one instance size. | 
+ **defaultStatus** | **string** | Filter results to only the default values per tier. This value must be DEFAULT. | 
+ **itemsPerPage** | **int64** | Number of items that the response returns per page. | [default to 100]
+ **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
+
+### Return type
+
+[**PaginatedAvailableVersion**](PaginatedAvailableVersion.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2023-01-01+json, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetProjectLimit
 
 > DataFederationLimit GetProjectLimit(ctx, limitName, groupId).Execute()
@@ -779,7 +870,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530002/admin"
+    "go.mongodb.org/atlas-sdk/v20240530003/admin"
 )
 
 func main() {
@@ -862,7 +953,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530002/admin"
+    "go.mongodb.org/atlas-sdk/v20240530003/admin"
 )
 
 func main() {
@@ -942,7 +1033,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530002/admin"
+    "go.mongodb.org/atlas-sdk/v20240530003/admin"
 )
 
 func main() {
@@ -1024,7 +1115,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530002/admin"
+    "go.mongodb.org/atlas-sdk/v20240530003/admin"
 )
 
 func main() {
@@ -1104,7 +1195,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530002/admin"
+    "go.mongodb.org/atlas-sdk/v20240530003/admin"
 )
 
 func main() {
@@ -1194,7 +1285,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530002/admin"
+    "go.mongodb.org/atlas-sdk/v20240530003/admin"
 )
 
 func main() {
@@ -1274,7 +1365,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530002/admin"
+    "go.mongodb.org/atlas-sdk/v20240530003/admin"
 )
 
 func main() {
@@ -1356,7 +1447,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530002/admin"
+    "go.mongodb.org/atlas-sdk/v20240530003/admin"
 )
 
 func main() {
@@ -1437,7 +1528,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530002/admin"
+    "go.mongodb.org/atlas-sdk/v20240530003/admin"
 )
 
 func main() {
@@ -1517,7 +1608,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530002/admin"
+    "go.mongodb.org/atlas-sdk/v20240530003/admin"
 )
 
 func main() {
@@ -1602,7 +1693,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530002/admin"
+    "go.mongodb.org/atlas-sdk/v20240530003/admin"
 )
 
 func main() {
@@ -1684,7 +1775,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530002/admin"
+    "go.mongodb.org/atlas-sdk/v20240530003/admin"
 )
 
 func main() {
@@ -1766,7 +1857,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530002/admin"
+    "go.mongodb.org/atlas-sdk/v20240530003/admin"
 )
 
 func main() {
@@ -1851,7 +1942,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530002/admin"
+    "go.mongodb.org/atlas-sdk/v20240530003/admin"
 )
 
 func main() {
@@ -1936,7 +2027,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530002/admin"
+    "go.mongodb.org/atlas-sdk/v20240530003/admin"
 )
 
 func main() {

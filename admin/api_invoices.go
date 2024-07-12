@@ -636,29 +636,32 @@ func (a *InvoicesApiService) GetInvoiceExecute(r GetInvoiceApiRequest) (string, 
 }
 
 type ListInvoicesApiRequest struct {
-	ctx          context.Context
-	ApiService   InvoicesApi
-	orgId        string
-	includeCount *bool
-	itemsPerPage *int
-	pageNum      *int
+	ctx                context.Context
+	ApiService         InvoicesApi
+	orgId              string
+	includeCount       *bool
+	itemsPerPage       *int
+	pageNum            *int
+	viewLinkedInvoices *bool
 }
 
 type ListInvoicesApiParams struct {
-	OrgId        string
-	IncludeCount *bool
-	ItemsPerPage *int
-	PageNum      *int
+	OrgId              string
+	IncludeCount       *bool
+	ItemsPerPage       *int
+	PageNum            *int
+	ViewLinkedInvoices *bool
 }
 
 func (a *InvoicesApiService) ListInvoicesWithParams(ctx context.Context, args *ListInvoicesApiParams) ListInvoicesApiRequest {
 	return ListInvoicesApiRequest{
-		ApiService:   a,
-		ctx:          ctx,
-		orgId:        args.OrgId,
-		includeCount: args.IncludeCount,
-		itemsPerPage: args.ItemsPerPage,
-		pageNum:      args.PageNum,
+		ApiService:         a,
+		ctx:                ctx,
+		orgId:              args.OrgId,
+		includeCount:       args.IncludeCount,
+		itemsPerPage:       args.ItemsPerPage,
+		pageNum:            args.PageNum,
+		viewLinkedInvoices: args.ViewLinkedInvoices,
 	}
 }
 
@@ -677,6 +680,12 @@ func (r ListInvoicesApiRequest) ItemsPerPage(itemsPerPage int) ListInvoicesApiRe
 // Number of the page that displays the current set of the total objects that the response returns.
 func (r ListInvoicesApiRequest) PageNum(pageNum int) ListInvoicesApiRequest {
 	r.pageNum = &pageNum
+	return r
+}
+
+// Flag that indicates whether to return linked invoices in the linkedInvoices field.
+func (r ListInvoicesApiRequest) ViewLinkedInvoices(viewLinkedInvoices bool) ListInvoicesApiRequest {
+	r.viewLinkedInvoices = &viewLinkedInvoices
 	return r
 }
 
@@ -745,6 +754,13 @@ func (a *InvoicesApiService) ListInvoicesExecute(r ListInvoicesApiRequest) (*Pag
 		var defaultValue int = 1
 		r.pageNum = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	}
+	if r.viewLinkedInvoices != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "viewLinkedInvoices", r.viewLinkedInvoices, "")
+	} else {
+		var defaultValue bool = true
+		r.viewLinkedInvoices = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "viewLinkedInvoices", r.viewLinkedInvoices, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CloudProvider** | **string** | Name of the cloud service that hosts the data lake&#39;s data stores. | 
+**CloudProvider** | **string** | Name of the cloud service that hosts the Federated Database Instance&#39;s infrastructure. | 
 **Region** | **string** | Name of the region to which the data lake routes client connections. | 
 
 ## Methods

@@ -24,7 +24,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: b3f2a193974330cd87b716f19cdb87cc23214b79
+  x-xgen-sha: 6e2e8b0b416f8116ca8fea058d82df13c552c7ee
 servers:
   - url: https://cloud.mongodb.com
 tags:
@@ -306,6 +306,34 @@ paths:
       summary: Return All Authorized Clusters in All Projects
       tags:
         - Clusters
+  /api/atlas/v2/eventTypes:
+    get:
+      description: Returns a list of all event types, along with a description and
+        additional metadata about each event.
+      operationId: listEventTypes
+      parameters:
+        - $ref: "#/components/parameters/includeCount"
+        - $ref: "#/components/parameters/itemsPerPage"
+        - $ref: "#/components/parameters/pageNum"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/EventTypeDetails"
+              x-xgen-version: 2023-01-01
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: List All Possible Event Types
+      tags:
+        - Events
   "/api/atlas/v2/federationSettings/{federationSettingsId}":
     delete:
       description: "Deletes the federation settings instance and all associated data,
@@ -2734,10 +2762,10 @@ paths:
     get:
       description: "Returns the details for all clusters in the specific project to
         which you have access. Clusters contain a group of hosts that maintain
-        the same data set. The response includes multi-cloud clusters. To use
-        this resource, the requesting API Key must have the Project Read Only
-        role. This feature is not available for serverless clusters. Deprecated
-        versions: v2-{2023-01-01}"
+        the same data set. The response includes clusters with
+        asymmetrically-sized shards. To use this resource, the requesting API
+        Key must have the Project Read Only role. This feature is not  available
+        for serverless clusters. Deprecated versions: v2-{2023-01-01}"
       operationId: listClusters
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -2767,103 +2795,19 @@ paths:
       summary: Return All Clusters in One Project
       tags:
         - Clusters
-      x-xgen-changelog:
-        2024-07-11: Only clusters supported by the current API version are returned in
-          response
     post:
       description: "Creates one cluster in the specified project. Clusters contain a
         group of hosts that maintain the same data set. This resource can create
-        multi-cloud clusters. Each project supports up to 25 database
-        deployments. To use this resource, the requesting API Key must have the
-        Project Owner role. This feature is not available for serverless
-        clusters. Deprecated versions: v2-{2023-01-01}"
+        clusters with asymmetrically-sized shards. Each project supports up to
+        25 database deployments. To use this resource, the requesting API Key
+        must have the Project Owner role. This feature is not available for
+        serverless clusters. Deprecated versions: v2-{2023-01-01}"
       operationId: createCluster
       parameters:
         - $ref: "#/components/parameters/groupId"
       requestBody:
         content:
           application/vnd.atlas.2023-02-01+json:
-            examples:
-              Multi Cloud Cluster:
-                description: Multi Cloud Cluster
-                value:
-                  clusterType: REPLICASET
-                  links: []
-                  name: multiCloud
-                  replicationSpecs:
-                    - numShards: 1
-                      regionConfigs:
-                        - analyticsAutoScaling:
-                            autoIndexing:
-                              enabled: false
-                            compute:
-                              enabled: true
-                              maxInstanceSize: M40
-                              minInstanceSize: M30
-                              scaleDownEnabled: true
-                            diskGB:
-                              enabled: true
-                          analyticsSpecs:
-                            instanceSize: M30
-                            nodeCount: 0
-                          autoScaling:
-                            autoIndexing:
-                              enabled: false
-                            compute:
-                              enabled: true
-                              maxInstanceSize: M40
-                              minInstanceSize: M30
-                              scaleDownEnabled: true
-                            diskGB:
-                              enabled: true
-                          electableSpecs:
-                            instanceSize: M30
-                            nodeCount: 3
-                          hiddenSecondarySpecs:
-                            instanceSize: M30
-                            nodeCount: 0
-                          priority: 7
-                          providerName: AWS
-                          readOnlySpecs:
-                            instanceSize: M30
-                            nodeCount: 0
-                          regionName: US_EAST_1
-                        - analyticsAutoScaling:
-                            autoIndexing:
-                              enabled: false
-                            compute:
-                              enabled: true
-                              maxInstanceSize: M40
-                              minInstanceSize: M30
-                              scaleDownEnabled: true
-                            diskGB:
-                              enabled: true
-                          analyticsSpecs:
-                            instanceSize: M30
-                            nodeCount: 0
-                          autoScaling:
-                            autoIndexing:
-                              enabled: false
-                            compute:
-                              enabled: true
-                              maxInstanceSize: M40
-                              minInstanceSize: M30
-                              scaleDownEnabled: true
-                            diskGB:
-                              enabled: true
-                          electableSpecs:
-                            instanceSize: M30
-                            nodeCount: 2
-                          hiddenSecondarySpecs:
-                            instanceSize: M30
-                            nodeCount: 0
-                          priority: 6
-                          providerName: GCP
-                          readOnlySpecs:
-                            instanceSize: M30
-                            nodeCount: 0
-                          regionName: EASTERN_US
-                      zoneName: Zone 1
             schema:
               $ref: "#/components/schemas/AdvancedClusterDescription"
         description: Cluster to create in the specific project.
@@ -3064,10 +3008,10 @@ paths:
     get:
       description: "Returns the details for one cluster in the specified project.
         Clusters contain a group of hosts that maintain the same data set. The
-        response includes multi-cloud clusters. To use this resource, the
-        requesting API Key must have the Project Read Only role. This feature is
-        not available for serverless clusters. Deprecated versions:
-        v2-{2023-01-01}"
+        response includes clusters with asymmetrically-sized shards. To use this
+        resource, the requesting API Key must have the Project Read Only role.
+        This feature is not available for serverless clusters. Deprecated
+        versions: v2-{2023-01-01}"
       operationId: getCluster
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -3104,14 +3048,15 @@ paths:
     patch:
       description: "Updates the details for one cluster in the specified project.
         Clusters contain a group of hosts that maintain the same data set. This
-        resource can update multi-cloud clusters. To update a cluster's
-        termination protection, the requesting API Key must have the Project
-        Owner role. For all other updates, the requesting API Key must have the
-        Project Cluster Manager role. You can't modify a paused cluster (`paused
-        : true`). You must call this endpoint to set `paused : false`. After
-        this endpoint responds with `paused : false`, you can call it again with
-        the changes you want to make to the cluster. This feature is not
-        available for serverless clusters. Deprecated versions: v2-{2023-01-01}"
+        resource can update clusters with asymmetrically-sized shards. To update
+        a cluster's termination protection, the requesting API Key must have the
+        Project Owner role. For all other updates, the requesting API Key must
+        have the Project Cluster Manager role. You can't modify a paused cluster
+        (`paused : true`). You must call this endpoint to set `paused : false`.
+        After this endpoint responds with `paused : false`, you can call it
+        again with the changes you want to make to the cluster. This feature is
+        not available for serverless clusters. Deprecated versions:
+        v2-{2023-01-01}"
       operationId: updateCluster
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -5631,7 +5576,6 @@ paths:
           application/vnd.atlas.2023-01-01+json:
             schema:
               $ref: "#/components/schemas/ClusterDescriptionProcessArgs"
-            x-sunset: 2025-06-01
             x-xgen-version: 2023-01-01
         description: Advanced configuration details to add for one cluster in the
           specified project.
@@ -7425,7 +7369,6 @@ paths:
           required: true
           schema:
             type: string
-            pattern: ^\b(?!xgen-)([0-9A-Za-z_\-]+)\b(?<!\atlasAdmin|read|readWrite|dbAdmin|dbOwner|userAdmin|clusterAdmin|clusterManager|clusterMonitor|hostManager|backup|restore|readAnyDatabase|readWriteAnyDatabase|userAdminAnyDatabase|dbAdminAnyDatabase|root|__system)$
       responses:
         "204":
           content:
@@ -7460,7 +7403,6 @@ paths:
           required: true
           schema:
             type: string
-            pattern: ^\b(?!xgen-)([0-9A-Za-z_\-]+)\b(?<!\atlasAdmin|read|readWrite|dbAdmin|dbOwner|userAdmin|clusterAdmin|clusterManager|clusterMonitor|hostManager|backup|restore|readAnyDatabase|readWriteAnyDatabase|userAdminAnyDatabase|dbAdminAnyDatabase|root|__system)$
       responses:
         "200":
           content:
@@ -7493,7 +7435,6 @@ paths:
           required: true
           schema:
             type: string
-            pattern: ^\b(?!xgen-)([0-9A-Za-z_\-]+)\b(?<!\atlasAdmin|read|readWrite|dbAdmin|dbOwner|userAdmin|clusterAdmin|clusterManager|clusterMonitor|hostManager|backup|restore|readAnyDatabase|readWriteAnyDatabase|userAdminAnyDatabase|dbAdminAnyDatabase|root|__system)$
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -10191,6 +10132,65 @@ paths:
       summary: Enable Managed Slow Operation Threshold
       tags:
         - Performance Advisor
+  "/api/atlas/v2/groups/{groupId}/mongoDBVersions":
+    get:
+      description: Returns the MongoDB Long Term Support Major Versions available to
+        new clusters in this project.
+      operationId: getProjectLTSVersions
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Filter results to only one cloud provider.
+          in: query
+          name: cloudProvider
+          schema:
+            type: string
+        - description: Filter results to only one instance size.
+          in: query
+          name: instanceSize
+          schema:
+            type: string
+            example: M10
+        - description: Filter results to only the default values per tier. This value must
+            be DEFAULT.
+          in: query
+          name: defaultStatus
+          schema:
+            type: string
+        - description: Number of items that the response returns per page.
+          in: query
+          name: itemsPerPage
+          schema:
+            type: integer
+            format: int64
+            default: 100
+            example: 100
+            minimum: 1
+        - $ref: "#/components/parameters/pageNum"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedAvailableVersion"
+              x-xgen-version: 2023-01-01
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Return Available MongoDB LTS Versions for clusters in One Project
+      tags:
+        - Projects
   "/api/atlas/v2/groups/{groupId}/peers":
     get:
       description: Returns details about all network peering connections in the
@@ -13773,6 +13773,48 @@ paths:
       x-xgen-changelog:
         2023-09-11: The MongoDB Atlas Streams Processing API is now exposed as part of
           private preview, but is subject to change until GA.
+  "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor":
+    post:
+      description: Create one Stream Processor within the specified stream instance.
+        To use this resource, the requesting API Key must have the Project Owner
+        role or Project Stream Processing Owner role.
+      operationId: createStreamProcessor
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Human-readable label that identifies the stream instance.
+          in: path
+          name: tenantName
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/vnd.atlas.2024-05-30+json:
+            schema:
+              $ref: "#/components/schemas/StreamsProcessor"
+        description: Details to create an Atlas Streams Processor.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-05-30+json:
+              schema:
+                $ref: "#/components/schemas/StreamsProcessor"
+              x-xgen-version: 2024-05-30
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "409":
+          $ref: "#/components/responses/unauthorized"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Create One Stream Processor
+      tags:
+        - Streams
   "/api/atlas/v2/groups/{groupId}/teams":
     get:
       description: Returns all teams to which the authenticated user has access in the
@@ -15424,6 +15466,14 @@ paths:
         - $ref: "#/components/parameters/itemsPerPage"
         - $ref: "#/components/parameters/orgId"
         - $ref: "#/components/parameters/pageNum"
+        - description: Flag that indicates whether to return linked invoices in the
+            linkedInvoices field.
+          in: query
+          name: viewLinkedInvoices
+          schema:
+            type: boolean
+            default: true
+            example: true
       responses:
         "200":
           content:
@@ -16263,8 +16313,6 @@ paths:
           description: OK
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - Unauthenticated: []
       summary: Return All Control Plane IP Addresses
       tags:
         - Root
@@ -16961,9 +17009,16 @@ components:
           readOnly: true
         mongoDBMajorVersion:
           type: string
-          default: "7.0"
-          description: Major MongoDB version of the cluster. MongoDB Cloud deploys the
-            cluster with the latest stable release of the specified version.
+          description: >-
+            MongoDB major version of the cluster.
+
+
+            On creation: Choose from the available versions of MongoDB, or leave unspecified for the current recommended default in the MongoDB Cloud platform. The recommended version is a recent Long Term Support version. The default is not guaranteed to be the most recently released version throughout the entire release cycle. For versions available in a specific project, see the linked documentation or use the API endpoint for [project LTS versions endpoint](#tag/Projects/operation/getProjectLTSVersions).
+
+             On update: Increase version only by 1 major version at a time.
+          externalDocs:
+            description: Available MongoDB Versions in Atlas
+            url: https://www.mongodb.com/docs/atlas/reference/faq/database/#which-versions-of-mongodb-do-service-clusters-use-
         mongoDBVersion:
           type: string
           description: Version of MongoDB that the cluster runs.
@@ -19270,16 +19325,6 @@ components:
             this invoice covers. This parameter expresses its value in the ISO
             8601 timestamp format in UTC.
           readOnly: true
-        groupId:
-          type: string
-          description: Unique 24-hexadecimal digit string that identifies the project
-            associated to this invoice. This identifying string doesn't appear
-            on all invoices.
-          example: 32b6e34b3d91647abb20e7b8
-          maxLength: 24
-          minLength: 24
-          pattern: ^([a-f0-9]{24})$
-          readOnly: true
         id:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the invoice
@@ -19433,16 +19478,6 @@ components:
           description: Date and time when MongoDB Cloud finished the billing period that
             this invoice covers. This parameter expresses its value in the ISO
             8601 timestamp format in UTC.
-          readOnly: true
-        groupId:
-          type: string
-          description: Unique 24-hexadecimal digit string that identifies the project
-            associated to this invoice. This identifying string doesn't appear
-            on all invoices.
-          example: 32b6e34b3d91647abb20e7b8
-          maxLength: 24
-          minLength: 24
-          pattern: ^([a-f0-9]{24})$
           readOnly: true
         id:
           type: string
@@ -21805,6 +21840,31 @@ components:
             $ref: "#/components/schemas/Link"
           readOnly: true
       title: Database User TLS Certificate Settings
+    DataFederationAzureCloudProviderConfig:
+      type: object
+      description: Configuration for running Data Federation in Azure.
+      properties:
+        atlasAppId:
+          type: string
+          description: The App ID generated by Atlas for the Service Principal's access
+            policy.
+          readOnly: true
+        roleId:
+          type: string
+          description: Unique identifier of the role that Data Federation can use to
+            access the data stores.Required if specifying cloudProviderConfig.
+        servicePrincipalId:
+          type: string
+          description: The ID of the Service Principal for which there is an access
+            policyfor Atlas to access Azure resources.
+          readOnly: true
+        tenantId:
+          type: string
+          description: The Azure Active Directory / Entra ID tenant ID associated with the
+            Service Principal.
+          readOnly: true
+      required:
+        - roleId
     DataFederationLimit:
       type: object
       description: Details of user managed limits.
@@ -21906,7 +21966,7 @@ components:
       title: Data Federation Tenant-Level Query Limit
     DataLakeAWSCloudProviderConfig:
       type: object
-      description: Name of the cloud service that hosts the data lake's data stores.
+      description: Configuration for running Data Federation in AWS.
       properties:
         externalId:
           type: string
@@ -22010,21 +22070,22 @@ components:
           description: Value of the tag.
     DataLakeCloudProviderConfig:
       type: object
-      description: Cloud provider linked to this data lake.
+      description: Cloud provider where this Federated Database Instance is hosted.
       properties:
         aws:
           $ref: "#/components/schemas/DataLakeAWSCloudProviderConfig"
-      required:
-        - aws
+        azure:
+          $ref: "#/components/schemas/DataFederationAzureCloudProviderConfig"
       title: Data Lake Cloud Provider
     DataLakeDataProcessRegion:
       type: object
-      description: Information about the cloud provider region to which the data lake
-        routes client connections.
+      description: Information about the cloud provider region to which the Federated
+        Database Instance routes client connections.
       properties:
         cloudProvider:
           type: string
-          description: Name of the cloud service that hosts the data lake's data stores.
+          description: Name of the cloud service that hosts the Federated Database
+            Instance's infrastructure.
         region:
           $ref: "#/components/schemas/BaseAtlasDataLakeRegion"
       required:
@@ -22359,15 +22420,16 @@ components:
           readOnly: true
         hostnames:
           type: array
-          description: List that contains the hostnames assigned to the Data Lake instance.
+          description: List that contains the hostnames assigned to the Federated Database
+            Instance.
           items:
             type: string
-            description: Unique hostname assigned to the Data Lake instance.
+            description: Unique hostname assigned to the Federated Database Instance.
             readOnly: true
           readOnly: true
         name:
           type: string
-          description: Human-readable label that identifies the data lake.
+          description: Human-readable label that identifies the Federated Database Instance.
         privateEndpointHostnames:
           type: array
           description: List that contains the sets of private endpoints and hostnames.
@@ -22376,7 +22438,7 @@ components:
           readOnly: true
         state:
           type: string
-          description: Label that indicates the status of the Data Lake instance.
+          description: Label that indicates the status of the Federated Database Instance.
           readOnly: true
         storage:
           $ref: "#/components/schemas/DataLakeStorage"
@@ -22487,7 +22549,6 @@ components:
           externalDocs:
             description: MongoDB Built-In Roles
             url: https://docs.mongodb.com/manual/reference/built-in-roles/
-          pattern: ^\b(?!xgen-)([0-9A-Za-z_\-]+)\b(?<!\atlasAdmin|read|readWrite|dbAdmin|dbOwner|userAdmin|clusterAdmin|clusterManager|clusterMonitor|hostManager|backup|restore|readAnyDatabase|readWriteAnyDatabase|userAdminAnyDatabase|dbAdminAnyDatabase|root|__system)$
       required:
         - db
         - role
@@ -22711,6 +22772,15 @@ components:
             Replication Spec Id, do a GET request to Return One Cluster in One
             Project and consult the replicationSpecs array [Return One Cluster
             in One Project](#operation/getLegacyCluster).
+          writeOnly: true
+        zoneId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the zone in a
+            cluster. For global clusters, there can be multiple zones to choose
+            from. For sharded clusters and replica set clusters, there is only
+            one zone in the cluster. To find the Zone Id, do a GET request to
+            Return One Cluster from One Project and consult the replicationSpecs
+            array [Return One Cluster from One Project](#operation/getCluster).
           writeOnly: true
       writeOnly: true
     Destination:
@@ -23823,6 +23893,35 @@ components:
             pattern: https:\/\/([a-z0-9\.]+)+\.[a-z]{2,}(\/[a-z0-9\-]+)+\/projects\/p-[a-z0-9]+\/regions\/[a-z\-0-9]+\/serviceAttachments\/[a-z0-9\-]+
       required:
         - cloudProvider
+    EventTypeDetails:
+      type: object
+      description: A singular type of event
+      properties:
+        alertable:
+          type: boolean
+          description: Whether or not this event type can be configured as an alert via
+            the API.
+          readOnly: true
+        description:
+          type: string
+          description: Description of the event type.
+          readOnly: true
+        eventType:
+          type: string
+          description: Enum representation of the event type.
+          readOnly: true
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+      title: Event type details
     EventTypeForNdsGroup:
       type: string
     EventTypeForOrg:
@@ -26168,9 +26267,16 @@ components:
           readOnly: true
         mongoDBMajorVersion:
           type: string
-          default: "7.0"
-          description: Major MongoDB version of the cluster. MongoDB Cloud deploys the
-            cluster with the latest stable release of the specified version.
+          description: >-
+            MongoDB major version of the cluster.
+
+
+            On creation: Choose from the available versions of MongoDB, or leave unspecified for the current recommended default in the MongoDB Cloud platform. The recommended version is a recent Long Term Support version. The default is not guaranteed to be the most recently released version throughout the entire release cycle. For versions available in a specific project, see the linked documentation or use the API endpoint for [project LTS versions endpoint](#tag/Projects/operation/getProjectLTSVersions).
+
+             On update: Increase version only by 1 major version at a time.
+          externalDocs:
+            description: Available MongoDB Versions in Atlas
+            url: https://www.mongodb.com/docs/atlas/reference/faq/database/#which-versions-of-mongodb-do-service-clusters-use-
         mongoDBVersion:
           type: string
           description: Version of MongoDB that the cluster runs.
@@ -26430,9 +26536,16 @@ components:
           readOnly: true
         mongoDBMajorVersion:
           type: string
-          default: "7.0"
-          description: Major MongoDB version of the cluster. MongoDB Cloud deploys the
-            cluster with the latest stable release of the specified version.
+          description: >-
+            MongoDB major version of the cluster.
+
+
+            On creation: Choose from the available versions of MongoDB, or leave unspecified for the current recommended default in the MongoDB Cloud platform. The recommended version is a recent Long Term Support version. The default is not guaranteed to be the most recently released version throughout the entire release cycle. For versions available in a specific project, see the linked documentation or use the API endpoint for [project LTS versions endpoint](#tag/Projects/operation/getProjectLTSVersions).
+
+             On update: Increase version only by 1 major version at a time.
+          externalDocs:
+            description: Available MongoDB Versions in Atlas
+            url: https://www.mongodb.com/docs/atlas/reference/faq/database/#which-versions-of-mongodb-do-service-clusters-use-
         mongoDBVersion:
           type: string
           description: Version of MongoDB that the cluster runs.
@@ -26873,6 +26986,36 @@ components:
         - collection
         - customShardKey
         - db
+    MdbAvailableVersion:
+      type: object
+      properties:
+        cloudProvider:
+          type: string
+          description: Cloud service provider on which MongoDB Cloud provisions the hosts.
+            Set dedicated clusters to `AWS`, `GCP`, `AZURE` or `TENANT`.
+        defaultStatus:
+          type: string
+          description: Whether the version is the current default for the Instance Size
+            and Cloud Provider.
+        instanceSize:
+          $ref: "#/components/schemas/BaseCloudProviderInstanceSize"
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        version:
+          type: string
+          description: The MongoDB Major Version in question.
+          externalDocs:
+            description: MongoDB Versioning
+            url: https://www.mongodb.com/docs/manual/reference/versioning/
     MeasurementDiskPartition:
       type: object
       properties:
@@ -29562,6 +29705,31 @@ components:
         security:
           $ref: "#/components/schemas/StreamsKafkaSecurity"
       readOnly: true
+    StreamsDLQ:
+      type: object
+      description: Dead letter queue for the stream processor.
+      properties:
+        coll:
+          type: string
+          description: Name of the collection that will be used for the DLQ.
+        connectionName:
+          type: string
+          description: Connection name that will be used to write DLQ messages to. Has to
+            be an Atlas connection.
+        db:
+          type: string
+          description: Name of the database that will be used for the DLQ.
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
     StreamsDataProcessRegion:
       type: object
       description: Information about the cloud provider region in which MongoDB Cloud
@@ -29707,6 +29875,38 @@ components:
         for alert configurations.
       example: INSTANCE_NAME
       title: Streams Matcher Fields
+    StreamsProcessor:
+      type: object
+      description: An atlas stream processor.
+      properties:
+        _id:
+          type: string
+          description: Unique 24-hexadecimal character string that identifies the stream
+            processor.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        dlq:
+          $ref: "#/components/schemas/StreamsDLQ"
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        name:
+          type: string
+          description: Human-readable name of the stream processor.
+        pipeline:
+          type: string
+          description: Stream aggregation pipeline you want to apply to your streaming data.
     StreamsTenant:
       type: object
       properties:
@@ -30487,7 +30687,6 @@ components:
           type: string
           description: Human-readable label that identifies the role for the request. This
             name must be unique for this custom role in this project.
-          pattern: ^\b(?!xgen-)([0-9A-Za-z_\-]+)\b(?<!\atlasAdmin|read|readWrite|dbAdmin|dbOwner|userAdmin|clusterAdmin|clusterManager|clusterMonitor|hostManager|backup|restore|readAnyDatabase|readWriteAnyDatabase|userAdminAnyDatabase|dbAdminAnyDatabase|root|__system)$
       required:
         - roleName
     UserScope:
@@ -31946,6 +32145,34 @@ components:
             completing this request.
           items:
             $ref: "#/components/schemas/Group"
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
+          minimum: 0
+          readOnly: true
+    PaginatedAvailableVersion:
+      type: object
+      properties:
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        results:
+          type: array
+          description: List of returned documents that MongoDB Cloud providers when
+            completing this request.
+          items:
+            $ref: "#/components/schemas/MdbAvailableVersion"
           readOnly: true
         totalCount:
           type: integer

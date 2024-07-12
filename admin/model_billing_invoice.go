@@ -24,9 +24,6 @@ type BillingInvoice struct {
 	// Date and time when MongoDB Cloud finished the billing period that this invoice covers. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	EndDate *time.Time `json:"endDate,omitempty"`
-	// Unique 24-hexadecimal digit string that identifies the project associated to this invoice. This identifying string doesn't appear on all invoices.
-	// Read only field.
-	GroupId *string `json:"groupId,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the invoice submitted to the specified organization. Charges typically post the next day.
 	// Read only field.
 	Id *string `json:"id,omitempty"`
@@ -247,39 +244,6 @@ func (o *BillingInvoice) HasEndDate() bool {
 // SetEndDate gets a reference to the given time.Time and assigns it to the EndDate field.
 func (o *BillingInvoice) SetEndDate(v time.Time) {
 	o.EndDate = &v
-}
-
-// GetGroupId returns the GroupId field value if set, zero value otherwise
-func (o *BillingInvoice) GetGroupId() string {
-	if o == nil || IsNil(o.GroupId) {
-		var ret string
-		return ret
-	}
-	return *o.GroupId
-}
-
-// GetGroupIdOk returns a tuple with the GroupId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BillingInvoice) GetGroupIdOk() (*string, bool) {
-	if o == nil || IsNil(o.GroupId) {
-		return nil, false
-	}
-
-	return o.GroupId, true
-}
-
-// HasGroupId returns a boolean if a field has been set.
-func (o *BillingInvoice) HasGroupId() bool {
-	if o != nil && !IsNil(o.GroupId) {
-		return true
-	}
-
-	return false
-}
-
-// SetGroupId gets a reference to the given string and assigns it to the GroupId field.
-func (o *BillingInvoice) SetGroupId(v string) {
-	o.GroupId = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise

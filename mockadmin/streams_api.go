@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20240530002/admin"
+	admin "go.mongodb.org/atlas-sdk/v20240530003/admin"
 
 	http "net/http"
 
@@ -348,6 +348,169 @@ func (_c *StreamsApi_CreateStreamInstanceWithParams_Call) Return(_a0 admin.Creat
 }
 
 func (_c *StreamsApi_CreateStreamInstanceWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateStreamInstanceApiParams) admin.CreateStreamInstanceApiRequest) *StreamsApi_CreateStreamInstanceWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreateStreamProcessor provides a mock function with given fields: ctx, groupId, tenantName, streamsProcessor
+func (_m *StreamsApi) CreateStreamProcessor(ctx context.Context, groupId string, tenantName string, streamsProcessor *admin.StreamsProcessor) admin.CreateStreamProcessorApiRequest {
+	ret := _m.Called(ctx, groupId, tenantName, streamsProcessor)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateStreamProcessor")
+	}
+
+	var r0 admin.CreateStreamProcessorApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.StreamsProcessor) admin.CreateStreamProcessorApiRequest); ok {
+		r0 = rf(ctx, groupId, tenantName, streamsProcessor)
+	} else {
+		r0 = ret.Get(0).(admin.CreateStreamProcessorApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsApi_CreateStreamProcessor_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateStreamProcessor'
+type StreamsApi_CreateStreamProcessor_Call struct {
+	*mock.Call
+}
+
+// CreateStreamProcessor is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - tenantName string
+//   - streamsProcessor *admin.StreamsProcessor
+func (_e *StreamsApi_Expecter) CreateStreamProcessor(ctx interface{}, groupId interface{}, tenantName interface{}, streamsProcessor interface{}) *StreamsApi_CreateStreamProcessor_Call {
+	return &StreamsApi_CreateStreamProcessor_Call{Call: _e.mock.On("CreateStreamProcessor", ctx, groupId, tenantName, streamsProcessor)}
+}
+
+func (_c *StreamsApi_CreateStreamProcessor_Call) Run(run func(ctx context.Context, groupId string, tenantName string, streamsProcessor *admin.StreamsProcessor)) *StreamsApi_CreateStreamProcessor_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.StreamsProcessor))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_CreateStreamProcessor_Call) Return(_a0 admin.CreateStreamProcessorApiRequest) *StreamsApi_CreateStreamProcessor_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsApi_CreateStreamProcessor_Call) RunAndReturn(run func(context.Context, string, string, *admin.StreamsProcessor) admin.CreateStreamProcessorApiRequest) *StreamsApi_CreateStreamProcessor_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreateStreamProcessorExecute provides a mock function with given fields: r
+func (_m *StreamsApi) CreateStreamProcessorExecute(r admin.CreateStreamProcessorApiRequest) (*admin.StreamsProcessor, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateStreamProcessorExecute")
+	}
+
+	var r0 *admin.StreamsProcessor
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.CreateStreamProcessorApiRequest) (*admin.StreamsProcessor, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.CreateStreamProcessorApiRequest) *admin.StreamsProcessor); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.StreamsProcessor)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.CreateStreamProcessorApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.CreateStreamProcessorApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// StreamsApi_CreateStreamProcessorExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateStreamProcessorExecute'
+type StreamsApi_CreateStreamProcessorExecute_Call struct {
+	*mock.Call
+}
+
+// CreateStreamProcessorExecute is a helper method to define mock.On call
+//   - r admin.CreateStreamProcessorApiRequest
+func (_e *StreamsApi_Expecter) CreateStreamProcessorExecute(r interface{}) *StreamsApi_CreateStreamProcessorExecute_Call {
+	return &StreamsApi_CreateStreamProcessorExecute_Call{Call: _e.mock.On("CreateStreamProcessorExecute", r)}
+}
+
+func (_c *StreamsApi_CreateStreamProcessorExecute_Call) Run(run func(r admin.CreateStreamProcessorApiRequest)) *StreamsApi_CreateStreamProcessorExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.CreateStreamProcessorApiRequest))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_CreateStreamProcessorExecute_Call) Return(_a0 *admin.StreamsProcessor, _a1 *http.Response, _a2 error) *StreamsApi_CreateStreamProcessorExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *StreamsApi_CreateStreamProcessorExecute_Call) RunAndReturn(run func(admin.CreateStreamProcessorApiRequest) (*admin.StreamsProcessor, *http.Response, error)) *StreamsApi_CreateStreamProcessorExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreateStreamProcessorWithParams provides a mock function with given fields: ctx, args
+func (_m *StreamsApi) CreateStreamProcessorWithParams(ctx context.Context, args *admin.CreateStreamProcessorApiParams) admin.CreateStreamProcessorApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateStreamProcessorWithParams")
+	}
+
+	var r0 admin.CreateStreamProcessorApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateStreamProcessorApiParams) admin.CreateStreamProcessorApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.CreateStreamProcessorApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsApi_CreateStreamProcessorWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateStreamProcessorWithParams'
+type StreamsApi_CreateStreamProcessorWithParams_Call struct {
+	*mock.Call
+}
+
+// CreateStreamProcessorWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.CreateStreamProcessorApiParams
+func (_e *StreamsApi_Expecter) CreateStreamProcessorWithParams(ctx interface{}, args interface{}) *StreamsApi_CreateStreamProcessorWithParams_Call {
+	return &StreamsApi_CreateStreamProcessorWithParams_Call{Call: _e.mock.On("CreateStreamProcessorWithParams", ctx, args)}
+}
+
+func (_c *StreamsApi_CreateStreamProcessorWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateStreamProcessorApiParams)) *StreamsApi_CreateStreamProcessorWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.CreateStreamProcessorApiParams))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_CreateStreamProcessorWithParams_Call) Return(_a0 admin.CreateStreamProcessorApiRequest) *StreamsApi_CreateStreamProcessorWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsApi_CreateStreamProcessorWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateStreamProcessorApiParams) admin.CreateStreamProcessorApiRequest) *StreamsApi_CreateStreamProcessorWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
