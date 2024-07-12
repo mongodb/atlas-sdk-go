@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20240530002/admin"
+	admin "go.mongodb.org/atlas-sdk/v20240530003/admin"
 
 	http "net/http"
 
@@ -1428,6 +1428,167 @@ func (_c *ProjectsApi_GetProjectInvitationWithParams_Call) Return(_a0 admin.GetP
 }
 
 func (_c *ProjectsApi_GetProjectInvitationWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetProjectInvitationApiParams) admin.GetProjectInvitationApiRequest) *ProjectsApi_GetProjectInvitationWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetProjectLTSVersions provides a mock function with given fields: ctx, groupId
+func (_m *ProjectsApi) GetProjectLTSVersions(ctx context.Context, groupId string) admin.GetProjectLTSVersionsApiRequest {
+	ret := _m.Called(ctx, groupId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetProjectLTSVersions")
+	}
+
+	var r0 admin.GetProjectLTSVersionsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.GetProjectLTSVersionsApiRequest); ok {
+		r0 = rf(ctx, groupId)
+	} else {
+		r0 = ret.Get(0).(admin.GetProjectLTSVersionsApiRequest)
+	}
+
+	return r0
+}
+
+// ProjectsApi_GetProjectLTSVersions_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetProjectLTSVersions'
+type ProjectsApi_GetProjectLTSVersions_Call struct {
+	*mock.Call
+}
+
+// GetProjectLTSVersions is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+func (_e *ProjectsApi_Expecter) GetProjectLTSVersions(ctx interface{}, groupId interface{}) *ProjectsApi_GetProjectLTSVersions_Call {
+	return &ProjectsApi_GetProjectLTSVersions_Call{Call: _e.mock.On("GetProjectLTSVersions", ctx, groupId)}
+}
+
+func (_c *ProjectsApi_GetProjectLTSVersions_Call) Run(run func(ctx context.Context, groupId string)) *ProjectsApi_GetProjectLTSVersions_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string))
+	})
+	return _c
+}
+
+func (_c *ProjectsApi_GetProjectLTSVersions_Call) Return(_a0 admin.GetProjectLTSVersionsApiRequest) *ProjectsApi_GetProjectLTSVersions_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ProjectsApi_GetProjectLTSVersions_Call) RunAndReturn(run func(context.Context, string) admin.GetProjectLTSVersionsApiRequest) *ProjectsApi_GetProjectLTSVersions_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetProjectLTSVersionsExecute provides a mock function with given fields: r
+func (_m *ProjectsApi) GetProjectLTSVersionsExecute(r admin.GetProjectLTSVersionsApiRequest) (*admin.PaginatedAvailableVersion, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetProjectLTSVersionsExecute")
+	}
+
+	var r0 *admin.PaginatedAvailableVersion
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.GetProjectLTSVersionsApiRequest) (*admin.PaginatedAvailableVersion, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.GetProjectLTSVersionsApiRequest) *admin.PaginatedAvailableVersion); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.PaginatedAvailableVersion)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.GetProjectLTSVersionsApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.GetProjectLTSVersionsApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// ProjectsApi_GetProjectLTSVersionsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetProjectLTSVersionsExecute'
+type ProjectsApi_GetProjectLTSVersionsExecute_Call struct {
+	*mock.Call
+}
+
+// GetProjectLTSVersionsExecute is a helper method to define mock.On call
+//   - r admin.GetProjectLTSVersionsApiRequest
+func (_e *ProjectsApi_Expecter) GetProjectLTSVersionsExecute(r interface{}) *ProjectsApi_GetProjectLTSVersionsExecute_Call {
+	return &ProjectsApi_GetProjectLTSVersionsExecute_Call{Call: _e.mock.On("GetProjectLTSVersionsExecute", r)}
+}
+
+func (_c *ProjectsApi_GetProjectLTSVersionsExecute_Call) Run(run func(r admin.GetProjectLTSVersionsApiRequest)) *ProjectsApi_GetProjectLTSVersionsExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.GetProjectLTSVersionsApiRequest))
+	})
+	return _c
+}
+
+func (_c *ProjectsApi_GetProjectLTSVersionsExecute_Call) Return(_a0 *admin.PaginatedAvailableVersion, _a1 *http.Response, _a2 error) *ProjectsApi_GetProjectLTSVersionsExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *ProjectsApi_GetProjectLTSVersionsExecute_Call) RunAndReturn(run func(admin.GetProjectLTSVersionsApiRequest) (*admin.PaginatedAvailableVersion, *http.Response, error)) *ProjectsApi_GetProjectLTSVersionsExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetProjectLTSVersionsWithParams provides a mock function with given fields: ctx, args
+func (_m *ProjectsApi) GetProjectLTSVersionsWithParams(ctx context.Context, args *admin.GetProjectLTSVersionsApiParams) admin.GetProjectLTSVersionsApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetProjectLTSVersionsWithParams")
+	}
+
+	var r0 admin.GetProjectLTSVersionsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetProjectLTSVersionsApiParams) admin.GetProjectLTSVersionsApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.GetProjectLTSVersionsApiRequest)
+	}
+
+	return r0
+}
+
+// ProjectsApi_GetProjectLTSVersionsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetProjectLTSVersionsWithParams'
+type ProjectsApi_GetProjectLTSVersionsWithParams_Call struct {
+	*mock.Call
+}
+
+// GetProjectLTSVersionsWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.GetProjectLTSVersionsApiParams
+func (_e *ProjectsApi_Expecter) GetProjectLTSVersionsWithParams(ctx interface{}, args interface{}) *ProjectsApi_GetProjectLTSVersionsWithParams_Call {
+	return &ProjectsApi_GetProjectLTSVersionsWithParams_Call{Call: _e.mock.On("GetProjectLTSVersionsWithParams", ctx, args)}
+}
+
+func (_c *ProjectsApi_GetProjectLTSVersionsWithParams_Call) Run(run func(ctx context.Context, args *admin.GetProjectLTSVersionsApiParams)) *ProjectsApi_GetProjectLTSVersionsWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.GetProjectLTSVersionsApiParams))
+	})
+	return _c
+}
+
+func (_c *ProjectsApi_GetProjectLTSVersionsWithParams_Call) Return(_a0 admin.GetProjectLTSVersionsApiRequest) *ProjectsApi_GetProjectLTSVersionsWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ProjectsApi_GetProjectLTSVersionsWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetProjectLTSVersionsApiParams) admin.GetProjectLTSVersionsApiRequest) *ProjectsApi_GetProjectLTSVersionsWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
