@@ -61,18 +61,17 @@ if datePtr1.Before(*datePtr2) {
 }
 ```
 
-## Working with objects
+## Working with Objects
 
-SDK represents free form objects (object of any shape) as golang `ìnterface{}` type in models and parameters.
-This type allows you to use following types as input arguments:
+The Atlas Go SDK represents free-form objects with the golang `ìnterface{}` type in models and parameters. Free-form objects include objects of any shape. 
+
+The golang `ìnterface{}` type allows you to use the following types as input arguments:
+
 - Basic types (integer, boolean)
 - Your own structures
-- map[string]interface{} for free form objects
+- map[string]interface{} for free-form objects
 
-We always recomend to refer to the documentation when working with free form objects.
-
-NOTE: SDK free form objects are used only in situations where models need to handle multiple conflicting values. 
-For example some of the existing search APIs allow supplying booleans or objects.
+NOTE: The Atlas Go SDK uses free-form objects only where models need to handle multiple conflicting values. For example, some of the existing Atlas Search APIs allow you to supply booleans or objects.
 
 ## Working with Pointers
 
