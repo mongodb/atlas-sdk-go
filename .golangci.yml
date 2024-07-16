@@ -100,6 +100,7 @@ linters:
     - unconvert # Remove unnecessary type conversions [fast: false, auto-fix: false]
     - unparam # Reports unused function parameters [fast: false, auto-fix: false]
     - unused # Checks Go code for unused constants, variables, functions and types [fast: false, auto-fix: false]
+    - nilness
     # Disable as it is hard to avoid whitespace when building templates
     # - whitespace # Tool for detection of leading and trailing whitespace [fast: true, auto-fix: true]
 
