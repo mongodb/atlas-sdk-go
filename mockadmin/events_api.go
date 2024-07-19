@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20240530003/admin"
+	admin "go.mongodb.org/atlas-sdk/v20240530004/admin"
 
 	http "net/http"
 
@@ -396,24 +396,24 @@ func (_c *EventsApi_ListEventTypes_Call) RunAndReturn(run func(context.Context) 
 }
 
 // ListEventTypesExecute provides a mock function with given fields: r
-func (_m *EventsApi) ListEventTypesExecute(r admin.ListEventTypesApiRequest) ([]admin.EventTypeDetails, *http.Response, error) {
+func (_m *EventsApi) ListEventTypesExecute(r admin.ListEventTypesApiRequest) (*admin.PaginatedEventTypeDetailsResponse, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for ListEventTypesExecute")
 	}
 
-	var r0 []admin.EventTypeDetails
+	var r0 *admin.PaginatedEventTypeDetailsResponse
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListEventTypesApiRequest) ([]admin.EventTypeDetails, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListEventTypesApiRequest) (*admin.PaginatedEventTypeDetailsResponse, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.ListEventTypesApiRequest) []admin.EventTypeDetails); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListEventTypesApiRequest) *admin.PaginatedEventTypeDetailsResponse); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).([]admin.EventTypeDetails)
+			r0 = ret.Get(0).(*admin.PaginatedEventTypeDetailsResponse)
 		}
 	}
 
@@ -452,12 +452,12 @@ func (_c *EventsApi_ListEventTypesExecute_Call) Run(run func(r admin.ListEventTy
 	return _c
 }
 
-func (_c *EventsApi_ListEventTypesExecute_Call) Return(_a0 []admin.EventTypeDetails, _a1 *http.Response, _a2 error) *EventsApi_ListEventTypesExecute_Call {
+func (_c *EventsApi_ListEventTypesExecute_Call) Return(_a0 *admin.PaginatedEventTypeDetailsResponse, _a1 *http.Response, _a2 error) *EventsApi_ListEventTypesExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *EventsApi_ListEventTypesExecute_Call) RunAndReturn(run func(admin.ListEventTypesApiRequest) ([]admin.EventTypeDetails, *http.Response, error)) *EventsApi_ListEventTypesExecute_Call {
+func (_c *EventsApi_ListEventTypesExecute_Call) RunAndReturn(run func(admin.ListEventTypesApiRequest) (*admin.PaginatedEventTypeDetailsResponse, *http.Response, error)) *EventsApi_ListEventTypesExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
