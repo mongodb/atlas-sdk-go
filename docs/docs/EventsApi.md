@@ -184,7 +184,7 @@ Name | Type | Description  | Notes
 
 ## ListEventTypes
 
-> []EventTypeDetails ListEventTypes(ctx).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+> PaginatedEventTypeDetailsResponse ListEventTypes(ctx).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
 List All Possible Event Types
 
@@ -225,7 +225,7 @@ func main() {
         }
         return
     }
-    // response from `ListEventTypes`: []EventTypeDetails
+    // response from `ListEventTypes`: PaginatedEventTypeDetailsResponse
     fmt.Fprintf(os.Stdout, "Response from `EventsApi.ListEventTypes`: %v (%v)\n", resp, r)
 }
 ```
@@ -247,7 +247,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]EventTypeDetails**](EventTypeDetails.md)
+[**PaginatedEventTypeDetailsResponse**](PaginatedEventTypeDetailsResponse.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

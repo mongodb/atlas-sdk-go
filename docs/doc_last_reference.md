@@ -347,11 +347,14 @@ Class        | Method        | HTTP request  | Description   |
 *StreamsApi* | [CreateStreamProcessor](./docs/StreamsApi.md#createstreamprocessor) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor | Create One Stream Processor |
 *StreamsApi* | [DeleteStreamConnection](./docs/StreamsApi.md#deletestreamconnection) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName} | Delete One Stream Connection |
 *StreamsApi* | [DeleteStreamInstance](./docs/StreamsApi.md#deletestreaminstance) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Delete One Stream Instance |
+*StreamsApi* | [DeleteStreamProcessor](./docs/StreamsApi.md#deletestreamprocessor) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName} | Delete One Stream Processor |
 *StreamsApi* | [DownloadStreamTenantAuditLogs](./docs/StreamsApi.md#downloadstreamtenantauditlogs) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/auditLogs | Download Audit Logs for One Atlas Stream Processing Instance |
 *StreamsApi* | [GetStreamConnection](./docs/StreamsApi.md#getstreamconnection) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName} | Return One Stream Connection |
 *StreamsApi* | [GetStreamInstance](./docs/StreamsApi.md#getstreaminstance) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Return One Stream Instance |
 *StreamsApi* | [ListStreamConnections](./docs/StreamsApi.md#liststreamconnections) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections | Return All Connections Of The Stream Instances |
 *StreamsApi* | [ListStreamInstances](./docs/StreamsApi.md#liststreaminstances) | **Get** /api/atlas/v2/groups/{groupId}/streams | Return All Project Stream Instances |
+*StreamsApi* | [StartStreamProcessor](./docs/StreamsApi.md#startstreamprocessor) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:start | Start One Stream Processor |
+*StreamsApi* | [StopStreamProcessor](./docs/StreamsApi.md#stopstreamprocessor) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:stop | Stop One Stream Processor |
 *StreamsApi* | [UpdateStreamConnection](./docs/StreamsApi.md#updatestreamconnection) | **Patch** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName} | Update One Stream Connection |
 *StreamsApi* | [UpdateStreamInstance](./docs/StreamsApi.md#updatestreaminstance) | **Patch** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Update One Stream Instance |
 *TeamsApi* | [AddAllTeamsToProject](./docs/TeamsApi.md#addallteamstoproject) | **Post** /api/atlas/v2/groups/{groupId}/teams | Add One or More Teams to One Project |
@@ -638,6 +641,7 @@ Class        | Method        | HTTP request  | Description   |
  - [PaginatedContainerPeer](./docs/PaginatedContainerPeer.md)
  - [PaginatedDatabase](./docs/PaginatedDatabase.md)
  - [PaginatedDiskPartition](./docs/PaginatedDiskPartition.md)
+ - [PaginatedEventTypeDetailsResponse](./docs/PaginatedEventTypeDetailsResponse.md)
  - [PaginatedFederationIdentityProvider](./docs/PaginatedFederationIdentityProvider.md)
  - [PaginatedHostViewAtlas](./docs/PaginatedHostViewAtlas.md)
  - [PaginatedIntegration](./docs/PaginatedIntegration.md)

@@ -36,7 +36,7 @@ type RootApi interface {
 	/*
 		ReturnAllControlPlaneIPAddresses Return All Control Plane IP Addresses
 
-		Returns all control plane IP addresses.
+		Returns all control plane IP addresses. Currently, inbound Atlas control plane IP addresses are not yet available. The inbound IP address list in your API response is empty. To manually retrieve a list of inbound Atlas control plane IP addresses, see [Required Inbound Access](https://www.mongodb.com/docs/atlas/setup-cluster-security/#std-label-atlas-required-inbound-access).
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@return ReturnAllControlPlaneIPAddressesApiRequest
@@ -186,7 +186,7 @@ func (r ReturnAllControlPlaneIPAddressesApiRequest) Execute() (*ControlPlaneIPAd
 /*
 ReturnAllControlPlaneIPAddresses Return All Control Plane IP Addresses
 
-Returns all control plane IP addresses.
+Returns all control plane IP addresses. Currently, inbound Atlas control plane IP addresses are not yet available. The inbound IP address list in your API response is empty. To manually retrieve a list of inbound Atlas control plane IP addresses, see [Required Inbound Access](https://www.mongodb.com/docs/atlas/setup-cluster-security/#std-label-atlas-required-inbound-access).
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ReturnAllControlPlaneIPAddressesApiRequest

@@ -35,7 +35,7 @@
    * [Using Getters Instead of Direct Field Access](./doc_5_best_practices.md#using-getters-instead-of-direct-field-access)
    * [Check for Empty Strings for String Pointers](./doc_5_best_practices.md#check-for-empty-strings-for-string-pointers)
    * [Working with Date Fields](./doc_5_best_practices.md#working-with-date-fields)
-   * [Working with objects](./doc_5_best_practices.md#working-with-objects)
+   * [Working with Objects](./doc_5_best_practices.md#working-with-objects)
    * [Working with Pointers](./doc_5_best_practices.md#working-with-pointers)
    * [Working with Arrays](./doc_5_best_practices.md#working-with-arrays)
    * [Working with Binary Responses](./doc_5_best_practices.md#working-with-binary-responses)

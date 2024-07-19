@@ -20,7 +20,6 @@ Name | Type | Description | Notes
 **Sparse** | Pointer to **bool** | Flag that indicates whether the index references documents that only have the specified parameter. These indexes use less space but behave differently in some situations like when sorting. The following index types default to sparse and ignore this option: &#x60;2dsphere&#x60;, &#x60;2d&#x60;, &#x60;geoHaystack&#x60;, &#x60;text&#x60;.  Compound indexes that includes one or more indexes with &#x60;2dsphere&#x60; keys alongside other key types, only the &#x60;2dsphere&#x60; index parameters determine which documents the index references. If you run MongoDB 3.2 or later, use partial indexes. This option applies to all index types. | [optional] [default to false]
 **StorageEngine** | Pointer to **interface{}** | Storage engine set for the specific index. This value can be set only at creation. This option uses the following format: &#x60;\&quot;storageEngine\&quot; : { \&quot;&lt;storage-engine-name&gt;\&quot; : \&quot;&lt;options&gt;\&quot; }&#x60; MongoDB validates storage engine configuration options when creating indexes. To support replica sets with members with different storage engines, MongoDB logs these options to the oplog during replication. This option applies to all index types. | [optional] 
 **TextIndexVersion** | Pointer to **int** | Version applied to this text index. MongoDB 3.2 and later use version &#x60;3&#x60;. Use this option to override the default version number. This option applies to the **text** index type only. | [optional] [default to 3]
-**Unique** | Pointer to **bool** | Flag that indicates whether this index can accept insertion or update of documents when the index key value matches an existing index key value. Set &#x60;\&quot;unique\&quot; : true&#x60; to set this index as unique. You can&#39;t set a hashed index to be unique. This option applies to all index types. This option is unsupported for rolling indexes. | [optional] [default to false]
 **Weights** | Pointer to **interface{}** | Relative importance to place upon provided index parameters. This object expresses this as key/value pairs of index parameter and weight to apply to that parameter. You can specify weights for some or all the indexed parameters. The weight must be an integer between 1 and 99,999. MongoDB 5.0 and later can apply **weights** to **text** indexes only. | [optional] 
 
 ## Methods
@@ -426,30 +425,6 @@ SetTextIndexVersion sets TextIndexVersion field to given value.
 `func (o *IndexOptions) HasTextIndexVersion() bool`
 
 HasTextIndexVersion returns a boolean if a field has been set.
-### GetUnique
-
-`func (o *IndexOptions) GetUnique() bool`
-
-GetUnique returns the Unique field if non-nil, zero value otherwise.
-
-### GetUniqueOk
-
-`func (o *IndexOptions) GetUniqueOk() (*bool, bool)`
-
-GetUniqueOk returns a tuple with the Unique field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUnique
-
-`func (o *IndexOptions) SetUnique(v bool)`
-
-SetUnique sets Unique field to given value.
-
-### HasUnique
-
-`func (o *IndexOptions) HasUnique() bool`
-
-HasUnique returns a boolean if a field has been set.
 ### GetWeights
 
 `func (o *IndexOptions) GetWeights() interface{}`

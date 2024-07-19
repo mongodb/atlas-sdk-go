@@ -86,7 +86,7 @@ type EventsApi interface {
 	ListEventTypesWithParams(ctx context.Context, args *ListEventTypesApiParams) ListEventTypesApiRequest
 
 	// Method available only for mocking purposes
-	ListEventTypesExecute(r ListEventTypesApiRequest) ([]EventTypeDetails, *http.Response, error)
+	ListEventTypesExecute(r ListEventTypesApiRequest) (*PaginatedEventTypeDetailsResponse, *http.Response, error)
 
 	/*
 			ListOrganizationEvents Return All Events from One Organization
@@ -454,7 +454,7 @@ func (r ListEventTypesApiRequest) PageNum(pageNum int) ListEventTypesApiRequest 
 	return r
 }
 
-func (r ListEventTypesApiRequest) Execute() ([]EventTypeDetails, *http.Response, error) {
+func (r ListEventTypesApiRequest) Execute() (*PaginatedEventTypeDetailsResponse, *http.Response, error) {
 	return r.ApiService.ListEventTypesExecute(r)
 }
 
@@ -475,13 +475,13 @@ func (a *EventsApiService) ListEventTypes(ctx context.Context) ListEventTypesApi
 
 // Execute executes the request
 //
-//	@return []EventTypeDetails
-func (a *EventsApiService) ListEventTypesExecute(r ListEventTypesApiRequest) ([]EventTypeDetails, *http.Response, error) {
+//	@return PaginatedEventTypeDetailsResponse
+func (a *EventsApiService) ListEventTypesExecute(r ListEventTypesApiRequest) (*PaginatedEventTypeDetailsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue []EventTypeDetails
+		localVarReturnValue *PaginatedEventTypeDetailsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsApiService.ListEventTypes")
