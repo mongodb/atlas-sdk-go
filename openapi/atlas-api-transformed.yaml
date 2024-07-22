@@ -24,7 +24,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 6e2e8b0b416f8116ca8fea058d82df13c552c7ee
+  x-xgen-sha: 450f2b276442adec8ca18461fa6b4adc7f64bbcc
 servers:
   - url: https://cloud.mongodb.com
 tags:
@@ -320,9 +320,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/EventTypeDetails"
+                $ref: "#/components/schemas/PaginatedEventTypeDetailsResponse"
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -13815,6 +13813,127 @@ paths:
       summary: Create One Stream Processor
       tags:
         - Streams
+  "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}":
+    delete:
+      description: Delete a Stream Processor within the specified stream instance. To
+        use this resource, the requesting API Key must have the Project Owner
+        role or Project Stream Processing Owner role.
+      operationId: deleteStreamProcessor
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Human-readable label that identifies the stream instance.
+          in: path
+          name: tenantName
+          required: true
+          schema:
+            type: string
+        - description: Human-readable label that identifies the stream processor.
+          in: path
+          name: processorName
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          content:
+            application/vnd.atlas.2024-05-30+json:
+              x-xgen-version: 2024-05-30
+          description: This endpoint does not return a response body.
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Delete One Stream Processor
+      tags:
+        - Streams
+  "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:start":
+    post:
+      description: Start a Stream Processor within the specified stream instance. To
+        use this resource, the requesting API Key must have the Project Owner
+        role or Project Stream Processing Owner role.
+      operationId: startStreamProcessor
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Human-readable label that identifies the stream instance.
+          in: path
+          name: tenantName
+          required: true
+          schema:
+            type: string
+        - description: Human-readable label that identifies the stream processor.
+          in: path
+          name: processorName
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-05-30+json:
+              schema:
+                $ref: "#/components/schemas/NoBody"
+              x-xgen-version: 2024-05-30
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Start One Stream Processor
+      tags:
+        - Streams
+  "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:stop":
+    post:
+      description: Stop a Stream Processor within the specified stream instance. To
+        use this resource, the requesting API Key must have the Project Owner
+        role or Project Stream Processing Owner role.
+      operationId: stopStreamProcessor
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Human-readable label that identifies the stream instance.
+          in: path
+          name: tenantName
+          required: true
+          schema:
+            type: string
+        - description: Human-readable label that identifies the stream processor.
+          in: path
+          name: processorName
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-05-30+json:
+              schema:
+                $ref: "#/components/schemas/NoBody"
+              x-xgen-version: 2024-05-30
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Stop One Stream Processor
+      tags:
+        - Streams
   "/api/atlas/v2/groups/{groupId}/teams":
     get:
       description: Returns all teams to which the authenticated user has access in the
@@ -16300,7 +16419,11 @@ paths:
         - Organizations
   /api/atlas/v2/unauth/controlPlaneIPAddresses:
     get:
-      description: Returns all control plane IP addresses.
+      description: Returns all control plane IP addresses. Currently, inbound Atlas
+        control plane IP addresses are not yet available. The inbound IP address
+        list in your API response is empty. To manually retrieve a list of
+        inbound Atlas control plane IP addresses, see [Required Inbound
+        Access](https://www.mongodb.com/docs/atlas/setup-cluster-security/#std-label-atlas-required-inbound-access).
       operationId: returnAllControlPlaneIPAddresses
       parameters: []
       responses:
@@ -23910,17 +24033,6 @@ components:
           type: string
           description: Enum representation of the event type.
           readOnly: true
-        links:
-          type: array
-          description: List of one or more Uniform Resource Locators (URLs) that point to
-            API sub-resources, related API resources, or both. RFC 5988 outlines
-            these relationships.
-          externalDocs:
-            description: Web Linking Specification (RFC 5988)
-            url: https://datatracker.ietf.org/doc/html/rfc5988
-          items:
-            $ref: "#/components/schemas/Link"
-          readOnly: true
       title: Event type details
     EventTypeForNdsGroup:
       type: string
@@ -25631,15 +25743,6 @@ components:
           description: Version applied to this text index. MongoDB 3.2 and later use
             version `3`. Use this option to override the default version number.
             This option applies to the **text** index type only.
-        unique:
-          type: boolean
-          default: false
-          description: "Flag that indicates whether this index can accept insertion or
-            update of documents when the index key value matches an existing
-            index key value. Set `\"unique\" : true` to set this index as
-            unique. You can't set a hashed index to be unique. This option
-            applies to all index types. This option is unsupported for rolling
-            indexes."
         weights:
           type: object
           description: Relative importance to place upon provided index parameters. This
@@ -28025,6 +28128,34 @@ components:
           readOnly: true
       readOnly: true
       title: Outbound Control Plane IP Addresses By Cloud Provider
+    PaginatedEventTypeDetailsResponse:
+      type: object
+      properties:
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        results:
+          type: array
+          description: List of returned documents that MongoDB Cloud providers when
+            completing this request.
+          items:
+            $ref: "#/components/schemas/EventTypeDetails"
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
+          minimum: 0
+          readOnly: true
     PaginatedFederationIdentityProvider:
       type: object
       properties:

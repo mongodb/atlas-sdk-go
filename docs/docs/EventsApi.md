@@ -29,7 +29,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530003/admin"
+    "go.mongodb.org/atlas-sdk/v20240530004/admin"
 )
 
 func main() {
@@ -114,7 +114,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530003/admin"
+    "go.mongodb.org/atlas-sdk/v20240530004/admin"
 )
 
 func main() {
@@ -184,7 +184,7 @@ Name | Type | Description  | Notes
 
 ## ListEventTypes
 
-> []EventTypeDetails ListEventTypes(ctx).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+> PaginatedEventTypeDetailsResponse ListEventTypes(ctx).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
 List All Possible Event Types
 
@@ -199,7 +199,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530003/admin"
+    "go.mongodb.org/atlas-sdk/v20240530004/admin"
 )
 
 func main() {
@@ -225,7 +225,7 @@ func main() {
         }
         return
     }
-    // response from `ListEventTypes`: []EventTypeDetails
+    // response from `ListEventTypes`: PaginatedEventTypeDetailsResponse
     fmt.Fprintf(os.Stdout, "Response from `EventsApi.ListEventTypes`: %v (%v)\n", resp, r)
 }
 ```
@@ -247,7 +247,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]EventTypeDetails**](EventTypeDetails.md)
+[**PaginatedEventTypeDetailsResponse**](PaginatedEventTypeDetailsResponse.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -279,7 +279,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530003/admin"
+    "go.mongodb.org/atlas-sdk/v20240530004/admin"
 )
 
 func main() {
@@ -373,7 +373,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530003/admin"
+    "go.mongodb.org/atlas-sdk/v20240530004/admin"
 )
 
 func main() {
