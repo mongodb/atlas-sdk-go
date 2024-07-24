@@ -4,20 +4,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the Amazon Web Services (AWS) Simple Storage Service (S3) export bucket. | [optional] [readonly] 
-**BucketName** | Pointer to **string** | Human-readable label that identifies the AWS bucket that the role is authorized to access. | [optional] 
-**CloudProvider** | Pointer to **string** | Human-readable label that identifies the cloud provider that stores this snapshot. | [optional] 
+**Id** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the Export Bucket. | [optional] [readonly] 
+**BucketName** | **string** | Human-readable label that identifies the AWS S3 Bucket or Azure Storage Container that the role is authorized to export to. | 
+**CloudProvider** | **string** | Human-readable label that identifies the cloud provider that Snapshots will be exported to. | 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **IamRoleId** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the &lt;a href&#x3D;&#39;https://www.mongodb.com/docs/atlas/security/set-up-unified-aws-access/&#39; target&#x3D;&#39;_blank&#39;&gt;Unified AWS Access role ID&lt;/a&gt;  that MongoDB Cloud uses to access the AWS S3 bucket. | [optional] 
-**RoleId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the Azure Service Principal that MongoDB Cloud uses to access the Azure Blob Storage. | [optional] 
-**ServiceUrl** | Pointer to **string** | Url that identifies the Azure Blob Storage Account. | [optional] 
-**TenantId** | Pointer to **string** | UUID String that identifies the Azure Active Directory Tenant ID. | [optional] 
+**RoleId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the Azure Service Principal that MongoDB Cloud uses to access the Azure Blob Storage Container. | [optional] 
+**ServiceUrl** | Pointer to **string** | URL that identifies the blob Endpoint of the Azure Blob Storage Account. | [optional] 
+**TenantId** | Pointer to **string** | UUID that identifies the Azure Active Directory Tenant ID. | [optional] 
 
 ## Methods
 
 ### NewDiskBackupSnapshotExportBucket
 
-`func NewDiskBackupSnapshotExportBucket() *DiskBackupSnapshotExportBucket`
+`func NewDiskBackupSnapshotExportBucket(bucketName string, cloudProvider string, ) *DiskBackupSnapshotExportBucket`
 
 NewDiskBackupSnapshotExportBucket instantiates a new DiskBackupSnapshotExportBucket object
 This constructor will assign default values to properties that have it defined,
@@ -75,11 +75,6 @@ and a boolean to check if the value has been set.
 
 SetBucketName sets BucketName field to given value.
 
-### HasBucketName
-
-`func (o *DiskBackupSnapshotExportBucket) HasBucketName() bool`
-
-HasBucketName returns a boolean if a field has been set.
 ### GetCloudProvider
 
 `func (o *DiskBackupSnapshotExportBucket) GetCloudProvider() string`
@@ -99,11 +94,6 @@ and a boolean to check if the value has been set.
 
 SetCloudProvider sets CloudProvider field to given value.
 
-### HasCloudProvider
-
-`func (o *DiskBackupSnapshotExportBucket) HasCloudProvider() bool`
-
-HasCloudProvider returns a boolean if a field has been set.
 ### GetLinks
 
 `func (o *DiskBackupSnapshotExportBucket) GetLinks() []Link`

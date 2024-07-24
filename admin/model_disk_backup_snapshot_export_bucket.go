@@ -6,25 +6,25 @@ import (
 	"encoding/json"
 )
 
-// DiskBackupSnapshotExportBucket Disk backup snapshot export bucket.
+// DiskBackupSnapshotExportBucket Disk backup snapshot Export Bucket.
 type DiskBackupSnapshotExportBucket struct {
-	// Unique 24-hexadecimal character string that identifies the Amazon Web Services (AWS) Simple Storage Service (S3) export bucket.
+	// Unique 24-hexadecimal character string that identifies the Export Bucket.
 	// Read only field.
 	Id *string `json:"_id,omitempty"`
-	// Human-readable label that identifies the AWS bucket that the role is authorized to access.
-	BucketName *string `json:"bucketName,omitempty"`
-	// Human-readable label that identifies the cloud provider that stores this snapshot.
-	CloudProvider *string `json:"cloudProvider,omitempty"`
+	// Human-readable label that identifies the AWS S3 Bucket or Azure Storage Container that the role is authorized to export to.
+	BucketName string `json:"bucketName"`
+	// Human-readable label that identifies the cloud provider that Snapshots will be exported to.
+	CloudProvider string `json:"cloudProvider"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the <a href='https://www.mongodb.com/docs/atlas/security/set-up-unified-aws-access/' target='_blank'>Unified AWS Access role ID</a>  that MongoDB Cloud uses to access the AWS S3 bucket.
 	IamRoleId *string `json:"iamRoleId,omitempty"`
-	// Unique 24-hexadecimal digit string that identifies the Azure Service Principal that MongoDB Cloud uses to access the Azure Blob Storage.
+	// Unique 24-hexadecimal digit string that identifies the Azure Service Principal that MongoDB Cloud uses to access the Azure Blob Storage Container.
 	RoleId *string `json:"roleId,omitempty"`
-	// Url that identifies the Azure Blob Storage Account.
+	// URL that identifies the blob Endpoint of the Azure Blob Storage Account.
 	ServiceUrl *string `json:"serviceUrl,omitempty"`
-	// UUID String that identifies the Azure Active Directory Tenant ID.
+	// UUID that identifies the Azure Active Directory Tenant ID.
 	TenantId *string `json:"tenantId,omitempty"`
 }
 
@@ -32,8 +32,10 @@ type DiskBackupSnapshotExportBucket struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDiskBackupSnapshotExportBucket() *DiskBackupSnapshotExportBucket {
+func NewDiskBackupSnapshotExportBucket(bucketName string, cloudProvider string) *DiskBackupSnapshotExportBucket {
 	this := DiskBackupSnapshotExportBucket{}
+	this.BucketName = bucketName
+	this.CloudProvider = cloudProvider
 	return &this
 }
 
@@ -78,70 +80,52 @@ func (o *DiskBackupSnapshotExportBucket) SetId(v string) {
 	o.Id = &v
 }
 
-// GetBucketName returns the BucketName field value if set, zero value otherwise
+// GetBucketName returns the BucketName field value
 func (o *DiskBackupSnapshotExportBucket) GetBucketName() string {
-	if o == nil || IsNil(o.BucketName) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.BucketName
+
+	return o.BucketName
 }
 
-// GetBucketNameOk returns a tuple with the BucketName field value if set, nil otherwise
+// GetBucketNameOk returns a tuple with the BucketName field value
 // and a boolean to check if the value has been set.
 func (o *DiskBackupSnapshotExportBucket) GetBucketNameOk() (*string, bool) {
-	if o == nil || IsNil(o.BucketName) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.BucketName, true
+	return &o.BucketName, true
 }
 
-// HasBucketName returns a boolean if a field has been set.
-func (o *DiskBackupSnapshotExportBucket) HasBucketName() bool {
-	if o != nil && !IsNil(o.BucketName) {
-		return true
-	}
-
-	return false
-}
-
-// SetBucketName gets a reference to the given string and assigns it to the BucketName field.
+// SetBucketName sets field value
 func (o *DiskBackupSnapshotExportBucket) SetBucketName(v string) {
-	o.BucketName = &v
+	o.BucketName = v
 }
 
-// GetCloudProvider returns the CloudProvider field value if set, zero value otherwise
+// GetCloudProvider returns the CloudProvider field value
 func (o *DiskBackupSnapshotExportBucket) GetCloudProvider() string {
-	if o == nil || IsNil(o.CloudProvider) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.CloudProvider
+
+	return o.CloudProvider
 }
 
-// GetCloudProviderOk returns a tuple with the CloudProvider field value if set, nil otherwise
+// GetCloudProviderOk returns a tuple with the CloudProvider field value
 // and a boolean to check if the value has been set.
 func (o *DiskBackupSnapshotExportBucket) GetCloudProviderOk() (*string, bool) {
-	if o == nil || IsNil(o.CloudProvider) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.CloudProvider, true
+	return &o.CloudProvider, true
 }
 
-// HasCloudProvider returns a boolean if a field has been set.
-func (o *DiskBackupSnapshotExportBucket) HasCloudProvider() bool {
-	if o != nil && !IsNil(o.CloudProvider) {
-		return true
-	}
-
-	return false
-}
-
-// SetCloudProvider gets a reference to the given string and assigns it to the CloudProvider field.
+// SetCloudProvider sets field value
 func (o *DiskBackupSnapshotExportBucket) SetCloudProvider(v string) {
-	o.CloudProvider = &v
+	o.CloudProvider = v
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -318,12 +302,8 @@ func (o DiskBackupSnapshotExportBucket) MarshalJSONWithoutReadOnly() ([]byte, er
 }
 func (o DiskBackupSnapshotExportBucket) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.BucketName) {
-		toSerialize["bucketName"] = o.BucketName
-	}
-	if !IsNil(o.CloudProvider) {
-		toSerialize["cloudProvider"] = o.CloudProvider
-	}
+	toSerialize["bucketName"] = o.BucketName
+	toSerialize["cloudProvider"] = o.CloudProvider
 	if !IsNil(o.IamRoleId) {
 		toSerialize["iamRoleId"] = o.IamRoleId
 	}

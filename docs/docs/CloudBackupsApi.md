@@ -7,24 +7,24 @@ Method | HTTP request | Description
 [**CancelBackupRestoreJob**](CloudBackupsApi.md#CancelBackupRestoreJob) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/restoreJobs/{restoreJobId} | Cancel One Restore Job of One Cluster
 [**CreateBackupExportJob**](CloudBackupsApi.md#CreateBackupExportJob) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/exports | Create One Cloud Backup Snapshot Export Job
 [**CreateBackupRestoreJob**](CloudBackupsApi.md#CreateBackupRestoreJob) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/restoreJobs | Restore One Snapshot of One Cluster
-[**CreateExportBucket**](CloudBackupsApi.md#CreateExportBucket) | **Post** /api/atlas/v2/groups/{groupId}/backup/exportBuckets | Grant Access to AWS S3 Bucket or Azure Blob Storage for Cloud Backup Snapshot Exports
+[**CreateExportBucket**](CloudBackupsApi.md#CreateExportBucket) | **Post** /api/atlas/v2/groups/{groupId}/backup/exportBuckets | Grant Access to AWS S3 Bucket or Azure Blob Storage Container for Cloud Backup Snapshot Exports
 [**CreateServerlessBackupRestoreJob**](CloudBackupsApi.md#CreateServerlessBackupRestoreJob) | **Post** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/restoreJobs | Restore One Snapshot of One Serverless Instance
 [**DeleteAllBackupSchedules**](CloudBackupsApi.md#DeleteAllBackupSchedules) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/schedule | Remove All Cloud Backup Schedules
-[**DeleteExportBucket**](CloudBackupsApi.md#DeleteExportBucket) | **Delete** /api/atlas/v2/groups/{groupId}/backup/exportBuckets/{exportBucketId} | Revoke Access to AWS S3 Bucket for Cloud Backup Snapshot Exports
+[**DeleteExportBucket**](CloudBackupsApi.md#DeleteExportBucket) | **Delete** /api/atlas/v2/groups/{groupId}/backup/exportBuckets/{exportBucketId} | Revoke Access to AWS S3 Bucket or Azure Blob Storage Container for Cloud Backup Snapshot Exports
 [**DeleteReplicaSetBackup**](CloudBackupsApi.md#DeleteReplicaSetBackup) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId} | Remove One Replica Set Cloud Backup
 [**DeleteShardedClusterBackup**](CloudBackupsApi.md#DeleteShardedClusterBackup) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/shardedCluster/{snapshotId} | Remove One Sharded Cluster Cloud Backup
 [**GetBackupExportJob**](CloudBackupsApi.md#GetBackupExportJob) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/exports/{exportId} | Return One Cloud Backup Snapshot Export Job
 [**GetBackupRestoreJob**](CloudBackupsApi.md#GetBackupRestoreJob) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/restoreJobs/{restoreJobId} | Return One Restore Job of One Cluster
 [**GetBackupSchedule**](CloudBackupsApi.md#GetBackupSchedule) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/schedule | Return One Cloud Backup Schedule
 [**GetDataProtectionSettings**](CloudBackupsApi.md#GetDataProtectionSettings) | **Get** /api/atlas/v2/groups/{groupId}/backupCompliancePolicy | Return the Backup Compliance Policy settings
-[**GetExportBucket**](CloudBackupsApi.md#GetExportBucket) | **Get** /api/atlas/v2/groups/{groupId}/backup/exportBuckets/{exportBucketId} | Return One AWS S3 Bucket or Azure Blob Storage Used for Cloud Backup Snapshot Exports
+[**GetExportBucket**](CloudBackupsApi.md#GetExportBucket) | **Get** /api/atlas/v2/groups/{groupId}/backup/exportBuckets/{exportBucketId} | Return One AWS S3 Bucket or Azure Blob Storage Container Used for Cloud Backup Snapshot Exports
 [**GetReplicaSetBackup**](CloudBackupsApi.md#GetReplicaSetBackup) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId} | Return One Replica Set Cloud Backup
 [**GetServerlessBackup**](CloudBackupsApi.md#GetServerlessBackup) | **Get** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/snapshots/{snapshotId} | Return One Snapshot of One Serverless Instance
 [**GetServerlessBackupRestoreJob**](CloudBackupsApi.md#GetServerlessBackupRestoreJob) | **Get** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/restoreJobs/{restoreJobId} | Return One Restore Job for One Serverless Instance
 [**GetShardedClusterBackup**](CloudBackupsApi.md#GetShardedClusterBackup) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/shardedCluster/{snapshotId} | Return One Sharded Cluster Cloud Backup
 [**ListBackupExportJobs**](CloudBackupsApi.md#ListBackupExportJobs) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/exports | Return All Cloud Backup Snapshot Export Jobs
 [**ListBackupRestoreJobs**](CloudBackupsApi.md#ListBackupRestoreJobs) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/restoreJobs | Return All Restore Jobs for One Cluster
-[**ListExportBuckets**](CloudBackupsApi.md#ListExportBuckets) | **Get** /api/atlas/v2/groups/{groupId}/backup/exportBuckets | Return All AWS S3 Buckets and Azure Blob Storages Used for Cloud Backup Snapshot Exports
+[**ListExportBuckets**](CloudBackupsApi.md#ListExportBuckets) | **Get** /api/atlas/v2/groups/{groupId}/backup/exportBuckets | Return All AWS S3 Buckets and Azure Blob Storage Containers Used for Cloud Backup Snapshot Exports
 [**ListReplicaSetBackups**](CloudBackupsApi.md#ListReplicaSetBackups) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots | Return All Replica Set Cloud Backups
 [**ListServerlessBackupRestoreJobs**](CloudBackupsApi.md#ListServerlessBackupRestoreJobs) | **Get** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/restoreJobs | Return All Restore Jobs for One Serverless Instance
 [**ListServerlessBackups**](CloudBackupsApi.md#ListServerlessBackups) | **Get** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/snapshots | Return All Snapshots of One Serverless Instance
@@ -53,7 +53,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530004/admin"
+    "go.mongodb.org/atlas-sdk/v20240530005/admin"
 )
 
 func main() {
@@ -139,7 +139,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530004/admin"
+    "go.mongodb.org/atlas-sdk/v20240530005/admin"
 )
 
 func main() {
@@ -224,7 +224,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530004/admin"
+    "go.mongodb.org/atlas-sdk/v20240530005/admin"
 )
 
 func main() {
@@ -296,7 +296,7 @@ Name | Type | Description  | Notes
 
 > DiskBackupSnapshotExportBucket CreateExportBucket(ctx, groupId, diskBackupSnapshotExportBucket DiskBackupSnapshotExportBucket).Execute()
 
-Grant Access to AWS S3 Bucket or Azure Blob Storage for Cloud Backup Snapshot Exports
+Grant Access to AWS S3 Bucket or Azure Blob Storage Container for Cloud Backup Snapshot Exports
 
 
 ### Example
@@ -309,7 +309,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530004/admin"
+    "go.mongodb.org/atlas-sdk/v20240530005/admin"
 )
 
 func main() {
@@ -323,7 +323,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    diskBackupSnapshotExportBucket := *openapiclient.NewDiskBackupSnapshotExportBucket() // DiskBackupSnapshotExportBucket | 
+    diskBackupSnapshotExportBucket := *openapiclient.NewDiskBackupSnapshotExportBucket("export-bucket", "CloudProvider_example") // DiskBackupSnapshotExportBucket | 
 
     resp, r, err := sdk.CloudBackupsApi.CreateExportBucket(context.Background(), groupId, &diskBackupSnapshotExportBucket).Execute()
     if err != nil {
@@ -355,7 +355,7 @@ Other parameters are passed through a pointer to a apiCreateExportBucketRequest 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **diskBackupSnapshotExportBucket** | [**DiskBackupSnapshotExportBucket**](DiskBackupSnapshotExportBucket.md) | Grants MongoDB Cloud access to the specified AWS S3 bucket or Azure Blob Storage. | 
+ **diskBackupSnapshotExportBucket** | [**DiskBackupSnapshotExportBucket**](DiskBackupSnapshotExportBucket.md) | Grants MongoDB Cloud access to the specified AWS S3 Bucket or Azure Blob Storage Container. | 
 
 ### Return type
 
@@ -391,7 +391,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530004/admin"
+    "go.mongodb.org/atlas-sdk/v20240530005/admin"
 )
 
 func main() {
@@ -476,7 +476,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530004/admin"
+    "go.mongodb.org/atlas-sdk/v20240530005/admin"
 )
 
 func main() {
@@ -546,7 +546,7 @@ Name | Type | Description  | Notes
 
 > interface{} DeleteExportBucket(ctx, groupId, exportBucketId).Execute()
 
-Revoke Access to AWS S3 Bucket for Cloud Backup Snapshot Exports
+Revoke Access to AWS S3 Bucket or Azure Blob Storage Container for Cloud Backup Snapshot Exports
 
 
 ### Example
@@ -559,7 +559,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530004/admin"
+    "go.mongodb.org/atlas-sdk/v20240530005/admin"
 )
 
 func main() {
@@ -573,7 +573,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    exportBucketId := "exportBucketId_example" // string | 
+    exportBucketId := "32b6e34b3d91647abb20e7b8" // string | 
 
     resp, r, err := sdk.CloudBackupsApi.DeleteExportBucket(context.Background(), groupId, exportBucketId).Execute()
     if err != nil {
@@ -596,7 +596,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**exportBucketId** | **string** | Unique string that identifies the AWS S3 bucket to which you export your snapshots. | 
+**exportBucketId** | **string** | Unique string that identifies the AWS S3 Bucket or Azure Blob Storage Container to which you export your Snapshots. | 
 
 ### Other Parameters
 
@@ -642,7 +642,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530004/admin"
+    "go.mongodb.org/atlas-sdk/v20240530005/admin"
 )
 
 func main() {
@@ -728,7 +728,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530004/admin"
+    "go.mongodb.org/atlas-sdk/v20240530005/admin"
 )
 
 func main() {
@@ -814,7 +814,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530004/admin"
+    "go.mongodb.org/atlas-sdk/v20240530005/admin"
 )
 
 func main() {
@@ -900,7 +900,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530004/admin"
+    "go.mongodb.org/atlas-sdk/v20240530005/admin"
 )
 
 func main() {
@@ -986,7 +986,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530004/admin"
+    "go.mongodb.org/atlas-sdk/v20240530005/admin"
 )
 
 func main() {
@@ -1069,7 +1069,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530004/admin"
+    "go.mongodb.org/atlas-sdk/v20240530005/admin"
 )
 
 func main() {
@@ -1136,7 +1136,7 @@ Name | Type | Description  | Notes
 
 > DiskBackupSnapshotExportBucket GetExportBucket(ctx, groupId, exportBucketId).Execute()
 
-Return One AWS S3 Bucket or Azure Blob Storage Used for Cloud Backup Snapshot Exports
+Return One AWS S3 Bucket or Azure Blob Storage Container Used for Cloud Backup Snapshot Exports
 
 
 ### Example
@@ -1149,7 +1149,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530004/admin"
+    "go.mongodb.org/atlas-sdk/v20240530005/admin"
 )
 
 func main() {
@@ -1163,7 +1163,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    exportBucketId := "exportBucketId_example" // string | 
+    exportBucketId := "32b6e34b3d91647abb20e7b8" // string | 
 
     resp, r, err := sdk.CloudBackupsApi.GetExportBucket(context.Background(), groupId, exportBucketId).Execute()
     if err != nil {
@@ -1186,7 +1186,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**exportBucketId** | **string** | Unique string that identifies the AWS S3 bucket or Azure Blob Storage to which you export your snapshots. | 
+**exportBucketId** | **string** | Unique 24-hexadecimal character string that identifies the Export Bucket. | 
 
 ### Other Parameters
 
@@ -1232,7 +1232,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530004/admin"
+    "go.mongodb.org/atlas-sdk/v20240530005/admin"
 )
 
 func main() {
@@ -1318,7 +1318,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530004/admin"
+    "go.mongodb.org/atlas-sdk/v20240530005/admin"
 )
 
 func main() {
@@ -1404,7 +1404,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530004/admin"
+    "go.mongodb.org/atlas-sdk/v20240530005/admin"
 )
 
 func main() {
@@ -1490,7 +1490,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530004/admin"
+    "go.mongodb.org/atlas-sdk/v20240530005/admin"
 )
 
 func main() {
@@ -1576,7 +1576,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530004/admin"
+    "go.mongodb.org/atlas-sdk/v20240530005/admin"
 )
 
 func main() {
@@ -1665,7 +1665,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530004/admin"
+    "go.mongodb.org/atlas-sdk/v20240530005/admin"
 )
 
 func main() {
@@ -1741,7 +1741,7 @@ Name | Type | Description  | Notes
 
 > PaginatedBackupSnapshotExportBuckets ListExportBuckets(ctx, groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
-Return All AWS S3 Buckets and Azure Blob Storages Used for Cloud Backup Snapshot Exports
+Return All AWS S3 Buckets and Azure Blob Storage Containers Used for Cloud Backup Snapshot Exports
 
 
 ### Example
@@ -1754,7 +1754,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530004/admin"
+    "go.mongodb.org/atlas-sdk/v20240530005/admin"
 )
 
 func main() {
@@ -1840,7 +1840,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530004/admin"
+    "go.mongodb.org/atlas-sdk/v20240530005/admin"
 )
 
 func main() {
@@ -1929,7 +1929,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530004/admin"
+    "go.mongodb.org/atlas-sdk/v20240530005/admin"
 )
 
 func main() {
@@ -2018,7 +2018,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530004/admin"
+    "go.mongodb.org/atlas-sdk/v20240530005/admin"
 )
 
 func main() {
@@ -2107,7 +2107,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530004/admin"
+    "go.mongodb.org/atlas-sdk/v20240530005/admin"
 )
 
 func main() {
@@ -2190,7 +2190,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530004/admin"
+    "go.mongodb.org/atlas-sdk/v20240530005/admin"
 )
 
 func main() {
@@ -2275,7 +2275,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530004/admin"
+    "go.mongodb.org/atlas-sdk/v20240530005/admin"
 )
 
 func main() {
@@ -2360,7 +2360,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530004/admin"
+    "go.mongodb.org/atlas-sdk/v20240530005/admin"
 )
 
 func main() {
@@ -2444,7 +2444,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530004/admin"
+    "go.mongodb.org/atlas-sdk/v20240530005/admin"
 )
 
 func main() {
