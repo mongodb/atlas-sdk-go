@@ -20,7 +20,7 @@ type DiskBackupExportJob struct {
 	// One or more Uniform Resource Locators (URLs) that point to the compressed snapshot files for manual download. MongoDB Cloud returns this parameter when `\"deliveryType\" : \"download\"`.
 	// Read only field.
 	DeliveryUrl *[]string `json:"deliveryUrl,omitempty"`
-	// Unique 24-hexadecimal character string that identifies the AWS bucket to which MongoDB Cloud exports the Cloud Backup snapshot.
+	// Unique 24-hexadecimal character string that identifies the Export Bucket to export to.
 	// Read only field.
 	ExportBucketId string        `json:"exportBucketId"`
 	ExportStatus   *ExportStatus `json:"exportStatus,omitempty"`

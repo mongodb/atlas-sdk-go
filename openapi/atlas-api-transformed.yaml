@@ -24,7 +24,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 450f2b276442adec8ca18461fa6b4adc7f64bbcc
+  x-xgen-sha: 771862bcc7501c48b131e7b49e8b65ba198f6672
 servers:
   - url: https://cloud.mongodb.com
 tags:
@@ -2359,9 +2359,10 @@ paths:
         - AWS Clusters DNS
   "/api/atlas/v2/groups/{groupId}/backup/exportBuckets":
     get:
-      description: "Returns all AWS S3 buckets and Azure Blob Storages associated with
-        the specified project. To use this resource, the requesting API Key must
-        have the Project Read Only role. Deprecated versions: v2-{2023-01-01}"
+      description: "Returns all AWS S3 buckets and Azure Blob Storage Containers
+        associated with the specified Project. To use this resource, the
+        requesting API Key must have the Project Read Only role. Deprecated
+        versions: v2-{2023-01-01}"
       operationId: listExportBuckets
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -2382,31 +2383,70 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return All AWS S3 Buckets and Azure Blob Storages Used for Cloud Backup
-        Snapshot Exports
+      summary: Return All AWS S3 Buckets and Azure Blob Storage Containers Used for
+        Cloud Backup Snapshot Exports
       tags:
         - Cloud Backups
     post:
-      description: "Grants MongoDB Cloud access to the specified AWS S3 bucket or
-        Azure Blob Storage. This enables this bucket to receive Atlas Cloud
-        Backup snapshots. To use this resource, the requesting API Key must have
-        the Project Owner role. Deprecated versions: v2-{2023-01-01}"
+      description: "Grants MongoDB Cloud access to the specified AWS S3 Bucket or
+        Azure Blob Storage Container. This enables this Export Bucket to receive
+        Atlas Cloud Backup Snapshots. To use this resource, the requesting API
+        Key must have the Project Owner role. Deprecated versions:
+        v2-{2023-01-01}"
       operationId: createExportBucket
       parameters:
         - $ref: "#/components/parameters/groupId"
       requestBody:
         content:
           application/vnd.atlas.2024-05-30+json:
+            examples:
+              AWS:
+                description: AWS
+                value:
+                  bucketName: export-bucket
+                  cloudProvider: AWS
+                  iamRoleId: 668c5f0ed436263134491592
+              Azure:
+                description: Azure
+                value:
+                  bucketName: export-container
+                  cloudProvider: AZURE
+                  roleId: 668c5f0ed436263134491592
+                  serviceUrl: https://examplestorageaccount.blob.core.windows.net
+                  tenantId: 4297fc77-1592-4de8-a6d5-a8c32401df87
             schema:
               $ref: "#/components/schemas/DiskBackupSnapshotExportBucket"
             x-xgen-version: 2024-05-30
-        description: Grants MongoDB Cloud access to the specified AWS S3 bucket or Azure
-          Blob Storage.
+        description: Grants MongoDB Cloud access to the specified AWS S3 Bucket or Azure
+          Blob Storage Container.
         required: true
       responses:
         "200":
           content:
             application/vnd.atlas.2024-05-30+json:
+              examples:
+                AWS:
+                  description: AWS
+                  value:
+                    _id: 32b6e34b3d91647abb20e7b8
+                    bucketName: export-bucket
+                    cloudProvider: AWS
+                    iamRoleId: 668c5f0ed436263134491592
+                    links:
+                      - href: https://cloud.mongodb.com/api/atlas
+                        rel: self
+                Azure:
+                  description: Azure
+                  value:
+                    _id: 32b6e34b3d91647abb20e7b8
+                    bucketName: export-container
+                    cloudProvider: AZURE
+                    links:
+                      - href: https://cloud.mongodb.com/api/atlas
+                        rel: self
+                    roleId: 668c5f0ed436263134491592
+                    serviceUrl: https://examplestorageaccount.blob.core.windows.net
+                    tenantId: 4297fc77-1592-4de8-a6d5-a8c32401df87
               schema:
                 $ref: "#/components/schemas/DiskBackupSnapshotExportBucket"
               x-xgen-version: 2024-05-30
@@ -2421,30 +2461,32 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Grant Access to AWS S3 Bucket or Azure Blob Storage for Cloud Backup
-        Snapshot Exports
+      summary: Grant Access to AWS S3 Bucket or Azure Blob Storage Container for Cloud
+        Backup Snapshot Exports
       tags:
         - Cloud Backups
   "/api/atlas/v2/groups/{groupId}/backup/exportBuckets/{exportBucketId}":
     delete:
-      description: Revoke MongoDB Cloud access to the specified AWS S3 bucket. This
-        prevents this bucket to receive Atlas Cloud Backup snapshots. Auto
-        export must be disabled on all clusters in this project exporting to
-        this bucket before revoking access. To use this resource, the requesting
-        API Key must have the Project Owner role.
+      description: Revoke MongoDB Cloud access to the specified AWS S3 Bucket or Azure
+        Blob Storage Container. This prevents this Export Bucket from receiving
+        Atlas Cloud Backup Snapshots. Auto export must be disabled on all
+        clusters in this Project exporting to this Export Bucket before revoking
+        access. To use this resource, the requesting API Key must have the
+        Project Owner role.
       operationId: deleteExportBucket
       parameters:
         - $ref: "#/components/parameters/groupId"
-        - description: Unique string that identifies the AWS S3 bucket to which you export
-            your snapshots.
+        - description: Unique string that identifies the AWS S3 Bucket or Azure Blob
+            Storage Container to which you export your Snapshots.
           in: path
           name: exportBucketId
           required: true
           schema:
             type: string
-            maxLength: 63
-            minLength: 3
-            pattern: ^((?!xn--)(?!.*-s3alias)[a-z0-9][a-z0-9-]{1,61}[a-z0-9])$
+            example: 32b6e34b3d91647abb20e7b8
+            maxLength: 24
+            minLength: 24
+            pattern: ^([a-f0-9]{24})$
       responses:
         "204":
           content:
@@ -2463,30 +2505,56 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Revoke Access to AWS S3 Bucket for Cloud Backup Snapshot Exports
+      summary: Revoke Access to AWS S3 Bucket or Azure Blob Storage Container for
+        Cloud Backup Snapshot Exports
       tags:
         - Cloud Backups
     get:
-      description: "Returns one AWS S3 bucket or Azure Blob Storage associated with
-        the specified project. To use this resource, the requesting API Key must
-        have the Project Read Only role. Deprecated versions: v2-{2023-01-01}"
+      description: "Returns one AWS S3 Bucket or Azure Blob Storage Container
+        associated with the specified Project. To use this resource, the
+        requesting API Key must have the Project Read Only role. Deprecated
+        versions: v2-{2023-01-01}"
       operationId: getExportBucket
       parameters:
         - $ref: "#/components/parameters/groupId"
-        - description: Unique string that identifies the AWS S3 bucket or Azure Blob
-            Storage to which you export your snapshots.
+        - description: Unique 24-hexadecimal character string that identifies the Export
+            Bucket.
           in: path
           name: exportBucketId
           required: true
           schema:
             type: string
-            maxLength: 63
-            minLength: 3
-            pattern: ^((?!xn--)(?!.*-s3alias)[a-z0-9][a-z0-9-]{1,61}[a-z0-9])$
+            example: 32b6e34b3d91647abb20e7b8
+            maxLength: 24
+            minLength: 24
+            pattern: ^([a-f0-9]{24})$
       responses:
         "200":
           content:
             application/vnd.atlas.2024-05-30+json:
+              examples:
+                AWS:
+                  description: AWS
+                  value:
+                    _id: 32b6e34b3d91647abb20e7b8
+                    bucketName: export-bucket
+                    cloudProvider: AWS
+                    iamRoleId: 668c5f0ed436263134491592
+                    links:
+                      - href: https://cloud.mongodb.com/api/atlas
+                        rel: self
+                Azure:
+                  description: Azure
+                  value:
+                    _id: 32b6e34b3d91647abb20e7b8
+                    bucketName: export-container
+                    cloudProvider: AZURE
+                    links:
+                      - href: https://cloud.mongodb.com/api/atlas
+                        rel: self
+                    roleId: 668c5f0ed436263134491592
+                    serviceUrl: https://examplestorageaccount.blob.core.windows.net
+                    tenantId: 4297fc77-1592-4de8-a6d5-a8c32401df87
               schema:
                 $ref: "#/components/schemas/DiskBackupSnapshotExportBucket"
               x-xgen-version: 2024-05-30
@@ -2499,8 +2567,8 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return One AWS S3 Bucket or Azure Blob Storage Used for Cloud Backup
-        Snapshot Exports
+      summary: Return One AWS S3 Bucket or Azure Blob Storage Container Used for Cloud
+        Backup Snapshot Exports
       tags:
         - Cloud Backups
   "/api/atlas/v2/groups/{groupId}/backupCompliancePolicy":
@@ -3136,8 +3204,8 @@ paths:
         - Cloud Backups
     post:
       description: Exports one backup snapshot for dedicated Atlas cluster using Cloud
-        Backups to an AWS bucket. To use this resource, the requesting API Key
-        must have the Project Atlas Admin role.
+        Backups to an Export Bucket. To use this resource, the requesting API
+        Key must have the Project Atlas Admin role.
       operationId: createBackupExportJob
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -22942,18 +23010,18 @@ components:
           type: integer
           format: int32
           description: >-
-            Number that indicates the frequency interval for a set of snapshots.
+            Number that indicates the frequency interval for a set of Snapshots.
             A value of `1` specifies the first instance of the corresponding
             `frequencyType`.
 
 
-            - In a yearly policy item, `1` indicates that the yearly snapshot occurs on the first day of January and `12` indicates the first day of December.
+            - In a yearly policy item, `1` indicates that the yearly Snapshot occurs on the first day of January and `12` indicates the first day of December.
 
 
-            - In a monthly policy item, `1` indicates that the monthly snapshot occurs on the first day of the month and `40` indicates the last day of the month.
+            - In a monthly policy item, `1` indicates that the monthly Snapshot occurs on the first day of the month and `40` indicates the last day of the month.
 
 
-            - In a weekly policy item, `1` indicates that the weekly snapshot occurs on Monday and `7` indicates Sunday.
+            - In a weekly policy item, `1` indicates that the weekly Snapshot occurs on Monday and `7` indicates Sunday.
 
 
             - In an hourly policy item, you can set the frequency interval to `1`, `2`, `4`, `6`, `8`, or `12`. For hourly policy items for NVMe clusters, MongoDB Cloud accepts only `12` as the frequency interval value.
@@ -22973,13 +23041,13 @@ components:
           readOnly: true
         retentionUnit:
           type: string
-          description: Unit of time in which MongoDB Cloud measures snapshot retention.
+          description: Unit of time in which MongoDB Cloud measures Snapshot retention.
         retentionValue:
           type: integer
           format: int32
           description: >-
             Duration in days, weeks, months, or years that MongoDB Cloud retains
-            the snapshot. For less frequent policy items, MongoDB Cloud requires
+            the Snapshot. For less frequent policy items, MongoDB Cloud requires
             that you specify a value greater than or equal to the value
             specified for more frequent policy items.
 
@@ -23057,8 +23125,8 @@ components:
           readOnly: true
         exportBucketId:
           type: string
-          description: Unique 24-hexadecimal character string that identifies the AWS
-            bucket to which MongoDB Cloud exports the Cloud Backup snapshot.
+          description: Unique 24-hexadecimal character string that identifies the Export
+            Bucket to export to.
           example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
@@ -23123,8 +23191,8 @@ components:
             $ref: "#/components/schemas/BackupLabel"
         exportBucketId:
           type: string
-          description: Unique 24-hexadecimal character string that identifies the AWS
-            bucket to which MongoDB Cloud exports the Cloud Backup snapshot.
+          description: Unique 24-hexadecimal character string that identifies the Export
+            Bucket to export to.
           example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
@@ -23144,7 +23212,7 @@ components:
         snapshotId:
           type: string
           description: Unique 24-hexadecimal character string that identifies the Cloud
-            Backup snasphot to export.
+            Backup Snapshot to export.
           example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
@@ -23609,12 +23677,12 @@ components:
           readOnly: true
     DiskBackupSnapshotExportBucket:
       type: object
-      description: Disk backup snapshot export bucket.
+      description: Disk backup snapshot Export Bucket.
       properties:
         _id:
           type: string
-          description: Unique 24-hexadecimal character string that identifies the Amazon
-            Web Services (AWS) Simple Storage Service (S3) export bucket.
+          description: Unique 24-hexadecimal character string that identifies the Export
+            Bucket.
           example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
@@ -23622,12 +23690,15 @@ components:
           readOnly: true
         bucketName:
           type: string
-          description: Human-readable label that identifies the AWS bucket that the role
-            is authorized to access.
+          description: Human-readable label that identifies the AWS S3 Bucket or Azure
+            Storage Container that the role is authorized to export to.
+          example: export-bucket
+          maxLength: 63
+          minLength: 3
         cloudProvider:
           type: string
-          description: Human-readable label that identifies the cloud provider that stores
-            this snapshot.
+          description: Human-readable label that identifies the cloud provider that
+            Snapshots will be exported to.
         links:
           type: array
           description: List of one or more Uniform Resource Locators (URLs) that point to
@@ -23653,20 +23724,28 @@ components:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the Azure
             Service Principal that MongoDB Cloud uses to access the Azure Blob
-            Storage.
+            Storage Container.
           example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
           pattern: ^([a-f0-9]{24})$
         serviceUrl:
           type: string
-          description: Url that identifies the Azure Blob Storage Account.
+          description: URL that identifies the blob Endpoint of the Azure Blob Storage
+            Account.
+          example: https://examplestorageaccount.blob.core.windows.net
+          maxLength: 55
+          minLength: 33
         tenantId:
           type: string
-          description: UUID String that identifies the Azure Active Directory Tenant ID.
+          description: UUID that identifies the Azure Active Directory Tenant ID.
+          example: 4297fc77-1592-4de8-a6d5-a8c32401df87
           maxLength: 36
-          minLength: 32
+          minLength: 36
           pattern: ^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$
+      required:
+        - bucketName
+        - cloudProvider
     DiskBackupSnapshotRestoreJob:
       type: object
       properties:
@@ -23803,11 +23882,11 @@ components:
         autoExportEnabled:
           type: boolean
           description: Flag that indicates whether MongoDB Cloud automatically exports
-            cloud backup snapshots to the AWS bucket.
+            Cloud Backup Snapshots to the Export Bucket.
         clusterId:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the cluster with
-            the snapshot you want to return.
+            the Snapshot you want to return.
           example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
@@ -23815,7 +23894,7 @@ components:
           readOnly: true
         clusterName:
           type: string
-          description: Human-readable label that identifies the cluster with the snapshot
+          description: Human-readable label that identifies the cluster with the Snapshot
             you want to return.
           maxLength: 64
           minLength: 1
@@ -23856,7 +23935,7 @@ components:
         nextSnapshot:
           type: string
           format: date-time
-          description: Date and time when MongoDB Cloud takes the next snapshot. This
+          description: Date and time when MongoDB Cloud takes the next Snapshot. This
             parameter expresses its value in the ISO 8601 timestamp format in
             UTC.
           readOnly: true
@@ -23870,30 +23949,30 @@ components:
           type: integer
           format: int32
           description: Hour of day in Coordinated Universal Time (UTC) that represents
-            when MongoDB Cloud takes the snapshot.
+            when MongoDB Cloud takes the Snapshot.
         referenceMinuteOfHour:
           type: integer
           format: int32
           description: Minute of the **referenceHourOfDay** that represents when MongoDB
-            Cloud takes the snapshot.
+            Cloud takes the Snapshot.
         restoreWindowDays:
           type: integer
           format: int32
           description: Number of previous days that you can restore back to with
             Continuous Cloud Backup accuracy. You must specify a positive,
-            non-zero integer. This parameter applies to continuous cloud backups
+            non-zero integer. This parameter applies to continuous Cloud Backups
             only.
         updateSnapshots:
           type: boolean
           description: Flag that indicates whether to apply the retention changes in the
-            updated backup policy to snapshots that MongoDB Cloud took
+            updated backup policy to Snapshots that MongoDB Cloud took
             previously.
           writeOnly: true
         useOrgAndGroupNamesInExportPrefix:
           type: boolean
           description: Flag that indicates whether to use organization and project names
             instead of organization and project UUIDs in the path to the
-            metadata files that MongoDB Cloud uploads to your AWS bucket.
+            metadata files that MongoDB Cloud uploads to your Export Bucket.
     DiskGBAutoScaling:
       type: object
       description: Setting that enables disk auto-scaling.
@@ -31525,11 +31604,11 @@ components:
         - nodeCount
     AutoExportPolicy:
       type: object
-      description: Policy for automatically exporting cloud backup snapshots.
+      description: Policy for automatically exporting Cloud Backup Snapshots.
       properties:
         exportBucketId:
           type: string
-          description: Unique 24-hexadecimal character string that identifies the AWS
+          description: Unique 24-hexadecimal character string that identifies the Export
             Bucket.
           example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
