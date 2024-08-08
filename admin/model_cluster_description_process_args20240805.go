@@ -6,17 +6,12 @@ import (
 	"encoding/json"
 )
 
-// ClusterDescriptionProcessArgs struct for ClusterDescriptionProcessArgs
-type ClusterDescriptionProcessArgs struct {
+// ClusterDescriptionProcessArgs20240805 struct for ClusterDescriptionProcessArgs20240805
+type ClusterDescriptionProcessArgs20240805 struct {
 	// Number of threads on the source shard and the receiving shard for chunk migration. The number of threads should not exceed the half the total number of CPU cores in the sharded cluster.
 	ChunkMigrationConcurrency *int `json:"chunkMigrationConcurrency,omitempty"`
-	// Default level of acknowledgment requested from MongoDB for read operations set for this cluster.  MongoDB 4.4 clusters default to `available`. MongoDB 5.0 and later clusters default to `local`.
-	DefaultReadConcern *string `json:"defaultReadConcern,omitempty"`
 	// Default level of acknowledgment requested from MongoDB for write operations when none is specified by the driver.
 	DefaultWriteConcern *string `json:"defaultWriteConcern,omitempty"`
-	// Flag that indicates whether you can insert or update documents where all indexed entries don't exceed 1024 bytes. If you set this to false, [mongod](https://docs.mongodb.com/upcoming/reference/program/mongod/#mongodb-binary-bin.mongod) writes documents that exceed this limit but doesn't index them. This parameter has been removed as of [MongoDB 4.4](https://www.mongodb.com/docs/manual/reference/parameters/#mongodb-parameter-param.failIndexKeyTooLong).
-	// Deprecated
-	FailIndexKeyTooLong *bool `json:"failIndexKeyTooLong,omitempty"`
 	// Flag that indicates whether the cluster allows execution of operations that perform server-side executions of JavaScript.
 	JavascriptEnabled *bool `json:"javascriptEnabled,omitempty"`
 	// Minimum Transport Layer Security (TLS) version that the cluster accepts for incoming connections. Clusters using TLS 1.0 or 1.1 should consider setting TLS 1.2 as the minimum TLS protocol version.
@@ -37,37 +32,29 @@ type ClusterDescriptionProcessArgs struct {
 	TransactionLifetimeLimitSeconds *int64 `json:"transactionLifetimeLimitSeconds,omitempty"`
 }
 
-// NewClusterDescriptionProcessArgs instantiates a new ClusterDescriptionProcessArgs object
+// NewClusterDescriptionProcessArgs20240805 instantiates a new ClusterDescriptionProcessArgs20240805 object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewClusterDescriptionProcessArgs() *ClusterDescriptionProcessArgs {
-	this := ClusterDescriptionProcessArgs{}
-	var defaultReadConcern string = "available"
-	this.DefaultReadConcern = &defaultReadConcern
-	var failIndexKeyTooLong bool = true
-	this.FailIndexKeyTooLong = &failIndexKeyTooLong
+func NewClusterDescriptionProcessArgs20240805() *ClusterDescriptionProcessArgs20240805 {
+	this := ClusterDescriptionProcessArgs20240805{}
 	var sampleRefreshIntervalBIConnector int = 0
 	this.SampleRefreshIntervalBIConnector = &sampleRefreshIntervalBIConnector
 	return &this
 }
 
-// NewClusterDescriptionProcessArgsWithDefaults instantiates a new ClusterDescriptionProcessArgs object
+// NewClusterDescriptionProcessArgs20240805WithDefaults instantiates a new ClusterDescriptionProcessArgs20240805 object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewClusterDescriptionProcessArgsWithDefaults() *ClusterDescriptionProcessArgs {
-	this := ClusterDescriptionProcessArgs{}
-	var defaultReadConcern string = "available"
-	this.DefaultReadConcern = &defaultReadConcern
-	var failIndexKeyTooLong bool = true
-	this.FailIndexKeyTooLong = &failIndexKeyTooLong
+func NewClusterDescriptionProcessArgs20240805WithDefaults() *ClusterDescriptionProcessArgs20240805 {
+	this := ClusterDescriptionProcessArgs20240805{}
 	var sampleRefreshIntervalBIConnector int = 0
 	this.SampleRefreshIntervalBIConnector = &sampleRefreshIntervalBIConnector
 	return &this
 }
 
 // GetChunkMigrationConcurrency returns the ChunkMigrationConcurrency field value if set, zero value otherwise
-func (o *ClusterDescriptionProcessArgs) GetChunkMigrationConcurrency() int {
+func (o *ClusterDescriptionProcessArgs20240805) GetChunkMigrationConcurrency() int {
 	if o == nil || IsNil(o.ChunkMigrationConcurrency) {
 		var ret int
 		return ret
@@ -77,7 +64,7 @@ func (o *ClusterDescriptionProcessArgs) GetChunkMigrationConcurrency() int {
 
 // GetChunkMigrationConcurrencyOk returns a tuple with the ChunkMigrationConcurrency field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterDescriptionProcessArgs) GetChunkMigrationConcurrencyOk() (*int, bool) {
+func (o *ClusterDescriptionProcessArgs20240805) GetChunkMigrationConcurrencyOk() (*int, bool) {
 	if o == nil || IsNil(o.ChunkMigrationConcurrency) {
 		return nil, false
 	}
@@ -86,7 +73,7 @@ func (o *ClusterDescriptionProcessArgs) GetChunkMigrationConcurrencyOk() (*int, 
 }
 
 // HasChunkMigrationConcurrency returns a boolean if a field has been set.
-func (o *ClusterDescriptionProcessArgs) HasChunkMigrationConcurrency() bool {
+func (o *ClusterDescriptionProcessArgs20240805) HasChunkMigrationConcurrency() bool {
 	if o != nil && !IsNil(o.ChunkMigrationConcurrency) {
 		return true
 	}
@@ -95,45 +82,12 @@ func (o *ClusterDescriptionProcessArgs) HasChunkMigrationConcurrency() bool {
 }
 
 // SetChunkMigrationConcurrency gets a reference to the given int and assigns it to the ChunkMigrationConcurrency field.
-func (o *ClusterDescriptionProcessArgs) SetChunkMigrationConcurrency(v int) {
+func (o *ClusterDescriptionProcessArgs20240805) SetChunkMigrationConcurrency(v int) {
 	o.ChunkMigrationConcurrency = &v
 }
 
-// GetDefaultReadConcern returns the DefaultReadConcern field value if set, zero value otherwise
-func (o *ClusterDescriptionProcessArgs) GetDefaultReadConcern() string {
-	if o == nil || IsNil(o.DefaultReadConcern) {
-		var ret string
-		return ret
-	}
-	return *o.DefaultReadConcern
-}
-
-// GetDefaultReadConcernOk returns a tuple with the DefaultReadConcern field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ClusterDescriptionProcessArgs) GetDefaultReadConcernOk() (*string, bool) {
-	if o == nil || IsNil(o.DefaultReadConcern) {
-		return nil, false
-	}
-
-	return o.DefaultReadConcern, true
-}
-
-// HasDefaultReadConcern returns a boolean if a field has been set.
-func (o *ClusterDescriptionProcessArgs) HasDefaultReadConcern() bool {
-	if o != nil && !IsNil(o.DefaultReadConcern) {
-		return true
-	}
-
-	return false
-}
-
-// SetDefaultReadConcern gets a reference to the given string and assigns it to the DefaultReadConcern field.
-func (o *ClusterDescriptionProcessArgs) SetDefaultReadConcern(v string) {
-	o.DefaultReadConcern = &v
-}
-
 // GetDefaultWriteConcern returns the DefaultWriteConcern field value if set, zero value otherwise
-func (o *ClusterDescriptionProcessArgs) GetDefaultWriteConcern() string {
+func (o *ClusterDescriptionProcessArgs20240805) GetDefaultWriteConcern() string {
 	if o == nil || IsNil(o.DefaultWriteConcern) {
 		var ret string
 		return ret
@@ -143,7 +97,7 @@ func (o *ClusterDescriptionProcessArgs) GetDefaultWriteConcern() string {
 
 // GetDefaultWriteConcernOk returns a tuple with the DefaultWriteConcern field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterDescriptionProcessArgs) GetDefaultWriteConcernOk() (*string, bool) {
+func (o *ClusterDescriptionProcessArgs20240805) GetDefaultWriteConcernOk() (*string, bool) {
 	if o == nil || IsNil(o.DefaultWriteConcern) {
 		return nil, false
 	}
@@ -152,7 +106,7 @@ func (o *ClusterDescriptionProcessArgs) GetDefaultWriteConcernOk() (*string, boo
 }
 
 // HasDefaultWriteConcern returns a boolean if a field has been set.
-func (o *ClusterDescriptionProcessArgs) HasDefaultWriteConcern() bool {
+func (o *ClusterDescriptionProcessArgs20240805) HasDefaultWriteConcern() bool {
 	if o != nil && !IsNil(o.DefaultWriteConcern) {
 		return true
 	}
@@ -161,48 +115,12 @@ func (o *ClusterDescriptionProcessArgs) HasDefaultWriteConcern() bool {
 }
 
 // SetDefaultWriteConcern gets a reference to the given string and assigns it to the DefaultWriteConcern field.
-func (o *ClusterDescriptionProcessArgs) SetDefaultWriteConcern(v string) {
+func (o *ClusterDescriptionProcessArgs20240805) SetDefaultWriteConcern(v string) {
 	o.DefaultWriteConcern = &v
 }
 
-// GetFailIndexKeyTooLong returns the FailIndexKeyTooLong field value if set, zero value otherwise
-// Deprecated
-func (o *ClusterDescriptionProcessArgs) GetFailIndexKeyTooLong() bool {
-	if o == nil || IsNil(o.FailIndexKeyTooLong) {
-		var ret bool
-		return ret
-	}
-	return *o.FailIndexKeyTooLong
-}
-
-// GetFailIndexKeyTooLongOk returns a tuple with the FailIndexKeyTooLong field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// Deprecated
-func (o *ClusterDescriptionProcessArgs) GetFailIndexKeyTooLongOk() (*bool, bool) {
-	if o == nil || IsNil(o.FailIndexKeyTooLong) {
-		return nil, false
-	}
-
-	return o.FailIndexKeyTooLong, true
-}
-
-// HasFailIndexKeyTooLong returns a boolean if a field has been set.
-func (o *ClusterDescriptionProcessArgs) HasFailIndexKeyTooLong() bool {
-	if o != nil && !IsNil(o.FailIndexKeyTooLong) {
-		return true
-	}
-
-	return false
-}
-
-// SetFailIndexKeyTooLong gets a reference to the given bool and assigns it to the FailIndexKeyTooLong field.
-// Deprecated
-func (o *ClusterDescriptionProcessArgs) SetFailIndexKeyTooLong(v bool) {
-	o.FailIndexKeyTooLong = &v
-}
-
 // GetJavascriptEnabled returns the JavascriptEnabled field value if set, zero value otherwise
-func (o *ClusterDescriptionProcessArgs) GetJavascriptEnabled() bool {
+func (o *ClusterDescriptionProcessArgs20240805) GetJavascriptEnabled() bool {
 	if o == nil || IsNil(o.JavascriptEnabled) {
 		var ret bool
 		return ret
@@ -212,7 +130,7 @@ func (o *ClusterDescriptionProcessArgs) GetJavascriptEnabled() bool {
 
 // GetJavascriptEnabledOk returns a tuple with the JavascriptEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterDescriptionProcessArgs) GetJavascriptEnabledOk() (*bool, bool) {
+func (o *ClusterDescriptionProcessArgs20240805) GetJavascriptEnabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.JavascriptEnabled) {
 		return nil, false
 	}
@@ -221,7 +139,7 @@ func (o *ClusterDescriptionProcessArgs) GetJavascriptEnabledOk() (*bool, bool) {
 }
 
 // HasJavascriptEnabled returns a boolean if a field has been set.
-func (o *ClusterDescriptionProcessArgs) HasJavascriptEnabled() bool {
+func (o *ClusterDescriptionProcessArgs20240805) HasJavascriptEnabled() bool {
 	if o != nil && !IsNil(o.JavascriptEnabled) {
 		return true
 	}
@@ -230,12 +148,12 @@ func (o *ClusterDescriptionProcessArgs) HasJavascriptEnabled() bool {
 }
 
 // SetJavascriptEnabled gets a reference to the given bool and assigns it to the JavascriptEnabled field.
-func (o *ClusterDescriptionProcessArgs) SetJavascriptEnabled(v bool) {
+func (o *ClusterDescriptionProcessArgs20240805) SetJavascriptEnabled(v bool) {
 	o.JavascriptEnabled = &v
 }
 
 // GetMinimumEnabledTlsProtocol returns the MinimumEnabledTlsProtocol field value if set, zero value otherwise
-func (o *ClusterDescriptionProcessArgs) GetMinimumEnabledTlsProtocol() string {
+func (o *ClusterDescriptionProcessArgs20240805) GetMinimumEnabledTlsProtocol() string {
 	if o == nil || IsNil(o.MinimumEnabledTlsProtocol) {
 		var ret string
 		return ret
@@ -245,7 +163,7 @@ func (o *ClusterDescriptionProcessArgs) GetMinimumEnabledTlsProtocol() string {
 
 // GetMinimumEnabledTlsProtocolOk returns a tuple with the MinimumEnabledTlsProtocol field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterDescriptionProcessArgs) GetMinimumEnabledTlsProtocolOk() (*string, bool) {
+func (o *ClusterDescriptionProcessArgs20240805) GetMinimumEnabledTlsProtocolOk() (*string, bool) {
 	if o == nil || IsNil(o.MinimumEnabledTlsProtocol) {
 		return nil, false
 	}
@@ -254,7 +172,7 @@ func (o *ClusterDescriptionProcessArgs) GetMinimumEnabledTlsProtocolOk() (*strin
 }
 
 // HasMinimumEnabledTlsProtocol returns a boolean if a field has been set.
-func (o *ClusterDescriptionProcessArgs) HasMinimumEnabledTlsProtocol() bool {
+func (o *ClusterDescriptionProcessArgs20240805) HasMinimumEnabledTlsProtocol() bool {
 	if o != nil && !IsNil(o.MinimumEnabledTlsProtocol) {
 		return true
 	}
@@ -263,12 +181,12 @@ func (o *ClusterDescriptionProcessArgs) HasMinimumEnabledTlsProtocol() bool {
 }
 
 // SetMinimumEnabledTlsProtocol gets a reference to the given string and assigns it to the MinimumEnabledTlsProtocol field.
-func (o *ClusterDescriptionProcessArgs) SetMinimumEnabledTlsProtocol(v string) {
+func (o *ClusterDescriptionProcessArgs20240805) SetMinimumEnabledTlsProtocol(v string) {
 	o.MinimumEnabledTlsProtocol = &v
 }
 
 // GetNoTableScan returns the NoTableScan field value if set, zero value otherwise
-func (o *ClusterDescriptionProcessArgs) GetNoTableScan() bool {
+func (o *ClusterDescriptionProcessArgs20240805) GetNoTableScan() bool {
 	if o == nil || IsNil(o.NoTableScan) {
 		var ret bool
 		return ret
@@ -278,7 +196,7 @@ func (o *ClusterDescriptionProcessArgs) GetNoTableScan() bool {
 
 // GetNoTableScanOk returns a tuple with the NoTableScan field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterDescriptionProcessArgs) GetNoTableScanOk() (*bool, bool) {
+func (o *ClusterDescriptionProcessArgs20240805) GetNoTableScanOk() (*bool, bool) {
 	if o == nil || IsNil(o.NoTableScan) {
 		return nil, false
 	}
@@ -287,7 +205,7 @@ func (o *ClusterDescriptionProcessArgs) GetNoTableScanOk() (*bool, bool) {
 }
 
 // HasNoTableScan returns a boolean if a field has been set.
-func (o *ClusterDescriptionProcessArgs) HasNoTableScan() bool {
+func (o *ClusterDescriptionProcessArgs20240805) HasNoTableScan() bool {
 	if o != nil && !IsNil(o.NoTableScan) {
 		return true
 	}
@@ -296,12 +214,12 @@ func (o *ClusterDescriptionProcessArgs) HasNoTableScan() bool {
 }
 
 // SetNoTableScan gets a reference to the given bool and assigns it to the NoTableScan field.
-func (o *ClusterDescriptionProcessArgs) SetNoTableScan(v bool) {
+func (o *ClusterDescriptionProcessArgs20240805) SetNoTableScan(v bool) {
 	o.NoTableScan = &v
 }
 
 // GetOplogMinRetentionHours returns the OplogMinRetentionHours field value if set, zero value otherwise
-func (o *ClusterDescriptionProcessArgs) GetOplogMinRetentionHours() float64 {
+func (o *ClusterDescriptionProcessArgs20240805) GetOplogMinRetentionHours() float64 {
 	if o == nil || IsNil(o.OplogMinRetentionHours) {
 		var ret float64
 		return ret
@@ -311,7 +229,7 @@ func (o *ClusterDescriptionProcessArgs) GetOplogMinRetentionHours() float64 {
 
 // GetOplogMinRetentionHoursOk returns a tuple with the OplogMinRetentionHours field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterDescriptionProcessArgs) GetOplogMinRetentionHoursOk() (*float64, bool) {
+func (o *ClusterDescriptionProcessArgs20240805) GetOplogMinRetentionHoursOk() (*float64, bool) {
 	if o == nil || IsNil(o.OplogMinRetentionHours) {
 		return nil, false
 	}
@@ -320,7 +238,7 @@ func (o *ClusterDescriptionProcessArgs) GetOplogMinRetentionHoursOk() (*float64,
 }
 
 // HasOplogMinRetentionHours returns a boolean if a field has been set.
-func (o *ClusterDescriptionProcessArgs) HasOplogMinRetentionHours() bool {
+func (o *ClusterDescriptionProcessArgs20240805) HasOplogMinRetentionHours() bool {
 	if o != nil && !IsNil(o.OplogMinRetentionHours) {
 		return true
 	}
@@ -329,12 +247,12 @@ func (o *ClusterDescriptionProcessArgs) HasOplogMinRetentionHours() bool {
 }
 
 // SetOplogMinRetentionHours gets a reference to the given float64 and assigns it to the OplogMinRetentionHours field.
-func (o *ClusterDescriptionProcessArgs) SetOplogMinRetentionHours(v float64) {
+func (o *ClusterDescriptionProcessArgs20240805) SetOplogMinRetentionHours(v float64) {
 	o.OplogMinRetentionHours = &v
 }
 
 // GetOplogSizeMB returns the OplogSizeMB field value if set, zero value otherwise
-func (o *ClusterDescriptionProcessArgs) GetOplogSizeMB() int {
+func (o *ClusterDescriptionProcessArgs20240805) GetOplogSizeMB() int {
 	if o == nil || IsNil(o.OplogSizeMB) {
 		var ret int
 		return ret
@@ -344,7 +262,7 @@ func (o *ClusterDescriptionProcessArgs) GetOplogSizeMB() int {
 
 // GetOplogSizeMBOk returns a tuple with the OplogSizeMB field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterDescriptionProcessArgs) GetOplogSizeMBOk() (*int, bool) {
+func (o *ClusterDescriptionProcessArgs20240805) GetOplogSizeMBOk() (*int, bool) {
 	if o == nil || IsNil(o.OplogSizeMB) {
 		return nil, false
 	}
@@ -353,7 +271,7 @@ func (o *ClusterDescriptionProcessArgs) GetOplogSizeMBOk() (*int, bool) {
 }
 
 // HasOplogSizeMB returns a boolean if a field has been set.
-func (o *ClusterDescriptionProcessArgs) HasOplogSizeMB() bool {
+func (o *ClusterDescriptionProcessArgs20240805) HasOplogSizeMB() bool {
 	if o != nil && !IsNil(o.OplogSizeMB) {
 		return true
 	}
@@ -362,12 +280,12 @@ func (o *ClusterDescriptionProcessArgs) HasOplogSizeMB() bool {
 }
 
 // SetOplogSizeMB gets a reference to the given int and assigns it to the OplogSizeMB field.
-func (o *ClusterDescriptionProcessArgs) SetOplogSizeMB(v int) {
+func (o *ClusterDescriptionProcessArgs20240805) SetOplogSizeMB(v int) {
 	o.OplogSizeMB = &v
 }
 
 // GetQueryStatsLogVerbosity returns the QueryStatsLogVerbosity field value if set, zero value otherwise
-func (o *ClusterDescriptionProcessArgs) GetQueryStatsLogVerbosity() int {
+func (o *ClusterDescriptionProcessArgs20240805) GetQueryStatsLogVerbosity() int {
 	if o == nil || IsNil(o.QueryStatsLogVerbosity) {
 		var ret int
 		return ret
@@ -377,7 +295,7 @@ func (o *ClusterDescriptionProcessArgs) GetQueryStatsLogVerbosity() int {
 
 // GetQueryStatsLogVerbosityOk returns a tuple with the QueryStatsLogVerbosity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterDescriptionProcessArgs) GetQueryStatsLogVerbosityOk() (*int, bool) {
+func (o *ClusterDescriptionProcessArgs20240805) GetQueryStatsLogVerbosityOk() (*int, bool) {
 	if o == nil || IsNil(o.QueryStatsLogVerbosity) {
 		return nil, false
 	}
@@ -386,7 +304,7 @@ func (o *ClusterDescriptionProcessArgs) GetQueryStatsLogVerbosityOk() (*int, boo
 }
 
 // HasQueryStatsLogVerbosity returns a boolean if a field has been set.
-func (o *ClusterDescriptionProcessArgs) HasQueryStatsLogVerbosity() bool {
+func (o *ClusterDescriptionProcessArgs20240805) HasQueryStatsLogVerbosity() bool {
 	if o != nil && !IsNil(o.QueryStatsLogVerbosity) {
 		return true
 	}
@@ -395,12 +313,12 @@ func (o *ClusterDescriptionProcessArgs) HasQueryStatsLogVerbosity() bool {
 }
 
 // SetQueryStatsLogVerbosity gets a reference to the given int and assigns it to the QueryStatsLogVerbosity field.
-func (o *ClusterDescriptionProcessArgs) SetQueryStatsLogVerbosity(v int) {
+func (o *ClusterDescriptionProcessArgs20240805) SetQueryStatsLogVerbosity(v int) {
 	o.QueryStatsLogVerbosity = &v
 }
 
 // GetSampleRefreshIntervalBIConnector returns the SampleRefreshIntervalBIConnector field value if set, zero value otherwise
-func (o *ClusterDescriptionProcessArgs) GetSampleRefreshIntervalBIConnector() int {
+func (o *ClusterDescriptionProcessArgs20240805) GetSampleRefreshIntervalBIConnector() int {
 	if o == nil || IsNil(o.SampleRefreshIntervalBIConnector) {
 		var ret int
 		return ret
@@ -410,7 +328,7 @@ func (o *ClusterDescriptionProcessArgs) GetSampleRefreshIntervalBIConnector() in
 
 // GetSampleRefreshIntervalBIConnectorOk returns a tuple with the SampleRefreshIntervalBIConnector field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterDescriptionProcessArgs) GetSampleRefreshIntervalBIConnectorOk() (*int, bool) {
+func (o *ClusterDescriptionProcessArgs20240805) GetSampleRefreshIntervalBIConnectorOk() (*int, bool) {
 	if o == nil || IsNil(o.SampleRefreshIntervalBIConnector) {
 		return nil, false
 	}
@@ -419,7 +337,7 @@ func (o *ClusterDescriptionProcessArgs) GetSampleRefreshIntervalBIConnectorOk() 
 }
 
 // HasSampleRefreshIntervalBIConnector returns a boolean if a field has been set.
-func (o *ClusterDescriptionProcessArgs) HasSampleRefreshIntervalBIConnector() bool {
+func (o *ClusterDescriptionProcessArgs20240805) HasSampleRefreshIntervalBIConnector() bool {
 	if o != nil && !IsNil(o.SampleRefreshIntervalBIConnector) {
 		return true
 	}
@@ -428,12 +346,12 @@ func (o *ClusterDescriptionProcessArgs) HasSampleRefreshIntervalBIConnector() bo
 }
 
 // SetSampleRefreshIntervalBIConnector gets a reference to the given int and assigns it to the SampleRefreshIntervalBIConnector field.
-func (o *ClusterDescriptionProcessArgs) SetSampleRefreshIntervalBIConnector(v int) {
+func (o *ClusterDescriptionProcessArgs20240805) SetSampleRefreshIntervalBIConnector(v int) {
 	o.SampleRefreshIntervalBIConnector = &v
 }
 
 // GetSampleSizeBIConnector returns the SampleSizeBIConnector field value if set, zero value otherwise
-func (o *ClusterDescriptionProcessArgs) GetSampleSizeBIConnector() int {
+func (o *ClusterDescriptionProcessArgs20240805) GetSampleSizeBIConnector() int {
 	if o == nil || IsNil(o.SampleSizeBIConnector) {
 		var ret int
 		return ret
@@ -443,7 +361,7 @@ func (o *ClusterDescriptionProcessArgs) GetSampleSizeBIConnector() int {
 
 // GetSampleSizeBIConnectorOk returns a tuple with the SampleSizeBIConnector field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterDescriptionProcessArgs) GetSampleSizeBIConnectorOk() (*int, bool) {
+func (o *ClusterDescriptionProcessArgs20240805) GetSampleSizeBIConnectorOk() (*int, bool) {
 	if o == nil || IsNil(o.SampleSizeBIConnector) {
 		return nil, false
 	}
@@ -452,7 +370,7 @@ func (o *ClusterDescriptionProcessArgs) GetSampleSizeBIConnectorOk() (*int, bool
 }
 
 // HasSampleSizeBIConnector returns a boolean if a field has been set.
-func (o *ClusterDescriptionProcessArgs) HasSampleSizeBIConnector() bool {
+func (o *ClusterDescriptionProcessArgs20240805) HasSampleSizeBIConnector() bool {
 	if o != nil && !IsNil(o.SampleSizeBIConnector) {
 		return true
 	}
@@ -461,12 +379,12 @@ func (o *ClusterDescriptionProcessArgs) HasSampleSizeBIConnector() bool {
 }
 
 // SetSampleSizeBIConnector gets a reference to the given int and assigns it to the SampleSizeBIConnector field.
-func (o *ClusterDescriptionProcessArgs) SetSampleSizeBIConnector(v int) {
+func (o *ClusterDescriptionProcessArgs20240805) SetSampleSizeBIConnector(v int) {
 	o.SampleSizeBIConnector = &v
 }
 
 // GetTransactionLifetimeLimitSeconds returns the TransactionLifetimeLimitSeconds field value if set, zero value otherwise
-func (o *ClusterDescriptionProcessArgs) GetTransactionLifetimeLimitSeconds() int64 {
+func (o *ClusterDescriptionProcessArgs20240805) GetTransactionLifetimeLimitSeconds() int64 {
 	if o == nil || IsNil(o.TransactionLifetimeLimitSeconds) {
 		var ret int64
 		return ret
@@ -476,7 +394,7 @@ func (o *ClusterDescriptionProcessArgs) GetTransactionLifetimeLimitSeconds() int
 
 // GetTransactionLifetimeLimitSecondsOk returns a tuple with the TransactionLifetimeLimitSeconds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterDescriptionProcessArgs) GetTransactionLifetimeLimitSecondsOk() (*int64, bool) {
+func (o *ClusterDescriptionProcessArgs20240805) GetTransactionLifetimeLimitSecondsOk() (*int64, bool) {
 	if o == nil || IsNil(o.TransactionLifetimeLimitSeconds) {
 		return nil, false
 	}
@@ -485,7 +403,7 @@ func (o *ClusterDescriptionProcessArgs) GetTransactionLifetimeLimitSecondsOk() (
 }
 
 // HasTransactionLifetimeLimitSeconds returns a boolean if a field has been set.
-func (o *ClusterDescriptionProcessArgs) HasTransactionLifetimeLimitSeconds() bool {
+func (o *ClusterDescriptionProcessArgs20240805) HasTransactionLifetimeLimitSeconds() bool {
 	if o != nil && !IsNil(o.TransactionLifetimeLimitSeconds) {
 		return true
 	}
@@ -494,30 +412,24 @@ func (o *ClusterDescriptionProcessArgs) HasTransactionLifetimeLimitSeconds() boo
 }
 
 // SetTransactionLifetimeLimitSeconds gets a reference to the given int64 and assigns it to the TransactionLifetimeLimitSeconds field.
-func (o *ClusterDescriptionProcessArgs) SetTransactionLifetimeLimitSeconds(v int64) {
+func (o *ClusterDescriptionProcessArgs20240805) SetTransactionLifetimeLimitSeconds(v int64) {
 	o.TransactionLifetimeLimitSeconds = &v
 }
 
-func (o ClusterDescriptionProcessArgs) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o ClusterDescriptionProcessArgs20240805) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ClusterDescriptionProcessArgs) ToMap() (map[string]interface{}, error) {
+func (o ClusterDescriptionProcessArgs20240805) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.ChunkMigrationConcurrency) {
 		toSerialize["chunkMigrationConcurrency"] = o.ChunkMigrationConcurrency
 	}
-	if !IsNil(o.DefaultReadConcern) {
-		toSerialize["defaultReadConcern"] = o.DefaultReadConcern
-	}
 	if !IsNil(o.DefaultWriteConcern) {
 		toSerialize["defaultWriteConcern"] = o.DefaultWriteConcern
-	}
-	if !IsNil(o.FailIndexKeyTooLong) {
-		toSerialize["failIndexKeyTooLong"] = o.FailIndexKeyTooLong
 	}
 	if !IsNil(o.JavascriptEnabled) {
 		toSerialize["javascriptEnabled"] = o.JavascriptEnabled

@@ -6,41 +6,38 @@ import (
 	"encoding/json"
 )
 
-// DeleteCopiedBackups Deleted copy setting whose backup copies need to also be deleted.
-type DeleteCopiedBackups struct {
+// DeleteCopiedBackups20240805 Deleted copy setting whose backup copies need to also be deleted.
+type DeleteCopiedBackups20240805 struct {
 	// Human-readable label that identifies the cloud provider for the deleted copy setting whose backup copies you want to delete.
 	// Write only field.
 	CloudProvider *string `json:"cloudProvider,omitempty"`
 	// Target region for the deleted copy setting whose backup copies you want to delete. Please supply the 'Atlas Region' which can be found under [Cloud Providers](https://www.mongodb.com/docs/atlas/reference/cloud-providers/) 'regions' link.
 	// Write only field.
 	RegionName *string `json:"regionName,omitempty"`
-	// Unique 24-hexadecimal digit string that identifies the replication object for a zone in a cluster. For global clusters, there can be multiple zones to choose from. For sharded clusters and replica setclusters, there is only one zone in the cluster. To find the Replication Spec Id, do a GET request to Return One Cluster in One Project and consult the replicationSpecs array [Return One Cluster in One Project](#operation/getLegacyCluster).
-	// Write only field.
-	ReplicationSpecId *string `json:"replicationSpecId,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the zone in a cluster. For global clusters, there can be multiple zones to choose from. For sharded clusters and replica set clusters, there is only one zone in the cluster. To find the Zone Id, do a GET request to Return One Cluster from One Project and consult the replicationSpecs array [Return One Cluster from One Project](#operation/getCluster).
 	// Write only field.
 	ZoneId *string `json:"zoneId,omitempty"`
 }
 
-// NewDeleteCopiedBackups instantiates a new DeleteCopiedBackups object
+// NewDeleteCopiedBackups20240805 instantiates a new DeleteCopiedBackups20240805 object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeleteCopiedBackups() *DeleteCopiedBackups {
-	this := DeleteCopiedBackups{}
+func NewDeleteCopiedBackups20240805() *DeleteCopiedBackups20240805 {
+	this := DeleteCopiedBackups20240805{}
 	return &this
 }
 
-// NewDeleteCopiedBackupsWithDefaults instantiates a new DeleteCopiedBackups object
+// NewDeleteCopiedBackups20240805WithDefaults instantiates a new DeleteCopiedBackups20240805 object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewDeleteCopiedBackupsWithDefaults() *DeleteCopiedBackups {
-	this := DeleteCopiedBackups{}
+func NewDeleteCopiedBackups20240805WithDefaults() *DeleteCopiedBackups20240805 {
+	this := DeleteCopiedBackups20240805{}
 	return &this
 }
 
 // GetCloudProvider returns the CloudProvider field value if set, zero value otherwise
-func (o *DeleteCopiedBackups) GetCloudProvider() string {
+func (o *DeleteCopiedBackups20240805) GetCloudProvider() string {
 	if o == nil || IsNil(o.CloudProvider) {
 		var ret string
 		return ret
@@ -50,7 +47,7 @@ func (o *DeleteCopiedBackups) GetCloudProvider() string {
 
 // GetCloudProviderOk returns a tuple with the CloudProvider field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeleteCopiedBackups) GetCloudProviderOk() (*string, bool) {
+func (o *DeleteCopiedBackups20240805) GetCloudProviderOk() (*string, bool) {
 	if o == nil || IsNil(o.CloudProvider) {
 		return nil, false
 	}
@@ -59,7 +56,7 @@ func (o *DeleteCopiedBackups) GetCloudProviderOk() (*string, bool) {
 }
 
 // HasCloudProvider returns a boolean if a field has been set.
-func (o *DeleteCopiedBackups) HasCloudProvider() bool {
+func (o *DeleteCopiedBackups20240805) HasCloudProvider() bool {
 	if o != nil && !IsNil(o.CloudProvider) {
 		return true
 	}
@@ -68,12 +65,12 @@ func (o *DeleteCopiedBackups) HasCloudProvider() bool {
 }
 
 // SetCloudProvider gets a reference to the given string and assigns it to the CloudProvider field.
-func (o *DeleteCopiedBackups) SetCloudProvider(v string) {
+func (o *DeleteCopiedBackups20240805) SetCloudProvider(v string) {
 	o.CloudProvider = &v
 }
 
 // GetRegionName returns the RegionName field value if set, zero value otherwise
-func (o *DeleteCopiedBackups) GetRegionName() string {
+func (o *DeleteCopiedBackups20240805) GetRegionName() string {
 	if o == nil || IsNil(o.RegionName) {
 		var ret string
 		return ret
@@ -83,7 +80,7 @@ func (o *DeleteCopiedBackups) GetRegionName() string {
 
 // GetRegionNameOk returns a tuple with the RegionName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeleteCopiedBackups) GetRegionNameOk() (*string, bool) {
+func (o *DeleteCopiedBackups20240805) GetRegionNameOk() (*string, bool) {
 	if o == nil || IsNil(o.RegionName) {
 		return nil, false
 	}
@@ -92,7 +89,7 @@ func (o *DeleteCopiedBackups) GetRegionNameOk() (*string, bool) {
 }
 
 // HasRegionName returns a boolean if a field has been set.
-func (o *DeleteCopiedBackups) HasRegionName() bool {
+func (o *DeleteCopiedBackups20240805) HasRegionName() bool {
 	if o != nil && !IsNil(o.RegionName) {
 		return true
 	}
@@ -101,45 +98,12 @@ func (o *DeleteCopiedBackups) HasRegionName() bool {
 }
 
 // SetRegionName gets a reference to the given string and assigns it to the RegionName field.
-func (o *DeleteCopiedBackups) SetRegionName(v string) {
+func (o *DeleteCopiedBackups20240805) SetRegionName(v string) {
 	o.RegionName = &v
 }
 
-// GetReplicationSpecId returns the ReplicationSpecId field value if set, zero value otherwise
-func (o *DeleteCopiedBackups) GetReplicationSpecId() string {
-	if o == nil || IsNil(o.ReplicationSpecId) {
-		var ret string
-		return ret
-	}
-	return *o.ReplicationSpecId
-}
-
-// GetReplicationSpecIdOk returns a tuple with the ReplicationSpecId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DeleteCopiedBackups) GetReplicationSpecIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ReplicationSpecId) {
-		return nil, false
-	}
-
-	return o.ReplicationSpecId, true
-}
-
-// HasReplicationSpecId returns a boolean if a field has been set.
-func (o *DeleteCopiedBackups) HasReplicationSpecId() bool {
-	if o != nil && !IsNil(o.ReplicationSpecId) {
-		return true
-	}
-
-	return false
-}
-
-// SetReplicationSpecId gets a reference to the given string and assigns it to the ReplicationSpecId field.
-func (o *DeleteCopiedBackups) SetReplicationSpecId(v string) {
-	o.ReplicationSpecId = &v
-}
-
 // GetZoneId returns the ZoneId field value if set, zero value otherwise
-func (o *DeleteCopiedBackups) GetZoneId() string {
+func (o *DeleteCopiedBackups20240805) GetZoneId() string {
 	if o == nil || IsNil(o.ZoneId) {
 		var ret string
 		return ret
@@ -149,7 +113,7 @@ func (o *DeleteCopiedBackups) GetZoneId() string {
 
 // GetZoneIdOk returns a tuple with the ZoneId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeleteCopiedBackups) GetZoneIdOk() (*string, bool) {
+func (o *DeleteCopiedBackups20240805) GetZoneIdOk() (*string, bool) {
 	if o == nil || IsNil(o.ZoneId) {
 		return nil, false
 	}
@@ -158,7 +122,7 @@ func (o *DeleteCopiedBackups) GetZoneIdOk() (*string, bool) {
 }
 
 // HasZoneId returns a boolean if a field has been set.
-func (o *DeleteCopiedBackups) HasZoneId() bool {
+func (o *DeleteCopiedBackups20240805) HasZoneId() bool {
 	if o != nil && !IsNil(o.ZoneId) {
 		return true
 	}
@@ -167,27 +131,24 @@ func (o *DeleteCopiedBackups) HasZoneId() bool {
 }
 
 // SetZoneId gets a reference to the given string and assigns it to the ZoneId field.
-func (o *DeleteCopiedBackups) SetZoneId(v string) {
+func (o *DeleteCopiedBackups20240805) SetZoneId(v string) {
 	o.ZoneId = &v
 }
 
-func (o DeleteCopiedBackups) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o DeleteCopiedBackups20240805) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o DeleteCopiedBackups) ToMap() (map[string]interface{}, error) {
+func (o DeleteCopiedBackups20240805) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.CloudProvider) {
 		toSerialize["cloudProvider"] = o.CloudProvider
 	}
 	if !IsNil(o.RegionName) {
 		toSerialize["regionName"] = o.RegionName
-	}
-	if !IsNil(o.ReplicationSpecId) {
-		toSerialize["replicationSpecId"] = o.ReplicationSpecId
 	}
 	if !IsNil(o.ZoneId) {
 		toSerialize["zoneId"] = o.ZoneId

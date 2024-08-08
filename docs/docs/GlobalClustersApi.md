@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## CreateCustomZoneMapping
 
-> GeoSharding CreateCustomZoneMapping(ctx, groupId, clusterName, customZoneMappings CustomZoneMappings).Execute()
+> GeoSharding20240805 CreateCustomZoneMapping(ctx, groupId, clusterName, customZoneMappings CustomZoneMappings).Execute()
 
 Add One Entry to One Custom Zone Mapping
 
@@ -29,7 +29,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530005/admin"
+    "go.mongodb.org/atlas-sdk/v20240805001/admin"
 )
 
 func main() {
@@ -55,7 +55,7 @@ func main() {
         }
         return
     }
-    // response from `CreateCustomZoneMapping`: GeoSharding
+    // response from `CreateCustomZoneMapping`: GeoSharding20240805
     fmt.Fprintf(os.Stdout, "Response from `GlobalClustersApi.CreateCustomZoneMapping`: %v (%v)\n", resp, r)
 }
 ```
@@ -82,15 +82,15 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GeoSharding**](GeoSharding.md)
+[**GeoSharding20240805**](GeoSharding20240805.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
 
 ### HTTP request headers
 
-- **Content-Type**: application/vnd.atlas.2023-02-01+json
-- **Accept**: application/vnd.atlas.2023-02-01+json, application/json
+- **Content-Type**: application/vnd.atlas.2024-08-05+json
+- **Accept**: application/vnd.atlas.2024-08-05+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -99,7 +99,7 @@ Name | Type | Description  | Notes
 
 ## CreateManagedNamespace
 
-> GeoSharding CreateManagedNamespace(ctx, groupId, clusterName, managedNamespace ManagedNamespace).Execute()
+> GeoSharding20240805 CreateManagedNamespace(ctx, groupId, clusterName, managedNamespaces ManagedNamespaces).Execute()
 
 Create One Managed Namespace in One Global Cluster
 
@@ -114,7 +114,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530005/admin"
+    "go.mongodb.org/atlas-sdk/v20240805001/admin"
 )
 
 func main() {
@@ -129,9 +129,9 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
-    managedNamespace := *openapiclient.NewManagedNamespace() // ManagedNamespace | 
+    managedNamespaces := *openapiclient.NewManagedNamespaces("Collection_example", "CustomShardKey_example", "Db_example") // ManagedNamespaces | 
 
-    resp, r, err := sdk.GlobalClustersApi.CreateManagedNamespace(context.Background(), groupId, clusterName, &managedNamespace).Execute()
+    resp, r, err := sdk.GlobalClustersApi.CreateManagedNamespace(context.Background(), groupId, clusterName, &managedNamespaces).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GlobalClustersApi.CreateManagedNamespace`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -140,7 +140,7 @@ func main() {
         }
         return
     }
-    // response from `CreateManagedNamespace`: GeoSharding
+    // response from `CreateManagedNamespace`: GeoSharding20240805
     fmt.Fprintf(os.Stdout, "Response from `GlobalClustersApi.CreateManagedNamespace`: %v (%v)\n", resp, r)
 }
 ```
@@ -163,19 +163,19 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **managedNamespace** | [**ManagedNamespace**](ManagedNamespace.md) | Managed namespace to create within the specified global cluster. | 
+ **managedNamespaces** | [**ManagedNamespaces**](ManagedNamespaces.md) | Managed namespace to create within the specified global cluster. | 
 
 ### Return type
 
-[**GeoSharding**](GeoSharding.md)
+[**GeoSharding20240805**](GeoSharding20240805.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
 
 ### HTTP request headers
 
-- **Content-Type**: application/vnd.atlas.2023-02-01+json
-- **Accept**: application/vnd.atlas.2023-02-01+json, application/json
+- **Content-Type**: application/vnd.atlas.2024-08-05+json
+- **Accept**: application/vnd.atlas.2024-08-05+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -184,7 +184,7 @@ Name | Type | Description  | Notes
 
 ## DeleteAllCustomZoneMappings
 
-> GeoSharding DeleteAllCustomZoneMappings(ctx, groupId, clusterName).Execute()
+> GeoSharding20240805 DeleteAllCustomZoneMappings(ctx, groupId, clusterName).Execute()
 
 Remove All Custom Zone Mappings from One Global Cluster
 
@@ -199,7 +199,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530005/admin"
+    "go.mongodb.org/atlas-sdk/v20240805001/admin"
 )
 
 func main() {
@@ -224,7 +224,7 @@ func main() {
         }
         return
     }
-    // response from `DeleteAllCustomZoneMappings`: GeoSharding
+    // response from `DeleteAllCustomZoneMappings`: GeoSharding20240805
     fmt.Fprintf(os.Stdout, "Response from `GlobalClustersApi.DeleteAllCustomZoneMappings`: %v (%v)\n", resp, r)
 }
 ```
@@ -250,7 +250,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GeoSharding**](GeoSharding.md)
+[**GeoSharding20240805**](GeoSharding20240805.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -258,7 +258,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-02-01+json, application/json
+- **Accept**: application/vnd.atlas.2024-08-05+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -267,7 +267,7 @@ Name | Type | Description  | Notes
 
 ## DeleteManagedNamespace
 
-> GeoSharding DeleteManagedNamespace(ctx, clusterName, groupId).Db(db).Collection(collection).Execute()
+> GeoSharding20240805 DeleteManagedNamespace(ctx, clusterName, groupId).Db(db).Collection(collection).Execute()
 
 Remove One Managed Namespace from One Global Cluster
 
@@ -282,7 +282,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530005/admin"
+    "go.mongodb.org/atlas-sdk/v20240805001/admin"
 )
 
 func main() {
@@ -309,7 +309,7 @@ func main() {
         }
         return
     }
-    // response from `DeleteManagedNamespace`: GeoSharding
+    // response from `DeleteManagedNamespace`: GeoSharding20240805
     fmt.Fprintf(os.Stdout, "Response from `GlobalClustersApi.DeleteManagedNamespace`: %v (%v)\n", resp, r)
 }
 ```
@@ -337,7 +337,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GeoSharding**](GeoSharding.md)
+[**GeoSharding20240805**](GeoSharding20240805.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -345,7 +345,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-02-01+json, application/json
+- **Accept**: application/vnd.atlas.2024-08-05+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -354,7 +354,7 @@ Name | Type | Description  | Notes
 
 ## GetManagedNamespace
 
-> GeoSharding GetManagedNamespace(ctx, groupId, clusterName).Execute()
+> GeoSharding20240805 GetManagedNamespace(ctx, groupId, clusterName).Execute()
 
 Return One Managed Namespace in One Global Cluster
 
@@ -369,7 +369,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530005/admin"
+    "go.mongodb.org/atlas-sdk/v20240805001/admin"
 )
 
 func main() {
@@ -394,7 +394,7 @@ func main() {
         }
         return
     }
-    // response from `GetManagedNamespace`: GeoSharding
+    // response from `GetManagedNamespace`: GeoSharding20240805
     fmt.Fprintf(os.Stdout, "Response from `GlobalClustersApi.GetManagedNamespace`: %v (%v)\n", resp, r)
 }
 ```
@@ -420,7 +420,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GeoSharding**](GeoSharding.md)
+[**GeoSharding20240805**](GeoSharding20240805.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -428,7 +428,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-02-01+json, application/json
+- **Accept**: application/vnd.atlas.2024-08-05+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

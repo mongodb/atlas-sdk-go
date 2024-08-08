@@ -16,7 +16,7 @@ type FederationIdentityProviderUpdate struct {
 	IdpType *string `json:"idpType,omitempty"`
 	// Unique string that identifies the issuer of the SAML Assertion or OIDC metadata/discovery document URL.
 	IssuerUri *string `json:"issuerUri,omitempty"`
-	// The protocol of the identity provider. Either SAML or OIDC.
+	// String enum that indicates the protocol of the identity provider. Either SAML or OIDC.
 	Protocol *string `json:"protocol,omitempty"`
 	// List that contains the domains associated with the identity provider.
 	AssociatedDomains *[]string          `json:"associatedDomains,omitempty"`

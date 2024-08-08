@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20240530005/admin"
+	admin "go.mongodb.org/atlas-sdk/v20240805001/admin"
 
 	http "net/http"
 
@@ -75,24 +75,24 @@ func (_c *ProgrammaticAPIKeysApi_AddProjectApiKey_Call) RunAndReturn(run func(co
 }
 
 // AddProjectApiKeyExecute provides a mock function with given fields: r
-func (_m *ProgrammaticAPIKeysApi) AddProjectApiKeyExecute(r admin.AddProjectApiKeyApiRequest) (*admin.ApiKeyUserDetails, *http.Response, error) {
+func (_m *ProgrammaticAPIKeysApi) AddProjectApiKeyExecute(r admin.AddProjectApiKeyApiRequest) (interface{}, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for AddProjectApiKeyExecute")
 	}
 
-	var r0 *admin.ApiKeyUserDetails
+	var r0 interface{}
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.AddProjectApiKeyApiRequest) (*admin.ApiKeyUserDetails, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.AddProjectApiKeyApiRequest) (interface{}, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.AddProjectApiKeyApiRequest) *admin.ApiKeyUserDetails); ok {
+	if rf, ok := ret.Get(0).(func(admin.AddProjectApiKeyApiRequest) interface{}); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.ApiKeyUserDetails)
+			r0 = ret.Get(0).(interface{})
 		}
 	}
 
@@ -131,12 +131,12 @@ func (_c *ProgrammaticAPIKeysApi_AddProjectApiKeyExecute_Call) Run(run func(r ad
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_AddProjectApiKeyExecute_Call) Return(_a0 *admin.ApiKeyUserDetails, _a1 *http.Response, _a2 error) *ProgrammaticAPIKeysApi_AddProjectApiKeyExecute_Call {
+func (_c *ProgrammaticAPIKeysApi_AddProjectApiKeyExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *ProgrammaticAPIKeysApi_AddProjectApiKeyExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ProgrammaticAPIKeysApi_AddProjectApiKeyExecute_Call) RunAndReturn(run func(admin.AddProjectApiKeyApiRequest) (*admin.ApiKeyUserDetails, *http.Response, error)) *ProgrammaticAPIKeysApi_AddProjectApiKeyExecute_Call {
+func (_c *ProgrammaticAPIKeysApi_AddProjectApiKeyExecute_Call) RunAndReturn(run func(admin.AddProjectApiKeyApiRequest) (interface{}, *http.Response, error)) *ProgrammaticAPIKeysApi_AddProjectApiKeyExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }

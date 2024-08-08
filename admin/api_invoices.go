@@ -7,6 +7,7 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+	"reflect"
 	"strings"
 )
 
@@ -643,6 +644,11 @@ type ListInvoicesApiRequest struct {
 	itemsPerPage       *int
 	pageNum            *int
 	viewLinkedInvoices *bool
+	statusNames        *[]string
+	fromDate           *string
+	toDate             *string
+	sortBy             *string
+	orderBy            *string
 }
 
 type ListInvoicesApiParams struct {
@@ -651,6 +657,11 @@ type ListInvoicesApiParams struct {
 	ItemsPerPage       *int
 	PageNum            *int
 	ViewLinkedInvoices *bool
+	StatusNames        *[]string
+	FromDate           *string
+	ToDate             *string
+	SortBy             *string
+	OrderBy            *string
 }
 
 func (a *InvoicesApiService) ListInvoicesWithParams(ctx context.Context, args *ListInvoicesApiParams) ListInvoicesApiRequest {
@@ -662,6 +673,11 @@ func (a *InvoicesApiService) ListInvoicesWithParams(ctx context.Context, args *L
 		itemsPerPage:       args.ItemsPerPage,
 		pageNum:            args.PageNum,
 		viewLinkedInvoices: args.ViewLinkedInvoices,
+		statusNames:        args.StatusNames,
+		fromDate:           args.FromDate,
+		toDate:             args.ToDate,
+		sortBy:             args.SortBy,
+		orderBy:            args.OrderBy,
 	}
 }
 
@@ -686,6 +702,36 @@ func (r ListInvoicesApiRequest) PageNum(pageNum int) ListInvoicesApiRequest {
 // Flag that indicates whether to return linked invoices in the linkedInvoices field.
 func (r ListInvoicesApiRequest) ViewLinkedInvoices(viewLinkedInvoices bool) ListInvoicesApiRequest {
 	r.viewLinkedInvoices = &viewLinkedInvoices
+	return r
+}
+
+// Statuses of the invoice to be retrieved. Omit to return invoices of all statuses.
+func (r ListInvoicesApiRequest) StatusNames(statusNames []string) ListInvoicesApiRequest {
+	r.statusNames = &statusNames
+	return r
+}
+
+// Retrieve the invoices the startDates of which are greater than or equal to the fromDate. If omit, the invoices return will go back to earliest startDate.
+func (r ListInvoicesApiRequest) FromDate(fromDate string) ListInvoicesApiRequest {
+	r.fromDate = &fromDate
+	return r
+}
+
+// Retrieve the invoices the endDates of which are smaller than or equal to the toDate. If omit, the invoices return will go further to latest endDate.
+func (r ListInvoicesApiRequest) ToDate(toDate string) ListInvoicesApiRequest {
+	r.toDate = &toDate
+	return r
+}
+
+// Field used to sort the returned invoices by. Use in combination with orderBy parameter to control the order of the result.
+func (r ListInvoicesApiRequest) SortBy(sortBy string) ListInvoicesApiRequest {
+	r.sortBy = &sortBy
+	return r
+}
+
+// Field used to order the returned invoices by. Use in combination of sortBy parameter to control the order of the result.
+func (r ListInvoicesApiRequest) OrderBy(orderBy string) ListInvoicesApiRequest {
+	r.orderBy = &orderBy
 	return r
 }
 
@@ -761,6 +807,33 @@ func (a *InvoicesApiService) ListInvoicesExecute(r ListInvoicesApiRequest) (*Pag
 		var defaultValue bool = true
 		r.viewLinkedInvoices = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "viewLinkedInvoices", r.viewLinkedInvoices, "")
+	}
+	if r.statusNames != nil {
+		t := *r.statusNames
+		// Workaround for unused import
+		_ = reflect.Append
+		parameterAddToHeaderOrQuery(localVarQueryParams, "statusNames", t, "multi")
+
+	}
+	if r.fromDate != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "fromDate", r.fromDate, "")
+	}
+	if r.toDate != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "toDate", r.toDate, "")
+	}
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sortBy", r.sortBy, "")
+	} else {
+		var defaultValue string = "END_DATE"
+		r.sortBy = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sortBy", r.sortBy, "")
+	}
+	if r.orderBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "orderBy", r.orderBy, "")
+	} else {
+		var defaultValue string = "desc"
+		r.orderBy = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "orderBy", r.orderBy, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

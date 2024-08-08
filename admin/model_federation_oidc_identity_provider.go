@@ -33,7 +33,7 @@ type FederationOidcIdentityProvider struct {
 	IssuerUri *string `json:"issuerUri,omitempty"`
 	// Legacy 20-hexadecimal digit string that identifies the identity provider.
 	OktaIdpId string `json:"oktaIdpId"`
-	// The protocol of the identity provider. Either SAML or OIDC.
+	// String enum that indicates the protocol of the identity provider. Either SAML or OIDC.
 	Protocol *string `json:"protocol,omitempty"`
 	// Date that the identity provider was last updated on.
 	// Read only field.

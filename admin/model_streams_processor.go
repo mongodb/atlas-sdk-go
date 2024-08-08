@@ -10,15 +10,15 @@ import (
 type StreamsProcessor struct {
 	// Unique 24-hexadecimal character string that identifies the stream processor.
 	// Read only field.
-	Id  *string     `json:"_id,omitempty"`
-	Dlq *StreamsDLQ `json:"dlq,omitempty"`
+	Id *string `json:"_id,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
 	// Human-readable name of the stream processor.
-	Name *string `json:"name,omitempty"`
+	Name    *string         `json:"name,omitempty"`
+	Options *StreamsOptions `json:"options,omitempty"`
 	// Stream aggregation pipeline you want to apply to your streaming data.
-	Pipeline *string `json:"pipeline,omitempty"`
+	Pipeline *[]interface{} `json:"pipeline,omitempty"`
 }
 
 // NewStreamsProcessor instantiates a new StreamsProcessor object
@@ -69,39 +69,6 @@ func (o *StreamsProcessor) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *StreamsProcessor) SetId(v string) {
 	o.Id = &v
-}
-
-// GetDlq returns the Dlq field value if set, zero value otherwise
-func (o *StreamsProcessor) GetDlq() StreamsDLQ {
-	if o == nil || IsNil(o.Dlq) {
-		var ret StreamsDLQ
-		return ret
-	}
-	return *o.Dlq
-}
-
-// GetDlqOk returns a tuple with the Dlq field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *StreamsProcessor) GetDlqOk() (*StreamsDLQ, bool) {
-	if o == nil || IsNil(o.Dlq) {
-		return nil, false
-	}
-
-	return o.Dlq, true
-}
-
-// HasDlq returns a boolean if a field has been set.
-func (o *StreamsProcessor) HasDlq() bool {
-	if o != nil && !IsNil(o.Dlq) {
-		return true
-	}
-
-	return false
-}
-
-// SetDlq gets a reference to the given StreamsDLQ and assigns it to the Dlq field.
-func (o *StreamsProcessor) SetDlq(v StreamsDLQ) {
-	o.Dlq = &v
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -170,10 +137,43 @@ func (o *StreamsProcessor) SetName(v string) {
 	o.Name = &v
 }
 
+// GetOptions returns the Options field value if set, zero value otherwise
+func (o *StreamsProcessor) GetOptions() StreamsOptions {
+	if o == nil || IsNil(o.Options) {
+		var ret StreamsOptions
+		return ret
+	}
+	return *o.Options
+}
+
+// GetOptionsOk returns a tuple with the Options field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsProcessor) GetOptionsOk() (*StreamsOptions, bool) {
+	if o == nil || IsNil(o.Options) {
+		return nil, false
+	}
+
+	return o.Options, true
+}
+
+// HasOptions returns a boolean if a field has been set.
+func (o *StreamsProcessor) HasOptions() bool {
+	if o != nil && !IsNil(o.Options) {
+		return true
+	}
+
+	return false
+}
+
+// SetOptions gets a reference to the given StreamsOptions and assigns it to the Options field.
+func (o *StreamsProcessor) SetOptions(v StreamsOptions) {
+	o.Options = &v
+}
+
 // GetPipeline returns the Pipeline field value if set, zero value otherwise
-func (o *StreamsProcessor) GetPipeline() string {
+func (o *StreamsProcessor) GetPipeline() []interface{} {
 	if o == nil || IsNil(o.Pipeline) {
-		var ret string
+		var ret []interface{}
 		return ret
 	}
 	return *o.Pipeline
@@ -181,7 +181,7 @@ func (o *StreamsProcessor) GetPipeline() string {
 
 // GetPipelineOk returns a tuple with the Pipeline field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StreamsProcessor) GetPipelineOk() (*string, bool) {
+func (o *StreamsProcessor) GetPipelineOk() (*[]interface{}, bool) {
 	if o == nil || IsNil(o.Pipeline) {
 		return nil, false
 	}
@@ -198,8 +198,8 @@ func (o *StreamsProcessor) HasPipeline() bool {
 	return false
 }
 
-// SetPipeline gets a reference to the given string and assigns it to the Pipeline field.
-func (o *StreamsProcessor) SetPipeline(v string) {
+// SetPipeline gets a reference to the given []interface{} and assigns it to the Pipeline field.
+func (o *StreamsProcessor) SetPipeline(v []interface{}) {
 	o.Pipeline = &v
 }
 
@@ -212,11 +212,11 @@ func (o StreamsProcessor) MarshalJSONWithoutReadOnly() ([]byte, error) {
 }
 func (o StreamsProcessor) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Dlq) {
-		toSerialize["dlq"] = o.Dlq
-	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Options) {
+		toSerialize["options"] = o.Options
 	}
 	if !IsNil(o.Pipeline) {
 		toSerialize["pipeline"] = o.Pipeline

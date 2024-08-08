@@ -37,7 +37,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530005/admin"
+    "go.mongodb.org/atlas-sdk/v20240805001/admin"
 )
 
 func main() {
@@ -119,7 +119,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530005/admin"
+    "go.mongodb.org/atlas-sdk/v20240805001/admin"
 )
 
 func main() {
@@ -201,7 +201,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530005/admin"
+    "go.mongodb.org/atlas-sdk/v20240805001/admin"
 )
 
 func main() {
@@ -284,7 +284,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530005/admin"
+    "go.mongodb.org/atlas-sdk/v20240805001/admin"
 )
 
 func main() {
@@ -367,7 +367,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530005/admin"
+    "go.mongodb.org/atlas-sdk/v20240805001/admin"
 )
 
 func main() {
@@ -449,7 +449,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530005/admin"
+    "go.mongodb.org/atlas-sdk/v20240805001/admin"
 )
 
 func main() {
@@ -532,7 +532,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530005/admin"
+    "go.mongodb.org/atlas-sdk/v20240805001/admin"
 )
 
 func main() {
@@ -569,7 +569,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**containerId** | **string** | Unique 24-hexadecimal digit string that identifies the MongoDB Cloud network container that you want to remove. | 
+**containerId** | **string** | Unique 24-hexadecimal digit string that identifies the MongoDB Cloud network container. | 
 
 ### Other Parameters
 
@@ -615,7 +615,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530005/admin"
+    "go.mongodb.org/atlas-sdk/v20240805001/admin"
 )
 
 func main() {
@@ -703,7 +703,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530005/admin"
+    "go.mongodb.org/atlas-sdk/v20240805001/admin"
 )
 
 func main() {
@@ -791,7 +791,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530005/admin"
+    "go.mongodb.org/atlas-sdk/v20240805001/admin"
 )
 
 func main() {
@@ -877,7 +877,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530005/admin"
+    "go.mongodb.org/atlas-sdk/v20240805001/admin"
 )
 
 func main() {
@@ -962,7 +962,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530005/admin"
+    "go.mongodb.org/atlas-sdk/v20240805001/admin"
 )
 
 func main() {
@@ -1047,7 +1047,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530005/admin"
+    "go.mongodb.org/atlas-sdk/v20240805001/admin"
 )
 
 func main() {

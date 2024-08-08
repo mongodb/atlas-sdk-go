@@ -24,7 +24,7 @@ Method | HTTP request | Description
 
 ## CreateCluster
 
-> AdvancedClusterDescription CreateCluster(ctx, groupId, advancedClusterDescription AdvancedClusterDescription).Execute()
+> ClusterDescription20240805 CreateCluster(ctx, groupId, clusterDescription20240805 ClusterDescription20240805).Execute()
 
 Create One Cluster from One Project
 
@@ -39,7 +39,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530005/admin"
+    "go.mongodb.org/atlas-sdk/v20240805001/admin"
 )
 
 func main() {
@@ -53,9 +53,9 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    advancedClusterDescription := *openapiclient.NewAdvancedClusterDescription() // AdvancedClusterDescription | 
+    clusterDescription20240805 := *openapiclient.NewClusterDescription20240805() // ClusterDescription20240805 | 
 
-    resp, r, err := sdk.ClustersApi.CreateCluster(context.Background(), groupId, &advancedClusterDescription).Execute()
+    resp, r, err := sdk.ClustersApi.CreateCluster(context.Background(), groupId, &clusterDescription20240805).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.CreateCluster`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -64,7 +64,7 @@ func main() {
         }
         return
     }
-    // response from `CreateCluster`: AdvancedClusterDescription
+    // response from `CreateCluster`: ClusterDescription20240805
     fmt.Fprintf(os.Stdout, "Response from `ClustersApi.CreateCluster`: %v (%v)\n", resp, r)
 }
 ```
@@ -85,19 +85,19 @@ Other parameters are passed through a pointer to a apiCreateClusterRequest struc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **advancedClusterDescription** | [**AdvancedClusterDescription**](AdvancedClusterDescription.md) | Cluster to create in the specific project. | 
+ **clusterDescription20240805** | [**ClusterDescription20240805**](ClusterDescription20240805.md) | Cluster to create in the specific project. | 
 
 ### Return type
 
-[**AdvancedClusterDescription**](AdvancedClusterDescription.md)
+[**ClusterDescription20240805**](ClusterDescription20240805.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
 
 ### HTTP request headers
 
-- **Content-Type**: application/vnd.atlas.2023-02-01+json
-- **Accept**: application/vnd.atlas.2023-02-01+json, application/json
+- **Content-Type**: application/vnd.atlas.2024-08-05+json
+- **Accept**: application/vnd.atlas.2024-08-05+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -121,7 +121,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530005/admin"
+    "go.mongodb.org/atlas-sdk/v20240805001/admin"
 )
 
 func main() {
@@ -189,7 +189,7 @@ Name | Type | Description  | Notes
 
 ## GetCluster
 
-> AdvancedClusterDescription GetCluster(ctx, groupId, clusterName).Execute()
+> ClusterDescription20240805 GetCluster(ctx, groupId, clusterName).Execute()
 
 Return One Cluster from One Project
 
@@ -204,7 +204,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530005/admin"
+    "go.mongodb.org/atlas-sdk/v20240805001/admin"
 )
 
 func main() {
@@ -229,7 +229,7 @@ func main() {
         }
         return
     }
-    // response from `GetCluster`: AdvancedClusterDescription
+    // response from `GetCluster`: ClusterDescription20240805
     fmt.Fprintf(os.Stdout, "Response from `ClustersApi.GetCluster`: %v (%v)\n", resp, r)
 }
 ```
@@ -255,7 +255,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AdvancedClusterDescription**](AdvancedClusterDescription.md)
+[**ClusterDescription20240805**](ClusterDescription20240805.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -263,7 +263,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-02-01+json, application/json
+- **Accept**: application/vnd.atlas.2024-08-05+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -272,7 +272,7 @@ Name | Type | Description  | Notes
 
 ## GetClusterAdvancedConfiguration
 
-> ClusterDescriptionProcessArgs GetClusterAdvancedConfiguration(ctx, groupId, clusterName).Execute()
+> ClusterDescriptionProcessArgs20240805 GetClusterAdvancedConfiguration(ctx, groupId, clusterName).Execute()
 
 Return One Advanced Configuration Options for One Cluster
 
@@ -287,7 +287,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530005/admin"
+    "go.mongodb.org/atlas-sdk/v20240805001/admin"
 )
 
 func main() {
@@ -312,7 +312,7 @@ func main() {
         }
         return
     }
-    // response from `GetClusterAdvancedConfiguration`: ClusterDescriptionProcessArgs
+    // response from `GetClusterAdvancedConfiguration`: ClusterDescriptionProcessArgs20240805
     fmt.Fprintf(os.Stdout, "Response from `ClustersApi.GetClusterAdvancedConfiguration`: %v (%v)\n", resp, r)
 }
 ```
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ClusterDescriptionProcessArgs**](ClusterDescriptionProcessArgs.md)
+[**ClusterDescriptionProcessArgs20240805**](ClusterDescriptionProcessArgs20240805.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -346,7 +346,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-01-01+json, application/json
+- **Accept**: application/vnd.atlas.2024-08-05+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -370,7 +370,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530005/admin"
+    "go.mongodb.org/atlas-sdk/v20240805001/admin"
 )
 
 func main() {
@@ -453,7 +453,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530005/admin"
+    "go.mongodb.org/atlas-sdk/v20240805001/admin"
 )
 
 func main() {
@@ -536,7 +536,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530005/admin"
+    "go.mongodb.org/atlas-sdk/v20240805001/admin"
 )
 
 func main() {
@@ -611,7 +611,7 @@ Name | Type | Description  | Notes
 
 ## ListClusters
 
-> PaginatedAdvancedClusterDescription ListClusters(ctx, groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).IncludeDeletedWithRetainedBackups(includeDeletedWithRetainedBackups).Execute()
+> PaginatedClusterDescription20240805 ListClusters(ctx, groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).IncludeDeletedWithRetainedBackups(includeDeletedWithRetainedBackups).Execute()
 
 Return All Clusters in One Project
 
@@ -626,7 +626,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530005/admin"
+    "go.mongodb.org/atlas-sdk/v20240805001/admin"
 )
 
 func main() {
@@ -654,7 +654,7 @@ func main() {
         }
         return
     }
-    // response from `ListClusters`: PaginatedAdvancedClusterDescription
+    // response from `ListClusters`: PaginatedClusterDescription20240805
     fmt.Fprintf(os.Stdout, "Response from `ClustersApi.ListClusters`: %v (%v)\n", resp, r)
 }
 ```
@@ -682,7 +682,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PaginatedAdvancedClusterDescription**](PaginatedAdvancedClusterDescription.md)
+[**PaginatedClusterDescription20240805**](PaginatedClusterDescription20240805.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -690,7 +690,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-02-01+json, application/json
+- **Accept**: application/vnd.atlas.2024-08-05+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -714,7 +714,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530005/admin"
+    "go.mongodb.org/atlas-sdk/v20240805001/admin"
 )
 
 func main() {
@@ -794,7 +794,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530005/admin"
+    "go.mongodb.org/atlas-sdk/v20240805001/admin"
 )
 
 func main() {
@@ -877,7 +877,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530005/admin"
+    "go.mongodb.org/atlas-sdk/v20240805001/admin"
 )
 
 func main() {
@@ -943,7 +943,7 @@ Name | Type | Description  | Notes
 
 ## UpdateCluster
 
-> AdvancedClusterDescription UpdateCluster(ctx, groupId, clusterName, advancedClusterDescription AdvancedClusterDescription).Execute()
+> ClusterDescription20240805 UpdateCluster(ctx, groupId, clusterName, clusterDescription20240805 ClusterDescription20240805).Execute()
 
 Modify One Cluster from One Project
 
@@ -958,7 +958,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530005/admin"
+    "go.mongodb.org/atlas-sdk/v20240805001/admin"
 )
 
 func main() {
@@ -973,9 +973,9 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
-    advancedClusterDescription := *openapiclient.NewAdvancedClusterDescription() // AdvancedClusterDescription | 
+    clusterDescription20240805 := *openapiclient.NewClusterDescription20240805() // ClusterDescription20240805 | 
 
-    resp, r, err := sdk.ClustersApi.UpdateCluster(context.Background(), groupId, clusterName, &advancedClusterDescription).Execute()
+    resp, r, err := sdk.ClustersApi.UpdateCluster(context.Background(), groupId, clusterName, &clusterDescription20240805).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.UpdateCluster`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -984,7 +984,7 @@ func main() {
         }
         return
     }
-    // response from `UpdateCluster`: AdvancedClusterDescription
+    // response from `UpdateCluster`: ClusterDescription20240805
     fmt.Fprintf(os.Stdout, "Response from `ClustersApi.UpdateCluster`: %v (%v)\n", resp, r)
 }
 ```
@@ -1007,19 +1007,19 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **advancedClusterDescription** | [**AdvancedClusterDescription**](AdvancedClusterDescription.md) | Cluster to update in the specified project. | 
+ **clusterDescription20240805** | [**ClusterDescription20240805**](ClusterDescription20240805.md) | Cluster to update in the specified project. | 
 
 ### Return type
 
-[**AdvancedClusterDescription**](AdvancedClusterDescription.md)
+[**ClusterDescription20240805**](ClusterDescription20240805.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
 
 ### HTTP request headers
 
-- **Content-Type**: application/vnd.atlas.2023-02-01+json
-- **Accept**: application/vnd.atlas.2023-02-01+json, application/json
+- **Content-Type**: application/vnd.atlas.2024-08-05+json
+- **Accept**: application/vnd.atlas.2024-08-05+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -1028,7 +1028,7 @@ Name | Type | Description  | Notes
 
 ## UpdateClusterAdvancedConfiguration
 
-> ClusterDescriptionProcessArgs UpdateClusterAdvancedConfiguration(ctx, groupId, clusterName, clusterDescriptionProcessArgs ClusterDescriptionProcessArgs).Execute()
+> ClusterDescriptionProcessArgs20240805 UpdateClusterAdvancedConfiguration(ctx, groupId, clusterName, clusterDescriptionProcessArgs20240805 ClusterDescriptionProcessArgs20240805).Execute()
 
 Update Advanced Configuration Options for One Cluster
 
@@ -1043,7 +1043,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530005/admin"
+    "go.mongodb.org/atlas-sdk/v20240805001/admin"
 )
 
 func main() {
@@ -1058,9 +1058,9 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
-    clusterDescriptionProcessArgs := *openapiclient.NewClusterDescriptionProcessArgs() // ClusterDescriptionProcessArgs | 
+    clusterDescriptionProcessArgs20240805 := *openapiclient.NewClusterDescriptionProcessArgs20240805() // ClusterDescriptionProcessArgs20240805 | 
 
-    resp, r, err := sdk.ClustersApi.UpdateClusterAdvancedConfiguration(context.Background(), groupId, clusterName, &clusterDescriptionProcessArgs).Execute()
+    resp, r, err := sdk.ClustersApi.UpdateClusterAdvancedConfiguration(context.Background(), groupId, clusterName, &clusterDescriptionProcessArgs20240805).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.UpdateClusterAdvancedConfiguration`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -1069,7 +1069,7 @@ func main() {
         }
         return
     }
-    // response from `UpdateClusterAdvancedConfiguration`: ClusterDescriptionProcessArgs
+    // response from `UpdateClusterAdvancedConfiguration`: ClusterDescriptionProcessArgs20240805
     fmt.Fprintf(os.Stdout, "Response from `ClustersApi.UpdateClusterAdvancedConfiguration`: %v (%v)\n", resp, r)
 }
 ```
@@ -1092,19 +1092,19 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **clusterDescriptionProcessArgs** | [**ClusterDescriptionProcessArgs**](ClusterDescriptionProcessArgs.md) | Advanced configuration details to add for one cluster in the specified project. | 
+ **clusterDescriptionProcessArgs20240805** | [**ClusterDescriptionProcessArgs20240805**](ClusterDescriptionProcessArgs20240805.md) | Advanced configuration details to add for one cluster in the specified project. | 
 
 ### Return type
 
-[**ClusterDescriptionProcessArgs**](ClusterDescriptionProcessArgs.md)
+[**ClusterDescriptionProcessArgs20240805**](ClusterDescriptionProcessArgs20240805.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
 
 ### HTTP request headers
 
-- **Content-Type**: application/vnd.atlas.2023-01-01+json
-- **Accept**: application/vnd.atlas.2023-01-01+json, application/json
+- **Content-Type**: application/vnd.atlas.2024-08-05+json
+- **Accept**: application/vnd.atlas.2024-08-05+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -1128,7 +1128,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530005/admin"
+    "go.mongodb.org/atlas-sdk/v20240805001/admin"
 )
 
 func main() {
@@ -1210,7 +1210,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240530005/admin"
+    "go.mongodb.org/atlas-sdk/v20240805001/admin"
 )
 
 func main() {

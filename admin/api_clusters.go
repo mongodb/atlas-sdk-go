@@ -16,14 +16,14 @@ type ClustersApi interface {
 	/*
 		CreateCluster Create One Cluster from One Project
 
-		Creates one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. This resource can create clusters with asymmetrically-sized shards. Each project supports up to 25 database deployments. To use this resource, the requesting API Key must have the Project Owner role. This feature is not available for serverless clusters. Deprecated versions: v2-{2023-01-01}
+		Creates one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. This resource can create clusters with asymmetrically-sized shards. Each project supports up to 25 database deployments. To use this resource, the requesting API Key must have the Project Owner role. This feature is not available for serverless clusters. Deprecated versions: v2-{2023-02-01}, v2-{2023-01-01}
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param advancedClusterDescription Cluster to create in the specific project.
+		@param clusterDescription20240805 Cluster to create in the specific project.
 		@return CreateClusterApiRequest
 	*/
-	CreateCluster(ctx context.Context, groupId string, advancedClusterDescription *AdvancedClusterDescription) CreateClusterApiRequest
+	CreateCluster(ctx context.Context, groupId string, clusterDescription20240805 *ClusterDescription20240805) CreateClusterApiRequest
 	/*
 		CreateCluster Create One Cluster from One Project
 
@@ -35,7 +35,7 @@ type ClustersApi interface {
 	CreateClusterWithParams(ctx context.Context, args *CreateClusterApiParams) CreateClusterApiRequest
 
 	// Method available only for mocking purposes
-	CreateClusterExecute(r CreateClusterApiRequest) (*AdvancedClusterDescription, *http.Response, error)
+	CreateClusterExecute(r CreateClusterApiRequest) (*ClusterDescription20240805, *http.Response, error)
 
 	/*
 		DeleteCluster Remove One Cluster from One Project
@@ -64,7 +64,7 @@ type ClustersApi interface {
 	/*
 		GetCluster Return One Cluster from One Project
 
-		Returns the details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. The response includes clusters with asymmetrically-sized shards. To use this resource, the requesting API Key must have the Project Read Only role. This feature is not available for serverless clusters. Deprecated versions: v2-{2023-01-01}
+		Returns the details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. The response includes clusters with asymmetrically-sized shards. To use this resource, the requesting API Key must have the Project Read Only role. This feature is not available for serverless clusters. Deprecated versions: v2-{2023-02-01}, v2-{2023-01-01}
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -83,12 +83,12 @@ type ClustersApi interface {
 	GetClusterWithParams(ctx context.Context, args *GetClusterApiParams) GetClusterApiRequest
 
 	// Method available only for mocking purposes
-	GetClusterExecute(r GetClusterApiRequest) (*AdvancedClusterDescription, *http.Response, error)
+	GetClusterExecute(r GetClusterApiRequest) (*ClusterDescription20240805, *http.Response, error)
 
 	/*
 		GetClusterAdvancedConfiguration Return One Advanced Configuration Options for One Cluster
 
-		Returns the advanced configuration details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. Advanced configuration details include the read/write concern, index and oplog limits, and other database settings. This feature isn't available for `M0` free clusters, `M2` and `M5` shared-tier clusters, or serverless clusters. To use this resource, the requesting API Key must have the Project Read Only role.
+		Returns the advanced configuration details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. Advanced configuration details include the read/write concern, index and oplog limits, and other database settings. This feature isn't available for `M0` free clusters, `M2` and `M5` shared-tier clusters, or serverless clusters. To use this resource, the requesting API Key must have the Project Read Only role. Deprecated versions: v2-{2023-01-01}
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -107,7 +107,7 @@ type ClustersApi interface {
 	GetClusterAdvancedConfigurationWithParams(ctx context.Context, args *GetClusterAdvancedConfigurationApiParams) GetClusterAdvancedConfigurationApiRequest
 
 	// Method available only for mocking purposes
-	GetClusterAdvancedConfigurationExecute(r GetClusterAdvancedConfigurationApiRequest) (*ClusterDescriptionProcessArgs, *http.Response, error)
+	GetClusterAdvancedConfigurationExecute(r GetClusterAdvancedConfigurationApiRequest) (*ClusterDescriptionProcessArgs20240805, *http.Response, error)
 
 	/*
 		GetClusterStatus Return Status of All Cluster Operations
@@ -183,7 +183,7 @@ type ClustersApi interface {
 	/*
 		ListClusters Return All Clusters in One Project
 
-		Returns the details for all clusters in the specific project to which you have access. Clusters contain a group of hosts that maintain the same data set. The response includes clusters with asymmetrically-sized shards. To use this resource, the requesting API Key must have the Project Read Only role. This feature is not  available for serverless clusters. Deprecated versions: v2-{2023-01-01}
+		Returns the details for all clusters in the specific project to which you have access. Clusters contain a group of hosts that maintain the same data set. The response includes clusters with asymmetrically-sized shards. To use this resource, the requesting API Key must have the Project Read Only role. This feature is not  available for serverless clusters. Deprecated versions: v2-{2023-02-01}, v2-{2023-01-01}
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -201,7 +201,7 @@ type ClustersApi interface {
 	ListClustersWithParams(ctx context.Context, args *ListClustersApiParams) ListClustersApiRequest
 
 	// Method available only for mocking purposes
-	ListClustersExecute(r ListClustersApiRequest) (*PaginatedAdvancedClusterDescription, *http.Response, error)
+	ListClustersExecute(r ListClustersApiRequest) (*PaginatedClusterDescription20240805, *http.Response, error)
 
 	/*
 		ListClustersForAllProjects Return All Authorized Clusters in All Projects
@@ -276,15 +276,15 @@ type ClustersApi interface {
 	/*
 		UpdateCluster Modify One Cluster from One Project
 
-		Updates the details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. This resource can update clusters with asymmetrically-sized shards. To update a cluster's termination protection, the requesting API Key must have the Project Owner role. For all other updates, the requesting API Key must have the Project Cluster Manager role. You can't modify a paused cluster (`paused : true`). You must call this endpoint to set `paused : false`. After this endpoint responds with `paused : false`, you can call it again with the changes you want to make to the cluster. This feature is not available for serverless clusters. Deprecated versions: v2-{2023-01-01}
+		Updates the details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. This resource can update clusters with asymmetrically-sized shards. To update a cluster's termination protection, the requesting API Key must have the Project Owner role. For all other updates, the requesting API Key must have the Project Cluster Manager role. You can't modify a paused cluster (`paused : true`). You must call this endpoint to set `paused : false`. After this endpoint responds with `paused : false`, you can call it again with the changes you want to make to the cluster. This feature is not available for serverless clusters. Deprecated versions: v2-{2023-02-01}, v2-{2023-01-01}
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param clusterName Human-readable label that identifies the cluster.
-		@param advancedClusterDescription Cluster to update in the specified project.
+		@param clusterDescription20240805 Cluster to update in the specified project.
 		@return UpdateClusterApiRequest
 	*/
-	UpdateCluster(ctx context.Context, groupId string, clusterName string, advancedClusterDescription *AdvancedClusterDescription) UpdateClusterApiRequest
+	UpdateCluster(ctx context.Context, groupId string, clusterName string, clusterDescription20240805 *ClusterDescription20240805) UpdateClusterApiRequest
 	/*
 		UpdateCluster Modify One Cluster from One Project
 
@@ -296,20 +296,20 @@ type ClustersApi interface {
 	UpdateClusterWithParams(ctx context.Context, args *UpdateClusterApiParams) UpdateClusterApiRequest
 
 	// Method available only for mocking purposes
-	UpdateClusterExecute(r UpdateClusterApiRequest) (*AdvancedClusterDescription, *http.Response, error)
+	UpdateClusterExecute(r UpdateClusterApiRequest) (*ClusterDescription20240805, *http.Response, error)
 
 	/*
 		UpdateClusterAdvancedConfiguration Update Advanced Configuration Options for One Cluster
 
-		Updates the advanced configuration details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. Advanced configuration details include the read/write concern, index and oplog limits, and other database settings. To use this resource, the requesting API Key must have the Project Cluster Manager role. This feature isn't available for `M0` free clusters, `M2` and `M5` shared-tier clusters, or serverless clusters.
+		Updates the advanced configuration details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. Advanced configuration details include the read/write concern, index and oplog limits, and other database settings. To use this resource, the requesting API Key must have the Project Cluster Manager role. This feature isn't available for `M0` free clusters, `M2` and `M5` shared-tier clusters, or serverless clusters. Deprecated versions: v2-{2023-01-01}
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param clusterName Human-readable label that identifies the cluster.
-		@param clusterDescriptionProcessArgs Advanced configuration details to add for one cluster in the specified project.
+		@param clusterDescriptionProcessArgs20240805 Advanced configuration details to add for one cluster in the specified project.
 		@return UpdateClusterAdvancedConfigurationApiRequest
 	*/
-	UpdateClusterAdvancedConfiguration(ctx context.Context, groupId string, clusterName string, clusterDescriptionProcessArgs *ClusterDescriptionProcessArgs) UpdateClusterAdvancedConfigurationApiRequest
+	UpdateClusterAdvancedConfiguration(ctx context.Context, groupId string, clusterName string, clusterDescriptionProcessArgs20240805 *ClusterDescriptionProcessArgs20240805) UpdateClusterAdvancedConfigurationApiRequest
 	/*
 		UpdateClusterAdvancedConfiguration Update Advanced Configuration Options for One Cluster
 
@@ -321,7 +321,7 @@ type ClustersApi interface {
 	UpdateClusterAdvancedConfigurationWithParams(ctx context.Context, args *UpdateClusterAdvancedConfigurationApiParams) UpdateClusterAdvancedConfigurationApiRequest
 
 	// Method available only for mocking purposes
-	UpdateClusterAdvancedConfigurationExecute(r UpdateClusterAdvancedConfigurationApiRequest) (*ClusterDescriptionProcessArgs, *http.Response, error)
+	UpdateClusterAdvancedConfigurationExecute(r UpdateClusterAdvancedConfigurationApiRequest) (*ClusterDescriptionProcessArgs20240805, *http.Response, error)
 
 	/*
 		UpgradeSharedCluster Upgrade One Shared-tier Cluster
@@ -379,12 +379,12 @@ type CreateClusterApiRequest struct {
 	ctx                        context.Context
 	ApiService                 ClustersApi
 	groupId                    string
-	advancedClusterDescription *AdvancedClusterDescription
+	clusterDescription20240805 *ClusterDescription20240805
 }
 
 type CreateClusterApiParams struct {
 	GroupId                    string
-	AdvancedClusterDescription *AdvancedClusterDescription
+	ClusterDescription20240805 *ClusterDescription20240805
 }
 
 func (a *ClustersApiService) CreateClusterWithParams(ctx context.Context, args *CreateClusterApiParams) CreateClusterApiRequest {
@@ -392,41 +392,41 @@ func (a *ClustersApiService) CreateClusterWithParams(ctx context.Context, args *
 		ApiService:                 a,
 		ctx:                        ctx,
 		groupId:                    args.GroupId,
-		advancedClusterDescription: args.AdvancedClusterDescription,
+		clusterDescription20240805: args.ClusterDescription20240805,
 	}
 }
 
-func (r CreateClusterApiRequest) Execute() (*AdvancedClusterDescription, *http.Response, error) {
+func (r CreateClusterApiRequest) Execute() (*ClusterDescription20240805, *http.Response, error) {
 	return r.ApiService.CreateClusterExecute(r)
 }
 
 /*
 CreateCluster Create One Cluster from One Project
 
-Creates one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. This resource can create clusters with asymmetrically-sized shards. Each project supports up to 25 database deployments. To use this resource, the requesting API Key must have the Project Owner role. This feature is not available for serverless clusters. Deprecated versions: v2-{2023-01-01}
+Creates one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. This resource can create clusters with asymmetrically-sized shards. Each project supports up to 25 database deployments. To use this resource, the requesting API Key must have the Project Owner role. This feature is not available for serverless clusters. Deprecated versions: v2-{2023-02-01}, v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return CreateClusterApiRequest
 */
-func (a *ClustersApiService) CreateCluster(ctx context.Context, groupId string, advancedClusterDescription *AdvancedClusterDescription) CreateClusterApiRequest {
+func (a *ClustersApiService) CreateCluster(ctx context.Context, groupId string, clusterDescription20240805 *ClusterDescription20240805) CreateClusterApiRequest {
 	return CreateClusterApiRequest{
 		ApiService:                 a,
 		ctx:                        ctx,
 		groupId:                    groupId,
-		advancedClusterDescription: advancedClusterDescription,
+		clusterDescription20240805: clusterDescription20240805,
 	}
 }
 
 // Execute executes the request
 //
-//	@return AdvancedClusterDescription
-func (a *ClustersApiService) CreateClusterExecute(r CreateClusterApiRequest) (*AdvancedClusterDescription, *http.Response, error) {
+//	@return ClusterDescription20240805
+func (a *ClustersApiService) CreateClusterExecute(r CreateClusterApiRequest) (*ClusterDescription20240805, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *AdvancedClusterDescription
+		localVarReturnValue *ClusterDescription20240805
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.CreateCluster")
@@ -440,12 +440,12 @@ func (a *ClustersApiService) CreateClusterExecute(r CreateClusterApiRequest) (*A
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.advancedClusterDescription == nil {
-		return localVarReturnValue, nil, reportError("advancedClusterDescription is required and must be specified")
+	if r.clusterDescription20240805 == nil {
+		return localVarReturnValue, nil, reportError("clusterDescription20240805 is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-02-01+json"}
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2024-08-05+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -454,7 +454,7 @@ func (a *ClustersApiService) CreateClusterExecute(r CreateClusterApiRequest) (*A
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-02-01+json", "application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-08-05+json", "application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -462,7 +462,7 @@ func (a *ClustersApiService) CreateClusterExecute(r CreateClusterApiRequest) (*A
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.advancedClusterDescription
+	localVarPostBody = r.clusterDescription20240805
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -628,14 +628,14 @@ func (a *ClustersApiService) GetClusterWithParams(ctx context.Context, args *Get
 	}
 }
 
-func (r GetClusterApiRequest) Execute() (*AdvancedClusterDescription, *http.Response, error) {
+func (r GetClusterApiRequest) Execute() (*ClusterDescription20240805, *http.Response, error) {
 	return r.ApiService.GetClusterExecute(r)
 }
 
 /*
 GetCluster Return One Cluster from One Project
 
-Returns the details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. The response includes clusters with asymmetrically-sized shards. To use this resource, the requesting API Key must have the Project Read Only role. This feature is not available for serverless clusters. Deprecated versions: v2-{2023-01-01}
+Returns the details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. The response includes clusters with asymmetrically-sized shards. To use this resource, the requesting API Key must have the Project Read Only role. This feature is not available for serverless clusters. Deprecated versions: v2-{2023-02-01}, v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -653,13 +653,13 @@ func (a *ClustersApiService) GetCluster(ctx context.Context, groupId string, clu
 
 // Execute executes the request
 //
-//	@return AdvancedClusterDescription
-func (a *ClustersApiService) GetClusterExecute(r GetClusterApiRequest) (*AdvancedClusterDescription, *http.Response, error) {
+//	@return ClusterDescription20240805
+func (a *ClustersApiService) GetClusterExecute(r GetClusterApiRequest) (*ClusterDescription20240805, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *AdvancedClusterDescription
+		localVarReturnValue *ClusterDescription20240805
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.GetCluster")
@@ -685,7 +685,7 @@ func (a *ClustersApiService) GetClusterExecute(r GetClusterApiRequest) (*Advance
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-02-01+json", "application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-08-05+json", "application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -745,14 +745,14 @@ func (a *ClustersApiService) GetClusterAdvancedConfigurationWithParams(ctx conte
 	}
 }
 
-func (r GetClusterAdvancedConfigurationApiRequest) Execute() (*ClusterDescriptionProcessArgs, *http.Response, error) {
+func (r GetClusterAdvancedConfigurationApiRequest) Execute() (*ClusterDescriptionProcessArgs20240805, *http.Response, error) {
 	return r.ApiService.GetClusterAdvancedConfigurationExecute(r)
 }
 
 /*
 GetClusterAdvancedConfiguration Return One Advanced Configuration Options for One Cluster
 
-Returns the advanced configuration details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. Advanced configuration details include the read/write concern, index and oplog limits, and other database settings. This feature isn't available for `M0` free clusters, `M2` and `M5` shared-tier clusters, or serverless clusters. To use this resource, the requesting API Key must have the Project Read Only role.
+Returns the advanced configuration details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. Advanced configuration details include the read/write concern, index and oplog limits, and other database settings. This feature isn't available for `M0` free clusters, `M2` and `M5` shared-tier clusters, or serverless clusters. To use this resource, the requesting API Key must have the Project Read Only role. Deprecated versions: v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -770,13 +770,13 @@ func (a *ClustersApiService) GetClusterAdvancedConfiguration(ctx context.Context
 
 // Execute executes the request
 //
-//	@return ClusterDescriptionProcessArgs
-func (a *ClustersApiService) GetClusterAdvancedConfigurationExecute(r GetClusterAdvancedConfigurationApiRequest) (*ClusterDescriptionProcessArgs, *http.Response, error) {
+//	@return ClusterDescriptionProcessArgs20240805
+func (a *ClustersApiService) GetClusterAdvancedConfigurationExecute(r GetClusterAdvancedConfigurationApiRequest) (*ClusterDescriptionProcessArgs20240805, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ClusterDescriptionProcessArgs
+		localVarReturnValue *ClusterDescriptionProcessArgs20240805
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.GetClusterAdvancedConfiguration")
@@ -802,7 +802,7 @@ func (a *ClustersApiService) GetClusterAdvancedConfigurationExecute(r GetCluster
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json", "application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-08-05+json", "application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -1316,14 +1316,14 @@ func (r ListClustersApiRequest) IncludeDeletedWithRetainedBackups(includeDeleted
 	return r
 }
 
-func (r ListClustersApiRequest) Execute() (*PaginatedAdvancedClusterDescription, *http.Response, error) {
+func (r ListClustersApiRequest) Execute() (*PaginatedClusterDescription20240805, *http.Response, error) {
 	return r.ApiService.ListClustersExecute(r)
 }
 
 /*
 ListClusters Return All Clusters in One Project
 
-Returns the details for all clusters in the specific project to which you have access. Clusters contain a group of hosts that maintain the same data set. The response includes clusters with asymmetrically-sized shards. To use this resource, the requesting API Key must have the Project Read Only role. This feature is not  available for serverless clusters. Deprecated versions: v2-{2023-01-01}
+Returns the details for all clusters in the specific project to which you have access. Clusters contain a group of hosts that maintain the same data set. The response includes clusters with asymmetrically-sized shards. To use this resource, the requesting API Key must have the Project Read Only role. This feature is not  available for serverless clusters. Deprecated versions: v2-{2023-02-01}, v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -1339,13 +1339,13 @@ func (a *ClustersApiService) ListClusters(ctx context.Context, groupId string) L
 
 // Execute executes the request
 //
-//	@return PaginatedAdvancedClusterDescription
-func (a *ClustersApiService) ListClustersExecute(r ListClustersApiRequest) (*PaginatedAdvancedClusterDescription, *http.Response, error) {
+//	@return PaginatedClusterDescription20240805
+func (a *ClustersApiService) ListClustersExecute(r ListClustersApiRequest) (*PaginatedClusterDescription20240805, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *PaginatedAdvancedClusterDescription
+		localVarReturnValue *PaginatedClusterDescription20240805
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.ListClusters")
@@ -1398,7 +1398,7 @@ func (a *ClustersApiService) ListClustersExecute(r ListClustersApiRequest) (*Pag
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-02-01+json", "application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-08-05+json", "application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -1812,13 +1812,13 @@ type UpdateClusterApiRequest struct {
 	ApiService                 ClustersApi
 	groupId                    string
 	clusterName                string
-	advancedClusterDescription *AdvancedClusterDescription
+	clusterDescription20240805 *ClusterDescription20240805
 }
 
 type UpdateClusterApiParams struct {
 	GroupId                    string
 	ClusterName                string
-	AdvancedClusterDescription *AdvancedClusterDescription
+	ClusterDescription20240805 *ClusterDescription20240805
 }
 
 func (a *ClustersApiService) UpdateClusterWithParams(ctx context.Context, args *UpdateClusterApiParams) UpdateClusterApiRequest {
@@ -1827,43 +1827,43 @@ func (a *ClustersApiService) UpdateClusterWithParams(ctx context.Context, args *
 		ctx:                        ctx,
 		groupId:                    args.GroupId,
 		clusterName:                args.ClusterName,
-		advancedClusterDescription: args.AdvancedClusterDescription,
+		clusterDescription20240805: args.ClusterDescription20240805,
 	}
 }
 
-func (r UpdateClusterApiRequest) Execute() (*AdvancedClusterDescription, *http.Response, error) {
+func (r UpdateClusterApiRequest) Execute() (*ClusterDescription20240805, *http.Response, error) {
 	return r.ApiService.UpdateClusterExecute(r)
 }
 
 /*
 UpdateCluster Modify One Cluster from One Project
 
-Updates the details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. This resource can update clusters with asymmetrically-sized shards. To update a cluster's termination protection, the requesting API Key must have the Project Owner role. For all other updates, the requesting API Key must have the Project Cluster Manager role. You can't modify a paused cluster (`paused : true`). You must call this endpoint to set `paused : false`. After this endpoint responds with `paused : false`, you can call it again with the changes you want to make to the cluster. This feature is not available for serverless clusters. Deprecated versions: v2-{2023-01-01}
+Updates the details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. This resource can update clusters with asymmetrically-sized shards. To update a cluster's termination protection, the requesting API Key must have the Project Owner role. For all other updates, the requesting API Key must have the Project Cluster Manager role. You can't modify a paused cluster (`paused : true`). You must call this endpoint to set `paused : false`. After this endpoint responds with `paused : false`, you can call it again with the changes you want to make to the cluster. This feature is not available for serverless clusters. Deprecated versions: v2-{2023-02-01}, v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param clusterName Human-readable label that identifies the cluster.
 	@return UpdateClusterApiRequest
 */
-func (a *ClustersApiService) UpdateCluster(ctx context.Context, groupId string, clusterName string, advancedClusterDescription *AdvancedClusterDescription) UpdateClusterApiRequest {
+func (a *ClustersApiService) UpdateCluster(ctx context.Context, groupId string, clusterName string, clusterDescription20240805 *ClusterDescription20240805) UpdateClusterApiRequest {
 	return UpdateClusterApiRequest{
 		ApiService:                 a,
 		ctx:                        ctx,
 		groupId:                    groupId,
 		clusterName:                clusterName,
-		advancedClusterDescription: advancedClusterDescription,
+		clusterDescription20240805: clusterDescription20240805,
 	}
 }
 
 // Execute executes the request
 //
-//	@return AdvancedClusterDescription
-func (a *ClustersApiService) UpdateClusterExecute(r UpdateClusterApiRequest) (*AdvancedClusterDescription, *http.Response, error) {
+//	@return ClusterDescription20240805
+func (a *ClustersApiService) UpdateClusterExecute(r UpdateClusterApiRequest) (*ClusterDescription20240805, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *AdvancedClusterDescription
+		localVarReturnValue *ClusterDescription20240805
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.UpdateCluster")
@@ -1878,12 +1878,12 @@ func (a *ClustersApiService) UpdateClusterExecute(r UpdateClusterApiRequest) (*A
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.advancedClusterDescription == nil {
-		return localVarReturnValue, nil, reportError("advancedClusterDescription is required and must be specified")
+	if r.clusterDescription20240805 == nil {
+		return localVarReturnValue, nil, reportError("clusterDescription20240805 is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-02-01+json"}
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2024-08-05+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -1892,7 +1892,7 @@ func (a *ClustersApiService) UpdateClusterExecute(r UpdateClusterApiRequest) (*A
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-02-01+json", "application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-08-05+json", "application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -1900,7 +1900,7 @@ func (a *ClustersApiService) UpdateClusterExecute(r UpdateClusterApiRequest) (*A
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.advancedClusterDescription
+	localVarPostBody = r.clusterDescription20240805
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1934,62 +1934,62 @@ func (a *ClustersApiService) UpdateClusterExecute(r UpdateClusterApiRequest) (*A
 }
 
 type UpdateClusterAdvancedConfigurationApiRequest struct {
-	ctx                           context.Context
-	ApiService                    ClustersApi
-	groupId                       string
-	clusterName                   string
-	clusterDescriptionProcessArgs *ClusterDescriptionProcessArgs
+	ctx                                   context.Context
+	ApiService                            ClustersApi
+	groupId                               string
+	clusterName                           string
+	clusterDescriptionProcessArgs20240805 *ClusterDescriptionProcessArgs20240805
 }
 
 type UpdateClusterAdvancedConfigurationApiParams struct {
-	GroupId                       string
-	ClusterName                   string
-	ClusterDescriptionProcessArgs *ClusterDescriptionProcessArgs
+	GroupId                               string
+	ClusterName                           string
+	ClusterDescriptionProcessArgs20240805 *ClusterDescriptionProcessArgs20240805
 }
 
 func (a *ClustersApiService) UpdateClusterAdvancedConfigurationWithParams(ctx context.Context, args *UpdateClusterAdvancedConfigurationApiParams) UpdateClusterAdvancedConfigurationApiRequest {
 	return UpdateClusterAdvancedConfigurationApiRequest{
-		ApiService:                    a,
-		ctx:                           ctx,
-		groupId:                       args.GroupId,
-		clusterName:                   args.ClusterName,
-		clusterDescriptionProcessArgs: args.ClusterDescriptionProcessArgs,
+		ApiService:                            a,
+		ctx:                                   ctx,
+		groupId:                               args.GroupId,
+		clusterName:                           args.ClusterName,
+		clusterDescriptionProcessArgs20240805: args.ClusterDescriptionProcessArgs20240805,
 	}
 }
 
-func (r UpdateClusterAdvancedConfigurationApiRequest) Execute() (*ClusterDescriptionProcessArgs, *http.Response, error) {
+func (r UpdateClusterAdvancedConfigurationApiRequest) Execute() (*ClusterDescriptionProcessArgs20240805, *http.Response, error) {
 	return r.ApiService.UpdateClusterAdvancedConfigurationExecute(r)
 }
 
 /*
 UpdateClusterAdvancedConfiguration Update Advanced Configuration Options for One Cluster
 
-Updates the advanced configuration details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. Advanced configuration details include the read/write concern, index and oplog limits, and other database settings. To use this resource, the requesting API Key must have the Project Cluster Manager role. This feature isn't available for `M0` free clusters, `M2` and `M5` shared-tier clusters, or serverless clusters.
+Updates the advanced configuration details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. Advanced configuration details include the read/write concern, index and oplog limits, and other database settings. To use this resource, the requesting API Key must have the Project Cluster Manager role. This feature isn't available for `M0` free clusters, `M2` and `M5` shared-tier clusters, or serverless clusters. Deprecated versions: v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param clusterName Human-readable label that identifies the cluster.
 	@return UpdateClusterAdvancedConfigurationApiRequest
 */
-func (a *ClustersApiService) UpdateClusterAdvancedConfiguration(ctx context.Context, groupId string, clusterName string, clusterDescriptionProcessArgs *ClusterDescriptionProcessArgs) UpdateClusterAdvancedConfigurationApiRequest {
+func (a *ClustersApiService) UpdateClusterAdvancedConfiguration(ctx context.Context, groupId string, clusterName string, clusterDescriptionProcessArgs20240805 *ClusterDescriptionProcessArgs20240805) UpdateClusterAdvancedConfigurationApiRequest {
 	return UpdateClusterAdvancedConfigurationApiRequest{
-		ApiService:                    a,
-		ctx:                           ctx,
-		groupId:                       groupId,
-		clusterName:                   clusterName,
-		clusterDescriptionProcessArgs: clusterDescriptionProcessArgs,
+		ApiService:                            a,
+		ctx:                                   ctx,
+		groupId:                               groupId,
+		clusterName:                           clusterName,
+		clusterDescriptionProcessArgs20240805: clusterDescriptionProcessArgs20240805,
 	}
 }
 
 // Execute executes the request
 //
-//	@return ClusterDescriptionProcessArgs
-func (a *ClustersApiService) UpdateClusterAdvancedConfigurationExecute(r UpdateClusterAdvancedConfigurationApiRequest) (*ClusterDescriptionProcessArgs, *http.Response, error) {
+//	@return ClusterDescriptionProcessArgs20240805
+func (a *ClustersApiService) UpdateClusterAdvancedConfigurationExecute(r UpdateClusterAdvancedConfigurationApiRequest) (*ClusterDescriptionProcessArgs20240805, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ClusterDescriptionProcessArgs
+		localVarReturnValue *ClusterDescriptionProcessArgs20240805
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.UpdateClusterAdvancedConfiguration")
@@ -2004,12 +2004,12 @@ func (a *ClustersApiService) UpdateClusterAdvancedConfigurationExecute(r UpdateC
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.clusterDescriptionProcessArgs == nil {
-		return localVarReturnValue, nil, reportError("clusterDescriptionProcessArgs is required and must be specified")
+	if r.clusterDescriptionProcessArgs20240805 == nil {
+		return localVarReturnValue, nil, reportError("clusterDescriptionProcessArgs20240805 is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2024-08-05+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -2018,7 +2018,7 @@ func (a *ClustersApiService) UpdateClusterAdvancedConfigurationExecute(r UpdateC
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json", "application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-08-05+json", "application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -2026,7 +2026,7 @@ func (a *ClustersApiService) UpdateClusterAdvancedConfigurationExecute(r UpdateC
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.clusterDescriptionProcessArgs
+	localVarPostBody = r.clusterDescriptionProcessArgs20240805
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

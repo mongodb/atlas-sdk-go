@@ -15,13 +15,13 @@ type DataLakeStoreSettings struct {
 	AdditionalStorageClasses *[]string `json:"additionalStorageClasses,omitempty"`
 	// Human-readable label that identifies the AWS S3 bucket. This label must exactly match the name of an S3 bucket that the data lake can access with the configured AWS Identity and Access Management (IAM) credentials.
 	Bucket *string `json:"bucket,omitempty"`
-	// The delimiter that separates **databases.[n].collections.[n].dataSources.[n].path** segments in the data store. MongoDB Cloud uses the delimiter to efficiently traverse S3 buckets with a hierarchical directory structure. You can specify any character supported by the S3 object keys as the delimiter. For example, you can specify an underscore (_) or a plus sign (+) or multiple characters, such as double underscores (__) as the delimiter. If omitted, defaults to `/`.
+	// Delimiter.
 	Delimiter *string `json:"delimiter,omitempty"`
 	// Flag that indicates whether to use S3 tags on the files in the given path as additional partition attributes. If set to `true`, data lake adds the S3 tags as additional partition attributes and adds new top-level BSON elements associating each tag to each document.
 	IncludeTags *bool `json:"includeTags,omitempty"`
-	// Prefix that MongoDB Cloud applies when searching for files in the S3 bucket. The data store prepends the value of prefix to the **databases.[n].collections.[n].dataSources.[n].path** to create the full path for files to ingest. If omitted, MongoDB Cloud searches all files from the root of the S3 bucket.
+	// Prefix.
 	Prefix *string `json:"prefix,omitempty"`
-	// Flag that indicates whether the bucket is public. If set to `true`, MongoDB Cloud doesn't use the configured AWS Identity and Access Management (IAM) role to access the S3 bucket. If set to `false`, the configured AWS IAM role must include permissions to access the S3 bucket.
+	// Flag that indicates whether the blob store is public. If set to `true`, MongoDB Cloud doesn't use the configured Azure service principal to access the blob store. If set to `false`, the configured Azure service principal must include permissions to access the blob store.
 	Public *bool `json:"public,omitempty"`
 	// Microsoft Azure Regions.
 	Region *string `json:"region,omitempty"`
@@ -38,6 +38,12 @@ type DataLakeStoreSettings struct {
 	DefaultFormat *string `json:"defaultFormat,omitempty"`
 	// Comma-separated list of publicly accessible HTTP URLs where data is stored. You can't specify URLs that require authentication.
 	Urls *[]string `json:"urls,omitempty"`
+	// Human-readable label that identifies the name of the container.
+	ContainerName *string `json:"containerName,omitempty"`
+	// Replacement Delimiter.
+	ReplacementDelimiter *string `json:"replacementDelimiter,omitempty"`
+	// Service URL.
+	ServiceURL *string `json:"serviceURL,omitempty"`
 }
 
 // NewDataLakeStoreSettings instantiates a new DataLakeStoreSettings object
@@ -589,6 +595,105 @@ func (o *DataLakeStoreSettings) SetUrls(v []string) {
 	o.Urls = &v
 }
 
+// GetContainerName returns the ContainerName field value if set, zero value otherwise
+func (o *DataLakeStoreSettings) GetContainerName() string {
+	if o == nil || IsNil(o.ContainerName) {
+		var ret string
+		return ret
+	}
+	return *o.ContainerName
+}
+
+// GetContainerNameOk returns a tuple with the ContainerName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DataLakeStoreSettings) GetContainerNameOk() (*string, bool) {
+	if o == nil || IsNil(o.ContainerName) {
+		return nil, false
+	}
+
+	return o.ContainerName, true
+}
+
+// HasContainerName returns a boolean if a field has been set.
+func (o *DataLakeStoreSettings) HasContainerName() bool {
+	if o != nil && !IsNil(o.ContainerName) {
+		return true
+	}
+
+	return false
+}
+
+// SetContainerName gets a reference to the given string and assigns it to the ContainerName field.
+func (o *DataLakeStoreSettings) SetContainerName(v string) {
+	o.ContainerName = &v
+}
+
+// GetReplacementDelimiter returns the ReplacementDelimiter field value if set, zero value otherwise
+func (o *DataLakeStoreSettings) GetReplacementDelimiter() string {
+	if o == nil || IsNil(o.ReplacementDelimiter) {
+		var ret string
+		return ret
+	}
+	return *o.ReplacementDelimiter
+}
+
+// GetReplacementDelimiterOk returns a tuple with the ReplacementDelimiter field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DataLakeStoreSettings) GetReplacementDelimiterOk() (*string, bool) {
+	if o == nil || IsNil(o.ReplacementDelimiter) {
+		return nil, false
+	}
+
+	return o.ReplacementDelimiter, true
+}
+
+// HasReplacementDelimiter returns a boolean if a field has been set.
+func (o *DataLakeStoreSettings) HasReplacementDelimiter() bool {
+	if o != nil && !IsNil(o.ReplacementDelimiter) {
+		return true
+	}
+
+	return false
+}
+
+// SetReplacementDelimiter gets a reference to the given string and assigns it to the ReplacementDelimiter field.
+func (o *DataLakeStoreSettings) SetReplacementDelimiter(v string) {
+	o.ReplacementDelimiter = &v
+}
+
+// GetServiceURL returns the ServiceURL field value if set, zero value otherwise
+func (o *DataLakeStoreSettings) GetServiceURL() string {
+	if o == nil || IsNil(o.ServiceURL) {
+		var ret string
+		return ret
+	}
+	return *o.ServiceURL
+}
+
+// GetServiceURLOk returns a tuple with the ServiceURL field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DataLakeStoreSettings) GetServiceURLOk() (*string, bool) {
+	if o == nil || IsNil(o.ServiceURL) {
+		return nil, false
+	}
+
+	return o.ServiceURL, true
+}
+
+// HasServiceURL returns a boolean if a field has been set.
+func (o *DataLakeStoreSettings) HasServiceURL() bool {
+	if o != nil && !IsNil(o.ServiceURL) {
+		return true
+	}
+
+	return false
+}
+
+// SetServiceURL gets a reference to the given string and assigns it to the ServiceURL field.
+func (o *DataLakeStoreSettings) SetServiceURL(v string) {
+	o.ServiceURL = &v
+}
+
 func (o DataLakeStoreSettings) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -640,6 +745,15 @@ func (o DataLakeStoreSettings) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Urls) {
 		toSerialize["urls"] = o.Urls
+	}
+	if !IsNil(o.ContainerName) {
+		toSerialize["containerName"] = o.ContainerName
+	}
+	if !IsNil(o.ReplacementDelimiter) {
+		toSerialize["replacementDelimiter"] = o.ReplacementDelimiter
+	}
+	if !IsNil(o.ServiceURL) {
+		toSerialize["serviceURL"] = o.ServiceURL
 	}
 	return toSerialize, nil
 }

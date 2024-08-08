@@ -141,7 +141,7 @@ type CloudBackupsApi interface {
 	/*
 		DeleteAllBackupSchedules Remove All Cloud Backup Schedules
 
-		Removes all cloud backup schedules for the specified cluster. This schedule defines when MongoDB Cloud takes scheduled snapshots and how long it stores those snapshots. To use this resource, the requesting API Key must have the Project Atlas Admin role.
+		Removes all cloud backup schedules for the specified cluster. This schedule defines when MongoDB Cloud takes scheduled snapshots and how long it stores those snapshots. To use this resource, the requesting API Key must have the Project Atlas Admin role. Deprecated versions: v2-{2023-01-01}
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -160,7 +160,7 @@ type CloudBackupsApi interface {
 	DeleteAllBackupSchedulesWithParams(ctx context.Context, args *DeleteAllBackupSchedulesApiParams) DeleteAllBackupSchedulesApiRequest
 
 	// Method available only for mocking purposes
-	DeleteAllBackupSchedulesExecute(r DeleteAllBackupSchedulesApiRequest) (*DiskBackupSnapshotSchedule, *http.Response, error)
+	DeleteAllBackupSchedulesExecute(r DeleteAllBackupSchedulesApiRequest) (*DiskBackupSnapshotSchedule20240805, *http.Response, error)
 
 	/*
 		DeleteExportBucket Revoke Access to AWS S3 Bucket or Azure Blob Storage Container for Cloud Backup Snapshot Exports
@@ -289,7 +289,7 @@ type CloudBackupsApi interface {
 	/*
 		GetBackupSchedule Return One Cloud Backup Schedule
 
-		Returns the cloud backup schedule for the specified cluster within the specified project. This schedule defines when MongoDB Cloud takes scheduled snapshots and how long it stores those snapshots. To use this resource, the requesting API Key must have the Project Read Only role.
+		Returns the cloud backup schedule for the specified cluster within the specified project. This schedule defines when MongoDB Cloud takes scheduled snapshots and how long it stores those snapshots. To use this resource, the requesting API Key must have the Project Read Only role. Deprecated versions: v2-{2023-01-01}
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -308,7 +308,7 @@ type CloudBackupsApi interface {
 	GetBackupScheduleWithParams(ctx context.Context, args *GetBackupScheduleApiParams) GetBackupScheduleApiRequest
 
 	// Method available only for mocking purposes
-	GetBackupScheduleExecute(r GetBackupScheduleApiRequest) (*DiskBackupSnapshotSchedule, *http.Response, error)
+	GetBackupScheduleExecute(r GetBackupScheduleApiRequest) (*DiskBackupSnapshotSchedule20240805, *http.Response, error)
 
 	/*
 		GetDataProtectionSettings Return the Backup Compliance Policy settings
@@ -654,15 +654,15 @@ type CloudBackupsApi interface {
 	/*
 		UpdateBackupSchedule Update Cloud Backup Schedule for One Cluster
 
-		Updates the cloud backup schedule for one cluster within the specified project. This schedule defines when MongoDB Cloud takes scheduled snapshots and how long it stores those snapshots. To use this resource, the requesting API Key must have the Project Owner role.
+		Updates the cloud backup schedule for one cluster within the specified project. This schedule defines when MongoDB Cloud takes scheduled snapshots and how long it stores those snapshots. To use this resource, the requesting API Key must have the Project Owner role. Deprecated versions: v2-{2023-01-01}
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param clusterName Human-readable label that identifies the cluster.
-		@param diskBackupSnapshotSchedule Updates the cloud backup schedule for one cluster within the specified project.  **Note**: In the request body, provide only the fields that you want to update.
+		@param diskBackupSnapshotSchedule20240805 Updates the cloud backup schedule for one cluster within the specified project.  **Note**: In the request body, provide only the fields that you want to update.
 		@return UpdateBackupScheduleApiRequest
 	*/
-	UpdateBackupSchedule(ctx context.Context, groupId string, clusterName string, diskBackupSnapshotSchedule *DiskBackupSnapshotSchedule) UpdateBackupScheduleApiRequest
+	UpdateBackupSchedule(ctx context.Context, groupId string, clusterName string, diskBackupSnapshotSchedule20240805 *DiskBackupSnapshotSchedule20240805) UpdateBackupScheduleApiRequest
 	/*
 		UpdateBackupSchedule Update Cloud Backup Schedule for One Cluster
 
@@ -674,7 +674,7 @@ type CloudBackupsApi interface {
 	UpdateBackupScheduleWithParams(ctx context.Context, args *UpdateBackupScheduleApiParams) UpdateBackupScheduleApiRequest
 
 	// Method available only for mocking purposes
-	UpdateBackupScheduleExecute(r UpdateBackupScheduleApiRequest) (*DiskBackupSnapshotSchedule, *http.Response, error)
+	UpdateBackupScheduleExecute(r UpdateBackupScheduleApiRequest) (*DiskBackupSnapshotSchedule20240805, *http.Response, error)
 
 	/*
 		UpdateDataProtectionSettings Update or enable the Backup Compliance Policy settings
@@ -1374,14 +1374,14 @@ func (a *CloudBackupsApiService) DeleteAllBackupSchedulesWithParams(ctx context.
 	}
 }
 
-func (r DeleteAllBackupSchedulesApiRequest) Execute() (*DiskBackupSnapshotSchedule, *http.Response, error) {
+func (r DeleteAllBackupSchedulesApiRequest) Execute() (*DiskBackupSnapshotSchedule20240805, *http.Response, error) {
 	return r.ApiService.DeleteAllBackupSchedulesExecute(r)
 }
 
 /*
 DeleteAllBackupSchedules Remove All Cloud Backup Schedules
 
-Removes all cloud backup schedules for the specified cluster. This schedule defines when MongoDB Cloud takes scheduled snapshots and how long it stores those snapshots. To use this resource, the requesting API Key must have the Project Atlas Admin role.
+Removes all cloud backup schedules for the specified cluster. This schedule defines when MongoDB Cloud takes scheduled snapshots and how long it stores those snapshots. To use this resource, the requesting API Key must have the Project Atlas Admin role. Deprecated versions: v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -1399,13 +1399,13 @@ func (a *CloudBackupsApiService) DeleteAllBackupSchedules(ctx context.Context, g
 
 // Execute executes the request
 //
-//	@return DiskBackupSnapshotSchedule
-func (a *CloudBackupsApiService) DeleteAllBackupSchedulesExecute(r DeleteAllBackupSchedulesApiRequest) (*DiskBackupSnapshotSchedule, *http.Response, error) {
+//	@return DiskBackupSnapshotSchedule20240805
+func (a *CloudBackupsApiService) DeleteAllBackupSchedulesExecute(r DeleteAllBackupSchedulesApiRequest) (*DiskBackupSnapshotSchedule20240805, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *DiskBackupSnapshotSchedule
+		localVarReturnValue *DiskBackupSnapshotSchedule20240805
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudBackupsApiService.DeleteAllBackupSchedules")
@@ -1431,7 +1431,7 @@ func (a *CloudBackupsApiService) DeleteAllBackupSchedulesExecute(r DeleteAllBack
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json", "application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-08-05+json", "application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -2100,14 +2100,14 @@ func (a *CloudBackupsApiService) GetBackupScheduleWithParams(ctx context.Context
 	}
 }
 
-func (r GetBackupScheduleApiRequest) Execute() (*DiskBackupSnapshotSchedule, *http.Response, error) {
+func (r GetBackupScheduleApiRequest) Execute() (*DiskBackupSnapshotSchedule20240805, *http.Response, error) {
 	return r.ApiService.GetBackupScheduleExecute(r)
 }
 
 /*
 GetBackupSchedule Return One Cloud Backup Schedule
 
-Returns the cloud backup schedule for the specified cluster within the specified project. This schedule defines when MongoDB Cloud takes scheduled snapshots and how long it stores those snapshots. To use this resource, the requesting API Key must have the Project Read Only role.
+Returns the cloud backup schedule for the specified cluster within the specified project. This schedule defines when MongoDB Cloud takes scheduled snapshots and how long it stores those snapshots. To use this resource, the requesting API Key must have the Project Read Only role. Deprecated versions: v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -2125,13 +2125,13 @@ func (a *CloudBackupsApiService) GetBackupSchedule(ctx context.Context, groupId 
 
 // Execute executes the request
 //
-//	@return DiskBackupSnapshotSchedule
-func (a *CloudBackupsApiService) GetBackupScheduleExecute(r GetBackupScheduleApiRequest) (*DiskBackupSnapshotSchedule, *http.Response, error) {
+//	@return DiskBackupSnapshotSchedule20240805
+func (a *CloudBackupsApiService) GetBackupScheduleExecute(r GetBackupScheduleApiRequest) (*DiskBackupSnapshotSchedule20240805, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *DiskBackupSnapshotSchedule
+		localVarReturnValue *DiskBackupSnapshotSchedule20240805
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudBackupsApiService.GetBackupSchedule")
@@ -2157,7 +2157,7 @@ func (a *CloudBackupsApiService) GetBackupScheduleExecute(r GetBackupScheduleApi
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json", "application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-08-05+json", "application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -4146,62 +4146,62 @@ func (a *CloudBackupsApiService) TakeSnapshotExecute(r TakeSnapshotApiRequest) (
 }
 
 type UpdateBackupScheduleApiRequest struct {
-	ctx                        context.Context
-	ApiService                 CloudBackupsApi
-	groupId                    string
-	clusterName                string
-	diskBackupSnapshotSchedule *DiskBackupSnapshotSchedule
+	ctx                                context.Context
+	ApiService                         CloudBackupsApi
+	groupId                            string
+	clusterName                        string
+	diskBackupSnapshotSchedule20240805 *DiskBackupSnapshotSchedule20240805
 }
 
 type UpdateBackupScheduleApiParams struct {
-	GroupId                    string
-	ClusterName                string
-	DiskBackupSnapshotSchedule *DiskBackupSnapshotSchedule
+	GroupId                            string
+	ClusterName                        string
+	DiskBackupSnapshotSchedule20240805 *DiskBackupSnapshotSchedule20240805
 }
 
 func (a *CloudBackupsApiService) UpdateBackupScheduleWithParams(ctx context.Context, args *UpdateBackupScheduleApiParams) UpdateBackupScheduleApiRequest {
 	return UpdateBackupScheduleApiRequest{
-		ApiService:                 a,
-		ctx:                        ctx,
-		groupId:                    args.GroupId,
-		clusterName:                args.ClusterName,
-		diskBackupSnapshotSchedule: args.DiskBackupSnapshotSchedule,
+		ApiService:                         a,
+		ctx:                                ctx,
+		groupId:                            args.GroupId,
+		clusterName:                        args.ClusterName,
+		diskBackupSnapshotSchedule20240805: args.DiskBackupSnapshotSchedule20240805,
 	}
 }
 
-func (r UpdateBackupScheduleApiRequest) Execute() (*DiskBackupSnapshotSchedule, *http.Response, error) {
+func (r UpdateBackupScheduleApiRequest) Execute() (*DiskBackupSnapshotSchedule20240805, *http.Response, error) {
 	return r.ApiService.UpdateBackupScheduleExecute(r)
 }
 
 /*
 UpdateBackupSchedule Update Cloud Backup Schedule for One Cluster
 
-Updates the cloud backup schedule for one cluster within the specified project. This schedule defines when MongoDB Cloud takes scheduled snapshots and how long it stores those snapshots. To use this resource, the requesting API Key must have the Project Owner role.
+Updates the cloud backup schedule for one cluster within the specified project. This schedule defines when MongoDB Cloud takes scheduled snapshots and how long it stores those snapshots. To use this resource, the requesting API Key must have the Project Owner role. Deprecated versions: v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param clusterName Human-readable label that identifies the cluster.
 	@return UpdateBackupScheduleApiRequest
 */
-func (a *CloudBackupsApiService) UpdateBackupSchedule(ctx context.Context, groupId string, clusterName string, diskBackupSnapshotSchedule *DiskBackupSnapshotSchedule) UpdateBackupScheduleApiRequest {
+func (a *CloudBackupsApiService) UpdateBackupSchedule(ctx context.Context, groupId string, clusterName string, diskBackupSnapshotSchedule20240805 *DiskBackupSnapshotSchedule20240805) UpdateBackupScheduleApiRequest {
 	return UpdateBackupScheduleApiRequest{
-		ApiService:                 a,
-		ctx:                        ctx,
-		groupId:                    groupId,
-		clusterName:                clusterName,
-		diskBackupSnapshotSchedule: diskBackupSnapshotSchedule,
+		ApiService:                         a,
+		ctx:                                ctx,
+		groupId:                            groupId,
+		clusterName:                        clusterName,
+		diskBackupSnapshotSchedule20240805: diskBackupSnapshotSchedule20240805,
 	}
 }
 
 // Execute executes the request
 //
-//	@return DiskBackupSnapshotSchedule
-func (a *CloudBackupsApiService) UpdateBackupScheduleExecute(r UpdateBackupScheduleApiRequest) (*DiskBackupSnapshotSchedule, *http.Response, error) {
+//	@return DiskBackupSnapshotSchedule20240805
+func (a *CloudBackupsApiService) UpdateBackupScheduleExecute(r UpdateBackupScheduleApiRequest) (*DiskBackupSnapshotSchedule20240805, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *DiskBackupSnapshotSchedule
+		localVarReturnValue *DiskBackupSnapshotSchedule20240805
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudBackupsApiService.UpdateBackupSchedule")
@@ -4216,12 +4216,12 @@ func (a *CloudBackupsApiService) UpdateBackupScheduleExecute(r UpdateBackupSched
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.diskBackupSnapshotSchedule == nil {
-		return localVarReturnValue, nil, reportError("diskBackupSnapshotSchedule is required and must be specified")
+	if r.diskBackupSnapshotSchedule20240805 == nil {
+		return localVarReturnValue, nil, reportError("diskBackupSnapshotSchedule20240805 is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2024-08-05+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -4230,7 +4230,7 @@ func (a *CloudBackupsApiService) UpdateBackupScheduleExecute(r UpdateBackupSched
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json", "application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-08-05+json", "application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -4238,7 +4238,7 @@ func (a *CloudBackupsApiService) UpdateBackupScheduleExecute(r UpdateBackupSched
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.diskBackupSnapshotSchedule
+	localVarPostBody = r.diskBackupSnapshotSchedule20240805
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

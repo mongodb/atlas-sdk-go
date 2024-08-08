@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **IdpType** | Pointer to **string** | String enum that indicates the type of the identity provider. Default is WORKFORCE. | [optional] 
 **IssuerUri** | Pointer to **string** | Unique string that identifies the issuer of the SAML Assertion or OIDC metadata/discovery document URL. | [optional] 
 **OktaIdpId** | **string** | Legacy 20-hexadecimal digit string that identifies the identity provider. | 
-**Protocol** | Pointer to **string** | The protocol of the identity provider. Either SAML or OIDC. | [optional] 
+**Protocol** | Pointer to **string** | String enum that indicates the protocol of the identity provider. Either SAML or OIDC. | [optional] 
 **UpdatedAt** | Pointer to **time.Time** | Date that the identity provider was last updated on. | [optional] [readonly] 
 **AcsUrl** | Pointer to **string** | URL that points to where to send the SAML response. | [optional] 
 **AssociatedDomains** | Pointer to **[]string** | List that contains the domains associated with the identity provider. | [optional] 

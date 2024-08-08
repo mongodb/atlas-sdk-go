@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20240530005/admin"
+	admin "go.mongodb.org/atlas-sdk/v20240805001/admin"
 
 	http "net/http"
 
@@ -888,24 +888,24 @@ func (_c *CloudBackupsApi_DeleteAllBackupSchedules_Call) RunAndReturn(run func(c
 }
 
 // DeleteAllBackupSchedulesExecute provides a mock function with given fields: r
-func (_m *CloudBackupsApi) DeleteAllBackupSchedulesExecute(r admin.DeleteAllBackupSchedulesApiRequest) (*admin.DiskBackupSnapshotSchedule, *http.Response, error) {
+func (_m *CloudBackupsApi) DeleteAllBackupSchedulesExecute(r admin.DeleteAllBackupSchedulesApiRequest) (*admin.DiskBackupSnapshotSchedule20240805, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteAllBackupSchedulesExecute")
 	}
 
-	var r0 *admin.DiskBackupSnapshotSchedule
+	var r0 *admin.DiskBackupSnapshotSchedule20240805
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteAllBackupSchedulesApiRequest) (*admin.DiskBackupSnapshotSchedule, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteAllBackupSchedulesApiRequest) (*admin.DiskBackupSnapshotSchedule20240805, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteAllBackupSchedulesApiRequest) *admin.DiskBackupSnapshotSchedule); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteAllBackupSchedulesApiRequest) *admin.DiskBackupSnapshotSchedule20240805); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.DiskBackupSnapshotSchedule)
+			r0 = ret.Get(0).(*admin.DiskBackupSnapshotSchedule20240805)
 		}
 	}
 
@@ -944,12 +944,12 @@ func (_c *CloudBackupsApi_DeleteAllBackupSchedulesExecute_Call) Run(run func(r a
 	return _c
 }
 
-func (_c *CloudBackupsApi_DeleteAllBackupSchedulesExecute_Call) Return(_a0 *admin.DiskBackupSnapshotSchedule, _a1 *http.Response, _a2 error) *CloudBackupsApi_DeleteAllBackupSchedulesExecute_Call {
+func (_c *CloudBackupsApi_DeleteAllBackupSchedulesExecute_Call) Return(_a0 *admin.DiskBackupSnapshotSchedule20240805, _a1 *http.Response, _a2 error) *CloudBackupsApi_DeleteAllBackupSchedulesExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *CloudBackupsApi_DeleteAllBackupSchedulesExecute_Call) RunAndReturn(run func(admin.DeleteAllBackupSchedulesApiRequest) (*admin.DiskBackupSnapshotSchedule, *http.Response, error)) *CloudBackupsApi_DeleteAllBackupSchedulesExecute_Call {
+func (_c *CloudBackupsApi_DeleteAllBackupSchedulesExecute_Call) RunAndReturn(run func(admin.DeleteAllBackupSchedulesApiRequest) (*admin.DiskBackupSnapshotSchedule20240805, *http.Response, error)) *CloudBackupsApi_DeleteAllBackupSchedulesExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1864,24 +1864,24 @@ func (_c *CloudBackupsApi_GetBackupSchedule_Call) RunAndReturn(run func(context.
 }
 
 // GetBackupScheduleExecute provides a mock function with given fields: r
-func (_m *CloudBackupsApi) GetBackupScheduleExecute(r admin.GetBackupScheduleApiRequest) (*admin.DiskBackupSnapshotSchedule, *http.Response, error) {
+func (_m *CloudBackupsApi) GetBackupScheduleExecute(r admin.GetBackupScheduleApiRequest) (*admin.DiskBackupSnapshotSchedule20240805, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for GetBackupScheduleExecute")
 	}
 
-	var r0 *admin.DiskBackupSnapshotSchedule
+	var r0 *admin.DiskBackupSnapshotSchedule20240805
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetBackupScheduleApiRequest) (*admin.DiskBackupSnapshotSchedule, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetBackupScheduleApiRequest) (*admin.DiskBackupSnapshotSchedule20240805, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.GetBackupScheduleApiRequest) *admin.DiskBackupSnapshotSchedule); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetBackupScheduleApiRequest) *admin.DiskBackupSnapshotSchedule20240805); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.DiskBackupSnapshotSchedule)
+			r0 = ret.Get(0).(*admin.DiskBackupSnapshotSchedule20240805)
 		}
 	}
 
@@ -1920,12 +1920,12 @@ func (_c *CloudBackupsApi_GetBackupScheduleExecute_Call) Run(run func(r admin.Ge
 	return _c
 }
 
-func (_c *CloudBackupsApi_GetBackupScheduleExecute_Call) Return(_a0 *admin.DiskBackupSnapshotSchedule, _a1 *http.Response, _a2 error) *CloudBackupsApi_GetBackupScheduleExecute_Call {
+func (_c *CloudBackupsApi_GetBackupScheduleExecute_Call) Return(_a0 *admin.DiskBackupSnapshotSchedule20240805, _a1 *http.Response, _a2 error) *CloudBackupsApi_GetBackupScheduleExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *CloudBackupsApi_GetBackupScheduleExecute_Call) RunAndReturn(run func(admin.GetBackupScheduleApiRequest) (*admin.DiskBackupSnapshotSchedule, *http.Response, error)) *CloudBackupsApi_GetBackupScheduleExecute_Call {
+func (_c *CloudBackupsApi_GetBackupScheduleExecute_Call) RunAndReturn(run func(admin.GetBackupScheduleApiRequest) (*admin.DiskBackupSnapshotSchedule20240805, *http.Response, error)) *CloudBackupsApi_GetBackupScheduleExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -4248,17 +4248,17 @@ func (_c *CloudBackupsApi_TakeSnapshotWithParams_Call) RunAndReturn(run func(con
 	return _c
 }
 
-// UpdateBackupSchedule provides a mock function with given fields: ctx, groupId, clusterName, diskBackupSnapshotSchedule
-func (_m *CloudBackupsApi) UpdateBackupSchedule(ctx context.Context, groupId string, clusterName string, diskBackupSnapshotSchedule *admin.DiskBackupSnapshotSchedule) admin.UpdateBackupScheduleApiRequest {
-	ret := _m.Called(ctx, groupId, clusterName, diskBackupSnapshotSchedule)
+// UpdateBackupSchedule provides a mock function with given fields: ctx, groupId, clusterName, diskBackupSnapshotSchedule20240805
+func (_m *CloudBackupsApi) UpdateBackupSchedule(ctx context.Context, groupId string, clusterName string, diskBackupSnapshotSchedule20240805 *admin.DiskBackupSnapshotSchedule20240805) admin.UpdateBackupScheduleApiRequest {
+	ret := _m.Called(ctx, groupId, clusterName, diskBackupSnapshotSchedule20240805)
 
 	if len(ret) == 0 {
 		panic("no return value specified for UpdateBackupSchedule")
 	}
 
 	var r0 admin.UpdateBackupScheduleApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.DiskBackupSnapshotSchedule) admin.UpdateBackupScheduleApiRequest); ok {
-		r0 = rf(ctx, groupId, clusterName, diskBackupSnapshotSchedule)
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.DiskBackupSnapshotSchedule20240805) admin.UpdateBackupScheduleApiRequest); ok {
+		r0 = rf(ctx, groupId, clusterName, diskBackupSnapshotSchedule20240805)
 	} else {
 		r0 = ret.Get(0).(admin.UpdateBackupScheduleApiRequest)
 	}
@@ -4275,14 +4275,14 @@ type CloudBackupsApi_UpdateBackupSchedule_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
-//   - diskBackupSnapshotSchedule *admin.DiskBackupSnapshotSchedule
-func (_e *CloudBackupsApi_Expecter) UpdateBackupSchedule(ctx interface{}, groupId interface{}, clusterName interface{}, diskBackupSnapshotSchedule interface{}) *CloudBackupsApi_UpdateBackupSchedule_Call {
-	return &CloudBackupsApi_UpdateBackupSchedule_Call{Call: _e.mock.On("UpdateBackupSchedule", ctx, groupId, clusterName, diskBackupSnapshotSchedule)}
+//   - diskBackupSnapshotSchedule20240805 *admin.DiskBackupSnapshotSchedule20240805
+func (_e *CloudBackupsApi_Expecter) UpdateBackupSchedule(ctx interface{}, groupId interface{}, clusterName interface{}, diskBackupSnapshotSchedule20240805 interface{}) *CloudBackupsApi_UpdateBackupSchedule_Call {
+	return &CloudBackupsApi_UpdateBackupSchedule_Call{Call: _e.mock.On("UpdateBackupSchedule", ctx, groupId, clusterName, diskBackupSnapshotSchedule20240805)}
 }
 
-func (_c *CloudBackupsApi_UpdateBackupSchedule_Call) Run(run func(ctx context.Context, groupId string, clusterName string, diskBackupSnapshotSchedule *admin.DiskBackupSnapshotSchedule)) *CloudBackupsApi_UpdateBackupSchedule_Call {
+func (_c *CloudBackupsApi_UpdateBackupSchedule_Call) Run(run func(ctx context.Context, groupId string, clusterName string, diskBackupSnapshotSchedule20240805 *admin.DiskBackupSnapshotSchedule20240805)) *CloudBackupsApi_UpdateBackupSchedule_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.DiskBackupSnapshotSchedule))
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.DiskBackupSnapshotSchedule20240805))
 	})
 	return _c
 }
@@ -4292,30 +4292,30 @@ func (_c *CloudBackupsApi_UpdateBackupSchedule_Call) Return(_a0 admin.UpdateBack
 	return _c
 }
 
-func (_c *CloudBackupsApi_UpdateBackupSchedule_Call) RunAndReturn(run func(context.Context, string, string, *admin.DiskBackupSnapshotSchedule) admin.UpdateBackupScheduleApiRequest) *CloudBackupsApi_UpdateBackupSchedule_Call {
+func (_c *CloudBackupsApi_UpdateBackupSchedule_Call) RunAndReturn(run func(context.Context, string, string, *admin.DiskBackupSnapshotSchedule20240805) admin.UpdateBackupScheduleApiRequest) *CloudBackupsApi_UpdateBackupSchedule_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
 // UpdateBackupScheduleExecute provides a mock function with given fields: r
-func (_m *CloudBackupsApi) UpdateBackupScheduleExecute(r admin.UpdateBackupScheduleApiRequest) (*admin.DiskBackupSnapshotSchedule, *http.Response, error) {
+func (_m *CloudBackupsApi) UpdateBackupScheduleExecute(r admin.UpdateBackupScheduleApiRequest) (*admin.DiskBackupSnapshotSchedule20240805, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for UpdateBackupScheduleExecute")
 	}
 
-	var r0 *admin.DiskBackupSnapshotSchedule
+	var r0 *admin.DiskBackupSnapshotSchedule20240805
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.UpdateBackupScheduleApiRequest) (*admin.DiskBackupSnapshotSchedule, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.UpdateBackupScheduleApiRequest) (*admin.DiskBackupSnapshotSchedule20240805, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.UpdateBackupScheduleApiRequest) *admin.DiskBackupSnapshotSchedule); ok {
+	if rf, ok := ret.Get(0).(func(admin.UpdateBackupScheduleApiRequest) *admin.DiskBackupSnapshotSchedule20240805); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.DiskBackupSnapshotSchedule)
+			r0 = ret.Get(0).(*admin.DiskBackupSnapshotSchedule20240805)
 		}
 	}
 
@@ -4354,12 +4354,12 @@ func (_c *CloudBackupsApi_UpdateBackupScheduleExecute_Call) Run(run func(r admin
 	return _c
 }
 
-func (_c *CloudBackupsApi_UpdateBackupScheduleExecute_Call) Return(_a0 *admin.DiskBackupSnapshotSchedule, _a1 *http.Response, _a2 error) *CloudBackupsApi_UpdateBackupScheduleExecute_Call {
+func (_c *CloudBackupsApi_UpdateBackupScheduleExecute_Call) Return(_a0 *admin.DiskBackupSnapshotSchedule20240805, _a1 *http.Response, _a2 error) *CloudBackupsApi_UpdateBackupScheduleExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *CloudBackupsApi_UpdateBackupScheduleExecute_Call) RunAndReturn(run func(admin.UpdateBackupScheduleApiRequest) (*admin.DiskBackupSnapshotSchedule, *http.Response, error)) *CloudBackupsApi_UpdateBackupScheduleExecute_Call {
+func (_c *CloudBackupsApi_UpdateBackupScheduleExecute_Call) RunAndReturn(run func(admin.UpdateBackupScheduleApiRequest) (*admin.DiskBackupSnapshotSchedule20240805, *http.Response, error)) *CloudBackupsApi_UpdateBackupScheduleExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
