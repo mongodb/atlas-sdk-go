@@ -23,7 +23,7 @@ Method | HTTP request | Description
 
 ## AddProjectApiKey
 
-> ApiKeyUserDetails AddProjectApiKey(ctx, groupId, apiUserId, userAccessRoleAssignment []UserAccessRoleAssignment).Execute()
+> interface{} AddProjectApiKey(ctx, groupId, apiUserId, userAccessRoleAssignment []UserAccessRoleAssignment).Execute()
 
 Assign One Organization API Key to One Project
 
@@ -64,7 +64,7 @@ func main() {
         }
         return
     }
-    // response from `AddProjectApiKey`: ApiKeyUserDetails
+    // response from `AddProjectApiKey`: interface{}
     fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.AddProjectApiKey`: %v (%v)\n", resp, r)
 }
 ```
@@ -91,7 +91,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApiKeyUserDetails**](ApiKeyUserDetails.md)
+**interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

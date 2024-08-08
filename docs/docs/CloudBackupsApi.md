@@ -461,7 +461,7 @@ Name | Type | Description  | Notes
 
 ## DeleteAllBackupSchedules
 
-> DiskBackupSnapshotSchedule DeleteAllBackupSchedules(ctx, groupId, clusterName).Execute()
+> DiskBackupSnapshotSchedule20240805 DeleteAllBackupSchedules(ctx, groupId, clusterName).Execute()
 
 Remove All Cloud Backup Schedules
 
@@ -501,7 +501,7 @@ func main() {
         }
         return
     }
-    // response from `DeleteAllBackupSchedules`: DiskBackupSnapshotSchedule
+    // response from `DeleteAllBackupSchedules`: DiskBackupSnapshotSchedule20240805
     fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.DeleteAllBackupSchedules`: %v (%v)\n", resp, r)
 }
 ```
@@ -527,7 +527,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DiskBackupSnapshotSchedule**](DiskBackupSnapshotSchedule.md)
+[**DiskBackupSnapshotSchedule20240805**](DiskBackupSnapshotSchedule20240805.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -535,7 +535,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-01-01+json, application/json
+- **Accept**: application/vnd.atlas.2024-08-05+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -971,7 +971,7 @@ Name | Type | Description  | Notes
 
 ## GetBackupSchedule
 
-> DiskBackupSnapshotSchedule GetBackupSchedule(ctx, groupId, clusterName).Execute()
+> DiskBackupSnapshotSchedule20240805 GetBackupSchedule(ctx, groupId, clusterName).Execute()
 
 Return One Cloud Backup Schedule
 
@@ -1011,7 +1011,7 @@ func main() {
         }
         return
     }
-    // response from `GetBackupSchedule`: DiskBackupSnapshotSchedule
+    // response from `GetBackupSchedule`: DiskBackupSnapshotSchedule20240805
     fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.GetBackupSchedule`: %v (%v)\n", resp, r)
 }
 ```
@@ -1037,7 +1037,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DiskBackupSnapshotSchedule**](DiskBackupSnapshotSchedule.md)
+[**DiskBackupSnapshotSchedule20240805**](DiskBackupSnapshotSchedule20240805.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -1045,7 +1045,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-01-01+json, application/json
+- **Accept**: application/vnd.atlas.2024-08-05+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -2260,7 +2260,7 @@ Name | Type | Description  | Notes
 
 ## UpdateBackupSchedule
 
-> DiskBackupSnapshotSchedule UpdateBackupSchedule(ctx, groupId, clusterName, diskBackupSnapshotSchedule DiskBackupSnapshotSchedule).Execute()
+> DiskBackupSnapshotSchedule20240805 UpdateBackupSchedule(ctx, groupId, clusterName, diskBackupSnapshotSchedule20240805 DiskBackupSnapshotSchedule20240805).Execute()
 
 Update Cloud Backup Schedule for One Cluster
 
@@ -2290,9 +2290,9 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
-    diskBackupSnapshotSchedule := *openapiclient.NewDiskBackupSnapshotSchedule() // DiskBackupSnapshotSchedule | 
+    diskBackupSnapshotSchedule20240805 := *openapiclient.NewDiskBackupSnapshotSchedule20240805() // DiskBackupSnapshotSchedule20240805 | 
 
-    resp, r, err := sdk.CloudBackupsApi.UpdateBackupSchedule(context.Background(), groupId, clusterName, &diskBackupSnapshotSchedule).Execute()
+    resp, r, err := sdk.CloudBackupsApi.UpdateBackupSchedule(context.Background(), groupId, clusterName, &diskBackupSnapshotSchedule20240805).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.UpdateBackupSchedule`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -2301,7 +2301,7 @@ func main() {
         }
         return
     }
-    // response from `UpdateBackupSchedule`: DiskBackupSnapshotSchedule
+    // response from `UpdateBackupSchedule`: DiskBackupSnapshotSchedule20240805
     fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.UpdateBackupSchedule`: %v (%v)\n", resp, r)
 }
 ```
@@ -2324,19 +2324,19 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **diskBackupSnapshotSchedule** | [**DiskBackupSnapshotSchedule**](DiskBackupSnapshotSchedule.md) | Updates the cloud backup schedule for one cluster within the specified project.  **Note**: In the request body, provide only the fields that you want to update. | 
+ **diskBackupSnapshotSchedule20240805** | [**DiskBackupSnapshotSchedule20240805**](DiskBackupSnapshotSchedule20240805.md) | Updates the cloud backup schedule for one cluster within the specified project.  **Note**: In the request body, provide only the fields that you want to update. | 
 
 ### Return type
 
-[**DiskBackupSnapshotSchedule**](DiskBackupSnapshotSchedule.md)
+[**DiskBackupSnapshotSchedule20240805**](DiskBackupSnapshotSchedule20240805.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
 
 ### HTTP request headers
 
-- **Content-Type**: application/vnd.atlas.2023-01-01+json
-- **Accept**: application/vnd.atlas.2023-01-01+json, application/json
+- **Content-Type**: application/vnd.atlas.2024-08-05+json
+- **Accept**: application/vnd.atlas.2024-08-05+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

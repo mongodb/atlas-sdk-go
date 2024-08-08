@@ -346,7 +346,7 @@ Name | Type | Description  | Notes
 
 ## ListInvoices
 
-> PaginatedApiInvoiceMetadata ListInvoices(ctx, orgId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).ViewLinkedInvoices(viewLinkedInvoices).Execute()
+> PaginatedApiInvoiceMetadata ListInvoices(ctx, orgId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).ViewLinkedInvoices(viewLinkedInvoices).StatusNames(statusNames).FromDate(fromDate).ToDate(toDate).SortBy(sortBy).OrderBy(orderBy).Execute()
 
 Return All Invoices for One Organization
 
@@ -379,8 +379,13 @@ func main() {
     itemsPerPage := int(100) // int |  (optional) (default to 100)
     pageNum := int(1) // int |  (optional) (default to 1)
     viewLinkedInvoices := true // bool |  (optional) (default to true)
+    statusNames := []string{"Inner_example"} // []string |  (optional)
+    fromDate := time.Now() // string |  (optional)
+    toDate := time.Now() // string |  (optional)
+    sortBy := "sortBy_example" // string |  (optional) (default to "END_DATE")
+    orderBy := "desc" // string |  (optional) (default to "desc")
 
-    resp, r, err := sdk.InvoicesApi.ListInvoices(context.Background(), orgId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).ViewLinkedInvoices(viewLinkedInvoices).Execute()
+    resp, r, err := sdk.InvoicesApi.ListInvoices(context.Background(), orgId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).ViewLinkedInvoices(viewLinkedInvoices).StatusNames(statusNames).FromDate(fromDate).ToDate(toDate).SortBy(sortBy).OrderBy(orderBy).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `InvoicesApi.ListInvoices`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -414,6 +419,11 @@ Name | Type | Description  | Notes
  **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
  **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
  **viewLinkedInvoices** | **bool** | Flag that indicates whether to return linked invoices in the linkedInvoices field. | [default to true]
+ **statusNames** | **[]string** | Statuses of the invoice to be retrieved. Omit to return invoices of all statuses. | 
+ **fromDate** | **string** | Retrieve the invoices the startDates of which are greater than or equal to the fromDate. If omit, the invoices return will go back to earliest startDate. | 
+ **toDate** | **string** | Retrieve the invoices the endDates of which are smaller than or equal to the toDate. If omit, the invoices return will go further to latest endDate. | 
+ **sortBy** | **string** | Field used to sort the returned invoices by. Use in combination with orderBy parameter to control the order of the result. | [default to &quot;END_DATE&quot;]
+ **orderBy** | **string** | Field used to order the returned invoices by. Use in combination of sortBy parameter to control the order of the result. | [default to &quot;desc&quot;]
 
 ### Return type
 

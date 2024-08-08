@@ -7,8 +7,8 @@ import (
 	"time"
 )
 
-// DiskBackupSnapshotSchedule struct for DiskBackupSnapshotSchedule
-type DiskBackupSnapshotSchedule struct {
+// DiskBackupSnapshotSchedule20240805 struct for DiskBackupSnapshotSchedule20240805
+type DiskBackupSnapshotSchedule20240805 struct {
 	// Flag that indicates whether MongoDB Cloud automatically exports Cloud Backup Snapshots to the Export Bucket.
 	AutoExportEnabled *bool `json:"autoExportEnabled,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the cluster with the Snapshot you want to return.
@@ -18,11 +18,11 @@ type DiskBackupSnapshotSchedule struct {
 	// Read only field.
 	ClusterName *string `json:"clusterName,omitempty"`
 	// List that contains a document for each copy setting item in the desired backup policy.
-	CopySettings *[]DiskBackupCopySetting `json:"copySettings,omitempty"`
+	CopySettings *[]DiskBackupCopySetting20240805 `json:"copySettings,omitempty"`
 	// List that contains a document for each deleted copy setting whose backup copies you want to delete.
 	// Write only field.
-	DeleteCopiedBackups *[]DeleteCopiedBackups `json:"deleteCopiedBackups,omitempty"`
-	Export              *AutoExportPolicy      `json:"export,omitempty"`
+	DeleteCopiedBackups *[]DeleteCopiedBackups20240805 `json:"deleteCopiedBackups,omitempty"`
+	Export              *AutoExportPolicy              `json:"export,omitempty"`
 	// List that contains a document for each extra retention setting item in the desired backup policy.
 	ExtraRetentionSettings *[]ExtraRetentionSetting `json:"extraRetentionSettings,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
@@ -46,25 +46,25 @@ type DiskBackupSnapshotSchedule struct {
 	UseOrgAndGroupNamesInExportPrefix *bool `json:"useOrgAndGroupNamesInExportPrefix,omitempty"`
 }
 
-// NewDiskBackupSnapshotSchedule instantiates a new DiskBackupSnapshotSchedule object
+// NewDiskBackupSnapshotSchedule20240805 instantiates a new DiskBackupSnapshotSchedule20240805 object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDiskBackupSnapshotSchedule() *DiskBackupSnapshotSchedule {
-	this := DiskBackupSnapshotSchedule{}
+func NewDiskBackupSnapshotSchedule20240805() *DiskBackupSnapshotSchedule20240805 {
+	this := DiskBackupSnapshotSchedule20240805{}
 	return &this
 }
 
-// NewDiskBackupSnapshotScheduleWithDefaults instantiates a new DiskBackupSnapshotSchedule object
+// NewDiskBackupSnapshotSchedule20240805WithDefaults instantiates a new DiskBackupSnapshotSchedule20240805 object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewDiskBackupSnapshotScheduleWithDefaults() *DiskBackupSnapshotSchedule {
-	this := DiskBackupSnapshotSchedule{}
+func NewDiskBackupSnapshotSchedule20240805WithDefaults() *DiskBackupSnapshotSchedule20240805 {
+	this := DiskBackupSnapshotSchedule20240805{}
 	return &this
 }
 
 // GetAutoExportEnabled returns the AutoExportEnabled field value if set, zero value otherwise
-func (o *DiskBackupSnapshotSchedule) GetAutoExportEnabled() bool {
+func (o *DiskBackupSnapshotSchedule20240805) GetAutoExportEnabled() bool {
 	if o == nil || IsNil(o.AutoExportEnabled) {
 		var ret bool
 		return ret
@@ -74,7 +74,7 @@ func (o *DiskBackupSnapshotSchedule) GetAutoExportEnabled() bool {
 
 // GetAutoExportEnabledOk returns a tuple with the AutoExportEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiskBackupSnapshotSchedule) GetAutoExportEnabledOk() (*bool, bool) {
+func (o *DiskBackupSnapshotSchedule20240805) GetAutoExportEnabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.AutoExportEnabled) {
 		return nil, false
 	}
@@ -83,7 +83,7 @@ func (o *DiskBackupSnapshotSchedule) GetAutoExportEnabledOk() (*bool, bool) {
 }
 
 // HasAutoExportEnabled returns a boolean if a field has been set.
-func (o *DiskBackupSnapshotSchedule) HasAutoExportEnabled() bool {
+func (o *DiskBackupSnapshotSchedule20240805) HasAutoExportEnabled() bool {
 	if o != nil && !IsNil(o.AutoExportEnabled) {
 		return true
 	}
@@ -92,12 +92,12 @@ func (o *DiskBackupSnapshotSchedule) HasAutoExportEnabled() bool {
 }
 
 // SetAutoExportEnabled gets a reference to the given bool and assigns it to the AutoExportEnabled field.
-func (o *DiskBackupSnapshotSchedule) SetAutoExportEnabled(v bool) {
+func (o *DiskBackupSnapshotSchedule20240805) SetAutoExportEnabled(v bool) {
 	o.AutoExportEnabled = &v
 }
 
 // GetClusterId returns the ClusterId field value if set, zero value otherwise
-func (o *DiskBackupSnapshotSchedule) GetClusterId() string {
+func (o *DiskBackupSnapshotSchedule20240805) GetClusterId() string {
 	if o == nil || IsNil(o.ClusterId) {
 		var ret string
 		return ret
@@ -107,7 +107,7 @@ func (o *DiskBackupSnapshotSchedule) GetClusterId() string {
 
 // GetClusterIdOk returns a tuple with the ClusterId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiskBackupSnapshotSchedule) GetClusterIdOk() (*string, bool) {
+func (o *DiskBackupSnapshotSchedule20240805) GetClusterIdOk() (*string, bool) {
 	if o == nil || IsNil(o.ClusterId) {
 		return nil, false
 	}
@@ -116,7 +116,7 @@ func (o *DiskBackupSnapshotSchedule) GetClusterIdOk() (*string, bool) {
 }
 
 // HasClusterId returns a boolean if a field has been set.
-func (o *DiskBackupSnapshotSchedule) HasClusterId() bool {
+func (o *DiskBackupSnapshotSchedule20240805) HasClusterId() bool {
 	if o != nil && !IsNil(o.ClusterId) {
 		return true
 	}
@@ -125,12 +125,12 @@ func (o *DiskBackupSnapshotSchedule) HasClusterId() bool {
 }
 
 // SetClusterId gets a reference to the given string and assigns it to the ClusterId field.
-func (o *DiskBackupSnapshotSchedule) SetClusterId(v string) {
+func (o *DiskBackupSnapshotSchedule20240805) SetClusterId(v string) {
 	o.ClusterId = &v
 }
 
 // GetClusterName returns the ClusterName field value if set, zero value otherwise
-func (o *DiskBackupSnapshotSchedule) GetClusterName() string {
+func (o *DiskBackupSnapshotSchedule20240805) GetClusterName() string {
 	if o == nil || IsNil(o.ClusterName) {
 		var ret string
 		return ret
@@ -140,7 +140,7 @@ func (o *DiskBackupSnapshotSchedule) GetClusterName() string {
 
 // GetClusterNameOk returns a tuple with the ClusterName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiskBackupSnapshotSchedule) GetClusterNameOk() (*string, bool) {
+func (o *DiskBackupSnapshotSchedule20240805) GetClusterNameOk() (*string, bool) {
 	if o == nil || IsNil(o.ClusterName) {
 		return nil, false
 	}
@@ -149,7 +149,7 @@ func (o *DiskBackupSnapshotSchedule) GetClusterNameOk() (*string, bool) {
 }
 
 // HasClusterName returns a boolean if a field has been set.
-func (o *DiskBackupSnapshotSchedule) HasClusterName() bool {
+func (o *DiskBackupSnapshotSchedule20240805) HasClusterName() bool {
 	if o != nil && !IsNil(o.ClusterName) {
 		return true
 	}
@@ -158,14 +158,14 @@ func (o *DiskBackupSnapshotSchedule) HasClusterName() bool {
 }
 
 // SetClusterName gets a reference to the given string and assigns it to the ClusterName field.
-func (o *DiskBackupSnapshotSchedule) SetClusterName(v string) {
+func (o *DiskBackupSnapshotSchedule20240805) SetClusterName(v string) {
 	o.ClusterName = &v
 }
 
 // GetCopySettings returns the CopySettings field value if set, zero value otherwise
-func (o *DiskBackupSnapshotSchedule) GetCopySettings() []DiskBackupCopySetting {
+func (o *DiskBackupSnapshotSchedule20240805) GetCopySettings() []DiskBackupCopySetting20240805 {
 	if o == nil || IsNil(o.CopySettings) {
-		var ret []DiskBackupCopySetting
+		var ret []DiskBackupCopySetting20240805
 		return ret
 	}
 	return *o.CopySettings
@@ -173,7 +173,7 @@ func (o *DiskBackupSnapshotSchedule) GetCopySettings() []DiskBackupCopySetting {
 
 // GetCopySettingsOk returns a tuple with the CopySettings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiskBackupSnapshotSchedule) GetCopySettingsOk() (*[]DiskBackupCopySetting, bool) {
+func (o *DiskBackupSnapshotSchedule20240805) GetCopySettingsOk() (*[]DiskBackupCopySetting20240805, bool) {
 	if o == nil || IsNil(o.CopySettings) {
 		return nil, false
 	}
@@ -182,7 +182,7 @@ func (o *DiskBackupSnapshotSchedule) GetCopySettingsOk() (*[]DiskBackupCopySetti
 }
 
 // HasCopySettings returns a boolean if a field has been set.
-func (o *DiskBackupSnapshotSchedule) HasCopySettings() bool {
+func (o *DiskBackupSnapshotSchedule20240805) HasCopySettings() bool {
 	if o != nil && !IsNil(o.CopySettings) {
 		return true
 	}
@@ -190,15 +190,15 @@ func (o *DiskBackupSnapshotSchedule) HasCopySettings() bool {
 	return false
 }
 
-// SetCopySettings gets a reference to the given []DiskBackupCopySetting and assigns it to the CopySettings field.
-func (o *DiskBackupSnapshotSchedule) SetCopySettings(v []DiskBackupCopySetting) {
+// SetCopySettings gets a reference to the given []DiskBackupCopySetting20240805 and assigns it to the CopySettings field.
+func (o *DiskBackupSnapshotSchedule20240805) SetCopySettings(v []DiskBackupCopySetting20240805) {
 	o.CopySettings = &v
 }
 
 // GetDeleteCopiedBackups returns the DeleteCopiedBackups field value if set, zero value otherwise
-func (o *DiskBackupSnapshotSchedule) GetDeleteCopiedBackups() []DeleteCopiedBackups {
+func (o *DiskBackupSnapshotSchedule20240805) GetDeleteCopiedBackups() []DeleteCopiedBackups20240805 {
 	if o == nil || IsNil(o.DeleteCopiedBackups) {
-		var ret []DeleteCopiedBackups
+		var ret []DeleteCopiedBackups20240805
 		return ret
 	}
 	return *o.DeleteCopiedBackups
@@ -206,7 +206,7 @@ func (o *DiskBackupSnapshotSchedule) GetDeleteCopiedBackups() []DeleteCopiedBack
 
 // GetDeleteCopiedBackupsOk returns a tuple with the DeleteCopiedBackups field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiskBackupSnapshotSchedule) GetDeleteCopiedBackupsOk() (*[]DeleteCopiedBackups, bool) {
+func (o *DiskBackupSnapshotSchedule20240805) GetDeleteCopiedBackupsOk() (*[]DeleteCopiedBackups20240805, bool) {
 	if o == nil || IsNil(o.DeleteCopiedBackups) {
 		return nil, false
 	}
@@ -215,7 +215,7 @@ func (o *DiskBackupSnapshotSchedule) GetDeleteCopiedBackupsOk() (*[]DeleteCopied
 }
 
 // HasDeleteCopiedBackups returns a boolean if a field has been set.
-func (o *DiskBackupSnapshotSchedule) HasDeleteCopiedBackups() bool {
+func (o *DiskBackupSnapshotSchedule20240805) HasDeleteCopiedBackups() bool {
 	if o != nil && !IsNil(o.DeleteCopiedBackups) {
 		return true
 	}
@@ -223,13 +223,13 @@ func (o *DiskBackupSnapshotSchedule) HasDeleteCopiedBackups() bool {
 	return false
 }
 
-// SetDeleteCopiedBackups gets a reference to the given []DeleteCopiedBackups and assigns it to the DeleteCopiedBackups field.
-func (o *DiskBackupSnapshotSchedule) SetDeleteCopiedBackups(v []DeleteCopiedBackups) {
+// SetDeleteCopiedBackups gets a reference to the given []DeleteCopiedBackups20240805 and assigns it to the DeleteCopiedBackups field.
+func (o *DiskBackupSnapshotSchedule20240805) SetDeleteCopiedBackups(v []DeleteCopiedBackups20240805) {
 	o.DeleteCopiedBackups = &v
 }
 
 // GetExport returns the Export field value if set, zero value otherwise
-func (o *DiskBackupSnapshotSchedule) GetExport() AutoExportPolicy {
+func (o *DiskBackupSnapshotSchedule20240805) GetExport() AutoExportPolicy {
 	if o == nil || IsNil(o.Export) {
 		var ret AutoExportPolicy
 		return ret
@@ -239,7 +239,7 @@ func (o *DiskBackupSnapshotSchedule) GetExport() AutoExportPolicy {
 
 // GetExportOk returns a tuple with the Export field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiskBackupSnapshotSchedule) GetExportOk() (*AutoExportPolicy, bool) {
+func (o *DiskBackupSnapshotSchedule20240805) GetExportOk() (*AutoExportPolicy, bool) {
 	if o == nil || IsNil(o.Export) {
 		return nil, false
 	}
@@ -248,7 +248,7 @@ func (o *DiskBackupSnapshotSchedule) GetExportOk() (*AutoExportPolicy, bool) {
 }
 
 // HasExport returns a boolean if a field has been set.
-func (o *DiskBackupSnapshotSchedule) HasExport() bool {
+func (o *DiskBackupSnapshotSchedule20240805) HasExport() bool {
 	if o != nil && !IsNil(o.Export) {
 		return true
 	}
@@ -257,12 +257,12 @@ func (o *DiskBackupSnapshotSchedule) HasExport() bool {
 }
 
 // SetExport gets a reference to the given AutoExportPolicy and assigns it to the Export field.
-func (o *DiskBackupSnapshotSchedule) SetExport(v AutoExportPolicy) {
+func (o *DiskBackupSnapshotSchedule20240805) SetExport(v AutoExportPolicy) {
 	o.Export = &v
 }
 
 // GetExtraRetentionSettings returns the ExtraRetentionSettings field value if set, zero value otherwise
-func (o *DiskBackupSnapshotSchedule) GetExtraRetentionSettings() []ExtraRetentionSetting {
+func (o *DiskBackupSnapshotSchedule20240805) GetExtraRetentionSettings() []ExtraRetentionSetting {
 	if o == nil || IsNil(o.ExtraRetentionSettings) {
 		var ret []ExtraRetentionSetting
 		return ret
@@ -272,7 +272,7 @@ func (o *DiskBackupSnapshotSchedule) GetExtraRetentionSettings() []ExtraRetentio
 
 // GetExtraRetentionSettingsOk returns a tuple with the ExtraRetentionSettings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiskBackupSnapshotSchedule) GetExtraRetentionSettingsOk() (*[]ExtraRetentionSetting, bool) {
+func (o *DiskBackupSnapshotSchedule20240805) GetExtraRetentionSettingsOk() (*[]ExtraRetentionSetting, bool) {
 	if o == nil || IsNil(o.ExtraRetentionSettings) {
 		return nil, false
 	}
@@ -281,7 +281,7 @@ func (o *DiskBackupSnapshotSchedule) GetExtraRetentionSettingsOk() (*[]ExtraRete
 }
 
 // HasExtraRetentionSettings returns a boolean if a field has been set.
-func (o *DiskBackupSnapshotSchedule) HasExtraRetentionSettings() bool {
+func (o *DiskBackupSnapshotSchedule20240805) HasExtraRetentionSettings() bool {
 	if o != nil && !IsNil(o.ExtraRetentionSettings) {
 		return true
 	}
@@ -290,12 +290,12 @@ func (o *DiskBackupSnapshotSchedule) HasExtraRetentionSettings() bool {
 }
 
 // SetExtraRetentionSettings gets a reference to the given []ExtraRetentionSetting and assigns it to the ExtraRetentionSettings field.
-func (o *DiskBackupSnapshotSchedule) SetExtraRetentionSettings(v []ExtraRetentionSetting) {
+func (o *DiskBackupSnapshotSchedule20240805) SetExtraRetentionSettings(v []ExtraRetentionSetting) {
 	o.ExtraRetentionSettings = &v
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
-func (o *DiskBackupSnapshotSchedule) GetLinks() []Link {
+func (o *DiskBackupSnapshotSchedule20240805) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
 		return ret
@@ -305,7 +305,7 @@ func (o *DiskBackupSnapshotSchedule) GetLinks() []Link {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiskBackupSnapshotSchedule) GetLinksOk() (*[]Link, bool) {
+func (o *DiskBackupSnapshotSchedule20240805) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -314,7 +314,7 @@ func (o *DiskBackupSnapshotSchedule) GetLinksOk() (*[]Link, bool) {
 }
 
 // HasLinks returns a boolean if a field has been set.
-func (o *DiskBackupSnapshotSchedule) HasLinks() bool {
+func (o *DiskBackupSnapshotSchedule20240805) HasLinks() bool {
 	if o != nil && !IsNil(o.Links) {
 		return true
 	}
@@ -323,12 +323,12 @@ func (o *DiskBackupSnapshotSchedule) HasLinks() bool {
 }
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
-func (o *DiskBackupSnapshotSchedule) SetLinks(v []Link) {
+func (o *DiskBackupSnapshotSchedule20240805) SetLinks(v []Link) {
 	o.Links = &v
 }
 
 // GetNextSnapshot returns the NextSnapshot field value if set, zero value otherwise
-func (o *DiskBackupSnapshotSchedule) GetNextSnapshot() time.Time {
+func (o *DiskBackupSnapshotSchedule20240805) GetNextSnapshot() time.Time {
 	if o == nil || IsNil(o.NextSnapshot) {
 		var ret time.Time
 		return ret
@@ -338,7 +338,7 @@ func (o *DiskBackupSnapshotSchedule) GetNextSnapshot() time.Time {
 
 // GetNextSnapshotOk returns a tuple with the NextSnapshot field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiskBackupSnapshotSchedule) GetNextSnapshotOk() (*time.Time, bool) {
+func (o *DiskBackupSnapshotSchedule20240805) GetNextSnapshotOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.NextSnapshot) {
 		return nil, false
 	}
@@ -347,7 +347,7 @@ func (o *DiskBackupSnapshotSchedule) GetNextSnapshotOk() (*time.Time, bool) {
 }
 
 // HasNextSnapshot returns a boolean if a field has been set.
-func (o *DiskBackupSnapshotSchedule) HasNextSnapshot() bool {
+func (o *DiskBackupSnapshotSchedule20240805) HasNextSnapshot() bool {
 	if o != nil && !IsNil(o.NextSnapshot) {
 		return true
 	}
@@ -356,12 +356,12 @@ func (o *DiskBackupSnapshotSchedule) HasNextSnapshot() bool {
 }
 
 // SetNextSnapshot gets a reference to the given time.Time and assigns it to the NextSnapshot field.
-func (o *DiskBackupSnapshotSchedule) SetNextSnapshot(v time.Time) {
+func (o *DiskBackupSnapshotSchedule20240805) SetNextSnapshot(v time.Time) {
 	o.NextSnapshot = &v
 }
 
 // GetPolicies returns the Policies field value if set, zero value otherwise
-func (o *DiskBackupSnapshotSchedule) GetPolicies() []AdvancedDiskBackupSnapshotSchedulePolicy {
+func (o *DiskBackupSnapshotSchedule20240805) GetPolicies() []AdvancedDiskBackupSnapshotSchedulePolicy {
 	if o == nil || IsNil(o.Policies) {
 		var ret []AdvancedDiskBackupSnapshotSchedulePolicy
 		return ret
@@ -371,7 +371,7 @@ func (o *DiskBackupSnapshotSchedule) GetPolicies() []AdvancedDiskBackupSnapshotS
 
 // GetPoliciesOk returns a tuple with the Policies field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiskBackupSnapshotSchedule) GetPoliciesOk() (*[]AdvancedDiskBackupSnapshotSchedulePolicy, bool) {
+func (o *DiskBackupSnapshotSchedule20240805) GetPoliciesOk() (*[]AdvancedDiskBackupSnapshotSchedulePolicy, bool) {
 	if o == nil || IsNil(o.Policies) {
 		return nil, false
 	}
@@ -380,7 +380,7 @@ func (o *DiskBackupSnapshotSchedule) GetPoliciesOk() (*[]AdvancedDiskBackupSnaps
 }
 
 // HasPolicies returns a boolean if a field has been set.
-func (o *DiskBackupSnapshotSchedule) HasPolicies() bool {
+func (o *DiskBackupSnapshotSchedule20240805) HasPolicies() bool {
 	if o != nil && !IsNil(o.Policies) {
 		return true
 	}
@@ -389,12 +389,12 @@ func (o *DiskBackupSnapshotSchedule) HasPolicies() bool {
 }
 
 // SetPolicies gets a reference to the given []AdvancedDiskBackupSnapshotSchedulePolicy and assigns it to the Policies field.
-func (o *DiskBackupSnapshotSchedule) SetPolicies(v []AdvancedDiskBackupSnapshotSchedulePolicy) {
+func (o *DiskBackupSnapshotSchedule20240805) SetPolicies(v []AdvancedDiskBackupSnapshotSchedulePolicy) {
 	o.Policies = &v
 }
 
 // GetReferenceHourOfDay returns the ReferenceHourOfDay field value if set, zero value otherwise
-func (o *DiskBackupSnapshotSchedule) GetReferenceHourOfDay() int {
+func (o *DiskBackupSnapshotSchedule20240805) GetReferenceHourOfDay() int {
 	if o == nil || IsNil(o.ReferenceHourOfDay) {
 		var ret int
 		return ret
@@ -404,7 +404,7 @@ func (o *DiskBackupSnapshotSchedule) GetReferenceHourOfDay() int {
 
 // GetReferenceHourOfDayOk returns a tuple with the ReferenceHourOfDay field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiskBackupSnapshotSchedule) GetReferenceHourOfDayOk() (*int, bool) {
+func (o *DiskBackupSnapshotSchedule20240805) GetReferenceHourOfDayOk() (*int, bool) {
 	if o == nil || IsNil(o.ReferenceHourOfDay) {
 		return nil, false
 	}
@@ -413,7 +413,7 @@ func (o *DiskBackupSnapshotSchedule) GetReferenceHourOfDayOk() (*int, bool) {
 }
 
 // HasReferenceHourOfDay returns a boolean if a field has been set.
-func (o *DiskBackupSnapshotSchedule) HasReferenceHourOfDay() bool {
+func (o *DiskBackupSnapshotSchedule20240805) HasReferenceHourOfDay() bool {
 	if o != nil && !IsNil(o.ReferenceHourOfDay) {
 		return true
 	}
@@ -422,12 +422,12 @@ func (o *DiskBackupSnapshotSchedule) HasReferenceHourOfDay() bool {
 }
 
 // SetReferenceHourOfDay gets a reference to the given int and assigns it to the ReferenceHourOfDay field.
-func (o *DiskBackupSnapshotSchedule) SetReferenceHourOfDay(v int) {
+func (o *DiskBackupSnapshotSchedule20240805) SetReferenceHourOfDay(v int) {
 	o.ReferenceHourOfDay = &v
 }
 
 // GetReferenceMinuteOfHour returns the ReferenceMinuteOfHour field value if set, zero value otherwise
-func (o *DiskBackupSnapshotSchedule) GetReferenceMinuteOfHour() int {
+func (o *DiskBackupSnapshotSchedule20240805) GetReferenceMinuteOfHour() int {
 	if o == nil || IsNil(o.ReferenceMinuteOfHour) {
 		var ret int
 		return ret
@@ -437,7 +437,7 @@ func (o *DiskBackupSnapshotSchedule) GetReferenceMinuteOfHour() int {
 
 // GetReferenceMinuteOfHourOk returns a tuple with the ReferenceMinuteOfHour field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiskBackupSnapshotSchedule) GetReferenceMinuteOfHourOk() (*int, bool) {
+func (o *DiskBackupSnapshotSchedule20240805) GetReferenceMinuteOfHourOk() (*int, bool) {
 	if o == nil || IsNil(o.ReferenceMinuteOfHour) {
 		return nil, false
 	}
@@ -446,7 +446,7 @@ func (o *DiskBackupSnapshotSchedule) GetReferenceMinuteOfHourOk() (*int, bool) {
 }
 
 // HasReferenceMinuteOfHour returns a boolean if a field has been set.
-func (o *DiskBackupSnapshotSchedule) HasReferenceMinuteOfHour() bool {
+func (o *DiskBackupSnapshotSchedule20240805) HasReferenceMinuteOfHour() bool {
 	if o != nil && !IsNil(o.ReferenceMinuteOfHour) {
 		return true
 	}
@@ -455,12 +455,12 @@ func (o *DiskBackupSnapshotSchedule) HasReferenceMinuteOfHour() bool {
 }
 
 // SetReferenceMinuteOfHour gets a reference to the given int and assigns it to the ReferenceMinuteOfHour field.
-func (o *DiskBackupSnapshotSchedule) SetReferenceMinuteOfHour(v int) {
+func (o *DiskBackupSnapshotSchedule20240805) SetReferenceMinuteOfHour(v int) {
 	o.ReferenceMinuteOfHour = &v
 }
 
 // GetRestoreWindowDays returns the RestoreWindowDays field value if set, zero value otherwise
-func (o *DiskBackupSnapshotSchedule) GetRestoreWindowDays() int {
+func (o *DiskBackupSnapshotSchedule20240805) GetRestoreWindowDays() int {
 	if o == nil || IsNil(o.RestoreWindowDays) {
 		var ret int
 		return ret
@@ -470,7 +470,7 @@ func (o *DiskBackupSnapshotSchedule) GetRestoreWindowDays() int {
 
 // GetRestoreWindowDaysOk returns a tuple with the RestoreWindowDays field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiskBackupSnapshotSchedule) GetRestoreWindowDaysOk() (*int, bool) {
+func (o *DiskBackupSnapshotSchedule20240805) GetRestoreWindowDaysOk() (*int, bool) {
 	if o == nil || IsNil(o.RestoreWindowDays) {
 		return nil, false
 	}
@@ -479,7 +479,7 @@ func (o *DiskBackupSnapshotSchedule) GetRestoreWindowDaysOk() (*int, bool) {
 }
 
 // HasRestoreWindowDays returns a boolean if a field has been set.
-func (o *DiskBackupSnapshotSchedule) HasRestoreWindowDays() bool {
+func (o *DiskBackupSnapshotSchedule20240805) HasRestoreWindowDays() bool {
 	if o != nil && !IsNil(o.RestoreWindowDays) {
 		return true
 	}
@@ -488,12 +488,12 @@ func (o *DiskBackupSnapshotSchedule) HasRestoreWindowDays() bool {
 }
 
 // SetRestoreWindowDays gets a reference to the given int and assigns it to the RestoreWindowDays field.
-func (o *DiskBackupSnapshotSchedule) SetRestoreWindowDays(v int) {
+func (o *DiskBackupSnapshotSchedule20240805) SetRestoreWindowDays(v int) {
 	o.RestoreWindowDays = &v
 }
 
 // GetUpdateSnapshots returns the UpdateSnapshots field value if set, zero value otherwise
-func (o *DiskBackupSnapshotSchedule) GetUpdateSnapshots() bool {
+func (o *DiskBackupSnapshotSchedule20240805) GetUpdateSnapshots() bool {
 	if o == nil || IsNil(o.UpdateSnapshots) {
 		var ret bool
 		return ret
@@ -503,7 +503,7 @@ func (o *DiskBackupSnapshotSchedule) GetUpdateSnapshots() bool {
 
 // GetUpdateSnapshotsOk returns a tuple with the UpdateSnapshots field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiskBackupSnapshotSchedule) GetUpdateSnapshotsOk() (*bool, bool) {
+func (o *DiskBackupSnapshotSchedule20240805) GetUpdateSnapshotsOk() (*bool, bool) {
 	if o == nil || IsNil(o.UpdateSnapshots) {
 		return nil, false
 	}
@@ -512,7 +512,7 @@ func (o *DiskBackupSnapshotSchedule) GetUpdateSnapshotsOk() (*bool, bool) {
 }
 
 // HasUpdateSnapshots returns a boolean if a field has been set.
-func (o *DiskBackupSnapshotSchedule) HasUpdateSnapshots() bool {
+func (o *DiskBackupSnapshotSchedule20240805) HasUpdateSnapshots() bool {
 	if o != nil && !IsNil(o.UpdateSnapshots) {
 		return true
 	}
@@ -521,12 +521,12 @@ func (o *DiskBackupSnapshotSchedule) HasUpdateSnapshots() bool {
 }
 
 // SetUpdateSnapshots gets a reference to the given bool and assigns it to the UpdateSnapshots field.
-func (o *DiskBackupSnapshotSchedule) SetUpdateSnapshots(v bool) {
+func (o *DiskBackupSnapshotSchedule20240805) SetUpdateSnapshots(v bool) {
 	o.UpdateSnapshots = &v
 }
 
 // GetUseOrgAndGroupNamesInExportPrefix returns the UseOrgAndGroupNamesInExportPrefix field value if set, zero value otherwise
-func (o *DiskBackupSnapshotSchedule) GetUseOrgAndGroupNamesInExportPrefix() bool {
+func (o *DiskBackupSnapshotSchedule20240805) GetUseOrgAndGroupNamesInExportPrefix() bool {
 	if o == nil || IsNil(o.UseOrgAndGroupNamesInExportPrefix) {
 		var ret bool
 		return ret
@@ -536,7 +536,7 @@ func (o *DiskBackupSnapshotSchedule) GetUseOrgAndGroupNamesInExportPrefix() bool
 
 // GetUseOrgAndGroupNamesInExportPrefixOk returns a tuple with the UseOrgAndGroupNamesInExportPrefix field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiskBackupSnapshotSchedule) GetUseOrgAndGroupNamesInExportPrefixOk() (*bool, bool) {
+func (o *DiskBackupSnapshotSchedule20240805) GetUseOrgAndGroupNamesInExportPrefixOk() (*bool, bool) {
 	if o == nil || IsNil(o.UseOrgAndGroupNamesInExportPrefix) {
 		return nil, false
 	}
@@ -545,7 +545,7 @@ func (o *DiskBackupSnapshotSchedule) GetUseOrgAndGroupNamesInExportPrefixOk() (*
 }
 
 // HasUseOrgAndGroupNamesInExportPrefix returns a boolean if a field has been set.
-func (o *DiskBackupSnapshotSchedule) HasUseOrgAndGroupNamesInExportPrefix() bool {
+func (o *DiskBackupSnapshotSchedule20240805) HasUseOrgAndGroupNamesInExportPrefix() bool {
 	if o != nil && !IsNil(o.UseOrgAndGroupNamesInExportPrefix) {
 		return true
 	}
@@ -554,18 +554,18 @@ func (o *DiskBackupSnapshotSchedule) HasUseOrgAndGroupNamesInExportPrefix() bool
 }
 
 // SetUseOrgAndGroupNamesInExportPrefix gets a reference to the given bool and assigns it to the UseOrgAndGroupNamesInExportPrefix field.
-func (o *DiskBackupSnapshotSchedule) SetUseOrgAndGroupNamesInExportPrefix(v bool) {
+func (o *DiskBackupSnapshotSchedule20240805) SetUseOrgAndGroupNamesInExportPrefix(v bool) {
 	o.UseOrgAndGroupNamesInExportPrefix = &v
 }
 
-func (o DiskBackupSnapshotSchedule) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o DiskBackupSnapshotSchedule20240805) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o DiskBackupSnapshotSchedule) ToMap() (map[string]interface{}, error) {
+func (o DiskBackupSnapshotSchedule20240805) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.AutoExportEnabled) {
 		toSerialize["autoExportEnabled"] = o.AutoExportEnabled

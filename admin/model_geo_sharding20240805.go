@@ -6,9 +6,9 @@ import (
 	"encoding/json"
 )
 
-// GeoSharding struct for GeoSharding
-type GeoSharding struct {
-	// List that contains comma-separated key value pairs to map zones to geographic regions. These pairs map an ISO 3166-1a2 location code, with an ISO 3166-2 subdivision code when possible, to a unique 24-hexadecimal string that identifies the custom zone.  This parameter returns an empty object if no custom zones exist.
+// GeoSharding20240805 struct for GeoSharding20240805
+type GeoSharding20240805 struct {
+	// List that contains comma-separated key value pairs to map zones to geographic regions. These pairs map an ISO 3166-1a2 location code, with an ISO 3166-2 subdivision code when possible, to a unique 24-hexadecimal string that identifies the custom zone.   The 24-hexadecimal string corresponds to a `Replication Specifications` `zoneId` property.  This parameter returns an empty object if no custom zones exist.
 	// Read only field.
 	CustomZoneMapping *map[string]string `json:"customZoneMapping,omitempty"`
 	// List that contains a namespace for a Global Cluster. MongoDB Cloud manages this cluster.
@@ -19,25 +19,25 @@ type GeoSharding struct {
 	SelfManagedSharding *bool `json:"selfManagedSharding,omitempty"`
 }
 
-// NewGeoSharding instantiates a new GeoSharding object
+// NewGeoSharding20240805 instantiates a new GeoSharding20240805 object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGeoSharding() *GeoSharding {
-	this := GeoSharding{}
+func NewGeoSharding20240805() *GeoSharding20240805 {
+	this := GeoSharding20240805{}
 	return &this
 }
 
-// NewGeoShardingWithDefaults instantiates a new GeoSharding object
+// NewGeoSharding20240805WithDefaults instantiates a new GeoSharding20240805 object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewGeoShardingWithDefaults() *GeoSharding {
-	this := GeoSharding{}
+func NewGeoSharding20240805WithDefaults() *GeoSharding20240805 {
+	this := GeoSharding20240805{}
 	return &this
 }
 
 // GetCustomZoneMapping returns the CustomZoneMapping field value if set, zero value otherwise
-func (o *GeoSharding) GetCustomZoneMapping() map[string]string {
+func (o *GeoSharding20240805) GetCustomZoneMapping() map[string]string {
 	if o == nil || IsNil(o.CustomZoneMapping) {
 		var ret map[string]string
 		return ret
@@ -47,7 +47,7 @@ func (o *GeoSharding) GetCustomZoneMapping() map[string]string {
 
 // GetCustomZoneMappingOk returns a tuple with the CustomZoneMapping field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GeoSharding) GetCustomZoneMappingOk() (*map[string]string, bool) {
+func (o *GeoSharding20240805) GetCustomZoneMappingOk() (*map[string]string, bool) {
 	if o == nil || IsNil(o.CustomZoneMapping) {
 		return nil, false
 	}
@@ -56,7 +56,7 @@ func (o *GeoSharding) GetCustomZoneMappingOk() (*map[string]string, bool) {
 }
 
 // HasCustomZoneMapping returns a boolean if a field has been set.
-func (o *GeoSharding) HasCustomZoneMapping() bool {
+func (o *GeoSharding20240805) HasCustomZoneMapping() bool {
 	if o != nil && !IsNil(o.CustomZoneMapping) {
 		return true
 	}
@@ -65,12 +65,12 @@ func (o *GeoSharding) HasCustomZoneMapping() bool {
 }
 
 // SetCustomZoneMapping gets a reference to the given map[string]string and assigns it to the CustomZoneMapping field.
-func (o *GeoSharding) SetCustomZoneMapping(v map[string]string) {
+func (o *GeoSharding20240805) SetCustomZoneMapping(v map[string]string) {
 	o.CustomZoneMapping = &v
 }
 
 // GetManagedNamespaces returns the ManagedNamespaces field value if set, zero value otherwise
-func (o *GeoSharding) GetManagedNamespaces() []ManagedNamespaces {
+func (o *GeoSharding20240805) GetManagedNamespaces() []ManagedNamespaces {
 	if o == nil || IsNil(o.ManagedNamespaces) {
 		var ret []ManagedNamespaces
 		return ret
@@ -80,7 +80,7 @@ func (o *GeoSharding) GetManagedNamespaces() []ManagedNamespaces {
 
 // GetManagedNamespacesOk returns a tuple with the ManagedNamespaces field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GeoSharding) GetManagedNamespacesOk() (*[]ManagedNamespaces, bool) {
+func (o *GeoSharding20240805) GetManagedNamespacesOk() (*[]ManagedNamespaces, bool) {
 	if o == nil || IsNil(o.ManagedNamespaces) {
 		return nil, false
 	}
@@ -89,7 +89,7 @@ func (o *GeoSharding) GetManagedNamespacesOk() (*[]ManagedNamespaces, bool) {
 }
 
 // HasManagedNamespaces returns a boolean if a field has been set.
-func (o *GeoSharding) HasManagedNamespaces() bool {
+func (o *GeoSharding20240805) HasManagedNamespaces() bool {
 	if o != nil && !IsNil(o.ManagedNamespaces) {
 		return true
 	}
@@ -98,12 +98,12 @@ func (o *GeoSharding) HasManagedNamespaces() bool {
 }
 
 // SetManagedNamespaces gets a reference to the given []ManagedNamespaces and assigns it to the ManagedNamespaces field.
-func (o *GeoSharding) SetManagedNamespaces(v []ManagedNamespaces) {
+func (o *GeoSharding20240805) SetManagedNamespaces(v []ManagedNamespaces) {
 	o.ManagedNamespaces = &v
 }
 
 // GetSelfManagedSharding returns the SelfManagedSharding field value if set, zero value otherwise
-func (o *GeoSharding) GetSelfManagedSharding() bool {
+func (o *GeoSharding20240805) GetSelfManagedSharding() bool {
 	if o == nil || IsNil(o.SelfManagedSharding) {
 		var ret bool
 		return ret
@@ -113,7 +113,7 @@ func (o *GeoSharding) GetSelfManagedSharding() bool {
 
 // GetSelfManagedShardingOk returns a tuple with the SelfManagedSharding field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GeoSharding) GetSelfManagedShardingOk() (*bool, bool) {
+func (o *GeoSharding20240805) GetSelfManagedShardingOk() (*bool, bool) {
 	if o == nil || IsNil(o.SelfManagedSharding) {
 		return nil, false
 	}
@@ -122,7 +122,7 @@ func (o *GeoSharding) GetSelfManagedShardingOk() (*bool, bool) {
 }
 
 // HasSelfManagedSharding returns a boolean if a field has been set.
-func (o *GeoSharding) HasSelfManagedSharding() bool {
+func (o *GeoSharding20240805) HasSelfManagedSharding() bool {
 	if o != nil && !IsNil(o.SelfManagedSharding) {
 		return true
 	}
@@ -131,18 +131,18 @@ func (o *GeoSharding) HasSelfManagedSharding() bool {
 }
 
 // SetSelfManagedSharding gets a reference to the given bool and assigns it to the SelfManagedSharding field.
-func (o *GeoSharding) SetSelfManagedSharding(v bool) {
+func (o *GeoSharding20240805) SetSelfManagedSharding(v bool) {
 	o.SelfManagedSharding = &v
 }
 
-func (o GeoSharding) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o GeoSharding20240805) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o GeoSharding) ToMap() (map[string]interface{}, error) {
+func (o GeoSharding20240805) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

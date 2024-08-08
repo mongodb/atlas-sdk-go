@@ -6,44 +6,44 @@ import (
 	"encoding/json"
 )
 
-// CloudRegionConfig Cloud service provider on which MongoDB Cloud provisions the hosts.
-type CloudRegionConfig struct {
-	ElectableSpecs *HardwareSpec `json:"electableSpecs,omitempty"`
+// CloudRegionConfig20240805 Cloud service provider on which MongoDB Cloud provisions the hosts.
+type CloudRegionConfig20240805 struct {
+	ElectableSpecs *HardwareSpec20240805 `json:"electableSpecs,omitempty"`
 	// Precedence is given to this region when a primary election occurs. If your **regionConfigs** has only **readOnlySpecs**, **analyticsSpecs**, or both, set this value to `0`. If you have multiple **regionConfigs** objects (your cluster is multi-region or multi-cloud), they must have priorities in descending order. The highest priority is `7`.  **Example:** If you have three regions, their priorities would be `7`, `6`, and `5` respectively. If you added two more regions for supporting electable nodes, the priorities of those regions would be `4` and `3` respectively.
 	Priority *int `json:"priority,omitempty"`
 	// Cloud service provider on which MongoDB Cloud provisions the hosts. Set dedicated clusters to `AWS`, `GCP`, `AZURE` or `TENANT`.
 	ProviderName *string `json:"providerName,omitempty"`
 	// Physical location of your MongoDB cluster nodes. The region you choose can affect network latency for clients accessing your databases. The region name is only returned in the response for single-region clusters. When MongoDB Cloud deploys a dedicated cluster, it checks if a VPC or VPC connection exists for that provider and region. If not, MongoDB Cloud creates them as part of the deployment. It assigns the VPC a Classless Inter-Domain Routing (CIDR) block. To limit a new VPC peering connection to one Classless Inter-Domain Routing (CIDR) block and region, create the connection first. Deploy the cluster after the connection starts. GCP Clusters and Multi-region clusters require one VPC peering connection for each region. MongoDB nodes can use only the peering connection that resides in the same region as the nodes to communicate with the peered VPC.
-	RegionName           *string                      `json:"regionName,omitempty"`
-	AnalyticsAutoScaling *AdvancedAutoScalingSettings `json:"analyticsAutoScaling,omitempty"`
-	AnalyticsSpecs       *DedicatedHardwareSpec       `json:"analyticsSpecs,omitempty"`
-	AutoScaling          *AdvancedAutoScalingSettings `json:"autoScaling,omitempty"`
-	ReadOnlySpecs        *DedicatedHardwareSpec       `json:"readOnlySpecs,omitempty"`
+	RegionName           *string                        `json:"regionName,omitempty"`
+	AnalyticsAutoScaling *AdvancedAutoScalingSettings   `json:"analyticsAutoScaling,omitempty"`
+	AnalyticsSpecs       *DedicatedHardwareSpec20240805 `json:"analyticsSpecs,omitempty"`
+	AutoScaling          *AdvancedAutoScalingSettings   `json:"autoScaling,omitempty"`
+	ReadOnlySpecs        *DedicatedHardwareSpec20240805 `json:"readOnlySpecs,omitempty"`
 	// Cloud service provider on which MongoDB Cloud provisioned the multi-tenant cluster. The resource returns this parameter when **providerName** is `TENANT` and **electableSpecs.instanceSize** is `M0`, `M2` or `M5`.
 	BackingProviderName *string `json:"backingProviderName,omitempty"`
 }
 
-// NewCloudRegionConfig instantiates a new CloudRegionConfig object
+// NewCloudRegionConfig20240805 instantiates a new CloudRegionConfig20240805 object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCloudRegionConfig() *CloudRegionConfig {
-	this := CloudRegionConfig{}
+func NewCloudRegionConfig20240805() *CloudRegionConfig20240805 {
+	this := CloudRegionConfig20240805{}
 	return &this
 }
 
-// NewCloudRegionConfigWithDefaults instantiates a new CloudRegionConfig object
+// NewCloudRegionConfig20240805WithDefaults instantiates a new CloudRegionConfig20240805 object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewCloudRegionConfigWithDefaults() *CloudRegionConfig {
-	this := CloudRegionConfig{}
+func NewCloudRegionConfig20240805WithDefaults() *CloudRegionConfig20240805 {
+	this := CloudRegionConfig20240805{}
 	return &this
 }
 
 // GetElectableSpecs returns the ElectableSpecs field value if set, zero value otherwise
-func (o *CloudRegionConfig) GetElectableSpecs() HardwareSpec {
+func (o *CloudRegionConfig20240805) GetElectableSpecs() HardwareSpec20240805 {
 	if o == nil || IsNil(o.ElectableSpecs) {
-		var ret HardwareSpec
+		var ret HardwareSpec20240805
 		return ret
 	}
 	return *o.ElectableSpecs
@@ -51,7 +51,7 @@ func (o *CloudRegionConfig) GetElectableSpecs() HardwareSpec {
 
 // GetElectableSpecsOk returns a tuple with the ElectableSpecs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudRegionConfig) GetElectableSpecsOk() (*HardwareSpec, bool) {
+func (o *CloudRegionConfig20240805) GetElectableSpecsOk() (*HardwareSpec20240805, bool) {
 	if o == nil || IsNil(o.ElectableSpecs) {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *CloudRegionConfig) GetElectableSpecsOk() (*HardwareSpec, bool) {
 }
 
 // HasElectableSpecs returns a boolean if a field has been set.
-func (o *CloudRegionConfig) HasElectableSpecs() bool {
+func (o *CloudRegionConfig20240805) HasElectableSpecs() bool {
 	if o != nil && !IsNil(o.ElectableSpecs) {
 		return true
 	}
@@ -68,13 +68,13 @@ func (o *CloudRegionConfig) HasElectableSpecs() bool {
 	return false
 }
 
-// SetElectableSpecs gets a reference to the given HardwareSpec and assigns it to the ElectableSpecs field.
-func (o *CloudRegionConfig) SetElectableSpecs(v HardwareSpec) {
+// SetElectableSpecs gets a reference to the given HardwareSpec20240805 and assigns it to the ElectableSpecs field.
+func (o *CloudRegionConfig20240805) SetElectableSpecs(v HardwareSpec20240805) {
 	o.ElectableSpecs = &v
 }
 
 // GetPriority returns the Priority field value if set, zero value otherwise
-func (o *CloudRegionConfig) GetPriority() int {
+func (o *CloudRegionConfig20240805) GetPriority() int {
 	if o == nil || IsNil(o.Priority) {
 		var ret int
 		return ret
@@ -84,7 +84,7 @@ func (o *CloudRegionConfig) GetPriority() int {
 
 // GetPriorityOk returns a tuple with the Priority field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudRegionConfig) GetPriorityOk() (*int, bool) {
+func (o *CloudRegionConfig20240805) GetPriorityOk() (*int, bool) {
 	if o == nil || IsNil(o.Priority) {
 		return nil, false
 	}
@@ -93,7 +93,7 @@ func (o *CloudRegionConfig) GetPriorityOk() (*int, bool) {
 }
 
 // HasPriority returns a boolean if a field has been set.
-func (o *CloudRegionConfig) HasPriority() bool {
+func (o *CloudRegionConfig20240805) HasPriority() bool {
 	if o != nil && !IsNil(o.Priority) {
 		return true
 	}
@@ -102,12 +102,12 @@ func (o *CloudRegionConfig) HasPriority() bool {
 }
 
 // SetPriority gets a reference to the given int and assigns it to the Priority field.
-func (o *CloudRegionConfig) SetPriority(v int) {
+func (o *CloudRegionConfig20240805) SetPriority(v int) {
 	o.Priority = &v
 }
 
 // GetProviderName returns the ProviderName field value if set, zero value otherwise
-func (o *CloudRegionConfig) GetProviderName() string {
+func (o *CloudRegionConfig20240805) GetProviderName() string {
 	if o == nil || IsNil(o.ProviderName) {
 		var ret string
 		return ret
@@ -117,7 +117,7 @@ func (o *CloudRegionConfig) GetProviderName() string {
 
 // GetProviderNameOk returns a tuple with the ProviderName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudRegionConfig) GetProviderNameOk() (*string, bool) {
+func (o *CloudRegionConfig20240805) GetProviderNameOk() (*string, bool) {
 	if o == nil || IsNil(o.ProviderName) {
 		return nil, false
 	}
@@ -126,7 +126,7 @@ func (o *CloudRegionConfig) GetProviderNameOk() (*string, bool) {
 }
 
 // HasProviderName returns a boolean if a field has been set.
-func (o *CloudRegionConfig) HasProviderName() bool {
+func (o *CloudRegionConfig20240805) HasProviderName() bool {
 	if o != nil && !IsNil(o.ProviderName) {
 		return true
 	}
@@ -135,12 +135,12 @@ func (o *CloudRegionConfig) HasProviderName() bool {
 }
 
 // SetProviderName gets a reference to the given string and assigns it to the ProviderName field.
-func (o *CloudRegionConfig) SetProviderName(v string) {
+func (o *CloudRegionConfig20240805) SetProviderName(v string) {
 	o.ProviderName = &v
 }
 
 // GetRegionName returns the RegionName field value if set, zero value otherwise
-func (o *CloudRegionConfig) GetRegionName() string {
+func (o *CloudRegionConfig20240805) GetRegionName() string {
 	if o == nil || IsNil(o.RegionName) {
 		var ret string
 		return ret
@@ -150,7 +150,7 @@ func (o *CloudRegionConfig) GetRegionName() string {
 
 // GetRegionNameOk returns a tuple with the RegionName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudRegionConfig) GetRegionNameOk() (*string, bool) {
+func (o *CloudRegionConfig20240805) GetRegionNameOk() (*string, bool) {
 	if o == nil || IsNil(o.RegionName) {
 		return nil, false
 	}
@@ -159,7 +159,7 @@ func (o *CloudRegionConfig) GetRegionNameOk() (*string, bool) {
 }
 
 // HasRegionName returns a boolean if a field has been set.
-func (o *CloudRegionConfig) HasRegionName() bool {
+func (o *CloudRegionConfig20240805) HasRegionName() bool {
 	if o != nil && !IsNil(o.RegionName) {
 		return true
 	}
@@ -168,12 +168,12 @@ func (o *CloudRegionConfig) HasRegionName() bool {
 }
 
 // SetRegionName gets a reference to the given string and assigns it to the RegionName field.
-func (o *CloudRegionConfig) SetRegionName(v string) {
+func (o *CloudRegionConfig20240805) SetRegionName(v string) {
 	o.RegionName = &v
 }
 
 // GetAnalyticsAutoScaling returns the AnalyticsAutoScaling field value if set, zero value otherwise
-func (o *CloudRegionConfig) GetAnalyticsAutoScaling() AdvancedAutoScalingSettings {
+func (o *CloudRegionConfig20240805) GetAnalyticsAutoScaling() AdvancedAutoScalingSettings {
 	if o == nil || IsNil(o.AnalyticsAutoScaling) {
 		var ret AdvancedAutoScalingSettings
 		return ret
@@ -183,7 +183,7 @@ func (o *CloudRegionConfig) GetAnalyticsAutoScaling() AdvancedAutoScalingSetting
 
 // GetAnalyticsAutoScalingOk returns a tuple with the AnalyticsAutoScaling field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudRegionConfig) GetAnalyticsAutoScalingOk() (*AdvancedAutoScalingSettings, bool) {
+func (o *CloudRegionConfig20240805) GetAnalyticsAutoScalingOk() (*AdvancedAutoScalingSettings, bool) {
 	if o == nil || IsNil(o.AnalyticsAutoScaling) {
 		return nil, false
 	}
@@ -192,7 +192,7 @@ func (o *CloudRegionConfig) GetAnalyticsAutoScalingOk() (*AdvancedAutoScalingSet
 }
 
 // HasAnalyticsAutoScaling returns a boolean if a field has been set.
-func (o *CloudRegionConfig) HasAnalyticsAutoScaling() bool {
+func (o *CloudRegionConfig20240805) HasAnalyticsAutoScaling() bool {
 	if o != nil && !IsNil(o.AnalyticsAutoScaling) {
 		return true
 	}
@@ -201,14 +201,14 @@ func (o *CloudRegionConfig) HasAnalyticsAutoScaling() bool {
 }
 
 // SetAnalyticsAutoScaling gets a reference to the given AdvancedAutoScalingSettings and assigns it to the AnalyticsAutoScaling field.
-func (o *CloudRegionConfig) SetAnalyticsAutoScaling(v AdvancedAutoScalingSettings) {
+func (o *CloudRegionConfig20240805) SetAnalyticsAutoScaling(v AdvancedAutoScalingSettings) {
 	o.AnalyticsAutoScaling = &v
 }
 
 // GetAnalyticsSpecs returns the AnalyticsSpecs field value if set, zero value otherwise
-func (o *CloudRegionConfig) GetAnalyticsSpecs() DedicatedHardwareSpec {
+func (o *CloudRegionConfig20240805) GetAnalyticsSpecs() DedicatedHardwareSpec20240805 {
 	if o == nil || IsNil(o.AnalyticsSpecs) {
-		var ret DedicatedHardwareSpec
+		var ret DedicatedHardwareSpec20240805
 		return ret
 	}
 	return *o.AnalyticsSpecs
@@ -216,7 +216,7 @@ func (o *CloudRegionConfig) GetAnalyticsSpecs() DedicatedHardwareSpec {
 
 // GetAnalyticsSpecsOk returns a tuple with the AnalyticsSpecs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudRegionConfig) GetAnalyticsSpecsOk() (*DedicatedHardwareSpec, bool) {
+func (o *CloudRegionConfig20240805) GetAnalyticsSpecsOk() (*DedicatedHardwareSpec20240805, bool) {
 	if o == nil || IsNil(o.AnalyticsSpecs) {
 		return nil, false
 	}
@@ -225,7 +225,7 @@ func (o *CloudRegionConfig) GetAnalyticsSpecsOk() (*DedicatedHardwareSpec, bool)
 }
 
 // HasAnalyticsSpecs returns a boolean if a field has been set.
-func (o *CloudRegionConfig) HasAnalyticsSpecs() bool {
+func (o *CloudRegionConfig20240805) HasAnalyticsSpecs() bool {
 	if o != nil && !IsNil(o.AnalyticsSpecs) {
 		return true
 	}
@@ -233,13 +233,13 @@ func (o *CloudRegionConfig) HasAnalyticsSpecs() bool {
 	return false
 }
 
-// SetAnalyticsSpecs gets a reference to the given DedicatedHardwareSpec and assigns it to the AnalyticsSpecs field.
-func (o *CloudRegionConfig) SetAnalyticsSpecs(v DedicatedHardwareSpec) {
+// SetAnalyticsSpecs gets a reference to the given DedicatedHardwareSpec20240805 and assigns it to the AnalyticsSpecs field.
+func (o *CloudRegionConfig20240805) SetAnalyticsSpecs(v DedicatedHardwareSpec20240805) {
 	o.AnalyticsSpecs = &v
 }
 
 // GetAutoScaling returns the AutoScaling field value if set, zero value otherwise
-func (o *CloudRegionConfig) GetAutoScaling() AdvancedAutoScalingSettings {
+func (o *CloudRegionConfig20240805) GetAutoScaling() AdvancedAutoScalingSettings {
 	if o == nil || IsNil(o.AutoScaling) {
 		var ret AdvancedAutoScalingSettings
 		return ret
@@ -249,7 +249,7 @@ func (o *CloudRegionConfig) GetAutoScaling() AdvancedAutoScalingSettings {
 
 // GetAutoScalingOk returns a tuple with the AutoScaling field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudRegionConfig) GetAutoScalingOk() (*AdvancedAutoScalingSettings, bool) {
+func (o *CloudRegionConfig20240805) GetAutoScalingOk() (*AdvancedAutoScalingSettings, bool) {
 	if o == nil || IsNil(o.AutoScaling) {
 		return nil, false
 	}
@@ -258,7 +258,7 @@ func (o *CloudRegionConfig) GetAutoScalingOk() (*AdvancedAutoScalingSettings, bo
 }
 
 // HasAutoScaling returns a boolean if a field has been set.
-func (o *CloudRegionConfig) HasAutoScaling() bool {
+func (o *CloudRegionConfig20240805) HasAutoScaling() bool {
 	if o != nil && !IsNil(o.AutoScaling) {
 		return true
 	}
@@ -267,14 +267,14 @@ func (o *CloudRegionConfig) HasAutoScaling() bool {
 }
 
 // SetAutoScaling gets a reference to the given AdvancedAutoScalingSettings and assigns it to the AutoScaling field.
-func (o *CloudRegionConfig) SetAutoScaling(v AdvancedAutoScalingSettings) {
+func (o *CloudRegionConfig20240805) SetAutoScaling(v AdvancedAutoScalingSettings) {
 	o.AutoScaling = &v
 }
 
 // GetReadOnlySpecs returns the ReadOnlySpecs field value if set, zero value otherwise
-func (o *CloudRegionConfig) GetReadOnlySpecs() DedicatedHardwareSpec {
+func (o *CloudRegionConfig20240805) GetReadOnlySpecs() DedicatedHardwareSpec20240805 {
 	if o == nil || IsNil(o.ReadOnlySpecs) {
-		var ret DedicatedHardwareSpec
+		var ret DedicatedHardwareSpec20240805
 		return ret
 	}
 	return *o.ReadOnlySpecs
@@ -282,7 +282,7 @@ func (o *CloudRegionConfig) GetReadOnlySpecs() DedicatedHardwareSpec {
 
 // GetReadOnlySpecsOk returns a tuple with the ReadOnlySpecs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudRegionConfig) GetReadOnlySpecsOk() (*DedicatedHardwareSpec, bool) {
+func (o *CloudRegionConfig20240805) GetReadOnlySpecsOk() (*DedicatedHardwareSpec20240805, bool) {
 	if o == nil || IsNil(o.ReadOnlySpecs) {
 		return nil, false
 	}
@@ -291,7 +291,7 @@ func (o *CloudRegionConfig) GetReadOnlySpecsOk() (*DedicatedHardwareSpec, bool) 
 }
 
 // HasReadOnlySpecs returns a boolean if a field has been set.
-func (o *CloudRegionConfig) HasReadOnlySpecs() bool {
+func (o *CloudRegionConfig20240805) HasReadOnlySpecs() bool {
 	if o != nil && !IsNil(o.ReadOnlySpecs) {
 		return true
 	}
@@ -299,13 +299,13 @@ func (o *CloudRegionConfig) HasReadOnlySpecs() bool {
 	return false
 }
 
-// SetReadOnlySpecs gets a reference to the given DedicatedHardwareSpec and assigns it to the ReadOnlySpecs field.
-func (o *CloudRegionConfig) SetReadOnlySpecs(v DedicatedHardwareSpec) {
+// SetReadOnlySpecs gets a reference to the given DedicatedHardwareSpec20240805 and assigns it to the ReadOnlySpecs field.
+func (o *CloudRegionConfig20240805) SetReadOnlySpecs(v DedicatedHardwareSpec20240805) {
 	o.ReadOnlySpecs = &v
 }
 
 // GetBackingProviderName returns the BackingProviderName field value if set, zero value otherwise
-func (o *CloudRegionConfig) GetBackingProviderName() string {
+func (o *CloudRegionConfig20240805) GetBackingProviderName() string {
 	if o == nil || IsNil(o.BackingProviderName) {
 		var ret string
 		return ret
@@ -315,7 +315,7 @@ func (o *CloudRegionConfig) GetBackingProviderName() string {
 
 // GetBackingProviderNameOk returns a tuple with the BackingProviderName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudRegionConfig) GetBackingProviderNameOk() (*string, bool) {
+func (o *CloudRegionConfig20240805) GetBackingProviderNameOk() (*string, bool) {
 	if o == nil || IsNil(o.BackingProviderName) {
 		return nil, false
 	}
@@ -324,7 +324,7 @@ func (o *CloudRegionConfig) GetBackingProviderNameOk() (*string, bool) {
 }
 
 // HasBackingProviderName returns a boolean if a field has been set.
-func (o *CloudRegionConfig) HasBackingProviderName() bool {
+func (o *CloudRegionConfig20240805) HasBackingProviderName() bool {
 	if o != nil && !IsNil(o.BackingProviderName) {
 		return true
 	}
@@ -333,18 +333,18 @@ func (o *CloudRegionConfig) HasBackingProviderName() bool {
 }
 
 // SetBackingProviderName gets a reference to the given string and assigns it to the BackingProviderName field.
-func (o *CloudRegionConfig) SetBackingProviderName(v string) {
+func (o *CloudRegionConfig20240805) SetBackingProviderName(v string) {
 	o.BackingProviderName = &v
 }
 
-func (o CloudRegionConfig) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o CloudRegionConfig20240805) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o CloudRegionConfig) ToMap() (map[string]interface{}, error) {
+func (o CloudRegionConfig20240805) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.ElectableSpecs) {
 		toSerialize["electableSpecs"] = o.ElectableSpecs

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **GroupsClaim** | Pointer to **string** | Identifier of the claim which contains IdP Group IDs in the token. | [optional] 
 **IdpType** | Pointer to **string** | String enum that indicates the type of the identity provider. Default is WORKFORCE. | [optional] 
 **IssuerUri** | Pointer to **string** | Unique string that identifies the issuer of the SAML Assertion or OIDC metadata/discovery document URL. | [optional] 
-**Protocol** | Pointer to **string** | The protocol of the identity provider. Either SAML or OIDC. | [optional] 
+**Protocol** | Pointer to **string** | String enum that indicates the protocol of the identity provider. Either SAML or OIDC. | [optional] 
 **UserClaim** | Pointer to **string** | Identifier of the claim which contains the user ID in the token. | [optional] 
 **AssociatedDomains** | Pointer to **[]string** | List that contains the domains associated with the identity provider. | [optional] 
 **ClientId** | Pointer to **string** | Client identifier that is assigned to an application by the Identity Provider. | [optional] 

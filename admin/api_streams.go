@@ -234,6 +234,31 @@ type StreamsApi interface {
 	GetStreamInstanceExecute(r GetStreamInstanceApiRequest) (*StreamsTenant, *http.Response, error)
 
 	/*
+		GetStreamProcessor Get One Stream Processor
+
+		Get one Stream Processor within the specified stream instance. To use this resource, the requesting API Key must have the Project Owner role or Project Stream Processing Owner role.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param tenantName Human-readable label that identifies the stream instance.
+		@param processorName Human-readable label that identifies the stream processor.
+		@return GetStreamProcessorApiRequest
+	*/
+	GetStreamProcessor(ctx context.Context, groupId string, tenantName string, processorName string) GetStreamProcessorApiRequest
+	/*
+		GetStreamProcessor Get One Stream Processor
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetStreamProcessorApiParams - Parameters for the request
+		@return GetStreamProcessorApiRequest
+	*/
+	GetStreamProcessorWithParams(ctx context.Context, args *GetStreamProcessorApiParams) GetStreamProcessorApiRequest
+
+	// Method available only for mocking purposes
+	GetStreamProcessorExecute(r GetStreamProcessorApiRequest) (*StreamsProcessorWithStats, *http.Response, error)
+
+	/*
 		ListStreamConnections Return All Connections Of The Stream Instances
 
 		Returns all connections of the stream instance for the specified project.To use this resource, the requesting API Key must have the Project Data Access roles, Project Owner role or Project Stream Processing Owner role.
@@ -279,6 +304,30 @@ type StreamsApi interface {
 
 	// Method available only for mocking purposes
 	ListStreamInstancesExecute(r ListStreamInstancesApiRequest) (*PaginatedApiStreamsTenant, *http.Response, error)
+
+	/*
+		ListStreamProcessors Return All Stream Processors In The Stream Instance.
+
+		Returns all Stream Processors within the specified stream instance. To use this resource, the requesting API Key must have the Project Owner role or Project Stream Processing Owner role.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param tenantName Human-readable label that identifies the stream instance.
+		@return ListStreamProcessorsApiRequest
+	*/
+	ListStreamProcessors(ctx context.Context, groupId string, tenantName string) ListStreamProcessorsApiRequest
+	/*
+		ListStreamProcessors Return All Stream Processors In The Stream Instance.
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ListStreamProcessorsApiParams - Parameters for the request
+		@return ListStreamProcessorsApiRequest
+	*/
+	ListStreamProcessorsWithParams(ctx context.Context, args *ListStreamProcessorsApiParams) ListStreamProcessorsApiRequest
+
+	// Method available only for mocking purposes
+	ListStreamProcessorsExecute(r ListStreamProcessorsApiRequest) (*PaginatedApiStreamsStreamProcessorWithStats, *http.Response, error)
 
 	/*
 		StartStreamProcessor Start One Stream Processor
@@ -1496,6 +1545,129 @@ func (a *StreamsApiService) GetStreamInstanceExecute(r GetStreamInstanceApiReque
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type GetStreamProcessorApiRequest struct {
+	ctx           context.Context
+	ApiService    StreamsApi
+	groupId       string
+	tenantName    string
+	processorName string
+}
+
+type GetStreamProcessorApiParams struct {
+	GroupId       string
+	TenantName    string
+	ProcessorName string
+}
+
+func (a *StreamsApiService) GetStreamProcessorWithParams(ctx context.Context, args *GetStreamProcessorApiParams) GetStreamProcessorApiRequest {
+	return GetStreamProcessorApiRequest{
+		ApiService:    a,
+		ctx:           ctx,
+		groupId:       args.GroupId,
+		tenantName:    args.TenantName,
+		processorName: args.ProcessorName,
+	}
+}
+
+func (r GetStreamProcessorApiRequest) Execute() (*StreamsProcessorWithStats, *http.Response, error) {
+	return r.ApiService.GetStreamProcessorExecute(r)
+}
+
+/*
+GetStreamProcessor Get One Stream Processor
+
+Get one Stream Processor within the specified stream instance. To use this resource, the requesting API Key must have the Project Owner role or Project Stream Processing Owner role.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param tenantName Human-readable label that identifies the stream instance.
+	@param processorName Human-readable label that identifies the stream processor.
+	@return GetStreamProcessorApiRequest
+*/
+func (a *StreamsApiService) GetStreamProcessor(ctx context.Context, groupId string, tenantName string, processorName string) GetStreamProcessorApiRequest {
+	return GetStreamProcessorApiRequest{
+		ApiService:    a,
+		ctx:           ctx,
+		groupId:       groupId,
+		tenantName:    tenantName,
+		processorName: processorName,
+	}
+}
+
+// Execute executes the request
+//
+//	@return StreamsProcessorWithStats
+func (a *StreamsApiService) GetStreamProcessorExecute(r GetStreamProcessorApiRequest) (*StreamsProcessorWithStats, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *StreamsProcessorWithStats
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.GetStreamProcessor")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}"
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(parameterValueToString(r.tenantName, "tenantName")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"processorName"+"}", url.PathEscape(parameterValueToString(r.processorName, "processorName")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-05-30+json", "application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ListStreamConnectionsApiRequest struct {
 	ctx          context.Context
 	ApiService   StreamsApi
@@ -1750,6 +1922,171 @@ func (a *StreamsApiService) ListStreamInstancesExecute(r ListStreamInstancesApiR
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-02-01+json", "application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ListStreamProcessorsApiRequest struct {
+	ctx          context.Context
+	ApiService   StreamsApi
+	groupId      string
+	tenantName   string
+	itemsPerPage *int
+	pageNum      *int
+	includeCount *bool
+}
+
+type ListStreamProcessorsApiParams struct {
+	GroupId      string
+	TenantName   string
+	ItemsPerPage *int
+	PageNum      *int
+	IncludeCount *bool
+}
+
+func (a *StreamsApiService) ListStreamProcessorsWithParams(ctx context.Context, args *ListStreamProcessorsApiParams) ListStreamProcessorsApiRequest {
+	return ListStreamProcessorsApiRequest{
+		ApiService:   a,
+		ctx:          ctx,
+		groupId:      args.GroupId,
+		tenantName:   args.TenantName,
+		itemsPerPage: args.ItemsPerPage,
+		pageNum:      args.PageNum,
+		includeCount: args.IncludeCount,
+	}
+}
+
+// Number of items that the response returns per page.
+func (r ListStreamProcessorsApiRequest) ItemsPerPage(itemsPerPage int) ListStreamProcessorsApiRequest {
+	r.itemsPerPage = &itemsPerPage
+	return r
+}
+
+// Number of the page that displays the current set of the total objects that the response returns.
+func (r ListStreamProcessorsApiRequest) PageNum(pageNum int) ListStreamProcessorsApiRequest {
+	r.pageNum = &pageNum
+	return r
+}
+
+// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
+func (r ListStreamProcessorsApiRequest) IncludeCount(includeCount bool) ListStreamProcessorsApiRequest {
+	r.includeCount = &includeCount
+	return r
+}
+
+func (r ListStreamProcessorsApiRequest) Execute() (*PaginatedApiStreamsStreamProcessorWithStats, *http.Response, error) {
+	return r.ApiService.ListStreamProcessorsExecute(r)
+}
+
+/*
+ListStreamProcessors Return All Stream Processors In The Stream Instance.
+
+Returns all Stream Processors within the specified stream instance. To use this resource, the requesting API Key must have the Project Owner role or Project Stream Processing Owner role.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param tenantName Human-readable label that identifies the stream instance.
+	@return ListStreamProcessorsApiRequest
+*/
+func (a *StreamsApiService) ListStreamProcessors(ctx context.Context, groupId string, tenantName string) ListStreamProcessorsApiRequest {
+	return ListStreamProcessorsApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    groupId,
+		tenantName: tenantName,
+	}
+}
+
+// Execute executes the request
+//
+//	@return PaginatedApiStreamsStreamProcessorWithStats
+func (a *StreamsApiService) ListStreamProcessorsExecute(r ListStreamProcessorsApiRequest) (*PaginatedApiStreamsStreamProcessorWithStats, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedApiStreamsStreamProcessorWithStats
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.ListStreamProcessors")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/processors"
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(parameterValueToString(r.tenantName, "tenantName")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.itemsPerPage != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	} else {
+		var defaultValue int = 100
+		r.itemsPerPage = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	}
+	if r.pageNum != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	} else {
+		var defaultValue int = 1
+		r.pageNum = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	}
+	if r.includeCount != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
+	} else {
+		var defaultValue bool = true
+		r.includeCount = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-05-30+json", "application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)

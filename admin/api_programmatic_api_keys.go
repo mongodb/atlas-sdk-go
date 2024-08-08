@@ -35,7 +35,7 @@ type ProgrammaticAPIKeysApi interface {
 	AddProjectApiKeyWithParams(ctx context.Context, args *AddProjectApiKeyApiParams) AddProjectApiKeyApiRequest
 
 	// Method available only for mocking purposes
-	AddProjectApiKeyExecute(r AddProjectApiKeyApiRequest) (*ApiKeyUserDetails, *http.Response, error)
+	AddProjectApiKeyExecute(r AddProjectApiKeyApiRequest) (interface{}, *http.Response, error)
 
 	/*
 		CreateApiKey Create One Organization API Key
@@ -380,7 +380,7 @@ func (a *ProgrammaticAPIKeysApiService) AddProjectApiKeyWithParams(ctx context.C
 	}
 }
 
-func (r AddProjectApiKeyApiRequest) Execute() (*ApiKeyUserDetails, *http.Response, error) {
+func (r AddProjectApiKeyApiRequest) Execute() (interface{}, *http.Response, error) {
 	return r.ApiService.AddProjectApiKeyExecute(r)
 }
 
@@ -406,13 +406,13 @@ func (a *ProgrammaticAPIKeysApiService) AddProjectApiKey(ctx context.Context, gr
 
 // Execute executes the request
 //
-//	@return ApiKeyUserDetails
-func (a *ProgrammaticAPIKeysApiService) AddProjectApiKeyExecute(r AddProjectApiKeyApiRequest) (*ApiKeyUserDetails, *http.Response, error) {
+//	@return interface{}
+func (a *ProgrammaticAPIKeysApiService) AddProjectApiKeyExecute(r AddProjectApiKeyApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ApiKeyUserDetails
+		localVarReturnValue interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProgrammaticAPIKeysApiService.AddProjectApiKey")

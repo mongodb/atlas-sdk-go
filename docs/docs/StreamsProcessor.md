@@ -5,10 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the stream processor. | [optional] [readonly] 
-**Dlq** | Pointer to [**StreamsDLQ**](StreamsDLQ.md) |  | [optional] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **Name** | Pointer to **string** | Human-readable name of the stream processor. | [optional] 
-**Pipeline** | Pointer to **string** | Stream aggregation pipeline you want to apply to your streaming data. | [optional] 
+**Options** | Pointer to [**StreamsOptions**](StreamsOptions.md) |  | [optional] 
+**Pipeline** | Pointer to **[]interface{}** | Stream aggregation pipeline you want to apply to your streaming data. | [optional] 
 
 ## Methods
 
@@ -53,30 +53,6 @@ SetId sets Id field to given value.
 `func (o *StreamsProcessor) HasId() bool`
 
 HasId returns a boolean if a field has been set.
-### GetDlq
-
-`func (o *StreamsProcessor) GetDlq() StreamsDLQ`
-
-GetDlq returns the Dlq field if non-nil, zero value otherwise.
-
-### GetDlqOk
-
-`func (o *StreamsProcessor) GetDlqOk() (*StreamsDLQ, bool)`
-
-GetDlqOk returns a tuple with the Dlq field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDlq
-
-`func (o *StreamsProcessor) SetDlq(v StreamsDLQ)`
-
-SetDlq sets Dlq field to given value.
-
-### HasDlq
-
-`func (o *StreamsProcessor) HasDlq() bool`
-
-HasDlq returns a boolean if a field has been set.
 ### GetLinks
 
 `func (o *StreamsProcessor) GetLinks() []Link`
@@ -125,22 +101,46 @@ SetName sets Name field to given value.
 `func (o *StreamsProcessor) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+### GetOptions
+
+`func (o *StreamsProcessor) GetOptions() StreamsOptions`
+
+GetOptions returns the Options field if non-nil, zero value otherwise.
+
+### GetOptionsOk
+
+`func (o *StreamsProcessor) GetOptionsOk() (*StreamsOptions, bool)`
+
+GetOptionsOk returns a tuple with the Options field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOptions
+
+`func (o *StreamsProcessor) SetOptions(v StreamsOptions)`
+
+SetOptions sets Options field to given value.
+
+### HasOptions
+
+`func (o *StreamsProcessor) HasOptions() bool`
+
+HasOptions returns a boolean if a field has been set.
 ### GetPipeline
 
-`func (o *StreamsProcessor) GetPipeline() string`
+`func (o *StreamsProcessor) GetPipeline() []interface{}`
 
 GetPipeline returns the Pipeline field if non-nil, zero value otherwise.
 
 ### GetPipelineOk
 
-`func (o *StreamsProcessor) GetPipelineOk() (*string, bool)`
+`func (o *StreamsProcessor) GetPipelineOk() (*[]interface{}, bool)`
 
 GetPipelineOk returns a tuple with the Pipeline field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPipeline
 
-`func (o *StreamsProcessor) SetPipeline(v string)`
+`func (o *StreamsProcessor) SetPipeline(v []interface{})`
 
 SetPipeline sets Pipeline field to given value.
 

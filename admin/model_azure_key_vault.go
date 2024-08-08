@@ -18,6 +18,8 @@ type AzureKeyVault struct {
 	KeyIdentifier *string `json:"keyIdentifier,omitempty"`
 	// Unique string that identifies the Azure Key Vault that contains your key.
 	KeyVaultName *string `json:"keyVaultName,omitempty"`
+	// Enable connection to your Azure Key Vault over private networking.
+	RequirePrivateNetworking *bool `json:"requirePrivateNetworking,omitempty"`
 	// Name of the Azure resource group that contains your Azure Key Vault.
 	ResourceGroupName *string `json:"resourceGroupName,omitempty"`
 	// Private data that you need secured and that belongs to the specified Azure Key Vault (AKV) tenant (**azureKeyVault.tenantID**). This data can include any type of sensitive data such as passwords, database connection strings, API keys, and the like. AKV stores this information as encrypted binary data.
@@ -214,6 +216,39 @@ func (o *AzureKeyVault) SetKeyVaultName(v string) {
 	o.KeyVaultName = &v
 }
 
+// GetRequirePrivateNetworking returns the RequirePrivateNetworking field value if set, zero value otherwise
+func (o *AzureKeyVault) GetRequirePrivateNetworking() bool {
+	if o == nil || IsNil(o.RequirePrivateNetworking) {
+		var ret bool
+		return ret
+	}
+	return *o.RequirePrivateNetworking
+}
+
+// GetRequirePrivateNetworkingOk returns a tuple with the RequirePrivateNetworking field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AzureKeyVault) GetRequirePrivateNetworkingOk() (*bool, bool) {
+	if o == nil || IsNil(o.RequirePrivateNetworking) {
+		return nil, false
+	}
+
+	return o.RequirePrivateNetworking, true
+}
+
+// HasRequirePrivateNetworking returns a boolean if a field has been set.
+func (o *AzureKeyVault) HasRequirePrivateNetworking() bool {
+	if o != nil && !IsNil(o.RequirePrivateNetworking) {
+		return true
+	}
+
+	return false
+}
+
+// SetRequirePrivateNetworking gets a reference to the given bool and assigns it to the RequirePrivateNetworking field.
+func (o *AzureKeyVault) SetRequirePrivateNetworking(v bool) {
+	o.RequirePrivateNetworking = &v
+}
+
 // GetResourceGroupName returns the ResourceGroupName field value if set, zero value otherwise
 func (o *AzureKeyVault) GetResourceGroupName() string {
 	if o == nil || IsNil(o.ResourceGroupName) {
@@ -402,6 +437,9 @@ func (o AzureKeyVault) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.KeyVaultName) {
 		toSerialize["keyVaultName"] = o.KeyVaultName
+	}
+	if !IsNil(o.RequirePrivateNetworking) {
+		toSerialize["requirePrivateNetworking"] = o.RequirePrivateNetworking
 	}
 	if !IsNil(o.ResourceGroupName) {
 		toSerialize["resourceGroupName"] = o.ResourceGroupName

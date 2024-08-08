@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Enabled** | Pointer to **bool** | Flag that indicates whether someone enabled encryption at rest for the specified  project. To disable encryption at rest using customer key management and remove the configuration details, pass only this parameter with a value of &#x60;false&#x60;. | [optional] 
 **KeyIdentifier** | Pointer to **string** | Web address with a unique key that identifies for your Azure Key Vault. | [optional] 
 **KeyVaultName** | Pointer to **string** | Unique string that identifies the Azure Key Vault that contains your key. | [optional] 
+**RequirePrivateNetworking** | Pointer to **bool** | Enable connection to your Azure Key Vault over private networking. | [optional] 
 **ResourceGroupName** | Pointer to **string** | Name of the Azure resource group that contains your Azure Key Vault. | [optional] 
 **Secret** | Pointer to **string** | Private data that you need secured and that belongs to the specified Azure Key Vault (AKV) tenant (**azureKeyVault.tenantID**). This data can include any type of sensitive data such as passwords, database connection strings, API keys, and the like. AKV stores this information as encrypted binary data. | [optional] 
 **SubscriptionID** | Pointer to **string** | Unique 36-hexadecimal character string that identifies your Azure subscription. | [optional] 
@@ -154,6 +155,30 @@ SetKeyVaultName sets KeyVaultName field to given value.
 `func (o *AzureKeyVault) HasKeyVaultName() bool`
 
 HasKeyVaultName returns a boolean if a field has been set.
+### GetRequirePrivateNetworking
+
+`func (o *AzureKeyVault) GetRequirePrivateNetworking() bool`
+
+GetRequirePrivateNetworking returns the RequirePrivateNetworking field if non-nil, zero value otherwise.
+
+### GetRequirePrivateNetworkingOk
+
+`func (o *AzureKeyVault) GetRequirePrivateNetworkingOk() (*bool, bool)`
+
+GetRequirePrivateNetworkingOk returns a tuple with the RequirePrivateNetworking field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequirePrivateNetworking
+
+`func (o *AzureKeyVault) SetRequirePrivateNetworking(v bool)`
+
+SetRequirePrivateNetworking sets RequirePrivateNetworking field to given value.
+
+### HasRequirePrivateNetworking
+
+`func (o *AzureKeyVault) HasRequirePrivateNetworking() bool`
+
+HasRequirePrivateNetworking returns a boolean if a field has been set.
 ### GetResourceGroupName
 
 `func (o *AzureKeyVault) GetResourceGroupName() string`
