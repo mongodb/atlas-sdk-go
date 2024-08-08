@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20240530005/admin"
+	admin "go.mongodb.org/atlas-sdk/v20240805001/admin"
 
 	http "net/http"
 
@@ -25,17 +25,17 @@ func (_m *ClustersApi) EXPECT() *ClustersApi_Expecter {
 	return &ClustersApi_Expecter{mock: &_m.Mock}
 }
 
-// CreateCluster provides a mock function with given fields: ctx, groupId, advancedClusterDescription
-func (_m *ClustersApi) CreateCluster(ctx context.Context, groupId string, advancedClusterDescription *admin.AdvancedClusterDescription) admin.CreateClusterApiRequest {
-	ret := _m.Called(ctx, groupId, advancedClusterDescription)
+// CreateCluster provides a mock function with given fields: ctx, groupId, clusterDescription20240805
+func (_m *ClustersApi) CreateCluster(ctx context.Context, groupId string, clusterDescription20240805 *admin.ClusterDescription20240805) admin.CreateClusterApiRequest {
+	ret := _m.Called(ctx, groupId, clusterDescription20240805)
 
 	if len(ret) == 0 {
 		panic("no return value specified for CreateCluster")
 	}
 
 	var r0 admin.CreateClusterApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.AdvancedClusterDescription) admin.CreateClusterApiRequest); ok {
-		r0 = rf(ctx, groupId, advancedClusterDescription)
+	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.ClusterDescription20240805) admin.CreateClusterApiRequest); ok {
+		r0 = rf(ctx, groupId, clusterDescription20240805)
 	} else {
 		r0 = ret.Get(0).(admin.CreateClusterApiRequest)
 	}
@@ -51,14 +51,14 @@ type ClustersApi_CreateCluster_Call struct {
 // CreateCluster is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-//   - advancedClusterDescription *admin.AdvancedClusterDescription
-func (_e *ClustersApi_Expecter) CreateCluster(ctx interface{}, groupId interface{}, advancedClusterDescription interface{}) *ClustersApi_CreateCluster_Call {
-	return &ClustersApi_CreateCluster_Call{Call: _e.mock.On("CreateCluster", ctx, groupId, advancedClusterDescription)}
+//   - clusterDescription20240805 *admin.ClusterDescription20240805
+func (_e *ClustersApi_Expecter) CreateCluster(ctx interface{}, groupId interface{}, clusterDescription20240805 interface{}) *ClustersApi_CreateCluster_Call {
+	return &ClustersApi_CreateCluster_Call{Call: _e.mock.On("CreateCluster", ctx, groupId, clusterDescription20240805)}
 }
 
-func (_c *ClustersApi_CreateCluster_Call) Run(run func(ctx context.Context, groupId string, advancedClusterDescription *admin.AdvancedClusterDescription)) *ClustersApi_CreateCluster_Call {
+func (_c *ClustersApi_CreateCluster_Call) Run(run func(ctx context.Context, groupId string, clusterDescription20240805 *admin.ClusterDescription20240805)) *ClustersApi_CreateCluster_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(*admin.AdvancedClusterDescription))
+		run(args[0].(context.Context), args[1].(string), args[2].(*admin.ClusterDescription20240805))
 	})
 	return _c
 }
@@ -68,30 +68,30 @@ func (_c *ClustersApi_CreateCluster_Call) Return(_a0 admin.CreateClusterApiReque
 	return _c
 }
 
-func (_c *ClustersApi_CreateCluster_Call) RunAndReturn(run func(context.Context, string, *admin.AdvancedClusterDescription) admin.CreateClusterApiRequest) *ClustersApi_CreateCluster_Call {
+func (_c *ClustersApi_CreateCluster_Call) RunAndReturn(run func(context.Context, string, *admin.ClusterDescription20240805) admin.CreateClusterApiRequest) *ClustersApi_CreateCluster_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
 // CreateClusterExecute provides a mock function with given fields: r
-func (_m *ClustersApi) CreateClusterExecute(r admin.CreateClusterApiRequest) (*admin.AdvancedClusterDescription, *http.Response, error) {
+func (_m *ClustersApi) CreateClusterExecute(r admin.CreateClusterApiRequest) (*admin.ClusterDescription20240805, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for CreateClusterExecute")
 	}
 
-	var r0 *admin.AdvancedClusterDescription
+	var r0 *admin.ClusterDescription20240805
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.CreateClusterApiRequest) (*admin.AdvancedClusterDescription, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.CreateClusterApiRequest) (*admin.ClusterDescription20240805, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.CreateClusterApiRequest) *admin.AdvancedClusterDescription); ok {
+	if rf, ok := ret.Get(0).(func(admin.CreateClusterApiRequest) *admin.ClusterDescription20240805); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.AdvancedClusterDescription)
+			r0 = ret.Get(0).(*admin.ClusterDescription20240805)
 		}
 	}
 
@@ -130,12 +130,12 @@ func (_c *ClustersApi_CreateClusterExecute_Call) Run(run func(r admin.CreateClus
 	return _c
 }
 
-func (_c *ClustersApi_CreateClusterExecute_Call) Return(_a0 *admin.AdvancedClusterDescription, _a1 *http.Response, _a2 error) *ClustersApi_CreateClusterExecute_Call {
+func (_c *ClustersApi_CreateClusterExecute_Call) Return(_a0 *admin.ClusterDescription20240805, _a1 *http.Response, _a2 error) *ClustersApi_CreateClusterExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ClustersApi_CreateClusterExecute_Call) RunAndReturn(run func(admin.CreateClusterApiRequest) (*admin.AdvancedClusterDescription, *http.Response, error)) *ClustersApi_CreateClusterExecute_Call {
+func (_c *ClustersApi_CreateClusterExecute_Call) RunAndReturn(run func(admin.CreateClusterApiRequest) (*admin.ClusterDescription20240805, *http.Response, error)) *ClustersApi_CreateClusterExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -437,24 +437,24 @@ func (_c *ClustersApi_GetClusterAdvancedConfiguration_Call) RunAndReturn(run fun
 }
 
 // GetClusterAdvancedConfigurationExecute provides a mock function with given fields: r
-func (_m *ClustersApi) GetClusterAdvancedConfigurationExecute(r admin.GetClusterAdvancedConfigurationApiRequest) (*admin.ClusterDescriptionProcessArgs, *http.Response, error) {
+func (_m *ClustersApi) GetClusterAdvancedConfigurationExecute(r admin.GetClusterAdvancedConfigurationApiRequest) (*admin.ClusterDescriptionProcessArgs20240805, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for GetClusterAdvancedConfigurationExecute")
 	}
 
-	var r0 *admin.ClusterDescriptionProcessArgs
+	var r0 *admin.ClusterDescriptionProcessArgs20240805
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetClusterAdvancedConfigurationApiRequest) (*admin.ClusterDescriptionProcessArgs, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetClusterAdvancedConfigurationApiRequest) (*admin.ClusterDescriptionProcessArgs20240805, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.GetClusterAdvancedConfigurationApiRequest) *admin.ClusterDescriptionProcessArgs); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetClusterAdvancedConfigurationApiRequest) *admin.ClusterDescriptionProcessArgs20240805); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.ClusterDescriptionProcessArgs)
+			r0 = ret.Get(0).(*admin.ClusterDescriptionProcessArgs20240805)
 		}
 	}
 
@@ -493,12 +493,12 @@ func (_c *ClustersApi_GetClusterAdvancedConfigurationExecute_Call) Run(run func(
 	return _c
 }
 
-func (_c *ClustersApi_GetClusterAdvancedConfigurationExecute_Call) Return(_a0 *admin.ClusterDescriptionProcessArgs, _a1 *http.Response, _a2 error) *ClustersApi_GetClusterAdvancedConfigurationExecute_Call {
+func (_c *ClustersApi_GetClusterAdvancedConfigurationExecute_Call) Return(_a0 *admin.ClusterDescriptionProcessArgs20240805, _a1 *http.Response, _a2 error) *ClustersApi_GetClusterAdvancedConfigurationExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ClustersApi_GetClusterAdvancedConfigurationExecute_Call) RunAndReturn(run func(admin.GetClusterAdvancedConfigurationApiRequest) (*admin.ClusterDescriptionProcessArgs, *http.Response, error)) *ClustersApi_GetClusterAdvancedConfigurationExecute_Call {
+func (_c *ClustersApi_GetClusterAdvancedConfigurationExecute_Call) RunAndReturn(run func(admin.GetClusterAdvancedConfigurationApiRequest) (*admin.ClusterDescriptionProcessArgs20240805, *http.Response, error)) *ClustersApi_GetClusterAdvancedConfigurationExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -551,24 +551,24 @@ func (_c *ClustersApi_GetClusterAdvancedConfigurationWithParams_Call) RunAndRetu
 }
 
 // GetClusterExecute provides a mock function with given fields: r
-func (_m *ClustersApi) GetClusterExecute(r admin.GetClusterApiRequest) (*admin.AdvancedClusterDescription, *http.Response, error) {
+func (_m *ClustersApi) GetClusterExecute(r admin.GetClusterApiRequest) (*admin.ClusterDescription20240805, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for GetClusterExecute")
 	}
 
-	var r0 *admin.AdvancedClusterDescription
+	var r0 *admin.ClusterDescription20240805
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetClusterApiRequest) (*admin.AdvancedClusterDescription, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetClusterApiRequest) (*admin.ClusterDescription20240805, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.GetClusterApiRequest) *admin.AdvancedClusterDescription); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetClusterApiRequest) *admin.ClusterDescription20240805); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.AdvancedClusterDescription)
+			r0 = ret.Get(0).(*admin.ClusterDescription20240805)
 		}
 	}
 
@@ -607,12 +607,12 @@ func (_c *ClustersApi_GetClusterExecute_Call) Run(run func(r admin.GetClusterApi
 	return _c
 }
 
-func (_c *ClustersApi_GetClusterExecute_Call) Return(_a0 *admin.AdvancedClusterDescription, _a1 *http.Response, _a2 error) *ClustersApi_GetClusterExecute_Call {
+func (_c *ClustersApi_GetClusterExecute_Call) Return(_a0 *admin.ClusterDescription20240805, _a1 *http.Response, _a2 error) *ClustersApi_GetClusterExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ClustersApi_GetClusterExecute_Call) RunAndReturn(run func(admin.GetClusterApiRequest) (*admin.AdvancedClusterDescription, *http.Response, error)) *ClustersApi_GetClusterExecute_Call {
+func (_c *ClustersApi_GetClusterExecute_Call) RunAndReturn(run func(admin.GetClusterApiRequest) (*admin.ClusterDescription20240805, *http.Response, error)) *ClustersApi_GetClusterExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1197,24 +1197,24 @@ func (_c *ClustersApi_ListClusters_Call) RunAndReturn(run func(context.Context, 
 }
 
 // ListClustersExecute provides a mock function with given fields: r
-func (_m *ClustersApi) ListClustersExecute(r admin.ListClustersApiRequest) (*admin.PaginatedAdvancedClusterDescription, *http.Response, error) {
+func (_m *ClustersApi) ListClustersExecute(r admin.ListClustersApiRequest) (*admin.PaginatedClusterDescription20240805, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for ListClustersExecute")
 	}
 
-	var r0 *admin.PaginatedAdvancedClusterDescription
+	var r0 *admin.PaginatedClusterDescription20240805
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListClustersApiRequest) (*admin.PaginatedAdvancedClusterDescription, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListClustersApiRequest) (*admin.PaginatedClusterDescription20240805, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.ListClustersApiRequest) *admin.PaginatedAdvancedClusterDescription); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListClustersApiRequest) *admin.PaginatedClusterDescription20240805); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.PaginatedAdvancedClusterDescription)
+			r0 = ret.Get(0).(*admin.PaginatedClusterDescription20240805)
 		}
 	}
 
@@ -1253,12 +1253,12 @@ func (_c *ClustersApi_ListClustersExecute_Call) Run(run func(r admin.ListCluster
 	return _c
 }
 
-func (_c *ClustersApi_ListClustersExecute_Call) Return(_a0 *admin.PaginatedAdvancedClusterDescription, _a1 *http.Response, _a2 error) *ClustersApi_ListClustersExecute_Call {
+func (_c *ClustersApi_ListClustersExecute_Call) Return(_a0 *admin.PaginatedClusterDescription20240805, _a1 *http.Response, _a2 error) *ClustersApi_ListClustersExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ClustersApi_ListClustersExecute_Call) RunAndReturn(run func(admin.ListClustersApiRequest) (*admin.PaginatedAdvancedClusterDescription, *http.Response, error)) *ClustersApi_ListClustersExecute_Call {
+func (_c *ClustersApi_ListClustersExecute_Call) RunAndReturn(run func(admin.ListClustersApiRequest) (*admin.PaginatedClusterDescription20240805, *http.Response, error)) *ClustersApi_ListClustersExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1785,17 +1785,17 @@ func (_c *ClustersApi_TestFailoverWithParams_Call) RunAndReturn(run func(context
 	return _c
 }
 
-// UpdateCluster provides a mock function with given fields: ctx, groupId, clusterName, advancedClusterDescription
-func (_m *ClustersApi) UpdateCluster(ctx context.Context, groupId string, clusterName string, advancedClusterDescription *admin.AdvancedClusterDescription) admin.UpdateClusterApiRequest {
-	ret := _m.Called(ctx, groupId, clusterName, advancedClusterDescription)
+// UpdateCluster provides a mock function with given fields: ctx, groupId, clusterName, clusterDescription20240805
+func (_m *ClustersApi) UpdateCluster(ctx context.Context, groupId string, clusterName string, clusterDescription20240805 *admin.ClusterDescription20240805) admin.UpdateClusterApiRequest {
+	ret := _m.Called(ctx, groupId, clusterName, clusterDescription20240805)
 
 	if len(ret) == 0 {
 		panic("no return value specified for UpdateCluster")
 	}
 
 	var r0 admin.UpdateClusterApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.AdvancedClusterDescription) admin.UpdateClusterApiRequest); ok {
-		r0 = rf(ctx, groupId, clusterName, advancedClusterDescription)
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.ClusterDescription20240805) admin.UpdateClusterApiRequest); ok {
+		r0 = rf(ctx, groupId, clusterName, clusterDescription20240805)
 	} else {
 		r0 = ret.Get(0).(admin.UpdateClusterApiRequest)
 	}
@@ -1812,14 +1812,14 @@ type ClustersApi_UpdateCluster_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
-//   - advancedClusterDescription *admin.AdvancedClusterDescription
-func (_e *ClustersApi_Expecter) UpdateCluster(ctx interface{}, groupId interface{}, clusterName interface{}, advancedClusterDescription interface{}) *ClustersApi_UpdateCluster_Call {
-	return &ClustersApi_UpdateCluster_Call{Call: _e.mock.On("UpdateCluster", ctx, groupId, clusterName, advancedClusterDescription)}
+//   - clusterDescription20240805 *admin.ClusterDescription20240805
+func (_e *ClustersApi_Expecter) UpdateCluster(ctx interface{}, groupId interface{}, clusterName interface{}, clusterDescription20240805 interface{}) *ClustersApi_UpdateCluster_Call {
+	return &ClustersApi_UpdateCluster_Call{Call: _e.mock.On("UpdateCluster", ctx, groupId, clusterName, clusterDescription20240805)}
 }
 
-func (_c *ClustersApi_UpdateCluster_Call) Run(run func(ctx context.Context, groupId string, clusterName string, advancedClusterDescription *admin.AdvancedClusterDescription)) *ClustersApi_UpdateCluster_Call {
+func (_c *ClustersApi_UpdateCluster_Call) Run(run func(ctx context.Context, groupId string, clusterName string, clusterDescription20240805 *admin.ClusterDescription20240805)) *ClustersApi_UpdateCluster_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.AdvancedClusterDescription))
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.ClusterDescription20240805))
 	})
 	return _c
 }
@@ -1829,22 +1829,22 @@ func (_c *ClustersApi_UpdateCluster_Call) Return(_a0 admin.UpdateClusterApiReque
 	return _c
 }
 
-func (_c *ClustersApi_UpdateCluster_Call) RunAndReturn(run func(context.Context, string, string, *admin.AdvancedClusterDescription) admin.UpdateClusterApiRequest) *ClustersApi_UpdateCluster_Call {
+func (_c *ClustersApi_UpdateCluster_Call) RunAndReturn(run func(context.Context, string, string, *admin.ClusterDescription20240805) admin.UpdateClusterApiRequest) *ClustersApi_UpdateCluster_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// UpdateClusterAdvancedConfiguration provides a mock function with given fields: ctx, groupId, clusterName, clusterDescriptionProcessArgs
-func (_m *ClustersApi) UpdateClusterAdvancedConfiguration(ctx context.Context, groupId string, clusterName string, clusterDescriptionProcessArgs *admin.ClusterDescriptionProcessArgs) admin.UpdateClusterAdvancedConfigurationApiRequest {
-	ret := _m.Called(ctx, groupId, clusterName, clusterDescriptionProcessArgs)
+// UpdateClusterAdvancedConfiguration provides a mock function with given fields: ctx, groupId, clusterName, clusterDescriptionProcessArgs20240805
+func (_m *ClustersApi) UpdateClusterAdvancedConfiguration(ctx context.Context, groupId string, clusterName string, clusterDescriptionProcessArgs20240805 *admin.ClusterDescriptionProcessArgs20240805) admin.UpdateClusterAdvancedConfigurationApiRequest {
+	ret := _m.Called(ctx, groupId, clusterName, clusterDescriptionProcessArgs20240805)
 
 	if len(ret) == 0 {
 		panic("no return value specified for UpdateClusterAdvancedConfiguration")
 	}
 
 	var r0 admin.UpdateClusterAdvancedConfigurationApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.ClusterDescriptionProcessArgs) admin.UpdateClusterAdvancedConfigurationApiRequest); ok {
-		r0 = rf(ctx, groupId, clusterName, clusterDescriptionProcessArgs)
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.ClusterDescriptionProcessArgs20240805) admin.UpdateClusterAdvancedConfigurationApiRequest); ok {
+		r0 = rf(ctx, groupId, clusterName, clusterDescriptionProcessArgs20240805)
 	} else {
 		r0 = ret.Get(0).(admin.UpdateClusterAdvancedConfigurationApiRequest)
 	}
@@ -1861,14 +1861,14 @@ type ClustersApi_UpdateClusterAdvancedConfiguration_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
-//   - clusterDescriptionProcessArgs *admin.ClusterDescriptionProcessArgs
-func (_e *ClustersApi_Expecter) UpdateClusterAdvancedConfiguration(ctx interface{}, groupId interface{}, clusterName interface{}, clusterDescriptionProcessArgs interface{}) *ClustersApi_UpdateClusterAdvancedConfiguration_Call {
-	return &ClustersApi_UpdateClusterAdvancedConfiguration_Call{Call: _e.mock.On("UpdateClusterAdvancedConfiguration", ctx, groupId, clusterName, clusterDescriptionProcessArgs)}
+//   - clusterDescriptionProcessArgs20240805 *admin.ClusterDescriptionProcessArgs20240805
+func (_e *ClustersApi_Expecter) UpdateClusterAdvancedConfiguration(ctx interface{}, groupId interface{}, clusterName interface{}, clusterDescriptionProcessArgs20240805 interface{}) *ClustersApi_UpdateClusterAdvancedConfiguration_Call {
+	return &ClustersApi_UpdateClusterAdvancedConfiguration_Call{Call: _e.mock.On("UpdateClusterAdvancedConfiguration", ctx, groupId, clusterName, clusterDescriptionProcessArgs20240805)}
 }
 
-func (_c *ClustersApi_UpdateClusterAdvancedConfiguration_Call) Run(run func(ctx context.Context, groupId string, clusterName string, clusterDescriptionProcessArgs *admin.ClusterDescriptionProcessArgs)) *ClustersApi_UpdateClusterAdvancedConfiguration_Call {
+func (_c *ClustersApi_UpdateClusterAdvancedConfiguration_Call) Run(run func(ctx context.Context, groupId string, clusterName string, clusterDescriptionProcessArgs20240805 *admin.ClusterDescriptionProcessArgs20240805)) *ClustersApi_UpdateClusterAdvancedConfiguration_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.ClusterDescriptionProcessArgs))
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.ClusterDescriptionProcessArgs20240805))
 	})
 	return _c
 }
@@ -1878,30 +1878,30 @@ func (_c *ClustersApi_UpdateClusterAdvancedConfiguration_Call) Return(_a0 admin.
 	return _c
 }
 
-func (_c *ClustersApi_UpdateClusterAdvancedConfiguration_Call) RunAndReturn(run func(context.Context, string, string, *admin.ClusterDescriptionProcessArgs) admin.UpdateClusterAdvancedConfigurationApiRequest) *ClustersApi_UpdateClusterAdvancedConfiguration_Call {
+func (_c *ClustersApi_UpdateClusterAdvancedConfiguration_Call) RunAndReturn(run func(context.Context, string, string, *admin.ClusterDescriptionProcessArgs20240805) admin.UpdateClusterAdvancedConfigurationApiRequest) *ClustersApi_UpdateClusterAdvancedConfiguration_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
 // UpdateClusterAdvancedConfigurationExecute provides a mock function with given fields: r
-func (_m *ClustersApi) UpdateClusterAdvancedConfigurationExecute(r admin.UpdateClusterAdvancedConfigurationApiRequest) (*admin.ClusterDescriptionProcessArgs, *http.Response, error) {
+func (_m *ClustersApi) UpdateClusterAdvancedConfigurationExecute(r admin.UpdateClusterAdvancedConfigurationApiRequest) (*admin.ClusterDescriptionProcessArgs20240805, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for UpdateClusterAdvancedConfigurationExecute")
 	}
 
-	var r0 *admin.ClusterDescriptionProcessArgs
+	var r0 *admin.ClusterDescriptionProcessArgs20240805
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.UpdateClusterAdvancedConfigurationApiRequest) (*admin.ClusterDescriptionProcessArgs, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.UpdateClusterAdvancedConfigurationApiRequest) (*admin.ClusterDescriptionProcessArgs20240805, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.UpdateClusterAdvancedConfigurationApiRequest) *admin.ClusterDescriptionProcessArgs); ok {
+	if rf, ok := ret.Get(0).(func(admin.UpdateClusterAdvancedConfigurationApiRequest) *admin.ClusterDescriptionProcessArgs20240805); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.ClusterDescriptionProcessArgs)
+			r0 = ret.Get(0).(*admin.ClusterDescriptionProcessArgs20240805)
 		}
 	}
 
@@ -1940,12 +1940,12 @@ func (_c *ClustersApi_UpdateClusterAdvancedConfigurationExecute_Call) Run(run fu
 	return _c
 }
 
-func (_c *ClustersApi_UpdateClusterAdvancedConfigurationExecute_Call) Return(_a0 *admin.ClusterDescriptionProcessArgs, _a1 *http.Response, _a2 error) *ClustersApi_UpdateClusterAdvancedConfigurationExecute_Call {
+func (_c *ClustersApi_UpdateClusterAdvancedConfigurationExecute_Call) Return(_a0 *admin.ClusterDescriptionProcessArgs20240805, _a1 *http.Response, _a2 error) *ClustersApi_UpdateClusterAdvancedConfigurationExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ClustersApi_UpdateClusterAdvancedConfigurationExecute_Call) RunAndReturn(run func(admin.UpdateClusterAdvancedConfigurationApiRequest) (*admin.ClusterDescriptionProcessArgs, *http.Response, error)) *ClustersApi_UpdateClusterAdvancedConfigurationExecute_Call {
+func (_c *ClustersApi_UpdateClusterAdvancedConfigurationExecute_Call) RunAndReturn(run func(admin.UpdateClusterAdvancedConfigurationApiRequest) (*admin.ClusterDescriptionProcessArgs20240805, *http.Response, error)) *ClustersApi_UpdateClusterAdvancedConfigurationExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1998,24 +1998,24 @@ func (_c *ClustersApi_UpdateClusterAdvancedConfigurationWithParams_Call) RunAndR
 }
 
 // UpdateClusterExecute provides a mock function with given fields: r
-func (_m *ClustersApi) UpdateClusterExecute(r admin.UpdateClusterApiRequest) (*admin.AdvancedClusterDescription, *http.Response, error) {
+func (_m *ClustersApi) UpdateClusterExecute(r admin.UpdateClusterApiRequest) (*admin.ClusterDescription20240805, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for UpdateClusterExecute")
 	}
 
-	var r0 *admin.AdvancedClusterDescription
+	var r0 *admin.ClusterDescription20240805
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.UpdateClusterApiRequest) (*admin.AdvancedClusterDescription, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.UpdateClusterApiRequest) (*admin.ClusterDescription20240805, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.UpdateClusterApiRequest) *admin.AdvancedClusterDescription); ok {
+	if rf, ok := ret.Get(0).(func(admin.UpdateClusterApiRequest) *admin.ClusterDescription20240805); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.AdvancedClusterDescription)
+			r0 = ret.Get(0).(*admin.ClusterDescription20240805)
 		}
 	}
 
@@ -2054,12 +2054,12 @@ func (_c *ClustersApi_UpdateClusterExecute_Call) Run(run func(r admin.UpdateClus
 	return _c
 }
 
-func (_c *ClustersApi_UpdateClusterExecute_Call) Return(_a0 *admin.AdvancedClusterDescription, _a1 *http.Response, _a2 error) *ClustersApi_UpdateClusterExecute_Call {
+func (_c *ClustersApi_UpdateClusterExecute_Call) Return(_a0 *admin.ClusterDescription20240805, _a1 *http.Response, _a2 error) *ClustersApi_UpdateClusterExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ClustersApi_UpdateClusterExecute_Call) RunAndReturn(run func(admin.UpdateClusterApiRequest) (*admin.AdvancedClusterDescription, *http.Response, error)) *ClustersApi_UpdateClusterExecute_Call {
+func (_c *ClustersApi_UpdateClusterExecute_Call) RunAndReturn(run func(admin.UpdateClusterApiRequest) (*admin.ClusterDescription20240805, *http.Response, error)) *ClustersApi_UpdateClusterExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }

@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20240530005/admin"
+	admin "go.mongodb.org/atlas-sdk/v20240805001/admin"
 
 	http "net/http"
 
@@ -75,24 +75,24 @@ func (_c *GlobalClustersApi_CreateCustomZoneMapping_Call) RunAndReturn(run func(
 }
 
 // CreateCustomZoneMappingExecute provides a mock function with given fields: r
-func (_m *GlobalClustersApi) CreateCustomZoneMappingExecute(r admin.CreateCustomZoneMappingApiRequest) (*admin.GeoSharding, *http.Response, error) {
+func (_m *GlobalClustersApi) CreateCustomZoneMappingExecute(r admin.CreateCustomZoneMappingApiRequest) (*admin.GeoSharding20240805, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for CreateCustomZoneMappingExecute")
 	}
 
-	var r0 *admin.GeoSharding
+	var r0 *admin.GeoSharding20240805
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.CreateCustomZoneMappingApiRequest) (*admin.GeoSharding, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.CreateCustomZoneMappingApiRequest) (*admin.GeoSharding20240805, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.CreateCustomZoneMappingApiRequest) *admin.GeoSharding); ok {
+	if rf, ok := ret.Get(0).(func(admin.CreateCustomZoneMappingApiRequest) *admin.GeoSharding20240805); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.GeoSharding)
+			r0 = ret.Get(0).(*admin.GeoSharding20240805)
 		}
 	}
 
@@ -131,12 +131,12 @@ func (_c *GlobalClustersApi_CreateCustomZoneMappingExecute_Call) Run(run func(r 
 	return _c
 }
 
-func (_c *GlobalClustersApi_CreateCustomZoneMappingExecute_Call) Return(_a0 *admin.GeoSharding, _a1 *http.Response, _a2 error) *GlobalClustersApi_CreateCustomZoneMappingExecute_Call {
+func (_c *GlobalClustersApi_CreateCustomZoneMappingExecute_Call) Return(_a0 *admin.GeoSharding20240805, _a1 *http.Response, _a2 error) *GlobalClustersApi_CreateCustomZoneMappingExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *GlobalClustersApi_CreateCustomZoneMappingExecute_Call) RunAndReturn(run func(admin.CreateCustomZoneMappingApiRequest) (*admin.GeoSharding, *http.Response, error)) *GlobalClustersApi_CreateCustomZoneMappingExecute_Call {
+func (_c *GlobalClustersApi_CreateCustomZoneMappingExecute_Call) RunAndReturn(run func(admin.CreateCustomZoneMappingApiRequest) (*admin.GeoSharding20240805, *http.Response, error)) *GlobalClustersApi_CreateCustomZoneMappingExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -188,17 +188,17 @@ func (_c *GlobalClustersApi_CreateCustomZoneMappingWithParams_Call) RunAndReturn
 	return _c
 }
 
-// CreateManagedNamespace provides a mock function with given fields: ctx, groupId, clusterName, managedNamespace
-func (_m *GlobalClustersApi) CreateManagedNamespace(ctx context.Context, groupId string, clusterName string, managedNamespace *admin.ManagedNamespace) admin.CreateManagedNamespaceApiRequest {
-	ret := _m.Called(ctx, groupId, clusterName, managedNamespace)
+// CreateManagedNamespace provides a mock function with given fields: ctx, groupId, clusterName, managedNamespaces
+func (_m *GlobalClustersApi) CreateManagedNamespace(ctx context.Context, groupId string, clusterName string, managedNamespaces *admin.ManagedNamespaces) admin.CreateManagedNamespaceApiRequest {
+	ret := _m.Called(ctx, groupId, clusterName, managedNamespaces)
 
 	if len(ret) == 0 {
 		panic("no return value specified for CreateManagedNamespace")
 	}
 
 	var r0 admin.CreateManagedNamespaceApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.ManagedNamespace) admin.CreateManagedNamespaceApiRequest); ok {
-		r0 = rf(ctx, groupId, clusterName, managedNamespace)
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.ManagedNamespaces) admin.CreateManagedNamespaceApiRequest); ok {
+		r0 = rf(ctx, groupId, clusterName, managedNamespaces)
 	} else {
 		r0 = ret.Get(0).(admin.CreateManagedNamespaceApiRequest)
 	}
@@ -215,14 +215,14 @@ type GlobalClustersApi_CreateManagedNamespace_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
-//   - managedNamespace *admin.ManagedNamespace
-func (_e *GlobalClustersApi_Expecter) CreateManagedNamespace(ctx interface{}, groupId interface{}, clusterName interface{}, managedNamespace interface{}) *GlobalClustersApi_CreateManagedNamespace_Call {
-	return &GlobalClustersApi_CreateManagedNamespace_Call{Call: _e.mock.On("CreateManagedNamespace", ctx, groupId, clusterName, managedNamespace)}
+//   - managedNamespaces *admin.ManagedNamespaces
+func (_e *GlobalClustersApi_Expecter) CreateManagedNamespace(ctx interface{}, groupId interface{}, clusterName interface{}, managedNamespaces interface{}) *GlobalClustersApi_CreateManagedNamespace_Call {
+	return &GlobalClustersApi_CreateManagedNamespace_Call{Call: _e.mock.On("CreateManagedNamespace", ctx, groupId, clusterName, managedNamespaces)}
 }
 
-func (_c *GlobalClustersApi_CreateManagedNamespace_Call) Run(run func(ctx context.Context, groupId string, clusterName string, managedNamespace *admin.ManagedNamespace)) *GlobalClustersApi_CreateManagedNamespace_Call {
+func (_c *GlobalClustersApi_CreateManagedNamespace_Call) Run(run func(ctx context.Context, groupId string, clusterName string, managedNamespaces *admin.ManagedNamespaces)) *GlobalClustersApi_CreateManagedNamespace_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.ManagedNamespace))
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.ManagedNamespaces))
 	})
 	return _c
 }
@@ -232,30 +232,30 @@ func (_c *GlobalClustersApi_CreateManagedNamespace_Call) Return(_a0 admin.Create
 	return _c
 }
 
-func (_c *GlobalClustersApi_CreateManagedNamespace_Call) RunAndReturn(run func(context.Context, string, string, *admin.ManagedNamespace) admin.CreateManagedNamespaceApiRequest) *GlobalClustersApi_CreateManagedNamespace_Call {
+func (_c *GlobalClustersApi_CreateManagedNamespace_Call) RunAndReturn(run func(context.Context, string, string, *admin.ManagedNamespaces) admin.CreateManagedNamespaceApiRequest) *GlobalClustersApi_CreateManagedNamespace_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
 // CreateManagedNamespaceExecute provides a mock function with given fields: r
-func (_m *GlobalClustersApi) CreateManagedNamespaceExecute(r admin.CreateManagedNamespaceApiRequest) (*admin.GeoSharding, *http.Response, error) {
+func (_m *GlobalClustersApi) CreateManagedNamespaceExecute(r admin.CreateManagedNamespaceApiRequest) (*admin.GeoSharding20240805, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for CreateManagedNamespaceExecute")
 	}
 
-	var r0 *admin.GeoSharding
+	var r0 *admin.GeoSharding20240805
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.CreateManagedNamespaceApiRequest) (*admin.GeoSharding, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.CreateManagedNamespaceApiRequest) (*admin.GeoSharding20240805, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.CreateManagedNamespaceApiRequest) *admin.GeoSharding); ok {
+	if rf, ok := ret.Get(0).(func(admin.CreateManagedNamespaceApiRequest) *admin.GeoSharding20240805); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.GeoSharding)
+			r0 = ret.Get(0).(*admin.GeoSharding20240805)
 		}
 	}
 
@@ -294,12 +294,12 @@ func (_c *GlobalClustersApi_CreateManagedNamespaceExecute_Call) Run(run func(r a
 	return _c
 }
 
-func (_c *GlobalClustersApi_CreateManagedNamespaceExecute_Call) Return(_a0 *admin.GeoSharding, _a1 *http.Response, _a2 error) *GlobalClustersApi_CreateManagedNamespaceExecute_Call {
+func (_c *GlobalClustersApi_CreateManagedNamespaceExecute_Call) Return(_a0 *admin.GeoSharding20240805, _a1 *http.Response, _a2 error) *GlobalClustersApi_CreateManagedNamespaceExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *GlobalClustersApi_CreateManagedNamespaceExecute_Call) RunAndReturn(run func(admin.CreateManagedNamespaceApiRequest) (*admin.GeoSharding, *http.Response, error)) *GlobalClustersApi_CreateManagedNamespaceExecute_Call {
+func (_c *GlobalClustersApi_CreateManagedNamespaceExecute_Call) RunAndReturn(run func(admin.CreateManagedNamespaceApiRequest) (*admin.GeoSharding20240805, *http.Response, error)) *GlobalClustersApi_CreateManagedNamespaceExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -400,24 +400,24 @@ func (_c *GlobalClustersApi_DeleteAllCustomZoneMappings_Call) RunAndReturn(run f
 }
 
 // DeleteAllCustomZoneMappingsExecute provides a mock function with given fields: r
-func (_m *GlobalClustersApi) DeleteAllCustomZoneMappingsExecute(r admin.DeleteAllCustomZoneMappingsApiRequest) (*admin.GeoSharding, *http.Response, error) {
+func (_m *GlobalClustersApi) DeleteAllCustomZoneMappingsExecute(r admin.DeleteAllCustomZoneMappingsApiRequest) (*admin.GeoSharding20240805, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteAllCustomZoneMappingsExecute")
 	}
 
-	var r0 *admin.GeoSharding
+	var r0 *admin.GeoSharding20240805
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteAllCustomZoneMappingsApiRequest) (*admin.GeoSharding, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteAllCustomZoneMappingsApiRequest) (*admin.GeoSharding20240805, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteAllCustomZoneMappingsApiRequest) *admin.GeoSharding); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteAllCustomZoneMappingsApiRequest) *admin.GeoSharding20240805); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.GeoSharding)
+			r0 = ret.Get(0).(*admin.GeoSharding20240805)
 		}
 	}
 
@@ -456,12 +456,12 @@ func (_c *GlobalClustersApi_DeleteAllCustomZoneMappingsExecute_Call) Run(run fun
 	return _c
 }
 
-func (_c *GlobalClustersApi_DeleteAllCustomZoneMappingsExecute_Call) Return(_a0 *admin.GeoSharding, _a1 *http.Response, _a2 error) *GlobalClustersApi_DeleteAllCustomZoneMappingsExecute_Call {
+func (_c *GlobalClustersApi_DeleteAllCustomZoneMappingsExecute_Call) Return(_a0 *admin.GeoSharding20240805, _a1 *http.Response, _a2 error) *GlobalClustersApi_DeleteAllCustomZoneMappingsExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *GlobalClustersApi_DeleteAllCustomZoneMappingsExecute_Call) RunAndReturn(run func(admin.DeleteAllCustomZoneMappingsApiRequest) (*admin.GeoSharding, *http.Response, error)) *GlobalClustersApi_DeleteAllCustomZoneMappingsExecute_Call {
+func (_c *GlobalClustersApi_DeleteAllCustomZoneMappingsExecute_Call) RunAndReturn(run func(admin.DeleteAllCustomZoneMappingsApiRequest) (*admin.GeoSharding20240805, *http.Response, error)) *GlobalClustersApi_DeleteAllCustomZoneMappingsExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -562,24 +562,24 @@ func (_c *GlobalClustersApi_DeleteManagedNamespace_Call) RunAndReturn(run func(c
 }
 
 // DeleteManagedNamespaceExecute provides a mock function with given fields: r
-func (_m *GlobalClustersApi) DeleteManagedNamespaceExecute(r admin.DeleteManagedNamespaceApiRequest) (*admin.GeoSharding, *http.Response, error) {
+func (_m *GlobalClustersApi) DeleteManagedNamespaceExecute(r admin.DeleteManagedNamespaceApiRequest) (*admin.GeoSharding20240805, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteManagedNamespaceExecute")
 	}
 
-	var r0 *admin.GeoSharding
+	var r0 *admin.GeoSharding20240805
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteManagedNamespaceApiRequest) (*admin.GeoSharding, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteManagedNamespaceApiRequest) (*admin.GeoSharding20240805, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteManagedNamespaceApiRequest) *admin.GeoSharding); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteManagedNamespaceApiRequest) *admin.GeoSharding20240805); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.GeoSharding)
+			r0 = ret.Get(0).(*admin.GeoSharding20240805)
 		}
 	}
 
@@ -618,12 +618,12 @@ func (_c *GlobalClustersApi_DeleteManagedNamespaceExecute_Call) Run(run func(r a
 	return _c
 }
 
-func (_c *GlobalClustersApi_DeleteManagedNamespaceExecute_Call) Return(_a0 *admin.GeoSharding, _a1 *http.Response, _a2 error) *GlobalClustersApi_DeleteManagedNamespaceExecute_Call {
+func (_c *GlobalClustersApi_DeleteManagedNamespaceExecute_Call) Return(_a0 *admin.GeoSharding20240805, _a1 *http.Response, _a2 error) *GlobalClustersApi_DeleteManagedNamespaceExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *GlobalClustersApi_DeleteManagedNamespaceExecute_Call) RunAndReturn(run func(admin.DeleteManagedNamespaceApiRequest) (*admin.GeoSharding, *http.Response, error)) *GlobalClustersApi_DeleteManagedNamespaceExecute_Call {
+func (_c *GlobalClustersApi_DeleteManagedNamespaceExecute_Call) RunAndReturn(run func(admin.DeleteManagedNamespaceApiRequest) (*admin.GeoSharding20240805, *http.Response, error)) *GlobalClustersApi_DeleteManagedNamespaceExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -724,24 +724,24 @@ func (_c *GlobalClustersApi_GetManagedNamespace_Call) RunAndReturn(run func(cont
 }
 
 // GetManagedNamespaceExecute provides a mock function with given fields: r
-func (_m *GlobalClustersApi) GetManagedNamespaceExecute(r admin.GetManagedNamespaceApiRequest) (*admin.GeoSharding, *http.Response, error) {
+func (_m *GlobalClustersApi) GetManagedNamespaceExecute(r admin.GetManagedNamespaceApiRequest) (*admin.GeoSharding20240805, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for GetManagedNamespaceExecute")
 	}
 
-	var r0 *admin.GeoSharding
+	var r0 *admin.GeoSharding20240805
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetManagedNamespaceApiRequest) (*admin.GeoSharding, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetManagedNamespaceApiRequest) (*admin.GeoSharding20240805, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.GetManagedNamespaceApiRequest) *admin.GeoSharding); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetManagedNamespaceApiRequest) *admin.GeoSharding20240805); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.GeoSharding)
+			r0 = ret.Get(0).(*admin.GeoSharding20240805)
 		}
 	}
 
@@ -780,12 +780,12 @@ func (_c *GlobalClustersApi_GetManagedNamespaceExecute_Call) Run(run func(r admi
 	return _c
 }
 
-func (_c *GlobalClustersApi_GetManagedNamespaceExecute_Call) Return(_a0 *admin.GeoSharding, _a1 *http.Response, _a2 error) *GlobalClustersApi_GetManagedNamespaceExecute_Call {
+func (_c *GlobalClustersApi_GetManagedNamespaceExecute_Call) Return(_a0 *admin.GeoSharding20240805, _a1 *http.Response, _a2 error) *GlobalClustersApi_GetManagedNamespaceExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *GlobalClustersApi_GetManagedNamespaceExecute_Call) RunAndReturn(run func(admin.GetManagedNamespaceApiRequest) (*admin.GeoSharding, *http.Response, error)) *GlobalClustersApi_GetManagedNamespaceExecute_Call {
+func (_c *GlobalClustersApi_GetManagedNamespaceExecute_Call) RunAndReturn(run func(admin.GetManagedNamespaceApiRequest) (*admin.GeoSharding20240805, *http.Response, error)) *GlobalClustersApi_GetManagedNamespaceExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
