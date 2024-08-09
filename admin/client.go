@@ -79,6 +79,8 @@ type APIClient struct {
 
 	GlobalClustersApi GlobalClustersApi
 
+	GroupsApi GroupsApi
+
 	InvoicesApi InvoicesApi
 
 	LDAPConfigurationApi LDAPConfigurationApi
@@ -127,6 +129,8 @@ type APIClient struct {
 
 	ThirdPartyIntegrationsApi ThirdPartyIntegrationsApi
 
+	USSInstancesApi USSInstancesApi
+
 	X509AuthenticationApi X509AuthenticationApi
 }
 
@@ -166,6 +170,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.EventsApi = (*EventsApiService)(&c.common)
 	c.FederatedAuthenticationApi = (*FederatedAuthenticationApiService)(&c.common)
 	c.GlobalClustersApi = (*GlobalClustersApiService)(&c.common)
+	c.GroupsApi = (*GroupsApiService)(&c.common)
 	c.InvoicesApi = (*InvoicesApiService)(&c.common)
 	c.LDAPConfigurationApi = (*LDAPConfigurationApiService)(&c.common)
 	c.LegacyBackupApi = (*LegacyBackupApiService)(&c.common)
@@ -190,6 +195,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.StreamsApi = (*StreamsApiService)(&c.common)
 	c.TeamsApi = (*TeamsApiService)(&c.common)
 	c.ThirdPartyIntegrationsApi = (*ThirdPartyIntegrationsApiService)(&c.common)
+	c.USSInstancesApi = (*USSInstancesApiService)(&c.common)
 	c.X509AuthenticationApi = (*X509AuthenticationApiService)(&c.common)
 
 	return c
