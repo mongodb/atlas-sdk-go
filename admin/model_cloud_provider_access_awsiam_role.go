@@ -31,7 +31,7 @@ type CloudProviderAccessAWSIAMRole struct {
 	RoleId *string `json:"roleId,omitempty"`
 	// Human-readable label that identifies the cloud provider of the role.
 	ProviderName string `json:"providerName"`
-	// Unique 24-hexadecimal digit string that identifies the Azure Service Principal in Atlas.
+	// Unique 24-hexadecimal digit string that identifies the role.
 	// Read only field.
 	Id *string `json:"_id,omitempty"`
 	// Azure Active Directory Application ID of Atlas.
