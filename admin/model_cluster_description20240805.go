@@ -49,6 +49,8 @@ type ClusterDescription20240805 struct {
 	Paused *bool `json:"paused,omitempty"`
 	// Flag that indicates whether the cluster uses continuous cloud backups.
 	PitEnabled *bool `json:"pitEnabled,omitempty"`
+	// Set this field to configure the replica set scaling mode for your cluster.  By default, Atlas scales under WORKLOAD_TYPE. This mode allows Atlas to scale your analytics nodes in parallel to your operational nodes.  When configured as SEQUENTIAL, Atlas scales all nodes sequentially. This mode is intended for steady-state workloads and applications performing latency-sensitive secondary reads.  When configured as NODE_TYPE, Atlas scales your electable nodes in parallel with your read-only and analytics nodes. This mode is intended for large, dynamic workloads requiring frequent and timely cluster tier scaling. This is the fastest scaling strategy, but it might impact latency of workloads when performing extensive secondary reads.
+	ReplicaSetScalingStrategy *string `json:"replicaSetScalingStrategy,omitempty"`
 	// List of settings that configure your cluster regions. This array has one object per shard representing node configurations in each shard. For replica sets there is only one object representing node configurations.
 	ReplicationSpecs *[]ReplicationSpec20240805 `json:"replicationSpecs,omitempty"`
 	// Root Certificate Authority that MongoDB Cloud cluster uses. MongoDB Cloud supports Internet Security Research Group.
@@ -74,6 +76,8 @@ func NewClusterDescription20240805() *ClusterDescription20240805 {
 	this.BackupEnabled = &backupEnabled
 	var diskWarmingMode string = "FULLY_WARMED"
 	this.DiskWarmingMode = &diskWarmingMode
+	var replicaSetScalingStrategy string = "WORKLOAD_TYPE"
+	this.ReplicaSetScalingStrategy = &replicaSetScalingStrategy
 	var rootCertType string = "ISRGROOTX1"
 	this.RootCertType = &rootCertType
 	var terminationProtectionEnabled bool = false
@@ -92,6 +96,8 @@ func NewClusterDescription20240805WithDefaults() *ClusterDescription20240805 {
 	this.BackupEnabled = &backupEnabled
 	var diskWarmingMode string = "FULLY_WARMED"
 	this.DiskWarmingMode = &diskWarmingMode
+	var replicaSetScalingStrategy string = "WORKLOAD_TYPE"
+	this.ReplicaSetScalingStrategy = &replicaSetScalingStrategy
 	var rootCertType string = "ISRGROOTX1"
 	this.RootCertType = &rootCertType
 	var terminationProtectionEnabled bool = false
@@ -698,6 +704,39 @@ func (o *ClusterDescription20240805) SetPitEnabled(v bool) {
 	o.PitEnabled = &v
 }
 
+// GetReplicaSetScalingStrategy returns the ReplicaSetScalingStrategy field value if set, zero value otherwise
+func (o *ClusterDescription20240805) GetReplicaSetScalingStrategy() string {
+	if o == nil || IsNil(o.ReplicaSetScalingStrategy) {
+		var ret string
+		return ret
+	}
+	return *o.ReplicaSetScalingStrategy
+}
+
+// GetReplicaSetScalingStrategyOk returns a tuple with the ReplicaSetScalingStrategy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterDescription20240805) GetReplicaSetScalingStrategyOk() (*string, bool) {
+	if o == nil || IsNil(o.ReplicaSetScalingStrategy) {
+		return nil, false
+	}
+
+	return o.ReplicaSetScalingStrategy, true
+}
+
+// HasReplicaSetScalingStrategy returns a boolean if a field has been set.
+func (o *ClusterDescription20240805) HasReplicaSetScalingStrategy() bool {
+	if o != nil && !IsNil(o.ReplicaSetScalingStrategy) {
+		return true
+	}
+
+	return false
+}
+
+// SetReplicaSetScalingStrategy gets a reference to the given string and assigns it to the ReplicaSetScalingStrategy field.
+func (o *ClusterDescription20240805) SetReplicaSetScalingStrategy(v string) {
+	o.ReplicaSetScalingStrategy = &v
+}
+
 // GetReplicationSpecs returns the ReplicationSpecs field value if set, zero value otherwise
 func (o *ClusterDescription20240805) GetReplicationSpecs() []ReplicationSpec20240805 {
 	if o == nil || IsNil(o.ReplicationSpecs) {
@@ -943,6 +982,9 @@ func (o ClusterDescription20240805) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.PitEnabled) {
 		toSerialize["pitEnabled"] = o.PitEnabled
+	}
+	if !IsNil(o.ReplicaSetScalingStrategy) {
+		toSerialize["replicaSetScalingStrategy"] = o.ReplicaSetScalingStrategy
 	}
 	if !IsNil(o.ReplicationSpecs) {
 		toSerialize["replicationSpecs"] = o.ReplicationSpecs

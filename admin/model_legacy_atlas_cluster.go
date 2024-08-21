@@ -65,6 +65,8 @@ type LegacyAtlasCluster struct {
 	// Flag that indicates whether the M10 or higher cluster can perform Cloud Backups. If set to `true`, the cluster can perform backups. If this and **backupEnabled** are set to `false`, the cluster doesn't use MongoDB Cloud backups.
 	ProviderBackupEnabled *bool                    `json:"providerBackupEnabled,omitempty"`
 	ProviderSettings      *ClusterProviderSettings `json:"providerSettings,omitempty"`
+	// Set this field to configure the replica set scaling mode for your cluster.  By default, Atlas scales under WORKLOAD_TYPE. This mode allows Atlas to scale your analytics nodes in parallel to your operational nodes.  When configured as SEQUENTIAL, Atlas scales all nodes sequentially. This mode is intended for steady-state workloads and applications performing latency-sensitive secondary reads.  When configured as NODE_TYPE, Atlas scales your electable nodes in parallel with your read-only and analytics nodes. This mode is intended for large, dynamic workloads requiring frequent and timely cluster tier scaling. This is the fastest scaling strategy, but it might impact latency of workloads when performing extensive secondary reads.
+	ReplicaSetScalingStrategy *string `json:"replicaSetScalingStrategy,omitempty"`
 	// Number of members that belong to the replica set. Each member retains a copy of your databases, providing high availability and data redundancy. Use **replicationSpecs** instead.
 	// Deprecated
 	ReplicationFactor *int `json:"replicationFactor,omitempty"`
@@ -98,6 +100,8 @@ func NewLegacyAtlasCluster() *LegacyAtlasCluster {
 	this.DiskWarmingMode = &diskWarmingMode
 	var numShards int = 1
 	this.NumShards = &numShards
+	var replicaSetScalingStrategy string = "WORKLOAD_TYPE"
+	this.ReplicaSetScalingStrategy = &replicaSetScalingStrategy
 	var replicationFactor int = 3
 	this.ReplicationFactor = &replicationFactor
 	var rootCertType string = "ISRGROOTX1"
@@ -118,6 +122,8 @@ func NewLegacyAtlasClusterWithDefaults() *LegacyAtlasCluster {
 	this.DiskWarmingMode = &diskWarmingMode
 	var numShards int = 1
 	this.NumShards = &numShards
+	var replicaSetScalingStrategy string = "WORKLOAD_TYPE"
+	this.ReplicaSetScalingStrategy = &replicaSetScalingStrategy
 	var replicationFactor int = 3
 	this.ReplicationFactor = &replicationFactor
 	var rootCertType string = "ISRGROOTX1"
@@ -990,6 +996,39 @@ func (o *LegacyAtlasCluster) SetProviderSettings(v ClusterProviderSettings) {
 	o.ProviderSettings = &v
 }
 
+// GetReplicaSetScalingStrategy returns the ReplicaSetScalingStrategy field value if set, zero value otherwise
+func (o *LegacyAtlasCluster) GetReplicaSetScalingStrategy() string {
+	if o == nil || IsNil(o.ReplicaSetScalingStrategy) {
+		var ret string
+		return ret
+	}
+	return *o.ReplicaSetScalingStrategy
+}
+
+// GetReplicaSetScalingStrategyOk returns a tuple with the ReplicaSetScalingStrategy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LegacyAtlasCluster) GetReplicaSetScalingStrategyOk() (*string, bool) {
+	if o == nil || IsNil(o.ReplicaSetScalingStrategy) {
+		return nil, false
+	}
+
+	return o.ReplicaSetScalingStrategy, true
+}
+
+// HasReplicaSetScalingStrategy returns a boolean if a field has been set.
+func (o *LegacyAtlasCluster) HasReplicaSetScalingStrategy() bool {
+	if o != nil && !IsNil(o.ReplicaSetScalingStrategy) {
+		return true
+	}
+
+	return false
+}
+
+// SetReplicaSetScalingStrategy gets a reference to the given string and assigns it to the ReplicaSetScalingStrategy field.
+func (o *LegacyAtlasCluster) SetReplicaSetScalingStrategy(v string) {
+	o.ReplicaSetScalingStrategy = &v
+}
+
 // GetReplicationFactor returns the ReplicationFactor field value if set, zero value otherwise
 // Deprecated
 func (o *LegacyAtlasCluster) GetReplicationFactor() int {
@@ -1355,6 +1394,9 @@ func (o LegacyAtlasCluster) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ProviderSettings) {
 		toSerialize["providerSettings"] = o.ProviderSettings
+	}
+	if !IsNil(o.ReplicaSetScalingStrategy) {
+		toSerialize["replicaSetScalingStrategy"] = o.ReplicaSetScalingStrategy
 	}
 	if !IsNil(o.ReplicationFactor) {
 		toSerialize["replicationFactor"] = o.ReplicationFactor
