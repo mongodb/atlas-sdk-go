@@ -30,6 +30,7 @@ Name | Type | Description | Notes
 **PitEnabled** | Pointer to **bool** | Flag that indicates whether the cluster uses continuous cloud backups. | [optional] 
 **ProviderBackupEnabled** | Pointer to **bool** | Flag that indicates whether the M10 or higher cluster can perform Cloud Backups. If set to &#x60;true&#x60;, the cluster can perform backups. If this and **backupEnabled** are set to &#x60;false&#x60;, the cluster doesn&#39;t use MongoDB Cloud backups. | [optional] 
 **ProviderSettings** | Pointer to [**ClusterProviderSettings**](ClusterProviderSettings.md) |  | [optional] 
+**ReplicaSetScalingStrategy** | Pointer to **string** | Set this field to configure the replica set scaling mode for your cluster.  By default, Atlas scales under WORKLOAD_TYPE. This mode allows Atlas to scale your analytics nodes in parallel to your operational nodes.  When configured as SEQUENTIAL, Atlas scales all nodes sequentially. This mode is intended for steady-state workloads and applications performing latency-sensitive secondary reads.  When configured as NODE_TYPE, Atlas scales your electable nodes in parallel with your read-only and analytics nodes. This mode is intended for large, dynamic workloads requiring frequent and timely cluster tier scaling. This is the fastest scaling strategy, but it might impact latency of workloads when performing extensive secondary reads. | [optional] [default to "WORKLOAD_TYPE"]
 **ReplicationFactor** | Pointer to **int** | Number of members that belong to the replica set. Each member retains a copy of your databases, providing high availability and data redundancy. Use **replicationSpecs** instead. | [optional] [default to 3]
 **ReplicationSpec** | Pointer to [**map[string]RegionSpec**](RegionSpec.md) | Physical location where MongoDB Cloud provisions cluster nodes. | [optional] 
 **ReplicationSpecs** | Pointer to [**[]LegacyReplicationSpec**](LegacyReplicationSpec.md) | List of settings that configure your cluster regions.  - For Global Clusters, each object in the array represents one zone where MongoDB Cloud deploys your clusters nodes. - For non-Global sharded clusters and replica sets, the single object represents where MongoDB Cloud deploys your clusters nodes. | [optional] 
@@ -683,6 +684,30 @@ SetProviderSettings sets ProviderSettings field to given value.
 `func (o *LegacyAtlasCluster) HasProviderSettings() bool`
 
 HasProviderSettings returns a boolean if a field has been set.
+### GetReplicaSetScalingStrategy
+
+`func (o *LegacyAtlasCluster) GetReplicaSetScalingStrategy() string`
+
+GetReplicaSetScalingStrategy returns the ReplicaSetScalingStrategy field if non-nil, zero value otherwise.
+
+### GetReplicaSetScalingStrategyOk
+
+`func (o *LegacyAtlasCluster) GetReplicaSetScalingStrategyOk() (*string, bool)`
+
+GetReplicaSetScalingStrategyOk returns a tuple with the ReplicaSetScalingStrategy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReplicaSetScalingStrategy
+
+`func (o *LegacyAtlasCluster) SetReplicaSetScalingStrategy(v string)`
+
+SetReplicaSetScalingStrategy sets ReplicaSetScalingStrategy field to given value.
+
+### HasReplicaSetScalingStrategy
+
+`func (o *LegacyAtlasCluster) HasReplicaSetScalingStrategy() bool`
+
+HasReplicaSetScalingStrategy returns a boolean if a field has been set.
 ### GetReplicationFactor
 
 `func (o *LegacyAtlasCluster) GetReplicationFactor() int`
