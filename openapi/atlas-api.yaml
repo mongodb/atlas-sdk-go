@@ -19,7 +19,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: e624d716e86f6910757b60cefdf3aa3181582d38
+  x-xgen-sha: b5d410a3e8af4c18c0b59c3ac77cf84d19001d1c
 servers:
 - url: https://cloud.mongodb.com
 tags:
@@ -18843,6 +18843,24 @@ components:
           externalDocs:
             description: Continuous Cloud Backups
             url: https://docs.atlas.mongodb.com/backup/cloud-backup/overview/
+        replicaSetScalingStrategy:
+          type: string
+          default: WORKLOAD_TYPE
+          description: |-
+            Set this field to configure the replica set scaling mode for your cluster.
+
+            By default, Atlas scales under WORKLOAD_TYPE. This mode allows Atlas to scale your analytics nodes in parallel to your operational nodes.
+
+            When configured as SEQUENTIAL, Atlas scales all nodes sequentially. This mode is intended for steady-state workloads and applications performing latency-sensitive secondary reads.
+
+            When configured as NODE_TYPE, Atlas scales your electable nodes in parallel with your read-only and analytics nodes. This mode is intended for large, dynamic workloads requiring frequent and timely cluster tier scaling. This is the fastest scaling strategy, but it might impact latency of workloads when performing extensive secondary reads.
+          enum:
+          - SEQUENTIAL
+          - WORKLOAD_TYPE
+          - NODE_TYPE
+          externalDocs:
+            description: Modify the Replica Set Scaling Mode
+            url: https://dochub.mongodb.org/core/scale-nodes
         replicationSpecs:
           type: array
           description: "List of settings that configure your cluster regions. For\
@@ -24724,23 +24742,23 @@ components:
             description: Google Compute Regions.
             enum:
             - EASTERN_US
-            - GOV_EASTERN_US
+            - EASTERN_US_AW
             - US_EAST_4
-            - GOV_US_EAST_4
+            - US_EAST_4_AW
             - US_EAST_5
-            - GOV_US_EAST_5
+            - US_EAST_5_AW
             - US_WEST_2
-            - GOV_US_WEST_2
+            - US_WEST_2_AW
             - US_WEST_3
-            - GOV_US_WEST_3
+            - US_WEST_3_AW
             - US_WEST_4
-            - GOV_US_WEST_4
+            - US_WEST_4_AW
             - US_SOUTH_1
-            - GOV_US_SOUTH_1
+            - US_SOUTH_1_AW
             - CENTRAL_US
-            - GOV_CENTRAL_US
+            - CENTRAL_US_AW
             - WESTERN_US
-            - GOV_WESTERN_US
+            - WESTERN_US_AW
             - NORTH_AMERICA_NORTHEAST_1
             - NORTH_AMERICA_NORTHEAST_2
             - SOUTH_AMERICA_EAST_1
@@ -25302,23 +25320,23 @@ components:
             description: Google Compute Regions.
             enum:
             - EASTERN_US
-            - GOV_EASTERN_US
+            - EASTERN_US_AW
             - US_EAST_4
-            - GOV_US_EAST_4
+            - US_EAST_4_AW
             - US_EAST_5
-            - GOV_US_EAST_5
+            - US_EAST_5_AW
             - US_WEST_2
-            - GOV_US_WEST_2
+            - US_WEST_2_AW
             - US_WEST_3
-            - GOV_US_WEST_3
+            - US_WEST_3_AW
             - US_WEST_4
-            - GOV_US_WEST_4
+            - US_WEST_4_AW
             - US_SOUTH_1
-            - GOV_US_SOUTH_1
+            - US_SOUTH_1_AW
             - CENTRAL_US
-            - GOV_CENTRAL_US
+            - CENTRAL_US_AW
             - WESTERN_US
-            - GOV_WESTERN_US
+            - WESTERN_US_AW
             - NORTH_AMERICA_NORTHEAST_1
             - NORTH_AMERICA_NORTHEAST_2
             - SOUTH_AMERICA_EAST_1
@@ -25505,23 +25523,23 @@ components:
             description: Google Compute Regions.
             enum:
             - EASTERN_US
-            - GOV_EASTERN_US
+            - EASTERN_US_AW
             - US_EAST_4
-            - GOV_US_EAST_4
+            - US_EAST_4_AW
             - US_EAST_5
-            - GOV_US_EAST_5
+            - US_EAST_5_AW
             - US_WEST_2
-            - GOV_US_WEST_2
+            - US_WEST_2_AW
             - US_WEST_3
-            - GOV_US_WEST_3
+            - US_WEST_3_AW
             - US_WEST_4
-            - GOV_US_WEST_4
+            - US_WEST_4_AW
             - US_SOUTH_1
-            - GOV_US_SOUTH_1
+            - US_SOUTH_1_AW
             - CENTRAL_US
-            - GOV_CENTRAL_US
+            - CENTRAL_US_AW
             - WESTERN_US
-            - GOV_WESTERN_US
+            - WESTERN_US_AW
             - NORTH_AMERICA_NORTHEAST_1
             - NORTH_AMERICA_NORTHEAST_2
             - SOUTH_AMERICA_EAST_1
@@ -26129,6 +26147,24 @@ components:
           externalDocs:
             description: Continuous Cloud Backups
             url: https://docs.atlas.mongodb.com/backup/cloud-backup/overview/
+        replicaSetScalingStrategy:
+          type: string
+          default: WORKLOAD_TYPE
+          description: |-
+            Set this field to configure the replica set scaling mode for your cluster.
+
+            By default, Atlas scales under WORKLOAD_TYPE. This mode allows Atlas to scale your analytics nodes in parallel to your operational nodes.
+
+            When configured as SEQUENTIAL, Atlas scales all nodes sequentially. This mode is intended for steady-state workloads and applications performing latency-sensitive secondary reads.
+
+            When configured as NODE_TYPE, Atlas scales your electable nodes in parallel with your read-only and analytics nodes. This mode is intended for large, dynamic workloads requiring frequent and timely cluster tier scaling. This is the fastest scaling strategy, but it might impact latency of workloads when performing extensive secondary reads.
+          enum:
+          - SEQUENTIAL
+          - WORKLOAD_TYPE
+          - NODE_TYPE
+          externalDocs:
+            description: Modify the Replica Set Scaling Mode
+            url: https://dochub.mongodb.org/core/scale-nodes
         replicationSpecs:
           type: array
           description: List of settings that configure your cluster regions. This
@@ -38743,6 +38779,24 @@ components:
             \ use MongoDB Cloud backups."
         providerSettings:
           $ref: "#/components/schemas/ClusterProviderSettings"
+        replicaSetScalingStrategy:
+          type: string
+          default: WORKLOAD_TYPE
+          description: |-
+            Set this field to configure the replica set scaling mode for your cluster.
+
+            By default, Atlas scales under WORKLOAD_TYPE. This mode allows Atlas to scale your analytics nodes in parallel to your operational nodes.
+
+            When configured as SEQUENTIAL, Atlas scales all nodes sequentially. This mode is intended for steady-state workloads and applications performing latency-sensitive secondary reads.
+
+            When configured as NODE_TYPE, Atlas scales your electable nodes in parallel with your read-only and analytics nodes. This mode is intended for large, dynamic workloads requiring frequent and timely cluster tier scaling. This is the fastest scaling strategy, but it might impact latency of workloads when performing extensive secondary reads.
+          enum:
+          - SEQUENTIAL
+          - WORKLOAD_TYPE
+          - NODE_TYPE
+          externalDocs:
+            description: Modify the Replica Set Scaling Mode
+            url: https://dochub.mongodb.org/core/scale-nodes
         replicationFactor:
           type: integer
           format: int32
@@ -39029,6 +39083,24 @@ components:
             \ use MongoDB Cloud backups."
         providerSettings:
           $ref: "#/components/schemas/ClusterProviderSettings"
+        replicaSetScalingStrategy:
+          type: string
+          default: WORKLOAD_TYPE
+          description: |-
+            Set this field to configure the replica set scaling mode for your cluster.
+
+            By default, Atlas scales under WORKLOAD_TYPE. This mode allows Atlas to scale your analytics nodes in parallel to your operational nodes.
+
+            When configured as SEQUENTIAL, Atlas scales all nodes sequentially. This mode is intended for steady-state workloads and applications performing latency-sensitive secondary reads.
+
+            When configured as NODE_TYPE, Atlas scales your electable nodes in parallel with your read-only and analytics nodes. This mode is intended for large, dynamic workloads requiring frequent and timely cluster tier scaling. This is the fastest scaling strategy, but it might impact latency of workloads when performing extensive secondary reads.
+          enum:
+          - SEQUENTIAL
+          - WORKLOAD_TYPE
+          - NODE_TYPE
+          externalDocs:
+            description: Modify the Replica Set Scaling Mode
+            url: https://dochub.mongodb.org/core/scale-nodes
         replicationFactor:
           type: integer
           format: int32
