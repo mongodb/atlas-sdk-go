@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20240805001/admin"
+	admin "go.mongodb.org/atlas-sdk/v20240805002/admin"
 
 	http "net/http"
 
@@ -985,6 +985,169 @@ func (_c *InvoicesApi_ListPendingInvoicesWithParams_Call) Return(_a0 admin.ListP
 }
 
 func (_c *InvoicesApi_ListPendingInvoicesWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListPendingInvoicesApiParams) admin.ListPendingInvoicesApiRequest) *InvoicesApi_ListPendingInvoicesWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// QueryLineItemsFromSingleInvoice provides a mock function with given fields: ctx, orgId, invoiceId, apiPublicUsageDetailsQueryRequest
+func (_m *InvoicesApi) QueryLineItemsFromSingleInvoice(ctx context.Context, orgId string, invoiceId string, apiPublicUsageDetailsQueryRequest *admin.ApiPublicUsageDetailsQueryRequest) admin.QueryLineItemsFromSingleInvoiceApiRequest {
+	ret := _m.Called(ctx, orgId, invoiceId, apiPublicUsageDetailsQueryRequest)
+
+	if len(ret) == 0 {
+		panic("no return value specified for QueryLineItemsFromSingleInvoice")
+	}
+
+	var r0 admin.QueryLineItemsFromSingleInvoiceApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.ApiPublicUsageDetailsQueryRequest) admin.QueryLineItemsFromSingleInvoiceApiRequest); ok {
+		r0 = rf(ctx, orgId, invoiceId, apiPublicUsageDetailsQueryRequest)
+	} else {
+		r0 = ret.Get(0).(admin.QueryLineItemsFromSingleInvoiceApiRequest)
+	}
+
+	return r0
+}
+
+// InvoicesApi_QueryLineItemsFromSingleInvoice_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'QueryLineItemsFromSingleInvoice'
+type InvoicesApi_QueryLineItemsFromSingleInvoice_Call struct {
+	*mock.Call
+}
+
+// QueryLineItemsFromSingleInvoice is a helper method to define mock.On call
+//   - ctx context.Context
+//   - orgId string
+//   - invoiceId string
+//   - apiPublicUsageDetailsQueryRequest *admin.ApiPublicUsageDetailsQueryRequest
+func (_e *InvoicesApi_Expecter) QueryLineItemsFromSingleInvoice(ctx interface{}, orgId interface{}, invoiceId interface{}, apiPublicUsageDetailsQueryRequest interface{}) *InvoicesApi_QueryLineItemsFromSingleInvoice_Call {
+	return &InvoicesApi_QueryLineItemsFromSingleInvoice_Call{Call: _e.mock.On("QueryLineItemsFromSingleInvoice", ctx, orgId, invoiceId, apiPublicUsageDetailsQueryRequest)}
+}
+
+func (_c *InvoicesApi_QueryLineItemsFromSingleInvoice_Call) Run(run func(ctx context.Context, orgId string, invoiceId string, apiPublicUsageDetailsQueryRequest *admin.ApiPublicUsageDetailsQueryRequest)) *InvoicesApi_QueryLineItemsFromSingleInvoice_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.ApiPublicUsageDetailsQueryRequest))
+	})
+	return _c
+}
+
+func (_c *InvoicesApi_QueryLineItemsFromSingleInvoice_Call) Return(_a0 admin.QueryLineItemsFromSingleInvoiceApiRequest) *InvoicesApi_QueryLineItemsFromSingleInvoice_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *InvoicesApi_QueryLineItemsFromSingleInvoice_Call) RunAndReturn(run func(context.Context, string, string, *admin.ApiPublicUsageDetailsQueryRequest) admin.QueryLineItemsFromSingleInvoiceApiRequest) *InvoicesApi_QueryLineItemsFromSingleInvoice_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// QueryLineItemsFromSingleInvoiceExecute provides a mock function with given fields: r
+func (_m *InvoicesApi) QueryLineItemsFromSingleInvoiceExecute(r admin.QueryLineItemsFromSingleInvoiceApiRequest) (*admin.PaginatedPublicApiUsageDetailsLineItem, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for QueryLineItemsFromSingleInvoiceExecute")
+	}
+
+	var r0 *admin.PaginatedPublicApiUsageDetailsLineItem
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.QueryLineItemsFromSingleInvoiceApiRequest) (*admin.PaginatedPublicApiUsageDetailsLineItem, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.QueryLineItemsFromSingleInvoiceApiRequest) *admin.PaginatedPublicApiUsageDetailsLineItem); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.PaginatedPublicApiUsageDetailsLineItem)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.QueryLineItemsFromSingleInvoiceApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.QueryLineItemsFromSingleInvoiceApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// InvoicesApi_QueryLineItemsFromSingleInvoiceExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'QueryLineItemsFromSingleInvoiceExecute'
+type InvoicesApi_QueryLineItemsFromSingleInvoiceExecute_Call struct {
+	*mock.Call
+}
+
+// QueryLineItemsFromSingleInvoiceExecute is a helper method to define mock.On call
+//   - r admin.QueryLineItemsFromSingleInvoiceApiRequest
+func (_e *InvoicesApi_Expecter) QueryLineItemsFromSingleInvoiceExecute(r interface{}) *InvoicesApi_QueryLineItemsFromSingleInvoiceExecute_Call {
+	return &InvoicesApi_QueryLineItemsFromSingleInvoiceExecute_Call{Call: _e.mock.On("QueryLineItemsFromSingleInvoiceExecute", r)}
+}
+
+func (_c *InvoicesApi_QueryLineItemsFromSingleInvoiceExecute_Call) Run(run func(r admin.QueryLineItemsFromSingleInvoiceApiRequest)) *InvoicesApi_QueryLineItemsFromSingleInvoiceExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.QueryLineItemsFromSingleInvoiceApiRequest))
+	})
+	return _c
+}
+
+func (_c *InvoicesApi_QueryLineItemsFromSingleInvoiceExecute_Call) Return(_a0 *admin.PaginatedPublicApiUsageDetailsLineItem, _a1 *http.Response, _a2 error) *InvoicesApi_QueryLineItemsFromSingleInvoiceExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *InvoicesApi_QueryLineItemsFromSingleInvoiceExecute_Call) RunAndReturn(run func(admin.QueryLineItemsFromSingleInvoiceApiRequest) (*admin.PaginatedPublicApiUsageDetailsLineItem, *http.Response, error)) *InvoicesApi_QueryLineItemsFromSingleInvoiceExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// QueryLineItemsFromSingleInvoiceWithParams provides a mock function with given fields: ctx, args
+func (_m *InvoicesApi) QueryLineItemsFromSingleInvoiceWithParams(ctx context.Context, args *admin.QueryLineItemsFromSingleInvoiceApiParams) admin.QueryLineItemsFromSingleInvoiceApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for QueryLineItemsFromSingleInvoiceWithParams")
+	}
+
+	var r0 admin.QueryLineItemsFromSingleInvoiceApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.QueryLineItemsFromSingleInvoiceApiParams) admin.QueryLineItemsFromSingleInvoiceApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.QueryLineItemsFromSingleInvoiceApiRequest)
+	}
+
+	return r0
+}
+
+// InvoicesApi_QueryLineItemsFromSingleInvoiceWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'QueryLineItemsFromSingleInvoiceWithParams'
+type InvoicesApi_QueryLineItemsFromSingleInvoiceWithParams_Call struct {
+	*mock.Call
+}
+
+// QueryLineItemsFromSingleInvoiceWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.QueryLineItemsFromSingleInvoiceApiParams
+func (_e *InvoicesApi_Expecter) QueryLineItemsFromSingleInvoiceWithParams(ctx interface{}, args interface{}) *InvoicesApi_QueryLineItemsFromSingleInvoiceWithParams_Call {
+	return &InvoicesApi_QueryLineItemsFromSingleInvoiceWithParams_Call{Call: _e.mock.On("QueryLineItemsFromSingleInvoiceWithParams", ctx, args)}
+}
+
+func (_c *InvoicesApi_QueryLineItemsFromSingleInvoiceWithParams_Call) Run(run func(ctx context.Context, args *admin.QueryLineItemsFromSingleInvoiceApiParams)) *InvoicesApi_QueryLineItemsFromSingleInvoiceWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.QueryLineItemsFromSingleInvoiceApiParams))
+	})
+	return _c
+}
+
+func (_c *InvoicesApi_QueryLineItemsFromSingleInvoiceWithParams_Call) Return(_a0 admin.QueryLineItemsFromSingleInvoiceApiRequest) *InvoicesApi_QueryLineItemsFromSingleInvoiceWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *InvoicesApi_QueryLineItemsFromSingleInvoiceWithParams_Call) RunAndReturn(run func(context.Context, *admin.QueryLineItemsFromSingleInvoiceApiParams) admin.QueryLineItemsFromSingleInvoiceApiRequest) *InvoicesApi_QueryLineItemsFromSingleInvoiceWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
