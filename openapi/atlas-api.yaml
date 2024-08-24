@@ -19,7 +19,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: b5d410a3e8af4c18c0b59c3ac77cf84d19001d1c
+  x-xgen-sha: 5523a643cee72b5c22c51e137ef4e7d343f4b61c
 servers:
 - url: https://cloud.mongodb.com
 tags:
@@ -12915,6 +12915,7 @@ paths:
             - OPCOUNTER_REPL_UPDATE
             - OPCOUNTER_UPDATE
             - OPERATIONS_SCAN_AND_ORDER
+            - OPERATIONS_QUERIES_KILLED
             - OPLOG_MASTER_LAG_TIME_DIFF
             - OPLOG_MASTER_TIME
             - OPLOG_RATE_GB_PER_HOUR
@@ -12958,6 +12959,7 @@ paths:
             - SYSTEM_NORMALIZED_CPU_USER
             - TICKETS_AVAILABLE_READS
             - TICKETS_AVAILABLE_WRITE
+            - OPERATION_THROTTLING_REJECTED_OPERATIONS
           maxItems: 10
           minItems: 1
           uniqueItems: true
@@ -16717,6 +16719,55 @@ paths:
       summary: Return One Organization Invoice as CSV
       tags:
       - Invoices
+  /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/lineItems/:search:
+    get:
+      description: Query the lineItems of the specified invoice and return the result
+        JSON. A unique 24-hexadecimal digit string identifies the invoice.
+      operationId: queryLineItemsFromSingleInvoice
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/itemsPerPage"
+      - $ref: "#/components/parameters/pageNum"
+      - $ref: "#/components/parameters/orgId"
+      - description: Unique 24-hexadecimal digit string that identifies the invoice
+          submitted to the specified organization. Charges typically post the next
+          day.
+        in: path
+        name: invoiceId
+        required: true
+        schema:
+          type: string
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+      requestBody:
+        content:
+          application/vnd.atlas.2024-08-05+json:
+            schema:
+              $ref: "#/components/schemas/ApiPublicUsageDetailsQueryRequest"
+        description: Filter parameters for the lineItems query. Send a request with
+          an empty JSON body to retrieve all line items for a given invoiceID without
+          applying any filters.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedPublicApiUsageDetailsLineItemView"
+              x-xgen-version: 2024-08-05
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+      - DigestAuth: []
+      summary: Query lineItems of the specified invoiceId
+      tags:
+      - Invoices
   /api/atlas/v2/orgs/{orgId}/liveMigrations/availableProjects:
     get:
       description: Return all projects that you can migrate to the specified organization.
@@ -18207,7 +18258,7 @@ components:
           description: |-
             Target IOPS (Input/Output Operations Per Second) desired for storage attached to this hardware.
 
-             Change this parameter only if you:
+             Change this parameter if you:
 
             - set `"replicationSpecs[n].regionConfigs[m].providerName" to "AWS"`.
             - set `"replicationSpecs[n].regionConfigs[m].electableSpecs.instanceSize" to "M30"` or greater (not including `Mxx_NVME` tiers).
@@ -18283,7 +18334,7 @@ components:
 
              You can set different IOPS values on different shards when provisioned IOPS are supported.
 
-             Change this parameter only if you:
+             Change this parameter if you:
 
             - set `"replicationSpecs[n].regionConfigs[m].providerName" to "AWS"`.
             - set `"replicationSpecs[n].regionConfigs[m].electableSpecs.instanceSize" to "M30"` or greater (not including `Mxx_NVME` tiers).
@@ -20240,6 +20291,28 @@ components:
             \ and **period** in the same request. This parameter expresses its value\
             \ in the ISO 8601 timestamp format in UTC."
           readOnly: true
+    ApiPublicUsageDetailsQueryRequest:
+      type: object
+      description: "Request body for an Invoice Usage Details query with filtering,\
+        \ pagination, and sort."
+      properties:
+        filters:
+          $ref: "#/components/schemas/UsageDetailsFilterRequest"
+        sortField:
+          type: string
+          description: Specify the field used to specify how to sort query results.
+            Default to bill date.
+          enum:
+          - USAGE_DATES
+          - BILL_DATES
+          - TOTAL_PRICE_CENTS
+        sortOrder:
+          type: string
+          description: Specify the sort order (ascending / descending) used to specify
+            how to sort query results. Defaults to descending.
+          enum:
+          - ASCENDING
+          - DESCENDING
     ApiSearchDeploymentRequestView:
       type: object
       properties:
@@ -20329,7 +20402,17 @@ components:
       type: string
       description: Atlas Streams AWS Regions.
       enum:
+      - SYDNEY_AUS
+      - MUMBAI_IND
+      - FRANKFURT_DEU
+      - DUBLIN_IRL
+      - LONDON_GBR
       - VIRGINIA_USA
+      - OREGON_USA
+      - SAOPAULO_BRA
+      - MONTREAL_CAN
+      - TOKYO_JPN
+      - SINGAPORE_SGP
     ApiUserEventTypeViewForNdsGroup:
       type: string
       description: Unique identifier of event type.
@@ -21891,6 +21974,21 @@ components:
     AzureHardwareSpec:
       type: object
       properties:
+        diskIOPS:
+          type: integer
+          format: int32
+          description: |-
+            Target throughput desired for storage attached to your Azure-provisioned cluster. Change this parameter if you:
+
+            - set `"replicationSpecs[n].regionConfigs[m].providerName" : "Azure"`.
+            - set `"replicationSpecs[n].regionConfigs[m].electableSpecs.instanceSize" : "M40"` or greater not including `Mxx_NVME` tiers.
+
+            The maximum input/output operations per second (IOPS) depend on the selected **.instanceSize** and **.diskSizeGB**.
+            This parameter defaults to the cluster tier's standard IOPS value.
+            Changing this value impacts cluster cost.
+          externalDocs:
+            description: Programmatic API Keys
+            url: https://www.mongodb.com/docs/atlas/customize-storage/#extend-iops-on-azure
         instanceSize:
           type: string
           description: Hardware specification for the instance sizes in this region.
@@ -21928,6 +22026,21 @@ components:
     AzureHardwareSpec20240805:
       type: object
       properties:
+        diskIOPS:
+          type: integer
+          format: int32
+          description: |-
+            Target throughput desired for storage attached to your Azure-provisioned cluster. Change this parameter if you:
+
+            - set `"replicationSpecs[n].regionConfigs[m].providerName" : "Azure"`.
+            - set `"replicationSpecs[n].regionConfigs[m].electableSpecs.instanceSize" : "M40"` or greater not including `Mxx_NVME` tiers.
+
+            The maximum input/output operations per second (IOPS) depend on the selected **.instanceSize** and **.diskSizeGB**.
+            This parameter defaults to the cluster tier's standard IOPS value.
+            Changing this value impacts cluster cost.
+          externalDocs:
+            description: Programmatic API Keys
+            url: https://www.mongodb.com/docs/atlas/customize-storage/#extend-iops-on-azure
         diskSizeGB:
           type: number
           format: double
@@ -22143,6 +22256,8 @@ components:
           - PENDING_ACCEPTANCE
           - ACTIVE
           - FAILED
+          - PENDING_RECREATION
+          - DELETING
           readOnly: true
       title: Azure Key Vault EAR Private Endpoint
     AzureNetworkPeeringConnectionSettings:
@@ -24869,8 +24984,7 @@ components:
         properties:
           _id:
             type: string
-            description: Unique 24-hexadecimal digit string that identifies the Azure
-              Service Principal in Atlas.
+            description: Unique 24-hexadecimal digit string that identifies the role.
             example: 32b6e34b3d91647abb20e7b8
             maxLength: 24
             minLength: 24
@@ -25054,9 +25168,6 @@ components:
           AWS: "#/components/schemas/CloudProviderAccessAWSIAMRole"
           AZURE: "#/components/schemas/CloudProviderAccessAzureServicePrincipal"
         propertyName: providerName
-      oneOf:
-      - $ref: "#/components/schemas/CloudProviderAccessAWSIAMRole"
-      - $ref: "#/components/schemas/CloudProviderAccessAzureServicePrincipal"
       properties:
         providerName:
           type: string
@@ -25076,6 +25187,12 @@ components:
             registered and authorized with MongoDB Cloud.
           items:
             $ref: "#/components/schemas/CloudProviderAccessAWSIAMRole"
+        azureServicePrincipals:
+          type: array
+          description: List that contains the Azure Service Principals registered
+            with MongoDB Cloud.
+          items:
+            $ref: "#/components/schemas/CloudProviderAccessAzureServicePrincipal"
     CloudProviderAzureAutoScaling:
       type: object
       description: Range of instance sizes to which your cluster can scale.
@@ -27551,6 +27668,7 @@ components:
         mapping:
           AWS: "#/components/schemas/AWSCreateDataProcessRegionView"
           AZURE: "#/components/schemas/AzureCreateDataProcessRegionView"
+          GCP: "#/components/schemas/GCPCreateDataProcessRegionView"
         propertyName: cloudProvider
       properties:
         cloudProvider:
@@ -29331,6 +29449,7 @@ components:
         mapping:
           AWS: "#/components/schemas/AWSDataProcessRegionView"
           AZURE: "#/components/schemas/AzureDataProcessRegionView"
+          GCP: "#/components/schemas/GCPDataProcessRegionView"
         propertyName: cloudProvider
       properties:
         cloudProvider:
@@ -29340,6 +29459,7 @@ components:
           enum:
           - AWS
           - AZURE
+          - GCP
           readOnly: true
       readOnly: true
     DataProtectionSettings:
@@ -30587,6 +30707,12 @@ components:
             enum:
             - PROACTIVE_OPERATION_EVENT_LOGGED
             title: Proactive Operation Event Types
+          - type: string
+            enum:
+            - SEARCH_DEPLOYMENT_CREATED
+            - SEARCH_DEPLOYMENT_UPDATED
+            - SEARCH_DEPLOYMENT_DELETED
+            title: Search Deployment Audit Types
           - type: string
             enum:
             - SERVERLESS_DEPLOYMENT_CREATED
@@ -32396,6 +32522,8 @@ components:
           - PENDING_ACCEPTANCE
           - ACTIVE
           - FAILED
+          - PENDING_RECREATION
+          - DELETING
           readOnly: true
       title: Encryption At Rest Private Endpoint
     EmailNotification:
@@ -32451,24 +32579,6 @@ components:
           $ref: "#/components/schemas/AzureKeyVault"
         googleCloudKms:
           $ref: "#/components/schemas/GoogleCloudKMS"
-    EncryptionAtRestPrivateEndpointRequest:
-      type: object
-      description: Create or delete private endpoints from the specified regions list.
-      properties:
-        cloudProvider:
-          type: string
-          description: Cloud service provider name.
-          enum:
-          - AZURE
-        regions:
-          type: array
-          description: List of regions.
-          items:
-            type: string
-          uniqueItems: true
-      required:
-      - cloudProvider
-      title: Encryption At Rest Private Endpoints setup.
     EncryptionKeyAlertConfigViewForNdsGroup:
       type: object
       description: Encryption key alert configuration allows to select thresholds  which
@@ -32905,6 +33015,7 @@ components:
         - CLUSTER_IMPORT_CANCELLED
         - CLUSTER_IMPORT_EXPIRED
         - CLUSTER_IMPORT_CUTOVER
+        - CLUSTER_IMPORT_COMPLETED
         - CLUSTER_IMPORT_RESTART_REQUESTED
         - PROJECT_LIVE_IMPORT_OVERRIDES_ADDED
         - PROJECT_LIVE_IMPORT_OVERRIDES_UPDATED
@@ -33193,6 +33304,12 @@ components:
         - NO_PRIMARY
         - TOO_MANY_ELECTIONS
         title: ReplicaSet Event Types
+      - type: string
+        enum:
+        - SEARCH_DEPLOYMENT_CREATED
+        - SEARCH_DEPLOYMENT_UPDATED
+        - SEARCH_DEPLOYMENT_DELETED
+        title: Search Deployment Audit Types
       - type: string
         enum:
         - SERVERLESS_DEPLOYMENT_CREATED
@@ -33563,6 +33680,7 @@ components:
       - $ref: "#/components/schemas/NDSServerlessInstanceAuditView"
       - $ref: "#/components/schemas/NDSTenantEndpointAuditView"
       - $ref: "#/components/schemas/ForNdsGroup"
+      - $ref: "#/components/schemas/SearchDeploymentAuditView"
       - $ref: "#/components/schemas/TeamEventViewForNdsGroup"
       - $ref: "#/components/schemas/UserEventViewForNdsGroup"
       - $ref: "#/components/schemas/ResourceEventViewForNdsGroup"
@@ -33637,13 +33755,14 @@ components:
         exportedCollections:
           type: integer
           format: int32
-          description: Number of collections on the replica set that MongoDB Cloud
-            exported.
+          description: Count of collections whose documents were exported to the Export
+            Bucket.
           readOnly: true
         totalCollections:
           type: integer
           format: int32
-          description: Total number of collections on the replica set to export.
+          description: Total count of collections whose documents will be exported
+            to the Export Bucket.
           readOnly: true
     ExtraRetentionSetting:
       type: object
@@ -34861,6 +34980,33 @@ components:
           - FAILED
           - DELETING
           readOnly: true
+    GCPCreateDataProcessRegionView:
+      type: object
+      allOf:
+      - $ref: "#/components/schemas/CreateDataProcessRegionView"
+      - type: object
+        properties:
+          region:
+            type: string
+            description: Human-readable label that identifies the geographic location
+              of the region where you wish to store your archived data.
+            enum:
+            - CENTRAL_US
+            - WESTERN_EUROPE
+    GCPDataProcessRegionView:
+      type: object
+      allOf:
+      - $ref: "#/components/schemas/DataProcessRegionView"
+      - type: object
+        properties:
+          region:
+            type: string
+            description: Human-readable label that identifies the geographic location
+              of the region where you store your archived data.
+            enum:
+            - CENTRAL_US
+            - WESTERN_EUROPE
+            readOnly: true
     GCPEndpointService:
       type: object
       description: Group of Private Endpoint Service settings.
@@ -35818,23 +35964,23 @@ components:
         createdAt:
           type: string
           format: date-time
-          description: Service account creation time.
+          description: The date that the Service Account was created on.
         description:
           type: string
-          description: Description of the service account.
+          description: Human readable description for the Service Account.
         id:
           type: string
-          description: ID for the service account.
+          description: The Client ID of the Service Account.
           pattern: "^mdb_sa_id_[a-fA-F\\d]{24}$"
         name:
           type: string
-          description: Name for service account.
+          description: Human-readable name for the Service Account.
         roles:
           type: array
-          description: Roles assigned to the Service Account group.
+          description: A list of Project roles associated with the Service Account.
           items:
             type: string
-            description: Project roles associated with the service account.
+            description: Project roles available for Service Accounts.
             enum:
             - GROUP_OWNER
             - GROUP_READ_ONLY
@@ -35847,7 +35993,7 @@ components:
           uniqueItems: true
         secrets:
           type: array
-          description: List of secrets.
+          description: A list of secrets associated with the specified Service Account.
           items:
             $ref: "#/components/schemas/ServiceAccountSecret"
           uniqueItems: true
@@ -35856,23 +36002,23 @@ components:
       properties:
         description:
           type: string
-          description: Human readable description for the service account.
+          description: Human readable description for the Service Account.
           maxLength: 250
           minLength: 1
           pattern: "^[\\p{L}\\p{N}\\-_.,' ]*$"
         name:
           type: string
-          description: Human-readable name for the service account. The name is modifiable
+          description: Human-readable name for the Service Account. The name is modifiable
             and does not have to be unique.
           maxLength: 64
           minLength: 1
           pattern: "^[\\p{L}\\p{N}\\-_.,' ]*$"
         roles:
           type: array
-          description: Project roles associated with the service account.
+          description: A list of project-level roles for the Service Account.
           items:
             type: string
-            description: Project roles associated with the service account.
+            description: Project roles available for Service Accounts.
             enum:
             - GROUP_OWNER
             - GROUP_READ_ONLY
@@ -35885,52 +36031,34 @@ components:
         secretExpiresAfterHours:
           type: integer
           format: int32
-          description: Secret expiration time.
+          description: The expiration time of the new Service Account secret. The
+            expiration is provided in hours.
       required:
       - description
       - name
       - secretExpiresAfterHours
-    GroupServiceAccountRoleAssignment:
-      type: object
-      properties:
-        roles:
-          type: array
-          description: Group access roles.
-          items:
-            type: string
-            description: Project roles associated with the service account.
-            enum:
-            - GROUP_OWNER
-            - GROUP_READ_ONLY
-            - GROUP_DATA_ACCESS_ADMIN
-            - GROUP_DATA_ACCESS_READ_ONLY
-            - GROUP_DATA_ACCESS_READ_WRITE
-            - GROUP_CLUSTER_MANAGER
-            - GROUP_SEARCH_INDEX_EDITOR
-            - GROUP_STREAM_PROCESSING_OWNER
-          uniqueItems: true
     GroupServiceAccountUpdateRequest:
       type: object
       properties:
         description:
           type: string
-          description: Human readable description for the service account.
+          description: Human readable description for the Service Account.
           maxLength: 250
           minLength: 1
           pattern: "^[\\p{L}\\p{N}\\-_.,' ]*$"
         name:
           type: string
-          description: Human-readable name for the service account. The name is modifiable
+          description: Human-readable name for the Service Account. The name is modifiable
             and does not have to be unique.
           maxLength: 64
           minLength: 1
           pattern: "^[\\p{L}\\p{N}\\-_.,' ]*$"
         roles:
           type: array
-          description: Project roles associated with the service account.
+          description: A list of Project roles associated with the Service Account.
           items:
             type: string
-            description: Project roles associated with the service account.
+            description: Project roles available for Service Accounts.
             enum:
             - GROUP_OWNER
             - GROUP_READ_ONLY
@@ -36620,7 +36748,9 @@ components:
           OPCOUNTER_REPL_INSERT: "#/components/schemas/RawMetricAlertView"
           OPCOUNTER_REPL_UPDATE: "#/components/schemas/RawMetricAlertView"
           OPCOUNTER_UPDATE: "#/components/schemas/RawMetricAlertView"
+          OPERATIONS_QUERIES_KILLED: "#/components/schemas/RawMetricAlertView"
           OPERATIONS_SCAN_AND_ORDER: "#/components/schemas/RawMetricAlertView"
+          OPERATION_THROTTLING_REJECTED_OPERATIONS: "#/components/schemas/RawMetricAlertView"
           OPLOG_MASTER_LAG_TIME_DIFF: "#/components/schemas/TimeMetricAlertView"
           OPLOG_MASTER_TIME: "#/components/schemas/TimeMetricAlertView"
           OPLOG_MASTER_TIME_ESTIMATED_TTL: "#/components/schemas/TimeMetricAlertView"
@@ -37022,7 +37152,9 @@ components:
           OPCOUNTER_REPL_INSERT: "#/components/schemas/RawMetricEventView"
           OPCOUNTER_REPL_UPDATE: "#/components/schemas/RawMetricEventView"
           OPCOUNTER_UPDATE: "#/components/schemas/RawMetricEventView"
+          OPERATIONS_QUERIES_KILLED: "#/components/schemas/RawMetricEventView"
           OPERATIONS_SCAN_AND_ORDER: "#/components/schemas/RawMetricEventView"
+          OPERATION_THROTTLING_REJECTED_OPERATIONS: "#/components/schemas/RawMetricEventView"
           OPLOG_MASTER_LAG_TIME_DIFF: "#/components/schemas/TimeMetricEventView"
           OPLOG_MASTER_TIME: "#/components/schemas/TimeMetricEventView"
           OPLOG_MASTER_TIME_ESTIMATED_TTL: "#/components/schemas/TimeMetricEventView"
@@ -37326,7 +37458,9 @@ components:
           OPCOUNTER_REPL_INSERT: "#/components/schemas/RawMetricThresholdView"
           OPCOUNTER_REPL_UPDATE: "#/components/schemas/RawMetricThresholdView"
           OPCOUNTER_UPDATE: "#/components/schemas/RawMetricThresholdView"
+          OPERATIONS_QUERIES_KILLED: "#/components/schemas/RawMetricThresholdView"
           OPERATIONS_SCAN_AND_ORDER: "#/components/schemas/RawMetricThresholdView"
+          OPERATION_THROTTLING_REJECTED_OPERATIONS: "#/components/schemas/RawMetricThresholdView"
           OPLOG_MASTER_LAG_TIME_DIFF: "#/components/schemas/TimeMetricThresholdView"
           OPLOG_MASTER_TIME: "#/components/schemas/TimeMetricThresholdView"
           OPLOG_MASTER_TIME_ESTIMATED_TTL: "#/components/schemas/TimeMetricThresholdView"
@@ -40377,6 +40511,7 @@ components:
       - CLUSTER_IMPORT_CANCELLED
       - CLUSTER_IMPORT_EXPIRED
       - CLUSTER_IMPORT_CUTOVER
+      - CLUSTER_IMPORT_COMPLETED
       - CLUSTER_IMPORT_RESTART_REQUESTED
       - PROJECT_LIVE_IMPORT_OVERRIDES_ADDED
       - PROJECT_LIVE_IMPORT_OVERRIDES_UPDATED
@@ -42336,23 +42471,23 @@ components:
         createdAt:
           type: string
           format: date-time
-          description: Service account creation time.
+          description: The date that the Service Account was created on.
         description:
           type: string
-          description: Description of the service account.
+          description: Human readable description for the Service Account.
         id:
           type: string
-          description: ID for the service account.
+          description: The Client ID of the Service Account.
           pattern: "^mdb_sa_id_[a-fA-F\\d]{24}$"
         name:
           type: string
-          description: Name for service account.
+          description: Human-readable name for the Service Account.
         roles:
           type: array
-          description: Organization roles assigned to the Service Account.
+          description: A list of Organization roles associated with the Service Account.
           items:
             type: string
-            description: Organization roles associated with the service account.
+            description: Organization roles available for Service Accounts.
             enum:
             - ORG_MEMBER
             - ORG_READ_ONLY
@@ -42363,7 +42498,7 @@ components:
           uniqueItems: true
         secrets:
           type: array
-          description: List of secrets.
+          description: A list of secrets associated with the specified Service Account.
           items:
             $ref: "#/components/schemas/ServiceAccountSecret"
           uniqueItems: true
@@ -42372,23 +42507,23 @@ components:
       properties:
         description:
           type: string
-          description: Human readable description for the service account.
+          description: Human readable description for the Service Account.
           maxLength: 250
           minLength: 1
           pattern: "^[\\p{L}\\p{N}\\-_.,' ]*$"
         name:
           type: string
-          description: Human-readable name for the service account. The name is modifiable
+          description: Human-readable name for the Service Account. The name is modifiable
             and does not have to be unique.
           maxLength: 64
           minLength: 1
           pattern: "^[\\p{L}\\p{N}\\-_.,' ]*$"
         roles:
           type: array
-          description: Organization roles associated with the service account.
+          description: A list of organization-level roles for the Service Account.
           items:
             type: string
-            description: Organization roles associated with the service account.
+            description: Organization roles available for Service Accounts.
             enum:
             - ORG_MEMBER
             - ORG_READ_ONLY
@@ -42399,7 +42534,8 @@ components:
         secretExpiresAfterHours:
           type: integer
           format: int32
-          description: Secret expiration time.
+          description: The expiration time of the new Service Account secret. The
+            expiration is provided in hours.
       required:
       - description
       - name
@@ -42409,23 +42545,23 @@ components:
       properties:
         description:
           type: string
-          description: Human readable description for the service account.
+          description: Human readable description for the Service Account.
           maxLength: 250
           minLength: 1
           pattern: "^[\\p{L}\\p{N}\\-_.,' ]*$"
         name:
           type: string
-          description: Human-readable name for the service account. The name is modifiable
+          description: Human-readable name for the Service Account. The name is modifiable
             and does not have to be unique.
           maxLength: 64
           minLength: 1
           pattern: "^[\\p{L}\\p{N}\\-_.,' ]*$"
         roles:
           type: array
-          description: Organization roles associated with the Service account.
+          description: A list of organization-level roles for the Service Account.
           items:
             type: string
-            description: Organization roles associated with the service account.
+            description: Organization roles available for Service Accounts.
             enum:
             - ORG_MEMBER
             - ORG_READ_ONLY
@@ -43847,7 +43983,7 @@ components:
           readOnly: true
     PaginatedGroupServiceAccounts:
       type: object
-      description: List of Service Accounts
+      description: A list of Project Service Accounts.
       properties:
         links:
           type: array
@@ -44044,7 +44180,7 @@ components:
           readOnly: true
     PaginatedOrgServiceAccounts:
       type: object
-      description: List of Service Accounts
+      description: A list of Organization Service Accounts.
       properties:
         links:
           type: array
@@ -44155,6 +44291,34 @@ components:
             value if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
+    PaginatedPublicApiUsageDetailsLineItemView:
+      type: object
+      properties:
+        links:
+          type: array
+          description: "List of one or more Uniform Resource Locators (URLs) that\
+            \ point to API sub-resources, related API resources, or both. RFC 5988\
+            \ outlines these relationships."
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        results:
+          type: array
+          description: List of returned documents that MongoDB Cloud providers when
+            completing this request.
+          items:
+            $ref: "#/components/schemas/PublicApiUsageDetailsLineItemView"
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+          description: Total number of documents available. MongoDB Cloud omits this
+            value if `includeCount` is set to `false`.
+          minimum: 0
+          readOnly: true
     PaginatedRestoreJobView:
       type: object
       properties:
@@ -44243,7 +44407,7 @@ components:
           readOnly: true
     PaginatedServiceAccountGroup:
       type: object
-      description: List of Service Account projects.
+      description: A list of projects associated with the Service Account.
       properties:
         links:
           type: array
@@ -44262,6 +44426,34 @@ components:
             completing this request.
           items:
             $ref: "#/components/schemas/ServiceAccountGroup"
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+          description: Total number of documents available. MongoDB Cloud omits this
+            value if `includeCount` is set to `false`.
+          minimum: 0
+          readOnly: true
+    PaginatedServiceAccountIPAccessEntryView:
+      type: object
+      properties:
+        links:
+          type: array
+          description: "List of one or more Uniform Resource Locators (URLs) that\
+            \ point to API sub-resources, related API resources, or both. RFC 5988\
+            \ outlines these relationships."
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        results:
+          type: array
+          description: List of returned documents that MongoDB Cloud providers when
+            completing this request.
+          items:
+            $ref: "#/components/schemas/ServiceAccountIPAccessListEntry"
           readOnly: true
         totalCount:
           type: integer
@@ -45051,6 +45243,41 @@ components:
         dnsName:
           type: string
           description: DNS name to use to reach the proxy/s.
+    PublicApiUsageDetailsLineItemView:
+      type: object
+      properties:
+        billDate:
+          type: string
+          format: date-time
+          description: Billing date of the line item.
+        clusterName:
+          type: string
+          description: Cluster associated with the line item.
+        description:
+          type: string
+          description: "Description of the line item, which can include SKU name and\
+            \ other identifying information."
+        groupId:
+          type: string
+          description: Group id associated with the line item.
+        quantity:
+          type: number
+          format: double
+          description: Quantity of line item in units associated with SKU.
+          readOnly: true
+        totalPriceCents:
+          type: integer
+          format: int64
+          description: "Price * quantity in applicable units, expressed as an integral\
+            \ number of cents."
+        unitPriceDollars:
+          type: number
+          format: double
+          description: Price in units associated with the SKU for the line item.
+        usageDate:
+          type: string
+          format: date-time
+          description: Usage date of the line item.
     PushBasedLogExportProject:
       type: object
       properties:
@@ -46436,6 +46663,120 @@ components:
           - FAILED
           - COMPLETED
           readOnly: true
+    SearchDeploymentAuditTypeView:
+      type: string
+      description: Unique identifier of event type.
+      enum:
+      - SEARCH_DEPLOYMENT_CREATED
+      - SEARCH_DEPLOYMENT_UPDATED
+      - SEARCH_DEPLOYMENT_DELETED
+      example: SEARCH_DEPLOYMENT_CREATED
+      title: Search Deployment Audit Types
+    SearchDeploymentAuditView:
+      type: object
+      description: Indicates activities on decoupled search nodes.
+      properties:
+        apiKeyId:
+          type: string
+          description: "Unique 24-hexadecimal digit string that identifies the [API\
+            \ Key](https://dochub.mongodb.org/core/atlas-create-prog-api-key) that\
+            \ triggered the event. If this resource returns this parameter, it doesn't\
+            \ return the **userId** parameter."
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+          readOnly: true
+        created:
+          type: string
+          format: date-time
+          description: Date and time when this event occurred. This parameter expresses
+            its value in the <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank"
+            rel="noopener noreferrer">ISO 8601</a> timestamp format in UTC.
+          readOnly: true
+        eventTypeName:
+          $ref: "#/components/schemas/SearchDeploymentAuditTypeView"
+        groupId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the project
+            in which the event occurred. The **eventId** identifies the specific event.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+          readOnly: true
+        id:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the event.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+          readOnly: true
+        isGlobalAdmin:
+          type: boolean
+          default: false
+          description: Flag that indicates whether a MongoDB employee triggered the
+            specified event.
+          readOnly: true
+        links:
+          type: array
+          description: "List of one or more Uniform Resource Locators (URLs) that\
+            \ point to API sub-resources, related API resources, or both. RFC 5988\
+            \ outlines these relationships."
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        orgId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the organization
+            to which these events apply.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+          readOnly: true
+        publicKey:
+          type: string
+          format: email
+          description: "Public part of the [API Key](https://dochub.mongodb.org/core/atlas-create-prog-api-key)\
+            \ that triggered the event. If this resource returns this parameter, it\
+            \ doesn't return the **username** parameter."
+          readOnly: true
+        raw:
+          $ref: "#/components/schemas/raw"
+        remoteAddress:
+          type: string
+          description: IPv4 or IPv6 address from which the user triggered this event.
+          example: 216.172.40.186
+          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"
+          readOnly: true
+        userId:
+          type: string
+          description: "Unique 24-hexadecimal digit string that identifies the console\
+            \ user who triggered the event. If this resource returns this parameter,\
+            \ it doesn't return the **apiKeyId** parameter."
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+          readOnly: true
+        username:
+          type: string
+          format: email
+          description: "Email address for the user who triggered this event. If this\
+            \ resource returns this parameter, it doesn't return the **publicApiKey**\
+            \ parameter."
+          example: test.user@mongodb.com
+          readOnly: true
+      required:
+      - created
+      - eventTypeName
+      - id
+      title: Search Deployment Audits
     SearchHostStatusDetail:
       type: object
       properties:
@@ -47845,7 +48186,11 @@ components:
       properties:
         groupId:
           type: string
-          description: Unique 24-hexadecimal digit string that identifies the project.
+          description: "Unique 24-hexadecimal digit string that identifies your project.\
+            \ **NOTE**: Groups and projects are synonymous terms. Your group id is\
+            \ the same as your project id. For existing groups, your group/project\
+            \ id remains the same. The resource and corresponding endpoints use the\
+            \ term groups."
           example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
@@ -47958,6 +48303,54 @@ components:
       - eventTypeName
       - id
       title: ServiceAccount Events
+    ServiceAccountIPAccessListEntry:
+      type: object
+      properties:
+        cidrBlock:
+          type: string
+          description: "Range of network addresses in the access list for the Service\
+            \ Account. This parameter requires the range to be expressed in Classless\
+            \ Inter-Domain Routing (CIDR) notation of Internet Protocol version 4\
+            \ or version 6 addresses. You can set a value for this parameter or **ipAddress**,\
+            \ but not for both in the same request."
+          example: 203.0.113.0/24
+          pattern: "^((([0-9]{1,3}\\.){3}[0-9]{1,3})|(:{0,2}([0-9a-f]{1,4}:){0,7}[0-9a-f]{1,4}[:]{0,2}))((%2[fF]|/)[0-9]{1,3})+$"
+        createdAt:
+          type: string
+          format: date-time
+          description: Date MongoDB Cloud added the entry was added to the Access
+            List.
+          readOnly: true
+        ipAddress:
+          type: string
+          description: "Network address in the access list for the Service Account.\
+            \ This parameter requires the address to be expressed as one Internet\
+            \ Protocol version 4 or version 6 address. You can set a value for this\
+            \ parameter or **cidrBlock**, but not for both in the same request."
+          example: 203.0.113.10
+          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"
+        lastUsedAddress:
+          type: string
+          description: Network address that issued the most recent request to the
+            API. This parameter requires the address to be expressed as one Internet
+            Protocol version 4 or version 6 address. The resource returns this parameter
+            after this IP address makes at least one request.
+          readOnly: true
+        lastUsedAt:
+          type: string
+          format: date-time
+          description: "Date when MongoDB Cloud received the most recent request that\
+            \ originated from this Internet Protocol version 4 or version 6 address.\
+            \ The resource returns this parameter when at least one request originates\
+            \ from this IP address. MongoDB Cloud updates this parameter each time\
+            \ a client accesses the permitted resource, with a delay of up to 5 minutes."
+          readOnly: true
+        requestCount:
+          type: integer
+          format: int32
+          description: The number of requests that has originated from this network
+            address.
+          readOnly: true
     ServiceAccountOrgEvents:
       type: object
       description: Service Account event identifies different activities around user
@@ -48071,36 +48464,34 @@ components:
         createdAt:
           type: string
           format: date-time
-          description: Timestamp representing creation time.
+          description: The date that the secret was created on.
           readOnly: true
         expiresAt:
           type: string
           format: date-time
-          description: Timestamp representing secret expiration time.
+          description: The date for the expiration of the secret.
           readOnly: true
         id:
           type: string
-          description: Unique 24-hexadecimal character string that identifies the
-            secret.
+          description: Unique 24-hexadecimal digit string that identifies the secret.
           example: 32b6e34b3d91647abb20e7b8
           pattern: "^([a-f0-9]{24})$"
           readOnly: true
         lastUsedAt:
           type: string
           format: date-time
-          description: Timestamp representing last secret usage.
+          description: The last time the secret was used.
           readOnly: true
         maskedSecretValue:
           type: string
-          description: Service Account secret with masked values of the first 20 characters.
-          example: mdb_ic_sk_xxxxxxxx-xxxx-xxxx-xxxxxxxx12ce
+          description: The masked Service Account secret.
+          example: mdb_ic_sk_...12ce
           readOnly: true
         secret:
           type: string
-          description: Secret for the service account. It will be returned only the
-            first time after service account creation.
-          pattern: "^mdb_sa_sk_[0-9a-fA-F]{8}\\b-[0-9a-fA-F]{4}\\b-[0-9a-fA-F]{4}\\\
-            b-[0-9a-fA-F]{4}\\b-[0-9a-fA-F]{12}$"
+          description: The secret for the Service Account. It will be returned only
+            the first time after creation.
+          pattern: "^mdb_sa_sk_[0-9a-zA-Z_-]{40}$"
           readOnly: true
       required:
       - createdAt
@@ -48112,7 +48503,8 @@ components:
         secretExpiresAfterHours:
           type: integer
           format: int32
-          description: Number of hours representing validity duration for secret.
+          description: The expiration time of the new Service Account secret. The
+            expiration is provided in hours.
       required:
       - secretExpiresAfterHours
     ShardEntry:
@@ -51512,6 +51904,82 @@ components:
             - ORG_BILLING_ADMIN
             - ORG_READ_ONLY
           uniqueItems: true
+    UsageDetailsFilterRequest:
+      type: object
+      description: Request body which contains various fields to filter line items
+        as part of certain Invoice Usage Details queries.
+      properties:
+        billEndDate:
+          type: string
+          format: date
+          description: The inclusive billing start date for usage details filter.
+          example: 2023-02-01
+        billStartDate:
+          type: string
+          format: date
+          description: The inclusive billing start date for usage details filter.
+          example: 2023-02-01
+        clusterIds:
+          type: array
+          description: The list of unique cluster ids to be included in the Usage
+            Details filter.
+          example:
+          - 650d11400000000000000000
+          - 650dd6200000000000000000
+          items:
+            type: string
+          uniqueItems: true
+        groupIds:
+          type: array
+          description: The list of groups to be included in the Usage Details filter.
+          example:
+          - 650d11400000000000000000
+          - 650dd6200000000000000000
+          items:
+            type: string
+          uniqueItems: true
+        includeZeroCentLineItems:
+          type: boolean
+          description: Whether zero cent line items should be included.
+        skuServices:
+          type: array
+          description: The list of projects to be included in the Cost Explorer Query.
+          example:
+          - Atlas
+          - Clusters
+          - Storage
+          items:
+            type: string
+            enum:
+            - Atlas
+            - Clusters
+            - Storage
+            - Serverless Instances
+            - Backup
+            - Data Transfer
+            - BI Connector
+            - Premium Features
+            - Atlas Data Federation
+            - Atlas Stream Processing
+            - App Services
+            - Charts
+            - Cloud Manager
+            - Cloud Manager Standard/Premium
+            - Legacy Backup
+            - Flex Consulting
+            - Support
+            - Credits
+          uniqueItems: true
+        usageEndDate:
+          type: string
+          format: date
+          description: The inclusive billing start date for usage details filter.
+          example: 2023-02-01
+        usageStartDate:
+          type: string
+          format: date
+          description: The inclusive usage start date for usage details filter.
+          example: 2023-02-01
     UserAccessListRequest:
       type: object
       properties:
