@@ -157,6 +157,31 @@ type InvoicesApi interface {
 
 	// Method available only for mocking purposes
 	ListPendingInvoicesExecute(r ListPendingInvoicesApiRequest) (*PaginatedApiInvoice, *http.Response, error)
+
+	/*
+		QueryLineItemsFromSingleInvoice Query lineItems of the specified invoiceId
+
+		Query the lineItems of the specified invoice and return the result JSON. A unique 24-hexadecimal digit string identifies the invoice.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param invoiceId Unique 24-hexadecimal digit string that identifies the invoice submitted to the specified organization. Charges typically post the next day.
+		@param apiPublicUsageDetailsQueryRequest Filter parameters for the lineItems query. Send a request with an empty JSON body to retrieve all line items for a given invoiceID without applying any filters.
+		@return QueryLineItemsFromSingleInvoiceApiRequest
+	*/
+	QueryLineItemsFromSingleInvoice(ctx context.Context, orgId string, invoiceId string, apiPublicUsageDetailsQueryRequest *ApiPublicUsageDetailsQueryRequest) QueryLineItemsFromSingleInvoiceApiRequest
+	/*
+		QueryLineItemsFromSingleInvoice Query lineItems of the specified invoiceId
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param QueryLineItemsFromSingleInvoiceApiParams - Parameters for the request
+		@return QueryLineItemsFromSingleInvoiceApiRequest
+	*/
+	QueryLineItemsFromSingleInvoiceWithParams(ctx context.Context, args *QueryLineItemsFromSingleInvoiceApiParams) QueryLineItemsFromSingleInvoiceApiRequest
+
+	// Method available only for mocking purposes
+	QueryLineItemsFromSingleInvoiceExecute(r QueryLineItemsFromSingleInvoiceApiRequest) (*PaginatedPublicApiUsageDetailsLineItem, *http.Response, error)
 }
 
 // InvoicesApiService InvoicesApi service
@@ -963,6 +988,164 @@ func (a *InvoicesApiService) ListPendingInvoicesExecute(r ListPendingInvoicesApi
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type QueryLineItemsFromSingleInvoiceApiRequest struct {
+	ctx                               context.Context
+	ApiService                        InvoicesApi
+	orgId                             string
+	invoiceId                         string
+	apiPublicUsageDetailsQueryRequest *ApiPublicUsageDetailsQueryRequest
+	itemsPerPage                      *int
+	pageNum                           *int
+}
+
+type QueryLineItemsFromSingleInvoiceApiParams struct {
+	OrgId                             string
+	InvoiceId                         string
+	ApiPublicUsageDetailsQueryRequest *ApiPublicUsageDetailsQueryRequest
+	ItemsPerPage                      *int
+	PageNum                           *int
+}
+
+func (a *InvoicesApiService) QueryLineItemsFromSingleInvoiceWithParams(ctx context.Context, args *QueryLineItemsFromSingleInvoiceApiParams) QueryLineItemsFromSingleInvoiceApiRequest {
+	return QueryLineItemsFromSingleInvoiceApiRequest{
+		ApiService:                        a,
+		ctx:                               ctx,
+		orgId:                             args.OrgId,
+		invoiceId:                         args.InvoiceId,
+		apiPublicUsageDetailsQueryRequest: args.ApiPublicUsageDetailsQueryRequest,
+		itemsPerPage:                      args.ItemsPerPage,
+		pageNum:                           args.PageNum,
+	}
+}
+
+// Number of items that the response returns per page.
+func (r QueryLineItemsFromSingleInvoiceApiRequest) ItemsPerPage(itemsPerPage int) QueryLineItemsFromSingleInvoiceApiRequest {
+	r.itemsPerPage = &itemsPerPage
+	return r
+}
+
+// Number of the page that displays the current set of the total objects that the response returns.
+func (r QueryLineItemsFromSingleInvoiceApiRequest) PageNum(pageNum int) QueryLineItemsFromSingleInvoiceApiRequest {
+	r.pageNum = &pageNum
+	return r
+}
+
+func (r QueryLineItemsFromSingleInvoiceApiRequest) Execute() (*PaginatedPublicApiUsageDetailsLineItem, *http.Response, error) {
+	return r.ApiService.QueryLineItemsFromSingleInvoiceExecute(r)
+}
+
+/*
+QueryLineItemsFromSingleInvoice Query lineItems of the specified invoiceId
+
+Query the lineItems of the specified invoice and return the result JSON. A unique 24-hexadecimal digit string identifies the invoice.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param invoiceId Unique 24-hexadecimal digit string that identifies the invoice submitted to the specified organization. Charges typically post the next day.
+	@return QueryLineItemsFromSingleInvoiceApiRequest
+*/
+func (a *InvoicesApiService) QueryLineItemsFromSingleInvoice(ctx context.Context, orgId string, invoiceId string, apiPublicUsageDetailsQueryRequest *ApiPublicUsageDetailsQueryRequest) QueryLineItemsFromSingleInvoiceApiRequest {
+	return QueryLineItemsFromSingleInvoiceApiRequest{
+		ApiService:                        a,
+		ctx:                               ctx,
+		orgId:                             orgId,
+		invoiceId:                         invoiceId,
+		apiPublicUsageDetailsQueryRequest: apiPublicUsageDetailsQueryRequest,
+	}
+}
+
+// Execute executes the request
+//
+//	@return PaginatedPublicApiUsageDetailsLineItem
+func (a *InvoicesApiService) QueryLineItemsFromSingleInvoiceExecute(r QueryLineItemsFromSingleInvoiceApiRequest) (*PaginatedPublicApiUsageDetailsLineItem, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedPublicApiUsageDetailsLineItem
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InvoicesApiService.QueryLineItemsFromSingleInvoice")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/lineItems/:search"
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"invoiceId"+"}", url.PathEscape(parameterValueToString(r.invoiceId, "invoiceId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.apiPublicUsageDetailsQueryRequest == nil {
+		return localVarReturnValue, nil, reportError("apiPublicUsageDetailsQueryRequest is required and must be specified")
+	}
+
+	if r.itemsPerPage != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	} else {
+		var defaultValue int = 100
+		r.itemsPerPage = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	}
+	if r.pageNum != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	} else {
+		var defaultValue int = 1
+		r.pageNum = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2024-08-05+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-08-05+json", "application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.apiPublicUsageDetailsQueryRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
