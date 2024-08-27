@@ -184,6 +184,7 @@ Class        | Method        | HTTP request  | Description   |
 *InvoicesApi* | [GetInvoice](./docs/InvoicesApi.md#getinvoice) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId} | Return One Organization Invoice |
 *InvoicesApi* | [ListInvoices](./docs/InvoicesApi.md#listinvoices) | **Get** /api/atlas/v2/orgs/{orgId}/invoices | Return All Invoices for One Organization |
 *InvoicesApi* | [ListPendingInvoices](./docs/InvoicesApi.md#listpendinginvoices) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/pending | Return All Pending Invoices for One Organization |
+*InvoicesApi* | [QueryLineItemsFromSingleInvoice](./docs/InvoicesApi.md#querylineitemsfromsingleinvoice) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/lineItems/:search | Query lineItems of the specified invoiceId |
 *LDAPConfigurationApi* | [DeleteLDAPConfiguration](./docs/LDAPConfigurationApi.md#deleteldapconfiguration) | **Delete** /api/atlas/v2/groups/{groupId}/userSecurity/ldap/userToDNMapping | Remove the Current LDAP User to DN Mapping |
 *LDAPConfigurationApi* | [GetLDAPConfiguration](./docs/LDAPConfigurationApi.md#getldapconfiguration) | **Get** /api/atlas/v2/groups/{groupId}/userSecurity | Return the Current LDAP or X.509 Configuration |
 *LDAPConfigurationApi* | [GetLDAPConfigurationStatus](./docs/LDAPConfigurationApi.md#getldapconfigurationstatus) | **Get** /api/atlas/v2/groups/{groupId}/userSecurity/ldap/verify/{requestId} | Return the Status of One Verify LDAP Configuration Request |
@@ -407,6 +408,7 @@ Class        | Method        | HTTP request  | Description   |
  - [ApiKey](./docs/ApiKey.md)
  - [ApiKeyUserDetails](./docs/ApiKeyUserDetails.md)
  - [ApiMeasurementsGeneralViewAtlas](./docs/ApiMeasurementsGeneralViewAtlas.md)
+ - [ApiPublicUsageDetailsQueryRequest](./docs/ApiPublicUsageDetailsQueryRequest.md)
  - [ApiSearchDeploymentRequest](./docs/ApiSearchDeploymentRequest.md)
  - [ApiSearchDeploymentResponse](./docs/ApiSearchDeploymentResponse.md)
  - [ApiSearchDeploymentSpec](./docs/ApiSearchDeploymentSpec.md)
@@ -444,6 +446,8 @@ Class        | Method        | HTTP request  | Description   |
  - [CloudDatabaseUser](./docs/CloudDatabaseUser.md)
  - [CloudProviderAccessAWSIAMRole](./docs/CloudProviderAccessAWSIAMRole.md)
  - [CloudProviderAccessAWSIAMRoleAllOf](./docs/CloudProviderAccessAWSIAMRoleAllOf.md)
+ - [CloudProviderAccessAzureServicePrincipal](./docs/CloudProviderAccessAzureServicePrincipal.md)
+ - [CloudProviderAccessAzureServicePrincipalAllOf](./docs/CloudProviderAccessAzureServicePrincipalAllOf.md)
  - [CloudProviderAccessFeatureUsage](./docs/CloudProviderAccessFeatureUsage.md)
  - [CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId](./docs/CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId.md)
  - [CloudProviderAccessRole](./docs/CloudProviderAccessRole.md)
@@ -653,6 +657,7 @@ Class        | Method        | HTTP request  | Description   |
  - [PaginatedOrganization](./docs/PaginatedOrganization.md)
  - [PaginatedPipelineRun](./docs/PaginatedPipelineRun.md)
  - [PaginatedPrivateNetworkEndpointIdEntry](./docs/PaginatedPrivateNetworkEndpointIdEntry.md)
+ - [PaginatedPublicApiUsageDetailsLineItem](./docs/PaginatedPublicApiUsageDetailsLineItem.md)
  - [PaginatedRestoreJob](./docs/PaginatedRestoreJob.md)
  - [PaginatedRoleMapping](./docs/PaginatedRoleMapping.md)
  - [PaginatedServerlessInstanceDescription](./docs/PaginatedServerlessInstanceDescription.md)
@@ -680,6 +685,7 @@ Class        | Method        | HTTP request  | Description   |
  - [PrivateNetworkEndpointIdEntry](./docs/PrivateNetworkEndpointIdEntry.md)
  - [ProjectSettingItem](./docs/ProjectSettingItem.md)
  - [ProxyInfo](./docs/ProxyInfo.md)
+ - [PublicApiUsageDetailsLineItem](./docs/PublicApiUsageDetailsLineItem.md)
  - [PushBasedLogExportProject](./docs/PushBasedLogExportProject.md)
  - [Raw](./docs/Raw.md)
  - [RegionSpec](./docs/RegionSpec.md)
@@ -742,6 +748,7 @@ Class        | Method        | HTTP request  | Description   |
  - [UpdateCustomDBRole](./docs/UpdateCustomDBRole.md)
  - [UpdateGroupRolesForUser](./docs/UpdateGroupRolesForUser.md)
  - [UpdateOrgRolesForUser](./docs/UpdateOrgRolesForUser.md)
+ - [UsageDetailsFilterRequest](./docs/UsageDetailsFilterRequest.md)
  - [UserAccessListRequest](./docs/UserAccessListRequest.md)
  - [UserAccessListResponse](./docs/UserAccessListResponse.md)
  - [UserAccessRoleAssignment](./docs/UserAccessRoleAssignment.md)

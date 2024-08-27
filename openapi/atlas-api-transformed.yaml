@@ -24,7 +24,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: b5d410a3e8af4c18c0b59c3ac77cf84d19001d1c
+  x-xgen-sha: 5523a643cee72b5c22c51e137ef4e7d343f4b61c
 servers:
   - url: https://cloud.mongodb.com
 tags:
@@ -16070,6 +16070,54 @@ paths:
       summary: Return One Organization Invoice as CSV
       tags:
         - Invoices
+  "/api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/lineItems/:search":
+    get:
+      description: Query the lineItems of the specified invoice and return the result
+        JSON. A unique 24-hexadecimal digit string identifies the invoice.
+      operationId: queryLineItemsFromSingleInvoice
+      parameters:
+        - $ref: "#/components/parameters/itemsPerPage"
+        - $ref: "#/components/parameters/pageNum"
+        - $ref: "#/components/parameters/orgId"
+        - description: Unique 24-hexadecimal digit string that identifies the invoice
+            submitted to the specified organization. Charges typically post the
+            next day.
+          in: path
+          name: invoiceId
+          required: true
+          schema:
+            type: string
+            maxLength: 24
+            minLength: 24
+            pattern: ^([a-f0-9]{24})$
+      requestBody:
+        content:
+          application/vnd.atlas.2024-08-05+json:
+            schema:
+              $ref: "#/components/schemas/ApiPublicUsageDetailsQueryRequest"
+        description: Filter parameters for the lineItems query. Send a request with an
+          empty JSON body to retrieve all line items for a given invoiceID
+          without applying any filters.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedPublicApiUsageDetailsLineItem"
+              x-xgen-version: 2024-08-05
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Query lineItems of the specified invoiceId
+      tags:
+        - Invoices
   "/api/atlas/v2/orgs/{orgId}/liveMigrations/availableProjects":
     get:
       description: Return all projects that you can migrate to the specified organization.
@@ -18207,6 +18255,21 @@ components:
             parameter and **period** in the same request. This parameter
             expresses its value in the ISO 8601 timestamp format in UTC.
           readOnly: true
+    ApiPublicUsageDetailsQueryRequest:
+      type: object
+      description: Request body for an Invoice Usage Details query with filtering,
+        pagination, and sort.
+      properties:
+        filters:
+          $ref: "#/components/schemas/UsageDetailsFilterRequest"
+        sortField:
+          type: string
+          description: Specify the field used to specify how to sort query results.
+            Default to bill date.
+        sortOrder:
+          type: string
+          description: Specify the sort order (ascending / descending) used to specify how
+            to sort query results. Defaults to descending.
     AtlasClusterOutageSimulationOutageFilter:
       type: object
       properties:
@@ -20465,6 +20528,110 @@ components:
           minLength: 24
           pattern: ^([a-f0-9]{24})$
           readOnly: true
+    CloudProviderAccessAzureServicePrincipal:
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/CloudProviderAccessRole"
+        - type: object
+          properties:
+            _id:
+              type: string
+              description: Unique 24-hexadecimal digit string that identifies the role.
+              example: 32b6e34b3d91647abb20e7b8
+              maxLength: 24
+              minLength: 24
+              pattern: ^([a-f0-9]{24})$
+              readOnly: true
+            atlasAzureAppId:
+              type: string
+              description: Azure Active Directory Application ID of Atlas.
+              maxLength: 36
+              minLength: 32
+              pattern: ^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$
+            createdDate:
+              type: string
+              format: date-time
+              description: Date and time when this Azure Service Principal was created. This
+                parameter expresses its value in the ISO 8601 timestamp format
+                in UTC.
+              readOnly: true
+            featureUsages:
+              type: array
+              description: List that contains application features associated with this Azure
+                Service Principal.
+              items:
+                $ref: "#/components/schemas/CloudProviderAccessFeatureUsage"
+              readOnly: true
+            lastUpdatedDate:
+              type: string
+              format: date-time
+              description: Date and time when this Azure Service Principal was last updated.
+                This parameter expresses its value in the ISO 8601 timestamp
+                format in UTC.
+              readOnly: true
+            servicePrincipalId:
+              type: string
+              description: UUID string that identifies the Azure Service Principal.
+              maxLength: 36
+              minLength: 32
+              pattern: ^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$
+            tenantId:
+              type: string
+              description: UUID String that identifies the Azure Active Directory Tenant ID.
+              maxLength: 36
+              minLength: 32
+              pattern: ^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$
+      description: Details that describe the features linked to the Azure Service Principal.
+      required:
+        - providerName
+      properties:
+        _id:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the role.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        atlasAzureAppId:
+          type: string
+          description: Azure Active Directory Application ID of Atlas.
+          maxLength: 36
+          minLength: 32
+          pattern: ^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$
+        createdDate:
+          type: string
+          format: date-time
+          description: Date and time when this Azure Service Principal was created. This
+            parameter expresses its value in the ISO 8601 timestamp format in
+            UTC.
+          readOnly: true
+        featureUsages:
+          type: array
+          description: List that contains application features associated with this Azure
+            Service Principal.
+          items:
+            $ref: "#/components/schemas/CloudProviderAccessFeatureUsage"
+          readOnly: true
+        lastUpdatedDate:
+          type: string
+          format: date-time
+          description: Date and time when this Azure Service Principal was last updated.
+            This parameter expresses its value in the ISO 8601 timestamp format
+            in UTC.
+          readOnly: true
+        servicePrincipalId:
+          type: string
+          description: UUID string that identifies the Azure Service Principal.
+          maxLength: 36
+          minLength: 32
+          pattern: ^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$
+        tenantId:
+          type: string
+          description: UUID String that identifies the Azure Active Directory Tenant ID.
+          maxLength: 36
+          minLength: 32
+          pattern: ^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$
     CloudProviderAccessFeatureUsage:
       type: object
       description: MongoDB Cloud features associated with this Amazon Web Services
@@ -20558,8 +20725,7 @@ components:
           readOnly: true
         _id:
           type: string
-          description: Unique 24-hexadecimal digit string that identifies the Azure
-            Service Principal in Atlas.
+          description: Unique 24-hexadecimal digit string that identifies the role.
           example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
@@ -20601,6 +20767,12 @@ components:
             registered and authorized with MongoDB Cloud.
           items:
             $ref: "#/components/schemas/CloudProviderAccessAWSIAMRole"
+        azureServicePrincipals:
+          type: array
+          description: List that contains the Azure Service Principals registered with
+            MongoDB Cloud.
+          items:
+            $ref: "#/components/schemas/CloudProviderAccessAzureServicePrincipal"
     CloudProviderContainer:
       type: object
       description: Collection of settings that configures the network container for a
@@ -23164,19 +23336,13 @@ components:
           type: integer
           format: int32
           description: >-
-            Target IOPS (Input/Output Operations Per Second) desired for storage
-            attached to this hardware.
-
-             You can set different IOPS values on different shards when provisioned IOPS are supported.
-
-             Change this parameter only if you:
-
-            - set `"replicationSpecs[n].regionConfigs[m].providerName" to "AWS"`.
-
-            - set `"replicationSpecs[n].regionConfigs[m].electableSpecs.instanceSize" to "M30"` or greater (not including `Mxx_NVME` tiers).
+            Target throughput desired for storage attached to your
+            Azure-provisioned cluster. Change this parameter if you:
 
 
-            - set `"replicationSpecs[n].regionConfigs[m].electableSpecs.ebsVolumeType" to "PROVISIONED"`.
+            - set `"replicationSpecs[n].regionConfigs[m].providerName" : "Azure"`.
+
+            - set `"replicationSpecs[n].regionConfigs[m].electableSpecs.instanceSize" : "M40"` or greater not including `Mxx_NVME` tiers.
 
 
             The maximum input/output operations per second (IOPS) depend on the selected **.instanceSize** and **.diskSizeGB**.
@@ -23184,13 +23350,9 @@ components:
             This parameter defaults to the cluster tier's standard IOPS value.
 
             Changing this value impacts cluster cost.
-
-            MongoDB Cloud enforces minimum ratios of storage capacity to system memory for given cluster tiers. This keeps cluster performance consistent with large datasets.
-
-
-            - Instance sizes `M10` to `M40` have a ratio of disk capacity to system memory of 60:1.
-
-            - Instance sizes greater than `M40` have a ratio of 120:1.
+          externalDocs:
+            description: Programmatic API Keys
+            url: https://www.mongodb.com/docs/atlas/customize-storage/#extend-iops-on-azure
         ebsVolumeType:
           type: string
           default: STANDARD
@@ -24836,12 +24998,14 @@ components:
         exportedCollections:
           type: integer
           format: int32
-          description: Number of collections on the replica set that MongoDB Cloud exported.
+          description: Count of collections whose documents were exported to the Export
+            Bucket.
           readOnly: true
         totalCollections:
           type: integer
           format: int32
-          description: Total number of collections on the replica set to export.
+          description: Total count of collections whose documents will be exported to the
+            Export Bucket.
           readOnly: true
     ExtraRetentionSetting:
       type: object
@@ -25852,19 +26016,13 @@ components:
           type: integer
           format: int32
           description: >-
-            Target IOPS (Input/Output Operations Per Second) desired for storage
-            attached to this hardware.
-
-             You can set different IOPS values on different shards when provisioned IOPS are supported.
-
-             Change this parameter only if you:
-
-            - set `"replicationSpecs[n].regionConfigs[m].providerName" to "AWS"`.
-
-            - set `"replicationSpecs[n].regionConfigs[m].electableSpecs.instanceSize" to "M30"` or greater (not including `Mxx_NVME` tiers).
+            Target throughput desired for storage attached to your
+            Azure-provisioned cluster. Change this parameter if you:
 
 
-            - set `"replicationSpecs[n].regionConfigs[m].electableSpecs.ebsVolumeType" to "PROVISIONED"`.
+            - set `"replicationSpecs[n].regionConfigs[m].providerName" : "Azure"`.
+
+            - set `"replicationSpecs[n].regionConfigs[m].electableSpecs.instanceSize" : "M40"` or greater not including `Mxx_NVME` tiers.
 
 
             The maximum input/output operations per second (IOPS) depend on the selected **.instanceSize** and **.diskSizeGB**.
@@ -25872,13 +26030,9 @@ components:
             This parameter defaults to the cluster tier's standard IOPS value.
 
             Changing this value impacts cluster cost.
-
-            MongoDB Cloud enforces minimum ratios of storage capacity to system memory for given cluster tiers. This keeps cluster performance consistent with large datasets.
-
-
-            - Instance sizes `M10` to `M40` have a ratio of disk capacity to system memory of 60:1.
-
-            - Instance sizes greater than `M40` have a ratio of 120:1.
+          externalDocs:
+            description: Programmatic API Keys
+            url: https://www.mongodb.com/docs/atlas/customize-storage/#extend-iops-on-azure
         ebsVolumeType:
           type: string
           default: STANDARD
@@ -31159,6 +31313,63 @@ components:
           items:
             type: string
           uniqueItems: true
+    UsageDetailsFilterRequest:
+      type: object
+      description: Request body which contains various fields to filter line items as
+        part of certain Invoice Usage Details queries.
+      properties:
+        billEndDate:
+          type: string
+          format: date
+          description: The inclusive billing start date for usage details filter.
+          example: 2023-02-01
+        billStartDate:
+          type: string
+          format: date
+          description: The inclusive billing start date for usage details filter.
+          example: 2023-02-01
+        clusterIds:
+          type: array
+          description: The list of unique cluster ids to be included in the Usage Details
+            filter.
+          example:
+            - 650d11400000000000000000
+            - 650dd6200000000000000000
+          items:
+            type: string
+          uniqueItems: true
+        groupIds:
+          type: array
+          description: The list of groups to be included in the Usage Details filter.
+          example:
+            - 650d11400000000000000000
+            - 650dd6200000000000000000
+          items:
+            type: string
+          uniqueItems: true
+        includeZeroCentLineItems:
+          type: boolean
+          description: Whether zero cent line items should be included.
+        skuServices:
+          type: array
+          description: The list of projects to be included in the Cost Explorer Query.
+          example:
+            - Atlas
+            - Clusters
+            - Storage
+          items:
+            type: string
+          uniqueItems: true
+        usageEndDate:
+          type: string
+          format: date
+          description: The inclusive billing start date for usage details filter.
+          example: 2023-02-01
+        usageStartDate:
+          type: string
+          format: date
+          description: The inclusive usage start date for usage details filter.
+          example: 2023-02-01
     UserAccessListRequest:
       type: object
       properties:
@@ -33266,6 +33477,34 @@ components:
             if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
+    PaginatedPublicApiUsageDetailsLineItem:
+      type: object
+      properties:
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        results:
+          type: array
+          description: List of returned documents that MongoDB Cloud providers when
+            completing this request.
+          items:
+            $ref: "#/components/schemas/PublicApiUsageDetailsLineItem"
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
+          minimum: 0
+          readOnly: true
     PaginatedRestoreJob:
       type: object
       properties:
@@ -33599,6 +33838,41 @@ components:
             - Set this value to `false` to disable regionalized private endpoints.
       required:
         - enabled
+    PublicApiUsageDetailsLineItem:
+      type: object
+      properties:
+        billDate:
+          type: string
+          format: date-time
+          description: Billing date of the line item.
+        clusterName:
+          type: string
+          description: Cluster associated with the line item.
+        description:
+          type: string
+          description: Description of the line item, which can include SKU name and other
+            identifying information.
+        groupId:
+          type: string
+          description: Group id associated with the line item.
+        quantity:
+          type: number
+          format: double
+          description: Quantity of line item in units associated with SKU.
+          readOnly: true
+        totalPriceCents:
+          type: integer
+          format: int64
+          description: Price * quantity in applicable units, expressed as an integral
+            number of cents.
+        unitPriceDollars:
+          type: number
+          format: double
+          description: Price in units associated with the SKU for the line item.
+        usageDate:
+          type: string
+          format: date-time
+          description: Usage date of the line item.
     ApiAtlasFTSAnalyzers:
       type: object
       description: Settings that describe one Atlas Search custom analyzer.
