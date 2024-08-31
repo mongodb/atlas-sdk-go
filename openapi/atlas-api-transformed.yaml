@@ -24,7 +24,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 5523a643cee72b5c22c51e137ef4e7d343f4b61c
+  x-xgen-sha: c03417b1c3e8592c8d5fb7c492437d4bde6e5435
 servers:
   - url: https://cloud.mongodb.com
 tags:
@@ -8873,6 +8873,164 @@ paths:
         for One Project
       tags:
         - Encryption at Rest using Customer Key Management
+  "/api/atlas/v2/groups/{groupId}/encryptionAtRest/{cloudProvider}/privateEndpoints":
+    get:
+      description: Returns the private endpoints of the specified cloud provider for
+        encryption at rest using customer key management.
+      operationId: getEncryptionAtRestPrivateEndpointsForCloudProvider
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - $ref: "#/components/parameters/includeCount"
+        - $ref: "#/components/parameters/itemsPerPage"
+        - $ref: "#/components/parameters/pageNum"
+        - description: Human-readable label that identifies the cloud provider for the
+            private endpoints to return.
+          in: path
+          name: cloudProvider
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedApiAtlasEARPrivateEndpoint"
+              x-xgen-version: 2023-01-01
+          description: OK
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Return Private Endpoints of a Cloud Provider for Encryption at Rest
+        Using Customer Key Management for One Project
+      tags:
+        - Encryption at Rest using Customer Key Management
+    post:
+      description: Creates a private endpoint in the specified region for encryption
+        at rest using customer key management.
+      operationId: createEncryptionAtRestPrivateEndpoint
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Human-readable label that identifies the cloud provider for the
+            private endpoint to create.
+          in: path
+          name: cloudProvider
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/vnd.atlas.2023-01-01+json:
+            schema:
+              $ref: "#/components/schemas/EARPrivateEndpoint"
+        description: Creates a private endpoint in the specified region.
+        required: true
+      responses:
+        "202":
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: "#/components/schemas/EARPrivateEndpoint"
+              x-xgen-version: 2023-01-01
+          description: Accepted
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Create One Private Endpoint in a Specified Region for Encryption at
+        Rest Using Customer Key Management
+      tags:
+        - Encryption at Rest using Customer Key Management
+  "/api/atlas/v2/groups/{groupId}/encryptionAtRest/{cloudProvider}/privateEndpoints/{endpointId}":
+    delete:
+      description: Deletes one private endpoint, identified by its ID, for encryption
+        at rest using Customer Key Management.
+      operationId: requestEncryptionAtRestPrivateEndpointDeletion
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Human-readable label that identifies the cloud provider of the
+            private endpoint to delete.
+          in: path
+          name: cloudProvider
+          required: true
+          schema:
+            type: string
+        - description: Unique 24-hexadecimal digit string that identifies the private
+            endpoint to delete.
+          in: path
+          name: endpointId
+          required: true
+          schema:
+            type: string
+            maxLength: 24
+            minLength: 24
+            pattern: ^([a-f0-9]{24})$
+      responses:
+        "204":
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: "#/components/schemas/NoBody"
+              x-xgen-version: 2023-01-01
+          description: This endpoint does not return a response body.
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Delete Private Endpoint for Encryption at Rest Using Customer Key
+        Management
+      tags:
+        - Encryption at Rest using Customer Key Management
+    get:
+      description: Returns one private endpoint, identified by its ID, for encryption
+        at rest using Customer Key Management.
+      operationId: getEncryptionAtRestPrivateEndpoint
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Human-readable label that identifies the cloud provider of the
+            private endpoint.
+          in: path
+          name: cloudProvider
+          required: true
+          schema:
+            type: string
+        - description: Unique 24-hexadecimal digit string that identifies the private
+            endpoint.
+          in: path
+          name: endpointId
+          required: true
+          schema:
+            type: string
+            maxLength: 24
+            minLength: 24
+            pattern: ^([a-f0-9]{24})$
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: "#/components/schemas/EARPrivateEndpoint"
+              x-xgen-version: 2023-01-01
+          description: OK
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Return One Private Endpoint for Encryption at Rest Using Customer Key
+        Management
+      tags:
+        - Encryption at Rest using Customer Key Management
   "/api/atlas/v2/groups/{groupId}/events":
     get:
       description: >-
@@ -16070,7 +16228,7 @@ paths:
       summary: Return One Organization Invoice as CSV
       tags:
         - Invoices
-  "/api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/lineItems/:search":
+  "/api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/lineItems:search":
     get:
       description: Query the lineItems of the specified invoice and return the result
         JSON. A unique 24-hexadecimal digit string identifies the invoice.
@@ -21261,6 +21419,15 @@ components:
           externalDocs:
             description: Encryption at Rest using Customer Key Management
             url: https://www.mongodb.com/docs/atlas/security-kms-encryption/
+        featureCompatibilityVersion:
+          type: string
+          description: Feature compatibility version of the cluster.
+          readOnly: true
+        featureCompatibilityVersionExpirationDate:
+          type: string
+          format: date-time
+          description: Feature compatibility version expiration date.
+          readOnly: true
         globalClusterSelfManagedSharding:
           type: boolean
           description: >-
@@ -24414,6 +24581,42 @@ components:
       type: object
       description: The stats associated with the stream processor.
       readOnly: true
+    EARPrivateEndpoint:
+      type: object
+      description: Encryption At Rest Private Endpoint.
+      properties:
+        cloudProvider:
+          type: string
+          description: Human-readable label that identifies the cloud provider for the
+            Encryption At Rest private endpoint.
+          readOnly: true
+        errorMessage:
+          type: string
+          description: Error message for failures associated with the Encryption At Rest
+            private endpoint.
+          readOnly: true
+        id:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the Private
+            Endpoint Service.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        regionName:
+          type: string
+          description: Cloud provider region in which the Encryption At Rest private
+            endpoint is located.
+        status:
+          type: string
+          description: State of the Encryption At Rest private endpoint.
+          readOnly: true
+        privateEndpointConnectionName:
+          type: string
+          description: Connection name of the Azure Private Endpoint.
+          readOnly: true
+      title: Encryption At Rest Private Endpoint
     EncryptionAtRest:
       type: object
       properties:
@@ -26849,6 +27052,15 @@ components:
           externalDocs:
             description: Encryption at Rest using Customer Key Management
             url: https://www.mongodb.com/docs/atlas/security-kms-encryption/
+        featureCompatibilityVersion:
+          type: string
+          description: Feature compatibility version of the cluster.
+          readOnly: true
+        featureCompatibilityVersionExpirationDate:
+          type: string
+          format: date-time
+          description: Feature compatibility version expiration date.
+          readOnly: true
         globalClusterSelfManagedSharding:
           type: boolean
           description: >-
@@ -27140,6 +27352,15 @@ components:
           externalDocs:
             description: Encryption at Rest using Customer Key Management
             url: https://www.mongodb.com/docs/atlas/security-kms-encryption/
+        featureCompatibilityVersion:
+          type: string
+          description: Feature compatibility version of the cluster.
+          readOnly: true
+        featureCompatibilityVersionExpirationDate:
+          type: string
+          format: date-time
+          description: Feature compatibility version expiration date.
+          readOnly: true
         globalClusterSelfManagedSharding:
           type: boolean
           description: >-
@@ -30687,6 +30908,8 @@ components:
           type: string
           description: Human-readable name of the stream processor.
           readOnly: true
+        options:
+          $ref: "#/components/schemas/StreamsOptions"
         pipeline:
           type: array
           description: Stream aggregation pipeline you want to apply to your streaming data.
@@ -32654,6 +32877,34 @@ components:
             completing this request.
           items:
             $ref: "#/components/schemas/DiskBackupExportJob"
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
+          minimum: 0
+          readOnly: true
+    PaginatedApiAtlasEARPrivateEndpoint:
+      type: object
+      properties:
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        results:
+          type: array
+          description: List of returned documents that MongoDB Cloud providers when
+            completing this request.
+          items:
+            $ref: "#/components/schemas/EARPrivateEndpoint"
           readOnly: true
         totalCount:
           type: integer

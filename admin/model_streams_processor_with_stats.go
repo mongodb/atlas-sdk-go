@@ -16,7 +16,8 @@ type StreamsProcessorWithStats struct {
 	Links *[]Link `json:"links,omitempty"`
 	// Human-readable name of the stream processor.
 	// Read only field.
-	Name string `json:"name"`
+	Name    string          `json:"name"`
+	Options *StreamsOptions `json:"options,omitempty"`
 	// Stream aggregation pipeline you want to apply to your streaming data.
 	// Read only field.
 	Pipeline []interface{} `json:"pipeline"`
@@ -130,6 +131,39 @@ func (o *StreamsProcessorWithStats) SetName(v string) {
 	o.Name = v
 }
 
+// GetOptions returns the Options field value if set, zero value otherwise
+func (o *StreamsProcessorWithStats) GetOptions() StreamsOptions {
+	if o == nil || IsNil(o.Options) {
+		var ret StreamsOptions
+		return ret
+	}
+	return *o.Options
+}
+
+// GetOptionsOk returns a tuple with the Options field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsProcessorWithStats) GetOptionsOk() (*StreamsOptions, bool) {
+	if o == nil || IsNil(o.Options) {
+		return nil, false
+	}
+
+	return o.Options, true
+}
+
+// HasOptions returns a boolean if a field has been set.
+func (o *StreamsProcessorWithStats) HasOptions() bool {
+	if o != nil && !IsNil(o.Options) {
+		return true
+	}
+
+	return false
+}
+
+// SetOptions gets a reference to the given StreamsOptions and assigns it to the Options field.
+func (o *StreamsProcessorWithStats) SetOptions(v StreamsOptions) {
+	o.Options = &v
+}
+
 // GetPipeline returns the Pipeline field value
 func (o *StreamsProcessorWithStats) GetPipeline() []interface{} {
 	if o == nil {
@@ -221,5 +255,8 @@ func (o StreamsProcessorWithStats) MarshalJSONWithoutReadOnly() ([]byte, error) 
 }
 func (o StreamsProcessorWithStats) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Options) {
+		toSerialize["options"] = o.Options
+	}
 	return toSerialize, nil
 }

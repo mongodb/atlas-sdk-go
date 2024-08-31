@@ -27,6 +27,12 @@ type LegacyAtlasTenantClusterUpgradeRequest struct {
 	DiskWarmingMode *string `json:"diskWarmingMode,omitempty"`
 	// Cloud service provider that manages your customer keys to provide an additional layer of Encryption at Rest for the cluster.
 	EncryptionAtRestProvider *string `json:"encryptionAtRestProvider,omitempty"`
+	// Feature compatibility version of the cluster.
+	// Read only field.
+	FeatureCompatibilityVersion *string `json:"featureCompatibilityVersion,omitempty"`
+	// Feature compatibility version expiration date.
+	// Read only field.
+	FeatureCompatibilityVersionExpirationDate *time.Time `json:"featureCompatibilityVersionExpirationDate,omitempty"`
 	// Set this field to configure the Sharding Management Mode when creating a new Global Cluster.  When set to false, the management mode is set to Atlas-Managed Sharding. This mode fully manages the sharding of your Global Cluster and is built to provide a seamless deployment experience.  When set to true, the management mode is set to Self-Managed Sharding. This mode leaves the management of shards in your hands and is built to provide an advanced and flexible deployment experience.  This setting cannot be changed once the cluster is deployed.
 	GlobalClusterSelfManagedSharding *bool `json:"globalClusterSelfManagedSharding,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the project.
@@ -464,6 +470,72 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) HasEncryptionAtRestProvider() b
 // SetEncryptionAtRestProvider gets a reference to the given string and assigns it to the EncryptionAtRestProvider field.
 func (o *LegacyAtlasTenantClusterUpgradeRequest) SetEncryptionAtRestProvider(v string) {
 	o.EncryptionAtRestProvider = &v
+}
+
+// GetFeatureCompatibilityVersion returns the FeatureCompatibilityVersion field value if set, zero value otherwise
+func (o *LegacyAtlasTenantClusterUpgradeRequest) GetFeatureCompatibilityVersion() string {
+	if o == nil || IsNil(o.FeatureCompatibilityVersion) {
+		var ret string
+		return ret
+	}
+	return *o.FeatureCompatibilityVersion
+}
+
+// GetFeatureCompatibilityVersionOk returns a tuple with the FeatureCompatibilityVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LegacyAtlasTenantClusterUpgradeRequest) GetFeatureCompatibilityVersionOk() (*string, bool) {
+	if o == nil || IsNil(o.FeatureCompatibilityVersion) {
+		return nil, false
+	}
+
+	return o.FeatureCompatibilityVersion, true
+}
+
+// HasFeatureCompatibilityVersion returns a boolean if a field has been set.
+func (o *LegacyAtlasTenantClusterUpgradeRequest) HasFeatureCompatibilityVersion() bool {
+	if o != nil && !IsNil(o.FeatureCompatibilityVersion) {
+		return true
+	}
+
+	return false
+}
+
+// SetFeatureCompatibilityVersion gets a reference to the given string and assigns it to the FeatureCompatibilityVersion field.
+func (o *LegacyAtlasTenantClusterUpgradeRequest) SetFeatureCompatibilityVersion(v string) {
+	o.FeatureCompatibilityVersion = &v
+}
+
+// GetFeatureCompatibilityVersionExpirationDate returns the FeatureCompatibilityVersionExpirationDate field value if set, zero value otherwise
+func (o *LegacyAtlasTenantClusterUpgradeRequest) GetFeatureCompatibilityVersionExpirationDate() time.Time {
+	if o == nil || IsNil(o.FeatureCompatibilityVersionExpirationDate) {
+		var ret time.Time
+		return ret
+	}
+	return *o.FeatureCompatibilityVersionExpirationDate
+}
+
+// GetFeatureCompatibilityVersionExpirationDateOk returns a tuple with the FeatureCompatibilityVersionExpirationDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LegacyAtlasTenantClusterUpgradeRequest) GetFeatureCompatibilityVersionExpirationDateOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.FeatureCompatibilityVersionExpirationDate) {
+		return nil, false
+	}
+
+	return o.FeatureCompatibilityVersionExpirationDate, true
+}
+
+// HasFeatureCompatibilityVersionExpirationDate returns a boolean if a field has been set.
+func (o *LegacyAtlasTenantClusterUpgradeRequest) HasFeatureCompatibilityVersionExpirationDate() bool {
+	if o != nil && !IsNil(o.FeatureCompatibilityVersionExpirationDate) {
+		return true
+	}
+
+	return false
+}
+
+// SetFeatureCompatibilityVersionExpirationDate gets a reference to the given time.Time and assigns it to the FeatureCompatibilityVersionExpirationDate field.
+func (o *LegacyAtlasTenantClusterUpgradeRequest) SetFeatureCompatibilityVersionExpirationDate(v time.Time) {
+	o.FeatureCompatibilityVersionExpirationDate = &v
 }
 
 // GetGlobalClusterSelfManagedSharding returns the GlobalClusterSelfManagedSharding field value if set, zero value otherwise

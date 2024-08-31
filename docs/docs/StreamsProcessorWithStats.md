@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Id** | **string** | Unique 24-hexadecimal character string that identifies the stream processor. | [readonly] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **Name** | **string** | Human-readable name of the stream processor. | [readonly] 
+**Options** | Pointer to [**StreamsOptions**](StreamsOptions.md) |  | [optional] 
 **Pipeline** | **[]interface{}** | Stream aggregation pipeline you want to apply to your streaming data. | [readonly] 
 **State** | **string** | The state of the stream processor. | [readonly] 
 **Stats** | Pointer to **interface{}** | The stats associated with the stream processor. | [optional] [readonly] 
@@ -92,6 +93,30 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+### GetOptions
+
+`func (o *StreamsProcessorWithStats) GetOptions() StreamsOptions`
+
+GetOptions returns the Options field if non-nil, zero value otherwise.
+
+### GetOptionsOk
+
+`func (o *StreamsProcessorWithStats) GetOptionsOk() (*StreamsOptions, bool)`
+
+GetOptionsOk returns a tuple with the Options field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOptions
+
+`func (o *StreamsProcessorWithStats) SetOptions(v StreamsOptions)`
+
+SetOptions sets Options field to given value.
+
+### HasOptions
+
+`func (o *StreamsProcessorWithStats) HasOptions() bool`
+
+HasOptions returns a boolean if a field has been set.
 ### GetPipeline
 
 `func (o *StreamsProcessorWithStats) GetPipeline() []interface{}`

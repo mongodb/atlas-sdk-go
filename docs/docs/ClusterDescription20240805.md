@@ -12,6 +12,8 @@ Name | Type | Description | Notes
 **CreateDate** | Pointer to **time.Time** | Date and time when MongoDB Cloud created this cluster. This parameter expresses its value in ISO 8601 format in UTC. | [optional] [readonly] 
 **DiskWarmingMode** | Pointer to **string** | Disk warming mode selection. | [optional] [default to "FULLY_WARMED"]
 **EncryptionAtRestProvider** | Pointer to **string** | Cloud service provider that manages your customer keys to provide an additional layer of encryption at rest for the cluster. To enable customer key management for encryption at rest, the cluster **replicationSpecs[n].regionConfigs[m].{type}Specs.instanceSize** setting must be &#x60;M10&#x60; or higher and &#x60;\&quot;backupEnabled\&quot; : false&#x60; or omitted entirely. | [optional] 
+**FeatureCompatibilityVersion** | Pointer to **string** | Feature compatibility version of the cluster. | [optional] [readonly] 
+**FeatureCompatibilityVersionExpirationDate** | Pointer to **time.Time** | Feature compatibility version expiration date. | [optional] [readonly] 
 **GlobalClusterSelfManagedSharding** | Pointer to **bool** | Set this field to configure the Sharding Management Mode when creating a new Global Cluster.  When set to false, the management mode is set to Atlas-Managed Sharding. This mode fully manages the sharding of your Global Cluster and is built to provide a seamless deployment experience.  When set to true, the management mode is set to Self-Managed Sharding. This mode leaves the management of shards in your hands and is built to provide an advanced and flexible deployment experience.  This setting cannot be changed once the cluster is deployed. | [optional] 
 **GroupId** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the project. | [optional] [readonly] 
 **Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the cluster. | [optional] [readonly] 
@@ -241,6 +243,54 @@ SetEncryptionAtRestProvider sets EncryptionAtRestProvider field to given value.
 `func (o *ClusterDescription20240805) HasEncryptionAtRestProvider() bool`
 
 HasEncryptionAtRestProvider returns a boolean if a field has been set.
+### GetFeatureCompatibilityVersion
+
+`func (o *ClusterDescription20240805) GetFeatureCompatibilityVersion() string`
+
+GetFeatureCompatibilityVersion returns the FeatureCompatibilityVersion field if non-nil, zero value otherwise.
+
+### GetFeatureCompatibilityVersionOk
+
+`func (o *ClusterDescription20240805) GetFeatureCompatibilityVersionOk() (*string, bool)`
+
+GetFeatureCompatibilityVersionOk returns a tuple with the FeatureCompatibilityVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFeatureCompatibilityVersion
+
+`func (o *ClusterDescription20240805) SetFeatureCompatibilityVersion(v string)`
+
+SetFeatureCompatibilityVersion sets FeatureCompatibilityVersion field to given value.
+
+### HasFeatureCompatibilityVersion
+
+`func (o *ClusterDescription20240805) HasFeatureCompatibilityVersion() bool`
+
+HasFeatureCompatibilityVersion returns a boolean if a field has been set.
+### GetFeatureCompatibilityVersionExpirationDate
+
+`func (o *ClusterDescription20240805) GetFeatureCompatibilityVersionExpirationDate() time.Time`
+
+GetFeatureCompatibilityVersionExpirationDate returns the FeatureCompatibilityVersionExpirationDate field if non-nil, zero value otherwise.
+
+### GetFeatureCompatibilityVersionExpirationDateOk
+
+`func (o *ClusterDescription20240805) GetFeatureCompatibilityVersionExpirationDateOk() (*time.Time, bool)`
+
+GetFeatureCompatibilityVersionExpirationDateOk returns a tuple with the FeatureCompatibilityVersionExpirationDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFeatureCompatibilityVersionExpirationDate
+
+`func (o *ClusterDescription20240805) SetFeatureCompatibilityVersionExpirationDate(v time.Time)`
+
+SetFeatureCompatibilityVersionExpirationDate sets FeatureCompatibilityVersionExpirationDate field to given value.
+
+### HasFeatureCompatibilityVersionExpirationDate
+
+`func (o *ClusterDescription20240805) HasFeatureCompatibilityVersionExpirationDate() bool`
+
+HasFeatureCompatibilityVersionExpirationDate returns a boolean if a field has been set.
 ### GetGlobalClusterSelfManagedSharding
 
 `func (o *ClusterDescription20240805) GetGlobalClusterSelfManagedSharding() bool`

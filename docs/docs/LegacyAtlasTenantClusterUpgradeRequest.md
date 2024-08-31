@@ -14,6 +14,8 @@ Name | Type | Description | Notes
 **DiskSizeGB** | Pointer to **float64** | Storage capacity of instance data volumes expressed in gigabytes. Increase this number to add capacity.   This value is not configurable on M0/M2/M5 clusters.   MongoDB Cloud requires this parameter if you set **replicationSpecs**.   If you specify a disk size below the minimum (10 GB), this parameter defaults to the minimum disk size value.    Storage charge calculations depend on whether you choose the default value or a custom value.   The maximum value for disk storage cannot exceed 50 times the maximum RAM for the selected cluster. If you require more storage space, consider upgrading your cluster to a higher tier. | [optional] 
 **DiskWarmingMode** | Pointer to **string** | Disk warming mode selection. | [optional] [default to "FULLY_WARMED"]
 **EncryptionAtRestProvider** | Pointer to **string** | Cloud service provider that manages your customer keys to provide an additional layer of Encryption at Rest for the cluster. | [optional] 
+**FeatureCompatibilityVersion** | Pointer to **string** | Feature compatibility version of the cluster. | [optional] [readonly] 
+**FeatureCompatibilityVersionExpirationDate** | Pointer to **time.Time** | Feature compatibility version expiration date. | [optional] [readonly] 
 **GlobalClusterSelfManagedSharding** | Pointer to **bool** | Set this field to configure the Sharding Management Mode when creating a new Global Cluster.  When set to false, the management mode is set to Atlas-Managed Sharding. This mode fully manages the sharding of your Global Cluster and is built to provide a seamless deployment experience.  When set to true, the management mode is set to Self-Managed Sharding. This mode leaves the management of shards in your hands and is built to provide an advanced and flexible deployment experience.  This setting cannot be changed once the cluster is deployed. | [optional] 
 **GroupId** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the project. | [optional] [readonly] 
 **Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the cluster. | [optional] [readonly] 
@@ -300,6 +302,54 @@ SetEncryptionAtRestProvider sets EncryptionAtRestProvider field to given value.
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) HasEncryptionAtRestProvider() bool`
 
 HasEncryptionAtRestProvider returns a boolean if a field has been set.
+### GetFeatureCompatibilityVersion
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) GetFeatureCompatibilityVersion() string`
+
+GetFeatureCompatibilityVersion returns the FeatureCompatibilityVersion field if non-nil, zero value otherwise.
+
+### GetFeatureCompatibilityVersionOk
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) GetFeatureCompatibilityVersionOk() (*string, bool)`
+
+GetFeatureCompatibilityVersionOk returns a tuple with the FeatureCompatibilityVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFeatureCompatibilityVersion
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) SetFeatureCompatibilityVersion(v string)`
+
+SetFeatureCompatibilityVersion sets FeatureCompatibilityVersion field to given value.
+
+### HasFeatureCompatibilityVersion
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) HasFeatureCompatibilityVersion() bool`
+
+HasFeatureCompatibilityVersion returns a boolean if a field has been set.
+### GetFeatureCompatibilityVersionExpirationDate
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) GetFeatureCompatibilityVersionExpirationDate() time.Time`
+
+GetFeatureCompatibilityVersionExpirationDate returns the FeatureCompatibilityVersionExpirationDate field if non-nil, zero value otherwise.
+
+### GetFeatureCompatibilityVersionExpirationDateOk
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) GetFeatureCompatibilityVersionExpirationDateOk() (*time.Time, bool)`
+
+GetFeatureCompatibilityVersionExpirationDateOk returns a tuple with the FeatureCompatibilityVersionExpirationDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFeatureCompatibilityVersionExpirationDate
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) SetFeatureCompatibilityVersionExpirationDate(v time.Time)`
+
+SetFeatureCompatibilityVersionExpirationDate sets FeatureCompatibilityVersionExpirationDate field to given value.
+
+### HasFeatureCompatibilityVersionExpirationDate
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) HasFeatureCompatibilityVersionExpirationDate() bool`
+
+HasFeatureCompatibilityVersionExpirationDate returns a boolean if a field has been set.
 ### GetGlobalClusterSelfManagedSharding
 
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) GetGlobalClusterSelfManagedSharding() bool`
