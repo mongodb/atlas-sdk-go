@@ -8,7 +8,7 @@ import (
 
 	"context"
 
-	"go.mongodb.org/atlas-sdk/v20240805002/admin"
+	"go.mongodb.org/atlas-sdk/v20240805003/admin"
 
 	retryablehttp "github.com/hashicorp/go-retryablehttp"
 	"github.com/mongodb-forks/digest"
