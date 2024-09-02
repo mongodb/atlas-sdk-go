@@ -10,7 +10,7 @@ Method | HTTP request | Description
 [**GetInvoice**](InvoicesApi.md#GetInvoice) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId} | Return One Organization Invoice
 [**ListInvoices**](InvoicesApi.md#ListInvoices) | **Get** /api/atlas/v2/orgs/{orgId}/invoices | Return All Invoices for One Organization
 [**ListPendingInvoices**](InvoicesApi.md#ListPendingInvoices) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/pending | Return All Pending Invoices for One Organization
-[**QueryLineItemsFromSingleInvoice**](InvoicesApi.md#QueryLineItemsFromSingleInvoice) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/lineItems/:search | Query lineItems of the specified invoiceId
+[**QueryLineItemsFromSingleInvoice**](InvoicesApi.md#QueryLineItemsFromSingleInvoice) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/lineItems:search | Query lineItems of the specified invoiceId
 
 
 
@@ -31,7 +31,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240805002/admin"
+    "go.mongodb.org/atlas-sdk/v20240805003/admin"
 )
 
 func main() {
@@ -113,7 +113,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240805002/admin"
+    "go.mongodb.org/atlas-sdk/v20240805003/admin"
 )
 
 func main() {
@@ -196,7 +196,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240805002/admin"
+    "go.mongodb.org/atlas-sdk/v20240805003/admin"
 )
 
 func main() {
@@ -279,7 +279,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240805002/admin"
+    "go.mongodb.org/atlas-sdk/v20240805003/admin"
 )
 
 func main() {
@@ -362,7 +362,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240805002/admin"
+    "go.mongodb.org/atlas-sdk/v20240805003/admin"
 )
 
 func main() {
@@ -460,7 +460,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240805002/admin"
+    "go.mongodb.org/atlas-sdk/v20240805003/admin"
 )
 
 func main() {
@@ -540,7 +540,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240805002/admin"
+    "go.mongodb.org/atlas-sdk/v20240805003/admin"
 )
 
 func main() {
