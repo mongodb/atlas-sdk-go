@@ -74,6 +74,9 @@ type EventViewForOrg struct {
 	ResourceId *string `json:"resourceId,omitempty"`
 	// Unique identifier of resource type.
 	ResourceType *string `json:"resourceType,omitempty"`
+	// Unique 24-hexadecimal character string that identifies the resource policy.
+	// Read only field.
+	ResourcePolicyId *string `json:"resourcePolicyId,omitempty"`
 }
 
 // NewEventViewForOrg instantiates a new EventViewForOrg object
@@ -850,6 +853,39 @@ func (o *EventViewForOrg) HasResourceType() bool {
 // SetResourceType gets a reference to the given string and assigns it to the ResourceType field.
 func (o *EventViewForOrg) SetResourceType(v string) {
 	o.ResourceType = &v
+}
+
+// GetResourcePolicyId returns the ResourcePolicyId field value if set, zero value otherwise
+func (o *EventViewForOrg) GetResourcePolicyId() string {
+	if o == nil || IsNil(o.ResourcePolicyId) {
+		var ret string
+		return ret
+	}
+	return *o.ResourcePolicyId
+}
+
+// GetResourcePolicyIdOk returns a tuple with the ResourcePolicyId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EventViewForOrg) GetResourcePolicyIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ResourcePolicyId) {
+		return nil, false
+	}
+
+	return o.ResourcePolicyId, true
+}
+
+// HasResourcePolicyId returns a boolean if a field has been set.
+func (o *EventViewForOrg) HasResourcePolicyId() bool {
+	if o != nil && !IsNil(o.ResourcePolicyId) {
+		return true
+	}
+
+	return false
+}
+
+// SetResourcePolicyId gets a reference to the given string and assigns it to the ResourcePolicyId field.
+func (o *EventViewForOrg) SetResourcePolicyId(v string) {
+	o.ResourcePolicyId = &v
 }
 
 func (o EventViewForOrg) MarshalJSONWithoutReadOnly() ([]byte, error) {

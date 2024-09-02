@@ -352,6 +352,168 @@ func (_c *StreamsApi_CreateStreamInstanceWithParams_Call) RunAndReturn(run func(
 	return _c
 }
 
+// CreateStreamInstanceWithSampleConnections provides a mock function with given fields: ctx, groupId, body
+func (_m *StreamsApi) CreateStreamInstanceWithSampleConnections(ctx context.Context, groupId string, body *interface{}) admin.CreateStreamInstanceWithSampleConnectionsApiRequest {
+	ret := _m.Called(ctx, groupId, body)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateStreamInstanceWithSampleConnections")
+	}
+
+	var r0 admin.CreateStreamInstanceWithSampleConnectionsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, *interface{}) admin.CreateStreamInstanceWithSampleConnectionsApiRequest); ok {
+		r0 = rf(ctx, groupId, body)
+	} else {
+		r0 = ret.Get(0).(admin.CreateStreamInstanceWithSampleConnectionsApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsApi_CreateStreamInstanceWithSampleConnections_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateStreamInstanceWithSampleConnections'
+type StreamsApi_CreateStreamInstanceWithSampleConnections_Call struct {
+	*mock.Call
+}
+
+// CreateStreamInstanceWithSampleConnections is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - body *interface{}
+func (_e *StreamsApi_Expecter) CreateStreamInstanceWithSampleConnections(ctx interface{}, groupId interface{}, body interface{}) *StreamsApi_CreateStreamInstanceWithSampleConnections_Call {
+	return &StreamsApi_CreateStreamInstanceWithSampleConnections_Call{Call: _e.mock.On("CreateStreamInstanceWithSampleConnections", ctx, groupId, body)}
+}
+
+func (_c *StreamsApi_CreateStreamInstanceWithSampleConnections_Call) Run(run func(ctx context.Context, groupId string, body *interface{})) *StreamsApi_CreateStreamInstanceWithSampleConnections_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(*interface{}))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_CreateStreamInstanceWithSampleConnections_Call) Return(_a0 admin.CreateStreamInstanceWithSampleConnectionsApiRequest) *StreamsApi_CreateStreamInstanceWithSampleConnections_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsApi_CreateStreamInstanceWithSampleConnections_Call) RunAndReturn(run func(context.Context, string, *interface{}) admin.CreateStreamInstanceWithSampleConnectionsApiRequest) *StreamsApi_CreateStreamInstanceWithSampleConnections_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreateStreamInstanceWithSampleConnectionsExecute provides a mock function with given fields: r
+func (_m *StreamsApi) CreateStreamInstanceWithSampleConnectionsExecute(r admin.CreateStreamInstanceWithSampleConnectionsApiRequest) (*admin.StreamsTenant, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateStreamInstanceWithSampleConnectionsExecute")
+	}
+
+	var r0 *admin.StreamsTenant
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.CreateStreamInstanceWithSampleConnectionsApiRequest) (*admin.StreamsTenant, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.CreateStreamInstanceWithSampleConnectionsApiRequest) *admin.StreamsTenant); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.StreamsTenant)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.CreateStreamInstanceWithSampleConnectionsApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.CreateStreamInstanceWithSampleConnectionsApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// StreamsApi_CreateStreamInstanceWithSampleConnectionsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateStreamInstanceWithSampleConnectionsExecute'
+type StreamsApi_CreateStreamInstanceWithSampleConnectionsExecute_Call struct {
+	*mock.Call
+}
+
+// CreateStreamInstanceWithSampleConnectionsExecute is a helper method to define mock.On call
+//   - r admin.CreateStreamInstanceWithSampleConnectionsApiRequest
+func (_e *StreamsApi_Expecter) CreateStreamInstanceWithSampleConnectionsExecute(r interface{}) *StreamsApi_CreateStreamInstanceWithSampleConnectionsExecute_Call {
+	return &StreamsApi_CreateStreamInstanceWithSampleConnectionsExecute_Call{Call: _e.mock.On("CreateStreamInstanceWithSampleConnectionsExecute", r)}
+}
+
+func (_c *StreamsApi_CreateStreamInstanceWithSampleConnectionsExecute_Call) Run(run func(r admin.CreateStreamInstanceWithSampleConnectionsApiRequest)) *StreamsApi_CreateStreamInstanceWithSampleConnectionsExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.CreateStreamInstanceWithSampleConnectionsApiRequest))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_CreateStreamInstanceWithSampleConnectionsExecute_Call) Return(_a0 *admin.StreamsTenant, _a1 *http.Response, _a2 error) *StreamsApi_CreateStreamInstanceWithSampleConnectionsExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *StreamsApi_CreateStreamInstanceWithSampleConnectionsExecute_Call) RunAndReturn(run func(admin.CreateStreamInstanceWithSampleConnectionsApiRequest) (*admin.StreamsTenant, *http.Response, error)) *StreamsApi_CreateStreamInstanceWithSampleConnectionsExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreateStreamInstanceWithSampleConnectionsWithParams provides a mock function with given fields: ctx, args
+func (_m *StreamsApi) CreateStreamInstanceWithSampleConnectionsWithParams(ctx context.Context, args *admin.CreateStreamInstanceWithSampleConnectionsApiParams) admin.CreateStreamInstanceWithSampleConnectionsApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateStreamInstanceWithSampleConnectionsWithParams")
+	}
+
+	var r0 admin.CreateStreamInstanceWithSampleConnectionsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateStreamInstanceWithSampleConnectionsApiParams) admin.CreateStreamInstanceWithSampleConnectionsApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.CreateStreamInstanceWithSampleConnectionsApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsApi_CreateStreamInstanceWithSampleConnectionsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateStreamInstanceWithSampleConnectionsWithParams'
+type StreamsApi_CreateStreamInstanceWithSampleConnectionsWithParams_Call struct {
+	*mock.Call
+}
+
+// CreateStreamInstanceWithSampleConnectionsWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.CreateStreamInstanceWithSampleConnectionsApiParams
+func (_e *StreamsApi_Expecter) CreateStreamInstanceWithSampleConnectionsWithParams(ctx interface{}, args interface{}) *StreamsApi_CreateStreamInstanceWithSampleConnectionsWithParams_Call {
+	return &StreamsApi_CreateStreamInstanceWithSampleConnectionsWithParams_Call{Call: _e.mock.On("CreateStreamInstanceWithSampleConnectionsWithParams", ctx, args)}
+}
+
+func (_c *StreamsApi_CreateStreamInstanceWithSampleConnectionsWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateStreamInstanceWithSampleConnectionsApiParams)) *StreamsApi_CreateStreamInstanceWithSampleConnectionsWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.CreateStreamInstanceWithSampleConnectionsApiParams))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_CreateStreamInstanceWithSampleConnectionsWithParams_Call) Return(_a0 admin.CreateStreamInstanceWithSampleConnectionsApiRequest) *StreamsApi_CreateStreamInstanceWithSampleConnectionsWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsApi_CreateStreamInstanceWithSampleConnectionsWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateStreamInstanceWithSampleConnectionsApiParams) admin.CreateStreamInstanceWithSampleConnectionsApiRequest) *StreamsApi_CreateStreamInstanceWithSampleConnectionsWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // CreateStreamProcessor provides a mock function with given fields: ctx, groupId, tenantName, streamsProcessor
 func (_m *StreamsApi) CreateStreamProcessor(ctx context.Context, groupId string, tenantName string, streamsProcessor *admin.StreamsProcessor) admin.CreateStreamProcessorApiRequest {
 	ret := _m.Called(ctx, groupId, tenantName, streamsProcessor)

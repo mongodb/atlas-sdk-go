@@ -21,9 +21,16 @@ type ClusterDescription20240805 struct {
 	// Read only field.
 	CreateDate *time.Time `json:"createDate,omitempty"`
 	// Disk warming mode selection.
-	DiskWarmingMode *string `json:"diskWarmingMode,omitempty"`
+	DiskWarmingMode     *string              `json:"diskWarmingMode,omitempty"`
+	EmployeeAccessGrant *EmployeeAccessGrant `json:"employeeAccessGrant,omitempty"`
 	// Cloud service provider that manages your customer keys to provide an additional layer of encryption at rest for the cluster. To enable customer key management for encryption at rest, the cluster **replicationSpecs[n].regionConfigs[m].{type}Specs.instanceSize** setting must be `M10` or higher and `\"backupEnabled\" : false` or omitted entirely.
 	EncryptionAtRestProvider *string `json:"encryptionAtRestProvider,omitempty"`
+	// Feature compatibility version of the cluster.
+	// Read only field.
+	FeatureCompatibilityVersion *string `json:"featureCompatibilityVersion,omitempty"`
+	// Feature compatibility version expiration date.
+	// Read only field.
+	FeatureCompatibilityVersionExpirationDate *time.Time `json:"featureCompatibilityVersionExpirationDate,omitempty"`
 	// Set this field to configure the Sharding Management Mode when creating a new Global Cluster.  When set to false, the management mode is set to Atlas-Managed Sharding. This mode fully manages the sharding of your Global Cluster and is built to provide a seamless deployment experience.  When set to true, the management mode is set to Self-Managed Sharding. This mode leaves the management of shards in your hands and is built to provide an advanced and flexible deployment experience.  This setting cannot be changed once the cluster is deployed.
 	GlobalClusterSelfManagedSharding *bool `json:"globalClusterSelfManagedSharding,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the project.
@@ -338,6 +345,39 @@ func (o *ClusterDescription20240805) SetDiskWarmingMode(v string) {
 	o.DiskWarmingMode = &v
 }
 
+// GetEmployeeAccessGrant returns the EmployeeAccessGrant field value if set, zero value otherwise
+func (o *ClusterDescription20240805) GetEmployeeAccessGrant() EmployeeAccessGrant {
+	if o == nil || IsNil(o.EmployeeAccessGrant) {
+		var ret EmployeeAccessGrant
+		return ret
+	}
+	return *o.EmployeeAccessGrant
+}
+
+// GetEmployeeAccessGrantOk returns a tuple with the EmployeeAccessGrant field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterDescription20240805) GetEmployeeAccessGrantOk() (*EmployeeAccessGrant, bool) {
+	if o == nil || IsNil(o.EmployeeAccessGrant) {
+		return nil, false
+	}
+
+	return o.EmployeeAccessGrant, true
+}
+
+// HasEmployeeAccessGrant returns a boolean if a field has been set.
+func (o *ClusterDescription20240805) HasEmployeeAccessGrant() bool {
+	if o != nil && !IsNil(o.EmployeeAccessGrant) {
+		return true
+	}
+
+	return false
+}
+
+// SetEmployeeAccessGrant gets a reference to the given EmployeeAccessGrant and assigns it to the EmployeeAccessGrant field.
+func (o *ClusterDescription20240805) SetEmployeeAccessGrant(v EmployeeAccessGrant) {
+	o.EmployeeAccessGrant = &v
+}
+
 // GetEncryptionAtRestProvider returns the EncryptionAtRestProvider field value if set, zero value otherwise
 func (o *ClusterDescription20240805) GetEncryptionAtRestProvider() string {
 	if o == nil || IsNil(o.EncryptionAtRestProvider) {
@@ -369,6 +409,72 @@ func (o *ClusterDescription20240805) HasEncryptionAtRestProvider() bool {
 // SetEncryptionAtRestProvider gets a reference to the given string and assigns it to the EncryptionAtRestProvider field.
 func (o *ClusterDescription20240805) SetEncryptionAtRestProvider(v string) {
 	o.EncryptionAtRestProvider = &v
+}
+
+// GetFeatureCompatibilityVersion returns the FeatureCompatibilityVersion field value if set, zero value otherwise
+func (o *ClusterDescription20240805) GetFeatureCompatibilityVersion() string {
+	if o == nil || IsNil(o.FeatureCompatibilityVersion) {
+		var ret string
+		return ret
+	}
+	return *o.FeatureCompatibilityVersion
+}
+
+// GetFeatureCompatibilityVersionOk returns a tuple with the FeatureCompatibilityVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterDescription20240805) GetFeatureCompatibilityVersionOk() (*string, bool) {
+	if o == nil || IsNil(o.FeatureCompatibilityVersion) {
+		return nil, false
+	}
+
+	return o.FeatureCompatibilityVersion, true
+}
+
+// HasFeatureCompatibilityVersion returns a boolean if a field has been set.
+func (o *ClusterDescription20240805) HasFeatureCompatibilityVersion() bool {
+	if o != nil && !IsNil(o.FeatureCompatibilityVersion) {
+		return true
+	}
+
+	return false
+}
+
+// SetFeatureCompatibilityVersion gets a reference to the given string and assigns it to the FeatureCompatibilityVersion field.
+func (o *ClusterDescription20240805) SetFeatureCompatibilityVersion(v string) {
+	o.FeatureCompatibilityVersion = &v
+}
+
+// GetFeatureCompatibilityVersionExpirationDate returns the FeatureCompatibilityVersionExpirationDate field value if set, zero value otherwise
+func (o *ClusterDescription20240805) GetFeatureCompatibilityVersionExpirationDate() time.Time {
+	if o == nil || IsNil(o.FeatureCompatibilityVersionExpirationDate) {
+		var ret time.Time
+		return ret
+	}
+	return *o.FeatureCompatibilityVersionExpirationDate
+}
+
+// GetFeatureCompatibilityVersionExpirationDateOk returns a tuple with the FeatureCompatibilityVersionExpirationDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterDescription20240805) GetFeatureCompatibilityVersionExpirationDateOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.FeatureCompatibilityVersionExpirationDate) {
+		return nil, false
+	}
+
+	return o.FeatureCompatibilityVersionExpirationDate, true
+}
+
+// HasFeatureCompatibilityVersionExpirationDate returns a boolean if a field has been set.
+func (o *ClusterDescription20240805) HasFeatureCompatibilityVersionExpirationDate() bool {
+	if o != nil && !IsNil(o.FeatureCompatibilityVersionExpirationDate) {
+		return true
+	}
+
+	return false
+}
+
+// SetFeatureCompatibilityVersionExpirationDate gets a reference to the given time.Time and assigns it to the FeatureCompatibilityVersionExpirationDate field.
+func (o *ClusterDescription20240805) SetFeatureCompatibilityVersionExpirationDate(v time.Time) {
+	o.FeatureCompatibilityVersionExpirationDate = &v
 }
 
 // GetGlobalClusterSelfManagedSharding returns the GlobalClusterSelfManagedSharding field value if set, zero value otherwise
@@ -961,6 +1067,9 @@ func (o ClusterDescription20240805) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.DiskWarmingMode) {
 		toSerialize["diskWarmingMode"] = o.DiskWarmingMode
+	}
+	if !IsNil(o.EmployeeAccessGrant) {
+		toSerialize["employeeAccessGrant"] = o.EmployeeAccessGrant
 	}
 	if !IsNil(o.EncryptionAtRestProvider) {
 		toSerialize["encryptionAtRestProvider"] = o.EncryptionAtRestProvider
