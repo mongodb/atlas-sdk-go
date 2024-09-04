@@ -8,6 +8,8 @@ import (
 
 // ClusterDescriptionProcessArgs20240805 struct for ClusterDescriptionProcessArgs20240805
 type ClusterDescriptionProcessArgs20240805 struct {
+	// The minimum pre- and post-image retention time in seconds.
+	ChangeStreamOptionsPreAndPostImagesExpireAfterSeconds *int `json:"changeStreamOptionsPreAndPostImagesExpireAfterSeconds,omitempty"`
 	// Number of threads on the source shard and the receiving shard for chunk migration. The number of threads should not exceed the half the total number of CPU cores in the sharded cluster.
 	ChunkMigrationConcurrency *int `json:"chunkMigrationConcurrency,omitempty"`
 	// Default level of acknowledgment requested from MongoDB for write operations when none is specified by the driver.
@@ -51,6 +53,39 @@ func NewClusterDescriptionProcessArgs20240805WithDefaults() *ClusterDescriptionP
 	var sampleRefreshIntervalBIConnector int = 0
 	this.SampleRefreshIntervalBIConnector = &sampleRefreshIntervalBIConnector
 	return &this
+}
+
+// GetChangeStreamOptionsPreAndPostImagesExpireAfterSeconds returns the ChangeStreamOptionsPreAndPostImagesExpireAfterSeconds field value if set, zero value otherwise
+func (o *ClusterDescriptionProcessArgs20240805) GetChangeStreamOptionsPreAndPostImagesExpireAfterSeconds() int {
+	if o == nil || IsNil(o.ChangeStreamOptionsPreAndPostImagesExpireAfterSeconds) {
+		var ret int
+		return ret
+	}
+	return *o.ChangeStreamOptionsPreAndPostImagesExpireAfterSeconds
+}
+
+// GetChangeStreamOptionsPreAndPostImagesExpireAfterSecondsOk returns a tuple with the ChangeStreamOptionsPreAndPostImagesExpireAfterSeconds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterDescriptionProcessArgs20240805) GetChangeStreamOptionsPreAndPostImagesExpireAfterSecondsOk() (*int, bool) {
+	if o == nil || IsNil(o.ChangeStreamOptionsPreAndPostImagesExpireAfterSeconds) {
+		return nil, false
+	}
+
+	return o.ChangeStreamOptionsPreAndPostImagesExpireAfterSeconds, true
+}
+
+// HasChangeStreamOptionsPreAndPostImagesExpireAfterSeconds returns a boolean if a field has been set.
+func (o *ClusterDescriptionProcessArgs20240805) HasChangeStreamOptionsPreAndPostImagesExpireAfterSeconds() bool {
+	if o != nil && !IsNil(o.ChangeStreamOptionsPreAndPostImagesExpireAfterSeconds) {
+		return true
+	}
+
+	return false
+}
+
+// SetChangeStreamOptionsPreAndPostImagesExpireAfterSeconds gets a reference to the given int and assigns it to the ChangeStreamOptionsPreAndPostImagesExpireAfterSeconds field.
+func (o *ClusterDescriptionProcessArgs20240805) SetChangeStreamOptionsPreAndPostImagesExpireAfterSeconds(v int) {
+	o.ChangeStreamOptionsPreAndPostImagesExpireAfterSeconds = &v
 }
 
 // GetChunkMigrationConcurrency returns the ChunkMigrationConcurrency field value if set, zero value otherwise
@@ -425,6 +460,9 @@ func (o ClusterDescriptionProcessArgs20240805) MarshalJSONWithoutReadOnly() ([]b
 }
 func (o ClusterDescriptionProcessArgs20240805) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ChangeStreamOptionsPreAndPostImagesExpireAfterSeconds) {
+		toSerialize["changeStreamOptionsPreAndPostImagesExpireAfterSeconds"] = o.ChangeStreamOptionsPreAndPostImagesExpireAfterSeconds
+	}
 	if !IsNil(o.ChunkMigrationConcurrency) {
 		toSerialize["chunkMigrationConcurrency"] = o.ChunkMigrationConcurrency
 	}

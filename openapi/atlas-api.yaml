@@ -19,7 +19,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: c03417b1c3e8592c8d5fb7c492437d4bde6e5435
+  x-xgen-sha: 085f8ae69e1ffc3d0ceee3a41def9343083c26f9
 servers:
 - url: https://cloud.mongodb.com
 tags:
@@ -2889,130 +2889,72 @@ paths:
             examples:
               Cluster:
                 description: Cluster
-                value: |
-                  {
-                    "clusterType": "SHARDED",
-                    "links": [],
-                    "name": "myCluster",
-                    "replicationSpecs": [
-                      {
-                        "regionConfigs": [
-                          {
-                            "analyticsAutoScaling": {
-                              "autoIndexing": {
-                                "enabled": false
-                              },
-                              "compute": {
-                                "enabled": true,
-                                "maxInstanceSize": "M40",
-                                "minInstanceSize": "M30",
-                                "scaleDownEnabled": true
-                              },
-                              "diskGB": {
-                                "enabled": true
-                              }
-                            },
-                            "analyticsSpecs": {
-                              "instanceSize": "M30",
-                              "nodeCount": 0,
-                              "diskSizeGB": 10.0
-                            },
-                            "autoScaling": {
-                              "autoIndexing": {
-                                "enabled": false
-                              },
-                              "compute": {
-                                "enabled": true,
-                                "maxInstanceSize": "M40",
-                                "minInstanceSize": "M30",
-                                "scaleDownEnabled": true
-                              },
-                              "diskGB": {
-                                "enabled": true
-                              }
-                            },
-                            "electableSpecs": {
-                              "instanceSize": "M30",
-                              "nodeCount": 3,
-                              "diskSizeGB": 10.0
-                            },
-                            "hiddenSecondarySpecs": {
-                              "instanceSize": "M30",
-                              "nodeCount": 0,
-                              "diskSizeGB": 10.0
-                            },
-                            "priority": 7,
-                            "providerName": "AWS",
-                            "readOnlySpecs": {
-                              "instanceSize": "M30",
-                              "nodeCount": 0,
-                              "diskSizeGB": 10.0
-                            },
-                            "regionName": "US_EAST_1"
-                          }
-                        ],
-                        "zoneName": "Zone 1"
-                      },
-                      {
-                          "regionConfigs": [
-                            {
-                              "analyticsAutoScaling": {
-                                "autoIndexing": {
-                                  "enabled": false
-                                },
-                                "compute": {
-                                  "enabled": true,
-                                  "maxInstanceSize": "M20",
-                                  "minInstanceSize": "M10",
-                                  "scaleDownEnabled": true
-                                },
-                                "diskGB": {
-                                  "enabled": true
-                                }
-                              },
-                              "analyticsSpecs": {
-                                "instanceSize": "M10",
-                                "nodeCount": 0,
-                                "diskSizeGB": 10.0
-                              },
-                              "autoScaling": {
-                                "autoIndexing": {
-                                  "enabled": false
-                                },
-                                "compute": {
-                                  "enabled": true,
-                                  "maxInstanceSize": "M20",
-                                  "minInstanceSize": "M10",
-                                  "scaleDownEnabled": true
-                                },
-                                "diskGB": {
-                                  "enabled": true
-                                }
-                              },
-                              "electableSpecs": {
-                                "instanceSize": "M10",
-                                "nodeCount": 3,
-                                "diskSizeGB": 10.0
-                              },
-                              "hiddenSecondarySpecs": {
-                                "instanceSize": "M10",
-                                "nodeCount": 0,
-                                "diskSizeGB": 10.0
-                              },
-                              "priority": 7,
-                              "providerName": "AWS",
-                              "readOnlySpecs": {
-                                "instanceSize": "M10",
-                                "nodeCount": 0,
-                                "diskSizeGB": 10.0
-                              },
-                              "regionName": "US_EAST_1"
-                            }
-                          ],
-                          "zoneName": "Zone 1"
-                        },
-                    ]
-                  }
+                value:
+                  clusterType: SHARDED
+                  name: myCluster
+                  replicationSpecs:
+                  - regionConfigs:
+                    - analyticsAutoScaling:
+                        autoIndexing:
+                          enabled: false
+                        compute:
+                          enabled: false
+                        diskGB:
+                          enabled: true
+                      analyticsSpecs:
+                        diskSizeGB: 10.0
+                        instanceSize: M30
+                        nodeCount: 0
+                      autoScaling:
+                        autoIndexing:
+                          enabled: false
+                        compute:
+                          enabled: false
+                        diskGB:
+                          enabled: true
+                      electableSpecs:
+                        diskSizeGB: 10.0
+                        instanceSize: M30
+                        nodeCount: 3
+                      priority: 7
+                      providerName: AWS
+                      readOnlySpecs:
+                        diskSizeGB: 10.0
+                        instanceSize: M30
+                        nodeCount: 0
+                      regionName: US_EAST_1
+                    zoneName: Zone 1
+                  - regionConfigs:
+                    - analyticsAutoScaling:
+                        autoIndexing:
+                          enabled: false
+                        compute:
+                          enabled: false
+                        diskGB:
+                          enabled: true
+                      analyticsSpecs:
+                        diskSizeGB: 10.0
+                        instanceSize: M10
+                        nodeCount: 0
+                      autoScaling:
+                        autoIndexing:
+                          enabled: false
+                        compute:
+                          enabled: false
+                        diskGB:
+                          enabled: true
+                      electableSpecs:
+                        diskSizeGB: 10.0
+                        instanceSize: M10
+                        nodeCount: 3
+                      priority: 7
+                      providerName: AWS
+                      readOnlySpecs:
+                        diskSizeGB: 10.0
+                        instanceSize: M10
+                        nodeCount: 0
+                      regionName: US_EAST_1
+                    zoneName: Zone 1
             schema:
               $ref: "#/components/schemas/ClusterDescription20240805"
             x-xgen-version: 2024-08-05
@@ -26602,6 +26544,23 @@ components:
     ClusterDescriptionProcessArgs:
       type: object
       properties:
+        changeStreamOptionsPreAndPostImagesExpireAfterSeconds:
+          type: integer
+          format: int32
+          description: The minimum pre- and post-image retention time in seconds.
+          externalDocs:
+            description: "This option corresponds to the ``changeStreamOptions.preAndPostImages.expireAfterSeconds``\
+              \ cluster parameter. This setting controls the retention policy of change\
+              \ stream pre- and post-images. Pre- and post-images are the versions\
+              \ of a document before and after document modification, respectively.\
+              \ ``expireAfterSeconds`` controls how long MongoDB retains pre- and\
+              \ post-images. When set to -1 (off), MongoDB uses the default retention\
+              \ policy: pre- and post-images are retained until the corresponding\
+              \ change stream events are removed from the oplog. To set the minimum\
+              \ pre- and post-image retention time, specify an integer value greater\
+              \ than zero. Setting this too low could increase the risk of interrupting\
+              \ Realm sync or triggers processing. The default value is -1 (off)."
+            url: https://www.mongodb.com/docs/upcoming/reference/cluster-parameters/changeStreamOptions/#mongodb-parameter-param.changeStreamOptions.preAndPostImages.expireAfterSeconds
         chunkMigrationConcurrency:
           type: integer
           format: int32
@@ -26742,6 +26701,23 @@ components:
     ClusterDescriptionProcessArgs20240805:
       type: object
       properties:
+        changeStreamOptionsPreAndPostImagesExpireAfterSeconds:
+          type: integer
+          format: int32
+          description: The minimum pre- and post-image retention time in seconds.
+          externalDocs:
+            description: "This option corresponds to the ``changeStreamOptions.preAndPostImages.expireAfterSeconds``\
+              \ cluster parameter. This setting controls the retention policy of change\
+              \ stream pre- and post-images. Pre- and post-images are the versions\
+              \ of a document before and after document modification, respectively.\
+              \ ``expireAfterSeconds`` controls how long MongoDB retains pre- and\
+              \ post-images. When set to -1 (off), MongoDB uses the default retention\
+              \ policy: pre- and post-images are retained until the corresponding\
+              \ change stream events are removed from the oplog. To set the minimum\
+              \ pre- and post-image retention time, specify an integer value greater\
+              \ than zero. Setting this too low could increase the risk of interrupting\
+              \ Realm sync or triggers processing. The default value is -1 (off)."
+            url: https://www.mongodb.com/docs/upcoming/reference/cluster-parameters/changeStreamOptions/#mongodb-parameter-param.changeStreamOptions.preAndPostImages.expireAfterSeconds
         chunkMigrationConcurrency:
           type: integer
           format: int32
