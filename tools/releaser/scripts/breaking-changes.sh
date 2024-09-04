@@ -22,7 +22,7 @@ echo "Changed directory to $(pwd)"
 set +e
 BREAKING_CHANGES=$("$GOPATH/bin/go-apidiff" "$GIT_BASE_REF" --compare-imports="false" --print-compatible="false" )
 set -e
-#popd || exit
+popd || exit
 cmd_return_code=$?
 
 echo "Breaking changes finished with $cmd_return_code return code"
