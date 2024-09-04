@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ChangeStreamOptionsPreAndPostImagesExpireAfterSeconds** | Pointer to **int** | The minimum pre- and post-image retention time in seconds. | [optional] 
 **ChunkMigrationConcurrency** | Pointer to **int** | Number of threads on the source shard and the receiving shard for chunk migration. The number of threads should not exceed the half the total number of CPU cores in the sharded cluster. | [optional] 
 **DefaultWriteConcern** | Pointer to **string** | Default level of acknowledgment requested from MongoDB for write operations when none is specified by the driver. | [optional] 
 **JavascriptEnabled** | Pointer to **bool** | Flag that indicates whether the cluster allows execution of operations that perform server-side executions of JavaScript. | [optional] 
@@ -35,6 +36,30 @@ NewClusterDescriptionProcessArgs20240805WithDefaults instantiates a new ClusterD
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
+### GetChangeStreamOptionsPreAndPostImagesExpireAfterSeconds
+
+`func (o *ClusterDescriptionProcessArgs20240805) GetChangeStreamOptionsPreAndPostImagesExpireAfterSeconds() int`
+
+GetChangeStreamOptionsPreAndPostImagesExpireAfterSeconds returns the ChangeStreamOptionsPreAndPostImagesExpireAfterSeconds field if non-nil, zero value otherwise.
+
+### GetChangeStreamOptionsPreAndPostImagesExpireAfterSecondsOk
+
+`func (o *ClusterDescriptionProcessArgs20240805) GetChangeStreamOptionsPreAndPostImagesExpireAfterSecondsOk() (*int, bool)`
+
+GetChangeStreamOptionsPreAndPostImagesExpireAfterSecondsOk returns a tuple with the ChangeStreamOptionsPreAndPostImagesExpireAfterSeconds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChangeStreamOptionsPreAndPostImagesExpireAfterSeconds
+
+`func (o *ClusterDescriptionProcessArgs20240805) SetChangeStreamOptionsPreAndPostImagesExpireAfterSeconds(v int)`
+
+SetChangeStreamOptionsPreAndPostImagesExpireAfterSeconds sets ChangeStreamOptionsPreAndPostImagesExpireAfterSeconds field to given value.
+
+### HasChangeStreamOptionsPreAndPostImagesExpireAfterSeconds
+
+`func (o *ClusterDescriptionProcessArgs20240805) HasChangeStreamOptionsPreAndPostImagesExpireAfterSeconds() bool`
+
+HasChangeStreamOptionsPreAndPostImagesExpireAfterSeconds returns a boolean if a field has been set.
 ### GetChunkMigrationConcurrency
 
 `func (o *ClusterDescriptionProcessArgs20240805) GetChunkMigrationConcurrency() int`
