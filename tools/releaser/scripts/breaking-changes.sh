@@ -13,7 +13,7 @@ go install github.com/joelanford/go-apidiff@latest > /dev/null
 
 current_ref=$(git rev-parse main || echo)
 GIT_BASE_REF=${GIT_BASE_REF:-$current_ref}
-TARGET_BREAKING_CHANGES_FILE=${TARGET_BREAKING_CHANGES_FILE:""}
+TARGET_BREAKING_CHANGES_FILE=${TARGET_BREAKING_CHANGES_FILE:-""}
 
 echo "Running breaking changes check for $GIT_BASE_REF"
 
