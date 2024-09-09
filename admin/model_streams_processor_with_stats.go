@@ -21,10 +21,10 @@ type StreamsProcessorWithStats struct {
 	// Stream aggregation pipeline you want to apply to your streaming data.
 	// Read only field.
 	Pipeline []interface{} `json:"pipeline"`
-	// The state of the stream processor.
+	// The state of the stream processor. Commonly occurring states are 'CREATED', 'STARTED', 'STOPPED' and 'FAILED'.
 	// Read only field.
 	State string `json:"state"`
-	// The stats associated with the stream processor.
+	// The stats associated with the stream processor. [MongoDB Atlas Docs](https://www.mongodb.com/docs/atlas/atlas-stream-processing/manage-stream-processor/#view-statistics-of-a-stream-processor) contain more information.
 	// Read only field.
 	Stats interface{} `json:"stats,omitempty"`
 }

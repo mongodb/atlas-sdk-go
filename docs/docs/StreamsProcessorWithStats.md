@@ -9,8 +9,8 @@ Name | Type | Description | Notes
 **Name** | **string** | Human-readable name of the stream processor. | [readonly] 
 **Options** | Pointer to [**StreamsOptions**](StreamsOptions.md) |  | [optional] 
 **Pipeline** | **[]interface{}** | Stream aggregation pipeline you want to apply to your streaming data. | [readonly] 
-**State** | **string** | The state of the stream processor. | [readonly] 
-**Stats** | Pointer to **interface{}** | The stats associated with the stream processor. | [optional] [readonly] 
+**State** | **string** | The state of the stream processor. Commonly occurring states are &#39;CREATED&#39;, &#39;STARTED&#39;, &#39;STOPPED&#39; and &#39;FAILED&#39;. | [readonly] 
+**Stats** | Pointer to **interface{}** | The stats associated with the stream processor. [MongoDB Atlas Docs](https://www.mongodb.com/docs/atlas/atlas-stream-processing/manage-stream-processor/#view-statistics-of-a-stream-processor) contain more information. | [optional] [readonly] 
 
 ## Methods
 
