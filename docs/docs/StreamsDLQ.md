@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Coll** | Pointer to **string** | Name of the collection that will be used for the DLQ. | [optional] 
-**ConnectionName** | Pointer to **string** | Connection name that will be used to write DLQ messages to. Has to be an Atlas connection. | [optional] 
-**Db** | Pointer to **string** | Name of the database that will be used for the DLQ. | [optional] 
+**Coll** | Pointer to **string** | Name of the collection to use for the DLQ. | [optional] 
+**ConnectionName** | Pointer to **string** | Name of the connection to write DLQ messages to. Must be an Atlas connection. | [optional] 
+**Db** | Pointer to **string** | Name of the database to use for the DLQ. | [optional] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 
 ## Methods

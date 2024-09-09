@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **Name** | Pointer to **string** | Human-readable name of the stream processor. | [optional] 
 **Options** | Pointer to [**StreamsOptions**](StreamsOptions.md) |  | [optional] 
-**Pipeline** | Pointer to **[]interface{}** | Stream aggregation pipeline you want to apply to your streaming data. | [optional] 
+**Pipeline** | Pointer to **[]interface{}** | Stream aggregation pipeline you want to apply to your streaming data. [MongoDB Atlas Docs](https://www.mongodb.com/docs/atlas/atlas-stream-processing/stream-aggregation/#std-label-stream-aggregation) contain more information. | [optional] 
 
 ## Methods
 
