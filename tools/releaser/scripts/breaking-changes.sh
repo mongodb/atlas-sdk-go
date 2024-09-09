@@ -23,24 +23,18 @@ set +e
 BREAKING_CHANGES=$("$GOPATH/bin/go-apidiff" "$GIT_BASE_REF" --compare-imports="false" --print-compatible="false" )
 set -e
 popd || exit
-cmd_return_code=$?
-
-echo "Breaking changes finished with $cmd_return_code return code"
 
 if [ -z "$BREAKING_CHANGES" ]; then
     echo "No major breaking changes detected"
-    exit $cmd_return_code
-fi
-
-echo "Detected major breaking changes in the release"
-if [ -z "$TARGET_BREAKING_CHANGES_FILE" ]; then
-  echo "Breaking changes for the major release"
-  echo "$BREAKING_CHANGES"
 else
-  echo "Creating the breaking changes file with following breaking changes:"
-  echo "$BREAKING_CHANGES"
-  echo -e "# Breaking Changes\n## SDK changes\n$BREAKING_CHANGES\n## API Changelog\n https://www.mongodb.com/docs/atlas/reference/api-resources-spec/changelog" \
-  > "$script_path/../breaking_changes/${TARGET_BREAKING_CHANGES_FILE}.md"
+    echo "Detected major breaking changes in the release"
+    if [ -z "$TARGET_BREAKING_CHANGES_FILE" ]; then
+      echo "Breaking changes for the major release"
+      echo "$BREAKING_CHANGES"
+    else
+      echo "Creating the breaking changes file with following breaking changes:"
+      echo "$BREAKING_CHANGES"
+      echo -e "# Breaking Changes\n## SDK changes\n$BREAKING_CHANGES\n## API Changelog\n https://www.mongodb.com/docs/atlas/reference/api-resources-spec/changelog" \
+      > "$script_path/../breaking_changes/${TARGET_BREAKING_CHANGES_FILE}.md"
+    fi
 fi
- 
-exit $cmd_return_code
