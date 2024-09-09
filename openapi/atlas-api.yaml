@@ -19,7 +19,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 085f8ae69e1ffc3d0ceee3a41def9343083c26f9
+  x-xgen-sha: 15c3a64ffcd6d28715d577454a60bc7c9828e5f0
 servers:
 - url: https://cloud.mongodb.com
 tags:
@@ -32598,9 +32598,13 @@ components:
       type: object
       additionalProperties:
         type: object
-        description: The stats associated with the stream processor.
+        description: "The stats associated with the stream processor. [MongoDB Atlas\
+          \ Docs](https://www.mongodb.com/docs/atlas/atlas-stream-processing/manage-stream-processor/#view-statistics-of-a-stream-processor)\
+          \ contain more information."
         readOnly: true
-      description: The stats associated with the stream processor.
+      description: "The stats associated with the stream processor. [MongoDB Atlas\
+        \ Docs](https://www.mongodb.com/docs/atlas/atlas-stream-processing/manage-stream-processor/#view-statistics-of-a-stream-processor)\
+        \ contain more information."
       readOnly: true
     EARPrivateEndpoint:
       type: object
@@ -36073,7 +36077,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/EventViewForNdsGroup"
@@ -42646,7 +42650,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/EventViewForOrg"
@@ -43149,7 +43153,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/AdvancedClusterDescription"
@@ -43177,7 +43181,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/GroupAlertsConfig"
@@ -43205,7 +43209,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/AlertViewForNdsGroup"
@@ -43233,7 +43237,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/ApiKeyUserDetails"
@@ -43261,7 +43265,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/CloudAppUser"
@@ -43289,7 +43293,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/ApiAtlasCheckpointView"
@@ -43319,7 +43323,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/CloudDatabaseUser"
@@ -43347,7 +43351,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/DiskBackupExportJob"
@@ -43375,7 +43379,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/EARPrivateEndpoint"
@@ -43403,7 +43407,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/CloudProviderRegions"
@@ -43431,7 +43435,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/ServerlessBackupRestoreJob"
@@ -43459,7 +43463,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/ServerlessBackupSnapshot"
@@ -43487,7 +43491,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/USSBackupRestoreJob20250101"
@@ -43515,7 +43519,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/USSBackupSnapshot20250101"
@@ -43543,7 +43547,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/BillingInvoiceMetadata"
@@ -43571,7 +43575,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/BillingInvoice"
@@ -43599,7 +43603,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/StreamsConnection"
@@ -43627,7 +43631,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/StreamsProcessorWithStats"
@@ -43655,7 +43659,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/StreamsTenant"
@@ -43683,7 +43687,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/UserAccessListResponse"
@@ -43711,7 +43715,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/CloudAppUser"
@@ -43739,7 +43743,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/Group"
@@ -43767,7 +43771,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/MdbAvailableVersion"
@@ -43795,7 +43799,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/DiskBackupSnapshotAWSExportBucket"
@@ -43823,7 +43827,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/DiskBackupSnapshotExportBucket"
@@ -43851,7 +43855,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/DiskBackupSnapshot"
@@ -43879,7 +43883,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/DiskBackupReplicaSet"
@@ -43907,7 +43911,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/DiskBackupSnapshotRestoreJob"
@@ -43935,7 +43939,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/DiskBackupShardedClusterSnapshot"
@@ -43964,7 +43968,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/CloudProviderContainer"
@@ -43993,7 +43997,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/ClusterDescription20240805"
@@ -44021,7 +44025,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/ConnectedOrgConfig"
@@ -44050,7 +44054,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/BaseNetworkPeeringConnectionSettings"
@@ -44078,7 +44082,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/MesurementsDatabase"
@@ -44106,7 +44110,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/MeasurementDiskPartition"
@@ -44134,7 +44138,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/EventTypeDetails"
@@ -44162,7 +44166,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/FederationIdentityProvider"
@@ -44191,7 +44195,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/GroupServiceAccount"
@@ -44219,7 +44223,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/ApiHostView_Atlas"
@@ -44247,7 +44251,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/ThirdPartyIntegration"
@@ -44275,7 +44279,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/LegacyAtlasCluster"
@@ -44303,7 +44307,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/NetworkPermissionEntry"
@@ -44331,7 +44335,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/BackupOnlineArchive"
@@ -44359,7 +44363,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/OrgGroup"
@@ -44388,7 +44392,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/OrgServiceAccount"
@@ -44416,7 +44420,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/AtlasOrganization"
@@ -44444,7 +44448,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/IngestionPipelineRun"
@@ -44472,7 +44476,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/PrivateNetworkEndpointIdEntry"
@@ -44500,7 +44504,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/PublicApiUsageDetailsLineItemView"
@@ -44528,7 +44532,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/BackupRestoreJob"
@@ -44558,7 +44562,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/AuthFederationRoleMapping"
@@ -44586,7 +44590,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/ServerlessInstanceDescription"
@@ -44615,7 +44619,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/ServiceAccountGroup"
@@ -44643,7 +44647,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/ServiceAccountIPAccessListEntry"
@@ -44671,7 +44675,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/BackupSnapshot"
@@ -44699,7 +44703,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/TeamRole"
@@ -44727,7 +44731,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/TeamResponse"
@@ -44755,7 +44759,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/TenantRestore"
@@ -44783,7 +44787,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/BackupTenantSnapshot"
@@ -44811,7 +44815,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             type: object
@@ -44839,7 +44843,7 @@ components:
           readOnly: true
         results:
           type: array
-          description: List of returned documents that MongoDB Cloud providers when
+          description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
             $ref: "#/components/schemas/UserCert"
@@ -49319,18 +49323,19 @@ components:
       readOnly: true
     StreamsDLQ:
       type: object
-      description: Dead letter queue for the stream processor.
+      description: "Dead letter queue for the stream processor. [MongoDB Atlas Docs](https://www.mongodb.com/docs/atlas/reference/glossary/#std-term-dead-letter-queue)\
+        \ contain more information."
       properties:
         coll:
           type: string
-          description: Name of the collection that will be used for the DLQ.
+          description: Name of the collection to use for the DLQ.
         connectionName:
           type: string
-          description: Connection name that will be used to write DLQ messages to.
-            Has to be an Atlas connection.
+          description: Name of the connection to write DLQ messages to. Must be an
+            Atlas connection.
         db:
           type: string
-          description: Name of the database that will be used for the DLQ.
+          description: Name of the database to use for the DLQ.
         links:
           type: array
           description: "List of one or more Uniform Resource Locators (URLs) that\
@@ -49656,8 +49661,9 @@ components:
           $ref: "#/components/schemas/StreamsOptions"
         pipeline:
           type: array
-          description: Stream aggregation pipeline you want to apply to your streaming
-            data.
+          description: "Stream aggregation pipeline you want to apply to your streaming\
+            \ data. [MongoDB Atlas Docs](https://www.mongodb.com/docs/atlas/atlas-stream-processing/stream-aggregation/#std-label-stream-aggregation)\
+            \ contain more information."
           items:
             $ref: "#/components/schemas/Document"
     StreamsProcessorWithStats:
@@ -49699,15 +49705,20 @@ components:
           readOnly: true
         state:
           type: string
-          description: The state of the stream processor.
+          description: "The state of the stream processor. Commonly occurring states\
+            \ are 'CREATED', 'STARTED', 'STOPPED' and 'FAILED'."
           readOnly: true
         stats:
           type: object
           additionalProperties:
             type: object
-            description: The stats associated with the stream processor.
+            description: "The stats associated with the stream processor. [MongoDB\
+              \ Atlas Docs](https://www.mongodb.com/docs/atlas/atlas-stream-processing/manage-stream-processor/#view-statistics-of-a-stream-processor)\
+              \ contain more information."
             readOnly: true
-          description: The stats associated with the stream processor.
+          description: "The stats associated with the stream processor. [MongoDB Atlas\
+            \ Docs](https://www.mongodb.com/docs/atlas/atlas-stream-processing/manage-stream-processor/#view-statistics-of-a-stream-processor)\
+            \ contain more information."
           readOnly: true
       required:
       - _id
