@@ -46,7 +46,8 @@ type LegacyAtlasTenantClusterUpgradeRequest struct {
 	Labels *[]ComponentLabel `json:"labels,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
-	Links *[]Link `json:"links,omitempty"`
+	Links                      *[]Link              `json:"links,omitempty"`
+	MongoDBEmployeeAccessGrant *EmployeeAccessGrant `json:"mongoDBEmployeeAccessGrant,omitempty"`
 	// MongoDB major version of the cluster.  On creation: Choose from the available versions of MongoDB, or leave unspecified for the current recommended default in the MongoDB Cloud platform. The recommended version is a recent Long Term Support version. The default is not guaranteed to be the most recently released version throughout the entire release cycle. For versions available in a specific project, see the linked documentation or use the API endpoint for [project LTS versions endpoint](#tag/Projects/operation/getProjectLTSVersions).   On update: Increase version only by 1 major version at a time. If the cluster is pinned to a MongoDB feature compatibility version exactly one major version below the current MongoDB version, the MongoDB version can be downgraded to the previous major version.
 	MongoDBMajorVersion *string `json:"mongoDBMajorVersion,omitempty"`
 	// Version of MongoDB that the cluster runs.
@@ -704,6 +705,39 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *LegacyAtlasTenantClusterUpgradeRequest) SetLinks(v []Link) {
 	o.Links = &v
+}
+
+// GetMongoDBEmployeeAccessGrant returns the MongoDBEmployeeAccessGrant field value if set, zero value otherwise
+func (o *LegacyAtlasTenantClusterUpgradeRequest) GetMongoDBEmployeeAccessGrant() EmployeeAccessGrant {
+	if o == nil || IsNil(o.MongoDBEmployeeAccessGrant) {
+		var ret EmployeeAccessGrant
+		return ret
+	}
+	return *o.MongoDBEmployeeAccessGrant
+}
+
+// GetMongoDBEmployeeAccessGrantOk returns a tuple with the MongoDBEmployeeAccessGrant field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LegacyAtlasTenantClusterUpgradeRequest) GetMongoDBEmployeeAccessGrantOk() (*EmployeeAccessGrant, bool) {
+	if o == nil || IsNil(o.MongoDBEmployeeAccessGrant) {
+		return nil, false
+	}
+
+	return o.MongoDBEmployeeAccessGrant, true
+}
+
+// HasMongoDBEmployeeAccessGrant returns a boolean if a field has been set.
+func (o *LegacyAtlasTenantClusterUpgradeRequest) HasMongoDBEmployeeAccessGrant() bool {
+	if o != nil && !IsNil(o.MongoDBEmployeeAccessGrant) {
+		return true
+	}
+
+	return false
+}
+
+// SetMongoDBEmployeeAccessGrant gets a reference to the given EmployeeAccessGrant and assigns it to the MongoDBEmployeeAccessGrant field.
+func (o *LegacyAtlasTenantClusterUpgradeRequest) SetMongoDBEmployeeAccessGrant(v EmployeeAccessGrant) {
+	o.MongoDBEmployeeAccessGrant = &v
 }
 
 // GetMongoDBMajorVersion returns the MongoDBMajorVersion field value if set, zero value otherwise
@@ -1434,6 +1468,9 @@ func (o LegacyAtlasTenantClusterUpgradeRequest) ToMap() (map[string]interface{},
 	}
 	if !IsNil(o.Labels) {
 		toSerialize["labels"] = o.Labels
+	}
+	if !IsNil(o.MongoDBEmployeeAccessGrant) {
+		toSerialize["mongoDBEmployeeAccessGrant"] = o.MongoDBEmployeeAccessGrant
 	}
 	if !IsNil(o.MongoDBMajorVersion) {
 		toSerialize["mongoDBMajorVersion"] = o.MongoDBMajorVersion

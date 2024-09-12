@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20240805003/admin"
+	admin "go.mongodb.org/atlas-sdk/v20240805004/admin"
 
 	http "net/http"
 
@@ -988,6 +988,169 @@ func (_c *ClustersApi_GetSampleDatasetLoadStatusWithParams_Call) RunAndReturn(ru
 	return _c
 }
 
+// GrantMongoDBEmployeeAccess provides a mock function with given fields: ctx, groupId, clusterName, employeeAccessGrant
+func (_m *ClustersApi) GrantMongoDBEmployeeAccess(ctx context.Context, groupId string, clusterName string, employeeAccessGrant *admin.EmployeeAccessGrant) admin.GrantMongoDBEmployeeAccessApiRequest {
+	ret := _m.Called(ctx, groupId, clusterName, employeeAccessGrant)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GrantMongoDBEmployeeAccess")
+	}
+
+	var r0 admin.GrantMongoDBEmployeeAccessApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.EmployeeAccessGrant) admin.GrantMongoDBEmployeeAccessApiRequest); ok {
+		r0 = rf(ctx, groupId, clusterName, employeeAccessGrant)
+	} else {
+		r0 = ret.Get(0).(admin.GrantMongoDBEmployeeAccessApiRequest)
+	}
+
+	return r0
+}
+
+// ClustersApi_GrantMongoDBEmployeeAccess_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GrantMongoDBEmployeeAccess'
+type ClustersApi_GrantMongoDBEmployeeAccess_Call struct {
+	*mock.Call
+}
+
+// GrantMongoDBEmployeeAccess is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - clusterName string
+//   - employeeAccessGrant *admin.EmployeeAccessGrant
+func (_e *ClustersApi_Expecter) GrantMongoDBEmployeeAccess(ctx interface{}, groupId interface{}, clusterName interface{}, employeeAccessGrant interface{}) *ClustersApi_GrantMongoDBEmployeeAccess_Call {
+	return &ClustersApi_GrantMongoDBEmployeeAccess_Call{Call: _e.mock.On("GrantMongoDBEmployeeAccess", ctx, groupId, clusterName, employeeAccessGrant)}
+}
+
+func (_c *ClustersApi_GrantMongoDBEmployeeAccess_Call) Run(run func(ctx context.Context, groupId string, clusterName string, employeeAccessGrant *admin.EmployeeAccessGrant)) *ClustersApi_GrantMongoDBEmployeeAccess_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.EmployeeAccessGrant))
+	})
+	return _c
+}
+
+func (_c *ClustersApi_GrantMongoDBEmployeeAccess_Call) Return(_a0 admin.GrantMongoDBEmployeeAccessApiRequest) *ClustersApi_GrantMongoDBEmployeeAccess_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ClustersApi_GrantMongoDBEmployeeAccess_Call) RunAndReturn(run func(context.Context, string, string, *admin.EmployeeAccessGrant) admin.GrantMongoDBEmployeeAccessApiRequest) *ClustersApi_GrantMongoDBEmployeeAccess_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GrantMongoDBEmployeeAccessExecute provides a mock function with given fields: r
+func (_m *ClustersApi) GrantMongoDBEmployeeAccessExecute(r admin.GrantMongoDBEmployeeAccessApiRequest) (interface{}, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GrantMongoDBEmployeeAccessExecute")
+	}
+
+	var r0 interface{}
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.GrantMongoDBEmployeeAccessApiRequest) (interface{}, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.GrantMongoDBEmployeeAccessApiRequest) interface{}); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(interface{})
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.GrantMongoDBEmployeeAccessApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.GrantMongoDBEmployeeAccessApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// ClustersApi_GrantMongoDBEmployeeAccessExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GrantMongoDBEmployeeAccessExecute'
+type ClustersApi_GrantMongoDBEmployeeAccessExecute_Call struct {
+	*mock.Call
+}
+
+// GrantMongoDBEmployeeAccessExecute is a helper method to define mock.On call
+//   - r admin.GrantMongoDBEmployeeAccessApiRequest
+func (_e *ClustersApi_Expecter) GrantMongoDBEmployeeAccessExecute(r interface{}) *ClustersApi_GrantMongoDBEmployeeAccessExecute_Call {
+	return &ClustersApi_GrantMongoDBEmployeeAccessExecute_Call{Call: _e.mock.On("GrantMongoDBEmployeeAccessExecute", r)}
+}
+
+func (_c *ClustersApi_GrantMongoDBEmployeeAccessExecute_Call) Run(run func(r admin.GrantMongoDBEmployeeAccessApiRequest)) *ClustersApi_GrantMongoDBEmployeeAccessExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.GrantMongoDBEmployeeAccessApiRequest))
+	})
+	return _c
+}
+
+func (_c *ClustersApi_GrantMongoDBEmployeeAccessExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *ClustersApi_GrantMongoDBEmployeeAccessExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *ClustersApi_GrantMongoDBEmployeeAccessExecute_Call) RunAndReturn(run func(admin.GrantMongoDBEmployeeAccessApiRequest) (interface{}, *http.Response, error)) *ClustersApi_GrantMongoDBEmployeeAccessExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GrantMongoDBEmployeeAccessWithParams provides a mock function with given fields: ctx, args
+func (_m *ClustersApi) GrantMongoDBEmployeeAccessWithParams(ctx context.Context, args *admin.GrantMongoDBEmployeeAccessApiParams) admin.GrantMongoDBEmployeeAccessApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GrantMongoDBEmployeeAccessWithParams")
+	}
+
+	var r0 admin.GrantMongoDBEmployeeAccessApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GrantMongoDBEmployeeAccessApiParams) admin.GrantMongoDBEmployeeAccessApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.GrantMongoDBEmployeeAccessApiRequest)
+	}
+
+	return r0
+}
+
+// ClustersApi_GrantMongoDBEmployeeAccessWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GrantMongoDBEmployeeAccessWithParams'
+type ClustersApi_GrantMongoDBEmployeeAccessWithParams_Call struct {
+	*mock.Call
+}
+
+// GrantMongoDBEmployeeAccessWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.GrantMongoDBEmployeeAccessApiParams
+func (_e *ClustersApi_Expecter) GrantMongoDBEmployeeAccessWithParams(ctx interface{}, args interface{}) *ClustersApi_GrantMongoDBEmployeeAccessWithParams_Call {
+	return &ClustersApi_GrantMongoDBEmployeeAccessWithParams_Call{Call: _e.mock.On("GrantMongoDBEmployeeAccessWithParams", ctx, args)}
+}
+
+func (_c *ClustersApi_GrantMongoDBEmployeeAccessWithParams_Call) Run(run func(ctx context.Context, args *admin.GrantMongoDBEmployeeAccessApiParams)) *ClustersApi_GrantMongoDBEmployeeAccessWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.GrantMongoDBEmployeeAccessApiParams))
+	})
+	return _c
+}
+
+func (_c *ClustersApi_GrantMongoDBEmployeeAccessWithParams_Call) Return(_a0 admin.GrantMongoDBEmployeeAccessApiRequest) *ClustersApi_GrantMongoDBEmployeeAccessWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ClustersApi_GrantMongoDBEmployeeAccessWithParams_Call) RunAndReturn(run func(context.Context, *admin.GrantMongoDBEmployeeAccessApiParams) admin.GrantMongoDBEmployeeAccessApiRequest) *ClustersApi_GrantMongoDBEmployeeAccessWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // ListCloudProviderRegions provides a mock function with given fields: ctx, groupId
 func (_m *ClustersApi) ListCloudProviderRegions(ctx context.Context, groupId string) admin.ListCloudProviderRegionsApiRequest {
 	ret := _m.Called(ctx, groupId)
@@ -1628,6 +1791,168 @@ func (_c *ClustersApi_LoadSampleDatasetWithParams_Call) Return(_a0 admin.LoadSam
 }
 
 func (_c *ClustersApi_LoadSampleDatasetWithParams_Call) RunAndReturn(run func(context.Context, *admin.LoadSampleDatasetApiParams) admin.LoadSampleDatasetApiRequest) *ClustersApi_LoadSampleDatasetWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// RevokeMongoDBEmployeeAccess provides a mock function with given fields: ctx, groupId, clusterName
+func (_m *ClustersApi) RevokeMongoDBEmployeeAccess(ctx context.Context, groupId string, clusterName string) admin.RevokeMongoDBEmployeeAccessApiRequest {
+	ret := _m.Called(ctx, groupId, clusterName)
+
+	if len(ret) == 0 {
+		panic("no return value specified for RevokeMongoDBEmployeeAccess")
+	}
+
+	var r0 admin.RevokeMongoDBEmployeeAccessApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.RevokeMongoDBEmployeeAccessApiRequest); ok {
+		r0 = rf(ctx, groupId, clusterName)
+	} else {
+		r0 = ret.Get(0).(admin.RevokeMongoDBEmployeeAccessApiRequest)
+	}
+
+	return r0
+}
+
+// ClustersApi_RevokeMongoDBEmployeeAccess_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RevokeMongoDBEmployeeAccess'
+type ClustersApi_RevokeMongoDBEmployeeAccess_Call struct {
+	*mock.Call
+}
+
+// RevokeMongoDBEmployeeAccess is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - clusterName string
+func (_e *ClustersApi_Expecter) RevokeMongoDBEmployeeAccess(ctx interface{}, groupId interface{}, clusterName interface{}) *ClustersApi_RevokeMongoDBEmployeeAccess_Call {
+	return &ClustersApi_RevokeMongoDBEmployeeAccess_Call{Call: _e.mock.On("RevokeMongoDBEmployeeAccess", ctx, groupId, clusterName)}
+}
+
+func (_c *ClustersApi_RevokeMongoDBEmployeeAccess_Call) Run(run func(ctx context.Context, groupId string, clusterName string)) *ClustersApi_RevokeMongoDBEmployeeAccess_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string))
+	})
+	return _c
+}
+
+func (_c *ClustersApi_RevokeMongoDBEmployeeAccess_Call) Return(_a0 admin.RevokeMongoDBEmployeeAccessApiRequest) *ClustersApi_RevokeMongoDBEmployeeAccess_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ClustersApi_RevokeMongoDBEmployeeAccess_Call) RunAndReturn(run func(context.Context, string, string) admin.RevokeMongoDBEmployeeAccessApiRequest) *ClustersApi_RevokeMongoDBEmployeeAccess_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// RevokeMongoDBEmployeeAccessExecute provides a mock function with given fields: r
+func (_m *ClustersApi) RevokeMongoDBEmployeeAccessExecute(r admin.RevokeMongoDBEmployeeAccessApiRequest) (interface{}, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for RevokeMongoDBEmployeeAccessExecute")
+	}
+
+	var r0 interface{}
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.RevokeMongoDBEmployeeAccessApiRequest) (interface{}, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.RevokeMongoDBEmployeeAccessApiRequest) interface{}); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(interface{})
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.RevokeMongoDBEmployeeAccessApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.RevokeMongoDBEmployeeAccessApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// ClustersApi_RevokeMongoDBEmployeeAccessExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RevokeMongoDBEmployeeAccessExecute'
+type ClustersApi_RevokeMongoDBEmployeeAccessExecute_Call struct {
+	*mock.Call
+}
+
+// RevokeMongoDBEmployeeAccessExecute is a helper method to define mock.On call
+//   - r admin.RevokeMongoDBEmployeeAccessApiRequest
+func (_e *ClustersApi_Expecter) RevokeMongoDBEmployeeAccessExecute(r interface{}) *ClustersApi_RevokeMongoDBEmployeeAccessExecute_Call {
+	return &ClustersApi_RevokeMongoDBEmployeeAccessExecute_Call{Call: _e.mock.On("RevokeMongoDBEmployeeAccessExecute", r)}
+}
+
+func (_c *ClustersApi_RevokeMongoDBEmployeeAccessExecute_Call) Run(run func(r admin.RevokeMongoDBEmployeeAccessApiRequest)) *ClustersApi_RevokeMongoDBEmployeeAccessExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.RevokeMongoDBEmployeeAccessApiRequest))
+	})
+	return _c
+}
+
+func (_c *ClustersApi_RevokeMongoDBEmployeeAccessExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *ClustersApi_RevokeMongoDBEmployeeAccessExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *ClustersApi_RevokeMongoDBEmployeeAccessExecute_Call) RunAndReturn(run func(admin.RevokeMongoDBEmployeeAccessApiRequest) (interface{}, *http.Response, error)) *ClustersApi_RevokeMongoDBEmployeeAccessExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// RevokeMongoDBEmployeeAccessWithParams provides a mock function with given fields: ctx, args
+func (_m *ClustersApi) RevokeMongoDBEmployeeAccessWithParams(ctx context.Context, args *admin.RevokeMongoDBEmployeeAccessApiParams) admin.RevokeMongoDBEmployeeAccessApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for RevokeMongoDBEmployeeAccessWithParams")
+	}
+
+	var r0 admin.RevokeMongoDBEmployeeAccessApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.RevokeMongoDBEmployeeAccessApiParams) admin.RevokeMongoDBEmployeeAccessApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.RevokeMongoDBEmployeeAccessApiRequest)
+	}
+
+	return r0
+}
+
+// ClustersApi_RevokeMongoDBEmployeeAccessWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RevokeMongoDBEmployeeAccessWithParams'
+type ClustersApi_RevokeMongoDBEmployeeAccessWithParams_Call struct {
+	*mock.Call
+}
+
+// RevokeMongoDBEmployeeAccessWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.RevokeMongoDBEmployeeAccessApiParams
+func (_e *ClustersApi_Expecter) RevokeMongoDBEmployeeAccessWithParams(ctx interface{}, args interface{}) *ClustersApi_RevokeMongoDBEmployeeAccessWithParams_Call {
+	return &ClustersApi_RevokeMongoDBEmployeeAccessWithParams_Call{Call: _e.mock.On("RevokeMongoDBEmployeeAccessWithParams", ctx, args)}
+}
+
+func (_c *ClustersApi_RevokeMongoDBEmployeeAccessWithParams_Call) Run(run func(ctx context.Context, args *admin.RevokeMongoDBEmployeeAccessApiParams)) *ClustersApi_RevokeMongoDBEmployeeAccessWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.RevokeMongoDBEmployeeAccessApiParams))
+	})
+	return _c
+}
+
+func (_c *ClustersApi_RevokeMongoDBEmployeeAccessWithParams_Call) Return(_a0 admin.RevokeMongoDBEmployeeAccessApiRequest) *ClustersApi_RevokeMongoDBEmployeeAccessWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ClustersApi_RevokeMongoDBEmployeeAccessWithParams_Call) RunAndReturn(run func(context.Context, *admin.RevokeMongoDBEmployeeAccessApiParams) admin.RevokeMongoDBEmployeeAccessApiRequest) *ClustersApi_RevokeMongoDBEmployeeAccessWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }

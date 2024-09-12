@@ -18,13 +18,16 @@ info:
 
 
     To learn more, see [Get Started with the Atlas Administration API](https://www.mongodb.com/docs/atlas/configure-api-access/). For support, see [MongoDB Support](https://www.mongodb.com/support/get-started).
+
+
+    You can also explore the various endpoints available through the Atlas Administration API in MongoDB's [Postman workspace](https://www.postman.com/mongodb-devrel/workspace/mongodb-atlas-administration-apis/).
   license:
     name: CC BY-NC-SA 3.0 US
     url: https://creativecommons.org/licenses/by-nc-sa/3.0/us/
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 15c3a64ffcd6d28715d577454a60bc7c9828e5f0
+  x-xgen-sha: bc998e3987c027101c9cdf268067e0da40184a57
 servers:
   - url: https://cloud.mongodb.com
 tags:
@@ -2681,7 +2684,7 @@ paths:
         content:
           application/vnd.atlas.2023-01-01+json:
             schema:
-              $ref: "#/components/schemas/CloudProviderAccessRole"
+              $ref: "#/components/schemas/CloudProviderAccessRoleRequest"
         description: Creates one role for the specified cloud provider.
         required: true
       responses:
@@ -2800,7 +2803,7 @@ paths:
         content:
           application/vnd.atlas.2023-01-01+json:
             schema:
-              $ref: "#/components/schemas/CloudProviderAccessRole"
+              $ref: "#/components/schemas/CloudProviderAccessRoleRequestUpdate"
         description: Grants access to the specified project for the specified access role.
         required: true
       responses:
@@ -3115,7 +3118,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
         - description: Flag that indicates whether to retain backup snapshots for the
             deleted dedicated cluster.
           in: query
@@ -3161,7 +3164,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       responses:
         "200":
           content:
@@ -3206,7 +3209,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       requestBody:
         content:
           application/vnd.atlas.2024-08-05+json:
@@ -3257,7 +3260,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       responses:
         "200":
           content:
@@ -3290,7 +3293,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -3337,7 +3340,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
         - description: Unique string that identifies the export job to return.
           in: path
           name: exportId
@@ -3381,7 +3384,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       responses:
         "200":
           content:
@@ -3419,7 +3422,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -3466,7 +3469,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
         - description: Unique 24-hexadecimal digit string that identifies the restore job
             to remove.
           in: path
@@ -3512,7 +3515,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
         - description: Unique 24-hexadecimal digit string that identifies the restore job
             to return.
           in: path
@@ -3558,7 +3561,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       responses:
         "200":
           content:
@@ -3595,7 +3598,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       responses:
         "200":
           content:
@@ -3630,7 +3633,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       requestBody:
         content:
           application/vnd.atlas.2024-08-05+json:
@@ -3681,7 +3684,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       responses:
         "200":
           content:
@@ -3721,7 +3724,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -3764,7 +3767,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
         - description: Unique 24-hexadecimal digit string that identifies the desired
             snapshot.
           in: path
@@ -3807,7 +3810,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
         - description: Unique 24-hexadecimal digit string that identifies the desired
             snapshot.
           in: path
@@ -3853,7 +3856,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       responses:
         "200":
           content:
@@ -3888,7 +3891,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
         - description: Unique 24-hexadecimal digit string that identifies the desired
             snapshot.
           in: path
@@ -3932,7 +3935,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
         - description: Unique 24-hexadecimal digit string that identifies the desired
             snapshot.
           in: path
@@ -3976,7 +3979,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
         - description: Unique 24-hexadecimal digit string that identifies the desired
             snapshot.
           in: path
@@ -4031,7 +4034,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
         - $ref: "#/components/parameters/groupId"
       requestBody:
         content:
@@ -4084,7 +4087,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
         - $ref: "#/components/parameters/groupId"
       requestBody:
         content:
@@ -4131,7 +4134,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
         - $ref: "#/components/parameters/groupId"
       responses:
         "200":
@@ -4166,7 +4169,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
         - $ref: "#/components/parameters/groupId"
         - description: Unique 24-hexadecimal digit string that identifies the restore job
             to return.
@@ -4213,7 +4216,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       responses:
         "200":
           content:
@@ -4249,7 +4252,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
         - description: Unique 24-hexadecimal digit string that identifies the desired
             snapshot.
           in: path
@@ -4300,7 +4303,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       responses:
         "200":
           content:
@@ -4345,7 +4348,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       responses:
         "200":
           content:
@@ -4384,7 +4387,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       responses:
         "200":
           content:
@@ -4422,7 +4425,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       requestBody:
         content:
           application/vnd.atlas.2023-11-15+json:
@@ -4476,7 +4479,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       requestBody:
         content:
           application/vnd.atlas.2023-11-15+json:
@@ -4529,7 +4532,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       requestBody:
         content:
           application/vnd.atlas.2023-11-15+json:
@@ -4582,7 +4585,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -4634,7 +4637,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
         - description: Name of the collection that contains one or more Atlas Search
             indexes.
           in: path
@@ -4690,7 +4693,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
         - description: Unique 24-hexadecimal digit string that identifies the Atlas Search
             index. Use the [Get All Atlas Search Indexes for a Collection
             API](https://docs.atlas.mongodb.com/reference/api/fts-indexes-get-all/)
@@ -4745,7 +4748,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
         - description: Unique 24-hexadecimal digit string that identifies the Application
             Search
             [index](https://dochub.mongodb.org/core/index-definitions-fts). Use
@@ -4799,7 +4802,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
         - description: Unique 24-hexadecimal digit string that identifies the Atlas Search
             [index](https://dochub.mongodb.org/core/index-definitions-fts). Use
             the [Get All Atlas Search Indexes for a Collection
@@ -4863,7 +4866,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       responses:
         "200":
           content:
@@ -4904,7 +4907,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       responses:
         "200":
           content:
@@ -4943,7 +4946,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       requestBody:
         content:
           application/vnd.atlas.2024-08-05+json:
@@ -4992,7 +4995,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
         - $ref: "#/components/parameters/groupId"
         - description: Human-readable label that identifies the database that contains the
             collection.
@@ -5045,7 +5048,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       requestBody:
         content:
           application/vnd.atlas.2024-08-05+json:
@@ -5098,7 +5101,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -5211,7 +5214,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       responses:
         "200":
           content:
@@ -5248,7 +5251,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -5327,7 +5330,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
         - description: Flag that indicates whether to download logs for queries against
             your online archive only or both your online archive and cluster.
           in: query
@@ -5393,7 +5396,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       responses:
         "204":
           content:
@@ -5443,7 +5446,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       responses:
         "200":
           content:
@@ -5495,7 +5498,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -5544,7 +5547,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       responses:
         "200":
           content:
@@ -5583,7 +5586,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       responses:
         "200":
           content:
@@ -5622,7 +5625,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -5673,7 +5676,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       responses:
         "200":
           content:
@@ -5716,7 +5719,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       requestBody:
         content:
           application/vnd.atlas.2024-08-05+json:
@@ -5767,7 +5770,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       responses:
         "200":
           content:
@@ -5820,7 +5823,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       responses:
         "200":
           content:
@@ -5871,7 +5874,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -5919,7 +5922,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
         - description: Unique 24-hexadecimal digit string that identifies the restore job.
           in: path
           name: jobId
@@ -5962,7 +5965,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       responses:
         "204":
           content:
@@ -5998,7 +6001,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       responses:
         "200":
           content:
@@ -6032,7 +6035,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       requestBody:
         content:
           application/vnd.atlas.2024-05-30+json:
@@ -6074,7 +6077,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       requestBody:
         content:
           application/vnd.atlas.2024-05-30+json:
@@ -6124,7 +6127,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       responses:
         "200":
           content:
@@ -6173,7 +6176,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       requestBody:
         content:
           application/vnd.atlas.2024-05-30+json:
@@ -6223,7 +6226,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
         - description: Name of the collection that contains one or more Atlas Search
             indexes.
           in: path
@@ -6286,7 +6289,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
         - description: Name of the collection that contains one or more Atlas Search
             indexes.
           in: path
@@ -6347,7 +6350,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
         - description: Name of the collection that contains one or more Atlas Search
             indexes.
           in: path
@@ -6408,7 +6411,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
         - description: Name of the collection that contains one or more Atlas Search
             indexes.
           in: path
@@ -6477,7 +6480,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
         - description: Unique 24-hexadecimal digit string that identifies the Atlas Search
             index. Use the [Get All Atlas Search Indexes for a Collection
             API](https://docs.atlas.mongodb.com/reference/api/fts-indexes-get-all/)
@@ -6530,7 +6533,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
         - description: Unique 24-hexadecimal digit string that identifies the Application
             Search
             [index](https://dochub.mongodb.org/core/index-definitions-fts). Use
@@ -6590,7 +6593,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
         - description: Unique 24-hexadecimal digit string that identifies the Atlas Search
             [index](https://dochub.mongodb.org/core/index-definitions-fts). Use
             the [Get All Atlas Search Indexes for a Collection
@@ -6653,7 +6656,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       responses:
         "200":
           content:
@@ -6691,7 +6694,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -6744,7 +6747,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
         - description: Human-readable label that specifies whether to return only
             completed, incomplete, or all snapshots. By default, MongoDB Cloud
             only returns completed snapshots.
@@ -6795,7 +6798,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
         - description: Unique 24-hexadecimal digit string that identifies the desired
             snapshot.
           in: path
@@ -6849,7 +6852,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
         - description: Unique 24-hexadecimal digit string that identifies the desired
             snapshot.
           in: path
@@ -6901,7 +6904,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
         - description: Unique 24-hexadecimal digit string that identifies the desired
             snapshot.
           in: path
@@ -6954,7 +6957,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       responses:
         "200":
           content:
@@ -6988,7 +6991,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
         - description: Human-readable label that identifies the cluster topology to
             retrieve metrics for.
           in: path
@@ -7032,7 +7035,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
         - description: Human-readable label that identifies the cluster topology to
             retrieve metrics for.
           in: path
@@ -7079,6 +7082,91 @@ paths:
       summary: Return Cluster-Level Query Latency
       tags:
         - Collection Level Metrics
+  "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}:grantMongoDBEmployeeAccess":
+    post:
+      description: Grants MongoDB employee cluster access for the given duration and
+        at the specified level for one cluster.
+      operationId: grantMongoDBEmployeeAccess
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Human-readable label that identifies this cluster.
+          in: path
+          name: clusterName
+          required: true
+          schema:
+            type: string
+            maxLength: 64
+            minLength: 1
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+      requestBody:
+        content:
+          application/vnd.atlas.2024-08-05+json:
+            schema:
+              $ref: "#/components/schemas/EmployeeAccessGrant"
+            x-xgen-version: 2024-08-05
+        description: Grant access level and expiration.
+        required: true
+      responses:
+        "204":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/NoBody"
+              x-xgen-version: 2024-08-05
+          description: This endpoint does not return a response body.
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Grant MongoDB employee cluster access for one cluster.
+      tags:
+        - Clusters
+  "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}:revokeMongoDBEmployeeAccess":
+    post:
+      description: Revokes a previously granted MongoDB employee cluster access.
+      operationId: revokeMongoDBEmployeeAccess
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Human-readable label that identifies this cluster.
+          in: path
+          name: clusterName
+          required: true
+          schema:
+            type: string
+            maxLength: 64
+            minLength: 1
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+      responses:
+        "204":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/NoBody"
+              x-xgen-version: 2024-08-05
+          description: This endpoint does not return a response body.
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Revoke granted MongoDB employee cluster access for one cluster.
+      tags:
+        - Clusters
   "/api/atlas/v2/groups/{groupId}/clusters/{hostName}/logs/{logName}.gz":
     get:
       description: "Returns a compressed (.gz) log file that contains a range of log
@@ -8596,7 +8684,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
         - description: Date and time when to stop retrieving database history. If you
             specify **end**, you must also specify **start**. This parameter
             uses UNIX epoch time in milliseconds.
@@ -8997,7 +9085,7 @@ paths:
               type: string
               maxLength: 64
               minLength: 1
-              pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+              pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
           style: form
         - description: >-
             Category of incident recorded at this moment in time.
@@ -10698,6 +10786,7 @@ paths:
         - Network Peering
   "/api/atlas/v2/groups/{groupId}/pipelines":
     get:
+      deprecated: true
       description: Returns a list of Data Lake Pipelines. To use this resource, the
         requesting API Key must have the Project Read Only role.
       operationId: listPipelines
@@ -10724,7 +10813,9 @@ paths:
       summary: Return All Data Lake Pipelines from One Project
       tags:
         - Data Lake Pipelines
+      x-sunset: 2025-09-09
     post:
+      deprecated: true
       description: Creates one Data Lake Pipeline.
       operationId: createPipeline
       parameters:
@@ -10757,8 +10848,10 @@ paths:
       summary: Create One Data Lake Pipeline
       tags:
         - Data Lake Pipelines
+      x-sunset: 2025-09-09
   "/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}":
     delete:
+      deprecated: true
       description: Removes one Data Lake Pipeline.
       operationId: deletePipeline
       parameters:
@@ -10791,7 +10884,9 @@ paths:
       summary: Remove One Data Lake Pipeline
       tags:
         - Data Lake Pipelines
+      x-sunset: 2025-09-09
     get:
+      deprecated: true
       description: Returns the details of one Data Lake Pipeline within the specified
         project. To use this resource, the requesting API Key must have the
         Project Read Only role.
@@ -10826,7 +10921,9 @@ paths:
       summary: Return One Data Lake Pipeline
       tags:
         - Data Lake Pipelines
+      x-sunset: 2025-09-09
     patch:
+      deprecated: true
       description: Updates one Data Lake Pipeline.
       operationId: updatePipeline
       parameters:
@@ -10870,8 +10967,10 @@ paths:
       summary: Update One Data Lake Pipeline
       tags:
         - Data Lake Pipelines
+      x-sunset: 2025-09-09
   "/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/availableSchedules":
     get:
+      deprecated: true
       description: Returns a list of backup schedule policy items that you can use as
         a Data Lake Pipeline source. To use this resource, the requesting API
         Key must have the Project Read Only role.
@@ -10908,8 +11007,10 @@ paths:
       summary: Return Available Ingestion Schedules for One Data Lake Pipeline
       tags:
         - Data Lake Pipelines
+      x-sunset: 2025-09-09
   "/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/availableSnapshots":
     get:
+      deprecated: true
       description: Returns a list of backup snapshots that you can use to trigger an
         on demand pipeline run. To use this resource, the requesting API Key
         must have the Project Read Only role.
@@ -10957,8 +11058,10 @@ paths:
       summary: Return Available Backup Snapshots for One Data Lake Pipeline
       tags:
         - Data Lake Pipelines
+      x-sunset: 2025-09-09
   "/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/pause":
     post:
+      deprecated: true
       description: Pauses ingestion for a Data Lake Pipeline within the specified
         project. To use this resource, the requesting API Key must have the
         Project Read Only role.
@@ -10993,8 +11096,10 @@ paths:
       summary: Pause One Data Lake Pipeline
       tags:
         - Data Lake Pipelines
+      x-sunset: 2025-09-09
   "/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/resume":
     post:
+      deprecated: true
       description: Resumes ingestion for a Data Lake Pipeline within the specified
         project. To use this resource, the requesting API Key must have the
         Project Read Only role.
@@ -11029,8 +11134,10 @@ paths:
       summary: Resume One Data Lake Pipeline
       tags:
         - Data Lake Pipelines
+      x-sunset: 2025-09-09
   "/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/runs":
     get:
+      deprecated: true
       description: Returns a list of past Data Lake Pipeline runs. To use this
         resource, the requesting API Key must have the Project Read Only role.
       operationId: listPipelineRuns
@@ -11075,8 +11182,10 @@ paths:
       summary: Return All Data Lake Pipeline Runs from One Project
       tags:
         - Data Lake Pipelines
+      x-sunset: 2025-09-09
   "/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/runs/{pipelineRunId}":
     delete:
+      deprecated: true
       description: Deletes dataset that Atlas generated during the specified pipeline run.
       operationId: deletePipelineRunDataset
       parameters:
@@ -11120,7 +11229,9 @@ paths:
       summary: Delete Pipeline Run Dataset
       tags:
         - Data Lake Pipelines
+      x-sunset: 2025-09-09
     get:
+      deprecated: true
       description: Returns the details of one Data Lake Pipeline run within the
         specified project. To use this resource, the requesting API Key must
         have the Project Read Only role.
@@ -11166,8 +11277,10 @@ paths:
       summary: Return One Data Lake Pipeline Run
       tags:
         - Data Lake Pipelines
+      x-sunset: 2025-09-09
   "/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/trigger":
     post:
+      deprecated: true
       description: Triggers a Data Lake Pipeline ingestion of a specified snapshot.
       operationId: triggerSnapshotIngestion
       parameters:
@@ -11207,6 +11320,7 @@ paths:
       summary: Trigger on demand snapshot ingestion
       tags:
         - Data Lake Pipelines
+      x-sunset: 2025-09-09
   "/api/atlas/v2/groups/{groupId}/privateEndpoint/endpointService":
     post:
       description: Creates one private endpoint service for the specified cloud
@@ -11331,7 +11445,7 @@ paths:
           schema:
             type: string
             maxLength: 64
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       responses:
         "200":
           content:
@@ -11373,7 +11487,7 @@ paths:
           schema:
             type: string
             maxLength: 64
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -11416,7 +11530,7 @@ paths:
           schema:
             type: string
             maxLength: 64
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
         - description: Unique 24-hexadecimal digit string that identifies the tenant
             endpoint which will be removed.
           in: path
@@ -11461,7 +11575,7 @@ paths:
           schema:
             type: string
             maxLength: 64
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
         - description: Unique 24-hexadecimal digit string that identifies the tenant
             endpoint.
           in: path
@@ -11505,7 +11619,7 @@ paths:
           schema:
             type: string
             maxLength: 64
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
         - description: Unique 24-hexadecimal digit string that identifies the tenant
             endpoint which will be updated.
           in: path
@@ -13009,7 +13123,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       responses:
         "201":
           content:
@@ -13147,7 +13261,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       responses:
         "200":
           content:
@@ -13183,7 +13297,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -13231,7 +13345,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
         - description: Unique 24-hexadecimal digit string that identifies the restore job
             to return.
           in: path
@@ -13280,7 +13394,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       responses:
         "200":
           content:
@@ -13316,7 +13430,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
         - description: Unique 24-hexadecimal digit string that identifies the desired
             snapshot.
           in: path
@@ -13361,7 +13475,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       responses:
         "200":
           content:
@@ -13392,7 +13506,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
         - description: Value that we want to set for the Serverless Auto Indexing toggle.
           in: query
           name: enable
@@ -13433,7 +13547,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       responses:
         "204":
           content:
@@ -13470,7 +13584,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       responses:
         "200":
           content:
@@ -13506,7 +13620,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -14316,6 +14430,41 @@ paths:
       security:
         - DigestAuth: []
       summary: Return All Stream Processors In The Stream Instance.
+      tags:
+        - Streams
+  "/api/atlas/v2/groups/{groupId}/streams:withSampleConnections":
+    post:
+      description: Creates one stream instance in the specified project with sample
+        connections. To use this resource the requesting API Key must have the
+        Project Data Access Admin role, Project Owner role or Project Stream
+        Processing Owner role.
+      operationId: createStreamInstanceWithSampleConnections
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+      requestBody:
+        content:
+          application/vnd.atlas.2024-08-05+json:
+            schema:
+              $ref: "#/components/schemas/TenantWithSampleConnections"
+        description: Details to create one streams instance in the specified project.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/StreamsTenant"
+              x-xgen-version: 2024-08-05
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Create One Stream Instance With Sample Connections
       tags:
         - Streams
   "/api/atlas/v2/groups/{groupId}/teams":
@@ -16309,6 +16458,298 @@ paths:
       summary: Create One Link-Token
       tags:
         - Cloud Migration Service
+  "/api/atlas/v2/orgs/{orgId}/nonCompliantResources":
+    get:
+      description: Return all non-compliant resources for an org.
+      externalDocs:
+        description: Atlas Resource Policies
+        url: https://docs.atlas.mongodb.com
+      operationId: getResourcesNonCompliant
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ApiAtlasNonCompliantResource"
+              x-xgen-version: 2024-08-05
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Return all non-compliant resources
+      tags:
+        - Atlas Resource Policies
+  "/api/atlas/v2/orgs/{orgId}/resourcePolicies":
+    get:
+      description: Return all Atlas Resource Policies for the org.
+      externalDocs:
+        description: Atlas Resource Policies
+        url: https://docs.atlas.mongodb.com
+      operationId: getAtlasResourcePolicies
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ApiAtlasResourcePolicy"
+              x-xgen-version: 2024-08-05
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Return all Atlas Resource Policies
+      tags:
+        - Atlas Resource Policies
+    post:
+      description: Create one Atlas Resource Policy for an org.
+      externalDocs:
+        description: Atlas Resource Policies
+        url: https://docs.atlas.mongodb.com
+      operationId: createAtlasResourcePolicy
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+      requestBody:
+        content:
+          application/vnd.atlas.2024-08-05+json:
+            schema:
+              $ref: "#/components/schemas/ApiAtlasResourcePolicyCreate"
+            x-xgen-version: 2024-08-05
+        description: Atlas Resource Policy to create.
+        required: true
+      responses:
+        "201":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/ApiAtlasResourcePolicy"
+              x-xgen-version: 2024-08-05
+          description: Created
+        "400":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/ApiAtlasInvalidResourcePolicyCreateError"
+              x-xgen-version: 2024-08-05
+          description: Bad request.
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Create one Atlas Resource Policy
+      tags:
+        - Atlas Resource Policies
+  "/api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId}":
+    delete:
+      description: Delete one Atlas Resource Policy for an org.
+      externalDocs:
+        description: Atlas Resource Policies
+        url: https://docs.atlas.mongodb.com
+      operationId: deleteAtlasResourcePolicy
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - description: Unique 24-hexadecimal digit string that identifies an atlas
+            resource policy.
+          in: path
+          name: resourcePolicyId
+          required: true
+          schema:
+            type: string
+            description: Unique 24-hexadecimal character string that identifies the atlas
+              resource policy.
+            example: 32b6e34b3d91647abb20e7b8
+            maxLength: 24
+            minLength: 24
+            pattern: ^([a-f0-9]{24})$
+            readOnly: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/NoBody"
+              x-xgen-version: 2024-08-05
+          description: This endpoint does not return a response body.
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Delete one Atlas Resource Policy
+      tags:
+        - Atlas Resource Policies
+    get:
+      description: Return one Atlas Resource Policy for an org.
+      externalDocs:
+        description: Atlas Resource Policies
+        url: https://docs.atlas.mongodb.com
+      operationId: getAtlasResourcePolicy
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - description: Unique 24-hexadecimal digit string that identifies an atlas
+            resource policy.
+          in: path
+          name: resourcePolicyId
+          required: true
+          schema:
+            type: string
+            description: Unique 24-hexadecimal character string that identifies the atlas
+              resource policy.
+            example: 32b6e34b3d91647abb20e7b8
+            maxLength: 24
+            minLength: 24
+            pattern: ^([a-f0-9]{24})$
+            readOnly: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/ApiAtlasResourcePolicy"
+              x-xgen-version: 2024-08-05
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Return one Atlas Resource Policy
+      tags:
+        - Atlas Resource Policies
+    patch:
+      description: Update one Atlas Resource Policy for an org.
+      externalDocs:
+        description: Atlas Resource Policies
+        url: https://docs.atlas.mongodb.com
+      operationId: updateAtlasResourcePolicy
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - description: Unique 24-hexadecimal digit string that identifies an atlas
+            resource policy.
+          in: path
+          name: resourcePolicyId
+          required: true
+          schema:
+            type: string
+            description: Unique 24-hexadecimal character string that identifies the atlas
+              resource policy.
+            example: 32b6e34b3d91647abb20e7b8
+            maxLength: 24
+            minLength: 24
+            pattern: ^([a-f0-9]{24})$
+            readOnly: true
+      requestBody:
+        content:
+          application/vnd.atlas.2024-08-05+json:
+            schema:
+              $ref: "#/components/schemas/ApiAtlasResourcePolicyEdit"
+            x-xgen-version: 2024-08-05
+        description: Atlas Resource Policy to update.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/ApiAtlasResourcePolicy"
+              x-xgen-version: 2024-08-05
+          description: Ok
+        "400":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/ApiAtlasInvalidResourcePolicyCreateError"
+              x-xgen-version: 2024-08-05
+          description: Bad request.
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Update one Atlas Resource Policy
+      tags:
+        - Atlas Resource Policies
+  "/api/atlas/v2/orgs/{orgId}/resourcePolicies:validate":
+    post:
+      description: Validate one Atlas Resource Policy for an org.
+      externalDocs:
+        description: Atlas Resource Policies
+        url: https://docs.atlas.mongodb.com
+      operationId: validateAtlasResourcePolicy
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+      requestBody:
+        content:
+          application/vnd.atlas.2024-08-05+json:
+            schema:
+              $ref: "#/components/schemas/ApiAtlasResourcePolicyCreate"
+            x-xgen-version: 2024-08-05
+        description: Atlas Resource Policy to create.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/ApiAtlasResourcePolicy"
+              x-xgen-version: 2024-08-05
+          description: Ok
+        "400":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/ApiAtlasInvalidResourcePolicyCreateError"
+              x-xgen-version: 2024-08-05
+          description: Bad request.
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Validate one Atlas Resource Policy
+      tags:
+        - Atlas Resource Policies
   "/api/atlas/v2/orgs/{orgId}/settings":
     get:
       description: Returns details about the specified organization's settings. To use
@@ -17658,7 +18099,7 @@ components:
           example: cluster1
           maxLength: 64
           minLength: 1
-          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
           readOnly: true
         hostnameAndPort:
           type: string
@@ -18067,6 +18508,8 @@ components:
     ApiError:
       type: object
       properties:
+        badRequestDetail:
+          $ref: "#/components/schemas/BadRequestDetail"
         detail:
           type: string
           description: Describes the specific conditions or reasons that cause each type
@@ -18355,6 +18798,24 @@ components:
             parameter and **period** in the same request. This parameter
             expresses its value in the ISO 8601 timestamp format in UTC.
           readOnly: true
+    ApiPrivateDownloadDeliveryUrl:
+      type: object
+      description: One Uniform Resource Locator (URL) that points to the compressed
+        snapshot files for manual download and the corresponding private
+        endpoint.
+      properties:
+        deliveryUrl:
+          type: string
+          description: One Uniform Resource Locator that points to the compressed snapshot
+            files for manual download.
+        endpointId:
+          type: string
+          description: Unique 22-character alphanumeric string that identifies the private
+            endpoint.
+          example: vpce-3bf78b0ddee411ba1
+          maxLength: 22
+          minLength: 22
+          pattern: ^vpce-[0-9a-f]{17}$
     ApiPublicUsageDetailsQueryRequest:
       type: object
       description: Request body for an Invoice Usage Details query with filtering,
@@ -18807,7 +19268,7 @@ components:
             collection for which you want to create an online archive.
           maxLength: 64
           minLength: 1
-          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
           readOnly: true
         collName:
           type: string
@@ -18922,7 +19383,7 @@ components:
             collection for which you want to create an online archive.
           maxLength: 64
           minLength: 1
-          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
           readOnly: true
         collName:
           type: string
@@ -19070,7 +19531,7 @@ components:
             snapshots you want to retrieve.
           maxLength: 64
           minLength: 1
-          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
           readOnly: true
         created:
           type: string
@@ -19295,7 +19756,7 @@ components:
             To return a response with the **clusterId** parameter, either use the **delivery.targetClusterName** parameter or enable backup on the target cluster.
           maxLength: 64
           minLength: 1
-          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
         targetGroupId:
           type: string
           description: 'Unique 24-hexadecimal digit string that identifies the project
@@ -19552,6 +20013,15 @@ components:
           description: Phase of the workflow for this snapshot at the time this resource
             made this request.
           readOnly: true
+    BadRequestDetail:
+      type: object
+      description: Bad request detail.
+      properties:
+        fields:
+          type: array
+          description: Describes all violations in a client request.
+          items:
+            $ref: "#/components/schemas/FieldViolation"
     BaseAtlasDataLakeRegion:
       type: string
       description: Name of the region to which the data lake routes client connections.
@@ -20346,7 +20816,7 @@ components:
           description: Human-readable label that identifies the cluster.
           maxLength: 64
           minLength: 1
-          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
           readOnly: true
         nodeCount:
           type: integer
@@ -20765,6 +21235,186 @@ components:
           pattern: ^([a-f0-9]{24})$
           readOnly: true
     CloudProviderAccessRole:
+      type: object
+      description: Cloud provider access role.
+      properties:
+        providerName:
+          type: string
+          description: Human-readable label that identifies the cloud provider of the role.
+        atlasAWSAccountArn:
+          type: string
+          description: Amazon Resource Name that identifies the Amazon Web Services (AWS)
+            user account that MongoDB Cloud uses when it assumes the Identity
+            and Access Management (IAM) role.
+          example: arn:aws:iam::772401394250:role/my-test-aws-role
+          maxLength: 2048
+          minLength: 20
+          readOnly: true
+        atlasAssumedRoleExternalId:
+          type: string
+          format: uuid
+          description: Unique external ID that MongoDB Cloud uses when it assumes the IAM
+            role in your Amazon Web Services (AWS) account.
+          readOnly: true
+        authorizedDate:
+          type: string
+          format: date-time
+          description: Date and time when someone authorized this role for the specified
+            cloud service provider. This parameter expresses its value in the
+            ISO 8601 timestamp format in UTC.
+          readOnly: true
+        createdDate:
+          type: string
+          format: date-time
+          description: Date and time when this Azure Service Principal was created. This
+            parameter expresses its value in the ISO 8601 timestamp format in
+            UTC.
+          readOnly: true
+        featureUsages:
+          type: array
+          description: List that contains application features associated with this Azure
+            Service Principal.
+          items:
+            $ref: "#/components/schemas/CloudProviderAccessFeatureUsage"
+          readOnly: true
+        iamAssumedRoleArn:
+          type: string
+          description: Amazon Resource Name (ARN) that identifies the Amazon Web Services
+            (AWS) Identity and Access Management (IAM) role that MongoDB Cloud
+            assumes when it accesses resources in your AWS account.
+          example: arn:aws:iam::123456789012:root
+          maxLength: 2048
+          minLength: 20
+        roleId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the role.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        _id:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the role.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        atlasAzureAppId:
+          type: string
+          description: Azure Active Directory Application ID of Atlas.
+          maxLength: 36
+          minLength: 32
+          pattern: ^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$
+        lastUpdatedDate:
+          type: string
+          format: date-time
+          description: Date and time when this Azure Service Principal was last updated.
+            This parameter expresses its value in the ISO 8601 timestamp format
+            in UTC.
+          readOnly: true
+        servicePrincipalId:
+          type: string
+          description: UUID string that identifies the Azure Service Principal.
+          maxLength: 36
+          minLength: 32
+          pattern: ^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$
+        tenantId:
+          type: string
+          description: UUID String that identifies the Azure Active Directory Tenant ID.
+          maxLength: 36
+          minLength: 32
+          pattern: ^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$
+      required:
+        - providerName
+    CloudProviderAccessRoleRequest:
+      type: object
+      description: Cloud provider access role.
+      properties:
+        providerName:
+          type: string
+          description: Human-readable label that identifies the cloud provider of the role.
+        atlasAWSAccountArn:
+          type: string
+          description: Amazon Resource Name that identifies the Amazon Web Services (AWS)
+            user account that MongoDB Cloud uses when it assumes the Identity
+            and Access Management (IAM) role.
+          example: arn:aws:iam::772401394250:role/my-test-aws-role
+          maxLength: 2048
+          minLength: 20
+          readOnly: true
+        atlasAssumedRoleExternalId:
+          type: string
+          format: uuid
+          description: Unique external ID that MongoDB Cloud uses when it assumes the IAM
+            role in your Amazon Web Services (AWS) account.
+          readOnly: true
+        authorizedDate:
+          type: string
+          format: date-time
+          description: Date and time when someone authorized this role for the specified
+            cloud service provider. This parameter expresses its value in the
+            ISO 8601 timestamp format in UTC.
+          readOnly: true
+        createdDate:
+          type: string
+          format: date-time
+          description: Date and time when this Azure Service Principal was created. This
+            parameter expresses its value in the ISO 8601 timestamp format in
+            UTC.
+          readOnly: true
+        featureUsages:
+          type: array
+          description: List that contains application features associated with this Azure
+            Service Principal.
+          items:
+            $ref: "#/components/schemas/CloudProviderAccessFeatureUsage"
+          readOnly: true
+        roleId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the role.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        _id:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the role.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        atlasAzureAppId:
+          type: string
+          description: Azure Active Directory Application ID of Atlas.
+          maxLength: 36
+          minLength: 32
+          pattern: ^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$
+        lastUpdatedDate:
+          type: string
+          format: date-time
+          description: Date and time when this Azure Service Principal was last updated.
+            This parameter expresses its value in the ISO 8601 timestamp format
+            in UTC.
+          readOnly: true
+        servicePrincipalId:
+          type: string
+          description: UUID string that identifies the Azure Service Principal.
+          maxLength: 36
+          minLength: 32
+          pattern: ^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$
+        tenantId:
+          type: string
+          description: UUID String that identifies the Azure Active Directory Tenant ID.
+          maxLength: 36
+          minLength: 32
+          pattern: ^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$
+      required:
+        - providerName
+    CloudProviderAccessRoleRequestUpdate:
       type: object
       description: Cloud provider access role.
       properties:
@@ -21426,6 +22076,8 @@ components:
           items:
             $ref: "#/components/schemas/Link"
           readOnly: true
+        mongoDBEmployeeAccessGrant:
+          $ref: "#/components/schemas/EmployeeAccessGrant"
         mongoDBMajorVersion:
           type: string
           description: >-
@@ -21448,7 +22100,7 @@ components:
           description: Human-readable label that identifies the cluster.
           maxLength: 64
           minLength: 1
-          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
         paused:
           type: boolean
           description: Flag that indicates whether the cluster is paused.
@@ -21759,7 +22411,7 @@ components:
             outage simulation.
           maxLength: 64
           minLength: 1
-          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
           readOnly: true
         groupId:
           type: string
@@ -23676,7 +24328,7 @@ components:
             this parameter when `"deliveryType" : "download"`.'
           items:
             type: string
-            description: One Uniform Resource Locator that point to the compressed snapshot
+            description: One Uniform Resource Locator that points to the compressed snapshot
               files for manual download.
           readOnly: true
         exportBucketId:
@@ -23935,9 +24587,19 @@ components:
       properties:
         downloadUrl:
           type: string
-          description: 'One Uniform Resource Locator that point to the compressed snapshot
-            files for manual download. MongoDB Cloud returns this parameter when
-            `"deliveryType" : "download"`.'
+          description: 'One Uniform Resource Locator that points to the compressed
+            snapshot files for manual download. MongoDB Cloud returns this
+            parameter when `"deliveryType" : "download"`.'
+          readOnly: true
+        privateDownloadDeliveryUrls:
+          type: array
+          description: 'One or more Uniform Resource Locators (URLs) that point to the
+            compressed snapshot files for manual download and the corresponding
+            private endpoint(s). MongoDB Cloud returns this parameter when
+            `"deliveryType" : "download"` and the download can be performed
+            privately.'
+          items:
+            $ref: "#/components/schemas/ApiPrivateDownloadDeliveryUrl"
           readOnly: true
         replicaSetName:
           type: string
@@ -24326,7 +24988,7 @@ components:
             this parameter when `"deliveryType" : "download"`.'
           items:
             type: string
-            description: One Uniform Resource Locator that point to the compressed snapshot
+            description: One Uniform Resource Locator that points to the compressed snapshot
               files for manual download.
           readOnly: true
         desiredTimestamp:
@@ -24398,6 +25060,16 @@ components:
             parameter when `"deliveryType" : "pointInTime"` and
             **pointInTimeUTCSeconds** exceeds `0`.'
           minimum: 1199145600
+        privateDownloadDeliveryUrls:
+          type: array
+          description: 'One or more Uniform Resource Locators (URLs) that point to the
+            compressed snapshot files for manual download and the corresponding
+            private endpoint(s). MongoDB Cloud returns this parameter when
+            `"deliveryType" : "download"` and the download can be performed
+            privately.'
+          items:
+            $ref: "#/components/schemas/ApiPrivateDownloadDeliveryUrl"
+          readOnly: true
         snapshotId:
           type: string
           description: Unique 24-hexadecimal character string that identifies the snapshot.
@@ -24413,7 +25085,7 @@ components:
             `automated` and `pointInTime` restore types.
           maxLength: 64
           minLength: 1
-          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
         targetGroupId:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the target
@@ -24454,7 +25126,7 @@ components:
             you want to return.
           maxLength: 64
           minLength: 1
-          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
           readOnly: true
         copySettings:
           type: array
@@ -24999,8 +25671,10 @@ components:
             format in UTC.
           readOnly: true
         eventTypeName:
-          $ref: "#/components/schemas/ResourceEventTypeViewForOrg"
+          type: string
           description: Unique identifier of event type.
+          example: RESOURCE_POLICY_CREATED
+          title: Atlas Resource Policy Audit Types
         groupId:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the project in
@@ -25052,7 +25726,6 @@ components:
             Key](https://dochub.mongodb.org/core/atlas-create-prog-api-key) that
             triggered the event. If this resource returns this parameter, it
             doesn't return the **username** parameter.
-          example: test.user@mongodb.com
           readOnly: true
         raw:
           $ref: "#/components/schemas/raw"
@@ -25157,6 +25830,15 @@ components:
           type: string
           description: Unique identifier of resource type.
           example: cluster
+        resourcePolicyId:
+          type: string
+          description: Unique 24-hexadecimal character string that identifies the resource
+            policy.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
     ExportStatus:
       type: object
       description: State of the export job for the collections on the replica set only.
@@ -25585,6 +26267,15 @@ components:
           description: Type of transformation applied during the export of the namespace
             in a Data Lake Pipeline.
       title: Field Transformation
+    FieldViolation:
+      type: object
+      properties:
+        description:
+          type: string
+          description: A description of why the request element is bad.
+        field:
+          type: string
+          description: A path that leads to a field in the request body.
     GCPConsumerForwardingRule:
       type: object
       properties:
@@ -26596,7 +27287,7 @@ components:
             charge.
           maxLength: 64
           minLength: 1
-          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
           readOnly: true
         created:
           type: string
@@ -27080,6 +27771,8 @@ components:
           items:
             $ref: "#/components/schemas/Link"
           readOnly: true
+        mongoDBEmployeeAccessGrant:
+          $ref: "#/components/schemas/EmployeeAccessGrant"
         mongoDBMajorVersion:
           type: string
           description: >-
@@ -27127,7 +27820,7 @@ components:
           description: Human-readable label that identifies the cluster.
           maxLength: 64
           minLength: 1
-          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
         numShards:
           type: integer
           format: int32
@@ -27380,6 +28073,8 @@ components:
           items:
             $ref: "#/components/schemas/Link"
           readOnly: true
+        mongoDBEmployeeAccessGrant:
+          $ref: "#/components/schemas/EmployeeAccessGrant"
         mongoDBMajorVersion:
           type: string
           description: >-
@@ -27427,7 +28122,7 @@ components:
           description: Human-readable label that identifies the cluster.
           maxLength: 64
           minLength: 1
-          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
         numShards:
           type: integer
           format: int32
@@ -28819,10 +29514,11 @@ components:
         restrictEmployeeAccess:
           type: boolean
           description: "Flag that indicates whether to block MongoDB Support from
-            accessing Atlas infrastructure for any deployment in the specified
-            organization without explicit permission. Once this setting is
-            turned on, you can grant MongoDB Support a 24-hour bypass access to
-            the Atlas deployment to resolve support issues. To learn more, see:
+            accessing Atlas infrastructure and cluster logs for any deployment
+            in the specified organization without explicit permission. Once this
+            setting is turned on, you can grant MongoDB Support a 24-hour bypass
+            access to the Atlas deployment to resolve support issues. To learn
+            more, see:
             https://www.mongodb.com/docs/atlas/security-restrict-support-access\
             /."
     OutboundControlPlaneCloudProviderIPAddresses:
@@ -29503,11 +30199,6 @@ components:
     RequestAccepted:
       type: object
       description: Accepted
-    ResourceEventTypeViewForOrg:
-      type: string
-      description: Unique identifier of event type.
-      example: GROUP_TAGS_MODIFIED
-      title: Resource Event Types
     ResourceTag:
       type: object
       description: "Key-value pair that tags and categorizes a MongoDB Cloud
@@ -29642,7 +30333,7 @@ components:
             loaded the sample dataset.
           maxLength: 64
           minLength: 1
-          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
           readOnly: true
         completeDate:
           type: string
@@ -29912,7 +30603,7 @@ components:
             this parameter when `"deliveryType" : "download"`.'
           items:
             type: string
-            description: One Uniform Resource Locator that point to the compressed snapshot
+            description: One Uniform Resource Locator that points to the compressed snapshot
               files for manual download.
           readOnly: true
         desiredTimestamp:
@@ -29998,7 +30689,7 @@ components:
             parameter when `"deliveryType":` `"automated"`.
           maxLength: 64
           minLength: 1
-          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
         targetGroupId:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the target
@@ -30069,7 +30760,7 @@ components:
             MongoDB Cloud took this snapshot.
           maxLength: 64
           minLength: 1
-          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
           readOnly: true
         snapshotType:
           type: string
@@ -30181,7 +30872,7 @@ components:
           description: Human-readable label that identifies the serverless instance.
           maxLength: 64
           minLength: 1
-          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
         providerSettings:
           $ref: "#/components/schemas/ServerlessProviderSettings"
         serverlessBackupOptions:
@@ -30244,7 +30935,7 @@ components:
           description: Human-readable label that identifies the serverless instance.
           maxLength: 64
           minLength: 1
-          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
           writeOnly: true
         providerSettings:
           $ref: "#/components/schemas/ServerlessProviderSettings"
@@ -30900,6 +31591,26 @@ components:
         - name
         - pipeline
         - state
+    StreamsSampleConnections:
+      type: object
+      description: Sample connections to add to SPI.
+      properties:
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        solar:
+          type: boolean
+          default: false
+          description: Flag that indicates whether to add a 'sample_stream_solar'
+            connection.
     StreamsTenant:
       type: object
       properties:
@@ -30949,6 +31660,8 @@ components:
         name:
           type: string
           description: Human-readable label that identifies the stream instance.
+        sampleConnections:
+          $ref: "#/components/schemas/StreamsSampleConnections"
         streamConfig:
           $ref: "#/components/schemas/StreamConfig"
     SynonymMappingStatusDetail:
@@ -31151,7 +31864,7 @@ components:
           description: Human-readable label that identifies the source cluster.
           maxLength: 64
           minLength: 1
-          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
           readOnly: true
         deliveryType:
           type: string
@@ -31253,6 +31966,8 @@ components:
       required:
         - snapshotId
         - targetDeploymentItemName
+    TenantWithSampleConnections:
+      type: object
     ThirdPartyIntegration:
       type: object
       description: Collection of settings that describe third-party integrations.
@@ -31749,7 +32464,7 @@ components:
             Data Lake that this database user can access.
           maxLength: 64
           minLength: 1
-          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
         type:
           type: string
           description: Category of resource that this database user can access.
@@ -32257,6 +32972,232 @@ components:
           description: Date and time to which the checkpoint restores. This parameter
             expresses its value in the ISO 8601 timestamp format in UTC.
           readOnly: true
+    ApiAtlasInvalidPolicyErrorDetail:
+      type: object
+      properties:
+        detail:
+          type: string
+          description: A string that provides a detailed description of a validation error.
+          readOnly: true
+    ApiAtlasInvalidPolicy:
+      type: object
+      properties:
+        body:
+          type: string
+          description: A string that defines the permissions for the policy. The syntax
+            used is the Cedar Policy language.
+          example: |2
+              forbid (
+                principal,
+                action == cloud::Action::"cluster.createEdit",
+                resource
+              ) when {
+               context.cluster.regions.contains(cloud::region::"aws:us-east-1")
+              };
+          readOnly: true
+        errors:
+          type: array
+          description: List of validation errors.
+          items:
+            $ref: "#/components/schemas/ApiAtlasInvalidPolicyErrorDetail"
+          readOnly: true
+    ApiAtlasInvalidResourcePolicyCreateError:
+      type: object
+      properties:
+        errorType:
+          type: string
+          description: Human-readable label that displays the type of an error.
+        invalidPolicies:
+          type: array
+          description: List of invalid policies containing details of their validation
+            errors.
+          items:
+            $ref: "#/components/schemas/ApiAtlasInvalidPolicy"
+          readOnly: true
+    ApiAtlasNonCompliantResource:
+      type: object
+      properties:
+        orgId:
+          type: string
+          description: Unique 24-hexadecimal character string that identifies the
+            organization the resource belongs to.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        resourceId:
+          type: string
+          description: Unique 24-hexadecimal character string that identifies the
+            non-compliant resource.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        resourcePoliciesCausingNonCompliance:
+          type: array
+          description: List of resource policies causing the resource to be considered
+            non-compliant.
+          items:
+            $ref: "#/components/schemas/ApiAtlasResourcePolicyMetadata"
+          readOnly: true
+        resourceType:
+          type: string
+          description: Human-readable label that displays the type of a resource.
+          readOnly: true
+    ApiAtlasPolicyCreate:
+      type: object
+      properties:
+        body:
+          type: string
+          description: A string that defines the permissions for the policy. The syntax
+            used is the Cedar Policy language.
+          example: |2
+              forbid (
+                principal,
+                action == cloud::Action::"cluster.createEdit",
+                resource
+              ) when {
+               context.cluster.regions.contains(cloud::region::"aws:us-east-1")
+              };
+      required:
+        - body
+    ApiAtlasPolicyMetadata:
+      type: object
+      properties:
+        policyId:
+          type: string
+          description: Unique 24-hexadecimal character string that identifies the policy.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+    ApiAtlasPolicy:
+      type: object
+      properties:
+        body:
+          type: string
+          description: A string that defines the permissions for the policy. The syntax
+            used is the Cedar Policy language.
+          example: |2
+              forbid (
+                principal,
+                action == cloud::Action::"cluster.createEdit",
+                resource
+              ) when {
+               context.cluster.regions.contains(cloud::region::"aws:us-east-1")
+              };
+          readOnly: true
+        id:
+          type: string
+          description: Unique 24-hexadecimal character string that identifies the policy.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+    ApiAtlasResourcePolicyCreate:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Human-readable label that describes the atlas resource policy.
+        policies:
+          type: array
+          description: List of policies that make up the atlas resource policy.
+          items:
+            $ref: "#/components/schemas/ApiAtlasPolicyCreate"
+      required:
+        - name
+        - policies
+    ApiAtlasResourcePolicyEdit:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Human-readable label that describes the atlas resource policy.
+        policies:
+          type: array
+          description: List of policies that make up the atlas resource policy.
+          items:
+            $ref: "#/components/schemas/ApiAtlasPolicyCreate"
+    ApiAtlasResourcePolicyMetadata:
+      type: object
+      properties:
+        policiesCausingNonCompliance:
+          type: array
+          description: List of policies that are in conflict with the current state of the
+            resource.
+          items:
+            $ref: "#/components/schemas/ApiAtlasPolicyMetadata"
+          readOnly: true
+        resourcePolicyId:
+          type: string
+          description: Unique 24-hexadecimal character string that identifies the atlas
+            resource policy.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        resourcePolicyName:
+          type: string
+          description: Human-readable label that describes the atlas resource policy.
+          readOnly: true
+    ApiAtlasResourcePolicy:
+      type: object
+      properties:
+        createdByUser:
+          $ref: "#/components/schemas/ApiAtlasUserMetadata"
+        createdDate:
+          type: string
+          format: date-time
+          description: Date and time in UTC when the atlas resource policy was created.
+          example: 2022-01-01T00:00:00Z
+          readOnly: true
+        id:
+          type: string
+          description: Unique 24-hexadecimal character string that identifies the atlas
+            resource policy.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        lastUpdatedByUser:
+          $ref: "#/components/schemas/ApiAtlasUserMetadata"
+        lastUpdatedDate:
+          type: string
+          format: date-time
+          description: Date and time in UTC when the atlas resource policy was last updated.
+          example: 2022-01-01T00:00:00Z
+          readOnly: true
+        name:
+          type: string
+          description: Human-readable label that describes the atlas resource policy.
+          readOnly: true
+        orgId:
+          type: string
+          description: Unique 24-hexadecimal character string that identifies the
+            organization the atlas resource policy belongs to.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        policies:
+          type: array
+          description: List of policies that make up the atlas resource policy.
+          items:
+            $ref: "#/components/schemas/ApiAtlasPolicy"
+          readOnly: true
+        version:
+          type: string
+          description: A string that identifies the version of the atlas resource policy.
+          example: v1
+          readOnly: true
     ApiAtlasSnapshotSchedule:
       type: object
       properties:
@@ -32334,6 +33275,23 @@ components:
         - snapshotIntervalHours
         - snapshotRetentionDays
         - weeklySnapshotRetentionWeeks
+    ApiAtlasUserMetadata:
+      type: object
+      description: The user that last updated the atlas resource policy.
+      properties:
+        id:
+          type: string
+          description: Unique 24-hexadecimal character string that identifies a user.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        name:
+          type: string
+          description: Human-readable label that describes a user.
+          readOnly: true
+      readOnly: true
     ApiBSONTimestamp:
       type: object
       description: BSON timestamp that indicates when the checkpoint token entry in
@@ -32586,6 +33544,32 @@ components:
             region where you store your archived data.
           readOnly: true
       readOnly: true
+    EmployeeAccessGrant:
+      type: object
+      description: MongoDB employee granted access level and expiration for a cluster.
+      properties:
+        expirationTime:
+          type: string
+          format: date-time
+          description: Expiration date for the employee access grant.
+        grantType:
+          type: string
+          description: Level of access to grant to MongoDB Employees.
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+      readOnly: true
+      required:
+        - expirationTime
+        - grantType
     GroupPaginatedEvent:
       type: object
       properties:

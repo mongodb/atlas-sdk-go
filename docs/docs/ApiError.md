@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**BadRequestDetail** | Pointer to [**BadRequestDetail**](BadRequestDetail.md) |  | [optional] 
 **Detail** | Pointer to **string** | Describes the specific conditions or reasons that cause each type of error. | [optional] 
 **Error** | Pointer to **int** | HTTP status code returned with this error. | [optional] 
 **ErrorCode** | Pointer to **string** | Application error code returned with this error. | [optional] 
@@ -29,6 +30,30 @@ NewApiErrorWithDefaults instantiates a new ApiError object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
+### GetBadRequestDetail
+
+`func (o *ApiError) GetBadRequestDetail() BadRequestDetail`
+
+GetBadRequestDetail returns the BadRequestDetail field if non-nil, zero value otherwise.
+
+### GetBadRequestDetailOk
+
+`func (o *ApiError) GetBadRequestDetailOk() (*BadRequestDetail, bool)`
+
+GetBadRequestDetailOk returns a tuple with the BadRequestDetail field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBadRequestDetail
+
+`func (o *ApiError) SetBadRequestDetail(v BadRequestDetail)`
+
+SetBadRequestDetail sets BadRequestDetail field to given value.
+
+### HasBadRequestDetail
+
+`func (o *ApiError) HasBadRequestDetail() bool`
+
+HasBadRequestDetail returns a boolean if a field has been set.
 ### GetDetail
 
 `func (o *ApiError) GetDetail() string`

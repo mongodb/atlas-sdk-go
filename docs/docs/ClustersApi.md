@@ -10,10 +10,12 @@ Method | HTTP request | Description
 [**GetClusterAdvancedConfiguration**](ClustersApi.md#GetClusterAdvancedConfiguration) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/processArgs | Return One Advanced Configuration Options for One Cluster
 [**GetClusterStatus**](ClustersApi.md#GetClusterStatus) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/status | Return Status of All Cluster Operations
 [**GetSampleDatasetLoadStatus**](ClustersApi.md#GetSampleDatasetLoadStatus) | **Get** /api/atlas/v2/groups/{groupId}/sampleDatasetLoad/{sampleDatasetId} | Check Status of Cluster Sample Dataset Request
+[**GrantMongoDBEmployeeAccess**](ClustersApi.md#GrantMongoDBEmployeeAccess) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}:grantMongoDBEmployeeAccess | Grant MongoDB employee cluster access for one cluster.
 [**ListCloudProviderRegions**](ClustersApi.md#ListCloudProviderRegions) | **Get** /api/atlas/v2/groups/{groupId}/clusters/provider/regions | Return All Cloud Provider Regions
 [**ListClusters**](ClustersApi.md#ListClusters) | **Get** /api/atlas/v2/groups/{groupId}/clusters | Return All Clusters in One Project
 [**ListClustersForAllProjects**](ClustersApi.md#ListClustersForAllProjects) | **Get** /api/atlas/v2/clusters | Return All Authorized Clusters in All Projects
 [**LoadSampleDataset**](ClustersApi.md#LoadSampleDataset) | **Post** /api/atlas/v2/groups/{groupId}/sampleDatasetLoad/{name} | Load Sample Dataset Request into Cluster
+[**RevokeMongoDBEmployeeAccess**](ClustersApi.md#RevokeMongoDBEmployeeAccess) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}:revokeMongoDBEmployeeAccess | Revoke granted MongoDB employee cluster access for one cluster.
 [**TestFailover**](ClustersApi.md#TestFailover) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/restartPrimaries | Test Failover for One Cluster
 [**UpdateCluster**](ClustersApi.md#UpdateCluster) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName} | Modify One Cluster from One Project
 [**UpdateClusterAdvancedConfiguration**](ClustersApi.md#UpdateClusterAdvancedConfiguration) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/processArgs | Update Advanced Configuration Options for One Cluster
@@ -39,7 +41,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240805003/admin"
+    "go.mongodb.org/atlas-sdk/v20240805004/admin"
 )
 
 func main() {
@@ -121,7 +123,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240805003/admin"
+    "go.mongodb.org/atlas-sdk/v20240805004/admin"
 )
 
 func main() {
@@ -204,7 +206,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240805003/admin"
+    "go.mongodb.org/atlas-sdk/v20240805004/admin"
 )
 
 func main() {
@@ -287,7 +289,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240805003/admin"
+    "go.mongodb.org/atlas-sdk/v20240805004/admin"
 )
 
 func main() {
@@ -370,7 +372,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240805003/admin"
+    "go.mongodb.org/atlas-sdk/v20240805004/admin"
 )
 
 func main() {
@@ -453,7 +455,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240805003/admin"
+    "go.mongodb.org/atlas-sdk/v20240805004/admin"
 )
 
 func main() {
@@ -519,6 +521,91 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## GrantMongoDBEmployeeAccess
+
+> interface{} GrantMongoDBEmployeeAccess(ctx, groupId, clusterName, employeeAccessGrant EmployeeAccessGrant).Execute()
+
+Grant MongoDB employee cluster access for one cluster.
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20240805004/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    clusterName := "clusterName_example" // string | 
+    employeeAccessGrant := *openapiclient.NewEmployeeAccessGrant(time.Now(), "GrantType_example") // EmployeeAccessGrant | 
+
+    resp, r, err := sdk.ClustersApi.GrantMongoDBEmployeeAccess(context.Background(), groupId, clusterName, &employeeAccessGrant).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.GrantMongoDBEmployeeAccess`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `GrantMongoDBEmployeeAccess`: interface{}
+    fmt.Fprintf(os.Stdout, "Response from `ClustersApi.GrantMongoDBEmployeeAccess`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**clusterName** | **string** | Human-readable label that identifies this cluster. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGrantMongoDBEmployeeAccessRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **employeeAccessGrant** | [**EmployeeAccessGrant**](EmployeeAccessGrant.md) | Grant access level and expiration. | 
+
+### Return type
+
+**interface{}**
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: application/vnd.atlas.2024-08-05+json
+- **Accept**: application/vnd.atlas.2024-08-05+json, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ListCloudProviderRegions
 
 > PaginatedApiAtlasProviderRegions ListCloudProviderRegions(ctx, groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Providers(providers).Tier(tier).Execute()
@@ -536,7 +623,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240805003/admin"
+    "go.mongodb.org/atlas-sdk/v20240805004/admin"
 )
 
 func main() {
@@ -626,7 +713,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240805003/admin"
+    "go.mongodb.org/atlas-sdk/v20240805004/admin"
 )
 
 func main() {
@@ -714,7 +801,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240805003/admin"
+    "go.mongodb.org/atlas-sdk/v20240805004/admin"
 )
 
 func main() {
@@ -794,7 +881,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240805003/admin"
+    "go.mongodb.org/atlas-sdk/v20240805004/admin"
 )
 
 func main() {
@@ -860,6 +947,89 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## RevokeMongoDBEmployeeAccess
+
+> interface{} RevokeMongoDBEmployeeAccess(ctx, groupId, clusterName).Execute()
+
+Revoke granted MongoDB employee cluster access for one cluster.
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20240805004/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    clusterName := "clusterName_example" // string | 
+
+    resp, r, err := sdk.ClustersApi.RevokeMongoDBEmployeeAccess(context.Background(), groupId, clusterName).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.RevokeMongoDBEmployeeAccess`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `RevokeMongoDBEmployeeAccess`: interface{}
+    fmt.Fprintf(os.Stdout, "Response from `ClustersApi.RevokeMongoDBEmployeeAccess`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**clusterName** | **string** | Human-readable label that identifies this cluster. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRevokeMongoDBEmployeeAccessRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+**interface{}**
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2024-08-05+json, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## TestFailover
 
 > TestFailover(ctx, groupId, clusterName).Execute()
@@ -877,7 +1047,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240805003/admin"
+    "go.mongodb.org/atlas-sdk/v20240805004/admin"
 )
 
 func main() {
@@ -958,7 +1128,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240805003/admin"
+    "go.mongodb.org/atlas-sdk/v20240805004/admin"
 )
 
 func main() {
@@ -1043,7 +1213,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240805003/admin"
+    "go.mongodb.org/atlas-sdk/v20240805004/admin"
 )
 
 func main() {
@@ -1128,7 +1298,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240805003/admin"
+    "go.mongodb.org/atlas-sdk/v20240805004/admin"
 )
 
 func main() {
@@ -1210,7 +1380,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20240805003/admin"
+    "go.mongodb.org/atlas-sdk/v20240805004/admin"
 )
 
 func main() {

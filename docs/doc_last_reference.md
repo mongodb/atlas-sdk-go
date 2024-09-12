@@ -22,6 +22,13 @@ Class        | Method        | HTTP request  | Description   |
 *AlertsApi* | [GetAlert](./docs/AlertsApi.md#getalert) | **Get** /api/atlas/v2/groups/{groupId}/alerts/{alertId} | Return One Alert from One Project |
 *AlertsApi* | [ListAlerts](./docs/AlertsApi.md#listalerts) | **Get** /api/atlas/v2/groups/{groupId}/alerts | Return All Alerts from One Project |
 *AlertsApi* | [ListAlertsByAlertConfigurationId](./docs/AlertsApi.md#listalertsbyalertconfigurationid) | **Get** /api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId}/alerts | Return All Open Alerts for Alert Configuration |
+*AtlasResourcePoliciesApi* | [CreateAtlasResourcePolicy](./docs/AtlasResourcePoliciesApi.md#createatlasresourcepolicy) | **Post** /api/atlas/v2/orgs/{orgId}/resourcePolicies | Create one Atlas Resource Policy |
+*AtlasResourcePoliciesApi* | [DeleteAtlasResourcePolicy](./docs/AtlasResourcePoliciesApi.md#deleteatlasresourcepolicy) | **Delete** /api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId} | Delete one Atlas Resource Policy |
+*AtlasResourcePoliciesApi* | [GetAtlasResourcePolicies](./docs/AtlasResourcePoliciesApi.md#getatlasresourcepolicies) | **Get** /api/atlas/v2/orgs/{orgId}/resourcePolicies | Return all Atlas Resource Policies |
+*AtlasResourcePoliciesApi* | [GetAtlasResourcePolicy](./docs/AtlasResourcePoliciesApi.md#getatlasresourcepolicy) | **Get** /api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId} | Return one Atlas Resource Policy |
+*AtlasResourcePoliciesApi* | [GetResourcesNonCompliant](./docs/AtlasResourcePoliciesApi.md#getresourcesnoncompliant) | **Get** /api/atlas/v2/orgs/{orgId}/nonCompliantResources | Return all non-compliant resources |
+*AtlasResourcePoliciesApi* | [UpdateAtlasResourcePolicy](./docs/AtlasResourcePoliciesApi.md#updateatlasresourcepolicy) | **Patch** /api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId} | Update one Atlas Resource Policy |
+*AtlasResourcePoliciesApi* | [ValidateAtlasResourcePolicy](./docs/AtlasResourcePoliciesApi.md#validateatlasresourcepolicy) | **Post** /api/atlas/v2/orgs/{orgId}/resourcePolicies:validate | Validate one Atlas Resource Policy |
 *AtlasSearchApi* | [CreateAtlasSearchDeployment](./docs/AtlasSearchApi.md#createatlassearchdeployment) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/deployment | Create Search Nodes |
 *AtlasSearchApi* | [CreateAtlasSearchIndex](./docs/AtlasSearchApi.md#createatlassearchindex) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes | Create One Atlas Search Index |
 *AtlasSearchApi* | [CreateAtlasSearchIndexDeprecated](./docs/AtlasSearchApi.md#createatlassearchindexdeprecated) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes | Create One Atlas Search Index |
@@ -93,10 +100,12 @@ Class        | Method        | HTTP request  | Description   |
 *ClustersApi* | [GetClusterAdvancedConfiguration](./docs/ClustersApi.md#getclusteradvancedconfiguration) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/processArgs | Return One Advanced Configuration Options for One Cluster |
 *ClustersApi* | [GetClusterStatus](./docs/ClustersApi.md#getclusterstatus) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/status | Return Status of All Cluster Operations |
 *ClustersApi* | [GetSampleDatasetLoadStatus](./docs/ClustersApi.md#getsampledatasetloadstatus) | **Get** /api/atlas/v2/groups/{groupId}/sampleDatasetLoad/{sampleDatasetId} | Check Status of Cluster Sample Dataset Request |
+*ClustersApi* | [GrantMongoDBEmployeeAccess](./docs/ClustersApi.md#grantmongodbemployeeaccess) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}:grantMongoDBEmployeeAccess | Grant MongoDB employee cluster access for one cluster. |
 *ClustersApi* | [ListCloudProviderRegions](./docs/ClustersApi.md#listcloudproviderregions) | **Get** /api/atlas/v2/groups/{groupId}/clusters/provider/regions | Return All Cloud Provider Regions |
 *ClustersApi* | [ListClusters](./docs/ClustersApi.md#listclusters) | **Get** /api/atlas/v2/groups/{groupId}/clusters | Return All Clusters in One Project |
 *ClustersApi* | [ListClustersForAllProjects](./docs/ClustersApi.md#listclustersforallprojects) | **Get** /api/atlas/v2/clusters | Return All Authorized Clusters in All Projects |
 *ClustersApi* | [LoadSampleDataset](./docs/ClustersApi.md#loadsampledataset) | **Post** /api/atlas/v2/groups/{groupId}/sampleDatasetLoad/{name} | Load Sample Dataset Request into Cluster |
+*ClustersApi* | [RevokeMongoDBEmployeeAccess](./docs/ClustersApi.md#revokemongodbemployeeaccess) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}:revokeMongoDBEmployeeAccess | Revoke granted MongoDB employee cluster access for one cluster. |
 *ClustersApi* | [TestFailover](./docs/ClustersApi.md#testfailover) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/restartPrimaries | Test Failover for One Cluster |
 *ClustersApi* | [UpdateCluster](./docs/ClustersApi.md#updatecluster) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName} | Modify One Cluster from One Project |
 *ClustersApi* | [UpdateClusterAdvancedConfiguration](./docs/ClustersApi.md#updateclusteradvancedconfiguration) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/processArgs | Update Advanced Configuration Options for One Cluster |
@@ -349,6 +358,7 @@ Class        | Method        | HTTP request  | Description   |
 *SharedTierSnapshotsApi* | [ListSharedClusterBackups](./docs/SharedTierSnapshotsApi.md#listsharedclusterbackups) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/snapshots | Return All Snapshots for One M2 or M5 Cluster |
 *StreamsApi* | [CreateStreamConnection](./docs/StreamsApi.md#createstreamconnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections | Create One Connection |
 *StreamsApi* | [CreateStreamInstance](./docs/StreamsApi.md#createstreaminstance) | **Post** /api/atlas/v2/groups/{groupId}/streams | Create One Stream Instance |
+*StreamsApi* | [CreateStreamInstanceWithSampleConnections](./docs/StreamsApi.md#createstreaminstancewithsampleconnections) | **Post** /api/atlas/v2/groups/{groupId}/streams:withSampleConnections | Create One Stream Instance With Sample Connections |
 *StreamsApi* | [CreateStreamProcessor](./docs/StreamsApi.md#createstreamprocessor) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor | Create One Stream Processor |
 *StreamsApi* | [DeleteStreamConnection](./docs/StreamsApi.md#deletestreamconnection) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName} | Delete One Stream Connection |
 *StreamsApi* | [DeleteStreamInstance](./docs/StreamsApi.md#deletestreaminstance) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Delete One Stream Instance |
@@ -404,7 +414,19 @@ Class        | Method        | HTTP request  | Description   |
  - [ApiAtlasFTSAnalyzers](./docs/ApiAtlasFTSAnalyzers.md)
  - [ApiAtlasFTSAnalyzersTokenizer](./docs/ApiAtlasFTSAnalyzersTokenizer.md)
  - [ApiAtlasFTSMappings](./docs/ApiAtlasFTSMappings.md)
+ - [ApiAtlasInvalidPolicy](./docs/ApiAtlasInvalidPolicy.md)
+ - [ApiAtlasInvalidPolicyErrorDetail](./docs/ApiAtlasInvalidPolicyErrorDetail.md)
+ - [ApiAtlasInvalidResourcePolicyCreateError](./docs/ApiAtlasInvalidResourcePolicyCreateError.md)
+ - [ApiAtlasNonCompliantResource](./docs/ApiAtlasNonCompliantResource.md)
+ - [ApiAtlasPolicy](./docs/ApiAtlasPolicy.md)
+ - [ApiAtlasPolicyCreate](./docs/ApiAtlasPolicyCreate.md)
+ - [ApiAtlasPolicyMetadata](./docs/ApiAtlasPolicyMetadata.md)
+ - [ApiAtlasResourcePolicy](./docs/ApiAtlasResourcePolicy.md)
+ - [ApiAtlasResourcePolicyCreate](./docs/ApiAtlasResourcePolicyCreate.md)
+ - [ApiAtlasResourcePolicyEdit](./docs/ApiAtlasResourcePolicyEdit.md)
+ - [ApiAtlasResourcePolicyMetadata](./docs/ApiAtlasResourcePolicyMetadata.md)
  - [ApiAtlasSnapshotSchedule](./docs/ApiAtlasSnapshotSchedule.md)
+ - [ApiAtlasUserMetadata](./docs/ApiAtlasUserMetadata.md)
  - [ApiBSONTimestamp](./docs/ApiBSONTimestamp.md)
  - [ApiCheckpointPart](./docs/ApiCheckpointPart.md)
  - [ApiError](./docs/ApiError.md)
@@ -412,6 +434,7 @@ Class        | Method        | HTTP request  | Description   |
  - [ApiKey](./docs/ApiKey.md)
  - [ApiKeyUserDetails](./docs/ApiKeyUserDetails.md)
  - [ApiMeasurementsGeneralViewAtlas](./docs/ApiMeasurementsGeneralViewAtlas.md)
+ - [ApiPrivateDownloadDeliveryUrl](./docs/ApiPrivateDownloadDeliveryUrl.md)
  - [ApiPublicUsageDetailsQueryRequest](./docs/ApiPublicUsageDetailsQueryRequest.md)
  - [ApiSearchDeploymentRequest](./docs/ApiSearchDeploymentRequest.md)
  - [ApiSearchDeploymentResponse](./docs/ApiSearchDeploymentResponse.md)
@@ -436,6 +459,7 @@ Class        | Method        | HTTP request  | Description   |
  - [BackupSnapshotPart](./docs/BackupSnapshotPart.md)
  - [BackupSnapshotRetention](./docs/BackupSnapshotRetention.md)
  - [BackupTenantSnapshot](./docs/BackupTenantSnapshot.md)
+ - [BadRequestDetail](./docs/BadRequestDetail.md)
  - [BaseNetworkPeeringConnectionSettings](./docs/BaseNetworkPeeringConnectionSettings.md)
  - [BaseSearchIndexCreateRequestDefinition](./docs/BaseSearchIndexCreateRequestDefinition.md)
  - [BaseSearchIndexResponseLatestDefinition](./docs/BaseSearchIndexResponseLatestDefinition.md)
@@ -455,6 +479,8 @@ Class        | Method        | HTTP request  | Description   |
  - [CloudProviderAccessFeatureUsage](./docs/CloudProviderAccessFeatureUsage.md)
  - [CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId](./docs/CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId.md)
  - [CloudProviderAccessRole](./docs/CloudProviderAccessRole.md)
+ - [CloudProviderAccessRoleRequest](./docs/CloudProviderAccessRoleRequest.md)
+ - [CloudProviderAccessRoleRequestUpdate](./docs/CloudProviderAccessRoleRequestUpdate.md)
  - [CloudProviderAccessRoles](./docs/CloudProviderAccessRoles.md)
  - [CloudProviderContainer](./docs/CloudProviderContainer.md)
  - [CloudProviderEndpointServiceRequest](./docs/CloudProviderEndpointServiceRequest.md)
@@ -541,6 +567,7 @@ Class        | Method        | HTTP request  | Description   |
  - [DiskBackupSnapshotSchedule20240805](./docs/DiskBackupSnapshotSchedule20240805.md)
  - [DiskGBAutoScaling](./docs/DiskGBAutoScaling.md)
  - [EARPrivateEndpoint](./docs/EARPrivateEndpoint.md)
+ - [EmployeeAccessGrant](./docs/EmployeeAccessGrant.md)
  - [EncryptionAtRest](./docs/EncryptionAtRest.md)
  - [EndpointService](./docs/EndpointService.md)
  - [EventTypeDetails](./docs/EventTypeDetails.md)
@@ -555,6 +582,7 @@ Class        | Method        | HTTP request  | Description   |
  - [FederationOidcIdentityProvider](./docs/FederationOidcIdentityProvider.md)
  - [FederationOidcIdentityProviderUpdate](./docs/FederationOidcIdentityProviderUpdate.md)
  - [FieldTransformation](./docs/FieldTransformation.md)
+ - [FieldViolation](./docs/FieldViolation.md)
  - [GCPConsumerForwardingRule](./docs/GCPConsumerForwardingRule.md)
  - [GeoSharding20240805](./docs/GeoSharding20240805.md)
  - [GoogleCloudKMS](./docs/GoogleCloudKMS.md)
@@ -736,6 +764,7 @@ Class        | Method        | HTTP request  | Description   |
  - [StreamsOptions](./docs/StreamsOptions.md)
  - [StreamsProcessor](./docs/StreamsProcessor.md)
  - [StreamsProcessorWithStats](./docs/StreamsProcessorWithStats.md)
+ - [StreamsSampleConnections](./docs/StreamsSampleConnections.md)
  - [StreamsTenant](./docs/StreamsTenant.md)
  - [SynonymMappingStatusDetail](./docs/SynonymMappingStatusDetail.md)
  - [SynonymSource](./docs/SynonymSource.md)

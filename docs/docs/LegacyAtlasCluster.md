@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the cluster. | [optional] [readonly] 
 **Labels** | Pointer to [**[]ComponentLabel**](ComponentLabel.md) | Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster. The MongoDB Cloud console doesn&#39;t display your labels.  Cluster labels are deprecated and will be removed in a future release. We strongly recommend that you use [resource tags](https://dochub.mongodb.org/core/add-cluster-tag-atlas) instead. | [optional] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
+**MongoDBEmployeeAccessGrant** | Pointer to [**EmployeeAccessGrant**](EmployeeAccessGrant.md) |  | [optional] 
 **MongoDBMajorVersion** | Pointer to **string** | MongoDB major version of the cluster.  On creation: Choose from the available versions of MongoDB, or leave unspecified for the current recommended default in the MongoDB Cloud platform. The recommended version is a recent Long Term Support version. The default is not guaranteed to be the most recently released version throughout the entire release cycle. For versions available in a specific project, see the linked documentation or use the API endpoint for [project LTS versions endpoint](#tag/Projects/operation/getProjectLTSVersions).   On update: Increase version only by 1 major version at a time. If the cluster is pinned to a MongoDB feature compatibility version exactly one major version below the current MongoDB version, the MongoDB version can be downgraded to the previous major version. | [optional] 
 **MongoDBVersion** | Pointer to **string** | Version of MongoDB that the cluster runs. | [optional] 
 **MongoURI** | Pointer to **string** | Base connection string that you can use to connect to the cluster. MongoDB Cloud displays the string only after the cluster starts, not while it builds the cluster. | [optional] [readonly] 
@@ -470,6 +471,30 @@ SetLinks sets Links field to given value.
 `func (o *LegacyAtlasCluster) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+### GetMongoDBEmployeeAccessGrant
+
+`func (o *LegacyAtlasCluster) GetMongoDBEmployeeAccessGrant() EmployeeAccessGrant`
+
+GetMongoDBEmployeeAccessGrant returns the MongoDBEmployeeAccessGrant field if non-nil, zero value otherwise.
+
+### GetMongoDBEmployeeAccessGrantOk
+
+`func (o *LegacyAtlasCluster) GetMongoDBEmployeeAccessGrantOk() (*EmployeeAccessGrant, bool)`
+
+GetMongoDBEmployeeAccessGrantOk returns a tuple with the MongoDBEmployeeAccessGrant field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMongoDBEmployeeAccessGrant
+
+`func (o *LegacyAtlasCluster) SetMongoDBEmployeeAccessGrant(v EmployeeAccessGrant)`
+
+SetMongoDBEmployeeAccessGrant sets MongoDBEmployeeAccessGrant field to given value.
+
+### HasMongoDBEmployeeAccessGrant
+
+`func (o *LegacyAtlasCluster) HasMongoDBEmployeeAccessGrant() bool`
+
+HasMongoDBEmployeeAccessGrant returns a boolean if a field has been set.
 ### GetMongoDBMajorVersion
 
 `func (o *LegacyAtlasCluster) GetMongoDBMajorVersion() string`
