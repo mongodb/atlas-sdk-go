@@ -8,9 +8,12 @@ import (
 
 // DiskBackupRestoreMember struct for DiskBackupRestoreMember
 type DiskBackupRestoreMember struct {
-	// One Uniform Resource Locator that point to the compressed snapshot files for manual download. MongoDB Cloud returns this parameter when `\"deliveryType\" : \"download\"`.
+	// One Uniform Resource Locator that points to the compressed snapshot files for manual download. MongoDB Cloud returns this parameter when `\"deliveryType\" : \"download\"`.
 	// Read only field.
 	DownloadUrl *string `json:"downloadUrl,omitempty"`
+	// One or more Uniform Resource Locators (URLs) that point to the compressed snapshot files for manual download and the corresponding private endpoint(s). MongoDB Cloud returns this parameter when `\"deliveryType\" : \"download\"` and the download can be performed privately.
+	// Read only field.
+	PrivateDownloadDeliveryUrls *[]ApiPrivateDownloadDeliveryUrl `json:"privateDownloadDeliveryUrls,omitempty"`
 	// Human-readable label that identifies the replica set on the sharded cluster.
 	// Read only field.
 	ReplicaSetName *string `json:"replicaSetName,omitempty"`
@@ -64,6 +67,39 @@ func (o *DiskBackupRestoreMember) HasDownloadUrl() bool {
 // SetDownloadUrl gets a reference to the given string and assigns it to the DownloadUrl field.
 func (o *DiskBackupRestoreMember) SetDownloadUrl(v string) {
 	o.DownloadUrl = &v
+}
+
+// GetPrivateDownloadDeliveryUrls returns the PrivateDownloadDeliveryUrls field value if set, zero value otherwise
+func (o *DiskBackupRestoreMember) GetPrivateDownloadDeliveryUrls() []ApiPrivateDownloadDeliveryUrl {
+	if o == nil || IsNil(o.PrivateDownloadDeliveryUrls) {
+		var ret []ApiPrivateDownloadDeliveryUrl
+		return ret
+	}
+	return *o.PrivateDownloadDeliveryUrls
+}
+
+// GetPrivateDownloadDeliveryUrlsOk returns a tuple with the PrivateDownloadDeliveryUrls field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DiskBackupRestoreMember) GetPrivateDownloadDeliveryUrlsOk() (*[]ApiPrivateDownloadDeliveryUrl, bool) {
+	if o == nil || IsNil(o.PrivateDownloadDeliveryUrls) {
+		return nil, false
+	}
+
+	return o.PrivateDownloadDeliveryUrls, true
+}
+
+// HasPrivateDownloadDeliveryUrls returns a boolean if a field has been set.
+func (o *DiskBackupRestoreMember) HasPrivateDownloadDeliveryUrls() bool {
+	if o != nil && !IsNil(o.PrivateDownloadDeliveryUrls) {
+		return true
+	}
+
+	return false
+}
+
+// SetPrivateDownloadDeliveryUrls gets a reference to the given []ApiPrivateDownloadDeliveryUrl and assigns it to the PrivateDownloadDeliveryUrls field.
+func (o *DiskBackupRestoreMember) SetPrivateDownloadDeliveryUrls(v []ApiPrivateDownloadDeliveryUrl) {
+	o.PrivateDownloadDeliveryUrls = &v
 }
 
 // GetReplicaSetName returns the ReplicaSetName field value if set, zero value otherwise

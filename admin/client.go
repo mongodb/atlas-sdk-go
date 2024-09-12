@@ -47,6 +47,8 @@ type APIClient struct {
 
 	AlertsApi AlertsApi
 
+	AtlasResourcePoliciesApi AtlasResourcePoliciesApi
+
 	AtlasSearchApi AtlasSearchApi
 
 	AuditingApi AuditingApi
@@ -150,6 +152,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.AccessTrackingApi = (*AccessTrackingApiService)(&c.common)
 	c.AlertConfigurationsApi = (*AlertConfigurationsApiService)(&c.common)
 	c.AlertsApi = (*AlertsApiService)(&c.common)
+	c.AtlasResourcePoliciesApi = (*AtlasResourcePoliciesApiService)(&c.common)
 	c.AtlasSearchApi = (*AtlasSearchApiService)(&c.common)
 	c.AuditingApi = (*AuditingApiService)(&c.common)
 	c.CloudBackupsApi = (*CloudBackupsApiService)(&c.common)

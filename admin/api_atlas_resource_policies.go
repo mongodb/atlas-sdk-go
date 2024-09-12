@@ -1,0 +1,1006 @@
+// Code based on the AtlasAPI V2 OpenAPI file
+
+package admin
+
+import (
+	"context"
+	"io"
+	"net/http"
+	"net/url"
+	"strings"
+)
+
+type AtlasResourcePoliciesApi interface {
+
+	/*
+		CreateAtlasResourcePolicy Create one Atlas Resource Policy
+
+		Create one Atlas Resource Policy for an org.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param apiAtlasResourcePolicyCreate Atlas Resource Policy to create.
+		@return CreateAtlasResourcePolicyApiRequest
+	*/
+	CreateAtlasResourcePolicy(ctx context.Context, orgId string, apiAtlasResourcePolicyCreate *ApiAtlasResourcePolicyCreate) CreateAtlasResourcePolicyApiRequest
+	/*
+		CreateAtlasResourcePolicy Create one Atlas Resource Policy
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param CreateAtlasResourcePolicyApiParams - Parameters for the request
+		@return CreateAtlasResourcePolicyApiRequest
+	*/
+	CreateAtlasResourcePolicyWithParams(ctx context.Context, args *CreateAtlasResourcePolicyApiParams) CreateAtlasResourcePolicyApiRequest
+
+	// Method available only for mocking purposes
+	CreateAtlasResourcePolicyExecute(r CreateAtlasResourcePolicyApiRequest) (*ApiAtlasResourcePolicy, *http.Response, error)
+
+	/*
+		DeleteAtlasResourcePolicy Delete one Atlas Resource Policy
+
+		Delete one Atlas Resource Policy for an org.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param resourcePolicyId Unique 24-hexadecimal digit string that identifies an atlas resource policy.
+		@return DeleteAtlasResourcePolicyApiRequest
+	*/
+	DeleteAtlasResourcePolicy(ctx context.Context, orgId string, resourcePolicyId string) DeleteAtlasResourcePolicyApiRequest
+	/*
+		DeleteAtlasResourcePolicy Delete one Atlas Resource Policy
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param DeleteAtlasResourcePolicyApiParams - Parameters for the request
+		@return DeleteAtlasResourcePolicyApiRequest
+	*/
+	DeleteAtlasResourcePolicyWithParams(ctx context.Context, args *DeleteAtlasResourcePolicyApiParams) DeleteAtlasResourcePolicyApiRequest
+
+	// Method available only for mocking purposes
+	DeleteAtlasResourcePolicyExecute(r DeleteAtlasResourcePolicyApiRequest) (interface{}, *http.Response, error)
+
+	/*
+		GetAtlasResourcePolicies Return all Atlas Resource Policies
+
+		Return all Atlas Resource Policies for the org.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@return GetAtlasResourcePoliciesApiRequest
+	*/
+	GetAtlasResourcePolicies(ctx context.Context, orgId string) GetAtlasResourcePoliciesApiRequest
+	/*
+		GetAtlasResourcePolicies Return all Atlas Resource Policies
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetAtlasResourcePoliciesApiParams - Parameters for the request
+		@return GetAtlasResourcePoliciesApiRequest
+	*/
+	GetAtlasResourcePoliciesWithParams(ctx context.Context, args *GetAtlasResourcePoliciesApiParams) GetAtlasResourcePoliciesApiRequest
+
+	// Method available only for mocking purposes
+	GetAtlasResourcePoliciesExecute(r GetAtlasResourcePoliciesApiRequest) ([]ApiAtlasResourcePolicy, *http.Response, error)
+
+	/*
+		GetAtlasResourcePolicy Return one Atlas Resource Policy
+
+		Return one Atlas Resource Policy for an org.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param resourcePolicyId Unique 24-hexadecimal digit string that identifies an atlas resource policy.
+		@return GetAtlasResourcePolicyApiRequest
+	*/
+	GetAtlasResourcePolicy(ctx context.Context, orgId string, resourcePolicyId string) GetAtlasResourcePolicyApiRequest
+	/*
+		GetAtlasResourcePolicy Return one Atlas Resource Policy
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetAtlasResourcePolicyApiParams - Parameters for the request
+		@return GetAtlasResourcePolicyApiRequest
+	*/
+	GetAtlasResourcePolicyWithParams(ctx context.Context, args *GetAtlasResourcePolicyApiParams) GetAtlasResourcePolicyApiRequest
+
+	// Method available only for mocking purposes
+	GetAtlasResourcePolicyExecute(r GetAtlasResourcePolicyApiRequest) (*ApiAtlasResourcePolicy, *http.Response, error)
+
+	/*
+		GetResourcesNonCompliant Return all non-compliant resources
+
+		Return all non-compliant resources for an org.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@return GetResourcesNonCompliantApiRequest
+	*/
+	GetResourcesNonCompliant(ctx context.Context, orgId string) GetResourcesNonCompliantApiRequest
+	/*
+		GetResourcesNonCompliant Return all non-compliant resources
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetResourcesNonCompliantApiParams - Parameters for the request
+		@return GetResourcesNonCompliantApiRequest
+	*/
+	GetResourcesNonCompliantWithParams(ctx context.Context, args *GetResourcesNonCompliantApiParams) GetResourcesNonCompliantApiRequest
+
+	// Method available only for mocking purposes
+	GetResourcesNonCompliantExecute(r GetResourcesNonCompliantApiRequest) ([]ApiAtlasNonCompliantResource, *http.Response, error)
+
+	/*
+		UpdateAtlasResourcePolicy Update one Atlas Resource Policy
+
+		Update one Atlas Resource Policy for an org.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param resourcePolicyId Unique 24-hexadecimal digit string that identifies an atlas resource policy.
+		@param apiAtlasResourcePolicyEdit Atlas Resource Policy to update.
+		@return UpdateAtlasResourcePolicyApiRequest
+	*/
+	UpdateAtlasResourcePolicy(ctx context.Context, orgId string, resourcePolicyId string, apiAtlasResourcePolicyEdit *ApiAtlasResourcePolicyEdit) UpdateAtlasResourcePolicyApiRequest
+	/*
+		UpdateAtlasResourcePolicy Update one Atlas Resource Policy
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param UpdateAtlasResourcePolicyApiParams - Parameters for the request
+		@return UpdateAtlasResourcePolicyApiRequest
+	*/
+	UpdateAtlasResourcePolicyWithParams(ctx context.Context, args *UpdateAtlasResourcePolicyApiParams) UpdateAtlasResourcePolicyApiRequest
+
+	// Method available only for mocking purposes
+	UpdateAtlasResourcePolicyExecute(r UpdateAtlasResourcePolicyApiRequest) (*ApiAtlasResourcePolicy, *http.Response, error)
+
+	/*
+		ValidateAtlasResourcePolicy Validate one Atlas Resource Policy
+
+		Validate one Atlas Resource Policy for an org.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param apiAtlasResourcePolicyCreate Atlas Resource Policy to create.
+		@return ValidateAtlasResourcePolicyApiRequest
+	*/
+	ValidateAtlasResourcePolicy(ctx context.Context, orgId string, apiAtlasResourcePolicyCreate *ApiAtlasResourcePolicyCreate) ValidateAtlasResourcePolicyApiRequest
+	/*
+		ValidateAtlasResourcePolicy Validate one Atlas Resource Policy
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ValidateAtlasResourcePolicyApiParams - Parameters for the request
+		@return ValidateAtlasResourcePolicyApiRequest
+	*/
+	ValidateAtlasResourcePolicyWithParams(ctx context.Context, args *ValidateAtlasResourcePolicyApiParams) ValidateAtlasResourcePolicyApiRequest
+
+	// Method available only for mocking purposes
+	ValidateAtlasResourcePolicyExecute(r ValidateAtlasResourcePolicyApiRequest) (*ApiAtlasResourcePolicy, *http.Response, error)
+}
+
+// AtlasResourcePoliciesApiService AtlasResourcePoliciesApi service
+type AtlasResourcePoliciesApiService service
+
+type CreateAtlasResourcePolicyApiRequest struct {
+	ctx                          context.Context
+	ApiService                   AtlasResourcePoliciesApi
+	orgId                        string
+	apiAtlasResourcePolicyCreate *ApiAtlasResourcePolicyCreate
+}
+
+type CreateAtlasResourcePolicyApiParams struct {
+	OrgId                        string
+	ApiAtlasResourcePolicyCreate *ApiAtlasResourcePolicyCreate
+}
+
+func (a *AtlasResourcePoliciesApiService) CreateAtlasResourcePolicyWithParams(ctx context.Context, args *CreateAtlasResourcePolicyApiParams) CreateAtlasResourcePolicyApiRequest {
+	return CreateAtlasResourcePolicyApiRequest{
+		ApiService:                   a,
+		ctx:                          ctx,
+		orgId:                        args.OrgId,
+		apiAtlasResourcePolicyCreate: args.ApiAtlasResourcePolicyCreate,
+	}
+}
+
+func (r CreateAtlasResourcePolicyApiRequest) Execute() (*ApiAtlasResourcePolicy, *http.Response, error) {
+	return r.ApiService.CreateAtlasResourcePolicyExecute(r)
+}
+
+/*
+CreateAtlasResourcePolicy Create one Atlas Resource Policy
+
+Create one Atlas Resource Policy for an org.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@return CreateAtlasResourcePolicyApiRequest
+*/
+func (a *AtlasResourcePoliciesApiService) CreateAtlasResourcePolicy(ctx context.Context, orgId string, apiAtlasResourcePolicyCreate *ApiAtlasResourcePolicyCreate) CreateAtlasResourcePolicyApiRequest {
+	return CreateAtlasResourcePolicyApiRequest{
+		ApiService:                   a,
+		ctx:                          ctx,
+		orgId:                        orgId,
+		apiAtlasResourcePolicyCreate: apiAtlasResourcePolicyCreate,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ApiAtlasResourcePolicy
+func (a *AtlasResourcePoliciesApiService) CreateAtlasResourcePolicyExecute(r CreateAtlasResourcePolicyApiRequest) (*ApiAtlasResourcePolicy, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ApiAtlasResourcePolicy
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AtlasResourcePoliciesApiService.CreateAtlasResourcePolicy")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/resourcePolicies"
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.apiAtlasResourcePolicyCreate == nil {
+		return localVarReturnValue, nil, reportError("apiAtlasResourcePolicyCreate is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2024-08-05+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-08-05+json", "application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.apiAtlasResourcePolicyCreate
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type DeleteAtlasResourcePolicyApiRequest struct {
+	ctx              context.Context
+	ApiService       AtlasResourcePoliciesApi
+	orgId            string
+	resourcePolicyId string
+}
+
+type DeleteAtlasResourcePolicyApiParams struct {
+	OrgId            string
+	ResourcePolicyId string
+}
+
+func (a *AtlasResourcePoliciesApiService) DeleteAtlasResourcePolicyWithParams(ctx context.Context, args *DeleteAtlasResourcePolicyApiParams) DeleteAtlasResourcePolicyApiRequest {
+	return DeleteAtlasResourcePolicyApiRequest{
+		ApiService:       a,
+		ctx:              ctx,
+		orgId:            args.OrgId,
+		resourcePolicyId: args.ResourcePolicyId,
+	}
+}
+
+func (r DeleteAtlasResourcePolicyApiRequest) Execute() (interface{}, *http.Response, error) {
+	return r.ApiService.DeleteAtlasResourcePolicyExecute(r)
+}
+
+/*
+DeleteAtlasResourcePolicy Delete one Atlas Resource Policy
+
+Delete one Atlas Resource Policy for an org.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param resourcePolicyId Unique 24-hexadecimal digit string that identifies an atlas resource policy.
+	@return DeleteAtlasResourcePolicyApiRequest
+*/
+func (a *AtlasResourcePoliciesApiService) DeleteAtlasResourcePolicy(ctx context.Context, orgId string, resourcePolicyId string) DeleteAtlasResourcePolicyApiRequest {
+	return DeleteAtlasResourcePolicyApiRequest{
+		ApiService:       a,
+		ctx:              ctx,
+		orgId:            orgId,
+		resourcePolicyId: resourcePolicyId,
+	}
+}
+
+// Execute executes the request
+//
+//	@return interface{}
+func (a *AtlasResourcePoliciesApiService) DeleteAtlasResourcePolicyExecute(r DeleteAtlasResourcePolicyApiRequest) (interface{}, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodDelete
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue interface{}
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AtlasResourcePoliciesApiService.DeleteAtlasResourcePolicy")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"resourcePolicyId"+"}", url.PathEscape(parameterValueToString(r.resourcePolicyId, "resourcePolicyId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-08-05+json", "application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type GetAtlasResourcePoliciesApiRequest struct {
+	ctx        context.Context
+	ApiService AtlasResourcePoliciesApi
+	orgId      string
+}
+
+type GetAtlasResourcePoliciesApiParams struct {
+	OrgId string
+}
+
+func (a *AtlasResourcePoliciesApiService) GetAtlasResourcePoliciesWithParams(ctx context.Context, args *GetAtlasResourcePoliciesApiParams) GetAtlasResourcePoliciesApiRequest {
+	return GetAtlasResourcePoliciesApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		orgId:      args.OrgId,
+	}
+}
+
+func (r GetAtlasResourcePoliciesApiRequest) Execute() ([]ApiAtlasResourcePolicy, *http.Response, error) {
+	return r.ApiService.GetAtlasResourcePoliciesExecute(r)
+}
+
+/*
+GetAtlasResourcePolicies Return all Atlas Resource Policies
+
+Return all Atlas Resource Policies for the org.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@return GetAtlasResourcePoliciesApiRequest
+*/
+func (a *AtlasResourcePoliciesApiService) GetAtlasResourcePolicies(ctx context.Context, orgId string) GetAtlasResourcePoliciesApiRequest {
+	return GetAtlasResourcePoliciesApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		orgId:      orgId,
+	}
+}
+
+// Execute executes the request
+//
+//	@return []ApiAtlasResourcePolicy
+func (a *AtlasResourcePoliciesApiService) GetAtlasResourcePoliciesExecute(r GetAtlasResourcePoliciesApiRequest) ([]ApiAtlasResourcePolicy, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []ApiAtlasResourcePolicy
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AtlasResourcePoliciesApiService.GetAtlasResourcePolicies")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/resourcePolicies"
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-08-05+json", "application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type GetAtlasResourcePolicyApiRequest struct {
+	ctx              context.Context
+	ApiService       AtlasResourcePoliciesApi
+	orgId            string
+	resourcePolicyId string
+}
+
+type GetAtlasResourcePolicyApiParams struct {
+	OrgId            string
+	ResourcePolicyId string
+}
+
+func (a *AtlasResourcePoliciesApiService) GetAtlasResourcePolicyWithParams(ctx context.Context, args *GetAtlasResourcePolicyApiParams) GetAtlasResourcePolicyApiRequest {
+	return GetAtlasResourcePolicyApiRequest{
+		ApiService:       a,
+		ctx:              ctx,
+		orgId:            args.OrgId,
+		resourcePolicyId: args.ResourcePolicyId,
+	}
+}
+
+func (r GetAtlasResourcePolicyApiRequest) Execute() (*ApiAtlasResourcePolicy, *http.Response, error) {
+	return r.ApiService.GetAtlasResourcePolicyExecute(r)
+}
+
+/*
+GetAtlasResourcePolicy Return one Atlas Resource Policy
+
+Return one Atlas Resource Policy for an org.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param resourcePolicyId Unique 24-hexadecimal digit string that identifies an atlas resource policy.
+	@return GetAtlasResourcePolicyApiRequest
+*/
+func (a *AtlasResourcePoliciesApiService) GetAtlasResourcePolicy(ctx context.Context, orgId string, resourcePolicyId string) GetAtlasResourcePolicyApiRequest {
+	return GetAtlasResourcePolicyApiRequest{
+		ApiService:       a,
+		ctx:              ctx,
+		orgId:            orgId,
+		resourcePolicyId: resourcePolicyId,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ApiAtlasResourcePolicy
+func (a *AtlasResourcePoliciesApiService) GetAtlasResourcePolicyExecute(r GetAtlasResourcePolicyApiRequest) (*ApiAtlasResourcePolicy, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ApiAtlasResourcePolicy
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AtlasResourcePoliciesApiService.GetAtlasResourcePolicy")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"resourcePolicyId"+"}", url.PathEscape(parameterValueToString(r.resourcePolicyId, "resourcePolicyId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-08-05+json", "application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type GetResourcesNonCompliantApiRequest struct {
+	ctx        context.Context
+	ApiService AtlasResourcePoliciesApi
+	orgId      string
+}
+
+type GetResourcesNonCompliantApiParams struct {
+	OrgId string
+}
+
+func (a *AtlasResourcePoliciesApiService) GetResourcesNonCompliantWithParams(ctx context.Context, args *GetResourcesNonCompliantApiParams) GetResourcesNonCompliantApiRequest {
+	return GetResourcesNonCompliantApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		orgId:      args.OrgId,
+	}
+}
+
+func (r GetResourcesNonCompliantApiRequest) Execute() ([]ApiAtlasNonCompliantResource, *http.Response, error) {
+	return r.ApiService.GetResourcesNonCompliantExecute(r)
+}
+
+/*
+GetResourcesNonCompliant Return all non-compliant resources
+
+Return all non-compliant resources for an org.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@return GetResourcesNonCompliantApiRequest
+*/
+func (a *AtlasResourcePoliciesApiService) GetResourcesNonCompliant(ctx context.Context, orgId string) GetResourcesNonCompliantApiRequest {
+	return GetResourcesNonCompliantApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		orgId:      orgId,
+	}
+}
+
+// Execute executes the request
+//
+//	@return []ApiAtlasNonCompliantResource
+func (a *AtlasResourcePoliciesApiService) GetResourcesNonCompliantExecute(r GetResourcesNonCompliantApiRequest) ([]ApiAtlasNonCompliantResource, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []ApiAtlasNonCompliantResource
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AtlasResourcePoliciesApiService.GetResourcesNonCompliant")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/nonCompliantResources"
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-08-05+json", "application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type UpdateAtlasResourcePolicyApiRequest struct {
+	ctx                        context.Context
+	ApiService                 AtlasResourcePoliciesApi
+	orgId                      string
+	resourcePolicyId           string
+	apiAtlasResourcePolicyEdit *ApiAtlasResourcePolicyEdit
+}
+
+type UpdateAtlasResourcePolicyApiParams struct {
+	OrgId                      string
+	ResourcePolicyId           string
+	ApiAtlasResourcePolicyEdit *ApiAtlasResourcePolicyEdit
+}
+
+func (a *AtlasResourcePoliciesApiService) UpdateAtlasResourcePolicyWithParams(ctx context.Context, args *UpdateAtlasResourcePolicyApiParams) UpdateAtlasResourcePolicyApiRequest {
+	return UpdateAtlasResourcePolicyApiRequest{
+		ApiService:                 a,
+		ctx:                        ctx,
+		orgId:                      args.OrgId,
+		resourcePolicyId:           args.ResourcePolicyId,
+		apiAtlasResourcePolicyEdit: args.ApiAtlasResourcePolicyEdit,
+	}
+}
+
+func (r UpdateAtlasResourcePolicyApiRequest) Execute() (*ApiAtlasResourcePolicy, *http.Response, error) {
+	return r.ApiService.UpdateAtlasResourcePolicyExecute(r)
+}
+
+/*
+UpdateAtlasResourcePolicy Update one Atlas Resource Policy
+
+Update one Atlas Resource Policy for an org.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param resourcePolicyId Unique 24-hexadecimal digit string that identifies an atlas resource policy.
+	@return UpdateAtlasResourcePolicyApiRequest
+*/
+func (a *AtlasResourcePoliciesApiService) UpdateAtlasResourcePolicy(ctx context.Context, orgId string, resourcePolicyId string, apiAtlasResourcePolicyEdit *ApiAtlasResourcePolicyEdit) UpdateAtlasResourcePolicyApiRequest {
+	return UpdateAtlasResourcePolicyApiRequest{
+		ApiService:                 a,
+		ctx:                        ctx,
+		orgId:                      orgId,
+		resourcePolicyId:           resourcePolicyId,
+		apiAtlasResourcePolicyEdit: apiAtlasResourcePolicyEdit,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ApiAtlasResourcePolicy
+func (a *AtlasResourcePoliciesApiService) UpdateAtlasResourcePolicyExecute(r UpdateAtlasResourcePolicyApiRequest) (*ApiAtlasResourcePolicy, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ApiAtlasResourcePolicy
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AtlasResourcePoliciesApiService.UpdateAtlasResourcePolicy")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"resourcePolicyId"+"}", url.PathEscape(parameterValueToString(r.resourcePolicyId, "resourcePolicyId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.apiAtlasResourcePolicyEdit == nil {
+		return localVarReturnValue, nil, reportError("apiAtlasResourcePolicyEdit is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2024-08-05+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-08-05+json", "application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.apiAtlasResourcePolicyEdit
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ValidateAtlasResourcePolicyApiRequest struct {
+	ctx                          context.Context
+	ApiService                   AtlasResourcePoliciesApi
+	orgId                        string
+	apiAtlasResourcePolicyCreate *ApiAtlasResourcePolicyCreate
+}
+
+type ValidateAtlasResourcePolicyApiParams struct {
+	OrgId                        string
+	ApiAtlasResourcePolicyCreate *ApiAtlasResourcePolicyCreate
+}
+
+func (a *AtlasResourcePoliciesApiService) ValidateAtlasResourcePolicyWithParams(ctx context.Context, args *ValidateAtlasResourcePolicyApiParams) ValidateAtlasResourcePolicyApiRequest {
+	return ValidateAtlasResourcePolicyApiRequest{
+		ApiService:                   a,
+		ctx:                          ctx,
+		orgId:                        args.OrgId,
+		apiAtlasResourcePolicyCreate: args.ApiAtlasResourcePolicyCreate,
+	}
+}
+
+func (r ValidateAtlasResourcePolicyApiRequest) Execute() (*ApiAtlasResourcePolicy, *http.Response, error) {
+	return r.ApiService.ValidateAtlasResourcePolicyExecute(r)
+}
+
+/*
+ValidateAtlasResourcePolicy Validate one Atlas Resource Policy
+
+Validate one Atlas Resource Policy for an org.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@return ValidateAtlasResourcePolicyApiRequest
+*/
+func (a *AtlasResourcePoliciesApiService) ValidateAtlasResourcePolicy(ctx context.Context, orgId string, apiAtlasResourcePolicyCreate *ApiAtlasResourcePolicyCreate) ValidateAtlasResourcePolicyApiRequest {
+	return ValidateAtlasResourcePolicyApiRequest{
+		ApiService:                   a,
+		ctx:                          ctx,
+		orgId:                        orgId,
+		apiAtlasResourcePolicyCreate: apiAtlasResourcePolicyCreate,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ApiAtlasResourcePolicy
+func (a *AtlasResourcePoliciesApiService) ValidateAtlasResourcePolicyExecute(r ValidateAtlasResourcePolicyApiRequest) (*ApiAtlasResourcePolicy, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ApiAtlasResourcePolicy
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AtlasResourcePoliciesApiService.ValidateAtlasResourcePolicy")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/resourcePolicies:validate"
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.apiAtlasResourcePolicyCreate == nil {
+		return localVarReturnValue, nil, reportError("apiAtlasResourcePolicyCreate is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2024-08-05+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-08-05+json", "application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.apiAtlasResourcePolicyCreate
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}

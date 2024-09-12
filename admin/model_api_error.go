@@ -8,6 +8,7 @@ import (
 
 // ApiError struct for ApiError
 type ApiError struct {
+	BadRequestDetail *BadRequestDetail `json:"badRequestDetail,omitempty"`
 	// Describes the specific conditions or reasons that cause each type of error.
 	Detail *string `json:"detail,omitempty"`
 	// HTTP status code returned with this error.
@@ -35,6 +36,39 @@ func NewApiError() *ApiError {
 func NewApiErrorWithDefaults() *ApiError {
 	this := ApiError{}
 	return &this
+}
+
+// GetBadRequestDetail returns the BadRequestDetail field value if set, zero value otherwise
+func (o *ApiError) GetBadRequestDetail() BadRequestDetail {
+	if o == nil || IsNil(o.BadRequestDetail) {
+		var ret BadRequestDetail
+		return ret
+	}
+	return *o.BadRequestDetail
+}
+
+// GetBadRequestDetailOk returns a tuple with the BadRequestDetail field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApiError) GetBadRequestDetailOk() (*BadRequestDetail, bool) {
+	if o == nil || IsNil(o.BadRequestDetail) {
+		return nil, false
+	}
+
+	return o.BadRequestDetail, true
+}
+
+// HasBadRequestDetail returns a boolean if a field has been set.
+func (o *ApiError) HasBadRequestDetail() bool {
+	if o != nil && !IsNil(o.BadRequestDetail) {
+		return true
+	}
+
+	return false
+}
+
+// SetBadRequestDetail gets a reference to the given BadRequestDetail and assigns it to the BadRequestDetail field.
+func (o *ApiError) SetBadRequestDetail(v BadRequestDetail) {
+	o.BadRequestDetail = &v
 }
 
 // GetDetail returns the Detail field value if set, zero value otherwise
@@ -211,6 +245,9 @@ func (o ApiError) MarshalJSONWithoutReadOnly() ([]byte, error) {
 }
 func (o ApiError) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.BadRequestDetail) {
+		toSerialize["badRequestDetail"] = o.BadRequestDetail
+	}
 	if !IsNil(o.Detail) {
 		toSerialize["detail"] = o.Detail
 	}

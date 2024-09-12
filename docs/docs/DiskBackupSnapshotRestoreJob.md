@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **OplogInc** | Pointer to **int** | Oplog operation number from which you want to restore this snapshot. This number represents the second part of an Oplog timestamp. The resource returns this parameter when &#x60;\&quot;deliveryType\&quot; : \&quot;pointInTime\&quot;&#x60; and **oplogTs** exceeds &#x60;0&#x60;. | [optional] 
 **OplogTs** | Pointer to **int** | Date and time from which you want to restore this snapshot. This parameter expresses this timestamp in the number of seconds that have elapsed since the UNIX epoch. This number represents the first part of an Oplog timestamp. The resource returns this parameter when &#x60;\&quot;deliveryType\&quot; : \&quot;pointInTime\&quot;&#x60; and **oplogTs** exceeds &#x60;0&#x60;. | [optional] 
 **PointInTimeUTCSeconds** | Pointer to **int** | Date and time from which MongoDB Cloud restored this snapshot. This parameter expresses this timestamp in the number of seconds that have elapsed since the UNIX epoch. The resource returns this parameter when &#x60;\&quot;deliveryType\&quot; : \&quot;pointInTime\&quot;&#x60; and **pointInTimeUTCSeconds** exceeds &#x60;0&#x60;. | [optional] 
+**PrivateDownloadDeliveryUrls** | Pointer to [**[]ApiPrivateDownloadDeliveryUrl**](ApiPrivateDownloadDeliveryUrl.md) | One or more Uniform Resource Locators (URLs) that point to the compressed snapshot files for manual download and the corresponding private endpoint(s). MongoDB Cloud returns this parameter when &#x60;\&quot;deliveryType\&quot; : \&quot;download\&quot;&#x60; and the download can be performed privately. | [optional] [readonly] 
 **SnapshotId** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the snapshot. | [optional] 
 **TargetClusterName** | Pointer to **string** | Human-readable label that identifies the target cluster to which the restore job restores the snapshot. The resource returns this parameter when &#x60;\&quot;deliveryType\&quot;:&#x60; &#x60;\&quot;automated\&quot;&#x60;. Required for &#x60;automated&#x60; and &#x60;pointInTime&#x60; restore types. | [optional] 
 **TargetGroupId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the target project for the specified **targetClusterName**. Required for &#x60;automated&#x60; and &#x60;pointInTime&#x60; restore types. | [optional] 
@@ -373,6 +374,30 @@ SetPointInTimeUTCSeconds sets PointInTimeUTCSeconds field to given value.
 `func (o *DiskBackupSnapshotRestoreJob) HasPointInTimeUTCSeconds() bool`
 
 HasPointInTimeUTCSeconds returns a boolean if a field has been set.
+### GetPrivateDownloadDeliveryUrls
+
+`func (o *DiskBackupSnapshotRestoreJob) GetPrivateDownloadDeliveryUrls() []ApiPrivateDownloadDeliveryUrl`
+
+GetPrivateDownloadDeliveryUrls returns the PrivateDownloadDeliveryUrls field if non-nil, zero value otherwise.
+
+### GetPrivateDownloadDeliveryUrlsOk
+
+`func (o *DiskBackupSnapshotRestoreJob) GetPrivateDownloadDeliveryUrlsOk() (*[]ApiPrivateDownloadDeliveryUrl, bool)`
+
+GetPrivateDownloadDeliveryUrlsOk returns a tuple with the PrivateDownloadDeliveryUrls field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPrivateDownloadDeliveryUrls
+
+`func (o *DiskBackupSnapshotRestoreJob) SetPrivateDownloadDeliveryUrls(v []ApiPrivateDownloadDeliveryUrl)`
+
+SetPrivateDownloadDeliveryUrls sets PrivateDownloadDeliveryUrls field to given value.
+
+### HasPrivateDownloadDeliveryUrls
+
+`func (o *DiskBackupSnapshotRestoreJob) HasPrivateDownloadDeliveryUrls() bool`
+
+HasPrivateDownloadDeliveryUrls returns a boolean if a field has been set.
 ### GetSnapshotId
 
 `func (o *DiskBackupSnapshotRestoreJob) GetSnapshotId() string`

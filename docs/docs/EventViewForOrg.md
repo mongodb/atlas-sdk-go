@@ -27,6 +27,7 @@ Name | Type | Description | Notes
 **TargetUsername** | Pointer to **string** | Email address for the console user that this event targets. The resource returns this parameter when &#x60;\&quot;eventTypeName\&quot; : \&quot;USER\&quot;&#x60;. | [optional] [readonly] 
 **ResourceId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the resource associated with the event. | [optional] [readonly] 
 **ResourceType** | Pointer to **string** | Unique identifier of resource type. | [optional] 
+**ResourcePolicyId** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the resource policy. | [optional] [readonly] 
 
 ## Methods
 
@@ -599,6 +600,30 @@ SetResourceType sets ResourceType field to given value.
 `func (o *EventViewForOrg) HasResourceType() bool`
 
 HasResourceType returns a boolean if a field has been set.
+### GetResourcePolicyId
+
+`func (o *EventViewForOrg) GetResourcePolicyId() string`
+
+GetResourcePolicyId returns the ResourcePolicyId field if non-nil, zero value otherwise.
+
+### GetResourcePolicyIdOk
+
+`func (o *EventViewForOrg) GetResourcePolicyIdOk() (*string, bool)`
+
+GetResourcePolicyIdOk returns a tuple with the ResourcePolicyId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetResourcePolicyId
+
+`func (o *EventViewForOrg) SetResourcePolicyId(v string)`
+
+SetResourcePolicyId sets ResourcePolicyId field to given value.
+
+### HasResourcePolicyId
+
+`func (o *EventViewForOrg) HasResourcePolicyId() bool`
+
+HasResourcePolicyId returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

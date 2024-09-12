@@ -4,7 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DownloadUrl** | Pointer to **string** | One Uniform Resource Locator that point to the compressed snapshot files for manual download. MongoDB Cloud returns this parameter when &#x60;\&quot;deliveryType\&quot; : \&quot;download\&quot;&#x60;. | [optional] [readonly] 
+**DownloadUrl** | Pointer to **string** | One Uniform Resource Locator that points to the compressed snapshot files for manual download. MongoDB Cloud returns this parameter when &#x60;\&quot;deliveryType\&quot; : \&quot;download\&quot;&#x60;. | [optional] [readonly] 
+**PrivateDownloadDeliveryUrls** | Pointer to [**[]ApiPrivateDownloadDeliveryUrl**](ApiPrivateDownloadDeliveryUrl.md) | One or more Uniform Resource Locators (URLs) that point to the compressed snapshot files for manual download and the corresponding private endpoint(s). MongoDB Cloud returns this parameter when &#x60;\&quot;deliveryType\&quot; : \&quot;download\&quot;&#x60; and the download can be performed privately. | [optional] [readonly] 
 **ReplicaSetName** | Pointer to **string** | Human-readable label that identifies the replica set on the sharded cluster. | [optional] [readonly] 
 
 ## Methods
@@ -50,6 +51,30 @@ SetDownloadUrl sets DownloadUrl field to given value.
 `func (o *DiskBackupRestoreMember) HasDownloadUrl() bool`
 
 HasDownloadUrl returns a boolean if a field has been set.
+### GetPrivateDownloadDeliveryUrls
+
+`func (o *DiskBackupRestoreMember) GetPrivateDownloadDeliveryUrls() []ApiPrivateDownloadDeliveryUrl`
+
+GetPrivateDownloadDeliveryUrls returns the PrivateDownloadDeliveryUrls field if non-nil, zero value otherwise.
+
+### GetPrivateDownloadDeliveryUrlsOk
+
+`func (o *DiskBackupRestoreMember) GetPrivateDownloadDeliveryUrlsOk() (*[]ApiPrivateDownloadDeliveryUrl, bool)`
+
+GetPrivateDownloadDeliveryUrlsOk returns a tuple with the PrivateDownloadDeliveryUrls field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPrivateDownloadDeliveryUrls
+
+`func (o *DiskBackupRestoreMember) SetPrivateDownloadDeliveryUrls(v []ApiPrivateDownloadDeliveryUrl)`
+
+SetPrivateDownloadDeliveryUrls sets PrivateDownloadDeliveryUrls field to given value.
+
+### HasPrivateDownloadDeliveryUrls
+
+`func (o *DiskBackupRestoreMember) HasPrivateDownloadDeliveryUrls() bool`
+
+HasPrivateDownloadDeliveryUrls returns a boolean if a field has been set.
 ### GetReplicaSetName
 
 `func (o *DiskBackupRestoreMember) GetReplicaSetName() string`

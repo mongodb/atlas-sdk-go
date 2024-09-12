@@ -158,6 +158,31 @@ type ClustersApi interface {
 	GetSampleDatasetLoadStatusExecute(r GetSampleDatasetLoadStatusApiRequest) (*SampleDatasetStatus, *http.Response, error)
 
 	/*
+		GrantMongoDBEmployeeAccess Grant MongoDB employee cluster access for one cluster.
+
+		Grants MongoDB employee cluster access for the given duration and at the specified level for one cluster.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param clusterName Human-readable label that identifies this cluster.
+		@param employeeAccessGrant Grant access level and expiration.
+		@return GrantMongoDBEmployeeAccessApiRequest
+	*/
+	GrantMongoDBEmployeeAccess(ctx context.Context, groupId string, clusterName string, employeeAccessGrant *EmployeeAccessGrant) GrantMongoDBEmployeeAccessApiRequest
+	/*
+		GrantMongoDBEmployeeAccess Grant MongoDB employee cluster access for one cluster.
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GrantMongoDBEmployeeAccessApiParams - Parameters for the request
+		@return GrantMongoDBEmployeeAccessApiRequest
+	*/
+	GrantMongoDBEmployeeAccessWithParams(ctx context.Context, args *GrantMongoDBEmployeeAccessApiParams) GrantMongoDBEmployeeAccessApiRequest
+
+	// Method available only for mocking purposes
+	GrantMongoDBEmployeeAccessExecute(r GrantMongoDBEmployeeAccessApiRequest) (interface{}, *http.Response, error)
+
+	/*
 		ListCloudProviderRegions Return All Cloud Provider Regions
 
 		Returns the list of regions available for the specified cloud provider at the specified tier. To use this resource, the requesting API Key must have the Project Read Only role.
@@ -248,6 +273,30 @@ type ClustersApi interface {
 
 	// Method available only for mocking purposes
 	LoadSampleDatasetExecute(r LoadSampleDatasetApiRequest) (*SampleDatasetStatus, *http.Response, error)
+
+	/*
+		RevokeMongoDBEmployeeAccess Revoke granted MongoDB employee cluster access for one cluster.
+
+		Revokes a previously granted MongoDB employee cluster access.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param clusterName Human-readable label that identifies this cluster.
+		@return RevokeMongoDBEmployeeAccessApiRequest
+	*/
+	RevokeMongoDBEmployeeAccess(ctx context.Context, groupId string, clusterName string) RevokeMongoDBEmployeeAccessApiRequest
+	/*
+		RevokeMongoDBEmployeeAccess Revoke granted MongoDB employee cluster access for one cluster.
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param RevokeMongoDBEmployeeAccessApiParams - Parameters for the request
+		@return RevokeMongoDBEmployeeAccessApiRequest
+	*/
+	RevokeMongoDBEmployeeAccessWithParams(ctx context.Context, args *RevokeMongoDBEmployeeAccessApiParams) RevokeMongoDBEmployeeAccessApiRequest
+
+	// Method available only for mocking purposes
+	RevokeMongoDBEmployeeAccessExecute(r RevokeMongoDBEmployeeAccessApiRequest) (interface{}, *http.Response, error)
 
 	/*
 		TestFailover Test Failover for One Cluster
@@ -1075,6 +1124,132 @@ func (a *ClustersApiService) GetSampleDatasetLoadStatusExecute(r GetSampleDatase
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type GrantMongoDBEmployeeAccessApiRequest struct {
+	ctx                 context.Context
+	ApiService          ClustersApi
+	groupId             string
+	clusterName         string
+	employeeAccessGrant *EmployeeAccessGrant
+}
+
+type GrantMongoDBEmployeeAccessApiParams struct {
+	GroupId             string
+	ClusterName         string
+	EmployeeAccessGrant *EmployeeAccessGrant
+}
+
+func (a *ClustersApiService) GrantMongoDBEmployeeAccessWithParams(ctx context.Context, args *GrantMongoDBEmployeeAccessApiParams) GrantMongoDBEmployeeAccessApiRequest {
+	return GrantMongoDBEmployeeAccessApiRequest{
+		ApiService:          a,
+		ctx:                 ctx,
+		groupId:             args.GroupId,
+		clusterName:         args.ClusterName,
+		employeeAccessGrant: args.EmployeeAccessGrant,
+	}
+}
+
+func (r GrantMongoDBEmployeeAccessApiRequest) Execute() (interface{}, *http.Response, error) {
+	return r.ApiService.GrantMongoDBEmployeeAccessExecute(r)
+}
+
+/*
+GrantMongoDBEmployeeAccess Grant MongoDB employee cluster access for one cluster.
+
+Grants MongoDB employee cluster access for the given duration and at the specified level for one cluster.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param clusterName Human-readable label that identifies this cluster.
+	@return GrantMongoDBEmployeeAccessApiRequest
+*/
+func (a *ClustersApiService) GrantMongoDBEmployeeAccess(ctx context.Context, groupId string, clusterName string, employeeAccessGrant *EmployeeAccessGrant) GrantMongoDBEmployeeAccessApiRequest {
+	return GrantMongoDBEmployeeAccessApiRequest{
+		ApiService:          a,
+		ctx:                 ctx,
+		groupId:             groupId,
+		clusterName:         clusterName,
+		employeeAccessGrant: employeeAccessGrant,
+	}
+}
+
+// Execute executes the request
+//
+//	@return interface{}
+func (a *ClustersApiService) GrantMongoDBEmployeeAccessExecute(r GrantMongoDBEmployeeAccessApiRequest) (interface{}, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue interface{}
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.GrantMongoDBEmployeeAccess")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}:grantMongoDBEmployeeAccess"
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(parameterValueToString(r.clusterName, "clusterName")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.employeeAccessGrant == nil {
+		return localVarReturnValue, nil, reportError("employeeAccessGrant is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2024-08-05+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-08-05+json", "application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.employeeAccessGrant
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ListCloudProviderRegionsApiRequest struct {
 	ctx          context.Context
 	ApiService   ClustersApi
@@ -1669,6 +1844,123 @@ func (a *ClustersApiService) LoadSampleDatasetExecute(r LoadSampleDatasetApiRequ
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json", "application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type RevokeMongoDBEmployeeAccessApiRequest struct {
+	ctx         context.Context
+	ApiService  ClustersApi
+	groupId     string
+	clusterName string
+}
+
+type RevokeMongoDBEmployeeAccessApiParams struct {
+	GroupId     string
+	ClusterName string
+}
+
+func (a *ClustersApiService) RevokeMongoDBEmployeeAccessWithParams(ctx context.Context, args *RevokeMongoDBEmployeeAccessApiParams) RevokeMongoDBEmployeeAccessApiRequest {
+	return RevokeMongoDBEmployeeAccessApiRequest{
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     args.GroupId,
+		clusterName: args.ClusterName,
+	}
+}
+
+func (r RevokeMongoDBEmployeeAccessApiRequest) Execute() (interface{}, *http.Response, error) {
+	return r.ApiService.RevokeMongoDBEmployeeAccessExecute(r)
+}
+
+/*
+RevokeMongoDBEmployeeAccess Revoke granted MongoDB employee cluster access for one cluster.
+
+Revokes a previously granted MongoDB employee cluster access.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param clusterName Human-readable label that identifies this cluster.
+	@return RevokeMongoDBEmployeeAccessApiRequest
+*/
+func (a *ClustersApiService) RevokeMongoDBEmployeeAccess(ctx context.Context, groupId string, clusterName string) RevokeMongoDBEmployeeAccessApiRequest {
+	return RevokeMongoDBEmployeeAccessApiRequest{
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     groupId,
+		clusterName: clusterName,
+	}
+}
+
+// Execute executes the request
+//
+//	@return interface{}
+func (a *ClustersApiService) RevokeMongoDBEmployeeAccessExecute(r RevokeMongoDBEmployeeAccessApiRequest) (interface{}, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue interface{}
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.RevokeMongoDBEmployeeAccess")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}:revokeMongoDBEmployeeAccess"
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(parameterValueToString(r.clusterName, "clusterName")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-08-05+json", "application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)

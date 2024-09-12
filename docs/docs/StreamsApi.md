@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateStreamConnection**](StreamsApi.md#CreateStreamConnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections | Create One Connection
 [**CreateStreamInstance**](StreamsApi.md#CreateStreamInstance) | **Post** /api/atlas/v2/groups/{groupId}/streams | Create One Stream Instance
+[**CreateStreamInstanceWithSampleConnections**](StreamsApi.md#CreateStreamInstanceWithSampleConnections) | **Post** /api/atlas/v2/groups/{groupId}/streams:withSampleConnections | Create One Stream Instance With Sample Connections
 [**CreateStreamProcessor**](StreamsApi.md#CreateStreamProcessor) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor | Create One Stream Processor
 [**DeleteStreamConnection**](StreamsApi.md#DeleteStreamConnection) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName} | Delete One Stream Connection
 [**DeleteStreamInstance**](StreamsApi.md#DeleteStreamInstance) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Delete One Stream Instance
@@ -185,6 +186,88 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: application/vnd.atlas.2023-02-01+json
 - **Accept**: application/vnd.atlas.2023-02-01+json, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateStreamInstanceWithSampleConnections
+
+> StreamsTenant CreateStreamInstanceWithSampleConnections(ctx, groupId, body interface{}).Execute()
+
+Create One Stream Instance With Sample Connections
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20240805003/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    body := interface{}{ ... } // interface{} | 
+
+    resp, r, err := sdk.StreamsApi.CreateStreamInstanceWithSampleConnections(context.Background(), groupId, &body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.CreateStreamInstanceWithSampleConnections`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `CreateStreamInstanceWithSampleConnections`: StreamsTenant
+    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.CreateStreamInstanceWithSampleConnections`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateStreamInstanceWithSampleConnectionsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **body** | **interface{}** | Details to create one streams instance in the specified project. | 
+
+### Return type
+
+[**StreamsTenant**](StreamsTenant.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: application/vnd.atlas.2024-08-05+json
+- **Accept**: application/vnd.atlas.2024-08-05+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
