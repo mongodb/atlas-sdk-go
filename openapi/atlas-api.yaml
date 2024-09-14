@@ -21,7 +21,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: bc998e3987c027101c9cdf268067e0da40184a57
+  x-xgen-sha: fd62fecbe08204528522266963c654120db9b74c
 servers:
 - url: https://cloud.mongodb.com
 tags:
@@ -84,8 +84,12 @@ tags:
     \ resource requires your project ID. Changes to federated database instance configurations\
     \ can affect costs."
   name: Data Federation
-- description: "Returns, adds, edits, and removes Atlas Data Lake Pipelines and associated\
+- description: "Returns, edits, and removes Atlas Data Lake Pipelines and associated\
     \ runs."
+  externalDocs:
+    description: Data Lake Pipelines are deprecated. Please see Data Lake Deprecation
+      Guide.
+    url: https://dochub.mongodb.org/core/data-lake-deprecation
   name: Data Lake Pipelines
 - description: "Returns, adds, edits, and removes database users."
   name: Database Users
@@ -7283,6 +7287,53 @@ paths:
       summary: Grant MongoDB employee cluster access for one cluster.
       tags:
       - Clusters
+  /api/atlas/v2/groups/{groupId}/clusters/{clusterName}:pinFeatureCompatibilityVersion:
+    post:
+      description: Pins the FCV to the current MongoDB version.
+      operationId: pinFeatureCompatibilityVersion
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/pretty"
+      - $ref: "#/components/parameters/groupId"
+      - description: Human-readable label that identifies this cluster.
+        in: path
+        name: clusterName
+        required: true
+        schema:
+          type: string
+          maxLength: 64
+          minLength: 1
+          pattern: "^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$"
+      requestBody:
+        content:
+          application/vnd.atlas.2024-05-30+json:
+            schema:
+              $ref: "#/components/schemas/PinFCVView"
+            x-xgen-version: 2024-05-30
+        description: Optional request params for tuning FCV pinning configuration.
+      responses:
+        "204":
+          content:
+            application/vnd.atlas.2024-05-30+json:
+              schema:
+                $ref: "#/components/schemas/NoBody"
+              x-xgen-version: 2024-05-30
+          description: This endpoint does not return a response body.
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+      - DigestAuth: []
+      summary: Pin FCV for One Cluster from One Project
+      tags:
+      - Clusters
   /api/atlas/v2/groups/{groupId}/clusters/{clusterName}:revokeMongoDBEmployeeAccess:
     post:
       description: Revokes a previously granted MongoDB employee cluster access.
@@ -7321,6 +7372,49 @@ paths:
       security:
       - DigestAuth: []
       summary: Revoke granted MongoDB employee cluster access for one cluster.
+      tags:
+      - Clusters
+  /api/atlas/v2/groups/{groupId}/clusters/{clusterName}:unpinFeatureCompatibilityVersion:
+    post:
+      description: Unpins the current fixed Feature Compatibility Version. This feature
+        is not available for clusters on rapid release.
+      operationId: unpinFeatureCompatibilityVersion
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/groupId"
+      - $ref: "#/components/parameters/pretty"
+      - description: Human-readable label that identifies this cluster.
+        in: path
+        name: clusterName
+        required: true
+        schema:
+          type: string
+          maxLength: 64
+          minLength: 1
+          pattern: "^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$"
+      responses:
+        "204":
+          content:
+            application/vnd.atlas.2024-05-30+json:
+              schema:
+                $ref: "#/components/schemas/NoBody"
+              x-xgen-version: 2024-05-30
+          description: This endpoint does not return a response body.
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "402":
+          $ref: "#/components/responses/paymentRequired"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "409":
+          $ref: "#/components/responses/conflict"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+      - DigestAuth: []
+      summary: Unpins FCV for One Cluster from One Project
       tags:
       - Clusters
   /api/atlas/v2/groups/{groupId}/clusters/{hostName}/logs/{logName}.gz:
@@ -11126,6 +11220,10 @@ paths:
     post:
       deprecated: true
       description: Creates one Data Lake Pipeline.
+      externalDocs:
+        description: Data Lake Pipelines are deprecated. Please see Data Lake Deprecation
+          Guide.
+        url: https://dochub.mongodb.org/core/data-lake-deprecation
       operationId: createPipeline
       parameters:
       - $ref: "#/components/parameters/envelope"
