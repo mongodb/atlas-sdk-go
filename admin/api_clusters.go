@@ -275,6 +275,31 @@ type ClustersApi interface {
 	LoadSampleDatasetExecute(r LoadSampleDatasetApiRequest) (*SampleDatasetStatus, *http.Response, error)
 
 	/*
+		PinFeatureCompatibilityVersion Pin FCV for One Cluster from One Project
+
+		Pins the FCV to the current MongoDB version.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param clusterName Human-readable label that identifies this cluster.
+		@param pinFCV Optional request params for tuning FCV pinning configuration.
+		@return PinFeatureCompatibilityVersionApiRequest
+	*/
+	PinFeatureCompatibilityVersion(ctx context.Context, groupId string, clusterName string, pinFCV *PinFCV) PinFeatureCompatibilityVersionApiRequest
+	/*
+		PinFeatureCompatibilityVersion Pin FCV for One Cluster from One Project
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param PinFeatureCompatibilityVersionApiParams - Parameters for the request
+		@return PinFeatureCompatibilityVersionApiRequest
+	*/
+	PinFeatureCompatibilityVersionWithParams(ctx context.Context, args *PinFeatureCompatibilityVersionApiParams) PinFeatureCompatibilityVersionApiRequest
+
+	// Method available only for mocking purposes
+	PinFeatureCompatibilityVersionExecute(r PinFeatureCompatibilityVersionApiRequest) (interface{}, *http.Response, error)
+
+	/*
 		RevokeMongoDBEmployeeAccess Revoke granted MongoDB employee cluster access for one cluster.
 
 		Revokes a previously granted MongoDB employee cluster access.
@@ -321,6 +346,30 @@ type ClustersApi interface {
 
 	// Method available only for mocking purposes
 	TestFailoverExecute(r TestFailoverApiRequest) (*http.Response, error)
+
+	/*
+		UnpinFeatureCompatibilityVersion Unpins FCV for One Cluster from One Project
+
+		Unpins the current fixed Feature Compatibility Version. This feature is not available for clusters on rapid release.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param clusterName Human-readable label that identifies this cluster.
+		@return UnpinFeatureCompatibilityVersionApiRequest
+	*/
+	UnpinFeatureCompatibilityVersion(ctx context.Context, groupId string, clusterName string) UnpinFeatureCompatibilityVersionApiRequest
+	/*
+		UnpinFeatureCompatibilityVersion Unpins FCV for One Cluster from One Project
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param UnpinFeatureCompatibilityVersionApiParams - Parameters for the request
+		@return UnpinFeatureCompatibilityVersionApiRequest
+	*/
+	UnpinFeatureCompatibilityVersionWithParams(ctx context.Context, args *UnpinFeatureCompatibilityVersionApiParams) UnpinFeatureCompatibilityVersionApiRequest
+
+	// Method available only for mocking purposes
+	UnpinFeatureCompatibilityVersionExecute(r UnpinFeatureCompatibilityVersionApiRequest) (interface{}, *http.Response, error)
 
 	/*
 		UpdateCluster Modify One Cluster from One Project
@@ -1882,6 +1931,129 @@ func (a *ClustersApiService) LoadSampleDatasetExecute(r LoadSampleDatasetApiRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type PinFeatureCompatibilityVersionApiRequest struct {
+	ctx         context.Context
+	ApiService  ClustersApi
+	groupId     string
+	clusterName string
+	pinFCV      *PinFCV
+}
+
+type PinFeatureCompatibilityVersionApiParams struct {
+	GroupId     string
+	ClusterName string
+	PinFCV      *PinFCV
+}
+
+func (a *ClustersApiService) PinFeatureCompatibilityVersionWithParams(ctx context.Context, args *PinFeatureCompatibilityVersionApiParams) PinFeatureCompatibilityVersionApiRequest {
+	return PinFeatureCompatibilityVersionApiRequest{
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     args.GroupId,
+		clusterName: args.ClusterName,
+		pinFCV:      args.PinFCV,
+	}
+}
+
+func (r PinFeatureCompatibilityVersionApiRequest) Execute() (interface{}, *http.Response, error) {
+	return r.ApiService.PinFeatureCompatibilityVersionExecute(r)
+}
+
+/*
+PinFeatureCompatibilityVersion Pin FCV for One Cluster from One Project
+
+Pins the FCV to the current MongoDB version.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param clusterName Human-readable label that identifies this cluster.
+	@return PinFeatureCompatibilityVersionApiRequest
+*/
+func (a *ClustersApiService) PinFeatureCompatibilityVersion(ctx context.Context, groupId string, clusterName string, pinFCV *PinFCV) PinFeatureCompatibilityVersionApiRequest {
+	return PinFeatureCompatibilityVersionApiRequest{
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     groupId,
+		clusterName: clusterName,
+		pinFCV:      pinFCV,
+	}
+}
+
+// Execute executes the request
+//
+//	@return interface{}
+func (a *ClustersApiService) PinFeatureCompatibilityVersionExecute(r PinFeatureCompatibilityVersionApiRequest) (interface{}, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue interface{}
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.PinFeatureCompatibilityVersion")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}:pinFeatureCompatibilityVersion"
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(parameterValueToString(r.clusterName, "clusterName")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2024-05-30+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-05-30+json", "application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.pinFCV
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type RevokeMongoDBEmployeeAccessApiRequest struct {
 	ctx         context.Context
 	ApiService  ClustersApi
@@ -2097,6 +2269,123 @@ func (a *ClustersApiService) TestFailoverExecute(r TestFailoverApiRequest) (*htt
 	}
 
 	return localVarHTTPResponse, nil
+}
+
+type UnpinFeatureCompatibilityVersionApiRequest struct {
+	ctx         context.Context
+	ApiService  ClustersApi
+	groupId     string
+	clusterName string
+}
+
+type UnpinFeatureCompatibilityVersionApiParams struct {
+	GroupId     string
+	ClusterName string
+}
+
+func (a *ClustersApiService) UnpinFeatureCompatibilityVersionWithParams(ctx context.Context, args *UnpinFeatureCompatibilityVersionApiParams) UnpinFeatureCompatibilityVersionApiRequest {
+	return UnpinFeatureCompatibilityVersionApiRequest{
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     args.GroupId,
+		clusterName: args.ClusterName,
+	}
+}
+
+func (r UnpinFeatureCompatibilityVersionApiRequest) Execute() (interface{}, *http.Response, error) {
+	return r.ApiService.UnpinFeatureCompatibilityVersionExecute(r)
+}
+
+/*
+UnpinFeatureCompatibilityVersion Unpins FCV for One Cluster from One Project
+
+Unpins the current fixed Feature Compatibility Version. This feature is not available for clusters on rapid release.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param clusterName Human-readable label that identifies this cluster.
+	@return UnpinFeatureCompatibilityVersionApiRequest
+*/
+func (a *ClustersApiService) UnpinFeatureCompatibilityVersion(ctx context.Context, groupId string, clusterName string) UnpinFeatureCompatibilityVersionApiRequest {
+	return UnpinFeatureCompatibilityVersionApiRequest{
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     groupId,
+		clusterName: clusterName,
+	}
+}
+
+// Execute executes the request
+//
+//	@return interface{}
+func (a *ClustersApiService) UnpinFeatureCompatibilityVersionExecute(r UnpinFeatureCompatibilityVersionApiRequest) (interface{}, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue interface{}
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.UnpinFeatureCompatibilityVersion")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}:unpinFeatureCompatibilityVersion"
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(parameterValueToString(r.clusterName, "clusterName")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-05-30+json", "application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type UpdateClusterApiRequest struct {
