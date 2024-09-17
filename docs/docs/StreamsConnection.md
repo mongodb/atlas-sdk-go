@@ -13,7 +13,6 @@ Name | Type | Description | Notes
 **BootstrapServers** | Pointer to **string** | Comma separated list of server addresses. | [optional] 
 **Config** | Pointer to **map[string]string** | A map of Kafka key-value pairs for optional configuration. This is a flat object, and keys can have &#39;.&#39; characters. | [optional] 
 **Networking** | Pointer to [**StreamsKafkaNetworking**](StreamsKafkaNetworking.md) |  | [optional] 
-**ProxyInfo** | Pointer to [**ProxyInfo**](ProxyInfo.md) |  | [optional] 
 **Security** | Pointer to [**StreamsKafkaSecurity**](StreamsKafkaSecurity.md) |  | [optional] 
 
 ## Methods
@@ -251,30 +250,6 @@ SetNetworking sets Networking field to given value.
 `func (o *StreamsConnection) HasNetworking() bool`
 
 HasNetworking returns a boolean if a field has been set.
-### GetProxyInfo
-
-`func (o *StreamsConnection) GetProxyInfo() ProxyInfo`
-
-GetProxyInfo returns the ProxyInfo field if non-nil, zero value otherwise.
-
-### GetProxyInfoOk
-
-`func (o *StreamsConnection) GetProxyInfoOk() (*ProxyInfo, bool)`
-
-GetProxyInfoOk returns a tuple with the ProxyInfo field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetProxyInfo
-
-`func (o *StreamsConnection) SetProxyInfo(v ProxyInfo)`
-
-SetProxyInfo sets ProxyInfo field to given value.
-
-### HasProxyInfo
-
-`func (o *StreamsConnection) HasProxyInfo() bool`
-
-HasProxyInfo returns a boolean if a field has been set.
 ### GetSecurity
 
 `func (o *StreamsConnection) GetSecurity() StreamsKafkaSecurity`

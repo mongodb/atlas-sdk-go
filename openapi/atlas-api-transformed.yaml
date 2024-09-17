@@ -27,7 +27,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: fd62fecbe08204528522266963c654120db9b74c
+  x-xgen-sha: 97a05475cddda9edbaeb7c0bd992051e03be6275
 servers:
   - url: https://cloud.mongodb.com
 tags:
@@ -43,6 +43,8 @@ tags:
       on the alert conditions that you define. This collection remains under
       revision and may change.
     name: Alerts
+  - description: Configure and manage Atlas Resource Policies within your organization.
+    name: Atlas Resource Policies
   - description: Returns, adds, edits, and removes Atlas Search indexes for the
       specified cluster. Also returns and updates user-defined analyzers for the
       specified cluster.
@@ -30151,16 +30153,6 @@ components:
             with this private endpoint.
       required:
         - endpointId
-    ProxyInfo:
-      type: object
-      description: VPC Proxy Information.
-      properties:
-        authKey:
-          type: string
-          description: Authentication key for the proxy.
-        dnsName:
-          type: string
-          description: DNS name to use to reach the proxy/s.
     PushBasedLogExportProject:
       type: object
       properties:
@@ -31401,8 +31393,6 @@ components:
             group.protocol.type: consumer
         networking:
           $ref: "#/components/schemas/StreamsKafkaNetworking"
-        proxyInfo:
-          $ref: "#/components/schemas/ProxyInfo"
         security:
           $ref: "#/components/schemas/StreamsKafkaSecurity"
       readOnly: true
@@ -31524,10 +31514,14 @@ components:
           readOnly: true
         name:
           type: string
-          description: Id of the vpc peer when the type is VPC.
+          description: Reserved. Will be used by PRIVATE_LINK connection type.
         type:
           type: string
-          description: Selected networking type. Either PUBLIC or VPC. Defaults to PUBLIC
+          description: Selected networking type. Either PUBLIC, VPC or PRIVATE_LINK.
+            Defaults to PUBLIC. For VPC, ensure that VPC peering exists and
+            connectivity has been established between Atlas VPC and the VPC
+            where Kafka cluster is hosted for the connection to function
+            properly. PRIVATE_LINK support is coming soon.
           title: Networking Access Type
     StreamsKafkaSecurity:
       type: object

@@ -11,9 +11,9 @@ type StreamsKafkaNetworkingAccess struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
-	// Id of the vpc peer when the type is VPC.
+	// Reserved. Will be used by PRIVATE_LINK connection type.
 	Name *string `json:"name,omitempty"`
-	// Selected networking type. Either PUBLIC or VPC. Defaults to PUBLIC
+	// Selected networking type. Either PUBLIC, VPC or PRIVATE_LINK. Defaults to PUBLIC. For VPC, ensure that VPC peering exists and connectivity has been established between Atlas VPC and the VPC where Kafka cluster is hosted for the connection to function properly. PRIVATE_LINK support is coming soon.
 	Type *string `json:"type,omitempty"`
 }
 
