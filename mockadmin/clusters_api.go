@@ -1795,6 +1795,169 @@ func (_c *ClustersApi_LoadSampleDatasetWithParams_Call) RunAndReturn(run func(co
 	return _c
 }
 
+// PinFeatureCompatibilityVersion provides a mock function with given fields: ctx, groupId, clusterName, pinFCV
+func (_m *ClustersApi) PinFeatureCompatibilityVersion(ctx context.Context, groupId string, clusterName string, pinFCV *admin.PinFCV) admin.PinFeatureCompatibilityVersionApiRequest {
+	ret := _m.Called(ctx, groupId, clusterName, pinFCV)
+
+	if len(ret) == 0 {
+		panic("no return value specified for PinFeatureCompatibilityVersion")
+	}
+
+	var r0 admin.PinFeatureCompatibilityVersionApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.PinFCV) admin.PinFeatureCompatibilityVersionApiRequest); ok {
+		r0 = rf(ctx, groupId, clusterName, pinFCV)
+	} else {
+		r0 = ret.Get(0).(admin.PinFeatureCompatibilityVersionApiRequest)
+	}
+
+	return r0
+}
+
+// ClustersApi_PinFeatureCompatibilityVersion_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'PinFeatureCompatibilityVersion'
+type ClustersApi_PinFeatureCompatibilityVersion_Call struct {
+	*mock.Call
+}
+
+// PinFeatureCompatibilityVersion is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - clusterName string
+//   - pinFCV *admin.PinFCV
+func (_e *ClustersApi_Expecter) PinFeatureCompatibilityVersion(ctx interface{}, groupId interface{}, clusterName interface{}, pinFCV interface{}) *ClustersApi_PinFeatureCompatibilityVersion_Call {
+	return &ClustersApi_PinFeatureCompatibilityVersion_Call{Call: _e.mock.On("PinFeatureCompatibilityVersion", ctx, groupId, clusterName, pinFCV)}
+}
+
+func (_c *ClustersApi_PinFeatureCompatibilityVersion_Call) Run(run func(ctx context.Context, groupId string, clusterName string, pinFCV *admin.PinFCV)) *ClustersApi_PinFeatureCompatibilityVersion_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.PinFCV))
+	})
+	return _c
+}
+
+func (_c *ClustersApi_PinFeatureCompatibilityVersion_Call) Return(_a0 admin.PinFeatureCompatibilityVersionApiRequest) *ClustersApi_PinFeatureCompatibilityVersion_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ClustersApi_PinFeatureCompatibilityVersion_Call) RunAndReturn(run func(context.Context, string, string, *admin.PinFCV) admin.PinFeatureCompatibilityVersionApiRequest) *ClustersApi_PinFeatureCompatibilityVersion_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// PinFeatureCompatibilityVersionExecute provides a mock function with given fields: r
+func (_m *ClustersApi) PinFeatureCompatibilityVersionExecute(r admin.PinFeatureCompatibilityVersionApiRequest) (interface{}, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for PinFeatureCompatibilityVersionExecute")
+	}
+
+	var r0 interface{}
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.PinFeatureCompatibilityVersionApiRequest) (interface{}, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.PinFeatureCompatibilityVersionApiRequest) interface{}); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(interface{})
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.PinFeatureCompatibilityVersionApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.PinFeatureCompatibilityVersionApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// ClustersApi_PinFeatureCompatibilityVersionExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'PinFeatureCompatibilityVersionExecute'
+type ClustersApi_PinFeatureCompatibilityVersionExecute_Call struct {
+	*mock.Call
+}
+
+// PinFeatureCompatibilityVersionExecute is a helper method to define mock.On call
+//   - r admin.PinFeatureCompatibilityVersionApiRequest
+func (_e *ClustersApi_Expecter) PinFeatureCompatibilityVersionExecute(r interface{}) *ClustersApi_PinFeatureCompatibilityVersionExecute_Call {
+	return &ClustersApi_PinFeatureCompatibilityVersionExecute_Call{Call: _e.mock.On("PinFeatureCompatibilityVersionExecute", r)}
+}
+
+func (_c *ClustersApi_PinFeatureCompatibilityVersionExecute_Call) Run(run func(r admin.PinFeatureCompatibilityVersionApiRequest)) *ClustersApi_PinFeatureCompatibilityVersionExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.PinFeatureCompatibilityVersionApiRequest))
+	})
+	return _c
+}
+
+func (_c *ClustersApi_PinFeatureCompatibilityVersionExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *ClustersApi_PinFeatureCompatibilityVersionExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *ClustersApi_PinFeatureCompatibilityVersionExecute_Call) RunAndReturn(run func(admin.PinFeatureCompatibilityVersionApiRequest) (interface{}, *http.Response, error)) *ClustersApi_PinFeatureCompatibilityVersionExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// PinFeatureCompatibilityVersionWithParams provides a mock function with given fields: ctx, args
+func (_m *ClustersApi) PinFeatureCompatibilityVersionWithParams(ctx context.Context, args *admin.PinFeatureCompatibilityVersionApiParams) admin.PinFeatureCompatibilityVersionApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for PinFeatureCompatibilityVersionWithParams")
+	}
+
+	var r0 admin.PinFeatureCompatibilityVersionApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.PinFeatureCompatibilityVersionApiParams) admin.PinFeatureCompatibilityVersionApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.PinFeatureCompatibilityVersionApiRequest)
+	}
+
+	return r0
+}
+
+// ClustersApi_PinFeatureCompatibilityVersionWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'PinFeatureCompatibilityVersionWithParams'
+type ClustersApi_PinFeatureCompatibilityVersionWithParams_Call struct {
+	*mock.Call
+}
+
+// PinFeatureCompatibilityVersionWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.PinFeatureCompatibilityVersionApiParams
+func (_e *ClustersApi_Expecter) PinFeatureCompatibilityVersionWithParams(ctx interface{}, args interface{}) *ClustersApi_PinFeatureCompatibilityVersionWithParams_Call {
+	return &ClustersApi_PinFeatureCompatibilityVersionWithParams_Call{Call: _e.mock.On("PinFeatureCompatibilityVersionWithParams", ctx, args)}
+}
+
+func (_c *ClustersApi_PinFeatureCompatibilityVersionWithParams_Call) Run(run func(ctx context.Context, args *admin.PinFeatureCompatibilityVersionApiParams)) *ClustersApi_PinFeatureCompatibilityVersionWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.PinFeatureCompatibilityVersionApiParams))
+	})
+	return _c
+}
+
+func (_c *ClustersApi_PinFeatureCompatibilityVersionWithParams_Call) Return(_a0 admin.PinFeatureCompatibilityVersionApiRequest) *ClustersApi_PinFeatureCompatibilityVersionWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ClustersApi_PinFeatureCompatibilityVersionWithParams_Call) RunAndReturn(run func(context.Context, *admin.PinFeatureCompatibilityVersionApiParams) admin.PinFeatureCompatibilityVersionApiRequest) *ClustersApi_PinFeatureCompatibilityVersionWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // RevokeMongoDBEmployeeAccess provides a mock function with given fields: ctx, groupId, clusterName
 func (_m *ClustersApi) RevokeMongoDBEmployeeAccess(ctx context.Context, groupId string, clusterName string) admin.RevokeMongoDBEmployeeAccessApiRequest {
 	ret := _m.Called(ctx, groupId, clusterName)
@@ -2106,6 +2269,168 @@ func (_c *ClustersApi_TestFailoverWithParams_Call) Return(_a0 admin.TestFailover
 }
 
 func (_c *ClustersApi_TestFailoverWithParams_Call) RunAndReturn(run func(context.Context, *admin.TestFailoverApiParams) admin.TestFailoverApiRequest) *ClustersApi_TestFailoverWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UnpinFeatureCompatibilityVersion provides a mock function with given fields: ctx, groupId, clusterName
+func (_m *ClustersApi) UnpinFeatureCompatibilityVersion(ctx context.Context, groupId string, clusterName string) admin.UnpinFeatureCompatibilityVersionApiRequest {
+	ret := _m.Called(ctx, groupId, clusterName)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UnpinFeatureCompatibilityVersion")
+	}
+
+	var r0 admin.UnpinFeatureCompatibilityVersionApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.UnpinFeatureCompatibilityVersionApiRequest); ok {
+		r0 = rf(ctx, groupId, clusterName)
+	} else {
+		r0 = ret.Get(0).(admin.UnpinFeatureCompatibilityVersionApiRequest)
+	}
+
+	return r0
+}
+
+// ClustersApi_UnpinFeatureCompatibilityVersion_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UnpinFeatureCompatibilityVersion'
+type ClustersApi_UnpinFeatureCompatibilityVersion_Call struct {
+	*mock.Call
+}
+
+// UnpinFeatureCompatibilityVersion is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - clusterName string
+func (_e *ClustersApi_Expecter) UnpinFeatureCompatibilityVersion(ctx interface{}, groupId interface{}, clusterName interface{}) *ClustersApi_UnpinFeatureCompatibilityVersion_Call {
+	return &ClustersApi_UnpinFeatureCompatibilityVersion_Call{Call: _e.mock.On("UnpinFeatureCompatibilityVersion", ctx, groupId, clusterName)}
+}
+
+func (_c *ClustersApi_UnpinFeatureCompatibilityVersion_Call) Run(run func(ctx context.Context, groupId string, clusterName string)) *ClustersApi_UnpinFeatureCompatibilityVersion_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string))
+	})
+	return _c
+}
+
+func (_c *ClustersApi_UnpinFeatureCompatibilityVersion_Call) Return(_a0 admin.UnpinFeatureCompatibilityVersionApiRequest) *ClustersApi_UnpinFeatureCompatibilityVersion_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ClustersApi_UnpinFeatureCompatibilityVersion_Call) RunAndReturn(run func(context.Context, string, string) admin.UnpinFeatureCompatibilityVersionApiRequest) *ClustersApi_UnpinFeatureCompatibilityVersion_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UnpinFeatureCompatibilityVersionExecute provides a mock function with given fields: r
+func (_m *ClustersApi) UnpinFeatureCompatibilityVersionExecute(r admin.UnpinFeatureCompatibilityVersionApiRequest) (interface{}, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UnpinFeatureCompatibilityVersionExecute")
+	}
+
+	var r0 interface{}
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.UnpinFeatureCompatibilityVersionApiRequest) (interface{}, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.UnpinFeatureCompatibilityVersionApiRequest) interface{}); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(interface{})
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.UnpinFeatureCompatibilityVersionApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.UnpinFeatureCompatibilityVersionApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// ClustersApi_UnpinFeatureCompatibilityVersionExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UnpinFeatureCompatibilityVersionExecute'
+type ClustersApi_UnpinFeatureCompatibilityVersionExecute_Call struct {
+	*mock.Call
+}
+
+// UnpinFeatureCompatibilityVersionExecute is a helper method to define mock.On call
+//   - r admin.UnpinFeatureCompatibilityVersionApiRequest
+func (_e *ClustersApi_Expecter) UnpinFeatureCompatibilityVersionExecute(r interface{}) *ClustersApi_UnpinFeatureCompatibilityVersionExecute_Call {
+	return &ClustersApi_UnpinFeatureCompatibilityVersionExecute_Call{Call: _e.mock.On("UnpinFeatureCompatibilityVersionExecute", r)}
+}
+
+func (_c *ClustersApi_UnpinFeatureCompatibilityVersionExecute_Call) Run(run func(r admin.UnpinFeatureCompatibilityVersionApiRequest)) *ClustersApi_UnpinFeatureCompatibilityVersionExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.UnpinFeatureCompatibilityVersionApiRequest))
+	})
+	return _c
+}
+
+func (_c *ClustersApi_UnpinFeatureCompatibilityVersionExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *ClustersApi_UnpinFeatureCompatibilityVersionExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *ClustersApi_UnpinFeatureCompatibilityVersionExecute_Call) RunAndReturn(run func(admin.UnpinFeatureCompatibilityVersionApiRequest) (interface{}, *http.Response, error)) *ClustersApi_UnpinFeatureCompatibilityVersionExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UnpinFeatureCompatibilityVersionWithParams provides a mock function with given fields: ctx, args
+func (_m *ClustersApi) UnpinFeatureCompatibilityVersionWithParams(ctx context.Context, args *admin.UnpinFeatureCompatibilityVersionApiParams) admin.UnpinFeatureCompatibilityVersionApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UnpinFeatureCompatibilityVersionWithParams")
+	}
+
+	var r0 admin.UnpinFeatureCompatibilityVersionApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.UnpinFeatureCompatibilityVersionApiParams) admin.UnpinFeatureCompatibilityVersionApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.UnpinFeatureCompatibilityVersionApiRequest)
+	}
+
+	return r0
+}
+
+// ClustersApi_UnpinFeatureCompatibilityVersionWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UnpinFeatureCompatibilityVersionWithParams'
+type ClustersApi_UnpinFeatureCompatibilityVersionWithParams_Call struct {
+	*mock.Call
+}
+
+// UnpinFeatureCompatibilityVersionWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.UnpinFeatureCompatibilityVersionApiParams
+func (_e *ClustersApi_Expecter) UnpinFeatureCompatibilityVersionWithParams(ctx interface{}, args interface{}) *ClustersApi_UnpinFeatureCompatibilityVersionWithParams_Call {
+	return &ClustersApi_UnpinFeatureCompatibilityVersionWithParams_Call{Call: _e.mock.On("UnpinFeatureCompatibilityVersionWithParams", ctx, args)}
+}
+
+func (_c *ClustersApi_UnpinFeatureCompatibilityVersionWithParams_Call) Run(run func(ctx context.Context, args *admin.UnpinFeatureCompatibilityVersionApiParams)) *ClustersApi_UnpinFeatureCompatibilityVersionWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.UnpinFeatureCompatibilityVersionApiParams))
+	})
+	return _c
+}
+
+func (_c *ClustersApi_UnpinFeatureCompatibilityVersionWithParams_Call) Return(_a0 admin.UnpinFeatureCompatibilityVersionApiRequest) *ClustersApi_UnpinFeatureCompatibilityVersionWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ClustersApi_UnpinFeatureCompatibilityVersionWithParams_Call) RunAndReturn(run func(context.Context, *admin.UnpinFeatureCompatibilityVersionApiParams) admin.UnpinFeatureCompatibilityVersionApiRequest) *ClustersApi_UnpinFeatureCompatibilityVersionWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
