@@ -9,13 +9,10 @@ import (
 // GroupMigrationRequest struct for GroupMigrationRequest
 type GroupMigrationRequest struct {
 	// Unique 24-hexadecimal digit string that identifies the organization to move the specified project to.
-	// Read only field.
 	DestinationOrgId *string `json:"destinationOrgId,omitempty"`
 	// Unique string that identifies the private part of the [API Key](https://dochub.mongodb.org/core/atlas-create-prog-api-key) used to verify access to the destination organization. This parameter is required only when you authenticate with Programmatic API Keys.
-	// Read only field.
 	DestinationOrgPrivateApiKey *string `json:"destinationOrgPrivateApiKey,omitempty"`
 	// Unique string that identifies the public part of the [API Key](https://dochub.mongodb.org/core/atlas-create-prog-api-key) used to verify access to the destination organization. This parameter is required only when you authenticate with Programmatic API Keys.
-	// Read only field.
 	DestinationOrgPublicApiKey *string `json:"destinationOrgPublicApiKey,omitempty"`
 }
 
@@ -144,5 +141,14 @@ func (o GroupMigrationRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
 }
 func (o GroupMigrationRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.DestinationOrgId) {
+		toSerialize["destinationOrgId"] = o.DestinationOrgId
+	}
+	if !IsNil(o.DestinationOrgPrivateApiKey) {
+		toSerialize["destinationOrgPrivateApiKey"] = o.DestinationOrgPrivateApiKey
+	}
+	if !IsNil(o.DestinationOrgPublicApiKey) {
+		toSerialize["destinationOrgPublicApiKey"] = o.DestinationOrgPublicApiKey
+	}
 	return toSerialize, nil
 }
