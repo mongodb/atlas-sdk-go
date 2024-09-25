@@ -47,8 +47,6 @@ type APIClient struct {
 
 	AlertsApi AlertsApi
 
-	AtlasResourcePoliciesApi AtlasResourcePoliciesApi
-
 	AtlasSearchApi AtlasSearchApi
 
 	AuditingApi AuditingApi
@@ -111,6 +109,8 @@ type APIClient struct {
 
 	PushBasedLogExportApi PushBasedLogExportApi
 
+	ResourcePoliciesApi ResourcePoliciesApi
+
 	RollingIndexApi RollingIndexApi
 
 	RootApi RootApi
@@ -152,7 +152,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.AccessTrackingApi = (*AccessTrackingApiService)(&c.common)
 	c.AlertConfigurationsApi = (*AlertConfigurationsApiService)(&c.common)
 	c.AlertsApi = (*AlertsApiService)(&c.common)
-	c.AtlasResourcePoliciesApi = (*AtlasResourcePoliciesApiService)(&c.common)
 	c.AtlasSearchApi = (*AtlasSearchApiService)(&c.common)
 	c.AuditingApi = (*AuditingApiService)(&c.common)
 	c.CloudBackupsApi = (*CloudBackupsApiService)(&c.common)
@@ -184,6 +183,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ProjectIPAccessListApi = (*ProjectIPAccessListApiService)(&c.common)
 	c.ProjectsApi = (*ProjectsApiService)(&c.common)
 	c.PushBasedLogExportApi = (*PushBasedLogExportApiService)(&c.common)
+	c.ResourcePoliciesApi = (*ResourcePoliciesApiService)(&c.common)
 	c.RollingIndexApi = (*RollingIndexApiService)(&c.common)
 	c.RootApi = (*RootApiService)(&c.common)
 	c.ServerlessInstancesApi = (*ServerlessInstancesApiService)(&c.common)

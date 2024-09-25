@@ -21,7 +21,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 98471229986fb14cd35397c5542136ddb94a92b7
+  x-xgen-sha: 991036ecf95ec6855a39cd80bd2a15a90e012e7d
 servers:
 - url: https://cloud.mongodb.com
 tags:
@@ -36,8 +36,6 @@ tags:
     the alert conditions that you define. This collection remains under revision and
     may change.
   name: Alerts
-- description: Configure and manage Atlas Resource Policies within your organization.
-  name: Atlas Resource Policies
 - description: "Returns, adds, edits, and removes Atlas Search indexes for the specified\
     \ cluster. Also returns and updates user-defined analyzers for the specified cluster."
   name: Atlas Search
@@ -166,6 +164,8 @@ tags:
 - description: "You can continually push logs from mongod, mongos, and audit logs\
     \ to an AWS S3 bucket. Atlas exports logs every 5 minutes."
   name: Push-Based Log Export
+- description: Configure and manage Atlas Resource Policies within your organization.
+  name: Resource Policies
 - description: Creates one index to a database deployment in a rolling manner. You
     can't create a rolling index on an `M0` free cluster or `M2/M5` shared cluster.
   name: Rolling Index
@@ -17270,7 +17270,7 @@ paths:
       - DigestAuth: []
       summary: Return all non-compliant resources
       tags:
-      - Atlas Resource Policies
+      - Resource Policies
   /api/atlas/v2/orgs/{orgId}/resourcePolicies:
     get:
       description: Return all Atlas Resource Policies for the org.
@@ -17304,7 +17304,7 @@ paths:
       - DigestAuth: []
       summary: Return all Atlas Resource Policies
       tags:
-      - Atlas Resource Policies
+      - Resource Policies
     post:
       description: Create one Atlas Resource Policy for an org.
       externalDocs:
@@ -17348,7 +17348,7 @@ paths:
       - DigestAuth: []
       summary: Create one Atlas Resource Policy
       tags:
-      - Atlas Resource Policies
+      - Resource Policies
   /api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId}:
     delete:
       description: Delete one Atlas Resource Policy for an org.
@@ -17394,7 +17394,7 @@ paths:
       - DigestAuth: []
       summary: Delete one Atlas Resource Policy
       tags:
-      - Atlas Resource Policies
+      - Resource Policies
     get:
       description: Return one Atlas Resource Policy for an org.
       externalDocs:
@@ -17439,7 +17439,7 @@ paths:
       - DigestAuth: []
       summary: Return one Atlas Resource Policy
       tags:
-      - Atlas Resource Policies
+      - Resource Policies
     patch:
       description: Update one Atlas Resource Policy for an org.
       externalDocs:
@@ -17497,7 +17497,7 @@ paths:
       - DigestAuth: []
       summary: Update one Atlas Resource Policy
       tags:
-      - Atlas Resource Policies
+      - Resource Policies
   /api/atlas/v2/orgs/{orgId}/resourcePolicies:validate:
     post:
       description: Validate one Atlas Resource Policy for an org.
@@ -17542,7 +17542,7 @@ paths:
       - DigestAuth: []
       summary: Validate one Atlas Resource Policy
       tags:
-      - Atlas Resource Policies
+      - Resource Policies
   /api/atlas/v2/orgs/{orgId}/settings:
     get:
       description: "Returns details about the specified organization's settings. To\
@@ -21379,6 +21379,12 @@ components:
       - MONTREAL_CAN
       - TOKYO_JPN
       - SINGAPORE_SGP
+    ApiStreamsAzureRegionView:
+      type: string
+      description: Atlas Streams Azure Regions.
+      enum:
+      - VIRGINIA_USA
+      - AMSTERDAM_NLD
     ApiUserEventTypeViewForNdsGroup:
       type: string
       description: Unique identifier of event type.
@@ -24658,6 +24664,7 @@ components:
       description: Name of the cloud provider region hosting Atlas Stream Processing.
       oneOf:
       - $ref: "#/components/schemas/ApiStreamsAWSRegionView"
+      - $ref: "#/components/schemas/ApiStreamsAzureRegionView"
     BasicBSONList:
       type: array
       description: "List that contains the search criteria that the query uses. To\
@@ -34667,6 +34674,7 @@ components:
         - STREAM_TENANT_AUDIT_LOGS_DELETED
         - QUEUED_ADMIN_ACTION_CREATED
         - QUEUED_ADMIN_ACTION_COMPLETED
+        - QUEUED_ADMIN_ACTION_CANCELLED
         - ATLAS_SQL_SCHEDULED_UPDATE_CREATED
         - ATLAS_SQL_SCHEDULED_UPDATE_MODIFIED
         - ATLAS_SQL_SCHEDULED_UPDATE_REMOVED
@@ -42233,6 +42241,7 @@ components:
       - STREAM_TENANT_AUDIT_LOGS_DELETED
       - QUEUED_ADMIN_ACTION_CREATED
       - QUEUED_ADMIN_ACTION_COMPLETED
+      - QUEUED_ADMIN_ACTION_CANCELLED
       - ATLAS_SQL_SCHEDULED_UPDATE_CREATED
       - ATLAS_SQL_SCHEDULED_UPDATE_MODIFIED
       - ATLAS_SQL_SCHEDULED_UPDATE_REMOVED

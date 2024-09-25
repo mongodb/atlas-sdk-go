@@ -1,16 +1,16 @@
-# \AtlasResourcePoliciesApi
+# \ResourcePoliciesApi
 
 All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateAtlasResourcePolicy**](AtlasResourcePoliciesApi.md#CreateAtlasResourcePolicy) | **Post** /api/atlas/v2/orgs/{orgId}/resourcePolicies | Create one Atlas Resource Policy
-[**DeleteAtlasResourcePolicy**](AtlasResourcePoliciesApi.md#DeleteAtlasResourcePolicy) | **Delete** /api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId} | Delete one Atlas Resource Policy
-[**GetAtlasResourcePolicies**](AtlasResourcePoliciesApi.md#GetAtlasResourcePolicies) | **Get** /api/atlas/v2/orgs/{orgId}/resourcePolicies | Return all Atlas Resource Policies
-[**GetAtlasResourcePolicy**](AtlasResourcePoliciesApi.md#GetAtlasResourcePolicy) | **Get** /api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId} | Return one Atlas Resource Policy
-[**GetResourcesNonCompliant**](AtlasResourcePoliciesApi.md#GetResourcesNonCompliant) | **Get** /api/atlas/v2/orgs/{orgId}/nonCompliantResources | Return all non-compliant resources
-[**UpdateAtlasResourcePolicy**](AtlasResourcePoliciesApi.md#UpdateAtlasResourcePolicy) | **Patch** /api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId} | Update one Atlas Resource Policy
-[**ValidateAtlasResourcePolicy**](AtlasResourcePoliciesApi.md#ValidateAtlasResourcePolicy) | **Post** /api/atlas/v2/orgs/{orgId}/resourcePolicies:validate | Validate one Atlas Resource Policy
+[**CreateAtlasResourcePolicy**](ResourcePoliciesApi.md#CreateAtlasResourcePolicy) | **Post** /api/atlas/v2/orgs/{orgId}/resourcePolicies | Create one Atlas Resource Policy
+[**DeleteAtlasResourcePolicy**](ResourcePoliciesApi.md#DeleteAtlasResourcePolicy) | **Delete** /api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId} | Delete one Atlas Resource Policy
+[**GetAtlasResourcePolicies**](ResourcePoliciesApi.md#GetAtlasResourcePolicies) | **Get** /api/atlas/v2/orgs/{orgId}/resourcePolicies | Return all Atlas Resource Policies
+[**GetAtlasResourcePolicy**](ResourcePoliciesApi.md#GetAtlasResourcePolicy) | **Get** /api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId} | Return one Atlas Resource Policy
+[**GetResourcesNonCompliant**](ResourcePoliciesApi.md#GetResourcesNonCompliant) | **Get** /api/atlas/v2/orgs/{orgId}/nonCompliantResources | Return all non-compliant resources
+[**UpdateAtlasResourcePolicy**](ResourcePoliciesApi.md#UpdateAtlasResourcePolicy) | **Patch** /api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId} | Update one Atlas Resource Policy
+[**ValidateAtlasResourcePolicy**](ResourcePoliciesApi.md#ValidateAtlasResourcePolicy) | **Post** /api/atlas/v2/orgs/{orgId}/resourcePolicies:validate | Validate one Atlas Resource Policy
 
 
 
@@ -54,9 +54,9 @@ func main() {
   };
 ")}) // ApiAtlasResourcePolicyCreate | 
 
-    resp, r, err := sdk.AtlasResourcePoliciesApi.CreateAtlasResourcePolicy(context.Background(), orgId, &apiAtlasResourcePolicyCreate).Execute()
+    resp, r, err := sdk.ResourcePoliciesApi.CreateAtlasResourcePolicy(context.Background(), orgId, &apiAtlasResourcePolicyCreate).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AtlasResourcePoliciesApi.CreateAtlasResourcePolicy`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ResourcePoliciesApi.CreateAtlasResourcePolicy`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -64,7 +64,7 @@ func main() {
         return
     }
     // response from `CreateAtlasResourcePolicy`: ApiAtlasResourcePolicy
-    fmt.Fprintf(os.Stdout, "Response from `AtlasResourcePoliciesApi.CreateAtlasResourcePolicy`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ResourcePoliciesApi.CreateAtlasResourcePolicy`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -136,9 +136,9 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     resourcePolicyId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.AtlasResourcePoliciesApi.DeleteAtlasResourcePolicy(context.Background(), orgId, resourcePolicyId).Execute()
+    resp, r, err := sdk.ResourcePoliciesApi.DeleteAtlasResourcePolicy(context.Background(), orgId, resourcePolicyId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AtlasResourcePoliciesApi.DeleteAtlasResourcePolicy`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ResourcePoliciesApi.DeleteAtlasResourcePolicy`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -146,7 +146,7 @@ func main() {
         return
     }
     // response from `DeleteAtlasResourcePolicy`: interface{}
-    fmt.Fprintf(os.Stdout, "Response from `AtlasResourcePoliciesApi.DeleteAtlasResourcePolicy`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ResourcePoliciesApi.DeleteAtlasResourcePolicy`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -218,9 +218,9 @@ func main() {
 
     orgId := "4888442a3354817a7320eb61" // string | 
 
-    resp, r, err := sdk.AtlasResourcePoliciesApi.GetAtlasResourcePolicies(context.Background(), orgId).Execute()
+    resp, r, err := sdk.ResourcePoliciesApi.GetAtlasResourcePolicies(context.Background(), orgId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AtlasResourcePoliciesApi.GetAtlasResourcePolicies`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ResourcePoliciesApi.GetAtlasResourcePolicies`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -228,7 +228,7 @@ func main() {
         return
     }
     // response from `GetAtlasResourcePolicies`: []ApiAtlasResourcePolicy
-    fmt.Fprintf(os.Stdout, "Response from `AtlasResourcePoliciesApi.GetAtlasResourcePolicies`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ResourcePoliciesApi.GetAtlasResourcePolicies`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -299,9 +299,9 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     resourcePolicyId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.AtlasResourcePoliciesApi.GetAtlasResourcePolicy(context.Background(), orgId, resourcePolicyId).Execute()
+    resp, r, err := sdk.ResourcePoliciesApi.GetAtlasResourcePolicy(context.Background(), orgId, resourcePolicyId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AtlasResourcePoliciesApi.GetAtlasResourcePolicy`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ResourcePoliciesApi.GetAtlasResourcePolicy`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -309,7 +309,7 @@ func main() {
         return
     }
     // response from `GetAtlasResourcePolicy`: ApiAtlasResourcePolicy
-    fmt.Fprintf(os.Stdout, "Response from `AtlasResourcePoliciesApi.GetAtlasResourcePolicy`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ResourcePoliciesApi.GetAtlasResourcePolicy`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -381,9 +381,9 @@ func main() {
 
     orgId := "4888442a3354817a7320eb61" // string | 
 
-    resp, r, err := sdk.AtlasResourcePoliciesApi.GetResourcesNonCompliant(context.Background(), orgId).Execute()
+    resp, r, err := sdk.ResourcePoliciesApi.GetResourcesNonCompliant(context.Background(), orgId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AtlasResourcePoliciesApi.GetResourcesNonCompliant`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ResourcePoliciesApi.GetResourcesNonCompliant`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -391,7 +391,7 @@ func main() {
         return
     }
     // response from `GetResourcesNonCompliant`: []ApiAtlasNonCompliantResource
-    fmt.Fprintf(os.Stdout, "Response from `AtlasResourcePoliciesApi.GetResourcesNonCompliant`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ResourcePoliciesApi.GetResourcesNonCompliant`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -463,9 +463,9 @@ func main() {
     resourcePolicyId := "32b6e34b3d91647abb20e7b8" // string | 
     apiAtlasResourcePolicyEdit := *openapiclient.NewApiAtlasResourcePolicyEdit() // ApiAtlasResourcePolicyEdit | 
 
-    resp, r, err := sdk.AtlasResourcePoliciesApi.UpdateAtlasResourcePolicy(context.Background(), orgId, resourcePolicyId, &apiAtlasResourcePolicyEdit).Execute()
+    resp, r, err := sdk.ResourcePoliciesApi.UpdateAtlasResourcePolicy(context.Background(), orgId, resourcePolicyId, &apiAtlasResourcePolicyEdit).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AtlasResourcePoliciesApi.UpdateAtlasResourcePolicy`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ResourcePoliciesApi.UpdateAtlasResourcePolicy`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -473,7 +473,7 @@ func main() {
         return
     }
     // response from `UpdateAtlasResourcePolicy`: ApiAtlasResourcePolicy
-    fmt.Fprintf(os.Stdout, "Response from `AtlasResourcePoliciesApi.UpdateAtlasResourcePolicy`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ResourcePoliciesApi.UpdateAtlasResourcePolicy`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -554,9 +554,9 @@ func main() {
   };
 ")}) // ApiAtlasResourcePolicyCreate | 
 
-    resp, r, err := sdk.AtlasResourcePoliciesApi.ValidateAtlasResourcePolicy(context.Background(), orgId, &apiAtlasResourcePolicyCreate).Execute()
+    resp, r, err := sdk.ResourcePoliciesApi.ValidateAtlasResourcePolicy(context.Background(), orgId, &apiAtlasResourcePolicyCreate).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AtlasResourcePoliciesApi.ValidateAtlasResourcePolicy`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ResourcePoliciesApi.ValidateAtlasResourcePolicy`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -564,7 +564,7 @@ func main() {
         return
     }
     // response from `ValidateAtlasResourcePolicy`: ApiAtlasResourcePolicy
-    fmt.Fprintf(os.Stdout, "Response from `AtlasResourcePoliciesApi.ValidateAtlasResourcePolicy`: %v (%v)\n", resp, r)
+    fmt.Fprintf(os.Stdout, "Response from `ResourcePoliciesApi.ValidateAtlasResourcePolicy`: %v (%v)\n", resp, r)
 }
 ```
 
