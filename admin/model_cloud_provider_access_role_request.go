@@ -20,10 +20,10 @@ type CloudProviderAccessRoleRequest struct {
 	// Date and time when someone authorized this role for the specified cloud service provider. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	AuthorizedDate *time.Time `json:"authorizedDate,omitempty"`
-	// Date and time when this Azure Service Principal was created. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
+	// Date and time when this GCP Service Account was created. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	CreatedDate *time.Time `json:"createdDate,omitempty"`
-	// List that contains application features associated with this Azure Service Principal.
+	// List that contains application features associated with this GCP Service Account.
 	// Read only field.
 	FeatureUsages *[]CloudProviderAccessFeatureUsage `json:"featureUsages,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the role.
@@ -41,6 +41,9 @@ type CloudProviderAccessRoleRequest struct {
 	ServicePrincipalId *string `json:"servicePrincipalId,omitempty"`
 	// UUID String that identifies the Azure Active Directory Tenant ID.
 	TenantId *string `json:"tenantId,omitempty"`
+	// ID string that identifies the GCP Service Account used by Atlas.
+	// Read only field.
+	GcpServiceAccountForAtlas *string `json:"gcpServiceAccountForAtlas,omitempty"`
 }
 
 // NewCloudProviderAccessRoleRequest instantiates a new CloudProviderAccessRoleRequest object
@@ -446,6 +449,39 @@ func (o *CloudProviderAccessRoleRequest) HasTenantId() bool {
 // SetTenantId gets a reference to the given string and assigns it to the TenantId field.
 func (o *CloudProviderAccessRoleRequest) SetTenantId(v string) {
 	o.TenantId = &v
+}
+
+// GetGcpServiceAccountForAtlas returns the GcpServiceAccountForAtlas field value if set, zero value otherwise
+func (o *CloudProviderAccessRoleRequest) GetGcpServiceAccountForAtlas() string {
+	if o == nil || IsNil(o.GcpServiceAccountForAtlas) {
+		var ret string
+		return ret
+	}
+	return *o.GcpServiceAccountForAtlas
+}
+
+// GetGcpServiceAccountForAtlasOk returns a tuple with the GcpServiceAccountForAtlas field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudProviderAccessRoleRequest) GetGcpServiceAccountForAtlasOk() (*string, bool) {
+	if o == nil || IsNil(o.GcpServiceAccountForAtlas) {
+		return nil, false
+	}
+
+	return o.GcpServiceAccountForAtlas, true
+}
+
+// HasGcpServiceAccountForAtlas returns a boolean if a field has been set.
+func (o *CloudProviderAccessRoleRequest) HasGcpServiceAccountForAtlas() bool {
+	if o != nil && !IsNil(o.GcpServiceAccountForAtlas) {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpServiceAccountForAtlas gets a reference to the given string and assigns it to the GcpServiceAccountForAtlas field.
+func (o *CloudProviderAccessRoleRequest) SetGcpServiceAccountForAtlas(v string) {
+	o.GcpServiceAccountForAtlas = &v
 }
 
 func (o CloudProviderAccessRoleRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {

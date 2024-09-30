@@ -43,6 +43,8 @@ type CloudProviderAccessAzureServicePrincipal struct {
 	// Unique 24-hexadecimal digit string that identifies the role.
 	// Read only field.
 	RoleId *string `json:"roleId,omitempty"`
+	// Email address for the Google Service Account created by Atlas.
+	GcpServiceAccountForAtlas *string `json:"gcpServiceAccountForAtlas,omitempty"`
 }
 
 // NewCloudProviderAccessAzureServicePrincipal instantiates a new CloudProviderAccessAzureServicePrincipal object
@@ -483,6 +485,39 @@ func (o *CloudProviderAccessAzureServicePrincipal) SetRoleId(v string) {
 	o.RoleId = &v
 }
 
+// GetGcpServiceAccountForAtlas returns the GcpServiceAccountForAtlas field value if set, zero value otherwise
+func (o *CloudProviderAccessAzureServicePrincipal) GetGcpServiceAccountForAtlas() string {
+	if o == nil || IsNil(o.GcpServiceAccountForAtlas) {
+		var ret string
+		return ret
+	}
+	return *o.GcpServiceAccountForAtlas
+}
+
+// GetGcpServiceAccountForAtlasOk returns a tuple with the GcpServiceAccountForAtlas field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudProviderAccessAzureServicePrincipal) GetGcpServiceAccountForAtlasOk() (*string, bool) {
+	if o == nil || IsNil(o.GcpServiceAccountForAtlas) {
+		return nil, false
+	}
+
+	return o.GcpServiceAccountForAtlas, true
+}
+
+// HasGcpServiceAccountForAtlas returns a boolean if a field has been set.
+func (o *CloudProviderAccessAzureServicePrincipal) HasGcpServiceAccountForAtlas() bool {
+	if o != nil && !IsNil(o.GcpServiceAccountForAtlas) {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpServiceAccountForAtlas gets a reference to the given string and assigns it to the GcpServiceAccountForAtlas field.
+func (o *CloudProviderAccessAzureServicePrincipal) SetGcpServiceAccountForAtlas(v string) {
+	o.GcpServiceAccountForAtlas = &v
+}
+
 func (o CloudProviderAccessAzureServicePrincipal) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -504,6 +539,9 @@ func (o CloudProviderAccessAzureServicePrincipal) ToMap() (map[string]interface{
 	toSerialize["providerName"] = o.ProviderName
 	if !IsNil(o.IamAssumedRoleArn) {
 		toSerialize["iamAssumedRoleArn"] = o.IamAssumedRoleArn
+	}
+	if !IsNil(o.GcpServiceAccountForAtlas) {
+		toSerialize["gcpServiceAccountForAtlas"] = o.GcpServiceAccountForAtlas
 	}
 	return toSerialize, nil
 }

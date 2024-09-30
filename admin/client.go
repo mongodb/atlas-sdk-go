@@ -95,6 +95,8 @@ type APIClient struct {
 
 	OnlineArchiveApi OnlineArchiveApi
 
+	OpenAPIApi OpenAPIApi
+
 	OrganizationsApi OrganizationsApi
 
 	PerformanceAdvisorApi PerformanceAdvisorApi
@@ -119,6 +121,8 @@ type APIClient struct {
 
 	ServerlessPrivateEndpointsApi ServerlessPrivateEndpointsApi
 
+	ServiceAccountsApi ServiceAccountsApi
+
 	SharedTierRestoreJobsApi SharedTierRestoreJobsApi
 
 	SharedTierSnapshotsApi SharedTierSnapshotsApi
@@ -128,6 +132,8 @@ type APIClient struct {
 	TeamsApi TeamsApi
 
 	ThirdPartyIntegrationsApi ThirdPartyIntegrationsApi
+
+	USSInstancesApi USSInstancesApi
 
 	X509AuthenticationApi X509AuthenticationApi
 }
@@ -176,6 +182,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.MonitoringAndLogsApi = (*MonitoringAndLogsApiService)(&c.common)
 	c.NetworkPeeringApi = (*NetworkPeeringApiService)(&c.common)
 	c.OnlineArchiveApi = (*OnlineArchiveApiService)(&c.common)
+	c.OpenAPIApi = (*OpenAPIApiService)(&c.common)
 	c.OrganizationsApi = (*OrganizationsApiService)(&c.common)
 	c.PerformanceAdvisorApi = (*PerformanceAdvisorApiService)(&c.common)
 	c.PrivateEndpointServicesApi = (*PrivateEndpointServicesApiService)(&c.common)
@@ -188,11 +195,13 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.RootApi = (*RootApiService)(&c.common)
 	c.ServerlessInstancesApi = (*ServerlessInstancesApiService)(&c.common)
 	c.ServerlessPrivateEndpointsApi = (*ServerlessPrivateEndpointsApiService)(&c.common)
+	c.ServiceAccountsApi = (*ServiceAccountsApiService)(&c.common)
 	c.SharedTierRestoreJobsApi = (*SharedTierRestoreJobsApiService)(&c.common)
 	c.SharedTierSnapshotsApi = (*SharedTierSnapshotsApiService)(&c.common)
 	c.StreamsApi = (*StreamsApiService)(&c.common)
 	c.TeamsApi = (*TeamsApiService)(&c.common)
 	c.ThirdPartyIntegrationsApi = (*ThirdPartyIntegrationsApiService)(&c.common)
+	c.USSInstancesApi = (*USSInstancesApiService)(&c.common)
 	c.X509AuthenticationApi = (*X509AuthenticationApiService)(&c.common)
 
 	return c

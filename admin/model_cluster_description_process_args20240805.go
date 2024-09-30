@@ -40,6 +40,8 @@ type ClusterDescriptionProcessArgs20240805 struct {
 // will change when the set of required properties is changed
 func NewClusterDescriptionProcessArgs20240805() *ClusterDescriptionProcessArgs20240805 {
 	this := ClusterDescriptionProcessArgs20240805{}
+	var changeStreamOptionsPreAndPostImagesExpireAfterSeconds int = -1
+	this.ChangeStreamOptionsPreAndPostImagesExpireAfterSeconds = &changeStreamOptionsPreAndPostImagesExpireAfterSeconds
 	var sampleRefreshIntervalBIConnector int = 0
 	this.SampleRefreshIntervalBIConnector = &sampleRefreshIntervalBIConnector
 	return &this
@@ -50,6 +52,8 @@ func NewClusterDescriptionProcessArgs20240805() *ClusterDescriptionProcessArgs20
 // but it doesn't guarantee that properties required by API are set
 func NewClusterDescriptionProcessArgs20240805WithDefaults() *ClusterDescriptionProcessArgs20240805 {
 	this := ClusterDescriptionProcessArgs20240805{}
+	var changeStreamOptionsPreAndPostImagesExpireAfterSeconds int = -1
+	this.ChangeStreamOptionsPreAndPostImagesExpireAfterSeconds = &changeStreamOptionsPreAndPostImagesExpireAfterSeconds
 	var sampleRefreshIntervalBIConnector int = 0
 	this.SampleRefreshIntervalBIConnector = &sampleRefreshIntervalBIConnector
 	return &this

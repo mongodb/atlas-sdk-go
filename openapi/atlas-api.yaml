@@ -8,7 +8,7 @@ info:
     ```
     curl --user "{PUBLIC-KEY}:{PRIVATE-KEY}" \
       --digest \
-      --header "Accept: application/vnd.atlas.2024-08-05+json" \
+      --header "Accept: application/vnd.atlas.2025-01-01+json" \
       -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/dbAccessHistory/clusters/{clusterName}?pretty=true"
     ```
 
@@ -21,7 +21,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 991036ecf95ec6855a39cd80bd2a15a90e012e7d
+  x-xgen-sha: 838f9aef747eaec3e6069a855bafb0aa9426e371
 servers:
 - url: https://cloud.mongodb.com
 tags:
@@ -181,6 +181,13 @@ tags:
     description: Set Up a Private Endpoint for a Serverless Instance Tutorial
     url: https://dochub.mongodb.org/core/serverless-private-endpoint
   name: Serverless Private Endpoints
+- description: Endpoints for managing Service Accounts and secrets. Service Accounts
+    are used for programmatic access to the Atlas Admin API through the OAuth 2.0
+    Client Credentials flow. This feature is available as a Preview feature.
+  externalDocs:
+    description: Get Started with the Atlas Administration API
+    url: https://www.mongodb.com/docs/atlas/configure-api-access/
+  name: Service Accounts
 - description: Returns and adds restore jobs for shared-tier database deployments.
   name: Shared-Tier Restore Jobs
 - description: Returns and requests to download shared-tier database deployment snapshots.
@@ -5742,6 +5749,100 @@ paths:
       summary: Start an Outage Simulation
       tags:
       - Cluster Outage Simulation
+  /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/performanceAdvisor/suggestedIndexes:
+    get:
+      description: "Returns the indexes that the Performance Advisor suggests. The\
+        \ Performance Advisor monitors queries that MongoDB considers slow and suggests\
+        \ new indexes to improve query performance. To use this resource, the requesting\
+        \ API Key must have the Project Read Only role."
+      operationId: listSuggestedIndexes_1
+      parameters:
+      - $ref: "#/components/parameters/groupId"
+      - description: Human-readable label that identifies the cluster.
+        in: path
+        name: clusterName
+        required: true
+        schema:
+          type: string
+          maxLength: 64
+          minLength: 1
+          pattern: "^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$"
+      - description: "ProcessIds from which to retrieve suggested indexes. A processId\
+          \ is a combination of host and port that serves the MongoDB process. The\
+          \ host must be the hostname, FQDN, IPv4 address, or IPv6 address of the\
+          \ host that runs the MongoDB process (`mongod` or `mongos`). The port must\
+          \ be the IANA port on which the MongoDB process listens for requests. To\
+          \ include multiple processIds, pass the parameter multiple times delimited\
+          \ with an ampersand (`&`) between each processId."
+        in: query
+        name: processIds
+        schema:
+          type: array
+          items:
+            type: string
+            pattern: "^([0-9]{1,3}\\.){3}[0-9]{1,3}|([0-9a-f]{1,4}\\:){7}([0-9a-f]{1,4})|(([a-z0-9]+\\\
+              .){1,10}[a-z]+)?(\\:[0-9]{4,5})$"
+        style: form
+      - description: "Namespaces from which to retrieve suggested indexes. A namespace\
+          \ consists of one database and one collection resource written as `.`: `<database>.<collection>`.\
+          \ To include multiple namespaces, pass the parameter multiple times delimited\
+          \ with an ampersand (`&`) between each namespace. Omit this parameter to\
+          \ return results for all namespaces."
+        in: query
+        name: namespaces
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+      - description: "HostType determines the source of index advice from logs. If\
+          \ **hostType**=All, index advice from logs will come from all processes\
+          \ within a cluster and **processIds** will be ignored. If hostType=Null,\
+          \ index advice from logs will come from the subset of processes within this\
+          \ cluster specified using *processIds**."
+        in: query
+        name: hostType
+        schema:
+          type: string
+      - description: |-
+          Date and time from which the query retrieves the suggested indexes. This parameter expresses its value in the number of milliseconds that have elapsed since the [UNIX epoch](https://en.wikipedia.org/wiki/Unix_time).
+
+          - If you don't specify the **until** parameter, the endpoint returns data covering from the **since** value and the current time.
+          - If you specify neither the **since** nor the **until** parameters, the endpoint returns data from the previous 24 hours.
+        in: query
+        name: since
+        schema:
+          type: integer
+          format: int64
+          minimum: 1199145600000
+      - description: |-
+          Date and time up until which the query retrieves the suggested indexes. This parameter expresses its value in the number of milliseconds that have elapsed since the [UNIX epoch](https://en.wikipedia.org/wiki/Unix_time).
+
+          - If you specify the **until** parameter, you must specify the **since** parameter.
+          - If you specify neither the **since** nor the **until** parameters, the endpoint returns data from the previous 24 hours.
+        in: query
+        name: until
+        schema:
+          type: integer
+          format: int64
+          minimum: 1199145600000
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-01-01+json:
+              schema:
+                $ref: "#/components/schemas/PerformanceAdvisorResponse"
+              x-xgen-version: 2025-01-01
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+      - DigestAuth: []
+      summary: Return Suggested Indexes
+      tags:
+      - Performance Advisor
   /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/processArgs:
     get:
       description: "Returns the advanced configuration details for one cluster in\
@@ -7463,18 +7564,22 @@ paths:
           externalDocs:
             description: Set up Database Auditing
             url: https://docs.atlas.mongodb.com/database-auditing/
-      - description: Date and time when the period specifies the inclusive ending
-          point for the range of log messages to retrieve. This parameter expresses
-          its value in the number of seconds that have elapsed since the UNIX epoch.
+      - description: "Specifies the date and time for the ending point of the range\
+          \ of log messages to retrieve, in the number of seconds that have elapsed\
+          \ since the UNIX epoch. This value will default to 24 hours after the start\
+          \ date. If the start date is also unspecified, the value will default to\
+          \ the time of the request."
         in: query
         name: endDate
         schema:
           type: integer
           format: int64
           minimum: 1199145600
-      - description: Date and time when the period specifies the inclusive starting
-          point for the range of log messages to retrieve. This parameter expresses
-          its value in the number of seconds that have elapsed since the UNIX epoch.
+      - description: "Specifies the date and time for the starting point of the range\
+          \ of log messages to retrieve, in the number of seconds that have elapsed\
+          \ since the UNIX epoch. This value will default to 24 hours prior to the\
+          \ end date. If the end date is also unspecified, the value will default\
+          \ to 24 hours prior to the time of the request."
         in: query
         name: startDate
         schema:
@@ -10253,7 +10358,7 @@ paths:
 
           | Limit Name | Description | Default | API Override Limit |
           | --- | --- | --- | --- |
-          | atlas.project.deployment.clusters | Limit on the number of clusters in this project | 25 | 90 |
+          | atlas.project.deployment.clusters | Limit on the number of clusters in this project if the org is not sales-sold (If org is sales-sold, the limit is 100) | 25 | 90 |
           | atlas.project.deployment.nodesPerPrivateLinkRegion | Limit on the number of nodes per Private Link region in this project | 50 | 90 |
           | atlas.project.security.databaseAccess.customRoles | Limit on the number of custom roles in this project | 100 | 1400 |
           | atlas.project.security.databaseAccess.users | Limit on the number of database users in this project | 100 | 900 |
@@ -10265,6 +10370,7 @@ paths:
           | dataFederation.bytesProcessed.monthly | Limit on the number of bytes processed across all Data Federation tenants for the current month | N/A | N/A |
           | atlas.project.deployment.privateServiceConnectionsPerRegionGroup | Number of Private Service Connections per Region Group | 50 | 100|
           | atlas.project.deployment.privateServiceConnectionsSubnetMask | Subnet mask for GCP PSC Networks. Has lower limit of 20. | 27 | 27|
+          | atlas.project.deployment.salesSoldM0s | Limit on the number of M0 clusters in this project if the org is sales-sold | 100 | 100 |
         in: path
         name: limitName
         required: true
@@ -10284,6 +10390,7 @@ paths:
           - dataFederation.bytesProcessed.monthly
           - atlas.project.deployment.privateServiceConnectionsPerRegionGroup
           - atlas.project.deployment.privateServiceConnectionsSubnetMask
+          - atlas.project.deployment.salesSoldM0s
       - $ref: "#/components/parameters/envelope"
       - $ref: "#/components/parameters/groupId"
       - $ref: "#/components/parameters/pretty"
@@ -10318,7 +10425,7 @@ paths:
 
           | Limit Name | Description | Default | API Override Limit |
           | --- | --- | --- | --- |
-          | atlas.project.deployment.clusters | Limit on the number of clusters in this project | 25 | 90 |
+          | atlas.project.deployment.clusters | Limit on the number of clusters in this project if the org is not sales-sold (If org is sales-sold, the limit is 100) | 25 | 90 |
           | atlas.project.deployment.nodesPerPrivateLinkRegion | Limit on the number of nodes per Private Link region in this project | 50 | 90 |
           | atlas.project.security.databaseAccess.customRoles | Limit on the number of custom roles in this project | 100 | 1400 |
           | atlas.project.security.databaseAccess.users | Limit on the number of database users in this project | 100 | 900 |
@@ -10330,6 +10437,7 @@ paths:
           | dataFederation.bytesProcessed.monthly | Limit on the number of bytes processed across all Data Federation tenants for the current month | N/A | N/A |
           | atlas.project.deployment.privateServiceConnectionsPerRegionGroup | Number of Private Service Connections per Region Group | 50 | 100|
           | atlas.project.deployment.privateServiceConnectionsSubnetMask | Subnet mask for GCP PSC Networks. Has lower limit of 20. | 27 | 27|
+          | atlas.project.deployment.salesSoldM0s | Limit on the number of M0 clusters in this project if the org is sales-sold | 100 | 100 |
         in: path
         name: limitName
         required: true
@@ -10349,6 +10457,7 @@ paths:
           - dataFederation.bytesProcessed.monthly
           - atlas.project.deployment.privateServiceConnectionsPerRegionGroup
           - atlas.project.deployment.privateServiceConnectionsSubnetMask
+          - atlas.project.deployment.salesSoldM0s
       - $ref: "#/components/parameters/envelope"
       - $ref: "#/components/parameters/groupId"
       - $ref: "#/components/parameters/pretty"
@@ -10387,7 +10496,7 @@ paths:
 
           | Limit Name | Description | Default | API Override Limit |
           | --- | --- | --- | --- |
-          | atlas.project.deployment.clusters | Limit on the number of clusters in this project | 25 | 90 |
+          | atlas.project.deployment.clusters | Limit on the number of clusters in this project if the org is not sales-sold (If org is sales-sold, the limit is 100) | 25 | 90 |
           | atlas.project.deployment.nodesPerPrivateLinkRegion | Limit on the number of nodes per Private Link region in this project | 50 | 90 |
           | atlas.project.security.databaseAccess.customRoles | Limit on the number of custom roles in this project | 100 | 1400 |
           | atlas.project.security.databaseAccess.users | Limit on the number of database users in this project | 100 | 900 |
@@ -10399,6 +10508,7 @@ paths:
           | dataFederation.bytesProcessed.monthly | Limit on the number of bytes processed across all Data Federation tenants for the current month | N/A | N/A |
           | atlas.project.deployment.privateServiceConnectionsPerRegionGroup | Number of Private Service Connections per Region Group | 50 | 100|
           | atlas.project.deployment.privateServiceConnectionsSubnetMask | Subnet mask for GCP PSC Networks. Has lower limit of 20. | 27 | 27|
+          | atlas.project.deployment.salesSoldM0s | Limit on the number of M0 clusters in this project if the org is sales-sold | 100 | 100 |
         in: path
         name: limitName
         required: true
@@ -10418,6 +10528,7 @@ paths:
           - dataFederation.bytesProcessed.monthly
           - atlas.project.deployment.privateServiceConnectionsPerRegionGroup
           - atlas.project.deployment.privateServiceConnectionsSubnetMask
+          - atlas.project.deployment.salesSoldM0s
       - $ref: "#/components/parameters/envelope"
       - $ref: "#/components/parameters/groupId"
       - $ref: "#/components/parameters/pretty"
@@ -14239,13 +14350,13 @@ paths:
           minLength: 1
           pattern: "^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$"
       responses:
-        "204":
+        "202":
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                $ref: "#/components/schemas/NoBody"
+                $ref: "#/components/schemas/RequestAccepted"
               x-xgen-version: 2023-01-01
-          description: This endpoint does not return a response body.
+          description: Accepted
         "400":
           $ref: "#/components/responses/badRequest"
         "404":
@@ -14341,6 +14452,374 @@ paths:
       summary: Update One Serverless Instance in One Project
       tags:
       - Serverless Instances
+  /api/atlas/v2/groups/{groupId}/serviceAccounts:
+    get:
+      description: Returns all Service Accounts for the specified Project. Available
+        as a preview feature.
+      operationId: listProjectServiceAccounts
+      parameters:
+      - $ref: "#/components/parameters/groupId"
+      - $ref: "#/components/parameters/itemsPerPage"
+      - $ref: "#/components/parameters/pageNum"
+      - $ref: "#/components/parameters/pretty"
+      - $ref: "#/components/parameters/envelope"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedGroupServiceAccounts"
+              x-xgen-version: 2024-08-05
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+      - DigestAuth: []
+      summary: List All Project Service Accounts
+      tags:
+      - Service Accounts
+    post:
+      description: Creates one Service Account for the specified Project. The Service
+        Account will automatically be added as an Organization Member to the Organization
+        that the specified Project is a part of. Available as a preview feature.
+      operationId: createProjectServiceAccount
+      parameters:
+      - $ref: "#/components/parameters/groupId"
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/pretty"
+      requestBody:
+        content:
+          application/vnd.atlas.2024-08-05+json:
+            schema:
+              $ref: "#/components/schemas/GroupServiceAccountRequest"
+            x-xgen-version: 2024-08-05
+        description: Details of the new Service Account.
+        required: true
+      responses:
+        "201":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/GroupServiceAccount"
+              x-xgen-version: 2024-08-05
+          description: Created
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+      - DigestAuth: []
+      summary: Create and Assign one Service Account to one Project
+      tags:
+      - Service Accounts
+  /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}:
+    delete:
+      description: "Removes the specified Service Account from the specified project.\
+        \ The Service Account will still be a part of the Organization it was created\
+        \ in, and the credentials will remain active until expired or manually revoked.\
+        \ Available as a preview feature."
+      operationId: deleteProjectServiceAccount
+      parameters:
+      - description: The Client ID of the Service Account.
+        in: path
+        name: clientId
+        required: true
+        schema:
+          type: string
+          example: mdb_sa_id_667066535bc75b03c37b3038
+          pattern: "^mdb_sa_id_[a-fA-F\\d]{24}$"
+      - $ref: "#/components/parameters/groupId"
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/pretty"
+      responses:
+        "204":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/NoBody"
+              x-xgen-version: 2024-08-05
+          description: This endpoint does not return a response body.
+          x-xgen-version: 2024-08-05
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+      - DigestAuth: []
+      summary: Unassign One Service Account from One Project
+      tags:
+      - Service Accounts
+    get:
+      description: Returns one Service Account in the specified Project. Available
+        as a preview feature.
+      operationId: getProjectServiceAccount
+      parameters:
+      - $ref: "#/components/parameters/groupId"
+      - description: The Client ID of the Service Account.
+        in: path
+        name: clientId
+        required: true
+        schema:
+          type: string
+          example: mdb_sa_id_667066535bc75b03c37b3038
+          pattern: "^mdb_sa_id_[a-fA-F\\d]{24}$"
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/pretty"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/GroupServiceAccount"
+              x-xgen-version: 2024-08-05
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+      - DigestAuth: []
+      summary: Get one Project Service Account
+      tags:
+      - Service Accounts
+    patch:
+      description: Updates one Service Account in the specified Project. Available
+        as a preview feature.
+      operationId: updateProjectServiceAccount
+      parameters:
+      - description: The Client ID of the Service Account.
+        in: path
+        name: clientId
+        required: true
+        schema:
+          type: string
+          example: mdb_sa_id_667066535bc75b03c37b3038
+          pattern: "^mdb_sa_id_[a-fA-F\\d]{24}$"
+      - $ref: "#/components/parameters/groupId"
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/pretty"
+      requestBody:
+        content:
+          application/vnd.atlas.2024-08-05+json:
+            schema:
+              $ref: "#/components/schemas/GroupServiceAccountUpdateRequest"
+        description: The new details for the Service Account.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/GroupServiceAccount"
+              x-xgen-version: 2024-08-05
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+      - DigestAuth: []
+      summary: Update one Project Service Account
+      tags:
+      - Service Accounts
+  /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/accessList:
+    get:
+      description: Returns all access list entries that you configured for the specified
+        Service Account for the project. Available as a preview feature.
+      operationId: listProjectServiceAccountAccessList
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/includeCount"
+      - $ref: "#/components/parameters/itemsPerPage"
+      - $ref: "#/components/parameters/groupId"
+      - $ref: "#/components/parameters/pageNum"
+      - $ref: "#/components/parameters/pretty"
+      - description: The Client ID of the Service Account.
+        in: path
+        name: clientId
+        required: true
+        schema:
+          type: string
+          example: mdb_sa_id_667066535bc75b03c37b3038
+          pattern: "^mdb_sa_id_[a-fA-F\\d]{24}$"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedServiceAccountIPAccessEntryView"
+              x-xgen-version: 2024-08-05
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+      - DigestAuth: []
+      summary: Return All Access List entries for one Project Service Account
+      tags:
+      - Service Accounts
+    post:
+      description: Add Access List Entries for the specified Service Account for the
+        project. Resources require all API requests to originate from IP addresses
+        on the API access list. Available as a preview feature.
+      operationId: createProjectServiceAccountAccessList
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/includeCount"
+      - $ref: "#/components/parameters/itemsPerPage"
+      - $ref: "#/components/parameters/groupId"
+      - $ref: "#/components/parameters/pageNum"
+      - $ref: "#/components/parameters/pretty"
+      - description: The Client ID of the Service Account.
+        in: path
+        name: clientId
+        required: true
+        schema:
+          type: string
+          example: mdb_sa_id_667066535bc75b03c37b3038
+          pattern: "^mdb_sa_id_[a-fA-F\\d]{24}$"
+      requestBody:
+        content:
+          application/vnd.atlas.2024-08-05+json:
+            schema:
+              type: array
+              items:
+                $ref: "#/components/schemas/ServiceAccountIPAccessListEntry"
+            x-xgen-version: 2024-08-05
+        description: A list of access list entries to add to the access list of the
+          specified Service Account for the project.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedServiceAccountIPAccessEntryView"
+              x-xgen-version: 2024-08-05
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "409":
+          $ref: "#/components/responses/conflict"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+      - DigestAuth: []
+      summary: Add Access List entries for one Project Service Account
+      tags:
+      - Service Accounts
+  /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/accessList/{ipAddress}:
+    delete:
+      description: Removes the specified access list entry from the specified Service
+        Account for the project. You can't remove the requesting IP address from the
+        access list. Available as a preview feature.
+      operationId: deleteProjectServiceAccountAccessListEntry
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/groupId"
+      - $ref: "#/components/parameters/pretty"
+      - description: The Client ID of the Service Account.
+        in: path
+        name: clientId
+        required: true
+        schema:
+          type: string
+          example: mdb_sa_id_667066535bc75b03c37b3038
+          pattern: "^mdb_sa_id_[a-fA-F\\d]{24}$"
+      - description: "One IP address or multiple IP addresses represented as one CIDR\
+          \ block. When specifying a CIDR block with a subnet mask, such as 192.0.2.0/24,\
+          \ use the URL-encoded value %2F for the forward slash /."
+        in: path
+        name: ipAddress
+        required: true
+        schema:
+          type: string
+          example: 192.0.2.0%2F24
+          pattern: "^([0-9]{1,3}\\.){3}[0-9]{1,3}(%2[fF][0-9]{1,3})?|([0-9a-f]{1,4}\\\
+            :){7}[0-9a-f]{1,4}(%2[fF][0-9]{1,3})?|([0-9a-f]{1,4}\\:){1,6}\\:(%2[fF][0-9]{1,3})?$"
+      responses:
+        "204":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              x-xgen-version: 2024-08-05
+          description: This endpoint does not return a response body.
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+      - DigestAuth: []
+      summary: Remove One Access List entry from one Project Service Account
+      tags:
+      - Service Accounts
+  /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}:invite:
+    post:
+      description: Assigns the specified Service Account to the specified Project.
+        Available as a preview feature.
+      operationId: addProjectServiceAccount
+      parameters:
+      - description: The Client ID of the Service Account.
+        in: path
+        name: clientId
+        required: true
+        schema:
+          type: string
+          example: mdb_sa_id_667066535bc75b03c37b3038
+          pattern: "^mdb_sa_id_[a-fA-F\\d]{24}$"
+      - $ref: "#/components/parameters/groupId"
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/pretty"
+      requestBody:
+        content:
+          application/vnd.atlas.2024-08-05+json:
+            schema:
+              type: array
+              items:
+                $ref: "#/components/schemas/GroupServiceAccountRoleAssignment"
+            x-xgen-version: 2024-08-05
+        description: The Project permissions for the Service Account in the specified
+          Project.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/GroupServiceAccount"
+              x-xgen-version: 2024-08-05
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+      - DigestAuth: []
+      summary: Assign One Service Account to One Project
+      tags:
+      - Service Accounts
   /api/atlas/v2/groups/{groupId}/settings:
     get:
       description: "Returns details about the specified project's settings. To use\
@@ -14477,6 +14956,292 @@ paths:
       x-xgen-changelog:
         "2023-09-11": "The MongoDB Atlas Streams Processing API is now exposed as\
           \ part of private preview, but is subject to change until GA."
+  /api/atlas/v2/groups/{groupId}/streams/privateLinkConnections:
+    get:
+      description: "Returns all Private Link connections for the specified project.To\
+        \ use this resource, the requesting API Key must have the Project Data Access\
+        \ roles, Project Owner role or Project Stream Processing Owner role."
+      operationId: listPrivateLinkConnections
+      parameters:
+      - $ref: "#/components/parameters/groupId"
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/itemsPerPage"
+      - $ref: "#/components/parameters/pageNum"
+      - $ref: "#/components/parameters/pretty"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-02-01+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedApiStreamsPrivateLinkView"
+              x-xgen-version: 2023-02-01
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+      - DigestAuth: []
+      summary: Return All Private Link
+      tags:
+      - Streams
+      x-xgen-changelog:
+        "2024-10-02": "The MongoDB Atlas Streams Processing Private Link API is now\
+          \ exposed as part of private preview, but is subject to change until GA."
+    post:
+      description: "Creates one Private Link in the specified project. To use this\
+        \ resource, the requesting API Key must have the Project Owner or Project\
+        \ Stream Processing Owner role."
+      operationId: createPrivateLinkConnection
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/pretty"
+      - $ref: "#/components/parameters/groupId"
+      requestBody:
+        content:
+          application/vnd.atlas.2023-02-01+json:
+            schema:
+              $ref: "#/components/schemas/StreamsPrivateLinkConnection"
+        description: Details to create one Private Link connection for a project.
+          project.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-02-01+json:
+              schema:
+                $ref: "#/components/schemas/StreamsPrivateLinkConnection"
+              x-xgen-version: 2023-02-01
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "409":
+          $ref: "#/components/responses/unauthorized"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+      - DigestAuth: []
+      summary: Create One Private Link connection
+      tags:
+      - Streams
+      x-xgen-changelog:
+        "2024-10-02": "The MongoDB Atlas Streams Processing Private Link API is now\
+          \ exposed as part of private preview, but is subject to change until GA."
+  /api/atlas/v2/groups/{groupId}/streams/privateLinkConnections/{connectionId}:
+    delete:
+      description: "Deletes one Private Link in the specified project. To use this\
+        \ resource, the requesting API Key must have the Project Owner or Project\
+        \ Stream Processing Owner role."
+      operationId: deletePrivateLinkConnection
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/pretty"
+      - $ref: "#/components/parameters/groupId"
+      - description: Unique ID that identifies the Private Link connection.
+        in: path
+        name: connectionId
+        required: true
+        schema:
+          type: string
+      responses:
+        "202":
+          content:
+            application/vnd.atlas.2023-02-01+json:
+              schema:
+                $ref: "#/components/schemas/NoBody"
+              x-xgen-version: 2023-02-01
+          description: Accepted
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+      - DigestAuth: []
+      summary: Delete One Private Link connection
+      tags:
+      - Streams
+      x-xgen-changelog:
+        "2024-10-02": "The MongoDB Atlas Streams Processing Private Link API is now\
+          \ exposed as part of private preview, but is subject to change until GA."
+    get:
+      description: "Returns the details of one Private Link connection within the\
+        \ project. To use this resource, the requesting API Key must have the Project\
+        \ Read Only role."
+      operationId: getPrivateLinkConnection
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/groupId"
+      - description: Unique ID that identifies the Private Link connection.
+        in: path
+        name: connectionId
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-02-01+json:
+              schema:
+                $ref: "#/components/schemas/StreamsPrivateLinkConnection"
+              x-xgen-version: 2023-02-01
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+      - DigestAuth: []
+      summary: Return One PrivateLink Connection
+      tags:
+      - Streams
+      x-xgen-changelog:
+        "2024-10-02": "The MongoDB Atlas Streams Processing Private Link API is now\
+          \ exposed as part of private preview, but is subject to change until GA."
+  /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections:
+    get:
+      description: Returns a list of incoming VPC Peering Connections.
+      operationId: getVPCPeeringConnections
+      parameters:
+      - $ref: "#/components/parameters/groupId"
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/itemsPerPage"
+      - $ref: "#/components/parameters/pageNum"
+      - $ref: "#/components/parameters/pretty"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-02-01+json:
+              x-xgen-version: 2023-02-01
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+      - DigestAuth: []
+      summary: Return All VPC Peering Connections.
+      tags:
+      - Streams
+  /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}:
+    delete:
+      description: Deletes an incoming VPC Peering connection.
+      operationId: deleteVPCPeeringConnection
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/groupId"
+      - description: The VPC Peering Connection id.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "202":
+          content:
+            application/vnd.atlas.2023-02-01+json:
+              schema:
+                $ref: "#/components/schemas/NoBody"
+              x-xgen-version: 2023-02-01
+          description: Accepted
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+      - DigestAuth: []
+      summary: Deletes an incoming VPC Peering connection.
+      tags:
+      - Streams
+  /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}:accept:
+    post:
+      description: Requests the acceptance of an incoming VPC Peering connection.
+      operationId: acceptVPCPeeringConnection
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/groupId"
+      - description: The VPC Peering Connection id.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/vnd.atlas.2023-02-01+json:
+            schema:
+              $ref: "#/components/schemas/VPCPeeringActionChallenge"
+        description: "Challenge values for VPC Peering requester account ID, and requester\
+          \ VPC ID."
+        required: true
+      responses:
+        "202":
+          content:
+            application/vnd.atlas.2023-02-01+json:
+              schema:
+                $ref: "#/components/schemas/NoBody"
+              x-xgen-version: 2023-02-01
+          description: Accepted
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+      - DigestAuth: []
+      summary: Requests the acceptance of an incoming VPC Peering connection.
+      tags:
+      - Streams
+  /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}:reject:
+    post:
+      description: Requests the rejection of an incoming VPC Peering connection.
+      operationId: rejectVPCPeeringConnection
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/groupId"
+      - description: The VPC Peering Connection id.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "202":
+          content:
+            application/vnd.atlas.2023-02-01+json:
+              schema:
+                $ref: "#/components/schemas/NoBody"
+              x-xgen-version: 2023-02-01
+          description: Accepted
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+      - DigestAuth: []
+      summary: Requests the rejection of an incoming VPC Peering connection.
+      tags:
+      - Streams
   /api/atlas/v2/groups/{groupId}/streams/{tenantName}:
     delete:
       description: "Delete one stream instance in the specified project. To use this\
@@ -15713,6 +16478,235 @@ paths:
       summary: Update Project Roles for One MongoDB Cloud User
       tags:
       - Projects
+  /api/atlas/v2/groups/{groupId}/uss:
+    get:
+      description: "Returns details for all USS instances in the specified project.\
+        \ To use this resource, the requesting API Key must have the Project Read\
+        \ Only role."
+      operationId: listUSSInstances
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/groupId"
+      - $ref: "#/components/parameters/includeCount"
+      - $ref: "#/components/parameters/itemsPerPage"
+      - $ref: "#/components/parameters/pageNum"
+      - $ref: "#/components/parameters/pretty"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-01-01+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedUSSInstance20250101"
+              x-xgen-version: 2025-01-01
+          description: OK
+        "409":
+          $ref: "#/components/responses/conflict"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+      - DigestAuth: []
+      summary: Return All USS Instances from One Project
+      tags:
+      - USS Instances
+    post:
+      description: "Creates one USS instance in the specified project. To use this\
+        \ resource, the requesting API Key must have the Project Owner role."
+      operationId: createUSSInstance
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/groupId"
+      - $ref: "#/components/parameters/pretty"
+      requestBody:
+        content:
+          application/vnd.atlas.2025-01-01+json:
+            schema:
+              $ref: "#/components/schemas/USSInstanceDescriptionCreate20250101"
+        description: Create One USS Instance in One Project.
+        required: true
+      responses:
+        "201":
+          content:
+            application/vnd.atlas.2025-01-01+json:
+              schema:
+                $ref: "#/components/schemas/USSInstanceDescription20250101"
+              x-xgen-version: 2025-01-01
+          description: Created
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "402":
+          $ref: "#/components/responses/paymentRequired"
+        "409":
+          $ref: "#/components/responses/conflict"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+      - DigestAuth: []
+      summary: Create One USS Instance in One Project
+      tags:
+      - USS Instances
+  /api/atlas/v2/groups/{groupId}/uss/{name}:
+    delete:
+      description: "Removes one USS instance from the specified project. The USS instance\
+        \ must have termination protection disabled in order to be deleted. To use\
+        \ this resource, the requesting API Key must have the Project Owner role."
+      operationId: deleteUSSInstance
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/pretty"
+      - $ref: "#/components/parameters/groupId"
+      - description: Human-readable label that identifies the USS instance.
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+          maxLength: 64
+          minLength: 1
+          pattern: "^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$"
+      responses:
+        "204":
+          content:
+            application/vnd.atlas.2025-01-01+json:
+              schema:
+                $ref: "#/components/schemas/NoBody"
+              x-xgen-version: 2025-01-01
+          description: This endpoint does not return a response body.
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+      - DigestAuth: []
+      summary: Remove One USS Instance from One Project
+      tags:
+      - USS Instances
+    get:
+      description: "Returns details for one USS instance in the specified project.\
+        \ To use this resource, the requesting API Key must have the Project Read\
+        \ Only role."
+      operationId: getUSSInstance
+      parameters:
+      - $ref: "#/components/parameters/groupId"
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/pretty"
+      - description: Human-readable label that identifies the USS instance.
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+          maxLength: 64
+          minLength: 1
+          pattern: "^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-01-01+json:
+              schema:
+                $ref: "#/components/schemas/USSInstanceDescription20250101"
+              x-xgen-version: 2025-01-01
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+      - DigestAuth: []
+      summary: Return One USS Instance from One Project
+      tags:
+      - USS Instances
+    patch:
+      description: "Updates one USS instance in the specified project. To use this\
+        \ resource, the requesting API Key must have the Project Owner role."
+      operationId: updateUSSInstance
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/groupId"
+      - $ref: "#/components/parameters/pretty"
+      - description: Human-readable label that identifies the USS instance.
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+          maxLength: 64
+          minLength: 1
+          pattern: "^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$"
+      requestBody:
+        content:
+          application/vnd.atlas.2025-01-01+json:
+            schema:
+              $ref: "#/components/schemas/USSInstanceDescription20250101"
+        description: Update One USS Instance in One Project.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-01-01+json:
+              schema:
+                $ref: "#/components/schemas/USSInstanceDescription20250101"
+              x-xgen-version: 2025-01-01
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "402":
+          $ref: "#/components/responses/paymentRequired"
+        "409":
+          $ref: "#/components/responses/conflict"
+      security:
+      - DigestAuth: []
+      summary: Update One USS Instance in One Project
+      tags:
+      - USS Instances
+  /api/atlas/v2/groups/{groupId}/uss:tenantUpgrade:
+    post:
+      description: "Upgrades a USS instance in the specified project. To use this\
+        \ resource, the requesting API key must have the Project Cluster Manager role."
+      operationId: upgradeUSSInstance
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/groupId"
+      - $ref: "#/components/parameters/pretty"
+      requestBody:
+        content:
+          application/vnd.atlas.2025-01-01+json:
+            schema:
+              $ref: "#/components/schemas/USSInstanceDescription20250101"
+        description: Details of the USS instance upgrade in the specified project.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-01-01+json:
+              schema:
+                $ref: "#/components/schemas/USSInstanceDescription20250101"
+              x-xgen-version: 2025-01-01
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "402":
+          $ref: "#/components/responses/paymentRequired"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "409":
+          $ref: "#/components/responses/conflict"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+      - DigestAuth: []
+      summary: Upgrade One USS Instance
+      tags:
+      - USS Instances
   /api/atlas/v2/groups/{groupId}:migrate:
     post:
       description: "Migrates a project from its current organization to another organization.\
@@ -17543,6 +18537,302 @@ paths:
       summary: Validate one Atlas Resource Policy
       tags:
       - Resource Policies
+  /api/atlas/v2/orgs/{orgId}/serviceAccounts:
+    get:
+      description: Returns all Service Accounts for the specified Organization. Available
+        as a preview feature.
+      operationId: listServiceAccounts
+      parameters:
+      - $ref: "#/components/parameters/orgId"
+      - $ref: "#/components/parameters/itemsPerPage"
+      - $ref: "#/components/parameters/pageNum"
+      - $ref: "#/components/parameters/pretty"
+      - $ref: "#/components/parameters/envelope"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedOrgServiceAccounts"
+              x-xgen-version: 2024-08-05
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+      - DigestAuth: []
+      summary: List All Organization Service Accounts
+      tags:
+      - Service Accounts
+    post:
+      description: Creates one Service Account for the specified Organization. Available
+        as a preview feature.
+      operationId: createServiceAccount
+      parameters:
+      - $ref: "#/components/parameters/orgId"
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/pretty"
+      requestBody:
+        content:
+          application/vnd.atlas.2024-08-05+json:
+            schema:
+              $ref: "#/components/schemas/OrgServiceAccountRequest"
+        description: Details of the new Service Account.
+        required: true
+      responses:
+        "201":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/OrgServiceAccount"
+              x-xgen-version: 2024-08-05
+          description: Created
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+      - DigestAuth: []
+      summary: Create one Organization Service Account
+      tags:
+      - Service Accounts
+  /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}:
+    delete:
+      description: Deletes the specified Service Account. Available as a preview feature.
+      operationId: deleteServiceAccount
+      parameters:
+      - description: The Client ID of the Service Account.
+        in: path
+        name: clientId
+        required: true
+        schema:
+          type: string
+          example: mdb_sa_id_667066535bc75b03c37b3038
+          pattern: "^mdb_sa_id_[a-fA-F\\d]{24}$"
+      - $ref: "#/components/parameters/orgId"
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/pretty"
+      responses:
+        "204":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              x-xgen-version: 2024-08-05
+          description: This endpoint does not return a response body.
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+      - DigestAuth: []
+      summary: Delete one Organization Service Account
+      tags:
+      - Service Accounts
+    get:
+      description: Returns the specified Service Account. Available as a preview feature.
+      operationId: getServiceAccount
+      parameters:
+      - $ref: "#/components/parameters/orgId"
+      - description: The Client ID of the Service Account.
+        in: path
+        name: clientId
+        required: true
+        schema:
+          type: string
+          example: mdb_sa_id_667066535bc75b03c37b3038
+          pattern: "^mdb_sa_id_[a-fA-F\\d]{24}$"
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/pretty"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/OrgServiceAccount"
+              x-xgen-version: 2024-08-05
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+      - DigestAuth: []
+      summary: Get one Organization Service Account
+      tags:
+      - Service Accounts
+    patch:
+      description: Updates the specified Service Account in the specified Organization.
+        Available as a preview feature.
+      operationId: updateServiceAccount
+      parameters:
+      - description: The Client ID of the Service Account.
+        in: path
+        name: clientId
+        required: true
+        schema:
+          type: string
+          example: mdb_sa_id_667066535bc75b03c37b3038
+          pattern: "^mdb_sa_id_[a-fA-F\\d]{24}$"
+      - $ref: "#/components/parameters/orgId"
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/pretty"
+      requestBody:
+        content:
+          application/vnd.atlas.2024-08-05+json:
+            schema:
+              $ref: "#/components/schemas/OrgServiceAccountUpdateRequest"
+        description: The new details for the Service Account.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/OrgServiceAccount"
+              x-xgen-version: 2024-08-05
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+      - DigestAuth: []
+      summary: Update one Organization Service Account
+      tags:
+      - Service Accounts
+  /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/groups:
+    get:
+      description: Returns a list of all projects the specified Service Account is
+        a part of. Available as a preview feature.
+      operationId: listServiceAccountProjects
+      parameters:
+      - $ref: "#/components/parameters/orgId"
+      - description: The Client ID of the Service Account.
+        in: path
+        name: clientId
+        required: true
+        schema:
+          type: string
+          example: mdb_sa_id_667066535bc75b03c37b3038
+          pattern: "^mdb_sa_id_[a-fA-F\\d]{24}$"
+      - $ref: "#/components/parameters/itemsPerPage"
+      - $ref: "#/components/parameters/pageNum"
+      - $ref: "#/components/parameters/pretty"
+      - $ref: "#/components/parameters/envelope"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedServiceAccountGroup"
+              x-xgen-version: 2024-08-05
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+      - DigestAuth: []
+      summary: Return All Service Account Project assignments
+      tags:
+      - Service Accounts
+  /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/secrets:
+    post:
+      description: Create a secret for the specified Service Account. Available as
+        a preview feature.
+      operationId: createServiceAccountSecret
+      parameters:
+      - $ref: "#/components/parameters/orgId"
+      - description: The Client ID of the Service Account.
+        in: path
+        name: clientId
+        required: true
+        schema:
+          type: string
+          example: mdb_sa_id_667066535bc75b03c37b3038
+          pattern: "^mdb_sa_id_[a-fA-F\\d]{24}$"
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/pretty"
+      requestBody:
+        content:
+          application/vnd.atlas.2024-08-05+json:
+            schema:
+              $ref: "#/components/schemas/ServiceAccountSecretRequest"
+        description: Details for the new secret.
+        required: true
+      responses:
+        "201":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/ServiceAccountSecret"
+              x-xgen-version: 2024-08-05
+          description: Created
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+      - DigestAuth: []
+      summary: Create one Organization Service Account Secret
+      tags:
+      - Service Accounts
+  /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/secrets/{secretId}:
+    delete:
+      description: Deletes the specified Service Account secret. Available as a preview
+        feature.
+      operationId: deleteServiceAccountSecret
+      parameters:
+      - description: The Client ID of the Service Account.
+        in: path
+        name: clientId
+        required: true
+        schema:
+          type: string
+          example: mdb_sa_id_667066535bc75b03c37b3038
+          pattern: "^mdb_sa_id_[a-fA-F\\d]{24}$"
+      - description: Unique 24-hexadecimal digit string that identifies the secret.
+        in: path
+        name: secretId
+        required: true
+        schema:
+          type: string
+      - $ref: "#/components/parameters/orgId"
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/pretty"
+      responses:
+        "204":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              x-xgen-version: 2024-08-05
+          description: This endpoint does not return a response body.
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+      - DigestAuth: []
+      summary: Delete a Organization Service Account Secret
+      tags:
+      - Service Accounts
   /api/atlas/v2/orgs/{orgId}/settings:
     get:
       description: "Returns details about the specified organization's settings. To\
@@ -18069,15 +19359,58 @@ paths:
       summary: Return All MongoDB Cloud Users in One Organization
       tags:
       - Organizations
+    post:
+      description: |-
+        Invites one new or existing MongoDB Cloud user to join the organization. The invitation to join the organization will be sent to the username provided and must be accepted within 30 days. To use this resource, the requesting API Key must have the Organization Owner role.
+
+        **Note**: If the user does not have an existing MongoDB Cloud account, they will be prompted to finish setting up an account upon accepting the invitation. If the user already has an account, they will still receive an invitation to access the organization.
+      operationId: createOrganizationUser
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/orgId"
+      - $ref: "#/components/parameters/pretty"
+      requestBody:
+        content:
+          application/vnd.atlas.2025-01-01+json:
+            schema:
+              $ref: "#/components/schemas/OrgUserRequest"
+        description: Represents the MongoDB Cloud user to be created within the organization.
+        required: true
+      responses:
+        "201":
+          content:
+            application/vnd.atlas.2025-01-01+json:
+              schema:
+                $ref: "#/components/schemas/OrgUserResponse"
+              x-xgen-version: 2025-01-01
+          description: Created
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+      - DigestAuth: []
+      summary: Create One MongoDB Cloud User in One Organization
+      tags:
+      - MongoDB Cloud Users
   /api/atlas/v2/orgs/{orgId}/users/{userId}:
     delete:
       description: "Removes one MongoDB Cloud user from the specified organization.\
         \ To use this resource, the requesting API Key must have the Organization\
-        \ User Admin role."
+        \ User Admin role. Deprecated versions: v2-{2023-01-01}"
       operationId: removeOrganizationUser
       parameters:
       - $ref: "#/components/parameters/envelope"
       - $ref: "#/components/parameters/orgId"
+      - $ref: "#/components/parameters/pretty"
       - description: Unique 24-hexadecimal digit string that identifies the user to
           be deleted.
         in: path
@@ -18091,10 +19424,10 @@ paths:
       responses:
         "204":
           content:
-            application/vnd.atlas.2023-01-01+json:
+            application/vnd.atlas.2025-01-01+json:
               schema:
                 $ref: "#/components/schemas/NoBody"
-              x-xgen-version: 2023-01-01
+              x-xgen-version: 2025-01-01
           description: This endpoint does not return a response body.
         "400":
           $ref: "#/components/responses/badRequest"
@@ -18108,9 +19441,110 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
       - DigestAuth: []
-      summary: Remove One MongoDB Cloud User from One Organization
+      summary: Remove One MongoDB Cloud User From One Organization
       tags:
       - Organizations
+    get:
+      description: |-
+        Returns information about the specified MongoDB Cloud user within the context of the specified organization. To use this resource, the requesting API Key must have the Organization Read Only role.
+
+        **Note**: This resource can only be used to fetch information about MongoDB Cloud human users. To return information about an API Key, use the [Return One Organization API Key](#tag/Programmatic-API-Keys/operation/getApiKey) endpoint.
+
+        **Note**: This resource does not return information about pending users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
+      operationId: getOrganizationUser
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/orgId"
+      - $ref: "#/components/parameters/pretty"
+      - description: "Unique 24-hexadecimal digit string that identifies the pending\
+          \ or active user in the organization. If you need to lookup a user's userId\
+          \ or verify a user's status in the organization, use the Return All MongoDB\
+          \ Cloud Users in One Organization resource and filter by username."
+        in: path
+        name: userId
+        required: true
+        schema:
+          type: string
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-01-01+json:
+              schema:
+                $ref: "#/components/schemas/OrgUserResponse"
+              x-xgen-version: 2025-01-01
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+      - DigestAuth: []
+      summary: Return One MongoDB Cloud User in One Organization
+      tags:
+      - MongoDB Cloud Users
+    patch:
+      description: |-
+        Updates one MongoDB Cloud user in the specified organization. You can update an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting API Key must have the Organization Owner role.
+
+        **Note**: Only include the fields you wish to update in the request body. Supplying a field with an empty value will reset that field on the user.
+
+        **Note**: This resource cannot be used to update pending users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
+      operationId: updateOrganizationUser
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/orgId"
+      - $ref: "#/components/parameters/pretty"
+      - description: "Unique 24-hexadecimal digit string that identifies the pending\
+          \ or active user in the organization. If you need to lookup a user's userId\
+          \ or verify a user's status in the organization, use the Return All MongoDB\
+          \ Cloud Users in One Organization resource and filter by username."
+        in: path
+        name: userId
+        required: true
+        schema:
+          type: string
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+      requestBody:
+        content:
+          application/vnd.atlas.2025-01-01+json:
+            schema:
+              $ref: "#/components/schemas/OrgUserUpdateRequest"
+        description: Represents the roles and teams to assign the MongoDB Cloud user.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-01-01+json:
+              schema:
+                $ref: "#/components/schemas/OrgUserResponse"
+              x-xgen-version: 2025-01-01
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+      - DigestAuth: []
+      summary: Update One MongoDB Cloud User in One Organization
+      tags:
+      - MongoDB Cloud Users
   /api/atlas/v2/orgs/{orgId}/users/{userId}/roles:
     put:
       description: "Updates the roles of the specified user in the specified organization.\
@@ -18160,6 +19594,67 @@ paths:
       summary: Update Organization Roles for One MongoDB Cloud User
       tags:
       - Organizations
+  /api/atlas/v2/orgs/{orgId}/users/{userId}:addRole:
+    post:
+      description: |-
+        Adds one organization level role to the MongoDB Cloud user. You can add a role to an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting API Key must have the Organization Owner role.
+
+        **Note**: This operation is atomic.
+
+        **Note**: This resource cannot be used to add a role to users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
+      operationId: addOrganizationRole
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/orgId"
+      - $ref: "#/components/parameters/pretty"
+      - description: "Unique 24-hexadecimal digit string that identifies the pending\
+          \ or active user in the organization. If you need to lookup a user's userId\
+          \ or verify a user's status in the organization, use the Return All MongoDB\
+          \ Cloud Users in One Organization resource and filter by username."
+        in: path
+        name: userId
+        required: true
+        schema:
+          type: string
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+      - description: Organization level role to assign to the MongoDB Cloud user.
+        in: query
+        name: role
+        required: true
+        schema:
+          type: string
+          enum:
+          - ORG_OWNER
+          - ORG_GROUP_CREATOR
+          - ORG_BILLING_ADMIN
+          - ORG_BILLING_READ_ONLY
+          - ORG_READ_ONLY
+          - ORG_MEMBER
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-01-01+json:
+              schema:
+                $ref: "#/components/schemas/OrgUserResponse"
+              x-xgen-version: 2025-01-01
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+      - DigestAuth: []
+      summary: Add One Organization Role to One MongoDB Cloud User
+      tags:
+      - MongoDB Cloud Users
   /api/atlas/v2/unauth/controlPlaneIPAddresses:
     get:
       description: "Returns all control plane IP addresses. Currently, inbound Atlas\
@@ -18182,6 +19677,43 @@ paths:
       summary: Return All Control Plane IP Addresses
       tags:
       - Root
+  /api/atlas/v2/unauth/openapi/versions:
+    get:
+      description: API that provides a list of available versionsfor a given environment.
+      operationId: getApiVersions
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/itemsPerPage"
+      - $ref: "#/components/parameters/pageNum"
+      - $ref: "#/components/parameters/pretty"
+      - description: "The environment to get the versions from. If not provided, it\
+          \ returnsthe versions for the given MongoDB URL. (E.g. prod for cloud.mongodb.com)"
+        in: query
+        name: env
+        schema:
+          type: string
+          enum:
+          - dev
+          - qa
+          - prod
+          - stage
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedApiVersions"
+              x-xgen-version: 2024-08-05
+            application/vnd.atlas.2024-08-05+yaml:
+              schema:
+                $ref: "#/components/schemas/PaginatedApiVersions"
+              x-xgen-version: 2024-08-05
+          description: OK
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Provides a list of versions for a given environment.
+      tags:
+      - OpenAPI
   /api/atlas/v2/users:
     post:
       description: |-
@@ -19444,6 +20976,31 @@ components:
           - REPLICASET
           - SHARDED
           - GEOSHARDED
+        configServerManagementMode:
+          type: string
+          default: ATLAS_MANAGED
+          description: |-
+            Config Server Management Mode for creating or updating a sharded cluster.
+
+            When configured as ATLAS_MANAGED, atlas may automatically switch the cluster's config server type for optimal performance and savings.
+
+            When configured as FIXED_TO_DEDICATED, the cluster will always use a dedicated config server.
+          enum:
+          - ATLAS_MANAGED
+          - FIXED_TO_DEDICATED
+          externalDocs:
+            description: MongoDB Sharded Cluster Config Servers
+            url: https://dochub.mongodb.org/docs/manual/core/sharded-cluster-config-servers
+        configServerType:
+          type: string
+          description: Describes a sharded cluster's config server type.
+          enum:
+          - DEDICATED
+          - EMBEDDED
+          externalDocs:
+            description: MongoDB Sharded Cluster Config Servers
+            url: https://dochub.mongodb.org/docs/manual/core/sharded-cluster-config-servers
+          readOnly: true
         connectionStrings:
           $ref: "#/components/schemas/ClusterConnectionStrings"
         createDate:
@@ -21631,6 +23188,12 @@ components:
       - eventTypeName
       - id
       title: API User Events
+    ApiVersion:
+      type: object
+      properties:
+        version:
+          type: string
+          description: Object representing a version of the Atlas Admin API.
     AppServiceAlertConfigViewForNdsGroup:
       type: object
       description: App Services metric alert configuration allows to select which
@@ -22112,7 +23675,12 @@ components:
           enum:
           - AVERAGE
         operator:
-          $ref: "#/components/schemas/Operator"
+          type: string
+          description: Comparison operator to apply when checking the current metric
+            value.
+          enum:
+          - LESS_THAN
+          - GREATER_THAN
         threshold:
           type: number
           format: double
@@ -22190,6 +23758,12 @@ components:
       enum:
       - VIRGINIA_USA
       - AMSTERDAM_NLD
+    AtlasDataFederationGCPRegion:
+      type: string
+      description: Atlas Data Federation GCP Regions.
+      enum:
+      - IOWA_USA
+      - BELGIUM_EU
     AtlasOrganization:
       type: object
       description: Details that describe the organization.
@@ -24537,6 +26111,7 @@ components:
       oneOf:
       - $ref: "#/components/schemas/ApiAtlasDataLakeAWSRegionView"
       - $ref: "#/components/schemas/AtlasDataFederationAzureRegion"
+      - $ref: "#/components/schemas/AtlasDataFederationGCPRegion"
     BaseCloudProviderInstanceSize:
       type: object
       description: "Minimum instance size to which your cluster can automatically\
@@ -25813,6 +27388,10 @@ components:
             expresses its value in the ISO 8601 timestamp format in UTC and can include
             the time zone designation. You must specify a future date that falls within
             one week of making the Application Programming Interface (API) request.
+        description:
+          type: string
+          description: Description of this database user.
+          maxLength: 100
         groupId:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the project.
@@ -26128,6 +27707,7 @@ components:
           enum:
           - AWS
           - AZURE
+          - GCP
         roleId:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the role.
@@ -26309,6 +27889,7 @@ components:
           enum:
           - AWS
           - AZURE
+          - GCP
         servicePrincipalId:
           type: string
           description: UUID string that identifies the Azure Service Principal.
@@ -26499,6 +28080,78 @@ components:
           minLength: 24
           pattern: "^([a-f0-9]{24})$"
           readOnly: true
+    CloudProviderAccessGCPServiceAccount:
+      type: object
+      allOf:
+      - $ref: "#/components/schemas/CloudProviderAccessRole"
+      - type: object
+        properties:
+          createdDate:
+            type: string
+            format: date-time
+            description: Date and time when this Google Service Account was created.
+              This parameter expresses its value in the ISO 8601 timestamp format
+              in UTC.
+            readOnly: true
+          featureUsages:
+            type: array
+            description: List that contains application features associated with this
+              Google Service Account.
+            items:
+              $ref: "#/components/schemas/CloudProviderAccessFeatureUsage"
+            readOnly: true
+          gcpServiceAccountForAtlas:
+            type: string
+            description: Email address for the Google Service Account created by Atlas.
+            maxLength: 82
+            minLength: 57
+            pattern: "^mongodb-atlas-[0-9a-z]{16}@p-[0-9a-z]{24}.iam.gserviceaccount.com$"
+          roleId:
+            type: string
+            description: Unique 24-hexadecimal digit string that identifies the role.
+            example: 32b6e34b3d91647abb20e7b8
+            maxLength: 24
+            minLength: 24
+            pattern: "^([a-f0-9]{24})$"
+            readOnly: true
+      description: Details that describe the features linked to the GCP Service Account.
+      required:
+      - providerName
+    CloudProviderAccessGCPServiceAccountRequest:
+      type: object
+      description: Details that describe the features linked to the GCP Service Account.
+      properties:
+        createdDate:
+          type: string
+          format: date-time
+          description: Date and time when this GCP Service Account was created. This
+            parameter expresses its value in the ISO 8601 timestamp format in UTC.
+          readOnly: true
+        featureUsages:
+          type: array
+          description: List that contains application features associated with this
+            GCP Service Account.
+          items:
+            $ref: "#/components/schemas/CloudProviderAccessFeatureUsage"
+          readOnly: true
+        gcpServiceAccountForAtlas:
+          type: string
+          description: ID string that identifies the GCP Service Account used by Atlas.
+          readOnly: true
+        providerName:
+          type: string
+          description: Human-readable label that identifies the cloud provider of
+            the role.
+          enum:
+          - AWS
+          - AZURE
+          - GCP
+        roleId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the role.
+          readOnly: true
+      required:
+      - providerName
     CloudProviderAccessPushBasedLogExportFeatureUsage:
       type: object
       allOf:
@@ -26517,6 +28170,7 @@ components:
         mapping:
           AWS: "#/components/schemas/CloudProviderAccessAWSIAMRole"
           AZURE: "#/components/schemas/CloudProviderAccessAzureServicePrincipal"
+          GCP: "#/components/schemas/CloudProviderAccessGCPServiceAccount"
         propertyName: providerName
       properties:
         providerName:
@@ -26526,6 +28180,7 @@ components:
           enum:
           - AWS
           - AZURE
+          - GCP
       required:
       - providerName
     CloudProviderAccessRoleRequest:
@@ -26535,10 +28190,12 @@ components:
         mapping:
           AWS: "#/components/schemas/CloudProviderAccessAWSIAMRoleRequest"
           AZURE: "#/components/schemas/CloudProviderAccessAzureServicePrincipalRequest"
+          GCP: "#/components/schemas/CloudProviderAccessGCPServiceAccountRequest"
         propertyName: providerName
       oneOf:
       - $ref: "#/components/schemas/CloudProviderAccessAWSIAMRoleRequest"
       - $ref: "#/components/schemas/CloudProviderAccessAzureServicePrincipalRequest"
+      - $ref: "#/components/schemas/CloudProviderAccessGCPServiceAccountRequest"
       properties:
         providerName:
           type: string
@@ -26547,6 +28204,7 @@ components:
           enum:
           - AWS
           - AZURE
+          - GCP
       required:
       - providerName
     CloudProviderAccessRoleRequestUpdate:
@@ -27538,6 +29196,31 @@ components:
           - REPLICASET
           - SHARDED
           - GEOSHARDED
+        configServerManagementMode:
+          type: string
+          default: ATLAS_MANAGED
+          description: |-
+            Config Server Management Mode for creating or updating a sharded cluster.
+
+            When configured as ATLAS_MANAGED, atlas may automatically switch the cluster's config server type for optimal performance and savings.
+
+            When configured as FIXED_TO_DEDICATED, the cluster will always use a dedicated config server.
+          enum:
+          - ATLAS_MANAGED
+          - FIXED_TO_DEDICATED
+          externalDocs:
+            description: MongoDB Sharded Cluster Config Servers
+            url: https://dochub.mongodb.org/docs/manual/core/sharded-cluster-config-servers
+        configServerType:
+          type: string
+          description: Describes a sharded cluster's config server type.
+          enum:
+          - DEDICATED
+          - EMBEDDED
+          externalDocs:
+            description: MongoDB Sharded Cluster Config Servers
+            url: https://dochub.mongodb.org/docs/manual/core/sharded-cluster-config-servers
+          readOnly: true
         connectionStrings:
           $ref: "#/components/schemas/ClusterConnectionStrings"
         createDate:
@@ -27664,6 +29347,17 @@ components:
           externalDocs:
             description: Continuous Cloud Backups
             url: https://docs.atlas.mongodb.com/backup/cloud-backup/overview/
+        redactClientLogData:
+          type: boolean
+          description: Enable or disable log redaction.
+          externalDocs:
+            description: |-
+              This options corresponds to the ``security.redactClientLogData`` cluster parameter.
+
+              This setting configures the ``mongod`` or ``mongos`` to redact any message accompanying a given log event before logging. This prevents the program from writing potentially sensitive data stored on the database to the diagnostic log. Metadata such as error or operation codes, line numbers, and source file names are still visible in the logs.
+
+              Use ``redactClientLogData`` in conjunction with Encryption at Rest and TLS/SSL (Transport Encryption) to assist compliance with regulatory requirements.
+            url: https://www.mongodb.com/docs/manual/reference/parameters/#mongodb-parameter-param.redactClientLogData
         replicaSetScalingStrategy:
           type: string
           default: WORKLOAD_TYPE
@@ -27810,6 +29504,7 @@ components:
         changeStreamOptionsPreAndPostImagesExpireAfterSeconds:
           type: integer
           format: int32
+          default: -1
           description: The minimum pre- and post-image retention time in seconds.
           externalDocs:
             description: "This option corresponds to the ``changeStreamOptions.preAndPostImages.expireAfterSeconds``\
@@ -27967,6 +29662,7 @@ components:
         changeStreamOptionsPreAndPostImagesExpireAfterSeconds:
           type: integer
           format: int32
+          default: -1
           description: The minimum pre- and post-image retention time in seconds.
           externalDocs:
             description: "This option corresponds to the ``changeStreamOptions.preAndPostImages.expireAfterSeconds``\
@@ -29585,17 +31281,33 @@ components:
         roleId:
           type: string
           description: Unique identifier of the role that Data Federation can use
-            to access the data stores.Required if specifying cloudProviderConfig.
+            to access the data stores. Required if specifying cloudProviderConfig.
         servicePrincipalId:
           type: string
           description: The ID of the Service Principal for which there is an access
-            policyfor Atlas to access Azure resources.
+            policy for Atlas to access Azure resources.
           readOnly: true
         tenantId:
           type: string
           description: The Azure Active Directory / Entra ID tenant ID associated
             with the Service Principal.
           readOnly: true
+      required:
+      - roleId
+    DataFederationGCPCloudProviderConfig:
+      type: object
+      description: Configuration for running Data Federation in GCP.
+      properties:
+        gcpServiceAccount:
+          type: string
+          description: The email address of the Google Cloud Platform (GCP) service
+            account created by Atlas which should be authorized to allow Atlas to
+            access Google Cloud Storage.
+          readOnly: true
+        roleId:
+          type: string
+          description: Unique identifier of the role that Data Federation can use
+            to access the data stores. Required if specifying cloudProviderConfig.
       required:
       - roleId
     DataFederationLimit:
@@ -29605,6 +31317,7 @@ components:
         mapping:
           atlas.project.deployment.clusters: "#/components/schemas/DefaultLimit"
           atlas.project.deployment.nodesPerPrivateLinkRegion: "#/components/schemas/DefaultLimit"
+          atlas.project.deployment.salesSoldM0s: "#/components/schemas/DefaultLimit"
           atlas.project.deployment.serverlessMTMs: "#/components/schemas/DefaultLimit"
           atlas.project.security.databaseAccess.customRoles: "#/components/schemas/DefaultLimit"
           atlas.project.security.databaseAccess.users: "#/components/schemas/DefaultLimit"
@@ -29975,7 +31688,9 @@ components:
           $ref: "#/components/schemas/DataLakeAWSCloudProviderConfig"
         azure:
           $ref: "#/components/schemas/DataFederationAzureCloudProviderConfig"
-      title: Data Lake Cloud Provider
+        gcp:
+          $ref: "#/components/schemas/DataFederationGCPCloudProviderConfig"
+      title: Data Federation Cloud Provider
     DataLakeDLSAWSStore:
       type: object
       allOf:
@@ -30100,6 +31815,7 @@ components:
           enum:
           - AWS
           - AZURE
+          - GCP
         region:
           $ref: "#/components/schemas/BaseAtlasDataLakeRegion"
       required:
@@ -30835,7 +32551,12 @@ components:
           enum:
           - AVERAGE
         operator:
-          $ref: "#/components/schemas/Operator"
+          type: string
+          description: Comparison operator to apply when checking the current metric
+            value.
+          enum:
+          - LESS_THAN
+          - GREATER_THAN
         threshold:
           type: number
           format: double
@@ -31185,6 +32906,8 @@ components:
           - SQL_SET_SCHEMA
           - VIEW_ALL_HISTORY
           - OUT_TO_S3
+          - OUT_TO_AZURE
+          - OUT_TO_GCS
           - STORAGE_GET_CONFIG
           - STORAGE_SET_CONFIG
           - FLUSH_ROUTER_CONFIG
@@ -32199,6 +33922,7 @@ components:
             - CLUSTER_VERSION_UNFIXED
             - CLUSTER_FCV_FIXED
             - CLUSTER_FCV_UNFIXED
+            - CLUSTER_FCV_EXPIRATION_DATE_UPDATED
             - AGENT_VERSION_FIXED
             - AGENT_VERSION_UNFIXED
             - FIXED_VERSION_UPDATED
@@ -32593,7 +34317,6 @@ components:
           pattern: "^([a-f0-9]{24})$"
         hostnameSchemaType:
           type: string
-          default: PUBLIC
           description: The network type to use between the migration host and the
             destination cluster.
           enum:
@@ -33879,13 +35602,13 @@ components:
       type: object
       additionalProperties:
         type: object
-        description: "The stats associated with the stream processor. [MongoDB Atlas\
-          \ Docs](https://www.mongodb.com/docs/atlas/atlas-stream-processing/manage-stream-processor/#view-statistics-of-a-stream-processor)\
-          \ contain more information."
+        description: The stats associated with the stream processor.
+        externalDocs:
+          url: https://www.mongodb.com/docs/atlas/atlas-stream-processing/manage-stream-processor/#view-statistics-of-a-stream-processor
         readOnly: true
-      description: "The stats associated with the stream processor. [MongoDB Atlas\
-        \ Docs](https://www.mongodb.com/docs/atlas/atlas-stream-processing/manage-stream-processor/#view-statistics-of-a-stream-processor)\
-        \ contain more information."
+      description: The stats associated with the stream processor.
+      externalDocs:
+        url: https://www.mongodb.com/docs/atlas/atlas-stream-processing/manage-stream-processor/#view-statistics-of-a-stream-processor
       readOnly: true
     EARPrivateEndpoint:
       type: object
@@ -34466,6 +36189,8 @@ components:
         - HOST_HAS_INDEX_SUGGESTIONS
         - HOST_MONGOT_RECOVERED_OOM
         - HOST_MONGOT_CRASHING_OOM
+        - HOST_MONGOT_RESUME_REPLICATION
+        - HOST_MONGOT_STOP_REPLICATION
         - HOST_ENOUGH_DISK_SPACE
         - HOST_NOT_ENOUGH_DISK_SPACE
         title: Host Event Types
@@ -34678,6 +36403,8 @@ components:
         - ATLAS_SQL_SCHEDULED_UPDATE_CREATED
         - ATLAS_SQL_SCHEDULED_UPDATE_MODIFIED
         - ATLAS_SQL_SCHEDULED_UPDATE_REMOVED
+        - CLUSTER_INSTANCE_DISABLED
+        - CLUSTER_INSTANCE_ENABLED
         title: NDS Audit Types
       - type: string
         enum:
@@ -34874,6 +36601,7 @@ components:
         - CLUSTER_VERSION_UNFIXED
         - CLUSTER_FCV_FIXED
         - CLUSTER_FCV_UNFIXED
+        - CLUSTER_FCV_EXPIRATION_DATE_UPDATED
         - AGENT_VERSION_FIXED
         - AGENT_VERSION_UNFIXED
         - FIXED_VERSION_UPDATED
@@ -37305,18 +39033,22 @@ components:
           pattern: "^([a-f0-9]{24})$"
         destinationOrgPrivateApiKey:
           type: string
-          description: "Unique string that identifies the private part of the [API\
-            \ Key](https://dochub.mongodb.org/core/atlas-create-prog-api-key) used\
-            \ to verify access to the destination organization. This parameter is\
-            \ required only when you authenticate with Programmatic API Keys."
+          description: Unique string that identifies the private part of the API Key
+            used to verify access to the destination organization. This parameter
+            is required only when you authenticate with Programmatic API Keys.
           example: 55c3bbb6-b4bb-0be1-e66d20841f3e
+          externalDocs:
+            description: Grant Programmatic Access to Atlas
+            url: https://dochub.mongodb.org/core/atlas-create-prog-api-key
         destinationOrgPublicApiKey:
           type: string
-          description: "Unique string that identifies the public part of the [API\
-            \ Key](https://dochub.mongodb.org/core/atlas-create-prog-api-key) used\
-            \ to verify access to the destination organization. This parameter is\
-            \ required only when you authenticate with Programmatic API Keys."
+          description: Unique string that identifies the public part of the API Key
+            used to verify access to the destination organization. This parameter
+            is required only when you authenticate with Programmatic API Keys.
           example: zmmrboas
+          externalDocs:
+            description: Grant Programmatic Access to Atlas
+            url: https://dochub.mongodb.org/core/atlas-create-prog-api-key
           maxLength: 8
           minLength: 8
     GroupNotification:
@@ -37573,7 +39305,30 @@ components:
       required:
       - description
       - name
+      - roles
       - secretExpiresAfterHours
+    GroupServiceAccountRoleAssignment:
+      type: object
+      properties:
+        roles:
+          type: array
+          description: The Project permissions for the Service Account in the specified
+            Project.
+          items:
+            type: string
+            description: Project roles available for Service Accounts.
+            enum:
+            - GROUP_OWNER
+            - GROUP_READ_ONLY
+            - GROUP_DATA_ACCESS_ADMIN
+            - GROUP_DATA_ACCESS_READ_ONLY
+            - GROUP_DATA_ACCESS_READ_WRITE
+            - GROUP_CLUSTER_MANAGER
+            - GROUP_SEARCH_INDEX_EDITOR
+            - GROUP_STREAM_PROCESSING_OWNER
+          uniqueItems: true
+      required:
+      - roles
     GroupServiceAccountUpdateRequest:
       type: object
       properties:
@@ -37978,6 +39733,8 @@ components:
       - HOST_HAS_INDEX_SUGGESTIONS
       - HOST_MONGOT_RECOVERED_OOM
       - HOST_MONGOT_CRASHING_OOM
+      - HOST_MONGOT_RESUME_REPLICATION
+      - HOST_MONGOT_STOP_REPLICATION
       - HOST_ENOUGH_DISK_SPACE
       - HOST_NOT_ENOUGH_DISK_SPACE
       example: HOST_DOWN
@@ -37989,6 +39746,7 @@ components:
       - HOST_DOWN
       - HOST_HAS_INDEX_SUGGESTIONS
       - HOST_MONGOT_CRASHING_OOM
+      - HOST_MONGOT_STOP_REPLICATION
       - HOST_NOT_ENOUGH_DISK_SPACE
       example: HOST_DOWN
       title: Host Event Types
@@ -39040,7 +40798,12 @@ components:
           enum:
           - AVERAGE
         operator:
-          $ref: "#/components/schemas/Operator"
+          type: string
+          description: Comparison operator to apply when checking the current metric
+            value.
+          enum:
+          - LESS_THAN
+          - GREATER_THAN
         threshold:
           type: number
           format: double
@@ -39953,6 +41716,21 @@ components:
           - ATLAS_AWS_STREAM_PROCESSING_DATA_TRANSFER
           - ATLAS_AZURE_STREAM_PROCESSING_DATA_TRANSFER
           - ATLAS_AWS_STREAM_PROCESSING_VPC_PEERING
+          - ATLAS_USS_AWS_100_USAGE_HOURS
+          - ATLAS_USS_AWS_200_USAGE_HOURS
+          - ATLAS_USS_AWS_300_USAGE_HOURS
+          - ATLAS_USS_AWS_400_USAGE_HOURS
+          - ATLAS_USS_AWS_500_USAGE_HOURS
+          - ATLAS_USS_AZURE_100_USAGE_HOURS
+          - ATLAS_USS_AZURE_200_USAGE_HOURS
+          - ATLAS_USS_AZURE_300_USAGE_HOURS
+          - ATLAS_USS_AZURE_400_USAGE_HOURS
+          - ATLAS_USS_AZURE_500_USAGE_HOURS
+          - ATLAS_USS_GCP_100_USAGE_HOURS
+          - ATLAS_USS_GCP_200_USAGE_HOURS
+          - ATLAS_USS_GCP_300_USAGE_HOURS
+          - ATLAS_USS_GCP_400_USAGE_HOURS
+          - ATLAS_USS_GCP_500_USAGE_HOURS
           readOnly: true
         startDate:
           type: string
@@ -40278,6 +42056,31 @@ components:
           - REPLICASET
           - SHARDED
           - GEOSHARDED
+        configServerManagementMode:
+          type: string
+          default: ATLAS_MANAGED
+          description: |-
+            Config Server Management Mode for creating or updating a sharded cluster.
+
+            When configured as ATLAS_MANAGED, atlas may automatically switch the cluster's config server type for optimal performance and savings.
+
+            When configured as FIXED_TO_DEDICATED, the cluster will always use a dedicated config server.
+          enum:
+          - ATLAS_MANAGED
+          - FIXED_TO_DEDICATED
+          externalDocs:
+            description: MongoDB Sharded Cluster Config Servers
+            url: https://dochub.mongodb.org/docs/manual/core/sharded-cluster-config-servers
+        configServerType:
+          type: string
+          description: Describes a sharded cluster's config server type.
+          enum:
+          - DEDICATED
+          - EMBEDDED
+          externalDocs:
+            description: MongoDB Sharded Cluster Config Servers
+            url: https://dochub.mongodb.org/docs/manual/core/sharded-cluster-config-servers
+          readOnly: true
         connectionStrings:
           $ref: "#/components/schemas/ClusterConnectionStrings"
         createDate:
@@ -40593,6 +42396,31 @@ components:
           - REPLICASET
           - SHARDED
           - GEOSHARDED
+        configServerManagementMode:
+          type: string
+          default: ATLAS_MANAGED
+          description: |-
+            Config Server Management Mode for creating or updating a sharded cluster.
+
+            When configured as ATLAS_MANAGED, atlas may automatically switch the cluster's config server type for optimal performance and savings.
+
+            When configured as FIXED_TO_DEDICATED, the cluster will always use a dedicated config server.
+          enum:
+          - ATLAS_MANAGED
+          - FIXED_TO_DEDICATED
+          externalDocs:
+            description: MongoDB Sharded Cluster Config Servers
+            url: https://dochub.mongodb.org/docs/manual/core/sharded-cluster-config-servers
+        configServerType:
+          type: string
+          description: Describes a sharded cluster's config server type.
+          enum:
+          - DEDICATED
+          - EMBEDDED
+          externalDocs:
+            description: MongoDB Sharded Cluster Config Servers
+            url: https://dochub.mongodb.org/docs/manual/core/sharded-cluster-config-servers
+          readOnly: true
         connectionStrings:
           $ref: "#/components/schemas/ClusterConnectionStrings"
         createDate:
@@ -41356,6 +43184,10 @@ components:
         - INSTANCE_NAME
         - PROCESSOR_NAME
         title: Streams Matcher Fields
+      - type: string
+        enum:
+        - RULE_ID
+        title: Log Ingestion Matcher Fields
     MatcherHostType:
       type: string
       description: Value to match or exceed using the specified **matchers.operator**.
@@ -42245,6 +44077,8 @@ components:
       - ATLAS_SQL_SCHEDULED_UPDATE_CREATED
       - ATLAS_SQL_SCHEDULED_UPDATE_MODIFIED
       - ATLAS_SQL_SCHEDULED_UPDATE_REMOVED
+      - CLUSTER_INSTANCE_DISABLED
+      - CLUSTER_INSTANCE_ENABLED
       example: CLUSTER_CREATED
       title: NDS Audit Types
     NDSAuditTypeViewForOrg:
@@ -43479,7 +45313,12 @@ components:
           enum:
           - AVERAGE
         operator:
-          $ref: "#/components/schemas/Operator"
+          type: string
+          description: Comparison operator to apply when checking the current metric
+            value.
+          enum:
+          - LESS_THAN
+          - GREATER_THAN
         threshold:
           type: number
           format: double
@@ -44188,6 +46027,7 @@ components:
       required:
       - description
       - name
+      - roles
       - secretExpiresAfterHours
     OrgServiceAccountUpdateRequest:
       type: object
@@ -45220,6 +47060,34 @@ components:
             value if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
+    PaginatedApiStreamsPrivateLinkView:
+      type: object
+      properties:
+        links:
+          type: array
+          description: "List of one or more Uniform Resource Locators (URLs) that\
+            \ point to API sub-resources, related API resources, or both. RFC 5988\
+            \ outlines these relationships."
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        results:
+          type: array
+          description: List of returned documents that MongoDB Cloud provides when
+            completing this request.
+          items:
+            $ref: "#/components/schemas/StreamsPrivateLinkConnection"
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+          description: Total number of documents available. MongoDB Cloud omits this
+            value if `includeCount` is set to `false`.
+          minimum: 0
+          readOnly: true
     PaginatedApiStreamsStreamProcessorWithStatsView:
       type: object
       properties:
@@ -45296,6 +47164,34 @@ components:
             completing this request.
           items:
             $ref: "#/components/schemas/UserAccessListResponse"
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+          description: Total number of documents available. MongoDB Cloud omits this
+            value if `includeCount` is set to `false`.
+          minimum: 0
+          readOnly: true
+    PaginatedApiVersions:
+      type: object
+      properties:
+        links:
+          type: array
+          description: "List of one or more Uniform Resource Locators (URLs) that\
+            \ point to API sub-resources, related API resources, or both. RFC 5988\
+            \ outlines these relationships."
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        results:
+          type: array
+          description: List of returned documents that MongoDB Cloud provides when
+            completing this request.
+          items:
+            $ref: "#/components/schemas/ApiVersion"
           readOnly: true
         totalCount:
           type: integer
@@ -47126,7 +49022,12 @@ components:
           enum:
           - AVERAGE
         operator:
-          $ref: "#/components/schemas/Operator"
+          type: string
+          description: Comparison operator to apply when checking the current metric
+            value.
+          enum:
+          - LESS_THAN
+          - GREATER_THAN
         threshold:
           type: number
           format: double
@@ -47436,7 +49337,12 @@ components:
           enum:
           - AVERAGE
         operator:
-          $ref: "#/components/schemas/Operator"
+          type: string
+          description: Comparison operator to apply when checking the current metric
+            value.
+          enum:
+          - LESS_THAN
+          - GREATER_THAN
         threshold:
           type: number
           format: double
@@ -49768,7 +51674,12 @@ components:
           enum:
           - AVERAGE
         operator:
-          $ref: "#/components/schemas/Operator"
+          type: string
+          description: Comparison operator to apply when checking the current metric
+            value.
+          enum:
+          - LESS_THAN
+          - GREATER_THAN
         threshold:
           type: number
           format: double
@@ -50918,8 +52829,9 @@ components:
       readOnly: true
     StreamsDLQ:
       type: object
-      description: "Dead letter queue for the stream processor. [MongoDB Atlas Docs](https://www.mongodb.com/docs/atlas/reference/glossary/#std-term-dead-letter-queue)\
-        \ contain more information."
+      description: Dead letter queue for the stream processor.
+      externalDocs:
+        url: https://www.mongodb.com/docs/atlas/reference/glossary/#std-term-dead-letter-queue
       properties:
         coll:
           type: string
@@ -51124,6 +53036,13 @@ components:
       type: object
       description: Information about the networking access.
       properties:
+        connectionId:
+          type: string
+          description: Reserved. Will be used by PRIVATE_LINK connection type.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
         links:
           type: array
           description: "List of one or more Uniform Resource Locators (URLs) that\
@@ -51227,6 +53146,52 @@ components:
           items:
             $ref: "#/components/schemas/Link"
           readOnly: true
+    StreamsPrivateLinkConnection:
+      type: object
+      description: Container for metadata needed to create a Private Link connection.
+      properties:
+        _id:
+          type: string
+          description: The ID of the Private Link connection.
+        dnsDomain:
+          type: string
+          description: Domain name of Confluent cluster.
+        dnsSubDomain:
+          type: array
+          description: Sub-Domain name of Confluent cluster. These are typically your
+            availability zones.
+          items:
+            type: string
+        interfaceEndpointId:
+          type: string
+          description: Interface endpoint ID that is created from the service endpoint
+            ID provided.
+        links:
+          type: array
+          description: "List of one or more Uniform Resource Locators (URLs) that\
+            \ point to API sub-resources, related API resources, or both. RFC 5988\
+            \ outlines these relationships."
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        provider:
+          type: string
+          description: Provider where the Kafka cluster is deployed.
+        region:
+          type: string
+          description: Domain name of Confluent cluster.
+        serviceEndpointId:
+          type: string
+          description: AWS Service Endpoint ID.
+        state:
+          type: string
+          description: State the connection is in.
+        vendor:
+          type: string
+          description: Vendor who manages the Kafka cluster.
     StreamsProcessor:
       type: object
       description: An atlas stream processor.
@@ -51258,9 +53223,11 @@ components:
           $ref: "#/components/schemas/StreamsOptions"
         pipeline:
           type: array
-          description: "Stream aggregation pipeline you want to apply to your streaming\
-            \ data. [MongoDB Atlas Docs](https://www.mongodb.com/docs/atlas/atlas-stream-processing/stream-aggregation/#std-label-stream-aggregation)\
-            \ contain more information."
+          description: Stream aggregation pipeline you want to apply to your streaming
+            data.
+          externalDocs:
+            description: Supported Aggregation Pipeline Stages
+            url: https://www.mongodb.com/docs/atlas/atlas-stream-processing/stream-aggregation/#std-label-stream-aggregation
           items:
             $ref: "#/components/schemas/Document"
     StreamsProcessorWithStats:
@@ -51309,13 +53276,13 @@ components:
           type: object
           additionalProperties:
             type: object
-            description: "The stats associated with the stream processor. [MongoDB\
-              \ Atlas Docs](https://www.mongodb.com/docs/atlas/atlas-stream-processing/manage-stream-processor/#view-statistics-of-a-stream-processor)\
-              \ contain more information."
+            description: The stats associated with the stream processor.
+            externalDocs:
+              url: https://www.mongodb.com/docs/atlas/atlas-stream-processing/manage-stream-processor/#view-statistics-of-a-stream-processor
             readOnly: true
-          description: "The stats associated with the stream processor. [MongoDB Atlas\
-            \ Docs](https://www.mongodb.com/docs/atlas/atlas-stream-processing/manage-stream-processor/#view-statistics-of-a-stream-processor)\
-            \ contain more information."
+          description: The stats associated with the stream processor.
+          externalDocs:
+            url: https://www.mongodb.com/docs/atlas/atlas-stream-processing/manage-stream-processor/#view-statistics-of-a-stream-processor
           readOnly: true
       required:
       - _id
@@ -52793,7 +54760,12 @@ components:
           enum:
           - AVERAGE
         operator:
-          $ref: "#/components/schemas/Operator"
+          type: string
+          description: Comparison operator to apply when checking the current metric
+            value.
+          enum:
+          - LESS_THAN
+          - GREATER_THAN
         threshold:
           type: number
           format: double
@@ -54374,6 +56346,28 @@ components:
       required:
       - match
       title: User to Distinguished Name Mapping
+    VPCPeeringActionChallenge:
+      type: object
+      description: Container for elements used to challenge the user before taking
+        certain actions on VPC Peering connections.
+      properties:
+        links:
+          type: array
+          description: "List of one or more Uniform Resource Locators (URLs) that\
+            \ point to API sub-resources, related API resources, or both. RFC 5988\
+            \ outlines these relationships."
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        requesterAccountId:
+          type: string
+          description: The AWS requester account ID.
+        requesterVpcId:
+          type: string
+          description: The AWS requester VPC ID.
     VectorSearchHostStatusDetail:
       type: object
       properties:
