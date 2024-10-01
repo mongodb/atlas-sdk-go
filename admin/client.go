@@ -77,6 +77,8 @@ type APIClient struct {
 
 	FederatedAuthenticationApi FederatedAuthenticationApi
 
+	FlexClustersApi FlexClustersApi
+
 	GlobalClustersApi GlobalClustersApi
 
 	InvoicesApi InvoicesApi
@@ -94,6 +96,8 @@ type APIClient struct {
 	NetworkPeeringApi NetworkPeeringApi
 
 	OnlineArchiveApi OnlineArchiveApi
+
+	OpenAPIApi OpenAPIApi
 
 	OrganizationsApi OrganizationsApi
 
@@ -118,6 +122,8 @@ type APIClient struct {
 	ServerlessInstancesApi ServerlessInstancesApi
 
 	ServerlessPrivateEndpointsApi ServerlessPrivateEndpointsApi
+
+	ServiceAccountsApi ServiceAccountsApi
 
 	SharedTierRestoreJobsApi SharedTierRestoreJobsApi
 
@@ -167,6 +173,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.EncryptionAtRestUsingCustomerKeyManagementApi = (*EncryptionAtRestUsingCustomerKeyManagementApiService)(&c.common)
 	c.EventsApi = (*EventsApiService)(&c.common)
 	c.FederatedAuthenticationApi = (*FederatedAuthenticationApiService)(&c.common)
+	c.FlexClustersApi = (*FlexClustersApiService)(&c.common)
 	c.GlobalClustersApi = (*GlobalClustersApiService)(&c.common)
 	c.InvoicesApi = (*InvoicesApiService)(&c.common)
 	c.LDAPConfigurationApi = (*LDAPConfigurationApiService)(&c.common)
@@ -176,6 +183,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.MonitoringAndLogsApi = (*MonitoringAndLogsApiService)(&c.common)
 	c.NetworkPeeringApi = (*NetworkPeeringApiService)(&c.common)
 	c.OnlineArchiveApi = (*OnlineArchiveApiService)(&c.common)
+	c.OpenAPIApi = (*OpenAPIApiService)(&c.common)
 	c.OrganizationsApi = (*OrganizationsApiService)(&c.common)
 	c.PerformanceAdvisorApi = (*PerformanceAdvisorApiService)(&c.common)
 	c.PrivateEndpointServicesApi = (*PrivateEndpointServicesApiService)(&c.common)
@@ -188,6 +196,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.RootApi = (*RootApiService)(&c.common)
 	c.ServerlessInstancesApi = (*ServerlessInstancesApiService)(&c.common)
 	c.ServerlessPrivateEndpointsApi = (*ServerlessPrivateEndpointsApiService)(&c.common)
+	c.ServiceAccountsApi = (*ServiceAccountsApiService)(&c.common)
 	c.SharedTierRestoreJobsApi = (*SharedTierRestoreJobsApiService)(&c.common)
 	c.SharedTierSnapshotsApi = (*SharedTierSnapshotsApiService)(&c.common)
 	c.StreamsApi = (*StreamsApiService)(&c.common)
