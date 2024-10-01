@@ -39,7 +39,7 @@ jobs:
       - uses: peter-evans/create-pull-request@v7
         if: steps.verify-changed-files.outputs.files_changed == 'true'
         env:
-           GITHUB_TOKEN: ${{ secrets.REPO_SCOPED_GITHUB_TOKEN }}
+           GITHUB_TOKEN: ${{ secrets.APIX_BOT_PAT }}
         with:
           title: "APIBot: GO SDK Dev Preview"
           commit-message: "temp: client update"
