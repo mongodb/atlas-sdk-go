@@ -309,14 +309,15 @@ func (o *PublicApiUsageDetailsLineItem) SetUsageDate(v time.Time) {
 	o.UsageDate = &v
 }
 
-func (o PublicApiUsageDetailsLineItem) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *PublicApiUsageDetailsLineItem) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o PublicApiUsageDetailsLineItem) ToMap() (map[string]interface{}, error) {
+
+func (o *PublicApiUsageDetailsLineItem) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.BillDate) {
 		toSerialize["billDate"] = o.BillDate

@@ -81,14 +81,15 @@ func (o *DatabaseInheritedRole) SetRole(v string) {
 	o.Role = v
 }
 
-func (o DatabaseInheritedRole) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *DatabaseInheritedRole) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o DatabaseInheritedRole) ToMap() (map[string]interface{}, error) {
+
+func (o *DatabaseInheritedRole) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["db"] = o.Db
 	toSerialize["role"] = o.Role

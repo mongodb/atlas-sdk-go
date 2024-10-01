@@ -238,14 +238,15 @@ func (o *IngestionSource) SetPolicyItemId(v string) {
 	o.PolicyItemId = &v
 }
 
-func (o IngestionSource) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *IngestionSource) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o IngestionSource) ToMap() (map[string]interface{}, error) {
+
+func (o *IngestionSource) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type

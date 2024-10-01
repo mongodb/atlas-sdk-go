@@ -675,14 +675,15 @@ func (o *InvoiceLineItem) SetUnitPriceDollars(v float64) {
 	o.UnitPriceDollars = &v
 }
 
-func (o InvoiceLineItem) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *InvoiceLineItem) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o InvoiceLineItem) ToMap() (map[string]interface{}, error) {
+
+func (o *InvoiceLineItem) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.GroupName) {
 		toSerialize["groupName"] = o.GroupName

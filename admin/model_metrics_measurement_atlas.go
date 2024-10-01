@@ -135,14 +135,15 @@ func (o *MetricsMeasurementAtlas) SetUnits(v string) {
 	o.Units = &v
 }
 
-func (o MetricsMeasurementAtlas) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *MetricsMeasurementAtlas) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o MetricsMeasurementAtlas) ToMap() (map[string]interface{}, error) {
+
+func (o *MetricsMeasurementAtlas) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

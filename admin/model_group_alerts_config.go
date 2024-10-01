@@ -420,14 +420,15 @@ func (o *GroupAlertsConfig) SetThreshold(v GreaterThanRawThreshold) {
 	o.Threshold = &v
 }
 
-func (o GroupAlertsConfig) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *GroupAlertsConfig) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o GroupAlertsConfig) ToMap() (map[string]interface{}, error) {
+
+func (o *GroupAlertsConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled

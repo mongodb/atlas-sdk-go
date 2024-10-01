@@ -132,14 +132,15 @@ func (o *DataLakeApiBase) SetSource(v string) {
 	o.Source = &v
 }
 
-func (o DataLakeApiBase) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *DataLakeApiBase) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o DataLakeApiBase) ToMap() (map[string]interface{}, error) {
+
+func (o *DataLakeApiBase) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name

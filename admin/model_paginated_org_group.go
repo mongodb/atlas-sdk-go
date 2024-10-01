@@ -135,14 +135,15 @@ func (o *PaginatedOrgGroup) SetTotalCount(v int) {
 	o.TotalCount = &v
 }
 
-func (o PaginatedOrgGroup) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *PaginatedOrgGroup) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o PaginatedOrgGroup) ToMap() (map[string]interface{}, error) {
+
+func (o *PaginatedOrgGroup) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

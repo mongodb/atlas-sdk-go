@@ -97,14 +97,15 @@ func (o *ApiPrivateDownloadDeliveryUrl) SetEndpointId(v string) {
 	o.EndpointId = &v
 }
 
-func (o ApiPrivateDownloadDeliveryUrl) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *ApiPrivateDownloadDeliveryUrl) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ApiPrivateDownloadDeliveryUrl) ToMap() (map[string]interface{}, error) {
+
+func (o *ApiPrivateDownloadDeliveryUrl) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.DeliveryUrl) {
 		toSerialize["deliveryUrl"] = o.DeliveryUrl

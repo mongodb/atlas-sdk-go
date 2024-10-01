@@ -81,14 +81,15 @@ func (o *ApiSearchDeploymentSpec) SetNodeCount(v int) {
 	o.NodeCount = v
 }
 
-func (o ApiSearchDeploymentSpec) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *ApiSearchDeploymentSpec) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ApiSearchDeploymentSpec) ToMap() (map[string]interface{}, error) {
+
+func (o *ApiSearchDeploymentSpec) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["instanceSize"] = o.InstanceSize
 	toSerialize["nodeCount"] = o.NodeCount

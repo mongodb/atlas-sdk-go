@@ -62,14 +62,15 @@ func (o *AlertsToggle) SetEnabled(v bool) {
 	o.Enabled = &v
 }
 
-func (o AlertsToggle) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *AlertsToggle) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o AlertsToggle) ToMap() (map[string]interface{}, error) {
+
+func (o *AlertsToggle) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled

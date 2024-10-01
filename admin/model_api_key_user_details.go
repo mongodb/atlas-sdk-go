@@ -241,14 +241,15 @@ func (o *ApiKeyUserDetails) SetRoles(v []CloudAccessRoleAssignment) {
 	o.Roles = &v
 }
 
-func (o ApiKeyUserDetails) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *ApiKeyUserDetails) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ApiKeyUserDetails) ToMap() (map[string]interface{}, error) {
+
+func (o *ApiKeyUserDetails) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Desc) {
 		toSerialize["desc"] = o.Desc

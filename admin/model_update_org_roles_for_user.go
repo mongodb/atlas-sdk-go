@@ -98,14 +98,15 @@ func (o *UpdateOrgRolesForUser) SetOrgRoles(v []string) {
 	o.OrgRoles = &v
 }
 
-func (o UpdateOrgRolesForUser) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *UpdateOrgRolesForUser) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o UpdateOrgRolesForUser) ToMap() (map[string]interface{}, error) {
+
+func (o *UpdateOrgRolesForUser) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.OrgRoles) {
 		toSerialize["orgRoles"] = o.OrgRoles

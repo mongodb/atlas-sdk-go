@@ -171,14 +171,15 @@ func (o *ApiSearchDeploymentResponse) SetStateName(v string) {
 	o.StateName = &v
 }
 
-func (o ApiSearchDeploymentResponse) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *ApiSearchDeploymentResponse) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ApiSearchDeploymentResponse) ToMap() (map[string]interface{}, error) {
+
+func (o *ApiSearchDeploymentResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

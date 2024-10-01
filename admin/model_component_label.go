@@ -97,14 +97,15 @@ func (o *ComponentLabel) SetValue(v string) {
 	o.Value = &v
 }
 
-func (o ComponentLabel) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *ComponentLabel) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ComponentLabel) ToMap() (map[string]interface{}, error) {
+
+func (o *ComponentLabel) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Key) {
 		toSerialize["key"] = o.Key

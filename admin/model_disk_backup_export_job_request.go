@@ -154,14 +154,15 @@ func (o *DiskBackupExportJobRequest) SetSnapshotId(v string) {
 	o.SnapshotId = v
 }
 
-func (o DiskBackupExportJobRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *DiskBackupExportJobRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o DiskBackupExportJobRequest) ToMap() (map[string]interface{}, error) {
+
+func (o *DiskBackupExportJobRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.CustomData) {
 		toSerialize["customData"] = o.CustomData

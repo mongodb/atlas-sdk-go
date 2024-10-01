@@ -513,14 +513,15 @@ func (o *TenantRestore) SetTargetProjectId(v string) {
 	o.TargetProjectId = &v
 }
 
-func (o TenantRestore) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *TenantRestore) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o TenantRestore) ToMap() (map[string]interface{}, error) {
+
+func (o *TenantRestore) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["snapshotId"] = o.SnapshotId
 	toSerialize["targetDeploymentItemName"] = o.TargetDeploymentItemName

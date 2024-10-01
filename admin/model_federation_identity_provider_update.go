@@ -691,14 +691,15 @@ func (o *FederationIdentityProviderUpdate) SetUserClaim(v string) {
 	o.UserClaim = &v
 }
 
-func (o FederationIdentityProviderUpdate) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *FederationIdentityProviderUpdate) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o FederationIdentityProviderUpdate) ToMap() (map[string]interface{}, error) {
+
+func (o *FederationIdentityProviderUpdate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description

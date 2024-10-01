@@ -277,14 +277,15 @@ func (o *OrgGroup) SetTags(v []string) {
 	o.Tags = &v
 }
 
-func (o OrgGroup) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *OrgGroup) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o OrgGroup) ToMap() (map[string]interface{}, error) {
+
+func (o *OrgGroup) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.GroupName) {
 		toSerialize["groupName"] = o.GroupName

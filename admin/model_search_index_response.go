@@ -445,14 +445,15 @@ func (o *SearchIndexResponse) SetSynonymMappingStatusDetail(v []map[string]Synon
 	o.SynonymMappingStatusDetail = &v
 }
 
-func (o SearchIndexResponse) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *SearchIndexResponse) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o SearchIndexResponse) ToMap() (map[string]interface{}, error) {
+
+func (o *SearchIndexResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.CollectionName) {
 		toSerialize["collectionName"] = o.CollectionName

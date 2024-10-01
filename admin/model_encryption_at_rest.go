@@ -129,14 +129,15 @@ func (o *EncryptionAtRest) SetGoogleCloudKms(v GoogleCloudKMS) {
 	o.GoogleCloudKms = &v
 }
 
-func (o EncryptionAtRest) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *EncryptionAtRest) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o EncryptionAtRest) ToMap() (map[string]interface{}, error) {
+
+func (o *EncryptionAtRest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.AwsKms) {
 		toSerialize["awsKms"] = o.AwsKms

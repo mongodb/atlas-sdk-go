@@ -97,14 +97,15 @@ func (o *BackupLabel) SetValue(v string) {
 	o.Value = &v
 }
 
-func (o BackupLabel) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *BackupLabel) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o BackupLabel) ToMap() (map[string]interface{}, error) {
+
+func (o *BackupLabel) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Key) {
 		toSerialize["key"] = o.Key

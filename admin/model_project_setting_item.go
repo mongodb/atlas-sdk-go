@@ -54,14 +54,15 @@ func (o *ProjectSettingItem) SetEnabled(v bool) {
 	o.Enabled = v
 }
 
-func (o ProjectSettingItem) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *ProjectSettingItem) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ProjectSettingItem) ToMap() (map[string]interface{}, error) {
+
+func (o *ProjectSettingItem) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["enabled"] = o.Enabled
 	return toSerialize, nil

@@ -163,14 +163,15 @@ func (o *ServerlessTenantEndpointUpdate) SetPrivateEndpointIpAddress(v string) {
 	o.PrivateEndpointIpAddress = &v
 }
 
-func (o ServerlessTenantEndpointUpdate) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *ServerlessTenantEndpointUpdate) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ServerlessTenantEndpointUpdate) ToMap() (map[string]interface{}, error) {
+
+func (o *ServerlessTenantEndpointUpdate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment

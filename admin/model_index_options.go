@@ -665,14 +665,15 @@ func (o *IndexOptions) SetWeights(v interface{}) {
 	o.Weights = v
 }
 
-func (o IndexOptions) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *IndexOptions) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o IndexOptions) ToMap() (map[string]interface{}, error) {
+
+func (o *IndexOptions) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Var2dsphereIndexVersion) {
 		toSerialize["2dsphereIndexVersion"] = o.Var2dsphereIndexVersion

@@ -100,14 +100,15 @@ func (o *ApiBSONTimestamp) SetIncrement(v int) {
 	o.Increment = &v
 }
 
-func (o ApiBSONTimestamp) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *ApiBSONTimestamp) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ApiBSONTimestamp) ToMap() (map[string]interface{}, error) {
+
+func (o *ApiBSONTimestamp) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

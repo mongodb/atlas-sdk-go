@@ -291,14 +291,15 @@ func (o *CostExplorerFilterRequestBody) SetStartDate(v string) {
 	o.StartDate = v
 }
 
-func (o CostExplorerFilterRequestBody) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *CostExplorerFilterRequestBody) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o CostExplorerFilterRequestBody) ToMap() (map[string]interface{}, error) {
+
+func (o *CostExplorerFilterRequestBody) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Clusters) {
 		toSerialize["clusters"] = o.Clusters

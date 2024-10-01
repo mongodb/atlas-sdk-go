@@ -206,14 +206,15 @@ func (o *LiveImportValidation) SetStatus(v string) {
 	o.Status = &v
 }
 
-func (o LiveImportValidation) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *LiveImportValidation) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o LiveImportValidation) ToMap() (map[string]interface{}, error) {
+
+func (o *LiveImportValidation) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.SourceGroupId) {
 		toSerialize["sourceGroupId"] = o.SourceGroupId

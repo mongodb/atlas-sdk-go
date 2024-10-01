@@ -172,14 +172,15 @@ func (o *{{classname}}) Set{{name}}(v {{vendorExtensions.x-go-base-type}}) {
 
 {{/required}}
 {{/vars}}
-func (o {{classname}}) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *{{classname}}) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o {{classname}}) ToMap() (map[string]interface{}, error) {
+
+func (o *{{classname}}) ToMap() (map[string]interface{}, error) {
 	toSerialize := {{#isArray}}make([]interface{}, len(o.Items)){{/isArray}}{{^isArray}}map[string]interface{}{}{{/isArray}}
 	{{#parent}}
 	{{^isMap}}

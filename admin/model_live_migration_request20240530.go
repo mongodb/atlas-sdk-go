@@ -260,14 +260,15 @@ func (o *LiveMigrationRequest20240530) SetSource(v Source) {
 	o.Source = v
 }
 
-func (o LiveMigrationRequest20240530) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *LiveMigrationRequest20240530) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o LiveMigrationRequest20240530) ToMap() (map[string]interface{}, error) {
+
+func (o *LiveMigrationRequest20240530) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["destination"] = o.Destination
 	if !IsNil(o.DropDestinationData) {

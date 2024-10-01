@@ -262,14 +262,15 @@ func (o *DataFederationLimit) SetOverrunPolicy(v string) {
 	o.OverrunPolicy = &v
 }
 
-func (o DataFederationLimit) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *DataFederationLimit) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o DataFederationLimit) ToMap() (map[string]interface{}, error) {
+
+func (o *DataFederationLimit) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["value"] = o.Value
 	if !IsNil(o.OverrunPolicy) {

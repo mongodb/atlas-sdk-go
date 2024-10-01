@@ -135,14 +135,15 @@ func (o *InboundControlPlaneCloudProviderIPAddresses) SetGcp(v map[string][]stri
 	o.Gcp = &v
 }
 
-func (o InboundControlPlaneCloudProviderIPAddresses) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *InboundControlPlaneCloudProviderIPAddresses) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o InboundControlPlaneCloudProviderIPAddresses) ToMap() (map[string]interface{}, error) {
+
+func (o *InboundControlPlaneCloudProviderIPAddresses) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

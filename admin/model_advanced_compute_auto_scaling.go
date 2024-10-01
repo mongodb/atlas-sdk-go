@@ -167,14 +167,15 @@ func (o *AdvancedComputeAutoScaling) SetScaleDownEnabled(v bool) {
 	o.ScaleDownEnabled = &v
 }
 
-func (o AdvancedComputeAutoScaling) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *AdvancedComputeAutoScaling) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o AdvancedComputeAutoScaling) ToMap() (map[string]interface{}, error) {
+
+func (o *AdvancedComputeAutoScaling) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled

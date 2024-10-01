@@ -91,14 +91,15 @@ func (o *ShardingRequest) SetShardingEntries(v []ShardEntry) {
 	o.ShardingEntries = &v
 }
 
-func (o ShardingRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *ShardingRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ShardingRequest) ToMap() (map[string]interface{}, error) {
+
+func (o *ShardingRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["createSupportingIndexes"] = o.CreateSupportingIndexes
 	if !IsNil(o.ShardingEntries) {

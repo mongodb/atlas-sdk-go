@@ -54,14 +54,15 @@ func (o *TargetOrg) SetLinkToken(v string) {
 	o.LinkToken = v
 }
 
-func (o TargetOrg) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *TargetOrg) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o TargetOrg) ToMap() (map[string]interface{}, error) {
+
+func (o *TargetOrg) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["linkToken"] = o.LinkToken
 	return toSerialize, nil

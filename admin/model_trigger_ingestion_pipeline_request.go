@@ -89,14 +89,15 @@ func (o *TriggerIngestionPipelineRequest) SetSnapshotId(v string) {
 	o.SnapshotId = v
 }
 
-func (o TriggerIngestionPipelineRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *TriggerIngestionPipelineRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o TriggerIngestionPipelineRequest) ToMap() (map[string]interface{}, error) {
+
+func (o *TriggerIngestionPipelineRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.DatasetRetentionPolicy) {
 		toSerialize["datasetRetentionPolicy"] = o.DatasetRetentionPolicy

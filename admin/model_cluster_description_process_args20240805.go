@@ -451,14 +451,15 @@ func (o *ClusterDescriptionProcessArgs20240805) SetTransactionLifetimeLimitSecon
 	o.TransactionLifetimeLimitSeconds = &v
 }
 
-func (o ClusterDescriptionProcessArgs20240805) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *ClusterDescriptionProcessArgs20240805) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ClusterDescriptionProcessArgs20240805) ToMap() (map[string]interface{}, error) {
+
+func (o *ClusterDescriptionProcessArgs20240805) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.ChangeStreamOptionsPreAndPostImagesExpireAfterSeconds) {
 		toSerialize["changeStreamOptionsPreAndPostImagesExpireAfterSeconds"] = o.ChangeStreamOptionsPreAndPostImagesExpireAfterSeconds

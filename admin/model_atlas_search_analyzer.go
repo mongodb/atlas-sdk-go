@@ -152,14 +152,15 @@ func (o *AtlasSearchAnalyzer) SetTokenizer(v interface{}) {
 	o.Tokenizer = v
 }
 
-func (o AtlasSearchAnalyzer) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *AtlasSearchAnalyzer) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o AtlasSearchAnalyzer) ToMap() (map[string]interface{}, error) {
+
+func (o *AtlasSearchAnalyzer) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.CharFilters) {
 		toSerialize["charFilters"] = o.CharFilters

@@ -176,14 +176,15 @@ func (o *AuditLog) SetEnabled(v bool) {
 	o.Enabled = &v
 }
 
-func (o AuditLog) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *AuditLog) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o AuditLog) ToMap() (map[string]interface{}, error) {
+
+func (o *AuditLog) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.AuditAuthorizationSuccess) {
 		toSerialize["auditAuthorizationSuccess"] = o.AuditAuthorizationSuccess

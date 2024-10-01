@@ -205,14 +205,15 @@ func (o *ApiCheckpointPart) SetTypeName(v string) {
 	o.TypeName = &v
 }
 
-func (o ApiCheckpointPart) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *ApiCheckpointPart) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ApiCheckpointPart) ToMap() (map[string]interface{}, error) {
+
+func (o *ApiCheckpointPart) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.TokenTimestamp) {
 		toSerialize["tokenTimestamp"] = o.TokenTimestamp

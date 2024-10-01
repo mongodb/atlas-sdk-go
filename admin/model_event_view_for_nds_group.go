@@ -1354,14 +1354,15 @@ func (o *EventViewForNdsGroup) SetProcessorState(v string) {
 	o.ProcessorState = &v
 }
 
-func (o EventViewForNdsGroup) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *EventViewForNdsGroup) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o EventViewForNdsGroup) ToMap() (map[string]interface{}, error) {
+
+func (o *EventViewForNdsGroup) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.EventTypeName) {
 		toSerialize["eventTypeName"] = o.EventTypeName

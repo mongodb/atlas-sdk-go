@@ -99,14 +99,15 @@ func (o *ApiAtlasPolicy) SetId(v string) {
 	o.Id = &v
 }
 
-func (o ApiAtlasPolicy) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *ApiAtlasPolicy) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ApiAtlasPolicy) ToMap() (map[string]interface{}, error) {
+
+func (o *ApiAtlasPolicy) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

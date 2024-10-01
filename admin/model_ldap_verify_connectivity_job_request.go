@@ -241,14 +241,15 @@ func (o *LDAPVerifyConnectivityJobRequest) SetValidations(v []LDAPVerifyConnecti
 	o.Validations = &v
 }
 
-func (o LDAPVerifyConnectivityJobRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *LDAPVerifyConnectivityJobRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o LDAPVerifyConnectivityJobRequest) ToMap() (map[string]interface{}, error) {
+
+func (o *LDAPVerifyConnectivityJobRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Request) {
 		toSerialize["request"] = o.Request

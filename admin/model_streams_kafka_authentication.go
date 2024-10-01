@@ -169,14 +169,15 @@ func (o *StreamsKafkaAuthentication) SetUsername(v string) {
 	o.Username = &v
 }
 
-func (o StreamsKafkaAuthentication) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *StreamsKafkaAuthentication) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o StreamsKafkaAuthentication) ToMap() (map[string]interface{}, error) {
+
+func (o *StreamsKafkaAuthentication) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Mechanism) {
 		toSerialize["mechanism"] = o.Mechanism

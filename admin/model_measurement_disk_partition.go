@@ -99,14 +99,15 @@ func (o *MeasurementDiskPartition) SetPartitionName(v string) {
 	o.PartitionName = &v
 }
 
-func (o MeasurementDiskPartition) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *MeasurementDiskPartition) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o MeasurementDiskPartition) ToMap() (map[string]interface{}, error) {
+
+func (o *MeasurementDiskPartition) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

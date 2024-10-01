@@ -98,14 +98,15 @@ func (o *SearchIndexDefinitionVersion) SetVersion(v int64) {
 	o.Version = &v
 }
 
-func (o SearchIndexDefinitionVersion) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *SearchIndexDefinitionVersion) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o SearchIndexDefinitionVersion) ToMap() (map[string]interface{}, error) {
+
+func (o *SearchIndexDefinitionVersion) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt

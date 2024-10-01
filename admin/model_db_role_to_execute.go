@@ -133,14 +133,15 @@ func (o *DBRoleToExecute) SetType(v string) {
 	o.Type = &v
 }
 
-func (o DBRoleToExecute) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *DBRoleToExecute) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o DBRoleToExecute) ToMap() (map[string]interface{}, error) {
+
+func (o *DBRoleToExecute) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Role) {
 		toSerialize["role"] = o.Role

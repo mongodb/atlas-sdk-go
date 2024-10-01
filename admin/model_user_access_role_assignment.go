@@ -98,14 +98,15 @@ func (o *UserAccessRoleAssignment) SetUserId(v string) {
 	o.UserId = &v
 }
 
-func (o UserAccessRoleAssignment) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *UserAccessRoleAssignment) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o UserAccessRoleAssignment) ToMap() (map[string]interface{}, error) {
+
+func (o *UserAccessRoleAssignment) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Roles) {
 		toSerialize["roles"] = o.Roles

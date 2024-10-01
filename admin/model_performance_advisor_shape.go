@@ -243,14 +243,15 @@ func (o *PerformanceAdvisorShape) SetOperations(v []PerformanceAdvisorOperation)
 	o.Operations = &v
 }
 
-func (o PerformanceAdvisorShape) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *PerformanceAdvisorShape) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o PerformanceAdvisorShape) ToMap() (map[string]interface{}, error) {
+
+func (o *PerformanceAdvisorShape) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

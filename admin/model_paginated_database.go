@@ -135,14 +135,15 @@ func (o *PaginatedDatabase) SetTotalCount(v int) {
 	o.TotalCount = &v
 }
 
-func (o PaginatedDatabase) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *PaginatedDatabase) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o PaginatedDatabase) ToMap() (map[string]interface{}, error) {
+
+func (o *PaginatedDatabase) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

@@ -99,14 +99,15 @@ func (o *DiskBackupExportMember) SetReplicaSetName(v string) {
 	o.ReplicaSetName = &v
 }
 
-func (o DiskBackupExportMember) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *DiskBackupExportMember) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o DiskBackupExportMember) ToMap() (map[string]interface{}, error) {
+
+func (o *DiskBackupExportMember) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

@@ -131,14 +131,15 @@ func (o *ApiPublicUsageDetailsQueryRequest) SetSortOrder(v string) {
 	o.SortOrder = &v
 }
 
-func (o ApiPublicUsageDetailsQueryRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *ApiPublicUsageDetailsQueryRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ApiPublicUsageDetailsQueryRequest) ToMap() (map[string]interface{}, error) {
+
+func (o *ApiPublicUsageDetailsQueryRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Filters) {
 		toSerialize["filters"] = o.Filters

@@ -135,14 +135,15 @@ func (o *PaginatedApiAtlasDiskBackupExportJob) SetTotalCount(v int) {
 	o.TotalCount = &v
 }
 
-func (o PaginatedApiAtlasDiskBackupExportJob) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *PaginatedApiAtlasDiskBackupExportJob) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o PaginatedApiAtlasDiskBackupExportJob) ToMap() (map[string]interface{}, error) {
+
+func (o *PaginatedApiAtlasDiskBackupExportJob) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

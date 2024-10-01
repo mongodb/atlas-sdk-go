@@ -97,14 +97,15 @@ func (o *ExtraRetentionSetting) SetRetentionDays(v int) {
 	o.RetentionDays = &v
 }
 
-func (o ExtraRetentionSetting) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *ExtraRetentionSetting) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ExtraRetentionSetting) ToMap() (map[string]interface{}, error) {
+
+func (o *ExtraRetentionSetting) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.FrequencyType) {
 		toSerialize["frequencyType"] = o.FrequencyType

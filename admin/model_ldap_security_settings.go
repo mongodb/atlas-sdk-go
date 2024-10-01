@@ -387,14 +387,15 @@ func (o *LDAPSecuritySettings) SetUserToDNMapping(v []UserToDNMapping) {
 	o.UserToDNMapping = &v
 }
 
-func (o LDAPSecuritySettings) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *LDAPSecuritySettings) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o LDAPSecuritySettings) ToMap() (map[string]interface{}, error) {
+
+func (o *LDAPSecuritySettings) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.AuthenticationEnabled) {
 		toSerialize["authenticationEnabled"] = o.AuthenticationEnabled

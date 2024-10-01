@@ -607,14 +607,15 @@ func (o *ServerlessBackupRestoreJob) SetTimestamp(v time.Time) {
 	o.Timestamp = &v
 }
 
-func (o ServerlessBackupRestoreJob) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *ServerlessBackupRestoreJob) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ServerlessBackupRestoreJob) ToMap() (map[string]interface{}, error) {
+
+func (o *ServerlessBackupRestoreJob) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["deliveryType"] = o.DeliveryType
 	if !IsNil(o.DesiredTimestamp) {

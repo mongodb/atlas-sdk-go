@@ -102,14 +102,15 @@ func (o *StreamsSampleConnections) SetSolar(v bool) {
 	o.Solar = &v
 }
 
-func (o StreamsSampleConnections) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *StreamsSampleConnections) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o StreamsSampleConnections) ToMap() (map[string]interface{}, error) {
+
+func (o *StreamsSampleConnections) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Solar) {
 		toSerialize["solar"] = o.Solar

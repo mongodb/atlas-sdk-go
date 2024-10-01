@@ -97,14 +97,15 @@ func (o *LinkAtlas) SetRel(v string) {
 	o.Rel = &v
 }
 
-func (o LinkAtlas) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *LinkAtlas) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o LinkAtlas) ToMap() (map[string]interface{}, error) {
+
+func (o *LinkAtlas) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Href) {
 		toSerialize["href"] = o.Href

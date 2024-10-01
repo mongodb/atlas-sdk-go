@@ -205,14 +205,15 @@ func (o *CreateEndpointRequest) SetGcpProjectId(v string) {
 	o.GcpProjectId = &v
 }
 
-func (o CreateEndpointRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *CreateEndpointRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o CreateEndpointRequest) ToMap() (map[string]interface{}, error) {
+
+func (o *CreateEndpointRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id

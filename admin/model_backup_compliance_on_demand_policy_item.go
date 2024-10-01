@@ -171,14 +171,15 @@ func (o *BackupComplianceOnDemandPolicyItem) SetRetentionValue(v int) {
 	o.RetentionValue = v
 }
 
-func (o BackupComplianceOnDemandPolicyItem) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *BackupComplianceOnDemandPolicyItem) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o BackupComplianceOnDemandPolicyItem) ToMap() (map[string]interface{}, error) {
+
+func (o *BackupComplianceOnDemandPolicyItem) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["frequencyInterval"] = o.FrequencyInterval
 	toSerialize["frequencyType"] = o.FrequencyType

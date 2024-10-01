@@ -383,14 +383,15 @@ func (o *Raw) SetSeverity(v string) {
 	o.Severity = &v
 }
 
-func (o Raw) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *Raw) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o Raw) ToMap() (map[string]interface{}, error) {
+
+func (o *Raw) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.T) {
 		toSerialize["_t"] = o.T

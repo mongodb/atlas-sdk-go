@@ -1019,14 +1019,15 @@ func (o *AlertsNotificationRootForGroup) SetWebhookUrl(v string) {
 	o.WebhookUrl = &v
 }
 
-func (o AlertsNotificationRootForGroup) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *AlertsNotificationRootForGroup) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o AlertsNotificationRootForGroup) ToMap() (map[string]interface{}, error) {
+
+func (o *AlertsNotificationRootForGroup) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.DatadogApiKey) {
 		toSerialize["datadogApiKey"] = o.DatadogApiKey

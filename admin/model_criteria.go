@@ -206,14 +206,15 @@ func (o *Criteria) SetExpireAfterDays(v int) {
 	o.ExpireAfterDays = &v
 }
 
-func (o Criteria) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *Criteria) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o Criteria) ToMap() (map[string]interface{}, error) {
+
+func (o *Criteria) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type

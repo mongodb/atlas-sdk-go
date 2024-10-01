@@ -168,14 +168,15 @@ func (o *IngestionSink) SetPartitionFields(v []DataLakePipelinesPartitionField) 
 	o.PartitionFields = &v
 }
 
-func (o IngestionSink) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *IngestionSink) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o IngestionSink) ToMap() (map[string]interface{}, error) {
+
+func (o *IngestionSink) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.MetadataProvider) {
 		toSerialize["metadataProvider"] = o.MetadataProvider

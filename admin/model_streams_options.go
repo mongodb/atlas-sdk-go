@@ -97,14 +97,15 @@ func (o *StreamsOptions) SetLinks(v []Link) {
 	o.Links = &v
 }
 
-func (o StreamsOptions) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *StreamsOptions) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o StreamsOptions) ToMap() (map[string]interface{}, error) {
+
+func (o *StreamsOptions) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Dlq) {
 		toSerialize["dlq"] = o.Dlq

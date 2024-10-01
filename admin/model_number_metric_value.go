@@ -98,14 +98,15 @@ func (o *NumberMetricValue) SetUnits(v string) {
 	o.Units = &v
 }
 
-func (o NumberMetricValue) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *NumberMetricValue) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o NumberMetricValue) ToMap() (map[string]interface{}, error) {
+
+func (o *NumberMetricValue) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Units) {
 		toSerialize["units"] = o.Units

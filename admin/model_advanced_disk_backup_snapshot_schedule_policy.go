@@ -97,14 +97,15 @@ func (o *AdvancedDiskBackupSnapshotSchedulePolicy) SetPolicyItems(v []DiskBackup
 	o.PolicyItems = &v
 }
 
-func (o AdvancedDiskBackupSnapshotSchedulePolicy) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *AdvancedDiskBackupSnapshotSchedulePolicy) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o AdvancedDiskBackupSnapshotSchedulePolicy) ToMap() (map[string]interface{}, error) {
+
+func (o *AdvancedDiskBackupSnapshotSchedulePolicy) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id

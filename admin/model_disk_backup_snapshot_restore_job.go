@@ -695,14 +695,15 @@ func (o *DiskBackupSnapshotRestoreJob) SetTimestamp(v time.Time) {
 	o.Timestamp = &v
 }
 
-func (o DiskBackupSnapshotRestoreJob) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *DiskBackupSnapshotRestoreJob) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o DiskBackupSnapshotRestoreJob) ToMap() (map[string]interface{}, error) {
+
+func (o *DiskBackupSnapshotRestoreJob) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["deliveryType"] = o.DeliveryType
 	if !IsNil(o.DesiredTimestamp) {

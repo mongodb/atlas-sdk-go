@@ -63,14 +63,15 @@ func (o *ApiAtlasInvalidPolicyErrorDetail) SetDetail(v string) {
 	o.Detail = &v
 }
 
-func (o ApiAtlasInvalidPolicyErrorDetail) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *ApiAtlasInvalidPolicyErrorDetail) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ApiAtlasInvalidPolicyErrorDetail) ToMap() (map[string]interface{}, error) {
+
+func (o *ApiAtlasInvalidPolicyErrorDetail) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

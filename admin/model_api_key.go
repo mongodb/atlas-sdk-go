@@ -155,14 +155,15 @@ func (o *ApiKey) SetRoles(v []CloudAccessRoleAssignment) {
 	o.Roles = &v
 }
 
-func (o ApiKey) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *ApiKey) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ApiKey) ToMap() (map[string]interface{}, error) {
+
+func (o *ApiKey) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

@@ -135,14 +135,15 @@ func (o *PaginatedApiStreamsStreamProcessorWithStats) SetTotalCount(v int) {
 	o.TotalCount = &v
 }
 
-func (o PaginatedApiStreamsStreamProcessorWithStats) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *PaginatedApiStreamsStreamProcessorWithStats) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o PaginatedApiStreamsStreamProcessorWithStats) ToMap() (map[string]interface{}, error) {
+
+func (o *PaginatedApiStreamsStreamProcessorWithStats) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

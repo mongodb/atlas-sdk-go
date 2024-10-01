@@ -423,14 +423,15 @@ func (o *CloudCluster) SetVersions(v []string) {
 	o.Versions = &v
 }
 
-func (o CloudCluster) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *CloudCluster) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o CloudCluster) ToMap() (map[string]interface{}, error) {
+
+func (o *CloudCluster) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

@@ -97,14 +97,15 @@ func (o *GroupUpdate) SetTags(v []ResourceTag) {
 	o.Tags = &v
 }
 
-func (o GroupUpdate) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *GroupUpdate) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o GroupUpdate) ToMap() (map[string]interface{}, error) {
+
+func (o *GroupUpdate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name

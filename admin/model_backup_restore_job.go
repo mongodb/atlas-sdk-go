@@ -663,14 +663,15 @@ func (o *BackupRestoreJob) SetTimestamp(v ApiBSONTimestamp) {
 	o.Timestamp = &v
 }
 
-func (o BackupRestoreJob) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *BackupRestoreJob) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o BackupRestoreJob) ToMap() (map[string]interface{}, error) {
+
+func (o *BackupRestoreJob) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.CheckpointId) {
 		toSerialize["checkpointId"] = o.CheckpointId

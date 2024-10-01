@@ -133,14 +133,15 @@ func (o *TeamRole) SetTeamId(v string) {
 	o.TeamId = &v
 }
 
-func (o TeamRole) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *TeamRole) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o TeamRole) ToMap() (map[string]interface{}, error) {
+
+func (o *TeamRole) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.RoleNames) {
 		toSerialize["roleNames"] = o.RoleNames

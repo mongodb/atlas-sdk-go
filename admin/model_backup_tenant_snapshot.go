@@ -316,14 +316,15 @@ func (o *BackupTenantSnapshot) SetStatus(v string) {
 	o.Status = &v
 }
 
-func (o BackupTenantSnapshot) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *BackupTenantSnapshot) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o BackupTenantSnapshot) ToMap() (map[string]interface{}, error) {
+
+func (o *BackupTenantSnapshot) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

@@ -246,14 +246,15 @@ func (o *StreamsProcessorWithStats) SetStats(v interface{}) {
 	o.Stats = v
 }
 
-func (o StreamsProcessorWithStats) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *StreamsProcessorWithStats) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o StreamsProcessorWithStats) ToMap() (map[string]interface{}, error) {
+
+func (o *StreamsProcessorWithStats) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Options) {
 		toSerialize["options"] = o.Options

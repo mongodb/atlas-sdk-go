@@ -97,14 +97,15 @@ func (o *BiConnector) SetReadPreference(v string) {
 	o.ReadPreference = &v
 }
 
-func (o BiConnector) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *BiConnector) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o BiConnector) ToMap() (map[string]interface{}, error) {
+
+func (o *BiConnector) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled

@@ -98,14 +98,15 @@ func (o *UpdateGroupRolesForUser) SetLinks(v []Link) {
 	o.Links = &v
 }
 
-func (o UpdateGroupRolesForUser) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *UpdateGroupRolesForUser) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o UpdateGroupRolesForUser) ToMap() (map[string]interface{}, error) {
+
+func (o *UpdateGroupRolesForUser) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.GroupRoles) {
 		toSerialize["groupRoles"] = o.GroupRoles

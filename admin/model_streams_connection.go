@@ -374,14 +374,15 @@ func (o *StreamsConnection) SetSecurity(v StreamsKafkaSecurity) {
 	o.Security = &v
 }
 
-func (o StreamsConnection) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *StreamsConnection) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o StreamsConnection) ToMap() (map[string]interface{}, error) {
+
+func (o *StreamsConnection) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name

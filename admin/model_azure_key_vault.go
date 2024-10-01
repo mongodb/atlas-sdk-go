@@ -414,14 +414,15 @@ func (o *AzureKeyVault) SetValid(v bool) {
 	o.Valid = &v
 }
 
-func (o AzureKeyVault) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *AzureKeyVault) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o AzureKeyVault) ToMap() (map[string]interface{}, error) {
+
+func (o *AzureKeyVault) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.AzureEnvironment) {
 		toSerialize["azureEnvironment"] = o.AzureEnvironment

@@ -171,14 +171,15 @@ func (o *DataLakeDatabaseInstance) SetViews(v []DataLakeApiBase) {
 	o.Views = &v
 }
 
-func (o DataLakeDatabaseInstance) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *DataLakeDatabaseInstance) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o DataLakeDatabaseInstance) ToMap() (map[string]interface{}, error) {
+
+func (o *DataLakeDatabaseInstance) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Collections) {
 		toSerialize["collections"] = o.Collections
