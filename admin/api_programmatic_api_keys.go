@@ -404,7 +404,7 @@ func (a *ProgrammaticAPIKeysApiService) AddProjectApiKey(ctx context.Context, gr
 	}
 }
 
-// Execute executes the request
+// AddProjectApiKeyExecute executes the request
 //
 //	@return interface{}
 func (a *ProgrammaticAPIKeysApiService) AddProjectApiKeyExecute(r AddProjectApiKeyApiRequest) (interface{}, *http.Response, error) {
@@ -525,7 +525,7 @@ func (a *ProgrammaticAPIKeysApiService) CreateApiKey(ctx context.Context, orgId 
 	}
 }
 
-// Execute executes the request
+// CreateApiKeyExecute executes the request
 //
 //	@return ApiKeyUserDetails
 func (a *ProgrammaticAPIKeysApiService) CreateApiKeyExecute(r CreateApiKeyApiRequest) (*ApiKeyUserDetails, *http.Response, error) {
@@ -677,7 +677,7 @@ func (a *ProgrammaticAPIKeysApiService) CreateApiKeyAccessList(ctx context.Conte
 	}
 }
 
-// Execute executes the request
+// CreateApiKeyAccessListExecute executes the request
 //
 //	@return PaginatedApiUserAccessListResponse
 func (a *ProgrammaticAPIKeysApiService) CreateApiKeyAccessListExecute(r CreateApiKeyAccessListApiRequest) (*PaginatedApiUserAccessListResponse, *http.Response, error) {
@@ -819,7 +819,7 @@ func (a *ProgrammaticAPIKeysApiService) CreateProjectApiKey(ctx context.Context,
 	}
 }
 
-// Execute executes the request
+// CreateProjectApiKeyExecute executes the request
 //
 //	@return ApiKeyUserDetails
 func (a *ProgrammaticAPIKeysApiService) CreateProjectApiKeyExecute(r CreateProjectApiKeyApiRequest) (*ApiKeyUserDetails, *http.Response, error) {
@@ -940,7 +940,7 @@ func (a *ProgrammaticAPIKeysApiService) DeleteApiKey(ctx context.Context, orgId 
 	}
 }
 
-// Execute executes the request
+// DeleteApiKeyExecute executes the request
 //
 //	@return interface{}
 func (a *ProgrammaticAPIKeysApiService) DeleteApiKeyExecute(r DeleteApiKeyApiRequest) (interface{}, *http.Response, error) {
@@ -1062,7 +1062,7 @@ func (a *ProgrammaticAPIKeysApiService) DeleteApiKeyAccessListEntry(ctx context.
 	}
 }
 
-// Execute executes the request
+// DeleteApiKeyAccessListEntryExecute executes the request
 //
 //	@return interface{}
 func (a *ProgrammaticAPIKeysApiService) DeleteApiKeyAccessListEntryExecute(r DeleteApiKeyAccessListEntryApiRequest) (interface{}, *http.Response, error) {
@@ -1180,7 +1180,7 @@ func (a *ProgrammaticAPIKeysApiService) GetApiKey(ctx context.Context, orgId str
 	}
 }
 
-// Execute executes the request
+// GetApiKeyExecute executes the request
 //
 //	@return ApiKeyUserDetails
 func (a *ProgrammaticAPIKeysApiService) GetApiKeyExecute(r GetApiKeyApiRequest) (*ApiKeyUserDetails, *http.Response, error) {
@@ -1302,7 +1302,7 @@ func (a *ProgrammaticAPIKeysApiService) GetApiKeyAccessList(ctx context.Context,
 	}
 }
 
-// Execute executes the request
+// GetApiKeyAccessListExecute executes the request
 //
 //	@return UserAccessListResponse
 func (a *ProgrammaticAPIKeysApiService) GetApiKeyAccessListExecute(r GetApiKeyAccessListApiRequest) (*UserAccessListResponse, *http.Response, error) {
@@ -1447,7 +1447,7 @@ func (a *ProgrammaticAPIKeysApiService) ListApiKeyAccessListsEntries(ctx context
 	}
 }
 
-// Execute executes the request
+// ListApiKeyAccessListsEntriesExecute executes the request
 //
 //	@return PaginatedApiUserAccessListResponse
 func (a *ProgrammaticAPIKeysApiService) ListApiKeyAccessListsEntriesExecute(r ListApiKeyAccessListsEntriesApiRequest) (*PaginatedApiUserAccessListResponse, *http.Response, error) {
@@ -1607,7 +1607,7 @@ func (a *ProgrammaticAPIKeysApiService) ListApiKeys(ctx context.Context, orgId s
 	}
 }
 
-// Execute executes the request
+// ListApiKeysExecute executes the request
 //
 //	@return PaginatedApiApiUser
 func (a *ProgrammaticAPIKeysApiService) ListApiKeysExecute(r ListApiKeysApiRequest) (*PaginatedApiApiUser, *http.Response, error) {
@@ -1766,7 +1766,7 @@ func (a *ProgrammaticAPIKeysApiService) ListProjectApiKeys(ctx context.Context, 
 	}
 }
 
-// Execute executes the request
+// ListProjectApiKeysExecute executes the request
 //
 //	@return PaginatedApiApiUser
 func (a *ProgrammaticAPIKeysApiService) ListProjectApiKeysExecute(r ListProjectApiKeysApiRequest) (*PaginatedApiApiUser, *http.Response, error) {
@@ -1903,7 +1903,7 @@ func (a *ProgrammaticAPIKeysApiService) RemoveProjectApiKey(ctx context.Context,
 	}
 }
 
-// Execute executes the request
+// RemoveProjectApiKeyExecute executes the request
 //
 //	@return interface{}
 func (a *ProgrammaticAPIKeysApiService) RemoveProjectApiKeyExecute(r RemoveProjectApiKeyApiRequest) (interface{}, *http.Response, error) {
@@ -2024,7 +2024,7 @@ func (a *ProgrammaticAPIKeysApiService) UpdateApiKey(ctx context.Context, orgId 
 	}
 }
 
-// Execute executes the request
+// UpdateApiKeyExecute executes the request
 //
 //	@return ApiKeyUserDetails
 func (a *ProgrammaticAPIKeysApiService) UpdateApiKeyExecute(r UpdateApiKeyApiRequest) (*ApiKeyUserDetails, *http.Response, error) {
@@ -2177,7 +2177,7 @@ func (a *ProgrammaticAPIKeysApiService) UpdateApiKeyRoles(ctx context.Context, g
 	}
 }
 
-// Execute executes the request
+// UpdateApiKeyRolesExecute executes the request
 //
 //	@return ApiKeyUserDetails
 func (a *ProgrammaticAPIKeysApiService) UpdateApiKeyRolesExecute(r UpdateApiKeyRolesApiRequest) (*ApiKeyUserDetails, *http.Response, error) {

@@ -146,7 +146,7 @@ func (a *X509AuthenticationApiService) CreateDatabaseUserCertificate(ctx context
 	}
 }
 
-// Execute executes the request
+// CreateDatabaseUserCertificateExecute executes the request
 //
 //	@return string
 func (a *X509AuthenticationApiService) CreateDatabaseUserCertificateExecute(r CreateDatabaseUserCertificateApiRequest) (string, *http.Response, error) {
@@ -265,7 +265,7 @@ func (a *X509AuthenticationApiService) DisableCustomerManagedX509(ctx context.Co
 	}
 }
 
-// Execute executes the request
+// DisableCustomerManagedX509Execute executes the request
 //
 //	@return UserSecurity
 func (a *X509AuthenticationApiService) DisableCustomerManagedX509Execute(r DisableCustomerManagedX509ApiRequest) (*UserSecurity, *http.Response, error) {
@@ -408,7 +408,7 @@ func (a *X509AuthenticationApiService) ListDatabaseUserCertificates(ctx context.
 	}
 }
 
-// Execute executes the request
+// ListDatabaseUserCertificatesExecute executes the request
 //
 //	@return PaginatedUserCert
 func (a *X509AuthenticationApiService) ListDatabaseUserCertificatesExecute(r ListDatabaseUserCertificatesApiRequest) (*PaginatedUserCert, *http.Response, error) {

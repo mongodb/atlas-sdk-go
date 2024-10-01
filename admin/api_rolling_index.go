@@ -88,7 +88,7 @@ func (a *RollingIndexApiService) CreateRollingIndex(ctx context.Context, groupId
 	}
 }
 
-// Execute executes the request
+// CreateRollingIndexExecute executes the request
 func (a *RollingIndexApiService) CreateRollingIndexExecute(r CreateRollingIndexApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost

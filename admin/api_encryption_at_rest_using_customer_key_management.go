@@ -214,7 +214,7 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) CreateEncryptionA
 	}
 }
 
-// Execute executes the request
+// CreateEncryptionAtRestPrivateEndpointExecute executes the request
 //
 //	@return EARPrivateEndpoint
 func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) CreateEncryptionAtRestPrivateEndpointExecute(r CreateEncryptionAtRestPrivateEndpointApiRequest) (*EARPrivateEndpoint, *http.Response, error) {
@@ -333,7 +333,7 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) GetEncryptionAtRe
 	}
 }
 
-// Execute executes the request
+// GetEncryptionAtRestExecute executes the request
 //
 //	@return EncryptionAtRest
 func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) GetEncryptionAtRestExecute(r GetEncryptionAtRestApiRequest) (*EncryptionAtRest, *http.Response, error) {
@@ -454,7 +454,7 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) GetEncryptionAtRe
 	}
 }
 
-// Execute executes the request
+// GetEncryptionAtRestPrivateEndpointExecute executes the request
 //
 //	@return EARPrivateEndpoint
 func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) GetEncryptionAtRestPrivateEndpointExecute(r GetEncryptionAtRestPrivateEndpointApiRequest) (*EARPrivateEndpoint, *http.Response, error) {
@@ -599,7 +599,7 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) GetEncryptionAtRe
 	}
 }
 
-// Execute executes the request
+// GetEncryptionAtRestPrivateEndpointsForCloudProviderExecute executes the request
 //
 //	@return PaginatedApiAtlasEARPrivateEndpoint
 func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) GetEncryptionAtRestPrivateEndpointsForCloudProviderExecute(r GetEncryptionAtRestPrivateEndpointsForCloudProviderApiRequest) (*PaginatedApiAtlasEARPrivateEndpoint, *http.Response, error) {
@@ -742,7 +742,7 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) RequestEncryption
 	}
 }
 
-// Execute executes the request
+// RequestEncryptionAtRestPrivateEndpointDeletionExecute executes the request
 //
 //	@return interface{}
 func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) RequestEncryptionAtRestPrivateEndpointDeletionExecute(r RequestEncryptionAtRestPrivateEndpointDeletionApiRequest) (interface{}, *http.Response, error) {
@@ -861,7 +861,7 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) UpdateEncryptionA
 	}
 }
 
-// Execute executes the request
+// UpdateEncryptionAtRestExecute executes the request
 //
 //	@return EncryptionAtRest
 func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) UpdateEncryptionAtRestExecute(r UpdateEncryptionAtRestApiRequest) (*EncryptionAtRest, *http.Response, error) {

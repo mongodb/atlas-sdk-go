@@ -245,7 +245,7 @@ func (a *PerformanceAdvisorApiService) DisableSlowOperationThresholding(ctx cont
 	}
 }
 
-// Execute executes the request
+// DisableSlowOperationThresholdingExecute executes the request
 func (a *PerformanceAdvisorApiService) DisableSlowOperationThresholdingExecute(r DisableSlowOperationThresholdingApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
@@ -339,7 +339,7 @@ func (a *PerformanceAdvisorApiService) EnableSlowOperationThresholding(ctx conte
 	}
 }
 
-// Execute executes the request
+// EnableSlowOperationThresholdingExecute executes the request
 func (a *PerformanceAdvisorApiService) EnableSlowOperationThresholdingExecute(r EnableSlowOperationThresholdingApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
@@ -433,7 +433,7 @@ func (a *PerformanceAdvisorApiService) GetManagedSlowMs(ctx context.Context, gro
 	}
 }
 
-// Execute executes the request
+// GetManagedSlowMsExecute executes the request
 func (a *PerformanceAdvisorApiService) GetManagedSlowMsExecute(r GetManagedSlowMsApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodGet
@@ -532,7 +532,7 @@ func (a *PerformanceAdvisorApiService) GetServerlessAutoIndexing(ctx context.Con
 	}
 }
 
-// Execute executes the request
+// GetServerlessAutoIndexingExecute executes the request
 //
 //	@return bool
 func (a *PerformanceAdvisorApiService) GetServerlessAutoIndexingExecute(r GetServerlessAutoIndexingApiRequest) (bool, *http.Response, error) {
@@ -685,7 +685,7 @@ func (a *PerformanceAdvisorApiService) ListSlowQueries(ctx context.Context, grou
 	}
 }
 
-// Execute executes the request
+// ListSlowQueriesExecute executes the request
 //
 //	@return PerformanceAdvisorSlowQueryList
 func (a *PerformanceAdvisorApiService) ListSlowQueriesExecute(r ListSlowQueriesApiRequest) (*PerformanceAdvisorSlowQueryList, *http.Response, error) {
@@ -840,7 +840,7 @@ func (a *PerformanceAdvisorApiService) ListSlowQueryNamespaces(ctx context.Conte
 	}
 }
 
-// Execute executes the request
+// ListSlowQueryNamespacesExecute executes the request
 //
 //	@return Namespaces
 func (a *PerformanceAdvisorApiService) ListSlowQueryNamespacesExecute(r ListSlowQueryNamespacesApiRequest) (*Namespaces, *http.Response, error) {
@@ -1035,7 +1035,7 @@ func (a *PerformanceAdvisorApiService) ListSuggestedIndexes(ctx context.Context,
 	}
 }
 
-// Execute executes the request
+// ListSuggestedIndexesExecute executes the request
 //
 //	@return PerformanceAdvisorResponse
 func (a *PerformanceAdvisorApiService) ListSuggestedIndexesExecute(r ListSuggestedIndexesApiRequest) (*PerformanceAdvisorResponse, *http.Response, error) {
@@ -1205,7 +1205,7 @@ func (a *PerformanceAdvisorApiService) SetServerlessAutoIndexing(ctx context.Con
 	}
 }
 
-// Execute executes the request
+// SetServerlessAutoIndexingExecute executes the request
 //
 //	@return interface{}
 func (a *PerformanceAdvisorApiService) SetServerlessAutoIndexingExecute(r SetServerlessAutoIndexingApiRequest) (interface{}, *http.Response, error) {

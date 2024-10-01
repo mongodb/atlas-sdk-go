@@ -420,7 +420,7 @@ func (a *MonitoringAndLogsApiService) GetAtlasProcess(ctx context.Context, group
 	}
 }
 
-// Execute executes the request
+// GetAtlasProcessExecute executes the request
 //
 //	@return ApiHostViewAtlas
 func (a *MonitoringAndLogsApiService) GetAtlasProcessExecute(r GetAtlasProcessApiRequest) (*ApiHostViewAtlas, *http.Response, error) {
@@ -542,7 +542,7 @@ func (a *MonitoringAndLogsApiService) GetDatabase(ctx context.Context, groupId s
 	}
 }
 
-// Execute executes the request
+// GetDatabaseExecute executes the request
 //
 //	@return MesurementsDatabase
 func (a *MonitoringAndLogsApiService) GetDatabaseExecute(r GetDatabaseApiRequest) (*MesurementsDatabase, *http.Response, error) {
@@ -710,7 +710,7 @@ func (a *MonitoringAndLogsApiService) GetDatabaseMeasurements(ctx context.Contex
 	}
 }
 
-// Execute executes the request
+// GetDatabaseMeasurementsExecute executes the request
 //
 //	@return ApiMeasurementsGeneralViewAtlas
 func (a *MonitoringAndLogsApiService) GetDatabaseMeasurementsExecute(r GetDatabaseMeasurementsApiRequest) (*ApiMeasurementsGeneralViewAtlas, *http.Response, error) {
@@ -904,7 +904,7 @@ func (a *MonitoringAndLogsApiService) GetDiskMeasurements(ctx context.Context, g
 	}
 }
 
-// Execute executes the request
+// GetDiskMeasurementsExecute executes the request
 //
 //	@return ApiMeasurementsGeneralViewAtlas
 func (a *MonitoringAndLogsApiService) GetDiskMeasurementsExecute(r GetDiskMeasurementsApiRequest) (*ApiMeasurementsGeneralViewAtlas, *http.Response, error) {
@@ -1065,7 +1065,7 @@ func (a *MonitoringAndLogsApiService) GetHostLogs(ctx context.Context, groupId s
 	}
 }
 
-// Execute executes the request
+// GetHostLogsExecute executes the request
 //
 //	@return io.ReadCloser
 func (a *MonitoringAndLogsApiService) GetHostLogsExecute(r GetHostLogsApiRequest) (io.ReadCloser, *http.Response, error) {
@@ -1241,7 +1241,7 @@ func (a *MonitoringAndLogsApiService) GetHostMeasurements(ctx context.Context, g
 	}
 }
 
-// Execute executes the request
+// GetHostMeasurementsExecute executes the request
 //
 //	@return ApiMeasurementsGeneralViewAtlas
 func (a *MonitoringAndLogsApiService) GetHostMeasurementsExecute(r GetHostMeasurementsApiRequest) (*ApiMeasurementsGeneralViewAtlas, *http.Response, error) {
@@ -1438,7 +1438,7 @@ func (a *MonitoringAndLogsApiService) GetIndexMetrics(ctx context.Context, proce
 	}
 }
 
-// Execute executes the request
+// GetIndexMetricsExecute executes the request
 //
 //	@return MeasurementsIndexes
 func (a *MonitoringAndLogsApiService) GetIndexMetricsExecute(r GetIndexMetricsApiRequest) (*MeasurementsIndexes, *http.Response, error) {
@@ -1625,7 +1625,7 @@ func (a *MonitoringAndLogsApiService) GetMeasurements(ctx context.Context, proce
 	}
 }
 
-// Execute executes the request
+// GetMeasurementsExecute executes the request
 //
 //	@return MeasurementsNonIndex
 func (a *MonitoringAndLogsApiService) GetMeasurementsExecute(r GetMeasurementsApiRequest) (*MeasurementsNonIndex, *http.Response, error) {
@@ -1786,7 +1786,7 @@ func (a *MonitoringAndLogsApiService) ListAtlasProcesses(ctx context.Context, gr
 	}
 }
 
-// Execute executes the request
+// ListAtlasProcessesExecute executes the request
 //
 //	@return PaginatedHostViewAtlas
 func (a *MonitoringAndLogsApiService) ListAtlasProcessesExecute(r ListAtlasProcessesApiRequest) (*PaginatedHostViewAtlas, *http.Response, error) {
@@ -1950,7 +1950,7 @@ func (a *MonitoringAndLogsApiService) ListDatabases(ctx context.Context, groupId
 	}
 }
 
-// Execute executes the request
+// ListDatabasesExecute executes the request
 //
 //	@return PaginatedDatabase
 func (a *MonitoringAndLogsApiService) ListDatabasesExecute(r ListDatabasesApiRequest) (*PaginatedDatabase, *http.Response, error) {
@@ -2093,7 +2093,7 @@ func (a *MonitoringAndLogsApiService) ListDiskMeasurements(ctx context.Context, 
 	}
 }
 
-// Execute executes the request
+// ListDiskMeasurementsExecute executes the request
 //
 //	@return MeasurementDiskPartition
 func (a *MonitoringAndLogsApiService) ListDiskMeasurementsExecute(r ListDiskMeasurementsApiRequest) (*MeasurementDiskPartition, *http.Response, error) {
@@ -2238,7 +2238,7 @@ func (a *MonitoringAndLogsApiService) ListDiskPartitions(ctx context.Context, gr
 	}
 }
 
-// Execute executes the request
+// ListDiskPartitionsExecute executes the request
 //
 //	@return PaginatedDiskPartition
 func (a *MonitoringAndLogsApiService) ListDiskPartitionsExecute(r ListDiskPartitionsApiRequest) (*PaginatedDiskPartition, *http.Response, error) {
@@ -2431,7 +2431,7 @@ func (a *MonitoringAndLogsApiService) ListIndexMetrics(ctx context.Context, proc
 	}
 }
 
-// Execute executes the request
+// ListIndexMetricsExecute executes the request
 //
 //	@return MeasurementsIndexes
 func (a *MonitoringAndLogsApiService) ListIndexMetricsExecute(r ListIndexMetricsApiRequest) (*MeasurementsIndexes, *http.Response, error) {
@@ -2572,7 +2572,7 @@ func (a *MonitoringAndLogsApiService) ListMetricTypes(ctx context.Context, proce
 	}
 }
 
-// Execute executes the request
+// ListMetricTypesExecute executes the request
 //
 //	@return CloudSearchMetrics
 func (a *MonitoringAndLogsApiService) ListMetricTypesExecute(r ListMetricTypesApiRequest) (*CloudSearchMetrics, *http.Response, error) {

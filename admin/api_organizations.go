@@ -466,7 +466,7 @@ func (a *OrganizationsApiService) CreateOrganization(ctx context.Context, create
 	}
 }
 
-// Execute executes the request
+// CreateOrganizationExecute executes the request
 //
 //	@return CreateOrganizationResponse
 func (a *OrganizationsApiService) CreateOrganizationExecute(r CreateOrganizationApiRequest) (*CreateOrganizationResponse, *http.Response, error) {
@@ -585,7 +585,7 @@ func (a *OrganizationsApiService) CreateOrganizationInvitation(ctx context.Conte
 	}
 }
 
-// Execute executes the request
+// CreateOrganizationInvitationExecute executes the request
 //
 //	@return OrganizationInvitation
 func (a *OrganizationsApiService) CreateOrganizationInvitationExecute(r CreateOrganizationInvitationApiRequest) (*OrganizationInvitation, *http.Response, error) {
@@ -706,7 +706,7 @@ func (a *OrganizationsApiService) DeleteOrganization(ctx context.Context, orgId 
 	}
 }
 
-// Execute executes the request
+// DeleteOrganizationExecute executes the request
 //
 //	@return interface{}
 func (a *OrganizationsApiService) DeleteOrganizationExecute(r DeleteOrganizationApiRequest) (interface{}, *http.Response, error) {
@@ -822,7 +822,7 @@ func (a *OrganizationsApiService) DeleteOrganizationInvitation(ctx context.Conte
 	}
 }
 
-// Execute executes the request
+// DeleteOrganizationInvitationExecute executes the request
 //
 //	@return interface{}
 func (a *OrganizationsApiService) DeleteOrganizationInvitationExecute(r DeleteOrganizationInvitationApiRequest) (interface{}, *http.Response, error) {
@@ -934,7 +934,7 @@ func (a *OrganizationsApiService) GetOrganization(ctx context.Context, orgId str
 	}
 }
 
-// Execute executes the request
+// GetOrganizationExecute executes the request
 //
 //	@return AtlasOrganization
 func (a *OrganizationsApiService) GetOrganizationExecute(r GetOrganizationApiRequest) (*AtlasOrganization, *http.Response, error) {
@@ -1050,7 +1050,7 @@ func (a *OrganizationsApiService) GetOrganizationInvitation(ctx context.Context,
 	}
 }
 
-// Execute executes the request
+// GetOrganizationInvitationExecute executes the request
 //
 //	@return OrganizationInvitation
 func (a *OrganizationsApiService) GetOrganizationInvitationExecute(r GetOrganizationInvitationApiRequest) (*OrganizationInvitation, *http.Response, error) {
@@ -1162,7 +1162,7 @@ func (a *OrganizationsApiService) GetOrganizationSettings(ctx context.Context, o
 	}
 }
 
-// Execute executes the request
+// GetOrganizationSettingsExecute executes the request
 //
 //	@return OrganizationSettings
 func (a *OrganizationsApiService) GetOrganizationSettingsExecute(r GetOrganizationSettingsApiRequest) (*OrganizationSettings, *http.Response, error) {
@@ -1282,7 +1282,7 @@ func (a *OrganizationsApiService) ListOrganizationInvitations(ctx context.Contex
 	}
 }
 
-// Execute executes the request
+// ListOrganizationInvitationsExecute executes the request
 //
 //	@return []OrganizationInvitation
 func (a *OrganizationsApiService) ListOrganizationInvitationsExecute(r ListOrganizationInvitationsApiRequest) ([]OrganizationInvitation, *http.Response, error) {
@@ -1439,7 +1439,7 @@ func (a *OrganizationsApiService) ListOrganizationProjects(ctx context.Context, 
 	}
 }
 
-// Execute executes the request
+// ListOrganizationProjectsExecute executes the request
 //
 //	@return PaginatedAtlasGroup
 func (a *OrganizationsApiService) ListOrganizationProjectsExecute(r ListOrganizationProjectsApiRequest) (*PaginatedAtlasGroup, *http.Response, error) {
@@ -1601,7 +1601,7 @@ func (a *OrganizationsApiService) ListOrganizationUsers(ctx context.Context, org
 	}
 }
 
-// Execute executes the request
+// ListOrganizationUsersExecute executes the request
 //
 //	@return PaginatedAppUser
 func (a *OrganizationsApiService) ListOrganizationUsersExecute(r ListOrganizationUsersApiRequest) (*PaginatedAppUser, *http.Response, error) {
@@ -1764,7 +1764,7 @@ func (a *OrganizationsApiService) ListOrganizations(ctx context.Context) ListOrg
 	}
 }
 
-// Execute executes the request
+// ListOrganizationsExecute executes the request
 //
 //	@return PaginatedOrganization
 func (a *OrganizationsApiService) ListOrganizationsExecute(r ListOrganizationsApiRequest) (*PaginatedOrganization, *http.Response, error) {
@@ -1903,7 +1903,7 @@ func (a *OrganizationsApiService) RemoveOrganizationUser(ctx context.Context, or
 	}
 }
 
-// Execute executes the request
+// RemoveOrganizationUserExecute executes the request
 //
 //	@return interface{}
 func (a *OrganizationsApiService) RemoveOrganizationUserExecute(r RemoveOrganizationUserApiRequest) (interface{}, *http.Response, error) {
@@ -2019,7 +2019,7 @@ func (a *OrganizationsApiService) RenameOrganization(ctx context.Context, orgId 
 	}
 }
 
-// Execute executes the request
+// RenameOrganizationExecute executes the request
 //
 //	@return AtlasOrganization
 func (a *OrganizationsApiService) RenameOrganizationExecute(r RenameOrganizationApiRequest) (*AtlasOrganization, *http.Response, error) {
@@ -2139,7 +2139,7 @@ func (a *OrganizationsApiService) UpdateOrganizationInvitation(ctx context.Conte
 	}
 }
 
-// Execute executes the request
+// UpdateOrganizationInvitationExecute executes the request
 //
 //	@return OrganizationInvitation
 func (a *OrganizationsApiService) UpdateOrganizationInvitationExecute(r UpdateOrganizationInvitationApiRequest) (*OrganizationInvitation, *http.Response, error) {
@@ -2264,7 +2264,7 @@ func (a *OrganizationsApiService) UpdateOrganizationInvitationById(ctx context.C
 	}
 }
 
-// Execute executes the request
+// UpdateOrganizationInvitationByIdExecute executes the request
 //
 //	@return OrganizationInvitation
 func (a *OrganizationsApiService) UpdateOrganizationInvitationByIdExecute(r UpdateOrganizationInvitationByIdApiRequest) (*OrganizationInvitation, *http.Response, error) {
@@ -2390,7 +2390,7 @@ func (a *OrganizationsApiService) UpdateOrganizationRoles(ctx context.Context, o
 	}
 }
 
-// Execute executes the request
+// UpdateOrganizationRolesExecute executes the request
 //
 //	@return UpdateOrgRolesForUser
 func (a *OrganizationsApiService) UpdateOrganizationRolesExecute(r UpdateOrganizationRolesApiRequest) (*UpdateOrgRolesForUser, *http.Response, error) {
@@ -2511,7 +2511,7 @@ func (a *OrganizationsApiService) UpdateOrganizationSettings(ctx context.Context
 	}
 }
 
-// Execute executes the request
+// UpdateOrganizationSettingsExecute executes the request
 //
 //	@return OrganizationSettings
 func (a *OrganizationsApiService) UpdateOrganizationSettingsExecute(r UpdateOrganizationSettingsApiRequest) (*OrganizationSettings, *http.Response, error) {

@@ -213,7 +213,7 @@ func (a *OnlineArchiveApiService) CreateOnlineArchive(ctx context.Context, group
 	}
 }
 
-// Execute executes the request
+// CreateOnlineArchiveExecute executes the request
 //
 //	@return BackupOnlineArchive
 func (a *OnlineArchiveApiService) CreateOnlineArchiveExecute(r CreateOnlineArchiveApiRequest) (*BackupOnlineArchive, *http.Response, error) {
@@ -340,7 +340,7 @@ func (a *OnlineArchiveApiService) DeleteOnlineArchive(ctx context.Context, group
 	}
 }
 
-// Execute executes the request
+// DeleteOnlineArchiveExecute executes the request
 //
 //	@return interface{}
 func (a *OnlineArchiveApiService) DeleteOnlineArchiveExecute(r DeleteOnlineArchiveApiRequest) (interface{}, *http.Response, error) {
@@ -485,7 +485,7 @@ func (a *OnlineArchiveApiService) DownloadOnlineArchiveQueryLogs(ctx context.Con
 	}
 }
 
-// Execute executes the request
+// DownloadOnlineArchiveQueryLogsExecute executes the request
 //
 //	@return io.ReadCloser
 func (a *OnlineArchiveApiService) DownloadOnlineArchiveQueryLogsExecute(r DownloadOnlineArchiveQueryLogsApiRequest) (io.ReadCloser, *http.Response, error) {
@@ -620,7 +620,7 @@ func (a *OnlineArchiveApiService) GetOnlineArchive(ctx context.Context, groupId 
 	}
 }
 
-// Execute executes the request
+// GetOnlineArchiveExecute executes the request
 //
 //	@return BackupOnlineArchive
 func (a *OnlineArchiveApiService) GetOnlineArchiveExecute(r GetOnlineArchiveApiRequest) (*BackupOnlineArchive, *http.Response, error) {
@@ -765,7 +765,7 @@ func (a *OnlineArchiveApiService) ListOnlineArchives(ctx context.Context, groupI
 	}
 }
 
-// Execute executes the request
+// ListOnlineArchivesExecute executes the request
 //
 //	@return PaginatedOnlineArchive
 func (a *OnlineArchiveApiService) ListOnlineArchivesExecute(r ListOnlineArchivesApiRequest) (*PaginatedOnlineArchive, *http.Response, error) {
@@ -912,7 +912,7 @@ func (a *OnlineArchiveApiService) UpdateOnlineArchive(ctx context.Context, group
 	}
 }
 
-// Execute executes the request
+// UpdateOnlineArchiveExecute executes the request
 //
 //	@return BackupOnlineArchive
 func (a *OnlineArchiveApiService) UpdateOnlineArchiveExecute(r UpdateOnlineArchiveApiRequest) (*BackupOnlineArchive, *http.Response, error) {

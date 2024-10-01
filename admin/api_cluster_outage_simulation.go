@@ -133,7 +133,7 @@ func (a *ClusterOutageSimulationApiService) EndOutageSimulation(ctx context.Cont
 	}
 }
 
-// Execute executes the request
+// EndOutageSimulationExecute executes the request
 //
 //	@return ClusterOutageSimulation
 func (a *ClusterOutageSimulationApiService) EndOutageSimulationExecute(r EndOutageSimulationApiRequest) (*ClusterOutageSimulation, *http.Response, error) {
@@ -250,7 +250,7 @@ func (a *ClusterOutageSimulationApiService) GetOutageSimulation(ctx context.Cont
 	}
 }
 
-// Execute executes the request
+// GetOutageSimulationExecute executes the request
 //
 //	@return ClusterOutageSimulation
 func (a *ClusterOutageSimulationApiService) GetOutageSimulationExecute(r GetOutageSimulationApiRequest) (*ClusterOutageSimulation, *http.Response, error) {
@@ -371,7 +371,7 @@ func (a *ClusterOutageSimulationApiService) StartOutageSimulation(ctx context.Co
 	}
 }
 
-// Execute executes the request
+// StartOutageSimulationExecute executes the request
 //
 //	@return ClusterOutageSimulation
 func (a *ClusterOutageSimulationApiService) StartOutageSimulationExecute(r StartOutageSimulationApiRequest) (*ClusterOutageSimulation, *http.Response, error) {

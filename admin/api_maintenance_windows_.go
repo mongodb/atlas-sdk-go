@@ -171,7 +171,7 @@ func (a *MaintenanceWindowsApiService) DeferMaintenanceWindow(ctx context.Contex
 	}
 }
 
-// Execute executes the request
+// DeferMaintenanceWindowExecute executes the request
 func (a *MaintenanceWindowsApiService) DeferMaintenanceWindowExecute(r DeferMaintenanceWindowApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
@@ -265,7 +265,7 @@ func (a *MaintenanceWindowsApiService) GetMaintenanceWindow(ctx context.Context,
 	}
 }
 
-// Execute executes the request
+// GetMaintenanceWindowExecute executes the request
 //
 //	@return GroupMaintenanceWindow
 func (a *MaintenanceWindowsApiService) GetMaintenanceWindowExecute(r GetMaintenanceWindowApiRequest) (*GroupMaintenanceWindow, *http.Response, error) {
@@ -376,7 +376,7 @@ func (a *MaintenanceWindowsApiService) ResetMaintenanceWindow(ctx context.Contex
 	}
 }
 
-// Execute executes the request
+// ResetMaintenanceWindowExecute executes the request
 func (a *MaintenanceWindowsApiService) ResetMaintenanceWindowExecute(r ResetMaintenanceWindowApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
@@ -470,7 +470,7 @@ func (a *MaintenanceWindowsApiService) ToggleMaintenanceAutoDefer(ctx context.Co
 	}
 }
 
-// Execute executes the request
+// ToggleMaintenanceAutoDeferExecute executes the request
 func (a *MaintenanceWindowsApiService) ToggleMaintenanceAutoDeferExecute(r ToggleMaintenanceAutoDeferApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
@@ -568,7 +568,7 @@ func (a *MaintenanceWindowsApiService) UpdateMaintenanceWindow(ctx context.Conte
 	}
 }
 
-// Execute executes the request
+// UpdateMaintenanceWindowExecute executes the request
 //
 //	@return interface{}
 func (a *MaintenanceWindowsApiService) UpdateMaintenanceWindowExecute(r UpdateMaintenanceWindowApiRequest) (interface{}, *http.Response, error) {

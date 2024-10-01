@@ -373,7 +373,7 @@ func (a *TeamsApiService) AddAllTeamsToProject(ctx context.Context, groupId stri
 	}
 }
 
-// Execute executes the request
+// AddAllTeamsToProjectExecute executes the request
 //
 //	@return PaginatedTeamRole
 func (a *TeamsApiService) AddAllTeamsToProjectExecute(r AddAllTeamsToProjectApiRequest) (*PaginatedTeamRole, *http.Response, error) {
@@ -498,7 +498,7 @@ func (a *TeamsApiService) AddTeamUser(ctx context.Context, orgId string, teamId 
 	}
 }
 
-// Execute executes the request
+// AddTeamUserExecute executes the request
 //
 //	@return PaginatedApiAppUser
 func (a *TeamsApiService) AddTeamUserExecute(r AddTeamUserApiRequest) (*PaginatedApiAppUser, *http.Response, error) {
@@ -619,7 +619,7 @@ func (a *TeamsApiService) CreateTeam(ctx context.Context, orgId string, team *Te
 	}
 }
 
-// Execute executes the request
+// CreateTeamExecute executes the request
 //
 //	@return Team
 func (a *TeamsApiService) CreateTeamExecute(r CreateTeamApiRequest) (*Team, *http.Response, error) {
@@ -740,7 +740,7 @@ func (a *TeamsApiService) DeleteTeam(ctx context.Context, orgId string, teamId s
 	}
 }
 
-// Execute executes the request
+// DeleteTeamExecute executes the request
 //
 //	@return interface{}
 func (a *TeamsApiService) DeleteTeamExecute(r DeleteTeamApiRequest) (interface{}, *http.Response, error) {
@@ -857,7 +857,7 @@ func (a *TeamsApiService) GetTeamById(ctx context.Context, orgId string, teamId 
 	}
 }
 
-// Execute executes the request
+// GetTeamByIdExecute executes the request
 //
 //	@return TeamResponse
 func (a *TeamsApiService) GetTeamByIdExecute(r GetTeamByIdApiRequest) (*TeamResponse, *http.Response, error) {
@@ -974,7 +974,7 @@ func (a *TeamsApiService) GetTeamByName(ctx context.Context, orgId string, teamN
 	}
 }
 
-// Execute executes the request
+// GetTeamByNameExecute executes the request
 //
 //	@return TeamResponse
 func (a *TeamsApiService) GetTeamByNameExecute(r GetTeamByNameApiRequest) (*TeamResponse, *http.Response, error) {
@@ -1113,7 +1113,7 @@ func (a *TeamsApiService) ListOrganizationTeams(ctx context.Context, orgId strin
 	}
 }
 
-// Execute executes the request
+// ListOrganizationTeamsExecute executes the request
 //
 //	@return PaginatedTeam
 func (a *TeamsApiService) ListOrganizationTeamsExecute(r ListOrganizationTeamsApiRequest) (*PaginatedTeam, *http.Response, error) {
@@ -1272,7 +1272,7 @@ func (a *TeamsApiService) ListProjectTeams(ctx context.Context, groupId string) 
 	}
 }
 
-// Execute executes the request
+// ListProjectTeamsExecute executes the request
 //
 //	@return PaginatedTeamRole
 func (a *TeamsApiService) ListProjectTeamsExecute(r ListProjectTeamsApiRequest) (*PaginatedTeamRole, *http.Response, error) {
@@ -1427,7 +1427,7 @@ func (a *TeamsApiService) ListTeamUsers(ctx context.Context, orgId string, teamI
 	}
 }
 
-// Execute executes the request
+// ListTeamUsersExecute executes the request
 //
 //	@return PaginatedApiAppUser
 func (a *TeamsApiService) ListTeamUsersExecute(r ListTeamUsersApiRequest) (*PaginatedApiAppUser, *http.Response, error) {
@@ -1558,7 +1558,7 @@ func (a *TeamsApiService) RemoveProjectTeam(ctx context.Context, groupId string,
 	}
 }
 
-// Execute executes the request
+// RemoveProjectTeamExecute executes the request
 func (a *TeamsApiService) RemoveProjectTeamExecute(r RemoveProjectTeamApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
@@ -1663,7 +1663,7 @@ func (a *TeamsApiService) RemoveTeamUser(ctx context.Context, orgId string, team
 	}
 }
 
-// Execute executes the request
+// RemoveTeamUserExecute executes the request
 func (a *TeamsApiService) RemoveTeamUserExecute(r RemoveTeamUserApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
@@ -1768,7 +1768,7 @@ func (a *TeamsApiService) RenameTeam(ctx context.Context, orgId string, teamId s
 	}
 }
 
-// Execute executes the request
+// RenameTeamExecute executes the request
 //
 //	@return TeamResponse
 func (a *TeamsApiService) RenameTeamExecute(r RenameTeamApiRequest) (*TeamResponse, *http.Response, error) {
@@ -1894,7 +1894,7 @@ func (a *TeamsApiService) UpdateTeamRoles(ctx context.Context, groupId string, t
 	}
 }
 
-// Execute executes the request
+// UpdateTeamRolesExecute executes the request
 //
 //	@return PaginatedTeamRole
 func (a *TeamsApiService) UpdateTeamRolesExecute(r UpdateTeamRolesApiRequest) (*PaginatedTeamRole, *http.Response, error) {

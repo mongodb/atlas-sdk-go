@@ -170,7 +170,7 @@ func (a *AlertsApiService) AcknowledgeAlert(ctx context.Context, groupId string,
 	}
 }
 
-// Execute executes the request
+// AcknowledgeAlertExecute executes the request
 //
 //	@return AlertViewForNdsGroup
 func (a *AlertsApiService) AcknowledgeAlertExecute(r AcknowledgeAlertApiRequest) (*AlertViewForNdsGroup, *http.Response, error) {
@@ -294,7 +294,7 @@ func (a *AlertsApiService) GetAlert(ctx context.Context, groupId string, alertId
 	}
 }
 
-// Execute executes the request
+// GetAlertExecute executes the request
 //
 //	@return AlertViewForNdsGroup
 func (a *AlertsApiService) GetAlertExecute(r GetAlertApiRequest) (*AlertViewForNdsGroup, *http.Response, error) {
@@ -444,7 +444,7 @@ func (a *AlertsApiService) ListAlerts(ctx context.Context, groupId string) ListA
 	}
 }
 
-// Execute executes the request
+// ListAlertsExecute executes the request
 //
 //	@return PaginatedAlert
 func (a *AlertsApiService) ListAlertsExecute(r ListAlertsApiRequest) (*PaginatedAlert, *http.Response, error) {
@@ -613,7 +613,7 @@ func (a *AlertsApiService) ListAlertsByAlertConfigurationId(ctx context.Context,
 	}
 }
 
-// Execute executes the request
+// ListAlertsByAlertConfigurationIdExecute executes the request
 //
 //	@return PaginatedAlert
 func (a *AlertsApiService) ListAlertsByAlertConfigurationIdExecute(r ListAlertsByAlertConfigurationIdApiRequest) (*PaginatedAlert, *http.Response, error) {

@@ -175,7 +175,7 @@ func (a *LDAPConfigurationApiService) DeleteLDAPConfiguration(ctx context.Contex
 	}
 }
 
-// Execute executes the request
+// DeleteLDAPConfigurationExecute executes the request
 //
 //	@return UserSecurity
 func (a *LDAPConfigurationApiService) DeleteLDAPConfigurationExecute(r DeleteLDAPConfigurationApiRequest) (*UserSecurity, *http.Response, error) {
@@ -286,7 +286,7 @@ func (a *LDAPConfigurationApiService) GetLDAPConfiguration(ctx context.Context, 
 	}
 }
 
-// Execute executes the request
+// GetLDAPConfigurationExecute executes the request
 //
 //	@return UserSecurity
 func (a *LDAPConfigurationApiService) GetLDAPConfigurationExecute(r GetLDAPConfigurationApiRequest) (*UserSecurity, *http.Response, error) {
@@ -402,7 +402,7 @@ func (a *LDAPConfigurationApiService) GetLDAPConfigurationStatus(ctx context.Con
 	}
 }
 
-// Execute executes the request
+// GetLDAPConfigurationStatusExecute executes the request
 //
 //	@return LDAPVerifyConnectivityJobRequest
 func (a *LDAPConfigurationApiService) GetLDAPConfigurationStatusExecute(r GetLDAPConfigurationStatusApiRequest) (*LDAPVerifyConnectivityJobRequest, *http.Response, error) {
@@ -520,7 +520,7 @@ func (a *LDAPConfigurationApiService) SaveLDAPConfiguration(ctx context.Context,
 	}
 }
 
-// Execute executes the request
+// SaveLDAPConfigurationExecute executes the request
 //
 //	@return UserSecurity
 func (a *LDAPConfigurationApiService) SaveLDAPConfigurationExecute(r SaveLDAPConfigurationApiRequest) (*UserSecurity, *http.Response, error) {
@@ -640,7 +640,7 @@ func (a *LDAPConfigurationApiService) VerifyLDAPConfiguration(ctx context.Contex
 	}
 }
 
-// Execute executes the request
+// VerifyLDAPConfigurationExecute executes the request
 //
 //	@return LDAPVerifyConnectivityJobRequest
 func (a *LDAPConfigurationApiService) VerifyLDAPConfigurationExecute(r VerifyLDAPConfigurationApiRequest) (*LDAPVerifyConnectivityJobRequest, *http.Response, error) {

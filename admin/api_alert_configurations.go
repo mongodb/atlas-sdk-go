@@ -270,7 +270,7 @@ func (a *AlertConfigurationsApiService) CreateAlertConfiguration(ctx context.Con
 	}
 }
 
-// Execute executes the request
+// CreateAlertConfigurationExecute executes the request
 //
 //	@return GroupAlertsConfig
 func (a *AlertConfigurationsApiService) CreateAlertConfigurationExecute(r CreateAlertConfigurationApiRequest) (*GroupAlertsConfig, *http.Response, error) {
@@ -393,7 +393,7 @@ func (a *AlertConfigurationsApiService) DeleteAlertConfiguration(ctx context.Con
 	}
 }
 
-// Execute executes the request
+// DeleteAlertConfigurationExecute executes the request
 func (a *AlertConfigurationsApiService) DeleteAlertConfigurationExecute(r DeleteAlertConfigurationApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
@@ -495,7 +495,7 @@ func (a *AlertConfigurationsApiService) GetAlertConfiguration(ctx context.Contex
 	}
 }
 
-// Execute executes the request
+// GetAlertConfigurationExecute executes the request
 //
 //	@return GroupAlertsConfig
 func (a *AlertConfigurationsApiService) GetAlertConfigurationExecute(r GetAlertConfigurationApiRequest) (*GroupAlertsConfig, *http.Response, error) {
@@ -602,7 +602,7 @@ func (a *AlertConfigurationsApiService) ListAlertConfigurationMatchersFieldNames
 	}
 }
 
-// Execute executes the request
+// ListAlertConfigurationMatchersFieldNamesExecute executes the request
 //
 //	@return []string
 func (a *AlertConfigurationsApiService) ListAlertConfigurationMatchersFieldNamesExecute(r ListAlertConfigurationMatchersFieldNamesApiRequest) ([]string, *http.Response, error) {
@@ -741,7 +741,7 @@ func (a *AlertConfigurationsApiService) ListAlertConfigurations(ctx context.Cont
 	}
 }
 
-// Execute executes the request
+// ListAlertConfigurationsExecute executes the request
 //
 //	@return PaginatedAlertConfig
 func (a *AlertConfigurationsApiService) ListAlertConfigurationsExecute(r ListAlertConfigurationsApiRequest) (*PaginatedAlertConfig, *http.Response, error) {
@@ -907,7 +907,7 @@ func (a *AlertConfigurationsApiService) ListAlertConfigurationsByAlertId(ctx con
 	}
 }
 
-// Execute executes the request
+// ListAlertConfigurationsByAlertIdExecute executes the request
 //
 //	@return PaginatedAlertConfig
 func (a *AlertConfigurationsApiService) ListAlertConfigurationsByAlertIdExecute(r ListAlertConfigurationsByAlertIdApiRequest) (*PaginatedAlertConfig, *http.Response, error) {
@@ -1053,7 +1053,7 @@ func (a *AlertConfigurationsApiService) ToggleAlertConfiguration(ctx context.Con
 	}
 }
 
-// Execute executes the request
+// ToggleAlertConfigurationExecute executes the request
 //
 //	@return GroupAlertsConfig
 func (a *AlertConfigurationsApiService) ToggleAlertConfigurationExecute(r ToggleAlertConfigurationApiRequest) (*GroupAlertsConfig, *http.Response, error) {
@@ -1183,7 +1183,7 @@ func (a *AlertConfigurationsApiService) UpdateAlertConfiguration(ctx context.Con
 	}
 }
 
-// Execute executes the request
+// UpdateAlertConfigurationExecute executes the request
 //
 //	@return GroupAlertsConfig
 func (a *AlertConfigurationsApiService) UpdateAlertConfigurationExecute(r UpdateAlertConfigurationApiRequest) (*GroupAlertsConfig, *http.Response, error) {

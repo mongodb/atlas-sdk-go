@@ -542,7 +542,7 @@ func (a *AtlasSearchApiService) CreateAtlasSearchDeployment(ctx context.Context,
 	}
 }
 
-// Execute executes the request
+// CreateAtlasSearchDeploymentExecute executes the request
 //
 //	@return ApiSearchDeploymentResponse
 func (a *AtlasSearchApiService) CreateAtlasSearchDeploymentExecute(r CreateAtlasSearchDeploymentApiRequest) (*ApiSearchDeploymentResponse, *http.Response, error) {
@@ -668,7 +668,7 @@ func (a *AtlasSearchApiService) CreateAtlasSearchIndex(ctx context.Context, grou
 	}
 }
 
-// Execute executes the request
+// CreateAtlasSearchIndexExecute executes the request
 //
 //	@return SearchIndexResponse
 func (a *AtlasSearchApiService) CreateAtlasSearchIndexExecute(r CreateAtlasSearchIndexApiRequest) (*SearchIndexResponse, *http.Response, error) {
@@ -796,7 +796,7 @@ func (a *AtlasSearchApiService) CreateAtlasSearchIndexDeprecated(ctx context.Con
 	}
 }
 
-// Execute executes the request
+// CreateAtlasSearchIndexDeprecatedExecute executes the request
 //
 //	@return ClusterSearchIndex
 //
@@ -920,7 +920,7 @@ func (a *AtlasSearchApiService) DeleteAtlasSearchDeployment(ctx context.Context,
 	}
 }
 
-// Execute executes the request
+// DeleteAtlasSearchDeploymentExecute executes the request
 //
 //	@return interface{}
 func (a *AtlasSearchApiService) DeleteAtlasSearchDeploymentExecute(r DeleteAtlasSearchDeploymentApiRequest) (interface{}, *http.Response, error) {
@@ -1042,7 +1042,7 @@ func (a *AtlasSearchApiService) DeleteAtlasSearchIndex(ctx context.Context, grou
 	}
 }
 
-// Execute executes the request
+// DeleteAtlasSearchIndexExecute executes the request
 //
 //	@return interface{}
 func (a *AtlasSearchApiService) DeleteAtlasSearchIndexExecute(r DeleteAtlasSearchIndexApiRequest) (interface{}, *http.Response, error) {
@@ -1175,7 +1175,7 @@ func (a *AtlasSearchApiService) DeleteAtlasSearchIndexByName(ctx context.Context
 	}
 }
 
-// Execute executes the request
+// DeleteAtlasSearchIndexByNameExecute executes the request
 //
 //	@return interface{}
 func (a *AtlasSearchApiService) DeleteAtlasSearchIndexByNameExecute(r DeleteAtlasSearchIndexByNameApiRequest) (interface{}, *http.Response, error) {
@@ -1302,7 +1302,7 @@ func (a *AtlasSearchApiService) DeleteAtlasSearchIndexDeprecated(ctx context.Con
 	}
 }
 
-// Execute executes the request
+// DeleteAtlasSearchIndexDeprecatedExecute executes the request
 //
 //	@return interface{}
 //
@@ -1422,7 +1422,7 @@ func (a *AtlasSearchApiService) GetAtlasSearchDeployment(ctx context.Context, gr
 	}
 }
 
-// Execute executes the request
+// GetAtlasSearchDeploymentExecute executes the request
 //
 //	@return ApiSearchDeploymentResponse
 func (a *AtlasSearchApiService) GetAtlasSearchDeploymentExecute(r GetAtlasSearchDeploymentApiRequest) (*ApiSearchDeploymentResponse, *http.Response, error) {
@@ -1544,7 +1544,7 @@ func (a *AtlasSearchApiService) GetAtlasSearchIndex(ctx context.Context, groupId
 	}
 }
 
-// Execute executes the request
+// GetAtlasSearchIndexExecute executes the request
 //
 //	@return SearchIndexResponse
 func (a *AtlasSearchApiService) GetAtlasSearchIndexExecute(r GetAtlasSearchIndexApiRequest) (*SearchIndexResponse, *http.Response, error) {
@@ -1677,7 +1677,7 @@ func (a *AtlasSearchApiService) GetAtlasSearchIndexByName(ctx context.Context, g
 	}
 }
 
-// Execute executes the request
+// GetAtlasSearchIndexByNameExecute executes the request
 //
 //	@return SearchIndexResponse
 func (a *AtlasSearchApiService) GetAtlasSearchIndexByNameExecute(r GetAtlasSearchIndexByNameApiRequest) (*SearchIndexResponse, *http.Response, error) {
@@ -1804,7 +1804,7 @@ func (a *AtlasSearchApiService) GetAtlasSearchIndexDeprecated(ctx context.Contex
 	}
 }
 
-// Execute executes the request
+// GetAtlasSearchIndexDeprecatedExecute executes the request
 //
 //	@return ClusterSearchIndex
 //
@@ -1934,7 +1934,7 @@ func (a *AtlasSearchApiService) ListAtlasSearchIndexes(ctx context.Context, grou
 	}
 }
 
-// Execute executes the request
+// ListAtlasSearchIndexesExecute executes the request
 //
 //	@return []SearchIndexResponse
 func (a *AtlasSearchApiService) ListAtlasSearchIndexesExecute(r ListAtlasSearchIndexesApiRequest) ([]SearchIndexResponse, *http.Response, error) {
@@ -2053,7 +2053,7 @@ func (a *AtlasSearchApiService) ListAtlasSearchIndexesCluster(ctx context.Contex
 	}
 }
 
-// Execute executes the request
+// ListAtlasSearchIndexesClusterExecute executes the request
 //
 //	@return []SearchIndexResponse
 func (a *AtlasSearchApiService) ListAtlasSearchIndexesClusterExecute(r ListAtlasSearchIndexesClusterApiRequest) ([]SearchIndexResponse, *http.Response, error) {
@@ -2182,7 +2182,7 @@ func (a *AtlasSearchApiService) ListAtlasSearchIndexesDeprecated(ctx context.Con
 	}
 }
 
-// Execute executes the request
+// ListAtlasSearchIndexesDeprecatedExecute executes the request
 //
 //	@return []ClusterSearchIndex
 //
@@ -2307,7 +2307,7 @@ func (a *AtlasSearchApiService) UpdateAtlasSearchDeployment(ctx context.Context,
 	}
 }
 
-// Execute executes the request
+// UpdateAtlasSearchDeploymentExecute executes the request
 //
 //	@return ApiSearchDeploymentResponse
 func (a *AtlasSearchApiService) UpdateAtlasSearchDeploymentExecute(r UpdateAtlasSearchDeploymentApiRequest) (*ApiSearchDeploymentResponse, *http.Response, error) {
@@ -2438,7 +2438,7 @@ func (a *AtlasSearchApiService) UpdateAtlasSearchIndex(ctx context.Context, grou
 	}
 }
 
-// Execute executes the request
+// UpdateAtlasSearchIndexExecute executes the request
 //
 //	@return SearchIndexResponse
 func (a *AtlasSearchApiService) UpdateAtlasSearchIndexExecute(r UpdateAtlasSearchIndexApiRequest) (*SearchIndexResponse, *http.Response, error) {
@@ -2580,7 +2580,7 @@ func (a *AtlasSearchApiService) UpdateAtlasSearchIndexByName(ctx context.Context
 	}
 }
 
-// Execute executes the request
+// UpdateAtlasSearchIndexByNameExecute executes the request
 //
 //	@return SearchIndexResponse
 func (a *AtlasSearchApiService) UpdateAtlasSearchIndexByNameExecute(r UpdateAtlasSearchIndexByNameApiRequest) (*SearchIndexResponse, *http.Response, error) {
@@ -2716,7 +2716,7 @@ func (a *AtlasSearchApiService) UpdateAtlasSearchIndexDeprecated(ctx context.Con
 	}
 }
 
-// Execute executes the request
+// UpdateAtlasSearchIndexDeprecatedExecute executes the request
 //
 //	@return ClusterSearchIndex
 //

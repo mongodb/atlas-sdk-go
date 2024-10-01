@@ -292,7 +292,7 @@ func (a *PrivateEndpointServicesApiService) CreatePrivateEndpoint(ctx context.Co
 	}
 }
 
-// Execute executes the request
+// CreatePrivateEndpointExecute executes the request
 //
 //	@return PrivateLinkEndpoint
 func (a *PrivateEndpointServicesApiService) CreatePrivateEndpointExecute(r CreatePrivateEndpointApiRequest) (*PrivateLinkEndpoint, *http.Response, error) {
@@ -414,7 +414,7 @@ func (a *PrivateEndpointServicesApiService) CreatePrivateEndpointService(ctx con
 	}
 }
 
-// Execute executes the request
+// CreatePrivateEndpointServiceExecute executes the request
 //
 //	@return EndpointService
 func (a *PrivateEndpointServicesApiService) CreatePrivateEndpointServiceExecute(r CreatePrivateEndpointServiceApiRequest) (*EndpointService, *http.Response, error) {
@@ -545,7 +545,7 @@ func (a *PrivateEndpointServicesApiService) DeletePrivateEndpoint(ctx context.Co
 	}
 }
 
-// Execute executes the request
+// DeletePrivateEndpointExecute executes the request
 //
 //	@return interface{}
 func (a *PrivateEndpointServicesApiService) DeletePrivateEndpointExecute(r DeletePrivateEndpointApiRequest) (interface{}, *http.Response, error) {
@@ -669,7 +669,7 @@ func (a *PrivateEndpointServicesApiService) DeletePrivateEndpointService(ctx con
 	}
 }
 
-// Execute executes the request
+// DeletePrivateEndpointServiceExecute executes the request
 //
 //	@return interface{}
 func (a *PrivateEndpointServicesApiService) DeletePrivateEndpointServiceExecute(r DeletePrivateEndpointServiceApiRequest) (interface{}, *http.Response, error) {
@@ -797,7 +797,7 @@ func (a *PrivateEndpointServicesApiService) GetPrivateEndpoint(ctx context.Conte
 	}
 }
 
-// Execute executes the request
+// GetPrivateEndpointExecute executes the request
 //
 //	@return PrivateLinkEndpoint
 func (a *PrivateEndpointServicesApiService) GetPrivateEndpointExecute(r GetPrivateEndpointApiRequest) (*PrivateLinkEndpoint, *http.Response, error) {
@@ -921,7 +921,7 @@ func (a *PrivateEndpointServicesApiService) GetPrivateEndpointService(ctx contex
 	}
 }
 
-// Execute executes the request
+// GetPrivateEndpointServiceExecute executes the request
 //
 //	@return EndpointService
 func (a *PrivateEndpointServicesApiService) GetPrivateEndpointServiceExecute(r GetPrivateEndpointServiceApiRequest) (*EndpointService, *http.Response, error) {
@@ -1034,7 +1034,7 @@ func (a *PrivateEndpointServicesApiService) GetRegionalizedPrivateEndpointSettin
 	}
 }
 
-// Execute executes the request
+// GetRegionalizedPrivateEndpointSettingExecute executes the request
 //
 //	@return ProjectSettingItem
 func (a *PrivateEndpointServicesApiService) GetRegionalizedPrivateEndpointSettingExecute(r GetRegionalizedPrivateEndpointSettingApiRequest) (*ProjectSettingItem, *http.Response, error) {
@@ -1150,7 +1150,7 @@ func (a *PrivateEndpointServicesApiService) ListPrivateEndpointServices(ctx cont
 	}
 }
 
-// Execute executes the request
+// ListPrivateEndpointServicesExecute executes the request
 //
 //	@return []EndpointService
 func (a *PrivateEndpointServicesApiService) ListPrivateEndpointServicesExecute(r ListPrivateEndpointServicesApiRequest) ([]EndpointService, *http.Response, error) {
@@ -1266,7 +1266,7 @@ func (a *PrivateEndpointServicesApiService) ToggleRegionalizedPrivateEndpointSet
 	}
 }
 
-// Execute executes the request
+// ToggleRegionalizedPrivateEndpointSettingExecute executes the request
 //
 //	@return ProjectSettingItem
 func (a *PrivateEndpointServicesApiService) ToggleRegionalizedPrivateEndpointSettingExecute(r ToggleRegionalizedPrivateEndpointSettingApiRequest) (*ProjectSettingItem, *http.Response, error) {

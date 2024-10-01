@@ -506,7 +506,7 @@ func (a *StreamsApiService) CreateStreamConnection(ctx context.Context, groupId 
 	}
 }
 
-// Execute executes the request
+// CreateStreamConnectionExecute executes the request
 //
 //	@return StreamsConnection
 func (a *StreamsApiService) CreateStreamConnectionExecute(r CreateStreamConnectionApiRequest) (*StreamsConnection, *http.Response, error) {
@@ -627,7 +627,7 @@ func (a *StreamsApiService) CreateStreamInstance(ctx context.Context, groupId st
 	}
 }
 
-// Execute executes the request
+// CreateStreamInstanceExecute executes the request
 //
 //	@return StreamsTenant
 func (a *StreamsApiService) CreateStreamInstanceExecute(r CreateStreamInstanceApiRequest) (*StreamsTenant, *http.Response, error) {
@@ -747,7 +747,7 @@ func (a *StreamsApiService) CreateStreamInstanceWithSampleConnections(ctx contex
 	}
 }
 
-// Execute executes the request
+// CreateStreamInstanceWithSampleConnectionsExecute executes the request
 //
 //	@return StreamsTenant
 func (a *StreamsApiService) CreateStreamInstanceWithSampleConnectionsExecute(r CreateStreamInstanceWithSampleConnectionsApiRequest) (*StreamsTenant, *http.Response, error) {
@@ -872,7 +872,7 @@ func (a *StreamsApiService) CreateStreamProcessor(ctx context.Context, groupId s
 	}
 }
 
-// Execute executes the request
+// CreateStreamProcessorExecute executes the request
 //
 //	@return StreamsProcessor
 func (a *StreamsApiService) CreateStreamProcessorExecute(r CreateStreamProcessorApiRequest) (*StreamsProcessor, *http.Response, error) {
@@ -999,7 +999,7 @@ func (a *StreamsApiService) DeleteStreamConnection(ctx context.Context, groupId 
 	}
 }
 
-// Execute executes the request
+// DeleteStreamConnectionExecute executes the request
 //
 //	@return interface{}
 func (a *StreamsApiService) DeleteStreamConnectionExecute(r DeleteStreamConnectionApiRequest) (interface{}, *http.Response, error) {
@@ -1117,7 +1117,7 @@ func (a *StreamsApiService) DeleteStreamInstance(ctx context.Context, groupId st
 	}
 }
 
-// Execute executes the request
+// DeleteStreamInstanceExecute executes the request
 //
 //	@return interface{}
 func (a *StreamsApiService) DeleteStreamInstanceExecute(r DeleteStreamInstanceApiRequest) (interface{}, *http.Response, error) {
@@ -1239,7 +1239,7 @@ func (a *StreamsApiService) DeleteStreamProcessor(ctx context.Context, groupId s
 	}
 }
 
-// Execute executes the request
+// DeleteStreamProcessorExecute executes the request
 func (a *StreamsApiService) DeleteStreamProcessorExecute(r DeleteStreamProcessorApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
@@ -1358,7 +1358,7 @@ func (a *StreamsApiService) DownloadStreamTenantAuditLogs(ctx context.Context, g
 	}
 }
 
-// Execute executes the request
+// DownloadStreamTenantAuditLogsExecute executes the request
 //
 //	@return io.ReadCloser
 func (a *StreamsApiService) DownloadStreamTenantAuditLogsExecute(r DownloadStreamTenantAuditLogsApiRequest) (io.ReadCloser, *http.Response, error) {
@@ -1486,7 +1486,7 @@ func (a *StreamsApiService) GetStreamConnection(ctx context.Context, groupId str
 	}
 }
 
-// Execute executes the request
+// GetStreamConnectionExecute executes the request
 //
 //	@return StreamsConnection
 func (a *StreamsApiService) GetStreamConnectionExecute(r GetStreamConnectionApiRequest) (*StreamsConnection, *http.Response, error) {
@@ -1613,7 +1613,7 @@ func (a *StreamsApiService) GetStreamInstance(ctx context.Context, groupId strin
 	}
 }
 
-// Execute executes the request
+// GetStreamInstanceExecute executes the request
 //
 //	@return StreamsTenant
 func (a *StreamsApiService) GetStreamInstanceExecute(r GetStreamInstanceApiRequest) (*StreamsTenant, *http.Response, error) {
@@ -1738,7 +1738,7 @@ func (a *StreamsApiService) GetStreamProcessor(ctx context.Context, groupId stri
 	}
 }
 
-// Execute executes the request
+// GetStreamProcessorExecute executes the request
 //
 //	@return StreamsProcessorWithStats
 func (a *StreamsApiService) GetStreamProcessorExecute(r GetStreamProcessorApiRequest) (*StreamsProcessorWithStats, *http.Response, error) {
@@ -1874,7 +1874,7 @@ func (a *StreamsApiService) ListStreamConnections(ctx context.Context, groupId s
 	}
 }
 
-// Execute executes the request
+// ListStreamConnectionsExecute executes the request
 //
 //	@return PaginatedApiStreamsConnection
 func (a *StreamsApiService) ListStreamConnectionsExecute(r ListStreamConnectionsApiRequest) (*PaginatedApiStreamsConnection, *http.Response, error) {
@@ -2018,7 +2018,7 @@ func (a *StreamsApiService) ListStreamInstances(ctx context.Context, groupId str
 	}
 }
 
-// Execute executes the request
+// ListStreamInstancesExecute executes the request
 //
 //	@return PaginatedApiStreamsTenant
 func (a *StreamsApiService) ListStreamInstancesExecute(r ListStreamInstancesApiRequest) (*PaginatedApiStreamsTenant, *http.Response, error) {
@@ -2175,7 +2175,7 @@ func (a *StreamsApiService) ListStreamProcessors(ctx context.Context, groupId st
 	}
 }
 
-// Execute executes the request
+// ListStreamProcessorsExecute executes the request
 //
 //	@return PaginatedApiStreamsStreamProcessorWithStats
 func (a *StreamsApiService) ListStreamProcessorsExecute(r ListStreamProcessorsApiRequest) (*PaginatedApiStreamsStreamProcessorWithStats, *http.Response, error) {
@@ -2318,7 +2318,7 @@ func (a *StreamsApiService) StartStreamProcessor(ctx context.Context, groupId st
 	}
 }
 
-// Execute executes the request
+// StartStreamProcessorExecute executes the request
 //
 //	@return interface{}
 func (a *StreamsApiService) StartStreamProcessorExecute(r StartStreamProcessorApiRequest) (interface{}, *http.Response, error) {
@@ -2441,7 +2441,7 @@ func (a *StreamsApiService) StopStreamProcessor(ctx context.Context, groupId str
 	}
 }
 
-// Execute executes the request
+// StopStreamProcessorExecute executes the request
 //
 //	@return interface{}
 func (a *StreamsApiService) StopStreamProcessorExecute(r StopStreamProcessorApiRequest) (interface{}, *http.Response, error) {
@@ -2568,7 +2568,7 @@ func (a *StreamsApiService) UpdateStreamConnection(ctx context.Context, groupId 
 	}
 }
 
-// Execute executes the request
+// UpdateStreamConnectionExecute executes the request
 //
 //	@return StreamsConnection
 func (a *StreamsApiService) UpdateStreamConnectionExecute(r UpdateStreamConnectionApiRequest) (*StreamsConnection, *http.Response, error) {
@@ -2695,7 +2695,7 @@ func (a *StreamsApiService) UpdateStreamInstance(ctx context.Context, groupId st
 	}
 }
 
-// Execute executes the request
+// UpdateStreamInstanceExecute executes the request
 //
 //	@return StreamsTenant
 func (a *StreamsApiService) UpdateStreamInstanceExecute(r UpdateStreamInstanceApiRequest) (*StreamsTenant, *http.Response, error) {

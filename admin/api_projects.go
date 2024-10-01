@@ -676,7 +676,7 @@ func (a *ProjectsApiService) AddUserToProject(ctx context.Context, groupId strin
 	}
 }
 
-// Execute executes the request
+// AddUserToProjectExecute executes the request
 //
 //	@return OrganizationInvitation
 func (a *ProjectsApiService) AddUserToProjectExecute(r AddUserToProjectApiRequest) (*OrganizationInvitation, *http.Response, error) {
@@ -800,7 +800,7 @@ func (a *ProjectsApiService) CreateProject(ctx context.Context, group *Group) Cr
 	}
 }
 
-// Execute executes the request
+// CreateProjectExecute executes the request
 //
 //	@return Group
 func (a *ProjectsApiService) CreateProjectExecute(r CreateProjectApiRequest) (*Group, *http.Response, error) {
@@ -924,7 +924,7 @@ func (a *ProjectsApiService) CreateProjectInvitation(ctx context.Context, groupI
 	}
 }
 
-// Execute executes the request
+// CreateProjectInvitationExecute executes the request
 //
 //	@return GroupInvitation
 //
@@ -1042,7 +1042,7 @@ func (a *ProjectsApiService) DeleteProject(ctx context.Context, groupId string) 
 	}
 }
 
-// Execute executes the request
+// DeleteProjectExecute executes the request
 //
 //	@return interface{}
 func (a *ProjectsApiService) DeleteProjectExecute(r DeleteProjectApiRequest) (interface{}, *http.Response, error) {
@@ -1160,7 +1160,7 @@ func (a *ProjectsApiService) DeleteProjectInvitation(ctx context.Context, groupI
 	}
 }
 
-// Execute executes the request
+// DeleteProjectInvitationExecute executes the request
 //
 //	@return interface{}
 //
@@ -1279,7 +1279,7 @@ func (a *ProjectsApiService) DeleteProjectLimit(ctx context.Context, limitName s
 	}
 }
 
-// Execute executes the request
+// DeleteProjectLimitExecute executes the request
 //
 //	@return interface{}
 func (a *ProjectsApiService) DeleteProjectLimitExecute(r DeleteProjectLimitApiRequest) (interface{}, *http.Response, error) {
@@ -1391,7 +1391,7 @@ func (a *ProjectsApiService) GetProject(ctx context.Context, groupId string) Get
 	}
 }
 
-// Execute executes the request
+// GetProjectExecute executes the request
 //
 //	@return Group
 func (a *ProjectsApiService) GetProjectExecute(r GetProjectApiRequest) (*Group, *http.Response, error) {
@@ -1502,7 +1502,7 @@ func (a *ProjectsApiService) GetProjectByName(ctx context.Context, groupName str
 	}
 }
 
-// Execute executes the request
+// GetProjectByNameExecute executes the request
 //
 //	@return Group
 func (a *ProjectsApiService) GetProjectByNameExecute(r GetProjectByNameApiRequest) (*Group, *http.Response, error) {
@@ -1620,7 +1620,7 @@ func (a *ProjectsApiService) GetProjectInvitation(ctx context.Context, groupId s
 	}
 }
 
-// Execute executes the request
+// GetProjectInvitationExecute executes the request
 //
 //	@return GroupInvitation
 //
@@ -1779,7 +1779,7 @@ func (a *ProjectsApiService) GetProjectLTSVersions(ctx context.Context, groupId 
 	}
 }
 
-// Execute executes the request
+// GetProjectLTSVersionsExecute executes the request
 //
 //	@return PaginatedAvailableVersion
 func (a *ProjectsApiService) GetProjectLTSVersionsExecute(r GetProjectLTSVersionsApiRequest) (*PaginatedAvailableVersion, *http.Response, error) {
@@ -1918,7 +1918,7 @@ func (a *ProjectsApiService) GetProjectLimit(ctx context.Context, limitName stri
 	}
 }
 
-// Execute executes the request
+// GetProjectLimitExecute executes the request
 //
 //	@return DataFederationLimit
 func (a *ProjectsApiService) GetProjectLimitExecute(r GetProjectLimitApiRequest) (*DataFederationLimit, *http.Response, error) {
@@ -2030,7 +2030,7 @@ func (a *ProjectsApiService) GetProjectSettings(ctx context.Context, groupId str
 	}
 }
 
-// Execute executes the request
+// GetProjectSettingsExecute executes the request
 //
 //	@return GroupSettings
 func (a *ProjectsApiService) GetProjectSettingsExecute(r GetProjectSettingsApiRequest) (*GroupSettings, *http.Response, error) {
@@ -2152,7 +2152,7 @@ func (a *ProjectsApiService) ListProjectInvitations(ctx context.Context, groupId
 	}
 }
 
-// Execute executes the request
+// ListProjectInvitationsExecute executes the request
 //
 //	@return []GroupInvitation
 //
@@ -2268,7 +2268,7 @@ func (a *ProjectsApiService) ListProjectLimits(ctx context.Context, groupId stri
 	}
 }
 
-// Execute executes the request
+// ListProjectLimitsExecute executes the request
 //
 //	@return []DataFederationLimit
 func (a *ProjectsApiService) ListProjectLimitsExecute(r ListProjectLimitsApiRequest) ([]DataFederationLimit, *http.Response, error) {
@@ -2424,7 +2424,7 @@ func (a *ProjectsApiService) ListProjectUsers(ctx context.Context, groupId strin
 	}
 }
 
-// Execute executes the request
+// ListProjectUsersExecute executes the request
 //
 //	@return PaginatedAppUser
 func (a *ProjectsApiService) ListProjectUsersExecute(r ListProjectUsersApiRequest) (*PaginatedAppUser, *http.Response, error) {
@@ -2592,7 +2592,7 @@ func (a *ProjectsApiService) ListProjects(ctx context.Context) ListProjectsApiRe
 	}
 }
 
-// Execute executes the request
+// ListProjectsExecute executes the request
 //
 //	@return PaginatedAtlasGroup
 func (a *ProjectsApiService) ListProjectsExecute(r ListProjectsApiRequest) (*PaginatedAtlasGroup, *http.Response, error) {
@@ -2727,7 +2727,7 @@ func (a *ProjectsApiService) MigrateProjectToAnotherOrg(ctx context.Context, gro
 	}
 }
 
-// Execute executes the request
+// MigrateProjectToAnotherOrgExecute executes the request
 //
 //	@return Group
 func (a *ProjectsApiService) MigrateProjectToAnotherOrgExecute(r MigrateProjectToAnotherOrgApiRequest) (*Group, *http.Response, error) {
@@ -2848,7 +2848,7 @@ func (a *ProjectsApiService) RemoveProjectUser(ctx context.Context, groupId stri
 	}
 }
 
-// Execute executes the request
+// RemoveProjectUserExecute executes the request
 func (a *ProjectsApiService) RemoveProjectUserExecute(r RemoveProjectUserApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
@@ -2943,7 +2943,7 @@ func (a *ProjectsApiService) ReturnAllIPAddresses(ctx context.Context, groupId s
 	}
 }
 
-// Execute executes the request
+// ReturnAllIPAddressesExecute executes the request
 //
 //	@return GroupIPAddresses
 func (a *ProjectsApiService) ReturnAllIPAddressesExecute(r ReturnAllIPAddressesApiRequest) (*GroupIPAddresses, *http.Response, error) {
@@ -3065,7 +3065,7 @@ func (a *ProjectsApiService) SetProjectLimit(ctx context.Context, limitName stri
 	}
 }
 
-// Execute executes the request
+// SetProjectLimitExecute executes the request
 //
 //	@return DataFederationLimit
 func (a *ProjectsApiService) SetProjectLimitExecute(r SetProjectLimitApiRequest) (*DataFederationLimit, *http.Response, error) {
@@ -3186,7 +3186,7 @@ func (a *ProjectsApiService) UpdateProject(ctx context.Context, groupId string, 
 	}
 }
 
-// Execute executes the request
+// UpdateProjectExecute executes the request
 //
 //	@return Group
 func (a *ProjectsApiService) UpdateProjectExecute(r UpdateProjectApiRequest) (*Group, *http.Response, error) {
@@ -3308,7 +3308,7 @@ func (a *ProjectsApiService) UpdateProjectInvitation(ctx context.Context, groupI
 	}
 }
 
-// Execute executes the request
+// UpdateProjectInvitationExecute executes the request
 //
 //	@return GroupInvitation
 //
@@ -3437,7 +3437,7 @@ func (a *ProjectsApiService) UpdateProjectInvitationById(ctx context.Context, gr
 	}
 }
 
-// Execute executes the request
+// UpdateProjectInvitationByIdExecute executes the request
 //
 //	@return GroupInvitation
 //
@@ -3565,7 +3565,7 @@ func (a *ProjectsApiService) UpdateProjectRoles(ctx context.Context, groupId str
 	}
 }
 
-// Execute executes the request
+// UpdateProjectRolesExecute executes the request
 //
 //	@return UpdateGroupRolesForUser
 func (a *ProjectsApiService) UpdateProjectRolesExecute(r UpdateProjectRolesApiRequest) (*UpdateGroupRolesForUser, *http.Response, error) {
@@ -3686,7 +3686,7 @@ func (a *ProjectsApiService) UpdateProjectSettings(ctx context.Context, groupId 
 	}
 }
 
-// Execute executes the request
+// UpdateProjectSettingsExecute executes the request
 //
 //	@return GroupSettings
 func (a *ProjectsApiService) UpdateProjectSettingsExecute(r UpdateProjectSettingsApiRequest) (*GroupSettings, *http.Response, error) {

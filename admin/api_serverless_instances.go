@@ -179,7 +179,7 @@ func (a *ServerlessInstancesApiService) CreateServerlessInstance(ctx context.Con
 	}
 }
 
-// Execute executes the request
+// CreateServerlessInstanceExecute executes the request
 //
 //	@return ServerlessInstanceDescription
 func (a *ServerlessInstancesApiService) CreateServerlessInstanceExecute(r CreateServerlessInstanceApiRequest) (*ServerlessInstanceDescription, *http.Response, error) {
@@ -300,7 +300,7 @@ func (a *ServerlessInstancesApiService) DeleteServerlessInstance(ctx context.Con
 	}
 }
 
-// Execute executes the request
+// DeleteServerlessInstanceExecute executes the request
 //
 //	@return interface{}
 func (a *ServerlessInstancesApiService) DeleteServerlessInstanceExecute(r DeleteServerlessInstanceApiRequest) (interface{}, *http.Response, error) {
@@ -417,7 +417,7 @@ func (a *ServerlessInstancesApiService) GetServerlessInstance(ctx context.Contex
 	}
 }
 
-// Execute executes the request
+// GetServerlessInstanceExecute executes the request
 //
 //	@return ServerlessInstanceDescription
 func (a *ServerlessInstancesApiService) GetServerlessInstanceExecute(r GetServerlessInstanceApiRequest) (*ServerlessInstanceDescription, *http.Response, error) {
@@ -556,7 +556,7 @@ func (a *ServerlessInstancesApiService) ListServerlessInstances(ctx context.Cont
 	}
 }
 
-// Execute executes the request
+// ListServerlessInstancesExecute executes the request
 //
 //	@return PaginatedServerlessInstanceDescription
 func (a *ServerlessInstancesApiService) ListServerlessInstancesExecute(r ListServerlessInstancesApiRequest) (*PaginatedServerlessInstanceDescription, *http.Response, error) {
@@ -697,7 +697,7 @@ func (a *ServerlessInstancesApiService) UpdateServerlessInstance(ctx context.Con
 	}
 }
 
-// Execute executes the request
+// UpdateServerlessInstanceExecute executes the request
 //
 //	@return ServerlessInstanceDescription
 func (a *ServerlessInstancesApiService) UpdateServerlessInstanceExecute(r UpdateServerlessInstanceApiRequest) (*ServerlessInstanceDescription, *http.Response, error) {

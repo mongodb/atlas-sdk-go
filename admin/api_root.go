@@ -93,7 +93,7 @@ func (a *RootApiService) GetSystemStatus(ctx context.Context) GetSystemStatusApi
 	}
 }
 
-// Execute executes the request
+// GetSystemStatusExecute executes the request
 //
 //	@return SystemStatus
 func (a *RootApiService) GetSystemStatusExecute(r GetSystemStatusApiRequest) (*SystemStatus, *http.Response, error) {
@@ -198,7 +198,7 @@ func (a *RootApiService) ReturnAllControlPlaneIPAddresses(ctx context.Context) R
 	}
 }
 
-// Execute executes the request
+// ReturnAllControlPlaneIPAddressesExecute executes the request
 //
 //	@return ControlPlaneIPAddresses
 func (a *RootApiService) ReturnAllControlPlaneIPAddressesExecute(r ReturnAllControlPlaneIPAddressesApiRequest) (*ControlPlaneIPAddresses, *http.Response, error) {

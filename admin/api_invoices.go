@@ -230,7 +230,7 @@ func (a *InvoicesApiService) CreateCostExplorerQueryProcess(ctx context.Context,
 	}
 }
 
-// Execute executes the request
+// CreateCostExplorerQueryProcessExecute executes the request
 //
 //	@return CostExplorerFilterResponse
 func (a *InvoicesApiService) CreateCostExplorerQueryProcessExecute(r CreateCostExplorerQueryProcessApiRequest) (*CostExplorerFilterResponse, *http.Response, error) {
@@ -351,7 +351,7 @@ func (a *InvoicesApiService) CreateCostExplorerQueryProcess1(ctx context.Context
 	}
 }
 
-// Execute executes the request
+// CreateCostExplorerQueryProcess1Execute executes the request
 //
 //	@return string
 func (a *InvoicesApiService) CreateCostExplorerQueryProcess1Execute(r CreateCostExplorerQueryProcess1ApiRequest) (string, *http.Response, error) {
@@ -470,7 +470,7 @@ func (a *InvoicesApiService) DownloadInvoiceCSV(ctx context.Context, orgId strin
 	}
 }
 
-// Execute executes the request
+// DownloadInvoiceCSVExecute executes the request
 //
 //	@return string
 func (a *InvoicesApiService) DownloadInvoiceCSVExecute(r DownloadInvoiceCSVApiRequest) (string, *http.Response, error) {
@@ -588,7 +588,7 @@ func (a *InvoicesApiService) GetInvoice(ctx context.Context, orgId string, invoi
 	}
 }
 
-// Execute executes the request
+// GetInvoiceExecute executes the request
 //
 //	@return string
 func (a *InvoicesApiService) GetInvoiceExecute(r GetInvoiceApiRequest) (string, *http.Response, error) {
@@ -782,7 +782,7 @@ func (a *InvoicesApiService) ListInvoices(ctx context.Context, orgId string) Lis
 	}
 }
 
-// Execute executes the request
+// ListInvoicesExecute executes the request
 //
 //	@return PaginatedApiInvoiceMetadata
 func (a *InvoicesApiService) ListInvoicesExecute(r ListInvoicesApiRequest) (*PaginatedApiInvoiceMetadata, *http.Response, error) {
@@ -948,7 +948,7 @@ func (a *InvoicesApiService) ListPendingInvoices(ctx context.Context, orgId stri
 	}
 }
 
-// Execute executes the request
+// ListPendingInvoicesExecute executes the request
 //
 //	@return PaginatedApiInvoice
 func (a *InvoicesApiService) ListPendingInvoicesExecute(r ListPendingInvoicesApiRequest) (*PaginatedApiInvoice, *http.Response, error) {
@@ -1086,7 +1086,7 @@ func (a *InvoicesApiService) QueryLineItemsFromSingleInvoice(ctx context.Context
 	}
 }
 
-// Execute executes the request
+// QueryLineItemsFromSingleInvoiceExecute executes the request
 //
 //	@return PaginatedPublicApiUsageDetailsLineItem
 func (a *InvoicesApiService) QueryLineItemsFromSingleInvoiceExecute(r QueryLineItemsFromSingleInvoiceApiRequest) (*PaginatedPublicApiUsageDetailsLineItem, *http.Response, error) {

@@ -131,7 +131,7 @@ func (a *MongoDBCloudUsersApiService) CreateUser(ctx context.Context, cloudAppUs
 	}
 }
 
-// Execute executes the request
+// CreateUserExecute executes the request
 //
 //	@return CloudAppUser
 func (a *MongoDBCloudUsersApiService) CreateUserExecute(r CreateUserApiRequest) (*CloudAppUser, *http.Response, error) {
@@ -246,7 +246,7 @@ func (a *MongoDBCloudUsersApiService) GetUser(ctx context.Context, userId string
 	}
 }
 
-// Execute executes the request
+// GetUserExecute executes the request
 //
 //	@return CloudAppUser
 func (a *MongoDBCloudUsersApiService) GetUserExecute(r GetUserApiRequest) (*CloudAppUser, *http.Response, error) {
@@ -357,7 +357,7 @@ func (a *MongoDBCloudUsersApiService) GetUserByUsername(ctx context.Context, use
 	}
 }
 
-// Execute executes the request
+// GetUserByUsernameExecute executes the request
 //
 //	@return CloudAppUser
 func (a *MongoDBCloudUsersApiService) GetUserByUsernameExecute(r GetUserByUsernameApiRequest) (*CloudAppUser, *http.Response, error) {

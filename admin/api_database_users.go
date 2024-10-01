@@ -182,7 +182,7 @@ func (a *DatabaseUsersApiService) CreateDatabaseUser(ctx context.Context, groupI
 	}
 }
 
-// Execute executes the request
+// CreateDatabaseUserExecute executes the request
 //
 //	@return CloudDatabaseUser
 func (a *DatabaseUsersApiService) CreateDatabaseUserExecute(r CreateDatabaseUserApiRequest) (*CloudDatabaseUser, *http.Response, error) {
@@ -308,7 +308,7 @@ func (a *DatabaseUsersApiService) DeleteDatabaseUser(ctx context.Context, groupI
 	}
 }
 
-// Execute executes the request
+// DeleteDatabaseUserExecute executes the request
 //
 //	@return interface{}
 func (a *DatabaseUsersApiService) DeleteDatabaseUserExecute(r DeleteDatabaseUserApiRequest) (interface{}, *http.Response, error) {
@@ -431,7 +431,7 @@ func (a *DatabaseUsersApiService) GetDatabaseUser(ctx context.Context, groupId s
 	}
 }
 
-// Execute executes the request
+// GetDatabaseUserExecute executes the request
 //
 //	@return CloudDatabaseUser
 func (a *DatabaseUsersApiService) GetDatabaseUserExecute(r GetDatabaseUserApiRequest) (*CloudDatabaseUser, *http.Response, error) {
@@ -571,7 +571,7 @@ func (a *DatabaseUsersApiService) ListDatabaseUsers(ctx context.Context, groupId
 	}
 }
 
-// Execute executes the request
+// ListDatabaseUsersExecute executes the request
 //
 //	@return PaginatedApiAtlasDatabaseUser
 func (a *DatabaseUsersApiService) ListDatabaseUsersExecute(r ListDatabaseUsersApiRequest) (*PaginatedApiAtlasDatabaseUser, *http.Response, error) {
@@ -717,7 +717,7 @@ func (a *DatabaseUsersApiService) UpdateDatabaseUser(ctx context.Context, groupI
 	}
 }
 
-// Execute executes the request
+// UpdateDatabaseUserExecute executes the request
 //
 //	@return CloudDatabaseUser
 func (a *DatabaseUsersApiService) UpdateDatabaseUserExecute(r UpdateDatabaseUserApiRequest) (*CloudDatabaseUser, *http.Response, error) {

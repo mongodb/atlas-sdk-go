@@ -153,7 +153,7 @@ func (a *AccessTrackingApiService) ListAccessLogsByClusterName(ctx context.Conte
 	}
 }
 
-// Execute executes the request
+// ListAccessLogsByClusterNameExecute executes the request
 //
 //	@return MongoDBAccessLogsList
 func (a *AccessTrackingApiService) ListAccessLogsByClusterNameExecute(r ListAccessLogsByClusterNameApiRequest) (*MongoDBAccessLogsList, *http.Response, error) {
@@ -334,7 +334,7 @@ func (a *AccessTrackingApiService) ListAccessLogsByHostname(ctx context.Context,
 	}
 }
 
-// Execute executes the request
+// ListAccessLogsByHostnameExecute executes the request
 //
 //	@return MongoDBAccessLogsList
 func (a *AccessTrackingApiService) ListAccessLogsByHostnameExecute(r ListAccessLogsByHostnameApiRequest) (*MongoDBAccessLogsList, *http.Response, error) {

@@ -138,7 +138,7 @@ func (a *SharedTierRestoreJobsApiService) CreateSharedClusterBackupRestoreJob(ct
 	}
 }
 
-// Execute executes the request
+// CreateSharedClusterBackupRestoreJobExecute executes the request
 //
 //	@return TenantRestore
 func (a *SharedTierRestoreJobsApiService) CreateSharedClusterBackupRestoreJobExecute(r CreateSharedClusterBackupRestoreJobApiRequest) (*TenantRestore, *http.Response, error) {
@@ -265,7 +265,7 @@ func (a *SharedTierRestoreJobsApiService) GetSharedClusterBackupRestoreJob(ctx c
 	}
 }
 
-// Execute executes the request
+// GetSharedClusterBackupRestoreJobExecute executes the request
 //
 //	@return TenantRestore
 func (a *SharedTierRestoreJobsApiService) GetSharedClusterBackupRestoreJobExecute(r GetSharedClusterBackupRestoreJobApiRequest) (*TenantRestore, *http.Response, error) {
@@ -383,7 +383,7 @@ func (a *SharedTierRestoreJobsApiService) ListSharedClusterBackupRestoreJobs(ctx
 	}
 }
 
-// Execute executes the request
+// ListSharedClusterBackupRestoreJobsExecute executes the request
 //
 //	@return PaginatedTenantRestore
 func (a *SharedTierRestoreJobsApiService) ListSharedClusterBackupRestoreJobsExecute(r ListSharedClusterBackupRestoreJobsApiRequest) (*PaginatedTenantRestore, *http.Response, error) {
