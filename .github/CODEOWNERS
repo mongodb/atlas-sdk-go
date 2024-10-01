@@ -2,8 +2,3 @@
 * @mongodb/apix1 @mongodb/APIx-Integrations
 # Manual docs
 /docs @mongodb/docs-cloud-team
-
-# Removing teams
-/docs/docs @mongodb/apix1
-/docs/doc_last_reference.md @mongodb/apix1
-/docs/README.md @mongodb/apix1
