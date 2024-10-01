@@ -91,14 +91,15 @@ func (o *TeamUpdate) SetName(v string) {
 	o.Name = v
 }
 
-func (o TeamUpdate) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *TeamUpdate) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o TeamUpdate) ToMap() (map[string]interface{}, error) {
+
+func (o *TeamUpdate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
 	return toSerialize, nil

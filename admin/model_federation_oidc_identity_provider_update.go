@@ -447,14 +447,15 @@ func (o *FederationOidcIdentityProviderUpdate) SetRequestedScopes(v []string) {
 	o.RequestedScopes = &v
 }
 
-func (o FederationOidcIdentityProviderUpdate) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *FederationOidcIdentityProviderUpdate) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o FederationOidcIdentityProviderUpdate) ToMap() (map[string]interface{}, error) {
+
+func (o *FederationOidcIdentityProviderUpdate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Audience) {
 		toSerialize["audience"] = o.Audience

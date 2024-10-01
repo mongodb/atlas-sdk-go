@@ -340,14 +340,15 @@ func (o *ClusterProviderSettings) SetBackingProviderName(v string) {
 	o.BackingProviderName = &v
 }
 
-func (o ClusterProviderSettings) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *ClusterProviderSettings) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ClusterProviderSettings) ToMap() (map[string]interface{}, error) {
+
+func (o *ClusterProviderSettings) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["providerName"] = o.ProviderName
 	if !IsNil(o.AutoScaling) {

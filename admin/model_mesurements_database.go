@@ -98,14 +98,15 @@ func (o *MesurementsDatabase) SetLinks(v []Link) {
 	o.Links = &v
 }
 
-func (o MesurementsDatabase) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *MesurementsDatabase) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o MesurementsDatabase) ToMap() (map[string]interface{}, error) {
+
+func (o *MesurementsDatabase) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.DatabaseName) {
 		toSerialize["databaseName"] = o.DatabaseName

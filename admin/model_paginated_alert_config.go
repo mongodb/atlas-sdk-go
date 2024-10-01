@@ -135,14 +135,15 @@ func (o *PaginatedAlertConfig) SetTotalCount(v int) {
 	o.TotalCount = &v
 }
 
-func (o PaginatedAlertConfig) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *PaginatedAlertConfig) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o PaginatedAlertConfig) ToMap() (map[string]interface{}, error) {
+
+func (o *PaginatedAlertConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

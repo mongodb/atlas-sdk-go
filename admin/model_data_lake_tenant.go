@@ -308,14 +308,15 @@ func (o *DataLakeTenant) SetStorage(v DataLakeStorage) {
 	o.Storage = &v
 }
 
-func (o DataLakeTenant) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *DataLakeTenant) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o DataLakeTenant) ToMap() (map[string]interface{}, error) {
+
+func (o *DataLakeTenant) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.CloudProviderConfig) {
 		toSerialize["cloudProviderConfig"] = o.CloudProviderConfig

@@ -99,14 +99,15 @@ func (o *LDAPVerifyConnectivityJobRequestValidation) SetValidationType(v string)
 	o.ValidationType = &v
 }
 
-func (o LDAPVerifyConnectivityJobRequestValidation) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *LDAPVerifyConnectivityJobRequestValidation) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o LDAPVerifyConnectivityJobRequestValidation) ToMap() (map[string]interface{}, error) {
+
+func (o *LDAPVerifyConnectivityJobRequestValidation) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

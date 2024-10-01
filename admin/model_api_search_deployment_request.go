@@ -54,14 +54,15 @@ func (o *ApiSearchDeploymentRequest) SetSpecs(v []ApiSearchDeploymentSpec) {
 	o.Specs = v
 }
 
-func (o ApiSearchDeploymentRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *ApiSearchDeploymentRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ApiSearchDeploymentRequest) ToMap() (map[string]interface{}, error) {
+
+func (o *ApiSearchDeploymentRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["specs"] = o.Specs
 	return toSerialize, nil

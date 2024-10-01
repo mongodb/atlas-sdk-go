@@ -120,14 +120,15 @@ func (o *ServerlessProviderSettings) SetRegionName(v string) {
 	o.RegionName = v
 }
 
-func (o ServerlessProviderSettings) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *ServerlessProviderSettings) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ServerlessProviderSettings) ToMap() (map[string]interface{}, error) {
+
+func (o *ServerlessProviderSettings) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["backingProviderName"] = o.BackingProviderName
 	if !IsNil(o.ProviderName) {

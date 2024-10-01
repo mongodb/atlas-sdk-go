@@ -388,14 +388,15 @@ func (o *ApiMeasurementsGeneralViewAtlas) SetStart(v time.Time) {
 	o.Start = &v
 }
 
-func (o ApiMeasurementsGeneralViewAtlas) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *ApiMeasurementsGeneralViewAtlas) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ApiMeasurementsGeneralViewAtlas) ToMap() (map[string]interface{}, error) {
+
+func (o *ApiMeasurementsGeneralViewAtlas) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

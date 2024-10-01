@@ -460,14 +460,15 @@ func (o *ApiHostViewAtlas) SetVersion(v string) {
 	o.Version = &v
 }
 
-func (o ApiHostViewAtlas) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *ApiHostViewAtlas) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ApiHostViewAtlas) ToMap() (map[string]interface{}, error) {
+
+func (o *ApiHostViewAtlas) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

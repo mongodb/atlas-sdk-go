@@ -117,14 +117,15 @@ func (o *BackupSnapshotRetention) SetRetentionValue(v int) {
 	o.RetentionValue = v
 }
 
-func (o BackupSnapshotRetention) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *BackupSnapshotRetention) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o BackupSnapshotRetention) ToMap() (map[string]interface{}, error) {
+
+func (o *BackupSnapshotRetention) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["retentionUnit"] = o.RetentionUnit
 	toSerialize["retentionValue"] = o.RetentionValue

@@ -150,14 +150,15 @@ func (o *ApiAtlasFTSAnalyzers) SetTokenizer(v ApiAtlasFTSAnalyzersTokenizer) {
 	o.Tokenizer = v
 }
 
-func (o ApiAtlasFTSAnalyzers) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *ApiAtlasFTSAnalyzers) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ApiAtlasFTSAnalyzers) ToMap() (map[string]interface{}, error) {
+
+func (o *ApiAtlasFTSAnalyzers) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.CharFilters) {
 		toSerialize["charFilters"] = o.CharFilters

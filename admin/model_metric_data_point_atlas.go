@@ -100,14 +100,15 @@ func (o *MetricDataPointAtlas) SetValue(v float32) {
 	o.Value = &v
 }
 
-func (o MetricDataPointAtlas) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *MetricDataPointAtlas) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o MetricDataPointAtlas) ToMap() (map[string]interface{}, error) {
+
+func (o *MetricDataPointAtlas) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

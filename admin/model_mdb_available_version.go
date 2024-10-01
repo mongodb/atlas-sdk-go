@@ -203,14 +203,15 @@ func (o *MdbAvailableVersion) SetVersion(v string) {
 	o.Version = &v
 }
 
-func (o MdbAvailableVersion) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *MdbAvailableVersion) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o MdbAvailableVersion) ToMap() (map[string]interface{}, error) {
+
+func (o *MdbAvailableVersion) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.CloudProvider) {
 		toSerialize["cloudProvider"] = o.CloudProvider

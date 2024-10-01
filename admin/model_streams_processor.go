@@ -203,14 +203,15 @@ func (o *StreamsProcessor) SetPipeline(v []interface{}) {
 	o.Pipeline = &v
 }
 
-func (o StreamsProcessor) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *StreamsProcessor) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o StreamsProcessor) ToMap() (map[string]interface{}, error) {
+
+func (o *StreamsProcessor) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name

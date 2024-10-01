@@ -63,14 +63,15 @@ func (o *ShardKeys) SetKey(v []interface{}) {
 	o.Key = &v
 }
 
-func (o ShardKeys) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *ShardKeys) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ShardKeys) ToMap() (map[string]interface{}, error) {
+
+func (o *ShardKeys) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Key) {
 		toSerialize["key"] = o.Key

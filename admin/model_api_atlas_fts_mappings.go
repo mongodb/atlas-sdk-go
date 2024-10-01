@@ -102,14 +102,15 @@ func (o *ApiAtlasFTSMappings) SetFields(v interface{}) {
 	o.Fields = v
 }
 
-func (o ApiAtlasFTSMappings) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *ApiAtlasFTSMappings) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ApiAtlasFTSMappings) ToMap() (map[string]interface{}, error) {
+
+func (o *ApiAtlasFTSMappings) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Dynamic) {
 		toSerialize["dynamic"] = o.Dynamic

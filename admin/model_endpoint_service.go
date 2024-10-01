@@ -449,14 +449,15 @@ func (o *EndpointService) SetServiceAttachmentNames(v []string) {
 	o.ServiceAttachmentNames = &v
 }
 
-func (o EndpointService) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *EndpointService) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o EndpointService) ToMap() (map[string]interface{}, error) {
+
+func (o *EndpointService) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.EndpointGroupNames) {
 		toSerialize["endpointGroupNames"] = o.EndpointGroupNames

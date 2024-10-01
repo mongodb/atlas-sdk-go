@@ -81,14 +81,15 @@ func (o *DataLakeDataProcessRegion) SetRegion(v string) {
 	o.Region = v
 }
 
-func (o DataLakeDataProcessRegion) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *DataLakeDataProcessRegion) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o DataLakeDataProcessRegion) ToMap() (map[string]interface{}, error) {
+
+func (o *DataLakeDataProcessRegion) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["cloudProvider"] = o.CloudProvider
 	toSerialize["region"] = o.Region

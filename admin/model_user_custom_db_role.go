@@ -124,14 +124,15 @@ func (o *UserCustomDBRole) SetRoleName(v string) {
 	o.RoleName = v
 }
 
-func (o UserCustomDBRole) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *UserCustomDBRole) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o UserCustomDBRole) ToMap() (map[string]interface{}, error) {
+
+func (o *UserCustomDBRole) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Actions) {
 		toSerialize["actions"] = o.Actions

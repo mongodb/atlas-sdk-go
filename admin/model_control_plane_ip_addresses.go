@@ -95,14 +95,15 @@ func (o *ControlPlaneIPAddresses) SetOutbound(v OutboundControlPlaneCloudProvide
 	o.Outbound = &v
 }
 
-func (o ControlPlaneIPAddresses) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *ControlPlaneIPAddresses) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ControlPlaneIPAddresses) ToMap() (map[string]interface{}, error) {
+
+func (o *ControlPlaneIPAddresses) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Inbound) {
 		toSerialize["inbound"] = o.Inbound

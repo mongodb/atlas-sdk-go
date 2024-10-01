@@ -448,14 +448,15 @@ func (o *CloudProviderAccessRoleRequest) SetTenantId(v string) {
 	o.TenantId = &v
 }
 
-func (o CloudProviderAccessRoleRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *CloudProviderAccessRoleRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o CloudProviderAccessRoleRequest) ToMap() (map[string]interface{}, error) {
+
+func (o *CloudProviderAccessRoleRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["providerName"] = o.ProviderName
 	if !IsNil(o.AtlasAzureAppId) {

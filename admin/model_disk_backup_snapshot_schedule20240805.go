@@ -558,14 +558,15 @@ func (o *DiskBackupSnapshotSchedule20240805) SetUseOrgAndGroupNamesInExportPrefi
 	o.UseOrgAndGroupNamesInExportPrefix = &v
 }
 
-func (o DiskBackupSnapshotSchedule20240805) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *DiskBackupSnapshotSchedule20240805) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o DiskBackupSnapshotSchedule20240805) ToMap() (map[string]interface{}, error) {
+
+func (o *DiskBackupSnapshotSchedule20240805) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.AutoExportEnabled) {
 		toSerialize["autoExportEnabled"] = o.AutoExportEnabled

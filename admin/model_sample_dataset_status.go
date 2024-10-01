@@ -244,14 +244,15 @@ func (o *SampleDatasetStatus) SetState(v string) {
 	o.State = &v
 }
 
-func (o SampleDatasetStatus) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *SampleDatasetStatus) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o SampleDatasetStatus) ToMap() (map[string]interface{}, error) {
+
+func (o *SampleDatasetStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

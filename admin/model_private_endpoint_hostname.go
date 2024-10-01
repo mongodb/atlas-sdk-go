@@ -99,14 +99,15 @@ func (o *PrivateEndpointHostname) SetPrivateEndpoint(v string) {
 	o.PrivateEndpoint = &v
 }
 
-func (o PrivateEndpointHostname) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *PrivateEndpointHostname) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o PrivateEndpointHostname) ToMap() (map[string]interface{}, error) {
+
+func (o *PrivateEndpointHostname) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

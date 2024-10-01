@@ -134,14 +134,15 @@ func (o *TeamResponse) SetName(v string) {
 	o.Name = &v
 }
 
-func (o TeamResponse) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *TeamResponse) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o TeamResponse) ToMap() (map[string]interface{}, error) {
+
+func (o *TeamResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name

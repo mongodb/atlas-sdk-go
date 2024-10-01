@@ -236,14 +236,15 @@ func (o *ApiError) SetReason(v string) {
 	o.Reason = &v
 }
 
-func (o ApiError) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *ApiError) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ApiError) ToMap() (map[string]interface{}, error) {
+
+func (o *ApiError) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.BadRequestDetail) {
 		toSerialize["badRequestDetail"] = o.BadRequestDetail

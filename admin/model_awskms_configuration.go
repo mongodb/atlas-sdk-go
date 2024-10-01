@@ -275,14 +275,15 @@ func (o *AWSKMSConfiguration) SetValid(v bool) {
 	o.Valid = &v
 }
 
-func (o AWSKMSConfiguration) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *AWSKMSConfiguration) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o AWSKMSConfiguration) ToMap() (map[string]interface{}, error) {
+
+func (o *AWSKMSConfiguration) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.AccessKeyID) {
 		toSerialize["accessKeyID"] = o.AccessKeyID

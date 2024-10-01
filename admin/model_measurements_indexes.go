@@ -388,14 +388,15 @@ func (o *MeasurementsIndexes) SetStart(v time.Time) {
 	o.Start = &v
 }
 
-func (o MeasurementsIndexes) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *MeasurementsIndexes) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o MeasurementsIndexes) ToMap() (map[string]interface{}, error) {
+
+func (o *MeasurementsIndexes) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

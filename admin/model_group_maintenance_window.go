@@ -195,14 +195,15 @@ func (o *GroupMaintenanceWindow) SetStartASAP(v bool) {
 	o.StartASAP = &v
 }
 
-func (o GroupMaintenanceWindow) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *GroupMaintenanceWindow) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o GroupMaintenanceWindow) ToMap() (map[string]interface{}, error) {
+
+func (o *GroupMaintenanceWindow) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.AutoDeferOnceEnabled) {
 		toSerialize["autoDeferOnceEnabled"] = o.AutoDeferOnceEnabled

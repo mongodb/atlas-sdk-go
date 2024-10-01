@@ -54,14 +54,15 @@ func (o *AWSCustomDNSEnabled) SetEnabled(v bool) {
 	o.Enabled = v
 }
 
-func (o AWSCustomDNSEnabled) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *AWSCustomDNSEnabled) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o AWSCustomDNSEnabled) ToMap() (map[string]interface{}, error) {
+
+func (o *AWSCustomDNSEnabled) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["enabled"] = o.Enabled
 	return toSerialize, nil

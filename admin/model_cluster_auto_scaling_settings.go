@@ -96,14 +96,15 @@ func (o *ClusterAutoScalingSettings) SetDiskGBEnabled(v bool) {
 	o.DiskGBEnabled = &v
 }
 
-func (o ClusterAutoScalingSettings) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *ClusterAutoScalingSettings) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ClusterAutoScalingSettings) ToMap() (map[string]interface{}, error) {
+
+func (o *ClusterAutoScalingSettings) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Compute) {
 		toSerialize["compute"] = o.Compute

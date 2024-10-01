@@ -264,14 +264,15 @@ func (o *OnlineArchiveSchedule) SetDayOfMonth(v int) {
 	o.DayOfMonth = &v
 }
 
-func (o OnlineArchiveSchedule) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *OnlineArchiveSchedule) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o OnlineArchiveSchedule) ToMap() (map[string]interface{}, error) {
+
+func (o *OnlineArchiveSchedule) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
 	if !IsNil(o.EndHour) {

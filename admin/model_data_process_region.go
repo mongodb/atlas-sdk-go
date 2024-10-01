@@ -99,14 +99,15 @@ func (o *DataProcessRegion) SetRegion(v string) {
 	o.Region = &v
 }
 
-func (o DataProcessRegion) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *DataProcessRegion) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o DataProcessRegion) ToMap() (map[string]interface{}, error) {
+
+func (o *DataProcessRegion) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

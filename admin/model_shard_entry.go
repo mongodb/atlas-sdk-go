@@ -109,14 +109,15 @@ func (o *ShardEntry) SetShardCollection(v ShardKeys) {
 	o.ShardCollection = v
 }
 
-func (o ShardEntry) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *ShardEntry) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ShardEntry) ToMap() (map[string]interface{}, error) {
+
+func (o *ShardEntry) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["collection"] = o.Collection
 	toSerialize["database"] = o.Database

@@ -118,14 +118,15 @@ func (o *EmployeeAccessGrant) SetLinks(v []Link) {
 	o.Links = &v
 }
 
-func (o EmployeeAccessGrant) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *EmployeeAccessGrant) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o EmployeeAccessGrant) ToMap() (map[string]interface{}, error) {
+
+func (o *EmployeeAccessGrant) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["expirationTime"] = o.ExpirationTime
 	toSerialize["grantType"] = o.GrantType

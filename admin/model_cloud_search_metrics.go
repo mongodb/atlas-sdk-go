@@ -227,14 +227,15 @@ func (o *CloudSearchMetrics) SetStatusMetrics(v []FTSMetric) {
 	o.StatusMetrics = &v
 }
 
-func (o CloudSearchMetrics) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *CloudSearchMetrics) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o CloudSearchMetrics) ToMap() (map[string]interface{}, error) {
+
+func (o *CloudSearchMetrics) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

@@ -450,14 +450,15 @@ func (o *BackupRestoreJobDelivery) SetUrlV2(v string) {
 	o.UrlV2 = &v
 }
 
-func (o BackupRestoreJobDelivery) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *BackupRestoreJobDelivery) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o BackupRestoreJobDelivery) ToMap() (map[string]interface{}, error) {
+
+func (o *BackupRestoreJobDelivery) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.ExpirationHours) {
 		toSerialize["expirationHours"] = o.ExpirationHours

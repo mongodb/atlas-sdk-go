@@ -133,14 +133,15 @@ func (o *X509CertificateUpdate) SetNotBefore(v time.Time) {
 	o.NotBefore = &v
 }
 
-func (o X509CertificateUpdate) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *X509CertificateUpdate) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o X509CertificateUpdate) ToMap() (map[string]interface{}, error) {
+
+func (o *X509CertificateUpdate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Content) {
 		toSerialize["content"] = o.Content

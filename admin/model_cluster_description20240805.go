@@ -1116,14 +1116,15 @@ func (o *ClusterDescription20240805) SetVersionReleaseSystem(v string) {
 	o.VersionReleaseSystem = &v
 }
 
-func (o ClusterDescription20240805) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *ClusterDescription20240805) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ClusterDescription20240805) ToMap() (map[string]interface{}, error) {
+
+func (o *ClusterDescription20240805) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.AcceptDataRisksAndForceReplicaSetReconfig) {
 		toSerialize["acceptDataRisksAndForceReplicaSetReconfig"] = o.AcceptDataRisksAndForceReplicaSetReconfig

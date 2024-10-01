@@ -81,14 +81,15 @@ func (o *ResourceTag) SetValue(v string) {
 	o.Value = v
 }
 
-func (o ResourceTag) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *ResourceTag) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ResourceTag) ToMap() (map[string]interface{}, error) {
+
+func (o *ResourceTag) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["key"] = o.Key
 	toSerialize["value"] = o.Value

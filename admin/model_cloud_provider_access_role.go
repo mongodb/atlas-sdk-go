@@ -483,14 +483,15 @@ func (o *CloudProviderAccessRole) SetTenantId(v string) {
 	o.TenantId = &v
 }
 
-func (o CloudProviderAccessRole) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *CloudProviderAccessRole) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o CloudProviderAccessRole) ToMap() (map[string]interface{}, error) {
+
+func (o *CloudProviderAccessRole) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["providerName"] = o.ProviderName
 	if !IsNil(o.IamAssumedRoleArn) {

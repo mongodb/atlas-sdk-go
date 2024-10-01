@@ -249,14 +249,15 @@ func (o *LDAPVerifyConnectivityJobRequestParams) SetPort(v int) {
 	o.Port = v
 }
 
-func (o LDAPVerifyConnectivityJobRequestParams) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *LDAPVerifyConnectivityJobRequestParams) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o LDAPVerifyConnectivityJobRequestParams) ToMap() (map[string]interface{}, error) {
+
+func (o *LDAPVerifyConnectivityJobRequestParams) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.AuthzQueryTemplate) {
 		toSerialize["authzQueryTemplate"] = o.AuthzQueryTemplate

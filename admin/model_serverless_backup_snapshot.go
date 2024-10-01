@@ -388,14 +388,15 @@ func (o *ServerlessBackupSnapshot) SetStorageSizeBytes(v int64) {
 	o.StorageSizeBytes = &v
 }
 
-func (o ServerlessBackupSnapshot) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *ServerlessBackupSnapshot) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ServerlessBackupSnapshot) ToMap() (map[string]interface{}, error) {
+
+func (o *ServerlessBackupSnapshot) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

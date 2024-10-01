@@ -177,14 +177,15 @@ func (o *SearchIndexCreateRequest) SetDefinition(v BaseSearchIndexCreateRequestD
 	o.Definition = &v
 }
 
-func (o SearchIndexCreateRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *SearchIndexCreateRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o SearchIndexCreateRequest) ToMap() (map[string]interface{}, error) {
+
+func (o *SearchIndexCreateRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["collectionName"] = o.CollectionName
 	toSerialize["database"] = o.Database

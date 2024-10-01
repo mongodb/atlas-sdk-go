@@ -99,14 +99,15 @@ func (o *ExportStatus) SetTotalCollections(v int) {
 	o.TotalCollections = &v
 }
 
-func (o ExportStatus) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *ExportStatus) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ExportStatus) ToMap() (map[string]interface{}, error) {
+
+func (o *ExportStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

@@ -117,14 +117,15 @@ func (o *StreamsDataProcessRegion) SetRegion(v string) {
 	o.Region = v
 }
 
-func (o StreamsDataProcessRegion) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *StreamsDataProcessRegion) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o StreamsDataProcessRegion) ToMap() (map[string]interface{}, error) {
+
+func (o *StreamsDataProcessRegion) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["cloudProvider"] = o.CloudProvider
 	toSerialize["region"] = o.Region

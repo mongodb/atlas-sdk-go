@@ -194,14 +194,15 @@ func (o *ServerlessMetricThreshold) SetUnits(v string) {
 	o.Units = &v
 }
 
-func (o ServerlessMetricThreshold) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *ServerlessMetricThreshold) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ServerlessMetricThreshold) ToMap() (map[string]interface{}, error) {
+
+func (o *ServerlessMetricThreshold) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["metricName"] = o.MetricName
 	if !IsNil(o.Mode) {

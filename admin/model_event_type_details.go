@@ -135,14 +135,15 @@ func (o *EventTypeDetails) SetEventType(v string) {
 	o.EventType = &v
 }
 
-func (o EventTypeDetails) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *EventTypeDetails) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o EventTypeDetails) ToMap() (map[string]interface{}, error) {
+
+func (o *EventTypeDetails) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

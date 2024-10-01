@@ -98,14 +98,15 @@ func (o *CloudProviderRegions) SetProvider(v string) {
 	o.Provider = &v
 }
 
-func (o CloudProviderRegions) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *CloudProviderRegions) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o CloudProviderRegions) ToMap() (map[string]interface{}, error) {
+
+func (o *CloudProviderRegions) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Provider) {
 		toSerialize["provider"] = o.Provider

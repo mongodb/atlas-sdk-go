@@ -610,14 +610,15 @@ func (o *FederationOidcIdentityProvider) SetRequestedScopes(v []string) {
 	o.RequestedScopes = &v
 }
 
-func (o FederationOidcIdentityProvider) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *FederationOidcIdentityProvider) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o FederationOidcIdentityProvider) ToMap() (map[string]interface{}, error) {
+
+func (o *FederationOidcIdentityProvider) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.AssociatedOrgs) {
 		toSerialize["associatedOrgs"] = o.AssociatedOrgs

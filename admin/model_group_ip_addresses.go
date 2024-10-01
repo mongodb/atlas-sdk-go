@@ -97,14 +97,15 @@ func (o *GroupIPAddresses) SetServices(v GroupService) {
 	o.Services = &v
 }
 
-func (o GroupIPAddresses) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *GroupIPAddresses) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o GroupIPAddresses) ToMap() (map[string]interface{}, error) {
+
+func (o *GroupIPAddresses) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Services) {
 		toSerialize["services"] = o.Services

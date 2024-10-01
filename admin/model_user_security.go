@@ -131,14 +131,15 @@ func (o *UserSecurity) SetLinks(v []Link) {
 	o.Links = &v
 }
 
-func (o UserSecurity) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *UserSecurity) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o UserSecurity) ToMap() (map[string]interface{}, error) {
+
+func (o *UserSecurity) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.CustomerX509) {
 		toSerialize["customerX509"] = o.CustomerX509

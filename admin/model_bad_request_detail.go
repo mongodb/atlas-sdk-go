@@ -62,14 +62,15 @@ func (o *BadRequestDetail) SetFields(v []FieldViolation) {
 	o.Fields = &v
 }
 
-func (o BadRequestDetail) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *BadRequestDetail) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o BadRequestDetail) ToMap() (map[string]interface{}, error) {
+
+func (o *BadRequestDetail) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Fields) {
 		toSerialize["fields"] = o.Fields

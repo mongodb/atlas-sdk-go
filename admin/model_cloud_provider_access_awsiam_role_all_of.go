@@ -279,14 +279,15 @@ func (o *CloudProviderAccessAWSIAMRoleAllOf) SetRoleId(v string) {
 	o.RoleId = &v
 }
 
-func (o CloudProviderAccessAWSIAMRoleAllOf) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *CloudProviderAccessAWSIAMRoleAllOf) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o CloudProviderAccessAWSIAMRoleAllOf) ToMap() (map[string]interface{}, error) {
+
+func (o *CloudProviderAccessAWSIAMRoleAllOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.IamAssumedRoleArn) {
 		toSerialize["iamAssumedRoleArn"] = o.IamAssumedRoleArn

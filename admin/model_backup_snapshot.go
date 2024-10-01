@@ -418,14 +418,15 @@ func (o *BackupSnapshot) SetParts(v []BackupSnapshotPart) {
 	o.Parts = &v
 }
 
-func (o BackupSnapshot) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *BackupSnapshot) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o BackupSnapshot) ToMap() (map[string]interface{}, error) {
+
+func (o *BackupSnapshot) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Created) {
 		toSerialize["created"] = o.Created

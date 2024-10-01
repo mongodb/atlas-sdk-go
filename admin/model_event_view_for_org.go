@@ -888,14 +888,15 @@ func (o *EventViewForOrg) SetResourcePolicyId(v string) {
 	o.ResourcePolicyId = &v
 }
 
-func (o EventViewForOrg) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *EventViewForOrg) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o EventViewForOrg) ToMap() (map[string]interface{}, error) {
+
+func (o *EventViewForOrg) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.EventTypeName) {
 		toSerialize["eventTypeName"] = o.EventTypeName

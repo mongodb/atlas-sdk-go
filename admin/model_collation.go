@@ -362,14 +362,15 @@ func (o *Collation) SetStrength(v int) {
 	o.Strength = &v
 }
 
-func (o Collation) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *Collation) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o Collation) ToMap() (map[string]interface{}, error) {
+
+func (o *Collation) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Alternate) {
 		toSerialize["alternate"] = o.Alternate

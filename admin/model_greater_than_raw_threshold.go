@@ -136,14 +136,15 @@ func (o *GreaterThanRawThreshold) SetUnits(v string) {
 	o.Units = &v
 }
 
-func (o GreaterThanRawThreshold) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *GreaterThanRawThreshold) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o GreaterThanRawThreshold) ToMap() (map[string]interface{}, error) {
+
+func (o *GreaterThanRawThreshold) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Operator) {
 		toSerialize["operator"] = o.Operator

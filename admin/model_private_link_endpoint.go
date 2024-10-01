@@ -414,14 +414,15 @@ func (o *PrivateLinkEndpoint) SetEndpoints(v []GCPConsumerForwardingRule) {
 	o.Endpoints = &v
 }
 
-func (o PrivateLinkEndpoint) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *PrivateLinkEndpoint) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o PrivateLinkEndpoint) ToMap() (map[string]interface{}, error) {
+
+func (o *PrivateLinkEndpoint) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.PrivateEndpointIPAddress) {
 		toSerialize["privateEndpointIPAddress"] = o.PrivateEndpointIPAddress

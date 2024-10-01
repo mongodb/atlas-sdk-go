@@ -279,14 +279,15 @@ func (o *ClusterConnectionStrings) SetStandardSrv(v string) {
 	o.StandardSrv = &v
 }
 
-func (o ClusterConnectionStrings) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *ClusterConnectionStrings) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ClusterConnectionStrings) ToMap() (map[string]interface{}, error) {
+
+func (o *ClusterConnectionStrings) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

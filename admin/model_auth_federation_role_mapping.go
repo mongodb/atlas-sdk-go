@@ -125,14 +125,15 @@ func (o *AuthFederationRoleMapping) SetRoleAssignments(v []RoleAssignment) {
 	o.RoleAssignments = &v
 }
 
-func (o AuthFederationRoleMapping) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *AuthFederationRoleMapping) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o AuthFederationRoleMapping) ToMap() (map[string]interface{}, error) {
+
+func (o *AuthFederationRoleMapping) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["externalGroupName"] = o.ExternalGroupName
 	if !IsNil(o.RoleAssignments) {

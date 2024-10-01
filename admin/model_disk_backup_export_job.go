@@ -448,14 +448,15 @@ func (o *DiskBackupExportJob) SetState(v string) {
 	o.State = &v
 }
 
-func (o DiskBackupExportJob) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *DiskBackupExportJob) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o DiskBackupExportJob) ToMap() (map[string]interface{}, error) {
+
+func (o *DiskBackupExportJob) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.CustomData) {
 		toSerialize["customData"] = o.CustomData

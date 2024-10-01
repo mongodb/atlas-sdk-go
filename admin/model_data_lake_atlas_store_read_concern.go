@@ -62,14 +62,15 @@ func (o *DataLakeAtlasStoreReadConcern) SetLevel(v string) {
 	o.Level = &v
 }
 
-func (o DataLakeAtlasStoreReadConcern) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *DataLakeAtlasStoreReadConcern) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o DataLakeAtlasStoreReadConcern) ToMap() (map[string]interface{}, error) {
+
+func (o *DataLakeAtlasStoreReadConcern) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Level) {
 		toSerialize["level"] = o.Level

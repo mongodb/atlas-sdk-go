@@ -284,14 +284,15 @@ func (o *UserCert) SetSubject(v string) {
 	o.Subject = &v
 }
 
-func (o UserCert) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *UserCert) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o UserCert) ToMap() (map[string]interface{}, error) {
+
+func (o *UserCert) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.MonthsUntilExpiration) {
 		toSerialize["monthsUntilExpiration"] = o.MonthsUntilExpiration

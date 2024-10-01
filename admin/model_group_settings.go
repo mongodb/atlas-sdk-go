@@ -237,14 +237,15 @@ func (o *GroupSettings) SetIsSchemaAdvisorEnabled(v bool) {
 	o.IsSchemaAdvisorEnabled = &v
 }
 
-func (o GroupSettings) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *GroupSettings) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o GroupSettings) ToMap() (map[string]interface{}, error) {
+
+func (o *GroupSettings) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.IsCollectDatabaseSpecificsStatisticsEnabled) {
 		toSerialize["isCollectDatabaseSpecificsStatisticsEnabled"] = o.IsCollectDatabaseSpecificsStatisticsEnabled

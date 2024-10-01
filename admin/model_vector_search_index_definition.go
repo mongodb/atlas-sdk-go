@@ -62,14 +62,15 @@ func (o *VectorSearchIndexDefinition) SetFields(v []interface{}) {
 	o.Fields = &v
 }
 
-func (o VectorSearchIndexDefinition) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *VectorSearchIndexDefinition) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o VectorSearchIndexDefinition) ToMap() (map[string]interface{}, error) {
+
+func (o *VectorSearchIndexDefinition) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Fields) {
 		toSerialize["fields"] = o.Fields

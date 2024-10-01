@@ -111,14 +111,15 @@ func (o *DiskBackupShardedClusterSnapshotMember) SetReplicaSetName(v string) {
 	o.ReplicaSetName = v
 }
 
-func (o DiskBackupShardedClusterSnapshotMember) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *DiskBackupShardedClusterSnapshotMember) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o DiskBackupShardedClusterSnapshotMember) ToMap() (map[string]interface{}, error) {
+
+func (o *DiskBackupShardedClusterSnapshotMember) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

@@ -712,14 +712,15 @@ func (o *DiskBackupSnapshot) SetSnapshotIds(v []string) {
 	o.SnapshotIds = &v
 }
 
-func (o DiskBackupSnapshot) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *DiskBackupSnapshot) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o DiskBackupSnapshot) ToMap() (map[string]interface{}, error) {
+
+func (o *DiskBackupSnapshot) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

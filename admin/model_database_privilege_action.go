@@ -89,14 +89,15 @@ func (o *DatabasePrivilegeAction) SetResources(v []DatabasePermittedNamespaceRes
 	o.Resources = &v
 }
 
-func (o DatabasePrivilegeAction) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *DatabasePrivilegeAction) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o DatabasePrivilegeAction) ToMap() (map[string]interface{}, error) {
+
+func (o *DatabasePrivilegeAction) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["action"] = o.Action
 	if !IsNil(o.Resources) {

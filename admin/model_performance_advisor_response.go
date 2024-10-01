@@ -99,14 +99,15 @@ func (o *PerformanceAdvisorResponse) SetSuggestedIndexes(v []PerformanceAdvisorI
 	o.SuggestedIndexes = &v
 }
 
-func (o PerformanceAdvisorResponse) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *PerformanceAdvisorResponse) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o PerformanceAdvisorResponse) ToMap() (map[string]interface{}, error) {
+
+func (o *PerformanceAdvisorResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

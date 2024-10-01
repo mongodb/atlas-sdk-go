@@ -135,14 +135,15 @@ func (o *PaginatedTenantSnapshot) SetTotalCount(v int) {
 	o.TotalCount = &v
 }
 
-func (o PaginatedTenantSnapshot) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *PaginatedTenantSnapshot) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o PaginatedTenantSnapshot) ToMap() (map[string]interface{}, error) {
+
+func (o *PaginatedTenantSnapshot) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

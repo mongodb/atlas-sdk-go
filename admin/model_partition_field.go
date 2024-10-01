@@ -119,14 +119,15 @@ func (o *PartitionField) SetOrder(v int) {
 	o.Order = v
 }
 
-func (o PartitionField) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *PartitionField) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o PartitionField) ToMap() (map[string]interface{}, error) {
+
+func (o *PartitionField) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["fieldName"] = o.FieldName
 	toSerialize["order"] = o.Order

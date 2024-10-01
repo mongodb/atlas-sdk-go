@@ -132,14 +132,15 @@ func (o *AtlasClusterOutageSimulationOutageFilter) SetType(v string) {
 	o.Type = &v
 }
 
-func (o AtlasClusterOutageSimulationOutageFilter) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *AtlasClusterOutageSimulationOutageFilter) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o AtlasClusterOutageSimulationOutageFilter) ToMap() (map[string]interface{}, error) {
+
+func (o *AtlasClusterOutageSimulationOutageFilter) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.CloudProvider) {
 		toSerialize["cloudProvider"] = o.CloudProvider

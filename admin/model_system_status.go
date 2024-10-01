@@ -173,14 +173,15 @@ func (o *SystemStatus) SetThrottling(v bool) {
 	o.Throttling = v
 }
 
-func (o SystemStatus) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *SystemStatus) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o SystemStatus) ToMap() (map[string]interface{}, error) {
+
+func (o *SystemStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["apiKey"] = o.ApiKey
 	return toSerialize, nil

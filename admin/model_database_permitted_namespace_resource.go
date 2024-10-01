@@ -108,14 +108,15 @@ func (o *DatabasePermittedNamespaceResource) SetDb(v string) {
 	o.Db = v
 }
 
-func (o DatabasePermittedNamespaceResource) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *DatabasePermittedNamespaceResource) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o DatabasePermittedNamespaceResource) ToMap() (map[string]interface{}, error) {
+
+func (o *DatabasePermittedNamespaceResource) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["cluster"] = o.Cluster
 	toSerialize["collection"] = o.Collection

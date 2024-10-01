@@ -135,14 +135,15 @@ func (o *PaginatedRestoreJob) SetTotalCount(v int) {
 	o.TotalCount = &v
 }
 
-func (o PaginatedRestoreJob) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *PaginatedRestoreJob) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o PaginatedRestoreJob) ToMap() (map[string]interface{}, error) {
+
+func (o *PaginatedRestoreJob) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

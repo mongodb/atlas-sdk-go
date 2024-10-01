@@ -307,14 +307,15 @@ func (o *ApiAtlasSnapshotSchedule) SetWeeklySnapshotRetentionWeeks(v int) {
 	o.WeeklySnapshotRetentionWeeks = v
 }
 
-func (o ApiAtlasSnapshotSchedule) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *ApiAtlasSnapshotSchedule) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ApiAtlasSnapshotSchedule) ToMap() (map[string]interface{}, error) {
+
+func (o *ApiAtlasSnapshotSchedule) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["clusterCheckpointIntervalMin"] = o.ClusterCheckpointIntervalMin
 	toSerialize["clusterId"] = o.ClusterId
