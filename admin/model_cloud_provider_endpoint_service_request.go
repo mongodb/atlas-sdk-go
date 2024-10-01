@@ -83,14 +83,15 @@ func (o *CloudProviderEndpointServiceRequest) SetRegion(v string) {
 	o.Region = v
 }
 
-func (o CloudProviderEndpointServiceRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *CloudProviderEndpointServiceRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o CloudProviderEndpointServiceRequest) ToMap() (map[string]interface{}, error) {
+
+func (o *CloudProviderEndpointServiceRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["providerName"] = o.ProviderName
 	toSerialize["region"] = o.Region

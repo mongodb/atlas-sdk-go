@@ -348,14 +348,15 @@ func (o *ApiAtlasResourcePolicy) SetVersion(v string) {
 	o.Version = &v
 }
 
-func (o ApiAtlasResourcePolicy) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *ApiAtlasResourcePolicy) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ApiAtlasResourcePolicy) ToMap() (map[string]interface{}, error) {
+
+func (o *ApiAtlasResourcePolicy) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.CreatedByUser) {
 		toSerialize["createdByUser"] = o.CreatedByUser

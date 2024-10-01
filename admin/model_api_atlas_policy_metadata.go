@@ -63,14 +63,15 @@ func (o *ApiAtlasPolicyMetadata) SetPolicyId(v string) {
 	o.PolicyId = &v
 }
 
-func (o ApiAtlasPolicyMetadata) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *ApiAtlasPolicyMetadata) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ApiAtlasPolicyMetadata) ToMap() (map[string]interface{}, error) {
+
+func (o *ApiAtlasPolicyMetadata) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

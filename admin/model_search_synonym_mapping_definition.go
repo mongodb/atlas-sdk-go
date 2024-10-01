@@ -107,14 +107,15 @@ func (o *SearchSynonymMappingDefinition) SetSource(v SynonymSource) {
 	o.Source = v
 }
 
-func (o SearchSynonymMappingDefinition) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *SearchSynonymMappingDefinition) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o SearchSynonymMappingDefinition) ToMap() (map[string]interface{}, error) {
+
+func (o *SearchSynonymMappingDefinition) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["analyzer"] = o.Analyzer
 	toSerialize["name"] = o.Name

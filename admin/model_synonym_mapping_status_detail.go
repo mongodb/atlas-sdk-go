@@ -132,14 +132,15 @@ func (o *SynonymMappingStatusDetail) SetStatus(v string) {
 	o.Status = &v
 }
 
-func (o SynonymMappingStatusDetail) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *SynonymMappingStatusDetail) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o SynonymMappingStatusDetail) ToMap() (map[string]interface{}, error) {
+
+func (o *SynonymMappingStatusDetail) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Message) {
 		toSerialize["message"] = o.Message

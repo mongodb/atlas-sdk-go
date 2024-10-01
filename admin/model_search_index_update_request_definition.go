@@ -280,14 +280,15 @@ func (o *SearchIndexUpdateRequestDefinition) SetFields(v []interface{}) {
 	o.Fields = &v
 }
 
-func (o SearchIndexUpdateRequestDefinition) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *SearchIndexUpdateRequestDefinition) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o SearchIndexUpdateRequestDefinition) ToMap() (map[string]interface{}, error) {
+
+func (o *SearchIndexUpdateRequestDefinition) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Analyzer) {
 		toSerialize["analyzer"] = o.Analyzer

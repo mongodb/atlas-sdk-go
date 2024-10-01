@@ -135,14 +135,15 @@ func (o *PaginatedApiAtlasEARPrivateEndpoint) SetTotalCount(v int) {
 	o.TotalCount = &v
 }
 
-func (o PaginatedApiAtlasEARPrivateEndpoint) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *PaginatedApiAtlasEARPrivateEndpoint) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o PaginatedApiAtlasEARPrivateEndpoint) ToMap() (map[string]interface{}, error) {
+
+func (o *PaginatedApiAtlasEARPrivateEndpoint) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

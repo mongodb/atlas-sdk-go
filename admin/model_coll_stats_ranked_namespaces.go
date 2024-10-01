@@ -135,14 +135,15 @@ func (o *CollStatsRankedNamespaces) SetRankedNamespaces(v []string) {
 	o.RankedNamespaces = &v
 }
 
-func (o CollStatsRankedNamespaces) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *CollStatsRankedNamespaces) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o CollStatsRankedNamespaces) ToMap() (map[string]interface{}, error) {
+
+func (o *CollStatsRankedNamespaces) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

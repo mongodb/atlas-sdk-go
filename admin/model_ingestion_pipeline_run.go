@@ -492,14 +492,15 @@ func (o *IngestionPipelineRun) SetStats(v PipelineRunStats) {
 	o.Stats = &v
 }
 
-func (o IngestionPipelineRun) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *IngestionPipelineRun) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o IngestionPipelineRun) ToMap() (map[string]interface{}, error) {
+
+func (o *IngestionPipelineRun) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.DatasetRetentionPolicy) {
 		toSerialize["datasetRetentionPolicy"] = o.DatasetRetentionPolicy

@@ -691,14 +691,15 @@ func (o *BaseNetworkPeeringConnectionSettings) SetNetworkName(v string) {
 	o.NetworkName = &v
 }
 
-func (o BaseNetworkPeeringConnectionSettings) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *BaseNetworkPeeringConnectionSettings) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o BaseNetworkPeeringConnectionSettings) ToMap() (map[string]interface{}, error) {
+
+func (o *BaseNetworkPeeringConnectionSettings) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["containerId"] = o.ContainerId
 	if !IsNil(o.ProviderName) {

@@ -424,14 +424,15 @@ func (o *MeasurementsCollStatsLatencyCluster) SetStart(v time.Time) {
 	o.Start = &v
 }
 
-func (o MeasurementsCollStatsLatencyCluster) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *MeasurementsCollStatsLatencyCluster) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o MeasurementsCollStatsLatencyCluster) ToMap() (map[string]interface{}, error) {
+
+func (o *MeasurementsCollStatsLatencyCluster) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

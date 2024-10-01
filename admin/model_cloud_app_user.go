@@ -437,14 +437,15 @@ func (o *CloudAppUser) SetUsername(v string) {
 	o.Username = v
 }
 
-func (o CloudAppUser) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *CloudAppUser) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o CloudAppUser) ToMap() (map[string]interface{}, error) {
+
+func (o *CloudAppUser) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["country"] = o.Country
 	toSerialize["firstName"] = o.FirstName

@@ -1502,14 +1502,15 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) SetVersionReleaseSystem(v strin
 	o.VersionReleaseSystem = &v
 }
 
-func (o LegacyAtlasTenantClusterUpgradeRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *LegacyAtlasTenantClusterUpgradeRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o LegacyAtlasTenantClusterUpgradeRequest) ToMap() (map[string]interface{}, error) {
+
+func (o *LegacyAtlasTenantClusterUpgradeRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.AcceptDataRisksAndForceReplicaSetReconfig) {
 		toSerialize["acceptDataRisksAndForceReplicaSetReconfig"] = o.AcceptDataRisksAndForceReplicaSetReconfig

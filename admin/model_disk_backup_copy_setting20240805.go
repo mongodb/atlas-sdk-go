@@ -194,14 +194,15 @@ func (o *DiskBackupCopySetting20240805) SetZoneId(v string) {
 	o.ZoneId = v
 }
 
-func (o DiskBackupCopySetting20240805) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *DiskBackupCopySetting20240805) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o DiskBackupCopySetting20240805) ToMap() (map[string]interface{}, error) {
+
+func (o *DiskBackupCopySetting20240805) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.CloudProvider) {
 		toSerialize["cloudProvider"] = o.CloudProvider

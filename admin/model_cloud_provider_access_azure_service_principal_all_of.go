@@ -277,14 +277,15 @@ func (o *CloudProviderAccessAzureServicePrincipalAllOf) SetTenantId(v string) {
 	o.TenantId = &v
 }
 
-func (o CloudProviderAccessAzureServicePrincipalAllOf) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *CloudProviderAccessAzureServicePrincipalAllOf) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o CloudProviderAccessAzureServicePrincipalAllOf) ToMap() (map[string]interface{}, error) {
+
+func (o *CloudProviderAccessAzureServicePrincipalAllOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.AtlasAzureAppId) {
 		toSerialize["atlasAzureAppId"] = o.AtlasAzureAppId

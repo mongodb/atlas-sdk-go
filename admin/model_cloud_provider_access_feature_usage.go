@@ -97,14 +97,15 @@ func (o *CloudProviderAccessFeatureUsage) SetFeatureId(v CloudProviderAccessFeat
 	o.FeatureId = &v
 }
 
-func (o CloudProviderAccessFeatureUsage) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *CloudProviderAccessFeatureUsage) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o CloudProviderAccessFeatureUsage) ToMap() (map[string]interface{}, error) {
+
+func (o *CloudProviderAccessFeatureUsage) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.FeatureId) {
 		toSerialize["featureId"] = o.FeatureId

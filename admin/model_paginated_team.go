@@ -135,14 +135,15 @@ func (o *PaginatedTeam) SetTotalCount(v int) {
 	o.TotalCount = &v
 }
 
-func (o PaginatedTeam) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *PaginatedTeam) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o PaginatedTeam) ToMap() (map[string]interface{}, error) {
+
+func (o *PaginatedTeam) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

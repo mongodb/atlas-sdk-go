@@ -62,14 +62,15 @@ func (o *DiskGBAutoScaling) SetEnabled(v bool) {
 	o.Enabled = &v
 }
 
-func (o DiskGBAutoScaling) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *DiskGBAutoScaling) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o DiskGBAutoScaling) ToMap() (map[string]interface{}, error) {
+
+func (o *DiskGBAutoScaling) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled

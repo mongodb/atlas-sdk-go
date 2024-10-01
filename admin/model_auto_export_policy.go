@@ -97,14 +97,15 @@ func (o *AutoExportPolicy) SetFrequencyType(v string) {
 	o.FrequencyType = &v
 }
 
-func (o AutoExportPolicy) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *AutoExportPolicy) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o AutoExportPolicy) ToMap() (map[string]interface{}, error) {
+
+func (o *AutoExportPolicy) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.ExportBucketId) {
 		toSerialize["exportBucketId"] = o.ExportBucketId

@@ -483,14 +483,15 @@ func (o *CloudProviderAccessAzureServicePrincipal) SetRoleId(v string) {
 	o.RoleId = &v
 }
 
-func (o CloudProviderAccessAzureServicePrincipal) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *CloudProviderAccessAzureServicePrincipal) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o CloudProviderAccessAzureServicePrincipal) ToMap() (map[string]interface{}, error) {
+
+func (o *CloudProviderAccessAzureServicePrincipal) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.AtlasAzureAppId) {
 		toSerialize["atlasAzureAppId"] = o.AtlasAzureAppId

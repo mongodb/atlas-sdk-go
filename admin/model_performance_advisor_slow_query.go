@@ -99,14 +99,15 @@ func (o *PerformanceAdvisorSlowQuery) SetNamespace(v string) {
 	o.Namespace = &v
 }
 
-func (o PerformanceAdvisorSlowQuery) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *PerformanceAdvisorSlowQuery) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o PerformanceAdvisorSlowQuery) ToMap() (map[string]interface{}, error) {
+
+func (o *PerformanceAdvisorSlowQuery) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

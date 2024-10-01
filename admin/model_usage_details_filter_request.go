@@ -307,14 +307,15 @@ func (o *UsageDetailsFilterRequest) SetUsageStartDate(v string) {
 	o.UsageStartDate = &v
 }
 
-func (o UsageDetailsFilterRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *UsageDetailsFilterRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o UsageDetailsFilterRequest) ToMap() (map[string]interface{}, error) {
+
+func (o *UsageDetailsFilterRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.BillEndDate) {
 		toSerialize["billEndDate"] = o.BillEndDate

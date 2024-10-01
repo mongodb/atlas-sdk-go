@@ -207,14 +207,15 @@ func (o *LiveMigrationResponse) SetStatus(v string) {
 	o.Status = &v
 }
 
-func (o LiveMigrationResponse) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *LiveMigrationResponse) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o LiveMigrationResponse) ToMap() (map[string]interface{}, error) {
+
+func (o *LiveMigrationResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

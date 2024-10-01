@@ -98,14 +98,15 @@ func (o *ApiAtlasInvalidResourcePolicyCreateError) SetInvalidPolicies(v []ApiAtl
 	o.InvalidPolicies = &v
 }
 
-func (o ApiAtlasInvalidResourcePolicyCreateError) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *ApiAtlasInvalidResourcePolicyCreateError) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ApiAtlasInvalidResourcePolicyCreateError) ToMap() (map[string]interface{}, error) {
+
+func (o *ApiAtlasInvalidResourcePolicyCreateError) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.ErrorType) {
 		toSerialize["errorType"] = o.ErrorType

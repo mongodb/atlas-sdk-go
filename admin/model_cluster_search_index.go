@@ -468,14 +468,15 @@ func (o *ClusterSearchIndex) SetFields(v []interface{}) {
 	o.Fields = &v
 }
 
-func (o ClusterSearchIndex) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *ClusterSearchIndex) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ClusterSearchIndex) ToMap() (map[string]interface{}, error) {
+
+func (o *ClusterSearchIndex) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["collectionName"] = o.CollectionName
 	toSerialize["database"] = o.Database

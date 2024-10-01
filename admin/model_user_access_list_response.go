@@ -278,14 +278,15 @@ func (o *UserAccessListResponse) SetLinks(v []Link) {
 	o.Links = &v
 }
 
-func (o UserAccessListResponse) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *UserAccessListResponse) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o UserAccessListResponse) ToMap() (map[string]interface{}, error) {
+
+func (o *UserAccessListResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.CidrBlock) {
 		toSerialize["cidrBlock"] = o.CidrBlock

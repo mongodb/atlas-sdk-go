@@ -81,14 +81,15 @@ func (o *ApiAtlasResourcePolicyCreate) SetPolicies(v []ApiAtlasPolicyCreate) {
 	o.Policies = v
 }
 
-func (o ApiAtlasResourcePolicyCreate) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *ApiAtlasResourcePolicyCreate) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ApiAtlasResourcePolicyCreate) ToMap() (map[string]interface{}, error) {
+
+func (o *ApiAtlasResourcePolicyCreate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
 	toSerialize["policies"] = o.Policies

@@ -187,14 +187,15 @@ func (o *DatabaseRollingIndexRequest) SetOptions(v IndexOptions) {
 	o.Options = &v
 }
 
-func (o DatabaseRollingIndexRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *DatabaseRollingIndexRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o DatabaseRollingIndexRequest) ToMap() (map[string]interface{}, error) {
+
+func (o *DatabaseRollingIndexRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Collation) {
 		toSerialize["collation"] = o.Collation

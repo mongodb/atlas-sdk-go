@@ -242,14 +242,15 @@ func (o *EARPrivateEndpoint) SetPrivateEndpointConnectionName(v string) {
 	o.PrivateEndpointConnectionName = &v
 }
 
-func (o EARPrivateEndpoint) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *EARPrivateEndpoint) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o EARPrivateEndpoint) ToMap() (map[string]interface{}, error) {
+
+func (o *EARPrivateEndpoint) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.RegionName) {
 		toSerialize["regionName"] = o.RegionName

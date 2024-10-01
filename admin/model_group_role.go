@@ -97,14 +97,15 @@ func (o *GroupRole) SetGroupRole(v string) {
 	o.GroupRole = &v
 }
 
-func (o GroupRole) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *GroupRole) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o GroupRole) ToMap() (map[string]interface{}, error) {
+
+func (o *GroupRole) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.GroupId) {
 		toSerialize["groupId"] = o.GroupId

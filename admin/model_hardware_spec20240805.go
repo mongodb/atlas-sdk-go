@@ -206,14 +206,15 @@ func (o *HardwareSpec20240805) SetNodeCount(v int) {
 	o.NodeCount = &v
 }
 
-func (o HardwareSpec20240805) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *HardwareSpec20240805) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o HardwareSpec20240805) ToMap() (map[string]interface{}, error) {
+
+func (o *HardwareSpec20240805) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.DiskSizeGB) {
 		toSerialize["diskSizeGB"] = o.DiskSizeGB

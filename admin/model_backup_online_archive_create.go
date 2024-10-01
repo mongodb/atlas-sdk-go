@@ -502,14 +502,15 @@ func (o *BackupOnlineArchiveCreate) SetState(v string) {
 	o.State = &v
 }
 
-func (o BackupOnlineArchiveCreate) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *BackupOnlineArchiveCreate) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o BackupOnlineArchiveCreate) ToMap() (map[string]interface{}, error) {
+
+func (o *BackupOnlineArchiveCreate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["collName"] = o.CollName
 	if !IsNil(o.CollectionType) {

@@ -99,14 +99,15 @@ func (o *CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId) SetGroupId(
 	o.GroupId = &v
 }
 
-func (o CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId) ToMap() (map[string]interface{}, error) {
+
+func (o *CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

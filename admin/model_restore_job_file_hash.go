@@ -171,14 +171,15 @@ func (o *RestoreJobFileHash) SetTypeName(v string) {
 	o.TypeName = &v
 }
 
-func (o RestoreJobFileHash) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *RestoreJobFileHash) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o RestoreJobFileHash) ToMap() (map[string]interface{}, error) {
+
+func (o *RestoreJobFileHash) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

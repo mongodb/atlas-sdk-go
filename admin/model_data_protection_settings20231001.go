@@ -473,14 +473,15 @@ func (o *DataProtectionSettings20231001) SetUpdatedUser(v string) {
 	o.UpdatedUser = &v
 }
 
-func (o DataProtectionSettings20231001) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *DataProtectionSettings20231001) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o DataProtectionSettings20231001) ToMap() (map[string]interface{}, error) {
+
+func (o *DataProtectionSettings20231001) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["authorizedEmail"] = o.AuthorizedEmail
 	toSerialize["authorizedUserFirstName"] = o.AuthorizedUserFirstName

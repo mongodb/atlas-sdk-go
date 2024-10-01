@@ -454,14 +454,15 @@ func (o *CloudProviderContainer) SetVpcId(v string) {
 	o.VpcId = &v
 }
 
-func (o CloudProviderContainer) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *CloudProviderContainer) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o CloudProviderContainer) ToMap() (map[string]interface{}, error) {
+
+func (o *CloudProviderContainer) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.ProviderName) {
 		toSerialize["providerName"] = o.ProviderName

@@ -53,14 +53,15 @@ func (o *SearchIndexUpdateRequest) SetDefinition(v SearchIndexUpdateRequestDefin
 	o.Definition = v
 }
 
-func (o SearchIndexUpdateRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *SearchIndexUpdateRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o SearchIndexUpdateRequest) ToMap() (map[string]interface{}, error) {
+
+func (o *SearchIndexUpdateRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["definition"] = o.Definition
 	return toSerialize, nil

@@ -54,14 +54,15 @@ func (o *AddUserToTeam) SetId(v string) {
 	o.Id = v
 }
 
-func (o AddUserToTeam) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *AddUserToTeam) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o AddUserToTeam) ToMap() (map[string]interface{}, error) {
+
+func (o *AddUserToTeam) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	return toSerialize, nil

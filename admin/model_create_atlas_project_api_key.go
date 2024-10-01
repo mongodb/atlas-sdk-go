@@ -81,14 +81,15 @@ func (o *CreateAtlasProjectApiKey) SetRoles(v []string) {
 	o.Roles = v
 }
 
-func (o CreateAtlasProjectApiKey) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *CreateAtlasProjectApiKey) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o CreateAtlasProjectApiKey) ToMap() (map[string]interface{}, error) {
+
+func (o *CreateAtlasProjectApiKey) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["desc"] = o.Desc
 	toSerialize["roles"] = o.Roles

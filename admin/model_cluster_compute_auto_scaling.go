@@ -97,14 +97,15 @@ func (o *ClusterComputeAutoScaling) SetScaleDownEnabled(v bool) {
 	o.ScaleDownEnabled = &v
 }
 
-func (o ClusterComputeAutoScaling) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *ClusterComputeAutoScaling) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ClusterComputeAutoScaling) ToMap() (map[string]interface{}, error) {
+
+func (o *ClusterComputeAutoScaling) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled

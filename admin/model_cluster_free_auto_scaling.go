@@ -62,14 +62,15 @@ func (o *ClusterFreeAutoScaling) SetCompute(v string) {
 	o.Compute = &v
 }
 
-func (o ClusterFreeAutoScaling) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *ClusterFreeAutoScaling) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ClusterFreeAutoScaling) ToMap() (map[string]interface{}, error) {
+
+func (o *ClusterFreeAutoScaling) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Compute) {
 		toSerialize["compute"] = o.Compute

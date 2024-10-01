@@ -108,14 +108,15 @@ func (o *StreamsMatcher) SetValue(v string) {
 	o.Value = v
 }
 
-func (o StreamsMatcher) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *StreamsMatcher) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o StreamsMatcher) ToMap() (map[string]interface{}, error) {
+
+func (o *StreamsMatcher) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["fieldName"] = o.FieldName
 	toSerialize["operator"] = o.Operator

@@ -135,14 +135,15 @@ func (o *ServerlessConnectionStringsPrivateEndpointList) SetType(v string) {
 	o.Type = &v
 }
 
-func (o ServerlessConnectionStringsPrivateEndpointList) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *ServerlessConnectionStringsPrivateEndpointList) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ServerlessConnectionStringsPrivateEndpointList) ToMap() (map[string]interface{}, error) {
+
+func (o *ServerlessConnectionStringsPrivateEndpointList) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

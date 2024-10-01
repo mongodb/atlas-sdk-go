@@ -63,14 +63,15 @@ func (o *GroupService) SetClusters(v []ClusterIPAddresses) {
 	o.Clusters = &v
 }
 
-func (o GroupService) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *GroupService) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o GroupService) ToMap() (map[string]interface{}, error) {
+
+func (o *GroupService) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

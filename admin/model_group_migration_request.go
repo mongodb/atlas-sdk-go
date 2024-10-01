@@ -132,14 +132,15 @@ func (o *GroupMigrationRequest) SetDestinationOrgPublicApiKey(v string) {
 	o.DestinationOrgPublicApiKey = &v
 }
 
-func (o GroupMigrationRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *GroupMigrationRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o GroupMigrationRequest) ToMap() (map[string]interface{}, error) {
+
+func (o *GroupMigrationRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.DestinationOrgId) {
 		toSerialize["destinationOrgId"] = o.DestinationOrgId

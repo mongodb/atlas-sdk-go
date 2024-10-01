@@ -95,14 +95,15 @@ func (o *DataLakeCloudProviderConfig) SetAzure(v DataFederationAzureCloudProvide
 	o.Azure = &v
 }
 
-func (o DataLakeCloudProviderConfig) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *DataLakeCloudProviderConfig) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o DataLakeCloudProviderConfig) ToMap() (map[string]interface{}, error) {
+
+func (o *DataLakeCloudProviderConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Aws) {
 		toSerialize["aws"] = o.Aws

@@ -924,14 +924,15 @@ func (o *AlertViewForNdsGroup) SetProcessorState(v string) {
 	o.ProcessorState = &v
 }
 
-func (o AlertViewForNdsGroup) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *AlertViewForNdsGroup) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o AlertViewForNdsGroup) ToMap() (map[string]interface{}, error) {
+
+func (o *AlertViewForNdsGroup) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.AcknowledgedUntil) {
 		toSerialize["acknowledgedUntil"] = o.AcknowledgedUntil

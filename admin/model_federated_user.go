@@ -171,14 +171,15 @@ func (o *FederatedUser) SetUserId(v string) {
 	o.UserId = &v
 }
 
-func (o FederatedUser) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *FederatedUser) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o FederatedUser) ToMap() (map[string]interface{}, error) {
+
+func (o *FederatedUser) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["emailAddress"] = o.EmailAddress
 	toSerialize["federationSettingsId"] = o.FederationSettingsId

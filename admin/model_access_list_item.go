@@ -91,14 +91,15 @@ func (o *AccessListItem) SetIpAddress(v string) {
 	o.IpAddress = v
 }
 
-func (o AccessListItem) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *AccessListItem) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o AccessListItem) ToMap() (map[string]interface{}, error) {
+
+func (o *AccessListItem) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

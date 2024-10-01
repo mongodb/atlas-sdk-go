@@ -280,14 +280,15 @@ func (o *BaseSearchIndexResponseLatestDefinition) SetFields(v []interface{}) {
 	o.Fields = &v
 }
 
-func (o BaseSearchIndexResponseLatestDefinition) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *BaseSearchIndexResponseLatestDefinition) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o BaseSearchIndexResponseLatestDefinition) ToMap() (map[string]interface{}, error) {
+
+func (o *BaseSearchIndexResponseLatestDefinition) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Analyzer) {
 		toSerialize["analyzer"] = o.Analyzer

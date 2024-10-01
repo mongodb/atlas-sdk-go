@@ -116,14 +116,15 @@ func (o *DatabaseUserRole) SetRoleName(v string) {
 	o.RoleName = v
 }
 
-func (o DatabaseUserRole) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *DatabaseUserRole) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o DatabaseUserRole) ToMap() (map[string]interface{}, error) {
+
+func (o *DatabaseUserRole) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.CollectionName) {
 		toSerialize["collectionName"] = o.CollectionName

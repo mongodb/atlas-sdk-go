@@ -135,14 +135,15 @@ func (o *PaginatedClusterDescription20240805) SetTotalCount(v int) {
 	o.TotalCount = &v
 }
 
-func (o PaginatedClusterDescription20240805) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *PaginatedClusterDescription20240805) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o PaginatedClusterDescription20240805) ToMap() (map[string]interface{}, error) {
+
+func (o *PaginatedClusterDescription20240805) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

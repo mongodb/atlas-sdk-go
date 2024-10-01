@@ -133,14 +133,15 @@ func (o *DiskBackupOnDemandSnapshotRequest) SetRetentionInDays(v int) {
 	o.RetentionInDays = &v
 }
 
-func (o DiskBackupOnDemandSnapshotRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *DiskBackupOnDemandSnapshotRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o DiskBackupOnDemandSnapshotRequest) ToMap() (map[string]interface{}, error) {
+
+func (o *DiskBackupOnDemandSnapshotRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description

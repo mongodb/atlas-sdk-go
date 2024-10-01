@@ -344,14 +344,15 @@ func (o *StreamsTenant) SetStreamConfig(v StreamConfig) {
 	o.StreamConfig = &v
 }
 
-func (o StreamsTenant) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *StreamsTenant) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o StreamsTenant) ToMap() (map[string]interface{}, error) {
+
+func (o *StreamsTenant) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.DataProcessRegion) {
 		toSerialize["dataProcessRegion"] = o.DataProcessRegion

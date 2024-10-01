@@ -62,14 +62,15 @@ func (o *DataExpirationRule) SetExpireAfterDays(v int) {
 	o.ExpireAfterDays = &v
 }
 
-func (o DataExpirationRule) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *DataExpirationRule) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o DataExpirationRule) ToMap() (map[string]interface{}, error) {
+
+func (o *DataExpirationRule) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.ExpireAfterDays) {
 		toSerialize["expireAfterDays"] = o.ExpireAfterDays

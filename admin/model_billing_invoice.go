@@ -675,14 +675,15 @@ func (o *BillingInvoice) SetUpdated(v time.Time) {
 	o.Updated = &v
 }
 
-func (o BillingInvoice) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *BillingInvoice) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o BillingInvoice) ToMap() (map[string]interface{}, error) {
+
+func (o *BillingInvoice) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.StatusName) {
 		toSerialize["statusName"] = o.StatusName

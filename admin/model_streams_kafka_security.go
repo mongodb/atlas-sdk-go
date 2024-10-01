@@ -133,14 +133,15 @@ func (o *StreamsKafkaSecurity) SetProtocol(v string) {
 	o.Protocol = &v
 }
 
-func (o StreamsKafkaSecurity) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *StreamsKafkaSecurity) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o StreamsKafkaSecurity) ToMap() (map[string]interface{}, error) {
+
+func (o *StreamsKafkaSecurity) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.BrokerPublicCertificate) {
 		toSerialize["brokerPublicCertificate"] = o.BrokerPublicCertificate

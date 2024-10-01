@@ -161,14 +161,15 @@ func (o *Team) SetUsernames(v []string) {
 	o.Usernames = &v
 }
 
-func (o Team) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *Team) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o Team) ToMap() (map[string]interface{}, error) {
+
+func (o *Team) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
 	if !IsNil(o.Usernames) {

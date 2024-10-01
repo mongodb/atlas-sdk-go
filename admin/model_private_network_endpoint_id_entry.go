@@ -237,14 +237,15 @@ func (o *PrivateNetworkEndpointIdEntry) SetType(v string) {
 	o.Type = &v
 }
 
-func (o PrivateNetworkEndpointIdEntry) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *PrivateNetworkEndpointIdEntry) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o PrivateNetworkEndpointIdEntry) ToMap() (map[string]interface{}, error) {
+
+func (o *PrivateNetworkEndpointIdEntry) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment

@@ -207,14 +207,15 @@ func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) SetType(v string) {
 	o.Type = &v
 }
 
-func (o ClusterDescriptionConnectionStringsPrivateEndpoint) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ClusterDescriptionConnectionStringsPrivateEndpoint) ToMap() (map[string]interface{}, error) {
+
+func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

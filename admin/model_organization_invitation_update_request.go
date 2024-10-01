@@ -132,14 +132,15 @@ func (o *OrganizationInvitationUpdateRequest) SetTeamIds(v []string) {
 	o.TeamIds = &v
 }
 
-func (o OrganizationInvitationUpdateRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *OrganizationInvitationUpdateRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o OrganizationInvitationUpdateRequest) ToMap() (map[string]interface{}, error) {
+
+func (o *OrganizationInvitationUpdateRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.GroupRoleAssignments) {
 		toSerialize["groupRoleAssignments"] = o.GroupRoleAssignments

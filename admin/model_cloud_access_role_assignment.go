@@ -132,14 +132,15 @@ func (o *CloudAccessRoleAssignment) SetRoleName(v string) {
 	o.RoleName = &v
 }
 
-func (o CloudAccessRoleAssignment) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *CloudAccessRoleAssignment) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o CloudAccessRoleAssignment) ToMap() (map[string]interface{}, error) {
+
+func (o *CloudAccessRoleAssignment) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.GroupId) {
 		toSerialize["groupId"] = o.GroupId

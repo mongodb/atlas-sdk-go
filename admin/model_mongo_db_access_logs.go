@@ -350,14 +350,15 @@ func (o *MongoDBAccessLogs) SetUsername(v string) {
 	o.Username = &v
 }
 
-func (o MongoDBAccessLogs) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *MongoDBAccessLogs) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o MongoDBAccessLogs) ToMap() (map[string]interface{}, error) {
+
+func (o *MongoDBAccessLogs) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.AuthResult) {
 		toSerialize["authResult"] = o.AuthResult

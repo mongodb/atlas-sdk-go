@@ -97,14 +97,15 @@ func (o *DataLakeAtlasStoreReadPreferenceTag) SetValue(v string) {
 	o.Value = &v
 }
 
-func (o DataLakeAtlasStoreReadPreferenceTag) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *DataLakeAtlasStoreReadPreferenceTag) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o DataLakeAtlasStoreReadPreferenceTag) ToMap() (map[string]interface{}, error) {
+
+func (o *DataLakeAtlasStoreReadPreferenceTag) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name

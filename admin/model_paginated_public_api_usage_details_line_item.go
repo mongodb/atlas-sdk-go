@@ -135,14 +135,15 @@ func (o *PaginatedPublicApiUsageDetailsLineItem) SetTotalCount(v int) {
 	o.TotalCount = &v
 }
 
-func (o PaginatedPublicApiUsageDetailsLineItem) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *PaginatedPublicApiUsageDetailsLineItem) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o PaginatedPublicApiUsageDetailsLineItem) ToMap() (map[string]interface{}, error) {
+
+func (o *PaginatedPublicApiUsageDetailsLineItem) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

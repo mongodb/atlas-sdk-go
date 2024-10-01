@@ -241,14 +241,15 @@ func (o *ApiAtlasFTSAnalyzersTokenizer) SetMaxTokenLength(v int) {
 	o.MaxTokenLength = &v
 }
 
-func (o ApiAtlasFTSAnalyzersTokenizer) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *ApiAtlasFTSAnalyzersTokenizer) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ApiAtlasFTSAnalyzersTokenizer) ToMap() (map[string]interface{}, error) {
+
+func (o *ApiAtlasFTSAnalyzersTokenizer) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.MaxGram) {
 		toSerialize["maxGram"] = o.MaxGram

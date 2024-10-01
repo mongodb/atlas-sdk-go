@@ -98,14 +98,15 @@ func (o *StreamConfig) SetTier(v string) {
 	o.Tier = &v
 }
 
-func (o StreamConfig) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *StreamConfig) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o StreamConfig) ToMap() (map[string]interface{}, error) {
+
+func (o *StreamConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Tier) {
 		toSerialize["tier"] = o.Tier

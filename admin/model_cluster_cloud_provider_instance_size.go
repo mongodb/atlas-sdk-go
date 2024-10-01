@@ -99,14 +99,15 @@ func (o *ClusterCloudProviderInstanceSize) SetName(v string) {
 	o.Name = &v
 }
 
-func (o ClusterCloudProviderInstanceSize) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *ClusterCloudProviderInstanceSize) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ClusterCloudProviderInstanceSize) ToMap() (map[string]interface{}, error) {
+
+func (o *ClusterCloudProviderInstanceSize) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

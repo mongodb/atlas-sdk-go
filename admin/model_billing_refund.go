@@ -172,14 +172,15 @@ func (o *BillingRefund) SetReason(v string) {
 	o.Reason = &v
 }
 
-func (o BillingRefund) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *BillingRefund) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o BillingRefund) ToMap() (map[string]interface{}, error) {
+
+func (o *BillingRefund) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

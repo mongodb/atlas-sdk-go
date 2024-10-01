@@ -480,14 +480,15 @@ func (o *CloudDatabaseUser) SetX509Type(v string) {
 	o.X509Type = &v
 }
 
-func (o CloudDatabaseUser) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *CloudDatabaseUser) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o CloudDatabaseUser) ToMap() (map[string]interface{}, error) {
+
+func (o *CloudDatabaseUser) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.AwsIAMType) {
 		toSerialize["awsIAMType"] = o.AwsIAMType

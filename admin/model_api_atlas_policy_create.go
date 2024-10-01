@@ -54,14 +54,15 @@ func (o *ApiAtlasPolicyCreate) SetBody(v string) {
 	o.Body = v
 }
 
-func (o ApiAtlasPolicyCreate) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *ApiAtlasPolicyCreate) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ApiAtlasPolicyCreate) ToMap() (map[string]interface{}, error) {
+
+func (o *ApiAtlasPolicyCreate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["body"] = o.Body
 	return toSerialize, nil

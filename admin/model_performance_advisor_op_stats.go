@@ -171,14 +171,15 @@ func (o *PerformanceAdvisorOpStats) SetTs(v int64) {
 	o.Ts = &v
 }
 
-func (o PerformanceAdvisorOpStats) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *PerformanceAdvisorOpStats) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o PerformanceAdvisorOpStats) ToMap() (map[string]interface{}, error) {
+
+func (o *PerformanceAdvisorOpStats) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }

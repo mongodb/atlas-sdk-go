@@ -924,14 +924,15 @@ func (o *FederationIdentityProvider) SetUserClaim(v string) {
 	o.UserClaim = &v
 }
 
-func (o FederationIdentityProvider) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *FederationIdentityProvider) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o FederationIdentityProvider) ToMap() (map[string]interface{}, error) {
+
+func (o *FederationIdentityProvider) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.AssociatedOrgs) {
 		toSerialize["associatedOrgs"] = o.AssociatedOrgs

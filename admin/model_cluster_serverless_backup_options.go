@@ -66,14 +66,15 @@ func (o *ClusterServerlessBackupOptions) SetServerlessContinuousBackupEnabled(v 
 	o.ServerlessContinuousBackupEnabled = &v
 }
 
-func (o ClusterServerlessBackupOptions) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *ClusterServerlessBackupOptions) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ClusterServerlessBackupOptions) ToMap() (map[string]interface{}, error) {
+
+func (o *ClusterServerlessBackupOptions) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.ServerlessContinuousBackupEnabled) {
 		toSerialize["serverlessContinuousBackupEnabled"] = o.ServerlessContinuousBackupEnabled

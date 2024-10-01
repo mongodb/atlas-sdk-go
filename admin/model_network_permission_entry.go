@@ -275,14 +275,15 @@ func (o *NetworkPermissionEntry) SetLinks(v []Link) {
 	o.Links = &v
 }
 
-func (o NetworkPermissionEntry) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *NetworkPermissionEntry) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o NetworkPermissionEntry) ToMap() (map[string]interface{}, error) {
+
+func (o *NetworkPermissionEntry) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.AwsSecurityGroup) {
 		toSerialize["awsSecurityGroup"] = o.AwsSecurityGroup

@@ -144,14 +144,15 @@ func (o *CreatePushBasedLogExportProjectRequest) SetPrefixPath(v string) {
 	o.PrefixPath = v
 }
 
-func (o CreatePushBasedLogExportProjectRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o *CreatePushBasedLogExportProjectRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o CreatePushBasedLogExportProjectRequest) ToMap() (map[string]interface{}, error) {
+
+func (o *CreatePushBasedLogExportProjectRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["bucketName"] = o.BucketName
 	toSerialize["iamRoleId"] = o.IamRoleId
