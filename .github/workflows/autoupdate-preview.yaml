@@ -38,9 +38,8 @@ jobs:
         run: make generate_mocks  
       - uses: peter-evans/create-pull-request@v7
         if: steps.verify-changed-files.outputs.files_changed == 'true'
-        env:
-           GITHUB_TOKEN: ${{ secrets.APIX_BOT_PAT }}
         with:
+          token: ${{ secrets.APIX_BOT_PAT }}
           title: "APIBot: GO SDK Dev Preview"
           commit-message: "temp: client update"
           delete-branch: true
