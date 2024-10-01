@@ -9,6 +9,8 @@ Name | Type | Description | Notes
 **BackupEnabled** | Pointer to **bool** | Flag that indicates whether the cluster can perform backups. If set to &#x60;true&#x60;, the cluster can perform backups. You must set this value to &#x60;true&#x60; for NVMe clusters. Backup uses Cloud Backups for dedicated clusters and Shared Cluster Backups for tenant clusters. If set to &#x60;false&#x60;, the cluster doesn&#39;t use MongoDB Cloud backups. | [optional] 
 **BiConnector** | Pointer to [**BiConnector**](BiConnector.md) |  | [optional] 
 **ClusterType** | Pointer to **string** | Configuration of nodes that comprise the cluster. | [optional] 
+**ConfigServerManagementMode** | Pointer to **string** | Config Server Management Mode for creating or updating a sharded cluster.  When configured as ATLAS_MANAGED, atlas may automatically switch the cluster&#39;s config server type for optimal performance and savings.  When configured as FIXED_TO_DEDICATED, the cluster will always use a dedicated config server. | [optional] [default to "ATLAS_MANAGED"]
+**ConfigServerType** | Pointer to **string** | Describes a sharded cluster&#39;s config server type. | [optional] [readonly] 
 **ConnectionStrings** | Pointer to [**ClusterConnectionStrings**](ClusterConnectionStrings.md) |  | [optional] 
 **CreateDate** | Pointer to **time.Time** | Date and time when MongoDB Cloud created this serverless instance. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC. | [optional] [readonly] 
 **DiskSizeGB** | Pointer to **float64** | Storage capacity of instance data volumes expressed in gigabytes. Increase this number to add capacity.   This value is not configurable on M0/M2/M5 clusters.   MongoDB Cloud requires this parameter if you set **replicationSpecs**.   If you specify a disk size below the minimum (10 GB), this parameter defaults to the minimum disk size value.    Storage charge calculations depend on whether you choose the default value or a custom value.   The maximum value for disk storage cannot exceed 50 times the maximum RAM for the selected cluster. If you require more storage space, consider upgrading your cluster to a higher tier. | [optional] 
@@ -183,6 +185,54 @@ SetClusterType sets ClusterType field to given value.
 `func (o *LegacyAtlasCluster) HasClusterType() bool`
 
 HasClusterType returns a boolean if a field has been set.
+### GetConfigServerManagementMode
+
+`func (o *LegacyAtlasCluster) GetConfigServerManagementMode() string`
+
+GetConfigServerManagementMode returns the ConfigServerManagementMode field if non-nil, zero value otherwise.
+
+### GetConfigServerManagementModeOk
+
+`func (o *LegacyAtlasCluster) GetConfigServerManagementModeOk() (*string, bool)`
+
+GetConfigServerManagementModeOk returns a tuple with the ConfigServerManagementMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConfigServerManagementMode
+
+`func (o *LegacyAtlasCluster) SetConfigServerManagementMode(v string)`
+
+SetConfigServerManagementMode sets ConfigServerManagementMode field to given value.
+
+### HasConfigServerManagementMode
+
+`func (o *LegacyAtlasCluster) HasConfigServerManagementMode() bool`
+
+HasConfigServerManagementMode returns a boolean if a field has been set.
+### GetConfigServerType
+
+`func (o *LegacyAtlasCluster) GetConfigServerType() string`
+
+GetConfigServerType returns the ConfigServerType field if non-nil, zero value otherwise.
+
+### GetConfigServerTypeOk
+
+`func (o *LegacyAtlasCluster) GetConfigServerTypeOk() (*string, bool)`
+
+GetConfigServerTypeOk returns a tuple with the ConfigServerType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConfigServerType
+
+`func (o *LegacyAtlasCluster) SetConfigServerType(v string)`
+
+SetConfigServerType sets ConfigServerType field to given value.
+
+### HasConfigServerType
+
+`func (o *LegacyAtlasCluster) HasConfigServerType() bool`
+
+HasConfigServerType returns a boolean if a field has been set.
 ### GetConnectionStrings
 
 `func (o *LegacyAtlasCluster) GetConnectionStrings() ClusterConnectionStrings`

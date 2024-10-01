@@ -27,7 +27,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 991036ecf95ec6855a39cd80bd2a15a90e012e7d
+  x-xgen-sha: c3ea41984e7aff9fd340d71a98ccc1e7074ff007
 servers:
   - url: https://cloud.mongodb.com
 tags:
@@ -22080,6 +22080,28 @@ components:
         clusterType:
           type: string
           description: Configuration of nodes that comprise the cluster.
+        configServerManagementMode:
+          type: string
+          default: ATLAS_MANAGED
+          description: >-
+            Config Server Management Mode for creating or updating a sharded
+            cluster.
+
+
+            When configured as ATLAS_MANAGED, atlas may automatically switch the cluster's config server type for optimal performance and savings.
+
+
+            When configured as FIXED_TO_DEDICATED, the cluster will always use a dedicated config server.
+          externalDocs:
+            description: MongoDB Sharded Cluster Config Servers
+            url: https://dochub.mongodb.org/docs/manual/core/sharded-cluster-config-servers
+        configServerType:
+          type: string
+          description: Describes a sharded cluster's config server type.
+          externalDocs:
+            description: MongoDB Sharded Cluster Config Servers
+            url: https://dochub.mongodb.org/docs/manual/core/sharded-cluster-config-servers
+          readOnly: true
         connectionStrings:
           $ref: "#/components/schemas/ClusterConnectionStrings"
         createDate:
@@ -27758,6 +27780,28 @@ components:
         clusterType:
           type: string
           description: Configuration of nodes that comprise the cluster.
+        configServerManagementMode:
+          type: string
+          default: ATLAS_MANAGED
+          description: >-
+            Config Server Management Mode for creating or updating a sharded
+            cluster.
+
+
+            When configured as ATLAS_MANAGED, atlas may automatically switch the cluster's config server type for optimal performance and savings.
+
+
+            When configured as FIXED_TO_DEDICATED, the cluster will always use a dedicated config server.
+          externalDocs:
+            description: MongoDB Sharded Cluster Config Servers
+            url: https://dochub.mongodb.org/docs/manual/core/sharded-cluster-config-servers
+        configServerType:
+          type: string
+          description: Describes a sharded cluster's config server type.
+          externalDocs:
+            description: MongoDB Sharded Cluster Config Servers
+            url: https://dochub.mongodb.org/docs/manual/core/sharded-cluster-config-servers
+          readOnly: true
         connectionStrings:
           $ref: "#/components/schemas/ClusterConnectionStrings"
         createDate:
@@ -28060,6 +28104,28 @@ components:
         clusterType:
           type: string
           description: Configuration of nodes that comprise the cluster.
+        configServerManagementMode:
+          type: string
+          default: ATLAS_MANAGED
+          description: >-
+            Config Server Management Mode for creating or updating a sharded
+            cluster.
+
+
+            When configured as ATLAS_MANAGED, atlas may automatically switch the cluster's config server type for optimal performance and savings.
+
+
+            When configured as FIXED_TO_DEDICATED, the cluster will always use a dedicated config server.
+          externalDocs:
+            description: MongoDB Sharded Cluster Config Servers
+            url: https://dochub.mongodb.org/docs/manual/core/sharded-cluster-config-servers
+        configServerType:
+          type: string
+          description: Describes a sharded cluster's config server type.
+          externalDocs:
+            description: MongoDB Sharded Cluster Config Servers
+            url: https://dochub.mongodb.org/docs/manual/core/sharded-cluster-config-servers
+          readOnly: true
         connectionStrings:
           $ref: "#/components/schemas/ClusterConnectionStrings"
         createDate:

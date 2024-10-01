@@ -16,7 +16,12 @@ type LegacyAtlasTenantClusterUpgradeRequest struct {
 	BackupEnabled *bool        `json:"backupEnabled,omitempty"`
 	BiConnector   *BiConnector `json:"biConnector,omitempty"`
 	// Configuration of nodes that comprise the cluster.
-	ClusterType       *string                   `json:"clusterType,omitempty"`
+	ClusterType *string `json:"clusterType,omitempty"`
+	// Config Server Management Mode for creating or updating a sharded cluster.  When configured as ATLAS_MANAGED, atlas may automatically switch the cluster's config server type for optimal performance and savings.  When configured as FIXED_TO_DEDICATED, the cluster will always use a dedicated config server.
+	ConfigServerManagementMode *string `json:"configServerManagementMode,omitempty"`
+	// Describes a sharded cluster's config server type.
+	// Read only field.
+	ConfigServerType  *string                   `json:"configServerType,omitempty"`
 	ConnectionStrings *ClusterConnectionStrings `json:"connectionStrings,omitempty"`
 	// Date and time when MongoDB Cloud created this serverless instance. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC.
 	// Read only field.
@@ -103,6 +108,8 @@ type LegacyAtlasTenantClusterUpgradeRequest struct {
 // will change when the set of required properties is changed
 func NewLegacyAtlasTenantClusterUpgradeRequest(name string) *LegacyAtlasTenantClusterUpgradeRequest {
 	this := LegacyAtlasTenantClusterUpgradeRequest{}
+	var configServerManagementMode string = "ATLAS_MANAGED"
+	this.ConfigServerManagementMode = &configServerManagementMode
 	var diskWarmingMode string = "FULLY_WARMED"
 	this.DiskWarmingMode = &diskWarmingMode
 	this.Name = name
@@ -126,6 +133,8 @@ func NewLegacyAtlasTenantClusterUpgradeRequest(name string) *LegacyAtlasTenantCl
 // but it doesn't guarantee that properties required by API are set
 func NewLegacyAtlasTenantClusterUpgradeRequestWithDefaults() *LegacyAtlasTenantClusterUpgradeRequest {
 	this := LegacyAtlasTenantClusterUpgradeRequest{}
+	var configServerManagementMode string = "ATLAS_MANAGED"
+	this.ConfigServerManagementMode = &configServerManagementMode
 	var diskWarmingMode string = "FULLY_WARMED"
 	this.DiskWarmingMode = &diskWarmingMode
 	var numShards int = 1
@@ -306,6 +315,72 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) HasClusterType() bool {
 // SetClusterType gets a reference to the given string and assigns it to the ClusterType field.
 func (o *LegacyAtlasTenantClusterUpgradeRequest) SetClusterType(v string) {
 	o.ClusterType = &v
+}
+
+// GetConfigServerManagementMode returns the ConfigServerManagementMode field value if set, zero value otherwise
+func (o *LegacyAtlasTenantClusterUpgradeRequest) GetConfigServerManagementMode() string {
+	if o == nil || IsNil(o.ConfigServerManagementMode) {
+		var ret string
+		return ret
+	}
+	return *o.ConfigServerManagementMode
+}
+
+// GetConfigServerManagementModeOk returns a tuple with the ConfigServerManagementMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LegacyAtlasTenantClusterUpgradeRequest) GetConfigServerManagementModeOk() (*string, bool) {
+	if o == nil || IsNil(o.ConfigServerManagementMode) {
+		return nil, false
+	}
+
+	return o.ConfigServerManagementMode, true
+}
+
+// HasConfigServerManagementMode returns a boolean if a field has been set.
+func (o *LegacyAtlasTenantClusterUpgradeRequest) HasConfigServerManagementMode() bool {
+	if o != nil && !IsNil(o.ConfigServerManagementMode) {
+		return true
+	}
+
+	return false
+}
+
+// SetConfigServerManagementMode gets a reference to the given string and assigns it to the ConfigServerManagementMode field.
+func (o *LegacyAtlasTenantClusterUpgradeRequest) SetConfigServerManagementMode(v string) {
+	o.ConfigServerManagementMode = &v
+}
+
+// GetConfigServerType returns the ConfigServerType field value if set, zero value otherwise
+func (o *LegacyAtlasTenantClusterUpgradeRequest) GetConfigServerType() string {
+	if o == nil || IsNil(o.ConfigServerType) {
+		var ret string
+		return ret
+	}
+	return *o.ConfigServerType
+}
+
+// GetConfigServerTypeOk returns a tuple with the ConfigServerType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LegacyAtlasTenantClusterUpgradeRequest) GetConfigServerTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.ConfigServerType) {
+		return nil, false
+	}
+
+	return o.ConfigServerType, true
+}
+
+// HasConfigServerType returns a boolean if a field has been set.
+func (o *LegacyAtlasTenantClusterUpgradeRequest) HasConfigServerType() bool {
+	if o != nil && !IsNil(o.ConfigServerType) {
+		return true
+	}
+
+	return false
+}
+
+// SetConfigServerType gets a reference to the given string and assigns it to the ConfigServerType field.
+func (o *LegacyAtlasTenantClusterUpgradeRequest) SetConfigServerType(v string) {
+	o.ConfigServerType = &v
 }
 
 // GetConnectionStrings returns the ConnectionStrings field value if set, zero value otherwise
@@ -1450,6 +1525,9 @@ func (o LegacyAtlasTenantClusterUpgradeRequest) ToMap() (map[string]interface{},
 	}
 	if !IsNil(o.ClusterType) {
 		toSerialize["clusterType"] = o.ClusterType
+	}
+	if !IsNil(o.ConfigServerManagementMode) {
+		toSerialize["configServerManagementMode"] = o.ConfigServerManagementMode
 	}
 	if !IsNil(o.ConnectionStrings) {
 		toSerialize["connectionStrings"] = o.ConnectionStrings
