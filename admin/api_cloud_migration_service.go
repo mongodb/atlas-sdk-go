@@ -255,7 +255,7 @@ func (a *CloudMigrationServiceApiService) CreateLinkToken(ctx context.Context, o
 	}
 }
 
-// Execute executes the request
+// CreateLinkTokenExecute executes the request
 //
 //	@return TargetOrg
 func (a *CloudMigrationServiceApiService) CreateLinkTokenExecute(r CreateLinkTokenApiRequest) (*TargetOrg, *http.Response, error) {
@@ -381,7 +381,7 @@ func (a *CloudMigrationServiceApiService) CreatePushMigration(ctx context.Contex
 	}
 }
 
-// Execute executes the request
+// CreatePushMigrationExecute executes the request
 //
 //	@return LiveMigrationResponse
 func (a *CloudMigrationServiceApiService) CreatePushMigrationExecute(r CreatePushMigrationApiRequest) (*LiveMigrationResponse, *http.Response, error) {
@@ -502,7 +502,7 @@ func (a *CloudMigrationServiceApiService) CutoverMigration(ctx context.Context, 
 	}
 }
 
-// Execute executes the request
+// CutoverMigrationExecute executes the request
 func (a *CloudMigrationServiceApiService) CutoverMigrationExecute(r CutoverMigrationApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPut
@@ -597,7 +597,7 @@ func (a *CloudMigrationServiceApiService) DeleteLinkToken(ctx context.Context, o
 	}
 }
 
-// Execute executes the request
+// DeleteLinkTokenExecute executes the request
 //
 //	@return interface{}
 func (a *CloudMigrationServiceApiService) DeleteLinkTokenExecute(r DeleteLinkTokenApiRequest) (interface{}, *http.Response, error) {
@@ -713,7 +713,7 @@ func (a *CloudMigrationServiceApiService) GetPushMigration(ctx context.Context, 
 	}
 }
 
-// Execute executes the request
+// GetPushMigrationExecute executes the request
 //
 //	@return LiveMigrationResponse
 func (a *CloudMigrationServiceApiService) GetPushMigrationExecute(r GetPushMigrationApiRequest) (*LiveMigrationResponse, *http.Response, error) {
@@ -830,7 +830,7 @@ func (a *CloudMigrationServiceApiService) GetValidationStatus(ctx context.Contex
 	}
 }
 
-// Execute executes the request
+// GetValidationStatusExecute executes the request
 //
 //	@return LiveImportValidation
 func (a *CloudMigrationServiceApiService) GetValidationStatusExecute(r GetValidationStatusApiRequest) (*LiveImportValidation, *http.Response, error) {
@@ -942,7 +942,7 @@ func (a *CloudMigrationServiceApiService) ListSourceProjects(ctx context.Context
 	}
 }
 
-// Execute executes the request
+// ListSourceProjectsExecute executes the request
 //
 //	@return []LiveImportAvailableProject
 func (a *CloudMigrationServiceApiService) ListSourceProjectsExecute(r ListSourceProjectsApiRequest) ([]LiveImportAvailableProject, *http.Response, error) {
@@ -1057,7 +1057,7 @@ func (a *CloudMigrationServiceApiService) ValidateMigration(ctx context.Context,
 	}
 }
 
-// Execute executes the request
+// ValidateMigrationExecute executes the request
 //
 //	@return LiveImportValidation
 func (a *CloudMigrationServiceApiService) ValidateMigrationExecute(r ValidateMigrationApiRequest) (*LiveImportValidation, *http.Response, error) {

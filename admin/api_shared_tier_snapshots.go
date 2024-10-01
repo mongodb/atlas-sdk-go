@@ -138,7 +138,7 @@ func (a *SharedTierSnapshotsApiService) DownloadSharedClusterBackup(ctx context.
 	}
 }
 
-// Execute executes the request
+// DownloadSharedClusterBackupExecute executes the request
 //
 //	@return TenantRestore
 func (a *SharedTierSnapshotsApiService) DownloadSharedClusterBackupExecute(r DownloadSharedClusterBackupApiRequest) (*TenantRestore, *http.Response, error) {
@@ -265,7 +265,7 @@ func (a *SharedTierSnapshotsApiService) GetSharedClusterBackup(ctx context.Conte
 	}
 }
 
-// Execute executes the request
+// GetSharedClusterBackupExecute executes the request
 //
 //	@return BackupTenantSnapshot
 func (a *SharedTierSnapshotsApiService) GetSharedClusterBackupExecute(r GetSharedClusterBackupApiRequest) (*BackupTenantSnapshot, *http.Response, error) {
@@ -383,7 +383,7 @@ func (a *SharedTierSnapshotsApiService) ListSharedClusterBackups(ctx context.Con
 	}
 }
 
-// Execute executes the request
+// ListSharedClusterBackupsExecute executes the request
 //
 //	@return PaginatedTenantSnapshot
 func (a *SharedTierSnapshotsApiService) ListSharedClusterBackupsExecute(r ListSharedClusterBackupsApiRequest) (*PaginatedTenantSnapshot, *http.Response, error) {

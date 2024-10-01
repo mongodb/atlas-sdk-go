@@ -186,7 +186,7 @@ func (a *GlobalClustersApiService) CreateCustomZoneMapping(ctx context.Context, 
 	}
 }
 
-// Execute executes the request
+// CreateCustomZoneMappingExecute executes the request
 //
 //	@return GeoSharding20240805
 func (a *GlobalClustersApiService) CreateCustomZoneMappingExecute(r CreateCustomZoneMappingApiRequest) (*GeoSharding20240805, *http.Response, error) {
@@ -312,7 +312,7 @@ func (a *GlobalClustersApiService) CreateManagedNamespace(ctx context.Context, g
 	}
 }
 
-// Execute executes the request
+// CreateManagedNamespaceExecute executes the request
 //
 //	@return GeoSharding20240805
 func (a *GlobalClustersApiService) CreateManagedNamespaceExecute(r CreateManagedNamespaceApiRequest) (*GeoSharding20240805, *http.Response, error) {
@@ -434,7 +434,7 @@ func (a *GlobalClustersApiService) DeleteAllCustomZoneMappings(ctx context.Conte
 	}
 }
 
-// Execute executes the request
+// DeleteAllCustomZoneMappingsExecute executes the request
 //
 //	@return GeoSharding20240805
 func (a *GlobalClustersApiService) DeleteAllCustomZoneMappingsExecute(r DeleteAllCustomZoneMappingsApiRequest) (*GeoSharding20240805, *http.Response, error) {
@@ -569,7 +569,7 @@ func (a *GlobalClustersApiService) DeleteManagedNamespace(ctx context.Context, c
 	}
 }
 
-// Execute executes the request
+// DeleteManagedNamespaceExecute executes the request
 //
 //	@return GeoSharding20240805
 func (a *GlobalClustersApiService) DeleteManagedNamespaceExecute(r DeleteManagedNamespaceApiRequest) (*GeoSharding20240805, *http.Response, error) {
@@ -692,7 +692,7 @@ func (a *GlobalClustersApiService) GetManagedNamespace(ctx context.Context, grou
 	}
 }
 
-// Execute executes the request
+// GetManagedNamespaceExecute executes the request
 //
 //	@return GeoSharding20240805
 func (a *GlobalClustersApiService) GetManagedNamespaceExecute(r GetManagedNamespaceApiRequest) (*GeoSharding20240805, *http.Response, error) {

@@ -429,7 +429,7 @@ func (a *DataLakePipelinesApiService) CreatePipeline(ctx context.Context, groupI
 	}
 }
 
-// Execute executes the request
+// CreatePipelineExecute executes the request
 //
 //	@return DataLakeIngestionPipeline
 //
@@ -554,7 +554,7 @@ func (a *DataLakePipelinesApiService) DeletePipeline(ctx context.Context, groupI
 	}
 }
 
-// Execute executes the request
+// DeletePipelineExecute executes the request
 //
 //	@return interface{}
 //
@@ -680,7 +680,7 @@ func (a *DataLakePipelinesApiService) DeletePipelineRunDataset(ctx context.Conte
 	}
 }
 
-// Execute executes the request
+// DeletePipelineRunDatasetExecute executes the request
 //
 //	@return interface{}
 //
@@ -802,7 +802,7 @@ func (a *DataLakePipelinesApiService) GetPipeline(ctx context.Context, groupId s
 	}
 }
 
-// Execute executes the request
+// GetPipelineExecute executes the request
 //
 //	@return DataLakeIngestionPipeline
 //
@@ -928,7 +928,7 @@ func (a *DataLakePipelinesApiService) GetPipelineRun(ctx context.Context, groupI
 	}
 }
 
-// Execute executes the request
+// GetPipelineRunExecute executes the request
 //
 //	@return IngestionPipelineRun
 //
@@ -1086,7 +1086,7 @@ func (a *DataLakePipelinesApiService) ListPipelineRuns(ctx context.Context, grou
 	}
 }
 
-// Execute executes the request
+// ListPipelineRunsExecute executes the request
 //
 //	@return PaginatedPipelineRun
 //
@@ -1231,7 +1231,7 @@ func (a *DataLakePipelinesApiService) ListPipelineSchedules(ctx context.Context,
 	}
 }
 
-// Execute executes the request
+// ListPipelineSchedulesExecute executes the request
 //
 //	@return []DiskBackupApiPolicyItem
 //
@@ -1388,7 +1388,7 @@ func (a *DataLakePipelinesApiService) ListPipelineSnapshots(ctx context.Context,
 	}
 }
 
-// Execute executes the request
+// ListPipelineSnapshotsExecute executes the request
 //
 //	@return PaginatedBackupSnapshot
 //
@@ -1528,7 +1528,7 @@ func (a *DataLakePipelinesApiService) ListPipelines(ctx context.Context, groupId
 	}
 }
 
-// Execute executes the request
+// ListPipelinesExecute executes the request
 //
 //	@return []DataLakeIngestionPipeline
 //
@@ -1648,7 +1648,7 @@ func (a *DataLakePipelinesApiService) PausePipeline(ctx context.Context, groupId
 	}
 }
 
-// Execute executes the request
+// PausePipelineExecute executes the request
 //
 //	@return DataLakeIngestionPipeline
 //
@@ -1769,7 +1769,7 @@ func (a *DataLakePipelinesApiService) ResumePipeline(ctx context.Context, groupI
 	}
 }
 
-// Execute executes the request
+// ResumePipelineExecute executes the request
 //
 //	@return DataLakeIngestionPipeline
 //
@@ -1894,7 +1894,7 @@ func (a *DataLakePipelinesApiService) TriggerSnapshotIngestion(ctx context.Conte
 	}
 }
 
-// Execute executes the request
+// TriggerSnapshotIngestionExecute executes the request
 //
 //	@return IngestionPipelineRun
 //
@@ -2024,7 +2024,7 @@ func (a *DataLakePipelinesApiService) UpdatePipeline(ctx context.Context, groupI
 	}
 }
 
-// Execute executes the request
+// UpdatePipelineExecute executes the request
 //
 //	@return DataLakeIngestionPipeline
 //

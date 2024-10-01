@@ -377,7 +377,7 @@ func (a *NetworkPeeringApiService) CreatePeeringConnection(ctx context.Context, 
 	}
 }
 
-// Execute executes the request
+// CreatePeeringConnectionExecute executes the request
 //
 //	@return BaseNetworkPeeringConnectionSettings
 func (a *NetworkPeeringApiService) CreatePeeringConnectionExecute(r CreatePeeringConnectionApiRequest) (*BaseNetworkPeeringConnectionSettings, *http.Response, error) {
@@ -497,7 +497,7 @@ func (a *NetworkPeeringApiService) CreatePeeringContainer(ctx context.Context, g
 	}
 }
 
-// Execute executes the request
+// CreatePeeringContainerExecute executes the request
 //
 //	@return CloudProviderContainer
 func (a *NetworkPeeringApiService) CreatePeeringContainerExecute(r CreatePeeringContainerApiRequest) (*CloudProviderContainer, *http.Response, error) {
@@ -618,7 +618,7 @@ func (a *NetworkPeeringApiService) DeletePeeringConnection(ctx context.Context, 
 	}
 }
 
-// Execute executes the request
+// DeletePeeringConnectionExecute executes the request
 //
 //	@return interface{}
 func (a *NetworkPeeringApiService) DeletePeeringConnectionExecute(r DeletePeeringConnectionApiRequest) (interface{}, *http.Response, error) {
@@ -735,7 +735,7 @@ func (a *NetworkPeeringApiService) DeletePeeringContainer(ctx context.Context, g
 	}
 }
 
-// Execute executes the request
+// DeletePeeringContainerExecute executes the request
 //
 //	@return interface{}
 func (a *NetworkPeeringApiService) DeletePeeringContainerExecute(r DeletePeeringContainerApiRequest) (interface{}, *http.Response, error) {
@@ -853,7 +853,7 @@ func (a *NetworkPeeringApiService) DisablePeering(ctx context.Context, groupId s
 	}
 }
 
-// Execute executes the request
+// DisablePeeringExecute executes the request
 //
 //	@return PrivateIPMode
 //
@@ -976,7 +976,7 @@ func (a *NetworkPeeringApiService) GetPeeringConnection(ctx context.Context, gro
 	}
 }
 
-// Execute executes the request
+// GetPeeringConnectionExecute executes the request
 //
 //	@return BaseNetworkPeeringConnectionSettings
 func (a *NetworkPeeringApiService) GetPeeringConnectionExecute(r GetPeeringConnectionApiRequest) (*BaseNetworkPeeringConnectionSettings, *http.Response, error) {
@@ -1093,7 +1093,7 @@ func (a *NetworkPeeringApiService) GetPeeringContainer(ctx context.Context, grou
 	}
 }
 
-// Execute executes the request
+// GetPeeringContainerExecute executes the request
 //
 //	@return CloudProviderContainer
 func (a *NetworkPeeringApiService) GetPeeringContainerExecute(r GetPeeringContainerApiRequest) (*CloudProviderContainer, *http.Response, error) {
@@ -1241,7 +1241,7 @@ func (a *NetworkPeeringApiService) ListPeeringConnections(ctx context.Context, g
 	}
 }
 
-// Execute executes the request
+// ListPeeringConnectionsExecute executes the request
 //
 //	@return PaginatedContainerPeer
 func (a *NetworkPeeringApiService) ListPeeringConnectionsExecute(r ListPeeringConnectionsApiRequest) (*PaginatedContainerPeer, *http.Response, error) {
@@ -1416,7 +1416,7 @@ func (a *NetworkPeeringApiService) ListPeeringContainerByCloudProvider(ctx conte
 	}
 }
 
-// Execute executes the request
+// ListPeeringContainerByCloudProviderExecute executes the request
 //
 //	@return PaginatedCloudProviderContainer
 func (a *NetworkPeeringApiService) ListPeeringContainerByCloudProviderExecute(r ListPeeringContainerByCloudProviderApiRequest) (*PaginatedCloudProviderContainer, *http.Response, error) {
@@ -1579,7 +1579,7 @@ func (a *NetworkPeeringApiService) ListPeeringContainers(ctx context.Context, gr
 	}
 }
 
-// Execute executes the request
+// ListPeeringContainersExecute executes the request
 //
 //	@return PaginatedCloudProviderContainer
 func (a *NetworkPeeringApiService) ListPeeringContainersExecute(r ListPeeringContainersApiRequest) (*PaginatedCloudProviderContainer, *http.Response, error) {
@@ -1720,7 +1720,7 @@ func (a *NetworkPeeringApiService) UpdatePeeringConnection(ctx context.Context, 
 	}
 }
 
-// Execute executes the request
+// UpdatePeeringConnectionExecute executes the request
 //
 //	@return BaseNetworkPeeringConnectionSettings
 func (a *NetworkPeeringApiService) UpdatePeeringConnectionExecute(r UpdatePeeringConnectionApiRequest) (*BaseNetworkPeeringConnectionSettings, *http.Response, error) {
@@ -1846,7 +1846,7 @@ func (a *NetworkPeeringApiService) UpdatePeeringContainer(ctx context.Context, g
 	}
 }
 
-// Execute executes the request
+// UpdatePeeringContainerExecute executes the request
 //
 //	@return CloudProviderContainer
 func (a *NetworkPeeringApiService) UpdatePeeringContainerExecute(r UpdatePeeringContainerApiRequest) (*CloudProviderContainer, *http.Response, error) {
@@ -1965,7 +1965,7 @@ func (a *NetworkPeeringApiService) VerifyConnectViaPeeringOnlyModeForOneProject(
 	}
 }
 
-// Execute executes the request
+// VerifyConnectViaPeeringOnlyModeForOneProjectExecute executes the request
 //
 //	@return PrivateIPMode
 //

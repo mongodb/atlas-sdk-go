@@ -205,7 +205,7 @@ func (a *ProjectIPAccessListApiService) CreateProjectIpAccessList(ctx context.Co
 	}
 }
 
-// Execute executes the request
+// CreateProjectIpAccessListExecute executes the request
 //
 //	@return PaginatedNetworkAccess
 func (a *ProjectIPAccessListApiService) CreateProjectIpAccessListExecute(r CreateProjectIpAccessListApiRequest) (*PaginatedNetworkAccess, *http.Response, error) {
@@ -347,7 +347,7 @@ func (a *ProjectIPAccessListApiService) DeleteProjectIpAccessList(ctx context.Co
 	}
 }
 
-// Execute executes the request
+// DeleteProjectIpAccessListExecute executes the request
 //
 //	@return interface{}
 func (a *ProjectIPAccessListApiService) DeleteProjectIpAccessListExecute(r DeleteProjectIpAccessListApiRequest) (interface{}, *http.Response, error) {
@@ -464,7 +464,7 @@ func (a *ProjectIPAccessListApiService) GetProjectIpAccessListStatus(ctx context
 	}
 }
 
-// Execute executes the request
+// GetProjectIpAccessListStatusExecute executes the request
 //
 //	@return NetworkPermissionEntryStatus
 func (a *ProjectIPAccessListApiService) GetProjectIpAccessListStatusExecute(r GetProjectIpAccessListStatusApiRequest) (*NetworkPermissionEntryStatus, *http.Response, error) {
@@ -581,7 +581,7 @@ func (a *ProjectIPAccessListApiService) GetProjectIpList(ctx context.Context, gr
 	}
 }
 
-// Execute executes the request
+// GetProjectIpListExecute executes the request
 //
 //	@return NetworkPermissionEntry
 func (a *ProjectIPAccessListApiService) GetProjectIpListExecute(r GetProjectIpListApiRequest) (*NetworkPermissionEntry, *http.Response, error) {
@@ -720,7 +720,7 @@ func (a *ProjectIPAccessListApiService) ListProjectIpAccessLists(ctx context.Con
 	}
 }
 
-// Execute executes the request
+// ListProjectIpAccessListsExecute executes the request
 //
 //	@return PaginatedNetworkAccess
 func (a *ProjectIPAccessListApiService) ListProjectIpAccessListsExecute(r ListProjectIpAccessListsApiRequest) (*PaginatedNetworkAccess, *http.Response, error) {

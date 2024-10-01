@@ -337,7 +337,7 @@ func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespaceClusterMe
 	}
 }
 
-// Execute executes the request
+// GetCollStatsLatencyNamespaceClusterMeasurementsExecute executes the request
 //
 //	@return MeasurementsCollStatsLatencyCluster
 func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespaceClusterMeasurementsExecute(r GetCollStatsLatencyNamespaceClusterMeasurementsApiRequest) (*MeasurementsCollStatsLatencyCluster, *http.Response, error) {
@@ -519,7 +519,7 @@ func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespaceHostMeasu
 	}
 }
 
-// Execute executes the request
+// GetCollStatsLatencyNamespaceHostMeasurementsExecute executes the request
 //
 //	@return MeasurementsCollStatsLatencyHost
 func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespaceHostMeasurementsExecute(r GetCollStatsLatencyNamespaceHostMeasurementsApiRequest) (*MeasurementsCollStatsLatencyHost, *http.Response, error) {
@@ -649,7 +649,7 @@ func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespaceMetrics(c
 	}
 }
 
-// Execute executes the request
+// GetCollStatsLatencyNamespaceMetricsExecute executes the request
 //
 //	@return interface{}
 func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespaceMetricsExecute(r GetCollStatsLatencyNamespaceMetricsApiRequest) (interface{}, *http.Response, error) {
@@ -797,7 +797,7 @@ func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespacesForClust
 	}
 }
 
-// Execute executes the request
+// GetCollStatsLatencyNamespacesForClusterExecute executes the request
 //
 //	@return CollStatsRankedNamespaces
 func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespacesForClusterExecute(r GetCollStatsLatencyNamespacesForClusterApiRequest) (*CollStatsRankedNamespaces, *http.Response, error) {
@@ -951,7 +951,7 @@ func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespacesForHost(
 	}
 }
 
-// Execute executes the request
+// GetCollStatsLatencyNamespacesForHostExecute executes the request
 //
 //	@return CollStatsRankedNamespaces
 func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespacesForHostExecute(r GetCollStatsLatencyNamespacesForHostApiRequest) (*CollStatsRankedNamespaces, *http.Response, error) {
@@ -1077,7 +1077,7 @@ func (a *CollectionLevelMetricsApiService) GetPinnedNamespaces(ctx context.Conte
 	}
 }
 
-// Execute executes the request
+// GetPinnedNamespacesExecute executes the request
 //
 //	@return PinnedNamespaces
 func (a *CollectionLevelMetricsApiService) GetPinnedNamespacesExecute(r GetPinnedNamespacesApiRequest) (*PinnedNamespaces, *http.Response, error) {
@@ -1198,7 +1198,7 @@ func (a *CollectionLevelMetricsApiService) PinNamespacesPatch(ctx context.Contex
 	}
 }
 
-// Execute executes the request
+// PinNamespacesPatchExecute executes the request
 //
 //	@return PinnedNamespaces
 func (a *CollectionLevelMetricsApiService) PinNamespacesPatchExecute(r PinNamespacesPatchApiRequest) (*PinnedNamespaces, *http.Response, error) {
@@ -1324,7 +1324,7 @@ func (a *CollectionLevelMetricsApiService) PinNamespacesPut(ctx context.Context,
 	}
 }
 
-// Execute executes the request
+// PinNamespacesPutExecute executes the request
 //
 //	@return PinnedNamespaces
 func (a *CollectionLevelMetricsApiService) PinNamespacesPutExecute(r PinNamespacesPutApiRequest) (*PinnedNamespaces, *http.Response, error) {
@@ -1450,7 +1450,7 @@ func (a *CollectionLevelMetricsApiService) UnpinNamespaces(ctx context.Context, 
 	}
 }
 
-// Execute executes the request
+// UnpinNamespacesExecute executes the request
 //
 //	@return PinnedNamespaces
 func (a *CollectionLevelMetricsApiService) UnpinNamespacesExecute(r UnpinNamespacesApiRequest) (*PinnedNamespaces, *http.Response, error) {

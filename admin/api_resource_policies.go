@@ -226,7 +226,7 @@ func (a *ResourcePoliciesApiService) CreateAtlasResourcePolicy(ctx context.Conte
 	}
 }
 
-// Execute executes the request
+// CreateAtlasResourcePolicyExecute executes the request
 //
 //	@return ApiAtlasResourcePolicy
 func (a *ResourcePoliciesApiService) CreateAtlasResourcePolicyExecute(r CreateAtlasResourcePolicyApiRequest) (*ApiAtlasResourcePolicy, *http.Response, error) {
@@ -347,7 +347,7 @@ func (a *ResourcePoliciesApiService) DeleteAtlasResourcePolicy(ctx context.Conte
 	}
 }
 
-// Execute executes the request
+// DeleteAtlasResourcePolicyExecute executes the request
 //
 //	@return interface{}
 func (a *ResourcePoliciesApiService) DeleteAtlasResourcePolicyExecute(r DeleteAtlasResourcePolicyApiRequest) (interface{}, *http.Response, error) {
@@ -459,7 +459,7 @@ func (a *ResourcePoliciesApiService) GetAtlasResourcePolicies(ctx context.Contex
 	}
 }
 
-// Execute executes the request
+// GetAtlasResourcePoliciesExecute executes the request
 //
 //	@return []ApiAtlasResourcePolicy
 func (a *ResourcePoliciesApiService) GetAtlasResourcePoliciesExecute(r GetAtlasResourcePoliciesApiRequest) ([]ApiAtlasResourcePolicy, *http.Response, error) {
@@ -575,7 +575,7 @@ func (a *ResourcePoliciesApiService) GetAtlasResourcePolicy(ctx context.Context,
 	}
 }
 
-// Execute executes the request
+// GetAtlasResourcePolicyExecute executes the request
 //
 //	@return ApiAtlasResourcePolicy
 func (a *ResourcePoliciesApiService) GetAtlasResourcePolicyExecute(r GetAtlasResourcePolicyApiRequest) (*ApiAtlasResourcePolicy, *http.Response, error) {
@@ -687,7 +687,7 @@ func (a *ResourcePoliciesApiService) GetResourcesNonCompliant(ctx context.Contex
 	}
 }
 
-// Execute executes the request
+// GetResourcesNonCompliantExecute executes the request
 //
 //	@return []ApiAtlasNonCompliantResource
 func (a *ResourcePoliciesApiService) GetResourcesNonCompliantExecute(r GetResourcesNonCompliantApiRequest) ([]ApiAtlasNonCompliantResource, *http.Response, error) {
@@ -807,7 +807,7 @@ func (a *ResourcePoliciesApiService) UpdateAtlasResourcePolicy(ctx context.Conte
 	}
 }
 
-// Execute executes the request
+// UpdateAtlasResourcePolicyExecute executes the request
 //
 //	@return ApiAtlasResourcePolicy
 func (a *ResourcePoliciesApiService) UpdateAtlasResourcePolicyExecute(r UpdateAtlasResourcePolicyApiRequest) (*ApiAtlasResourcePolicy, *http.Response, error) {
@@ -928,7 +928,7 @@ func (a *ResourcePoliciesApiService) ValidateAtlasResourcePolicy(ctx context.Con
 	}
 }
 
-// Execute executes the request
+// ValidateAtlasResourcePolicyExecute executes the request
 //
 //	@return ApiAtlasResourcePolicy
 func (a *ResourcePoliciesApiService) ValidateAtlasResourcePolicyExecute(r ValidateAtlasResourcePolicyApiRequest) (*ApiAtlasResourcePolicy, *http.Response, error) {

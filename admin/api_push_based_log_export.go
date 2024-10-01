@@ -153,7 +153,7 @@ func (a *PushBasedLogExportApiService) CreatePushBasedLogConfiguration(ctx conte
 	}
 }
 
-// Execute executes the request
+// CreatePushBasedLogConfigurationExecute executes the request
 func (a *PushBasedLogExportApiService) CreatePushBasedLogConfigurationExecute(r CreatePushBasedLogConfigurationApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
@@ -252,7 +252,7 @@ func (a *PushBasedLogExportApiService) DeletePushBasedLogConfiguration(ctx conte
 	}
 }
 
-// Execute executes the request
+// DeletePushBasedLogConfigurationExecute executes the request
 func (a *PushBasedLogExportApiService) DeletePushBasedLogConfigurationExecute(r DeletePushBasedLogConfigurationApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
@@ -346,7 +346,7 @@ func (a *PushBasedLogExportApiService) GetPushBasedLogConfiguration(ctx context.
 	}
 }
 
-// Execute executes the request
+// GetPushBasedLogConfigurationExecute executes the request
 //
 //	@return PushBasedLogExportProject
 func (a *PushBasedLogExportApiService) GetPushBasedLogConfigurationExecute(r GetPushBasedLogConfigurationApiRequest) (*PushBasedLogExportProject, *http.Response, error) {
@@ -461,7 +461,7 @@ func (a *PushBasedLogExportApiService) UpdatePushBasedLogConfiguration(ctx conte
 	}
 }
 
-// Execute executes the request
+// UpdatePushBasedLogConfigurationExecute executes the request
 func (a *PushBasedLogExportApiService) UpdatePushBasedLogConfigurationExecute(r UpdatePushBasedLogConfigurationApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPatch

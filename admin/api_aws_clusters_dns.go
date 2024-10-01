@@ -102,7 +102,7 @@ func (a *AWSClustersDNSApiService) GetAWSCustomDNS(ctx context.Context, groupId 
 	}
 }
 
-// Execute executes the request
+// GetAWSCustomDNSExecute executes the request
 //
 //	@return AWSCustomDNSEnabled
 func (a *AWSClustersDNSApiService) GetAWSCustomDNSExecute(r GetAWSCustomDNSApiRequest) (*AWSCustomDNSEnabled, *http.Response, error) {
@@ -217,7 +217,7 @@ func (a *AWSClustersDNSApiService) ToggleAWSCustomDNS(ctx context.Context, group
 	}
 }
 
-// Execute executes the request
+// ToggleAWSCustomDNSExecute executes the request
 //
 //	@return AWSCustomDNSEnabled
 func (a *AWSClustersDNSApiService) ToggleAWSCustomDNSExecute(r ToggleAWSCustomDNSApiRequest) (*AWSCustomDNSEnabled, *http.Response, error) {

@@ -102,7 +102,7 @@ func (a *AuditingApiService) GetAuditingConfiguration(ctx context.Context, group
 	}
 }
 
-// Execute executes the request
+// GetAuditingConfigurationExecute executes the request
 //
 //	@return AuditLog
 func (a *AuditingApiService) GetAuditingConfigurationExecute(r GetAuditingConfigurationApiRequest) (*AuditLog, *http.Response, error) {
@@ -217,7 +217,7 @@ func (a *AuditingApiService) UpdateAuditingConfiguration(ctx context.Context, gr
 	}
 }
 
-// Execute executes the request
+// UpdateAuditingConfigurationExecute executes the request
 //
 //	@return AuditLog
 func (a *AuditingApiService) UpdateAuditingConfigurationExecute(r UpdateAuditingConfigurationApiRequest) (*AuditLog, *http.Response, error) {

@@ -390,7 +390,7 @@ func (a *LegacyBackupApiService) CreateLegacyBackupRestoreJob(ctx context.Contex
 	}
 }
 
-// Execute executes the request
+// CreateLegacyBackupRestoreJobExecute executes the request
 //
 //	@return PaginatedRestoreJob
 //
@@ -521,7 +521,7 @@ func (a *LegacyBackupApiService) DeleteLegacySnapshot(ctx context.Context, group
 	}
 }
 
-// Execute executes the request
+// DeleteLegacySnapshotExecute executes the request
 //
 //	@return interface{}
 //
@@ -648,7 +648,7 @@ func (a *LegacyBackupApiService) GetLegacyBackupCheckpoint(ctx context.Context, 
 	}
 }
 
-// Execute executes the request
+// GetLegacyBackupCheckpointExecute executes the request
 //
 //	@return ApiAtlasCheckpoint
 //
@@ -777,7 +777,7 @@ func (a *LegacyBackupApiService) GetLegacyBackupRestoreJob(ctx context.Context, 
 	}
 }
 
-// Execute executes the request
+// GetLegacyBackupRestoreJobExecute executes the request
 //
 //	@return BackupRestoreJob
 //
@@ -904,7 +904,7 @@ func (a *LegacyBackupApiService) GetLegacySnapshot(ctx context.Context, groupId 
 	}
 }
 
-// Execute executes the request
+// GetLegacySnapshotExecute executes the request
 //
 //	@return BackupSnapshot
 //
@@ -1028,7 +1028,7 @@ func (a *LegacyBackupApiService) GetLegacySnapshotSchedule(ctx context.Context, 
 	}
 }
 
-// Execute executes the request
+// GetLegacySnapshotScheduleExecute executes the request
 //
 //	@return ApiAtlasSnapshotSchedule
 //
@@ -1176,7 +1176,7 @@ func (a *LegacyBackupApiService) ListLegacyBackupCheckpoints(ctx context.Context
 	}
 }
 
-// Execute executes the request
+// ListLegacyBackupCheckpointsExecute executes the request
 //
 //	@return PaginatedApiAtlasCheckpoint
 //
@@ -1356,7 +1356,7 @@ func (a *LegacyBackupApiService) ListLegacyBackupRestoreJobs(ctx context.Context
 	}
 }
 
-// Execute executes the request
+// ListLegacyBackupRestoreJobsExecute executes the request
 //
 //	@return PaginatedRestoreJob
 //
@@ -1537,7 +1537,7 @@ func (a *LegacyBackupApiService) ListLegacySnapshots(ctx context.Context, groupI
 	}
 }
 
-// Execute executes the request
+// ListLegacySnapshotsExecute executes the request
 //
 //	@return PaginatedSnapshot
 //
@@ -1695,7 +1695,7 @@ func (a *LegacyBackupApiService) UpdateLegacySnapshotRetention(ctx context.Conte
 	}
 }
 
-// Execute executes the request
+// UpdateLegacySnapshotRetentionExecute executes the request
 //
 //	@return BackupSnapshot
 //
@@ -1828,7 +1828,7 @@ func (a *LegacyBackupApiService) UpdateLegacySnapshotSchedule(ctx context.Contex
 	}
 }
 
-// Execute executes the request
+// UpdateLegacySnapshotScheduleExecute executes the request
 //
 //	@return ApiAtlasSnapshotSchedule
 //

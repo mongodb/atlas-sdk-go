@@ -212,7 +212,7 @@ func (a *ThirdPartyIntegrationsApiService) CreateThirdPartyIntegration(ctx conte
 	}
 }
 
-// Execute executes the request
+// CreateThirdPartyIntegrationExecute executes the request
 //
 //	@return PaginatedIntegration
 func (a *ThirdPartyIntegrationsApiService) CreateThirdPartyIntegrationExecute(r CreateThirdPartyIntegrationApiRequest) (*PaginatedIntegration, *http.Response, error) {
@@ -355,7 +355,7 @@ func (a *ThirdPartyIntegrationsApiService) DeleteThirdPartyIntegration(ctx conte
 	}
 }
 
-// Execute executes the request
+// DeleteThirdPartyIntegrationExecute executes the request
 //
 //	@return interface{}
 func (a *ThirdPartyIntegrationsApiService) DeleteThirdPartyIntegrationExecute(r DeleteThirdPartyIntegrationApiRequest) (interface{}, *http.Response, error) {
@@ -472,7 +472,7 @@ func (a *ThirdPartyIntegrationsApiService) GetThirdPartyIntegration(ctx context.
 	}
 }
 
-// Execute executes the request
+// GetThirdPartyIntegrationExecute executes the request
 //
 //	@return ThirdPartyIntegration
 func (a *ThirdPartyIntegrationsApiService) GetThirdPartyIntegrationExecute(r GetThirdPartyIntegrationApiRequest) (*ThirdPartyIntegration, *http.Response, error) {
@@ -611,7 +611,7 @@ func (a *ThirdPartyIntegrationsApiService) ListThirdPartyIntegrations(ctx contex
 	}
 }
 
-// Execute executes the request
+// ListThirdPartyIntegrationsExecute executes the request
 //
 //	@return PaginatedIntegration
 func (a *ThirdPartyIntegrationsApiService) ListThirdPartyIntegrationsExecute(r ListThirdPartyIntegrationsApiRequest) (*PaginatedIntegration, *http.Response, error) {
@@ -779,7 +779,7 @@ func (a *ThirdPartyIntegrationsApiService) UpdateThirdPartyIntegration(ctx conte
 	}
 }
 
-// Execute executes the request
+// UpdateThirdPartyIntegrationExecute executes the request
 //
 //	@return PaginatedIntegration
 func (a *ThirdPartyIntegrationsApiService) UpdateThirdPartyIntegrationExecute(r UpdateThirdPartyIntegrationApiRequest) (*PaginatedIntegration, *http.Response, error) {

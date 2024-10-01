@@ -516,7 +516,7 @@ func (a *ClustersApiService) CreateCluster(ctx context.Context, groupId string, 
 	}
 }
 
-// Execute executes the request
+// CreateClusterExecute executes the request
 //
 //	@return ClusterDescription20240805
 func (a *ClustersApiService) CreateClusterExecute(r CreateClusterApiRequest) (*ClusterDescription20240805, *http.Response, error) {
@@ -646,7 +646,7 @@ func (a *ClustersApiService) DeleteCluster(ctx context.Context, groupId string, 
 	}
 }
 
-// Execute executes the request
+// DeleteClusterExecute executes the request
 func (a *ClustersApiService) DeleteClusterExecute(r DeleteClusterApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
@@ -749,7 +749,7 @@ func (a *ClustersApiService) GetCluster(ctx context.Context, groupId string, clu
 	}
 }
 
-// Execute executes the request
+// GetClusterExecute executes the request
 //
 //	@return ClusterDescription20240805
 func (a *ClustersApiService) GetClusterExecute(r GetClusterApiRequest) (*ClusterDescription20240805, *http.Response, error) {
@@ -866,7 +866,7 @@ func (a *ClustersApiService) GetClusterAdvancedConfiguration(ctx context.Context
 	}
 }
 
-// Execute executes the request
+// GetClusterAdvancedConfigurationExecute executes the request
 //
 //	@return ClusterDescriptionProcessArgs20240805
 func (a *ClustersApiService) GetClusterAdvancedConfigurationExecute(r GetClusterAdvancedConfigurationApiRequest) (*ClusterDescriptionProcessArgs20240805, *http.Response, error) {
@@ -983,7 +983,7 @@ func (a *ClustersApiService) GetClusterStatus(ctx context.Context, groupId strin
 	}
 }
 
-// Execute executes the request
+// GetClusterStatusExecute executes the request
 //
 //	@return ClusterStatus
 func (a *ClustersApiService) GetClusterStatusExecute(r GetClusterStatusApiRequest) (*ClusterStatus, *http.Response, error) {
@@ -1100,7 +1100,7 @@ func (a *ClustersApiService) GetSampleDatasetLoadStatus(ctx context.Context, gro
 	}
 }
 
-// Execute executes the request
+// GetSampleDatasetLoadStatusExecute executes the request
 //
 //	@return SampleDatasetStatus
 func (a *ClustersApiService) GetSampleDatasetLoadStatusExecute(r GetSampleDatasetLoadStatusApiRequest) (*SampleDatasetStatus, *http.Response, error) {
@@ -1221,7 +1221,7 @@ func (a *ClustersApiService) GrantMongoDBEmployeeAccess(ctx context.Context, gro
 	}
 }
 
-// Execute executes the request
+// GrantMongoDBEmployeeAccessExecute executes the request
 //
 //	@return interface{}
 func (a *ClustersApiService) GrantMongoDBEmployeeAccessExecute(r GrantMongoDBEmployeeAccessApiRequest) (interface{}, *http.Response, error) {
@@ -1383,7 +1383,7 @@ func (a *ClustersApiService) ListCloudProviderRegions(ctx context.Context, group
 	}
 }
 
-// Execute executes the request
+// ListCloudProviderRegionsExecute executes the request
 //
 //	@return PaginatedApiAtlasProviderRegions
 func (a *ClustersApiService) ListCloudProviderRegionsExecute(r ListCloudProviderRegionsApiRequest) (*PaginatedApiAtlasProviderRegions, *http.Response, error) {
@@ -1561,7 +1561,7 @@ func (a *ClustersApiService) ListClusters(ctx context.Context, groupId string) L
 	}
 }
 
-// Execute executes the request
+// ListClustersExecute executes the request
 //
 //	@return PaginatedClusterDescription20240805
 func (a *ClustersApiService) ListClustersExecute(r ListClustersApiRequest) (*PaginatedClusterDescription20240805, *http.Response, error) {
@@ -1722,7 +1722,7 @@ func (a *ClustersApiService) ListClustersForAllProjects(ctx context.Context) Lis
 	}
 }
 
-// Execute executes the request
+// ListClustersForAllProjectsExecute executes the request
 //
 //	@return PaginatedOrgGroup
 func (a *ClustersApiService) ListClustersForAllProjectsExecute(r ListClustersForAllProjectsApiRequest) (*PaginatedOrgGroup, *http.Response, error) {
@@ -1858,7 +1858,7 @@ func (a *ClustersApiService) LoadSampleDataset(ctx context.Context, groupId stri
 	}
 }
 
-// Execute executes the request
+// LoadSampleDatasetExecute executes the request
 //
 //	@return SampleDatasetStatus
 func (a *ClustersApiService) LoadSampleDatasetExecute(r LoadSampleDatasetApiRequest) (*SampleDatasetStatus, *http.Response, error) {
@@ -1979,7 +1979,7 @@ func (a *ClustersApiService) PinFeatureCompatibilityVersion(ctx context.Context,
 	}
 }
 
-// Execute executes the request
+// PinFeatureCompatibilityVersionExecute executes the request
 //
 //	@return interface{}
 func (a *ClustersApiService) PinFeatureCompatibilityVersionExecute(r PinFeatureCompatibilityVersionApiRequest) (interface{}, *http.Response, error) {
@@ -2098,7 +2098,7 @@ func (a *ClustersApiService) RevokeMongoDBEmployeeAccess(ctx context.Context, gr
 	}
 }
 
-// Execute executes the request
+// RevokeMongoDBEmployeeAccessExecute executes the request
 //
 //	@return interface{}
 func (a *ClustersApiService) RevokeMongoDBEmployeeAccessExecute(r RevokeMongoDBEmployeeAccessApiRequest) (interface{}, *http.Response, error) {
@@ -2215,7 +2215,7 @@ func (a *ClustersApiService) TestFailover(ctx context.Context, groupId string, c
 	}
 }
 
-// Execute executes the request
+// TestFailoverExecute executes the request
 func (a *ClustersApiService) TestFailoverExecute(r TestFailoverApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
@@ -2315,7 +2315,7 @@ func (a *ClustersApiService) UnpinFeatureCompatibilityVersion(ctx context.Contex
 	}
 }
 
-// Execute executes the request
+// UnpinFeatureCompatibilityVersionExecute executes the request
 //
 //	@return interface{}
 func (a *ClustersApiService) UnpinFeatureCompatibilityVersionExecute(r UnpinFeatureCompatibilityVersionApiRequest) (interface{}, *http.Response, error) {
@@ -2436,7 +2436,7 @@ func (a *ClustersApiService) UpdateCluster(ctx context.Context, groupId string, 
 	}
 }
 
-// Execute executes the request
+// UpdateClusterExecute executes the request
 //
 //	@return ClusterDescription20240805
 func (a *ClustersApiService) UpdateClusterExecute(r UpdateClusterApiRequest) (*ClusterDescription20240805, *http.Response, error) {
@@ -2562,7 +2562,7 @@ func (a *ClustersApiService) UpdateClusterAdvancedConfiguration(ctx context.Cont
 	}
 }
 
-// Execute executes the request
+// UpdateClusterAdvancedConfigurationExecute executes the request
 //
 //	@return ClusterDescriptionProcessArgs20240805
 func (a *ClustersApiService) UpdateClusterAdvancedConfigurationExecute(r UpdateClusterAdvancedConfigurationApiRequest) (*ClusterDescriptionProcessArgs20240805, *http.Response, error) {
@@ -2683,7 +2683,7 @@ func (a *ClustersApiService) UpgradeSharedCluster(ctx context.Context, groupId s
 	}
 }
 
-// Execute executes the request
+// UpgradeSharedClusterExecute executes the request
 //
 //	@return LegacyAtlasCluster
 func (a *ClustersApiService) UpgradeSharedClusterExecute(r UpgradeSharedClusterApiRequest) (*LegacyAtlasCluster, *http.Response, error) {
@@ -2803,7 +2803,7 @@ func (a *ClustersApiService) UpgradeSharedClusterToServerless(ctx context.Contex
 	}
 }
 
-// Execute executes the request
+// UpgradeSharedClusterToServerlessExecute executes the request
 //
 //	@return ServerlessInstanceDescription
 func (a *ClustersApiService) UpgradeSharedClusterToServerlessExecute(r UpgradeSharedClusterToServerlessApiRequest) (*ServerlessInstanceDescription, *http.Response, error) {

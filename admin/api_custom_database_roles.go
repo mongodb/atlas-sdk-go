@@ -179,7 +179,7 @@ func (a *CustomDatabaseRolesApiService) CreateCustomDatabaseRole(ctx context.Con
 	}
 }
 
-// Execute executes the request
+// CreateCustomDatabaseRoleExecute executes the request
 //
 //	@return UserCustomDBRole
 func (a *CustomDatabaseRolesApiService) CreateCustomDatabaseRoleExecute(r CreateCustomDatabaseRoleApiRequest) (*UserCustomDBRole, *http.Response, error) {
@@ -300,7 +300,7 @@ func (a *CustomDatabaseRolesApiService) DeleteCustomDatabaseRole(ctx context.Con
 	}
 }
 
-// Execute executes the request
+// DeleteCustomDatabaseRoleExecute executes the request
 func (a *CustomDatabaseRolesApiService) DeleteCustomDatabaseRoleExecute(r DeleteCustomDatabaseRoleApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
@@ -400,7 +400,7 @@ func (a *CustomDatabaseRolesApiService) GetCustomDatabaseRole(ctx context.Contex
 	}
 }
 
-// Execute executes the request
+// GetCustomDatabaseRoleExecute executes the request
 //
 //	@return UserCustomDBRole
 func (a *CustomDatabaseRolesApiService) GetCustomDatabaseRoleExecute(r GetCustomDatabaseRoleApiRequest) (*UserCustomDBRole, *http.Response, error) {
@@ -512,7 +512,7 @@ func (a *CustomDatabaseRolesApiService) ListCustomDatabaseRoles(ctx context.Cont
 	}
 }
 
-// Execute executes the request
+// ListCustomDatabaseRolesExecute executes the request
 //
 //	@return []UserCustomDBRole
 func (a *CustomDatabaseRolesApiService) ListCustomDatabaseRolesExecute(r ListCustomDatabaseRolesApiRequest) ([]UserCustomDBRole, *http.Response, error) {
@@ -632,7 +632,7 @@ func (a *CustomDatabaseRolesApiService) UpdateCustomDatabaseRole(ctx context.Con
 	}
 }
 
-// Execute executes the request
+// UpdateCustomDatabaseRoleExecute executes the request
 //
 //	@return UserCustomDBRole
 func (a *CustomDatabaseRolesApiService) UpdateCustomDatabaseRoleExecute(r UpdateCustomDatabaseRoleApiRequest) (*UserCustomDBRole, *http.Response, error) {

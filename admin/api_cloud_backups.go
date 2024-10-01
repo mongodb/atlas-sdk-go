@@ -779,7 +779,7 @@ func (a *CloudBackupsApiService) CancelBackupRestoreJob(ctx context.Context, gro
 	}
 }
 
-// Execute executes the request
+// CancelBackupRestoreJobExecute executes the request
 //
 //	@return interface{}
 func (a *CloudBackupsApiService) CancelBackupRestoreJobExecute(r CancelBackupRestoreJobApiRequest) (interface{}, *http.Response, error) {
@@ -901,7 +901,7 @@ func (a *CloudBackupsApiService) CreateBackupExportJob(ctx context.Context, grou
 	}
 }
 
-// Execute executes the request
+// CreateBackupExportJobExecute executes the request
 //
 //	@return DiskBackupExportJob
 func (a *CloudBackupsApiService) CreateBackupExportJobExecute(r CreateBackupExportJobApiRequest) (*DiskBackupExportJob, *http.Response, error) {
@@ -1029,7 +1029,7 @@ func (a *CloudBackupsApiService) CreateBackupRestoreJob(ctx context.Context, gro
 	}
 }
 
-// Execute executes the request
+// CreateBackupRestoreJobExecute executes the request
 //
 //	@return DiskBackupSnapshotRestoreJob
 func (a *CloudBackupsApiService) CreateBackupRestoreJobExecute(r CreateBackupRestoreJobApiRequest) (*DiskBackupSnapshotRestoreJob, *http.Response, error) {
@@ -1150,7 +1150,7 @@ func (a *CloudBackupsApiService) CreateExportBucket(ctx context.Context, groupId
 	}
 }
 
-// Execute executes the request
+// CreateExportBucketExecute executes the request
 //
 //	@return DiskBackupSnapshotExportBucket
 func (a *CloudBackupsApiService) CreateExportBucketExecute(r CreateExportBucketApiRequest) (*DiskBackupSnapshotExportBucket, *http.Response, error) {
@@ -1275,7 +1275,7 @@ func (a *CloudBackupsApiService) CreateServerlessBackupRestoreJob(ctx context.Co
 	}
 }
 
-// Execute executes the request
+// CreateServerlessBackupRestoreJobExecute executes the request
 //
 //	@return ServerlessBackupRestoreJob
 func (a *CloudBackupsApiService) CreateServerlessBackupRestoreJobExecute(r CreateServerlessBackupRestoreJobApiRequest) (*ServerlessBackupRestoreJob, *http.Response, error) {
@@ -1397,7 +1397,7 @@ func (a *CloudBackupsApiService) DeleteAllBackupSchedules(ctx context.Context, g
 	}
 }
 
-// Execute executes the request
+// DeleteAllBackupSchedulesExecute executes the request
 //
 //	@return DiskBackupSnapshotSchedule20240805
 func (a *CloudBackupsApiService) DeleteAllBackupSchedulesExecute(r DeleteAllBackupSchedulesApiRequest) (*DiskBackupSnapshotSchedule20240805, *http.Response, error) {
@@ -1514,7 +1514,7 @@ func (a *CloudBackupsApiService) DeleteExportBucket(ctx context.Context, groupId
 	}
 }
 
-// Execute executes the request
+// DeleteExportBucketExecute executes the request
 //
 //	@return interface{}
 func (a *CloudBackupsApiService) DeleteExportBucketExecute(r DeleteExportBucketApiRequest) (interface{}, *http.Response, error) {
@@ -1636,7 +1636,7 @@ func (a *CloudBackupsApiService) DeleteReplicaSetBackup(ctx context.Context, gro
 	}
 }
 
-// Execute executes the request
+// DeleteReplicaSetBackupExecute executes the request
 //
 //	@return interface{}
 func (a *CloudBackupsApiService) DeleteReplicaSetBackupExecute(r DeleteReplicaSetBackupApiRequest) (interface{}, *http.Response, error) {
@@ -1759,7 +1759,7 @@ func (a *CloudBackupsApiService) DeleteShardedClusterBackup(ctx context.Context,
 	}
 }
 
-// Execute executes the request
+// DeleteShardedClusterBackupExecute executes the request
 //
 //	@return interface{}
 func (a *CloudBackupsApiService) DeleteShardedClusterBackupExecute(r DeleteShardedClusterBackupApiRequest) (interface{}, *http.Response, error) {
@@ -1882,7 +1882,7 @@ func (a *CloudBackupsApiService) GetBackupExportJob(ctx context.Context, groupId
 	}
 }
 
-// Execute executes the request
+// GetBackupExportJobExecute executes the request
 //
 //	@return DiskBackupExportJob
 func (a *CloudBackupsApiService) GetBackupExportJobExecute(r GetBackupExportJobApiRequest) (*DiskBackupExportJob, *http.Response, error) {
@@ -2005,7 +2005,7 @@ func (a *CloudBackupsApiService) GetBackupRestoreJob(ctx context.Context, groupI
 	}
 }
 
-// Execute executes the request
+// GetBackupRestoreJobExecute executes the request
 //
 //	@return DiskBackupSnapshotRestoreJob
 func (a *CloudBackupsApiService) GetBackupRestoreJobExecute(r GetBackupRestoreJobApiRequest) (*DiskBackupSnapshotRestoreJob, *http.Response, error) {
@@ -2123,7 +2123,7 @@ func (a *CloudBackupsApiService) GetBackupSchedule(ctx context.Context, groupId 
 	}
 }
 
-// Execute executes the request
+// GetBackupScheduleExecute executes the request
 //
 //	@return DiskBackupSnapshotSchedule20240805
 func (a *CloudBackupsApiService) GetBackupScheduleExecute(r GetBackupScheduleApiRequest) (*DiskBackupSnapshotSchedule20240805, *http.Response, error) {
@@ -2235,7 +2235,7 @@ func (a *CloudBackupsApiService) GetDataProtectionSettings(ctx context.Context, 
 	}
 }
 
-// Execute executes the request
+// GetDataProtectionSettingsExecute executes the request
 //
 //	@return DataProtectionSettings20231001
 func (a *CloudBackupsApiService) GetDataProtectionSettingsExecute(r GetDataProtectionSettingsApiRequest) (*DataProtectionSettings20231001, *http.Response, error) {
@@ -2351,7 +2351,7 @@ func (a *CloudBackupsApiService) GetExportBucket(ctx context.Context, groupId st
 	}
 }
 
-// Execute executes the request
+// GetExportBucketExecute executes the request
 //
 //	@return DiskBackupSnapshotExportBucket
 func (a *CloudBackupsApiService) GetExportBucketExecute(r GetExportBucketApiRequest) (*DiskBackupSnapshotExportBucket, *http.Response, error) {
@@ -2473,7 +2473,7 @@ func (a *CloudBackupsApiService) GetReplicaSetBackup(ctx context.Context, groupI
 	}
 }
 
-// Execute executes the request
+// GetReplicaSetBackupExecute executes the request
 //
 //	@return DiskBackupReplicaSet
 func (a *CloudBackupsApiService) GetReplicaSetBackupExecute(r GetReplicaSetBackupApiRequest) (*DiskBackupReplicaSet, *http.Response, error) {
@@ -2596,7 +2596,7 @@ func (a *CloudBackupsApiService) GetServerlessBackup(ctx context.Context, groupI
 	}
 }
 
-// Execute executes the request
+// GetServerlessBackupExecute executes the request
 //
 //	@return ServerlessBackupSnapshot
 func (a *CloudBackupsApiService) GetServerlessBackupExecute(r GetServerlessBackupApiRequest) (*ServerlessBackupSnapshot, *http.Response, error) {
@@ -2719,7 +2719,7 @@ func (a *CloudBackupsApiService) GetServerlessBackupRestoreJob(ctx context.Conte
 	}
 }
 
-// Execute executes the request
+// GetServerlessBackupRestoreJobExecute executes the request
 //
 //	@return ServerlessBackupRestoreJob
 func (a *CloudBackupsApiService) GetServerlessBackupRestoreJobExecute(r GetServerlessBackupRestoreJobApiRequest) (*ServerlessBackupRestoreJob, *http.Response, error) {
@@ -2842,7 +2842,7 @@ func (a *CloudBackupsApiService) GetShardedClusterBackup(ctx context.Context, gr
 	}
 }
 
-// Execute executes the request
+// GetShardedClusterBackupExecute executes the request
 //
 //	@return DiskBackupShardedClusterSnapshot
 func (a *CloudBackupsApiService) GetShardedClusterBackupExecute(r GetShardedClusterBackupApiRequest) (*DiskBackupShardedClusterSnapshot, *http.Response, error) {
@@ -2987,7 +2987,7 @@ func (a *CloudBackupsApiService) ListBackupExportJobs(ctx context.Context, group
 	}
 }
 
-// Execute executes the request
+// ListBackupExportJobsExecute executes the request
 //
 //	@return PaginatedApiAtlasDiskBackupExportJob
 func (a *CloudBackupsApiService) ListBackupExportJobsExecute(r ListBackupExportJobsApiRequest) (*PaginatedApiAtlasDiskBackupExportJob, *http.Response, error) {
@@ -3152,7 +3152,7 @@ func (a *CloudBackupsApiService) ListBackupRestoreJobs(ctx context.Context, grou
 	}
 }
 
-// Execute executes the request
+// ListBackupRestoreJobsExecute executes the request
 //
 //	@return PaginatedCloudBackupRestoreJob
 func (a *CloudBackupsApiService) ListBackupRestoreJobsExecute(r ListBackupRestoreJobsApiRequest) (*PaginatedCloudBackupRestoreJob, *http.Response, error) {
@@ -3312,7 +3312,7 @@ func (a *CloudBackupsApiService) ListExportBuckets(ctx context.Context, groupId 
 	}
 }
 
-// Execute executes the request
+// ListExportBucketsExecute executes the request
 //
 //	@return PaginatedBackupSnapshotExportBuckets
 func (a *CloudBackupsApiService) ListExportBucketsExecute(r ListExportBucketsApiRequest) (*PaginatedBackupSnapshotExportBuckets, *http.Response, error) {
@@ -3476,7 +3476,7 @@ func (a *CloudBackupsApiService) ListReplicaSetBackups(ctx context.Context, grou
 	}
 }
 
-// Execute executes the request
+// ListReplicaSetBackupsExecute executes the request
 //
 //	@return PaginatedCloudBackupReplicaSet
 func (a *CloudBackupsApiService) ListReplicaSetBackupsExecute(r ListReplicaSetBackupsApiRequest) (*PaginatedCloudBackupReplicaSet, *http.Response, error) {
@@ -3641,7 +3641,7 @@ func (a *CloudBackupsApiService) ListServerlessBackupRestoreJobs(ctx context.Con
 	}
 }
 
-// Execute executes the request
+// ListServerlessBackupRestoreJobsExecute executes the request
 //
 //	@return PaginatedApiAtlasServerlessBackupRestoreJob
 func (a *CloudBackupsApiService) ListServerlessBackupRestoreJobsExecute(r ListServerlessBackupRestoreJobsApiRequest) (*PaginatedApiAtlasServerlessBackupRestoreJob, *http.Response, error) {
@@ -3806,7 +3806,7 @@ func (a *CloudBackupsApiService) ListServerlessBackups(ctx context.Context, grou
 	}
 }
 
-// Execute executes the request
+// ListServerlessBackupsExecute executes the request
 //
 //	@return PaginatedApiAtlasServerlessBackupSnapshot
 func (a *CloudBackupsApiService) ListServerlessBackupsExecute(r ListServerlessBackupsApiRequest) (*PaginatedApiAtlasServerlessBackupSnapshot, *http.Response, error) {
@@ -3944,7 +3944,7 @@ func (a *CloudBackupsApiService) ListShardedClusterBackups(ctx context.Context, 
 	}
 }
 
-// Execute executes the request
+// ListShardedClusterBackupsExecute executes the request
 //
 //	@return PaginatedCloudBackupShardedClusterSnapshot
 func (a *CloudBackupsApiService) ListShardedClusterBackupsExecute(r ListShardedClusterBackupsApiRequest) (*PaginatedCloudBackupShardedClusterSnapshot, *http.Response, error) {
@@ -4067,7 +4067,7 @@ func (a *CloudBackupsApiService) TakeSnapshot(ctx context.Context, groupId strin
 	}
 }
 
-// Execute executes the request
+// TakeSnapshotExecute executes the request
 //
 //	@return DiskBackupSnapshot
 func (a *CloudBackupsApiService) TakeSnapshotExecute(r TakeSnapshotApiRequest) (*DiskBackupSnapshot, *http.Response, error) {
@@ -4193,7 +4193,7 @@ func (a *CloudBackupsApiService) UpdateBackupSchedule(ctx context.Context, group
 	}
 }
 
-// Execute executes the request
+// UpdateBackupScheduleExecute executes the request
 //
 //	@return DiskBackupSnapshotSchedule20240805
 func (a *CloudBackupsApiService) UpdateBackupScheduleExecute(r UpdateBackupScheduleApiRequest) (*DiskBackupSnapshotSchedule20240805, *http.Response, error) {
@@ -4323,7 +4323,7 @@ func (a *CloudBackupsApiService) UpdateDataProtectionSettings(ctx context.Contex
 	}
 }
 
-// Execute executes the request
+// UpdateDataProtectionSettingsExecute executes the request
 //
 //	@return DataProtectionSettings20231001
 func (a *CloudBackupsApiService) UpdateDataProtectionSettingsExecute(r UpdateDataProtectionSettingsApiRequest) (*DataProtectionSettings20231001, *http.Response, error) {
@@ -4460,7 +4460,7 @@ func (a *CloudBackupsApiService) UpdateSnapshotRetention(ctx context.Context, gr
 	}
 }
 
-// Execute executes the request
+// UpdateSnapshotRetentionExecute executes the request
 //
 //	@return DiskBackupReplicaSet
 func (a *CloudBackupsApiService) UpdateSnapshotRetentionExecute(r UpdateSnapshotRetentionApiRequest) (*DiskBackupReplicaSet, *http.Response, error) {

@@ -197,7 +197,7 @@ func (a *EventsApiService) GetOrganizationEvent(ctx context.Context, orgId strin
 	}
 }
 
-// Execute executes the request
+// GetOrganizationEventExecute executes the request
 //
 //	@return EventViewForOrg
 func (a *EventsApiService) GetOrganizationEventExecute(r GetOrganizationEventApiRequest) (*EventViewForOrg, *http.Response, error) {
@@ -332,7 +332,7 @@ func (a *EventsApiService) GetProjectEvent(ctx context.Context, groupId string, 
 	}
 }
 
-// Execute executes the request
+// GetProjectEventExecute executes the request
 //
 //	@return EventViewForNdsGroup
 func (a *EventsApiService) GetProjectEventExecute(r GetProjectEventApiRequest) (*EventViewForNdsGroup, *http.Response, error) {
@@ -473,7 +473,7 @@ func (a *EventsApiService) ListEventTypes(ctx context.Context) ListEventTypesApi
 	}
 }
 
-// Execute executes the request
+// ListEventTypesExecute executes the request
 //
 //	@return PaginatedEventTypeDetailsResponse
 func (a *EventsApiService) ListEventTypesExecute(r ListEventTypesApiRequest) (*PaginatedEventTypeDetailsResponse, *http.Response, error) {
@@ -669,7 +669,7 @@ func (a *EventsApiService) ListOrganizationEvents(ctx context.Context, orgId str
 	}
 }
 
-// Execute executes the request
+// ListOrganizationEventsExecute executes the request
 //
 //	@return OrgPaginatedEvent
 func (a *EventsApiService) ListOrganizationEventsExecute(r ListOrganizationEventsApiRequest) (*OrgPaginatedEvent, *http.Response, error) {
@@ -904,7 +904,7 @@ func (a *EventsApiService) ListProjectEvents(ctx context.Context, groupId string
 	}
 }
 
-// Execute executes the request
+// ListProjectEventsExecute executes the request
 //
 //	@return GroupPaginatedEvent
 func (a *EventsApiService) ListProjectEventsExecute(r ListProjectEventsApiRequest) (*GroupPaginatedEvent, *http.Response, error) {

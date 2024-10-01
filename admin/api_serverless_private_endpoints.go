@@ -193,7 +193,7 @@ func (a *ServerlessPrivateEndpointsApiService) CreateServerlessPrivateEndpoint(c
 	}
 }
 
-// Execute executes the request
+// CreateServerlessPrivateEndpointExecute executes the request
 //
 //	@return ServerlessTenantEndpoint
 func (a *ServerlessPrivateEndpointsApiService) CreateServerlessPrivateEndpointExecute(r CreateServerlessPrivateEndpointApiRequest) (*ServerlessTenantEndpoint, *http.Response, error) {
@@ -320,7 +320,7 @@ func (a *ServerlessPrivateEndpointsApiService) DeleteServerlessPrivateEndpoint(c
 	}
 }
 
-// Execute executes the request
+// DeleteServerlessPrivateEndpointExecute executes the request
 //
 //	@return interface{}
 func (a *ServerlessPrivateEndpointsApiService) DeleteServerlessPrivateEndpointExecute(r DeleteServerlessPrivateEndpointApiRequest) (interface{}, *http.Response, error) {
@@ -443,7 +443,7 @@ func (a *ServerlessPrivateEndpointsApiService) GetServerlessPrivateEndpoint(ctx 
 	}
 }
 
-// Execute executes the request
+// GetServerlessPrivateEndpointExecute executes the request
 //
 //	@return ServerlessTenantEndpoint
 func (a *ServerlessPrivateEndpointsApiService) GetServerlessPrivateEndpointExecute(r GetServerlessPrivateEndpointApiRequest) (*ServerlessTenantEndpoint, *http.Response, error) {
@@ -561,7 +561,7 @@ func (a *ServerlessPrivateEndpointsApiService) ListServerlessPrivateEndpoints(ct
 	}
 }
 
-// Execute executes the request
+// ListServerlessPrivateEndpointsExecute executes the request
 //
 //	@return []ServerlessTenantEndpoint
 func (a *ServerlessPrivateEndpointsApiService) ListServerlessPrivateEndpointsExecute(r ListServerlessPrivateEndpointsApiRequest) ([]ServerlessTenantEndpoint, *http.Response, error) {
@@ -687,7 +687,7 @@ func (a *ServerlessPrivateEndpointsApiService) UpdateServerlessPrivateEndpoint(c
 	}
 }
 
-// Execute executes the request
+// UpdateServerlessPrivateEndpointExecute executes the request
 //
 //	@return ServerlessTenantEndpoint
 func (a *ServerlessPrivateEndpointsApiService) UpdateServerlessPrivateEndpointExecute(r UpdateServerlessPrivateEndpointApiRequest) (*ServerlessTenantEndpoint, *http.Response, error) {

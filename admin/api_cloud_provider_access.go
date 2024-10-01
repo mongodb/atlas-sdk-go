@@ -185,7 +185,7 @@ func (a *CloudProviderAccessApiService) AuthorizeCloudProviderAccessRole(ctx con
 	}
 }
 
-// Execute executes the request
+// AuthorizeCloudProviderAccessRoleExecute executes the request
 //
 //	@return CloudProviderAccessRole
 func (a *CloudProviderAccessApiService) AuthorizeCloudProviderAccessRoleExecute(r AuthorizeCloudProviderAccessRoleApiRequest) (*CloudProviderAccessRole, *http.Response, error) {
@@ -306,7 +306,7 @@ func (a *CloudProviderAccessApiService) CreateCloudProviderAccessRole(ctx contex
 	}
 }
 
-// Execute executes the request
+// CreateCloudProviderAccessRoleExecute executes the request
 //
 //	@return CloudProviderAccessRole
 func (a *CloudProviderAccessApiService) CreateCloudProviderAccessRoleExecute(r CreateCloudProviderAccessRoleApiRequest) (*CloudProviderAccessRole, *http.Response, error) {
@@ -432,7 +432,7 @@ func (a *CloudProviderAccessApiService) DeauthorizeCloudProviderAccessRole(ctx c
 	}
 }
 
-// Execute executes the request
+// DeauthorizeCloudProviderAccessRoleExecute executes the request
 func (a *CloudProviderAccessApiService) DeauthorizeCloudProviderAccessRoleExecute(r DeauthorizeCloudProviderAccessRoleApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
@@ -533,7 +533,7 @@ func (a *CloudProviderAccessApiService) GetCloudProviderAccessRole(ctx context.C
 	}
 }
 
-// Execute executes the request
+// GetCloudProviderAccessRoleExecute executes the request
 //
 //	@return CloudProviderAccessRole
 func (a *CloudProviderAccessApiService) GetCloudProviderAccessRoleExecute(r GetCloudProviderAccessRoleApiRequest) (*CloudProviderAccessRole, *http.Response, error) {
@@ -645,7 +645,7 @@ func (a *CloudProviderAccessApiService) ListCloudProviderAccessRoles(ctx context
 	}
 }
 
-// Execute executes the request
+// ListCloudProviderAccessRolesExecute executes the request
 //
 //	@return CloudProviderAccessRoles
 func (a *CloudProviderAccessApiService) ListCloudProviderAccessRolesExecute(r ListCloudProviderAccessRolesApiRequest) (*CloudProviderAccessRoles, *http.Response, error) {

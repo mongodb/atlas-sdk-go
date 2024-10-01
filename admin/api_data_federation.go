@@ -434,7 +434,7 @@ func (a *DataFederationApiService) CreateDataFederationPrivateEndpoint(ctx conte
 	}
 }
 
-// Execute executes the request
+// CreateDataFederationPrivateEndpointExecute executes the request
 //
 //	@return PaginatedPrivateNetworkEndpointIdEntry
 func (a *DataFederationApiService) CreateDataFederationPrivateEndpointExecute(r CreateDataFederationPrivateEndpointApiRequest) (*PaginatedPrivateNetworkEndpointIdEntry, *http.Response, error) {
@@ -563,7 +563,7 @@ func (a *DataFederationApiService) CreateFederatedDatabase(ctx context.Context, 
 	}
 }
 
-// Execute executes the request
+// CreateFederatedDatabaseExecute executes the request
 //
 //	@return DataLakeTenant
 func (a *DataFederationApiService) CreateFederatedDatabaseExecute(r CreateFederatedDatabaseApiRequest) (*DataLakeTenant, *http.Response, error) {
@@ -700,7 +700,7 @@ func (a *DataFederationApiService) CreateOneDataFederationQueryLimit(ctx context
 	}
 }
 
-// Execute executes the request
+// CreateOneDataFederationQueryLimitExecute executes the request
 //
 //	@return DataFederationTenantQueryLimit
 func (a *DataFederationApiService) CreateOneDataFederationQueryLimitExecute(r CreateOneDataFederationQueryLimitApiRequest) (*DataFederationTenantQueryLimit, *http.Response, error) {
@@ -823,7 +823,7 @@ func (a *DataFederationApiService) DeleteDataFederationPrivateEndpoint(ctx conte
 	}
 }
 
-// Execute executes the request
+// DeleteDataFederationPrivateEndpointExecute executes the request
 //
 //	@return interface{}
 func (a *DataFederationApiService) DeleteDataFederationPrivateEndpointExecute(r DeleteDataFederationPrivateEndpointApiRequest) (interface{}, *http.Response, error) {
@@ -940,7 +940,7 @@ func (a *DataFederationApiService) DeleteFederatedDatabase(ctx context.Context, 
 	}
 }
 
-// Execute executes the request
+// DeleteFederatedDatabaseExecute executes the request
 //
 //	@return interface{}
 func (a *DataFederationApiService) DeleteFederatedDatabaseExecute(r DeleteFederatedDatabaseApiRequest) (interface{}, *http.Response, error) {
@@ -1062,7 +1062,7 @@ func (a *DataFederationApiService) DeleteOneDataFederationInstanceQueryLimit(ctx
 	}
 }
 
-// Execute executes the request
+// DeleteOneDataFederationInstanceQueryLimitExecute executes the request
 //
 //	@return interface{}
 func (a *DataFederationApiService) DeleteOneDataFederationInstanceQueryLimitExecute(r DeleteOneDataFederationInstanceQueryLimitApiRequest) (interface{}, *http.Response, error) {
@@ -1198,7 +1198,7 @@ func (a *DataFederationApiService) DownloadFederatedDatabaseQueryLogs(ctx contex
 	}
 }
 
-// Execute executes the request
+// DownloadFederatedDatabaseQueryLogsExecute executes the request
 //
 //	@return io.ReadCloser
 func (a *DataFederationApiService) DownloadFederatedDatabaseQueryLogsExecute(r DownloadFederatedDatabaseQueryLogsApiRequest) (io.ReadCloser, *http.Response, error) {
@@ -1321,7 +1321,7 @@ func (a *DataFederationApiService) GetDataFederationPrivateEndpoint(ctx context.
 	}
 }
 
-// Execute executes the request
+// GetDataFederationPrivateEndpointExecute executes the request
 //
 //	@return PrivateNetworkEndpointIdEntry
 func (a *DataFederationApiService) GetDataFederationPrivateEndpointExecute(r GetDataFederationPrivateEndpointApiRequest) (*PrivateNetworkEndpointIdEntry, *http.Response, error) {
@@ -1438,7 +1438,7 @@ func (a *DataFederationApiService) GetFederatedDatabase(ctx context.Context, gro
 	}
 }
 
-// Execute executes the request
+// GetFederatedDatabaseExecute executes the request
 //
 //	@return DataLakeTenant
 func (a *DataFederationApiService) GetFederatedDatabaseExecute(r GetFederatedDatabaseApiRequest) (*DataLakeTenant, *http.Response, error) {
@@ -1577,7 +1577,7 @@ func (a *DataFederationApiService) ListDataFederationPrivateEndpoints(ctx contex
 	}
 }
 
-// Execute executes the request
+// ListDataFederationPrivateEndpointsExecute executes the request
 //
 //	@return PaginatedPrivateNetworkEndpointIdEntry
 func (a *DataFederationApiService) ListDataFederationPrivateEndpointsExecute(r ListDataFederationPrivateEndpointsApiRequest) (*PaginatedPrivateNetworkEndpointIdEntry, *http.Response, error) {
@@ -1718,7 +1718,7 @@ func (a *DataFederationApiService) ListFederatedDatabases(ctx context.Context, g
 	}
 }
 
-// Execute executes the request
+// ListFederatedDatabasesExecute executes the request
 //
 //	@return []DataLakeTenant
 func (a *DataFederationApiService) ListFederatedDatabasesExecute(r ListFederatedDatabasesApiRequest) ([]DataLakeTenant, *http.Response, error) {
@@ -1846,7 +1846,7 @@ func (a *DataFederationApiService) ReturnFederatedDatabaseQueryLimit(ctx context
 	}
 }
 
-// Execute executes the request
+// ReturnFederatedDatabaseQueryLimitExecute executes the request
 //
 //	@return DataFederationTenantQueryLimit
 func (a *DataFederationApiService) ReturnFederatedDatabaseQueryLimitExecute(r ReturnFederatedDatabaseQueryLimitApiRequest) (*DataFederationTenantQueryLimit, *http.Response, error) {
@@ -1964,7 +1964,7 @@ func (a *DataFederationApiService) ReturnFederatedDatabaseQueryLimits(ctx contex
 	}
 }
 
-// Execute executes the request
+// ReturnFederatedDatabaseQueryLimitsExecute executes the request
 //
 //	@return []DataFederationTenantQueryLimit
 func (a *DataFederationApiService) ReturnFederatedDatabaseQueryLimitsExecute(r ReturnFederatedDatabaseQueryLimitsApiRequest) ([]DataFederationTenantQueryLimit, *http.Response, error) {
@@ -2094,7 +2094,7 @@ func (a *DataFederationApiService) UpdateFederatedDatabase(ctx context.Context, 
 	}
 }
 
-// Execute executes the request
+// UpdateFederatedDatabaseExecute executes the request
 //
 //	@return DataLakeTenant
 func (a *DataFederationApiService) UpdateFederatedDatabaseExecute(r UpdateFederatedDatabaseApiRequest) (*DataLakeTenant, *http.Response, error) {
