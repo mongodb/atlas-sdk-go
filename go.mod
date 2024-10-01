@@ -1,6 +1,6 @@
 module go.mongodb.org/atlas-sdk/v20240805004
 
-go 1.23
+go 1.22.7
 
 require (
 	github.com/go-test/deep v1.1.1
