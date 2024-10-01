@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **BackupEnabled** | Pointer to **bool** | Flag that indicates whether the cluster can perform backups. If set to &#x60;true&#x60;, the cluster can perform backups. You must set this value to &#x60;true&#x60; for NVMe clusters. Backup uses [Cloud Backups](https://docs.atlas.mongodb.com/backup/cloud-backup/overview/) for dedicated clusters and [Shared Cluster Backups](https://docs.atlas.mongodb.com/backup/shared-tier/overview/) for tenant clusters. If set to &#x60;false&#x60;, the cluster doesn&#39;t use backups. | [optional] [default to false]
 **BiConnector** | Pointer to [**BiConnector**](BiConnector.md) |  | [optional] 
 **ClusterType** | Pointer to **string** | Configuration of nodes that comprise the cluster. | [optional] 
+**ConfigServerManagementMode** | Pointer to **string** | Config Server Management Mode for creating or updating a sharded cluster.  When configured as ATLAS_MANAGED, atlas may automatically switch the cluster&#39;s config server type for optimal performance and savings.  When configured as FIXED_TO_DEDICATED, the cluster will always use a dedicated config server. | [optional] [default to "ATLAS_MANAGED"]
+**ConfigServerType** | Pointer to **string** | Describes a sharded cluster&#39;s config server type. | [optional] [readonly] 
 **ConnectionStrings** | Pointer to [**ClusterConnectionStrings**](ClusterConnectionStrings.md) |  | [optional] 
 **CreateDate** | Pointer to **time.Time** | Date and time when MongoDB Cloud created this cluster. This parameter expresses its value in ISO 8601 format in UTC. | [optional] [readonly] 
 **DiskWarmingMode** | Pointer to **string** | Disk warming mode selection. | [optional] [default to "FULLY_WARMED"]
@@ -148,6 +150,54 @@ SetClusterType sets ClusterType field to given value.
 `func (o *ClusterDescription20240805) HasClusterType() bool`
 
 HasClusterType returns a boolean if a field has been set.
+### GetConfigServerManagementMode
+
+`func (o *ClusterDescription20240805) GetConfigServerManagementMode() string`
+
+GetConfigServerManagementMode returns the ConfigServerManagementMode field if non-nil, zero value otherwise.
+
+### GetConfigServerManagementModeOk
+
+`func (o *ClusterDescription20240805) GetConfigServerManagementModeOk() (*string, bool)`
+
+GetConfigServerManagementModeOk returns a tuple with the ConfigServerManagementMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConfigServerManagementMode
+
+`func (o *ClusterDescription20240805) SetConfigServerManagementMode(v string)`
+
+SetConfigServerManagementMode sets ConfigServerManagementMode field to given value.
+
+### HasConfigServerManagementMode
+
+`func (o *ClusterDescription20240805) HasConfigServerManagementMode() bool`
+
+HasConfigServerManagementMode returns a boolean if a field has been set.
+### GetConfigServerType
+
+`func (o *ClusterDescription20240805) GetConfigServerType() string`
+
+GetConfigServerType returns the ConfigServerType field if non-nil, zero value otherwise.
+
+### GetConfigServerTypeOk
+
+`func (o *ClusterDescription20240805) GetConfigServerTypeOk() (*string, bool)`
+
+GetConfigServerTypeOk returns a tuple with the ConfigServerType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConfigServerType
+
+`func (o *ClusterDescription20240805) SetConfigServerType(v string)`
+
+SetConfigServerType sets ConfigServerType field to given value.
+
+### HasConfigServerType
+
+`func (o *ClusterDescription20240805) HasConfigServerType() bool`
+
+HasConfigServerType returns a boolean if a field has been set.
 ### GetConnectionStrings
 
 `func (o *ClusterDescription20240805) GetConnectionStrings() ClusterConnectionStrings`
