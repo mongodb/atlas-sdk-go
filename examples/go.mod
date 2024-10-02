@@ -1,6 +1,8 @@
 module go.mongodb.org/atlas-sdk/v20240805004/examples
 
-go 1.21
+go 1.22.0
+
+toolchain go1.23.1
 
 replace go.mongodb.org/atlas-sdk/v20240805004 => ../
 
