@@ -60,6 +60,7 @@ jobs:
       - uses: peter-evans/create-pull-request@v7
         if: steps.verify-changed-files.outputs.files_changed == 'true'
         with:
+          token: ${{ secrets.APIX_BOT_PAT }}
           title: "APIBot: SDK update based on recent changes in Atlas API"
           commit-message: "fix: required version bumps for Atlas SDK release"
           delete-branch: true
