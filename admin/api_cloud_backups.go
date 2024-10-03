@@ -38,9 +38,9 @@ type CloudBackupsApi interface {
 	CancelBackupRestoreJobExecute(r CancelBackupRestoreJobApiRequest) (interface{}, *http.Response, error)
 
 	/*
-		CreateBackupExportJob Create One Cloud Backup Snapshot Export Job
+		CreateBackupExportJob Create One Snapshot Export Job
 
-		Exports one backup snapshot for dedicated Atlas cluster using Cloud Backups to an Export Bucket. To use this resource, the requesting API Key must have the Project Atlas Admin role.
+		Exports one backup Snapshot for dedicated Atlas cluster using Cloud Backups to an Export Bucket. To use this resource, the requesting API Key must have the Project Atlas Admin role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -50,7 +50,7 @@ type CloudBackupsApi interface {
 	*/
 	CreateBackupExportJob(ctx context.Context, groupId string, clusterName string, diskBackupExportJobRequest *DiskBackupExportJobRequest) CreateBackupExportJobApiRequest
 	/*
-		CreateBackupExportJob Create One Cloud Backup Snapshot Export Job
+		CreateBackupExportJob Create One Snapshot Export Job
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -90,18 +90,18 @@ type CloudBackupsApi interface {
 	CreateBackupRestoreJobExecute(r CreateBackupRestoreJobApiRequest) (*DiskBackupSnapshotRestoreJob, *http.Response, error)
 
 	/*
-		CreateExportBucket Grant Access to AWS S3 Bucket or Azure Blob Storage Container for Cloud Backup Snapshot Exports
+		CreateExportBucket Create One Snapshot Export Bucket
 
-		Grants MongoDB Cloud access to the specified AWS S3 Bucket or Azure Blob Storage Container. This enables this Export Bucket to receive Atlas Cloud Backup Snapshots. To use this resource, the requesting API Key must have the Project Owner role. Deprecated versions: v2-{2023-01-01}
+		Creates a Snapshot Export Bucket for an AWS S3 Bucket or Azure Blob Storage Container. Once created, an snapshots can be exported to the Export Bucket and its referenced AWS S3 Bucket or Azure Blob Storage Container. To use this resource, the requesting API Key must have the Project Owner role. Deprecated versions: v2-{2023-01-01}
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param diskBackupSnapshotExportBucket Grants MongoDB Cloud access to the specified AWS S3 Bucket or Azure Blob Storage Container.
+		@param diskBackupSnapshotExportBucket Specifies the role and AWS S3 Bucket or Azure Blob Storage Container that the Export Bucket should reference.
 		@return CreateExportBucketApiRequest
 	*/
 	CreateExportBucket(ctx context.Context, groupId string, diskBackupSnapshotExportBucket *DiskBackupSnapshotExportBucket) CreateExportBucketApiRequest
 	/*
-		CreateExportBucket Grant Access to AWS S3 Bucket or Azure Blob Storage Container for Cloud Backup Snapshot Exports
+		CreateExportBucket Create One Snapshot Export Bucket
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -163,18 +163,18 @@ type CloudBackupsApi interface {
 	DeleteAllBackupSchedulesExecute(r DeleteAllBackupSchedulesApiRequest) (*DiskBackupSnapshotSchedule20240805, *http.Response, error)
 
 	/*
-		DeleteExportBucket Revoke Access to AWS S3 Bucket or Azure Blob Storage Container for Cloud Backup Snapshot Exports
+		DeleteExportBucket Delete One Snapshot Export Bucket
 
-		Revoke MongoDB Cloud access to the specified AWS S3 Bucket or Azure Blob Storage Container. This prevents this Export Bucket from receiving Atlas Cloud Backup Snapshots. Auto export must be disabled on all clusters in this Project exporting to this Export Bucket before revoking access. To use this resource, the requesting API Key must have the Project Owner role.
+		Deletes an Export Bucket. Auto export must be disabled on all clusters in this Project exporting to this Export Bucket before revoking access. To use this resource, the requesting API Key must have the Project Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param exportBucketId Unique string that identifies the AWS S3 Bucket or Azure Blob Storage Container to which you export your Snapshots.
+		@param exportBucketId Unique 24-hexadecimal character string that identifies the Export Bucket.
 		@return DeleteExportBucketApiRequest
 	*/
 	DeleteExportBucket(ctx context.Context, groupId string, exportBucketId string) DeleteExportBucketApiRequest
 	/*
-		DeleteExportBucket Revoke Access to AWS S3 Bucket or Azure Blob Storage Container for Cloud Backup Snapshot Exports
+		DeleteExportBucket Delete One Snapshot Export Bucket
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -237,19 +237,19 @@ type CloudBackupsApi interface {
 	DeleteShardedClusterBackupExecute(r DeleteShardedClusterBackupApiRequest) (interface{}, *http.Response, error)
 
 	/*
-		GetBackupExportJob Return One Cloud Backup Snapshot Export Job
+		GetBackupExportJob Return One Snapshot Export Job
 
-		Returns one Cloud Backup snapshot export job associated with the specified Atlas cluster. To use this resource, the requesting API Key must have the Project Atlas Admin role.
+		Returns one Cloud Backup Snapshot Export Job associated with the specified Atlas cluster. To use this resource, the requesting API Key must have the Project Atlas Admin role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param clusterName Human-readable label that identifies the cluster.
-		@param exportId Unique string that identifies the export job to return.
+		@param exportId Unique 24-hexadecimal character string that identifies the Export Job.
 		@return GetBackupExportJobApiRequest
 	*/
 	GetBackupExportJob(ctx context.Context, groupId string, clusterName string, exportId string) GetBackupExportJobApiRequest
 	/*
-		GetBackupExportJob Return One Cloud Backup Snapshot Export Job
+		GetBackupExportJob Return One Snapshot Export Job
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -334,9 +334,9 @@ type CloudBackupsApi interface {
 	GetDataProtectionSettingsExecute(r GetDataProtectionSettingsApiRequest) (*DataProtectionSettings20231001, *http.Response, error)
 
 	/*
-		GetExportBucket Return One AWS S3 Bucket or Azure Blob Storage Container Used for Cloud Backup Snapshot Exports
+		GetExportBucket Return One Snapshot Export Bucket
 
-		Returns one AWS S3 Bucket or Azure Blob Storage Container associated with the specified Project. To use this resource, the requesting API Key must have the Project Read Only role. Deprecated versions: v2-{2023-01-01}
+		Returns one Export Bucket associated with the specified Project. To use this resource, the requesting API Key must have the Project Read Only role. Deprecated versions: v2-{2023-01-01}
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -345,7 +345,7 @@ type CloudBackupsApi interface {
 	*/
 	GetExportBucket(ctx context.Context, groupId string, exportBucketId string) GetExportBucketApiRequest
 	/*
-		GetExportBucket Return One AWS S3 Bucket or Azure Blob Storage Container Used for Cloud Backup Snapshot Exports
+		GetExportBucket Return One Snapshot Export Bucket
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -458,9 +458,9 @@ type CloudBackupsApi interface {
 	GetShardedClusterBackupExecute(r GetShardedClusterBackupApiRequest) (*DiskBackupShardedClusterSnapshot, *http.Response, error)
 
 	/*
-		ListBackupExportJobs Return All Cloud Backup Snapshot Export Jobs
+		ListBackupExportJobs Return All Snapshot Export Jobs
 
-		Returns all Cloud Backup snapshot export jobs associated with the specified Atlas cluster. To use this resource, the requesting API Key must have the Project Atlas Admin role.
+		Returns all Cloud Backup Snapshot Export Jobs associated with the specified Atlas cluster. To use this resource, the requesting API Key must have the Project Atlas Admin role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -469,7 +469,7 @@ type CloudBackupsApi interface {
 	*/
 	ListBackupExportJobs(ctx context.Context, groupId string, clusterName string) ListBackupExportJobsApiRequest
 	/*
-		ListBackupExportJobs Return All Cloud Backup Snapshot Export Jobs
+		ListBackupExportJobs Return All Snapshot Export Jobs
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -506,9 +506,9 @@ type CloudBackupsApi interface {
 	ListBackupRestoreJobsExecute(r ListBackupRestoreJobsApiRequest) (*PaginatedCloudBackupRestoreJob, *http.Response, error)
 
 	/*
-		ListExportBuckets Return All AWS S3 Buckets and Azure Blob Storage Containers Used for Cloud Backup Snapshot Exports
+		ListExportBuckets Return All Snapshot Export Buckets
 
-		Returns all AWS S3 buckets and Azure Blob Storage Containers associated with the specified Project. To use this resource, the requesting API Key must have the Project Read Only role. Deprecated versions: v2-{2023-01-01}
+		Returns all Export Buckets associated with the specified Project. To use this resource, the requesting API Key must have the Project Read Only role. Deprecated versions: v2-{2023-01-01}
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -516,7 +516,7 @@ type CloudBackupsApi interface {
 	*/
 	ListExportBuckets(ctx context.Context, groupId string) ListExportBucketsApiRequest
 	/*
-		ListExportBuckets Return All AWS S3 Buckets and Azure Blob Storage Containers Used for Cloud Backup Snapshot Exports
+		ListExportBuckets Return All Snapshot Export Buckets
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -882,9 +882,9 @@ func (r CreateBackupExportJobApiRequest) Execute() (*DiskBackupExportJob, *http.
 }
 
 /*
-CreateBackupExportJob Create One Cloud Backup Snapshot Export Job
+CreateBackupExportJob Create One Snapshot Export Job
 
-Exports one backup snapshot for dedicated Atlas cluster using Cloud Backups to an Export Bucket. To use this resource, the requesting API Key must have the Project Atlas Admin role.
+Exports one backup Snapshot for dedicated Atlas cluster using Cloud Backups to an Export Bucket. To use this resource, the requesting API Key must have the Project Atlas Admin role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -1133,9 +1133,9 @@ func (r CreateExportBucketApiRequest) Execute() (*DiskBackupSnapshotExportBucket
 }
 
 /*
-CreateExportBucket Grant Access to AWS S3 Bucket or Azure Blob Storage Container for Cloud Backup Snapshot Exports
+CreateExportBucket Create One Snapshot Export Bucket
 
-Grants MongoDB Cloud access to the specified AWS S3 Bucket or Azure Blob Storage Container. This enables this Export Bucket to receive Atlas Cloud Backup Snapshots. To use this resource, the requesting API Key must have the Project Owner role. Deprecated versions: v2-{2023-01-01}
+Creates a Snapshot Export Bucket for an AWS S3 Bucket or Azure Blob Storage Container. Once created, an snapshots can be exported to the Export Bucket and its referenced AWS S3 Bucket or Azure Blob Storage Container. To use this resource, the requesting API Key must have the Project Owner role. Deprecated versions: v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -1496,13 +1496,13 @@ func (r DeleteExportBucketApiRequest) Execute() (interface{}, *http.Response, er
 }
 
 /*
-DeleteExportBucket Revoke Access to AWS S3 Bucket or Azure Blob Storage Container for Cloud Backup Snapshot Exports
+DeleteExportBucket Delete One Snapshot Export Bucket
 
-Revoke MongoDB Cloud access to the specified AWS S3 Bucket or Azure Blob Storage Container. This prevents this Export Bucket from receiving Atlas Cloud Backup Snapshots. Auto export must be disabled on all clusters in this Project exporting to this Export Bucket before revoking access. To use this resource, the requesting API Key must have the Project Owner role.
+Deletes an Export Bucket. Auto export must be disabled on all clusters in this Project exporting to this Export Bucket before revoking access. To use this resource, the requesting API Key must have the Project Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param exportBucketId Unique string that identifies the AWS S3 Bucket or Azure Blob Storage Container to which you export your Snapshots.
+	@param exportBucketId Unique 24-hexadecimal character string that identifies the Export Bucket.
 	@return DeleteExportBucketApiRequest
 */
 func (a *CloudBackupsApiService) DeleteExportBucket(ctx context.Context, groupId string, exportBucketId string) DeleteExportBucketApiRequest {
@@ -1862,14 +1862,14 @@ func (r GetBackupExportJobApiRequest) Execute() (*DiskBackupExportJob, *http.Res
 }
 
 /*
-GetBackupExportJob Return One Cloud Backup Snapshot Export Job
+GetBackupExportJob Return One Snapshot Export Job
 
-Returns one Cloud Backup snapshot export job associated with the specified Atlas cluster. To use this resource, the requesting API Key must have the Project Atlas Admin role.
+Returns one Cloud Backup Snapshot Export Job associated with the specified Atlas cluster. To use this resource, the requesting API Key must have the Project Atlas Admin role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param clusterName Human-readable label that identifies the cluster.
-	@param exportId Unique string that identifies the export job to return.
+	@param exportId Unique 24-hexadecimal character string that identifies the Export Job.
 	@return GetBackupExportJobApiRequest
 */
 func (a *CloudBackupsApiService) GetBackupExportJob(ctx context.Context, groupId string, clusterName string, exportId string) GetBackupExportJobApiRequest {
@@ -2333,9 +2333,9 @@ func (r GetExportBucketApiRequest) Execute() (*DiskBackupSnapshotExportBucket, *
 }
 
 /*
-GetExportBucket Return One AWS S3 Bucket or Azure Blob Storage Container Used for Cloud Backup Snapshot Exports
+GetExportBucket Return One Snapshot Export Bucket
 
-Returns one AWS S3 Bucket or Azure Blob Storage Container associated with the specified Project. To use this resource, the requesting API Key must have the Project Read Only role. Deprecated versions: v2-{2023-01-01}
+Returns one Export Bucket associated with the specified Project. To use this resource, the requesting API Key must have the Project Read Only role. Deprecated versions: v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -2969,9 +2969,9 @@ func (r ListBackupExportJobsApiRequest) Execute() (*PaginatedApiAtlasDiskBackupE
 }
 
 /*
-ListBackupExportJobs Return All Cloud Backup Snapshot Export Jobs
+ListBackupExportJobs Return All Snapshot Export Jobs
 
-Returns all Cloud Backup snapshot export jobs associated with the specified Atlas cluster. To use this resource, the requesting API Key must have the Project Atlas Admin role.
+Returns all Cloud Backup Snapshot Export Jobs associated with the specified Atlas cluster. To use this resource, the requesting API Key must have the Project Atlas Admin role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -3296,9 +3296,9 @@ func (r ListExportBucketsApiRequest) Execute() (*PaginatedBackupSnapshotExportBu
 }
 
 /*
-ListExportBuckets Return All AWS S3 Buckets and Azure Blob Storage Containers Used for Cloud Backup Snapshot Exports
+ListExportBuckets Return All Snapshot Export Buckets
 
-Returns all AWS S3 buckets and Azure Blob Storage Containers associated with the specified Project. To use this resource, the requesting API Key must have the Project Read Only role. Deprecated versions: v2-{2023-01-01}
+Returns all Export Buckets associated with the specified Project. To use this resource, the requesting API Key must have the Project Read Only role. Deprecated versions: v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.

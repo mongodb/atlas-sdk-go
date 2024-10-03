@@ -12,19 +12,16 @@ type DiskBackupExportJob struct {
 	// Information on the export job for each replica set in the sharded cluster.
 	// Read only field.
 	Components *[]DiskBackupExportMember `json:"components,omitempty"`
-	// Date and time when someone created this export job. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC.
+	// Date and time when a user or Atlas created the Export Job. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC.
 	// Read only field.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
-	// Collection of key-value pairs that represent custom data for the metadata file that MongoDB Cloud uploads to the bucket when the export job finishes.
+	// Collection of key-value pairs that represent custom data for the metadata file that MongoDB Cloud uploads when the Export Job finishes.
 	CustomData *[]BackupLabel `json:"customData,omitempty"`
-	// One or more Uniform Resource Locators (URLs) that point to the compressed snapshot files for manual download. MongoDB Cloud returns this parameter when `\"deliveryType\" : \"download\"`.
-	// Read only field.
-	DeliveryUrl *[]string `json:"deliveryUrl,omitempty"`
-	// Unique 24-hexadecimal character string that identifies the Export Bucket to export to.
+	// Unique 24-hexadecimal character string that identifies the Export Bucket.
 	// Read only field.
 	ExportBucketId string        `json:"exportBucketId"`
 	ExportStatus   *ExportStatus `json:"exportStatus,omitempty"`
-	// Date and time when this export job completed. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC.
+	// Date and time when this Export Job completed. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC.
 	// Read only field.
 	FinishedAt *time.Time `json:"finishedAt,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the restore job.
@@ -33,12 +30,12 @@ type DiskBackupExportJob struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
-	// Full path on the cloud provider bucket to the folder where the snapshot is exported.
+	// Prefix used for all blob storage objects uploaded as part of the Export Job.
 	// Read only field.
 	Prefix *string `json:"prefix,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the snapshot.
 	SnapshotId *string `json:"snapshotId,omitempty"`
-	// State of the export job.
+	// State of the Export Job.
 	// Read only field.
 	State *string `json:"state,omitempty"`
 }
@@ -158,39 +155,6 @@ func (o *DiskBackupExportJob) HasCustomData() bool {
 // SetCustomData gets a reference to the given []BackupLabel and assigns it to the CustomData field.
 func (o *DiskBackupExportJob) SetCustomData(v []BackupLabel) {
 	o.CustomData = &v
-}
-
-// GetDeliveryUrl returns the DeliveryUrl field value if set, zero value otherwise
-func (o *DiskBackupExportJob) GetDeliveryUrl() []string {
-	if o == nil || IsNil(o.DeliveryUrl) {
-		var ret []string
-		return ret
-	}
-	return *o.DeliveryUrl
-}
-
-// GetDeliveryUrlOk returns a tuple with the DeliveryUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DiskBackupExportJob) GetDeliveryUrlOk() (*[]string, bool) {
-	if o == nil || IsNil(o.DeliveryUrl) {
-		return nil, false
-	}
-
-	return o.DeliveryUrl, true
-}
-
-// HasDeliveryUrl returns a boolean if a field has been set.
-func (o *DiskBackupExportJob) HasDeliveryUrl() bool {
-	if o != nil && !IsNil(o.DeliveryUrl) {
-		return true
-	}
-
-	return false
-}
-
-// SetDeliveryUrl gets a reference to the given []string and assigns it to the DeliveryUrl field.
-func (o *DiskBackupExportJob) SetDeliveryUrl(v []string) {
-	o.DeliveryUrl = &v
 }
 
 // GetExportBucketId returns the ExportBucketId field value

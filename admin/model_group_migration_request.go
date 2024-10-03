@@ -10,9 +10,9 @@ import (
 type GroupMigrationRequest struct {
 	// Unique 24-hexadecimal digit string that identifies the organization to move the specified project to.
 	DestinationOrgId *string `json:"destinationOrgId,omitempty"`
-	// Unique string that identifies the private part of the [API Key](https://dochub.mongodb.org/core/atlas-create-prog-api-key) used to verify access to the destination organization. This parameter is required only when you authenticate with Programmatic API Keys.
+	// Unique string that identifies the private part of the API Key used to verify access to the destination organization. This parameter is required only when you authenticate with Programmatic API Keys.
 	DestinationOrgPrivateApiKey *string `json:"destinationOrgPrivateApiKey,omitempty"`
-	// Unique string that identifies the public part of the [API Key](https://dochub.mongodb.org/core/atlas-create-prog-api-key) used to verify access to the destination organization. This parameter is required only when you authenticate with Programmatic API Keys.
+	// Unique string that identifies the public part of the API Key used to verify access to the destination organization. This parameter is required only when you authenticate with Programmatic API Keys.
 	DestinationOrgPublicApiKey *string `json:"destinationOrgPublicApiKey,omitempty"`
 }
 

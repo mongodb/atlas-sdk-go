@@ -13,6 +13,55 @@ import (
 type StreamsApi interface {
 
 	/*
+		AcceptVPCPeeringConnection Requests the acceptance of an incoming VPC Peering connection.
+
+		Requests the acceptance of an incoming VPC Peering connection.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param id The VPC Peering Connection id.
+		@param vPCPeeringActionChallenge Challenge values for VPC Peering requester account ID, and requester VPC ID.
+		@return AcceptVPCPeeringConnectionApiRequest
+	*/
+	AcceptVPCPeeringConnection(ctx context.Context, groupId string, id string, vPCPeeringActionChallenge *VPCPeeringActionChallenge) AcceptVPCPeeringConnectionApiRequest
+	/*
+		AcceptVPCPeeringConnection Requests the acceptance of an incoming VPC Peering connection.
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param AcceptVPCPeeringConnectionApiParams - Parameters for the request
+		@return AcceptVPCPeeringConnectionApiRequest
+	*/
+	AcceptVPCPeeringConnectionWithParams(ctx context.Context, args *AcceptVPCPeeringConnectionApiParams) AcceptVPCPeeringConnectionApiRequest
+
+	// Method available only for mocking purposes
+	AcceptVPCPeeringConnectionExecute(r AcceptVPCPeeringConnectionApiRequest) (interface{}, *http.Response, error)
+
+	/*
+		CreatePrivateLinkConnection Create One Private Link connection
+
+		Creates one Private Link in the specified project. To use this resource, the requesting API Key must have the Project Owner or Project Stream Processing Owner role.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param streamsPrivateLinkConnection Details to create one Private Link connection for a project. project.
+		@return CreatePrivateLinkConnectionApiRequest
+	*/
+	CreatePrivateLinkConnection(ctx context.Context, groupId string, streamsPrivateLinkConnection *StreamsPrivateLinkConnection) CreatePrivateLinkConnectionApiRequest
+	/*
+		CreatePrivateLinkConnection Create One Private Link connection
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param CreatePrivateLinkConnectionApiParams - Parameters for the request
+		@return CreatePrivateLinkConnectionApiRequest
+	*/
+	CreatePrivateLinkConnectionWithParams(ctx context.Context, args *CreatePrivateLinkConnectionApiParams) CreatePrivateLinkConnectionApiRequest
+
+	// Method available only for mocking purposes
+	CreatePrivateLinkConnectionExecute(r CreatePrivateLinkConnectionApiRequest) (*StreamsPrivateLinkConnection, *http.Response, error)
+
+	/*
 		CreateStreamConnection Create One Connection
 
 		Creates one connection for a stream instance in the specified project. To use this resource, the requesting API Key must have the Project Owner or Project Stream Processing Owner role.
@@ -111,6 +160,30 @@ type StreamsApi interface {
 	CreateStreamProcessorExecute(r CreateStreamProcessorApiRequest) (*StreamsProcessor, *http.Response, error)
 
 	/*
+		DeletePrivateLinkConnection Delete One Private Link connection
+
+		Deletes one Private Link in the specified project. To use this resource, the requesting API Key must have the Project Owner or Project Stream Processing Owner role.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param connectionId Unique ID that identifies the Private Link connection.
+		@return DeletePrivateLinkConnectionApiRequest
+	*/
+	DeletePrivateLinkConnection(ctx context.Context, groupId string, connectionId string) DeletePrivateLinkConnectionApiRequest
+	/*
+		DeletePrivateLinkConnection Delete One Private Link connection
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param DeletePrivateLinkConnectionApiParams - Parameters for the request
+		@return DeletePrivateLinkConnectionApiRequest
+	*/
+	DeletePrivateLinkConnectionWithParams(ctx context.Context, args *DeletePrivateLinkConnectionApiParams) DeletePrivateLinkConnectionApiRequest
+
+	// Method available only for mocking purposes
+	DeletePrivateLinkConnectionExecute(r DeletePrivateLinkConnectionApiRequest) (interface{}, *http.Response, error)
+
+	/*
 		DeleteStreamConnection Delete One Stream Connection
 
 		Delete one connection of the specified stream instance. To use this resource, the requesting API Key must have the Project Owner role or Project Stream Processing Owner role.
@@ -185,6 +258,30 @@ type StreamsApi interface {
 	DeleteStreamProcessorExecute(r DeleteStreamProcessorApiRequest) (*http.Response, error)
 
 	/*
+		DeleteVPCPeeringConnection Deletes an incoming VPC Peering connection.
+
+		Deletes an incoming VPC Peering connection.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param id The VPC Peering Connection id.
+		@return DeleteVPCPeeringConnectionApiRequest
+	*/
+	DeleteVPCPeeringConnection(ctx context.Context, groupId string, id string) DeleteVPCPeeringConnectionApiRequest
+	/*
+		DeleteVPCPeeringConnection Deletes an incoming VPC Peering connection.
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param DeleteVPCPeeringConnectionApiParams - Parameters for the request
+		@return DeleteVPCPeeringConnectionApiRequest
+	*/
+	DeleteVPCPeeringConnectionWithParams(ctx context.Context, args *DeleteVPCPeeringConnectionApiParams) DeleteVPCPeeringConnectionApiRequest
+
+	// Method available only for mocking purposes
+	DeleteVPCPeeringConnectionExecute(r DeleteVPCPeeringConnectionApiRequest) (interface{}, *http.Response, error)
+
+	/*
 		DownloadStreamTenantAuditLogs Download Audit Logs for One Atlas Stream Processing Instance
 
 		Downloads the audit logs for the specified Atlas Streams Processing instance. By default, logs cover periods of 30 days. To use this resource, the requesting API Key must have the Project Data Access roles, Project Owner role or Project Stream Processing Owner role. The API does not support direct calls with the json response schema. You must request a gzip response schema using an accept header of the format: "Accept: application/vnd.atlas.YYYY-MM-DD+gzip".
@@ -207,6 +304,30 @@ type StreamsApi interface {
 
 	// Method available only for mocking purposes
 	DownloadStreamTenantAuditLogsExecute(r DownloadStreamTenantAuditLogsApiRequest) (io.ReadCloser, *http.Response, error)
+
+	/*
+		GetPrivateLinkConnection Return One PrivateLink Connection
+
+		Returns the details of one Private Link connection within the project. To use this resource, the requesting API Key must have the Project Read Only role.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param connectionId Unique ID that identifies the Private Link connection.
+		@return GetPrivateLinkConnectionApiRequest
+	*/
+	GetPrivateLinkConnection(ctx context.Context, groupId string, connectionId string) GetPrivateLinkConnectionApiRequest
+	/*
+		GetPrivateLinkConnection Return One PrivateLink Connection
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetPrivateLinkConnectionApiParams - Parameters for the request
+		@return GetPrivateLinkConnectionApiRequest
+	*/
+	GetPrivateLinkConnectionWithParams(ctx context.Context, args *GetPrivateLinkConnectionApiParams) GetPrivateLinkConnectionApiRequest
+
+	// Method available only for mocking purposes
+	GetPrivateLinkConnectionExecute(r GetPrivateLinkConnectionApiRequest) (*StreamsPrivateLinkConnection, *http.Response, error)
 
 	/*
 		GetStreamConnection Return One Stream Connection
@@ -283,6 +404,52 @@ type StreamsApi interface {
 	GetStreamProcessorExecute(r GetStreamProcessorApiRequest) (*StreamsProcessorWithStats, *http.Response, error)
 
 	/*
+		GetVPCPeeringConnections Return All VPC Peering Connections.
+
+		Returns a list of incoming VPC Peering Connections.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@return GetVPCPeeringConnectionsApiRequest
+	*/
+	GetVPCPeeringConnections(ctx context.Context, groupId string) GetVPCPeeringConnectionsApiRequest
+	/*
+		GetVPCPeeringConnections Return All VPC Peering Connections.
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetVPCPeeringConnectionsApiParams - Parameters for the request
+		@return GetVPCPeeringConnectionsApiRequest
+	*/
+	GetVPCPeeringConnectionsWithParams(ctx context.Context, args *GetVPCPeeringConnectionsApiParams) GetVPCPeeringConnectionsApiRequest
+
+	// Method available only for mocking purposes
+	GetVPCPeeringConnectionsExecute(r GetVPCPeeringConnectionsApiRequest) (*http.Response, error)
+
+	/*
+		ListPrivateLinkConnections Return All Private Link
+
+		Returns all Private Link connections for the specified project.To use this resource, the requesting API Key must have the Project Data Access roles, Project Owner role or Project Stream Processing Owner role.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@return ListPrivateLinkConnectionsApiRequest
+	*/
+	ListPrivateLinkConnections(ctx context.Context, groupId string) ListPrivateLinkConnectionsApiRequest
+	/*
+		ListPrivateLinkConnections Return All Private Link
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ListPrivateLinkConnectionsApiParams - Parameters for the request
+		@return ListPrivateLinkConnectionsApiRequest
+	*/
+	ListPrivateLinkConnectionsWithParams(ctx context.Context, args *ListPrivateLinkConnectionsApiParams) ListPrivateLinkConnectionsApiRequest
+
+	// Method available only for mocking purposes
+	ListPrivateLinkConnectionsExecute(r ListPrivateLinkConnectionsApiRequest) (*PaginatedApiStreamsPrivateLink, *http.Response, error)
+
+	/*
 		ListStreamConnections Return All Connections Of The Stream Instances
 
 		Returns all connections of the stream instance for the specified project.To use this resource, the requesting API Key must have the Project Data Access roles, Project Owner role or Project Stream Processing Owner role.
@@ -352,6 +519,30 @@ type StreamsApi interface {
 
 	// Method available only for mocking purposes
 	ListStreamProcessorsExecute(r ListStreamProcessorsApiRequest) (*PaginatedApiStreamsStreamProcessorWithStats, *http.Response, error)
+
+	/*
+		RejectVPCPeeringConnection Requests the rejection of an incoming VPC Peering connection.
+
+		Requests the rejection of an incoming VPC Peering connection.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param id The VPC Peering Connection id.
+		@return RejectVPCPeeringConnectionApiRequest
+	*/
+	RejectVPCPeeringConnection(ctx context.Context, groupId string, id string) RejectVPCPeeringConnectionApiRequest
+	/*
+		RejectVPCPeeringConnection Requests the rejection of an incoming VPC Peering connection.
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param RejectVPCPeeringConnectionApiParams - Parameters for the request
+		@return RejectVPCPeeringConnectionApiRequest
+	*/
+	RejectVPCPeeringConnectionWithParams(ctx context.Context, args *RejectVPCPeeringConnectionApiParams) RejectVPCPeeringConnectionApiRequest
+
+	// Method available only for mocking purposes
+	RejectVPCPeeringConnectionExecute(r RejectVPCPeeringConnectionApiRequest) (interface{}, *http.Response, error)
 
 	/*
 		StartStreamProcessor Start One Stream Processor
@@ -457,6 +648,252 @@ type StreamsApi interface {
 
 // StreamsApiService StreamsApi service
 type StreamsApiService service
+
+type AcceptVPCPeeringConnectionApiRequest struct {
+	ctx                       context.Context
+	ApiService                StreamsApi
+	groupId                   string
+	id                        string
+	vPCPeeringActionChallenge *VPCPeeringActionChallenge
+}
+
+type AcceptVPCPeeringConnectionApiParams struct {
+	GroupId                   string
+	Id                        string
+	VPCPeeringActionChallenge *VPCPeeringActionChallenge
+}
+
+func (a *StreamsApiService) AcceptVPCPeeringConnectionWithParams(ctx context.Context, args *AcceptVPCPeeringConnectionApiParams) AcceptVPCPeeringConnectionApiRequest {
+	return AcceptVPCPeeringConnectionApiRequest{
+		ApiService:                a,
+		ctx:                       ctx,
+		groupId:                   args.GroupId,
+		id:                        args.Id,
+		vPCPeeringActionChallenge: args.VPCPeeringActionChallenge,
+	}
+}
+
+func (r AcceptVPCPeeringConnectionApiRequest) Execute() (interface{}, *http.Response, error) {
+	return r.ApiService.AcceptVPCPeeringConnectionExecute(r)
+}
+
+/*
+AcceptVPCPeeringConnection Requests the acceptance of an incoming VPC Peering connection.
+
+Requests the acceptance of an incoming VPC Peering connection.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param id The VPC Peering Connection id.
+	@return AcceptVPCPeeringConnectionApiRequest
+*/
+func (a *StreamsApiService) AcceptVPCPeeringConnection(ctx context.Context, groupId string, id string, vPCPeeringActionChallenge *VPCPeeringActionChallenge) AcceptVPCPeeringConnectionApiRequest {
+	return AcceptVPCPeeringConnectionApiRequest{
+		ApiService:                a,
+		ctx:                       ctx,
+		groupId:                   groupId,
+		id:                        id,
+		vPCPeeringActionChallenge: vPCPeeringActionChallenge,
+	}
+}
+
+// AcceptVPCPeeringConnectionExecute executes the request
+//
+//	@return interface{}
+func (a *StreamsApiService) AcceptVPCPeeringConnectionExecute(r AcceptVPCPeeringConnectionApiRequest) (interface{}, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue interface{}
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.AcceptVPCPeeringConnection")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}:accept"
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.vPCPeeringActionChallenge == nil {
+		return localVarReturnValue, nil, reportError("vPCPeeringActionChallenge is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-02-01+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-02-01+json", "application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.vPCPeeringActionChallenge
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type CreatePrivateLinkConnectionApiRequest struct {
+	ctx                          context.Context
+	ApiService                   StreamsApi
+	groupId                      string
+	streamsPrivateLinkConnection *StreamsPrivateLinkConnection
+}
+
+type CreatePrivateLinkConnectionApiParams struct {
+	GroupId                      string
+	StreamsPrivateLinkConnection *StreamsPrivateLinkConnection
+}
+
+func (a *StreamsApiService) CreatePrivateLinkConnectionWithParams(ctx context.Context, args *CreatePrivateLinkConnectionApiParams) CreatePrivateLinkConnectionApiRequest {
+	return CreatePrivateLinkConnectionApiRequest{
+		ApiService:                   a,
+		ctx:                          ctx,
+		groupId:                      args.GroupId,
+		streamsPrivateLinkConnection: args.StreamsPrivateLinkConnection,
+	}
+}
+
+func (r CreatePrivateLinkConnectionApiRequest) Execute() (*StreamsPrivateLinkConnection, *http.Response, error) {
+	return r.ApiService.CreatePrivateLinkConnectionExecute(r)
+}
+
+/*
+CreatePrivateLinkConnection Create One Private Link connection
+
+Creates one Private Link in the specified project. To use this resource, the requesting API Key must have the Project Owner or Project Stream Processing Owner role.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return CreatePrivateLinkConnectionApiRequest
+*/
+func (a *StreamsApiService) CreatePrivateLinkConnection(ctx context.Context, groupId string, streamsPrivateLinkConnection *StreamsPrivateLinkConnection) CreatePrivateLinkConnectionApiRequest {
+	return CreatePrivateLinkConnectionApiRequest{
+		ApiService:                   a,
+		ctx:                          ctx,
+		groupId:                      groupId,
+		streamsPrivateLinkConnection: streamsPrivateLinkConnection,
+	}
+}
+
+// CreatePrivateLinkConnectionExecute executes the request
+//
+//	@return StreamsPrivateLinkConnection
+func (a *StreamsApiService) CreatePrivateLinkConnectionExecute(r CreatePrivateLinkConnectionApiRequest) (*StreamsPrivateLinkConnection, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *StreamsPrivateLinkConnection
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.CreatePrivateLinkConnection")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/privateLinkConnections"
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.streamsPrivateLinkConnection == nil {
+		return localVarReturnValue, nil, reportError("streamsPrivateLinkConnection is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-02-01+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-02-01+json", "application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.streamsPrivateLinkConnection
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
 
 type CreateStreamConnectionApiRequest struct {
 	ctx               context.Context
@@ -950,6 +1387,123 @@ func (a *StreamsApiService) CreateStreamProcessorExecute(r CreateStreamProcessor
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type DeletePrivateLinkConnectionApiRequest struct {
+	ctx          context.Context
+	ApiService   StreamsApi
+	groupId      string
+	connectionId string
+}
+
+type DeletePrivateLinkConnectionApiParams struct {
+	GroupId      string
+	ConnectionId string
+}
+
+func (a *StreamsApiService) DeletePrivateLinkConnectionWithParams(ctx context.Context, args *DeletePrivateLinkConnectionApiParams) DeletePrivateLinkConnectionApiRequest {
+	return DeletePrivateLinkConnectionApiRequest{
+		ApiService:   a,
+		ctx:          ctx,
+		groupId:      args.GroupId,
+		connectionId: args.ConnectionId,
+	}
+}
+
+func (r DeletePrivateLinkConnectionApiRequest) Execute() (interface{}, *http.Response, error) {
+	return r.ApiService.DeletePrivateLinkConnectionExecute(r)
+}
+
+/*
+DeletePrivateLinkConnection Delete One Private Link connection
+
+Deletes one Private Link in the specified project. To use this resource, the requesting API Key must have the Project Owner or Project Stream Processing Owner role.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param connectionId Unique ID that identifies the Private Link connection.
+	@return DeletePrivateLinkConnectionApiRequest
+*/
+func (a *StreamsApiService) DeletePrivateLinkConnection(ctx context.Context, groupId string, connectionId string) DeletePrivateLinkConnectionApiRequest {
+	return DeletePrivateLinkConnectionApiRequest{
+		ApiService:   a,
+		ctx:          ctx,
+		groupId:      groupId,
+		connectionId: connectionId,
+	}
+}
+
+// DeletePrivateLinkConnectionExecute executes the request
+//
+//	@return interface{}
+func (a *StreamsApiService) DeletePrivateLinkConnectionExecute(r DeletePrivateLinkConnectionApiRequest) (interface{}, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodDelete
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue interface{}
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.DeletePrivateLinkConnection")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/privateLinkConnections/{connectionId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"connectionId"+"}", url.PathEscape(parameterValueToString(r.connectionId, "connectionId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-02-01+json", "application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type DeleteStreamConnectionApiRequest struct {
 	ctx            context.Context
 	ApiService     StreamsApi
@@ -1296,6 +1850,123 @@ func (a *StreamsApiService) DeleteStreamProcessorExecute(r DeleteStreamProcessor
 	return localVarHTTPResponse, nil
 }
 
+type DeleteVPCPeeringConnectionApiRequest struct {
+	ctx        context.Context
+	ApiService StreamsApi
+	groupId    string
+	id         string
+}
+
+type DeleteVPCPeeringConnectionApiParams struct {
+	GroupId string
+	Id      string
+}
+
+func (a *StreamsApiService) DeleteVPCPeeringConnectionWithParams(ctx context.Context, args *DeleteVPCPeeringConnectionApiParams) DeleteVPCPeeringConnectionApiRequest {
+	return DeleteVPCPeeringConnectionApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    args.GroupId,
+		id:         args.Id,
+	}
+}
+
+func (r DeleteVPCPeeringConnectionApiRequest) Execute() (interface{}, *http.Response, error) {
+	return r.ApiService.DeleteVPCPeeringConnectionExecute(r)
+}
+
+/*
+DeleteVPCPeeringConnection Deletes an incoming VPC Peering connection.
+
+Deletes an incoming VPC Peering connection.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param id The VPC Peering Connection id.
+	@return DeleteVPCPeeringConnectionApiRequest
+*/
+func (a *StreamsApiService) DeleteVPCPeeringConnection(ctx context.Context, groupId string, id string) DeleteVPCPeeringConnectionApiRequest {
+	return DeleteVPCPeeringConnectionApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    groupId,
+		id:         id,
+	}
+}
+
+// DeleteVPCPeeringConnectionExecute executes the request
+//
+//	@return interface{}
+func (a *StreamsApiService) DeleteVPCPeeringConnectionExecute(r DeleteVPCPeeringConnectionApiRequest) (interface{}, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodDelete
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue interface{}
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.DeleteVPCPeeringConnection")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-02-01+json", "application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type DownloadStreamTenantAuditLogsApiRequest struct {
 	ctx        context.Context
 	ApiService StreamsApi
@@ -1399,6 +2070,123 @@ func (a *StreamsApiService) DownloadStreamTenantAuditLogsExecute(r DownloadStrea
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-02-01+gzip", "application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type GetPrivateLinkConnectionApiRequest struct {
+	ctx          context.Context
+	ApiService   StreamsApi
+	groupId      string
+	connectionId string
+}
+
+type GetPrivateLinkConnectionApiParams struct {
+	GroupId      string
+	ConnectionId string
+}
+
+func (a *StreamsApiService) GetPrivateLinkConnectionWithParams(ctx context.Context, args *GetPrivateLinkConnectionApiParams) GetPrivateLinkConnectionApiRequest {
+	return GetPrivateLinkConnectionApiRequest{
+		ApiService:   a,
+		ctx:          ctx,
+		groupId:      args.GroupId,
+		connectionId: args.ConnectionId,
+	}
+}
+
+func (r GetPrivateLinkConnectionApiRequest) Execute() (*StreamsPrivateLinkConnection, *http.Response, error) {
+	return r.ApiService.GetPrivateLinkConnectionExecute(r)
+}
+
+/*
+GetPrivateLinkConnection Return One PrivateLink Connection
+
+Returns the details of one Private Link connection within the project. To use this resource, the requesting API Key must have the Project Read Only role.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param connectionId Unique ID that identifies the Private Link connection.
+	@return GetPrivateLinkConnectionApiRequest
+*/
+func (a *StreamsApiService) GetPrivateLinkConnection(ctx context.Context, groupId string, connectionId string) GetPrivateLinkConnectionApiRequest {
+	return GetPrivateLinkConnectionApiRequest{
+		ApiService:   a,
+		ctx:          ctx,
+		groupId:      groupId,
+		connectionId: connectionId,
+	}
+}
+
+// GetPrivateLinkConnectionExecute executes the request
+//
+//	@return StreamsPrivateLinkConnection
+func (a *StreamsApiService) GetPrivateLinkConnectionExecute(r GetPrivateLinkConnectionApiRequest) (*StreamsPrivateLinkConnection, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *StreamsPrivateLinkConnection
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.GetPrivateLinkConnection")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/privateLinkConnections/{connectionId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"connectionId"+"}", url.PathEscape(parameterValueToString(r.connectionId, "connectionId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-02-01+json", "application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -1774,6 +2562,275 @@ func (a *StreamsApiService) GetStreamProcessorExecute(r GetStreamProcessorApiReq
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-05-30+json", "application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type GetVPCPeeringConnectionsApiRequest struct {
+	ctx          context.Context
+	ApiService   StreamsApi
+	groupId      string
+	itemsPerPage *int
+	pageNum      *int
+}
+
+type GetVPCPeeringConnectionsApiParams struct {
+	GroupId      string
+	ItemsPerPage *int
+	PageNum      *int
+}
+
+func (a *StreamsApiService) GetVPCPeeringConnectionsWithParams(ctx context.Context, args *GetVPCPeeringConnectionsApiParams) GetVPCPeeringConnectionsApiRequest {
+	return GetVPCPeeringConnectionsApiRequest{
+		ApiService:   a,
+		ctx:          ctx,
+		groupId:      args.GroupId,
+		itemsPerPage: args.ItemsPerPage,
+		pageNum:      args.PageNum,
+	}
+}
+
+// Number of items that the response returns per page.
+func (r GetVPCPeeringConnectionsApiRequest) ItemsPerPage(itemsPerPage int) GetVPCPeeringConnectionsApiRequest {
+	r.itemsPerPage = &itemsPerPage
+	return r
+}
+
+// Number of the page that displays the current set of the total objects that the response returns.
+func (r GetVPCPeeringConnectionsApiRequest) PageNum(pageNum int) GetVPCPeeringConnectionsApiRequest {
+	r.pageNum = &pageNum
+	return r
+}
+
+func (r GetVPCPeeringConnectionsApiRequest) Execute() (*http.Response, error) {
+	return r.ApiService.GetVPCPeeringConnectionsExecute(r)
+}
+
+/*
+GetVPCPeeringConnections Return All VPC Peering Connections.
+
+Returns a list of incoming VPC Peering Connections.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return GetVPCPeeringConnectionsApiRequest
+*/
+func (a *StreamsApiService) GetVPCPeeringConnections(ctx context.Context, groupId string) GetVPCPeeringConnectionsApiRequest {
+	return GetVPCPeeringConnectionsApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    groupId,
+	}
+}
+
+// GetVPCPeeringConnectionsExecute executes the request
+func (a *StreamsApiService) GetVPCPeeringConnectionsExecute(r GetVPCPeeringConnectionsApiRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodGet
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.GetVPCPeeringConnections")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections"
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.itemsPerPage != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	} else {
+		var defaultValue int = 100
+		r.itemsPerPage = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	}
+	if r.pageNum != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	} else {
+		var defaultValue int = 1
+		r.pageNum = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-02-01+json", "application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ListPrivateLinkConnectionsApiRequest struct {
+	ctx          context.Context
+	ApiService   StreamsApi
+	groupId      string
+	itemsPerPage *int
+	pageNum      *int
+}
+
+type ListPrivateLinkConnectionsApiParams struct {
+	GroupId      string
+	ItemsPerPage *int
+	PageNum      *int
+}
+
+func (a *StreamsApiService) ListPrivateLinkConnectionsWithParams(ctx context.Context, args *ListPrivateLinkConnectionsApiParams) ListPrivateLinkConnectionsApiRequest {
+	return ListPrivateLinkConnectionsApiRequest{
+		ApiService:   a,
+		ctx:          ctx,
+		groupId:      args.GroupId,
+		itemsPerPage: args.ItemsPerPage,
+		pageNum:      args.PageNum,
+	}
+}
+
+// Number of items that the response returns per page.
+func (r ListPrivateLinkConnectionsApiRequest) ItemsPerPage(itemsPerPage int) ListPrivateLinkConnectionsApiRequest {
+	r.itemsPerPage = &itemsPerPage
+	return r
+}
+
+// Number of the page that displays the current set of the total objects that the response returns.
+func (r ListPrivateLinkConnectionsApiRequest) PageNum(pageNum int) ListPrivateLinkConnectionsApiRequest {
+	r.pageNum = &pageNum
+	return r
+}
+
+func (r ListPrivateLinkConnectionsApiRequest) Execute() (*PaginatedApiStreamsPrivateLink, *http.Response, error) {
+	return r.ApiService.ListPrivateLinkConnectionsExecute(r)
+}
+
+/*
+ListPrivateLinkConnections Return All Private Link
+
+Returns all Private Link connections for the specified project.To use this resource, the requesting API Key must have the Project Data Access roles, Project Owner role or Project Stream Processing Owner role.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return ListPrivateLinkConnectionsApiRequest
+*/
+func (a *StreamsApiService) ListPrivateLinkConnections(ctx context.Context, groupId string) ListPrivateLinkConnectionsApiRequest {
+	return ListPrivateLinkConnectionsApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    groupId,
+	}
+}
+
+// ListPrivateLinkConnectionsExecute executes the request
+//
+//	@return PaginatedApiStreamsPrivateLink
+func (a *StreamsApiService) ListPrivateLinkConnectionsExecute(r ListPrivateLinkConnectionsApiRequest) (*PaginatedApiStreamsPrivateLink, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedApiStreamsPrivateLink
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.ListPrivateLinkConnections")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/privateLinkConnections"
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.itemsPerPage != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	} else {
+		var defaultValue int = 100
+		r.itemsPerPage = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	}
+	if r.pageNum != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	} else {
+		var defaultValue int = 1
+		r.pageNum = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-02-01+json", "application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -2231,6 +3288,123 @@ func (a *StreamsApiService) ListStreamProcessorsExecute(r ListStreamProcessorsAp
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-05-30+json", "application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type RejectVPCPeeringConnectionApiRequest struct {
+	ctx        context.Context
+	ApiService StreamsApi
+	groupId    string
+	id         string
+}
+
+type RejectVPCPeeringConnectionApiParams struct {
+	GroupId string
+	Id      string
+}
+
+func (a *StreamsApiService) RejectVPCPeeringConnectionWithParams(ctx context.Context, args *RejectVPCPeeringConnectionApiParams) RejectVPCPeeringConnectionApiRequest {
+	return RejectVPCPeeringConnectionApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    args.GroupId,
+		id:         args.Id,
+	}
+}
+
+func (r RejectVPCPeeringConnectionApiRequest) Execute() (interface{}, *http.Response, error) {
+	return r.ApiService.RejectVPCPeeringConnectionExecute(r)
+}
+
+/*
+RejectVPCPeeringConnection Requests the rejection of an incoming VPC Peering connection.
+
+Requests the rejection of an incoming VPC Peering connection.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param id The VPC Peering Connection id.
+	@return RejectVPCPeeringConnectionApiRequest
+*/
+func (a *StreamsApiService) RejectVPCPeeringConnection(ctx context.Context, groupId string, id string) RejectVPCPeeringConnectionApiRequest {
+	return RejectVPCPeeringConnectionApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    groupId,
+		id:         id,
+	}
+}
+
+// RejectVPCPeeringConnectionExecute executes the request
+//
+//	@return interface{}
+func (a *StreamsApiService) RejectVPCPeeringConnectionExecute(r RejectVPCPeeringConnectionApiRequest) (interface{}, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue interface{}
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.RejectVPCPeeringConnection")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}:reject"
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-02-01+json", "application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
