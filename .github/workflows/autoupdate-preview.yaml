@@ -39,6 +39,7 @@ jobs:
       - uses: peter-evans/create-pull-request@v7
         if: steps.verify-changed-files.outputs.files_changed == 'true'
         with:
+          token: ${{ secrets.APIX_BOT_PAT }}
           title: "APIBot: GO SDK Dev Preview"
           commit-message: "temp: client update"
           delete-branch: true
