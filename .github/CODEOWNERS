@@ -1,4 +1,10 @@
 # Maintained by the API experience team
 * @mongodb/apix1 @mongodb/APIx-Integrations
-# Manual docs
+
+# All docs
 /docs @mongodb/docs-cloud-team
+
+# Docs exemptions
+/docs/docs @mongodb/apix1 @mongodb/APIx-Integrations
+/docs/doc_last_reference.md @mongodb/apix1 @mongodb/APIx-Integrations
+/docs/README.md @mongodb/apix1 @mongodb/APIx-Integrations
