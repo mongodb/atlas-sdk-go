@@ -17,7 +17,7 @@ type StreamsProcessor struct {
 	// Human-readable name of the stream processor.
 	Name    *string         `json:"name,omitempty"`
 	Options *StreamsOptions `json:"options,omitempty"`
-	// Stream aggregation pipeline you want to apply to your streaming data. [MongoDB Atlas Docs](https://www.mongodb.com/docs/atlas/atlas-stream-processing/stream-aggregation/#std-label-stream-aggregation) contain more information.
+	// Stream aggregation pipeline you want to apply to your streaming data.
 	Pipeline *[]interface{} `json:"pipeline,omitempty"`
 }
 

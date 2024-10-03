@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Aws** | Pointer to [**DataLakeAWSCloudProviderConfig**](DataLakeAWSCloudProviderConfig.md) |  | [optional] 
 **Azure** | Pointer to [**DataFederationAzureCloudProviderConfig**](DataFederationAzureCloudProviderConfig.md) |  | [optional] 
+**Gcp** | Pointer to [**DataFederationGCPCloudProviderConfig**](DataFederationGCPCloudProviderConfig.md) |  | [optional] 
 
 ## Methods
 
@@ -74,6 +75,30 @@ SetAzure sets Azure field to given value.
 `func (o *DataLakeCloudProviderConfig) HasAzure() bool`
 
 HasAzure returns a boolean if a field has been set.
+### GetGcp
+
+`func (o *DataLakeCloudProviderConfig) GetGcp() DataFederationGCPCloudProviderConfig`
+
+GetGcp returns the Gcp field if non-nil, zero value otherwise.
+
+### GetGcpOk
+
+`func (o *DataLakeCloudProviderConfig) GetGcpOk() (*DataFederationGCPCloudProviderConfig, bool)`
+
+GetGcpOk returns a tuple with the Gcp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcp
+
+`func (o *DataLakeCloudProviderConfig) SetGcp(v DataFederationGCPCloudProviderConfig)`
+
+SetGcp sets Gcp field to given value.
+
+### HasGcp
+
+`func (o *DataLakeCloudProviderConfig) HasGcp() bool`
+
+HasGcp returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
