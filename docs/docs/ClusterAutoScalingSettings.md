@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Compute** | Pointer to [**ClusterComputeAutoScaling**](ClusterComputeAutoScaling.md) |  | [optional] 
-**DiskGBEnabled** | Pointer to **bool** | Flag that indicates whether someone enabled disk auto-scaling for this cluster. | [optional] 
+**DiskGBEnabled** | Pointer to **bool** | Flag that indicates whether someone enabled disk auto-scaling for this cluster. | [optional] [default to false]
 
 ## Methods
 

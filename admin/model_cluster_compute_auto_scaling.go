@@ -20,6 +20,10 @@ type ClusterComputeAutoScaling struct {
 // will change when the set of required properties is changed
 func NewClusterComputeAutoScaling() *ClusterComputeAutoScaling {
 	this := ClusterComputeAutoScaling{}
+	var enabled bool = false
+	this.Enabled = &enabled
+	var scaleDownEnabled bool = false
+	this.ScaleDownEnabled = &scaleDownEnabled
 	return &this
 }
 
@@ -28,6 +32,10 @@ func NewClusterComputeAutoScaling() *ClusterComputeAutoScaling {
 // but it doesn't guarantee that properties required by API are set
 func NewClusterComputeAutoScalingWithDefaults() *ClusterComputeAutoScaling {
 	this := ClusterComputeAutoScaling{}
+	var enabled bool = false
+	this.Enabled = &enabled
+	var scaleDownEnabled bool = false
+	this.ScaleDownEnabled = &scaleDownEnabled
 	return &this
 }
 

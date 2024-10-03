@@ -35,8 +35,6 @@ func NewDestination(clusterName string, groupId string, hostnameSchemaType strin
 // but it doesn't guarantee that properties required by API are set
 func NewDestinationWithDefaults() *Destination {
 	this := Destination{}
-	var hostnameSchemaType string = "PUBLIC"
-	this.HostnameSchemaType = hostnameSchemaType
 	return &this
 }
 

@@ -27,6 +27,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | Human-readable label that identifies the cluster. | [optional] 
 **Paused** | Pointer to **bool** | Flag that indicates whether the cluster is paused. | [optional] 
 **PitEnabled** | Pointer to **bool** | Flag that indicates whether the cluster uses continuous cloud backups. | [optional] 
+**RedactClientLogData** | Pointer to **bool** | Enable or disable log redaction. | [optional] 
 **ReplicaSetScalingStrategy** | Pointer to **string** | Set this field to configure the replica set scaling mode for your cluster.  By default, Atlas scales under WORKLOAD_TYPE. This mode allows Atlas to scale your analytics nodes in parallel to your operational nodes.  When configured as SEQUENTIAL, Atlas scales all nodes sequentially. This mode is intended for steady-state workloads and applications performing latency-sensitive secondary reads.  When configured as NODE_TYPE, Atlas scales your electable nodes in parallel with your read-only and analytics nodes. This mode is intended for large, dynamic workloads requiring frequent and timely cluster tier scaling. This is the fastest scaling strategy, but it might impact latency of workloads when performing extensive secondary reads. | [optional] [default to "WORKLOAD_TYPE"]
 **ReplicationSpecs** | Pointer to [**[]ReplicationSpec20240805**](ReplicationSpec20240805.md) | List of settings that configure your cluster regions. This array has one object per shard representing node configurations in each shard. For replica sets there is only one object representing node configurations. | [optional] 
 **RootCertType** | Pointer to **string** | Root Certificate Authority that MongoDB Cloud cluster uses. MongoDB Cloud supports Internet Security Research Group. | [optional] [default to "ISRGROOTX1"]
@@ -606,6 +607,30 @@ SetPitEnabled sets PitEnabled field to given value.
 `func (o *ClusterDescription20240805) HasPitEnabled() bool`
 
 HasPitEnabled returns a boolean if a field has been set.
+### GetRedactClientLogData
+
+`func (o *ClusterDescription20240805) GetRedactClientLogData() bool`
+
+GetRedactClientLogData returns the RedactClientLogData field if non-nil, zero value otherwise.
+
+### GetRedactClientLogDataOk
+
+`func (o *ClusterDescription20240805) GetRedactClientLogDataOk() (*bool, bool)`
+
+GetRedactClientLogDataOk returns a tuple with the RedactClientLogData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRedactClientLogData
+
+`func (o *ClusterDescription20240805) SetRedactClientLogData(v bool)`
+
+SetRedactClientLogData sets RedactClientLogData field to given value.
+
+### HasRedactClientLogData
+
+`func (o *ClusterDescription20240805) HasRedactClientLogData() bool`
+
+HasRedactClientLogData returns a boolean if a field has been set.
 ### GetReplicaSetScalingStrategy
 
 `func (o *ClusterDescription20240805) GetReplicaSetScalingStrategy() string`

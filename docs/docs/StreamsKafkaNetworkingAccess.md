@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ConnectionId** | Pointer to **string** | Reserved. Will be used by PRIVATE_LINK connection type. | [optional] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **Name** | Pointer to **string** | Reserved. Will be used by PRIVATE_LINK connection type. | [optional] 
 **Type** | Pointer to **string** | Selected networking type. Either PUBLIC, VPC or PRIVATE_LINK. Defaults to PUBLIC. For VPC, ensure that VPC peering exists and connectivity has been established between Atlas VPC and the VPC where Kafka cluster is hosted for the connection to function properly. PRIVATE_LINK support is coming soon. | [optional] 
@@ -27,6 +28,30 @@ NewStreamsKafkaNetworkingAccessWithDefaults instantiates a new StreamsKafkaNetwo
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
+### GetConnectionId
+
+`func (o *StreamsKafkaNetworkingAccess) GetConnectionId() string`
+
+GetConnectionId returns the ConnectionId field if non-nil, zero value otherwise.
+
+### GetConnectionIdOk
+
+`func (o *StreamsKafkaNetworkingAccess) GetConnectionIdOk() (*string, bool)`
+
+GetConnectionIdOk returns a tuple with the ConnectionId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConnectionId
+
+`func (o *StreamsKafkaNetworkingAccess) SetConnectionId(v string)`
+
+SetConnectionId sets ConnectionId field to given value.
+
+### HasConnectionId
+
+`func (o *StreamsKafkaNetworkingAccess) HasConnectionId() bool`
+
+HasConnectionId returns a boolean if a field has been set.
 ### GetLinks
 
 `func (o *StreamsKafkaNetworkingAccess) GetLinks() []Link`
