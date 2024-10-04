@@ -691,7 +691,7 @@ func (e *GenericOpenAPIError) SetError(errorString string) {
 	e.error = errorString
 }
 
-// FormatErrorMessageWithDetails: format error message using error struct fields: Should be only used for testing
+// FormatErrorMessageWithDetails formats error message using error struct fields. It should be only used for testing.
 func FormatErrorMessageWithDetails(status, path, method string, v ApiError) string {
 	detailString := ""
 	if v.BadRequestDetail != nil {
