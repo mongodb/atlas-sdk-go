@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // DatabaseRollingIndexRequest struct for DatabaseRollingIndexRequest
 type DatabaseRollingIndexRequest struct {
 	Collation *Collation `json:"collation,omitempty"`
@@ -185,28 +181,4 @@ func (o *DatabaseRollingIndexRequest) HasOptions() bool {
 // SetOptions gets a reference to the given IndexOptions and assigns it to the Options field.
 func (o *DatabaseRollingIndexRequest) SetOptions(v IndexOptions) {
 	o.Options = &v
-}
-
-func (o *DatabaseRollingIndexRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *DatabaseRollingIndexRequest) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Collation) {
-		toSerialize["collation"] = o.Collation
-	}
-	toSerialize["collection"] = o.Collection
-	toSerialize["db"] = o.Db
-	if !IsNil(o.Keys) {
-		toSerialize["keys"] = o.Keys
-	}
-	if !IsNil(o.Options) {
-		toSerialize["options"] = o.Options
-	}
-	return toSerialize, nil
 }

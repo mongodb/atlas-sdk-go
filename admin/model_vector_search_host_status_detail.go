@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // VectorSearchHostStatusDetail struct for VectorSearchHostStatusDetail
 type VectorSearchHostStatusDetail struct {
 	// Hostname that corresponds to the status detail.
@@ -198,32 +194,4 @@ func (o *VectorSearchHostStatusDetail) HasStatus() bool {
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *VectorSearchHostStatusDetail) SetStatus(v string) {
 	o.Status = &v
-}
-
-func (o *VectorSearchHostStatusDetail) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *VectorSearchHostStatusDetail) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Hostname) {
-		toSerialize["hostname"] = o.Hostname
-	}
-	if !IsNil(o.MainIndex) {
-		toSerialize["mainIndex"] = o.MainIndex
-	}
-	if !IsNil(o.Queryable) {
-		toSerialize["queryable"] = o.Queryable
-	}
-	if !IsNil(o.StagedIndex) {
-		toSerialize["stagedIndex"] = o.StagedIndex
-	}
-	if !IsNil(o.Status) {
-		toSerialize["status"] = o.Status
-	}
-	return toSerialize, nil
 }

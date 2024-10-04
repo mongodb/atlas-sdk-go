@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // DataLakeTenant struct for DataLakeTenant
 type DataLakeTenant struct {
 	CloudProviderConfig *DataLakeCloudProviderConfig `json:"cloudProviderConfig,omitempty"`
@@ -306,29 +302,4 @@ func (o *DataLakeTenant) HasStorage() bool {
 // SetStorage gets a reference to the given DataLakeStorage and assigns it to the Storage field.
 func (o *DataLakeTenant) SetStorage(v DataLakeStorage) {
 	o.Storage = &v
-}
-
-func (o *DataLakeTenant) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *DataLakeTenant) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.CloudProviderConfig) {
-		toSerialize["cloudProviderConfig"] = o.CloudProviderConfig
-	}
-	if !IsNil(o.DataProcessRegion) {
-		toSerialize["dataProcessRegion"] = o.DataProcessRegion
-	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if !IsNil(o.Storage) {
-		toSerialize["storage"] = o.Storage
-	}
-	return toSerialize, nil
 }

@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // HardwareSpec20240805 Hardware specifications for all electable nodes deployed in the region. Electable nodes can become the primary and can enable local reads. If you don't specify this option, MongoDB Cloud deploys no electable nodes to the region.
 type HardwareSpec20240805 struct {
 	// Storage capacity of instance data volumes expressed in gigabytes. Increase this number to add capacity.   This value must be equal for all shards and node types.   This value is not configurable on M0/M2/M5 clusters.   MongoDB Cloud requires this parameter if you set **replicationSpecs**.   If you specify a disk size below the minimum (10 GB), this parameter defaults to the minimum disk size value.    Storage charge calculations depend on whether you choose the default value or a custom value.   The maximum value for disk storage cannot exceed 50 times the maximum RAM for the selected cluster. If you require more storage space, consider upgrading your cluster to a higher tier.
@@ -204,32 +200,4 @@ func (o *HardwareSpec20240805) HasNodeCount() bool {
 // SetNodeCount gets a reference to the given int and assigns it to the NodeCount field.
 func (o *HardwareSpec20240805) SetNodeCount(v int) {
 	o.NodeCount = &v
-}
-
-func (o *HardwareSpec20240805) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *HardwareSpec20240805) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.DiskSizeGB) {
-		toSerialize["diskSizeGB"] = o.DiskSizeGB
-	}
-	if !IsNil(o.DiskIOPS) {
-		toSerialize["diskIOPS"] = o.DiskIOPS
-	}
-	if !IsNil(o.EbsVolumeType) {
-		toSerialize["ebsVolumeType"] = o.EbsVolumeType
-	}
-	if !IsNil(o.InstanceSize) {
-		toSerialize["instanceSize"] = o.InstanceSize
-	}
-	if !IsNil(o.NodeCount) {
-		toSerialize["nodeCount"] = o.NodeCount
-	}
-	return toSerialize, nil
 }

@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // PinnedNamespaces Pinned namespaces view for cluster
 type PinnedNamespaces struct {
 	// Unique 24-hexadecimal digit string that identifies the request cluster.
@@ -133,17 +129,4 @@ func (o *PinnedNamespaces) HasPinnedNamespaces() bool {
 // SetPinnedNamespaces gets a reference to the given []string and assigns it to the PinnedNamespaces field.
 func (o *PinnedNamespaces) SetPinnedNamespaces(v []string) {
 	o.PinnedNamespaces = &v
-}
-
-func (o *PinnedNamespaces) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *PinnedNamespaces) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

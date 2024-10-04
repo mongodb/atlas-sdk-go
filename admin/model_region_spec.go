@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // RegionSpec Physical location where MongoDB Cloud provisions cluster nodes.
 type RegionSpec struct {
 	// Number of analytics nodes in the region. Analytics nodes handle analytic data such as reporting queries from MongoDB Connector for Business Intelligence on MongoDB Cloud. Analytics nodes are read-only, and can never become the primary. Use **replicationSpecs[n].{region}.analyticsNodes** instead.
@@ -165,29 +161,4 @@ func (o *RegionSpec) HasReadOnlyNodes() bool {
 // SetReadOnlyNodes gets a reference to the given int and assigns it to the ReadOnlyNodes field.
 func (o *RegionSpec) SetReadOnlyNodes(v int) {
 	o.ReadOnlyNodes = &v
-}
-
-func (o *RegionSpec) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *RegionSpec) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.AnalyticsNodes) {
-		toSerialize["analyticsNodes"] = o.AnalyticsNodes
-	}
-	if !IsNil(o.ElectableNodes) {
-		toSerialize["electableNodes"] = o.ElectableNodes
-	}
-	if !IsNil(o.Priority) {
-		toSerialize["priority"] = o.Priority
-	}
-	if !IsNil(o.ReadOnlyNodes) {
-		toSerialize["readOnlyNodes"] = o.ReadOnlyNodes
-	}
-	return toSerialize, nil
 }

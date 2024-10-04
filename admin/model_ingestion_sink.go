@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // IngestionSink Ingestion destination of a Data Lake Pipeline.
 type IngestionSink struct {
 	// Type of ingestion destination of this Data Lake Pipeline.
@@ -166,26 +162,4 @@ func (o *IngestionSink) HasPartitionFields() bool {
 // SetPartitionFields gets a reference to the given []DataLakePipelinesPartitionField and assigns it to the PartitionFields field.
 func (o *IngestionSink) SetPartitionFields(v []DataLakePipelinesPartitionField) {
 	o.PartitionFields = &v
-}
-
-func (o *IngestionSink) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *IngestionSink) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.MetadataProvider) {
-		toSerialize["metadataProvider"] = o.MetadataProvider
-	}
-	if !IsNil(o.MetadataRegion) {
-		toSerialize["metadataRegion"] = o.MetadataRegion
-	}
-	if !IsNil(o.PartitionFields) {
-		toSerialize["partitionFields"] = o.PartitionFields
-	}
-	return toSerialize, nil
 }

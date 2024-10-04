@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // PaginatedOnlineArchive struct for PaginatedOnlineArchive
 type PaginatedOnlineArchive struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
@@ -133,17 +129,4 @@ func (o *PaginatedOnlineArchive) HasTotalCount() bool {
 // SetTotalCount gets a reference to the given int and assigns it to the TotalCount field.
 func (o *PaginatedOnlineArchive) SetTotalCount(v int) {
 	o.TotalCount = &v
-}
-
-func (o *PaginatedOnlineArchive) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *PaginatedOnlineArchive) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

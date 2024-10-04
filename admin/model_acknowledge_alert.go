@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"encoding/json"
 	"time"
 )
 
@@ -167,26 +166,4 @@ func (o *AcknowledgeAlert) HasUnacknowledgeAlert() bool {
 // SetUnacknowledgeAlert gets a reference to the given bool and assigns it to the UnacknowledgeAlert field.
 func (o *AcknowledgeAlert) SetUnacknowledgeAlert(v bool) {
 	o.UnacknowledgeAlert = &v
-}
-
-func (o *AcknowledgeAlert) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *AcknowledgeAlert) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.AcknowledgedUntil) {
-		toSerialize["acknowledgedUntil"] = o.AcknowledgedUntil
-	}
-	if !IsNil(o.AcknowledgementComment) {
-		toSerialize["acknowledgementComment"] = o.AcknowledgementComment
-	}
-	if !IsNil(o.UnacknowledgeAlert) {
-		toSerialize["unacknowledgeAlert"] = o.UnacknowledgeAlert
-	}
-	return toSerialize, nil
 }

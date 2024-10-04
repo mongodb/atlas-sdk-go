@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // DataLakeStoreSettings Group of settings that define where the data is stored.
 type DataLakeStoreSettings struct {
 	// Human-readable label that identifies the data store. The **databases.[n].collections.[n].dataSources.[n].storeName** field references this values as part of the mapping configuration. To use MongoDB Cloud as a data store, the data lake requires a serverless instance or an `M10` or higher cluster.
@@ -692,69 +688,4 @@ func (o *DataLakeStoreSettings) HasServiceURL() bool {
 // SetServiceURL gets a reference to the given string and assigns it to the ServiceURL field.
 func (o *DataLakeStoreSettings) SetServiceURL(v string) {
 	o.ServiceURL = &v
-}
-
-func (o *DataLakeStoreSettings) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *DataLakeStoreSettings) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	toSerialize["provider"] = o.Provider
-	if !IsNil(o.AdditionalStorageClasses) {
-		toSerialize["additionalStorageClasses"] = o.AdditionalStorageClasses
-	}
-	if !IsNil(o.Bucket) {
-		toSerialize["bucket"] = o.Bucket
-	}
-	if !IsNil(o.Delimiter) {
-		toSerialize["delimiter"] = o.Delimiter
-	}
-	if !IsNil(o.IncludeTags) {
-		toSerialize["includeTags"] = o.IncludeTags
-	}
-	if !IsNil(o.Prefix) {
-		toSerialize["prefix"] = o.Prefix
-	}
-	if !IsNil(o.Public) {
-		toSerialize["public"] = o.Public
-	}
-	if !IsNil(o.Region) {
-		toSerialize["region"] = o.Region
-	}
-	if !IsNil(o.ClusterName) {
-		toSerialize["clusterName"] = o.ClusterName
-	}
-	if !IsNil(o.ReadConcern) {
-		toSerialize["readConcern"] = o.ReadConcern
-	}
-	if !IsNil(o.ReadPreference) {
-		toSerialize["readPreference"] = o.ReadPreference
-	}
-	if !IsNil(o.AllowInsecure) {
-		toSerialize["allowInsecure"] = o.AllowInsecure
-	}
-	if !IsNil(o.DefaultFormat) {
-		toSerialize["defaultFormat"] = o.DefaultFormat
-	}
-	if !IsNil(o.Urls) {
-		toSerialize["urls"] = o.Urls
-	}
-	if !IsNil(o.ContainerName) {
-		toSerialize["containerName"] = o.ContainerName
-	}
-	if !IsNil(o.ReplacementDelimiter) {
-		toSerialize["replacementDelimiter"] = o.ReplacementDelimiter
-	}
-	if !IsNil(o.ServiceURL) {
-		toSerialize["serviceURL"] = o.ServiceURL
-	}
-	return toSerialize, nil
 }

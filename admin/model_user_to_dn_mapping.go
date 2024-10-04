@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // UserToDNMapping User-to-Distinguished Name (DN) map that MongoDB Cloud uses to transform a Lightweight Directory Access Protocol (LDAP) username into an LDAP DN.
 type UserToDNMapping struct {
 	// Lightweight Directory Access Protocol (LDAP) query template that inserts the LDAP name that the regular expression matches into an LDAP query Uniform Resource Identifier (URI). The formatting for the query must conform to [RFC 4515](https://datatracker.ietf.org/doc/html/rfc4515) and [RFC 4516](https://datatracker.ietf.org/doc/html/rfc4516).
@@ -122,24 +118,4 @@ func (o *UserToDNMapping) HasSubstitution() bool {
 // SetSubstitution gets a reference to the given string and assigns it to the Substitution field.
 func (o *UserToDNMapping) SetSubstitution(v string) {
 	o.Substitution = &v
-}
-
-func (o *UserToDNMapping) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *UserToDNMapping) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.LdapQuery) {
-		toSerialize["ldapQuery"] = o.LdapQuery
-	}
-	toSerialize["match"] = o.Match
-	if !IsNil(o.Substitution) {
-		toSerialize["substitution"] = o.Substitution
-	}
-	return toSerialize, nil
 }

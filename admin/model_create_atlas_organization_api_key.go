@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // CreateAtlasOrganizationApiKey Details of the programmatic API key to be created.
 type CreateAtlasOrganizationApiKey struct {
 	// Purpose or explanation provided when someone created this organization API key.
@@ -79,19 +75,4 @@ func (o *CreateAtlasOrganizationApiKey) GetRolesOk() (*[]string, bool) {
 // SetRoles sets field value
 func (o *CreateAtlasOrganizationApiKey) SetRoles(v []string) {
 	o.Roles = v
-}
-
-func (o *CreateAtlasOrganizationApiKey) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *CreateAtlasOrganizationApiKey) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["desc"] = o.Desc
-	toSerialize["roles"] = o.Roles
-	return toSerialize, nil
 }

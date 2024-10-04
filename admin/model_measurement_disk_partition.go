@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // MeasurementDiskPartition struct for MeasurementDiskPartition
 type MeasurementDiskPartition struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
@@ -97,17 +93,4 @@ func (o *MeasurementDiskPartition) HasPartitionName() bool {
 // SetPartitionName gets a reference to the given string and assigns it to the PartitionName field.
 func (o *MeasurementDiskPartition) SetPartitionName(v string) {
 	o.PartitionName = &v
-}
-
-func (o *MeasurementDiskPartition) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *MeasurementDiskPartition) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

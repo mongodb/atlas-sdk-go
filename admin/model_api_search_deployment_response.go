@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ApiSearchDeploymentResponse struct for ApiSearchDeploymentResponse
 type ApiSearchDeploymentResponse struct {
 	// Unique 24-hexadecimal character string that identifies the project.
@@ -169,17 +165,4 @@ func (o *ApiSearchDeploymentResponse) HasStateName() bool {
 // SetStateName gets a reference to the given string and assigns it to the StateName field.
 func (o *ApiSearchDeploymentResponse) SetStateName(v string) {
 	o.StateName = &v
-}
-
-func (o *ApiSearchDeploymentResponse) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ApiSearchDeploymentResponse) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

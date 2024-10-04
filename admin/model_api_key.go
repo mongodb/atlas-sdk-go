@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ApiKey Details contained in one API key.
 type ApiKey struct {
 	// List of network addresses granted access to this API using this API key.
@@ -153,17 +149,4 @@ func (o *ApiKey) HasRoles() bool {
 // SetRoles gets a reference to the given []CloudAccessRoleAssignment and assigns it to the Roles field.
 func (o *ApiKey) SetRoles(v []CloudAccessRoleAssignment) {
 	o.Roles = &v
-}
-
-func (o *ApiKey) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ApiKey) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

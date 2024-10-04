@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // DatabasePrivilegeAction Privilege action that the role grants.
 type DatabasePrivilegeAction struct {
 	// Human-readable label that identifies the privilege action.
@@ -87,21 +83,4 @@ func (o *DatabasePrivilegeAction) HasResources() bool {
 // SetResources gets a reference to the given []DatabasePermittedNamespaceResource and assigns it to the Resources field.
 func (o *DatabasePrivilegeAction) SetResources(v []DatabasePermittedNamespaceResource) {
 	o.Resources = &v
-}
-
-func (o *DatabasePrivilegeAction) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *DatabasePrivilegeAction) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["action"] = o.Action
-	if !IsNil(o.Resources) {
-		toSerialize["resources"] = o.Resources
-	}
-	return toSerialize, nil
 }

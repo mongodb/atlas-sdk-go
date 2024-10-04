@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"encoding/json"
 	"time"
 )
 
@@ -378,32 +377,4 @@ func (o *DataLakeIngestionPipeline) HasTransformations() bool {
 // SetTransformations gets a reference to the given []FieldTransformation and assigns it to the Transformations field.
 func (o *DataLakeIngestionPipeline) SetTransformations(v []FieldTransformation) {
 	o.Transformations = &v
-}
-
-func (o *DataLakeIngestionPipeline) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *DataLakeIngestionPipeline) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.DatasetRetentionPolicy) {
-		toSerialize["datasetRetentionPolicy"] = o.DatasetRetentionPolicy
-	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if !IsNil(o.Sink) {
-		toSerialize["sink"] = o.Sink
-	}
-	if !IsNil(o.Source) {
-		toSerialize["source"] = o.Source
-	}
-	if !IsNil(o.Transformations) {
-		toSerialize["transformations"] = o.Transformations
-	}
-	return toSerialize, nil
 }

@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"encoding/json"
 	"time"
 )
 
@@ -448,33 +447,4 @@ func (o *BackupRestoreJobDelivery) HasUrlV2() bool {
 // SetUrlV2 gets a reference to the given string and assigns it to the UrlV2 field.
 func (o *BackupRestoreJobDelivery) SetUrlV2(v string) {
 	o.UrlV2 = &v
-}
-
-func (o *BackupRestoreJobDelivery) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *BackupRestoreJobDelivery) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ExpirationHours) {
-		toSerialize["expirationHours"] = o.ExpirationHours
-	}
-	if !IsNil(o.MaxDownloads) {
-		toSerialize["maxDownloads"] = o.MaxDownloads
-	}
-	toSerialize["methodName"] = o.MethodName
-	if !IsNil(o.TargetClusterId) {
-		toSerialize["targetClusterId"] = o.TargetClusterId
-	}
-	if !IsNil(o.TargetClusterName) {
-		toSerialize["targetClusterName"] = o.TargetClusterName
-	}
-	if !IsNil(o.TargetGroupId) {
-		toSerialize["targetGroupId"] = o.TargetGroupId
-	}
-	return toSerialize, nil
 }

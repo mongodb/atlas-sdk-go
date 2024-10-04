@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // AWSCustomDNSEnabled struct for AWSCustomDNSEnabled
 type AWSCustomDNSEnabled struct {
 	// Flag that indicates whether the project's clusters deployed to Amazon Web Services (AWS) use a custom Domain Name System (DNS). When `\"enabled\": true`, connect to your cluster using Private IP for Peering connection strings.
@@ -52,18 +48,4 @@ func (o *AWSCustomDNSEnabled) GetEnabledOk() (*bool, bool) {
 // SetEnabled sets field value
 func (o *AWSCustomDNSEnabled) SetEnabled(v bool) {
 	o.Enabled = v
-}
-
-func (o *AWSCustomDNSEnabled) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *AWSCustomDNSEnabled) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["enabled"] = o.Enabled
-	return toSerialize, nil
 }

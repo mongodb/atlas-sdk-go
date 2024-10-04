@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ApiPublicUsageDetailsQueryRequest Request body for an Invoice Usage Details query with filtering, pagination, and sort.
 type ApiPublicUsageDetailsQueryRequest struct {
 	Filters *UsageDetailsFilterRequest `json:"filters,omitempty"`
@@ -129,26 +125,4 @@ func (o *ApiPublicUsageDetailsQueryRequest) HasSortOrder() bool {
 // SetSortOrder gets a reference to the given string and assigns it to the SortOrder field.
 func (o *ApiPublicUsageDetailsQueryRequest) SetSortOrder(v string) {
 	o.SortOrder = &v
-}
-
-func (o *ApiPublicUsageDetailsQueryRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ApiPublicUsageDetailsQueryRequest) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Filters) {
-		toSerialize["filters"] = o.Filters
-	}
-	if !IsNil(o.SortField) {
-		toSerialize["sortField"] = o.SortField
-	}
-	if !IsNil(o.SortOrder) {
-		toSerialize["sortOrder"] = o.SortOrder
-	}
-	return toSerialize, nil
 }

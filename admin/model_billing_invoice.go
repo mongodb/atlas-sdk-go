@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"encoding/json"
 	"time"
 )
 
@@ -673,20 +672,4 @@ func (o *BillingInvoice) HasUpdated() bool {
 // SetUpdated gets a reference to the given time.Time and assigns it to the Updated field.
 func (o *BillingInvoice) SetUpdated(v time.Time) {
 	o.Updated = &v
-}
-
-func (o *BillingInvoice) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *BillingInvoice) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.StatusName) {
-		toSerialize["statusName"] = o.StatusName
-	}
-	return toSerialize, nil
 }

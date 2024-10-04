@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // BadRequestDetail Bad request detail.
 type BadRequestDetail struct {
 	// Describes all violations in a client request.
@@ -60,20 +56,4 @@ func (o *BadRequestDetail) HasFields() bool {
 // SetFields gets a reference to the given []FieldViolation and assigns it to the Fields field.
 func (o *BadRequestDetail) SetFields(v []FieldViolation) {
 	o.Fields = &v
-}
-
-func (o *BadRequestDetail) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *BadRequestDetail) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Fields) {
-		toSerialize["fields"] = o.Fields
-	}
-	return toSerialize, nil
 }

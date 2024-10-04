@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // OrgFederationSettings Details that define how to connect one MongoDB Cloud organization to one federated authentication service.
 type OrgFederationSettings struct {
 	// List of domains associated with the organization's identity provider.
@@ -201,29 +197,4 @@ func (o *OrgFederationSettings) HasIdentityProviderStatus() bool {
 // SetIdentityProviderStatus gets a reference to the given string and assigns it to the IdentityProviderStatus field.
 func (o *OrgFederationSettings) SetIdentityProviderStatus(v string) {
 	o.IdentityProviderStatus = &v
-}
-
-func (o *OrgFederationSettings) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *OrgFederationSettings) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.FederatedDomains) {
-		toSerialize["federatedDomains"] = o.FederatedDomains
-	}
-	if !IsNil(o.HasRoleMappings) {
-		toSerialize["hasRoleMappings"] = o.HasRoleMappings
-	}
-	if !IsNil(o.IdentityProviderId) {
-		toSerialize["identityProviderId"] = o.IdentityProviderId
-	}
-	if !IsNil(o.IdentityProviderStatus) {
-		toSerialize["identityProviderStatus"] = o.IdentityProviderStatus
-	}
-	return toSerialize, nil
 }

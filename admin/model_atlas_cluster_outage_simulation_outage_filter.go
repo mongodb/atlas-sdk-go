@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // AtlasClusterOutageSimulationOutageFilter struct for AtlasClusterOutageSimulationOutageFilter
 type AtlasClusterOutageSimulationOutageFilter struct {
 	// The cloud provider of the region that undergoes the outage simulation.
@@ -130,26 +126,4 @@ func (o *AtlasClusterOutageSimulationOutageFilter) HasType() bool {
 // SetType gets a reference to the given string and assigns it to the Type field.
 func (o *AtlasClusterOutageSimulationOutageFilter) SetType(v string) {
 	o.Type = &v
-}
-
-func (o *AtlasClusterOutageSimulationOutageFilter) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *AtlasClusterOutageSimulationOutageFilter) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.CloudProvider) {
-		toSerialize["cloudProvider"] = o.CloudProvider
-	}
-	if !IsNil(o.RegionName) {
-		toSerialize["regionName"] = o.RegionName
-	}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
-	}
-	return toSerialize, nil
 }

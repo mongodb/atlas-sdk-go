@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"encoding/json"
 	"time"
 )
 
@@ -346,23 +345,4 @@ func (o *ApiAtlasResourcePolicy) HasVersion() bool {
 // SetVersion gets a reference to the given string and assigns it to the Version field.
 func (o *ApiAtlasResourcePolicy) SetVersion(v string) {
 	o.Version = &v
-}
-
-func (o *ApiAtlasResourcePolicy) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ApiAtlasResourcePolicy) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.CreatedByUser) {
-		toSerialize["createdByUser"] = o.CreatedByUser
-	}
-	if !IsNil(o.LastUpdatedByUser) {
-		toSerialize["lastUpdatedByUser"] = o.LastUpdatedByUser
-	}
-	return toSerialize, nil
 }

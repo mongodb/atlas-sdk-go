@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"encoding/json"
 	"time"
 )
 
@@ -556,50 +555,4 @@ func (o *DiskBackupSnapshotSchedule20240805) HasUseOrgAndGroupNamesInExportPrefi
 // SetUseOrgAndGroupNamesInExportPrefix gets a reference to the given bool and assigns it to the UseOrgAndGroupNamesInExportPrefix field.
 func (o *DiskBackupSnapshotSchedule20240805) SetUseOrgAndGroupNamesInExportPrefix(v bool) {
 	o.UseOrgAndGroupNamesInExportPrefix = &v
-}
-
-func (o *DiskBackupSnapshotSchedule20240805) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *DiskBackupSnapshotSchedule20240805) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.AutoExportEnabled) {
-		toSerialize["autoExportEnabled"] = o.AutoExportEnabled
-	}
-	if !IsNil(o.CopySettings) {
-		toSerialize["copySettings"] = o.CopySettings
-	}
-	if !IsNil(o.DeleteCopiedBackups) {
-		toSerialize["deleteCopiedBackups"] = o.DeleteCopiedBackups
-	}
-	if !IsNil(o.Export) {
-		toSerialize["export"] = o.Export
-	}
-	if !IsNil(o.ExtraRetentionSettings) {
-		toSerialize["extraRetentionSettings"] = o.ExtraRetentionSettings
-	}
-	if !IsNil(o.Policies) {
-		toSerialize["policies"] = o.Policies
-	}
-	if !IsNil(o.ReferenceHourOfDay) {
-		toSerialize["referenceHourOfDay"] = o.ReferenceHourOfDay
-	}
-	if !IsNil(o.ReferenceMinuteOfHour) {
-		toSerialize["referenceMinuteOfHour"] = o.ReferenceMinuteOfHour
-	}
-	if !IsNil(o.RestoreWindowDays) {
-		toSerialize["restoreWindowDays"] = o.RestoreWindowDays
-	}
-	if !IsNil(o.UpdateSnapshots) {
-		toSerialize["updateSnapshots"] = o.UpdateSnapshots
-	}
-	if !IsNil(o.UseOrgAndGroupNamesInExportPrefix) {
-		toSerialize["useOrgAndGroupNamesInExportPrefix"] = o.UseOrgAndGroupNamesInExportPrefix
-	}
-	return toSerialize, nil
 }

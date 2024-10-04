@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // StreamConfig Configuration options for an Atlas Stream Processing Instance.
 type StreamConfig struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
@@ -96,20 +92,4 @@ func (o *StreamConfig) HasTier() bool {
 // SetTier gets a reference to the given string and assigns it to the Tier field.
 func (o *StreamConfig) SetTier(v string) {
 	o.Tier = &v
-}
-
-func (o *StreamConfig) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *StreamConfig) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Tier) {
-		toSerialize["tier"] = o.Tier
-	}
-	return toSerialize, nil
 }

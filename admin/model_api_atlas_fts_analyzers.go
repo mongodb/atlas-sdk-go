@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ApiAtlasFTSAnalyzers Settings that describe one Atlas Search custom analyzer.
 type ApiAtlasFTSAnalyzers struct {
 	// Filters that examine text one character at a time and perform filtering operations.
@@ -148,25 +144,4 @@ func (o *ApiAtlasFTSAnalyzers) GetTokenizerOk() (*ApiAtlasFTSAnalyzersTokenizer,
 // SetTokenizer sets field value
 func (o *ApiAtlasFTSAnalyzers) SetTokenizer(v ApiAtlasFTSAnalyzersTokenizer) {
 	o.Tokenizer = v
-}
-
-func (o *ApiAtlasFTSAnalyzers) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ApiAtlasFTSAnalyzers) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.CharFilters) {
-		toSerialize["charFilters"] = o.CharFilters
-	}
-	toSerialize["name"] = o.Name
-	if !IsNil(o.TokenFilters) {
-		toSerialize["tokenFilters"] = o.TokenFilters
-	}
-	toSerialize["tokenizer"] = o.Tokenizer
-	return toSerialize, nil
 }

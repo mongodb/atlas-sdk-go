@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"encoding/json"
 	"time"
 )
 
@@ -605,35 +604,4 @@ func (o *ServerlessBackupRestoreJob) HasTimestamp() bool {
 // SetTimestamp gets a reference to the given time.Time and assigns it to the Timestamp field.
 func (o *ServerlessBackupRestoreJob) SetTimestamp(v time.Time) {
 	o.Timestamp = &v
-}
-
-func (o *ServerlessBackupRestoreJob) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ServerlessBackupRestoreJob) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["deliveryType"] = o.DeliveryType
-	if !IsNil(o.DesiredTimestamp) {
-		toSerialize["desiredTimestamp"] = o.DesiredTimestamp
-	}
-	if !IsNil(o.OplogInc) {
-		toSerialize["oplogInc"] = o.OplogInc
-	}
-	if !IsNil(o.OplogTs) {
-		toSerialize["oplogTs"] = o.OplogTs
-	}
-	if !IsNil(o.PointInTimeUTCSeconds) {
-		toSerialize["pointInTimeUTCSeconds"] = o.PointInTimeUTCSeconds
-	}
-	if !IsNil(o.SnapshotId) {
-		toSerialize["snapshotId"] = o.SnapshotId
-	}
-	toSerialize["targetClusterName"] = o.TargetClusterName
-	toSerialize["targetGroupId"] = o.TargetGroupId
-	return toSerialize, nil
 }

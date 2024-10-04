@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ApiCheckpointPart Metadata contained in one document that describes the complete snapshot taken for this node.
 type ApiCheckpointPart struct {
 	// Human-readable label that identifies the replica set to which this checkpoint applies.
@@ -203,20 +199,4 @@ func (o *ApiCheckpointPart) HasTypeName() bool {
 // SetTypeName gets a reference to the given string and assigns it to the TypeName field.
 func (o *ApiCheckpointPart) SetTypeName(v string) {
 	o.TypeName = &v
-}
-
-func (o *ApiCheckpointPart) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ApiCheckpointPart) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.TokenTimestamp) {
-		toSerialize["tokenTimestamp"] = o.TokenTimestamp
-	}
-	return toSerialize, nil
 }

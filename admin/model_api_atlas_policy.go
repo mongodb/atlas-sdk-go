@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ApiAtlasPolicy struct for ApiAtlasPolicy
 type ApiAtlasPolicy struct {
 	// A string that defines the permissions for the policy. The syntax used is the Cedar Policy language.
@@ -97,17 +93,4 @@ func (o *ApiAtlasPolicy) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *ApiAtlasPolicy) SetId(v string) {
 	o.Id = &v
-}
-
-func (o *ApiAtlasPolicy) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ApiAtlasPolicy) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

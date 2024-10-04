@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ClusterAutoScalingSettings Range of instance sizes to which your cluster can scale.
 type ClusterAutoScalingSettings struct {
 	Compute *ClusterComputeAutoScaling `json:"compute,omitempty"`
@@ -98,23 +94,4 @@ func (o *ClusterAutoScalingSettings) HasDiskGBEnabled() bool {
 // SetDiskGBEnabled gets a reference to the given bool and assigns it to the DiskGBEnabled field.
 func (o *ClusterAutoScalingSettings) SetDiskGBEnabled(v bool) {
 	o.DiskGBEnabled = &v
-}
-
-func (o *ClusterAutoScalingSettings) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ClusterAutoScalingSettings) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Compute) {
-		toSerialize["compute"] = o.Compute
-	}
-	if !IsNil(o.DiskGBEnabled) {
-		toSerialize["diskGBEnabled"] = o.DiskGBEnabled
-	}
-	return toSerialize, nil
 }

@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // AlertsToggle Enables or disables the specified alert configuration in the specified project.
 type AlertsToggle struct {
 	// Flag that indicates whether to enable or disable the specified alert configuration in the specified project.
@@ -60,20 +56,4 @@ func (o *AlertsToggle) HasEnabled() bool {
 // SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
 func (o *AlertsToggle) SetEnabled(v bool) {
 	o.Enabled = &v
-}
-
-func (o *AlertsToggle) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *AlertsToggle) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Enabled) {
-		toSerialize["enabled"] = o.Enabled
-	}
-	return toSerialize, nil
 }

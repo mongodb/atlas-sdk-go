@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ResourceTag Key-value pair that tags and categorizes a MongoDB Cloud organization, project, or cluster. For example, `environment : production`.
 type ResourceTag struct {
 	// Constant that defines the set of the tag. For example, `environment` in the `environment : production` tag.
@@ -79,19 +75,4 @@ func (o *ResourceTag) GetValueOk() (*string, bool) {
 // SetValue sets field value
 func (o *ResourceTag) SetValue(v string) {
 	o.Value = v
-}
-
-func (o *ResourceTag) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ResourceTag) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["key"] = o.Key
-	toSerialize["value"] = o.Value
-	return toSerialize, nil
 }

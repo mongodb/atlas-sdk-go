@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"encoding/json"
 	"time"
 )
 
@@ -446,26 +445,4 @@ func (o *DiskBackupExportJob) HasState() bool {
 // SetState gets a reference to the given string and assigns it to the State field.
 func (o *DiskBackupExportJob) SetState(v string) {
 	o.State = &v
-}
-
-func (o *DiskBackupExportJob) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *DiskBackupExportJob) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.CustomData) {
-		toSerialize["customData"] = o.CustomData
-	}
-	if !IsNil(o.ExportStatus) {
-		toSerialize["exportStatus"] = o.ExportStatus
-	}
-	if !IsNil(o.SnapshotId) {
-		toSerialize["snapshotId"] = o.SnapshotId
-	}
-	return toSerialize, nil
 }

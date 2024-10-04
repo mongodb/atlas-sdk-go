@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // DiskBackupOnDemandSnapshotRequest struct for DiskBackupOnDemandSnapshotRequest
 type DiskBackupOnDemandSnapshotRequest struct {
 	// Human-readable phrase or sentence that explains the purpose of the snapshot. The resource returns this parameter when `\"status\" : \"onDemand\"`.
@@ -131,23 +127,4 @@ func (o *DiskBackupOnDemandSnapshotRequest) HasRetentionInDays() bool {
 // SetRetentionInDays gets a reference to the given int and assigns it to the RetentionInDays field.
 func (o *DiskBackupOnDemandSnapshotRequest) SetRetentionInDays(v int) {
 	o.RetentionInDays = &v
-}
-
-func (o *DiskBackupOnDemandSnapshotRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *DiskBackupOnDemandSnapshotRequest) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
-	if !IsNil(o.RetentionInDays) {
-		toSerialize["retentionInDays"] = o.RetentionInDays
-	}
-	return toSerialize, nil
 }

@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // BackupOnlineArchiveCreate struct for BackupOnlineArchiveCreate
 type BackupOnlineArchiveCreate struct {
 	// Unique 24-hexadecimal digit string that identifies the online archive.
@@ -500,38 +496,4 @@ func (o *BackupOnlineArchiveCreate) HasState() bool {
 // SetState gets a reference to the given string and assigns it to the State field.
 func (o *BackupOnlineArchiveCreate) SetState(v string) {
 	o.State = &v
-}
-
-func (o *BackupOnlineArchiveCreate) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *BackupOnlineArchiveCreate) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["collName"] = o.CollName
-	if !IsNil(o.CollectionType) {
-		toSerialize["collectionType"] = o.CollectionType
-	}
-	toSerialize["criteria"] = o.Criteria
-	if !IsNil(o.DataExpirationRule) {
-		toSerialize["dataExpirationRule"] = o.DataExpirationRule
-	}
-	if !IsNil(o.DataProcessRegion) {
-		toSerialize["dataProcessRegion"] = o.DataProcessRegion
-	}
-	toSerialize["dbName"] = o.DbName
-	if !IsNil(o.PartitionFields) {
-		toSerialize["partitionFields"] = o.PartitionFields
-	}
-	if !IsNil(o.Paused) {
-		toSerialize["paused"] = o.Paused
-	}
-	if !IsNil(o.Schedule) {
-		toSerialize["schedule"] = o.Schedule
-	}
-	return toSerialize, nil
 }

@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // Namespaces struct for Namespaces
 type Namespaces struct {
 	// List that contains each combination of database, collection, and type on the specified host.
@@ -61,17 +57,4 @@ func (o *Namespaces) HasNamespaces() bool {
 // SetNamespaces gets a reference to the given []NamespaceObj and assigns it to the Namespaces field.
 func (o *Namespaces) SetNamespaces(v []NamespaceObj) {
 	o.Namespaces = &v
-}
-
-func (o *Namespaces) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *Namespaces) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

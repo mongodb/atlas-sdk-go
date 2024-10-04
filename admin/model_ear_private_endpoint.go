@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // EARPrivateEndpoint Encryption At Rest Private Endpoint.
 type EARPrivateEndpoint struct {
 	// Human-readable label that identifies the cloud provider for the Encryption At Rest private endpoint.
@@ -240,20 +236,4 @@ func (o *EARPrivateEndpoint) HasPrivateEndpointConnectionName() bool {
 // SetPrivateEndpointConnectionName gets a reference to the given string and assigns it to the PrivateEndpointConnectionName field.
 func (o *EARPrivateEndpoint) SetPrivateEndpointConnectionName(v string) {
 	o.PrivateEndpointConnectionName = &v
-}
-
-func (o *EARPrivateEndpoint) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *EARPrivateEndpoint) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.RegionName) {
-		toSerialize["regionName"] = o.RegionName
-	}
-	return toSerialize, nil
 }

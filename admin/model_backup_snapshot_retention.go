@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // BackupSnapshotRetention struct for BackupSnapshotRetention
 type BackupSnapshotRetention struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
@@ -115,19 +111,4 @@ func (o *BackupSnapshotRetention) GetRetentionValueOk() (*int, bool) {
 // SetRetentionValue sets field value
 func (o *BackupSnapshotRetention) SetRetentionValue(v int) {
 	o.RetentionValue = v
-}
-
-func (o *BackupSnapshotRetention) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *BackupSnapshotRetention) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["retentionUnit"] = o.RetentionUnit
-	toSerialize["retentionValue"] = o.RetentionValue
-	return toSerialize, nil
 }

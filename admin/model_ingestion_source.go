@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // IngestionSource Ingestion Source of a Data Lake Pipeline.
 type IngestionSource struct {
 	// Type of ingestion source of this Data Lake Pipeline.
@@ -236,32 +232,4 @@ func (o *IngestionSource) HasPolicyItemId() bool {
 // SetPolicyItemId gets a reference to the given string and assigns it to the PolicyItemId field.
 func (o *IngestionSource) SetPolicyItemId(v string) {
 	o.PolicyItemId = &v
-}
-
-func (o *IngestionSource) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *IngestionSource) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
-	}
-	if !IsNil(o.ClusterName) {
-		toSerialize["clusterName"] = o.ClusterName
-	}
-	if !IsNil(o.CollectionName) {
-		toSerialize["collectionName"] = o.CollectionName
-	}
-	if !IsNil(o.DatabaseName) {
-		toSerialize["databaseName"] = o.DatabaseName
-	}
-	if !IsNil(o.PolicyItemId) {
-		toSerialize["policyItemId"] = o.PolicyItemId
-	}
-	return toSerialize, nil
 }

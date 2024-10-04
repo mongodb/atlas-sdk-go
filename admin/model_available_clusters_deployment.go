@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // AvailableClustersDeployment Deployments that can be migrated to MongoDB Atlas.
 type AvailableClustersDeployment struct {
 	// Version of MongoDB Agent that monitors/manages the cluster.
@@ -373,17 +369,4 @@ func (o *AvailableClustersDeployment) GetTlsEnabledOk() (*bool, bool) {
 // SetTlsEnabled sets field value
 func (o *AvailableClustersDeployment) SetTlsEnabled(v bool) {
 	o.TlsEnabled = v
-}
-
-func (o *AvailableClustersDeployment) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *AvailableClustersDeployment) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

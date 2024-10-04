@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // BackupComplianceOnDemandPolicyItem Specifications for on-demand policy.
 type BackupComplianceOnDemandPolicyItem struct {
 	// Number that indicates the frequency interval for a set of snapshots. MongoDB Cloud ignores this setting for non-hourly policy items in Backup Compliance Policy settings.
@@ -169,21 +165,4 @@ func (o *BackupComplianceOnDemandPolicyItem) GetRetentionValueOk() (*int, bool) 
 // SetRetentionValue sets field value
 func (o *BackupComplianceOnDemandPolicyItem) SetRetentionValue(v int) {
 	o.RetentionValue = v
-}
-
-func (o *BackupComplianceOnDemandPolicyItem) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *BackupComplianceOnDemandPolicyItem) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["frequencyInterval"] = o.FrequencyInterval
-	toSerialize["frequencyType"] = o.FrequencyType
-	toSerialize["retentionUnit"] = o.RetentionUnit
-	toSerialize["retentionValue"] = o.RetentionValue
-	return toSerialize, nil
 }

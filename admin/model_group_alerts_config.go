@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"encoding/json"
 	"time"
 )
 
@@ -418,35 +417,4 @@ func (o *GroupAlertsConfig) HasThreshold() bool {
 // SetThreshold gets a reference to the given GreaterThanRawThreshold and assigns it to the Threshold field.
 func (o *GroupAlertsConfig) SetThreshold(v GreaterThanRawThreshold) {
 	o.Threshold = &v
-}
-
-func (o *GroupAlertsConfig) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *GroupAlertsConfig) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Enabled) {
-		toSerialize["enabled"] = o.Enabled
-	}
-	if !IsNil(o.EventTypeName) {
-		toSerialize["eventTypeName"] = o.EventTypeName
-	}
-	if !IsNil(o.Matchers) {
-		toSerialize["matchers"] = o.Matchers
-	}
-	if !IsNil(o.Notifications) {
-		toSerialize["notifications"] = o.Notifications
-	}
-	if !IsNil(o.MetricThreshold) {
-		toSerialize["metricThreshold"] = o.MetricThreshold
-	}
-	if !IsNil(o.Threshold) {
-		toSerialize["threshold"] = o.Threshold
-	}
-	return toSerialize, nil
 }

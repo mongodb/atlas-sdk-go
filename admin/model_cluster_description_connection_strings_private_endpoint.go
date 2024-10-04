@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ClusterDescriptionConnectionStringsPrivateEndpoint Private endpoint-aware connection string that you can use to connect to this cluster through a private endpoint.
 type ClusterDescriptionConnectionStringsPrivateEndpoint struct {
 	// Private endpoint-aware connection string that uses the `mongodb://` protocol to connect to MongoDB Cloud through a private endpoint.
@@ -205,17 +201,4 @@ func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) HasType() bool {
 // SetType gets a reference to the given string and assigns it to the Type field.
 func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) SetType(v string) {
 	o.Type = &v
-}
-
-func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

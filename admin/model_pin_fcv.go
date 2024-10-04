@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"encoding/json"
 	"time"
 )
 
@@ -97,20 +96,4 @@ func (o *PinFCV) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *PinFCV) SetLinks(v []Link) {
 	o.Links = &v
-}
-
-func (o *PinFCV) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *PinFCV) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ExpirationDate) {
-		toSerialize["expirationDate"] = o.ExpirationDate
-	}
-	return toSerialize, nil
 }

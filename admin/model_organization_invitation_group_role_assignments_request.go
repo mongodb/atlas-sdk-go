@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // OrganizationInvitationGroupRoleAssignmentsRequest struct for OrganizationInvitationGroupRoleAssignmentsRequest
 type OrganizationInvitationGroupRoleAssignmentsRequest struct {
 	// Unique 24-hexadecimal digit string that identifies the project to which these roles belong.
@@ -95,23 +91,4 @@ func (o *OrganizationInvitationGroupRoleAssignmentsRequest) HasRoles() bool {
 // SetRoles gets a reference to the given []string and assigns it to the Roles field.
 func (o *OrganizationInvitationGroupRoleAssignmentsRequest) SetRoles(v []string) {
 	o.Roles = &v
-}
-
-func (o *OrganizationInvitationGroupRoleAssignmentsRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *OrganizationInvitationGroupRoleAssignmentsRequest) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.GroupId) {
-		toSerialize["groupId"] = o.GroupId
-	}
-	if !IsNil(o.Roles) {
-		toSerialize["roles"] = o.Roles
-	}
-	return toSerialize, nil
 }

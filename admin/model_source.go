@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // Source Document that describes the source of the migration.
 type Source struct {
 	// Path to the CA certificate that signed SSL certificates use to authenticate to the source cluster.
@@ -240,30 +236,4 @@ func (o *Source) HasUsername() bool {
 // SetUsername gets a reference to the given string and assigns it to the Username field.
 func (o *Source) SetUsername(v string) {
 	o.Username = &v
-}
-
-func (o *Source) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *Source) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.CaCertificatePath) {
-		toSerialize["caCertificatePath"] = o.CaCertificatePath
-	}
-	toSerialize["clusterName"] = o.ClusterName
-	toSerialize["groupId"] = o.GroupId
-	toSerialize["managedAuthentication"] = o.ManagedAuthentication
-	if !IsNil(o.Password) {
-		toSerialize["password"] = o.Password
-	}
-	toSerialize["ssl"] = o.Ssl
-	if !IsNil(o.Username) {
-		toSerialize["username"] = o.Username
-	}
-	return toSerialize, nil
 }

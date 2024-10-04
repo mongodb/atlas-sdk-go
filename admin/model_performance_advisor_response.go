@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // PerformanceAdvisorResponse struct for PerformanceAdvisorResponse
 type PerformanceAdvisorResponse struct {
 	// List of query predicates, sorts, and projections that the Performance Advisor suggests.
@@ -97,17 +93,4 @@ func (o *PerformanceAdvisorResponse) HasSuggestedIndexes() bool {
 // SetSuggestedIndexes gets a reference to the given []PerformanceAdvisorIndex and assigns it to the SuggestedIndexes field.
 func (o *PerformanceAdvisorResponse) SetSuggestedIndexes(v []PerformanceAdvisorIndex) {
 	o.SuggestedIndexes = &v
-}
-
-func (o *PerformanceAdvisorResponse) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *PerformanceAdvisorResponse) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

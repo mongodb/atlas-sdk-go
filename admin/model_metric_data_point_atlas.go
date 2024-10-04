@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"encoding/json"
 	"time"
 )
 
@@ -98,17 +97,4 @@ func (o *MetricDataPointAtlas) HasValue() bool {
 // SetValue gets a reference to the given float32 and assigns it to the Value field.
 func (o *MetricDataPointAtlas) SetValue(v float32) {
 	o.Value = &v
-}
-
-func (o *MetricDataPointAtlas) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *MetricDataPointAtlas) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

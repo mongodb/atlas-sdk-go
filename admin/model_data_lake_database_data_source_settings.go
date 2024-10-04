@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // DataLakeDatabaseDataSourceSettings Data store that maps to a collection for this data lake.
 type DataLakeDatabaseDataSourceSettings struct {
 	// Flag that validates the scheme in the specified URLs. If `true`, allows insecure `HTTP` scheme, doesn't verify the server's certificate chain and hostname, and accepts any certificate with any hostname presented by the server. If `false`, allows secure `HTTPS` scheme only.
@@ -484,56 +480,4 @@ func (o *DataLakeDatabaseDataSourceSettings) HasUrls() bool {
 // SetUrls gets a reference to the given []string and assigns it to the Urls field.
 func (o *DataLakeDatabaseDataSourceSettings) SetUrls(v []string) {
 	o.Urls = &v
-}
-
-func (o *DataLakeDatabaseDataSourceSettings) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *DataLakeDatabaseDataSourceSettings) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.AllowInsecure) {
-		toSerialize["allowInsecure"] = o.AllowInsecure
-	}
-	if !IsNil(o.Collection) {
-		toSerialize["collection"] = o.Collection
-	}
-	if !IsNil(o.CollectionRegex) {
-		toSerialize["collectionRegex"] = o.CollectionRegex
-	}
-	if !IsNil(o.Database) {
-		toSerialize["database"] = o.Database
-	}
-	if !IsNil(o.DatabaseRegex) {
-		toSerialize["databaseRegex"] = o.DatabaseRegex
-	}
-	if !IsNil(o.DatasetName) {
-		toSerialize["datasetName"] = o.DatasetName
-	}
-	if !IsNil(o.DatasetPrefix) {
-		toSerialize["datasetPrefix"] = o.DatasetPrefix
-	}
-	if !IsNil(o.DefaultFormat) {
-		toSerialize["defaultFormat"] = o.DefaultFormat
-	}
-	if !IsNil(o.Path) {
-		toSerialize["path"] = o.Path
-	}
-	if !IsNil(o.ProvenanceFieldName) {
-		toSerialize["provenanceFieldName"] = o.ProvenanceFieldName
-	}
-	if !IsNil(o.StoreName) {
-		toSerialize["storeName"] = o.StoreName
-	}
-	if !IsNil(o.TrimLevel) {
-		toSerialize["trimLevel"] = o.TrimLevel
-	}
-	if !IsNil(o.Urls) {
-		toSerialize["urls"] = o.Urls
-	}
-	return toSerialize, nil
 }

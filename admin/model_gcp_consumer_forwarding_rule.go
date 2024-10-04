@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // GCPConsumerForwardingRule struct for GCPConsumerForwardingRule
 type GCPConsumerForwardingRule struct {
 	// Human-readable label that identifies the Google Cloud consumer forwarding rule that you created.
@@ -133,17 +129,4 @@ func (o *GCPConsumerForwardingRule) HasStatus() bool {
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *GCPConsumerForwardingRule) SetStatus(v string) {
 	o.Status = &v
-}
-
-func (o *GCPConsumerForwardingRule) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *GCPConsumerForwardingRule) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

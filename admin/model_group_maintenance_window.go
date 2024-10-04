@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // GroupMaintenanceWindow struct for GroupMaintenanceWindow
 type GroupMaintenanceWindow struct {
 	// Flag that indicates whether MongoDB Cloud should defer all maintenance windows for one week after you enable them.
@@ -193,27 +189,4 @@ func (o *GroupMaintenanceWindow) HasStartASAP() bool {
 // SetStartASAP gets a reference to the given bool and assigns it to the StartASAP field.
 func (o *GroupMaintenanceWindow) SetStartASAP(v bool) {
 	o.StartASAP = &v
-}
-
-func (o *GroupMaintenanceWindow) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *GroupMaintenanceWindow) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.AutoDeferOnceEnabled) {
-		toSerialize["autoDeferOnceEnabled"] = o.AutoDeferOnceEnabled
-	}
-	toSerialize["dayOfWeek"] = o.DayOfWeek
-	if !IsNil(o.HourOfDay) {
-		toSerialize["hourOfDay"] = o.HourOfDay
-	}
-	if !IsNil(o.StartASAP) {
-		toSerialize["startASAP"] = o.StartASAP
-	}
-	return toSerialize, nil
 }

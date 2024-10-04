@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // BiConnector Settings needed to configure the MongoDB Connector for Business Intelligence for this cluster.
 type BiConnector struct {
 	// Flag that indicates whether MongoDB Connector for Business Intelligence is enabled on the specified cluster.
@@ -95,23 +91,4 @@ func (o *BiConnector) HasReadPreference() bool {
 // SetReadPreference gets a reference to the given string and assigns it to the ReadPreference field.
 func (o *BiConnector) SetReadPreference(v string) {
 	o.ReadPreference = &v
-}
-
-func (o *BiConnector) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *BiConnector) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Enabled) {
-		toSerialize["enabled"] = o.Enabled
-	}
-	if !IsNil(o.ReadPreference) {
-		toSerialize["readPreference"] = o.ReadPreference
-	}
-	return toSerialize, nil
 }

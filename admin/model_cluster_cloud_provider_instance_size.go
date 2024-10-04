@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ClusterCloudProviderInstanceSize struct for ClusterCloudProviderInstanceSize
 type ClusterCloudProviderInstanceSize struct {
 	// List of regions that this cloud provider supports for this instance size.
@@ -97,17 +93,4 @@ func (o *ClusterCloudProviderInstanceSize) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *ClusterCloudProviderInstanceSize) SetName(v string) {
 	o.Name = &v
-}
-
-func (o *ClusterCloudProviderInstanceSize) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ClusterCloudProviderInstanceSize) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

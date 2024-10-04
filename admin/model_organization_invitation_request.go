@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // OrganizationInvitationRequest struct for OrganizationInvitationRequest
 type OrganizationInvitationRequest struct {
 	// List of projects that the user will be added to when they accept their invitation to the organization.
@@ -165,29 +161,4 @@ func (o *OrganizationInvitationRequest) HasUsername() bool {
 // SetUsername gets a reference to the given string and assigns it to the Username field.
 func (o *OrganizationInvitationRequest) SetUsername(v string) {
 	o.Username = &v
-}
-
-func (o *OrganizationInvitationRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *OrganizationInvitationRequest) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.GroupRoleAssignments) {
-		toSerialize["groupRoleAssignments"] = o.GroupRoleAssignments
-	}
-	if !IsNil(o.Roles) {
-		toSerialize["roles"] = o.Roles
-	}
-	if !IsNil(o.TeamIds) {
-		toSerialize["teamIds"] = o.TeamIds
-	}
-	if !IsNil(o.Username) {
-		toSerialize["username"] = o.Username
-	}
-	return toSerialize, nil
 }

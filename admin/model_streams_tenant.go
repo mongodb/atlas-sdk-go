@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // StreamsTenant struct for StreamsTenant
 type StreamsTenant struct {
 	// Unique 24-hexadecimal character string that identifies the project.
@@ -342,29 +338,4 @@ func (o *StreamsTenant) HasStreamConfig() bool {
 // SetStreamConfig gets a reference to the given StreamConfig and assigns it to the StreamConfig field.
 func (o *StreamsTenant) SetStreamConfig(v StreamConfig) {
 	o.StreamConfig = &v
-}
-
-func (o *StreamsTenant) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *StreamsTenant) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.DataProcessRegion) {
-		toSerialize["dataProcessRegion"] = o.DataProcessRegion
-	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if !IsNil(o.SampleConnections) {
-		toSerialize["sampleConnections"] = o.SampleConnections
-	}
-	if !IsNil(o.StreamConfig) {
-		toSerialize["streamConfig"] = o.StreamConfig
-	}
-	return toSerialize, nil
 }

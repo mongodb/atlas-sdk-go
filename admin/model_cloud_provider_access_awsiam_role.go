@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"encoding/json"
 	"time"
 )
 
@@ -481,30 +480,4 @@ func (o *CloudProviderAccessAWSIAMRole) HasTenantId() bool {
 // SetTenantId gets a reference to the given string and assigns it to the TenantId field.
 func (o *CloudProviderAccessAWSIAMRole) SetTenantId(v string) {
 	o.TenantId = &v
-}
-
-func (o *CloudProviderAccessAWSIAMRole) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *CloudProviderAccessAWSIAMRole) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.IamAssumedRoleArn) {
-		toSerialize["iamAssumedRoleArn"] = o.IamAssumedRoleArn
-	}
-	toSerialize["providerName"] = o.ProviderName
-	if !IsNil(o.AtlasAzureAppId) {
-		toSerialize["atlasAzureAppId"] = o.AtlasAzureAppId
-	}
-	if !IsNil(o.ServicePrincipalId) {
-		toSerialize["servicePrincipalId"] = o.ServicePrincipalId
-	}
-	if !IsNil(o.TenantId) {
-		toSerialize["tenantId"] = o.TenantId
-	}
-	return toSerialize, nil
 }

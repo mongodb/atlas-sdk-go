@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ShardingRequest Document that configures sharding on the destination cluster when migrating from a replica set source to a sharded cluster destination on MongoDB 6.0 or higher. If you don't wish to shard any collections on the destination cluster, leave this empty.
 type ShardingRequest struct {
 	// Flag that lets the migration create supporting indexes for the shard keys, if none exists, as the destination cluster also needs compatible indexes for the specified shard keys.
@@ -89,21 +85,4 @@ func (o *ShardingRequest) HasShardingEntries() bool {
 // SetShardingEntries gets a reference to the given []ShardEntry and assigns it to the ShardingEntries field.
 func (o *ShardingRequest) SetShardingEntries(v []ShardEntry) {
 	o.ShardingEntries = &v
-}
-
-func (o *ShardingRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ShardingRequest) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["createSupportingIndexes"] = o.CreateSupportingIndexes
-	if !IsNil(o.ShardingEntries) {
-		toSerialize["shardingEntries"] = o.ShardingEntries
-	}
-	return toSerialize, nil
 }

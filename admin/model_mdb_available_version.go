@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // MdbAvailableVersion struct for MdbAvailableVersion
 type MdbAvailableVersion struct {
 	// Cloud service provider on which MongoDB Cloud provisions the hosts. Set dedicated clusters to `AWS`, `GCP`, `AZURE` or `TENANT`.
@@ -201,29 +197,4 @@ func (o *MdbAvailableVersion) HasVersion() bool {
 // SetVersion gets a reference to the given string and assigns it to the Version field.
 func (o *MdbAvailableVersion) SetVersion(v string) {
 	o.Version = &v
-}
-
-func (o *MdbAvailableVersion) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *MdbAvailableVersion) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.CloudProvider) {
-		toSerialize["cloudProvider"] = o.CloudProvider
-	}
-	if !IsNil(o.DefaultStatus) {
-		toSerialize["defaultStatus"] = o.DefaultStatus
-	}
-	if !IsNil(o.InstanceSize) {
-		toSerialize["instanceSize"] = o.InstanceSize
-	}
-	if !IsNil(o.Version) {
-		toSerialize["version"] = o.Version
-	}
-	return toSerialize, nil
 }

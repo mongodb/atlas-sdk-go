@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // NumberMetricValue Measurement of the **metricName** recorded at the time of the event.
 type NumberMetricValue struct {
 	// Amount of the **metricName** recorded at the time of the event. This value triggered the alert.
@@ -96,20 +92,4 @@ func (o *NumberMetricValue) HasUnits() bool {
 // SetUnits gets a reference to the given string and assigns it to the Units field.
 func (o *NumberMetricValue) SetUnits(v string) {
 	o.Units = &v
-}
-
-func (o *NumberMetricValue) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *NumberMetricValue) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Units) {
-		toSerialize["units"] = o.Units
-	}
-	return toSerialize, nil
 }

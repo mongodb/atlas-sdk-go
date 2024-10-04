@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // FieldTransformation Field Transformations during ingestion of a Data Lake Pipeline.
 type FieldTransformation struct {
 	// Key in the document.
@@ -95,23 +91,4 @@ func (o *FieldTransformation) HasType() bool {
 // SetType gets a reference to the given string and assigns it to the Type field.
 func (o *FieldTransformation) SetType(v string) {
 	o.Type = &v
-}
-
-func (o *FieldTransformation) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *FieldTransformation) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Field) {
-		toSerialize["field"] = o.Field
-	}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
-	}
-	return toSerialize, nil
 }

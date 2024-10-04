@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // UpdateOrgRolesForUser struct for UpdateOrgRolesForUser
 type UpdateOrgRolesForUser struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
@@ -96,20 +92,4 @@ func (o *UpdateOrgRolesForUser) HasOrgRoles() bool {
 // SetOrgRoles gets a reference to the given []string and assigns it to the OrgRoles field.
 func (o *UpdateOrgRolesForUser) SetOrgRoles(v []string) {
 	o.OrgRoles = &v
-}
-
-func (o *UpdateOrgRolesForUser) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *UpdateOrgRolesForUser) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.OrgRoles) {
-		toSerialize["orgRoles"] = o.OrgRoles
-	}
-	return toSerialize, nil
 }

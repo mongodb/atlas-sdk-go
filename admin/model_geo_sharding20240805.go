@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // GeoSharding20240805 struct for GeoSharding20240805
 type GeoSharding20240805 struct {
 	// List that contains comma-separated key value pairs to map zones to geographic regions. These pairs map an ISO 3166-1a2 location code, with an ISO 3166-2 subdivision code when possible, to a unique 24-hexadecimal string that identifies the custom zone.   The 24-hexadecimal string corresponds to a `Replication Specifications` `zoneId` property.  This parameter returns an empty object if no custom zones exist.
@@ -133,17 +129,4 @@ func (o *GeoSharding20240805) HasSelfManagedSharding() bool {
 // SetSelfManagedSharding gets a reference to the given bool and assigns it to the SelfManagedSharding field.
 func (o *GeoSharding20240805) SetSelfManagedSharding(v bool) {
 	o.SelfManagedSharding = &v
-}
-
-func (o *GeoSharding20240805) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *GeoSharding20240805) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // DataLakeAWSCloudProviderConfig Configuration for running Data Federation in AWS.
 type DataLakeAWSCloudProviderConfig struct {
 	// Unique identifier associated with the Identity and Access Management (IAM) role that the data lake assumes when accessing the data stores.
@@ -188,19 +184,4 @@ func (o *DataLakeAWSCloudProviderConfig) GetTestS3BucketOk() (*string, bool) {
 // SetTestS3Bucket sets field value
 func (o *DataLakeAWSCloudProviderConfig) SetTestS3Bucket(v string) {
 	o.TestS3Bucket = v
-}
-
-func (o *DataLakeAWSCloudProviderConfig) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *DataLakeAWSCloudProviderConfig) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["roleId"] = o.RoleId
-	toSerialize["testS3Bucket"] = o.TestS3Bucket
-	return toSerialize, nil
 }

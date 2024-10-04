@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // PerformanceAdvisorShape struct for PerformanceAdvisorShape
 type PerformanceAdvisorShape struct {
 	// Average duration in milliseconds for the queries examined that match this shape.
@@ -241,17 +237,4 @@ func (o *PerformanceAdvisorShape) HasOperations() bool {
 // SetOperations gets a reference to the given []PerformanceAdvisorOperation and assigns it to the Operations field.
 func (o *PerformanceAdvisorShape) SetOperations(v []PerformanceAdvisorOperation) {
 	o.Operations = &v
-}
-
-func (o *PerformanceAdvisorShape) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *PerformanceAdvisorShape) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

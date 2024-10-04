@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // StreamsMatcher Rules to apply when comparing a stream processing instance or stream processor against this alert configuration.
 type StreamsMatcher struct {
 	// Name of the parameter in the target object that MongoDB Cloud checks. The parameter must match all rules for MongoDB Cloud to check for alert configurations.
@@ -106,20 +102,4 @@ func (o *StreamsMatcher) GetValueOk() (*string, bool) {
 // SetValue sets field value
 func (o *StreamsMatcher) SetValue(v string) {
 	o.Value = v
-}
-
-func (o *StreamsMatcher) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *StreamsMatcher) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["fieldName"] = o.FieldName
-	toSerialize["operator"] = o.Operator
-	toSerialize["value"] = o.Value
-	return toSerialize, nil
 }

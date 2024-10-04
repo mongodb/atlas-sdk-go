@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"encoding/json"
 	"time"
 )
 
@@ -314,17 +313,4 @@ func (o *MeasurementsNonIndex) HasStatusMeasurements() bool {
 // SetStatusMeasurements gets a reference to the given []MetricsMeasurement and assigns it to the StatusMeasurements field.
 func (o *MeasurementsNonIndex) SetStatusMeasurements(v []MetricsMeasurement) {
 	o.StatusMeasurements = &v
-}
-
-func (o *MeasurementsNonIndex) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *MeasurementsNonIndex) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

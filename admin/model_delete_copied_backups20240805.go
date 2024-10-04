@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // DeleteCopiedBackups20240805 Deleted copy setting whose backup copies need to also be deleted.
 type DeleteCopiedBackups20240805 struct {
 	// Human-readable label that identifies the cloud provider for the deleted copy setting whose backup copies you want to delete.
@@ -133,26 +129,4 @@ func (o *DeleteCopiedBackups20240805) HasZoneId() bool {
 // SetZoneId gets a reference to the given string and assigns it to the ZoneId field.
 func (o *DeleteCopiedBackups20240805) SetZoneId(v string) {
 	o.ZoneId = &v
-}
-
-func (o *DeleteCopiedBackups20240805) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *DeleteCopiedBackups20240805) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.CloudProvider) {
-		toSerialize["cloudProvider"] = o.CloudProvider
-	}
-	if !IsNil(o.RegionName) {
-		toSerialize["regionName"] = o.RegionName
-	}
-	if !IsNil(o.ZoneId) {
-		toSerialize["zoneId"] = o.ZoneId
-	}
-	return toSerialize, nil
 }

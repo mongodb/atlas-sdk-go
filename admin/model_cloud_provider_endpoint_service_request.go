@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // CloudProviderEndpointServiceRequest struct for CloudProviderEndpointServiceRequest
 type CloudProviderEndpointServiceRequest struct {
 	// Human-readable label that identifies the cloud service provider for which you want to create the private endpoint service.
@@ -81,19 +77,4 @@ func (o *CloudProviderEndpointServiceRequest) GetRegionOk() (*string, bool) {
 // SetRegion sets field value
 func (o *CloudProviderEndpointServiceRequest) SetRegion(v string) {
 	o.Region = v
-}
-
-func (o *CloudProviderEndpointServiceRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *CloudProviderEndpointServiceRequest) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["providerName"] = o.ProviderName
-	toSerialize["region"] = o.Region
-	return toSerialize, nil
 }

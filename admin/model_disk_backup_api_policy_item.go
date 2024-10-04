@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // DiskBackupApiPolicyItem Specifications for one policy.
 type DiskBackupApiPolicyItem struct {
 	// Number that indicates the frequency interval for a set of Snapshots. A value of `1` specifies the first instance of the corresponding `frequencyType`.  - In a yearly policy item, `1` indicates that the yearly Snapshot occurs on the first day of January and `12` indicates the first day of December.  - In a monthly policy item, `1` indicates that the monthly Snapshot occurs on the first day of the month and `40` indicates the last day of the month.  - In a weekly policy item, `1` indicates that the weekly Snapshot occurs on Monday and `7` indicates Sunday.  - In an hourly policy item, you can set the frequency interval to `1`, `2`, `4`, `6`, `8`, or `12`. For hourly policy items for NVMe clusters, MongoDB Cloud accepts only `12` as the frequency interval value.   MongoDB Cloud ignores this setting for non-hourly policy items in Backup Compliance Policy settings.
@@ -169,21 +165,4 @@ func (o *DiskBackupApiPolicyItem) GetRetentionValueOk() (*int, bool) {
 // SetRetentionValue sets field value
 func (o *DiskBackupApiPolicyItem) SetRetentionValue(v int) {
 	o.RetentionValue = v
-}
-
-func (o *DiskBackupApiPolicyItem) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *DiskBackupApiPolicyItem) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["frequencyInterval"] = o.FrequencyInterval
-	toSerialize["frequencyType"] = o.FrequencyType
-	toSerialize["retentionUnit"] = o.RetentionUnit
-	toSerialize["retentionValue"] = o.RetentionValue
-	return toSerialize, nil
 }

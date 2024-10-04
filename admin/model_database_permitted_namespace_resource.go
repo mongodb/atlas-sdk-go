@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // DatabasePermittedNamespaceResource Namespace to which this database user has access.
 type DatabasePermittedNamespaceResource struct {
 	// Flag that indicates whether to grant the action on the cluster resource. If `true`, MongoDB Cloud ignores the **actions.resources.collection** and **actions.resources.db** parameters.
@@ -106,20 +102,4 @@ func (o *DatabasePermittedNamespaceResource) GetDbOk() (*string, bool) {
 // SetDb sets field value
 func (o *DatabasePermittedNamespaceResource) SetDb(v string) {
 	o.Db = v
-}
-
-func (o *DatabasePermittedNamespaceResource) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *DatabasePermittedNamespaceResource) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["cluster"] = o.Cluster
-	toSerialize["collection"] = o.Collection
-	toSerialize["db"] = o.Db
-	return toSerialize, nil
 }

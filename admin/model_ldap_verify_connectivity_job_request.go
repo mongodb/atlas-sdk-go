@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // LDAPVerifyConnectivityJobRequest struct for LDAPVerifyConnectivityJobRequest
 type LDAPVerifyConnectivityJobRequest struct {
 	// Unique 24-hexadecimal digit string that identifies the project associated with this Lightweight Directory Access Protocol (LDAP) over Transport Layer Security (TLS) configuration.
@@ -239,20 +235,4 @@ func (o *LDAPVerifyConnectivityJobRequest) HasValidations() bool {
 // SetValidations gets a reference to the given []LDAPVerifyConnectivityJobRequestValidation and assigns it to the Validations field.
 func (o *LDAPVerifyConnectivityJobRequest) SetValidations(v []LDAPVerifyConnectivityJobRequestValidation) {
 	o.Validations = &v
-}
-
-func (o *LDAPVerifyConnectivityJobRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *LDAPVerifyConnectivityJobRequest) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Request) {
-		toSerialize["request"] = o.Request
-	}
-	return toSerialize, nil
 }

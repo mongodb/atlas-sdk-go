@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // BackupOnlineArchive struct for BackupOnlineArchive
 type BackupOnlineArchive struct {
 	// Unique 24-hexadecimal digit string that identifies the online archive.
@@ -520,32 +516,4 @@ func (o *BackupOnlineArchive) HasState() bool {
 // SetState gets a reference to the given string and assigns it to the State field.
 func (o *BackupOnlineArchive) SetState(v string) {
 	o.State = &v
-}
-
-func (o *BackupOnlineArchive) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *BackupOnlineArchive) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Criteria) {
-		toSerialize["criteria"] = o.Criteria
-	}
-	if !IsNil(o.DataExpirationRule) {
-		toSerialize["dataExpirationRule"] = o.DataExpirationRule
-	}
-	if !IsNil(o.DataProcessRegion) {
-		toSerialize["dataProcessRegion"] = o.DataProcessRegion
-	}
-	if !IsNil(o.Paused) {
-		toSerialize["paused"] = o.Paused
-	}
-	if !IsNil(o.Schedule) {
-		toSerialize["schedule"] = o.Schedule
-	}
-	return toSerialize, nil
 }

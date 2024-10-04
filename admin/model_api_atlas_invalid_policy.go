@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ApiAtlasInvalidPolicy struct for ApiAtlasInvalidPolicy
 type ApiAtlasInvalidPolicy struct {
 	// A string that defines the permissions for the policy. The syntax used is the Cedar Policy language.
@@ -97,17 +93,4 @@ func (o *ApiAtlasInvalidPolicy) HasErrors() bool {
 // SetErrors gets a reference to the given []ApiAtlasInvalidPolicyErrorDetail and assigns it to the Errors field.
 func (o *ApiAtlasInvalidPolicy) SetErrors(v []ApiAtlasInvalidPolicyErrorDetail) {
 	o.Errors = &v
-}
-
-func (o *ApiAtlasInvalidPolicy) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ApiAtlasInvalidPolicy) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

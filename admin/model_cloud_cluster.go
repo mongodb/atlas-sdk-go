@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // CloudCluster Settings that describe the clusters in each project that the API key is authorized to view.
 type CloudCluster struct {
 	// Whole number that indicates the quantity of alerts open on the cluster.
@@ -421,17 +417,4 @@ func (o *CloudCluster) HasVersions() bool {
 // SetVersions gets a reference to the given []string and assigns it to the Versions field.
 func (o *CloudCluster) SetVersions(v []string) {
 	o.Versions = &v
-}
-
-func (o *CloudCluster) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *CloudCluster) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

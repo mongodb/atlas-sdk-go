@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"encoding/json"
 	"time"
 )
 
@@ -277,20 +276,4 @@ func (o *CloudProviderAccessAWSIAMRoleAllOf) HasRoleId() bool {
 // SetRoleId gets a reference to the given string and assigns it to the RoleId field.
 func (o *CloudProviderAccessAWSIAMRoleAllOf) SetRoleId(v string) {
 	o.RoleId = &v
-}
-
-func (o *CloudProviderAccessAWSIAMRoleAllOf) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *CloudProviderAccessAWSIAMRoleAllOf) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.IamAssumedRoleArn) {
-		toSerialize["iamAssumedRoleArn"] = o.IamAssumedRoleArn
-	}
-	return toSerialize, nil
 }

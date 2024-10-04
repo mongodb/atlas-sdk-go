@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"encoding/json"
 	"time"
 )
 
@@ -458,17 +457,4 @@ func (o *ApiHostViewAtlas) HasVersion() bool {
 // SetVersion gets a reference to the given string and assigns it to the Version field.
 func (o *ApiHostViewAtlas) SetVersion(v string) {
 	o.Version = &v
-}
-
-func (o *ApiHostViewAtlas) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ApiHostViewAtlas) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

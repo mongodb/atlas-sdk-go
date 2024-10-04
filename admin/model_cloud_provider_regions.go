@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // CloudProviderRegions struct for CloudProviderRegions
 type CloudProviderRegions struct {
 	// List of instances sizes that this cloud provider supports.
@@ -96,20 +92,4 @@ func (o *CloudProviderRegions) HasProvider() bool {
 // SetProvider gets a reference to the given string and assigns it to the Provider field.
 func (o *CloudProviderRegions) SetProvider(v string) {
 	o.Provider = &v
-}
-
-func (o *CloudProviderRegions) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *CloudProviderRegions) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Provider) {
-		toSerialize["provider"] = o.Provider
-	}
-	return toSerialize, nil
 }

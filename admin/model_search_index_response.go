@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // SearchIndexResponse struct for SearchIndexResponse
 type SearchIndexResponse struct {
 	// Label that identifies the collection that contains one or more Atlas Search indexes.
@@ -443,53 +439,4 @@ func (o *SearchIndexResponse) HasSynonymMappingStatusDetail() bool {
 // SetSynonymMappingStatusDetail gets a reference to the given []map[string]SynonymMappingStatusDetail and assigns it to the SynonymMappingStatusDetail field.
 func (o *SearchIndexResponse) SetSynonymMappingStatusDetail(v []map[string]SynonymMappingStatusDetail) {
 	o.SynonymMappingStatusDetail = &v
-}
-
-func (o *SearchIndexResponse) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *SearchIndexResponse) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.CollectionName) {
-		toSerialize["collectionName"] = o.CollectionName
-	}
-	if !IsNil(o.Database) {
-		toSerialize["database"] = o.Database
-	}
-	if !IsNil(o.IndexID) {
-		toSerialize["indexID"] = o.IndexID
-	}
-	if !IsNil(o.LatestDefinition) {
-		toSerialize["latestDefinition"] = o.LatestDefinition
-	}
-	if !IsNil(o.LatestDefinitionVersion) {
-		toSerialize["latestDefinitionVersion"] = o.LatestDefinitionVersion
-	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if !IsNil(o.Queryable) {
-		toSerialize["queryable"] = o.Queryable
-	}
-	if !IsNil(o.Status) {
-		toSerialize["status"] = o.Status
-	}
-	if !IsNil(o.StatusDetail) {
-		toSerialize["statusDetail"] = o.StatusDetail
-	}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
-	}
-	if !IsNil(o.SynonymMappingStatus) {
-		toSerialize["synonymMappingStatus"] = o.SynonymMappingStatus
-	}
-	if !IsNil(o.SynonymMappingStatusDetail) {
-		toSerialize["synonymMappingStatusDetail"] = o.SynonymMappingStatusDetail
-	}
-	return toSerialize, nil
 }

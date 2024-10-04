@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // RoleAssignment struct for RoleAssignment
 type RoleAssignment struct {
 	// Unique 24-hexadecimal digit string that identifies the project to which this role belongs. Each element within **roleAssignments** can have a value for **groupId** or **orgId**, but not both.
@@ -130,26 +126,4 @@ func (o *RoleAssignment) HasRole() bool {
 // SetRole gets a reference to the given string and assigns it to the Role field.
 func (o *RoleAssignment) SetRole(v string) {
 	o.Role = &v
-}
-
-func (o *RoleAssignment) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *RoleAssignment) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.GroupId) {
-		toSerialize["groupId"] = o.GroupId
-	}
-	if !IsNil(o.OrgId) {
-		toSerialize["orgId"] = o.OrgId
-	}
-	if !IsNil(o.Role) {
-		toSerialize["role"] = o.Role
-	}
-	return toSerialize, nil
 }

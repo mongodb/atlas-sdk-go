@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // BaseNetworkPeeringConnectionSettings struct for BaseNetworkPeeringConnectionSettings
 type BaseNetworkPeeringConnectionSettings struct {
 	// Unique 24-hexadecimal digit string that identifies the MongoDB Cloud network container that contains the specified network peering connection.
@@ -689,51 +685,4 @@ func (o *BaseNetworkPeeringConnectionSettings) HasNetworkName() bool {
 // SetNetworkName gets a reference to the given string and assigns it to the NetworkName field.
 func (o *BaseNetworkPeeringConnectionSettings) SetNetworkName(v string) {
 	o.NetworkName = &v
-}
-
-func (o *BaseNetworkPeeringConnectionSettings) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *BaseNetworkPeeringConnectionSettings) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["containerId"] = o.ContainerId
-	if !IsNil(o.ProviderName) {
-		toSerialize["providerName"] = o.ProviderName
-	}
-	if !IsNil(o.AccepterRegionName) {
-		toSerialize["accepterRegionName"] = o.AccepterRegionName
-	}
-	if !IsNil(o.AwsAccountId) {
-		toSerialize["awsAccountId"] = o.AwsAccountId
-	}
-	if !IsNil(o.RouteTableCidrBlock) {
-		toSerialize["routeTableCidrBlock"] = o.RouteTableCidrBlock
-	}
-	if !IsNil(o.VpcId) {
-		toSerialize["vpcId"] = o.VpcId
-	}
-	if !IsNil(o.AzureDirectoryId) {
-		toSerialize["azureDirectoryId"] = o.AzureDirectoryId
-	}
-	if !IsNil(o.AzureSubscriptionId) {
-		toSerialize["azureSubscriptionId"] = o.AzureSubscriptionId
-	}
-	if !IsNil(o.ResourceGroupName) {
-		toSerialize["resourceGroupName"] = o.ResourceGroupName
-	}
-	if !IsNil(o.VnetName) {
-		toSerialize["vnetName"] = o.VnetName
-	}
-	if !IsNil(o.GcpProjectId) {
-		toSerialize["gcpProjectId"] = o.GcpProjectId
-	}
-	if !IsNil(o.NetworkName) {
-		toSerialize["networkName"] = o.NetworkName
-	}
-	return toSerialize, nil
 }

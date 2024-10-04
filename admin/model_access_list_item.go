@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // AccessListItem struct for AccessListItem
 type AccessListItem struct {
 	// Range of IP addresses in Classless Inter-Domain Routing (CIDR) notation that found in this project's access list.
@@ -89,17 +85,4 @@ func (o *AccessListItem) GetIpAddressOk() (*string, bool) {
 // SetIpAddress sets field value
 func (o *AccessListItem) SetIpAddress(v string) {
 	o.IpAddress = v
-}
-
-func (o *AccessListItem) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *AccessListItem) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

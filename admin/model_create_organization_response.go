@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // CreateOrganizationResponse struct for CreateOrganizationResponse
 type CreateOrganizationResponse struct {
 	ApiKey *ApiKeyUserDetails `json:"apiKey,omitempty"`
@@ -165,23 +161,4 @@ func (o *CreateOrganizationResponse) HasOrganization() bool {
 // SetOrganization gets a reference to the given AtlasOrganization and assigns it to the Organization field.
 func (o *CreateOrganizationResponse) SetOrganization(v AtlasOrganization) {
 	o.Organization = &v
-}
-
-func (o *CreateOrganizationResponse) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *CreateOrganizationResponse) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ApiKey) {
-		toSerialize["apiKey"] = o.ApiKey
-	}
-	if !IsNil(o.Organization) {
-		toSerialize["organization"] = o.Organization
-	}
-	return toSerialize, nil
 }

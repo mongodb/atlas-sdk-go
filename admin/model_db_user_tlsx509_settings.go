@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // DBUserTLSX509Settings Settings to configure TLS Certificates for database users.
 type DBUserTLSX509Settings struct {
 	// Concatenated list of customer certificate authority (CA) certificates needed to authenticate database users. MongoDB Cloud expects this as a PEM-formatted certificate.
@@ -96,20 +92,4 @@ func (o *DBUserTLSX509Settings) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *DBUserTLSX509Settings) SetLinks(v []Link) {
 	o.Links = &v
-}
-
-func (o *DBUserTLSX509Settings) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *DBUserTLSX509Settings) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Cas) {
-		toSerialize["cas"] = o.Cas
-	}
-	return toSerialize, nil
 }

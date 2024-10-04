@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ShardKeys Document that configures the shard key on the destination cluster.
 type ShardKeys struct {
 	// List of fields to use for the shard key.
@@ -61,20 +57,4 @@ func (o *ShardKeys) HasKey() bool {
 // SetKey gets a reference to the given []interface{} and assigns it to the Key field.
 func (o *ShardKeys) SetKey(v []interface{}) {
 	o.Key = &v
-}
-
-func (o *ShardKeys) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ShardKeys) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Key) {
-		toSerialize["key"] = o.Key
-	}
-	return toSerialize, nil
 }

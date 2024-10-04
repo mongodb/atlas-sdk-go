@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // CreateOrganizationRequest struct for CreateOrganizationRequest
 type CreateOrganizationRequest struct {
 	ApiKey *CreateAtlasOrganizationApiKey `json:"apiKey,omitempty"`
@@ -156,27 +152,4 @@ func (o *CreateOrganizationRequest) HasOrgOwnerId() bool {
 // SetOrgOwnerId gets a reference to the given string and assigns it to the OrgOwnerId field.
 func (o *CreateOrganizationRequest) SetOrgOwnerId(v string) {
 	o.OrgOwnerId = &v
-}
-
-func (o *CreateOrganizationRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *CreateOrganizationRequest) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ApiKey) {
-		toSerialize["apiKey"] = o.ApiKey
-	}
-	if !IsNil(o.FederationSettingsId) {
-		toSerialize["federationSettingsId"] = o.FederationSettingsId
-	}
-	toSerialize["name"] = o.Name
-	if !IsNil(o.OrgOwnerId) {
-		toSerialize["orgOwnerId"] = o.OrgOwnerId
-	}
-	return toSerialize, nil
 }

@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ExtraRetentionSetting extra retention setting item in the desired backup policy.
 type ExtraRetentionSetting struct {
 	// The frequency type for the extra retention settings for the cluster.
@@ -95,23 +91,4 @@ func (o *ExtraRetentionSetting) HasRetentionDays() bool {
 // SetRetentionDays gets a reference to the given int and assigns it to the RetentionDays field.
 func (o *ExtraRetentionSetting) SetRetentionDays(v int) {
 	o.RetentionDays = &v
-}
-
-func (o *ExtraRetentionSetting) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ExtraRetentionSetting) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.FrequencyType) {
-		toSerialize["frequencyType"] = o.FrequencyType
-	}
-	if !IsNil(o.RetentionDays) {
-		toSerialize["retentionDays"] = o.RetentionDays
-	}
-	return toSerialize, nil
 }

@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // CloudProviderAccessRoles struct for CloudProviderAccessRoles
 type CloudProviderAccessRoles struct {
 	// List that contains the Amazon Web Services (AWS) IAM roles registered and authorized with MongoDB Cloud.
@@ -95,23 +91,4 @@ func (o *CloudProviderAccessRoles) HasAzureServicePrincipals() bool {
 // SetAzureServicePrincipals gets a reference to the given []CloudProviderAccessAzureServicePrincipal and assigns it to the AzureServicePrincipals field.
 func (o *CloudProviderAccessRoles) SetAzureServicePrincipals(v []CloudProviderAccessAzureServicePrincipal) {
 	o.AzureServicePrincipals = &v
-}
-
-func (o *CloudProviderAccessRoles) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *CloudProviderAccessRoles) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.AwsIamRoles) {
-		toSerialize["awsIamRoles"] = o.AwsIamRoles
-	}
-	if !IsNil(o.AzureServicePrincipals) {
-		toSerialize["azureServicePrincipals"] = o.AzureServicePrincipals
-	}
-	return toSerialize, nil
 }

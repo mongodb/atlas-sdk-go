@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"encoding/json"
 	"time"
 )
 
@@ -131,26 +130,4 @@ func (o *X509CertificateUpdate) HasNotBefore() bool {
 // SetNotBefore gets a reference to the given time.Time and assigns it to the NotBefore field.
 func (o *X509CertificateUpdate) SetNotBefore(v time.Time) {
 	o.NotBefore = &v
-}
-
-func (o *X509CertificateUpdate) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *X509CertificateUpdate) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Content) {
-		toSerialize["content"] = o.Content
-	}
-	if !IsNil(o.NotAfter) {
-		toSerialize["notAfter"] = o.NotAfter
-	}
-	if !IsNil(o.NotBefore) {
-		toSerialize["notBefore"] = o.NotBefore
-	}
-	return toSerialize, nil
 }

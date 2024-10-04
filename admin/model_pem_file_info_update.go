@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // PemFileInfoUpdate PEM file information for the identity provider's current certificates.
 type PemFileInfoUpdate struct {
 	// List of certificates in the file.
@@ -95,23 +91,4 @@ func (o *PemFileInfoUpdate) HasFileName() bool {
 // SetFileName gets a reference to the given string and assigns it to the FileName field.
 func (o *PemFileInfoUpdate) SetFileName(v string) {
 	o.FileName = &v
-}
-
-func (o *PemFileInfoUpdate) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *PemFileInfoUpdate) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Certificates) {
-		toSerialize["certificates"] = o.Certificates
-	}
-	if !IsNil(o.FileName) {
-		toSerialize["fileName"] = o.FileName
-	}
-	return toSerialize, nil
 }

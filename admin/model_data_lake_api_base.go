@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // DataLakeApiBase An aggregation pipeline that applies to the collection.
 type DataLakeApiBase struct {
 	// Human-readable label that identifies the view, which corresponds to an aggregation pipeline on a collection.
@@ -130,26 +126,4 @@ func (o *DataLakeApiBase) HasSource() bool {
 // SetSource gets a reference to the given string and assigns it to the Source field.
 func (o *DataLakeApiBase) SetSource(v string) {
 	o.Source = &v
-}
-
-func (o *DataLakeApiBase) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *DataLakeApiBase) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if !IsNil(o.Pipeline) {
-		toSerialize["pipeline"] = o.Pipeline
-	}
-	if !IsNil(o.Source) {
-		toSerialize["source"] = o.Source
-	}
-	return toSerialize, nil
 }

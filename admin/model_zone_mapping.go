@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ZoneMapping Human-readable label that identifies the subset of a global cluster.
 type ZoneMapping struct {
 	// Code that represents a location that maps to a zone in your global cluster. MongoDB Cloud represents this location with a ISO 3166-2 location and subdivision codes when possible.
@@ -79,19 +75,4 @@ func (o *ZoneMapping) GetZoneOk() (*string, bool) {
 // SetZone sets field value
 func (o *ZoneMapping) SetZone(v string) {
 	o.Zone = v
-}
-
-func (o *ZoneMapping) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ZoneMapping) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["location"] = o.Location
-	toSerialize["zone"] = o.Zone
-	return toSerialize, nil
 }

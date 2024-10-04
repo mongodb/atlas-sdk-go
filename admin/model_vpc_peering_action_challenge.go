@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // VPCPeeringActionChallenge Container for elements used to challenge the user before taking certain actions on VPC Peering connections.
 type VPCPeeringActionChallenge struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
@@ -131,23 +127,4 @@ func (o *VPCPeeringActionChallenge) HasRequesterVpcId() bool {
 // SetRequesterVpcId gets a reference to the given string and assigns it to the RequesterVpcId field.
 func (o *VPCPeeringActionChallenge) SetRequesterVpcId(v string) {
 	o.RequesterVpcId = &v
-}
-
-func (o *VPCPeeringActionChallenge) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *VPCPeeringActionChallenge) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.RequesterAccountId) {
-		toSerialize["requesterAccountId"] = o.RequesterAccountId
-	}
-	if !IsNil(o.RequesterVpcId) {
-		toSerialize["requesterVpcId"] = o.RequesterVpcId
-	}
-	return toSerialize, nil
 }

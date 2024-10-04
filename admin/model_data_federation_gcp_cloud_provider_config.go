@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // DataFederationGCPCloudProviderConfig Configuration for running Data Federation in GCP.
 type DataFederationGCPCloudProviderConfig struct {
 	// The email address of the Google Cloud Platform (GCP) service account created by Atlas which should be authorized to allow Atlas to access Google Cloud Storage.
@@ -88,18 +84,4 @@ func (o *DataFederationGCPCloudProviderConfig) GetRoleIdOk() (*string, bool) {
 // SetRoleId sets field value
 func (o *DataFederationGCPCloudProviderConfig) SetRoleId(v string) {
 	o.RoleId = v
-}
-
-func (o *DataFederationGCPCloudProviderConfig) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *DataFederationGCPCloudProviderConfig) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["roleId"] = o.RoleId
-	return toSerialize, nil
 }

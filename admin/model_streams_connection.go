@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // StreamsConnection Settings that define a connection to an external data store.
 type StreamsConnection struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
@@ -372,44 +368,4 @@ func (o *StreamsConnection) HasSecurity() bool {
 // SetSecurity gets a reference to the given StreamsKafkaSecurity and assigns it to the Security field.
 func (o *StreamsConnection) SetSecurity(v StreamsKafkaSecurity) {
 	o.Security = &v
-}
-
-func (o *StreamsConnection) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *StreamsConnection) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
-	}
-	if !IsNil(o.ClusterName) {
-		toSerialize["clusterName"] = o.ClusterName
-	}
-	if !IsNil(o.DbRoleToExecute) {
-		toSerialize["dbRoleToExecute"] = o.DbRoleToExecute
-	}
-	if !IsNil(o.Authentication) {
-		toSerialize["authentication"] = o.Authentication
-	}
-	if !IsNil(o.BootstrapServers) {
-		toSerialize["bootstrapServers"] = o.BootstrapServers
-	}
-	if !IsNil(o.Config) {
-		toSerialize["config"] = o.Config
-	}
-	if !IsNil(o.Networking) {
-		toSerialize["networking"] = o.Networking
-	}
-	if !IsNil(o.Security) {
-		toSerialize["security"] = o.Security
-	}
-	return toSerialize, nil
 }

@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ComponentLabel Human-readable labels applied to this MongoDB Cloud component.
 type ComponentLabel struct {
 	// Key applied to tag and categorize this component.
@@ -95,23 +91,4 @@ func (o *ComponentLabel) HasValue() bool {
 // SetValue gets a reference to the given string and assigns it to the Value field.
 func (o *ComponentLabel) SetValue(v string) {
 	o.Value = &v
-}
-
-func (o *ComponentLabel) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ComponentLabel) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Key) {
-		toSerialize["key"] = o.Key
-	}
-	if !IsNil(o.Value) {
-		toSerialize["value"] = o.Value
-	}
-	return toSerialize, nil
 }

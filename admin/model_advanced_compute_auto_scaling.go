@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // AdvancedComputeAutoScaling Options that determine how this cluster handles CPU scaling.
 type AdvancedComputeAutoScaling struct {
 	// Flag that indicates whether someone enabled instance size auto-scaling.  - Set to `true` to enable instance size auto-scaling. If enabled, you must specify a value for **replicationSpecs[n].regionConfigs[m].autoScaling.compute.maxInstanceSize**. - Set to `false` to disable instance size automatic scaling.
@@ -165,29 +161,4 @@ func (o *AdvancedComputeAutoScaling) HasScaleDownEnabled() bool {
 // SetScaleDownEnabled gets a reference to the given bool and assigns it to the ScaleDownEnabled field.
 func (o *AdvancedComputeAutoScaling) SetScaleDownEnabled(v bool) {
 	o.ScaleDownEnabled = &v
-}
-
-func (o *AdvancedComputeAutoScaling) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *AdvancedComputeAutoScaling) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Enabled) {
-		toSerialize["enabled"] = o.Enabled
-	}
-	if !IsNil(o.MaxInstanceSize) {
-		toSerialize["maxInstanceSize"] = o.MaxInstanceSize
-	}
-	if !IsNil(o.MinInstanceSize) {
-		toSerialize["minInstanceSize"] = o.MinInstanceSize
-	}
-	if !IsNil(o.ScaleDownEnabled) {
-		toSerialize["scaleDownEnabled"] = o.ScaleDownEnabled
-	}
-	return toSerialize, nil
 }

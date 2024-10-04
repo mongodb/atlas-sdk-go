@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // DataExpirationRule Rule for specifying when data should be deleted from the archive.
 type DataExpirationRule struct {
 	// Number of days used in the date criteria for nominating documents for deletion.
@@ -60,20 +56,4 @@ func (o *DataExpirationRule) HasExpireAfterDays() bool {
 // SetExpireAfterDays gets a reference to the given int and assigns it to the ExpireAfterDays field.
 func (o *DataExpirationRule) SetExpireAfterDays(v int) {
 	o.ExpireAfterDays = &v
-}
-
-func (o *DataExpirationRule) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *DataExpirationRule) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ExpireAfterDays) {
-		toSerialize["expireAfterDays"] = o.ExpireAfterDays
-	}
-	return toSerialize, nil
 }

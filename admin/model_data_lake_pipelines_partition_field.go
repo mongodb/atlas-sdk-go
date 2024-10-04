@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // DataLakePipelinesPartitionField Partition Field in the Data Lake Storage provider for a Data Lake Pipeline.
 type DataLakePipelinesPartitionField struct {
 	// Human-readable label that identifies the field name used to partition data.
@@ -81,19 +77,4 @@ func (o *DataLakePipelinesPartitionField) GetOrderOk() (*int, bool) {
 // SetOrder sets field value
 func (o *DataLakePipelinesPartitionField) SetOrder(v int) {
 	o.Order = v
-}
-
-func (o *DataLakePipelinesPartitionField) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *DataLakePipelinesPartitionField) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["fieldName"] = o.FieldName
-	toSerialize["order"] = o.Order
-	return toSerialize, nil
 }

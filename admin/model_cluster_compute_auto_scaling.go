@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ClusterComputeAutoScaling Collection of settings that configures how a cluster might scale its cluster tier and whether the cluster can scale down. Cluster tier auto-scaling is unavailable for clusters using Low CPU or NVME storage classes.
 type ClusterComputeAutoScaling struct {
 	// Flag that indicates whether cluster tier auto-scaling is enabled. Set to `true` to enable cluster tier auto-scaling. If enabled, you must specify a value for **providerSettings.autoScaling.compute.maxInstanceSize** also. Set to `false` to disable cluster tier auto-scaling.
@@ -103,23 +99,4 @@ func (o *ClusterComputeAutoScaling) HasScaleDownEnabled() bool {
 // SetScaleDownEnabled gets a reference to the given bool and assigns it to the ScaleDownEnabled field.
 func (o *ClusterComputeAutoScaling) SetScaleDownEnabled(v bool) {
 	o.ScaleDownEnabled = &v
-}
-
-func (o *ClusterComputeAutoScaling) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ClusterComputeAutoScaling) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Enabled) {
-		toSerialize["enabled"] = o.Enabled
-	}
-	if !IsNil(o.ScaleDownEnabled) {
-		toSerialize["scaleDownEnabled"] = o.ScaleDownEnabled
-	}
-	return toSerialize, nil
 }

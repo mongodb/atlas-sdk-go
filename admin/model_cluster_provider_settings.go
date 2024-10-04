@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ClusterProviderSettings Group of cloud provider settings that configure the provisioned MongoDB hosts.
 type ClusterProviderSettings struct {
 	ProviderName string                  `json:"providerName"`
@@ -338,42 +334,4 @@ func (o *ClusterProviderSettings) HasBackingProviderName() bool {
 // SetBackingProviderName gets a reference to the given string and assigns it to the BackingProviderName field.
 func (o *ClusterProviderSettings) SetBackingProviderName(v string) {
 	o.BackingProviderName = &v
-}
-
-func (o *ClusterProviderSettings) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ClusterProviderSettings) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["providerName"] = o.ProviderName
-	if !IsNil(o.AutoScaling) {
-		toSerialize["autoScaling"] = o.AutoScaling
-	}
-	if !IsNil(o.DiskIOPS) {
-		toSerialize["diskIOPS"] = o.DiskIOPS
-	}
-	if !IsNil(o.EncryptEBSVolume) {
-		toSerialize["encryptEBSVolume"] = o.EncryptEBSVolume
-	}
-	if !IsNil(o.InstanceSizeName) {
-		toSerialize["instanceSizeName"] = o.InstanceSizeName
-	}
-	if !IsNil(o.RegionName) {
-		toSerialize["regionName"] = o.RegionName
-	}
-	if !IsNil(o.VolumeType) {
-		toSerialize["volumeType"] = o.VolumeType
-	}
-	if !IsNil(o.DiskTypeName) {
-		toSerialize["diskTypeName"] = o.DiskTypeName
-	}
-	if !IsNil(o.BackingProviderName) {
-		toSerialize["backingProviderName"] = o.BackingProviderName
-	}
-	return toSerialize, nil
 }

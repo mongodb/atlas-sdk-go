@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // DiskBackupExportMember struct for DiskBackupExportMember
 type DiskBackupExportMember struct {
 	// Unique 24-hexadecimal character string that identifies the the Cloud Backup snapshot export job for each shard in a sharded cluster.
@@ -97,17 +93,4 @@ func (o *DiskBackupExportMember) HasReplicaSetName() bool {
 // SetReplicaSetName gets a reference to the given string and assigns it to the ReplicaSetName field.
 func (o *DiskBackupExportMember) SetReplicaSetName(v string) {
 	o.ReplicaSetName = &v
-}
-
-func (o *DiskBackupExportMember) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *DiskBackupExportMember) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

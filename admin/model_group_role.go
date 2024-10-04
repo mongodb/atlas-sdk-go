@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // GroupRole struct for GroupRole
 type GroupRole struct {
 	// Unique 24-hexadecimal digit string that identifies the project to which this role belongs.
@@ -95,23 +91,4 @@ func (o *GroupRole) HasGroupRole() bool {
 // SetGroupRole gets a reference to the given string and assigns it to the GroupRole field.
 func (o *GroupRole) SetGroupRole(v string) {
 	o.GroupRole = &v
-}
-
-func (o *GroupRole) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *GroupRole) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.GroupId) {
-		toSerialize["groupId"] = o.GroupId
-	}
-	if !IsNil(o.GroupRole) {
-		toSerialize["groupRole"] = o.GroupRole
-	}
-	return toSerialize, nil
 }

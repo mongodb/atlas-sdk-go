@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // CreateDataProcessRegion Settings to configure the region where you wish to store your archived data.
 type CreateDataProcessRegion struct {
 	// Human-readable label that identifies the Cloud service provider where you wish to store your archived data. **AZURE** may be selected only if **AZURE** is the Cloud service provider for the cluster and no **AWS** online archive has been created for the cluster.
@@ -95,23 +91,4 @@ func (o *CreateDataProcessRegion) HasRegion() bool {
 // SetRegion gets a reference to the given string and assigns it to the Region field.
 func (o *CreateDataProcessRegion) SetRegion(v string) {
 	o.Region = &v
-}
-
-func (o *CreateDataProcessRegion) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *CreateDataProcessRegion) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.CloudProvider) {
-		toSerialize["cloudProvider"] = o.CloudProvider
-	}
-	if !IsNil(o.Region) {
-		toSerialize["region"] = o.Region
-	}
-	return toSerialize, nil
 }

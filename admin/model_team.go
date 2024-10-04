@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // Team struct for Team
 type Team struct {
 	// Unique 24-hexadecimal digit string that identifies this team.
@@ -159,21 +155,4 @@ func (o *Team) HasUsernames() bool {
 // SetUsernames gets a reference to the given []string and assigns it to the Usernames field.
 func (o *Team) SetUsernames(v []string) {
 	o.Usernames = &v
-}
-
-func (o *Team) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *Team) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	if !IsNil(o.Usernames) {
-		toSerialize["usernames"] = o.Usernames
-	}
-	return toSerialize, nil
 }

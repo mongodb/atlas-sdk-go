@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // LegacyReplicationSpec struct for LegacyReplicationSpec
 type LegacyReplicationSpec struct {
 	// Unique 24-hexadecimal digit string that identifies the replication object for a zone in a Global Cluster.  - If you include existing zones in the request, you must specify this parameter.  - If you add a new zone to an existing Global Cluster, you may specify this parameter. The request deletes any existing zones in a Global Cluster that you exclude from the request.
@@ -169,29 +165,4 @@ func (o *LegacyReplicationSpec) HasZoneName() bool {
 // SetZoneName gets a reference to the given string and assigns it to the ZoneName field.
 func (o *LegacyReplicationSpec) SetZoneName(v string) {
 	o.ZoneName = &v
-}
-
-func (o *LegacyReplicationSpec) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *LegacyReplicationSpec) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !IsNil(o.NumShards) {
-		toSerialize["numShards"] = o.NumShards
-	}
-	if !IsNil(o.RegionsConfig) {
-		toSerialize["regionsConfig"] = o.RegionsConfig
-	}
-	if !IsNil(o.ZoneName) {
-		toSerialize["zoneName"] = o.ZoneName
-	}
-	return toSerialize, nil
 }

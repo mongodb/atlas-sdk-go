@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ServerlessInstanceDescriptionCreate Settings that you can specify when you create a serverless instance.
 type ServerlessInstanceDescriptionCreate struct {
 	// Human-readable label that identifies the serverless instance.
@@ -223,28 +219,4 @@ func (o *ServerlessInstanceDescriptionCreate) HasTerminationProtectionEnabled() 
 // SetTerminationProtectionEnabled gets a reference to the given bool and assigns it to the TerminationProtectionEnabled field.
 func (o *ServerlessInstanceDescriptionCreate) SetTerminationProtectionEnabled(v bool) {
 	o.TerminationProtectionEnabled = &v
-}
-
-func (o *ServerlessInstanceDescriptionCreate) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ServerlessInstanceDescriptionCreate) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	toSerialize["providerSettings"] = o.ProviderSettings
-	if !IsNil(o.ServerlessBackupOptions) {
-		toSerialize["serverlessBackupOptions"] = o.ServerlessBackupOptions
-	}
-	if !IsNil(o.Tags) {
-		toSerialize["tags"] = o.Tags
-	}
-	if !IsNil(o.TerminationProtectionEnabled) {
-		toSerialize["terminationProtectionEnabled"] = o.TerminationProtectionEnabled
-	}
-	return toSerialize, nil
 }

@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // DataProcessRegion Settings to configure the region where you wish to store your archived data.
 type DataProcessRegion struct {
 	// Human-readable label that identifies the Cloud service provider where you store your archived data.
@@ -97,17 +93,4 @@ func (o *DataProcessRegion) HasRegion() bool {
 // SetRegion gets a reference to the given string and assigns it to the Region field.
 func (o *DataProcessRegion) SetRegion(v string) {
 	o.Region = &v
-}
-
-func (o *DataProcessRegion) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *DataProcessRegion) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

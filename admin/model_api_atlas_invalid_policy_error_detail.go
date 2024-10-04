@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ApiAtlasInvalidPolicyErrorDetail struct for ApiAtlasInvalidPolicyErrorDetail
 type ApiAtlasInvalidPolicyErrorDetail struct {
 	// A string that provides a detailed description of a validation error.
@@ -61,17 +57,4 @@ func (o *ApiAtlasInvalidPolicyErrorDetail) HasDetail() bool {
 // SetDetail gets a reference to the given string and assigns it to the Detail field.
 func (o *ApiAtlasInvalidPolicyErrorDetail) SetDetail(v string) {
 	o.Detail = &v
-}
-
-func (o *ApiAtlasInvalidPolicyErrorDetail) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ApiAtlasInvalidPolicyErrorDetail) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

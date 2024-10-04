@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"encoding/json"
 	"time"
 )
 
@@ -350,17 +349,4 @@ func (o *MeasurementsCollStatsLatencyHost) HasStart() bool {
 // SetStart gets a reference to the given time.Time and assigns it to the Start field.
 func (o *MeasurementsCollStatsLatencyHost) SetStart(v time.Time) {
 	o.Start = &v
-}
-
-func (o *MeasurementsCollStatsLatencyHost) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *MeasurementsCollStatsLatencyHost) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

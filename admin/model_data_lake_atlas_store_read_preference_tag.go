@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // DataLakeAtlasStoreReadPreferenceTag struct for DataLakeAtlasStoreReadPreferenceTag
 type DataLakeAtlasStoreReadPreferenceTag struct {
 	// Human-readable label of the tag.
@@ -95,23 +91,4 @@ func (o *DataLakeAtlasStoreReadPreferenceTag) HasValue() bool {
 // SetValue gets a reference to the given string and assigns it to the Value field.
 func (o *DataLakeAtlasStoreReadPreferenceTag) SetValue(v string) {
 	o.Value = &v
-}
-
-func (o *DataLakeAtlasStoreReadPreferenceTag) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *DataLakeAtlasStoreReadPreferenceTag) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if !IsNil(o.Value) {
-		toSerialize["value"] = o.Value
-	}
-	return toSerialize, nil
 }

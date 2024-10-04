@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // PipelineRunStats Runtime statistics for this Data Lake Pipeline run.
 type PipelineRunStats struct {
 	// Total data size in bytes exported for this pipeline run.
@@ -97,17 +93,4 @@ func (o *PipelineRunStats) HasNumDocs() bool {
 // SetNumDocs gets a reference to the given int64 and assigns it to the NumDocs field.
 func (o *PipelineRunStats) SetNumDocs(v int64) {
 	o.NumDocs = &v
-}
-
-func (o *PipelineRunStats) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *PipelineRunStats) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

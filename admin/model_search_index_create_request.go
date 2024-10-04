@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // SearchIndexCreateRequest struct for SearchIndexCreateRequest
 type SearchIndexCreateRequest struct {
 	// Label that identifies the collection to create an Atlas Search index in.
@@ -175,26 +171,4 @@ func (o *SearchIndexCreateRequest) HasDefinition() bool {
 // SetDefinition gets a reference to the given BaseSearchIndexCreateRequestDefinition and assigns it to the Definition field.
 func (o *SearchIndexCreateRequest) SetDefinition(v BaseSearchIndexCreateRequestDefinition) {
 	o.Definition = &v
-}
-
-func (o *SearchIndexCreateRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *SearchIndexCreateRequest) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["collectionName"] = o.CollectionName
-	toSerialize["database"] = o.Database
-	toSerialize["name"] = o.Name
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
-	}
-	if !IsNil(o.Definition) {
-		toSerialize["definition"] = o.Definition
-	}
-	return toSerialize, nil
 }

@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // DiskBackupSnapshotExportBucket Disk backup snapshot Export Bucket.
 type DiskBackupSnapshotExportBucket struct {
 	// Unique 24-hexadecimal character string that identifies the Export Bucket.
@@ -291,31 +287,4 @@ func (o *DiskBackupSnapshotExportBucket) HasTenantId() bool {
 // SetTenantId gets a reference to the given string and assigns it to the TenantId field.
 func (o *DiskBackupSnapshotExportBucket) SetTenantId(v string) {
 	o.TenantId = &v
-}
-
-func (o *DiskBackupSnapshotExportBucket) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *DiskBackupSnapshotExportBucket) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["bucketName"] = o.BucketName
-	toSerialize["cloudProvider"] = o.CloudProvider
-	if !IsNil(o.IamRoleId) {
-		toSerialize["iamRoleId"] = o.IamRoleId
-	}
-	if !IsNil(o.RoleId) {
-		toSerialize["roleId"] = o.RoleId
-	}
-	if !IsNil(o.ServiceUrl) {
-		toSerialize["serviceUrl"] = o.ServiceUrl
-	}
-	if !IsNil(o.TenantId) {
-		toSerialize["tenantId"] = o.TenantId
-	}
-	return toSerialize, nil
 }

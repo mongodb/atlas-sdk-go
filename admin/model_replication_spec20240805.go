@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ReplicationSpec20240805 Details that explain how MongoDB Cloud replicates data on the specified MongoDB database.
 type ReplicationSpec20240805 struct {
 	// Unique 24-hexadecimal digit string that identifies the replication object for a shard in a Cluster. If you include existing shard replication configurations in the request, you must specify this parameter. If you add a new shard to an existing Cluster, you may specify this parameter. The request deletes any existing shards  in the Cluster that you exclude from the request.
@@ -167,23 +163,4 @@ func (o *ReplicationSpec20240805) HasZoneName() bool {
 // SetZoneName gets a reference to the given string and assigns it to the ZoneName field.
 func (o *ReplicationSpec20240805) SetZoneName(v string) {
 	o.ZoneName = &v
-}
-
-func (o *ReplicationSpec20240805) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ReplicationSpec20240805) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.RegionConfigs) {
-		toSerialize["regionConfigs"] = o.RegionConfigs
-	}
-	if !IsNil(o.ZoneName) {
-		toSerialize["zoneName"] = o.ZoneName
-	}
-	return toSerialize, nil
 }

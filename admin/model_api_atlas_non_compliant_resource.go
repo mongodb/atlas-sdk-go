@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ApiAtlasNonCompliantResource struct for ApiAtlasNonCompliantResource
 type ApiAtlasNonCompliantResource struct {
 	// Unique 24-hexadecimal character string that identifies the organization the resource belongs to.
@@ -169,17 +165,4 @@ func (o *ApiAtlasNonCompliantResource) HasResourceType() bool {
 // SetResourceType gets a reference to the given string and assigns it to the ResourceType field.
 func (o *ApiAtlasNonCompliantResource) SetResourceType(v string) {
 	o.ResourceType = &v
-}
-
-func (o *ApiAtlasNonCompliantResource) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ApiAtlasNonCompliantResource) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

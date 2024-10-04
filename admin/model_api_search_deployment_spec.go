@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ApiSearchDeploymentSpec struct for ApiSearchDeploymentSpec
 type ApiSearchDeploymentSpec struct {
 	// Hardware specification for the Search Node instance sizes.
@@ -79,19 +75,4 @@ func (o *ApiSearchDeploymentSpec) GetNodeCountOk() (*int, bool) {
 // SetNodeCount sets field value
 func (o *ApiSearchDeploymentSpec) SetNodeCount(v int) {
 	o.NodeCount = v
-}
-
-func (o *ApiSearchDeploymentSpec) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ApiSearchDeploymentSpec) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["instanceSize"] = o.InstanceSize
-	toSerialize["nodeCount"] = o.NodeCount
-	return toSerialize, nil
 }

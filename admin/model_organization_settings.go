@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // OrganizationSettings Collection of settings that configures the organization.
 type OrganizationSettings struct {
 	// Flag that indicates whether to require API operations to originate from an IP Address added to the API access list for the specified organization.
@@ -130,26 +126,4 @@ func (o *OrganizationSettings) HasRestrictEmployeeAccess() bool {
 // SetRestrictEmployeeAccess gets a reference to the given bool and assigns it to the RestrictEmployeeAccess field.
 func (o *OrganizationSettings) SetRestrictEmployeeAccess(v bool) {
 	o.RestrictEmployeeAccess = &v
-}
-
-func (o *OrganizationSettings) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *OrganizationSettings) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ApiAccessListRequired) {
-		toSerialize["apiAccessListRequired"] = o.ApiAccessListRequired
-	}
-	if !IsNil(o.MultiFactorAuthRequired) {
-		toSerialize["multiFactorAuthRequired"] = o.MultiFactorAuthRequired
-	}
-	if !IsNil(o.RestrictEmployeeAccess) {
-		toSerialize["restrictEmployeeAccess"] = o.RestrictEmployeeAccess
-	}
-	return toSerialize, nil
 }

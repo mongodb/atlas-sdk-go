@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ServerlessInstanceDescriptionUpdate Settings that you can update when you request a serverless cluster update.
 type ServerlessInstanceDescriptionUpdate struct {
 	ServerlessBackupOptions *ClusterServerlessBackupOptions `json:"serverlessBackupOptions,omitempty"`
@@ -133,26 +129,4 @@ func (o *ServerlessInstanceDescriptionUpdate) HasTerminationProtectionEnabled() 
 // SetTerminationProtectionEnabled gets a reference to the given bool and assigns it to the TerminationProtectionEnabled field.
 func (o *ServerlessInstanceDescriptionUpdate) SetTerminationProtectionEnabled(v bool) {
 	o.TerminationProtectionEnabled = &v
-}
-
-func (o *ServerlessInstanceDescriptionUpdate) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ServerlessInstanceDescriptionUpdate) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ServerlessBackupOptions) {
-		toSerialize["serverlessBackupOptions"] = o.ServerlessBackupOptions
-	}
-	if !IsNil(o.Tags) {
-		toSerialize["tags"] = o.Tags
-	}
-	if !IsNil(o.TerminationProtectionEnabled) {
-		toSerialize["terminationProtectionEnabled"] = o.TerminationProtectionEnabled
-	}
-	return toSerialize, nil
 }

@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"encoding/json"
 	"time"
 )
 
@@ -260,21 +259,4 @@ func (o *DataFederationLimit) HasOverrunPolicy() bool {
 // SetOverrunPolicy gets a reference to the given string and assigns it to the OverrunPolicy field.
 func (o *DataFederationLimit) SetOverrunPolicy(v string) {
 	o.OverrunPolicy = &v
-}
-
-func (o *DataFederationLimit) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *DataFederationLimit) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["value"] = o.Value
-	if !IsNil(o.OverrunPolicy) {
-		toSerialize["overrunPolicy"] = o.OverrunPolicy
-	}
-	return toSerialize, nil
 }

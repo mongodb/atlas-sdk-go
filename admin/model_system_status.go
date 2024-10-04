@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // SystemStatus struct for SystemStatus
 type SystemStatus struct {
 	ApiKey ApiKey `json:"apiKey"`
@@ -171,18 +167,4 @@ func (o *SystemStatus) GetThrottlingOk() (*bool, bool) {
 // SetThrottling sets field value
 func (o *SystemStatus) SetThrottling(v bool) {
 	o.Throttling = v
-}
-
-func (o *SystemStatus) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *SystemStatus) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["apiKey"] = o.ApiKey
-	return toSerialize, nil
 }

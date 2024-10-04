@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // DataLakeAtlasStoreReadConcern MongoDB Cloud cluster read concern, which determines the consistency and isolation properties of the data read from an Atlas cluster.
 type DataLakeAtlasStoreReadConcern struct {
 	// Read Concern level that specifies the consistency and availability of the data read.
@@ -60,20 +56,4 @@ func (o *DataLakeAtlasStoreReadConcern) HasLevel() bool {
 // SetLevel gets a reference to the given string and assigns it to the Level field.
 func (o *DataLakeAtlasStoreReadConcern) SetLevel(v string) {
 	o.Level = &v
-}
-
-func (o *DataLakeAtlasStoreReadConcern) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *DataLakeAtlasStoreReadConcern) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Level) {
-		toSerialize["level"] = o.Level
-	}
-	return toSerialize, nil
 }

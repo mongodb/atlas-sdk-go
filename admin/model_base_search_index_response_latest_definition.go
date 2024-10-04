@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // BaseSearchIndexResponseLatestDefinition struct for BaseSearchIndexResponseLatestDefinition
 type BaseSearchIndexResponseLatestDefinition struct {
 	// Specific pre-defined method chosen to convert database field text into searchable words. This conversion reduces the text of fields into the smallest units of text. These units are called a **term** or **token**. This process, known as tokenization, involves making the following changes to the text in fields:  - extracting words - removing punctuation - removing accents - changing to lowercase - removing common words - reducing words to their root form (stemming) - changing words to their base form (lemmatization)  MongoDB Cloud uses the process you select to build the Atlas Search index.
@@ -278,38 +274,4 @@ func (o *BaseSearchIndexResponseLatestDefinition) HasFields() bool {
 // SetFields gets a reference to the given []interface{} and assigns it to the Fields field.
 func (o *BaseSearchIndexResponseLatestDefinition) SetFields(v []interface{}) {
 	o.Fields = &v
-}
-
-func (o *BaseSearchIndexResponseLatestDefinition) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *BaseSearchIndexResponseLatestDefinition) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Analyzer) {
-		toSerialize["analyzer"] = o.Analyzer
-	}
-	if !IsNil(o.Analyzers) {
-		toSerialize["analyzers"] = o.Analyzers
-	}
-	if !IsNil(o.Mappings) {
-		toSerialize["mappings"] = o.Mappings
-	}
-	if !IsNil(o.SearchAnalyzer) {
-		toSerialize["searchAnalyzer"] = o.SearchAnalyzer
-	}
-	if !IsNil(o.StoredSource) {
-		toSerialize["storedSource"] = o.StoredSource
-	}
-	if !IsNil(o.Synonyms) {
-		toSerialize["synonyms"] = o.Synonyms
-	}
-	if !IsNil(o.Fields) {
-		toSerialize["fields"] = o.Fields
-	}
-	return toSerialize, nil
 }

@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // MetricsMeasurement struct for MetricsMeasurement
 type MetricsMeasurement struct {
 	// List that contains the value of, and metadata provided for, one data point generated at a particular moment in time. If no data point exists for a particular moment in time, the `value` parameter returns `null`.
@@ -133,17 +129,4 @@ func (o *MetricsMeasurement) HasUnits() bool {
 // SetUnits gets a reference to the given string and assigns it to the Units field.
 func (o *MetricsMeasurement) SetUnits(v string) {
 	o.Units = &v
-}
-
-func (o *MetricsMeasurement) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *MetricsMeasurement) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

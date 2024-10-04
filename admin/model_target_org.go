@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // TargetOrg struct for TargetOrg
 type TargetOrg struct {
 	// Link token that contains all the information required to complete the link.
@@ -52,18 +48,4 @@ func (o *TargetOrg) GetLinkTokenOk() (*string, bool) {
 // SetLinkToken sets field value
 func (o *TargetOrg) SetLinkToken(v string) {
 	o.LinkToken = v
-}
-
-func (o *TargetOrg) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *TargetOrg) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["linkToken"] = o.LinkToken
-	return toSerialize, nil
 }

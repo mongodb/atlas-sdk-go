@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // GroupService List of IP addresses in a project categorized by services.
 type GroupService struct {
 	// IP addresses of clusters.
@@ -61,17 +57,4 @@ func (o *GroupService) HasClusters() bool {
 // SetClusters gets a reference to the given []ClusterIPAddresses and assigns it to the Clusters field.
 func (o *GroupService) SetClusters(v []ClusterIPAddresses) {
 	o.Clusters = &v
-}
-
-func (o *GroupService) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *GroupService) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

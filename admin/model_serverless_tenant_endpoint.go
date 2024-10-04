@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ServerlessTenantEndpoint struct for ServerlessTenantEndpoint
 type ServerlessTenantEndpoint struct {
 	// Unique 24-hexadecimal digit string that identifies the private endpoint.
@@ -349,17 +345,4 @@ func (o *ServerlessTenantEndpoint) HasPrivateLinkServiceResourceId() bool {
 // SetPrivateLinkServiceResourceId gets a reference to the given string and assigns it to the PrivateLinkServiceResourceId field.
 func (o *ServerlessTenantEndpoint) SetPrivateLinkServiceResourceId(v string) {
 	o.PrivateLinkServiceResourceId = &v
-}
-
-func (o *ServerlessTenantEndpoint) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ServerlessTenantEndpoint) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

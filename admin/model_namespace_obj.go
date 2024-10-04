@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // NamespaceObj Human-readable label that identifies the namespace on the specified host. The resource expresses this parameter value as `<database>.<collection>`.
 type NamespaceObj struct {
 	// Human-readable label that identifies the namespace on the specified host. The resource expresses this parameter value as `<database>.<collection>`.
@@ -97,17 +93,4 @@ func (o *NamespaceObj) HasType() bool {
 // SetType gets a reference to the given string and assigns it to the Type field.
 func (o *NamespaceObj) SetType(v string) {
 	o.Type = &v
-}
-
-func (o *NamespaceObj) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *NamespaceObj) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

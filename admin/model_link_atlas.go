@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // LinkAtlas struct for LinkAtlas
 type LinkAtlas struct {
 	// Uniform Resource Locator (URL) that points another API resource to which this response has some relationship. This URL often begins with `https://cloud.mongodb.com/api/atlas`.
@@ -95,23 +91,4 @@ func (o *LinkAtlas) HasRel() bool {
 // SetRel gets a reference to the given string and assigns it to the Rel field.
 func (o *LinkAtlas) SetRel(v string) {
 	o.Rel = &v
-}
-
-func (o *LinkAtlas) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *LinkAtlas) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Href) {
-		toSerialize["href"] = o.Href
-	}
-	if !IsNil(o.Rel) {
-		toSerialize["rel"] = o.Rel
-	}
-	return toSerialize, nil
 }

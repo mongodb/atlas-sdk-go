@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"encoding/json"
 	"time"
 )
 
@@ -170,17 +169,4 @@ func (o *BillingRefund) HasReason() bool {
 // SetReason gets a reference to the given string and assigns it to the Reason field.
 func (o *BillingRefund) SetReason(v string) {
 	o.Reason = &v
-}
-
-func (o *BillingRefund) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *BillingRefund) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

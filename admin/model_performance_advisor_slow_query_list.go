@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // PerformanceAdvisorSlowQueryList struct for PerformanceAdvisorSlowQueryList
 type PerformanceAdvisorSlowQueryList struct {
 	// List of operations that the Performance Advisor detected that took longer to execute than a specified threshold.
@@ -61,17 +57,4 @@ func (o *PerformanceAdvisorSlowQueryList) HasSlowQueries() bool {
 // SetSlowQueries gets a reference to the given []PerformanceAdvisorSlowQuery and assigns it to the SlowQueries field.
 func (o *PerformanceAdvisorSlowQueryList) SetSlowQueries(v []PerformanceAdvisorSlowQuery) {
 	o.SlowQueries = &v
-}
-
-func (o *PerformanceAdvisorSlowQueryList) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *PerformanceAdvisorSlowQueryList) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ClusterIPAddresses List of IP addresses in a cluster.
 type ClusterIPAddresses struct {
 	// Human-readable label that identifies the cluster.
@@ -133,17 +129,4 @@ func (o *ClusterIPAddresses) HasOutbound() bool {
 // SetOutbound gets a reference to the given []string and assigns it to the Outbound field.
 func (o *ClusterIPAddresses) SetOutbound(v []string) {
 	o.Outbound = &v
-}
-
-func (o *ClusterIPAddresses) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ClusterIPAddresses) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

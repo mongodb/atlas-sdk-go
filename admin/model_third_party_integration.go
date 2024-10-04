@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ThirdPartyIntegration Collection of settings that describe third-party integrations.
 type ThirdPartyIntegration struct {
 	// Integration id.
@@ -726,77 +722,4 @@ func (o *ThirdPartyIntegration) HasUrl() bool {
 // SetUrl gets a reference to the given string and assigns it to the Url field.
 func (o *ThirdPartyIntegration) SetUrl(v string) {
 	o.Url = &v
-}
-
-func (o *ThirdPartyIntegration) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ThirdPartyIntegration) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
-	}
-	if !IsNil(o.ApiKey) {
-		toSerialize["apiKey"] = o.ApiKey
-	}
-	if !IsNil(o.Region) {
-		toSerialize["region"] = o.Region
-	}
-	if !IsNil(o.MicrosoftTeamsWebhookUrl) {
-		toSerialize["microsoftTeamsWebhookUrl"] = o.MicrosoftTeamsWebhookUrl
-	}
-	if !IsNil(o.AccountId) {
-		toSerialize["accountId"] = o.AccountId
-	}
-	if !IsNil(o.LicenseKey) {
-		toSerialize["licenseKey"] = o.LicenseKey
-	}
-	if !IsNil(o.ReadToken) {
-		toSerialize["readToken"] = o.ReadToken
-	}
-	if !IsNil(o.WriteToken) {
-		toSerialize["writeToken"] = o.WriteToken
-	}
-	if !IsNil(o.ServiceKey) {
-		toSerialize["serviceKey"] = o.ServiceKey
-	}
-	if !IsNil(o.Enabled) {
-		toSerialize["enabled"] = o.Enabled
-	}
-	if !IsNil(o.Password) {
-		toSerialize["password"] = o.Password
-	}
-	if !IsNil(o.ServiceDiscovery) {
-		toSerialize["serviceDiscovery"] = o.ServiceDiscovery
-	}
-	if !IsNil(o.Username) {
-		toSerialize["username"] = o.Username
-	}
-	if !IsNil(o.ApiToken) {
-		toSerialize["apiToken"] = o.ApiToken
-	}
-	if !IsNil(o.ChannelName) {
-		toSerialize["channelName"] = o.ChannelName
-	}
-	if !IsNil(o.TeamName) {
-		toSerialize["teamName"] = o.TeamName
-	}
-	if !IsNil(o.RoutingKey) {
-		toSerialize["routingKey"] = o.RoutingKey
-	}
-	if !IsNil(o.Secret) {
-		toSerialize["secret"] = o.Secret
-	}
-	if !IsNil(o.Url) {
-		toSerialize["url"] = o.Url
-	}
-	return toSerialize, nil
 }

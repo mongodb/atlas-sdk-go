@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // LDAPVerifyConnectivityJobRequestParams Request information needed to verify an Lightweight Directory Access Protocol (LDAP) over Transport Layer Security (TLS) configuration. The response does not return the **bindPassword**.
 type LDAPVerifyConnectivityJobRequestParams struct {
 	// Lightweight Directory Access Protocol (LDAP) query template that MongoDB Cloud applies to create an LDAP query to return the LDAP groups associated with the authenticated MongoDB user. MongoDB Cloud uses this parameter only for user authorization.  Use the `{USER}` placeholder in the Uniform Resource Locator (URL) to substitute the authenticated username. The query relates to the host specified with the hostname. Format this query per [RFC 4515](https://datatracker.ietf.org/doc/html/rfc4515) and [RFC 4516](https://datatracker.ietf.org/doc/html/rfc4516).
@@ -247,27 +243,4 @@ func (o *LDAPVerifyConnectivityJobRequestParams) GetPortOk() (*int, bool) {
 // SetPort sets field value
 func (o *LDAPVerifyConnectivityJobRequestParams) SetPort(v int) {
 	o.Port = v
-}
-
-func (o *LDAPVerifyConnectivityJobRequestParams) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *LDAPVerifyConnectivityJobRequestParams) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.AuthzQueryTemplate) {
-		toSerialize["authzQueryTemplate"] = o.AuthzQueryTemplate
-	}
-	toSerialize["bindPassword"] = o.BindPassword
-	toSerialize["bindUsername"] = o.BindUsername
-	if !IsNil(o.CaCertificate) {
-		toSerialize["caCertificate"] = o.CaCertificate
-	}
-	toSerialize["hostname"] = o.Hostname
-	toSerialize["port"] = o.Port
-	return toSerialize, nil
 }

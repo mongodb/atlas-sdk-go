@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // UpdateCustomDBRole struct for UpdateCustomDBRole
 type UpdateCustomDBRole struct {
 	// List of the individual privilege actions that the role grants.
@@ -95,23 +91,4 @@ func (o *UpdateCustomDBRole) HasInheritedRoles() bool {
 // SetInheritedRoles gets a reference to the given []DatabaseInheritedRole and assigns it to the InheritedRoles field.
 func (o *UpdateCustomDBRole) SetInheritedRoles(v []DatabaseInheritedRole) {
 	o.InheritedRoles = &v
-}
-
-func (o *UpdateCustomDBRole) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *UpdateCustomDBRole) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Actions) {
-		toSerialize["actions"] = o.Actions
-	}
-	if !IsNil(o.InheritedRoles) {
-		toSerialize["inheritedRoles"] = o.InheritedRoles
-	}
-	return toSerialize, nil
 }

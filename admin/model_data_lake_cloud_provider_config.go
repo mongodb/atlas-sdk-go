@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // DataLakeCloudProviderConfig Cloud provider where this Federated Database Instance is hosted.
 type DataLakeCloudProviderConfig struct {
 	Aws   *DataLakeAWSCloudProviderConfig         `json:"aws,omitempty"`
@@ -127,26 +123,4 @@ func (o *DataLakeCloudProviderConfig) HasGcp() bool {
 // SetGcp gets a reference to the given DataFederationGCPCloudProviderConfig and assigns it to the Gcp field.
 func (o *DataLakeCloudProviderConfig) SetGcp(v DataFederationGCPCloudProviderConfig) {
 	o.Gcp = &v
-}
-
-func (o *DataLakeCloudProviderConfig) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *DataLakeCloudProviderConfig) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Aws) {
-		toSerialize["aws"] = o.Aws
-	}
-	if !IsNil(o.Azure) {
-		toSerialize["azure"] = o.Azure
-	}
-	if !IsNil(o.Gcp) {
-		toSerialize["gcp"] = o.Gcp
-	}
-	return toSerialize, nil
 }

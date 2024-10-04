@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ShardEntry Sharding configuration for a collection to be sharded on the destination cluster.
 type ShardEntry struct {
 	// Human-readable label that identifies the collection to be sharded on the destination cluster.
@@ -107,20 +103,4 @@ func (o *ShardEntry) GetShardCollectionOk() (*ShardKeys, bool) {
 // SetShardCollection sets field value
 func (o *ShardEntry) SetShardCollection(v ShardKeys) {
 	o.ShardCollection = v
-}
-
-func (o *ShardEntry) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ShardEntry) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["collection"] = o.Collection
-	toSerialize["database"] = o.Database
-	toSerialize["shardCollection"] = o.ShardCollection
-	return toSerialize, nil
 }

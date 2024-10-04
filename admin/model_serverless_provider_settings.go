@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ServerlessProviderSettings Group of cloud provider settings that configure the provisioned MongoDB serverless instance.
 type ServerlessProviderSettings struct {
 	// Cloud service provider on which MongoDB Cloud provisioned the serverless instance.
@@ -118,22 +114,4 @@ func (o *ServerlessProviderSettings) GetRegionNameOk() (*string, bool) {
 // SetRegionName sets field value
 func (o *ServerlessProviderSettings) SetRegionName(v string) {
 	o.RegionName = v
-}
-
-func (o *ServerlessProviderSettings) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ServerlessProviderSettings) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["backingProviderName"] = o.BackingProviderName
-	if !IsNil(o.ProviderName) {
-		toSerialize["providerName"] = o.ProviderName
-	}
-	toSerialize["regionName"] = o.RegionName
-	return toSerialize, nil
 }

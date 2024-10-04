@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // GoogleCloudKMS Details that define the configuration of Encryption at Rest using Google Cloud Key Management Service (KMS).
 type GoogleCloudKMS struct {
 	// Flag that indicates whether someone enabled encryption at rest for the specified  project. To disable encryption at rest using customer key management and remove the configuration details, pass only this parameter with a value of `false`.
@@ -167,26 +163,4 @@ func (o *GoogleCloudKMS) HasValid() bool {
 // SetValid gets a reference to the given bool and assigns it to the Valid field.
 func (o *GoogleCloudKMS) SetValid(v bool) {
 	o.Valid = &v
-}
-
-func (o *GoogleCloudKMS) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *GoogleCloudKMS) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Enabled) {
-		toSerialize["enabled"] = o.Enabled
-	}
-	if !IsNil(o.KeyVersionResourceID) {
-		toSerialize["keyVersionResourceID"] = o.KeyVersionResourceID
-	}
-	if !IsNil(o.ServiceAccountKey) {
-		toSerialize["serviceAccountKey"] = o.ServiceAccountKey
-	}
-	return toSerialize, nil
 }

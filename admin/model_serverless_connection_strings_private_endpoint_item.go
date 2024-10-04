@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ServerlessConnectionStringsPrivateEndpointItem Details of a private endpoint deployed for this serverless instance.
 type ServerlessConnectionStringsPrivateEndpointItem struct {
 	// Unique string that the cloud provider uses to identify the private endpoint.
@@ -133,17 +129,4 @@ func (o *ServerlessConnectionStringsPrivateEndpointItem) HasRegion() bool {
 // SetRegion gets a reference to the given string and assigns it to the Region field.
 func (o *ServerlessConnectionStringsPrivateEndpointItem) SetRegion(v string) {
 	o.Region = &v
-}
-
-func (o *ServerlessConnectionStringsPrivateEndpointItem) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ServerlessConnectionStringsPrivateEndpointItem) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

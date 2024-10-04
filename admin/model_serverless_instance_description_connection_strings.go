@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ServerlessInstanceDescriptionConnectionStrings Collection of Uniform Resource Locators that point to the MongoDB database.
 type ServerlessInstanceDescriptionConnectionStrings struct {
 	// List of private endpoint-aware connection strings that you can use to connect to this serverless instance through a private endpoint. This parameter returns only if you created a private endpoint for this serverless instance and it is AVAILABLE.
@@ -97,17 +93,4 @@ func (o *ServerlessInstanceDescriptionConnectionStrings) HasStandardSrv() bool {
 // SetStandardSrv gets a reference to the given string and assigns it to the StandardSrv field.
 func (o *ServerlessInstanceDescriptionConnectionStrings) SetStandardSrv(v string) {
 	o.StandardSrv = &v
-}
-
-func (o *ServerlessInstanceDescriptionConnectionStrings) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ServerlessInstanceDescriptionConnectionStrings) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

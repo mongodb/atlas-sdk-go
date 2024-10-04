@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ApiAtlasFTSAnalyzersTokenizer Tokenizer that you want to use to create tokens. Tokens determine how Atlas Search splits up text into discrete chunks for indexing.
 type ApiAtlasFTSAnalyzersTokenizer struct {
 	// Characters to include in the longest token that Atlas Search creates.
@@ -239,35 +235,4 @@ func (o *ApiAtlasFTSAnalyzersTokenizer) HasMaxTokenLength() bool {
 // SetMaxTokenLength gets a reference to the given int and assigns it to the MaxTokenLength field.
 func (o *ApiAtlasFTSAnalyzersTokenizer) SetMaxTokenLength(v int) {
 	o.MaxTokenLength = &v
-}
-
-func (o *ApiAtlasFTSAnalyzersTokenizer) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ApiAtlasFTSAnalyzersTokenizer) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.MaxGram) {
-		toSerialize["maxGram"] = o.MaxGram
-	}
-	if !IsNil(o.MinGram) {
-		toSerialize["minGram"] = o.MinGram
-	}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
-	}
-	if !IsNil(o.Group) {
-		toSerialize["group"] = o.Group
-	}
-	if !IsNil(o.Pattern) {
-		toSerialize["pattern"] = o.Pattern
-	}
-	if !IsNil(o.MaxTokenLength) {
-		toSerialize["maxTokenLength"] = o.MaxTokenLength
-	}
-	return toSerialize, nil
 }

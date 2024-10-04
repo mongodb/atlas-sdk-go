@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ServerlessConnectionStringsPrivateEndpointList Private endpoint connection string that you can use to connect to this serverless instance through a private endpoint.
 type ServerlessConnectionStringsPrivateEndpointList struct {
 	// List that contains the private endpoints through which you connect to MongoDB Cloud when you use **connectionStrings.privateEndpoint[n].srvConnectionString**.
@@ -133,17 +129,4 @@ func (o *ServerlessConnectionStringsPrivateEndpointList) HasType() bool {
 // SetType gets a reference to the given string and assigns it to the Type field.
 func (o *ServerlessConnectionStringsPrivateEndpointList) SetType(v string) {
 	o.Type = &v
-}
-
-func (o *ServerlessConnectionStringsPrivateEndpointList) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ServerlessConnectionStringsPrivateEndpointList) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

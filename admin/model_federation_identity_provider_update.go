@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // FederationIdentityProviderUpdate struct for FederationIdentityProviderUpdate
 type FederationIdentityProviderUpdate struct {
 	// The description of the identity provider.
@@ -689,74 +685,4 @@ func (o *FederationIdentityProviderUpdate) HasUserClaim() bool {
 // SetUserClaim gets a reference to the given string and assigns it to the UserClaim field.
 func (o *FederationIdentityProviderUpdate) SetUserClaim(v string) {
 	o.UserClaim = &v
-}
-
-func (o *FederationIdentityProviderUpdate) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *FederationIdentityProviderUpdate) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
-	if !IsNil(o.DisplayName) {
-		toSerialize["displayName"] = o.DisplayName
-	}
-	if !IsNil(o.IdpType) {
-		toSerialize["idpType"] = o.IdpType
-	}
-	if !IsNil(o.IssuerUri) {
-		toSerialize["issuerUri"] = o.IssuerUri
-	}
-	if !IsNil(o.Protocol) {
-		toSerialize["protocol"] = o.Protocol
-	}
-	if !IsNil(o.AssociatedDomains) {
-		toSerialize["associatedDomains"] = o.AssociatedDomains
-	}
-	if !IsNil(o.PemFileInfo) {
-		toSerialize["pemFileInfo"] = o.PemFileInfo
-	}
-	if !IsNil(o.RequestBinding) {
-		toSerialize["requestBinding"] = o.RequestBinding
-	}
-	if !IsNil(o.ResponseSignatureAlgorithm) {
-		toSerialize["responseSignatureAlgorithm"] = o.ResponseSignatureAlgorithm
-	}
-	if !IsNil(o.Slug) {
-		toSerialize["slug"] = o.Slug
-	}
-	if !IsNil(o.SsoDebugEnabled) {
-		toSerialize["ssoDebugEnabled"] = o.SsoDebugEnabled
-	}
-	if !IsNil(o.SsoUrl) {
-		toSerialize["ssoUrl"] = o.SsoUrl
-	}
-	if !IsNil(o.Status) {
-		toSerialize["status"] = o.Status
-	}
-	if !IsNil(o.Audience) {
-		toSerialize["audience"] = o.Audience
-	}
-	if !IsNil(o.AuthorizationType) {
-		toSerialize["authorizationType"] = o.AuthorizationType
-	}
-	if !IsNil(o.ClientId) {
-		toSerialize["clientId"] = o.ClientId
-	}
-	if !IsNil(o.GroupsClaim) {
-		toSerialize["groupsClaim"] = o.GroupsClaim
-	}
-	if !IsNil(o.RequestedScopes) {
-		toSerialize["requestedScopes"] = o.RequestedScopes
-	}
-	if !IsNil(o.UserClaim) {
-		toSerialize["userClaim"] = o.UserClaim
-	}
-	return toSerialize, nil
 }

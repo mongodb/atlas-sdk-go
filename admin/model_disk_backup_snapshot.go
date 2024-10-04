@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"encoding/json"
 	"time"
 )
 
@@ -710,17 +709,4 @@ func (o *DiskBackupSnapshot) HasSnapshotIds() bool {
 // SetSnapshotIds gets a reference to the given []string and assigns it to the SnapshotIds field.
 func (o *DiskBackupSnapshot) SetSnapshotIds(v []string) {
 	o.SnapshotIds = &v
-}
-
-func (o *DiskBackupSnapshot) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *DiskBackupSnapshot) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

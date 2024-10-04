@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"encoding/json"
 	"time"
 )
 
@@ -116,19 +115,4 @@ func (o *DatasetRetentionPolicy) GetValueOk() (*int, bool) {
 // SetValue sets field value
 func (o *DatasetRetentionPolicy) SetValue(v int) {
 	o.Value = v
-}
-
-func (o *DatasetRetentionPolicy) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *DatasetRetentionPolicy) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["units"] = o.Units
-	toSerialize["value"] = o.Value
-	return toSerialize, nil
 }
