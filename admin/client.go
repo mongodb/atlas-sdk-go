@@ -693,13 +693,13 @@ func (e *GenericOpenAPIError) SetError(errorString string) {
 
 // FormatErrorMessageWithDetails formats error message using error struct fields. It should be only used for testing.
 func FormatErrorMessageWithDetails(status, path, method string, v ApiError) string {
-	detailString := ""
+	badRequestDetailString := ""
 	if v.BadRequestDetail != nil {
 		badRequestDetail, _ := json.Marshal(v.GetBadRequestDetail())
-		detailString = string(badRequestDetail)
+		badRequestDetailString = string(badRequestDetail)
 	}
 
 	return fmt.Sprintf("%v %v: HTTP %v (Error code: %q) Detail: %v Reason: %v. Params: %v, BadRequestDetail: %v",
 		method, path, status, v.GetErrorCode(),
-		v.GetDetail(), v.GetReason(), v.GetParameters(), detailString)
+		v.GetDetail(), v.GetReason(), v.GetParameters(), badRequestDetailString)
 }
