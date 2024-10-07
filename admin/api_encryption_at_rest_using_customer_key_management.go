@@ -220,7 +220,7 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) CreateEncryptionA
 func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) CreateEncryptionAtRestPrivateEndpointExecute(r CreateEncryptionAtRestPrivateEndpointApiRequest) (*EARPrivateEndpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *EARPrivateEndpoint
 	)
@@ -339,7 +339,7 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) GetEncryptionAtRe
 func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) GetEncryptionAtRestExecute(r GetEncryptionAtRestApiRequest) (*EncryptionAtRest, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *EncryptionAtRest
 	)
@@ -460,7 +460,7 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) GetEncryptionAtRe
 func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) GetEncryptionAtRestPrivateEndpointExecute(r GetEncryptionAtRestPrivateEndpointApiRequest) (*EARPrivateEndpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *EARPrivateEndpoint
 	)
@@ -605,7 +605,7 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) GetEncryptionAtRe
 func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) GetEncryptionAtRestPrivateEndpointsForCloudProviderExecute(r GetEncryptionAtRestPrivateEndpointsForCloudProviderApiRequest) (*PaginatedApiAtlasEARPrivateEndpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PaginatedApiAtlasEARPrivateEndpoint
 	)
@@ -748,7 +748,7 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) RequestEncryption
 func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) RequestEncryptionAtRestPrivateEndpointDeletionExecute(r RequestEncryptionAtRestPrivateEndpointDeletionApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue interface{}
 	)
@@ -867,7 +867,7 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) UpdateEncryptionA
 func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) UpdateEncryptionAtRestExecute(r UpdateEncryptionAtRestApiRequest) (*EncryptionAtRest, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *EncryptionAtRest
 	)

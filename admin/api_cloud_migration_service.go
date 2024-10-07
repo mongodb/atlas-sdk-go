@@ -261,7 +261,7 @@ func (a *CloudMigrationServiceApiService) CreateLinkToken(ctx context.Context, o
 func (a *CloudMigrationServiceApiService) CreateLinkTokenExecute(r CreateLinkTokenApiRequest) (*TargetOrg, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *TargetOrg
 	)
@@ -387,7 +387,7 @@ func (a *CloudMigrationServiceApiService) CreatePushMigration(ctx context.Contex
 func (a *CloudMigrationServiceApiService) CreatePushMigrationExecute(r CreatePushMigrationApiRequest) (*LiveMigrationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *LiveMigrationResponse
 	)
@@ -506,7 +506,7 @@ func (a *CloudMigrationServiceApiService) CutoverMigration(ctx context.Context, 
 func (a *CloudMigrationServiceApiService) CutoverMigrationExecute(r CutoverMigrationApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPut
-		localVarPostBody   interface{}
+		localVarPostBody   any
 		formFiles          []formFile
 	)
 
@@ -603,7 +603,7 @@ func (a *CloudMigrationServiceApiService) DeleteLinkToken(ctx context.Context, o
 func (a *CloudMigrationServiceApiService) DeleteLinkTokenExecute(r DeleteLinkTokenApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue interface{}
 	)
@@ -719,7 +719,7 @@ func (a *CloudMigrationServiceApiService) GetPushMigration(ctx context.Context, 
 func (a *CloudMigrationServiceApiService) GetPushMigrationExecute(r GetPushMigrationApiRequest) (*LiveMigrationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *LiveMigrationResponse
 	)
@@ -836,7 +836,7 @@ func (a *CloudMigrationServiceApiService) GetValidationStatus(ctx context.Contex
 func (a *CloudMigrationServiceApiService) GetValidationStatusExecute(r GetValidationStatusApiRequest) (*LiveImportValidation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *LiveImportValidation
 	)
@@ -948,7 +948,7 @@ func (a *CloudMigrationServiceApiService) ListSourceProjects(ctx context.Context
 func (a *CloudMigrationServiceApiService) ListSourceProjectsExecute(r ListSourceProjectsApiRequest) ([]LiveImportAvailableProject, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue []LiveImportAvailableProject
 	)
@@ -1063,7 +1063,7 @@ func (a *CloudMigrationServiceApiService) ValidateMigration(ctx context.Context,
 func (a *CloudMigrationServiceApiService) ValidateMigrationExecute(r ValidateMigrationApiRequest) (*LiveImportValidation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *LiveImportValidation
 	)

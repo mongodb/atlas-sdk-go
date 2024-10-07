@@ -176,7 +176,7 @@ func (a *AlertsApiService) AcknowledgeAlert(ctx context.Context, groupId string,
 func (a *AlertsApiService) AcknowledgeAlertExecute(r AcknowledgeAlertApiRequest) (*AlertViewForNdsGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *AlertViewForNdsGroup
 	)
@@ -300,7 +300,7 @@ func (a *AlertsApiService) GetAlert(ctx context.Context, groupId string, alertId
 func (a *AlertsApiService) GetAlertExecute(r GetAlertApiRequest) (*AlertViewForNdsGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *AlertViewForNdsGroup
 	)
@@ -450,7 +450,7 @@ func (a *AlertsApiService) ListAlerts(ctx context.Context, groupId string) ListA
 func (a *AlertsApiService) ListAlertsExecute(r ListAlertsApiRequest) (*PaginatedAlert, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PaginatedAlert
 	)
@@ -619,7 +619,7 @@ func (a *AlertsApiService) ListAlertsByAlertConfigurationId(ctx context.Context,
 func (a *AlertsApiService) ListAlertsByAlertConfigurationIdExecute(r ListAlertsByAlertConfigurationIdApiRequest) (*PaginatedAlert, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PaginatedAlert
 	)

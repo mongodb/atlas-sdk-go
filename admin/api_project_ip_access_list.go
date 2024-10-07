@@ -211,7 +211,7 @@ func (a *ProjectIPAccessListApiService) CreateProjectIpAccessList(ctx context.Co
 func (a *ProjectIPAccessListApiService) CreateProjectIpAccessListExecute(r CreateProjectIpAccessListApiRequest) (*PaginatedNetworkAccess, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PaginatedNetworkAccess
 	)
@@ -353,7 +353,7 @@ func (a *ProjectIPAccessListApiService) DeleteProjectIpAccessList(ctx context.Co
 func (a *ProjectIPAccessListApiService) DeleteProjectIpAccessListExecute(r DeleteProjectIpAccessListApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue interface{}
 	)
@@ -470,7 +470,7 @@ func (a *ProjectIPAccessListApiService) GetProjectIpAccessListStatus(ctx context
 func (a *ProjectIPAccessListApiService) GetProjectIpAccessListStatusExecute(r GetProjectIpAccessListStatusApiRequest) (*NetworkPermissionEntryStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *NetworkPermissionEntryStatus
 	)
@@ -587,7 +587,7 @@ func (a *ProjectIPAccessListApiService) GetProjectIpList(ctx context.Context, gr
 func (a *ProjectIPAccessListApiService) GetProjectIpListExecute(r GetProjectIpListApiRequest) (*NetworkPermissionEntry, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *NetworkPermissionEntry
 	)
@@ -726,7 +726,7 @@ func (a *ProjectIPAccessListApiService) ListProjectIpAccessLists(ctx context.Con
 func (a *ProjectIPAccessListApiService) ListProjectIpAccessListsExecute(r ListProjectIpAccessListsApiRequest) (*PaginatedNetworkAccess, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PaginatedNetworkAccess
 	)

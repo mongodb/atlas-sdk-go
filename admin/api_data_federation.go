@@ -440,7 +440,7 @@ func (a *DataFederationApiService) CreateDataFederationPrivateEndpoint(ctx conte
 func (a *DataFederationApiService) CreateDataFederationPrivateEndpointExecute(r CreateDataFederationPrivateEndpointApiRequest) (*PaginatedPrivateNetworkEndpointIdEntry, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PaginatedPrivateNetworkEndpointIdEntry
 	)
@@ -569,7 +569,7 @@ func (a *DataFederationApiService) CreateFederatedDatabase(ctx context.Context, 
 func (a *DataFederationApiService) CreateFederatedDatabaseExecute(r CreateFederatedDatabaseApiRequest) (*DataLakeTenant, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *DataLakeTenant
 	)
@@ -706,7 +706,7 @@ func (a *DataFederationApiService) CreateOneDataFederationQueryLimit(ctx context
 func (a *DataFederationApiService) CreateOneDataFederationQueryLimitExecute(r CreateOneDataFederationQueryLimitApiRequest) (*DataFederationTenantQueryLimit, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *DataFederationTenantQueryLimit
 	)
@@ -829,7 +829,7 @@ func (a *DataFederationApiService) DeleteDataFederationPrivateEndpoint(ctx conte
 func (a *DataFederationApiService) DeleteDataFederationPrivateEndpointExecute(r DeleteDataFederationPrivateEndpointApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue interface{}
 	)
@@ -946,7 +946,7 @@ func (a *DataFederationApiService) DeleteFederatedDatabase(ctx context.Context, 
 func (a *DataFederationApiService) DeleteFederatedDatabaseExecute(r DeleteFederatedDatabaseApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue interface{}
 	)
@@ -1068,7 +1068,7 @@ func (a *DataFederationApiService) DeleteOneDataFederationInstanceQueryLimit(ctx
 func (a *DataFederationApiService) DeleteOneDataFederationInstanceQueryLimitExecute(r DeleteOneDataFederationInstanceQueryLimitApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue interface{}
 	)
@@ -1204,7 +1204,7 @@ func (a *DataFederationApiService) DownloadFederatedDatabaseQueryLogs(ctx contex
 func (a *DataFederationApiService) DownloadFederatedDatabaseQueryLogsExecute(r DownloadFederatedDatabaseQueryLogsApiRequest) (io.ReadCloser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue io.ReadCloser
 	)
@@ -1327,7 +1327,7 @@ func (a *DataFederationApiService) GetDataFederationPrivateEndpoint(ctx context.
 func (a *DataFederationApiService) GetDataFederationPrivateEndpointExecute(r GetDataFederationPrivateEndpointApiRequest) (*PrivateNetworkEndpointIdEntry, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PrivateNetworkEndpointIdEntry
 	)
@@ -1444,7 +1444,7 @@ func (a *DataFederationApiService) GetFederatedDatabase(ctx context.Context, gro
 func (a *DataFederationApiService) GetFederatedDatabaseExecute(r GetFederatedDatabaseApiRequest) (*DataLakeTenant, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *DataLakeTenant
 	)
@@ -1583,7 +1583,7 @@ func (a *DataFederationApiService) ListDataFederationPrivateEndpoints(ctx contex
 func (a *DataFederationApiService) ListDataFederationPrivateEndpointsExecute(r ListDataFederationPrivateEndpointsApiRequest) (*PaginatedPrivateNetworkEndpointIdEntry, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PaginatedPrivateNetworkEndpointIdEntry
 	)
@@ -1724,7 +1724,7 @@ func (a *DataFederationApiService) ListFederatedDatabases(ctx context.Context, g
 func (a *DataFederationApiService) ListFederatedDatabasesExecute(r ListFederatedDatabasesApiRequest) ([]DataLakeTenant, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue []DataLakeTenant
 	)
@@ -1852,7 +1852,7 @@ func (a *DataFederationApiService) ReturnFederatedDatabaseQueryLimit(ctx context
 func (a *DataFederationApiService) ReturnFederatedDatabaseQueryLimitExecute(r ReturnFederatedDatabaseQueryLimitApiRequest) (*DataFederationTenantQueryLimit, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *DataFederationTenantQueryLimit
 	)
@@ -1970,7 +1970,7 @@ func (a *DataFederationApiService) ReturnFederatedDatabaseQueryLimits(ctx contex
 func (a *DataFederationApiService) ReturnFederatedDatabaseQueryLimitsExecute(r ReturnFederatedDatabaseQueryLimitsApiRequest) ([]DataFederationTenantQueryLimit, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue []DataFederationTenantQueryLimit
 	)
@@ -2100,7 +2100,7 @@ func (a *DataFederationApiService) UpdateFederatedDatabase(ctx context.Context, 
 func (a *DataFederationApiService) UpdateFederatedDatabaseExecute(r UpdateFederatedDatabaseApiRequest) (*DataLakeTenant, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *DataLakeTenant
 	)

@@ -203,7 +203,7 @@ func (a *EventsApiService) GetOrganizationEvent(ctx context.Context, orgId strin
 func (a *EventsApiService) GetOrganizationEventExecute(r GetOrganizationEventApiRequest) (*EventViewForOrg, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *EventViewForOrg
 	)
@@ -338,7 +338,7 @@ func (a *EventsApiService) GetProjectEvent(ctx context.Context, groupId string, 
 func (a *EventsApiService) GetProjectEventExecute(r GetProjectEventApiRequest) (*EventViewForNdsGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *EventViewForNdsGroup
 	)
@@ -479,7 +479,7 @@ func (a *EventsApiService) ListEventTypes(ctx context.Context) ListEventTypesApi
 func (a *EventsApiService) ListEventTypesExecute(r ListEventTypesApiRequest) (*PaginatedEventTypeDetailsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PaginatedEventTypeDetailsResponse
 	)
@@ -675,7 +675,7 @@ func (a *EventsApiService) ListOrganizationEvents(ctx context.Context, orgId str
 func (a *EventsApiService) ListOrganizationEventsExecute(r ListOrganizationEventsApiRequest) (*OrgPaginatedEvent, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *OrgPaginatedEvent
 	)
@@ -910,7 +910,7 @@ func (a *EventsApiService) ListProjectEvents(ctx context.Context, groupId string
 func (a *EventsApiService) ListProjectEventsExecute(r ListProjectEventsApiRequest) (*GroupPaginatedEvent, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *GroupPaginatedEvent
 	)

@@ -113,7 +113,7 @@ func contains(haystack []string, needle string) bool {
 	return false
 }
 
-func parameterValueToString( obj interface{}, key string ) string {
+func parameterValueToString( obj any, key string ) string {
 	if reflect.TypeOf(obj).Kind() != reflect.Ptr {
 		return fmt.Sprintf("%v", obj)
 	}
@@ -130,7 +130,7 @@ func parameterValueToString( obj interface{}, key string ) string {
 
 // parameterAddToHeaderOrQuery adds the provided object to the request header or url query
 // supporting deep object syntax
-func parameterAddToHeaderOrQuery(headerOrQueryParams interface{}, keyPrefix string, obj interface{}, collectionType string) {
+func parameterAddToHeaderOrQuery(headerOrQueryParams any, keyPrefix string, obj any, collectionType string) {
 	var v = reflect.ValueOf(obj)
 	var value = ""
 	if v == reflect.ValueOf(nil) {
@@ -254,7 +254,7 @@ type formFile struct {
 func (c *APIClient) prepareRequest(
 	ctx context.Context,
 	path string, method string,
-	postBody interface{},
+	postBody any,
 	headerParams map[string]string,
 	queryParams url.Values,
 	formParams url.Values,
@@ -497,7 +497,7 @@ func (c *APIClient) makeApiError(res *http.Response, httpMethod, httpPath string
 	return newErr
 }
 
-func (c *APIClient) decode(v interface{}, b io.ReadCloser, contentType string) (err error) {
+func (c *APIClient) decode(v any, b io.ReadCloser, contentType string) (err error) {
 	switch r := v.(type) {
 	case *string:
 		buf, err := io.ReadAll(b)
@@ -526,7 +526,7 @@ func (c *APIClient) decode(v interface{}, b io.ReadCloser, contentType string) (
 			return xml.Unmarshal(buf, v);
 		}
 		if jsonCheck.MatchString(contentType) {
-			if actualObj, ok := v.(interface{ GetActualInstance() interface{} }); ok { // oneOf, anyOf schemas
+			if actualObj, ok := v.(interface{ GetActualInstance() any }); ok { // oneOf, anyOf schemas
 				if unmarshalObj, ok := actualObj.(interface{ UnmarshalJSON([]byte) error }); ok { // make sure it has UnmarshalJSON defined
 					if err = unmarshalObj.UnmarshalJSON(buf); err != nil {
 						return err
@@ -564,12 +564,12 @@ func addFile(w *multipart.Writer, fieldName, path string) error {
 }
 
 // Prevent trying to import "fmt"
-func reportError(format string, a ...interface{}) error {
+func reportError(format string, a ...any) error {
 	return fmt.Errorf(format, a...)
 }
 
-// Set request body from an interface{}
-func setBody(body interface{}, contentType string) (bodyBuf *bytes.Buffer, err error) {
+// Set request body from an any
+func setBody(body any, contentType string) (bodyBuf *bytes.Buffer, err error) {
 	bodyBuf = &bytes.Buffer{}
 
 	if reader, ok := body.(io.Reader); ok {
@@ -600,7 +600,7 @@ func setBody(body interface{}, contentType string) (bodyBuf *bytes.Buffer, err e
 }
 
 // detectContentType method is used to figure out `Request.Body` content type for request header
-func detectContentType(body interface{}) string {
+func detectContentType(body any) string {
 	contentType := "text/plain; charset=utf-8"
 	kind := reflect.TypeOf(body).Kind()
 

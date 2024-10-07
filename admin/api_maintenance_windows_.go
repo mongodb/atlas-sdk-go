@@ -175,7 +175,7 @@ func (a *MaintenanceWindowsApiService) DeferMaintenanceWindow(ctx context.Contex
 func (a *MaintenanceWindowsApiService) DeferMaintenanceWindowExecute(r DeferMaintenanceWindowApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
+		localVarPostBody   any
 		formFiles          []formFile
 	)
 
@@ -271,7 +271,7 @@ func (a *MaintenanceWindowsApiService) GetMaintenanceWindow(ctx context.Context,
 func (a *MaintenanceWindowsApiService) GetMaintenanceWindowExecute(r GetMaintenanceWindowApiRequest) (*GroupMaintenanceWindow, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *GroupMaintenanceWindow
 	)
@@ -380,7 +380,7 @@ func (a *MaintenanceWindowsApiService) ResetMaintenanceWindow(ctx context.Contex
 func (a *MaintenanceWindowsApiService) ResetMaintenanceWindowExecute(r ResetMaintenanceWindowApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
+		localVarPostBody   any
 		formFiles          []formFile
 	)
 
@@ -474,7 +474,7 @@ func (a *MaintenanceWindowsApiService) ToggleMaintenanceAutoDefer(ctx context.Co
 func (a *MaintenanceWindowsApiService) ToggleMaintenanceAutoDeferExecute(r ToggleMaintenanceAutoDeferApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
+		localVarPostBody   any
 		formFiles          []formFile
 	)
 
@@ -574,7 +574,7 @@ func (a *MaintenanceWindowsApiService) UpdateMaintenanceWindow(ctx context.Conte
 func (a *MaintenanceWindowsApiService) UpdateMaintenanceWindowExecute(r UpdateMaintenanceWindowApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue interface{}
 	)

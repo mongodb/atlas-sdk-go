@@ -343,7 +343,7 @@ func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespaceClusterMe
 func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespaceClusterMeasurementsExecute(r GetCollStatsLatencyNamespaceClusterMeasurementsApiRequest) (*MeasurementsCollStatsLatencyCluster, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *MeasurementsCollStatsLatencyCluster
 	)
@@ -525,7 +525,7 @@ func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespaceHostMeasu
 func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespaceHostMeasurementsExecute(r GetCollStatsLatencyNamespaceHostMeasurementsApiRequest) (*MeasurementsCollStatsLatencyHost, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *MeasurementsCollStatsLatencyHost
 	)
@@ -655,7 +655,7 @@ func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespaceMetrics(c
 func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespaceMetricsExecute(r GetCollStatsLatencyNamespaceMetricsApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue interface{}
 	)
@@ -803,7 +803,7 @@ func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespacesForClust
 func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespacesForClusterExecute(r GetCollStatsLatencyNamespacesForClusterApiRequest) (*CollStatsRankedNamespaces, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *CollStatsRankedNamespaces
 	)
@@ -957,7 +957,7 @@ func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespacesForHost(
 func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespacesForHostExecute(r GetCollStatsLatencyNamespacesForHostApiRequest) (*CollStatsRankedNamespaces, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *CollStatsRankedNamespaces
 	)
@@ -1083,7 +1083,7 @@ func (a *CollectionLevelMetricsApiService) GetPinnedNamespaces(ctx context.Conte
 func (a *CollectionLevelMetricsApiService) GetPinnedNamespacesExecute(r GetPinnedNamespacesApiRequest) (*PinnedNamespaces, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PinnedNamespaces
 	)
@@ -1204,7 +1204,7 @@ func (a *CollectionLevelMetricsApiService) PinNamespacesPatch(ctx context.Contex
 func (a *CollectionLevelMetricsApiService) PinNamespacesPatchExecute(r PinNamespacesPatchApiRequest) (*PinnedNamespaces, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PinnedNamespaces
 	)
@@ -1330,7 +1330,7 @@ func (a *CollectionLevelMetricsApiService) PinNamespacesPut(ctx context.Context,
 func (a *CollectionLevelMetricsApiService) PinNamespacesPutExecute(r PinNamespacesPutApiRequest) (*PinnedNamespaces, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PinnedNamespaces
 	)
@@ -1456,7 +1456,7 @@ func (a *CollectionLevelMetricsApiService) UnpinNamespaces(ctx context.Context, 
 func (a *CollectionLevelMetricsApiService) UnpinNamespacesExecute(r UnpinNamespacesApiRequest) (*PinnedNamespaces, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PinnedNamespaces
 	)

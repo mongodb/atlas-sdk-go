@@ -108,7 +108,7 @@ func (a *AuditingApiService) GetAuditingConfiguration(ctx context.Context, group
 func (a *AuditingApiService) GetAuditingConfigurationExecute(r GetAuditingConfigurationApiRequest) (*AuditLog, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *AuditLog
 	)
@@ -223,7 +223,7 @@ func (a *AuditingApiService) UpdateAuditingConfiguration(ctx context.Context, gr
 func (a *AuditingApiService) UpdateAuditingConfigurationExecute(r UpdateAuditingConfigurationApiRequest) (*AuditLog, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *AuditLog
 	)

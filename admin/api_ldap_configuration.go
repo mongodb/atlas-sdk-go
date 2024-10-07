@@ -181,7 +181,7 @@ func (a *LDAPConfigurationApiService) DeleteLDAPConfiguration(ctx context.Contex
 func (a *LDAPConfigurationApiService) DeleteLDAPConfigurationExecute(r DeleteLDAPConfigurationApiRequest) (*UserSecurity, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *UserSecurity
 	)
@@ -292,7 +292,7 @@ func (a *LDAPConfigurationApiService) GetLDAPConfiguration(ctx context.Context, 
 func (a *LDAPConfigurationApiService) GetLDAPConfigurationExecute(r GetLDAPConfigurationApiRequest) (*UserSecurity, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *UserSecurity
 	)
@@ -408,7 +408,7 @@ func (a *LDAPConfigurationApiService) GetLDAPConfigurationStatus(ctx context.Con
 func (a *LDAPConfigurationApiService) GetLDAPConfigurationStatusExecute(r GetLDAPConfigurationStatusApiRequest) (*LDAPVerifyConnectivityJobRequest, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *LDAPVerifyConnectivityJobRequest
 	)
@@ -526,7 +526,7 @@ func (a *LDAPConfigurationApiService) SaveLDAPConfiguration(ctx context.Context,
 func (a *LDAPConfigurationApiService) SaveLDAPConfigurationExecute(r SaveLDAPConfigurationApiRequest) (*UserSecurity, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *UserSecurity
 	)
@@ -646,7 +646,7 @@ func (a *LDAPConfigurationApiService) VerifyLDAPConfiguration(ctx context.Contex
 func (a *LDAPConfigurationApiService) VerifyLDAPConfigurationExecute(r VerifyLDAPConfigurationApiRequest) (*LDAPVerifyConnectivityJobRequest, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *LDAPVerifyConnectivityJobRequest
 	)

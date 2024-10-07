@@ -99,7 +99,7 @@ func (a *RootApiService) GetSystemStatus(ctx context.Context) GetSystemStatusApi
 func (a *RootApiService) GetSystemStatusExecute(r GetSystemStatusApiRequest) (*SystemStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *SystemStatus
 	)
@@ -204,7 +204,7 @@ func (a *RootApiService) ReturnAllControlPlaneIPAddresses(ctx context.Context) R
 func (a *RootApiService) ReturnAllControlPlaneIPAddressesExecute(r ReturnAllControlPlaneIPAddressesApiRequest) (*ControlPlaneIPAddresses, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *ControlPlaneIPAddresses
 	)

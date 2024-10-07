@@ -522,7 +522,7 @@ func (a *ClustersApiService) CreateCluster(ctx context.Context, groupId string, 
 func (a *ClustersApiService) CreateClusterExecute(r CreateClusterApiRequest) (*ClusterDescription20240805, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *ClusterDescription20240805
 	)
@@ -650,7 +650,7 @@ func (a *ClustersApiService) DeleteCluster(ctx context.Context, groupId string, 
 func (a *ClustersApiService) DeleteClusterExecute(r DeleteClusterApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
+		localVarPostBody   any
 		formFiles          []formFile
 	)
 
@@ -755,7 +755,7 @@ func (a *ClustersApiService) GetCluster(ctx context.Context, groupId string, clu
 func (a *ClustersApiService) GetClusterExecute(r GetClusterApiRequest) (*ClusterDescription20240805, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *ClusterDescription20240805
 	)
@@ -872,7 +872,7 @@ func (a *ClustersApiService) GetClusterAdvancedConfiguration(ctx context.Context
 func (a *ClustersApiService) GetClusterAdvancedConfigurationExecute(r GetClusterAdvancedConfigurationApiRequest) (*ClusterDescriptionProcessArgs20240805, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *ClusterDescriptionProcessArgs20240805
 	)
@@ -989,7 +989,7 @@ func (a *ClustersApiService) GetClusterStatus(ctx context.Context, groupId strin
 func (a *ClustersApiService) GetClusterStatusExecute(r GetClusterStatusApiRequest) (*ClusterStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *ClusterStatus
 	)
@@ -1106,7 +1106,7 @@ func (a *ClustersApiService) GetSampleDatasetLoadStatus(ctx context.Context, gro
 func (a *ClustersApiService) GetSampleDatasetLoadStatusExecute(r GetSampleDatasetLoadStatusApiRequest) (*SampleDatasetStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *SampleDatasetStatus
 	)
@@ -1227,7 +1227,7 @@ func (a *ClustersApiService) GrantMongoDBEmployeeAccess(ctx context.Context, gro
 func (a *ClustersApiService) GrantMongoDBEmployeeAccessExecute(r GrantMongoDBEmployeeAccessApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue interface{}
 	)
@@ -1389,7 +1389,7 @@ func (a *ClustersApiService) ListCloudProviderRegions(ctx context.Context, group
 func (a *ClustersApiService) ListCloudProviderRegionsExecute(r ListCloudProviderRegionsApiRequest) (*PaginatedApiAtlasProviderRegions, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PaginatedApiAtlasProviderRegions
 	)
@@ -1567,7 +1567,7 @@ func (a *ClustersApiService) ListClusters(ctx context.Context, groupId string) L
 func (a *ClustersApiService) ListClustersExecute(r ListClustersApiRequest) (*PaginatedClusterDescription20240805, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PaginatedClusterDescription20240805
 	)
@@ -1728,7 +1728,7 @@ func (a *ClustersApiService) ListClustersForAllProjects(ctx context.Context) Lis
 func (a *ClustersApiService) ListClustersForAllProjectsExecute(r ListClustersForAllProjectsApiRequest) (*PaginatedOrgGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PaginatedOrgGroup
 	)
@@ -1864,7 +1864,7 @@ func (a *ClustersApiService) LoadSampleDataset(ctx context.Context, groupId stri
 func (a *ClustersApiService) LoadSampleDatasetExecute(r LoadSampleDatasetApiRequest) (*SampleDatasetStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *SampleDatasetStatus
 	)
@@ -1985,7 +1985,7 @@ func (a *ClustersApiService) PinFeatureCompatibilityVersion(ctx context.Context,
 func (a *ClustersApiService) PinFeatureCompatibilityVersionExecute(r PinFeatureCompatibilityVersionApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue interface{}
 	)
@@ -2104,7 +2104,7 @@ func (a *ClustersApiService) RevokeMongoDBEmployeeAccess(ctx context.Context, gr
 func (a *ClustersApiService) RevokeMongoDBEmployeeAccessExecute(r RevokeMongoDBEmployeeAccessApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue interface{}
 	)
@@ -2219,7 +2219,7 @@ func (a *ClustersApiService) TestFailover(ctx context.Context, groupId string, c
 func (a *ClustersApiService) TestFailoverExecute(r TestFailoverApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
+		localVarPostBody   any
 		formFiles          []formFile
 	)
 
@@ -2321,7 +2321,7 @@ func (a *ClustersApiService) UnpinFeatureCompatibilityVersion(ctx context.Contex
 func (a *ClustersApiService) UnpinFeatureCompatibilityVersionExecute(r UnpinFeatureCompatibilityVersionApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue interface{}
 	)
@@ -2442,7 +2442,7 @@ func (a *ClustersApiService) UpdateCluster(ctx context.Context, groupId string, 
 func (a *ClustersApiService) UpdateClusterExecute(r UpdateClusterApiRequest) (*ClusterDescription20240805, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *ClusterDescription20240805
 	)
@@ -2568,7 +2568,7 @@ func (a *ClustersApiService) UpdateClusterAdvancedConfiguration(ctx context.Cont
 func (a *ClustersApiService) UpdateClusterAdvancedConfigurationExecute(r UpdateClusterAdvancedConfigurationApiRequest) (*ClusterDescriptionProcessArgs20240805, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *ClusterDescriptionProcessArgs20240805
 	)
@@ -2689,7 +2689,7 @@ func (a *ClustersApiService) UpgradeSharedCluster(ctx context.Context, groupId s
 func (a *ClustersApiService) UpgradeSharedClusterExecute(r UpgradeSharedClusterApiRequest) (*LegacyAtlasCluster, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *LegacyAtlasCluster
 	)
@@ -2809,7 +2809,7 @@ func (a *ClustersApiService) UpgradeSharedClusterToServerless(ctx context.Contex
 func (a *ClustersApiService) UpgradeSharedClusterToServerlessExecute(r UpgradeSharedClusterToServerlessApiRequest) (*ServerlessInstanceDescription, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *ServerlessInstanceDescription
 	)

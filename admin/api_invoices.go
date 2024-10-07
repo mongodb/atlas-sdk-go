@@ -236,7 +236,7 @@ func (a *InvoicesApiService) CreateCostExplorerQueryProcess(ctx context.Context,
 func (a *InvoicesApiService) CreateCostExplorerQueryProcessExecute(r CreateCostExplorerQueryProcessApiRequest) (*CostExplorerFilterResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *CostExplorerFilterResponse
 	)
@@ -357,7 +357,7 @@ func (a *InvoicesApiService) CreateCostExplorerQueryProcess1(ctx context.Context
 func (a *InvoicesApiService) CreateCostExplorerQueryProcess1Execute(r CreateCostExplorerQueryProcess1ApiRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue string
 	)
@@ -476,7 +476,7 @@ func (a *InvoicesApiService) DownloadInvoiceCSV(ctx context.Context, orgId strin
 func (a *InvoicesApiService) DownloadInvoiceCSVExecute(r DownloadInvoiceCSVApiRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue string
 	)
@@ -594,7 +594,7 @@ func (a *InvoicesApiService) GetInvoice(ctx context.Context, orgId string, invoi
 func (a *InvoicesApiService) GetInvoiceExecute(r GetInvoiceApiRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue string
 	)
@@ -788,7 +788,7 @@ func (a *InvoicesApiService) ListInvoices(ctx context.Context, orgId string) Lis
 func (a *InvoicesApiService) ListInvoicesExecute(r ListInvoicesApiRequest) (*PaginatedApiInvoiceMetadata, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PaginatedApiInvoiceMetadata
 	)
@@ -954,7 +954,7 @@ func (a *InvoicesApiService) ListPendingInvoices(ctx context.Context, orgId stri
 func (a *InvoicesApiService) ListPendingInvoicesExecute(r ListPendingInvoicesApiRequest) (*PaginatedApiInvoice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PaginatedApiInvoice
 	)
@@ -1092,7 +1092,7 @@ func (a *InvoicesApiService) QueryLineItemsFromSingleInvoice(ctx context.Context
 func (a *InvoicesApiService) QueryLineItemsFromSingleInvoiceExecute(r QueryLineItemsFromSingleInvoiceApiRequest) (*PaginatedPublicApiUsageDetailsLineItem, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PaginatedPublicApiUsageDetailsLineItem
 	)

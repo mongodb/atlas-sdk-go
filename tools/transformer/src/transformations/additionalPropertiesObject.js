@@ -1,7 +1,7 @@
 /**
  * Remove all AdditonalProperties object section
  * That generates an map[string]map[string]string objects for SDK
- * but for our API much safer is to rely on the map[string]interface{}
+ * but for our API much safer is to rely on the map[string]any
  * This is due to the fact that dynamic field can be array which would
  * not be possible to represent in map[string]map[string]string structure.
  * @param {*} api OpenAPI JSON File

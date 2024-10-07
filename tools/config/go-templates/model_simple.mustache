@@ -29,7 +29,7 @@ type {{classname}} struct {
 	{{name}} {{^required}}{{^isFreeFormObject}}*{{/isFreeFormObject}}{{/required}}{{{dataType}}} `json:"{{baseName}}{{^required}},omitempty{{/required}}"{{#withXml}} xml:"{{baseName}}{{#isXmlAttribute}},attr{{/isXmlAttribute}}"{{/withXml}}{{#vendorExtensions.x-go-custom-tag}} {{{.}}}{{/vendorExtensions.x-go-custom-tag}}`
 {{/vars}}
 {{#isAdditionalPropertiesTrue}}
-	AdditionalProperties map[string]interface{}
+	AdditionalProperties map[string]any
 {{/isAdditionalPropertiesTrue}}
 }
 

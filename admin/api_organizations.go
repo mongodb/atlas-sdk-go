@@ -472,7 +472,7 @@ func (a *OrganizationsApiService) CreateOrganization(ctx context.Context, create
 func (a *OrganizationsApiService) CreateOrganizationExecute(r CreateOrganizationApiRequest) (*CreateOrganizationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *CreateOrganizationResponse
 	)
@@ -591,7 +591,7 @@ func (a *OrganizationsApiService) CreateOrganizationInvitation(ctx context.Conte
 func (a *OrganizationsApiService) CreateOrganizationInvitationExecute(r CreateOrganizationInvitationApiRequest) (*OrganizationInvitation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *OrganizationInvitation
 	)
@@ -712,7 +712,7 @@ func (a *OrganizationsApiService) DeleteOrganization(ctx context.Context, orgId 
 func (a *OrganizationsApiService) DeleteOrganizationExecute(r DeleteOrganizationApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue interface{}
 	)
@@ -828,7 +828,7 @@ func (a *OrganizationsApiService) DeleteOrganizationInvitation(ctx context.Conte
 func (a *OrganizationsApiService) DeleteOrganizationInvitationExecute(r DeleteOrganizationInvitationApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue interface{}
 	)
@@ -940,7 +940,7 @@ func (a *OrganizationsApiService) GetOrganization(ctx context.Context, orgId str
 func (a *OrganizationsApiService) GetOrganizationExecute(r GetOrganizationApiRequest) (*AtlasOrganization, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *AtlasOrganization
 	)
@@ -1056,7 +1056,7 @@ func (a *OrganizationsApiService) GetOrganizationInvitation(ctx context.Context,
 func (a *OrganizationsApiService) GetOrganizationInvitationExecute(r GetOrganizationInvitationApiRequest) (*OrganizationInvitation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *OrganizationInvitation
 	)
@@ -1168,7 +1168,7 @@ func (a *OrganizationsApiService) GetOrganizationSettings(ctx context.Context, o
 func (a *OrganizationsApiService) GetOrganizationSettingsExecute(r GetOrganizationSettingsApiRequest) (*OrganizationSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *OrganizationSettings
 	)
@@ -1288,7 +1288,7 @@ func (a *OrganizationsApiService) ListOrganizationInvitations(ctx context.Contex
 func (a *OrganizationsApiService) ListOrganizationInvitationsExecute(r ListOrganizationInvitationsApiRequest) ([]OrganizationInvitation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue []OrganizationInvitation
 	)
@@ -1445,7 +1445,7 @@ func (a *OrganizationsApiService) ListOrganizationProjects(ctx context.Context, 
 func (a *OrganizationsApiService) ListOrganizationProjectsExecute(r ListOrganizationProjectsApiRequest) (*PaginatedAtlasGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PaginatedAtlasGroup
 	)
@@ -1607,7 +1607,7 @@ func (a *OrganizationsApiService) ListOrganizationUsers(ctx context.Context, org
 func (a *OrganizationsApiService) ListOrganizationUsersExecute(r ListOrganizationUsersApiRequest) (*PaginatedAppUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PaginatedAppUser
 	)
@@ -1770,7 +1770,7 @@ func (a *OrganizationsApiService) ListOrganizations(ctx context.Context) ListOrg
 func (a *OrganizationsApiService) ListOrganizationsExecute(r ListOrganizationsApiRequest) (*PaginatedOrganization, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PaginatedOrganization
 	)
@@ -1909,7 +1909,7 @@ func (a *OrganizationsApiService) RemoveOrganizationUser(ctx context.Context, or
 func (a *OrganizationsApiService) RemoveOrganizationUserExecute(r RemoveOrganizationUserApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue interface{}
 	)
@@ -2025,7 +2025,7 @@ func (a *OrganizationsApiService) RenameOrganization(ctx context.Context, orgId 
 func (a *OrganizationsApiService) RenameOrganizationExecute(r RenameOrganizationApiRequest) (*AtlasOrganization, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *AtlasOrganization
 	)
@@ -2145,7 +2145,7 @@ func (a *OrganizationsApiService) UpdateOrganizationInvitation(ctx context.Conte
 func (a *OrganizationsApiService) UpdateOrganizationInvitationExecute(r UpdateOrganizationInvitationApiRequest) (*OrganizationInvitation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *OrganizationInvitation
 	)
@@ -2270,7 +2270,7 @@ func (a *OrganizationsApiService) UpdateOrganizationInvitationById(ctx context.C
 func (a *OrganizationsApiService) UpdateOrganizationInvitationByIdExecute(r UpdateOrganizationInvitationByIdApiRequest) (*OrganizationInvitation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *OrganizationInvitation
 	)
@@ -2396,7 +2396,7 @@ func (a *OrganizationsApiService) UpdateOrganizationRoles(ctx context.Context, o
 func (a *OrganizationsApiService) UpdateOrganizationRolesExecute(r UpdateOrganizationRolesApiRequest) (*UpdateOrgRolesForUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *UpdateOrgRolesForUser
 	)
@@ -2517,7 +2517,7 @@ func (a *OrganizationsApiService) UpdateOrganizationSettings(ctx context.Context
 func (a *OrganizationsApiService) UpdateOrganizationSettingsExecute(r UpdateOrganizationSettingsApiRequest) (*OrganizationSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *OrganizationSettings
 	)

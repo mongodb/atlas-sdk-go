@@ -682,7 +682,7 @@ func (a *ProjectsApiService) AddUserToProject(ctx context.Context, groupId strin
 func (a *ProjectsApiService) AddUserToProjectExecute(r AddUserToProjectApiRequest) (*OrganizationInvitation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *OrganizationInvitation
 	)
@@ -806,7 +806,7 @@ func (a *ProjectsApiService) CreateProject(ctx context.Context, group *Group) Cr
 func (a *ProjectsApiService) CreateProjectExecute(r CreateProjectApiRequest) (*Group, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *Group
 	)
@@ -932,7 +932,7 @@ func (a *ProjectsApiService) CreateProjectInvitation(ctx context.Context, groupI
 func (a *ProjectsApiService) CreateProjectInvitationExecute(r CreateProjectInvitationApiRequest) (*GroupInvitation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *GroupInvitation
 	)
@@ -1048,7 +1048,7 @@ func (a *ProjectsApiService) DeleteProject(ctx context.Context, groupId string) 
 func (a *ProjectsApiService) DeleteProjectExecute(r DeleteProjectApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue interface{}
 	)
@@ -1168,7 +1168,7 @@ func (a *ProjectsApiService) DeleteProjectInvitation(ctx context.Context, groupI
 func (a *ProjectsApiService) DeleteProjectInvitationExecute(r DeleteProjectInvitationApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue interface{}
 	)
@@ -1285,7 +1285,7 @@ func (a *ProjectsApiService) DeleteProjectLimit(ctx context.Context, limitName s
 func (a *ProjectsApiService) DeleteProjectLimitExecute(r DeleteProjectLimitApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue interface{}
 	)
@@ -1397,7 +1397,7 @@ func (a *ProjectsApiService) GetProject(ctx context.Context, groupId string) Get
 func (a *ProjectsApiService) GetProjectExecute(r GetProjectApiRequest) (*Group, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *Group
 	)
@@ -1508,7 +1508,7 @@ func (a *ProjectsApiService) GetProjectByName(ctx context.Context, groupName str
 func (a *ProjectsApiService) GetProjectByNameExecute(r GetProjectByNameApiRequest) (*Group, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *Group
 	)
@@ -1628,7 +1628,7 @@ func (a *ProjectsApiService) GetProjectInvitation(ctx context.Context, groupId s
 func (a *ProjectsApiService) GetProjectInvitationExecute(r GetProjectInvitationApiRequest) (*GroupInvitation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *GroupInvitation
 	)
@@ -1785,7 +1785,7 @@ func (a *ProjectsApiService) GetProjectLTSVersions(ctx context.Context, groupId 
 func (a *ProjectsApiService) GetProjectLTSVersionsExecute(r GetProjectLTSVersionsApiRequest) (*PaginatedAvailableVersion, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PaginatedAvailableVersion
 	)
@@ -1924,7 +1924,7 @@ func (a *ProjectsApiService) GetProjectLimit(ctx context.Context, limitName stri
 func (a *ProjectsApiService) GetProjectLimitExecute(r GetProjectLimitApiRequest) (*DataFederationLimit, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *DataFederationLimit
 	)
@@ -2036,7 +2036,7 @@ func (a *ProjectsApiService) GetProjectSettings(ctx context.Context, groupId str
 func (a *ProjectsApiService) GetProjectSettingsExecute(r GetProjectSettingsApiRequest) (*GroupSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *GroupSettings
 	)
@@ -2160,7 +2160,7 @@ func (a *ProjectsApiService) ListProjectInvitations(ctx context.Context, groupId
 func (a *ProjectsApiService) ListProjectInvitationsExecute(r ListProjectInvitationsApiRequest) ([]GroupInvitation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue []GroupInvitation
 	)
@@ -2274,7 +2274,7 @@ func (a *ProjectsApiService) ListProjectLimits(ctx context.Context, groupId stri
 func (a *ProjectsApiService) ListProjectLimitsExecute(r ListProjectLimitsApiRequest) ([]DataFederationLimit, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue []DataFederationLimit
 	)
@@ -2430,7 +2430,7 @@ func (a *ProjectsApiService) ListProjectUsers(ctx context.Context, groupId strin
 func (a *ProjectsApiService) ListProjectUsersExecute(r ListProjectUsersApiRequest) (*PaginatedAppUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PaginatedAppUser
 	)
@@ -2598,7 +2598,7 @@ func (a *ProjectsApiService) ListProjects(ctx context.Context) ListProjectsApiRe
 func (a *ProjectsApiService) ListProjectsExecute(r ListProjectsApiRequest) (*PaginatedAtlasGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PaginatedAtlasGroup
 	)
@@ -2733,7 +2733,7 @@ func (a *ProjectsApiService) MigrateProjectToAnotherOrg(ctx context.Context, gro
 func (a *ProjectsApiService) MigrateProjectToAnotherOrgExecute(r MigrateProjectToAnotherOrgApiRequest) (*Group, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *Group
 	)
@@ -2852,7 +2852,7 @@ func (a *ProjectsApiService) RemoveProjectUser(ctx context.Context, groupId stri
 func (a *ProjectsApiService) RemoveProjectUserExecute(r RemoveProjectUserApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
+		localVarPostBody   any
 		formFiles          []formFile
 	)
 
@@ -2949,7 +2949,7 @@ func (a *ProjectsApiService) ReturnAllIPAddresses(ctx context.Context, groupId s
 func (a *ProjectsApiService) ReturnAllIPAddressesExecute(r ReturnAllIPAddressesApiRequest) (*GroupIPAddresses, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *GroupIPAddresses
 	)
@@ -3071,7 +3071,7 @@ func (a *ProjectsApiService) SetProjectLimit(ctx context.Context, limitName stri
 func (a *ProjectsApiService) SetProjectLimitExecute(r SetProjectLimitApiRequest) (*DataFederationLimit, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *DataFederationLimit
 	)
@@ -3192,7 +3192,7 @@ func (a *ProjectsApiService) UpdateProject(ctx context.Context, groupId string, 
 func (a *ProjectsApiService) UpdateProjectExecute(r UpdateProjectApiRequest) (*Group, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *Group
 	)
@@ -3316,7 +3316,7 @@ func (a *ProjectsApiService) UpdateProjectInvitation(ctx context.Context, groupI
 func (a *ProjectsApiService) UpdateProjectInvitationExecute(r UpdateProjectInvitationApiRequest) (*GroupInvitation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *GroupInvitation
 	)
@@ -3445,7 +3445,7 @@ func (a *ProjectsApiService) UpdateProjectInvitationById(ctx context.Context, gr
 func (a *ProjectsApiService) UpdateProjectInvitationByIdExecute(r UpdateProjectInvitationByIdApiRequest) (*GroupInvitation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *GroupInvitation
 	)
@@ -3571,7 +3571,7 @@ func (a *ProjectsApiService) UpdateProjectRoles(ctx context.Context, groupId str
 func (a *ProjectsApiService) UpdateProjectRolesExecute(r UpdateProjectRolesApiRequest) (*UpdateGroupRolesForUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *UpdateGroupRolesForUser
 	)
@@ -3692,7 +3692,7 @@ func (a *ProjectsApiService) UpdateProjectSettings(ctx context.Context, groupId 
 func (a *ProjectsApiService) UpdateProjectSettingsExecute(r UpdateProjectSettingsApiRequest) (*GroupSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *GroupSettings
 	)

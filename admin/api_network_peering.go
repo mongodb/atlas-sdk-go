@@ -383,7 +383,7 @@ func (a *NetworkPeeringApiService) CreatePeeringConnection(ctx context.Context, 
 func (a *NetworkPeeringApiService) CreatePeeringConnectionExecute(r CreatePeeringConnectionApiRequest) (*BaseNetworkPeeringConnectionSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *BaseNetworkPeeringConnectionSettings
 	)
@@ -503,7 +503,7 @@ func (a *NetworkPeeringApiService) CreatePeeringContainer(ctx context.Context, g
 func (a *NetworkPeeringApiService) CreatePeeringContainerExecute(r CreatePeeringContainerApiRequest) (*CloudProviderContainer, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *CloudProviderContainer
 	)
@@ -624,7 +624,7 @@ func (a *NetworkPeeringApiService) DeletePeeringConnection(ctx context.Context, 
 func (a *NetworkPeeringApiService) DeletePeeringConnectionExecute(r DeletePeeringConnectionApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue interface{}
 	)
@@ -741,7 +741,7 @@ func (a *NetworkPeeringApiService) DeletePeeringContainer(ctx context.Context, g
 func (a *NetworkPeeringApiService) DeletePeeringContainerExecute(r DeletePeeringContainerApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue interface{}
 	)
@@ -861,7 +861,7 @@ func (a *NetworkPeeringApiService) DisablePeering(ctx context.Context, groupId s
 func (a *NetworkPeeringApiService) DisablePeeringExecute(r DisablePeeringApiRequest) (*PrivateIPMode, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PrivateIPMode
 	)
@@ -982,7 +982,7 @@ func (a *NetworkPeeringApiService) GetPeeringConnection(ctx context.Context, gro
 func (a *NetworkPeeringApiService) GetPeeringConnectionExecute(r GetPeeringConnectionApiRequest) (*BaseNetworkPeeringConnectionSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *BaseNetworkPeeringConnectionSettings
 	)
@@ -1099,7 +1099,7 @@ func (a *NetworkPeeringApiService) GetPeeringContainer(ctx context.Context, grou
 func (a *NetworkPeeringApiService) GetPeeringContainerExecute(r GetPeeringContainerApiRequest) (*CloudProviderContainer, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *CloudProviderContainer
 	)
@@ -1247,7 +1247,7 @@ func (a *NetworkPeeringApiService) ListPeeringConnections(ctx context.Context, g
 func (a *NetworkPeeringApiService) ListPeeringConnectionsExecute(r ListPeeringConnectionsApiRequest) (*PaginatedContainerPeer, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PaginatedContainerPeer
 	)
@@ -1422,7 +1422,7 @@ func (a *NetworkPeeringApiService) ListPeeringContainerByCloudProvider(ctx conte
 func (a *NetworkPeeringApiService) ListPeeringContainerByCloudProviderExecute(r ListPeeringContainerByCloudProviderApiRequest) (*PaginatedCloudProviderContainer, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PaginatedCloudProviderContainer
 	)
@@ -1585,7 +1585,7 @@ func (a *NetworkPeeringApiService) ListPeeringContainers(ctx context.Context, gr
 func (a *NetworkPeeringApiService) ListPeeringContainersExecute(r ListPeeringContainersApiRequest) (*PaginatedCloudProviderContainer, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PaginatedCloudProviderContainer
 	)
@@ -1726,7 +1726,7 @@ func (a *NetworkPeeringApiService) UpdatePeeringConnection(ctx context.Context, 
 func (a *NetworkPeeringApiService) UpdatePeeringConnectionExecute(r UpdatePeeringConnectionApiRequest) (*BaseNetworkPeeringConnectionSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *BaseNetworkPeeringConnectionSettings
 	)
@@ -1852,7 +1852,7 @@ func (a *NetworkPeeringApiService) UpdatePeeringContainer(ctx context.Context, g
 func (a *NetworkPeeringApiService) UpdatePeeringContainerExecute(r UpdatePeeringContainerApiRequest) (*CloudProviderContainer, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *CloudProviderContainer
 	)
@@ -1973,7 +1973,7 @@ func (a *NetworkPeeringApiService) VerifyConnectViaPeeringOnlyModeForOneProject(
 func (a *NetworkPeeringApiService) VerifyConnectViaPeeringOnlyModeForOneProjectExecute(r VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest) (*PrivateIPMode, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PrivateIPMode
 	)

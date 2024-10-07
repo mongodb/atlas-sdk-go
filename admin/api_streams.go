@@ -608,7 +608,7 @@ func (a *StreamsApiService) AcceptVPCPeeringConnection(ctx context.Context, grou
 func (a *StreamsApiService) AcceptVPCPeeringConnectionExecute(r AcceptVPCPeeringConnectionApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue interface{}
 	)
@@ -734,7 +734,7 @@ func (a *StreamsApiService) CreateStreamConnection(ctx context.Context, groupId 
 func (a *StreamsApiService) CreateStreamConnectionExecute(r CreateStreamConnectionApiRequest) (*StreamsConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *StreamsConnection
 	)
@@ -855,7 +855,7 @@ func (a *StreamsApiService) CreateStreamInstance(ctx context.Context, groupId st
 func (a *StreamsApiService) CreateStreamInstanceExecute(r CreateStreamInstanceApiRequest) (*StreamsTenant, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *StreamsTenant
 	)
@@ -975,7 +975,7 @@ func (a *StreamsApiService) CreateStreamInstanceWithSampleConnections(ctx contex
 func (a *StreamsApiService) CreateStreamInstanceWithSampleConnectionsExecute(r CreateStreamInstanceWithSampleConnectionsApiRequest) (*StreamsTenant, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *StreamsTenant
 	)
@@ -1100,7 +1100,7 @@ func (a *StreamsApiService) CreateStreamProcessor(ctx context.Context, groupId s
 func (a *StreamsApiService) CreateStreamProcessorExecute(r CreateStreamProcessorApiRequest) (*StreamsProcessor, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *StreamsProcessor
 	)
@@ -1227,7 +1227,7 @@ func (a *StreamsApiService) DeleteStreamConnection(ctx context.Context, groupId 
 func (a *StreamsApiService) DeleteStreamConnectionExecute(r DeleteStreamConnectionApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue interface{}
 	)
@@ -1345,7 +1345,7 @@ func (a *StreamsApiService) DeleteStreamInstance(ctx context.Context, groupId st
 func (a *StreamsApiService) DeleteStreamInstanceExecute(r DeleteStreamInstanceApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue interface{}
 	)
@@ -1465,7 +1465,7 @@ func (a *StreamsApiService) DeleteStreamProcessor(ctx context.Context, groupId s
 func (a *StreamsApiService) DeleteStreamProcessorExecute(r DeleteStreamProcessorApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
+		localVarPostBody   any
 		formFiles          []formFile
 	)
 
@@ -1568,7 +1568,7 @@ func (a *StreamsApiService) DeleteVPCPeeringConnection(ctx context.Context, grou
 func (a *StreamsApiService) DeleteVPCPeeringConnectionExecute(r DeleteVPCPeeringConnectionApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue interface{}
 	)
@@ -1703,7 +1703,7 @@ func (a *StreamsApiService) DownloadStreamTenantAuditLogs(ctx context.Context, g
 func (a *StreamsApiService) DownloadStreamTenantAuditLogsExecute(r DownloadStreamTenantAuditLogsApiRequest) (io.ReadCloser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue io.ReadCloser
 	)
@@ -1831,7 +1831,7 @@ func (a *StreamsApiService) GetStreamConnection(ctx context.Context, groupId str
 func (a *StreamsApiService) GetStreamConnectionExecute(r GetStreamConnectionApiRequest) (*StreamsConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *StreamsConnection
 	)
@@ -1958,7 +1958,7 @@ func (a *StreamsApiService) GetStreamInstance(ctx context.Context, groupId strin
 func (a *StreamsApiService) GetStreamInstanceExecute(r GetStreamInstanceApiRequest) (*StreamsTenant, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *StreamsTenant
 	)
@@ -2083,7 +2083,7 @@ func (a *StreamsApiService) GetStreamProcessor(ctx context.Context, groupId stri
 func (a *StreamsApiService) GetStreamProcessorExecute(r GetStreamProcessorApiRequest) (*StreamsProcessorWithStats, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *StreamsProcessorWithStats
 	)
@@ -2212,7 +2212,7 @@ func (a *StreamsApiService) GetVPCPeeringConnections(ctx context.Context, groupI
 func (a *StreamsApiService) GetVPCPeeringConnectionsExecute(r GetVPCPeeringConnectionsApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodGet
-		localVarPostBody   interface{}
+		localVarPostBody   any
 		formFiles          []formFile
 	)
 
@@ -2345,7 +2345,7 @@ func (a *StreamsApiService) ListStreamConnections(ctx context.Context, groupId s
 func (a *StreamsApiService) ListStreamConnectionsExecute(r ListStreamConnectionsApiRequest) (*PaginatedApiStreamsConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PaginatedApiStreamsConnection
 	)
@@ -2489,7 +2489,7 @@ func (a *StreamsApiService) ListStreamInstances(ctx context.Context, groupId str
 func (a *StreamsApiService) ListStreamInstancesExecute(r ListStreamInstancesApiRequest) (*PaginatedApiStreamsTenant, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PaginatedApiStreamsTenant
 	)
@@ -2646,7 +2646,7 @@ func (a *StreamsApiService) ListStreamProcessors(ctx context.Context, groupId st
 func (a *StreamsApiService) ListStreamProcessorsExecute(r ListStreamProcessorsApiRequest) (*PaginatedApiStreamsStreamProcessorWithStats, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PaginatedApiStreamsStreamProcessorWithStats
 	)
@@ -2784,7 +2784,7 @@ func (a *StreamsApiService) RejectVPCPeeringConnection(ctx context.Context, grou
 func (a *StreamsApiService) RejectVPCPeeringConnectionExecute(r RejectVPCPeeringConnectionApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue interface{}
 	)
@@ -2906,7 +2906,7 @@ func (a *StreamsApiService) StartStreamProcessor(ctx context.Context, groupId st
 func (a *StreamsApiService) StartStreamProcessorExecute(r StartStreamProcessorApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue interface{}
 	)
@@ -3029,7 +3029,7 @@ func (a *StreamsApiService) StopStreamProcessor(ctx context.Context, groupId str
 func (a *StreamsApiService) StopStreamProcessorExecute(r StopStreamProcessorApiRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue interface{}
 	)
@@ -3156,7 +3156,7 @@ func (a *StreamsApiService) UpdateStreamConnection(ctx context.Context, groupId 
 func (a *StreamsApiService) UpdateStreamConnectionExecute(r UpdateStreamConnectionApiRequest) (*StreamsConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *StreamsConnection
 	)
@@ -3283,7 +3283,7 @@ func (a *StreamsApiService) UpdateStreamInstance(ctx context.Context, groupId st
 func (a *StreamsApiService) UpdateStreamInstanceExecute(r UpdateStreamInstanceApiRequest) (*StreamsTenant, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *StreamsTenant
 	)
