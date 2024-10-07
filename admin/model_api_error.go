@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ApiError struct for ApiError
 type ApiError struct {
 	BadRequestDetail *BadRequestDetail `json:"badRequestDetail,omitempty"`
@@ -234,35 +230,4 @@ func (o *ApiError) HasReason() bool {
 // SetReason gets a reference to the given string and assigns it to the Reason field.
 func (o *ApiError) SetReason(v string) {
 	o.Reason = &v
-}
-
-func (o *ApiError) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ApiError) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.BadRequestDetail) {
-		toSerialize["badRequestDetail"] = o.BadRequestDetail
-	}
-	if !IsNil(o.Detail) {
-		toSerialize["detail"] = o.Detail
-	}
-	if !IsNil(o.Error) {
-		toSerialize["error"] = o.Error
-	}
-	if !IsNil(o.ErrorCode) {
-		toSerialize["errorCode"] = o.ErrorCode
-	}
-	if !IsNil(o.Parameters) {
-		toSerialize["parameters"] = o.Parameters
-	}
-	if !IsNil(o.Reason) {
-		toSerialize["reason"] = o.Reason
-	}
-	return toSerialize, nil
 }

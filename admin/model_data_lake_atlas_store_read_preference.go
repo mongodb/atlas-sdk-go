@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // DataLakeAtlasStoreReadPreference MongoDB Cloud cluster read preference, which describes how to route read requests to the cluster.
 type DataLakeAtlasStoreReadPreference struct {
 	// Maximum replication lag, or **staleness**, for reads from secondaries.
@@ -130,26 +126,4 @@ func (o *DataLakeAtlasStoreReadPreference) HasTagSets() bool {
 // SetTagSets gets a reference to the given [][]DataLakeAtlasStoreReadPreferenceTag and assigns it to the TagSets field.
 func (o *DataLakeAtlasStoreReadPreference) SetTagSets(v [][]DataLakeAtlasStoreReadPreferenceTag) {
 	o.TagSets = &v
-}
-
-func (o *DataLakeAtlasStoreReadPreference) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *DataLakeAtlasStoreReadPreference) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.MaxStalenessSeconds) {
-		toSerialize["maxStalenessSeconds"] = o.MaxStalenessSeconds
-	}
-	if !IsNil(o.Mode) {
-		toSerialize["mode"] = o.Mode
-	}
-	if !IsNil(o.TagSets) {
-		toSerialize["tagSets"] = o.TagSets
-	}
-	return toSerialize, nil
 }

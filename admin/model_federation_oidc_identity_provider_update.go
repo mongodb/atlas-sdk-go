@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // FederationOidcIdentityProviderUpdate struct for FederationOidcIdentityProviderUpdate
 type FederationOidcIdentityProviderUpdate struct {
 	// Identifier of the intended recipient of the token.
@@ -445,53 +441,4 @@ func (o *FederationOidcIdentityProviderUpdate) HasRequestedScopes() bool {
 // SetRequestedScopes gets a reference to the given []string and assigns it to the RequestedScopes field.
 func (o *FederationOidcIdentityProviderUpdate) SetRequestedScopes(v []string) {
 	o.RequestedScopes = &v
-}
-
-func (o *FederationOidcIdentityProviderUpdate) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *FederationOidcIdentityProviderUpdate) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Audience) {
-		toSerialize["audience"] = o.Audience
-	}
-	if !IsNil(o.AuthorizationType) {
-		toSerialize["authorizationType"] = o.AuthorizationType
-	}
-	if !IsNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
-	if !IsNil(o.DisplayName) {
-		toSerialize["displayName"] = o.DisplayName
-	}
-	if !IsNil(o.GroupsClaim) {
-		toSerialize["groupsClaim"] = o.GroupsClaim
-	}
-	if !IsNil(o.IdpType) {
-		toSerialize["idpType"] = o.IdpType
-	}
-	if !IsNil(o.IssuerUri) {
-		toSerialize["issuerUri"] = o.IssuerUri
-	}
-	if !IsNil(o.Protocol) {
-		toSerialize["protocol"] = o.Protocol
-	}
-	if !IsNil(o.UserClaim) {
-		toSerialize["userClaim"] = o.UserClaim
-	}
-	if !IsNil(o.AssociatedDomains) {
-		toSerialize["associatedDomains"] = o.AssociatedDomains
-	}
-	if !IsNil(o.ClientId) {
-		toSerialize["clientId"] = o.ClientId
-	}
-	if !IsNil(o.RequestedScopes) {
-		toSerialize["requestedScopes"] = o.RequestedScopes
-	}
-	return toSerialize, nil
 }

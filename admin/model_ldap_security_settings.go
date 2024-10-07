@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // LDAPSecuritySettings Lightweight Directory Access Protocol (LDAP) over Transport Layer Security (TLS) configuration details that apply to the specified project.
 type LDAPSecuritySettings struct {
 	// Flag that indicates whether users can authenticate using an Lightweight Directory Access Protocol (LDAP) host.
@@ -385,44 +381,4 @@ func (o *LDAPSecuritySettings) HasUserToDNMapping() bool {
 // SetUserToDNMapping gets a reference to the given []UserToDNMapping and assigns it to the UserToDNMapping field.
 func (o *LDAPSecuritySettings) SetUserToDNMapping(v []UserToDNMapping) {
 	o.UserToDNMapping = &v
-}
-
-func (o *LDAPSecuritySettings) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *LDAPSecuritySettings) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.AuthenticationEnabled) {
-		toSerialize["authenticationEnabled"] = o.AuthenticationEnabled
-	}
-	if !IsNil(o.AuthorizationEnabled) {
-		toSerialize["authorizationEnabled"] = o.AuthorizationEnabled
-	}
-	if !IsNil(o.AuthzQueryTemplate) {
-		toSerialize["authzQueryTemplate"] = o.AuthzQueryTemplate
-	}
-	if !IsNil(o.BindPassword) {
-		toSerialize["bindPassword"] = o.BindPassword
-	}
-	if !IsNil(o.BindUsername) {
-		toSerialize["bindUsername"] = o.BindUsername
-	}
-	if !IsNil(o.CaCertificate) {
-		toSerialize["caCertificate"] = o.CaCertificate
-	}
-	if !IsNil(o.Hostname) {
-		toSerialize["hostname"] = o.Hostname
-	}
-	if !IsNil(o.Port) {
-		toSerialize["port"] = o.Port
-	}
-	if !IsNil(o.UserToDNMapping) {
-		toSerialize["userToDNMapping"] = o.UserToDNMapping
-	}
-	return toSerialize, nil
 }

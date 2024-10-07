@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // FTSMetric Measurement of one Atlas Search status when MongoDB Atlas received this request.
 type FTSMetric struct {
 	// Human-readable label that identifies this Atlas Search hardware, status, or index measurement.
@@ -81,17 +77,4 @@ func (o *FTSMetric) GetUnitsOk() (*string, bool) {
 // SetUnits sets field value
 func (o *FTSMetric) SetUnits(v string) {
 	o.Units = v
-}
-
-func (o *FTSMetric) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *FTSMetric) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

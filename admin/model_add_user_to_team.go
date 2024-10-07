@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // AddUserToTeam struct for AddUserToTeam
 type AddUserToTeam struct {
 	// Unique 24-hexadecimal digit string that identifies the MongoDB Cloud user.
@@ -52,18 +48,4 @@ func (o *AddUserToTeam) GetIdOk() (*string, bool) {
 // SetId sets field value
 func (o *AddUserToTeam) SetId(v string) {
 	o.Id = v
-}
-
-func (o *AddUserToTeam) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *AddUserToTeam) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["id"] = o.Id
-	return toSerialize, nil
 }

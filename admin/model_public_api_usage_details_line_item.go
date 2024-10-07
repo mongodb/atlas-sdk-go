@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"encoding/json"
 	"time"
 )
 
@@ -307,38 +306,4 @@ func (o *PublicApiUsageDetailsLineItem) HasUsageDate() bool {
 // SetUsageDate gets a reference to the given time.Time and assigns it to the UsageDate field.
 func (o *PublicApiUsageDetailsLineItem) SetUsageDate(v time.Time) {
 	o.UsageDate = &v
-}
-
-func (o *PublicApiUsageDetailsLineItem) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *PublicApiUsageDetailsLineItem) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.BillDate) {
-		toSerialize["billDate"] = o.BillDate
-	}
-	if !IsNil(o.ClusterName) {
-		toSerialize["clusterName"] = o.ClusterName
-	}
-	if !IsNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
-	if !IsNil(o.GroupId) {
-		toSerialize["groupId"] = o.GroupId
-	}
-	if !IsNil(o.TotalPriceCents) {
-		toSerialize["totalPriceCents"] = o.TotalPriceCents
-	}
-	if !IsNil(o.UnitPriceDollars) {
-		toSerialize["unitPriceDollars"] = o.UnitPriceDollars
-	}
-	if !IsNil(o.UsageDate) {
-		toSerialize["usageDate"] = o.UsageDate
-	}
-	return toSerialize, nil
 }

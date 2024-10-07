@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // TeamUpdate struct for TeamUpdate
 type TeamUpdate struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
@@ -89,18 +85,4 @@ func (o *TeamUpdate) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *TeamUpdate) SetName(v string) {
 	o.Name = v
-}
-
-func (o *TeamUpdate) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *TeamUpdate) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	return toSerialize, nil
 }

@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // TeamResponse struct for TeamResponse
 type TeamResponse struct {
 	// Unique 24-hexadecimal digit string that identifies this team.
@@ -132,20 +128,4 @@ func (o *TeamResponse) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *TeamResponse) SetName(v string) {
 	o.Name = &v
-}
-
-func (o *TeamResponse) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *TeamResponse) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	return toSerialize, nil
 }

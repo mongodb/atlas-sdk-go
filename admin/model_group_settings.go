@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // GroupSettings Collection of settings that configures the project.
 type GroupSettings struct {
 	// Flag that indicates whether to collect database-specific metrics  for the specified project.
@@ -235,35 +231,4 @@ func (o *GroupSettings) HasIsSchemaAdvisorEnabled() bool {
 // SetIsSchemaAdvisorEnabled gets a reference to the given bool and assigns it to the IsSchemaAdvisorEnabled field.
 func (o *GroupSettings) SetIsSchemaAdvisorEnabled(v bool) {
 	o.IsSchemaAdvisorEnabled = &v
-}
-
-func (o *GroupSettings) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *GroupSettings) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.IsCollectDatabaseSpecificsStatisticsEnabled) {
-		toSerialize["isCollectDatabaseSpecificsStatisticsEnabled"] = o.IsCollectDatabaseSpecificsStatisticsEnabled
-	}
-	if !IsNil(o.IsDataExplorerEnabled) {
-		toSerialize["isDataExplorerEnabled"] = o.IsDataExplorerEnabled
-	}
-	if !IsNil(o.IsExtendedStorageSizesEnabled) {
-		toSerialize["isExtendedStorageSizesEnabled"] = o.IsExtendedStorageSizesEnabled
-	}
-	if !IsNil(o.IsPerformanceAdvisorEnabled) {
-		toSerialize["isPerformanceAdvisorEnabled"] = o.IsPerformanceAdvisorEnabled
-	}
-	if !IsNil(o.IsRealtimePerformancePanelEnabled) {
-		toSerialize["isRealtimePerformancePanelEnabled"] = o.IsRealtimePerformancePanelEnabled
-	}
-	if !IsNil(o.IsSchemaAdvisorEnabled) {
-		toSerialize["isSchemaAdvisorEnabled"] = o.IsSchemaAdvisorEnabled
-	}
-	return toSerialize, nil
 }

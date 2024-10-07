@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // RestoreJobFileHash Key and value pair that map one restore file to one hashed checksum. This parameter applies after you download the corresponding **delivery.url**.
 type RestoreJobFileHash struct {
 	// Human-readable label that identifies the hashed file.
@@ -169,17 +165,4 @@ func (o *RestoreJobFileHash) HasTypeName() bool {
 // SetTypeName gets a reference to the given string and assigns it to the TypeName field.
 func (o *RestoreJobFileHash) SetTypeName(v string) {
 	o.TypeName = &v
-}
-
-func (o *RestoreJobFileHash) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *RestoreJobFileHash) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

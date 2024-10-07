@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"encoding/json"
 	"time"
 )
 
@@ -886,26 +885,4 @@ func (o *EventViewForOrg) HasResourcePolicyId() bool {
 // SetResourcePolicyId gets a reference to the given string and assigns it to the ResourcePolicyId field.
 func (o *EventViewForOrg) SetResourcePolicyId(v string) {
 	o.ResourcePolicyId = &v
-}
-
-func (o *EventViewForOrg) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *EventViewForOrg) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.EventTypeName) {
-		toSerialize["eventTypeName"] = o.EventTypeName
-	}
-	if !IsNil(o.Raw) {
-		toSerialize["raw"] = o.Raw
-	}
-	if !IsNil(o.ResourceType) {
-		toSerialize["resourceType"] = o.ResourceType
-	}
-	return toSerialize, nil
 }

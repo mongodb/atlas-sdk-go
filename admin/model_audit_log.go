@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // AuditLog struct for AuditLog
 type AuditLog struct {
 	// Flag that indicates whether someone set auditing to track successful authentications. This only applies to the `\"atype\" : \"authCheck\"` audit filter. Setting this parameter to `true` degrades cluster performance.
@@ -174,26 +170,4 @@ func (o *AuditLog) HasEnabled() bool {
 // SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
 func (o *AuditLog) SetEnabled(v bool) {
 	o.Enabled = &v
-}
-
-func (o *AuditLog) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *AuditLog) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.AuditAuthorizationSuccess) {
-		toSerialize["auditAuthorizationSuccess"] = o.AuditAuthorizationSuccess
-	}
-	if !IsNil(o.AuditFilter) {
-		toSerialize["auditFilter"] = o.AuditFilter
-	}
-	if !IsNil(o.Enabled) {
-		toSerialize["enabled"] = o.Enabled
-	}
-	return toSerialize, nil
 }

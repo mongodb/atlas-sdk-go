@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ApiAtlasResourcePolicyMetadata struct for ApiAtlasResourcePolicyMetadata
 type ApiAtlasResourcePolicyMetadata struct {
 	// List of policies that are in conflict with the current state of the resource.
@@ -133,17 +129,4 @@ func (o *ApiAtlasResourcePolicyMetadata) HasResourcePolicyName() bool {
 // SetResourcePolicyName gets a reference to the given string and assigns it to the ResourcePolicyName field.
 func (o *ApiAtlasResourcePolicyMetadata) SetResourcePolicyName(v string) {
 	o.ResourcePolicyName = &v
-}
-
-func (o *ApiAtlasResourcePolicyMetadata) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ApiAtlasResourcePolicyMetadata) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // DataLakeDataProcessRegion Information about the cloud provider region to which the Federated Database Instance routes client connections.
 type DataLakeDataProcessRegion struct {
 	// Name of the cloud service that hosts the Federated Database Instance's infrastructure.
@@ -79,19 +75,4 @@ func (o *DataLakeDataProcessRegion) GetRegionOk() (*string, bool) {
 // SetRegion sets field value
 func (o *DataLakeDataProcessRegion) SetRegion(v string) {
 	o.Region = v
-}
-
-func (o *DataLakeDataProcessRegion) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *DataLakeDataProcessRegion) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["cloudProvider"] = o.CloudProvider
-	toSerialize["region"] = o.Region
-	return toSerialize, nil
 }

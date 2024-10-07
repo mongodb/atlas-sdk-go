@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // DiskBackupCopySetting20240805 Copy setting item in the desired backup policy.
 type DiskBackupCopySetting20240805 struct {
 	// Human-readable label that identifies the cloud provider that stores the snapshot copy.
@@ -192,30 +188,4 @@ func (o *DiskBackupCopySetting20240805) GetZoneIdOk() (*string, bool) {
 // SetZoneId sets field value
 func (o *DiskBackupCopySetting20240805) SetZoneId(v string) {
 	o.ZoneId = v
-}
-
-func (o *DiskBackupCopySetting20240805) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *DiskBackupCopySetting20240805) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.CloudProvider) {
-		toSerialize["cloudProvider"] = o.CloudProvider
-	}
-	if !IsNil(o.Frequencies) {
-		toSerialize["frequencies"] = o.Frequencies
-	}
-	if !IsNil(o.RegionName) {
-		toSerialize["regionName"] = o.RegionName
-	}
-	if !IsNil(o.ShouldCopyOplogs) {
-		toSerialize["shouldCopyOplogs"] = o.ShouldCopyOplogs
-	}
-	toSerialize["zoneId"] = o.ZoneId
-	return toSerialize, nil
 }

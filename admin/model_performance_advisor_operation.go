@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // PerformanceAdvisorOperation struct for PerformanceAdvisorOperation
 type PerformanceAdvisorOperation struct {
 	// List that contains the search criteria that the query uses. To use the values in key-value pairs in these predicates requires **Project Data Access Read Only** permissions or greater. Otherwise, MongoDB Cloud redacts these values.
@@ -95,20 +91,4 @@ func (o *PerformanceAdvisorOperation) HasStats() bool {
 // SetStats gets a reference to the given PerformanceAdvisorOpStats and assigns it to the Stats field.
 func (o *PerformanceAdvisorOperation) SetStats(v PerformanceAdvisorOpStats) {
 	o.Stats = &v
-}
-
-func (o *PerformanceAdvisorOperation) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *PerformanceAdvisorOperation) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Stats) {
-		toSerialize["stats"] = o.Stats
-	}
-	return toSerialize, nil
 }

@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // DatabaseInheritedRole Role inherited from another context for this database user.
 type DatabaseInheritedRole struct {
 	// Human-readable label that identifies the database on which someone grants the action to one MongoDB user.
@@ -79,19 +75,4 @@ func (o *DatabaseInheritedRole) GetRoleOk() (*string, bool) {
 // SetRole sets field value
 func (o *DatabaseInheritedRole) SetRole(v string) {
 	o.Role = v
-}
-
-func (o *DatabaseInheritedRole) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *DatabaseInheritedRole) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["db"] = o.Db
-	toSerialize["role"] = o.Role
-	return toSerialize, nil
 }

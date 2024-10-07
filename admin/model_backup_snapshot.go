@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"encoding/json"
 	"time"
 )
 
@@ -416,29 +415,4 @@ func (o *BackupSnapshot) HasParts() bool {
 // SetParts gets a reference to the given []BackupSnapshotPart and assigns it to the Parts field.
 func (o *BackupSnapshot) SetParts(v []BackupSnapshotPart) {
 	o.Parts = &v
-}
-
-func (o *BackupSnapshot) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *BackupSnapshot) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Created) {
-		toSerialize["created"] = o.Created
-	}
-	if !IsNil(o.DoNotDelete) {
-		toSerialize["doNotDelete"] = o.DoNotDelete
-	}
-	if !IsNil(o.Expires) {
-		toSerialize["expires"] = o.Expires
-	}
-	if !IsNil(o.LastOplogAppliedTimestamp) {
-		toSerialize["lastOplogAppliedTimestamp"] = o.LastOplogAppliedTimestamp
-	}
-	return toSerialize, nil
 }

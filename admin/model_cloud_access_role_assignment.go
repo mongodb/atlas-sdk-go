@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // CloudAccessRoleAssignment MongoDB Cloud user's roles and the corresponding organization or project to which that role applies. Each role can apply to one organization or one project but not both.
 type CloudAccessRoleAssignment struct {
 	// Unique 24-hexadecimal digit string that identifies the project to which this role belongs. You can set a value for this parameter or **orgId** but not both in the same request.
@@ -130,26 +126,4 @@ func (o *CloudAccessRoleAssignment) HasRoleName() bool {
 // SetRoleName gets a reference to the given string and assigns it to the RoleName field.
 func (o *CloudAccessRoleAssignment) SetRoleName(v string) {
 	o.RoleName = &v
-}
-
-func (o *CloudAccessRoleAssignment) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *CloudAccessRoleAssignment) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.GroupId) {
-		toSerialize["groupId"] = o.GroupId
-	}
-	if !IsNil(o.OrgId) {
-		toSerialize["orgId"] = o.OrgId
-	}
-	if !IsNil(o.RoleName) {
-		toSerialize["roleName"] = o.RoleName
-	}
-	return toSerialize, nil
 }

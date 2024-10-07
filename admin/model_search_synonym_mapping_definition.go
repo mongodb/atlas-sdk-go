@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // SearchSynonymMappingDefinition Synonyms used for this full text index.
 type SearchSynonymMappingDefinition struct {
 	// Specific pre-defined method chosen to apply to the synonyms to be searched.
@@ -105,20 +101,4 @@ func (o *SearchSynonymMappingDefinition) GetSourceOk() (*SynonymSource, bool) {
 // SetSource sets field value
 func (o *SearchSynonymMappingDefinition) SetSource(v SynonymSource) {
 	o.Source = v
-}
-
-func (o *SearchSynonymMappingDefinition) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *SearchSynonymMappingDefinition) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["analyzer"] = o.Analyzer
-	toSerialize["name"] = o.Name
-	toSerialize["source"] = o.Source
-	return toSerialize, nil
 }

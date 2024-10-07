@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // LDAPVerifyConnectivityJobRequestValidation One test that MongoDB Cloud runs to test verification of the provided Lightweight Directory Access Protocol (LDAP) over Transport Layer Security (TLS) configuration details.
 type LDAPVerifyConnectivityJobRequestValidation struct {
 	// Human-readable string that indicates the result of this verification test.
@@ -97,17 +93,4 @@ func (o *LDAPVerifyConnectivityJobRequestValidation) HasValidationType() bool {
 // SetValidationType gets a reference to the given string and assigns it to the ValidationType field.
 func (o *LDAPVerifyConnectivityJobRequestValidation) SetValidationType(v string) {
 	o.ValidationType = &v
-}
-
-func (o *LDAPVerifyConnectivityJobRequestValidation) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *LDAPVerifyConnectivityJobRequestValidation) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

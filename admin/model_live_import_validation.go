@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // LiveImportValidation struct for LiveImportValidation
 type LiveImportValidation struct {
 	// Unique 24-hexadecimal digit string that identifies the validation.
@@ -204,20 +200,4 @@ func (o *LiveImportValidation) HasStatus() bool {
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *LiveImportValidation) SetStatus(v string) {
 	o.Status = &v
-}
-
-func (o *LiveImportValidation) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *LiveImportValidation) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.SourceGroupId) {
-		toSerialize["sourceGroupId"] = o.SourceGroupId
-	}
-	return toSerialize, nil
 }

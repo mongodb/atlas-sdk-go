@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // StreamsProcessor An atlas stream processor.
 type StreamsProcessor struct {
 	// Unique 24-hexadecimal character string that identifies the stream processor.
@@ -201,26 +197,4 @@ func (o *StreamsProcessor) HasPipeline() bool {
 // SetPipeline gets a reference to the given []interface{} and assigns it to the Pipeline field.
 func (o *StreamsProcessor) SetPipeline(v []interface{}) {
 	o.Pipeline = &v
-}
-
-func (o *StreamsProcessor) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *StreamsProcessor) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if !IsNil(o.Options) {
-		toSerialize["options"] = o.Options
-	}
-	if !IsNil(o.Pipeline) {
-		toSerialize["pipeline"] = o.Pipeline
-	}
-	return toSerialize, nil
 }

@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"encoding/json"
 	"time"
 )
 
@@ -239,26 +238,4 @@ func (o *PushBasedLogExportProject) HasState() bool {
 // SetState gets a reference to the given string and assigns it to the State field.
 func (o *PushBasedLogExportProject) SetState(v string) {
 	o.State = &v
-}
-
-func (o *PushBasedLogExportProject) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *PushBasedLogExportProject) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.BucketName) {
-		toSerialize["bucketName"] = o.BucketName
-	}
-	if !IsNil(o.IamRoleId) {
-		toSerialize["iamRoleId"] = o.IamRoleId
-	}
-	if !IsNil(o.PrefixPath) {
-		toSerialize["prefixPath"] = o.PrefixPath
-	}
-	return toSerialize, nil
 }

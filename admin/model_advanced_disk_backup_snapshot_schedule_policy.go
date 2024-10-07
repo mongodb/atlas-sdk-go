@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // AdvancedDiskBackupSnapshotSchedulePolicy List that contains a document for each backup policy item in the desired backup policy.
 type AdvancedDiskBackupSnapshotSchedulePolicy struct {
 	// Unique 24-hexadecimal digit string that identifies this backup policy.
@@ -95,23 +91,4 @@ func (o *AdvancedDiskBackupSnapshotSchedulePolicy) HasPolicyItems() bool {
 // SetPolicyItems gets a reference to the given []DiskBackupApiPolicyItem and assigns it to the PolicyItems field.
 func (o *AdvancedDiskBackupSnapshotSchedulePolicy) SetPolicyItems(v []DiskBackupApiPolicyItem) {
 	o.PolicyItems = &v
-}
-
-func (o *AdvancedDiskBackupSnapshotSchedulePolicy) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *AdvancedDiskBackupSnapshotSchedulePolicy) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !IsNil(o.PolicyItems) {
-		toSerialize["policyItems"] = o.PolicyItems
-	}
-	return toSerialize, nil
 }

@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // CloudProviderContainer Collection of settings that configures the network container for a virtual private connection on Amazon Web Services.
 type CloudProviderContainer struct {
 	// Unique 24-hexadecimal digit string that identifies the network peering container.
@@ -452,32 +448,4 @@ func (o *CloudProviderContainer) HasVpcId() bool {
 // SetVpcId gets a reference to the given string and assigns it to the VpcId field.
 func (o *CloudProviderContainer) SetVpcId(v string) {
 	o.VpcId = &v
-}
-
-func (o *CloudProviderContainer) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *CloudProviderContainer) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ProviderName) {
-		toSerialize["providerName"] = o.ProviderName
-	}
-	if !IsNil(o.AtlasCidrBlock) {
-		toSerialize["atlasCidrBlock"] = o.AtlasCidrBlock
-	}
-	if !IsNil(o.Region) {
-		toSerialize["region"] = o.Region
-	}
-	if !IsNil(o.Regions) {
-		toSerialize["regions"] = o.Regions
-	}
-	if !IsNil(o.RegionName) {
-		toSerialize["regionName"] = o.RegionName
-	}
-	return toSerialize, nil
 }

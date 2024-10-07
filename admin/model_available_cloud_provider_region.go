@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // AvailableCloudProviderRegion struct for AvailableCloudProviderRegion
 type AvailableCloudProviderRegion struct {
 	// Flag that indicates whether the cloud provider sets this region as its default. AWS defaults to US_EAST_1, GCP defaults to CENTRAL_US, and AZURE defaults to US_WEST_2.
@@ -97,17 +93,4 @@ func (o *AvailableCloudProviderRegion) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *AvailableCloudProviderRegion) SetName(v string) {
 	o.Name = &v
-}
-
-func (o *AvailableCloudProviderRegion) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *AvailableCloudProviderRegion) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // AuthFederationRoleMapping Mapping settings that link one IdP and MongoDB Cloud.
 type AuthFederationRoleMapping struct {
 	// Unique human-readable label that identifies the identity provider group to which this role mapping applies.
@@ -123,21 +119,4 @@ func (o *AuthFederationRoleMapping) HasRoleAssignments() bool {
 // SetRoleAssignments gets a reference to the given []RoleAssignment and assigns it to the RoleAssignments field.
 func (o *AuthFederationRoleMapping) SetRoleAssignments(v []RoleAssignment) {
 	o.RoleAssignments = &v
-}
-
-func (o *AuthFederationRoleMapping) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *AuthFederationRoleMapping) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["externalGroupName"] = o.ExternalGroupName
-	if !IsNil(o.RoleAssignments) {
-		toSerialize["roleAssignments"] = o.RoleAssignments
-	}
-	return toSerialize, nil
 }

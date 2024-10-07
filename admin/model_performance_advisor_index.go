@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // PerformanceAdvisorIndex struct for PerformanceAdvisorIndex
 type PerformanceAdvisorIndex struct {
 	// The average size of an object in the collection of this index.
@@ -241,17 +237,4 @@ func (o *PerformanceAdvisorIndex) HasWeight() bool {
 // SetWeight gets a reference to the given float64 and assigns it to the Weight field.
 func (o *PerformanceAdvisorIndex) SetWeight(v float64) {
 	o.Weight = &v
-}
-
-func (o *PerformanceAdvisorIndex) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *PerformanceAdvisorIndex) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

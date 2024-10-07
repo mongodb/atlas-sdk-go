@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // UserAccessRoleAssignment struct for UserAccessRoleAssignment
 type UserAccessRoleAssignment struct {
 	// List of roles to grant this API key. If you provide this list, provide a minimum of one role and ensure each role applies to this project.
@@ -96,20 +92,4 @@ func (o *UserAccessRoleAssignment) HasUserId() bool {
 // SetUserId gets a reference to the given string and assigns it to the UserId field.
 func (o *UserAccessRoleAssignment) SetUserId(v string) {
 	o.UserId = &v
-}
-
-func (o *UserAccessRoleAssignment) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *UserAccessRoleAssignment) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Roles) {
-		toSerialize["roles"] = o.Roles
-	}
-	return toSerialize, nil
 }

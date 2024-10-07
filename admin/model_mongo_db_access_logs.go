@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // MongoDBAccessLogs Authentication attempt, one per object, made against the cluster.
 type MongoDBAccessLogs struct {
 	// Flag that indicates whether the response should return successful authentication attempts only.
@@ -348,20 +344,4 @@ func (o *MongoDBAccessLogs) HasUsername() bool {
 // SetUsername gets a reference to the given string and assigns it to the Username field.
 func (o *MongoDBAccessLogs) SetUsername(v string) {
 	o.Username = &v
-}
-
-func (o *MongoDBAccessLogs) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *MongoDBAccessLogs) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.AuthResult) {
-		toSerialize["authResult"] = o.AuthResult
-	}
-	return toSerialize, nil
 }

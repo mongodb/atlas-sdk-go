@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // PrivateIPMode struct for PrivateIPMode
 type PrivateIPMode struct {
 	// Flag that indicates whether someone enabled **Connect via Peering Only** mode for the specified project.
@@ -52,18 +48,4 @@ func (o *PrivateIPMode) GetEnabledOk() (*bool, bool) {
 // SetEnabled sets field value
 func (o *PrivateIPMode) SetEnabled(v bool) {
 	o.Enabled = v
-}
-
-func (o *PrivateIPMode) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *PrivateIPMode) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["enabled"] = o.Enabled
-	return toSerialize, nil
 }

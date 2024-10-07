@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ClusterConnectionStrings Collection of Uniform Resource Locators that point to the MongoDB database.
 type ClusterConnectionStrings struct {
 	// Private endpoint-aware connection strings that use AWS-hosted clusters with Amazon Web Services (AWS) PrivateLink. Each key identifies an Amazon Web Services (AWS) interface endpoint. Each value identifies the related `mongodb://` connection string that you use to connect to MongoDB Cloud through the interface endpoint that the key names.
@@ -277,17 +273,4 @@ func (o *ClusterConnectionStrings) HasStandardSrv() bool {
 // SetStandardSrv gets a reference to the given string and assigns it to the StandardSrv field.
 func (o *ClusterConnectionStrings) SetStandardSrv(v string) {
 	o.StandardSrv = &v
-}
-
-func (o *ClusterConnectionStrings) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ClusterConnectionStrings) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

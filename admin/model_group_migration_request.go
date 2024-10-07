@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // GroupMigrationRequest struct for GroupMigrationRequest
 type GroupMigrationRequest struct {
 	// Unique 24-hexadecimal digit string that identifies the organization to move the specified project to.
@@ -130,26 +126,4 @@ func (o *GroupMigrationRequest) HasDestinationOrgPublicApiKey() bool {
 // SetDestinationOrgPublicApiKey gets a reference to the given string and assigns it to the DestinationOrgPublicApiKey field.
 func (o *GroupMigrationRequest) SetDestinationOrgPublicApiKey(v string) {
 	o.DestinationOrgPublicApiKey = &v
-}
-
-func (o *GroupMigrationRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *GroupMigrationRequest) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.DestinationOrgId) {
-		toSerialize["destinationOrgId"] = o.DestinationOrgId
-	}
-	if !IsNil(o.DestinationOrgPrivateApiKey) {
-		toSerialize["destinationOrgPrivateApiKey"] = o.DestinationOrgPrivateApiKey
-	}
-	if !IsNil(o.DestinationOrgPublicApiKey) {
-		toSerialize["destinationOrgPublicApiKey"] = o.DestinationOrgPublicApiKey
-	}
-	return toSerialize, nil
 }

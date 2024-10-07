@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // StreamsKafkaSecurity Properties for the secure transport connection to Kafka. For SSL, this can include the trusted certificate to use.
 type StreamsKafkaSecurity struct {
 	// A trusted, public x509 certificate for connecting to Kafka over SSL.
@@ -131,23 +127,4 @@ func (o *StreamsKafkaSecurity) HasProtocol() bool {
 // SetProtocol gets a reference to the given string and assigns it to the Protocol field.
 func (o *StreamsKafkaSecurity) SetProtocol(v string) {
 	o.Protocol = &v
-}
-
-func (o *StreamsKafkaSecurity) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *StreamsKafkaSecurity) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.BrokerPublicCertificate) {
-		toSerialize["brokerPublicCertificate"] = o.BrokerPublicCertificate
-	}
-	if !IsNil(o.Protocol) {
-		toSerialize["protocol"] = o.Protocol
-	}
-	return toSerialize, nil
 }

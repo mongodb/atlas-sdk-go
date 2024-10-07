@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // CostExplorerFilterRequestBody Request body for a cost explorer query.
 type CostExplorerFilterRequestBody struct {
 	// The list of projects to be included in the Cost Explorer Query.
@@ -289,37 +285,4 @@ func (o *CostExplorerFilterRequestBody) GetStartDateOk() (*string, bool) {
 // SetStartDate sets field value
 func (o *CostExplorerFilterRequestBody) SetStartDate(v string) {
 	o.StartDate = v
-}
-
-func (o *CostExplorerFilterRequestBody) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *CostExplorerFilterRequestBody) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Clusters) {
-		toSerialize["clusters"] = o.Clusters
-	}
-	toSerialize["endDate"] = o.EndDate
-	if !IsNil(o.GroupBy) {
-		toSerialize["groupBy"] = o.GroupBy
-	}
-	if !IsNil(o.IncludePartialMatches) {
-		toSerialize["includePartialMatches"] = o.IncludePartialMatches
-	}
-	if !IsNil(o.Organizations) {
-		toSerialize["organizations"] = o.Organizations
-	}
-	if !IsNil(o.Projects) {
-		toSerialize["projects"] = o.Projects
-	}
-	if !IsNil(o.Services) {
-		toSerialize["services"] = o.Services
-	}
-	toSerialize["startDate"] = o.StartDate
-	return toSerialize, nil
 }

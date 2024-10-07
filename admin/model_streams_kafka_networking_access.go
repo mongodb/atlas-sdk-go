@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // StreamsKafkaNetworkingAccess Information about the networking access.
 type StreamsKafkaNetworkingAccess struct {
 	// Reserved. Will be used by PRIVATE_LINK connection type.
@@ -166,26 +162,4 @@ func (o *StreamsKafkaNetworkingAccess) HasType() bool {
 // SetType gets a reference to the given string and assigns it to the Type field.
 func (o *StreamsKafkaNetworkingAccess) SetType(v string) {
 	o.Type = &v
-}
-
-func (o *StreamsKafkaNetworkingAccess) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *StreamsKafkaNetworkingAccess) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ConnectionId) {
-		toSerialize["connectionId"] = o.ConnectionId
-	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
-	}
-	return toSerialize, nil
 }

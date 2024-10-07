@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // GroupIPAddresses List of IP addresses in a project.
 type GroupIPAddresses struct {
 	// Unique 24-hexadecimal digit string that identifies the MongoDB Cloud project.
@@ -95,20 +91,4 @@ func (o *GroupIPAddresses) HasServices() bool {
 // SetServices gets a reference to the given GroupService and assigns it to the Services field.
 func (o *GroupIPAddresses) SetServices(v GroupService) {
 	o.Services = &v
-}
-
-func (o *GroupIPAddresses) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *GroupIPAddresses) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Services) {
-		toSerialize["services"] = o.Services
-	}
-	return toSerialize, nil
 }

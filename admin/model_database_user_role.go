@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // DatabaseUserRole Range of resources available to this database user.
 type DatabaseUserRole struct {
 	// Collection on which this role applies.
@@ -114,22 +110,4 @@ func (o *DatabaseUserRole) GetRoleNameOk() (*string, bool) {
 // SetRoleName sets field value
 func (o *DatabaseUserRole) SetRoleName(v string) {
 	o.RoleName = v
-}
-
-func (o *DatabaseUserRole) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *DatabaseUserRole) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.CollectionName) {
-		toSerialize["collectionName"] = o.CollectionName
-	}
-	toSerialize["databaseName"] = o.DatabaseName
-	toSerialize["roleName"] = o.RoleName
-	return toSerialize, nil
 }

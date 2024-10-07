@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // AlertsNotificationRootForGroup One target that MongoDB Cloud sends notifications when an alert triggers.
 type AlertsNotificationRootForGroup struct {
 	// Datadog API Key that MongoDB Cloud needs to send alert notifications to Datadog. You can find this API key in the Datadog dashboard. The resource requires this parameter when `\"notifications.[n].typeName\" : \"DATADOG\"`.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API.
@@ -1017,101 +1013,4 @@ func (o *AlertsNotificationRootForGroup) HasWebhookUrl() bool {
 // SetWebhookUrl gets a reference to the given string and assigns it to the WebhookUrl field.
 func (o *AlertsNotificationRootForGroup) SetWebhookUrl(v string) {
 	o.WebhookUrl = &v
-}
-
-func (o *AlertsNotificationRootForGroup) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *AlertsNotificationRootForGroup) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.DatadogApiKey) {
-		toSerialize["datadogApiKey"] = o.DatadogApiKey
-	}
-	if !IsNil(o.DatadogRegion) {
-		toSerialize["datadogRegion"] = o.DatadogRegion
-	}
-	if !IsNil(o.DelayMin) {
-		toSerialize["delayMin"] = o.DelayMin
-	}
-	if !IsNil(o.IntegrationId) {
-		toSerialize["integrationId"] = o.IntegrationId
-	}
-	if !IsNil(o.IntervalMin) {
-		toSerialize["intervalMin"] = o.IntervalMin
-	}
-	if !IsNil(o.NotifierId) {
-		toSerialize["notifierId"] = o.NotifierId
-	}
-	if !IsNil(o.TypeName) {
-		toSerialize["typeName"] = o.TypeName
-	}
-	if !IsNil(o.EmailAddress) {
-		toSerialize["emailAddress"] = o.EmailAddress
-	}
-	if !IsNil(o.EmailEnabled) {
-		toSerialize["emailEnabled"] = o.EmailEnabled
-	}
-	if !IsNil(o.Roles) {
-		toSerialize["roles"] = o.Roles
-	}
-	if !IsNil(o.SmsEnabled) {
-		toSerialize["smsEnabled"] = o.SmsEnabled
-	}
-	if !IsNil(o.NotificationToken) {
-		toSerialize["notificationToken"] = o.NotificationToken
-	}
-	if !IsNil(o.RoomName) {
-		toSerialize["roomName"] = o.RoomName
-	}
-	if !IsNil(o.MicrosoftTeamsWebhookUrl) {
-		toSerialize["microsoftTeamsWebhookUrl"] = o.MicrosoftTeamsWebhookUrl
-	}
-	if !IsNil(o.OpsGenieApiKey) {
-		toSerialize["opsGenieApiKey"] = o.OpsGenieApiKey
-	}
-	if !IsNil(o.OpsGenieRegion) {
-		toSerialize["opsGenieRegion"] = o.OpsGenieRegion
-	}
-	if !IsNil(o.Region) {
-		toSerialize["region"] = o.Region
-	}
-	if !IsNil(o.ServiceKey) {
-		toSerialize["serviceKey"] = o.ServiceKey
-	}
-	if !IsNil(o.ApiToken) {
-		toSerialize["apiToken"] = o.ApiToken
-	}
-	if !IsNil(o.ChannelName) {
-		toSerialize["channelName"] = o.ChannelName
-	}
-	if !IsNil(o.MobileNumber) {
-		toSerialize["mobileNumber"] = o.MobileNumber
-	}
-	if !IsNil(o.TeamId) {
-		toSerialize["teamId"] = o.TeamId
-	}
-	if !IsNil(o.TeamName) {
-		toSerialize["teamName"] = o.TeamName
-	}
-	if !IsNil(o.Username) {
-		toSerialize["username"] = o.Username
-	}
-	if !IsNil(o.VictorOpsApiKey) {
-		toSerialize["victorOpsApiKey"] = o.VictorOpsApiKey
-	}
-	if !IsNil(o.VictorOpsRoutingKey) {
-		toSerialize["victorOpsRoutingKey"] = o.VictorOpsRoutingKey
-	}
-	if !IsNil(o.WebhookSecret) {
-		toSerialize["webhookSecret"] = o.WebhookSecret
-	}
-	if !IsNil(o.WebhookUrl) {
-		toSerialize["webhookUrl"] = o.WebhookUrl
-	}
-	return toSerialize, nil
 }

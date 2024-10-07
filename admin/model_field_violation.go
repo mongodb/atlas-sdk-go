@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // FieldViolation struct for FieldViolation
 type FieldViolation struct {
 	// A description of why the request element is bad.
@@ -95,23 +91,4 @@ func (o *FieldViolation) HasField() bool {
 // SetField gets a reference to the given string and assigns it to the Field field.
 func (o *FieldViolation) SetField(v string) {
 	o.Field = &v
-}
-
-func (o *FieldViolation) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *FieldViolation) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
-	if !IsNil(o.Field) {
-		toSerialize["field"] = o.Field
-	}
-	return toSerialize, nil
 }

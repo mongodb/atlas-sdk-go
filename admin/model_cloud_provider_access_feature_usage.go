@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // CloudProviderAccessFeatureUsage MongoDB Cloud features associated with this Amazon Web Services (AWS) Identity and Access Management (IAM) role.
 type CloudProviderAccessFeatureUsage struct {
 	// Human-readable label that describes one MongoDB Cloud feature linked to this Amazon Web Services (AWS) Identity and Access Management (IAM) role.
@@ -95,20 +91,4 @@ func (o *CloudProviderAccessFeatureUsage) HasFeatureId() bool {
 // SetFeatureId gets a reference to the given CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId and assigns it to the FeatureId field.
 func (o *CloudProviderAccessFeatureUsage) SetFeatureId(v CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId) {
 	o.FeatureId = &v
-}
-
-func (o *CloudProviderAccessFeatureUsage) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *CloudProviderAccessFeatureUsage) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.FeatureId) {
-		toSerialize["featureId"] = o.FeatureId
-	}
-	return toSerialize, nil
 }

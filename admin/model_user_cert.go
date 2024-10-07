@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"encoding/json"
 	"time"
 )
 
@@ -282,20 +281,4 @@ func (o *UserCert) HasSubject() bool {
 // SetSubject gets a reference to the given string and assigns it to the Subject field.
 func (o *UserCert) SetSubject(v string) {
 	o.Subject = &v
-}
-
-func (o *UserCert) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *UserCert) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.MonthsUntilExpiration) {
-		toSerialize["monthsUntilExpiration"] = o.MonthsUntilExpiration
-	}
-	return toSerialize, nil
 }

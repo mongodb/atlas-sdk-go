@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // EncryptionAtRest struct for EncryptionAtRest
 type EncryptionAtRest struct {
 	AwsKms         *AWSKMSConfiguration `json:"awsKms,omitempty"`
@@ -127,26 +123,4 @@ func (o *EncryptionAtRest) HasGoogleCloudKms() bool {
 // SetGoogleCloudKms gets a reference to the given GoogleCloudKMS and assigns it to the GoogleCloudKms field.
 func (o *EncryptionAtRest) SetGoogleCloudKms(v GoogleCloudKMS) {
 	o.GoogleCloudKms = &v
-}
-
-func (o *EncryptionAtRest) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *EncryptionAtRest) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.AwsKms) {
-		toSerialize["awsKms"] = o.AwsKms
-	}
-	if !IsNil(o.AzureKeyVault) {
-		toSerialize["azureKeyVault"] = o.AzureKeyVault
-	}
-	if !IsNil(o.GoogleCloudKms) {
-		toSerialize["googleCloudKms"] = o.GoogleCloudKms
-	}
-	return toSerialize, nil
 }

@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"encoding/json"
 	"time"
 )
 
@@ -241,20 +240,4 @@ func (o *ClusterOutageSimulation) HasState() bool {
 // SetState gets a reference to the given string and assigns it to the State field.
 func (o *ClusterOutageSimulation) SetState(v string) {
 	o.State = &v
-}
-
-func (o *ClusterOutageSimulation) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ClusterOutageSimulation) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.OutageFilters) {
-		toSerialize["outageFilters"] = o.OutageFilters
-	}
-	return toSerialize, nil
 }

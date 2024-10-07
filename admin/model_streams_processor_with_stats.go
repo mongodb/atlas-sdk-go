@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // StreamsProcessorWithStats An atlas stream processor with optional stats.
 type StreamsProcessorWithStats struct {
 	// Unique 24-hexadecimal character string that identifies the stream processor.
@@ -244,20 +240,4 @@ func (o *StreamsProcessorWithStats) HasStats() bool {
 // SetStats gets a reference to the given interface{} and assigns it to the Stats field.
 func (o *StreamsProcessorWithStats) SetStats(v interface{}) {
 	o.Stats = v
-}
-
-func (o *StreamsProcessorWithStats) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *StreamsProcessorWithStats) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Options) {
-		toSerialize["options"] = o.Options
-	}
-	return toSerialize, nil
 }

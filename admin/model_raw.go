@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"encoding/json"
 	"time"
 )
 
@@ -381,32 +380,4 @@ func (o *Raw) HasSeverity() bool {
 // SetSeverity gets a reference to the given string and assigns it to the Severity field.
 func (o *Raw) SetSeverity(v string) {
 	o.Severity = &v
-}
-
-func (o *Raw) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *Raw) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.T) {
-		toSerialize["_t"] = o.T
-	}
-	if !IsNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
-	if !IsNil(o.Gn) {
-		toSerialize["gn"] = o.Gn
-	}
-	if !IsNil(o.OrgName) {
-		toSerialize["orgName"] = o.OrgName
-	}
-	if !IsNil(o.Severity) {
-		toSerialize["severity"] = o.Severity
-	}
-	return toSerialize, nil
 }

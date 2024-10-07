@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"encoding/json"
 	"time"
 )
 
@@ -116,19 +115,4 @@ func (o *EmployeeAccessGrant) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *EmployeeAccessGrant) SetLinks(v []Link) {
 	o.Links = &v
-}
-
-func (o *EmployeeAccessGrant) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *EmployeeAccessGrant) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["expirationTime"] = o.ExpirationTime
-	toSerialize["grantType"] = o.GrantType
-	return toSerialize, nil
 }

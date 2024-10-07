@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // DataLakeDatabaseInstance Database associated with this data lake. Databases contain collections and views.
 type DataLakeDatabaseInstance struct {
 	// Array of collections and data sources that map to a ``stores`` data store.
@@ -169,29 +165,4 @@ func (o *DataLakeDatabaseInstance) HasViews() bool {
 // SetViews gets a reference to the given []DataLakeApiBase and assigns it to the Views field.
 func (o *DataLakeDatabaseInstance) SetViews(v []DataLakeApiBase) {
 	o.Views = &v
-}
-
-func (o *DataLakeDatabaseInstance) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *DataLakeDatabaseInstance) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Collections) {
-		toSerialize["collections"] = o.Collections
-	}
-	if !IsNil(o.MaxWildcardCollections) {
-		toSerialize["maxWildcardCollections"] = o.MaxWildcardCollections
-	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if !IsNil(o.Views) {
-		toSerialize["views"] = o.Views
-	}
-	return toSerialize, nil
 }

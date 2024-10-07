@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // StreamsSampleConnections Sample connections to add to SPI.
 type StreamsSampleConnections struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
@@ -100,20 +96,4 @@ func (o *StreamsSampleConnections) HasSolar() bool {
 // SetSolar gets a reference to the given bool and assigns it to the Solar field.
 func (o *StreamsSampleConnections) SetSolar(v bool) {
 	o.Solar = &v
-}
-
-func (o *StreamsSampleConnections) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *StreamsSampleConnections) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Solar) {
-		toSerialize["solar"] = o.Solar
-	}
-	return toSerialize, nil
 }

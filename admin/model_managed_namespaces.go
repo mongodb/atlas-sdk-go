@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ManagedNamespaces struct for ManagedNamespaces
 type ManagedNamespaces struct {
 	// Human-readable label of the collection to manage for this Global Cluster.
@@ -263,31 +259,4 @@ func (o *ManagedNamespaces) HasPresplitHashedZones() bool {
 // SetPresplitHashedZones gets a reference to the given bool and assigns it to the PresplitHashedZones field.
 func (o *ManagedNamespaces) SetPresplitHashedZones(v bool) {
 	o.PresplitHashedZones = &v
-}
-
-func (o *ManagedNamespaces) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ManagedNamespaces) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["collection"] = o.Collection
-	toSerialize["db"] = o.Db
-	if !IsNil(o.IsCustomShardKeyHashed) {
-		toSerialize["isCustomShardKeyHashed"] = o.IsCustomShardKeyHashed
-	}
-	if !IsNil(o.IsShardKeyUnique) {
-		toSerialize["isShardKeyUnique"] = o.IsShardKeyUnique
-	}
-	if !IsNil(o.NumInitialChunks) {
-		toSerialize["numInitialChunks"] = o.NumInitialChunks
-	}
-	if !IsNil(o.PresplitHashedZones) {
-		toSerialize["presplitHashedZones"] = o.PresplitHashedZones
-	}
-	return toSerialize, nil
 }

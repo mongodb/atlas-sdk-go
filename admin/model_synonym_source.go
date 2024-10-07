@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // SynonymSource Data set that stores words and their applicable synonyms.
 type SynonymSource struct {
 	// Label that identifies the MongoDB collection that stores words and their applicable synonyms.
@@ -52,18 +48,4 @@ func (o *SynonymSource) GetCollectionOk() (*string, bool) {
 // SetCollection sets field value
 func (o *SynonymSource) SetCollection(v string) {
 	o.Collection = v
-}
-
-func (o *SynonymSource) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *SynonymSource) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["collection"] = o.Collection
-	return toSerialize, nil
 }

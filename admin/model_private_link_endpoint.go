@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // PrivateLinkEndpoint struct for PrivateLinkEndpoint
 type PrivateLinkEndpoint struct {
 	// Cloud service provider that serves the requested endpoint.
@@ -412,20 +408,4 @@ func (o *PrivateLinkEndpoint) HasEndpoints() bool {
 // SetEndpoints gets a reference to the given []GCPConsumerForwardingRule and assigns it to the Endpoints field.
 func (o *PrivateLinkEndpoint) SetEndpoints(v []GCPConsumerForwardingRule) {
 	o.Endpoints = &v
-}
-
-func (o *PrivateLinkEndpoint) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *PrivateLinkEndpoint) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.PrivateEndpointIPAddress) {
-		toSerialize["privateEndpointIPAddress"] = o.PrivateEndpointIPAddress
-	}
-	return toSerialize, nil
 }

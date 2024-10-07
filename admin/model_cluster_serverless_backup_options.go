@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ClusterServerlessBackupOptions Group of settings that configure serverless backup.
 type ClusterServerlessBackupOptions struct {
 	// Flag that indicates whether the serverless instance uses **Serverless Continuous Backup**.  If this parameter is `false`, the serverless instance uses **Basic Backup**.   | Option | Description |  |---|---|  | Serverless Continuous Backup | Atlas takes incremental [snapshots](https://www.mongodb.com/docs/atlas/backup/cloud-backup/overview/#std-label-serverless-snapshots) of the data in your serverless instance every six hours and lets you restore the data from a selected point in time within the last 72 hours. Atlas also takes daily snapshots and retains these daily snapshots for 35 days. To learn more, see [Serverless Instance Costs](https://www.mongodb.com/docs/atlas/billing/serverless-instance-costs/#std-label-serverless-instance-costs). |  | Basic Backup | Atlas takes incremental [snapshots](https://www.mongodb.com/docs/atlas/backup/cloud-backup/overview/#std-label-serverless-snapshots) of the data in your serverless instance every six hours and retains only the two most recent snapshots. You can use this option for free. |
@@ -64,20 +60,4 @@ func (o *ClusterServerlessBackupOptions) HasServerlessContinuousBackupEnabled() 
 // SetServerlessContinuousBackupEnabled gets a reference to the given bool and assigns it to the ServerlessContinuousBackupEnabled field.
 func (o *ClusterServerlessBackupOptions) SetServerlessContinuousBackupEnabled(v bool) {
 	o.ServerlessContinuousBackupEnabled = &v
-}
-
-func (o *ClusterServerlessBackupOptions) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ClusterServerlessBackupOptions) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ServerlessContinuousBackupEnabled) {
-		toSerialize["serverlessContinuousBackupEnabled"] = o.ServerlessContinuousBackupEnabled
-	}
-	return toSerialize, nil
 }

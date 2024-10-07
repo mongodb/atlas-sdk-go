@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // PerformanceAdvisorSlowQuery Details of one slow query that the Performance Advisor detected.
 type PerformanceAdvisorSlowQuery struct {
 	// Text of the MongoDB log related to this slow query.
@@ -97,17 +93,4 @@ func (o *PerformanceAdvisorSlowQuery) HasNamespace() bool {
 // SetNamespace gets a reference to the given string and assigns it to the Namespace field.
 func (o *PerformanceAdvisorSlowQuery) SetNamespace(v string) {
 	o.Namespace = &v
-}
-
-func (o *PerformanceAdvisorSlowQuery) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *PerformanceAdvisorSlowQuery) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

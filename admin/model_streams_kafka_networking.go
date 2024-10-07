@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // StreamsKafkaNetworking Networking Access Type can either be 'PUBLIC' (default) or VPC. VPC type is in public preview, please file a support ticket to enable VPC Network Access
 type StreamsKafkaNetworking struct {
 	Access *StreamsKafkaNetworkingAccess `json:"access,omitempty"`
@@ -95,20 +91,4 @@ func (o *StreamsKafkaNetworking) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *StreamsKafkaNetworking) SetLinks(v []Link) {
 	o.Links = &v
-}
-
-func (o *StreamsKafkaNetworking) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *StreamsKafkaNetworking) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Access) {
-		toSerialize["access"] = o.Access
-	}
-	return toSerialize, nil
 }

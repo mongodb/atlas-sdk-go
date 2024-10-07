@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // TriggerIngestionPipelineRequest struct for TriggerIngestionPipelineRequest
 type TriggerIngestionPipelineRequest struct {
 	DatasetRetentionPolicy *DatasetRetentionPolicy `json:"datasetRetentionPolicy,omitempty"`
@@ -87,21 +83,4 @@ func (o *TriggerIngestionPipelineRequest) GetSnapshotIdOk() (*string, bool) {
 // SetSnapshotId sets field value
 func (o *TriggerIngestionPipelineRequest) SetSnapshotId(v string) {
 	o.SnapshotId = v
-}
-
-func (o *TriggerIngestionPipelineRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *TriggerIngestionPipelineRequest) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.DatasetRetentionPolicy) {
-		toSerialize["datasetRetentionPolicy"] = o.DatasetRetentionPolicy
-	}
-	toSerialize["snapshotId"] = o.SnapshotId
-	return toSerialize, nil
 }

@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"encoding/json"
 	"time"
 )
 
@@ -314,17 +313,4 @@ func (o *BackupTenantSnapshot) HasStatus() bool {
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *BackupTenantSnapshot) SetStatus(v string) {
 	o.Status = &v
-}
-
-func (o *BackupTenantSnapshot) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *BackupTenantSnapshot) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

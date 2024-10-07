@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // PerformanceAdvisorOpStats Details that this resource returned about the specified query.
 type PerformanceAdvisorOpStats struct {
 	// Length of time expressed during which the query finds suggested indexes among the managed namespaces in the cluster. This parameter expresses its value in milliseconds. This parameter relates to the **duration** query parameter.
@@ -169,17 +165,4 @@ func (o *PerformanceAdvisorOpStats) HasTs() bool {
 // SetTs gets a reference to the given int64 and assigns it to the Ts field.
 func (o *PerformanceAdvisorOpStats) SetTs(v int64) {
 	o.Ts = &v
-}
-
-func (o *PerformanceAdvisorOpStats) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *PerformanceAdvisorOpStats) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

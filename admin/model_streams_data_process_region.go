@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // StreamsDataProcessRegion Information about the cloud provider region in which MongoDB Cloud processes the stream.
 type StreamsDataProcessRegion struct {
 	// Label that identifies the cloud service provider where MongoDB Cloud performs stream processing. Currently, this parameter supports AWS only.
@@ -115,19 +111,4 @@ func (o *StreamsDataProcessRegion) GetRegionOk() (*string, bool) {
 // SetRegion sets field value
 func (o *StreamsDataProcessRegion) SetRegion(v string) {
 	o.Region = v
-}
-
-func (o *StreamsDataProcessRegion) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *StreamsDataProcessRegion) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["cloudProvider"] = o.CloudProvider
-	toSerialize["region"] = o.Region
-	return toSerialize, nil
 }

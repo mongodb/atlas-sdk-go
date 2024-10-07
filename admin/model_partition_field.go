@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // PartitionField Metadata to partition this online archive.
 type PartitionField struct {
 	// Human-readable label that identifies the parameter that MongoDB Cloud uses to partition data. To specify a nested parameter, use the dot notation.
@@ -117,19 +113,4 @@ func (o *PartitionField) GetOrderOk() (*int, bool) {
 // SetOrder sets field value
 func (o *PartitionField) SetOrder(v int) {
 	o.Order = v
-}
-
-func (o *PartitionField) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *PartitionField) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["fieldName"] = o.FieldName
-	toSerialize["order"] = o.Order
-	return toSerialize, nil
 }

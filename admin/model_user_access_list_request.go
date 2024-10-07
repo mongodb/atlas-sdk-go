@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // UserAccessListRequest struct for UserAccessListRequest
 type UserAccessListRequest struct {
 	// Range of network addresses that you want to add to the access list for the API key. This parameter requires the range to be expressed in classless inter-domain routing (CIDR) notation of Internet Protocol version 4 or version 6 addresses. You can set a value for this parameter or **ipAddress** but not both in the same request.
@@ -95,23 +91,4 @@ func (o *UserAccessListRequest) HasIpAddress() bool {
 // SetIpAddress gets a reference to the given string and assigns it to the IpAddress field.
 func (o *UserAccessListRequest) SetIpAddress(v string) {
 	o.IpAddress = &v
-}
-
-func (o *UserAccessListRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *UserAccessListRequest) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.CidrBlock) {
-		toSerialize["cidrBlock"] = o.CidrBlock
-	}
-	if !IsNil(o.IpAddress) {
-		toSerialize["ipAddress"] = o.IpAddress
-	}
-	return toSerialize, nil
 }

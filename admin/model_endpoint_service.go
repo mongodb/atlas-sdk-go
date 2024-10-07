@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // EndpointService struct for EndpointService
 type EndpointService struct {
 	// Cloud service provider that serves the requested endpoint service.
@@ -447,23 +443,4 @@ func (o *EndpointService) HasServiceAttachmentNames() bool {
 // SetServiceAttachmentNames gets a reference to the given []string and assigns it to the ServiceAttachmentNames field.
 func (o *EndpointService) SetServiceAttachmentNames(v []string) {
 	o.ServiceAttachmentNames = &v
-}
-
-func (o *EndpointService) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *EndpointService) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.EndpointGroupNames) {
-		toSerialize["endpointGroupNames"] = o.EndpointGroupNames
-	}
-	if !IsNil(o.ServiceAttachmentNames) {
-		toSerialize["serviceAttachmentNames"] = o.ServiceAttachmentNames
-	}
-	return toSerialize, nil
 }

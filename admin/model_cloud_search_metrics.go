@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // CloudSearchMetrics struct for CloudSearchMetrics
 type CloudSearchMetrics struct {
 	// Unique 24-hexadecimal digit string that identifies the project.
@@ -225,17 +221,4 @@ func (o *CloudSearchMetrics) HasStatusMetrics() bool {
 // SetStatusMetrics gets a reference to the given []FTSMetric and assigns it to the StatusMetrics field.
 func (o *CloudSearchMetrics) SetStatusMetrics(v []FTSMetric) {
 	o.StatusMetrics = &v
-}
-
-func (o *CloudSearchMetrics) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *CloudSearchMetrics) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

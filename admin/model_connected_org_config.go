@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ConnectedOrgConfig struct for ConnectedOrgConfig
 type ConnectedOrgConfig struct {
 	// The collection of unique ids representing the identity providers that can be used for data access in this organization.
@@ -290,36 +286,4 @@ func (o *ConnectedOrgConfig) HasUserConflicts() bool {
 // SetUserConflicts gets a reference to the given []FederatedUser and assigns it to the UserConflicts field.
 func (o *ConnectedOrgConfig) SetUserConflicts(v []FederatedUser) {
 	o.UserConflicts = &v
-}
-
-func (o *ConnectedOrgConfig) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ConnectedOrgConfig) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.DataAccessIdentityProviderIds) {
-		toSerialize["dataAccessIdentityProviderIds"] = o.DataAccessIdentityProviderIds
-	}
-	if !IsNil(o.DomainAllowList) {
-		toSerialize["domainAllowList"] = o.DomainAllowList
-	}
-	toSerialize["domainRestrictionEnabled"] = o.DomainRestrictionEnabled
-	if !IsNil(o.IdentityProviderId) {
-		toSerialize["identityProviderId"] = o.IdentityProviderId
-	}
-	if !IsNil(o.PostAuthRoleGrants) {
-		toSerialize["postAuthRoleGrants"] = o.PostAuthRoleGrants
-	}
-	if !IsNil(o.RoleMappings) {
-		toSerialize["roleMappings"] = o.RoleMappings
-	}
-	if !IsNil(o.UserConflicts) {
-		toSerialize["userConflicts"] = o.UserConflicts
-	}
-	return toSerialize, nil
 }

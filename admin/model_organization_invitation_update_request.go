@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // OrganizationInvitationUpdateRequest struct for OrganizationInvitationUpdateRequest
 type OrganizationInvitationUpdateRequest struct {
 	// List of projects that the user will be added to when they accept their invitation to the organization.
@@ -130,26 +126,4 @@ func (o *OrganizationInvitationUpdateRequest) HasTeamIds() bool {
 // SetTeamIds gets a reference to the given []string and assigns it to the TeamIds field.
 func (o *OrganizationInvitationUpdateRequest) SetTeamIds(v []string) {
 	o.TeamIds = &v
-}
-
-func (o *OrganizationInvitationUpdateRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *OrganizationInvitationUpdateRequest) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.GroupRoleAssignments) {
-		toSerialize["groupRoleAssignments"] = o.GroupRoleAssignments
-	}
-	if !IsNil(o.Roles) {
-		toSerialize["roles"] = o.Roles
-	}
-	if !IsNil(o.TeamIds) {
-		toSerialize["teamIds"] = o.TeamIds
-	}
-	return toSerialize, nil
 }

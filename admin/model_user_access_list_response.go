@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"encoding/json"
 	"time"
 )
 
@@ -276,23 +275,4 @@ func (o *UserAccessListResponse) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *UserAccessListResponse) SetLinks(v []Link) {
 	o.Links = &v
-}
-
-func (o *UserAccessListResponse) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *UserAccessListResponse) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.CidrBlock) {
-		toSerialize["cidrBlock"] = o.CidrBlock
-	}
-	if !IsNil(o.IpAddress) {
-		toSerialize["ipAddress"] = o.IpAddress
-	}
-	return toSerialize, nil
 }

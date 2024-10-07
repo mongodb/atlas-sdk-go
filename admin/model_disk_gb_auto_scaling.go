@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // DiskGBAutoScaling Setting that enables disk auto-scaling.
 type DiskGBAutoScaling struct {
 	// Flag that indicates whether this cluster enables disk auto-scaling. The maximum memory allowed for the selected cluster tier and the oplog size can limit storage auto-scaling.
@@ -60,20 +56,4 @@ func (o *DiskGBAutoScaling) HasEnabled() bool {
 // SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
 func (o *DiskGBAutoScaling) SetEnabled(v bool) {
 	o.Enabled = &v
-}
-
-func (o *DiskGBAutoScaling) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *DiskGBAutoScaling) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Enabled) {
-		toSerialize["enabled"] = o.Enabled
-	}
-	return toSerialize, nil
 }

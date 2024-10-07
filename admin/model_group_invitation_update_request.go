@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // GroupInvitationUpdateRequest struct for GroupInvitationUpdateRequest
 type GroupInvitationUpdateRequest struct {
 	// One or more organization or project level roles to assign to the MongoDB Cloud user.
@@ -60,20 +56,4 @@ func (o *GroupInvitationUpdateRequest) HasRoles() bool {
 // SetRoles gets a reference to the given []string and assigns it to the Roles field.
 func (o *GroupInvitationUpdateRequest) SetRoles(v []string) {
 	o.Roles = &v
-}
-
-func (o *GroupInvitationUpdateRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *GroupInvitationUpdateRequest) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Roles) {
-		toSerialize["roles"] = o.Roles
-	}
-	return toSerialize, nil
 }

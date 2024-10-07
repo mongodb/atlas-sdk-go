@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // TeamRole struct for TeamRole
 type TeamRole struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
@@ -131,23 +127,4 @@ func (o *TeamRole) HasTeamId() bool {
 // SetTeamId gets a reference to the given string and assigns it to the TeamId field.
 func (o *TeamRole) SetTeamId(v string) {
 	o.TeamId = &v
-}
-
-func (o *TeamRole) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *TeamRole) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.RoleNames) {
-		toSerialize["roleNames"] = o.RoleNames
-	}
-	if !IsNil(o.TeamId) {
-		toSerialize["teamId"] = o.TeamId
-	}
-	return toSerialize, nil
 }

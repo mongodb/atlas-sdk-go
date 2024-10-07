@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ApiKeyUserDetails Details of the Programmatic API Keys.
 type ApiKeyUserDetails struct {
 	// Purpose or explanation provided when someone created this organization API key.
@@ -239,23 +235,4 @@ func (o *ApiKeyUserDetails) HasRoles() bool {
 // SetRoles gets a reference to the given []CloudAccessRoleAssignment and assigns it to the Roles field.
 func (o *ApiKeyUserDetails) SetRoles(v []CloudAccessRoleAssignment) {
 	o.Roles = &v
-}
-
-func (o *ApiKeyUserDetails) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ApiKeyUserDetails) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Desc) {
-		toSerialize["desc"] = o.Desc
-	}
-	if !IsNil(o.Roles) {
-		toSerialize["roles"] = o.Roles
-	}
-	return toSerialize, nil
 }

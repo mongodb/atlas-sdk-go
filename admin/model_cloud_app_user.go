@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"encoding/json"
 	"time"
 )
 
@@ -435,26 +434,4 @@ func (o *CloudAppUser) GetUsernameOk() (*string, bool) {
 // SetUsername sets field value
 func (o *CloudAppUser) SetUsername(v string) {
 	o.Username = v
-}
-
-func (o *CloudAppUser) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *CloudAppUser) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["country"] = o.Country
-	toSerialize["firstName"] = o.FirstName
-	toSerialize["lastName"] = o.LastName
-	toSerialize["mobileNumber"] = o.MobileNumber
-	toSerialize["password"] = o.Password
-	if !IsNil(o.Roles) {
-		toSerialize["roles"] = o.Roles
-	}
-	toSerialize["username"] = o.Username
-	return toSerialize, nil
 }

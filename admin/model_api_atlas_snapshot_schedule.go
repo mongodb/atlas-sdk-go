@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ApiAtlasSnapshotSchedule struct for ApiAtlasSnapshotSchedule
 type ApiAtlasSnapshotSchedule struct {
 	// Quantity of time expressed in minutes between successive cluster checkpoints. This parameter applies only to sharded clusters. This number determines the granularity of continuous cloud backups for sharded clusters.
@@ -305,25 +301,4 @@ func (o *ApiAtlasSnapshotSchedule) GetWeeklySnapshotRetentionWeeksOk() (*int, bo
 // SetWeeklySnapshotRetentionWeeks sets field value
 func (o *ApiAtlasSnapshotSchedule) SetWeeklySnapshotRetentionWeeks(v int) {
 	o.WeeklySnapshotRetentionWeeks = v
-}
-
-func (o *ApiAtlasSnapshotSchedule) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ApiAtlasSnapshotSchedule) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["clusterCheckpointIntervalMin"] = o.ClusterCheckpointIntervalMin
-	toSerialize["clusterId"] = o.ClusterId
-	toSerialize["dailySnapshotRetentionDays"] = o.DailySnapshotRetentionDays
-	toSerialize["monthlySnapshotRetentionMonths"] = o.MonthlySnapshotRetentionMonths
-	toSerialize["pointInTimeWindowHours"] = o.PointInTimeWindowHours
-	toSerialize["snapshotIntervalHours"] = o.SnapshotIntervalHours
-	toSerialize["snapshotRetentionDays"] = o.SnapshotRetentionDays
-	toSerialize["weeklySnapshotRetentionWeeks"] = o.WeeklySnapshotRetentionWeeks
-	return toSerialize, nil
 }

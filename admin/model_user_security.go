@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // UserSecurity struct for UserSecurity
 type UserSecurity struct {
 	CustomerX509 *DBUserTLSX509Settings `json:"customerX509,omitempty"`
@@ -129,23 +125,4 @@ func (o *UserSecurity) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *UserSecurity) SetLinks(v []Link) {
 	o.Links = &v
-}
-
-func (o *UserSecurity) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *UserSecurity) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.CustomerX509) {
-		toSerialize["customerX509"] = o.CustomerX509
-	}
-	if !IsNil(o.Ldap) {
-		toSerialize["ldap"] = o.Ldap
-	}
-	return toSerialize, nil
 }

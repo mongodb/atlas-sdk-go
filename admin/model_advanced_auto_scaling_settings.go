@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // AdvancedAutoScalingSettings Options that determine how this cluster handles resource scaling.
 type AdvancedAutoScalingSettings struct {
 	Compute *AdvancedComputeAutoScaling `json:"compute,omitempty"`
@@ -93,23 +89,4 @@ func (o *AdvancedAutoScalingSettings) HasDiskGB() bool {
 // SetDiskGB gets a reference to the given DiskGBAutoScaling and assigns it to the DiskGB field.
 func (o *AdvancedAutoScalingSettings) SetDiskGB(v DiskGBAutoScaling) {
 	o.DiskGB = &v
-}
-
-func (o *AdvancedAutoScalingSettings) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *AdvancedAutoScalingSettings) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Compute) {
-		toSerialize["compute"] = o.Compute
-	}
-	if !IsNil(o.DiskGB) {
-		toSerialize["diskGB"] = o.DiskGB
-	}
-	return toSerialize, nil
 }

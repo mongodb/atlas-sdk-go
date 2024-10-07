@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // VectorSearchIndexStatusDetail Contains status information about a vector search index.
 type VectorSearchIndexStatusDetail struct {
 	Definition        *VectorSearchIndexDefinition  `json:"definition,omitempty"`
@@ -198,32 +194,4 @@ func (o *VectorSearchIndexStatusDetail) HasStatus() bool {
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *VectorSearchIndexStatusDetail) SetStatus(v string) {
 	o.Status = &v
-}
-
-func (o *VectorSearchIndexStatusDetail) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *VectorSearchIndexStatusDetail) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Definition) {
-		toSerialize["definition"] = o.Definition
-	}
-	if !IsNil(o.DefinitionVersion) {
-		toSerialize["definitionVersion"] = o.DefinitionVersion
-	}
-	if !IsNil(o.Message) {
-		toSerialize["message"] = o.Message
-	}
-	if !IsNil(o.Queryable) {
-		toSerialize["queryable"] = o.Queryable
-	}
-	if !IsNil(o.Status) {
-		toSerialize["status"] = o.Status
-	}
-	return toSerialize, nil
 }

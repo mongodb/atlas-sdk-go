@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"encoding/json"
 	"time"
 )
 
@@ -673,20 +672,4 @@ func (o *InvoiceLineItem) HasUnitPriceDollars() bool {
 // SetUnitPriceDollars gets a reference to the given float64 and assigns it to the UnitPriceDollars field.
 func (o *InvoiceLineItem) SetUnitPriceDollars(v float64) {
 	o.UnitPriceDollars = &v
-}
-
-func (o *InvoiceLineItem) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *InvoiceLineItem) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.GroupName) {
-		toSerialize["groupName"] = o.GroupName
-	}
-	return toSerialize, nil
 }

@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // AWSKMSConfiguration Amazon Web Services (AWS) KMS configuration details and encryption at rest configuration set for the specified project.
 type AWSKMSConfiguration struct {
 	// Unique alphanumeric string that identifies an Identity and Access Management (IAM) access key with permissions required to access your Amazon Web Services (AWS) Customer Master Key (CMK).
@@ -273,35 +269,4 @@ func (o *AWSKMSConfiguration) HasValid() bool {
 // SetValid gets a reference to the given bool and assigns it to the Valid field.
 func (o *AWSKMSConfiguration) SetValid(v bool) {
 	o.Valid = &v
-}
-
-func (o *AWSKMSConfiguration) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *AWSKMSConfiguration) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.AccessKeyID) {
-		toSerialize["accessKeyID"] = o.AccessKeyID
-	}
-	if !IsNil(o.CustomerMasterKeyID) {
-		toSerialize["customerMasterKeyID"] = o.CustomerMasterKeyID
-	}
-	if !IsNil(o.Enabled) {
-		toSerialize["enabled"] = o.Enabled
-	}
-	if !IsNil(o.Region) {
-		toSerialize["region"] = o.Region
-	}
-	if !IsNil(o.RoleId) {
-		toSerialize["roleId"] = o.RoleId
-	}
-	if !IsNil(o.SecretAccessKey) {
-		toSerialize["secretAccessKey"] = o.SecretAccessKey
-	}
-	return toSerialize, nil
 }

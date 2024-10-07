@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // MongoDBAccessLogsList struct for MongoDBAccessLogsList
 type MongoDBAccessLogsList struct {
 	// Authentication attempt, one per object, made against the cluster.
@@ -61,17 +57,4 @@ func (o *MongoDBAccessLogsList) HasAccessLogs() bool {
 // SetAccessLogs gets a reference to the given []MongoDBAccessLogs and assigns it to the AccessLogs field.
 func (o *MongoDBAccessLogsList) SetAccessLogs(v []MongoDBAccessLogs) {
 	o.AccessLogs = &v
-}
-
-func (o *MongoDBAccessLogsList) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *MongoDBAccessLogsList) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

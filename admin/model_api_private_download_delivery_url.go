@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ApiPrivateDownloadDeliveryUrl One Uniform Resource Locator (URL) that points to the compressed snapshot files for manual download and the corresponding private endpoint.
 type ApiPrivateDownloadDeliveryUrl struct {
 	// One Uniform Resource Locator that points to the compressed snapshot files for manual download.
@@ -95,23 +91,4 @@ func (o *ApiPrivateDownloadDeliveryUrl) HasEndpointId() bool {
 // SetEndpointId gets a reference to the given string and assigns it to the EndpointId field.
 func (o *ApiPrivateDownloadDeliveryUrl) SetEndpointId(v string) {
 	o.EndpointId = &v
-}
-
-func (o *ApiPrivateDownloadDeliveryUrl) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ApiPrivateDownloadDeliveryUrl) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.DeliveryUrl) {
-		toSerialize["deliveryUrl"] = o.DeliveryUrl
-	}
-	if !IsNil(o.EndpointId) {
-		toSerialize["endpointId"] = o.EndpointId
-	}
-	return toSerialize, nil
 }

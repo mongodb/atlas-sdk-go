@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"encoding/json"
 	"time"
 )
 
@@ -445,33 +444,4 @@ func (o *ServerlessInstanceDescription) HasTerminationProtectionEnabled() bool {
 // SetTerminationProtectionEnabled gets a reference to the given bool and assigns it to the TerminationProtectionEnabled field.
 func (o *ServerlessInstanceDescription) SetTerminationProtectionEnabled(v bool) {
 	o.TerminationProtectionEnabled = &v
-}
-
-func (o *ServerlessInstanceDescription) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ServerlessInstanceDescription) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ConnectionStrings) {
-		toSerialize["connectionStrings"] = o.ConnectionStrings
-	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	toSerialize["providerSettings"] = o.ProviderSettings
-	if !IsNil(o.ServerlessBackupOptions) {
-		toSerialize["serverlessBackupOptions"] = o.ServerlessBackupOptions
-	}
-	if !IsNil(o.Tags) {
-		toSerialize["tags"] = o.Tags
-	}
-	if !IsNil(o.TerminationProtectionEnabled) {
-		toSerialize["terminationProtectionEnabled"] = o.TerminationProtectionEnabled
-	}
-	return toSerialize, nil
 }

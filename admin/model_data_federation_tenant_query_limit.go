@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"encoding/json"
 	"time"
 )
 
@@ -296,21 +295,4 @@ func (o *DataFederationTenantQueryLimit) GetValueOk() (*int64, bool) {
 // SetValue sets field value
 func (o *DataFederationTenantQueryLimit) SetValue(v int64) {
 	o.Value = v
-}
-
-func (o *DataFederationTenantQueryLimit) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *DataFederationTenantQueryLimit) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.OverrunPolicy) {
-		toSerialize["overrunPolicy"] = o.OverrunPolicy
-	}
-	toSerialize["value"] = o.Value
-	return toSerialize, nil
 }

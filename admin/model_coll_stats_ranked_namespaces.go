@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // CollStatsRankedNamespaces struct for CollStatsRankedNamespaces
 type CollStatsRankedNamespaces struct {
 	// Unique 24-hexadecimal digit string that identifies the request project.
@@ -133,17 +129,4 @@ func (o *CollStatsRankedNamespaces) HasRankedNamespaces() bool {
 // SetRankedNamespaces gets a reference to the given []string and assigns it to the RankedNamespaces field.
 func (o *CollStatsRankedNamespaces) SetRankedNamespaces(v []string) {
 	o.RankedNamespaces = &v
-}
-
-func (o *CollStatsRankedNamespaces) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *CollStatsRankedNamespaces) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

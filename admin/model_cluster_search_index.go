@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ClusterSearchIndex struct for ClusterSearchIndex
 type ClusterSearchIndex struct {
 	// Human-readable label that identifies the collection that contains one or more Atlas Search indexes.
@@ -466,44 +462,4 @@ func (o *ClusterSearchIndex) HasFields() bool {
 // SetFields gets a reference to the given []interface{} and assigns it to the Fields field.
 func (o *ClusterSearchIndex) SetFields(v []interface{}) {
 	o.Fields = &v
-}
-
-func (o *ClusterSearchIndex) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ClusterSearchIndex) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["collectionName"] = o.CollectionName
-	toSerialize["database"] = o.Database
-	toSerialize["name"] = o.Name
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
-	}
-	if !IsNil(o.Analyzer) {
-		toSerialize["analyzer"] = o.Analyzer
-	}
-	if !IsNil(o.Analyzers) {
-		toSerialize["analyzers"] = o.Analyzers
-	}
-	if !IsNil(o.Mappings) {
-		toSerialize["mappings"] = o.Mappings
-	}
-	if !IsNil(o.SearchAnalyzer) {
-		toSerialize["searchAnalyzer"] = o.SearchAnalyzer
-	}
-	if !IsNil(o.StoredSource) {
-		toSerialize["storedSource"] = o.StoredSource
-	}
-	if !IsNil(o.Synonyms) {
-		toSerialize["synonyms"] = o.Synonyms
-	}
-	if !IsNil(o.Fields) {
-		toSerialize["fields"] = o.Fields
-	}
-	return toSerialize, nil
 }

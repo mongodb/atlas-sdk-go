@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"encoding/json"
 	"time"
 )
 
@@ -318,28 +317,4 @@ func (o *Group) HasWithDefaultAlertsSettings() bool {
 // SetWithDefaultAlertsSettings gets a reference to the given bool and assigns it to the WithDefaultAlertsSettings field.
 func (o *Group) SetWithDefaultAlertsSettings(v bool) {
 	o.WithDefaultAlertsSettings = &v
-}
-
-func (o *Group) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *Group) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	toSerialize["orgId"] = o.OrgId
-	if !IsNil(o.RegionUsageRestrictions) {
-		toSerialize["regionUsageRestrictions"] = o.RegionUsageRestrictions
-	}
-	if !IsNil(o.Tags) {
-		toSerialize["tags"] = o.Tags
-	}
-	if !IsNil(o.WithDefaultAlertsSettings) {
-		toSerialize["withDefaultAlertsSettings"] = o.WithDefaultAlertsSettings
-	}
-	return toSerialize, nil
 }

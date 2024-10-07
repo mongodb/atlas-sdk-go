@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // CostExplorerFilterResponse Response object to give information about created query.
 type CostExplorerFilterResponse struct {
 	// The token used to identify the created Cost Explorer query.
@@ -60,20 +56,4 @@ func (o *CostExplorerFilterResponse) HasToken() bool {
 // SetToken gets a reference to the given string and assigns it to the Token field.
 func (o *CostExplorerFilterResponse) SetToken(v string) {
 	o.Token = &v
-}
-
-func (o *CostExplorerFilterResponse) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *CostExplorerFilterResponse) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Token) {
-		toSerialize["token"] = o.Token
-	}
-	return toSerialize, nil
 }

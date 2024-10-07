@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // DataLakeDatabaseCollection A collection and data sources that map to a “stores“ data store.
 type DataLakeDatabaseCollection struct {
 	// Array that contains the data stores that map to a collection for this data lake.
@@ -95,23 +91,4 @@ func (o *DataLakeDatabaseCollection) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *DataLakeDatabaseCollection) SetName(v string) {
 	o.Name = &v
-}
-
-func (o *DataLakeDatabaseCollection) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *DataLakeDatabaseCollection) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.DataSources) {
-		toSerialize["dataSources"] = o.DataSources
-	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	return toSerialize, nil
 }

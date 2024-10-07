@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // VectorSearchIndexDefinition The vector search index definition set by the user.
 type VectorSearchIndexDefinition struct {
 	// Settings that configure the fields, one per object, to index. You must define at least one \"vector\" type field. You can optionally define \"filter\" type fields also.
@@ -60,20 +56,4 @@ func (o *VectorSearchIndexDefinition) HasFields() bool {
 // SetFields gets a reference to the given []interface{} and assigns it to the Fields field.
 func (o *VectorSearchIndexDefinition) SetFields(v []interface{}) {
 	o.Fields = &v
-}
-
-func (o *VectorSearchIndexDefinition) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *VectorSearchIndexDefinition) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Fields) {
-		toSerialize["fields"] = o.Fields
-	}
-	return toSerialize, nil
 }

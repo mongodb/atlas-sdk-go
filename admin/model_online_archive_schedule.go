@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // OnlineArchiveSchedule Regular frequency and duration when archiving process occurs.
 type OnlineArchiveSchedule struct {
 	// Type of schedule.
@@ -262,36 +258,4 @@ func (o *OnlineArchiveSchedule) HasDayOfMonth() bool {
 // SetDayOfMonth gets a reference to the given int and assigns it to the DayOfMonth field.
 func (o *OnlineArchiveSchedule) SetDayOfMonth(v int) {
 	o.DayOfMonth = &v
-}
-
-func (o *OnlineArchiveSchedule) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *OnlineArchiveSchedule) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["type"] = o.Type
-	if !IsNil(o.EndHour) {
-		toSerialize["endHour"] = o.EndHour
-	}
-	if !IsNil(o.EndMinute) {
-		toSerialize["endMinute"] = o.EndMinute
-	}
-	if !IsNil(o.StartHour) {
-		toSerialize["startHour"] = o.StartHour
-	}
-	if !IsNil(o.StartMinute) {
-		toSerialize["startMinute"] = o.StartMinute
-	}
-	if !IsNil(o.DayOfWeek) {
-		toSerialize["dayOfWeek"] = o.DayOfWeek
-	}
-	if !IsNil(o.DayOfMonth) {
-		toSerialize["dayOfMonth"] = o.DayOfMonth
-	}
-	return toSerialize, nil
 }

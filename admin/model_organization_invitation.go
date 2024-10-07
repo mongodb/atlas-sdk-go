@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"encoding/json"
 	"time"
 )
 
@@ -410,27 +409,4 @@ func (o *OrganizationInvitation) HasUsername() bool {
 // SetUsername gets a reference to the given string and assigns it to the Username field.
 func (o *OrganizationInvitation) SetUsername(v string) {
 	o.Username = &v
-}
-
-func (o *OrganizationInvitation) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *OrganizationInvitation) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.GroupRoleAssignments) {
-		toSerialize["groupRoleAssignments"] = o.GroupRoleAssignments
-	}
-	toSerialize["orgName"] = o.OrgName
-	if !IsNil(o.Roles) {
-		toSerialize["roles"] = o.Roles
-	}
-	if !IsNil(o.Username) {
-		toSerialize["username"] = o.Username
-	}
-	return toSerialize, nil
 }

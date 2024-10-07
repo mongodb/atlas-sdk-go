@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"encoding/json"
 	"time"
 )
 
@@ -242,17 +241,4 @@ func (o *SampleDatasetStatus) HasState() bool {
 // SetState gets a reference to the given string and assigns it to the State field.
 func (o *SampleDatasetStatus) SetState(v string) {
 	o.State = &v
-}
-
-func (o *SampleDatasetStatus) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *SampleDatasetStatus) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

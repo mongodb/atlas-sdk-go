@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"encoding/json"
 	"time"
 )
 
@@ -1352,29 +1351,4 @@ func (o *EventViewForNdsGroup) HasProcessorState() bool {
 // SetProcessorState gets a reference to the given string and assigns it to the ProcessorState field.
 func (o *EventViewForNdsGroup) SetProcessorState(v string) {
 	o.ProcessorState = &v
-}
-
-func (o *EventViewForNdsGroup) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *EventViewForNdsGroup) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.EventTypeName) {
-		toSerialize["eventTypeName"] = o.EventTypeName
-	}
-	if !IsNil(o.Raw) {
-		toSerialize["raw"] = o.Raw
-	}
-	if !IsNil(o.CurrentValue) {
-		toSerialize["currentValue"] = o.CurrentValue
-	}
-	if !IsNil(o.ResourceType) {
-		toSerialize["resourceType"] = o.ResourceType
-	}
-	return toSerialize, nil
 }

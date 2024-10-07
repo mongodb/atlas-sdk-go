@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"encoding/json"
 	"time"
 )
 
@@ -511,22 +510,4 @@ func (o *TenantRestore) HasTargetProjectId() bool {
 // SetTargetProjectId gets a reference to the given string and assigns it to the TargetProjectId field.
 func (o *TenantRestore) SetTargetProjectId(v string) {
 	o.TargetProjectId = &v
-}
-
-func (o *TenantRestore) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *TenantRestore) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["snapshotId"] = o.SnapshotId
-	toSerialize["targetDeploymentItemName"] = o.TargetDeploymentItemName
-	if !IsNil(o.TargetProjectId) {
-		toSerialize["targetProjectId"] = o.TargetProjectId
-	}
-	return toSerialize, nil
 }

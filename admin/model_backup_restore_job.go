@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"encoding/json"
 	"time"
 )
 
@@ -661,36 +660,4 @@ func (o *BackupRestoreJob) HasTimestamp() bool {
 // SetTimestamp gets a reference to the given ApiBSONTimestamp and assigns it to the Timestamp field.
 func (o *BackupRestoreJob) SetTimestamp(v ApiBSONTimestamp) {
 	o.Timestamp = &v
-}
-
-func (o *BackupRestoreJob) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *BackupRestoreJob) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.CheckpointId) {
-		toSerialize["checkpointId"] = o.CheckpointId
-	}
-	toSerialize["delivery"] = o.Delivery
-	if !IsNil(o.OplogInc) {
-		toSerialize["oplogInc"] = o.OplogInc
-	}
-	if !IsNil(o.OplogTs) {
-		toSerialize["oplogTs"] = o.OplogTs
-	}
-	if !IsNil(o.PointInTimeUTCMillis) {
-		toSerialize["pointInTimeUTCMillis"] = o.PointInTimeUTCMillis
-	}
-	if !IsNil(o.SnapshotId) {
-		toSerialize["snapshotId"] = o.SnapshotId
-	}
-	if !IsNil(o.Timestamp) {
-		toSerialize["timestamp"] = o.Timestamp
-	}
-	return toSerialize, nil
 }

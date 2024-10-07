@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // AutoExportPolicy Policy for automatically exporting Cloud Backup Snapshots.
 type AutoExportPolicy struct {
 	// Unique 24-hexadecimal character string that identifies the Export Bucket.
@@ -95,23 +91,4 @@ func (o *AutoExportPolicy) HasFrequencyType() bool {
 // SetFrequencyType gets a reference to the given string and assigns it to the FrequencyType field.
 func (o *AutoExportPolicy) SetFrequencyType(v string) {
 	o.FrequencyType = &v
-}
-
-func (o *AutoExportPolicy) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *AutoExportPolicy) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ExportBucketId) {
-		toSerialize["exportBucketId"] = o.ExportBucketId
-	}
-	if !IsNil(o.FrequencyType) {
-		toSerialize["frequencyType"] = o.FrequencyType
-	}
-	return toSerialize, nil
 }

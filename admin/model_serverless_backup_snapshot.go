@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"encoding/json"
 	"time"
 )
 
@@ -386,17 +385,4 @@ func (o *ServerlessBackupSnapshot) HasStorageSizeBytes() bool {
 // SetStorageSizeBytes gets a reference to the given int64 and assigns it to the StorageSizeBytes field.
 func (o *ServerlessBackupSnapshot) SetStorageSizeBytes(v int64) {
 	o.StorageSizeBytes = &v
-}
-
-func (o *ServerlessBackupSnapshot) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ServerlessBackupSnapshot) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

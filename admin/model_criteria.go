@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // Criteria Rules by which MongoDB Cloud archives data.  Use the **criteria.type** field to choose how MongoDB Cloud selects data to archive. Choose data using the age of the data or a MongoDB query. **\"criteria.type\": \"DATE\"** selects documents to archive based on a date. **\"criteria.type\": \"CUSTOM\"** selects documents to archive based on a custom JSON query. MongoDB Cloud doesn't support **\"criteria.type\": \"CUSTOM\"** when **\"collectionType\": \"TIMESERIES\"**.
 type Criteria struct {
 	// Means by which MongoDB Cloud selects data to archive. Data can be chosen using the age of the data or a MongoDB query. **DATE** selects documents to archive based on a date. **CUSTOM** selects documents to archive based on a custom JSON query. MongoDB Cloud doesn't support **CUSTOM** when `\"collectionType\": \"TIMESERIES\"`.
@@ -204,32 +200,4 @@ func (o *Criteria) HasExpireAfterDays() bool {
 // SetExpireAfterDays gets a reference to the given int and assigns it to the ExpireAfterDays field.
 func (o *Criteria) SetExpireAfterDays(v int) {
 	o.ExpireAfterDays = &v
-}
-
-func (o *Criteria) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *Criteria) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
-	}
-	if !IsNil(o.Query) {
-		toSerialize["query"] = o.Query
-	}
-	if !IsNil(o.DateField) {
-		toSerialize["dateField"] = o.DateField
-	}
-	if !IsNil(o.DateFormat) {
-		toSerialize["dateFormat"] = o.DateFormat
-	}
-	if !IsNil(o.ExpireAfterDays) {
-		toSerialize["expireAfterDays"] = o.ExpireAfterDays
-	}
-	return toSerialize, nil
 }

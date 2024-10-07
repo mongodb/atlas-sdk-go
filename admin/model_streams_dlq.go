@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // StreamsDLQ Dead letter queue for the stream processor.
 type StreamsDLQ struct {
 	// Name of the collection to use for the DLQ.
@@ -166,26 +162,4 @@ func (o *StreamsDLQ) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *StreamsDLQ) SetLinks(v []Link) {
 	o.Links = &v
-}
-
-func (o *StreamsDLQ) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *StreamsDLQ) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Coll) {
-		toSerialize["coll"] = o.Coll
-	}
-	if !IsNil(o.ConnectionName) {
-		toSerialize["connectionName"] = o.ConnectionName
-	}
-	if !IsNil(o.Db) {
-		toSerialize["db"] = o.Db
-	}
-	return toSerialize, nil
 }

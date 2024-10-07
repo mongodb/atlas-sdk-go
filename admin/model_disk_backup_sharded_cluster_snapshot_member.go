@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // DiskBackupShardedClusterSnapshotMember struct for DiskBackupShardedClusterSnapshotMember
 type DiskBackupShardedClusterSnapshotMember struct {
 	// Human-readable label that identifies the cloud provider that stores this snapshot. The resource returns this parameter when `\"type\": \"replicaSet\"`.
@@ -109,17 +105,4 @@ func (o *DiskBackupShardedClusterSnapshotMember) GetReplicaSetNameOk() (*string,
 // SetReplicaSetName sets field value
 func (o *DiskBackupShardedClusterSnapshotMember) SetReplicaSetName(v string) {
 	o.ReplicaSetName = v
-}
-
-func (o *DiskBackupShardedClusterSnapshotMember) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *DiskBackupShardedClusterSnapshotMember) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

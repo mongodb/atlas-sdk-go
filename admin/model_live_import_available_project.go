@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // LiveImportAvailableProject struct for LiveImportAvailableProject
 type LiveImportAvailableProject struct {
 	// List of clusters that can be migrated to MongoDB Cloud.
@@ -151,23 +147,4 @@ func (o *LiveImportAvailableProject) GetProjectIdOk() (*string, bool) {
 // SetProjectId sets field value
 func (o *LiveImportAvailableProject) SetProjectId(v string) {
 	o.ProjectId = v
-}
-
-func (o *LiveImportAvailableProject) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *LiveImportAvailableProject) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Deployments) {
-		toSerialize["deployments"] = o.Deployments
-	}
-	if !IsNil(o.MigrationHosts) {
-		toSerialize["migrationHosts"] = o.MigrationHosts
-	}
-	return toSerialize, nil
 }

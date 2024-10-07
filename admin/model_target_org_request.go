@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // TargetOrgRequest struct for TargetOrgRequest
 type TargetOrgRequest struct {
 	// IP address access list entries associated with the API key.
@@ -60,20 +56,4 @@ func (o *TargetOrgRequest) HasAccessListIps() bool {
 // SetAccessListIps gets a reference to the given []string and assigns it to the AccessListIps field.
 func (o *TargetOrgRequest) SetAccessListIps(v []string) {
 	o.AccessListIps = &v
-}
-
-func (o *TargetOrgRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *TargetOrgRequest) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.AccessListIps) {
-		toSerialize["accessListIps"] = o.AccessListIps
-	}
-	return toSerialize, nil
 }

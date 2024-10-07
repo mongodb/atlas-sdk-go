@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // FederatedUser MongoDB Cloud user linked to this federated authentication.
 type FederatedUser struct {
 	// Email address of the MongoDB Cloud user linked to the federated organization.
@@ -169,21 +165,4 @@ func (o *FederatedUser) HasUserId() bool {
 // SetUserId gets a reference to the given string and assigns it to the UserId field.
 func (o *FederatedUser) SetUserId(v string) {
 	o.UserId = &v
-}
-
-func (o *FederatedUser) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *FederatedUser) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["emailAddress"] = o.EmailAddress
-	toSerialize["federationSettingsId"] = o.FederationSettingsId
-	toSerialize["firstName"] = o.FirstName
-	toSerialize["lastName"] = o.LastName
-	return toSerialize, nil
 }

@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // DBRoleToExecute The name of a Built in or Custom DB Role to connect to an Atlas Cluster.
 type DBRoleToExecute struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
@@ -131,23 +127,4 @@ func (o *DBRoleToExecute) HasType() bool {
 // SetType gets a reference to the given string and assigns it to the Type field.
 func (o *DBRoleToExecute) SetType(v string) {
 	o.Type = &v
-}
-
-func (o *DBRoleToExecute) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *DBRoleToExecute) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Role) {
-		toSerialize["role"] = o.Role
-	}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
-	}
-	return toSerialize, nil
 }

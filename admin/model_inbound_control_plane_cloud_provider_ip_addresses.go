@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // InboundControlPlaneCloudProviderIPAddresses List of inbound IP addresses to the Atlas control plane, categorized by cloud provider. If your application allows outbound HTTP requests only to specific IP addresses, you must allow access to the following IP addresses so that your API requests can reach the Atlas control plane.
 type InboundControlPlaneCloudProviderIPAddresses struct {
 	// Control plane IP addresses in AWS. Each key identifies an Amazon Web Services (AWS) region. Each value identifies control plane IP addresses in the AWS region.
@@ -133,17 +129,4 @@ func (o *InboundControlPlaneCloudProviderIPAddresses) HasGcp() bool {
 // SetGcp gets a reference to the given map[string][]string and assigns it to the Gcp field.
 func (o *InboundControlPlaneCloudProviderIPAddresses) SetGcp(v map[string][]string) {
 	o.Gcp = &v
-}
-
-func (o *InboundControlPlaneCloudProviderIPAddresses) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *InboundControlPlaneCloudProviderIPAddresses) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

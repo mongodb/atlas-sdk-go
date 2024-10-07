@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // OrgGroup struct for OrgGroup
 type OrgGroup struct {
 	// Settings that describe the clusters in each project that the API key is authorized to view.
@@ -275,23 +271,4 @@ func (o *OrgGroup) HasTags() bool {
 // SetTags gets a reference to the given []string and assigns it to the Tags field.
 func (o *OrgGroup) SetTags(v []string) {
 	o.Tags = &v
-}
-
-func (o *OrgGroup) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *OrgGroup) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.GroupName) {
-		toSerialize["groupName"] = o.GroupName
-	}
-	if !IsNil(o.OrgName) {
-		toSerialize["orgName"] = o.OrgName
-	}
-	return toSerialize, nil
 }

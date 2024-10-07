@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // EventTypeDetails A singular type of event
 type EventTypeDetails struct {
 	// Whether or not this event type can be configured as an alert via the API.
@@ -133,17 +129,4 @@ func (o *EventTypeDetails) HasEventType() bool {
 // SetEventType gets a reference to the given string and assigns it to the EventType field.
 func (o *EventTypeDetails) SetEventType(v string) {
 	o.EventType = &v
-}
-
-func (o *EventTypeDetails) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *EventTypeDetails) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"encoding/json"
 	"time"
 )
 
@@ -96,23 +95,4 @@ func (o *SearchIndexDefinitionVersion) HasVersion() bool {
 // SetVersion gets a reference to the given int64 and assigns it to the Version field.
 func (o *SearchIndexDefinitionVersion) SetVersion(v int64) {
 	o.Version = &v
-}
-
-func (o *SearchIndexDefinitionVersion) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *SearchIndexDefinitionVersion) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.CreatedAt) {
-		toSerialize["createdAt"] = o.CreatedAt
-	}
-	if !IsNil(o.Version) {
-		toSerialize["version"] = o.Version
-	}
-	return toSerialize, nil
 }

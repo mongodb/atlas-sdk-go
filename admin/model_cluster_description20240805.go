@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"encoding/json"
 	"time"
 )
 
@@ -1149,83 +1148,4 @@ func (o *ClusterDescription20240805) HasVersionReleaseSystem() bool {
 // SetVersionReleaseSystem gets a reference to the given string and assigns it to the VersionReleaseSystem field.
 func (o *ClusterDescription20240805) SetVersionReleaseSystem(v string) {
 	o.VersionReleaseSystem = &v
-}
-
-func (o *ClusterDescription20240805) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ClusterDescription20240805) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.AcceptDataRisksAndForceReplicaSetReconfig) {
-		toSerialize["acceptDataRisksAndForceReplicaSetReconfig"] = o.AcceptDataRisksAndForceReplicaSetReconfig
-	}
-	if !IsNil(o.BackupEnabled) {
-		toSerialize["backupEnabled"] = o.BackupEnabled
-	}
-	if !IsNil(o.BiConnector) {
-		toSerialize["biConnector"] = o.BiConnector
-	}
-	if !IsNil(o.ClusterType) {
-		toSerialize["clusterType"] = o.ClusterType
-	}
-	if !IsNil(o.ConfigServerManagementMode) {
-		toSerialize["configServerManagementMode"] = o.ConfigServerManagementMode
-	}
-	if !IsNil(o.ConnectionStrings) {
-		toSerialize["connectionStrings"] = o.ConnectionStrings
-	}
-	if !IsNil(o.DiskWarmingMode) {
-		toSerialize["diskWarmingMode"] = o.DiskWarmingMode
-	}
-	if !IsNil(o.EncryptionAtRestProvider) {
-		toSerialize["encryptionAtRestProvider"] = o.EncryptionAtRestProvider
-	}
-	if !IsNil(o.GlobalClusterSelfManagedSharding) {
-		toSerialize["globalClusterSelfManagedSharding"] = o.GlobalClusterSelfManagedSharding
-	}
-	if !IsNil(o.Labels) {
-		toSerialize["labels"] = o.Labels
-	}
-	if !IsNil(o.MongoDBEmployeeAccessGrant) {
-		toSerialize["mongoDBEmployeeAccessGrant"] = o.MongoDBEmployeeAccessGrant
-	}
-	if !IsNil(o.MongoDBMajorVersion) {
-		toSerialize["mongoDBMajorVersion"] = o.MongoDBMajorVersion
-	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if !IsNil(o.Paused) {
-		toSerialize["paused"] = o.Paused
-	}
-	if !IsNil(o.PitEnabled) {
-		toSerialize["pitEnabled"] = o.PitEnabled
-	}
-	if !IsNil(o.RedactClientLogData) {
-		toSerialize["redactClientLogData"] = o.RedactClientLogData
-	}
-	if !IsNil(o.ReplicaSetScalingStrategy) {
-		toSerialize["replicaSetScalingStrategy"] = o.ReplicaSetScalingStrategy
-	}
-	if !IsNil(o.ReplicationSpecs) {
-		toSerialize["replicationSpecs"] = o.ReplicationSpecs
-	}
-	if !IsNil(o.RootCertType) {
-		toSerialize["rootCertType"] = o.RootCertType
-	}
-	if !IsNil(o.Tags) {
-		toSerialize["tags"] = o.Tags
-	}
-	if !IsNil(o.TerminationProtectionEnabled) {
-		toSerialize["terminationProtectionEnabled"] = o.TerminationProtectionEnabled
-	}
-	if !IsNil(o.VersionReleaseSystem) {
-		toSerialize["versionReleaseSystem"] = o.VersionReleaseSystem
-	}
-	return toSerialize, nil
 }

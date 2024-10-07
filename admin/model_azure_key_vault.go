@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // AzureKeyVault Details that define the configuration of Encryption at Rest using Azure Key Vault (AKV).
 type AzureKeyVault struct {
 	// Azure environment in which your account credentials reside.
@@ -412,47 +408,4 @@ func (o *AzureKeyVault) HasValid() bool {
 // SetValid gets a reference to the given bool and assigns it to the Valid field.
 func (o *AzureKeyVault) SetValid(v bool) {
 	o.Valid = &v
-}
-
-func (o *AzureKeyVault) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *AzureKeyVault) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.AzureEnvironment) {
-		toSerialize["azureEnvironment"] = o.AzureEnvironment
-	}
-	if !IsNil(o.ClientID) {
-		toSerialize["clientID"] = o.ClientID
-	}
-	if !IsNil(o.Enabled) {
-		toSerialize["enabled"] = o.Enabled
-	}
-	if !IsNil(o.KeyIdentifier) {
-		toSerialize["keyIdentifier"] = o.KeyIdentifier
-	}
-	if !IsNil(o.KeyVaultName) {
-		toSerialize["keyVaultName"] = o.KeyVaultName
-	}
-	if !IsNil(o.RequirePrivateNetworking) {
-		toSerialize["requirePrivateNetworking"] = o.RequirePrivateNetworking
-	}
-	if !IsNil(o.ResourceGroupName) {
-		toSerialize["resourceGroupName"] = o.ResourceGroupName
-	}
-	if !IsNil(o.Secret) {
-		toSerialize["secret"] = o.Secret
-	}
-	if !IsNil(o.SubscriptionID) {
-		toSerialize["subscriptionID"] = o.SubscriptionID
-	}
-	if !IsNil(o.TenantID) {
-		toSerialize["tenantID"] = o.TenantID
-	}
-	return toSerialize, nil
 }

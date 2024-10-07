@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // UserScope Range of resources available to this database user.
 type UserScope struct {
 	// Human-readable label that identifies the cluster or MongoDB Atlas Data Lake that this database user can access.
@@ -79,19 +75,4 @@ func (o *UserScope) GetTypeOk() (*string, bool) {
 // SetType sets field value
 func (o *UserScope) SetType(v string) {
 	o.Type = v
-}
-
-func (o *UserScope) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *UserScope) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	toSerialize["type"] = o.Type
-	return toSerialize, nil
 }

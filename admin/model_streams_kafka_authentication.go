@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // StreamsKafkaAuthentication User credentials required to connect to a Kafka Cluster. Includes the authentication type, as well as the parameters for that authentication mode.
 type StreamsKafkaAuthentication struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
@@ -167,26 +163,4 @@ func (o *StreamsKafkaAuthentication) HasUsername() bool {
 // SetUsername gets a reference to the given string and assigns it to the Username field.
 func (o *StreamsKafkaAuthentication) SetUsername(v string) {
 	o.Username = &v
-}
-
-func (o *StreamsKafkaAuthentication) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *StreamsKafkaAuthentication) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Mechanism) {
-		toSerialize["mechanism"] = o.Mechanism
-	}
-	if !IsNil(o.Password) {
-		toSerialize["password"] = o.Password
-	}
-	if !IsNil(o.Username) {
-		toSerialize["username"] = o.Username
-	}
-	return toSerialize, nil
 }

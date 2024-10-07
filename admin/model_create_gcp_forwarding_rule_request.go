@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // CreateGCPForwardingRuleRequest struct for CreateGCPForwardingRuleRequest
 type CreateGCPForwardingRuleRequest struct {
 	// Human-readable label that identifies the Google Cloud consumer forwarding rule that you created.
@@ -97,23 +93,4 @@ func (o *CreateGCPForwardingRuleRequest) HasIpAddress() bool {
 // SetIpAddress gets a reference to the given string and assigns it to the IpAddress field.
 func (o *CreateGCPForwardingRuleRequest) SetIpAddress(v string) {
 	o.IpAddress = &v
-}
-
-func (o *CreateGCPForwardingRuleRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *CreateGCPForwardingRuleRequest) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.EndpointName) {
-		toSerialize["endpointName"] = o.EndpointName
-	}
-	if !IsNil(o.IpAddress) {
-		toSerialize["ipAddress"] = o.IpAddress
-	}
-	return toSerialize, nil
 }

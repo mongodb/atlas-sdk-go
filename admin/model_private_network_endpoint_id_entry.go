@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // PrivateNetworkEndpointIdEntry struct for PrivateNetworkEndpointIdEntry
 type PrivateNetworkEndpointIdEntry struct {
 	// Human-readable string to associate with this private endpoint.
@@ -235,33 +231,4 @@ func (o *PrivateNetworkEndpointIdEntry) HasType() bool {
 // SetType gets a reference to the given string and assigns it to the Type field.
 func (o *PrivateNetworkEndpointIdEntry) SetType(v string) {
 	o.Type = &v
-}
-
-func (o *PrivateNetworkEndpointIdEntry) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *PrivateNetworkEndpointIdEntry) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Comment) {
-		toSerialize["comment"] = o.Comment
-	}
-	if !IsNil(o.CustomerEndpointDNSName) {
-		toSerialize["customerEndpointDNSName"] = o.CustomerEndpointDNSName
-	}
-	toSerialize["endpointId"] = o.EndpointId
-	if !IsNil(o.Provider) {
-		toSerialize["provider"] = o.Provider
-	}
-	if !IsNil(o.Region) {
-		toSerialize["region"] = o.Region
-	}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
-	}
-	return toSerialize, nil
 }

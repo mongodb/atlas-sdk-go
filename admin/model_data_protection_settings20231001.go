@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"encoding/json"
 	"time"
 )
 
@@ -471,41 +470,4 @@ func (o *DataProtectionSettings20231001) HasUpdatedUser() bool {
 // SetUpdatedUser gets a reference to the given string and assigns it to the UpdatedUser field.
 func (o *DataProtectionSettings20231001) SetUpdatedUser(v string) {
 	o.UpdatedUser = &v
-}
-
-func (o *DataProtectionSettings20231001) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *DataProtectionSettings20231001) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["authorizedEmail"] = o.AuthorizedEmail
-	toSerialize["authorizedUserFirstName"] = o.AuthorizedUserFirstName
-	toSerialize["authorizedUserLastName"] = o.AuthorizedUserLastName
-	if !IsNil(o.CopyProtectionEnabled) {
-		toSerialize["copyProtectionEnabled"] = o.CopyProtectionEnabled
-	}
-	if !IsNil(o.EncryptionAtRestEnabled) {
-		toSerialize["encryptionAtRestEnabled"] = o.EncryptionAtRestEnabled
-	}
-	if !IsNil(o.OnDemandPolicyItem) {
-		toSerialize["onDemandPolicyItem"] = o.OnDemandPolicyItem
-	}
-	if !IsNil(o.PitEnabled) {
-		toSerialize["pitEnabled"] = o.PitEnabled
-	}
-	if !IsNil(o.ProjectId) {
-		toSerialize["projectId"] = o.ProjectId
-	}
-	if !IsNil(o.RestoreWindowDays) {
-		toSerialize["restoreWindowDays"] = o.RestoreWindowDays
-	}
-	if !IsNil(o.ScheduledPolicyItems) {
-		toSerialize["scheduledPolicyItems"] = o.ScheduledPolicyItems
-	}
-	return toSerialize, nil
 }

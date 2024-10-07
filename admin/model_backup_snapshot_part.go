@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // BackupSnapshotPart Characteristics that identify this snapshot.
 type BackupSnapshotPart struct {
 	// Unique 24-hexadecimal digit string that identifies the cluster with the snapshots you want to return.
@@ -385,17 +381,4 @@ func (o *BackupSnapshotPart) HasTypeName() bool {
 // SetTypeName gets a reference to the given string and assigns it to the TypeName field.
 func (o *BackupSnapshotPart) SetTypeName(v string) {
 	o.TypeName = &v
-}
-
-func (o *BackupSnapshotPart) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *BackupSnapshotPart) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

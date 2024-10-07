@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ApiAtlasResourcePolicyCreate struct for ApiAtlasResourcePolicyCreate
 type ApiAtlasResourcePolicyCreate struct {
 	// Human-readable label that describes the atlas resource policy.
@@ -79,19 +75,4 @@ func (o *ApiAtlasResourcePolicyCreate) GetPoliciesOk() (*[]ApiAtlasPolicyCreate,
 // SetPolicies sets field value
 func (o *ApiAtlasResourcePolicyCreate) SetPolicies(v []ApiAtlasPolicyCreate) {
 	o.Policies = v
-}
-
-func (o *ApiAtlasResourcePolicyCreate) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ApiAtlasResourcePolicyCreate) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	toSerialize["policies"] = o.Policies
-	return toSerialize, nil
 }

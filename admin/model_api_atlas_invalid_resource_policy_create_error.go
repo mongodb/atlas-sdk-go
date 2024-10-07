@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ApiAtlasInvalidResourcePolicyCreateError struct for ApiAtlasInvalidResourcePolicyCreateError
 type ApiAtlasInvalidResourcePolicyCreateError struct {
 	// Human-readable label that displays the type of an error.
@@ -96,20 +92,4 @@ func (o *ApiAtlasInvalidResourcePolicyCreateError) HasInvalidPolicies() bool {
 // SetInvalidPolicies gets a reference to the given []ApiAtlasInvalidPolicy and assigns it to the InvalidPolicies field.
 func (o *ApiAtlasInvalidResourcePolicyCreateError) SetInvalidPolicies(v []ApiAtlasInvalidPolicy) {
 	o.InvalidPolicies = &v
-}
-
-func (o *ApiAtlasInvalidResourcePolicyCreateError) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ApiAtlasInvalidResourcePolicyCreateError) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ErrorType) {
-		toSerialize["errorType"] = o.ErrorType
-	}
-	return toSerialize, nil
 }

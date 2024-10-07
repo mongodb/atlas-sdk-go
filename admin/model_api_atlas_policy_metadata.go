@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ApiAtlasPolicyMetadata struct for ApiAtlasPolicyMetadata
 type ApiAtlasPolicyMetadata struct {
 	// Unique 24-hexadecimal character string that identifies the policy.
@@ -61,17 +57,4 @@ func (o *ApiAtlasPolicyMetadata) HasPolicyId() bool {
 // SetPolicyId gets a reference to the given string and assigns it to the PolicyId field.
 func (o *ApiAtlasPolicyMetadata) SetPolicyId(v string) {
 	o.PolicyId = &v
-}
-
-func (o *ApiAtlasPolicyMetadata) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ApiAtlasPolicyMetadata) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

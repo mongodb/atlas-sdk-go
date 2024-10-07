@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // AtlasSearchAnalyzer struct for AtlasSearchAnalyzer
 type AtlasSearchAnalyzer struct {
 	// Filters that examine text one character at a time and perform filtering operations.
@@ -150,25 +146,4 @@ func (o *AtlasSearchAnalyzer) GetTokenizerOk() (interface{}, bool) {
 // SetTokenizer sets field value
 func (o *AtlasSearchAnalyzer) SetTokenizer(v interface{}) {
 	o.Tokenizer = v
-}
-
-func (o *AtlasSearchAnalyzer) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *AtlasSearchAnalyzer) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.CharFilters) {
-		toSerialize["charFilters"] = o.CharFilters
-	}
-	toSerialize["name"] = o.Name
-	if !IsNil(o.TokenFilters) {
-		toSerialize["tokenFilters"] = o.TokenFilters
-	}
-	toSerialize["tokenizer"] = o.Tokenizer
-	return toSerialize, nil
 }

@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // SynonymMappingStatusDetail Contains the status of the index's synonym mappings on each search host. This field (and its subfields) only appear if the index has synonyms defined.
 type SynonymMappingStatusDetail struct {
 	// Optional message describing an error.
@@ -130,26 +126,4 @@ func (o *SynonymMappingStatusDetail) HasStatus() bool {
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *SynonymMappingStatusDetail) SetStatus(v string) {
 	o.Status = &v
-}
-
-func (o *SynonymMappingStatusDetail) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *SynonymMappingStatusDetail) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Message) {
-		toSerialize["message"] = o.Message
-	}
-	if !IsNil(o.Queryable) {
-		toSerialize["queryable"] = o.Queryable
-	}
-	if !IsNil(o.Status) {
-		toSerialize["status"] = o.Status
-	}
-	return toSerialize, nil
 }

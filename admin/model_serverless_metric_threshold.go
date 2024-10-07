@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ServerlessMetricThreshold Threshold for the metric that, when exceeded, triggers an alert. The metric threshold pertains to event types which reflects changes of measurements and metrics about the serverless database.
 type ServerlessMetricThreshold struct {
 	// Human-readable label that identifies the metric against which MongoDB Cloud checks the configured **metricThreshold.threshold**.
@@ -192,30 +188,4 @@ func (o *ServerlessMetricThreshold) HasUnits() bool {
 // SetUnits gets a reference to the given string and assigns it to the Units field.
 func (o *ServerlessMetricThreshold) SetUnits(v string) {
 	o.Units = &v
-}
-
-func (o *ServerlessMetricThreshold) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ServerlessMetricThreshold) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["metricName"] = o.MetricName
-	if !IsNil(o.Mode) {
-		toSerialize["mode"] = o.Mode
-	}
-	if !IsNil(o.Operator) {
-		toSerialize["operator"] = o.Operator
-	}
-	if !IsNil(o.Threshold) {
-		toSerialize["threshold"] = o.Threshold
-	}
-	if !IsNil(o.Units) {
-		toSerialize["units"] = o.Units
-	}
-	return toSerialize, nil
 }

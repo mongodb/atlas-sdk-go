@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // LiveMigrationRequest20240530 struct for LiveMigrationRequest20240530
 type LiveMigrationRequest20240530 struct {
 	// Unique 24-hexadecimal digit string that identifies the migration request.
@@ -258,28 +254,4 @@ func (o *LiveMigrationRequest20240530) GetSourceOk() (*Source, bool) {
 // SetSource sets field value
 func (o *LiveMigrationRequest20240530) SetSource(v Source) {
 	o.Source = v
-}
-
-func (o *LiveMigrationRequest20240530) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *LiveMigrationRequest20240530) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["destination"] = o.Destination
-	if !IsNil(o.DropDestinationData) {
-		toSerialize["dropDestinationData"] = o.DropDestinationData
-	}
-	if !IsNil(o.MigrationHosts) {
-		toSerialize["migrationHosts"] = o.MigrationHosts
-	}
-	if !IsNil(o.Sharding) {
-		toSerialize["sharding"] = o.Sharding
-	}
-	toSerialize["source"] = o.Source
-	return toSerialize, nil
 }

@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"encoding/json"
 	"time"
 )
 
@@ -602,17 +601,4 @@ func (o *DiskBackupReplicaSet) HasType() bool {
 // SetType gets a reference to the given string and assigns it to the Type field.
 func (o *DiskBackupReplicaSet) SetType(v string) {
 	o.Type = &v
-}
-
-func (o *DiskBackupReplicaSet) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *DiskBackupReplicaSet) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

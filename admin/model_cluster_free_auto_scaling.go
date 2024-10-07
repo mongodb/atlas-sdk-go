@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ClusterFreeAutoScaling Range of instance sizes to which your cluster can scale.
 type ClusterFreeAutoScaling struct {
 	// Collection of settings that configures how a cluster might scale its cluster tier and whether the cluster can scale down.
@@ -60,20 +56,4 @@ func (o *ClusterFreeAutoScaling) HasCompute() bool {
 // SetCompute gets a reference to the given string and assigns it to the Compute field.
 func (o *ClusterFreeAutoScaling) SetCompute(v string) {
 	o.Compute = &v
-}
-
-func (o *ClusterFreeAutoScaling) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ClusterFreeAutoScaling) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Compute) {
-		toSerialize["compute"] = o.Compute
-	}
-	return toSerialize, nil
 }

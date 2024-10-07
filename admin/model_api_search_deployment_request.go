@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ApiSearchDeploymentRequest struct for ApiSearchDeploymentRequest
 type ApiSearchDeploymentRequest struct {
 	// List of settings that configure the Search Nodes for your cluster.
@@ -52,18 +48,4 @@ func (o *ApiSearchDeploymentRequest) GetSpecsOk() (*[]ApiSearchDeploymentSpec, b
 // SetSpecs sets field value
 func (o *ApiSearchDeploymentRequest) SetSpecs(v []ApiSearchDeploymentSpec) {
 	o.Specs = v
-}
-
-func (o *ApiSearchDeploymentRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ApiSearchDeploymentRequest) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["specs"] = o.Specs
-	return toSerialize, nil
 }

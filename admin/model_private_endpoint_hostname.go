@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // PrivateEndpointHostname Set of Private endpoint and hostnames.
 type PrivateEndpointHostname struct {
 	// Human-readable label that identifies the hostname.
@@ -97,17 +93,4 @@ func (o *PrivateEndpointHostname) HasPrivateEndpoint() bool {
 // SetPrivateEndpoint gets a reference to the given string and assigns it to the PrivateEndpoint field.
 func (o *PrivateEndpointHostname) SetPrivateEndpoint(v string) {
 	o.PrivateEndpoint = &v
-}
-
-func (o *PrivateEndpointHostname) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *PrivateEndpointHostname) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

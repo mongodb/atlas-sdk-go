@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ExportStatus State of the export job for the collections on the replica set only.
 type ExportStatus struct {
 	// Count of collections whose documents were exported to the Export Bucket.
@@ -97,17 +93,4 @@ func (o *ExportStatus) HasTotalCollections() bool {
 // SetTotalCollections gets a reference to the given int and assigns it to the TotalCollections field.
 func (o *ExportStatus) SetTotalCollections(v int) {
 	o.TotalCollections = &v
-}
-
-func (o *ExportStatus) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ExportStatus) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

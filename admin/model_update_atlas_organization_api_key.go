@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // UpdateAtlasOrganizationApiKey struct for UpdateAtlasOrganizationApiKey
 type UpdateAtlasOrganizationApiKey struct {
 	// Purpose or explanation provided when someone creates this organization API key.
@@ -95,23 +91,4 @@ func (o *UpdateAtlasOrganizationApiKey) HasRoles() bool {
 // SetRoles gets a reference to the given []string and assigns it to the Roles field.
 func (o *UpdateAtlasOrganizationApiKey) SetRoles(v []string) {
 	o.Roles = &v
-}
-
-func (o *UpdateAtlasOrganizationApiKey) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *UpdateAtlasOrganizationApiKey) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Desc) {
-		toSerialize["desc"] = o.Desc
-	}
-	if !IsNil(o.Roles) {
-		toSerialize["roles"] = o.Roles
-	}
-	return toSerialize, nil
 }

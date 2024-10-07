@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // GroupUpdate Request view to update the group.
 type GroupUpdate struct {
 	// Human-readable label that identifies the project included in the MongoDB Cloud organization.
@@ -95,23 +91,4 @@ func (o *GroupUpdate) HasTags() bool {
 // SetTags gets a reference to the given []ResourceTag and assigns it to the Tags field.
 func (o *GroupUpdate) SetTags(v []ResourceTag) {
 	o.Tags = &v
-}
-
-func (o *GroupUpdate) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *GroupUpdate) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if !IsNil(o.Tags) {
-		toSerialize["tags"] = o.Tags
-	}
-	return toSerialize, nil
 }

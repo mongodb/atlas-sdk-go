@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // StreamsOptions Optional configuration for the stream processor.
 type StreamsOptions struct {
 	Dlq *StreamsDLQ `json:"dlq,omitempty"`
@@ -95,20 +91,4 @@ func (o *StreamsOptions) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *StreamsOptions) SetLinks(v []Link) {
 	o.Links = &v
-}
-
-func (o *StreamsOptions) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *StreamsOptions) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Dlq) {
-		toSerialize["dlq"] = o.Dlq
-	}
-	return toSerialize, nil
 }

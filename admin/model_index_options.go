@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // IndexOptions One or more settings that determine how the MongoDB Cloud creates this MongoDB index.
 type IndexOptions struct {
 	// Index version number applied to the 2dsphere index. MongoDB 3.2 and later use version 3. Use this option to override the default version number. This option applies to the **2dsphere** index type only.
@@ -663,68 +659,4 @@ func (o *IndexOptions) HasWeights() bool {
 // SetWeights gets a reference to the given interface{} and assigns it to the Weights field.
 func (o *IndexOptions) SetWeights(v interface{}) {
 	o.Weights = v
-}
-
-func (o *IndexOptions) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *IndexOptions) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Var2dsphereIndexVersion) {
-		toSerialize["2dsphereIndexVersion"] = o.Var2dsphereIndexVersion
-	}
-	if !IsNil(o.Background) {
-		toSerialize["background"] = o.Background
-	}
-	if !IsNil(o.Bits) {
-		toSerialize["bits"] = o.Bits
-	}
-	if !IsNil(o.BucketSize) {
-		toSerialize["bucketSize"] = o.BucketSize
-	}
-	if !IsNil(o.ColumnstoreProjection) {
-		toSerialize["columnstoreProjection"] = o.ColumnstoreProjection
-	}
-	if !IsNil(o.DefaultLanguage) {
-		toSerialize["default_language"] = o.DefaultLanguage
-	}
-	if !IsNil(o.ExpireAfterSeconds) {
-		toSerialize["expireAfterSeconds"] = o.ExpireAfterSeconds
-	}
-	if !IsNil(o.Hidden) {
-		toSerialize["hidden"] = o.Hidden
-	}
-	if !IsNil(o.LanguageOverride) {
-		toSerialize["language_override"] = o.LanguageOverride
-	}
-	if !IsNil(o.Max) {
-		toSerialize["max"] = o.Max
-	}
-	if !IsNil(o.Min) {
-		toSerialize["min"] = o.Min
-	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if !IsNil(o.PartialFilterExpression) {
-		toSerialize["partialFilterExpression"] = o.PartialFilterExpression
-	}
-	if !IsNil(o.Sparse) {
-		toSerialize["sparse"] = o.Sparse
-	}
-	if !IsNil(o.StorageEngine) {
-		toSerialize["storageEngine"] = o.StorageEngine
-	}
-	if !IsNil(o.TextIndexVersion) {
-		toSerialize["textIndexVersion"] = o.TextIndexVersion
-	}
-	if !IsNil(o.Weights) {
-		toSerialize["weights"] = o.Weights
-	}
-	return toSerialize, nil
 }

@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"encoding/json"
 	"time"
 )
 
@@ -98,17 +97,4 @@ func (o *ApiBSONTimestamp) HasIncrement() bool {
 // SetIncrement gets a reference to the given int and assigns it to the Increment field.
 func (o *ApiBSONTimestamp) SetIncrement(v int) {
 	o.Increment = &v
-}
-
-func (o *ApiBSONTimestamp) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ApiBSONTimestamp) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

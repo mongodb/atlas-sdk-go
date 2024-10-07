@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // MesurementsDatabase struct for MesurementsDatabase
 type MesurementsDatabase struct {
 	// Human-readable label that identifies the database that the specified MongoDB process serves.
@@ -96,20 +92,4 @@ func (o *MesurementsDatabase) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *MesurementsDatabase) SetLinks(v []Link) {
 	o.Links = &v
-}
-
-func (o *MesurementsDatabase) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *MesurementsDatabase) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.DatabaseName) {
-		toSerialize["databaseName"] = o.DatabaseName
-	}
-	return toSerialize, nil
 }

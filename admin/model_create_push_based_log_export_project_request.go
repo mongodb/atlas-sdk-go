@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // CreatePushBasedLogExportProjectRequest struct for CreatePushBasedLogExportProjectRequest
 type CreatePushBasedLogExportProjectRequest struct {
 	// The name of the bucket to which the agent will send the logs to.
@@ -142,20 +138,4 @@ func (o *CreatePushBasedLogExportProjectRequest) GetPrefixPathOk() (*string, boo
 // SetPrefixPath sets field value
 func (o *CreatePushBasedLogExportProjectRequest) SetPrefixPath(v string) {
 	o.PrefixPath = v
-}
-
-func (o *CreatePushBasedLogExportProjectRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *CreatePushBasedLogExportProjectRequest) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["bucketName"] = o.BucketName
-	toSerialize["iamRoleId"] = o.IamRoleId
-	toSerialize["prefixPath"] = o.PrefixPath
-	return toSerialize, nil
 }

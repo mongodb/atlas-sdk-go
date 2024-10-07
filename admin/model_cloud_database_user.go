@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"encoding/json"
 	"time"
 )
 
@@ -513,50 +512,4 @@ func (o *CloudDatabaseUser) HasX509Type() bool {
 // SetX509Type gets a reference to the given string and assigns it to the X509Type field.
 func (o *CloudDatabaseUser) SetX509Type(v string) {
 	o.X509Type = &v
-}
-
-func (o *CloudDatabaseUser) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *CloudDatabaseUser) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.AwsIAMType) {
-		toSerialize["awsIAMType"] = o.AwsIAMType
-	}
-	toSerialize["databaseName"] = o.DatabaseName
-	if !IsNil(o.DeleteAfterDate) {
-		toSerialize["deleteAfterDate"] = o.DeleteAfterDate
-	}
-	if !IsNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
-	toSerialize["groupId"] = o.GroupId
-	if !IsNil(o.Labels) {
-		toSerialize["labels"] = o.Labels
-	}
-	if !IsNil(o.LdapAuthType) {
-		toSerialize["ldapAuthType"] = o.LdapAuthType
-	}
-	if !IsNil(o.OidcAuthType) {
-		toSerialize["oidcAuthType"] = o.OidcAuthType
-	}
-	if !IsNil(o.Password) {
-		toSerialize["password"] = o.Password
-	}
-	if !IsNil(o.Roles) {
-		toSerialize["roles"] = o.Roles
-	}
-	if !IsNil(o.Scopes) {
-		toSerialize["scopes"] = o.Scopes
-	}
-	toSerialize["username"] = o.Username
-	if !IsNil(o.X509Type) {
-		toSerialize["x509Type"] = o.X509Type
-	}
-	return toSerialize, nil
 }

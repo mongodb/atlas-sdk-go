@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ApiAtlasUserMetadata The user that last updated the atlas resource policy.
 type ApiAtlasUserMetadata struct {
 	// Unique 24-hexadecimal character string that identifies a user.
@@ -97,17 +93,4 @@ func (o *ApiAtlasUserMetadata) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *ApiAtlasUserMetadata) SetName(v string) {
 	o.Name = &v
-}
-
-func (o *ApiAtlasUserMetadata) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ApiAtlasUserMetadata) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

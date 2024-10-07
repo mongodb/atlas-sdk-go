@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // NamespacesRequest struct for NamespacesRequest
 type NamespacesRequest struct {
 	// List of namespace strings (combination of database and collection) on the specified host or cluster.
@@ -61,20 +57,4 @@ func (o *NamespacesRequest) HasNamespaces() bool {
 // SetNamespaces gets a reference to the given []string and assigns it to the Namespaces field.
 func (o *NamespacesRequest) SetNamespaces(v []string) {
 	o.Namespaces = &v
-}
-
-func (o *NamespacesRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *NamespacesRequest) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Namespaces) {
-		toSerialize["namespaces"] = o.Namespaces
-	}
-	return toSerialize, nil
 }

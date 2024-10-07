@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // BackupLabel Collection of key-value pairs that represent custom data to add to the metadata file that MongoDB Cloud uploads to the bucket when the export job finishes.
 type BackupLabel struct {
 	// Key for the metadata file that MongoDB Cloud uploads to the bucket when the export job finishes.
@@ -95,23 +91,4 @@ func (o *BackupLabel) HasValue() bool {
 // SetValue gets a reference to the given string and assigns it to the Value field.
 func (o *BackupLabel) SetValue(v string) {
 	o.Value = &v
-}
-
-func (o *BackupLabel) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *BackupLabel) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Key) {
-		toSerialize["key"] = o.Key
-	}
-	if !IsNil(o.Value) {
-		toSerialize["value"] = o.Value
-	}
-	return toSerialize, nil
 }

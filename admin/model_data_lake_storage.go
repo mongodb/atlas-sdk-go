@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // DataLakeStorage Configuration information for each data store and its mapping to MongoDB Cloud databases.
 type DataLakeStorage struct {
 	// Array that contains the queryable databases and collections for this data lake.
@@ -95,23 +91,4 @@ func (o *DataLakeStorage) HasStores() bool {
 // SetStores gets a reference to the given []DataLakeStoreSettings and assigns it to the Stores field.
 func (o *DataLakeStorage) SetStores(v []DataLakeStoreSettings) {
 	o.Stores = &v
-}
-
-func (o *DataLakeStorage) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *DataLakeStorage) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Databases) {
-		toSerialize["databases"] = o.Databases
-	}
-	if !IsNil(o.Stores) {
-		toSerialize["stores"] = o.Stores
-	}
-	return toSerialize, nil
 }

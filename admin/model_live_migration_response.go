@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // LiveMigrationResponse struct for LiveMigrationResponse
 type LiveMigrationResponse struct {
 	// Unique 24-hexadecimal digit string that identifies the migration job.
@@ -205,17 +201,4 @@ func (o *LiveMigrationResponse) HasStatus() bool {
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *LiveMigrationResponse) SetStatus(v string) {
 	o.Status = &v
-}
-
-func (o *LiveMigrationResponse) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *LiveMigrationResponse) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

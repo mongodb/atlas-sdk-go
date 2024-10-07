@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ServerlessTenantCreateRequest struct for ServerlessTenantCreateRequest
 type ServerlessTenantCreateRequest struct {
 	// Human-readable comment associated with the private endpoint.
@@ -61,20 +57,4 @@ func (o *ServerlessTenantCreateRequest) HasComment() bool {
 // SetComment gets a reference to the given string and assigns it to the Comment field.
 func (o *ServerlessTenantCreateRequest) SetComment(v string) {
 	o.Comment = &v
-}
-
-func (o *ServerlessTenantCreateRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ServerlessTenantCreateRequest) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Comment) {
-		toSerialize["comment"] = o.Comment
-	}
-	return toSerialize, nil
 }

@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // GreaterThanRawThreshold A Limit that triggers an alert when greater than a number.
 type GreaterThanRawThreshold struct {
 	// Comparison operator to apply when checking the current metric value.
@@ -134,26 +130,4 @@ func (o *GreaterThanRawThreshold) HasUnits() bool {
 // SetUnits gets a reference to the given string and assigns it to the Units field.
 func (o *GreaterThanRawThreshold) SetUnits(v string) {
 	o.Units = &v
-}
-
-func (o *GreaterThanRawThreshold) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *GreaterThanRawThreshold) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Operator) {
-		toSerialize["operator"] = o.Operator
-	}
-	if !IsNil(o.Threshold) {
-		toSerialize["threshold"] = o.Threshold
-	}
-	if !IsNil(o.Units) {
-		toSerialize["units"] = o.Units
-	}
-	return toSerialize, nil
 }

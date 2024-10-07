@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ClusterStatus struct for ClusterStatus
 type ClusterStatus struct {
 	// State of cluster at the time of this request. Atlas returns **Applied** if it completed adding a user to, or removing a user from, your cluster. Atlas returns **Pending** if it's still making the requested user changes. When status is **Pending**, new users can't log in.
@@ -96,20 +92,4 @@ func (o *ClusterStatus) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *ClusterStatus) SetLinks(v []Link) {
 	o.Links = &v
-}
-
-func (o *ClusterStatus) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ClusterStatus) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ChangeStatus) {
-		toSerialize["changeStatus"] = o.ChangeStatus
-	}
-	return toSerialize, nil
 }

@@ -3,7 +3,6 @@
 package admin
 
 import (
-	"encoding/json"
 	"time"
 )
 
@@ -608,57 +607,4 @@ func (o *FederationOidcIdentityProvider) HasRequestedScopes() bool {
 // SetRequestedScopes gets a reference to the given []string and assigns it to the RequestedScopes field.
 func (o *FederationOidcIdentityProvider) SetRequestedScopes(v []string) {
 	o.RequestedScopes = &v
-}
-
-func (o *FederationOidcIdentityProvider) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *FederationOidcIdentityProvider) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.AssociatedOrgs) {
-		toSerialize["associatedOrgs"] = o.AssociatedOrgs
-	}
-	if !IsNil(o.Audience) {
-		toSerialize["audience"] = o.Audience
-	}
-	if !IsNil(o.AuthorizationType) {
-		toSerialize["authorizationType"] = o.AuthorizationType
-	}
-	if !IsNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
-	if !IsNil(o.DisplayName) {
-		toSerialize["displayName"] = o.DisplayName
-	}
-	if !IsNil(o.GroupsClaim) {
-		toSerialize["groupsClaim"] = o.GroupsClaim
-	}
-	if !IsNil(o.IdpType) {
-		toSerialize["idpType"] = o.IdpType
-	}
-	if !IsNil(o.IssuerUri) {
-		toSerialize["issuerUri"] = o.IssuerUri
-	}
-	toSerialize["oktaIdpId"] = o.OktaIdpId
-	if !IsNil(o.Protocol) {
-		toSerialize["protocol"] = o.Protocol
-	}
-	if !IsNil(o.UserClaim) {
-		toSerialize["userClaim"] = o.UserClaim
-	}
-	if !IsNil(o.AssociatedDomains) {
-		toSerialize["associatedDomains"] = o.AssociatedDomains
-	}
-	if !IsNil(o.ClientId) {
-		toSerialize["clientId"] = o.ClientId
-	}
-	if !IsNil(o.RequestedScopes) {
-		toSerialize["requestedScopes"] = o.RequestedScopes
-	}
-	return toSerialize, nil
 }

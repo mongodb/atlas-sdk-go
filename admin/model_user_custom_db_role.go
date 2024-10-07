@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // UserCustomDBRole struct for UserCustomDBRole
 type UserCustomDBRole struct {
 	// List of the individual privilege actions that the role grants.
@@ -122,24 +118,4 @@ func (o *UserCustomDBRole) GetRoleNameOk() (*string, bool) {
 // SetRoleName sets field value
 func (o *UserCustomDBRole) SetRoleName(v string) {
 	o.RoleName = v
-}
-
-func (o *UserCustomDBRole) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *UserCustomDBRole) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Actions) {
-		toSerialize["actions"] = o.Actions
-	}
-	if !IsNil(o.InheritedRoles) {
-		toSerialize["inheritedRoles"] = o.InheritedRoles
-	}
-	toSerialize["roleName"] = o.RoleName
-	return toSerialize, nil
 }

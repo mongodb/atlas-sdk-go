@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ServerlessTenantEndpointUpdate Update view for a serverless tenant endpoint.
 type ServerlessTenantEndpointUpdate struct {
 	// Human-readable comment associated with the private endpoint.
@@ -161,27 +157,4 @@ func (o *ServerlessTenantEndpointUpdate) HasPrivateEndpointIpAddress() bool {
 // SetPrivateEndpointIpAddress gets a reference to the given string and assigns it to the PrivateEndpointIpAddress field.
 func (o *ServerlessTenantEndpointUpdate) SetPrivateEndpointIpAddress(v string) {
 	o.PrivateEndpointIpAddress = &v
-}
-
-func (o *ServerlessTenantEndpointUpdate) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ServerlessTenantEndpointUpdate) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Comment) {
-		toSerialize["comment"] = o.Comment
-	}
-	toSerialize["providerName"] = o.ProviderName
-	if !IsNil(o.CloudProviderEndpointId) {
-		toSerialize["cloudProviderEndpointId"] = o.CloudProviderEndpointId
-	}
-	if !IsNil(o.PrivateEndpointIpAddress) {
-		toSerialize["privateEndpointIpAddress"] = o.PrivateEndpointIpAddress
-	}
-	return toSerialize, nil
 }

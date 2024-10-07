@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // CloudRegionConfig20240805 Cloud service provider on which MongoDB Cloud provisions the hosts.
 type CloudRegionConfig20240805 struct {
 	ElectableSpecs *HardwareSpec20240805 `json:"electableSpecs,omitempty"`
@@ -335,44 +331,4 @@ func (o *CloudRegionConfig20240805) HasBackingProviderName() bool {
 // SetBackingProviderName gets a reference to the given string and assigns it to the BackingProviderName field.
 func (o *CloudRegionConfig20240805) SetBackingProviderName(v string) {
 	o.BackingProviderName = &v
-}
-
-func (o *CloudRegionConfig20240805) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *CloudRegionConfig20240805) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ElectableSpecs) {
-		toSerialize["electableSpecs"] = o.ElectableSpecs
-	}
-	if !IsNil(o.Priority) {
-		toSerialize["priority"] = o.Priority
-	}
-	if !IsNil(o.ProviderName) {
-		toSerialize["providerName"] = o.ProviderName
-	}
-	if !IsNil(o.RegionName) {
-		toSerialize["regionName"] = o.RegionName
-	}
-	if !IsNil(o.AnalyticsAutoScaling) {
-		toSerialize["analyticsAutoScaling"] = o.AnalyticsAutoScaling
-	}
-	if !IsNil(o.AnalyticsSpecs) {
-		toSerialize["analyticsSpecs"] = o.AnalyticsSpecs
-	}
-	if !IsNil(o.AutoScaling) {
-		toSerialize["autoScaling"] = o.AutoScaling
-	}
-	if !IsNil(o.ReadOnlySpecs) {
-		toSerialize["readOnlySpecs"] = o.ReadOnlySpecs
-	}
-	if !IsNil(o.BackingProviderName) {
-		toSerialize["backingProviderName"] = o.BackingProviderName
-	}
-	return toSerialize, nil
 }

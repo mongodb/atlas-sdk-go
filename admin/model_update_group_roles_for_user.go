@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // UpdateGroupRolesForUser struct for UpdateGroupRolesForUser
 type UpdateGroupRolesForUser struct {
 	// One or more project level roles to assign to the MongoDB Cloud user.
@@ -96,20 +92,4 @@ func (o *UpdateGroupRolesForUser) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *UpdateGroupRolesForUser) SetLinks(v []Link) {
 	o.Links = &v
-}
-
-func (o *UpdateGroupRolesForUser) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *UpdateGroupRolesForUser) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.GroupRoles) {
-		toSerialize["groupRoles"] = o.GroupRoles
-	}
-	return toSerialize, nil
 }

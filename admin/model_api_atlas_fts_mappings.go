@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ApiAtlasFTSMappings Index specifications for the collection's fields.
 type ApiAtlasFTSMappings struct {
 	// Flag that indicates whether the index uses dynamic or static mappings. Required if **mappings.fields** is omitted.
@@ -100,23 +96,4 @@ func (o *ApiAtlasFTSMappings) HasFields() bool {
 // SetFields gets a reference to the given interface{} and assigns it to the Fields field.
 func (o *ApiAtlasFTSMappings) SetFields(v interface{}) {
 	o.Fields = v
-}
-
-func (o *ApiAtlasFTSMappings) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ApiAtlasFTSMappings) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Dynamic) {
-		toSerialize["dynamic"] = o.Dynamic
-	}
-	if !IsNil(o.Fields) {
-		toSerialize["fields"] = o.Fields
-	}
-	return toSerialize, nil
 }

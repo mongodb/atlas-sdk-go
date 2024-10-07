@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ControlPlaneIPAddresses List of IP addresses in the Atlas control plane.
 type ControlPlaneIPAddresses struct {
 	Inbound  *InboundControlPlaneCloudProviderIPAddresses  `json:"inbound,omitempty"`
@@ -93,23 +89,4 @@ func (o *ControlPlaneIPAddresses) HasOutbound() bool {
 // SetOutbound gets a reference to the given OutboundControlPlaneCloudProviderIPAddresses and assigns it to the Outbound field.
 func (o *ControlPlaneIPAddresses) SetOutbound(v OutboundControlPlaneCloudProviderIPAddresses) {
 	o.Outbound = &v
-}
-
-func (o *ControlPlaneIPAddresses) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ControlPlaneIPAddresses) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Inbound) {
-		toSerialize["inbound"] = o.Inbound
-	}
-	if !IsNil(o.Outbound) {
-		toSerialize["outbound"] = o.Outbound
-	}
-	return toSerialize, nil
 }

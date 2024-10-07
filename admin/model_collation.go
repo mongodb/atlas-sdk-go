@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // Collation One or more settings that specify language-specific rules to compare strings within this index.
 type Collation struct {
 	// Method to handle whitespace and punctuation as base characters for purposes of comparison.  | Value | Evaluate Whitespace and Punctuation as Base Characters | |---|---| | `\"non-ignorable\"` | Yes | | `\"shifted\"` | No. MongoDB Cloud distinguishes these characters when `\"strength\" > 3`. |
@@ -360,42 +356,4 @@ func (o *Collation) HasStrength() bool {
 // SetStrength gets a reference to the given int and assigns it to the Strength field.
 func (o *Collation) SetStrength(v int) {
 	o.Strength = &v
-}
-
-func (o *Collation) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *Collation) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Alternate) {
-		toSerialize["alternate"] = o.Alternate
-	}
-	if !IsNil(o.Backwards) {
-		toSerialize["backwards"] = o.Backwards
-	}
-	if !IsNil(o.CaseFirst) {
-		toSerialize["caseFirst"] = o.CaseFirst
-	}
-	if !IsNil(o.CaseLevel) {
-		toSerialize["caseLevel"] = o.CaseLevel
-	}
-	toSerialize["locale"] = o.Locale
-	if !IsNil(o.MaxVariable) {
-		toSerialize["maxVariable"] = o.MaxVariable
-	}
-	if !IsNil(o.Normalization) {
-		toSerialize["normalization"] = o.Normalization
-	}
-	if !IsNil(o.NumericOrdering) {
-		toSerialize["numericOrdering"] = o.NumericOrdering
-	}
-	if !IsNil(o.Strength) {
-		toSerialize["strength"] = o.Strength
-	}
-	return toSerialize, nil
 }

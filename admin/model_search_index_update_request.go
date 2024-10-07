@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // SearchIndexUpdateRequest struct for SearchIndexUpdateRequest
 type SearchIndexUpdateRequest struct {
 	Definition SearchIndexUpdateRequestDefinition `json:"definition"`
@@ -51,18 +47,4 @@ func (o *SearchIndexUpdateRequest) GetDefinitionOk() (*SearchIndexUpdateRequestD
 // SetDefinition sets field value
 func (o *SearchIndexUpdateRequest) SetDefinition(v SearchIndexUpdateRequestDefinition) {
 	o.Definition = v
-}
-
-func (o *SearchIndexUpdateRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *SearchIndexUpdateRequest) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["definition"] = o.Definition
-	return toSerialize, nil
 }

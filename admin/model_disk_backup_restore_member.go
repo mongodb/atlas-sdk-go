@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // DiskBackupRestoreMember struct for DiskBackupRestoreMember
 type DiskBackupRestoreMember struct {
 	// One Uniform Resource Locator that points to the compressed snapshot files for manual download. MongoDB Cloud returns this parameter when `\"deliveryType\" : \"download\"`.
@@ -133,17 +129,4 @@ func (o *DiskBackupRestoreMember) HasReplicaSetName() bool {
 // SetReplicaSetName gets a reference to the given string and assigns it to the ReplicaSetName field.
 func (o *DiskBackupRestoreMember) SetReplicaSetName(v string) {
 	o.ReplicaSetName = &v
-}
-
-func (o *DiskBackupRestoreMember) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *DiskBackupRestoreMember) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

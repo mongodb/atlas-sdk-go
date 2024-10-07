@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // CreateEndpointRequest struct for CreateEndpointRequest
 type CreateEndpointRequest struct {
 	// Unique string that identifies the private endpoint's network interface that someone added to this private endpoint service.
@@ -203,32 +199,4 @@ func (o *CreateEndpointRequest) HasGcpProjectId() bool {
 // SetGcpProjectId gets a reference to the given string and assigns it to the GcpProjectId field.
 func (o *CreateEndpointRequest) SetGcpProjectId(v string) {
 	o.GcpProjectId = &v
-}
-
-func (o *CreateEndpointRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *CreateEndpointRequest) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !IsNil(o.PrivateEndpointIPAddress) {
-		toSerialize["privateEndpointIPAddress"] = o.PrivateEndpointIPAddress
-	}
-	if !IsNil(o.EndpointGroupName) {
-		toSerialize["endpointGroupName"] = o.EndpointGroupName
-	}
-	if !IsNil(o.Endpoints) {
-		toSerialize["endpoints"] = o.Endpoints
-	}
-	if !IsNil(o.GcpProjectId) {
-		toSerialize["gcpProjectId"] = o.GcpProjectId
-	}
-	return toSerialize, nil
 }

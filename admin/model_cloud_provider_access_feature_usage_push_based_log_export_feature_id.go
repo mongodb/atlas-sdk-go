@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId Identifying characteristics about the Amazon Web Services (AWS) Simple Storage Service (S3) export bucket linked to this AWS Identity and Access Management (IAM) role.
 type CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId struct {
 	// Name of the AWS S3 bucket to which your logs will be exported to.
@@ -97,17 +93,4 @@ func (o *CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId) HasGroupId(
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId) SetGroupId(v string) {
 	o.GroupId = &v
-}
-
-func (o *CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }

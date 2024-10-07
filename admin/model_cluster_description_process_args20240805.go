@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // ClusterDescriptionProcessArgs20240805 struct for ClusterDescriptionProcessArgs20240805
 type ClusterDescriptionProcessArgs20240805 struct {
 	// The minimum pre- and post-image retention time in seconds.
@@ -488,56 +484,4 @@ func (o *ClusterDescriptionProcessArgs20240805) HasTransactionLifetimeLimitSecon
 // SetTransactionLifetimeLimitSeconds gets a reference to the given int64 and assigns it to the TransactionLifetimeLimitSeconds field.
 func (o *ClusterDescriptionProcessArgs20240805) SetTransactionLifetimeLimitSeconds(v int64) {
 	o.TransactionLifetimeLimitSeconds = &v
-}
-
-func (o *ClusterDescriptionProcessArgs20240805) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *ClusterDescriptionProcessArgs20240805) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ChangeStreamOptionsPreAndPostImagesExpireAfterSeconds) {
-		toSerialize["changeStreamOptionsPreAndPostImagesExpireAfterSeconds"] = o.ChangeStreamOptionsPreAndPostImagesExpireAfterSeconds
-	}
-	if !IsNil(o.ChunkMigrationConcurrency) {
-		toSerialize["chunkMigrationConcurrency"] = o.ChunkMigrationConcurrency
-	}
-	if !IsNil(o.DefaultMaxTimeMS) {
-		toSerialize["defaultMaxTimeMS"] = o.DefaultMaxTimeMS
-	}
-	if !IsNil(o.DefaultWriteConcern) {
-		toSerialize["defaultWriteConcern"] = o.DefaultWriteConcern
-	}
-	if !IsNil(o.JavascriptEnabled) {
-		toSerialize["javascriptEnabled"] = o.JavascriptEnabled
-	}
-	if !IsNil(o.MinimumEnabledTlsProtocol) {
-		toSerialize["minimumEnabledTlsProtocol"] = o.MinimumEnabledTlsProtocol
-	}
-	if !IsNil(o.NoTableScan) {
-		toSerialize["noTableScan"] = o.NoTableScan
-	}
-	if !IsNil(o.OplogMinRetentionHours) {
-		toSerialize["oplogMinRetentionHours"] = o.OplogMinRetentionHours
-	}
-	if !IsNil(o.OplogSizeMB) {
-		toSerialize["oplogSizeMB"] = o.OplogSizeMB
-	}
-	if !IsNil(o.QueryStatsLogVerbosity) {
-		toSerialize["queryStatsLogVerbosity"] = o.QueryStatsLogVerbosity
-	}
-	if !IsNil(o.SampleRefreshIntervalBIConnector) {
-		toSerialize["sampleRefreshIntervalBIConnector"] = o.SampleRefreshIntervalBIConnector
-	}
-	if !IsNil(o.SampleSizeBIConnector) {
-		toSerialize["sampleSizeBIConnector"] = o.SampleSizeBIConnector
-	}
-	if !IsNil(o.TransactionLifetimeLimitSeconds) {
-		toSerialize["transactionLifetimeLimitSeconds"] = o.TransactionLifetimeLimitSeconds
-	}
-	return toSerialize, nil
 }

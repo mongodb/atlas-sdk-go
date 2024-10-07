@@ -2,10 +2,6 @@
 
 package admin
 
-import (
-	"encoding/json"
-)
-
 // UsageDetailsFilterRequest Request body which contains various fields to filter line items as part of certain Invoice Usage Details queries.
 type UsageDetailsFilterRequest struct {
 	// The inclusive billing start date for usage details filter.
@@ -305,41 +301,4 @@ func (o *UsageDetailsFilterRequest) HasUsageStartDate() bool {
 // SetUsageStartDate gets a reference to the given string and assigns it to the UsageStartDate field.
 func (o *UsageDetailsFilterRequest) SetUsageStartDate(v string) {
 	o.UsageStartDate = &v
-}
-
-func (o *UsageDetailsFilterRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o *UsageDetailsFilterRequest) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !IsNil(o.BillEndDate) {
-		toSerialize["billEndDate"] = o.BillEndDate
-	}
-	if !IsNil(o.BillStartDate) {
-		toSerialize["billStartDate"] = o.BillStartDate
-	}
-	if !IsNil(o.ClusterIds) {
-		toSerialize["clusterIds"] = o.ClusterIds
-	}
-	if !IsNil(o.GroupIds) {
-		toSerialize["groupIds"] = o.GroupIds
-	}
-	if !IsNil(o.IncludeZeroCentLineItems) {
-		toSerialize["includeZeroCentLineItems"] = o.IncludeZeroCentLineItems
-	}
-	if !IsNil(o.SkuServices) {
-		toSerialize["skuServices"] = o.SkuServices
-	}
-	if !IsNil(o.UsageEndDate) {
-		toSerialize["usageEndDate"] = o.UsageEndDate
-	}
-	if !IsNil(o.UsageStartDate) {
-		toSerialize["usageStartDate"] = o.UsageStartDate
-	}
-	return toSerialize, nil
 }
