@@ -492,7 +492,7 @@ func (c *APIClient) makeApiError(res *http.Response, httpMethod, httpPath string
 		newErr.error = err.Error()
 		return newErr
 	}
-	newErr.error = formatErrorMessage(res.Status, httpMethod, httpPath, v)
+	newErr.error = FormatErrorMessageWithDetails(res.Status, httpMethod, httpPath, v)
 	newErr.model = v
 	return newErr
 }
@@ -652,9 +652,15 @@ func (e *GenericOpenAPIError) SetError(errorString string) {
 	e.error = errorString;
 }
 
-// format error message using title and detail when model implements Error
-func formatErrorMessage(status, path, method string, v ApiError) string {
-	return fmt.Sprintf("%v %v: HTTP %v (Error code: %q) Detail: %v Reason: %v. Params: %v",
-			method, path, status, v.GetErrorCode(),
-	 		v.GetDetail(), v.GetReason(), v.GetParameters())
+// FormatErrorMessageWithDetails formats error message using error struct fields. It should be only used for testing.
+func FormatErrorMessageWithDetails(status, path, method string, v ApiError) string {
+	badRequestDetailString := ""
+	if v.BadRequestDetail != nil {
+		badRequestDetail, _ := json.Marshal(v.GetBadRequestDetail())
+		badRequestDetailString = string(badRequestDetail)
+	}
+
+	return fmt.Sprintf("%v %v: HTTP %v (Error code: %q) Detail: %v Reason: %v. Params: %v, BadRequestDetail: %v",
+		method, path, status, v.GetErrorCode(),
+		v.GetDetail(), v.GetReason(), v.GetParameters(), badRequestDetailString)
 }
