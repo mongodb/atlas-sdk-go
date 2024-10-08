@@ -96,7 +96,7 @@ Name | Type | Description  | Notes
 
 ## DeleteServerlessInstance
 
-> interface{} DeleteServerlessInstance(ctx, groupId, name).Execute()
+> any DeleteServerlessInstance(ctx, groupId, name).Execute()
 
 Remove One Serverless Instance from One Project
 
@@ -136,7 +136,7 @@ func main() {
         }
         return
     }
-    // response from `DeleteServerlessInstance`: interface{}
+    // response from `DeleteServerlessInstance`: any
     fmt.Fprintf(os.Stdout, "Response from `ServerlessInstancesApi.DeleteServerlessInstance`: %v (%v)\n", resp, r)
 }
 ```
@@ -162,7 +162,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**interface{}**
+**any**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

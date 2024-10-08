@@ -16,7 +16,8 @@ npm exec openapi-generator-cli -- generate \
     -c "./config/config.yaml" -i "$openapiFileLocation" -o "$FOLDER" \
     --package-name="$client_package" \
     --type-mappings=integer=int \
-    --type-mappings=object=any \
+    --type-mappings=object=interface{} \
+    --type-mappings=interface{}=any \
     --type-mappings=file=io.ReadCloser \
     --ignore-file-override=config/.go-ignore-tests
 

@@ -105,7 +105,7 @@ Name | Type | Description  | Notes
 
 ## DeleteLegacySnapshot
 
-> interface{} DeleteLegacySnapshot(ctx, groupId, clusterName, snapshotId).Execute()
+> any DeleteLegacySnapshot(ctx, groupId, clusterName, snapshotId).Execute()
 
 Remove One Legacy Backup Snapshot
 
@@ -146,7 +146,7 @@ func main() {
         }
         return
     }
-    // response from `DeleteLegacySnapshot`: interface{}
+    // response from `DeleteLegacySnapshot`: any
     fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.DeleteLegacySnapshot`: %v (%v)\n", resp, r)
 }
 ```
@@ -174,7 +174,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**interface{}**
+**any**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

@@ -277,7 +277,7 @@ Name | Type | Description  | Notes
 
 ## DeleteDataFederationPrivateEndpoint
 
-> interface{} DeleteDataFederationPrivateEndpoint(ctx, groupId, endpointId).Execute()
+> any DeleteDataFederationPrivateEndpoint(ctx, groupId, endpointId).Execute()
 
 Remove One Federated Database Instance and Online Archive Private Endpoint from One Project
 
@@ -317,7 +317,7 @@ func main() {
         }
         return
     }
-    // response from `DeleteDataFederationPrivateEndpoint`: interface{}
+    // response from `DeleteDataFederationPrivateEndpoint`: any
     fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.DeleteDataFederationPrivateEndpoint`: %v (%v)\n", resp, r)
 }
 ```
@@ -343,7 +343,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**interface{}**
+**any**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -360,7 +360,7 @@ Name | Type | Description  | Notes
 
 ## DeleteFederatedDatabase
 
-> interface{} DeleteFederatedDatabase(ctx, groupId, tenantName).Execute()
+> any DeleteFederatedDatabase(ctx, groupId, tenantName).Execute()
 
 Remove One Federated Database Instance from One Project
 
@@ -400,7 +400,7 @@ func main() {
         }
         return
     }
-    // response from `DeleteFederatedDatabase`: interface{}
+    // response from `DeleteFederatedDatabase`: any
     fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.DeleteFederatedDatabase`: %v (%v)\n", resp, r)
 }
 ```
@@ -426,7 +426,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**interface{}**
+**any**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -443,7 +443,7 @@ Name | Type | Description  | Notes
 
 ## DeleteOneDataFederationInstanceQueryLimit
 
-> interface{} DeleteOneDataFederationInstanceQueryLimit(ctx, groupId, tenantName, limitName).Execute()
+> any DeleteOneDataFederationInstanceQueryLimit(ctx, groupId, tenantName, limitName).Execute()
 
 Delete One Query Limit For One Federated Database Instance
 
@@ -484,7 +484,7 @@ func main() {
         }
         return
     }
-    // response from `DeleteOneDataFederationInstanceQueryLimit`: interface{}
+    // response from `DeleteOneDataFederationInstanceQueryLimit`: any
     fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.DeleteOneDataFederationInstanceQueryLimit`: %v (%v)\n", resp, r)
 }
 ```
@@ -512,7 +512,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**interface{}**
+**any**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

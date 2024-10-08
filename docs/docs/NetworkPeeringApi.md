@@ -186,7 +186,7 @@ Name | Type | Description  | Notes
 
 ## DeletePeeringConnection
 
-> interface{} DeletePeeringConnection(ctx, groupId, peerId).Execute()
+> any DeletePeeringConnection(ctx, groupId, peerId).Execute()
 
 Remove One Existing Network Peering Connection
 
@@ -226,7 +226,7 @@ func main() {
         }
         return
     }
-    // response from `DeletePeeringConnection`: interface{}
+    // response from `DeletePeeringConnection`: any
     fmt.Fprintf(os.Stdout, "Response from `NetworkPeeringApi.DeletePeeringConnection`: %v (%v)\n", resp, r)
 }
 ```
@@ -252,7 +252,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**interface{}**
+**any**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -269,7 +269,7 @@ Name | Type | Description  | Notes
 
 ## DeletePeeringContainer
 
-> interface{} DeletePeeringContainer(ctx, groupId, containerId).Execute()
+> any DeletePeeringContainer(ctx, groupId, containerId).Execute()
 
 Remove One Network Peering Container
 
@@ -309,7 +309,7 @@ func main() {
         }
         return
     }
-    // response from `DeletePeeringContainer`: interface{}
+    // response from `DeletePeeringContainer`: any
     fmt.Fprintf(os.Stdout, "Response from `NetworkPeeringApi.DeletePeeringContainer`: %v (%v)\n", resp, r)
 }
 ```
@@ -335,7 +335,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**interface{}**
+**any**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

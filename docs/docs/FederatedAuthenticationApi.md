@@ -1107,7 +1107,7 @@ Name | Type | Description  | Notes
 
 ## RemoveConnectedOrgConfig
 
-> interface{} RemoveConnectedOrgConfig(ctx, federationSettingsId, orgId).Execute()
+> any RemoveConnectedOrgConfig(ctx, federationSettingsId, orgId).Execute()
 
 Remove One Org Config Connected to One Federation
 
@@ -1147,7 +1147,7 @@ func main() {
         }
         return
     }
-    // response from `RemoveConnectedOrgConfig`: interface{}
+    // response from `RemoveConnectedOrgConfig`: any
     fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.RemoveConnectedOrgConfig`: %v (%v)\n", resp, r)
 }
 ```
@@ -1173,7 +1173,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**interface{}**
+**any**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

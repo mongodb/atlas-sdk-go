@@ -38,7 +38,7 @@ Method | HTTP request | Description
 
 ## CancelBackupRestoreJob
 
-> interface{} CancelBackupRestoreJob(ctx, groupId, clusterName, restoreJobId).Execute()
+> any CancelBackupRestoreJob(ctx, groupId, clusterName, restoreJobId).Execute()
 
 Cancel One Restore Job of One Cluster
 
@@ -79,7 +79,7 @@ func main() {
         }
         return
     }
-    // response from `CancelBackupRestoreJob`: interface{}
+    // response from `CancelBackupRestoreJob`: any
     fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.CancelBackupRestoreJob`: %v (%v)\n", resp, r)
 }
 ```
@@ -107,7 +107,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**interface{}**
+**any**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -544,7 +544,7 @@ Name | Type | Description  | Notes
 
 ## DeleteExportBucket
 
-> interface{} DeleteExportBucket(ctx, groupId, exportBucketId).Execute()
+> any DeleteExportBucket(ctx, groupId, exportBucketId).Execute()
 
 Revoke Access to AWS S3 Bucket or Azure Blob Storage Container for Cloud Backup Snapshot Exports
 
@@ -584,7 +584,7 @@ func main() {
         }
         return
     }
-    // response from `DeleteExportBucket`: interface{}
+    // response from `DeleteExportBucket`: any
     fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.DeleteExportBucket`: %v (%v)\n", resp, r)
 }
 ```
@@ -610,7 +610,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**interface{}**
+**any**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -627,7 +627,7 @@ Name | Type | Description  | Notes
 
 ## DeleteReplicaSetBackup
 
-> interface{} DeleteReplicaSetBackup(ctx, groupId, clusterName, snapshotId).Execute()
+> any DeleteReplicaSetBackup(ctx, groupId, clusterName, snapshotId).Execute()
 
 Remove One Replica Set Cloud Backup
 
@@ -668,7 +668,7 @@ func main() {
         }
         return
     }
-    // response from `DeleteReplicaSetBackup`: interface{}
+    // response from `DeleteReplicaSetBackup`: any
     fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.DeleteReplicaSetBackup`: %v (%v)\n", resp, r)
 }
 ```
@@ -696,7 +696,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**interface{}**
+**any**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -713,7 +713,7 @@ Name | Type | Description  | Notes
 
 ## DeleteShardedClusterBackup
 
-> interface{} DeleteShardedClusterBackup(ctx, groupId, clusterName, snapshotId).Execute()
+> any DeleteShardedClusterBackup(ctx, groupId, clusterName, snapshotId).Execute()
 
 Remove One Sharded Cluster Cloud Backup
 
@@ -754,7 +754,7 @@ func main() {
         }
         return
     }
-    // response from `DeleteShardedClusterBackup`: interface{}
+    // response from `DeleteShardedClusterBackup`: any
     fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.DeleteShardedClusterBackup`: %v (%v)\n", resp, r)
 }
 ```
@@ -782,7 +782,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**interface{}**
+**any**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

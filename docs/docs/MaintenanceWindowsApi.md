@@ -328,7 +328,7 @@ Name | Type | Description  | Notes
 
 ## UpdateMaintenanceWindow
 
-> interface{} UpdateMaintenanceWindow(ctx, groupId, groupMaintenanceWindow GroupMaintenanceWindow).Execute()
+> any UpdateMaintenanceWindow(ctx, groupId, groupMaintenanceWindow GroupMaintenanceWindow).Execute()
 
 Update Maintenance Window for One Project
 
@@ -368,7 +368,7 @@ func main() {
         }
         return
     }
-    // response from `UpdateMaintenanceWindow`: interface{}
+    // response from `UpdateMaintenanceWindow`: any
     fmt.Fprintf(os.Stdout, "Response from `MaintenanceWindowsApi.UpdateMaintenanceWindow`: %v (%v)\n", resp, r)
 }
 ```
@@ -393,7 +393,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**interface{}**
+**any**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

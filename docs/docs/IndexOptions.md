@@ -16,11 +16,11 @@ Name | Type | Description | Notes
 **Max** | Pointer to **int** | Upper inclusive boundary to limit the longitude and latitude values. This option applies to the 2d index type only. | [optional] [default to 180]
 **Min** | Pointer to **int** | Lower inclusive boundary to limit the longitude and latitude values. This option applies to the 2d index type only. | [optional] [default to -180]
 **Name** | Pointer to **string** | Human-readable label that identifies this index. This option applies to all index types. | [optional] 
-**PartialFilterExpression** | Pointer to **interface{}** | Rules that limit the documents that the index references to a filter expression. All MongoDB index types accept a **partialFilterExpression** option. **partialFilterExpression** can include following expressions:  - equality (&#x60;\&quot;parameter\&quot; : \&quot;value\&quot;&#x60; or using the &#x60;$eq&#x60; operator) - &#x60;\&quot;$exists\&quot;: true&#x60; , maximum: &#x60;$gt&#x60;, &#x60;$gte&#x60;, &#x60;$lt&#x60;, &#x60;$lte&#x60; comparisons - &#x60;$type&#x60; - &#x60;$and&#x60; (top-level only)  This option applies to all index types. | [optional] 
+**PartialFilterExpression** | Pointer to [**any**](interface{}.md) | Rules that limit the documents that the index references to a filter expression. All MongoDB index types accept a **partialFilterExpression** option. **partialFilterExpression** can include following expressions:  - equality (&#x60;\&quot;parameter\&quot; : \&quot;value\&quot;&#x60; or using the &#x60;$eq&#x60; operator) - &#x60;\&quot;$exists\&quot;: true&#x60; , maximum: &#x60;$gt&#x60;, &#x60;$gte&#x60;, &#x60;$lt&#x60;, &#x60;$lte&#x60; comparisons - &#x60;$type&#x60; - &#x60;$and&#x60; (top-level only)  This option applies to all index types. | [optional] 
 **Sparse** | Pointer to **bool** | Flag that indicates whether the index references documents that only have the specified parameter. These indexes use less space but behave differently in some situations like when sorting. The following index types default to sparse and ignore this option: &#x60;2dsphere&#x60;, &#x60;2d&#x60;, &#x60;geoHaystack&#x60;, &#x60;text&#x60;.  Compound indexes that includes one or more indexes with &#x60;2dsphere&#x60; keys alongside other key types, only the &#x60;2dsphere&#x60; index parameters determine which documents the index references. If you run MongoDB 3.2 or later, use partial indexes. This option applies to all index types. | [optional] [default to false]
-**StorageEngine** | Pointer to **interface{}** | Storage engine set for the specific index. This value can be set only at creation. This option uses the following format: &#x60;\&quot;storageEngine\&quot; : { \&quot;&lt;storage-engine-name&gt;\&quot; : \&quot;&lt;options&gt;\&quot; }&#x60; MongoDB validates storage engine configuration options when creating indexes. To support replica sets with members with different storage engines, MongoDB logs these options to the oplog during replication. This option applies to all index types. | [optional] 
+**StorageEngine** | Pointer to [**any**](interface{}.md) | Storage engine set for the specific index. This value can be set only at creation. This option uses the following format: &#x60;\&quot;storageEngine\&quot; : { \&quot;&lt;storage-engine-name&gt;\&quot; : \&quot;&lt;options&gt;\&quot; }&#x60; MongoDB validates storage engine configuration options when creating indexes. To support replica sets with members with different storage engines, MongoDB logs these options to the oplog during replication. This option applies to all index types. | [optional] 
 **TextIndexVersion** | Pointer to **int** | Version applied to this text index. MongoDB 3.2 and later use version &#x60;3&#x60;. Use this option to override the default version number. This option applies to the **text** index type only. | [optional] [default to 3]
-**Weights** | Pointer to **interface{}** | Relative importance to place upon provided index parameters. This object expresses this as key/value pairs of index parameter and weight to apply to that parameter. You can specify weights for some or all the indexed parameters. The weight must be an integer between 1 and 99,999. MongoDB 5.0 and later can apply **weights** to **text** indexes only. | [optional] 
+**Weights** | Pointer to [**any**](interface{}.md) | Relative importance to place upon provided index parameters. This object expresses this as key/value pairs of index parameter and weight to apply to that parameter. You can specify weights for some or all the indexed parameters. The weight must be an integer between 1 and 99,999. MongoDB 5.0 and later can apply **weights** to **text** indexes only. | [optional] 
 
 ## Methods
 
@@ -331,20 +331,20 @@ SetName sets Name field to given value.
 HasName returns a boolean if a field has been set.
 ### GetPartialFilterExpression
 
-`func (o *IndexOptions) GetPartialFilterExpression() interface{}`
+`func (o *IndexOptions) GetPartialFilterExpression() any`
 
 GetPartialFilterExpression returns the PartialFilterExpression field if non-nil, zero value otherwise.
 
 ### GetPartialFilterExpressionOk
 
-`func (o *IndexOptions) GetPartialFilterExpressionOk() (*interface{}, bool)`
+`func (o *IndexOptions) GetPartialFilterExpressionOk() (*any, bool)`
 
 GetPartialFilterExpressionOk returns a tuple with the PartialFilterExpression field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPartialFilterExpression
 
-`func (o *IndexOptions) SetPartialFilterExpression(v interface{})`
+`func (o *IndexOptions) SetPartialFilterExpression(v any)`
 
 SetPartialFilterExpression sets PartialFilterExpression field to given value.
 
@@ -379,20 +379,20 @@ SetSparse sets Sparse field to given value.
 HasSparse returns a boolean if a field has been set.
 ### GetStorageEngine
 
-`func (o *IndexOptions) GetStorageEngine() interface{}`
+`func (o *IndexOptions) GetStorageEngine() any`
 
 GetStorageEngine returns the StorageEngine field if non-nil, zero value otherwise.
 
 ### GetStorageEngineOk
 
-`func (o *IndexOptions) GetStorageEngineOk() (*interface{}, bool)`
+`func (o *IndexOptions) GetStorageEngineOk() (*any, bool)`
 
 GetStorageEngineOk returns a tuple with the StorageEngine field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStorageEngine
 
-`func (o *IndexOptions) SetStorageEngine(v interface{})`
+`func (o *IndexOptions) SetStorageEngine(v any)`
 
 SetStorageEngine sets StorageEngine field to given value.
 
@@ -427,20 +427,20 @@ SetTextIndexVersion sets TextIndexVersion field to given value.
 HasTextIndexVersion returns a boolean if a field has been set.
 ### GetWeights
 
-`func (o *IndexOptions) GetWeights() interface{}`
+`func (o *IndexOptions) GetWeights() any`
 
 GetWeights returns the Weights field if non-nil, zero value otherwise.
 
 ### GetWeightsOk
 
-`func (o *IndexOptions) GetWeightsOk() (*interface{}, bool)`
+`func (o *IndexOptions) GetWeightsOk() (*any, bool)`
 
 GetWeightsOk returns a tuple with the Weights field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetWeights
 
-`func (o *IndexOptions) SetWeights(v interface{})`
+`func (o *IndexOptions) SetWeights(v any)`
 
 SetWeights sets Weights field to given value.
 

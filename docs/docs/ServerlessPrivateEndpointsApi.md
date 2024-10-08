@@ -99,7 +99,7 @@ Name | Type | Description  | Notes
 
 ## DeleteServerlessPrivateEndpoint
 
-> interface{} DeleteServerlessPrivateEndpoint(ctx, groupId, instanceName, endpointId).Execute()
+> any DeleteServerlessPrivateEndpoint(ctx, groupId, instanceName, endpointId).Execute()
 
 Remove One Private Endpoint for One Serverless Instance
 
@@ -140,7 +140,7 @@ func main() {
         }
         return
     }
-    // response from `DeleteServerlessPrivateEndpoint`: interface{}
+    // response from `DeleteServerlessPrivateEndpoint`: any
     fmt.Fprintf(os.Stdout, "Response from `ServerlessPrivateEndpointsApi.DeleteServerlessPrivateEndpoint`: %v (%v)\n", resp, r)
 }
 ```
@@ -168,7 +168,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**interface{}**
+**any**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

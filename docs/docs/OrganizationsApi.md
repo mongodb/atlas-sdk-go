@@ -184,7 +184,7 @@ Name | Type | Description  | Notes
 
 ## DeleteOrganization
 
-> interface{} DeleteOrganization(ctx, orgId).Execute()
+> any DeleteOrganization(ctx, orgId).Execute()
 
 Remove One Organization
 
@@ -223,7 +223,7 @@ func main() {
         }
         return
     }
-    // response from `DeleteOrganization`: interface{}
+    // response from `DeleteOrganization`: any
     fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.DeleteOrganization`: %v (%v)\n", resp, r)
 }
 ```
@@ -247,7 +247,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**interface{}**
+**any**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -264,7 +264,7 @@ Name | Type | Description  | Notes
 
 ## DeleteOrganizationInvitation
 
-> interface{} DeleteOrganizationInvitation(ctx, orgId, invitationId).Execute()
+> any DeleteOrganizationInvitation(ctx, orgId, invitationId).Execute()
 
 Cancel One Organization Invitation
 
@@ -304,7 +304,7 @@ func main() {
         }
         return
     }
-    // response from `DeleteOrganizationInvitation`: interface{}
+    // response from `DeleteOrganizationInvitation`: any
     fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.DeleteOrganizationInvitation`: %v (%v)\n", resp, r)
 }
 ```
@@ -330,7 +330,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**interface{}**
+**any**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -928,7 +928,7 @@ Name | Type | Description  | Notes
 
 ## RemoveOrganizationUser
 
-> interface{} RemoveOrganizationUser(ctx, orgId, userId).Execute()
+> any RemoveOrganizationUser(ctx, orgId, userId).Execute()
 
 Remove One MongoDB Cloud User From One Organization
 
@@ -968,7 +968,7 @@ func main() {
         }
         return
     }
-    // response from `RemoveOrganizationUser`: interface{}
+    // response from `RemoveOrganizationUser`: any
     fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.RemoveOrganizationUser`: %v (%v)\n", resp, r)
 }
 ```
@@ -994,7 +994,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**interface{}**
+**any**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

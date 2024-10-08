@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CharFilters** | Pointer to **[]interface{}** | Filters that examine text one character at a time and perform filtering operations. | [optional] 
+**CharFilters** | Pointer to [**[]any**](any.md) | Filters that examine text one character at a time and perform filtering operations. | [optional] 
 **Name** | **string** | Human-readable name that identifies the custom analyzer. Names must be unique within an index, and must not start with any of the following strings: - &#x60;lucene.&#x60; - &#x60;builtin.&#x60; - &#x60;mongodb.&#x60; | 
-**TokenFilters** | Pointer to **[]interface{}** | Filter that performs operations such as:  - Stemming, which reduces related words, such as \&quot;talking\&quot;, \&quot;talked\&quot;, and \&quot;talks\&quot; to their root word \&quot;talk\&quot;.  - Redaction, the removal of sensitive information from public documents. | [optional] 
+**TokenFilters** | Pointer to [**[]any**](any.md) | Filter that performs operations such as:  - Stemming, which reduces related words, such as \&quot;talking\&quot;, \&quot;talked\&quot;, and \&quot;talks\&quot; to their root word \&quot;talk\&quot;.  - Redaction, the removal of sensitive information from public documents. | [optional] 
 **Tokenizer** | [**ApiAtlasFTSAnalyzersTokenizer**](ApiAtlasFTSAnalyzersTokenizer.md) |  | 
 
 ## Methods
@@ -30,20 +30,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetCharFilters
 
-`func (o *ApiAtlasFTSAnalyzers) GetCharFilters() []interface{}`
+`func (o *ApiAtlasFTSAnalyzers) GetCharFilters() []any`
 
 GetCharFilters returns the CharFilters field if non-nil, zero value otherwise.
 
 ### GetCharFiltersOk
 
-`func (o *ApiAtlasFTSAnalyzers) GetCharFiltersOk() (*[]interface{}, bool)`
+`func (o *ApiAtlasFTSAnalyzers) GetCharFiltersOk() (*[]any, bool)`
 
 GetCharFiltersOk returns a tuple with the CharFilters field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCharFilters
 
-`func (o *ApiAtlasFTSAnalyzers) SetCharFilters(v []interface{})`
+`func (o *ApiAtlasFTSAnalyzers) SetCharFilters(v []any)`
 
 SetCharFilters sets CharFilters field to given value.
 
@@ -73,20 +73,20 @@ SetName sets Name field to given value.
 
 ### GetTokenFilters
 
-`func (o *ApiAtlasFTSAnalyzers) GetTokenFilters() []interface{}`
+`func (o *ApiAtlasFTSAnalyzers) GetTokenFilters() []any`
 
 GetTokenFilters returns the TokenFilters field if non-nil, zero value otherwise.
 
 ### GetTokenFiltersOk
 
-`func (o *ApiAtlasFTSAnalyzers) GetTokenFiltersOk() (*[]interface{}, bool)`
+`func (o *ApiAtlasFTSAnalyzers) GetTokenFiltersOk() (*[]any, bool)`
 
 GetTokenFiltersOk returns a tuple with the TokenFilters field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTokenFilters
 
-`func (o *ApiAtlasFTSAnalyzers) SetTokenFilters(v []interface{})`
+`func (o *ApiAtlasFTSAnalyzers) SetTokenFilters(v []any)`
 
 SetTokenFilters sets TokenFilters field to given value.
 

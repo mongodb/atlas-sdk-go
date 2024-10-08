@@ -276,7 +276,7 @@ Name | Type | Description  | Notes
 
 ## DeleteProject
 
-> interface{} DeleteProject(ctx, groupId).Execute()
+> any DeleteProject(ctx, groupId).Execute()
 
 Remove One Project
 
@@ -315,7 +315,7 @@ func main() {
         }
         return
     }
-    // response from `DeleteProject`: interface{}
+    // response from `DeleteProject`: any
     fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.DeleteProject`: %v (%v)\n", resp, r)
 }
 ```
@@ -339,7 +339,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**interface{}**
+**any**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -356,7 +356,7 @@ Name | Type | Description  | Notes
 
 ## DeleteProjectInvitation
 
-> interface{} DeleteProjectInvitation(ctx, groupId, invitationId).Execute()
+> any DeleteProjectInvitation(ctx, groupId, invitationId).Execute()
 
 Cancel One Project Invitation
 
@@ -396,7 +396,7 @@ func main() {
         }
         return
     }
-    // response from `DeleteProjectInvitation`: interface{}
+    // response from `DeleteProjectInvitation`: any
     fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.DeleteProjectInvitation`: %v (%v)\n", resp, r)
 }
 ```
@@ -422,7 +422,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**interface{}**
+**any**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -439,7 +439,7 @@ Name | Type | Description  | Notes
 
 ## DeleteProjectLimit
 
-> interface{} DeleteProjectLimit(ctx, limitName, groupId).Execute()
+> any DeleteProjectLimit(ctx, limitName, groupId).Execute()
 
 Remove One Project Limit
 
@@ -479,7 +479,7 @@ func main() {
         }
         return
     }
-    // response from `DeleteProjectLimit`: interface{}
+    // response from `DeleteProjectLimit`: any
     fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.DeleteProjectLimit`: %v (%v)\n", resp, r)
 }
 ```
@@ -505,7 +505,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**interface{}**
+**any**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

@@ -525,7 +525,7 @@ Name | Type | Description  | Notes
 
 ## GrantMongoDBEmployeeAccess
 
-> interface{} GrantMongoDBEmployeeAccess(ctx, groupId, clusterName, employeeAccessGrant EmployeeAccessGrant).Execute()
+> any GrantMongoDBEmployeeAccess(ctx, groupId, clusterName, employeeAccessGrant EmployeeAccessGrant).Execute()
 
 Grant MongoDB employee cluster access for one cluster.
 
@@ -566,7 +566,7 @@ func main() {
         }
         return
     }
-    // response from `GrantMongoDBEmployeeAccess`: interface{}
+    // response from `GrantMongoDBEmployeeAccess`: any
     fmt.Fprintf(os.Stdout, "Response from `ClustersApi.GrantMongoDBEmployeeAccess`: %v (%v)\n", resp, r)
 }
 ```
@@ -593,7 +593,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**interface{}**
+**any**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -951,7 +951,7 @@ Name | Type | Description  | Notes
 
 ## PinFeatureCompatibilityVersion
 
-> interface{} PinFeatureCompatibilityVersion(ctx, groupId, clusterName, pinFCV PinFCV).Execute()
+> any PinFeatureCompatibilityVersion(ctx, groupId, clusterName, pinFCV PinFCV).Execute()
 
 Pin FCV for One Cluster from One Project
 
@@ -992,7 +992,7 @@ func main() {
         }
         return
     }
-    // response from `PinFeatureCompatibilityVersion`: interface{}
+    // response from `PinFeatureCompatibilityVersion`: any
     fmt.Fprintf(os.Stdout, "Response from `ClustersApi.PinFeatureCompatibilityVersion`: %v (%v)\n", resp, r)
 }
 ```
@@ -1019,7 +1019,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**interface{}**
+**any**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -1036,7 +1036,7 @@ Name | Type | Description  | Notes
 
 ## RevokeMongoDBEmployeeAccess
 
-> interface{} RevokeMongoDBEmployeeAccess(ctx, groupId, clusterName).Execute()
+> any RevokeMongoDBEmployeeAccess(ctx, groupId, clusterName).Execute()
 
 Revoke granted MongoDB employee cluster access for one cluster.
 
@@ -1076,7 +1076,7 @@ func main() {
         }
         return
     }
-    // response from `RevokeMongoDBEmployeeAccess`: interface{}
+    // response from `RevokeMongoDBEmployeeAccess`: any
     fmt.Fprintf(os.Stdout, "Response from `ClustersApi.RevokeMongoDBEmployeeAccess`: %v (%v)\n", resp, r)
 }
 ```
@@ -1102,7 +1102,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**interface{}**
+**any**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -1200,7 +1200,7 @@ Name | Type | Description  | Notes
 
 ## UnpinFeatureCompatibilityVersion
 
-> interface{} UnpinFeatureCompatibilityVersion(ctx, groupId, clusterName).Execute()
+> any UnpinFeatureCompatibilityVersion(ctx, groupId, clusterName).Execute()
 
 Unpins FCV for One Cluster from One Project
 
@@ -1240,7 +1240,7 @@ func main() {
         }
         return
     }
-    // response from `UnpinFeatureCompatibilityVersion`: interface{}
+    // response from `UnpinFeatureCompatibilityVersion`: any
     fmt.Fprintf(os.Stdout, "Response from `ClustersApi.UnpinFeatureCompatibilityVersion`: %v (%v)\n", resp, r)
 }
 ```
@@ -1266,7 +1266,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**interface{}**
+**any**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

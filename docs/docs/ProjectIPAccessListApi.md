@@ -102,7 +102,7 @@ Name | Type | Description  | Notes
 
 ## DeleteProjectIpAccessList
 
-> interface{} DeleteProjectIpAccessList(ctx, groupId, entryValue).Execute()
+> any DeleteProjectIpAccessList(ctx, groupId, entryValue).Execute()
 
 Remove One Entry from One Project IP Access List
 
@@ -142,7 +142,7 @@ func main() {
         }
         return
     }
-    // response from `DeleteProjectIpAccessList`: interface{}
+    // response from `DeleteProjectIpAccessList`: any
     fmt.Fprintf(os.Stdout, "Response from `ProjectIPAccessListApi.DeleteProjectIpAccessList`: %v (%v)\n", resp, r)
 }
 ```
@@ -168,7 +168,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**interface{}**
+**any**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

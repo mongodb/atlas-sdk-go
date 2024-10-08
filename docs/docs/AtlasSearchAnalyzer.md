@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CharFilters** | Pointer to **[]interface{}** | Filters that examine text one character at a time and perform filtering operations. | [optional] 
+**CharFilters** | Pointer to [**[]any**](any.md) | Filters that examine text one character at a time and perform filtering operations. | [optional] 
 **Name** | **string** | Name that identifies the custom analyzer. Names must be unique within an index, and must not start with any of the following strings: - &#x60;lucene.&#x60; - &#x60;builtin.&#x60; - &#x60;mongodb.&#x60; | 
-**TokenFilters** | Pointer to **[]interface{}** | Filter that performs operations such as:  - Stemming, which reduces related words, such as \&quot;talking\&quot;, \&quot;talked\&quot;, and \&quot;talks\&quot; to their root word \&quot;talk\&quot;.  - Redaction, which is the removal of sensitive information from public documents. | [optional] 
-**Tokenizer** | **interface{}** | Tokenizer that you want to use to create tokens. Tokens determine how Atlas Search splits up text into discrete chunks for indexing. | 
+**TokenFilters** | Pointer to [**[]any**](any.md) | Filter that performs operations such as:  - Stemming, which reduces related words, such as \&quot;talking\&quot;, \&quot;talked\&quot;, and \&quot;talks\&quot; to their root word \&quot;talk\&quot;.  - Redaction, which is the removal of sensitive information from public documents. | [optional] 
+**Tokenizer** | [**any**](interface{}.md) | Tokenizer that you want to use to create tokens. Tokens determine how Atlas Search splits up text into discrete chunks for indexing. | 
 
 ## Methods
 
 ### NewAtlasSearchAnalyzer
 
-`func NewAtlasSearchAnalyzer(name string, tokenizer interface{}, ) *AtlasSearchAnalyzer`
+`func NewAtlasSearchAnalyzer(name string, tokenizer any, ) *AtlasSearchAnalyzer`
 
 NewAtlasSearchAnalyzer instantiates a new AtlasSearchAnalyzer object
 This constructor will assign default values to properties that have it defined,
@@ -30,20 +30,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetCharFilters
 
-`func (o *AtlasSearchAnalyzer) GetCharFilters() []interface{}`
+`func (o *AtlasSearchAnalyzer) GetCharFilters() []any`
 
 GetCharFilters returns the CharFilters field if non-nil, zero value otherwise.
 
 ### GetCharFiltersOk
 
-`func (o *AtlasSearchAnalyzer) GetCharFiltersOk() (*[]interface{}, bool)`
+`func (o *AtlasSearchAnalyzer) GetCharFiltersOk() (*[]any, bool)`
 
 GetCharFiltersOk returns a tuple with the CharFilters field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCharFilters
 
-`func (o *AtlasSearchAnalyzer) SetCharFilters(v []interface{})`
+`func (o *AtlasSearchAnalyzer) SetCharFilters(v []any)`
 
 SetCharFilters sets CharFilters field to given value.
 
@@ -73,20 +73,20 @@ SetName sets Name field to given value.
 
 ### GetTokenFilters
 
-`func (o *AtlasSearchAnalyzer) GetTokenFilters() []interface{}`
+`func (o *AtlasSearchAnalyzer) GetTokenFilters() []any`
 
 GetTokenFilters returns the TokenFilters field if non-nil, zero value otherwise.
 
 ### GetTokenFiltersOk
 
-`func (o *AtlasSearchAnalyzer) GetTokenFiltersOk() (*[]interface{}, bool)`
+`func (o *AtlasSearchAnalyzer) GetTokenFiltersOk() (*[]any, bool)`
 
 GetTokenFiltersOk returns a tuple with the TokenFilters field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTokenFilters
 
-`func (o *AtlasSearchAnalyzer) SetTokenFilters(v []interface{})`
+`func (o *AtlasSearchAnalyzer) SetTokenFilters(v []any)`
 
 SetTokenFilters sets TokenFilters field to given value.
 
@@ -97,20 +97,20 @@ SetTokenFilters sets TokenFilters field to given value.
 HasTokenFilters returns a boolean if a field has been set.
 ### GetTokenizer
 
-`func (o *AtlasSearchAnalyzer) GetTokenizer() interface{}`
+`func (o *AtlasSearchAnalyzer) GetTokenizer() any`
 
 GetTokenizer returns the Tokenizer field if non-nil, zero value otherwise.
 
 ### GetTokenizerOk
 
-`func (o *AtlasSearchAnalyzer) GetTokenizerOk() (*interface{}, bool)`
+`func (o *AtlasSearchAnalyzer) GetTokenizerOk() (*any, bool)`
 
 GetTokenizerOk returns a tuple with the Tokenizer field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTokenizer
 
-`func (o *AtlasSearchAnalyzer) SetTokenizer(v interface{})`
+`func (o *AtlasSearchAnalyzer) SetTokenizer(v any)`
 
 SetTokenizer sets Tokenizer field to given value.
 

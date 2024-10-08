@@ -23,7 +23,7 @@ Method | HTTP request | Description
 
 ## AddProjectApiKey
 
-> interface{} AddProjectApiKey(ctx, groupId, apiUserId, userAccessRoleAssignment []UserAccessRoleAssignment).Execute()
+> any AddProjectApiKey(ctx, groupId, apiUserId, userAccessRoleAssignment []UserAccessRoleAssignment).Execute()
 
 Assign One Organization API Key to One Project
 
@@ -64,7 +64,7 @@ func main() {
         }
         return
     }
-    // response from `AddProjectApiKey`: interface{}
+    // response from `AddProjectApiKey`: any
     fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.AddProjectApiKey`: %v (%v)\n", resp, r)
 }
 ```
@@ -91,7 +91,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**interface{}**
+**any**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -363,7 +363,7 @@ Name | Type | Description  | Notes
 
 ## DeleteApiKey
 
-> interface{} DeleteApiKey(ctx, orgId, apiUserId).Execute()
+> any DeleteApiKey(ctx, orgId, apiUserId).Execute()
 
 Remove One Organization API Key
 
@@ -403,7 +403,7 @@ func main() {
         }
         return
     }
-    // response from `DeleteApiKey`: interface{}
+    // response from `DeleteApiKey`: any
     fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.DeleteApiKey`: %v (%v)\n", resp, r)
 }
 ```
@@ -429,7 +429,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**interface{}**
+**any**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -446,7 +446,7 @@ Name | Type | Description  | Notes
 
 ## DeleteApiKeyAccessListEntry
 
-> interface{} DeleteApiKeyAccessListEntry(ctx, orgId, apiUserId, ipAddress).Execute()
+> any DeleteApiKeyAccessListEntry(ctx, orgId, apiUserId, ipAddress).Execute()
 
 Remove One Access List Entry for One Organization API Key
 
@@ -487,7 +487,7 @@ func main() {
         }
         return
     }
-    // response from `DeleteApiKeyAccessListEntry`: interface{}
+    // response from `DeleteApiKeyAccessListEntry`: any
     fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.DeleteApiKeyAccessListEntry`: %v (%v)\n", resp, r)
 }
 ```
@@ -515,7 +515,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**interface{}**
+**any**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -962,7 +962,7 @@ Name | Type | Description  | Notes
 
 ## RemoveProjectApiKey
 
-> interface{} RemoveProjectApiKey(ctx, groupId, apiUserId).Execute()
+> any RemoveProjectApiKey(ctx, groupId, apiUserId).Execute()
 
 Unassign One Organization API Key from One Project
 
@@ -1002,7 +1002,7 @@ func main() {
         }
         return
     }
-    // response from `RemoveProjectApiKey`: interface{}
+    // response from `RemoveProjectApiKey`: any
     fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.RemoveProjectApiKey`: %v (%v)\n", resp, r)
 }
 ```
@@ -1028,7 +1028,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**interface{}**
+**any**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

@@ -105,7 +105,7 @@ Name | Type | Description  | Notes
 
 ## DeleteAtlasResourcePolicy
 
-> interface{} DeleteAtlasResourcePolicy(ctx, orgId, resourcePolicyId).Execute()
+> any DeleteAtlasResourcePolicy(ctx, orgId, resourcePolicyId).Execute()
 
 Delete one Atlas Resource Policy
 
@@ -145,7 +145,7 @@ func main() {
         }
         return
     }
-    // response from `DeleteAtlasResourcePolicy`: interface{}
+    // response from `DeleteAtlasResourcePolicy`: any
     fmt.Fprintf(os.Stdout, "Response from `ResourcePoliciesApi.DeleteAtlasResourcePolicy`: %v (%v)\n", resp, r)
 }
 ```
@@ -171,7 +171,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**interface{}**
+**any**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
