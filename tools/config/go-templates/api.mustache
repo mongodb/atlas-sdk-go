@@ -141,7 +141,7 @@ func (a *{{{classname}}}Service) {{{nickname}}}(ctx context.Context{{#pathParams
 func (a *{{{classname}}}Service) {{{nickname}}}Execute(r {{operationId}}ApiRequest) ({{#returnType}}{{^isArray}}{{^returnTypeIsPrimitive}}{{^isResponseFile}}*{{/isResponseFile}}{{/returnTypeIsPrimitive}}{{/isArray}}{{{.}}}, {{/returnType}}*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.Method{{httpMethod}}
-		localVarPostBody     interface{}
+		localVarPostBody     any
 		formFiles            []formFile
 		{{#returnType}}
 		localVarReturnValue  {{^isArray}}{{^returnTypeIsPrimitive}}{{^isResponseFile}}*{{/isResponseFile}}{{/returnTypeIsPrimitive}}{{/isArray}}{{{.}}}

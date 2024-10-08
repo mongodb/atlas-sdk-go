@@ -52,7 +52,7 @@ type InvoicesApi_CreateCostExplorerQueryProcess_Call struct {
 //   - ctx context.Context
 //   - orgId string
 //   - costExplorerFilterRequestBody *admin.CostExplorerFilterRequestBody
-func (_e *InvoicesApi_Expecter) CreateCostExplorerQueryProcess(ctx interface{}, orgId interface{}, costExplorerFilterRequestBody interface{}) *InvoicesApi_CreateCostExplorerQueryProcess_Call {
+func (_e *InvoicesApi_Expecter) CreateCostExplorerQueryProcess(ctx any, orgId any, costExplorerFilterRequestBody any) *InvoicesApi_CreateCostExplorerQueryProcess_Call {
 	return &InvoicesApi_CreateCostExplorerQueryProcess_Call{Call: _e.mock.On("CreateCostExplorerQueryProcess", ctx, orgId, costExplorerFilterRequestBody)}
 }
 
@@ -100,7 +100,7 @@ type InvoicesApi_CreateCostExplorerQueryProcess1_Call struct {
 //   - ctx context.Context
 //   - orgId string
 //   - token string
-func (_e *InvoicesApi_Expecter) CreateCostExplorerQueryProcess1(ctx interface{}, orgId interface{}, token interface{}) *InvoicesApi_CreateCostExplorerQueryProcess1_Call {
+func (_e *InvoicesApi_Expecter) CreateCostExplorerQueryProcess1(ctx any, orgId any, token any) *InvoicesApi_CreateCostExplorerQueryProcess1_Call {
 	return &InvoicesApi_CreateCostExplorerQueryProcess1_Call{Call: _e.mock.On("CreateCostExplorerQueryProcess1", ctx, orgId, token)}
 }
 
@@ -165,7 +165,7 @@ type InvoicesApi_CreateCostExplorerQueryProcess1Execute_Call struct {
 
 // CreateCostExplorerQueryProcess1Execute is a helper method to define mock.On call
 //   - r admin.CreateCostExplorerQueryProcess1ApiRequest
-func (_e *InvoicesApi_Expecter) CreateCostExplorerQueryProcess1Execute(r interface{}) *InvoicesApi_CreateCostExplorerQueryProcess1Execute_Call {
+func (_e *InvoicesApi_Expecter) CreateCostExplorerQueryProcess1Execute(r any) *InvoicesApi_CreateCostExplorerQueryProcess1Execute_Call {
 	return &InvoicesApi_CreateCostExplorerQueryProcess1Execute_Call{Call: _e.mock.On("CreateCostExplorerQueryProcess1Execute", r)}
 }
 
@@ -212,7 +212,7 @@ type InvoicesApi_CreateCostExplorerQueryProcess1WithParams_Call struct {
 // CreateCostExplorerQueryProcess1WithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.CreateCostExplorerQueryProcess1ApiParams
-func (_e *InvoicesApi_Expecter) CreateCostExplorerQueryProcess1WithParams(ctx interface{}, args interface{}) *InvoicesApi_CreateCostExplorerQueryProcess1WithParams_Call {
+func (_e *InvoicesApi_Expecter) CreateCostExplorerQueryProcess1WithParams(ctx any, args any) *InvoicesApi_CreateCostExplorerQueryProcess1WithParams_Call {
 	return &InvoicesApi_CreateCostExplorerQueryProcess1WithParams_Call{Call: _e.mock.On("CreateCostExplorerQueryProcess1WithParams", ctx, args)}
 }
 
@@ -279,7 +279,7 @@ type InvoicesApi_CreateCostExplorerQueryProcessExecute_Call struct {
 
 // CreateCostExplorerQueryProcessExecute is a helper method to define mock.On call
 //   - r admin.CreateCostExplorerQueryProcessApiRequest
-func (_e *InvoicesApi_Expecter) CreateCostExplorerQueryProcessExecute(r interface{}) *InvoicesApi_CreateCostExplorerQueryProcessExecute_Call {
+func (_e *InvoicesApi_Expecter) CreateCostExplorerQueryProcessExecute(r any) *InvoicesApi_CreateCostExplorerQueryProcessExecute_Call {
 	return &InvoicesApi_CreateCostExplorerQueryProcessExecute_Call{Call: _e.mock.On("CreateCostExplorerQueryProcessExecute", r)}
 }
 
@@ -326,7 +326,7 @@ type InvoicesApi_CreateCostExplorerQueryProcessWithParams_Call struct {
 // CreateCostExplorerQueryProcessWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.CreateCostExplorerQueryProcessApiParams
-func (_e *InvoicesApi_Expecter) CreateCostExplorerQueryProcessWithParams(ctx interface{}, args interface{}) *InvoicesApi_CreateCostExplorerQueryProcessWithParams_Call {
+func (_e *InvoicesApi_Expecter) CreateCostExplorerQueryProcessWithParams(ctx any, args any) *InvoicesApi_CreateCostExplorerQueryProcessWithParams_Call {
 	return &InvoicesApi_CreateCostExplorerQueryProcessWithParams_Call{Call: _e.mock.On("CreateCostExplorerQueryProcessWithParams", ctx, args)}
 }
 
@@ -374,7 +374,7 @@ type InvoicesApi_DownloadInvoiceCSV_Call struct {
 //   - ctx context.Context
 //   - orgId string
 //   - invoiceId string
-func (_e *InvoicesApi_Expecter) DownloadInvoiceCSV(ctx interface{}, orgId interface{}, invoiceId interface{}) *InvoicesApi_DownloadInvoiceCSV_Call {
+func (_e *InvoicesApi_Expecter) DownloadInvoiceCSV(ctx any, orgId any, invoiceId any) *InvoicesApi_DownloadInvoiceCSV_Call {
 	return &InvoicesApi_DownloadInvoiceCSV_Call{Call: _e.mock.On("DownloadInvoiceCSV", ctx, orgId, invoiceId)}
 }
 
@@ -439,7 +439,7 @@ type InvoicesApi_DownloadInvoiceCSVExecute_Call struct {
 
 // DownloadInvoiceCSVExecute is a helper method to define mock.On call
 //   - r admin.DownloadInvoiceCSVApiRequest
-func (_e *InvoicesApi_Expecter) DownloadInvoiceCSVExecute(r interface{}) *InvoicesApi_DownloadInvoiceCSVExecute_Call {
+func (_e *InvoicesApi_Expecter) DownloadInvoiceCSVExecute(r any) *InvoicesApi_DownloadInvoiceCSVExecute_Call {
 	return &InvoicesApi_DownloadInvoiceCSVExecute_Call{Call: _e.mock.On("DownloadInvoiceCSVExecute", r)}
 }
 
@@ -486,7 +486,7 @@ type InvoicesApi_DownloadInvoiceCSVWithParams_Call struct {
 // DownloadInvoiceCSVWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.DownloadInvoiceCSVApiParams
-func (_e *InvoicesApi_Expecter) DownloadInvoiceCSVWithParams(ctx interface{}, args interface{}) *InvoicesApi_DownloadInvoiceCSVWithParams_Call {
+func (_e *InvoicesApi_Expecter) DownloadInvoiceCSVWithParams(ctx any, args any) *InvoicesApi_DownloadInvoiceCSVWithParams_Call {
 	return &InvoicesApi_DownloadInvoiceCSVWithParams_Call{Call: _e.mock.On("DownloadInvoiceCSVWithParams", ctx, args)}
 }
 
@@ -534,7 +534,7 @@ type InvoicesApi_GetInvoice_Call struct {
 //   - ctx context.Context
 //   - orgId string
 //   - invoiceId string
-func (_e *InvoicesApi_Expecter) GetInvoice(ctx interface{}, orgId interface{}, invoiceId interface{}) *InvoicesApi_GetInvoice_Call {
+func (_e *InvoicesApi_Expecter) GetInvoice(ctx any, orgId any, invoiceId any) *InvoicesApi_GetInvoice_Call {
 	return &InvoicesApi_GetInvoice_Call{Call: _e.mock.On("GetInvoice", ctx, orgId, invoiceId)}
 }
 
@@ -599,7 +599,7 @@ type InvoicesApi_GetInvoiceExecute_Call struct {
 
 // GetInvoiceExecute is a helper method to define mock.On call
 //   - r admin.GetInvoiceApiRequest
-func (_e *InvoicesApi_Expecter) GetInvoiceExecute(r interface{}) *InvoicesApi_GetInvoiceExecute_Call {
+func (_e *InvoicesApi_Expecter) GetInvoiceExecute(r any) *InvoicesApi_GetInvoiceExecute_Call {
 	return &InvoicesApi_GetInvoiceExecute_Call{Call: _e.mock.On("GetInvoiceExecute", r)}
 }
 
@@ -646,7 +646,7 @@ type InvoicesApi_GetInvoiceWithParams_Call struct {
 // GetInvoiceWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetInvoiceApiParams
-func (_e *InvoicesApi_Expecter) GetInvoiceWithParams(ctx interface{}, args interface{}) *InvoicesApi_GetInvoiceWithParams_Call {
+func (_e *InvoicesApi_Expecter) GetInvoiceWithParams(ctx any, args any) *InvoicesApi_GetInvoiceWithParams_Call {
 	return &InvoicesApi_GetInvoiceWithParams_Call{Call: _e.mock.On("GetInvoiceWithParams", ctx, args)}
 }
 
@@ -693,7 +693,7 @@ type InvoicesApi_ListInvoices_Call struct {
 // ListInvoices is a helper method to define mock.On call
 //   - ctx context.Context
 //   - orgId string
-func (_e *InvoicesApi_Expecter) ListInvoices(ctx interface{}, orgId interface{}) *InvoicesApi_ListInvoices_Call {
+func (_e *InvoicesApi_Expecter) ListInvoices(ctx any, orgId any) *InvoicesApi_ListInvoices_Call {
 	return &InvoicesApi_ListInvoices_Call{Call: _e.mock.On("ListInvoices", ctx, orgId)}
 }
 
@@ -760,7 +760,7 @@ type InvoicesApi_ListInvoicesExecute_Call struct {
 
 // ListInvoicesExecute is a helper method to define mock.On call
 //   - r admin.ListInvoicesApiRequest
-func (_e *InvoicesApi_Expecter) ListInvoicesExecute(r interface{}) *InvoicesApi_ListInvoicesExecute_Call {
+func (_e *InvoicesApi_Expecter) ListInvoicesExecute(r any) *InvoicesApi_ListInvoicesExecute_Call {
 	return &InvoicesApi_ListInvoicesExecute_Call{Call: _e.mock.On("ListInvoicesExecute", r)}
 }
 
@@ -807,7 +807,7 @@ type InvoicesApi_ListInvoicesWithParams_Call struct {
 // ListInvoicesWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListInvoicesApiParams
-func (_e *InvoicesApi_Expecter) ListInvoicesWithParams(ctx interface{}, args interface{}) *InvoicesApi_ListInvoicesWithParams_Call {
+func (_e *InvoicesApi_Expecter) ListInvoicesWithParams(ctx any, args any) *InvoicesApi_ListInvoicesWithParams_Call {
 	return &InvoicesApi_ListInvoicesWithParams_Call{Call: _e.mock.On("ListInvoicesWithParams", ctx, args)}
 }
 
@@ -854,7 +854,7 @@ type InvoicesApi_ListPendingInvoices_Call struct {
 // ListPendingInvoices is a helper method to define mock.On call
 //   - ctx context.Context
 //   - orgId string
-func (_e *InvoicesApi_Expecter) ListPendingInvoices(ctx interface{}, orgId interface{}) *InvoicesApi_ListPendingInvoices_Call {
+func (_e *InvoicesApi_Expecter) ListPendingInvoices(ctx any, orgId any) *InvoicesApi_ListPendingInvoices_Call {
 	return &InvoicesApi_ListPendingInvoices_Call{Call: _e.mock.On("ListPendingInvoices", ctx, orgId)}
 }
 
@@ -921,7 +921,7 @@ type InvoicesApi_ListPendingInvoicesExecute_Call struct {
 
 // ListPendingInvoicesExecute is a helper method to define mock.On call
 //   - r admin.ListPendingInvoicesApiRequest
-func (_e *InvoicesApi_Expecter) ListPendingInvoicesExecute(r interface{}) *InvoicesApi_ListPendingInvoicesExecute_Call {
+func (_e *InvoicesApi_Expecter) ListPendingInvoicesExecute(r any) *InvoicesApi_ListPendingInvoicesExecute_Call {
 	return &InvoicesApi_ListPendingInvoicesExecute_Call{Call: _e.mock.On("ListPendingInvoicesExecute", r)}
 }
 
@@ -968,7 +968,7 @@ type InvoicesApi_ListPendingInvoicesWithParams_Call struct {
 // ListPendingInvoicesWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListPendingInvoicesApiParams
-func (_e *InvoicesApi_Expecter) ListPendingInvoicesWithParams(ctx interface{}, args interface{}) *InvoicesApi_ListPendingInvoicesWithParams_Call {
+func (_e *InvoicesApi_Expecter) ListPendingInvoicesWithParams(ctx any, args any) *InvoicesApi_ListPendingInvoicesWithParams_Call {
 	return &InvoicesApi_ListPendingInvoicesWithParams_Call{Call: _e.mock.On("ListPendingInvoicesWithParams", ctx, args)}
 }
 
@@ -1017,7 +1017,7 @@ type InvoicesApi_QueryLineItemsFromSingleInvoice_Call struct {
 //   - orgId string
 //   - invoiceId string
 //   - apiPublicUsageDetailsQueryRequest *admin.ApiPublicUsageDetailsQueryRequest
-func (_e *InvoicesApi_Expecter) QueryLineItemsFromSingleInvoice(ctx interface{}, orgId interface{}, invoiceId interface{}, apiPublicUsageDetailsQueryRequest interface{}) *InvoicesApi_QueryLineItemsFromSingleInvoice_Call {
+func (_e *InvoicesApi_Expecter) QueryLineItemsFromSingleInvoice(ctx any, orgId any, invoiceId any, apiPublicUsageDetailsQueryRequest any) *InvoicesApi_QueryLineItemsFromSingleInvoice_Call {
 	return &InvoicesApi_QueryLineItemsFromSingleInvoice_Call{Call: _e.mock.On("QueryLineItemsFromSingleInvoice", ctx, orgId, invoiceId, apiPublicUsageDetailsQueryRequest)}
 }
 
@@ -1084,7 +1084,7 @@ type InvoicesApi_QueryLineItemsFromSingleInvoiceExecute_Call struct {
 
 // QueryLineItemsFromSingleInvoiceExecute is a helper method to define mock.On call
 //   - r admin.QueryLineItemsFromSingleInvoiceApiRequest
-func (_e *InvoicesApi_Expecter) QueryLineItemsFromSingleInvoiceExecute(r interface{}) *InvoicesApi_QueryLineItemsFromSingleInvoiceExecute_Call {
+func (_e *InvoicesApi_Expecter) QueryLineItemsFromSingleInvoiceExecute(r any) *InvoicesApi_QueryLineItemsFromSingleInvoiceExecute_Call {
 	return &InvoicesApi_QueryLineItemsFromSingleInvoiceExecute_Call{Call: _e.mock.On("QueryLineItemsFromSingleInvoiceExecute", r)}
 }
 
@@ -1131,7 +1131,7 @@ type InvoicesApi_QueryLineItemsFromSingleInvoiceWithParams_Call struct {
 // QueryLineItemsFromSingleInvoiceWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.QueryLineItemsFromSingleInvoiceApiParams
-func (_e *InvoicesApi_Expecter) QueryLineItemsFromSingleInvoiceWithParams(ctx interface{}, args interface{}) *InvoicesApi_QueryLineItemsFromSingleInvoiceWithParams_Call {
+func (_e *InvoicesApi_Expecter) QueryLineItemsFromSingleInvoiceWithParams(ctx any, args any) *InvoicesApi_QueryLineItemsFromSingleInvoiceWithParams_Call {
 	return &InvoicesApi_QueryLineItemsFromSingleInvoiceWithParams_Call{Call: _e.mock.On("QueryLineItemsFromSingleInvoiceWithParams", ctx, args)}
 }
 

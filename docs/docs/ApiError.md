@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Detail** | Pointer to **string** | Describes the specific conditions or reasons that cause each type of error. | [optional] 
 **Error** | Pointer to **int** | HTTP status code returned with this error. | [optional] 
 **ErrorCode** | Pointer to **string** | Application error code returned with this error. | [optional] 
-**Parameters** | Pointer to **[]interface{}** | Parameters used to give more information about the error. | [optional] 
+**Parameters** | Pointer to [**[]any**](any.md) | Parameters used to give more information about the error. | [optional] 
 **Reason** | Pointer to **string** | Application error message returned with this error. | [optional] 
 
 ## Methods
@@ -128,20 +128,20 @@ SetErrorCode sets ErrorCode field to given value.
 HasErrorCode returns a boolean if a field has been set.
 ### GetParameters
 
-`func (o *ApiError) GetParameters() []interface{}`
+`func (o *ApiError) GetParameters() []any`
 
 GetParameters returns the Parameters field if non-nil, zero value otherwise.
 
 ### GetParametersOk
 
-`func (o *ApiError) GetParametersOk() (*[]interface{}, bool)`
+`func (o *ApiError) GetParametersOk() (*[]any, bool)`
 
 GetParametersOk returns a tuple with the Parameters field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetParameters
 
-`func (o *ApiError) SetParameters(v []interface{})`
+`func (o *ApiError) SetParameters(v []any)`
 
 SetParameters sets Parameters field to given value.
 

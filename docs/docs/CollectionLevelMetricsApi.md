@@ -215,7 +215,7 @@ Name | Type | Description  | Notes
 
 ## GetCollStatsLatencyNamespaceMetrics
 
-> interface{} GetCollStatsLatencyNamespaceMetrics(ctx, groupId).Execute()
+> any GetCollStatsLatencyNamespaceMetrics(ctx, groupId).Execute()
 
 Return all metric names
 
@@ -254,7 +254,7 @@ func main() {
         }
         return
     }
-    // response from `GetCollStatsLatencyNamespaceMetrics`: interface{}
+    // response from `GetCollStatsLatencyNamespaceMetrics`: any
     fmt.Fprintf(os.Stdout, "Response from `CollectionLevelMetricsApi.GetCollStatsLatencyNamespaceMetrics`: %v (%v)\n", resp, r)
 }
 ```
@@ -278,7 +278,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**interface{}**
+**any**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

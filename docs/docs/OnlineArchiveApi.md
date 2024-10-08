@@ -100,7 +100,7 @@ Name | Type | Description  | Notes
 
 ## DeleteOnlineArchive
 
-> interface{} DeleteOnlineArchive(ctx, groupId, archiveId, clusterName).Execute()
+> any DeleteOnlineArchive(ctx, groupId, archiveId, clusterName).Execute()
 
 Remove One Online Archive
 
@@ -141,7 +141,7 @@ func main() {
         }
         return
     }
-    // response from `DeleteOnlineArchive`: interface{}
+    // response from `DeleteOnlineArchive`: any
     fmt.Fprintf(os.Stdout, "Response from `OnlineArchiveApi.DeleteOnlineArchive`: %v (%v)\n", resp, r)
 }
 ```
@@ -169,7 +169,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**interface{}**
+**any**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

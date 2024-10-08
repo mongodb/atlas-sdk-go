@@ -51,7 +51,7 @@ type AWSClustersDNSApi_GetAWSCustomDNS_Call struct {
 // GetAWSCustomDNS is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *AWSClustersDNSApi_Expecter) GetAWSCustomDNS(ctx interface{}, groupId interface{}) *AWSClustersDNSApi_GetAWSCustomDNS_Call {
+func (_e *AWSClustersDNSApi_Expecter) GetAWSCustomDNS(ctx any, groupId any) *AWSClustersDNSApi_GetAWSCustomDNS_Call {
 	return &AWSClustersDNSApi_GetAWSCustomDNS_Call{Call: _e.mock.On("GetAWSCustomDNS", ctx, groupId)}
 }
 
@@ -118,7 +118,7 @@ type AWSClustersDNSApi_GetAWSCustomDNSExecute_Call struct {
 
 // GetAWSCustomDNSExecute is a helper method to define mock.On call
 //   - r admin.GetAWSCustomDNSApiRequest
-func (_e *AWSClustersDNSApi_Expecter) GetAWSCustomDNSExecute(r interface{}) *AWSClustersDNSApi_GetAWSCustomDNSExecute_Call {
+func (_e *AWSClustersDNSApi_Expecter) GetAWSCustomDNSExecute(r any) *AWSClustersDNSApi_GetAWSCustomDNSExecute_Call {
 	return &AWSClustersDNSApi_GetAWSCustomDNSExecute_Call{Call: _e.mock.On("GetAWSCustomDNSExecute", r)}
 }
 
@@ -165,7 +165,7 @@ type AWSClustersDNSApi_GetAWSCustomDNSWithParams_Call struct {
 // GetAWSCustomDNSWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetAWSCustomDNSApiParams
-func (_e *AWSClustersDNSApi_Expecter) GetAWSCustomDNSWithParams(ctx interface{}, args interface{}) *AWSClustersDNSApi_GetAWSCustomDNSWithParams_Call {
+func (_e *AWSClustersDNSApi_Expecter) GetAWSCustomDNSWithParams(ctx any, args any) *AWSClustersDNSApi_GetAWSCustomDNSWithParams_Call {
 	return &AWSClustersDNSApi_GetAWSCustomDNSWithParams_Call{Call: _e.mock.On("GetAWSCustomDNSWithParams", ctx, args)}
 }
 
@@ -213,7 +213,7 @@ type AWSClustersDNSApi_ToggleAWSCustomDNS_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - aWSCustomDNSEnabled *admin.AWSCustomDNSEnabled
-func (_e *AWSClustersDNSApi_Expecter) ToggleAWSCustomDNS(ctx interface{}, groupId interface{}, aWSCustomDNSEnabled interface{}) *AWSClustersDNSApi_ToggleAWSCustomDNS_Call {
+func (_e *AWSClustersDNSApi_Expecter) ToggleAWSCustomDNS(ctx any, groupId any, aWSCustomDNSEnabled any) *AWSClustersDNSApi_ToggleAWSCustomDNS_Call {
 	return &AWSClustersDNSApi_ToggleAWSCustomDNS_Call{Call: _e.mock.On("ToggleAWSCustomDNS", ctx, groupId, aWSCustomDNSEnabled)}
 }
 
@@ -280,7 +280,7 @@ type AWSClustersDNSApi_ToggleAWSCustomDNSExecute_Call struct {
 
 // ToggleAWSCustomDNSExecute is a helper method to define mock.On call
 //   - r admin.ToggleAWSCustomDNSApiRequest
-func (_e *AWSClustersDNSApi_Expecter) ToggleAWSCustomDNSExecute(r interface{}) *AWSClustersDNSApi_ToggleAWSCustomDNSExecute_Call {
+func (_e *AWSClustersDNSApi_Expecter) ToggleAWSCustomDNSExecute(r any) *AWSClustersDNSApi_ToggleAWSCustomDNSExecute_Call {
 	return &AWSClustersDNSApi_ToggleAWSCustomDNSExecute_Call{Call: _e.mock.On("ToggleAWSCustomDNSExecute", r)}
 }
 
@@ -327,7 +327,7 @@ type AWSClustersDNSApi_ToggleAWSCustomDNSWithParams_Call struct {
 // ToggleAWSCustomDNSWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ToggleAWSCustomDNSApiParams
-func (_e *AWSClustersDNSApi_Expecter) ToggleAWSCustomDNSWithParams(ctx interface{}, args interface{}) *AWSClustersDNSApi_ToggleAWSCustomDNSWithParams_Call {
+func (_e *AWSClustersDNSApi_Expecter) ToggleAWSCustomDNSWithParams(ctx any, args any) *AWSClustersDNSApi_ToggleAWSCustomDNSWithParams_Call {
 	return &AWSClustersDNSApi_ToggleAWSCustomDNSWithParams_Call{Call: _e.mock.On("ToggleAWSCustomDNSWithParams", ctx, args)}
 }
 

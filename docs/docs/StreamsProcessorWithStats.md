@@ -8,15 +8,15 @@ Name | Type | Description | Notes
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **Name** | **string** | Human-readable name of the stream processor. | [readonly] 
 **Options** | Pointer to [**StreamsOptions**](StreamsOptions.md) |  | [optional] 
-**Pipeline** | **[]interface{}** | Stream aggregation pipeline you want to apply to your streaming data. | [readonly] 
+**Pipeline** | [**[]any**](any.md) | Stream aggregation pipeline you want to apply to your streaming data. | [readonly] 
 **State** | **string** | The state of the stream processor. Commonly occurring states are &#39;CREATED&#39;, &#39;STARTED&#39;, &#39;STOPPED&#39; and &#39;FAILED&#39;. | [readonly] 
-**Stats** | Pointer to **interface{}** | The stats associated with the stream processor. | [optional] [readonly] 
+**Stats** | Pointer to [**any**](interface{}.md) | The stats associated with the stream processor. | [optional] [readonly] 
 
 ## Methods
 
 ### NewStreamsProcessorWithStats
 
-`func NewStreamsProcessorWithStats(id string, name string, pipeline []interface{}, state string, ) *StreamsProcessorWithStats`
+`func NewStreamsProcessorWithStats(id string, name string, pipeline []any, state string, ) *StreamsProcessorWithStats`
 
 NewStreamsProcessorWithStats instantiates a new StreamsProcessorWithStats object
 This constructor will assign default values to properties that have it defined,
@@ -119,20 +119,20 @@ SetOptions sets Options field to given value.
 HasOptions returns a boolean if a field has been set.
 ### GetPipeline
 
-`func (o *StreamsProcessorWithStats) GetPipeline() []interface{}`
+`func (o *StreamsProcessorWithStats) GetPipeline() []any`
 
 GetPipeline returns the Pipeline field if non-nil, zero value otherwise.
 
 ### GetPipelineOk
 
-`func (o *StreamsProcessorWithStats) GetPipelineOk() (*[]interface{}, bool)`
+`func (o *StreamsProcessorWithStats) GetPipelineOk() (*[]any, bool)`
 
 GetPipelineOk returns a tuple with the Pipeline field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPipeline
 
-`func (o *StreamsProcessorWithStats) SetPipeline(v []interface{})`
+`func (o *StreamsProcessorWithStats) SetPipeline(v []any)`
 
 SetPipeline sets Pipeline field to given value.
 
@@ -157,20 +157,20 @@ SetState sets State field to given value.
 
 ### GetStats
 
-`func (o *StreamsProcessorWithStats) GetStats() interface{}`
+`func (o *StreamsProcessorWithStats) GetStats() any`
 
 GetStats returns the Stats field if non-nil, zero value otherwise.
 
 ### GetStatsOk
 
-`func (o *StreamsProcessorWithStats) GetStatsOk() (*interface{}, bool)`
+`func (o *StreamsProcessorWithStats) GetStatsOk() (*any, bool)`
 
 GetStatsOk returns a tuple with the Stats field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStats
 
-`func (o *StreamsProcessorWithStats) SetStats(v interface{})`
+`func (o *StreamsProcessorWithStats) SetStats(v any)`
 
 SetStats sets Stats field to given value.
 

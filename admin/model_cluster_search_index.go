@@ -26,11 +26,11 @@ type ClusterSearchIndex struct {
 	// Method applied to identify words when searching this index.
 	SearchAnalyzer *string `json:"searchAnalyzer,omitempty"`
 	// Flag that indicates whether to store all fields (true) on Atlas Search. By default, Atlas doesn't store (false) the fields on Atlas Search.  Alternatively, you can specify an object that only contains the list of fields to store (include) or not store (exclude) on Atlas Search. To learn more, see documentation.
-	StoredSource interface{} `json:"storedSource,omitempty"`
+	StoredSource any `json:"storedSource,omitempty"`
 	// Rule sets that map words to their synonyms in this index.
 	Synonyms *[]SearchSynonymMappingDefinition `json:"synonyms,omitempty"`
 	// Settings that configure the fields, one per object, to index. You must define at least one \"vector\" type field. You can optionally define \"filter\" type fields also.
-	Fields *[]interface{} `json:"fields,omitempty"`
+	Fields *[]any `json:"fields,omitempty"`
 }
 
 // NewClusterSearchIndex instantiates a new ClusterSearchIndex object
@@ -365,9 +365,9 @@ func (o *ClusterSearchIndex) SetSearchAnalyzer(v string) {
 }
 
 // GetStoredSource returns the StoredSource field value if set, zero value otherwise
-func (o *ClusterSearchIndex) GetStoredSource() interface{} {
+func (o *ClusterSearchIndex) GetStoredSource() any {
 	if o == nil || IsNil(o.StoredSource) {
-		var ret interface{}
+		var ret any
 		return ret
 	}
 	return o.StoredSource
@@ -375,9 +375,9 @@ func (o *ClusterSearchIndex) GetStoredSource() interface{} {
 
 // GetStoredSourceOk returns a tuple with the StoredSource field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterSearchIndex) GetStoredSourceOk() (interface{}, bool) {
+func (o *ClusterSearchIndex) GetStoredSourceOk() (any, bool) {
 	if o == nil || IsNil(o.StoredSource) {
-		var ret interface{}
+		var ret any
 		return ret, false
 	}
 
@@ -393,8 +393,8 @@ func (o *ClusterSearchIndex) HasStoredSource() bool {
 	return false
 }
 
-// SetStoredSource gets a reference to the given interface{} and assigns it to the StoredSource field.
-func (o *ClusterSearchIndex) SetStoredSource(v interface{}) {
+// SetStoredSource gets a reference to the given any and assigns it to the StoredSource field.
+func (o *ClusterSearchIndex) SetStoredSource(v any) {
 	o.StoredSource = v
 }
 
@@ -432,9 +432,9 @@ func (o *ClusterSearchIndex) SetSynonyms(v []SearchSynonymMappingDefinition) {
 }
 
 // GetFields returns the Fields field value if set, zero value otherwise
-func (o *ClusterSearchIndex) GetFields() []interface{} {
+func (o *ClusterSearchIndex) GetFields() []any {
 	if o == nil || IsNil(o.Fields) {
-		var ret []interface{}
+		var ret []any
 		return ret
 	}
 	return *o.Fields
@@ -442,7 +442,7 @@ func (o *ClusterSearchIndex) GetFields() []interface{} {
 
 // GetFieldsOk returns a tuple with the Fields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterSearchIndex) GetFieldsOk() (*[]interface{}, bool) {
+func (o *ClusterSearchIndex) GetFieldsOk() (*[]any, bool) {
 	if o == nil || IsNil(o.Fields) {
 		return nil, false
 	}
@@ -459,7 +459,7 @@ func (o *ClusterSearchIndex) HasFields() bool {
 	return false
 }
 
-// SetFields gets a reference to the given []interface{} and assigns it to the Fields field.
-func (o *ClusterSearchIndex) SetFields(v []interface{}) {
+// SetFields gets a reference to the given []any and assigns it to the Fields field.
+func (o *ClusterSearchIndex) SetFields(v []any) {
 	o.Fields = &v
 }

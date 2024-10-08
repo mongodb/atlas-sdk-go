@@ -62,7 +62,7 @@ type ServerlessPrivateEndpointsApi interface {
 	DeleteServerlessPrivateEndpointWithParams(ctx context.Context, args *DeleteServerlessPrivateEndpointApiParams) DeleteServerlessPrivateEndpointApiRequest
 
 	// Method available only for mocking purposes
-	DeleteServerlessPrivateEndpointExecute(r DeleteServerlessPrivateEndpointApiRequest) (interface{}, *http.Response, error)
+	DeleteServerlessPrivateEndpointExecute(r DeleteServerlessPrivateEndpointApiRequest) (any, *http.Response, error)
 
 	/*
 		GetServerlessPrivateEndpoint Return One Private Endpoint for One Serverless Instance
@@ -199,7 +199,7 @@ func (a *ServerlessPrivateEndpointsApiService) CreateServerlessPrivateEndpoint(c
 func (a *ServerlessPrivateEndpointsApiService) CreateServerlessPrivateEndpointExecute(r CreateServerlessPrivateEndpointApiRequest) (*ServerlessTenantEndpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *ServerlessTenantEndpoint
 	)
@@ -295,7 +295,7 @@ func (a *ServerlessPrivateEndpointsApiService) DeleteServerlessPrivateEndpointWi
 	}
 }
 
-func (r DeleteServerlessPrivateEndpointApiRequest) Execute() (interface{}, *http.Response, error) {
+func (r DeleteServerlessPrivateEndpointApiRequest) Execute() (any, *http.Response, error) {
 	return r.ApiService.DeleteServerlessPrivateEndpointExecute(r)
 }
 
@@ -322,13 +322,13 @@ func (a *ServerlessPrivateEndpointsApiService) DeleteServerlessPrivateEndpoint(c
 
 // DeleteServerlessPrivateEndpointExecute executes the request
 //
-//	@return interface{}
-func (a *ServerlessPrivateEndpointsApiService) DeleteServerlessPrivateEndpointExecute(r DeleteServerlessPrivateEndpointApiRequest) (interface{}, *http.Response, error) {
+//	@return any
+func (a *ServerlessPrivateEndpointsApiService) DeleteServerlessPrivateEndpointExecute(r DeleteServerlessPrivateEndpointApiRequest) (any, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue interface{}
+		localVarReturnValue any
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServerlessPrivateEndpointsApiService.DeleteServerlessPrivateEndpoint")
@@ -449,7 +449,7 @@ func (a *ServerlessPrivateEndpointsApiService) GetServerlessPrivateEndpoint(ctx 
 func (a *ServerlessPrivateEndpointsApiService) GetServerlessPrivateEndpointExecute(r GetServerlessPrivateEndpointApiRequest) (*ServerlessTenantEndpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *ServerlessTenantEndpoint
 	)
@@ -567,7 +567,7 @@ func (a *ServerlessPrivateEndpointsApiService) ListServerlessPrivateEndpoints(ct
 func (a *ServerlessPrivateEndpointsApiService) ListServerlessPrivateEndpointsExecute(r ListServerlessPrivateEndpointsApiRequest) ([]ServerlessTenantEndpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue []ServerlessTenantEndpoint
 	)
@@ -693,7 +693,7 @@ func (a *ServerlessPrivateEndpointsApiService) UpdateServerlessPrivateEndpoint(c
 func (a *ServerlessPrivateEndpointsApiService) UpdateServerlessPrivateEndpointExecute(r UpdateServerlessPrivateEndpointApiRequest) (*ServerlessTenantEndpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *ServerlessTenantEndpoint
 	)

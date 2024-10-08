@@ -68,7 +68,7 @@ type LegacyBackupApi interface {
 	DeleteLegacySnapshotWithParams(ctx context.Context, args *DeleteLegacySnapshotApiParams) DeleteLegacySnapshotApiRequest
 
 	// Method available only for mocking purposes
-	DeleteLegacySnapshotExecute(r DeleteLegacySnapshotApiRequest) (interface{}, *http.Response, error)
+	DeleteLegacySnapshotExecute(r DeleteLegacySnapshotApiRequest) (any, *http.Response, error)
 
 	/*
 		GetLegacyBackupCheckpoint Return One Legacy Backup Checkpoint
@@ -398,7 +398,7 @@ func (a *LegacyBackupApiService) CreateLegacyBackupRestoreJob(ctx context.Contex
 func (a *LegacyBackupApiService) CreateLegacyBackupRestoreJobExecute(r CreateLegacyBackupRestoreJobApiRequest) (*PaginatedRestoreJob, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PaginatedRestoreJob
 	)
@@ -494,7 +494,7 @@ func (a *LegacyBackupApiService) DeleteLegacySnapshotWithParams(ctx context.Cont
 	}
 }
 
-func (r DeleteLegacySnapshotApiRequest) Execute() (interface{}, *http.Response, error) {
+func (r DeleteLegacySnapshotApiRequest) Execute() (any, *http.Response, error) {
 	return r.ApiService.DeleteLegacySnapshotExecute(r)
 }
 
@@ -523,15 +523,15 @@ func (a *LegacyBackupApiService) DeleteLegacySnapshot(ctx context.Context, group
 
 // DeleteLegacySnapshotExecute executes the request
 //
-//	@return interface{}
+//	@return any
 //
 // Deprecated
-func (a *LegacyBackupApiService) DeleteLegacySnapshotExecute(r DeleteLegacySnapshotApiRequest) (interface{}, *http.Response, error) {
+func (a *LegacyBackupApiService) DeleteLegacySnapshotExecute(r DeleteLegacySnapshotApiRequest) (any, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue interface{}
+		localVarReturnValue any
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LegacyBackupApiService.DeleteLegacySnapshot")
@@ -656,7 +656,7 @@ func (a *LegacyBackupApiService) GetLegacyBackupCheckpoint(ctx context.Context, 
 func (a *LegacyBackupApiService) GetLegacyBackupCheckpointExecute(r GetLegacyBackupCheckpointApiRequest) (*ApiAtlasCheckpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *ApiAtlasCheckpoint
 	)
@@ -785,7 +785,7 @@ func (a *LegacyBackupApiService) GetLegacyBackupRestoreJob(ctx context.Context, 
 func (a *LegacyBackupApiService) GetLegacyBackupRestoreJobExecute(r GetLegacyBackupRestoreJobApiRequest) (*BackupRestoreJob, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *BackupRestoreJob
 	)
@@ -912,7 +912,7 @@ func (a *LegacyBackupApiService) GetLegacySnapshot(ctx context.Context, groupId 
 func (a *LegacyBackupApiService) GetLegacySnapshotExecute(r GetLegacySnapshotApiRequest) (*BackupSnapshot, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *BackupSnapshot
 	)
@@ -1036,7 +1036,7 @@ func (a *LegacyBackupApiService) GetLegacySnapshotSchedule(ctx context.Context, 
 func (a *LegacyBackupApiService) GetLegacySnapshotScheduleExecute(r GetLegacySnapshotScheduleApiRequest) (*ApiAtlasSnapshotSchedule, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *ApiAtlasSnapshotSchedule
 	)
@@ -1184,7 +1184,7 @@ func (a *LegacyBackupApiService) ListLegacyBackupCheckpoints(ctx context.Context
 func (a *LegacyBackupApiService) ListLegacyBackupCheckpointsExecute(r ListLegacyBackupCheckpointsApiRequest) (*PaginatedApiAtlasCheckpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PaginatedApiAtlasCheckpoint
 	)
@@ -1364,7 +1364,7 @@ func (a *LegacyBackupApiService) ListLegacyBackupRestoreJobs(ctx context.Context
 func (a *LegacyBackupApiService) ListLegacyBackupRestoreJobsExecute(r ListLegacyBackupRestoreJobsApiRequest) (*PaginatedRestoreJob, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PaginatedRestoreJob
 	)
@@ -1545,7 +1545,7 @@ func (a *LegacyBackupApiService) ListLegacySnapshots(ctx context.Context, groupI
 func (a *LegacyBackupApiService) ListLegacySnapshotsExecute(r ListLegacySnapshotsApiRequest) (*PaginatedSnapshot, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PaginatedSnapshot
 	)
@@ -1703,7 +1703,7 @@ func (a *LegacyBackupApiService) UpdateLegacySnapshotRetention(ctx context.Conte
 func (a *LegacyBackupApiService) UpdateLegacySnapshotRetentionExecute(r UpdateLegacySnapshotRetentionApiRequest) (*BackupSnapshot, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *BackupSnapshot
 	)
@@ -1836,7 +1836,7 @@ func (a *LegacyBackupApiService) UpdateLegacySnapshotSchedule(ctx context.Contex
 func (a *LegacyBackupApiService) UpdateLegacySnapshotScheduleExecute(r UpdateLegacySnapshotScheduleApiRequest) (*ApiAtlasSnapshotSchedule, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *ApiAtlasSnapshotSchedule
 	)

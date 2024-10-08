@@ -192,7 +192,7 @@ func (a *GlobalClustersApiService) CreateCustomZoneMapping(ctx context.Context, 
 func (a *GlobalClustersApiService) CreateCustomZoneMappingExecute(r CreateCustomZoneMappingApiRequest) (*GeoSharding20240805, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *GeoSharding20240805
 	)
@@ -318,7 +318,7 @@ func (a *GlobalClustersApiService) CreateManagedNamespace(ctx context.Context, g
 func (a *GlobalClustersApiService) CreateManagedNamespaceExecute(r CreateManagedNamespaceApiRequest) (*GeoSharding20240805, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *GeoSharding20240805
 	)
@@ -440,7 +440,7 @@ func (a *GlobalClustersApiService) DeleteAllCustomZoneMappings(ctx context.Conte
 func (a *GlobalClustersApiService) DeleteAllCustomZoneMappingsExecute(r DeleteAllCustomZoneMappingsApiRequest) (*GeoSharding20240805, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *GeoSharding20240805
 	)
@@ -575,7 +575,7 @@ func (a *GlobalClustersApiService) DeleteManagedNamespace(ctx context.Context, c
 func (a *GlobalClustersApiService) DeleteManagedNamespaceExecute(r DeleteManagedNamespaceApiRequest) (*GeoSharding20240805, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *GeoSharding20240805
 	)
@@ -698,7 +698,7 @@ func (a *GlobalClustersApiService) GetManagedNamespace(ctx context.Context, grou
 func (a *GlobalClustersApiService) GetManagedNamespaceExecute(r GetManagedNamespaceApiRequest) (*GeoSharding20240805, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *GeoSharding20240805
 	)

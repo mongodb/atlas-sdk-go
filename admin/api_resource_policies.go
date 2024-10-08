@@ -58,7 +58,7 @@ type ResourcePoliciesApi interface {
 	DeleteAtlasResourcePolicyWithParams(ctx context.Context, args *DeleteAtlasResourcePolicyApiParams) DeleteAtlasResourcePolicyApiRequest
 
 	// Method available only for mocking purposes
-	DeleteAtlasResourcePolicyExecute(r DeleteAtlasResourcePolicyApiRequest) (interface{}, *http.Response, error)
+	DeleteAtlasResourcePolicyExecute(r DeleteAtlasResourcePolicyApiRequest) (any, *http.Response, error)
 
 	/*
 		GetAtlasResourcePolicies Return all Atlas Resource Policies
@@ -232,7 +232,7 @@ func (a *ResourcePoliciesApiService) CreateAtlasResourcePolicy(ctx context.Conte
 func (a *ResourcePoliciesApiService) CreateAtlasResourcePolicyExecute(r CreateAtlasResourcePolicyApiRequest) (*ApiAtlasResourcePolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *ApiAtlasResourcePolicy
 	)
@@ -324,7 +324,7 @@ func (a *ResourcePoliciesApiService) DeleteAtlasResourcePolicyWithParams(ctx con
 	}
 }
 
-func (r DeleteAtlasResourcePolicyApiRequest) Execute() (interface{}, *http.Response, error) {
+func (r DeleteAtlasResourcePolicyApiRequest) Execute() (any, *http.Response, error) {
 	return r.ApiService.DeleteAtlasResourcePolicyExecute(r)
 }
 
@@ -349,13 +349,13 @@ func (a *ResourcePoliciesApiService) DeleteAtlasResourcePolicy(ctx context.Conte
 
 // DeleteAtlasResourcePolicyExecute executes the request
 //
-//	@return interface{}
-func (a *ResourcePoliciesApiService) DeleteAtlasResourcePolicyExecute(r DeleteAtlasResourcePolicyApiRequest) (interface{}, *http.Response, error) {
+//	@return any
+func (a *ResourcePoliciesApiService) DeleteAtlasResourcePolicyExecute(r DeleteAtlasResourcePolicyApiRequest) (any, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue interface{}
+		localVarReturnValue any
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ResourcePoliciesApiService.DeleteAtlasResourcePolicy")
@@ -465,7 +465,7 @@ func (a *ResourcePoliciesApiService) GetAtlasResourcePolicies(ctx context.Contex
 func (a *ResourcePoliciesApiService) GetAtlasResourcePoliciesExecute(r GetAtlasResourcePoliciesApiRequest) ([]ApiAtlasResourcePolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue []ApiAtlasResourcePolicy
 	)
@@ -581,7 +581,7 @@ func (a *ResourcePoliciesApiService) GetAtlasResourcePolicy(ctx context.Context,
 func (a *ResourcePoliciesApiService) GetAtlasResourcePolicyExecute(r GetAtlasResourcePolicyApiRequest) (*ApiAtlasResourcePolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *ApiAtlasResourcePolicy
 	)
@@ -693,7 +693,7 @@ func (a *ResourcePoliciesApiService) GetResourcesNonCompliant(ctx context.Contex
 func (a *ResourcePoliciesApiService) GetResourcesNonCompliantExecute(r GetResourcesNonCompliantApiRequest) ([]ApiAtlasNonCompliantResource, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue []ApiAtlasNonCompliantResource
 	)
@@ -813,7 +813,7 @@ func (a *ResourcePoliciesApiService) UpdateAtlasResourcePolicy(ctx context.Conte
 func (a *ResourcePoliciesApiService) UpdateAtlasResourcePolicyExecute(r UpdateAtlasResourcePolicyApiRequest) (*ApiAtlasResourcePolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *ApiAtlasResourcePolicy
 	)
@@ -934,7 +934,7 @@ func (a *ResourcePoliciesApiService) ValidateAtlasResourcePolicy(ctx context.Con
 func (a *ResourcePoliciesApiService) ValidateAtlasResourcePolicyExecute(r ValidateAtlasResourcePolicyApiRequest) (*ApiAtlasResourcePolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *ApiAtlasResourcePolicy
 	)

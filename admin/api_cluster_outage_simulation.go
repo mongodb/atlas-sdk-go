@@ -139,7 +139,7 @@ func (a *ClusterOutageSimulationApiService) EndOutageSimulation(ctx context.Cont
 func (a *ClusterOutageSimulationApiService) EndOutageSimulationExecute(r EndOutageSimulationApiRequest) (*ClusterOutageSimulation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *ClusterOutageSimulation
 	)
@@ -256,7 +256,7 @@ func (a *ClusterOutageSimulationApiService) GetOutageSimulation(ctx context.Cont
 func (a *ClusterOutageSimulationApiService) GetOutageSimulationExecute(r GetOutageSimulationApiRequest) (*ClusterOutageSimulation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *ClusterOutageSimulation
 	)
@@ -377,7 +377,7 @@ func (a *ClusterOutageSimulationApiService) StartOutageSimulation(ctx context.Co
 func (a *ClusterOutageSimulationApiService) StartOutageSimulationExecute(r StartOutageSimulationApiRequest) (*ClusterOutageSimulation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *ClusterOutageSimulation
 	)

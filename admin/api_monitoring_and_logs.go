@@ -426,7 +426,7 @@ func (a *MonitoringAndLogsApiService) GetAtlasProcess(ctx context.Context, group
 func (a *MonitoringAndLogsApiService) GetAtlasProcessExecute(r GetAtlasProcessApiRequest) (*ApiHostViewAtlas, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *ApiHostViewAtlas
 	)
@@ -548,7 +548,7 @@ func (a *MonitoringAndLogsApiService) GetDatabase(ctx context.Context, groupId s
 func (a *MonitoringAndLogsApiService) GetDatabaseExecute(r GetDatabaseApiRequest) (*MesurementsDatabase, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *MesurementsDatabase
 	)
@@ -716,7 +716,7 @@ func (a *MonitoringAndLogsApiService) GetDatabaseMeasurements(ctx context.Contex
 func (a *MonitoringAndLogsApiService) GetDatabaseMeasurementsExecute(r GetDatabaseMeasurementsApiRequest) (*ApiMeasurementsGeneralViewAtlas, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *ApiMeasurementsGeneralViewAtlas
 	)
@@ -910,7 +910,7 @@ func (a *MonitoringAndLogsApiService) GetDiskMeasurements(ctx context.Context, g
 func (a *MonitoringAndLogsApiService) GetDiskMeasurementsExecute(r GetDiskMeasurementsApiRequest) (*ApiMeasurementsGeneralViewAtlas, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *ApiMeasurementsGeneralViewAtlas
 	)
@@ -1071,7 +1071,7 @@ func (a *MonitoringAndLogsApiService) GetHostLogs(ctx context.Context, groupId s
 func (a *MonitoringAndLogsApiService) GetHostLogsExecute(r GetHostLogsApiRequest) (io.ReadCloser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue io.ReadCloser
 	)
@@ -1247,7 +1247,7 @@ func (a *MonitoringAndLogsApiService) GetHostMeasurements(ctx context.Context, g
 func (a *MonitoringAndLogsApiService) GetHostMeasurementsExecute(r GetHostMeasurementsApiRequest) (*ApiMeasurementsGeneralViewAtlas, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *ApiMeasurementsGeneralViewAtlas
 	)
@@ -1444,7 +1444,7 @@ func (a *MonitoringAndLogsApiService) GetIndexMetrics(ctx context.Context, proce
 func (a *MonitoringAndLogsApiService) GetIndexMetricsExecute(r GetIndexMetricsApiRequest) (*MeasurementsIndexes, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *MeasurementsIndexes
 	)
@@ -1631,7 +1631,7 @@ func (a *MonitoringAndLogsApiService) GetMeasurements(ctx context.Context, proce
 func (a *MonitoringAndLogsApiService) GetMeasurementsExecute(r GetMeasurementsApiRequest) (*MeasurementsNonIndex, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *MeasurementsNonIndex
 	)
@@ -1792,7 +1792,7 @@ func (a *MonitoringAndLogsApiService) ListAtlasProcesses(ctx context.Context, gr
 func (a *MonitoringAndLogsApiService) ListAtlasProcessesExecute(r ListAtlasProcessesApiRequest) (*PaginatedHostViewAtlas, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PaginatedHostViewAtlas
 	)
@@ -1956,7 +1956,7 @@ func (a *MonitoringAndLogsApiService) ListDatabases(ctx context.Context, groupId
 func (a *MonitoringAndLogsApiService) ListDatabasesExecute(r ListDatabasesApiRequest) (*PaginatedDatabase, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PaginatedDatabase
 	)
@@ -2099,7 +2099,7 @@ func (a *MonitoringAndLogsApiService) ListDiskMeasurements(ctx context.Context, 
 func (a *MonitoringAndLogsApiService) ListDiskMeasurementsExecute(r ListDiskMeasurementsApiRequest) (*MeasurementDiskPartition, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *MeasurementDiskPartition
 	)
@@ -2244,7 +2244,7 @@ func (a *MonitoringAndLogsApiService) ListDiskPartitions(ctx context.Context, gr
 func (a *MonitoringAndLogsApiService) ListDiskPartitionsExecute(r ListDiskPartitionsApiRequest) (*PaginatedDiskPartition, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PaginatedDiskPartition
 	)
@@ -2437,7 +2437,7 @@ func (a *MonitoringAndLogsApiService) ListIndexMetrics(ctx context.Context, proc
 func (a *MonitoringAndLogsApiService) ListIndexMetricsExecute(r ListIndexMetricsApiRequest) (*MeasurementsIndexes, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *MeasurementsIndexes
 	)
@@ -2578,7 +2578,7 @@ func (a *MonitoringAndLogsApiService) ListMetricTypes(ctx context.Context, proce
 func (a *MonitoringAndLogsApiService) ListMetricTypesExecute(r ListMetricTypesApiRequest) (*CloudSearchMetrics, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *CloudSearchMetrics
 	)

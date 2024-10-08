@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Predicates** | Pointer to **[]interface{}** | List that contains the search criteria that the query uses. To use the values in key-value pairs in these predicates requires **Project Data Access Read Only** permissions or greater. Otherwise, MongoDB Cloud redacts these values. | [optional] [readonly] 
+**Predicates** | Pointer to [**[]any**](any.md) | List that contains the search criteria that the query uses. To use the values in key-value pairs in these predicates requires **Project Data Access Read Only** permissions or greater. Otherwise, MongoDB Cloud redacts these values. | [optional] [readonly] 
 **Stats** | Pointer to [**PerformanceAdvisorOpStats**](PerformanceAdvisorOpStats.md) |  | [optional] 
 
 ## Methods
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetPredicates
 
-`func (o *PerformanceAdvisorOperation) GetPredicates() []interface{}`
+`func (o *PerformanceAdvisorOperation) GetPredicates() []any`
 
 GetPredicates returns the Predicates field if non-nil, zero value otherwise.
 
 ### GetPredicatesOk
 
-`func (o *PerformanceAdvisorOperation) GetPredicatesOk() (*[]interface{}, bool)`
+`func (o *PerformanceAdvisorOperation) GetPredicatesOk() (*[]any, bool)`
 
 GetPredicatesOk returns a tuple with the Predicates field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPredicates
 
-`func (o *PerformanceAdvisorOperation) SetPredicates(v []interface{})`
+`func (o *PerformanceAdvisorOperation) SetPredicates(v []any)`
 
 SetPredicates sets Predicates field to given value.
 

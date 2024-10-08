@@ -188,7 +188,7 @@ Name | Type | Description  | Notes
 
 ## DeletePrivateEndpoint
 
-> interface{} DeletePrivateEndpoint(ctx, groupId, cloudProvider, endpointId, endpointServiceId).Execute()
+> any DeletePrivateEndpoint(ctx, groupId, cloudProvider, endpointId, endpointServiceId).Execute()
 
 Remove One Private Endpoint for One Provider
 
@@ -230,7 +230,7 @@ func main() {
         }
         return
     }
-    // response from `DeletePrivateEndpoint`: interface{}
+    // response from `DeletePrivateEndpoint`: any
     fmt.Fprintf(os.Stdout, "Response from `PrivateEndpointServicesApi.DeletePrivateEndpoint`: %v (%v)\n", resp, r)
 }
 ```
@@ -260,7 +260,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**interface{}**
+**any**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -277,7 +277,7 @@ Name | Type | Description  | Notes
 
 ## DeletePrivateEndpointService
 
-> interface{} DeletePrivateEndpointService(ctx, groupId, cloudProvider, endpointServiceId).Execute()
+> any DeletePrivateEndpointService(ctx, groupId, cloudProvider, endpointServiceId).Execute()
 
 Remove One Private Endpoint Service for One Provider
 
@@ -318,7 +318,7 @@ func main() {
         }
         return
     }
-    // response from `DeletePrivateEndpointService`: interface{}
+    // response from `DeletePrivateEndpointService`: any
     fmt.Fprintf(os.Stdout, "Response from `PrivateEndpointServicesApi.DeletePrivateEndpointService`: %v (%v)\n", resp, r)
 }
 ```
@@ -346,7 +346,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**interface{}**
+**any**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

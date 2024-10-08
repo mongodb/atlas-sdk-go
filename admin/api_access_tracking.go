@@ -159,7 +159,7 @@ func (a *AccessTrackingApiService) ListAccessLogsByClusterName(ctx context.Conte
 func (a *AccessTrackingApiService) ListAccessLogsByClusterNameExecute(r ListAccessLogsByClusterNameApiRequest) (*MongoDBAccessLogsList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *MongoDBAccessLogsList
 	)
@@ -340,7 +340,7 @@ func (a *AccessTrackingApiService) ListAccessLogsByHostname(ctx context.Context,
 func (a *AccessTrackingApiService) ListAccessLogsByHostnameExecute(r ListAccessLogsByHostnameApiRequest) (*MongoDBAccessLogsList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *MongoDBAccessLogsList
 	)

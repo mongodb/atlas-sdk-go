@@ -271,7 +271,7 @@ Name | Type | Description  | Notes
 
 ## DeleteTeam
 
-> interface{} DeleteTeam(ctx, orgId, teamId).Execute()
+> any DeleteTeam(ctx, orgId, teamId).Execute()
 
 Remove One Team from One Organization
 
@@ -311,7 +311,7 @@ func main() {
         }
         return
     }
-    // response from `DeleteTeam`: interface{}
+    // response from `DeleteTeam`: any
     fmt.Fprintf(os.Stdout, "Response from `TeamsApi.DeleteTeam`: %v (%v)\n", resp, r)
 }
 ```
@@ -337,7 +337,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**interface{}**
+**any**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

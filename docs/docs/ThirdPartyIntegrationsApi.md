@@ -105,7 +105,7 @@ Name | Type | Description  | Notes
 
 ## DeleteThirdPartyIntegration
 
-> interface{} DeleteThirdPartyIntegration(ctx, integrationType, groupId).Execute()
+> any DeleteThirdPartyIntegration(ctx, integrationType, groupId).Execute()
 
 Remove One Third-Party Service Integration
 
@@ -145,7 +145,7 @@ func main() {
         }
         return
     }
-    // response from `DeleteThirdPartyIntegration`: interface{}
+    // response from `DeleteThirdPartyIntegration`: any
     fmt.Fprintf(os.Stdout, "Response from `ThirdPartyIntegrationsApi.DeleteThirdPartyIntegration`: %v (%v)\n", resp, r)
 }
 ```
@@ -171,7 +171,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**interface{}**
+**any**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

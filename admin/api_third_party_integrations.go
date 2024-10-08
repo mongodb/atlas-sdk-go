@@ -59,7 +59,7 @@ type ThirdPartyIntegrationsApi interface {
 	DeleteThirdPartyIntegrationWithParams(ctx context.Context, args *DeleteThirdPartyIntegrationApiParams) DeleteThirdPartyIntegrationApiRequest
 
 	// Method available only for mocking purposes
-	DeleteThirdPartyIntegrationExecute(r DeleteThirdPartyIntegrationApiRequest) (interface{}, *http.Response, error)
+	DeleteThirdPartyIntegrationExecute(r DeleteThirdPartyIntegrationApiRequest) (any, *http.Response, error)
 
 	/*
 		GetThirdPartyIntegration Return One Third-Party Service Integration
@@ -218,7 +218,7 @@ func (a *ThirdPartyIntegrationsApiService) CreateThirdPartyIntegration(ctx conte
 func (a *ThirdPartyIntegrationsApiService) CreateThirdPartyIntegrationExecute(r CreateThirdPartyIntegrationApiRequest) (*PaginatedIntegration, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PaginatedIntegration
 	)
@@ -332,7 +332,7 @@ func (a *ThirdPartyIntegrationsApiService) DeleteThirdPartyIntegrationWithParams
 	}
 }
 
-func (r DeleteThirdPartyIntegrationApiRequest) Execute() (interface{}, *http.Response, error) {
+func (r DeleteThirdPartyIntegrationApiRequest) Execute() (any, *http.Response, error) {
 	return r.ApiService.DeleteThirdPartyIntegrationExecute(r)
 }
 
@@ -357,13 +357,13 @@ func (a *ThirdPartyIntegrationsApiService) DeleteThirdPartyIntegration(ctx conte
 
 // DeleteThirdPartyIntegrationExecute executes the request
 //
-//	@return interface{}
-func (a *ThirdPartyIntegrationsApiService) DeleteThirdPartyIntegrationExecute(r DeleteThirdPartyIntegrationApiRequest) (interface{}, *http.Response, error) {
+//	@return any
+func (a *ThirdPartyIntegrationsApiService) DeleteThirdPartyIntegrationExecute(r DeleteThirdPartyIntegrationApiRequest) (any, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue interface{}
+		localVarReturnValue any
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ThirdPartyIntegrationsApiService.DeleteThirdPartyIntegration")
@@ -478,7 +478,7 @@ func (a *ThirdPartyIntegrationsApiService) GetThirdPartyIntegration(ctx context.
 func (a *ThirdPartyIntegrationsApiService) GetThirdPartyIntegrationExecute(r GetThirdPartyIntegrationApiRequest) (*ThirdPartyIntegration, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *ThirdPartyIntegration
 	)
@@ -617,7 +617,7 @@ func (a *ThirdPartyIntegrationsApiService) ListThirdPartyIntegrations(ctx contex
 func (a *ThirdPartyIntegrationsApiService) ListThirdPartyIntegrationsExecute(r ListThirdPartyIntegrationsApiRequest) (*PaginatedIntegration, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PaginatedIntegration
 	)
@@ -785,7 +785,7 @@ func (a *ThirdPartyIntegrationsApiService) UpdateThirdPartyIntegration(ctx conte
 func (a *ThirdPartyIntegrationsApiService) UpdateThirdPartyIntegrationExecute(r UpdateThirdPartyIntegrationApiRequest) (*PaginatedIntegration, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PaginatedIntegration
 	)

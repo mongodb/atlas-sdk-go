@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **Name** | Pointer to **string** | Human-readable name of the stream processor. | [optional] 
 **Options** | Pointer to [**StreamsOptions**](StreamsOptions.md) |  | [optional] 
-**Pipeline** | Pointer to **[]interface{}** | Stream aggregation pipeline you want to apply to your streaming data. | [optional] 
+**Pipeline** | Pointer to [**[]any**](any.md) | Stream aggregation pipeline you want to apply to your streaming data. | [optional] 
 
 ## Methods
 
@@ -127,20 +127,20 @@ SetOptions sets Options field to given value.
 HasOptions returns a boolean if a field has been set.
 ### GetPipeline
 
-`func (o *StreamsProcessor) GetPipeline() []interface{}`
+`func (o *StreamsProcessor) GetPipeline() []any`
 
 GetPipeline returns the Pipeline field if non-nil, zero value otherwise.
 
 ### GetPipelineOk
 
-`func (o *StreamsProcessor) GetPipelineOk() (*[]interface{}, bool)`
+`func (o *StreamsProcessor) GetPipelineOk() (*[]any, bool)`
 
 GetPipelineOk returns a tuple with the Pipeline field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPipeline
 
-`func (o *StreamsProcessor) SetPipeline(v []interface{})`
+`func (o *StreamsProcessor) SetPipeline(v []any)`
 
 SetPipeline sets Pipeline field to given value.
 

@@ -350,7 +350,7 @@ type FederatedAuthenticationApi interface {
 	RemoveConnectedOrgConfigWithParams(ctx context.Context, args *RemoveConnectedOrgConfigApiParams) RemoveConnectedOrgConfigApiRequest
 
 	// Method available only for mocking purposes
-	RemoveConnectedOrgConfigExecute(r RemoveConnectedOrgConfigApiRequest) (interface{}, *http.Response, error)
+	RemoveConnectedOrgConfigExecute(r RemoveConnectedOrgConfigApiRequest) (any, *http.Response, error)
 
 	/*
 			RevokeJwksFromIdentityProvider Revoke the JWKS from One OIDC Identity Provider
@@ -519,7 +519,7 @@ func (a *FederatedAuthenticationApiService) CreateIdentityProvider(ctx context.C
 func (a *FederatedAuthenticationApiService) CreateIdentityProviderExecute(r CreateIdentityProviderApiRequest) (*FederationOidcIdentityProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *FederationOidcIdentityProvider
 	)
@@ -644,7 +644,7 @@ func (a *FederatedAuthenticationApiService) CreateRoleMapping(ctx context.Contex
 func (a *FederatedAuthenticationApiService) CreateRoleMappingExecute(r CreateRoleMappingApiRequest) (*AuthFederationRoleMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *AuthFederationRoleMapping
 	)
@@ -759,7 +759,7 @@ func (a *FederatedAuthenticationApiService) DeleteFederationApp(ctx context.Cont
 func (a *FederatedAuthenticationApiService) DeleteFederationAppExecute(r DeleteFederationAppApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
+		localVarPostBody   any
 		formFiles          []formFile
 	)
 
@@ -860,7 +860,7 @@ func (a *FederatedAuthenticationApiService) DeleteIdentityProvider(ctx context.C
 func (a *FederatedAuthenticationApiService) DeleteIdentityProviderExecute(r DeleteIdentityProviderApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
+		localVarPostBody   any
 		formFiles          []formFile
 	)
 
@@ -965,7 +965,7 @@ func (a *FederatedAuthenticationApiService) DeleteRoleMapping(ctx context.Contex
 func (a *FederatedAuthenticationApiService) DeleteRoleMappingExecute(r DeleteRoleMappingApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
+		localVarPostBody   any
 		formFiles          []formFile
 	)
 
@@ -1068,7 +1068,7 @@ func (a *FederatedAuthenticationApiService) GetConnectedOrgConfig(ctx context.Co
 func (a *FederatedAuthenticationApiService) GetConnectedOrgConfigExecute(r GetConnectedOrgConfigApiRequest) (*ConnectedOrgConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *ConnectedOrgConfig
 	)
@@ -1180,7 +1180,7 @@ func (a *FederatedAuthenticationApiService) GetFederationSettings(ctx context.Co
 func (a *FederatedAuthenticationApiService) GetFederationSettingsExecute(r GetFederationSettingsApiRequest) (*OrgFederationSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *OrgFederationSettings
 	)
@@ -1296,7 +1296,7 @@ func (a *FederatedAuthenticationApiService) GetIdentityProvider(ctx context.Cont
 func (a *FederatedAuthenticationApiService) GetIdentityProviderExecute(r GetIdentityProviderApiRequest) (*FederationIdentityProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *FederationIdentityProvider
 	)
@@ -1413,7 +1413,7 @@ func (a *FederatedAuthenticationApiService) GetIdentityProviderMetadata(ctx cont
 func (a *FederatedAuthenticationApiService) GetIdentityProviderMetadataExecute(r GetIdentityProviderMetadataApiRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue string
 	)
@@ -1535,7 +1535,7 @@ func (a *FederatedAuthenticationApiService) GetRoleMapping(ctx context.Context, 
 func (a *FederatedAuthenticationApiService) GetRoleMappingExecute(r GetRoleMappingApiRequest) (*AuthFederationRoleMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *AuthFederationRoleMapping
 	)
@@ -1666,7 +1666,7 @@ func (a *FederatedAuthenticationApiService) ListConnectedOrgConfigs(ctx context.
 func (a *FederatedAuthenticationApiService) ListConnectedOrgConfigsExecute(r ListConnectedOrgConfigsApiRequest) (*PaginatedConnectedOrgConfigs, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PaginatedConnectedOrgConfigs
 	)
@@ -1827,7 +1827,7 @@ func (a *FederatedAuthenticationApiService) ListIdentityProviders(ctx context.Co
 func (a *FederatedAuthenticationApiService) ListIdentityProvidersExecute(r ListIdentityProvidersApiRequest) (*PaginatedFederationIdentityProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PaginatedFederationIdentityProvider
 	)
@@ -1971,7 +1971,7 @@ func (a *FederatedAuthenticationApiService) ListRoleMappings(ctx context.Context
 func (a *FederatedAuthenticationApiService) ListRoleMappingsExecute(r ListRoleMappingsApiRequest) (*PaginatedRoleMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PaginatedRoleMapping
 	)
@@ -2059,7 +2059,7 @@ func (a *FederatedAuthenticationApiService) RemoveConnectedOrgConfigWithParams(c
 	}
 }
 
-func (r RemoveConnectedOrgConfigApiRequest) Execute() (interface{}, *http.Response, error) {
+func (r RemoveConnectedOrgConfigApiRequest) Execute() (any, *http.Response, error) {
 	return r.ApiService.RemoveConnectedOrgConfigExecute(r)
 }
 
@@ -2084,13 +2084,13 @@ func (a *FederatedAuthenticationApiService) RemoveConnectedOrgConfig(ctx context
 
 // RemoveConnectedOrgConfigExecute executes the request
 //
-//	@return interface{}
-func (a *FederatedAuthenticationApiService) RemoveConnectedOrgConfigExecute(r RemoveConnectedOrgConfigApiRequest) (interface{}, *http.Response, error) {
+//	@return any
+func (a *FederatedAuthenticationApiService) RemoveConnectedOrgConfigExecute(r RemoveConnectedOrgConfigApiRequest) (any, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue interface{}
+		localVarReturnValue any
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationApiService.RemoveConnectedOrgConfig")
@@ -2205,7 +2205,7 @@ func (a *FederatedAuthenticationApiService) RevokeJwksFromIdentityProvider(ctx c
 func (a *FederatedAuthenticationApiService) RevokeJwksFromIdentityProviderExecute(r RevokeJwksFromIdentityProviderApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
+		localVarPostBody   any
 		formFiles          []formFile
 	)
 
@@ -2319,7 +2319,7 @@ func (a *FederatedAuthenticationApiService) UpdateConnectedOrgConfig(ctx context
 func (a *FederatedAuthenticationApiService) UpdateConnectedOrgConfigExecute(r UpdateConnectedOrgConfigApiRequest) (*ConnectedOrgConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *ConnectedOrgConfig
 	)
@@ -2447,7 +2447,7 @@ func (a *FederatedAuthenticationApiService) UpdateIdentityProvider(ctx context.C
 func (a *FederatedAuthenticationApiService) UpdateIdentityProviderExecute(r UpdateIdentityProviderApiRequest) (*FederationIdentityProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *FederationIdentityProvider
 	)
@@ -2578,7 +2578,7 @@ func (a *FederatedAuthenticationApiService) UpdateRoleMapping(ctx context.Contex
 func (a *FederatedAuthenticationApiService) UpdateRoleMappingExecute(r UpdateRoleMappingApiRequest) (*AuthFederationRoleMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *AuthFederationRoleMapping
 	)

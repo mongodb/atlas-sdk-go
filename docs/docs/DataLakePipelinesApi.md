@@ -104,7 +104,7 @@ Name | Type | Description  | Notes
 
 ## DeletePipeline
 
-> interface{} DeletePipeline(ctx, groupId, pipelineName).Execute()
+> any DeletePipeline(ctx, groupId, pipelineName).Execute()
 
 Remove One Data Lake Pipeline
 
@@ -144,7 +144,7 @@ func main() {
         }
         return
     }
-    // response from `DeletePipeline`: interface{}
+    // response from `DeletePipeline`: any
     fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.DeletePipeline`: %v (%v)\n", resp, r)
 }
 ```
@@ -170,7 +170,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**interface{}**
+**any**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -187,7 +187,7 @@ Name | Type | Description  | Notes
 
 ## DeletePipelineRunDataset
 
-> interface{} DeletePipelineRunDataset(ctx, groupId, pipelineName, pipelineRunId).Execute()
+> any DeletePipelineRunDataset(ctx, groupId, pipelineName, pipelineRunId).Execute()
 
 Delete Pipeline Run Dataset
 
@@ -228,7 +228,7 @@ func main() {
         }
         return
     }
-    // response from `DeletePipelineRunDataset`: interface{}
+    // response from `DeletePipelineRunDataset`: any
     fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.DeletePipelineRunDataset`: %v (%v)\n", resp, r)
 }
 ```
@@ -256,7 +256,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**interface{}**
+**any**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

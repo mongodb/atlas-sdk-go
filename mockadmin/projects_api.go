@@ -52,7 +52,7 @@ type ProjectsApi_AddUserToProject_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - groupInvitationRequest *admin.GroupInvitationRequest
-func (_e *ProjectsApi_Expecter) AddUserToProject(ctx interface{}, groupId interface{}, groupInvitationRequest interface{}) *ProjectsApi_AddUserToProject_Call {
+func (_e *ProjectsApi_Expecter) AddUserToProject(ctx any, groupId any, groupInvitationRequest any) *ProjectsApi_AddUserToProject_Call {
 	return &ProjectsApi_AddUserToProject_Call{Call: _e.mock.On("AddUserToProject", ctx, groupId, groupInvitationRequest)}
 }
 
@@ -119,7 +119,7 @@ type ProjectsApi_AddUserToProjectExecute_Call struct {
 
 // AddUserToProjectExecute is a helper method to define mock.On call
 //   - r admin.AddUserToProjectApiRequest
-func (_e *ProjectsApi_Expecter) AddUserToProjectExecute(r interface{}) *ProjectsApi_AddUserToProjectExecute_Call {
+func (_e *ProjectsApi_Expecter) AddUserToProjectExecute(r any) *ProjectsApi_AddUserToProjectExecute_Call {
 	return &ProjectsApi_AddUserToProjectExecute_Call{Call: _e.mock.On("AddUserToProjectExecute", r)}
 }
 
@@ -166,7 +166,7 @@ type ProjectsApi_AddUserToProjectWithParams_Call struct {
 // AddUserToProjectWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.AddUserToProjectApiParams
-func (_e *ProjectsApi_Expecter) AddUserToProjectWithParams(ctx interface{}, args interface{}) *ProjectsApi_AddUserToProjectWithParams_Call {
+func (_e *ProjectsApi_Expecter) AddUserToProjectWithParams(ctx any, args any) *ProjectsApi_AddUserToProjectWithParams_Call {
 	return &ProjectsApi_AddUserToProjectWithParams_Call{Call: _e.mock.On("AddUserToProjectWithParams", ctx, args)}
 }
 
@@ -213,7 +213,7 @@ type ProjectsApi_CreateProject_Call struct {
 // CreateProject is a helper method to define mock.On call
 //   - ctx context.Context
 //   - group *admin.Group
-func (_e *ProjectsApi_Expecter) CreateProject(ctx interface{}, group interface{}) *ProjectsApi_CreateProject_Call {
+func (_e *ProjectsApi_Expecter) CreateProject(ctx any, group any) *ProjectsApi_CreateProject_Call {
 	return &ProjectsApi_CreateProject_Call{Call: _e.mock.On("CreateProject", ctx, group)}
 }
 
@@ -280,7 +280,7 @@ type ProjectsApi_CreateProjectExecute_Call struct {
 
 // CreateProjectExecute is a helper method to define mock.On call
 //   - r admin.CreateProjectApiRequest
-func (_e *ProjectsApi_Expecter) CreateProjectExecute(r interface{}) *ProjectsApi_CreateProjectExecute_Call {
+func (_e *ProjectsApi_Expecter) CreateProjectExecute(r any) *ProjectsApi_CreateProjectExecute_Call {
 	return &ProjectsApi_CreateProjectExecute_Call{Call: _e.mock.On("CreateProjectExecute", r)}
 }
 
@@ -328,7 +328,7 @@ type ProjectsApi_CreateProjectInvitation_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - groupInvitationRequest *admin.GroupInvitationRequest
-func (_e *ProjectsApi_Expecter) CreateProjectInvitation(ctx interface{}, groupId interface{}, groupInvitationRequest interface{}) *ProjectsApi_CreateProjectInvitation_Call {
+func (_e *ProjectsApi_Expecter) CreateProjectInvitation(ctx any, groupId any, groupInvitationRequest any) *ProjectsApi_CreateProjectInvitation_Call {
 	return &ProjectsApi_CreateProjectInvitation_Call{Call: _e.mock.On("CreateProjectInvitation", ctx, groupId, groupInvitationRequest)}
 }
 
@@ -395,7 +395,7 @@ type ProjectsApi_CreateProjectInvitationExecute_Call struct {
 
 // CreateProjectInvitationExecute is a helper method to define mock.On call
 //   - r admin.CreateProjectInvitationApiRequest
-func (_e *ProjectsApi_Expecter) CreateProjectInvitationExecute(r interface{}) *ProjectsApi_CreateProjectInvitationExecute_Call {
+func (_e *ProjectsApi_Expecter) CreateProjectInvitationExecute(r any) *ProjectsApi_CreateProjectInvitationExecute_Call {
 	return &ProjectsApi_CreateProjectInvitationExecute_Call{Call: _e.mock.On("CreateProjectInvitationExecute", r)}
 }
 
@@ -442,7 +442,7 @@ type ProjectsApi_CreateProjectInvitationWithParams_Call struct {
 // CreateProjectInvitationWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.CreateProjectInvitationApiParams
-func (_e *ProjectsApi_Expecter) CreateProjectInvitationWithParams(ctx interface{}, args interface{}) *ProjectsApi_CreateProjectInvitationWithParams_Call {
+func (_e *ProjectsApi_Expecter) CreateProjectInvitationWithParams(ctx any, args any) *ProjectsApi_CreateProjectInvitationWithParams_Call {
 	return &ProjectsApi_CreateProjectInvitationWithParams_Call{Call: _e.mock.On("CreateProjectInvitationWithParams", ctx, args)}
 }
 
@@ -489,7 +489,7 @@ type ProjectsApi_CreateProjectWithParams_Call struct {
 // CreateProjectWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.CreateProjectApiParams
-func (_e *ProjectsApi_Expecter) CreateProjectWithParams(ctx interface{}, args interface{}) *ProjectsApi_CreateProjectWithParams_Call {
+func (_e *ProjectsApi_Expecter) CreateProjectWithParams(ctx any, args any) *ProjectsApi_CreateProjectWithParams_Call {
 	return &ProjectsApi_CreateProjectWithParams_Call{Call: _e.mock.On("CreateProjectWithParams", ctx, args)}
 }
 
@@ -536,7 +536,7 @@ type ProjectsApi_DeleteProject_Call struct {
 // DeleteProject is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *ProjectsApi_Expecter) DeleteProject(ctx interface{}, groupId interface{}) *ProjectsApi_DeleteProject_Call {
+func (_e *ProjectsApi_Expecter) DeleteProject(ctx any, groupId any) *ProjectsApi_DeleteProject_Call {
 	return &ProjectsApi_DeleteProject_Call{Call: _e.mock.On("DeleteProject", ctx, groupId)}
 }
 
@@ -558,24 +558,24 @@ func (_c *ProjectsApi_DeleteProject_Call) RunAndReturn(run func(context.Context,
 }
 
 // DeleteProjectExecute provides a mock function with given fields: r
-func (_m *ProjectsApi) DeleteProjectExecute(r admin.DeleteProjectApiRequest) (interface{}, *http.Response, error) {
+func (_m *ProjectsApi) DeleteProjectExecute(r admin.DeleteProjectApiRequest) (any, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteProjectExecute")
 	}
 
-	var r0 interface{}
+	var r0 any
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteProjectApiRequest) (interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteProjectApiRequest) (any, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteProjectApiRequest) interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteProjectApiRequest) any); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(interface{})
+			r0 = ret.Get(0).(any)
 		}
 	}
 
@@ -603,7 +603,7 @@ type ProjectsApi_DeleteProjectExecute_Call struct {
 
 // DeleteProjectExecute is a helper method to define mock.On call
 //   - r admin.DeleteProjectApiRequest
-func (_e *ProjectsApi_Expecter) DeleteProjectExecute(r interface{}) *ProjectsApi_DeleteProjectExecute_Call {
+func (_e *ProjectsApi_Expecter) DeleteProjectExecute(r any) *ProjectsApi_DeleteProjectExecute_Call {
 	return &ProjectsApi_DeleteProjectExecute_Call{Call: _e.mock.On("DeleteProjectExecute", r)}
 }
 
@@ -614,12 +614,12 @@ func (_c *ProjectsApi_DeleteProjectExecute_Call) Run(run func(r admin.DeleteProj
 	return _c
 }
 
-func (_c *ProjectsApi_DeleteProjectExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *ProjectsApi_DeleteProjectExecute_Call {
+func (_c *ProjectsApi_DeleteProjectExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *ProjectsApi_DeleteProjectExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ProjectsApi_DeleteProjectExecute_Call) RunAndReturn(run func(admin.DeleteProjectApiRequest) (interface{}, *http.Response, error)) *ProjectsApi_DeleteProjectExecute_Call {
+func (_c *ProjectsApi_DeleteProjectExecute_Call) RunAndReturn(run func(admin.DeleteProjectApiRequest) (any, *http.Response, error)) *ProjectsApi_DeleteProjectExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -651,7 +651,7 @@ type ProjectsApi_DeleteProjectInvitation_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - invitationId string
-func (_e *ProjectsApi_Expecter) DeleteProjectInvitation(ctx interface{}, groupId interface{}, invitationId interface{}) *ProjectsApi_DeleteProjectInvitation_Call {
+func (_e *ProjectsApi_Expecter) DeleteProjectInvitation(ctx any, groupId any, invitationId any) *ProjectsApi_DeleteProjectInvitation_Call {
 	return &ProjectsApi_DeleteProjectInvitation_Call{Call: _e.mock.On("DeleteProjectInvitation", ctx, groupId, invitationId)}
 }
 
@@ -673,24 +673,24 @@ func (_c *ProjectsApi_DeleteProjectInvitation_Call) RunAndReturn(run func(contex
 }
 
 // DeleteProjectInvitationExecute provides a mock function with given fields: r
-func (_m *ProjectsApi) DeleteProjectInvitationExecute(r admin.DeleteProjectInvitationApiRequest) (interface{}, *http.Response, error) {
+func (_m *ProjectsApi) DeleteProjectInvitationExecute(r admin.DeleteProjectInvitationApiRequest) (any, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteProjectInvitationExecute")
 	}
 
-	var r0 interface{}
+	var r0 any
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteProjectInvitationApiRequest) (interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteProjectInvitationApiRequest) (any, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteProjectInvitationApiRequest) interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteProjectInvitationApiRequest) any); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(interface{})
+			r0 = ret.Get(0).(any)
 		}
 	}
 
@@ -718,7 +718,7 @@ type ProjectsApi_DeleteProjectInvitationExecute_Call struct {
 
 // DeleteProjectInvitationExecute is a helper method to define mock.On call
 //   - r admin.DeleteProjectInvitationApiRequest
-func (_e *ProjectsApi_Expecter) DeleteProjectInvitationExecute(r interface{}) *ProjectsApi_DeleteProjectInvitationExecute_Call {
+func (_e *ProjectsApi_Expecter) DeleteProjectInvitationExecute(r any) *ProjectsApi_DeleteProjectInvitationExecute_Call {
 	return &ProjectsApi_DeleteProjectInvitationExecute_Call{Call: _e.mock.On("DeleteProjectInvitationExecute", r)}
 }
 
@@ -729,12 +729,12 @@ func (_c *ProjectsApi_DeleteProjectInvitationExecute_Call) Run(run func(r admin.
 	return _c
 }
 
-func (_c *ProjectsApi_DeleteProjectInvitationExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *ProjectsApi_DeleteProjectInvitationExecute_Call {
+func (_c *ProjectsApi_DeleteProjectInvitationExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *ProjectsApi_DeleteProjectInvitationExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ProjectsApi_DeleteProjectInvitationExecute_Call) RunAndReturn(run func(admin.DeleteProjectInvitationApiRequest) (interface{}, *http.Response, error)) *ProjectsApi_DeleteProjectInvitationExecute_Call {
+func (_c *ProjectsApi_DeleteProjectInvitationExecute_Call) RunAndReturn(run func(admin.DeleteProjectInvitationApiRequest) (any, *http.Response, error)) *ProjectsApi_DeleteProjectInvitationExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -765,7 +765,7 @@ type ProjectsApi_DeleteProjectInvitationWithParams_Call struct {
 // DeleteProjectInvitationWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.DeleteProjectInvitationApiParams
-func (_e *ProjectsApi_Expecter) DeleteProjectInvitationWithParams(ctx interface{}, args interface{}) *ProjectsApi_DeleteProjectInvitationWithParams_Call {
+func (_e *ProjectsApi_Expecter) DeleteProjectInvitationWithParams(ctx any, args any) *ProjectsApi_DeleteProjectInvitationWithParams_Call {
 	return &ProjectsApi_DeleteProjectInvitationWithParams_Call{Call: _e.mock.On("DeleteProjectInvitationWithParams", ctx, args)}
 }
 
@@ -813,7 +813,7 @@ type ProjectsApi_DeleteProjectLimit_Call struct {
 //   - ctx context.Context
 //   - limitName string
 //   - groupId string
-func (_e *ProjectsApi_Expecter) DeleteProjectLimit(ctx interface{}, limitName interface{}, groupId interface{}) *ProjectsApi_DeleteProjectLimit_Call {
+func (_e *ProjectsApi_Expecter) DeleteProjectLimit(ctx any, limitName any, groupId any) *ProjectsApi_DeleteProjectLimit_Call {
 	return &ProjectsApi_DeleteProjectLimit_Call{Call: _e.mock.On("DeleteProjectLimit", ctx, limitName, groupId)}
 }
 
@@ -835,24 +835,24 @@ func (_c *ProjectsApi_DeleteProjectLimit_Call) RunAndReturn(run func(context.Con
 }
 
 // DeleteProjectLimitExecute provides a mock function with given fields: r
-func (_m *ProjectsApi) DeleteProjectLimitExecute(r admin.DeleteProjectLimitApiRequest) (interface{}, *http.Response, error) {
+func (_m *ProjectsApi) DeleteProjectLimitExecute(r admin.DeleteProjectLimitApiRequest) (any, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteProjectLimitExecute")
 	}
 
-	var r0 interface{}
+	var r0 any
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteProjectLimitApiRequest) (interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteProjectLimitApiRequest) (any, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteProjectLimitApiRequest) interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteProjectLimitApiRequest) any); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(interface{})
+			r0 = ret.Get(0).(any)
 		}
 	}
 
@@ -880,7 +880,7 @@ type ProjectsApi_DeleteProjectLimitExecute_Call struct {
 
 // DeleteProjectLimitExecute is a helper method to define mock.On call
 //   - r admin.DeleteProjectLimitApiRequest
-func (_e *ProjectsApi_Expecter) DeleteProjectLimitExecute(r interface{}) *ProjectsApi_DeleteProjectLimitExecute_Call {
+func (_e *ProjectsApi_Expecter) DeleteProjectLimitExecute(r any) *ProjectsApi_DeleteProjectLimitExecute_Call {
 	return &ProjectsApi_DeleteProjectLimitExecute_Call{Call: _e.mock.On("DeleteProjectLimitExecute", r)}
 }
 
@@ -891,12 +891,12 @@ func (_c *ProjectsApi_DeleteProjectLimitExecute_Call) Run(run func(r admin.Delet
 	return _c
 }
 
-func (_c *ProjectsApi_DeleteProjectLimitExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *ProjectsApi_DeleteProjectLimitExecute_Call {
+func (_c *ProjectsApi_DeleteProjectLimitExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *ProjectsApi_DeleteProjectLimitExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ProjectsApi_DeleteProjectLimitExecute_Call) RunAndReturn(run func(admin.DeleteProjectLimitApiRequest) (interface{}, *http.Response, error)) *ProjectsApi_DeleteProjectLimitExecute_Call {
+func (_c *ProjectsApi_DeleteProjectLimitExecute_Call) RunAndReturn(run func(admin.DeleteProjectLimitApiRequest) (any, *http.Response, error)) *ProjectsApi_DeleteProjectLimitExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -927,7 +927,7 @@ type ProjectsApi_DeleteProjectLimitWithParams_Call struct {
 // DeleteProjectLimitWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.DeleteProjectLimitApiParams
-func (_e *ProjectsApi_Expecter) DeleteProjectLimitWithParams(ctx interface{}, args interface{}) *ProjectsApi_DeleteProjectLimitWithParams_Call {
+func (_e *ProjectsApi_Expecter) DeleteProjectLimitWithParams(ctx any, args any) *ProjectsApi_DeleteProjectLimitWithParams_Call {
 	return &ProjectsApi_DeleteProjectLimitWithParams_Call{Call: _e.mock.On("DeleteProjectLimitWithParams", ctx, args)}
 }
 
@@ -974,7 +974,7 @@ type ProjectsApi_DeleteProjectWithParams_Call struct {
 // DeleteProjectWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.DeleteProjectApiParams
-func (_e *ProjectsApi_Expecter) DeleteProjectWithParams(ctx interface{}, args interface{}) *ProjectsApi_DeleteProjectWithParams_Call {
+func (_e *ProjectsApi_Expecter) DeleteProjectWithParams(ctx any, args any) *ProjectsApi_DeleteProjectWithParams_Call {
 	return &ProjectsApi_DeleteProjectWithParams_Call{Call: _e.mock.On("DeleteProjectWithParams", ctx, args)}
 }
 
@@ -1021,7 +1021,7 @@ type ProjectsApi_GetProject_Call struct {
 // GetProject is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *ProjectsApi_Expecter) GetProject(ctx interface{}, groupId interface{}) *ProjectsApi_GetProject_Call {
+func (_e *ProjectsApi_Expecter) GetProject(ctx any, groupId any) *ProjectsApi_GetProject_Call {
 	return &ProjectsApi_GetProject_Call{Call: _e.mock.On("GetProject", ctx, groupId)}
 }
 
@@ -1068,7 +1068,7 @@ type ProjectsApi_GetProjectByName_Call struct {
 // GetProjectByName is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupName string
-func (_e *ProjectsApi_Expecter) GetProjectByName(ctx interface{}, groupName interface{}) *ProjectsApi_GetProjectByName_Call {
+func (_e *ProjectsApi_Expecter) GetProjectByName(ctx any, groupName any) *ProjectsApi_GetProjectByName_Call {
 	return &ProjectsApi_GetProjectByName_Call{Call: _e.mock.On("GetProjectByName", ctx, groupName)}
 }
 
@@ -1135,7 +1135,7 @@ type ProjectsApi_GetProjectByNameExecute_Call struct {
 
 // GetProjectByNameExecute is a helper method to define mock.On call
 //   - r admin.GetProjectByNameApiRequest
-func (_e *ProjectsApi_Expecter) GetProjectByNameExecute(r interface{}) *ProjectsApi_GetProjectByNameExecute_Call {
+func (_e *ProjectsApi_Expecter) GetProjectByNameExecute(r any) *ProjectsApi_GetProjectByNameExecute_Call {
 	return &ProjectsApi_GetProjectByNameExecute_Call{Call: _e.mock.On("GetProjectByNameExecute", r)}
 }
 
@@ -1182,7 +1182,7 @@ type ProjectsApi_GetProjectByNameWithParams_Call struct {
 // GetProjectByNameWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetProjectByNameApiParams
-func (_e *ProjectsApi_Expecter) GetProjectByNameWithParams(ctx interface{}, args interface{}) *ProjectsApi_GetProjectByNameWithParams_Call {
+func (_e *ProjectsApi_Expecter) GetProjectByNameWithParams(ctx any, args any) *ProjectsApi_GetProjectByNameWithParams_Call {
 	return &ProjectsApi_GetProjectByNameWithParams_Call{Call: _e.mock.On("GetProjectByNameWithParams", ctx, args)}
 }
 
@@ -1249,7 +1249,7 @@ type ProjectsApi_GetProjectExecute_Call struct {
 
 // GetProjectExecute is a helper method to define mock.On call
 //   - r admin.GetProjectApiRequest
-func (_e *ProjectsApi_Expecter) GetProjectExecute(r interface{}) *ProjectsApi_GetProjectExecute_Call {
+func (_e *ProjectsApi_Expecter) GetProjectExecute(r any) *ProjectsApi_GetProjectExecute_Call {
 	return &ProjectsApi_GetProjectExecute_Call{Call: _e.mock.On("GetProjectExecute", r)}
 }
 
@@ -1297,7 +1297,7 @@ type ProjectsApi_GetProjectInvitation_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - invitationId string
-func (_e *ProjectsApi_Expecter) GetProjectInvitation(ctx interface{}, groupId interface{}, invitationId interface{}) *ProjectsApi_GetProjectInvitation_Call {
+func (_e *ProjectsApi_Expecter) GetProjectInvitation(ctx any, groupId any, invitationId any) *ProjectsApi_GetProjectInvitation_Call {
 	return &ProjectsApi_GetProjectInvitation_Call{Call: _e.mock.On("GetProjectInvitation", ctx, groupId, invitationId)}
 }
 
@@ -1364,7 +1364,7 @@ type ProjectsApi_GetProjectInvitationExecute_Call struct {
 
 // GetProjectInvitationExecute is a helper method to define mock.On call
 //   - r admin.GetProjectInvitationApiRequest
-func (_e *ProjectsApi_Expecter) GetProjectInvitationExecute(r interface{}) *ProjectsApi_GetProjectInvitationExecute_Call {
+func (_e *ProjectsApi_Expecter) GetProjectInvitationExecute(r any) *ProjectsApi_GetProjectInvitationExecute_Call {
 	return &ProjectsApi_GetProjectInvitationExecute_Call{Call: _e.mock.On("GetProjectInvitationExecute", r)}
 }
 
@@ -1411,7 +1411,7 @@ type ProjectsApi_GetProjectInvitationWithParams_Call struct {
 // GetProjectInvitationWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetProjectInvitationApiParams
-func (_e *ProjectsApi_Expecter) GetProjectInvitationWithParams(ctx interface{}, args interface{}) *ProjectsApi_GetProjectInvitationWithParams_Call {
+func (_e *ProjectsApi_Expecter) GetProjectInvitationWithParams(ctx any, args any) *ProjectsApi_GetProjectInvitationWithParams_Call {
 	return &ProjectsApi_GetProjectInvitationWithParams_Call{Call: _e.mock.On("GetProjectInvitationWithParams", ctx, args)}
 }
 
@@ -1458,7 +1458,7 @@ type ProjectsApi_GetProjectLTSVersions_Call struct {
 // GetProjectLTSVersions is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *ProjectsApi_Expecter) GetProjectLTSVersions(ctx interface{}, groupId interface{}) *ProjectsApi_GetProjectLTSVersions_Call {
+func (_e *ProjectsApi_Expecter) GetProjectLTSVersions(ctx any, groupId any) *ProjectsApi_GetProjectLTSVersions_Call {
 	return &ProjectsApi_GetProjectLTSVersions_Call{Call: _e.mock.On("GetProjectLTSVersions", ctx, groupId)}
 }
 
@@ -1525,7 +1525,7 @@ type ProjectsApi_GetProjectLTSVersionsExecute_Call struct {
 
 // GetProjectLTSVersionsExecute is a helper method to define mock.On call
 //   - r admin.GetProjectLTSVersionsApiRequest
-func (_e *ProjectsApi_Expecter) GetProjectLTSVersionsExecute(r interface{}) *ProjectsApi_GetProjectLTSVersionsExecute_Call {
+func (_e *ProjectsApi_Expecter) GetProjectLTSVersionsExecute(r any) *ProjectsApi_GetProjectLTSVersionsExecute_Call {
 	return &ProjectsApi_GetProjectLTSVersionsExecute_Call{Call: _e.mock.On("GetProjectLTSVersionsExecute", r)}
 }
 
@@ -1572,7 +1572,7 @@ type ProjectsApi_GetProjectLTSVersionsWithParams_Call struct {
 // GetProjectLTSVersionsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetProjectLTSVersionsApiParams
-func (_e *ProjectsApi_Expecter) GetProjectLTSVersionsWithParams(ctx interface{}, args interface{}) *ProjectsApi_GetProjectLTSVersionsWithParams_Call {
+func (_e *ProjectsApi_Expecter) GetProjectLTSVersionsWithParams(ctx any, args any) *ProjectsApi_GetProjectLTSVersionsWithParams_Call {
 	return &ProjectsApi_GetProjectLTSVersionsWithParams_Call{Call: _e.mock.On("GetProjectLTSVersionsWithParams", ctx, args)}
 }
 
@@ -1620,7 +1620,7 @@ type ProjectsApi_GetProjectLimit_Call struct {
 //   - ctx context.Context
 //   - limitName string
 //   - groupId string
-func (_e *ProjectsApi_Expecter) GetProjectLimit(ctx interface{}, limitName interface{}, groupId interface{}) *ProjectsApi_GetProjectLimit_Call {
+func (_e *ProjectsApi_Expecter) GetProjectLimit(ctx any, limitName any, groupId any) *ProjectsApi_GetProjectLimit_Call {
 	return &ProjectsApi_GetProjectLimit_Call{Call: _e.mock.On("GetProjectLimit", ctx, limitName, groupId)}
 }
 
@@ -1687,7 +1687,7 @@ type ProjectsApi_GetProjectLimitExecute_Call struct {
 
 // GetProjectLimitExecute is a helper method to define mock.On call
 //   - r admin.GetProjectLimitApiRequest
-func (_e *ProjectsApi_Expecter) GetProjectLimitExecute(r interface{}) *ProjectsApi_GetProjectLimitExecute_Call {
+func (_e *ProjectsApi_Expecter) GetProjectLimitExecute(r any) *ProjectsApi_GetProjectLimitExecute_Call {
 	return &ProjectsApi_GetProjectLimitExecute_Call{Call: _e.mock.On("GetProjectLimitExecute", r)}
 }
 
@@ -1734,7 +1734,7 @@ type ProjectsApi_GetProjectLimitWithParams_Call struct {
 // GetProjectLimitWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetProjectLimitApiParams
-func (_e *ProjectsApi_Expecter) GetProjectLimitWithParams(ctx interface{}, args interface{}) *ProjectsApi_GetProjectLimitWithParams_Call {
+func (_e *ProjectsApi_Expecter) GetProjectLimitWithParams(ctx any, args any) *ProjectsApi_GetProjectLimitWithParams_Call {
 	return &ProjectsApi_GetProjectLimitWithParams_Call{Call: _e.mock.On("GetProjectLimitWithParams", ctx, args)}
 }
 
@@ -1781,7 +1781,7 @@ type ProjectsApi_GetProjectSettings_Call struct {
 // GetProjectSettings is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *ProjectsApi_Expecter) GetProjectSettings(ctx interface{}, groupId interface{}) *ProjectsApi_GetProjectSettings_Call {
+func (_e *ProjectsApi_Expecter) GetProjectSettings(ctx any, groupId any) *ProjectsApi_GetProjectSettings_Call {
 	return &ProjectsApi_GetProjectSettings_Call{Call: _e.mock.On("GetProjectSettings", ctx, groupId)}
 }
 
@@ -1848,7 +1848,7 @@ type ProjectsApi_GetProjectSettingsExecute_Call struct {
 
 // GetProjectSettingsExecute is a helper method to define mock.On call
 //   - r admin.GetProjectSettingsApiRequest
-func (_e *ProjectsApi_Expecter) GetProjectSettingsExecute(r interface{}) *ProjectsApi_GetProjectSettingsExecute_Call {
+func (_e *ProjectsApi_Expecter) GetProjectSettingsExecute(r any) *ProjectsApi_GetProjectSettingsExecute_Call {
 	return &ProjectsApi_GetProjectSettingsExecute_Call{Call: _e.mock.On("GetProjectSettingsExecute", r)}
 }
 
@@ -1895,7 +1895,7 @@ type ProjectsApi_GetProjectSettingsWithParams_Call struct {
 // GetProjectSettingsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetProjectSettingsApiParams
-func (_e *ProjectsApi_Expecter) GetProjectSettingsWithParams(ctx interface{}, args interface{}) *ProjectsApi_GetProjectSettingsWithParams_Call {
+func (_e *ProjectsApi_Expecter) GetProjectSettingsWithParams(ctx any, args any) *ProjectsApi_GetProjectSettingsWithParams_Call {
 	return &ProjectsApi_GetProjectSettingsWithParams_Call{Call: _e.mock.On("GetProjectSettingsWithParams", ctx, args)}
 }
 
@@ -1942,7 +1942,7 @@ type ProjectsApi_GetProjectWithParams_Call struct {
 // GetProjectWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetProjectApiParams
-func (_e *ProjectsApi_Expecter) GetProjectWithParams(ctx interface{}, args interface{}) *ProjectsApi_GetProjectWithParams_Call {
+func (_e *ProjectsApi_Expecter) GetProjectWithParams(ctx any, args any) *ProjectsApi_GetProjectWithParams_Call {
 	return &ProjectsApi_GetProjectWithParams_Call{Call: _e.mock.On("GetProjectWithParams", ctx, args)}
 }
 
@@ -1989,7 +1989,7 @@ type ProjectsApi_ListProjectInvitations_Call struct {
 // ListProjectInvitations is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *ProjectsApi_Expecter) ListProjectInvitations(ctx interface{}, groupId interface{}) *ProjectsApi_ListProjectInvitations_Call {
+func (_e *ProjectsApi_Expecter) ListProjectInvitations(ctx any, groupId any) *ProjectsApi_ListProjectInvitations_Call {
 	return &ProjectsApi_ListProjectInvitations_Call{Call: _e.mock.On("ListProjectInvitations", ctx, groupId)}
 }
 
@@ -2056,7 +2056,7 @@ type ProjectsApi_ListProjectInvitationsExecute_Call struct {
 
 // ListProjectInvitationsExecute is a helper method to define mock.On call
 //   - r admin.ListProjectInvitationsApiRequest
-func (_e *ProjectsApi_Expecter) ListProjectInvitationsExecute(r interface{}) *ProjectsApi_ListProjectInvitationsExecute_Call {
+func (_e *ProjectsApi_Expecter) ListProjectInvitationsExecute(r any) *ProjectsApi_ListProjectInvitationsExecute_Call {
 	return &ProjectsApi_ListProjectInvitationsExecute_Call{Call: _e.mock.On("ListProjectInvitationsExecute", r)}
 }
 
@@ -2103,7 +2103,7 @@ type ProjectsApi_ListProjectInvitationsWithParams_Call struct {
 // ListProjectInvitationsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListProjectInvitationsApiParams
-func (_e *ProjectsApi_Expecter) ListProjectInvitationsWithParams(ctx interface{}, args interface{}) *ProjectsApi_ListProjectInvitationsWithParams_Call {
+func (_e *ProjectsApi_Expecter) ListProjectInvitationsWithParams(ctx any, args any) *ProjectsApi_ListProjectInvitationsWithParams_Call {
 	return &ProjectsApi_ListProjectInvitationsWithParams_Call{Call: _e.mock.On("ListProjectInvitationsWithParams", ctx, args)}
 }
 
@@ -2150,7 +2150,7 @@ type ProjectsApi_ListProjectLimits_Call struct {
 // ListProjectLimits is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *ProjectsApi_Expecter) ListProjectLimits(ctx interface{}, groupId interface{}) *ProjectsApi_ListProjectLimits_Call {
+func (_e *ProjectsApi_Expecter) ListProjectLimits(ctx any, groupId any) *ProjectsApi_ListProjectLimits_Call {
 	return &ProjectsApi_ListProjectLimits_Call{Call: _e.mock.On("ListProjectLimits", ctx, groupId)}
 }
 
@@ -2217,7 +2217,7 @@ type ProjectsApi_ListProjectLimitsExecute_Call struct {
 
 // ListProjectLimitsExecute is a helper method to define mock.On call
 //   - r admin.ListProjectLimitsApiRequest
-func (_e *ProjectsApi_Expecter) ListProjectLimitsExecute(r interface{}) *ProjectsApi_ListProjectLimitsExecute_Call {
+func (_e *ProjectsApi_Expecter) ListProjectLimitsExecute(r any) *ProjectsApi_ListProjectLimitsExecute_Call {
 	return &ProjectsApi_ListProjectLimitsExecute_Call{Call: _e.mock.On("ListProjectLimitsExecute", r)}
 }
 
@@ -2264,7 +2264,7 @@ type ProjectsApi_ListProjectLimitsWithParams_Call struct {
 // ListProjectLimitsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListProjectLimitsApiParams
-func (_e *ProjectsApi_Expecter) ListProjectLimitsWithParams(ctx interface{}, args interface{}) *ProjectsApi_ListProjectLimitsWithParams_Call {
+func (_e *ProjectsApi_Expecter) ListProjectLimitsWithParams(ctx any, args any) *ProjectsApi_ListProjectLimitsWithParams_Call {
 	return &ProjectsApi_ListProjectLimitsWithParams_Call{Call: _e.mock.On("ListProjectLimitsWithParams", ctx, args)}
 }
 
@@ -2311,7 +2311,7 @@ type ProjectsApi_ListProjectUsers_Call struct {
 // ListProjectUsers is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *ProjectsApi_Expecter) ListProjectUsers(ctx interface{}, groupId interface{}) *ProjectsApi_ListProjectUsers_Call {
+func (_e *ProjectsApi_Expecter) ListProjectUsers(ctx any, groupId any) *ProjectsApi_ListProjectUsers_Call {
 	return &ProjectsApi_ListProjectUsers_Call{Call: _e.mock.On("ListProjectUsers", ctx, groupId)}
 }
 
@@ -2378,7 +2378,7 @@ type ProjectsApi_ListProjectUsersExecute_Call struct {
 
 // ListProjectUsersExecute is a helper method to define mock.On call
 //   - r admin.ListProjectUsersApiRequest
-func (_e *ProjectsApi_Expecter) ListProjectUsersExecute(r interface{}) *ProjectsApi_ListProjectUsersExecute_Call {
+func (_e *ProjectsApi_Expecter) ListProjectUsersExecute(r any) *ProjectsApi_ListProjectUsersExecute_Call {
 	return &ProjectsApi_ListProjectUsersExecute_Call{Call: _e.mock.On("ListProjectUsersExecute", r)}
 }
 
@@ -2425,7 +2425,7 @@ type ProjectsApi_ListProjectUsersWithParams_Call struct {
 // ListProjectUsersWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListProjectUsersApiParams
-func (_e *ProjectsApi_Expecter) ListProjectUsersWithParams(ctx interface{}, args interface{}) *ProjectsApi_ListProjectUsersWithParams_Call {
+func (_e *ProjectsApi_Expecter) ListProjectUsersWithParams(ctx any, args any) *ProjectsApi_ListProjectUsersWithParams_Call {
 	return &ProjectsApi_ListProjectUsersWithParams_Call{Call: _e.mock.On("ListProjectUsersWithParams", ctx, args)}
 }
 
@@ -2471,7 +2471,7 @@ type ProjectsApi_ListProjects_Call struct {
 
 // ListProjects is a helper method to define mock.On call
 //   - ctx context.Context
-func (_e *ProjectsApi_Expecter) ListProjects(ctx interface{}) *ProjectsApi_ListProjects_Call {
+func (_e *ProjectsApi_Expecter) ListProjects(ctx any) *ProjectsApi_ListProjects_Call {
 	return &ProjectsApi_ListProjects_Call{Call: _e.mock.On("ListProjects", ctx)}
 }
 
@@ -2538,7 +2538,7 @@ type ProjectsApi_ListProjectsExecute_Call struct {
 
 // ListProjectsExecute is a helper method to define mock.On call
 //   - r admin.ListProjectsApiRequest
-func (_e *ProjectsApi_Expecter) ListProjectsExecute(r interface{}) *ProjectsApi_ListProjectsExecute_Call {
+func (_e *ProjectsApi_Expecter) ListProjectsExecute(r any) *ProjectsApi_ListProjectsExecute_Call {
 	return &ProjectsApi_ListProjectsExecute_Call{Call: _e.mock.On("ListProjectsExecute", r)}
 }
 
@@ -2585,7 +2585,7 @@ type ProjectsApi_ListProjectsWithParams_Call struct {
 // ListProjectsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListProjectsApiParams
-func (_e *ProjectsApi_Expecter) ListProjectsWithParams(ctx interface{}, args interface{}) *ProjectsApi_ListProjectsWithParams_Call {
+func (_e *ProjectsApi_Expecter) ListProjectsWithParams(ctx any, args any) *ProjectsApi_ListProjectsWithParams_Call {
 	return &ProjectsApi_ListProjectsWithParams_Call{Call: _e.mock.On("ListProjectsWithParams", ctx, args)}
 }
 
@@ -2633,7 +2633,7 @@ type ProjectsApi_MigrateProjectToAnotherOrg_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - groupMigrationRequest *admin.GroupMigrationRequest
-func (_e *ProjectsApi_Expecter) MigrateProjectToAnotherOrg(ctx interface{}, groupId interface{}, groupMigrationRequest interface{}) *ProjectsApi_MigrateProjectToAnotherOrg_Call {
+func (_e *ProjectsApi_Expecter) MigrateProjectToAnotherOrg(ctx any, groupId any, groupMigrationRequest any) *ProjectsApi_MigrateProjectToAnotherOrg_Call {
 	return &ProjectsApi_MigrateProjectToAnotherOrg_Call{Call: _e.mock.On("MigrateProjectToAnotherOrg", ctx, groupId, groupMigrationRequest)}
 }
 
@@ -2700,7 +2700,7 @@ type ProjectsApi_MigrateProjectToAnotherOrgExecute_Call struct {
 
 // MigrateProjectToAnotherOrgExecute is a helper method to define mock.On call
 //   - r admin.MigrateProjectToAnotherOrgApiRequest
-func (_e *ProjectsApi_Expecter) MigrateProjectToAnotherOrgExecute(r interface{}) *ProjectsApi_MigrateProjectToAnotherOrgExecute_Call {
+func (_e *ProjectsApi_Expecter) MigrateProjectToAnotherOrgExecute(r any) *ProjectsApi_MigrateProjectToAnotherOrgExecute_Call {
 	return &ProjectsApi_MigrateProjectToAnotherOrgExecute_Call{Call: _e.mock.On("MigrateProjectToAnotherOrgExecute", r)}
 }
 
@@ -2747,7 +2747,7 @@ type ProjectsApi_MigrateProjectToAnotherOrgWithParams_Call struct {
 // MigrateProjectToAnotherOrgWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.MigrateProjectToAnotherOrgApiParams
-func (_e *ProjectsApi_Expecter) MigrateProjectToAnotherOrgWithParams(ctx interface{}, args interface{}) *ProjectsApi_MigrateProjectToAnotherOrgWithParams_Call {
+func (_e *ProjectsApi_Expecter) MigrateProjectToAnotherOrgWithParams(ctx any, args any) *ProjectsApi_MigrateProjectToAnotherOrgWithParams_Call {
 	return &ProjectsApi_MigrateProjectToAnotherOrgWithParams_Call{Call: _e.mock.On("MigrateProjectToAnotherOrgWithParams", ctx, args)}
 }
 
@@ -2795,7 +2795,7 @@ type ProjectsApi_RemoveProjectUser_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - userId string
-func (_e *ProjectsApi_Expecter) RemoveProjectUser(ctx interface{}, groupId interface{}, userId interface{}) *ProjectsApi_RemoveProjectUser_Call {
+func (_e *ProjectsApi_Expecter) RemoveProjectUser(ctx any, groupId any, userId any) *ProjectsApi_RemoveProjectUser_Call {
 	return &ProjectsApi_RemoveProjectUser_Call{Call: _e.mock.On("RemoveProjectUser", ctx, groupId, userId)}
 }
 
@@ -2853,7 +2853,7 @@ type ProjectsApi_RemoveProjectUserExecute_Call struct {
 
 // RemoveProjectUserExecute is a helper method to define mock.On call
 //   - r admin.RemoveProjectUserApiRequest
-func (_e *ProjectsApi_Expecter) RemoveProjectUserExecute(r interface{}) *ProjectsApi_RemoveProjectUserExecute_Call {
+func (_e *ProjectsApi_Expecter) RemoveProjectUserExecute(r any) *ProjectsApi_RemoveProjectUserExecute_Call {
 	return &ProjectsApi_RemoveProjectUserExecute_Call{Call: _e.mock.On("RemoveProjectUserExecute", r)}
 }
 
@@ -2900,7 +2900,7 @@ type ProjectsApi_RemoveProjectUserWithParams_Call struct {
 // RemoveProjectUserWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.RemoveProjectUserApiParams
-func (_e *ProjectsApi_Expecter) RemoveProjectUserWithParams(ctx interface{}, args interface{}) *ProjectsApi_RemoveProjectUserWithParams_Call {
+func (_e *ProjectsApi_Expecter) RemoveProjectUserWithParams(ctx any, args any) *ProjectsApi_RemoveProjectUserWithParams_Call {
 	return &ProjectsApi_RemoveProjectUserWithParams_Call{Call: _e.mock.On("RemoveProjectUserWithParams", ctx, args)}
 }
 
@@ -2947,7 +2947,7 @@ type ProjectsApi_ReturnAllIPAddresses_Call struct {
 // ReturnAllIPAddresses is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *ProjectsApi_Expecter) ReturnAllIPAddresses(ctx interface{}, groupId interface{}) *ProjectsApi_ReturnAllIPAddresses_Call {
+func (_e *ProjectsApi_Expecter) ReturnAllIPAddresses(ctx any, groupId any) *ProjectsApi_ReturnAllIPAddresses_Call {
 	return &ProjectsApi_ReturnAllIPAddresses_Call{Call: _e.mock.On("ReturnAllIPAddresses", ctx, groupId)}
 }
 
@@ -3014,7 +3014,7 @@ type ProjectsApi_ReturnAllIPAddressesExecute_Call struct {
 
 // ReturnAllIPAddressesExecute is a helper method to define mock.On call
 //   - r admin.ReturnAllIPAddressesApiRequest
-func (_e *ProjectsApi_Expecter) ReturnAllIPAddressesExecute(r interface{}) *ProjectsApi_ReturnAllIPAddressesExecute_Call {
+func (_e *ProjectsApi_Expecter) ReturnAllIPAddressesExecute(r any) *ProjectsApi_ReturnAllIPAddressesExecute_Call {
 	return &ProjectsApi_ReturnAllIPAddressesExecute_Call{Call: _e.mock.On("ReturnAllIPAddressesExecute", r)}
 }
 
@@ -3061,7 +3061,7 @@ type ProjectsApi_ReturnAllIPAddressesWithParams_Call struct {
 // ReturnAllIPAddressesWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ReturnAllIPAddressesApiParams
-func (_e *ProjectsApi_Expecter) ReturnAllIPAddressesWithParams(ctx interface{}, args interface{}) *ProjectsApi_ReturnAllIPAddressesWithParams_Call {
+func (_e *ProjectsApi_Expecter) ReturnAllIPAddressesWithParams(ctx any, args any) *ProjectsApi_ReturnAllIPAddressesWithParams_Call {
 	return &ProjectsApi_ReturnAllIPAddressesWithParams_Call{Call: _e.mock.On("ReturnAllIPAddressesWithParams", ctx, args)}
 }
 
@@ -3110,7 +3110,7 @@ type ProjectsApi_SetProjectLimit_Call struct {
 //   - limitName string
 //   - groupId string
 //   - dataFederationLimit *admin.DataFederationLimit
-func (_e *ProjectsApi_Expecter) SetProjectLimit(ctx interface{}, limitName interface{}, groupId interface{}, dataFederationLimit interface{}) *ProjectsApi_SetProjectLimit_Call {
+func (_e *ProjectsApi_Expecter) SetProjectLimit(ctx any, limitName any, groupId any, dataFederationLimit any) *ProjectsApi_SetProjectLimit_Call {
 	return &ProjectsApi_SetProjectLimit_Call{Call: _e.mock.On("SetProjectLimit", ctx, limitName, groupId, dataFederationLimit)}
 }
 
@@ -3177,7 +3177,7 @@ type ProjectsApi_SetProjectLimitExecute_Call struct {
 
 // SetProjectLimitExecute is a helper method to define mock.On call
 //   - r admin.SetProjectLimitApiRequest
-func (_e *ProjectsApi_Expecter) SetProjectLimitExecute(r interface{}) *ProjectsApi_SetProjectLimitExecute_Call {
+func (_e *ProjectsApi_Expecter) SetProjectLimitExecute(r any) *ProjectsApi_SetProjectLimitExecute_Call {
 	return &ProjectsApi_SetProjectLimitExecute_Call{Call: _e.mock.On("SetProjectLimitExecute", r)}
 }
 
@@ -3224,7 +3224,7 @@ type ProjectsApi_SetProjectLimitWithParams_Call struct {
 // SetProjectLimitWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.SetProjectLimitApiParams
-func (_e *ProjectsApi_Expecter) SetProjectLimitWithParams(ctx interface{}, args interface{}) *ProjectsApi_SetProjectLimitWithParams_Call {
+func (_e *ProjectsApi_Expecter) SetProjectLimitWithParams(ctx any, args any) *ProjectsApi_SetProjectLimitWithParams_Call {
 	return &ProjectsApi_SetProjectLimitWithParams_Call{Call: _e.mock.On("SetProjectLimitWithParams", ctx, args)}
 }
 
@@ -3272,7 +3272,7 @@ type ProjectsApi_UpdateProject_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - groupUpdate *admin.GroupUpdate
-func (_e *ProjectsApi_Expecter) UpdateProject(ctx interface{}, groupId interface{}, groupUpdate interface{}) *ProjectsApi_UpdateProject_Call {
+func (_e *ProjectsApi_Expecter) UpdateProject(ctx any, groupId any, groupUpdate any) *ProjectsApi_UpdateProject_Call {
 	return &ProjectsApi_UpdateProject_Call{Call: _e.mock.On("UpdateProject", ctx, groupId, groupUpdate)}
 }
 
@@ -3339,7 +3339,7 @@ type ProjectsApi_UpdateProjectExecute_Call struct {
 
 // UpdateProjectExecute is a helper method to define mock.On call
 //   - r admin.UpdateProjectApiRequest
-func (_e *ProjectsApi_Expecter) UpdateProjectExecute(r interface{}) *ProjectsApi_UpdateProjectExecute_Call {
+func (_e *ProjectsApi_Expecter) UpdateProjectExecute(r any) *ProjectsApi_UpdateProjectExecute_Call {
 	return &ProjectsApi_UpdateProjectExecute_Call{Call: _e.mock.On("UpdateProjectExecute", r)}
 }
 
@@ -3387,7 +3387,7 @@ type ProjectsApi_UpdateProjectInvitation_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - groupInvitationRequest *admin.GroupInvitationRequest
-func (_e *ProjectsApi_Expecter) UpdateProjectInvitation(ctx interface{}, groupId interface{}, groupInvitationRequest interface{}) *ProjectsApi_UpdateProjectInvitation_Call {
+func (_e *ProjectsApi_Expecter) UpdateProjectInvitation(ctx any, groupId any, groupInvitationRequest any) *ProjectsApi_UpdateProjectInvitation_Call {
 	return &ProjectsApi_UpdateProjectInvitation_Call{Call: _e.mock.On("UpdateProjectInvitation", ctx, groupId, groupInvitationRequest)}
 }
 
@@ -3436,7 +3436,7 @@ type ProjectsApi_UpdateProjectInvitationById_Call struct {
 //   - groupId string
 //   - invitationId string
 //   - groupInvitationUpdateRequest *admin.GroupInvitationUpdateRequest
-func (_e *ProjectsApi_Expecter) UpdateProjectInvitationById(ctx interface{}, groupId interface{}, invitationId interface{}, groupInvitationUpdateRequest interface{}) *ProjectsApi_UpdateProjectInvitationById_Call {
+func (_e *ProjectsApi_Expecter) UpdateProjectInvitationById(ctx any, groupId any, invitationId any, groupInvitationUpdateRequest any) *ProjectsApi_UpdateProjectInvitationById_Call {
 	return &ProjectsApi_UpdateProjectInvitationById_Call{Call: _e.mock.On("UpdateProjectInvitationById", ctx, groupId, invitationId, groupInvitationUpdateRequest)}
 }
 
@@ -3503,7 +3503,7 @@ type ProjectsApi_UpdateProjectInvitationByIdExecute_Call struct {
 
 // UpdateProjectInvitationByIdExecute is a helper method to define mock.On call
 //   - r admin.UpdateProjectInvitationByIdApiRequest
-func (_e *ProjectsApi_Expecter) UpdateProjectInvitationByIdExecute(r interface{}) *ProjectsApi_UpdateProjectInvitationByIdExecute_Call {
+func (_e *ProjectsApi_Expecter) UpdateProjectInvitationByIdExecute(r any) *ProjectsApi_UpdateProjectInvitationByIdExecute_Call {
 	return &ProjectsApi_UpdateProjectInvitationByIdExecute_Call{Call: _e.mock.On("UpdateProjectInvitationByIdExecute", r)}
 }
 
@@ -3550,7 +3550,7 @@ type ProjectsApi_UpdateProjectInvitationByIdWithParams_Call struct {
 // UpdateProjectInvitationByIdWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.UpdateProjectInvitationByIdApiParams
-func (_e *ProjectsApi_Expecter) UpdateProjectInvitationByIdWithParams(ctx interface{}, args interface{}) *ProjectsApi_UpdateProjectInvitationByIdWithParams_Call {
+func (_e *ProjectsApi_Expecter) UpdateProjectInvitationByIdWithParams(ctx any, args any) *ProjectsApi_UpdateProjectInvitationByIdWithParams_Call {
 	return &ProjectsApi_UpdateProjectInvitationByIdWithParams_Call{Call: _e.mock.On("UpdateProjectInvitationByIdWithParams", ctx, args)}
 }
 
@@ -3617,7 +3617,7 @@ type ProjectsApi_UpdateProjectInvitationExecute_Call struct {
 
 // UpdateProjectInvitationExecute is a helper method to define mock.On call
 //   - r admin.UpdateProjectInvitationApiRequest
-func (_e *ProjectsApi_Expecter) UpdateProjectInvitationExecute(r interface{}) *ProjectsApi_UpdateProjectInvitationExecute_Call {
+func (_e *ProjectsApi_Expecter) UpdateProjectInvitationExecute(r any) *ProjectsApi_UpdateProjectInvitationExecute_Call {
 	return &ProjectsApi_UpdateProjectInvitationExecute_Call{Call: _e.mock.On("UpdateProjectInvitationExecute", r)}
 }
 
@@ -3664,7 +3664,7 @@ type ProjectsApi_UpdateProjectInvitationWithParams_Call struct {
 // UpdateProjectInvitationWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.UpdateProjectInvitationApiParams
-func (_e *ProjectsApi_Expecter) UpdateProjectInvitationWithParams(ctx interface{}, args interface{}) *ProjectsApi_UpdateProjectInvitationWithParams_Call {
+func (_e *ProjectsApi_Expecter) UpdateProjectInvitationWithParams(ctx any, args any) *ProjectsApi_UpdateProjectInvitationWithParams_Call {
 	return &ProjectsApi_UpdateProjectInvitationWithParams_Call{Call: _e.mock.On("UpdateProjectInvitationWithParams", ctx, args)}
 }
 
@@ -3713,7 +3713,7 @@ type ProjectsApi_UpdateProjectRoles_Call struct {
 //   - groupId string
 //   - userId string
 //   - updateGroupRolesForUser *admin.UpdateGroupRolesForUser
-func (_e *ProjectsApi_Expecter) UpdateProjectRoles(ctx interface{}, groupId interface{}, userId interface{}, updateGroupRolesForUser interface{}) *ProjectsApi_UpdateProjectRoles_Call {
+func (_e *ProjectsApi_Expecter) UpdateProjectRoles(ctx any, groupId any, userId any, updateGroupRolesForUser any) *ProjectsApi_UpdateProjectRoles_Call {
 	return &ProjectsApi_UpdateProjectRoles_Call{Call: _e.mock.On("UpdateProjectRoles", ctx, groupId, userId, updateGroupRolesForUser)}
 }
 
@@ -3780,7 +3780,7 @@ type ProjectsApi_UpdateProjectRolesExecute_Call struct {
 
 // UpdateProjectRolesExecute is a helper method to define mock.On call
 //   - r admin.UpdateProjectRolesApiRequest
-func (_e *ProjectsApi_Expecter) UpdateProjectRolesExecute(r interface{}) *ProjectsApi_UpdateProjectRolesExecute_Call {
+func (_e *ProjectsApi_Expecter) UpdateProjectRolesExecute(r any) *ProjectsApi_UpdateProjectRolesExecute_Call {
 	return &ProjectsApi_UpdateProjectRolesExecute_Call{Call: _e.mock.On("UpdateProjectRolesExecute", r)}
 }
 
@@ -3827,7 +3827,7 @@ type ProjectsApi_UpdateProjectRolesWithParams_Call struct {
 // UpdateProjectRolesWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.UpdateProjectRolesApiParams
-func (_e *ProjectsApi_Expecter) UpdateProjectRolesWithParams(ctx interface{}, args interface{}) *ProjectsApi_UpdateProjectRolesWithParams_Call {
+func (_e *ProjectsApi_Expecter) UpdateProjectRolesWithParams(ctx any, args any) *ProjectsApi_UpdateProjectRolesWithParams_Call {
 	return &ProjectsApi_UpdateProjectRolesWithParams_Call{Call: _e.mock.On("UpdateProjectRolesWithParams", ctx, args)}
 }
 
@@ -3875,7 +3875,7 @@ type ProjectsApi_UpdateProjectSettings_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - groupSettings *admin.GroupSettings
-func (_e *ProjectsApi_Expecter) UpdateProjectSettings(ctx interface{}, groupId interface{}, groupSettings interface{}) *ProjectsApi_UpdateProjectSettings_Call {
+func (_e *ProjectsApi_Expecter) UpdateProjectSettings(ctx any, groupId any, groupSettings any) *ProjectsApi_UpdateProjectSettings_Call {
 	return &ProjectsApi_UpdateProjectSettings_Call{Call: _e.mock.On("UpdateProjectSettings", ctx, groupId, groupSettings)}
 }
 
@@ -3942,7 +3942,7 @@ type ProjectsApi_UpdateProjectSettingsExecute_Call struct {
 
 // UpdateProjectSettingsExecute is a helper method to define mock.On call
 //   - r admin.UpdateProjectSettingsApiRequest
-func (_e *ProjectsApi_Expecter) UpdateProjectSettingsExecute(r interface{}) *ProjectsApi_UpdateProjectSettingsExecute_Call {
+func (_e *ProjectsApi_Expecter) UpdateProjectSettingsExecute(r any) *ProjectsApi_UpdateProjectSettingsExecute_Call {
 	return &ProjectsApi_UpdateProjectSettingsExecute_Call{Call: _e.mock.On("UpdateProjectSettingsExecute", r)}
 }
 
@@ -3989,7 +3989,7 @@ type ProjectsApi_UpdateProjectSettingsWithParams_Call struct {
 // UpdateProjectSettingsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.UpdateProjectSettingsApiParams
-func (_e *ProjectsApi_Expecter) UpdateProjectSettingsWithParams(ctx interface{}, args interface{}) *ProjectsApi_UpdateProjectSettingsWithParams_Call {
+func (_e *ProjectsApi_Expecter) UpdateProjectSettingsWithParams(ctx any, args any) *ProjectsApi_UpdateProjectSettingsWithParams_Call {
 	return &ProjectsApi_UpdateProjectSettingsWithParams_Call{Call: _e.mock.On("UpdateProjectSettingsWithParams", ctx, args)}
 }
 
@@ -4036,7 +4036,7 @@ type ProjectsApi_UpdateProjectWithParams_Call struct {
 // UpdateProjectWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.UpdateProjectApiParams
-func (_e *ProjectsApi_Expecter) UpdateProjectWithParams(ctx interface{}, args interface{}) *ProjectsApi_UpdateProjectWithParams_Call {
+func (_e *ProjectsApi_Expecter) UpdateProjectWithParams(ctx any, args any) *ProjectsApi_UpdateProjectWithParams_Call {
 	return &ProjectsApi_UpdateProjectWithParams_Call{Call: _e.mock.On("UpdateProjectWithParams", ctx, args)}
 }
 

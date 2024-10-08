@@ -355,7 +355,7 @@ Name | Type | Description  | Notes
 
 ## RequestEncryptionAtRestPrivateEndpointDeletion
 
-> interface{} RequestEncryptionAtRestPrivateEndpointDeletion(ctx, groupId, cloudProvider, endpointId).Execute()
+> any RequestEncryptionAtRestPrivateEndpointDeletion(ctx, groupId, cloudProvider, endpointId).Execute()
 
 Delete Private Endpoint for Encryption at Rest Using Customer Key Management
 
@@ -396,7 +396,7 @@ func main() {
         }
         return
     }
-    // response from `RequestEncryptionAtRestPrivateEndpointDeletion`: interface{}
+    // response from `RequestEncryptionAtRestPrivateEndpointDeletion`: any
     fmt.Fprintf(os.Stdout, "Response from `EncryptionAtRestUsingCustomerKeyManagementApi.RequestEncryptionAtRestPrivateEndpointDeletion`: %v (%v)\n", resp, r)
 }
 ```
@@ -424,7 +424,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**interface{}**
+**any**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

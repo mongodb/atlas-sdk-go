@@ -55,7 +55,7 @@ type CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceClusterMeasurements_C
 //   - clusterView string
 //   - databaseName string
 //   - collectionName string
-func (_e *CollectionLevelMetricsApi_Expecter) GetCollStatsLatencyNamespaceClusterMeasurements(ctx interface{}, groupId interface{}, clusterName interface{}, clusterView interface{}, databaseName interface{}, collectionName interface{}) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceClusterMeasurements_Call {
+func (_e *CollectionLevelMetricsApi_Expecter) GetCollStatsLatencyNamespaceClusterMeasurements(ctx any, groupId any, clusterName any, clusterView any, databaseName any, collectionName any) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceClusterMeasurements_Call {
 	return &CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceClusterMeasurements_Call{Call: _e.mock.On("GetCollStatsLatencyNamespaceClusterMeasurements", ctx, groupId, clusterName, clusterView, databaseName, collectionName)}
 }
 
@@ -122,7 +122,7 @@ type CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceClusterMeasurementsEx
 
 // GetCollStatsLatencyNamespaceClusterMeasurementsExecute is a helper method to define mock.On call
 //   - r admin.GetCollStatsLatencyNamespaceClusterMeasurementsApiRequest
-func (_e *CollectionLevelMetricsApi_Expecter) GetCollStatsLatencyNamespaceClusterMeasurementsExecute(r interface{}) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceClusterMeasurementsExecute_Call {
+func (_e *CollectionLevelMetricsApi_Expecter) GetCollStatsLatencyNamespaceClusterMeasurementsExecute(r any) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceClusterMeasurementsExecute_Call {
 	return &CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceClusterMeasurementsExecute_Call{Call: _e.mock.On("GetCollStatsLatencyNamespaceClusterMeasurementsExecute", r)}
 }
 
@@ -169,7 +169,7 @@ type CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceClusterMeasurementsWi
 // GetCollStatsLatencyNamespaceClusterMeasurementsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetCollStatsLatencyNamespaceClusterMeasurementsApiParams
-func (_e *CollectionLevelMetricsApi_Expecter) GetCollStatsLatencyNamespaceClusterMeasurementsWithParams(ctx interface{}, args interface{}) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceClusterMeasurementsWithParams_Call {
+func (_e *CollectionLevelMetricsApi_Expecter) GetCollStatsLatencyNamespaceClusterMeasurementsWithParams(ctx any, args any) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceClusterMeasurementsWithParams_Call {
 	return &CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceClusterMeasurementsWithParams_Call{Call: _e.mock.On("GetCollStatsLatencyNamespaceClusterMeasurementsWithParams", ctx, args)}
 }
 
@@ -219,7 +219,7 @@ type CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceHostMeasurements_Call
 //   - processId string
 //   - databaseName string
 //   - collectionName string
-func (_e *CollectionLevelMetricsApi_Expecter) GetCollStatsLatencyNamespaceHostMeasurements(ctx interface{}, groupId interface{}, processId interface{}, databaseName interface{}, collectionName interface{}) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceHostMeasurements_Call {
+func (_e *CollectionLevelMetricsApi_Expecter) GetCollStatsLatencyNamespaceHostMeasurements(ctx any, groupId any, processId any, databaseName any, collectionName any) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceHostMeasurements_Call {
 	return &CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceHostMeasurements_Call{Call: _e.mock.On("GetCollStatsLatencyNamespaceHostMeasurements", ctx, groupId, processId, databaseName, collectionName)}
 }
 
@@ -286,7 +286,7 @@ type CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceHostMeasurementsExecu
 
 // GetCollStatsLatencyNamespaceHostMeasurementsExecute is a helper method to define mock.On call
 //   - r admin.GetCollStatsLatencyNamespaceHostMeasurementsApiRequest
-func (_e *CollectionLevelMetricsApi_Expecter) GetCollStatsLatencyNamespaceHostMeasurementsExecute(r interface{}) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceHostMeasurementsExecute_Call {
+func (_e *CollectionLevelMetricsApi_Expecter) GetCollStatsLatencyNamespaceHostMeasurementsExecute(r any) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceHostMeasurementsExecute_Call {
 	return &CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceHostMeasurementsExecute_Call{Call: _e.mock.On("GetCollStatsLatencyNamespaceHostMeasurementsExecute", r)}
 }
 
@@ -333,7 +333,7 @@ type CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceHostMeasurementsWithP
 // GetCollStatsLatencyNamespaceHostMeasurementsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetCollStatsLatencyNamespaceHostMeasurementsApiParams
-func (_e *CollectionLevelMetricsApi_Expecter) GetCollStatsLatencyNamespaceHostMeasurementsWithParams(ctx interface{}, args interface{}) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceHostMeasurementsWithParams_Call {
+func (_e *CollectionLevelMetricsApi_Expecter) GetCollStatsLatencyNamespaceHostMeasurementsWithParams(ctx any, args any) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceHostMeasurementsWithParams_Call {
 	return &CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceHostMeasurementsWithParams_Call{Call: _e.mock.On("GetCollStatsLatencyNamespaceHostMeasurementsWithParams", ctx, args)}
 }
 
@@ -380,7 +380,7 @@ type CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceMetrics_Call struct {
 // GetCollStatsLatencyNamespaceMetrics is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *CollectionLevelMetricsApi_Expecter) GetCollStatsLatencyNamespaceMetrics(ctx interface{}, groupId interface{}) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceMetrics_Call {
+func (_e *CollectionLevelMetricsApi_Expecter) GetCollStatsLatencyNamespaceMetrics(ctx any, groupId any) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceMetrics_Call {
 	return &CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceMetrics_Call{Call: _e.mock.On("GetCollStatsLatencyNamespaceMetrics", ctx, groupId)}
 }
 
@@ -402,24 +402,24 @@ func (_c *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceMetrics_Call) Ru
 }
 
 // GetCollStatsLatencyNamespaceMetricsExecute provides a mock function with given fields: r
-func (_m *CollectionLevelMetricsApi) GetCollStatsLatencyNamespaceMetricsExecute(r admin.GetCollStatsLatencyNamespaceMetricsApiRequest) (interface{}, *http.Response, error) {
+func (_m *CollectionLevelMetricsApi) GetCollStatsLatencyNamespaceMetricsExecute(r admin.GetCollStatsLatencyNamespaceMetricsApiRequest) (any, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for GetCollStatsLatencyNamespaceMetricsExecute")
 	}
 
-	var r0 interface{}
+	var r0 any
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetCollStatsLatencyNamespaceMetricsApiRequest) (interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetCollStatsLatencyNamespaceMetricsApiRequest) (any, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.GetCollStatsLatencyNamespaceMetricsApiRequest) interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetCollStatsLatencyNamespaceMetricsApiRequest) any); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(interface{})
+			r0 = ret.Get(0).(any)
 		}
 	}
 
@@ -447,7 +447,7 @@ type CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceMetricsExecute_Call s
 
 // GetCollStatsLatencyNamespaceMetricsExecute is a helper method to define mock.On call
 //   - r admin.GetCollStatsLatencyNamespaceMetricsApiRequest
-func (_e *CollectionLevelMetricsApi_Expecter) GetCollStatsLatencyNamespaceMetricsExecute(r interface{}) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceMetricsExecute_Call {
+func (_e *CollectionLevelMetricsApi_Expecter) GetCollStatsLatencyNamespaceMetricsExecute(r any) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceMetricsExecute_Call {
 	return &CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceMetricsExecute_Call{Call: _e.mock.On("GetCollStatsLatencyNamespaceMetricsExecute", r)}
 }
 
@@ -458,12 +458,12 @@ func (_c *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceMetricsExecute_C
 	return _c
 }
 
-func (_c *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceMetricsExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceMetricsExecute_Call {
+func (_c *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceMetricsExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceMetricsExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceMetricsExecute_Call) RunAndReturn(run func(admin.GetCollStatsLatencyNamespaceMetricsApiRequest) (interface{}, *http.Response, error)) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceMetricsExecute_Call {
+func (_c *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceMetricsExecute_Call) RunAndReturn(run func(admin.GetCollStatsLatencyNamespaceMetricsApiRequest) (any, *http.Response, error)) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceMetricsExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -494,7 +494,7 @@ type CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceMetricsWithParams_Cal
 // GetCollStatsLatencyNamespaceMetricsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetCollStatsLatencyNamespaceMetricsApiParams
-func (_e *CollectionLevelMetricsApi_Expecter) GetCollStatsLatencyNamespaceMetricsWithParams(ctx interface{}, args interface{}) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceMetricsWithParams_Call {
+func (_e *CollectionLevelMetricsApi_Expecter) GetCollStatsLatencyNamespaceMetricsWithParams(ctx any, args any) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceMetricsWithParams_Call {
 	return &CollectionLevelMetricsApi_GetCollStatsLatencyNamespaceMetricsWithParams_Call{Call: _e.mock.On("GetCollStatsLatencyNamespaceMetricsWithParams", ctx, args)}
 }
 
@@ -543,7 +543,7 @@ type CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForCluster_Call stru
 //   - groupId string
 //   - clusterName string
 //   - clusterView string
-func (_e *CollectionLevelMetricsApi_Expecter) GetCollStatsLatencyNamespacesForCluster(ctx interface{}, groupId interface{}, clusterName interface{}, clusterView interface{}) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForCluster_Call {
+func (_e *CollectionLevelMetricsApi_Expecter) GetCollStatsLatencyNamespacesForCluster(ctx any, groupId any, clusterName any, clusterView any) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForCluster_Call {
 	return &CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForCluster_Call{Call: _e.mock.On("GetCollStatsLatencyNamespacesForCluster", ctx, groupId, clusterName, clusterView)}
 }
 
@@ -610,7 +610,7 @@ type CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForClusterExecute_Ca
 
 // GetCollStatsLatencyNamespacesForClusterExecute is a helper method to define mock.On call
 //   - r admin.GetCollStatsLatencyNamespacesForClusterApiRequest
-func (_e *CollectionLevelMetricsApi_Expecter) GetCollStatsLatencyNamespacesForClusterExecute(r interface{}) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForClusterExecute_Call {
+func (_e *CollectionLevelMetricsApi_Expecter) GetCollStatsLatencyNamespacesForClusterExecute(r any) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForClusterExecute_Call {
 	return &CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForClusterExecute_Call{Call: _e.mock.On("GetCollStatsLatencyNamespacesForClusterExecute", r)}
 }
 
@@ -657,7 +657,7 @@ type CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForClusterWithParams
 // GetCollStatsLatencyNamespacesForClusterWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetCollStatsLatencyNamespacesForClusterApiParams
-func (_e *CollectionLevelMetricsApi_Expecter) GetCollStatsLatencyNamespacesForClusterWithParams(ctx interface{}, args interface{}) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForClusterWithParams_Call {
+func (_e *CollectionLevelMetricsApi_Expecter) GetCollStatsLatencyNamespacesForClusterWithParams(ctx any, args any) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForClusterWithParams_Call {
 	return &CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForClusterWithParams_Call{Call: _e.mock.On("GetCollStatsLatencyNamespacesForClusterWithParams", ctx, args)}
 }
 
@@ -705,7 +705,7 @@ type CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForHost_Call struct 
 //   - ctx context.Context
 //   - groupId string
 //   - processId string
-func (_e *CollectionLevelMetricsApi_Expecter) GetCollStatsLatencyNamespacesForHost(ctx interface{}, groupId interface{}, processId interface{}) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForHost_Call {
+func (_e *CollectionLevelMetricsApi_Expecter) GetCollStatsLatencyNamespacesForHost(ctx any, groupId any, processId any) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForHost_Call {
 	return &CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForHost_Call{Call: _e.mock.On("GetCollStatsLatencyNamespacesForHost", ctx, groupId, processId)}
 }
 
@@ -772,7 +772,7 @@ type CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForHostExecute_Call 
 
 // GetCollStatsLatencyNamespacesForHostExecute is a helper method to define mock.On call
 //   - r admin.GetCollStatsLatencyNamespacesForHostApiRequest
-func (_e *CollectionLevelMetricsApi_Expecter) GetCollStatsLatencyNamespacesForHostExecute(r interface{}) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForHostExecute_Call {
+func (_e *CollectionLevelMetricsApi_Expecter) GetCollStatsLatencyNamespacesForHostExecute(r any) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForHostExecute_Call {
 	return &CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForHostExecute_Call{Call: _e.mock.On("GetCollStatsLatencyNamespacesForHostExecute", r)}
 }
 
@@ -819,7 +819,7 @@ type CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForHostWithParams_Ca
 // GetCollStatsLatencyNamespacesForHostWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetCollStatsLatencyNamespacesForHostApiParams
-func (_e *CollectionLevelMetricsApi_Expecter) GetCollStatsLatencyNamespacesForHostWithParams(ctx interface{}, args interface{}) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForHostWithParams_Call {
+func (_e *CollectionLevelMetricsApi_Expecter) GetCollStatsLatencyNamespacesForHostWithParams(ctx any, args any) *CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForHostWithParams_Call {
 	return &CollectionLevelMetricsApi_GetCollStatsLatencyNamespacesForHostWithParams_Call{Call: _e.mock.On("GetCollStatsLatencyNamespacesForHostWithParams", ctx, args)}
 }
 
@@ -867,7 +867,7 @@ type CollectionLevelMetricsApi_GetPinnedNamespaces_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
-func (_e *CollectionLevelMetricsApi_Expecter) GetPinnedNamespaces(ctx interface{}, groupId interface{}, clusterName interface{}) *CollectionLevelMetricsApi_GetPinnedNamespaces_Call {
+func (_e *CollectionLevelMetricsApi_Expecter) GetPinnedNamespaces(ctx any, groupId any, clusterName any) *CollectionLevelMetricsApi_GetPinnedNamespaces_Call {
 	return &CollectionLevelMetricsApi_GetPinnedNamespaces_Call{Call: _e.mock.On("GetPinnedNamespaces", ctx, groupId, clusterName)}
 }
 
@@ -934,7 +934,7 @@ type CollectionLevelMetricsApi_GetPinnedNamespacesExecute_Call struct {
 
 // GetPinnedNamespacesExecute is a helper method to define mock.On call
 //   - r admin.GetPinnedNamespacesApiRequest
-func (_e *CollectionLevelMetricsApi_Expecter) GetPinnedNamespacesExecute(r interface{}) *CollectionLevelMetricsApi_GetPinnedNamespacesExecute_Call {
+func (_e *CollectionLevelMetricsApi_Expecter) GetPinnedNamespacesExecute(r any) *CollectionLevelMetricsApi_GetPinnedNamespacesExecute_Call {
 	return &CollectionLevelMetricsApi_GetPinnedNamespacesExecute_Call{Call: _e.mock.On("GetPinnedNamespacesExecute", r)}
 }
 
@@ -981,7 +981,7 @@ type CollectionLevelMetricsApi_GetPinnedNamespacesWithParams_Call struct {
 // GetPinnedNamespacesWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetPinnedNamespacesApiParams
-func (_e *CollectionLevelMetricsApi_Expecter) GetPinnedNamespacesWithParams(ctx interface{}, args interface{}) *CollectionLevelMetricsApi_GetPinnedNamespacesWithParams_Call {
+func (_e *CollectionLevelMetricsApi_Expecter) GetPinnedNamespacesWithParams(ctx any, args any) *CollectionLevelMetricsApi_GetPinnedNamespacesWithParams_Call {
 	return &CollectionLevelMetricsApi_GetPinnedNamespacesWithParams_Call{Call: _e.mock.On("GetPinnedNamespacesWithParams", ctx, args)}
 }
 
@@ -1030,7 +1030,7 @@ type CollectionLevelMetricsApi_PinNamespacesPatch_Call struct {
 //   - groupId string
 //   - clusterName string
 //   - namespacesRequest *admin.NamespacesRequest
-func (_e *CollectionLevelMetricsApi_Expecter) PinNamespacesPatch(ctx interface{}, groupId interface{}, clusterName interface{}, namespacesRequest interface{}) *CollectionLevelMetricsApi_PinNamespacesPatch_Call {
+func (_e *CollectionLevelMetricsApi_Expecter) PinNamespacesPatch(ctx any, groupId any, clusterName any, namespacesRequest any) *CollectionLevelMetricsApi_PinNamespacesPatch_Call {
 	return &CollectionLevelMetricsApi_PinNamespacesPatch_Call{Call: _e.mock.On("PinNamespacesPatch", ctx, groupId, clusterName, namespacesRequest)}
 }
 
@@ -1097,7 +1097,7 @@ type CollectionLevelMetricsApi_PinNamespacesPatchExecute_Call struct {
 
 // PinNamespacesPatchExecute is a helper method to define mock.On call
 //   - r admin.PinNamespacesPatchApiRequest
-func (_e *CollectionLevelMetricsApi_Expecter) PinNamespacesPatchExecute(r interface{}) *CollectionLevelMetricsApi_PinNamespacesPatchExecute_Call {
+func (_e *CollectionLevelMetricsApi_Expecter) PinNamespacesPatchExecute(r any) *CollectionLevelMetricsApi_PinNamespacesPatchExecute_Call {
 	return &CollectionLevelMetricsApi_PinNamespacesPatchExecute_Call{Call: _e.mock.On("PinNamespacesPatchExecute", r)}
 }
 
@@ -1144,7 +1144,7 @@ type CollectionLevelMetricsApi_PinNamespacesPatchWithParams_Call struct {
 // PinNamespacesPatchWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.PinNamespacesPatchApiParams
-func (_e *CollectionLevelMetricsApi_Expecter) PinNamespacesPatchWithParams(ctx interface{}, args interface{}) *CollectionLevelMetricsApi_PinNamespacesPatchWithParams_Call {
+func (_e *CollectionLevelMetricsApi_Expecter) PinNamespacesPatchWithParams(ctx any, args any) *CollectionLevelMetricsApi_PinNamespacesPatchWithParams_Call {
 	return &CollectionLevelMetricsApi_PinNamespacesPatchWithParams_Call{Call: _e.mock.On("PinNamespacesPatchWithParams", ctx, args)}
 }
 
@@ -1193,7 +1193,7 @@ type CollectionLevelMetricsApi_PinNamespacesPut_Call struct {
 //   - groupId string
 //   - clusterName string
 //   - namespacesRequest *admin.NamespacesRequest
-func (_e *CollectionLevelMetricsApi_Expecter) PinNamespacesPut(ctx interface{}, groupId interface{}, clusterName interface{}, namespacesRequest interface{}) *CollectionLevelMetricsApi_PinNamespacesPut_Call {
+func (_e *CollectionLevelMetricsApi_Expecter) PinNamespacesPut(ctx any, groupId any, clusterName any, namespacesRequest any) *CollectionLevelMetricsApi_PinNamespacesPut_Call {
 	return &CollectionLevelMetricsApi_PinNamespacesPut_Call{Call: _e.mock.On("PinNamespacesPut", ctx, groupId, clusterName, namespacesRequest)}
 }
 
@@ -1260,7 +1260,7 @@ type CollectionLevelMetricsApi_PinNamespacesPutExecute_Call struct {
 
 // PinNamespacesPutExecute is a helper method to define mock.On call
 //   - r admin.PinNamespacesPutApiRequest
-func (_e *CollectionLevelMetricsApi_Expecter) PinNamespacesPutExecute(r interface{}) *CollectionLevelMetricsApi_PinNamespacesPutExecute_Call {
+func (_e *CollectionLevelMetricsApi_Expecter) PinNamespacesPutExecute(r any) *CollectionLevelMetricsApi_PinNamespacesPutExecute_Call {
 	return &CollectionLevelMetricsApi_PinNamespacesPutExecute_Call{Call: _e.mock.On("PinNamespacesPutExecute", r)}
 }
 
@@ -1307,7 +1307,7 @@ type CollectionLevelMetricsApi_PinNamespacesPutWithParams_Call struct {
 // PinNamespacesPutWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.PinNamespacesPutApiParams
-func (_e *CollectionLevelMetricsApi_Expecter) PinNamespacesPutWithParams(ctx interface{}, args interface{}) *CollectionLevelMetricsApi_PinNamespacesPutWithParams_Call {
+func (_e *CollectionLevelMetricsApi_Expecter) PinNamespacesPutWithParams(ctx any, args any) *CollectionLevelMetricsApi_PinNamespacesPutWithParams_Call {
 	return &CollectionLevelMetricsApi_PinNamespacesPutWithParams_Call{Call: _e.mock.On("PinNamespacesPutWithParams", ctx, args)}
 }
 
@@ -1356,7 +1356,7 @@ type CollectionLevelMetricsApi_UnpinNamespaces_Call struct {
 //   - groupId string
 //   - clusterName string
 //   - namespacesRequest *admin.NamespacesRequest
-func (_e *CollectionLevelMetricsApi_Expecter) UnpinNamespaces(ctx interface{}, groupId interface{}, clusterName interface{}, namespacesRequest interface{}) *CollectionLevelMetricsApi_UnpinNamespaces_Call {
+func (_e *CollectionLevelMetricsApi_Expecter) UnpinNamespaces(ctx any, groupId any, clusterName any, namespacesRequest any) *CollectionLevelMetricsApi_UnpinNamespaces_Call {
 	return &CollectionLevelMetricsApi_UnpinNamespaces_Call{Call: _e.mock.On("UnpinNamespaces", ctx, groupId, clusterName, namespacesRequest)}
 }
 
@@ -1423,7 +1423,7 @@ type CollectionLevelMetricsApi_UnpinNamespacesExecute_Call struct {
 
 // UnpinNamespacesExecute is a helper method to define mock.On call
 //   - r admin.UnpinNamespacesApiRequest
-func (_e *CollectionLevelMetricsApi_Expecter) UnpinNamespacesExecute(r interface{}) *CollectionLevelMetricsApi_UnpinNamespacesExecute_Call {
+func (_e *CollectionLevelMetricsApi_Expecter) UnpinNamespacesExecute(r any) *CollectionLevelMetricsApi_UnpinNamespacesExecute_Call {
 	return &CollectionLevelMetricsApi_UnpinNamespacesExecute_Call{Call: _e.mock.On("UnpinNamespacesExecute", r)}
 }
 
@@ -1470,7 +1470,7 @@ type CollectionLevelMetricsApi_UnpinNamespacesWithParams_Call struct {
 // UnpinNamespacesWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.UnpinNamespacesApiParams
-func (_e *CollectionLevelMetricsApi_Expecter) UnpinNamespacesWithParams(ctx interface{}, args interface{}) *CollectionLevelMetricsApi_UnpinNamespacesWithParams_Call {
+func (_e *CollectionLevelMetricsApi_Expecter) UnpinNamespacesWithParams(ctx any, args any) *CollectionLevelMetricsApi_UnpinNamespacesWithParams_Call {
 	return &CollectionLevelMetricsApi_UnpinNamespacesWithParams_Call{Call: _e.mock.On("UnpinNamespacesWithParams", ctx, args)}
 }
 

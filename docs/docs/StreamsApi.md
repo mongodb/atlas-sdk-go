@@ -31,7 +31,7 @@ Method | HTTP request | Description
 
 ## AcceptVPCPeeringConnection
 
-> interface{} AcceptVPCPeeringConnection(ctx, groupId, id, vPCPeeringActionChallenge VPCPeeringActionChallenge).Execute()
+> any AcceptVPCPeeringConnection(ctx, groupId, id, vPCPeeringActionChallenge VPCPeeringActionChallenge).Execute()
 
 Requests the acceptance of an incoming VPC Peering connection.
 
@@ -72,7 +72,7 @@ func main() {
         }
         return
     }
-    // response from `AcceptVPCPeeringConnection`: interface{}
+    // response from `AcceptVPCPeeringConnection`: any
     fmt.Fprintf(os.Stdout, "Response from `StreamsApi.AcceptVPCPeeringConnection`: %v (%v)\n", resp, r)
 }
 ```
@@ -99,7 +99,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**interface{}**
+**any**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -283,7 +283,7 @@ Name | Type | Description  | Notes
 
 ## CreateStreamInstanceWithSampleConnections
 
-> StreamsTenant CreateStreamInstanceWithSampleConnections(ctx, groupId, body interface{}).Execute()
+> StreamsTenant CreateStreamInstanceWithSampleConnections(ctx, groupId, body any).Execute()
 
 Create One Stream Instance With Sample Connections
 
@@ -312,7 +312,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    body := interface{}{ ... } // interface{} | 
+    body := any{ ... } // any | 
 
     resp, r, err := sdk.StreamsApi.CreateStreamInstanceWithSampleConnections(context.Background(), groupId, &body).Execute()
     if err != nil {
@@ -344,7 +344,7 @@ Other parameters are passed through a pointer to a apiCreateStreamInstanceWithSa
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | **interface{}** | Details to create one streams instance in the specified project. | 
+ **body** | **any** | Details to create one streams instance in the specified project. | 
 
 ### Return type
 
@@ -450,7 +450,7 @@ Name | Type | Description  | Notes
 
 ## DeleteStreamConnection
 
-> interface{} DeleteStreamConnection(ctx, groupId, tenantName, connectionName).Execute()
+> any DeleteStreamConnection(ctx, groupId, tenantName, connectionName).Execute()
 
 Delete One Stream Connection
 
@@ -491,7 +491,7 @@ func main() {
         }
         return
     }
-    // response from `DeleteStreamConnection`: interface{}
+    // response from `DeleteStreamConnection`: any
     fmt.Fprintf(os.Stdout, "Response from `StreamsApi.DeleteStreamConnection`: %v (%v)\n", resp, r)
 }
 ```
@@ -519,7 +519,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**interface{}**
+**any**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -536,7 +536,7 @@ Name | Type | Description  | Notes
 
 ## DeleteStreamInstance
 
-> interface{} DeleteStreamInstance(ctx, groupId, tenantName).Execute()
+> any DeleteStreamInstance(ctx, groupId, tenantName).Execute()
 
 Delete One Stream Instance
 
@@ -576,7 +576,7 @@ func main() {
         }
         return
     }
-    // response from `DeleteStreamInstance`: interface{}
+    // response from `DeleteStreamInstance`: any
     fmt.Fprintf(os.Stdout, "Response from `StreamsApi.DeleteStreamInstance`: %v (%v)\n", resp, r)
 }
 ```
@@ -602,7 +602,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**interface{}**
+**any**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -703,7 +703,7 @@ Name | Type | Description  | Notes
 
 ## DeleteVPCPeeringConnection
 
-> interface{} DeleteVPCPeeringConnection(ctx, groupId, id).Execute()
+> any DeleteVPCPeeringConnection(ctx, groupId, id).Execute()
 
 Deletes an incoming VPC Peering connection.
 
@@ -743,7 +743,7 @@ func main() {
         }
         return
     }
-    // response from `DeleteVPCPeeringConnection`: interface{}
+    // response from `DeleteVPCPeeringConnection`: any
     fmt.Fprintf(os.Stdout, "Response from `StreamsApi.DeleteVPCPeeringConnection`: %v (%v)\n", resp, r)
 }
 ```
@@ -769,7 +769,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**interface{}**
+**any**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -1472,7 +1472,7 @@ Name | Type | Description  | Notes
 
 ## RejectVPCPeeringConnection
 
-> interface{} RejectVPCPeeringConnection(ctx, groupId, id).Execute()
+> any RejectVPCPeeringConnection(ctx, groupId, id).Execute()
 
 Requests the rejection of an incoming VPC Peering connection.
 
@@ -1512,7 +1512,7 @@ func main() {
         }
         return
     }
-    // response from `RejectVPCPeeringConnection`: interface{}
+    // response from `RejectVPCPeeringConnection`: any
     fmt.Fprintf(os.Stdout, "Response from `StreamsApi.RejectVPCPeeringConnection`: %v (%v)\n", resp, r)
 }
 ```
@@ -1538,7 +1538,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**interface{}**
+**any**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -1555,7 +1555,7 @@ Name | Type | Description  | Notes
 
 ## StartStreamProcessor
 
-> interface{} StartStreamProcessor(ctx, groupId, tenantName, processorName).Execute()
+> any StartStreamProcessor(ctx, groupId, tenantName, processorName).Execute()
 
 Start One Stream Processor
 
@@ -1596,7 +1596,7 @@ func main() {
         }
         return
     }
-    // response from `StartStreamProcessor`: interface{}
+    // response from `StartStreamProcessor`: any
     fmt.Fprintf(os.Stdout, "Response from `StreamsApi.StartStreamProcessor`: %v (%v)\n", resp, r)
 }
 ```
@@ -1624,7 +1624,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**interface{}**
+**any**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -1641,7 +1641,7 @@ Name | Type | Description  | Notes
 
 ## StopStreamProcessor
 
-> interface{} StopStreamProcessor(ctx, groupId, tenantName, processorName).Execute()
+> any StopStreamProcessor(ctx, groupId, tenantName, processorName).Execute()
 
 Stop One Stream Processor
 
@@ -1682,7 +1682,7 @@ func main() {
         }
         return
     }
-    // response from `StopStreamProcessor`: interface{}
+    // response from `StopStreamProcessor`: any
     fmt.Fprintf(os.Stdout, "Response from `StreamsApi.StopStreamProcessor`: %v (%v)\n", resp, r)
 }
 ```
@@ -1710,7 +1710,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**interface{}**
+**any**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

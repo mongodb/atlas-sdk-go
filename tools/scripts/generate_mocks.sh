@@ -7,3 +7,7 @@ if ! which mockery ; then
 else
 	mockery --dir ../mockadmin
 fi
+
+# Use any instead of interface{} in genereated mocks
+npm install
+npm exec -c "replace-in-file /interface{}/g any  ../mockadmin/**/*.go --isRegex"

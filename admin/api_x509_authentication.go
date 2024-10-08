@@ -152,7 +152,7 @@ func (a *X509AuthenticationApiService) CreateDatabaseUserCertificate(ctx context
 func (a *X509AuthenticationApiService) CreateDatabaseUserCertificateExecute(r CreateDatabaseUserCertificateApiRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue string
 	)
@@ -271,7 +271,7 @@ func (a *X509AuthenticationApiService) DisableCustomerManagedX509(ctx context.Co
 func (a *X509AuthenticationApiService) DisableCustomerManagedX509Execute(r DisableCustomerManagedX509ApiRequest) (*UserSecurity, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *UserSecurity
 	)
@@ -414,7 +414,7 @@ func (a *X509AuthenticationApiService) ListDatabaseUserCertificates(ctx context.
 func (a *X509AuthenticationApiService) ListDatabaseUserCertificatesExecute(r ListDatabaseUserCertificatesApiRequest) (*PaginatedUserCert, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PaginatedUserCert
 	)

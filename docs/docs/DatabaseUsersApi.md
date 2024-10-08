@@ -96,7 +96,7 @@ Name | Type | Description  | Notes
 
 ## DeleteDatabaseUser
 
-> interface{} DeleteDatabaseUser(ctx, groupId, databaseName, username).Execute()
+> any DeleteDatabaseUser(ctx, groupId, databaseName, username).Execute()
 
 Remove One Database User from One Project
 
@@ -137,7 +137,7 @@ func main() {
         }
         return
     }
-    // response from `DeleteDatabaseUser`: interface{}
+    // response from `DeleteDatabaseUser`: any
     fmt.Fprintf(os.Stdout, "Response from `DatabaseUsersApi.DeleteDatabaseUser`: %v (%v)\n", resp, r)
 }
 ```
@@ -165,7 +165,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**interface{}**
+**any**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

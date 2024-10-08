@@ -52,7 +52,7 @@ type DatabaseUsersApi_CreateDatabaseUser_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - cloudDatabaseUser *admin.CloudDatabaseUser
-func (_e *DatabaseUsersApi_Expecter) CreateDatabaseUser(ctx interface{}, groupId interface{}, cloudDatabaseUser interface{}) *DatabaseUsersApi_CreateDatabaseUser_Call {
+func (_e *DatabaseUsersApi_Expecter) CreateDatabaseUser(ctx any, groupId any, cloudDatabaseUser any) *DatabaseUsersApi_CreateDatabaseUser_Call {
 	return &DatabaseUsersApi_CreateDatabaseUser_Call{Call: _e.mock.On("CreateDatabaseUser", ctx, groupId, cloudDatabaseUser)}
 }
 
@@ -119,7 +119,7 @@ type DatabaseUsersApi_CreateDatabaseUserExecute_Call struct {
 
 // CreateDatabaseUserExecute is a helper method to define mock.On call
 //   - r admin.CreateDatabaseUserApiRequest
-func (_e *DatabaseUsersApi_Expecter) CreateDatabaseUserExecute(r interface{}) *DatabaseUsersApi_CreateDatabaseUserExecute_Call {
+func (_e *DatabaseUsersApi_Expecter) CreateDatabaseUserExecute(r any) *DatabaseUsersApi_CreateDatabaseUserExecute_Call {
 	return &DatabaseUsersApi_CreateDatabaseUserExecute_Call{Call: _e.mock.On("CreateDatabaseUserExecute", r)}
 }
 
@@ -166,7 +166,7 @@ type DatabaseUsersApi_CreateDatabaseUserWithParams_Call struct {
 // CreateDatabaseUserWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.CreateDatabaseUserApiParams
-func (_e *DatabaseUsersApi_Expecter) CreateDatabaseUserWithParams(ctx interface{}, args interface{}) *DatabaseUsersApi_CreateDatabaseUserWithParams_Call {
+func (_e *DatabaseUsersApi_Expecter) CreateDatabaseUserWithParams(ctx any, args any) *DatabaseUsersApi_CreateDatabaseUserWithParams_Call {
 	return &DatabaseUsersApi_CreateDatabaseUserWithParams_Call{Call: _e.mock.On("CreateDatabaseUserWithParams", ctx, args)}
 }
 
@@ -215,7 +215,7 @@ type DatabaseUsersApi_DeleteDatabaseUser_Call struct {
 //   - groupId string
 //   - databaseName string
 //   - username string
-func (_e *DatabaseUsersApi_Expecter) DeleteDatabaseUser(ctx interface{}, groupId interface{}, databaseName interface{}, username interface{}) *DatabaseUsersApi_DeleteDatabaseUser_Call {
+func (_e *DatabaseUsersApi_Expecter) DeleteDatabaseUser(ctx any, groupId any, databaseName any, username any) *DatabaseUsersApi_DeleteDatabaseUser_Call {
 	return &DatabaseUsersApi_DeleteDatabaseUser_Call{Call: _e.mock.On("DeleteDatabaseUser", ctx, groupId, databaseName, username)}
 }
 
@@ -237,24 +237,24 @@ func (_c *DatabaseUsersApi_DeleteDatabaseUser_Call) RunAndReturn(run func(contex
 }
 
 // DeleteDatabaseUserExecute provides a mock function with given fields: r
-func (_m *DatabaseUsersApi) DeleteDatabaseUserExecute(r admin.DeleteDatabaseUserApiRequest) (interface{}, *http.Response, error) {
+func (_m *DatabaseUsersApi) DeleteDatabaseUserExecute(r admin.DeleteDatabaseUserApiRequest) (any, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteDatabaseUserExecute")
 	}
 
-	var r0 interface{}
+	var r0 any
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteDatabaseUserApiRequest) (interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteDatabaseUserApiRequest) (any, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteDatabaseUserApiRequest) interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteDatabaseUserApiRequest) any); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(interface{})
+			r0 = ret.Get(0).(any)
 		}
 	}
 
@@ -282,7 +282,7 @@ type DatabaseUsersApi_DeleteDatabaseUserExecute_Call struct {
 
 // DeleteDatabaseUserExecute is a helper method to define mock.On call
 //   - r admin.DeleteDatabaseUserApiRequest
-func (_e *DatabaseUsersApi_Expecter) DeleteDatabaseUserExecute(r interface{}) *DatabaseUsersApi_DeleteDatabaseUserExecute_Call {
+func (_e *DatabaseUsersApi_Expecter) DeleteDatabaseUserExecute(r any) *DatabaseUsersApi_DeleteDatabaseUserExecute_Call {
 	return &DatabaseUsersApi_DeleteDatabaseUserExecute_Call{Call: _e.mock.On("DeleteDatabaseUserExecute", r)}
 }
 
@@ -293,12 +293,12 @@ func (_c *DatabaseUsersApi_DeleteDatabaseUserExecute_Call) Run(run func(r admin.
 	return _c
 }
 
-func (_c *DatabaseUsersApi_DeleteDatabaseUserExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *DatabaseUsersApi_DeleteDatabaseUserExecute_Call {
+func (_c *DatabaseUsersApi_DeleteDatabaseUserExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *DatabaseUsersApi_DeleteDatabaseUserExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *DatabaseUsersApi_DeleteDatabaseUserExecute_Call) RunAndReturn(run func(admin.DeleteDatabaseUserApiRequest) (interface{}, *http.Response, error)) *DatabaseUsersApi_DeleteDatabaseUserExecute_Call {
+func (_c *DatabaseUsersApi_DeleteDatabaseUserExecute_Call) RunAndReturn(run func(admin.DeleteDatabaseUserApiRequest) (any, *http.Response, error)) *DatabaseUsersApi_DeleteDatabaseUserExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -329,7 +329,7 @@ type DatabaseUsersApi_DeleteDatabaseUserWithParams_Call struct {
 // DeleteDatabaseUserWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.DeleteDatabaseUserApiParams
-func (_e *DatabaseUsersApi_Expecter) DeleteDatabaseUserWithParams(ctx interface{}, args interface{}) *DatabaseUsersApi_DeleteDatabaseUserWithParams_Call {
+func (_e *DatabaseUsersApi_Expecter) DeleteDatabaseUserWithParams(ctx any, args any) *DatabaseUsersApi_DeleteDatabaseUserWithParams_Call {
 	return &DatabaseUsersApi_DeleteDatabaseUserWithParams_Call{Call: _e.mock.On("DeleteDatabaseUserWithParams", ctx, args)}
 }
 
@@ -378,7 +378,7 @@ type DatabaseUsersApi_GetDatabaseUser_Call struct {
 //   - groupId string
 //   - databaseName string
 //   - username string
-func (_e *DatabaseUsersApi_Expecter) GetDatabaseUser(ctx interface{}, groupId interface{}, databaseName interface{}, username interface{}) *DatabaseUsersApi_GetDatabaseUser_Call {
+func (_e *DatabaseUsersApi_Expecter) GetDatabaseUser(ctx any, groupId any, databaseName any, username any) *DatabaseUsersApi_GetDatabaseUser_Call {
 	return &DatabaseUsersApi_GetDatabaseUser_Call{Call: _e.mock.On("GetDatabaseUser", ctx, groupId, databaseName, username)}
 }
 
@@ -445,7 +445,7 @@ type DatabaseUsersApi_GetDatabaseUserExecute_Call struct {
 
 // GetDatabaseUserExecute is a helper method to define mock.On call
 //   - r admin.GetDatabaseUserApiRequest
-func (_e *DatabaseUsersApi_Expecter) GetDatabaseUserExecute(r interface{}) *DatabaseUsersApi_GetDatabaseUserExecute_Call {
+func (_e *DatabaseUsersApi_Expecter) GetDatabaseUserExecute(r any) *DatabaseUsersApi_GetDatabaseUserExecute_Call {
 	return &DatabaseUsersApi_GetDatabaseUserExecute_Call{Call: _e.mock.On("GetDatabaseUserExecute", r)}
 }
 
@@ -492,7 +492,7 @@ type DatabaseUsersApi_GetDatabaseUserWithParams_Call struct {
 // GetDatabaseUserWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetDatabaseUserApiParams
-func (_e *DatabaseUsersApi_Expecter) GetDatabaseUserWithParams(ctx interface{}, args interface{}) *DatabaseUsersApi_GetDatabaseUserWithParams_Call {
+func (_e *DatabaseUsersApi_Expecter) GetDatabaseUserWithParams(ctx any, args any) *DatabaseUsersApi_GetDatabaseUserWithParams_Call {
 	return &DatabaseUsersApi_GetDatabaseUserWithParams_Call{Call: _e.mock.On("GetDatabaseUserWithParams", ctx, args)}
 }
 
@@ -539,7 +539,7 @@ type DatabaseUsersApi_ListDatabaseUsers_Call struct {
 // ListDatabaseUsers is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *DatabaseUsersApi_Expecter) ListDatabaseUsers(ctx interface{}, groupId interface{}) *DatabaseUsersApi_ListDatabaseUsers_Call {
+func (_e *DatabaseUsersApi_Expecter) ListDatabaseUsers(ctx any, groupId any) *DatabaseUsersApi_ListDatabaseUsers_Call {
 	return &DatabaseUsersApi_ListDatabaseUsers_Call{Call: _e.mock.On("ListDatabaseUsers", ctx, groupId)}
 }
 
@@ -606,7 +606,7 @@ type DatabaseUsersApi_ListDatabaseUsersExecute_Call struct {
 
 // ListDatabaseUsersExecute is a helper method to define mock.On call
 //   - r admin.ListDatabaseUsersApiRequest
-func (_e *DatabaseUsersApi_Expecter) ListDatabaseUsersExecute(r interface{}) *DatabaseUsersApi_ListDatabaseUsersExecute_Call {
+func (_e *DatabaseUsersApi_Expecter) ListDatabaseUsersExecute(r any) *DatabaseUsersApi_ListDatabaseUsersExecute_Call {
 	return &DatabaseUsersApi_ListDatabaseUsersExecute_Call{Call: _e.mock.On("ListDatabaseUsersExecute", r)}
 }
 
@@ -653,7 +653,7 @@ type DatabaseUsersApi_ListDatabaseUsersWithParams_Call struct {
 // ListDatabaseUsersWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListDatabaseUsersApiParams
-func (_e *DatabaseUsersApi_Expecter) ListDatabaseUsersWithParams(ctx interface{}, args interface{}) *DatabaseUsersApi_ListDatabaseUsersWithParams_Call {
+func (_e *DatabaseUsersApi_Expecter) ListDatabaseUsersWithParams(ctx any, args any) *DatabaseUsersApi_ListDatabaseUsersWithParams_Call {
 	return &DatabaseUsersApi_ListDatabaseUsersWithParams_Call{Call: _e.mock.On("ListDatabaseUsersWithParams", ctx, args)}
 }
 
@@ -703,7 +703,7 @@ type DatabaseUsersApi_UpdateDatabaseUser_Call struct {
 //   - databaseName string
 //   - username string
 //   - cloudDatabaseUser *admin.CloudDatabaseUser
-func (_e *DatabaseUsersApi_Expecter) UpdateDatabaseUser(ctx interface{}, groupId interface{}, databaseName interface{}, username interface{}, cloudDatabaseUser interface{}) *DatabaseUsersApi_UpdateDatabaseUser_Call {
+func (_e *DatabaseUsersApi_Expecter) UpdateDatabaseUser(ctx any, groupId any, databaseName any, username any, cloudDatabaseUser any) *DatabaseUsersApi_UpdateDatabaseUser_Call {
 	return &DatabaseUsersApi_UpdateDatabaseUser_Call{Call: _e.mock.On("UpdateDatabaseUser", ctx, groupId, databaseName, username, cloudDatabaseUser)}
 }
 
@@ -770,7 +770,7 @@ type DatabaseUsersApi_UpdateDatabaseUserExecute_Call struct {
 
 // UpdateDatabaseUserExecute is a helper method to define mock.On call
 //   - r admin.UpdateDatabaseUserApiRequest
-func (_e *DatabaseUsersApi_Expecter) UpdateDatabaseUserExecute(r interface{}) *DatabaseUsersApi_UpdateDatabaseUserExecute_Call {
+func (_e *DatabaseUsersApi_Expecter) UpdateDatabaseUserExecute(r any) *DatabaseUsersApi_UpdateDatabaseUserExecute_Call {
 	return &DatabaseUsersApi_UpdateDatabaseUserExecute_Call{Call: _e.mock.On("UpdateDatabaseUserExecute", r)}
 }
 
@@ -817,7 +817,7 @@ type DatabaseUsersApi_UpdateDatabaseUserWithParams_Call struct {
 // UpdateDatabaseUserWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.UpdateDatabaseUserApiParams
-func (_e *DatabaseUsersApi_Expecter) UpdateDatabaseUserWithParams(ctx interface{}, args interface{}) *DatabaseUsersApi_UpdateDatabaseUserWithParams_Call {
+func (_e *DatabaseUsersApi_Expecter) UpdateDatabaseUserWithParams(ctx any, args any) *DatabaseUsersApi_UpdateDatabaseUserWithParams_Call {
 	return &DatabaseUsersApi_UpdateDatabaseUserWithParams_Call{Call: _e.mock.On("UpdateDatabaseUserWithParams", ctx, args)}
 }
 

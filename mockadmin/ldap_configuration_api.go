@@ -51,7 +51,7 @@ type LDAPConfigurationApi_DeleteLDAPConfiguration_Call struct {
 // DeleteLDAPConfiguration is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *LDAPConfigurationApi_Expecter) DeleteLDAPConfiguration(ctx interface{}, groupId interface{}) *LDAPConfigurationApi_DeleteLDAPConfiguration_Call {
+func (_e *LDAPConfigurationApi_Expecter) DeleteLDAPConfiguration(ctx any, groupId any) *LDAPConfigurationApi_DeleteLDAPConfiguration_Call {
 	return &LDAPConfigurationApi_DeleteLDAPConfiguration_Call{Call: _e.mock.On("DeleteLDAPConfiguration", ctx, groupId)}
 }
 
@@ -118,7 +118,7 @@ type LDAPConfigurationApi_DeleteLDAPConfigurationExecute_Call struct {
 
 // DeleteLDAPConfigurationExecute is a helper method to define mock.On call
 //   - r admin.DeleteLDAPConfigurationApiRequest
-func (_e *LDAPConfigurationApi_Expecter) DeleteLDAPConfigurationExecute(r interface{}) *LDAPConfigurationApi_DeleteLDAPConfigurationExecute_Call {
+func (_e *LDAPConfigurationApi_Expecter) DeleteLDAPConfigurationExecute(r any) *LDAPConfigurationApi_DeleteLDAPConfigurationExecute_Call {
 	return &LDAPConfigurationApi_DeleteLDAPConfigurationExecute_Call{Call: _e.mock.On("DeleteLDAPConfigurationExecute", r)}
 }
 
@@ -165,7 +165,7 @@ type LDAPConfigurationApi_DeleteLDAPConfigurationWithParams_Call struct {
 // DeleteLDAPConfigurationWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.DeleteLDAPConfigurationApiParams
-func (_e *LDAPConfigurationApi_Expecter) DeleteLDAPConfigurationWithParams(ctx interface{}, args interface{}) *LDAPConfigurationApi_DeleteLDAPConfigurationWithParams_Call {
+func (_e *LDAPConfigurationApi_Expecter) DeleteLDAPConfigurationWithParams(ctx any, args any) *LDAPConfigurationApi_DeleteLDAPConfigurationWithParams_Call {
 	return &LDAPConfigurationApi_DeleteLDAPConfigurationWithParams_Call{Call: _e.mock.On("DeleteLDAPConfigurationWithParams", ctx, args)}
 }
 
@@ -212,7 +212,7 @@ type LDAPConfigurationApi_GetLDAPConfiguration_Call struct {
 // GetLDAPConfiguration is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *LDAPConfigurationApi_Expecter) GetLDAPConfiguration(ctx interface{}, groupId interface{}) *LDAPConfigurationApi_GetLDAPConfiguration_Call {
+func (_e *LDAPConfigurationApi_Expecter) GetLDAPConfiguration(ctx any, groupId any) *LDAPConfigurationApi_GetLDAPConfiguration_Call {
 	return &LDAPConfigurationApi_GetLDAPConfiguration_Call{Call: _e.mock.On("GetLDAPConfiguration", ctx, groupId)}
 }
 
@@ -279,7 +279,7 @@ type LDAPConfigurationApi_GetLDAPConfigurationExecute_Call struct {
 
 // GetLDAPConfigurationExecute is a helper method to define mock.On call
 //   - r admin.GetLDAPConfigurationApiRequest
-func (_e *LDAPConfigurationApi_Expecter) GetLDAPConfigurationExecute(r interface{}) *LDAPConfigurationApi_GetLDAPConfigurationExecute_Call {
+func (_e *LDAPConfigurationApi_Expecter) GetLDAPConfigurationExecute(r any) *LDAPConfigurationApi_GetLDAPConfigurationExecute_Call {
 	return &LDAPConfigurationApi_GetLDAPConfigurationExecute_Call{Call: _e.mock.On("GetLDAPConfigurationExecute", r)}
 }
 
@@ -327,7 +327,7 @@ type LDAPConfigurationApi_GetLDAPConfigurationStatus_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - requestId string
-func (_e *LDAPConfigurationApi_Expecter) GetLDAPConfigurationStatus(ctx interface{}, groupId interface{}, requestId interface{}) *LDAPConfigurationApi_GetLDAPConfigurationStatus_Call {
+func (_e *LDAPConfigurationApi_Expecter) GetLDAPConfigurationStatus(ctx any, groupId any, requestId any) *LDAPConfigurationApi_GetLDAPConfigurationStatus_Call {
 	return &LDAPConfigurationApi_GetLDAPConfigurationStatus_Call{Call: _e.mock.On("GetLDAPConfigurationStatus", ctx, groupId, requestId)}
 }
 
@@ -394,7 +394,7 @@ type LDAPConfigurationApi_GetLDAPConfigurationStatusExecute_Call struct {
 
 // GetLDAPConfigurationStatusExecute is a helper method to define mock.On call
 //   - r admin.GetLDAPConfigurationStatusApiRequest
-func (_e *LDAPConfigurationApi_Expecter) GetLDAPConfigurationStatusExecute(r interface{}) *LDAPConfigurationApi_GetLDAPConfigurationStatusExecute_Call {
+func (_e *LDAPConfigurationApi_Expecter) GetLDAPConfigurationStatusExecute(r any) *LDAPConfigurationApi_GetLDAPConfigurationStatusExecute_Call {
 	return &LDAPConfigurationApi_GetLDAPConfigurationStatusExecute_Call{Call: _e.mock.On("GetLDAPConfigurationStatusExecute", r)}
 }
 
@@ -441,7 +441,7 @@ type LDAPConfigurationApi_GetLDAPConfigurationStatusWithParams_Call struct {
 // GetLDAPConfigurationStatusWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetLDAPConfigurationStatusApiParams
-func (_e *LDAPConfigurationApi_Expecter) GetLDAPConfigurationStatusWithParams(ctx interface{}, args interface{}) *LDAPConfigurationApi_GetLDAPConfigurationStatusWithParams_Call {
+func (_e *LDAPConfigurationApi_Expecter) GetLDAPConfigurationStatusWithParams(ctx any, args any) *LDAPConfigurationApi_GetLDAPConfigurationStatusWithParams_Call {
 	return &LDAPConfigurationApi_GetLDAPConfigurationStatusWithParams_Call{Call: _e.mock.On("GetLDAPConfigurationStatusWithParams", ctx, args)}
 }
 
@@ -488,7 +488,7 @@ type LDAPConfigurationApi_GetLDAPConfigurationWithParams_Call struct {
 // GetLDAPConfigurationWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetLDAPConfigurationApiParams
-func (_e *LDAPConfigurationApi_Expecter) GetLDAPConfigurationWithParams(ctx interface{}, args interface{}) *LDAPConfigurationApi_GetLDAPConfigurationWithParams_Call {
+func (_e *LDAPConfigurationApi_Expecter) GetLDAPConfigurationWithParams(ctx any, args any) *LDAPConfigurationApi_GetLDAPConfigurationWithParams_Call {
 	return &LDAPConfigurationApi_GetLDAPConfigurationWithParams_Call{Call: _e.mock.On("GetLDAPConfigurationWithParams", ctx, args)}
 }
 
@@ -536,7 +536,7 @@ type LDAPConfigurationApi_SaveLDAPConfiguration_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - userSecurity *admin.UserSecurity
-func (_e *LDAPConfigurationApi_Expecter) SaveLDAPConfiguration(ctx interface{}, groupId interface{}, userSecurity interface{}) *LDAPConfigurationApi_SaveLDAPConfiguration_Call {
+func (_e *LDAPConfigurationApi_Expecter) SaveLDAPConfiguration(ctx any, groupId any, userSecurity any) *LDAPConfigurationApi_SaveLDAPConfiguration_Call {
 	return &LDAPConfigurationApi_SaveLDAPConfiguration_Call{Call: _e.mock.On("SaveLDAPConfiguration", ctx, groupId, userSecurity)}
 }
 
@@ -603,7 +603,7 @@ type LDAPConfigurationApi_SaveLDAPConfigurationExecute_Call struct {
 
 // SaveLDAPConfigurationExecute is a helper method to define mock.On call
 //   - r admin.SaveLDAPConfigurationApiRequest
-func (_e *LDAPConfigurationApi_Expecter) SaveLDAPConfigurationExecute(r interface{}) *LDAPConfigurationApi_SaveLDAPConfigurationExecute_Call {
+func (_e *LDAPConfigurationApi_Expecter) SaveLDAPConfigurationExecute(r any) *LDAPConfigurationApi_SaveLDAPConfigurationExecute_Call {
 	return &LDAPConfigurationApi_SaveLDAPConfigurationExecute_Call{Call: _e.mock.On("SaveLDAPConfigurationExecute", r)}
 }
 
@@ -650,7 +650,7 @@ type LDAPConfigurationApi_SaveLDAPConfigurationWithParams_Call struct {
 // SaveLDAPConfigurationWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.SaveLDAPConfigurationApiParams
-func (_e *LDAPConfigurationApi_Expecter) SaveLDAPConfigurationWithParams(ctx interface{}, args interface{}) *LDAPConfigurationApi_SaveLDAPConfigurationWithParams_Call {
+func (_e *LDAPConfigurationApi_Expecter) SaveLDAPConfigurationWithParams(ctx any, args any) *LDAPConfigurationApi_SaveLDAPConfigurationWithParams_Call {
 	return &LDAPConfigurationApi_SaveLDAPConfigurationWithParams_Call{Call: _e.mock.On("SaveLDAPConfigurationWithParams", ctx, args)}
 }
 
@@ -698,7 +698,7 @@ type LDAPConfigurationApi_VerifyLDAPConfiguration_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - lDAPVerifyConnectivityJobRequestParams *admin.LDAPVerifyConnectivityJobRequestParams
-func (_e *LDAPConfigurationApi_Expecter) VerifyLDAPConfiguration(ctx interface{}, groupId interface{}, lDAPVerifyConnectivityJobRequestParams interface{}) *LDAPConfigurationApi_VerifyLDAPConfiguration_Call {
+func (_e *LDAPConfigurationApi_Expecter) VerifyLDAPConfiguration(ctx any, groupId any, lDAPVerifyConnectivityJobRequestParams any) *LDAPConfigurationApi_VerifyLDAPConfiguration_Call {
 	return &LDAPConfigurationApi_VerifyLDAPConfiguration_Call{Call: _e.mock.On("VerifyLDAPConfiguration", ctx, groupId, lDAPVerifyConnectivityJobRequestParams)}
 }
 
@@ -765,7 +765,7 @@ type LDAPConfigurationApi_VerifyLDAPConfigurationExecute_Call struct {
 
 // VerifyLDAPConfigurationExecute is a helper method to define mock.On call
 //   - r admin.VerifyLDAPConfigurationApiRequest
-func (_e *LDAPConfigurationApi_Expecter) VerifyLDAPConfigurationExecute(r interface{}) *LDAPConfigurationApi_VerifyLDAPConfigurationExecute_Call {
+func (_e *LDAPConfigurationApi_Expecter) VerifyLDAPConfigurationExecute(r any) *LDAPConfigurationApi_VerifyLDAPConfigurationExecute_Call {
 	return &LDAPConfigurationApi_VerifyLDAPConfigurationExecute_Call{Call: _e.mock.On("VerifyLDAPConfigurationExecute", r)}
 }
 
@@ -812,7 +812,7 @@ type LDAPConfigurationApi_VerifyLDAPConfigurationWithParams_Call struct {
 // VerifyLDAPConfigurationWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.VerifyLDAPConfigurationApiParams
-func (_e *LDAPConfigurationApi_Expecter) VerifyLDAPConfigurationWithParams(ctx interface{}, args interface{}) *LDAPConfigurationApi_VerifyLDAPConfigurationWithParams_Call {
+func (_e *LDAPConfigurationApi_Expecter) VerifyLDAPConfigurationWithParams(ctx any, args any) *LDAPConfigurationApi_VerifyLDAPConfigurationWithParams_Call {
 	return &LDAPConfigurationApi_VerifyLDAPConfigurationWithParams_Call{Call: _e.mock.On("VerifyLDAPConfigurationWithParams", ctx, args)}
 }
 

@@ -113,7 +113,7 @@ type AtlasSearchApi interface {
 	DeleteAtlasSearchDeploymentWithParams(ctx context.Context, args *DeleteAtlasSearchDeploymentApiParams) DeleteAtlasSearchDeploymentApiRequest
 
 	// Method available only for mocking purposes
-	DeleteAtlasSearchDeploymentExecute(r DeleteAtlasSearchDeploymentApiRequest) (interface{}, *http.Response, error)
+	DeleteAtlasSearchDeploymentExecute(r DeleteAtlasSearchDeploymentApiRequest) (any, *http.Response, error)
 
 	/*
 		DeleteAtlasSearchIndex Remove One Atlas Search Index by Id
@@ -138,7 +138,7 @@ type AtlasSearchApi interface {
 	DeleteAtlasSearchIndexWithParams(ctx context.Context, args *DeleteAtlasSearchIndexApiParams) DeleteAtlasSearchIndexApiRequest
 
 	// Method available only for mocking purposes
-	DeleteAtlasSearchIndexExecute(r DeleteAtlasSearchIndexApiRequest) (interface{}, *http.Response, error)
+	DeleteAtlasSearchIndexExecute(r DeleteAtlasSearchIndexApiRequest) (any, *http.Response, error)
 
 	/*
 		DeleteAtlasSearchIndexByName Remove One Atlas Search Index by Name
@@ -165,7 +165,7 @@ type AtlasSearchApi interface {
 	DeleteAtlasSearchIndexByNameWithParams(ctx context.Context, args *DeleteAtlasSearchIndexByNameApiParams) DeleteAtlasSearchIndexByNameApiRequest
 
 	// Method available only for mocking purposes
-	DeleteAtlasSearchIndexByNameExecute(r DeleteAtlasSearchIndexByNameApiRequest) (interface{}, *http.Response, error)
+	DeleteAtlasSearchIndexByNameExecute(r DeleteAtlasSearchIndexByNameApiRequest) (any, *http.Response, error)
 
 	/*
 		DeleteAtlasSearchIndexDeprecated Remove One Atlas Search Index
@@ -194,7 +194,7 @@ type AtlasSearchApi interface {
 	DeleteAtlasSearchIndexDeprecatedWithParams(ctx context.Context, args *DeleteAtlasSearchIndexDeprecatedApiParams) DeleteAtlasSearchIndexDeprecatedApiRequest
 
 	// Method available only for mocking purposes
-	DeleteAtlasSearchIndexDeprecatedExecute(r DeleteAtlasSearchIndexDeprecatedApiRequest) (interface{}, *http.Response, error)
+	DeleteAtlasSearchIndexDeprecatedExecute(r DeleteAtlasSearchIndexDeprecatedApiRequest) (any, *http.Response, error)
 
 	/*
 		GetAtlasSearchDeployment Return Search Nodes
@@ -548,7 +548,7 @@ func (a *AtlasSearchApiService) CreateAtlasSearchDeployment(ctx context.Context,
 func (a *AtlasSearchApiService) CreateAtlasSearchDeploymentExecute(r CreateAtlasSearchDeploymentApiRequest) (*ApiSearchDeploymentResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *ApiSearchDeploymentResponse
 	)
@@ -674,7 +674,7 @@ func (a *AtlasSearchApiService) CreateAtlasSearchIndex(ctx context.Context, grou
 func (a *AtlasSearchApiService) CreateAtlasSearchIndexExecute(r CreateAtlasSearchIndexApiRequest) (*SearchIndexResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *SearchIndexResponse
 	)
@@ -804,7 +804,7 @@ func (a *AtlasSearchApiService) CreateAtlasSearchIndexDeprecated(ctx context.Con
 func (a *AtlasSearchApiService) CreateAtlasSearchIndexDeprecatedExecute(r CreateAtlasSearchIndexDeprecatedApiRequest) (*ClusterSearchIndex, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *ClusterSearchIndex
 	)
@@ -897,7 +897,7 @@ func (a *AtlasSearchApiService) DeleteAtlasSearchDeploymentWithParams(ctx contex
 	}
 }
 
-func (r DeleteAtlasSearchDeploymentApiRequest) Execute() (interface{}, *http.Response, error) {
+func (r DeleteAtlasSearchDeploymentApiRequest) Execute() (any, *http.Response, error) {
 	return r.ApiService.DeleteAtlasSearchDeploymentExecute(r)
 }
 
@@ -922,13 +922,13 @@ func (a *AtlasSearchApiService) DeleteAtlasSearchDeployment(ctx context.Context,
 
 // DeleteAtlasSearchDeploymentExecute executes the request
 //
-//	@return interface{}
-func (a *AtlasSearchApiService) DeleteAtlasSearchDeploymentExecute(r DeleteAtlasSearchDeploymentApiRequest) (interface{}, *http.Response, error) {
+//	@return any
+func (a *AtlasSearchApiService) DeleteAtlasSearchDeploymentExecute(r DeleteAtlasSearchDeploymentApiRequest) (any, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue interface{}
+		localVarReturnValue any
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AtlasSearchApiService.DeleteAtlasSearchDeployment")
@@ -1017,7 +1017,7 @@ func (a *AtlasSearchApiService) DeleteAtlasSearchIndexWithParams(ctx context.Con
 	}
 }
 
-func (r DeleteAtlasSearchIndexApiRequest) Execute() (interface{}, *http.Response, error) {
+func (r DeleteAtlasSearchIndexApiRequest) Execute() (any, *http.Response, error) {
 	return r.ApiService.DeleteAtlasSearchIndexExecute(r)
 }
 
@@ -1044,13 +1044,13 @@ func (a *AtlasSearchApiService) DeleteAtlasSearchIndex(ctx context.Context, grou
 
 // DeleteAtlasSearchIndexExecute executes the request
 //
-//	@return interface{}
-func (a *AtlasSearchApiService) DeleteAtlasSearchIndexExecute(r DeleteAtlasSearchIndexApiRequest) (interface{}, *http.Response, error) {
+//	@return any
+func (a *AtlasSearchApiService) DeleteAtlasSearchIndexExecute(r DeleteAtlasSearchIndexApiRequest) (any, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue interface{}
+		localVarReturnValue any
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AtlasSearchApiService.DeleteAtlasSearchIndex")
@@ -1146,7 +1146,7 @@ func (a *AtlasSearchApiService) DeleteAtlasSearchIndexByNameWithParams(ctx conte
 	}
 }
 
-func (r DeleteAtlasSearchIndexByNameApiRequest) Execute() (interface{}, *http.Response, error) {
+func (r DeleteAtlasSearchIndexByNameApiRequest) Execute() (any, *http.Response, error) {
 	return r.ApiService.DeleteAtlasSearchIndexByNameExecute(r)
 }
 
@@ -1177,13 +1177,13 @@ func (a *AtlasSearchApiService) DeleteAtlasSearchIndexByName(ctx context.Context
 
 // DeleteAtlasSearchIndexByNameExecute executes the request
 //
-//	@return interface{}
-func (a *AtlasSearchApiService) DeleteAtlasSearchIndexByNameExecute(r DeleteAtlasSearchIndexByNameApiRequest) (interface{}, *http.Response, error) {
+//	@return any
+func (a *AtlasSearchApiService) DeleteAtlasSearchIndexByNameExecute(r DeleteAtlasSearchIndexByNameApiRequest) (any, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue interface{}
+		localVarReturnValue any
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AtlasSearchApiService.DeleteAtlasSearchIndexByName")
@@ -1275,7 +1275,7 @@ func (a *AtlasSearchApiService) DeleteAtlasSearchIndexDeprecatedWithParams(ctx c
 	}
 }
 
-func (r DeleteAtlasSearchIndexDeprecatedApiRequest) Execute() (interface{}, *http.Response, error) {
+func (r DeleteAtlasSearchIndexDeprecatedApiRequest) Execute() (any, *http.Response, error) {
 	return r.ApiService.DeleteAtlasSearchIndexDeprecatedExecute(r)
 }
 
@@ -1304,15 +1304,15 @@ func (a *AtlasSearchApiService) DeleteAtlasSearchIndexDeprecated(ctx context.Con
 
 // DeleteAtlasSearchIndexDeprecatedExecute executes the request
 //
-//	@return interface{}
+//	@return any
 //
 // Deprecated
-func (a *AtlasSearchApiService) DeleteAtlasSearchIndexDeprecatedExecute(r DeleteAtlasSearchIndexDeprecatedApiRequest) (interface{}, *http.Response, error) {
+func (a *AtlasSearchApiService) DeleteAtlasSearchIndexDeprecatedExecute(r DeleteAtlasSearchIndexDeprecatedApiRequest) (any, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue interface{}
+		localVarReturnValue any
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AtlasSearchApiService.DeleteAtlasSearchIndexDeprecated")
@@ -1428,7 +1428,7 @@ func (a *AtlasSearchApiService) GetAtlasSearchDeployment(ctx context.Context, gr
 func (a *AtlasSearchApiService) GetAtlasSearchDeploymentExecute(r GetAtlasSearchDeploymentApiRequest) (*ApiSearchDeploymentResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *ApiSearchDeploymentResponse
 	)
@@ -1550,7 +1550,7 @@ func (a *AtlasSearchApiService) GetAtlasSearchIndex(ctx context.Context, groupId
 func (a *AtlasSearchApiService) GetAtlasSearchIndexExecute(r GetAtlasSearchIndexApiRequest) (*SearchIndexResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *SearchIndexResponse
 	)
@@ -1683,7 +1683,7 @@ func (a *AtlasSearchApiService) GetAtlasSearchIndexByName(ctx context.Context, g
 func (a *AtlasSearchApiService) GetAtlasSearchIndexByNameExecute(r GetAtlasSearchIndexByNameApiRequest) (*SearchIndexResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *SearchIndexResponse
 	)
@@ -1812,7 +1812,7 @@ func (a *AtlasSearchApiService) GetAtlasSearchIndexDeprecated(ctx context.Contex
 func (a *AtlasSearchApiService) GetAtlasSearchIndexDeprecatedExecute(r GetAtlasSearchIndexDeprecatedApiRequest) (*ClusterSearchIndex, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *ClusterSearchIndex
 	)
@@ -1940,7 +1940,7 @@ func (a *AtlasSearchApiService) ListAtlasSearchIndexes(ctx context.Context, grou
 func (a *AtlasSearchApiService) ListAtlasSearchIndexesExecute(r ListAtlasSearchIndexesApiRequest) ([]SearchIndexResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue []SearchIndexResponse
 	)
@@ -2059,7 +2059,7 @@ func (a *AtlasSearchApiService) ListAtlasSearchIndexesCluster(ctx context.Contex
 func (a *AtlasSearchApiService) ListAtlasSearchIndexesClusterExecute(r ListAtlasSearchIndexesClusterApiRequest) ([]SearchIndexResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue []SearchIndexResponse
 	)
@@ -2190,7 +2190,7 @@ func (a *AtlasSearchApiService) ListAtlasSearchIndexesDeprecated(ctx context.Con
 func (a *AtlasSearchApiService) ListAtlasSearchIndexesDeprecatedExecute(r ListAtlasSearchIndexesDeprecatedApiRequest) ([]ClusterSearchIndex, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue []ClusterSearchIndex
 	)
@@ -2313,7 +2313,7 @@ func (a *AtlasSearchApiService) UpdateAtlasSearchDeployment(ctx context.Context,
 func (a *AtlasSearchApiService) UpdateAtlasSearchDeploymentExecute(r UpdateAtlasSearchDeploymentApiRequest) (*ApiSearchDeploymentResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *ApiSearchDeploymentResponse
 	)
@@ -2444,7 +2444,7 @@ func (a *AtlasSearchApiService) UpdateAtlasSearchIndex(ctx context.Context, grou
 func (a *AtlasSearchApiService) UpdateAtlasSearchIndexExecute(r UpdateAtlasSearchIndexApiRequest) (*SearchIndexResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *SearchIndexResponse
 	)
@@ -2586,7 +2586,7 @@ func (a *AtlasSearchApiService) UpdateAtlasSearchIndexByName(ctx context.Context
 func (a *AtlasSearchApiService) UpdateAtlasSearchIndexByNameExecute(r UpdateAtlasSearchIndexByNameApiRequest) (*SearchIndexResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *SearchIndexResponse
 	)
@@ -2724,7 +2724,7 @@ func (a *AtlasSearchApiService) UpdateAtlasSearchIndexDeprecated(ctx context.Con
 func (a *AtlasSearchApiService) UpdateAtlasSearchIndexDeprecatedExecute(r UpdateAtlasSearchIndexDeprecatedApiRequest) (*ClusterSearchIndex, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *ClusterSearchIndex
 	)

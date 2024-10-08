@@ -51,7 +51,7 @@ type MongoDBCloudUsersApi_CreateUser_Call struct {
 // CreateUser is a helper method to define mock.On call
 //   - ctx context.Context
 //   - cloudAppUser *admin.CloudAppUser
-func (_e *MongoDBCloudUsersApi_Expecter) CreateUser(ctx interface{}, cloudAppUser interface{}) *MongoDBCloudUsersApi_CreateUser_Call {
+func (_e *MongoDBCloudUsersApi_Expecter) CreateUser(ctx any, cloudAppUser any) *MongoDBCloudUsersApi_CreateUser_Call {
 	return &MongoDBCloudUsersApi_CreateUser_Call{Call: _e.mock.On("CreateUser", ctx, cloudAppUser)}
 }
 
@@ -118,7 +118,7 @@ type MongoDBCloudUsersApi_CreateUserExecute_Call struct {
 
 // CreateUserExecute is a helper method to define mock.On call
 //   - r admin.CreateUserApiRequest
-func (_e *MongoDBCloudUsersApi_Expecter) CreateUserExecute(r interface{}) *MongoDBCloudUsersApi_CreateUserExecute_Call {
+func (_e *MongoDBCloudUsersApi_Expecter) CreateUserExecute(r any) *MongoDBCloudUsersApi_CreateUserExecute_Call {
 	return &MongoDBCloudUsersApi_CreateUserExecute_Call{Call: _e.mock.On("CreateUserExecute", r)}
 }
 
@@ -165,7 +165,7 @@ type MongoDBCloudUsersApi_CreateUserWithParams_Call struct {
 // CreateUserWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.CreateUserApiParams
-func (_e *MongoDBCloudUsersApi_Expecter) CreateUserWithParams(ctx interface{}, args interface{}) *MongoDBCloudUsersApi_CreateUserWithParams_Call {
+func (_e *MongoDBCloudUsersApi_Expecter) CreateUserWithParams(ctx any, args any) *MongoDBCloudUsersApi_CreateUserWithParams_Call {
 	return &MongoDBCloudUsersApi_CreateUserWithParams_Call{Call: _e.mock.On("CreateUserWithParams", ctx, args)}
 }
 
@@ -212,7 +212,7 @@ type MongoDBCloudUsersApi_GetUser_Call struct {
 // GetUser is a helper method to define mock.On call
 //   - ctx context.Context
 //   - userId string
-func (_e *MongoDBCloudUsersApi_Expecter) GetUser(ctx interface{}, userId interface{}) *MongoDBCloudUsersApi_GetUser_Call {
+func (_e *MongoDBCloudUsersApi_Expecter) GetUser(ctx any, userId any) *MongoDBCloudUsersApi_GetUser_Call {
 	return &MongoDBCloudUsersApi_GetUser_Call{Call: _e.mock.On("GetUser", ctx, userId)}
 }
 
@@ -259,7 +259,7 @@ type MongoDBCloudUsersApi_GetUserByUsername_Call struct {
 // GetUserByUsername is a helper method to define mock.On call
 //   - ctx context.Context
 //   - userName string
-func (_e *MongoDBCloudUsersApi_Expecter) GetUserByUsername(ctx interface{}, userName interface{}) *MongoDBCloudUsersApi_GetUserByUsername_Call {
+func (_e *MongoDBCloudUsersApi_Expecter) GetUserByUsername(ctx any, userName any) *MongoDBCloudUsersApi_GetUserByUsername_Call {
 	return &MongoDBCloudUsersApi_GetUserByUsername_Call{Call: _e.mock.On("GetUserByUsername", ctx, userName)}
 }
 
@@ -326,7 +326,7 @@ type MongoDBCloudUsersApi_GetUserByUsernameExecute_Call struct {
 
 // GetUserByUsernameExecute is a helper method to define mock.On call
 //   - r admin.GetUserByUsernameApiRequest
-func (_e *MongoDBCloudUsersApi_Expecter) GetUserByUsernameExecute(r interface{}) *MongoDBCloudUsersApi_GetUserByUsernameExecute_Call {
+func (_e *MongoDBCloudUsersApi_Expecter) GetUserByUsernameExecute(r any) *MongoDBCloudUsersApi_GetUserByUsernameExecute_Call {
 	return &MongoDBCloudUsersApi_GetUserByUsernameExecute_Call{Call: _e.mock.On("GetUserByUsernameExecute", r)}
 }
 
@@ -373,7 +373,7 @@ type MongoDBCloudUsersApi_GetUserByUsernameWithParams_Call struct {
 // GetUserByUsernameWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetUserByUsernameApiParams
-func (_e *MongoDBCloudUsersApi_Expecter) GetUserByUsernameWithParams(ctx interface{}, args interface{}) *MongoDBCloudUsersApi_GetUserByUsernameWithParams_Call {
+func (_e *MongoDBCloudUsersApi_Expecter) GetUserByUsernameWithParams(ctx any, args any) *MongoDBCloudUsersApi_GetUserByUsernameWithParams_Call {
 	return &MongoDBCloudUsersApi_GetUserByUsernameWithParams_Call{Call: _e.mock.On("GetUserByUsernameWithParams", ctx, args)}
 }
 
@@ -440,7 +440,7 @@ type MongoDBCloudUsersApi_GetUserExecute_Call struct {
 
 // GetUserExecute is a helper method to define mock.On call
 //   - r admin.GetUserApiRequest
-func (_e *MongoDBCloudUsersApi_Expecter) GetUserExecute(r interface{}) *MongoDBCloudUsersApi_GetUserExecute_Call {
+func (_e *MongoDBCloudUsersApi_Expecter) GetUserExecute(r any) *MongoDBCloudUsersApi_GetUserExecute_Call {
 	return &MongoDBCloudUsersApi_GetUserExecute_Call{Call: _e.mock.On("GetUserExecute", r)}
 }
 
@@ -487,7 +487,7 @@ type MongoDBCloudUsersApi_GetUserWithParams_Call struct {
 // GetUserWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetUserApiParams
-func (_e *MongoDBCloudUsersApi_Expecter) GetUserWithParams(ctx interface{}, args interface{}) *MongoDBCloudUsersApi_GetUserWithParams_Call {
+func (_e *MongoDBCloudUsersApi_Expecter) GetUserWithParams(ctx any, args any) *MongoDBCloudUsersApi_GetUserWithParams_Call {
 	return &MongoDBCloudUsersApi_GetUserWithParams_Call{Call: _e.mock.On("GetUserWithParams", ctx, args)}
 }
 

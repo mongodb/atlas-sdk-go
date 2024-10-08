@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Fields** | Pointer to **[]interface{}** | Settings that configure the fields, one per object, to index. You must define at least one \&quot;vector\&quot; type field. You can optionally define \&quot;filter\&quot; type fields also. | [optional] 
+**Fields** | Pointer to [**[]any**](any.md) | Settings that configure the fields, one per object, to index. You must define at least one \&quot;vector\&quot; type field. You can optionally define \&quot;filter\&quot; type fields also. | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetFields
 
-`func (o *VectorSearchIndexDefinition) GetFields() []interface{}`
+`func (o *VectorSearchIndexDefinition) GetFields() []any`
 
 GetFields returns the Fields field if non-nil, zero value otherwise.
 
 ### GetFieldsOk
 
-`func (o *VectorSearchIndexDefinition) GetFieldsOk() (*[]interface{}, bool)`
+`func (o *VectorSearchIndexDefinition) GetFieldsOk() (*[]any, bool)`
 
 GetFieldsOk returns a tuple with the Fields field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFields
 
-`func (o *VectorSearchIndexDefinition) SetFields(v []interface{})`
+`func (o *VectorSearchIndexDefinition) SetFields(v []any)`
 
 SetFields sets Fields field to given value.
 

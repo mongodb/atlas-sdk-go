@@ -52,7 +52,7 @@ type NetworkPeeringApi_CreatePeeringConnection_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - baseNetworkPeeringConnectionSettings *admin.BaseNetworkPeeringConnectionSettings
-func (_e *NetworkPeeringApi_Expecter) CreatePeeringConnection(ctx interface{}, groupId interface{}, baseNetworkPeeringConnectionSettings interface{}) *NetworkPeeringApi_CreatePeeringConnection_Call {
+func (_e *NetworkPeeringApi_Expecter) CreatePeeringConnection(ctx any, groupId any, baseNetworkPeeringConnectionSettings any) *NetworkPeeringApi_CreatePeeringConnection_Call {
 	return &NetworkPeeringApi_CreatePeeringConnection_Call{Call: _e.mock.On("CreatePeeringConnection", ctx, groupId, baseNetworkPeeringConnectionSettings)}
 }
 
@@ -119,7 +119,7 @@ type NetworkPeeringApi_CreatePeeringConnectionExecute_Call struct {
 
 // CreatePeeringConnectionExecute is a helper method to define mock.On call
 //   - r admin.CreatePeeringConnectionApiRequest
-func (_e *NetworkPeeringApi_Expecter) CreatePeeringConnectionExecute(r interface{}) *NetworkPeeringApi_CreatePeeringConnectionExecute_Call {
+func (_e *NetworkPeeringApi_Expecter) CreatePeeringConnectionExecute(r any) *NetworkPeeringApi_CreatePeeringConnectionExecute_Call {
 	return &NetworkPeeringApi_CreatePeeringConnectionExecute_Call{Call: _e.mock.On("CreatePeeringConnectionExecute", r)}
 }
 
@@ -166,7 +166,7 @@ type NetworkPeeringApi_CreatePeeringConnectionWithParams_Call struct {
 // CreatePeeringConnectionWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.CreatePeeringConnectionApiParams
-func (_e *NetworkPeeringApi_Expecter) CreatePeeringConnectionWithParams(ctx interface{}, args interface{}) *NetworkPeeringApi_CreatePeeringConnectionWithParams_Call {
+func (_e *NetworkPeeringApi_Expecter) CreatePeeringConnectionWithParams(ctx any, args any) *NetworkPeeringApi_CreatePeeringConnectionWithParams_Call {
 	return &NetworkPeeringApi_CreatePeeringConnectionWithParams_Call{Call: _e.mock.On("CreatePeeringConnectionWithParams", ctx, args)}
 }
 
@@ -214,7 +214,7 @@ type NetworkPeeringApi_CreatePeeringContainer_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - cloudProviderContainer *admin.CloudProviderContainer
-func (_e *NetworkPeeringApi_Expecter) CreatePeeringContainer(ctx interface{}, groupId interface{}, cloudProviderContainer interface{}) *NetworkPeeringApi_CreatePeeringContainer_Call {
+func (_e *NetworkPeeringApi_Expecter) CreatePeeringContainer(ctx any, groupId any, cloudProviderContainer any) *NetworkPeeringApi_CreatePeeringContainer_Call {
 	return &NetworkPeeringApi_CreatePeeringContainer_Call{Call: _e.mock.On("CreatePeeringContainer", ctx, groupId, cloudProviderContainer)}
 }
 
@@ -281,7 +281,7 @@ type NetworkPeeringApi_CreatePeeringContainerExecute_Call struct {
 
 // CreatePeeringContainerExecute is a helper method to define mock.On call
 //   - r admin.CreatePeeringContainerApiRequest
-func (_e *NetworkPeeringApi_Expecter) CreatePeeringContainerExecute(r interface{}) *NetworkPeeringApi_CreatePeeringContainerExecute_Call {
+func (_e *NetworkPeeringApi_Expecter) CreatePeeringContainerExecute(r any) *NetworkPeeringApi_CreatePeeringContainerExecute_Call {
 	return &NetworkPeeringApi_CreatePeeringContainerExecute_Call{Call: _e.mock.On("CreatePeeringContainerExecute", r)}
 }
 
@@ -328,7 +328,7 @@ type NetworkPeeringApi_CreatePeeringContainerWithParams_Call struct {
 // CreatePeeringContainerWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.CreatePeeringContainerApiParams
-func (_e *NetworkPeeringApi_Expecter) CreatePeeringContainerWithParams(ctx interface{}, args interface{}) *NetworkPeeringApi_CreatePeeringContainerWithParams_Call {
+func (_e *NetworkPeeringApi_Expecter) CreatePeeringContainerWithParams(ctx any, args any) *NetworkPeeringApi_CreatePeeringContainerWithParams_Call {
 	return &NetworkPeeringApi_CreatePeeringContainerWithParams_Call{Call: _e.mock.On("CreatePeeringContainerWithParams", ctx, args)}
 }
 
@@ -376,7 +376,7 @@ type NetworkPeeringApi_DeletePeeringConnection_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - peerId string
-func (_e *NetworkPeeringApi_Expecter) DeletePeeringConnection(ctx interface{}, groupId interface{}, peerId interface{}) *NetworkPeeringApi_DeletePeeringConnection_Call {
+func (_e *NetworkPeeringApi_Expecter) DeletePeeringConnection(ctx any, groupId any, peerId any) *NetworkPeeringApi_DeletePeeringConnection_Call {
 	return &NetworkPeeringApi_DeletePeeringConnection_Call{Call: _e.mock.On("DeletePeeringConnection", ctx, groupId, peerId)}
 }
 
@@ -398,24 +398,24 @@ func (_c *NetworkPeeringApi_DeletePeeringConnection_Call) RunAndReturn(run func(
 }
 
 // DeletePeeringConnectionExecute provides a mock function with given fields: r
-func (_m *NetworkPeeringApi) DeletePeeringConnectionExecute(r admin.DeletePeeringConnectionApiRequest) (interface{}, *http.Response, error) {
+func (_m *NetworkPeeringApi) DeletePeeringConnectionExecute(r admin.DeletePeeringConnectionApiRequest) (any, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeletePeeringConnectionExecute")
 	}
 
-	var r0 interface{}
+	var r0 any
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeletePeeringConnectionApiRequest) (interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeletePeeringConnectionApiRequest) (any, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeletePeeringConnectionApiRequest) interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeletePeeringConnectionApiRequest) any); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(interface{})
+			r0 = ret.Get(0).(any)
 		}
 	}
 
@@ -443,7 +443,7 @@ type NetworkPeeringApi_DeletePeeringConnectionExecute_Call struct {
 
 // DeletePeeringConnectionExecute is a helper method to define mock.On call
 //   - r admin.DeletePeeringConnectionApiRequest
-func (_e *NetworkPeeringApi_Expecter) DeletePeeringConnectionExecute(r interface{}) *NetworkPeeringApi_DeletePeeringConnectionExecute_Call {
+func (_e *NetworkPeeringApi_Expecter) DeletePeeringConnectionExecute(r any) *NetworkPeeringApi_DeletePeeringConnectionExecute_Call {
 	return &NetworkPeeringApi_DeletePeeringConnectionExecute_Call{Call: _e.mock.On("DeletePeeringConnectionExecute", r)}
 }
 
@@ -454,12 +454,12 @@ func (_c *NetworkPeeringApi_DeletePeeringConnectionExecute_Call) Run(run func(r 
 	return _c
 }
 
-func (_c *NetworkPeeringApi_DeletePeeringConnectionExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *NetworkPeeringApi_DeletePeeringConnectionExecute_Call {
+func (_c *NetworkPeeringApi_DeletePeeringConnectionExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *NetworkPeeringApi_DeletePeeringConnectionExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *NetworkPeeringApi_DeletePeeringConnectionExecute_Call) RunAndReturn(run func(admin.DeletePeeringConnectionApiRequest) (interface{}, *http.Response, error)) *NetworkPeeringApi_DeletePeeringConnectionExecute_Call {
+func (_c *NetworkPeeringApi_DeletePeeringConnectionExecute_Call) RunAndReturn(run func(admin.DeletePeeringConnectionApiRequest) (any, *http.Response, error)) *NetworkPeeringApi_DeletePeeringConnectionExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -490,7 +490,7 @@ type NetworkPeeringApi_DeletePeeringConnectionWithParams_Call struct {
 // DeletePeeringConnectionWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.DeletePeeringConnectionApiParams
-func (_e *NetworkPeeringApi_Expecter) DeletePeeringConnectionWithParams(ctx interface{}, args interface{}) *NetworkPeeringApi_DeletePeeringConnectionWithParams_Call {
+func (_e *NetworkPeeringApi_Expecter) DeletePeeringConnectionWithParams(ctx any, args any) *NetworkPeeringApi_DeletePeeringConnectionWithParams_Call {
 	return &NetworkPeeringApi_DeletePeeringConnectionWithParams_Call{Call: _e.mock.On("DeletePeeringConnectionWithParams", ctx, args)}
 }
 
@@ -538,7 +538,7 @@ type NetworkPeeringApi_DeletePeeringContainer_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - containerId string
-func (_e *NetworkPeeringApi_Expecter) DeletePeeringContainer(ctx interface{}, groupId interface{}, containerId interface{}) *NetworkPeeringApi_DeletePeeringContainer_Call {
+func (_e *NetworkPeeringApi_Expecter) DeletePeeringContainer(ctx any, groupId any, containerId any) *NetworkPeeringApi_DeletePeeringContainer_Call {
 	return &NetworkPeeringApi_DeletePeeringContainer_Call{Call: _e.mock.On("DeletePeeringContainer", ctx, groupId, containerId)}
 }
 
@@ -560,24 +560,24 @@ func (_c *NetworkPeeringApi_DeletePeeringContainer_Call) RunAndReturn(run func(c
 }
 
 // DeletePeeringContainerExecute provides a mock function with given fields: r
-func (_m *NetworkPeeringApi) DeletePeeringContainerExecute(r admin.DeletePeeringContainerApiRequest) (interface{}, *http.Response, error) {
+func (_m *NetworkPeeringApi) DeletePeeringContainerExecute(r admin.DeletePeeringContainerApiRequest) (any, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeletePeeringContainerExecute")
 	}
 
-	var r0 interface{}
+	var r0 any
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeletePeeringContainerApiRequest) (interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeletePeeringContainerApiRequest) (any, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeletePeeringContainerApiRequest) interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeletePeeringContainerApiRequest) any); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(interface{})
+			r0 = ret.Get(0).(any)
 		}
 	}
 
@@ -605,7 +605,7 @@ type NetworkPeeringApi_DeletePeeringContainerExecute_Call struct {
 
 // DeletePeeringContainerExecute is a helper method to define mock.On call
 //   - r admin.DeletePeeringContainerApiRequest
-func (_e *NetworkPeeringApi_Expecter) DeletePeeringContainerExecute(r interface{}) *NetworkPeeringApi_DeletePeeringContainerExecute_Call {
+func (_e *NetworkPeeringApi_Expecter) DeletePeeringContainerExecute(r any) *NetworkPeeringApi_DeletePeeringContainerExecute_Call {
 	return &NetworkPeeringApi_DeletePeeringContainerExecute_Call{Call: _e.mock.On("DeletePeeringContainerExecute", r)}
 }
 
@@ -616,12 +616,12 @@ func (_c *NetworkPeeringApi_DeletePeeringContainerExecute_Call) Run(run func(r a
 	return _c
 }
 
-func (_c *NetworkPeeringApi_DeletePeeringContainerExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *NetworkPeeringApi_DeletePeeringContainerExecute_Call {
+func (_c *NetworkPeeringApi_DeletePeeringContainerExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *NetworkPeeringApi_DeletePeeringContainerExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *NetworkPeeringApi_DeletePeeringContainerExecute_Call) RunAndReturn(run func(admin.DeletePeeringContainerApiRequest) (interface{}, *http.Response, error)) *NetworkPeeringApi_DeletePeeringContainerExecute_Call {
+func (_c *NetworkPeeringApi_DeletePeeringContainerExecute_Call) RunAndReturn(run func(admin.DeletePeeringContainerApiRequest) (any, *http.Response, error)) *NetworkPeeringApi_DeletePeeringContainerExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -652,7 +652,7 @@ type NetworkPeeringApi_DeletePeeringContainerWithParams_Call struct {
 // DeletePeeringContainerWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.DeletePeeringContainerApiParams
-func (_e *NetworkPeeringApi_Expecter) DeletePeeringContainerWithParams(ctx interface{}, args interface{}) *NetworkPeeringApi_DeletePeeringContainerWithParams_Call {
+func (_e *NetworkPeeringApi_Expecter) DeletePeeringContainerWithParams(ctx any, args any) *NetworkPeeringApi_DeletePeeringContainerWithParams_Call {
 	return &NetworkPeeringApi_DeletePeeringContainerWithParams_Call{Call: _e.mock.On("DeletePeeringContainerWithParams", ctx, args)}
 }
 
@@ -700,7 +700,7 @@ type NetworkPeeringApi_DisablePeering_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - privateIPMode *admin.PrivateIPMode
-func (_e *NetworkPeeringApi_Expecter) DisablePeering(ctx interface{}, groupId interface{}, privateIPMode interface{}) *NetworkPeeringApi_DisablePeering_Call {
+func (_e *NetworkPeeringApi_Expecter) DisablePeering(ctx any, groupId any, privateIPMode any) *NetworkPeeringApi_DisablePeering_Call {
 	return &NetworkPeeringApi_DisablePeering_Call{Call: _e.mock.On("DisablePeering", ctx, groupId, privateIPMode)}
 }
 
@@ -767,7 +767,7 @@ type NetworkPeeringApi_DisablePeeringExecute_Call struct {
 
 // DisablePeeringExecute is a helper method to define mock.On call
 //   - r admin.DisablePeeringApiRequest
-func (_e *NetworkPeeringApi_Expecter) DisablePeeringExecute(r interface{}) *NetworkPeeringApi_DisablePeeringExecute_Call {
+func (_e *NetworkPeeringApi_Expecter) DisablePeeringExecute(r any) *NetworkPeeringApi_DisablePeeringExecute_Call {
 	return &NetworkPeeringApi_DisablePeeringExecute_Call{Call: _e.mock.On("DisablePeeringExecute", r)}
 }
 
@@ -814,7 +814,7 @@ type NetworkPeeringApi_DisablePeeringWithParams_Call struct {
 // DisablePeeringWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.DisablePeeringApiParams
-func (_e *NetworkPeeringApi_Expecter) DisablePeeringWithParams(ctx interface{}, args interface{}) *NetworkPeeringApi_DisablePeeringWithParams_Call {
+func (_e *NetworkPeeringApi_Expecter) DisablePeeringWithParams(ctx any, args any) *NetworkPeeringApi_DisablePeeringWithParams_Call {
 	return &NetworkPeeringApi_DisablePeeringWithParams_Call{Call: _e.mock.On("DisablePeeringWithParams", ctx, args)}
 }
 
@@ -862,7 +862,7 @@ type NetworkPeeringApi_GetPeeringConnection_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - peerId string
-func (_e *NetworkPeeringApi_Expecter) GetPeeringConnection(ctx interface{}, groupId interface{}, peerId interface{}) *NetworkPeeringApi_GetPeeringConnection_Call {
+func (_e *NetworkPeeringApi_Expecter) GetPeeringConnection(ctx any, groupId any, peerId any) *NetworkPeeringApi_GetPeeringConnection_Call {
 	return &NetworkPeeringApi_GetPeeringConnection_Call{Call: _e.mock.On("GetPeeringConnection", ctx, groupId, peerId)}
 }
 
@@ -929,7 +929,7 @@ type NetworkPeeringApi_GetPeeringConnectionExecute_Call struct {
 
 // GetPeeringConnectionExecute is a helper method to define mock.On call
 //   - r admin.GetPeeringConnectionApiRequest
-func (_e *NetworkPeeringApi_Expecter) GetPeeringConnectionExecute(r interface{}) *NetworkPeeringApi_GetPeeringConnectionExecute_Call {
+func (_e *NetworkPeeringApi_Expecter) GetPeeringConnectionExecute(r any) *NetworkPeeringApi_GetPeeringConnectionExecute_Call {
 	return &NetworkPeeringApi_GetPeeringConnectionExecute_Call{Call: _e.mock.On("GetPeeringConnectionExecute", r)}
 }
 
@@ -976,7 +976,7 @@ type NetworkPeeringApi_GetPeeringConnectionWithParams_Call struct {
 // GetPeeringConnectionWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetPeeringConnectionApiParams
-func (_e *NetworkPeeringApi_Expecter) GetPeeringConnectionWithParams(ctx interface{}, args interface{}) *NetworkPeeringApi_GetPeeringConnectionWithParams_Call {
+func (_e *NetworkPeeringApi_Expecter) GetPeeringConnectionWithParams(ctx any, args any) *NetworkPeeringApi_GetPeeringConnectionWithParams_Call {
 	return &NetworkPeeringApi_GetPeeringConnectionWithParams_Call{Call: _e.mock.On("GetPeeringConnectionWithParams", ctx, args)}
 }
 
@@ -1024,7 +1024,7 @@ type NetworkPeeringApi_GetPeeringContainer_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - containerId string
-func (_e *NetworkPeeringApi_Expecter) GetPeeringContainer(ctx interface{}, groupId interface{}, containerId interface{}) *NetworkPeeringApi_GetPeeringContainer_Call {
+func (_e *NetworkPeeringApi_Expecter) GetPeeringContainer(ctx any, groupId any, containerId any) *NetworkPeeringApi_GetPeeringContainer_Call {
 	return &NetworkPeeringApi_GetPeeringContainer_Call{Call: _e.mock.On("GetPeeringContainer", ctx, groupId, containerId)}
 }
 
@@ -1091,7 +1091,7 @@ type NetworkPeeringApi_GetPeeringContainerExecute_Call struct {
 
 // GetPeeringContainerExecute is a helper method to define mock.On call
 //   - r admin.GetPeeringContainerApiRequest
-func (_e *NetworkPeeringApi_Expecter) GetPeeringContainerExecute(r interface{}) *NetworkPeeringApi_GetPeeringContainerExecute_Call {
+func (_e *NetworkPeeringApi_Expecter) GetPeeringContainerExecute(r any) *NetworkPeeringApi_GetPeeringContainerExecute_Call {
 	return &NetworkPeeringApi_GetPeeringContainerExecute_Call{Call: _e.mock.On("GetPeeringContainerExecute", r)}
 }
 
@@ -1138,7 +1138,7 @@ type NetworkPeeringApi_GetPeeringContainerWithParams_Call struct {
 // GetPeeringContainerWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetPeeringContainerApiParams
-func (_e *NetworkPeeringApi_Expecter) GetPeeringContainerWithParams(ctx interface{}, args interface{}) *NetworkPeeringApi_GetPeeringContainerWithParams_Call {
+func (_e *NetworkPeeringApi_Expecter) GetPeeringContainerWithParams(ctx any, args any) *NetworkPeeringApi_GetPeeringContainerWithParams_Call {
 	return &NetworkPeeringApi_GetPeeringContainerWithParams_Call{Call: _e.mock.On("GetPeeringContainerWithParams", ctx, args)}
 }
 
@@ -1185,7 +1185,7 @@ type NetworkPeeringApi_ListPeeringConnections_Call struct {
 // ListPeeringConnections is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *NetworkPeeringApi_Expecter) ListPeeringConnections(ctx interface{}, groupId interface{}) *NetworkPeeringApi_ListPeeringConnections_Call {
+func (_e *NetworkPeeringApi_Expecter) ListPeeringConnections(ctx any, groupId any) *NetworkPeeringApi_ListPeeringConnections_Call {
 	return &NetworkPeeringApi_ListPeeringConnections_Call{Call: _e.mock.On("ListPeeringConnections", ctx, groupId)}
 }
 
@@ -1252,7 +1252,7 @@ type NetworkPeeringApi_ListPeeringConnectionsExecute_Call struct {
 
 // ListPeeringConnectionsExecute is a helper method to define mock.On call
 //   - r admin.ListPeeringConnectionsApiRequest
-func (_e *NetworkPeeringApi_Expecter) ListPeeringConnectionsExecute(r interface{}) *NetworkPeeringApi_ListPeeringConnectionsExecute_Call {
+func (_e *NetworkPeeringApi_Expecter) ListPeeringConnectionsExecute(r any) *NetworkPeeringApi_ListPeeringConnectionsExecute_Call {
 	return &NetworkPeeringApi_ListPeeringConnectionsExecute_Call{Call: _e.mock.On("ListPeeringConnectionsExecute", r)}
 }
 
@@ -1299,7 +1299,7 @@ type NetworkPeeringApi_ListPeeringConnectionsWithParams_Call struct {
 // ListPeeringConnectionsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListPeeringConnectionsApiParams
-func (_e *NetworkPeeringApi_Expecter) ListPeeringConnectionsWithParams(ctx interface{}, args interface{}) *NetworkPeeringApi_ListPeeringConnectionsWithParams_Call {
+func (_e *NetworkPeeringApi_Expecter) ListPeeringConnectionsWithParams(ctx any, args any) *NetworkPeeringApi_ListPeeringConnectionsWithParams_Call {
 	return &NetworkPeeringApi_ListPeeringConnectionsWithParams_Call{Call: _e.mock.On("ListPeeringConnectionsWithParams", ctx, args)}
 }
 
@@ -1346,7 +1346,7 @@ type NetworkPeeringApi_ListPeeringContainerByCloudProvider_Call struct {
 // ListPeeringContainerByCloudProvider is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *NetworkPeeringApi_Expecter) ListPeeringContainerByCloudProvider(ctx interface{}, groupId interface{}) *NetworkPeeringApi_ListPeeringContainerByCloudProvider_Call {
+func (_e *NetworkPeeringApi_Expecter) ListPeeringContainerByCloudProvider(ctx any, groupId any) *NetworkPeeringApi_ListPeeringContainerByCloudProvider_Call {
 	return &NetworkPeeringApi_ListPeeringContainerByCloudProvider_Call{Call: _e.mock.On("ListPeeringContainerByCloudProvider", ctx, groupId)}
 }
 
@@ -1413,7 +1413,7 @@ type NetworkPeeringApi_ListPeeringContainerByCloudProviderExecute_Call struct {
 
 // ListPeeringContainerByCloudProviderExecute is a helper method to define mock.On call
 //   - r admin.ListPeeringContainerByCloudProviderApiRequest
-func (_e *NetworkPeeringApi_Expecter) ListPeeringContainerByCloudProviderExecute(r interface{}) *NetworkPeeringApi_ListPeeringContainerByCloudProviderExecute_Call {
+func (_e *NetworkPeeringApi_Expecter) ListPeeringContainerByCloudProviderExecute(r any) *NetworkPeeringApi_ListPeeringContainerByCloudProviderExecute_Call {
 	return &NetworkPeeringApi_ListPeeringContainerByCloudProviderExecute_Call{Call: _e.mock.On("ListPeeringContainerByCloudProviderExecute", r)}
 }
 
@@ -1460,7 +1460,7 @@ type NetworkPeeringApi_ListPeeringContainerByCloudProviderWithParams_Call struct
 // ListPeeringContainerByCloudProviderWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListPeeringContainerByCloudProviderApiParams
-func (_e *NetworkPeeringApi_Expecter) ListPeeringContainerByCloudProviderWithParams(ctx interface{}, args interface{}) *NetworkPeeringApi_ListPeeringContainerByCloudProviderWithParams_Call {
+func (_e *NetworkPeeringApi_Expecter) ListPeeringContainerByCloudProviderWithParams(ctx any, args any) *NetworkPeeringApi_ListPeeringContainerByCloudProviderWithParams_Call {
 	return &NetworkPeeringApi_ListPeeringContainerByCloudProviderWithParams_Call{Call: _e.mock.On("ListPeeringContainerByCloudProviderWithParams", ctx, args)}
 }
 
@@ -1507,7 +1507,7 @@ type NetworkPeeringApi_ListPeeringContainers_Call struct {
 // ListPeeringContainers is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *NetworkPeeringApi_Expecter) ListPeeringContainers(ctx interface{}, groupId interface{}) *NetworkPeeringApi_ListPeeringContainers_Call {
+func (_e *NetworkPeeringApi_Expecter) ListPeeringContainers(ctx any, groupId any) *NetworkPeeringApi_ListPeeringContainers_Call {
 	return &NetworkPeeringApi_ListPeeringContainers_Call{Call: _e.mock.On("ListPeeringContainers", ctx, groupId)}
 }
 
@@ -1574,7 +1574,7 @@ type NetworkPeeringApi_ListPeeringContainersExecute_Call struct {
 
 // ListPeeringContainersExecute is a helper method to define mock.On call
 //   - r admin.ListPeeringContainersApiRequest
-func (_e *NetworkPeeringApi_Expecter) ListPeeringContainersExecute(r interface{}) *NetworkPeeringApi_ListPeeringContainersExecute_Call {
+func (_e *NetworkPeeringApi_Expecter) ListPeeringContainersExecute(r any) *NetworkPeeringApi_ListPeeringContainersExecute_Call {
 	return &NetworkPeeringApi_ListPeeringContainersExecute_Call{Call: _e.mock.On("ListPeeringContainersExecute", r)}
 }
 
@@ -1621,7 +1621,7 @@ type NetworkPeeringApi_ListPeeringContainersWithParams_Call struct {
 // ListPeeringContainersWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListPeeringContainersApiParams
-func (_e *NetworkPeeringApi_Expecter) ListPeeringContainersWithParams(ctx interface{}, args interface{}) *NetworkPeeringApi_ListPeeringContainersWithParams_Call {
+func (_e *NetworkPeeringApi_Expecter) ListPeeringContainersWithParams(ctx any, args any) *NetworkPeeringApi_ListPeeringContainersWithParams_Call {
 	return &NetworkPeeringApi_ListPeeringContainersWithParams_Call{Call: _e.mock.On("ListPeeringContainersWithParams", ctx, args)}
 }
 
@@ -1670,7 +1670,7 @@ type NetworkPeeringApi_UpdatePeeringConnection_Call struct {
 //   - groupId string
 //   - peerId string
 //   - baseNetworkPeeringConnectionSettings *admin.BaseNetworkPeeringConnectionSettings
-func (_e *NetworkPeeringApi_Expecter) UpdatePeeringConnection(ctx interface{}, groupId interface{}, peerId interface{}, baseNetworkPeeringConnectionSettings interface{}) *NetworkPeeringApi_UpdatePeeringConnection_Call {
+func (_e *NetworkPeeringApi_Expecter) UpdatePeeringConnection(ctx any, groupId any, peerId any, baseNetworkPeeringConnectionSettings any) *NetworkPeeringApi_UpdatePeeringConnection_Call {
 	return &NetworkPeeringApi_UpdatePeeringConnection_Call{Call: _e.mock.On("UpdatePeeringConnection", ctx, groupId, peerId, baseNetworkPeeringConnectionSettings)}
 }
 
@@ -1737,7 +1737,7 @@ type NetworkPeeringApi_UpdatePeeringConnectionExecute_Call struct {
 
 // UpdatePeeringConnectionExecute is a helper method to define mock.On call
 //   - r admin.UpdatePeeringConnectionApiRequest
-func (_e *NetworkPeeringApi_Expecter) UpdatePeeringConnectionExecute(r interface{}) *NetworkPeeringApi_UpdatePeeringConnectionExecute_Call {
+func (_e *NetworkPeeringApi_Expecter) UpdatePeeringConnectionExecute(r any) *NetworkPeeringApi_UpdatePeeringConnectionExecute_Call {
 	return &NetworkPeeringApi_UpdatePeeringConnectionExecute_Call{Call: _e.mock.On("UpdatePeeringConnectionExecute", r)}
 }
 
@@ -1784,7 +1784,7 @@ type NetworkPeeringApi_UpdatePeeringConnectionWithParams_Call struct {
 // UpdatePeeringConnectionWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.UpdatePeeringConnectionApiParams
-func (_e *NetworkPeeringApi_Expecter) UpdatePeeringConnectionWithParams(ctx interface{}, args interface{}) *NetworkPeeringApi_UpdatePeeringConnectionWithParams_Call {
+func (_e *NetworkPeeringApi_Expecter) UpdatePeeringConnectionWithParams(ctx any, args any) *NetworkPeeringApi_UpdatePeeringConnectionWithParams_Call {
 	return &NetworkPeeringApi_UpdatePeeringConnectionWithParams_Call{Call: _e.mock.On("UpdatePeeringConnectionWithParams", ctx, args)}
 }
 
@@ -1833,7 +1833,7 @@ type NetworkPeeringApi_UpdatePeeringContainer_Call struct {
 //   - groupId string
 //   - containerId string
 //   - cloudProviderContainer *admin.CloudProviderContainer
-func (_e *NetworkPeeringApi_Expecter) UpdatePeeringContainer(ctx interface{}, groupId interface{}, containerId interface{}, cloudProviderContainer interface{}) *NetworkPeeringApi_UpdatePeeringContainer_Call {
+func (_e *NetworkPeeringApi_Expecter) UpdatePeeringContainer(ctx any, groupId any, containerId any, cloudProviderContainer any) *NetworkPeeringApi_UpdatePeeringContainer_Call {
 	return &NetworkPeeringApi_UpdatePeeringContainer_Call{Call: _e.mock.On("UpdatePeeringContainer", ctx, groupId, containerId, cloudProviderContainer)}
 }
 
@@ -1900,7 +1900,7 @@ type NetworkPeeringApi_UpdatePeeringContainerExecute_Call struct {
 
 // UpdatePeeringContainerExecute is a helper method to define mock.On call
 //   - r admin.UpdatePeeringContainerApiRequest
-func (_e *NetworkPeeringApi_Expecter) UpdatePeeringContainerExecute(r interface{}) *NetworkPeeringApi_UpdatePeeringContainerExecute_Call {
+func (_e *NetworkPeeringApi_Expecter) UpdatePeeringContainerExecute(r any) *NetworkPeeringApi_UpdatePeeringContainerExecute_Call {
 	return &NetworkPeeringApi_UpdatePeeringContainerExecute_Call{Call: _e.mock.On("UpdatePeeringContainerExecute", r)}
 }
 
@@ -1947,7 +1947,7 @@ type NetworkPeeringApi_UpdatePeeringContainerWithParams_Call struct {
 // UpdatePeeringContainerWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.UpdatePeeringContainerApiParams
-func (_e *NetworkPeeringApi_Expecter) UpdatePeeringContainerWithParams(ctx interface{}, args interface{}) *NetworkPeeringApi_UpdatePeeringContainerWithParams_Call {
+func (_e *NetworkPeeringApi_Expecter) UpdatePeeringContainerWithParams(ctx any, args any) *NetworkPeeringApi_UpdatePeeringContainerWithParams_Call {
 	return &NetworkPeeringApi_UpdatePeeringContainerWithParams_Call{Call: _e.mock.On("UpdatePeeringContainerWithParams", ctx, args)}
 }
 
@@ -1994,7 +1994,7 @@ type NetworkPeeringApi_VerifyConnectViaPeeringOnlyModeForOneProject_Call struct 
 // VerifyConnectViaPeeringOnlyModeForOneProject is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *NetworkPeeringApi_Expecter) VerifyConnectViaPeeringOnlyModeForOneProject(ctx interface{}, groupId interface{}) *NetworkPeeringApi_VerifyConnectViaPeeringOnlyModeForOneProject_Call {
+func (_e *NetworkPeeringApi_Expecter) VerifyConnectViaPeeringOnlyModeForOneProject(ctx any, groupId any) *NetworkPeeringApi_VerifyConnectViaPeeringOnlyModeForOneProject_Call {
 	return &NetworkPeeringApi_VerifyConnectViaPeeringOnlyModeForOneProject_Call{Call: _e.mock.On("VerifyConnectViaPeeringOnlyModeForOneProject", ctx, groupId)}
 }
 
@@ -2061,7 +2061,7 @@ type NetworkPeeringApi_VerifyConnectViaPeeringOnlyModeForOneProjectExecute_Call 
 
 // VerifyConnectViaPeeringOnlyModeForOneProjectExecute is a helper method to define mock.On call
 //   - r admin.VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest
-func (_e *NetworkPeeringApi_Expecter) VerifyConnectViaPeeringOnlyModeForOneProjectExecute(r interface{}) *NetworkPeeringApi_VerifyConnectViaPeeringOnlyModeForOneProjectExecute_Call {
+func (_e *NetworkPeeringApi_Expecter) VerifyConnectViaPeeringOnlyModeForOneProjectExecute(r any) *NetworkPeeringApi_VerifyConnectViaPeeringOnlyModeForOneProjectExecute_Call {
 	return &NetworkPeeringApi_VerifyConnectViaPeeringOnlyModeForOneProjectExecute_Call{Call: _e.mock.On("VerifyConnectViaPeeringOnlyModeForOneProjectExecute", r)}
 }
 
@@ -2108,7 +2108,7 @@ type NetworkPeeringApi_VerifyConnectViaPeeringOnlyModeForOneProjectWithParams_Ca
 // VerifyConnectViaPeeringOnlyModeForOneProjectWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.VerifyConnectViaPeeringOnlyModeForOneProjectApiParams
-func (_e *NetworkPeeringApi_Expecter) VerifyConnectViaPeeringOnlyModeForOneProjectWithParams(ctx interface{}, args interface{}) *NetworkPeeringApi_VerifyConnectViaPeeringOnlyModeForOneProjectWithParams_Call {
+func (_e *NetworkPeeringApi_Expecter) VerifyConnectViaPeeringOnlyModeForOneProjectWithParams(ctx any, args any) *NetworkPeeringApi_VerifyConnectViaPeeringOnlyModeForOneProjectWithParams_Call {
 	return &NetworkPeeringApi_VerifyConnectViaPeeringOnlyModeForOneProjectWithParams_Call{Call: _e.mock.On("VerifyConnectViaPeeringOnlyModeForOneProjectWithParams", ctx, args)}
 }
 

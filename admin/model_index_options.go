@@ -29,15 +29,15 @@ type IndexOptions struct {
 	// Human-readable label that identifies this index. This option applies to all index types.
 	Name *string `json:"name,omitempty"`
 	// Rules that limit the documents that the index references to a filter expression. All MongoDB index types accept a **partialFilterExpression** option. **partialFilterExpression** can include following expressions:  - equality (`\"parameter\" : \"value\"` or using the `$eq` operator) - `\"$exists\": true` , maximum: `$gt`, `$gte`, `$lt`, `$lte` comparisons - `$type` - `$and` (top-level only)  This option applies to all index types.
-	PartialFilterExpression interface{} `json:"partialFilterExpression,omitempty"`
+	PartialFilterExpression any `json:"partialFilterExpression,omitempty"`
 	// Flag that indicates whether the index references documents that only have the specified parameter. These indexes use less space but behave differently in some situations like when sorting. The following index types default to sparse and ignore this option: `2dsphere`, `2d`, `geoHaystack`, `text`.  Compound indexes that includes one or more indexes with `2dsphere` keys alongside other key types, only the `2dsphere` index parameters determine which documents the index references. If you run MongoDB 3.2 or later, use partial indexes. This option applies to all index types.
 	Sparse *bool `json:"sparse,omitempty"`
 	// Storage engine set for the specific index. This value can be set only at creation. This option uses the following format: `\"storageEngine\" : { \"<storage-engine-name>\" : \"<options>\" }` MongoDB validates storage engine configuration options when creating indexes. To support replica sets with members with different storage engines, MongoDB logs these options to the oplog during replication. This option applies to all index types.
-	StorageEngine interface{} `json:"storageEngine,omitempty"`
+	StorageEngine any `json:"storageEngine,omitempty"`
 	// Version applied to this text index. MongoDB 3.2 and later use version `3`. Use this option to override the default version number. This option applies to the **text** index type only.
 	TextIndexVersion *int `json:"textIndexVersion,omitempty"`
 	// Relative importance to place upon provided index parameters. This object expresses this as key/value pairs of index parameter and weight to apply to that parameter. You can specify weights for some or all the indexed parameters. The weight must be an integer between 1 and 99,999. MongoDB 5.0 and later can apply **weights** to **text** indexes only.
-	Weights interface{} `json:"weights,omitempty"`
+	Weights any `json:"weights,omitempty"`
 }
 
 // NewIndexOptions instantiates a new IndexOptions object
@@ -494,9 +494,9 @@ func (o *IndexOptions) SetName(v string) {
 }
 
 // GetPartialFilterExpression returns the PartialFilterExpression field value if set, zero value otherwise
-func (o *IndexOptions) GetPartialFilterExpression() interface{} {
+func (o *IndexOptions) GetPartialFilterExpression() any {
 	if o == nil || IsNil(o.PartialFilterExpression) {
-		var ret interface{}
+		var ret any
 		return ret
 	}
 	return o.PartialFilterExpression
@@ -504,9 +504,9 @@ func (o *IndexOptions) GetPartialFilterExpression() interface{} {
 
 // GetPartialFilterExpressionOk returns a tuple with the PartialFilterExpression field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IndexOptions) GetPartialFilterExpressionOk() (interface{}, bool) {
+func (o *IndexOptions) GetPartialFilterExpressionOk() (any, bool) {
 	if o == nil || IsNil(o.PartialFilterExpression) {
-		var ret interface{}
+		var ret any
 		return ret, false
 	}
 
@@ -522,8 +522,8 @@ func (o *IndexOptions) HasPartialFilterExpression() bool {
 	return false
 }
 
-// SetPartialFilterExpression gets a reference to the given interface{} and assigns it to the PartialFilterExpression field.
-func (o *IndexOptions) SetPartialFilterExpression(v interface{}) {
+// SetPartialFilterExpression gets a reference to the given any and assigns it to the PartialFilterExpression field.
+func (o *IndexOptions) SetPartialFilterExpression(v any) {
 	o.PartialFilterExpression = v
 }
 
@@ -561,9 +561,9 @@ func (o *IndexOptions) SetSparse(v bool) {
 }
 
 // GetStorageEngine returns the StorageEngine field value if set, zero value otherwise
-func (o *IndexOptions) GetStorageEngine() interface{} {
+func (o *IndexOptions) GetStorageEngine() any {
 	if o == nil || IsNil(o.StorageEngine) {
-		var ret interface{}
+		var ret any
 		return ret
 	}
 	return o.StorageEngine
@@ -571,9 +571,9 @@ func (o *IndexOptions) GetStorageEngine() interface{} {
 
 // GetStorageEngineOk returns a tuple with the StorageEngine field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IndexOptions) GetStorageEngineOk() (interface{}, bool) {
+func (o *IndexOptions) GetStorageEngineOk() (any, bool) {
 	if o == nil || IsNil(o.StorageEngine) {
-		var ret interface{}
+		var ret any
 		return ret, false
 	}
 
@@ -589,8 +589,8 @@ func (o *IndexOptions) HasStorageEngine() bool {
 	return false
 }
 
-// SetStorageEngine gets a reference to the given interface{} and assigns it to the StorageEngine field.
-func (o *IndexOptions) SetStorageEngine(v interface{}) {
+// SetStorageEngine gets a reference to the given any and assigns it to the StorageEngine field.
+func (o *IndexOptions) SetStorageEngine(v any) {
 	o.StorageEngine = v
 }
 
@@ -628,9 +628,9 @@ func (o *IndexOptions) SetTextIndexVersion(v int) {
 }
 
 // GetWeights returns the Weights field value if set, zero value otherwise
-func (o *IndexOptions) GetWeights() interface{} {
+func (o *IndexOptions) GetWeights() any {
 	if o == nil || IsNil(o.Weights) {
-		var ret interface{}
+		var ret any
 		return ret
 	}
 	return o.Weights
@@ -638,9 +638,9 @@ func (o *IndexOptions) GetWeights() interface{} {
 
 // GetWeightsOk returns a tuple with the Weights field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IndexOptions) GetWeightsOk() (interface{}, bool) {
+func (o *IndexOptions) GetWeightsOk() (any, bool) {
 	if o == nil || IsNil(o.Weights) {
-		var ret interface{}
+		var ret any
 		return ret, false
 	}
 
@@ -656,7 +656,7 @@ func (o *IndexOptions) HasWeights() bool {
 	return false
 }
 
-// SetWeights gets a reference to the given interface{} and assigns it to the Weights field.
-func (o *IndexOptions) SetWeights(v interface{}) {
+// SetWeights gets a reference to the given any and assigns it to the Weights field.
+func (o *IndexOptions) SetWeights(v any) {
 	o.Weights = v
 }

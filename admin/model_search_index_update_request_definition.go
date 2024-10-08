@@ -12,11 +12,11 @@ type SearchIndexUpdateRequestDefinition struct {
 	// Method applied to identify words when searching this index.
 	SearchAnalyzer *string `json:"searchAnalyzer,omitempty"`
 	// Flag that indicates whether to store all fields (true) on Atlas Search. By default, Atlas doesn't store (false) the fields on Atlas Search.  Alternatively, you can specify an object that only contains the list of fields to store (include) or not store (exclude) on Atlas Search. To learn more, see Stored Source Fields.
-	StoredSource interface{} `json:"storedSource,omitempty"`
+	StoredSource any `json:"storedSource,omitempty"`
 	// Rule sets that map words to their synonyms in this index.
 	Synonyms *[]SearchSynonymMappingDefinition `json:"synonyms,omitempty"`
 	// Settings that configure the fields, one per object, to index. You must define at least one \"vector\" type field. You can optionally define \"filter\" type fields also.
-	Fields *[]interface{} `json:"fields,omitempty"`
+	Fields *[]any `json:"fields,omitempty"`
 }
 
 // NewSearchIndexUpdateRequestDefinition instantiates a new SearchIndexUpdateRequestDefinition object
@@ -177,9 +177,9 @@ func (o *SearchIndexUpdateRequestDefinition) SetSearchAnalyzer(v string) {
 }
 
 // GetStoredSource returns the StoredSource field value if set, zero value otherwise
-func (o *SearchIndexUpdateRequestDefinition) GetStoredSource() interface{} {
+func (o *SearchIndexUpdateRequestDefinition) GetStoredSource() any {
 	if o == nil || IsNil(o.StoredSource) {
-		var ret interface{}
+		var ret any
 		return ret
 	}
 	return o.StoredSource
@@ -187,9 +187,9 @@ func (o *SearchIndexUpdateRequestDefinition) GetStoredSource() interface{} {
 
 // GetStoredSourceOk returns a tuple with the StoredSource field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SearchIndexUpdateRequestDefinition) GetStoredSourceOk() (interface{}, bool) {
+func (o *SearchIndexUpdateRequestDefinition) GetStoredSourceOk() (any, bool) {
 	if o == nil || IsNil(o.StoredSource) {
-		var ret interface{}
+		var ret any
 		return ret, false
 	}
 
@@ -205,8 +205,8 @@ func (o *SearchIndexUpdateRequestDefinition) HasStoredSource() bool {
 	return false
 }
 
-// SetStoredSource gets a reference to the given interface{} and assigns it to the StoredSource field.
-func (o *SearchIndexUpdateRequestDefinition) SetStoredSource(v interface{}) {
+// SetStoredSource gets a reference to the given any and assigns it to the StoredSource field.
+func (o *SearchIndexUpdateRequestDefinition) SetStoredSource(v any) {
 	o.StoredSource = v
 }
 
@@ -244,9 +244,9 @@ func (o *SearchIndexUpdateRequestDefinition) SetSynonyms(v []SearchSynonymMappin
 }
 
 // GetFields returns the Fields field value if set, zero value otherwise
-func (o *SearchIndexUpdateRequestDefinition) GetFields() []interface{} {
+func (o *SearchIndexUpdateRequestDefinition) GetFields() []any {
 	if o == nil || IsNil(o.Fields) {
-		var ret []interface{}
+		var ret []any
 		return ret
 	}
 	return *o.Fields
@@ -254,7 +254,7 @@ func (o *SearchIndexUpdateRequestDefinition) GetFields() []interface{} {
 
 // GetFieldsOk returns a tuple with the Fields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SearchIndexUpdateRequestDefinition) GetFieldsOk() (*[]interface{}, bool) {
+func (o *SearchIndexUpdateRequestDefinition) GetFieldsOk() (*[]any, bool) {
 	if o == nil || IsNil(o.Fields) {
 		return nil, false
 	}
@@ -271,7 +271,7 @@ func (o *SearchIndexUpdateRequestDefinition) HasFields() bool {
 	return false
 }
 
-// SetFields gets a reference to the given []interface{} and assigns it to the Fields field.
-func (o *SearchIndexUpdateRequestDefinition) SetFields(v []interface{}) {
+// SetFields gets a reference to the given []any and assigns it to the Fields field.
+func (o *SearchIndexUpdateRequestDefinition) SetFields(v []any) {
 	o.Fields = &v
 }

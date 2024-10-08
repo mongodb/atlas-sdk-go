@@ -6,7 +6,7 @@ package admin
 type ShardKeys struct {
 	// List of fields to use for the shard key.
 	// Write only field.
-	Key *[]interface{} `json:"key,omitempty"`
+	Key *[]any `json:"key,omitempty"`
 }
 
 // NewShardKeys instantiates a new ShardKeys object
@@ -27,9 +27,9 @@ func NewShardKeysWithDefaults() *ShardKeys {
 }
 
 // GetKey returns the Key field value if set, zero value otherwise
-func (o *ShardKeys) GetKey() []interface{} {
+func (o *ShardKeys) GetKey() []any {
 	if o == nil || IsNil(o.Key) {
-		var ret []interface{}
+		var ret []any
 		return ret
 	}
 	return *o.Key
@@ -37,7 +37,7 @@ func (o *ShardKeys) GetKey() []interface{} {
 
 // GetKeyOk returns a tuple with the Key field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ShardKeys) GetKeyOk() (*[]interface{}, bool) {
+func (o *ShardKeys) GetKeyOk() (*[]any, bool) {
 	if o == nil || IsNil(o.Key) {
 		return nil, false
 	}
@@ -54,7 +54,7 @@ func (o *ShardKeys) HasKey() bool {
 	return false
 }
 
-// SetKey gets a reference to the given []interface{} and assigns it to the Key field.
-func (o *ShardKeys) SetKey(v []interface{}) {
+// SetKey gets a reference to the given []any and assigns it to the Key field.
+func (o *ShardKeys) SetKey(v []any) {
 	o.Key = &v
 }

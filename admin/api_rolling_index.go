@@ -92,7 +92,7 @@ func (a *RollingIndexApiService) CreateRollingIndex(ctx context.Context, groupId
 func (a *RollingIndexApiService) CreateRollingIndexExecute(r CreateRollingIndexApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
+		localVarPostBody   any
 		formFiles          []formFile
 	)
 

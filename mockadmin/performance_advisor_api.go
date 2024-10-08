@@ -51,7 +51,7 @@ type PerformanceAdvisorApi_DisableSlowOperationThresholding_Call struct {
 // DisableSlowOperationThresholding is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *PerformanceAdvisorApi_Expecter) DisableSlowOperationThresholding(ctx interface{}, groupId interface{}) *PerformanceAdvisorApi_DisableSlowOperationThresholding_Call {
+func (_e *PerformanceAdvisorApi_Expecter) DisableSlowOperationThresholding(ctx any, groupId any) *PerformanceAdvisorApi_DisableSlowOperationThresholding_Call {
 	return &PerformanceAdvisorApi_DisableSlowOperationThresholding_Call{Call: _e.mock.On("DisableSlowOperationThresholding", ctx, groupId)}
 }
 
@@ -109,7 +109,7 @@ type PerformanceAdvisorApi_DisableSlowOperationThresholdingExecute_Call struct {
 
 // DisableSlowOperationThresholdingExecute is a helper method to define mock.On call
 //   - r admin.DisableSlowOperationThresholdingApiRequest
-func (_e *PerformanceAdvisorApi_Expecter) DisableSlowOperationThresholdingExecute(r interface{}) *PerformanceAdvisorApi_DisableSlowOperationThresholdingExecute_Call {
+func (_e *PerformanceAdvisorApi_Expecter) DisableSlowOperationThresholdingExecute(r any) *PerformanceAdvisorApi_DisableSlowOperationThresholdingExecute_Call {
 	return &PerformanceAdvisorApi_DisableSlowOperationThresholdingExecute_Call{Call: _e.mock.On("DisableSlowOperationThresholdingExecute", r)}
 }
 
@@ -156,7 +156,7 @@ type PerformanceAdvisorApi_DisableSlowOperationThresholdingWithParams_Call struc
 // DisableSlowOperationThresholdingWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.DisableSlowOperationThresholdingApiParams
-func (_e *PerformanceAdvisorApi_Expecter) DisableSlowOperationThresholdingWithParams(ctx interface{}, args interface{}) *PerformanceAdvisorApi_DisableSlowOperationThresholdingWithParams_Call {
+func (_e *PerformanceAdvisorApi_Expecter) DisableSlowOperationThresholdingWithParams(ctx any, args any) *PerformanceAdvisorApi_DisableSlowOperationThresholdingWithParams_Call {
 	return &PerformanceAdvisorApi_DisableSlowOperationThresholdingWithParams_Call{Call: _e.mock.On("DisableSlowOperationThresholdingWithParams", ctx, args)}
 }
 
@@ -203,7 +203,7 @@ type PerformanceAdvisorApi_EnableSlowOperationThresholding_Call struct {
 // EnableSlowOperationThresholding is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *PerformanceAdvisorApi_Expecter) EnableSlowOperationThresholding(ctx interface{}, groupId interface{}) *PerformanceAdvisorApi_EnableSlowOperationThresholding_Call {
+func (_e *PerformanceAdvisorApi_Expecter) EnableSlowOperationThresholding(ctx any, groupId any) *PerformanceAdvisorApi_EnableSlowOperationThresholding_Call {
 	return &PerformanceAdvisorApi_EnableSlowOperationThresholding_Call{Call: _e.mock.On("EnableSlowOperationThresholding", ctx, groupId)}
 }
 
@@ -261,7 +261,7 @@ type PerformanceAdvisorApi_EnableSlowOperationThresholdingExecute_Call struct {
 
 // EnableSlowOperationThresholdingExecute is a helper method to define mock.On call
 //   - r admin.EnableSlowOperationThresholdingApiRequest
-func (_e *PerformanceAdvisorApi_Expecter) EnableSlowOperationThresholdingExecute(r interface{}) *PerformanceAdvisorApi_EnableSlowOperationThresholdingExecute_Call {
+func (_e *PerformanceAdvisorApi_Expecter) EnableSlowOperationThresholdingExecute(r any) *PerformanceAdvisorApi_EnableSlowOperationThresholdingExecute_Call {
 	return &PerformanceAdvisorApi_EnableSlowOperationThresholdingExecute_Call{Call: _e.mock.On("EnableSlowOperationThresholdingExecute", r)}
 }
 
@@ -308,7 +308,7 @@ type PerformanceAdvisorApi_EnableSlowOperationThresholdingWithParams_Call struct
 // EnableSlowOperationThresholdingWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.EnableSlowOperationThresholdingApiParams
-func (_e *PerformanceAdvisorApi_Expecter) EnableSlowOperationThresholdingWithParams(ctx interface{}, args interface{}) *PerformanceAdvisorApi_EnableSlowOperationThresholdingWithParams_Call {
+func (_e *PerformanceAdvisorApi_Expecter) EnableSlowOperationThresholdingWithParams(ctx any, args any) *PerformanceAdvisorApi_EnableSlowOperationThresholdingWithParams_Call {
 	return &PerformanceAdvisorApi_EnableSlowOperationThresholdingWithParams_Call{Call: _e.mock.On("EnableSlowOperationThresholdingWithParams", ctx, args)}
 }
 
@@ -355,7 +355,7 @@ type PerformanceAdvisorApi_GetManagedSlowMs_Call struct {
 // GetManagedSlowMs is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *PerformanceAdvisorApi_Expecter) GetManagedSlowMs(ctx interface{}, groupId interface{}) *PerformanceAdvisorApi_GetManagedSlowMs_Call {
+func (_e *PerformanceAdvisorApi_Expecter) GetManagedSlowMs(ctx any, groupId any) *PerformanceAdvisorApi_GetManagedSlowMs_Call {
 	return &PerformanceAdvisorApi_GetManagedSlowMs_Call{Call: _e.mock.On("GetManagedSlowMs", ctx, groupId)}
 }
 
@@ -413,7 +413,7 @@ type PerformanceAdvisorApi_GetManagedSlowMsExecute_Call struct {
 
 // GetManagedSlowMsExecute is a helper method to define mock.On call
 //   - r admin.GetManagedSlowMsApiRequest
-func (_e *PerformanceAdvisorApi_Expecter) GetManagedSlowMsExecute(r interface{}) *PerformanceAdvisorApi_GetManagedSlowMsExecute_Call {
+func (_e *PerformanceAdvisorApi_Expecter) GetManagedSlowMsExecute(r any) *PerformanceAdvisorApi_GetManagedSlowMsExecute_Call {
 	return &PerformanceAdvisorApi_GetManagedSlowMsExecute_Call{Call: _e.mock.On("GetManagedSlowMsExecute", r)}
 }
 
@@ -460,7 +460,7 @@ type PerformanceAdvisorApi_GetManagedSlowMsWithParams_Call struct {
 // GetManagedSlowMsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetManagedSlowMsApiParams
-func (_e *PerformanceAdvisorApi_Expecter) GetManagedSlowMsWithParams(ctx interface{}, args interface{}) *PerformanceAdvisorApi_GetManagedSlowMsWithParams_Call {
+func (_e *PerformanceAdvisorApi_Expecter) GetManagedSlowMsWithParams(ctx any, args any) *PerformanceAdvisorApi_GetManagedSlowMsWithParams_Call {
 	return &PerformanceAdvisorApi_GetManagedSlowMsWithParams_Call{Call: _e.mock.On("GetManagedSlowMsWithParams", ctx, args)}
 }
 
@@ -508,7 +508,7 @@ type PerformanceAdvisorApi_GetServerlessAutoIndexing_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
-func (_e *PerformanceAdvisorApi_Expecter) GetServerlessAutoIndexing(ctx interface{}, groupId interface{}, clusterName interface{}) *PerformanceAdvisorApi_GetServerlessAutoIndexing_Call {
+func (_e *PerformanceAdvisorApi_Expecter) GetServerlessAutoIndexing(ctx any, groupId any, clusterName any) *PerformanceAdvisorApi_GetServerlessAutoIndexing_Call {
 	return &PerformanceAdvisorApi_GetServerlessAutoIndexing_Call{Call: _e.mock.On("GetServerlessAutoIndexing", ctx, groupId, clusterName)}
 }
 
@@ -573,7 +573,7 @@ type PerformanceAdvisorApi_GetServerlessAutoIndexingExecute_Call struct {
 
 // GetServerlessAutoIndexingExecute is a helper method to define mock.On call
 //   - r admin.GetServerlessAutoIndexingApiRequest
-func (_e *PerformanceAdvisorApi_Expecter) GetServerlessAutoIndexingExecute(r interface{}) *PerformanceAdvisorApi_GetServerlessAutoIndexingExecute_Call {
+func (_e *PerformanceAdvisorApi_Expecter) GetServerlessAutoIndexingExecute(r any) *PerformanceAdvisorApi_GetServerlessAutoIndexingExecute_Call {
 	return &PerformanceAdvisorApi_GetServerlessAutoIndexingExecute_Call{Call: _e.mock.On("GetServerlessAutoIndexingExecute", r)}
 }
 
@@ -620,7 +620,7 @@ type PerformanceAdvisorApi_GetServerlessAutoIndexingWithParams_Call struct {
 // GetServerlessAutoIndexingWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetServerlessAutoIndexingApiParams
-func (_e *PerformanceAdvisorApi_Expecter) GetServerlessAutoIndexingWithParams(ctx interface{}, args interface{}) *PerformanceAdvisorApi_GetServerlessAutoIndexingWithParams_Call {
+func (_e *PerformanceAdvisorApi_Expecter) GetServerlessAutoIndexingWithParams(ctx any, args any) *PerformanceAdvisorApi_GetServerlessAutoIndexingWithParams_Call {
 	return &PerformanceAdvisorApi_GetServerlessAutoIndexingWithParams_Call{Call: _e.mock.On("GetServerlessAutoIndexingWithParams", ctx, args)}
 }
 
@@ -668,7 +668,7 @@ type PerformanceAdvisorApi_ListSlowQueries_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - processId string
-func (_e *PerformanceAdvisorApi_Expecter) ListSlowQueries(ctx interface{}, groupId interface{}, processId interface{}) *PerformanceAdvisorApi_ListSlowQueries_Call {
+func (_e *PerformanceAdvisorApi_Expecter) ListSlowQueries(ctx any, groupId any, processId any) *PerformanceAdvisorApi_ListSlowQueries_Call {
 	return &PerformanceAdvisorApi_ListSlowQueries_Call{Call: _e.mock.On("ListSlowQueries", ctx, groupId, processId)}
 }
 
@@ -735,7 +735,7 @@ type PerformanceAdvisorApi_ListSlowQueriesExecute_Call struct {
 
 // ListSlowQueriesExecute is a helper method to define mock.On call
 //   - r admin.ListSlowQueriesApiRequest
-func (_e *PerformanceAdvisorApi_Expecter) ListSlowQueriesExecute(r interface{}) *PerformanceAdvisorApi_ListSlowQueriesExecute_Call {
+func (_e *PerformanceAdvisorApi_Expecter) ListSlowQueriesExecute(r any) *PerformanceAdvisorApi_ListSlowQueriesExecute_Call {
 	return &PerformanceAdvisorApi_ListSlowQueriesExecute_Call{Call: _e.mock.On("ListSlowQueriesExecute", r)}
 }
 
@@ -782,7 +782,7 @@ type PerformanceAdvisorApi_ListSlowQueriesWithParams_Call struct {
 // ListSlowQueriesWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListSlowQueriesApiParams
-func (_e *PerformanceAdvisorApi_Expecter) ListSlowQueriesWithParams(ctx interface{}, args interface{}) *PerformanceAdvisorApi_ListSlowQueriesWithParams_Call {
+func (_e *PerformanceAdvisorApi_Expecter) ListSlowQueriesWithParams(ctx any, args any) *PerformanceAdvisorApi_ListSlowQueriesWithParams_Call {
 	return &PerformanceAdvisorApi_ListSlowQueriesWithParams_Call{Call: _e.mock.On("ListSlowQueriesWithParams", ctx, args)}
 }
 
@@ -830,7 +830,7 @@ type PerformanceAdvisorApi_ListSlowQueryNamespaces_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - processId string
-func (_e *PerformanceAdvisorApi_Expecter) ListSlowQueryNamespaces(ctx interface{}, groupId interface{}, processId interface{}) *PerformanceAdvisorApi_ListSlowQueryNamespaces_Call {
+func (_e *PerformanceAdvisorApi_Expecter) ListSlowQueryNamespaces(ctx any, groupId any, processId any) *PerformanceAdvisorApi_ListSlowQueryNamespaces_Call {
 	return &PerformanceAdvisorApi_ListSlowQueryNamespaces_Call{Call: _e.mock.On("ListSlowQueryNamespaces", ctx, groupId, processId)}
 }
 
@@ -897,7 +897,7 @@ type PerformanceAdvisorApi_ListSlowQueryNamespacesExecute_Call struct {
 
 // ListSlowQueryNamespacesExecute is a helper method to define mock.On call
 //   - r admin.ListSlowQueryNamespacesApiRequest
-func (_e *PerformanceAdvisorApi_Expecter) ListSlowQueryNamespacesExecute(r interface{}) *PerformanceAdvisorApi_ListSlowQueryNamespacesExecute_Call {
+func (_e *PerformanceAdvisorApi_Expecter) ListSlowQueryNamespacesExecute(r any) *PerformanceAdvisorApi_ListSlowQueryNamespacesExecute_Call {
 	return &PerformanceAdvisorApi_ListSlowQueryNamespacesExecute_Call{Call: _e.mock.On("ListSlowQueryNamespacesExecute", r)}
 }
 
@@ -944,7 +944,7 @@ type PerformanceAdvisorApi_ListSlowQueryNamespacesWithParams_Call struct {
 // ListSlowQueryNamespacesWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListSlowQueryNamespacesApiParams
-func (_e *PerformanceAdvisorApi_Expecter) ListSlowQueryNamespacesWithParams(ctx interface{}, args interface{}) *PerformanceAdvisorApi_ListSlowQueryNamespacesWithParams_Call {
+func (_e *PerformanceAdvisorApi_Expecter) ListSlowQueryNamespacesWithParams(ctx any, args any) *PerformanceAdvisorApi_ListSlowQueryNamespacesWithParams_Call {
 	return &PerformanceAdvisorApi_ListSlowQueryNamespacesWithParams_Call{Call: _e.mock.On("ListSlowQueryNamespacesWithParams", ctx, args)}
 }
 
@@ -992,7 +992,7 @@ type PerformanceAdvisorApi_ListSuggestedIndexes_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - processId string
-func (_e *PerformanceAdvisorApi_Expecter) ListSuggestedIndexes(ctx interface{}, groupId interface{}, processId interface{}) *PerformanceAdvisorApi_ListSuggestedIndexes_Call {
+func (_e *PerformanceAdvisorApi_Expecter) ListSuggestedIndexes(ctx any, groupId any, processId any) *PerformanceAdvisorApi_ListSuggestedIndexes_Call {
 	return &PerformanceAdvisorApi_ListSuggestedIndexes_Call{Call: _e.mock.On("ListSuggestedIndexes", ctx, groupId, processId)}
 }
 
@@ -1059,7 +1059,7 @@ type PerformanceAdvisorApi_ListSuggestedIndexesExecute_Call struct {
 
 // ListSuggestedIndexesExecute is a helper method to define mock.On call
 //   - r admin.ListSuggestedIndexesApiRequest
-func (_e *PerformanceAdvisorApi_Expecter) ListSuggestedIndexesExecute(r interface{}) *PerformanceAdvisorApi_ListSuggestedIndexesExecute_Call {
+func (_e *PerformanceAdvisorApi_Expecter) ListSuggestedIndexesExecute(r any) *PerformanceAdvisorApi_ListSuggestedIndexesExecute_Call {
 	return &PerformanceAdvisorApi_ListSuggestedIndexesExecute_Call{Call: _e.mock.On("ListSuggestedIndexesExecute", r)}
 }
 
@@ -1106,7 +1106,7 @@ type PerformanceAdvisorApi_ListSuggestedIndexesWithParams_Call struct {
 // ListSuggestedIndexesWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListSuggestedIndexesApiParams
-func (_e *PerformanceAdvisorApi_Expecter) ListSuggestedIndexesWithParams(ctx interface{}, args interface{}) *PerformanceAdvisorApi_ListSuggestedIndexesWithParams_Call {
+func (_e *PerformanceAdvisorApi_Expecter) ListSuggestedIndexesWithParams(ctx any, args any) *PerformanceAdvisorApi_ListSuggestedIndexesWithParams_Call {
 	return &PerformanceAdvisorApi_ListSuggestedIndexesWithParams_Call{Call: _e.mock.On("ListSuggestedIndexesWithParams", ctx, args)}
 }
 
@@ -1154,7 +1154,7 @@ type PerformanceAdvisorApi_SetServerlessAutoIndexing_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
-func (_e *PerformanceAdvisorApi_Expecter) SetServerlessAutoIndexing(ctx interface{}, groupId interface{}, clusterName interface{}) *PerformanceAdvisorApi_SetServerlessAutoIndexing_Call {
+func (_e *PerformanceAdvisorApi_Expecter) SetServerlessAutoIndexing(ctx any, groupId any, clusterName any) *PerformanceAdvisorApi_SetServerlessAutoIndexing_Call {
 	return &PerformanceAdvisorApi_SetServerlessAutoIndexing_Call{Call: _e.mock.On("SetServerlessAutoIndexing", ctx, groupId, clusterName)}
 }
 
@@ -1176,24 +1176,24 @@ func (_c *PerformanceAdvisorApi_SetServerlessAutoIndexing_Call) RunAndReturn(run
 }
 
 // SetServerlessAutoIndexingExecute provides a mock function with given fields: r
-func (_m *PerformanceAdvisorApi) SetServerlessAutoIndexingExecute(r admin.SetServerlessAutoIndexingApiRequest) (interface{}, *http.Response, error) {
+func (_m *PerformanceAdvisorApi) SetServerlessAutoIndexingExecute(r admin.SetServerlessAutoIndexingApiRequest) (any, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for SetServerlessAutoIndexingExecute")
 	}
 
-	var r0 interface{}
+	var r0 any
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.SetServerlessAutoIndexingApiRequest) (interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.SetServerlessAutoIndexingApiRequest) (any, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.SetServerlessAutoIndexingApiRequest) interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.SetServerlessAutoIndexingApiRequest) any); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(interface{})
+			r0 = ret.Get(0).(any)
 		}
 	}
 
@@ -1221,7 +1221,7 @@ type PerformanceAdvisorApi_SetServerlessAutoIndexingExecute_Call struct {
 
 // SetServerlessAutoIndexingExecute is a helper method to define mock.On call
 //   - r admin.SetServerlessAutoIndexingApiRequest
-func (_e *PerformanceAdvisorApi_Expecter) SetServerlessAutoIndexingExecute(r interface{}) *PerformanceAdvisorApi_SetServerlessAutoIndexingExecute_Call {
+func (_e *PerformanceAdvisorApi_Expecter) SetServerlessAutoIndexingExecute(r any) *PerformanceAdvisorApi_SetServerlessAutoIndexingExecute_Call {
 	return &PerformanceAdvisorApi_SetServerlessAutoIndexingExecute_Call{Call: _e.mock.On("SetServerlessAutoIndexingExecute", r)}
 }
 
@@ -1232,12 +1232,12 @@ func (_c *PerformanceAdvisorApi_SetServerlessAutoIndexingExecute_Call) Run(run f
 	return _c
 }
 
-func (_c *PerformanceAdvisorApi_SetServerlessAutoIndexingExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *PerformanceAdvisorApi_SetServerlessAutoIndexingExecute_Call {
+func (_c *PerformanceAdvisorApi_SetServerlessAutoIndexingExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *PerformanceAdvisorApi_SetServerlessAutoIndexingExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *PerformanceAdvisorApi_SetServerlessAutoIndexingExecute_Call) RunAndReturn(run func(admin.SetServerlessAutoIndexingApiRequest) (interface{}, *http.Response, error)) *PerformanceAdvisorApi_SetServerlessAutoIndexingExecute_Call {
+func (_c *PerformanceAdvisorApi_SetServerlessAutoIndexingExecute_Call) RunAndReturn(run func(admin.SetServerlessAutoIndexingApiRequest) (any, *http.Response, error)) *PerformanceAdvisorApi_SetServerlessAutoIndexingExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1268,7 +1268,7 @@ type PerformanceAdvisorApi_SetServerlessAutoIndexingWithParams_Call struct {
 // SetServerlessAutoIndexingWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.SetServerlessAutoIndexingApiParams
-func (_e *PerformanceAdvisorApi_Expecter) SetServerlessAutoIndexingWithParams(ctx interface{}, args interface{}) *PerformanceAdvisorApi_SetServerlessAutoIndexingWithParams_Call {
+func (_e *PerformanceAdvisorApi_Expecter) SetServerlessAutoIndexingWithParams(ctx any, args any) *PerformanceAdvisorApi_SetServerlessAutoIndexingWithParams_Call {
 	return &PerformanceAdvisorApi_SetServerlessAutoIndexingWithParams_Call{Call: _e.mock.On("SetServerlessAutoIndexingWithParams", ctx, args)}
 }
 

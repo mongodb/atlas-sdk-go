@@ -107,7 +107,7 @@ type TeamsApi interface {
 	DeleteTeamWithParams(ctx context.Context, args *DeleteTeamApiParams) DeleteTeamApiRequest
 
 	// Method available only for mocking purposes
-	DeleteTeamExecute(r DeleteTeamApiRequest) (interface{}, *http.Response, error)
+	DeleteTeamExecute(r DeleteTeamApiRequest) (any, *http.Response, error)
 
 	/*
 		GetTeamById Return One Team using its ID
@@ -379,7 +379,7 @@ func (a *TeamsApiService) AddAllTeamsToProject(ctx context.Context, groupId stri
 func (a *TeamsApiService) AddAllTeamsToProjectExecute(r AddAllTeamsToProjectApiRequest) (*PaginatedTeamRole, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PaginatedTeamRole
 	)
@@ -504,7 +504,7 @@ func (a *TeamsApiService) AddTeamUser(ctx context.Context, orgId string, teamId 
 func (a *TeamsApiService) AddTeamUserExecute(r AddTeamUserApiRequest) (*PaginatedApiAppUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PaginatedApiAppUser
 	)
@@ -625,7 +625,7 @@ func (a *TeamsApiService) CreateTeam(ctx context.Context, orgId string, team *Te
 func (a *TeamsApiService) CreateTeamExecute(r CreateTeamApiRequest) (*Team, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *Team
 	)
@@ -717,7 +717,7 @@ func (a *TeamsApiService) DeleteTeamWithParams(ctx context.Context, args *Delete
 	}
 }
 
-func (r DeleteTeamApiRequest) Execute() (interface{}, *http.Response, error) {
+func (r DeleteTeamApiRequest) Execute() (any, *http.Response, error) {
 	return r.ApiService.DeleteTeamExecute(r)
 }
 
@@ -742,13 +742,13 @@ func (a *TeamsApiService) DeleteTeam(ctx context.Context, orgId string, teamId s
 
 // DeleteTeamExecute executes the request
 //
-//	@return interface{}
-func (a *TeamsApiService) DeleteTeamExecute(r DeleteTeamApiRequest) (interface{}, *http.Response, error) {
+//	@return any
+func (a *TeamsApiService) DeleteTeamExecute(r DeleteTeamApiRequest) (any, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue interface{}
+		localVarReturnValue any
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamsApiService.DeleteTeam")
@@ -863,7 +863,7 @@ func (a *TeamsApiService) GetTeamById(ctx context.Context, orgId string, teamId 
 func (a *TeamsApiService) GetTeamByIdExecute(r GetTeamByIdApiRequest) (*TeamResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *TeamResponse
 	)
@@ -980,7 +980,7 @@ func (a *TeamsApiService) GetTeamByName(ctx context.Context, orgId string, teamN
 func (a *TeamsApiService) GetTeamByNameExecute(r GetTeamByNameApiRequest) (*TeamResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *TeamResponse
 	)
@@ -1119,7 +1119,7 @@ func (a *TeamsApiService) ListOrganizationTeams(ctx context.Context, orgId strin
 func (a *TeamsApiService) ListOrganizationTeamsExecute(r ListOrganizationTeamsApiRequest) (*PaginatedTeam, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PaginatedTeam
 	)
@@ -1278,7 +1278,7 @@ func (a *TeamsApiService) ListProjectTeams(ctx context.Context, groupId string) 
 func (a *TeamsApiService) ListProjectTeamsExecute(r ListProjectTeamsApiRequest) (*PaginatedTeamRole, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PaginatedTeamRole
 	)
@@ -1433,7 +1433,7 @@ func (a *TeamsApiService) ListTeamUsers(ctx context.Context, orgId string, teamI
 func (a *TeamsApiService) ListTeamUsersExecute(r ListTeamUsersApiRequest) (*PaginatedApiAppUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PaginatedApiAppUser
 	)
@@ -1562,7 +1562,7 @@ func (a *TeamsApiService) RemoveProjectTeam(ctx context.Context, groupId string,
 func (a *TeamsApiService) RemoveProjectTeamExecute(r RemoveProjectTeamApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
+		localVarPostBody   any
 		formFiles          []formFile
 	)
 
@@ -1667,7 +1667,7 @@ func (a *TeamsApiService) RemoveTeamUser(ctx context.Context, orgId string, team
 func (a *TeamsApiService) RemoveTeamUserExecute(r RemoveTeamUserApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
+		localVarPostBody   any
 		formFiles          []formFile
 	)
 
@@ -1774,7 +1774,7 @@ func (a *TeamsApiService) RenameTeam(ctx context.Context, orgId string, teamId s
 func (a *TeamsApiService) RenameTeamExecute(r RenameTeamApiRequest) (*TeamResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *TeamResponse
 	)
@@ -1900,7 +1900,7 @@ func (a *TeamsApiService) UpdateTeamRoles(ctx context.Context, groupId string, t
 func (a *TeamsApiService) UpdateTeamRolesExecute(r UpdateTeamRolesApiRequest) (*PaginatedTeamRole, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
+		localVarPostBody    any
 		formFiles           []formFile
 		localVarReturnValue *PaginatedTeamRole
 	)

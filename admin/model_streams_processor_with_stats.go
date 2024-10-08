@@ -16,20 +16,20 @@ type StreamsProcessorWithStats struct {
 	Options *StreamsOptions `json:"options,omitempty"`
 	// Stream aggregation pipeline you want to apply to your streaming data.
 	// Read only field.
-	Pipeline []interface{} `json:"pipeline"`
+	Pipeline []any `json:"pipeline"`
 	// The state of the stream processor. Commonly occurring states are 'CREATED', 'STARTED', 'STOPPED' and 'FAILED'.
 	// Read only field.
 	State string `json:"state"`
 	// The stats associated with the stream processor.
 	// Read only field.
-	Stats interface{} `json:"stats,omitempty"`
+	Stats any `json:"stats,omitempty"`
 }
 
 // NewStreamsProcessorWithStats instantiates a new StreamsProcessorWithStats object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStreamsProcessorWithStats(id string, name string, pipeline []interface{}, state string) *StreamsProcessorWithStats {
+func NewStreamsProcessorWithStats(id string, name string, pipeline []any, state string) *StreamsProcessorWithStats {
 	this := StreamsProcessorWithStats{}
 	this.Id = id
 	this.Name = name
@@ -161,9 +161,9 @@ func (o *StreamsProcessorWithStats) SetOptions(v StreamsOptions) {
 }
 
 // GetPipeline returns the Pipeline field value
-func (o *StreamsProcessorWithStats) GetPipeline() []interface{} {
+func (o *StreamsProcessorWithStats) GetPipeline() []any {
 	if o == nil {
-		var ret []interface{}
+		var ret []any
 		return ret
 	}
 
@@ -172,7 +172,7 @@ func (o *StreamsProcessorWithStats) GetPipeline() []interface{} {
 
 // GetPipelineOk returns a tuple with the Pipeline field value
 // and a boolean to check if the value has been set.
-func (o *StreamsProcessorWithStats) GetPipelineOk() (*[]interface{}, bool) {
+func (o *StreamsProcessorWithStats) GetPipelineOk() (*[]any, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -180,7 +180,7 @@ func (o *StreamsProcessorWithStats) GetPipelineOk() (*[]interface{}, bool) {
 }
 
 // SetPipeline sets field value
-func (o *StreamsProcessorWithStats) SetPipeline(v []interface{}) {
+func (o *StreamsProcessorWithStats) SetPipeline(v []any) {
 	o.Pipeline = v
 }
 
@@ -209,9 +209,9 @@ func (o *StreamsProcessorWithStats) SetState(v string) {
 }
 
 // GetStats returns the Stats field value if set, zero value otherwise
-func (o *StreamsProcessorWithStats) GetStats() interface{} {
+func (o *StreamsProcessorWithStats) GetStats() any {
 	if o == nil || IsNil(o.Stats) {
-		var ret interface{}
+		var ret any
 		return ret
 	}
 	return o.Stats
@@ -219,9 +219,9 @@ func (o *StreamsProcessorWithStats) GetStats() interface{} {
 
 // GetStatsOk returns a tuple with the Stats field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StreamsProcessorWithStats) GetStatsOk() (interface{}, bool) {
+func (o *StreamsProcessorWithStats) GetStatsOk() (any, bool) {
 	if o == nil || IsNil(o.Stats) {
-		var ret interface{}
+		var ret any
 		return ret, false
 	}
 
@@ -237,7 +237,7 @@ func (o *StreamsProcessorWithStats) HasStats() bool {
 	return false
 }
 
-// SetStats gets a reference to the given interface{} and assigns it to the Stats field.
-func (o *StreamsProcessorWithStats) SetStats(v interface{}) {
+// SetStats gets a reference to the given any and assigns it to the Stats field.
+func (o *StreamsProcessorWithStats) SetStats(v any) {
 	o.Stats = v
 }
