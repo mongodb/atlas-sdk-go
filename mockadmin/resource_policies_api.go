@@ -52,7 +52,7 @@ type ResourcePoliciesApi_CreateAtlasResourcePolicy_Call struct {
 //   - ctx context.Context
 //   - orgId string
 //   - apiAtlasResourcePolicyCreate *admin.ApiAtlasResourcePolicyCreate
-func (_e *ResourcePoliciesApi_Expecter) CreateAtlasResourcePolicy(ctx interface{}, orgId interface{}, apiAtlasResourcePolicyCreate interface{}) *ResourcePoliciesApi_CreateAtlasResourcePolicy_Call {
+func (_e *ResourcePoliciesApi_Expecter) CreateAtlasResourcePolicy(ctx any, orgId any, apiAtlasResourcePolicyCreate any) *ResourcePoliciesApi_CreateAtlasResourcePolicy_Call {
 	return &ResourcePoliciesApi_CreateAtlasResourcePolicy_Call{Call: _e.mock.On("CreateAtlasResourcePolicy", ctx, orgId, apiAtlasResourcePolicyCreate)}
 }
 
@@ -119,7 +119,7 @@ type ResourcePoliciesApi_CreateAtlasResourcePolicyExecute_Call struct {
 
 // CreateAtlasResourcePolicyExecute is a helper method to define mock.On call
 //   - r admin.CreateAtlasResourcePolicyApiRequest
-func (_e *ResourcePoliciesApi_Expecter) CreateAtlasResourcePolicyExecute(r interface{}) *ResourcePoliciesApi_CreateAtlasResourcePolicyExecute_Call {
+func (_e *ResourcePoliciesApi_Expecter) CreateAtlasResourcePolicyExecute(r any) *ResourcePoliciesApi_CreateAtlasResourcePolicyExecute_Call {
 	return &ResourcePoliciesApi_CreateAtlasResourcePolicyExecute_Call{Call: _e.mock.On("CreateAtlasResourcePolicyExecute", r)}
 }
 
@@ -166,7 +166,7 @@ type ResourcePoliciesApi_CreateAtlasResourcePolicyWithParams_Call struct {
 // CreateAtlasResourcePolicyWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.CreateAtlasResourcePolicyApiParams
-func (_e *ResourcePoliciesApi_Expecter) CreateAtlasResourcePolicyWithParams(ctx interface{}, args interface{}) *ResourcePoliciesApi_CreateAtlasResourcePolicyWithParams_Call {
+func (_e *ResourcePoliciesApi_Expecter) CreateAtlasResourcePolicyWithParams(ctx any, args any) *ResourcePoliciesApi_CreateAtlasResourcePolicyWithParams_Call {
 	return &ResourcePoliciesApi_CreateAtlasResourcePolicyWithParams_Call{Call: _e.mock.On("CreateAtlasResourcePolicyWithParams", ctx, args)}
 }
 
@@ -214,7 +214,7 @@ type ResourcePoliciesApi_DeleteAtlasResourcePolicy_Call struct {
 //   - ctx context.Context
 //   - orgId string
 //   - resourcePolicyId string
-func (_e *ResourcePoliciesApi_Expecter) DeleteAtlasResourcePolicy(ctx interface{}, orgId interface{}, resourcePolicyId interface{}) *ResourcePoliciesApi_DeleteAtlasResourcePolicy_Call {
+func (_e *ResourcePoliciesApi_Expecter) DeleteAtlasResourcePolicy(ctx any, orgId any, resourcePolicyId any) *ResourcePoliciesApi_DeleteAtlasResourcePolicy_Call {
 	return &ResourcePoliciesApi_DeleteAtlasResourcePolicy_Call{Call: _e.mock.On("DeleteAtlasResourcePolicy", ctx, orgId, resourcePolicyId)}
 }
 
@@ -236,24 +236,24 @@ func (_c *ResourcePoliciesApi_DeleteAtlasResourcePolicy_Call) RunAndReturn(run f
 }
 
 // DeleteAtlasResourcePolicyExecute provides a mock function with given fields: r
-func (_m *ResourcePoliciesApi) DeleteAtlasResourcePolicyExecute(r admin.DeleteAtlasResourcePolicyApiRequest) (interface{}, *http.Response, error) {
+func (_m *ResourcePoliciesApi) DeleteAtlasResourcePolicyExecute(r admin.DeleteAtlasResourcePolicyApiRequest) (any, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteAtlasResourcePolicyExecute")
 	}
 
-	var r0 interface{}
+	var r0 any
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteAtlasResourcePolicyApiRequest) (interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteAtlasResourcePolicyApiRequest) (any, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteAtlasResourcePolicyApiRequest) interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteAtlasResourcePolicyApiRequest) any); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(interface{})
+			r0 = ret.Get(0).(any)
 		}
 	}
 
@@ -281,7 +281,7 @@ type ResourcePoliciesApi_DeleteAtlasResourcePolicyExecute_Call struct {
 
 // DeleteAtlasResourcePolicyExecute is a helper method to define mock.On call
 //   - r admin.DeleteAtlasResourcePolicyApiRequest
-func (_e *ResourcePoliciesApi_Expecter) DeleteAtlasResourcePolicyExecute(r interface{}) *ResourcePoliciesApi_DeleteAtlasResourcePolicyExecute_Call {
+func (_e *ResourcePoliciesApi_Expecter) DeleteAtlasResourcePolicyExecute(r any) *ResourcePoliciesApi_DeleteAtlasResourcePolicyExecute_Call {
 	return &ResourcePoliciesApi_DeleteAtlasResourcePolicyExecute_Call{Call: _e.mock.On("DeleteAtlasResourcePolicyExecute", r)}
 }
 
@@ -292,12 +292,12 @@ func (_c *ResourcePoliciesApi_DeleteAtlasResourcePolicyExecute_Call) Run(run fun
 	return _c
 }
 
-func (_c *ResourcePoliciesApi_DeleteAtlasResourcePolicyExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *ResourcePoliciesApi_DeleteAtlasResourcePolicyExecute_Call {
+func (_c *ResourcePoliciesApi_DeleteAtlasResourcePolicyExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *ResourcePoliciesApi_DeleteAtlasResourcePolicyExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ResourcePoliciesApi_DeleteAtlasResourcePolicyExecute_Call) RunAndReturn(run func(admin.DeleteAtlasResourcePolicyApiRequest) (interface{}, *http.Response, error)) *ResourcePoliciesApi_DeleteAtlasResourcePolicyExecute_Call {
+func (_c *ResourcePoliciesApi_DeleteAtlasResourcePolicyExecute_Call) RunAndReturn(run func(admin.DeleteAtlasResourcePolicyApiRequest) (any, *http.Response, error)) *ResourcePoliciesApi_DeleteAtlasResourcePolicyExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -328,7 +328,7 @@ type ResourcePoliciesApi_DeleteAtlasResourcePolicyWithParams_Call struct {
 // DeleteAtlasResourcePolicyWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.DeleteAtlasResourcePolicyApiParams
-func (_e *ResourcePoliciesApi_Expecter) DeleteAtlasResourcePolicyWithParams(ctx interface{}, args interface{}) *ResourcePoliciesApi_DeleteAtlasResourcePolicyWithParams_Call {
+func (_e *ResourcePoliciesApi_Expecter) DeleteAtlasResourcePolicyWithParams(ctx any, args any) *ResourcePoliciesApi_DeleteAtlasResourcePolicyWithParams_Call {
 	return &ResourcePoliciesApi_DeleteAtlasResourcePolicyWithParams_Call{Call: _e.mock.On("DeleteAtlasResourcePolicyWithParams", ctx, args)}
 }
 
@@ -375,7 +375,7 @@ type ResourcePoliciesApi_GetAtlasResourcePolicies_Call struct {
 // GetAtlasResourcePolicies is a helper method to define mock.On call
 //   - ctx context.Context
 //   - orgId string
-func (_e *ResourcePoliciesApi_Expecter) GetAtlasResourcePolicies(ctx interface{}, orgId interface{}) *ResourcePoliciesApi_GetAtlasResourcePolicies_Call {
+func (_e *ResourcePoliciesApi_Expecter) GetAtlasResourcePolicies(ctx any, orgId any) *ResourcePoliciesApi_GetAtlasResourcePolicies_Call {
 	return &ResourcePoliciesApi_GetAtlasResourcePolicies_Call{Call: _e.mock.On("GetAtlasResourcePolicies", ctx, orgId)}
 }
 
@@ -442,7 +442,7 @@ type ResourcePoliciesApi_GetAtlasResourcePoliciesExecute_Call struct {
 
 // GetAtlasResourcePoliciesExecute is a helper method to define mock.On call
 //   - r admin.GetAtlasResourcePoliciesApiRequest
-func (_e *ResourcePoliciesApi_Expecter) GetAtlasResourcePoliciesExecute(r interface{}) *ResourcePoliciesApi_GetAtlasResourcePoliciesExecute_Call {
+func (_e *ResourcePoliciesApi_Expecter) GetAtlasResourcePoliciesExecute(r any) *ResourcePoliciesApi_GetAtlasResourcePoliciesExecute_Call {
 	return &ResourcePoliciesApi_GetAtlasResourcePoliciesExecute_Call{Call: _e.mock.On("GetAtlasResourcePoliciesExecute", r)}
 }
 
@@ -489,7 +489,7 @@ type ResourcePoliciesApi_GetAtlasResourcePoliciesWithParams_Call struct {
 // GetAtlasResourcePoliciesWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetAtlasResourcePoliciesApiParams
-func (_e *ResourcePoliciesApi_Expecter) GetAtlasResourcePoliciesWithParams(ctx interface{}, args interface{}) *ResourcePoliciesApi_GetAtlasResourcePoliciesWithParams_Call {
+func (_e *ResourcePoliciesApi_Expecter) GetAtlasResourcePoliciesWithParams(ctx any, args any) *ResourcePoliciesApi_GetAtlasResourcePoliciesWithParams_Call {
 	return &ResourcePoliciesApi_GetAtlasResourcePoliciesWithParams_Call{Call: _e.mock.On("GetAtlasResourcePoliciesWithParams", ctx, args)}
 }
 
@@ -537,7 +537,7 @@ type ResourcePoliciesApi_GetAtlasResourcePolicy_Call struct {
 //   - ctx context.Context
 //   - orgId string
 //   - resourcePolicyId string
-func (_e *ResourcePoliciesApi_Expecter) GetAtlasResourcePolicy(ctx interface{}, orgId interface{}, resourcePolicyId interface{}) *ResourcePoliciesApi_GetAtlasResourcePolicy_Call {
+func (_e *ResourcePoliciesApi_Expecter) GetAtlasResourcePolicy(ctx any, orgId any, resourcePolicyId any) *ResourcePoliciesApi_GetAtlasResourcePolicy_Call {
 	return &ResourcePoliciesApi_GetAtlasResourcePolicy_Call{Call: _e.mock.On("GetAtlasResourcePolicy", ctx, orgId, resourcePolicyId)}
 }
 
@@ -604,7 +604,7 @@ type ResourcePoliciesApi_GetAtlasResourcePolicyExecute_Call struct {
 
 // GetAtlasResourcePolicyExecute is a helper method to define mock.On call
 //   - r admin.GetAtlasResourcePolicyApiRequest
-func (_e *ResourcePoliciesApi_Expecter) GetAtlasResourcePolicyExecute(r interface{}) *ResourcePoliciesApi_GetAtlasResourcePolicyExecute_Call {
+func (_e *ResourcePoliciesApi_Expecter) GetAtlasResourcePolicyExecute(r any) *ResourcePoliciesApi_GetAtlasResourcePolicyExecute_Call {
 	return &ResourcePoliciesApi_GetAtlasResourcePolicyExecute_Call{Call: _e.mock.On("GetAtlasResourcePolicyExecute", r)}
 }
 
@@ -651,7 +651,7 @@ type ResourcePoliciesApi_GetAtlasResourcePolicyWithParams_Call struct {
 // GetAtlasResourcePolicyWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetAtlasResourcePolicyApiParams
-func (_e *ResourcePoliciesApi_Expecter) GetAtlasResourcePolicyWithParams(ctx interface{}, args interface{}) *ResourcePoliciesApi_GetAtlasResourcePolicyWithParams_Call {
+func (_e *ResourcePoliciesApi_Expecter) GetAtlasResourcePolicyWithParams(ctx any, args any) *ResourcePoliciesApi_GetAtlasResourcePolicyWithParams_Call {
 	return &ResourcePoliciesApi_GetAtlasResourcePolicyWithParams_Call{Call: _e.mock.On("GetAtlasResourcePolicyWithParams", ctx, args)}
 }
 
@@ -698,7 +698,7 @@ type ResourcePoliciesApi_GetResourcesNonCompliant_Call struct {
 // GetResourcesNonCompliant is a helper method to define mock.On call
 //   - ctx context.Context
 //   - orgId string
-func (_e *ResourcePoliciesApi_Expecter) GetResourcesNonCompliant(ctx interface{}, orgId interface{}) *ResourcePoliciesApi_GetResourcesNonCompliant_Call {
+func (_e *ResourcePoliciesApi_Expecter) GetResourcesNonCompliant(ctx any, orgId any) *ResourcePoliciesApi_GetResourcesNonCompliant_Call {
 	return &ResourcePoliciesApi_GetResourcesNonCompliant_Call{Call: _e.mock.On("GetResourcesNonCompliant", ctx, orgId)}
 }
 
@@ -765,7 +765,7 @@ type ResourcePoliciesApi_GetResourcesNonCompliantExecute_Call struct {
 
 // GetResourcesNonCompliantExecute is a helper method to define mock.On call
 //   - r admin.GetResourcesNonCompliantApiRequest
-func (_e *ResourcePoliciesApi_Expecter) GetResourcesNonCompliantExecute(r interface{}) *ResourcePoliciesApi_GetResourcesNonCompliantExecute_Call {
+func (_e *ResourcePoliciesApi_Expecter) GetResourcesNonCompliantExecute(r any) *ResourcePoliciesApi_GetResourcesNonCompliantExecute_Call {
 	return &ResourcePoliciesApi_GetResourcesNonCompliantExecute_Call{Call: _e.mock.On("GetResourcesNonCompliantExecute", r)}
 }
 
@@ -812,7 +812,7 @@ type ResourcePoliciesApi_GetResourcesNonCompliantWithParams_Call struct {
 // GetResourcesNonCompliantWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetResourcesNonCompliantApiParams
-func (_e *ResourcePoliciesApi_Expecter) GetResourcesNonCompliantWithParams(ctx interface{}, args interface{}) *ResourcePoliciesApi_GetResourcesNonCompliantWithParams_Call {
+func (_e *ResourcePoliciesApi_Expecter) GetResourcesNonCompliantWithParams(ctx any, args any) *ResourcePoliciesApi_GetResourcesNonCompliantWithParams_Call {
 	return &ResourcePoliciesApi_GetResourcesNonCompliantWithParams_Call{Call: _e.mock.On("GetResourcesNonCompliantWithParams", ctx, args)}
 }
 
@@ -861,7 +861,7 @@ type ResourcePoliciesApi_UpdateAtlasResourcePolicy_Call struct {
 //   - orgId string
 //   - resourcePolicyId string
 //   - apiAtlasResourcePolicyEdit *admin.ApiAtlasResourcePolicyEdit
-func (_e *ResourcePoliciesApi_Expecter) UpdateAtlasResourcePolicy(ctx interface{}, orgId interface{}, resourcePolicyId interface{}, apiAtlasResourcePolicyEdit interface{}) *ResourcePoliciesApi_UpdateAtlasResourcePolicy_Call {
+func (_e *ResourcePoliciesApi_Expecter) UpdateAtlasResourcePolicy(ctx any, orgId any, resourcePolicyId any, apiAtlasResourcePolicyEdit any) *ResourcePoliciesApi_UpdateAtlasResourcePolicy_Call {
 	return &ResourcePoliciesApi_UpdateAtlasResourcePolicy_Call{Call: _e.mock.On("UpdateAtlasResourcePolicy", ctx, orgId, resourcePolicyId, apiAtlasResourcePolicyEdit)}
 }
 
@@ -928,7 +928,7 @@ type ResourcePoliciesApi_UpdateAtlasResourcePolicyExecute_Call struct {
 
 // UpdateAtlasResourcePolicyExecute is a helper method to define mock.On call
 //   - r admin.UpdateAtlasResourcePolicyApiRequest
-func (_e *ResourcePoliciesApi_Expecter) UpdateAtlasResourcePolicyExecute(r interface{}) *ResourcePoliciesApi_UpdateAtlasResourcePolicyExecute_Call {
+func (_e *ResourcePoliciesApi_Expecter) UpdateAtlasResourcePolicyExecute(r any) *ResourcePoliciesApi_UpdateAtlasResourcePolicyExecute_Call {
 	return &ResourcePoliciesApi_UpdateAtlasResourcePolicyExecute_Call{Call: _e.mock.On("UpdateAtlasResourcePolicyExecute", r)}
 }
 
@@ -975,7 +975,7 @@ type ResourcePoliciesApi_UpdateAtlasResourcePolicyWithParams_Call struct {
 // UpdateAtlasResourcePolicyWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.UpdateAtlasResourcePolicyApiParams
-func (_e *ResourcePoliciesApi_Expecter) UpdateAtlasResourcePolicyWithParams(ctx interface{}, args interface{}) *ResourcePoliciesApi_UpdateAtlasResourcePolicyWithParams_Call {
+func (_e *ResourcePoliciesApi_Expecter) UpdateAtlasResourcePolicyWithParams(ctx any, args any) *ResourcePoliciesApi_UpdateAtlasResourcePolicyWithParams_Call {
 	return &ResourcePoliciesApi_UpdateAtlasResourcePolicyWithParams_Call{Call: _e.mock.On("UpdateAtlasResourcePolicyWithParams", ctx, args)}
 }
 
@@ -1023,7 +1023,7 @@ type ResourcePoliciesApi_ValidateAtlasResourcePolicy_Call struct {
 //   - ctx context.Context
 //   - orgId string
 //   - apiAtlasResourcePolicyCreate *admin.ApiAtlasResourcePolicyCreate
-func (_e *ResourcePoliciesApi_Expecter) ValidateAtlasResourcePolicy(ctx interface{}, orgId interface{}, apiAtlasResourcePolicyCreate interface{}) *ResourcePoliciesApi_ValidateAtlasResourcePolicy_Call {
+func (_e *ResourcePoliciesApi_Expecter) ValidateAtlasResourcePolicy(ctx any, orgId any, apiAtlasResourcePolicyCreate any) *ResourcePoliciesApi_ValidateAtlasResourcePolicy_Call {
 	return &ResourcePoliciesApi_ValidateAtlasResourcePolicy_Call{Call: _e.mock.On("ValidateAtlasResourcePolicy", ctx, orgId, apiAtlasResourcePolicyCreate)}
 }
 
@@ -1090,7 +1090,7 @@ type ResourcePoliciesApi_ValidateAtlasResourcePolicyExecute_Call struct {
 
 // ValidateAtlasResourcePolicyExecute is a helper method to define mock.On call
 //   - r admin.ValidateAtlasResourcePolicyApiRequest
-func (_e *ResourcePoliciesApi_Expecter) ValidateAtlasResourcePolicyExecute(r interface{}) *ResourcePoliciesApi_ValidateAtlasResourcePolicyExecute_Call {
+func (_e *ResourcePoliciesApi_Expecter) ValidateAtlasResourcePolicyExecute(r any) *ResourcePoliciesApi_ValidateAtlasResourcePolicyExecute_Call {
 	return &ResourcePoliciesApi_ValidateAtlasResourcePolicyExecute_Call{Call: _e.mock.On("ValidateAtlasResourcePolicyExecute", r)}
 }
 
@@ -1137,7 +1137,7 @@ type ResourcePoliciesApi_ValidateAtlasResourcePolicyWithParams_Call struct {
 // ValidateAtlasResourcePolicyWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ValidateAtlasResourcePolicyApiParams
-func (_e *ResourcePoliciesApi_Expecter) ValidateAtlasResourcePolicyWithParams(ctx interface{}, args interface{}) *ResourcePoliciesApi_ValidateAtlasResourcePolicyWithParams_Call {
+func (_e *ResourcePoliciesApi_Expecter) ValidateAtlasResourcePolicyWithParams(ctx any, args any) *ResourcePoliciesApi_ValidateAtlasResourcePolicyWithParams_Call {
 	return &ResourcePoliciesApi_ValidateAtlasResourcePolicyWithParams_Call{Call: _e.mock.On("ValidateAtlasResourcePolicyWithParams", ctx, args)}
 }
 

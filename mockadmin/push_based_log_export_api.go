@@ -52,7 +52,7 @@ type PushBasedLogExportApi_CreatePushBasedLogConfiguration_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - createPushBasedLogExportProjectRequest *admin.CreatePushBasedLogExportProjectRequest
-func (_e *PushBasedLogExportApi_Expecter) CreatePushBasedLogConfiguration(ctx interface{}, groupId interface{}, createPushBasedLogExportProjectRequest interface{}) *PushBasedLogExportApi_CreatePushBasedLogConfiguration_Call {
+func (_e *PushBasedLogExportApi_Expecter) CreatePushBasedLogConfiguration(ctx any, groupId any, createPushBasedLogExportProjectRequest any) *PushBasedLogExportApi_CreatePushBasedLogConfiguration_Call {
 	return &PushBasedLogExportApi_CreatePushBasedLogConfiguration_Call{Call: _e.mock.On("CreatePushBasedLogConfiguration", ctx, groupId, createPushBasedLogExportProjectRequest)}
 }
 
@@ -110,7 +110,7 @@ type PushBasedLogExportApi_CreatePushBasedLogConfigurationExecute_Call struct {
 
 // CreatePushBasedLogConfigurationExecute is a helper method to define mock.On call
 //   - r admin.CreatePushBasedLogConfigurationApiRequest
-func (_e *PushBasedLogExportApi_Expecter) CreatePushBasedLogConfigurationExecute(r interface{}) *PushBasedLogExportApi_CreatePushBasedLogConfigurationExecute_Call {
+func (_e *PushBasedLogExportApi_Expecter) CreatePushBasedLogConfigurationExecute(r any) *PushBasedLogExportApi_CreatePushBasedLogConfigurationExecute_Call {
 	return &PushBasedLogExportApi_CreatePushBasedLogConfigurationExecute_Call{Call: _e.mock.On("CreatePushBasedLogConfigurationExecute", r)}
 }
 
@@ -157,7 +157,7 @@ type PushBasedLogExportApi_CreatePushBasedLogConfigurationWithParams_Call struct
 // CreatePushBasedLogConfigurationWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.CreatePushBasedLogConfigurationApiParams
-func (_e *PushBasedLogExportApi_Expecter) CreatePushBasedLogConfigurationWithParams(ctx interface{}, args interface{}) *PushBasedLogExportApi_CreatePushBasedLogConfigurationWithParams_Call {
+func (_e *PushBasedLogExportApi_Expecter) CreatePushBasedLogConfigurationWithParams(ctx any, args any) *PushBasedLogExportApi_CreatePushBasedLogConfigurationWithParams_Call {
 	return &PushBasedLogExportApi_CreatePushBasedLogConfigurationWithParams_Call{Call: _e.mock.On("CreatePushBasedLogConfigurationWithParams", ctx, args)}
 }
 
@@ -204,7 +204,7 @@ type PushBasedLogExportApi_DeletePushBasedLogConfiguration_Call struct {
 // DeletePushBasedLogConfiguration is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *PushBasedLogExportApi_Expecter) DeletePushBasedLogConfiguration(ctx interface{}, groupId interface{}) *PushBasedLogExportApi_DeletePushBasedLogConfiguration_Call {
+func (_e *PushBasedLogExportApi_Expecter) DeletePushBasedLogConfiguration(ctx any, groupId any) *PushBasedLogExportApi_DeletePushBasedLogConfiguration_Call {
 	return &PushBasedLogExportApi_DeletePushBasedLogConfiguration_Call{Call: _e.mock.On("DeletePushBasedLogConfiguration", ctx, groupId)}
 }
 
@@ -262,7 +262,7 @@ type PushBasedLogExportApi_DeletePushBasedLogConfigurationExecute_Call struct {
 
 // DeletePushBasedLogConfigurationExecute is a helper method to define mock.On call
 //   - r admin.DeletePushBasedLogConfigurationApiRequest
-func (_e *PushBasedLogExportApi_Expecter) DeletePushBasedLogConfigurationExecute(r interface{}) *PushBasedLogExportApi_DeletePushBasedLogConfigurationExecute_Call {
+func (_e *PushBasedLogExportApi_Expecter) DeletePushBasedLogConfigurationExecute(r any) *PushBasedLogExportApi_DeletePushBasedLogConfigurationExecute_Call {
 	return &PushBasedLogExportApi_DeletePushBasedLogConfigurationExecute_Call{Call: _e.mock.On("DeletePushBasedLogConfigurationExecute", r)}
 }
 
@@ -309,7 +309,7 @@ type PushBasedLogExportApi_DeletePushBasedLogConfigurationWithParams_Call struct
 // DeletePushBasedLogConfigurationWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.DeletePushBasedLogConfigurationApiParams
-func (_e *PushBasedLogExportApi_Expecter) DeletePushBasedLogConfigurationWithParams(ctx interface{}, args interface{}) *PushBasedLogExportApi_DeletePushBasedLogConfigurationWithParams_Call {
+func (_e *PushBasedLogExportApi_Expecter) DeletePushBasedLogConfigurationWithParams(ctx any, args any) *PushBasedLogExportApi_DeletePushBasedLogConfigurationWithParams_Call {
 	return &PushBasedLogExportApi_DeletePushBasedLogConfigurationWithParams_Call{Call: _e.mock.On("DeletePushBasedLogConfigurationWithParams", ctx, args)}
 }
 
@@ -356,7 +356,7 @@ type PushBasedLogExportApi_GetPushBasedLogConfiguration_Call struct {
 // GetPushBasedLogConfiguration is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *PushBasedLogExportApi_Expecter) GetPushBasedLogConfiguration(ctx interface{}, groupId interface{}) *PushBasedLogExportApi_GetPushBasedLogConfiguration_Call {
+func (_e *PushBasedLogExportApi_Expecter) GetPushBasedLogConfiguration(ctx any, groupId any) *PushBasedLogExportApi_GetPushBasedLogConfiguration_Call {
 	return &PushBasedLogExportApi_GetPushBasedLogConfiguration_Call{Call: _e.mock.On("GetPushBasedLogConfiguration", ctx, groupId)}
 }
 
@@ -423,7 +423,7 @@ type PushBasedLogExportApi_GetPushBasedLogConfigurationExecute_Call struct {
 
 // GetPushBasedLogConfigurationExecute is a helper method to define mock.On call
 //   - r admin.GetPushBasedLogConfigurationApiRequest
-func (_e *PushBasedLogExportApi_Expecter) GetPushBasedLogConfigurationExecute(r interface{}) *PushBasedLogExportApi_GetPushBasedLogConfigurationExecute_Call {
+func (_e *PushBasedLogExportApi_Expecter) GetPushBasedLogConfigurationExecute(r any) *PushBasedLogExportApi_GetPushBasedLogConfigurationExecute_Call {
 	return &PushBasedLogExportApi_GetPushBasedLogConfigurationExecute_Call{Call: _e.mock.On("GetPushBasedLogConfigurationExecute", r)}
 }
 
@@ -470,7 +470,7 @@ type PushBasedLogExportApi_GetPushBasedLogConfigurationWithParams_Call struct {
 // GetPushBasedLogConfigurationWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetPushBasedLogConfigurationApiParams
-func (_e *PushBasedLogExportApi_Expecter) GetPushBasedLogConfigurationWithParams(ctx interface{}, args interface{}) *PushBasedLogExportApi_GetPushBasedLogConfigurationWithParams_Call {
+func (_e *PushBasedLogExportApi_Expecter) GetPushBasedLogConfigurationWithParams(ctx any, args any) *PushBasedLogExportApi_GetPushBasedLogConfigurationWithParams_Call {
 	return &PushBasedLogExportApi_GetPushBasedLogConfigurationWithParams_Call{Call: _e.mock.On("GetPushBasedLogConfigurationWithParams", ctx, args)}
 }
 
@@ -518,7 +518,7 @@ type PushBasedLogExportApi_UpdatePushBasedLogConfiguration_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - pushBasedLogExportProject *admin.PushBasedLogExportProject
-func (_e *PushBasedLogExportApi_Expecter) UpdatePushBasedLogConfiguration(ctx interface{}, groupId interface{}, pushBasedLogExportProject interface{}) *PushBasedLogExportApi_UpdatePushBasedLogConfiguration_Call {
+func (_e *PushBasedLogExportApi_Expecter) UpdatePushBasedLogConfiguration(ctx any, groupId any, pushBasedLogExportProject any) *PushBasedLogExportApi_UpdatePushBasedLogConfiguration_Call {
 	return &PushBasedLogExportApi_UpdatePushBasedLogConfiguration_Call{Call: _e.mock.On("UpdatePushBasedLogConfiguration", ctx, groupId, pushBasedLogExportProject)}
 }
 
@@ -576,7 +576,7 @@ type PushBasedLogExportApi_UpdatePushBasedLogConfigurationExecute_Call struct {
 
 // UpdatePushBasedLogConfigurationExecute is a helper method to define mock.On call
 //   - r admin.UpdatePushBasedLogConfigurationApiRequest
-func (_e *PushBasedLogExportApi_Expecter) UpdatePushBasedLogConfigurationExecute(r interface{}) *PushBasedLogExportApi_UpdatePushBasedLogConfigurationExecute_Call {
+func (_e *PushBasedLogExportApi_Expecter) UpdatePushBasedLogConfigurationExecute(r any) *PushBasedLogExportApi_UpdatePushBasedLogConfigurationExecute_Call {
 	return &PushBasedLogExportApi_UpdatePushBasedLogConfigurationExecute_Call{Call: _e.mock.On("UpdatePushBasedLogConfigurationExecute", r)}
 }
 
@@ -623,7 +623,7 @@ type PushBasedLogExportApi_UpdatePushBasedLogConfigurationWithParams_Call struct
 // UpdatePushBasedLogConfigurationWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.UpdatePushBasedLogConfigurationApiParams
-func (_e *PushBasedLogExportApi_Expecter) UpdatePushBasedLogConfigurationWithParams(ctx interface{}, args interface{}) *PushBasedLogExportApi_UpdatePushBasedLogConfigurationWithParams_Call {
+func (_e *PushBasedLogExportApi_Expecter) UpdatePushBasedLogConfigurationWithParams(ctx any, args any) *PushBasedLogExportApi_UpdatePushBasedLogConfigurationWithParams_Call {
 	return &PushBasedLogExportApi_UpdatePushBasedLogConfigurationWithParams_Call{Call: _e.mock.On("UpdatePushBasedLogConfigurationWithParams", ctx, args)}
 }
 

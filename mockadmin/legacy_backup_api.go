@@ -53,7 +53,7 @@ type LegacyBackupApi_CreateLegacyBackupRestoreJob_Call struct {
 //   - groupId string
 //   - clusterName string
 //   - backupRestoreJob *admin.BackupRestoreJob
-func (_e *LegacyBackupApi_Expecter) CreateLegacyBackupRestoreJob(ctx interface{}, groupId interface{}, clusterName interface{}, backupRestoreJob interface{}) *LegacyBackupApi_CreateLegacyBackupRestoreJob_Call {
+func (_e *LegacyBackupApi_Expecter) CreateLegacyBackupRestoreJob(ctx any, groupId any, clusterName any, backupRestoreJob any) *LegacyBackupApi_CreateLegacyBackupRestoreJob_Call {
 	return &LegacyBackupApi_CreateLegacyBackupRestoreJob_Call{Call: _e.mock.On("CreateLegacyBackupRestoreJob", ctx, groupId, clusterName, backupRestoreJob)}
 }
 
@@ -120,7 +120,7 @@ type LegacyBackupApi_CreateLegacyBackupRestoreJobExecute_Call struct {
 
 // CreateLegacyBackupRestoreJobExecute is a helper method to define mock.On call
 //   - r admin.CreateLegacyBackupRestoreJobApiRequest
-func (_e *LegacyBackupApi_Expecter) CreateLegacyBackupRestoreJobExecute(r interface{}) *LegacyBackupApi_CreateLegacyBackupRestoreJobExecute_Call {
+func (_e *LegacyBackupApi_Expecter) CreateLegacyBackupRestoreJobExecute(r any) *LegacyBackupApi_CreateLegacyBackupRestoreJobExecute_Call {
 	return &LegacyBackupApi_CreateLegacyBackupRestoreJobExecute_Call{Call: _e.mock.On("CreateLegacyBackupRestoreJobExecute", r)}
 }
 
@@ -167,7 +167,7 @@ type LegacyBackupApi_CreateLegacyBackupRestoreJobWithParams_Call struct {
 // CreateLegacyBackupRestoreJobWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.CreateLegacyBackupRestoreJobApiParams
-func (_e *LegacyBackupApi_Expecter) CreateLegacyBackupRestoreJobWithParams(ctx interface{}, args interface{}) *LegacyBackupApi_CreateLegacyBackupRestoreJobWithParams_Call {
+func (_e *LegacyBackupApi_Expecter) CreateLegacyBackupRestoreJobWithParams(ctx any, args any) *LegacyBackupApi_CreateLegacyBackupRestoreJobWithParams_Call {
 	return &LegacyBackupApi_CreateLegacyBackupRestoreJobWithParams_Call{Call: _e.mock.On("CreateLegacyBackupRestoreJobWithParams", ctx, args)}
 }
 
@@ -216,7 +216,7 @@ type LegacyBackupApi_DeleteLegacySnapshot_Call struct {
 //   - groupId string
 //   - clusterName string
 //   - snapshotId string
-func (_e *LegacyBackupApi_Expecter) DeleteLegacySnapshot(ctx interface{}, groupId interface{}, clusterName interface{}, snapshotId interface{}) *LegacyBackupApi_DeleteLegacySnapshot_Call {
+func (_e *LegacyBackupApi_Expecter) DeleteLegacySnapshot(ctx any, groupId any, clusterName any, snapshotId any) *LegacyBackupApi_DeleteLegacySnapshot_Call {
 	return &LegacyBackupApi_DeleteLegacySnapshot_Call{Call: _e.mock.On("DeleteLegacySnapshot", ctx, groupId, clusterName, snapshotId)}
 }
 
@@ -238,24 +238,24 @@ func (_c *LegacyBackupApi_DeleteLegacySnapshot_Call) RunAndReturn(run func(conte
 }
 
 // DeleteLegacySnapshotExecute provides a mock function with given fields: r
-func (_m *LegacyBackupApi) DeleteLegacySnapshotExecute(r admin.DeleteLegacySnapshotApiRequest) (interface{}, *http.Response, error) {
+func (_m *LegacyBackupApi) DeleteLegacySnapshotExecute(r admin.DeleteLegacySnapshotApiRequest) (any, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteLegacySnapshotExecute")
 	}
 
-	var r0 interface{}
+	var r0 any
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteLegacySnapshotApiRequest) (interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteLegacySnapshotApiRequest) (any, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteLegacySnapshotApiRequest) interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteLegacySnapshotApiRequest) any); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(interface{})
+			r0 = ret.Get(0).(any)
 		}
 	}
 
@@ -283,7 +283,7 @@ type LegacyBackupApi_DeleteLegacySnapshotExecute_Call struct {
 
 // DeleteLegacySnapshotExecute is a helper method to define mock.On call
 //   - r admin.DeleteLegacySnapshotApiRequest
-func (_e *LegacyBackupApi_Expecter) DeleteLegacySnapshotExecute(r interface{}) *LegacyBackupApi_DeleteLegacySnapshotExecute_Call {
+func (_e *LegacyBackupApi_Expecter) DeleteLegacySnapshotExecute(r any) *LegacyBackupApi_DeleteLegacySnapshotExecute_Call {
 	return &LegacyBackupApi_DeleteLegacySnapshotExecute_Call{Call: _e.mock.On("DeleteLegacySnapshotExecute", r)}
 }
 
@@ -294,12 +294,12 @@ func (_c *LegacyBackupApi_DeleteLegacySnapshotExecute_Call) Run(run func(r admin
 	return _c
 }
 
-func (_c *LegacyBackupApi_DeleteLegacySnapshotExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *LegacyBackupApi_DeleteLegacySnapshotExecute_Call {
+func (_c *LegacyBackupApi_DeleteLegacySnapshotExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *LegacyBackupApi_DeleteLegacySnapshotExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *LegacyBackupApi_DeleteLegacySnapshotExecute_Call) RunAndReturn(run func(admin.DeleteLegacySnapshotApiRequest) (interface{}, *http.Response, error)) *LegacyBackupApi_DeleteLegacySnapshotExecute_Call {
+func (_c *LegacyBackupApi_DeleteLegacySnapshotExecute_Call) RunAndReturn(run func(admin.DeleteLegacySnapshotApiRequest) (any, *http.Response, error)) *LegacyBackupApi_DeleteLegacySnapshotExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -330,7 +330,7 @@ type LegacyBackupApi_DeleteLegacySnapshotWithParams_Call struct {
 // DeleteLegacySnapshotWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.DeleteLegacySnapshotApiParams
-func (_e *LegacyBackupApi_Expecter) DeleteLegacySnapshotWithParams(ctx interface{}, args interface{}) *LegacyBackupApi_DeleteLegacySnapshotWithParams_Call {
+func (_e *LegacyBackupApi_Expecter) DeleteLegacySnapshotWithParams(ctx any, args any) *LegacyBackupApi_DeleteLegacySnapshotWithParams_Call {
 	return &LegacyBackupApi_DeleteLegacySnapshotWithParams_Call{Call: _e.mock.On("DeleteLegacySnapshotWithParams", ctx, args)}
 }
 
@@ -379,7 +379,7 @@ type LegacyBackupApi_GetLegacyBackupCheckpoint_Call struct {
 //   - groupId string
 //   - checkpointId string
 //   - clusterName string
-func (_e *LegacyBackupApi_Expecter) GetLegacyBackupCheckpoint(ctx interface{}, groupId interface{}, checkpointId interface{}, clusterName interface{}) *LegacyBackupApi_GetLegacyBackupCheckpoint_Call {
+func (_e *LegacyBackupApi_Expecter) GetLegacyBackupCheckpoint(ctx any, groupId any, checkpointId any, clusterName any) *LegacyBackupApi_GetLegacyBackupCheckpoint_Call {
 	return &LegacyBackupApi_GetLegacyBackupCheckpoint_Call{Call: _e.mock.On("GetLegacyBackupCheckpoint", ctx, groupId, checkpointId, clusterName)}
 }
 
@@ -446,7 +446,7 @@ type LegacyBackupApi_GetLegacyBackupCheckpointExecute_Call struct {
 
 // GetLegacyBackupCheckpointExecute is a helper method to define mock.On call
 //   - r admin.GetLegacyBackupCheckpointApiRequest
-func (_e *LegacyBackupApi_Expecter) GetLegacyBackupCheckpointExecute(r interface{}) *LegacyBackupApi_GetLegacyBackupCheckpointExecute_Call {
+func (_e *LegacyBackupApi_Expecter) GetLegacyBackupCheckpointExecute(r any) *LegacyBackupApi_GetLegacyBackupCheckpointExecute_Call {
 	return &LegacyBackupApi_GetLegacyBackupCheckpointExecute_Call{Call: _e.mock.On("GetLegacyBackupCheckpointExecute", r)}
 }
 
@@ -493,7 +493,7 @@ type LegacyBackupApi_GetLegacyBackupCheckpointWithParams_Call struct {
 // GetLegacyBackupCheckpointWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetLegacyBackupCheckpointApiParams
-func (_e *LegacyBackupApi_Expecter) GetLegacyBackupCheckpointWithParams(ctx interface{}, args interface{}) *LegacyBackupApi_GetLegacyBackupCheckpointWithParams_Call {
+func (_e *LegacyBackupApi_Expecter) GetLegacyBackupCheckpointWithParams(ctx any, args any) *LegacyBackupApi_GetLegacyBackupCheckpointWithParams_Call {
 	return &LegacyBackupApi_GetLegacyBackupCheckpointWithParams_Call{Call: _e.mock.On("GetLegacyBackupCheckpointWithParams", ctx, args)}
 }
 
@@ -542,7 +542,7 @@ type LegacyBackupApi_GetLegacyBackupRestoreJob_Call struct {
 //   - groupId string
 //   - clusterName string
 //   - jobId string
-func (_e *LegacyBackupApi_Expecter) GetLegacyBackupRestoreJob(ctx interface{}, groupId interface{}, clusterName interface{}, jobId interface{}) *LegacyBackupApi_GetLegacyBackupRestoreJob_Call {
+func (_e *LegacyBackupApi_Expecter) GetLegacyBackupRestoreJob(ctx any, groupId any, clusterName any, jobId any) *LegacyBackupApi_GetLegacyBackupRestoreJob_Call {
 	return &LegacyBackupApi_GetLegacyBackupRestoreJob_Call{Call: _e.mock.On("GetLegacyBackupRestoreJob", ctx, groupId, clusterName, jobId)}
 }
 
@@ -609,7 +609,7 @@ type LegacyBackupApi_GetLegacyBackupRestoreJobExecute_Call struct {
 
 // GetLegacyBackupRestoreJobExecute is a helper method to define mock.On call
 //   - r admin.GetLegacyBackupRestoreJobApiRequest
-func (_e *LegacyBackupApi_Expecter) GetLegacyBackupRestoreJobExecute(r interface{}) *LegacyBackupApi_GetLegacyBackupRestoreJobExecute_Call {
+func (_e *LegacyBackupApi_Expecter) GetLegacyBackupRestoreJobExecute(r any) *LegacyBackupApi_GetLegacyBackupRestoreJobExecute_Call {
 	return &LegacyBackupApi_GetLegacyBackupRestoreJobExecute_Call{Call: _e.mock.On("GetLegacyBackupRestoreJobExecute", r)}
 }
 
@@ -656,7 +656,7 @@ type LegacyBackupApi_GetLegacyBackupRestoreJobWithParams_Call struct {
 // GetLegacyBackupRestoreJobWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetLegacyBackupRestoreJobApiParams
-func (_e *LegacyBackupApi_Expecter) GetLegacyBackupRestoreJobWithParams(ctx interface{}, args interface{}) *LegacyBackupApi_GetLegacyBackupRestoreJobWithParams_Call {
+func (_e *LegacyBackupApi_Expecter) GetLegacyBackupRestoreJobWithParams(ctx any, args any) *LegacyBackupApi_GetLegacyBackupRestoreJobWithParams_Call {
 	return &LegacyBackupApi_GetLegacyBackupRestoreJobWithParams_Call{Call: _e.mock.On("GetLegacyBackupRestoreJobWithParams", ctx, args)}
 }
 
@@ -705,7 +705,7 @@ type LegacyBackupApi_GetLegacySnapshot_Call struct {
 //   - groupId string
 //   - clusterName string
 //   - snapshotId string
-func (_e *LegacyBackupApi_Expecter) GetLegacySnapshot(ctx interface{}, groupId interface{}, clusterName interface{}, snapshotId interface{}) *LegacyBackupApi_GetLegacySnapshot_Call {
+func (_e *LegacyBackupApi_Expecter) GetLegacySnapshot(ctx any, groupId any, clusterName any, snapshotId any) *LegacyBackupApi_GetLegacySnapshot_Call {
 	return &LegacyBackupApi_GetLegacySnapshot_Call{Call: _e.mock.On("GetLegacySnapshot", ctx, groupId, clusterName, snapshotId)}
 }
 
@@ -772,7 +772,7 @@ type LegacyBackupApi_GetLegacySnapshotExecute_Call struct {
 
 // GetLegacySnapshotExecute is a helper method to define mock.On call
 //   - r admin.GetLegacySnapshotApiRequest
-func (_e *LegacyBackupApi_Expecter) GetLegacySnapshotExecute(r interface{}) *LegacyBackupApi_GetLegacySnapshotExecute_Call {
+func (_e *LegacyBackupApi_Expecter) GetLegacySnapshotExecute(r any) *LegacyBackupApi_GetLegacySnapshotExecute_Call {
 	return &LegacyBackupApi_GetLegacySnapshotExecute_Call{Call: _e.mock.On("GetLegacySnapshotExecute", r)}
 }
 
@@ -820,7 +820,7 @@ type LegacyBackupApi_GetLegacySnapshotSchedule_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
-func (_e *LegacyBackupApi_Expecter) GetLegacySnapshotSchedule(ctx interface{}, groupId interface{}, clusterName interface{}) *LegacyBackupApi_GetLegacySnapshotSchedule_Call {
+func (_e *LegacyBackupApi_Expecter) GetLegacySnapshotSchedule(ctx any, groupId any, clusterName any) *LegacyBackupApi_GetLegacySnapshotSchedule_Call {
 	return &LegacyBackupApi_GetLegacySnapshotSchedule_Call{Call: _e.mock.On("GetLegacySnapshotSchedule", ctx, groupId, clusterName)}
 }
 
@@ -887,7 +887,7 @@ type LegacyBackupApi_GetLegacySnapshotScheduleExecute_Call struct {
 
 // GetLegacySnapshotScheduleExecute is a helper method to define mock.On call
 //   - r admin.GetLegacySnapshotScheduleApiRequest
-func (_e *LegacyBackupApi_Expecter) GetLegacySnapshotScheduleExecute(r interface{}) *LegacyBackupApi_GetLegacySnapshotScheduleExecute_Call {
+func (_e *LegacyBackupApi_Expecter) GetLegacySnapshotScheduleExecute(r any) *LegacyBackupApi_GetLegacySnapshotScheduleExecute_Call {
 	return &LegacyBackupApi_GetLegacySnapshotScheduleExecute_Call{Call: _e.mock.On("GetLegacySnapshotScheduleExecute", r)}
 }
 
@@ -934,7 +934,7 @@ type LegacyBackupApi_GetLegacySnapshotScheduleWithParams_Call struct {
 // GetLegacySnapshotScheduleWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetLegacySnapshotScheduleApiParams
-func (_e *LegacyBackupApi_Expecter) GetLegacySnapshotScheduleWithParams(ctx interface{}, args interface{}) *LegacyBackupApi_GetLegacySnapshotScheduleWithParams_Call {
+func (_e *LegacyBackupApi_Expecter) GetLegacySnapshotScheduleWithParams(ctx any, args any) *LegacyBackupApi_GetLegacySnapshotScheduleWithParams_Call {
 	return &LegacyBackupApi_GetLegacySnapshotScheduleWithParams_Call{Call: _e.mock.On("GetLegacySnapshotScheduleWithParams", ctx, args)}
 }
 
@@ -981,7 +981,7 @@ type LegacyBackupApi_GetLegacySnapshotWithParams_Call struct {
 // GetLegacySnapshotWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetLegacySnapshotApiParams
-func (_e *LegacyBackupApi_Expecter) GetLegacySnapshotWithParams(ctx interface{}, args interface{}) *LegacyBackupApi_GetLegacySnapshotWithParams_Call {
+func (_e *LegacyBackupApi_Expecter) GetLegacySnapshotWithParams(ctx any, args any) *LegacyBackupApi_GetLegacySnapshotWithParams_Call {
 	return &LegacyBackupApi_GetLegacySnapshotWithParams_Call{Call: _e.mock.On("GetLegacySnapshotWithParams", ctx, args)}
 }
 
@@ -1029,7 +1029,7 @@ type LegacyBackupApi_ListLegacyBackupCheckpoints_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
-func (_e *LegacyBackupApi_Expecter) ListLegacyBackupCheckpoints(ctx interface{}, groupId interface{}, clusterName interface{}) *LegacyBackupApi_ListLegacyBackupCheckpoints_Call {
+func (_e *LegacyBackupApi_Expecter) ListLegacyBackupCheckpoints(ctx any, groupId any, clusterName any) *LegacyBackupApi_ListLegacyBackupCheckpoints_Call {
 	return &LegacyBackupApi_ListLegacyBackupCheckpoints_Call{Call: _e.mock.On("ListLegacyBackupCheckpoints", ctx, groupId, clusterName)}
 }
 
@@ -1096,7 +1096,7 @@ type LegacyBackupApi_ListLegacyBackupCheckpointsExecute_Call struct {
 
 // ListLegacyBackupCheckpointsExecute is a helper method to define mock.On call
 //   - r admin.ListLegacyBackupCheckpointsApiRequest
-func (_e *LegacyBackupApi_Expecter) ListLegacyBackupCheckpointsExecute(r interface{}) *LegacyBackupApi_ListLegacyBackupCheckpointsExecute_Call {
+func (_e *LegacyBackupApi_Expecter) ListLegacyBackupCheckpointsExecute(r any) *LegacyBackupApi_ListLegacyBackupCheckpointsExecute_Call {
 	return &LegacyBackupApi_ListLegacyBackupCheckpointsExecute_Call{Call: _e.mock.On("ListLegacyBackupCheckpointsExecute", r)}
 }
 
@@ -1143,7 +1143,7 @@ type LegacyBackupApi_ListLegacyBackupCheckpointsWithParams_Call struct {
 // ListLegacyBackupCheckpointsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListLegacyBackupCheckpointsApiParams
-func (_e *LegacyBackupApi_Expecter) ListLegacyBackupCheckpointsWithParams(ctx interface{}, args interface{}) *LegacyBackupApi_ListLegacyBackupCheckpointsWithParams_Call {
+func (_e *LegacyBackupApi_Expecter) ListLegacyBackupCheckpointsWithParams(ctx any, args any) *LegacyBackupApi_ListLegacyBackupCheckpointsWithParams_Call {
 	return &LegacyBackupApi_ListLegacyBackupCheckpointsWithParams_Call{Call: _e.mock.On("ListLegacyBackupCheckpointsWithParams", ctx, args)}
 }
 
@@ -1191,7 +1191,7 @@ type LegacyBackupApi_ListLegacyBackupRestoreJobs_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
-func (_e *LegacyBackupApi_Expecter) ListLegacyBackupRestoreJobs(ctx interface{}, groupId interface{}, clusterName interface{}) *LegacyBackupApi_ListLegacyBackupRestoreJobs_Call {
+func (_e *LegacyBackupApi_Expecter) ListLegacyBackupRestoreJobs(ctx any, groupId any, clusterName any) *LegacyBackupApi_ListLegacyBackupRestoreJobs_Call {
 	return &LegacyBackupApi_ListLegacyBackupRestoreJobs_Call{Call: _e.mock.On("ListLegacyBackupRestoreJobs", ctx, groupId, clusterName)}
 }
 
@@ -1258,7 +1258,7 @@ type LegacyBackupApi_ListLegacyBackupRestoreJobsExecute_Call struct {
 
 // ListLegacyBackupRestoreJobsExecute is a helper method to define mock.On call
 //   - r admin.ListLegacyBackupRestoreJobsApiRequest
-func (_e *LegacyBackupApi_Expecter) ListLegacyBackupRestoreJobsExecute(r interface{}) *LegacyBackupApi_ListLegacyBackupRestoreJobsExecute_Call {
+func (_e *LegacyBackupApi_Expecter) ListLegacyBackupRestoreJobsExecute(r any) *LegacyBackupApi_ListLegacyBackupRestoreJobsExecute_Call {
 	return &LegacyBackupApi_ListLegacyBackupRestoreJobsExecute_Call{Call: _e.mock.On("ListLegacyBackupRestoreJobsExecute", r)}
 }
 
@@ -1305,7 +1305,7 @@ type LegacyBackupApi_ListLegacyBackupRestoreJobsWithParams_Call struct {
 // ListLegacyBackupRestoreJobsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListLegacyBackupRestoreJobsApiParams
-func (_e *LegacyBackupApi_Expecter) ListLegacyBackupRestoreJobsWithParams(ctx interface{}, args interface{}) *LegacyBackupApi_ListLegacyBackupRestoreJobsWithParams_Call {
+func (_e *LegacyBackupApi_Expecter) ListLegacyBackupRestoreJobsWithParams(ctx any, args any) *LegacyBackupApi_ListLegacyBackupRestoreJobsWithParams_Call {
 	return &LegacyBackupApi_ListLegacyBackupRestoreJobsWithParams_Call{Call: _e.mock.On("ListLegacyBackupRestoreJobsWithParams", ctx, args)}
 }
 
@@ -1353,7 +1353,7 @@ type LegacyBackupApi_ListLegacySnapshots_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
-func (_e *LegacyBackupApi_Expecter) ListLegacySnapshots(ctx interface{}, groupId interface{}, clusterName interface{}) *LegacyBackupApi_ListLegacySnapshots_Call {
+func (_e *LegacyBackupApi_Expecter) ListLegacySnapshots(ctx any, groupId any, clusterName any) *LegacyBackupApi_ListLegacySnapshots_Call {
 	return &LegacyBackupApi_ListLegacySnapshots_Call{Call: _e.mock.On("ListLegacySnapshots", ctx, groupId, clusterName)}
 }
 
@@ -1420,7 +1420,7 @@ type LegacyBackupApi_ListLegacySnapshotsExecute_Call struct {
 
 // ListLegacySnapshotsExecute is a helper method to define mock.On call
 //   - r admin.ListLegacySnapshotsApiRequest
-func (_e *LegacyBackupApi_Expecter) ListLegacySnapshotsExecute(r interface{}) *LegacyBackupApi_ListLegacySnapshotsExecute_Call {
+func (_e *LegacyBackupApi_Expecter) ListLegacySnapshotsExecute(r any) *LegacyBackupApi_ListLegacySnapshotsExecute_Call {
 	return &LegacyBackupApi_ListLegacySnapshotsExecute_Call{Call: _e.mock.On("ListLegacySnapshotsExecute", r)}
 }
 
@@ -1467,7 +1467,7 @@ type LegacyBackupApi_ListLegacySnapshotsWithParams_Call struct {
 // ListLegacySnapshotsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListLegacySnapshotsApiParams
-func (_e *LegacyBackupApi_Expecter) ListLegacySnapshotsWithParams(ctx interface{}, args interface{}) *LegacyBackupApi_ListLegacySnapshotsWithParams_Call {
+func (_e *LegacyBackupApi_Expecter) ListLegacySnapshotsWithParams(ctx any, args any) *LegacyBackupApi_ListLegacySnapshotsWithParams_Call {
 	return &LegacyBackupApi_ListLegacySnapshotsWithParams_Call{Call: _e.mock.On("ListLegacySnapshotsWithParams", ctx, args)}
 }
 
@@ -1517,7 +1517,7 @@ type LegacyBackupApi_UpdateLegacySnapshotRetention_Call struct {
 //   - clusterName string
 //   - snapshotId string
 //   - backupSnapshot *admin.BackupSnapshot
-func (_e *LegacyBackupApi_Expecter) UpdateLegacySnapshotRetention(ctx interface{}, groupId interface{}, clusterName interface{}, snapshotId interface{}, backupSnapshot interface{}) *LegacyBackupApi_UpdateLegacySnapshotRetention_Call {
+func (_e *LegacyBackupApi_Expecter) UpdateLegacySnapshotRetention(ctx any, groupId any, clusterName any, snapshotId any, backupSnapshot any) *LegacyBackupApi_UpdateLegacySnapshotRetention_Call {
 	return &LegacyBackupApi_UpdateLegacySnapshotRetention_Call{Call: _e.mock.On("UpdateLegacySnapshotRetention", ctx, groupId, clusterName, snapshotId, backupSnapshot)}
 }
 
@@ -1584,7 +1584,7 @@ type LegacyBackupApi_UpdateLegacySnapshotRetentionExecute_Call struct {
 
 // UpdateLegacySnapshotRetentionExecute is a helper method to define mock.On call
 //   - r admin.UpdateLegacySnapshotRetentionApiRequest
-func (_e *LegacyBackupApi_Expecter) UpdateLegacySnapshotRetentionExecute(r interface{}) *LegacyBackupApi_UpdateLegacySnapshotRetentionExecute_Call {
+func (_e *LegacyBackupApi_Expecter) UpdateLegacySnapshotRetentionExecute(r any) *LegacyBackupApi_UpdateLegacySnapshotRetentionExecute_Call {
 	return &LegacyBackupApi_UpdateLegacySnapshotRetentionExecute_Call{Call: _e.mock.On("UpdateLegacySnapshotRetentionExecute", r)}
 }
 
@@ -1631,7 +1631,7 @@ type LegacyBackupApi_UpdateLegacySnapshotRetentionWithParams_Call struct {
 // UpdateLegacySnapshotRetentionWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.UpdateLegacySnapshotRetentionApiParams
-func (_e *LegacyBackupApi_Expecter) UpdateLegacySnapshotRetentionWithParams(ctx interface{}, args interface{}) *LegacyBackupApi_UpdateLegacySnapshotRetentionWithParams_Call {
+func (_e *LegacyBackupApi_Expecter) UpdateLegacySnapshotRetentionWithParams(ctx any, args any) *LegacyBackupApi_UpdateLegacySnapshotRetentionWithParams_Call {
 	return &LegacyBackupApi_UpdateLegacySnapshotRetentionWithParams_Call{Call: _e.mock.On("UpdateLegacySnapshotRetentionWithParams", ctx, args)}
 }
 
@@ -1680,7 +1680,7 @@ type LegacyBackupApi_UpdateLegacySnapshotSchedule_Call struct {
 //   - groupId string
 //   - clusterName string
 //   - apiAtlasSnapshotSchedule *admin.ApiAtlasSnapshotSchedule
-func (_e *LegacyBackupApi_Expecter) UpdateLegacySnapshotSchedule(ctx interface{}, groupId interface{}, clusterName interface{}, apiAtlasSnapshotSchedule interface{}) *LegacyBackupApi_UpdateLegacySnapshotSchedule_Call {
+func (_e *LegacyBackupApi_Expecter) UpdateLegacySnapshotSchedule(ctx any, groupId any, clusterName any, apiAtlasSnapshotSchedule any) *LegacyBackupApi_UpdateLegacySnapshotSchedule_Call {
 	return &LegacyBackupApi_UpdateLegacySnapshotSchedule_Call{Call: _e.mock.On("UpdateLegacySnapshotSchedule", ctx, groupId, clusterName, apiAtlasSnapshotSchedule)}
 }
 
@@ -1747,7 +1747,7 @@ type LegacyBackupApi_UpdateLegacySnapshotScheduleExecute_Call struct {
 
 // UpdateLegacySnapshotScheduleExecute is a helper method to define mock.On call
 //   - r admin.UpdateLegacySnapshotScheduleApiRequest
-func (_e *LegacyBackupApi_Expecter) UpdateLegacySnapshotScheduleExecute(r interface{}) *LegacyBackupApi_UpdateLegacySnapshotScheduleExecute_Call {
+func (_e *LegacyBackupApi_Expecter) UpdateLegacySnapshotScheduleExecute(r any) *LegacyBackupApi_UpdateLegacySnapshotScheduleExecute_Call {
 	return &LegacyBackupApi_UpdateLegacySnapshotScheduleExecute_Call{Call: _e.mock.On("UpdateLegacySnapshotScheduleExecute", r)}
 }
 
@@ -1794,7 +1794,7 @@ type LegacyBackupApi_UpdateLegacySnapshotScheduleWithParams_Call struct {
 // UpdateLegacySnapshotScheduleWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.UpdateLegacySnapshotScheduleApiParams
-func (_e *LegacyBackupApi_Expecter) UpdateLegacySnapshotScheduleWithParams(ctx interface{}, args interface{}) *LegacyBackupApi_UpdateLegacySnapshotScheduleWithParams_Call {
+func (_e *LegacyBackupApi_Expecter) UpdateLegacySnapshotScheduleWithParams(ctx any, args any) *LegacyBackupApi_UpdateLegacySnapshotScheduleWithParams_Call {
 	return &LegacyBackupApi_UpdateLegacySnapshotScheduleWithParams_Call{Call: _e.mock.On("UpdateLegacySnapshotScheduleWithParams", ctx, args)}
 }
 

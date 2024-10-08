@@ -51,7 +51,7 @@ type OrganizationsApi_CreateOrganization_Call struct {
 // CreateOrganization is a helper method to define mock.On call
 //   - ctx context.Context
 //   - createOrganizationRequest *admin.CreateOrganizationRequest
-func (_e *OrganizationsApi_Expecter) CreateOrganization(ctx interface{}, createOrganizationRequest interface{}) *OrganizationsApi_CreateOrganization_Call {
+func (_e *OrganizationsApi_Expecter) CreateOrganization(ctx any, createOrganizationRequest any) *OrganizationsApi_CreateOrganization_Call {
 	return &OrganizationsApi_CreateOrganization_Call{Call: _e.mock.On("CreateOrganization", ctx, createOrganizationRequest)}
 }
 
@@ -118,7 +118,7 @@ type OrganizationsApi_CreateOrganizationExecute_Call struct {
 
 // CreateOrganizationExecute is a helper method to define mock.On call
 //   - r admin.CreateOrganizationApiRequest
-func (_e *OrganizationsApi_Expecter) CreateOrganizationExecute(r interface{}) *OrganizationsApi_CreateOrganizationExecute_Call {
+func (_e *OrganizationsApi_Expecter) CreateOrganizationExecute(r any) *OrganizationsApi_CreateOrganizationExecute_Call {
 	return &OrganizationsApi_CreateOrganizationExecute_Call{Call: _e.mock.On("CreateOrganizationExecute", r)}
 }
 
@@ -166,7 +166,7 @@ type OrganizationsApi_CreateOrganizationInvitation_Call struct {
 //   - ctx context.Context
 //   - orgId string
 //   - organizationInvitationRequest *admin.OrganizationInvitationRequest
-func (_e *OrganizationsApi_Expecter) CreateOrganizationInvitation(ctx interface{}, orgId interface{}, organizationInvitationRequest interface{}) *OrganizationsApi_CreateOrganizationInvitation_Call {
+func (_e *OrganizationsApi_Expecter) CreateOrganizationInvitation(ctx any, orgId any, organizationInvitationRequest any) *OrganizationsApi_CreateOrganizationInvitation_Call {
 	return &OrganizationsApi_CreateOrganizationInvitation_Call{Call: _e.mock.On("CreateOrganizationInvitation", ctx, orgId, organizationInvitationRequest)}
 }
 
@@ -233,7 +233,7 @@ type OrganizationsApi_CreateOrganizationInvitationExecute_Call struct {
 
 // CreateOrganizationInvitationExecute is a helper method to define mock.On call
 //   - r admin.CreateOrganizationInvitationApiRequest
-func (_e *OrganizationsApi_Expecter) CreateOrganizationInvitationExecute(r interface{}) *OrganizationsApi_CreateOrganizationInvitationExecute_Call {
+func (_e *OrganizationsApi_Expecter) CreateOrganizationInvitationExecute(r any) *OrganizationsApi_CreateOrganizationInvitationExecute_Call {
 	return &OrganizationsApi_CreateOrganizationInvitationExecute_Call{Call: _e.mock.On("CreateOrganizationInvitationExecute", r)}
 }
 
@@ -280,7 +280,7 @@ type OrganizationsApi_CreateOrganizationInvitationWithParams_Call struct {
 // CreateOrganizationInvitationWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.CreateOrganizationInvitationApiParams
-func (_e *OrganizationsApi_Expecter) CreateOrganizationInvitationWithParams(ctx interface{}, args interface{}) *OrganizationsApi_CreateOrganizationInvitationWithParams_Call {
+func (_e *OrganizationsApi_Expecter) CreateOrganizationInvitationWithParams(ctx any, args any) *OrganizationsApi_CreateOrganizationInvitationWithParams_Call {
 	return &OrganizationsApi_CreateOrganizationInvitationWithParams_Call{Call: _e.mock.On("CreateOrganizationInvitationWithParams", ctx, args)}
 }
 
@@ -327,7 +327,7 @@ type OrganizationsApi_CreateOrganizationWithParams_Call struct {
 // CreateOrganizationWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.CreateOrganizationApiParams
-func (_e *OrganizationsApi_Expecter) CreateOrganizationWithParams(ctx interface{}, args interface{}) *OrganizationsApi_CreateOrganizationWithParams_Call {
+func (_e *OrganizationsApi_Expecter) CreateOrganizationWithParams(ctx any, args any) *OrganizationsApi_CreateOrganizationWithParams_Call {
 	return &OrganizationsApi_CreateOrganizationWithParams_Call{Call: _e.mock.On("CreateOrganizationWithParams", ctx, args)}
 }
 
@@ -374,7 +374,7 @@ type OrganizationsApi_DeleteOrganization_Call struct {
 // DeleteOrganization is a helper method to define mock.On call
 //   - ctx context.Context
 //   - orgId string
-func (_e *OrganizationsApi_Expecter) DeleteOrganization(ctx interface{}, orgId interface{}) *OrganizationsApi_DeleteOrganization_Call {
+func (_e *OrganizationsApi_Expecter) DeleteOrganization(ctx any, orgId any) *OrganizationsApi_DeleteOrganization_Call {
 	return &OrganizationsApi_DeleteOrganization_Call{Call: _e.mock.On("DeleteOrganization", ctx, orgId)}
 }
 
@@ -396,24 +396,24 @@ func (_c *OrganizationsApi_DeleteOrganization_Call) RunAndReturn(run func(contex
 }
 
 // DeleteOrganizationExecute provides a mock function with given fields: r
-func (_m *OrganizationsApi) DeleteOrganizationExecute(r admin.DeleteOrganizationApiRequest) (interface{}, *http.Response, error) {
+func (_m *OrganizationsApi) DeleteOrganizationExecute(r admin.DeleteOrganizationApiRequest) (any, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteOrganizationExecute")
 	}
 
-	var r0 interface{}
+	var r0 any
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteOrganizationApiRequest) (interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteOrganizationApiRequest) (any, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteOrganizationApiRequest) interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteOrganizationApiRequest) any); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(interface{})
+			r0 = ret.Get(0).(any)
 		}
 	}
 
@@ -441,7 +441,7 @@ type OrganizationsApi_DeleteOrganizationExecute_Call struct {
 
 // DeleteOrganizationExecute is a helper method to define mock.On call
 //   - r admin.DeleteOrganizationApiRequest
-func (_e *OrganizationsApi_Expecter) DeleteOrganizationExecute(r interface{}) *OrganizationsApi_DeleteOrganizationExecute_Call {
+func (_e *OrganizationsApi_Expecter) DeleteOrganizationExecute(r any) *OrganizationsApi_DeleteOrganizationExecute_Call {
 	return &OrganizationsApi_DeleteOrganizationExecute_Call{Call: _e.mock.On("DeleteOrganizationExecute", r)}
 }
 
@@ -452,12 +452,12 @@ func (_c *OrganizationsApi_DeleteOrganizationExecute_Call) Run(run func(r admin.
 	return _c
 }
 
-func (_c *OrganizationsApi_DeleteOrganizationExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *OrganizationsApi_DeleteOrganizationExecute_Call {
+func (_c *OrganizationsApi_DeleteOrganizationExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *OrganizationsApi_DeleteOrganizationExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *OrganizationsApi_DeleteOrganizationExecute_Call) RunAndReturn(run func(admin.DeleteOrganizationApiRequest) (interface{}, *http.Response, error)) *OrganizationsApi_DeleteOrganizationExecute_Call {
+func (_c *OrganizationsApi_DeleteOrganizationExecute_Call) RunAndReturn(run func(admin.DeleteOrganizationApiRequest) (any, *http.Response, error)) *OrganizationsApi_DeleteOrganizationExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -489,7 +489,7 @@ type OrganizationsApi_DeleteOrganizationInvitation_Call struct {
 //   - ctx context.Context
 //   - orgId string
 //   - invitationId string
-func (_e *OrganizationsApi_Expecter) DeleteOrganizationInvitation(ctx interface{}, orgId interface{}, invitationId interface{}) *OrganizationsApi_DeleteOrganizationInvitation_Call {
+func (_e *OrganizationsApi_Expecter) DeleteOrganizationInvitation(ctx any, orgId any, invitationId any) *OrganizationsApi_DeleteOrganizationInvitation_Call {
 	return &OrganizationsApi_DeleteOrganizationInvitation_Call{Call: _e.mock.On("DeleteOrganizationInvitation", ctx, orgId, invitationId)}
 }
 
@@ -511,24 +511,24 @@ func (_c *OrganizationsApi_DeleteOrganizationInvitation_Call) RunAndReturn(run f
 }
 
 // DeleteOrganizationInvitationExecute provides a mock function with given fields: r
-func (_m *OrganizationsApi) DeleteOrganizationInvitationExecute(r admin.DeleteOrganizationInvitationApiRequest) (interface{}, *http.Response, error) {
+func (_m *OrganizationsApi) DeleteOrganizationInvitationExecute(r admin.DeleteOrganizationInvitationApiRequest) (any, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteOrganizationInvitationExecute")
 	}
 
-	var r0 interface{}
+	var r0 any
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteOrganizationInvitationApiRequest) (interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteOrganizationInvitationApiRequest) (any, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteOrganizationInvitationApiRequest) interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteOrganizationInvitationApiRequest) any); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(interface{})
+			r0 = ret.Get(0).(any)
 		}
 	}
 
@@ -556,7 +556,7 @@ type OrganizationsApi_DeleteOrganizationInvitationExecute_Call struct {
 
 // DeleteOrganizationInvitationExecute is a helper method to define mock.On call
 //   - r admin.DeleteOrganizationInvitationApiRequest
-func (_e *OrganizationsApi_Expecter) DeleteOrganizationInvitationExecute(r interface{}) *OrganizationsApi_DeleteOrganizationInvitationExecute_Call {
+func (_e *OrganizationsApi_Expecter) DeleteOrganizationInvitationExecute(r any) *OrganizationsApi_DeleteOrganizationInvitationExecute_Call {
 	return &OrganizationsApi_DeleteOrganizationInvitationExecute_Call{Call: _e.mock.On("DeleteOrganizationInvitationExecute", r)}
 }
 
@@ -567,12 +567,12 @@ func (_c *OrganizationsApi_DeleteOrganizationInvitationExecute_Call) Run(run fun
 	return _c
 }
 
-func (_c *OrganizationsApi_DeleteOrganizationInvitationExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *OrganizationsApi_DeleteOrganizationInvitationExecute_Call {
+func (_c *OrganizationsApi_DeleteOrganizationInvitationExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *OrganizationsApi_DeleteOrganizationInvitationExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *OrganizationsApi_DeleteOrganizationInvitationExecute_Call) RunAndReturn(run func(admin.DeleteOrganizationInvitationApiRequest) (interface{}, *http.Response, error)) *OrganizationsApi_DeleteOrganizationInvitationExecute_Call {
+func (_c *OrganizationsApi_DeleteOrganizationInvitationExecute_Call) RunAndReturn(run func(admin.DeleteOrganizationInvitationApiRequest) (any, *http.Response, error)) *OrganizationsApi_DeleteOrganizationInvitationExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -603,7 +603,7 @@ type OrganizationsApi_DeleteOrganizationInvitationWithParams_Call struct {
 // DeleteOrganizationInvitationWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.DeleteOrganizationInvitationApiParams
-func (_e *OrganizationsApi_Expecter) DeleteOrganizationInvitationWithParams(ctx interface{}, args interface{}) *OrganizationsApi_DeleteOrganizationInvitationWithParams_Call {
+func (_e *OrganizationsApi_Expecter) DeleteOrganizationInvitationWithParams(ctx any, args any) *OrganizationsApi_DeleteOrganizationInvitationWithParams_Call {
 	return &OrganizationsApi_DeleteOrganizationInvitationWithParams_Call{Call: _e.mock.On("DeleteOrganizationInvitationWithParams", ctx, args)}
 }
 
@@ -650,7 +650,7 @@ type OrganizationsApi_DeleteOrganizationWithParams_Call struct {
 // DeleteOrganizationWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.DeleteOrganizationApiParams
-func (_e *OrganizationsApi_Expecter) DeleteOrganizationWithParams(ctx interface{}, args interface{}) *OrganizationsApi_DeleteOrganizationWithParams_Call {
+func (_e *OrganizationsApi_Expecter) DeleteOrganizationWithParams(ctx any, args any) *OrganizationsApi_DeleteOrganizationWithParams_Call {
 	return &OrganizationsApi_DeleteOrganizationWithParams_Call{Call: _e.mock.On("DeleteOrganizationWithParams", ctx, args)}
 }
 
@@ -697,7 +697,7 @@ type OrganizationsApi_GetOrganization_Call struct {
 // GetOrganization is a helper method to define mock.On call
 //   - ctx context.Context
 //   - orgId string
-func (_e *OrganizationsApi_Expecter) GetOrganization(ctx interface{}, orgId interface{}) *OrganizationsApi_GetOrganization_Call {
+func (_e *OrganizationsApi_Expecter) GetOrganization(ctx any, orgId any) *OrganizationsApi_GetOrganization_Call {
 	return &OrganizationsApi_GetOrganization_Call{Call: _e.mock.On("GetOrganization", ctx, orgId)}
 }
 
@@ -764,7 +764,7 @@ type OrganizationsApi_GetOrganizationExecute_Call struct {
 
 // GetOrganizationExecute is a helper method to define mock.On call
 //   - r admin.GetOrganizationApiRequest
-func (_e *OrganizationsApi_Expecter) GetOrganizationExecute(r interface{}) *OrganizationsApi_GetOrganizationExecute_Call {
+func (_e *OrganizationsApi_Expecter) GetOrganizationExecute(r any) *OrganizationsApi_GetOrganizationExecute_Call {
 	return &OrganizationsApi_GetOrganizationExecute_Call{Call: _e.mock.On("GetOrganizationExecute", r)}
 }
 
@@ -812,7 +812,7 @@ type OrganizationsApi_GetOrganizationInvitation_Call struct {
 //   - ctx context.Context
 //   - orgId string
 //   - invitationId string
-func (_e *OrganizationsApi_Expecter) GetOrganizationInvitation(ctx interface{}, orgId interface{}, invitationId interface{}) *OrganizationsApi_GetOrganizationInvitation_Call {
+func (_e *OrganizationsApi_Expecter) GetOrganizationInvitation(ctx any, orgId any, invitationId any) *OrganizationsApi_GetOrganizationInvitation_Call {
 	return &OrganizationsApi_GetOrganizationInvitation_Call{Call: _e.mock.On("GetOrganizationInvitation", ctx, orgId, invitationId)}
 }
 
@@ -879,7 +879,7 @@ type OrganizationsApi_GetOrganizationInvitationExecute_Call struct {
 
 // GetOrganizationInvitationExecute is a helper method to define mock.On call
 //   - r admin.GetOrganizationInvitationApiRequest
-func (_e *OrganizationsApi_Expecter) GetOrganizationInvitationExecute(r interface{}) *OrganizationsApi_GetOrganizationInvitationExecute_Call {
+func (_e *OrganizationsApi_Expecter) GetOrganizationInvitationExecute(r any) *OrganizationsApi_GetOrganizationInvitationExecute_Call {
 	return &OrganizationsApi_GetOrganizationInvitationExecute_Call{Call: _e.mock.On("GetOrganizationInvitationExecute", r)}
 }
 
@@ -926,7 +926,7 @@ type OrganizationsApi_GetOrganizationInvitationWithParams_Call struct {
 // GetOrganizationInvitationWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetOrganizationInvitationApiParams
-func (_e *OrganizationsApi_Expecter) GetOrganizationInvitationWithParams(ctx interface{}, args interface{}) *OrganizationsApi_GetOrganizationInvitationWithParams_Call {
+func (_e *OrganizationsApi_Expecter) GetOrganizationInvitationWithParams(ctx any, args any) *OrganizationsApi_GetOrganizationInvitationWithParams_Call {
 	return &OrganizationsApi_GetOrganizationInvitationWithParams_Call{Call: _e.mock.On("GetOrganizationInvitationWithParams", ctx, args)}
 }
 
@@ -973,7 +973,7 @@ type OrganizationsApi_GetOrganizationSettings_Call struct {
 // GetOrganizationSettings is a helper method to define mock.On call
 //   - ctx context.Context
 //   - orgId string
-func (_e *OrganizationsApi_Expecter) GetOrganizationSettings(ctx interface{}, orgId interface{}) *OrganizationsApi_GetOrganizationSettings_Call {
+func (_e *OrganizationsApi_Expecter) GetOrganizationSettings(ctx any, orgId any) *OrganizationsApi_GetOrganizationSettings_Call {
 	return &OrganizationsApi_GetOrganizationSettings_Call{Call: _e.mock.On("GetOrganizationSettings", ctx, orgId)}
 }
 
@@ -1040,7 +1040,7 @@ type OrganizationsApi_GetOrganizationSettingsExecute_Call struct {
 
 // GetOrganizationSettingsExecute is a helper method to define mock.On call
 //   - r admin.GetOrganizationSettingsApiRequest
-func (_e *OrganizationsApi_Expecter) GetOrganizationSettingsExecute(r interface{}) *OrganizationsApi_GetOrganizationSettingsExecute_Call {
+func (_e *OrganizationsApi_Expecter) GetOrganizationSettingsExecute(r any) *OrganizationsApi_GetOrganizationSettingsExecute_Call {
 	return &OrganizationsApi_GetOrganizationSettingsExecute_Call{Call: _e.mock.On("GetOrganizationSettingsExecute", r)}
 }
 
@@ -1087,7 +1087,7 @@ type OrganizationsApi_GetOrganizationSettingsWithParams_Call struct {
 // GetOrganizationSettingsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetOrganizationSettingsApiParams
-func (_e *OrganizationsApi_Expecter) GetOrganizationSettingsWithParams(ctx interface{}, args interface{}) *OrganizationsApi_GetOrganizationSettingsWithParams_Call {
+func (_e *OrganizationsApi_Expecter) GetOrganizationSettingsWithParams(ctx any, args any) *OrganizationsApi_GetOrganizationSettingsWithParams_Call {
 	return &OrganizationsApi_GetOrganizationSettingsWithParams_Call{Call: _e.mock.On("GetOrganizationSettingsWithParams", ctx, args)}
 }
 
@@ -1134,7 +1134,7 @@ type OrganizationsApi_GetOrganizationWithParams_Call struct {
 // GetOrganizationWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetOrganizationApiParams
-func (_e *OrganizationsApi_Expecter) GetOrganizationWithParams(ctx interface{}, args interface{}) *OrganizationsApi_GetOrganizationWithParams_Call {
+func (_e *OrganizationsApi_Expecter) GetOrganizationWithParams(ctx any, args any) *OrganizationsApi_GetOrganizationWithParams_Call {
 	return &OrganizationsApi_GetOrganizationWithParams_Call{Call: _e.mock.On("GetOrganizationWithParams", ctx, args)}
 }
 
@@ -1181,7 +1181,7 @@ type OrganizationsApi_ListOrganizationInvitations_Call struct {
 // ListOrganizationInvitations is a helper method to define mock.On call
 //   - ctx context.Context
 //   - orgId string
-func (_e *OrganizationsApi_Expecter) ListOrganizationInvitations(ctx interface{}, orgId interface{}) *OrganizationsApi_ListOrganizationInvitations_Call {
+func (_e *OrganizationsApi_Expecter) ListOrganizationInvitations(ctx any, orgId any) *OrganizationsApi_ListOrganizationInvitations_Call {
 	return &OrganizationsApi_ListOrganizationInvitations_Call{Call: _e.mock.On("ListOrganizationInvitations", ctx, orgId)}
 }
 
@@ -1248,7 +1248,7 @@ type OrganizationsApi_ListOrganizationInvitationsExecute_Call struct {
 
 // ListOrganizationInvitationsExecute is a helper method to define mock.On call
 //   - r admin.ListOrganizationInvitationsApiRequest
-func (_e *OrganizationsApi_Expecter) ListOrganizationInvitationsExecute(r interface{}) *OrganizationsApi_ListOrganizationInvitationsExecute_Call {
+func (_e *OrganizationsApi_Expecter) ListOrganizationInvitationsExecute(r any) *OrganizationsApi_ListOrganizationInvitationsExecute_Call {
 	return &OrganizationsApi_ListOrganizationInvitationsExecute_Call{Call: _e.mock.On("ListOrganizationInvitationsExecute", r)}
 }
 
@@ -1295,7 +1295,7 @@ type OrganizationsApi_ListOrganizationInvitationsWithParams_Call struct {
 // ListOrganizationInvitationsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListOrganizationInvitationsApiParams
-func (_e *OrganizationsApi_Expecter) ListOrganizationInvitationsWithParams(ctx interface{}, args interface{}) *OrganizationsApi_ListOrganizationInvitationsWithParams_Call {
+func (_e *OrganizationsApi_Expecter) ListOrganizationInvitationsWithParams(ctx any, args any) *OrganizationsApi_ListOrganizationInvitationsWithParams_Call {
 	return &OrganizationsApi_ListOrganizationInvitationsWithParams_Call{Call: _e.mock.On("ListOrganizationInvitationsWithParams", ctx, args)}
 }
 
@@ -1342,7 +1342,7 @@ type OrganizationsApi_ListOrganizationProjects_Call struct {
 // ListOrganizationProjects is a helper method to define mock.On call
 //   - ctx context.Context
 //   - orgId string
-func (_e *OrganizationsApi_Expecter) ListOrganizationProjects(ctx interface{}, orgId interface{}) *OrganizationsApi_ListOrganizationProjects_Call {
+func (_e *OrganizationsApi_Expecter) ListOrganizationProjects(ctx any, orgId any) *OrganizationsApi_ListOrganizationProjects_Call {
 	return &OrganizationsApi_ListOrganizationProjects_Call{Call: _e.mock.On("ListOrganizationProjects", ctx, orgId)}
 }
 
@@ -1409,7 +1409,7 @@ type OrganizationsApi_ListOrganizationProjectsExecute_Call struct {
 
 // ListOrganizationProjectsExecute is a helper method to define mock.On call
 //   - r admin.ListOrganizationProjectsApiRequest
-func (_e *OrganizationsApi_Expecter) ListOrganizationProjectsExecute(r interface{}) *OrganizationsApi_ListOrganizationProjectsExecute_Call {
+func (_e *OrganizationsApi_Expecter) ListOrganizationProjectsExecute(r any) *OrganizationsApi_ListOrganizationProjectsExecute_Call {
 	return &OrganizationsApi_ListOrganizationProjectsExecute_Call{Call: _e.mock.On("ListOrganizationProjectsExecute", r)}
 }
 
@@ -1456,7 +1456,7 @@ type OrganizationsApi_ListOrganizationProjectsWithParams_Call struct {
 // ListOrganizationProjectsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListOrganizationProjectsApiParams
-func (_e *OrganizationsApi_Expecter) ListOrganizationProjectsWithParams(ctx interface{}, args interface{}) *OrganizationsApi_ListOrganizationProjectsWithParams_Call {
+func (_e *OrganizationsApi_Expecter) ListOrganizationProjectsWithParams(ctx any, args any) *OrganizationsApi_ListOrganizationProjectsWithParams_Call {
 	return &OrganizationsApi_ListOrganizationProjectsWithParams_Call{Call: _e.mock.On("ListOrganizationProjectsWithParams", ctx, args)}
 }
 
@@ -1503,7 +1503,7 @@ type OrganizationsApi_ListOrganizationUsers_Call struct {
 // ListOrganizationUsers is a helper method to define mock.On call
 //   - ctx context.Context
 //   - orgId string
-func (_e *OrganizationsApi_Expecter) ListOrganizationUsers(ctx interface{}, orgId interface{}) *OrganizationsApi_ListOrganizationUsers_Call {
+func (_e *OrganizationsApi_Expecter) ListOrganizationUsers(ctx any, orgId any) *OrganizationsApi_ListOrganizationUsers_Call {
 	return &OrganizationsApi_ListOrganizationUsers_Call{Call: _e.mock.On("ListOrganizationUsers", ctx, orgId)}
 }
 
@@ -1570,7 +1570,7 @@ type OrganizationsApi_ListOrganizationUsersExecute_Call struct {
 
 // ListOrganizationUsersExecute is a helper method to define mock.On call
 //   - r admin.ListOrganizationUsersApiRequest
-func (_e *OrganizationsApi_Expecter) ListOrganizationUsersExecute(r interface{}) *OrganizationsApi_ListOrganizationUsersExecute_Call {
+func (_e *OrganizationsApi_Expecter) ListOrganizationUsersExecute(r any) *OrganizationsApi_ListOrganizationUsersExecute_Call {
 	return &OrganizationsApi_ListOrganizationUsersExecute_Call{Call: _e.mock.On("ListOrganizationUsersExecute", r)}
 }
 
@@ -1617,7 +1617,7 @@ type OrganizationsApi_ListOrganizationUsersWithParams_Call struct {
 // ListOrganizationUsersWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListOrganizationUsersApiParams
-func (_e *OrganizationsApi_Expecter) ListOrganizationUsersWithParams(ctx interface{}, args interface{}) *OrganizationsApi_ListOrganizationUsersWithParams_Call {
+func (_e *OrganizationsApi_Expecter) ListOrganizationUsersWithParams(ctx any, args any) *OrganizationsApi_ListOrganizationUsersWithParams_Call {
 	return &OrganizationsApi_ListOrganizationUsersWithParams_Call{Call: _e.mock.On("ListOrganizationUsersWithParams", ctx, args)}
 }
 
@@ -1663,7 +1663,7 @@ type OrganizationsApi_ListOrganizations_Call struct {
 
 // ListOrganizations is a helper method to define mock.On call
 //   - ctx context.Context
-func (_e *OrganizationsApi_Expecter) ListOrganizations(ctx interface{}) *OrganizationsApi_ListOrganizations_Call {
+func (_e *OrganizationsApi_Expecter) ListOrganizations(ctx any) *OrganizationsApi_ListOrganizations_Call {
 	return &OrganizationsApi_ListOrganizations_Call{Call: _e.mock.On("ListOrganizations", ctx)}
 }
 
@@ -1730,7 +1730,7 @@ type OrganizationsApi_ListOrganizationsExecute_Call struct {
 
 // ListOrganizationsExecute is a helper method to define mock.On call
 //   - r admin.ListOrganizationsApiRequest
-func (_e *OrganizationsApi_Expecter) ListOrganizationsExecute(r interface{}) *OrganizationsApi_ListOrganizationsExecute_Call {
+func (_e *OrganizationsApi_Expecter) ListOrganizationsExecute(r any) *OrganizationsApi_ListOrganizationsExecute_Call {
 	return &OrganizationsApi_ListOrganizationsExecute_Call{Call: _e.mock.On("ListOrganizationsExecute", r)}
 }
 
@@ -1777,7 +1777,7 @@ type OrganizationsApi_ListOrganizationsWithParams_Call struct {
 // ListOrganizationsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListOrganizationsApiParams
-func (_e *OrganizationsApi_Expecter) ListOrganizationsWithParams(ctx interface{}, args interface{}) *OrganizationsApi_ListOrganizationsWithParams_Call {
+func (_e *OrganizationsApi_Expecter) ListOrganizationsWithParams(ctx any, args any) *OrganizationsApi_ListOrganizationsWithParams_Call {
 	return &OrganizationsApi_ListOrganizationsWithParams_Call{Call: _e.mock.On("ListOrganizationsWithParams", ctx, args)}
 }
 
@@ -1825,7 +1825,7 @@ type OrganizationsApi_RemoveOrganizationUser_Call struct {
 //   - ctx context.Context
 //   - orgId string
 //   - userId string
-func (_e *OrganizationsApi_Expecter) RemoveOrganizationUser(ctx interface{}, orgId interface{}, userId interface{}) *OrganizationsApi_RemoveOrganizationUser_Call {
+func (_e *OrganizationsApi_Expecter) RemoveOrganizationUser(ctx any, orgId any, userId any) *OrganizationsApi_RemoveOrganizationUser_Call {
 	return &OrganizationsApi_RemoveOrganizationUser_Call{Call: _e.mock.On("RemoveOrganizationUser", ctx, orgId, userId)}
 }
 
@@ -1847,24 +1847,24 @@ func (_c *OrganizationsApi_RemoveOrganizationUser_Call) RunAndReturn(run func(co
 }
 
 // RemoveOrganizationUserExecute provides a mock function with given fields: r
-func (_m *OrganizationsApi) RemoveOrganizationUserExecute(r admin.RemoveOrganizationUserApiRequest) (interface{}, *http.Response, error) {
+func (_m *OrganizationsApi) RemoveOrganizationUserExecute(r admin.RemoveOrganizationUserApiRequest) (any, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for RemoveOrganizationUserExecute")
 	}
 
-	var r0 interface{}
+	var r0 any
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.RemoveOrganizationUserApiRequest) (interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.RemoveOrganizationUserApiRequest) (any, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.RemoveOrganizationUserApiRequest) interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.RemoveOrganizationUserApiRequest) any); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(interface{})
+			r0 = ret.Get(0).(any)
 		}
 	}
 
@@ -1892,7 +1892,7 @@ type OrganizationsApi_RemoveOrganizationUserExecute_Call struct {
 
 // RemoveOrganizationUserExecute is a helper method to define mock.On call
 //   - r admin.RemoveOrganizationUserApiRequest
-func (_e *OrganizationsApi_Expecter) RemoveOrganizationUserExecute(r interface{}) *OrganizationsApi_RemoveOrganizationUserExecute_Call {
+func (_e *OrganizationsApi_Expecter) RemoveOrganizationUserExecute(r any) *OrganizationsApi_RemoveOrganizationUserExecute_Call {
 	return &OrganizationsApi_RemoveOrganizationUserExecute_Call{Call: _e.mock.On("RemoveOrganizationUserExecute", r)}
 }
 
@@ -1903,12 +1903,12 @@ func (_c *OrganizationsApi_RemoveOrganizationUserExecute_Call) Run(run func(r ad
 	return _c
 }
 
-func (_c *OrganizationsApi_RemoveOrganizationUserExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *OrganizationsApi_RemoveOrganizationUserExecute_Call {
+func (_c *OrganizationsApi_RemoveOrganizationUserExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *OrganizationsApi_RemoveOrganizationUserExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *OrganizationsApi_RemoveOrganizationUserExecute_Call) RunAndReturn(run func(admin.RemoveOrganizationUserApiRequest) (interface{}, *http.Response, error)) *OrganizationsApi_RemoveOrganizationUserExecute_Call {
+func (_c *OrganizationsApi_RemoveOrganizationUserExecute_Call) RunAndReturn(run func(admin.RemoveOrganizationUserApiRequest) (any, *http.Response, error)) *OrganizationsApi_RemoveOrganizationUserExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1939,7 +1939,7 @@ type OrganizationsApi_RemoveOrganizationUserWithParams_Call struct {
 // RemoveOrganizationUserWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.RemoveOrganizationUserApiParams
-func (_e *OrganizationsApi_Expecter) RemoveOrganizationUserWithParams(ctx interface{}, args interface{}) *OrganizationsApi_RemoveOrganizationUserWithParams_Call {
+func (_e *OrganizationsApi_Expecter) RemoveOrganizationUserWithParams(ctx any, args any) *OrganizationsApi_RemoveOrganizationUserWithParams_Call {
 	return &OrganizationsApi_RemoveOrganizationUserWithParams_Call{Call: _e.mock.On("RemoveOrganizationUserWithParams", ctx, args)}
 }
 
@@ -1987,7 +1987,7 @@ type OrganizationsApi_RenameOrganization_Call struct {
 //   - ctx context.Context
 //   - orgId string
 //   - atlasOrganization *admin.AtlasOrganization
-func (_e *OrganizationsApi_Expecter) RenameOrganization(ctx interface{}, orgId interface{}, atlasOrganization interface{}) *OrganizationsApi_RenameOrganization_Call {
+func (_e *OrganizationsApi_Expecter) RenameOrganization(ctx any, orgId any, atlasOrganization any) *OrganizationsApi_RenameOrganization_Call {
 	return &OrganizationsApi_RenameOrganization_Call{Call: _e.mock.On("RenameOrganization", ctx, orgId, atlasOrganization)}
 }
 
@@ -2054,7 +2054,7 @@ type OrganizationsApi_RenameOrganizationExecute_Call struct {
 
 // RenameOrganizationExecute is a helper method to define mock.On call
 //   - r admin.RenameOrganizationApiRequest
-func (_e *OrganizationsApi_Expecter) RenameOrganizationExecute(r interface{}) *OrganizationsApi_RenameOrganizationExecute_Call {
+func (_e *OrganizationsApi_Expecter) RenameOrganizationExecute(r any) *OrganizationsApi_RenameOrganizationExecute_Call {
 	return &OrganizationsApi_RenameOrganizationExecute_Call{Call: _e.mock.On("RenameOrganizationExecute", r)}
 }
 
@@ -2101,7 +2101,7 @@ type OrganizationsApi_RenameOrganizationWithParams_Call struct {
 // RenameOrganizationWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.RenameOrganizationApiParams
-func (_e *OrganizationsApi_Expecter) RenameOrganizationWithParams(ctx interface{}, args interface{}) *OrganizationsApi_RenameOrganizationWithParams_Call {
+func (_e *OrganizationsApi_Expecter) RenameOrganizationWithParams(ctx any, args any) *OrganizationsApi_RenameOrganizationWithParams_Call {
 	return &OrganizationsApi_RenameOrganizationWithParams_Call{Call: _e.mock.On("RenameOrganizationWithParams", ctx, args)}
 }
 
@@ -2149,7 +2149,7 @@ type OrganizationsApi_UpdateOrganizationInvitation_Call struct {
 //   - ctx context.Context
 //   - orgId string
 //   - organizationInvitationRequest *admin.OrganizationInvitationRequest
-func (_e *OrganizationsApi_Expecter) UpdateOrganizationInvitation(ctx interface{}, orgId interface{}, organizationInvitationRequest interface{}) *OrganizationsApi_UpdateOrganizationInvitation_Call {
+func (_e *OrganizationsApi_Expecter) UpdateOrganizationInvitation(ctx any, orgId any, organizationInvitationRequest any) *OrganizationsApi_UpdateOrganizationInvitation_Call {
 	return &OrganizationsApi_UpdateOrganizationInvitation_Call{Call: _e.mock.On("UpdateOrganizationInvitation", ctx, orgId, organizationInvitationRequest)}
 }
 
@@ -2198,7 +2198,7 @@ type OrganizationsApi_UpdateOrganizationInvitationById_Call struct {
 //   - orgId string
 //   - invitationId string
 //   - organizationInvitationUpdateRequest *admin.OrganizationInvitationUpdateRequest
-func (_e *OrganizationsApi_Expecter) UpdateOrganizationInvitationById(ctx interface{}, orgId interface{}, invitationId interface{}, organizationInvitationUpdateRequest interface{}) *OrganizationsApi_UpdateOrganizationInvitationById_Call {
+func (_e *OrganizationsApi_Expecter) UpdateOrganizationInvitationById(ctx any, orgId any, invitationId any, organizationInvitationUpdateRequest any) *OrganizationsApi_UpdateOrganizationInvitationById_Call {
 	return &OrganizationsApi_UpdateOrganizationInvitationById_Call{Call: _e.mock.On("UpdateOrganizationInvitationById", ctx, orgId, invitationId, organizationInvitationUpdateRequest)}
 }
 
@@ -2265,7 +2265,7 @@ type OrganizationsApi_UpdateOrganizationInvitationByIdExecute_Call struct {
 
 // UpdateOrganizationInvitationByIdExecute is a helper method to define mock.On call
 //   - r admin.UpdateOrganizationInvitationByIdApiRequest
-func (_e *OrganizationsApi_Expecter) UpdateOrganizationInvitationByIdExecute(r interface{}) *OrganizationsApi_UpdateOrganizationInvitationByIdExecute_Call {
+func (_e *OrganizationsApi_Expecter) UpdateOrganizationInvitationByIdExecute(r any) *OrganizationsApi_UpdateOrganizationInvitationByIdExecute_Call {
 	return &OrganizationsApi_UpdateOrganizationInvitationByIdExecute_Call{Call: _e.mock.On("UpdateOrganizationInvitationByIdExecute", r)}
 }
 
@@ -2312,7 +2312,7 @@ type OrganizationsApi_UpdateOrganizationInvitationByIdWithParams_Call struct {
 // UpdateOrganizationInvitationByIdWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.UpdateOrganizationInvitationByIdApiParams
-func (_e *OrganizationsApi_Expecter) UpdateOrganizationInvitationByIdWithParams(ctx interface{}, args interface{}) *OrganizationsApi_UpdateOrganizationInvitationByIdWithParams_Call {
+func (_e *OrganizationsApi_Expecter) UpdateOrganizationInvitationByIdWithParams(ctx any, args any) *OrganizationsApi_UpdateOrganizationInvitationByIdWithParams_Call {
 	return &OrganizationsApi_UpdateOrganizationInvitationByIdWithParams_Call{Call: _e.mock.On("UpdateOrganizationInvitationByIdWithParams", ctx, args)}
 }
 
@@ -2379,7 +2379,7 @@ type OrganizationsApi_UpdateOrganizationInvitationExecute_Call struct {
 
 // UpdateOrganizationInvitationExecute is a helper method to define mock.On call
 //   - r admin.UpdateOrganizationInvitationApiRequest
-func (_e *OrganizationsApi_Expecter) UpdateOrganizationInvitationExecute(r interface{}) *OrganizationsApi_UpdateOrganizationInvitationExecute_Call {
+func (_e *OrganizationsApi_Expecter) UpdateOrganizationInvitationExecute(r any) *OrganizationsApi_UpdateOrganizationInvitationExecute_Call {
 	return &OrganizationsApi_UpdateOrganizationInvitationExecute_Call{Call: _e.mock.On("UpdateOrganizationInvitationExecute", r)}
 }
 
@@ -2426,7 +2426,7 @@ type OrganizationsApi_UpdateOrganizationInvitationWithParams_Call struct {
 // UpdateOrganizationInvitationWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.UpdateOrganizationInvitationApiParams
-func (_e *OrganizationsApi_Expecter) UpdateOrganizationInvitationWithParams(ctx interface{}, args interface{}) *OrganizationsApi_UpdateOrganizationInvitationWithParams_Call {
+func (_e *OrganizationsApi_Expecter) UpdateOrganizationInvitationWithParams(ctx any, args any) *OrganizationsApi_UpdateOrganizationInvitationWithParams_Call {
 	return &OrganizationsApi_UpdateOrganizationInvitationWithParams_Call{Call: _e.mock.On("UpdateOrganizationInvitationWithParams", ctx, args)}
 }
 
@@ -2475,7 +2475,7 @@ type OrganizationsApi_UpdateOrganizationRoles_Call struct {
 //   - orgId string
 //   - userId string
 //   - updateOrgRolesForUser *admin.UpdateOrgRolesForUser
-func (_e *OrganizationsApi_Expecter) UpdateOrganizationRoles(ctx interface{}, orgId interface{}, userId interface{}, updateOrgRolesForUser interface{}) *OrganizationsApi_UpdateOrganizationRoles_Call {
+func (_e *OrganizationsApi_Expecter) UpdateOrganizationRoles(ctx any, orgId any, userId any, updateOrgRolesForUser any) *OrganizationsApi_UpdateOrganizationRoles_Call {
 	return &OrganizationsApi_UpdateOrganizationRoles_Call{Call: _e.mock.On("UpdateOrganizationRoles", ctx, orgId, userId, updateOrgRolesForUser)}
 }
 
@@ -2542,7 +2542,7 @@ type OrganizationsApi_UpdateOrganizationRolesExecute_Call struct {
 
 // UpdateOrganizationRolesExecute is a helper method to define mock.On call
 //   - r admin.UpdateOrganizationRolesApiRequest
-func (_e *OrganizationsApi_Expecter) UpdateOrganizationRolesExecute(r interface{}) *OrganizationsApi_UpdateOrganizationRolesExecute_Call {
+func (_e *OrganizationsApi_Expecter) UpdateOrganizationRolesExecute(r any) *OrganizationsApi_UpdateOrganizationRolesExecute_Call {
 	return &OrganizationsApi_UpdateOrganizationRolesExecute_Call{Call: _e.mock.On("UpdateOrganizationRolesExecute", r)}
 }
 
@@ -2589,7 +2589,7 @@ type OrganizationsApi_UpdateOrganizationRolesWithParams_Call struct {
 // UpdateOrganizationRolesWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.UpdateOrganizationRolesApiParams
-func (_e *OrganizationsApi_Expecter) UpdateOrganizationRolesWithParams(ctx interface{}, args interface{}) *OrganizationsApi_UpdateOrganizationRolesWithParams_Call {
+func (_e *OrganizationsApi_Expecter) UpdateOrganizationRolesWithParams(ctx any, args any) *OrganizationsApi_UpdateOrganizationRolesWithParams_Call {
 	return &OrganizationsApi_UpdateOrganizationRolesWithParams_Call{Call: _e.mock.On("UpdateOrganizationRolesWithParams", ctx, args)}
 }
 
@@ -2637,7 +2637,7 @@ type OrganizationsApi_UpdateOrganizationSettings_Call struct {
 //   - ctx context.Context
 //   - orgId string
 //   - organizationSettings *admin.OrganizationSettings
-func (_e *OrganizationsApi_Expecter) UpdateOrganizationSettings(ctx interface{}, orgId interface{}, organizationSettings interface{}) *OrganizationsApi_UpdateOrganizationSettings_Call {
+func (_e *OrganizationsApi_Expecter) UpdateOrganizationSettings(ctx any, orgId any, organizationSettings any) *OrganizationsApi_UpdateOrganizationSettings_Call {
 	return &OrganizationsApi_UpdateOrganizationSettings_Call{Call: _e.mock.On("UpdateOrganizationSettings", ctx, orgId, organizationSettings)}
 }
 
@@ -2704,7 +2704,7 @@ type OrganizationsApi_UpdateOrganizationSettingsExecute_Call struct {
 
 // UpdateOrganizationSettingsExecute is a helper method to define mock.On call
 //   - r admin.UpdateOrganizationSettingsApiRequest
-func (_e *OrganizationsApi_Expecter) UpdateOrganizationSettingsExecute(r interface{}) *OrganizationsApi_UpdateOrganizationSettingsExecute_Call {
+func (_e *OrganizationsApi_Expecter) UpdateOrganizationSettingsExecute(r any) *OrganizationsApi_UpdateOrganizationSettingsExecute_Call {
 	return &OrganizationsApi_UpdateOrganizationSettingsExecute_Call{Call: _e.mock.On("UpdateOrganizationSettingsExecute", r)}
 }
 
@@ -2751,7 +2751,7 @@ type OrganizationsApi_UpdateOrganizationSettingsWithParams_Call struct {
 // UpdateOrganizationSettingsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.UpdateOrganizationSettingsApiParams
-func (_e *OrganizationsApi_Expecter) UpdateOrganizationSettingsWithParams(ctx interface{}, args interface{}) *OrganizationsApi_UpdateOrganizationSettingsWithParams_Call {
+func (_e *OrganizationsApi_Expecter) UpdateOrganizationSettingsWithParams(ctx any, args any) *OrganizationsApi_UpdateOrganizationSettingsWithParams_Call {
 	return &OrganizationsApi_UpdateOrganizationSettingsWithParams_Call{Call: _e.mock.On("UpdateOrganizationSettingsWithParams", ctx, args)}
 }
 

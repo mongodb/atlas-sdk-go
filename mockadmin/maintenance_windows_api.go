@@ -51,7 +51,7 @@ type MaintenanceWindowsApi_DeferMaintenanceWindow_Call struct {
 // DeferMaintenanceWindow is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *MaintenanceWindowsApi_Expecter) DeferMaintenanceWindow(ctx interface{}, groupId interface{}) *MaintenanceWindowsApi_DeferMaintenanceWindow_Call {
+func (_e *MaintenanceWindowsApi_Expecter) DeferMaintenanceWindow(ctx any, groupId any) *MaintenanceWindowsApi_DeferMaintenanceWindow_Call {
 	return &MaintenanceWindowsApi_DeferMaintenanceWindow_Call{Call: _e.mock.On("DeferMaintenanceWindow", ctx, groupId)}
 }
 
@@ -109,7 +109,7 @@ type MaintenanceWindowsApi_DeferMaintenanceWindowExecute_Call struct {
 
 // DeferMaintenanceWindowExecute is a helper method to define mock.On call
 //   - r admin.DeferMaintenanceWindowApiRequest
-func (_e *MaintenanceWindowsApi_Expecter) DeferMaintenanceWindowExecute(r interface{}) *MaintenanceWindowsApi_DeferMaintenanceWindowExecute_Call {
+func (_e *MaintenanceWindowsApi_Expecter) DeferMaintenanceWindowExecute(r any) *MaintenanceWindowsApi_DeferMaintenanceWindowExecute_Call {
 	return &MaintenanceWindowsApi_DeferMaintenanceWindowExecute_Call{Call: _e.mock.On("DeferMaintenanceWindowExecute", r)}
 }
 
@@ -156,7 +156,7 @@ type MaintenanceWindowsApi_DeferMaintenanceWindowWithParams_Call struct {
 // DeferMaintenanceWindowWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.DeferMaintenanceWindowApiParams
-func (_e *MaintenanceWindowsApi_Expecter) DeferMaintenanceWindowWithParams(ctx interface{}, args interface{}) *MaintenanceWindowsApi_DeferMaintenanceWindowWithParams_Call {
+func (_e *MaintenanceWindowsApi_Expecter) DeferMaintenanceWindowWithParams(ctx any, args any) *MaintenanceWindowsApi_DeferMaintenanceWindowWithParams_Call {
 	return &MaintenanceWindowsApi_DeferMaintenanceWindowWithParams_Call{Call: _e.mock.On("DeferMaintenanceWindowWithParams", ctx, args)}
 }
 
@@ -203,7 +203,7 @@ type MaintenanceWindowsApi_GetMaintenanceWindow_Call struct {
 // GetMaintenanceWindow is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *MaintenanceWindowsApi_Expecter) GetMaintenanceWindow(ctx interface{}, groupId interface{}) *MaintenanceWindowsApi_GetMaintenanceWindow_Call {
+func (_e *MaintenanceWindowsApi_Expecter) GetMaintenanceWindow(ctx any, groupId any) *MaintenanceWindowsApi_GetMaintenanceWindow_Call {
 	return &MaintenanceWindowsApi_GetMaintenanceWindow_Call{Call: _e.mock.On("GetMaintenanceWindow", ctx, groupId)}
 }
 
@@ -270,7 +270,7 @@ type MaintenanceWindowsApi_GetMaintenanceWindowExecute_Call struct {
 
 // GetMaintenanceWindowExecute is a helper method to define mock.On call
 //   - r admin.GetMaintenanceWindowApiRequest
-func (_e *MaintenanceWindowsApi_Expecter) GetMaintenanceWindowExecute(r interface{}) *MaintenanceWindowsApi_GetMaintenanceWindowExecute_Call {
+func (_e *MaintenanceWindowsApi_Expecter) GetMaintenanceWindowExecute(r any) *MaintenanceWindowsApi_GetMaintenanceWindowExecute_Call {
 	return &MaintenanceWindowsApi_GetMaintenanceWindowExecute_Call{Call: _e.mock.On("GetMaintenanceWindowExecute", r)}
 }
 
@@ -317,7 +317,7 @@ type MaintenanceWindowsApi_GetMaintenanceWindowWithParams_Call struct {
 // GetMaintenanceWindowWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetMaintenanceWindowApiParams
-func (_e *MaintenanceWindowsApi_Expecter) GetMaintenanceWindowWithParams(ctx interface{}, args interface{}) *MaintenanceWindowsApi_GetMaintenanceWindowWithParams_Call {
+func (_e *MaintenanceWindowsApi_Expecter) GetMaintenanceWindowWithParams(ctx any, args any) *MaintenanceWindowsApi_GetMaintenanceWindowWithParams_Call {
 	return &MaintenanceWindowsApi_GetMaintenanceWindowWithParams_Call{Call: _e.mock.On("GetMaintenanceWindowWithParams", ctx, args)}
 }
 
@@ -364,7 +364,7 @@ type MaintenanceWindowsApi_ResetMaintenanceWindow_Call struct {
 // ResetMaintenanceWindow is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *MaintenanceWindowsApi_Expecter) ResetMaintenanceWindow(ctx interface{}, groupId interface{}) *MaintenanceWindowsApi_ResetMaintenanceWindow_Call {
+func (_e *MaintenanceWindowsApi_Expecter) ResetMaintenanceWindow(ctx any, groupId any) *MaintenanceWindowsApi_ResetMaintenanceWindow_Call {
 	return &MaintenanceWindowsApi_ResetMaintenanceWindow_Call{Call: _e.mock.On("ResetMaintenanceWindow", ctx, groupId)}
 }
 
@@ -422,7 +422,7 @@ type MaintenanceWindowsApi_ResetMaintenanceWindowExecute_Call struct {
 
 // ResetMaintenanceWindowExecute is a helper method to define mock.On call
 //   - r admin.ResetMaintenanceWindowApiRequest
-func (_e *MaintenanceWindowsApi_Expecter) ResetMaintenanceWindowExecute(r interface{}) *MaintenanceWindowsApi_ResetMaintenanceWindowExecute_Call {
+func (_e *MaintenanceWindowsApi_Expecter) ResetMaintenanceWindowExecute(r any) *MaintenanceWindowsApi_ResetMaintenanceWindowExecute_Call {
 	return &MaintenanceWindowsApi_ResetMaintenanceWindowExecute_Call{Call: _e.mock.On("ResetMaintenanceWindowExecute", r)}
 }
 
@@ -469,7 +469,7 @@ type MaintenanceWindowsApi_ResetMaintenanceWindowWithParams_Call struct {
 // ResetMaintenanceWindowWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ResetMaintenanceWindowApiParams
-func (_e *MaintenanceWindowsApi_Expecter) ResetMaintenanceWindowWithParams(ctx interface{}, args interface{}) *MaintenanceWindowsApi_ResetMaintenanceWindowWithParams_Call {
+func (_e *MaintenanceWindowsApi_Expecter) ResetMaintenanceWindowWithParams(ctx any, args any) *MaintenanceWindowsApi_ResetMaintenanceWindowWithParams_Call {
 	return &MaintenanceWindowsApi_ResetMaintenanceWindowWithParams_Call{Call: _e.mock.On("ResetMaintenanceWindowWithParams", ctx, args)}
 }
 
@@ -516,7 +516,7 @@ type MaintenanceWindowsApi_ToggleMaintenanceAutoDefer_Call struct {
 // ToggleMaintenanceAutoDefer is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *MaintenanceWindowsApi_Expecter) ToggleMaintenanceAutoDefer(ctx interface{}, groupId interface{}) *MaintenanceWindowsApi_ToggleMaintenanceAutoDefer_Call {
+func (_e *MaintenanceWindowsApi_Expecter) ToggleMaintenanceAutoDefer(ctx any, groupId any) *MaintenanceWindowsApi_ToggleMaintenanceAutoDefer_Call {
 	return &MaintenanceWindowsApi_ToggleMaintenanceAutoDefer_Call{Call: _e.mock.On("ToggleMaintenanceAutoDefer", ctx, groupId)}
 }
 
@@ -574,7 +574,7 @@ type MaintenanceWindowsApi_ToggleMaintenanceAutoDeferExecute_Call struct {
 
 // ToggleMaintenanceAutoDeferExecute is a helper method to define mock.On call
 //   - r admin.ToggleMaintenanceAutoDeferApiRequest
-func (_e *MaintenanceWindowsApi_Expecter) ToggleMaintenanceAutoDeferExecute(r interface{}) *MaintenanceWindowsApi_ToggleMaintenanceAutoDeferExecute_Call {
+func (_e *MaintenanceWindowsApi_Expecter) ToggleMaintenanceAutoDeferExecute(r any) *MaintenanceWindowsApi_ToggleMaintenanceAutoDeferExecute_Call {
 	return &MaintenanceWindowsApi_ToggleMaintenanceAutoDeferExecute_Call{Call: _e.mock.On("ToggleMaintenanceAutoDeferExecute", r)}
 }
 
@@ -621,7 +621,7 @@ type MaintenanceWindowsApi_ToggleMaintenanceAutoDeferWithParams_Call struct {
 // ToggleMaintenanceAutoDeferWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ToggleMaintenanceAutoDeferApiParams
-func (_e *MaintenanceWindowsApi_Expecter) ToggleMaintenanceAutoDeferWithParams(ctx interface{}, args interface{}) *MaintenanceWindowsApi_ToggleMaintenanceAutoDeferWithParams_Call {
+func (_e *MaintenanceWindowsApi_Expecter) ToggleMaintenanceAutoDeferWithParams(ctx any, args any) *MaintenanceWindowsApi_ToggleMaintenanceAutoDeferWithParams_Call {
 	return &MaintenanceWindowsApi_ToggleMaintenanceAutoDeferWithParams_Call{Call: _e.mock.On("ToggleMaintenanceAutoDeferWithParams", ctx, args)}
 }
 
@@ -669,7 +669,7 @@ type MaintenanceWindowsApi_UpdateMaintenanceWindow_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - groupMaintenanceWindow *admin.GroupMaintenanceWindow
-func (_e *MaintenanceWindowsApi_Expecter) UpdateMaintenanceWindow(ctx interface{}, groupId interface{}, groupMaintenanceWindow interface{}) *MaintenanceWindowsApi_UpdateMaintenanceWindow_Call {
+func (_e *MaintenanceWindowsApi_Expecter) UpdateMaintenanceWindow(ctx any, groupId any, groupMaintenanceWindow any) *MaintenanceWindowsApi_UpdateMaintenanceWindow_Call {
 	return &MaintenanceWindowsApi_UpdateMaintenanceWindow_Call{Call: _e.mock.On("UpdateMaintenanceWindow", ctx, groupId, groupMaintenanceWindow)}
 }
 
@@ -691,24 +691,24 @@ func (_c *MaintenanceWindowsApi_UpdateMaintenanceWindow_Call) RunAndReturn(run f
 }
 
 // UpdateMaintenanceWindowExecute provides a mock function with given fields: r
-func (_m *MaintenanceWindowsApi) UpdateMaintenanceWindowExecute(r admin.UpdateMaintenanceWindowApiRequest) (interface{}, *http.Response, error) {
+func (_m *MaintenanceWindowsApi) UpdateMaintenanceWindowExecute(r admin.UpdateMaintenanceWindowApiRequest) (any, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for UpdateMaintenanceWindowExecute")
 	}
 
-	var r0 interface{}
+	var r0 any
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.UpdateMaintenanceWindowApiRequest) (interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.UpdateMaintenanceWindowApiRequest) (any, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.UpdateMaintenanceWindowApiRequest) interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.UpdateMaintenanceWindowApiRequest) any); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(interface{})
+			r0 = ret.Get(0).(any)
 		}
 	}
 
@@ -736,7 +736,7 @@ type MaintenanceWindowsApi_UpdateMaintenanceWindowExecute_Call struct {
 
 // UpdateMaintenanceWindowExecute is a helper method to define mock.On call
 //   - r admin.UpdateMaintenanceWindowApiRequest
-func (_e *MaintenanceWindowsApi_Expecter) UpdateMaintenanceWindowExecute(r interface{}) *MaintenanceWindowsApi_UpdateMaintenanceWindowExecute_Call {
+func (_e *MaintenanceWindowsApi_Expecter) UpdateMaintenanceWindowExecute(r any) *MaintenanceWindowsApi_UpdateMaintenanceWindowExecute_Call {
 	return &MaintenanceWindowsApi_UpdateMaintenanceWindowExecute_Call{Call: _e.mock.On("UpdateMaintenanceWindowExecute", r)}
 }
 
@@ -747,12 +747,12 @@ func (_c *MaintenanceWindowsApi_UpdateMaintenanceWindowExecute_Call) Run(run fun
 	return _c
 }
 
-func (_c *MaintenanceWindowsApi_UpdateMaintenanceWindowExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *MaintenanceWindowsApi_UpdateMaintenanceWindowExecute_Call {
+func (_c *MaintenanceWindowsApi_UpdateMaintenanceWindowExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *MaintenanceWindowsApi_UpdateMaintenanceWindowExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *MaintenanceWindowsApi_UpdateMaintenanceWindowExecute_Call) RunAndReturn(run func(admin.UpdateMaintenanceWindowApiRequest) (interface{}, *http.Response, error)) *MaintenanceWindowsApi_UpdateMaintenanceWindowExecute_Call {
+func (_c *MaintenanceWindowsApi_UpdateMaintenanceWindowExecute_Call) RunAndReturn(run func(admin.UpdateMaintenanceWindowApiRequest) (any, *http.Response, error)) *MaintenanceWindowsApi_UpdateMaintenanceWindowExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -783,7 +783,7 @@ type MaintenanceWindowsApi_UpdateMaintenanceWindowWithParams_Call struct {
 // UpdateMaintenanceWindowWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.UpdateMaintenanceWindowApiParams
-func (_e *MaintenanceWindowsApi_Expecter) UpdateMaintenanceWindowWithParams(ctx interface{}, args interface{}) *MaintenanceWindowsApi_UpdateMaintenanceWindowWithParams_Call {
+func (_e *MaintenanceWindowsApi_Expecter) UpdateMaintenanceWindowWithParams(ctx any, args any) *MaintenanceWindowsApi_UpdateMaintenanceWindowWithParams_Call {
 	return &MaintenanceWindowsApi_UpdateMaintenanceWindowWithParams_Call{Call: _e.mock.On("UpdateMaintenanceWindowWithParams", ctx, args)}
 }
 

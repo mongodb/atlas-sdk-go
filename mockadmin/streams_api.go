@@ -55,7 +55,7 @@ type StreamsApi_AcceptVPCPeeringConnection_Call struct {
 //   - groupId string
 //   - id string
 //   - vPCPeeringActionChallenge *admin.VPCPeeringActionChallenge
-func (_e *StreamsApi_Expecter) AcceptVPCPeeringConnection(ctx interface{}, groupId interface{}, id interface{}, vPCPeeringActionChallenge interface{}) *StreamsApi_AcceptVPCPeeringConnection_Call {
+func (_e *StreamsApi_Expecter) AcceptVPCPeeringConnection(ctx any, groupId any, id any, vPCPeeringActionChallenge any) *StreamsApi_AcceptVPCPeeringConnection_Call {
 	return &StreamsApi_AcceptVPCPeeringConnection_Call{Call: _e.mock.On("AcceptVPCPeeringConnection", ctx, groupId, id, vPCPeeringActionChallenge)}
 }
 
@@ -77,24 +77,24 @@ func (_c *StreamsApi_AcceptVPCPeeringConnection_Call) RunAndReturn(run func(cont
 }
 
 // AcceptVPCPeeringConnectionExecute provides a mock function with given fields: r
-func (_m *StreamsApi) AcceptVPCPeeringConnectionExecute(r admin.AcceptVPCPeeringConnectionApiRequest) (interface{}, *http.Response, error) {
+func (_m *StreamsApi) AcceptVPCPeeringConnectionExecute(r admin.AcceptVPCPeeringConnectionApiRequest) (any, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for AcceptVPCPeeringConnectionExecute")
 	}
 
-	var r0 interface{}
+	var r0 any
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.AcceptVPCPeeringConnectionApiRequest) (interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.AcceptVPCPeeringConnectionApiRequest) (any, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.AcceptVPCPeeringConnectionApiRequest) interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.AcceptVPCPeeringConnectionApiRequest) any); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(interface{})
+			r0 = ret.Get(0).(any)
 		}
 	}
 
@@ -122,7 +122,7 @@ type StreamsApi_AcceptVPCPeeringConnectionExecute_Call struct {
 
 // AcceptVPCPeeringConnectionExecute is a helper method to define mock.On call
 //   - r admin.AcceptVPCPeeringConnectionApiRequest
-func (_e *StreamsApi_Expecter) AcceptVPCPeeringConnectionExecute(r interface{}) *StreamsApi_AcceptVPCPeeringConnectionExecute_Call {
+func (_e *StreamsApi_Expecter) AcceptVPCPeeringConnectionExecute(r any) *StreamsApi_AcceptVPCPeeringConnectionExecute_Call {
 	return &StreamsApi_AcceptVPCPeeringConnectionExecute_Call{Call: _e.mock.On("AcceptVPCPeeringConnectionExecute", r)}
 }
 
@@ -133,12 +133,12 @@ func (_c *StreamsApi_AcceptVPCPeeringConnectionExecute_Call) Run(run func(r admi
 	return _c
 }
 
-func (_c *StreamsApi_AcceptVPCPeeringConnectionExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *StreamsApi_AcceptVPCPeeringConnectionExecute_Call {
+func (_c *StreamsApi_AcceptVPCPeeringConnectionExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *StreamsApi_AcceptVPCPeeringConnectionExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *StreamsApi_AcceptVPCPeeringConnectionExecute_Call) RunAndReturn(run func(admin.AcceptVPCPeeringConnectionApiRequest) (interface{}, *http.Response, error)) *StreamsApi_AcceptVPCPeeringConnectionExecute_Call {
+func (_c *StreamsApi_AcceptVPCPeeringConnectionExecute_Call) RunAndReturn(run func(admin.AcceptVPCPeeringConnectionApiRequest) (any, *http.Response, error)) *StreamsApi_AcceptVPCPeeringConnectionExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -169,7 +169,7 @@ type StreamsApi_AcceptVPCPeeringConnectionWithParams_Call struct {
 // AcceptVPCPeeringConnectionWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.AcceptVPCPeeringConnectionApiParams
-func (_e *StreamsApi_Expecter) AcceptVPCPeeringConnectionWithParams(ctx interface{}, args interface{}) *StreamsApi_AcceptVPCPeeringConnectionWithParams_Call {
+func (_e *StreamsApi_Expecter) AcceptVPCPeeringConnectionWithParams(ctx any, args any) *StreamsApi_AcceptVPCPeeringConnectionWithParams_Call {
 	return &StreamsApi_AcceptVPCPeeringConnectionWithParams_Call{Call: _e.mock.On("AcceptVPCPeeringConnectionWithParams", ctx, args)}
 }
 
@@ -218,7 +218,7 @@ type StreamsApi_CreateStreamConnection_Call struct {
 //   - groupId string
 //   - tenantName string
 //   - streamsConnection *admin.StreamsConnection
-func (_e *StreamsApi_Expecter) CreateStreamConnection(ctx interface{}, groupId interface{}, tenantName interface{}, streamsConnection interface{}) *StreamsApi_CreateStreamConnection_Call {
+func (_e *StreamsApi_Expecter) CreateStreamConnection(ctx any, groupId any, tenantName any, streamsConnection any) *StreamsApi_CreateStreamConnection_Call {
 	return &StreamsApi_CreateStreamConnection_Call{Call: _e.mock.On("CreateStreamConnection", ctx, groupId, tenantName, streamsConnection)}
 }
 
@@ -285,7 +285,7 @@ type StreamsApi_CreateStreamConnectionExecute_Call struct {
 
 // CreateStreamConnectionExecute is a helper method to define mock.On call
 //   - r admin.CreateStreamConnectionApiRequest
-func (_e *StreamsApi_Expecter) CreateStreamConnectionExecute(r interface{}) *StreamsApi_CreateStreamConnectionExecute_Call {
+func (_e *StreamsApi_Expecter) CreateStreamConnectionExecute(r any) *StreamsApi_CreateStreamConnectionExecute_Call {
 	return &StreamsApi_CreateStreamConnectionExecute_Call{Call: _e.mock.On("CreateStreamConnectionExecute", r)}
 }
 
@@ -332,7 +332,7 @@ type StreamsApi_CreateStreamConnectionWithParams_Call struct {
 // CreateStreamConnectionWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.CreateStreamConnectionApiParams
-func (_e *StreamsApi_Expecter) CreateStreamConnectionWithParams(ctx interface{}, args interface{}) *StreamsApi_CreateStreamConnectionWithParams_Call {
+func (_e *StreamsApi_Expecter) CreateStreamConnectionWithParams(ctx any, args any) *StreamsApi_CreateStreamConnectionWithParams_Call {
 	return &StreamsApi_CreateStreamConnectionWithParams_Call{Call: _e.mock.On("CreateStreamConnectionWithParams", ctx, args)}
 }
 
@@ -380,7 +380,7 @@ type StreamsApi_CreateStreamInstance_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - streamsTenant *admin.StreamsTenant
-func (_e *StreamsApi_Expecter) CreateStreamInstance(ctx interface{}, groupId interface{}, streamsTenant interface{}) *StreamsApi_CreateStreamInstance_Call {
+func (_e *StreamsApi_Expecter) CreateStreamInstance(ctx any, groupId any, streamsTenant any) *StreamsApi_CreateStreamInstance_Call {
 	return &StreamsApi_CreateStreamInstance_Call{Call: _e.mock.On("CreateStreamInstance", ctx, groupId, streamsTenant)}
 }
 
@@ -447,7 +447,7 @@ type StreamsApi_CreateStreamInstanceExecute_Call struct {
 
 // CreateStreamInstanceExecute is a helper method to define mock.On call
 //   - r admin.CreateStreamInstanceApiRequest
-func (_e *StreamsApi_Expecter) CreateStreamInstanceExecute(r interface{}) *StreamsApi_CreateStreamInstanceExecute_Call {
+func (_e *StreamsApi_Expecter) CreateStreamInstanceExecute(r any) *StreamsApi_CreateStreamInstanceExecute_Call {
 	return &StreamsApi_CreateStreamInstanceExecute_Call{Call: _e.mock.On("CreateStreamInstanceExecute", r)}
 }
 
@@ -494,7 +494,7 @@ type StreamsApi_CreateStreamInstanceWithParams_Call struct {
 // CreateStreamInstanceWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.CreateStreamInstanceApiParams
-func (_e *StreamsApi_Expecter) CreateStreamInstanceWithParams(ctx interface{}, args interface{}) *StreamsApi_CreateStreamInstanceWithParams_Call {
+func (_e *StreamsApi_Expecter) CreateStreamInstanceWithParams(ctx any, args any) *StreamsApi_CreateStreamInstanceWithParams_Call {
 	return &StreamsApi_CreateStreamInstanceWithParams_Call{Call: _e.mock.On("CreateStreamInstanceWithParams", ctx, args)}
 }
 
@@ -516,7 +516,7 @@ func (_c *StreamsApi_CreateStreamInstanceWithParams_Call) RunAndReturn(run func(
 }
 
 // CreateStreamInstanceWithSampleConnections provides a mock function with given fields: ctx, groupId, body
-func (_m *StreamsApi) CreateStreamInstanceWithSampleConnections(ctx context.Context, groupId string, body *interface{}) admin.CreateStreamInstanceWithSampleConnectionsApiRequest {
+func (_m *StreamsApi) CreateStreamInstanceWithSampleConnections(ctx context.Context, groupId string, body *any) admin.CreateStreamInstanceWithSampleConnectionsApiRequest {
 	ret := _m.Called(ctx, groupId, body)
 
 	if len(ret) == 0 {
@@ -524,7 +524,7 @@ func (_m *StreamsApi) CreateStreamInstanceWithSampleConnections(ctx context.Cont
 	}
 
 	var r0 admin.CreateStreamInstanceWithSampleConnectionsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, *interface{}) admin.CreateStreamInstanceWithSampleConnectionsApiRequest); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, string, *any) admin.CreateStreamInstanceWithSampleConnectionsApiRequest); ok {
 		r0 = rf(ctx, groupId, body)
 	} else {
 		r0 = ret.Get(0).(admin.CreateStreamInstanceWithSampleConnectionsApiRequest)
@@ -541,14 +541,14 @@ type StreamsApi_CreateStreamInstanceWithSampleConnections_Call struct {
 // CreateStreamInstanceWithSampleConnections is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-//   - body *interface{}
-func (_e *StreamsApi_Expecter) CreateStreamInstanceWithSampleConnections(ctx interface{}, groupId interface{}, body interface{}) *StreamsApi_CreateStreamInstanceWithSampleConnections_Call {
+//   - body *any
+func (_e *StreamsApi_Expecter) CreateStreamInstanceWithSampleConnections(ctx any, groupId any, body any) *StreamsApi_CreateStreamInstanceWithSampleConnections_Call {
 	return &StreamsApi_CreateStreamInstanceWithSampleConnections_Call{Call: _e.mock.On("CreateStreamInstanceWithSampleConnections", ctx, groupId, body)}
 }
 
-func (_c *StreamsApi_CreateStreamInstanceWithSampleConnections_Call) Run(run func(ctx context.Context, groupId string, body *interface{})) *StreamsApi_CreateStreamInstanceWithSampleConnections_Call {
+func (_c *StreamsApi_CreateStreamInstanceWithSampleConnections_Call) Run(run func(ctx context.Context, groupId string, body *any)) *StreamsApi_CreateStreamInstanceWithSampleConnections_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(*interface{}))
+		run(args[0].(context.Context), args[1].(string), args[2].(*any))
 	})
 	return _c
 }
@@ -558,7 +558,7 @@ func (_c *StreamsApi_CreateStreamInstanceWithSampleConnections_Call) Return(_a0 
 	return _c
 }
 
-func (_c *StreamsApi_CreateStreamInstanceWithSampleConnections_Call) RunAndReturn(run func(context.Context, string, *interface{}) admin.CreateStreamInstanceWithSampleConnectionsApiRequest) *StreamsApi_CreateStreamInstanceWithSampleConnections_Call {
+func (_c *StreamsApi_CreateStreamInstanceWithSampleConnections_Call) RunAndReturn(run func(context.Context, string, *any) admin.CreateStreamInstanceWithSampleConnectionsApiRequest) *StreamsApi_CreateStreamInstanceWithSampleConnections_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -609,7 +609,7 @@ type StreamsApi_CreateStreamInstanceWithSampleConnectionsExecute_Call struct {
 
 // CreateStreamInstanceWithSampleConnectionsExecute is a helper method to define mock.On call
 //   - r admin.CreateStreamInstanceWithSampleConnectionsApiRequest
-func (_e *StreamsApi_Expecter) CreateStreamInstanceWithSampleConnectionsExecute(r interface{}) *StreamsApi_CreateStreamInstanceWithSampleConnectionsExecute_Call {
+func (_e *StreamsApi_Expecter) CreateStreamInstanceWithSampleConnectionsExecute(r any) *StreamsApi_CreateStreamInstanceWithSampleConnectionsExecute_Call {
 	return &StreamsApi_CreateStreamInstanceWithSampleConnectionsExecute_Call{Call: _e.mock.On("CreateStreamInstanceWithSampleConnectionsExecute", r)}
 }
 
@@ -656,7 +656,7 @@ type StreamsApi_CreateStreamInstanceWithSampleConnectionsWithParams_Call struct 
 // CreateStreamInstanceWithSampleConnectionsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.CreateStreamInstanceWithSampleConnectionsApiParams
-func (_e *StreamsApi_Expecter) CreateStreamInstanceWithSampleConnectionsWithParams(ctx interface{}, args interface{}) *StreamsApi_CreateStreamInstanceWithSampleConnectionsWithParams_Call {
+func (_e *StreamsApi_Expecter) CreateStreamInstanceWithSampleConnectionsWithParams(ctx any, args any) *StreamsApi_CreateStreamInstanceWithSampleConnectionsWithParams_Call {
 	return &StreamsApi_CreateStreamInstanceWithSampleConnectionsWithParams_Call{Call: _e.mock.On("CreateStreamInstanceWithSampleConnectionsWithParams", ctx, args)}
 }
 
@@ -705,7 +705,7 @@ type StreamsApi_CreateStreamProcessor_Call struct {
 //   - groupId string
 //   - tenantName string
 //   - streamsProcessor *admin.StreamsProcessor
-func (_e *StreamsApi_Expecter) CreateStreamProcessor(ctx interface{}, groupId interface{}, tenantName interface{}, streamsProcessor interface{}) *StreamsApi_CreateStreamProcessor_Call {
+func (_e *StreamsApi_Expecter) CreateStreamProcessor(ctx any, groupId any, tenantName any, streamsProcessor any) *StreamsApi_CreateStreamProcessor_Call {
 	return &StreamsApi_CreateStreamProcessor_Call{Call: _e.mock.On("CreateStreamProcessor", ctx, groupId, tenantName, streamsProcessor)}
 }
 
@@ -772,7 +772,7 @@ type StreamsApi_CreateStreamProcessorExecute_Call struct {
 
 // CreateStreamProcessorExecute is a helper method to define mock.On call
 //   - r admin.CreateStreamProcessorApiRequest
-func (_e *StreamsApi_Expecter) CreateStreamProcessorExecute(r interface{}) *StreamsApi_CreateStreamProcessorExecute_Call {
+func (_e *StreamsApi_Expecter) CreateStreamProcessorExecute(r any) *StreamsApi_CreateStreamProcessorExecute_Call {
 	return &StreamsApi_CreateStreamProcessorExecute_Call{Call: _e.mock.On("CreateStreamProcessorExecute", r)}
 }
 
@@ -819,7 +819,7 @@ type StreamsApi_CreateStreamProcessorWithParams_Call struct {
 // CreateStreamProcessorWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.CreateStreamProcessorApiParams
-func (_e *StreamsApi_Expecter) CreateStreamProcessorWithParams(ctx interface{}, args interface{}) *StreamsApi_CreateStreamProcessorWithParams_Call {
+func (_e *StreamsApi_Expecter) CreateStreamProcessorWithParams(ctx any, args any) *StreamsApi_CreateStreamProcessorWithParams_Call {
 	return &StreamsApi_CreateStreamProcessorWithParams_Call{Call: _e.mock.On("CreateStreamProcessorWithParams", ctx, args)}
 }
 
@@ -868,7 +868,7 @@ type StreamsApi_DeleteStreamConnection_Call struct {
 //   - groupId string
 //   - tenantName string
 //   - connectionName string
-func (_e *StreamsApi_Expecter) DeleteStreamConnection(ctx interface{}, groupId interface{}, tenantName interface{}, connectionName interface{}) *StreamsApi_DeleteStreamConnection_Call {
+func (_e *StreamsApi_Expecter) DeleteStreamConnection(ctx any, groupId any, tenantName any, connectionName any) *StreamsApi_DeleteStreamConnection_Call {
 	return &StreamsApi_DeleteStreamConnection_Call{Call: _e.mock.On("DeleteStreamConnection", ctx, groupId, tenantName, connectionName)}
 }
 
@@ -890,24 +890,24 @@ func (_c *StreamsApi_DeleteStreamConnection_Call) RunAndReturn(run func(context.
 }
 
 // DeleteStreamConnectionExecute provides a mock function with given fields: r
-func (_m *StreamsApi) DeleteStreamConnectionExecute(r admin.DeleteStreamConnectionApiRequest) (interface{}, *http.Response, error) {
+func (_m *StreamsApi) DeleteStreamConnectionExecute(r admin.DeleteStreamConnectionApiRequest) (any, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteStreamConnectionExecute")
 	}
 
-	var r0 interface{}
+	var r0 any
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteStreamConnectionApiRequest) (interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteStreamConnectionApiRequest) (any, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteStreamConnectionApiRequest) interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteStreamConnectionApiRequest) any); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(interface{})
+			r0 = ret.Get(0).(any)
 		}
 	}
 
@@ -935,7 +935,7 @@ type StreamsApi_DeleteStreamConnectionExecute_Call struct {
 
 // DeleteStreamConnectionExecute is a helper method to define mock.On call
 //   - r admin.DeleteStreamConnectionApiRequest
-func (_e *StreamsApi_Expecter) DeleteStreamConnectionExecute(r interface{}) *StreamsApi_DeleteStreamConnectionExecute_Call {
+func (_e *StreamsApi_Expecter) DeleteStreamConnectionExecute(r any) *StreamsApi_DeleteStreamConnectionExecute_Call {
 	return &StreamsApi_DeleteStreamConnectionExecute_Call{Call: _e.mock.On("DeleteStreamConnectionExecute", r)}
 }
 
@@ -946,12 +946,12 @@ func (_c *StreamsApi_DeleteStreamConnectionExecute_Call) Run(run func(r admin.De
 	return _c
 }
 
-func (_c *StreamsApi_DeleteStreamConnectionExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *StreamsApi_DeleteStreamConnectionExecute_Call {
+func (_c *StreamsApi_DeleteStreamConnectionExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *StreamsApi_DeleteStreamConnectionExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *StreamsApi_DeleteStreamConnectionExecute_Call) RunAndReturn(run func(admin.DeleteStreamConnectionApiRequest) (interface{}, *http.Response, error)) *StreamsApi_DeleteStreamConnectionExecute_Call {
+func (_c *StreamsApi_DeleteStreamConnectionExecute_Call) RunAndReturn(run func(admin.DeleteStreamConnectionApiRequest) (any, *http.Response, error)) *StreamsApi_DeleteStreamConnectionExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -982,7 +982,7 @@ type StreamsApi_DeleteStreamConnectionWithParams_Call struct {
 // DeleteStreamConnectionWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.DeleteStreamConnectionApiParams
-func (_e *StreamsApi_Expecter) DeleteStreamConnectionWithParams(ctx interface{}, args interface{}) *StreamsApi_DeleteStreamConnectionWithParams_Call {
+func (_e *StreamsApi_Expecter) DeleteStreamConnectionWithParams(ctx any, args any) *StreamsApi_DeleteStreamConnectionWithParams_Call {
 	return &StreamsApi_DeleteStreamConnectionWithParams_Call{Call: _e.mock.On("DeleteStreamConnectionWithParams", ctx, args)}
 }
 
@@ -1030,7 +1030,7 @@ type StreamsApi_DeleteStreamInstance_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - tenantName string
-func (_e *StreamsApi_Expecter) DeleteStreamInstance(ctx interface{}, groupId interface{}, tenantName interface{}) *StreamsApi_DeleteStreamInstance_Call {
+func (_e *StreamsApi_Expecter) DeleteStreamInstance(ctx any, groupId any, tenantName any) *StreamsApi_DeleteStreamInstance_Call {
 	return &StreamsApi_DeleteStreamInstance_Call{Call: _e.mock.On("DeleteStreamInstance", ctx, groupId, tenantName)}
 }
 
@@ -1052,24 +1052,24 @@ func (_c *StreamsApi_DeleteStreamInstance_Call) RunAndReturn(run func(context.Co
 }
 
 // DeleteStreamInstanceExecute provides a mock function with given fields: r
-func (_m *StreamsApi) DeleteStreamInstanceExecute(r admin.DeleteStreamInstanceApiRequest) (interface{}, *http.Response, error) {
+func (_m *StreamsApi) DeleteStreamInstanceExecute(r admin.DeleteStreamInstanceApiRequest) (any, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteStreamInstanceExecute")
 	}
 
-	var r0 interface{}
+	var r0 any
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteStreamInstanceApiRequest) (interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteStreamInstanceApiRequest) (any, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteStreamInstanceApiRequest) interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteStreamInstanceApiRequest) any); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(interface{})
+			r0 = ret.Get(0).(any)
 		}
 	}
 
@@ -1097,7 +1097,7 @@ type StreamsApi_DeleteStreamInstanceExecute_Call struct {
 
 // DeleteStreamInstanceExecute is a helper method to define mock.On call
 //   - r admin.DeleteStreamInstanceApiRequest
-func (_e *StreamsApi_Expecter) DeleteStreamInstanceExecute(r interface{}) *StreamsApi_DeleteStreamInstanceExecute_Call {
+func (_e *StreamsApi_Expecter) DeleteStreamInstanceExecute(r any) *StreamsApi_DeleteStreamInstanceExecute_Call {
 	return &StreamsApi_DeleteStreamInstanceExecute_Call{Call: _e.mock.On("DeleteStreamInstanceExecute", r)}
 }
 
@@ -1108,12 +1108,12 @@ func (_c *StreamsApi_DeleteStreamInstanceExecute_Call) Run(run func(r admin.Dele
 	return _c
 }
 
-func (_c *StreamsApi_DeleteStreamInstanceExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *StreamsApi_DeleteStreamInstanceExecute_Call {
+func (_c *StreamsApi_DeleteStreamInstanceExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *StreamsApi_DeleteStreamInstanceExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *StreamsApi_DeleteStreamInstanceExecute_Call) RunAndReturn(run func(admin.DeleteStreamInstanceApiRequest) (interface{}, *http.Response, error)) *StreamsApi_DeleteStreamInstanceExecute_Call {
+func (_c *StreamsApi_DeleteStreamInstanceExecute_Call) RunAndReturn(run func(admin.DeleteStreamInstanceApiRequest) (any, *http.Response, error)) *StreamsApi_DeleteStreamInstanceExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1144,7 +1144,7 @@ type StreamsApi_DeleteStreamInstanceWithParams_Call struct {
 // DeleteStreamInstanceWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.DeleteStreamInstanceApiParams
-func (_e *StreamsApi_Expecter) DeleteStreamInstanceWithParams(ctx interface{}, args interface{}) *StreamsApi_DeleteStreamInstanceWithParams_Call {
+func (_e *StreamsApi_Expecter) DeleteStreamInstanceWithParams(ctx any, args any) *StreamsApi_DeleteStreamInstanceWithParams_Call {
 	return &StreamsApi_DeleteStreamInstanceWithParams_Call{Call: _e.mock.On("DeleteStreamInstanceWithParams", ctx, args)}
 }
 
@@ -1193,7 +1193,7 @@ type StreamsApi_DeleteStreamProcessor_Call struct {
 //   - groupId string
 //   - tenantName string
 //   - processorName string
-func (_e *StreamsApi_Expecter) DeleteStreamProcessor(ctx interface{}, groupId interface{}, tenantName interface{}, processorName interface{}) *StreamsApi_DeleteStreamProcessor_Call {
+func (_e *StreamsApi_Expecter) DeleteStreamProcessor(ctx any, groupId any, tenantName any, processorName any) *StreamsApi_DeleteStreamProcessor_Call {
 	return &StreamsApi_DeleteStreamProcessor_Call{Call: _e.mock.On("DeleteStreamProcessor", ctx, groupId, tenantName, processorName)}
 }
 
@@ -1251,7 +1251,7 @@ type StreamsApi_DeleteStreamProcessorExecute_Call struct {
 
 // DeleteStreamProcessorExecute is a helper method to define mock.On call
 //   - r admin.DeleteStreamProcessorApiRequest
-func (_e *StreamsApi_Expecter) DeleteStreamProcessorExecute(r interface{}) *StreamsApi_DeleteStreamProcessorExecute_Call {
+func (_e *StreamsApi_Expecter) DeleteStreamProcessorExecute(r any) *StreamsApi_DeleteStreamProcessorExecute_Call {
 	return &StreamsApi_DeleteStreamProcessorExecute_Call{Call: _e.mock.On("DeleteStreamProcessorExecute", r)}
 }
 
@@ -1298,7 +1298,7 @@ type StreamsApi_DeleteStreamProcessorWithParams_Call struct {
 // DeleteStreamProcessorWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.DeleteStreamProcessorApiParams
-func (_e *StreamsApi_Expecter) DeleteStreamProcessorWithParams(ctx interface{}, args interface{}) *StreamsApi_DeleteStreamProcessorWithParams_Call {
+func (_e *StreamsApi_Expecter) DeleteStreamProcessorWithParams(ctx any, args any) *StreamsApi_DeleteStreamProcessorWithParams_Call {
 	return &StreamsApi_DeleteStreamProcessorWithParams_Call{Call: _e.mock.On("DeleteStreamProcessorWithParams", ctx, args)}
 }
 
@@ -1346,7 +1346,7 @@ type StreamsApi_DeleteVPCPeeringConnection_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - id string
-func (_e *StreamsApi_Expecter) DeleteVPCPeeringConnection(ctx interface{}, groupId interface{}, id interface{}) *StreamsApi_DeleteVPCPeeringConnection_Call {
+func (_e *StreamsApi_Expecter) DeleteVPCPeeringConnection(ctx any, groupId any, id any) *StreamsApi_DeleteVPCPeeringConnection_Call {
 	return &StreamsApi_DeleteVPCPeeringConnection_Call{Call: _e.mock.On("DeleteVPCPeeringConnection", ctx, groupId, id)}
 }
 
@@ -1368,24 +1368,24 @@ func (_c *StreamsApi_DeleteVPCPeeringConnection_Call) RunAndReturn(run func(cont
 }
 
 // DeleteVPCPeeringConnectionExecute provides a mock function with given fields: r
-func (_m *StreamsApi) DeleteVPCPeeringConnectionExecute(r admin.DeleteVPCPeeringConnectionApiRequest) (interface{}, *http.Response, error) {
+func (_m *StreamsApi) DeleteVPCPeeringConnectionExecute(r admin.DeleteVPCPeeringConnectionApiRequest) (any, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteVPCPeeringConnectionExecute")
 	}
 
-	var r0 interface{}
+	var r0 any
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteVPCPeeringConnectionApiRequest) (interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteVPCPeeringConnectionApiRequest) (any, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteVPCPeeringConnectionApiRequest) interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteVPCPeeringConnectionApiRequest) any); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(interface{})
+			r0 = ret.Get(0).(any)
 		}
 	}
 
@@ -1413,7 +1413,7 @@ type StreamsApi_DeleteVPCPeeringConnectionExecute_Call struct {
 
 // DeleteVPCPeeringConnectionExecute is a helper method to define mock.On call
 //   - r admin.DeleteVPCPeeringConnectionApiRequest
-func (_e *StreamsApi_Expecter) DeleteVPCPeeringConnectionExecute(r interface{}) *StreamsApi_DeleteVPCPeeringConnectionExecute_Call {
+func (_e *StreamsApi_Expecter) DeleteVPCPeeringConnectionExecute(r any) *StreamsApi_DeleteVPCPeeringConnectionExecute_Call {
 	return &StreamsApi_DeleteVPCPeeringConnectionExecute_Call{Call: _e.mock.On("DeleteVPCPeeringConnectionExecute", r)}
 }
 
@@ -1424,12 +1424,12 @@ func (_c *StreamsApi_DeleteVPCPeeringConnectionExecute_Call) Run(run func(r admi
 	return _c
 }
 
-func (_c *StreamsApi_DeleteVPCPeeringConnectionExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *StreamsApi_DeleteVPCPeeringConnectionExecute_Call {
+func (_c *StreamsApi_DeleteVPCPeeringConnectionExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *StreamsApi_DeleteVPCPeeringConnectionExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *StreamsApi_DeleteVPCPeeringConnectionExecute_Call) RunAndReturn(run func(admin.DeleteVPCPeeringConnectionApiRequest) (interface{}, *http.Response, error)) *StreamsApi_DeleteVPCPeeringConnectionExecute_Call {
+func (_c *StreamsApi_DeleteVPCPeeringConnectionExecute_Call) RunAndReturn(run func(admin.DeleteVPCPeeringConnectionApiRequest) (any, *http.Response, error)) *StreamsApi_DeleteVPCPeeringConnectionExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1460,7 +1460,7 @@ type StreamsApi_DeleteVPCPeeringConnectionWithParams_Call struct {
 // DeleteVPCPeeringConnectionWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.DeleteVPCPeeringConnectionApiParams
-func (_e *StreamsApi_Expecter) DeleteVPCPeeringConnectionWithParams(ctx interface{}, args interface{}) *StreamsApi_DeleteVPCPeeringConnectionWithParams_Call {
+func (_e *StreamsApi_Expecter) DeleteVPCPeeringConnectionWithParams(ctx any, args any) *StreamsApi_DeleteVPCPeeringConnectionWithParams_Call {
 	return &StreamsApi_DeleteVPCPeeringConnectionWithParams_Call{Call: _e.mock.On("DeleteVPCPeeringConnectionWithParams", ctx, args)}
 }
 
@@ -1508,7 +1508,7 @@ type StreamsApi_DownloadStreamTenantAuditLogs_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - tenantName string
-func (_e *StreamsApi_Expecter) DownloadStreamTenantAuditLogs(ctx interface{}, groupId interface{}, tenantName interface{}) *StreamsApi_DownloadStreamTenantAuditLogs_Call {
+func (_e *StreamsApi_Expecter) DownloadStreamTenantAuditLogs(ctx any, groupId any, tenantName any) *StreamsApi_DownloadStreamTenantAuditLogs_Call {
 	return &StreamsApi_DownloadStreamTenantAuditLogs_Call{Call: _e.mock.On("DownloadStreamTenantAuditLogs", ctx, groupId, tenantName)}
 }
 
@@ -1575,7 +1575,7 @@ type StreamsApi_DownloadStreamTenantAuditLogsExecute_Call struct {
 
 // DownloadStreamTenantAuditLogsExecute is a helper method to define mock.On call
 //   - r admin.DownloadStreamTenantAuditLogsApiRequest
-func (_e *StreamsApi_Expecter) DownloadStreamTenantAuditLogsExecute(r interface{}) *StreamsApi_DownloadStreamTenantAuditLogsExecute_Call {
+func (_e *StreamsApi_Expecter) DownloadStreamTenantAuditLogsExecute(r any) *StreamsApi_DownloadStreamTenantAuditLogsExecute_Call {
 	return &StreamsApi_DownloadStreamTenantAuditLogsExecute_Call{Call: _e.mock.On("DownloadStreamTenantAuditLogsExecute", r)}
 }
 
@@ -1622,7 +1622,7 @@ type StreamsApi_DownloadStreamTenantAuditLogsWithParams_Call struct {
 // DownloadStreamTenantAuditLogsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.DownloadStreamTenantAuditLogsApiParams
-func (_e *StreamsApi_Expecter) DownloadStreamTenantAuditLogsWithParams(ctx interface{}, args interface{}) *StreamsApi_DownloadStreamTenantAuditLogsWithParams_Call {
+func (_e *StreamsApi_Expecter) DownloadStreamTenantAuditLogsWithParams(ctx any, args any) *StreamsApi_DownloadStreamTenantAuditLogsWithParams_Call {
 	return &StreamsApi_DownloadStreamTenantAuditLogsWithParams_Call{Call: _e.mock.On("DownloadStreamTenantAuditLogsWithParams", ctx, args)}
 }
 
@@ -1671,7 +1671,7 @@ type StreamsApi_GetStreamConnection_Call struct {
 //   - groupId string
 //   - tenantName string
 //   - connectionName string
-func (_e *StreamsApi_Expecter) GetStreamConnection(ctx interface{}, groupId interface{}, tenantName interface{}, connectionName interface{}) *StreamsApi_GetStreamConnection_Call {
+func (_e *StreamsApi_Expecter) GetStreamConnection(ctx any, groupId any, tenantName any, connectionName any) *StreamsApi_GetStreamConnection_Call {
 	return &StreamsApi_GetStreamConnection_Call{Call: _e.mock.On("GetStreamConnection", ctx, groupId, tenantName, connectionName)}
 }
 
@@ -1738,7 +1738,7 @@ type StreamsApi_GetStreamConnectionExecute_Call struct {
 
 // GetStreamConnectionExecute is a helper method to define mock.On call
 //   - r admin.GetStreamConnectionApiRequest
-func (_e *StreamsApi_Expecter) GetStreamConnectionExecute(r interface{}) *StreamsApi_GetStreamConnectionExecute_Call {
+func (_e *StreamsApi_Expecter) GetStreamConnectionExecute(r any) *StreamsApi_GetStreamConnectionExecute_Call {
 	return &StreamsApi_GetStreamConnectionExecute_Call{Call: _e.mock.On("GetStreamConnectionExecute", r)}
 }
 
@@ -1785,7 +1785,7 @@ type StreamsApi_GetStreamConnectionWithParams_Call struct {
 // GetStreamConnectionWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetStreamConnectionApiParams
-func (_e *StreamsApi_Expecter) GetStreamConnectionWithParams(ctx interface{}, args interface{}) *StreamsApi_GetStreamConnectionWithParams_Call {
+func (_e *StreamsApi_Expecter) GetStreamConnectionWithParams(ctx any, args any) *StreamsApi_GetStreamConnectionWithParams_Call {
 	return &StreamsApi_GetStreamConnectionWithParams_Call{Call: _e.mock.On("GetStreamConnectionWithParams", ctx, args)}
 }
 
@@ -1833,7 +1833,7 @@ type StreamsApi_GetStreamInstance_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - tenantName string
-func (_e *StreamsApi_Expecter) GetStreamInstance(ctx interface{}, groupId interface{}, tenantName interface{}) *StreamsApi_GetStreamInstance_Call {
+func (_e *StreamsApi_Expecter) GetStreamInstance(ctx any, groupId any, tenantName any) *StreamsApi_GetStreamInstance_Call {
 	return &StreamsApi_GetStreamInstance_Call{Call: _e.mock.On("GetStreamInstance", ctx, groupId, tenantName)}
 }
 
@@ -1900,7 +1900,7 @@ type StreamsApi_GetStreamInstanceExecute_Call struct {
 
 // GetStreamInstanceExecute is a helper method to define mock.On call
 //   - r admin.GetStreamInstanceApiRequest
-func (_e *StreamsApi_Expecter) GetStreamInstanceExecute(r interface{}) *StreamsApi_GetStreamInstanceExecute_Call {
+func (_e *StreamsApi_Expecter) GetStreamInstanceExecute(r any) *StreamsApi_GetStreamInstanceExecute_Call {
 	return &StreamsApi_GetStreamInstanceExecute_Call{Call: _e.mock.On("GetStreamInstanceExecute", r)}
 }
 
@@ -1947,7 +1947,7 @@ type StreamsApi_GetStreamInstanceWithParams_Call struct {
 // GetStreamInstanceWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetStreamInstanceApiParams
-func (_e *StreamsApi_Expecter) GetStreamInstanceWithParams(ctx interface{}, args interface{}) *StreamsApi_GetStreamInstanceWithParams_Call {
+func (_e *StreamsApi_Expecter) GetStreamInstanceWithParams(ctx any, args any) *StreamsApi_GetStreamInstanceWithParams_Call {
 	return &StreamsApi_GetStreamInstanceWithParams_Call{Call: _e.mock.On("GetStreamInstanceWithParams", ctx, args)}
 }
 
@@ -1996,7 +1996,7 @@ type StreamsApi_GetStreamProcessor_Call struct {
 //   - groupId string
 //   - tenantName string
 //   - processorName string
-func (_e *StreamsApi_Expecter) GetStreamProcessor(ctx interface{}, groupId interface{}, tenantName interface{}, processorName interface{}) *StreamsApi_GetStreamProcessor_Call {
+func (_e *StreamsApi_Expecter) GetStreamProcessor(ctx any, groupId any, tenantName any, processorName any) *StreamsApi_GetStreamProcessor_Call {
 	return &StreamsApi_GetStreamProcessor_Call{Call: _e.mock.On("GetStreamProcessor", ctx, groupId, tenantName, processorName)}
 }
 
@@ -2063,7 +2063,7 @@ type StreamsApi_GetStreamProcessorExecute_Call struct {
 
 // GetStreamProcessorExecute is a helper method to define mock.On call
 //   - r admin.GetStreamProcessorApiRequest
-func (_e *StreamsApi_Expecter) GetStreamProcessorExecute(r interface{}) *StreamsApi_GetStreamProcessorExecute_Call {
+func (_e *StreamsApi_Expecter) GetStreamProcessorExecute(r any) *StreamsApi_GetStreamProcessorExecute_Call {
 	return &StreamsApi_GetStreamProcessorExecute_Call{Call: _e.mock.On("GetStreamProcessorExecute", r)}
 }
 
@@ -2110,7 +2110,7 @@ type StreamsApi_GetStreamProcessorWithParams_Call struct {
 // GetStreamProcessorWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetStreamProcessorApiParams
-func (_e *StreamsApi_Expecter) GetStreamProcessorWithParams(ctx interface{}, args interface{}) *StreamsApi_GetStreamProcessorWithParams_Call {
+func (_e *StreamsApi_Expecter) GetStreamProcessorWithParams(ctx any, args any) *StreamsApi_GetStreamProcessorWithParams_Call {
 	return &StreamsApi_GetStreamProcessorWithParams_Call{Call: _e.mock.On("GetStreamProcessorWithParams", ctx, args)}
 }
 
@@ -2157,7 +2157,7 @@ type StreamsApi_GetVPCPeeringConnections_Call struct {
 // GetVPCPeeringConnections is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *StreamsApi_Expecter) GetVPCPeeringConnections(ctx interface{}, groupId interface{}) *StreamsApi_GetVPCPeeringConnections_Call {
+func (_e *StreamsApi_Expecter) GetVPCPeeringConnections(ctx any, groupId any) *StreamsApi_GetVPCPeeringConnections_Call {
 	return &StreamsApi_GetVPCPeeringConnections_Call{Call: _e.mock.On("GetVPCPeeringConnections", ctx, groupId)}
 }
 
@@ -2215,7 +2215,7 @@ type StreamsApi_GetVPCPeeringConnectionsExecute_Call struct {
 
 // GetVPCPeeringConnectionsExecute is a helper method to define mock.On call
 //   - r admin.GetVPCPeeringConnectionsApiRequest
-func (_e *StreamsApi_Expecter) GetVPCPeeringConnectionsExecute(r interface{}) *StreamsApi_GetVPCPeeringConnectionsExecute_Call {
+func (_e *StreamsApi_Expecter) GetVPCPeeringConnectionsExecute(r any) *StreamsApi_GetVPCPeeringConnectionsExecute_Call {
 	return &StreamsApi_GetVPCPeeringConnectionsExecute_Call{Call: _e.mock.On("GetVPCPeeringConnectionsExecute", r)}
 }
 
@@ -2262,7 +2262,7 @@ type StreamsApi_GetVPCPeeringConnectionsWithParams_Call struct {
 // GetVPCPeeringConnectionsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetVPCPeeringConnectionsApiParams
-func (_e *StreamsApi_Expecter) GetVPCPeeringConnectionsWithParams(ctx interface{}, args interface{}) *StreamsApi_GetVPCPeeringConnectionsWithParams_Call {
+func (_e *StreamsApi_Expecter) GetVPCPeeringConnectionsWithParams(ctx any, args any) *StreamsApi_GetVPCPeeringConnectionsWithParams_Call {
 	return &StreamsApi_GetVPCPeeringConnectionsWithParams_Call{Call: _e.mock.On("GetVPCPeeringConnectionsWithParams", ctx, args)}
 }
 
@@ -2310,7 +2310,7 @@ type StreamsApi_ListStreamConnections_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - tenantName string
-func (_e *StreamsApi_Expecter) ListStreamConnections(ctx interface{}, groupId interface{}, tenantName interface{}) *StreamsApi_ListStreamConnections_Call {
+func (_e *StreamsApi_Expecter) ListStreamConnections(ctx any, groupId any, tenantName any) *StreamsApi_ListStreamConnections_Call {
 	return &StreamsApi_ListStreamConnections_Call{Call: _e.mock.On("ListStreamConnections", ctx, groupId, tenantName)}
 }
 
@@ -2377,7 +2377,7 @@ type StreamsApi_ListStreamConnectionsExecute_Call struct {
 
 // ListStreamConnectionsExecute is a helper method to define mock.On call
 //   - r admin.ListStreamConnectionsApiRequest
-func (_e *StreamsApi_Expecter) ListStreamConnectionsExecute(r interface{}) *StreamsApi_ListStreamConnectionsExecute_Call {
+func (_e *StreamsApi_Expecter) ListStreamConnectionsExecute(r any) *StreamsApi_ListStreamConnectionsExecute_Call {
 	return &StreamsApi_ListStreamConnectionsExecute_Call{Call: _e.mock.On("ListStreamConnectionsExecute", r)}
 }
 
@@ -2424,7 +2424,7 @@ type StreamsApi_ListStreamConnectionsWithParams_Call struct {
 // ListStreamConnectionsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListStreamConnectionsApiParams
-func (_e *StreamsApi_Expecter) ListStreamConnectionsWithParams(ctx interface{}, args interface{}) *StreamsApi_ListStreamConnectionsWithParams_Call {
+func (_e *StreamsApi_Expecter) ListStreamConnectionsWithParams(ctx any, args any) *StreamsApi_ListStreamConnectionsWithParams_Call {
 	return &StreamsApi_ListStreamConnectionsWithParams_Call{Call: _e.mock.On("ListStreamConnectionsWithParams", ctx, args)}
 }
 
@@ -2471,7 +2471,7 @@ type StreamsApi_ListStreamInstances_Call struct {
 // ListStreamInstances is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *StreamsApi_Expecter) ListStreamInstances(ctx interface{}, groupId interface{}) *StreamsApi_ListStreamInstances_Call {
+func (_e *StreamsApi_Expecter) ListStreamInstances(ctx any, groupId any) *StreamsApi_ListStreamInstances_Call {
 	return &StreamsApi_ListStreamInstances_Call{Call: _e.mock.On("ListStreamInstances", ctx, groupId)}
 }
 
@@ -2538,7 +2538,7 @@ type StreamsApi_ListStreamInstancesExecute_Call struct {
 
 // ListStreamInstancesExecute is a helper method to define mock.On call
 //   - r admin.ListStreamInstancesApiRequest
-func (_e *StreamsApi_Expecter) ListStreamInstancesExecute(r interface{}) *StreamsApi_ListStreamInstancesExecute_Call {
+func (_e *StreamsApi_Expecter) ListStreamInstancesExecute(r any) *StreamsApi_ListStreamInstancesExecute_Call {
 	return &StreamsApi_ListStreamInstancesExecute_Call{Call: _e.mock.On("ListStreamInstancesExecute", r)}
 }
 
@@ -2585,7 +2585,7 @@ type StreamsApi_ListStreamInstancesWithParams_Call struct {
 // ListStreamInstancesWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListStreamInstancesApiParams
-func (_e *StreamsApi_Expecter) ListStreamInstancesWithParams(ctx interface{}, args interface{}) *StreamsApi_ListStreamInstancesWithParams_Call {
+func (_e *StreamsApi_Expecter) ListStreamInstancesWithParams(ctx any, args any) *StreamsApi_ListStreamInstancesWithParams_Call {
 	return &StreamsApi_ListStreamInstancesWithParams_Call{Call: _e.mock.On("ListStreamInstancesWithParams", ctx, args)}
 }
 
@@ -2633,7 +2633,7 @@ type StreamsApi_ListStreamProcessors_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - tenantName string
-func (_e *StreamsApi_Expecter) ListStreamProcessors(ctx interface{}, groupId interface{}, tenantName interface{}) *StreamsApi_ListStreamProcessors_Call {
+func (_e *StreamsApi_Expecter) ListStreamProcessors(ctx any, groupId any, tenantName any) *StreamsApi_ListStreamProcessors_Call {
 	return &StreamsApi_ListStreamProcessors_Call{Call: _e.mock.On("ListStreamProcessors", ctx, groupId, tenantName)}
 }
 
@@ -2700,7 +2700,7 @@ type StreamsApi_ListStreamProcessorsExecute_Call struct {
 
 // ListStreamProcessorsExecute is a helper method to define mock.On call
 //   - r admin.ListStreamProcessorsApiRequest
-func (_e *StreamsApi_Expecter) ListStreamProcessorsExecute(r interface{}) *StreamsApi_ListStreamProcessorsExecute_Call {
+func (_e *StreamsApi_Expecter) ListStreamProcessorsExecute(r any) *StreamsApi_ListStreamProcessorsExecute_Call {
 	return &StreamsApi_ListStreamProcessorsExecute_Call{Call: _e.mock.On("ListStreamProcessorsExecute", r)}
 }
 
@@ -2747,7 +2747,7 @@ type StreamsApi_ListStreamProcessorsWithParams_Call struct {
 // ListStreamProcessorsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListStreamProcessorsApiParams
-func (_e *StreamsApi_Expecter) ListStreamProcessorsWithParams(ctx interface{}, args interface{}) *StreamsApi_ListStreamProcessorsWithParams_Call {
+func (_e *StreamsApi_Expecter) ListStreamProcessorsWithParams(ctx any, args any) *StreamsApi_ListStreamProcessorsWithParams_Call {
 	return &StreamsApi_ListStreamProcessorsWithParams_Call{Call: _e.mock.On("ListStreamProcessorsWithParams", ctx, args)}
 }
 
@@ -2795,7 +2795,7 @@ type StreamsApi_RejectVPCPeeringConnection_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - id string
-func (_e *StreamsApi_Expecter) RejectVPCPeeringConnection(ctx interface{}, groupId interface{}, id interface{}) *StreamsApi_RejectVPCPeeringConnection_Call {
+func (_e *StreamsApi_Expecter) RejectVPCPeeringConnection(ctx any, groupId any, id any) *StreamsApi_RejectVPCPeeringConnection_Call {
 	return &StreamsApi_RejectVPCPeeringConnection_Call{Call: _e.mock.On("RejectVPCPeeringConnection", ctx, groupId, id)}
 }
 
@@ -2817,24 +2817,24 @@ func (_c *StreamsApi_RejectVPCPeeringConnection_Call) RunAndReturn(run func(cont
 }
 
 // RejectVPCPeeringConnectionExecute provides a mock function with given fields: r
-func (_m *StreamsApi) RejectVPCPeeringConnectionExecute(r admin.RejectVPCPeeringConnectionApiRequest) (interface{}, *http.Response, error) {
+func (_m *StreamsApi) RejectVPCPeeringConnectionExecute(r admin.RejectVPCPeeringConnectionApiRequest) (any, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for RejectVPCPeeringConnectionExecute")
 	}
 
-	var r0 interface{}
+	var r0 any
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.RejectVPCPeeringConnectionApiRequest) (interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.RejectVPCPeeringConnectionApiRequest) (any, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.RejectVPCPeeringConnectionApiRequest) interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.RejectVPCPeeringConnectionApiRequest) any); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(interface{})
+			r0 = ret.Get(0).(any)
 		}
 	}
 
@@ -2862,7 +2862,7 @@ type StreamsApi_RejectVPCPeeringConnectionExecute_Call struct {
 
 // RejectVPCPeeringConnectionExecute is a helper method to define mock.On call
 //   - r admin.RejectVPCPeeringConnectionApiRequest
-func (_e *StreamsApi_Expecter) RejectVPCPeeringConnectionExecute(r interface{}) *StreamsApi_RejectVPCPeeringConnectionExecute_Call {
+func (_e *StreamsApi_Expecter) RejectVPCPeeringConnectionExecute(r any) *StreamsApi_RejectVPCPeeringConnectionExecute_Call {
 	return &StreamsApi_RejectVPCPeeringConnectionExecute_Call{Call: _e.mock.On("RejectVPCPeeringConnectionExecute", r)}
 }
 
@@ -2873,12 +2873,12 @@ func (_c *StreamsApi_RejectVPCPeeringConnectionExecute_Call) Run(run func(r admi
 	return _c
 }
 
-func (_c *StreamsApi_RejectVPCPeeringConnectionExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *StreamsApi_RejectVPCPeeringConnectionExecute_Call {
+func (_c *StreamsApi_RejectVPCPeeringConnectionExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *StreamsApi_RejectVPCPeeringConnectionExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *StreamsApi_RejectVPCPeeringConnectionExecute_Call) RunAndReturn(run func(admin.RejectVPCPeeringConnectionApiRequest) (interface{}, *http.Response, error)) *StreamsApi_RejectVPCPeeringConnectionExecute_Call {
+func (_c *StreamsApi_RejectVPCPeeringConnectionExecute_Call) RunAndReturn(run func(admin.RejectVPCPeeringConnectionApiRequest) (any, *http.Response, error)) *StreamsApi_RejectVPCPeeringConnectionExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -2909,7 +2909,7 @@ type StreamsApi_RejectVPCPeeringConnectionWithParams_Call struct {
 // RejectVPCPeeringConnectionWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.RejectVPCPeeringConnectionApiParams
-func (_e *StreamsApi_Expecter) RejectVPCPeeringConnectionWithParams(ctx interface{}, args interface{}) *StreamsApi_RejectVPCPeeringConnectionWithParams_Call {
+func (_e *StreamsApi_Expecter) RejectVPCPeeringConnectionWithParams(ctx any, args any) *StreamsApi_RejectVPCPeeringConnectionWithParams_Call {
 	return &StreamsApi_RejectVPCPeeringConnectionWithParams_Call{Call: _e.mock.On("RejectVPCPeeringConnectionWithParams", ctx, args)}
 }
 
@@ -2958,7 +2958,7 @@ type StreamsApi_StartStreamProcessor_Call struct {
 //   - groupId string
 //   - tenantName string
 //   - processorName string
-func (_e *StreamsApi_Expecter) StartStreamProcessor(ctx interface{}, groupId interface{}, tenantName interface{}, processorName interface{}) *StreamsApi_StartStreamProcessor_Call {
+func (_e *StreamsApi_Expecter) StartStreamProcessor(ctx any, groupId any, tenantName any, processorName any) *StreamsApi_StartStreamProcessor_Call {
 	return &StreamsApi_StartStreamProcessor_Call{Call: _e.mock.On("StartStreamProcessor", ctx, groupId, tenantName, processorName)}
 }
 
@@ -2980,24 +2980,24 @@ func (_c *StreamsApi_StartStreamProcessor_Call) RunAndReturn(run func(context.Co
 }
 
 // StartStreamProcessorExecute provides a mock function with given fields: r
-func (_m *StreamsApi) StartStreamProcessorExecute(r admin.StartStreamProcessorApiRequest) (interface{}, *http.Response, error) {
+func (_m *StreamsApi) StartStreamProcessorExecute(r admin.StartStreamProcessorApiRequest) (any, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for StartStreamProcessorExecute")
 	}
 
-	var r0 interface{}
+	var r0 any
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.StartStreamProcessorApiRequest) (interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.StartStreamProcessorApiRequest) (any, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.StartStreamProcessorApiRequest) interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.StartStreamProcessorApiRequest) any); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(interface{})
+			r0 = ret.Get(0).(any)
 		}
 	}
 
@@ -3025,7 +3025,7 @@ type StreamsApi_StartStreamProcessorExecute_Call struct {
 
 // StartStreamProcessorExecute is a helper method to define mock.On call
 //   - r admin.StartStreamProcessorApiRequest
-func (_e *StreamsApi_Expecter) StartStreamProcessorExecute(r interface{}) *StreamsApi_StartStreamProcessorExecute_Call {
+func (_e *StreamsApi_Expecter) StartStreamProcessorExecute(r any) *StreamsApi_StartStreamProcessorExecute_Call {
 	return &StreamsApi_StartStreamProcessorExecute_Call{Call: _e.mock.On("StartStreamProcessorExecute", r)}
 }
 
@@ -3036,12 +3036,12 @@ func (_c *StreamsApi_StartStreamProcessorExecute_Call) Run(run func(r admin.Star
 	return _c
 }
 
-func (_c *StreamsApi_StartStreamProcessorExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *StreamsApi_StartStreamProcessorExecute_Call {
+func (_c *StreamsApi_StartStreamProcessorExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *StreamsApi_StartStreamProcessorExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *StreamsApi_StartStreamProcessorExecute_Call) RunAndReturn(run func(admin.StartStreamProcessorApiRequest) (interface{}, *http.Response, error)) *StreamsApi_StartStreamProcessorExecute_Call {
+func (_c *StreamsApi_StartStreamProcessorExecute_Call) RunAndReturn(run func(admin.StartStreamProcessorApiRequest) (any, *http.Response, error)) *StreamsApi_StartStreamProcessorExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -3072,7 +3072,7 @@ type StreamsApi_StartStreamProcessorWithParams_Call struct {
 // StartStreamProcessorWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.StartStreamProcessorApiParams
-func (_e *StreamsApi_Expecter) StartStreamProcessorWithParams(ctx interface{}, args interface{}) *StreamsApi_StartStreamProcessorWithParams_Call {
+func (_e *StreamsApi_Expecter) StartStreamProcessorWithParams(ctx any, args any) *StreamsApi_StartStreamProcessorWithParams_Call {
 	return &StreamsApi_StartStreamProcessorWithParams_Call{Call: _e.mock.On("StartStreamProcessorWithParams", ctx, args)}
 }
 
@@ -3121,7 +3121,7 @@ type StreamsApi_StopStreamProcessor_Call struct {
 //   - groupId string
 //   - tenantName string
 //   - processorName string
-func (_e *StreamsApi_Expecter) StopStreamProcessor(ctx interface{}, groupId interface{}, tenantName interface{}, processorName interface{}) *StreamsApi_StopStreamProcessor_Call {
+func (_e *StreamsApi_Expecter) StopStreamProcessor(ctx any, groupId any, tenantName any, processorName any) *StreamsApi_StopStreamProcessor_Call {
 	return &StreamsApi_StopStreamProcessor_Call{Call: _e.mock.On("StopStreamProcessor", ctx, groupId, tenantName, processorName)}
 }
 
@@ -3143,24 +3143,24 @@ func (_c *StreamsApi_StopStreamProcessor_Call) RunAndReturn(run func(context.Con
 }
 
 // StopStreamProcessorExecute provides a mock function with given fields: r
-func (_m *StreamsApi) StopStreamProcessorExecute(r admin.StopStreamProcessorApiRequest) (interface{}, *http.Response, error) {
+func (_m *StreamsApi) StopStreamProcessorExecute(r admin.StopStreamProcessorApiRequest) (any, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for StopStreamProcessorExecute")
 	}
 
-	var r0 interface{}
+	var r0 any
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.StopStreamProcessorApiRequest) (interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.StopStreamProcessorApiRequest) (any, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.StopStreamProcessorApiRequest) interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.StopStreamProcessorApiRequest) any); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(interface{})
+			r0 = ret.Get(0).(any)
 		}
 	}
 
@@ -3188,7 +3188,7 @@ type StreamsApi_StopStreamProcessorExecute_Call struct {
 
 // StopStreamProcessorExecute is a helper method to define mock.On call
 //   - r admin.StopStreamProcessorApiRequest
-func (_e *StreamsApi_Expecter) StopStreamProcessorExecute(r interface{}) *StreamsApi_StopStreamProcessorExecute_Call {
+func (_e *StreamsApi_Expecter) StopStreamProcessorExecute(r any) *StreamsApi_StopStreamProcessorExecute_Call {
 	return &StreamsApi_StopStreamProcessorExecute_Call{Call: _e.mock.On("StopStreamProcessorExecute", r)}
 }
 
@@ -3199,12 +3199,12 @@ func (_c *StreamsApi_StopStreamProcessorExecute_Call) Run(run func(r admin.StopS
 	return _c
 }
 
-func (_c *StreamsApi_StopStreamProcessorExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *StreamsApi_StopStreamProcessorExecute_Call {
+func (_c *StreamsApi_StopStreamProcessorExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *StreamsApi_StopStreamProcessorExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *StreamsApi_StopStreamProcessorExecute_Call) RunAndReturn(run func(admin.StopStreamProcessorApiRequest) (interface{}, *http.Response, error)) *StreamsApi_StopStreamProcessorExecute_Call {
+func (_c *StreamsApi_StopStreamProcessorExecute_Call) RunAndReturn(run func(admin.StopStreamProcessorApiRequest) (any, *http.Response, error)) *StreamsApi_StopStreamProcessorExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -3235,7 +3235,7 @@ type StreamsApi_StopStreamProcessorWithParams_Call struct {
 // StopStreamProcessorWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.StopStreamProcessorApiParams
-func (_e *StreamsApi_Expecter) StopStreamProcessorWithParams(ctx interface{}, args interface{}) *StreamsApi_StopStreamProcessorWithParams_Call {
+func (_e *StreamsApi_Expecter) StopStreamProcessorWithParams(ctx any, args any) *StreamsApi_StopStreamProcessorWithParams_Call {
 	return &StreamsApi_StopStreamProcessorWithParams_Call{Call: _e.mock.On("StopStreamProcessorWithParams", ctx, args)}
 }
 
@@ -3285,7 +3285,7 @@ type StreamsApi_UpdateStreamConnection_Call struct {
 //   - tenantName string
 //   - connectionName string
 //   - streamsConnection *admin.StreamsConnection
-func (_e *StreamsApi_Expecter) UpdateStreamConnection(ctx interface{}, groupId interface{}, tenantName interface{}, connectionName interface{}, streamsConnection interface{}) *StreamsApi_UpdateStreamConnection_Call {
+func (_e *StreamsApi_Expecter) UpdateStreamConnection(ctx any, groupId any, tenantName any, connectionName any, streamsConnection any) *StreamsApi_UpdateStreamConnection_Call {
 	return &StreamsApi_UpdateStreamConnection_Call{Call: _e.mock.On("UpdateStreamConnection", ctx, groupId, tenantName, connectionName, streamsConnection)}
 }
 
@@ -3352,7 +3352,7 @@ type StreamsApi_UpdateStreamConnectionExecute_Call struct {
 
 // UpdateStreamConnectionExecute is a helper method to define mock.On call
 //   - r admin.UpdateStreamConnectionApiRequest
-func (_e *StreamsApi_Expecter) UpdateStreamConnectionExecute(r interface{}) *StreamsApi_UpdateStreamConnectionExecute_Call {
+func (_e *StreamsApi_Expecter) UpdateStreamConnectionExecute(r any) *StreamsApi_UpdateStreamConnectionExecute_Call {
 	return &StreamsApi_UpdateStreamConnectionExecute_Call{Call: _e.mock.On("UpdateStreamConnectionExecute", r)}
 }
 
@@ -3399,7 +3399,7 @@ type StreamsApi_UpdateStreamConnectionWithParams_Call struct {
 // UpdateStreamConnectionWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.UpdateStreamConnectionApiParams
-func (_e *StreamsApi_Expecter) UpdateStreamConnectionWithParams(ctx interface{}, args interface{}) *StreamsApi_UpdateStreamConnectionWithParams_Call {
+func (_e *StreamsApi_Expecter) UpdateStreamConnectionWithParams(ctx any, args any) *StreamsApi_UpdateStreamConnectionWithParams_Call {
 	return &StreamsApi_UpdateStreamConnectionWithParams_Call{Call: _e.mock.On("UpdateStreamConnectionWithParams", ctx, args)}
 }
 
@@ -3448,7 +3448,7 @@ type StreamsApi_UpdateStreamInstance_Call struct {
 //   - groupId string
 //   - tenantName string
 //   - streamsDataProcessRegion *admin.StreamsDataProcessRegion
-func (_e *StreamsApi_Expecter) UpdateStreamInstance(ctx interface{}, groupId interface{}, tenantName interface{}, streamsDataProcessRegion interface{}) *StreamsApi_UpdateStreamInstance_Call {
+func (_e *StreamsApi_Expecter) UpdateStreamInstance(ctx any, groupId any, tenantName any, streamsDataProcessRegion any) *StreamsApi_UpdateStreamInstance_Call {
 	return &StreamsApi_UpdateStreamInstance_Call{Call: _e.mock.On("UpdateStreamInstance", ctx, groupId, tenantName, streamsDataProcessRegion)}
 }
 
@@ -3515,7 +3515,7 @@ type StreamsApi_UpdateStreamInstanceExecute_Call struct {
 
 // UpdateStreamInstanceExecute is a helper method to define mock.On call
 //   - r admin.UpdateStreamInstanceApiRequest
-func (_e *StreamsApi_Expecter) UpdateStreamInstanceExecute(r interface{}) *StreamsApi_UpdateStreamInstanceExecute_Call {
+func (_e *StreamsApi_Expecter) UpdateStreamInstanceExecute(r any) *StreamsApi_UpdateStreamInstanceExecute_Call {
 	return &StreamsApi_UpdateStreamInstanceExecute_Call{Call: _e.mock.On("UpdateStreamInstanceExecute", r)}
 }
 
@@ -3562,7 +3562,7 @@ type StreamsApi_UpdateStreamInstanceWithParams_Call struct {
 // UpdateStreamInstanceWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.UpdateStreamInstanceApiParams
-func (_e *StreamsApi_Expecter) UpdateStreamInstanceWithParams(ctx interface{}, args interface{}) *StreamsApi_UpdateStreamInstanceWithParams_Call {
+func (_e *StreamsApi_Expecter) UpdateStreamInstanceWithParams(ctx any, args any) *StreamsApi_UpdateStreamInstanceWithParams_Call {
 	return &StreamsApi_UpdateStreamInstanceWithParams_Call{Call: _e.mock.On("UpdateStreamInstanceWithParams", ctx, args)}
 }
 

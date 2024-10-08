@@ -52,7 +52,7 @@ type ClustersApi_CreateCluster_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - clusterDescription20240805 *admin.ClusterDescription20240805
-func (_e *ClustersApi_Expecter) CreateCluster(ctx interface{}, groupId interface{}, clusterDescription20240805 interface{}) *ClustersApi_CreateCluster_Call {
+func (_e *ClustersApi_Expecter) CreateCluster(ctx any, groupId any, clusterDescription20240805 any) *ClustersApi_CreateCluster_Call {
 	return &ClustersApi_CreateCluster_Call{Call: _e.mock.On("CreateCluster", ctx, groupId, clusterDescription20240805)}
 }
 
@@ -119,7 +119,7 @@ type ClustersApi_CreateClusterExecute_Call struct {
 
 // CreateClusterExecute is a helper method to define mock.On call
 //   - r admin.CreateClusterApiRequest
-func (_e *ClustersApi_Expecter) CreateClusterExecute(r interface{}) *ClustersApi_CreateClusterExecute_Call {
+func (_e *ClustersApi_Expecter) CreateClusterExecute(r any) *ClustersApi_CreateClusterExecute_Call {
 	return &ClustersApi_CreateClusterExecute_Call{Call: _e.mock.On("CreateClusterExecute", r)}
 }
 
@@ -166,7 +166,7 @@ type ClustersApi_CreateClusterWithParams_Call struct {
 // CreateClusterWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.CreateClusterApiParams
-func (_e *ClustersApi_Expecter) CreateClusterWithParams(ctx interface{}, args interface{}) *ClustersApi_CreateClusterWithParams_Call {
+func (_e *ClustersApi_Expecter) CreateClusterWithParams(ctx any, args any) *ClustersApi_CreateClusterWithParams_Call {
 	return &ClustersApi_CreateClusterWithParams_Call{Call: _e.mock.On("CreateClusterWithParams", ctx, args)}
 }
 
@@ -214,7 +214,7 @@ type ClustersApi_DeleteCluster_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
-func (_e *ClustersApi_Expecter) DeleteCluster(ctx interface{}, groupId interface{}, clusterName interface{}) *ClustersApi_DeleteCluster_Call {
+func (_e *ClustersApi_Expecter) DeleteCluster(ctx any, groupId any, clusterName any) *ClustersApi_DeleteCluster_Call {
 	return &ClustersApi_DeleteCluster_Call{Call: _e.mock.On("DeleteCluster", ctx, groupId, clusterName)}
 }
 
@@ -272,7 +272,7 @@ type ClustersApi_DeleteClusterExecute_Call struct {
 
 // DeleteClusterExecute is a helper method to define mock.On call
 //   - r admin.DeleteClusterApiRequest
-func (_e *ClustersApi_Expecter) DeleteClusterExecute(r interface{}) *ClustersApi_DeleteClusterExecute_Call {
+func (_e *ClustersApi_Expecter) DeleteClusterExecute(r any) *ClustersApi_DeleteClusterExecute_Call {
 	return &ClustersApi_DeleteClusterExecute_Call{Call: _e.mock.On("DeleteClusterExecute", r)}
 }
 
@@ -319,7 +319,7 @@ type ClustersApi_DeleteClusterWithParams_Call struct {
 // DeleteClusterWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.DeleteClusterApiParams
-func (_e *ClustersApi_Expecter) DeleteClusterWithParams(ctx interface{}, args interface{}) *ClustersApi_DeleteClusterWithParams_Call {
+func (_e *ClustersApi_Expecter) DeleteClusterWithParams(ctx any, args any) *ClustersApi_DeleteClusterWithParams_Call {
 	return &ClustersApi_DeleteClusterWithParams_Call{Call: _e.mock.On("DeleteClusterWithParams", ctx, args)}
 }
 
@@ -367,7 +367,7 @@ type ClustersApi_GetCluster_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
-func (_e *ClustersApi_Expecter) GetCluster(ctx interface{}, groupId interface{}, clusterName interface{}) *ClustersApi_GetCluster_Call {
+func (_e *ClustersApi_Expecter) GetCluster(ctx any, groupId any, clusterName any) *ClustersApi_GetCluster_Call {
 	return &ClustersApi_GetCluster_Call{Call: _e.mock.On("GetCluster", ctx, groupId, clusterName)}
 }
 
@@ -415,7 +415,7 @@ type ClustersApi_GetClusterAdvancedConfiguration_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
-func (_e *ClustersApi_Expecter) GetClusterAdvancedConfiguration(ctx interface{}, groupId interface{}, clusterName interface{}) *ClustersApi_GetClusterAdvancedConfiguration_Call {
+func (_e *ClustersApi_Expecter) GetClusterAdvancedConfiguration(ctx any, groupId any, clusterName any) *ClustersApi_GetClusterAdvancedConfiguration_Call {
 	return &ClustersApi_GetClusterAdvancedConfiguration_Call{Call: _e.mock.On("GetClusterAdvancedConfiguration", ctx, groupId, clusterName)}
 }
 
@@ -482,7 +482,7 @@ type ClustersApi_GetClusterAdvancedConfigurationExecute_Call struct {
 
 // GetClusterAdvancedConfigurationExecute is a helper method to define mock.On call
 //   - r admin.GetClusterAdvancedConfigurationApiRequest
-func (_e *ClustersApi_Expecter) GetClusterAdvancedConfigurationExecute(r interface{}) *ClustersApi_GetClusterAdvancedConfigurationExecute_Call {
+func (_e *ClustersApi_Expecter) GetClusterAdvancedConfigurationExecute(r any) *ClustersApi_GetClusterAdvancedConfigurationExecute_Call {
 	return &ClustersApi_GetClusterAdvancedConfigurationExecute_Call{Call: _e.mock.On("GetClusterAdvancedConfigurationExecute", r)}
 }
 
@@ -529,7 +529,7 @@ type ClustersApi_GetClusterAdvancedConfigurationWithParams_Call struct {
 // GetClusterAdvancedConfigurationWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetClusterAdvancedConfigurationApiParams
-func (_e *ClustersApi_Expecter) GetClusterAdvancedConfigurationWithParams(ctx interface{}, args interface{}) *ClustersApi_GetClusterAdvancedConfigurationWithParams_Call {
+func (_e *ClustersApi_Expecter) GetClusterAdvancedConfigurationWithParams(ctx any, args any) *ClustersApi_GetClusterAdvancedConfigurationWithParams_Call {
 	return &ClustersApi_GetClusterAdvancedConfigurationWithParams_Call{Call: _e.mock.On("GetClusterAdvancedConfigurationWithParams", ctx, args)}
 }
 
@@ -596,7 +596,7 @@ type ClustersApi_GetClusterExecute_Call struct {
 
 // GetClusterExecute is a helper method to define mock.On call
 //   - r admin.GetClusterApiRequest
-func (_e *ClustersApi_Expecter) GetClusterExecute(r interface{}) *ClustersApi_GetClusterExecute_Call {
+func (_e *ClustersApi_Expecter) GetClusterExecute(r any) *ClustersApi_GetClusterExecute_Call {
 	return &ClustersApi_GetClusterExecute_Call{Call: _e.mock.On("GetClusterExecute", r)}
 }
 
@@ -644,7 +644,7 @@ type ClustersApi_GetClusterStatus_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
-func (_e *ClustersApi_Expecter) GetClusterStatus(ctx interface{}, groupId interface{}, clusterName interface{}) *ClustersApi_GetClusterStatus_Call {
+func (_e *ClustersApi_Expecter) GetClusterStatus(ctx any, groupId any, clusterName any) *ClustersApi_GetClusterStatus_Call {
 	return &ClustersApi_GetClusterStatus_Call{Call: _e.mock.On("GetClusterStatus", ctx, groupId, clusterName)}
 }
 
@@ -711,7 +711,7 @@ type ClustersApi_GetClusterStatusExecute_Call struct {
 
 // GetClusterStatusExecute is a helper method to define mock.On call
 //   - r admin.GetClusterStatusApiRequest
-func (_e *ClustersApi_Expecter) GetClusterStatusExecute(r interface{}) *ClustersApi_GetClusterStatusExecute_Call {
+func (_e *ClustersApi_Expecter) GetClusterStatusExecute(r any) *ClustersApi_GetClusterStatusExecute_Call {
 	return &ClustersApi_GetClusterStatusExecute_Call{Call: _e.mock.On("GetClusterStatusExecute", r)}
 }
 
@@ -758,7 +758,7 @@ type ClustersApi_GetClusterStatusWithParams_Call struct {
 // GetClusterStatusWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetClusterStatusApiParams
-func (_e *ClustersApi_Expecter) GetClusterStatusWithParams(ctx interface{}, args interface{}) *ClustersApi_GetClusterStatusWithParams_Call {
+func (_e *ClustersApi_Expecter) GetClusterStatusWithParams(ctx any, args any) *ClustersApi_GetClusterStatusWithParams_Call {
 	return &ClustersApi_GetClusterStatusWithParams_Call{Call: _e.mock.On("GetClusterStatusWithParams", ctx, args)}
 }
 
@@ -805,7 +805,7 @@ type ClustersApi_GetClusterWithParams_Call struct {
 // GetClusterWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetClusterApiParams
-func (_e *ClustersApi_Expecter) GetClusterWithParams(ctx interface{}, args interface{}) *ClustersApi_GetClusterWithParams_Call {
+func (_e *ClustersApi_Expecter) GetClusterWithParams(ctx any, args any) *ClustersApi_GetClusterWithParams_Call {
 	return &ClustersApi_GetClusterWithParams_Call{Call: _e.mock.On("GetClusterWithParams", ctx, args)}
 }
 
@@ -853,7 +853,7 @@ type ClustersApi_GetSampleDatasetLoadStatus_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - sampleDatasetId string
-func (_e *ClustersApi_Expecter) GetSampleDatasetLoadStatus(ctx interface{}, groupId interface{}, sampleDatasetId interface{}) *ClustersApi_GetSampleDatasetLoadStatus_Call {
+func (_e *ClustersApi_Expecter) GetSampleDatasetLoadStatus(ctx any, groupId any, sampleDatasetId any) *ClustersApi_GetSampleDatasetLoadStatus_Call {
 	return &ClustersApi_GetSampleDatasetLoadStatus_Call{Call: _e.mock.On("GetSampleDatasetLoadStatus", ctx, groupId, sampleDatasetId)}
 }
 
@@ -920,7 +920,7 @@ type ClustersApi_GetSampleDatasetLoadStatusExecute_Call struct {
 
 // GetSampleDatasetLoadStatusExecute is a helper method to define mock.On call
 //   - r admin.GetSampleDatasetLoadStatusApiRequest
-func (_e *ClustersApi_Expecter) GetSampleDatasetLoadStatusExecute(r interface{}) *ClustersApi_GetSampleDatasetLoadStatusExecute_Call {
+func (_e *ClustersApi_Expecter) GetSampleDatasetLoadStatusExecute(r any) *ClustersApi_GetSampleDatasetLoadStatusExecute_Call {
 	return &ClustersApi_GetSampleDatasetLoadStatusExecute_Call{Call: _e.mock.On("GetSampleDatasetLoadStatusExecute", r)}
 }
 
@@ -967,7 +967,7 @@ type ClustersApi_GetSampleDatasetLoadStatusWithParams_Call struct {
 // GetSampleDatasetLoadStatusWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetSampleDatasetLoadStatusApiParams
-func (_e *ClustersApi_Expecter) GetSampleDatasetLoadStatusWithParams(ctx interface{}, args interface{}) *ClustersApi_GetSampleDatasetLoadStatusWithParams_Call {
+func (_e *ClustersApi_Expecter) GetSampleDatasetLoadStatusWithParams(ctx any, args any) *ClustersApi_GetSampleDatasetLoadStatusWithParams_Call {
 	return &ClustersApi_GetSampleDatasetLoadStatusWithParams_Call{Call: _e.mock.On("GetSampleDatasetLoadStatusWithParams", ctx, args)}
 }
 
@@ -1016,7 +1016,7 @@ type ClustersApi_GrantMongoDBEmployeeAccess_Call struct {
 //   - groupId string
 //   - clusterName string
 //   - employeeAccessGrant *admin.EmployeeAccessGrant
-func (_e *ClustersApi_Expecter) GrantMongoDBEmployeeAccess(ctx interface{}, groupId interface{}, clusterName interface{}, employeeAccessGrant interface{}) *ClustersApi_GrantMongoDBEmployeeAccess_Call {
+func (_e *ClustersApi_Expecter) GrantMongoDBEmployeeAccess(ctx any, groupId any, clusterName any, employeeAccessGrant any) *ClustersApi_GrantMongoDBEmployeeAccess_Call {
 	return &ClustersApi_GrantMongoDBEmployeeAccess_Call{Call: _e.mock.On("GrantMongoDBEmployeeAccess", ctx, groupId, clusterName, employeeAccessGrant)}
 }
 
@@ -1038,24 +1038,24 @@ func (_c *ClustersApi_GrantMongoDBEmployeeAccess_Call) RunAndReturn(run func(con
 }
 
 // GrantMongoDBEmployeeAccessExecute provides a mock function with given fields: r
-func (_m *ClustersApi) GrantMongoDBEmployeeAccessExecute(r admin.GrantMongoDBEmployeeAccessApiRequest) (interface{}, *http.Response, error) {
+func (_m *ClustersApi) GrantMongoDBEmployeeAccessExecute(r admin.GrantMongoDBEmployeeAccessApiRequest) (any, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for GrantMongoDBEmployeeAccessExecute")
 	}
 
-	var r0 interface{}
+	var r0 any
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GrantMongoDBEmployeeAccessApiRequest) (interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GrantMongoDBEmployeeAccessApiRequest) (any, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.GrantMongoDBEmployeeAccessApiRequest) interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.GrantMongoDBEmployeeAccessApiRequest) any); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(interface{})
+			r0 = ret.Get(0).(any)
 		}
 	}
 
@@ -1083,7 +1083,7 @@ type ClustersApi_GrantMongoDBEmployeeAccessExecute_Call struct {
 
 // GrantMongoDBEmployeeAccessExecute is a helper method to define mock.On call
 //   - r admin.GrantMongoDBEmployeeAccessApiRequest
-func (_e *ClustersApi_Expecter) GrantMongoDBEmployeeAccessExecute(r interface{}) *ClustersApi_GrantMongoDBEmployeeAccessExecute_Call {
+func (_e *ClustersApi_Expecter) GrantMongoDBEmployeeAccessExecute(r any) *ClustersApi_GrantMongoDBEmployeeAccessExecute_Call {
 	return &ClustersApi_GrantMongoDBEmployeeAccessExecute_Call{Call: _e.mock.On("GrantMongoDBEmployeeAccessExecute", r)}
 }
 
@@ -1094,12 +1094,12 @@ func (_c *ClustersApi_GrantMongoDBEmployeeAccessExecute_Call) Run(run func(r adm
 	return _c
 }
 
-func (_c *ClustersApi_GrantMongoDBEmployeeAccessExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *ClustersApi_GrantMongoDBEmployeeAccessExecute_Call {
+func (_c *ClustersApi_GrantMongoDBEmployeeAccessExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *ClustersApi_GrantMongoDBEmployeeAccessExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ClustersApi_GrantMongoDBEmployeeAccessExecute_Call) RunAndReturn(run func(admin.GrantMongoDBEmployeeAccessApiRequest) (interface{}, *http.Response, error)) *ClustersApi_GrantMongoDBEmployeeAccessExecute_Call {
+func (_c *ClustersApi_GrantMongoDBEmployeeAccessExecute_Call) RunAndReturn(run func(admin.GrantMongoDBEmployeeAccessApiRequest) (any, *http.Response, error)) *ClustersApi_GrantMongoDBEmployeeAccessExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1130,7 +1130,7 @@ type ClustersApi_GrantMongoDBEmployeeAccessWithParams_Call struct {
 // GrantMongoDBEmployeeAccessWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GrantMongoDBEmployeeAccessApiParams
-func (_e *ClustersApi_Expecter) GrantMongoDBEmployeeAccessWithParams(ctx interface{}, args interface{}) *ClustersApi_GrantMongoDBEmployeeAccessWithParams_Call {
+func (_e *ClustersApi_Expecter) GrantMongoDBEmployeeAccessWithParams(ctx any, args any) *ClustersApi_GrantMongoDBEmployeeAccessWithParams_Call {
 	return &ClustersApi_GrantMongoDBEmployeeAccessWithParams_Call{Call: _e.mock.On("GrantMongoDBEmployeeAccessWithParams", ctx, args)}
 }
 
@@ -1177,7 +1177,7 @@ type ClustersApi_ListCloudProviderRegions_Call struct {
 // ListCloudProviderRegions is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *ClustersApi_Expecter) ListCloudProviderRegions(ctx interface{}, groupId interface{}) *ClustersApi_ListCloudProviderRegions_Call {
+func (_e *ClustersApi_Expecter) ListCloudProviderRegions(ctx any, groupId any) *ClustersApi_ListCloudProviderRegions_Call {
 	return &ClustersApi_ListCloudProviderRegions_Call{Call: _e.mock.On("ListCloudProviderRegions", ctx, groupId)}
 }
 
@@ -1244,7 +1244,7 @@ type ClustersApi_ListCloudProviderRegionsExecute_Call struct {
 
 // ListCloudProviderRegionsExecute is a helper method to define mock.On call
 //   - r admin.ListCloudProviderRegionsApiRequest
-func (_e *ClustersApi_Expecter) ListCloudProviderRegionsExecute(r interface{}) *ClustersApi_ListCloudProviderRegionsExecute_Call {
+func (_e *ClustersApi_Expecter) ListCloudProviderRegionsExecute(r any) *ClustersApi_ListCloudProviderRegionsExecute_Call {
 	return &ClustersApi_ListCloudProviderRegionsExecute_Call{Call: _e.mock.On("ListCloudProviderRegionsExecute", r)}
 }
 
@@ -1291,7 +1291,7 @@ type ClustersApi_ListCloudProviderRegionsWithParams_Call struct {
 // ListCloudProviderRegionsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListCloudProviderRegionsApiParams
-func (_e *ClustersApi_Expecter) ListCloudProviderRegionsWithParams(ctx interface{}, args interface{}) *ClustersApi_ListCloudProviderRegionsWithParams_Call {
+func (_e *ClustersApi_Expecter) ListCloudProviderRegionsWithParams(ctx any, args any) *ClustersApi_ListCloudProviderRegionsWithParams_Call {
 	return &ClustersApi_ListCloudProviderRegionsWithParams_Call{Call: _e.mock.On("ListCloudProviderRegionsWithParams", ctx, args)}
 }
 
@@ -1338,7 +1338,7 @@ type ClustersApi_ListClusters_Call struct {
 // ListClusters is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *ClustersApi_Expecter) ListClusters(ctx interface{}, groupId interface{}) *ClustersApi_ListClusters_Call {
+func (_e *ClustersApi_Expecter) ListClusters(ctx any, groupId any) *ClustersApi_ListClusters_Call {
 	return &ClustersApi_ListClusters_Call{Call: _e.mock.On("ListClusters", ctx, groupId)}
 }
 
@@ -1405,7 +1405,7 @@ type ClustersApi_ListClustersExecute_Call struct {
 
 // ListClustersExecute is a helper method to define mock.On call
 //   - r admin.ListClustersApiRequest
-func (_e *ClustersApi_Expecter) ListClustersExecute(r interface{}) *ClustersApi_ListClustersExecute_Call {
+func (_e *ClustersApi_Expecter) ListClustersExecute(r any) *ClustersApi_ListClustersExecute_Call {
 	return &ClustersApi_ListClustersExecute_Call{Call: _e.mock.On("ListClustersExecute", r)}
 }
 
@@ -1451,7 +1451,7 @@ type ClustersApi_ListClustersForAllProjects_Call struct {
 
 // ListClustersForAllProjects is a helper method to define mock.On call
 //   - ctx context.Context
-func (_e *ClustersApi_Expecter) ListClustersForAllProjects(ctx interface{}) *ClustersApi_ListClustersForAllProjects_Call {
+func (_e *ClustersApi_Expecter) ListClustersForAllProjects(ctx any) *ClustersApi_ListClustersForAllProjects_Call {
 	return &ClustersApi_ListClustersForAllProjects_Call{Call: _e.mock.On("ListClustersForAllProjects", ctx)}
 }
 
@@ -1518,7 +1518,7 @@ type ClustersApi_ListClustersForAllProjectsExecute_Call struct {
 
 // ListClustersForAllProjectsExecute is a helper method to define mock.On call
 //   - r admin.ListClustersForAllProjectsApiRequest
-func (_e *ClustersApi_Expecter) ListClustersForAllProjectsExecute(r interface{}) *ClustersApi_ListClustersForAllProjectsExecute_Call {
+func (_e *ClustersApi_Expecter) ListClustersForAllProjectsExecute(r any) *ClustersApi_ListClustersForAllProjectsExecute_Call {
 	return &ClustersApi_ListClustersForAllProjectsExecute_Call{Call: _e.mock.On("ListClustersForAllProjectsExecute", r)}
 }
 
@@ -1565,7 +1565,7 @@ type ClustersApi_ListClustersForAllProjectsWithParams_Call struct {
 // ListClustersForAllProjectsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListClustersForAllProjectsApiParams
-func (_e *ClustersApi_Expecter) ListClustersForAllProjectsWithParams(ctx interface{}, args interface{}) *ClustersApi_ListClustersForAllProjectsWithParams_Call {
+func (_e *ClustersApi_Expecter) ListClustersForAllProjectsWithParams(ctx any, args any) *ClustersApi_ListClustersForAllProjectsWithParams_Call {
 	return &ClustersApi_ListClustersForAllProjectsWithParams_Call{Call: _e.mock.On("ListClustersForAllProjectsWithParams", ctx, args)}
 }
 
@@ -1612,7 +1612,7 @@ type ClustersApi_ListClustersWithParams_Call struct {
 // ListClustersWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListClustersApiParams
-func (_e *ClustersApi_Expecter) ListClustersWithParams(ctx interface{}, args interface{}) *ClustersApi_ListClustersWithParams_Call {
+func (_e *ClustersApi_Expecter) ListClustersWithParams(ctx any, args any) *ClustersApi_ListClustersWithParams_Call {
 	return &ClustersApi_ListClustersWithParams_Call{Call: _e.mock.On("ListClustersWithParams", ctx, args)}
 }
 
@@ -1660,7 +1660,7 @@ type ClustersApi_LoadSampleDataset_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - name string
-func (_e *ClustersApi_Expecter) LoadSampleDataset(ctx interface{}, groupId interface{}, name interface{}) *ClustersApi_LoadSampleDataset_Call {
+func (_e *ClustersApi_Expecter) LoadSampleDataset(ctx any, groupId any, name any) *ClustersApi_LoadSampleDataset_Call {
 	return &ClustersApi_LoadSampleDataset_Call{Call: _e.mock.On("LoadSampleDataset", ctx, groupId, name)}
 }
 
@@ -1727,7 +1727,7 @@ type ClustersApi_LoadSampleDatasetExecute_Call struct {
 
 // LoadSampleDatasetExecute is a helper method to define mock.On call
 //   - r admin.LoadSampleDatasetApiRequest
-func (_e *ClustersApi_Expecter) LoadSampleDatasetExecute(r interface{}) *ClustersApi_LoadSampleDatasetExecute_Call {
+func (_e *ClustersApi_Expecter) LoadSampleDatasetExecute(r any) *ClustersApi_LoadSampleDatasetExecute_Call {
 	return &ClustersApi_LoadSampleDatasetExecute_Call{Call: _e.mock.On("LoadSampleDatasetExecute", r)}
 }
 
@@ -1774,7 +1774,7 @@ type ClustersApi_LoadSampleDatasetWithParams_Call struct {
 // LoadSampleDatasetWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.LoadSampleDatasetApiParams
-func (_e *ClustersApi_Expecter) LoadSampleDatasetWithParams(ctx interface{}, args interface{}) *ClustersApi_LoadSampleDatasetWithParams_Call {
+func (_e *ClustersApi_Expecter) LoadSampleDatasetWithParams(ctx any, args any) *ClustersApi_LoadSampleDatasetWithParams_Call {
 	return &ClustersApi_LoadSampleDatasetWithParams_Call{Call: _e.mock.On("LoadSampleDatasetWithParams", ctx, args)}
 }
 
@@ -1823,7 +1823,7 @@ type ClustersApi_PinFeatureCompatibilityVersion_Call struct {
 //   - groupId string
 //   - clusterName string
 //   - pinFCV *admin.PinFCV
-func (_e *ClustersApi_Expecter) PinFeatureCompatibilityVersion(ctx interface{}, groupId interface{}, clusterName interface{}, pinFCV interface{}) *ClustersApi_PinFeatureCompatibilityVersion_Call {
+func (_e *ClustersApi_Expecter) PinFeatureCompatibilityVersion(ctx any, groupId any, clusterName any, pinFCV any) *ClustersApi_PinFeatureCompatibilityVersion_Call {
 	return &ClustersApi_PinFeatureCompatibilityVersion_Call{Call: _e.mock.On("PinFeatureCompatibilityVersion", ctx, groupId, clusterName, pinFCV)}
 }
 
@@ -1845,24 +1845,24 @@ func (_c *ClustersApi_PinFeatureCompatibilityVersion_Call) RunAndReturn(run func
 }
 
 // PinFeatureCompatibilityVersionExecute provides a mock function with given fields: r
-func (_m *ClustersApi) PinFeatureCompatibilityVersionExecute(r admin.PinFeatureCompatibilityVersionApiRequest) (interface{}, *http.Response, error) {
+func (_m *ClustersApi) PinFeatureCompatibilityVersionExecute(r admin.PinFeatureCompatibilityVersionApiRequest) (any, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for PinFeatureCompatibilityVersionExecute")
 	}
 
-	var r0 interface{}
+	var r0 any
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.PinFeatureCompatibilityVersionApiRequest) (interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.PinFeatureCompatibilityVersionApiRequest) (any, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.PinFeatureCompatibilityVersionApiRequest) interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.PinFeatureCompatibilityVersionApiRequest) any); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(interface{})
+			r0 = ret.Get(0).(any)
 		}
 	}
 
@@ -1890,7 +1890,7 @@ type ClustersApi_PinFeatureCompatibilityVersionExecute_Call struct {
 
 // PinFeatureCompatibilityVersionExecute is a helper method to define mock.On call
 //   - r admin.PinFeatureCompatibilityVersionApiRequest
-func (_e *ClustersApi_Expecter) PinFeatureCompatibilityVersionExecute(r interface{}) *ClustersApi_PinFeatureCompatibilityVersionExecute_Call {
+func (_e *ClustersApi_Expecter) PinFeatureCompatibilityVersionExecute(r any) *ClustersApi_PinFeatureCompatibilityVersionExecute_Call {
 	return &ClustersApi_PinFeatureCompatibilityVersionExecute_Call{Call: _e.mock.On("PinFeatureCompatibilityVersionExecute", r)}
 }
 
@@ -1901,12 +1901,12 @@ func (_c *ClustersApi_PinFeatureCompatibilityVersionExecute_Call) Run(run func(r
 	return _c
 }
 
-func (_c *ClustersApi_PinFeatureCompatibilityVersionExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *ClustersApi_PinFeatureCompatibilityVersionExecute_Call {
+func (_c *ClustersApi_PinFeatureCompatibilityVersionExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *ClustersApi_PinFeatureCompatibilityVersionExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ClustersApi_PinFeatureCompatibilityVersionExecute_Call) RunAndReturn(run func(admin.PinFeatureCompatibilityVersionApiRequest) (interface{}, *http.Response, error)) *ClustersApi_PinFeatureCompatibilityVersionExecute_Call {
+func (_c *ClustersApi_PinFeatureCompatibilityVersionExecute_Call) RunAndReturn(run func(admin.PinFeatureCompatibilityVersionApiRequest) (any, *http.Response, error)) *ClustersApi_PinFeatureCompatibilityVersionExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1937,7 +1937,7 @@ type ClustersApi_PinFeatureCompatibilityVersionWithParams_Call struct {
 // PinFeatureCompatibilityVersionWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.PinFeatureCompatibilityVersionApiParams
-func (_e *ClustersApi_Expecter) PinFeatureCompatibilityVersionWithParams(ctx interface{}, args interface{}) *ClustersApi_PinFeatureCompatibilityVersionWithParams_Call {
+func (_e *ClustersApi_Expecter) PinFeatureCompatibilityVersionWithParams(ctx any, args any) *ClustersApi_PinFeatureCompatibilityVersionWithParams_Call {
 	return &ClustersApi_PinFeatureCompatibilityVersionWithParams_Call{Call: _e.mock.On("PinFeatureCompatibilityVersionWithParams", ctx, args)}
 }
 
@@ -1985,7 +1985,7 @@ type ClustersApi_RevokeMongoDBEmployeeAccess_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
-func (_e *ClustersApi_Expecter) RevokeMongoDBEmployeeAccess(ctx interface{}, groupId interface{}, clusterName interface{}) *ClustersApi_RevokeMongoDBEmployeeAccess_Call {
+func (_e *ClustersApi_Expecter) RevokeMongoDBEmployeeAccess(ctx any, groupId any, clusterName any) *ClustersApi_RevokeMongoDBEmployeeAccess_Call {
 	return &ClustersApi_RevokeMongoDBEmployeeAccess_Call{Call: _e.mock.On("RevokeMongoDBEmployeeAccess", ctx, groupId, clusterName)}
 }
 
@@ -2007,24 +2007,24 @@ func (_c *ClustersApi_RevokeMongoDBEmployeeAccess_Call) RunAndReturn(run func(co
 }
 
 // RevokeMongoDBEmployeeAccessExecute provides a mock function with given fields: r
-func (_m *ClustersApi) RevokeMongoDBEmployeeAccessExecute(r admin.RevokeMongoDBEmployeeAccessApiRequest) (interface{}, *http.Response, error) {
+func (_m *ClustersApi) RevokeMongoDBEmployeeAccessExecute(r admin.RevokeMongoDBEmployeeAccessApiRequest) (any, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for RevokeMongoDBEmployeeAccessExecute")
 	}
 
-	var r0 interface{}
+	var r0 any
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.RevokeMongoDBEmployeeAccessApiRequest) (interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.RevokeMongoDBEmployeeAccessApiRequest) (any, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.RevokeMongoDBEmployeeAccessApiRequest) interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.RevokeMongoDBEmployeeAccessApiRequest) any); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(interface{})
+			r0 = ret.Get(0).(any)
 		}
 	}
 
@@ -2052,7 +2052,7 @@ type ClustersApi_RevokeMongoDBEmployeeAccessExecute_Call struct {
 
 // RevokeMongoDBEmployeeAccessExecute is a helper method to define mock.On call
 //   - r admin.RevokeMongoDBEmployeeAccessApiRequest
-func (_e *ClustersApi_Expecter) RevokeMongoDBEmployeeAccessExecute(r interface{}) *ClustersApi_RevokeMongoDBEmployeeAccessExecute_Call {
+func (_e *ClustersApi_Expecter) RevokeMongoDBEmployeeAccessExecute(r any) *ClustersApi_RevokeMongoDBEmployeeAccessExecute_Call {
 	return &ClustersApi_RevokeMongoDBEmployeeAccessExecute_Call{Call: _e.mock.On("RevokeMongoDBEmployeeAccessExecute", r)}
 }
 
@@ -2063,12 +2063,12 @@ func (_c *ClustersApi_RevokeMongoDBEmployeeAccessExecute_Call) Run(run func(r ad
 	return _c
 }
 
-func (_c *ClustersApi_RevokeMongoDBEmployeeAccessExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *ClustersApi_RevokeMongoDBEmployeeAccessExecute_Call {
+func (_c *ClustersApi_RevokeMongoDBEmployeeAccessExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *ClustersApi_RevokeMongoDBEmployeeAccessExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ClustersApi_RevokeMongoDBEmployeeAccessExecute_Call) RunAndReturn(run func(admin.RevokeMongoDBEmployeeAccessApiRequest) (interface{}, *http.Response, error)) *ClustersApi_RevokeMongoDBEmployeeAccessExecute_Call {
+func (_c *ClustersApi_RevokeMongoDBEmployeeAccessExecute_Call) RunAndReturn(run func(admin.RevokeMongoDBEmployeeAccessApiRequest) (any, *http.Response, error)) *ClustersApi_RevokeMongoDBEmployeeAccessExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -2099,7 +2099,7 @@ type ClustersApi_RevokeMongoDBEmployeeAccessWithParams_Call struct {
 // RevokeMongoDBEmployeeAccessWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.RevokeMongoDBEmployeeAccessApiParams
-func (_e *ClustersApi_Expecter) RevokeMongoDBEmployeeAccessWithParams(ctx interface{}, args interface{}) *ClustersApi_RevokeMongoDBEmployeeAccessWithParams_Call {
+func (_e *ClustersApi_Expecter) RevokeMongoDBEmployeeAccessWithParams(ctx any, args any) *ClustersApi_RevokeMongoDBEmployeeAccessWithParams_Call {
 	return &ClustersApi_RevokeMongoDBEmployeeAccessWithParams_Call{Call: _e.mock.On("RevokeMongoDBEmployeeAccessWithParams", ctx, args)}
 }
 
@@ -2147,7 +2147,7 @@ type ClustersApi_TestFailover_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
-func (_e *ClustersApi_Expecter) TestFailover(ctx interface{}, groupId interface{}, clusterName interface{}) *ClustersApi_TestFailover_Call {
+func (_e *ClustersApi_Expecter) TestFailover(ctx any, groupId any, clusterName any) *ClustersApi_TestFailover_Call {
 	return &ClustersApi_TestFailover_Call{Call: _e.mock.On("TestFailover", ctx, groupId, clusterName)}
 }
 
@@ -2205,7 +2205,7 @@ type ClustersApi_TestFailoverExecute_Call struct {
 
 // TestFailoverExecute is a helper method to define mock.On call
 //   - r admin.TestFailoverApiRequest
-func (_e *ClustersApi_Expecter) TestFailoverExecute(r interface{}) *ClustersApi_TestFailoverExecute_Call {
+func (_e *ClustersApi_Expecter) TestFailoverExecute(r any) *ClustersApi_TestFailoverExecute_Call {
 	return &ClustersApi_TestFailoverExecute_Call{Call: _e.mock.On("TestFailoverExecute", r)}
 }
 
@@ -2252,7 +2252,7 @@ type ClustersApi_TestFailoverWithParams_Call struct {
 // TestFailoverWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.TestFailoverApiParams
-func (_e *ClustersApi_Expecter) TestFailoverWithParams(ctx interface{}, args interface{}) *ClustersApi_TestFailoverWithParams_Call {
+func (_e *ClustersApi_Expecter) TestFailoverWithParams(ctx any, args any) *ClustersApi_TestFailoverWithParams_Call {
 	return &ClustersApi_TestFailoverWithParams_Call{Call: _e.mock.On("TestFailoverWithParams", ctx, args)}
 }
 
@@ -2300,7 +2300,7 @@ type ClustersApi_UnpinFeatureCompatibilityVersion_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
-func (_e *ClustersApi_Expecter) UnpinFeatureCompatibilityVersion(ctx interface{}, groupId interface{}, clusterName interface{}) *ClustersApi_UnpinFeatureCompatibilityVersion_Call {
+func (_e *ClustersApi_Expecter) UnpinFeatureCompatibilityVersion(ctx any, groupId any, clusterName any) *ClustersApi_UnpinFeatureCompatibilityVersion_Call {
 	return &ClustersApi_UnpinFeatureCompatibilityVersion_Call{Call: _e.mock.On("UnpinFeatureCompatibilityVersion", ctx, groupId, clusterName)}
 }
 
@@ -2322,24 +2322,24 @@ func (_c *ClustersApi_UnpinFeatureCompatibilityVersion_Call) RunAndReturn(run fu
 }
 
 // UnpinFeatureCompatibilityVersionExecute provides a mock function with given fields: r
-func (_m *ClustersApi) UnpinFeatureCompatibilityVersionExecute(r admin.UnpinFeatureCompatibilityVersionApiRequest) (interface{}, *http.Response, error) {
+func (_m *ClustersApi) UnpinFeatureCompatibilityVersionExecute(r admin.UnpinFeatureCompatibilityVersionApiRequest) (any, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for UnpinFeatureCompatibilityVersionExecute")
 	}
 
-	var r0 interface{}
+	var r0 any
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.UnpinFeatureCompatibilityVersionApiRequest) (interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.UnpinFeatureCompatibilityVersionApiRequest) (any, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.UnpinFeatureCompatibilityVersionApiRequest) interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.UnpinFeatureCompatibilityVersionApiRequest) any); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(interface{})
+			r0 = ret.Get(0).(any)
 		}
 	}
 
@@ -2367,7 +2367,7 @@ type ClustersApi_UnpinFeatureCompatibilityVersionExecute_Call struct {
 
 // UnpinFeatureCompatibilityVersionExecute is a helper method to define mock.On call
 //   - r admin.UnpinFeatureCompatibilityVersionApiRequest
-func (_e *ClustersApi_Expecter) UnpinFeatureCompatibilityVersionExecute(r interface{}) *ClustersApi_UnpinFeatureCompatibilityVersionExecute_Call {
+func (_e *ClustersApi_Expecter) UnpinFeatureCompatibilityVersionExecute(r any) *ClustersApi_UnpinFeatureCompatibilityVersionExecute_Call {
 	return &ClustersApi_UnpinFeatureCompatibilityVersionExecute_Call{Call: _e.mock.On("UnpinFeatureCompatibilityVersionExecute", r)}
 }
 
@@ -2378,12 +2378,12 @@ func (_c *ClustersApi_UnpinFeatureCompatibilityVersionExecute_Call) Run(run func
 	return _c
 }
 
-func (_c *ClustersApi_UnpinFeatureCompatibilityVersionExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *ClustersApi_UnpinFeatureCompatibilityVersionExecute_Call {
+func (_c *ClustersApi_UnpinFeatureCompatibilityVersionExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *ClustersApi_UnpinFeatureCompatibilityVersionExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ClustersApi_UnpinFeatureCompatibilityVersionExecute_Call) RunAndReturn(run func(admin.UnpinFeatureCompatibilityVersionApiRequest) (interface{}, *http.Response, error)) *ClustersApi_UnpinFeatureCompatibilityVersionExecute_Call {
+func (_c *ClustersApi_UnpinFeatureCompatibilityVersionExecute_Call) RunAndReturn(run func(admin.UnpinFeatureCompatibilityVersionApiRequest) (any, *http.Response, error)) *ClustersApi_UnpinFeatureCompatibilityVersionExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -2414,7 +2414,7 @@ type ClustersApi_UnpinFeatureCompatibilityVersionWithParams_Call struct {
 // UnpinFeatureCompatibilityVersionWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.UnpinFeatureCompatibilityVersionApiParams
-func (_e *ClustersApi_Expecter) UnpinFeatureCompatibilityVersionWithParams(ctx interface{}, args interface{}) *ClustersApi_UnpinFeatureCompatibilityVersionWithParams_Call {
+func (_e *ClustersApi_Expecter) UnpinFeatureCompatibilityVersionWithParams(ctx any, args any) *ClustersApi_UnpinFeatureCompatibilityVersionWithParams_Call {
 	return &ClustersApi_UnpinFeatureCompatibilityVersionWithParams_Call{Call: _e.mock.On("UnpinFeatureCompatibilityVersionWithParams", ctx, args)}
 }
 
@@ -2463,7 +2463,7 @@ type ClustersApi_UpdateCluster_Call struct {
 //   - groupId string
 //   - clusterName string
 //   - clusterDescription20240805 *admin.ClusterDescription20240805
-func (_e *ClustersApi_Expecter) UpdateCluster(ctx interface{}, groupId interface{}, clusterName interface{}, clusterDescription20240805 interface{}) *ClustersApi_UpdateCluster_Call {
+func (_e *ClustersApi_Expecter) UpdateCluster(ctx any, groupId any, clusterName any, clusterDescription20240805 any) *ClustersApi_UpdateCluster_Call {
 	return &ClustersApi_UpdateCluster_Call{Call: _e.mock.On("UpdateCluster", ctx, groupId, clusterName, clusterDescription20240805)}
 }
 
@@ -2512,7 +2512,7 @@ type ClustersApi_UpdateClusterAdvancedConfiguration_Call struct {
 //   - groupId string
 //   - clusterName string
 //   - clusterDescriptionProcessArgs20240805 *admin.ClusterDescriptionProcessArgs20240805
-func (_e *ClustersApi_Expecter) UpdateClusterAdvancedConfiguration(ctx interface{}, groupId interface{}, clusterName interface{}, clusterDescriptionProcessArgs20240805 interface{}) *ClustersApi_UpdateClusterAdvancedConfiguration_Call {
+func (_e *ClustersApi_Expecter) UpdateClusterAdvancedConfiguration(ctx any, groupId any, clusterName any, clusterDescriptionProcessArgs20240805 any) *ClustersApi_UpdateClusterAdvancedConfiguration_Call {
 	return &ClustersApi_UpdateClusterAdvancedConfiguration_Call{Call: _e.mock.On("UpdateClusterAdvancedConfiguration", ctx, groupId, clusterName, clusterDescriptionProcessArgs20240805)}
 }
 
@@ -2579,7 +2579,7 @@ type ClustersApi_UpdateClusterAdvancedConfigurationExecute_Call struct {
 
 // UpdateClusterAdvancedConfigurationExecute is a helper method to define mock.On call
 //   - r admin.UpdateClusterAdvancedConfigurationApiRequest
-func (_e *ClustersApi_Expecter) UpdateClusterAdvancedConfigurationExecute(r interface{}) *ClustersApi_UpdateClusterAdvancedConfigurationExecute_Call {
+func (_e *ClustersApi_Expecter) UpdateClusterAdvancedConfigurationExecute(r any) *ClustersApi_UpdateClusterAdvancedConfigurationExecute_Call {
 	return &ClustersApi_UpdateClusterAdvancedConfigurationExecute_Call{Call: _e.mock.On("UpdateClusterAdvancedConfigurationExecute", r)}
 }
 
@@ -2626,7 +2626,7 @@ type ClustersApi_UpdateClusterAdvancedConfigurationWithParams_Call struct {
 // UpdateClusterAdvancedConfigurationWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.UpdateClusterAdvancedConfigurationApiParams
-func (_e *ClustersApi_Expecter) UpdateClusterAdvancedConfigurationWithParams(ctx interface{}, args interface{}) *ClustersApi_UpdateClusterAdvancedConfigurationWithParams_Call {
+func (_e *ClustersApi_Expecter) UpdateClusterAdvancedConfigurationWithParams(ctx any, args any) *ClustersApi_UpdateClusterAdvancedConfigurationWithParams_Call {
 	return &ClustersApi_UpdateClusterAdvancedConfigurationWithParams_Call{Call: _e.mock.On("UpdateClusterAdvancedConfigurationWithParams", ctx, args)}
 }
 
@@ -2693,7 +2693,7 @@ type ClustersApi_UpdateClusterExecute_Call struct {
 
 // UpdateClusterExecute is a helper method to define mock.On call
 //   - r admin.UpdateClusterApiRequest
-func (_e *ClustersApi_Expecter) UpdateClusterExecute(r interface{}) *ClustersApi_UpdateClusterExecute_Call {
+func (_e *ClustersApi_Expecter) UpdateClusterExecute(r any) *ClustersApi_UpdateClusterExecute_Call {
 	return &ClustersApi_UpdateClusterExecute_Call{Call: _e.mock.On("UpdateClusterExecute", r)}
 }
 
@@ -2740,7 +2740,7 @@ type ClustersApi_UpdateClusterWithParams_Call struct {
 // UpdateClusterWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.UpdateClusterApiParams
-func (_e *ClustersApi_Expecter) UpdateClusterWithParams(ctx interface{}, args interface{}) *ClustersApi_UpdateClusterWithParams_Call {
+func (_e *ClustersApi_Expecter) UpdateClusterWithParams(ctx any, args any) *ClustersApi_UpdateClusterWithParams_Call {
 	return &ClustersApi_UpdateClusterWithParams_Call{Call: _e.mock.On("UpdateClusterWithParams", ctx, args)}
 }
 
@@ -2788,7 +2788,7 @@ type ClustersApi_UpgradeSharedCluster_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - legacyAtlasTenantClusterUpgradeRequest *admin.LegacyAtlasTenantClusterUpgradeRequest
-func (_e *ClustersApi_Expecter) UpgradeSharedCluster(ctx interface{}, groupId interface{}, legacyAtlasTenantClusterUpgradeRequest interface{}) *ClustersApi_UpgradeSharedCluster_Call {
+func (_e *ClustersApi_Expecter) UpgradeSharedCluster(ctx any, groupId any, legacyAtlasTenantClusterUpgradeRequest any) *ClustersApi_UpgradeSharedCluster_Call {
 	return &ClustersApi_UpgradeSharedCluster_Call{Call: _e.mock.On("UpgradeSharedCluster", ctx, groupId, legacyAtlasTenantClusterUpgradeRequest)}
 }
 
@@ -2855,7 +2855,7 @@ type ClustersApi_UpgradeSharedClusterExecute_Call struct {
 
 // UpgradeSharedClusterExecute is a helper method to define mock.On call
 //   - r admin.UpgradeSharedClusterApiRequest
-func (_e *ClustersApi_Expecter) UpgradeSharedClusterExecute(r interface{}) *ClustersApi_UpgradeSharedClusterExecute_Call {
+func (_e *ClustersApi_Expecter) UpgradeSharedClusterExecute(r any) *ClustersApi_UpgradeSharedClusterExecute_Call {
 	return &ClustersApi_UpgradeSharedClusterExecute_Call{Call: _e.mock.On("UpgradeSharedClusterExecute", r)}
 }
 
@@ -2903,7 +2903,7 @@ type ClustersApi_UpgradeSharedClusterToServerless_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - serverlessInstanceDescription *admin.ServerlessInstanceDescription
-func (_e *ClustersApi_Expecter) UpgradeSharedClusterToServerless(ctx interface{}, groupId interface{}, serverlessInstanceDescription interface{}) *ClustersApi_UpgradeSharedClusterToServerless_Call {
+func (_e *ClustersApi_Expecter) UpgradeSharedClusterToServerless(ctx any, groupId any, serverlessInstanceDescription any) *ClustersApi_UpgradeSharedClusterToServerless_Call {
 	return &ClustersApi_UpgradeSharedClusterToServerless_Call{Call: _e.mock.On("UpgradeSharedClusterToServerless", ctx, groupId, serverlessInstanceDescription)}
 }
 
@@ -2970,7 +2970,7 @@ type ClustersApi_UpgradeSharedClusterToServerlessExecute_Call struct {
 
 // UpgradeSharedClusterToServerlessExecute is a helper method to define mock.On call
 //   - r admin.UpgradeSharedClusterToServerlessApiRequest
-func (_e *ClustersApi_Expecter) UpgradeSharedClusterToServerlessExecute(r interface{}) *ClustersApi_UpgradeSharedClusterToServerlessExecute_Call {
+func (_e *ClustersApi_Expecter) UpgradeSharedClusterToServerlessExecute(r any) *ClustersApi_UpgradeSharedClusterToServerlessExecute_Call {
 	return &ClustersApi_UpgradeSharedClusterToServerlessExecute_Call{Call: _e.mock.On("UpgradeSharedClusterToServerlessExecute", r)}
 }
 
@@ -3017,7 +3017,7 @@ type ClustersApi_UpgradeSharedClusterToServerlessWithParams_Call struct {
 // UpgradeSharedClusterToServerlessWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.UpgradeSharedClusterToServerlessApiParams
-func (_e *ClustersApi_Expecter) UpgradeSharedClusterToServerlessWithParams(ctx interface{}, args interface{}) *ClustersApi_UpgradeSharedClusterToServerlessWithParams_Call {
+func (_e *ClustersApi_Expecter) UpgradeSharedClusterToServerlessWithParams(ctx any, args any) *ClustersApi_UpgradeSharedClusterToServerlessWithParams_Call {
 	return &ClustersApi_UpgradeSharedClusterToServerlessWithParams_Call{Call: _e.mock.On("UpgradeSharedClusterToServerlessWithParams", ctx, args)}
 }
 
@@ -3064,7 +3064,7 @@ type ClustersApi_UpgradeSharedClusterWithParams_Call struct {
 // UpgradeSharedClusterWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.UpgradeSharedClusterApiParams
-func (_e *ClustersApi_Expecter) UpgradeSharedClusterWithParams(ctx interface{}, args interface{}) *ClustersApi_UpgradeSharedClusterWithParams_Call {
+func (_e *ClustersApi_Expecter) UpgradeSharedClusterWithParams(ctx any, args any) *ClustersApi_UpgradeSharedClusterWithParams_Call {
 	return &ClustersApi_UpgradeSharedClusterWithParams_Call{Call: _e.mock.On("UpgradeSharedClusterWithParams", ctx, args)}
 }
 

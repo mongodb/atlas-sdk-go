@@ -50,7 +50,7 @@ type RootApi_GetSystemStatus_Call struct {
 
 // GetSystemStatus is a helper method to define mock.On call
 //   - ctx context.Context
-func (_e *RootApi_Expecter) GetSystemStatus(ctx interface{}) *RootApi_GetSystemStatus_Call {
+func (_e *RootApi_Expecter) GetSystemStatus(ctx any) *RootApi_GetSystemStatus_Call {
 	return &RootApi_GetSystemStatus_Call{Call: _e.mock.On("GetSystemStatus", ctx)}
 }
 
@@ -117,7 +117,7 @@ type RootApi_GetSystemStatusExecute_Call struct {
 
 // GetSystemStatusExecute is a helper method to define mock.On call
 //   - r admin.GetSystemStatusApiRequest
-func (_e *RootApi_Expecter) GetSystemStatusExecute(r interface{}) *RootApi_GetSystemStatusExecute_Call {
+func (_e *RootApi_Expecter) GetSystemStatusExecute(r any) *RootApi_GetSystemStatusExecute_Call {
 	return &RootApi_GetSystemStatusExecute_Call{Call: _e.mock.On("GetSystemStatusExecute", r)}
 }
 
@@ -164,7 +164,7 @@ type RootApi_GetSystemStatusWithParams_Call struct {
 // GetSystemStatusWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetSystemStatusApiParams
-func (_e *RootApi_Expecter) GetSystemStatusWithParams(ctx interface{}, args interface{}) *RootApi_GetSystemStatusWithParams_Call {
+func (_e *RootApi_Expecter) GetSystemStatusWithParams(ctx any, args any) *RootApi_GetSystemStatusWithParams_Call {
 	return &RootApi_GetSystemStatusWithParams_Call{Call: _e.mock.On("GetSystemStatusWithParams", ctx, args)}
 }
 
@@ -210,7 +210,7 @@ type RootApi_ReturnAllControlPlaneIPAddresses_Call struct {
 
 // ReturnAllControlPlaneIPAddresses is a helper method to define mock.On call
 //   - ctx context.Context
-func (_e *RootApi_Expecter) ReturnAllControlPlaneIPAddresses(ctx interface{}) *RootApi_ReturnAllControlPlaneIPAddresses_Call {
+func (_e *RootApi_Expecter) ReturnAllControlPlaneIPAddresses(ctx any) *RootApi_ReturnAllControlPlaneIPAddresses_Call {
 	return &RootApi_ReturnAllControlPlaneIPAddresses_Call{Call: _e.mock.On("ReturnAllControlPlaneIPAddresses", ctx)}
 }
 
@@ -277,7 +277,7 @@ type RootApi_ReturnAllControlPlaneIPAddressesExecute_Call struct {
 
 // ReturnAllControlPlaneIPAddressesExecute is a helper method to define mock.On call
 //   - r admin.ReturnAllControlPlaneIPAddressesApiRequest
-func (_e *RootApi_Expecter) ReturnAllControlPlaneIPAddressesExecute(r interface{}) *RootApi_ReturnAllControlPlaneIPAddressesExecute_Call {
+func (_e *RootApi_Expecter) ReturnAllControlPlaneIPAddressesExecute(r any) *RootApi_ReturnAllControlPlaneIPAddressesExecute_Call {
 	return &RootApi_ReturnAllControlPlaneIPAddressesExecute_Call{Call: _e.mock.On("ReturnAllControlPlaneIPAddressesExecute", r)}
 }
 
@@ -324,7 +324,7 @@ type RootApi_ReturnAllControlPlaneIPAddressesWithParams_Call struct {
 // ReturnAllControlPlaneIPAddressesWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ReturnAllControlPlaneIPAddressesApiParams
-func (_e *RootApi_Expecter) ReturnAllControlPlaneIPAddressesWithParams(ctx interface{}, args interface{}) *RootApi_ReturnAllControlPlaneIPAddressesWithParams_Call {
+func (_e *RootApi_Expecter) ReturnAllControlPlaneIPAddressesWithParams(ctx any, args any) *RootApi_ReturnAllControlPlaneIPAddressesWithParams_Call {
 	return &RootApi_ReturnAllControlPlaneIPAddressesWithParams_Call{Call: _e.mock.On("ReturnAllControlPlaneIPAddressesWithParams", ctx, args)}
 }
 

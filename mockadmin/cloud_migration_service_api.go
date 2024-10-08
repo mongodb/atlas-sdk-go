@@ -52,7 +52,7 @@ type CloudMigrationServiceApi_CreateLinkToken_Call struct {
 //   - ctx context.Context
 //   - orgId string
 //   - targetOrgRequest *admin.TargetOrgRequest
-func (_e *CloudMigrationServiceApi_Expecter) CreateLinkToken(ctx interface{}, orgId interface{}, targetOrgRequest interface{}) *CloudMigrationServiceApi_CreateLinkToken_Call {
+func (_e *CloudMigrationServiceApi_Expecter) CreateLinkToken(ctx any, orgId any, targetOrgRequest any) *CloudMigrationServiceApi_CreateLinkToken_Call {
 	return &CloudMigrationServiceApi_CreateLinkToken_Call{Call: _e.mock.On("CreateLinkToken", ctx, orgId, targetOrgRequest)}
 }
 
@@ -119,7 +119,7 @@ type CloudMigrationServiceApi_CreateLinkTokenExecute_Call struct {
 
 // CreateLinkTokenExecute is a helper method to define mock.On call
 //   - r admin.CreateLinkTokenApiRequest
-func (_e *CloudMigrationServiceApi_Expecter) CreateLinkTokenExecute(r interface{}) *CloudMigrationServiceApi_CreateLinkTokenExecute_Call {
+func (_e *CloudMigrationServiceApi_Expecter) CreateLinkTokenExecute(r any) *CloudMigrationServiceApi_CreateLinkTokenExecute_Call {
 	return &CloudMigrationServiceApi_CreateLinkTokenExecute_Call{Call: _e.mock.On("CreateLinkTokenExecute", r)}
 }
 
@@ -166,7 +166,7 @@ type CloudMigrationServiceApi_CreateLinkTokenWithParams_Call struct {
 // CreateLinkTokenWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.CreateLinkTokenApiParams
-func (_e *CloudMigrationServiceApi_Expecter) CreateLinkTokenWithParams(ctx interface{}, args interface{}) *CloudMigrationServiceApi_CreateLinkTokenWithParams_Call {
+func (_e *CloudMigrationServiceApi_Expecter) CreateLinkTokenWithParams(ctx any, args any) *CloudMigrationServiceApi_CreateLinkTokenWithParams_Call {
 	return &CloudMigrationServiceApi_CreateLinkTokenWithParams_Call{Call: _e.mock.On("CreateLinkTokenWithParams", ctx, args)}
 }
 
@@ -214,7 +214,7 @@ type CloudMigrationServiceApi_CreatePushMigration_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - liveMigrationRequest20240530 *admin.LiveMigrationRequest20240530
-func (_e *CloudMigrationServiceApi_Expecter) CreatePushMigration(ctx interface{}, groupId interface{}, liveMigrationRequest20240530 interface{}) *CloudMigrationServiceApi_CreatePushMigration_Call {
+func (_e *CloudMigrationServiceApi_Expecter) CreatePushMigration(ctx any, groupId any, liveMigrationRequest20240530 any) *CloudMigrationServiceApi_CreatePushMigration_Call {
 	return &CloudMigrationServiceApi_CreatePushMigration_Call{Call: _e.mock.On("CreatePushMigration", ctx, groupId, liveMigrationRequest20240530)}
 }
 
@@ -281,7 +281,7 @@ type CloudMigrationServiceApi_CreatePushMigrationExecute_Call struct {
 
 // CreatePushMigrationExecute is a helper method to define mock.On call
 //   - r admin.CreatePushMigrationApiRequest
-func (_e *CloudMigrationServiceApi_Expecter) CreatePushMigrationExecute(r interface{}) *CloudMigrationServiceApi_CreatePushMigrationExecute_Call {
+func (_e *CloudMigrationServiceApi_Expecter) CreatePushMigrationExecute(r any) *CloudMigrationServiceApi_CreatePushMigrationExecute_Call {
 	return &CloudMigrationServiceApi_CreatePushMigrationExecute_Call{Call: _e.mock.On("CreatePushMigrationExecute", r)}
 }
 
@@ -328,7 +328,7 @@ type CloudMigrationServiceApi_CreatePushMigrationWithParams_Call struct {
 // CreatePushMigrationWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.CreatePushMigrationApiParams
-func (_e *CloudMigrationServiceApi_Expecter) CreatePushMigrationWithParams(ctx interface{}, args interface{}) *CloudMigrationServiceApi_CreatePushMigrationWithParams_Call {
+func (_e *CloudMigrationServiceApi_Expecter) CreatePushMigrationWithParams(ctx any, args any) *CloudMigrationServiceApi_CreatePushMigrationWithParams_Call {
 	return &CloudMigrationServiceApi_CreatePushMigrationWithParams_Call{Call: _e.mock.On("CreatePushMigrationWithParams", ctx, args)}
 }
 
@@ -376,7 +376,7 @@ type CloudMigrationServiceApi_CutoverMigration_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - liveMigrationId string
-func (_e *CloudMigrationServiceApi_Expecter) CutoverMigration(ctx interface{}, groupId interface{}, liveMigrationId interface{}) *CloudMigrationServiceApi_CutoverMigration_Call {
+func (_e *CloudMigrationServiceApi_Expecter) CutoverMigration(ctx any, groupId any, liveMigrationId any) *CloudMigrationServiceApi_CutoverMigration_Call {
 	return &CloudMigrationServiceApi_CutoverMigration_Call{Call: _e.mock.On("CutoverMigration", ctx, groupId, liveMigrationId)}
 }
 
@@ -434,7 +434,7 @@ type CloudMigrationServiceApi_CutoverMigrationExecute_Call struct {
 
 // CutoverMigrationExecute is a helper method to define mock.On call
 //   - r admin.CutoverMigrationApiRequest
-func (_e *CloudMigrationServiceApi_Expecter) CutoverMigrationExecute(r interface{}) *CloudMigrationServiceApi_CutoverMigrationExecute_Call {
+func (_e *CloudMigrationServiceApi_Expecter) CutoverMigrationExecute(r any) *CloudMigrationServiceApi_CutoverMigrationExecute_Call {
 	return &CloudMigrationServiceApi_CutoverMigrationExecute_Call{Call: _e.mock.On("CutoverMigrationExecute", r)}
 }
 
@@ -481,7 +481,7 @@ type CloudMigrationServiceApi_CutoverMigrationWithParams_Call struct {
 // CutoverMigrationWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.CutoverMigrationApiParams
-func (_e *CloudMigrationServiceApi_Expecter) CutoverMigrationWithParams(ctx interface{}, args interface{}) *CloudMigrationServiceApi_CutoverMigrationWithParams_Call {
+func (_e *CloudMigrationServiceApi_Expecter) CutoverMigrationWithParams(ctx any, args any) *CloudMigrationServiceApi_CutoverMigrationWithParams_Call {
 	return &CloudMigrationServiceApi_CutoverMigrationWithParams_Call{Call: _e.mock.On("CutoverMigrationWithParams", ctx, args)}
 }
 
@@ -528,7 +528,7 @@ type CloudMigrationServiceApi_DeleteLinkToken_Call struct {
 // DeleteLinkToken is a helper method to define mock.On call
 //   - ctx context.Context
 //   - orgId string
-func (_e *CloudMigrationServiceApi_Expecter) DeleteLinkToken(ctx interface{}, orgId interface{}) *CloudMigrationServiceApi_DeleteLinkToken_Call {
+func (_e *CloudMigrationServiceApi_Expecter) DeleteLinkToken(ctx any, orgId any) *CloudMigrationServiceApi_DeleteLinkToken_Call {
 	return &CloudMigrationServiceApi_DeleteLinkToken_Call{Call: _e.mock.On("DeleteLinkToken", ctx, orgId)}
 }
 
@@ -550,24 +550,24 @@ func (_c *CloudMigrationServiceApi_DeleteLinkToken_Call) RunAndReturn(run func(c
 }
 
 // DeleteLinkTokenExecute provides a mock function with given fields: r
-func (_m *CloudMigrationServiceApi) DeleteLinkTokenExecute(r admin.DeleteLinkTokenApiRequest) (interface{}, *http.Response, error) {
+func (_m *CloudMigrationServiceApi) DeleteLinkTokenExecute(r admin.DeleteLinkTokenApiRequest) (any, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteLinkTokenExecute")
 	}
 
-	var r0 interface{}
+	var r0 any
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteLinkTokenApiRequest) (interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteLinkTokenApiRequest) (any, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteLinkTokenApiRequest) interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteLinkTokenApiRequest) any); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(interface{})
+			r0 = ret.Get(0).(any)
 		}
 	}
 
@@ -595,7 +595,7 @@ type CloudMigrationServiceApi_DeleteLinkTokenExecute_Call struct {
 
 // DeleteLinkTokenExecute is a helper method to define mock.On call
 //   - r admin.DeleteLinkTokenApiRequest
-func (_e *CloudMigrationServiceApi_Expecter) DeleteLinkTokenExecute(r interface{}) *CloudMigrationServiceApi_DeleteLinkTokenExecute_Call {
+func (_e *CloudMigrationServiceApi_Expecter) DeleteLinkTokenExecute(r any) *CloudMigrationServiceApi_DeleteLinkTokenExecute_Call {
 	return &CloudMigrationServiceApi_DeleteLinkTokenExecute_Call{Call: _e.mock.On("DeleteLinkTokenExecute", r)}
 }
 
@@ -606,12 +606,12 @@ func (_c *CloudMigrationServiceApi_DeleteLinkTokenExecute_Call) Run(run func(r a
 	return _c
 }
 
-func (_c *CloudMigrationServiceApi_DeleteLinkTokenExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *CloudMigrationServiceApi_DeleteLinkTokenExecute_Call {
+func (_c *CloudMigrationServiceApi_DeleteLinkTokenExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *CloudMigrationServiceApi_DeleteLinkTokenExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *CloudMigrationServiceApi_DeleteLinkTokenExecute_Call) RunAndReturn(run func(admin.DeleteLinkTokenApiRequest) (interface{}, *http.Response, error)) *CloudMigrationServiceApi_DeleteLinkTokenExecute_Call {
+func (_c *CloudMigrationServiceApi_DeleteLinkTokenExecute_Call) RunAndReturn(run func(admin.DeleteLinkTokenApiRequest) (any, *http.Response, error)) *CloudMigrationServiceApi_DeleteLinkTokenExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -642,7 +642,7 @@ type CloudMigrationServiceApi_DeleteLinkTokenWithParams_Call struct {
 // DeleteLinkTokenWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.DeleteLinkTokenApiParams
-func (_e *CloudMigrationServiceApi_Expecter) DeleteLinkTokenWithParams(ctx interface{}, args interface{}) *CloudMigrationServiceApi_DeleteLinkTokenWithParams_Call {
+func (_e *CloudMigrationServiceApi_Expecter) DeleteLinkTokenWithParams(ctx any, args any) *CloudMigrationServiceApi_DeleteLinkTokenWithParams_Call {
 	return &CloudMigrationServiceApi_DeleteLinkTokenWithParams_Call{Call: _e.mock.On("DeleteLinkTokenWithParams", ctx, args)}
 }
 
@@ -690,7 +690,7 @@ type CloudMigrationServiceApi_GetPushMigration_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - liveMigrationId string
-func (_e *CloudMigrationServiceApi_Expecter) GetPushMigration(ctx interface{}, groupId interface{}, liveMigrationId interface{}) *CloudMigrationServiceApi_GetPushMigration_Call {
+func (_e *CloudMigrationServiceApi_Expecter) GetPushMigration(ctx any, groupId any, liveMigrationId any) *CloudMigrationServiceApi_GetPushMigration_Call {
 	return &CloudMigrationServiceApi_GetPushMigration_Call{Call: _e.mock.On("GetPushMigration", ctx, groupId, liveMigrationId)}
 }
 
@@ -757,7 +757,7 @@ type CloudMigrationServiceApi_GetPushMigrationExecute_Call struct {
 
 // GetPushMigrationExecute is a helper method to define mock.On call
 //   - r admin.GetPushMigrationApiRequest
-func (_e *CloudMigrationServiceApi_Expecter) GetPushMigrationExecute(r interface{}) *CloudMigrationServiceApi_GetPushMigrationExecute_Call {
+func (_e *CloudMigrationServiceApi_Expecter) GetPushMigrationExecute(r any) *CloudMigrationServiceApi_GetPushMigrationExecute_Call {
 	return &CloudMigrationServiceApi_GetPushMigrationExecute_Call{Call: _e.mock.On("GetPushMigrationExecute", r)}
 }
 
@@ -804,7 +804,7 @@ type CloudMigrationServiceApi_GetPushMigrationWithParams_Call struct {
 // GetPushMigrationWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetPushMigrationApiParams
-func (_e *CloudMigrationServiceApi_Expecter) GetPushMigrationWithParams(ctx interface{}, args interface{}) *CloudMigrationServiceApi_GetPushMigrationWithParams_Call {
+func (_e *CloudMigrationServiceApi_Expecter) GetPushMigrationWithParams(ctx any, args any) *CloudMigrationServiceApi_GetPushMigrationWithParams_Call {
 	return &CloudMigrationServiceApi_GetPushMigrationWithParams_Call{Call: _e.mock.On("GetPushMigrationWithParams", ctx, args)}
 }
 
@@ -852,7 +852,7 @@ type CloudMigrationServiceApi_GetValidationStatus_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - validationId string
-func (_e *CloudMigrationServiceApi_Expecter) GetValidationStatus(ctx interface{}, groupId interface{}, validationId interface{}) *CloudMigrationServiceApi_GetValidationStatus_Call {
+func (_e *CloudMigrationServiceApi_Expecter) GetValidationStatus(ctx any, groupId any, validationId any) *CloudMigrationServiceApi_GetValidationStatus_Call {
 	return &CloudMigrationServiceApi_GetValidationStatus_Call{Call: _e.mock.On("GetValidationStatus", ctx, groupId, validationId)}
 }
 
@@ -919,7 +919,7 @@ type CloudMigrationServiceApi_GetValidationStatusExecute_Call struct {
 
 // GetValidationStatusExecute is a helper method to define mock.On call
 //   - r admin.GetValidationStatusApiRequest
-func (_e *CloudMigrationServiceApi_Expecter) GetValidationStatusExecute(r interface{}) *CloudMigrationServiceApi_GetValidationStatusExecute_Call {
+func (_e *CloudMigrationServiceApi_Expecter) GetValidationStatusExecute(r any) *CloudMigrationServiceApi_GetValidationStatusExecute_Call {
 	return &CloudMigrationServiceApi_GetValidationStatusExecute_Call{Call: _e.mock.On("GetValidationStatusExecute", r)}
 }
 
@@ -966,7 +966,7 @@ type CloudMigrationServiceApi_GetValidationStatusWithParams_Call struct {
 // GetValidationStatusWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetValidationStatusApiParams
-func (_e *CloudMigrationServiceApi_Expecter) GetValidationStatusWithParams(ctx interface{}, args interface{}) *CloudMigrationServiceApi_GetValidationStatusWithParams_Call {
+func (_e *CloudMigrationServiceApi_Expecter) GetValidationStatusWithParams(ctx any, args any) *CloudMigrationServiceApi_GetValidationStatusWithParams_Call {
 	return &CloudMigrationServiceApi_GetValidationStatusWithParams_Call{Call: _e.mock.On("GetValidationStatusWithParams", ctx, args)}
 }
 
@@ -1013,7 +1013,7 @@ type CloudMigrationServiceApi_ListSourceProjects_Call struct {
 // ListSourceProjects is a helper method to define mock.On call
 //   - ctx context.Context
 //   - orgId string
-func (_e *CloudMigrationServiceApi_Expecter) ListSourceProjects(ctx interface{}, orgId interface{}) *CloudMigrationServiceApi_ListSourceProjects_Call {
+func (_e *CloudMigrationServiceApi_Expecter) ListSourceProjects(ctx any, orgId any) *CloudMigrationServiceApi_ListSourceProjects_Call {
 	return &CloudMigrationServiceApi_ListSourceProjects_Call{Call: _e.mock.On("ListSourceProjects", ctx, orgId)}
 }
 
@@ -1080,7 +1080,7 @@ type CloudMigrationServiceApi_ListSourceProjectsExecute_Call struct {
 
 // ListSourceProjectsExecute is a helper method to define mock.On call
 //   - r admin.ListSourceProjectsApiRequest
-func (_e *CloudMigrationServiceApi_Expecter) ListSourceProjectsExecute(r interface{}) *CloudMigrationServiceApi_ListSourceProjectsExecute_Call {
+func (_e *CloudMigrationServiceApi_Expecter) ListSourceProjectsExecute(r any) *CloudMigrationServiceApi_ListSourceProjectsExecute_Call {
 	return &CloudMigrationServiceApi_ListSourceProjectsExecute_Call{Call: _e.mock.On("ListSourceProjectsExecute", r)}
 }
 
@@ -1127,7 +1127,7 @@ type CloudMigrationServiceApi_ListSourceProjectsWithParams_Call struct {
 // ListSourceProjectsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListSourceProjectsApiParams
-func (_e *CloudMigrationServiceApi_Expecter) ListSourceProjectsWithParams(ctx interface{}, args interface{}) *CloudMigrationServiceApi_ListSourceProjectsWithParams_Call {
+func (_e *CloudMigrationServiceApi_Expecter) ListSourceProjectsWithParams(ctx any, args any) *CloudMigrationServiceApi_ListSourceProjectsWithParams_Call {
 	return &CloudMigrationServiceApi_ListSourceProjectsWithParams_Call{Call: _e.mock.On("ListSourceProjectsWithParams", ctx, args)}
 }
 
@@ -1175,7 +1175,7 @@ type CloudMigrationServiceApi_ValidateMigration_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - liveMigrationRequest20240530 *admin.LiveMigrationRequest20240530
-func (_e *CloudMigrationServiceApi_Expecter) ValidateMigration(ctx interface{}, groupId interface{}, liveMigrationRequest20240530 interface{}) *CloudMigrationServiceApi_ValidateMigration_Call {
+func (_e *CloudMigrationServiceApi_Expecter) ValidateMigration(ctx any, groupId any, liveMigrationRequest20240530 any) *CloudMigrationServiceApi_ValidateMigration_Call {
 	return &CloudMigrationServiceApi_ValidateMigration_Call{Call: _e.mock.On("ValidateMigration", ctx, groupId, liveMigrationRequest20240530)}
 }
 
@@ -1242,7 +1242,7 @@ type CloudMigrationServiceApi_ValidateMigrationExecute_Call struct {
 
 // ValidateMigrationExecute is a helper method to define mock.On call
 //   - r admin.ValidateMigrationApiRequest
-func (_e *CloudMigrationServiceApi_Expecter) ValidateMigrationExecute(r interface{}) *CloudMigrationServiceApi_ValidateMigrationExecute_Call {
+func (_e *CloudMigrationServiceApi_Expecter) ValidateMigrationExecute(r any) *CloudMigrationServiceApi_ValidateMigrationExecute_Call {
 	return &CloudMigrationServiceApi_ValidateMigrationExecute_Call{Call: _e.mock.On("ValidateMigrationExecute", r)}
 }
 
@@ -1289,7 +1289,7 @@ type CloudMigrationServiceApi_ValidateMigrationWithParams_Call struct {
 // ValidateMigrationWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ValidateMigrationApiParams
-func (_e *CloudMigrationServiceApi_Expecter) ValidateMigrationWithParams(ctx interface{}, args interface{}) *CloudMigrationServiceApi_ValidateMigrationWithParams_Call {
+func (_e *CloudMigrationServiceApi_Expecter) ValidateMigrationWithParams(ctx any, args any) *CloudMigrationServiceApi_ValidateMigrationWithParams_Call {
 	return &CloudMigrationServiceApi_ValidateMigrationWithParams_Call{Call: _e.mock.On("ValidateMigrationWithParams", ctx, args)}
 }
 

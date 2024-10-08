@@ -53,7 +53,7 @@ type AlertsApi_AcknowledgeAlert_Call struct {
 //   - groupId string
 //   - alertId string
 //   - acknowledgeAlert *admin.AcknowledgeAlert
-func (_e *AlertsApi_Expecter) AcknowledgeAlert(ctx interface{}, groupId interface{}, alertId interface{}, acknowledgeAlert interface{}) *AlertsApi_AcknowledgeAlert_Call {
+func (_e *AlertsApi_Expecter) AcknowledgeAlert(ctx any, groupId any, alertId any, acknowledgeAlert any) *AlertsApi_AcknowledgeAlert_Call {
 	return &AlertsApi_AcknowledgeAlert_Call{Call: _e.mock.On("AcknowledgeAlert", ctx, groupId, alertId, acknowledgeAlert)}
 }
 
@@ -120,7 +120,7 @@ type AlertsApi_AcknowledgeAlertExecute_Call struct {
 
 // AcknowledgeAlertExecute is a helper method to define mock.On call
 //   - r admin.AcknowledgeAlertApiRequest
-func (_e *AlertsApi_Expecter) AcknowledgeAlertExecute(r interface{}) *AlertsApi_AcknowledgeAlertExecute_Call {
+func (_e *AlertsApi_Expecter) AcknowledgeAlertExecute(r any) *AlertsApi_AcknowledgeAlertExecute_Call {
 	return &AlertsApi_AcknowledgeAlertExecute_Call{Call: _e.mock.On("AcknowledgeAlertExecute", r)}
 }
 
@@ -167,7 +167,7 @@ type AlertsApi_AcknowledgeAlertWithParams_Call struct {
 // AcknowledgeAlertWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.AcknowledgeAlertApiParams
-func (_e *AlertsApi_Expecter) AcknowledgeAlertWithParams(ctx interface{}, args interface{}) *AlertsApi_AcknowledgeAlertWithParams_Call {
+func (_e *AlertsApi_Expecter) AcknowledgeAlertWithParams(ctx any, args any) *AlertsApi_AcknowledgeAlertWithParams_Call {
 	return &AlertsApi_AcknowledgeAlertWithParams_Call{Call: _e.mock.On("AcknowledgeAlertWithParams", ctx, args)}
 }
 
@@ -215,7 +215,7 @@ type AlertsApi_GetAlert_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - alertId string
-func (_e *AlertsApi_Expecter) GetAlert(ctx interface{}, groupId interface{}, alertId interface{}) *AlertsApi_GetAlert_Call {
+func (_e *AlertsApi_Expecter) GetAlert(ctx any, groupId any, alertId any) *AlertsApi_GetAlert_Call {
 	return &AlertsApi_GetAlert_Call{Call: _e.mock.On("GetAlert", ctx, groupId, alertId)}
 }
 
@@ -282,7 +282,7 @@ type AlertsApi_GetAlertExecute_Call struct {
 
 // GetAlertExecute is a helper method to define mock.On call
 //   - r admin.GetAlertApiRequest
-func (_e *AlertsApi_Expecter) GetAlertExecute(r interface{}) *AlertsApi_GetAlertExecute_Call {
+func (_e *AlertsApi_Expecter) GetAlertExecute(r any) *AlertsApi_GetAlertExecute_Call {
 	return &AlertsApi_GetAlertExecute_Call{Call: _e.mock.On("GetAlertExecute", r)}
 }
 
@@ -329,7 +329,7 @@ type AlertsApi_GetAlertWithParams_Call struct {
 // GetAlertWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetAlertApiParams
-func (_e *AlertsApi_Expecter) GetAlertWithParams(ctx interface{}, args interface{}) *AlertsApi_GetAlertWithParams_Call {
+func (_e *AlertsApi_Expecter) GetAlertWithParams(ctx any, args any) *AlertsApi_GetAlertWithParams_Call {
 	return &AlertsApi_GetAlertWithParams_Call{Call: _e.mock.On("GetAlertWithParams", ctx, args)}
 }
 
@@ -376,7 +376,7 @@ type AlertsApi_ListAlerts_Call struct {
 // ListAlerts is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *AlertsApi_Expecter) ListAlerts(ctx interface{}, groupId interface{}) *AlertsApi_ListAlerts_Call {
+func (_e *AlertsApi_Expecter) ListAlerts(ctx any, groupId any) *AlertsApi_ListAlerts_Call {
 	return &AlertsApi_ListAlerts_Call{Call: _e.mock.On("ListAlerts", ctx, groupId)}
 }
 
@@ -424,7 +424,7 @@ type AlertsApi_ListAlertsByAlertConfigurationId_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - alertConfigId string
-func (_e *AlertsApi_Expecter) ListAlertsByAlertConfigurationId(ctx interface{}, groupId interface{}, alertConfigId interface{}) *AlertsApi_ListAlertsByAlertConfigurationId_Call {
+func (_e *AlertsApi_Expecter) ListAlertsByAlertConfigurationId(ctx any, groupId any, alertConfigId any) *AlertsApi_ListAlertsByAlertConfigurationId_Call {
 	return &AlertsApi_ListAlertsByAlertConfigurationId_Call{Call: _e.mock.On("ListAlertsByAlertConfigurationId", ctx, groupId, alertConfigId)}
 }
 
@@ -491,7 +491,7 @@ type AlertsApi_ListAlertsByAlertConfigurationIdExecute_Call struct {
 
 // ListAlertsByAlertConfigurationIdExecute is a helper method to define mock.On call
 //   - r admin.ListAlertsByAlertConfigurationIdApiRequest
-func (_e *AlertsApi_Expecter) ListAlertsByAlertConfigurationIdExecute(r interface{}) *AlertsApi_ListAlertsByAlertConfigurationIdExecute_Call {
+func (_e *AlertsApi_Expecter) ListAlertsByAlertConfigurationIdExecute(r any) *AlertsApi_ListAlertsByAlertConfigurationIdExecute_Call {
 	return &AlertsApi_ListAlertsByAlertConfigurationIdExecute_Call{Call: _e.mock.On("ListAlertsByAlertConfigurationIdExecute", r)}
 }
 
@@ -538,7 +538,7 @@ type AlertsApi_ListAlertsByAlertConfigurationIdWithParams_Call struct {
 // ListAlertsByAlertConfigurationIdWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListAlertsByAlertConfigurationIdApiParams
-func (_e *AlertsApi_Expecter) ListAlertsByAlertConfigurationIdWithParams(ctx interface{}, args interface{}) *AlertsApi_ListAlertsByAlertConfigurationIdWithParams_Call {
+func (_e *AlertsApi_Expecter) ListAlertsByAlertConfigurationIdWithParams(ctx any, args any) *AlertsApi_ListAlertsByAlertConfigurationIdWithParams_Call {
 	return &AlertsApi_ListAlertsByAlertConfigurationIdWithParams_Call{Call: _e.mock.On("ListAlertsByAlertConfigurationIdWithParams", ctx, args)}
 }
 
@@ -605,7 +605,7 @@ type AlertsApi_ListAlertsExecute_Call struct {
 
 // ListAlertsExecute is a helper method to define mock.On call
 //   - r admin.ListAlertsApiRequest
-func (_e *AlertsApi_Expecter) ListAlertsExecute(r interface{}) *AlertsApi_ListAlertsExecute_Call {
+func (_e *AlertsApi_Expecter) ListAlertsExecute(r any) *AlertsApi_ListAlertsExecute_Call {
 	return &AlertsApi_ListAlertsExecute_Call{Call: _e.mock.On("ListAlertsExecute", r)}
 }
 
@@ -652,7 +652,7 @@ type AlertsApi_ListAlertsWithParams_Call struct {
 // ListAlertsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListAlertsApiParams
-func (_e *AlertsApi_Expecter) ListAlertsWithParams(ctx interface{}, args interface{}) *AlertsApi_ListAlertsWithParams_Call {
+func (_e *AlertsApi_Expecter) ListAlertsWithParams(ctx any, args any) *AlertsApi_ListAlertsWithParams_Call {
 	return &AlertsApi_ListAlertsWithParams_Call{Call: _e.mock.On("ListAlertsWithParams", ctx, args)}
 }
 

@@ -53,7 +53,7 @@ type AtlasSearchApi_CreateAtlasSearchDeployment_Call struct {
 //   - groupId string
 //   - clusterName string
 //   - apiSearchDeploymentRequest *admin.ApiSearchDeploymentRequest
-func (_e *AtlasSearchApi_Expecter) CreateAtlasSearchDeployment(ctx interface{}, groupId interface{}, clusterName interface{}, apiSearchDeploymentRequest interface{}) *AtlasSearchApi_CreateAtlasSearchDeployment_Call {
+func (_e *AtlasSearchApi_Expecter) CreateAtlasSearchDeployment(ctx any, groupId any, clusterName any, apiSearchDeploymentRequest any) *AtlasSearchApi_CreateAtlasSearchDeployment_Call {
 	return &AtlasSearchApi_CreateAtlasSearchDeployment_Call{Call: _e.mock.On("CreateAtlasSearchDeployment", ctx, groupId, clusterName, apiSearchDeploymentRequest)}
 }
 
@@ -120,7 +120,7 @@ type AtlasSearchApi_CreateAtlasSearchDeploymentExecute_Call struct {
 
 // CreateAtlasSearchDeploymentExecute is a helper method to define mock.On call
 //   - r admin.CreateAtlasSearchDeploymentApiRequest
-func (_e *AtlasSearchApi_Expecter) CreateAtlasSearchDeploymentExecute(r interface{}) *AtlasSearchApi_CreateAtlasSearchDeploymentExecute_Call {
+func (_e *AtlasSearchApi_Expecter) CreateAtlasSearchDeploymentExecute(r any) *AtlasSearchApi_CreateAtlasSearchDeploymentExecute_Call {
 	return &AtlasSearchApi_CreateAtlasSearchDeploymentExecute_Call{Call: _e.mock.On("CreateAtlasSearchDeploymentExecute", r)}
 }
 
@@ -167,7 +167,7 @@ type AtlasSearchApi_CreateAtlasSearchDeploymentWithParams_Call struct {
 // CreateAtlasSearchDeploymentWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.CreateAtlasSearchDeploymentApiParams
-func (_e *AtlasSearchApi_Expecter) CreateAtlasSearchDeploymentWithParams(ctx interface{}, args interface{}) *AtlasSearchApi_CreateAtlasSearchDeploymentWithParams_Call {
+func (_e *AtlasSearchApi_Expecter) CreateAtlasSearchDeploymentWithParams(ctx any, args any) *AtlasSearchApi_CreateAtlasSearchDeploymentWithParams_Call {
 	return &AtlasSearchApi_CreateAtlasSearchDeploymentWithParams_Call{Call: _e.mock.On("CreateAtlasSearchDeploymentWithParams", ctx, args)}
 }
 
@@ -216,7 +216,7 @@ type AtlasSearchApi_CreateAtlasSearchIndex_Call struct {
 //   - groupId string
 //   - clusterName string
 //   - searchIndexCreateRequest *admin.SearchIndexCreateRequest
-func (_e *AtlasSearchApi_Expecter) CreateAtlasSearchIndex(ctx interface{}, groupId interface{}, clusterName interface{}, searchIndexCreateRequest interface{}) *AtlasSearchApi_CreateAtlasSearchIndex_Call {
+func (_e *AtlasSearchApi_Expecter) CreateAtlasSearchIndex(ctx any, groupId any, clusterName any, searchIndexCreateRequest any) *AtlasSearchApi_CreateAtlasSearchIndex_Call {
 	return &AtlasSearchApi_CreateAtlasSearchIndex_Call{Call: _e.mock.On("CreateAtlasSearchIndex", ctx, groupId, clusterName, searchIndexCreateRequest)}
 }
 
@@ -265,7 +265,7 @@ type AtlasSearchApi_CreateAtlasSearchIndexDeprecated_Call struct {
 //   - groupId string
 //   - clusterName string
 //   - clusterSearchIndex *admin.ClusterSearchIndex
-func (_e *AtlasSearchApi_Expecter) CreateAtlasSearchIndexDeprecated(ctx interface{}, groupId interface{}, clusterName interface{}, clusterSearchIndex interface{}) *AtlasSearchApi_CreateAtlasSearchIndexDeprecated_Call {
+func (_e *AtlasSearchApi_Expecter) CreateAtlasSearchIndexDeprecated(ctx any, groupId any, clusterName any, clusterSearchIndex any) *AtlasSearchApi_CreateAtlasSearchIndexDeprecated_Call {
 	return &AtlasSearchApi_CreateAtlasSearchIndexDeprecated_Call{Call: _e.mock.On("CreateAtlasSearchIndexDeprecated", ctx, groupId, clusterName, clusterSearchIndex)}
 }
 
@@ -332,7 +332,7 @@ type AtlasSearchApi_CreateAtlasSearchIndexDeprecatedExecute_Call struct {
 
 // CreateAtlasSearchIndexDeprecatedExecute is a helper method to define mock.On call
 //   - r admin.CreateAtlasSearchIndexDeprecatedApiRequest
-func (_e *AtlasSearchApi_Expecter) CreateAtlasSearchIndexDeprecatedExecute(r interface{}) *AtlasSearchApi_CreateAtlasSearchIndexDeprecatedExecute_Call {
+func (_e *AtlasSearchApi_Expecter) CreateAtlasSearchIndexDeprecatedExecute(r any) *AtlasSearchApi_CreateAtlasSearchIndexDeprecatedExecute_Call {
 	return &AtlasSearchApi_CreateAtlasSearchIndexDeprecatedExecute_Call{Call: _e.mock.On("CreateAtlasSearchIndexDeprecatedExecute", r)}
 }
 
@@ -379,7 +379,7 @@ type AtlasSearchApi_CreateAtlasSearchIndexDeprecatedWithParams_Call struct {
 // CreateAtlasSearchIndexDeprecatedWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.CreateAtlasSearchIndexDeprecatedApiParams
-func (_e *AtlasSearchApi_Expecter) CreateAtlasSearchIndexDeprecatedWithParams(ctx interface{}, args interface{}) *AtlasSearchApi_CreateAtlasSearchIndexDeprecatedWithParams_Call {
+func (_e *AtlasSearchApi_Expecter) CreateAtlasSearchIndexDeprecatedWithParams(ctx any, args any) *AtlasSearchApi_CreateAtlasSearchIndexDeprecatedWithParams_Call {
 	return &AtlasSearchApi_CreateAtlasSearchIndexDeprecatedWithParams_Call{Call: _e.mock.On("CreateAtlasSearchIndexDeprecatedWithParams", ctx, args)}
 }
 
@@ -446,7 +446,7 @@ type AtlasSearchApi_CreateAtlasSearchIndexExecute_Call struct {
 
 // CreateAtlasSearchIndexExecute is a helper method to define mock.On call
 //   - r admin.CreateAtlasSearchIndexApiRequest
-func (_e *AtlasSearchApi_Expecter) CreateAtlasSearchIndexExecute(r interface{}) *AtlasSearchApi_CreateAtlasSearchIndexExecute_Call {
+func (_e *AtlasSearchApi_Expecter) CreateAtlasSearchIndexExecute(r any) *AtlasSearchApi_CreateAtlasSearchIndexExecute_Call {
 	return &AtlasSearchApi_CreateAtlasSearchIndexExecute_Call{Call: _e.mock.On("CreateAtlasSearchIndexExecute", r)}
 }
 
@@ -493,7 +493,7 @@ type AtlasSearchApi_CreateAtlasSearchIndexWithParams_Call struct {
 // CreateAtlasSearchIndexWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.CreateAtlasSearchIndexApiParams
-func (_e *AtlasSearchApi_Expecter) CreateAtlasSearchIndexWithParams(ctx interface{}, args interface{}) *AtlasSearchApi_CreateAtlasSearchIndexWithParams_Call {
+func (_e *AtlasSearchApi_Expecter) CreateAtlasSearchIndexWithParams(ctx any, args any) *AtlasSearchApi_CreateAtlasSearchIndexWithParams_Call {
 	return &AtlasSearchApi_CreateAtlasSearchIndexWithParams_Call{Call: _e.mock.On("CreateAtlasSearchIndexWithParams", ctx, args)}
 }
 
@@ -541,7 +541,7 @@ type AtlasSearchApi_DeleteAtlasSearchDeployment_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
-func (_e *AtlasSearchApi_Expecter) DeleteAtlasSearchDeployment(ctx interface{}, groupId interface{}, clusterName interface{}) *AtlasSearchApi_DeleteAtlasSearchDeployment_Call {
+func (_e *AtlasSearchApi_Expecter) DeleteAtlasSearchDeployment(ctx any, groupId any, clusterName any) *AtlasSearchApi_DeleteAtlasSearchDeployment_Call {
 	return &AtlasSearchApi_DeleteAtlasSearchDeployment_Call{Call: _e.mock.On("DeleteAtlasSearchDeployment", ctx, groupId, clusterName)}
 }
 
@@ -563,24 +563,24 @@ func (_c *AtlasSearchApi_DeleteAtlasSearchDeployment_Call) RunAndReturn(run func
 }
 
 // DeleteAtlasSearchDeploymentExecute provides a mock function with given fields: r
-func (_m *AtlasSearchApi) DeleteAtlasSearchDeploymentExecute(r admin.DeleteAtlasSearchDeploymentApiRequest) (interface{}, *http.Response, error) {
+func (_m *AtlasSearchApi) DeleteAtlasSearchDeploymentExecute(r admin.DeleteAtlasSearchDeploymentApiRequest) (any, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteAtlasSearchDeploymentExecute")
 	}
 
-	var r0 interface{}
+	var r0 any
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteAtlasSearchDeploymentApiRequest) (interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteAtlasSearchDeploymentApiRequest) (any, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteAtlasSearchDeploymentApiRequest) interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteAtlasSearchDeploymentApiRequest) any); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(interface{})
+			r0 = ret.Get(0).(any)
 		}
 	}
 
@@ -608,7 +608,7 @@ type AtlasSearchApi_DeleteAtlasSearchDeploymentExecute_Call struct {
 
 // DeleteAtlasSearchDeploymentExecute is a helper method to define mock.On call
 //   - r admin.DeleteAtlasSearchDeploymentApiRequest
-func (_e *AtlasSearchApi_Expecter) DeleteAtlasSearchDeploymentExecute(r interface{}) *AtlasSearchApi_DeleteAtlasSearchDeploymentExecute_Call {
+func (_e *AtlasSearchApi_Expecter) DeleteAtlasSearchDeploymentExecute(r any) *AtlasSearchApi_DeleteAtlasSearchDeploymentExecute_Call {
 	return &AtlasSearchApi_DeleteAtlasSearchDeploymentExecute_Call{Call: _e.mock.On("DeleteAtlasSearchDeploymentExecute", r)}
 }
 
@@ -619,12 +619,12 @@ func (_c *AtlasSearchApi_DeleteAtlasSearchDeploymentExecute_Call) Run(run func(r
 	return _c
 }
 
-func (_c *AtlasSearchApi_DeleteAtlasSearchDeploymentExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *AtlasSearchApi_DeleteAtlasSearchDeploymentExecute_Call {
+func (_c *AtlasSearchApi_DeleteAtlasSearchDeploymentExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *AtlasSearchApi_DeleteAtlasSearchDeploymentExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *AtlasSearchApi_DeleteAtlasSearchDeploymentExecute_Call) RunAndReturn(run func(admin.DeleteAtlasSearchDeploymentApiRequest) (interface{}, *http.Response, error)) *AtlasSearchApi_DeleteAtlasSearchDeploymentExecute_Call {
+func (_c *AtlasSearchApi_DeleteAtlasSearchDeploymentExecute_Call) RunAndReturn(run func(admin.DeleteAtlasSearchDeploymentApiRequest) (any, *http.Response, error)) *AtlasSearchApi_DeleteAtlasSearchDeploymentExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -655,7 +655,7 @@ type AtlasSearchApi_DeleteAtlasSearchDeploymentWithParams_Call struct {
 // DeleteAtlasSearchDeploymentWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.DeleteAtlasSearchDeploymentApiParams
-func (_e *AtlasSearchApi_Expecter) DeleteAtlasSearchDeploymentWithParams(ctx interface{}, args interface{}) *AtlasSearchApi_DeleteAtlasSearchDeploymentWithParams_Call {
+func (_e *AtlasSearchApi_Expecter) DeleteAtlasSearchDeploymentWithParams(ctx any, args any) *AtlasSearchApi_DeleteAtlasSearchDeploymentWithParams_Call {
 	return &AtlasSearchApi_DeleteAtlasSearchDeploymentWithParams_Call{Call: _e.mock.On("DeleteAtlasSearchDeploymentWithParams", ctx, args)}
 }
 
@@ -704,7 +704,7 @@ type AtlasSearchApi_DeleteAtlasSearchIndex_Call struct {
 //   - groupId string
 //   - clusterName string
 //   - indexId string
-func (_e *AtlasSearchApi_Expecter) DeleteAtlasSearchIndex(ctx interface{}, groupId interface{}, clusterName interface{}, indexId interface{}) *AtlasSearchApi_DeleteAtlasSearchIndex_Call {
+func (_e *AtlasSearchApi_Expecter) DeleteAtlasSearchIndex(ctx any, groupId any, clusterName any, indexId any) *AtlasSearchApi_DeleteAtlasSearchIndex_Call {
 	return &AtlasSearchApi_DeleteAtlasSearchIndex_Call{Call: _e.mock.On("DeleteAtlasSearchIndex", ctx, groupId, clusterName, indexId)}
 }
 
@@ -755,7 +755,7 @@ type AtlasSearchApi_DeleteAtlasSearchIndexByName_Call struct {
 //   - collectionName string
 //   - databaseName string
 //   - indexName string
-func (_e *AtlasSearchApi_Expecter) DeleteAtlasSearchIndexByName(ctx interface{}, groupId interface{}, clusterName interface{}, collectionName interface{}, databaseName interface{}, indexName interface{}) *AtlasSearchApi_DeleteAtlasSearchIndexByName_Call {
+func (_e *AtlasSearchApi_Expecter) DeleteAtlasSearchIndexByName(ctx any, groupId any, clusterName any, collectionName any, databaseName any, indexName any) *AtlasSearchApi_DeleteAtlasSearchIndexByName_Call {
 	return &AtlasSearchApi_DeleteAtlasSearchIndexByName_Call{Call: _e.mock.On("DeleteAtlasSearchIndexByName", ctx, groupId, clusterName, collectionName, databaseName, indexName)}
 }
 
@@ -777,24 +777,24 @@ func (_c *AtlasSearchApi_DeleteAtlasSearchIndexByName_Call) RunAndReturn(run fun
 }
 
 // DeleteAtlasSearchIndexByNameExecute provides a mock function with given fields: r
-func (_m *AtlasSearchApi) DeleteAtlasSearchIndexByNameExecute(r admin.DeleteAtlasSearchIndexByNameApiRequest) (interface{}, *http.Response, error) {
+func (_m *AtlasSearchApi) DeleteAtlasSearchIndexByNameExecute(r admin.DeleteAtlasSearchIndexByNameApiRequest) (any, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteAtlasSearchIndexByNameExecute")
 	}
 
-	var r0 interface{}
+	var r0 any
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteAtlasSearchIndexByNameApiRequest) (interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteAtlasSearchIndexByNameApiRequest) (any, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteAtlasSearchIndexByNameApiRequest) interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteAtlasSearchIndexByNameApiRequest) any); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(interface{})
+			r0 = ret.Get(0).(any)
 		}
 	}
 
@@ -822,7 +822,7 @@ type AtlasSearchApi_DeleteAtlasSearchIndexByNameExecute_Call struct {
 
 // DeleteAtlasSearchIndexByNameExecute is a helper method to define mock.On call
 //   - r admin.DeleteAtlasSearchIndexByNameApiRequest
-func (_e *AtlasSearchApi_Expecter) DeleteAtlasSearchIndexByNameExecute(r interface{}) *AtlasSearchApi_DeleteAtlasSearchIndexByNameExecute_Call {
+func (_e *AtlasSearchApi_Expecter) DeleteAtlasSearchIndexByNameExecute(r any) *AtlasSearchApi_DeleteAtlasSearchIndexByNameExecute_Call {
 	return &AtlasSearchApi_DeleteAtlasSearchIndexByNameExecute_Call{Call: _e.mock.On("DeleteAtlasSearchIndexByNameExecute", r)}
 }
 
@@ -833,12 +833,12 @@ func (_c *AtlasSearchApi_DeleteAtlasSearchIndexByNameExecute_Call) Run(run func(
 	return _c
 }
 
-func (_c *AtlasSearchApi_DeleteAtlasSearchIndexByNameExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *AtlasSearchApi_DeleteAtlasSearchIndexByNameExecute_Call {
+func (_c *AtlasSearchApi_DeleteAtlasSearchIndexByNameExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *AtlasSearchApi_DeleteAtlasSearchIndexByNameExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *AtlasSearchApi_DeleteAtlasSearchIndexByNameExecute_Call) RunAndReturn(run func(admin.DeleteAtlasSearchIndexByNameApiRequest) (interface{}, *http.Response, error)) *AtlasSearchApi_DeleteAtlasSearchIndexByNameExecute_Call {
+func (_c *AtlasSearchApi_DeleteAtlasSearchIndexByNameExecute_Call) RunAndReturn(run func(admin.DeleteAtlasSearchIndexByNameApiRequest) (any, *http.Response, error)) *AtlasSearchApi_DeleteAtlasSearchIndexByNameExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -869,7 +869,7 @@ type AtlasSearchApi_DeleteAtlasSearchIndexByNameWithParams_Call struct {
 // DeleteAtlasSearchIndexByNameWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.DeleteAtlasSearchIndexByNameApiParams
-func (_e *AtlasSearchApi_Expecter) DeleteAtlasSearchIndexByNameWithParams(ctx interface{}, args interface{}) *AtlasSearchApi_DeleteAtlasSearchIndexByNameWithParams_Call {
+func (_e *AtlasSearchApi_Expecter) DeleteAtlasSearchIndexByNameWithParams(ctx any, args any) *AtlasSearchApi_DeleteAtlasSearchIndexByNameWithParams_Call {
 	return &AtlasSearchApi_DeleteAtlasSearchIndexByNameWithParams_Call{Call: _e.mock.On("DeleteAtlasSearchIndexByNameWithParams", ctx, args)}
 }
 
@@ -918,7 +918,7 @@ type AtlasSearchApi_DeleteAtlasSearchIndexDeprecated_Call struct {
 //   - groupId string
 //   - clusterName string
 //   - indexId string
-func (_e *AtlasSearchApi_Expecter) DeleteAtlasSearchIndexDeprecated(ctx interface{}, groupId interface{}, clusterName interface{}, indexId interface{}) *AtlasSearchApi_DeleteAtlasSearchIndexDeprecated_Call {
+func (_e *AtlasSearchApi_Expecter) DeleteAtlasSearchIndexDeprecated(ctx any, groupId any, clusterName any, indexId any) *AtlasSearchApi_DeleteAtlasSearchIndexDeprecated_Call {
 	return &AtlasSearchApi_DeleteAtlasSearchIndexDeprecated_Call{Call: _e.mock.On("DeleteAtlasSearchIndexDeprecated", ctx, groupId, clusterName, indexId)}
 }
 
@@ -940,24 +940,24 @@ func (_c *AtlasSearchApi_DeleteAtlasSearchIndexDeprecated_Call) RunAndReturn(run
 }
 
 // DeleteAtlasSearchIndexDeprecatedExecute provides a mock function with given fields: r
-func (_m *AtlasSearchApi) DeleteAtlasSearchIndexDeprecatedExecute(r admin.DeleteAtlasSearchIndexDeprecatedApiRequest) (interface{}, *http.Response, error) {
+func (_m *AtlasSearchApi) DeleteAtlasSearchIndexDeprecatedExecute(r admin.DeleteAtlasSearchIndexDeprecatedApiRequest) (any, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteAtlasSearchIndexDeprecatedExecute")
 	}
 
-	var r0 interface{}
+	var r0 any
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteAtlasSearchIndexDeprecatedApiRequest) (interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteAtlasSearchIndexDeprecatedApiRequest) (any, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteAtlasSearchIndexDeprecatedApiRequest) interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteAtlasSearchIndexDeprecatedApiRequest) any); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(interface{})
+			r0 = ret.Get(0).(any)
 		}
 	}
 
@@ -985,7 +985,7 @@ type AtlasSearchApi_DeleteAtlasSearchIndexDeprecatedExecute_Call struct {
 
 // DeleteAtlasSearchIndexDeprecatedExecute is a helper method to define mock.On call
 //   - r admin.DeleteAtlasSearchIndexDeprecatedApiRequest
-func (_e *AtlasSearchApi_Expecter) DeleteAtlasSearchIndexDeprecatedExecute(r interface{}) *AtlasSearchApi_DeleteAtlasSearchIndexDeprecatedExecute_Call {
+func (_e *AtlasSearchApi_Expecter) DeleteAtlasSearchIndexDeprecatedExecute(r any) *AtlasSearchApi_DeleteAtlasSearchIndexDeprecatedExecute_Call {
 	return &AtlasSearchApi_DeleteAtlasSearchIndexDeprecatedExecute_Call{Call: _e.mock.On("DeleteAtlasSearchIndexDeprecatedExecute", r)}
 }
 
@@ -996,12 +996,12 @@ func (_c *AtlasSearchApi_DeleteAtlasSearchIndexDeprecatedExecute_Call) Run(run f
 	return _c
 }
 
-func (_c *AtlasSearchApi_DeleteAtlasSearchIndexDeprecatedExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *AtlasSearchApi_DeleteAtlasSearchIndexDeprecatedExecute_Call {
+func (_c *AtlasSearchApi_DeleteAtlasSearchIndexDeprecatedExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *AtlasSearchApi_DeleteAtlasSearchIndexDeprecatedExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *AtlasSearchApi_DeleteAtlasSearchIndexDeprecatedExecute_Call) RunAndReturn(run func(admin.DeleteAtlasSearchIndexDeprecatedApiRequest) (interface{}, *http.Response, error)) *AtlasSearchApi_DeleteAtlasSearchIndexDeprecatedExecute_Call {
+func (_c *AtlasSearchApi_DeleteAtlasSearchIndexDeprecatedExecute_Call) RunAndReturn(run func(admin.DeleteAtlasSearchIndexDeprecatedApiRequest) (any, *http.Response, error)) *AtlasSearchApi_DeleteAtlasSearchIndexDeprecatedExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1032,7 +1032,7 @@ type AtlasSearchApi_DeleteAtlasSearchIndexDeprecatedWithParams_Call struct {
 // DeleteAtlasSearchIndexDeprecatedWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.DeleteAtlasSearchIndexDeprecatedApiParams
-func (_e *AtlasSearchApi_Expecter) DeleteAtlasSearchIndexDeprecatedWithParams(ctx interface{}, args interface{}) *AtlasSearchApi_DeleteAtlasSearchIndexDeprecatedWithParams_Call {
+func (_e *AtlasSearchApi_Expecter) DeleteAtlasSearchIndexDeprecatedWithParams(ctx any, args any) *AtlasSearchApi_DeleteAtlasSearchIndexDeprecatedWithParams_Call {
 	return &AtlasSearchApi_DeleteAtlasSearchIndexDeprecatedWithParams_Call{Call: _e.mock.On("DeleteAtlasSearchIndexDeprecatedWithParams", ctx, args)}
 }
 
@@ -1054,24 +1054,24 @@ func (_c *AtlasSearchApi_DeleteAtlasSearchIndexDeprecatedWithParams_Call) RunAnd
 }
 
 // DeleteAtlasSearchIndexExecute provides a mock function with given fields: r
-func (_m *AtlasSearchApi) DeleteAtlasSearchIndexExecute(r admin.DeleteAtlasSearchIndexApiRequest) (interface{}, *http.Response, error) {
+func (_m *AtlasSearchApi) DeleteAtlasSearchIndexExecute(r admin.DeleteAtlasSearchIndexApiRequest) (any, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteAtlasSearchIndexExecute")
 	}
 
-	var r0 interface{}
+	var r0 any
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteAtlasSearchIndexApiRequest) (interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteAtlasSearchIndexApiRequest) (any, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteAtlasSearchIndexApiRequest) interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteAtlasSearchIndexApiRequest) any); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(interface{})
+			r0 = ret.Get(0).(any)
 		}
 	}
 
@@ -1099,7 +1099,7 @@ type AtlasSearchApi_DeleteAtlasSearchIndexExecute_Call struct {
 
 // DeleteAtlasSearchIndexExecute is a helper method to define mock.On call
 //   - r admin.DeleteAtlasSearchIndexApiRequest
-func (_e *AtlasSearchApi_Expecter) DeleteAtlasSearchIndexExecute(r interface{}) *AtlasSearchApi_DeleteAtlasSearchIndexExecute_Call {
+func (_e *AtlasSearchApi_Expecter) DeleteAtlasSearchIndexExecute(r any) *AtlasSearchApi_DeleteAtlasSearchIndexExecute_Call {
 	return &AtlasSearchApi_DeleteAtlasSearchIndexExecute_Call{Call: _e.mock.On("DeleteAtlasSearchIndexExecute", r)}
 }
 
@@ -1110,12 +1110,12 @@ func (_c *AtlasSearchApi_DeleteAtlasSearchIndexExecute_Call) Run(run func(r admi
 	return _c
 }
 
-func (_c *AtlasSearchApi_DeleteAtlasSearchIndexExecute_Call) Return(_a0 interface{}, _a1 *http.Response, _a2 error) *AtlasSearchApi_DeleteAtlasSearchIndexExecute_Call {
+func (_c *AtlasSearchApi_DeleteAtlasSearchIndexExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *AtlasSearchApi_DeleteAtlasSearchIndexExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *AtlasSearchApi_DeleteAtlasSearchIndexExecute_Call) RunAndReturn(run func(admin.DeleteAtlasSearchIndexApiRequest) (interface{}, *http.Response, error)) *AtlasSearchApi_DeleteAtlasSearchIndexExecute_Call {
+func (_c *AtlasSearchApi_DeleteAtlasSearchIndexExecute_Call) RunAndReturn(run func(admin.DeleteAtlasSearchIndexApiRequest) (any, *http.Response, error)) *AtlasSearchApi_DeleteAtlasSearchIndexExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1146,7 +1146,7 @@ type AtlasSearchApi_DeleteAtlasSearchIndexWithParams_Call struct {
 // DeleteAtlasSearchIndexWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.DeleteAtlasSearchIndexApiParams
-func (_e *AtlasSearchApi_Expecter) DeleteAtlasSearchIndexWithParams(ctx interface{}, args interface{}) *AtlasSearchApi_DeleteAtlasSearchIndexWithParams_Call {
+func (_e *AtlasSearchApi_Expecter) DeleteAtlasSearchIndexWithParams(ctx any, args any) *AtlasSearchApi_DeleteAtlasSearchIndexWithParams_Call {
 	return &AtlasSearchApi_DeleteAtlasSearchIndexWithParams_Call{Call: _e.mock.On("DeleteAtlasSearchIndexWithParams", ctx, args)}
 }
 
@@ -1194,7 +1194,7 @@ type AtlasSearchApi_GetAtlasSearchDeployment_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
-func (_e *AtlasSearchApi_Expecter) GetAtlasSearchDeployment(ctx interface{}, groupId interface{}, clusterName interface{}) *AtlasSearchApi_GetAtlasSearchDeployment_Call {
+func (_e *AtlasSearchApi_Expecter) GetAtlasSearchDeployment(ctx any, groupId any, clusterName any) *AtlasSearchApi_GetAtlasSearchDeployment_Call {
 	return &AtlasSearchApi_GetAtlasSearchDeployment_Call{Call: _e.mock.On("GetAtlasSearchDeployment", ctx, groupId, clusterName)}
 }
 
@@ -1261,7 +1261,7 @@ type AtlasSearchApi_GetAtlasSearchDeploymentExecute_Call struct {
 
 // GetAtlasSearchDeploymentExecute is a helper method to define mock.On call
 //   - r admin.GetAtlasSearchDeploymentApiRequest
-func (_e *AtlasSearchApi_Expecter) GetAtlasSearchDeploymentExecute(r interface{}) *AtlasSearchApi_GetAtlasSearchDeploymentExecute_Call {
+func (_e *AtlasSearchApi_Expecter) GetAtlasSearchDeploymentExecute(r any) *AtlasSearchApi_GetAtlasSearchDeploymentExecute_Call {
 	return &AtlasSearchApi_GetAtlasSearchDeploymentExecute_Call{Call: _e.mock.On("GetAtlasSearchDeploymentExecute", r)}
 }
 
@@ -1308,7 +1308,7 @@ type AtlasSearchApi_GetAtlasSearchDeploymentWithParams_Call struct {
 // GetAtlasSearchDeploymentWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetAtlasSearchDeploymentApiParams
-func (_e *AtlasSearchApi_Expecter) GetAtlasSearchDeploymentWithParams(ctx interface{}, args interface{}) *AtlasSearchApi_GetAtlasSearchDeploymentWithParams_Call {
+func (_e *AtlasSearchApi_Expecter) GetAtlasSearchDeploymentWithParams(ctx any, args any) *AtlasSearchApi_GetAtlasSearchDeploymentWithParams_Call {
 	return &AtlasSearchApi_GetAtlasSearchDeploymentWithParams_Call{Call: _e.mock.On("GetAtlasSearchDeploymentWithParams", ctx, args)}
 }
 
@@ -1357,7 +1357,7 @@ type AtlasSearchApi_GetAtlasSearchIndex_Call struct {
 //   - groupId string
 //   - clusterName string
 //   - indexId string
-func (_e *AtlasSearchApi_Expecter) GetAtlasSearchIndex(ctx interface{}, groupId interface{}, clusterName interface{}, indexId interface{}) *AtlasSearchApi_GetAtlasSearchIndex_Call {
+func (_e *AtlasSearchApi_Expecter) GetAtlasSearchIndex(ctx any, groupId any, clusterName any, indexId any) *AtlasSearchApi_GetAtlasSearchIndex_Call {
 	return &AtlasSearchApi_GetAtlasSearchIndex_Call{Call: _e.mock.On("GetAtlasSearchIndex", ctx, groupId, clusterName, indexId)}
 }
 
@@ -1408,7 +1408,7 @@ type AtlasSearchApi_GetAtlasSearchIndexByName_Call struct {
 //   - collectionName string
 //   - databaseName string
 //   - indexName string
-func (_e *AtlasSearchApi_Expecter) GetAtlasSearchIndexByName(ctx interface{}, groupId interface{}, clusterName interface{}, collectionName interface{}, databaseName interface{}, indexName interface{}) *AtlasSearchApi_GetAtlasSearchIndexByName_Call {
+func (_e *AtlasSearchApi_Expecter) GetAtlasSearchIndexByName(ctx any, groupId any, clusterName any, collectionName any, databaseName any, indexName any) *AtlasSearchApi_GetAtlasSearchIndexByName_Call {
 	return &AtlasSearchApi_GetAtlasSearchIndexByName_Call{Call: _e.mock.On("GetAtlasSearchIndexByName", ctx, groupId, clusterName, collectionName, databaseName, indexName)}
 }
 
@@ -1475,7 +1475,7 @@ type AtlasSearchApi_GetAtlasSearchIndexByNameExecute_Call struct {
 
 // GetAtlasSearchIndexByNameExecute is a helper method to define mock.On call
 //   - r admin.GetAtlasSearchIndexByNameApiRequest
-func (_e *AtlasSearchApi_Expecter) GetAtlasSearchIndexByNameExecute(r interface{}) *AtlasSearchApi_GetAtlasSearchIndexByNameExecute_Call {
+func (_e *AtlasSearchApi_Expecter) GetAtlasSearchIndexByNameExecute(r any) *AtlasSearchApi_GetAtlasSearchIndexByNameExecute_Call {
 	return &AtlasSearchApi_GetAtlasSearchIndexByNameExecute_Call{Call: _e.mock.On("GetAtlasSearchIndexByNameExecute", r)}
 }
 
@@ -1522,7 +1522,7 @@ type AtlasSearchApi_GetAtlasSearchIndexByNameWithParams_Call struct {
 // GetAtlasSearchIndexByNameWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetAtlasSearchIndexByNameApiParams
-func (_e *AtlasSearchApi_Expecter) GetAtlasSearchIndexByNameWithParams(ctx interface{}, args interface{}) *AtlasSearchApi_GetAtlasSearchIndexByNameWithParams_Call {
+func (_e *AtlasSearchApi_Expecter) GetAtlasSearchIndexByNameWithParams(ctx any, args any) *AtlasSearchApi_GetAtlasSearchIndexByNameWithParams_Call {
 	return &AtlasSearchApi_GetAtlasSearchIndexByNameWithParams_Call{Call: _e.mock.On("GetAtlasSearchIndexByNameWithParams", ctx, args)}
 }
 
@@ -1571,7 +1571,7 @@ type AtlasSearchApi_GetAtlasSearchIndexDeprecated_Call struct {
 //   - groupId string
 //   - clusterName string
 //   - indexId string
-func (_e *AtlasSearchApi_Expecter) GetAtlasSearchIndexDeprecated(ctx interface{}, groupId interface{}, clusterName interface{}, indexId interface{}) *AtlasSearchApi_GetAtlasSearchIndexDeprecated_Call {
+func (_e *AtlasSearchApi_Expecter) GetAtlasSearchIndexDeprecated(ctx any, groupId any, clusterName any, indexId any) *AtlasSearchApi_GetAtlasSearchIndexDeprecated_Call {
 	return &AtlasSearchApi_GetAtlasSearchIndexDeprecated_Call{Call: _e.mock.On("GetAtlasSearchIndexDeprecated", ctx, groupId, clusterName, indexId)}
 }
 
@@ -1638,7 +1638,7 @@ type AtlasSearchApi_GetAtlasSearchIndexDeprecatedExecute_Call struct {
 
 // GetAtlasSearchIndexDeprecatedExecute is a helper method to define mock.On call
 //   - r admin.GetAtlasSearchIndexDeprecatedApiRequest
-func (_e *AtlasSearchApi_Expecter) GetAtlasSearchIndexDeprecatedExecute(r interface{}) *AtlasSearchApi_GetAtlasSearchIndexDeprecatedExecute_Call {
+func (_e *AtlasSearchApi_Expecter) GetAtlasSearchIndexDeprecatedExecute(r any) *AtlasSearchApi_GetAtlasSearchIndexDeprecatedExecute_Call {
 	return &AtlasSearchApi_GetAtlasSearchIndexDeprecatedExecute_Call{Call: _e.mock.On("GetAtlasSearchIndexDeprecatedExecute", r)}
 }
 
@@ -1685,7 +1685,7 @@ type AtlasSearchApi_GetAtlasSearchIndexDeprecatedWithParams_Call struct {
 // GetAtlasSearchIndexDeprecatedWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetAtlasSearchIndexDeprecatedApiParams
-func (_e *AtlasSearchApi_Expecter) GetAtlasSearchIndexDeprecatedWithParams(ctx interface{}, args interface{}) *AtlasSearchApi_GetAtlasSearchIndexDeprecatedWithParams_Call {
+func (_e *AtlasSearchApi_Expecter) GetAtlasSearchIndexDeprecatedWithParams(ctx any, args any) *AtlasSearchApi_GetAtlasSearchIndexDeprecatedWithParams_Call {
 	return &AtlasSearchApi_GetAtlasSearchIndexDeprecatedWithParams_Call{Call: _e.mock.On("GetAtlasSearchIndexDeprecatedWithParams", ctx, args)}
 }
 
@@ -1752,7 +1752,7 @@ type AtlasSearchApi_GetAtlasSearchIndexExecute_Call struct {
 
 // GetAtlasSearchIndexExecute is a helper method to define mock.On call
 //   - r admin.GetAtlasSearchIndexApiRequest
-func (_e *AtlasSearchApi_Expecter) GetAtlasSearchIndexExecute(r interface{}) *AtlasSearchApi_GetAtlasSearchIndexExecute_Call {
+func (_e *AtlasSearchApi_Expecter) GetAtlasSearchIndexExecute(r any) *AtlasSearchApi_GetAtlasSearchIndexExecute_Call {
 	return &AtlasSearchApi_GetAtlasSearchIndexExecute_Call{Call: _e.mock.On("GetAtlasSearchIndexExecute", r)}
 }
 
@@ -1799,7 +1799,7 @@ type AtlasSearchApi_GetAtlasSearchIndexWithParams_Call struct {
 // GetAtlasSearchIndexWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetAtlasSearchIndexApiParams
-func (_e *AtlasSearchApi_Expecter) GetAtlasSearchIndexWithParams(ctx interface{}, args interface{}) *AtlasSearchApi_GetAtlasSearchIndexWithParams_Call {
+func (_e *AtlasSearchApi_Expecter) GetAtlasSearchIndexWithParams(ctx any, args any) *AtlasSearchApi_GetAtlasSearchIndexWithParams_Call {
 	return &AtlasSearchApi_GetAtlasSearchIndexWithParams_Call{Call: _e.mock.On("GetAtlasSearchIndexWithParams", ctx, args)}
 }
 
@@ -1849,7 +1849,7 @@ type AtlasSearchApi_ListAtlasSearchIndexes_Call struct {
 //   - clusterName string
 //   - collectionName string
 //   - databaseName string
-func (_e *AtlasSearchApi_Expecter) ListAtlasSearchIndexes(ctx interface{}, groupId interface{}, clusterName interface{}, collectionName interface{}, databaseName interface{}) *AtlasSearchApi_ListAtlasSearchIndexes_Call {
+func (_e *AtlasSearchApi_Expecter) ListAtlasSearchIndexes(ctx any, groupId any, clusterName any, collectionName any, databaseName any) *AtlasSearchApi_ListAtlasSearchIndexes_Call {
 	return &AtlasSearchApi_ListAtlasSearchIndexes_Call{Call: _e.mock.On("ListAtlasSearchIndexes", ctx, groupId, clusterName, collectionName, databaseName)}
 }
 
@@ -1897,7 +1897,7 @@ type AtlasSearchApi_ListAtlasSearchIndexesCluster_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
-func (_e *AtlasSearchApi_Expecter) ListAtlasSearchIndexesCluster(ctx interface{}, groupId interface{}, clusterName interface{}) *AtlasSearchApi_ListAtlasSearchIndexesCluster_Call {
+func (_e *AtlasSearchApi_Expecter) ListAtlasSearchIndexesCluster(ctx any, groupId any, clusterName any) *AtlasSearchApi_ListAtlasSearchIndexesCluster_Call {
 	return &AtlasSearchApi_ListAtlasSearchIndexesCluster_Call{Call: _e.mock.On("ListAtlasSearchIndexesCluster", ctx, groupId, clusterName)}
 }
 
@@ -1964,7 +1964,7 @@ type AtlasSearchApi_ListAtlasSearchIndexesClusterExecute_Call struct {
 
 // ListAtlasSearchIndexesClusterExecute is a helper method to define mock.On call
 //   - r admin.ListAtlasSearchIndexesClusterApiRequest
-func (_e *AtlasSearchApi_Expecter) ListAtlasSearchIndexesClusterExecute(r interface{}) *AtlasSearchApi_ListAtlasSearchIndexesClusterExecute_Call {
+func (_e *AtlasSearchApi_Expecter) ListAtlasSearchIndexesClusterExecute(r any) *AtlasSearchApi_ListAtlasSearchIndexesClusterExecute_Call {
 	return &AtlasSearchApi_ListAtlasSearchIndexesClusterExecute_Call{Call: _e.mock.On("ListAtlasSearchIndexesClusterExecute", r)}
 }
 
@@ -2011,7 +2011,7 @@ type AtlasSearchApi_ListAtlasSearchIndexesClusterWithParams_Call struct {
 // ListAtlasSearchIndexesClusterWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListAtlasSearchIndexesClusterApiParams
-func (_e *AtlasSearchApi_Expecter) ListAtlasSearchIndexesClusterWithParams(ctx interface{}, args interface{}) *AtlasSearchApi_ListAtlasSearchIndexesClusterWithParams_Call {
+func (_e *AtlasSearchApi_Expecter) ListAtlasSearchIndexesClusterWithParams(ctx any, args any) *AtlasSearchApi_ListAtlasSearchIndexesClusterWithParams_Call {
 	return &AtlasSearchApi_ListAtlasSearchIndexesClusterWithParams_Call{Call: _e.mock.On("ListAtlasSearchIndexesClusterWithParams", ctx, args)}
 }
 
@@ -2061,7 +2061,7 @@ type AtlasSearchApi_ListAtlasSearchIndexesDeprecated_Call struct {
 //   - clusterName string
 //   - collectionName string
 //   - databaseName string
-func (_e *AtlasSearchApi_Expecter) ListAtlasSearchIndexesDeprecated(ctx interface{}, groupId interface{}, clusterName interface{}, collectionName interface{}, databaseName interface{}) *AtlasSearchApi_ListAtlasSearchIndexesDeprecated_Call {
+func (_e *AtlasSearchApi_Expecter) ListAtlasSearchIndexesDeprecated(ctx any, groupId any, clusterName any, collectionName any, databaseName any) *AtlasSearchApi_ListAtlasSearchIndexesDeprecated_Call {
 	return &AtlasSearchApi_ListAtlasSearchIndexesDeprecated_Call{Call: _e.mock.On("ListAtlasSearchIndexesDeprecated", ctx, groupId, clusterName, collectionName, databaseName)}
 }
 
@@ -2128,7 +2128,7 @@ type AtlasSearchApi_ListAtlasSearchIndexesDeprecatedExecute_Call struct {
 
 // ListAtlasSearchIndexesDeprecatedExecute is a helper method to define mock.On call
 //   - r admin.ListAtlasSearchIndexesDeprecatedApiRequest
-func (_e *AtlasSearchApi_Expecter) ListAtlasSearchIndexesDeprecatedExecute(r interface{}) *AtlasSearchApi_ListAtlasSearchIndexesDeprecatedExecute_Call {
+func (_e *AtlasSearchApi_Expecter) ListAtlasSearchIndexesDeprecatedExecute(r any) *AtlasSearchApi_ListAtlasSearchIndexesDeprecatedExecute_Call {
 	return &AtlasSearchApi_ListAtlasSearchIndexesDeprecatedExecute_Call{Call: _e.mock.On("ListAtlasSearchIndexesDeprecatedExecute", r)}
 }
 
@@ -2175,7 +2175,7 @@ type AtlasSearchApi_ListAtlasSearchIndexesDeprecatedWithParams_Call struct {
 // ListAtlasSearchIndexesDeprecatedWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListAtlasSearchIndexesDeprecatedApiParams
-func (_e *AtlasSearchApi_Expecter) ListAtlasSearchIndexesDeprecatedWithParams(ctx interface{}, args interface{}) *AtlasSearchApi_ListAtlasSearchIndexesDeprecatedWithParams_Call {
+func (_e *AtlasSearchApi_Expecter) ListAtlasSearchIndexesDeprecatedWithParams(ctx any, args any) *AtlasSearchApi_ListAtlasSearchIndexesDeprecatedWithParams_Call {
 	return &AtlasSearchApi_ListAtlasSearchIndexesDeprecatedWithParams_Call{Call: _e.mock.On("ListAtlasSearchIndexesDeprecatedWithParams", ctx, args)}
 }
 
@@ -2242,7 +2242,7 @@ type AtlasSearchApi_ListAtlasSearchIndexesExecute_Call struct {
 
 // ListAtlasSearchIndexesExecute is a helper method to define mock.On call
 //   - r admin.ListAtlasSearchIndexesApiRequest
-func (_e *AtlasSearchApi_Expecter) ListAtlasSearchIndexesExecute(r interface{}) *AtlasSearchApi_ListAtlasSearchIndexesExecute_Call {
+func (_e *AtlasSearchApi_Expecter) ListAtlasSearchIndexesExecute(r any) *AtlasSearchApi_ListAtlasSearchIndexesExecute_Call {
 	return &AtlasSearchApi_ListAtlasSearchIndexesExecute_Call{Call: _e.mock.On("ListAtlasSearchIndexesExecute", r)}
 }
 
@@ -2289,7 +2289,7 @@ type AtlasSearchApi_ListAtlasSearchIndexesWithParams_Call struct {
 // ListAtlasSearchIndexesWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListAtlasSearchIndexesApiParams
-func (_e *AtlasSearchApi_Expecter) ListAtlasSearchIndexesWithParams(ctx interface{}, args interface{}) *AtlasSearchApi_ListAtlasSearchIndexesWithParams_Call {
+func (_e *AtlasSearchApi_Expecter) ListAtlasSearchIndexesWithParams(ctx any, args any) *AtlasSearchApi_ListAtlasSearchIndexesWithParams_Call {
 	return &AtlasSearchApi_ListAtlasSearchIndexesWithParams_Call{Call: _e.mock.On("ListAtlasSearchIndexesWithParams", ctx, args)}
 }
 
@@ -2338,7 +2338,7 @@ type AtlasSearchApi_UpdateAtlasSearchDeployment_Call struct {
 //   - groupId string
 //   - clusterName string
 //   - apiSearchDeploymentRequest *admin.ApiSearchDeploymentRequest
-func (_e *AtlasSearchApi_Expecter) UpdateAtlasSearchDeployment(ctx interface{}, groupId interface{}, clusterName interface{}, apiSearchDeploymentRequest interface{}) *AtlasSearchApi_UpdateAtlasSearchDeployment_Call {
+func (_e *AtlasSearchApi_Expecter) UpdateAtlasSearchDeployment(ctx any, groupId any, clusterName any, apiSearchDeploymentRequest any) *AtlasSearchApi_UpdateAtlasSearchDeployment_Call {
 	return &AtlasSearchApi_UpdateAtlasSearchDeployment_Call{Call: _e.mock.On("UpdateAtlasSearchDeployment", ctx, groupId, clusterName, apiSearchDeploymentRequest)}
 }
 
@@ -2405,7 +2405,7 @@ type AtlasSearchApi_UpdateAtlasSearchDeploymentExecute_Call struct {
 
 // UpdateAtlasSearchDeploymentExecute is a helper method to define mock.On call
 //   - r admin.UpdateAtlasSearchDeploymentApiRequest
-func (_e *AtlasSearchApi_Expecter) UpdateAtlasSearchDeploymentExecute(r interface{}) *AtlasSearchApi_UpdateAtlasSearchDeploymentExecute_Call {
+func (_e *AtlasSearchApi_Expecter) UpdateAtlasSearchDeploymentExecute(r any) *AtlasSearchApi_UpdateAtlasSearchDeploymentExecute_Call {
 	return &AtlasSearchApi_UpdateAtlasSearchDeploymentExecute_Call{Call: _e.mock.On("UpdateAtlasSearchDeploymentExecute", r)}
 }
 
@@ -2452,7 +2452,7 @@ type AtlasSearchApi_UpdateAtlasSearchDeploymentWithParams_Call struct {
 // UpdateAtlasSearchDeploymentWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.UpdateAtlasSearchDeploymentApiParams
-func (_e *AtlasSearchApi_Expecter) UpdateAtlasSearchDeploymentWithParams(ctx interface{}, args interface{}) *AtlasSearchApi_UpdateAtlasSearchDeploymentWithParams_Call {
+func (_e *AtlasSearchApi_Expecter) UpdateAtlasSearchDeploymentWithParams(ctx any, args any) *AtlasSearchApi_UpdateAtlasSearchDeploymentWithParams_Call {
 	return &AtlasSearchApi_UpdateAtlasSearchDeploymentWithParams_Call{Call: _e.mock.On("UpdateAtlasSearchDeploymentWithParams", ctx, args)}
 }
 
@@ -2502,7 +2502,7 @@ type AtlasSearchApi_UpdateAtlasSearchIndex_Call struct {
 //   - clusterName string
 //   - indexId string
 //   - searchIndexUpdateRequest *admin.SearchIndexUpdateRequest
-func (_e *AtlasSearchApi_Expecter) UpdateAtlasSearchIndex(ctx interface{}, groupId interface{}, clusterName interface{}, indexId interface{}, searchIndexUpdateRequest interface{}) *AtlasSearchApi_UpdateAtlasSearchIndex_Call {
+func (_e *AtlasSearchApi_Expecter) UpdateAtlasSearchIndex(ctx any, groupId any, clusterName any, indexId any, searchIndexUpdateRequest any) *AtlasSearchApi_UpdateAtlasSearchIndex_Call {
 	return &AtlasSearchApi_UpdateAtlasSearchIndex_Call{Call: _e.mock.On("UpdateAtlasSearchIndex", ctx, groupId, clusterName, indexId, searchIndexUpdateRequest)}
 }
 
@@ -2554,7 +2554,7 @@ type AtlasSearchApi_UpdateAtlasSearchIndexByName_Call struct {
 //   - databaseName string
 //   - indexName string
 //   - searchIndexUpdateRequest *admin.SearchIndexUpdateRequest
-func (_e *AtlasSearchApi_Expecter) UpdateAtlasSearchIndexByName(ctx interface{}, groupId interface{}, clusterName interface{}, collectionName interface{}, databaseName interface{}, indexName interface{}, searchIndexUpdateRequest interface{}) *AtlasSearchApi_UpdateAtlasSearchIndexByName_Call {
+func (_e *AtlasSearchApi_Expecter) UpdateAtlasSearchIndexByName(ctx any, groupId any, clusterName any, collectionName any, databaseName any, indexName any, searchIndexUpdateRequest any) *AtlasSearchApi_UpdateAtlasSearchIndexByName_Call {
 	return &AtlasSearchApi_UpdateAtlasSearchIndexByName_Call{Call: _e.mock.On("UpdateAtlasSearchIndexByName", ctx, groupId, clusterName, collectionName, databaseName, indexName, searchIndexUpdateRequest)}
 }
 
@@ -2621,7 +2621,7 @@ type AtlasSearchApi_UpdateAtlasSearchIndexByNameExecute_Call struct {
 
 // UpdateAtlasSearchIndexByNameExecute is a helper method to define mock.On call
 //   - r admin.UpdateAtlasSearchIndexByNameApiRequest
-func (_e *AtlasSearchApi_Expecter) UpdateAtlasSearchIndexByNameExecute(r interface{}) *AtlasSearchApi_UpdateAtlasSearchIndexByNameExecute_Call {
+func (_e *AtlasSearchApi_Expecter) UpdateAtlasSearchIndexByNameExecute(r any) *AtlasSearchApi_UpdateAtlasSearchIndexByNameExecute_Call {
 	return &AtlasSearchApi_UpdateAtlasSearchIndexByNameExecute_Call{Call: _e.mock.On("UpdateAtlasSearchIndexByNameExecute", r)}
 }
 
@@ -2668,7 +2668,7 @@ type AtlasSearchApi_UpdateAtlasSearchIndexByNameWithParams_Call struct {
 // UpdateAtlasSearchIndexByNameWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.UpdateAtlasSearchIndexByNameApiParams
-func (_e *AtlasSearchApi_Expecter) UpdateAtlasSearchIndexByNameWithParams(ctx interface{}, args interface{}) *AtlasSearchApi_UpdateAtlasSearchIndexByNameWithParams_Call {
+func (_e *AtlasSearchApi_Expecter) UpdateAtlasSearchIndexByNameWithParams(ctx any, args any) *AtlasSearchApi_UpdateAtlasSearchIndexByNameWithParams_Call {
 	return &AtlasSearchApi_UpdateAtlasSearchIndexByNameWithParams_Call{Call: _e.mock.On("UpdateAtlasSearchIndexByNameWithParams", ctx, args)}
 }
 
@@ -2718,7 +2718,7 @@ type AtlasSearchApi_UpdateAtlasSearchIndexDeprecated_Call struct {
 //   - clusterName string
 //   - indexId string
 //   - clusterSearchIndex *admin.ClusterSearchIndex
-func (_e *AtlasSearchApi_Expecter) UpdateAtlasSearchIndexDeprecated(ctx interface{}, groupId interface{}, clusterName interface{}, indexId interface{}, clusterSearchIndex interface{}) *AtlasSearchApi_UpdateAtlasSearchIndexDeprecated_Call {
+func (_e *AtlasSearchApi_Expecter) UpdateAtlasSearchIndexDeprecated(ctx any, groupId any, clusterName any, indexId any, clusterSearchIndex any) *AtlasSearchApi_UpdateAtlasSearchIndexDeprecated_Call {
 	return &AtlasSearchApi_UpdateAtlasSearchIndexDeprecated_Call{Call: _e.mock.On("UpdateAtlasSearchIndexDeprecated", ctx, groupId, clusterName, indexId, clusterSearchIndex)}
 }
 
@@ -2785,7 +2785,7 @@ type AtlasSearchApi_UpdateAtlasSearchIndexDeprecatedExecute_Call struct {
 
 // UpdateAtlasSearchIndexDeprecatedExecute is a helper method to define mock.On call
 //   - r admin.UpdateAtlasSearchIndexDeprecatedApiRequest
-func (_e *AtlasSearchApi_Expecter) UpdateAtlasSearchIndexDeprecatedExecute(r interface{}) *AtlasSearchApi_UpdateAtlasSearchIndexDeprecatedExecute_Call {
+func (_e *AtlasSearchApi_Expecter) UpdateAtlasSearchIndexDeprecatedExecute(r any) *AtlasSearchApi_UpdateAtlasSearchIndexDeprecatedExecute_Call {
 	return &AtlasSearchApi_UpdateAtlasSearchIndexDeprecatedExecute_Call{Call: _e.mock.On("UpdateAtlasSearchIndexDeprecatedExecute", r)}
 }
 
@@ -2832,7 +2832,7 @@ type AtlasSearchApi_UpdateAtlasSearchIndexDeprecatedWithParams_Call struct {
 // UpdateAtlasSearchIndexDeprecatedWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.UpdateAtlasSearchIndexDeprecatedApiParams
-func (_e *AtlasSearchApi_Expecter) UpdateAtlasSearchIndexDeprecatedWithParams(ctx interface{}, args interface{}) *AtlasSearchApi_UpdateAtlasSearchIndexDeprecatedWithParams_Call {
+func (_e *AtlasSearchApi_Expecter) UpdateAtlasSearchIndexDeprecatedWithParams(ctx any, args any) *AtlasSearchApi_UpdateAtlasSearchIndexDeprecatedWithParams_Call {
 	return &AtlasSearchApi_UpdateAtlasSearchIndexDeprecatedWithParams_Call{Call: _e.mock.On("UpdateAtlasSearchIndexDeprecatedWithParams", ctx, args)}
 }
 
@@ -2899,7 +2899,7 @@ type AtlasSearchApi_UpdateAtlasSearchIndexExecute_Call struct {
 
 // UpdateAtlasSearchIndexExecute is a helper method to define mock.On call
 //   - r admin.UpdateAtlasSearchIndexApiRequest
-func (_e *AtlasSearchApi_Expecter) UpdateAtlasSearchIndexExecute(r interface{}) *AtlasSearchApi_UpdateAtlasSearchIndexExecute_Call {
+func (_e *AtlasSearchApi_Expecter) UpdateAtlasSearchIndexExecute(r any) *AtlasSearchApi_UpdateAtlasSearchIndexExecute_Call {
 	return &AtlasSearchApi_UpdateAtlasSearchIndexExecute_Call{Call: _e.mock.On("UpdateAtlasSearchIndexExecute", r)}
 }
 
@@ -2946,7 +2946,7 @@ type AtlasSearchApi_UpdateAtlasSearchIndexWithParams_Call struct {
 // UpdateAtlasSearchIndexWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.UpdateAtlasSearchIndexApiParams
-func (_e *AtlasSearchApi_Expecter) UpdateAtlasSearchIndexWithParams(ctx interface{}, args interface{}) *AtlasSearchApi_UpdateAtlasSearchIndexWithParams_Call {
+func (_e *AtlasSearchApi_Expecter) UpdateAtlasSearchIndexWithParams(ctx any, args any) *AtlasSearchApi_UpdateAtlasSearchIndexWithParams_Call {
 	return &AtlasSearchApi_UpdateAtlasSearchIndexWithParams_Call{Call: _e.mock.On("UpdateAtlasSearchIndexWithParams", ctx, args)}
 }
 
