@@ -31,10 +31,6 @@ func PtrString(v string) *string { return &v }
 // PtrTime is helper routine that returns a pointer to given Time value.
 func PtrTime(v time.Time) *time.Time { return &v }
 
-type modelWithMap interface {
-	ToMap() (map[string]any, error)
-}
-
 // IsNil checks if an input is nil
 func IsNil(i any) bool {
 	if i == nil {

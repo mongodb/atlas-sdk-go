@@ -240,14 +240,6 @@ func parameterAddToHeaderOrQuery(headerOrQueryParams any, keyPrefix string, obj 
 			value = "invalid"
 
 		case reflect.Struct:
-			if t, ok := obj.(modelWithMap); ok {
-				dataMap, err := t.ToMap()
-				if err != nil {
-					return
-				}
-				parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefix, dataMap, collectionType)
-				return
-			}
 			if t, ok := obj.(time.Time); ok {
 				parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefix, t.Format(time.RFC3339), collectionType)
 				return
