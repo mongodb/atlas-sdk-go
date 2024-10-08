@@ -6,7 +6,7 @@ package admin
 type PerformanceAdvisorOperation struct {
 	// List that contains the search criteria that the query uses. To use the values in key-value pairs in these predicates requires **Project Data Access Read Only** permissions or greater. Otherwise, MongoDB Cloud redacts these values.
 	// Read only field.
-	Predicates *[]interface{}             `json:"predicates,omitempty"`
+	Predicates *[]any                     `json:"predicates,omitempty"`
 	Stats      *PerformanceAdvisorOpStats `json:"stats,omitempty"`
 }
 
@@ -28,9 +28,9 @@ func NewPerformanceAdvisorOperationWithDefaults() *PerformanceAdvisorOperation {
 }
 
 // GetPredicates returns the Predicates field value if set, zero value otherwise
-func (o *PerformanceAdvisorOperation) GetPredicates() []interface{} {
+func (o *PerformanceAdvisorOperation) GetPredicates() []any {
 	if o == nil || IsNil(o.Predicates) {
-		var ret []interface{}
+		var ret []any
 		return ret
 	}
 	return *o.Predicates
@@ -38,7 +38,7 @@ func (o *PerformanceAdvisorOperation) GetPredicates() []interface{} {
 
 // GetPredicatesOk returns a tuple with the Predicates field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PerformanceAdvisorOperation) GetPredicatesOk() (*[]interface{}, bool) {
+func (o *PerformanceAdvisorOperation) GetPredicatesOk() (*[]any, bool) {
 	if o == nil || IsNil(o.Predicates) {
 		return nil, false
 	}
@@ -55,8 +55,8 @@ func (o *PerformanceAdvisorOperation) HasPredicates() bool {
 	return false
 }
 
-// SetPredicates gets a reference to the given []interface{} and assigns it to the Predicates field.
-func (o *PerformanceAdvisorOperation) SetPredicates(v []interface{}) {
+// SetPredicates gets a reference to the given []any and assigns it to the Predicates field.
+func (o *PerformanceAdvisorOperation) SetPredicates(v []any) {
 	o.Predicates = &v
 }
 

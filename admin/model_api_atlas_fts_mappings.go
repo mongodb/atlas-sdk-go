@@ -7,7 +7,7 @@ type ApiAtlasFTSMappings struct {
 	// Flag that indicates whether the index uses dynamic or static mappings. Required if **mappings.fields** is omitted.
 	Dynamic *bool `json:"dynamic,omitempty"`
 	// One or more field specifications for the Atlas Search index. Required if **mappings.dynamic** is omitted or set to **false**.
-	Fields interface{} `json:"fields,omitempty"`
+	Fields any `json:"fields,omitempty"`
 }
 
 // NewApiAtlasFTSMappings instantiates a new ApiAtlasFTSMappings object
@@ -65,9 +65,9 @@ func (o *ApiAtlasFTSMappings) SetDynamic(v bool) {
 }
 
 // GetFields returns the Fields field value if set, zero value otherwise
-func (o *ApiAtlasFTSMappings) GetFields() interface{} {
+func (o *ApiAtlasFTSMappings) GetFields() any {
 	if o == nil || IsNil(o.Fields) {
-		var ret interface{}
+		var ret any
 		return ret
 	}
 	return o.Fields
@@ -75,9 +75,9 @@ func (o *ApiAtlasFTSMappings) GetFields() interface{} {
 
 // GetFieldsOk returns a tuple with the Fields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApiAtlasFTSMappings) GetFieldsOk() (interface{}, bool) {
+func (o *ApiAtlasFTSMappings) GetFieldsOk() (any, bool) {
 	if o == nil || IsNil(o.Fields) {
-		var ret interface{}
+		var ret any
 		return ret, false
 	}
 
@@ -93,7 +93,7 @@ func (o *ApiAtlasFTSMappings) HasFields() bool {
 	return false
 }
 
-// SetFields gets a reference to the given interface{} and assigns it to the Fields field.
-func (o *ApiAtlasFTSMappings) SetFields(v interface{}) {
+// SetFields gets a reference to the given any and assigns it to the Fields field.
+func (o *ApiAtlasFTSMappings) SetFields(v any) {
 	o.Fields = v
 }

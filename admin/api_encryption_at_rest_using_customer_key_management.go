@@ -134,7 +134,7 @@ type EncryptionAtRestUsingCustomerKeyManagementApi interface {
 	RequestEncryptionAtRestPrivateEndpointDeletionWithParams(ctx context.Context, args *RequestEncryptionAtRestPrivateEndpointDeletionApiParams) RequestEncryptionAtRestPrivateEndpointDeletionApiRequest
 
 	// Method available only for mocking purposes
-	RequestEncryptionAtRestPrivateEndpointDeletionExecute(r RequestEncryptionAtRestPrivateEndpointDeletionApiRequest) (interface{}, *http.Response, error)
+	RequestEncryptionAtRestPrivateEndpointDeletionExecute(r RequestEncryptionAtRestPrivateEndpointDeletionApiRequest) (any, *http.Response, error)
 
 	/*
 			UpdateEncryptionAtRest Update Configuration for Encryption at Rest using Customer-Managed Keys for One Project
@@ -717,7 +717,7 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) RequestEncryption
 	}
 }
 
-func (r RequestEncryptionAtRestPrivateEndpointDeletionApiRequest) Execute() (interface{}, *http.Response, error) {
+func (r RequestEncryptionAtRestPrivateEndpointDeletionApiRequest) Execute() (any, *http.Response, error) {
 	return r.ApiService.RequestEncryptionAtRestPrivateEndpointDeletionExecute(r)
 }
 
@@ -744,13 +744,13 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) RequestEncryption
 
 // RequestEncryptionAtRestPrivateEndpointDeletionExecute executes the request
 //
-//	@return interface{}
-func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) RequestEncryptionAtRestPrivateEndpointDeletionExecute(r RequestEncryptionAtRestPrivateEndpointDeletionApiRequest) (interface{}, *http.Response, error) {
+//	@return any
+func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) RequestEncryptionAtRestPrivateEndpointDeletionExecute(r RequestEncryptionAtRestPrivateEndpointDeletionApiRequest) (any, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue interface{}
+		localVarReturnValue any
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EncryptionAtRestUsingCustomerKeyManagementApiService.RequestEncryptionAtRestPrivateEndpointDeletion")

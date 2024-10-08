@@ -126,7 +126,7 @@ type DataFederationApi interface {
 	DeleteDataFederationPrivateEndpointWithParams(ctx context.Context, args *DeleteDataFederationPrivateEndpointApiParams) DeleteDataFederationPrivateEndpointApiRequest
 
 	// Method available only for mocking purposes
-	DeleteDataFederationPrivateEndpointExecute(r DeleteDataFederationPrivateEndpointApiRequest) (interface{}, *http.Response, error)
+	DeleteDataFederationPrivateEndpointExecute(r DeleteDataFederationPrivateEndpointApiRequest) (any, *http.Response, error)
 
 	/*
 		DeleteFederatedDatabase Remove One Federated Database Instance from One Project
@@ -150,7 +150,7 @@ type DataFederationApi interface {
 	DeleteFederatedDatabaseWithParams(ctx context.Context, args *DeleteFederatedDatabaseApiParams) DeleteFederatedDatabaseApiRequest
 
 	// Method available only for mocking purposes
-	DeleteFederatedDatabaseExecute(r DeleteFederatedDatabaseApiRequest) (interface{}, *http.Response, error)
+	DeleteFederatedDatabaseExecute(r DeleteFederatedDatabaseApiRequest) (any, *http.Response, error)
 
 	/*
 		DeleteOneDataFederationInstanceQueryLimit Delete One Query Limit For One Federated Database Instance
@@ -175,7 +175,7 @@ type DataFederationApi interface {
 	DeleteOneDataFederationInstanceQueryLimitWithParams(ctx context.Context, args *DeleteOneDataFederationInstanceQueryLimitApiParams) DeleteOneDataFederationInstanceQueryLimitApiRequest
 
 	// Method available only for mocking purposes
-	DeleteOneDataFederationInstanceQueryLimitExecute(r DeleteOneDataFederationInstanceQueryLimitApiRequest) (interface{}, *http.Response, error)
+	DeleteOneDataFederationInstanceQueryLimitExecute(r DeleteOneDataFederationInstanceQueryLimitApiRequest) (any, *http.Response, error)
 
 	/*
 		DownloadFederatedDatabaseQueryLogs Download Query Logs for One Federated Database Instance
@@ -800,7 +800,7 @@ func (a *DataFederationApiService) DeleteDataFederationPrivateEndpointWithParams
 	}
 }
 
-func (r DeleteDataFederationPrivateEndpointApiRequest) Execute() (interface{}, *http.Response, error) {
+func (r DeleteDataFederationPrivateEndpointApiRequest) Execute() (any, *http.Response, error) {
 	return r.ApiService.DeleteDataFederationPrivateEndpointExecute(r)
 }
 
@@ -825,13 +825,13 @@ func (a *DataFederationApiService) DeleteDataFederationPrivateEndpoint(ctx conte
 
 // DeleteDataFederationPrivateEndpointExecute executes the request
 //
-//	@return interface{}
-func (a *DataFederationApiService) DeleteDataFederationPrivateEndpointExecute(r DeleteDataFederationPrivateEndpointApiRequest) (interface{}, *http.Response, error) {
+//	@return any
+func (a *DataFederationApiService) DeleteDataFederationPrivateEndpointExecute(r DeleteDataFederationPrivateEndpointApiRequest) (any, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue interface{}
+		localVarReturnValue any
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataFederationApiService.DeleteDataFederationPrivateEndpoint")
@@ -917,7 +917,7 @@ func (a *DataFederationApiService) DeleteFederatedDatabaseWithParams(ctx context
 	}
 }
 
-func (r DeleteFederatedDatabaseApiRequest) Execute() (interface{}, *http.Response, error) {
+func (r DeleteFederatedDatabaseApiRequest) Execute() (any, *http.Response, error) {
 	return r.ApiService.DeleteFederatedDatabaseExecute(r)
 }
 
@@ -942,13 +942,13 @@ func (a *DataFederationApiService) DeleteFederatedDatabase(ctx context.Context, 
 
 // DeleteFederatedDatabaseExecute executes the request
 //
-//	@return interface{}
-func (a *DataFederationApiService) DeleteFederatedDatabaseExecute(r DeleteFederatedDatabaseApiRequest) (interface{}, *http.Response, error) {
+//	@return any
+func (a *DataFederationApiService) DeleteFederatedDatabaseExecute(r DeleteFederatedDatabaseApiRequest) (any, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue interface{}
+		localVarReturnValue any
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataFederationApiService.DeleteFederatedDatabase")
@@ -1037,7 +1037,7 @@ func (a *DataFederationApiService) DeleteOneDataFederationInstanceQueryLimitWith
 	}
 }
 
-func (r DeleteOneDataFederationInstanceQueryLimitApiRequest) Execute() (interface{}, *http.Response, error) {
+func (r DeleteOneDataFederationInstanceQueryLimitApiRequest) Execute() (any, *http.Response, error) {
 	return r.ApiService.DeleteOneDataFederationInstanceQueryLimitExecute(r)
 }
 
@@ -1064,13 +1064,13 @@ func (a *DataFederationApiService) DeleteOneDataFederationInstanceQueryLimit(ctx
 
 // DeleteOneDataFederationInstanceQueryLimitExecute executes the request
 //
-//	@return interface{}
-func (a *DataFederationApiService) DeleteOneDataFederationInstanceQueryLimitExecute(r DeleteOneDataFederationInstanceQueryLimitApiRequest) (interface{}, *http.Response, error) {
+//	@return any
+func (a *DataFederationApiService) DeleteOneDataFederationInstanceQueryLimitExecute(r DeleteOneDataFederationInstanceQueryLimitApiRequest) (any, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue interface{}
+		localVarReturnValue any
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataFederationApiService.DeleteOneDataFederationInstanceQueryLimit")

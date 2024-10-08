@@ -350,7 +350,7 @@ type FederatedAuthenticationApi interface {
 	RemoveConnectedOrgConfigWithParams(ctx context.Context, args *RemoveConnectedOrgConfigApiParams) RemoveConnectedOrgConfigApiRequest
 
 	// Method available only for mocking purposes
-	RemoveConnectedOrgConfigExecute(r RemoveConnectedOrgConfigApiRequest) (interface{}, *http.Response, error)
+	RemoveConnectedOrgConfigExecute(r RemoveConnectedOrgConfigApiRequest) (any, *http.Response, error)
 
 	/*
 			RevokeJwksFromIdentityProvider Revoke the JWKS from One OIDC Identity Provider
@@ -2059,7 +2059,7 @@ func (a *FederatedAuthenticationApiService) RemoveConnectedOrgConfigWithParams(c
 	}
 }
 
-func (r RemoveConnectedOrgConfigApiRequest) Execute() (interface{}, *http.Response, error) {
+func (r RemoveConnectedOrgConfigApiRequest) Execute() (any, *http.Response, error) {
 	return r.ApiService.RemoveConnectedOrgConfigExecute(r)
 }
 
@@ -2084,13 +2084,13 @@ func (a *FederatedAuthenticationApiService) RemoveConnectedOrgConfig(ctx context
 
 // RemoveConnectedOrgConfigExecute executes the request
 //
-//	@return interface{}
-func (a *FederatedAuthenticationApiService) RemoveConnectedOrgConfigExecute(r RemoveConnectedOrgConfigApiRequest) (interface{}, *http.Response, error) {
+//	@return any
+func (a *FederatedAuthenticationApiService) RemoveConnectedOrgConfigExecute(r RemoveConnectedOrgConfigApiRequest) (any, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue interface{}
+		localVarReturnValue any
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationApiService.RemoveConnectedOrgConfig")

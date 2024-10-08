@@ -59,7 +59,7 @@ type ThirdPartyIntegrationsApi interface {
 	DeleteThirdPartyIntegrationWithParams(ctx context.Context, args *DeleteThirdPartyIntegrationApiParams) DeleteThirdPartyIntegrationApiRequest
 
 	// Method available only for mocking purposes
-	DeleteThirdPartyIntegrationExecute(r DeleteThirdPartyIntegrationApiRequest) (interface{}, *http.Response, error)
+	DeleteThirdPartyIntegrationExecute(r DeleteThirdPartyIntegrationApiRequest) (any, *http.Response, error)
 
 	/*
 		GetThirdPartyIntegration Return One Third-Party Service Integration
@@ -332,7 +332,7 @@ func (a *ThirdPartyIntegrationsApiService) DeleteThirdPartyIntegrationWithParams
 	}
 }
 
-func (r DeleteThirdPartyIntegrationApiRequest) Execute() (interface{}, *http.Response, error) {
+func (r DeleteThirdPartyIntegrationApiRequest) Execute() (any, *http.Response, error) {
 	return r.ApiService.DeleteThirdPartyIntegrationExecute(r)
 }
 
@@ -357,13 +357,13 @@ func (a *ThirdPartyIntegrationsApiService) DeleteThirdPartyIntegration(ctx conte
 
 // DeleteThirdPartyIntegrationExecute executes the request
 //
-//	@return interface{}
-func (a *ThirdPartyIntegrationsApiService) DeleteThirdPartyIntegrationExecute(r DeleteThirdPartyIntegrationApiRequest) (interface{}, *http.Response, error) {
+//	@return any
+func (a *ThirdPartyIntegrationsApiService) DeleteThirdPartyIntegrationExecute(r DeleteThirdPartyIntegrationApiRequest) (any, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue interface{}
+		localVarReturnValue any
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ThirdPartyIntegrationsApiService.DeleteThirdPartyIntegration")

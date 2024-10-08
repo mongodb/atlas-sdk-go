@@ -180,7 +180,7 @@ type ClustersApi interface {
 	GrantMongoDBEmployeeAccessWithParams(ctx context.Context, args *GrantMongoDBEmployeeAccessApiParams) GrantMongoDBEmployeeAccessApiRequest
 
 	// Method available only for mocking purposes
-	GrantMongoDBEmployeeAccessExecute(r GrantMongoDBEmployeeAccessApiRequest) (interface{}, *http.Response, error)
+	GrantMongoDBEmployeeAccessExecute(r GrantMongoDBEmployeeAccessApiRequest) (any, *http.Response, error)
 
 	/*
 		ListCloudProviderRegions Return All Cloud Provider Regions
@@ -297,7 +297,7 @@ type ClustersApi interface {
 	PinFeatureCompatibilityVersionWithParams(ctx context.Context, args *PinFeatureCompatibilityVersionApiParams) PinFeatureCompatibilityVersionApiRequest
 
 	// Method available only for mocking purposes
-	PinFeatureCompatibilityVersionExecute(r PinFeatureCompatibilityVersionApiRequest) (interface{}, *http.Response, error)
+	PinFeatureCompatibilityVersionExecute(r PinFeatureCompatibilityVersionApiRequest) (any, *http.Response, error)
 
 	/*
 		RevokeMongoDBEmployeeAccess Revoke granted MongoDB employee cluster access for one cluster.
@@ -321,7 +321,7 @@ type ClustersApi interface {
 	RevokeMongoDBEmployeeAccessWithParams(ctx context.Context, args *RevokeMongoDBEmployeeAccessApiParams) RevokeMongoDBEmployeeAccessApiRequest
 
 	// Method available only for mocking purposes
-	RevokeMongoDBEmployeeAccessExecute(r RevokeMongoDBEmployeeAccessApiRequest) (interface{}, *http.Response, error)
+	RevokeMongoDBEmployeeAccessExecute(r RevokeMongoDBEmployeeAccessApiRequest) (any, *http.Response, error)
 
 	/*
 		TestFailover Test Failover for One Cluster
@@ -369,7 +369,7 @@ type ClustersApi interface {
 	UnpinFeatureCompatibilityVersionWithParams(ctx context.Context, args *UnpinFeatureCompatibilityVersionApiParams) UnpinFeatureCompatibilityVersionApiRequest
 
 	// Method available only for mocking purposes
-	UnpinFeatureCompatibilityVersionExecute(r UnpinFeatureCompatibilityVersionApiRequest) (interface{}, *http.Response, error)
+	UnpinFeatureCompatibilityVersionExecute(r UnpinFeatureCompatibilityVersionApiRequest) (any, *http.Response, error)
 
 	/*
 		UpdateCluster Modify One Cluster from One Project
@@ -1197,7 +1197,7 @@ func (a *ClustersApiService) GrantMongoDBEmployeeAccessWithParams(ctx context.Co
 	}
 }
 
-func (r GrantMongoDBEmployeeAccessApiRequest) Execute() (interface{}, *http.Response, error) {
+func (r GrantMongoDBEmployeeAccessApiRequest) Execute() (any, *http.Response, error) {
 	return r.ApiService.GrantMongoDBEmployeeAccessExecute(r)
 }
 
@@ -1223,13 +1223,13 @@ func (a *ClustersApiService) GrantMongoDBEmployeeAccess(ctx context.Context, gro
 
 // GrantMongoDBEmployeeAccessExecute executes the request
 //
-//	@return interface{}
-func (a *ClustersApiService) GrantMongoDBEmployeeAccessExecute(r GrantMongoDBEmployeeAccessApiRequest) (interface{}, *http.Response, error) {
+//	@return any
+func (a *ClustersApiService) GrantMongoDBEmployeeAccessExecute(r GrantMongoDBEmployeeAccessApiRequest) (any, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue interface{}
+		localVarReturnValue any
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.GrantMongoDBEmployeeAccess")
@@ -1955,7 +1955,7 @@ func (a *ClustersApiService) PinFeatureCompatibilityVersionWithParams(ctx contex
 	}
 }
 
-func (r PinFeatureCompatibilityVersionApiRequest) Execute() (interface{}, *http.Response, error) {
+func (r PinFeatureCompatibilityVersionApiRequest) Execute() (any, *http.Response, error) {
 	return r.ApiService.PinFeatureCompatibilityVersionExecute(r)
 }
 
@@ -1981,13 +1981,13 @@ func (a *ClustersApiService) PinFeatureCompatibilityVersion(ctx context.Context,
 
 // PinFeatureCompatibilityVersionExecute executes the request
 //
-//	@return interface{}
-func (a *ClustersApiService) PinFeatureCompatibilityVersionExecute(r PinFeatureCompatibilityVersionApiRequest) (interface{}, *http.Response, error) {
+//	@return any
+func (a *ClustersApiService) PinFeatureCompatibilityVersionExecute(r PinFeatureCompatibilityVersionApiRequest) (any, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue interface{}
+		localVarReturnValue any
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.PinFeatureCompatibilityVersion")
@@ -2075,7 +2075,7 @@ func (a *ClustersApiService) RevokeMongoDBEmployeeAccessWithParams(ctx context.C
 	}
 }
 
-func (r RevokeMongoDBEmployeeAccessApiRequest) Execute() (interface{}, *http.Response, error) {
+func (r RevokeMongoDBEmployeeAccessApiRequest) Execute() (any, *http.Response, error) {
 	return r.ApiService.RevokeMongoDBEmployeeAccessExecute(r)
 }
 
@@ -2100,13 +2100,13 @@ func (a *ClustersApiService) RevokeMongoDBEmployeeAccess(ctx context.Context, gr
 
 // RevokeMongoDBEmployeeAccessExecute executes the request
 //
-//	@return interface{}
-func (a *ClustersApiService) RevokeMongoDBEmployeeAccessExecute(r RevokeMongoDBEmployeeAccessApiRequest) (interface{}, *http.Response, error) {
+//	@return any
+func (a *ClustersApiService) RevokeMongoDBEmployeeAccessExecute(r RevokeMongoDBEmployeeAccessApiRequest) (any, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue interface{}
+		localVarReturnValue any
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.RevokeMongoDBEmployeeAccess")
@@ -2292,7 +2292,7 @@ func (a *ClustersApiService) UnpinFeatureCompatibilityVersionWithParams(ctx cont
 	}
 }
 
-func (r UnpinFeatureCompatibilityVersionApiRequest) Execute() (interface{}, *http.Response, error) {
+func (r UnpinFeatureCompatibilityVersionApiRequest) Execute() (any, *http.Response, error) {
 	return r.ApiService.UnpinFeatureCompatibilityVersionExecute(r)
 }
 
@@ -2317,13 +2317,13 @@ func (a *ClustersApiService) UnpinFeatureCompatibilityVersion(ctx context.Contex
 
 // UnpinFeatureCompatibilityVersionExecute executes the request
 //
-//	@return interface{}
-func (a *ClustersApiService) UnpinFeatureCompatibilityVersionExecute(r UnpinFeatureCompatibilityVersionApiRequest) (interface{}, *http.Response, error) {
+//	@return any
+func (a *ClustersApiService) UnpinFeatureCompatibilityVersionExecute(r UnpinFeatureCompatibilityVersionApiRequest) (any, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue interface{}
+		localVarReturnValue any
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.UnpinFeatureCompatibilityVersion")

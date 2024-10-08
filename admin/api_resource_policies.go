@@ -58,7 +58,7 @@ type ResourcePoliciesApi interface {
 	DeleteAtlasResourcePolicyWithParams(ctx context.Context, args *DeleteAtlasResourcePolicyApiParams) DeleteAtlasResourcePolicyApiRequest
 
 	// Method available only for mocking purposes
-	DeleteAtlasResourcePolicyExecute(r DeleteAtlasResourcePolicyApiRequest) (interface{}, *http.Response, error)
+	DeleteAtlasResourcePolicyExecute(r DeleteAtlasResourcePolicyApiRequest) (any, *http.Response, error)
 
 	/*
 		GetAtlasResourcePolicies Return all Atlas Resource Policies
@@ -324,7 +324,7 @@ func (a *ResourcePoliciesApiService) DeleteAtlasResourcePolicyWithParams(ctx con
 	}
 }
 
-func (r DeleteAtlasResourcePolicyApiRequest) Execute() (interface{}, *http.Response, error) {
+func (r DeleteAtlasResourcePolicyApiRequest) Execute() (any, *http.Response, error) {
 	return r.ApiService.DeleteAtlasResourcePolicyExecute(r)
 }
 
@@ -349,13 +349,13 @@ func (a *ResourcePoliciesApiService) DeleteAtlasResourcePolicy(ctx context.Conte
 
 // DeleteAtlasResourcePolicyExecute executes the request
 //
-//	@return interface{}
-func (a *ResourcePoliciesApiService) DeleteAtlasResourcePolicyExecute(r DeleteAtlasResourcePolicyApiRequest) (interface{}, *http.Response, error) {
+//	@return any
+func (a *ResourcePoliciesApiService) DeleteAtlasResourcePolicyExecute(r DeleteAtlasResourcePolicyApiRequest) (any, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue interface{}
+		localVarReturnValue any
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ResourcePoliciesApiService.DeleteAtlasResourcePolicy")

@@ -14,7 +14,7 @@ type StreamsProcessor struct {
 	Name    *string         `json:"name,omitempty"`
 	Options *StreamsOptions `json:"options,omitempty"`
 	// Stream aggregation pipeline you want to apply to your streaming data.
-	Pipeline *[]interface{} `json:"pipeline,omitempty"`
+	Pipeline *[]any `json:"pipeline,omitempty"`
 }
 
 // NewStreamsProcessor instantiates a new StreamsProcessor object
@@ -167,9 +167,9 @@ func (o *StreamsProcessor) SetOptions(v StreamsOptions) {
 }
 
 // GetPipeline returns the Pipeline field value if set, zero value otherwise
-func (o *StreamsProcessor) GetPipeline() []interface{} {
+func (o *StreamsProcessor) GetPipeline() []any {
 	if o == nil || IsNil(o.Pipeline) {
-		var ret []interface{}
+		var ret []any
 		return ret
 	}
 	return *o.Pipeline
@@ -177,7 +177,7 @@ func (o *StreamsProcessor) GetPipeline() []interface{} {
 
 // GetPipelineOk returns a tuple with the Pipeline field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StreamsProcessor) GetPipelineOk() (*[]interface{}, bool) {
+func (o *StreamsProcessor) GetPipelineOk() (*[]any, bool) {
 	if o == nil || IsNil(o.Pipeline) {
 		return nil, false
 	}
@@ -194,7 +194,7 @@ func (o *StreamsProcessor) HasPipeline() bool {
 	return false
 }
 
-// SetPipeline gets a reference to the given []interface{} and assigns it to the Pipeline field.
-func (o *StreamsProcessor) SetPipeline(v []interface{}) {
+// SetPipeline gets a reference to the given []any and assigns it to the Pipeline field.
+func (o *StreamsProcessor) SetPipeline(v []any) {
 	o.Pipeline = &v
 }

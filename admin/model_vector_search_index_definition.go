@@ -5,7 +5,7 @@ package admin
 // VectorSearchIndexDefinition The vector search index definition set by the user.
 type VectorSearchIndexDefinition struct {
 	// Settings that configure the fields, one per object, to index. You must define at least one \"vector\" type field. You can optionally define \"filter\" type fields also.
-	Fields *[]interface{} `json:"fields,omitempty"`
+	Fields *[]any `json:"fields,omitempty"`
 }
 
 // NewVectorSearchIndexDefinition instantiates a new VectorSearchIndexDefinition object
@@ -26,9 +26,9 @@ func NewVectorSearchIndexDefinitionWithDefaults() *VectorSearchIndexDefinition {
 }
 
 // GetFields returns the Fields field value if set, zero value otherwise
-func (o *VectorSearchIndexDefinition) GetFields() []interface{} {
+func (o *VectorSearchIndexDefinition) GetFields() []any {
 	if o == nil || IsNil(o.Fields) {
-		var ret []interface{}
+		var ret []any
 		return ret
 	}
 	return *o.Fields
@@ -36,7 +36,7 @@ func (o *VectorSearchIndexDefinition) GetFields() []interface{} {
 
 // GetFieldsOk returns a tuple with the Fields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VectorSearchIndexDefinition) GetFieldsOk() (*[]interface{}, bool) {
+func (o *VectorSearchIndexDefinition) GetFieldsOk() (*[]any, bool) {
 	if o == nil || IsNil(o.Fields) {
 		return nil, false
 	}
@@ -53,7 +53,7 @@ func (o *VectorSearchIndexDefinition) HasFields() bool {
 	return false
 }
 
-// SetFields gets a reference to the given []interface{} and assigns it to the Fields field.
-func (o *VectorSearchIndexDefinition) SetFields(v []interface{}) {
+// SetFields gets a reference to the given []any and assigns it to the Fields field.
+func (o *VectorSearchIndexDefinition) SetFields(v []any) {
 	o.Fields = &v
 }

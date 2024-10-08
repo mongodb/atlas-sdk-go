@@ -86,7 +86,7 @@ type PrivateEndpointServicesApi interface {
 	DeletePrivateEndpointWithParams(ctx context.Context, args *DeletePrivateEndpointApiParams) DeletePrivateEndpointApiRequest
 
 	// Method available only for mocking purposes
-	DeletePrivateEndpointExecute(r DeletePrivateEndpointApiRequest) (interface{}, *http.Response, error)
+	DeletePrivateEndpointExecute(r DeletePrivateEndpointApiRequest) (any, *http.Response, error)
 
 	/*
 		DeletePrivateEndpointService Remove One Private Endpoint Service for One Provider
@@ -111,7 +111,7 @@ type PrivateEndpointServicesApi interface {
 	DeletePrivateEndpointServiceWithParams(ctx context.Context, args *DeletePrivateEndpointServiceApiParams) DeletePrivateEndpointServiceApiRequest
 
 	// Method available only for mocking purposes
-	DeletePrivateEndpointServiceExecute(r DeletePrivateEndpointServiceApiRequest) (interface{}, *http.Response, error)
+	DeletePrivateEndpointServiceExecute(r DeletePrivateEndpointServiceApiRequest) (any, *http.Response, error)
 
 	/*
 		GetPrivateEndpoint Return One Private Endpoint for One Provider
@@ -518,7 +518,7 @@ func (a *PrivateEndpointServicesApiService) DeletePrivateEndpointWithParams(ctx 
 	}
 }
 
-func (r DeletePrivateEndpointApiRequest) Execute() (interface{}, *http.Response, error) {
+func (r DeletePrivateEndpointApiRequest) Execute() (any, *http.Response, error) {
 	return r.ApiService.DeletePrivateEndpointExecute(r)
 }
 
@@ -547,13 +547,13 @@ func (a *PrivateEndpointServicesApiService) DeletePrivateEndpoint(ctx context.Co
 
 // DeletePrivateEndpointExecute executes the request
 //
-//	@return interface{}
-func (a *PrivateEndpointServicesApiService) DeletePrivateEndpointExecute(r DeletePrivateEndpointApiRequest) (interface{}, *http.Response, error) {
+//	@return any
+func (a *PrivateEndpointServicesApiService) DeletePrivateEndpointExecute(r DeletePrivateEndpointApiRequest) (any, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue interface{}
+		localVarReturnValue any
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PrivateEndpointServicesApiService.DeletePrivateEndpoint")
@@ -644,7 +644,7 @@ func (a *PrivateEndpointServicesApiService) DeletePrivateEndpointServiceWithPara
 	}
 }
 
-func (r DeletePrivateEndpointServiceApiRequest) Execute() (interface{}, *http.Response, error) {
+func (r DeletePrivateEndpointServiceApiRequest) Execute() (any, *http.Response, error) {
 	return r.ApiService.DeletePrivateEndpointServiceExecute(r)
 }
 
@@ -671,13 +671,13 @@ func (a *PrivateEndpointServicesApiService) DeletePrivateEndpointService(ctx con
 
 // DeletePrivateEndpointServiceExecute executes the request
 //
-//	@return interface{}
-func (a *PrivateEndpointServicesApiService) DeletePrivateEndpointServiceExecute(r DeletePrivateEndpointServiceApiRequest) (interface{}, *http.Response, error) {
+//	@return any
+func (a *PrivateEndpointServicesApiService) DeletePrivateEndpointServiceExecute(r DeletePrivateEndpointServiceApiRequest) (any, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue interface{}
+		localVarReturnValue any
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PrivateEndpointServicesApiService.DeletePrivateEndpointService")

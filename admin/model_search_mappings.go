@@ -7,7 +7,7 @@ type SearchMappings struct {
 	// Flag that indicates whether the index uses dynamic or static mappings. Required if **mappings.fields** is omitted.
 	Dynamic *bool `json:"dynamic,omitempty"`
 	// One or more field specifications for the Atlas Search index. Required if **mappings.dynamic** is omitted or set to **false**.
-	Fields interface{} `json:"fields,omitempty"`
+	Fields any `json:"fields,omitempty"`
 }
 
 // NewSearchMappings instantiates a new SearchMappings object
@@ -61,9 +61,9 @@ func (o *SearchMappings) SetDynamic(v bool) {
 }
 
 // GetFields returns the Fields field value if set, zero value otherwise
-func (o *SearchMappings) GetFields() interface{} {
+func (o *SearchMappings) GetFields() any {
 	if o == nil || IsNil(o.Fields) {
-		var ret interface{}
+		var ret any
 		return ret
 	}
 	return o.Fields
@@ -71,9 +71,9 @@ func (o *SearchMappings) GetFields() interface{} {
 
 // GetFieldsOk returns a tuple with the Fields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SearchMappings) GetFieldsOk() (interface{}, bool) {
+func (o *SearchMappings) GetFieldsOk() (any, bool) {
 	if o == nil || IsNil(o.Fields) {
-		var ret interface{}
+		var ret any
 		return ret, false
 	}
 
@@ -89,7 +89,7 @@ func (o *SearchMappings) HasFields() bool {
 	return false
 }
 
-// SetFields gets a reference to the given interface{} and assigns it to the Fields field.
-func (o *SearchMappings) SetFields(v interface{}) {
+// SetFields gets a reference to the given any and assigns it to the Fields field.
+func (o *SearchMappings) SetFields(v any) {
 	o.Fields = v
 }

@@ -111,7 +111,7 @@ type CloudMigrationServiceApi interface {
 	DeleteLinkTokenWithParams(ctx context.Context, args *DeleteLinkTokenApiParams) DeleteLinkTokenApiRequest
 
 	// Method available only for mocking purposes
-	DeleteLinkTokenExecute(r DeleteLinkTokenApiRequest) (interface{}, *http.Response, error)
+	DeleteLinkTokenExecute(r DeleteLinkTokenApiRequest) (any, *http.Response, error)
 
 	/*
 		GetPushMigration Return One Migration Job
@@ -576,7 +576,7 @@ func (a *CloudMigrationServiceApiService) DeleteLinkTokenWithParams(ctx context.
 	}
 }
 
-func (r DeleteLinkTokenApiRequest) Execute() (interface{}, *http.Response, error) {
+func (r DeleteLinkTokenApiRequest) Execute() (any, *http.Response, error) {
 	return r.ApiService.DeleteLinkTokenExecute(r)
 }
 
@@ -599,13 +599,13 @@ func (a *CloudMigrationServiceApiService) DeleteLinkToken(ctx context.Context, o
 
 // DeleteLinkTokenExecute executes the request
 //
-//	@return interface{}
-func (a *CloudMigrationServiceApiService) DeleteLinkTokenExecute(r DeleteLinkTokenApiRequest) (interface{}, *http.Response, error) {
+//	@return any
+func (a *CloudMigrationServiceApiService) DeleteLinkTokenExecute(r DeleteLinkTokenApiRequest) (any, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue interface{}
+		localVarReturnValue any
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudMigrationServiceApiService.DeleteLinkToken")

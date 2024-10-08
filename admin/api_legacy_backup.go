@@ -68,7 +68,7 @@ type LegacyBackupApi interface {
 	DeleteLegacySnapshotWithParams(ctx context.Context, args *DeleteLegacySnapshotApiParams) DeleteLegacySnapshotApiRequest
 
 	// Method available only for mocking purposes
-	DeleteLegacySnapshotExecute(r DeleteLegacySnapshotApiRequest) (interface{}, *http.Response, error)
+	DeleteLegacySnapshotExecute(r DeleteLegacySnapshotApiRequest) (any, *http.Response, error)
 
 	/*
 		GetLegacyBackupCheckpoint Return One Legacy Backup Checkpoint
@@ -494,7 +494,7 @@ func (a *LegacyBackupApiService) DeleteLegacySnapshotWithParams(ctx context.Cont
 	}
 }
 
-func (r DeleteLegacySnapshotApiRequest) Execute() (interface{}, *http.Response, error) {
+func (r DeleteLegacySnapshotApiRequest) Execute() (any, *http.Response, error) {
 	return r.ApiService.DeleteLegacySnapshotExecute(r)
 }
 
@@ -523,15 +523,15 @@ func (a *LegacyBackupApiService) DeleteLegacySnapshot(ctx context.Context, group
 
 // DeleteLegacySnapshotExecute executes the request
 //
-//	@return interface{}
+//	@return any
 //
 // Deprecated
-func (a *LegacyBackupApiService) DeleteLegacySnapshotExecute(r DeleteLegacySnapshotApiRequest) (interface{}, *http.Response, error) {
+func (a *LegacyBackupApiService) DeleteLegacySnapshotExecute(r DeleteLegacySnapshotApiRequest) (any, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue interface{}
+		localVarReturnValue any
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LegacyBackupApiService.DeleteLegacySnapshot")

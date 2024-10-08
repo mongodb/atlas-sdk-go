@@ -82,7 +82,7 @@ type NetworkPeeringApi interface {
 	DeletePeeringConnectionWithParams(ctx context.Context, args *DeletePeeringConnectionApiParams) DeletePeeringConnectionApiRequest
 
 	// Method available only for mocking purposes
-	DeletePeeringConnectionExecute(r DeletePeeringConnectionApiRequest) (interface{}, *http.Response, error)
+	DeletePeeringConnectionExecute(r DeletePeeringConnectionApiRequest) (any, *http.Response, error)
 
 	/*
 		DeletePeeringContainer Remove One Network Peering Container
@@ -106,7 +106,7 @@ type NetworkPeeringApi interface {
 	DeletePeeringContainerWithParams(ctx context.Context, args *DeletePeeringContainerApiParams) DeletePeeringContainerApiRequest
 
 	// Method available only for mocking purposes
-	DeletePeeringContainerExecute(r DeletePeeringContainerApiRequest) (interface{}, *http.Response, error)
+	DeletePeeringContainerExecute(r DeletePeeringContainerApiRequest) (any, *http.Response, error)
 
 	/*
 		DisablePeering Disable Connect via Peering Only Mode for One Project
@@ -595,7 +595,7 @@ func (a *NetworkPeeringApiService) DeletePeeringConnectionWithParams(ctx context
 	}
 }
 
-func (r DeletePeeringConnectionApiRequest) Execute() (interface{}, *http.Response, error) {
+func (r DeletePeeringConnectionApiRequest) Execute() (any, *http.Response, error) {
 	return r.ApiService.DeletePeeringConnectionExecute(r)
 }
 
@@ -620,13 +620,13 @@ func (a *NetworkPeeringApiService) DeletePeeringConnection(ctx context.Context, 
 
 // DeletePeeringConnectionExecute executes the request
 //
-//	@return interface{}
-func (a *NetworkPeeringApiService) DeletePeeringConnectionExecute(r DeletePeeringConnectionApiRequest) (interface{}, *http.Response, error) {
+//	@return any
+func (a *NetworkPeeringApiService) DeletePeeringConnectionExecute(r DeletePeeringConnectionApiRequest) (any, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue interface{}
+		localVarReturnValue any
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.DeletePeeringConnection")
@@ -712,7 +712,7 @@ func (a *NetworkPeeringApiService) DeletePeeringContainerWithParams(ctx context.
 	}
 }
 
-func (r DeletePeeringContainerApiRequest) Execute() (interface{}, *http.Response, error) {
+func (r DeletePeeringContainerApiRequest) Execute() (any, *http.Response, error) {
 	return r.ApiService.DeletePeeringContainerExecute(r)
 }
 
@@ -737,13 +737,13 @@ func (a *NetworkPeeringApiService) DeletePeeringContainer(ctx context.Context, g
 
 // DeletePeeringContainerExecute executes the request
 //
-//	@return interface{}
-func (a *NetworkPeeringApiService) DeletePeeringContainerExecute(r DeletePeeringContainerApiRequest) (interface{}, *http.Response, error) {
+//	@return any
+func (a *NetworkPeeringApiService) DeletePeeringContainerExecute(r DeletePeeringContainerApiRequest) (any, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue interface{}
+		localVarReturnValue any
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.DeletePeeringContainer")

@@ -12,7 +12,7 @@ type ApiError struct {
 	// Application error code returned with this error.
 	ErrorCode *string `json:"errorCode,omitempty"`
 	// Parameters used to give more information about the error.
-	Parameters *[]interface{} `json:"parameters,omitempty"`
+	Parameters *[]any `json:"parameters,omitempty"`
 	// Application error message returned with this error.
 	Reason *string `json:"reason,omitempty"`
 }
@@ -167,9 +167,9 @@ func (o *ApiError) SetErrorCode(v string) {
 }
 
 // GetParameters returns the Parameters field value if set, zero value otherwise
-func (o *ApiError) GetParameters() []interface{} {
+func (o *ApiError) GetParameters() []any {
 	if o == nil || IsNil(o.Parameters) {
-		var ret []interface{}
+		var ret []any
 		return ret
 	}
 	return *o.Parameters
@@ -177,7 +177,7 @@ func (o *ApiError) GetParameters() []interface{} {
 
 // GetParametersOk returns a tuple with the Parameters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApiError) GetParametersOk() (*[]interface{}, bool) {
+func (o *ApiError) GetParametersOk() (*[]any, bool) {
 	if o == nil || IsNil(o.Parameters) {
 		return nil, false
 	}
@@ -194,8 +194,8 @@ func (o *ApiError) HasParameters() bool {
 	return false
 }
 
-// SetParameters gets a reference to the given []interface{} and assigns it to the Parameters field.
-func (o *ApiError) SetParameters(v []interface{}) {
+// SetParameters gets a reference to the given []any and assigns it to the Parameters field.
+func (o *ApiError) SetParameters(v []any) {
 	o.Parameters = &v
 }
 
