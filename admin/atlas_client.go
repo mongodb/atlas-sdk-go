@@ -8,6 +8,7 @@ import (
 	"strings"
 
 	"github.com/mongodb-forks/digest"
+	"go.mongodb.org/atlas-sdk/v20240805004/auth/credentials"
 	"go.mongodb.org/atlas-sdk/v20240805004/internal/core"
 )
 
@@ -54,6 +55,15 @@ func UseDigestAuth(apiKey, apiSecret string) ClientModifier {
 		if err != nil {
 			return err
 		}
+		c.HTTPClient = httpClient
+		return nil
+	}
+}
+
+// TODO investigate how to integrate http client without overriding base path
+func UseServiceAccountAuth(client *credentials.OAuthClient) ClientModifier {
+	return func(c *Configuration) error {
+		httpClient := credentials.NewHTTPClientWithServiceAccountAuth(client);
 		c.HTTPClient = httpClient
 		return nil
 	}
