@@ -8,12 +8,11 @@ on:
       - main
   pull_request:
 jobs:
-  golangci-lint:
+  code-health:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Install Go
-        uses: actions/setup-go@v5
+      - uses: actions/setup-go@v5
         with:
           go-version-file: 'go.mod'
           cache: false # see https://github.com/golangci/golangci-lint-action/issues/807
@@ -22,22 +21,11 @@ jobs:
         with:
           version: v1.57.1
           args: --timeout=10m
-
-  tests-on-unix:
-    needs: golangci-lint # run after golangci-lint action to not produce duplicated errors
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-      - name: Install Go
-        uses: actions/setup-go@v5
-        with:
-          go-version-file: 'go.mod'
-      - name: Run tests
+      - name: tests
         run: make test
-
+  
   build:
-    needs: tests-on-unix # only run if basics are working
+    needs: code-health # only run if code-health passes
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
