@@ -394,7 +394,7 @@ func (a *NetworkPeeringApiService) CreatePeeringConnectionExecute(r CreatePeerin
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/peers"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -514,7 +514,7 @@ func (a *NetworkPeeringApiService) CreatePeeringContainerExecute(r CreatePeering
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/containers"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -635,8 +635,8 @@ func (a *NetworkPeeringApiService) DeletePeeringConnectionExecute(r DeletePeerin
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/peers/{peerId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"peerId"+"}", url.PathEscape(parameterValueToString(r.peerId, "peerId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"peerId"+"}", url.PathEscape(r.peerId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -752,8 +752,8 @@ func (a *NetworkPeeringApiService) DeletePeeringContainerExecute(r DeletePeering
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/containers/{containerId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterValueToString(r.containerId, "containerId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(r.containerId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -872,7 +872,7 @@ func (a *NetworkPeeringApiService) DisablePeeringExecute(r DisablePeeringApiRequ
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/privateIpMode"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -993,8 +993,8 @@ func (a *NetworkPeeringApiService) GetPeeringConnectionExecute(r GetPeeringConne
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/peers/{peerId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"peerId"+"}", url.PathEscape(parameterValueToString(r.peerId, "peerId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"peerId"+"}", url.PathEscape(r.peerId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1110,8 +1110,8 @@ func (a *NetworkPeeringApiService) GetPeeringContainerExecute(r GetPeeringContai
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/containers/{containerId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterValueToString(r.containerId, "containerId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(r.containerId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1258,7 +1258,7 @@ func (a *NetworkPeeringApiService) ListPeeringConnectionsExecute(r ListPeeringCo
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/peers"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1433,7 +1433,7 @@ func (a *NetworkPeeringApiService) ListPeeringContainerByCloudProviderExecute(r 
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/containers"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1596,7 +1596,7 @@ func (a *NetworkPeeringApiService) ListPeeringContainersExecute(r ListPeeringCon
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/containers/all"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1737,8 +1737,8 @@ func (a *NetworkPeeringApiService) UpdatePeeringConnectionExecute(r UpdatePeerin
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/peers/{peerId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"peerId"+"}", url.PathEscape(parameterValueToString(r.peerId, "peerId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"peerId"+"}", url.PathEscape(r.peerId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1863,8 +1863,8 @@ func (a *NetworkPeeringApiService) UpdatePeeringContainerExecute(r UpdatePeering
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/containers/{containerId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterValueToString(r.containerId, "containerId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(r.containerId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1984,7 +1984,7 @@ func (a *NetworkPeeringApiService) VerifyConnectViaPeeringOnlyModeForOneProjectE
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/privateIpMode"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

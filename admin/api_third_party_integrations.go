@@ -229,8 +229,8 @@ func (a *ThirdPartyIntegrationsApiService) CreateThirdPartyIntegrationExecute(r 
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/integrations/{integrationType}"
-	localVarPath = strings.Replace(localVarPath, "{"+"integrationType"+"}", url.PathEscape(parameterValueToString(r.integrationType, "integrationType")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"integrationType"+"}", url.PathEscape(r.integrationType), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -372,8 +372,8 @@ func (a *ThirdPartyIntegrationsApiService) DeleteThirdPartyIntegrationExecute(r 
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/integrations/{integrationType}"
-	localVarPath = strings.Replace(localVarPath, "{"+"integrationType"+"}", url.PathEscape(parameterValueToString(r.integrationType, "integrationType")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"integrationType"+"}", url.PathEscape(r.integrationType), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -489,8 +489,8 @@ func (a *ThirdPartyIntegrationsApiService) GetThirdPartyIntegrationExecute(r Get
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/integrations/{integrationType}"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"integrationType"+"}", url.PathEscape(parameterValueToString(r.integrationType, "integrationType")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"integrationType"+"}", url.PathEscape(r.integrationType), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -628,7 +628,7 @@ func (a *ThirdPartyIntegrationsApiService) ListThirdPartyIntegrationsExecute(r L
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/integrations"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -796,8 +796,8 @@ func (a *ThirdPartyIntegrationsApiService) UpdateThirdPartyIntegrationExecute(r 
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/integrations/{integrationType}"
-	localVarPath = strings.Replace(localVarPath, "{"+"integrationType"+"}", url.PathEscape(parameterValueToString(r.integrationType, "integrationType")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"integrationType"+"}", url.PathEscape(r.integrationType), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
