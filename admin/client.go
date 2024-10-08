@@ -227,21 +227,6 @@ func contains(haystack []string, needle string) bool {
 	return false
 }
 
-func parameterValueToString(obj any, key string) string {
-	if reflect.TypeOf(obj).Kind() != reflect.Ptr {
-		return fmt.Sprintf("%v", obj)
-	}
-	var param, ok = obj.(modelWithMap)
-	if !ok {
-		return ""
-	}
-	dataMap, err := param.ToMap()
-	if err != nil {
-		return ""
-	}
-	return fmt.Sprintf("%v", dataMap[key])
-}
-
 // parameterAddToHeaderOrQuery adds the provided object to the request header or url query
 // supporting deep object syntax
 func parameterAddToHeaderOrQuery(headerOrQueryParams any, keyPrefix string, obj any, collectionType string) {
