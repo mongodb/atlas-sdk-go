@@ -520,7 +520,7 @@ func (c *APIClient) makeApiError(res *http.Response, httpMethod, httpPath string
 
 	localVarBody, err := io.ReadAll(res.Body)
 	if err != nil {
-		newErr.error = err.Error()
+		newErr.error = fmt.Sprintf("(%s) failed to read response body: %s", res.Status, err.Error())
 		return newErr
 	}
 	newErr.body = localVarBody
@@ -528,7 +528,7 @@ func (c *APIClient) makeApiError(res *http.Response, httpMethod, httpPath string
 	var v ApiError
 	err = c.decode(&v, io.NopCloser(bytes.NewBuffer(localVarBody)), res.Header.Get("Content-Type"))
 	if err != nil {
-		newErr.error = err.Error()
+		newErr.error = fmt.Sprintf("(%s) failed to decode response body: %s", res.Status, err.Error())
 		return newErr
 	}
 	newErr.error = FormatErrorMessageWithDetails(res.Status, httpMethod, httpPath, v)
