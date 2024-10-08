@@ -5,6 +5,7 @@ go 1.22.0
 toolchain go1.23.1
 
 replace go.mongodb.org/atlas-sdk/v20240805005 => ../
+replace go.mongodb.org/atlas-sdk/v20240805005/auth/credentials => ../auth/credentials
 
 require (
 	github.com/hashicorp/go-retryablehttp v0.7.7
