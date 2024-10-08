@@ -8,12 +8,11 @@ on:
       - main
   pull_request:
 jobs:
-  golangci-lint:
+  code-health:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Install Go
-        uses: actions/setup-go@v5
+      - uses: actions/setup-go@v5
         with:
           go-version-file: 'go.mod'
           cache: false # see https://github.com/golangci/golangci-lint-action/issues/807
@@ -22,16 +21,29 @@ jobs:
         with:
           version: v1.57.1
           args: --timeout=10m
-
-  tests-on-unix:
-    needs: golangci-lint # run after golangci-lint action to not produce duplicated errors
+      - name: tests
+        run: make test
+  
+  build:
+    needs: code-health # only run if code-health passes
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-      - name: Install Go
-        uses: actions/setup-go@v5
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          go-version-file: 'go.mod'
-      - name: Run tests
-        run: make test
+          node-version: 18
+          cache: 'npm'
+          cache-dependency-path: ./tools/package-lock.json
+      - working-directory: ./tools
+        run: |
+          npm install
+          npm run ci
+      - run: go install golang.org/x/tools/cmd/goimports@v0.21.0
+      - working-directory: ./tools
+        run: |
+          export PATH=${PATH}:`go env GOPATH`/bin
+          make clean_and_generate
+      - name: Fail when generate introducing diff
+        run: |
+          git diff --exit-code
+          
