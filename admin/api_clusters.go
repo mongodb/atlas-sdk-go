@@ -277,7 +277,7 @@ type ClustersApi interface {
 	/*
 		PinFeatureCompatibilityVersion Pin FCV for One Cluster from One Project
 
-		Pins the FCV to the current MongoDB version.
+		Pins the Feature Compatibility Version (FCV) to the current MongoDB version and sets the pin expiration date. If an FCV pin already exists for the cluster, calling this method will only update the expiration date of the existing pin and will not repin the FCV.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -350,7 +350,7 @@ type ClustersApi interface {
 	/*
 		UnpinFeatureCompatibilityVersion Unpins FCV for One Cluster from One Project
 
-		Unpins the current fixed Feature Compatibility Version. This feature is not available for clusters on rapid release.
+		Unpins the current fixed Feature Compatibility Version (FCV). This feature is not available for clusters on rapid release.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -1962,7 +1962,7 @@ func (r PinFeatureCompatibilityVersionApiRequest) Execute() (any, *http.Response
 /*
 PinFeatureCompatibilityVersion Pin FCV for One Cluster from One Project
 
-Pins the FCV to the current MongoDB version.
+Pins the Feature Compatibility Version (FCV) to the current MongoDB version and sets the pin expiration date. If an FCV pin already exists for the cluster, calling this method will only update the expiration date of the existing pin and will not repin the FCV.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -2299,7 +2299,7 @@ func (r UnpinFeatureCompatibilityVersionApiRequest) Execute() (any, *http.Respon
 /*
 UnpinFeatureCompatibilityVersion Unpins FCV for One Cluster from One Project
 
-Unpins the current fixed Feature Compatibility Version. This feature is not available for clusters on rapid release.
+Unpins the current fixed Feature Compatibility Version (FCV). This feature is not available for clusters on rapid release.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
