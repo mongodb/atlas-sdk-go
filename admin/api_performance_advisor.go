@@ -259,7 +259,7 @@ func (a *PerformanceAdvisorApiService) DisableSlowOperationThresholdingExecute(r
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/managedSlowMs/disable"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -353,7 +353,7 @@ func (a *PerformanceAdvisorApiService) EnableSlowOperationThresholdingExecute(r 
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/managedSlowMs/enable"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -447,7 +447,7 @@ func (a *PerformanceAdvisorApiService) GetManagedSlowMsExecute(r GetManagedSlowM
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/managedSlowMs"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -549,8 +549,8 @@ func (a *PerformanceAdvisorApiService) GetServerlessAutoIndexingExecute(r GetSer
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/serverless/{clusterName}/performanceAdvisor/autoIndexing"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(parameterValueToString(r.clusterName, "clusterName")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -702,8 +702,8 @@ func (a *PerformanceAdvisorApiService) ListSlowQueriesExecute(r ListSlowQueriesA
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/processes/{processId}/performanceAdvisor/slowQueryLogs"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(parameterValueToString(r.processId, "processId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(r.processId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -857,8 +857,8 @@ func (a *PerformanceAdvisorApiService) ListSlowQueryNamespacesExecute(r ListSlow
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/processes/{processId}/performanceAdvisor/namespaces"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(parameterValueToString(r.processId, "processId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(r.processId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1052,8 +1052,8 @@ func (a *PerformanceAdvisorApiService) ListSuggestedIndexesExecute(r ListSuggest
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/processes/{processId}/performanceAdvisor/suggestedIndexes"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(parameterValueToString(r.processId, "processId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(r.processId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1222,8 +1222,8 @@ func (a *PerformanceAdvisorApiService) SetServerlessAutoIndexingExecute(r SetSer
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/serverless/{clusterName}/performanceAdvisor/autoIndexing"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(parameterValueToString(r.clusterName, "clusterName")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

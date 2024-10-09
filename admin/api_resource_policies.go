@@ -243,7 +243,7 @@ func (a *ResourcePoliciesApiService) CreateAtlasResourcePolicyExecute(r CreateAt
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/resourcePolicies"
-	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -364,8 +364,8 @@ func (a *ResourcePoliciesApiService) DeleteAtlasResourcePolicyExecute(r DeleteAt
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"resourcePolicyId"+"}", url.PathEscape(parameterValueToString(r.resourcePolicyId, "resourcePolicyId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"resourcePolicyId"+"}", url.PathEscape(r.resourcePolicyId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -476,7 +476,7 @@ func (a *ResourcePoliciesApiService) GetAtlasResourcePoliciesExecute(r GetAtlasR
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/resourcePolicies"
-	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -592,8 +592,8 @@ func (a *ResourcePoliciesApiService) GetAtlasResourcePolicyExecute(r GetAtlasRes
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"resourcePolicyId"+"}", url.PathEscape(parameterValueToString(r.resourcePolicyId, "resourcePolicyId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"resourcePolicyId"+"}", url.PathEscape(r.resourcePolicyId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -704,7 +704,7 @@ func (a *ResourcePoliciesApiService) GetResourcesNonCompliantExecute(r GetResour
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/nonCompliantResources"
-	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -824,8 +824,8 @@ func (a *ResourcePoliciesApiService) UpdateAtlasResourcePolicyExecute(r UpdateAt
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"resourcePolicyId"+"}", url.PathEscape(parameterValueToString(r.resourcePolicyId, "resourcePolicyId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"resourcePolicyId"+"}", url.PathEscape(r.resourcePolicyId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -945,7 +945,7 @@ func (a *ResourcePoliciesApiService) ValidateAtlasResourcePolicyExecute(r Valida
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/resourcePolicies:validate"
-	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

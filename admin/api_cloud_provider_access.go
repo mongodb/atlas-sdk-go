@@ -202,8 +202,8 @@ func (a *CloudProviderAccessApiService) AuthorizeCloudProviderAccessRoleExecute(
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/cloudProviderAccess/{roleId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"roleId"+"}", url.PathEscape(parameterValueToString(r.roleId, "roleId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"roleId"+"}", url.PathEscape(r.roleId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -323,7 +323,7 @@ func (a *CloudProviderAccessApiService) CreateCloudProviderAccessRoleExecute(r C
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/cloudProviderAccess"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -446,9 +446,9 @@ func (a *CloudProviderAccessApiService) DeauthorizeCloudProviderAccessRoleExecut
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/cloudProviderAccess/{cloudProvider}/{roleId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"cloudProvider"+"}", url.PathEscape(parameterValueToString(r.cloudProvider, "cloudProvider")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"roleId"+"}", url.PathEscape(parameterValueToString(r.roleId, "roleId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cloudProvider"+"}", url.PathEscape(r.cloudProvider), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"roleId"+"}", url.PathEscape(r.roleId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -550,8 +550,8 @@ func (a *CloudProviderAccessApiService) GetCloudProviderAccessRoleExecute(r GetC
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/cloudProviderAccess/{roleId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"roleId"+"}", url.PathEscape(parameterValueToString(r.roleId, "roleId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"roleId"+"}", url.PathEscape(r.roleId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -662,7 +662,7 @@ func (a *CloudProviderAccessApiService) ListCloudProviderAccessRolesExecute(r Li
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/cloudProviderAccess"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

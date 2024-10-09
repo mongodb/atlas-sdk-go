@@ -222,7 +222,7 @@ func (a *ProjectIPAccessListApiService) CreateProjectIpAccessListExecute(r Creat
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/accessList"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -364,8 +364,8 @@ func (a *ProjectIPAccessListApiService) DeleteProjectIpAccessListExecute(r Delet
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/accessList/{entryValue}"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"entryValue"+"}", url.PathEscape(parameterValueToString(r.entryValue, "entryValue")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"entryValue"+"}", url.PathEscape(r.entryValue), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -481,8 +481,8 @@ func (a *ProjectIPAccessListApiService) GetProjectIpAccessListStatusExecute(r Ge
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/accessList/{entryValue}/status"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"entryValue"+"}", url.PathEscape(parameterValueToString(r.entryValue, "entryValue")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"entryValue"+"}", url.PathEscape(r.entryValue), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -598,8 +598,8 @@ func (a *ProjectIPAccessListApiService) GetProjectIpListExecute(r GetProjectIpLi
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/accessList/{entryValue}"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"entryValue"+"}", url.PathEscape(parameterValueToString(r.entryValue, "entryValue")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"entryValue"+"}", url.PathEscape(r.entryValue), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -737,7 +737,7 @@ func (a *ProjectIPAccessListApiService) ListProjectIpAccessListsExecute(r ListPr
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/accessList"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

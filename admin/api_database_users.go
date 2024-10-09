@@ -199,7 +199,7 @@ func (a *DatabaseUsersApiService) CreateDatabaseUserExecute(r CreateDatabaseUser
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/databaseUsers"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -325,9 +325,9 @@ func (a *DatabaseUsersApiService) DeleteDatabaseUserExecute(r DeleteDatabaseUser
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/databaseUsers/{databaseName}/{username}"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"databaseName"+"}", url.PathEscape(parameterValueToString(r.databaseName, "databaseName")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"username"+"}", url.PathEscape(parameterValueToString(r.username, "username")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"databaseName"+"}", url.PathEscape(r.databaseName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"username"+"}", url.PathEscape(r.username), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -448,9 +448,9 @@ func (a *DatabaseUsersApiService) GetDatabaseUserExecute(r GetDatabaseUserApiReq
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/databaseUsers/{databaseName}/{username}"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"databaseName"+"}", url.PathEscape(parameterValueToString(r.databaseName, "databaseName")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"username"+"}", url.PathEscape(parameterValueToString(r.username, "username")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"databaseName"+"}", url.PathEscape(r.databaseName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"username"+"}", url.PathEscape(r.username), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -588,7 +588,7 @@ func (a *DatabaseUsersApiService) ListDatabaseUsersExecute(r ListDatabaseUsersAp
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/databaseUsers"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -734,9 +734,9 @@ func (a *DatabaseUsersApiService) UpdateDatabaseUserExecute(r UpdateDatabaseUser
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/databaseUsers/{databaseName}/{username}"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"databaseName"+"}", url.PathEscape(parameterValueToString(r.databaseName, "databaseName")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"username"+"}", url.PathEscape(parameterValueToString(r.username, "username")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"databaseName"+"}", url.PathEscape(r.databaseName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"username"+"}", url.PathEscape(r.username), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

@@ -263,7 +263,7 @@ func (a *MongoDBCloudUsersApiService) GetUserExecute(r GetUserApiRequest) (*Clou
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/users/{userId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"userId"+"}", url.PathEscape(parameterValueToString(r.userId, "userId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"userId"+"}", url.PathEscape(r.userId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -374,7 +374,7 @@ func (a *MongoDBCloudUsersApiService) GetUserByUsernameExecute(r GetUserByUserna
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/users/byName/{userName}"
-	localVarPath = strings.Replace(localVarPath, "{"+"userName"+"}", url.PathEscape(parameterValueToString(r.userName, "userName")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"userName"+"}", url.PathEscape(r.userName), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

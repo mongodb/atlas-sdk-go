@@ -693,7 +693,7 @@ func (a *ProjectsApiService) AddUserToProjectExecute(r AddUserToProjectApiReques
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/access"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -943,7 +943,7 @@ func (a *ProjectsApiService) CreateProjectInvitationExecute(r CreateProjectInvit
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/invites"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1059,7 +1059,7 @@ func (a *ProjectsApiService) DeleteProjectExecute(r DeleteProjectApiRequest) (an
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1179,8 +1179,8 @@ func (a *ProjectsApiService) DeleteProjectInvitationExecute(r DeleteProjectInvit
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/invites/{invitationId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"invitationId"+"}", url.PathEscape(parameterValueToString(r.invitationId, "invitationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"invitationId"+"}", url.PathEscape(r.invitationId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1296,8 +1296,8 @@ func (a *ProjectsApiService) DeleteProjectLimitExecute(r DeleteProjectLimitApiRe
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/limits/{limitName}"
-	localVarPath = strings.Replace(localVarPath, "{"+"limitName"+"}", url.PathEscape(parameterValueToString(r.limitName, "limitName")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"limitName"+"}", url.PathEscape(r.limitName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1408,7 +1408,7 @@ func (a *ProjectsApiService) GetProjectExecute(r GetProjectApiRequest) (*Group, 
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1519,7 +1519,7 @@ func (a *ProjectsApiService) GetProjectByNameExecute(r GetProjectByNameApiReques
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/byName/{groupName}"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupName"+"}", url.PathEscape(parameterValueToString(r.groupName, "groupName")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupName"+"}", url.PathEscape(r.groupName), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1639,8 +1639,8 @@ func (a *ProjectsApiService) GetProjectInvitationExecute(r GetProjectInvitationA
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/invites/{invitationId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"invitationId"+"}", url.PathEscape(parameterValueToString(r.invitationId, "invitationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"invitationId"+"}", url.PathEscape(r.invitationId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1796,7 +1796,7 @@ func (a *ProjectsApiService) GetProjectLTSVersionsExecute(r GetProjectLTSVersion
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/mongoDBVersions"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1935,8 +1935,8 @@ func (a *ProjectsApiService) GetProjectLimitExecute(r GetProjectLimitApiRequest)
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/limits/{limitName}"
-	localVarPath = strings.Replace(localVarPath, "{"+"limitName"+"}", url.PathEscape(parameterValueToString(r.limitName, "limitName")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"limitName"+"}", url.PathEscape(r.limitName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2047,7 +2047,7 @@ func (a *ProjectsApiService) GetProjectSettingsExecute(r GetProjectSettingsApiRe
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/settings"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2171,7 +2171,7 @@ func (a *ProjectsApiService) ListProjectInvitationsExecute(r ListProjectInvitati
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/invites"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2285,7 +2285,7 @@ func (a *ProjectsApiService) ListProjectLimitsExecute(r ListProjectLimitsApiRequ
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/limits"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2441,7 +2441,7 @@ func (a *ProjectsApiService) ListProjectUsersExecute(r ListProjectUsersApiReques
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/users"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2744,7 +2744,7 @@ func (a *ProjectsApiService) MigrateProjectToAnotherOrgExecute(r MigrateProjectT
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}:migrate"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2862,8 +2862,8 @@ func (a *ProjectsApiService) RemoveProjectUserExecute(r RemoveProjectUserApiRequ
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/users/{userId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"userId"+"}", url.PathEscape(parameterValueToString(r.userId, "userId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"userId"+"}", url.PathEscape(r.userId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2960,7 +2960,7 @@ func (a *ProjectsApiService) ReturnAllIPAddressesExecute(r ReturnAllIPAddressesA
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/ipAddresses"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3082,8 +3082,8 @@ func (a *ProjectsApiService) SetProjectLimitExecute(r SetProjectLimitApiRequest)
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/limits/{limitName}"
-	localVarPath = strings.Replace(localVarPath, "{"+"limitName"+"}", url.PathEscape(parameterValueToString(r.limitName, "limitName")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"limitName"+"}", url.PathEscape(r.limitName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3203,7 +3203,7 @@ func (a *ProjectsApiService) UpdateProjectExecute(r UpdateProjectApiRequest) (*G
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3327,7 +3327,7 @@ func (a *ProjectsApiService) UpdateProjectInvitationExecute(r UpdateProjectInvit
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/invites"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3456,8 +3456,8 @@ func (a *ProjectsApiService) UpdateProjectInvitationByIdExecute(r UpdateProjectI
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/invites/{invitationId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"invitationId"+"}", url.PathEscape(parameterValueToString(r.invitationId, "invitationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"invitationId"+"}", url.PathEscape(r.invitationId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3582,8 +3582,8 @@ func (a *ProjectsApiService) UpdateProjectRolesExecute(r UpdateProjectRolesApiRe
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/users/{userId}/roles"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"userId"+"}", url.PathEscape(parameterValueToString(r.userId, "userId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"userId"+"}", url.PathEscape(r.userId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3703,7 +3703,7 @@ func (a *ProjectsApiService) UpdateProjectSettingsExecute(r UpdateProjectSetting
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/settings"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

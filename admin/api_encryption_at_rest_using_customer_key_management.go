@@ -231,8 +231,8 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) CreateEncryptionA
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/encryptionAtRest/{cloudProvider}/privateEndpoints"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"cloudProvider"+"}", url.PathEscape(parameterValueToString(r.cloudProvider, "cloudProvider")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cloudProvider"+"}", url.PathEscape(r.cloudProvider), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -350,7 +350,7 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) GetEncryptionAtRe
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/encryptionAtRest"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -471,9 +471,9 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) GetEncryptionAtRe
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/encryptionAtRest/{cloudProvider}/privateEndpoints/{endpointId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"cloudProvider"+"}", url.PathEscape(parameterValueToString(r.cloudProvider, "cloudProvider")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"endpointId"+"}", url.PathEscape(parameterValueToString(r.endpointId, "endpointId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cloudProvider"+"}", url.PathEscape(r.cloudProvider), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"endpointId"+"}", url.PathEscape(r.endpointId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -616,8 +616,8 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) GetEncryptionAtRe
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/encryptionAtRest/{cloudProvider}/privateEndpoints"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"cloudProvider"+"}", url.PathEscape(parameterValueToString(r.cloudProvider, "cloudProvider")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cloudProvider"+"}", url.PathEscape(r.cloudProvider), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -759,9 +759,9 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) RequestEncryption
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/encryptionAtRest/{cloudProvider}/privateEndpoints/{endpointId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"cloudProvider"+"}", url.PathEscape(parameterValueToString(r.cloudProvider, "cloudProvider")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"endpointId"+"}", url.PathEscape(parameterValueToString(r.endpointId, "endpointId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cloudProvider"+"}", url.PathEscape(r.cloudProvider), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"endpointId"+"}", url.PathEscape(r.endpointId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -878,7 +878,7 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) UpdateEncryptionA
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/encryptionAtRest"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

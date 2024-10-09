@@ -185,7 +185,7 @@ func (a *MaintenanceWindowsApiService) DeferMaintenanceWindowExecute(r DeferMain
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/maintenanceWindow/defer"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -282,7 +282,7 @@ func (a *MaintenanceWindowsApiService) GetMaintenanceWindowExecute(r GetMaintena
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/maintenanceWindow"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -390,7 +390,7 @@ func (a *MaintenanceWindowsApiService) ResetMaintenanceWindowExecute(r ResetMain
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/maintenanceWindow"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -484,7 +484,7 @@ func (a *MaintenanceWindowsApiService) ToggleMaintenanceAutoDeferExecute(r Toggl
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/maintenanceWindow/autoDefer"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -585,7 +585,7 @@ func (a *MaintenanceWindowsApiService) UpdateMaintenanceWindowExecute(r UpdateMa
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/maintenanceWindow"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

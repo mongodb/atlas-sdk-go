@@ -272,7 +272,7 @@ func (a *CloudMigrationServiceApiService) CreateLinkTokenExecute(r CreateLinkTok
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/liveMigrations/linkTokens"
-	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -398,7 +398,7 @@ func (a *CloudMigrationServiceApiService) CreatePushMigrationExecute(r CreatePus
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/liveMigrations"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -516,8 +516,8 @@ func (a *CloudMigrationServiceApiService) CutoverMigrationExecute(r CutoverMigra
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/liveMigrations/{liveMigrationId}/cutover"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"liveMigrationId"+"}", url.PathEscape(parameterValueToString(r.liveMigrationId, "liveMigrationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"liveMigrationId"+"}", url.PathEscape(r.liveMigrationId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -614,7 +614,7 @@ func (a *CloudMigrationServiceApiService) DeleteLinkTokenExecute(r DeleteLinkTok
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/liveMigrations/linkTokens"
-	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -730,8 +730,8 @@ func (a *CloudMigrationServiceApiService) GetPushMigrationExecute(r GetPushMigra
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/liveMigrations/{liveMigrationId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"liveMigrationId"+"}", url.PathEscape(parameterValueToString(r.liveMigrationId, "liveMigrationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"liveMigrationId"+"}", url.PathEscape(r.liveMigrationId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -847,8 +847,8 @@ func (a *CloudMigrationServiceApiService) GetValidationStatusExecute(r GetValida
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/liveMigrations/validate/{validationId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"validationId"+"}", url.PathEscape(parameterValueToString(r.validationId, "validationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"validationId"+"}", url.PathEscape(r.validationId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -959,7 +959,7 @@ func (a *CloudMigrationServiceApiService) ListSourceProjectsExecute(r ListSource
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/liveMigrations/availableProjects"
-	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1074,7 +1074,7 @@ func (a *CloudMigrationServiceApiService) ValidateMigrationExecute(r ValidateMig
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/liveMigrations/validate"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

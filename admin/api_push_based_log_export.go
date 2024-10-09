@@ -167,7 +167,7 @@ func (a *PushBasedLogExportApiService) CreatePushBasedLogConfigurationExecute(r 
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/pushBasedLogExport"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -266,7 +266,7 @@ func (a *PushBasedLogExportApiService) DeletePushBasedLogConfigurationExecute(r 
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/pushBasedLogExport"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -363,7 +363,7 @@ func (a *PushBasedLogExportApiService) GetPushBasedLogConfigurationExecute(r Get
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/pushBasedLogExport"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -475,7 +475,7 @@ func (a *PushBasedLogExportApiService) UpdatePushBasedLogConfigurationExecute(r 
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/pushBasedLogExport"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

@@ -448,7 +448,7 @@ func (a *DataLakePipelinesApiService) CreatePipelineExecute(r CreatePipelineApiR
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/pipelines"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -573,8 +573,8 @@ func (a *DataLakePipelinesApiService) DeletePipelineExecute(r DeletePipelineApiR
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"pipelineName"+"}", url.PathEscape(parameterValueToString(r.pipelineName, "pipelineName")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pipelineName"+"}", url.PathEscape(r.pipelineName), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -699,9 +699,9 @@ func (a *DataLakePipelinesApiService) DeletePipelineRunDatasetExecute(r DeletePi
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/runs/{pipelineRunId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"pipelineName"+"}", url.PathEscape(parameterValueToString(r.pipelineName, "pipelineName")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"pipelineRunId"+"}", url.PathEscape(parameterValueToString(r.pipelineRunId, "pipelineRunId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pipelineName"+"}", url.PathEscape(r.pipelineName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pipelineRunId"+"}", url.PathEscape(r.pipelineRunId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -821,8 +821,8 @@ func (a *DataLakePipelinesApiService) GetPipelineExecute(r GetPipelineApiRequest
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"pipelineName"+"}", url.PathEscape(parameterValueToString(r.pipelineName, "pipelineName")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pipelineName"+"}", url.PathEscape(r.pipelineName), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -947,9 +947,9 @@ func (a *DataLakePipelinesApiService) GetPipelineRunExecute(r GetPipelineRunApiR
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/runs/{pipelineRunId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"pipelineName"+"}", url.PathEscape(parameterValueToString(r.pipelineName, "pipelineName")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"pipelineRunId"+"}", url.PathEscape(parameterValueToString(r.pipelineRunId, "pipelineRunId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pipelineName"+"}", url.PathEscape(r.pipelineName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pipelineRunId"+"}", url.PathEscape(r.pipelineRunId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1105,8 +1105,8 @@ func (a *DataLakePipelinesApiService) ListPipelineRunsExecute(r ListPipelineRuns
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/runs"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"pipelineName"+"}", url.PathEscape(parameterValueToString(r.pipelineName, "pipelineName")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pipelineName"+"}", url.PathEscape(r.pipelineName), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1250,8 +1250,8 @@ func (a *DataLakePipelinesApiService) ListPipelineSchedulesExecute(r ListPipelin
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/availableSchedules"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"pipelineName"+"}", url.PathEscape(parameterValueToString(r.pipelineName, "pipelineName")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pipelineName"+"}", url.PathEscape(r.pipelineName), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1407,8 +1407,8 @@ func (a *DataLakePipelinesApiService) ListPipelineSnapshotsExecute(r ListPipelin
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/availableSnapshots"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"pipelineName"+"}", url.PathEscape(parameterValueToString(r.pipelineName, "pipelineName")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pipelineName"+"}", url.PathEscape(r.pipelineName), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1547,7 +1547,7 @@ func (a *DataLakePipelinesApiService) ListPipelinesExecute(r ListPipelinesApiReq
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/pipelines"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1667,8 +1667,8 @@ func (a *DataLakePipelinesApiService) PausePipelineExecute(r PausePipelineApiReq
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/pause"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"pipelineName"+"}", url.PathEscape(parameterValueToString(r.pipelineName, "pipelineName")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pipelineName"+"}", url.PathEscape(r.pipelineName), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1788,8 +1788,8 @@ func (a *DataLakePipelinesApiService) ResumePipelineExecute(r ResumePipelineApiR
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/resume"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"pipelineName"+"}", url.PathEscape(parameterValueToString(r.pipelineName, "pipelineName")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pipelineName"+"}", url.PathEscape(r.pipelineName), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1913,8 +1913,8 @@ func (a *DataLakePipelinesApiService) TriggerSnapshotIngestionExecute(r TriggerS
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/trigger"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"pipelineName"+"}", url.PathEscape(parameterValueToString(r.pipelineName, "pipelineName")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pipelineName"+"}", url.PathEscape(r.pipelineName), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2043,8 +2043,8 @@ func (a *DataLakePipelinesApiService) UpdatePipelineExecute(r UpdatePipelineApiR
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"pipelineName"+"}", url.PathEscape(parameterValueToString(r.pipelineName, "pipelineName")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pipelineName"+"}", url.PathEscape(r.pipelineName), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

@@ -187,8 +187,8 @@ func (a *AlertsApiService) AcknowledgeAlertExecute(r AcknowledgeAlertApiRequest)
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/alerts/{alertId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"alertId"+"}", url.PathEscape(parameterValueToString(r.alertId, "alertId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"alertId"+"}", url.PathEscape(r.alertId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -311,8 +311,8 @@ func (a *AlertsApiService) GetAlertExecute(r GetAlertApiRequest) (*AlertViewForN
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/alerts/{alertId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"alertId"+"}", url.PathEscape(parameterValueToString(r.alertId, "alertId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"alertId"+"}", url.PathEscape(r.alertId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -461,7 +461,7 @@ func (a *AlertsApiService) ListAlertsExecute(r ListAlertsApiRequest) (*Paginated
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/alerts"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -630,8 +630,8 @@ func (a *AlertsApiService) ListAlertsByAlertConfigurationIdExecute(r ListAlertsB
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId}/alerts"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"alertConfigId"+"}", url.PathEscape(parameterValueToString(r.alertConfigId, "alertConfigId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"alertConfigId"+"}", url.PathEscape(r.alertConfigId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

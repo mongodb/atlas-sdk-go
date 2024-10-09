@@ -192,7 +192,7 @@ func (a *LDAPConfigurationApiService) DeleteLDAPConfigurationExecute(r DeleteLDA
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/userSecurity/ldap/userToDNMapping"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -303,7 +303,7 @@ func (a *LDAPConfigurationApiService) GetLDAPConfigurationExecute(r GetLDAPConfi
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/userSecurity"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -419,8 +419,8 @@ func (a *LDAPConfigurationApiService) GetLDAPConfigurationStatusExecute(r GetLDA
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/userSecurity/ldap/verify/{requestId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"requestId"+"}", url.PathEscape(parameterValueToString(r.requestId, "requestId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"requestId"+"}", url.PathEscape(r.requestId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -537,7 +537,7 @@ func (a *LDAPConfigurationApiService) SaveLDAPConfigurationExecute(r SaveLDAPCon
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/userSecurity"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -657,7 +657,7 @@ func (a *LDAPConfigurationApiService) VerifyLDAPConfigurationExecute(r VerifyLDA
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/userSecurity/ldap/verify"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

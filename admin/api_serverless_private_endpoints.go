@@ -210,8 +210,8 @@ func (a *ServerlessPrivateEndpointsApiService) CreateServerlessPrivateEndpointEx
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"instanceName"+"}", url.PathEscape(parameterValueToString(r.instanceName, "instanceName")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"instanceName"+"}", url.PathEscape(r.instanceName), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -337,9 +337,9 @@ func (a *ServerlessPrivateEndpointsApiService) DeleteServerlessPrivateEndpointEx
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint/{endpointId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"instanceName"+"}", url.PathEscape(parameterValueToString(r.instanceName, "instanceName")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"endpointId"+"}", url.PathEscape(parameterValueToString(r.endpointId, "endpointId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"instanceName"+"}", url.PathEscape(r.instanceName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"endpointId"+"}", url.PathEscape(r.endpointId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -460,9 +460,9 @@ func (a *ServerlessPrivateEndpointsApiService) GetServerlessPrivateEndpointExecu
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint/{endpointId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"instanceName"+"}", url.PathEscape(parameterValueToString(r.instanceName, "instanceName")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"endpointId"+"}", url.PathEscape(parameterValueToString(r.endpointId, "endpointId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"instanceName"+"}", url.PathEscape(r.instanceName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"endpointId"+"}", url.PathEscape(r.endpointId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -578,8 +578,8 @@ func (a *ServerlessPrivateEndpointsApiService) ListServerlessPrivateEndpointsExe
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"instanceName"+"}", url.PathEscape(parameterValueToString(r.instanceName, "instanceName")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"instanceName"+"}", url.PathEscape(r.instanceName), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -704,9 +704,9 @@ func (a *ServerlessPrivateEndpointsApiService) UpdateServerlessPrivateEndpointEx
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint/{endpointId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"instanceName"+"}", url.PathEscape(parameterValueToString(r.instanceName, "instanceName")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"endpointId"+"}", url.PathEscape(parameterValueToString(r.endpointId, "endpointId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"instanceName"+"}", url.PathEscape(r.instanceName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"endpointId"+"}", url.PathEscape(r.endpointId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
