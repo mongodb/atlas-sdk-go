@@ -125,7 +125,7 @@ type TokenSource interface {
 	Token() (*Token, error)
 }
 
-func (c *Config) Do(ctx context.Context, req *http.Request, v interface{}) (*core.Response, error) {
+func (c *Config) Do(ctx context.Context, req *http.Request, v any) (*core.Response, error) {
 	resp, err := core.DoRequestWithClient(ctx, c.client, req)
 	if err != nil {
 		// If we got an error, and the context has been canceled,
