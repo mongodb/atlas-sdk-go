@@ -2,6 +2,7 @@ package credentials
 
 import (
 	"context"
+	"encoding/base64"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -77,6 +78,9 @@ func (c *OAuthClient) fetchToken() (*Token, error) {
 		return nil, err
 	}
 
+	// TODO should we derive expiration from server response or token itself
+	// TODO storage engine - use interface to store tokens.
+
 	// Construct the token with expiry time
 	token := &Token{
 		AccessToken: tokenResp.AccessToken,
@@ -128,22 +132,63 @@ func (t *Token) Valid() bool {
 	return t != nil && t.AccessToken != "" && !t.expired()
 }
 
+// ParseToken extracts expiry details from JWT token
+func ParseToken(accessToken string) (*Token, error) {
+    parts := strings.Split(accessToken, ".")
+    if len(parts) != 3 {
+        return nil, errors.New("invalid token format")
+    }
+
+    payload, err := base64.RawURLEncoding.DecodeString(parts[1])
+    if err != nil {
+        return nil, err
+    }
+
+    var tokenData struct {
+        Exp int64 `json:"exp"`
+    }
+    if err := json.Unmarshal(payload, &tokenData); err != nil {
+        return nil, err
+    }
+
+    expiry := time.Unix(tokenData.Exp, 0)
+    if time.Now().After(expiry) {
+        return nil, errors.New("token has expired")
+    }
+
+    return &Token{
+        AccessToken: accessToken,
+        Expiry:      expiry,
+        ExpiresIn:   int(expiry.Sub(time.Now()).Seconds()),
+    }, nil
+}
+
 // NewServiceAccountClient initializes an OAuthClient with client credentials.
-func NewServiceAccountOAuthClient(clientID, clientSecret string, baseURL *string) *OAuthClient {
+func NewServiceAccountOAuthClient(clientID, clientSecret string, accessToken string, baseURL *string) (*OAuthClient, error) {
 	tokenURL := "https://cloud-dev.mongodb.com/api/oauth/token"
 	if baseURL != nil {
 		tokenURL = *baseURL + "/api/oauth/token";
 	}
-	
-	return &OAuthClient{
+
+	client := &OAuthClient{
 		clientID:     clientID,
 		clientSecret: clientSecret,
 		tokenURL:     tokenURL,
-		token: &Token{
-			// TODO add token storage
-		},
+		token: &Token{},
 		ctx: context.Background(),
 	}
+
+    if accessToken != "" {
+		// Derive details from stored token instead of creating new one.
+		// New token can still be expired and it will be rotated on the first request
+        token, err := ParseToken(accessToken)
+        if err != nil {
+            return nil, err
+        }
+        client.token = token
+    }
+
+    return client, nil
 }
 
 // NewHTTPClient creates an HTTP client with the custom transport.
