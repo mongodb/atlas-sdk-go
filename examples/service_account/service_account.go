@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"log"
 	"os"
 
@@ -38,6 +39,20 @@ func main() {
 		log.Fatalf("Error initializing OAuth client: %v", err)
 	}
 
+	if accessToken == "" {
+		// For purpose of example covering all the cases we are regenerating access token in order to seed client
+		token, err := client.GetAccessToken();
+		if err != nil {
+			log.Fatalf("Error initializing OAuth client: %v", err)
+		}
+		fmt.Print(token.AccessToken)
+		client, err = credentials.NewServiceAccountOAuthClient(clientID, clientSecret, token.AccessToken, nil)
+		if err != nil {
+			log.Fatalf("Error initializing OAuth client: %v", err)
+		}
+
+	}
+
 	// Create an HTTP client with the custom transport (injecting the token)
 	httpClient := credentials.NewHTTPClientWithServiceAccountAuth(client)
 
@@ -47,7 +62,7 @@ func main() {
 	sdk, err := admin.NewClient(
 		admin.UseHTTPClient(httpClient),
 		admin.UseBaseURL(url),
-		admin.UseDebug(false))
+		admin.UseDebug(true))
 
 	if err != nil{
 		log.Fatal("Error: %e", err);
@@ -68,7 +83,7 @@ func main() {
 		log.Fatalf("Error making request: %e", err)
 	}
 
-	if projects.Results != nil {
-		log.Fatal("projects should not be empty")
+	if projects.Results == nil {
+		log.Fatal("projects should not be empty:  %+v", projects)
 	}
 }
