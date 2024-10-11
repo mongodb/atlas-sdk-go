@@ -27,7 +27,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 555299096548fddba749a9a882898b89a3580643
+  x-xgen-sha: ecc67f65d9b5a5199175facaab8a2dc97afe2911
 servers:
   - url: https://cloud.mongodb.com
 tags:
@@ -22375,18 +22375,20 @@ components:
             url: https://docs.atlas.mongodb.com/backup/cloud-backup/overview/
         redactClientLogData:
           type: boolean
-          description: Enable or disable log redaction.
+          description: >-
+            Enable or disable log redaction.
+
+
+            This setting configures the ``mongod`` or ``mongos`` to redact any document field contents from a message accompanying a given log event before logging. This prevents the program from writing potentially sensitive data stored on the database to the diagnostic log. Metadata such as error or operation codes, line numbers, and source file names are still visible in the logs.
+
+
+            Use ``redactClientLogData`` in conjunction with Encryption at Rest and TLS/SSL (Transport Encryption) to assist compliance with regulatory requirements.
+
+
+            *Note*: changing this setting on a cluster will trigger a rolling restart as soon as the cluster is updated.
           externalDocs:
-            description: >-
-              This options corresponds to the ``security.redactClientLogData``
-              cluster parameter.
-
-
-              This setting configures the ``mongod`` or ``mongos`` to redact any message accompanying a given log event before logging. This prevents the program from writing potentially sensitive data stored on the database to the diagnostic log. Metadata such as error or operation codes, line numbers, and source file names are still visible in the logs.
-
-
-              Use ``redactClientLogData`` in conjunction with Encryption at Rest and TLS/SSL (Transport Encryption) to assist compliance with regulatory requirements.
-            url: https://www.mongodb.com/docs/manual/reference/parameters/#mongodb-parameter-param.redactClientLogData
+            description: Log Redaction
+            url: https://www.mongodb.com/docs/manual/administration/monitoring/#log-redaction
         replicaSetScalingStrategy:
           type: string
           default: WORKLOAD_TYPE
