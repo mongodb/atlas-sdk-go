@@ -114,7 +114,7 @@ func createDatabaseUserRequest(sdk *admin.APIClient, groupId string) *admin.Clou
 	}
 }
 
-func createClusterRequest(projectId string) *admin.AdvancedClusterDescription {
+func createClusterRequest(projectId string) *admin.ClusterDescription20240805 {
 	// Input arguments used for creation of the cluster
 	clusterName, _ := uniqueName("example-aws-cluster")
 
@@ -124,23 +124,21 @@ func createClusterRequest(projectId string) *admin.AdvancedClusterDescription {
 	regionName := "US_EAST_1"
 
 	// Size
-	numShards := int(1)
 	priority := int(7)
 	nodeCount := int(3)
 	instanceSize := "M10"
 
-	return &admin.AdvancedClusterDescription{
+	return &admin.ClusterDescription20240805{
 		Name:        &clusterName,
 		ClusterType: &clusterType,
-		ReplicationSpecs: &[]admin.ReplicationSpec{
+		ReplicationSpecs: &[]admin.ReplicationSpec20240805{
 			{
-				NumShards: &numShards,
-				RegionConfigs: &[]admin.CloudRegionConfig{
+				RegionConfigs: &[]admin.CloudRegionConfig20240805{
 					{
 						ProviderName: &providerName,
 						Priority:     &priority,
 						RegionName:   &regionName,
-						ElectableSpecs: &admin.HardwareSpec{
+						ElectableSpecs: &admin.HardwareSpec20240805{
 							InstanceSize: &instanceSize,
 							NodeCount:    &nodeCount,
 						},
