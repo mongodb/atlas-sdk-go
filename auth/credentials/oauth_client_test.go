@@ -113,7 +113,7 @@ func TestCustomTransport_RoundTrip(t *testing.T) {
 	// Make a request using the custom transport
 	req, _ := http.NewRequest("GET", mockServer.URL, http.NoBody)
 	client := &http.Client{Transport: transport}
-	/* trunk-ignore(golangci-lint/bodyclose) */
+	//nolint:all
 	resp, err := client.Do(req)
 
 	assert.NoError(t, err)

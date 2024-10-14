@@ -144,7 +144,7 @@ func ParseToken(accessToken string) (*Token, error) {
 
 // NewServiceAccountClient initializes an OAuthClient with client credentials.
 func NewServiceAccountOAuthClient(clientID, clientSecret string, accessToken string, baseURL *string) (*OAuthClient, error) {
-	/* trunk-ignore(golangci-lint/gosec) */
+	//nolint:gosec //url
 	tokenURL := "https://cloud-dev.mongodb.com/api/oauth/token"
 	if baseURL != nil {
 		tokenURL = *baseURL + "/api/oauth/token";
