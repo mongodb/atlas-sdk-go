@@ -214,8 +214,8 @@ func (a *EventsApiService) GetOrganizationEventExecute(r GetOrganizationEventApi
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/events/{eventId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"eventId"+"}", url.PathEscape(parameterValueToString(r.eventId, "eventId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"eventId"+"}", url.PathEscape(r.eventId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -349,8 +349,8 @@ func (a *EventsApiService) GetProjectEventExecute(r GetProjectEventApiRequest) (
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/events/{eventId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"eventId"+"}", url.PathEscape(parameterValueToString(r.eventId, "eventId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"eventId"+"}", url.PathEscape(r.eventId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -686,7 +686,7 @@ func (a *EventsApiService) ListOrganizationEventsExecute(r ListOrganizationEvent
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/events"
-	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -921,7 +921,7 @@ func (a *EventsApiService) ListProjectEventsExecute(r ListProjectEventsApiReques
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/events"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

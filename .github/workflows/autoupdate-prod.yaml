@@ -75,8 +75,6 @@ jobs:
             2. Documentation style
             3. Transformation engine linting
 
-            > NOTE: New automation PRs need to be closed and reopened to trigger builds
-
             ## Important Details
 
             1. If the build is failing please check the logs and fix the issues in the OpenAPI file (openapi/atlas-api.yaml)

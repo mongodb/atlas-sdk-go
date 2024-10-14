@@ -421,8 +421,8 @@ func (a *ProgrammaticAPIKeysApiService) AddProjectApiKeyExecute(r AddProjectApiK
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/apiKeys/{apiUserId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"apiUserId"+"}", url.PathEscape(parameterValueToString(r.apiUserId, "apiUserId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"apiUserId"+"}", url.PathEscape(r.apiUserId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -542,7 +542,7 @@ func (a *ProgrammaticAPIKeysApiService) CreateApiKeyExecute(r CreateApiKeyApiReq
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/apiKeys"
-	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -694,8 +694,8 @@ func (a *ProgrammaticAPIKeysApiService) CreateApiKeyAccessListExecute(r CreateAp
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}/accessList"
-	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"apiUserId"+"}", url.PathEscape(parameterValueToString(r.apiUserId, "apiUserId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"apiUserId"+"}", url.PathEscape(r.apiUserId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -836,7 +836,7 @@ func (a *ProgrammaticAPIKeysApiService) CreateProjectApiKeyExecute(r CreateProje
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/apiKeys"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -957,8 +957,8 @@ func (a *ProgrammaticAPIKeysApiService) DeleteApiKeyExecute(r DeleteApiKeyApiReq
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"apiUserId"+"}", url.PathEscape(parameterValueToString(r.apiUserId, "apiUserId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"apiUserId"+"}", url.PathEscape(r.apiUserId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1079,9 +1079,9 @@ func (a *ProgrammaticAPIKeysApiService) DeleteApiKeyAccessListEntryExecute(r Del
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}/accessList/{ipAddress}"
-	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"apiUserId"+"}", url.PathEscape(parameterValueToString(r.apiUserId, "apiUserId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"ipAddress"+"}", url.PathEscape(parameterValueToString(r.ipAddress, "ipAddress")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"apiUserId"+"}", url.PathEscape(r.apiUserId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"ipAddress"+"}", url.PathEscape(r.ipAddress), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1197,8 +1197,8 @@ func (a *ProgrammaticAPIKeysApiService) GetApiKeyExecute(r GetApiKeyApiRequest) 
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"apiUserId"+"}", url.PathEscape(parameterValueToString(r.apiUserId, "apiUserId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"apiUserId"+"}", url.PathEscape(r.apiUserId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1319,9 +1319,9 @@ func (a *ProgrammaticAPIKeysApiService) GetApiKeyAccessListExecute(r GetApiKeyAc
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}/accessList/{ipAddress}"
-	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"ipAddress"+"}", url.PathEscape(parameterValueToString(r.ipAddress, "ipAddress")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"apiUserId"+"}", url.PathEscape(parameterValueToString(r.apiUserId, "apiUserId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"ipAddress"+"}", url.PathEscape(r.ipAddress), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"apiUserId"+"}", url.PathEscape(r.apiUserId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1464,8 +1464,8 @@ func (a *ProgrammaticAPIKeysApiService) ListApiKeyAccessListsEntriesExecute(r Li
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}/accessList"
-	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"apiUserId"+"}", url.PathEscape(parameterValueToString(r.apiUserId, "apiUserId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"apiUserId"+"}", url.PathEscape(r.apiUserId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1624,7 +1624,7 @@ func (a *ProgrammaticAPIKeysApiService) ListApiKeysExecute(r ListApiKeysApiReque
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/apiKeys"
-	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1783,7 +1783,7 @@ func (a *ProgrammaticAPIKeysApiService) ListProjectApiKeysExecute(r ListProjectA
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/apiKeys"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1920,8 +1920,8 @@ func (a *ProgrammaticAPIKeysApiService) RemoveProjectApiKeyExecute(r RemoveProje
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/apiKeys/{apiUserId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"apiUserId"+"}", url.PathEscape(parameterValueToString(r.apiUserId, "apiUserId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"apiUserId"+"}", url.PathEscape(r.apiUserId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2041,8 +2041,8 @@ func (a *ProgrammaticAPIKeysApiService) UpdateApiKeyExecute(r UpdateApiKeyApiReq
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"apiUserId"+"}", url.PathEscape(parameterValueToString(r.apiUserId, "apiUserId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"apiUserId"+"}", url.PathEscape(r.apiUserId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2194,8 +2194,8 @@ func (a *ProgrammaticAPIKeysApiService) UpdateApiKeyRolesExecute(r UpdateApiKeyR
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/apiKeys/{apiUserId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"apiUserId"+"}", url.PathEscape(parameterValueToString(r.apiUserId, "apiUserId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"apiUserId"+"}", url.PathEscape(r.apiUserId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

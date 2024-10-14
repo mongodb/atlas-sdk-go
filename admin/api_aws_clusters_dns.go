@@ -119,7 +119,7 @@ func (a *AWSClustersDNSApiService) GetAWSCustomDNSExecute(r GetAWSCustomDNSApiRe
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/awsCustomDNS"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -234,7 +234,7 @@ func (a *AWSClustersDNSApiService) ToggleAWSCustomDNSExecute(r ToggleAWSCustomDN
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/awsCustomDNS"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

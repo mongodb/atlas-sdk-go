@@ -27,7 +27,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: cd8ea421bac292cc31d2b1b2bade556a2154cfbd
+  x-xgen-sha: ecc67f65d9b5a5199175facaab8a2dc97afe2911
 servers:
   - url: https://cloud.mongodb.com
 tags:
@@ -9717,7 +9717,7 @@ paths:
       summary: Return All Project Invitations
       tags:
         - Projects
-      x-sunset: 2024-10-04
+      x-sunset: 2024-11-04
     patch:
       deprecated: true
       description: Updates the details of one pending invitation to the specified
@@ -9755,7 +9755,7 @@ paths:
       summary: Update One Project Invitation
       tags:
         - Projects
-      x-sunset: 2024-10-04
+      x-sunset: 2024-11-04
     post:
       deprecated: true
       description: Invites one MongoDB Cloud user to join the specified project. The
@@ -9789,7 +9789,7 @@ paths:
       summary: Invite One MongoDB Cloud User to Join One Project
       tags:
         - Projects
-      x-sunset: 2024-10-04
+      x-sunset: 2024-11-04
   "/api/atlas/v2/groups/{groupId}/invites/{invitationId}":
     delete:
       deprecated: true
@@ -9826,7 +9826,7 @@ paths:
       summary: Cancel One Project Invitation
       tags:
         - Projects
-      x-sunset: 2024-10-04
+      x-sunset: 2024-11-04
     get:
       deprecated: true
       description: Returns the details of one pending invitation to the specified
@@ -9863,7 +9863,7 @@ paths:
       summary: Return One Project Invitation
       tags:
         - Projects
-      x-sunset: 2024-10-04
+      x-sunset: 2024-11-04
     patch:
       deprecated: true
       description: Updates the details of one pending invitation to the specified
@@ -9912,7 +9912,7 @@ paths:
       summary: Update One Project Invitation by Invitation ID
       tags:
         - Projects
-      x-sunset: 2024-10-04
+      x-sunset: 2024-11-04
   "/api/atlas/v2/groups/{groupId}/ipAddresses":
     get:
       description: Returns all IP addresses for this project. To use this resource,
@@ -16696,7 +16696,7 @@ paths:
       description: Return all non-compliant resources for an org.
       externalDocs:
         description: Atlas Resource Policies
-        url: https://docs.atlas.mongodb.com
+        url: https://dochub.mongodb.org/core/atlas-resource-policies
       operationId: getResourcesNonCompliant
       parameters:
         - $ref: "#/components/parameters/orgId"
@@ -16728,7 +16728,7 @@ paths:
       description: Return all Atlas Resource Policies for the org.
       externalDocs:
         description: Atlas Resource Policies
-        url: https://docs.atlas.mongodb.com
+        url: https://dochub.mongodb.org/core/atlas-resource-policies
       operationId: getAtlasResourcePolicies
       parameters:
         - $ref: "#/components/parameters/orgId"
@@ -16759,7 +16759,7 @@ paths:
       description: Create one Atlas Resource Policy for an org.
       externalDocs:
         description: Atlas Resource Policies
-        url: https://docs.atlas.mongodb.com
+        url: https://dochub.mongodb.org/core/atlas-resource-policies
       operationId: createAtlasResourcePolicy
       parameters:
         - $ref: "#/components/parameters/orgId"
@@ -16802,7 +16802,7 @@ paths:
       description: Delete one Atlas Resource Policy for an org.
       externalDocs:
         description: Atlas Resource Policies
-        url: https://docs.atlas.mongodb.com
+        url: https://dochub.mongodb.org/core/atlas-resource-policies
       operationId: deleteAtlasResourcePolicy
       parameters:
         - $ref: "#/components/parameters/orgId"
@@ -16845,7 +16845,7 @@ paths:
       description: Return one Atlas Resource Policy for an org.
       externalDocs:
         description: Atlas Resource Policies
-        url: https://docs.atlas.mongodb.com
+        url: https://dochub.mongodb.org/core/atlas-resource-policies
       operationId: getAtlasResourcePolicy
       parameters:
         - $ref: "#/components/parameters/orgId"
@@ -16888,7 +16888,7 @@ paths:
       description: Update one Atlas Resource Policy for an org.
       externalDocs:
         description: Atlas Resource Policies
-        url: https://docs.atlas.mongodb.com
+        url: https://dochub.mongodb.org/core/atlas-resource-policies
       operationId: updateAtlasResourcePolicy
       parameters:
         - $ref: "#/components/parameters/orgId"
@@ -16945,7 +16945,7 @@ paths:
       description: Validate one Atlas Resource Policy for an org.
       externalDocs:
         description: Atlas Resource Policies
-        url: https://docs.atlas.mongodb.com
+        url: https://dochub.mongodb.org/core/atlas-resource-policies
       operationId: validateAtlasResourcePolicy
       parameters:
         - $ref: "#/components/parameters/orgId"
@@ -22375,18 +22375,20 @@ components:
             url: https://docs.atlas.mongodb.com/backup/cloud-backup/overview/
         redactClientLogData:
           type: boolean
-          description: Enable or disable log redaction.
+          description: >-
+            Enable or disable log redaction.
+
+
+            This setting configures the ``mongod`` or ``mongos`` to redact any document field contents from a message accompanying a given log event before logging. This prevents the program from writing potentially sensitive data stored on the database to the diagnostic log. Metadata such as error or operation codes, line numbers, and source file names are still visible in the logs.
+
+
+            Use ``redactClientLogData`` in conjunction with Encryption at Rest and TLS/SSL (Transport Encryption) to assist compliance with regulatory requirements.
+
+
+            *Note*: changing this setting on a cluster will trigger a rolling restart as soon as the cluster is updated.
           externalDocs:
-            description: >-
-              This options corresponds to the ``security.redactClientLogData``
-              cluster parameter.
-
-
-              This setting configures the ``mongod`` or ``mongos`` to redact any message accompanying a given log event before logging. This prevents the program from writing potentially sensitive data stored on the database to the diagnostic log. Metadata such as error or operation codes, line numbers, and source file names are still visible in the logs.
-
-
-              Use ``redactClientLogData`` in conjunction with Encryption at Rest and TLS/SSL (Transport Encryption) to assist compliance with regulatory requirements.
-            url: https://www.mongodb.com/docs/manual/reference/parameters/#mongodb-parameter-param.redactClientLogData
+            description: Log Redaction
+            url: https://www.mongodb.com/docs/manual/administration/monitoring/#log-redaction
         replicaSetScalingStrategy:
           type: string
           default: WORKLOAD_TYPE
@@ -30490,7 +30492,8 @@ components:
             replication configurations in the request, you must specify this
             parameter. If you add a new shard to an existing Cluster, you may
             specify this parameter. The request deletes any existing shards  in
-            the Cluster that you exclude from the request.
+            the Cluster that you exclude from the request. This corresponds to
+            Shard ID displayed in the UI.
           example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24

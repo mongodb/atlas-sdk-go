@@ -437,8 +437,8 @@ func (a *MonitoringAndLogsApiService) GetAtlasProcessExecute(r GetAtlasProcessAp
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/processes/{processId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(parameterValueToString(r.processId, "processId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(r.processId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -559,9 +559,9 @@ func (a *MonitoringAndLogsApiService) GetDatabaseExecute(r GetDatabaseApiRequest
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/processes/{processId}/databases/{databaseName}"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"databaseName"+"}", url.PathEscape(parameterValueToString(r.databaseName, "databaseName")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(parameterValueToString(r.processId, "processId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"databaseName"+"}", url.PathEscape(r.databaseName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(r.processId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -727,9 +727,9 @@ func (a *MonitoringAndLogsApiService) GetDatabaseMeasurementsExecute(r GetDataba
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/processes/{processId}/databases/{databaseName}/measurements"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"databaseName"+"}", url.PathEscape(parameterValueToString(r.databaseName, "databaseName")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(parameterValueToString(r.processId, "processId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"databaseName"+"}", url.PathEscape(r.databaseName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(r.processId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -921,9 +921,9 @@ func (a *MonitoringAndLogsApiService) GetDiskMeasurementsExecute(r GetDiskMeasur
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/processes/{processId}/disks/{partitionName}/measurements"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"partitionName"+"}", url.PathEscape(parameterValueToString(r.partitionName, "partitionName")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(parameterValueToString(r.processId, "processId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"partitionName"+"}", url.PathEscape(r.partitionName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(r.processId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1082,9 +1082,9 @@ func (a *MonitoringAndLogsApiService) GetHostLogsExecute(r GetHostLogsApiRequest
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters/{hostName}/logs/{logName}.gz"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"hostName"+"}", url.PathEscape(parameterValueToString(r.hostName, "hostName")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"logName"+"}", url.PathEscape(parameterValueToString(r.logName, "logName")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"hostName"+"}", url.PathEscape(r.hostName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"logName"+"}", url.PathEscape(r.logName), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1258,8 +1258,8 @@ func (a *MonitoringAndLogsApiService) GetHostMeasurementsExecute(r GetHostMeasur
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/processes/{processId}/measurements"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(parameterValueToString(r.processId, "processId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(r.processId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1455,11 +1455,11 @@ func (a *MonitoringAndLogsApiService) GetIndexMetricsExecute(r GetIndexMetricsAp
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics/indexes/{databaseName}/{collectionName}/{indexName}/measurements"
-	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(parameterValueToString(r.processId, "processId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"indexName"+"}", url.PathEscape(parameterValueToString(r.indexName, "indexName")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"databaseName"+"}", url.PathEscape(parameterValueToString(r.databaseName, "databaseName")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"collectionName"+"}", url.PathEscape(parameterValueToString(r.collectionName, "collectionName")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(r.processId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"indexName"+"}", url.PathEscape(r.indexName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"databaseName"+"}", url.PathEscape(r.databaseName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"collectionName"+"}", url.PathEscape(r.collectionName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1642,8 +1642,8 @@ func (a *MonitoringAndLogsApiService) GetMeasurementsExecute(r GetMeasurementsAp
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics/measurements"
-	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(parameterValueToString(r.processId, "processId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(r.processId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1803,7 +1803,7 @@ func (a *MonitoringAndLogsApiService) ListAtlasProcessesExecute(r ListAtlasProce
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/processes"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1967,8 +1967,8 @@ func (a *MonitoringAndLogsApiService) ListDatabasesExecute(r ListDatabasesApiReq
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/processes/{processId}/databases"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(parameterValueToString(r.processId, "processId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(r.processId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2110,9 +2110,9 @@ func (a *MonitoringAndLogsApiService) ListDiskMeasurementsExecute(r ListDiskMeas
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/processes/{processId}/disks/{partitionName}"
-	localVarPath = strings.Replace(localVarPath, "{"+"partitionName"+"}", url.PathEscape(parameterValueToString(r.partitionName, "partitionName")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(parameterValueToString(r.processId, "processId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"partitionName"+"}", url.PathEscape(r.partitionName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(r.processId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2255,8 +2255,8 @@ func (a *MonitoringAndLogsApiService) ListDiskPartitionsExecute(r ListDiskPartit
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/processes/{processId}/disks"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(parameterValueToString(r.processId, "processId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(r.processId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2448,10 +2448,10 @@ func (a *MonitoringAndLogsApiService) ListIndexMetricsExecute(r ListIndexMetrics
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics/indexes/{databaseName}/{collectionName}/measurements"
-	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(parameterValueToString(r.processId, "processId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"databaseName"+"}", url.PathEscape(parameterValueToString(r.databaseName, "databaseName")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"collectionName"+"}", url.PathEscape(parameterValueToString(r.collectionName, "collectionName")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(r.processId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"databaseName"+"}", url.PathEscape(r.databaseName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"collectionName"+"}", url.PathEscape(r.collectionName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2589,8 +2589,8 @@ func (a *MonitoringAndLogsApiService) ListMetricTypesExecute(r ListMetricTypesAp
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics"
-	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(parameterValueToString(r.processId, "processId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(r.processId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
