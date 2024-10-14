@@ -1,4 +1,4 @@
-package test
+package examples
 
 import (
 	"context"
@@ -25,9 +25,9 @@ func TestListClusters(t *testing.T) {
 	clusterAPI := mockadmin.NewClustersApi(t)
 
 	// Program expectations.
-	list := &admin.PaginatedAdvancedClusterDescription{
+	list := &admin.PaginatedClusterDescription20240805{
 		TotalCount: admin.PtrInt(2),
-		Results: &[]admin.AdvancedClusterDescription{
+		Results: &[]admin.ClusterDescription20240805{
 			{StateName: admin.PtrString("IDLE")},
 			{StateName: admin.PtrString("DELETING")},
 		},
