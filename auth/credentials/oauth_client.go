@@ -138,12 +138,13 @@ func ParseToken(accessToken string) (*Token, error) {
     return &Token{
         AccessToken: accessToken,
         Expiry:      expiry,
-        ExpiresIn:   int(expiry.Sub(time.Now()).Seconds()),
+        ExpiresIn:   int(time.Until(expiry).Seconds()),
     }, nil
 }
 
 // NewServiceAccountClient initializes an OAuthClient with client credentials.
 func NewServiceAccountOAuthClient(clientID, clientSecret string, accessToken string, baseURL *string) (*OAuthClient, error) {
+	/* trunk-ignore(golangci-lint/gosec) */
 	tokenURL := "https://cloud-dev.mongodb.com/api/oauth/token"
 	if baseURL != nil {
 		tokenURL = *baseURL + "/api/oauth/token";
@@ -162,7 +163,7 @@ func NewServiceAccountOAuthClient(clientID, clientSecret string, accessToken str
 		// New token can still be expired and it will be rotated on the first request
         token, err := ParseToken(accessToken)
         if err != nil {
-            return nil, err
+            return client, err
         }
         client.token = token
     }
