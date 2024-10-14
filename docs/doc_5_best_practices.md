@@ -69,7 +69,7 @@ The golang `ìnterface{}` type allows you to use the following types as input ar
 
 - Basic types (integer, boolean)
 - Your own structures
-- map[string]any for free-form objects
+- any for free-form objects
 
 NOTE: The Atlas Go SDK uses free-form objects only where models need to handle multiple conflicting values. For example, some of the existing Atlas Search APIs allow you to supply booleans or objects.
 
