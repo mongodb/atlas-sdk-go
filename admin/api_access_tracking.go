@@ -170,8 +170,8 @@ func (a *AccessTrackingApiService) ListAccessLogsByClusterNameExecute(r ListAcce
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/dbAccessHistory/clusters/{clusterName}"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(parameterValueToString(r.clusterName, "clusterName")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -351,8 +351,8 @@ func (a *AccessTrackingApiService) ListAccessLogsByHostnameExecute(r ListAccessL
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/dbAccessHistory/processes/{hostname}"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"hostname"+"}", url.PathEscape(parameterValueToString(r.hostname, "hostname")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"hostname"+"}", url.PathEscape(r.hostname), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

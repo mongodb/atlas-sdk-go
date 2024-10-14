@@ -196,7 +196,7 @@ func (a *CustomDatabaseRolesApiService) CreateCustomDatabaseRoleExecute(r Create
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/customDBRoles/roles"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -314,8 +314,8 @@ func (a *CustomDatabaseRolesApiService) DeleteCustomDatabaseRoleExecute(r Delete
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/customDBRoles/roles/{roleName}"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"roleName"+"}", url.PathEscape(parameterValueToString(r.roleName, "roleName")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"roleName"+"}", url.PathEscape(r.roleName), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -417,8 +417,8 @@ func (a *CustomDatabaseRolesApiService) GetCustomDatabaseRoleExecute(r GetCustom
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/customDBRoles/roles/{roleName}"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"roleName"+"}", url.PathEscape(parameterValueToString(r.roleName, "roleName")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"roleName"+"}", url.PathEscape(r.roleName), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -529,7 +529,7 @@ func (a *CustomDatabaseRolesApiService) ListCustomDatabaseRolesExecute(r ListCus
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/customDBRoles/roles"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -649,8 +649,8 @@ func (a *CustomDatabaseRolesApiService) UpdateCustomDatabaseRoleExecute(r Update
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/customDBRoles/roles/{roleName}"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"roleName"+"}", url.PathEscape(parameterValueToString(r.roleName, "roleName")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"roleName"+"}", url.PathEscape(r.roleName), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

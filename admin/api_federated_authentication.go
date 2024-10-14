@@ -530,7 +530,7 @@ func (a *FederatedAuthenticationApiService) CreateIdentityProviderExecute(r Crea
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders"
-	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(parameterValueToString(r.federationSettingsId, "federationSettingsId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(r.federationSettingsId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -655,8 +655,8 @@ func (a *FederatedAuthenticationApiService) CreateRoleMappingExecute(r CreateRol
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings"
-	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(parameterValueToString(r.federationSettingsId, "federationSettingsId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(r.federationSettingsId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -769,7 +769,7 @@ func (a *FederatedAuthenticationApiService) DeleteFederationAppExecute(r DeleteF
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/federationSettings/{federationSettingsId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(parameterValueToString(r.federationSettingsId, "federationSettingsId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(r.federationSettingsId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -870,8 +870,8 @@ func (a *FederatedAuthenticationApiService) DeleteIdentityProviderExecute(r Dele
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(parameterValueToString(r.federationSettingsId, "federationSettingsId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"identityProviderId"+"}", url.PathEscape(parameterValueToString(r.identityProviderId, "identityProviderId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(r.federationSettingsId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"identityProviderId"+"}", url.PathEscape(r.identityProviderId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -975,9 +975,9 @@ func (a *FederatedAuthenticationApiService) DeleteRoleMappingExecute(r DeleteRol
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(parameterValueToString(r.federationSettingsId, "federationSettingsId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(r.federationSettingsId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(r.id), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1079,8 +1079,8 @@ func (a *FederatedAuthenticationApiService) GetConnectedOrgConfigExecute(r GetCo
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(parameterValueToString(r.federationSettingsId, "federationSettingsId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(r.federationSettingsId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1191,7 +1191,7 @@ func (a *FederatedAuthenticationApiService) GetFederationSettingsExecute(r GetFe
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/federationSettings"
-	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1307,8 +1307,8 @@ func (a *FederatedAuthenticationApiService) GetIdentityProviderExecute(r GetIden
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(parameterValueToString(r.federationSettingsId, "federationSettingsId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"identityProviderId"+"}", url.PathEscape(parameterValueToString(r.identityProviderId, "identityProviderId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(r.federationSettingsId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"identityProviderId"+"}", url.PathEscape(r.identityProviderId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1424,8 +1424,8 @@ func (a *FederatedAuthenticationApiService) GetIdentityProviderMetadataExecute(r
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}/metadata.xml"
-	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(parameterValueToString(r.federationSettingsId, "federationSettingsId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"identityProviderId"+"}", url.PathEscape(parameterValueToString(r.identityProviderId, "identityProviderId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(r.federationSettingsId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"identityProviderId"+"}", url.PathEscape(r.identityProviderId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1546,9 +1546,9 @@ func (a *FederatedAuthenticationApiService) GetRoleMappingExecute(r GetRoleMappi
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(parameterValueToString(r.federationSettingsId, "federationSettingsId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(r.federationSettingsId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(r.id), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1677,7 +1677,7 @@ func (a *FederatedAuthenticationApiService) ListConnectedOrgConfigsExecute(r Lis
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs"
-	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(parameterValueToString(r.federationSettingsId, "federationSettingsId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(r.federationSettingsId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1838,7 +1838,7 @@ func (a *FederatedAuthenticationApiService) ListIdentityProvidersExecute(r ListI
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders"
-	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(parameterValueToString(r.federationSettingsId, "federationSettingsId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(r.federationSettingsId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1982,8 +1982,8 @@ func (a *FederatedAuthenticationApiService) ListRoleMappingsExecute(r ListRoleMa
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings"
-	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(parameterValueToString(r.federationSettingsId, "federationSettingsId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(r.federationSettingsId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2099,8 +2099,8 @@ func (a *FederatedAuthenticationApiService) RemoveConnectedOrgConfigExecute(r Re
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(parameterValueToString(r.federationSettingsId, "federationSettingsId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(r.federationSettingsId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2215,8 +2215,8 @@ func (a *FederatedAuthenticationApiService) RevokeJwksFromIdentityProviderExecut
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}/jwks"
-	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(parameterValueToString(r.federationSettingsId, "federationSettingsId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"identityProviderId"+"}", url.PathEscape(parameterValueToString(r.identityProviderId, "identityProviderId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(r.federationSettingsId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"identityProviderId"+"}", url.PathEscape(r.identityProviderId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2330,8 +2330,8 @@ func (a *FederatedAuthenticationApiService) UpdateConnectedOrgConfigExecute(r Up
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(parameterValueToString(r.federationSettingsId, "federationSettingsId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(r.federationSettingsId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2458,8 +2458,8 @@ func (a *FederatedAuthenticationApiService) UpdateIdentityProviderExecute(r Upda
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(parameterValueToString(r.federationSettingsId, "federationSettingsId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"identityProviderId"+"}", url.PathEscape(parameterValueToString(r.identityProviderId, "identityProviderId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(r.federationSettingsId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"identityProviderId"+"}", url.PathEscape(r.identityProviderId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2589,9 +2589,9 @@ func (a *FederatedAuthenticationApiService) UpdateRoleMappingExecute(r UpdateRol
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(parameterValueToString(r.federationSettingsId, "federationSettingsId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(r.federationSettingsId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(r.id), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
