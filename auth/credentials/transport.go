@@ -16,7 +16,7 @@ func (t *CustomTransport) RoundTrip(req *http.Request) (*http.Response, error) {
 	// Ensure the token is valid
 	token, err := t.client.GetAccessToken()
 	if err != nil {
-		return nil, fmt.Errorf("failed to get access token: %e", err)
+		return nil, fmt.Errorf("failed to get access token: %w", err)
 	}
 
 	// Inject the token into the request
