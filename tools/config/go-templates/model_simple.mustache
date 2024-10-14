@@ -28,8 +28,15 @@ type {{classname}} struct {
 {{/deprecated}}
 	{{name}} {{^required}}{{^isFreeFormObject}}*{{/isFreeFormObject}}{{/required}}{{{dataType}}} `json:"{{baseName}}{{^required}},omitempty{{/required}}"{{#withXml}} xml:"{{baseName}}{{#isXmlAttribute}},attr{{/isXmlAttribute}}"{{/withXml}}{{#vendorExtensions.x-go-custom-tag}} {{{.}}}{{/vendorExtensions.x-go-custom-tag}}`
 {{/vars}}
+{{#isAdditionalPropertiesTrue}}
+	AdditionalProperties map[string]any
+{{/isAdditionalPropertiesTrue}}
 }
 
+{{#isAdditionalPropertiesTrue}}
+type _{{{classname}}} {{{classname}}}
+
+{{/isAdditionalPropertiesTrue}}
 // New{{classname}} instantiates a new {{classname}} object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
