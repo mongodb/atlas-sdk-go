@@ -21,6 +21,10 @@ build:
 test:
 	go test $(SOURCE_FILES) -coverprofile $(COVERAGE) -timeout=30s -parallel=4 -cover -race
 
+.PHONY: test-examples
+test-examples:
+	cd examples && go test ./...
+
 .PHONY: fmt
 fmt:
 	@echo "==> Fixing source code with gofmt..."
