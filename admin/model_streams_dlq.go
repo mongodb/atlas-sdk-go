@@ -2,7 +2,7 @@
 
 package admin
 
-// StreamsDLQ Dead letter queue for the stream processor.
+// StreamsDLQ Dead letter queue for the stream processor. [MongoDB Atlas Docs](https://www.mongodb.com/docs/atlas/reference/glossary/#std-term-dead-letter-queue) contain more information.
 type StreamsDLQ struct {
 	// Name of the collection to use for the DLQ.
 	Coll *string `json:"coll,omitempty"`

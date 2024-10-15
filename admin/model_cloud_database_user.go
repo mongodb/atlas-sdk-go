@@ -14,8 +14,6 @@ type CloudDatabaseUser struct {
 	DatabaseName string `json:"databaseName"`
 	// Date and time when MongoDB Cloud deletes the user. This parameter expresses its value in the ISO 8601 timestamp format in UTC and can include the time zone designation. You must specify a future date that falls within one week of making the Application Programming Interface (API) request.
 	DeleteAfterDate *time.Time `json:"deleteAfterDate,omitempty"`
-	// Description of this database user.
-	Description *string `json:"description,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the project.
 	// Write only field.
 	GroupId string `json:"groupId"`
@@ -167,39 +165,6 @@ func (o *CloudDatabaseUser) HasDeleteAfterDate() bool {
 // SetDeleteAfterDate gets a reference to the given time.Time and assigns it to the DeleteAfterDate field.
 func (o *CloudDatabaseUser) SetDeleteAfterDate(v time.Time) {
 	o.DeleteAfterDate = &v
-}
-
-// GetDescription returns the Description field value if set, zero value otherwise
-func (o *CloudDatabaseUser) GetDescription() string {
-	if o == nil || IsNil(o.Description) {
-		var ret string
-		return ret
-	}
-	return *o.Description
-}
-
-// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CloudDatabaseUser) GetDescriptionOk() (*string, bool) {
-	if o == nil || IsNil(o.Description) {
-		return nil, false
-	}
-
-	return o.Description, true
-}
-
-// HasDescription returns a boolean if a field has been set.
-func (o *CloudDatabaseUser) HasDescription() bool {
-	if o != nil && !IsNil(o.Description) {
-		return true
-	}
-
-	return false
-}
-
-// SetDescription gets a reference to the given string and assigns it to the Description field.
-func (o *CloudDatabaseUser) SetDescription(v string) {
-	o.Description = &v
 }
 
 // GetGroupId returns the GroupId field value

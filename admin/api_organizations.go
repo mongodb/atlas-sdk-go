@@ -279,7 +279,7 @@ type OrganizationsApi interface {
 	ListOrganizationsExecute(r ListOrganizationsApiRequest) (*PaginatedOrganization, *http.Response, error)
 
 	/*
-		RemoveOrganizationUser Remove One MongoDB Cloud User From One Organization
+		RemoveOrganizationUser Remove One MongoDB Cloud User from One Organization
 
 		Removes one MongoDB Cloud user from the specified organization. To use this resource, the requesting API Key must have the Organization User Admin role.
 
@@ -290,7 +290,7 @@ type OrganizationsApi interface {
 	*/
 	RemoveOrganizationUser(ctx context.Context, orgId string, userId string) RemoveOrganizationUserApiRequest
 	/*
-		RemoveOrganizationUser Remove One MongoDB Cloud User From One Organization
+		RemoveOrganizationUser Remove One MongoDB Cloud User from One Organization
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -1885,7 +1885,7 @@ func (r RemoveOrganizationUserApiRequest) Execute() (any, *http.Response, error)
 }
 
 /*
-RemoveOrganizationUser Remove One MongoDB Cloud User From One Organization
+RemoveOrganizationUser Remove One MongoDB Cloud User from One Organization
 
 Removes one MongoDB Cloud user from the specified organization. To use this resource, the requesting API Key must have the Organization User Admin role.
 

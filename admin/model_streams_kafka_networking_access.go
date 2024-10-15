@@ -4,8 +4,6 @@ package admin
 
 // StreamsKafkaNetworkingAccess Information about the networking access.
 type StreamsKafkaNetworkingAccess struct {
-	// Reserved. Will be used by PRIVATE_LINK connection type.
-	ConnectionId *string `json:"connectionId,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
@@ -30,39 +28,6 @@ func NewStreamsKafkaNetworkingAccess() *StreamsKafkaNetworkingAccess {
 func NewStreamsKafkaNetworkingAccessWithDefaults() *StreamsKafkaNetworkingAccess {
 	this := StreamsKafkaNetworkingAccess{}
 	return &this
-}
-
-// GetConnectionId returns the ConnectionId field value if set, zero value otherwise
-func (o *StreamsKafkaNetworkingAccess) GetConnectionId() string {
-	if o == nil || IsNil(o.ConnectionId) {
-		var ret string
-		return ret
-	}
-	return *o.ConnectionId
-}
-
-// GetConnectionIdOk returns a tuple with the ConnectionId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *StreamsKafkaNetworkingAccess) GetConnectionIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ConnectionId) {
-		return nil, false
-	}
-
-	return o.ConnectionId, true
-}
-
-// HasConnectionId returns a boolean if a field has been set.
-func (o *StreamsKafkaNetworkingAccess) HasConnectionId() bool {
-	if o != nil && !IsNil(o.ConnectionId) {
-		return true
-	}
-
-	return false
-}
-
-// SetConnectionId gets a reference to the given string and assigns it to the ConnectionId field.
-func (o *StreamsKafkaNetworkingAccess) SetConnectionId(v string) {
-	o.ConnectionId = &v
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise

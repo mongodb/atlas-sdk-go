@@ -15,8 +15,6 @@ type ClusterAutoScalingSettings struct {
 // will change when the set of required properties is changed
 func NewClusterAutoScalingSettings() *ClusterAutoScalingSettings {
 	this := ClusterAutoScalingSettings{}
-	var diskGBEnabled bool = false
-	this.DiskGBEnabled = &diskGBEnabled
 	return &this
 }
 
@@ -25,8 +23,6 @@ func NewClusterAutoScalingSettings() *ClusterAutoScalingSettings {
 // but it doesn't guarantee that properties required by API are set
 func NewClusterAutoScalingSettingsWithDefaults() *ClusterAutoScalingSettings {
 	this := ClusterAutoScalingSettings{}
-	var diskGBEnabled bool = false
-	this.DiskGBEnabled = &diskGBEnabled
 	return &this
 }
 
