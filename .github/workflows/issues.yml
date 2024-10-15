@@ -40,7 +40,7 @@
                   "description": "This ticket tracks the following GitHub issue: '"${ISSUE_URL}"'.",
                   "components": [
                       {
-                          "id": "34035"
+                          "id": "32194"
                       }
                   ]
               }
