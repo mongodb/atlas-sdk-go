@@ -3,16 +3,13 @@ set -eu
 GOPATH=$(go env GOPATH)
 
 # Inputs:
-# GIT_BASE_REF - The base REF of the git repository (git rev-parse origin/main)
-# Usually "${{ github.event.pull_request.base.sha || github.event.merge_group.base_sha }}" 
 # TARGET_BREAKING_CHANGES_FILE - file to save breaking changes
 script_path=$(dirname "$0")
 
 echo "Installing go-apidiff"
 go install github.com/joelanford/go-apidiff@latest > /dev/null
 
-current_ref=$(git rev-parse main || echo)
-GIT_BASE_REF=${GIT_BASE_REF:-$current_ref}
+GIT_BASE_REF=$(git rev-parse HEAD^)
 TARGET_BREAKING_CHANGES_FILE=${TARGET_BREAKING_CHANGES_FILE:-""}
 
 echo "Running breaking changes check for $GIT_BASE_REF"
@@ -20,7 +17,7 @@ echo "Running breaking changes check for $GIT_BASE_REF"
 pushd "$script_path/../../../" || exit ## workaround for --repo-path="../" not working
 echo "Changed directory to $(pwd)"
 set +e
-BREAKING_CHANGES=$("$GOPATH/bin/go-apidiff" "$GIT_BASE_REF" "$(git rev-parse head)" --compare-imports="false" --print-compatible="false" )
+BREAKING_CHANGES=$("$GOPATH/bin/go-apidiff" "$GIT_BASE_REF" --compare-imports="false" --print-compatible="false")
 set -e
 popd || exit
 

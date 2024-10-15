@@ -46,10 +46,7 @@ jobs:
       - name: Release updates
         if: steps.verify-changed-files.outputs.files_changed == 'true'
         working-directory: ./tools
-        env:
-          GIT_BASE_REF: ${{ github.sha }}
-        run: |
-          make new-release  
+        run: make new-release  
       - name: Ensure all markdown code is formatted
         if: steps.verify-changed-files.outputs.files_changed == 'true'
         working-directory: ./tools
