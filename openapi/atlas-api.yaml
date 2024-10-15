@@ -21,7 +21,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: ecc67f65d9b5a5199175facaab8a2dc97afe2911
+  x-xgen-sha: 991036ecf95ec6855a39cd80bd2a15a90e012e7d
 servers:
 - url: https://cloud.mongodb.com
 tags:
@@ -7463,22 +7463,18 @@ paths:
           externalDocs:
             description: Set up Database Auditing
             url: https://docs.atlas.mongodb.com/database-auditing/
-      - description: "Specifies the date and time for the ending point of the range\
-          \ of log messages to retrieve, in the number of seconds that have elapsed\
-          \ since the UNIX epoch. This value will default to 24 hours after the start\
-          \ date. If the start date is also unspecified, the value will default to\
-          \ the time of the request."
+      - description: Date and time when the period specifies the inclusive ending
+          point for the range of log messages to retrieve. This parameter expresses
+          its value in the number of seconds that have elapsed since the UNIX epoch.
         in: query
         name: endDate
         schema:
           type: integer
           format: int64
           minimum: 1199145600
-      - description: "Specifies the date and time for the starting point of the range\
-          \ of log messages to retrieve, in the number of seconds that have elapsed\
-          \ since the UNIX epoch. This value will default to 24 hours prior to the\
-          \ end date. If the end date is also unspecified, the value will default\
-          \ to 24 hours prior to the time of the request."
+      - description: Date and time when the period specifies the inclusive starting
+          point for the range of log messages to retrieve. This parameter expresses
+          its value in the number of seconds that have elapsed since the UNIX epoch.
         in: query
         name: startDate
         schema:
@@ -9977,7 +9973,7 @@ paths:
       summary: Return All Project Invitations
       tags:
       - Projects
-      x-sunset: 2024-11-04
+      x-sunset: 2024-10-04
     patch:
       deprecated: true
       description: "Updates the details of one pending invitation to the specified\
@@ -10018,7 +10014,7 @@ paths:
       summary: Update One Project Invitation
       tags:
       - Projects
-      x-sunset: 2024-11-04
+      x-sunset: 2024-10-04
     post:
       deprecated: true
       description: "Invites one MongoDB Cloud user to join the specified project.\
@@ -10054,7 +10050,7 @@ paths:
       summary: Invite One MongoDB Cloud User to Join One Project
       tags:
       - Projects
-      x-sunset: 2024-11-04
+      x-sunset: 2024-10-04
   /api/atlas/v2/groups/{groupId}/invites/{invitationId}:
     delete:
       deprecated: true
@@ -10092,7 +10088,7 @@ paths:
       summary: Cancel One Project Invitation
       tags:
       - Projects
-      x-sunset: 2024-11-04
+      x-sunset: 2024-10-04
     get:
       deprecated: true
       description: "Returns the details of one pending invitation to the specified\
@@ -10131,7 +10127,7 @@ paths:
       summary: Return One Project Invitation
       tags:
       - Projects
-      x-sunset: 2024-11-04
+      x-sunset: 2024-10-04
     patch:
       deprecated: true
       description: "Updates the details of one pending invitation to the specified\
@@ -10181,7 +10177,7 @@ paths:
       summary: Update One Project Invitation by Invitation ID
       tags:
       - Projects
-      x-sunset: 2024-11-04
+      x-sunset: 2024-10-04
   /api/atlas/v2/groups/{groupId}/ipAddresses:
     get:
       description: "Returns all IP addresses for this project. To use this resource,\
@@ -10257,7 +10253,7 @@ paths:
 
           | Limit Name | Description | Default | API Override Limit |
           | --- | --- | --- | --- |
-          | atlas.project.deployment.clusters | Limit on the number of clusters in this project if the org is not sales-sold (If org is sales-sold, the limit is 100) | 25 | 90 |
+          | atlas.project.deployment.clusters | Limit on the number of clusters in this project | 25 | 90 |
           | atlas.project.deployment.nodesPerPrivateLinkRegion | Limit on the number of nodes per Private Link region in this project | 50 | 90 |
           | atlas.project.security.databaseAccess.customRoles | Limit on the number of custom roles in this project | 100 | 1400 |
           | atlas.project.security.databaseAccess.users | Limit on the number of database users in this project | 100 | 900 |
@@ -10269,7 +10265,6 @@ paths:
           | dataFederation.bytesProcessed.monthly | Limit on the number of bytes processed across all Data Federation tenants for the current month | N/A | N/A |
           | atlas.project.deployment.privateServiceConnectionsPerRegionGroup | Number of Private Service Connections per Region Group | 50 | 100|
           | atlas.project.deployment.privateServiceConnectionsSubnetMask | Subnet mask for GCP PSC Networks. Has lower limit of 20. | 27 | 27|
-          | atlas.project.deployment.salesSoldM0s | Limit on the number of M0 clusters in this project if the org is sales-sold | 100 | 100 |
         in: path
         name: limitName
         required: true
@@ -10289,7 +10284,6 @@ paths:
           - dataFederation.bytesProcessed.monthly
           - atlas.project.deployment.privateServiceConnectionsPerRegionGroup
           - atlas.project.deployment.privateServiceConnectionsSubnetMask
-          - atlas.project.deployment.salesSoldM0s
       - $ref: "#/components/parameters/envelope"
       - $ref: "#/components/parameters/groupId"
       - $ref: "#/components/parameters/pretty"
@@ -10324,7 +10318,7 @@ paths:
 
           | Limit Name | Description | Default | API Override Limit |
           | --- | --- | --- | --- |
-          | atlas.project.deployment.clusters | Limit on the number of clusters in this project if the org is not sales-sold (If org is sales-sold, the limit is 100) | 25 | 90 |
+          | atlas.project.deployment.clusters | Limit on the number of clusters in this project | 25 | 90 |
           | atlas.project.deployment.nodesPerPrivateLinkRegion | Limit on the number of nodes per Private Link region in this project | 50 | 90 |
           | atlas.project.security.databaseAccess.customRoles | Limit on the number of custom roles in this project | 100 | 1400 |
           | atlas.project.security.databaseAccess.users | Limit on the number of database users in this project | 100 | 900 |
@@ -10336,7 +10330,6 @@ paths:
           | dataFederation.bytesProcessed.monthly | Limit on the number of bytes processed across all Data Federation tenants for the current month | N/A | N/A |
           | atlas.project.deployment.privateServiceConnectionsPerRegionGroup | Number of Private Service Connections per Region Group | 50 | 100|
           | atlas.project.deployment.privateServiceConnectionsSubnetMask | Subnet mask for GCP PSC Networks. Has lower limit of 20. | 27 | 27|
-          | atlas.project.deployment.salesSoldM0s | Limit on the number of M0 clusters in this project if the org is sales-sold | 100 | 100 |
         in: path
         name: limitName
         required: true
@@ -10356,7 +10349,6 @@ paths:
           - dataFederation.bytesProcessed.monthly
           - atlas.project.deployment.privateServiceConnectionsPerRegionGroup
           - atlas.project.deployment.privateServiceConnectionsSubnetMask
-          - atlas.project.deployment.salesSoldM0s
       - $ref: "#/components/parameters/envelope"
       - $ref: "#/components/parameters/groupId"
       - $ref: "#/components/parameters/pretty"
@@ -10395,7 +10387,7 @@ paths:
 
           | Limit Name | Description | Default | API Override Limit |
           | --- | --- | --- | --- |
-          | atlas.project.deployment.clusters | Limit on the number of clusters in this project if the org is not sales-sold (If org is sales-sold, the limit is 100) | 25 | 90 |
+          | atlas.project.deployment.clusters | Limit on the number of clusters in this project | 25 | 90 |
           | atlas.project.deployment.nodesPerPrivateLinkRegion | Limit on the number of nodes per Private Link region in this project | 50 | 90 |
           | atlas.project.security.databaseAccess.customRoles | Limit on the number of custom roles in this project | 100 | 1400 |
           | atlas.project.security.databaseAccess.users | Limit on the number of database users in this project | 100 | 900 |
@@ -10407,7 +10399,6 @@ paths:
           | dataFederation.bytesProcessed.monthly | Limit on the number of bytes processed across all Data Federation tenants for the current month | N/A | N/A |
           | atlas.project.deployment.privateServiceConnectionsPerRegionGroup | Number of Private Service Connections per Region Group | 50 | 100|
           | atlas.project.deployment.privateServiceConnectionsSubnetMask | Subnet mask for GCP PSC Networks. Has lower limit of 20. | 27 | 27|
-          | atlas.project.deployment.salesSoldM0s | Limit on the number of M0 clusters in this project if the org is sales-sold | 100 | 100 |
         in: path
         name: limitName
         required: true
@@ -10427,7 +10418,6 @@ paths:
           - dataFederation.bytesProcessed.monthly
           - atlas.project.deployment.privateServiceConnectionsPerRegionGroup
           - atlas.project.deployment.privateServiceConnectionsSubnetMask
-          - atlas.project.deployment.salesSoldM0s
       - $ref: "#/components/parameters/envelope"
       - $ref: "#/components/parameters/groupId"
       - $ref: "#/components/parameters/pretty"
@@ -14249,13 +14239,13 @@ paths:
           minLength: 1
           pattern: "^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$"
       responses:
-        "202":
+        "204":
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                $ref: "#/components/schemas/RequestAccepted"
+                $ref: "#/components/schemas/NoBody"
               x-xgen-version: 2023-01-01
-          description: Accepted
+          description: This endpoint does not return a response body.
         "400":
           $ref: "#/components/responses/badRequest"
         "404":
@@ -14487,141 +14477,6 @@ paths:
       x-xgen-changelog:
         "2023-09-11": "The MongoDB Atlas Streams Processing API is now exposed as\
           \ part of private preview, but is subject to change until GA."
-  /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections:
-    get:
-      description: Returns a list of incoming VPC Peering Connections.
-      operationId: getVPCPeeringConnections
-      parameters:
-      - $ref: "#/components/parameters/groupId"
-      - $ref: "#/components/parameters/envelope"
-      - $ref: "#/components/parameters/itemsPerPage"
-      - $ref: "#/components/parameters/pageNum"
-      - $ref: "#/components/parameters/pretty"
-      responses:
-        "200":
-          content:
-            application/vnd.atlas.2023-02-01+json:
-              x-xgen-version: 2023-02-01
-          description: OK
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "500":
-          $ref: "#/components/responses/internalServerError"
-      security:
-      - DigestAuth: []
-      summary: Return All VPC Peering Connections.
-      tags:
-      - Streams
-  /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}:
-    delete:
-      description: Deletes an incoming VPC Peering connection.
-      operationId: deleteVPCPeeringConnection
-      parameters:
-      - $ref: "#/components/parameters/envelope"
-      - $ref: "#/components/parameters/groupId"
-      - description: The VPC Peering Connection id.
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-      responses:
-        "202":
-          content:
-            application/vnd.atlas.2023-02-01+json:
-              schema:
-                $ref: "#/components/schemas/NoBody"
-              x-xgen-version: 2023-02-01
-          description: Accepted
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
-        "500":
-          $ref: "#/components/responses/internalServerError"
-      security:
-      - DigestAuth: []
-      summary: Deletes an incoming VPC Peering connection.
-      tags:
-      - Streams
-  /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}:accept:
-    post:
-      description: Requests the acceptance of an incoming VPC Peering connection.
-      operationId: acceptVPCPeeringConnection
-      parameters:
-      - $ref: "#/components/parameters/envelope"
-      - $ref: "#/components/parameters/groupId"
-      - description: The VPC Peering Connection id.
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/vnd.atlas.2023-02-01+json:
-            schema:
-              $ref: "#/components/schemas/VPCPeeringActionChallenge"
-        description: "Challenge values for VPC Peering requester account ID, and requester\
-          \ VPC ID."
-        required: true
-      responses:
-        "202":
-          content:
-            application/vnd.atlas.2023-02-01+json:
-              schema:
-                $ref: "#/components/schemas/NoBody"
-              x-xgen-version: 2023-02-01
-          description: Accepted
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
-        "500":
-          $ref: "#/components/responses/internalServerError"
-      security:
-      - DigestAuth: []
-      summary: Requests the acceptance of an incoming VPC Peering connection.
-      tags:
-      - Streams
-  /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}:reject:
-    post:
-      description: Requests the rejection of an incoming VPC Peering connection.
-      operationId: rejectVPCPeeringConnection
-      parameters:
-      - $ref: "#/components/parameters/envelope"
-      - $ref: "#/components/parameters/groupId"
-      - description: The VPC Peering Connection id.
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-      responses:
-        "202":
-          content:
-            application/vnd.atlas.2023-02-01+json:
-              schema:
-                $ref: "#/components/schemas/NoBody"
-              x-xgen-version: 2023-02-01
-          description: Accepted
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
-        "500":
-          $ref: "#/components/responses/internalServerError"
-      security:
-      - DigestAuth: []
-      summary: Requests the rejection of an incoming VPC Peering connection.
-      tags:
-      - Streams
   /api/atlas/v2/groups/{groupId}/streams/{tenantName}:
     delete:
       description: "Delete one stream instance in the specified project. To use this\
@@ -17387,7 +17242,7 @@ paths:
       description: Return all non-compliant resources for an org.
       externalDocs:
         description: Atlas Resource Policies
-        url: https://dochub.mongodb.org/core/atlas-resource-policies
+        url: https://docs.atlas.mongodb.com
       operationId: getResourcesNonCompliant
       parameters:
       - $ref: "#/components/parameters/envelope"
@@ -17421,7 +17276,7 @@ paths:
       description: Return all Atlas Resource Policies for the org.
       externalDocs:
         description: Atlas Resource Policies
-        url: https://dochub.mongodb.org/core/atlas-resource-policies
+        url: https://docs.atlas.mongodb.com
       operationId: getAtlasResourcePolicies
       parameters:
       - $ref: "#/components/parameters/envelope"
@@ -17454,7 +17309,7 @@ paths:
       description: Create one Atlas Resource Policy for an org.
       externalDocs:
         description: Atlas Resource Policies
-        url: https://dochub.mongodb.org/core/atlas-resource-policies
+        url: https://docs.atlas.mongodb.com
       operationId: createAtlasResourcePolicy
       parameters:
       - $ref: "#/components/parameters/envelope"
@@ -17499,7 +17354,7 @@ paths:
       description: Delete one Atlas Resource Policy for an org.
       externalDocs:
         description: Atlas Resource Policies
-        url: https://dochub.mongodb.org/core/atlas-resource-policies
+        url: https://docs.atlas.mongodb.com
       operationId: deleteAtlasResourcePolicy
       parameters:
       - $ref: "#/components/parameters/envelope"
@@ -17544,7 +17399,7 @@ paths:
       description: Return one Atlas Resource Policy for an org.
       externalDocs:
         description: Atlas Resource Policies
-        url: https://dochub.mongodb.org/core/atlas-resource-policies
+        url: https://docs.atlas.mongodb.com
       operationId: getAtlasResourcePolicy
       parameters:
       - $ref: "#/components/parameters/envelope"
@@ -17589,7 +17444,7 @@ paths:
       description: Update one Atlas Resource Policy for an org.
       externalDocs:
         description: Atlas Resource Policies
-        url: https://dochub.mongodb.org/core/atlas-resource-policies
+        url: https://docs.atlas.mongodb.com
       operationId: updateAtlasResourcePolicy
       parameters:
       - $ref: "#/components/parameters/envelope"
@@ -17648,7 +17503,7 @@ paths:
       description: Validate one Atlas Resource Policy for an org.
       externalDocs:
         description: Atlas Resource Policies
-        url: https://dochub.mongodb.org/core/atlas-resource-policies
+        url: https://docs.atlas.mongodb.com
       operationId: validateAtlasResourcePolicy
       parameters:
       - $ref: "#/components/parameters/envelope"
@@ -18223,7 +18078,6 @@ paths:
       parameters:
       - $ref: "#/components/parameters/envelope"
       - $ref: "#/components/parameters/orgId"
-      - $ref: "#/components/parameters/pretty"
       - description: Unique 24-hexadecimal digit string that identifies the user to
           be deleted.
         in: path
@@ -18254,7 +18108,7 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
       - DigestAuth: []
-      summary: Remove One MongoDB Cloud User From One Organization
+      summary: Remove One MongoDB Cloud User from One Organization
       tags:
       - Organizations
   /api/atlas/v2/orgs/{orgId}/users/{userId}/roles:
@@ -19590,31 +19444,6 @@ components:
           - REPLICASET
           - SHARDED
           - GEOSHARDED
-        configServerManagementMode:
-          type: string
-          default: ATLAS_MANAGED
-          description: |-
-            Config Server Management Mode for creating or updating a sharded cluster.
-
-            When configured as ATLAS_MANAGED, atlas may automatically switch the cluster's config server type for optimal performance and savings.
-
-            When configured as FIXED_TO_DEDICATED, the cluster will always use a dedicated config server.
-          enum:
-          - ATLAS_MANAGED
-          - FIXED_TO_DEDICATED
-          externalDocs:
-            description: MongoDB Sharded Cluster Config Servers
-            url: https://dochub.mongodb.org/docs/manual/core/sharded-cluster-config-servers
-        configServerType:
-          type: string
-          description: Describes a sharded cluster's config server type.
-          enum:
-          - DEDICATED
-          - EMBEDDED
-          externalDocs:
-            description: MongoDB Sharded Cluster Config Servers
-            url: https://dochub.mongodb.org/docs/manual/core/sharded-cluster-config-servers
-          readOnly: true
         connectionStrings:
           $ref: "#/components/schemas/ClusterConnectionStrings"
         createDate:
@@ -21802,12 +21631,6 @@ components:
       - eventTypeName
       - id
       title: API User Events
-    ApiVersion:
-      type: object
-      properties:
-        version:
-          type: string
-          description: Object representing a version of the Atlas Admin API.
     AppServiceAlertConfigViewForNdsGroup:
       type: object
       description: App Services metric alert configuration allows to select which
@@ -22289,12 +22112,7 @@ components:
           enum:
           - AVERAGE
         operator:
-          type: string
-          description: Comparison operator to apply when checking the current metric
-            value.
-          enum:
-          - LESS_THAN
-          - GREATER_THAN
+          $ref: "#/components/schemas/Operator"
         threshold:
           type: number
           format: double
@@ -22372,12 +22190,6 @@ components:
       enum:
       - VIRGINIA_USA
       - AMSTERDAM_NLD
-    AtlasDataFederationGCPRegion:
-      type: string
-      description: Atlas Data Federation GCP Regions.
-      enum:
-      - IOWA_USA
-      - BELGIUM_EU
     AtlasOrganization:
       type: object
       description: Details that describe the organization.
@@ -24725,7 +24537,6 @@ components:
       oneOf:
       - $ref: "#/components/schemas/ApiAtlasDataLakeAWSRegionView"
       - $ref: "#/components/schemas/AtlasDataFederationAzureRegion"
-      - $ref: "#/components/schemas/AtlasDataFederationGCPRegion"
     BaseCloudProviderInstanceSize:
       type: object
       description: "Minimum instance size to which your cluster can automatically\
@@ -26002,10 +25813,6 @@ components:
             expresses its value in the ISO 8601 timestamp format in UTC and can include
             the time zone designation. You must specify a future date that falls within
             one week of making the Application Programming Interface (API) request.
-        description:
-          type: string
-          description: Description of this database user.
-          maxLength: 100
         groupId:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the project.
@@ -27547,7 +27354,6 @@ components:
           $ref: "#/components/schemas/ClusterComputeAutoScaling"
         diskGBEnabled:
           type: boolean
-          default: false
           description: Flag that indicates whether someone enabled disk auto-scaling
             for this cluster.
       title: Automatic Cluster Scaling Settings
@@ -27574,14 +27380,12 @@ components:
       properties:
         enabled:
           type: boolean
-          default: false
           description: "Flag that indicates whether cluster tier auto-scaling is enabled.\
             \ Set to `true` to enable cluster tier auto-scaling. If enabled, you must\
             \ specify a value for **providerSettings.autoScaling.compute.maxInstanceSize**\
             \ also. Set to `false` to disable cluster tier auto-scaling."
         scaleDownEnabled:
           type: boolean
-          default: false
           description: "Flag that indicates whether the cluster tier can scale down.\
             \ This is required if **autoScaling.compute.enabled** is `true`. If you\
             \ enable this option, specify a value for **providerSettings.autoScaling.compute.minInstanceSize**."
@@ -27734,31 +27538,6 @@ components:
           - REPLICASET
           - SHARDED
           - GEOSHARDED
-        configServerManagementMode:
-          type: string
-          default: ATLAS_MANAGED
-          description: |-
-            Config Server Management Mode for creating or updating a sharded cluster.
-
-            When configured as ATLAS_MANAGED, atlas may automatically switch the cluster's config server type for optimal performance and savings.
-
-            When configured as FIXED_TO_DEDICATED, the cluster will always use a dedicated config server.
-          enum:
-          - ATLAS_MANAGED
-          - FIXED_TO_DEDICATED
-          externalDocs:
-            description: MongoDB Sharded Cluster Config Servers
-            url: https://dochub.mongodb.org/docs/manual/core/sharded-cluster-config-servers
-        configServerType:
-          type: string
-          description: Describes a sharded cluster's config server type.
-          enum:
-          - DEDICATED
-          - EMBEDDED
-          externalDocs:
-            description: MongoDB Sharded Cluster Config Servers
-            url: https://dochub.mongodb.org/docs/manual/core/sharded-cluster-config-servers
-          readOnly: true
         connectionStrings:
           $ref: "#/components/schemas/ClusterConnectionStrings"
         createDate:
@@ -27885,19 +27664,6 @@ components:
           externalDocs:
             description: Continuous Cloud Backups
             url: https://docs.atlas.mongodb.com/backup/cloud-backup/overview/
-        redactClientLogData:
-          type: boolean
-          description: |-
-            Enable or disable log redaction.
-
-            This setting configures the ``mongod`` or ``mongos`` to redact any document field contents from a message accompanying a given log event before logging. This prevents the program from writing potentially sensitive data stored on the database to the diagnostic log. Metadata such as error or operation codes, line numbers, and source file names are still visible in the logs.
-
-            Use ``redactClientLogData`` in conjunction with Encryption at Rest and TLS/SSL (Transport Encryption) to assist compliance with regulatory requirements.
-
-            *Note*: changing this setting on a cluster will trigger a rolling restart as soon as the cluster is updated.
-          externalDocs:
-            description: Log Redaction
-            url: https://www.mongodb.com/docs/manual/administration/monitoring/#log-redaction
         replicaSetScalingStrategy:
           type: string
           default: WORKLOAD_TYPE
@@ -28044,7 +27810,6 @@ components:
         changeStreamOptionsPreAndPostImagesExpireAfterSeconds:
           type: integer
           format: int32
-          default: -1
           description: The minimum pre- and post-image retention time in seconds.
           externalDocs:
             description: "This option corresponds to the ``changeStreamOptions.preAndPostImages.expireAfterSeconds``\
@@ -28069,14 +27834,6 @@ components:
             description: This option corresponds to the `chunkMigrationConcurrency`
               `mongod` configuration file option.
             url: https://www.mongodb.com/docs/manual/reference/parameters/#mongodb-parameter-param.chunkMigrationConcurrency
-        defaultMaxTimeMS:
-          type: integer
-          format: int32
-          description: Default time limit in milliseconds for individual read operations
-            to complete.
-          externalDocs:
-            description: This option corresponds to the defaultMaxTimeMS cluster parameter.
-            url: https://www.mongodb.com/docs/upcoming/reference/cluster-parameters/defaultMaxTimeMS/
         defaultReadConcern:
           type: string
           default: available
@@ -28113,10 +27870,8 @@ components:
             url: https://docs.mongodb.com/upcoming/reference/parameters/#mongodb-parameter-param.failIndexKeyTooLong
         javascriptEnabled:
           type: boolean
-          description: "Flag that indicates whether the cluster allows execution of\
-            \ operations that perform server-side executions of JavaScript. When using\
-            \ 8.0+, we recommend disabling server-side JavaScript and using operators\
-            \ of aggregation pipeline as more performant alternative."
+          description: Flag that indicates whether the cluster allows execution of
+            operations that perform server-side executions of JavaScript.
           externalDocs:
             description: This option corresponds to modifying the `security.javascriptEnabled`
               configuration file option for each `mongod` and `mongos` in the cluster.
@@ -28212,7 +27967,6 @@ components:
         changeStreamOptionsPreAndPostImagesExpireAfterSeconds:
           type: integer
           format: int32
-          default: -1
           description: The minimum pre- and post-image retention time in seconds.
           externalDocs:
             description: "This option corresponds to the ``changeStreamOptions.preAndPostImages.expireAfterSeconds``\
@@ -28237,14 +27991,6 @@ components:
             description: This option corresponds to the `chunkMigrationConcurrency`
               `mongod` configuration file option.
             url: https://www.mongodb.com/docs/manual/reference/parameters/#mongodb-parameter-param.chunkMigrationConcurrency
-        defaultMaxTimeMS:
-          type: integer
-          format: int32
-          description: Default time limit in milliseconds for individual read operations
-            to complete.
-          externalDocs:
-            description: This option corresponds to the defaultMaxTimeMS cluster parameter.
-            url: https://www.mongodb.com/docs/upcoming/reference/cluster-parameters/defaultMaxTimeMS/
         defaultWriteConcern:
           type: string
           description: Default level of acknowledgment requested from MongoDB for
@@ -28255,10 +28001,8 @@ components:
             url: https://docs.mongodb.com/manual/reference/write-concern/
         javascriptEnabled:
           type: boolean
-          description: "Flag that indicates whether the cluster allows execution of\
-            \ operations that perform server-side executions of JavaScript. When using\
-            \ 8.0+, we recommend disabling server-side JavaScript and using operators\
-            \ of aggregation pipeline as more performant alternative."
+          description: Flag that indicates whether the cluster allows execution of
+            operations that perform server-side executions of JavaScript.
           externalDocs:
             description: This option corresponds to modifying the `security.javascriptEnabled`
               configuration file option for each `mongod` and `mongos` in the cluster.
@@ -29841,33 +29585,17 @@ components:
         roleId:
           type: string
           description: Unique identifier of the role that Data Federation can use
-            to access the data stores. Required if specifying cloudProviderConfig.
+            to access the data stores.Required if specifying cloudProviderConfig.
         servicePrincipalId:
           type: string
           description: The ID of the Service Principal for which there is an access
-            policy for Atlas to access Azure resources.
+            policyfor Atlas to access Azure resources.
           readOnly: true
         tenantId:
           type: string
           description: The Azure Active Directory / Entra ID tenant ID associated
             with the Service Principal.
           readOnly: true
-      required:
-      - roleId
-    DataFederationGCPCloudProviderConfig:
-      type: object
-      description: Configuration for running Data Federation in GCP.
-      properties:
-        gcpServiceAccount:
-          type: string
-          description: The email address of the Google Cloud Platform (GCP) service
-            account created by Atlas which should be authorized to allow Atlas to
-            access Google Cloud Storage.
-          readOnly: true
-        roleId:
-          type: string
-          description: Unique identifier of the role that Data Federation can use
-            to access the data stores. Required if specifying cloudProviderConfig.
       required:
       - roleId
     DataFederationLimit:
@@ -29877,7 +29605,6 @@ components:
         mapping:
           atlas.project.deployment.clusters: "#/components/schemas/DefaultLimit"
           atlas.project.deployment.nodesPerPrivateLinkRegion: "#/components/schemas/DefaultLimit"
-          atlas.project.deployment.salesSoldM0s: "#/components/schemas/DefaultLimit"
           atlas.project.deployment.serverlessMTMs: "#/components/schemas/DefaultLimit"
           atlas.project.security.databaseAccess.customRoles: "#/components/schemas/DefaultLimit"
           atlas.project.security.databaseAccess.users: "#/components/schemas/DefaultLimit"
@@ -30248,9 +29975,7 @@ components:
           $ref: "#/components/schemas/DataLakeAWSCloudProviderConfig"
         azure:
           $ref: "#/components/schemas/DataFederationAzureCloudProviderConfig"
-        gcp:
-          $ref: "#/components/schemas/DataFederationGCPCloudProviderConfig"
-      title: Data Federation Cloud Provider
+      title: Data Lake Cloud Provider
     DataLakeDLSAWSStore:
       type: object
       allOf:
@@ -30375,7 +30100,6 @@ components:
           enum:
           - AWS
           - AZURE
-          - GCP
         region:
           $ref: "#/components/schemas/BaseAtlasDataLakeRegion"
       required:
@@ -31111,12 +30835,7 @@ components:
           enum:
           - AVERAGE
         operator:
-          type: string
-          description: Comparison operator to apply when checking the current metric
-            value.
-          enum:
-          - LESS_THAN
-          - GREATER_THAN
+          $ref: "#/components/schemas/Operator"
         threshold:
           type: number
           format: double
@@ -31466,8 +31185,6 @@ components:
           - SQL_SET_SCHEMA
           - VIEW_ALL_HISTORY
           - OUT_TO_S3
-          - OUT_TO_AZURE
-          - OUT_TO_GCS
           - STORAGE_GET_CONFIG
           - STORAGE_SET_CONFIG
           - FLUSH_ROUTER_CONFIG
@@ -32482,7 +32199,6 @@ components:
             - CLUSTER_VERSION_UNFIXED
             - CLUSTER_FCV_FIXED
             - CLUSTER_FCV_UNFIXED
-            - CLUSTER_FCV_EXPIRATION_DATE_UPDATED
             - AGENT_VERSION_FIXED
             - AGENT_VERSION_UNFIXED
             - FIXED_VERSION_UPDATED
@@ -32877,6 +32593,7 @@ components:
           pattern: "^([a-f0-9]{24})$"
         hostnameSchemaType:
           type: string
+          default: PUBLIC
           description: The network type to use between the migration host and the
             destination cluster.
           enum:
@@ -34162,13 +33879,13 @@ components:
       type: object
       additionalProperties:
         type: object
-        description: The stats associated with the stream processor.
-        externalDocs:
-          url: https://www.mongodb.com/docs/atlas/atlas-stream-processing/manage-stream-processor/#view-statistics-of-a-stream-processor
+        description: "The stats associated with the stream processor. [MongoDB Atlas\
+          \ Docs](https://www.mongodb.com/docs/atlas/atlas-stream-processing/manage-stream-processor/#view-statistics-of-a-stream-processor)\
+          \ contain more information."
         readOnly: true
-      description: The stats associated with the stream processor.
-      externalDocs:
-        url: https://www.mongodb.com/docs/atlas/atlas-stream-processing/manage-stream-processor/#view-statistics-of-a-stream-processor
+      description: "The stats associated with the stream processor. [MongoDB Atlas\
+        \ Docs](https://www.mongodb.com/docs/atlas/atlas-stream-processing/manage-stream-processor/#view-statistics-of-a-stream-processor)\
+        \ contain more information."
       readOnly: true
     EARPrivateEndpoint:
       type: object
@@ -34749,8 +34466,6 @@ components:
         - HOST_HAS_INDEX_SUGGESTIONS
         - HOST_MONGOT_RECOVERED_OOM
         - HOST_MONGOT_CRASHING_OOM
-        - HOST_MONGOT_RESUME_REPLICATION
-        - HOST_MONGOT_STOP_REPLICATION
         - HOST_ENOUGH_DISK_SPACE
         - HOST_NOT_ENOUGH_DISK_SPACE
         title: Host Event Types
@@ -34963,8 +34678,6 @@ components:
         - ATLAS_SQL_SCHEDULED_UPDATE_CREATED
         - ATLAS_SQL_SCHEDULED_UPDATE_MODIFIED
         - ATLAS_SQL_SCHEDULED_UPDATE_REMOVED
-        - CLUSTER_INSTANCE_DISABLED
-        - CLUSTER_INSTANCE_ENABLED
         title: NDS Audit Types
       - type: string
         enum:
@@ -35161,7 +34874,6 @@ components:
         - CLUSTER_VERSION_UNFIXED
         - CLUSTER_FCV_FIXED
         - CLUSTER_FCV_UNFIXED
-        - CLUSTER_FCV_EXPIRATION_DATE_UPDATED
         - AGENT_VERSION_FIXED
         - AGENT_VERSION_UNFIXED
         - FIXED_VERSION_UPDATED
@@ -37593,22 +37305,18 @@ components:
           pattern: "^([a-f0-9]{24})$"
         destinationOrgPrivateApiKey:
           type: string
-          description: Unique string that identifies the private part of the API Key
-            used to verify access to the destination organization. This parameter
-            is required only when you authenticate with Programmatic API Keys.
+          description: "Unique string that identifies the private part of the [API\
+            \ Key](https://dochub.mongodb.org/core/atlas-create-prog-api-key) used\
+            \ to verify access to the destination organization. This parameter is\
+            \ required only when you authenticate with Programmatic API Keys."
           example: 55c3bbb6-b4bb-0be1-e66d20841f3e
-          externalDocs:
-            description: Grant Programmatic Access to Atlas
-            url: https://dochub.mongodb.org/core/atlas-create-prog-api-key
         destinationOrgPublicApiKey:
           type: string
-          description: Unique string that identifies the public part of the API Key
-            used to verify access to the destination organization. This parameter
-            is required only when you authenticate with Programmatic API Keys.
+          description: "Unique string that identifies the public part of the [API\
+            \ Key](https://dochub.mongodb.org/core/atlas-create-prog-api-key) used\
+            \ to verify access to the destination organization. This parameter is\
+            \ required only when you authenticate with Programmatic API Keys."
           example: zmmrboas
-          externalDocs:
-            description: Grant Programmatic Access to Atlas
-            url: https://dochub.mongodb.org/core/atlas-create-prog-api-key
           maxLength: 8
           minLength: 8
     GroupNotification:
@@ -37865,30 +37573,7 @@ components:
       required:
       - description
       - name
-      - roles
       - secretExpiresAfterHours
-    GroupServiceAccountRoleAssignment:
-      type: object
-      properties:
-        roles:
-          type: array
-          description: The Project permissions for the Service Account in the specified
-            Project.
-          items:
-            type: string
-            description: Project roles available for Service Accounts.
-            enum:
-            - GROUP_OWNER
-            - GROUP_READ_ONLY
-            - GROUP_DATA_ACCESS_ADMIN
-            - GROUP_DATA_ACCESS_READ_ONLY
-            - GROUP_DATA_ACCESS_READ_WRITE
-            - GROUP_CLUSTER_MANAGER
-            - GROUP_SEARCH_INDEX_EDITOR
-            - GROUP_STREAM_PROCESSING_OWNER
-          uniqueItems: true
-      required:
-      - roles
     GroupServiceAccountUpdateRequest:
       type: object
       properties:
@@ -38293,8 +37978,6 @@ components:
       - HOST_HAS_INDEX_SUGGESTIONS
       - HOST_MONGOT_RECOVERED_OOM
       - HOST_MONGOT_CRASHING_OOM
-      - HOST_MONGOT_RESUME_REPLICATION
-      - HOST_MONGOT_STOP_REPLICATION
       - HOST_ENOUGH_DISK_SPACE
       - HOST_NOT_ENOUGH_DISK_SPACE
       example: HOST_DOWN
@@ -38306,7 +37989,6 @@ components:
       - HOST_DOWN
       - HOST_HAS_INDEX_SUGGESTIONS
       - HOST_MONGOT_CRASHING_OOM
-      - HOST_MONGOT_STOP_REPLICATION
       - HOST_NOT_ENOUGH_DISK_SPACE
       example: HOST_DOWN
       title: Host Event Types
@@ -39358,12 +39040,7 @@ components:
           enum:
           - AVERAGE
         operator:
-          type: string
-          description: Comparison operator to apply when checking the current metric
-            value.
-          enum:
-          - LESS_THAN
-          - GREATER_THAN
+          $ref: "#/components/schemas/Operator"
         threshold:
           type: number
           format: double
@@ -40276,21 +39953,6 @@ components:
           - ATLAS_AWS_STREAM_PROCESSING_DATA_TRANSFER
           - ATLAS_AZURE_STREAM_PROCESSING_DATA_TRANSFER
           - ATLAS_AWS_STREAM_PROCESSING_VPC_PEERING
-          - ATLAS_USS_AWS_100_USAGE_HOURS
-          - ATLAS_USS_AWS_200_USAGE_HOURS
-          - ATLAS_USS_AWS_300_USAGE_HOURS
-          - ATLAS_USS_AWS_400_USAGE_HOURS
-          - ATLAS_USS_AWS_500_USAGE_HOURS
-          - ATLAS_USS_AZURE_100_USAGE_HOURS
-          - ATLAS_USS_AZURE_200_USAGE_HOURS
-          - ATLAS_USS_AZURE_300_USAGE_HOURS
-          - ATLAS_USS_AZURE_400_USAGE_HOURS
-          - ATLAS_USS_AZURE_500_USAGE_HOURS
-          - ATLAS_USS_GCP_100_USAGE_HOURS
-          - ATLAS_USS_GCP_200_USAGE_HOURS
-          - ATLAS_USS_GCP_300_USAGE_HOURS
-          - ATLAS_USS_GCP_400_USAGE_HOURS
-          - ATLAS_USS_GCP_500_USAGE_HOURS
           readOnly: true
         startDate:
           type: string
@@ -40616,31 +40278,6 @@ components:
           - REPLICASET
           - SHARDED
           - GEOSHARDED
-        configServerManagementMode:
-          type: string
-          default: ATLAS_MANAGED
-          description: |-
-            Config Server Management Mode for creating or updating a sharded cluster.
-
-            When configured as ATLAS_MANAGED, atlas may automatically switch the cluster's config server type for optimal performance and savings.
-
-            When configured as FIXED_TO_DEDICATED, the cluster will always use a dedicated config server.
-          enum:
-          - ATLAS_MANAGED
-          - FIXED_TO_DEDICATED
-          externalDocs:
-            description: MongoDB Sharded Cluster Config Servers
-            url: https://dochub.mongodb.org/docs/manual/core/sharded-cluster-config-servers
-        configServerType:
-          type: string
-          description: Describes a sharded cluster's config server type.
-          enum:
-          - DEDICATED
-          - EMBEDDED
-          externalDocs:
-            description: MongoDB Sharded Cluster Config Servers
-            url: https://dochub.mongodb.org/docs/manual/core/sharded-cluster-config-servers
-          readOnly: true
         connectionStrings:
           $ref: "#/components/schemas/ClusterConnectionStrings"
         createDate:
@@ -40956,31 +40593,6 @@ components:
           - REPLICASET
           - SHARDED
           - GEOSHARDED
-        configServerManagementMode:
-          type: string
-          default: ATLAS_MANAGED
-          description: |-
-            Config Server Management Mode for creating or updating a sharded cluster.
-
-            When configured as ATLAS_MANAGED, atlas may automatically switch the cluster's config server type for optimal performance and savings.
-
-            When configured as FIXED_TO_DEDICATED, the cluster will always use a dedicated config server.
-          enum:
-          - ATLAS_MANAGED
-          - FIXED_TO_DEDICATED
-          externalDocs:
-            description: MongoDB Sharded Cluster Config Servers
-            url: https://dochub.mongodb.org/docs/manual/core/sharded-cluster-config-servers
-        configServerType:
-          type: string
-          description: Describes a sharded cluster's config server type.
-          enum:
-          - DEDICATED
-          - EMBEDDED
-          externalDocs:
-            description: MongoDB Sharded Cluster Config Servers
-            url: https://dochub.mongodb.org/docs/manual/core/sharded-cluster-config-servers
-          readOnly: true
         connectionStrings:
           $ref: "#/components/schemas/ClusterConnectionStrings"
         createDate:
@@ -41744,10 +41356,6 @@ components:
         - INSTANCE_NAME
         - PROCESSOR_NAME
         title: Streams Matcher Fields
-      - type: string
-        enum:
-        - RULE_ID
-        title: Log Ingestion Matcher Fields
     MatcherHostType:
       type: string
       description: Value to match or exceed using the specified **matchers.operator**.
@@ -42637,8 +42245,6 @@ components:
       - ATLAS_SQL_SCHEDULED_UPDATE_CREATED
       - ATLAS_SQL_SCHEDULED_UPDATE_MODIFIED
       - ATLAS_SQL_SCHEDULED_UPDATE_REMOVED
-      - CLUSTER_INSTANCE_DISABLED
-      - CLUSTER_INSTANCE_ENABLED
       example: CLUSTER_CREATED
       title: NDS Audit Types
     NDSAuditTypeViewForOrg:
@@ -43873,12 +43479,7 @@ components:
           enum:
           - AVERAGE
         operator:
-          type: string
-          description: Comparison operator to apply when checking the current metric
-            value.
-          enum:
-          - LESS_THAN
-          - GREATER_THAN
+          $ref: "#/components/schemas/Operator"
         threshold:
           type: number
           format: double
@@ -44587,7 +44188,6 @@ components:
       required:
       - description
       - name
-      - roles
       - secretExpiresAfterHours
     OrgServiceAccountUpdateRequest:
       type: object
@@ -45696,34 +45296,6 @@ components:
             completing this request.
           items:
             $ref: "#/components/schemas/UserAccessListResponse"
-          readOnly: true
-        totalCount:
-          type: integer
-          format: int32
-          description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
-          minimum: 0
-          readOnly: true
-    PaginatedApiVersions:
-      type: object
-      properties:
-        links:
-          type: array
-          description: "List of one or more Uniform Resource Locators (URLs) that\
-            \ point to API sub-resources, related API resources, or both. RFC 5988\
-            \ outlines these relationships."
-          externalDocs:
-            description: Web Linking Specification (RFC 5988)
-            url: https://datatracker.ietf.org/doc/html/rfc5988
-          items:
-            $ref: "#/components/schemas/Link"
-          readOnly: true
-        results:
-          type: array
-          description: List of returned documents that MongoDB Cloud provides when
-            completing this request.
-          items:
-            $ref: "#/components/schemas/ApiVersion"
           readOnly: true
         totalCount:
           type: integer
@@ -47554,12 +47126,7 @@ components:
           enum:
           - AVERAGE
         operator:
-          type: string
-          description: Comparison operator to apply when checking the current metric
-            value.
-          enum:
-          - LESS_THAN
-          - GREATER_THAN
+          $ref: "#/components/schemas/Operator"
         threshold:
           type: number
           format: double
@@ -47869,12 +47436,7 @@ components:
           enum:
           - AVERAGE
         operator:
-          type: string
-          description: Comparison operator to apply when checking the current metric
-            value.
-          enum:
-          - LESS_THAN
-          - GREATER_THAN
+          $ref: "#/components/schemas/Operator"
         threshold:
           type: number
           format: double
@@ -48407,7 +47969,7 @@ components:
             \ configurations in the request, you must specify this parameter. If you\
             \ add a new shard to an existing Cluster, you may specify this parameter.\
             \ The request deletes any existing shards  in the Cluster that you exclude\
-            \ from the request. This corresponds to Shard ID displayed in the UI."
+            \ from the request."
           example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
@@ -50206,12 +49768,7 @@ components:
           enum:
           - AVERAGE
         operator:
-          type: string
-          description: Comparison operator to apply when checking the current metric
-            value.
-          enum:
-          - LESS_THAN
-          - GREATER_THAN
+          $ref: "#/components/schemas/Operator"
         threshold:
           type: number
           format: double
@@ -51361,9 +50918,8 @@ components:
       readOnly: true
     StreamsDLQ:
       type: object
-      description: Dead letter queue for the stream processor.
-      externalDocs:
-        url: https://www.mongodb.com/docs/atlas/reference/glossary/#std-term-dead-letter-queue
+      description: "Dead letter queue for the stream processor. [MongoDB Atlas Docs](https://www.mongodb.com/docs/atlas/reference/glossary/#std-term-dead-letter-queue)\
+        \ contain more information."
       properties:
         coll:
           type: string
@@ -51568,13 +51124,6 @@ components:
       type: object
       description: Information about the networking access.
       properties:
-        connectionId:
-          type: string
-          description: Reserved. Will be used by PRIVATE_LINK connection type.
-          example: 32b6e34b3d91647abb20e7b8
-          maxLength: 24
-          minLength: 24
-          pattern: "^([a-f0-9]{24})$"
         links:
           type: array
           description: "List of one or more Uniform Resource Locators (URLs) that\
@@ -51709,11 +51258,9 @@ components:
           $ref: "#/components/schemas/StreamsOptions"
         pipeline:
           type: array
-          description: Stream aggregation pipeline you want to apply to your streaming
-            data.
-          externalDocs:
-            description: Supported Aggregation Pipeline Stages
-            url: https://www.mongodb.com/docs/atlas/atlas-stream-processing/stream-aggregation/#std-label-stream-aggregation
+          description: "Stream aggregation pipeline you want to apply to your streaming\
+            \ data. [MongoDB Atlas Docs](https://www.mongodb.com/docs/atlas/atlas-stream-processing/stream-aggregation/#std-label-stream-aggregation)\
+            \ contain more information."
           items:
             $ref: "#/components/schemas/Document"
     StreamsProcessorWithStats:
@@ -51762,13 +51309,13 @@ components:
           type: object
           additionalProperties:
             type: object
-            description: The stats associated with the stream processor.
-            externalDocs:
-              url: https://www.mongodb.com/docs/atlas/atlas-stream-processing/manage-stream-processor/#view-statistics-of-a-stream-processor
+            description: "The stats associated with the stream processor. [MongoDB\
+              \ Atlas Docs](https://www.mongodb.com/docs/atlas/atlas-stream-processing/manage-stream-processor/#view-statistics-of-a-stream-processor)\
+              \ contain more information."
             readOnly: true
-          description: The stats associated with the stream processor.
-          externalDocs:
-            url: https://www.mongodb.com/docs/atlas/atlas-stream-processing/manage-stream-processor/#view-statistics-of-a-stream-processor
+          description: "The stats associated with the stream processor. [MongoDB Atlas\
+            \ Docs](https://www.mongodb.com/docs/atlas/atlas-stream-processing/manage-stream-processor/#view-statistics-of-a-stream-processor)\
+            \ contain more information."
           readOnly: true
       required:
       - _id
@@ -53246,12 +52793,7 @@ components:
           enum:
           - AVERAGE
         operator:
-          type: string
-          description: Comparison operator to apply when checking the current metric
-            value.
-          enum:
-          - LESS_THAN
-          - GREATER_THAN
+          $ref: "#/components/schemas/Operator"
         threshold:
           type: number
           format: double
@@ -54832,28 +54374,6 @@ components:
       required:
       - match
       title: User to Distinguished Name Mapping
-    VPCPeeringActionChallenge:
-      type: object
-      description: Container for elements used to challenge the user before taking
-        certain actions on VPC Peering connections.
-      properties:
-        links:
-          type: array
-          description: "List of one or more Uniform Resource Locators (URLs) that\
-            \ point to API sub-resources, related API resources, or both. RFC 5988\
-            \ outlines these relationships."
-          externalDocs:
-            description: Web Linking Specification (RFC 5988)
-            url: https://datatracker.ietf.org/doc/html/rfc5988
-          items:
-            $ref: "#/components/schemas/Link"
-          readOnly: true
-        requesterAccountId:
-          type: string
-          description: The AWS requester account ID.
-        requesterVpcId:
-          type: string
-          description: The AWS requester VPC ID.
     VectorSearchHostStatusDetail:
       type: object
       properties:
