@@ -10,6 +10,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          ref: main # make it easier to do changes and verify this GHA as it can be executed from the branch in the WIP PR but will take changes from main branch
       - uses: actions/setup-go@v5
         with:
           go-version-file: 'go.mod'
