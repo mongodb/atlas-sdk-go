@@ -8,8 +8,6 @@ Name | Type | Description | Notes
 **BackupEnabled** | Pointer to **bool** | Flag that indicates whether the cluster can perform backups. If set to &#x60;true&#x60;, the cluster can perform backups. You must set this value to &#x60;true&#x60; for NVMe clusters. Backup uses [Cloud Backups](https://docs.atlas.mongodb.com/backup/cloud-backup/overview/) for dedicated clusters and [Shared Cluster Backups](https://docs.atlas.mongodb.com/backup/shared-tier/overview/) for tenant clusters. If set to &#x60;false&#x60;, the cluster doesn&#39;t use backups. | [optional] [default to false]
 **BiConnector** | Pointer to [**BiConnector**](BiConnector.md) |  | [optional] 
 **ClusterType** | Pointer to **string** | Configuration of nodes that comprise the cluster. | [optional] 
-**ConfigServerManagementMode** | Pointer to **string** | Config Server Management Mode for creating or updating a sharded cluster.  When configured as ATLAS_MANAGED, atlas may automatically switch the cluster&#39;s config server type for optimal performance and savings.  When configured as FIXED_TO_DEDICATED, the cluster will always use a dedicated config server. | [optional] [default to "ATLAS_MANAGED"]
-**ConfigServerType** | Pointer to **string** | Describes a sharded cluster&#39;s config server type. | [optional] [readonly] 
 **ConnectionStrings** | Pointer to [**ClusterConnectionStrings**](ClusterConnectionStrings.md) |  | [optional] 
 **CreateDate** | Pointer to **time.Time** | Date and time when MongoDB Cloud created this cluster. This parameter expresses its value in ISO 8601 format in UTC. | [optional] [readonly] 
 **DiskWarmingMode** | Pointer to **string** | Disk warming mode selection. | [optional] [default to "FULLY_WARMED"]
@@ -27,7 +25,6 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | Human-readable label that identifies the cluster. | [optional] 
 **Paused** | Pointer to **bool** | Flag that indicates whether the cluster is paused. | [optional] 
 **PitEnabled** | Pointer to **bool** | Flag that indicates whether the cluster uses continuous cloud backups. | [optional] 
-**RedactClientLogData** | Pointer to **bool** | Enable or disable log redaction.  This setting configures the &#x60;&#x60;mongod&#x60;&#x60; or &#x60;&#x60;mongos&#x60;&#x60; to redact any document field contents from a message accompanying a given log event before logging. This prevents the program from writing potentially sensitive data stored on the database to the diagnostic log. Metadata such as error or operation codes, line numbers, and source file names are still visible in the logs.  Use &#x60;&#x60;redactClientLogData&#x60;&#x60; in conjunction with Encryption at Rest and TLS/SSL (Transport Encryption) to assist compliance with regulatory requirements.  *Note*: changing this setting on a cluster will trigger a rolling restart as soon as the cluster is updated. | [optional] 
 **ReplicaSetScalingStrategy** | Pointer to **string** | Set this field to configure the replica set scaling mode for your cluster.  By default, Atlas scales under WORKLOAD_TYPE. This mode allows Atlas to scale your analytics nodes in parallel to your operational nodes.  When configured as SEQUENTIAL, Atlas scales all nodes sequentially. This mode is intended for steady-state workloads and applications performing latency-sensitive secondary reads.  When configured as NODE_TYPE, Atlas scales your electable nodes in parallel with your read-only and analytics nodes. This mode is intended for large, dynamic workloads requiring frequent and timely cluster tier scaling. This is the fastest scaling strategy, but it might impact latency of workloads when performing extensive secondary reads. | [optional] [default to "WORKLOAD_TYPE"]
 **ReplicationSpecs** | Pointer to [**[]ReplicationSpec20240805**](ReplicationSpec20240805.md) | List of settings that configure your cluster regions. This array has one object per shard representing node configurations in each shard. For replica sets there is only one object representing node configurations. | [optional] 
 **RootCertType** | Pointer to **string** | Root Certificate Authority that MongoDB Cloud cluster uses. MongoDB Cloud supports Internet Security Research Group. | [optional] [default to "ISRGROOTX1"]
@@ -151,54 +148,6 @@ SetClusterType sets ClusterType field to given value.
 `func (o *ClusterDescription20240805) HasClusterType() bool`
 
 HasClusterType returns a boolean if a field has been set.
-### GetConfigServerManagementMode
-
-`func (o *ClusterDescription20240805) GetConfigServerManagementMode() string`
-
-GetConfigServerManagementMode returns the ConfigServerManagementMode field if non-nil, zero value otherwise.
-
-### GetConfigServerManagementModeOk
-
-`func (o *ClusterDescription20240805) GetConfigServerManagementModeOk() (*string, bool)`
-
-GetConfigServerManagementModeOk returns a tuple with the ConfigServerManagementMode field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetConfigServerManagementMode
-
-`func (o *ClusterDescription20240805) SetConfigServerManagementMode(v string)`
-
-SetConfigServerManagementMode sets ConfigServerManagementMode field to given value.
-
-### HasConfigServerManagementMode
-
-`func (o *ClusterDescription20240805) HasConfigServerManagementMode() bool`
-
-HasConfigServerManagementMode returns a boolean if a field has been set.
-### GetConfigServerType
-
-`func (o *ClusterDescription20240805) GetConfigServerType() string`
-
-GetConfigServerType returns the ConfigServerType field if non-nil, zero value otherwise.
-
-### GetConfigServerTypeOk
-
-`func (o *ClusterDescription20240805) GetConfigServerTypeOk() (*string, bool)`
-
-GetConfigServerTypeOk returns a tuple with the ConfigServerType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetConfigServerType
-
-`func (o *ClusterDescription20240805) SetConfigServerType(v string)`
-
-SetConfigServerType sets ConfigServerType field to given value.
-
-### HasConfigServerType
-
-`func (o *ClusterDescription20240805) HasConfigServerType() bool`
-
-HasConfigServerType returns a boolean if a field has been set.
 ### GetConnectionStrings
 
 `func (o *ClusterDescription20240805) GetConnectionStrings() ClusterConnectionStrings`
@@ -607,30 +556,6 @@ SetPitEnabled sets PitEnabled field to given value.
 `func (o *ClusterDescription20240805) HasPitEnabled() bool`
 
 HasPitEnabled returns a boolean if a field has been set.
-### GetRedactClientLogData
-
-`func (o *ClusterDescription20240805) GetRedactClientLogData() bool`
-
-GetRedactClientLogData returns the RedactClientLogData field if non-nil, zero value otherwise.
-
-### GetRedactClientLogDataOk
-
-`func (o *ClusterDescription20240805) GetRedactClientLogDataOk() (*bool, bool)`
-
-GetRedactClientLogDataOk returns a tuple with the RedactClientLogData field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRedactClientLogData
-
-`func (o *ClusterDescription20240805) SetRedactClientLogData(v bool)`
-
-SetRedactClientLogData sets RedactClientLogData field to given value.
-
-### HasRedactClientLogData
-
-`func (o *ClusterDescription20240805) HasRedactClientLogData() bool`
-
-HasRedactClientLogData returns a boolean if a field has been set.
 ### GetReplicaSetScalingStrategy
 
 `func (o *ClusterDescription20240805) GetReplicaSetScalingStrategy() string`

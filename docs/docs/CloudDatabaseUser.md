@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 **AwsIAMType** | Pointer to **string** | Human-readable label that indicates whether the new database user authenticates with the Amazon Web Services (AWS) Identity and Access Management (IAM) credentials associated with the user or the user&#39;s role. | [optional] [default to "NONE"]
 **DatabaseName** | **string** | The database against which the database user authenticates. Database users must provide both a username and authentication database to log into MongoDB. If the user authenticates with AWS IAM, x.509, LDAP, or OIDC Workload this value should be &#x60;$external&#x60;. If the user authenticates with SCRAM-SHA or OIDC Workforce, this value should be &#x60;admin&#x60;. | [default to "admin"]
 **DeleteAfterDate** | Pointer to **time.Time** | Date and time when MongoDB Cloud deletes the user. This parameter expresses its value in the ISO 8601 timestamp format in UTC and can include the time zone designation. You must specify a future date that falls within one week of making the Application Programming Interface (API) request. | [optional] 
-**Description** | Pointer to **string** | Description of this database user. | [optional] 
 **GroupId** | **string** | Unique 24-hexadecimal digit string that identifies the project. | 
 **Labels** | Pointer to [**[]ComponentLabel**](ComponentLabel.md) | List that contains the key-value pairs for tagging and categorizing the MongoDB database user. The labels that you define do not appear in the console. | [optional] 
 **LdapAuthType** | Pointer to **string** | Part of the Lightweight Directory Access Protocol (LDAP) record that the database uses to authenticate this database user on the LDAP host. | [optional] [default to "NONE"]
@@ -105,30 +104,6 @@ SetDeleteAfterDate sets DeleteAfterDate field to given value.
 `func (o *CloudDatabaseUser) HasDeleteAfterDate() bool`
 
 HasDeleteAfterDate returns a boolean if a field has been set.
-### GetDescription
-
-`func (o *CloudDatabaseUser) GetDescription() string`
-
-GetDescription returns the Description field if non-nil, zero value otherwise.
-
-### GetDescriptionOk
-
-`func (o *CloudDatabaseUser) GetDescriptionOk() (*string, bool)`
-
-GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDescription
-
-`func (o *CloudDatabaseUser) SetDescription(v string)`
-
-SetDescription sets Description field to given value.
-
-### HasDescription
-
-`func (o *CloudDatabaseUser) HasDescription() bool`
-
-HasDescription returns a boolean if a field has been set.
 ### GetGroupId
 
 `func (o *CloudDatabaseUser) GetGroupId() string`

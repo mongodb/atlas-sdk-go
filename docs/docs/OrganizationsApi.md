@@ -15,7 +15,7 @@ Method | HTTP request | Description
 [**ListOrganizationProjects**](OrganizationsApi.md#ListOrganizationProjects) | **Get** /api/atlas/v2/orgs/{orgId}/groups | Return One or More Projects in One Organization
 [**ListOrganizationUsers**](OrganizationsApi.md#ListOrganizationUsers) | **Get** /api/atlas/v2/orgs/{orgId}/users | Return All MongoDB Cloud Users in One Organization
 [**ListOrganizations**](OrganizationsApi.md#ListOrganizations) | **Get** /api/atlas/v2/orgs | Return All Organizations
-[**RemoveOrganizationUser**](OrganizationsApi.md#RemoveOrganizationUser) | **Delete** /api/atlas/v2/orgs/{orgId}/users/{userId} | Remove One MongoDB Cloud User From One Organization
+[**RemoveOrganizationUser**](OrganizationsApi.md#RemoveOrganizationUser) | **Delete** /api/atlas/v2/orgs/{orgId}/users/{userId} | Remove One MongoDB Cloud User from One Organization
 [**RenameOrganization**](OrganizationsApi.md#RenameOrganization) | **Patch** /api/atlas/v2/orgs/{orgId} | Rename One Organization
 [**UpdateOrganizationInvitation**](OrganizationsApi.md#UpdateOrganizationInvitation) | **Patch** /api/atlas/v2/orgs/{orgId}/invites | Update One Organization Invitation
 [**UpdateOrganizationInvitationById**](OrganizationsApi.md#UpdateOrganizationInvitationById) | **Patch** /api/atlas/v2/orgs/{orgId}/invites/{invitationId} | Update One Organization Invitation by Invitation ID
@@ -930,7 +930,7 @@ Name | Type | Description  | Notes
 
 > any RemoveOrganizationUser(ctx, orgId, userId).Execute()
 
-Remove One MongoDB Cloud User From One Organization
+Remove One MongoDB Cloud User from One Organization
 
 
 ### Example
