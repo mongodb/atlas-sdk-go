@@ -19,6 +19,8 @@ jobs:
         run: make fetch_openapi
       - name: Override OpenAPI spec # TEMPORARY, WILL BE REVERTED BEFORE MERGE, USE OPEN API SPEC IN https://github.com/mongodb/atlas-sdk-go/pull/390
         run: curl -sSfL -o openapi/atlas-api.yaml https://raw.githubusercontent.com/mongodb/atlas-sdk-go/46a77abc48d7f644c31e130fcbbd5c3f8b0ab497/openapi/atlas-api.yaml
+      - name: Override this GHA file # TEMPORARY, WILL BE REVERTED BEFORE MERGE
+        run: curl -sSfL -o .github/workflows/autoupdate-prod.yaml https://raw.githubusercontent.com/mongodb/atlas-sdk-go/refs/heads/main/.github/workflows/autoupdate-prod.yaml
       - name: Commit OpenAPI changes
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
