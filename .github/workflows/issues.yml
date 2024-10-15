@@ -1,29 +1,27 @@
 ---
   name: Create JIRA ticket for new issues
   
+  # Creates and updates jira tickets that sync with GitHub Issues events.
   on:
     issues:
-      types: [opened]
-      
-  permissions: 
-    issues: write
-    contents: read
+      types: [opened, reopened, closed]
   jobs:
     jira_task:
       name: Create Jira issue
+      if: github.event.action == 'opened'
       runs-on: ubuntu-latest
+      env:
+        GITHUB_TOKEN: ${{ secrets.APIX_BOT_PAT }}
       steps:
       - name: Create JIRA ticket
         id: create
         shell: bash
         env:
           ISSUE_NUMBER: ${{ github.event.issue.number }}
-          ISSUE_BODY: ${{ github.event.issue.body }}
           ISSUE_URL: ${{ github.event.issue.html_url }}
           JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
           JIRA_ASSIGNEE: ${{ secrets.ASSIGNEE_JIRA_TICKET }}
         run: |
-
           json_response=$(curl --request POST \
             --url 'https://jira.mongodb.org/rest/api/2/issue' \
             --header 'Authorization: Bearer '"${JIRA_API_TOKEN}" \
@@ -39,17 +37,14 @@
                       "id": "12"
                   },
                   "customfield_12751": [{
-                          "id": "22222"
-                  }],
+                          "id": "25550"
+                  }],                  
                   "description": "This ticket tracks the following GitHub issue: '"${ISSUE_URL}"'.",
                   "components": [
                       {
-                          "id": "32194"
+                          "id": "34035"
                       }
-                  ],
-                  "assignee": {
-                    "name": "'"${JIRA_ASSIGNEE}"'"
-                  }
+                  ]
               }
             }')
   
@@ -60,8 +55,121 @@
           echo "The following JIRA ticket has been created: ${JIRA_TICKET_ID}"
           echo "jira-ticket-id=${JIRA_TICKET_ID}" >> "${GITHUB_OUTPUT}"
       - name: Add comment
-        uses: peter-evans/create-or-update-comment@v4
+        uses: peter-evans/create-or-update-comment@71345be0265236311c031f5c7866368bd1eff043
         with:
           issue-number: ${{ github.event.issue.number }}
           body: |
-            Thanks for opening this issue. The ticket [${{ steps.create.outputs.jira-ticket-id }}](https://jira.mongodb.org/browse/${{ steps.create.outputs.jira-ticket-id }}) was created for internal tracking.
+            Thanks for opening this issue! Please make sure you've followed [our guidelines](https://github.com/mongodb/terraform-provider-mongodbatlas/issues/new?assignees=&labels=&projects=&template=Bug_Report.md) when opening the issue. In short, to help us reproduce the issue we need:
+              - Terraform configuration file used to reproduce the issue
+              - Terraform log files from the run where the issue occurred
+              - Terraform Atlas provider version used to reproduce the issue
+              - Terraform version used to reproduce the issue
+              - Confirmation if Terraform OSS, Terraform Cloud, or Terraform Enterprise deployment 
+
+            The ticket [${{ steps.create.outputs.jira-ticket-id }}](https://jira.mongodb.org/browse/${{ steps.create.outputs.jira-ticket-id }}) was created for internal tracking.
+    reopen_jira_ticket:
+      name: Reopen JIRA ticket
+      if: github.event.action == 'reopened'
+      runs-on: ubuntu-latest
+      env:
+        GITHUB_TOKEN: ${{ secrets.APIX_BOT_PAT }}
+      steps:
+        - name: Reopened JIRA ticket if exists
+          run: |
+            ISSUE_NUMBER=${{ github.event.issue.number }}
+            JIRA_API_TOKEN=${{ secrets.JIRA_API_TOKEN }}
+
+            JIRA_QUERY="project = CLOUDP AND issuetype = Story AND resolution = Declined AND text ~ \"HELP: GitHub Issue n. $ISSUE_NUMBER\""
+            
+            # URL encode the query
+            JIRA_URL=$(echo "$JIRA_QUERY" | jq -s -R -r @uri)            
+
+            json_response=$(curl -s --request GET \
+              --url "https://jira.mongodb.org/rest/api/2/search?fields=id&jql=${JIRA_URL}" \
+              --header 'Authorization: Bearer '"${JIRA_API_TOKEN}" \
+              --header 'Accept: application/json')
+
+            JIRA_TICKET_ID=$(echo "${json_response}" | jq -r '.issues[0].id')
+            if [ -z "$JIRA_TICKET_ID" ]; then
+              echo "JIRA_TICKET_ID is not defined. Exiting the script."
+              exit 1
+            fi
+
+            JIRA_REOPENED_URL="https://jira.mongodb.org/rest/api/2/issue/${JIRA_TICKET_ID}/transitions"
+
+            json_response=$(curl -s --request POST \
+              --url "${JIRA_REOPENED_URL}" \
+              --header 'Authorization: Bearer '"${JIRA_API_TOKEN}" \
+              --header 'Accept: application/json' \
+              --header 'Content-Type: application/json' \
+              --data '{
+                "transition": {
+                  "id": 3
+                },
+                "update": {
+                  "comment": [
+                      {
+                          "add": {
+                              "body": "The related GitHub issue was reopened. Updated via automated process."
+                          }
+                      }
+                  ]
+                }
+              }')
+              echo "Response: ${json_response}"
+    close_jira_ticket:
+      name: Close JIRA ticket
+      if: github.event.action == 'closed'
+      runs-on: ubuntu-latest
+      env:
+        GITHUB_TOKEN: ${{ secrets.APIX_BOT_PAT }}
+      steps:
+        - name: Close JIRA ticket if exists
+          run: |
+            ISSUE_NUMBER=${{ github.event.issue.number }}
+            JIRA_API_TOKEN=${{ secrets.JIRA_API_TOKEN }}
+
+            JIRA_QUERY="project = CLOUDP AND issuetype = Story AND resolution = Unresolved AND text ~ \"HELP: GitHub Issue n. $ISSUE_NUMBER\""
+            
+            # URL encode the query
+            JIRA_URL=$(echo "$JIRA_QUERY" | jq -s -R -r @uri)            
+
+            json_response=$(curl -s --request GET \
+              --url "https://jira.mongodb.org/rest/api/2/search?fields=id&jql=${JIRA_URL}" \
+              --header 'Authorization: Bearer '"${JIRA_API_TOKEN}" \
+              --header 'Accept: application/json')
+
+            JIRA_TICKET_ID=$(echo "${json_response}" | jq -r '.issues[0].id')
+            if [ -z "$JIRA_TICKET_ID" ]; then
+              echo "JIRA_TICKET_ID is not defined. Exiting the script."
+              exit 1
+            fi
+
+            JIRA_CLOSE_URL="https://jira.mongodb.org/rest/api/2/issue/${JIRA_TICKET_ID}/transitions"
+
+            json_response=$(curl -s --request POST \
+              --url "${JIRA_CLOSE_URL}" \
+              --header 'Authorization: Bearer '"${JIRA_API_TOKEN}" \
+              --header 'Accept: application/json' \
+              --header 'Content-Type: application/json' \
+              --data '{
+                "transition": {
+                  "id": 1371
+                },
+                "update": {
+                  "comment": [
+                      {
+                          "add": {
+                              "body": "The related GitHub issue was closed. Resolved via automated process."
+                          }
+                      }
+                  ]
+                },
+                "fields": {
+                  "resolution": {
+                      "name": "Declined"
+                  }
+                }
+              }')
+              echo "Response: ${json_response}"
+
