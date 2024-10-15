@@ -10,6 +10,8 @@
       name: Create Jira issue
       if: github.event.action == 'opened'
       runs-on: ubuntu-latest
+      env:
+        GITHUB_TOKEN: ${{ secrets.APIX_BOT_PAT }}
       steps:
       - name: Create JIRA ticket
         id: create
@@ -53,7 +55,7 @@
           echo "The following JIRA ticket has been created: ${JIRA_TICKET_ID}"
           echo "jira-ticket-id=${JIRA_TICKET_ID}" >> "${GITHUB_OUTPUT}"
       - name: Add comment
-        uses: peter-evans/create-or-update-comment@v4
+        uses: peter-evans/create-or-update-comment@71345be0265236311c031f5c7866368bd1eff043
         with:
           issue-number: ${{ github.event.issue.number }}
           body: |
@@ -62,6 +64,8 @@
       name: Reopen JIRA ticket
       if: github.event.action == 'reopened'
       runs-on: ubuntu-latest
+      env:
+        GITHUB_TOKEN: ${{ secrets.APIX_BOT_PAT }}
       steps:
         - name: Reopened JIRA ticket if exists
           run: |
@@ -110,6 +114,8 @@
       name: Close JIRA ticket
       if: github.event.action == 'closed'
       runs-on: ubuntu-latest
+      env:
+        GITHUB_TOKEN: ${{ secrets.APIX_BOT_PAT }}
       steps:
         - name: Close JIRA ticket if exists
           run: |
