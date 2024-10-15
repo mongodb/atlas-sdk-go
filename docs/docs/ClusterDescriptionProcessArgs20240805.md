@@ -4,11 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ChangeStreamOptionsPreAndPostImagesExpireAfterSeconds** | Pointer to **int** | The minimum pre- and post-image retention time in seconds. | [optional] [default to -1]
+**ChangeStreamOptionsPreAndPostImagesExpireAfterSeconds** | Pointer to **int** | The minimum pre- and post-image retention time in seconds. | [optional] 
 **ChunkMigrationConcurrency** | Pointer to **int** | Number of threads on the source shard and the receiving shard for chunk migration. The number of threads should not exceed the half the total number of CPU cores in the sharded cluster. | [optional] 
-**DefaultMaxTimeMS** | Pointer to **int** | Default time limit in milliseconds for individual read operations to complete. | [optional] 
 **DefaultWriteConcern** | Pointer to **string** | Default level of acknowledgment requested from MongoDB for write operations when none is specified by the driver. | [optional] 
-**JavascriptEnabled** | Pointer to **bool** | Flag that indicates whether the cluster allows execution of operations that perform server-side executions of JavaScript. When using 8.0+, we recommend disabling server-side JavaScript and using operators of aggregation pipeline as more performant alternative. | [optional] 
+**JavascriptEnabled** | Pointer to **bool** | Flag that indicates whether the cluster allows execution of operations that perform server-side executions of JavaScript. | [optional] 
 **MinimumEnabledTlsProtocol** | Pointer to **string** | Minimum Transport Layer Security (TLS) version that the cluster accepts for incoming connections. Clusters using TLS 1.0 or 1.1 should consider setting TLS 1.2 as the minimum TLS protocol version. | [optional] 
 **NoTableScan** | Pointer to **bool** | Flag that indicates whether the cluster disables executing any query that requires a collection scan to return results. | [optional] 
 **OplogMinRetentionHours** | Pointer to **float64** | Minimum retention window for cluster&#39;s oplog expressed in hours. A value of null indicates that the cluster uses the default minimum oplog window that MongoDB Cloud calculates. | [optional] 
@@ -85,30 +84,6 @@ SetChunkMigrationConcurrency sets ChunkMigrationConcurrency field to given value
 `func (o *ClusterDescriptionProcessArgs20240805) HasChunkMigrationConcurrency() bool`
 
 HasChunkMigrationConcurrency returns a boolean if a field has been set.
-### GetDefaultMaxTimeMS
-
-`func (o *ClusterDescriptionProcessArgs20240805) GetDefaultMaxTimeMS() int`
-
-GetDefaultMaxTimeMS returns the DefaultMaxTimeMS field if non-nil, zero value otherwise.
-
-### GetDefaultMaxTimeMSOk
-
-`func (o *ClusterDescriptionProcessArgs20240805) GetDefaultMaxTimeMSOk() (*int, bool)`
-
-GetDefaultMaxTimeMSOk returns a tuple with the DefaultMaxTimeMS field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDefaultMaxTimeMS
-
-`func (o *ClusterDescriptionProcessArgs20240805) SetDefaultMaxTimeMS(v int)`
-
-SetDefaultMaxTimeMS sets DefaultMaxTimeMS field to given value.
-
-### HasDefaultMaxTimeMS
-
-`func (o *ClusterDescriptionProcessArgs20240805) HasDefaultMaxTimeMS() bool`
-
-HasDefaultMaxTimeMS returns a boolean if a field has been set.
 ### GetDefaultWriteConcern
 
 `func (o *ClusterDescriptionProcessArgs20240805) GetDefaultWriteConcern() string`
