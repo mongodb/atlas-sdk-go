@@ -5,6 +5,7 @@ import (
 	"encoding/base64"
 	"encoding/json"
 	"errors"
+	"fmt"
 	"net/http"
 	"net/url"
 	"strings"
@@ -12,40 +13,61 @@ import (
 )
 
 // Token represents the OAuth2 token structure
-type Token struct {
+// Note token is internal to the SDK and should never be exposed outside sdk.
+// For more information see TokenSource implementation
+type token struct {
 	AccessToken string    `json:"access_token"`
-	TokenType   string    `json:"token_type"`
 	Expiry      time.Time `json:"expiry,omitempty"`
 	ExpiresIn   int       `json:"expires_in"`
 }
 
-// OAuthClient manages the OAuth token fetching and refreshing.
+// OAuthClient manages the OAuth token fetching and refreshing using a TokenSource.
 type OAuthClient struct {
-	clientID     string
-	clientSecret string
-	tokenURL     string
-	token        *Token
-	ctx          context.Context
+    clientID     string
+    clientSecret string
+    tokenURL     string
+    token        *token
+    tokenSource  TokenSource
+    ctx          context.Context
 }
 
-// GetAccessToken checks if the token is valid, and refreshes it if necessary.
-func (c *OAuthClient) GetAccessToken() (*Token, error) {
-	// If token is valid, return the existing token
-	if c.token != nil && c.token.Valid() {
-		return c.token, nil
-	}
+// getValidToken retrieves the valid token, refreshing it if necessary.
+func (c *OAuthClient) getValidToken() (*token, error) {
+    // Try to retrieve the token string from the token source
+    tokenString, err := c.tokenSource.RetrieveToken()
+    if err != nil || tokenString == "" {
+        return c.refreshToken()
+    }
 
-	// Fetch new token if none is available or it is expired
-	token, err := c.fetchToken()
-	if err != nil {
-		return nil, err
-	}
-	c.token = token
-	return token, nil
+    // Parse the token string into the token structure (mock parse operation)
+    c.token, err = parseToken(tokenString)
+    if err != nil || c.token.expired() {
+        // Token is invalid or expired, refresh it
+        return c.refreshToken()
+    }
+
+    return c.token, nil
+}
+
+// refreshToken fetches a new token and saves it using the token source.
+func (c *OAuthClient) refreshToken() (*token, error) {
+    newToken, err := c.fetchToken()
+    if err != nil {
+        return nil, err
+    }
+
+    // Save the access token string to the token source
+    err = c.tokenSource.SaveToken(newToken.AccessToken)
+    if err != nil {
+        return nil, fmt.Errorf("failed to save token: %w", err)
+    }
+
+    c.token = newToken
+    return newToken, nil
 }
 
 // fetchToken makes a manual POST request to the OAuth server to get the access token.
-func (c *OAuthClient) fetchToken() (*Token, error) {
+func (c *OAuthClient) fetchToken() (*token, error) {
 	data := url.Values{}
 	data.Set("grant_type", "client_credentials")
 
@@ -77,13 +99,9 @@ func (c *OAuthClient) fetchToken() (*Token, error) {
 		return nil, err
 	}
 
-	// TODO should we derive expiration from server response or token itself
-	// TODO storage engine - use interface to store tokens.
-
 	// Construct the token with expiry time
-	token := &Token{
+	token := &token{
 		AccessToken: tokenResp.AccessToken,
-		TokenType:   tokenResp.TokenType,
 		ExpiresIn:   tokenResp.ExpiresIn,
 		Expiry:      time.Now().Add(time.Duration(tokenResp.ExpiresIn) * time.Second),
 	}
@@ -92,14 +110,14 @@ func (c *OAuthClient) fetchToken() (*Token, error) {
 
 
 // SetAuthHeader sets the Authorization header with the access token.
-func (t *Token) SetAuthHeader(r *http.Request) {
+func (t *token) SetAuthHeader(r *http.Request) {
 	r.Header.Set("Authorization", "Bearer " + t.AccessToken)
 }
 
 const expiryDelta = 10 * time.Second
 
 // expired checks if the token is close to expiring.
-func (t *Token) expired() bool {
+func (t *token) expired() bool {
 	if t.Expiry.IsZero() {
 		return false
 	}
@@ -107,12 +125,12 @@ func (t *Token) expired() bool {
 }
 
 // Valid checks if the token is still valid.
-func (t *Token) Valid() bool {
+func (t *token) Valid() bool {
 	return t != nil && t.AccessToken != "" && !t.expired()
 }
 
 // ParseToken extracts expiry details from JWT token
-func ParseToken(accessToken string) (*Token, error) {
+func parseToken(accessToken string) (*token, error) {
     parts := strings.Split(accessToken, ".")
     if len(parts) != 3 {
         return nil, errors.New("invalid token format")
@@ -135,48 +153,35 @@ func ParseToken(accessToken string) (*Token, error) {
         return nil, errors.New("token has expired")
     }
 
-    return &Token{
+    return &token{
         AccessToken: accessToken,
         Expiry:      expiry,
         ExpiresIn:   int(time.Until(expiry).Seconds()),
     }, nil
 }
-
-// NewServiceAccountClient initializes an OAuthClient with client credentials.
-func NewServiceAccountOAuthClient(clientID, clientSecret string, accessToken string, baseURL *string) (*OAuthClient, error) {
-	//nolint:gosec //url
-	tokenURL := "https://cloud-dev.mongodb.com/api/oauth/token"
-	if baseURL != nil {
-		tokenURL = *baseURL + "/api/oauth/token";
-	}
-
-	client := &OAuthClient{
-		clientID:     clientID,
-		clientSecret: clientSecret,
-		tokenURL:     tokenURL,
-		token: &Token{},
-		ctx: context.Background(),
-	}
-
-    if accessToken != "" {
-		// Derive details from stored token instead of creating new one.
-		// New token can still be expired and it will be rotated on the first request
-        token, err := ParseToken(accessToken)
-        if err != nil {
-            return client, err
-        }
-        client.token = token
-    }
-
-    return client, nil
-}
-
-// NewHTTPClient creates an HTTP client with the custom transport.
+// NewHTTPClientWithServiceAccountAuth creates an HTTP client with the custom transport.
 func NewHTTPClientWithServiceAccountAuth(client *OAuthClient) *http.Client {
 	return &http.Client{
 		Transport: &CustomTransport{
 			underlyingTransport: http.DefaultTransport,
 			client:              client,
 		},
+	}
+}
+
+// NewServiceAccountOAuthClient initializes an OAuthClient with client credentials.
+func NewServiceAccountOAuthClient(clientID, clientSecret string, baseURL *string, tokenSource TokenSource) *OAuthClient {
+	//nolint:gosec //url
+	tokenURL := "https://cloud.mongodb.com/api/oauth/token"
+	if baseURL != nil {
+		tokenURL = *baseURL + "/api/oauth/token"
+	}
+
+	return &OAuthClient{
+		clientID:     clientID,
+		clientSecret: clientSecret,
+		tokenURL:     tokenURL,
+		tokenSource:  tokenSource,
+		ctx:          context.Background(),
 	}
 }
