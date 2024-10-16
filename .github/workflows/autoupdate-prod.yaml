@@ -25,6 +25,7 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git add .
           git commit --allow-empty -m "fix: update OpenAPI spec"
+      - run: echo "API_DIFF_OLD_COMMIT=$(git rev-parse HEAD)" >> $GITHUB_ENV
       - name: Run generation
         working-directory: ./tools
         run: |
@@ -46,6 +47,7 @@ jobs:
       - name: Commit Generator Changes
         run: |
           git add . && git commit -m "fix: Generated SDK source code and docs"
+      - run: echo "API_DIFF_NEW_COMMIT=$(git rev-parse HEAD)" >> $GITHUB_ENV
       - name: Release updates
         working-directory: ./tools
         run: make new-release  
