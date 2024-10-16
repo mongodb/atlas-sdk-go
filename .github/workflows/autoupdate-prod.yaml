@@ -37,28 +37,29 @@ jobs:
         with:
           files: |
              ./admin/**/*
-      - name: Exit job if no files changed
-        if: steps.verify-changed-files.outputs.files_changed == 'true'
-        run: |
-          echo "No files changed, exiting job"
-          exit 0
       - name: Run docs generation
+        if: steps.verify-changed-files.outputs.files_changed == 'true'
         run: make gen-docs
       - name: Commit Generator Changes
+        if: steps.verify-changed-files.outputs.files_changed == 'true'
         run: |
           git add . && git commit -m "fix: Generated SDK source code and docs"
       - run: echo "API_DIFF_NEW_COMMIT=$(git rev-parse HEAD)" >> $GITHUB_ENV
       - name: Release updates
+        if: steps.verify-changed-files.outputs.files_changed == 'true'
         working-directory: ./tools
         run: make new-release  
       - name: Ensure all markdown code is formatted
+        if: steps.verify-changed-files.outputs.files_changed == 'true'
         working-directory: ./tools
         run: |
           npm install && npm run format
       - name: Run mock generation
         working-directory: ./tools
+        if: steps.verify-changed-files.outputs.files_changed == 'true'
         run: make generate_mocks  
       - uses: peter-evans/create-pull-request@v7
+        if: steps.verify-changed-files.outputs.files_changed == 'true'
         with:
           token: ${{ secrets.APIX_BOT_PAT }}
           title: "APIBot: SDK update based on recent changes in Atlas API"
