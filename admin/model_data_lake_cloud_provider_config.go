@@ -6,7 +6,6 @@ package admin
 type DataLakeCloudProviderConfig struct {
 	Aws   *DataLakeAWSCloudProviderConfig         `json:"aws,omitempty"`
 	Azure *DataFederationAzureCloudProviderConfig `json:"azure,omitempty"`
-	Gcp   *DataFederationGCPCloudProviderConfig   `json:"gcp,omitempty"`
 }
 
 // NewDataLakeCloudProviderConfig instantiates a new DataLakeCloudProviderConfig object
@@ -90,37 +89,4 @@ func (o *DataLakeCloudProviderConfig) HasAzure() bool {
 // SetAzure gets a reference to the given DataFederationAzureCloudProviderConfig and assigns it to the Azure field.
 func (o *DataLakeCloudProviderConfig) SetAzure(v DataFederationAzureCloudProviderConfig) {
 	o.Azure = &v
-}
-
-// GetGcp returns the Gcp field value if set, zero value otherwise
-func (o *DataLakeCloudProviderConfig) GetGcp() DataFederationGCPCloudProviderConfig {
-	if o == nil || IsNil(o.Gcp) {
-		var ret DataFederationGCPCloudProviderConfig
-		return ret
-	}
-	return *o.Gcp
-}
-
-// GetGcpOk returns a tuple with the Gcp field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DataLakeCloudProviderConfig) GetGcpOk() (*DataFederationGCPCloudProviderConfig, bool) {
-	if o == nil || IsNil(o.Gcp) {
-		return nil, false
-	}
-
-	return o.Gcp, true
-}
-
-// HasGcp returns a boolean if a field has been set.
-func (o *DataLakeCloudProviderConfig) HasGcp() bool {
-	if o != nil && !IsNil(o.Gcp) {
-		return true
-	}
-
-	return false
-}
-
-// SetGcp gets a reference to the given DataFederationGCPCloudProviderConfig and assigns it to the Gcp field.
-func (o *DataLakeCloudProviderConfig) SetGcp(v DataFederationGCPCloudProviderConfig) {
-	o.Gcp = &v
 }

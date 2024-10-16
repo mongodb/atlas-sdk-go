@@ -14,12 +14,7 @@ type ClusterDescription20240805 struct {
 	BackupEnabled *bool        `json:"backupEnabled,omitempty"`
 	BiConnector   *BiConnector `json:"biConnector,omitempty"`
 	// Configuration of nodes that comprise the cluster.
-	ClusterType *string `json:"clusterType,omitempty"`
-	// Config Server Management Mode for creating or updating a sharded cluster.  When configured as ATLAS_MANAGED, atlas may automatically switch the cluster's config server type for optimal performance and savings.  When configured as FIXED_TO_DEDICATED, the cluster will always use a dedicated config server.
-	ConfigServerManagementMode *string `json:"configServerManagementMode,omitempty"`
-	// Describes a sharded cluster's config server type.
-	// Read only field.
-	ConfigServerType  *string                   `json:"configServerType,omitempty"`
+	ClusterType       *string                   `json:"clusterType,omitempty"`
 	ConnectionStrings *ClusterConnectionStrings `json:"connectionStrings,omitempty"`
 	// Date and time when MongoDB Cloud created this cluster. This parameter expresses its value in ISO 8601 format in UTC.
 	// Read only field.
@@ -60,8 +55,6 @@ type ClusterDescription20240805 struct {
 	Paused *bool `json:"paused,omitempty"`
 	// Flag that indicates whether the cluster uses continuous cloud backups.
 	PitEnabled *bool `json:"pitEnabled,omitempty"`
-	// Enable or disable log redaction.  This setting configures the ``mongod`` or ``mongos`` to redact any document field contents from a message accompanying a given log event before logging. This prevents the program from writing potentially sensitive data stored on the database to the diagnostic log. Metadata such as error or operation codes, line numbers, and source file names are still visible in the logs.  Use ``redactClientLogData`` in conjunction with Encryption at Rest and TLS/SSL (Transport Encryption) to assist compliance with regulatory requirements.  *Note*: changing this setting on a cluster will trigger a rolling restart as soon as the cluster is updated.
-	RedactClientLogData *bool `json:"redactClientLogData,omitempty"`
 	// Set this field to configure the replica set scaling mode for your cluster.  By default, Atlas scales under WORKLOAD_TYPE. This mode allows Atlas to scale your analytics nodes in parallel to your operational nodes.  When configured as SEQUENTIAL, Atlas scales all nodes sequentially. This mode is intended for steady-state workloads and applications performing latency-sensitive secondary reads.  When configured as NODE_TYPE, Atlas scales your electable nodes in parallel with your read-only and analytics nodes. This mode is intended for large, dynamic workloads requiring frequent and timely cluster tier scaling. This is the fastest scaling strategy, but it might impact latency of workloads when performing extensive secondary reads.
 	ReplicaSetScalingStrategy *string `json:"replicaSetScalingStrategy,omitempty"`
 	// List of settings that configure your cluster regions. This array has one object per shard representing node configurations in each shard. For replica sets there is only one object representing node configurations.
@@ -87,8 +80,6 @@ func NewClusterDescription20240805() *ClusterDescription20240805 {
 	this := ClusterDescription20240805{}
 	var backupEnabled bool = false
 	this.BackupEnabled = &backupEnabled
-	var configServerManagementMode string = "ATLAS_MANAGED"
-	this.ConfigServerManagementMode = &configServerManagementMode
 	var diskWarmingMode string = "FULLY_WARMED"
 	this.DiskWarmingMode = &diskWarmingMode
 	var replicaSetScalingStrategy string = "WORKLOAD_TYPE"
@@ -109,8 +100,6 @@ func NewClusterDescription20240805WithDefaults() *ClusterDescription20240805 {
 	this := ClusterDescription20240805{}
 	var backupEnabled bool = false
 	this.BackupEnabled = &backupEnabled
-	var configServerManagementMode string = "ATLAS_MANAGED"
-	this.ConfigServerManagementMode = &configServerManagementMode
 	var diskWarmingMode string = "FULLY_WARMED"
 	this.DiskWarmingMode = &diskWarmingMode
 	var replicaSetScalingStrategy string = "WORKLOAD_TYPE"
@@ -254,72 +243,6 @@ func (o *ClusterDescription20240805) HasClusterType() bool {
 // SetClusterType gets a reference to the given string and assigns it to the ClusterType field.
 func (o *ClusterDescription20240805) SetClusterType(v string) {
 	o.ClusterType = &v
-}
-
-// GetConfigServerManagementMode returns the ConfigServerManagementMode field value if set, zero value otherwise
-func (o *ClusterDescription20240805) GetConfigServerManagementMode() string {
-	if o == nil || IsNil(o.ConfigServerManagementMode) {
-		var ret string
-		return ret
-	}
-	return *o.ConfigServerManagementMode
-}
-
-// GetConfigServerManagementModeOk returns a tuple with the ConfigServerManagementMode field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ClusterDescription20240805) GetConfigServerManagementModeOk() (*string, bool) {
-	if o == nil || IsNil(o.ConfigServerManagementMode) {
-		return nil, false
-	}
-
-	return o.ConfigServerManagementMode, true
-}
-
-// HasConfigServerManagementMode returns a boolean if a field has been set.
-func (o *ClusterDescription20240805) HasConfigServerManagementMode() bool {
-	if o != nil && !IsNil(o.ConfigServerManagementMode) {
-		return true
-	}
-
-	return false
-}
-
-// SetConfigServerManagementMode gets a reference to the given string and assigns it to the ConfigServerManagementMode field.
-func (o *ClusterDescription20240805) SetConfigServerManagementMode(v string) {
-	o.ConfigServerManagementMode = &v
-}
-
-// GetConfigServerType returns the ConfigServerType field value if set, zero value otherwise
-func (o *ClusterDescription20240805) GetConfigServerType() string {
-	if o == nil || IsNil(o.ConfigServerType) {
-		var ret string
-		return ret
-	}
-	return *o.ConfigServerType
-}
-
-// GetConfigServerTypeOk returns a tuple with the ConfigServerType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ClusterDescription20240805) GetConfigServerTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.ConfigServerType) {
-		return nil, false
-	}
-
-	return o.ConfigServerType, true
-}
-
-// HasConfigServerType returns a boolean if a field has been set.
-func (o *ClusterDescription20240805) HasConfigServerType() bool {
-	if o != nil && !IsNil(o.ConfigServerType) {
-		return true
-	}
-
-	return false
-}
-
-// SetConfigServerType gets a reference to the given string and assigns it to the ConfigServerType field.
-func (o *ClusterDescription20240805) SetConfigServerType(v string) {
-	o.ConfigServerType = &v
 }
 
 // GetConnectionStrings returns the ConnectionStrings field value if set, zero value otherwise
@@ -884,39 +807,6 @@ func (o *ClusterDescription20240805) HasPitEnabled() bool {
 // SetPitEnabled gets a reference to the given bool and assigns it to the PitEnabled field.
 func (o *ClusterDescription20240805) SetPitEnabled(v bool) {
 	o.PitEnabled = &v
-}
-
-// GetRedactClientLogData returns the RedactClientLogData field value if set, zero value otherwise
-func (o *ClusterDescription20240805) GetRedactClientLogData() bool {
-	if o == nil || IsNil(o.RedactClientLogData) {
-		var ret bool
-		return ret
-	}
-	return *o.RedactClientLogData
-}
-
-// GetRedactClientLogDataOk returns a tuple with the RedactClientLogData field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ClusterDescription20240805) GetRedactClientLogDataOk() (*bool, bool) {
-	if o == nil || IsNil(o.RedactClientLogData) {
-		return nil, false
-	}
-
-	return o.RedactClientLogData, true
-}
-
-// HasRedactClientLogData returns a boolean if a field has been set.
-func (o *ClusterDescription20240805) HasRedactClientLogData() bool {
-	if o != nil && !IsNil(o.RedactClientLogData) {
-		return true
-	}
-
-	return false
-}
-
-// SetRedactClientLogData gets a reference to the given bool and assigns it to the RedactClientLogData field.
-func (o *ClusterDescription20240805) SetRedactClientLogData(v bool) {
-	o.RedactClientLogData = &v
 }
 
 // GetReplicaSetScalingStrategy returns the ReplicaSetScalingStrategy field value if set, zero value otherwise

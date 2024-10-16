@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Enabled** | Pointer to **bool** | Flag that indicates whether cluster tier auto-scaling is enabled. Set to &#x60;true&#x60; to enable cluster tier auto-scaling. If enabled, you must specify a value for **providerSettings.autoScaling.compute.maxInstanceSize** also. Set to &#x60;false&#x60; to disable cluster tier auto-scaling. | [optional] [default to false]
-**ScaleDownEnabled** | Pointer to **bool** | Flag that indicates whether the cluster tier can scale down. This is required if **autoScaling.compute.enabled** is &#x60;true&#x60;. If you enable this option, specify a value for **providerSettings.autoScaling.compute.minInstanceSize**. | [optional] [default to false]
+**Enabled** | Pointer to **bool** | Flag that indicates whether cluster tier auto-scaling is enabled. Set to &#x60;true&#x60; to enable cluster tier auto-scaling. If enabled, you must specify a value for **providerSettings.autoScaling.compute.maxInstanceSize** also. Set to &#x60;false&#x60; to disable cluster tier auto-scaling. | [optional] 
+**ScaleDownEnabled** | Pointer to **bool** | Flag that indicates whether the cluster tier can scale down. This is required if **autoScaling.compute.enabled** is &#x60;true&#x60;. If you enable this option, specify a value for **providerSettings.autoScaling.compute.minInstanceSize**. | [optional] 
 
 ## Methods
 
