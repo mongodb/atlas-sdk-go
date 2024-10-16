@@ -27,8 +27,8 @@ type MockTokenSource struct {
 }
 
 // Retrieve returns the stored token
-func (m *MockTokenSource) RetrieveToken() (string, error) {
-	return m.token, nil
+func (m *MockTokenSource) RetrieveToken() (*string, error) {
+	return &m.token, nil
 }
 
 // Save saves the token
@@ -38,13 +38,13 @@ func (m *MockTokenSource) SaveToken(token string) error {
 }
 
 // Test for providing valid token and parsing the expiration date
-func TestNewServiceAccountOAuthClient_WithValidToken(t *testing.T) {
+func TestNewServiceAccountOAuthClientWithTokenSource_WithValidToken(t *testing.T) {
 	// Generate a mock JWT token with future expiration
 	expiration := time.Now().Add(1 * time.Hour)
 	token := generateMockJWT(expiration)
 
 	mockSource := &MockTokenSource{}
-	client := NewServiceAccountOAuthClient("clientID", "clientSecret", nil, mockSource)
+	client := NewServiceAccountOAuthClientWithTokenSource("clientID", "clientSecret", mockSource, nil)
 	client.token.AccessToken = token
 	client.token.Expiry = expiration
 
@@ -55,13 +55,13 @@ func TestNewServiceAccountOAuthClient_WithValidToken(t *testing.T) {
 }
 
 // Test for providing an expired token and ensuring it's invalid
-func TestNewServiceAccountOAuthClient_WithExpiredToken(t *testing.T) {
+func TestNewServiceAccountOAuthClientWithTokenSource_WithExpiredToken(t *testing.T) {
 	// Generate a mock JWT token with past expiration
 	expiration := time.Now().Add(-1 * time.Hour)
 	token := generateMockJWT(expiration)
 
 	mockSource := &MockTokenSource{token: token}
-	client := NewServiceAccountOAuthClient("clientID", "clientSecret", nil, mockSource)
+	client := NewServiceAccountOAuthClientWithTokenSource("clientID", "clientSecret", mockSource, nil)
 
 	assert.NotNil(t, client)
 	assert.False(t, client.token.Valid())
@@ -82,7 +82,7 @@ func TestOAuthClient_FetchNewToken(t *testing.T) {
 	defer mockServer.Close()
 
 	mockSource := &MockTokenSource{}
-	client := NewServiceAccountOAuthClient("clientID", "clientSecret", &mockServer.URL, mockSource)
+	client := NewServiceAccountOAuthClientWithTokenSource("clientID", "clientSecret", mockSource, &mockServer.URL )
 
 	// Call GetAccessToken (which should fetch a new token)
 	token, err := client.getValidToken()
@@ -107,7 +107,7 @@ func TestOAuthClient_FetchToken_Failure(t *testing.T) {
 	defer mockServer.Close()
 
 	mockSource := &MockTokenSource{}
-	client := NewServiceAccountOAuthClient("clientID", "clientSecret", &mockServer.URL, mockSource)
+	client := NewServiceAccountOAuthClientWithTokenSource("clientID", "clientSecret", mockSource,&mockServer.URL )
 
 	// Call GetAccessToken expecting an error
 	_, err := client.getValidToken()
@@ -122,7 +122,7 @@ func TestCustomTransport_RoundTrip(t *testing.T) {
 	token := generateMockJWT(expiration)
 	mockSource := &MockTokenSource{token: token}
 
-	oauthClient := NewServiceAccountOAuthClient("clientID", "clientSecret", nil, mockSource)
+	oauthClient := NewServiceAccountOAuthClientWithTokenSource("clientID", "clientSecret", mockSource, nil)
 
 	transport := &CustomTransport{
 		underlyingTransport: http.DefaultTransport,
@@ -163,7 +163,7 @@ func TestOAuthClient_AutoRefreshExpiredToken(t *testing.T) {
 	expiredToken := generateMockJWT(expiration)
 
 	mockSource := &MockTokenSource{token: expiredToken}
-	client := NewServiceAccountOAuthClient("clientID", "clientSecret", &mockServer.URL, mockSource)
+	client := NewServiceAccountOAuthClientWithTokenSource("clientID", "clientSecret", mockSource,&mockServer.URL )
 
 	// Fetch new token after expiration
 	token, err := client.getValidToken()

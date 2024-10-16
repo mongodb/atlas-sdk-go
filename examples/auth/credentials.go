@@ -2,9 +2,10 @@ package main
 
 import (
 	"context"
-	"fmt"
+	"encoding/json"
 	"log"
 	"os"
+	"sync"
 
 	"go.mongodb.org/atlas-sdk/v20240805004/admin"
 	"go.mongodb.org/atlas-sdk/v20240805004/auth/credentials"
@@ -14,7 +15,6 @@ import (
 // Required env variables
 // export MONGODB_ATLAS_CLIENT_ID="your_client_id"
 // export MONGODB_ATLAS_CLIENT_SECRET="your_client_secret"
-// export MONGODB_ATLAS_ACCESS_TOKEN="optional_existing_token" # Optional
 // export MONGODB_ATLAS_URL=https://cloud.mongodb.com
 func main() {
 	host := os.Getenv("MONGODB_ATLAS_URL")
@@ -29,35 +29,21 @@ func main() {
 	if clientID == "" || clientSecret == "" {
 		log.Fatal("Missing CLIENT_ID or CLIENT_SECRET environment variables")
 	}
+	url := os.Getenv("MONGODB_ATLAS_URL")
 
-	// Optionally, you can pass an existing token from the environment
-	accessToken := os.Getenv("MONGODB_ATLAS_ACCESS_TOKEN")
-
-	// Initialize the OAuth client
-	client, err := credentials.NewServiceAccountOAuthClient(clientID, clientSecret, accessToken, nil)
-	if err != nil {
-		log.Fatalf("Error initializing OAuth client: %v", err)
-	}
-
-	if accessToken == "" {
-		// For purpose of example covering all the cases we are regenerating access token in order to seed client
-		token, err := client.GetAccessToken();
-		if err != nil {
-			log.Fatalf("Error initializing OAuth client: %v", err)
-		}
-		fmt.Print(token.AccessToken)
-		client, err = credentials.NewServiceAccountOAuthClient(clientID, clientSecret, token.AccessToken, nil)
-		if err != nil {
-			log.Fatalf("Error initializing OAuth client: %v", err)
-		}
-
-	}
-
+	// Initialize the OAuth client in memory
+	client := credentials.NewServiceAccountOAuthClient(clientID, clientSecret, &url)
 	// Create an HTTP client with the custom transport (injecting the token)
 	httpClient := credentials.NewHTTPClientWithServiceAccountAuth(client)
 
+	fileTokenSource := FileTokenSource{
+	}
+	// Initialize the OAuth client using example FileTokenSource
+	client = credentials.NewServiceAccountOAuthClientWithTokenSource(clientID, clientSecret, &fileTokenSource, &url)
+	httpClient = credentials.NewHTTPClientWithServiceAccountAuth(client)
+
 	ctx := context.Background()
-	url := os.Getenv("MONGODB_ATLAS_URL")
+
 
 	sdk, err := admin.NewClient(
 		admin.UseHTTPClient(httpClient),
@@ -86,4 +72,38 @@ func main() {
 	if projects.Results == nil {
 		log.Fatal("projects should not be empty:  %+v", projects)
 	}
+}
+
+// FileTokenSource is an implementation of TokenSource that stores the token in a file.
+type FileTokenSource struct {
+	fileContent []byte
+	mu       sync.Mutex
+}
+
+func (s *FileTokenSource) RetrieveToken() (*string, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+
+	// Replace with logic to read file
+	var tkn string
+	err := json.Unmarshal(s.fileContent, &tkn)
+	if err != nil {
+		return nil, err
+	}
+
+	return &tkn, nil
+}
+
+func (s *FileTokenSource) SaveToken(tkn string) error {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+
+
+	fileData, err := json.Marshal(tkn)
+	if err != nil {
+		return err
+	}
+	// Replace with logic to write file
+	s.fileContent = fileData;
+	return nil;
 }

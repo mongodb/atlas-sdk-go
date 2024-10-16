@@ -35,12 +35,12 @@ type OAuthClient struct {
 func (c *OAuthClient) getValidToken() (*token, error) {
     // Try to retrieve the token string from the token source
     tokenString, err := c.tokenSource.RetrieveToken()
-    if err != nil || tokenString == "" {
+    if err != nil || tokenString == nil {
         return c.refreshToken()
     }
 
     // Parse the token string into the token structure (mock parse operation)
-    c.token, err = parseToken(tokenString)
+    c.token, err = parseToken(*tokenString)
     if err != nil || c.token.expired() {
         // Token is invalid or expired, refresh it
         return c.refreshToken()
@@ -86,7 +86,7 @@ func (c *OAuthClient) fetchToken() (*token, error) {
 	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusOK {
-		return nil, errors.New("failed to obtain token, status: " + resp.Status)
+		return nil, errors.New("failed to obtain token, status: " + resp.Status + c.tokenURL)
 	}
 
 	var tokenResp struct {
@@ -170,8 +170,25 @@ func NewHTTPClientWithServiceAccountAuth(client *OAuthClient) *http.Client {
 }
 
 // NewServiceAccountOAuthClient initializes an OAuthClient with client credentials.
-func NewServiceAccountOAuthClient(clientID, clientSecret string, baseURL *string, tokenSource TokenSource) *OAuthClient {
-	//nolint:gosec //url
+func NewServiceAccountOAuthClient(clientID, clientSecret string, baseURL *string) *OAuthClient {
+	//nolint:gosec //url only
+	tokenURL := "https://cloud.mongodb.com/api/oauth/token"
+	if baseURL != nil {
+		tokenURL = *baseURL + "/api/oauth/token"
+	}
+
+	return &OAuthClient{
+		clientID:     clientID,
+		clientSecret: clientSecret,
+		tokenURL:     tokenURL,
+		tokenSource:  &InMemoryTokenSource{},
+		ctx:          context.Background(),
+	}
+}
+
+// NewServiceAccountOAuthClient initializes an OAuthClient with client credentials.
+func NewServiceAccountOAuthClientWithTokenSource(clientID, clientSecret string, tokenSource TokenSource, baseURL *string) *OAuthClient {
+	//nolint:gosec //url only
 	tokenURL := "https://cloud.mongodb.com/api/oauth/token"
 	if baseURL != nil {
 		tokenURL = *baseURL + "/api/oauth/token"

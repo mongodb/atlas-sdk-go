@@ -1,9 +1,7 @@
 package credentials
 
 import (
-	"encoding/json"
 	"errors"
-	"os"
 	"sync"
 )
 
@@ -11,69 +9,33 @@ import (
 // Interface allows integrators to fully control how access token is catched on their side.
 type TokenSource interface {
     // RetrieveToken should return the access token string.
-    RetrieveToken() (string, error)
+    RetrieveToken() (*string, error)
 
     // SaveToken should save the access token string.
     SaveToken(token string) error
 }
 
-// InMemoryTokenSource is an implementation of TokenSource that stores the token in memory.
+// InMemoryTokenSource is an default implementation of TokenSource that stores the token in memory.
 type InMemoryTokenSource struct {
-	tkn *token
+	token *string
 	mu  sync.Mutex
 }
 
-func (s *InMemoryTokenSource) RetrieveToken() (*token, error) {
+func (s *InMemoryTokenSource) RetrieveToken() (*string, error) {
+	// Locking will avoid token overrides when sharing client in multiple threads
 	s.mu.Lock()
 	defer s.mu.Unlock()
 
-	if s.tkn != nil {
-		return s.tkn, nil
+	if s.token != nil {
+		return s.token, nil
 	}
-	return nil, errors.New("token not found")
+	return nil, errors.New("InMemoryTokenSource: token not found. Token needs to be refreshed in backend")
 }
 
-func (s *InMemoryTokenSource) SaveToken(tkn *token) error {
+func (s *InMemoryTokenSource) SaveToken(token string) error {
+	// Locking will avoid token overrides when sharing client in multiple threads
 	s.mu.Lock()
 	defer s.mu.Unlock()
-	s.tkn = tkn
+	s.token = &token
 	return nil
-}
-
-// TODO remove/move to example
-
-// FileTokenSource is an implementation of TokenSource that stores the token in a file.
-type FileTokenSource struct {
-	filePath string
-	mu       sync.Mutex
-}
-
-func (s *FileTokenSource) RetrieveToken() (*token, error) {
-	s.mu.Lock()
-	defer s.mu.Unlock()
-
-	fileData, err := os.ReadFile(s.filePath)
-	if err != nil {
-		return nil, err
-	}
-
-	var tkn token
-	err = json.Unmarshal(fileData, &tkn)
-	if err != nil {
-		return nil, err
-	}
-
-	return &tkn, nil
-}
-
-func (s *FileTokenSource) SaveToken(tkn *token) error {
-	s.mu.Lock()
-	defer s.mu.Unlock()
-
-	fileData, err := json.Marshal(tkn)
-	if err != nil {
-		return err
-	}
-
-	return os.WriteFile(s.filePath, fileData, 0600)
 }
