@@ -8,11 +8,9 @@ type ClusterDescriptionProcessArgs20240805 struct {
 	ChangeStreamOptionsPreAndPostImagesExpireAfterSeconds *int `json:"changeStreamOptionsPreAndPostImagesExpireAfterSeconds,omitempty"`
 	// Number of threads on the source shard and the receiving shard for chunk migration. The number of threads should not exceed the half the total number of CPU cores in the sharded cluster.
 	ChunkMigrationConcurrency *int `json:"chunkMigrationConcurrency,omitempty"`
-	// Default time limit in milliseconds for individual read operations to complete.
-	DefaultMaxTimeMS *int `json:"defaultMaxTimeMS,omitempty"`
 	// Default level of acknowledgment requested from MongoDB for write operations when none is specified by the driver.
 	DefaultWriteConcern *string `json:"defaultWriteConcern,omitempty"`
-	// Flag that indicates whether the cluster allows execution of operations that perform server-side executions of JavaScript. When using 8.0+, we recommend disabling server-side JavaScript and using operators of aggregation pipeline as more performant alternative.
+	// Flag that indicates whether the cluster allows execution of operations that perform server-side executions of JavaScript.
 	JavascriptEnabled *bool `json:"javascriptEnabled,omitempty"`
 	// Minimum Transport Layer Security (TLS) version that the cluster accepts for incoming connections. Clusters using TLS 1.0 or 1.1 should consider setting TLS 1.2 as the minimum TLS protocol version.
 	MinimumEnabledTlsProtocol *string `json:"minimumEnabledTlsProtocol,omitempty"`
@@ -38,8 +36,6 @@ type ClusterDescriptionProcessArgs20240805 struct {
 // will change when the set of required properties is changed
 func NewClusterDescriptionProcessArgs20240805() *ClusterDescriptionProcessArgs20240805 {
 	this := ClusterDescriptionProcessArgs20240805{}
-	var changeStreamOptionsPreAndPostImagesExpireAfterSeconds int = -1
-	this.ChangeStreamOptionsPreAndPostImagesExpireAfterSeconds = &changeStreamOptionsPreAndPostImagesExpireAfterSeconds
 	var sampleRefreshIntervalBIConnector int = 0
 	this.SampleRefreshIntervalBIConnector = &sampleRefreshIntervalBIConnector
 	return &this
@@ -50,8 +46,6 @@ func NewClusterDescriptionProcessArgs20240805() *ClusterDescriptionProcessArgs20
 // but it doesn't guarantee that properties required by API are set
 func NewClusterDescriptionProcessArgs20240805WithDefaults() *ClusterDescriptionProcessArgs20240805 {
 	this := ClusterDescriptionProcessArgs20240805{}
-	var changeStreamOptionsPreAndPostImagesExpireAfterSeconds int = -1
-	this.ChangeStreamOptionsPreAndPostImagesExpireAfterSeconds = &changeStreamOptionsPreAndPostImagesExpireAfterSeconds
 	var sampleRefreshIntervalBIConnector int = 0
 	this.SampleRefreshIntervalBIConnector = &sampleRefreshIntervalBIConnector
 	return &this
@@ -121,39 +115,6 @@ func (o *ClusterDescriptionProcessArgs20240805) HasChunkMigrationConcurrency() b
 // SetChunkMigrationConcurrency gets a reference to the given int and assigns it to the ChunkMigrationConcurrency field.
 func (o *ClusterDescriptionProcessArgs20240805) SetChunkMigrationConcurrency(v int) {
 	o.ChunkMigrationConcurrency = &v
-}
-
-// GetDefaultMaxTimeMS returns the DefaultMaxTimeMS field value if set, zero value otherwise
-func (o *ClusterDescriptionProcessArgs20240805) GetDefaultMaxTimeMS() int {
-	if o == nil || IsNil(o.DefaultMaxTimeMS) {
-		var ret int
-		return ret
-	}
-	return *o.DefaultMaxTimeMS
-}
-
-// GetDefaultMaxTimeMSOk returns a tuple with the DefaultMaxTimeMS field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ClusterDescriptionProcessArgs20240805) GetDefaultMaxTimeMSOk() (*int, bool) {
-	if o == nil || IsNil(o.DefaultMaxTimeMS) {
-		return nil, false
-	}
-
-	return o.DefaultMaxTimeMS, true
-}
-
-// HasDefaultMaxTimeMS returns a boolean if a field has been set.
-func (o *ClusterDescriptionProcessArgs20240805) HasDefaultMaxTimeMS() bool {
-	if o != nil && !IsNil(o.DefaultMaxTimeMS) {
-		return true
-	}
-
-	return false
-}
-
-// SetDefaultMaxTimeMS gets a reference to the given int and assigns it to the DefaultMaxTimeMS field.
-func (o *ClusterDescriptionProcessArgs20240805) SetDefaultMaxTimeMS(v int) {
-	o.DefaultMaxTimeMS = &v
 }
 
 // GetDefaultWriteConcern returns the DefaultWriteConcern field value if set, zero value otherwise

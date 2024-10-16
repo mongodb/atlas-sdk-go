@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DestinationOrgId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the organization to move the specified project to. | [optional] 
-**DestinationOrgPrivateApiKey** | Pointer to **string** | Unique string that identifies the private part of the API Key used to verify access to the destination organization. This parameter is required only when you authenticate with Programmatic API Keys. | [optional] 
-**DestinationOrgPublicApiKey** | Pointer to **string** | Unique string that identifies the public part of the API Key used to verify access to the destination organization. This parameter is required only when you authenticate with Programmatic API Keys. | [optional] 
+**DestinationOrgPrivateApiKey** | Pointer to **string** | Unique string that identifies the private part of the [API Key](https://dochub.mongodb.org/core/atlas-create-prog-api-key) used to verify access to the destination organization. This parameter is required only when you authenticate with Programmatic API Keys. | [optional] 
+**DestinationOrgPublicApiKey** | Pointer to **string** | Unique string that identifies the public part of the [API Key](https://dochub.mongodb.org/core/atlas-create-prog-api-key) used to verify access to the destination organization. This parameter is required only when you authenticate with Programmatic API Keys. | [optional] 
 
 ## Methods
 

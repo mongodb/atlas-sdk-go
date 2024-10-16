@@ -15,12 +15,7 @@ type LegacyAtlasCluster struct {
 	BackupEnabled *bool        `json:"backupEnabled,omitempty"`
 	BiConnector   *BiConnector `json:"biConnector,omitempty"`
 	// Configuration of nodes that comprise the cluster.
-	ClusterType *string `json:"clusterType,omitempty"`
-	// Config Server Management Mode for creating or updating a sharded cluster.  When configured as ATLAS_MANAGED, atlas may automatically switch the cluster's config server type for optimal performance and savings.  When configured as FIXED_TO_DEDICATED, the cluster will always use a dedicated config server.
-	ConfigServerManagementMode *string `json:"configServerManagementMode,omitempty"`
-	// Describes a sharded cluster's config server type.
-	// Read only field.
-	ConfigServerType  *string                   `json:"configServerType,omitempty"`
+	ClusterType       *string                   `json:"clusterType,omitempty"`
 	ConnectionStrings *ClusterConnectionStrings `json:"connectionStrings,omitempty"`
 	// Date and time when MongoDB Cloud created this serverless instance. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC.
 	// Read only field.
@@ -107,8 +102,6 @@ type LegacyAtlasCluster struct {
 // will change when the set of required properties is changed
 func NewLegacyAtlasCluster() *LegacyAtlasCluster {
 	this := LegacyAtlasCluster{}
-	var configServerManagementMode string = "ATLAS_MANAGED"
-	this.ConfigServerManagementMode = &configServerManagementMode
 	var diskWarmingMode string = "FULLY_WARMED"
 	this.DiskWarmingMode = &diskWarmingMode
 	var numShards int = 1
@@ -131,8 +124,6 @@ func NewLegacyAtlasCluster() *LegacyAtlasCluster {
 // but it doesn't guarantee that properties required by API are set
 func NewLegacyAtlasClusterWithDefaults() *LegacyAtlasCluster {
 	this := LegacyAtlasCluster{}
-	var configServerManagementMode string = "ATLAS_MANAGED"
-	this.ConfigServerManagementMode = &configServerManagementMode
 	var diskWarmingMode string = "FULLY_WARMED"
 	this.DiskWarmingMode = &diskWarmingMode
 	var numShards int = 1
@@ -313,72 +304,6 @@ func (o *LegacyAtlasCluster) HasClusterType() bool {
 // SetClusterType gets a reference to the given string and assigns it to the ClusterType field.
 func (o *LegacyAtlasCluster) SetClusterType(v string) {
 	o.ClusterType = &v
-}
-
-// GetConfigServerManagementMode returns the ConfigServerManagementMode field value if set, zero value otherwise
-func (o *LegacyAtlasCluster) GetConfigServerManagementMode() string {
-	if o == nil || IsNil(o.ConfigServerManagementMode) {
-		var ret string
-		return ret
-	}
-	return *o.ConfigServerManagementMode
-}
-
-// GetConfigServerManagementModeOk returns a tuple with the ConfigServerManagementMode field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LegacyAtlasCluster) GetConfigServerManagementModeOk() (*string, bool) {
-	if o == nil || IsNil(o.ConfigServerManagementMode) {
-		return nil, false
-	}
-
-	return o.ConfigServerManagementMode, true
-}
-
-// HasConfigServerManagementMode returns a boolean if a field has been set.
-func (o *LegacyAtlasCluster) HasConfigServerManagementMode() bool {
-	if o != nil && !IsNil(o.ConfigServerManagementMode) {
-		return true
-	}
-
-	return false
-}
-
-// SetConfigServerManagementMode gets a reference to the given string and assigns it to the ConfigServerManagementMode field.
-func (o *LegacyAtlasCluster) SetConfigServerManagementMode(v string) {
-	o.ConfigServerManagementMode = &v
-}
-
-// GetConfigServerType returns the ConfigServerType field value if set, zero value otherwise
-func (o *LegacyAtlasCluster) GetConfigServerType() string {
-	if o == nil || IsNil(o.ConfigServerType) {
-		var ret string
-		return ret
-	}
-	return *o.ConfigServerType
-}
-
-// GetConfigServerTypeOk returns a tuple with the ConfigServerType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LegacyAtlasCluster) GetConfigServerTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.ConfigServerType) {
-		return nil, false
-	}
-
-	return o.ConfigServerType, true
-}
-
-// HasConfigServerType returns a boolean if a field has been set.
-func (o *LegacyAtlasCluster) HasConfigServerType() bool {
-	if o != nil && !IsNil(o.ConfigServerType) {
-		return true
-	}
-
-	return false
-}
-
-// SetConfigServerType gets a reference to the given string and assigns it to the ConfigServerType field.
-func (o *LegacyAtlasCluster) SetConfigServerType(v string) {
-	o.ConfigServerType = &v
 }
 
 // GetConnectionStrings returns the ConnectionStrings field value if set, zero value otherwise
