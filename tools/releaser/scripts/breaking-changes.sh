@@ -12,7 +12,7 @@ script_path=$(dirname "$0")
 echo "Installing go-apidiff"
 go install github.com/joelanford/go-apidiff@latest > /dev/null
 
-echo "Running breaking changes check for $GIT_BASE_REF"
+echo "Running breaking changes check comparing commits ${API_DIFF_OLD_COMMIT} and ${API_DIFF_NEW_COMMIT}"
 
 pushd "$script_path/../../../" || exit ## workaround for --repo-path="../" not working
 echo "Changed directory to $(pwd)"
