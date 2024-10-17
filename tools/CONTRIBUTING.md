@@ -53,5 +53,5 @@ In [Generate SDK Github action](../.github/workflows/autoupdate-prod.yaml), `API
 
 ## SDK Preview
 
-The [Generate Preview SDK Github action](../.github/workflows/autoupdate-preview.yaml) creates a PR with latest changes. 
+The [Generate Preview SDK Github action](../.github/workflows/autoupdate-preview.yaml) creates a PR with latest changes.
 It's created in package `github.com/mongodb/atlas-sdk-go` instead of `go.mongodb.org/atlas-sdk/vXXXXXXXXXXX` so no official release is needed for Preview and it makes it clear that it's not a regular version.
