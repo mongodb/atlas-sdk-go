@@ -7,8 +7,8 @@ import (
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
-	"go.mongodb.org/atlas-sdk/v20240805004/admin"
-	"go.mongodb.org/atlas-sdk/v20240805004/mockadmin"
+	"go.mongodb.org/atlas-sdk/v20240805005/admin"
+	"go.mongodb.org/atlas-sdk/v20240805005/mockadmin"
 )
 
 
