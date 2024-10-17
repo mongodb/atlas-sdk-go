@@ -44,7 +44,7 @@ jobs:
           commit-message: "temp: client update"
           delete-branch: true
           draft: true
-          branch: dev-latest
+          branch: preview-latest
           body: |
             Automatic update for MongoDB Atlas Go Client based on *release candidate* OpenAPI file.
             **DO NOT MERGE THIS PR TO THE MAIN BRANCH**
@@ -56,7 +56,7 @@ jobs:
             ## Using early preview changes
 
             ```sh
-            go get go.mongodb.org/atlas-sdk/v20240805004@dev-latest   
+            go get go.mongodb.org/atlas-sdk/preview@preview-latest   
             ```
 
             ## Automated checks done for preview sdk
