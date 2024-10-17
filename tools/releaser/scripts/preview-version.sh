@@ -7,15 +7,16 @@ source "$script_path/extract-version.sh"
 # shellcheck source=/dev/null
 source "$script_path/version-paths.sh"
 
+OLD_PACKAGE="go.mongodb.org/atlas-sdk/${SDK_MAJOR_VERSION}"
+NEW_PACKAGE="github.com/mongodb/atlas-sdk-go"
 examples_path="$script_path/../../../examples"
 
 echo "Delete specific version $SDK_MAJOR_VERSION from examples go.mod"
-(cd "$examples_path" && go mod edit -droprequire="go.mongodb.org/atlas-sdk/$SDK_MAJOR_VERSION")
+(cd "$examples_path" && go mod edit -droprequire="$OLD_PACKAGE")
 
-NEW_VERSION="preview"
-echo "Modifying all instances of version from $SDK_RESOURCE_VERSION to $NEW_VERSION across the repository."
+echo "Modifying all instances from $OLD_PACKAGE to $NEW_PACKAGE across the repository."
 npm install
-npm exec -c "replace-in-file /$SDK_MAJOR_VERSION/g $NEW_VERSION $VERSION_UPDATE_PATHS_PREVIEW --isRegex"
+npm exec -c "replace-in-file '/$OLD_PACKAGE/g' '$NEW_PACKAGE' $VERSION_UPDATE_PATHS_PREVIEW --isRegex"
 
 echo "Add preview version to examples go.mod"
-(cd "$examples_path" && go get go.mongodb.org/atlas-sdk/preview)
+(cd "$examples_path" && go get $NEW_PACKAGE)
