@@ -6,6 +6,6 @@ filename: "{{ .InterfaceName | snakecase }}.go"
 mockname: "{{.InterfaceName}}"
 
 packages:
-  go.mongodb.org/atlas-sdk/v20240805004/admin:
+  go.mongodb.org/atlas-sdk/preview/admin:
     config:
       include-regex: ".*Api"

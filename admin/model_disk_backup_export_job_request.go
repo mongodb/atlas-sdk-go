@@ -6,7 +6,7 @@ package admin
 type DiskBackupExportJobRequest struct {
 	// Collection of key-value pairs that represent custom data to add to the metadata file that MongoDB Cloud uploads to the bucket when the export job finishes.
 	CustomData *[]BackupLabel `json:"customData,omitempty"`
-	// Unique 24-hexadecimal character string that identifies the Export Bucket to export to.
+	// Unique 24-hexadecimal character string that identifies the Export Bucket.
 	// Write only field.
 	ExportBucketId string `json:"exportBucketId"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.

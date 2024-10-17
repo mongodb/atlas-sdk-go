@@ -1,4 +1,4 @@
-module go.mongodb.org/atlas-sdk/v20240805004
+module go.mongodb.org/atlas-sdk/preview
 
 go 1.22.0
 

@@ -3,7 +3,7 @@ package test
 import (
 	"fmt"
 
-	"go.mongodb.org/atlas-sdk/v20240805004/admin"
+	"go.mongodb.org/atlas-sdk/preview/admin"
 )
 
 func ExampleNewClient() {

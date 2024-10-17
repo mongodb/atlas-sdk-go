@@ -1,16 +1,17 @@
-module go.mongodb.org/atlas-sdk/v20240805004/examples
+module go.mongodb.org/atlas-sdk/preview/examples
 
 go 1.22.0
 
 toolchain go1.23.1
 
-replace go.mongodb.org/atlas-sdk/v20240805004 => ../
+replace go.mongodb.org/atlas-sdk/preview => ../
 
 require (
 	github.com/hashicorp/go-retryablehttp v0.7.7
 	github.com/mongodb-forks/digest v1.1.0
-	go.mongodb.org/atlas-sdk/v20240805004 v20240805004.1.0
 )
+
+require go.mongodb.org/atlas-sdk/preview v0.0.0-00010101000000-000000000000 // indirect
 
 require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
