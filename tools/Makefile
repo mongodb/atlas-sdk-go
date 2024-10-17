@@ -33,8 +33,8 @@ generate_tests:
 	rm -Rf ../test/generated/test*
 	./scripts/generate_tests.sh
 
-.PHONY: new-release
-new-release:
+.PHONY: new-version
+new-version:
 	./releaser/scripts/new-version.sh
 
 .PHONY: update-version
