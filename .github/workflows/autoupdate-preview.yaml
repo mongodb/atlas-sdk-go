@@ -32,6 +32,10 @@ jobs:
         run: |
           export PATH=${PATH}:`go env GOPATH`/bin
           make clean_and_generate
+      - name: Update Preview version
+        if: steps.verify-changed-files.outputs.files_changed == 'true'
+        working-directory: ./tools
+        run: make preview-version  
       - name: Run mock generation
         working-directory: ./tools
         if: steps.verify-changed-files.outputs.files_changed == 'true'
