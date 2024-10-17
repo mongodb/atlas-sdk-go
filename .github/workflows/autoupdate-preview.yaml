@@ -63,6 +63,8 @@ jobs:
             go get go.mongodb.org/atlas-sdk/preview@preview-latest   
             ```
 
+            > NOTE: The version is fixed so you have to do `go get` every time you want to update the Preview version to the latest version.
+
             ## Automated checks done for preview sdk
 
             1. Compilation and unit tests
