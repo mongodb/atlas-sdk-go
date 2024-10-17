@@ -50,3 +50,8 @@ https://github.com/OpenAPITools/openapi-generator/tree/master/modules/openapi-ge
 
 We use [go-apidiff](https://github.com/joelanford/go-apidiff) to detect if there are breaking changes and a new major version release is needed.
 In [Generate SDK Github action](../.github/workflows/autoupdate-prod.yaml), `API_DIFF_OLD_COMMIT` and `API_DIFF_NEW_COMMIT` are used to do the comparison.
+
+## SDK Preview
+
+The [Generate Preview SDK Github action](../.github/workflows/autoupdate-preview.yaml) creates a PR with latest changes.
+It's created in package `github.com/mongodb/atlas-sdk-go` instead of `go.mongodb.org/atlas-sdk/vXXXXXXXXXXX` so no official release is needed for Preview and it makes it clear that it's not a regular version.
