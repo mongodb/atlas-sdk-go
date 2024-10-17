@@ -590,6 +590,7 @@ Class        | Method        | HTTP request  | Description   |
  - [FederationOidcIdentityProviderUpdate](./docs/FederationOidcIdentityProviderUpdate.md)
  - [FieldTransformation](./docs/FieldTransformation.md)
  - [FieldViolation](./docs/FieldViolation.md)
+ - [FreeComputeAutoScalingRules](./docs/FreeComputeAutoScalingRules.md)
  - [GCPConsumerForwardingRule](./docs/GCPConsumerForwardingRule.md)
  - [GeoSharding20240805](./docs/GeoSharding20240805.md)
  - [GoogleCloudKMS](./docs/GoogleCloudKMS.md)

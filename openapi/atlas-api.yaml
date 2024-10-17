@@ -21,7 +21,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: ecc67f65d9b5a5199175facaab8a2dc97afe2911
+  x-xgen-sha: 1c52ceb4d6cff9896945cfc528023d46bc5cf1d0
 servers:
 - url: https://cloud.mongodb.com
 tags:
@@ -28431,10 +28431,7 @@ components:
       description: Range of instance sizes to which your cluster can scale.
       properties:
         compute:
-          type: string
-          description: Collection of settings that configures how a cluster might
-            scale its cluster tier and whether the cluster can scale down.
-          title: Tenant
+          $ref: "#/components/schemas/FreeComputeAutoScalingRules"
     ClusterFreeProviderSettings:
       type: object
       allOf:
@@ -36599,6 +36596,30 @@ components:
       - eventTypeName
       - id
       title: ReplicaSet Events
+    FreeComputeAutoScalingRules:
+      type: object
+      description: Collection of settings that configures how a cluster might scale
+        its cluster tier and whether the cluster can scale down.
+      properties:
+        maxInstanceSize:
+          type: string
+          description: Maximum instance size to which your cluster can automatically
+            scale.
+          enum:
+          - M0
+          - M2
+          - M5
+          title: Tenant Instance Sizes
+        minInstanceSize:
+          type: string
+          description: Minimum instance size to which your cluster can automatically
+            scale.
+          enum:
+          - M0
+          - M2
+          - M5
+          title: Tenant Instance Sizes
+      title: Tenant
     GCPCloudProviderContainer:
       type: object
       allOf:

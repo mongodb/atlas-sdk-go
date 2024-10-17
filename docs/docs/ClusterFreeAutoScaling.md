@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Compute** | Pointer to **string** | Collection of settings that configures how a cluster might scale its cluster tier and whether the cluster can scale down. | [optional] 
+**Compute** | Pointer to [**FreeComputeAutoScalingRules**](FreeComputeAutoScalingRules.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetCompute
 
-`func (o *ClusterFreeAutoScaling) GetCompute() string`
+`func (o *ClusterFreeAutoScaling) GetCompute() FreeComputeAutoScalingRules`
 
 GetCompute returns the Compute field if non-nil, zero value otherwise.
 
 ### GetComputeOk
 
-`func (o *ClusterFreeAutoScaling) GetComputeOk() (*string, bool)`
+`func (o *ClusterFreeAutoScaling) GetComputeOk() (*FreeComputeAutoScalingRules, bool)`
 
 GetComputeOk returns a tuple with the Compute field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCompute
 
-`func (o *ClusterFreeAutoScaling) SetCompute(v string)`
+`func (o *ClusterFreeAutoScaling) SetCompute(v FreeComputeAutoScalingRules)`
 
 SetCompute sets Compute field to given value.
 
