@@ -19,7 +19,7 @@ import (
 	"log"
 	"os"	
 	
-	"go.mongodb.org/atlas-sdk/v20240805004/admin"
+	"go.mongodb.org/atlas-sdk/v20240805005/admin"
 )
 
 func main() {
