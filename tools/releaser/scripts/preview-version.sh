@@ -9,8 +9,8 @@ source "$script_path/version-paths.sh"
 
 examples_path="$script_path/../../../examples"
 
-echo "Delete specific version $SDK_RESOURCE_VERSION from examples go.mod"
-(cd "$examples_path" && go mod edit -droprequire="go.mongodb.org/atlas-sdk/$SDK_RESOURCE_VERSION")
+echo "Delete specific version $SDK_MAJOR_VERSION from examples go.mod"
+(cd "$examples_path" && go mod edit -droprequire="go.mongodb.org/atlas-sdk/$SDK_MAJOR_VERSION")
 
 NEW_VERSION="preview"
 echo "Modifying all instances of version from $SDK_RESOURCE_VERSION to $NEW_VERSION across the repository."
