@@ -37,10 +37,6 @@ generate_tests:
 new-version:
 	./releaser/scripts/new-version.sh
 
-.PHONY: preview-version
-preview-version:
-	./releaser/scripts/preview-version.sh
-
 .PHONY: update-version
 update-version:
 	## When manually updating major version
