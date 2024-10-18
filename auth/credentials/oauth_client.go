@@ -23,47 +23,47 @@ type token struct {
 
 // OAuthClient manages the OAuth token fetching and refreshing using a TokenSource.
 type OAuthClient struct {
-    clientID     string
-    clientSecret string
-    tokenURL     string
-    token        *token
-    tokenSource  TokenSource
-    ctx          context.Context
+	clientID     string
+	clientSecret string
+	tokenURL     string
+	token        *token
+	tokenSource  TokenSource
+	ctx          context.Context
 }
 
 // getValidToken retrieves the valid token, refreshing it if necessary.
 func (c *OAuthClient) getValidToken() (*token, error) {
-    // Try to retrieve the token string from the token source
-    tokenString, err := c.tokenSource.RetrieveToken()
-    if err != nil || tokenString == nil {
-        return c.refreshToken()
-    }
+	// Try to retrieve the token string from the token source
+	tokenString, err := c.tokenSource.RetrieveToken()
+	if err != nil || tokenString == nil {
+		return c.refreshToken()
+	}
 
-    // Parse the token string into the token structure (mock parse operation)
-    c.token, err = parseToken(*tokenString)
-    if err != nil || c.token.expired() {
-        // Token is invalid or expired, refresh it
-        return c.refreshToken()
-    }
+	// Parse the token string into the token structure (mock parse operation)
+	c.token, err = parseToken(*tokenString)
+	if err != nil || c.token.expired() {
+		// Token is invalid or expired, refresh it
+		return c.refreshToken()
+	}
 
-    return c.token, nil
+	return c.token, nil
 }
 
 // refreshToken fetches a new token and saves it using the token source.
 func (c *OAuthClient) refreshToken() (*token, error) {
-    newToken, err := c.fetchToken()
-    if err != nil {
-        return nil, err
-    }
+	newToken, err := c.fetchToken()
+	if err != nil {
+		return nil, err
+	}
 
-    // Save the access token string to the token source
-    err = c.tokenSource.SaveToken(newToken.AccessToken)
-    if err != nil {
-        return nil, fmt.Errorf("failed to save token: %w", err)
-    }
+	// Save the access token string to the token source
+	err = c.tokenSource.SaveToken(newToken.AccessToken)
+	if err != nil {
+		return nil, fmt.Errorf("failed to save token: %w", err)
+	}
 
-    c.token = newToken
-    return newToken, nil
+	c.token = newToken
+	return newToken, nil
 }
 
 // fetchToken makes a manual POST request to the OAuth server to get the access token.
@@ -108,10 +108,9 @@ func (c *OAuthClient) fetchToken() (*token, error) {
 	return token, nil
 }
 
-
 // SetAuthHeader sets the Authorization header with the access token.
 func (t *token) SetAuthHeader(r *http.Request) {
-	r.Header.Set("Authorization", "Bearer " + t.AccessToken)
+	r.Header.Set("Authorization", "Bearer "+t.AccessToken)
 }
 
 const expiryDelta = 10 * time.Second
@@ -131,34 +130,35 @@ func (t *token) Valid() bool {
 
 // ParseToken extracts expiry details from JWT token
 func parseToken(accessToken string) (*token, error) {
-    parts := strings.Split(accessToken, ".")
-    if len(parts) != 3 {
-        return nil, errors.New("invalid token format")
-    }
+	parts := strings.Split(accessToken, ".")
+	if len(parts) != 3 {
+		return nil, errors.New("invalid token format")
+	}
 
-    payload, err := base64.RawURLEncoding.DecodeString(parts[1])
-    if err != nil {
-        return nil, err
-    }
+	payload, err := base64.RawURLEncoding.DecodeString(parts[1])
+	if err != nil {
+		return nil, err
+	}
 
-    var tokenData struct {
-        Exp int64 `json:"exp"`
-    }
-    if err := json.Unmarshal(payload, &tokenData); err != nil {
-        return nil, err
-    }
+	var tokenData struct {
+		Exp int64 `json:"exp"`
+	}
+	if err := json.Unmarshal(payload, &tokenData); err != nil {
+		return nil, err
+	}
 
-    expiry := time.Unix(tokenData.Exp, 0)
-    if time.Now().After(expiry) {
-        return nil, errors.New("token has expired")
-    }
+	expiry := time.Unix(tokenData.Exp, 0)
+	if time.Now().After(expiry) {
+		return nil, errors.New("token has expired")
+	}
 
-    return &token{
-        AccessToken: accessToken,
-        Expiry:      expiry,
-        ExpiresIn:   int(time.Until(expiry).Seconds()),
-    }, nil
+	return &token{
+		AccessToken: accessToken,
+		Expiry:      expiry,
+		ExpiresIn:   int(time.Until(expiry).Seconds()),
+	}, nil
 }
+
 // NewHTTPClientWithServiceAccountAuth creates an HTTP client with the custom transport.
 func NewHTTPClientWithServiceAccountAuth(client *OAuthClient) *http.Client {
 	return &http.Client{
@@ -169,36 +169,47 @@ func NewHTTPClientWithServiceAccountAuth(client *OAuthClient) *http.Client {
 	}
 }
 
-// NewServiceAccountOAuthClient initializes an OAuthClient with client credentials.
-func NewServiceAccountOAuthClient(clientID, clientSecret string, baseURL *string) *OAuthClient {
-	//nolint:gosec //url only
-	tokenURL := "https://cloud.mongodb.com/api/oauth/token"
-	if baseURL != nil {
-		tokenURL = *baseURL + "/api/oauth/token"
-	}
-
-	return &OAuthClient{
-		clientID:     clientID,
-		clientSecret: clientSecret,
-		tokenURL:     tokenURL,
-		tokenSource:  &InMemoryTokenSource{},
-		ctx:          context.Background(),
-	}
+// NewServiceAccountOAuthClient initializes an OAuthClient with client credentials with default InMemoryTokenSource.
+func NewServiceAccountOAuthClient(clientID, clientSecret string) *OAuthClient {
+	return NewServiceAccountOAuthClientWithTokenSource(ServiceAccountOAuthClientWithTokenSource{
+		ClientID:     clientID,
+		ClientSecret: clientSecret,
+		TokenSource:  &InMemoryTokenSource{},
+	})
 }
 
-// NewServiceAccountOAuthClient initializes an OAuthClient with client credentials.
-func NewServiceAccountOAuthClientWithTokenSource(clientID, clientSecret string, tokenSource TokenSource, baseURL *string) *OAuthClient {
+type ServiceAccountOAuthClientWithTokenSource struct {
+	ClientID     string
+	ClientSecret string
+	// Custom token source. InMemoryTokenSource being default
+	TokenSource TokenSource
+
+	// Custom context
+	Context *context.Context
+	// Custom base url for change
+	BaseURL *string
+}
+
+// NewServiceAccountOAuthClient initializes an OAuthClient with client credentials and custom TokenSource
+// Use this method to initialze custom token storage (filesystem)
+func NewServiceAccountOAuthClientWithTokenSource(opts ServiceAccountOAuthClientWithTokenSource) *OAuthClient {
 	//nolint:gosec //url only
 	tokenURL := "https://cloud.mongodb.com/api/oauth/token"
-	if baseURL != nil {
-		tokenURL = *baseURL + "/api/oauth/token"
+	if opts.BaseURL != nil {
+		tokenURL = *opts.BaseURL + "/api/oauth/token"
+	}
+	var ctx context.Context
+	if opts.Context == nil {
+		ctx = context.Background()
+	} else {
+		ctx = *opts.Context
 	}
 
 	return &OAuthClient{
-		clientID:     clientID,
-		clientSecret: clientSecret,
+		clientID:     opts.ClientID,
+		clientSecret: opts.ClientSecret,
 		tokenURL:     tokenURL,
-		tokenSource:  tokenSource,
-		ctx:          context.Background(),
+		tokenSource:  opts.TokenSource,
+		ctx:          ctx,
 	}
 }
