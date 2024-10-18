@@ -10,6 +10,9 @@ type ApiAtlasNonCompliantResource struct {
 	// Unique 24-hexadecimal character string that identifies the non-compliant resource.
 	// Read only field.
 	ResourceId *string `json:"resourceId,omitempty"`
+	// Unique human readable string that identifies the non-compliant resource.
+	// Read only field.
+	ResourceName *string `json:"resourceName,omitempty"`
 	// List of resource policies causing the resource to be considered non-compliant.
 	// Read only field.
 	ResourcePoliciesCausingNonCompliance *[]ApiAtlasResourcePolicyMetadata `json:"resourcePoliciesCausingNonCompliance,omitempty"`
@@ -99,6 +102,39 @@ func (o *ApiAtlasNonCompliantResource) HasResourceId() bool {
 // SetResourceId gets a reference to the given string and assigns it to the ResourceId field.
 func (o *ApiAtlasNonCompliantResource) SetResourceId(v string) {
 	o.ResourceId = &v
+}
+
+// GetResourceName returns the ResourceName field value if set, zero value otherwise
+func (o *ApiAtlasNonCompliantResource) GetResourceName() string {
+	if o == nil || IsNil(o.ResourceName) {
+		var ret string
+		return ret
+	}
+	return *o.ResourceName
+}
+
+// GetResourceNameOk returns a tuple with the ResourceName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApiAtlasNonCompliantResource) GetResourceNameOk() (*string, bool) {
+	if o == nil || IsNil(o.ResourceName) {
+		return nil, false
+	}
+
+	return o.ResourceName, true
+}
+
+// HasResourceName returns a boolean if a field has been set.
+func (o *ApiAtlasNonCompliantResource) HasResourceName() bool {
+	if o != nil && !IsNil(o.ResourceName) {
+		return true
+	}
+
+	return false
+}
+
+// SetResourceName gets a reference to the given string and assigns it to the ResourceName field.
+func (o *ApiAtlasNonCompliantResource) SetResourceName(v string) {
+	o.ResourceName = &v
 }
 
 // GetResourcePoliciesCausingNonCompliance returns the ResourcePoliciesCausingNonCompliance field value if set, zero value otherwise
