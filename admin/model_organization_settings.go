@@ -10,6 +10,8 @@ type OrganizationSettings struct {
 	MultiFactorAuthRequired *bool `json:"multiFactorAuthRequired,omitempty"`
 	// Flag that indicates whether to block MongoDB Support from accessing Atlas infrastructure and cluster logs for any deployment in the specified organization without explicit permission. Once this setting is turned on, you can grant MongoDB Support a 24-hour bypass access to the Atlas deployment to resolve support issues. To learn more, see: https://www.mongodb.com/docs/atlas/security-restrict-support-access/.
 	RestrictEmployeeAccess *bool `json:"restrictEmployeeAccess,omitempty"`
+	// String that specifies a single email address for the specified organization to receive security-related notifications. Specifying a security contact does not grant them authorization or access to Atlas for security decisions or approvals. An empty string is valid and clears the existing security contact (if any).
+	SecurityContact *string `json:"securityContact,omitempty"`
 }
 
 // NewOrganizationSettings instantiates a new OrganizationSettings object
@@ -126,4 +128,37 @@ func (o *OrganizationSettings) HasRestrictEmployeeAccess() bool {
 // SetRestrictEmployeeAccess gets a reference to the given bool and assigns it to the RestrictEmployeeAccess field.
 func (o *OrganizationSettings) SetRestrictEmployeeAccess(v bool) {
 	o.RestrictEmployeeAccess = &v
+}
+
+// GetSecurityContact returns the SecurityContact field value if set, zero value otherwise
+func (o *OrganizationSettings) GetSecurityContact() string {
+	if o == nil || IsNil(o.SecurityContact) {
+		var ret string
+		return ret
+	}
+	return *o.SecurityContact
+}
+
+// GetSecurityContactOk returns a tuple with the SecurityContact field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrganizationSettings) GetSecurityContactOk() (*string, bool) {
+	if o == nil || IsNil(o.SecurityContact) {
+		return nil, false
+	}
+
+	return o.SecurityContact, true
+}
+
+// HasSecurityContact returns a boolean if a field has been set.
+func (o *OrganizationSettings) HasSecurityContact() bool {
+	if o != nil && !IsNil(o.SecurityContact) {
+		return true
+	}
+
+	return false
+}
+
+// SetSecurityContact gets a reference to the given string and assigns it to the SecurityContact field.
+func (o *OrganizationSettings) SetSecurityContact(v string) {
+	o.SecurityContact = &v
 }
