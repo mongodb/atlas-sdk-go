@@ -35,7 +35,7 @@ jobs:
       - name: Update Preview version
         if: steps.verify-changed-files.outputs.files_changed == 'true'
         working-directory: ./tools
-        run: make preview-version  
+        run: echo temporarily dont run changes # make preview-version  
       - name: Run mock generation
         working-directory: ./tools
         if: steps.verify-changed-files.outputs.files_changed == 'true'
