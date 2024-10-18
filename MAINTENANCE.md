@@ -88,4 +88,4 @@ To maintain traceability and streamline issue management, each upstream issue au
 
 ## Tracking PR Reviews
 
-Currently, apix-1 GitHub team is notified for each auto-update PR of the SDK. Each PR requires a team review.
+Currently, apix-integrations GitHub team is notified for each auto-update PR of the SDK. Each PR requires a team review.
