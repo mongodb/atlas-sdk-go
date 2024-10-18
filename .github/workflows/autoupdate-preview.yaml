@@ -32,10 +32,6 @@ jobs:
         run: |
           export PATH=${PATH}:`go env GOPATH`/bin
           make clean_and_generate
-      - name: Update Preview version
-        if: steps.verify-changed-files.outputs.files_changed == 'true'
-        working-directory: ./tools
-        run: make preview-version  
       - name: Run mock generation
         working-directory: ./tools
         if: steps.verify-changed-files.outputs.files_changed == 'true'
@@ -48,7 +44,7 @@ jobs:
           commit-message: "temp: client update"
           delete-branch: true
           draft: true
-          branch: preview-latest
+          branch: dev-latest
           body: |
             Automatic update for MongoDB Atlas Go Client based on *release candidate* OpenAPI file.
             **DO NOT MERGE THIS PR TO THE MAIN BRANCH**
@@ -60,23 +56,8 @@ jobs:
             ## Using early preview changes
 
             ```sh
-            go get github.com/mongodb/atlas-sdk-go@preview-latest
+            go get go.mongodb.org/atlas-sdk/v20240805005@dev-latest   
             ```
-            > NOTE: The version is fixed so you have to do the `go get` command every time you want to update the Preview version to the latest version.
-
-            After that you can use it as usual, e.g.:
-            ```go
-            ...
-            import(
-              adminPreview "github.com/mongodb/atlas-sdk-go/admin"
-            ...
-              		
-            params := &adminPreview.ListProjectsApiParams{ ...
-            ...
-            
-            ```
-
-            > NOTE: After you use it at least in one go file, run `go mod tidy` to have it in your go.mod file as a direct dependency.
 
             ## Automated checks done for preview sdk
 

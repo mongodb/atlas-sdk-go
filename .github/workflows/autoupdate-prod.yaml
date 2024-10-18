@@ -49,7 +49,7 @@ jobs:
       - name: Release updates
         if: steps.verify-changed-files.outputs.files_changed == 'true'
         working-directory: ./tools
-        run: make new-version  
+        run: make new-release  
       - name: Ensure all markdown code is formatted
         if: steps.verify-changed-files.outputs.files_changed == 'true'
         working-directory: ./tools
