@@ -30,7 +30,6 @@ func main() {
 	if clientID == "" || clientSecret == "" {
 		log.Fatal("Missing CLIENT_ID or CLIENT_SECRET environment variables")
 	}
-	url := os.Getenv("MONGODB_ATLAS_URL")
 
 	// Initialize the OAuth client with memory
 	client := credentials.NewServiceAccountOAuthClient(clientID, clientSecret)
@@ -44,7 +43,7 @@ func main() {
 			ClientID:     clientID,
 			ClientSecret: clientSecret,
 			TokenSource:  &fileTokenSource,
-			BaseURL:      &url,
+			BaseURL:      &host,
 		})
 	httpClient = credentials.NewHTTPClientWithServiceAccountAuth(client)
 
@@ -52,7 +51,7 @@ func main() {
 
 	sdk, err := admin.NewClient(
 		admin.UseHTTPClient(httpClient),
-		admin.UseBaseURL(url),
+		admin.UseBaseURL(host),
 		admin.UseDebug(true))
 
 	if err != nil {
