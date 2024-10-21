@@ -8,17 +8,17 @@ import (
 // TokenSource provides an interface to retrieve and save the access token as a string.
 // Interface allows integrators to fully control how access token is catched on their side.
 type TokenSource interface {
-    // RetrieveToken should return the access token string.
-    RetrieveToken() (*string, error)
+	// RetrieveToken should return the access token string.
+	RetrieveToken() (*string, error)
 
-    // SaveToken should save the access token string.
-    SaveToken(token string) error
+	// SaveToken should save the access token string.
+	SaveToken(token string) error
 }
 
 // InMemoryTokenSource is an default implementation of TokenSource that stores the token in memory.
 type InMemoryTokenSource struct {
 	token *string
-	mu  sync.Mutex
+	mu    sync.Mutex
 }
 
 func (s *InMemoryTokenSource) RetrieveToken() (*string, error) {

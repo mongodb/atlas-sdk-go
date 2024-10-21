@@ -28,7 +28,7 @@ test-examples:
 .PHONY: fmt
 fmt:
 	@echo "==> Fixing source code with gofmt..."
-	gofmt -s -w  ./**/*.go
+	gofmt -s -w  ./**/**/*.go
 
 .PHONY: lint-fix
 lint-fix:

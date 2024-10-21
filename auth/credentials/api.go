@@ -17,7 +17,6 @@ type ServiceAccountOAuthClientWithTokenSource struct {
 	BaseURL *string
 }
 
-
 // NewServiceAccountOAuthClient initializes an OAuthClient with client credentials and custom TokenSource
 // Use this method to initialze custom token storage (filesystem)
 func NewServiceAccountOAuthClientWithTokenSource(opts ServiceAccountOAuthClientWithTokenSource) *OAuthClient {
