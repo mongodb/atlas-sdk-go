@@ -5,6 +5,7 @@ import (
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -38,7 +39,10 @@ func MockOAuthTokenEndpoint(token string) *httptest.Server {
 
 		// Encode and return the JSON response
 		w.Header().Set("Content-Type", "application/json")
-		_ = json.NewEncoder(w).Encode(tokenResponse)
+		err := json.NewEncoder(w).Encode(tokenResponse)
+		if err != nil {
+			log.Fatal("Failed to encode mocked response")
+		}
 	})
 
 	// Create a new mock server

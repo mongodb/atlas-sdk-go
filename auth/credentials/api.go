@@ -5,6 +5,14 @@ import (
 	"net/http"
 )
 
+// tokenAPIPath for obtaining OAuth Access token from server
+//nolint:gosec //url only
+const tokenAPIPath = "/api/oauth/token";
+
+// serverURL for atlas API
+const serverURL = "https://cloud.mongodb.com" + tokenAPIPath;
+
+
 type ServiceAccountOAuthClientWithTokenSource struct {
 	ClientID     string
 	ClientSecret string
@@ -17,13 +25,14 @@ type ServiceAccountOAuthClientWithTokenSource struct {
 	BaseURL *string
 }
 
-// NewServiceAccountOAuthClient initializes an OAuthClient with client credentials and custom TokenSource
+// NewServiceAccountOAuthClientWithTokenSource initializes an OAuthClient with client credentials and custom TokenSource
 // Use this method to initialze custom token storage (filesystem)
 func NewServiceAccountOAuthClientWithTokenSource(opts ServiceAccountOAuthClientWithTokenSource) *OAuthClient {
-	//nolint:gosec //url only
-	tokenURL := "https://cloud.mongodb.com/api/oauth/token"
+	var tokenURL string;
 	if opts.BaseURL != nil {
-		tokenURL = *opts.BaseURL + "/api/oauth/token"
+		tokenURL = *opts.BaseURL + tokenAPIPath
+	}else{
+		tokenURL = serverURL + tokenAPIPath
 	}
 	var ctx context.Context
 	if opts.Context == nil {

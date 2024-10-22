@@ -12,7 +12,7 @@ import (
 	"time"
 )
 
-// Token represents the internal OAuth2 token structure
+// token represents the internal OAuth2 token structure
 type token struct {
 	AccessToken string    `json:"access_token"`
 	Expiry      time.Time `json:"expiry,omitempty"`
