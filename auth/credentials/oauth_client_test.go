@@ -64,12 +64,12 @@ type MockTokenSource struct {
 }
 
 // Retrieve returns the stored token
-func (m *MockTokenSource) RetrieveToken() (*string, error) {
+func (m *MockTokenSource) RetrieveToken(ctx context.Context) (*string, error) {
 	return &m.token, nil
 }
 
 // Save saves the token
-func (m *MockTokenSource) SaveToken(token string) error {
+func (m *MockTokenSource) SaveToken(ctx context.Context, token string) error {
 	m.token = token
 	return nil
 }

@@ -32,7 +32,7 @@ type OAuthClient struct {
 // getValidToken retrieves the valid token, refreshing it if necessary.
 func (c *OAuthClient) getValidToken() (*token, error) {
 	// Try to retrieve the token string from the token source
-	tokenString, err := c.tokenSource.RetrieveToken()
+	tokenString, err := c.tokenSource.RetrieveToken(c.ctx)
 	if err != nil || tokenString == nil {
 		return c.refreshToken()
 	}
@@ -55,7 +55,7 @@ func (c *OAuthClient) refreshToken() (*token, error) {
 	}
 
 	// Save the access token string to the token source
-	err = c.tokenSource.SaveToken(newToken.AccessToken)
+	err = c.tokenSource.SaveToken(c.ctx, newToken.AccessToken)
 	if err != nil {
 		return nil, fmt.Errorf("failed to save token: %w", err)
 	}

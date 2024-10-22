@@ -84,7 +84,7 @@ type FileTokenSource struct {
 	mu          sync.Mutex
 }
 
-func (s *FileTokenSource) RetrieveToken() (*string, error) {
+func (s *FileTokenSource) RetrieveToken(ctx context.Context) (*string, error) {
 	// Locking added to ensure no race condition happens with SaveToken
 	s.mu.Lock()
 	defer s.mu.Unlock()
@@ -100,7 +100,7 @@ func (s *FileTokenSource) RetrieveToken() (*string, error) {
 	return &tkn, nil
 }
 
-func (s *FileTokenSource) SaveToken(tkn string) error {
+func (s *FileTokenSource) SaveToken(ctx context.Context, tkn string) error {
 	// Locking added to ensure no race condition happens with RetrieveToken
 	s.mu.Lock()
 	defer s.mu.Unlock()

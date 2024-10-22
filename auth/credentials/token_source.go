@@ -1,6 +1,7 @@
 package credentials
 
 import (
+	"context"
 	"errors"
 	"sync"
 )
@@ -9,10 +10,10 @@ import (
 // Interface allows integrators to fully control how access token is catched on their side.
 type TokenSource interface {
 	// RetrieveToken should return the access token string.
-	RetrieveToken() (*string, error)
+	RetrieveToken(ctx context.Context) (*string, error)
 
 	// SaveToken should save the access token string.
-	SaveToken(token string) error
+	SaveToken(ctx context.Context, token string) error
 }
 
 // InMemoryTokenSource is an default implementation of TokenSource that stores the token in memory.
@@ -21,7 +22,7 @@ type InMemoryTokenSource struct {
 	mu    sync.Mutex
 }
 
-func (s *InMemoryTokenSource) RetrieveToken() (*string, error) {
+func (s *InMemoryTokenSource) RetrieveToken(ctx context.Context) (*string, error) {
 	// Locking will avoid token overrides when sharing client in multiple threads
 	s.mu.Lock()
 	defer s.mu.Unlock()
@@ -32,7 +33,7 @@ func (s *InMemoryTokenSource) RetrieveToken() (*string, error) {
 	return nil, errors.New("InMemoryTokenSource: token not found. Token needs to be refreshed in backend")
 }
 
-func (s *InMemoryTokenSource) SaveToken(token string) error {
+func (s *InMemoryTokenSource) SaveToken(ctx context.Context, token string) error {
 	// Locking will avoid token overrides when sharing client in multiple threads
 	s.mu.Lock()
 	defer s.mu.Unlock()
