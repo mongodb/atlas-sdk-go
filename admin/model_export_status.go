@@ -2,7 +2,7 @@
 
 package admin
 
-// ExportStatus State of the export job for the collections on the replica set only.
+// ExportStatus State of the Export Job.
 type ExportStatus struct {
 	// Count of collections whose documents were exported to the Export Bucket.
 	// Read only field.
