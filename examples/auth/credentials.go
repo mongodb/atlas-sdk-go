@@ -32,20 +32,20 @@ func main() {
 	}
 
 	// Initialize the OAuth client with memory
-	client := credentials.NewServiceAccountOAuthClient(clientID, clientSecret)
+	client := credentials.NewTokenSource(clientID, clientSecret)
 	// Create an HTTP client with the custom transport (injecting the token)
-	httpClient := credentials.NewHTTPClientWithServiceAccountAuth(client)
+	httpClient := credentials.NewHTTPClientWithOAuthToken(client)
 
 	fileTokenSource := FileTokenSource{}
 	// Initialize the OAuth client using example FileTokenSource
-	client = credentials.NewServiceAccountOAuthClientWithTokenSource(
-		credentials.ServiceAccountOAuthClientWithTokenSource{
+	client = credentials.NewTokenSourceWithOptions(
+		credentials.AtlasTokenSourceOptions{
 			ClientID:     clientID,
 			ClientSecret: clientSecret,
-			TokenSource:  &fileTokenSource,
+			TokenCache:   &fileTokenSource,
 			BaseURL:      &host,
 		})
-	httpClient = credentials.NewHTTPClientWithServiceAccountAuth(client)
+	httpClient = credentials.NewHTTPClientWithOAuthToken(client)
 
 	ctx := context.Background()
 
@@ -78,7 +78,7 @@ func main() {
 	}
 }
 
-// FileTokenSource is an implementation of TokenSource that stores the token in a file.
+// FileTokenSource is an implementation of LocalTokenCache that stores the token in a file.
 type FileTokenSource struct {
 	fileContent []byte
 	mu          sync.Mutex
