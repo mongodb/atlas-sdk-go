@@ -24,8 +24,13 @@ func (t *OAuthCustomHTTPTransport) RoundTrip(req *http.Request) (*http.Response,
 	}
 
 	// Inject the Token into the request
-	req.Header.Set("Authorization", "Bearer "+token.AccessToken)
+	t.setAuthHeader(req, token);
 
 	// Proceed with the underlying transport
 	return t.UnderlyingTransport.RoundTrip(req)
+}
+
+// SetAuthHeader sets the Authorization header with the access Token.
+func (t *OAuthCustomHTTPTransport) setAuthHeader(r *http.Request, token *Token) {
+	r.Header.Set("Authorization", "Bearer "+token.AccessToken)
 }

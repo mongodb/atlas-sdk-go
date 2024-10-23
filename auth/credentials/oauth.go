@@ -112,11 +112,6 @@ func (c *OAuthTokenSource) fetchToken() (*Token, error) {
 	return token, nil
 }
 
-// SetAuthHeader sets the Authorization header with the access Token.
-func (t *Token) SetAuthHeader(r *http.Request) {
-	r.Header.Set("Authorization", "Bearer "+t.AccessToken)
-}
-
 // Additional time for Access Tokens to not expire.
 const ExpiryDelta = 10 * time.Second
 
