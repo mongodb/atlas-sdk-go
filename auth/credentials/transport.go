@@ -5,23 +5,27 @@ import (
 	"net/http"
 )
 
-// OAuthCustomHTTPTransport is a custom HTTP transport that injects the OAuth2 token into requests.
+// OAuthCustomHTTPTransport is an custom HTTP transport that injects the OAuth2 Token into requests.
+// Transport can be extended by supplying UnderlyingTransport
+// TokenSource can be created by credentials.NewTokenSource
 type OAuthCustomHTTPTransport struct {
-	underlyingTransport http.RoundTripper
-	client              *OAuthClient
+	// UnderlyingTransport is the base RoundTripper used to make HTTP requests.
+	UnderlyingTransport http.RoundTripper
+	// TokenSource used to obtain valid OAuth Token
+	TokenSource TokenSource
 }
 
 // RoundTrip implements the RoundTripper interface.
 func (t *OAuthCustomHTTPTransport) RoundTrip(req *http.Request) (*http.Response, error) {
-	// Get a valid token (refreshing it if necessary)
-	token, err := t.client.getValidToken() // Get or refresh the token
+	// Get a valid Token (refreshing it if necessary)
+	token, err := t.TokenSource.GetValidToken() // Get or refresh the Token
 	if err != nil {
-		return nil, fmt.Errorf("failed to inject access token: %w", err)
+		return nil, fmt.Errorf("failed to inject access Token: %w", err)
 	}
 
-	// Inject the token into the request
+	// Inject the Token into the request
 	req.Header.Set("Authorization", "Bearer "+token.AccessToken)
 
 	// Proceed with the underlying transport
-	return t.underlyingTransport.RoundTrip(req)
+	return t.UnderlyingTransport.RoundTrip(req)
 }
