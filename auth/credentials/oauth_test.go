@@ -14,14 +14,14 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-// TokenResponse represents a mock OAuth token response.
+// TokenResponse represents a mock OAuth Token response.
 type TokenResponse struct {
 	AccessToken string `json:"access_token"`
 	TokenType   string `json:"token_type"`
 	ExpiresIn   int    `json:"expires_in"`
 }
 
-// MockOAuthTokenEndpoint creates a mock OAuth token endpoint that returns a fake token.
+// MockOAuthTokenEndpoint creates a mock OAuth Token endpoint that returns a fake Token.
 func MockOAuthTokenEndpoint(token string) *httptest.Server {
 	handler := http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		// Ensure the request uses POST and contains proper grant_type
@@ -30,7 +30,7 @@ func MockOAuthTokenEndpoint(token string) *httptest.Server {
 			return
 		}
 
-		// Create mock token response
+		// Create mock Token response
 		tokenResponse := TokenResponse{
 			AccessToken: token,
 			TokenType:   "Bearer",
@@ -49,7 +49,7 @@ func MockOAuthTokenEndpoint(token string) *httptest.Server {
 	return httptest.NewServer(handler)
 }
 
-// Mock token generation for testing
+// Mock Token generation for testing
 func generateMockJWT(expiration time.Time) string {
 	header := `{"alg":"HS256","typ":"JWT"}`
 	payload := `{"exp":` + json.Number(fmt.Sprintf("%d", expiration.Unix())) + `}`
@@ -58,69 +58,71 @@ func generateMockJWT(expiration time.Time) string {
 		base64.RawURLEncoding.EncodeToString([]byte(payload)) + ".signature"
 }
 
-// MockTokenSource implements the TokenSource interface for testing
-type MockTokenSource struct {
+// MockTokenCache implements the LocalTokenCache interface for testing
+type MockTokenCache struct {
 	token string
 }
 
-// Retrieve returns the stored token
-func (m *MockTokenSource) RetrieveToken(ctx context.Context) (*string, error) {
+// Retrieve returns the stored Token
+func (m *MockTokenCache) RetrieveToken(_ context.Context) (*string, error) {
 	return &m.token, nil
 }
 
-// Save saves the token
-func (m *MockTokenSource) SaveToken(ctx context.Context, token string) error {
+// Save saves the Token
+func (m *MockTokenCache) SaveToken(_ context.Context, token string) error {
 	m.token = token
 	return nil
 }
 
-// Test for providing valid token and parsing the expiration date
+// Test for providing valid Token and parsing the expiration date
 func TestNewServiceAccountOAuthClientWithTokenSource_WithValidToken(t *testing.T) {
-	// Generate a mock JWT token with future expiration
+	// Generate a mock JWT Token with future expiration
 	expiration := time.Now().Add(1 * time.Hour)
 	token := generateMockJWT(expiration)
 
-	mockSource := &MockTokenSource{token: token}
-	client := NewServiceAccountOAuthClientWithTokenSource(ServiceAccountOAuthClientWithTokenSource{
+	mockCache := &MockTokenCache{token: token}
+	tokenSource := NewTokenSourceWithOptions(AtlasTokenSourceOptions{
 		ClientID:     "clientID",
 		ClientSecret: "clientSecret",
-		TokenSource:  mockSource,
+		TokenCache:   mockCache,
 	})
 
-	_, err := client.getValidToken() // Get or refresh the token
+	_, err := tokenSource.GetValidToken() // Get or refresh the Token
 	assert.Nil(t, err)
+	oAuthTokenSource := tokenSource.(*OAuthTokenSource)
 
-	assert.NotNil(t, client)
-	assert.Equal(t, token, client.token.AccessToken)
-	assert.True(t, client.token.Valid())
-	assert.WithinDuration(t, expiration, client.token.Expiry, time.Second)
+	assert.NotNil(t, oAuthTokenSource)
+	assert.Equal(t, token, oAuthTokenSource.token.AccessToken)
+	assert.True(t, oAuthTokenSource.token.Valid())
+	assert.WithinDuration(t, expiration, oAuthTokenSource.token.Expiry, time.Second)
 }
 
-// Test for providing valid token and parsing the expiration date
+// Test for providing valid Token and parsing the expiration date
 func TestNewServiceAccountOAuthClientWithTokenSource_WithWithExpiredToken(t *testing.T) {
-	// Generate a mock JWT token with future expiration
+	// Generate a mock JWT Token with future expiration
 	expiration := time.Now().Add(-4 * time.Hour)
 	token := generateMockJWT(expiration)
 
 	remoteToken := "TestTokenRefreshedOnServer"
-	// Start the mock server and return expired token
+	// Start the mock server and return expired Token
 	mockServer := MockOAuthTokenEndpoint(remoteToken)
 	defer mockServer.Close()
 
-	mockSource := &MockTokenSource{token: token}
-	client := NewServiceAccountOAuthClientWithTokenSource(ServiceAccountOAuthClientWithTokenSource{
+	mockCache := &MockTokenCache{token: token}
+	tokenSource := NewTokenSourceWithOptions(AtlasTokenSourceOptions{
 		ClientID:     "clientID",
 		ClientSecret: "clientSecret",
-		TokenSource:  mockSource,
+		TokenCache:   mockCache,
 		BaseURL:      &mockServer.URL,
 	})
 
-	_, err := client.getValidToken() // Get or refresh the token
+	oAuthTokenSource := tokenSource.(*OAuthTokenSource)
+	_, err := tokenSource.GetValidToken() // Get or refresh the Token
 	assert.Nil(t, err)
-	assert.Equal(t, remoteToken, client.token.AccessToken)
+	assert.Equal(t, remoteToken, oAuthTokenSource.token.AccessToken)
 }
 
-// Test error handling when fetching a token fails (e.g., invalid response)
+// Test error handling when fetching a Token fails (e.g., invalid response)
 func TestOAuthClient_FetchToken_Failure(t *testing.T) {
 	// Mock OAuth server failure
 	mockServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -130,41 +132,41 @@ func TestOAuthClient_FetchToken_Failure(t *testing.T) {
 	}))
 	defer mockServer.Close()
 
-	mockSource := &MockTokenSource{}
-	client := NewServiceAccountOAuthClientWithTokenSource(ServiceAccountOAuthClientWithTokenSource{
+	mockCache := &MockTokenCache{}
+	client := NewTokenSourceWithOptions(AtlasTokenSourceOptions{
 		ClientID:     "clientID",
 		ClientSecret: "clientSecret",
-		TokenSource:  mockSource,
+		TokenCache:   mockCache,
 		BaseURL:      &mockServer.URL,
 	})
 
 	// Call GetAccessToken expecting an error
-	_, err := client.getValidToken()
+	_, err := client.GetValidToken()
 	assert.Error(t, err)
-	assert.Contains(t, err.Error(), "failed to obtain token")
+	assert.Contains(t, err.Error(), "failed to obtain Token")
 }
 
-// // Test CustomTransport to ensure token is injected into requests
+// // Test CustomTransport to ensure Token is injected into requests
 func TestCustomTransport_RoundTrip(t *testing.T) {
-	// Mock the OAuth client
+	// Mock the OAuth TokenCache
 	expiration := time.Now().Add(1 * time.Hour)
 	token := generateMockJWT(expiration)
-	mockSource := &MockTokenSource{token: token}
+	mockCache := &MockTokenCache{token: token}
 
 	ctx := context.Background()
-	oauthClient := NewServiceAccountOAuthClientWithTokenSource(ServiceAccountOAuthClientWithTokenSource{
+	oauthClient := NewTokenSourceWithOptions(AtlasTokenSourceOptions{
 		ClientID:     "clientID",
 		ClientSecret: "clientSecret",
-		TokenSource:  mockSource,
+		TokenCache:   mockCache,
 		Context:      &ctx,
 	})
 
-	httpClientWithTransport := NewHTTPClientWithServiceAccountAuth(oauthClient)
+	httpClientWithTransport := NewHTTPClientWithOAuthToken(oauthClient)
 	assert.NotNil(t, httpClientWithTransport)
-	// Try using transport directly without http client
+	// Try using transport directly without http TokenCache
 	transport := &OAuthCustomHTTPTransport{
-		underlyingTransport: http.DefaultTransport,
-		client:              oauthClient,
+		UnderlyingTransport: http.DefaultTransport,
+		TokenSource:         oauthClient,
 	}
 
 	// Mock the HTTP server

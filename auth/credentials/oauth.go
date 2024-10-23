@@ -12,32 +12,38 @@ import (
 	"time"
 )
 
-// token represents the internal OAuth2 token structure
-type token struct {
+// Token represents the internal OAuth2 Token structure
+type Token struct {
 	AccessToken string    `json:"access_token"`
 	Expiry      time.Time `json:"expiry,omitempty"`
 	ExpiresIn   int       `json:"expires_in"`
 }
 
-// OAuthClient manages the OAuth token fetching and refreshing using a TokenSource.
-type OAuthClient struct {
+// TokenSource interface allows to fetch valid OAuth Token.
+type TokenSource interface {
+	// GetValidToken retrieves the valid Token, refreshing it if necessary.
+	GetValidToken() (*Token, error)
+}
+
+// OAuthTokenSource manages the OAuth Token fetching and refreshing using a LocalTokenCache.
+type OAuthTokenSource struct {
 	clientID     string
 	clientSecret string
 	tokenURL     string
-	token        *token
-	tokenSource  TokenSource
+	token        *Token
+	tokenCache   LocalTokenCache
 	ctx          context.Context
 }
 
-// getValidToken retrieves the valid token, refreshing it if necessary.
-func (c *OAuthClient) getValidToken() (*token, error) {
-	// Try to retrieve the token string from the token source
-	tokenString, err := c.tokenSource.RetrieveToken(c.ctx)
+// GetValidToken retrieves the valid Token, refreshing it if necessary.
+func (c *OAuthTokenSource) GetValidToken() (*Token, error) {
+	// Try to retrieve the Token string from the Token source
+	tokenString, err := c.tokenCache.RetrieveToken(c.ctx)
 	if err != nil || tokenString == nil {
 		return c.refreshToken()
 	}
 
-	// Parse the token string into the token structure (mock parse operation)
+	// Parse the Token string into the Token structure (mock parse operation)
 	c.token, err = parseToken(*tokenString)
 	if err != nil || c.token.expired() {
 		// Token is invalid or expired, refresh it
@@ -47,25 +53,25 @@ func (c *OAuthClient) getValidToken() (*token, error) {
 	return c.token, nil
 }
 
-// refreshToken fetches a new token and saves it using the token source.
-func (c *OAuthClient) refreshToken() (*token, error) {
+// refreshToken fetches a new Token and saves it using the Token source.
+func (c *OAuthTokenSource) refreshToken() (*Token, error) {
 	newToken, err := c.fetchToken()
 	if err != nil {
 		return nil, err
 	}
 
-	// Save the access token string to the token source
-	err = c.tokenSource.SaveToken(c.ctx, newToken.AccessToken)
+	// Save the access Token string to the Token source
+	err = c.tokenCache.SaveToken(c.ctx, newToken.AccessToken)
 	if err != nil {
-		return nil, fmt.Errorf("failed to save token: %w", err)
+		return nil, fmt.Errorf("failed to save Token: %w", err)
 	}
 
 	c.token = newToken
 	return newToken, nil
 }
 
-// fetchToken makes a manual POST request to Server (tokenUrl) to fetch the access token.
-func (c *OAuthClient) fetchToken() (*token, error) {
+// fetchToken makes a manual POST request to Server (tokenUrl) to fetch the access Token.
+func (c *OAuthTokenSource) fetchToken() (*Token, error) {
 	data := url.Values{}
 	data.Set("grant_type", "client_credentials")
 
@@ -84,7 +90,7 @@ func (c *OAuthClient) fetchToken() (*token, error) {
 	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusOK {
-		return nil, errors.New("failed to obtain token, status: " + resp.Status)
+		return nil, errors.New("failed to obtain Token, status: " + resp.Status)
 	}
 
 	var tokenResp struct {
@@ -97,8 +103,8 @@ func (c *OAuthClient) fetchToken() (*token, error) {
 		return nil, err
 	}
 
-	// Construct the token with expiry time
-	token := &token{
+	// Construct the Token with expiry time
+	token := &Token{
 		AccessToken: tokenResp.AccessToken,
 		ExpiresIn:   tokenResp.ExpiresIn,
 		Expiry:      time.Now().Add(time.Duration(tokenResp.ExpiresIn) * time.Second),
@@ -106,32 +112,32 @@ func (c *OAuthClient) fetchToken() (*token, error) {
 	return token, nil
 }
 
-// SetAuthHeader sets the Authorization header with the access token.
-func (t *token) SetAuthHeader(r *http.Request) {
+// SetAuthHeader sets the Authorization header with the access Token.
+func (t *Token) SetAuthHeader(r *http.Request) {
 	r.Header.Set("Authorization", "Bearer "+t.AccessToken)
 }
 
 // Additional time for Access Tokens to not expire.
-const expiryDelta = 10 * time.Second
+const ExpiryDelta = 10 * time.Second
 
-// expired checks if the token is close to expiring.
-func (t *token) expired() bool {
+// expired checks if the Token is close to expiring.
+func (t *Token) expired() bool {
 	if t.Expiry.IsZero() {
 		return false
 	}
-	return t.Expiry.Round(0).Add(-expiryDelta).Before(time.Now())
+	return t.Expiry.Round(0).Add(-ExpiryDelta).Before(time.Now())
 }
 
-// Valid checks if the token is still valid (present and not expired)
-func (t *token) Valid() bool {
+// Valid checks if the Token is still valid (present and not expired)
+func (t *Token) Valid() bool {
 	return t != nil && t.AccessToken != "" && !t.expired()
 }
 
-// ParseToken extracts expiry details from JWT token
-func parseToken(accessToken string) (*token, error) {
+// ParseToken extracts expiry details from JWT Token
+func parseToken(accessToken string) (*Token, error) {
 	parts := strings.Split(accessToken, ".")
 	if len(parts) != 3 {
-		return nil, errors.New("invalid access token format")
+		return nil, errors.New("invalid access Token format")
 	}
 
 	payload, err := base64.RawURLEncoding.DecodeString(parts[1])
@@ -148,10 +154,10 @@ func parseToken(accessToken string) (*token, error) {
 
 	expiry := time.Unix(tokenData.Exp, 0)
 	if time.Now().After(expiry) {
-		return nil, errors.New("token has expired")
+		return nil, errors.New("Token has expired")
 	}
 
-	return &token{
+	return &Token{
 		AccessToken: accessToken,
 		Expiry:      expiry,
 		ExpiresIn:   int(time.Until(expiry).Seconds()),
