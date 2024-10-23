@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-// tokenAPIPath for obtaining OAuth Access token from server
+// tokenAPIPath for obtaining OAuth Access Token from server
 //
 //nolint:gosec //url only
 const tokenAPIPath = "/api/oauth/token"
@@ -13,21 +13,23 @@ const tokenAPIPath = "/api/oauth/token"
 // serverURL for atlas API
 const serverURL = "https://cloud.mongodb.com" + tokenAPIPath
 
-type ServiceAccountOAuthClientWithTokenSource struct {
+// AtlasTokenSourceOptions provides set of input arguments
+// for creation of credentials.TokenSource interface
+type AtlasTokenSourceOptions struct {
 	ClientID     string
 	ClientSecret string
-	// Custom token source. InMemoryTokenSource being default
-	TokenSource TokenSource
+	// Custom Token source. InMemoryTokenCache being default
+	TokenCache LocalTokenCache
 
-	// Custom context
+	// Custom context. context.Background() will be used by default
 	Context *context.Context
-	// Custom base url for change
+	// Custom base url for fetching Token using TokenSource. Reserved for internal use.
 	BaseURL *string
 }
 
-// NewServiceAccountOAuthClientWithTokenSource initializes an OAuthClient with client credentials and custom TokenSource
-// Use this method to initialze custom token storage (filesystem)
-func NewServiceAccountOAuthClientWithTokenSource(opts ServiceAccountOAuthClientWithTokenSource) *OAuthClient {
+// NewTokenSourceWithOptions initializes an OAuthTokenSource with advanced credentials.AtlasTokenSourceOptions
+// Use this method to initialize custom OAuth Token Cache (filesystem).
+func NewTokenSourceWithOptions(opts AtlasTokenSourceOptions) TokenSource {
 	var tokenURL string
 	if opts.BaseURL != nil {
 		tokenURL = *opts.BaseURL + tokenAPIPath
@@ -41,30 +43,33 @@ func NewServiceAccountOAuthClientWithTokenSource(opts ServiceAccountOAuthClientW
 		ctx = *opts.Context
 	}
 
-	return &OAuthClient{
+	return &OAuthTokenSource{
 		clientID:     opts.ClientID,
 		clientSecret: opts.ClientSecret,
 		tokenURL:     tokenURL,
-		tokenSource:  opts.TokenSource,
+		tokenCache:   opts.TokenCache,
 		ctx:          ctx,
 	}
 }
 
-// NewHTTPClientWithServiceAccountAuth creates an HTTP client with the custom transport.
-func NewHTTPClientWithServiceAccountAuth(client *OAuthClient) *http.Client {
-	return &http.Client{
-		Transport: &OAuthCustomHTTPTransport{
-			underlyingTransport: http.DefaultTransport,
-			client:              client,
-		},
-	}
-}
-
-// NewServiceAccountOAuthClient initializes an OAuthClient with client credentials with default InMemoryTokenSource.
-func NewServiceAccountOAuthClient(clientID, clientSecret string) *OAuthClient {
-	return NewServiceAccountOAuthClientWithTokenSource(ServiceAccountOAuthClientWithTokenSource{
+// NewTokenSource initializes OAuth Token Source that provides a way to obtain valid OAuth Tokens.
+// See credentials.NewTokenSourceWithOptions for advanced use cases.
+func NewTokenSource(clientID, clientSecret string) TokenSource {
+	return NewTokenSourceWithOptions(AtlasTokenSourceOptions{
 		ClientID:     clientID,
 		ClientSecret: clientSecret,
-		TokenSource:  &InMemoryTokenSource{},
+		TokenCache:   &InMemoryTokenCache{},
 	})
+}
+
+// NewHTTPClientWithOAuthToken helper method for creating HTTP client with OAuth authentication support.
+// Use this method for performing requests using http.DefaultTransport.
+// For more advanced use cases please create your own credentials.OAuthCustomHTTPTransport.
+func NewHTTPClientWithOAuthToken(client TokenSource) *http.Client {
+	return &http.Client{
+		Transport: &OAuthCustomHTTPTransport{
+			UnderlyingTransport: http.DefaultTransport,
+			TokenSource:         client,
+		},
+	}
 }
