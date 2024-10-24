@@ -31,7 +31,6 @@ type AtlasTokenSourceOptions struct {
 }
 
 // NewTokenSourceWithOptions initializes an OAuthTokenSource with advanced credentials.AtlasTokenSourceOptions
-// Use this method to initialize custom OAuth Token Cache (filesystem) or custom User Agent header.
 func NewTokenSourceWithOptions(opts AtlasTokenSourceOptions) TokenSource {
 	var tokenURL string
 	if opts.BaseURL != nil {

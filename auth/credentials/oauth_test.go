@@ -190,7 +190,7 @@ func TestCustomTransport_RoundTrip(t *testing.T) {
 
 // Test default User Agent
 func TestOAuthClient_DefaultUserAgent(t *testing.T) {
-	// Assert custom User Agent
+	// Assert default User Agent
 	mockServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		assert.NotNil(t, r.Header.Get("User-Agent"))
 		assert.Equal(t, core.DefaultUserAgent, r.Header.Get("User-Agent"))
