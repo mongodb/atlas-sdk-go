@@ -24,7 +24,7 @@ func (t *OAuthCustomHTTPTransport) RoundTrip(req *http.Request) (*http.Response,
 	}
 
 	// Inject the Token into the request
-	t.setAuthHeader(req, token);
+	t.setAuthHeader(req, token)
 
 	// Proceed with the underlying transport
 	return t.UnderlyingTransport.RoundTrip(req)
