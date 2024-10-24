@@ -5,12 +5,13 @@ import (
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
-	"go.mongodb.org/atlas-sdk/v20240805005/internal/core"
 	"log"
 	"net/http"
 	"net/http/httptest"
 	"testing"
 	"time"
+
+	"go.mongodb.org/atlas-sdk/v20240805005/internal/core"
 
 	"github.com/stretchr/testify/assert"
 )
@@ -134,16 +135,19 @@ func TestOAuthClient_FetchToken_Failure(t *testing.T) {
 	defer mockServer.Close()
 
 	mockCache := &MockTokenCache{}
-	client := NewTokenSourceWithOptions(AtlasTokenSourceOptions{
+	finalUrl := mockServer.URL + "/"
+	tokenSource := NewTokenSourceWithOptions(AtlasTokenSourceOptions{
 		ClientID:     "clientID",
 		ClientSecret: "clientSecret",
 		TokenCache:   mockCache,
-		BaseURL:      &mockServer.URL,
+		BaseURL:      &finalUrl,
 	})
 
 	// Call GetAccessToken expecting an error
-	_, err := client.GetValidToken()
+	_, err := tokenSource.GetValidToken()
 	assert.Error(t, err)
+	oAuthTokenSource := tokenSource.(*OAuthTokenSource)
+	assert.Equal(t, mockServer.URL+tokenAPIPath, oAuthTokenSource.tokenURL)
 	assert.Contains(t, err.Error(), "failed to obtain Token")
 }
 
