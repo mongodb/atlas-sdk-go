@@ -6,16 +6,16 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BadRequestDetail** | Pointer to [**BadRequestDetail**](BadRequestDetail.md) |  | [optional] 
 **Detail** | Pointer to **string** | Describes the specific conditions or reasons that cause each type of error. | [optional] 
-**Error** | Pointer to **int** | HTTP status code returned with this error. | [optional] 
-**ErrorCode** | Pointer to **string** | Application error code returned with this error. | [optional] 
-**Parameters** | Pointer to [**[]any**](any.md) | Parameters used to give more information about the error. | [optional] 
-**Reason** | Pointer to **string** | Application error message returned with this error. | [optional] 
+**Error** | **int** | HTTP status code returned with this error. | [readonly] 
+**ErrorCode** | **string** | Application error code returned with this error. | [readonly] 
+**Parameters** | Pointer to [**[]any**](any.md) | Parameters used to give more information about the error. | [optional] [readonly] 
+**Reason** | Pointer to **string** | Application error message returned with this error. | [optional] [readonly] 
 
 ## Methods
 
 ### NewApiError
 
-`func NewApiError() *ApiError`
+`func NewApiError(error_ int, errorCode string, ) *ApiError`
 
 NewApiError instantiates a new ApiError object
 This constructor will assign default values to properties that have it defined,
@@ -97,11 +97,6 @@ and a boolean to check if the value has been set.
 
 SetError sets Error field to given value.
 
-### HasError
-
-`func (o *ApiError) HasError() bool`
-
-HasError returns a boolean if a field has been set.
 ### GetErrorCode
 
 `func (o *ApiError) GetErrorCode() string`
@@ -121,11 +116,6 @@ and a boolean to check if the value has been set.
 
 SetErrorCode sets ErrorCode field to given value.
 
-### HasErrorCode
-
-`func (o *ApiError) HasErrorCode() bool`
-
-HasErrorCode returns a boolean if a field has been set.
 ### GetParameters
 
 `func (o *ApiError) GetParameters() []any`
