@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ExpirationDate** | Pointer to **time.Time** | Expiration date of the fixed FCV. If left unspecified, will default to 4 weeks ahead of the existing pinnedDate (if an FCV is already pinned) or the current date. Note that this field cannot exceed 4 weeks from the pinned date. | [optional] 
+**ExpirationDate** | Pointer to **time.Time** | Expiration date of the fixed FCV. If not specified, the expiration date will default to 4 weeks from the date FCV was originally pinned. Note that this field cannot exceed 4 weeks from the pinned date. | [optional] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 
 ## Methods

@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **LastUpdatedDate** | Pointer to **time.Time** | Date and time when this Azure Service Principal was last updated. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
 **ServicePrincipalId** | Pointer to **string** | UUID string that identifies the Azure Service Principal. | [optional] 
 **TenantId** | Pointer to **string** | UUID String that identifies the Azure Active Directory Tenant ID. | [optional] 
+**GcpServiceAccountForAtlas** | Pointer to **string** | Email address for the Google Service Account created by Atlas. | [optional] 
 
 ## Methods
 
@@ -344,6 +345,30 @@ SetTenantId sets TenantId field to given value.
 `func (o *CloudProviderAccessAWSIAMRole) HasTenantId() bool`
 
 HasTenantId returns a boolean if a field has been set.
+### GetGcpServiceAccountForAtlas
+
+`func (o *CloudProviderAccessAWSIAMRole) GetGcpServiceAccountForAtlas() string`
+
+GetGcpServiceAccountForAtlas returns the GcpServiceAccountForAtlas field if non-nil, zero value otherwise.
+
+### GetGcpServiceAccountForAtlasOk
+
+`func (o *CloudProviderAccessAWSIAMRole) GetGcpServiceAccountForAtlasOk() (*string, bool)`
+
+GetGcpServiceAccountForAtlasOk returns a tuple with the GcpServiceAccountForAtlas field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcpServiceAccountForAtlas
+
+`func (o *CloudProviderAccessAWSIAMRole) SetGcpServiceAccountForAtlas(v string)`
+
+SetGcpServiceAccountForAtlas sets GcpServiceAccountForAtlas field to given value.
+
+### HasGcpServiceAccountForAtlas
+
+`func (o *CloudProviderAccessAWSIAMRole) HasGcpServiceAccountForAtlas() bool`
+
+HasGcpServiceAccountForAtlas returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
