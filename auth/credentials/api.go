@@ -2,8 +2,10 @@ package credentials
 
 import (
 	"context"
-	"go.mongodb.org/atlas-sdk/v20240805005/internal/core"
 	"net/http"
+	"strings"
+
+	"go.mongodb.org/atlas-sdk/v20240805005/internal/core"
 )
 
 // tokenAPIPath for obtaining OAuth Access Token from server
@@ -34,7 +36,8 @@ type AtlasTokenSourceOptions struct {
 func NewTokenSourceWithOptions(opts AtlasTokenSourceOptions) TokenSource {
 	var tokenURL string
 	if opts.BaseURL != nil {
-		tokenURL = *opts.BaseURL + tokenAPIPath
+		baseUrlNoSuffix := strings.TrimSuffix(*opts.BaseURL, "/")
+		tokenURL = baseUrlNoSuffix+ tokenAPIPath
 	} else {
 		tokenURL = serverURL
 	}
