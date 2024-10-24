@@ -2,9 +2,7 @@ package admin // import "go.mongodb.org/atlas-sdk/v20240805005/admin"
 
 import (
 	"errors"
-	"fmt"
 	"net/http"
-	"runtime"
 	"strings"
 
 	"github.com/mongodb-forks/digest"
@@ -12,24 +10,19 @@ import (
 )
 
 const (
-	// DefaultCloudURL is default base URL for the services.
-	DefaultCloudURL = "https://cloud.mongodb.com"
 	// Version the version of the current API client inherited from.
 	Version = core.Version
-	// ClientName of the v2 API client.
-	ClientName = "go-atlas-sdk-admin"
 )
 
 // NewClient returns a new API Client.
 func NewClient(modifiers ...ClientModifier) (*APIClient, error) {
-	userAgent := fmt.Sprintf("%s/%s (%s;%s)", ClientName, Version, runtime.GOOS, runtime.GOARCH)
 	defaultConfig := &Configuration{
 		HTTPClient: http.DefaultClient,
 		Servers: ServerConfigurations{ServerConfiguration{
-			URL: DefaultCloudURL,
+			URL: core.DefaultCloudURL,
 		},
 		},
-		UserAgent: userAgent,
+		UserAgent: core.DefaultUserAgent,
 	}
 	for _, modifierFunction := range modifiers {
 		err := modifierFunction(defaultConfig)
@@ -87,7 +80,7 @@ func UseDebug(debug bool) ClientModifier {
 func UseBaseURL(baseURL string) ClientModifier {
 	return func(c *Configuration) error {
 		if baseURL == "" {
-			baseURL = DefaultCloudURL
+			baseURL = core.DefaultCloudURL
 		}
 		urlWithoutSuffix := strings.TrimSuffix(baseURL, "/")
 		c.Servers = ServerConfigurations{ServerConfiguration{

@@ -29,6 +29,7 @@ type TokenSource interface {
 type OAuthTokenSource struct {
 	clientID     string
 	clientSecret string
+	userAgent    string
 	tokenURL     string
 	token        *Token
 	tokenCache   LocalTokenCache
@@ -81,6 +82,7 @@ func (c *OAuthTokenSource) fetchToken() (*Token, error) {
 	}
 	req.SetBasicAuth(c.clientID, c.clientSecret)
 	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
+	req.Header.Set("User-Agent", c.userAgent)
 
 	client := &http.Client{}
 	resp, err := client.Do(req)

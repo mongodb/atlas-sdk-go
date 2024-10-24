@@ -2,6 +2,7 @@ package credentials
 
 import (
 	"context"
+	"go.mongodb.org/atlas-sdk/v20240805005/internal/core"
 	"net/http"
 )
 
@@ -11,13 +12,15 @@ import (
 const tokenAPIPath = "/api/oauth/token"
 
 // serverURL for atlas API
-const serverURL = "https://cloud.mongodb.com" + tokenAPIPath
+const serverURL = core.DefaultCloudURL + tokenAPIPath
 
 // AtlasTokenSourceOptions provides set of input arguments
 // for creation of credentials.TokenSource interface
 type AtlasTokenSourceOptions struct {
 	ClientID     string
 	ClientSecret string
+	// Custom user agent. core.DefaultUserAgent being default
+	UserAgent string
 	// Custom Token source. InMemoryTokenCache being default
 	TokenCache LocalTokenCache
 
@@ -28,13 +31,18 @@ type AtlasTokenSourceOptions struct {
 }
 
 // NewTokenSourceWithOptions initializes an OAuthTokenSource with advanced credentials.AtlasTokenSourceOptions
-// Use this method to initialize custom OAuth Token Cache (filesystem).
 func NewTokenSourceWithOptions(opts AtlasTokenSourceOptions) TokenSource {
 	var tokenURL string
 	if opts.BaseURL != nil {
 		tokenURL = *opts.BaseURL + tokenAPIPath
 	} else {
 		tokenURL = serverURL
+	}
+	var userAgent string
+	if opts.UserAgent != "" {
+		userAgent = opts.UserAgent
+	} else {
+		userAgent = core.DefaultUserAgent
 	}
 	var ctx context.Context
 	if opts.Context == nil {
@@ -46,6 +54,7 @@ func NewTokenSourceWithOptions(opts AtlasTokenSourceOptions) TokenSource {
 	return &OAuthTokenSource{
 		clientID:     opts.ClientID,
 		clientSecret: opts.ClientSecret,
+		userAgent:    userAgent,
 		tokenURL:     tokenURL,
 		tokenCache:   opts.TokenCache,
 		ctx:          ctx,
@@ -58,6 +67,7 @@ func NewTokenSource(clientID, clientSecret string) TokenSource {
 	return NewTokenSourceWithOptions(AtlasTokenSourceOptions{
 		ClientID:     clientID,
 		ClientSecret: clientSecret,
+		UserAgent:    core.DefaultUserAgent,
 		TokenCache:   &InMemoryTokenCache{},
 	})
 }

@@ -5,6 +5,7 @@ import (
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
+	"go.mongodb.org/atlas-sdk/v20240805005/internal/core"
 	"log"
 	"net/http"
 	"net/http/httptest"
@@ -146,7 +147,7 @@ func TestOAuthClient_FetchToken_Failure(t *testing.T) {
 	assert.Contains(t, err.Error(), "failed to obtain Token")
 }
 
-// // Test CustomTransport to ensure Token is injected into requests
+// Test CustomTransport to ensure Token is injected into requests
 func TestCustomTransport_RoundTrip(t *testing.T) {
 	// Mock the OAuth TokenCache
 	expiration := time.Now().Add(1 * time.Hour)
@@ -185,4 +186,49 @@ func TestCustomTransport_RoundTrip(t *testing.T) {
 
 	assert.NoError(t, err)
 	assert.Equal(t, http.StatusOK, resp.StatusCode)
+}
+
+// Test default User Agent
+func TestOAuthClient_DefaultUserAgent(t *testing.T) {
+	// Assert default User Agent
+	mockServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		assert.NotNil(t, r.Header.Get("User-Agent"))
+		assert.Equal(t, core.DefaultUserAgent, r.Header.Get("User-Agent"))
+		w.WriteHeader(http.StatusOK)
+	}))
+	defer mockServer.Close()
+
+	mockCache := &MockTokenCache{}
+	tokenSource := NewTokenSourceWithOptions(AtlasTokenSourceOptions{
+		ClientID:     "clientID",
+		ClientSecret: "clientSecret",
+		TokenCache:   mockCache,
+		BaseURL:      &mockServer.URL,
+	})
+
+	_, _ = tokenSource.GetValidToken()
+}
+
+// Test custom User Agent
+func TestOAuthClient_CustomUserAgent(t *testing.T) {
+	const customUserAgent = "/testing"
+
+	// Assert custom User Agent
+	mockServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		assert.NotNil(t, r.Header.Get("User-Agent"))
+		assert.Equal(t, customUserAgent, r.Header.Get("User-Agent"))
+		w.WriteHeader(http.StatusOK)
+	}))
+	defer mockServer.Close()
+
+	mockCache := &MockTokenCache{}
+	tokenSource := NewTokenSourceWithOptions(AtlasTokenSourceOptions{
+		ClientID:     "clientID",
+		ClientSecret: "clientSecret",
+		UserAgent:    customUserAgent,
+		TokenCache:   mockCache,
+		BaseURL:      &mockServer.URL,
+	})
+
+	_, _ = tokenSource.GetValidToken()
 }
