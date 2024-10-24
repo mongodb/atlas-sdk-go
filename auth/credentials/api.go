@@ -37,7 +37,7 @@ func NewTokenSourceWithOptions(opts AtlasTokenSourceOptions) TokenSource {
 	var tokenURL string
 	if opts.BaseURL != nil {
 		baseUrlNoSuffix := strings.TrimSuffix(*opts.BaseURL, "/")
-		tokenURL = baseUrlNoSuffix+ tokenAPIPath
+		tokenURL = baseUrlNoSuffix + tokenAPIPath
 	} else {
 		tokenURL = serverURL
 	}
