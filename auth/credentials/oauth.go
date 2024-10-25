@@ -6,6 +6,9 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"io"
+	"net/http"
+	"net/url"
 	"strings"
 	"time"
 )
@@ -17,10 +20,17 @@ type Token struct {
 	ExpiresIn   int       `json:"expires_in"`
 }
 
-// TokenSource interface allows to fetch valid OAuth Token.
+// TokenSource interface allows to fetch and revoke valid OAuth Access Tokens.
 type TokenSource interface {
 	// GetValidToken retrieves the valid Token, refreshing it if necessary.
+	// Implementation will check if token exist in the cache,
+	// otherwise we will fetch new token from server and cache it.
+	// If cached token expired it will be automatically removed and new OAuth Token will be requested
 	GetValidToken() (*Token, error)
+
+	// RevokeToken revokes the Access Token while also removing it from the Access Token Cache.
+	// When Access Token is expired or missing revoke will return without any action.
+	RevokeToken() error
 }
 
 // OAuthTokenSource manages the OAuth Token fetching and refreshing using a LocalTokenCache.
@@ -29,9 +39,31 @@ type OAuthTokenSource struct {
 	clientSecret string
 	userAgent    string
 	tokenURL     string
+	revokeURL    string
 	token        *Token
 	tokenCache   LocalTokenCache
 	ctx          context.Context
+}
+
+func (c *OAuthTokenSource) RevokeToken() error {
+	tokenString, err := c.tokenCache.RetrieveToken(c.ctx)
+	if err != nil {
+		return err
+	}
+	if tokenString != nil && *tokenString != "" {
+		err := c.revokeTokenInRemoteServer(*tokenString)
+		if err != nil {
+			return err
+		}
+
+		// Remove token from cache
+		err = c.tokenCache.SaveToken(c.ctx, "")
+		if err != nil {
+			return err
+		}
+	}
+	// No revocation needed for empty tokens.
+	return nil
 }
 
 // GetValidToken retrieves the valid Token, refreshing it if necessary.
@@ -54,7 +86,7 @@ func (c *OAuthTokenSource) GetValidToken() (*Token, error) {
 
 // refreshToken fetches a new Token and saves it using the Token source.
 func (c *OAuthTokenSource) refreshToken() (*Token, error) {
-	newToken, err := c.fetchToken()
+	newToken, err := c.fetchTokenFromRemoteServer()
 	if err != nil {
 		return nil, err
 	}
@@ -106,7 +138,7 @@ func parseToken(accessToken string) (*Token, error) {
 
 	expiry := time.Unix(tokenData.Exp, 0)
 	if time.Now().After(expiry) {
-		return nil, errors.New("Token has expired")
+		return nil, errors.New("atlas cloud Access Token has expired")
 	}
 
 	return &Token{
@@ -114,4 +146,97 @@ func parseToken(accessToken string) (*Token, error) {
 		Expiry:      expiry,
 		ExpiresIn:   int(time.Until(expiry).Seconds()),
 	}, nil
+}
+
+// fetchToken makes a manual POST request to Server (tokenUrl) to fetch the access Token.
+func (c *OAuthTokenSource) fetchTokenFromRemoteServer() (*Token, error) {
+	data := url.Values{}
+	data.Set("grant_type", "client_credentials")
+
+	req, err := http.NewRequest("POST", c.tokenURL, strings.NewReader(data.Encode()))
+	if err != nil {
+		return nil, err
+	}
+	req.SetBasicAuth(c.clientID, c.clientSecret)
+	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
+	req.Header.Set("User-Agent", c.userAgent)
+
+	client := &http.Client{}
+	resp, err := client.Do(req)
+	if err != nil {
+		return nil, err
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		if resp.StatusCode == http.StatusTooManyRequests {
+			msg, _ := io.ReadAll(resp.Body)
+			formattedMessage := fmt.Sprintf("%v %v: HTTP %v Detail: %v Reason: %v",
+				"POST", c.tokenURL, resp.StatusCode,
+				"Token request was rate limited", string(msg))
+			return nil, errors.New(formattedMessage)
+		}
+		formattedMessage := fmt.Sprintf("%v %v: HTTP %v Detail: %v Reason: %v",
+			"POST", c.tokenURL, resp.StatusCode,
+			"Failed to obtain Access Token when fetching new OAuth Token from remote server",
+			resp.Header.Get("www-authenticate"))
+		return nil, errors.New(formattedMessage)
+	}
+	// tokenRemoteResponse represents successful response from token endpoint
+	var tokenRemoteResponse struct {
+		AccessToken string `json:"access_token"`
+		TokenType   string `json:"token_type"`
+		ExpiresIn   int    `json:"expires_in"`
+	}
+
+	if err := json.NewDecoder(resp.Body).Decode(&tokenRemoteResponse); err != nil {
+		return nil, err
+	}
+
+	// Construct the Token with expiry time
+	token := &Token{
+		AccessToken: tokenRemoteResponse.AccessToken,
+		ExpiresIn:   tokenRemoteResponse.ExpiresIn,
+		Expiry:      time.Now().Add(time.Duration(tokenRemoteResponse.ExpiresIn) * time.Second),
+	}
+	return token, nil
+}
+
+// revokeToken revokes the provided access token by making a POST request to the OAuth revoke endpoint.
+func (c *OAuthTokenSource) revokeTokenInRemoteServer(token string) error {
+	revokeUrl := c.revokeURL
+	data := url.Values{}
+	data.Set("token", token)
+	data.Set("token_type_hint", "access_token")
+
+	req, err := http.NewRequest("POST", revokeUrl, strings.NewReader(data.Encode()))
+	if err != nil {
+		return err
+	}
+	req.SetBasicAuth(c.clientID, c.clientSecret)
+	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
+	req.Header.Set("User-Agent", c.userAgent)
+
+	client := &http.Client{}
+	resp, err := client.Do(req)
+	if err != nil {
+		return err
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		if resp.StatusCode == http.StatusTooManyRequests {
+			msg, _ := io.ReadAll(resp.Body)
+			formattedMessage := fmt.Sprintf("%v %v: HTTP %v Detail: %v Reason: %v",
+				"POST", c.tokenURL, resp.StatusCode,
+				"Token Revocation request was rate limited", string(msg))
+			return errors.New(formattedMessage)
+		}
+		formattedMessage := fmt.Sprintf("%v %v: HTTP %v Detail: %v Reason: %v",
+			"POST", c.tokenURL, resp.StatusCode,
+			"Failed to revoke Access Token when fetching new OAuth Token from remote server",
+			resp.Header.Get("www-authenticate"))
+		return errors.New(formattedMessage)
+	}
+	return nil
 }

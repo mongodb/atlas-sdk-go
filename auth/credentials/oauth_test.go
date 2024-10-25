@@ -310,3 +310,88 @@ func TestOAuthClient_CustomUserAgent(t *testing.T) {
 
 	_, _ = tokenSource.GetValidToken()
 }
+
+// MockOAuthRevokeEndpoint creates a mock OAuth revoke endpoint that simulates token revocation responses.
+func MockOAuthRevokeEndpoint(statusCode int) *httptest.Server {
+	handler := http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if r.Method != http.MethodPost || r.FormValue("token") == "" {
+			http.Error(w, "invalid request", http.StatusBadRequest)
+			return
+		}
+		w.WriteHeader(statusCode)
+	})
+	return httptest.NewServer(handler)
+}
+
+// TestOAuthTokenSource_RevokeToken_Success tests successful token revocation.
+func TestOAuthTokenSource_RevokeToken_Success(t *testing.T) {
+	mockServer := MockOAuthRevokeEndpoint(http.StatusOK)
+	defer mockServer.Close()
+
+	tokenSource := &OAuthTokenSource{
+		clientID:     "clientID",
+		clientSecret: "clientSecret",
+		userAgent:    core.DefaultUserAgent,
+		tokenCache:   &MockTokenCache{token: "test"},
+		revokeURL:    mockServer.URL,
+	}
+
+	err := tokenSource.RevokeToken()
+	assert.NoError(t, err)
+}
+
+// TestOAuthTokenSource_RevokeToken_Failure tests token revocation failure due to unauthorized access.
+func TestOAuthTokenSource_RevokeToken_Failure(t *testing.T) {
+	mockServer := MockOAuthRevokeEndpoint(http.StatusUnauthorized)
+	defer mockServer.Close()
+
+	tokenSource := &OAuthTokenSource{
+		clientID:     "clientID",
+		clientSecret: "clientSecret",
+		userAgent:    core.DefaultUserAgent,
+		tokenCache:   &MockTokenCache{token: "test"},
+		revokeURL:    mockServer.URL,
+	}
+
+	err := tokenSource.RevokeToken()
+	assert.Error(t, err)
+	assert.Contains(t, err.Error(), "Failed to revoke Access Token when fetching new OAuth Token from remote server")
+}
+
+// TestOAuthTokenSource_RevokeToken_RateLimit tests handling of rate-limited responses during token revocation.
+func TestOAuthTokenSource_RevokeToken_RateLimit(t *testing.T) {
+	mockServer := MockOAuthRevokeEndpoint(http.StatusTooManyRequests)
+	defer mockServer.Close()
+
+	tokenSource := &OAuthTokenSource{
+		clientID:     "clientID",
+		clientSecret: "clientSecret",
+		userAgent:    core.DefaultUserAgent,
+		tokenCache:   &MockTokenCache{token: "test"},
+		revokeURL:    mockServer.URL,
+	}
+
+	err := tokenSource.RevokeToken()
+	assert.Error(t, err)
+	assert.Contains(t, err.Error(), "rate limited")
+}
+
+// TestOAuthTokenSource_RevokeToken_InvalidRequest tests handling of invalid request scenarios.
+func TestOAuthTokenSource_RevokeToken_InvalidRequest(t *testing.T) {
+	mockServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		http.Error(w, "Bad Request", http.StatusBadRequest)
+	}))
+	defer mockServer.Close()
+
+	tokenSource := &OAuthTokenSource{
+		clientID:     "clientID",
+		clientSecret: "clientSecret",
+		userAgent:    core.DefaultUserAgent,
+		tokenCache:   &MockTokenCache{token: "test"},
+		revokeURL:    mockServer.URL,
+	}
+
+	err := tokenSource.RevokeToken()
+	assert.Error(t, err)
+	assert.Contains(t, err.Error(), "Failed to revoke Access Token when fetching new OAuth Token from remote server")
+}

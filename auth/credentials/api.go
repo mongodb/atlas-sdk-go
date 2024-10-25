@@ -13,6 +13,9 @@ import (
 //nolint:gosec //url only
 const tokenAPIPath = "/api/oauth/token"
 
+// revokeAPIPath for revoking OAuth Access Token from server
+const revokeAPIPath = "/api/oauth/revoke"
+
 // serverURL for atlas API
 const serverURL = core.DefaultCloudURL + tokenAPIPath
 
@@ -35,9 +38,11 @@ type AtlasTokenSourceOptions struct {
 // NewTokenSourceWithOptions initializes an OAuthTokenSource with advanced credentials.AtlasTokenSourceOptions
 func NewTokenSourceWithOptions(opts AtlasTokenSourceOptions) TokenSource {
 	var tokenURL string
+	var revokeUrl string
 	if opts.BaseURL != nil {
 		baseUrlNoSuffix := strings.TrimSuffix(*opts.BaseURL, "/")
 		tokenURL = baseUrlNoSuffix + tokenAPIPath
+		revokeUrl = baseUrlNoSuffix + revokeAPIPath
 	} else {
 		tokenURL = serverURL
 	}
@@ -59,6 +64,7 @@ func NewTokenSourceWithOptions(opts AtlasTokenSourceOptions) TokenSource {
 		clientSecret: opts.ClientSecret,
 		userAgent:    userAgent,
 		tokenURL:     tokenURL,
+		revokeURL:    revokeUrl,
 		tokenCache:   opts.TokenCache,
 		ctx:          ctx,
 	}
