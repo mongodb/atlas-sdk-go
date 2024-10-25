@@ -42,3 +42,4 @@ admin/.openapi-generator
 scripts/gh-md-toc
 docs/.openapi-generator/*
 
+/.trunk
