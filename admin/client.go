@@ -477,8 +477,6 @@ func (c *APIClient) prepareRequest(
 	if ctx != nil {
 		// add context to the request
 		localVarRequest = localVarRequest.WithContext(ctx)
-
-		// Walk through any authentication.
 	}
 
 	for header, value := range c.cfg.DefaultHeader {
