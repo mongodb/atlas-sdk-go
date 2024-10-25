@@ -101,8 +101,33 @@ func TestNewServiceAccountOAuthClientWithTokenSource_WithValidToken(t *testing.T
 
 // Test for providing valid Token and parsing the expiration date
 func TestNewServiceAccountOAuthClientWithTokenSource_WithWithExpiredToken(t *testing.T) {
-	// Generate a mock JWT Token with future expiration
+	// Generate a mock JWT Token with past expiration
 	expiration := time.Now().Add(-4 * time.Hour)
+	token := generateMockJWT(expiration)
+
+	remoteToken := "TestTokenRefreshedOnServer"
+	// Start the mock server and return expired Token
+	mockServer := MockOAuthTokenEndpoint(remoteToken)
+	defer mockServer.Close()
+
+	mockCache := &MockTokenCache{token: token}
+	tokenSource := NewTokenSourceWithOptions(AtlasTokenSourceOptions{
+		ClientID:     "clientID",
+		ClientSecret: "clientSecret",
+		TokenCache:   mockCache,
+		BaseURL:      &mockServer.URL,
+	})
+
+	oAuthTokenSource := tokenSource.(*OAuthTokenSource)
+	_, err := tokenSource.GetValidToken() // Get or refresh the Token
+	assert.Nil(t, err)
+	assert.Equal(t, remoteToken, oAuthTokenSource.token.AccessToken)
+}
+
+// Test for providing valid Token and parsing the expiration date
+func TestNewServiceAccountOAuthClientWithTokenSource_WithWithAlmostExpiredToken(t *testing.T) {
+	// Generate a mock JWT Token that is going to expire in 5 seconds
+	expiration := time.Now().Add(-5 * time.Second)
 	token := generateMockJWT(expiration)
 
 	remoteToken := "TestTokenRefreshedOnServer"
@@ -148,7 +173,56 @@ func TestOAuthClient_FetchToken_Failure(t *testing.T) {
 	assert.Error(t, err)
 	oAuthTokenSource := tokenSource.(*OAuthTokenSource)
 	assert.Equal(t, mockServer.URL+tokenAPIPath, oAuthTokenSource.tokenURL)
-	assert.Contains(t, err.Error(), "failed to obtain Token")
+	assert.Contains(t, err.Error(), "Failed to obtain Access Token when fetching new OAuth Token from remote server")
+}
+
+// Test error handling when fetching a Token fails (e.g., invalid response)
+func TestOAuthClient_FetchToken_FailureRateLimit(t *testing.T) {
+	// Mock OAuth server failure
+	mockServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusTooManyRequests)
+		_, err := w.Write([]byte(`Rate Limit reached`))
+		assert.NoError(t, err)
+	}))
+	defer mockServer.Close()
+
+	mockCache := &MockTokenCache{}
+	client := NewTokenSourceWithOptions(AtlasTokenSourceOptions{
+		ClientID:     "clientID",
+		ClientSecret: "clientSecret",
+		TokenCache:   mockCache,
+		BaseURL:      &mockServer.URL,
+	})
+
+	// Call GetAccessToken expecting an error
+	_, err := client.GetValidToken()
+	assert.Error(t, err)
+	assert.Contains(t, err.Error(), "Rate Limit reached")
+	assert.Contains(t, err.Error(), "Token request was rate limited")
+}
+
+// Test error handling when fetching a Token fails (e.g., invalid response)
+func TestOAuthClient_FetchToken_FailureHtmlContentType(t *testing.T) {
+	// Mock OAuth server failure
+	mockServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusForbidden)
+		_, err := w.Write([]byte(`<html>Wrong</html>`))
+		assert.NoError(t, err)
+	}))
+	defer mockServer.Close()
+
+	mockCache := &MockTokenCache{}
+	client := NewTokenSourceWithOptions(AtlasTokenSourceOptions{
+		ClientID:     "clientID",
+		ClientSecret: "clientSecret",
+		TokenCache:   mockCache,
+		BaseURL:      &mockServer.URL,
+	})
+
+	// Call GetAccessToken expecting an error
+	_, err := client.GetValidToken()
+	assert.Error(t, err)
+	assert.Contains(t, err.Error(), "Failed to obtain Access Token when fetching new OAuth Token from remote server")
 }
 
 // Test CustomTransport to ensure Token is injected into requests

@@ -6,8 +6,6 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"net/http"
-	"net/url"
 	"strings"
 	"time"
 )
@@ -71,50 +69,7 @@ func (c *OAuthTokenSource) refreshToken() (*Token, error) {
 	return newToken, nil
 }
 
-// fetchToken makes a manual POST request to Server (tokenUrl) to fetch the access Token.
-func (c *OAuthTokenSource) fetchToken() (*Token, error) {
-	data := url.Values{}
-	data.Set("grant_type", "client_credentials")
-
-	req, err := http.NewRequest("POST", c.tokenURL, strings.NewReader(data.Encode()))
-	if err != nil {
-		return nil, err
-	}
-	req.SetBasicAuth(c.clientID, c.clientSecret)
-	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
-	req.Header.Set("User-Agent", c.userAgent)
-
-	client := &http.Client{}
-	resp, err := client.Do(req)
-	if err != nil {
-		return nil, err
-	}
-	defer resp.Body.Close()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, errors.New("failed to obtain Token, status: " + resp.Status)
-	}
-
-	var tokenResp struct {
-		AccessToken string `json:"access_token"`
-		TokenType   string `json:"token_type"`
-		ExpiresIn   int    `json:"expires_in"`
-	}
-
-	if err := json.NewDecoder(resp.Body).Decode(&tokenResp); err != nil {
-		return nil, err
-	}
-
-	// Construct the Token with expiry time
-	token := &Token{
-		AccessToken: tokenResp.AccessToken,
-		ExpiresIn:   tokenResp.ExpiresIn,
-		Expiry:      time.Now().Add(time.Duration(tokenResp.ExpiresIn) * time.Second),
-	}
-	return token, nil
-}
-
-// Additional time for Access Tokens to not expire.
+// ExpiryDelta Additional time for Access Tokens to not expire.
 const ExpiryDelta = 10 * time.Second
 
 // expired checks if the Token is close to expiring.
