@@ -16,8 +16,11 @@ const tokenAPIPath = "/api/oauth/token"
 // revokeAPIPath for revoking OAuth Access Token from server
 const revokeAPIPath = "/api/oauth/revoke"
 
-// serverURL for atlas API
-const serverURL = core.DefaultCloudURL + tokenAPIPath
+// serverURL for Token Atlas API
+const serverTokenURL = core.DefaultCloudURL + tokenAPIPath
+
+// serverURL for Revoke Atlas API
+const serverRevokeURL = core.DefaultCloudURL + revokeAPIPath
 
 // AtlasTokenSourceOptions provides set of input arguments
 // for creation of credentials.TokenSource interface
@@ -44,7 +47,8 @@ func NewTokenSourceWithOptions(opts AtlasTokenSourceOptions) TokenSource {
 		tokenURL = baseUrlNoSuffix + tokenAPIPath
 		revokeUrl = baseUrlNoSuffix + revokeAPIPath
 	} else {
-		tokenURL = serverURL
+		tokenURL = serverTokenURL
+		revokeUrl = serverRevokeURL
 	}
 	var userAgent string
 	if opts.UserAgent != "" {

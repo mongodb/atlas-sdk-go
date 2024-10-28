@@ -340,6 +340,20 @@ func TestOAuthTokenSource_RevokeToken_Success(t *testing.T) {
 	assert.NoError(t, err)
 }
 
+func TestOAuthTokenSource_TokenAndRevokeUrls_Default(t *testing.T) {
+	tokenSource := NewTokenSourceWithOptions(AtlasTokenSourceOptions{
+		ClientID:     "clientID",
+		ClientSecret: "clientSecret",
+		TokenCache:   &MockTokenCache{token: "test"},
+	})
+
+	oAuthTokenSource := tokenSource.(*OAuthTokenSource)
+	assert.NotNil(t, oAuthTokenSource.tokenURL)
+	assert.NotNil(t, oAuthTokenSource.revokeURL)
+	assert.Equal(t, oAuthTokenSource.tokenURL, serverTokenURL)
+	assert.Equal(t, oAuthTokenSource.revokeURL, serverRevokeURL)
+}
+
 // TestOAuthTokenSource_RevokeToken_Failure tests token revocation failure due to unauthorized access.
 func TestOAuthTokenSource_RevokeToken_Failure(t *testing.T) {
 	mockServer := MockOAuthRevokeEndpoint(http.StatusUnauthorized)
