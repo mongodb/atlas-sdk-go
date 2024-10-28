@@ -12,8 +12,13 @@ import (
 	"go.mongodb.org/atlas-sdk/v20241023001/auth/credentials"
 )
 
-// Example for Service Account Authentication
-// Required env variables
+// Advanced Example for Service Account OAuth Authentication
+// Provides:
+// 1. Custom Token Cache in order to store OAuth Token for further reuse across application restarts
+// 2. Usage of logout (Token Revocation) method.
+// 3. Using custom Context and HttpTransports
+//
+// Required env variables to run example:
 // export MONGODB_ATLAS_CLIENT_ID="your_client_id"
 // export MONGODB_ATLAS_CLIENT_SECRET="your_client_secret"
 // export MONGODB_ATLAS_URL=https://cloud.mongodb.com
@@ -77,6 +82,7 @@ func main() {
 		fmt.Printf("projects should not be empty:  %v", projects)
 	}
 
+	// Revoke Token in the client (logout)
 	err = tokenSource.RevokeToken()
 	if err != nil {
 		log.Fatalf("Error: %v", err)
@@ -89,7 +95,7 @@ type MyTokenCache struct {
 	mu          sync.Mutex
 }
 
-func (s *MyTokenCache) RetrieveToken(ctx context.Context) (*string, error) {
+func (s *MyTokenCache) RetrieveToken(_ context.Context) (*string, error) {
 	// Locking added to ensure no race condition happens with SaveToken
 	s.mu.Lock()
 	defer s.mu.Unlock()
@@ -105,7 +111,7 @@ func (s *MyTokenCache) RetrieveToken(ctx context.Context) (*string, error) {
 	return &tkn, nil
 }
 
-func (s *MyTokenCache) SaveToken(ctx context.Context, tkn string) error {
+func (s *MyTokenCache) SaveToken(_ context.Context, tkn string) error {
 	// Locking added to ensure no race condition happens with RetrieveToken
 	s.mu.Lock()
 	defer s.mu.Unlock()

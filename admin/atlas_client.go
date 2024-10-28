@@ -6,6 +6,7 @@ import (
 	"strings"
 
 	"github.com/mongodb-forks/digest"
+	"go.mongodb.org/atlas-sdk/v20241023001/auth/credentials"
 	"go.mongodb.org/atlas-sdk/v20241023001/internal/core"
 )
 
@@ -47,6 +48,29 @@ func UseDigestAuth(apiKey, apiSecret string) ClientModifier {
 		if err != nil {
 			return err
 		}
+		c.HTTPClient = httpClient
+		return nil
+	}
+}
+
+// UseOAuthAuth provides OAuthAuth authentication for Go SDK.
+// Method is provided as helper to create a default HTTP client that supports HTTP Digest authentication.
+// credentials.LocalTokenCache can be supplied to reuse OAuth Token across application restarts.
+// Warning: for advanced use cases please use credentials.NewTokenSource directly in your code pass it to UseHTTPClient method.
+// Warning: any previously set httpClient will be overwritten. To fully customize HttpClient use UseHTTPClient method.
+func UseOAuthAuth(clientID, clientSecret string, tokenCache credentials.LocalTokenCache) ClientModifier {
+	return func(c *Configuration) error {
+		var tokenSource credentials.TokenSource
+		if tokenCache != nil {
+			tokenSource = credentials.NewTokenSourceWithOptions(credentials.AtlasTokenSourceOptions{
+				ClientID:     clientID,
+				ClientSecret: clientSecret,
+				TokenCache:   tokenCache,
+			})
+		} else {
+			tokenSource = credentials.NewTokenSource(clientID, clientSecret)
+		}
+		httpClient := credentials.NewHTTPClientWithOAuthToken(tokenSource)
 		c.HTTPClient = httpClient
 		return nil
 	}
