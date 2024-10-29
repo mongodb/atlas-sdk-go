@@ -1,16 +1,16 @@
-module go.mongodb.org/atlas-sdk/v20240805005/examples
+module go.mongodb.org/atlas-sdk/v20241023001/examples
 
 go 1.22.0
 
 toolchain go1.23.1
 
-replace go.mongodb.org/atlas-sdk/v20240805005 => ../
-replace go.mongodb.org/atlas-sdk/v20240805005/auth/credentials => ../auth/credentials
+replace go.mongodb.org/atlas-sdk/v20241023001 => ../
+replace go.mongodb.org/atlas-sdk/v20241023001/auth/credentials => ../auth/credentials
 
 require (
 	github.com/hashicorp/go-retryablehttp v0.7.7
 	github.com/mongodb-forks/digest v1.1.0
-	go.mongodb.org/atlas-sdk/v20240805005 v20240805005.1.0
+	go.mongodb.org/atlas-sdk/v20241023001 v20241023001.1.0
 )
 
 require (
