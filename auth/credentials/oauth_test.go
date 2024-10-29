@@ -101,7 +101,6 @@ func TestNewServiceAccountOAuthClientWithTokenSource_WithValidToken(t *testing.T
 
 // Test for providing valid Token and parsing the expiration date
 func TestNewServiceAccountOAuthClientWithTokenSource_WithWithExpiredToken(t *testing.T) {
-	// Generate a mock JWT Token with past expiration
 	expiration := time.Now().Add(-4 * time.Hour)
 	token := generateMockJWT(expiration)
 

@@ -56,7 +56,7 @@ func (c *OAuthTokenSource) RevokeToken() error {
 			return err
 		}
 
-		// Remove token from cache
+		// Revoked token can be removed from cache
 		err = c.tokenCache.SaveToken(c.ctx, "")
 		if err != nil {
 			return err
@@ -138,7 +138,7 @@ func parseToken(accessToken string) (*Token, error) {
 
 	expiry := time.Unix(tokenData.Exp, 0)
 	if time.Now().After(expiry) {
-		return nil, errors.New("atlas cloud Access Token has expired")
+		return nil, errors.New("Atlas Cloud Access Token has expired")
 	}
 
 	return &Token{
@@ -148,7 +148,7 @@ func parseToken(accessToken string) (*Token, error) {
 	}, nil
 }
 
-// fetchToken makes a manual POST request to Server (tokenUrl) to fetch the access Token.
+// fetchTokenFromRemoteServer makes a manual POST request to Server (tokenUrl) to fetch the access Token.
 func (c *OAuthTokenSource) fetchTokenFromRemoteServer() (*Token, error) {
 	data := url.Values{}
 	data.Set("grant_type", "client_credentials")
