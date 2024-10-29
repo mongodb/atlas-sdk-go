@@ -9,7 +9,7 @@ type PaginatedBackupSnapshotExportBuckets struct {
 	Links *[]Link `json:"links,omitempty"`
 	// List of returned documents that MongoDB Cloud provides when completing this request.
 	// Read only field.
-	Results *[]DiskBackupSnapshotExportBucket `json:"results,omitempty"`
+	Results *[]DiskBackupSnapshotExportBucketResponse `json:"results,omitempty"`
 	// Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`.
 	// Read only field.
 	TotalCount *int `json:"totalCount,omitempty"`
@@ -66,9 +66,9 @@ func (o *PaginatedBackupSnapshotExportBuckets) SetLinks(v []Link) {
 }
 
 // GetResults returns the Results field value if set, zero value otherwise
-func (o *PaginatedBackupSnapshotExportBuckets) GetResults() []DiskBackupSnapshotExportBucket {
+func (o *PaginatedBackupSnapshotExportBuckets) GetResults() []DiskBackupSnapshotExportBucketResponse {
 	if o == nil || IsNil(o.Results) {
-		var ret []DiskBackupSnapshotExportBucket
+		var ret []DiskBackupSnapshotExportBucketResponse
 		return ret
 	}
 	return *o.Results
@@ -76,7 +76,7 @@ func (o *PaginatedBackupSnapshotExportBuckets) GetResults() []DiskBackupSnapshot
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedBackupSnapshotExportBuckets) GetResultsOk() (*[]DiskBackupSnapshotExportBucket, bool) {
+func (o *PaginatedBackupSnapshotExportBuckets) GetResultsOk() (*[]DiskBackupSnapshotExportBucketResponse, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
@@ -93,8 +93,8 @@ func (o *PaginatedBackupSnapshotExportBuckets) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []DiskBackupSnapshotExportBucket and assigns it to the Results field.
-func (o *PaginatedBackupSnapshotExportBuckets) SetResults(v []DiskBackupSnapshotExportBucket) {
+// SetResults gets a reference to the given []DiskBackupSnapshotExportBucketResponse and assigns it to the Results field.
+func (o *PaginatedBackupSnapshotExportBuckets) SetResults(v []DiskBackupSnapshotExportBucketResponse) {
 	o.Results = &v
 }
 

@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20240805005/admin"
+	admin "go.mongodb.org/atlas-sdk/v20241023001/admin"
 
 	http "net/http"
 
@@ -514,17 +514,17 @@ func (_c *CloudBackupsApi_CreateBackupRestoreJobWithParams_Call) RunAndReturn(ru
 	return _c
 }
 
-// CreateExportBucket provides a mock function with given fields: ctx, groupId, diskBackupSnapshotExportBucket
-func (_m *CloudBackupsApi) CreateExportBucket(ctx context.Context, groupId string, diskBackupSnapshotExportBucket *admin.DiskBackupSnapshotExportBucket) admin.CreateExportBucketApiRequest {
-	ret := _m.Called(ctx, groupId, diskBackupSnapshotExportBucket)
+// CreateExportBucket provides a mock function with given fields: ctx, groupId, diskBackupSnapshotExportBucketRequest
+func (_m *CloudBackupsApi) CreateExportBucket(ctx context.Context, groupId string, diskBackupSnapshotExportBucketRequest *admin.DiskBackupSnapshotExportBucketRequest) admin.CreateExportBucketApiRequest {
+	ret := _m.Called(ctx, groupId, diskBackupSnapshotExportBucketRequest)
 
 	if len(ret) == 0 {
 		panic("no return value specified for CreateExportBucket")
 	}
 
 	var r0 admin.CreateExportBucketApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.DiskBackupSnapshotExportBucket) admin.CreateExportBucketApiRequest); ok {
-		r0 = rf(ctx, groupId, diskBackupSnapshotExportBucket)
+	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.DiskBackupSnapshotExportBucketRequest) admin.CreateExportBucketApiRequest); ok {
+		r0 = rf(ctx, groupId, diskBackupSnapshotExportBucketRequest)
 	} else {
 		r0 = ret.Get(0).(admin.CreateExportBucketApiRequest)
 	}
@@ -540,14 +540,14 @@ type CloudBackupsApi_CreateExportBucket_Call struct {
 // CreateExportBucket is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-//   - diskBackupSnapshotExportBucket *admin.DiskBackupSnapshotExportBucket
-func (_e *CloudBackupsApi_Expecter) CreateExportBucket(ctx any, groupId any, diskBackupSnapshotExportBucket any) *CloudBackupsApi_CreateExportBucket_Call {
-	return &CloudBackupsApi_CreateExportBucket_Call{Call: _e.mock.On("CreateExportBucket", ctx, groupId, diskBackupSnapshotExportBucket)}
+//   - diskBackupSnapshotExportBucketRequest *admin.DiskBackupSnapshotExportBucketRequest
+func (_e *CloudBackupsApi_Expecter) CreateExportBucket(ctx any, groupId any, diskBackupSnapshotExportBucketRequest any) *CloudBackupsApi_CreateExportBucket_Call {
+	return &CloudBackupsApi_CreateExportBucket_Call{Call: _e.mock.On("CreateExportBucket", ctx, groupId, diskBackupSnapshotExportBucketRequest)}
 }
 
-func (_c *CloudBackupsApi_CreateExportBucket_Call) Run(run func(ctx context.Context, groupId string, diskBackupSnapshotExportBucket *admin.DiskBackupSnapshotExportBucket)) *CloudBackupsApi_CreateExportBucket_Call {
+func (_c *CloudBackupsApi_CreateExportBucket_Call) Run(run func(ctx context.Context, groupId string, diskBackupSnapshotExportBucketRequest *admin.DiskBackupSnapshotExportBucketRequest)) *CloudBackupsApi_CreateExportBucket_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(*admin.DiskBackupSnapshotExportBucket))
+		run(args[0].(context.Context), args[1].(string), args[2].(*admin.DiskBackupSnapshotExportBucketRequest))
 	})
 	return _c
 }
@@ -557,30 +557,30 @@ func (_c *CloudBackupsApi_CreateExportBucket_Call) Return(_a0 admin.CreateExport
 	return _c
 }
 
-func (_c *CloudBackupsApi_CreateExportBucket_Call) RunAndReturn(run func(context.Context, string, *admin.DiskBackupSnapshotExportBucket) admin.CreateExportBucketApiRequest) *CloudBackupsApi_CreateExportBucket_Call {
+func (_c *CloudBackupsApi_CreateExportBucket_Call) RunAndReturn(run func(context.Context, string, *admin.DiskBackupSnapshotExportBucketRequest) admin.CreateExportBucketApiRequest) *CloudBackupsApi_CreateExportBucket_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
 // CreateExportBucketExecute provides a mock function with given fields: r
-func (_m *CloudBackupsApi) CreateExportBucketExecute(r admin.CreateExportBucketApiRequest) (*admin.DiskBackupSnapshotExportBucket, *http.Response, error) {
+func (_m *CloudBackupsApi) CreateExportBucketExecute(r admin.CreateExportBucketApiRequest) (*admin.DiskBackupSnapshotExportBucketResponse, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for CreateExportBucketExecute")
 	}
 
-	var r0 *admin.DiskBackupSnapshotExportBucket
+	var r0 *admin.DiskBackupSnapshotExportBucketResponse
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.CreateExportBucketApiRequest) (*admin.DiskBackupSnapshotExportBucket, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.CreateExportBucketApiRequest) (*admin.DiskBackupSnapshotExportBucketResponse, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.CreateExportBucketApiRequest) *admin.DiskBackupSnapshotExportBucket); ok {
+	if rf, ok := ret.Get(0).(func(admin.CreateExportBucketApiRequest) *admin.DiskBackupSnapshotExportBucketResponse); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.DiskBackupSnapshotExportBucket)
+			r0 = ret.Get(0).(*admin.DiskBackupSnapshotExportBucketResponse)
 		}
 	}
 
@@ -619,12 +619,12 @@ func (_c *CloudBackupsApi_CreateExportBucketExecute_Call) Run(run func(r admin.C
 	return _c
 }
 
-func (_c *CloudBackupsApi_CreateExportBucketExecute_Call) Return(_a0 *admin.DiskBackupSnapshotExportBucket, _a1 *http.Response, _a2 error) *CloudBackupsApi_CreateExportBucketExecute_Call {
+func (_c *CloudBackupsApi_CreateExportBucketExecute_Call) Return(_a0 *admin.DiskBackupSnapshotExportBucketResponse, _a1 *http.Response, _a2 error) *CloudBackupsApi_CreateExportBucketExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *CloudBackupsApi_CreateExportBucketExecute_Call) RunAndReturn(run func(admin.CreateExportBucketApiRequest) (*admin.DiskBackupSnapshotExportBucket, *http.Response, error)) *CloudBackupsApi_CreateExportBucketExecute_Call {
+func (_c *CloudBackupsApi_CreateExportBucketExecute_Call) RunAndReturn(run func(admin.CreateExportBucketApiRequest) (*admin.DiskBackupSnapshotExportBucketResponse, *http.Response, error)) *CloudBackupsApi_CreateExportBucketExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -2187,24 +2187,24 @@ func (_c *CloudBackupsApi_GetExportBucket_Call) RunAndReturn(run func(context.Co
 }
 
 // GetExportBucketExecute provides a mock function with given fields: r
-func (_m *CloudBackupsApi) GetExportBucketExecute(r admin.GetExportBucketApiRequest) (*admin.DiskBackupSnapshotExportBucket, *http.Response, error) {
+func (_m *CloudBackupsApi) GetExportBucketExecute(r admin.GetExportBucketApiRequest) (*admin.DiskBackupSnapshotExportBucketResponse, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for GetExportBucketExecute")
 	}
 
-	var r0 *admin.DiskBackupSnapshotExportBucket
+	var r0 *admin.DiskBackupSnapshotExportBucketResponse
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetExportBucketApiRequest) (*admin.DiskBackupSnapshotExportBucket, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetExportBucketApiRequest) (*admin.DiskBackupSnapshotExportBucketResponse, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.GetExportBucketApiRequest) *admin.DiskBackupSnapshotExportBucket); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetExportBucketApiRequest) *admin.DiskBackupSnapshotExportBucketResponse); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.DiskBackupSnapshotExportBucket)
+			r0 = ret.Get(0).(*admin.DiskBackupSnapshotExportBucketResponse)
 		}
 	}
 
@@ -2243,12 +2243,12 @@ func (_c *CloudBackupsApi_GetExportBucketExecute_Call) Run(run func(r admin.GetE
 	return _c
 }
 
-func (_c *CloudBackupsApi_GetExportBucketExecute_Call) Return(_a0 *admin.DiskBackupSnapshotExportBucket, _a1 *http.Response, _a2 error) *CloudBackupsApi_GetExportBucketExecute_Call {
+func (_c *CloudBackupsApi_GetExportBucketExecute_Call) Return(_a0 *admin.DiskBackupSnapshotExportBucketResponse, _a1 *http.Response, _a2 error) *CloudBackupsApi_GetExportBucketExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *CloudBackupsApi_GetExportBucketExecute_Call) RunAndReturn(run func(admin.GetExportBucketApiRequest) (*admin.DiskBackupSnapshotExportBucket, *http.Response, error)) *CloudBackupsApi_GetExportBucketExecute_Call {
+func (_c *CloudBackupsApi_GetExportBucketExecute_Call) RunAndReturn(run func(admin.GetExportBucketApiRequest) (*admin.DiskBackupSnapshotExportBucketResponse, *http.Response, error)) *CloudBackupsApi_GetExportBucketExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }

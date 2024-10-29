@@ -7,8 +7,8 @@ import (
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
-	"go.mongodb.org/atlas-sdk/v20240805005/admin"
-	"go.mongodb.org/atlas-sdk/v20240805005/mockadmin"
+	"go.mongodb.org/atlas-sdk/v20241023001/admin"
+	"go.mongodb.org/atlas-sdk/v20241023001/mockadmin"
 )
 
 func myFunctionCallingListClusters(clusterAPI admin.ClustersApi) (int, error) {
@@ -51,8 +51,8 @@ func TestListClustersErrorMocks(t *testing.T) {
 
 	apiError.SetModel(admin.ApiError{
 		Detail:    admin.PtrString("Error when listing clusters"),
-		Error:     admin.PtrInt(400),
-		ErrorCode: admin.PtrString("CLUSTERS_UNREACHABLE"),
+		Error:     400,
+		ErrorCode: "CLUSTERS_UNREACHABLE",
 		Reason:    admin.PtrString("Clusters unreachable"),
 	})
 	apiError.SetError("Mocked error")
