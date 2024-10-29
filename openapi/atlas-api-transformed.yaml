@@ -12,7 +12,7 @@ info:
 
     curl --user "{PUBLIC-KEY}:{PRIVATE-KEY}" \
       --digest \
-      --header "Accept: application/vnd.atlas.2024-08-05+json" \
+      --header "Accept: application/vnd.atlas.2024-10-23+json" \
       -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/dbAccessHistory/clusters/{clusterName}?pretty=true"
     ```
 
@@ -27,9 +27,11 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 1c52ceb4d6cff9896945cfc528023d46bc5cf1d0
+  x-xgen-sha: 4f095c6eb3ef7a717f47646d37e76d52936f25a0
 servers:
   - url: https://cloud.mongodb.com
+security:
+  - DigestAuth: []
 tags:
   - description: Returns access logs for authentication attempts made to Atlas
       database deployments. To view database access history, you must have
@@ -255,8 +257,6 @@ paths:
           description: Unauthorized.
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return the status of this MongoDB application
       tags:
         - Root
@@ -281,8 +281,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Get All Alert Configuration Matchers Field Names
       tags:
         - Alert Configurations
@@ -309,8 +307,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Authorized Clusters in All Projects
       tags:
         - Clusters
@@ -335,8 +331,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: List All Possible Event Types
       tags:
         - Events
@@ -365,8 +359,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Delete One Federation Settings Instance
       tags:
         - Federated Authentication
@@ -396,8 +388,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Connected Org Configs from One Federation
       tags:
         - Federated Authentication
@@ -437,8 +427,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Remove One Org Config Connected to One Federation
       tags:
         - Federated Authentication
@@ -476,8 +464,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Org Config Connected to One Federation
       tags:
         - Federated Authentication
@@ -535,8 +521,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Update One Org Config Connected to One Federation
       tags:
         - Federated Authentication
@@ -565,8 +549,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Role Mappings from One Organization
       tags:
         - Federated Authentication
@@ -601,8 +583,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Add One Role Mapping to One Organization
       tags:
         - Federated Authentication
@@ -640,8 +620,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Remove One Role Mapping from One Organization
       tags:
         - Federated Authentication
@@ -680,8 +658,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Role Mapping from One Organization
       tags:
         - Federated Authentication
@@ -727,8 +703,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Update One Role Mapping in One Organization
       tags:
         - Federated Authentication
@@ -777,8 +751,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Identity Providers in One Federation
       tags:
         - Federated Authentication
@@ -818,8 +790,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Create One Identity Provider
       tags:
         - Federated Authentication
@@ -857,8 +827,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Delete One Identity Provider
       tags:
         - Federated Authentication
@@ -900,8 +868,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Identity Provider by ID
       tags:
         - Federated Authentication
@@ -951,8 +917,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Update One Identity Provider
       tags:
         - Federated Authentication
@@ -990,8 +954,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Revoke the JWKS from One OIDC Identity Provider
       tags:
         - Federated Authentication
@@ -1020,8 +982,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return the Metadata of One Identity Provider
       tags:
         - Federated Authentication
@@ -1051,8 +1011,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Projects
       tags:
         - Projects
@@ -1102,8 +1060,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Create One Project
       tags:
         - Projects
@@ -1142,8 +1098,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Project using Its Name
       tags:
         - Projects
@@ -1172,8 +1126,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Remove One Project
       tags:
         - Projects
@@ -1200,8 +1152,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Project
       tags:
         - Projects
@@ -1237,8 +1187,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Update One Project
       tags:
         - Projects
@@ -1279,8 +1227,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Add One MongoDB Cloud User to One Project
       tags:
         - Projects
@@ -1319,8 +1265,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return Project IP Access List
       tags:
         - Project IP Access List
@@ -1372,8 +1316,6 @@ paths:
           $ref: "#/components/responses/forbidden"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Add Entries to Project IP Access List
       tags:
         - Project IP Access List
@@ -1437,8 +1379,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Remove One Entry from One Project IP Access List
       tags:
         - Project IP Access List
@@ -1492,8 +1432,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Project IP Access List Entry
       tags:
         - Project IP Access List
@@ -1534,8 +1472,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return Status of One Project IP Access List Entry
       tags:
         - Project IP Access List
@@ -1568,8 +1504,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Alert Configurations for One Project
       tags:
         - Alert Configurations
@@ -1606,8 +1540,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Create One Alert Configuration in One Project
       tags:
         - Alert Configurations
@@ -1649,8 +1581,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Remove One Alert Configuration from One Project
       tags:
         - Alert Configurations
@@ -1693,8 +1623,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Alert Configuration from One Project
       tags:
         - Alert Configurations
@@ -1751,8 +1679,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Toggle One State of One Alert Configuration in One Project
       tags:
         - Alert Configurations
@@ -1808,8 +1734,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Update One Alert Configuration for One Project
       tags:
         - Alert Configurations
@@ -1858,8 +1782,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Open Alerts for Alert Configuration
       tags:
         - Alerts
@@ -1899,8 +1821,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Alerts from One Project
       tags:
         - Alerts
@@ -1942,8 +1862,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Alert from One Project
       tags:
         - Alerts
@@ -1995,8 +1913,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Acknowledge One Alert from One Project
       tags:
         - Alerts
@@ -2040,8 +1956,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Alert Configurations Set for One Alert
       tags:
         - Alert Configurations
@@ -2073,8 +1987,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Organization API Keys Assigned to One Project
       tags:
         - Programmatic API Keys
@@ -2107,8 +2019,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Create and Assign One Organization API Key to One Project
       tags:
         - Programmatic API Keys
@@ -2146,8 +2056,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Unassign One Organization API Key from One Project
       tags:
         - Programmatic API Keys
@@ -2195,8 +2103,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Update Roles of One Organization API Key to One Project
       tags:
         - Programmatic API Keys
@@ -2240,8 +2146,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Assign One Organization API Key to One Project
       tags:
         - Programmatic API Keys
@@ -2267,8 +2171,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return the Auditing Configuration for One Project
       tags:
         - Auditing
@@ -2302,8 +2204,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Update Auditing Configuration for One Project
       tags:
         - Auditing
@@ -2327,8 +2227,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Custom DNS Configuration for Atlas Clusters on AWS
       tags:
         - AWS Clusters DNS
@@ -2360,17 +2258,14 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Toggle State of One Custom DNS Configuration for Atlas Clusters on AWS
       tags:
         - AWS Clusters DNS
   "/api/atlas/v2/groups/{groupId}/backup/exportBuckets":
     get:
-      description: "Returns all AWS S3 buckets and Azure Blob Storage Containers
-        associated with the specified Project. To use this resource, the
-        requesting API Key must have the Project Read Only role. Deprecated
-        versions: v2-{2023-01-01}"
+      description: "Returns all Export Buckets associated with the specified Project.
+        To use this resource, the requesting API Key must have the Project Read
+        Only role. Deprecated versions: v2-{2023-01-01}"
       operationId: listExportBuckets
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -2389,18 +2284,15 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
-      summary: Return All AWS S3 Buckets and Azure Blob Storage Containers Used for
-        Cloud Backup Snapshot Exports
+      summary: Return All Snapshot Export Buckets
       tags:
         - Cloud Backups
     post:
-      description: "Grants MongoDB Cloud access to the specified AWS S3 Bucket or
-        Azure Blob Storage Container. This enables this Export Bucket to receive
-        Atlas Cloud Backup Snapshots. To use this resource, the requesting API
-        Key must have the Project Owner role. Deprecated versions:
-        v2-{2023-01-01}"
+      description: "Creates a Snapshot Export Bucket for an AWS S3 Bucket or Azure
+        Blob Storage Container. Once created, an snapshots can be exported to
+        the Export Bucket and its referenced AWS S3 Bucket or Azure Blob Storage
+        Container. To use this resource, the requesting API Key must have the
+        Project Owner role. Deprecated versions: v2-{2023-01-01}"
       operationId: createExportBucket
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -2417,16 +2309,14 @@ paths:
               Azure:
                 description: Azure
                 value:
-                  bucketName: export-container
                   cloudProvider: AZURE
                   roleId: 668c5f0ed436263134491592
-                  serviceUrl: https://examplestorageaccount.blob.core.windows.net
-                  tenantId: 4297fc77-1592-4de8-a6d5-a8c32401df87
+                  serviceUrl: https://examplestorageaccount.blob.core.windows.net/examplecontainer
             schema:
-              $ref: "#/components/schemas/DiskBackupSnapshotExportBucket"
+              $ref: "#/components/schemas/DiskBackupSnapshotExportBucketRequest"
             x-xgen-version: 2024-05-30
-        description: Grants MongoDB Cloud access to the specified AWS S3 Bucket or Azure
-          Blob Storage Container.
+        description: Specifies the role and AWS S3 Bucket or Azure Blob Storage
+          Container that the Export Bucket should reference.
         required: true
       responses:
         "200":
@@ -2447,16 +2337,16 @@ paths:
                   description: Azure
                   value:
                     _id: 32b6e34b3d91647abb20e7b8
-                    bucketName: export-container
+                    bucketName: exportcontainer
                     cloudProvider: AZURE
                     links:
                       - href: https://cloud.mongodb.com/api/atlas
                         rel: self
                     roleId: 668c5f0ed436263134491592
-                    serviceUrl: https://examplestorageaccount.blob.core.windows.net
+                    serviceUrl: https://examplestorageaccount.blob.core.windows.net/examplecontainer
                     tenantId: 4297fc77-1592-4de8-a6d5-a8c32401df87
               schema:
-                $ref: "#/components/schemas/DiskBackupSnapshotExportBucket"
+                $ref: "#/components/schemas/DiskBackupSnapshotExportBucketResponse"
               x-xgen-version: 2024-05-30
           description: OK
         "400":
@@ -2467,25 +2357,20 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
-      summary: Grant Access to AWS S3 Bucket or Azure Blob Storage Container for Cloud
-        Backup Snapshot Exports
+      summary: Create One Snapshot Export Bucket
       tags:
         - Cloud Backups
   "/api/atlas/v2/groups/{groupId}/backup/exportBuckets/{exportBucketId}":
     delete:
-      description: Revoke MongoDB Cloud access to the specified AWS S3 Bucket or Azure
-        Blob Storage Container. This prevents this Export Bucket from receiving
-        Atlas Cloud Backup Snapshots. Auto export must be disabled on all
+      description: Deletes an Export Bucket. Auto export must be disabled on all
         clusters in this Project exporting to this Export Bucket before revoking
         access. To use this resource, the requesting API Key must have the
         Project Owner role.
       operationId: deleteExportBucket
       parameters:
         - $ref: "#/components/parameters/groupId"
-        - description: Unique string that identifies the AWS S3 Bucket or Azure Blob
-            Storage Container to which you export your Snapshots.
+        - description: Unique 24-hexadecimal character string that identifies the Export
+            Bucket.
           in: path
           name: exportBucketId
           required: true
@@ -2511,17 +2396,13 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
-      summary: Revoke Access to AWS S3 Bucket or Azure Blob Storage Container for
-        Cloud Backup Snapshot Exports
+      summary: Delete One Snapshot Export Bucket
       tags:
         - Cloud Backups
     get:
-      description: "Returns one AWS S3 Bucket or Azure Blob Storage Container
-        associated with the specified Project. To use this resource, the
-        requesting API Key must have the Project Read Only role. Deprecated
-        versions: v2-{2023-01-01}"
+      description: "Returns one Export Bucket associated with the specified Project.
+        To use this resource, the requesting API Key must have the Project Read
+        Only role. Deprecated versions: v2-{2023-01-01}"
       operationId: getExportBucket
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -2555,16 +2436,16 @@ paths:
                   description: Azure
                   value:
                     _id: 32b6e34b3d91647abb20e7b8
-                    bucketName: export-container
+                    bucketName: exportcontainer
                     cloudProvider: AZURE
                     links:
                       - href: https://cloud.mongodb.com/api/atlas
                         rel: self
                     roleId: 668c5f0ed436263134491592
-                    serviceUrl: https://examplestorageaccount.blob.core.windows.net
+                    serviceUrl: https://examplestorageaccount.blob.core.windows.net/examplecontainer
                     tenantId: 4297fc77-1592-4de8-a6d5-a8c32401df87
               schema:
-                $ref: "#/components/schemas/DiskBackupSnapshotExportBucket"
+                $ref: "#/components/schemas/DiskBackupSnapshotExportBucketResponse"
               x-xgen-version: 2024-05-30
           description: OK
         "401":
@@ -2573,10 +2454,7 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
-      summary: Return One AWS S3 Bucket or Azure Blob Storage Container Used for Cloud
-        Backup Snapshot Exports
+      summary: Return One Snapshot Export Bucket
       tags:
         - Cloud Backups
   "/api/atlas/v2/groups/{groupId}/backupCompliancePolicy":
@@ -2601,8 +2479,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return the Backup Compliance Policy settings
       tags:
         - Cloud Backups
@@ -2644,8 +2520,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Update or enable the Backup Compliance Policy settings
       tags:
         - Cloud Backups
@@ -2669,8 +2543,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Cloud Provider Access Roles
       tags:
         - Cloud Provider Access
@@ -2704,8 +2576,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Create One Cloud Provider Access Role
       tags:
         - Cloud Provider Access
@@ -2745,8 +2615,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Deauthorize One Cloud Provider Access Role
       tags:
         - Cloud Provider Access
@@ -2779,8 +2647,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return specified Cloud Provider Access Role
       tags:
         - Cloud Provider Access
@@ -2788,7 +2654,8 @@ paths:
       description: Grants access to the specified project for the specified access
         role. To use this resource, the requesting API Key must have the Project
         Owner role. This API endpoint is one step in a procedure to create
-        unified access for MongoDB Cloud services.
+        unified access for MongoDB Cloud services. This is not required for GCP
+        service account access.
       externalDocs:
         description: Set Up Access to Cloud Providers
         url: https://www.mongodb.com/docs/atlas/security/cloud-provider-access/
@@ -2827,8 +2694,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Authorize One Cloud Provider Access Role
       tags:
         - Cloud Provider Access
@@ -2865,8 +2730,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Clusters in One Project
       tags:
         - Clusters
@@ -2876,14 +2739,14 @@ paths:
         clusters with asymmetrically-sized shards. Each project supports up to
         25 database deployments. To use this resource, the requesting API Key
         must have the Project Owner role. This feature is not available for
-        serverless clusters. Deprecated versions: v2-{2023-02-01},
-        v2-{2023-01-01}"
+        serverless clusters. Deprecated versions: v2-{2024-08-05},
+        v2-{2023-02-01}, v2-{2023-01-01}"
       operationId: createCluster
       parameters:
         - $ref: "#/components/parameters/groupId"
       requestBody:
         content:
-          application/vnd.atlas.2024-08-05+json:
+          application/vnd.atlas.2024-10-23+json:
             examples:
               Cluster:
                 description: Cluster
@@ -2955,16 +2818,16 @@ paths:
                       zoneName: Zone 1
             schema:
               $ref: "#/components/schemas/ClusterDescription20240805"
-            x-xgen-version: 2024-08-05
-        description: Cluster to create in the specific project.
+            x-xgen-version: 2024-10-23
+        description: Cluster to create in this project.
         required: true
       responses:
         "201":
           content:
-            application/vnd.atlas.2024-08-05+json:
+            application/vnd.atlas.2024-10-23+json:
               schema:
                 $ref: "#/components/schemas/ClusterDescription20240805"
-              x-xgen-version: 2024-08-05
+              x-xgen-version: 2024-10-23
           description: Created
         "400":
           $ref: "#/components/responses/badRequest"
@@ -2978,8 +2841,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Create One Cluster from One Project
       tags:
         - Clusters
@@ -3020,8 +2881,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Cloud Provider Regions
       tags:
         - Clusters
@@ -3060,8 +2919,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Upgrade One Shared-tier Cluster
       tags:
         - Clusters
@@ -3100,8 +2957,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Upgrades One Shared-Tier Cluster to the Serverless Instance
       tags:
         - Clusters
@@ -3146,8 +3001,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Remove One Cluster from One Project
       tags:
         - Clusters
@@ -3186,8 +3039,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Cluster from One Project
       tags:
         - Clusters
@@ -3202,7 +3053,7 @@ paths:
         After this endpoint responds with `paused : false`, you can call it
         again with the changes you want to make to the cluster. This feature is
         not available for serverless clusters. Deprecated versions:
-        v2-{2023-02-01}, v2-{2023-01-01}"
+        v2-{2024-08-05}, v2-{2023-02-01}, v2-{2023-01-01}"
       operationId: updateCluster
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -3217,19 +3068,19 @@ paths:
             pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
       requestBody:
         content:
-          application/vnd.atlas.2024-08-05+json:
+          application/vnd.atlas.2024-10-23+json:
             schema:
               $ref: "#/components/schemas/ClusterDescription20240805"
-            x-xgen-version: 2024-08-05
+            x-xgen-version: 2024-10-23
         description: Cluster to update in the specified project.
         required: true
       responses:
         "200":
           content:
-            application/vnd.atlas.2024-08-05+json:
+            application/vnd.atlas.2024-10-23+json:
               schema:
                 $ref: "#/components/schemas/ClusterDescription20240805"
-              x-xgen-version: 2024-08-05
+              x-xgen-version: 2024-10-23
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
@@ -3241,14 +3092,12 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Modify One Cluster from One Project
       tags:
         - Clusters
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/exports":
     get:
-      description: Returns all Cloud Backup snapshot export jobs associated with the
+      description: Returns all Cloud Backup Snapshot Export Jobs associated with the
         specified Atlas cluster. To use this resource, the requesting API Key
         must have the Project Atlas Admin role.
       operationId: listBackupExportJobs
@@ -3278,13 +3127,11 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
-      summary: Return All Cloud Backup Snapshot Export Jobs
+      summary: Return All Snapshot Export Jobs
       tags:
         - Cloud Backups
     post:
-      description: Exports one backup snapshot for dedicated Atlas cluster using Cloud
+      description: Exports one backup Snapshot for dedicated Atlas cluster using Cloud
         Backups to an Export Bucket. To use this resource, the requesting API
         Key must have the Project Atlas Admin role.
       operationId: createBackupExportJob
@@ -3324,14 +3171,12 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
-      summary: Create One Cloud Backup Snapshot Export Job
+      summary: Create One Snapshot Export Job
       tags:
         - Cloud Backups
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/exports/{exportId}":
     get:
-      description: Returns one Cloud Backup snapshot export job associated with the
+      description: Returns one Cloud Backup Snapshot Export Job associated with the
         specified Atlas cluster. To use this resource, the requesting API Key
         must have the Project Atlas Admin role.
       operationId: getBackupExportJob
@@ -3346,12 +3191,17 @@ paths:
             maxLength: 64
             minLength: 1
             pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
-        - description: Unique string that identifies the export job to return.
+        - description: Unique 24-hexadecimal character string that identifies the Export
+            Job.
           in: path
           name: exportId
           required: true
           schema:
             type: string
+            example: 32b6e34b3d91647abb20e7b8
+            maxLength: 24
+            minLength: 24
+            pattern: ^([a-f0-9]{24})$
       responses:
         "200":
           content:
@@ -3364,9 +3214,7 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
-      summary: Return One Cloud Backup Snapshot Export Job
+      summary: Return One Snapshot Export Job
       tags:
         - Cloud Backups
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/restoreJobs":
@@ -3402,8 +3250,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Restore Jobs for One Cluster
       tags:
         - Cloud Backups
@@ -3453,8 +3299,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Restore One Snapshot of One Cluster
       tags:
         - Cloud Backups
@@ -3499,8 +3343,6 @@ paths:
           $ref: "#/components/responses/methodNotAllowed"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Cancel One Restore Job of One Cluster
       tags:
         - Cloud Backups
@@ -3543,8 +3385,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Restore Job of One Cluster
       tags:
         - Cloud Backups
@@ -3581,8 +3421,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Remove All Cloud Backup Schedules
       tags:
         - Cloud Backups
@@ -3616,8 +3454,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Cloud Backup Schedule
       tags:
         - Cloud Backups
@@ -3665,8 +3501,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Update Cloud Backup Schedule for One Cluster
       tags:
         - Cloud Backups
@@ -3704,8 +3538,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Replica Set Cloud Backups
       tags:
         - Cloud Backups
@@ -3751,8 +3583,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Take One On-Demand Snapshot
       tags:
         - Cloud Backups
@@ -3795,8 +3625,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Remove One Sharded Cluster Cloud Backup
       tags:
         - Cloud Backups
@@ -3840,8 +3668,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Sharded Cluster Cloud Backup
       tags:
         - Cloud Backups
@@ -3876,8 +3702,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Sharded Cluster Cloud Backups
       tags:
         - Cloud Backups
@@ -3921,8 +3745,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Remove One Replica Set Cloud Backup
       tags:
         - Cloud Backups
@@ -3965,8 +3787,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Replica Set Cloud Backup
       tags:
         - Cloud Backups
@@ -4017,8 +3837,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Change Expiration Date for One Cloud Backup
       tags:
         - Cloud Backups
@@ -4068,8 +3886,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Download One M2 or M5 Cluster Snapshot
       tags:
         - Shared-Tier Snapshots
@@ -4119,8 +3935,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Create One Restore Job from One M2 or M5 Cluster
       tags:
         - Shared-Tier Restore Jobs
@@ -4155,8 +3969,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Restore Jobs for One M2 or M5 Cluster
       tags:
         - Shared-Tier Restore Jobs
@@ -4200,8 +4012,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Restore Job for One M2 or M5 Cluster
       tags:
         - Shared-Tier Restore Jobs
@@ -4236,8 +4046,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Snapshots for One M2 or M5 Cluster
       tags:
         - Shared-Tier Snapshots
@@ -4282,8 +4090,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Snapshot for One M2 or M5 Cluster
       tags:
         - Shared-Tier Snapshots
@@ -4321,8 +4127,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Legacy Backup Checkpoints
       tags:
         - Legacy Backup
@@ -4370,8 +4174,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Legacy Backup Checkpoint
       tags:
         - Legacy Backup
@@ -4409,8 +4211,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return Pinned Namespaces
       tags:
         - Collection Level Metrics
@@ -4462,8 +4262,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Add Pinned Namespaces
       tags:
         - Collection Level Metrics
@@ -4516,8 +4314,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Pin Namespaces
       tags:
         - Collection Level Metrics
@@ -4562,8 +4358,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Unpin namespaces
       tags:
         - Collection Level Metrics
@@ -4614,8 +4408,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Create One Atlas Search Index
       tags:
         - Atlas Search
@@ -4671,8 +4463,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Atlas Search Indexes for One Collection
       tags:
         - Atlas Search
@@ -4725,8 +4515,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Remove One Atlas Search Index
       tags:
         - Atlas Search
@@ -4780,8 +4568,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Atlas Search Index
       tags:
         - Atlas Search
@@ -4844,8 +4630,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Update One Atlas Search Index
       tags:
         - Atlas Search
@@ -4884,8 +4668,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Managed Namespace in One Global Cluster
       tags:
         - Global Clusters
@@ -4925,8 +4707,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Remove All Custom Zone Mappings from One Global Cluster
       tags:
         - Global Clusters
@@ -4974,8 +4754,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Add One Entry to One Custom Zone Mapping
       tags:
         - Global Clusters
@@ -5028,8 +4806,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Remove One Managed Namespace from One Global Cluster
       tags:
         - Global Clusters
@@ -5078,8 +4854,6 @@ paths:
           $ref: "#/components/responses/methodNotAllowed"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Create One Managed Namespace in One Global Cluster
       tags:
         - Global Clusters
@@ -5191,8 +4965,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Create One Rolling Index
       tags:
         - Rolling Index
@@ -5232,8 +5004,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Online Archives for One Cluster
       tags:
         - Online Archive
@@ -5282,8 +5052,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Create One Online Archive
       tags:
         - Online Archive
@@ -5366,8 +5134,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Download Online Archive Query Logs
       tags:
         - Online Archive
@@ -5416,8 +5182,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Remove One Online Archive
       tags:
         - Online Archive
@@ -5468,8 +5232,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Online Archive
       tags:
         - Online Archive
@@ -5529,8 +5291,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Update One Online Archive
       tags:
         - Online Archive
@@ -5569,8 +5329,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: End an Outage Simulation
       tags:
         - Cluster Outage Simulation
@@ -5608,8 +5366,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Outage Simulation
       tags:
         - Cluster Outage Simulation
@@ -5652,8 +5408,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Start an Outage Simulation
       tags:
         - Cluster Outage Simulation
@@ -5696,8 +5450,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Advanced Configuration Options for One Cluster
       tags:
         - Clusters
@@ -5750,8 +5502,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Update Advanced Configuration Options for One Cluster
       tags:
         - Clusters
@@ -5786,8 +5536,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Test Failover for One Cluster
       tags:
         - Clusters
@@ -5843,8 +5591,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Legacy Backup Restore Jobs
       tags:
         - Legacy Backup
@@ -5901,8 +5647,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Create One Legacy Backup Restore Job
       tags:
         - Legacy Backup
@@ -5951,8 +5695,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Legacy Backup Restore Job
       tags:
         - Legacy Backup
@@ -5987,8 +5729,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Delete Search Nodes
       tags:
         - Atlas Search
@@ -6021,8 +5761,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return Search Nodes
       tags:
         - Atlas Search
@@ -6064,8 +5802,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Update Search Nodes
       tags:
         - Atlas Search
@@ -6106,8 +5842,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Create Search Nodes
       tags:
         - Atlas Search
@@ -6155,8 +5889,6 @@ paths:
               schema:
                 $ref: "#/components/schemas/ApiError"
           description: Service Unavailable.
-      security:
-        - DigestAuth: []
       summary: Return All Atlas Search Indexes for One Cluster
       tags:
         - Atlas Search
@@ -6205,8 +5937,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Create One Atlas Search Index
       tags:
         - Atlas Search
@@ -6268,8 +5998,6 @@ paths:
               schema:
                 $ref: "#/components/schemas/ApiError"
           description: Service Unavailable.
-      security:
-        - DigestAuth: []
       summary: Return All Atlas Search Indexes for One Collection
       tags:
         - Atlas Search
@@ -6329,8 +6057,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Remove One Atlas Search Index by Name
       tags:
         - Atlas Search
@@ -6390,8 +6116,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Atlas Search Index by Name
       tags:
         - Atlas Search
@@ -6460,8 +6184,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Update One Atlas Search Index By Name
       tags:
         - Atlas Search
@@ -6512,8 +6234,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Remove One Atlas Search Index by Id
       tags:
         - Atlas Search
@@ -6573,8 +6293,6 @@ paths:
               schema:
                 $ref: "#/components/schemas/ApiError"
           description: Service Unavailable.
-      security:
-        - DigestAuth: []
       summary: Return One Atlas Search Index by ID
       tags:
         - Atlas Search
@@ -6635,8 +6353,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Update One Atlas Search Index By ID
       tags:
         - Atlas Search
@@ -6674,8 +6390,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Snapshot Schedule
       tags:
         - Legacy Backup
@@ -6719,8 +6433,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Update Snapshot Schedule for One Cluster
       tags:
         - Legacy Backup
@@ -6773,8 +6485,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Legacy Backup Snapshots
       tags:
         - Legacy Backup
@@ -6828,8 +6538,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Remove One Legacy Backup Snapshot
       tags:
         - Legacy Backup
@@ -6880,8 +6588,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Legacy Backup Snapshot
       tags:
         - Legacy Backup
@@ -6939,8 +6645,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Change One Legacy Backup Snapshot Expiration
       tags:
         - Legacy Backup
@@ -6975,8 +6679,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return Status of All Cluster Operations
       tags:
         - Clusters
@@ -7019,8 +6721,6 @@ paths:
           $ref: "#/components/responses/forbidden"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return Ranked Namespaces from a Cluster
       tags:
         - Collection Level Metrics
@@ -7082,8 +6782,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return Cluster-Level Query Latency
       tags:
         - Collection Level Metrics
@@ -7129,14 +6827,15 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Grant MongoDB employee cluster access for one cluster.
       tags:
         - Clusters
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}:pinFeatureCompatibilityVersion":
     post:
-      description: Pins the FCV to the current MongoDB version.
+      description: Pins the Feature Compatibility Version (FCV) to the current MongoDB
+        version and sets the pin expiration date. If an FCV pin already exists
+        for the cluster, calling this method will only update the expiration
+        date of the existing pin and will not repin the FCV.
       operationId: pinFeatureCompatibilityVersion
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -7174,8 +6873,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Pin FCV for One Cluster from One Project
       tags:
         - Clusters
@@ -7212,14 +6909,12 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Revoke granted MongoDB employee cluster access for one cluster.
       tags:
         - Clusters
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}:unpinFeatureCompatibilityVersion":
     post:
-      description: Unpins the current fixed Feature Compatibility Version. This
+      description: Unpins the current fixed Feature Compatibility Version (FCV). This
         feature is not available for clusters on rapid release.
       operationId: unpinFeatureCompatibilityVersion
       parameters:
@@ -7253,8 +6948,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Unpins FCV for One Cluster from One Project
       tags:
         - Clusters
@@ -7263,17 +6956,16 @@ paths:
       description: "Returns a compressed (.gz) log file that contains a range of log
         messages for the specified host for the specified project. MongoDB
         updates process and audit logs from the cluster backend infrastructure
-        every five minutes and contain log data from the previous five minutes.
-        If you poll the API for log files, we recommend polling every five
-        minutes. For example, if the logs are updated at 4:00 UTC and then you
-        poll the API, the API returns log data from the interval between 3:55
-        UTC and 4:00 UTC. This feature isn't available for `M0` free clusters,
-        `M2`, `M5`, or serverless clusters. To use this resource, the requesting
-        API Key must have the Project Data Access Read Only or higher role. The
-        API does not support direct calls with the json response schema. You
-        must request a gzip response schema using an accept header of the
-        format: \"Accept: application/vnd.atlas.YYYY-MM-DD+gzip\". Deprecated
-        versions: v2-{2023-01-01}"
+        every five minutes. Logs are stored in chunks approximately five minutes
+        in length, but this duration may vary. If you poll the API for log
+        files, we recommend polling every five minutes even though consecutive
+        polls could contain some overlapping logs. This feature isn't available
+        for `M0` free clusters, `M2`, `M5`, or serverless clusters. To use this
+        resource, the requesting API Key must have the Project Data Access Read
+        Only or higher role. The API does not support direct calls with the json
+        response schema. You must request a gzip response schema using an accept
+        header of the format: \"Accept: application/vnd.atlas.YYYY-MM-DD+gzip\".
+        Deprecated versions: v2-{2023-01-01}"
       operationId: getHostLogs
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -7341,8 +7033,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Download Logs for One Cluster Host in One Project
       tags:
         - Monitoring and Logs
@@ -7369,8 +7059,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return all metric names
       tags:
         - Collection Level Metrics
@@ -7410,8 +7098,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Network Peering Containers in One Project for One Cloud
         Provider
       tags:
@@ -7452,8 +7138,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Create One New Network Peering Container
       tags:
         - Network Peering
@@ -7481,8 +7165,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Network Peering Containers in One Project
       tags:
         - Network Peering
@@ -7523,8 +7205,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Remove One Network Peering Container
       tags:
         - Network Peering
@@ -7559,8 +7239,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Network Peering Container
       tags:
         - Network Peering
@@ -7610,8 +7288,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Update One Network Peering Container
       tags:
         - Network Peering
@@ -7636,8 +7312,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Custom Roles in One Project
       tags:
         - Custom Database Roles
@@ -7674,8 +7348,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Create One Custom Role
       tags:
         - Custom Database Roles
@@ -7712,8 +7384,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Remove One Custom Role from One Project
       tags:
         - Custom Database Roles
@@ -7744,8 +7414,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Custom Role in One Project
       tags:
         - Custom Database Roles
@@ -7789,8 +7457,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Update One Custom Role in One Project
       tags:
         - Custom Database Roles
@@ -7822,8 +7488,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Federated Database Instances in One Project
       tags:
         - Data Federation
@@ -7864,8 +7528,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Create One Federated Database Instance in One Project
       tags:
         - Data Federation
@@ -7896,8 +7558,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Remove One Federated Database Instance from One Project
       tags:
         - Data Federation
@@ -7931,8 +7591,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Federated Database Instance in One Project
       tags:
         - Data Federation
@@ -7981,8 +7639,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Update One Federated Database Instance in One Project
       tags:
         - Data Federation
@@ -8017,8 +7673,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Query Limits for One Federated Database Instance
       tags:
         - Data Federation
@@ -8069,8 +7723,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Delete One Query Limit For One Federated Database Instance
       tags:
         - Data Federation
@@ -8121,8 +7773,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Federated Database Instance Query Limit for One Project
       tags:
         - Data Federation
@@ -8184,8 +7834,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Configure One Query Limit for One Federated Database Instance
       tags:
         - Data Federation
@@ -8249,8 +7897,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Download Query Logs for One Federated Database Instance
       tags:
         - Data Federation
@@ -8277,8 +7923,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Database Users from One Project
       tags:
         - Database Users
@@ -8410,8 +8054,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Create One Database User in One Project
       tags:
         - Database Users
@@ -8486,8 +8128,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Remove One Database User from One Project
       tags:
         - Database Users
@@ -8560,8 +8200,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Database User from One Project
       tags:
         - Database Users
@@ -8647,8 +8285,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Update One Database User in One Project
       tags:
         - Database Users
@@ -8685,8 +8321,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All X.509 Certificates Assigned to One MongoDB User
       tags:
         - X.509 Authentication
@@ -8745,8 +8379,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Create One X.509 Certificate for One MongoDB User
       tags:
         - X.509 Authentication
@@ -8824,8 +8456,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return Database Access History for One Cluster using Its Cluster Name
       tags:
         - Access Tracking
@@ -8901,8 +8531,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return Database Access History for One Cluster using Its Hostname
       tags:
         - Access Tracking
@@ -8931,8 +8559,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Configuration for Encryption at Rest using Customer-Managed
         Keys for One Project
       tags:
@@ -8990,8 +8616,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Update Configuration for Encryption at Rest using Customer-Managed Keys
         for One Project
       tags:
@@ -9025,8 +8649,6 @@ paths:
           $ref: "#/components/responses/forbidden"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return Private Endpoints of a Cloud Provider for Encryption at Rest
         Using Customer Key Management for One Project
       tags:
@@ -9063,8 +8685,6 @@ paths:
           $ref: "#/components/responses/forbidden"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Create One Private Endpoint in a Specified Region for Encryption at
         Rest Using Customer Key Management
       tags:
@@ -9105,8 +8725,6 @@ paths:
           $ref: "#/components/responses/forbidden"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Delete Private Endpoint for Encryption at Rest Using Customer Key
         Management
       tags:
@@ -9148,8 +8766,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Private Endpoint for Encryption at Rest Using Customer Key
         Management
       tags:
@@ -9243,8 +8859,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Events from One Project
       tags:
         - Events
@@ -9294,8 +8908,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Event from One Project
       tags:
         - Events
@@ -9322,8 +8934,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Atlas Search Metric Types for One Process
       tags:
         - Monitoring and Logs
@@ -9369,8 +8979,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Atlas Search Index Metrics for One Namespace
       tags:
         - Monitoring and Logs
@@ -9419,8 +9027,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return Atlas Search Metrics for One Index in One Specified Namespace
       tags:
         - Monitoring and Logs
@@ -9470,8 +9076,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return Atlas Search Hardware and Status Metrics
       tags:
         - Monitoring and Logs
@@ -9503,8 +9107,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Active Third-Party Service Integrations
       tags:
         - Third-Party Integrations
@@ -9544,8 +9146,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Remove One Third-Party Service Integration
       tags:
         - Third-Party Integrations
@@ -9581,8 +9181,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Third-Party Service Integration
       tags:
         - Third-Party Integrations
@@ -9632,8 +9230,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Configure One Third-Party Service Integration
       tags:
         - Third-Party Integrations
@@ -9679,8 +9275,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Update One Third-Party Service Integration
       tags:
         - Third-Party Integrations
@@ -9712,12 +9306,10 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Project Invitations
       tags:
         - Projects
-      x-sunset: 2024-11-04
+      x-sunset: 2026-07-31
     patch:
       deprecated: true
       description: Updates the details of one pending invitation to the specified
@@ -9750,12 +9342,10 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Update One Project Invitation
       tags:
         - Projects
-      x-sunset: 2024-11-04
+      x-sunset: 2026-07-31
     post:
       deprecated: true
       description: Invites one MongoDB Cloud user to join the specified project. The
@@ -9784,12 +9374,10 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Invite One MongoDB Cloud User to Join One Project
       tags:
         - Projects
-      x-sunset: 2024-11-04
+      x-sunset: 2026-07-31
   "/api/atlas/v2/groups/{groupId}/invites/{invitationId}":
     delete:
       deprecated: true
@@ -9821,12 +9409,10 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Cancel One Project Invitation
       tags:
         - Projects
-      x-sunset: 2024-11-04
+      x-sunset: 2026-07-31
     get:
       deprecated: true
       description: Returns the details of one pending invitation to the specified
@@ -9858,12 +9444,10 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Project Invitation
       tags:
         - Projects
-      x-sunset: 2024-11-04
+      x-sunset: 2026-07-31
     patch:
       deprecated: true
       description: Updates the details of one pending invitation to the specified
@@ -9907,12 +9491,10 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Update One Project Invitation by Invitation ID
       tags:
         - Projects
-      x-sunset: 2024-11-04
+      x-sunset: 2026-07-31
   "/api/atlas/v2/groups/{groupId}/ipAddresses":
     get:
       description: Returns all IP addresses for this project. To use this resource,
@@ -9934,8 +9516,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All IP Addresses for One Project
       tags:
         - Projects
@@ -9966,8 +9546,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Limits for One Project
       tags:
         - Projects
@@ -10034,8 +9612,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Remove One Project Limit
       tags:
         - Projects
@@ -10101,8 +9677,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Limit for One Project
       tags:
         - Projects
@@ -10179,8 +9753,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Set One Project Limit
       tags:
         - Projects
@@ -10223,8 +9795,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Migrate One Local Managed Cluster to MongoDB Atlas
       tags:
         - Cloud Migration Service
@@ -10264,8 +9834,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Validate One Migration Request
       tags:
         - Cloud Migration Service
@@ -10306,8 +9874,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Migration Validation Job
       tags:
         - Cloud Migration Service
@@ -10336,8 +9902,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Migration Job
       tags:
         - Cloud Migration Service
@@ -10368,8 +9932,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Cut Over the Migrated Cluster
       tags:
         - Cloud Migration Service
@@ -10402,8 +9964,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Reset One Maintenance Window for One Project
       tags:
         - Maintenance Windows
@@ -10432,8 +9992,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Maintenance Window for One Project
       tags:
         - Maintenance Windows
@@ -10473,8 +10031,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Update Maintenance Window for One Project
       tags:
         - Maintenance Windows
@@ -10498,8 +10054,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Toggle Automatic Deferral of Maintenance for One Project
       tags:
         - Maintenance Windows
@@ -10531,8 +10085,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Defer One Maintenance Window for One Project
       tags:
         - Maintenance Windows
@@ -10554,8 +10106,6 @@ paths:
           $ref: "#/components/responses/forbidden"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return Managed Slow MS enabled
       tags:
         - Performance Advisor
@@ -10586,8 +10136,6 @@ paths:
           $ref: "#/components/responses/forbidden"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Disable Managed Slow Operation Threshold
       tags:
         - Performance Advisor
@@ -10618,8 +10166,6 @@ paths:
           $ref: "#/components/responses/forbidden"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Enable Managed Slow Operation Threshold
       tags:
         - Performance Advisor
@@ -10677,8 +10223,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return Available MongoDB LTS Versions for clusters in One Project
       tags:
         - Projects
@@ -10714,8 +10258,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Network Peering Connections in One Project
       tags:
         - Network Peering
@@ -10756,8 +10298,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Create One New Network Peering Connection
       tags:
         - Network Peering
@@ -10795,8 +10335,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Remove One Existing Network Peering Connection
       tags:
         - Network Peering
@@ -10831,8 +10369,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Network Peering Connection in One Project
       tags:
         - Network Peering
@@ -10878,8 +10414,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Update One New Network Peering Connection
       tags:
         - Network Peering
@@ -10907,8 +10441,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Data Lake Pipelines from One Project
       tags:
         - Data Lake Pipelines
@@ -10946,8 +10478,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Create One Data Lake Pipeline
       tags:
         - Data Lake Pipelines
@@ -10982,8 +10512,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Remove One Data Lake Pipeline
       tags:
         - Data Lake Pipelines
@@ -11019,8 +10547,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Data Lake Pipeline
       tags:
         - Data Lake Pipelines
@@ -11065,8 +10591,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Update One Data Lake Pipeline
       tags:
         - Data Lake Pipelines
@@ -11105,8 +10629,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return Available Ingestion Schedules for One Data Lake Pipeline
       tags:
         - Data Lake Pipelines
@@ -11156,8 +10678,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return Available Backup Snapshots for One Data Lake Pipeline
       tags:
         - Data Lake Pipelines
@@ -11194,8 +10714,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Pause One Data Lake Pipeline
       tags:
         - Data Lake Pipelines
@@ -11232,8 +10750,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Resume One Data Lake Pipeline
       tags:
         - Data Lake Pipelines
@@ -11280,8 +10796,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Data Lake Pipeline Runs from One Project
       tags:
         - Data Lake Pipelines
@@ -11327,8 +10841,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Delete Pipeline Run Dataset
       tags:
         - Data Lake Pipelines
@@ -11375,8 +10887,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Data Lake Pipeline Run
       tags:
         - Data Lake Pipelines
@@ -11418,8 +10928,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Trigger on demand snapshot ingestion
       tags:
         - Data Lake Pipelines
@@ -11459,8 +10967,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Create One Private Endpoint Service for One Provider
       tags:
         - Private Endpoint Services
@@ -11487,8 +10993,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return Regionalized Private Endpoint Status
       tags:
         - Private Endpoint Services
@@ -11527,8 +11031,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Toggle Regionalized Private Endpoint Status
       tags:
         - Private Endpoint Services
@@ -11565,8 +11067,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Private Endpoints for One Serverless Instance
       tags:
         - Serverless Private Endpoints
@@ -11613,8 +11113,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Create One Private Endpoint for One Serverless Instance
       tags:
         - Serverless Private Endpoints
@@ -11658,8 +11156,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Remove One Private Endpoint for One Serverless Instance
       tags:
         - Serverless Private Endpoints
@@ -11703,8 +11199,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Private Endpoint for One Serverless Instance
       tags:
         - Serverless Private Endpoints
@@ -11754,8 +11248,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Update One Private Endpoint for One Serverless Instance
       tags:
         - Serverless Private Endpoints
@@ -11790,8 +11282,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Private Endpoint Services for One Provider
       tags:
         - Private Endpoint Services
@@ -11833,8 +11323,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Remove One Private Endpoint Service for One Provider
       tags:
         - Private Endpoint Services
@@ -11877,8 +11365,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Private Endpoint Service for One Provider
       tags:
         - Private Endpoint Services
@@ -11936,8 +11422,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Create One Private Endpoint for One Provider
       tags:
         - Private Endpoint Services
@@ -11990,8 +11474,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Remove One Private Endpoint for One Provider
       tags:
         - Private Endpoint Services
@@ -12044,8 +11526,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Private Endpoint for One Provider
       tags:
         - Private Endpoint Services
@@ -12073,8 +11553,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Verify Connect via Peering Only Mode for One Project
       tags:
         - Network Peering
@@ -12110,8 +11588,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Disable Connect via Peering Only Mode for One Project
       tags:
         - Network Peering
@@ -12143,8 +11619,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Federated Database Instance and Online Archive Private
         Endpoints in One Project
       tags:
@@ -12203,8 +11677,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Create One Federated Database Instance and Online Archive Private
         Endpoint for One Project
       tags:
@@ -12242,8 +11714,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Remove One Federated Database Instance and Online Archive Private
         Endpoint from One Project
       tags:
@@ -12283,8 +11753,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Federated Database Instance and Online Archive Private
         Endpoint in One Project
       tags:
@@ -12312,8 +11780,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All MongoDB Processes in One Project
       tags:
         - Monitoring and Logs
@@ -12350,8 +11816,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One MongoDB Process by ID
       tags:
         - Monitoring and Logs
@@ -12378,8 +11842,6 @@ paths:
           $ref: "#/components/responses/forbidden"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return Ranked Namespaces from a Host
       tags:
         - Collection Level Metrics
@@ -12422,8 +11884,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return Available Databases for One MongoDB Process
       tags:
         - Monitoring and Logs
@@ -12467,8 +11927,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Database for a MongoDB Process
       tags:
         - Monitoring and Logs
@@ -12539,8 +11997,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return Measurements of One Database for One MongoDB Process
       tags:
         - Monitoring and Logs
@@ -12580,8 +12036,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return Available Disks for One MongoDB Process
       tags:
         - Monitoring and Logs
@@ -12625,8 +12079,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return Measurements of One Disk
       tags:
         - Monitoring and Logs
@@ -12702,8 +12154,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return Measurements of One Disk for One MongoDB Process
       tags:
         - Monitoring and Logs
@@ -12775,8 +12225,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return Measurements for One MongoDB Process
       tags:
         - Monitoring and Logs
@@ -12843,8 +12291,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Namespaces for One Host
       tags:
         - Performance Advisor
@@ -12935,8 +12381,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return Slow Queries
       tags:
         - Performance Advisor
@@ -13032,8 +12476,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return Suggested Indexes
       tags:
         - Performance Advisor
@@ -13077,8 +12519,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return Host-Level Query Latency
       tags:
         - Collection Level Metrics
@@ -13105,8 +12545,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Disable the push-based log export feature for a project
       tags:
         - Push-Based Log Export
@@ -13132,8 +12570,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Get the push-based log export configuration for a project
       tags:
         - Push-Based Log Export
@@ -13168,8 +12604,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Update the push-based log export feature for a project
       tags:
         - Push-Based Log Export
@@ -13204,8 +12638,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Enable the push-based log export feature for a project
       tags:
         - Push-Based Log Export
@@ -13243,8 +12675,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Load Sample Dataset Request into Cluster
       tags:
         - Clusters
@@ -13278,8 +12708,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Check Status of Cluster Sample Dataset Request
       tags:
         - Clusters
@@ -13306,8 +12734,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Serverless Instances from One Project
       tags:
         - Serverless Instances
@@ -13340,8 +12766,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Create One Serverless Instance in One Project
       tags:
         - Serverless Instances
@@ -13379,8 +12803,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Restore Jobs for One Serverless Instance
       tags:
         - Cloud Backups
@@ -13427,8 +12849,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Restore One Snapshot of One Serverless Instance
       tags:
         - Cloud Backups
@@ -13473,8 +12893,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Restore Job for One Serverless Instance
       tags:
         - Cloud Backups
@@ -13512,8 +12930,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Snapshots of One Serverless Instance
       tags:
         - Cloud Backups
@@ -13559,8 +12975,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Snapshot of One Serverless Instance
       tags:
         - Cloud Backups
@@ -13591,8 +13005,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return Serverless Auto Indexing Enabled
       tags:
         - Performance Advisor
@@ -13628,8 +13040,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Set Serverless Auto Indexing
       tags:
         - Performance Advisor
@@ -13667,8 +13077,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Remove One Serverless Instance from One Project
       tags:
         - Serverless Instances
@@ -13704,8 +13112,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Serverless Instance from One Project
       tags:
         - Serverless Instances
@@ -13745,8 +13151,6 @@ paths:
           $ref: "#/components/responses/paymentRequired"
         "409":
           $ref: "#/components/responses/conflict"
-      security:
-        - DigestAuth: []
       summary: Update One Serverless Instance in One Project
       tags:
         - Serverless Instances
@@ -13773,8 +13177,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Project Settings
       tags:
         - Projects
@@ -13809,8 +13211,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Update One Project Settings
       tags:
         - Projects
@@ -13834,8 +13234,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Project Stream Instances
       tags:
         - Streams
@@ -13870,14 +13268,148 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Create One Stream Instance
       tags:
         - Streams
       x-xgen-changelog:
         2023-09-11: The MongoDB Atlas Streams Processing API is now exposed as part of
           private preview, but is subject to change until GA.
+  "/api/atlas/v2/groups/{groupId}/streams/privateLinkConnections":
+    get:
+      description: Returns all Private Link connections for the specified project.To
+        use this resource, the requesting API Key must have the Project Data
+        Access roles, Project Owner role or Project Stream Processing Owner
+        role.
+      operationId: listPrivateLinkConnections
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - $ref: "#/components/parameters/itemsPerPage"
+        - $ref: "#/components/parameters/pageNum"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-02-01+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedApiStreamsPrivateLink"
+              x-xgen-version: 2023-02-01
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return All Private Link
+      tags:
+        - Streams
+      x-xgen-changelog:
+        2024-10-02: The MongoDB Atlas Streams Processing Private Link API is now exposed
+          as part of private preview, but is subject to change until GA.
+    post:
+      description: Creates one Private Link in the specified project. To use this
+        resource, the requesting API Key must have the Project Owner or Project
+        Stream Processing Owner role.
+      operationId: createPrivateLinkConnection
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+      requestBody:
+        content:
+          application/vnd.atlas.2023-02-01+json:
+            schema:
+              $ref: "#/components/schemas/StreamsPrivateLinkConnection"
+        description: Details to create one Private Link connection for a project. project.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-02-01+json:
+              schema:
+                $ref: "#/components/schemas/StreamsPrivateLinkConnection"
+              x-xgen-version: 2023-02-01
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "409":
+          $ref: "#/components/responses/unauthorized"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Create One Private Link connection
+      tags:
+        - Streams
+      x-xgen-changelog:
+        2024-10-02: The MongoDB Atlas Streams Processing Private Link API is now exposed
+          as part of private preview, but is subject to change until GA.
+  "/api/atlas/v2/groups/{groupId}/streams/privateLinkConnections/{connectionId}":
+    delete:
+      description: Deletes one Private Link in the specified project. To use this
+        resource, the requesting API Key must have the Project Owner or Project
+        Stream Processing Owner role.
+      operationId: deletePrivateLinkConnection
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Unique ID that identifies the Private Link connection.
+          in: path
+          name: connectionId
+          required: true
+          schema:
+            type: string
+      responses:
+        "202":
+          content:
+            application/vnd.atlas.2023-02-01+json:
+              schema:
+                $ref: "#/components/schemas/NoBody"
+              x-xgen-version: 2023-02-01
+          description: Accepted
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Delete One Private Link connection
+      tags:
+        - Streams
+      x-xgen-changelog:
+        2024-10-02: The MongoDB Atlas Streams Processing Private Link API is now exposed
+          as part of private preview, but is subject to change until GA.
+    get:
+      description: Returns the details of one Private Link connection within the
+        project. To use this resource, the requesting API Key must have the
+        Project Read Only role.
+      operationId: getPrivateLinkConnection
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Unique ID that identifies the Private Link connection.
+          in: path
+          name: connectionId
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-02-01+json:
+              schema:
+                $ref: "#/components/schemas/StreamsPrivateLinkConnection"
+              x-xgen-version: 2023-02-01
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return One PrivateLink Connection
+      tags:
+        - Streams
+      x-xgen-changelog:
+        2024-10-02: The MongoDB Atlas Streams Processing Private Link API is now exposed
+          as part of private preview, but is subject to change until GA.
   "/api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections":
     get:
       description: Returns a list of incoming VPC Peering Connections.
@@ -13896,8 +13428,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All VPC Peering Connections.
       tags:
         - Streams
@@ -13929,8 +13459,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Deletes an incoming VPC Peering connection.
       tags:
         - Streams
@@ -13970,8 +13498,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Requests the acceptance of an incoming VPC Peering connection.
       tags:
         - Streams
@@ -14003,8 +13529,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Requests the rejection of an incoming VPC Peering connection.
       tags:
         - Streams
@@ -14038,8 +13562,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Delete One Stream Instance
       tags:
         - Streams
@@ -14082,8 +13604,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Stream Instance
       tags:
         - Streams
@@ -14129,8 +13649,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Update One Stream Instance
       tags:
         - Streams
@@ -14197,8 +13715,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Download Audit Logs for One Atlas Stream Processing Instance
       tags:
         - Streams
@@ -14233,8 +13749,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Connections Of The Stream Instances
       tags:
         - Streams
@@ -14278,8 +13792,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Create One Connection
       tags:
         - Streams
@@ -14322,8 +13834,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Delete One Stream Connection
       tags:
         - Streams
@@ -14363,8 +13873,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Stream Connection
       tags:
         - Streams
@@ -14416,8 +13924,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Update One Stream Connection
       tags:
         - Streams
@@ -14461,8 +13967,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Create One Stream Processor
       tags:
         - Streams
@@ -14500,8 +14004,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Delete One Stream Processor
       tags:
         - Streams
@@ -14540,8 +14042,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Get One Stream Processor
       tags:
         - Streams
@@ -14581,8 +14081,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Start One Stream Processor
       tags:
         - Streams
@@ -14622,8 +14120,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Stop One Stream Processor
       tags:
         - Streams
@@ -14660,8 +14156,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Stream Processors In The Stream Instance.
       tags:
         - Streams
@@ -14695,8 +14189,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Create One Stream Instance With Sample Connections
       tags:
         - Streams
@@ -14730,8 +14222,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Teams in One Project
       tags:
         - Teams
@@ -14774,8 +14264,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Add One or More Teams to One Project
       tags:
         - Teams
@@ -14817,8 +14305,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Remove One Team from One Project
       tags:
         - Teams
@@ -14869,8 +14355,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Update Team Roles in One Project
       tags:
         - Teams
@@ -14894,8 +14378,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return the Current LDAP or X.509 Configuration
       tags:
         - LDAP Configuration
@@ -14930,8 +14412,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Edit the LDAP or X.509 Configuration
       tags:
         - LDAP Configuration
@@ -14957,8 +14437,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Disable Customer-Managed X.509
       tags:
         - X.509 Authentication
@@ -14983,8 +14461,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Remove the Current LDAP User to DN Mapping
       tags:
         - LDAP Configuration
@@ -15017,8 +14493,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Verify the LDAP Configuration in One Project
       tags:
         - LDAP Configuration
@@ -15053,8 +14527,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return the Status of One Verify LDAP Configuration Request
       tags:
         - LDAP Configuration
@@ -15106,8 +14578,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Users in One Project
       tags:
         - Projects
@@ -15144,8 +14614,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Remove One User from One Project
       tags:
         - Projects
@@ -15191,8 +14659,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Update Project Roles for One MongoDB Cloud User
       tags:
         - Projects
@@ -15230,8 +14696,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Migrate One Project to Another Organization
       tags:
         - Projects
@@ -15270,8 +14734,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Organizations
       tags:
         - Organizations
@@ -15312,8 +14774,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Create One Organization
       tags:
         - Organizations
@@ -15349,8 +14809,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Remove One Organization
       tags:
         - Organizations
@@ -15379,8 +14837,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Organization
       tags:
         - Organizations
@@ -15415,8 +14871,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Rename One Organization
       tags:
         - Organizations
@@ -15448,8 +14902,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Organization API Keys
       tags:
         - Programmatic API Keys
@@ -15483,8 +14935,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Create One Organization API Key
       tags:
         - Programmatic API Keys
@@ -15522,8 +14972,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Remove One Organization API Key
       tags:
         - Programmatic API Keys
@@ -15560,8 +15008,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Organization API Key
       tags:
         - Programmatic API Keys
@@ -15608,8 +15054,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Update One Organization API Key
       tags:
         - Programmatic API Keys
@@ -15650,8 +15094,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Access List Entries for One Organization API Key
       tags:
         - Programmatic API Keys
@@ -15703,8 +15145,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Create Access List Entries for One Organization API Key
       tags:
         - Programmatic API Keys
@@ -15760,8 +15200,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Remove One Access List Entry for One Organization API Key
       tags:
         - Programmatic API Keys
@@ -15813,8 +15251,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Access List Entry for One Organization API Key
       tags:
         - Programmatic API Keys
@@ -15847,8 +15283,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Create Cost Explorer query process
       tags:
         - Invoices
@@ -15892,8 +15326,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return results from a given Cost Explorer query, or notify that the
         results are not ready yet.
       tags:
@@ -15964,8 +15396,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Events from One Organization
       tags:
         - Events
@@ -16016,8 +15446,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Event from One Organization
       tags:
         - Events
@@ -16045,8 +15473,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return Federation Settings for One Organization
       tags:
         - Federated Authentication
@@ -16096,8 +15522,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One or More Projects in One Organization
       tags:
         - Organizations
@@ -16135,8 +15559,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Organization Invitations
       tags:
         - Organizations
@@ -16172,8 +15594,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Update One Organization Invitation
       tags:
         - Organizations
@@ -16208,8 +15628,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Invite One MongoDB Cloud User to Join One Atlas Organization
       tags:
         - Organizations
@@ -16244,8 +15662,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Cancel One Organization Invitation
       tags:
         - Organizations
@@ -16281,8 +15697,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Organization Invitation
       tags:
         - Organizations
@@ -16329,8 +15743,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Update One Organization Invitation by Invitation ID
       tags:
         - Organizations
@@ -16415,8 +15827,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Invoices for One Organization
       tags:
         - Invoices
@@ -16445,8 +15855,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Pending Invoices for One Organization
       tags:
         - Invoices
@@ -16494,8 +15902,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Organization Invoice
       tags:
         - Invoices
@@ -16547,8 +15953,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Organization Invoice as CSV
       tags:
         - Invoices
@@ -16595,8 +15999,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Query lineItems of the specified invoiceId
       tags:
         - Invoices
@@ -16622,8 +16024,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Projects Available for Migration
       tags:
         - Cloud Migration Service
@@ -16651,8 +16051,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Remove One Link-Token
       tags:
         - Cloud Migration Service
@@ -16686,8 +16084,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Create One Link-Token
       tags:
         - Cloud Migration Service
@@ -16718,8 +16114,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return all non-compliant resources
       tags:
         - Resource Policies
@@ -16750,8 +16144,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return all Atlas Resource Policies
       tags:
         - Resource Policies
@@ -16792,8 +16184,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Create one Atlas Resource Policy
       tags:
         - Resource Policies
@@ -16836,8 +16226,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Delete one Atlas Resource Policy
       tags:
         - Resource Policies
@@ -16879,8 +16267,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return one Atlas Resource Policy
       tags:
         - Resource Policies
@@ -16935,8 +16321,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Update one Atlas Resource Policy
       tags:
         - Resource Policies
@@ -16978,8 +16362,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Validate one Atlas Resource Policy
       tags:
         - Resource Policies
@@ -17007,8 +16389,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return Settings for One Organization
       tags:
         - Organizations
@@ -17033,6 +16413,8 @@ paths:
                 $ref: "#/components/schemas/OrganizationSettings"
               x-xgen-version: 2023-01-01
           description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
         "403":
@@ -17041,8 +16423,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Update Settings for One Organization
       tags:
         - Organizations
@@ -17077,8 +16457,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All Teams in One Organization
       tags:
         - Teams
@@ -17119,8 +16497,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Create One Team in One Organization
       tags:
         - Teams
@@ -17158,8 +16534,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Team using its Name
       tags:
         - Teams
@@ -17201,8 +16575,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Remove One Team from One Organization
       tags:
         - Teams
@@ -17244,8 +16616,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One Team using its ID
       tags:
         - Teams
@@ -17294,8 +16664,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Rename One Team
       tags:
         - Teams
@@ -17342,8 +16710,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All MongoDB Cloud Users Assigned to One Team
       tags:
         - Teams
@@ -17397,8 +16763,6 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Assign MongoDB Cloud Users from One Organization to One Team
       tags:
         - Teams
@@ -17448,8 +16812,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Remove One MongoDB Cloud User from One Team
       tags:
         - Teams
@@ -17482,8 +16844,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return All MongoDB Cloud Users in One Organization
       tags:
         - Organizations
@@ -17523,8 +16883,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Remove One MongoDB Cloud User From One Organization
       tags:
         - Organizations
@@ -17571,18 +16929,12 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Update Organization Roles for One MongoDB Cloud User
       tags:
         - Organizations
   /api/atlas/v2/unauth/controlPlaneIPAddresses:
     get:
-      description: Returns all control plane IP addresses. Currently, inbound Atlas
-        control plane IP addresses are not yet available. The inbound IP address
-        list in your API response is empty. To manually retrieve a list of
-        inbound Atlas control plane IP addresses, see [Required Inbound
-        Access](https://www.mongodb.com/docs/atlas/setup-cluster-security/#std-label-atlas-required-inbound-access).
+      description: Returns all control plane IP addresses.
       operationId: returnAllControlPlaneIPAddresses
       parameters: []
       responses:
@@ -17595,6 +16947,7 @@ paths:
           description: OK
         "500":
           $ref: "#/components/responses/internalServerError"
+      security: []
       summary: Return All Control Plane IP Addresses
       tags:
         - Root
@@ -17634,8 +16987,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Create One MongoDB Cloud User
       tags:
         - MongoDB Cloud Users
@@ -17671,8 +17022,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One MongoDB Cloud User using Their Username
       tags:
         - MongoDB Cloud Users
@@ -17712,8 +17061,6 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
       summary: Return One MongoDB Cloud User using Its ID
       tags:
         - MongoDB Cloud Users
@@ -18753,16 +18100,23 @@ components:
           description: HTTP status code returned with this error.
           externalDocs:
             url: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
+          readOnly: true
         errorCode:
           type: string
           description: Application error code returned with this error.
+          readOnly: true
         parameters:
           type: array
           description: Parameters used to give more information about the error.
           items: {}
+          readOnly: true
         reason:
           type: string
           description: Application error message returned with this error.
+          readOnly: true
+      required:
+        - error
+        - errorCode
     ApiHostView_Atlas:
       type: object
       properties:
@@ -19339,13 +18693,16 @@ components:
         keyVaultName:
           type: string
           description: Unique string that identifies the Azure Key Vault that contains
-            your key.
+            your key. This field cannot be modified when you enable and set up
+            private endpoint connections to your Azure Key Vault.
         requirePrivateNetworking:
           type: boolean
           description: Enable connection to your Azure Key Vault over private networking.
         resourceGroupName:
           type: string
-          description: Name of the Azure resource group that contains your Azure Key Vault.
+          description: Name of the Azure resource group that contains your Azure Key
+            Vault. This field cannot be modified when you enable and set up
+            private endpoint connections to your Azure Key Vault.
         secret:
           type: string
           description: Private data that you need secured and that belongs to the
@@ -19361,7 +18718,8 @@ components:
           type: string
           format: uuid
           description: Unique 36-hexadecimal character string that identifies your Azure
-            subscription.
+            subscription. This field cannot be modified when you enable and set
+            up private endpoint connections to your Azure Key Vault.
         tenantID:
           type: string
           format: uuid
@@ -20255,6 +19613,7 @@ components:
           description: Describes all violations in a client request.
           items:
             $ref: "#/components/schemas/FieldViolation"
+      readOnly: true
     BaseAtlasDataLakeRegion:
       type: string
       description: Name of the region to which the data lake routes client connections.
@@ -21503,14 +20862,14 @@ components:
         createdDate:
           type: string
           format: date-time
-          description: Date and time when this Azure Service Principal was created. This
+          description: Date and time when this Google Service Account was created. This
             parameter expresses its value in the ISO 8601 timestamp format in
             UTC.
           readOnly: true
         featureUsages:
           type: array
-          description: List that contains application features associated with this Azure
-            Service Principal.
+          description: List that contains application features associated with this Google
+            Service Account.
           items:
             $ref: "#/components/schemas/CloudProviderAccessFeatureUsage"
           readOnly: true
@@ -21563,6 +20922,12 @@ components:
           maxLength: 36
           minLength: 32
           pattern: ^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$
+        gcpServiceAccountForAtlas:
+          type: string
+          description: Email address for the Google Service Account created by Atlas.
+          maxLength: 82
+          minLength: 57
+          pattern: ^mongodb-atlas-[0-9a-z]{16}@p-[0-9a-z]{24}.iam.gserviceaccount.com$
       required:
         - providerName
     CloudProviderAccessRoleRequest:
@@ -21597,24 +20962,20 @@ components:
         createdDate:
           type: string
           format: date-time
-          description: Date and time when this Azure Service Principal was created. This
+          description: Date and time when this GCP Service Account was created. This
             parameter expresses its value in the ISO 8601 timestamp format in
             UTC.
           readOnly: true
         featureUsages:
           type: array
-          description: List that contains application features associated with this Azure
-            Service Principal.
+          description: List that contains application features associated with this GCP
+            Service Account.
           items:
             $ref: "#/components/schemas/CloudProviderAccessFeatureUsage"
           readOnly: true
         roleId:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the role.
-          example: 32b6e34b3d91647abb20e7b8
-          maxLength: 24
-          minLength: 24
-          pattern: ^([a-f0-9]{24})$
           readOnly: true
         _id:
           type: string
@@ -21649,6 +21010,10 @@ components:
           maxLength: 36
           minLength: 32
           pattern: ^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$
+        gcpServiceAccountForAtlas:
+          type: string
+          description: ID string that identifies the GCP Service Account used by Atlas.
+          readOnly: true
       required:
         - providerName
     CloudProviderAccessRoleRequestUpdate:
@@ -22110,7 +21475,11 @@ components:
               identifies an Amazon Web Services (AWS) interface endpoint. Each
               value identifies the related `mongodb://` connection string that
               you use to connect to Atlas through the interface endpoint that
-              the key names.
+              the key names. If the cluster uses an optimized connection string,
+              `awsPrivateLinkSrv` contains the optimized connection string. If
+              the cluster has the non-optimized (legacy) connection string,
+              `awsPrivateLinkSrv` contains the non-optimized connection string
+              even if an optimized connection string is also present.
             externalDocs:
               description: Network Peering Connection
               url: https://docs.atlas.mongodb.com/security-vpc-peering/#std-label-vpc-peering/
@@ -22120,7 +21489,11 @@ components:
             identifies an Amazon Web Services (AWS) interface endpoint. Each
             value identifies the related `mongodb://` connection string that you
             use to connect to Atlas through the interface endpoint that the key
-            names.
+            names. If the cluster uses an optimized connection string,
+            `awsPrivateLinkSrv` contains the optimized connection string. If the
+            cluster has the non-optimized (legacy) connection string,
+            `awsPrivateLinkSrv` contains the non-optimized connection string
+            even if an optimized connection string is also present.
           externalDocs:
             description: Network Peering Connection
             url: https://docs.atlas.mongodb.com/security-vpc-peering/#std-label-vpc-peering/
@@ -24017,10 +23390,7 @@ components:
               where the files to include in the results are stored.
         bucket:
           type: string
-          description: Human-readable label that identifies the AWS S3 bucket. This label
-            must exactly match the name of an S3 bucket that the data lake can
-            access with the configured AWS Identity and Access Management (IAM)
-            credentials.
+          description: Human-readable label that identifies the Google Cloud Storage bucket.
         delimiter:
           type: string
           description: Delimiter.
@@ -24038,15 +23408,14 @@ components:
         public:
           type: boolean
           default: false
-          description: Flag that indicates whether the blob store is public. If set to
-            `true`, MongoDB Cloud doesn't use the configured Azure service
-            principal to access the blob store. If set to `false`, the
-            configured Azure service principal must include permissions to
-            access the blob store.
+          description: Flag that indicates whether the bucket is public. If set to `true`,
+            MongoDB Cloud doesn't use the configured GCP service account to
+            access the bucket. If set to `false`, the configured GCP service
+            acccount must include permissions to access the bucket.
         region:
           type: string
-          description: Microsoft Azure Regions.
-          title: Azure Regions
+          description: Google Cloud Platform Regions.
+          title: GCP Regions
         clusterName:
           type: string
           description: Human-readable label of the MongoDB Cloud cluster on which the
@@ -24614,30 +23983,20 @@ components:
         createdAt:
           type: string
           format: date-time
-          description: Date and time when someone created this export job. MongoDB Cloud
-            represents this timestamp in ISO 8601 format in UTC.
+          description: Date and time when a user or Atlas created the Export Job. MongoDB
+            Cloud represents this timestamp in ISO 8601 format in UTC.
           readOnly: true
         customData:
           type: array
           description: Collection of key-value pairs that represent custom data for the
-            metadata file that MongoDB Cloud uploads to the bucket when the
-            export job finishes.
+            metadata file that MongoDB Cloud uploads when the Export Job
+            finishes.
           items:
             $ref: "#/components/schemas/BackupLabel"
-        deliveryUrl:
-          type: array
-          description: 'One or more Uniform Resource Locators (URLs) that point to the
-            compressed snapshot files for manual download. MongoDB Cloud returns
-            this parameter when `"deliveryType" : "download"`.'
-          items:
-            type: string
-            description: One Uniform Resource Locator that points to the compressed snapshot
-              files for manual download.
-          readOnly: true
         exportBucketId:
           type: string
           description: Unique 24-hexadecimal character string that identifies the Export
-            Bucket to export to.
+            Bucket.
           example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
@@ -24648,7 +24007,7 @@ components:
         finishedAt:
           type: string
           format: date-time
-          description: Date and time when this export job completed. MongoDB Cloud
+          description: Date and time when this Export Job completed. MongoDB Cloud
             represents this timestamp in ISO 8601 format in UTC.
           readOnly: true
         id:
@@ -24673,8 +24032,8 @@ components:
           readOnly: true
         prefix:
           type: string
-          description: Full path on the cloud provider bucket to the folder where the
-            snapshot is exported.
+          description: Prefix used for all blob storage objects uploaded as part of the
+            Export Job.
           pattern: /exported_snapshots/\{ORG-NAME\}/\{PROJECT-NAME\}/\{CLUSTER-NAME\}/\{SNAPSHOT-INITIATION-DATE\}/\{TIMESTAMP\}
           readOnly: true
         snapshotId:
@@ -24686,7 +24045,7 @@ components:
           pattern: ^([a-f0-9]{24})$
         state:
           type: string
-          description: State of the export job.
+          description: State of the Export Job.
           readOnly: true
       required:
         - exportBucketId
@@ -24703,7 +24062,7 @@ components:
         exportBucketId:
           type: string
           description: Unique 24-hexadecimal character string that identifies the Export
-            Bucket to export to.
+            Bucket.
           example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
@@ -25196,7 +24555,74 @@ components:
             pattern: ^([a-f0-9]{24})$
             readOnly: true
           readOnly: true
-    DiskBackupSnapshotExportBucket:
+    DiskBackupSnapshotExportBucketRequest:
+      type: object
+      description: Disk backup snapshot Export Bucket Request.
+      properties:
+        bucketName:
+          type: string
+          deprecated: true
+          description: "The name of the Azure Storage Container to export to. Deprecated:
+            provide the Container's URL in serviceUrl instead."
+          example: export-container
+          maxLength: 63
+          minLength: 3
+        cloudProvider:
+          type: string
+          description: Human-readable label that identifies the cloud provider that
+            Snapshots are exported to.
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        iamRoleId:
+          type: string
+          description: Unique 24-hexadecimal character string that identifies the <a
+            href='https://www.mongodb.com/docs/atlas/security/set-up-unified-aws-access/'
+            target='_blank'>Unified AWS Access role ID</a>  that MongoDB Cloud
+            uses to access the AWS S3 bucket.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+        roleId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the Azure Cloud
+            Provider Access Role that MongoDB Cloud uses to access the Azure
+            Blob Storage Container.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+        serviceUrl:
+          type: string
+          description: 'URL of the Azure Storage Account to export to. For example:
+            "https://examplestorageaccount.blob.core.windows.net". Only standard
+            endpoints (with "blob.core.windows.net") are supported.'
+          example: https://examplestorageaccount.blob.core.windows.net
+          maxLength: 2048
+          minLength: 33
+        tenantId:
+          type: string
+          deprecated: true
+          description: "UUID that identifies the Azure Active Directory Tenant ID.
+            Deprecated: this field is ignored; the tenantId of the Cloud
+            Provider Access role (from roleId) is used."
+          example: 4297fc77-1592-4de8-a6d5-a8c32401df87
+          maxLength: 36
+          minLength: 36
+          pattern: ^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$
+      required:
+        - bucketName
+        - cloudProvider
+    DiskBackupSnapshotExportBucketResponse:
       type: object
       description: Disk backup snapshot Export Bucket.
       properties:
@@ -25208,11 +24634,10 @@ components:
           maxLength: 24
           minLength: 24
           pattern: ^([a-f0-9]{24})$
-          readOnly: true
         bucketName:
           type: string
-          description: Human-readable label that identifies the AWS S3 Bucket or Azure
-            Storage Container that the role is authorized to export to.
+          description: The name of the AWS S3 Bucket or Azure Storage Container that
+            Snapshots are exported to.
           example: export-bucket
           maxLength: 63
           minLength: 3
@@ -25243,28 +24668,30 @@ components:
           pattern: ^([a-f0-9]{24})$
         roleId:
           type: string
-          description: Unique 24-hexadecimal digit string that identifies the Azure
-            Service Principal that MongoDB Cloud uses to access the Azure Blob
-            Storage Container.
+          description: Unique 24-hexadecimal digit string that identifies the Azure Cloud
+            Provider Access Role that MongoDB Cloud uses to access the Azure
+            Blob Storage Container.
           example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
           pattern: ^([a-f0-9]{24})$
         serviceUrl:
           type: string
-          description: URL that identifies the blob Endpoint of the Azure Blob Storage
-            Account.
+          description: URL of the Azure Storage Account to export to. Only standard
+            endpoints (with "blob.core.windows.net") are supported.
           example: https://examplestorageaccount.blob.core.windows.net
-          maxLength: 55
+          maxLength: 2048
           minLength: 33
         tenantId:
           type: string
-          description: UUID that identifies the Azure Active Directory Tenant ID.
+          description: UUID that identifies the Azure Active Directory Tenant ID used
+            during exports.
           example: 4297fc77-1592-4de8-a6d5-a8c32401df87
           maxLength: 36
           minLength: 36
           pattern: ^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$
       required:
+        - _id
         - bucketName
         - cloudProvider
     DiskBackupSnapshotRestoreJob:
@@ -26144,7 +25571,7 @@ components:
           readOnly: true
     ExportStatus:
       type: object
-      description: State of the export job for the collections on the replica set only.
+      description: State of the Export Job.
       properties:
         exportedCollections:
           type: integer
@@ -26579,6 +26006,9 @@ components:
         field:
           type: string
           description: A path that leads to a field in the request body.
+      required:
+        - description
+        - field
     FreeComputeAutoScalingRules:
       type: object
       description: Collection of settings that configures how a cluster might scale
@@ -28122,12 +27552,14 @@ components:
             On creation: Choose from the available versions of MongoDB, or leave unspecified for the current recommended default in the MongoDB Cloud platform. The recommended version is a recent Long Term Support version. The default is not guaranteed to be the most recently released version throughout the entire release cycle. For versions available in a specific project, see the linked documentation or use the API endpoint for [project LTS versions endpoint](#tag/Projects/operation/getProjectLTSVersions).
 
              On update: Increase version only by 1 major version at a time. If the cluster is pinned to a MongoDB feature compatibility version exactly one major version below the current MongoDB version, the MongoDB version can be downgraded to the previous major version.
+          example: "5.0"
           externalDocs:
             description: Available MongoDB Versions in Atlas
             url: https://www.mongodb.com/docs/atlas/reference/faq/database/#which-versions-of-mongodb-do-service-clusters-use-
         mongoDBVersion:
           type: string
           description: Version of MongoDB that the cluster runs.
+          example: 5.0.25
           pattern: ([\d]+\.[\d]+\.[\d]+)
         mongoURI:
           type: string
@@ -28446,12 +27878,14 @@ components:
             On creation: Choose from the available versions of MongoDB, or leave unspecified for the current recommended default in the MongoDB Cloud platform. The recommended version is a recent Long Term Support version. The default is not guaranteed to be the most recently released version throughout the entire release cycle. For versions available in a specific project, see the linked documentation or use the API endpoint for [project LTS versions endpoint](#tag/Projects/operation/getProjectLTSVersions).
 
              On update: Increase version only by 1 major version at a time. If the cluster is pinned to a MongoDB feature compatibility version exactly one major version below the current MongoDB version, the MongoDB version can be downgraded to the previous major version.
+          example: "5.0"
           externalDocs:
             description: Available MongoDB Versions in Atlas
             url: https://www.mongodb.com/docs/atlas/reference/faq/database/#which-versions-of-mongodb-do-service-clusters-use-
         mongoDBVersion:
           type: string
           description: Version of MongoDB that the cluster runs.
+          example: 5.0.25
           pattern: ([\d]+\.[\d]+\.[\d]+)
         mongoURI:
           type: string
@@ -29880,6 +29314,13 @@ components:
             more, see:
             https://www.mongodb.com/docs/atlas/security-restrict-support-access\
             /."
+        securityContact:
+          type: string
+          description: String that specifies a single email address for the specified
+            organization to receive security-related notifications. Specifying a
+            security contact does not grant them authorization or access to
+            Atlas for security decisions or approvals. An empty string is valid
+            and clears the existing security contact (if any).
     OutboundControlPlaneCloudProviderIPAddresses:
       type: object
       description: List of outbound IP addresses from the Atlas control plane,
@@ -30383,12 +29824,23 @@ components:
     PrivateNetworkEndpointIdEntry:
       type: object
       properties:
+        azureConnectionName:
+          type: string
+          description: Connection name that identifies the Azure private endpoint
+            connection.
+        azureLinkId:
+          type: string
+          description: Link ID that identifies the Azure private endpoint connection.
         comment:
           type: string
           description: Human-readable string to associate with this private endpoint.
         customerEndpointDNSName:
           type: string
           description: Human-readable label to identify customer's VPC endpoint DNS name.
+        customerEndpointIPAddress:
+          type: string
+          description: IP address used to connect to the Azure private endpoint.
+          pattern: ^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)(\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$
         endpointId:
           type: string
           description: Unique 22-character alphanumeric string that identifies the private
@@ -30401,6 +29853,10 @@ components:
           maxLength: 22
           minLength: 22
           pattern: ^vpce-[0-9a-f]{17}$
+        errorMessage:
+          type: string
+          description: Error message describing a failure approving the private endpoint
+            request.
         provider:
           type: string
           default: AWS
@@ -30410,6 +29866,9 @@ components:
           type: string
           description: Human-readable label to identify the region of customer's VPC
             endpoint.
+        status:
+          type: string
+          description: Status of the private endpoint connection request.
         type:
           type: string
           default: DATA_LAKE
@@ -31862,6 +31321,52 @@ components:
           items:
             $ref: "#/components/schemas/Link"
           readOnly: true
+    StreamsPrivateLinkConnection:
+      type: object
+      description: Container for metadata needed to create a Private Link connection.
+      properties:
+        _id:
+          type: string
+          description: The ID of the Private Link connection.
+        dnsDomain:
+          type: string
+          description: Domain name of Confluent cluster.
+        dnsSubDomain:
+          type: array
+          description: Sub-Domain name of Confluent cluster. These are typically your
+            availability zones.
+          items:
+            type: string
+        interfaceEndpointId:
+          type: string
+          description: Interface endpoint ID that is created from the service endpoint ID
+            provided.
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        provider:
+          type: string
+          description: Provider where the Kafka cluster is deployed.
+        region:
+          type: string
+          description: Domain name of Confluent cluster.
+        serviceEndpointId:
+          type: string
+          description: AWS Service Endpoint ID.
+        state:
+          type: string
+          description: State the connection is in.
+        vendor:
+          type: string
+          description: Vendor who manages the Kafka cluster.
     StreamsProcessor:
       type: object
       description: An atlas stream processor.
@@ -33417,6 +32922,11 @@ components:
           minLength: 24
           pattern: ^([a-f0-9]{24})$
           readOnly: true
+        resourceName:
+          type: string
+          description: Unique human readable string that identifies the non-compliant
+            resource.
+          readOnly: true
         resourcePoliciesCausingNonCompliance:
           type: array
           description: List of resource policies causing the resource to be considered
@@ -33948,7 +33458,6 @@ components:
           items:
             $ref: "#/components/schemas/Link"
           readOnly: true
-      readOnly: true
       required:
         - expirationTime
         - grantType
@@ -34418,6 +33927,34 @@ components:
             if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
+    PaginatedApiStreamsPrivateLink:
+      type: object
+      properties:
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        results:
+          type: array
+          description: List of returned documents that MongoDB Cloud provides when
+            completing this request.
+          items:
+            $ref: "#/components/schemas/StreamsPrivateLinkConnection"
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
+          minimum: 0
+          readOnly: true
     PaginatedApiStreamsStreamProcessorWithStats:
       type: object
       properties:
@@ -34605,7 +34142,7 @@ components:
           description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
-            $ref: "#/components/schemas/DiskBackupSnapshotExportBucket"
+            $ref: "#/components/schemas/DiskBackupSnapshotExportBucketResponse"
           readOnly: true
         totalCount:
           type: integer
@@ -35402,10 +34939,10 @@ components:
         expirationDate:
           type: string
           format: date-time
-          description: Expiration date of the fixed FCV. If left unspecified, will default
-            to 4 weeks ahead of the existing pinnedDate (if an FCV is already
-            pinned) or the current date. Note that this field cannot exceed 4
-            weeks from the pinned date.
+          description: Expiration date of the fixed FCV. If not specified, the expiration
+            date will default to 4 weeks from the date FCV was originally
+            pinned. Note that this field cannot exceed 4 weeks from the pinned
+            date.
         links:
           type: array
           description: List of one or more Uniform Resource Locators (URLs) that point to

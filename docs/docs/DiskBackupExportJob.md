@@ -5,17 +5,16 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Components** | Pointer to [**[]DiskBackupExportMember**](DiskBackupExportMember.md) | Information on the export job for each replica set in the sharded cluster. | [optional] [readonly] 
-**CreatedAt** | Pointer to **time.Time** | Date and time when someone created this export job. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC. | [optional] [readonly] 
-**CustomData** | Pointer to [**[]BackupLabel**](BackupLabel.md) | Collection of key-value pairs that represent custom data for the metadata file that MongoDB Cloud uploads to the bucket when the export job finishes. | [optional] 
-**DeliveryUrl** | Pointer to **[]string** | One or more Uniform Resource Locators (URLs) that point to the compressed snapshot files for manual download. MongoDB Cloud returns this parameter when &#x60;\&quot;deliveryType\&quot; : \&quot;download\&quot;&#x60;. | [optional] [readonly] 
-**ExportBucketId** | **string** | Unique 24-hexadecimal character string that identifies the Export Bucket to export to. | [readonly] 
+**CreatedAt** | Pointer to **time.Time** | Date and time when a user or Atlas created the Export Job. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC. | [optional] [readonly] 
+**CustomData** | Pointer to [**[]BackupLabel**](BackupLabel.md) | Collection of key-value pairs that represent custom data for the metadata file that MongoDB Cloud uploads when the Export Job finishes. | [optional] 
+**ExportBucketId** | **string** | Unique 24-hexadecimal character string that identifies the Export Bucket. | [readonly] 
 **ExportStatus** | Pointer to [**ExportStatus**](ExportStatus.md) |  | [optional] 
-**FinishedAt** | Pointer to **time.Time** | Date and time when this export job completed. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC. | [optional] [readonly] 
+**FinishedAt** | Pointer to **time.Time** | Date and time when this Export Job completed. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC. | [optional] [readonly] 
 **Id** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the restore job. | [optional] [readonly] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
-**Prefix** | Pointer to **string** | Full path on the cloud provider bucket to the folder where the snapshot is exported. | [optional] [readonly] 
+**Prefix** | Pointer to **string** | Prefix used for all blob storage objects uploaded as part of the Export Job. | [optional] [readonly] 
 **SnapshotId** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the snapshot. | [optional] 
-**State** | Pointer to **string** | State of the export job. | [optional] [readonly] 
+**State** | Pointer to **string** | State of the Export Job. | [optional] [readonly] 
 
 ## Methods
 
@@ -108,30 +107,6 @@ SetCustomData sets CustomData field to given value.
 `func (o *DiskBackupExportJob) HasCustomData() bool`
 
 HasCustomData returns a boolean if a field has been set.
-### GetDeliveryUrl
-
-`func (o *DiskBackupExportJob) GetDeliveryUrl() []string`
-
-GetDeliveryUrl returns the DeliveryUrl field if non-nil, zero value otherwise.
-
-### GetDeliveryUrlOk
-
-`func (o *DiskBackupExportJob) GetDeliveryUrlOk() (*[]string, bool)`
-
-GetDeliveryUrlOk returns a tuple with the DeliveryUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDeliveryUrl
-
-`func (o *DiskBackupExportJob) SetDeliveryUrl(v []string)`
-
-SetDeliveryUrl sets DeliveryUrl field to given value.
-
-### HasDeliveryUrl
-
-`func (o *DiskBackupExportJob) HasDeliveryUrl() bool`
-
-HasDeliveryUrl returns a boolean if a field has been set.
 ### GetExportBucketId
 
 `func (o *DiskBackupExportJob) GetExportBucketId() string`
