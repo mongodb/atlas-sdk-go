@@ -51,8 +51,8 @@ func TestListClustersErrorMocks(t *testing.T) {
 
 	apiError.SetModel(admin.ApiError{
 		Detail:    admin.PtrString("Error when listing clusters"),
-		Error:     admin.PtrInt(400),
-		ErrorCode: admin.PtrString("CLUSTERS_UNREACHABLE"),
+		Error:     400,
+		ErrorCode: "CLUSTERS_UNREACHABLE",
 		Reason:    admin.PtrString("Clusters unreachable"),
 	})
 	apiError.SetError("Mocked error")
