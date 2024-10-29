@@ -1,6 +1,7 @@
 # Authenticating with the Atlas Go SDK
 
-The `atlas-sdk-go` library utilizes Digest authentication. You can [create an API key](https://www.mongodb.com/docs/atlas/configure-api-access/#create-an-api-key-in-an-organization) through the Atlas UI or the Atlas CLI.
+The `atlas-sdk-go` library utilizes Digest authentication as default form of authentication.
+You can [create an API key](https://www.mongodb.com/docs/atlas/configure-api-access/#create-an-api-key-in-an-organization) through the Atlas UI or the Atlas CLI.
 
 To learn more about API authentication, refer to the [Atlas Administration API Authentication](https://www.mongodb.com/docs/atlas/api/api-authentication).
 
@@ -17,7 +18,7 @@ import (
 	"log"
 	"os"
 
-	"go.mongodb.org/atlas-sdk/v20240805005/admin"
+	"go.mongodb.org/atlas-sdk/v20241023001/admin"
 )
 
 func main() {
@@ -39,29 +40,28 @@ func main() {
 }
 ```
 
-## (Preview) Using the Atlas Go SDK with OAuth Authentication
+## (Preview) Using the Atlas Go SDK with Service Account Authentication
 
-The `go.mongodb.org/atlas-sdk/v20240805005/auth/credentials` package provides an OAuth [client_credentials](https://oauth.net/2/grant-types/client-credentials) implementation. 
-The Atlas Client Credentials Grant OAuth Authentication allows applications to authenticate and authorize themselves programmatically, 
-rather than on behalf of a user.
-
-You can use the credentials package in the Atlas SDK Go to perform Atlas Admin API requests. 
-Package supports usage outside the SDK for making requests directly via an Go HTTP client.
+Atlas SDK Go provides OAuth Authentication using Service Accounts (currently available as a [Preview](https://www.mongodb.com/resources/beta-programs) feature)
+Service Account implement OAuth [client_credentials](https://oauth.net/2/grant-types/client-credentials) grant.
+For more information about feature please refer to [Service Account Public documentation.](https://www.mongodb.com/docs/atlas/api/service-accounts-overview/)
 
 ## OAuth Authentication
 
 ### Authenticating with OAuth ClientID and ClientSecret
 
-To authenticate using OAuth, you can use the `NewTokenSource` function, which requires a `ClientID` and `ClientSecret`.
+### Admin API Authentication using Service Accounts
+
+Authenticating using Service Accounts
 
 ```go
 package main
 
 import (
-	"context"
 	"log"
 	"os"
-	"go.mongodb.org/atlas-sdk/v20240805005/admin"
+
+	"go.mongodb.org/atlas-sdk/v20241023001/admin"
 )
 
 func main() {
@@ -79,13 +79,14 @@ func main() {
 }
 ```
 
-This method of initialization provides **No Ability to Revoke API**: once a token is issued, it cannot be invalidated until it expires.
+> NOTE: This method of initialization provides **No Ability to Revoke API**: once a token is issued, it cannot be invalidated until it expires.
 
 ### Specifying a Token Cache
 
-In this example, we will demonstrate how to use the OAuth Client Credentials flow with a custom token cache. The cache allows you to store OAuth tokens for reuse across application restarts, improving efficiency by reducing the number of token requests to the authorization server.
+In this example, we will demonstrate how to use the OAuth Client Credentials flow with a custom token cache.
+The cache allows you to store OAuth tokens for reuse across application restarts, improving efficiency by reducing the number of token requests to the authorization server.
 
-**Note:** A token cache is recommended for clients that run for a very short time. Requesting multiple tokens can be subject to OAuth token limits and rate limiting.
+**Note:** Cache prevents from requesting multiple tokens which are subject to OAuth Token Limits and Rate Limiting.
 
 ```go
 package main
@@ -96,8 +97,9 @@ import (
 	"log"
 	"os"
 	"sync"
-	"go.mongodb.org/atlas-sdk/v20240805005/admin"
-	"go.mongodb.org/atlas-sdk/v20240805005/auth/credentials"
+
+	"go.mongodb.org/atlas-sdk/v20241023001/auth/credentials"
+	"go.mongodb.org/atlas-sdk/v20241023001/admin"
 )
 
 type MyTokenCache struct {
@@ -139,20 +141,9 @@ func main() {
 	}
 
 	fileTokenCache := MyTokenCache{}
-	tokenSource := credentials.NewTokenSourceWithOptions(credentials.AtlasTokenSourceOptions{
-		ClientID:     clientID,
-		ClientSecret: clientSecret,
-		TokenCache:   &fileTokenCache,
-		BaseURL:      admin.PtrString("https://cloud.mongodb.com"),
-	})
-
-	httpClient := credentials.NewHTTPClientWithOAuthToken(tokenSource)
-	ctx := context.Background()
-
-	sdk, err := admin.NewClient(
-		admin.UseHTTPClient(httpClient),
-		admin.UseBaseURL("https://cloud.mongodb.com"),
-		admin.UseDebug(true))
+	// Using ClientID and ClientSecret. No cache supported (nil).
+	httpClient, err := admin.NewClient(admin.UseOAuthAuth(clientID, clientSecret, fileTokenCache))
+	sdk, err := admin.NewClient(admin.UseHTTPClient(httpClient))
 
 	// Make requests to the API
 	// ...
@@ -165,10 +156,11 @@ func main() {
 
 ### Revocation
 
-Revocation invalidates the token before its expiration.
-It should be used when "logging out" the current OAuth client and configuring a new one.
+Revocation invalidates the token before its expiration date.
+Revocation should be used to "logg out" the current OAuth client and configuring a new one.
 
 ```go
+// Sounding code omitted for brevity 
 err := tokenSource.RevokeToken()
 if err != nil {
 	log.Fatalf("Error: %v", err)
