@@ -101,7 +101,7 @@ func (c *OAuthTokenSource) refreshToken() (*Token, error) {
 	return newToken, nil
 }
 
-// ExpiryDelta Additional time for Access Tokens to not expire.
+// ExpiryDelta is the Additional time for Access Tokens to not expire.
 const ExpiryDelta = 10 * time.Second
 
 // expired checks if the Token is close to expiring.
