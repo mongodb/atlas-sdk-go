@@ -2,38 +2,38 @@
 
 package admin
 
-// PaginatedBackupSnapshotExportBuckets struct for PaginatedBackupSnapshotExportBuckets
-type PaginatedBackupSnapshotExportBuckets struct {
+// PaginatedApiStreamsPrivateLink struct for PaginatedApiStreamsPrivateLink
+type PaginatedApiStreamsPrivateLink struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
 	// List of returned documents that MongoDB Cloud provides when completing this request.
 	// Read only field.
-	Results *[]DiskBackupSnapshotExportBucketResponse `json:"results,omitempty"`
+	Results *[]StreamsPrivateLinkConnection `json:"results,omitempty"`
 	// Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`.
 	// Read only field.
 	TotalCount *int `json:"totalCount,omitempty"`
 }
 
-// NewPaginatedBackupSnapshotExportBuckets instantiates a new PaginatedBackupSnapshotExportBuckets object
+// NewPaginatedApiStreamsPrivateLink instantiates a new PaginatedApiStreamsPrivateLink object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedBackupSnapshotExportBuckets() *PaginatedBackupSnapshotExportBuckets {
-	this := PaginatedBackupSnapshotExportBuckets{}
+func NewPaginatedApiStreamsPrivateLink() *PaginatedApiStreamsPrivateLink {
+	this := PaginatedApiStreamsPrivateLink{}
 	return &this
 }
 
-// NewPaginatedBackupSnapshotExportBucketsWithDefaults instantiates a new PaginatedBackupSnapshotExportBuckets object
+// NewPaginatedApiStreamsPrivateLinkWithDefaults instantiates a new PaginatedApiStreamsPrivateLink object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewPaginatedBackupSnapshotExportBucketsWithDefaults() *PaginatedBackupSnapshotExportBuckets {
-	this := PaginatedBackupSnapshotExportBuckets{}
+func NewPaginatedApiStreamsPrivateLinkWithDefaults() *PaginatedApiStreamsPrivateLink {
+	this := PaginatedApiStreamsPrivateLink{}
 	return &this
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
-func (o *PaginatedBackupSnapshotExportBuckets) GetLinks() []Link {
+func (o *PaginatedApiStreamsPrivateLink) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
 		return ret
@@ -43,7 +43,7 @@ func (o *PaginatedBackupSnapshotExportBuckets) GetLinks() []Link {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedBackupSnapshotExportBuckets) GetLinksOk() (*[]Link, bool) {
+func (o *PaginatedApiStreamsPrivateLink) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -52,7 +52,7 @@ func (o *PaginatedBackupSnapshotExportBuckets) GetLinksOk() (*[]Link, bool) {
 }
 
 // HasLinks returns a boolean if a field has been set.
-func (o *PaginatedBackupSnapshotExportBuckets) HasLinks() bool {
+func (o *PaginatedApiStreamsPrivateLink) HasLinks() bool {
 	if o != nil && !IsNil(o.Links) {
 		return true
 	}
@@ -61,14 +61,14 @@ func (o *PaginatedBackupSnapshotExportBuckets) HasLinks() bool {
 }
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
-func (o *PaginatedBackupSnapshotExportBuckets) SetLinks(v []Link) {
+func (o *PaginatedApiStreamsPrivateLink) SetLinks(v []Link) {
 	o.Links = &v
 }
 
 // GetResults returns the Results field value if set, zero value otherwise
-func (o *PaginatedBackupSnapshotExportBuckets) GetResults() []DiskBackupSnapshotExportBucketResponse {
+func (o *PaginatedApiStreamsPrivateLink) GetResults() []StreamsPrivateLinkConnection {
 	if o == nil || IsNil(o.Results) {
-		var ret []DiskBackupSnapshotExportBucketResponse
+		var ret []StreamsPrivateLinkConnection
 		return ret
 	}
 	return *o.Results
@@ -76,7 +76,7 @@ func (o *PaginatedBackupSnapshotExportBuckets) GetResults() []DiskBackupSnapshot
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedBackupSnapshotExportBuckets) GetResultsOk() (*[]DiskBackupSnapshotExportBucketResponse, bool) {
+func (o *PaginatedApiStreamsPrivateLink) GetResultsOk() (*[]StreamsPrivateLinkConnection, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
@@ -85,7 +85,7 @@ func (o *PaginatedBackupSnapshotExportBuckets) GetResultsOk() (*[]DiskBackupSnap
 }
 
 // HasResults returns a boolean if a field has been set.
-func (o *PaginatedBackupSnapshotExportBuckets) HasResults() bool {
+func (o *PaginatedApiStreamsPrivateLink) HasResults() bool {
 	if o != nil && !IsNil(o.Results) {
 		return true
 	}
@@ -93,13 +93,13 @@ func (o *PaginatedBackupSnapshotExportBuckets) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []DiskBackupSnapshotExportBucketResponse and assigns it to the Results field.
-func (o *PaginatedBackupSnapshotExportBuckets) SetResults(v []DiskBackupSnapshotExportBucketResponse) {
+// SetResults gets a reference to the given []StreamsPrivateLinkConnection and assigns it to the Results field.
+func (o *PaginatedApiStreamsPrivateLink) SetResults(v []StreamsPrivateLinkConnection) {
 	o.Results = &v
 }
 
 // GetTotalCount returns the TotalCount field value if set, zero value otherwise
-func (o *PaginatedBackupSnapshotExportBuckets) GetTotalCount() int {
+func (o *PaginatedApiStreamsPrivateLink) GetTotalCount() int {
 	if o == nil || IsNil(o.TotalCount) {
 		var ret int
 		return ret
@@ -109,7 +109,7 @@ func (o *PaginatedBackupSnapshotExportBuckets) GetTotalCount() int {
 
 // GetTotalCountOk returns a tuple with the TotalCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedBackupSnapshotExportBuckets) GetTotalCountOk() (*int, bool) {
+func (o *PaginatedApiStreamsPrivateLink) GetTotalCountOk() (*int, bool) {
 	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
@@ -118,7 +118,7 @@ func (o *PaginatedBackupSnapshotExportBuckets) GetTotalCountOk() (*int, bool) {
 }
 
 // HasTotalCount returns a boolean if a field has been set.
-func (o *PaginatedBackupSnapshotExportBuckets) HasTotalCount() bool {
+func (o *PaginatedApiStreamsPrivateLink) HasTotalCount() bool {
 	if o != nil && !IsNil(o.TotalCount) {
 		return true
 	}
@@ -127,6 +127,6 @@ func (o *PaginatedBackupSnapshotExportBuckets) HasTotalCount() bool {
 }
 
 // SetTotalCount gets a reference to the given int and assigns it to the TotalCount field.
-func (o *PaginatedBackupSnapshotExportBuckets) SetTotalCount(v int) {
+func (o *PaginatedApiStreamsPrivateLink) SetTotalCount(v int) {
 	o.TotalCount = &v
 }
