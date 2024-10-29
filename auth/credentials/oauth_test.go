@@ -66,8 +66,8 @@ type MockTokenCache struct {
 }
 
 // Retrieve returns the stored Token
-func (m *MockTokenCache) RetrieveToken(_ context.Context) (*string, error) {
-	return &m.token, nil
+func (m *MockTokenCache) RetrieveToken(_ context.Context) (string, error) {
+	return m.token, nil
 }
 
 // Save saves the Token

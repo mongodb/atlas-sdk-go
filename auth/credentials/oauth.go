@@ -50,8 +50,8 @@ func (c *OAuthTokenSource) RevokeToken() error {
 	if err != nil {
 		return err
 	}
-	if tokenString != nil && *tokenString != "" {
-		err := c.revokeTokenInRemoteServer(*tokenString)
+	if tokenString != "" {
+		err := c.revokeTokenInRemoteServer(tokenString)
 		if err != nil {
 			return err
 		}
@@ -70,12 +70,12 @@ func (c *OAuthTokenSource) RevokeToken() error {
 func (c *OAuthTokenSource) GetValidToken() (*Token, error) {
 	// Try to retrieve the Token string from the Token source
 	tokenString, err := c.tokenCache.RetrieveToken(c.ctx)
-	if err != nil || tokenString == nil {
+	if err != nil || tokenString == "" {
 		return c.refreshToken()
 	}
 
 	// Parse the Token string into the Token structure (mock parse operation)
-	c.token, err = parseToken(*tokenString)
+	c.token, err = parseToken(tokenString)
 	if err != nil || c.token.expired() {
 		// Token is invalid or expired, refresh it
 		return c.refreshToken()
@@ -169,8 +169,8 @@ func (c *OAuthTokenSource) fetchTokenFromRemoteServer() (*Token, error) {
 	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusOK {
+		msg, _ := io.ReadAll(resp.Body)
 		if resp.StatusCode == http.StatusTooManyRequests {
-			msg, _ := io.ReadAll(resp.Body)
 			formattedMessage := fmt.Sprintf("%v %v: HTTP %v Detail: %v Reason: %v",
 				"POST", c.tokenURL, resp.StatusCode,
 				"Token request was rate limited", string(msg))
@@ -178,8 +178,8 @@ func (c *OAuthTokenSource) fetchTokenFromRemoteServer() (*Token, error) {
 		}
 		formattedMessage := fmt.Sprintf("%v %v: HTTP %v Detail: %v Reason: %v",
 			"POST", c.tokenURL, resp.StatusCode,
-			"Failed to obtain Access Token when fetching new OAuth Token from remote server",
-			resp.Header.Get("www-authenticate"))
+			"Failed to obtain Access Token when fetching new OAuth Token from remote server for client "+c.clientID,
+			string(msg))
 		return nil, errors.New(formattedMessage)
 	}
 	// tokenRemoteResponse represents successful response from token endpoint

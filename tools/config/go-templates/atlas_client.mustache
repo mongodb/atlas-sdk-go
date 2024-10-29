@@ -53,8 +53,35 @@ func UseDigestAuth(apiKey, apiSecret string) ClientModifier {
 	}
 }
 
-// Advanced modifiers.
+// UseOAuthAuth provides OAuthAuth authentication for Go SDK.
+// Method is provided as helper to create a default HTTP client that supports OAuth (Service Accounts) authentication.
+// credentials.LocalTokenCache can be supplied to reuse OAuth Token across application restarts.
+// Warning: for advanced use cases please use credentials.NewTokenSource directly in your code pass it to UseHTTPClient method.
+// Warning: any previously set httpClient will be overwritten. To fully customize HttpClient use UseHTTPClient method.
+func UseOAuthAuth(clientID, clientSecret string, tokenCache credentials.LocalTokenCache) ClientModifier {
+	return func(c *Configuration) error {
+		var tokenSource credentials.TokenSource
+		if tokenCache != nil {
+			tokenSource = credentials.NewTokenSourceWithOptions(credentials.AtlasTokenSourceOptions{
+				ClientID:     clientID,
+				ClientSecret: clientSecret,
+				TokenCache:   tokenCache,
+				BaseURL:      &c.Servers[0].URL,
+			})
+		} else {
+			tokenSource = credentials.NewTokenSourceWithOptions(credentials.AtlasTokenSourceOptions{
+				ClientID:     clientID,
+				ClientSecret: clientSecret,
+				BaseURL:      &c.Servers[0].URL,
+			})
+		}
+		httpClient := credentials.NewHTTPClientWithOAuthToken(tokenSource)
+		c.HTTPClient = httpClient
+		return nil
+	}
+}
 
+// Advanced modifiers.
 
 //  UseHTTPClient set custom http client implementation.
 //
