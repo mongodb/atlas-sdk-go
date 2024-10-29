@@ -32,20 +32,20 @@ func main() {
 	}
 
 	// Initialize the OAuth client with memory
-	client := credentials.NewTokenSource(clientID, clientSecret)
+	tokenSource := credentials.NewTokenSource(clientID, clientSecret)
 	// Create an HTTP client with the custom transport (injecting the token)
-	httpClient := credentials.NewHTTPClientWithOAuthToken(client)
+	httpClient := credentials.NewHTTPClientWithOAuthToken(tokenSource)
 
-	fileTokenSource := FileTokenSource{}
-	// Initialize the OAuth client using example FileTokenSource
-	client = credentials.NewTokenSourceWithOptions(
+	fileTokenCache := MyTokenCache{}
+	// Initialize tokenSource
+	tokenSource = credentials.NewTokenSourceWithOptions(
 		credentials.AtlasTokenSourceOptions{
 			ClientID:     clientID,
 			ClientSecret: clientSecret,
-			TokenCache:   &fileTokenSource,
+			TokenCache:   &fileTokenCache,
 			BaseURL:      &host,
 		})
-	httpClient = credentials.NewHTTPClientWithOAuthToken(client)
+	httpClient = credentials.NewHTTPClientWithOAuthToken(tokenSource)
 
 	ctx := context.Background()
 
@@ -74,17 +74,22 @@ func main() {
 	}
 
 	if projects.Results == nil {
-		fmt.Sprintf("projects should not be empty:  %v", projects)
+		fmt.Printf("projects should not be empty:  %v", projects)
+	}
+
+	err = tokenSource.RevokeToken()
+	if err != nil {
+		log.Fatalf("Error: %v", err)
 	}
 }
 
-// FileTokenSource is an implementation of LocalTokenCache that stores the token in a file.
-type FileTokenSource struct {
+// MyTokenCache is an implementation of LocalTokenCache that stores the token in a file.
+type MyTokenCache struct {
 	fileContent []byte
 	mu          sync.Mutex
 }
 
-func (s *FileTokenSource) RetrieveToken(ctx context.Context) (*string, error) {
+func (s *MyTokenCache) RetrieveToken(ctx context.Context) (*string, error) {
 	// Locking added to ensure no race condition happens with SaveToken
 	s.mu.Lock()
 	defer s.mu.Unlock()
@@ -100,7 +105,7 @@ func (s *FileTokenSource) RetrieveToken(ctx context.Context) (*string, error) {
 	return &tkn, nil
 }
 
-func (s *FileTokenSource) SaveToken(ctx context.Context, tkn string) error {
+func (s *MyTokenCache) SaveToken(ctx context.Context, tkn string) error {
 	// Locking added to ensure no race condition happens with RetrieveToken
 	s.mu.Lock()
 	defer s.mu.Unlock()
