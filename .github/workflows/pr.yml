@@ -19,7 +19,7 @@ jobs:
       - name: lint
         uses: golangci/golangci-lint-action@v6.1.0
         with:
-          version: v1.57.1
+          version: v1.59.0 # Also update GOLANGCI_VERSION variable in Makefile when updating this version
           args: --timeout=10m
       - name: tests
         run: make test

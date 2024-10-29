@@ -1,21 +1,17 @@
 SOURCE_FILES?=./...
-GOLANGCI_VERSION=v1.59.0
+GOLANGCI_VERSION=v1.59.0 # Also update golangci-lint GH action in pr.yml when updating this version
 GOIMPORTS_VERSION=v0.21.0
+GOAPIDIFF_VERSION=v0.8.2
 COVERAGE=coverage.out
 
 export GO111MODULE := on
 export PATH := ./bin:$(PATH)
 
-default: build
 
 .PHONY: link-git-hooks
 link-git-hooks:
 	find .git/hooks -type l -exec rm {} \;
 	find githooks -type f -exec ln -sf ../../{} .git/hooks/ \;
-
-.PHONY: build
-build:
-	go install $(SOURCE_FILES)
 
 .PHONY: test
 test:
@@ -41,16 +37,10 @@ lint:
 .PHONY: check
 check: test lint-fix
 
-.PHONY: install-golangci-lint
-install-golangci-lint:
-	curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s $(GOLANGCI_VERSION)
-
-.PHONY: install-goimports
-install-goimports:
-	go install golang.org/x/tools/cmd/goimports@$(GOIMPORTS_VERSION)
-
 .PHONY: tools
-tools: install-golangci-lint install-goimports
+	curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s $(GOLANGCI_VERSION)
+	go install golang.org/x/tools/cmd/goimports@$(GOIMPORTS_VERSION)
+	go install github.com/joelanford/go-apidiff@$(GOAPIDIFF_VERSION)
 
 .PHONY: addcopy
 addcopy:
@@ -62,7 +52,7 @@ check-version:
 	scripts/check-version.sh "$(TAG)"
 
 .PHONY: openapi-pipeline
-openapi-pipeline: install-goimports
+openapi-pipeline: tools
 	echo "Running OpenAPI Generation and Validation process"
 	$(MAKE) -C tools clean_client
 	echo "Running client generation"

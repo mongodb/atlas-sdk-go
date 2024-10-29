@@ -40,7 +40,7 @@ npm exec openapi-generator-cli -- generate \
 
 # Check if goimports exists and is executable
 if ! command -v goimports &> /dev/null; then
-  echo "Error: goimports command not found. Please install goimports by running 'make install-goimports' before running this script."
+  echo "Error: goimports command not found. Please install goimports by running 'make tools' before running this script."
   exit 1
 fi
 
