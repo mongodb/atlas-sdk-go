@@ -47,6 +47,10 @@ jobs:
       - name: Set new commit for SDK API diff
         if: steps.verify-changed-files.outputs.files_changed == 'true'
         run: echo "API_DIFF_NEW_COMMIT=$(git rev-parse HEAD)" >> $GITHUB_ENV
+      - name: go-apidiff
+        uses: joelanford/go-apidiff@v0.8.2
+        with:
+          version: v0.8.2
       - name: Release updates
         if: steps.verify-changed-files.outputs.files_changed == 'true'
         working-directory: ./tools
