@@ -17,7 +17,7 @@ echo "Running breaking changes check comparing commits ${API_DIFF_OLD_COMMIT} an
 pushd "$script_path/../../../" || exit ## workaround for --repo-path="../" not working
 echo "Changed directory to $(pwd)"
 set +e
-BREAKING_CHANGES=$("$GOPATH/bin/go-apidiff" "${API_DIFF_OLD_COMMIT}" "${API_DIFF_NEW_COMMIT}" --compare-imports="false" --print-compatible="false")
+BREAKING_CHANGES=$("$GOPATH/bin/go-apidiff" "${API_DIFF_OLD_COMMIT}" --compare-imports="false" --print-compatible="false")
 set -e
 popd || exit
 
