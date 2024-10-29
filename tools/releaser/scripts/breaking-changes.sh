@@ -10,7 +10,7 @@ TARGET_BREAKING_CHANGES_FILE=${TARGET_BREAKING_CHANGES_FILE:-""}
 script_path=$(dirname "$0")
 
 echo "Installing go-apidiff"
-go install github.com/joelanford/go-apidiff@latest > /dev/null
+go install github.com/joelanford/go-apidiff@v0.8.2
 
 echo "Running breaking changes check comparing commits ${API_DIFF_OLD_COMMIT} and ${API_DIFF_NEW_COMMIT}"
 
