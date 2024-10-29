@@ -95,7 +95,7 @@ type MyTokenCache struct {
 	mu          sync.Mutex
 }
 
-func (s *MyTokenCache) RetrieveToken(_ context.Context) (*string, error) {
+func (s *MyTokenCache) RetrieveToken(_ context.Context) (string, error) {
 	// Locking added to ensure no race condition happens with SaveToken
 	s.mu.Lock()
 	defer s.mu.Unlock()
@@ -105,10 +105,10 @@ func (s *MyTokenCache) RetrieveToken(_ context.Context) (*string, error) {
 	var tkn string
 	err := json.Unmarshal(s.fileContent, &tkn)
 	if err != nil {
-		return nil, err
+		return "", err
 	}
 
-	return &tkn, nil
+	return tkn, nil
 }
 
 func (s *MyTokenCache) SaveToken(_ context.Context, tkn string) error {

@@ -50,8 +50,8 @@ func (c *OAuthTokenSource) RevokeToken() error {
 	if err != nil {
 		return err
 	}
-	if tokenString != nil && *tokenString != "" {
-		err := c.revokeTokenInRemoteServer(*tokenString)
+	if tokenString != "" {
+		err := c.revokeTokenInRemoteServer(tokenString)
 		if err != nil {
 			return err
 		}
@@ -70,12 +70,12 @@ func (c *OAuthTokenSource) RevokeToken() error {
 func (c *OAuthTokenSource) GetValidToken() (*Token, error) {
 	// Try to retrieve the Token string from the Token source
 	tokenString, err := c.tokenCache.RetrieveToken(c.ctx)
-	if err != nil || tokenString == nil {
+	if err != nil || tokenString == "" {
 		return c.refreshToken()
 	}
 
 	// Parse the Token string into the Token structure (mock parse operation)
-	c.token, err = parseToken(*tokenString)
+	c.token, err = parseToken(tokenString)
 	if err != nil || c.token.expired() {
 		// Token is invalid or expired, refresh it
 		return c.refreshToken()
