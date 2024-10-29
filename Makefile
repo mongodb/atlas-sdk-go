@@ -38,6 +38,7 @@ lint:
 check: test lint-fix
 
 .PHONY: tools
+tools:
 	curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s $(GOLANGCI_VERSION)
 	go install golang.org/x/tools/cmd/goimports@$(GOIMPORTS_VERSION)
 	go install github.com/joelanford/go-apidiff@$(GOAPIDIFF_VERSION)
