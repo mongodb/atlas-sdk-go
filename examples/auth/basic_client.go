@@ -13,13 +13,7 @@ import (
 // Required env variables to run example:
 // export MONGODB_ATLAS_CLIENT_ID="your_client_id"
 // export MONGODB_ATLAS_CLIENT_SECRET="your_client_secret"
-// export MONGODB_ATLAS_URL=https://cloud.mongodb.com
 func main() {
-	host := os.Getenv("MONGODB_ATLAS_URL")
-	if host == "" {
-		log.Fatal("Missing MONGODB_ATLAS_URL")
-	}
-
 	// Fetch clientID and clientSecret from environment variables
 	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
 	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
@@ -32,9 +26,7 @@ func main() {
 	// Create Admin API Client with OAuth credentials.
 	// Skips optional tokenCache parameter
 	sdk, err := admin.NewClient(
-		admin.UseBaseURL(host),
 		admin.UseOAuthAuth(clientID, clientSecret, nil),
-		admin.UseDebug(true),
 	)
 
 	if err != nil {
