@@ -32,9 +32,10 @@ func main() {
 	// Create Admin API Client with OAuth credentials.
 	// Skips optional tokenCache parameter
 	sdk, err := admin.NewClient(
-		admin.UseOAuthAuth(clientID, clientSecret, nil),
 		admin.UseBaseURL(host),
-		admin.UseDebug(true))
+		admin.UseOAuthAuth(clientID, clientSecret, nil),
+		admin.UseDebug(true),
+	)
 
 	if err != nil {
 		log.Fatalf("Error: %v", err)

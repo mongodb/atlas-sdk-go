@@ -63,6 +63,10 @@ func NewTokenSourceWithOptions(opts AtlasTokenSourceOptions) TokenSource {
 		ctx = *opts.Context
 	}
 
+	if opts.TokenCache == nil {
+		opts.TokenCache = &InMemoryTokenCache{}
+	}
+
 	return &OAuthTokenSource{
 		clientID:     opts.ClientID,
 		clientSecret: opts.ClientSecret,

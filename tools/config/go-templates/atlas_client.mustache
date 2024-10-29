@@ -66,9 +66,14 @@ func UseOAuthAuth(clientID, clientSecret string, tokenCache credentials.LocalTok
 				ClientID:     clientID,
 				ClientSecret: clientSecret,
 				TokenCache:   tokenCache,
+				BaseURL:      &c.Servers[0].URL,
 			})
 		} else {
-			tokenSource = credentials.NewTokenSource(clientID, clientSecret)
+			tokenSource = credentials.NewTokenSourceWithOptions(credentials.AtlasTokenSourceOptions{
+				ClientID:     clientID,
+				ClientSecret: clientSecret,
+				BaseURL:      &c.Servers[0].URL,
+			})
 		}
 		httpClient := credentials.NewHTTPClientWithOAuthToken(tokenSource)
 		c.HTTPClient = httpClient
