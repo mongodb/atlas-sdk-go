@@ -63,21 +63,10 @@ func main() {
 		log.Fatalf("Error: %v", err)
 	}
 
-	request := sdk.ProjectsApi.ListProjectsWithParams(ctx,
-		&admin.ListProjectsApiParams{
-			ItemsPerPage: admin.PtrInt(1),
-			IncludeCount: admin.PtrBool(true),
-			PageNum:      admin.PtrInt(1),
-		})
-
+	projects, _, err := sdk.ProjectsApi.ListProjectsWithParams(ctx,&admin.ListProjectsApiParams{}).Execute()
 	if err != nil {
 		log.Fatalf("Error making request: %v", err)
 	}
-	projects, _, err := request.IncludeCount(true).PageNum(1).Execute()
-	if err != nil {
-		log.Fatalf("Error: %v", err)
-	}
-
 	if projects.Results == nil {
 		fmt.Printf("projects should not be empty:  %v", projects)
 	}
