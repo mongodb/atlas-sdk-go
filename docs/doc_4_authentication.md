@@ -3,7 +3,7 @@
 The `atlas-sdk-go` library utilizes Digest authentication as its default authentication method.
 You can [create an API key](https://www.mongodb.com/docs/atlas/configure-api-access/#create-an-api-key-in-an-organization) through the Atlas UI or the Atlas CLI.
 
-To learn more about API authentication, refer to the [Atlas Administration API Authentication](https://www.mongodb.com/docs/atlas/api/api-authentication).
+To learn more about API authentication, refer to [Atlas Administration API Authentication](https://www.mongodb.com/docs/atlas/api/api-authentication).
 
 ## Using the Atlas Go SDK in Your Code with Digest Authentication
 
