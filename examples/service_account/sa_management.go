@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"log"
 	"os"
 
@@ -33,31 +34,51 @@ func main() {
 
 	ctx := context.Background()
 	sdk, err := admin.NewClient(
-		admin.UseDebug(true),
 		admin.UseBaseURL(host),
 		admin.UseOAuthAuth(clientID, clientSecret, nil),
 	)
-
 	if err != nil {
 		log.Fatalf("Error: %v", err)
 	}
 
+	// 1. Create Service Account
 	request := sdk.ServiceAccountsApi.CreateServiceAccount(ctx, org, admin.NewOrgServiceAccountRequest("SA created by sdk-example",
 		"example", []string{"ORG_OWNER"}, 365*24))
 	sa, _, err := request.Execute()
 	if err != nil {
 		log.Fatalf("Error: %v", err)
 	}
+
+	// 2. Rotate secret
 	_, _, err = sdk.ServiceAccountsApi.CreateServiceAccountSecret(ctx,  org, *sa.ClientId, &admin.ServiceAccountSecretRequest{
 		SecretExpiresAfterHours: 365*24,
 	}).Execute();
 	if err != nil {
 		log.Fatalf("Error: %v", err)
 	}
+
+	// 3. Delete rotated secret
 	_,  err = sdk.ServiceAccountsApi.DeleteServiceAccountSecret(ctx, *sa.ClientId, sa.GetSecrets()[0].Id, org).Execute();
 	if err != nil {
 		log.Fatalf("Error: %v", err)
 	}
 
+	// 4. Create new SDK client using New Service Account
+	newSDK, err := admin.NewClient(
+		admin.UseDebug(true),
+		admin.UseBaseURL(host),
+		admin.UseOAuthAuth(*sa.ClientId, sa.GetSecrets()[0].Id, nil),
+	)
+
+	// 5. Make request using new Service Account
+	projects, _, err := newSDK.ProjectsApi.ListProjectsWithParams(ctx,
+		&admin.ListProjectsApiParams{}).Execute()
+	if err != nil {
+		log.Fatalf("Error: %v", err)
+	}
+
+	fmt.Printf("Projects: %v", projects)
+
+	// 6. Remove Created Service Account
 	sdk.ServiceAccountsApi.DeleteServiceAccount(ctx, *sa.ClientId, org)
 }
