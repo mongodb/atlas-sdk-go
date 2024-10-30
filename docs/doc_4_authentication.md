@@ -1,6 +1,6 @@
 # Authenticating with the Atlas Go SDK
 
-The `atlas-sdk-go` library utilizes Digest authentication as default form of authentication.
+The `atlas-sdk-go` library utilizes Digest authentication as its default authentication method.
 You can [create an API key](https://www.mongodb.com/docs/atlas/configure-api-access/#create-an-api-key-in-an-organization) through the Atlas UI or the Atlas CLI.
 
 To learn more about API authentication, refer to the [Atlas Administration API Authentication](https://www.mongodb.com/docs/atlas/api/api-authentication).
@@ -43,7 +43,7 @@ func main() {
 ## (Preview) Using the Atlas Go SDK with Service Account Authentication
 
 Atlas SDK Go provides OAuth Authentication using Service Accounts (currently available as a [Preview](https://www.mongodb.com/resources/beta-programs) feature)
-Service Account implement OAuth [client_credentials](https://oauth.net/2/grant-types/client-credentials) grant.
+A Service Account implements an OAuth [client_credentials](https://oauth.net/2/grant-types/client-credentials) grant.
 For more information about feature please refer to [Service Account Public documentation.](https://www.mongodb.com/docs/atlas/api/service-accounts-overview/)
 
 ## OAuth Authentication
@@ -84,9 +84,7 @@ func main() {
 ### Specifying a Token Cache
 
 In this example, we will demonstrate how to use the OAuth Client Credentials flow with a custom token cache.
-The cache allows you to store OAuth tokens for reuse across application restarts, improving efficiency by reducing the number of token requests to the authorization server.
-
-**Note:** Cache prevents from requesting multiple tokens which are subject to OAuth Token Limits and Rate Limiting.
+The cache allows you to store OAuth tokens for reuse across application restarts, improving efficiency by reducing the number of token requests to the authorization server. This reduction in requests also minimizes the impact of OAuth Token Limits and Rate Limiting.
 
 ```go
 package main
@@ -156,8 +154,7 @@ func main() {
 
 ### Revocation
 
-Revocation invalidates the token before its expiration date.
-Revocation should be used to "logg out" the current OAuth client and configuring a new one.
+Revocation invalidates an OAuth token before its expiration date. This effectively "logs out" the current OAuth client and allows you to configure a new client.
 
 ```go
 // Sounding code omitted for brevity 
@@ -170,7 +167,7 @@ if err != nil {
 ### Creating a Custom Transport
 
 You can create a custom transport to inject the OAuth token into HTTP requests. 
-The `OAuthCustomHTTPTransport` provides an `UnderlyingTransport` field that specifies the transport to be used for requests.
+The `OAuthCustomHTTPTransport` provides an `UnderlyingTransport` field that specifies the transport to use for requests.
 
 ```go
 tokenSource := credentials.NewTokenSourceWithOptions(credentials.AtlasTokenSourceOptions{
@@ -187,7 +184,7 @@ transport := OAuthCustomHTTPTransport{
 
 ### Overriding the User Agent
 
-You can override the default user agent by specifying it in the `AtlasTokenSourceOptions`.
+You can override the default user agent by specifying an agent of your choice in the `AtlasTokenSourceOptions`.
 
 ```go
 tokenSource := credentials.NewTokenSourceWithOptions(credentials.AtlasTokenSourceOptions{
