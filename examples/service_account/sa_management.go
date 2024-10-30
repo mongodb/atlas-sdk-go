@@ -50,7 +50,7 @@ func main() {
 	}
 
 	// 2. Rotate secret
-	_, _, err = sdk.ServiceAccountsApi.CreateServiceAccountSecret(ctx,  org, *sa.ClientId, &admin.ServiceAccountSecretRequest{
+	newSecret, _, err := sdk.ServiceAccountsApi.CreateServiceAccountSecret(ctx,  org, *sa.ClientId, &admin.ServiceAccountSecretRequest{
 		SecretExpiresAfterHours: 365*24,
 	}).Execute();
 	if err != nil {
@@ -65,9 +65,10 @@ func main() {
 
 	// 4. Create new SDK client using New Service Account
 	newSDK, err := admin.NewClient(
-		admin.UseDebug(true),
 		admin.UseBaseURL(host),
-		admin.UseOAuthAuth(*sa.ClientId, sa.GetSecrets()[0].Id, nil),
+		// 4.1 Using ClientId and Secret returned by API
+		// API might have up to 2 secrets
+		admin.UseOAuthAuth(*sa.ClientId, *newSecret.Secret, nil),
 	)
 
 	// 5. Make request using new Service Account
@@ -77,7 +78,7 @@ func main() {
 		log.Fatalf("Error: %v", err)
 	}
 
-	fmt.Printf("Projects: %v", projects)
+	fmt.Printf("Projects size: %v", *projects.TotalCount)
 
 	// 6. Remove Created Service Account
 	sdk.ServiceAccountsApi.DeleteServiceAccount(ctx, *sa.ClientId, org)
