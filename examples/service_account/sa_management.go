@@ -80,6 +80,6 @@ func main() {
 
 	fmt.Printf("Projects size: %v", *projects.TotalCount)
 
-	// 6. Remove Created Service Account
+	// 6. Remove created Service Account. We would not be able to use it afterwards without access to Secret value.
 	sdk.ServiceAccountsApi.DeleteServiceAccount(ctx, *sa.ClientId, org)
 }
