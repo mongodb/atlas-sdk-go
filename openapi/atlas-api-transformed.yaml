@@ -27,11 +27,12 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 4f095c6eb3ef7a717f47646d37e76d52936f25a0
+  x-xgen-sha: 86ea1c3d81a33c7436386c6c6ffd908142c8bc96
 servers:
   - url: https://cloud.mongodb.com
 security:
   - DigestAuth: []
+  - ServiceAccounts: []
 tags:
   - description: Returns access logs for authentication attempts made to Atlas
       database deployments. To view database access history, you must have
@@ -207,6 +208,14 @@ tags:
       description: Set Up a Private Endpoint for a Serverless Instance Tutorial
       url: https://dochub.mongodb.org/core/serverless-private-endpoint
     name: Serverless Private Endpoints
+  - description: Endpoints for managing Service Accounts and secrets. Service
+      Accounts are used for programmatic access to the Atlas Admin API through
+      the OAuth 2.0 Client Credentials flow. This feature is available as a
+      Preview feature.
+    externalDocs:
+      description: Get Started with the Atlas Administration API
+      url: https://www.mongodb.com/docs/atlas/configure-api-access/
+    name: Service Accounts
   - description: Returns and adds restore jobs for shared-tier database deployments.
     name: Shared-Tier Restore Jobs
   - description: Returns and requests to download shared-tier database deployment snapshots.
@@ -13154,6 +13163,414 @@ paths:
       summary: Update One Serverless Instance in One Project
       tags:
         - Serverless Instances
+  "/api/atlas/v2/groups/{groupId}/serviceAccounts":
+    get:
+      description: Returns all Service Accounts for the specified Project. Available
+        as a preview feature.
+      operationId: listProjectServiceAccounts
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - $ref: "#/components/parameters/itemsPerPage"
+        - $ref: "#/components/parameters/pageNum"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedGroupServiceAccounts"
+              x-xgen-version: 2024-08-05
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: List All Project Service Accounts
+      tags:
+        - Service Accounts
+    post:
+      description: Creates one Service Account for the specified Project. The Service
+        Account will automatically be added as an Organization Member to the
+        Organization that the specified Project is a part of. Available as a
+        preview feature.
+      operationId: createProjectServiceAccount
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+      requestBody:
+        content:
+          application/vnd.atlas.2024-08-05+json:
+            schema:
+              $ref: "#/components/schemas/GroupServiceAccountRequest"
+            x-xgen-version: 2024-08-05
+        description: Details of the new Service Account.
+        required: true
+      responses:
+        "201":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/GroupServiceAccount"
+              x-xgen-version: 2024-08-05
+          description: Created
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Create and Assign one Service Account to one Project
+      tags:
+        - Service Accounts
+  "/api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}":
+    delete:
+      description: Removes the specified Service Account from the specified project.
+        The Service Account will still be a part of the Organization it was
+        created in, and the credentials will remain active until expired or
+        manually revoked. Available as a preview feature.
+      operationId: deleteProjectServiceAccount
+      parameters:
+        - description: The Client ID of the Service Account.
+          in: path
+          name: clientId
+          required: true
+          schema:
+            type: string
+            example: mdb_sa_id_667066535bc75b03c37b3038
+            pattern: ^mdb_sa_id_[a-fA-F\d]{24}$
+        - $ref: "#/components/parameters/groupId"
+      responses:
+        "204":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/NoBody"
+              x-xgen-version: 2024-08-05
+          description: This endpoint does not return a response body.
+          x-xgen-version: 2024-08-05
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Unassign One Service Account from One Project
+      tags:
+        - Service Accounts
+    get:
+      description: Returns one Service Account in the specified Project. Available as
+        a preview feature.
+      operationId: getProjectServiceAccount
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: The Client ID of the Service Account.
+          in: path
+          name: clientId
+          required: true
+          schema:
+            type: string
+            example: mdb_sa_id_667066535bc75b03c37b3038
+            pattern: ^mdb_sa_id_[a-fA-F\d]{24}$
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/GroupServiceAccount"
+              x-xgen-version: 2024-08-05
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Get one Project Service Account
+      tags:
+        - Service Accounts
+    patch:
+      description: Updates one Service Account in the specified Project. Available as
+        a preview feature.
+      operationId: updateProjectServiceAccount
+      parameters:
+        - description: The Client ID of the Service Account.
+          in: path
+          name: clientId
+          required: true
+          schema:
+            type: string
+            example: mdb_sa_id_667066535bc75b03c37b3038
+            pattern: ^mdb_sa_id_[a-fA-F\d]{24}$
+        - $ref: "#/components/parameters/groupId"
+      requestBody:
+        content:
+          application/vnd.atlas.2024-08-05+json:
+            schema:
+              $ref: "#/components/schemas/GroupServiceAccountUpdateRequest"
+        description: The new details for the Service Account.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/GroupServiceAccount"
+              x-xgen-version: 2024-08-05
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Update one Project Service Account
+      tags:
+        - Service Accounts
+  "/api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/accessList":
+    get:
+      description: Returns all access list entries that you configured for the
+        specified Service Account for the project. Available as a preview
+        feature.
+      operationId: listProjectServiceAccountAccessList
+      parameters:
+        - $ref: "#/components/parameters/includeCount"
+        - $ref: "#/components/parameters/itemsPerPage"
+        - $ref: "#/components/parameters/groupId"
+        - $ref: "#/components/parameters/pageNum"
+        - description: The Client ID of the Service Account.
+          in: path
+          name: clientId
+          required: true
+          schema:
+            type: string
+            example: mdb_sa_id_667066535bc75b03c37b3038
+            pattern: ^mdb_sa_id_[a-fA-F\d]{24}$
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedServiceAccountIPAccessEntry"
+              x-xgen-version: 2024-08-05
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return All Access List entries for one Project Service Account
+      tags:
+        - Service Accounts
+    post:
+      description: Add Access List Entries for the specified Service Account for the
+        project. Resources require all API requests to originate from IP
+        addresses on the API access list. Available as a preview feature.
+      operationId: createProjectServiceAccountAccessList
+      parameters:
+        - $ref: "#/components/parameters/includeCount"
+        - $ref: "#/components/parameters/itemsPerPage"
+        - $ref: "#/components/parameters/groupId"
+        - $ref: "#/components/parameters/pageNum"
+        - description: The Client ID of the Service Account.
+          in: path
+          name: clientId
+          required: true
+          schema:
+            type: string
+            example: mdb_sa_id_667066535bc75b03c37b3038
+            pattern: ^mdb_sa_id_[a-fA-F\d]{24}$
+      requestBody:
+        content:
+          application/vnd.atlas.2024-08-05+json:
+            schema:
+              type: array
+              items:
+                $ref: "#/components/schemas/ServiceAccountIPAccessListEntry"
+            x-xgen-version: 2024-08-05
+        description: A list of access list entries to add to the access list of the
+          specified Service Account for the project.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedServiceAccountIPAccessEntry"
+              x-xgen-version: 2024-08-05
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "409":
+          $ref: "#/components/responses/conflict"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Add Access List entries for one Project Service Account
+      tags:
+        - Service Accounts
+  "/api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/accessList/{ipAddress}":
+    delete:
+      description: Removes the specified access list entry from the specified Service
+        Account for the project. You can't remove the requesting IP address from
+        the access list. Available as a preview feature.
+      operationId: deleteProjectServiceAccountAccessListEntry
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: The Client ID of the Service Account.
+          in: path
+          name: clientId
+          required: true
+          schema:
+            type: string
+            example: mdb_sa_id_667066535bc75b03c37b3038
+            pattern: ^mdb_sa_id_[a-fA-F\d]{24}$
+        - description: One IP address or multiple IP addresses represented as one CIDR
+            block. When specifying a CIDR block with a subnet mask, such as
+            192.0.2.0/24, use the URL-encoded value %2F for the forward slash /.
+          in: path
+          name: ipAddress
+          required: true
+          schema:
+            type: string
+            example: 192.0.2.0%2F24
+            pattern: ^([0-9]{1,3}\.){3}[0-9]{1,3}(%2[fF][0-9]{1,3})?|([0-9a-f]{1,4}\:){7}[0-9a-f]{1,4}(%2[fF][0-9]{1,3})?|([0-9a-f]{1,4}\:){1,6}\:(%2[fF][0-9]{1,3})?$
+      responses:
+        "204":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              x-xgen-version: 2024-08-05
+          description: This endpoint does not return a response body.
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Remove One Access List entry from one Project Service Account
+      tags:
+        - Service Accounts
+  "/api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/secrets":
+    post:
+      description: Create a secret for the specified Service Account in the specified
+        Project. Available as a preview feature.
+      operationId: createProjectServiceAccountSecret
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: The Client ID of the Service Account.
+          in: path
+          name: clientId
+          required: true
+          schema:
+            type: string
+            example: mdb_sa_id_667066535bc75b03c37b3038
+            pattern: ^mdb_sa_id_[a-fA-F\d]{24}$
+      requestBody:
+        content:
+          application/vnd.atlas.2024-08-05+json:
+            schema:
+              $ref: "#/components/schemas/ServiceAccountSecretRequest"
+        description: Details for the new secret.
+        required: true
+      responses:
+        "201":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/ServiceAccountSecret"
+              x-xgen-version: 2024-08-05
+          description: Created
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Create one Project Service Account Secret
+      tags:
+        - Service Accounts
+  "/api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/secrets/{secretId}":
+    delete:
+      description: Deletes the specified Service Account secret. Available as a
+        preview feature.
+      operationId: deleteProjectServiceAccountSecret
+      parameters:
+        - description: The Client ID of the Service Account.
+          in: path
+          name: clientId
+          required: true
+          schema:
+            type: string
+            example: mdb_sa_id_667066535bc75b03c37b3038
+            pattern: ^mdb_sa_id_[a-fA-F\d]{24}$
+        - description: Unique 24-hexadecimal digit string that identifies the secret.
+          in: path
+          name: secretId
+          required: true
+          schema:
+            type: string
+        - $ref: "#/components/parameters/groupId"
+      responses:
+        "204":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              x-xgen-version: 2024-08-05
+          description: This endpoint does not return a response body.
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Delete one Project Service Account Secret
+      tags:
+        - Service Accounts
+  "/api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}:invite":
+    post:
+      description: Assigns the specified Service Account to the specified Project.
+        Available as a preview feature.
+      operationId: addProjectServiceAccount
+      parameters:
+        - description: The Client ID of the Service Account.
+          in: path
+          name: clientId
+          required: true
+          schema:
+            type: string
+            example: mdb_sa_id_667066535bc75b03c37b3038
+            pattern: ^mdb_sa_id_[a-fA-F\d]{24}$
+        - $ref: "#/components/parameters/groupId"
+      requestBody:
+        content:
+          application/vnd.atlas.2024-08-05+json:
+            schema:
+              type: array
+              items:
+                $ref: "#/components/schemas/GroupServiceAccountRoleAssignment"
+            x-xgen-version: 2024-08-05
+        description: The Project permissions for the Service Account in the specified
+          Project.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/GroupServiceAccount"
+              x-xgen-version: 2024-08-05
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Assign One Service Account to One Project
+      tags:
+        - Service Accounts
   "/api/atlas/v2/groups/{groupId}/settings":
     get:
       description: Returns details about the specified project's settings. To use this
@@ -16365,6 +16782,395 @@ paths:
       summary: Validate one Atlas Resource Policy
       tags:
         - Resource Policies
+  "/api/atlas/v2/orgs/{orgId}/serviceAccounts":
+    get:
+      description: Returns all Service Accounts for the specified Organization.
+        Available as a preview feature.
+      operationId: listServiceAccounts
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/itemsPerPage"
+        - $ref: "#/components/parameters/pageNum"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedOrgServiceAccounts"
+              x-xgen-version: 2024-08-05
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: List All Organization Service Accounts
+      tags:
+        - Service Accounts
+    post:
+      description: Creates one Service Account for the specified Organization.
+        Available as a preview feature.
+      operationId: createServiceAccount
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+      requestBody:
+        content:
+          application/vnd.atlas.2024-08-05+json:
+            schema:
+              $ref: "#/components/schemas/OrgServiceAccountRequest"
+        description: Details of the new Service Account.
+        required: true
+      responses:
+        "201":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/OrgServiceAccount"
+              x-xgen-version: 2024-08-05
+          description: Created
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Create one Organization Service Account
+      tags:
+        - Service Accounts
+  "/api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}":
+    delete:
+      description: Deletes the specified Service Account. Available as a preview feature.
+      operationId: deleteServiceAccount
+      parameters:
+        - description: The Client ID of the Service Account.
+          in: path
+          name: clientId
+          required: true
+          schema:
+            type: string
+            example: mdb_sa_id_667066535bc75b03c37b3038
+            pattern: ^mdb_sa_id_[a-fA-F\d]{24}$
+        - $ref: "#/components/parameters/orgId"
+      responses:
+        "204":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              x-xgen-version: 2024-08-05
+          description: This endpoint does not return a response body.
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Delete one Organization Service Account
+      tags:
+        - Service Accounts
+    get:
+      description: Returns the specified Service Account. Available as a preview feature.
+      operationId: getServiceAccount
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - description: The Client ID of the Service Account.
+          in: path
+          name: clientId
+          required: true
+          schema:
+            type: string
+            example: mdb_sa_id_667066535bc75b03c37b3038
+            pattern: ^mdb_sa_id_[a-fA-F\d]{24}$
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/OrgServiceAccount"
+              x-xgen-version: 2024-08-05
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Get one Organization Service Account
+      tags:
+        - Service Accounts
+    patch:
+      description: Updates the specified Service Account in the specified
+        Organization. Available as a preview feature.
+      operationId: updateServiceAccount
+      parameters:
+        - description: The Client ID of the Service Account.
+          in: path
+          name: clientId
+          required: true
+          schema:
+            type: string
+            example: mdb_sa_id_667066535bc75b03c37b3038
+            pattern: ^mdb_sa_id_[a-fA-F\d]{24}$
+        - $ref: "#/components/parameters/orgId"
+      requestBody:
+        content:
+          application/vnd.atlas.2024-08-05+json:
+            schema:
+              $ref: "#/components/schemas/OrgServiceAccountUpdateRequest"
+        description: The new details for the Service Account.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/OrgServiceAccount"
+              x-xgen-version: 2024-08-05
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Update one Organization Service Account
+      tags:
+        - Service Accounts
+  "/api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/accessList":
+    get:
+      description: Returns all access list entries that you configured for the
+        specified Service Account for the organization. Available as a preview
+        feature.
+      operationId: listServiceAccountAccessList
+      parameters:
+        - $ref: "#/components/parameters/includeCount"
+        - $ref: "#/components/parameters/itemsPerPage"
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/pageNum"
+        - description: The Client ID of the Service Account.
+          in: path
+          name: clientId
+          required: true
+          schema:
+            type: string
+            example: mdb_sa_id_667066535bc75b03c37b3038
+            pattern: ^mdb_sa_id_[a-fA-F\d]{24}$
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedServiceAccountIPAccessEntry"
+              x-xgen-version: 2024-08-05
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return All Access List entries for one Organization Service Account
+      tags:
+        - Service Accounts
+    post:
+      description: Add Access List Entries for the specified Service Account for the
+        organization. Resources require all API requests to originate from IP
+        addresses on the API access list. Available as a preview feature.
+      operationId: createServiceAccountAccessList
+      parameters:
+        - $ref: "#/components/parameters/includeCount"
+        - $ref: "#/components/parameters/itemsPerPage"
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/pageNum"
+        - description: The Client ID of the Service Account.
+          in: path
+          name: clientId
+          required: true
+          schema:
+            type: string
+            example: mdb_sa_id_667066535bc75b03c37b3038
+            pattern: ^mdb_sa_id_[a-fA-F\d]{24}$
+      requestBody:
+        content:
+          application/vnd.atlas.2024-08-05+json:
+            schema:
+              type: array
+              items:
+                $ref: "#/components/schemas/ServiceAccountIPAccessListEntry"
+            x-xgen-version: 2024-08-05
+        description: A list of access list entries to add to the access list of the
+          specified Service Account for the organization.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedServiceAccountIPAccessEntry"
+              x-xgen-version: 2024-08-05
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "409":
+          $ref: "#/components/responses/conflict"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Add Access List entries for one Organization Service Account
+      tags:
+        - Service Accounts
+  "/api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/accessList/{ipAddress}":
+    delete:
+      description: Removes the specified access list entry from the specified Service
+        Account for the organization. You can't remove the requesting IP address
+        from the access list. Available as a preview feature.
+      operationId: deleteServiceAccountAccessListEntry
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - description: The Client ID of the Service Account.
+          in: path
+          name: clientId
+          required: true
+          schema:
+            type: string
+            example: mdb_sa_id_667066535bc75b03c37b3038
+            pattern: ^mdb_sa_id_[a-fA-F\d]{24}$
+        - description: One IP address or multiple IP addresses represented as one CIDR
+            block. When specifying a CIDR block with a subnet mask, such as
+            192.0.2.0/24, use the URL-encoded value %2F for the forward slash /.
+          in: path
+          name: ipAddress
+          required: true
+          schema:
+            type: string
+            example: 192.0.2.0%2F24
+            pattern: ^([0-9]{1,3}\.){3}[0-9]{1,3}(%2[fF][0-9]{1,3})?|([0-9a-f]{1,4}\:){7}[0-9a-f]{1,4}(%2[fF][0-9]{1,3})?|([0-9a-f]{1,4}\:){1,6}\:(%2[fF][0-9]{1,3})?$
+      responses:
+        "204":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              x-xgen-version: 2024-08-05
+          description: This endpoint does not return a response body.
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Remove One Access List entry from one Organization Service Account
+      tags:
+        - Service Accounts
+  "/api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/groups":
+    get:
+      description: Returns a list of all projects the specified Service Account is a
+        part of. Available as a preview feature.
+      operationId: listServiceAccountProjects
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - description: The Client ID of the Service Account.
+          in: path
+          name: clientId
+          required: true
+          schema:
+            type: string
+            example: mdb_sa_id_667066535bc75b03c37b3038
+            pattern: ^mdb_sa_id_[a-fA-F\d]{24}$
+        - $ref: "#/components/parameters/itemsPerPage"
+        - $ref: "#/components/parameters/pageNum"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedServiceAccountGroup"
+              x-xgen-version: 2024-08-05
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return All Service Account Project assignments
+      tags:
+        - Service Accounts
+  "/api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/secrets":
+    post:
+      description: Create a secret for the specified Service Account. Available as a
+        preview feature.
+      operationId: createServiceAccountSecret
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - description: The Client ID of the Service Account.
+          in: path
+          name: clientId
+          required: true
+          schema:
+            type: string
+            example: mdb_sa_id_667066535bc75b03c37b3038
+            pattern: ^mdb_sa_id_[a-fA-F\d]{24}$
+      requestBody:
+        content:
+          application/vnd.atlas.2024-08-05+json:
+            schema:
+              $ref: "#/components/schemas/ServiceAccountSecretRequest"
+        description: Details for the new secret.
+        required: true
+      responses:
+        "201":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/ServiceAccountSecret"
+              x-xgen-version: 2024-08-05
+          description: Created
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Create one Organization Service Account Secret
+      tags:
+        - Service Accounts
+  "/api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/secrets/{secretId}":
+    delete:
+      description: Deletes the specified Service Account secret. Available as a
+        preview feature.
+      operationId: deleteServiceAccountSecret
+      parameters:
+        - description: The Client ID of the Service Account.
+          in: path
+          name: clientId
+          required: true
+          schema:
+            type: string
+            example: mdb_sa_id_667066535bc75b03c37b3038
+            pattern: ^mdb_sa_id_[a-fA-F\d]{24}$
+        - description: Unique 24-hexadecimal digit string that identifies the secret.
+          in: path
+          name: secretId
+          required: true
+          schema:
+            type: string
+        - $ref: "#/components/parameters/orgId"
+      responses:
+        "204":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              x-xgen-version: 2024-08-05
+          description: This endpoint does not return a response body.
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Delete a Organization Service Account Secret
+      tags:
+        - Service Accounts
   "/api/atlas/v2/orgs/{orgId}/settings":
     get:
       description: Returns details about the specified organization's settings. To use
@@ -26545,6 +27351,103 @@ components:
           readOnly: true
       readOnly: true
       title: Group Service IP Addresses
+    GroupServiceAccount:
+      type: object
+      properties:
+        clientId:
+          type: string
+          description: The Client ID of the Service Account.
+          pattern: ^mdb_sa_id_[a-fA-F\d]{24}$
+        createdAt:
+          type: string
+          format: date-time
+          description: The date that the Service Account was created on.
+        description:
+          type: string
+          description: Human readable description for the Service Account.
+        name:
+          type: string
+          description: Human-readable name for the Service Account.
+        roles:
+          type: array
+          description: A list of Project roles associated with the Service Account.
+          items:
+            type: string
+            description: Project roles available for Service Accounts.
+          uniqueItems: true
+        secrets:
+          type: array
+          description: A list of secrets associated with the specified Service Account.
+          items:
+            $ref: "#/components/schemas/ServiceAccountSecret"
+          uniqueItems: true
+    GroupServiceAccountRequest:
+      type: object
+      properties:
+        description:
+          type: string
+          description: Human readable description for the Service Account.
+          maxLength: 250
+          minLength: 1
+          pattern: ^[\p{L}\p{N}\-_.,' ]*$
+        name:
+          type: string
+          description: Human-readable name for the Service Account. The name is modifiable
+            and does not have to be unique.
+          maxLength: 64
+          minLength: 1
+          pattern: ^[\p{L}\p{N}\-_.,' ]*$
+        roles:
+          type: array
+          description: A list of project-level roles for the Service Account.
+          items:
+            type: string
+            description: Project roles available for Service Accounts.
+        secretExpiresAfterHours:
+          type: integer
+          format: int32
+          description: The expiration time of the new Service Account secret. The
+            expiration is provided in hours.
+      required:
+        - description
+        - name
+        - roles
+        - secretExpiresAfterHours
+    GroupServiceAccountRoleAssignment:
+      type: object
+      properties:
+        roles:
+          type: array
+          description: The Project permissions for the Service Account in the specified
+            Project.
+          items:
+            type: string
+            description: Project roles available for Service Accounts.
+          uniqueItems: true
+      required:
+        - roles
+    GroupServiceAccountUpdateRequest:
+      type: object
+      properties:
+        description:
+          type: string
+          description: Human readable description for the Service Account.
+          maxLength: 250
+          minLength: 1
+          pattern: ^[\p{L}\p{N}\-_.,' ]*$
+        name:
+          type: string
+          description: Human-readable name for the Service Account. The name is modifiable
+            and does not have to be unique.
+          maxLength: 64
+          minLength: 1
+          pattern: ^[\p{L}\p{N}\-_.,' ]*$
+        roles:
+          type: array
+          description: A list of Project roles associated with the Service Account.
+          items:
+            type: string
+            description: Project roles available for Service Accounts.
     GroupSettings:
       type: object
       description: Collection of settings that configures the project.
@@ -29125,6 +30028,90 @@ components:
             type: string
             readOnly: true
           readOnly: true
+    OrgServiceAccount:
+      type: object
+      properties:
+        clientId:
+          type: string
+          description: The Client ID of the Service Account.
+          pattern: ^mdb_sa_id_[a-fA-F\d]{24}$
+        createdAt:
+          type: string
+          format: date-time
+          description: The date that the Service Account was created on.
+        description:
+          type: string
+          description: Human readable description for the Service Account.
+        name:
+          type: string
+          description: Human-readable name for the Service Account.
+        roles:
+          type: array
+          description: A list of Organization roles associated with the Service Account.
+          items:
+            type: string
+            description: Organization roles available for Service Accounts.
+          uniqueItems: true
+        secrets:
+          type: array
+          description: A list of secrets associated with the specified Service Account.
+          items:
+            $ref: "#/components/schemas/ServiceAccountSecret"
+          uniqueItems: true
+    OrgServiceAccountRequest:
+      type: object
+      properties:
+        description:
+          type: string
+          description: Human readable description for the Service Account.
+          maxLength: 250
+          minLength: 1
+          pattern: ^[\p{L}\p{N}\-_.,' ]*$
+        name:
+          type: string
+          description: Human-readable name for the Service Account. The name is modifiable
+            and does not have to be unique.
+          maxLength: 64
+          minLength: 1
+          pattern: ^[\p{L}\p{N}\-_.,' ]*$
+        roles:
+          type: array
+          description: A list of organization-level roles for the Service Account.
+          items:
+            type: string
+            description: Organization roles available for Service Accounts.
+        secretExpiresAfterHours:
+          type: integer
+          format: int32
+          description: The expiration time of the new Service Account secret. The
+            expiration is provided in hours.
+      required:
+        - description
+        - name
+        - roles
+        - secretExpiresAfterHours
+    OrgServiceAccountUpdateRequest:
+      type: object
+      properties:
+        description:
+          type: string
+          description: Human readable description for the Service Account.
+          maxLength: 250
+          minLength: 1
+          pattern: ^[\p{L}\p{N}\-_.,' ]*$
+        name:
+          type: string
+          description: Human-readable name for the Service Account. The name is modifiable
+            and does not have to be unique.
+          maxLength: 64
+          minLength: 1
+          pattern: ^[\p{L}\p{N}\-_.,' ]*$
+        roles:
+          type: array
+          description: A list of organization-level roles for the Service Account.
+          items:
+            type: string
+            description: Organization roles available for Service Accounts.
     OrganizationInvitation:
       type: object
       properties:
@@ -29296,6 +30283,12 @@ components:
           type: boolean
           description: Flag that indicates whether to require API operations to originate
             from an IP Address added to the API access list for the specified
+            organization.
+        maxServiceAccountSecretValidityInHours:
+          type: integer
+          format: int32
+          description: Number that represents the maximum period before expiry in hours
+            for new Atlas Admin API Service Account secrets within the specified
             organization.
         multiFactorAuthRequired:
           type: boolean
@@ -29469,6 +30462,35 @@ components:
             if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
+    PaginatedGroupServiceAccounts:
+      type: object
+      description: A list of Project Service Accounts.
+      properties:
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        results:
+          type: array
+          description: List of returned documents that MongoDB Cloud provides when
+            completing this request.
+          items:
+            $ref: "#/components/schemas/GroupServiceAccount"
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
+          minimum: 0
+          readOnly: true
     PaginatedHostView_Atlas:
       type: object
       properties:
@@ -29489,6 +30511,64 @@ components:
             completing this request.
           items:
             $ref: "#/components/schemas/ApiHostView_Atlas"
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
+          minimum: 0
+          readOnly: true
+    PaginatedOrgServiceAccounts:
+      type: object
+      description: A list of Organization Service Accounts.
+      properties:
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        results:
+          type: array
+          description: List of returned documents that MongoDB Cloud provides when
+            completing this request.
+          items:
+            $ref: "#/components/schemas/OrgServiceAccount"
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
+          minimum: 0
+          readOnly: true
+    PaginatedServiceAccountGroup:
+      type: object
+      description: A list of projects associated with the Service Account.
+      properties:
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        results:
+          type: array
+          description: List of returned documents that MongoDB Cloud provides when
+            completing this request.
+          items:
+            $ref: "#/components/schemas/ServiceAccountGroup"
           readOnly: true
         totalCount:
           type: integer
@@ -30943,6 +32023,118 @@ components:
           writeOnly: true
       required:
         - providerName
+    ServiceAccountGroup:
+      type: object
+      properties:
+        groupId:
+          type: string
+          description: "Unique 24-hexadecimal digit string that identifies your project.
+            **NOTE**: Groups and projects are synonymous terms. Your group id is
+            the same as your project id. For existing groups, your group/project
+            id remains the same. The resource and corresponding endpoints use
+            the term groups."
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+    ServiceAccountIPAccessListEntry:
+      type: object
+      properties:
+        cidrBlock:
+          type: string
+          description: Range of network addresses in the access list for the Service
+            Account. This parameter requires the range to be expressed in
+            Classless Inter-Domain Routing (CIDR) notation of Internet Protocol
+            version 4 or version 6 addresses. You can set a value for this
+            parameter or **ipAddress**, but not for both in the same request.
+          example: 203.0.113.0/24
+          pattern: ^((([0-9]{1,3}\.){3}[0-9]{1,3})|(:{0,2}([0-9a-f]{1,4}:){0,7}[0-9a-f]{1,4}[:]{0,2}))((%2[fF]|/)[0-9]{1,3})+$
+        createdAt:
+          type: string
+          format: date-time
+          description: Date MongoDB Cloud added the entry was added to the Access List.
+          readOnly: true
+        ipAddress:
+          type: string
+          description: Network address in the access list for the Service Account. This
+            parameter requires the address to be expressed as one Internet
+            Protocol version 4 or version 6 address. You can set a value for
+            this parameter or **cidrBlock**, but not for both in the same
+            request.
+          example: 203.0.113.10
+          pattern: ^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)(\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$
+        lastUsedAddress:
+          type: string
+          description: Network address that issued the most recent request to the API.
+            This parameter requires the address to be expressed as one Internet
+            Protocol version 4 or version 6 address. The resource returns this
+            parameter after this IP address makes at least one request.
+          readOnly: true
+        lastUsedAt:
+          type: string
+          format: date-time
+          description: Date when MongoDB Cloud received the most recent request that
+            originated from this Internet Protocol version 4 or version 6
+            address. The resource returns this parameter when at least one
+            request originates from this IP address. MongoDB Cloud updates this
+            parameter each time a client accesses the permitted resource, with a
+            delay of up to 5 minutes.
+          readOnly: true
+        requestCount:
+          type: integer
+          format: int32
+          description: The number of requests that has originated from this network address.
+          readOnly: true
+    ServiceAccountSecret:
+      type: object
+      properties:
+        createdAt:
+          type: string
+          format: date-time
+          description: The date that the secret was created on.
+          readOnly: true
+        expiresAt:
+          type: string
+          format: date-time
+          description: The date for the expiration of the secret.
+          readOnly: true
+        id:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the secret.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        lastUsedAt:
+          type: string
+          format: date-time
+          description: The last time the secret was used.
+          readOnly: true
+        maskedSecretValue:
+          type: string
+          description: The masked Service Account secret.
+          example: mdb_ic_sk_...12ce
+          readOnly: true
+        secret:
+          type: string
+          description: The secret for the Service Account. It will be returned only the
+            first time after creation.
+          pattern: ^mdb_sa_sk_[0-9a-zA-Z_-]{40}$
+          readOnly: true
+      required:
+        - createdAt
+        - expiresAt
+        - id
+    ServiceAccountSecretRequest:
+      type: object
+      properties:
+        secretExpiresAfterHours:
+          type: integer
+          format: int32
+          description: The expiration time of the new Service Account secret. The
+            expiration is provided in hours.
+      required:
+        - secretExpiresAfterHours
     ShardEntry:
       type: object
       description: Sharding configuration for a collection to be sharded on the
@@ -34716,6 +35908,34 @@ components:
             if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
+    PaginatedServiceAccountIPAccessEntry:
+      type: object
+      properties:
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        results:
+          type: array
+          description: List of returned documents that MongoDB Cloud provides when
+            completing this request.
+          items:
+            $ref: "#/components/schemas/ServiceAccountIPAccessListEntry"
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
+          minimum: 0
+          readOnly: true
     PaginatedSnapshot:
       type: object
       properties:
@@ -35107,3 +36327,11 @@ components:
     DigestAuth:
       scheme: digest
       type: http
+    ServiceAccounts:
+      description: Learn more about the Preview Feature [Service
+        Accounts](https://www.mongodb.com/docs/atlas/api/service-accounts-overview).
+      flows:
+        clientCredentials:
+          scopes: {}
+          tokenUrl: https://cloud.mongodb.com/api/oauth/token
+      type: oauth2
