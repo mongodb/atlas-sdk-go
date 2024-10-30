@@ -6,6 +6,8 @@ package admin
 type OrganizationSettings struct {
 	// Flag that indicates whether to require API operations to originate from an IP Address added to the API access list for the specified organization.
 	ApiAccessListRequired *bool `json:"apiAccessListRequired,omitempty"`
+	// Number that represents the maximum period before expiry in hours for new Atlas Admin API Service Account secrets within the specified organization.
+	MaxServiceAccountSecretValidityInHours *int `json:"maxServiceAccountSecretValidityInHours,omitempty"`
 	// Flag that indicates whether to require users to set up Multi-Factor Authentication (MFA) before accessing the specified organization. To learn more, see: https://www.mongodb.com/docs/atlas/security-multi-factor-authentication/.
 	MultiFactorAuthRequired *bool `json:"multiFactorAuthRequired,omitempty"`
 	// Flag that indicates whether to block MongoDB Support from accessing Atlas infrastructure and cluster logs for any deployment in the specified organization without explicit permission. Once this setting is turned on, you can grant MongoDB Support a 24-hour bypass access to the Atlas deployment to resolve support issues. To learn more, see: https://www.mongodb.com/docs/atlas/security-restrict-support-access/.
@@ -62,6 +64,39 @@ func (o *OrganizationSettings) HasApiAccessListRequired() bool {
 // SetApiAccessListRequired gets a reference to the given bool and assigns it to the ApiAccessListRequired field.
 func (o *OrganizationSettings) SetApiAccessListRequired(v bool) {
 	o.ApiAccessListRequired = &v
+}
+
+// GetMaxServiceAccountSecretValidityInHours returns the MaxServiceAccountSecretValidityInHours field value if set, zero value otherwise
+func (o *OrganizationSettings) GetMaxServiceAccountSecretValidityInHours() int {
+	if o == nil || IsNil(o.MaxServiceAccountSecretValidityInHours) {
+		var ret int
+		return ret
+	}
+	return *o.MaxServiceAccountSecretValidityInHours
+}
+
+// GetMaxServiceAccountSecretValidityInHoursOk returns a tuple with the MaxServiceAccountSecretValidityInHours field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrganizationSettings) GetMaxServiceAccountSecretValidityInHoursOk() (*int, bool) {
+	if o == nil || IsNil(o.MaxServiceAccountSecretValidityInHours) {
+		return nil, false
+	}
+
+	return o.MaxServiceAccountSecretValidityInHours, true
+}
+
+// HasMaxServiceAccountSecretValidityInHours returns a boolean if a field has been set.
+func (o *OrganizationSettings) HasMaxServiceAccountSecretValidityInHours() bool {
+	if o != nil && !IsNil(o.MaxServiceAccountSecretValidityInHours) {
+		return true
+	}
+
+	return false
+}
+
+// SetMaxServiceAccountSecretValidityInHours gets a reference to the given int and assigns it to the MaxServiceAccountSecretValidityInHours field.
+func (o *OrganizationSettings) SetMaxServiceAccountSecretValidityInHours(v int) {
+	o.MaxServiceAccountSecretValidityInHours = &v
 }
 
 // GetMultiFactorAuthRequired returns the MultiFactorAuthRequired field value if set, zero value otherwise

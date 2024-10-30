@@ -352,6 +352,28 @@ Class        | Method        | HTTP request  | Description   |
 *ServerlessPrivateEndpointsApi* | [GetServerlessPrivateEndpoint](./docs/ServerlessPrivateEndpointsApi.md#getserverlessprivateendpoint) | **Get** /api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint/{endpointId} | Return One Private Endpoint for One Serverless Instance |
 *ServerlessPrivateEndpointsApi* | [ListServerlessPrivateEndpoints](./docs/ServerlessPrivateEndpointsApi.md#listserverlessprivateendpoints) | **Get** /api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint | Return All Private Endpoints for One Serverless Instance |
 *ServerlessPrivateEndpointsApi* | [UpdateServerlessPrivateEndpoint](./docs/ServerlessPrivateEndpointsApi.md#updateserverlessprivateendpoint) | **Patch** /api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint/{endpointId} | Update One Private Endpoint for One Serverless Instance |
+*ServiceAccountsApi* | [AddProjectServiceAccount](./docs/ServiceAccountsApi.md#addprojectserviceaccount) | **Post** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}:invite | Assign One Service Account to One Project |
+*ServiceAccountsApi* | [CreateProjectServiceAccount](./docs/ServiceAccountsApi.md#createprojectserviceaccount) | **Post** /api/atlas/v2/groups/{groupId}/serviceAccounts | Create and Assign one Service Account to one Project |
+*ServiceAccountsApi* | [CreateProjectServiceAccountAccessList](./docs/ServiceAccountsApi.md#createprojectserviceaccountaccesslist) | **Post** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/accessList | Add Access List entries for one Project Service Account |
+*ServiceAccountsApi* | [CreateProjectServiceAccountSecret](./docs/ServiceAccountsApi.md#createprojectserviceaccountsecret) | **Post** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/secrets | Create one Project Service Account Secret |
+*ServiceAccountsApi* | [CreateServiceAccount](./docs/ServiceAccountsApi.md#createserviceaccount) | **Post** /api/atlas/v2/orgs/{orgId}/serviceAccounts | Create one Organization Service Account |
+*ServiceAccountsApi* | [CreateServiceAccountAccessList](./docs/ServiceAccountsApi.md#createserviceaccountaccesslist) | **Post** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/accessList | Add Access List entries for one Organization Service Account |
+*ServiceAccountsApi* | [CreateServiceAccountSecret](./docs/ServiceAccountsApi.md#createserviceaccountsecret) | **Post** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/secrets | Create one Organization Service Account Secret |
+*ServiceAccountsApi* | [DeleteProjectServiceAccount](./docs/ServiceAccountsApi.md#deleteprojectserviceaccount) | **Delete** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId} | Unassign One Service Account from One Project |
+*ServiceAccountsApi* | [DeleteProjectServiceAccountAccessListEntry](./docs/ServiceAccountsApi.md#deleteprojectserviceaccountaccesslistentry) | **Delete** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/accessList/{ipAddress} | Remove One Access List entry from one Project Service Account |
+*ServiceAccountsApi* | [DeleteProjectServiceAccountSecret](./docs/ServiceAccountsApi.md#deleteprojectserviceaccountsecret) | **Delete** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/secrets/{secretId} | Delete one Project Service Account Secret |
+*ServiceAccountsApi* | [DeleteServiceAccount](./docs/ServiceAccountsApi.md#deleteserviceaccount) | **Delete** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId} | Delete one Organization Service Account |
+*ServiceAccountsApi* | [DeleteServiceAccountAccessListEntry](./docs/ServiceAccountsApi.md#deleteserviceaccountaccesslistentry) | **Delete** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/accessList/{ipAddress} | Remove One Access List entry from one Organization Service Account |
+*ServiceAccountsApi* | [DeleteServiceAccountSecret](./docs/ServiceAccountsApi.md#deleteserviceaccountsecret) | **Delete** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/secrets/{secretId} | Delete a Organization Service Account Secret |
+*ServiceAccountsApi* | [GetProjectServiceAccount](./docs/ServiceAccountsApi.md#getprojectserviceaccount) | **Get** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId} | Get one Project Service Account |
+*ServiceAccountsApi* | [GetServiceAccount](./docs/ServiceAccountsApi.md#getserviceaccount) | **Get** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId} | Get one Organization Service Account |
+*ServiceAccountsApi* | [ListProjectServiceAccountAccessList](./docs/ServiceAccountsApi.md#listprojectserviceaccountaccesslist) | **Get** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/accessList | Return All Access List entries for one Project Service Account |
+*ServiceAccountsApi* | [ListProjectServiceAccounts](./docs/ServiceAccountsApi.md#listprojectserviceaccounts) | **Get** /api/atlas/v2/groups/{groupId}/serviceAccounts | List All Project Service Accounts |
+*ServiceAccountsApi* | [ListServiceAccountAccessList](./docs/ServiceAccountsApi.md#listserviceaccountaccesslist) | **Get** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/accessList | Return All Access List entries for one Organization Service Account |
+*ServiceAccountsApi* | [ListServiceAccountProjects](./docs/ServiceAccountsApi.md#listserviceaccountprojects) | **Get** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/groups | Return All Service Account Project assignments |
+*ServiceAccountsApi* | [ListServiceAccounts](./docs/ServiceAccountsApi.md#listserviceaccounts) | **Get** /api/atlas/v2/orgs/{orgId}/serviceAccounts | List All Organization Service Accounts |
+*ServiceAccountsApi* | [UpdateProjectServiceAccount](./docs/ServiceAccountsApi.md#updateprojectserviceaccount) | **Patch** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId} | Update one Project Service Account |
+*ServiceAccountsApi* | [UpdateServiceAccount](./docs/ServiceAccountsApi.md#updateserviceaccount) | **Patch** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId} | Update one Organization Service Account |
 *SharedTierRestoreJobsApi* | [CreateSharedClusterBackupRestoreJob](./docs/SharedTierRestoreJobsApi.md#createsharedclusterbackuprestorejob) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/restore | Create One Restore Job from One M2 or M5 Cluster |
 *SharedTierRestoreJobsApi* | [GetSharedClusterBackupRestoreJob](./docs/SharedTierRestoreJobsApi.md#getsharedclusterbackuprestorejob) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/restores/{restoreId} | Return One Restore Job for One M2 or M5 Cluster |
 *SharedTierRestoreJobsApi* | [ListSharedClusterBackupRestoreJobs](./docs/SharedTierRestoreJobsApi.md#listsharedclusterbackuprestorejobs) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/restores | Return All Restore Jobs for One M2 or M5 Cluster |
@@ -611,6 +633,10 @@ Class        | Method        | HTTP request  | Description   |
  - [GroupPaginatedEvent](./docs/GroupPaginatedEvent.md)
  - [GroupRole](./docs/GroupRole.md)
  - [GroupService](./docs/GroupService.md)
+ - [GroupServiceAccount](./docs/GroupServiceAccount.md)
+ - [GroupServiceAccountRequest](./docs/GroupServiceAccountRequest.md)
+ - [GroupServiceAccountRoleAssignment](./docs/GroupServiceAccountRoleAssignment.md)
+ - [GroupServiceAccountUpdateRequest](./docs/GroupServiceAccountUpdateRequest.md)
  - [GroupSettings](./docs/GroupSettings.md)
  - [GroupUpdate](./docs/GroupUpdate.md)
  - [HardwareSpec20240805](./docs/HardwareSpec20240805.md)
@@ -657,6 +683,9 @@ Class        | Method        | HTTP request  | Description   |
  - [OrgFederationSettings](./docs/OrgFederationSettings.md)
  - [OrgGroup](./docs/OrgGroup.md)
  - [OrgPaginatedEvent](./docs/OrgPaginatedEvent.md)
+ - [OrgServiceAccount](./docs/OrgServiceAccount.md)
+ - [OrgServiceAccountRequest](./docs/OrgServiceAccountRequest.md)
+ - [OrgServiceAccountUpdateRequest](./docs/OrgServiceAccountUpdateRequest.md)
  - [OrganizationInvitation](./docs/OrganizationInvitation.md)
  - [OrganizationInvitationGroupRoleAssignmentsRequest](./docs/OrganizationInvitationGroupRoleAssignmentsRequest.md)
  - [OrganizationInvitationRequest](./docs/OrganizationInvitationRequest.md)
@@ -697,11 +726,13 @@ Class        | Method        | HTTP request  | Description   |
  - [PaginatedDiskPartition](./docs/PaginatedDiskPartition.md)
  - [PaginatedEventTypeDetailsResponse](./docs/PaginatedEventTypeDetailsResponse.md)
  - [PaginatedFederationIdentityProvider](./docs/PaginatedFederationIdentityProvider.md)
+ - [PaginatedGroupServiceAccounts](./docs/PaginatedGroupServiceAccounts.md)
  - [PaginatedHostViewAtlas](./docs/PaginatedHostViewAtlas.md)
  - [PaginatedIntegration](./docs/PaginatedIntegration.md)
  - [PaginatedNetworkAccess](./docs/PaginatedNetworkAccess.md)
  - [PaginatedOnlineArchive](./docs/PaginatedOnlineArchive.md)
  - [PaginatedOrgGroup](./docs/PaginatedOrgGroup.md)
+ - [PaginatedOrgServiceAccounts](./docs/PaginatedOrgServiceAccounts.md)
  - [PaginatedOrganization](./docs/PaginatedOrganization.md)
  - [PaginatedPipelineRun](./docs/PaginatedPipelineRun.md)
  - [PaginatedPrivateNetworkEndpointIdEntry](./docs/PaginatedPrivateNetworkEndpointIdEntry.md)
@@ -709,6 +740,8 @@ Class        | Method        | HTTP request  | Description   |
  - [PaginatedRestoreJob](./docs/PaginatedRestoreJob.md)
  - [PaginatedRoleMapping](./docs/PaginatedRoleMapping.md)
  - [PaginatedServerlessInstanceDescription](./docs/PaginatedServerlessInstanceDescription.md)
+ - [PaginatedServiceAccountGroup](./docs/PaginatedServiceAccountGroup.md)
+ - [PaginatedServiceAccountIPAccessEntry](./docs/PaginatedServiceAccountIPAccessEntry.md)
  - [PaginatedSnapshot](./docs/PaginatedSnapshot.md)
  - [PaginatedTeam](./docs/PaginatedTeam.md)
  - [PaginatedTeamRole](./docs/PaginatedTeamRole.md)
@@ -762,6 +795,10 @@ Class        | Method        | HTTP request  | Description   |
  - [ServerlessTenantCreateRequest](./docs/ServerlessTenantCreateRequest.md)
  - [ServerlessTenantEndpoint](./docs/ServerlessTenantEndpoint.md)
  - [ServerlessTenantEndpointUpdate](./docs/ServerlessTenantEndpointUpdate.md)
+ - [ServiceAccountGroup](./docs/ServiceAccountGroup.md)
+ - [ServiceAccountIPAccessListEntry](./docs/ServiceAccountIPAccessListEntry.md)
+ - [ServiceAccountSecret](./docs/ServiceAccountSecret.md)
+ - [ServiceAccountSecretRequest](./docs/ServiceAccountSecretRequest.md)
  - [ShardEntry](./docs/ShardEntry.md)
  - [ShardKeys](./docs/ShardKeys.md)
  - [ShardingRequest](./docs/ShardingRequest.md)
