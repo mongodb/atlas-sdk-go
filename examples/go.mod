@@ -5,6 +5,7 @@ go 1.22.0
 toolchain go1.23.1
 
 replace go.mongodb.org/atlas-sdk/v20241023001 => ../
+
 replace go.mongodb.org/atlas-sdk/v20241023001/auth/credentials => ../auth/credentials
 
 require (
@@ -12,6 +13,8 @@ require (
 	github.com/mongodb-forks/digest v1.1.0
 	go.mongodb.org/atlas-sdk/v20241023001 v20241023001.1.0
 )
+
+require golang.org/x/oauth2 v0.23.0 // indirect
 
 require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
