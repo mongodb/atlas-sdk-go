@@ -112,10 +112,11 @@ func NewHTTPClientWithOAuthToken(tokenSource oauth2.TokenSource) *http.Client {
 	}
 }
 
+// RevokeToken checks if TokenSource is a RevocableTokenSource and revokes Token.
 func RevokeToken(tokenSource oauth2.TokenSource) error {
-	oAuthTokenSource, ok := tokenSource.(*OAuthTokenSource)
+	var revocableTokenSource, ok = tokenSource.(RevocableTokenSource)
 	if !ok {
-		return errors.New("cannot revoke OAuth Token. tokenSource is not of type OAuthTokenSource")
+		return errors.New("cannot revoke OAuth Token. tokenSource is not of type RevocableTokenSource")
 	}
-	return oAuthTokenSource.RevokeToken()
+	return revocableTokenSource.RevokeToken()
 }

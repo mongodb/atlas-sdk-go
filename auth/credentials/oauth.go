@@ -15,9 +15,18 @@ import (
 	"golang.org/x/oauth2"
 )
 
+// RevocableTokenSource Interface for TokenSource that provides OAuth Access Token Revocation
+// https://oauth.net/2/token-revocation
+type RevocableTokenSource interface {
+	oauth2.TokenSource
+	// RevokeToken revokes the Access Token while also removing it from the Access Token Cache.
+	// When the Access Token is expired or missing, revoke will return without any action.
+	RevokeToken() error
+}
+
 // OAuthTokenSource manages the OAuth Token fetching and refreshing using a LocalTokenCache.
 type OAuthTokenSource struct {
-	// Wrapped TokenSource that will be used to obtain OAuth Tokens
+	// Wrapped TokenSource that will be used to get OAuth Tokens
 	tokenSource oauth2.TokenSource
 	tokenCache  LocalTokenCache
 
