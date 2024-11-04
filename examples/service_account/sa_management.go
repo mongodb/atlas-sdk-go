@@ -67,7 +67,7 @@ func main() {
 	newSDK, err := admin.NewClient(
 		admin.UseBaseURL(host),
 		// 4.1 Using ClientId and Secret returned by API
-		// API might have up to 2 secrets
+		//  might have up to 2 secrets
 		admin.UseOAuthAuth(*sa.ClientId, *newSecret.Secret, nil),
 	)
 
@@ -80,6 +80,6 @@ func main() {
 
 	fmt.Printf("Projects size: %v", *projects.TotalCount)
 
-	// 6. Remove created Service Account. We would not be able to use it afterwards without access to Secret value.
+	// 6. Remove created Service Account. We would not be able to use it afterward without access to Secret value.
 	sdk.ServiceAccountsApi.DeleteServiceAccount(ctx, *sa.ClientId, org)
 }

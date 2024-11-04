@@ -72,7 +72,7 @@ func main() {
 	}
 
 	// Revoke Token in the client (logout)
-	err = credentials.RevokeToken(tokenSource)
+	err = tokenSource.RevokeToken()
 	if err != nil {
 		log.Fatalf("Error: %v", err)
 	}

@@ -2,7 +2,6 @@ package credentials
 
 import (
 	"context"
-	"errors"
 	"net/http"
 	"strings"
 
@@ -11,8 +10,9 @@ import (
 	"golang.org/x/oauth2/clientcredentials"
 )
 
-// tokenAPIPath for obtaining OAuth Access Token from server
-// nolint:gosec //url only
+// tokenAPIPath for getting OAuth Access Token from server
+//
+//nolint:gosec //url only
 const tokenAPIPath = "/api/oauth/token"
 
 // revokeAPIPath for revoking OAuth Access Token from server
@@ -24,7 +24,7 @@ const serverTokenURL = core.DefaultCloudURL + tokenAPIPath
 // serverURL for Revoke Atlas API
 const serverRevokeURL = core.DefaultCloudURL + revokeAPIPath
 
-// AtlasTokenSourceOptions provides set of input arguments
+// AtlasTokenSourceOptions provides a set of input arguments
 // for creation of credentials.TokenSource interface
 type AtlasTokenSourceOptions struct {
 	ClientID     string
@@ -41,7 +41,7 @@ type AtlasTokenSourceOptions struct {
 }
 
 // NewTokenSourceWithOptions initializes an OAuthTokenSource with advanced credentials.AtlasTokenSourceOptions
-func NewTokenSourceWithOptions(opts AtlasTokenSourceOptions) oauth2.TokenSource {
+func NewTokenSourceWithOptions(opts AtlasTokenSourceOptions) RevocableTokenSource {
 	var tokenURL string
 	var revokeUrl string
 	if opts.BaseURL != nil {
@@ -90,9 +90,9 @@ func NewTokenSourceWithOptions(opts AtlasTokenSourceOptions) oauth2.TokenSource 
 	}
 }
 
-// NewTokenSource initializes OAuth Token Source that provides a way to obtain valid OAuth Tokens.
+// NewTokenSource initializes OAuth Token Source that provides a way to get valid OAuth Tokens.
 // See credentials.NewTokenSourceWithOptions for advanced use cases.
-func NewTokenSource(clientID, clientSecret string) oauth2.TokenSource {
+func NewTokenSource(clientID, clientSecret string) RevocableTokenSource {
 	return NewTokenSourceWithOptions(AtlasTokenSourceOptions{
 		ClientID:     clientID,
 		ClientSecret: clientSecret,
@@ -110,13 +110,4 @@ func NewHTTPClientWithOAuthToken(tokenSource oauth2.TokenSource) *http.Client {
 			TokenSource:         tokenSource,
 		},
 	}
-}
-
-// RevokeToken checks if TokenSource is a RevocableTokenSource and revokes Token.
-func RevokeToken(tokenSource oauth2.TokenSource) error {
-	var revocableTokenSource, ok = tokenSource.(RevocableTokenSource)
-	if !ok {
-		return errors.New("cannot revoke OAuth Token. tokenSource is not of type RevocableTokenSource")
-	}
-	return revocableTokenSource.RevokeToken()
 }
