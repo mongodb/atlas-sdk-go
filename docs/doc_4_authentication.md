@@ -164,7 +164,25 @@ if err != nil {
 }
 ```
 
+For more information see [auth advanced](https://github.com/mongodb/atlas-sdk-go/tree/main/examples/auth_advanced) example.
+
+### Overriding the User Agent
+
+You can override the default user agent by specifying an agent of your choice in the `AtlasTokenSourceOptions`.
+
+```go
+tokenSource := credentials.NewTokenSourceWithOptions(credentials.AtlasTokenSourceOptions{
+	ClientID:     clientID,
+	ClientSecret: clientSecret,
+	UserAgent:    "CustomUserAgent/1.0",
+})
+```
+
+For more information see [auth advanced](https://github.com/mongodb/atlas-sdk-go/tree/main/examples/auth_advanced) example.
+
 ### Creating a Custom Transport
+
+> NOTE: Custom Transport is provided as alpha feature and can be subject to breaking changes
 
 You can create a custom transport to inject the OAuth token into HTTP requests. 
 The `OAuthCustomHTTPTransport` provides an `UnderlyingTransport` field that specifies the transport to use for requests.
@@ -182,14 +200,3 @@ transport := OAuthCustomHTTPTransport{
 // Use transport with your own HTTP client or create a new one.
 ```
 
-### Overriding the User Agent
-
-You can override the default user agent by specifying an agent of your choice in the `AtlasTokenSourceOptions`.
-
-```go
-tokenSource := credentials.NewTokenSourceWithOptions(credentials.AtlasTokenSourceOptions{
-	ClientID:     clientID,
-	ClientSecret: clientSecret,
-	UserAgent:    "CustomUserAgent/1.0",
-})
-```

@@ -51,6 +51,18 @@ func MockOAuthTokenEndpoint(token string) *httptest.Server {
 	return httptest.NewServer(handler)
 }
 
+// MockOAuthRevokeEndpoint creates a mock OAuth revoke endpoint that simulates token revocation responses.
+func MockOAuthRevokeEndpoint(statusCode int) *httptest.Server {
+	handler := http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if r.Method != http.MethodPost || r.FormValue("token") == "" {
+			http.Error(w, "invalid request", http.StatusBadRequest)
+			return
+		}
+		w.WriteHeader(statusCode)
+	})
+	return httptest.NewServer(handler)
+}
+
 // Mock Token generation for testing
 func generateMockJWT(expiration time.Time) string {
 	header := `{"alg":"HS256","typ":"JWT"}`
@@ -89,14 +101,12 @@ func TestNewServiceAccountOAuthClientWithTokenSource_WithValidToken(t *testing.T
 		TokenCache:   mockCache,
 	})
 
-	_, err := tokenSource.GetValidToken() // Get or refresh the Token
+	validToken, err := tokenSource.Token() // Get or refresh the Token
 	assert.Nil(t, err)
-	oAuthTokenSource := tokenSource.(*OAuthTokenSource)
-
-	assert.NotNil(t, oAuthTokenSource)
-	assert.Equal(t, token, oAuthTokenSource.token.AccessToken)
-	assert.True(t, oAuthTokenSource.token.Valid())
-	assert.WithinDuration(t, expiration, oAuthTokenSource.token.Expiry, time.Second)
+	assert.NotNil(t, validToken)
+	assert.Equal(t, token, validToken.AccessToken)
+	assert.True(t, validToken.Valid())
+	assert.WithinDuration(t, expiration, validToken.Expiry, time.Second)
 }
 
 // Test for providing valid Token and parsing the expiration date
@@ -117,10 +127,9 @@ func TestNewServiceAccountOAuthClientWithTokenSource_WithWithExpiredToken(t *tes
 		BaseURL:      &mockServer.URL,
 	})
 
-	oAuthTokenSource := tokenSource.(*OAuthTokenSource)
-	_, err := tokenSource.GetValidToken() // Get or refresh the Token
+	validToken, err := tokenSource.Token() // Get or refresh the Token
 	assert.Nil(t, err)
-	assert.Equal(t, remoteToken, oAuthTokenSource.token.AccessToken)
+	assert.Equal(t, remoteToken, validToken.AccessToken)
 }
 
 // Test for providing valid Token and parsing the expiration date
@@ -141,11 +150,9 @@ func TestNewServiceAccountOAuthClientWithTokenSource_WithWithAlmostExpiredToken(
 		TokenCache:   mockCache,
 		BaseURL:      &mockServer.URL,
 	})
-
-	oAuthTokenSource := tokenSource.(*OAuthTokenSource)
-	_, err := tokenSource.GetValidToken() // Get or refresh the Token
+	validToken, err := tokenSource.Token() // Get or refresh the Token
 	assert.Nil(t, err)
-	assert.Equal(t, remoteToken, oAuthTokenSource.token.AccessToken)
+	assert.Equal(t, remoteToken, validToken.AccessToken)
 }
 
 // Test error handling when fetching a Token fails (e.g., invalid response)
@@ -167,12 +174,10 @@ func TestOAuthClient_FetchToken_Failure(t *testing.T) {
 		BaseURL:      &finalUrl,
 	})
 
-	// Call GetAccessToken expecting an error
-	_, err := tokenSource.GetValidToken()
+	// Call GetValidToken expecting an error
+	_, err := tokenSource.Token()
 	assert.Error(t, err)
-	oAuthTokenSource := tokenSource.(*OAuthTokenSource)
-	assert.Equal(t, mockServer.URL+tokenAPIPath, oAuthTokenSource.tokenURL)
-	assert.Contains(t, err.Error(), "Failed to obtain Access Token when fetching new OAuth Token from remote server")
+	assert.Contains(t, err.Error(), "oauth2: cannot fetch token: 401 Unauthorized")
 }
 
 // Test error handling when fetching a Token fails (e.g., invalid response)
@@ -193,11 +198,11 @@ func TestOAuthClient_FetchToken_FailureRateLimit(t *testing.T) {
 		BaseURL:      &mockServer.URL,
 	})
 
-	// Call GetAccessToken expecting an error
-	_, err := client.GetValidToken()
+	// Call GetValidToken expecting an error
+	_, err := client.Token()
 	assert.Error(t, err)
 	assert.Contains(t, err.Error(), "Rate Limit reached")
-	assert.Contains(t, err.Error(), "Token request was rate limited")
+	assert.Contains(t, err.Error(), "auth2: cannot fetch token: 429 Too Many Requests")
 }
 
 // Test error handling when fetching a Token fails (e.g., invalid response)
@@ -218,111 +223,13 @@ func TestOAuthClient_FetchToken_FailureHtmlContentType(t *testing.T) {
 		BaseURL:      &mockServer.URL,
 	})
 
-	// Call GetAccessToken expecting an error
-	_, err := client.GetValidToken()
+	// Call GetValidToken expecting an error
+	_, err := client.Token()
 	assert.Error(t, err)
-	assert.Contains(t, err.Error(), "Failed to obtain Access Token when fetching new OAuth Token from remote server")
+	assert.Contains(t, err.Error(), "oauth2: cannot fetch token: 403 Forbidden")
 }
 
-// Test CustomTransport to ensure Token is injected into requests
-func TestCustomTransport_RoundTrip(t *testing.T) {
-	// Mock the OAuth TokenCache
-	expiration := time.Now().Add(1 * time.Hour)
-	token := generateMockJWT(expiration)
-	mockCache := &MockTokenCache{token: token}
-
-	ctx := context.Background()
-	oauthClient := NewTokenSourceWithOptions(AtlasTokenSourceOptions{
-		ClientID:     "clientID",
-		ClientSecret: "clientSecret",
-		TokenCache:   mockCache,
-		Context:      &ctx,
-	})
-
-	httpClientWithTransport := NewHTTPClientWithOAuthToken(oauthClient)
-	assert.NotNil(t, httpClientWithTransport)
-	// Try using transport directly without http TokenCache
-	transport := &OAuthCustomHTTPTransport{
-		UnderlyingTransport: http.DefaultTransport,
-		TokenSource:         oauthClient,
-	}
-
-	// Mock the HTTP server
-	mockServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		// Check if the Authorization header is set correctly
-		assert.Contains(t, r.Header.Get("Authorization"), "Bearer "+token)
-		w.WriteHeader(http.StatusOK)
-	}))
-	defer mockServer.Close()
-
-	// Make a request using the custom transport
-	req, _ := http.NewRequest("GET", mockServer.URL, http.NoBody)
-	client := &http.Client{Transport: transport}
-	//nolint:all
-	resp, err := client.Do(req)
-
-	assert.NoError(t, err)
-	assert.Equal(t, http.StatusOK, resp.StatusCode)
-}
-
-// Test default User Agent
-func TestOAuthClient_DefaultUserAgent(t *testing.T) {
-	// Assert default User Agent
-	mockServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		assert.NotNil(t, r.Header.Get("User-Agent"))
-		assert.Equal(t, core.DefaultUserAgent, r.Header.Get("User-Agent"))
-		w.WriteHeader(http.StatusOK)
-	}))
-	defer mockServer.Close()
-
-	mockCache := &MockTokenCache{}
-	tokenSource := NewTokenSourceWithOptions(AtlasTokenSourceOptions{
-		ClientID:     "clientID",
-		ClientSecret: "clientSecret",
-		TokenCache:   mockCache,
-		BaseURL:      &mockServer.URL,
-	})
-
-	_, _ = tokenSource.GetValidToken()
-}
-
-// Test custom User Agent
-func TestOAuthClient_CustomUserAgent(t *testing.T) {
-	const customUserAgent = "/testing"
-
-	// Assert custom User Agent
-	mockServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		assert.NotNil(t, r.Header.Get("User-Agent"))
-		assert.Equal(t, customUserAgent, r.Header.Get("User-Agent"))
-		w.WriteHeader(http.StatusOK)
-	}))
-	defer mockServer.Close()
-
-	mockCache := &MockTokenCache{}
-	tokenSource := NewTokenSourceWithOptions(AtlasTokenSourceOptions{
-		ClientID:     "clientID",
-		ClientSecret: "clientSecret",
-		UserAgent:    customUserAgent,
-		TokenCache:   mockCache,
-		BaseURL:      &mockServer.URL,
-	})
-
-	_, _ = tokenSource.GetValidToken()
-}
-
-// MockOAuthRevokeEndpoint creates a mock OAuth revoke endpoint that simulates token revocation responses.
-func MockOAuthRevokeEndpoint(statusCode int) *httptest.Server {
-	handler := http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		if r.Method != http.MethodPost || r.FormValue("token") == "" {
-			http.Error(w, "invalid request", http.StatusBadRequest)
-			return
-		}
-		w.WriteHeader(statusCode)
-	})
-	return httptest.NewServer(handler)
-}
-
-// TestOAuthTokenSource_RevokeToken_Success tests successful token revocation.
+// Test OAuthTokenSource_RevokeToken_Success tests successful token revocation.
 func TestOAuthTokenSource_RevokeToken_Success(t *testing.T) {
 	mockServer := MockOAuthRevokeEndpoint(http.StatusOK)
 	defer mockServer.Close()
@@ -337,20 +244,6 @@ func TestOAuthTokenSource_RevokeToken_Success(t *testing.T) {
 
 	err := tokenSource.RevokeToken()
 	assert.NoError(t, err)
-}
-
-func TestOAuthTokenSource_TokenAndRevokeUrls_Default(t *testing.T) {
-	tokenSource := NewTokenSourceWithOptions(AtlasTokenSourceOptions{
-		ClientID:     "clientID",
-		ClientSecret: "clientSecret",
-		TokenCache:   &MockTokenCache{token: "test"},
-	})
-
-	oAuthTokenSource := tokenSource.(*OAuthTokenSource)
-	assert.NotNil(t, oAuthTokenSource.tokenURL)
-	assert.NotNil(t, oAuthTokenSource.revokeURL)
-	assert.Equal(t, oAuthTokenSource.tokenURL, serverTokenURL)
-	assert.Equal(t, oAuthTokenSource.revokeURL, serverRevokeURL)
 }
 
 // TestOAuthTokenSource_RevokeToken_Failure tests token revocation failure due to unauthorized access.

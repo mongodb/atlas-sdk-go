@@ -34,7 +34,7 @@ func main() {
 		log.Fatalf("Error: %v", err)
 	}
 
-	projects, _, err := sdk.ProjectsApi.ListProjectsWithParams(ctx,&admin.ListProjectsApiParams{}).Execute()
+	projects, _, err := sdk.ProjectsApi.ListProjectsWithParams(ctx, &admin.ListProjectsApiParams{}).Execute()
 	if err != nil {
 		log.Fatalf("Error: %v", err)
 	}

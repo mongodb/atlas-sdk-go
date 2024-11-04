@@ -2,23 +2,24 @@ package credentials
 
 import (
 	"fmt"
+	"golang.org/x/oauth2"
 	"net/http"
 )
 
-// OAuthCustomHTTPTransport is an custom HTTP transport that injects the OAuth2 Token into requests.
+// OAuthCustomHTTPTransport is custom HTTP transport that injects the OAuth2 Token into requests.
 // Transport can be extended by supplying UnderlyingTransport
 // TokenSource can be created by credentials.NewTokenSource
 type OAuthCustomHTTPTransport struct {
 	// UnderlyingTransport is the base RoundTripper used to make HTTP requests.
 	UnderlyingTransport http.RoundTripper
 	// TokenSource used to obtain valid OAuth Token
-	TokenSource TokenSource
+	TokenSource oauth2.TokenSource
 }
 
 // RoundTrip implements the RoundTripper interface.
 func (t *OAuthCustomHTTPTransport) RoundTrip(req *http.Request) (*http.Response, error) {
 	// Get a valid Token (refreshing it if necessary)
-	token, err := t.TokenSource.GetValidToken() // Get or refresh the Token
+	token, err := t.TokenSource.Token() // Get or refresh the Token
 	if err != nil {
 		return nil, fmt.Errorf("failed to inject access Token: %w", err)
 	}
@@ -31,6 +32,6 @@ func (t *OAuthCustomHTTPTransport) RoundTrip(req *http.Request) (*http.Response,
 }
 
 // SetAuthHeader sets the Authorization header with the access Token.
-func (t *OAuthCustomHTTPTransport) setAuthHeader(r *http.Request, token *Token) {
+func (t *OAuthCustomHTTPTransport) setAuthHeader(r *http.Request, token *oauth2.Token) {
 	r.Header.Set("Authorization", "Bearer "+token.AccessToken)
 }

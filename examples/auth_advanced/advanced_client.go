@@ -63,7 +63,7 @@ func main() {
 		log.Fatalf("Error: %v", err)
 	}
 
-	projects, _, err := sdk.ProjectsApi.ListProjectsWithParams(ctx,&admin.ListProjectsApiParams{}).Execute()
+	projects, _, err := sdk.ProjectsApi.ListProjectsWithParams(ctx, &admin.ListProjectsApiParams{}).Execute()
 	if err != nil {
 		log.Fatalf("Error making request: %v", err)
 	}
@@ -72,7 +72,7 @@ func main() {
 	}
 
 	// Revoke Token in the client (logout)
-	err = tokenSource.RevokeToken()
+	err = credentials.RevokeToken(tokenSource)
 	if err != nil {
 		log.Fatalf("Error: %v", err)
 	}

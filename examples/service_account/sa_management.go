@@ -50,15 +50,15 @@ func main() {
 	}
 
 	// 2. Rotate secret
-	newSecret, _, err := sdk.ServiceAccountsApi.CreateServiceAccountSecret(ctx,  org, *sa.ClientId, &admin.ServiceAccountSecretRequest{
-		SecretExpiresAfterHours: 365*24,
-	}).Execute();
+	newSecret, _, err := sdk.ServiceAccountsApi.CreateServiceAccountSecret(ctx, org, *sa.ClientId, &admin.ServiceAccountSecretRequest{
+		SecretExpiresAfterHours: 365 * 24,
+	}).Execute()
 	if err != nil {
 		log.Fatalf("Error: %v", err)
 	}
 
 	// 3. Delete rotated secret
-	_,  err = sdk.ServiceAccountsApi.DeleteServiceAccountSecret(ctx, *sa.ClientId, sa.GetSecrets()[0].Id, org).Execute();
+	_, err = sdk.ServiceAccountsApi.DeleteServiceAccountSecret(ctx, *sa.ClientId, sa.GetSecrets()[0].Id, org).Execute()
 	if err != nil {
 		log.Fatalf("Error: %v", err)
 	}

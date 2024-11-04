@@ -2,6 +2,7 @@ package admin // import "go.mongodb.org/atlas-sdk/v20241023001/admin"
 
 import (
 	"errors"
+	"golang.org/x/oauth2"
 	"net/http"
 	"strings"
 
@@ -60,7 +61,7 @@ func UseDigestAuth(apiKey, apiSecret string) ClientModifier {
 // Warning: any previously set httpClient will be overwritten. To fully customize HttpClient use UseHTTPClient method.
 func UseOAuthAuth(clientID, clientSecret string, tokenCache credentials.LocalTokenCache) ClientModifier {
 	return func(c *Configuration) error {
-		var tokenSource credentials.TokenSource
+		var tokenSource oauth2.TokenSource
 		if tokenCache != nil {
 			tokenSource = credentials.NewTokenSourceWithOptions(credentials.AtlasTokenSourceOptions{
 				ClientID:     clientID,

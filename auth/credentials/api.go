@@ -2,15 +2,17 @@ package credentials
 
 import (
 	"context"
+	"errors"
 	"net/http"
 	"strings"
 
 	"go.mongodb.org/atlas-sdk/v20241023001/internal/core"
+	"golang.org/x/oauth2"
+	"golang.org/x/oauth2/clientcredentials"
 )
 
 // tokenAPIPath for obtaining OAuth Access Token from server
-//
-//nolint:gosec //url only
+// nolint:gosec //url only
 const tokenAPIPath = "/api/oauth/token"
 
 // revokeAPIPath for revoking OAuth Access Token from server
@@ -39,7 +41,7 @@ type AtlasTokenSourceOptions struct {
 }
 
 // NewTokenSourceWithOptions initializes an OAuthTokenSource with advanced credentials.AtlasTokenSourceOptions
-func NewTokenSourceWithOptions(opts AtlasTokenSourceOptions) TokenSource {
+func NewTokenSourceWithOptions(opts AtlasTokenSourceOptions) oauth2.TokenSource {
 	var tokenURL string
 	var revokeUrl string
 	if opts.BaseURL != nil {
@@ -63,40 +65,57 @@ func NewTokenSourceWithOptions(opts AtlasTokenSourceOptions) TokenSource {
 		ctx = *opts.Context
 	}
 
-	if opts.TokenCache == nil {
-		opts.TokenCache = &InMemoryTokenCache{}
+	config := &clientcredentials.Config{
+		ClientID:     opts.ClientID,
+		ClientSecret: opts.ClientSecret,
+		TokenURL:     tokenURL,
+		AuthStyle:    oauth2.AuthStyleInHeader,
+		Scopes:       []string{}, // No support for scopes.
+	}
+
+	// oauth2 token source for creating tokens
+	tokenSource := config.TokenSource(ctx)
+	if opts.TokenCache != nil {
+		tokenSource = ReuseWrapperCacheTokenSource(tokenSource, opts.TokenCache)
 	}
 
 	return &OAuthTokenSource{
+		tokenSource:  tokenSource,
+		tokenCache:   opts.TokenCache,
+		revokeURL:    revokeUrl,
+		userAgent:    userAgent,
+		ctx:          ctx,
 		clientID:     opts.ClientID,
 		clientSecret: opts.ClientSecret,
-		userAgent:    userAgent,
-		tokenURL:     tokenURL,
-		revokeURL:    revokeUrl,
-		tokenCache:   opts.TokenCache,
-		ctx:          ctx,
 	}
 }
 
 // NewTokenSource initializes OAuth Token Source that provides a way to obtain valid OAuth Tokens.
 // See credentials.NewTokenSourceWithOptions for advanced use cases.
-func NewTokenSource(clientID, clientSecret string) TokenSource {
+func NewTokenSource(clientID, clientSecret string) oauth2.TokenSource {
 	return NewTokenSourceWithOptions(AtlasTokenSourceOptions{
 		ClientID:     clientID,
 		ClientSecret: clientSecret,
 		UserAgent:    core.DefaultUserAgent,
-		TokenCache:   &InMemoryTokenCache{},
 	})
 }
 
 // NewHTTPClientWithOAuthToken helper method for creating HTTP client with OAuth authentication support.
 // Use this method for performing requests using http.DefaultTransport.
-// For more advanced use cases please create your own credentials.OAuthCustomHTTPTransport.
-func NewHTTPClientWithOAuthToken(client TokenSource) *http.Client {
+// For more advanced use cases, please create your own credentials.OAuthCustomHTTPTransport.
+func NewHTTPClientWithOAuthToken(tokenSource oauth2.TokenSource) *http.Client {
 	return &http.Client{
 		Transport: &OAuthCustomHTTPTransport{
 			UnderlyingTransport: http.DefaultTransport,
-			TokenSource:         client,
+			TokenSource:         tokenSource,
 		},
 	}
+}
+
+func RevokeToken(tokenSource oauth2.TokenSource) error {
+	oAuthTokenSource, ok := tokenSource.(*OAuthTokenSource)
+	if !ok {
+		return errors.New("cannot revoke OAuth Token. tokenSource is not of type OAuthTokenSource")
+	}
+	return oAuthTokenSource.RevokeToken()
 }
