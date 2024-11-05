@@ -44,7 +44,7 @@ func main() {
 
 Atlas SDK Go provides OAuth Authentication using Service Accounts (currently available as a [Preview](https://www.mongodb.com/resources/beta-programs) feature)
 A Service Account implements an OAuth [client_credentials](https://oauth.net/2/grant-types/client-credentials) grant.
-For more information about feature please refer to [Service Account Public documentation.](https://www.mongodb.com/docs/atlas/api/service-accounts-overview/)
+For more information about the feature, please refer to [Service Account Public documentation.](https://www.mongodb.com/docs/atlas/api/service-accounts-overview/)
 
 ## OAuth Authentication
 
@@ -164,7 +164,7 @@ if err != nil {
 }
 ```
 
-For more information see [auth advanced](https://github.com/mongodb/atlas-sdk-go/tree/main/examples/auth_advanced) example.
+For more information, please refer to [auth advanced](https://github.com/mongodb/atlas-sdk-go/tree/main/examples/auth_advanced) example.
 
 ### Overriding the User Agent
 
@@ -178,7 +178,7 @@ tokenSource := credentials.NewTokenSourceWithOptions(credentials.AtlasTokenSourc
 })
 ```
 
-For more information see [auth advanced](https://github.com/mongodb/atlas-sdk-go/tree/main/examples/auth_advanced) example.
+For more information, please refer to [auth advanced](https://github.com/mongodb/atlas-sdk-go/tree/main/examples/auth_advanced) example.
 
 ### Creating a Custom Transport
 
