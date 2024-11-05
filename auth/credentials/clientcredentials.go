@@ -4,12 +4,13 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"golang.org/x/oauth2"
-	"golang.org/x/oauth2/clientcredentials"
 	"io"
 	"net/http"
 	"net/url"
 	"strings"
+
+	"go.mongodb.org/atlas-sdk/v20241023001/auth"
+	"golang.org/x/oauth2/clientcredentials"
 )
 
 // Config describes a 2-legged OAuth2 flow, with both the
@@ -28,7 +29,7 @@ type tokenSource struct {
 
 // RevokeToken revokes the Access Token while also removing it from the Access Token Cache.
 // When the Access Token is expired or missing, revoke will return without any action.
-func (c *Config) RevokeToken(ctx context.Context, t *oauth2.Token) error {
+func (c *Config) RevokeToken(ctx context.Context, t *auth.Token) error {
 	if c.RevokeURL == "" {
 		return errors.New("endpoint missing RevokeURL")
 	}
@@ -73,6 +74,6 @@ func (c *Config) RevokeToken(ctx context.Context, t *oauth2.Token) error {
 
 }
 
-func (c *tokenSource) Token() (*oauth2.Token, error) {
+func (c *tokenSource) Token() (*auth.Token, error) {
 	return c.conf.Token(c.ctx)
 }

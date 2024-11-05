@@ -33,8 +33,9 @@ func NewConfig(clientID, clientSecret string) *Config {
 	c := &Config{}
 	c.ClientID = clientID
 	c.ClientSecret = clientSecret
-	c.RevokeURL = revokeAPIPath
+	c.RevokeURL = serverRevokeURL
 	c.TokenURL = serverTokenURL
 	c.AuthStyle = oauth2.AuthStyleInHeader
+	c.userAgent = core.DefaultUserAgent
 	return c
 }
