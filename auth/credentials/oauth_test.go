@@ -229,6 +229,92 @@ func TestOAuthClient_FetchToken_FailureHtmlContentType(t *testing.T) {
 	assert.Contains(t, err.Error(), "oauth2: cannot fetch token: 403 Forbidden")
 }
 
+// Test CustomTransport to ensure Token is injected into requests
+func TestCustomTransport_RoundTrip(t *testing.T) {
+	// Mock the OAuth TokenCache
+	expiration := time.Now().Add(1 * time.Hour)
+	token := generateMockJWT(expiration)
+	mockCache := &MockTokenCache{token: token}
+
+	ctx := context.Background()
+	oauthClient := NewTokenSourceWithOptions(AtlasTokenSourceOptions{
+		ClientID:     "clientID",
+		ClientSecret: "clientSecret",
+		TokenCache:   mockCache,
+		Context:      &ctx,
+	})
+
+	httpClientWithTransport := NewHTTPClientWithOAuthToken(oauthClient)
+	assert.NotNil(t, httpClientWithTransport)
+	// Try using transport directly without http TokenCache
+	transport := &OAuthCustomHTTPTransport{
+		UnderlyingTransport: http.DefaultTransport,
+		TokenSource:         oauthClient,
+	}
+
+	// Mock the HTTP server
+	mockServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		// Check if the Authorization header is set correctly
+		assert.Contains(t, r.Header.Get("Authorization"), "Bearer "+token)
+		w.WriteHeader(http.StatusOK)
+	}))
+	defer mockServer.Close()
+
+	// Make a request using the custom transport
+	req, _ := http.NewRequest("GET", mockServer.URL, http.NoBody)
+	client := &http.Client{Transport: transport}
+	//nolint:all
+	resp, err := client.Do(req)
+
+	assert.NoError(t, err)
+	assert.Equal(t, http.StatusOK, resp.StatusCode)
+}
+
+// Test default User Agent
+func TestOAuthClient_DefaultUserAgent(t *testing.T) {
+	// Assert default User Agent
+	mockServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		assert.NotNil(t, r.Header.Get("User-Agent"))
+		assert.Equal(t, core.DefaultUserAgent, r.Header.Get("User-Agent"))
+		w.WriteHeader(http.StatusOK)
+	}))
+	defer mockServer.Close()
+
+	mockCache := &MockTokenCache{}
+	tokenSource := NewTokenSourceWithOptions(AtlasTokenSourceOptions{
+		ClientID:     "clientID",
+		ClientSecret: "clientSecret",
+		TokenCache:   mockCache,
+		BaseURL:      &mockServer.URL,
+	})
+
+	_, _ = tokenSource.Token()
+}
+
+// Test custom User Agent
+func TestOAuthClient_CustomUserAgent(t *testing.T) {
+	const customUserAgent = "/testing"
+
+	// Assert custom User Agent
+	mockServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		assert.NotNil(t, r.Header.Get("User-Agent"))
+		assert.Equal(t, customUserAgent, r.Header.Get("User-Agent"))
+		w.WriteHeader(http.StatusOK)
+	}))
+	defer mockServer.Close()
+
+	mockCache := &MockTokenCache{}
+	tokenSource := NewTokenSourceWithOptions(AtlasTokenSourceOptions{
+		ClientID:     "clientID",
+		ClientSecret: "clientSecret",
+		UserAgent:    customUserAgent,
+		TokenCache:   mockCache,
+		BaseURL:      &mockServer.URL,
+	})
+
+	_, _ = tokenSource.Token()
+}
+
 // Test OAuthTokenSource_RevokeToken_Success tests successful token revocation.
 func TestOAuthTokenSource_RevokeToken_Success(t *testing.T) {
 	mockServer := MockOAuthRevokeEndpoint(http.StatusOK)
