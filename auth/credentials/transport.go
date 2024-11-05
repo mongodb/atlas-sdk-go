@@ -12,7 +12,7 @@ import (
 type OAuthCustomHTTPTransport struct {
 	// UnderlyingTransport is the base RoundTripper used to make HTTP requests.
 	UnderlyingTransport http.RoundTripper
-	// TokenSource used to obtain valid OAuth Token
+	// TokenSource used to get valid OAuth Token
 	TokenSource oauth2.TokenSource
 }
 
@@ -34,4 +34,25 @@ func (t *OAuthCustomHTTPTransport) RoundTrip(req *http.Request) (*http.Response,
 // SetAuthHeader sets the Authorization header with the access Token.
 func (t *OAuthCustomHTTPTransport) setAuthHeader(r *http.Request, token *oauth2.Token) {
 	r.Header.Set("Authorization", "Bearer "+token.AccessToken)
+}
+
+// userAgentTransport that adds the User-Agent header
+type userAgentTransport struct {
+	underlyingTransport http.RoundTripper
+	userAgent           string
+}
+
+func (t *userAgentTransport) RoundTrip(req *http.Request) (*http.Response, error) {
+	req.Header.Set("User-Agent", t.userAgent) // Set the custom User-Agent
+	return t.underlyingTransport.RoundTrip(req)
+}
+
+// newUserAgentHTTPClient http client that adds the User-Agent header
+func newUserAgentHTTPClient(userAgent string) *http.Client {
+	return &http.Client{
+		Transport: &userAgentTransport{
+			underlyingTransport: http.DefaultTransport,
+			userAgent:           userAgent,
+		},
+	}
 }

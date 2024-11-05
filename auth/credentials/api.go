@@ -65,6 +65,9 @@ func NewTokenSourceWithOptions(opts AtlasTokenSourceOptions) RevocableTokenSourc
 		ctx = *opts.Context
 	}
 
+	// Override oauth2 http client
+	ctx = context.WithValue(ctx, oauth2.HTTPClient, newUserAgentHTTPClient(userAgent))
+
 	config := &clientcredentials.Config{
 		ClientID:     opts.ClientID,
 		ClientSecret: opts.ClientSecret,
