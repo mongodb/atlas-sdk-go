@@ -320,7 +320,7 @@ func TestOAuthTokenSource_RevokeToken_Success(t *testing.T) {
 	mockServer := MockOAuthRevokeEndpoint(http.StatusOK)
 	defer mockServer.Close()
 
-	tokenSource := &OAuthTokenSource{
+	tokenSource := &tokenSource{
 		clientID:     "clientID",
 		clientSecret: "clientSecret",
 		userAgent:    core.DefaultUserAgent,
@@ -337,7 +337,7 @@ func TestOAuthTokenSource_RevokeToken_Failure(t *testing.T) {
 	mockServer := MockOAuthRevokeEndpoint(http.StatusUnauthorized)
 	defer mockServer.Close()
 
-	tokenSource := &OAuthTokenSource{
+	tokenSource := &tokenSource{
 		clientID:     "clientID",
 		clientSecret: "clientSecret",
 		userAgent:    core.DefaultUserAgent,
@@ -355,7 +355,7 @@ func TestOAuthTokenSource_RevokeToken_RateLimit(t *testing.T) {
 	mockServer := MockOAuthRevokeEndpoint(http.StatusTooManyRequests)
 	defer mockServer.Close()
 
-	tokenSource := &OAuthTokenSource{
+	tokenSource := &tokenSource{
 		clientID:     "clientID",
 		clientSecret: "clientSecret",
 		userAgent:    core.DefaultUserAgent,
@@ -375,7 +375,7 @@ func TestOAuthTokenSource_RevokeToken_InvalidRequest(t *testing.T) {
 	}))
 	defer mockServer.Close()
 
-	tokenSource := &OAuthTokenSource{
+	tokenSource := &tokenSource{
 		clientID:     "clientID",
 		clientSecret: "clientSecret",
 		userAgent:    core.DefaultUserAgent,
