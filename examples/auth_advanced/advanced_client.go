@@ -21,11 +21,11 @@ import (
 // Required env variables to run example:
 // export MONGODB_ATLAS_CLIENT_ID="your_client_id"
 // export MONGODB_ATLAS_CLIENT_SECRET="your_client_secret"
-// export MONGODB_ATLAS_URL=https://cloud.mongodb.com
+// export MONGODB_ATLAS_BASE_URL=https://cloud.mongodb.com
 func main() {
-	host := os.Getenv("MONGODB_ATLAS_URL")
+	host := os.Getenv("MONGODB_ATLAS_BASE_URL")
 	if host == "" {
-		log.Fatal("Missing MONGODB_ATLAS_URL")
+		log.Fatal("Missing MONGODB_ATLAS_BASE_URL")
 	}
 
 	// Fetch clientID and clientSecret from environment variables
@@ -63,7 +63,7 @@ func main() {
 		log.Fatalf("Error: %v", err)
 	}
 
-	projects, _, err := sdk.ProjectsApi.ListProjectsWithParams(ctx,&admin.ListProjectsApiParams{}).Execute()
+	projects, _, err := sdk.ProjectsApi.ListProjectsWithParams(ctx, &admin.ListProjectsApiParams{}).Execute()
 	if err != nil {
 		log.Fatalf("Error making request: %v", err)
 	}

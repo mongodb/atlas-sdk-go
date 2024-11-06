@@ -20,7 +20,7 @@ func main() {
 	// See: https://www.mongodb.com/docs/atlas/app-services/authentication/api-key/
 	apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
 	apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
-	url := os.Getenv("MONGODB_ATLAS_URL")
+	url := os.Getenv("MONGODB_ATLAS_BASE_URL")
 
 	sdk, err := admin.NewClient(
 		admin.UseDigestAuth(apiKey, apiSecret),
