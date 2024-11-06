@@ -122,23 +122,25 @@ func (_c *InvoicesApi_CreateCostExplorerQueryProcess1_Call) RunAndReturn(run fun
 }
 
 // CreateCostExplorerQueryProcess1Execute provides a mock function with given fields: r
-func (_m *InvoicesApi) CreateCostExplorerQueryProcess1Execute(r admin.CreateCostExplorerQueryProcess1ApiRequest) (string, *http.Response, error) {
+func (_m *InvoicesApi) CreateCostExplorerQueryProcess1Execute(r admin.CreateCostExplorerQueryProcess1ApiRequest) (any, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for CreateCostExplorerQueryProcess1Execute")
 	}
 
-	var r0 string
+	var r0 any
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.CreateCostExplorerQueryProcess1ApiRequest) (string, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.CreateCostExplorerQueryProcess1ApiRequest) (any, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.CreateCostExplorerQueryProcess1ApiRequest) string); ok {
+	if rf, ok := ret.Get(0).(func(admin.CreateCostExplorerQueryProcess1ApiRequest) any); ok {
 		r0 = rf(r)
 	} else {
-		r0 = ret.Get(0).(string)
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(any)
+		}
 	}
 
 	if rf, ok := ret.Get(1).(func(admin.CreateCostExplorerQueryProcess1ApiRequest) *http.Response); ok {
@@ -176,12 +178,12 @@ func (_c *InvoicesApi_CreateCostExplorerQueryProcess1Execute_Call) Run(run func(
 	return _c
 }
 
-func (_c *InvoicesApi_CreateCostExplorerQueryProcess1Execute_Call) Return(_a0 string, _a1 *http.Response, _a2 error) *InvoicesApi_CreateCostExplorerQueryProcess1Execute_Call {
+func (_c *InvoicesApi_CreateCostExplorerQueryProcess1Execute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *InvoicesApi_CreateCostExplorerQueryProcess1Execute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *InvoicesApi_CreateCostExplorerQueryProcess1Execute_Call) RunAndReturn(run func(admin.CreateCostExplorerQueryProcess1ApiRequest) (string, *http.Response, error)) *InvoicesApi_CreateCostExplorerQueryProcess1Execute_Call {
+func (_c *InvoicesApi_CreateCostExplorerQueryProcess1Execute_Call) RunAndReturn(run func(admin.CreateCostExplorerQueryProcess1ApiRequest) (any, *http.Response, error)) *InvoicesApi_CreateCostExplorerQueryProcess1Execute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -556,23 +558,25 @@ func (_c *InvoicesApi_GetInvoice_Call) RunAndReturn(run func(context.Context, st
 }
 
 // GetInvoiceExecute provides a mock function with given fields: r
-func (_m *InvoicesApi) GetInvoiceExecute(r admin.GetInvoiceApiRequest) (string, *http.Response, error) {
+func (_m *InvoicesApi) GetInvoiceExecute(r admin.GetInvoiceApiRequest) (*admin.BillingInvoice, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for GetInvoiceExecute")
 	}
 
-	var r0 string
+	var r0 *admin.BillingInvoice
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetInvoiceApiRequest) (string, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetInvoiceApiRequest) (*admin.BillingInvoice, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.GetInvoiceApiRequest) string); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetInvoiceApiRequest) *admin.BillingInvoice); ok {
 		r0 = rf(r)
 	} else {
-		r0 = ret.Get(0).(string)
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.BillingInvoice)
+		}
 	}
 
 	if rf, ok := ret.Get(1).(func(admin.GetInvoiceApiRequest) *http.Response); ok {
@@ -610,12 +614,12 @@ func (_c *InvoicesApi_GetInvoiceExecute_Call) Run(run func(r admin.GetInvoiceApi
 	return _c
 }
 
-func (_c *InvoicesApi_GetInvoiceExecute_Call) Return(_a0 string, _a1 *http.Response, _a2 error) *InvoicesApi_GetInvoiceExecute_Call {
+func (_c *InvoicesApi_GetInvoiceExecute_Call) Return(_a0 *admin.BillingInvoice, _a1 *http.Response, _a2 error) *InvoicesApi_GetInvoiceExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *InvoicesApi_GetInvoiceExecute_Call) RunAndReturn(run func(admin.GetInvoiceApiRequest) (string, *http.Response, error)) *InvoicesApi_GetInvoiceExecute_Call {
+func (_c *InvoicesApi_GetInvoiceExecute_Call) RunAndReturn(run func(admin.GetInvoiceApiRequest) (*admin.BillingInvoice, *http.Response, error)) *InvoicesApi_GetInvoiceExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
