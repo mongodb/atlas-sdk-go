@@ -1,3 +1,8 @@
+/**
+ * Reorder responses by using application/vnd.*json with the most recent date as the first valid response.
+ * @param {*} api OpenAPI JSON File
+ * @returns OpenAPI JSON File
+ */
 function reorderResponseBodies(api) {
   Object.values(api.paths).forEach((methods) => {
     Object.values(methods).forEach((operation) => {
