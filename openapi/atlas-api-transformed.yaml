@@ -27,7 +27,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 86ea1c3d81a33c7436386c6c6ffd908142c8bc96
+  x-xgen-sha: 717355e4e2b2ff77eca907c9e2c7e28401a2a901
 servers:
   - url: https://cloud.mongodb.com
 security:
@@ -25367,7 +25367,6 @@ components:
       properties:
         bucketName:
           type: string
-          deprecated: true
           description: "The name of the Azure Storage Container to export to. Deprecated:
             provide the Container's URL in serviceUrl instead."
           example: export-container
@@ -30917,6 +30916,7 @@ components:
         customerEndpointDNSName:
           type: string
           description: Human-readable label to identify customer's VPC endpoint DNS name.
+            If defined, you must also specify a value for **region**.
         customerEndpointIPAddress:
           type: string
           description: IP address used to connect to the Azure private endpoint.
@@ -30945,7 +30945,9 @@ components:
         region:
           type: string
           description: Human-readable label to identify the region of customer's VPC
-            endpoint.
+            endpoint. If defined, you must also specify a value for
+            **customerEndpointDNSName**.
+          example: US_EAST_1
         status:
           type: string
           description: Status of the private endpoint connection request.
@@ -34540,10 +34542,11 @@ components:
         cloudProvider:
           type: string
           description: Human-readable label that identifies the Cloud service provider
-            where you wish to store your archived data. **AZURE** may be
-            selected only if **AZURE** is the Cloud service provider for the
-            cluster and no **AWS** online archive has been created for the
-            cluster.
+            where you wish to store your archived data. **AZURE** or **GCP** may
+            be selected only if it is the Cloud service provider for the cluster
+            and no archives for any other cloud provider have been created for
+            the cluster. **GCP** is currently only supported in [private
+            preview](https://www.mongodb.com/community/forums/t/invitation-to-participate-in-the-private-preview-program-of-online-archive-on-gcp).
         region:
           type: string
           description: Human-readable label that identifies the geographic location of the
