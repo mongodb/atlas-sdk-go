@@ -21,7 +21,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 86ea1c3d81a33c7436386c6c6ffd908142c8bc96
+  x-xgen-sha: 717355e4e2b2ff77eca907c9e2c7e28401a2a901
 servers:
 - url: https://cloud.mongodb.com
 security:
@@ -29700,10 +29700,11 @@ components:
       properties:
         cloudProvider:
           type: string
-          description: Human-readable label that identifies the Cloud service provider
-            where you wish to store your archived data. **AZURE** may be selected
-            only if **AZURE** is the Cloud service provider for the cluster and no
-            **AWS** online archive has been created for the cluster.
+          description: "Human-readable label that identifies the Cloud service provider\
+            \ where you wish to store your archived data. **AZURE** or **GCP** may\
+            \ be selected only if it is the Cloud service provider for the cluster\
+            \ and no archives for any other cloud provider have been created for the\
+            \ cluster. **GCP** is currently only supported in [private preview](https://www.mongodb.com/community/forums/t/invitation-to-participate-in-the-private-preview-program-of-online-archive-on-gcp)."
           enum:
           - AWS
           - AZURE
@@ -34206,7 +34207,6 @@ components:
         properties:
           bucketName:
             type: string
-            deprecated: true
             description: "The name of the Azure Storage Container to export to. Deprecated:\
               \ provide the Container's URL in serviceUrl instead."
             example: export-container
@@ -37086,7 +37086,7 @@ components:
       required:
       - description
       - field
-    FlexBackupRestoreJob20250101:
+    FlexBackupRestoreJob20241113:
       type: object
       description: Details for one restore job of a flex cluster.
       properties:
@@ -37207,7 +37207,7 @@ components:
           pattern: "^([a-f0-9]{24})$"
           readOnly: true
       title: Flex Backup Restore Job
-    FlexBackupRestoreJobCreate20250101:
+    FlexBackupRestoreJobCreate20241113:
       type: object
       description: Details to create one restore job of a flex cluster.
       properties:
@@ -37331,7 +37331,7 @@ components:
       - _snapshotId
       - _targetDeploymentItemName
       title: Create Flex Backup Restore Job
-    FlexBackupSettings20250101:
+    FlexBackupSettings20241113:
       type: object
       description: Flex backup configuration
       properties:
@@ -37343,7 +37343,7 @@ components:
           readOnly: true
       readOnly: true
       title: Flex Backup Configuration
-    FlexBackupSnapshot20250101:
+    FlexBackupSnapshot20241113:
       type: object
       description: Details for one snapshot of a flex cluster.
       properties:
@@ -37408,7 +37408,7 @@ components:
           - COMPLETED
           readOnly: true
       title: Flex Backup Snapshot
-    FlexBackupSnapshotDownloadCreate20250101:
+    FlexBackupSnapshotDownloadCreate20241113:
       type: object
       description: Details for one backup snapshot download of a flex cluster.
       properties:
@@ -37435,12 +37435,12 @@ components:
       required:
       - _snapshotId
       title: Flex Backup Snapshot Download Create
-    FlexClusterDescription20250101:
+    FlexClusterDescription20241113:
       type: object
       description: Group of settings that configure a MongoDB Flex cluster.
       properties:
         backupSettings:
-          $ref: "#/components/schemas/FlexBackupSettings20250101"
+          $ref: "#/components/schemas/FlexBackupSettings20241113"
         clusterType:
           type: string
           description: Flex cluster topology.
@@ -37449,7 +37449,7 @@ components:
           - LOADBALANCED
           readOnly: true
         connectionStrings:
-          $ref: "#/components/schemas/FlexConnectionStrings20250101"
+          $ref: "#/components/schemas/FlexConnectionStrings20241113"
         createDate:
           type: string
           format: date-time
@@ -37497,7 +37497,7 @@ components:
           pattern: "^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$"
           readOnly: true
         providerSettings:
-          $ref: "#/components/schemas/FlexProviderSettings20250101"
+          $ref: "#/components/schemas/FlexProviderSettings20241113"
         stateName:
           type: string
           description: Human-readable label that indicates the current operating condition
@@ -37534,7 +37534,7 @@ components:
       required:
       - providerSettings
       title: Flex Cluster Description
-    FlexClusterDescriptionCreate20250101:
+    FlexClusterDescriptionCreate20241113:
       type: object
       description: Settings that you can specify when you create a flex cluster.
       properties:
@@ -37557,7 +37557,7 @@ components:
           pattern: "^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$"
           writeOnly: true
         providerSettings:
-          $ref: "#/components/schemas/FlexProviderSettingsCreate20250101"
+          $ref: "#/components/schemas/FlexProviderSettingsCreate20241113"
         tags:
           type: array
           description: List that contains key-value pairs between 1 to 255 characters
@@ -37577,7 +37577,38 @@ components:
       - name
       - providerSettings
       title: Flex Cluster Description Create
-    FlexConnectionStrings20250101:
+    FlexClusterDescriptionUpdate20241113:
+      type: object
+      description: Settings that you can specify when you update a flex cluster.
+      properties:
+        links:
+          type: array
+          description: "List of one or more Uniform Resource Locators (URLs) that\
+            \ point to API sub-resources, related API resources, or both. RFC 5988\
+            \ outlines these relationships."
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        tags:
+          type: array
+          description: List that contains key-value pairs between 1 to 255 characters
+            in length for tagging and categorizing the instance.
+          externalDocs:
+            description: Resource Tags
+            url: https://dochub.mongodb.org/core/add-cluster-tag-atlas
+          items:
+            $ref: "#/components/schemas/ResourceTag"
+        terminationProtectionEnabled:
+          type: boolean
+          default: false
+          description: "Flag that indicates whether termination protection is enabled\
+            \ on the cluster. If set to `true`, MongoDB Cloud won't delete the cluster.\
+            \ If set to `false`, MongoDB Cloud will delete the cluster."
+      title: Flex Cluster Description Update
+    FlexConnectionStrings20241113:
       type: object
       description: Collection of Uniform Resource Locators that point to the MongoDB
         database.
@@ -37603,7 +37634,7 @@ components:
           readOnly: true
       readOnly: true
       title: Flex Cluster Connection Strings
-    FlexProviderSettings20250101:
+    FlexProviderSettings20241113:
       type: object
       description: Group of cloud provider settings that configure the provisioned
         MongoDB flex cluster.
@@ -37640,7 +37671,7 @@ components:
           readOnly: true
       readOnly: true
       title: Cloud Service Provider Settings for a Flex Cluster
-    FlexProviderSettingsCreate20250101:
+    FlexProviderSettingsCreate20241113:
       type: object
       description: Group of cloud provider settings that configure the provisioned
         MongoDB flex cluster.
@@ -46603,7 +46634,7 @@ components:
             value if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
-    PaginatedApiAtlasFlexBackupRestoreJob20250101View:
+    PaginatedApiAtlasFlexBackupRestoreJob20241113View:
       type: object
       properties:
         links:
@@ -46622,7 +46653,7 @@ components:
           description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
-            $ref: "#/components/schemas/FlexBackupRestoreJob20250101"
+            $ref: "#/components/schemas/FlexBackupRestoreJob20241113"
           readOnly: true
         totalCount:
           type: integer
@@ -46631,7 +46662,7 @@ components:
             value if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
-    PaginatedApiAtlasFlexBackupSnapshot20240710View:
+    PaginatedApiAtlasFlexBackupSnapshot20241113View:
       type: object
       properties:
         links:
@@ -46650,7 +46681,7 @@ components:
           description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
-            $ref: "#/components/schemas/FlexBackupSnapshot20250101"
+            $ref: "#/components/schemas/FlexBackupSnapshot20241113"
           readOnly: true
         totalCount:
           type: integer
@@ -47446,7 +47477,7 @@ components:
             value if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
-    PaginatedFlexClusters20250101:
+    PaginatedFlexClusters20241113:
       type: object
       properties:
         links:
@@ -47465,7 +47496,7 @@ components:
           description: List of returned documents that MongoDB Cloud provides when
             completing this request.
           items:
-            type: object
+            $ref: "#/components/schemas/FlexClusterDescription20241113"
           readOnly: true
         totalCount:
           type: integer
@@ -48610,8 +48641,8 @@ components:
           description: Human-readable string to associate with this private endpoint.
         customerEndpointDNSName:
           type: string
-          description: Human-readable label to identify customer's VPC endpoint DNS
-            name.
+          description: "Human-readable label to identify customer's VPC endpoint DNS\
+            \ name. If defined, you must also specify a value for **region**."
         customerEndpointIPAddress:
           type: string
           description: IP address used to connect to the Azure private endpoint.
@@ -48641,8 +48672,9 @@ components:
           - AWS
         region:
           type: string
-          description: Human-readable label to identify the region of customer's VPC
-            endpoint.
+          description: "Human-readable label to identify the region of customer's\
+            \ VPC endpoint. If defined, you must also specify a value for **customerEndpointDNSName**."
+          example: US_EAST_1
         status:
           type: string
           description: Status of the private endpoint connection request.
