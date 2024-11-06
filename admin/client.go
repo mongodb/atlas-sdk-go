@@ -77,6 +77,12 @@ type APIClient struct {
 
 	FederatedAuthenticationApi FederatedAuthenticationApi
 
+	FlexClustersApi FlexClustersApi
+
+	FlexRestoreJobsApi FlexRestoreJobsApi
+
+	FlexSnapshotsApi FlexSnapshotsApi
+
 	GlobalClustersApi GlobalClustersApi
 
 	InvoicesApi InvoicesApi
@@ -94,6 +100,8 @@ type APIClient struct {
 	NetworkPeeringApi NetworkPeeringApi
 
 	OnlineArchiveApi OnlineArchiveApi
+
+	OpenAPIApi OpenAPIApi
 
 	OrganizationsApi OrganizationsApi
 
@@ -169,6 +177,9 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.EncryptionAtRestUsingCustomerKeyManagementApi = (*EncryptionAtRestUsingCustomerKeyManagementApiService)(&c.common)
 	c.EventsApi = (*EventsApiService)(&c.common)
 	c.FederatedAuthenticationApi = (*FederatedAuthenticationApiService)(&c.common)
+	c.FlexClustersApi = (*FlexClustersApiService)(&c.common)
+	c.FlexRestoreJobsApi = (*FlexRestoreJobsApiService)(&c.common)
+	c.FlexSnapshotsApi = (*FlexSnapshotsApiService)(&c.common)
 	c.GlobalClustersApi = (*GlobalClustersApiService)(&c.common)
 	c.InvoicesApi = (*InvoicesApiService)(&c.common)
 	c.LDAPConfigurationApi = (*LDAPConfigurationApiService)(&c.common)
@@ -178,6 +189,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.MonitoringAndLogsApi = (*MonitoringAndLogsApiService)(&c.common)
 	c.NetworkPeeringApi = (*NetworkPeeringApiService)(&c.common)
 	c.OnlineArchiveApi = (*OnlineArchiveApiService)(&c.common)
+	c.OpenAPIApi = (*OpenAPIApiService)(&c.common)
 	c.OrganizationsApi = (*OrganizationsApiService)(&c.common)
 	c.PerformanceAdvisorApi = (*PerformanceAdvisorApiService)(&c.common)
 	c.PrivateEndpointServicesApi = (*PrivateEndpointServicesApiService)(&c.common)

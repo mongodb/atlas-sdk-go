@@ -1013,6 +1013,167 @@ func (_c *PerformanceAdvisorApi_ListSuggestedIndexes_Call) RunAndReturn(run func
 	return _c
 }
 
+// ListSuggestedIndexes1 provides a mock function with given fields: ctx, groupId
+func (_m *PerformanceAdvisorApi) ListSuggestedIndexes1(ctx context.Context, groupId string) admin.ListSuggestedIndexes1ApiRequest {
+	ret := _m.Called(ctx, groupId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListSuggestedIndexes1")
+	}
+
+	var r0 admin.ListSuggestedIndexes1ApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.ListSuggestedIndexes1ApiRequest); ok {
+		r0 = rf(ctx, groupId)
+	} else {
+		r0 = ret.Get(0).(admin.ListSuggestedIndexes1ApiRequest)
+	}
+
+	return r0
+}
+
+// PerformanceAdvisorApi_ListSuggestedIndexes1_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListSuggestedIndexes1'
+type PerformanceAdvisorApi_ListSuggestedIndexes1_Call struct {
+	*mock.Call
+}
+
+// ListSuggestedIndexes1 is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+func (_e *PerformanceAdvisorApi_Expecter) ListSuggestedIndexes1(ctx any, groupId any) *PerformanceAdvisorApi_ListSuggestedIndexes1_Call {
+	return &PerformanceAdvisorApi_ListSuggestedIndexes1_Call{Call: _e.mock.On("ListSuggestedIndexes1", ctx, groupId)}
+}
+
+func (_c *PerformanceAdvisorApi_ListSuggestedIndexes1_Call) Run(run func(ctx context.Context, groupId string)) *PerformanceAdvisorApi_ListSuggestedIndexes1_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string))
+	})
+	return _c
+}
+
+func (_c *PerformanceAdvisorApi_ListSuggestedIndexes1_Call) Return(_a0 admin.ListSuggestedIndexes1ApiRequest) *PerformanceAdvisorApi_ListSuggestedIndexes1_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *PerformanceAdvisorApi_ListSuggestedIndexes1_Call) RunAndReturn(run func(context.Context, string) admin.ListSuggestedIndexes1ApiRequest) *PerformanceAdvisorApi_ListSuggestedIndexes1_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListSuggestedIndexes1Execute provides a mock function with given fields: r
+func (_m *PerformanceAdvisorApi) ListSuggestedIndexes1Execute(r admin.ListSuggestedIndexes1ApiRequest) (*admin.PerformanceAdvisorResponse, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListSuggestedIndexes1Execute")
+	}
+
+	var r0 *admin.PerformanceAdvisorResponse
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.ListSuggestedIndexes1ApiRequest) (*admin.PerformanceAdvisorResponse, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.ListSuggestedIndexes1ApiRequest) *admin.PerformanceAdvisorResponse); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.PerformanceAdvisorResponse)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.ListSuggestedIndexes1ApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.ListSuggestedIndexes1ApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// PerformanceAdvisorApi_ListSuggestedIndexes1Execute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListSuggestedIndexes1Execute'
+type PerformanceAdvisorApi_ListSuggestedIndexes1Execute_Call struct {
+	*mock.Call
+}
+
+// ListSuggestedIndexes1Execute is a helper method to define mock.On call
+//   - r admin.ListSuggestedIndexes1ApiRequest
+func (_e *PerformanceAdvisorApi_Expecter) ListSuggestedIndexes1Execute(r any) *PerformanceAdvisorApi_ListSuggestedIndexes1Execute_Call {
+	return &PerformanceAdvisorApi_ListSuggestedIndexes1Execute_Call{Call: _e.mock.On("ListSuggestedIndexes1Execute", r)}
+}
+
+func (_c *PerformanceAdvisorApi_ListSuggestedIndexes1Execute_Call) Run(run func(r admin.ListSuggestedIndexes1ApiRequest)) *PerformanceAdvisorApi_ListSuggestedIndexes1Execute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.ListSuggestedIndexes1ApiRequest))
+	})
+	return _c
+}
+
+func (_c *PerformanceAdvisorApi_ListSuggestedIndexes1Execute_Call) Return(_a0 *admin.PerformanceAdvisorResponse, _a1 *http.Response, _a2 error) *PerformanceAdvisorApi_ListSuggestedIndexes1Execute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *PerformanceAdvisorApi_ListSuggestedIndexes1Execute_Call) RunAndReturn(run func(admin.ListSuggestedIndexes1ApiRequest) (*admin.PerformanceAdvisorResponse, *http.Response, error)) *PerformanceAdvisorApi_ListSuggestedIndexes1Execute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListSuggestedIndexes1WithParams provides a mock function with given fields: ctx, args
+func (_m *PerformanceAdvisorApi) ListSuggestedIndexes1WithParams(ctx context.Context, args *admin.ListSuggestedIndexes1ApiParams) admin.ListSuggestedIndexes1ApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListSuggestedIndexes1WithParams")
+	}
+
+	var r0 admin.ListSuggestedIndexes1ApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListSuggestedIndexes1ApiParams) admin.ListSuggestedIndexes1ApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.ListSuggestedIndexes1ApiRequest)
+	}
+
+	return r0
+}
+
+// PerformanceAdvisorApi_ListSuggestedIndexes1WithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListSuggestedIndexes1WithParams'
+type PerformanceAdvisorApi_ListSuggestedIndexes1WithParams_Call struct {
+	*mock.Call
+}
+
+// ListSuggestedIndexes1WithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.ListSuggestedIndexes1ApiParams
+func (_e *PerformanceAdvisorApi_Expecter) ListSuggestedIndexes1WithParams(ctx any, args any) *PerformanceAdvisorApi_ListSuggestedIndexes1WithParams_Call {
+	return &PerformanceAdvisorApi_ListSuggestedIndexes1WithParams_Call{Call: _e.mock.On("ListSuggestedIndexes1WithParams", ctx, args)}
+}
+
+func (_c *PerformanceAdvisorApi_ListSuggestedIndexes1WithParams_Call) Run(run func(ctx context.Context, args *admin.ListSuggestedIndexes1ApiParams)) *PerformanceAdvisorApi_ListSuggestedIndexes1WithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.ListSuggestedIndexes1ApiParams))
+	})
+	return _c
+}
+
+func (_c *PerformanceAdvisorApi_ListSuggestedIndexes1WithParams_Call) Return(_a0 admin.ListSuggestedIndexes1ApiRequest) *PerformanceAdvisorApi_ListSuggestedIndexes1WithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *PerformanceAdvisorApi_ListSuggestedIndexes1WithParams_Call) RunAndReturn(run func(context.Context, *admin.ListSuggestedIndexes1ApiParams) admin.ListSuggestedIndexes1ApiRequest) *PerformanceAdvisorApi_ListSuggestedIndexes1WithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // ListSuggestedIndexesExecute provides a mock function with given fields: r
 func (_m *PerformanceAdvisorApi) ListSuggestedIndexesExecute(r admin.ListSuggestedIndexesApiRequest) (*admin.PerformanceAdvisorResponse, *http.Response, error) {
 	ret := _m.Called(r)

@@ -2601,27 +2601,36 @@ func (a *StreamsApiService) GetStreamProcessorExecute(r GetStreamProcessorApiReq
 }
 
 type GetVPCPeeringConnectionsApiRequest struct {
-	ctx          context.Context
-	ApiService   StreamsApi
-	groupId      string
-	itemsPerPage *int
-	pageNum      *int
+	ctx                context.Context
+	ApiService         StreamsApi
+	requesterAccountId *string
+	groupId            string
+	itemsPerPage       *int
+	pageNum            *int
 }
 
 type GetVPCPeeringConnectionsApiParams struct {
-	GroupId      string
-	ItemsPerPage *int
-	PageNum      *int
+	RequesterAccountId *string
+	GroupId            string
+	ItemsPerPage       *int
+	PageNum            *int
 }
 
 func (a *StreamsApiService) GetVPCPeeringConnectionsWithParams(ctx context.Context, args *GetVPCPeeringConnectionsApiParams) GetVPCPeeringConnectionsApiRequest {
 	return GetVPCPeeringConnectionsApiRequest{
-		ApiService:   a,
-		ctx:          ctx,
-		groupId:      args.GroupId,
-		itemsPerPage: args.ItemsPerPage,
-		pageNum:      args.PageNum,
+		ApiService:         a,
+		ctx:                ctx,
+		requesterAccountId: args.RequesterAccountId,
+		groupId:            args.GroupId,
+		itemsPerPage:       args.ItemsPerPage,
+		pageNum:            args.PageNum,
 	}
+}
+
+// The Account ID of the VPC Peering connection/s.
+func (r GetVPCPeeringConnectionsApiRequest) RequesterAccountId(requesterAccountId string) GetVPCPeeringConnectionsApiRequest {
+	r.requesterAccountId = &requesterAccountId
+	return r
 }
 
 // Number of items that the response returns per page.
@@ -2676,7 +2685,11 @@ func (a *StreamsApiService) GetVPCPeeringConnectionsExecute(r GetVPCPeeringConne
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.requesterAccountId == nil {
+		return nil, reportError("requesterAccountId is required and must be specified")
+	}
 
+	parameterAddToHeaderOrQuery(localVarQueryParams, "requesterAccountId", r.requesterAccountId, "")
 	if r.itemsPerPage != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	} else {

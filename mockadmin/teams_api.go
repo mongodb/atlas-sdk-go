@@ -1369,24 +1369,24 @@ func (_c *TeamsApi_ListTeamUsers_Call) RunAndReturn(run func(context.Context, st
 }
 
 // ListTeamUsersExecute provides a mock function with given fields: r
-func (_m *TeamsApi) ListTeamUsersExecute(r admin.ListTeamUsersApiRequest) (*admin.PaginatedApiAppUser, *http.Response, error) {
+func (_m *TeamsApi) ListTeamUsersExecute(r admin.ListTeamUsersApiRequest) (*admin.PaginatedOrgUser, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for ListTeamUsersExecute")
 	}
 
-	var r0 *admin.PaginatedApiAppUser
+	var r0 *admin.PaginatedOrgUser
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListTeamUsersApiRequest) (*admin.PaginatedApiAppUser, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListTeamUsersApiRequest) (*admin.PaginatedOrgUser, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.ListTeamUsersApiRequest) *admin.PaginatedApiAppUser); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListTeamUsersApiRequest) *admin.PaginatedOrgUser); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.PaginatedApiAppUser)
+			r0 = ret.Get(0).(*admin.PaginatedOrgUser)
 		}
 	}
 
@@ -1425,12 +1425,12 @@ func (_c *TeamsApi_ListTeamUsersExecute_Call) Run(run func(r admin.ListTeamUsers
 	return _c
 }
 
-func (_c *TeamsApi_ListTeamUsersExecute_Call) Return(_a0 *admin.PaginatedApiAppUser, _a1 *http.Response, _a2 error) *TeamsApi_ListTeamUsersExecute_Call {
+func (_c *TeamsApi_ListTeamUsersExecute_Call) Return(_a0 *admin.PaginatedOrgUser, _a1 *http.Response, _a2 error) *TeamsApi_ListTeamUsersExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *TeamsApi_ListTeamUsersExecute_Call) RunAndReturn(run func(admin.ListTeamUsersApiRequest) (*admin.PaginatedApiAppUser, *http.Response, error)) *TeamsApi_ListTeamUsersExecute_Call {
+func (_c *TeamsApi_ListTeamUsersExecute_Call) RunAndReturn(run func(admin.ListTeamUsersApiRequest) (*admin.PaginatedOrgUser, *http.Response, error)) *TeamsApi_ListTeamUsersExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }

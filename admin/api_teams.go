@@ -206,7 +206,7 @@ type TeamsApi interface {
 	/*
 		ListTeamUsers Return All MongoDB Cloud Users Assigned to One Team
 
-		Returns all MongoDB Cloud users assigned to the team specified using its unique 24-hexadecimal digit identifier. This team belongs to one organization. Teams enable you to grant project access roles to MongoDB Cloud users. To use this resource, the requesting API Key must have the Organization Member role.
+		Returns all MongoDB Cloud users assigned to the team specified using its unique 24-hexadecimal digit identifier. This team belongs to one organization. Teams enable you to grant project access roles to MongoDB Cloud users. To use this resource, the requesting API Key must have the Organization Member role. Deprecated versions: v2-{2023-01-01}
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -225,7 +225,7 @@ type TeamsApi interface {
 	ListTeamUsersWithParams(ctx context.Context, args *ListTeamUsersApiParams) ListTeamUsersApiRequest
 
 	// Method available only for mocking purposes
-	ListTeamUsersExecute(r ListTeamUsersApiRequest) (*PaginatedApiAppUser, *http.Response, error)
+	ListTeamUsersExecute(r ListTeamUsersApiRequest) (*PaginatedOrgUser, *http.Response, error)
 
 	/*
 		RemoveProjectTeam Remove One Team from One Project
@@ -1404,14 +1404,14 @@ func (r ListTeamUsersApiRequest) PageNum(pageNum int) ListTeamUsersApiRequest {
 	return r
 }
 
-func (r ListTeamUsersApiRequest) Execute() (*PaginatedApiAppUser, *http.Response, error) {
+func (r ListTeamUsersApiRequest) Execute() (*PaginatedOrgUser, *http.Response, error) {
 	return r.ApiService.ListTeamUsersExecute(r)
 }
 
 /*
 ListTeamUsers Return All MongoDB Cloud Users Assigned to One Team
 
-Returns all MongoDB Cloud users assigned to the team specified using its unique 24-hexadecimal digit identifier. This team belongs to one organization. Teams enable you to grant project access roles to MongoDB Cloud users. To use this resource, the requesting API Key must have the Organization Member role.
+Returns all MongoDB Cloud users assigned to the team specified using its unique 24-hexadecimal digit identifier. This team belongs to one organization. Teams enable you to grant project access roles to MongoDB Cloud users. To use this resource, the requesting API Key must have the Organization Member role. Deprecated versions: v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -1429,13 +1429,13 @@ func (a *TeamsApiService) ListTeamUsers(ctx context.Context, orgId string, teamI
 
 // ListTeamUsersExecute executes the request
 //
-//	@return PaginatedApiAppUser
-func (a *TeamsApiService) ListTeamUsersExecute(r ListTeamUsersApiRequest) (*PaginatedApiAppUser, *http.Response, error) {
+//	@return PaginatedOrgUser
+func (a *TeamsApiService) ListTeamUsersExecute(r ListTeamUsersApiRequest) (*PaginatedOrgUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue *PaginatedApiAppUser
+		localVarReturnValue *PaginatedOrgUser
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamsApiService.ListTeamUsers")
@@ -1475,7 +1475,7 @@ func (a *TeamsApiService) ListTeamUsersExecute(r ListTeamUsersApiRequest) (*Pagi
 	}
 
 	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-01-01+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)

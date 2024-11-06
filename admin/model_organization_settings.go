@@ -6,6 +6,8 @@ package admin
 type OrganizationSettings struct {
 	// Flag that indicates whether to require API operations to originate from an IP Address added to the API access list for the specified organization.
 	ApiAccessListRequired *bool `json:"apiAccessListRequired,omitempty"`
+	// Flag that indicates whether this organization has access to generative AI features. This setting only applies to Atlas Commercial and is enabled by default. Once this setting is turned on, Project Owners may be able to enable or disable individual AI features at the project level.
+	GenAIFeaturesEnabled *bool `json:"genAIFeaturesEnabled,omitempty"`
 	// Number that represents the maximum period before expiry in hours for new Atlas Admin API Service Account secrets within the specified organization.
 	MaxServiceAccountSecretValidityInHours *int `json:"maxServiceAccountSecretValidityInHours,omitempty"`
 	// Flag that indicates whether to require users to set up Multi-Factor Authentication (MFA) before accessing the specified organization. To learn more, see: https://www.mongodb.com/docs/atlas/security-multi-factor-authentication/.
@@ -22,6 +24,8 @@ type OrganizationSettings struct {
 // will change when the set of required properties is changed
 func NewOrganizationSettings() *OrganizationSettings {
 	this := OrganizationSettings{}
+	var genAIFeaturesEnabled bool = true
+	this.GenAIFeaturesEnabled = &genAIFeaturesEnabled
 	return &this
 }
 
@@ -30,6 +34,8 @@ func NewOrganizationSettings() *OrganizationSettings {
 // but it doesn't guarantee that properties required by API are set
 func NewOrganizationSettingsWithDefaults() *OrganizationSettings {
 	this := OrganizationSettings{}
+	var genAIFeaturesEnabled bool = true
+	this.GenAIFeaturesEnabled = &genAIFeaturesEnabled
 	return &this
 }
 
@@ -64,6 +70,39 @@ func (o *OrganizationSettings) HasApiAccessListRequired() bool {
 // SetApiAccessListRequired gets a reference to the given bool and assigns it to the ApiAccessListRequired field.
 func (o *OrganizationSettings) SetApiAccessListRequired(v bool) {
 	o.ApiAccessListRequired = &v
+}
+
+// GetGenAIFeaturesEnabled returns the GenAIFeaturesEnabled field value if set, zero value otherwise
+func (o *OrganizationSettings) GetGenAIFeaturesEnabled() bool {
+	if o == nil || IsNil(o.GenAIFeaturesEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.GenAIFeaturesEnabled
+}
+
+// GetGenAIFeaturesEnabledOk returns a tuple with the GenAIFeaturesEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrganizationSettings) GetGenAIFeaturesEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.GenAIFeaturesEnabled) {
+		return nil, false
+	}
+
+	return o.GenAIFeaturesEnabled, true
+}
+
+// HasGenAIFeaturesEnabled returns a boolean if a field has been set.
+func (o *OrganizationSettings) HasGenAIFeaturesEnabled() bool {
+	if o != nil && !IsNil(o.GenAIFeaturesEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetGenAIFeaturesEnabled gets a reference to the given bool and assigns it to the GenAIFeaturesEnabled field.
+func (o *OrganizationSettings) SetGenAIFeaturesEnabled(v bool) {
+	o.GenAIFeaturesEnabled = &v
 }
 
 // GetMaxServiceAccountSecretValidityInHours returns the MaxServiceAccountSecretValidityInHours field value if set, zero value otherwise

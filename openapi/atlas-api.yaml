@@ -8,7 +8,7 @@ info:
     ```
     curl --user "{PUBLIC-KEY}:{PRIVATE-KEY}" \
       --digest \
-      --header "Accept: application/vnd.atlas.2024-10-23+json" \
+      --header "Accept: application/vnd.atlas.2025-01-01+json" \
       -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/dbAccessHistory/clusters/{clusterName}?pretty=true"
     ```
 
@@ -21,7 +21,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 717355e4e2b2ff77eca907c9e2c7e28401a2a901
+  x-xgen-sha: af88203102a1137e20998a336b36efccdc0cfa66
 servers:
 - url: https://cloud.mongodb.com
 security:
@@ -9092,6 +9092,493 @@ paths:
       summary: Return One Event from One Project
       tags:
       - Events
+  /api/atlas/v2/groups/{groupId}/flexClusters:
+    get:
+      description: "Returns details for all flex clusters in the specified project.\
+        \ To use this resource, the requesting API Key must have the Project Read\
+        \ Only role."
+      operationId: listFlexClusters
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/groupId"
+      - $ref: "#/components/parameters/includeCount"
+      - $ref: "#/components/parameters/itemsPerPage"
+      - $ref: "#/components/parameters/pageNum"
+      - $ref: "#/components/parameters/pretty"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-11-13+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedFlexClusters20241113"
+              x-xgen-version: 2024-11-13
+          description: OK
+        "409":
+          $ref: "#/components/responses/conflict"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return All Flex Clusters from One Project
+      tags:
+      - Flex Clusters
+    post:
+      description: "Creates one flex cluster in the specified project. To use this\
+        \ resource, the requesting API Key must have the Project Owner role."
+      operationId: createFlexcluster
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/groupId"
+      - $ref: "#/components/parameters/pretty"
+      requestBody:
+        content:
+          application/vnd.atlas.2024-11-13+json:
+            schema:
+              $ref: "#/components/schemas/FlexClusterDescriptionCreate20241113"
+        description: Create One Flex Cluster in One Project.
+        required: true
+      responses:
+        "201":
+          content:
+            application/vnd.atlas.2024-11-13+json:
+              schema:
+                $ref: "#/components/schemas/FlexClusterDescription20241113"
+              x-xgen-version: 2024-11-13
+          description: Created
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "402":
+          $ref: "#/components/responses/paymentRequired"
+        "409":
+          $ref: "#/components/responses/conflict"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Create One Flex Cluster in One Project
+      tags:
+      - Flex Clusters
+  /api/atlas/v2/groups/{groupId}/flexClusters/{name}:
+    delete:
+      description: "Removes one flex cluster from the specified project. The flex\
+        \ cluster must have termination protection disabled in order to be deleted.\
+        \ To use this resource, the requesting API Key must have the Project Owner\
+        \ role."
+      operationId: deleteFlexCluster
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/pretty"
+      - $ref: "#/components/parameters/groupId"
+      - description: Human-readable label that identifies the flex cluster.
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+          maxLength: 64
+          minLength: 1
+          pattern: "^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$"
+      responses:
+        "204":
+          content:
+            application/vnd.atlas.2024-11-13+json:
+              schema:
+                $ref: "#/components/schemas/NoBody"
+              x-xgen-version: 2024-11-13
+          description: This endpoint does not return a response body.
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Remove One Flex Cluster from One Project
+      tags:
+      - Flex Clusters
+    get:
+      description: "Returns details for one flex cluster in the specified project.\
+        \ To use this resource, the requesting API Key must have the Project Read\
+        \ Only role."
+      operationId: getFlexCluster
+      parameters:
+      - $ref: "#/components/parameters/groupId"
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/pretty"
+      - description: Human-readable label that identifies the flex cluster.
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+          maxLength: 64
+          minLength: 1
+          pattern: "^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-11-13+json:
+              schema:
+                $ref: "#/components/schemas/FlexClusterDescription20241113"
+              x-xgen-version: 2024-11-13
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return One Flex Cluster from One Project
+      tags:
+      - Flex Clusters
+    patch:
+      description: "Updates one flex cluster in the specified project. To use this\
+        \ resource, the requesting API Key must have the Project Owner role."
+      operationId: updateFlexCluster
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/groupId"
+      - $ref: "#/components/parameters/pretty"
+      - description: Human-readable label that identifies the flex cluster.
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+          maxLength: 64
+          minLength: 1
+          pattern: "^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$"
+      requestBody:
+        content:
+          application/vnd.atlas.2024-11-13+json:
+            schema:
+              $ref: "#/components/schemas/FlexClusterDescriptionUpdate20241113"
+        description: Update One Flex Cluster in One Project.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-11-13+json:
+              schema:
+                $ref: "#/components/schemas/FlexClusterDescription20241113"
+              x-xgen-version: 2024-11-13
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "402":
+          $ref: "#/components/responses/paymentRequired"
+        "409":
+          $ref: "#/components/responses/conflict"
+      summary: Update One Flex Cluster in One Project
+      tags:
+      - Flex Clusters
+  /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/download:
+    post:
+      description: "Requests one snapshot for the specified flex cluster. This resource\
+        \ returns a `snapshotURL` that you can use to download the snapshot. This\
+        \ `snapshotURL` remains active for four hours after you make the request.\
+        \ To use this resource, the requesting API Key must have the Project Owner\
+        \ role."
+      operationId: downloadFlexBackup
+      parameters:
+      - description: Human-readable label that identifies the flex cluster.
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+          maxLength: 64
+          minLength: 1
+          pattern: "^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$"
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/groupId"
+      - $ref: "#/components/parameters/pretty"
+      requestBody:
+        content:
+          application/vnd.atlas.2024-11-13+json:
+            schema:
+              $ref: "#/components/schemas/FlexBackupSnapshotDownloadCreate20241113"
+        description: Snapshot to be downloaded.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-11-13+json:
+              schema:
+                $ref: "#/components/schemas/FlexBackupRestoreJob20241113"
+              x-xgen-version: 2024-11-13
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Download One Flex Cluster Snapshot
+      tags:
+      - Flex Snapshots
+  /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/restoreJobs:
+    get:
+      description: "Returns all restore jobs for one flex cluster from the specified\
+        \ project. To use this resource, the requesting API Key must have the Project\
+        \ Owner role."
+      operationId: listFlexBackupRestoreJobs
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/groupId"
+      - $ref: "#/components/parameters/includeCount"
+      - $ref: "#/components/parameters/itemsPerPage"
+      - $ref: "#/components/parameters/pageNum"
+      - $ref: "#/components/parameters/pretty"
+      - description: Human-readable label that identifies the flex cluster.
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+          maxLength: 64
+          minLength: 1
+          pattern: "^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-11-13+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedApiAtlasFlexBackupRestoreJob20241113View"
+              x-xgen-version: 2024-11-13
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return All Restore Jobs for One Flex Cluster
+      tags:
+      - Flex Restore Jobs
+    post:
+      description: "Restores one snapshot of one flex cluster from the specified project.\
+        \ To use this resource, the requesting API Key must have the Project Owner\
+        \ role."
+      operationId: createFlexBackupRestoreJob
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/groupId"
+      - $ref: "#/components/parameters/pretty"
+      - description: Human-readable label that identifies the flex cluster whose snapshot
+          you want to restore.
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+          maxLength: 64
+          minLength: 1
+          pattern: "^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$"
+      requestBody:
+        content:
+          application/vnd.atlas.2024-11-13+json:
+            schema:
+              $ref: "#/components/schemas/FlexBackupRestoreJobCreate20241113"
+        description: Restores one snapshot of one flex cluster from the specified
+          project.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-11-13+json:
+              schema:
+                $ref: "#/components/schemas/FlexBackupRestoreJob20241113"
+              x-xgen-version: 2024-11-13
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Restore One Snapshot of One Flex Cluster
+      tags:
+      - Flex Restore Jobs
+  /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/restoreJobs/{restoreJobId}:
+    get:
+      description: "Returns one restore job for one flex cluster from the specified\
+        \ project. To use this resource, the requesting API Key must have the Project\
+        \ Owner role."
+      operationId: getFlexBackupRestoreJob
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/groupId"
+      - $ref: "#/components/parameters/pretty"
+      - description: Human-readable label that identifies the flex cluster.
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+          maxLength: 64
+          minLength: 1
+          pattern: "^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$"
+      - description: Unique 24-hexadecimal digit string that identifies the restore
+          job to return.
+        in: path
+        name: restoreJobId
+        required: true
+        schema:
+          type: string
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-11-13+json:
+              schema:
+                $ref: "#/components/schemas/FlexBackupRestoreJob20241113"
+              x-xgen-version: 2024-11-13
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return One Restore Job for One Flex Cluster
+      tags:
+      - Flex Restore Jobs
+  /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/snapshots:
+    get:
+      description: "Returns all snapshots of one flex cluster from the specified project.\
+        \ To use this resource, the requesting API Key must have the Project Read\
+        \ Only role."
+      operationId: listFlexBackups
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/groupId"
+      - $ref: "#/components/parameters/pretty"
+      - $ref: "#/components/parameters/includeCount"
+      - $ref: "#/components/parameters/itemsPerPage"
+      - $ref: "#/components/parameters/pageNum"
+      - description: Human-readable label that identifies the flex cluster.
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+          maxLength: 64
+          minLength: 1
+          pattern: "^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-11-13+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedApiAtlasFlexBackupSnapshot20241113View"
+              x-xgen-version: 2024-11-13
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return All Snapshots of One Flex Cluster
+      tags:
+      - Flex Snapshots
+  /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/snapshots/{snapshotId}:
+    get:
+      description: "Returns one snapshot of one flex cluster from the specified project.\
+        \ To use this resource, the requesting API Key must have the Project Read\
+        \ Only role."
+      operationId: getFlexBackup
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/groupId"
+      - description: Human-readable label that identifies the flex cluster.
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+          maxLength: 64
+          minLength: 1
+          pattern: "^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$"
+      - description: Unique 24-hexadecimal digit string that identifies the desired
+          snapshot.
+        in: path
+        name: snapshotId
+        required: true
+        schema:
+          type: string
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-11-13+json:
+              schema:
+                $ref: "#/components/schemas/FlexBackupSnapshot20241113"
+              x-xgen-version: 2024-11-13
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return One Snapshot of One Flex Cluster
+      tags:
+      - Flex Snapshots
+  /api/atlas/v2/groups/{groupId}/flexClusters:tenantUpgrade:
+    post:
+      description: "Upgrades a flex cluster in the specified project. To use this\
+        \ resource, the requesting API key must have the Project Cluster Manager role."
+      operationId: upgradeFlexCluster
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/groupId"
+      - $ref: "#/components/parameters/pretty"
+      requestBody:
+        content:
+          application/vnd.atlas.2024-11-13+json:
+            schema:
+              $ref: "#/components/schemas/FlexClusterDescription20241113"
+        description: Details of the flex cluster upgrade in the specified project.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-11-13+json:
+              schema:
+                $ref: "#/components/schemas/FlexClusterDescription20241113"
+              x-xgen-version: 2024-11-13
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "402":
+          $ref: "#/components/responses/paymentRequired"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "409":
+          $ref: "#/components/responses/conflict"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Upgrade One Flex Cluster
+      tags:
+      - Flex Clusters
   /api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics:
     get:
       description: Returns all Atlas Search metric types available for one process
@@ -10746,6 +11233,91 @@ paths:
       summary: Update One New Network Peering Connection
       tags:
       - Network Peering
+  /api/atlas/v2/groups/{groupId}/performanceAdvisor/suggestedIndexes:
+    get:
+      description: "Returns the indexes that the Performance Advisor suggests. The\
+        \ Performance Advisor monitors queries that MongoDB considers slow and suggests\
+        \ new indexes to improve query performance. To use this resource, the requesting\
+        \ API Key must have the Project Read Only role."
+      operationId: listSuggestedIndexes_1
+      parameters:
+      - $ref: "#/components/parameters/groupId"
+      - description: Human-readable label that identifies the cluster.
+        in: query
+        name: clusterName
+        required: true
+        schema:
+          type: string
+          maxLength: 64
+          minLength: 1
+          pattern: "^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$"
+      - description: "ProcessIds from which to retrieve suggested indexes. A processId\
+          \ is a combination of host and port that serves the MongoDB process. The\
+          \ host must be the hostname, FQDN, IPv4 address, or IPv6 address of the\
+          \ host that runs the MongoDB process (`mongod` or `mongos`). The port must\
+          \ be the IANA port on which the MongoDB process listens for requests. To\
+          \ include multiple processIds, pass the parameter multiple times delimited\
+          \ with an ampersand (`&`) between each processId."
+        in: query
+        name: processIds
+        schema:
+          type: array
+          items:
+            type: string
+            pattern: "^([0-9]{1,3}\\.){3}[0-9]{1,3}|([0-9a-f]{1,4}\\:){7}([0-9a-f]{1,4})|(([a-z0-9]+\\\
+              .){1,10}[a-z]+)?(\\:[0-9]{4,5})$"
+        style: form
+      - description: "Namespaces from which to retrieve suggested indexes. A namespace\
+          \ consists of one database and one collection resource written as `.`: `<database>.<collection>`.\
+          \ To include multiple namespaces, pass the parameter multiple times delimited\
+          \ with an ampersand (`&`) between each namespace. Omit this parameter to\
+          \ return results for all namespaces."
+        in: query
+        name: namespaces
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+      - description: |-
+          Date and time from which the query retrieves the suggested indexes. This parameter expresses its value in the number of milliseconds that have elapsed since the [UNIX epoch](https://en.wikipedia.org/wiki/Unix_time).
+
+          - If you don't specify the **until** parameter, the endpoint returns data covering from the **since** value and the current time.
+          - If you specify neither the **since** nor the **until** parameters, the endpoint returns data from the previous 24 hours.
+        in: query
+        name: since
+        schema:
+          type: integer
+          format: int64
+          minimum: 1199145600000
+      - description: |-
+          Date and time up until which the query retrieves the suggested indexes. This parameter expresses its value in the number of milliseconds that have elapsed since the [UNIX epoch](https://en.wikipedia.org/wiki/Unix_time).
+
+          - If you specify the **until** parameter, you must specify the **since** parameter.
+          - If you specify neither the **since** nor the **until** parameters, the endpoint returns data from the previous 24 hours.
+        in: query
+        name: until
+        schema:
+          type: integer
+          format: int64
+          minimum: 1199145600000
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/PerformanceAdvisorResponse"
+              x-xgen-version: 2024-08-05
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return Suggested Indexes
+      tags:
+      - Performance Advisor
   /api/atlas/v2/groups/{groupId}/pipelines:
     get:
       deprecated: true
@@ -14476,6 +15048,12 @@ paths:
       description: Returns a list of incoming VPC Peering Connections.
       operationId: getVPCPeeringConnections
       parameters:
+      - description: The Account ID of the VPC Peering connection/s.
+        in: query
+        name: requesterAccountId
+        required: true
+        schema:
+          type: string
       - $ref: "#/components/parameters/groupId"
       - $ref: "#/components/parameters/envelope"
       - $ref: "#/components/parameters/itemsPerPage"
@@ -15729,6 +16307,51 @@ paths:
       summary: Remove One User from One Project
       tags:
       - Projects
+    get:
+      description: |-
+        Returns information about the specified MongoDB Cloud user within the context of the specified project. To use this resource, the requesting API Key must have the Group Read Only role.
+
+        **Note**: You can only use this resource to fetch information about MongoDB Cloud human users. To return information about an API Key, use the [Return One Organization API Key](#tag/Programmatic-API-Keys/operation/getApiKey) endpoint.
+
+        **Note**: This resource does not return information about pending users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
+      operationId: getProjectUser
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/groupId"
+      - $ref: "#/components/parameters/pretty"
+      - description: "Unique 24-hexadecimal digit string that identifies the pending\
+          \ or active user in the project. If you need to lookup a user's userId or\
+          \ verify a user's status in the organization, use the Return All MongoDB\
+          \ Cloud Users in One Project resource and filter by username."
+        in: path
+        name: userId
+        required: true
+        schema:
+          type: string
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-01-01+json:
+              schema:
+                $ref: "#/components/schemas/GroupUserResponse"
+              x-xgen-version: 2025-01-01
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return One MongoDB Cloud User in One Project
+      tags:
+      - MongoDB Cloud Users
   /api/atlas/v2/groups/{groupId}/users/{userId}/roles:
     put:
       description: "Updates the roles of the specified user in the specified project.\
@@ -18255,7 +18878,7 @@ paths:
         \ using its unique 24-hexadecimal digit identifier. This team belongs to one\
         \ organization. Teams enable you to grant project access roles to MongoDB\
         \ Cloud users. To use this resource, the requesting API Key must have the\
-        \ Organization Member role."
+        \ Organization Member role. Deprecated versions: v2-{2023-01-01}"
       externalDocs:
         description: Manage Organization Teams
         url: https://docs.atlas.mongodb.com/access/manage-teams-in-orgs/#std-label-manage-teams
@@ -18279,10 +18902,10 @@ paths:
       responses:
         "200":
           content:
-            application/vnd.atlas.2023-01-01+json:
+            application/vnd.atlas.2025-01-01+json:
               schema:
-                $ref: "#/components/schemas/PaginatedApiAppUserView"
-              x-xgen-version: 2023-01-01
+                $ref: "#/components/schemas/PaginatedOrgUserView"
+              x-xgen-version: 2025-01-01
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
@@ -18403,13 +19026,63 @@ paths:
       summary: Remove One MongoDB Cloud User from One Team
       tags:
       - Teams
+  /api/atlas/v2/orgs/{orgId}/teams/{teamId}:addUser:
+    post:
+      description: |-
+        Adds one MongoDB Cloud user to one team. You can add an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting API Key must have the Organization Owner role.
+
+        **Note**: This resource cannot be used to add a user invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
+      operationId: addUserToTeam
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/orgId"
+      - $ref: "#/components/parameters/pretty"
+      - description: Unique 24-hexadecimal digit string that identifies the team to
+          add the MongoDB Cloud user to.
+        in: path
+        name: teamId
+        required: true
+        schema:
+          type: string
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+      requestBody:
+        content:
+          application/vnd.atlas.2025-01-01+json:
+            schema:
+              $ref: "#/components/schemas/AddOrRemoveUserFromTeam"
+        description: The active or pending MongoDB Cloud user that you want to add
+          to the specified team.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-01-01+json:
+              schema:
+                $ref: "#/components/schemas/OrgUserResponse"
+              x-xgen-version: 2025-01-01
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Add One MongoDB Cloud User to One Team
+      tags:
+      - MongoDB Cloud Users
   /api/atlas/v2/orgs/{orgId}/users:
     get:
       description: "Returns details about the MongoDB Cloud users associated with\
         \ the specified organization. Each MongoDB Cloud user returned must belong\
         \ to the specified organization or to a project within the specified organization.\
         \ To use this resource, the requesting API Key must have the Organization\
-        \ Member role."
+        \ Member role. Deprecated versions: v2-{2023-01-01}"
       operationId: listOrganizationUsers
       parameters:
       - $ref: "#/components/parameters/envelope"
@@ -18421,10 +19094,10 @@ paths:
       responses:
         "200":
           content:
-            application/vnd.atlas.2023-01-01+json:
+            application/vnd.atlas.2025-01-01+json:
               schema:
-                $ref: "#/components/schemas/PaginatedAppUserView"
-              x-xgen-version: 2023-01-01
+                $ref: "#/components/schemas/PaginatedOrgUserView"
+              x-xgen-version: 2025-01-01
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
@@ -18437,11 +19110,51 @@ paths:
       summary: Return All MongoDB Cloud Users in One Organization
       tags:
       - Organizations
+    post:
+      description: |-
+        Invites one new or existing MongoDB Cloud user to join the organization. The invitation to join the organization will be sent to the username provided and must be accepted within 30 days. To use this resource, the requesting API Key must have the Organization Owner role.
+
+        **Note**: If the user does not have an existing MongoDB Cloud account, they will be prompted to finish setting up an account upon accepting the invitation. If the user already has an account, they will still receive an invitation to access the organization.
+      operationId: createOrganizationUser
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/orgId"
+      - $ref: "#/components/parameters/pretty"
+      requestBody:
+        content:
+          application/vnd.atlas.2025-01-01+json:
+            schema:
+              $ref: "#/components/schemas/OrgUserRequest"
+        description: Represents the MongoDB Cloud user to be created within the organization.
+        required: true
+      responses:
+        "201":
+          content:
+            application/vnd.atlas.2025-01-01+json:
+              schema:
+                $ref: "#/components/schemas/OrgUserResponse"
+              x-xgen-version: 2025-01-01
+          description: Created
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Create One MongoDB Cloud User in One Organization
+      tags:
+      - MongoDB Cloud Users
   /api/atlas/v2/orgs/{orgId}/users/{userId}:
     delete:
       description: "Removes one MongoDB Cloud user from the specified organization.\
         \ To use this resource, the requesting API Key must have the Organization\
-        \ User Admin role."
+        \ User Admin role. Deprecated versions: v2-{2023-01-01}"
       operationId: removeOrganizationUser
       parameters:
       - $ref: "#/components/parameters/envelope"
@@ -18460,10 +19173,10 @@ paths:
       responses:
         "204":
           content:
-            application/vnd.atlas.2023-01-01+json:
+            application/vnd.atlas.2025-01-01+json:
               schema:
                 $ref: "#/components/schemas/NoBody"
-              x-xgen-version: 2023-01-01
+              x-xgen-version: 2025-01-01
           description: This endpoint does not return a response body.
         "400":
           $ref: "#/components/responses/badRequest"
@@ -18478,6 +19191,103 @@ paths:
       summary: Remove One MongoDB Cloud User From One Organization
       tags:
       - Organizations
+    get:
+      description: |-
+        Returns information about the specified MongoDB Cloud user within the context of the specified organization. To use this resource, the requesting API Key must have the Organization Read Only role.
+
+        **Note**: This resource can only be used to fetch information about MongoDB Cloud human users. To return information about an API Key, use the [Return One Organization API Key](#tag/Programmatic-API-Keys/operation/getApiKey) endpoint.
+
+        **Note**: This resource does not return information about pending users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
+      operationId: getOrganizationUser
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/orgId"
+      - $ref: "#/components/parameters/pretty"
+      - description: "Unique 24-hexadecimal digit string that identifies the pending\
+          \ or active user in the organization. If you need to lookup a user's userId\
+          \ or verify a user's status in the organization, use the Return All MongoDB\
+          \ Cloud Users in One Organization resource and filter by username."
+        in: path
+        name: userId
+        required: true
+        schema:
+          type: string
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-01-01+json:
+              schema:
+                $ref: "#/components/schemas/OrgUserResponse"
+              x-xgen-version: 2025-01-01
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return One MongoDB Cloud User in One Organization
+      tags:
+      - MongoDB Cloud Users
+    patch:
+      description: |-
+        Updates one MongoDB Cloud user in the specified organization. You can update an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting API Key must have the Organization Owner role.
+
+        **Note**: Only include the fields you wish to update in the request body. Supplying a field with an empty value will reset that field on the user.
+
+        **Note**: This resource cannot be used to update pending users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
+      operationId: updateOrganizationUser
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/orgId"
+      - $ref: "#/components/parameters/pretty"
+      - description: "Unique 24-hexadecimal digit string that identifies the pending\
+          \ or active user in the organization. If you need to lookup a user's userId\
+          \ or verify a user's status in the organization, use the Return All MongoDB\
+          \ Cloud Users in One Organization resource and filter by username."
+        in: path
+        name: userId
+        required: true
+        schema:
+          type: string
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+      requestBody:
+        content:
+          application/vnd.atlas.2025-01-01+json:
+            schema:
+              $ref: "#/components/schemas/OrgUserUpdateRequest"
+        description: Represents the roles and teams to assign the MongoDB Cloud user.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-01-01+json:
+              schema:
+                $ref: "#/components/schemas/OrgUserResponse"
+              x-xgen-version: 2025-01-01
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Update One MongoDB Cloud User in One Organization
+      tags:
+      - MongoDB Cloud Users
   /api/atlas/v2/orgs/{orgId}/users/{userId}/roles:
     put:
       description: "Updates the roles of the specified user in the specified organization.\
@@ -18525,6 +19335,112 @@ paths:
       summary: Update Organization Roles for One MongoDB Cloud User
       tags:
       - Organizations
+  /api/atlas/v2/orgs/{orgId}/users/{userId}:addRole:
+    post:
+      description: |-
+        Adds one organization level role to the MongoDB Cloud user. You can add a role to an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting API Key must have the Organization Owner role.
+
+        **Note**: This operation is atomic.
+
+        **Note**: This resource cannot be used to add a role to users invited using the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
+      operationId: addOrganizationRole
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/orgId"
+      - $ref: "#/components/parameters/pretty"
+      - description: "Unique 24-hexadecimal digit string that identifies the pending\
+          \ or active user in the organization. If you need to lookup a user's userId\
+          \ or verify a user's status in the organization, use the Return All MongoDB\
+          \ Cloud Users in One Organization resource and filter by username."
+        in: path
+        name: userId
+        required: true
+        schema:
+          type: string
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+      requestBody:
+        content:
+          application/vnd.atlas.2025-01-01+json:
+            schema:
+              $ref: "#/components/schemas/AddOrRemoveOrgRole"
+        description: Organization level role to assign to the MongoDB Cloud user.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-01-01+json:
+              schema:
+                $ref: "#/components/schemas/OrgUserResponse"
+              x-xgen-version: 2025-01-01
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Add One Organization Role to One MongoDB Cloud User
+      tags:
+      - MongoDB Cloud Users
+  /api/atlas/v2/orgs/{orgId}/users/{userId}:removeRole:
+    post:
+      description: |-
+        Removes one organization level role from the MongoDB Cloud user. You can remove a role from an active user or a user that has not yet accepted the invitation to join the organization. To replace a user's only role, add the new role before removing the old role. A user must have at least one role at all times. To use this resource, the requesting API Key must have the Organization Owner role.
+
+        **Note**: This operation is atomic.
+
+        **Note**: This resource cannot be used to remove a role from users invited using the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
+      operationId: removeOrganizationRole
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/orgId"
+      - $ref: "#/components/parameters/pretty"
+      - description: "Unique 24-hexadecimal digit string that identifies the pending\
+          \ or active user in the organization. If you need to lookup a user's userId\
+          \ or verify a user's status in the organization, use the Return All MongoDB\
+          \ Cloud Users in One Organization resource and filter by username."
+        in: path
+        name: userId
+        required: true
+        schema:
+          type: string
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+      requestBody:
+        content:
+          application/vnd.atlas.2025-01-01+json:
+            schema:
+              $ref: "#/components/schemas/AddOrRemoveOrgRole"
+        description: Organization level role to remove from the MongoDB Cloud user.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-01-01+json:
+              schema:
+                $ref: "#/components/schemas/OrgUserResponse"
+              x-xgen-version: 2025-01-01
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Remove One Organization Role from One MongoDB Cloud User
+      tags:
+      - MongoDB Cloud Users
   /api/atlas/v2/unauth/controlPlaneIPAddresses:
     get:
       description: Returns all control plane IP addresses.
@@ -18545,6 +19461,49 @@ paths:
       summary: Return All Control Plane IP Addresses
       tags:
       - Root
+  /api/atlas/v2/unauth/openapi/versions:
+    get:
+      description: API that provides a list of available versionsfor a given environment.
+      operationId: getApiVersions
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/itemsPerPage"
+      - $ref: "#/components/parameters/pageNum"
+      - $ref: "#/components/parameters/pretty"
+      - description: "The environment to get the versions from. If not provided, it\
+          \ returnsthe versions for the given MongoDB URL. (E.g. prod for cloud.mongodb.com)"
+        in: query
+        name: env
+        schema:
+          type: string
+          enum:
+          - dev
+          - qa
+          - prod
+          - stage
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedApiVersions"
+              x-xgen-version: 2024-08-05
+            application/vnd.atlas.2024-08-05+yaml:
+              schema:
+                $ref: "#/components/schemas/PaginatedApiVersions"
+              x-xgen-version: 2024-08-05
+          description: OK
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security: []
+      summary: Provides a list of versions for a given environment.
+      tags:
+      - OpenAPI
+      x-xgen-soa-migration:
+        additionalServices: mms
+        allowDocsDiff: "false"
+        docsSource: mms
+        targetService: api-registry
   /api/atlas/v2/users:
     post:
       description: |-
@@ -19745,6 +20704,21 @@ components:
             \ alert. By default this value is set to false. If set to true, it will\
             \ override the acknowledgedUntil parameter."
       title: Acknowledge Alert
+    AddOrRemoveOrgRole:
+      type: object
+      properties:
+        orgRole:
+          type: string
+          description: Organization-level role.
+          enum:
+          - ORG_OWNER
+          - ORG_GROUP_CREATOR
+          - ORG_BILLING_ADMIN
+          - ORG_BILLING_READ_ONLY
+          - ORG_READ_ONLY
+          - ORG_MEMBER
+      required:
+      - orgRole
     AddOrRemoveUserFromTeam:
       type: object
       properties:
@@ -20658,9 +21632,6 @@ components:
           - thousand
           - million
           - billion
-          - ""
-          - ""
-          - ""
       title: Threshold
     AlertsToggle:
       type: object
@@ -22576,9 +23547,6 @@ components:
           - thousand
           - million
           - billion
-          - ""
-          - ""
-          - ""
       required:
       - metricName
       title: App Services Metric Threshold
@@ -24721,6 +25689,10 @@ components:
           minLength: 24
           pattern: "^([a-f0-9]{24})$"
           readOnly: true
+        clusterName:
+          type: string
+          description: Human-readable label that identifies the cluster.
+          readOnly: true
         complete:
           type: boolean
           description: Flag that indicates whether the snapshot exists. This flag
@@ -24796,6 +25768,11 @@ components:
           minLength: 24
           pattern: "^([a-f0-9]{24})$"
           readOnly: true
+        completedTime:
+          type: string
+          format: date-time
+          description: Date and time when the snapshot completed.
+          readOnly: true
         compressionSetting:
           type: string
           description: Human-readable label that identifies the method of compression
@@ -24814,10 +25791,23 @@ components:
           type: boolean
           description: Flag that indicates whether someone encrypted this snapshot.
           readOnly: true
+        fcv:
+          type: string
+          description: Number that indicates the feature compatibility version of
+            MongoDB that the replica set primary ran when MongoDB Cloud created the
+            snapshot.
+          readOnly: true
         fileSizeBytes:
           type: integer
           format: int64
           description: Number that indicates the total size of the data files in bytes.
+          readOnly: true
+        machineId:
+          type: string
+          description: Hostname and port that indicate the node on which MongoDB Cloud
+            created the snapshot.
+          pattern: "^([0-9]{1,3}\\.){3}[0-9]{1,3}|([0-9a-f]{1,4}\\:){7}([0-9a-f]{1,4})|(([a-z0-9]+\\\
+            .){1,10}[a-z]+)?(\\:[0-9]{4,5})$"
           readOnly: true
         masterKeyUUID:
           type: string
@@ -24835,6 +25825,10 @@ components:
         replicaSetName:
           type: string
           description: Human-readable label that identifies the replica set.
+          readOnly: true
+        replicaState:
+          type: string
+          description: The node's role at the time when snapshot process began.
           readOnly: true
         storageSizeBytes:
           type: integer
@@ -28766,6 +29760,37 @@ components:
       - eventTypeName
       - id
       title: Cluster Events
+    ClusterFlexProviderSettings:
+      type: object
+      allOf:
+      - $ref: "#/components/schemas/ClusterProviderSettings"
+      - type: object
+        properties:
+          backingProviderName:
+            type: string
+            description: Cloud service provider on which MongoDB Cloud provisioned
+              the multi-tenant host. The resource returns this parameter when **providerSettings.providerName**
+              is `FLEX` and **providerSetting.instanceSizeName** is `FLEX`.
+            enum:
+            - AWS
+            - GCP
+            - AZURE
+          instanceSizeName:
+            type: string
+            description: "Cluster tier, with a default storage and memory capacity,\
+              \ that applies to all the data-bearing hosts in your cluster. You must\
+              \ set **providerSettings.providerName** to `FLEX` and specify the cloud\
+              \ service provider in **providerSettings.backingProviderName**."
+            enum:
+            - FLEX
+            title: Flex Instance Sizes
+          regionName:
+            type: string
+            description: "Human-readable label that identifies the geographic location\
+              \ of your MongoDB cluster. The region you choose can affect network\
+              \ latency for clients accessing your databases. For a complete list\
+              \ of region names, see [AWS](https://docs.atlas.mongodb.com/reference/amazon-aws/#std-label-amazon-aws),\
+              \ [GCP](https://docs.atlas.mongodb.com/reference/google-gcp/), and [Azure](https://docs.atlas.mongodb.com/reference/microsoft-azure/)."
     ClusterFreeAutoScaling:
       type: object
       description: Range of instance sizes to which your cluster can scale.
@@ -28942,6 +29967,7 @@ components:
         mapping:
           AWS: "#/components/schemas/AWSCloudProviderSettings"
           AZURE: "#/components/schemas/AzureCloudProviderSettings"
+          FLEX: "#/components/schemas/ClusterFlexProviderSettings"
           GCP: "#/components/schemas/CloudGCPProviderSettings"
           TENANT: "#/components/schemas/ClusterFreeProviderSettings"
         propertyName: providerName
@@ -28950,6 +29976,7 @@ components:
       - $ref: "#/components/schemas/AzureCloudProviderSettings"
       - $ref: "#/components/schemas/CloudGCPProviderSettings"
       - $ref: "#/components/schemas/ClusterFreeProviderSettings"
+      - $ref: "#/components/schemas/ClusterFlexProviderSettings"
       properties:
         providerName:
           type: string
@@ -31927,6 +32954,8 @@ components:
           - STORAGE_GET_CONFIG
           - STORAGE_SET_CONFIG
           - FLUSH_ROUTER_CONFIG
+          - ENABLE_SHARDING
+          - CHECK_METADATA_CONSISTENCY
           - GET_STREAM_PROCESSOR
           - CREATE_STREAM_PROCESSOR
           - PROCESS_STREAM_PROCESSOR
@@ -32948,6 +33977,8 @@ components:
             - CLUSTER_FCV_DOWNGRADED
             - CLUSTER_BINARY_VERSION_DOWNGRADED
             - CLUSTER_BINARY_VERSION_UPGRADED
+            - CLUSTER_OS_FIXED
+            - CLUSTER_OS_UNFIXED
             title: Version Audit Types
         groupId:
           type: string
@@ -35360,6 +36391,7 @@ components:
         - CLUSTER_INSTANCE_SSL_ROTATED_PER_CLUSTER
         - CLUSTER_INSTANCE_SSL_REVOKED
         - RELOAD_SSL_ON_PROCESSES
+        - RELOAD_SSL_ON_PROCESSES_REQUESTED
         - CLUSTER_INSTANCE_ADMIN_BACKUP_SNAPSHOT_REQUESTED
         - UPDATE_BUMPER_FILES
         - DATA_LAKE_QUERY_LOGS_DOWNLOADED
@@ -35410,6 +36442,7 @@ components:
         - OS_MAINTENANCE_RESTART
         - OS_MAINTENANCE_REPLACEMENT
         - FREE_UPGRADE_STARTED
+        - FLEX_UPGRADE_STARTED
         - TEST_FAILOVER_REQUESTED
         - USER_SECURITY_SETTINGS_UPDATED
         - AUDIT_LOG_CONFIGURATION_UPDATED
@@ -35728,6 +36761,8 @@ components:
         - CLUSTER_FCV_DOWNGRADED
         - CLUSTER_BINARY_VERSION_DOWNGRADED
         - CLUSTER_BINARY_VERSION_UPGRADED
+        - CLUSTER_OS_FIXED
+        - CLUSTER_OS_UNFIXED
         title: Version Audit Types
       - type: string
         enum:
@@ -35955,6 +36990,8 @@ components:
         - ORG_UI_IP_ACCESS_LIST_DISABLED
         - ORG_EDITED_UI_IP_ACCESS_LIST_ENTRIES
         - ORG_SERVICE_ACCOUNT_MAX_SECRET_VALIDITY_EDITED
+        - ORG_SERVICE_ACCOUNT_SECRETS_EXPIRED
+        - ORG_SERVICE_ACCOUNT_SECRETS_NO_LONGER_EXPIRED
         title: Org Event Types
       - type: string
         enum:
@@ -38587,6 +39624,7 @@ components:
             $ref: "#/components/schemas/ResourceTag"
         withDefaultAlertsSettings:
           type: boolean
+          default: true
           description: Flag that indicates whether to create the project with default
             alert settings.
           writeOnly: true
@@ -38595,6 +39633,58 @@ components:
       - created
       - name
       - orgId
+    GroupActiveUserResponse:
+      type: object
+      allOf:
+      - $ref: "#/components/schemas/GroupUserResponse"
+      - type: object
+        properties:
+          country:
+            type: string
+            description: Two-character alphabetical string that identifies the MongoDB
+              Cloud user's geographic location. This parameter uses the ISO 3166-1a2
+              code format.
+            example: US
+            pattern: "^([A-Z]{2})$"
+            readOnly: true
+          createdAt:
+            type: string
+            format: date-time
+            description: Date and time when MongoDB Cloud created the current account.
+              This value is in the ISO 8601 timestamp format in UTC.
+            readOnly: true
+          firstName:
+            type: string
+            description: First or given name that belongs to the MongoDB Cloud user.
+            example: John
+            readOnly: true
+          lastAuth:
+            type: string
+            format: date-time
+            description: Date and time when the current account last authenticated.
+              This value is in the ISO 8601 timestamp format in UTC.
+            readOnly: true
+          lastName:
+            type: string
+            description: "Last name, family name, or surname that belongs to the MongoDB\
+              \ Cloud user."
+            example: Doe
+            readOnly: true
+          mobileNumber:
+            type: string
+            description: Mobile phone number that belongs to the MongoDB Cloud user.
+            pattern: "(?:(?:\\\\+?1\\\\s*(?:[.-]\\\\s*)?)?(?:(\\\\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\\\
+              \\s*)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\\\\s*(?:[.-]\\\\\
+              s*)?)([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\\\\s*(?:[.-]\\\\s*)?([0-9]{4})$"
+            readOnly: true
+      required:
+      - createdAt
+      - firstName
+      - id
+      - lastName
+      - orgMembershipStatus
+      - roles
+      - username
     GroupAlertsConfig:
       type: object
       oneOf:
@@ -38923,6 +40013,38 @@ components:
             value if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
+    GroupPendingUserResponse:
+      type: object
+      allOf:
+      - $ref: "#/components/schemas/GroupUserResponse"
+      - type: object
+        properties:
+          invitationCreatedAt:
+            type: string
+            format: date-time
+            description: Date and time when MongoDB Cloud sent the invitation. MongoDB
+              Cloud represents this timestamp in ISO 8601 format in UTC.
+            readOnly: true
+          invitationExpiresAt:
+            type: string
+            format: date-time
+            description: Date and time when the invitation from MongoDB Cloud expires.
+              MongoDB Cloud represents this timestamp in ISO 8601 format in UTC.
+            readOnly: true
+          inviterUsername:
+            type: string
+            format: email
+            description: Username of the MongoDB Cloud user who sent the invitation
+              to join the organization.
+            readOnly: true
+      required:
+      - id
+      - invitationCreatedAt
+      - invitationExpiresAt
+      - inviterUsername
+      - orgMembershipStatus
+      - roles
+      - username
     GroupRole:
       type: object
       properties:
@@ -38972,10 +40094,11 @@ components:
           pattern: "^([a-f0-9]{24})$"
         groupRoles:
           type: array
-          description: One or more project level roles assigned to the MongoDB Cloud
+          description: One or more project-level roles assigned to the MongoDB Cloud
             user.
           items:
             type: string
+            description: Project-level role.
             enum:
             - GROUP_OWNER
             - GROUP_CLUSTER_MANAGER
@@ -39176,6 +40299,64 @@ components:
             url: https://www.mongodb.com/docs/atlas/tags
           items:
             $ref: "#/components/schemas/ResourceTag"
+    GroupUserResponse:
+      type: object
+      discriminator:
+        mapping:
+          ACTIVE: "#/components/schemas/GroupActiveUserResponse"
+          PENDING: "#/components/schemas/GroupPendingUserResponse"
+        propertyName: orgMembershipStatus
+      oneOf:
+      - $ref: "#/components/schemas/GroupPendingUserResponse"
+      - $ref: "#/components/schemas/GroupActiveUserResponse"
+      properties:
+        id:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the MongoDB
+            Cloud user.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+          readOnly: true
+        orgMembershipStatus:
+          type: string
+          description: String enum that indicates whether the MongoDB Cloud user has
+            a pending invitation to join the organization or they are already active
+            in the organization.
+          enum:
+          - PENDING
+          - ACTIVE
+          readOnly: true
+        roles:
+          type: array
+          description: One or more project-level roles assigned to the MongoDB Cloud
+            user.
+          items:
+            type: string
+            description: Project-level role.
+            enum:
+            - GROUP_OWNER
+            - GROUP_CLUSTER_MANAGER
+            - GROUP_STREAM_PROCESSING_OWNER
+            - GROUP_DATA_ACCESS_ADMIN
+            - GROUP_DATA_ACCESS_READ_WRITE
+            - GROUP_DATA_ACCESS_READ_ONLY
+            - GROUP_READ_ONLY
+            - GROUP_SEARCH_INDEX_EDITOR
+          readOnly: true
+          uniqueItems: true
+        username:
+          type: string
+          format: email
+          description: Email address that represents the username of the MongoDB Cloud
+            user.
+          readOnly: true
+      required:
+      - id
+      - orgMembershipStatus
+      - roles
+      - username
     HardwareSpec:
       type: object
       description: "Hardware specifications for all electable nodes deployed in the\
@@ -40619,9 +41800,6 @@ components:
           - thousand
           - million
           - billion
-          - ""
-          - ""
-          - ""
       required:
       - metricName
       title: Host Metric Threshold
@@ -40674,9 +41852,6 @@ components:
           - thousand
           - million
           - billion
-          - ""
-          - ""
-          - ""
           readOnly: true
       readOnly: true
     InboundControlPlaneCloudProviderIPAddresses:
@@ -43700,6 +44875,7 @@ components:
       - CLUSTER_INSTANCE_SSL_ROTATED_PER_CLUSTER
       - CLUSTER_INSTANCE_SSL_REVOKED
       - RELOAD_SSL_ON_PROCESSES
+      - RELOAD_SSL_ON_PROCESSES_REQUESTED
       - CLUSTER_INSTANCE_ADMIN_BACKUP_SNAPSHOT_REQUESTED
       - UPDATE_BUMPER_FILES
       - DATA_LAKE_QUERY_LOGS_DOWNLOADED
@@ -43750,6 +44926,7 @@ components:
       - OS_MAINTENANCE_RESTART
       - OS_MAINTENANCE_REPLACEMENT
       - FREE_UPGRADE_STARTED
+      - FLEX_UPGRADE_STARTED
       - TEST_FAILOVER_REQUESTED
       - USER_SECURITY_SETTINGS_UPDATED
       - AUDIT_LOG_CONFIGURATION_UPDATED
@@ -45301,8 +46478,9 @@ components:
         properties:
           country:
             type: string
-            description: Two alphabet characters that identifies MongoDB Cloud user's
-              geographic location. This parameter uses the ISO 3166-1a2 code format.
+            description: Two-character alphabetical string that identifies the MongoDB
+              Cloud user's geographic location. This parameter uses the ISO 3166-1a2
+              code format.
             example: US
             pattern: "^([A-Z]{2})$"
             readOnly: true
@@ -45396,6 +46574,8 @@ components:
       - ORG_UI_IP_ACCESS_LIST_DISABLED
       - ORG_EDITED_UI_IP_ACCESS_LIST_ENTRIES
       - ORG_SERVICE_ACCOUNT_MAX_SECRET_VALIDITY_EDITED
+      - ORG_SERVICE_ACCOUNT_SECRETS_EXPIRED
+      - ORG_SERVICE_ACCOUNT_SECRETS_NO_LONGER_EXPIRED
       example: ORG_CREATED
       title: Org Event Types
     OrgEventViewForOrg:
@@ -45940,6 +47120,7 @@ components:
             Cloud user.
           items:
             type: string
+            description: Organization-level role.
             enum:
             - ORG_OWNER
             - ORG_GROUP_CREATOR
@@ -45954,21 +47135,22 @@ components:
       writeOnly: true
     OrgUserRolesResponse:
       type: object
-      description: Organization and project level roles assigned to one MongoDB Cloud
+      description: Organization- and project-level roles assigned to one MongoDB Cloud
         user within one organization.
       properties:
         groupRoleAssignments:
           type: array
-          description: List of project level role assignments assigned to the MongoDB
+          description: List of project-level role assignments assigned to the MongoDB
             Cloud user.
           items:
             $ref: "#/components/schemas/GroupRoleAssignment"
         orgRoles:
           type: array
-          description: One or more organization level roles assigned to the MongoDB
+          description: One or more organization-level roles assigned to the MongoDB
             Cloud user.
           items:
             type: string
+            description: Organization-level role.
             enum:
             - ORG_OWNER
             - ORG_GROUP_CREATOR
@@ -46198,6 +47380,17 @@ components:
           type: boolean
           description: Flag that indicates whether to require API operations to originate
             from an IP Address added to the API access list for the specified organization.
+        genAIFeaturesEnabled:
+          type: boolean
+          default: true
+          description: "Flag that indicates whether this organization has access to\
+            \ generative AI features. This setting only applies to Atlas Commercial\
+            \ and is enabled by default. Once this setting is turned on, Project Owners\
+            \ may be able to enable or disable individual AI features at the project\
+            \ level."
+          externalDocs:
+            description: Generative AI FAQs
+            url: https://www.mongodb.com/docs/generative-ai-faq/
         maxServiceAccountSecretValidityInHours:
           type: integer
           format: int32
@@ -47723,6 +48916,34 @@ components:
             completing this request.
           items:
             $ref: "#/components/schemas/OrgServiceAccount"
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+          description: Total number of documents available. MongoDB Cloud omits this
+            value if `includeCount` is set to `false`.
+          minimum: 0
+          readOnly: true
+    PaginatedOrgUserView:
+      type: object
+      properties:
+        links:
+          type: array
+          description: "List of one or more Uniform Resource Locators (URLs) that\
+            \ point to API sub-resources, related API resources, or both. RFC 5988\
+            \ outlines these relationships."
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        results:
+          type: array
+          description: List of returned documents that MongoDB Cloud provides when
+            completing this request.
+          items:
+            $ref: "#/components/schemas/OrgUserResponse"
           readOnly: true
         totalCount:
           type: integer
@@ -51542,9 +52763,6 @@ components:
           - thousand
           - million
           - billion
-          - ""
-          - ""
-          - ""
       required:
       - metricName
       title: Serverless Metric Threshold
@@ -52619,11 +53837,13 @@ components:
           Cluster: "#/components/schemas/StreamsClusterConnection"
           Kafka: "#/components/schemas/StreamsKafkaConnection"
           Sample: "#/components/schemas/StreamsSampleConnection"
+          WebAPI: "#/components/schemas/StreamsWebAPIConnection"
         propertyName: type
       oneOf:
       - $ref: "#/components/schemas/StreamsSampleConnection"
       - $ref: "#/components/schemas/StreamsClusterConnection"
       - $ref: "#/components/schemas/StreamsKafkaConnection"
+      - $ref: "#/components/schemas/StreamsWebAPIConnection"
       properties:
         links:
           type: array
@@ -52647,6 +53867,7 @@ components:
           - Kafka
           - Cluster
           - Sample
+          - WebAPI
       readOnly: true
     StreamsDLQ:
       type: object
@@ -52976,7 +54197,7 @@ components:
           description: The ID of the Private Link connection.
         dnsDomain:
           type: string
-          description: Domain name of Confluent cluster.
+          description: Domain name of Privatelink connected cluster.
         dnsSubDomain:
           type: array
           description: Sub-Domain name of Confluent cluster. These are typically your
@@ -53006,7 +54227,7 @@ components:
           description: Domain name of Confluent cluster.
         serviceEndpointId:
           type: string
-          description: AWS Service Endpoint ID.
+          description: Service Endpoint ID.
         state:
           type: string
           description: State the connection is in.
@@ -53189,6 +54410,31 @@ components:
           $ref: "#/components/schemas/StreamsSampleConnections"
         streamConfig:
           $ref: "#/components/schemas/StreamConfig"
+    StreamsWebAPIConnection:
+      type: object
+      allOf:
+      - $ref: "#/components/schemas/StreamsConnection"
+      - type: object
+        properties:
+          connectionTimeoutSec:
+            type: integer
+            format: int32
+            description: The amount of seconds to wait before timing out a connection.
+          headers:
+            type: object
+            additionalProperties:
+              type: string
+              description: A map of key-value pairs that will be passed as headers
+                for the request.
+            description: A map of key-value pairs that will be passed as headers for
+              the request.
+          requestTimeoutSec:
+            type: integer
+            format: int32
+            description: The amount of seconds to wait before timing out a request.
+          url:
+            type: string
+            description: The url to be used for the request.
     SummaryNotification:
       type: object
       description: Summary notification configuration for MongoDB Cloud to send information
