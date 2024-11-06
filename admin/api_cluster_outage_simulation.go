@@ -166,8 +166,8 @@ func (a *ClusterOutageSimulationApiService) EndOutageSimulationExecute(r EndOuta
 		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
 	}
 
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json", "application/json"}
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -283,8 +283,8 @@ func (a *ClusterOutageSimulationApiService) GetOutageSimulationExecute(r GetOuta
 		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
 	}
 
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json", "application/json"}
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -407,8 +407,8 @@ func (a *ClusterOutageSimulationApiService) StartOutageSimulationExecute(r Start
 		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
 	}
 
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json", "application/json"}
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)

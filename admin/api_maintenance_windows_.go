@@ -200,8 +200,8 @@ func (a *MaintenanceWindowsApiService) DeferMaintenanceWindowExecute(r DeferMain
 		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
 	}
 
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json", "application/json"}
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -297,8 +297,8 @@ func (a *MaintenanceWindowsApiService) GetMaintenanceWindowExecute(r GetMaintena
 		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
 	}
 
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json", "application/json"}
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -405,8 +405,8 @@ func (a *MaintenanceWindowsApiService) ResetMaintenanceWindowExecute(r ResetMain
 		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
 	}
 
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json", "application/json"}
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -499,8 +499,8 @@ func (a *MaintenanceWindowsApiService) ToggleMaintenanceAutoDeferExecute(r Toggl
 		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
 	}
 
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json", "application/json"}
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -603,8 +603,8 @@ func (a *MaintenanceWindowsApiService) UpdateMaintenanceWindowExecute(r UpdateMa
 		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
 	}
 
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json", "application/json"}
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)

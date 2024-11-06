@@ -213,9 +213,9 @@ func (a *{{{classname}}}Service) {{{nickname}}}Execute(r {{operationId}}ApiReque
 		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
 	}
 
-	// to determine the Accept header
+	// to determine the Accept header (only first one)
 {{=<% %>=}}
-	localVarHTTPHeaderAccepts := []string{<%#produces%>"<%&mediaType%>"<%^-last%>, <%/-last%><%/produces%>}
+	localVarHTTPHeaderAccepts := []string{<%#produces.0%>"<%&mediaType%>"<%/produces.0%>}
 <%={{ }}=%>
 
 	// set Accept header
