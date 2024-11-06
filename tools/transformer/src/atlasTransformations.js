@@ -28,7 +28,7 @@ module.exports = function runTransformations(openapi) {
   openapi = applyRemoveEnumsTransformations(openapi);
   openapi = applyRemoveNullableTransformations(openapi);
   openapi = applyRemoveObjectAdditonalProperties(openapi);
-  openapi = reorderResponseBodies(openapi);
+  // openapi = reorderResponseBodies(openapi);
 
   openapi = applyModelNameTransformations(
     openapi,

@@ -59,7 +59,7 @@ type InvoicesApi interface {
 	CreateCostExplorerQueryProcess1WithParams(ctx context.Context, args *CreateCostExplorerQueryProcess1ApiParams) CreateCostExplorerQueryProcess1ApiRequest
 
 	// Method available only for mocking purposes
-	CreateCostExplorerQueryProcess1Execute(r CreateCostExplorerQueryProcess1ApiRequest) (any, *http.Response, error)
+	CreateCostExplorerQueryProcess1Execute(r CreateCostExplorerQueryProcess1ApiRequest) (string, *http.Response, error)
 
 	/*
 			DownloadInvoiceCSV Return One Organization Invoice as CSV
@@ -109,7 +109,7 @@ type InvoicesApi interface {
 	GetInvoiceWithParams(ctx context.Context, args *GetInvoiceApiParams) GetInvoiceApiRequest
 
 	// Method available only for mocking purposes
-	GetInvoiceExecute(r GetInvoiceApiRequest) (*BillingInvoice, *http.Response, error)
+	GetInvoiceExecute(r GetInvoiceApiRequest) (string, *http.Response, error)
 
 	/*
 			ListInvoices Return All Invoices for One Organization
@@ -328,7 +328,7 @@ func (a *InvoicesApiService) CreateCostExplorerQueryProcess1WithParams(ctx conte
 	}
 }
 
-func (r CreateCostExplorerQueryProcess1ApiRequest) Execute() (any, *http.Response, error) {
+func (r CreateCostExplorerQueryProcess1ApiRequest) Execute() (string, *http.Response, error) {
 	return r.ApiService.CreateCostExplorerQueryProcess1Execute(r)
 }
 
@@ -353,13 +353,13 @@ func (a *InvoicesApiService) CreateCostExplorerQueryProcess1(ctx context.Context
 
 // CreateCostExplorerQueryProcess1Execute executes the request
 //
-//	@return any
-func (a *InvoicesApiService) CreateCostExplorerQueryProcess1Execute(r CreateCostExplorerQueryProcess1ApiRequest) (any, *http.Response, error) {
+//	@return string
+func (a *InvoicesApiService) CreateCostExplorerQueryProcess1Execute(r CreateCostExplorerQueryProcess1ApiRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue any
+		localVarReturnValue string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InvoicesApiService.CreateCostExplorerQueryProcess1")
@@ -385,7 +385,7 @@ func (a *InvoicesApiService) CreateCostExplorerQueryProcess1Execute(r CreateCost
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json", "application/vnd.atlas.2023-01-01+csv", "application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+csv", "application/vnd.atlas.2023-01-01+json", "application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -564,7 +564,7 @@ func (a *InvoicesApiService) GetInvoiceWithParams(ctx context.Context, args *Get
 	}
 }
 
-func (r GetInvoiceApiRequest) Execute() (*BillingInvoice, *http.Response, error) {
+func (r GetInvoiceApiRequest) Execute() (string, *http.Response, error) {
 	return r.ApiService.GetInvoiceExecute(r)
 }
 
@@ -590,13 +590,13 @@ func (a *InvoicesApiService) GetInvoice(ctx context.Context, orgId string, invoi
 
 // GetInvoiceExecute executes the request
 //
-//	@return BillingInvoice
-func (a *InvoicesApiService) GetInvoiceExecute(r GetInvoiceApiRequest) (*BillingInvoice, *http.Response, error) {
+//	@return string
+func (a *InvoicesApiService) GetInvoiceExecute(r GetInvoiceApiRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue *BillingInvoice
+		localVarReturnValue string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InvoicesApiService.GetInvoice")
@@ -622,7 +622,7 @@ func (a *InvoicesApiService) GetInvoiceExecute(r GetInvoiceApiRequest) (*Billing
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json", "application/vnd.atlas.2023-01-01+csv", "application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+csv", "application/vnd.atlas.2023-01-01+json", "application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
