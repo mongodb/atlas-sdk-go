@@ -19,6 +19,8 @@ const serverTokenURL = core.DefaultCloudURL + tokenAPIPath
 // serverURL for Revoke Atlas API
 const serverRevokeURL = core.DefaultCloudURL + revokeAPIPath
 
+const userAgent = "User-Agent"
+
 func NewConfig(clientID, clientSecret string) *Config {
 	c := &Config{}
 	c.ClientID = clientID

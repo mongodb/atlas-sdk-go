@@ -49,7 +49,7 @@ func (c *Config) RevokeToken(ctx context.Context, t *auth.Token) error {
 	}
 	req.SetBasicAuth(url.QueryEscape(c.ClientID), url.QueryEscape(c.ClientSecret))
 	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
-	req.Header.Set("User-Agent", c.userAgent)
+	req.Header.Set(userAgent, c.userAgent)
 
 	client := http.DefaultClient
 	resp, err := client.Do(req)

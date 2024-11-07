@@ -22,7 +22,7 @@ func (t *OAuthTransport) RoundTrip(req *http.Request) (*http.Response, error) {
 			return nil, err
 		}
 	}
-	req.Header.Set("User-Agent", t.userAgent)
+	req.Header.Set(userAgent, t.userAgent)
 	return t.underlyingTransport.RoundTrip(req)
 }
 

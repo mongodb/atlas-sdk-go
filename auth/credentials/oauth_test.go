@@ -66,5 +66,5 @@ func TestOAuthTokenSource_RevokeToken_Failure(t *testing.T) {
 	})
 	config.RevokeURL = mockServer.URL
 	assert.Error(t, err)
-	assert.Contains(t, err.Error(), "Failed to revoke Access Token when fetching new OAuth Token from remote server")
+	assert.ErrorContains(t, err, "Failed to revoke Access Token when fetching new OAuth Token from remote server")
 }
