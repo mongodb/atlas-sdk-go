@@ -23,8 +23,7 @@ type Config struct {
 	userAgent string
 }
 
-// RevokeToken revokes the Access Token while also removing it from the Access Token Cache.
-// When the Access Token is expired or missing, revoke will return without any action.
+// RevokeToken revokes OAuth Token
 func (c *Config) RevokeToken(ctx context.Context, t *auth.Token) error {
 	if c.RevokeURL == "" {
 		return errors.New("endpoint missing RevokeURL")
@@ -67,5 +66,4 @@ func (c *Config) RevokeToken(ctx context.Context, t *auth.Token) error {
 		return errors.New(formattedMessage)
 	}
 	return nil
-
 }

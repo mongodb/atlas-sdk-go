@@ -1,14 +1,12 @@
 package credentials
 
 import (
-	"go.mongodb.org/atlas-sdk/v20241023002/auth"
 	"go.mongodb.org/atlas-sdk/v20241023002/internal/core"
 	"net/http"
 )
 
 // OAuthTransport provides a way to cache OAuth Token
 type OAuthTransport struct {
-	tokenSource         auth.TokenSource
 	underlyingTransport http.RoundTripper
 	userAgent           string
 	tokenCache          *func(token string) error

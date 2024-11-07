@@ -89,6 +89,7 @@ improving efficiency by reducing the number of token requests to the authorizati
 This reduction in requests also minimizes the impact of OAuth Token Limits and Rate Limiting.
 
 ```go
+// Sounding code omitted for brevity 
 // 1. Simulate retrieving Token from filesystem
 token, err := ... // Parse auth.Token instance from local file system
 
@@ -107,13 +108,14 @@ please refer to [token cache example](https://github.com/mongodb/atlas-sdk-go/tr
 
 ### Revocation
 
-Revocation invalidates an OAuth token before its expiration date. This effectively "logs out" the current OAuth client and allows you to configure a new client.
+Revocation invalidates an OAuth token before its expiration date. 
+This effectively "logs out" the current OAuth client and allows you to configure a new client.
 
 ```go
 // Sounding code omitted for brevity 
-err := tokenSource.RevokeToken()
-if err != nil {
-	log.Fatalf("Error: %v", err)
-}
+revokeConfig := credentials.NewConfig(clientID, clientSecret)
+revokeConfig.RevokeToken(context.Background(), &auth.Token{
+	AccessToken: "yourTokenHere"
+});
 ```
 
