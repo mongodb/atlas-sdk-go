@@ -34,7 +34,8 @@ var (
 // APIClient manages communication with the MongoDB Atlas Administration API API
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
-	cfg    *Configuration
+	cfg *Configuration
+
 	common service // Reuse a single struct instead of allocating one for each service on the heap.
 
 	// API Services

@@ -1,11 +1,8 @@
 package credentials
 
 import (
-	"context"
-	"net/http"
-	"strings"
-
-	"go.mongodb.org/atlas-sdk/v20241023001/internal/core"
+	"go.mongodb.org/atlas-sdk/v20241023002/internal/core"
+	"golang.org/x/oauth2"
 )
 
 // tokenAPIPath for getting OAuth Access Token from server

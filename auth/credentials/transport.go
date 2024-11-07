@@ -1,8 +1,8 @@
 package credentials
 
 import (
-	"go.mongodb.org/atlas-sdk/v20241023001/auth"
-	"go.mongodb.org/atlas-sdk/v20241023001/internal/core"
+	"go.mongodb.org/atlas-sdk/v20241023002/auth"
+	"go.mongodb.org/atlas-sdk/v20241023002/internal/core"
 	"net/http"
 )
 

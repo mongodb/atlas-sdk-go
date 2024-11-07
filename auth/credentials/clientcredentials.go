@@ -9,7 +9,7 @@ import (
 	"net/url"
 	"strings"
 
-	"go.mongodb.org/atlas-sdk/v20241023001/auth"
+	"go.mongodb.org/atlas-sdk/v20241023002/auth"
 	"golang.org/x/oauth2/clientcredentials"
 )
 
@@ -21,12 +21,6 @@ type Config struct {
 	clientcredentials.Config
 	RevokeURL string
 	userAgent string
-}
-
-// tokenSource manages the OAuth Token fetching and refreshing using a LocalTokenCache.
-type tokenSource struct {
-	ctx  context.Context
-	conf *Config
 }
 
 // RevokeToken revokes the Access Token while also removing it from the Access Token Cache.
@@ -74,8 +68,4 @@ func (c *Config) RevokeToken(ctx context.Context, t *auth.Token) error {
 	}
 	return nil
 
-}
-
-func (c *tokenSource) Token() (*auth.Token, error) {
-	return c.conf.Token(c.ctx)
 }

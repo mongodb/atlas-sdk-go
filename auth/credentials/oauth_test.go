@@ -2,18 +2,13 @@ package credentials
 
 import (
 	"context"
-	"encoding/base64"
-	"encoding/json"
-	"fmt"
 	"net/http"
 	"net/http/httptest"
 	"testing"
 	"time"
 
-	"go.mongodb.org/atlas-sdk/v20241023001/internal/core"
-
 	"github.com/stretchr/testify/assert"
-	"go.mongodb.org/atlas-sdk/v20241023001/auth"
+	"go.mongodb.org/atlas-sdk/v20241023002/auth"
 )
 
 // MockOAuthRevokeEndpoint creates a mock OAuth revoke endpoint,
@@ -27,15 +22,6 @@ func MockOAuthRevokeEndpoint(statusCode int) *httptest.Server {
 		w.WriteHeader(statusCode)
 	})
 	return httptest.NewServer(handler)
-}
-
-// Mock Token generation for testing
-func generateMockJWT(expiration time.Time) string {
-	header := `{"alg":"HS256","typ":"JWT"}`
-	payload := `{"exp":` + json.Number(fmt.Sprintf("%d", expiration.Unix())) + `}`
-
-	return base64.RawURLEncoding.EncodeToString([]byte(header)) + "." +
-		base64.RawURLEncoding.EncodeToString([]byte(payload)) + ".signature"
 }
 
 // Test OAuthTokenSource_RevokeToken_Success tests successful token revocation.
