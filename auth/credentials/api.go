@@ -19,16 +19,6 @@ const serverTokenURL = core.DefaultCloudURL + tokenAPIPath
 // serverURL for Revoke Atlas API
 const serverRevokeURL = core.DefaultCloudURL + revokeAPIPath
 
-// NewTokenSource initializes OAuth Token Source that provides a way to get valid OAuth Tokens.
-// See credentials.NewTokenSourceWithOptions for advanced use cases.
-//func NewTokenSource(clientID, clientSecret string) RevocableTokenSource {
-//	return NewTokenSourceWithOptions(AtlasTokenSourceOptions{
-//		ClientID:     clientID,
-//		ClientSecret: clientSecret,
-//		UserAgent:    core.DefaultUserAgent,
-//	})
-//}
-
 func NewConfig(clientID, clientSecret string) *Config {
 	c := &Config{}
 	c.ClientID = clientID
