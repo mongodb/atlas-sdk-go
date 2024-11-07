@@ -3,13 +3,13 @@ package admin // import "go.mongodb.org/atlas-sdk/v20241023002/admin"
 import (
 	"context"
 	"errors"
-	"go.mongodb.org/atlas-sdk/v20241023002/auth/credentials"
-	"go.mongodb.org/atlas-sdk/v20241023002/internal/core"
-	"golang.org/x/oauth2"
 	"net/http"
 	"strings"
 
 	"github.com/mongodb-forks/digest"
+	"go.mongodb.org/atlas-sdk/v20241023002/auth/credentials"
+	"go.mongodb.org/atlas-sdk/v20241023002/internal/core"
+	"golang.org/x/oauth2"
 )
 
 const (
@@ -116,7 +116,6 @@ func UseDebug(debug bool) ClientModifier {
 }
 
 // UseBaseURL set custom base url. If empty, default is used.
-// NOTE: UseBaseURL should be used before UseOAuthAuth
 func UseBaseURL(baseURL string) ClientModifier {
 	return func(c *Configuration) error {
 		if baseURL == "" {
