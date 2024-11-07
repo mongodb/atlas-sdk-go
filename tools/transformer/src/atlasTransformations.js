@@ -8,6 +8,7 @@ const {
   applyAnyOfTransformations,
   applyRemoveNullableTransformations,
   removeRefsFromParameters,
+  reorderResponseBodies,
 } = require("./transformations");
 const { resolveOpenAPIReference } = require("./engine/transformers");
 
@@ -27,6 +28,7 @@ module.exports = function runTransformations(openapi) {
   openapi = applyRemoveEnumsTransformations(openapi);
   openapi = applyRemoveNullableTransformations(openapi);
   openapi = applyRemoveObjectAdditonalProperties(openapi);
+  openapi = reorderResponseBodies(openapi);
 
   openapi = applyModelNameTransformations(
     openapi,

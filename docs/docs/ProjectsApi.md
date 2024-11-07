@@ -49,7 +49,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023001/admin"
+    "go.mongodb.org/atlas-sdk/v20241023002/admin"
 )
 
 func main() {
@@ -107,7 +107,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/vnd.atlas.2023-02-01+json
-- **Accept**: application/vnd.atlas.2023-02-01+json, application/json
+- **Accept**: application/vnd.atlas.2023-02-01+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -131,7 +131,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023001/admin"
+    "go.mongodb.org/atlas-sdk/v20241023002/admin"
 )
 
 func main() {
@@ -185,7 +185,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/vnd.atlas.2023-01-01+json
-- **Accept**: application/vnd.atlas.2023-01-01+json, application/json
+- **Accept**: application/vnd.atlas.2023-01-01+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -209,7 +209,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023001/admin"
+    "go.mongodb.org/atlas-sdk/v20241023002/admin"
 )
 
 func main() {
@@ -267,7 +267,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/vnd.atlas.2023-01-01+json
-- **Accept**: application/vnd.atlas.2023-01-01+json, application/json
+- **Accept**: application/vnd.atlas.2023-01-01+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -291,7 +291,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023001/admin"
+    "go.mongodb.org/atlas-sdk/v20241023002/admin"
 )
 
 func main() {
@@ -347,7 +347,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-01-01+json, application/json
+- **Accept**: application/vnd.atlas.2023-01-01+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -371,7 +371,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023001/admin"
+    "go.mongodb.org/atlas-sdk/v20241023002/admin"
 )
 
 func main() {
@@ -430,7 +430,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-01-01+json, application/json
+- **Accept**: application/vnd.atlas.2023-01-01+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -454,7 +454,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023001/admin"
+    "go.mongodb.org/atlas-sdk/v20241023002/admin"
 )
 
 func main() {
@@ -513,7 +513,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-01-01+json, application/json
+- **Accept**: application/vnd.atlas.2023-01-01+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -537,7 +537,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023001/admin"
+    "go.mongodb.org/atlas-sdk/v20241023002/admin"
 )
 
 func main() {
@@ -593,7 +593,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-01-01+json, application/json
+- **Accept**: application/vnd.atlas.2023-01-01+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -617,7 +617,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023001/admin"
+    "go.mongodb.org/atlas-sdk/v20241023002/admin"
 )
 
 func main() {
@@ -673,7 +673,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-01-01+json, application/json
+- **Accept**: application/vnd.atlas.2023-01-01+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -697,7 +697,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023001/admin"
+    "go.mongodb.org/atlas-sdk/v20241023002/admin"
 )
 
 func main() {
@@ -756,7 +756,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-01-01+json, application/json
+- **Accept**: application/vnd.atlas.2023-01-01+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -780,7 +780,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023001/admin"
+    "go.mongodb.org/atlas-sdk/v20241023002/admin"
 )
 
 func main() {
@@ -846,7 +846,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-01-01+json, application/json
+- **Accept**: application/vnd.atlas.2023-01-01+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -870,7 +870,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023001/admin"
+    "go.mongodb.org/atlas-sdk/v20241023002/admin"
 )
 
 func main() {
@@ -929,7 +929,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-01-01+json, application/json
+- **Accept**: application/vnd.atlas.2023-01-01+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -953,7 +953,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023001/admin"
+    "go.mongodb.org/atlas-sdk/v20241023002/admin"
 )
 
 func main() {
@@ -1009,7 +1009,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-01-01+json, application/json
+- **Accept**: application/vnd.atlas.2023-01-01+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -1033,7 +1033,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023001/admin"
+    "go.mongodb.org/atlas-sdk/v20241023002/admin"
 )
 
 func main() {
@@ -1091,7 +1091,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-01-01+json, application/json
+- **Accept**: application/vnd.atlas.2023-01-01+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -1115,7 +1115,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023001/admin"
+    "go.mongodb.org/atlas-sdk/v20241023002/admin"
 )
 
 func main() {
@@ -1171,7 +1171,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-01-01+json, application/json
+- **Accept**: application/vnd.atlas.2023-01-01+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -1195,7 +1195,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023001/admin"
+    "go.mongodb.org/atlas-sdk/v20241023002/admin"
 )
 
 func main() {
@@ -1261,7 +1261,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-01-01+json, application/json
+- **Accept**: application/vnd.atlas.2023-01-01+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -1285,7 +1285,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023001/admin"
+    "go.mongodb.org/atlas-sdk/v20241023002/admin"
 )
 
 func main() {
@@ -1341,7 +1341,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-01-01+json, application/json
+- **Accept**: application/vnd.atlas.2023-01-01+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -1365,7 +1365,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023001/admin"
+    "go.mongodb.org/atlas-sdk/v20241023002/admin"
 )
 
 func main() {
@@ -1423,7 +1423,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/vnd.atlas.2024-05-30+json
-- **Accept**: application/vnd.atlas.2024-05-30+json, application/json
+- **Accept**: application/vnd.atlas.2024-05-30+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -1447,7 +1447,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023001/admin"
+    "go.mongodb.org/atlas-sdk/v20241023002/admin"
 )
 
 func main() {
@@ -1504,7 +1504,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-01-01+json, application/json
+- **Accept**: application/vnd.atlas.2023-01-01+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -1528,7 +1528,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023001/admin"
+    "go.mongodb.org/atlas-sdk/v20241023002/admin"
 )
 
 func main() {
@@ -1584,7 +1584,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-01-01+json, application/json
+- **Accept**: application/vnd.atlas.2023-01-01+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -1608,7 +1608,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023001/admin"
+    "go.mongodb.org/atlas-sdk/v20241023002/admin"
 )
 
 func main() {
@@ -1669,7 +1669,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/vnd.atlas.2023-01-01+json
-- **Accept**: application/vnd.atlas.2023-01-01+json, application/json
+- **Accept**: application/vnd.atlas.2023-01-01+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -1693,7 +1693,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023001/admin"
+    "go.mongodb.org/atlas-sdk/v20241023002/admin"
 )
 
 func main() {
@@ -1751,7 +1751,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/vnd.atlas.2023-01-01+json
-- **Accept**: application/vnd.atlas.2023-01-01+json, application/json
+- **Accept**: application/vnd.atlas.2023-01-01+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -1775,7 +1775,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023001/admin"
+    "go.mongodb.org/atlas-sdk/v20241023002/admin"
 )
 
 func main() {
@@ -1833,7 +1833,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/vnd.atlas.2023-01-01+json
-- **Accept**: application/vnd.atlas.2023-01-01+json, application/json
+- **Accept**: application/vnd.atlas.2023-01-01+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -1857,7 +1857,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023001/admin"
+    "go.mongodb.org/atlas-sdk/v20241023002/admin"
 )
 
 func main() {
@@ -1918,7 +1918,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/vnd.atlas.2023-01-01+json
-- **Accept**: application/vnd.atlas.2023-01-01+json, application/json
+- **Accept**: application/vnd.atlas.2023-01-01+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -1942,7 +1942,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023001/admin"
+    "go.mongodb.org/atlas-sdk/v20241023002/admin"
 )
 
 func main() {
@@ -2003,7 +2003,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/vnd.atlas.2023-01-01+json
-- **Accept**: application/vnd.atlas.2023-01-01+json, application/json
+- **Accept**: application/vnd.atlas.2023-01-01+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -2027,7 +2027,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023001/admin"
+    "go.mongodb.org/atlas-sdk/v20241023002/admin"
 )
 
 func main() {
@@ -2085,7 +2085,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/vnd.atlas.2023-01-01+json
-- **Accept**: application/vnd.atlas.2023-01-01+json, application/json
+- **Accept**: application/vnd.atlas.2023-01-01+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

@@ -5,7 +5,6 @@ package admin
 // DiskBackupSnapshotExportBucketRequest Disk backup snapshot Export Bucket Request.
 type DiskBackupSnapshotExportBucketRequest struct {
 	// The name of the Azure Storage Container to export to. Deprecated: provide the Container's URL in serviceUrl instead.
-	// Deprecated
 	BucketName string `json:"bucketName"`
 	// Human-readable label that identifies the cloud provider that Snapshots are exported to.
 	CloudProvider string `json:"cloudProvider"`
@@ -43,7 +42,6 @@ func NewDiskBackupSnapshotExportBucketRequestWithDefaults() *DiskBackupSnapshotE
 }
 
 // GetBucketName returns the BucketName field value
-// Deprecated
 func (o *DiskBackupSnapshotExportBucketRequest) GetBucketName() string {
 	if o == nil {
 		var ret string
@@ -55,7 +53,6 @@ func (o *DiskBackupSnapshotExportBucketRequest) GetBucketName() string {
 
 // GetBucketNameOk returns a tuple with the BucketName field value
 // and a boolean to check if the value has been set.
-// Deprecated
 func (o *DiskBackupSnapshotExportBucketRequest) GetBucketNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
@@ -64,7 +61,6 @@ func (o *DiskBackupSnapshotExportBucketRequest) GetBucketNameOk() (*string, bool
 }
 
 // SetBucketName sets field value
-// Deprecated
 func (o *DiskBackupSnapshotExportBucketRequest) SetBucketName(v string) {
 	o.BucketName = v
 }

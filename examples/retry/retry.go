@@ -8,7 +8,7 @@ import (
 
 	"context"
 
-	"go.mongodb.org/atlas-sdk/v20241023001/admin"
+	"go.mongodb.org/atlas-sdk/v20241023002/admin"
 
 	retryablehttp "github.com/hashicorp/go-retryablehttp"
 	"github.com/mongodb-forks/digest"
@@ -27,7 +27,7 @@ func main() {
 	// See: https://www.mongodb.com/docs/atlas/app-services/authentication/api-key/
 	apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
 	apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
-	url := os.Getenv("MONGODB_ATLAS_URL")
+	url := os.Getenv("MONGODB_ATLAS_BASE_URL")
 
 	// Using custom client
 	// This example relies on https://pkg.go.dev/github.com/hashicorp/go-retryablehttp

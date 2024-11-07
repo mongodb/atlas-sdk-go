@@ -6,7 +6,7 @@ import (
 	"log"
 	"os"
 
-	"go.mongodb.org/atlas-sdk/v20241023001/admin"
+	"go.mongodb.org/atlas-sdk/v20241023002/admin"
 )
 
 // Example for Service Account Management API
@@ -18,7 +18,7 @@ import (
 // export MONGODB_ATLAS_CLIENT_SECRET="your_client_secret"
 // export MONGODB_ATLAS_ORG="your_org_id"
 func main() {
-	host := os.Getenv("MONGODB_ATLAS_URL")
+	host := os.Getenv("MONGODB_ATLAS_BASE_URL")
 	if host == "" {
 		host = "https://cloud.mongodb.com"
 	}

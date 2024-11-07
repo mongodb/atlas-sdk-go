@@ -9,6 +9,7 @@ import (
 	"strings"
 
 	"github.com/mongodb-forks/digest"
+	"go.mongodb.org/atlas-sdk/v20241023001/auth/credentials"
 	"go.mongodb.org/atlas-sdk/v20241023001/internal/core"
 )
 
