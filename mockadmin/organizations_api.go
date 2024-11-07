@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20241023002/admin"
+	admin "github.com/mongodb/atlas-sdk-go/admin"
 
 	http "net/http"
 
@@ -1525,24 +1525,24 @@ func (_c *OrganizationsApi_ListOrganizationUsers_Call) RunAndReturn(run func(con
 }
 
 // ListOrganizationUsersExecute provides a mock function with given fields: r
-func (_m *OrganizationsApi) ListOrganizationUsersExecute(r admin.ListOrganizationUsersApiRequest) (*admin.PaginatedAppUser, *http.Response, error) {
+func (_m *OrganizationsApi) ListOrganizationUsersExecute(r admin.ListOrganizationUsersApiRequest) (*admin.PaginatedOrgUser, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for ListOrganizationUsersExecute")
 	}
 
-	var r0 *admin.PaginatedAppUser
+	var r0 *admin.PaginatedOrgUser
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListOrganizationUsersApiRequest) (*admin.PaginatedAppUser, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListOrganizationUsersApiRequest) (*admin.PaginatedOrgUser, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.ListOrganizationUsersApiRequest) *admin.PaginatedAppUser); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListOrganizationUsersApiRequest) *admin.PaginatedOrgUser); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.PaginatedAppUser)
+			r0 = ret.Get(0).(*admin.PaginatedOrgUser)
 		}
 	}
 
@@ -1581,12 +1581,12 @@ func (_c *OrganizationsApi_ListOrganizationUsersExecute_Call) Run(run func(r adm
 	return _c
 }
 
-func (_c *OrganizationsApi_ListOrganizationUsersExecute_Call) Return(_a0 *admin.PaginatedAppUser, _a1 *http.Response, _a2 error) *OrganizationsApi_ListOrganizationUsersExecute_Call {
+func (_c *OrganizationsApi_ListOrganizationUsersExecute_Call) Return(_a0 *admin.PaginatedOrgUser, _a1 *http.Response, _a2 error) *OrganizationsApi_ListOrganizationUsersExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *OrganizationsApi_ListOrganizationUsersExecute_Call) RunAndReturn(run func(admin.ListOrganizationUsersApiRequest) (*admin.PaginatedAppUser, *http.Response, error)) *OrganizationsApi_ListOrganizationUsersExecute_Call {
+func (_c *OrganizationsApi_ListOrganizationUsersExecute_Call) RunAndReturn(run func(admin.ListOrganizationUsersApiRequest) (*admin.PaginatedOrgUser, *http.Response, error)) *OrganizationsApi_ListOrganizationUsersExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }

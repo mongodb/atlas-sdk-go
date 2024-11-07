@@ -6,7 +6,7 @@ package admin
 type StreamsPrivateLinkConnection struct {
 	// The ID of the Private Link connection.
 	Id *string `json:"_id,omitempty"`
-	// Domain name of Confluent cluster.
+	// Domain name of Privatelink connected cluster.
 	DnsDomain *string `json:"dnsDomain,omitempty"`
 	// Sub-Domain name of Confluent cluster. These are typically your availability zones.
 	DnsSubDomain *[]string `json:"dnsSubDomain,omitempty"`
@@ -19,7 +19,7 @@ type StreamsPrivateLinkConnection struct {
 	Provider *string `json:"provider,omitempty"`
 	// Domain name of Confluent cluster.
 	Region *string `json:"region,omitempty"`
-	// AWS Service Endpoint ID.
+	// Service Endpoint ID.
 	ServiceEndpointId *string `json:"serviceEndpointId,omitempty"`
 	// State the connection is in.
 	State *string `json:"state,omitempty"`

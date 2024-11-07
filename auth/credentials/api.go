@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"strings"
 
-	"go.mongodb.org/atlas-sdk/v20241023002/internal/core"
+	"github.com/mongodb/atlas-sdk-go/internal/core"
 )
 
 // tokenAPIPath for obtaining OAuth Access Token from server

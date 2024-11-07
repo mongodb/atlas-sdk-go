@@ -11,7 +11,7 @@ import (
 	"testing"
 	"time"
 
-	"go.mongodb.org/atlas-sdk/v20241023002/internal/core"
+	"github.com/mongodb/atlas-sdk-go/internal/core"
 
 	"github.com/stretchr/testify/assert"
 )

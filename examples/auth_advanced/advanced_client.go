@@ -8,8 +8,8 @@ import (
 	"os"
 	"sync"
 
-	"go.mongodb.org/atlas-sdk/v20241023002/admin"
-	"go.mongodb.org/atlas-sdk/v20241023002/auth/credentials"
+	"github.com/mongodb/atlas-sdk-go/admin"
+	"github.com/mongodb/atlas-sdk-go/auth/credentials"
 )
 
 // Advanced Example for Service Account OAuth Authentication
