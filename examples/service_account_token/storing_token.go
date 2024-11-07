@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"go.mongodb.org/atlas-sdk/v20241023001/auth/credentials"
+	"golang.org/x/oauth2"
 	"log"
 	"os"
 
@@ -16,6 +17,10 @@ import (
 // export MONGODB_ATLAS_CLIENT_ID="your_client_id"
 // export MONGODB_ATLAS_CLIENT_SECRET="your_client_secret"
 func main() {
+	host := os.Getenv("MONGODB_ATLAS_URL")
+	if host == "" {
+		host = "https://cloud.mongodb.com"
+	}
 	// Fetch clientID and clientSecret from environment variables
 	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
 	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
@@ -25,17 +30,17 @@ func main() {
 	}
 	ctx := context.Background()
 	// 1. Simulate retrieving Token from filesystem
-	// In this example we are fetching token from backend
-	config := credentials.NewConfig(clientID, clientSecret)
-	token, err := config.Token(ctx)
-	if err != nil {
-		log.Fatalf("Error: %v", err)
+	token, err := getCachedToken(clientID, clientSecret, host, ctx)
+
+	// Create Admin API Client enabling token and cache.
+	var tokenCache = func(token string) error {
+		fmt.Println("Cache was called. Use it to save token in secure location")
+		return nil
 	}
 
-	// Create Admin API Client with OAuth credentials.
-	// 2. Providing cached token as parameter
 	sdk, err := admin.NewClient(
-		admin.UseOAuthAuth(clientID, clientSecret, token),
+		admin.UseBaseURL(host),
+		admin.UseOAuthAuthWithCache(clientID, clientSecret, token, &tokenCache),
 	)
 
 	if err != nil {
@@ -45,9 +50,6 @@ func main() {
 	// 3. Make API call
 	projects, _, err := sdk.ProjectsApi.ListProjectsWithParams(ctx, &admin.ListProjectsApiParams{}).Execute()
 
-	// 4. Cache token
-	// ?
-
 	if err != nil {
 		log.Fatalf("Error: %v", err)
 	}
@@ -55,4 +57,15 @@ func main() {
 	if projects.Results == nil {
 		fmt.Printf("projects should not be empty:  %v", projects)
 	}
+}
+
+func getCachedToken(clientID string, clientSecret string, host string, ctx context.Context) (*oauth2.Token, error) {
+	// In this example we are fetching token from backend as we do not want to save token
+	config := credentials.NewConfig(clientID, clientSecret)
+	config.TokenURL = host + "/api/oauth/token"
+	token, err := config.Token(ctx)
+	if err != nil {
+		log.Fatalf("Error: %v", err)
+	}
+	return token, err
 }

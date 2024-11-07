@@ -2,6 +2,7 @@ package credentials
 
 import (
 	"go.mongodb.org/atlas-sdk/v20241023001/auth"
+	"go.mongodb.org/atlas-sdk/v20241023001/internal/core"
 	"net/http"
 )
 
@@ -25,11 +26,15 @@ func (t *OAuthTransport) RoundTrip(req *http.Request) (*http.Response, error) {
 	return t.underlyingTransport.RoundTrip(req)
 }
 
-// NewOAuthTransport http client that adds the User-Agent header
-func NewOAuthTransport(transport http.RoundTripper, userAgent string, tokenCache *func(token string) error) http.RoundTripper {
+// NewOAuthCacheTransport http client that adds the User-Agent header and TokenCache
+func NewOAuthCacheTransport(transport http.RoundTripper, userAgent *string, tokenCache *func(token string) error) http.RoundTripper {
+	if userAgent != nil {
+		defaultUserAgent := core.DefaultUserAgent
+		userAgent = &defaultUserAgent
+	}
 	return &OAuthTransport{
 		underlyingTransport: transport,
-		userAgent:           userAgent,
+		userAgent:           *userAgent,
 		tokenCache:          tokenCache,
 	}
 }

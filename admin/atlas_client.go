@@ -58,11 +58,34 @@ func UseDigestAuth(apiKey, apiSecret string) ClientModifier {
 // UseOAuthAuth provides OAuthAuth authentication for Go SDK.
 // Method is provided as helper to create a default HTTP client that supports OAuth (Service Accounts) authentication.
 // Warning: any previously set httpClient will be overwritten. To fully customize HttpClient use UseHTTPClient method.
-func UseOAuthAuth(clientID, clientSecret string, cachedToken *oauth2.Token) ClientModifier {
+func UseOAuthAuth(clientID, clientSecret string) ClientModifier {
 	return func(c *Configuration) error {
 		oauth := credentials.NewConfig(clientID, clientSecret)
-		source := oauth2.ReuseTokenSource(cachedToken, oauth.TokenSource(context.Background()))
-		httpClient := oauth2.NewClient(context.Background(), source)
+		ctx := context.WithValue(context.Background(), oauth2.HTTPClient,
+			&http.Client{
+				Transport: credentials.NewOAuthCacheTransport(http.DefaultTransport,
+					&c.UserAgent, nil),
+			})
+		source := oauth.TokenSource(ctx)
+		httpClient := oauth2.NewClient(ctx, source)
+		c.HTTPClient = httpClient
+		return nil
+	}
+}
+
+// UseOAuthAuthWithCache provides OAuthAuth authentication for Go SDK with the ability to reuse cached OAuth Token
+// Method is provided as helper to create a default HTTP client that supports OAuth (Service Accounts) authentication.
+// Warning: any previously set httpClient will be overwritten. To fully customize HttpClient use UseHTTPClient method.
+func UseOAuthAuthWithCache(clientID, clientSecret string, cachedToken *oauth2.Token, saveToken *func(token string) error) ClientModifier {
+	return func(c *Configuration) error {
+		oauth := credentials.NewConfig(clientID, clientSecret)
+		ctx := context.WithValue(context.Background(), oauth2.HTTPClient,
+			&http.Client{
+				Transport: credentials.NewOAuthCacheTransport(http.DefaultTransport,
+					&c.UserAgent, saveToken),
+			})
+		source := oauth2.ReuseTokenSource(cachedToken, oauth.TokenSource(ctx))
+		httpClient := oauth2.NewClient(ctx, source)
 		c.HTTPClient = httpClient
 		return nil
 	}
@@ -73,7 +96,7 @@ func UseOAuthAuth(clientID, clientSecret string, cachedToken *oauth2.Token) Clie
 // UseHTTPClient set custom http client implementation.
 //
 // Warning: UseHTTPClient overrides any previously set httpClient including the one set by UseDigestAuth.
-// To set a custom http client with HTTP diggest support use:
+// To set a custom http client with HTTP digest support use:
 //
 //	transport := digest.NewTransportWithHTTPRoundTripper(apiKey, apiSecret, yourHttpTransport)
 //	client := UseHTTPClient(transport.Client())

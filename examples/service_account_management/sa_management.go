@@ -35,7 +35,7 @@ func main() {
 	ctx := context.Background()
 	sdk, err := admin.NewClient(
 		admin.UseBaseURL(host),
-		admin.UseOAuthAuth(clientID, clientSecret, nil),
+		admin.UseOAuthAuth(clientID, clientSecret),
 	)
 	if err != nil {
 		log.Fatalf("Error: %v", err)
@@ -68,7 +68,7 @@ func main() {
 		admin.UseBaseURL(host),
 		// 4.1 Using ClientId and Secret returned by API
 		//  might have up to 2 secrets
-		admin.UseOAuthAuth(*sa.ClientId, *newSecret.Secret, nil),
+		admin.UseOAuthAuth(*sa.ClientId, *newSecret.Secret),
 	)
 
 	// 5. Make request using new Service Account
