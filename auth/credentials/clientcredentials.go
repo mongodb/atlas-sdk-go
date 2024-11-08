@@ -15,7 +15,8 @@ import (
 
 // Config describes a 2-legged OAuth2 flow, with both the
 // client application information and the server's endpoint URLs.
-// NOTE: clientcredentials.Config values are used only internally
+
+// NOTE: Config values are used only internally
 // and should not be overridden by clients
 type Config struct {
 	clientcredentials.Config

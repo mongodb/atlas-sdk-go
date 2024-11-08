@@ -58,6 +58,7 @@ Authenticating using Service Accounts
 package main
 
 import (
+	"context"
 	"log"
 	"os"
 
@@ -73,7 +74,7 @@ func main() {
 	}
 
 	// Using ClientID and ClientSecret. No cache supported (nil).
-	sdk, err := admin.NewClient(admin.UseOAuthAuth(clientID, clientSecret))
+	sdk, err := admin.NewClient(admin.UseOAuthAuth(context.Background(), clientID, clientSecret))
 	// Make API calls
 }
 ```
