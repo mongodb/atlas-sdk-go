@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ApiAccessListRequired** | Pointer to **bool** | Flag that indicates whether to require API operations to originate from an IP Address added to the API access list for the specified organization. | [optional] 
+**GenAIFeaturesEnabled** | Pointer to **bool** | Flag that indicates whether this organization has access to generative AI features. This setting only applies to Atlas Commercial and is enabled by default. Once this setting is turned on, Project Owners may be able to enable or disable individual AI features at the project level. | [optional] [default to true]
 **MaxServiceAccountSecretValidityInHours** | Pointer to **int** | Number that represents the maximum period before expiry in hours for new Atlas Admin API Service Account secrets within the specified organization. | [optional] 
 **MultiFactorAuthRequired** | Pointer to **bool** | Flag that indicates whether to require users to set up Multi-Factor Authentication (MFA) before accessing the specified organization. To learn more, see: https://www.mongodb.com/docs/atlas/security-multi-factor-authentication/. | [optional] 
 **RestrictEmployeeAccess** | Pointer to **bool** | Flag that indicates whether to block MongoDB Support from accessing Atlas infrastructure and cluster logs for any deployment in the specified organization without explicit permission. Once this setting is turned on, you can grant MongoDB Support a 24-hour bypass access to the Atlas deployment to resolve support issues. To learn more, see: https://www.mongodb.com/docs/atlas/security-restrict-support-access/. | [optional] 
@@ -53,6 +54,30 @@ SetApiAccessListRequired sets ApiAccessListRequired field to given value.
 `func (o *OrganizationSettings) HasApiAccessListRequired() bool`
 
 HasApiAccessListRequired returns a boolean if a field has been set.
+### GetGenAIFeaturesEnabled
+
+`func (o *OrganizationSettings) GetGenAIFeaturesEnabled() bool`
+
+GetGenAIFeaturesEnabled returns the GenAIFeaturesEnabled field if non-nil, zero value otherwise.
+
+### GetGenAIFeaturesEnabledOk
+
+`func (o *OrganizationSettings) GetGenAIFeaturesEnabledOk() (*bool, bool)`
+
+GetGenAIFeaturesEnabledOk returns a tuple with the GenAIFeaturesEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGenAIFeaturesEnabled
+
+`func (o *OrganizationSettings) SetGenAIFeaturesEnabled(v bool)`
+
+SetGenAIFeaturesEnabled sets GenAIFeaturesEnabled field to given value.
+
+### HasGenAIFeaturesEnabled
+
+`func (o *OrganizationSettings) HasGenAIFeaturesEnabled() bool`
+
+HasGenAIFeaturesEnabled returns a boolean if a field has been set.
 ### GetMaxServiceAccountSecretValidityInHours
 
 `func (o *OrganizationSettings) GetMaxServiceAccountSecretValidityInHours() int`

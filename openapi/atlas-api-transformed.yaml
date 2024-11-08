@@ -27,7 +27,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 717355e4e2b2ff77eca907c9e2c7e28401a2a901
+  x-xgen-sha: 08773c7fcc012f959b5c7403f0f37ae45cab24b4
 servers:
   - url: https://cloud.mongodb.com
 security:
@@ -30283,6 +30283,17 @@ components:
           description: Flag that indicates whether to require API operations to originate
             from an IP Address added to the API access list for the specified
             organization.
+        genAIFeaturesEnabled:
+          type: boolean
+          default: true
+          description: Flag that indicates whether this organization has access to
+            generative AI features. This setting only applies to Atlas
+            Commercial and is enabled by default. Once this setting is turned
+            on, Project Owners may be able to enable or disable individual AI
+            features at the project level.
+          externalDocs:
+            description: Generative AI FAQs
+            url: https://www.mongodb.com/docs/generative-ai-faq/
         maxServiceAccountSecretValidityInHours:
           type: integer
           format: int32
