@@ -57,34 +57,17 @@ func UseDigestAuth(apiKey, apiSecret string) ClientModifier {
 
 // UseOAuthAuth provides OAuthAuth authentication for Go SDK.
 // Method is provided as helper to create a default HTTP client that supports OAuth (Service Accounts) authentication.
+//
 // Warning: any previously set httpClient will be overwritten. To fully customize HttpClient use UseHTTPClient method.
-func UseOAuthAuth(clientID, clientSecret string) ClientModifier {
+func UseOAuthAuth(ctx context.Context, clientID, clientSecret string) ClientModifier {
 	return func(c *Configuration) error {
 		oauth := credentials.NewConfig(clientID, clientSecret)
-		ctx := context.WithValue(context.Background(), oauth2.HTTPClient,
+		ctx := context.WithValue(ctx, oauth2.HTTPClient,
 			&http.Client{
 				Transport: credentials.NewOAuthCacheTransport(http.DefaultTransport,
-					&c.UserAgent, nil),
+					&c.UserAgent),
 			})
 		source := oauth.TokenSource(ctx)
-		httpClient := oauth2.NewClient(ctx, source)
-		c.HTTPClient = httpClient
-		return nil
-	}
-}
-
-// UseOAuthAuthWithCache provides OAuthAuth authentication for Go SDK with the ability to reuse cached OAuth Token
-// Method is provided as helper to create a default HTTP client that supports OAuth (Service Accounts) authentication.
-// Warning: any previously set httpClient will be overwritten. To fully customize HttpClient use UseHTTPClient method.
-func UseOAuthAuthWithCache(clientID, clientSecret string, cachedToken *oauth2.Token, saveToken *func(token string) error) ClientModifier {
-	return func(c *Configuration) error {
-		oauth := credentials.NewConfig(clientID, clientSecret)
-		ctx := context.WithValue(context.Background(), oauth2.HTTPClient,
-			&http.Client{
-				Transport: credentials.NewOAuthCacheTransport(http.DefaultTransport,
-					&c.UserAgent, saveToken),
-			})
-		source := oauth2.ReuseTokenSource(cachedToken, oauth.TokenSource(ctx))
 		httpClient := oauth2.NewClient(ctx, source)
 		c.HTTPClient = httpClient
 		return nil

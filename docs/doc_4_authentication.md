@@ -81,30 +81,6 @@ func main() {
 For complete reference implementation,
 please refer to [service account example](https://github.com/mongodb/atlas-sdk-go/tree/main/examples/sevice_account_management)
 
-### Specifying a Token Cache
-
-In this example, we will demonstrate how to use the OAuth Client Credentials flow with a custom token cache.
-The cache allows you to store OAuth tokens for reuse across application restarts, 
-improving efficiency by reducing the number of token requests to the authorization server. 
-This reduction in requests also minimizes the impact of OAuth Token Limits and Rate Limiting.
-
-```go
-// Sounding code omitted for brevity 
-// 1. Simulate retrieving Token from filesystem
-token, err := ... // Parse auth.Token instance from local file system
-
-// Create Admin API Client enabling token and cache.
-var tokenCache = func(token string) error {
-    // TODO Save token to file
-    return nil
-}
-sdk, err := admin.NewClient(
-    admin.UseOAuthAuthWithCache(clientID, clientSecret, token, &tokenCache),
-)
-```
-
-For complete reference implementation,
-please refer to [token cache example](https://github.com/mongodb/atlas-sdk-go/tree/main/examples/service_account_token)
 
 ### Revocation
 
