@@ -3,13 +3,14 @@ package admin // import "go.mongodb.org/atlas-sdk/v20241023002/admin"
 import (
 	"context"
 	"errors"
+	"golang.org/x/oauth2"
 	"net/http"
 	"strings"
 
 	"github.com/mongodb-forks/digest"
-	"go.mongodb.org/atlas-sdk/v20241023002/auth/credentials"
+	"go.mongodb.org/atlas-sdk/v20241023002/auth"
+	"go.mongodb.org/atlas-sdk/v20241023002/auth/clientcredentials"
 	"go.mongodb.org/atlas-sdk/v20241023002/internal/core"
-	"golang.org/x/oauth2"
 )
 
 const (
@@ -37,11 +38,12 @@ func NewClient(modifiers ...ClientModifier) (*APIClient, error) {
 	return NewAPIClient(defaultConfig), nil
 }
 
-// ClientModifiers lets you create function that controls configuration before creating client.
+// ClientModifier lets you create function that controls configuration before creating client.
 type ClientModifier func(*Configuration) error
 
 // UseDigestAuth provides Digest authentication for Go SDK.
 // UseDigestAuth is provided as helper to create a default HTTP client that supports HTTP Digest authentication.
+//
 // Warning: any previously set httpClient will be overwritten. To fully customize HttpClient use UseHTTPClient method.
 func UseDigestAuth(apiKey, apiSecret string) ClientModifier {
 	return func(c *Configuration) error {
@@ -60,16 +62,21 @@ func UseDigestAuth(apiKey, apiSecret string) ClientModifier {
 //
 // Warning: any previously set httpClient will be overwritten. To fully customize HttpClient use UseHTTPClient method.
 func UseOAuthAuth(ctx context.Context, clientID, clientSecret string) ClientModifier {
+	ctx2 := ctx
+	if hc := ctx.Value(auth.HTTPClient); hc == nil {
+		client := http.DefaultClient
+		client.Transport = &clientcredentials.Transport{
+			Base: http.DefaultTransport, UserAgent: core.DefaultUserAgent,
+		}
+		ctx2 = context.WithValue(ctx, oauth2.HTTPClient, client)
+	}
+	oauth := clientcredentials.NewConfig(clientID, clientSecret)
 	return func(c *Configuration) error {
-		oauth := credentials.NewConfig(clientID, clientSecret)
-		ctx := context.WithValue(ctx, oauth2.HTTPClient,
-			&http.Client{
-				Transport: credentials.NewOAuthCacheTransport(http.DefaultTransport,
-					&c.UserAgent),
-			})
-		source := oauth.TokenSource(ctx)
-		httpClient := oauth2.NewClient(ctx, source)
-		c.HTTPClient = httpClient
+		if len(c.Servers) > 0 {
+			oauth.TokenURL = c.Servers[0].URL + clientcredentials.TokenAPIPath
+			oauth.RevokeURL = c.Servers[0].URL + clientcredentials.RevokeAPIPath
+		}
+		c.HTTPClient = oauth.Client(ctx2)
 		return nil
 	}
 }
@@ -105,9 +112,11 @@ func UseBaseURL(baseURL string) ClientModifier {
 			baseURL = core.DefaultCloudURL
 		}
 		urlWithoutSuffix := strings.TrimSuffix(baseURL, "/")
-		c.Servers = ServerConfigurations{ServerConfiguration{
-			URL: urlWithoutSuffix,
-		}}
+		c.Servers = ServerConfigurations{
+			ServerConfiguration{
+				URL: urlWithoutSuffix,
+			},
+		}
 		return nil
 	}
 }

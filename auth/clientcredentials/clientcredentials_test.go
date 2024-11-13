@@ -1,4 +1,4 @@
-package credentials
+package clientcredentials
 
 import (
 	"context"
@@ -11,9 +11,9 @@ import (
 	"go.mongodb.org/atlas-sdk/v20241023002/auth"
 )
 
-// MockOAuthRevokeEndpoint creates a mock OAuth revoke endpoint,
+// mockOAuthRevokeEndpoint creates a mock OAuth revoke endpoint,
 // that simulates token revocation responses.
-func MockOAuthRevokeEndpoint(statusCode int) *httptest.Server {
+func mockOAuthRevokeEndpoint(statusCode int) *httptest.Server {
 	handler := http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if r.Method != http.MethodPost || r.FormValue("token") == "" {
 			http.Error(w, "invalid request", http.StatusBadRequest)
@@ -26,10 +26,10 @@ func MockOAuthRevokeEndpoint(statusCode int) *httptest.Server {
 
 // Test OAuthTokenSource_RevokeToken_Success tests successful token revocation.
 func TestOAuthTokenSource_RevokeToken_Success(t *testing.T) {
-	mockServer := MockOAuthRevokeEndpoint(http.StatusOK)
+	mockServer := mockOAuthRevokeEndpoint(http.StatusOK)
 	defer mockServer.Close()
 
-	config := *NewConfig("clientID", "clientSecret")
+	config := NewConfig("clientID", "clientSecret")
 	config.RevokeURL = mockServer.URL
 	expiry := time.Now().Add(1 * time.Hour)
 	err := config.RevokeToken(context.Background(), &auth.Token{
@@ -42,17 +42,16 @@ func TestOAuthTokenSource_RevokeToken_Success(t *testing.T) {
 
 // TestOAuthTokenSource_RevokeToken_Failure tests token revocation failure due to unauthorized access.
 func TestOAuthTokenSource_RevokeToken_Failure(t *testing.T) {
-	mockServer := MockOAuthRevokeEndpoint(http.StatusUnauthorized)
+	mockServer := mockOAuthRevokeEndpoint(http.StatusUnauthorized)
 	defer mockServer.Close()
 
-	config := *NewConfig("clientID", "clientSecret")
+	config := NewConfig("clientID", "clientSecret")
 	expiry := time.Now().Add(1 * time.Hour)
 	err := config.RevokeToken(context.Background(), &auth.Token{
 		AccessToken: "test",
 		Expiry:      expiry,
 		ExpiresIn:   expiry.Unix(),
 	})
-	config.RevokeURL = mockServer.URL
 	assert.Error(t, err)
 	assert.ErrorContains(t, err, "Failed to revoke Access Token when fetching new OAuth Token from remote server")
 }
