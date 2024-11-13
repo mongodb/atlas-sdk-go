@@ -44,6 +44,11 @@ func main() {
 	// 2. Read token from storage.
 	ctx := context.Background()
 	src := readTokenFromDisk(ctx, conf)
+	defer func() {
+		if err := saveTokenToDisk(ctx, conf); err != nil {
+			log.Fatalln(err.Error())
+		}
+	}()
 	sdk, err := admin.NewClient(
 		admin.UseBaseURL(host),
 		admin.UseDebug(true),
@@ -58,10 +63,6 @@ func main() {
 		log.Fatalln(err.Error())
 	}
 	fmt.Printf("Projects size: %d\n", projects.GetTotalCount())
-
-	if err := saveTokenToDisk(ctx, conf); err != nil {
-		log.Fatalln(err.Error())
-	}
 }
 
 func saveTokenToDisk(ctx context.Context, conf *clientcredentials.Config) error {
