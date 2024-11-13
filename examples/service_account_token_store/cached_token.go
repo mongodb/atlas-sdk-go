@@ -14,18 +14,17 @@ import (
 	"go.mongodb.org/atlas-sdk/v20241023002/auth/clientcredentials"
 )
 
-const fileName = "token.test"
+// Variable provided as example.
+var cachedToken []byte
 
-// Example for saving a token to disk and reloading it for reuse
+// Example caching a Service Account OAuth tokens
+// to disk and reloading it for reuse
 
 // Required env variables to run example:
 // export MONGODB_ATLAS_CLIENT_ID="your_client_id"
 // export MONGODB_ATLAS_CLIENT_SECRET="your_client_secret"
 func main() {
 	host := os.Getenv("MONGODB_ATLAS_BASE_URL")
-	if host == "" {
-		host = "https://cloud.mongodb.com"
-	}
 
 	// Fetch clientID and clientSecret from environment variables
 	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
@@ -35,26 +34,22 @@ func main() {
 		log.Fatal("Missing required environment variables")
 	}
 
-	ctx := context.Background()
+	// 1. Create instance of OAuth config
 	conf := clientcredentials.NewConfig(clientID, clientSecret)
-	if host != "https://cloud.mongodb.com" {
+	if host != "" {
 		conf.TokenURL = strings.Trim(host, "/") + clientcredentials.TokenAPIPath
 		conf.RevokeURL = strings.Trim(host, "/") + clientcredentials.RevokeAPIPath
 	}
-	// uncomment to see in action
-	// WARNING: handle the generated file with the same care as a password
-	//token, err := conf.Token(ctx)
-	//if err != nil {
-	//	log.Fatalln(err.Error())
-	//}
-	//if err := saveTokenToDisk(token); err != nil {
-	//	log.Fatalln(err.Error())
-	//}
-	src := tokenFromDisk(ctx, conf)
+
+	// 2. Read token from storage.
+	ctx := context.Background()
+	src := readTokenFromDisk(ctx, conf)
 	sdk, err := admin.NewClient(
 		admin.UseBaseURL(host),
+		admin.UseDebug(true),
 		admin.UseHTTPClient(auth.NewClient(ctx, src)),
 	)
+
 	if err != nil {
 		log.Fatalln(err.Error())
 	}
@@ -63,23 +58,42 @@ func main() {
 		log.Fatalln(err.Error())
 	}
 	fmt.Printf("Projects size: %d\n", projects.GetTotalCount())
+
+	if err := saveTokenToDisk(ctx, conf); err != nil {
+		log.Fatalln(err.Error())
+	}
 }
 
-func saveTokenToDisk(token *oauth2.Token) error {
+func saveTokenToDisk(ctx context.Context, conf *clientcredentials.Config) error {
+	// Fetch OAuth Token from memory
+	token, err := conf.Token(ctx)
+	if err != nil {
+		log.Fatalln(err.Error())
+	}
 	val, err := json.Marshal(token)
 	if err != nil {
 		return err
 	}
 
-	return os.WriteFile(fileName, val, 0600)
+	fmt.Println("Saving token")
+	// TODO example uses memory storage.
+	// Please adjust method for your own use cases.
+	// For example use WriteFile method
+	// os.WriteFile("token", val, 0600)
+	cachedToken = val
+	return nil
 }
 
-func tokenFromDisk(ctx context.Context, conf *clientcredentials.Config) oauth2.TokenSource {
-	data, err := os.ReadFile(fileName)
-	if err != nil {
-		log.Fatalln(err.Error())
-	}
+func readTokenFromDisk(ctx context.Context, conf *clientcredentials.Config) oauth2.TokenSource {
+	// TODO in real cases  replace with os.ReadFile("yourTokenCache")
+	data := cachedToken // data, err := os.ReadFile("token")
 	var token *auth.Token
+	if data == nil {
+		fmt.Println("No cached token detected")
+		// No cached token return token source
+		return conf.TokenSource(ctx)
+	}
+	fmt.Println("Cached token detected")
 	if err := json.Unmarshal(data, &token); err != nil {
 		log.Fatalln(err.Error())
 	}
