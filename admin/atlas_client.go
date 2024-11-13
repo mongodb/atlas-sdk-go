@@ -10,7 +10,6 @@ import (
 	"go.mongodb.org/atlas-sdk/v20241023002/auth"
 	"go.mongodb.org/atlas-sdk/v20241023002/auth/clientcredentials"
 	"go.mongodb.org/atlas-sdk/v20241023002/internal/core"
-	"golang.org/x/oauth2"
 )
 
 const (
@@ -38,7 +37,7 @@ func NewClient(modifiers ...ClientModifier) (*APIClient, error) {
 	return NewAPIClient(defaultConfig), nil
 }
 
-// ClientModifiers lets you create function that controls configuration before creating client.
+// ClientModifier lets you create function that controls configuration before creating client.
 type ClientModifier func(*Configuration) error
 
 // UseDigestAuth provides Digest authentication for Go SDK.
@@ -67,7 +66,7 @@ func UseOAuthAuth(ctx context.Context, clientID, clientSecret string) ClientModi
 		client.Transport = &clientcredentials.Transport{
 			Base: http.DefaultTransport, UserAgent: core.DefaultUserAgent,
 		}
-		ctx2 = context.WithValue(ctx, oauth2.HTTPClient, client)
+		ctx2 = context.WithValue(ctx, auth.HTTPClient, client)
 	}
 	oauth := clientcredentials.NewConfig(clientID, clientSecret)
 	return func(c *Configuration) error {

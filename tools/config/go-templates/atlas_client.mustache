@@ -66,7 +66,7 @@ func UseOAuthAuth(ctx context.Context, clientID, clientSecret string) ClientModi
     client.Transport = &clientcredentials.Transport{
       Base: http.DefaultTransport, UserAgent: core.DefaultUserAgent,
     }
-    ctx2 = context.WithValue(ctx, oauth2.HTTPClient, client)
+    ctx2 = context.WithValue(ctx, auth.HTTPClient, client)
   }
   oauth := clientcredentials.NewConfig(clientID, clientSecret)
   return func(c *Configuration) error {
