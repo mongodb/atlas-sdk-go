@@ -55,7 +55,7 @@ func UseDigestAuth(apiKey, apiSecret string) ClientModifier {
 	}
 }
 
-// UseOAuthAuth provides OAuthAuth authentication for Go SDK.
+// UseOAuthAuth provides OAuth authentication for Go SDK.
 // Method is provided as helper to create a default HTTP client that supports OAuth (Service Accounts) authentication.
 //
 // Warning: any previously set httpClient will be overwritten. To fully customize HttpClient use UseHTTPClient method.
