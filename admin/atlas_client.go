@@ -3,7 +3,6 @@ package admin // import "go.mongodb.org/atlas-sdk/v20241023002/admin"
 import (
 	"context"
 	"errors"
-	"golang.org/x/oauth2"
 	"net/http"
 	"strings"
 
@@ -11,6 +10,7 @@ import (
 	"go.mongodb.org/atlas-sdk/v20241023002/auth"
 	"go.mongodb.org/atlas-sdk/v20241023002/auth/clientcredentials"
 	"go.mongodb.org/atlas-sdk/v20241023002/internal/core"
+	"golang.org/x/oauth2"
 )
 
 const (
@@ -38,12 +38,11 @@ func NewClient(modifiers ...ClientModifier) (*APIClient, error) {
 	return NewAPIClient(defaultConfig), nil
 }
 
-// ClientModifier lets you create function that controls configuration before creating client.
+// ClientModifiers lets you create function that controls configuration before creating client.
 type ClientModifier func(*Configuration) error
 
 // UseDigestAuth provides Digest authentication for Go SDK.
 // UseDigestAuth is provided as helper to create a default HTTP client that supports HTTP Digest authentication.
-//
 // Warning: any previously set httpClient will be overwritten. To fully customize HttpClient use UseHTTPClient method.
 func UseDigestAuth(apiKey, apiSecret string) ClientModifier {
 	return func(c *Configuration) error {
@@ -112,11 +111,9 @@ func UseBaseURL(baseURL string) ClientModifier {
 			baseURL = core.DefaultCloudURL
 		}
 		urlWithoutSuffix := strings.TrimSuffix(baseURL, "/")
-		c.Servers = ServerConfigurations{
-			ServerConfiguration{
-				URL: urlWithoutSuffix,
-			},
-		}
+		c.Servers = ServerConfigurations{ServerConfiguration{
+			URL: urlWithoutSuffix,
+		}}
 		return nil
 	}
 }
