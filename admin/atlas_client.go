@@ -1,12 +1,14 @@
 package admin // import "go.mongodb.org/atlas-sdk/v20241023002/admin"
 
 import (
+	"context"
 	"errors"
 	"net/http"
 	"strings"
 
 	"github.com/mongodb-forks/digest"
-	"go.mongodb.org/atlas-sdk/v20241023002/auth/credentials"
+	"go.mongodb.org/atlas-sdk/v20241023002/auth"
+	"go.mongodb.org/atlas-sdk/v20241023002/auth/clientcredentials"
 	"go.mongodb.org/atlas-sdk/v20241023002/internal/core"
 )
 
@@ -35,7 +37,7 @@ func NewClient(modifiers ...ClientModifier) (*APIClient, error) {
 	return NewAPIClient(defaultConfig), nil
 }
 
-// ClientModifiers lets you create function that controls configuration before creating client.
+// ClientModifier lets you create function that controls configuration before creating client.
 type ClientModifier func(*Configuration) error
 
 // UseDigestAuth provides Digest authentication for Go SDK.
@@ -53,30 +55,26 @@ func UseDigestAuth(apiKey, apiSecret string) ClientModifier {
 	}
 }
 
-// UseOAuthAuth provides OAuthAuth authentication for Go SDK.
+// UseOAuthAuth provides OAuth authentication for Go SDK.
 // Method is provided as helper to create a default HTTP client that supports OAuth (Service Accounts) authentication.
-// credentials.LocalTokenCache can be supplied to reuse OAuth Token across application restarts.
-// Warning: for advanced use cases please use credentials.NewTokenSource directly in your code pass it to UseHTTPClient method.
+//
 // Warning: any previously set httpClient will be overwritten. To fully customize HttpClient use UseHTTPClient method.
-func UseOAuthAuth(clientID, clientSecret string, tokenCache credentials.LocalTokenCache) ClientModifier {
-	return func(c *Configuration) error {
-		var tokenSource credentials.TokenSource
-		if tokenCache != nil {
-			tokenSource = credentials.NewTokenSourceWithOptions(credentials.AtlasTokenSourceOptions{
-				ClientID:     clientID,
-				ClientSecret: clientSecret,
-				TokenCache:   tokenCache,
-				BaseURL:      &c.Servers[0].URL,
-			})
-		} else {
-			tokenSource = credentials.NewTokenSourceWithOptions(credentials.AtlasTokenSourceOptions{
-				ClientID:     clientID,
-				ClientSecret: clientSecret,
-				BaseURL:      &c.Servers[0].URL,
-			})
+func UseOAuthAuth(ctx context.Context, clientID, clientSecret string) ClientModifier {
+	ctx2 := ctx
+	if hc := ctx.Value(auth.HTTPClient); hc == nil {
+		client := http.DefaultClient
+		client.Transport = &clientcredentials.Transport{
+			Base: http.DefaultTransport, UserAgent: core.DefaultUserAgent,
 		}
-		httpClient := credentials.NewHTTPClientWithOAuthToken(tokenSource)
-		c.HTTPClient = httpClient
+		ctx2 = context.WithValue(ctx, auth.HTTPClient, client)
+	}
+	oauth := clientcredentials.NewConfig(clientID, clientSecret)
+	return func(c *Configuration) error {
+		if len(c.Servers) > 0 {
+			oauth.TokenURL = c.Servers[0].URL + clientcredentials.TokenAPIPath
+			oauth.RevokeURL = c.Servers[0].URL + clientcredentials.RevokeAPIPath
+		}
+		c.HTTPClient = oauth.Client(ctx2)
 		return nil
 	}
 }
@@ -86,7 +84,7 @@ func UseOAuthAuth(clientID, clientSecret string, tokenCache credentials.LocalTok
 // UseHTTPClient set custom http client implementation.
 //
 // Warning: UseHTTPClient overrides any previously set httpClient including the one set by UseDigestAuth.
-// To set a custom http client with HTTP diggest support use:
+// To set a custom http client with HTTP digest support use:
 //
 //	transport := digest.NewTransportWithHTTPRoundTripper(apiKey, apiSecret, yourHttpTransport)
 //	client := UseHTTPClient(transport.Client())

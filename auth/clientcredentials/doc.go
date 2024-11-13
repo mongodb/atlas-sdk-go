@@ -13,6 +13,6 @@
 // limitations under the License.
 
 /*
-Package credentials provides an SDK internal client_credentials grant implementation https://datatracker.ietf.org/doc/html/rfc6749#section-1.3.4
+Package credentials provide an SDK internal client_credentials grant implementation https://datatracker.ietf.org/doc/html/rfc6749#section-1.3.4
 */
-package credentials
+package clientcredentials

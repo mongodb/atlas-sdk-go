@@ -29,7 +29,7 @@ func main() {
 
 	// -- 1. Get first project
 	request := sdk.ProjectsApi.ListProjectsWithParams(ctx,
-		// 2. We passing struct with all parameters to the request
+		// 2. We are passing a struct with all parameters to the request
 		&admin.ListProjectsApiParams{
 			ItemsPerPage: admin.PtrInt(1),
 			IncludeCount: admin.PtrBool(true),
