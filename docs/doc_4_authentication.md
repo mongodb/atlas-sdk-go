@@ -95,4 +95,11 @@ revokeConfig.RevokeToken(context.Background(), &auth.Token{
 	AccessToken: "yourTokenHere"
 });
 ```
+### OAuth Token Cache
+
+Service Account OAuth Access Tokens are valid for an extended duration of 1 hour. 
+Clients can cache these Access Tokens to mitigate rate limiting and adhere to Access Token limits.
+
+For instructions on caching OAuth tokens in the Atlas SDK for Go, see the Service Account OAuth Token Cache 
+[Service Account OAuth Token Cache example](https://github.com/mongodb/atlas-sdk-go/tree/main/examples/service_account_token_store).
 
