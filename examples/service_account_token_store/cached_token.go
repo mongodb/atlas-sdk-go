@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"go.mongodb.org/atlas-sdk/v20241023002/auth"
-	"golang.org/x/oauth2"
 	"log"
 	"os"
 	"strings"
@@ -45,7 +44,7 @@ func main() {
 	ctx := context.Background()
 	src := readTokenFromDisk(ctx, conf)
 	defer func() {
-		if err := saveTokenToDisk(ctx, src); err != nil {
+		if err := saveTokenToDisk(src); err != nil {
 			log.Fatalln(err.Error())
 		}
 	}()
@@ -65,12 +64,12 @@ func main() {
 	fmt.Printf("Projects size: %d\n", projects.GetTotalCount())
 }
 
-func saveTokenToDisk(ctx context.Context, conf *clientcredentials.Config) error {
-	// Fetch OAuth Token from memory
-	token, err := conf.Token(ctx)
+func saveTokenToDisk(tokenSource auth.TokenSource) error {
+	token, err := tokenSource.Token()
 	if err != nil {
 		log.Fatalln(err.Error())
 	}
+	// Fetch OAuth Token from memory
 	val, err := json.Marshal(token)
 	if err != nil {
 		return err
