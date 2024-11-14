@@ -18,7 +18,7 @@ import (
 var cachedToken []byte
 
 // Example caching a Service Account OAuth tokens
-// to disk and reloading it for reuse
+// to memory and reloading it for reuse
 
 // Required env variables to run example:
 // export MONGODB_ATLAS_CLIENT_ID="your_client_id"
@@ -45,7 +45,7 @@ func main() {
 	ctx := context.Background()
 	src := readTokenFromDisk(ctx, conf)
 	defer func() {
-		if err := saveTokenToDisk(ctx, conf); err != nil {
+		if err := saveTokenToDisk(ctx, src); err != nil {
 			log.Fatalln(err.Error())
 		}
 	}()
@@ -85,7 +85,7 @@ func saveTokenToDisk(ctx context.Context, conf *clientcredentials.Config) error 
 	return nil
 }
 
-func readTokenFromDisk(ctx context.Context, conf *clientcredentials.Config) oauth2.TokenSource {
+func readTokenFromDisk(ctx context.Context, conf *clientcredentials.Config) auth.TokenSource {
 	// TODO in real cases  replace with os.ReadFile("yourTokenCache")
 	data := cachedToken // data, err := os.ReadFile("token")
 	var token *auth.Token
