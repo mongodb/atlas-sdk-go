@@ -10,8 +10,9 @@ require (
 	github.com/hashicorp/go-retryablehttp v0.7.7
 	github.com/mongodb-forks/digest v1.1.0
 	go.mongodb.org/atlas-sdk/v20241023002 v20241023002.1.0
-	golang.org/x/oauth2 v0.23.0
 )
+
+require golang.org/x/oauth2 v0.24.0 // indirect
 
 require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
