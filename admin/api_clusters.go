@@ -158,7 +158,7 @@ type ClustersApi interface {
 	GetSampleDatasetLoadStatusExecute(r GetSampleDatasetLoadStatusApiRequest) (*SampleDatasetStatus, *http.Response, error)
 
 	/*
-		GrantMongoDBEmployeeAccess Grant MongoDB employee cluster access for one cluster.
+		GrantMongoDbEmployeeAccess Grant MongoDB employee cluster access for one cluster.
 
 		Grants MongoDB employee cluster access for the given duration and at the specified level for one cluster.
 
@@ -166,21 +166,21 @@ type ClustersApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param clusterName Human-readable label that identifies this cluster.
 		@param employeeAccessGrant Grant access level and expiration.
-		@return GrantMongoDBEmployeeAccessApiRequest
+		@return GrantMongoDbEmployeeAccessApiRequest
 	*/
-	GrantMongoDBEmployeeAccess(ctx context.Context, groupId string, clusterName string, employeeAccessGrant *EmployeeAccessGrant) GrantMongoDBEmployeeAccessApiRequest
+	GrantMongoDbEmployeeAccess(ctx context.Context, groupId string, clusterName string, employeeAccessGrant *EmployeeAccessGrant) GrantMongoDbEmployeeAccessApiRequest
 	/*
-		GrantMongoDBEmployeeAccess Grant MongoDB employee cluster access for one cluster.
+		GrantMongoDbEmployeeAccess Grant MongoDB employee cluster access for one cluster.
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param GrantMongoDBEmployeeAccessApiParams - Parameters for the request
-		@return GrantMongoDBEmployeeAccessApiRequest
+		@param GrantMongoDbEmployeeAccessApiParams - Parameters for the request
+		@return GrantMongoDbEmployeeAccessApiRequest
 	*/
-	GrantMongoDBEmployeeAccessWithParams(ctx context.Context, args *GrantMongoDBEmployeeAccessApiParams) GrantMongoDBEmployeeAccessApiRequest
+	GrantMongoDbEmployeeAccessWithParams(ctx context.Context, args *GrantMongoDbEmployeeAccessApiParams) GrantMongoDbEmployeeAccessApiRequest
 
 	// Method available only for mocking purposes
-	GrantMongoDBEmployeeAccessExecute(r GrantMongoDBEmployeeAccessApiRequest) (any, *http.Response, error)
+	GrantMongoDbEmployeeAccessExecute(r GrantMongoDbEmployeeAccessApiRequest) (any, *http.Response, error)
 
 	/*
 		ListCloudProviderRegions Return All Cloud Provider Regions
@@ -300,28 +300,28 @@ type ClustersApi interface {
 	PinFeatureCompatibilityVersionExecute(r PinFeatureCompatibilityVersionApiRequest) (any, *http.Response, error)
 
 	/*
-		RevokeMongoDBEmployeeAccess Revoke granted MongoDB employee cluster access for one cluster.
+		RevokeMongoDbEmployeeAccess Revoke granted MongoDB employee cluster access for one cluster.
 
 		Revokes a previously granted MongoDB employee cluster access.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param clusterName Human-readable label that identifies this cluster.
-		@return RevokeMongoDBEmployeeAccessApiRequest
+		@return RevokeMongoDbEmployeeAccessApiRequest
 	*/
-	RevokeMongoDBEmployeeAccess(ctx context.Context, groupId string, clusterName string) RevokeMongoDBEmployeeAccessApiRequest
+	RevokeMongoDbEmployeeAccess(ctx context.Context, groupId string, clusterName string) RevokeMongoDbEmployeeAccessApiRequest
 	/*
-		RevokeMongoDBEmployeeAccess Revoke granted MongoDB employee cluster access for one cluster.
+		RevokeMongoDbEmployeeAccess Revoke granted MongoDB employee cluster access for one cluster.
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param RevokeMongoDBEmployeeAccessApiParams - Parameters for the request
-		@return RevokeMongoDBEmployeeAccessApiRequest
+		@param RevokeMongoDbEmployeeAccessApiParams - Parameters for the request
+		@return RevokeMongoDbEmployeeAccessApiRequest
 	*/
-	RevokeMongoDBEmployeeAccessWithParams(ctx context.Context, args *RevokeMongoDBEmployeeAccessApiParams) RevokeMongoDBEmployeeAccessApiRequest
+	RevokeMongoDbEmployeeAccessWithParams(ctx context.Context, args *RevokeMongoDbEmployeeAccessApiParams) RevokeMongoDbEmployeeAccessApiRequest
 
 	// Method available only for mocking purposes
-	RevokeMongoDBEmployeeAccessExecute(r RevokeMongoDBEmployeeAccessApiRequest) (any, *http.Response, error)
+	RevokeMongoDbEmployeeAccessExecute(r RevokeMongoDbEmployeeAccessApiRequest) (any, *http.Response, error)
 
 	/*
 		TestFailover Test Failover for One Cluster
@@ -1173,7 +1173,7 @@ func (a *ClustersApiService) GetSampleDatasetLoadStatusExecute(r GetSampleDatase
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GrantMongoDBEmployeeAccessApiRequest struct {
+type GrantMongoDbEmployeeAccessApiRequest struct {
 	ctx                 context.Context
 	ApiService          ClustersApi
 	groupId             string
@@ -1181,14 +1181,14 @@ type GrantMongoDBEmployeeAccessApiRequest struct {
 	employeeAccessGrant *EmployeeAccessGrant
 }
 
-type GrantMongoDBEmployeeAccessApiParams struct {
+type GrantMongoDbEmployeeAccessApiParams struct {
 	GroupId             string
 	ClusterName         string
 	EmployeeAccessGrant *EmployeeAccessGrant
 }
 
-func (a *ClustersApiService) GrantMongoDBEmployeeAccessWithParams(ctx context.Context, args *GrantMongoDBEmployeeAccessApiParams) GrantMongoDBEmployeeAccessApiRequest {
-	return GrantMongoDBEmployeeAccessApiRequest{
+func (a *ClustersApiService) GrantMongoDbEmployeeAccessWithParams(ctx context.Context, args *GrantMongoDbEmployeeAccessApiParams) GrantMongoDbEmployeeAccessApiRequest {
+	return GrantMongoDbEmployeeAccessApiRequest{
 		ApiService:          a,
 		ctx:                 ctx,
 		groupId:             args.GroupId,
@@ -1197,22 +1197,22 @@ func (a *ClustersApiService) GrantMongoDBEmployeeAccessWithParams(ctx context.Co
 	}
 }
 
-func (r GrantMongoDBEmployeeAccessApiRequest) Execute() (any, *http.Response, error) {
-	return r.ApiService.GrantMongoDBEmployeeAccessExecute(r)
+func (r GrantMongoDbEmployeeAccessApiRequest) Execute() (any, *http.Response, error) {
+	return r.ApiService.GrantMongoDbEmployeeAccessExecute(r)
 }
 
 /*
-GrantMongoDBEmployeeAccess Grant MongoDB employee cluster access for one cluster.
+GrantMongoDbEmployeeAccess Grant MongoDB employee cluster access for one cluster.
 
 Grants MongoDB employee cluster access for the given duration and at the specified level for one cluster.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param clusterName Human-readable label that identifies this cluster.
-	@return GrantMongoDBEmployeeAccessApiRequest
+	@return GrantMongoDbEmployeeAccessApiRequest
 */
-func (a *ClustersApiService) GrantMongoDBEmployeeAccess(ctx context.Context, groupId string, clusterName string, employeeAccessGrant *EmployeeAccessGrant) GrantMongoDBEmployeeAccessApiRequest {
-	return GrantMongoDBEmployeeAccessApiRequest{
+func (a *ClustersApiService) GrantMongoDbEmployeeAccess(ctx context.Context, groupId string, clusterName string, employeeAccessGrant *EmployeeAccessGrant) GrantMongoDbEmployeeAccessApiRequest {
+	return GrantMongoDbEmployeeAccessApiRequest{
 		ApiService:          a,
 		ctx:                 ctx,
 		groupId:             groupId,
@@ -1221,10 +1221,10 @@ func (a *ClustersApiService) GrantMongoDBEmployeeAccess(ctx context.Context, gro
 	}
 }
 
-// GrantMongoDBEmployeeAccessExecute executes the request
+// GrantMongoDbEmployeeAccessExecute executes the request
 //
 //	@return any
-func (a *ClustersApiService) GrantMongoDBEmployeeAccessExecute(r GrantMongoDBEmployeeAccessApiRequest) (any, *http.Response, error) {
+func (a *ClustersApiService) GrantMongoDbEmployeeAccessExecute(r GrantMongoDbEmployeeAccessApiRequest) (any, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -1232,7 +1232,7 @@ func (a *ClustersApiService) GrantMongoDBEmployeeAccessExecute(r GrantMongoDBEmp
 		localVarReturnValue any
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.GrantMongoDBEmployeeAccess")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.GrantMongoDbEmployeeAccess")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2054,20 +2054,20 @@ func (a *ClustersApiService) PinFeatureCompatibilityVersionExecute(r PinFeatureC
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type RevokeMongoDBEmployeeAccessApiRequest struct {
+type RevokeMongoDbEmployeeAccessApiRequest struct {
 	ctx         context.Context
 	ApiService  ClustersApi
 	groupId     string
 	clusterName string
 }
 
-type RevokeMongoDBEmployeeAccessApiParams struct {
+type RevokeMongoDbEmployeeAccessApiParams struct {
 	GroupId     string
 	ClusterName string
 }
 
-func (a *ClustersApiService) RevokeMongoDBEmployeeAccessWithParams(ctx context.Context, args *RevokeMongoDBEmployeeAccessApiParams) RevokeMongoDBEmployeeAccessApiRequest {
-	return RevokeMongoDBEmployeeAccessApiRequest{
+func (a *ClustersApiService) RevokeMongoDbEmployeeAccessWithParams(ctx context.Context, args *RevokeMongoDbEmployeeAccessApiParams) RevokeMongoDbEmployeeAccessApiRequest {
+	return RevokeMongoDbEmployeeAccessApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
 		groupId:     args.GroupId,
@@ -2075,22 +2075,22 @@ func (a *ClustersApiService) RevokeMongoDBEmployeeAccessWithParams(ctx context.C
 	}
 }
 
-func (r RevokeMongoDBEmployeeAccessApiRequest) Execute() (any, *http.Response, error) {
-	return r.ApiService.RevokeMongoDBEmployeeAccessExecute(r)
+func (r RevokeMongoDbEmployeeAccessApiRequest) Execute() (any, *http.Response, error) {
+	return r.ApiService.RevokeMongoDbEmployeeAccessExecute(r)
 }
 
 /*
-RevokeMongoDBEmployeeAccess Revoke granted MongoDB employee cluster access for one cluster.
+RevokeMongoDbEmployeeAccess Revoke granted MongoDB employee cluster access for one cluster.
 
 Revokes a previously granted MongoDB employee cluster access.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param clusterName Human-readable label that identifies this cluster.
-	@return RevokeMongoDBEmployeeAccessApiRequest
+	@return RevokeMongoDbEmployeeAccessApiRequest
 */
-func (a *ClustersApiService) RevokeMongoDBEmployeeAccess(ctx context.Context, groupId string, clusterName string) RevokeMongoDBEmployeeAccessApiRequest {
-	return RevokeMongoDBEmployeeAccessApiRequest{
+func (a *ClustersApiService) RevokeMongoDbEmployeeAccess(ctx context.Context, groupId string, clusterName string) RevokeMongoDbEmployeeAccessApiRequest {
+	return RevokeMongoDbEmployeeAccessApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
 		groupId:     groupId,
@@ -2098,10 +2098,10 @@ func (a *ClustersApiService) RevokeMongoDBEmployeeAccess(ctx context.Context, gr
 	}
 }
 
-// RevokeMongoDBEmployeeAccessExecute executes the request
+// RevokeMongoDbEmployeeAccessExecute executes the request
 //
 //	@return any
-func (a *ClustersApiService) RevokeMongoDBEmployeeAccessExecute(r RevokeMongoDBEmployeeAccessApiRequest) (any, *http.Response, error) {
+func (a *ClustersApiService) RevokeMongoDbEmployeeAccessExecute(r RevokeMongoDbEmployeeAccessApiRequest) (any, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -2109,7 +2109,7 @@ func (a *ClustersApiService) RevokeMongoDBEmployeeAccessExecute(r RevokeMongoDBE
 		localVarReturnValue any
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.RevokeMongoDBEmployeeAccess")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.RevokeMongoDbEmployeeAccess")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

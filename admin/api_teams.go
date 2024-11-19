@@ -225,7 +225,7 @@ type TeamsApi interface {
 	ListTeamUsersWithParams(ctx context.Context, args *ListTeamUsersApiParams) ListTeamUsersApiRequest
 
 	// Method available only for mocking purposes
-	ListTeamUsersExecute(r ListTeamUsersApiRequest) (*PaginatedApiAppUser, *http.Response, error)
+	ListTeamUsersExecute(r ListTeamUsersApiRequest) (*PaginatedAppUser, *http.Response, error)
 
 	/*
 		RemoveProjectTeam Remove One Team from One Project
@@ -1404,7 +1404,7 @@ func (r ListTeamUsersApiRequest) PageNum(pageNum int) ListTeamUsersApiRequest {
 	return r
 }
 
-func (r ListTeamUsersApiRequest) Execute() (*PaginatedApiAppUser, *http.Response, error) {
+func (r ListTeamUsersApiRequest) Execute() (*PaginatedAppUser, *http.Response, error) {
 	return r.ApiService.ListTeamUsersExecute(r)
 }
 
@@ -1429,13 +1429,13 @@ func (a *TeamsApiService) ListTeamUsers(ctx context.Context, orgId string, teamI
 
 // ListTeamUsersExecute executes the request
 //
-//	@return PaginatedApiAppUser
-func (a *TeamsApiService) ListTeamUsersExecute(r ListTeamUsersApiRequest) (*PaginatedApiAppUser, *http.Response, error) {
+//	@return PaginatedAppUser
+func (a *TeamsApiService) ListTeamUsersExecute(r ListTeamUsersApiRequest) (*PaginatedAppUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue *PaginatedApiAppUser
+		localVarReturnValue *PaginatedAppUser
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamsApiService.ListTeamUsers")

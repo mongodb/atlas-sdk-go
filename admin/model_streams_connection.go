@@ -21,6 +21,14 @@ type StreamsConnection struct {
 	Config     *map[string]string      `json:"config,omitempty"`
 	Networking *StreamsKafkaNetworking `json:"networking,omitempty"`
 	Security   *StreamsKafkaSecurity   `json:"security,omitempty"`
+	// The amount of seconds to wait before timing out a connection.
+	ConnectionTimeoutSec *int `json:"connectionTimeoutSec,omitempty"`
+	// A map of key-value pairs that will be passed as headers for the request.
+	Headers *map[string]string `json:"headers,omitempty"`
+	// The amount of seconds to wait before timing out a request.
+	RequestTimeoutSec *int `json:"requestTimeoutSec,omitempty"`
+	// The url to be used for the request.
+	Url *string `json:"url,omitempty"`
 }
 
 // NewStreamsConnection instantiates a new StreamsConnection object
@@ -368,4 +376,136 @@ func (o *StreamsConnection) HasSecurity() bool {
 // SetSecurity gets a reference to the given StreamsKafkaSecurity and assigns it to the Security field.
 func (o *StreamsConnection) SetSecurity(v StreamsKafkaSecurity) {
 	o.Security = &v
+}
+
+// GetConnectionTimeoutSec returns the ConnectionTimeoutSec field value if set, zero value otherwise
+func (o *StreamsConnection) GetConnectionTimeoutSec() int {
+	if o == nil || IsNil(o.ConnectionTimeoutSec) {
+		var ret int
+		return ret
+	}
+	return *o.ConnectionTimeoutSec
+}
+
+// GetConnectionTimeoutSecOk returns a tuple with the ConnectionTimeoutSec field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsConnection) GetConnectionTimeoutSecOk() (*int, bool) {
+	if o == nil || IsNil(o.ConnectionTimeoutSec) {
+		return nil, false
+	}
+
+	return o.ConnectionTimeoutSec, true
+}
+
+// HasConnectionTimeoutSec returns a boolean if a field has been set.
+func (o *StreamsConnection) HasConnectionTimeoutSec() bool {
+	if o != nil && !IsNil(o.ConnectionTimeoutSec) {
+		return true
+	}
+
+	return false
+}
+
+// SetConnectionTimeoutSec gets a reference to the given int and assigns it to the ConnectionTimeoutSec field.
+func (o *StreamsConnection) SetConnectionTimeoutSec(v int) {
+	o.ConnectionTimeoutSec = &v
+}
+
+// GetHeaders returns the Headers field value if set, zero value otherwise
+func (o *StreamsConnection) GetHeaders() map[string]string {
+	if o == nil || IsNil(o.Headers) {
+		var ret map[string]string
+		return ret
+	}
+	return *o.Headers
+}
+
+// GetHeadersOk returns a tuple with the Headers field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsConnection) GetHeadersOk() (*map[string]string, bool) {
+	if o == nil || IsNil(o.Headers) {
+		return nil, false
+	}
+
+	return o.Headers, true
+}
+
+// HasHeaders returns a boolean if a field has been set.
+func (o *StreamsConnection) HasHeaders() bool {
+	if o != nil && !IsNil(o.Headers) {
+		return true
+	}
+
+	return false
+}
+
+// SetHeaders gets a reference to the given map[string]string and assigns it to the Headers field.
+func (o *StreamsConnection) SetHeaders(v map[string]string) {
+	o.Headers = &v
+}
+
+// GetRequestTimeoutSec returns the RequestTimeoutSec field value if set, zero value otherwise
+func (o *StreamsConnection) GetRequestTimeoutSec() int {
+	if o == nil || IsNil(o.RequestTimeoutSec) {
+		var ret int
+		return ret
+	}
+	return *o.RequestTimeoutSec
+}
+
+// GetRequestTimeoutSecOk returns a tuple with the RequestTimeoutSec field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsConnection) GetRequestTimeoutSecOk() (*int, bool) {
+	if o == nil || IsNil(o.RequestTimeoutSec) {
+		return nil, false
+	}
+
+	return o.RequestTimeoutSec, true
+}
+
+// HasRequestTimeoutSec returns a boolean if a field has been set.
+func (o *StreamsConnection) HasRequestTimeoutSec() bool {
+	if o != nil && !IsNil(o.RequestTimeoutSec) {
+		return true
+	}
+
+	return false
+}
+
+// SetRequestTimeoutSec gets a reference to the given int and assigns it to the RequestTimeoutSec field.
+func (o *StreamsConnection) SetRequestTimeoutSec(v int) {
+	o.RequestTimeoutSec = &v
+}
+
+// GetUrl returns the Url field value if set, zero value otherwise
+func (o *StreamsConnection) GetUrl() string {
+	if o == nil || IsNil(o.Url) {
+		var ret string
+		return ret
+	}
+	return *o.Url
+}
+
+// GetUrlOk returns a tuple with the Url field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsConnection) GetUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.Url) {
+		return nil, false
+	}
+
+	return o.Url, true
+}
+
+// HasUrl returns a boolean if a field has been set.
+func (o *StreamsConnection) HasUrl() bool {
+	if o != nil && !IsNil(o.Url) {
+		return true
+	}
+
+	return false
+}
+
+// SetUrl gets a reference to the given string and assigns it to the Url field.
+func (o *StreamsConnection) SetUrl(v string) {
+	o.Url = &v
 }

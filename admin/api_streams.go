@@ -13,7 +13,7 @@ import (
 type StreamsApi interface {
 
 	/*
-		AcceptVPCPeeringConnection Requests the acceptance of an incoming VPC Peering connection.
+		AcceptVpcPeeringConnection Requests the acceptance of an incoming VPC Peering connection.
 
 		Requests the acceptance of an incoming VPC Peering connection.
 
@@ -21,21 +21,21 @@ type StreamsApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param id The VPC Peering Connection id.
 		@param vPCPeeringActionChallenge Challenge values for VPC Peering requester account ID, and requester VPC ID.
-		@return AcceptVPCPeeringConnectionApiRequest
+		@return AcceptVpcPeeringConnectionApiRequest
 	*/
-	AcceptVPCPeeringConnection(ctx context.Context, groupId string, id string, vPCPeeringActionChallenge *VPCPeeringActionChallenge) AcceptVPCPeeringConnectionApiRequest
+	AcceptVpcPeeringConnection(ctx context.Context, groupId string, id string, vPCPeeringActionChallenge *VPCPeeringActionChallenge) AcceptVpcPeeringConnectionApiRequest
 	/*
-		AcceptVPCPeeringConnection Requests the acceptance of an incoming VPC Peering connection.
+		AcceptVpcPeeringConnection Requests the acceptance of an incoming VPC Peering connection.
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param AcceptVPCPeeringConnectionApiParams - Parameters for the request
-		@return AcceptVPCPeeringConnectionApiRequest
+		@param AcceptVpcPeeringConnectionApiParams - Parameters for the request
+		@return AcceptVpcPeeringConnectionApiRequest
 	*/
-	AcceptVPCPeeringConnectionWithParams(ctx context.Context, args *AcceptVPCPeeringConnectionApiParams) AcceptVPCPeeringConnectionApiRequest
+	AcceptVpcPeeringConnectionWithParams(ctx context.Context, args *AcceptVpcPeeringConnectionApiParams) AcceptVpcPeeringConnectionApiRequest
 
 	// Method available only for mocking purposes
-	AcceptVPCPeeringConnectionExecute(r AcceptVPCPeeringConnectionApiRequest) (any, *http.Response, error)
+	AcceptVpcPeeringConnectionExecute(r AcceptVpcPeeringConnectionApiRequest) (any, *http.Response, error)
 
 	/*
 		CreatePrivateLinkConnection Create One Private Link connection
@@ -258,28 +258,28 @@ type StreamsApi interface {
 	DeleteStreamProcessorExecute(r DeleteStreamProcessorApiRequest) (*http.Response, error)
 
 	/*
-		DeleteVPCPeeringConnection Deletes an incoming VPC Peering connection.
+		DeleteVpcPeeringConnection Deletes an incoming VPC Peering connection.
 
 		Deletes an incoming VPC Peering connection.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param id The VPC Peering Connection id.
-		@return DeleteVPCPeeringConnectionApiRequest
+		@return DeleteVpcPeeringConnectionApiRequest
 	*/
-	DeleteVPCPeeringConnection(ctx context.Context, groupId string, id string) DeleteVPCPeeringConnectionApiRequest
+	DeleteVpcPeeringConnection(ctx context.Context, groupId string, id string) DeleteVpcPeeringConnectionApiRequest
 	/*
-		DeleteVPCPeeringConnection Deletes an incoming VPC Peering connection.
+		DeleteVpcPeeringConnection Deletes an incoming VPC Peering connection.
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param DeleteVPCPeeringConnectionApiParams - Parameters for the request
-		@return DeleteVPCPeeringConnectionApiRequest
+		@param DeleteVpcPeeringConnectionApiParams - Parameters for the request
+		@return DeleteVpcPeeringConnectionApiRequest
 	*/
-	DeleteVPCPeeringConnectionWithParams(ctx context.Context, args *DeleteVPCPeeringConnectionApiParams) DeleteVPCPeeringConnectionApiRequest
+	DeleteVpcPeeringConnectionWithParams(ctx context.Context, args *DeleteVpcPeeringConnectionApiParams) DeleteVpcPeeringConnectionApiRequest
 
 	// Method available only for mocking purposes
-	DeleteVPCPeeringConnectionExecute(r DeleteVPCPeeringConnectionApiRequest) (any, *http.Response, error)
+	DeleteVpcPeeringConnectionExecute(r DeleteVpcPeeringConnectionApiRequest) (any, *http.Response, error)
 
 	/*
 		DownloadStreamTenantAuditLogs Download Audit Logs for One Atlas Stream Processing Instance
@@ -304,6 +304,29 @@ type StreamsApi interface {
 
 	// Method available only for mocking purposes
 	DownloadStreamTenantAuditLogsExecute(r DownloadStreamTenantAuditLogsApiRequest) (io.ReadCloser, *http.Response, error)
+
+	/*
+		GetAccountDetails Returns the Account ID, and the VPC ID for the group and region specified.
+
+		Returns the Account ID, and the VPC ID for the group and region specified.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@return GetAccountDetailsApiRequest
+	*/
+	GetAccountDetails(ctx context.Context, groupId string) GetAccountDetailsApiRequest
+	/*
+		GetAccountDetails Returns the Account ID, and the VPC ID for the group and region specified.
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetAccountDetailsApiParams - Parameters for the request
+		@return GetAccountDetailsApiRequest
+	*/
+	GetAccountDetailsWithParams(ctx context.Context, args *GetAccountDetailsApiParams) GetAccountDetailsApiRequest
+
+	// Method available only for mocking purposes
+	GetAccountDetailsExecute(r GetAccountDetailsApiRequest) (*AWSAccountDetails, *http.Response, error)
 
 	/*
 		GetPrivateLinkConnection Return One PrivateLink Connection
@@ -404,27 +427,27 @@ type StreamsApi interface {
 	GetStreamProcessorExecute(r GetStreamProcessorApiRequest) (*StreamsProcessorWithStats, *http.Response, error)
 
 	/*
-		GetVPCPeeringConnections Return All VPC Peering Connections.
+		GetVpcPeeringConnections Return All VPC Peering Connections.
 
 		Returns a list of incoming VPC Peering Connections.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@return GetVPCPeeringConnectionsApiRequest
+		@return GetVpcPeeringConnectionsApiRequest
 	*/
-	GetVPCPeeringConnections(ctx context.Context, groupId string) GetVPCPeeringConnectionsApiRequest
+	GetVpcPeeringConnections(ctx context.Context, groupId string) GetVpcPeeringConnectionsApiRequest
 	/*
-		GetVPCPeeringConnections Return All VPC Peering Connections.
+		GetVpcPeeringConnections Return All VPC Peering Connections.
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param GetVPCPeeringConnectionsApiParams - Parameters for the request
-		@return GetVPCPeeringConnectionsApiRequest
+		@param GetVpcPeeringConnectionsApiParams - Parameters for the request
+		@return GetVpcPeeringConnectionsApiRequest
 	*/
-	GetVPCPeeringConnectionsWithParams(ctx context.Context, args *GetVPCPeeringConnectionsApiParams) GetVPCPeeringConnectionsApiRequest
+	GetVpcPeeringConnectionsWithParams(ctx context.Context, args *GetVpcPeeringConnectionsApiParams) GetVpcPeeringConnectionsApiRequest
 
 	// Method available only for mocking purposes
-	GetVPCPeeringConnectionsExecute(r GetVPCPeeringConnectionsApiRequest) (*http.Response, error)
+	GetVpcPeeringConnectionsExecute(r GetVpcPeeringConnectionsApiRequest) (*http.Response, error)
 
 	/*
 		ListPrivateLinkConnections Return All Private Link
@@ -521,28 +544,28 @@ type StreamsApi interface {
 	ListStreamProcessorsExecute(r ListStreamProcessorsApiRequest) (*PaginatedApiStreamsStreamProcessorWithStats, *http.Response, error)
 
 	/*
-		RejectVPCPeeringConnection Requests the rejection of an incoming VPC Peering connection.
+		RejectVpcPeeringConnection Requests the rejection of an incoming VPC Peering connection.
 
 		Requests the rejection of an incoming VPC Peering connection.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param id The VPC Peering Connection id.
-		@return RejectVPCPeeringConnectionApiRequest
+		@return RejectVpcPeeringConnectionApiRequest
 	*/
-	RejectVPCPeeringConnection(ctx context.Context, groupId string, id string) RejectVPCPeeringConnectionApiRequest
+	RejectVpcPeeringConnection(ctx context.Context, groupId string, id string) RejectVpcPeeringConnectionApiRequest
 	/*
-		RejectVPCPeeringConnection Requests the rejection of an incoming VPC Peering connection.
+		RejectVpcPeeringConnection Requests the rejection of an incoming VPC Peering connection.
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param RejectVPCPeeringConnectionApiParams - Parameters for the request
-		@return RejectVPCPeeringConnectionApiRequest
+		@param RejectVpcPeeringConnectionApiParams - Parameters for the request
+		@return RejectVpcPeeringConnectionApiRequest
 	*/
-	RejectVPCPeeringConnectionWithParams(ctx context.Context, args *RejectVPCPeeringConnectionApiParams) RejectVPCPeeringConnectionApiRequest
+	RejectVpcPeeringConnectionWithParams(ctx context.Context, args *RejectVpcPeeringConnectionApiParams) RejectVpcPeeringConnectionApiRequest
 
 	// Method available only for mocking purposes
-	RejectVPCPeeringConnectionExecute(r RejectVPCPeeringConnectionApiRequest) (any, *http.Response, error)
+	RejectVpcPeeringConnectionExecute(r RejectVpcPeeringConnectionApiRequest) (any, *http.Response, error)
 
 	/*
 		StartStreamProcessor Start One Stream Processor
@@ -649,7 +672,7 @@ type StreamsApi interface {
 // StreamsApiService StreamsApi service
 type StreamsApiService service
 
-type AcceptVPCPeeringConnectionApiRequest struct {
+type AcceptVpcPeeringConnectionApiRequest struct {
 	ctx                       context.Context
 	ApiService                StreamsApi
 	groupId                   string
@@ -657,14 +680,14 @@ type AcceptVPCPeeringConnectionApiRequest struct {
 	vPCPeeringActionChallenge *VPCPeeringActionChallenge
 }
 
-type AcceptVPCPeeringConnectionApiParams struct {
+type AcceptVpcPeeringConnectionApiParams struct {
 	GroupId                   string
 	Id                        string
 	VPCPeeringActionChallenge *VPCPeeringActionChallenge
 }
 
-func (a *StreamsApiService) AcceptVPCPeeringConnectionWithParams(ctx context.Context, args *AcceptVPCPeeringConnectionApiParams) AcceptVPCPeeringConnectionApiRequest {
-	return AcceptVPCPeeringConnectionApiRequest{
+func (a *StreamsApiService) AcceptVpcPeeringConnectionWithParams(ctx context.Context, args *AcceptVpcPeeringConnectionApiParams) AcceptVpcPeeringConnectionApiRequest {
+	return AcceptVpcPeeringConnectionApiRequest{
 		ApiService:                a,
 		ctx:                       ctx,
 		groupId:                   args.GroupId,
@@ -673,22 +696,22 @@ func (a *StreamsApiService) AcceptVPCPeeringConnectionWithParams(ctx context.Con
 	}
 }
 
-func (r AcceptVPCPeeringConnectionApiRequest) Execute() (any, *http.Response, error) {
-	return r.ApiService.AcceptVPCPeeringConnectionExecute(r)
+func (r AcceptVpcPeeringConnectionApiRequest) Execute() (any, *http.Response, error) {
+	return r.ApiService.AcceptVpcPeeringConnectionExecute(r)
 }
 
 /*
-AcceptVPCPeeringConnection Requests the acceptance of an incoming VPC Peering connection.
+AcceptVpcPeeringConnection Requests the acceptance of an incoming VPC Peering connection.
 
 Requests the acceptance of an incoming VPC Peering connection.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param id The VPC Peering Connection id.
-	@return AcceptVPCPeeringConnectionApiRequest
+	@return AcceptVpcPeeringConnectionApiRequest
 */
-func (a *StreamsApiService) AcceptVPCPeeringConnection(ctx context.Context, groupId string, id string, vPCPeeringActionChallenge *VPCPeeringActionChallenge) AcceptVPCPeeringConnectionApiRequest {
-	return AcceptVPCPeeringConnectionApiRequest{
+func (a *StreamsApiService) AcceptVpcPeeringConnection(ctx context.Context, groupId string, id string, vPCPeeringActionChallenge *VPCPeeringActionChallenge) AcceptVpcPeeringConnectionApiRequest {
+	return AcceptVpcPeeringConnectionApiRequest{
 		ApiService:                a,
 		ctx:                       ctx,
 		groupId:                   groupId,
@@ -697,10 +720,10 @@ func (a *StreamsApiService) AcceptVPCPeeringConnection(ctx context.Context, grou
 	}
 }
 
-// AcceptVPCPeeringConnectionExecute executes the request
+// AcceptVpcPeeringConnectionExecute executes the request
 //
 //	@return any
-func (a *StreamsApiService) AcceptVPCPeeringConnectionExecute(r AcceptVPCPeeringConnectionApiRequest) (any, *http.Response, error) {
+func (a *StreamsApiService) AcceptVpcPeeringConnectionExecute(r AcceptVpcPeeringConnectionApiRequest) (any, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -708,7 +731,7 @@ func (a *StreamsApiService) AcceptVPCPeeringConnectionExecute(r AcceptVPCPeering
 		localVarReturnValue any
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.AcceptVPCPeeringConnection")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.AcceptVpcPeeringConnection")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1850,20 +1873,20 @@ func (a *StreamsApiService) DeleteStreamProcessorExecute(r DeleteStreamProcessor
 	return localVarHTTPResponse, nil
 }
 
-type DeleteVPCPeeringConnectionApiRequest struct {
+type DeleteVpcPeeringConnectionApiRequest struct {
 	ctx        context.Context
 	ApiService StreamsApi
 	groupId    string
 	id         string
 }
 
-type DeleteVPCPeeringConnectionApiParams struct {
+type DeleteVpcPeeringConnectionApiParams struct {
 	GroupId string
 	Id      string
 }
 
-func (a *StreamsApiService) DeleteVPCPeeringConnectionWithParams(ctx context.Context, args *DeleteVPCPeeringConnectionApiParams) DeleteVPCPeeringConnectionApiRequest {
-	return DeleteVPCPeeringConnectionApiRequest{
+func (a *StreamsApiService) DeleteVpcPeeringConnectionWithParams(ctx context.Context, args *DeleteVpcPeeringConnectionApiParams) DeleteVpcPeeringConnectionApiRequest {
+	return DeleteVpcPeeringConnectionApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    args.GroupId,
@@ -1871,22 +1894,22 @@ func (a *StreamsApiService) DeleteVPCPeeringConnectionWithParams(ctx context.Con
 	}
 }
 
-func (r DeleteVPCPeeringConnectionApiRequest) Execute() (any, *http.Response, error) {
-	return r.ApiService.DeleteVPCPeeringConnectionExecute(r)
+func (r DeleteVpcPeeringConnectionApiRequest) Execute() (any, *http.Response, error) {
+	return r.ApiService.DeleteVpcPeeringConnectionExecute(r)
 }
 
 /*
-DeleteVPCPeeringConnection Deletes an incoming VPC Peering connection.
+DeleteVpcPeeringConnection Deletes an incoming VPC Peering connection.
 
 Deletes an incoming VPC Peering connection.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param id The VPC Peering Connection id.
-	@return DeleteVPCPeeringConnectionApiRequest
+	@return DeleteVpcPeeringConnectionApiRequest
 */
-func (a *StreamsApiService) DeleteVPCPeeringConnection(ctx context.Context, groupId string, id string) DeleteVPCPeeringConnectionApiRequest {
-	return DeleteVPCPeeringConnectionApiRequest{
+func (a *StreamsApiService) DeleteVpcPeeringConnection(ctx context.Context, groupId string, id string) DeleteVpcPeeringConnectionApiRequest {
+	return DeleteVpcPeeringConnectionApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    groupId,
@@ -1894,10 +1917,10 @@ func (a *StreamsApiService) DeleteVPCPeeringConnection(ctx context.Context, grou
 	}
 }
 
-// DeleteVPCPeeringConnectionExecute executes the request
+// DeleteVpcPeeringConnectionExecute executes the request
 //
 //	@return any
-func (a *StreamsApiService) DeleteVPCPeeringConnectionExecute(r DeleteVPCPeeringConnectionApiRequest) (any, *http.Response, error) {
+func (a *StreamsApiService) DeleteVpcPeeringConnectionExecute(r DeleteVpcPeeringConnectionApiRequest) (any, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    any
@@ -1905,7 +1928,7 @@ func (a *StreamsApiService) DeleteVPCPeeringConnectionExecute(r DeleteVPCPeering
 		localVarReturnValue any
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.DeleteVPCPeeringConnection")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.DeleteVpcPeeringConnection")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2070,6 +2093,143 @@ func (a *StreamsApiService) DownloadStreamTenantAuditLogsExecute(r DownloadStrea
 
 	// to determine the Accept header (only first one)
 	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-02-01+gzip"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type GetAccountDetailsApiRequest struct {
+	ctx           context.Context
+	ApiService    StreamsApi
+	groupId       string
+	cloudProvider *string
+	regionName    *string
+}
+
+type GetAccountDetailsApiParams struct {
+	GroupId       string
+	CloudProvider *string
+	RegionName    *string
+}
+
+func (a *StreamsApiService) GetAccountDetailsWithParams(ctx context.Context, args *GetAccountDetailsApiParams) GetAccountDetailsApiRequest {
+	return GetAccountDetailsApiRequest{
+		ApiService:    a,
+		ctx:           ctx,
+		groupId:       args.GroupId,
+		cloudProvider: args.CloudProvider,
+		regionName:    args.RegionName,
+	}
+}
+
+// One of \&quot;aws\&quot;, \&quot;azure\&quot; or \&quot;gcp\&quot;.
+func (r GetAccountDetailsApiRequest) CloudProvider(cloudProvider string) GetAccountDetailsApiRequest {
+	r.cloudProvider = &cloudProvider
+	return r
+}
+
+// The cloud provider specific region name, i.e. \&quot;US_EAST_1\&quot; for cloud provider \&quot;aws\&quot;.
+func (r GetAccountDetailsApiRequest) RegionName(regionName string) GetAccountDetailsApiRequest {
+	r.regionName = &regionName
+	return r
+}
+
+func (r GetAccountDetailsApiRequest) Execute() (*AWSAccountDetails, *http.Response, error) {
+	return r.ApiService.GetAccountDetailsExecute(r)
+}
+
+/*
+GetAccountDetails Returns the Account ID, and the VPC ID for the group and region specified.
+
+Returns the Account ID, and the VPC ID for the group and region specified.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return GetAccountDetailsApiRequest
+*/
+func (a *StreamsApiService) GetAccountDetails(ctx context.Context, groupId string) GetAccountDetailsApiRequest {
+	return GetAccountDetailsApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    groupId,
+	}
+}
+
+// GetAccountDetailsExecute executes the request
+//
+//	@return AWSAccountDetails
+func (a *StreamsApiService) GetAccountDetailsExecute(r GetAccountDetailsApiRequest) (*AWSAccountDetails, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *AWSAccountDetails
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.GetAccountDetails")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/accountDetails"
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.cloudProvider == nil {
+		return localVarReturnValue, nil, reportError("cloudProvider is required and must be specified")
+	}
+	if r.regionName == nil {
+		return localVarReturnValue, nil, reportError("regionName is required and must be specified")
+	}
+
+	parameterAddToHeaderOrQuery(localVarQueryParams, "cloudProvider", r.cloudProvider, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "regionName", r.regionName, "")
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-11-13+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -2600,72 +2760,81 @@ func (a *StreamsApiService) GetStreamProcessorExecute(r GetStreamProcessorApiReq
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type GetVPCPeeringConnectionsApiRequest struct {
-	ctx          context.Context
-	ApiService   StreamsApi
-	groupId      string
-	itemsPerPage *int
-	pageNum      *int
+type GetVpcPeeringConnectionsApiRequest struct {
+	ctx                context.Context
+	ApiService         StreamsApi
+	requesterAccountId *string
+	groupId            string
+	itemsPerPage       *int
+	pageNum            *int
 }
 
-type GetVPCPeeringConnectionsApiParams struct {
-	GroupId      string
-	ItemsPerPage *int
-	PageNum      *int
+type GetVpcPeeringConnectionsApiParams struct {
+	RequesterAccountId *string
+	GroupId            string
+	ItemsPerPage       *int
+	PageNum            *int
 }
 
-func (a *StreamsApiService) GetVPCPeeringConnectionsWithParams(ctx context.Context, args *GetVPCPeeringConnectionsApiParams) GetVPCPeeringConnectionsApiRequest {
-	return GetVPCPeeringConnectionsApiRequest{
-		ApiService:   a,
-		ctx:          ctx,
-		groupId:      args.GroupId,
-		itemsPerPage: args.ItemsPerPage,
-		pageNum:      args.PageNum,
+func (a *StreamsApiService) GetVpcPeeringConnectionsWithParams(ctx context.Context, args *GetVpcPeeringConnectionsApiParams) GetVpcPeeringConnectionsApiRequest {
+	return GetVpcPeeringConnectionsApiRequest{
+		ApiService:         a,
+		ctx:                ctx,
+		requesterAccountId: args.RequesterAccountId,
+		groupId:            args.GroupId,
+		itemsPerPage:       args.ItemsPerPage,
+		pageNum:            args.PageNum,
 	}
 }
 
+// The Account ID of the VPC Peering connection/s.
+func (r GetVpcPeeringConnectionsApiRequest) RequesterAccountId(requesterAccountId string) GetVpcPeeringConnectionsApiRequest {
+	r.requesterAccountId = &requesterAccountId
+	return r
+}
+
 // Number of items that the response returns per page.
-func (r GetVPCPeeringConnectionsApiRequest) ItemsPerPage(itemsPerPage int) GetVPCPeeringConnectionsApiRequest {
+func (r GetVpcPeeringConnectionsApiRequest) ItemsPerPage(itemsPerPage int) GetVpcPeeringConnectionsApiRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r GetVPCPeeringConnectionsApiRequest) PageNum(pageNum int) GetVPCPeeringConnectionsApiRequest {
+func (r GetVpcPeeringConnectionsApiRequest) PageNum(pageNum int) GetVpcPeeringConnectionsApiRequest {
 	r.pageNum = &pageNum
 	return r
 }
 
-func (r GetVPCPeeringConnectionsApiRequest) Execute() (*http.Response, error) {
-	return r.ApiService.GetVPCPeeringConnectionsExecute(r)
+func (r GetVpcPeeringConnectionsApiRequest) Execute() (*http.Response, error) {
+	return r.ApiService.GetVpcPeeringConnectionsExecute(r)
 }
 
 /*
-GetVPCPeeringConnections Return All VPC Peering Connections.
+GetVpcPeeringConnections Return All VPC Peering Connections.
 
 Returns a list of incoming VPC Peering Connections.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return GetVPCPeeringConnectionsApiRequest
+	@return GetVpcPeeringConnectionsApiRequest
 */
-func (a *StreamsApiService) GetVPCPeeringConnections(ctx context.Context, groupId string) GetVPCPeeringConnectionsApiRequest {
-	return GetVPCPeeringConnectionsApiRequest{
+func (a *StreamsApiService) GetVpcPeeringConnections(ctx context.Context, groupId string) GetVpcPeeringConnectionsApiRequest {
+	return GetVpcPeeringConnectionsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    groupId,
 	}
 }
 
-// GetVPCPeeringConnectionsExecute executes the request
-func (a *StreamsApiService) GetVPCPeeringConnectionsExecute(r GetVPCPeeringConnectionsApiRequest) (*http.Response, error) {
+// GetVpcPeeringConnectionsExecute executes the request
+func (a *StreamsApiService) GetVpcPeeringConnectionsExecute(r GetVpcPeeringConnectionsApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodGet
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.GetVPCPeeringConnections")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.GetVpcPeeringConnections")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2676,7 +2845,11 @@ func (a *StreamsApiService) GetVPCPeeringConnectionsExecute(r GetVPCPeeringConne
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.requesterAccountId == nil {
+		return nil, reportError("requesterAccountId is required and must be specified")
+	}
 
+	parameterAddToHeaderOrQuery(localVarQueryParams, "requesterAccountId", r.requesterAccountId, "")
 	if r.itemsPerPage != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	} else {
@@ -3326,20 +3499,20 @@ func (a *StreamsApiService) ListStreamProcessorsExecute(r ListStreamProcessorsAp
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type RejectVPCPeeringConnectionApiRequest struct {
+type RejectVpcPeeringConnectionApiRequest struct {
 	ctx        context.Context
 	ApiService StreamsApi
 	groupId    string
 	id         string
 }
 
-type RejectVPCPeeringConnectionApiParams struct {
+type RejectVpcPeeringConnectionApiParams struct {
 	GroupId string
 	Id      string
 }
 
-func (a *StreamsApiService) RejectVPCPeeringConnectionWithParams(ctx context.Context, args *RejectVPCPeeringConnectionApiParams) RejectVPCPeeringConnectionApiRequest {
-	return RejectVPCPeeringConnectionApiRequest{
+func (a *StreamsApiService) RejectVpcPeeringConnectionWithParams(ctx context.Context, args *RejectVpcPeeringConnectionApiParams) RejectVpcPeeringConnectionApiRequest {
+	return RejectVpcPeeringConnectionApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    args.GroupId,
@@ -3347,22 +3520,22 @@ func (a *StreamsApiService) RejectVPCPeeringConnectionWithParams(ctx context.Con
 	}
 }
 
-func (r RejectVPCPeeringConnectionApiRequest) Execute() (any, *http.Response, error) {
-	return r.ApiService.RejectVPCPeeringConnectionExecute(r)
+func (r RejectVpcPeeringConnectionApiRequest) Execute() (any, *http.Response, error) {
+	return r.ApiService.RejectVpcPeeringConnectionExecute(r)
 }
 
 /*
-RejectVPCPeeringConnection Requests the rejection of an incoming VPC Peering connection.
+RejectVpcPeeringConnection Requests the rejection of an incoming VPC Peering connection.
 
 Requests the rejection of an incoming VPC Peering connection.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param id The VPC Peering Connection id.
-	@return RejectVPCPeeringConnectionApiRequest
+	@return RejectVpcPeeringConnectionApiRequest
 */
-func (a *StreamsApiService) RejectVPCPeeringConnection(ctx context.Context, groupId string, id string) RejectVPCPeeringConnectionApiRequest {
-	return RejectVPCPeeringConnectionApiRequest{
+func (a *StreamsApiService) RejectVpcPeeringConnection(ctx context.Context, groupId string, id string) RejectVpcPeeringConnectionApiRequest {
+	return RejectVpcPeeringConnectionApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    groupId,
@@ -3370,10 +3543,10 @@ func (a *StreamsApiService) RejectVPCPeeringConnection(ctx context.Context, grou
 	}
 }
 
-// RejectVPCPeeringConnectionExecute executes the request
+// RejectVpcPeeringConnectionExecute executes the request
 //
 //	@return any
-func (a *StreamsApiService) RejectVPCPeeringConnectionExecute(r RejectVPCPeeringConnectionApiRequest) (any, *http.Response, error) {
+func (a *StreamsApiService) RejectVpcPeeringConnectionExecute(r RejectVpcPeeringConnectionApiRequest) (any, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -3381,7 +3554,7 @@ func (a *StreamsApiService) RejectVPCPeeringConnectionExecute(r RejectVPCPeering
 		localVarReturnValue any
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.RejectVPCPeeringConnection")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.RejectVpcPeeringConnection")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

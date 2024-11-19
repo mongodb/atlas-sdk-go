@@ -10,13 +10,13 @@ Method | HTTP request | Description
 [**GetClusterAdvancedConfiguration**](ClustersApi.md#GetClusterAdvancedConfiguration) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/processArgs | Return One Advanced Configuration Options for One Cluster
 [**GetClusterStatus**](ClustersApi.md#GetClusterStatus) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/status | Return Status of All Cluster Operations
 [**GetSampleDatasetLoadStatus**](ClustersApi.md#GetSampleDatasetLoadStatus) | **Get** /api/atlas/v2/groups/{groupId}/sampleDatasetLoad/{sampleDatasetId} | Check Status of Cluster Sample Dataset Request
-[**GrantMongoDBEmployeeAccess**](ClustersApi.md#GrantMongoDBEmployeeAccess) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}:grantMongoDBEmployeeAccess | Grant MongoDB employee cluster access for one cluster.
+[**GrantMongoDbEmployeeAccess**](ClustersApi.md#GrantMongoDbEmployeeAccess) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}:grantMongoDBEmployeeAccess | Grant MongoDB employee cluster access for one cluster.
 [**ListCloudProviderRegions**](ClustersApi.md#ListCloudProviderRegions) | **Get** /api/atlas/v2/groups/{groupId}/clusters/provider/regions | Return All Cloud Provider Regions
 [**ListClusters**](ClustersApi.md#ListClusters) | **Get** /api/atlas/v2/groups/{groupId}/clusters | Return All Clusters in One Project
 [**ListClustersForAllProjects**](ClustersApi.md#ListClustersForAllProjects) | **Get** /api/atlas/v2/clusters | Return All Authorized Clusters in All Projects
 [**LoadSampleDataset**](ClustersApi.md#LoadSampleDataset) | **Post** /api/atlas/v2/groups/{groupId}/sampleDatasetLoad/{name} | Load Sample Dataset Request into Cluster
 [**PinFeatureCompatibilityVersion**](ClustersApi.md#PinFeatureCompatibilityVersion) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}:pinFeatureCompatibilityVersion | Pin FCV for One Cluster from One Project
-[**RevokeMongoDBEmployeeAccess**](ClustersApi.md#RevokeMongoDBEmployeeAccess) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}:revokeMongoDBEmployeeAccess | Revoke granted MongoDB employee cluster access for one cluster.
+[**RevokeMongoDbEmployeeAccess**](ClustersApi.md#RevokeMongoDbEmployeeAccess) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}:revokeMongoDBEmployeeAccess | Revoke granted MongoDB employee cluster access for one cluster.
 [**TestFailover**](ClustersApi.md#TestFailover) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/restartPrimaries | Test Failover for One Cluster
 [**UnpinFeatureCompatibilityVersion**](ClustersApi.md#UnpinFeatureCompatibilityVersion) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}:unpinFeatureCompatibilityVersion | Unpins FCV for One Cluster from One Project
 [**UpdateCluster**](ClustersApi.md#UpdateCluster) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName} | Modify One Cluster from One Project
@@ -523,9 +523,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GrantMongoDBEmployeeAccess
+## GrantMongoDbEmployeeAccess
 
-> any GrantMongoDBEmployeeAccess(ctx, groupId, clusterName, employeeAccessGrant EmployeeAccessGrant).Execute()
+> any GrantMongoDbEmployeeAccess(ctx, groupId, clusterName, employeeAccessGrant EmployeeAccessGrant).Execute()
 
 Grant MongoDB employee cluster access for one cluster.
 
@@ -557,17 +557,17 @@ func main() {
     clusterName := "clusterName_example" // string | 
     employeeAccessGrant := *openapiclient.NewEmployeeAccessGrant(time.Now(), "GrantType_example") // EmployeeAccessGrant | 
 
-    resp, r, err := sdk.ClustersApi.GrantMongoDBEmployeeAccess(context.Background(), groupId, clusterName, &employeeAccessGrant).Execute()
+    resp, r, err := sdk.ClustersApi.GrantMongoDbEmployeeAccess(context.Background(), groupId, clusterName, &employeeAccessGrant).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.GrantMongoDBEmployeeAccess`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.GrantMongoDbEmployeeAccess`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `GrantMongoDBEmployeeAccess`: any
-    fmt.Fprintf(os.Stdout, "Response from `ClustersApi.GrantMongoDBEmployeeAccess`: %v (%v)\n", resp, r)
+    // response from `GrantMongoDbEmployeeAccess`: any
+    fmt.Fprintf(os.Stdout, "Response from `ClustersApi.GrantMongoDbEmployeeAccess`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -582,7 +582,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGrantMongoDBEmployeeAccessRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGrantMongoDbEmployeeAccessRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -1034,9 +1034,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## RevokeMongoDBEmployeeAccess
+## RevokeMongoDbEmployeeAccess
 
-> any RevokeMongoDBEmployeeAccess(ctx, groupId, clusterName).Execute()
+> any RevokeMongoDbEmployeeAccess(ctx, groupId, clusterName).Execute()
 
 Revoke granted MongoDB employee cluster access for one cluster.
 
@@ -1067,17 +1067,17 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
 
-    resp, r, err := sdk.ClustersApi.RevokeMongoDBEmployeeAccess(context.Background(), groupId, clusterName).Execute()
+    resp, r, err := sdk.ClustersApi.RevokeMongoDbEmployeeAccess(context.Background(), groupId, clusterName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.RevokeMongoDBEmployeeAccess`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.RevokeMongoDbEmployeeAccess`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `RevokeMongoDBEmployeeAccess`: any
-    fmt.Fprintf(os.Stdout, "Response from `ClustersApi.RevokeMongoDBEmployeeAccess`: %v (%v)\n", resp, r)
+    // response from `RevokeMongoDbEmployeeAccess`: any
+    fmt.Fprintf(os.Stdout, "Response from `ClustersApi.RevokeMongoDbEmployeeAccess`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1092,7 +1092,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiRevokeMongoDBEmployeeAccessRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiRevokeMongoDbEmployeeAccessRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

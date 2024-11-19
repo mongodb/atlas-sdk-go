@@ -12,7 +12,7 @@ info:
 
     curl --user "{PUBLIC-KEY}:{PRIVATE-KEY}" \
       --digest \
-      --header "Accept: application/vnd.atlas.2024-10-23+json" \
+      --header "Accept: application/vnd.atlas.2024-11-13+json" \
       -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/dbAccessHistory/clusters/{clusterName}?pretty=true"
     ```
 
@@ -27,7 +27,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 08773c7fcc012f959b5c7403f0f37ae45cab24b4
+  x-xgen-sha: b4af03887e4a47b0e7a2b40cb24ecb8a926f9512
 servers:
   - url: https://cloud.mongodb.com
 security:
@@ -116,6 +116,12 @@ tags:
   - description: Returns, adds, edits, and removes federation-related features such
       as role mappings and connected organization configurations.
     name: Federated Authentication
+  - description: Returns, adds, edits, and removes flex clusters.
+    name: Flex Clusters
+  - description: Returns and adds restore jobs for flex database deployments.
+    name: Flex Restore Jobs
+  - description: Returns and requests to download flex database deployment snapshots.
+    name: Flex Snapshots
   - description: >-
       Returns, adds, and removes Global Cluster managed namespaces and custom
       zone mappings. Each collection in a Global Cluster is associated with a
@@ -2221,7 +2227,7 @@ paths:
       description: Returns the custom DNS configuration for AWS clusters in the
         specified project. To use this resource, the requesting API Key must
         have the Project Read Only role.
-      operationId: getAWSCustomDNS
+      operationId: getAwsCustomDns
       parameters:
         - $ref: "#/components/parameters/groupId"
       responses:
@@ -2244,7 +2250,7 @@ paths:
         in the specified project. Enable custom DNS if you use AWS VPC peering
         and use your own DNS servers. To use this resource, the requesting API
         Key must have the Project Atlas Admin role.
-      operationId: toggleAWSCustomDNS
+      operationId: toggleAwsCustomDns
       parameters:
         - $ref: "#/components/parameters/groupId"
       requestBody:
@@ -6798,7 +6804,7 @@ paths:
     post:
       description: Grants MongoDB employee cluster access for the given duration and
         at the specified level for one cluster.
-      operationId: grantMongoDBEmployeeAccess
+      operationId: grantMongoDbEmployeeAccess
       parameters:
         - $ref: "#/components/parameters/groupId"
         - description: Human-readable label that identifies this cluster.
@@ -6888,7 +6894,7 @@ paths:
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}:revokeMongoDBEmployeeAccess":
     post:
       description: Revokes a previously granted MongoDB employee cluster access.
-      operationId: revokeMongoDBEmployeeAccess
+      operationId: revokeMongoDbEmployeeAccess
       parameters:
         - $ref: "#/components/parameters/groupId"
         - description: Human-readable label that identifies this cluster.
@@ -8920,6 +8926,470 @@ paths:
       summary: Return One Event from One Project
       tags:
         - Events
+  "/api/atlas/v2/groups/{groupId}/flexClusters":
+    get:
+      description: Returns details for all flex clusters in the specified project. To
+        use this resource, the requesting API Key must have the Project Read
+        Only role.
+      operationId: listFlexClusters
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - $ref: "#/components/parameters/includeCount"
+        - $ref: "#/components/parameters/itemsPerPage"
+        - $ref: "#/components/parameters/pageNum"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-11-13+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedFlexClusters20241113"
+              x-xgen-version: 2024-11-13
+          description: OK
+        "409":
+          $ref: "#/components/responses/conflict"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return All Flex Clusters from One Project
+      tags:
+        - Flex Clusters
+    post:
+      description: Creates one flex cluster in the specified project. To use this
+        resource, the requesting API Key must have the Project Owner role.
+      operationId: createFlexCluster
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+      requestBody:
+        content:
+          application/vnd.atlas.2024-11-13+json:
+            schema:
+              $ref: "#/components/schemas/FlexClusterDescriptionCreate20241113"
+        description: Create One Flex Cluster in One Project.
+        required: true
+      responses:
+        "201":
+          content:
+            application/vnd.atlas.2024-11-13+json:
+              schema:
+                $ref: "#/components/schemas/FlexClusterDescription20241113"
+              x-xgen-version: 2024-11-13
+          description: Created
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "402":
+          $ref: "#/components/responses/paymentRequired"
+        "409":
+          $ref: "#/components/responses/conflict"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Create One Flex Cluster in One Project
+      tags:
+        - Flex Clusters
+  "/api/atlas/v2/groups/{groupId}/flexClusters/{name}":
+    delete:
+      description: Removes one flex cluster from the specified project. The flex
+        cluster must have termination protection disabled in order to be
+        deleted. To use this resource, the requesting API Key must have the
+        Project Owner role.
+      operationId: deleteFlexCluster
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Human-readable label that identifies the flex cluster.
+          in: path
+          name: name
+          required: true
+          schema:
+            type: string
+            maxLength: 64
+            minLength: 1
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+      responses:
+        "204":
+          content:
+            application/vnd.atlas.2024-11-13+json:
+              schema:
+                $ref: "#/components/schemas/NoBody"
+              x-xgen-version: 2024-11-13
+          description: This endpoint does not return a response body.
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Remove One Flex Cluster from One Project
+      tags:
+        - Flex Clusters
+    get:
+      description: Returns details for one flex cluster in the specified project. To
+        use this resource, the requesting API Key must have the Project Read
+        Only role.
+      operationId: getFlexCluster
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Human-readable label that identifies the flex cluster.
+          in: path
+          name: name
+          required: true
+          schema:
+            type: string
+            maxLength: 64
+            minLength: 1
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-11-13+json:
+              schema:
+                $ref: "#/components/schemas/FlexClusterDescription20241113"
+              x-xgen-version: 2024-11-13
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return One Flex Cluster from One Project
+      tags:
+        - Flex Clusters
+    patch:
+      description: Updates one flex cluster in the specified project. To use this
+        resource, the requesting API Key must have the Project Owner role.
+      operationId: updateFlexCluster
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Human-readable label that identifies the flex cluster.
+          in: path
+          name: name
+          required: true
+          schema:
+            type: string
+            maxLength: 64
+            minLength: 1
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+      requestBody:
+        content:
+          application/vnd.atlas.2024-11-13+json:
+            schema:
+              $ref: "#/components/schemas/FlexClusterDescriptionUpdate20241113"
+        description: Update One Flex Cluster in One Project.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-11-13+json:
+              schema:
+                $ref: "#/components/schemas/FlexClusterDescription20241113"
+              x-xgen-version: 2024-11-13
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "402":
+          $ref: "#/components/responses/paymentRequired"
+        "409":
+          $ref: "#/components/responses/conflict"
+      summary: Update One Flex Cluster in One Project
+      tags:
+        - Flex Clusters
+  "/api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/download":
+    post:
+      description: Requests one snapshot for the specified flex cluster. This resource
+        returns a `snapshotURL` that you can use to download the snapshot. This
+        `snapshotURL` remains active for four hours after you make the request.
+        To use this resource, the requesting API Key must have the Project Owner
+        role.
+      operationId: downloadFlexBackup
+      parameters:
+        - description: Human-readable label that identifies the flex cluster.
+          in: path
+          name: name
+          required: true
+          schema:
+            type: string
+            maxLength: 64
+            minLength: 1
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+        - $ref: "#/components/parameters/groupId"
+      requestBody:
+        content:
+          application/vnd.atlas.2024-11-13+json:
+            schema:
+              $ref: "#/components/schemas/FlexBackupSnapshotDownloadCreate20241113"
+        description: Snapshot to be downloaded.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-11-13+json:
+              schema:
+                $ref: "#/components/schemas/FlexBackupRestoreJob20241113"
+              x-xgen-version: 2024-11-13
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Download One Flex Cluster Snapshot
+      tags:
+        - Flex Snapshots
+  "/api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/restoreJobs":
+    get:
+      description: Returns all restore jobs for one flex cluster from the specified
+        project. To use this resource, the requesting API Key must have the
+        Project Owner role.
+      operationId: listFlexBackupRestoreJobs
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - $ref: "#/components/parameters/includeCount"
+        - $ref: "#/components/parameters/itemsPerPage"
+        - $ref: "#/components/parameters/pageNum"
+        - description: Human-readable label that identifies the flex cluster.
+          in: path
+          name: name
+          required: true
+          schema:
+            type: string
+            maxLength: 64
+            minLength: 1
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-11-13+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedApiAtlasFlexBackupRestoreJob20241113"
+              x-xgen-version: 2024-11-13
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return All Restore Jobs for One Flex Cluster
+      tags:
+        - Flex Restore Jobs
+    post:
+      description: Restores one snapshot of one flex cluster from the specified
+        project. To use this resource, the requesting API Key must have the
+        Project Owner role.
+      operationId: createFlexBackupRestoreJob
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Human-readable label that identifies the flex cluster whose
+            snapshot you want to restore.
+          in: path
+          name: name
+          required: true
+          schema:
+            type: string
+            maxLength: 64
+            minLength: 1
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+      requestBody:
+        content:
+          application/vnd.atlas.2024-11-13+json:
+            schema:
+              $ref: "#/components/schemas/FlexBackupRestoreJobCreate20241113"
+        description: Restores one snapshot of one flex cluster from the specified project.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-11-13+json:
+              schema:
+                $ref: "#/components/schemas/FlexBackupRestoreJob20241113"
+              x-xgen-version: 2024-11-13
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Restore One Snapshot of One Flex Cluster
+      tags:
+        - Flex Restore Jobs
+  "/api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/restoreJobs/{restoreJobId}":
+    get:
+      description: Returns one restore job for one flex cluster from the specified
+        project. To use this resource, the requesting API Key must have the
+        Project Owner role.
+      operationId: getFlexBackupRestoreJob
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Human-readable label that identifies the flex cluster.
+          in: path
+          name: name
+          required: true
+          schema:
+            type: string
+            maxLength: 64
+            minLength: 1
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+        - description: Unique 24-hexadecimal digit string that identifies the restore job
+            to return.
+          in: path
+          name: restoreJobId
+          required: true
+          schema:
+            type: string
+            maxLength: 24
+            minLength: 24
+            pattern: ^([a-f0-9]{24})$
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-11-13+json:
+              schema:
+                $ref: "#/components/schemas/FlexBackupRestoreJob20241113"
+              x-xgen-version: 2024-11-13
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return One Restore Job for One Flex Cluster
+      tags:
+        - Flex Restore Jobs
+  "/api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/snapshots":
+    get:
+      description: Returns all snapshots of one flex cluster from the specified
+        project. To use this resource, the requesting API Key must have the
+        Project Read Only role.
+      operationId: listFlexBackups
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - $ref: "#/components/parameters/includeCount"
+        - $ref: "#/components/parameters/itemsPerPage"
+        - $ref: "#/components/parameters/pageNum"
+        - description: Human-readable label that identifies the flex cluster.
+          in: path
+          name: name
+          required: true
+          schema:
+            type: string
+            maxLength: 64
+            minLength: 1
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-11-13+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedApiAtlasFlexBackupSnapshot20241113"
+              x-xgen-version: 2024-11-13
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return All Snapshots of One Flex Cluster
+      tags:
+        - Flex Snapshots
+  "/api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/snapshots/{snapshotId}":
+    get:
+      description: Returns one snapshot of one flex cluster from the specified
+        project. To use this resource, the requesting API Key must have the
+        Project Read Only role.
+      operationId: getFlexBackup
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Human-readable label that identifies the flex cluster.
+          in: path
+          name: name
+          required: true
+          schema:
+            type: string
+            maxLength: 64
+            minLength: 1
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+        - description: Unique 24-hexadecimal digit string that identifies the desired
+            snapshot.
+          in: path
+          name: snapshotId
+          required: true
+          schema:
+            type: string
+            example: 32b6e34b3d91647abb20e7b8
+            maxLength: 24
+            minLength: 24
+            pattern: ^([a-f0-9]{24})$
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-11-13+json:
+              schema:
+                $ref: "#/components/schemas/FlexBackupSnapshot20241113"
+              x-xgen-version: 2024-11-13
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return One Snapshot of One Flex Cluster
+      tags:
+        - Flex Snapshots
+  "/api/atlas/v2/groups/{groupId}/flexClusters:tenantUpgrade":
+    post:
+      description: Upgrades a flex cluster in the specified project. To use this
+        resource, the requesting API key must have the Project Cluster Manager
+        role.
+      operationId: upgradeFlexCluster
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+      requestBody:
+        content:
+          application/vnd.atlas.2024-11-13+json:
+            schema:
+              $ref: "#/components/schemas/FlexClusterDescription20241113"
+        description: Details of the flex cluster upgrade in the specified project.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-11-13+json:
+              schema:
+                $ref: "#/components/schemas/FlexClusterDescription20241113"
+              x-xgen-version: 2024-11-13
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "402":
+          $ref: "#/components/responses/paymentRequired"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "409":
+          $ref: "#/components/responses/conflict"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Upgrade One Flex Cluster
+      tags:
+        - Flex Clusters
   "/api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics":
     get:
       description: Returns all Atlas Search metric types available for one process in
@@ -9508,7 +9978,7 @@ paths:
     get:
       description: Returns all IP addresses for this project. To use this resource,
         the requesting API Key must have the Project Read Only role.
-      operationId: returnAllIPAddresses
+      operationId: returnAllIpAddresses
       parameters:
         - $ref: "#/components/parameters/groupId"
       responses:
@@ -10182,7 +10652,7 @@ paths:
     get:
       description: Returns the MongoDB Long Term Support Major Versions available to
         new clusters in this project.
-      operationId: getProjectLTSVersions
+      operationId: getProjectLtsVersions
       parameters:
         - $ref: "#/components/parameters/groupId"
         - description: Filter results to only one cloud provider.
@@ -13691,6 +14161,42 @@ paths:
       x-xgen-changelog:
         2023-09-11: The MongoDB Atlas Streams Processing API is now exposed as part of
           private preview, but is subject to change until GA.
+  "/api/atlas/v2/groups/{groupId}/streams/accountDetails":
+    get:
+      description: Returns the Account ID, and the VPC ID for the group and region
+        specified.
+      operationId: getAccountDetails
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: One of "aws", "azure" or "gcp".
+          in: query
+          name: cloudProvider
+          required: true
+          schema:
+            type: string
+        - description: The cloud provider specific region name, i.e. "US_EAST_1" for cloud
+            provider "aws".
+          in: query
+          name: regionName
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-11-13+json:
+              schema:
+                $ref: "#/components/schemas/AWSAccountDetails"
+              x-xgen-version: 2024-11-13
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Returns the Account ID, and the VPC ID for the group and region
+        specified.
+      tags:
+        - Streams
   "/api/atlas/v2/groups/{groupId}/streams/privateLinkConnections":
     get:
       description: Returns all Private Link connections for the specified project.To
@@ -13830,8 +14336,14 @@ paths:
   "/api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections":
     get:
       description: Returns a list of incoming VPC Peering Connections.
-      operationId: getVPCPeeringConnections
+      operationId: getVpcPeeringConnections
       parameters:
+        - description: The Account ID of the VPC Peering connection/s.
+          in: query
+          name: requesterAccountId
+          required: true
+          schema:
+            type: string
         - $ref: "#/components/parameters/groupId"
         - $ref: "#/components/parameters/itemsPerPage"
         - $ref: "#/components/parameters/pageNum"
@@ -13851,7 +14363,7 @@ paths:
   "/api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}":
     delete:
       description: Deletes an incoming VPC Peering connection.
-      operationId: deleteVPCPeeringConnection
+      operationId: deleteVpcPeeringConnection
       parameters:
         - $ref: "#/components/parameters/groupId"
         - description: The VPC Peering Connection id.
@@ -13882,7 +14394,7 @@ paths:
   "/api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}:accept":
     post:
       description: Requests the acceptance of an incoming VPC Peering connection.
-      operationId: acceptVPCPeeringConnection
+      operationId: acceptVpcPeeringConnection
       parameters:
         - $ref: "#/components/parameters/groupId"
         - description: The VPC Peering Connection id.
@@ -13921,7 +14433,7 @@ paths:
   "/api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}:reject":
     post:
       description: Requests the rejection of an incoming VPC Peering connection.
-      operationId: rejectVPCPeeringConnection
+      operationId: rejectVpcPeeringConnection
       parameters:
         - $ref: "#/components/parameters/groupId"
         - description: The VPC Peering Connection id.
@@ -14780,7 +15292,7 @@ paths:
       description: Returns the current LDAP configuration for the specified project.
         To use this resource, the requesting API Key must have the Project Owner
         role.
-      operationId: getLDAPConfiguration
+      operationId: getLdapConfiguration
       parameters:
         - $ref: "#/components/parameters/groupId"
       responses:
@@ -14805,7 +15317,7 @@ paths:
 
 
         Updating this configuration triggers a rolling restart of the database.
-      operationId: saveLDAPConfiguration
+      operationId: saveLdapConfiguration
       parameters:
         - $ref: "#/components/parameters/groupId"
       requestBody:
@@ -14863,7 +15375,7 @@ paths:
         ``userToDNMapping`` document from the LDAP configuration for the
         specified project. To use this resource, the requesting API Key must
         have the Project Owner role.
-      operationId: deleteLDAPConfiguration
+      operationId: deleteLdapConfiguration
       parameters:
         - $ref: "#/components/parameters/groupId"
       responses:
@@ -14885,7 +15397,7 @@ paths:
     post:
       description: Verifies the LDAP configuration for the specified project. To use
         this resource, the requesting API Key must have the Project Owner role.
-      operationId: verifyLDAPConfiguration
+      operationId: verifyLdapConfiguration
       parameters:
         - $ref: "#/components/parameters/groupId"
       requestBody:
@@ -14918,7 +15430,7 @@ paths:
       description: Returns the status of one request to verify one LDAP configuration
         for the specified project. To use this resource, the requesting API Key
         must have the Project Owner role.
-      operationId: getLDAPConfigurationStatus
+      operationId: getLdapConfigurationStatus
       parameters:
         - $ref: "#/components/parameters/groupId"
         - description: Unique string that identifies the request to verify an <abbr
@@ -15709,7 +16221,7 @@ paths:
         is finished and the data is ready to be viewed. If the data is not
         ready, a 'processing' response willindicate that another request should
         be sent later to view the data.
-      operationId: createCostExplorerQueryProcess_1
+      operationId: getCostExplorerQueryProcess
       parameters:
         - $ref: "#/components/parameters/orgId"
         - description: Unique 64 digit string that identifies the Cost Explorer query.
@@ -16333,7 +16845,7 @@ paths:
         linked invoice if you have the Organization Billing Admin or
         Organization Owner Role.
          To compute the total owed amount of the invoice - sum up total owed amount of each payment included into the invoice. To compute payment's owed amount - use formula *totalBilledCents* * *unitPrice* + *salesTax* - *startingBalanceCents*.
-      operationId: downloadInvoiceCSV
+      operationId: downloadInvoiceCsv
       parameters:
         - $ref: "#/components/parameters/orgId"
         - description: Unique 24-hexadecimal digit string that identifies the invoice
@@ -17503,7 +18015,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                $ref: "#/components/schemas/PaginatedApiAppUser"
+                $ref: "#/components/schemas/PaginatedAppUser"
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -17741,7 +18253,7 @@ paths:
   /api/atlas/v2/unauth/controlPlaneIPAddresses:
     get:
       description: Returns all control plane IP addresses.
-      operationId: returnAllControlPlaneIPAddresses
+      operationId: returnAllControlPlaneIpAddresses
       parameters: []
       responses:
         "200":
@@ -18187,6 +18699,26 @@ components:
             $ref: "#/components/schemas/ApiError"
       description: Unauthorized.
   schemas:
+    AWSAccountDetails:
+      type: object
+      properties:
+        awsAccountId:
+          type: string
+          description: The AWS Account ID.
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        vpcId:
+          type: string
+          description: The VPC ID.
     AWSKMSConfiguration:
       type: object
       description: Amazon Web Services (AWS) KMS configuration details and encryption
@@ -20194,6 +20726,10 @@ components:
           minLength: 24
           pattern: ^([a-f0-9]{24})$
           readOnly: true
+        clusterName:
+          type: string
+          description: Human-readable label that identifies the cluster.
+          readOnly: true
         complete:
           type: boolean
           description: Flag that indicates whether the snapshot exists. This flag returns
@@ -20271,6 +20807,11 @@ components:
           minLength: 24
           pattern: ^([a-f0-9]{24})$
           readOnly: true
+        completedTime:
+          type: string
+          format: date-time
+          description: Date and time when the snapshot completed.
+          readOnly: true
         compressionSetting:
           type: string
           description: Human-readable label that identifies the method of compression for
@@ -20286,10 +20827,22 @@ components:
           type: boolean
           description: Flag that indicates whether someone encrypted this snapshot.
           readOnly: true
+        fcv:
+          type: string
+          description: Number that indicates the feature compatibility version of MongoDB
+            that the replica set primary ran when MongoDB Cloud created the
+            snapshot.
+          readOnly: true
         fileSizeBytes:
           type: integer
           format: int64
           description: Number that indicates the total size of the data files in bytes.
+          readOnly: true
+        machineId:
+          type: string
+          description: Hostname and port that indicate the node on which MongoDB Cloud
+            created the snapshot.
+          pattern: ^([0-9]{1,3}\.){3}[0-9]{1,3}|([0-9a-f]{1,4}\:){7}([0-9a-f]{1,4})|(([a-z0-9]+\.){1,10}[a-z]+)?(\:[0-9]{4,5})$
           readOnly: true
         masterKeyUUID:
           type: string
@@ -20307,6 +20860,10 @@ components:
         replicaSetName:
           type: string
           description: Human-readable label that identifies the replica set.
+          readOnly: true
+        replicaState:
+          type: string
+          description: The node's role at the time when snapshot process began.
           readOnly: true
         storageSizeBytes:
           type: integer
@@ -22957,9 +23514,9 @@ components:
           type: string
           description: Cluster tier, with a default storage and memory capacity, that
             applies to all the data-bearing hosts in your cluster. You must set
-            **providerSettings.providerName** to `TENANT` and specify the cloud
+            **providerSettings.providerName** to `FLEX` and specify the cloud
             service provider in **providerSettings.backingProviderName**.
-          title: Tenant Instance Sizes
+          title: Flex Instance Sizes
         regionName:
           type: string
           description: Human-readable label that identifies the geographic location of
@@ -22969,7 +23526,6 @@ components:
             [AWS](https://docs.atlas.mongodb.com/reference/amazon-aws/#std-label-amazon-aws),
             [GCP](https://docs.atlas.mongodb.com/reference/google-gcp/), and
             [Azure](https://docs.atlas.mongodb.com/reference/microsoft-azure/).
-            For multi-region clusters, see **replicationSpec.{region}**.
         volumeType:
           type: string
           description: Disk Input/Output Operations per Second (IOPS) setting for Amazon
@@ -22993,8 +23549,8 @@ components:
           type: string
           description: Cloud service provider on which MongoDB Cloud provisioned the
             multi-tenant host. The resource returns this parameter when
-            **providerSettings.providerName** is `TENANT` and
-            **providerSetting.instanceSizeName** is `M0`, `M2` or `M5`.
+            **providerSettings.providerName** is `FLEX` and
+            **providerSetting.instanceSizeName** is `FLEX`.
       required:
         - providerName
       title: Cloud Service Provider Settings for a Cluster
@@ -26814,6 +27370,595 @@ components:
       required:
         - description
         - field
+    FlexBackupRestoreJob20241113:
+      type: object
+      description: Details for one restore job of a flex cluster.
+      properties:
+        deliveryType:
+          type: string
+          description: Means by which this resource returns the snapshot to the requesting
+            MongoDB Cloud user.
+          readOnly: true
+        expirationDate:
+          type: string
+          format: date-time
+          description: Date and time when the download link no longer works. This
+            parameter expresses its value in the ISO 8601 timestamp format in
+            UTC.
+          readOnly: true
+        id:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the restore job.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        instanceName:
+          type: string
+          description: Human-readable label that identifies the source instance.
+          maxLength: 64
+          minLength: 1
+          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          readOnly: true
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        projectId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the project from
+            which the restore job originated.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        restoreFinishedDate:
+          type: string
+          format: date-time
+          description: Date and time when MongoDB Cloud completed writing this snapshot.
+            MongoDB Cloud changes the status of the restore job to `CLOSED`.
+            This parameter expresses its value in the ISO 8601 timestamp format
+            in UTC.
+          readOnly: true
+        restoreScheduledDate:
+          type: string
+          format: date-time
+          description: Date and time when MongoDB Cloud will restore this snapshot. This
+            parameter expresses its value in the ISO 8601 timestamp format in
+            UTC.
+          readOnly: true
+        snapshotFinishedDate:
+          type: string
+          format: date-time
+          description: Date and time when MongoDB Cloud completed writing this snapshot.
+            This parameter expresses its value in the ISO 8601 timestamp format
+            in UTC.
+          readOnly: true
+        snapshotId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the snapshot to
+            restore.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        snapshotUrl:
+          type: string
+          description: 'Internet address from which you can download the compressed
+            snapshot files. The resource returns this parameter
+            when  `"deliveryType" : "DOWNLOAD"`.'
+          readOnly: true
+        status:
+          type: string
+          description: Phase of the restore workflow for this job at the time this
+            resource made this request.
+          readOnly: true
+        targetDeploymentItemName:
+          type: string
+          description: Human-readable label that identifies the instance or cluster on the
+            target project to which you want to restore the snapshot. You can
+            restore the snapshot to another flex or dedicated cluster tier.
+          maxLength: 64
+          minLength: 1
+          pattern: ^[\p{L}\p{N}\-_.(),:&@+']{1,64}$
+          readOnly: true
+        targetProjectId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the project that
+            contains the instance or cluster to which you want to restore the
+            snapshot.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+      title: Flex Backup Restore Job
+    FlexBackupRestoreJobCreate20241113:
+      type: object
+      description: Details to create one restore job of a flex cluster.
+      properties:
+        _snapshotId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the snapshot to
+            restore.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          writeOnly: true
+        _targetDeploymentItemName:
+          type: string
+          description: Human-readable label that identifies the instance or cluster on the
+            target project to which you want to restore the snapshot. You can
+            restore the snapshot to another flex cluster or dedicated cluster
+            tier.
+          maxLength: 64
+          minLength: 1
+          pattern: ^[\p{L}\p{N}\-_.(),:&@+']{1,64}$
+          writeOnly: true
+        _targetProjectId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the project that
+            contains the instance or cluster to which you want to restore the
+            snapshot.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          writeOnly: true
+        deliveryType:
+          type: string
+          description: Means by which this resource returns the snapshot to the requesting
+            MongoDB Cloud user.
+          readOnly: true
+        expirationDate:
+          type: string
+          format: date-time
+          description: Date and time when the download link no longer works. This
+            parameter expresses its value in the ISO 8601 timestamp format in
+            UTC.
+          readOnly: true
+        id:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the restore job.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        instanceName:
+          type: string
+          description: Human-readable label that identifies the source instance.
+          maxLength: 64
+          minLength: 1
+          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          readOnly: true
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        projectId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the project from
+            which the restore job originated.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        restoreFinishedDate:
+          type: string
+          format: date-time
+          description: Date and time when MongoDB Cloud completed writing this snapshot.
+            MongoDB Cloud changes the status of the restore job to `CLOSED`.
+            This parameter expresses its value in the ISO 8601 timestamp format
+            in UTC.
+          readOnly: true
+        restoreScheduledDate:
+          type: string
+          format: date-time
+          description: Date and time when MongoDB Cloud will restore this snapshot. This
+            parameter expresses its value in the ISO 8601 timestamp format in
+            UTC.
+          readOnly: true
+        snapshotFinishedDate:
+          type: string
+          format: date-time
+          description: Date and time when MongoDB Cloud completed writing this snapshot.
+            This parameter expresses its value in the ISO 8601 timestamp format
+            in UTC.
+          readOnly: true
+        snapshotUrl:
+          type: string
+          description: 'Internet address from which you can download the compressed
+            snapshot files. The resource returns this parameter
+            when  `"deliveryType" : "DOWNLOAD"`.'
+          readOnly: true
+        status:
+          type: string
+          description: Phase of the restore workflow for this job at the time this
+            resource made this request.
+          readOnly: true
+      required:
+        - _snapshotId
+        - _targetDeploymentItemName
+      title: Create Flex Backup Restore Job
+    FlexBackupSettings20241113:
+      type: object
+      description: Flex backup configuration
+      properties:
+        enabled:
+          type: boolean
+          default: true
+          description: Flag that indicates whether backups are performed for this flex
+            cluster. Backup uses flex cluster backups.
+          externalDocs:
+            description: Flex Cluster Backups
+            url: https://www.mongodb.com/docs/atlas/backup/cloud-backup/flex-cluster-backup/
+          readOnly: true
+      readOnly: true
+      title: Flex Backup Configuration
+    FlexBackupSnapshot20241113:
+      type: object
+      description: Details for one snapshot of a flex cluster.
+      properties:
+        expiration:
+          type: string
+          format: date-time
+          description: Date and time when the download link no longer works. This
+            parameter expresses its value in the ISO 8601 timestamp format in
+            UTC.
+          readOnly: true
+        finishTime:
+          type: string
+          format: date-time
+          description: Date and time when MongoDB Cloud completed writing this snapshot.
+            This parameter expresses its value in the ISO 8601 timestamp format
+            in UTC.
+          readOnly: true
+        id:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the snapshot.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        mongoDBVersion:
+          type: string
+          description: MongoDB host version that the snapshot runs.
+          readOnly: true
+        scheduledTime:
+          type: string
+          format: date-time
+          description: Date and time when MongoDB Cloud will take the snapshot. This
+            parameter expresses its value in the ISO 8601 timestamp format in
+            UTC.
+          readOnly: true
+        startTime:
+          type: string
+          format: date-time
+          description: Date and time when MongoDB Cloud began taking the snapshot. This
+            parameter expresses its value in the ISO 8601 timestamp format in
+            UTC.
+          readOnly: true
+        status:
+          type: string
+          description: Phase of the workflow for this snapshot at the time this resource
+            made this request.
+          readOnly: true
+      title: Flex Backup Snapshot
+    FlexBackupSnapshotDownloadCreate20241113:
+      type: object
+      description: Details for one backup snapshot download of a flex cluster.
+      properties:
+        _snapshotId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the snapshot to
+            download.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          writeOnly: true
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+      required:
+        - _snapshotId
+      title: Flex Backup Snapshot Download Create
+    FlexClusterDescription20241113:
+      type: object
+      description: Group of settings that configure a MongoDB Flex cluster.
+      properties:
+        backupSettings:
+          $ref: "#/components/schemas/FlexBackupSettings20241113"
+        clusterType:
+          type: string
+          description: Flex cluster topology.
+          readOnly: true
+        connectionStrings:
+          $ref: "#/components/schemas/FlexConnectionStrings20241113"
+        createDate:
+          type: string
+          format: date-time
+          description: Date and time when MongoDB Cloud created this instance. This
+            parameter expresses its value in ISO 8601 format in UTC.
+          readOnly: true
+        groupId:
+          type: string
+          description: Unique 24-hexadecimal character string that identifies the project.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        id:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the instance.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        mongoDBVersion:
+          type: string
+          description: Version of MongoDB that the instance runs.
+          pattern: ([\d]+\.[\d]+\.[\d]+)
+          readOnly: true
+        name:
+          type: string
+          description: Human-readable label that identifies the instance.
+          maxLength: 64
+          minLength: 1
+          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          readOnly: true
+        providerSettings:
+          $ref: "#/components/schemas/FlexProviderSettings20241113"
+        stateName:
+          type: string
+          description: Human-readable label that indicates the current operating condition
+            of this instance.
+          readOnly: true
+        tags:
+          type: array
+          description: List that contains key-value pairs between 1 to 255 characters in
+            length for tagging and categorizing the instance.
+          externalDocs:
+            description: Resource Tags
+            url: https://dochub.mongodb.org/core/add-cluster-tag-atlas
+          items:
+            $ref: "#/components/schemas/ResourceTag"
+        terminationProtectionEnabled:
+          type: boolean
+          default: false
+          description: Flag that indicates whether termination protection is enabled on
+            the cluster. If set to `true`, MongoDB Cloud won't delete the
+            cluster. If set to `false`, MongoDB Cloud will delete the cluster.
+        versionReleaseSystem:
+          type: string
+          default: LTS
+          description: Method by which the cluster maintains the MongoDB versions.
+          readOnly: true
+      required:
+        - providerSettings
+      title: Flex Cluster Description
+    FlexClusterDescriptionCreate20241113:
+      type: object
+      description: Settings that you can specify when you create a flex cluster.
+      properties:
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        name:
+          type: string
+          description: Human-readable label that identifies the instance.
+          maxLength: 64
+          minLength: 1
+          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          writeOnly: true
+        providerSettings:
+          $ref: "#/components/schemas/FlexProviderSettingsCreate20241113"
+        tags:
+          type: array
+          description: List that contains key-value pairs between 1 to 255 characters in
+            length for tagging and categorizing the instance.
+          externalDocs:
+            description: Resource Tags
+            url: https://dochub.mongodb.org/core/add-cluster-tag-atlas
+          items:
+            $ref: "#/components/schemas/ResourceTag"
+        terminationProtectionEnabled:
+          type: boolean
+          default: false
+          description: Flag that indicates whether termination protection is enabled on
+            the cluster. If set to `true`, MongoDB Cloud won't delete the
+            cluster. If set to `false`, MongoDB Cloud will delete the cluster.
+      required:
+        - name
+        - providerSettings
+      title: Flex Cluster Description Create
+    FlexClusterDescriptionUpdate20241113:
+      type: object
+      description: Settings that you can specify when you update a flex cluster.
+      properties:
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        tags:
+          type: array
+          description: List that contains key-value pairs between 1 to 255 characters in
+            length for tagging and categorizing the instance.
+          externalDocs:
+            description: Resource Tags
+            url: https://dochub.mongodb.org/core/add-cluster-tag-atlas
+          items:
+            $ref: "#/components/schemas/ResourceTag"
+        terminationProtectionEnabled:
+          type: boolean
+          default: false
+          description: Flag that indicates whether termination protection is enabled on
+            the cluster. If set to `true`, MongoDB Cloud won't delete the
+            cluster. If set to `false`, MongoDB Cloud will delete the cluster.
+      title: Flex Cluster Description Update
+    FlexConnectionStrings20241113:
+      type: object
+      description: Collection of Uniform Resource Locators that point to the MongoDB
+        database.
+      externalDocs:
+        description: Connection string URI format.
+        url: https://docs.mongodb.com/manual/reference/connection-string/
+      properties:
+        standard:
+          type: string
+          description: Public connection string that you can use to connect to this
+            cluster. This connection string uses the mongodb:// protocol.
+          externalDocs:
+            description: Connection String URI Format
+            url: https://docs.mongodb.com/manual/reference/connection-string/
+          readOnly: true
+        standardSrv:
+          type: string
+          description: Public connection string that you can use to connect to this flex
+            cluster. This connection string uses the `mongodb+srv://` protocol.
+          externalDocs:
+            description: Connection String URI Format
+            url: https://docs.mongodb.com/manual/reference/connection-string/
+          readOnly: true
+      readOnly: true
+      title: Flex Cluster Connection Strings
+    FlexProviderSettings20241113:
+      type: object
+      description: Group of cloud provider settings that configure the provisioned
+        MongoDB flex cluster.
+      properties:
+        backingProviderName:
+          type: string
+          description: Cloud service provider on which MongoDB Cloud provisioned the flex
+            cluster.
+          readOnly: true
+        diskSizeGB:
+          type: number
+          format: double
+          description: Storage capacity available to the flex cluster expressed in
+            gigabytes.
+          readOnly: true
+        providerName:
+          type: string
+          default: FLEX
+          description: Human-readable label that identifies the provider type.
+          readOnly: true
+        regionName:
+          type: string
+          description: Human-readable label that identifies the geographic location of
+            your MongoDB flex cluster. The region you choose can affect network
+            latency for clients accessing your databases. For a complete list of
+            region names, see
+            [AWS](https://docs.atlas.mongodb.com/reference/amazon-aws/#std-label-amazon-aws),
+            [GCP](https://docs.atlas.mongodb.com/reference/google-gcp/), and
+            [Azure](https://docs.atlas.mongodb.com/reference/microsoft-azure/).
+          readOnly: true
+      readOnly: true
+      title: Cloud Service Provider Settings for a Flex Cluster
+    FlexProviderSettingsCreate20241113:
+      type: object
+      description: Group of cloud provider settings that configure the provisioned
+        MongoDB flex cluster.
+      properties:
+        backingProviderName:
+          type: string
+          description: Cloud service provider on which MongoDB Cloud provisioned the flex
+            cluster.
+          writeOnly: true
+        diskSizeGB:
+          type: number
+          format: double
+          description: Storage capacity available to the flex cluster expressed in
+            gigabytes.
+          readOnly: true
+        providerName:
+          type: string
+          default: FLEX
+          description: Human-readable label that identifies the provider type.
+          readOnly: true
+        regionName:
+          type: string
+          description: Human-readable label that identifies the geographic location of
+            your MongoDB flex cluster. The region you choose can affect network
+            latency for clients accessing your databases. For a complete list of
+            region names, see
+            [AWS](https://docs.atlas.mongodb.com/reference/amazon-aws/#std-label-amazon-aws),
+            [GCP](https://docs.atlas.mongodb.com/reference/google-gcp/), and
+            [Azure](https://docs.atlas.mongodb.com/reference/microsoft-azure/).
+          writeOnly: true
+      required:
+        - backingProviderName
+        - regionName
+      title: Cloud Service Provider Settings for a Flex Cluster
+      writeOnly: true
     FreeComputeAutoScalingRules:
       type: object
       description: Collection of settings that configures how a cluster might scale
@@ -27023,6 +28168,7 @@ components:
             $ref: "#/components/schemas/ResourceTag"
         withDefaultAlertsSettings:
           type: boolean
+          default: true
           description: Flag that indicates whether to create the project with default
             alert settings.
           writeOnly: true
@@ -30472,6 +31618,34 @@ components:
             if `includeCount` is set to `false`.
           minimum: 0
           readOnly: true
+    PaginatedFlexClusters20241113:
+      type: object
+      properties:
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        results:
+          type: array
+          description: List of returned documents that MongoDB Cloud provides when
+            completing this request.
+          items:
+            $ref: "#/components/schemas/FlexClusterDescription20241113"
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
+          minimum: 0
+          readOnly: true
     PaginatedGroupServiceAccounts:
       type: object
       description: A list of Project Service Accounts.
@@ -32325,6 +33499,25 @@ components:
           $ref: "#/components/schemas/StreamsKafkaNetworking"
         security:
           $ref: "#/components/schemas/StreamsKafkaSecurity"
+        connectionTimeoutSec:
+          type: integer
+          format: int32
+          description: The amount of seconds to wait before timing out a connection.
+        headers:
+          type: object
+          additionalProperties:
+            type: string
+            description: A map of key-value pairs that will be passed as headers for the
+              request.
+          description: A map of key-value pairs that will be passed as headers for the
+            request.
+        requestTimeoutSec:
+          type: integer
+          format: int32
+          description: The amount of seconds to wait before timing out a request.
+        url:
+          type: string
+          description: The url to be used for the request.
       readOnly: true
     StreamsDLQ:
       type: object
@@ -32535,7 +33728,7 @@ components:
           description: The ID of the Private Link connection.
         dnsDomain:
           type: string
-          description: Domain name of Confluent cluster.
+          description: Domain name of Privatelink connected cluster.
         dnsSubDomain:
           type: array
           description: Sub-Domain name of Confluent cluster. These are typically your
@@ -32565,7 +33758,7 @@ components:
           description: Domain name of Confluent cluster.
         serviceEndpointId:
           type: string
-          description: AWS Service Endpoint ID.
+          description: Service Endpoint ID.
         state:
           type: string
           description: State the connection is in.
@@ -34957,6 +36150,62 @@ components:
             completing this request.
           items:
             $ref: "#/components/schemas/EARPrivateEndpoint"
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
+          minimum: 0
+          readOnly: true
+    PaginatedApiAtlasFlexBackupRestoreJob20241113:
+      type: object
+      properties:
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        results:
+          type: array
+          description: List of returned documents that MongoDB Cloud provides when
+            completing this request.
+          items:
+            $ref: "#/components/schemas/FlexBackupRestoreJob20241113"
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`.
+          minimum: 0
+          readOnly: true
+    PaginatedApiAtlasFlexBackupSnapshot20241113:
+      type: object
+      properties:
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        results:
+          type: array
+          description: List of returned documents that MongoDB Cloud provides when
+            completing this request.
+          items:
+            $ref: "#/components/schemas/FlexBackupSnapshot20241113"
           readOnly: true
         totalCount:
           type: integer

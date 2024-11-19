@@ -34,11 +34,8 @@
    * [OAuth Authentication](./doc_4_authentication.md#oauth-authentication)
       * [Authenticating with OAuth ClientID and ClientSecret](./doc_4_authentication.md#authenticating-with-oauth-clientid-and-clientsecret)
       * [Admin API Authentication using Service Accounts](./doc_4_authentication.md#admin-api-authentication-using-service-accounts)
-      * [Specifying a Token Cache](./doc_4_authentication.md#specifying-a-token-cache)
-   * [Advanced Use Cases](./doc_4_authentication.md#advanced-use-cases)
       * [Revocation](./doc_4_authentication.md#revocation)
-      * [Creating a Custom Transport](./doc_4_authentication.md#creating-a-custom-transport)
-      * [Overriding the User Agent](./doc_4_authentication.md#overriding-the-user-agent)
+      * [OAuth Token Cache](./doc_4_authentication.md#oauth-token-cache)
 
 * [Best Practices](./doc_5_best_practices.md#best-practices)
    * [Using Getters Instead of Direct Field Access](./doc_5_best_practices.md#using-getters-instead-of-direct-field-access)
