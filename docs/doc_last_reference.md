@@ -6,8 +6,8 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Class        | Method        | HTTP request  | Description   | 
 ------------ | ------------- | ------------- | ------------- |
-*AWSClustersDNSApi* | [GetAWSCustomDNS](./docs/AWSClustersDNSApi.md#getawscustomdns) | **Get** /api/atlas/v2/groups/{groupId}/awsCustomDNS | Return One Custom DNS Configuration for Atlas Clusters on AWS |
-*AWSClustersDNSApi* | [ToggleAWSCustomDNS](./docs/AWSClustersDNSApi.md#toggleawscustomdns) | **Patch** /api/atlas/v2/groups/{groupId}/awsCustomDNS | Toggle State of One Custom DNS Configuration for Atlas Clusters on AWS |
+*AWSClustersDNSApi* | [GetAwsCustomDns](./docs/AWSClustersDNSApi.md#getawscustomdns) | **Get** /api/atlas/v2/groups/{groupId}/awsCustomDNS | Return One Custom DNS Configuration for Atlas Clusters on AWS |
+*AWSClustersDNSApi* | [ToggleAwsCustomDns](./docs/AWSClustersDNSApi.md#toggleawscustomdns) | **Patch** /api/atlas/v2/groups/{groupId}/awsCustomDNS | Toggle State of One Custom DNS Configuration for Atlas Clusters on AWS |
 *AccessTrackingApi* | [ListAccessLogsByClusterName](./docs/AccessTrackingApi.md#listaccesslogsbyclustername) | **Get** /api/atlas/v2/groups/{groupId}/dbAccessHistory/clusters/{clusterName} | Return Database Access History for One Cluster using Its Cluster Name |
 *AccessTrackingApi* | [ListAccessLogsByHostname](./docs/AccessTrackingApi.md#listaccesslogsbyhostname) | **Get** /api/atlas/v2/groups/{groupId}/dbAccessHistory/processes/{hostname} | Return Database Access History for One Cluster using Its Hostname |
 *AlertConfigurationsApi* | [CreateAlertConfiguration](./docs/AlertConfigurationsApi.md#createalertconfiguration) | **Post** /api/atlas/v2/groups/{groupId}/alertConfigs | Create One Alert Configuration in One Project |
@@ -93,13 +93,13 @@ Class        | Method        | HTTP request  | Description   |
 *ClustersApi* | [GetClusterAdvancedConfiguration](./docs/ClustersApi.md#getclusteradvancedconfiguration) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/processArgs | Return One Advanced Configuration Options for One Cluster |
 *ClustersApi* | [GetClusterStatus](./docs/ClustersApi.md#getclusterstatus) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/status | Return Status of All Cluster Operations |
 *ClustersApi* | [GetSampleDatasetLoadStatus](./docs/ClustersApi.md#getsampledatasetloadstatus) | **Get** /api/atlas/v2/groups/{groupId}/sampleDatasetLoad/{sampleDatasetId} | Check Status of Cluster Sample Dataset Request |
-*ClustersApi* | [GrantMongoDBEmployeeAccess](./docs/ClustersApi.md#grantmongodbemployeeaccess) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}:grantMongoDBEmployeeAccess | Grant MongoDB employee cluster access for one cluster. |
+*ClustersApi* | [GrantMongoDbEmployeeAccess](./docs/ClustersApi.md#grantmongodbemployeeaccess) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}:grantMongoDBEmployeeAccess | Grant MongoDB employee cluster access for one cluster. |
 *ClustersApi* | [ListCloudProviderRegions](./docs/ClustersApi.md#listcloudproviderregions) | **Get** /api/atlas/v2/groups/{groupId}/clusters/provider/regions | Return All Cloud Provider Regions |
 *ClustersApi* | [ListClusters](./docs/ClustersApi.md#listclusters) | **Get** /api/atlas/v2/groups/{groupId}/clusters | Return All Clusters in One Project |
 *ClustersApi* | [ListClustersForAllProjects](./docs/ClustersApi.md#listclustersforallprojects) | **Get** /api/atlas/v2/clusters | Return All Authorized Clusters in All Projects |
 *ClustersApi* | [LoadSampleDataset](./docs/ClustersApi.md#loadsampledataset) | **Post** /api/atlas/v2/groups/{groupId}/sampleDatasetLoad/{name} | Load Sample Dataset Request into Cluster |
 *ClustersApi* | [PinFeatureCompatibilityVersion](./docs/ClustersApi.md#pinfeaturecompatibilityversion) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}:pinFeatureCompatibilityVersion | Pin FCV for One Cluster from One Project |
-*ClustersApi* | [RevokeMongoDBEmployeeAccess](./docs/ClustersApi.md#revokemongodbemployeeaccess) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}:revokeMongoDBEmployeeAccess | Revoke granted MongoDB employee cluster access for one cluster. |
+*ClustersApi* | [RevokeMongoDbEmployeeAccess](./docs/ClustersApi.md#revokemongodbemployeeaccess) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}:revokeMongoDBEmployeeAccess | Revoke granted MongoDB employee cluster access for one cluster. |
 *ClustersApi* | [TestFailover](./docs/ClustersApi.md#testfailover) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/restartPrimaries | Test Failover for One Cluster |
 *ClustersApi* | [UnpinFeatureCompatibilityVersion](./docs/ClustersApi.md#unpinfeaturecompatibilityversion) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}:unpinFeatureCompatibilityVersion | Unpins FCV for One Cluster from One Project |
 *ClustersApi* | [UpdateCluster](./docs/ClustersApi.md#updatecluster) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName} | Modify One Cluster from One Project |
@@ -181,23 +181,35 @@ Class        | Method        | HTTP request  | Description   |
 *FederatedAuthenticationApi* | [UpdateConnectedOrgConfig](./docs/FederatedAuthenticationApi.md#updateconnectedorgconfig) | **Patch** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId} | Update One Org Config Connected to One Federation |
 *FederatedAuthenticationApi* | [UpdateIdentityProvider](./docs/FederatedAuthenticationApi.md#updateidentityprovider) | **Patch** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId} | Update One Identity Provider |
 *FederatedAuthenticationApi* | [UpdateRoleMapping](./docs/FederatedAuthenticationApi.md#updaterolemapping) | **Put** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings/{id} | Update One Role Mapping in One Organization |
+*FlexClustersApi* | [CreateFlexCluster](./docs/FlexClustersApi.md#createflexcluster) | **Post** /api/atlas/v2/groups/{groupId}/flexClusters | Create One Flex Cluster in One Project |
+*FlexClustersApi* | [DeleteFlexCluster](./docs/FlexClustersApi.md#deleteflexcluster) | **Delete** /api/atlas/v2/groups/{groupId}/flexClusters/{name} | Remove One Flex Cluster from One Project |
+*FlexClustersApi* | [GetFlexCluster](./docs/FlexClustersApi.md#getflexcluster) | **Get** /api/atlas/v2/groups/{groupId}/flexClusters/{name} | Return One Flex Cluster from One Project |
+*FlexClustersApi* | [ListFlexClusters](./docs/FlexClustersApi.md#listflexclusters) | **Get** /api/atlas/v2/groups/{groupId}/flexClusters | Return All Flex Clusters from One Project |
+*FlexClustersApi* | [UpdateFlexCluster](./docs/FlexClustersApi.md#updateflexcluster) | **Patch** /api/atlas/v2/groups/{groupId}/flexClusters/{name} | Update One Flex Cluster in One Project |
+*FlexClustersApi* | [UpgradeFlexCluster](./docs/FlexClustersApi.md#upgradeflexcluster) | **Post** /api/atlas/v2/groups/{groupId}/flexClusters:tenantUpgrade | Upgrade One Flex Cluster |
+*FlexRestoreJobsApi* | [CreateFlexBackupRestoreJob](./docs/FlexRestoreJobsApi.md#createflexbackuprestorejob) | **Post** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/restoreJobs | Restore One Snapshot of One Flex Cluster |
+*FlexRestoreJobsApi* | [GetFlexBackupRestoreJob](./docs/FlexRestoreJobsApi.md#getflexbackuprestorejob) | **Get** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/restoreJobs/{restoreJobId} | Return One Restore Job for One Flex Cluster |
+*FlexRestoreJobsApi* | [ListFlexBackupRestoreJobs](./docs/FlexRestoreJobsApi.md#listflexbackuprestorejobs) | **Get** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/restoreJobs | Return All Restore Jobs for One Flex Cluster |
+*FlexSnapshotsApi* | [DownloadFlexBackup](./docs/FlexSnapshotsApi.md#downloadflexbackup) | **Post** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/download | Download One Flex Cluster Snapshot |
+*FlexSnapshotsApi* | [GetFlexBackup](./docs/FlexSnapshotsApi.md#getflexbackup) | **Get** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/snapshots/{snapshotId} | Return One Snapshot of One Flex Cluster |
+*FlexSnapshotsApi* | [ListFlexBackups](./docs/FlexSnapshotsApi.md#listflexbackups) | **Get** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/snapshots | Return All Snapshots of One Flex Cluster |
 *GlobalClustersApi* | [CreateCustomZoneMapping](./docs/GlobalClustersApi.md#createcustomzonemapping) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/customZoneMapping | Add One Entry to One Custom Zone Mapping |
 *GlobalClustersApi* | [CreateManagedNamespace](./docs/GlobalClustersApi.md#createmanagednamespace) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/managedNamespaces | Create One Managed Namespace in One Global Cluster |
 *GlobalClustersApi* | [DeleteAllCustomZoneMappings](./docs/GlobalClustersApi.md#deleteallcustomzonemappings) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/customZoneMapping | Remove All Custom Zone Mappings from One Global Cluster |
 *GlobalClustersApi* | [DeleteManagedNamespace](./docs/GlobalClustersApi.md#deletemanagednamespace) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/managedNamespaces | Remove One Managed Namespace from One Global Cluster |
 *GlobalClustersApi* | [GetManagedNamespace](./docs/GlobalClustersApi.md#getmanagednamespace) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites | Return One Managed Namespace in One Global Cluster |
 *InvoicesApi* | [CreateCostExplorerQueryProcess](./docs/InvoicesApi.md#createcostexplorerqueryprocess) | **Post** /api/atlas/v2/orgs/{orgId}/billing/costExplorer/usage | Create Cost Explorer query process |
-*InvoicesApi* | [CreateCostExplorerQueryProcess1](./docs/InvoicesApi.md#createcostexplorerqueryprocess1) | **Get** /api/atlas/v2/orgs/{orgId}/billing/costExplorer/usage/{token} | Return results from a given Cost Explorer query, or notify that the results are not ready yet. |
-*InvoicesApi* | [DownloadInvoiceCSV](./docs/InvoicesApi.md#downloadinvoicecsv) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/csv | Return One Organization Invoice as CSV |
+*InvoicesApi* | [DownloadInvoiceCsv](./docs/InvoicesApi.md#downloadinvoicecsv) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/csv | Return One Organization Invoice as CSV |
+*InvoicesApi* | [GetCostExplorerQueryProcess](./docs/InvoicesApi.md#getcostexplorerqueryprocess) | **Get** /api/atlas/v2/orgs/{orgId}/billing/costExplorer/usage/{token} | Return results from a given Cost Explorer query, or notify that the results are not ready yet. |
 *InvoicesApi* | [GetInvoice](./docs/InvoicesApi.md#getinvoice) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId} | Return One Organization Invoice |
 *InvoicesApi* | [ListInvoices](./docs/InvoicesApi.md#listinvoices) | **Get** /api/atlas/v2/orgs/{orgId}/invoices | Return All Invoices for One Organization |
 *InvoicesApi* | [ListPendingInvoices](./docs/InvoicesApi.md#listpendinginvoices) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/pending | Return All Pending Invoices for One Organization |
 *InvoicesApi* | [QueryLineItemsFromSingleInvoice](./docs/InvoicesApi.md#querylineitemsfromsingleinvoice) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/lineItems:search | Query lineItems of the specified invoiceId |
-*LDAPConfigurationApi* | [DeleteLDAPConfiguration](./docs/LDAPConfigurationApi.md#deleteldapconfiguration) | **Delete** /api/atlas/v2/groups/{groupId}/userSecurity/ldap/userToDNMapping | Remove the Current LDAP User to DN Mapping |
-*LDAPConfigurationApi* | [GetLDAPConfiguration](./docs/LDAPConfigurationApi.md#getldapconfiguration) | **Get** /api/atlas/v2/groups/{groupId}/userSecurity | Return the Current LDAP or X.509 Configuration |
-*LDAPConfigurationApi* | [GetLDAPConfigurationStatus](./docs/LDAPConfigurationApi.md#getldapconfigurationstatus) | **Get** /api/atlas/v2/groups/{groupId}/userSecurity/ldap/verify/{requestId} | Return the Status of One Verify LDAP Configuration Request |
-*LDAPConfigurationApi* | [SaveLDAPConfiguration](./docs/LDAPConfigurationApi.md#saveldapconfiguration) | **Patch** /api/atlas/v2/groups/{groupId}/userSecurity | Edit the LDAP or X.509 Configuration |
-*LDAPConfigurationApi* | [VerifyLDAPConfiguration](./docs/LDAPConfigurationApi.md#verifyldapconfiguration) | **Post** /api/atlas/v2/groups/{groupId}/userSecurity/ldap/verify | Verify the LDAP Configuration in One Project |
+*LDAPConfigurationApi* | [DeleteLdapConfiguration](./docs/LDAPConfigurationApi.md#deleteldapconfiguration) | **Delete** /api/atlas/v2/groups/{groupId}/userSecurity/ldap/userToDNMapping | Remove the Current LDAP User to DN Mapping |
+*LDAPConfigurationApi* | [GetLdapConfiguration](./docs/LDAPConfigurationApi.md#getldapconfiguration) | **Get** /api/atlas/v2/groups/{groupId}/userSecurity | Return the Current LDAP or X.509 Configuration |
+*LDAPConfigurationApi* | [GetLdapConfigurationStatus](./docs/LDAPConfigurationApi.md#getldapconfigurationstatus) | **Get** /api/atlas/v2/groups/{groupId}/userSecurity/ldap/verify/{requestId} | Return the Status of One Verify LDAP Configuration Request |
+*LDAPConfigurationApi* | [SaveLdapConfiguration](./docs/LDAPConfigurationApi.md#saveldapconfiguration) | **Patch** /api/atlas/v2/groups/{groupId}/userSecurity | Edit the LDAP or X.509 Configuration |
+*LDAPConfigurationApi* | [VerifyLdapConfiguration](./docs/LDAPConfigurationApi.md#verifyldapconfiguration) | **Post** /api/atlas/v2/groups/{groupId}/userSecurity/ldap/verify | Verify the LDAP Configuration in One Project |
 *LegacyBackupApi* | [CreateLegacyBackupRestoreJob](./docs/LegacyBackupApi.md#createlegacybackuprestorejob) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/restoreJobs | Create One Legacy Backup Restore Job |
 *LegacyBackupApi* | [DeleteLegacySnapshot](./docs/LegacyBackupApi.md#deletelegacysnapshot) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/snapshots/{snapshotId} | Remove One Legacy Backup Snapshot |
 *LegacyBackupApi* | [GetLegacyBackupCheckpoint](./docs/LegacyBackupApi.md#getlegacybackupcheckpoint) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backupCheckpoints/{checkpointId} | Return One Legacy Backup Checkpoint |
@@ -312,8 +324,8 @@ Class        | Method        | HTTP request  | Description   |
 *ProjectsApi* | [GetProject](./docs/ProjectsApi.md#getproject) | **Get** /api/atlas/v2/groups/{groupId} | Return One Project |
 *ProjectsApi* | [GetProjectByName](./docs/ProjectsApi.md#getprojectbyname) | **Get** /api/atlas/v2/groups/byName/{groupName} | Return One Project using Its Name |
 *ProjectsApi* | [GetProjectInvitation](./docs/ProjectsApi.md#getprojectinvitation) | **Get** /api/atlas/v2/groups/{groupId}/invites/{invitationId} | Return One Project Invitation |
-*ProjectsApi* | [GetProjectLTSVersions](./docs/ProjectsApi.md#getprojectltsversions) | **Get** /api/atlas/v2/groups/{groupId}/mongoDBVersions | Return Available MongoDB LTS Versions for clusters in One Project |
 *ProjectsApi* | [GetProjectLimit](./docs/ProjectsApi.md#getprojectlimit) | **Get** /api/atlas/v2/groups/{groupId}/limits/{limitName} | Return One Limit for One Project |
+*ProjectsApi* | [GetProjectLtsVersions](./docs/ProjectsApi.md#getprojectltsversions) | **Get** /api/atlas/v2/groups/{groupId}/mongoDBVersions | Return Available MongoDB LTS Versions for clusters in One Project |
 *ProjectsApi* | [GetProjectSettings](./docs/ProjectsApi.md#getprojectsettings) | **Get** /api/atlas/v2/groups/{groupId}/settings | Return One Project Settings |
 *ProjectsApi* | [ListProjectInvitations](./docs/ProjectsApi.md#listprojectinvitations) | **Get** /api/atlas/v2/groups/{groupId}/invites | Return All Project Invitations |
 *ProjectsApi* | [ListProjectLimits](./docs/ProjectsApi.md#listprojectlimits) | **Get** /api/atlas/v2/groups/{groupId}/limits | Return All Limits for One Project |
@@ -321,7 +333,7 @@ Class        | Method        | HTTP request  | Description   |
 *ProjectsApi* | [ListProjects](./docs/ProjectsApi.md#listprojects) | **Get** /api/atlas/v2/groups | Return All Projects |
 *ProjectsApi* | [MigrateProjectToAnotherOrg](./docs/ProjectsApi.md#migrateprojecttoanotherorg) | **Post** /api/atlas/v2/groups/{groupId}:migrate | Migrate One Project to Another Organization |
 *ProjectsApi* | [RemoveProjectUser](./docs/ProjectsApi.md#removeprojectuser) | **Delete** /api/atlas/v2/groups/{groupId}/users/{userId} | Remove One User from One Project |
-*ProjectsApi* | [ReturnAllIPAddresses](./docs/ProjectsApi.md#returnallipaddresses) | **Get** /api/atlas/v2/groups/{groupId}/ipAddresses | Return All IP Addresses for One Project |
+*ProjectsApi* | [ReturnAllIpAddresses](./docs/ProjectsApi.md#returnallipaddresses) | **Get** /api/atlas/v2/groups/{groupId}/ipAddresses | Return All IP Addresses for One Project |
 *ProjectsApi* | [SetProjectLimit](./docs/ProjectsApi.md#setprojectlimit) | **Patch** /api/atlas/v2/groups/{groupId}/limits/{limitName} | Set One Project Limit |
 *ProjectsApi* | [UpdateProject](./docs/ProjectsApi.md#updateproject) | **Patch** /api/atlas/v2/groups/{groupId} | Update One Project |
 *ProjectsApi* | [UpdateProjectInvitation](./docs/ProjectsApi.md#updateprojectinvitation) | **Patch** /api/atlas/v2/groups/{groupId}/invites | Update One Project Invitation |
@@ -341,7 +353,7 @@ Class        | Method        | HTTP request  | Description   |
 *ResourcePoliciesApi* | [ValidateAtlasResourcePolicy](./docs/ResourcePoliciesApi.md#validateatlasresourcepolicy) | **Post** /api/atlas/v2/orgs/{orgId}/resourcePolicies:validate | Validate one Atlas Resource Policy |
 *RollingIndexApi* | [CreateRollingIndex](./docs/RollingIndexApi.md#createrollingindex) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/index | Create One Rolling Index |
 *RootApi* | [GetSystemStatus](./docs/RootApi.md#getsystemstatus) | **Get** /api/atlas/v2 | Return the status of this MongoDB application |
-*RootApi* | [ReturnAllControlPlaneIPAddresses](./docs/RootApi.md#returnallcontrolplaneipaddresses) | **Get** /api/atlas/v2/unauth/controlPlaneIPAddresses | Return All Control Plane IP Addresses |
+*RootApi* | [ReturnAllControlPlaneIpAddresses](./docs/RootApi.md#returnallcontrolplaneipaddresses) | **Get** /api/atlas/v2/unauth/controlPlaneIPAddresses | Return All Control Plane IP Addresses |
 *ServerlessInstancesApi* | [CreateServerlessInstance](./docs/ServerlessInstancesApi.md#createserverlessinstance) | **Post** /api/atlas/v2/groups/{groupId}/serverless | Create One Serverless Instance in One Project |
 *ServerlessInstancesApi* | [DeleteServerlessInstance](./docs/ServerlessInstancesApi.md#deleteserverlessinstance) | **Delete** /api/atlas/v2/groups/{groupId}/serverless/{name} | Remove One Serverless Instance from One Project |
 *ServerlessInstancesApi* | [GetServerlessInstance](./docs/ServerlessInstancesApi.md#getserverlessinstance) | **Get** /api/atlas/v2/groups/{groupId}/serverless/{name} | Return One Serverless Instance from One Project |
@@ -380,7 +392,7 @@ Class        | Method        | HTTP request  | Description   |
 *SharedTierSnapshotsApi* | [DownloadSharedClusterBackup](./docs/SharedTierSnapshotsApi.md#downloadsharedclusterbackup) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/download | Download One M2 or M5 Cluster Snapshot |
 *SharedTierSnapshotsApi* | [GetSharedClusterBackup](./docs/SharedTierSnapshotsApi.md#getsharedclusterbackup) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/snapshots/{snapshotId} | Return One Snapshot for One M2 or M5 Cluster |
 *SharedTierSnapshotsApi* | [ListSharedClusterBackups](./docs/SharedTierSnapshotsApi.md#listsharedclusterbackups) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/snapshots | Return All Snapshots for One M2 or M5 Cluster |
-*StreamsApi* | [AcceptVPCPeeringConnection](./docs/StreamsApi.md#acceptvpcpeeringconnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}:accept | Requests the acceptance of an incoming VPC Peering connection. |
+*StreamsApi* | [AcceptVpcPeeringConnection](./docs/StreamsApi.md#acceptvpcpeeringconnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}:accept | Requests the acceptance of an incoming VPC Peering connection. |
 *StreamsApi* | [CreatePrivateLinkConnection](./docs/StreamsApi.md#createprivatelinkconnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/privateLinkConnections | Create One Private Link connection |
 *StreamsApi* | [CreateStreamConnection](./docs/StreamsApi.md#createstreamconnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections | Create One Connection |
 *StreamsApi* | [CreateStreamInstance](./docs/StreamsApi.md#createstreaminstance) | **Post** /api/atlas/v2/groups/{groupId}/streams | Create One Stream Instance |
@@ -390,18 +402,19 @@ Class        | Method        | HTTP request  | Description   |
 *StreamsApi* | [DeleteStreamConnection](./docs/StreamsApi.md#deletestreamconnection) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName} | Delete One Stream Connection |
 *StreamsApi* | [DeleteStreamInstance](./docs/StreamsApi.md#deletestreaminstance) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Delete One Stream Instance |
 *StreamsApi* | [DeleteStreamProcessor](./docs/StreamsApi.md#deletestreamprocessor) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName} | Delete One Stream Processor |
-*StreamsApi* | [DeleteVPCPeeringConnection](./docs/StreamsApi.md#deletevpcpeeringconnection) | **Delete** /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id} | Deletes an incoming VPC Peering connection. |
+*StreamsApi* | [DeleteVpcPeeringConnection](./docs/StreamsApi.md#deletevpcpeeringconnection) | **Delete** /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id} | Deletes an incoming VPC Peering connection. |
 *StreamsApi* | [DownloadStreamTenantAuditLogs](./docs/StreamsApi.md#downloadstreamtenantauditlogs) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/auditLogs | Download Audit Logs for One Atlas Stream Processing Instance |
+*StreamsApi* | [GetAccountDetails](./docs/StreamsApi.md#getaccountdetails) | **Get** /api/atlas/v2/groups/{groupId}/streams/accountDetails | Returns the Account ID, and the VPC ID for the group and region specified. |
 *StreamsApi* | [GetPrivateLinkConnection](./docs/StreamsApi.md#getprivatelinkconnection) | **Get** /api/atlas/v2/groups/{groupId}/streams/privateLinkConnections/{connectionId} | Return One PrivateLink Connection |
 *StreamsApi* | [GetStreamConnection](./docs/StreamsApi.md#getstreamconnection) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName} | Return One Stream Connection |
 *StreamsApi* | [GetStreamInstance](./docs/StreamsApi.md#getstreaminstance) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Return One Stream Instance |
 *StreamsApi* | [GetStreamProcessor](./docs/StreamsApi.md#getstreamprocessor) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName} | Get One Stream Processor |
-*StreamsApi* | [GetVPCPeeringConnections](./docs/StreamsApi.md#getvpcpeeringconnections) | **Get** /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections | Return All VPC Peering Connections. |
+*StreamsApi* | [GetVpcPeeringConnections](./docs/StreamsApi.md#getvpcpeeringconnections) | **Get** /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections | Return All VPC Peering Connections. |
 *StreamsApi* | [ListPrivateLinkConnections](./docs/StreamsApi.md#listprivatelinkconnections) | **Get** /api/atlas/v2/groups/{groupId}/streams/privateLinkConnections | Return All Private Link |
 *StreamsApi* | [ListStreamConnections](./docs/StreamsApi.md#liststreamconnections) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections | Return All Connections Of The Stream Instances |
 *StreamsApi* | [ListStreamInstances](./docs/StreamsApi.md#liststreaminstances) | **Get** /api/atlas/v2/groups/{groupId}/streams | Return All Project Stream Instances |
 *StreamsApi* | [ListStreamProcessors](./docs/StreamsApi.md#liststreamprocessors) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processors | Return All Stream Processors In The Stream Instance. |
-*StreamsApi* | [RejectVPCPeeringConnection](./docs/StreamsApi.md#rejectvpcpeeringconnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}:reject | Requests the rejection of an incoming VPC Peering connection. |
+*StreamsApi* | [RejectVpcPeeringConnection](./docs/StreamsApi.md#rejectvpcpeeringconnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}:reject | Requests the rejection of an incoming VPC Peering connection. |
 *StreamsApi* | [StartStreamProcessor](./docs/StreamsApi.md#startstreamprocessor) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:start | Start One Stream Processor |
 *StreamsApi* | [StopStreamProcessor](./docs/StreamsApi.md#stopstreamprocessor) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:stop | Stop One Stream Processor |
 *StreamsApi* | [UpdateStreamConnection](./docs/StreamsApi.md#updatestreamconnection) | **Patch** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName} | Update One Stream Connection |
@@ -431,6 +444,7 @@ Class        | Method        | HTTP request  | Description   |
 
 ## Documentation For Models
 
+ - [AWSAccountDetails](./docs/AWSAccountDetails.md)
  - [AWSCustomDNSEnabled](./docs/AWSCustomDNSEnabled.md)
  - [AWSKMSConfiguration](./docs/AWSKMSConfiguration.md)
  - [AccessListItem](./docs/AccessListItem.md)
@@ -617,6 +631,17 @@ Class        | Method        | HTTP request  | Description   |
  - [FederationOidcIdentityProviderUpdate](./docs/FederationOidcIdentityProviderUpdate.md)
  - [FieldTransformation](./docs/FieldTransformation.md)
  - [FieldViolation](./docs/FieldViolation.md)
+ - [FlexBackupRestoreJob20241113](./docs/FlexBackupRestoreJob20241113.md)
+ - [FlexBackupRestoreJobCreate20241113](./docs/FlexBackupRestoreJobCreate20241113.md)
+ - [FlexBackupSettings20241113](./docs/FlexBackupSettings20241113.md)
+ - [FlexBackupSnapshot20241113](./docs/FlexBackupSnapshot20241113.md)
+ - [FlexBackupSnapshotDownloadCreate20241113](./docs/FlexBackupSnapshotDownloadCreate20241113.md)
+ - [FlexClusterDescription20241113](./docs/FlexClusterDescription20241113.md)
+ - [FlexClusterDescriptionCreate20241113](./docs/FlexClusterDescriptionCreate20241113.md)
+ - [FlexClusterDescriptionUpdate20241113](./docs/FlexClusterDescriptionUpdate20241113.md)
+ - [FlexConnectionStrings20241113](./docs/FlexConnectionStrings20241113.md)
+ - [FlexProviderSettings20241113](./docs/FlexProviderSettings20241113.md)
+ - [FlexProviderSettingsCreate20241113](./docs/FlexProviderSettingsCreate20241113.md)
  - [FreeComputeAutoScalingRules](./docs/FreeComputeAutoScalingRules.md)
  - [GCPConsumerForwardingRule](./docs/GCPConsumerForwardingRule.md)
  - [GeoSharding20240805](./docs/GeoSharding20240805.md)
@@ -700,6 +725,8 @@ Class        | Method        | HTTP request  | Description   |
  - [PaginatedApiAtlasDatabaseUser](./docs/PaginatedApiAtlasDatabaseUser.md)
  - [PaginatedApiAtlasDiskBackupExportJob](./docs/PaginatedApiAtlasDiskBackupExportJob.md)
  - [PaginatedApiAtlasEARPrivateEndpoint](./docs/PaginatedApiAtlasEARPrivateEndpoint.md)
+ - [PaginatedApiAtlasFlexBackupRestoreJob20241113](./docs/PaginatedApiAtlasFlexBackupRestoreJob20241113.md)
+ - [PaginatedApiAtlasFlexBackupSnapshot20241113](./docs/PaginatedApiAtlasFlexBackupSnapshot20241113.md)
  - [PaginatedApiAtlasProviderRegions](./docs/PaginatedApiAtlasProviderRegions.md)
  - [PaginatedApiAtlasServerlessBackupRestoreJob](./docs/PaginatedApiAtlasServerlessBackupRestoreJob.md)
  - [PaginatedApiAtlasServerlessBackupSnapshot](./docs/PaginatedApiAtlasServerlessBackupSnapshot.md)
@@ -726,6 +753,7 @@ Class        | Method        | HTTP request  | Description   |
  - [PaginatedDiskPartition](./docs/PaginatedDiskPartition.md)
  - [PaginatedEventTypeDetailsResponse](./docs/PaginatedEventTypeDetailsResponse.md)
  - [PaginatedFederationIdentityProvider](./docs/PaginatedFederationIdentityProvider.md)
+ - [PaginatedFlexClusters20241113](./docs/PaginatedFlexClusters20241113.md)
  - [PaginatedGroupServiceAccounts](./docs/PaginatedGroupServiceAccounts.md)
  - [PaginatedHostViewAtlas](./docs/PaginatedHostViewAtlas.md)
  - [PaginatedIntegration](./docs/PaginatedIntegration.md)

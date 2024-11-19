@@ -4,7 +4,7 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AcceptVPCPeeringConnection**](StreamsApi.md#AcceptVPCPeeringConnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}:accept | Requests the acceptance of an incoming VPC Peering connection.
+[**AcceptVpcPeeringConnection**](StreamsApi.md#AcceptVpcPeeringConnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}:accept | Requests the acceptance of an incoming VPC Peering connection.
 [**CreatePrivateLinkConnection**](StreamsApi.md#CreatePrivateLinkConnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/privateLinkConnections | Create One Private Link connection
 [**CreateStreamConnection**](StreamsApi.md#CreateStreamConnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections | Create One Connection
 [**CreateStreamInstance**](StreamsApi.md#CreateStreamInstance) | **Post** /api/atlas/v2/groups/{groupId}/streams | Create One Stream Instance
@@ -14,18 +14,19 @@ Method | HTTP request | Description
 [**DeleteStreamConnection**](StreamsApi.md#DeleteStreamConnection) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName} | Delete One Stream Connection
 [**DeleteStreamInstance**](StreamsApi.md#DeleteStreamInstance) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Delete One Stream Instance
 [**DeleteStreamProcessor**](StreamsApi.md#DeleteStreamProcessor) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName} | Delete One Stream Processor
-[**DeleteVPCPeeringConnection**](StreamsApi.md#DeleteVPCPeeringConnection) | **Delete** /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id} | Deletes an incoming VPC Peering connection.
+[**DeleteVpcPeeringConnection**](StreamsApi.md#DeleteVpcPeeringConnection) | **Delete** /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id} | Deletes an incoming VPC Peering connection.
 [**DownloadStreamTenantAuditLogs**](StreamsApi.md#DownloadStreamTenantAuditLogs) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/auditLogs | Download Audit Logs for One Atlas Stream Processing Instance
+[**GetAccountDetails**](StreamsApi.md#GetAccountDetails) | **Get** /api/atlas/v2/groups/{groupId}/streams/accountDetails | Returns the Account ID, and the VPC ID for the group and region specified.
 [**GetPrivateLinkConnection**](StreamsApi.md#GetPrivateLinkConnection) | **Get** /api/atlas/v2/groups/{groupId}/streams/privateLinkConnections/{connectionId} | Return One PrivateLink Connection
 [**GetStreamConnection**](StreamsApi.md#GetStreamConnection) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName} | Return One Stream Connection
 [**GetStreamInstance**](StreamsApi.md#GetStreamInstance) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Return One Stream Instance
 [**GetStreamProcessor**](StreamsApi.md#GetStreamProcessor) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName} | Get One Stream Processor
-[**GetVPCPeeringConnections**](StreamsApi.md#GetVPCPeeringConnections) | **Get** /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections | Return All VPC Peering Connections.
+[**GetVpcPeeringConnections**](StreamsApi.md#GetVpcPeeringConnections) | **Get** /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections | Return All VPC Peering Connections.
 [**ListPrivateLinkConnections**](StreamsApi.md#ListPrivateLinkConnections) | **Get** /api/atlas/v2/groups/{groupId}/streams/privateLinkConnections | Return All Private Link
 [**ListStreamConnections**](StreamsApi.md#ListStreamConnections) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections | Return All Connections Of The Stream Instances
 [**ListStreamInstances**](StreamsApi.md#ListStreamInstances) | **Get** /api/atlas/v2/groups/{groupId}/streams | Return All Project Stream Instances
 [**ListStreamProcessors**](StreamsApi.md#ListStreamProcessors) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processors | Return All Stream Processors In The Stream Instance.
-[**RejectVPCPeeringConnection**](StreamsApi.md#RejectVPCPeeringConnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}:reject | Requests the rejection of an incoming VPC Peering connection.
+[**RejectVpcPeeringConnection**](StreamsApi.md#RejectVpcPeeringConnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}:reject | Requests the rejection of an incoming VPC Peering connection.
 [**StartStreamProcessor**](StreamsApi.md#StartStreamProcessor) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:start | Start One Stream Processor
 [**StopStreamProcessor**](StreamsApi.md#StopStreamProcessor) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:stop | Stop One Stream Processor
 [**UpdateStreamConnection**](StreamsApi.md#UpdateStreamConnection) | **Patch** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName} | Update One Stream Connection
@@ -33,9 +34,9 @@ Method | HTTP request | Description
 
 
 
-## AcceptVPCPeeringConnection
+## AcceptVpcPeeringConnection
 
-> any AcceptVPCPeeringConnection(ctx, groupId, id, vPCPeeringActionChallenge VPCPeeringActionChallenge).Execute()
+> any AcceptVpcPeeringConnection(ctx, groupId, id, vPCPeeringActionChallenge VPCPeeringActionChallenge).Execute()
 
 Requests the acceptance of an incoming VPC Peering connection.
 
@@ -50,7 +51,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023002/admin"
+    "go.mongodb.org/atlas-sdk/v20241113001/admin"
 )
 
 func main() {
@@ -67,17 +68,17 @@ func main() {
     id := "id_example" // string | 
     vPCPeeringActionChallenge := *openapiclient.NewVPCPeeringActionChallenge() // VPCPeeringActionChallenge | 
 
-    resp, r, err := sdk.StreamsApi.AcceptVPCPeeringConnection(context.Background(), groupId, id, &vPCPeeringActionChallenge).Execute()
+    resp, r, err := sdk.StreamsApi.AcceptVpcPeeringConnection(context.Background(), groupId, id, &vPCPeeringActionChallenge).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.AcceptVPCPeeringConnection`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.AcceptVpcPeeringConnection`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `AcceptVPCPeeringConnection`: any
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.AcceptVPCPeeringConnection`: %v (%v)\n", resp, r)
+    // response from `AcceptVpcPeeringConnection`: any
+    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.AcceptVpcPeeringConnection`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -92,7 +93,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiAcceptVPCPeeringConnectionRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiAcceptVpcPeeringConnectionRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -135,7 +136,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023002/admin"
+    "go.mongodb.org/atlas-sdk/v20241113001/admin"
 )
 
 func main() {
@@ -217,7 +218,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023002/admin"
+    "go.mongodb.org/atlas-sdk/v20241113001/admin"
 )
 
 func main() {
@@ -302,7 +303,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023002/admin"
+    "go.mongodb.org/atlas-sdk/v20241113001/admin"
 )
 
 func main() {
@@ -384,7 +385,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023002/admin"
+    "go.mongodb.org/atlas-sdk/v20241113001/admin"
 )
 
 func main() {
@@ -466,7 +467,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023002/admin"
+    "go.mongodb.org/atlas-sdk/v20241113001/admin"
 )
 
 func main() {
@@ -551,7 +552,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023002/admin"
+    "go.mongodb.org/atlas-sdk/v20241113001/admin"
 )
 
 func main() {
@@ -634,7 +635,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023002/admin"
+    "go.mongodb.org/atlas-sdk/v20241113001/admin"
 )
 
 func main() {
@@ -720,7 +721,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023002/admin"
+    "go.mongodb.org/atlas-sdk/v20241113001/admin"
 )
 
 func main() {
@@ -803,7 +804,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023002/admin"
+    "go.mongodb.org/atlas-sdk/v20241113001/admin"
 )
 
 func main() {
@@ -870,9 +871,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteVPCPeeringConnection
+## DeleteVpcPeeringConnection
 
-> any DeleteVPCPeeringConnection(ctx, groupId, id).Execute()
+> any DeleteVpcPeeringConnection(ctx, groupId, id).Execute()
 
 Deletes an incoming VPC Peering connection.
 
@@ -887,7 +888,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023002/admin"
+    "go.mongodb.org/atlas-sdk/v20241113001/admin"
 )
 
 func main() {
@@ -903,17 +904,17 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     id := "id_example" // string | 
 
-    resp, r, err := sdk.StreamsApi.DeleteVPCPeeringConnection(context.Background(), groupId, id).Execute()
+    resp, r, err := sdk.StreamsApi.DeleteVpcPeeringConnection(context.Background(), groupId, id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.DeleteVPCPeeringConnection`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.DeleteVpcPeeringConnection`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `DeleteVPCPeeringConnection`: any
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.DeleteVPCPeeringConnection`: %v (%v)\n", resp, r)
+    // response from `DeleteVpcPeeringConnection`: any
+    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.DeleteVpcPeeringConnection`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -928,7 +929,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDeleteVPCPeeringConnectionRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteVpcPeeringConnectionRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -970,7 +971,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023002/admin"
+    "go.mongodb.org/atlas-sdk/v20241113001/admin"
 )
 
 func main() {
@@ -1040,6 +1041,90 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## GetAccountDetails
+
+> AWSAccountDetails GetAccountDetails(ctx, groupId).CloudProvider(cloudProvider).RegionName(regionName).Execute()
+
+Returns the Account ID, and the VPC ID for the group and region specified.
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20241113001/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    cloudProvider := "cloudProvider_example" // string | 
+    regionName := "regionName_example" // string | 
+
+    resp, r, err := sdk.StreamsApi.GetAccountDetails(context.Background(), groupId).CloudProvider(cloudProvider).RegionName(regionName).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.GetAccountDetails`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `GetAccountDetails`: AWSAccountDetails
+    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.GetAccountDetails`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetAccountDetailsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **cloudProvider** | **string** | One of \&quot;aws\&quot;, \&quot;azure\&quot; or \&quot;gcp\&quot;. | 
+ **regionName** | **string** | The cloud provider specific region name, i.e. \&quot;US_EAST_1\&quot; for cloud provider \&quot;aws\&quot;. | 
+
+### Return type
+
+[**AWSAccountDetails**](AWSAccountDetails.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2024-11-13+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetPrivateLinkConnection
 
 > StreamsPrivateLinkConnection GetPrivateLinkConnection(ctx, groupId, connectionId).Execute()
@@ -1057,7 +1142,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023002/admin"
+    "go.mongodb.org/atlas-sdk/v20241113001/admin"
 )
 
 func main() {
@@ -1140,7 +1225,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023002/admin"
+    "go.mongodb.org/atlas-sdk/v20241113001/admin"
 )
 
 func main() {
@@ -1226,7 +1311,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023002/admin"
+    "go.mongodb.org/atlas-sdk/v20241113001/admin"
 )
 
 func main() {
@@ -1311,7 +1396,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023002/admin"
+    "go.mongodb.org/atlas-sdk/v20241113001/admin"
 )
 
 func main() {
@@ -1380,9 +1465,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetVPCPeeringConnections
+## GetVpcPeeringConnections
 
-> GetVPCPeeringConnections(ctx, groupId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+> GetVpcPeeringConnections(ctx, groupId).RequesterAccountId(requesterAccountId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
 Return All VPC Peering Connections.
 
@@ -1397,7 +1482,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023002/admin"
+    "go.mongodb.org/atlas-sdk/v20241113001/admin"
 )
 
 func main() {
@@ -1410,13 +1495,14 @@ func main() {
         return
     }
 
+    requesterAccountId := "requesterAccountId_example" // string | 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     itemsPerPage := int(100) // int |  (optional) (default to 100)
     pageNum := int(1) // int |  (optional) (default to 1)
 
-    r, err := sdk.StreamsApi.GetVPCPeeringConnections(context.Background(), groupId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    r, err := sdk.StreamsApi.GetVpcPeeringConnections(context.Background(), groupId).RequesterAccountId(requesterAccountId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.GetVPCPeeringConnections`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.GetVpcPeeringConnections`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
@@ -1436,11 +1522,12 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetVPCPeeringConnectionsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetVpcPeeringConnectionsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **requesterAccountId** | **string** | The Account ID of the VPC Peering connection/s. | 
 
  **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
  **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
@@ -1479,7 +1566,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023002/admin"
+    "go.mongodb.org/atlas-sdk/v20241113001/admin"
 )
 
 func main() {
@@ -1563,7 +1650,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023002/admin"
+    "go.mongodb.org/atlas-sdk/v20241113001/admin"
 )
 
 func main() {
@@ -1650,7 +1737,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023002/admin"
+    "go.mongodb.org/atlas-sdk/v20241113001/admin"
 )
 
 func main() {
@@ -1734,7 +1821,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023002/admin"
+    "go.mongodb.org/atlas-sdk/v20241113001/admin"
 )
 
 func main() {
@@ -1806,9 +1893,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## RejectVPCPeeringConnection
+## RejectVpcPeeringConnection
 
-> any RejectVPCPeeringConnection(ctx, groupId, id).Execute()
+> any RejectVpcPeeringConnection(ctx, groupId, id).Execute()
 
 Requests the rejection of an incoming VPC Peering connection.
 
@@ -1823,7 +1910,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023002/admin"
+    "go.mongodb.org/atlas-sdk/v20241113001/admin"
 )
 
 func main() {
@@ -1839,17 +1926,17 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     id := "id_example" // string | 
 
-    resp, r, err := sdk.StreamsApi.RejectVPCPeeringConnection(context.Background(), groupId, id).Execute()
+    resp, r, err := sdk.StreamsApi.RejectVpcPeeringConnection(context.Background(), groupId, id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.RejectVPCPeeringConnection`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.RejectVpcPeeringConnection`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `RejectVPCPeeringConnection`: any
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.RejectVPCPeeringConnection`: %v (%v)\n", resp, r)
+    // response from `RejectVpcPeeringConnection`: any
+    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.RejectVpcPeeringConnection`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1864,7 +1951,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiRejectVPCPeeringConnectionRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiRejectVpcPeeringConnectionRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -1906,7 +1993,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023002/admin"
+    "go.mongodb.org/atlas-sdk/v20241113001/admin"
 )
 
 func main() {
@@ -1992,7 +2079,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023002/admin"
+    "go.mongodb.org/atlas-sdk/v20241113001/admin"
 )
 
 func main() {
@@ -2078,7 +2165,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023002/admin"
+    "go.mongodb.org/atlas-sdk/v20241113001/admin"
 )
 
 func main() {
@@ -2166,7 +2253,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023002/admin"
+    "go.mongodb.org/atlas-sdk/v20241113001/admin"
 )
 
 func main() {

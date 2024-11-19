@@ -13,99 +13,99 @@ import (
 type AWSClustersDNSApi interface {
 
 	/*
-		GetAWSCustomDNS Return One Custom DNS Configuration for Atlas Clusters on AWS
+		GetAwsCustomDns Return One Custom DNS Configuration for Atlas Clusters on AWS
 
 		Returns the custom DNS configuration for AWS clusters in the specified project. To use this resource, the requesting API Key must have the Project Read Only role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@return GetAWSCustomDNSApiRequest
+		@return GetAwsCustomDnsApiRequest
 	*/
-	GetAWSCustomDNS(ctx context.Context, groupId string) GetAWSCustomDNSApiRequest
+	GetAwsCustomDns(ctx context.Context, groupId string) GetAwsCustomDnsApiRequest
 	/*
-		GetAWSCustomDNS Return One Custom DNS Configuration for Atlas Clusters on AWS
+		GetAwsCustomDns Return One Custom DNS Configuration for Atlas Clusters on AWS
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param GetAWSCustomDNSApiParams - Parameters for the request
-		@return GetAWSCustomDNSApiRequest
+		@param GetAwsCustomDnsApiParams - Parameters for the request
+		@return GetAwsCustomDnsApiRequest
 	*/
-	GetAWSCustomDNSWithParams(ctx context.Context, args *GetAWSCustomDNSApiParams) GetAWSCustomDNSApiRequest
+	GetAwsCustomDnsWithParams(ctx context.Context, args *GetAwsCustomDnsApiParams) GetAwsCustomDnsApiRequest
 
 	// Method available only for mocking purposes
-	GetAWSCustomDNSExecute(r GetAWSCustomDNSApiRequest) (*AWSCustomDNSEnabled, *http.Response, error)
+	GetAwsCustomDnsExecute(r GetAwsCustomDnsApiRequest) (*AWSCustomDNSEnabled, *http.Response, error)
 
 	/*
-		ToggleAWSCustomDNS Toggle State of One Custom DNS Configuration for Atlas Clusters on AWS
+		ToggleAwsCustomDns Toggle State of One Custom DNS Configuration for Atlas Clusters on AWS
 
 		Enables or disables the custom DNS configuration for AWS clusters in the specified project. Enable custom DNS if you use AWS VPC peering and use your own DNS servers. To use this resource, the requesting API Key must have the Project Atlas Admin role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param aWSCustomDNSEnabled Enables or disables the custom DNS configuration for AWS clusters in the specified project.
-		@return ToggleAWSCustomDNSApiRequest
+		@return ToggleAwsCustomDnsApiRequest
 	*/
-	ToggleAWSCustomDNS(ctx context.Context, groupId string, aWSCustomDNSEnabled *AWSCustomDNSEnabled) ToggleAWSCustomDNSApiRequest
+	ToggleAwsCustomDns(ctx context.Context, groupId string, aWSCustomDNSEnabled *AWSCustomDNSEnabled) ToggleAwsCustomDnsApiRequest
 	/*
-		ToggleAWSCustomDNS Toggle State of One Custom DNS Configuration for Atlas Clusters on AWS
+		ToggleAwsCustomDns Toggle State of One Custom DNS Configuration for Atlas Clusters on AWS
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param ToggleAWSCustomDNSApiParams - Parameters for the request
-		@return ToggleAWSCustomDNSApiRequest
+		@param ToggleAwsCustomDnsApiParams - Parameters for the request
+		@return ToggleAwsCustomDnsApiRequest
 	*/
-	ToggleAWSCustomDNSWithParams(ctx context.Context, args *ToggleAWSCustomDNSApiParams) ToggleAWSCustomDNSApiRequest
+	ToggleAwsCustomDnsWithParams(ctx context.Context, args *ToggleAwsCustomDnsApiParams) ToggleAwsCustomDnsApiRequest
 
 	// Method available only for mocking purposes
-	ToggleAWSCustomDNSExecute(r ToggleAWSCustomDNSApiRequest) (*AWSCustomDNSEnabled, *http.Response, error)
+	ToggleAwsCustomDnsExecute(r ToggleAwsCustomDnsApiRequest) (*AWSCustomDNSEnabled, *http.Response, error)
 }
 
 // AWSClustersDNSApiService AWSClustersDNSApi service
 type AWSClustersDNSApiService service
 
-type GetAWSCustomDNSApiRequest struct {
+type GetAwsCustomDnsApiRequest struct {
 	ctx        context.Context
 	ApiService AWSClustersDNSApi
 	groupId    string
 }
 
-type GetAWSCustomDNSApiParams struct {
+type GetAwsCustomDnsApiParams struct {
 	GroupId string
 }
 
-func (a *AWSClustersDNSApiService) GetAWSCustomDNSWithParams(ctx context.Context, args *GetAWSCustomDNSApiParams) GetAWSCustomDNSApiRequest {
-	return GetAWSCustomDNSApiRequest{
+func (a *AWSClustersDNSApiService) GetAwsCustomDnsWithParams(ctx context.Context, args *GetAwsCustomDnsApiParams) GetAwsCustomDnsApiRequest {
+	return GetAwsCustomDnsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    args.GroupId,
 	}
 }
 
-func (r GetAWSCustomDNSApiRequest) Execute() (*AWSCustomDNSEnabled, *http.Response, error) {
-	return r.ApiService.GetAWSCustomDNSExecute(r)
+func (r GetAwsCustomDnsApiRequest) Execute() (*AWSCustomDNSEnabled, *http.Response, error) {
+	return r.ApiService.GetAwsCustomDnsExecute(r)
 }
 
 /*
-GetAWSCustomDNS Return One Custom DNS Configuration for Atlas Clusters on AWS
+GetAwsCustomDns Return One Custom DNS Configuration for Atlas Clusters on AWS
 
 Returns the custom DNS configuration for AWS clusters in the specified project. To use this resource, the requesting API Key must have the Project Read Only role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return GetAWSCustomDNSApiRequest
+	@return GetAwsCustomDnsApiRequest
 */
-func (a *AWSClustersDNSApiService) GetAWSCustomDNS(ctx context.Context, groupId string) GetAWSCustomDNSApiRequest {
-	return GetAWSCustomDNSApiRequest{
+func (a *AWSClustersDNSApiService) GetAwsCustomDns(ctx context.Context, groupId string) GetAwsCustomDnsApiRequest {
+	return GetAwsCustomDnsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    groupId,
 	}
 }
 
-// GetAWSCustomDNSExecute executes the request
+// GetAwsCustomDnsExecute executes the request
 //
 //	@return AWSCustomDNSEnabled
-func (a *AWSClustersDNSApiService) GetAWSCustomDNSExecute(r GetAWSCustomDNSApiRequest) (*AWSCustomDNSEnabled, *http.Response, error) {
+func (a *AWSClustersDNSApiService) GetAwsCustomDnsExecute(r GetAwsCustomDnsApiRequest) (*AWSCustomDNSEnabled, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -113,7 +113,7 @@ func (a *AWSClustersDNSApiService) GetAWSCustomDNSExecute(r GetAWSCustomDNSApiRe
 		localVarReturnValue *AWSCustomDNSEnabled
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AWSClustersDNSApiService.GetAWSCustomDNS")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AWSClustersDNSApiService.GetAwsCustomDns")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -174,20 +174,20 @@ func (a *AWSClustersDNSApiService) GetAWSCustomDNSExecute(r GetAWSCustomDNSApiRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ToggleAWSCustomDNSApiRequest struct {
+type ToggleAwsCustomDnsApiRequest struct {
 	ctx                 context.Context
 	ApiService          AWSClustersDNSApi
 	groupId             string
 	aWSCustomDNSEnabled *AWSCustomDNSEnabled
 }
 
-type ToggleAWSCustomDNSApiParams struct {
+type ToggleAwsCustomDnsApiParams struct {
 	GroupId             string
 	AWSCustomDNSEnabled *AWSCustomDNSEnabled
 }
 
-func (a *AWSClustersDNSApiService) ToggleAWSCustomDNSWithParams(ctx context.Context, args *ToggleAWSCustomDNSApiParams) ToggleAWSCustomDNSApiRequest {
-	return ToggleAWSCustomDNSApiRequest{
+func (a *AWSClustersDNSApiService) ToggleAwsCustomDnsWithParams(ctx context.Context, args *ToggleAwsCustomDnsApiParams) ToggleAwsCustomDnsApiRequest {
+	return ToggleAwsCustomDnsApiRequest{
 		ApiService:          a,
 		ctx:                 ctx,
 		groupId:             args.GroupId,
@@ -195,21 +195,21 @@ func (a *AWSClustersDNSApiService) ToggleAWSCustomDNSWithParams(ctx context.Cont
 	}
 }
 
-func (r ToggleAWSCustomDNSApiRequest) Execute() (*AWSCustomDNSEnabled, *http.Response, error) {
-	return r.ApiService.ToggleAWSCustomDNSExecute(r)
+func (r ToggleAwsCustomDnsApiRequest) Execute() (*AWSCustomDNSEnabled, *http.Response, error) {
+	return r.ApiService.ToggleAwsCustomDnsExecute(r)
 }
 
 /*
-ToggleAWSCustomDNS Toggle State of One Custom DNS Configuration for Atlas Clusters on AWS
+ToggleAwsCustomDns Toggle State of One Custom DNS Configuration for Atlas Clusters on AWS
 
 Enables or disables the custom DNS configuration for AWS clusters in the specified project. Enable custom DNS if you use AWS VPC peering and use your own DNS servers. To use this resource, the requesting API Key must have the Project Atlas Admin role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return ToggleAWSCustomDNSApiRequest
+	@return ToggleAwsCustomDnsApiRequest
 */
-func (a *AWSClustersDNSApiService) ToggleAWSCustomDNS(ctx context.Context, groupId string, aWSCustomDNSEnabled *AWSCustomDNSEnabled) ToggleAWSCustomDNSApiRequest {
-	return ToggleAWSCustomDNSApiRequest{
+func (a *AWSClustersDNSApiService) ToggleAwsCustomDns(ctx context.Context, groupId string, aWSCustomDNSEnabled *AWSCustomDNSEnabled) ToggleAwsCustomDnsApiRequest {
+	return ToggleAwsCustomDnsApiRequest{
 		ApiService:          a,
 		ctx:                 ctx,
 		groupId:             groupId,
@@ -217,10 +217,10 @@ func (a *AWSClustersDNSApiService) ToggleAWSCustomDNS(ctx context.Context, group
 	}
 }
 
-// ToggleAWSCustomDNSExecute executes the request
+// ToggleAwsCustomDnsExecute executes the request
 //
 //	@return AWSCustomDNSEnabled
-func (a *AWSClustersDNSApiService) ToggleAWSCustomDNSExecute(r ToggleAWSCustomDNSApiRequest) (*AWSCustomDNSEnabled, *http.Response, error) {
+func (a *AWSClustersDNSApiService) ToggleAwsCustomDnsExecute(r ToggleAwsCustomDnsApiRequest) (*AWSCustomDNSEnabled, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -228,7 +228,7 @@ func (a *AWSClustersDNSApiService) ToggleAWSCustomDNSExecute(r ToggleAWSCustomDN
 		localVarReturnValue *AWSCustomDNSEnabled
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AWSClustersDNSApiService.ToggleAWSCustomDNS")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AWSClustersDNSApiService.ToggleAwsCustomDns")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

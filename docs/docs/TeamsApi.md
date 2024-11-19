@@ -37,7 +37,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023002/admin"
+    "go.mongodb.org/atlas-sdk/v20241113001/admin"
 )
 
 func main() {
@@ -119,7 +119,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023002/admin"
+    "go.mongodb.org/atlas-sdk/v20241113001/admin"
 )
 
 func main() {
@@ -204,7 +204,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023002/admin"
+    "go.mongodb.org/atlas-sdk/v20241113001/admin"
 )
 
 func main() {
@@ -286,7 +286,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023002/admin"
+    "go.mongodb.org/atlas-sdk/v20241113001/admin"
 )
 
 func main() {
@@ -369,7 +369,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023002/admin"
+    "go.mongodb.org/atlas-sdk/v20241113001/admin"
 )
 
 func main() {
@@ -452,7 +452,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023002/admin"
+    "go.mongodb.org/atlas-sdk/v20241113001/admin"
 )
 
 func main() {
@@ -535,7 +535,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023002/admin"
+    "go.mongodb.org/atlas-sdk/v20241113001/admin"
 )
 
 func main() {
@@ -621,7 +621,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023002/admin"
+    "go.mongodb.org/atlas-sdk/v20241113001/admin"
 )
 
 func main() {
@@ -692,7 +692,7 @@ Name | Type | Description  | Notes
 
 ## ListTeamUsers
 
-> PaginatedApiAppUser ListTeamUsers(ctx, orgId, teamId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+> PaginatedAppUser ListTeamUsers(ctx, orgId, teamId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
 Return All MongoDB Cloud Users Assigned to One Team
 
@@ -707,7 +707,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023002/admin"
+    "go.mongodb.org/atlas-sdk/v20241113001/admin"
 )
 
 func main() {
@@ -734,7 +734,7 @@ func main() {
         }
         return
     }
-    // response from `ListTeamUsers`: PaginatedApiAppUser
+    // response from `ListTeamUsers`: PaginatedAppUser
     fmt.Fprintf(os.Stdout, "Response from `TeamsApi.ListTeamUsers`: %v (%v)\n", resp, r)
 }
 ```
@@ -762,7 +762,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PaginatedApiAppUser**](PaginatedApiAppUser.md)
+[**PaginatedAppUser**](PaginatedAppUser.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -794,7 +794,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023002/admin"
+    "go.mongodb.org/atlas-sdk/v20241113001/admin"
 )
 
 func main() {
@@ -875,7 +875,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023002/admin"
+    "go.mongodb.org/atlas-sdk/v20241113001/admin"
 )
 
 func main() {
@@ -959,7 +959,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023002/admin"
+    "go.mongodb.org/atlas-sdk/v20241113001/admin"
 )
 
 func main() {
@@ -1044,7 +1044,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241023002/admin"
+    "go.mongodb.org/atlas-sdk/v20241113001/admin"
 )
 
 func main() {

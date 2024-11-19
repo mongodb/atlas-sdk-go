@@ -5,13 +5,17 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ClusterId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the cluster with the snapshots you want to return. | [optional] [readonly] 
+**CompletedTime** | Pointer to **time.Time** | Date and time when the snapshot completed. | [optional] [readonly] 
 **CompressionSetting** | Pointer to **string** | Human-readable label that identifies the method of compression for the snapshot. | [optional] [readonly] 
 **DataSizeBytes** | Pointer to **int64** | Total size of the data stored on each node in the cluster. This parameter expresses its value in bytes. | [optional] [readonly] 
 **EncryptionEnabled** | Pointer to **bool** | Flag that indicates whether someone encrypted this snapshot. | [optional] [readonly] 
+**Fcv** | Pointer to **string** | Number that indicates the feature compatibility version of MongoDB that the replica set primary ran when MongoDB Cloud created the snapshot. | [optional] [readonly] 
 **FileSizeBytes** | Pointer to **int64** | Number that indicates the total size of the data files in bytes. | [optional] [readonly] 
+**MachineId** | Pointer to **string** | Hostname and port that indicate the node on which MongoDB Cloud created the snapshot. | [optional] [readonly] 
 **MasterKeyUUID** | Pointer to **string** | Unique string that identifies the Key Management Interoperability (KMIP) master key used to encrypt the snapshot data. The resource returns this parameter when &#x60;\&quot;parts.encryptionEnabled\&quot; : true&#x60;. | [optional] [readonly] 
 **MongodVersion** | Pointer to **string** | Number that indicates the version of MongoDB that the replica set primary ran when MongoDB Cloud created the snapshot. | [optional] [readonly] 
 **ReplicaSetName** | Pointer to **string** | Human-readable label that identifies the replica set. | [optional] [readonly] 
+**ReplicaState** | Pointer to **string** | The node&#39;s role at the time when snapshot process began. | [optional] [readonly] 
 **StorageSizeBytes** | Pointer to **int64** | Number that indicates the total size of space allocated for document storage. | [optional] [readonly] 
 **TypeName** | Pointer to **string** | Human-readable label that identifies the type of server from which MongoDB Cloud took this snapshot. | [optional] [readonly] 
 
@@ -58,6 +62,30 @@ SetClusterId sets ClusterId field to given value.
 `func (o *BackupSnapshotPart) HasClusterId() bool`
 
 HasClusterId returns a boolean if a field has been set.
+### GetCompletedTime
+
+`func (o *BackupSnapshotPart) GetCompletedTime() time.Time`
+
+GetCompletedTime returns the CompletedTime field if non-nil, zero value otherwise.
+
+### GetCompletedTimeOk
+
+`func (o *BackupSnapshotPart) GetCompletedTimeOk() (*time.Time, bool)`
+
+GetCompletedTimeOk returns a tuple with the CompletedTime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCompletedTime
+
+`func (o *BackupSnapshotPart) SetCompletedTime(v time.Time)`
+
+SetCompletedTime sets CompletedTime field to given value.
+
+### HasCompletedTime
+
+`func (o *BackupSnapshotPart) HasCompletedTime() bool`
+
+HasCompletedTime returns a boolean if a field has been set.
 ### GetCompressionSetting
 
 `func (o *BackupSnapshotPart) GetCompressionSetting() string`
@@ -130,6 +158,30 @@ SetEncryptionEnabled sets EncryptionEnabled field to given value.
 `func (o *BackupSnapshotPart) HasEncryptionEnabled() bool`
 
 HasEncryptionEnabled returns a boolean if a field has been set.
+### GetFcv
+
+`func (o *BackupSnapshotPart) GetFcv() string`
+
+GetFcv returns the Fcv field if non-nil, zero value otherwise.
+
+### GetFcvOk
+
+`func (o *BackupSnapshotPart) GetFcvOk() (*string, bool)`
+
+GetFcvOk returns a tuple with the Fcv field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFcv
+
+`func (o *BackupSnapshotPart) SetFcv(v string)`
+
+SetFcv sets Fcv field to given value.
+
+### HasFcv
+
+`func (o *BackupSnapshotPart) HasFcv() bool`
+
+HasFcv returns a boolean if a field has been set.
 ### GetFileSizeBytes
 
 `func (o *BackupSnapshotPart) GetFileSizeBytes() int64`
@@ -154,6 +206,30 @@ SetFileSizeBytes sets FileSizeBytes field to given value.
 `func (o *BackupSnapshotPart) HasFileSizeBytes() bool`
 
 HasFileSizeBytes returns a boolean if a field has been set.
+### GetMachineId
+
+`func (o *BackupSnapshotPart) GetMachineId() string`
+
+GetMachineId returns the MachineId field if non-nil, zero value otherwise.
+
+### GetMachineIdOk
+
+`func (o *BackupSnapshotPart) GetMachineIdOk() (*string, bool)`
+
+GetMachineIdOk returns a tuple with the MachineId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMachineId
+
+`func (o *BackupSnapshotPart) SetMachineId(v string)`
+
+SetMachineId sets MachineId field to given value.
+
+### HasMachineId
+
+`func (o *BackupSnapshotPart) HasMachineId() bool`
+
+HasMachineId returns a boolean if a field has been set.
 ### GetMasterKeyUUID
 
 `func (o *BackupSnapshotPart) GetMasterKeyUUID() string`
@@ -226,6 +302,30 @@ SetReplicaSetName sets ReplicaSetName field to given value.
 `func (o *BackupSnapshotPart) HasReplicaSetName() bool`
 
 HasReplicaSetName returns a boolean if a field has been set.
+### GetReplicaState
+
+`func (o *BackupSnapshotPart) GetReplicaState() string`
+
+GetReplicaState returns the ReplicaState field if non-nil, zero value otherwise.
+
+### GetReplicaStateOk
+
+`func (o *BackupSnapshotPart) GetReplicaStateOk() (*string, bool)`
+
+GetReplicaStateOk returns a tuple with the ReplicaState field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReplicaState
+
+`func (o *BackupSnapshotPart) SetReplicaState(v string)`
+
+SetReplicaState sets ReplicaState field to given value.
+
+### HasReplicaState
+
+`func (o *BackupSnapshotPart) HasReplicaState() bool`
+
+HasReplicaState returns a boolean if a field has been set.
 ### GetStorageSizeBytes
 
 `func (o *BackupSnapshotPart) GetStorageSizeBytes() int64`

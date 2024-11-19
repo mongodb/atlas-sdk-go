@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | The ID of the Private Link connection. | [optional] 
-**DnsDomain** | Pointer to **string** | Domain name of Confluent cluster. | [optional] 
+**DnsDomain** | Pointer to **string** | Domain name of Privatelink connected cluster. | [optional] 
 **DnsSubDomain** | Pointer to **[]string** | Sub-Domain name of Confluent cluster. These are typically your availability zones. | [optional] 
 **InterfaceEndpointId** | Pointer to **string** | Interface endpoint ID that is created from the service endpoint ID provided. | [optional] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **Provider** | Pointer to **string** | Provider where the Kafka cluster is deployed. | [optional] 
 **Region** | Pointer to **string** | Domain name of Confluent cluster. | [optional] 
-**ServiceEndpointId** | Pointer to **string** | AWS Service Endpoint ID. | [optional] 
+**ServiceEndpointId** | Pointer to **string** | Service Endpoint ID. | [optional] 
 **State** | Pointer to **string** | State the connection is in. | [optional] 
 **Vendor** | Pointer to **string** | Vendor who manages the Kafka cluster. | [optional] 
 
