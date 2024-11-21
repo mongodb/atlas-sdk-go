@@ -623,7 +623,7 @@ func (a *AtlasSearchApiService) CreateAtlasSearchDeploymentExecute(r CreateAtlas
 type CreateAtlasSearchIndexApiRequest struct {
 	ctx                      context.Context
 	ApiService               AtlasSearchApi
-	groupId                  string
+	// groupId                  string
 	clusterName              string
 	searchIndexCreateRequest *SearchIndexCreateRequest
 }
@@ -638,7 +638,7 @@ func (a *AtlasSearchApiService) CreateAtlasSearchIndexWithParams(ctx context.Con
 	return CreateAtlasSearchIndexApiRequest{
 		ApiService:               a,
 		ctx:                      ctx,
-		groupId:                  args.GroupId,
+		// groupId:                  args.GroupId,
 		clusterName:              args.ClusterName,
 		searchIndexCreateRequest: args.SearchIndexCreateRequest,
 	}
@@ -662,7 +662,7 @@ func (a *AtlasSearchApiService) CreateAtlasSearchIndex(ctx context.Context, grou
 	return CreateAtlasSearchIndexApiRequest{
 		ApiService:               a,
 		ctx:                      ctx,
-		groupId:                  groupId,
+		// groupId:                  groupId,
 		clusterName:              clusterName,
 		searchIndexCreateRequest: searchIndexCreateRequest,
 	}
@@ -685,7 +685,7 @@ func (a *AtlasSearchApiService) CreateAtlasSearchIndexExecute(r CreateAtlasSearc
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes"
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	// localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
 
 	localVarHeaderParams := make(map[string]string)
