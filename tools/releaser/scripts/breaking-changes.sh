@@ -19,7 +19,7 @@ go install golang.org/x/exp/cmd/gorelease@latest >/dev/null
 pushd "$script_path/../../../" || exit ## workaround for --repo-path="../" not working
 echo "Changed directory to $(pwd)"
 set +e
-# Run gorelease and filter for breaking changes
+
 RAW_BREAKING_CHANGES=$(gorelease -base "$BASE_VERSION")
 BREAKING_CHANGES=$(echo "$RAW_BREAKING_CHANGES" | awk '
     /^# / {header=$0} 
