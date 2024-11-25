@@ -46,7 +46,7 @@ Templates are sourced from openapi generator:
 
 https://github.com/OpenAPITools/openapi-generator/tree/master/modules/openapi-generator/src/main/resources/go
 
-## Go API Diff
+<!-- ## Go API Diff
 
 We use [go-apidiff](https://github.com/joelanford/go-apidiff) to detect if there are breaking changes and a new major version release is needed.
-In [Generate SDK Github action](../.github/workflows/autoupdate-prod.yaml), `API_DIFF_OLD_COMMIT` and `API_DIFF_NEW_COMMIT` are used to do the comparison.
+In [Generate SDK Github action](../.github/workflows/autoupdate-prod.yaml), `API_DIFF_OLD_COMMIT` and `API_DIFF_NEW_COMMIT` are used to do the comparison. -->
