@@ -21,7 +21,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: b4af03887e4a47b0e7a2b40cb24ecb8a926f9512
+  x-xgen-sha: 419e12c5482b86115a26187963d8b54c77e58fef
 servers:
 - url: https://cloud.mongodb.com
 security:
@@ -36592,6 +36592,9 @@ components:
         - ORG_SERVICE_ACCOUNT_SECRETS_NO_LONGER_EXPIRED
         - ORG_SERVICE_ACCOUNT_SECRETS_EXPIRING
         - ORG_SERVICE_ACCOUNT_SECRETS_NO_LONGER_EXPIRING
+        - ORG_MONGODB_VERSION_EOL_EXTENSION_ACCEPTED
+        - ORG_MONGODB_VERSION_EOL_EXTENSION_PENDING
+        - ORG_MONGODB_VERSION_EOL_EXTENSION_CANCELLED
         title: Org Event Types
       - type: string
         enum:
@@ -46181,6 +46184,9 @@ components:
       - ORG_SERVICE_ACCOUNT_SECRETS_NO_LONGER_EXPIRED
       - ORG_SERVICE_ACCOUNT_SECRETS_EXPIRING
       - ORG_SERVICE_ACCOUNT_SECRETS_NO_LONGER_EXPIRING
+      - ORG_MONGODB_VERSION_EOL_EXTENSION_ACCEPTED
+      - ORG_MONGODB_VERSION_EOL_EXTENSION_PENDING
+      - ORG_MONGODB_VERSION_EOL_EXTENSION_CANCELLED
       example: ORG_CREATED
       title: Org Event Types
     OrgEventViewForOrg:
