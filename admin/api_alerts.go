@@ -131,6 +131,7 @@ type AcknowledgeAlertApiRequest struct {
 type AcknowledgeAlertApiParams struct {
 	GroupId string
 	// AlertId          string
+	AlertIdTemp string
 	AcknowledgeAlert *AcknowledgeAlert
 }
 
