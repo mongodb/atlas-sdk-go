@@ -15,7 +15,7 @@ BASE_VERSION="github.com/mongodb/atlas-sdk-go/$SDK_MAJOR_VERSION@$SDK_VERSION"
 
 # echo "Installing go-apidiff"
 # go install github.com/joelanford/go-apidiff@latest >/dev/null
-
+go install golang.org/x/exp/cmd/gorelease@latest >/dev/null
 # echo "Running breaking changes check comparing commits ${API_DIFF_OLD_COMMIT} and ${API_DIFF_NEW_COMMIT}"
 
 pushd "$script_path/../../../" || exit ## workaround for --repo-path="../" not working
