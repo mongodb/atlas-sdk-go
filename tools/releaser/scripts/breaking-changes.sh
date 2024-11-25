@@ -3,8 +3,6 @@ set -eu
 GOPATH=$(go env GOPATH)
 
 # Inputs:
-# API_DIFF_OLD_COMMIT: commit before the API changes to compare with. If not provided, script will fail with "unbound variable" error
-# API_DIFF_NEW_COMMIT: commit with the new API changes. If not provided, script will fail with "unbound variable" error
 # TARGET_BREAKING_CHANGES_FILE - file to save breaking changes
 TARGET_BREAKING_CHANGES_FILE=${TARGET_BREAKING_CHANGES_FILE:-""}
 script_path=$(dirname "$0")
