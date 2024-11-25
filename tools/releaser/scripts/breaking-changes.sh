@@ -13,17 +13,15 @@ script_path=$(dirname "$0")
 source "$script_path/extract-version.sh"
 BASE_VERSION="github.com/mongodb/atlas-sdk-go/$SDK_MAJOR_VERSION@$SDK_VERSION"
 
-# echo "Installing go-apidiff"
-# go install github.com/joelanford/go-apidiff@latest >/dev/null
+# echo "Installing gorelease"
 go install golang.org/x/exp/cmd/gorelease@latest >/dev/null
-# echo "Running breaking changes check comparing commits ${API_DIFF_OLD_COMMIT} and ${API_DIFF_NEW_COMMIT}"
 
 pushd "$script_path/../../../" || exit ## workaround for --repo-path="../" not working
 echo "Changed directory to $(pwd)"
 set +e
-# BREAKING_CHANGES=$("$GOPATH/bin/go-apidiff" "${API_DIFF_OLD_COMMIT}" "${API_DIFF_NEW_COMMIT}" --compare-imports="false" --print-compatible="false")
-
-BREAKING_CHANGES=$(gorelease -base "$BASE_VERSION")
+# Run gorelease and filter for breaking changes
+RAW_BREAKING_CHANGES=$(gorelease -base "$BASE_VERSION")
+BREAKING_CHANGES=$(echo "$RAW_BREAKING_CHANGES" | awk '/## incompatible changes/,/^$/' | sed '/^$/d')
 
 set -e
 popd || exit
