@@ -21,7 +21,7 @@ echo "Changed directory to $(pwd)"
 set +e
 # Run gorelease and filter for breaking changes
 RAW_BREAKING_CHANGES=$(gorelease -base "$BASE_VERSION")
-BREAKING_CHANGES=$(echo "$RAW_BREAKING_CHANGES" | awk '/## incompatible changes/,/^$/' | sed '/^$/d')
+BREAKING_CHANGES=$(echo "$RAW_BREAKING_CHANGES" | awk '/^# / {header=$0} /## incompatible changes/ {print header; print; next} /^$/{exit}' | sed '/^$/d')
 
 set -e
 popd || exit
