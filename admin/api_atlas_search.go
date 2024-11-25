@@ -496,7 +496,7 @@ type AtlasSearchApiService service
 
 type CreateAtlasSearchDeploymentApiRequest struct {
 	ctx                        context.Context
-	// ApiService                 AtlasSearchApi
+	ApiService                 AtlasSearchApi
 	groupId                    string
 	clusterName                string
 	apiSearchDeploymentRequest *ApiSearchDeploymentRequest
@@ -510,7 +510,7 @@ type CreateAtlasSearchDeploymentApiParams struct {
 
 func (a *AtlasSearchApiService) CreateAtlasSearchDeploymentWithParams(ctx context.Context, args *CreateAtlasSearchDeploymentApiParams) CreateAtlasSearchDeploymentApiRequest {
 	return CreateAtlasSearchDeploymentApiRequest{
-		// ApiService:                 a,
+		ApiService:                 a,
 		ctx:                        ctx,
 		groupId:                    args.GroupId,
 		clusterName:                args.ClusterName,
@@ -519,8 +519,7 @@ func (a *AtlasSearchApiService) CreateAtlasSearchDeploymentWithParams(ctx contex
 }
 
 func (r CreateAtlasSearchDeploymentApiRequest) Execute() (*ApiSearchDeploymentResponse, *http.Response, error) {
-	// return r.ApiService.CreateAtlasSearchDeploymentExecute(r)
-	return nil, nil, nil
+	return r.ApiService.CreateAtlasSearchDeploymentExecute(r)
 }
 
 /*
@@ -535,7 +534,7 @@ Creates Search Nodes for the specified cluster.
 */
 func (a *AtlasSearchApiService) CreateAtlasSearchDeployment(ctx context.Context, groupId string, clusterName string, apiSearchDeploymentRequest *ApiSearchDeploymentRequest) CreateAtlasSearchDeploymentApiRequest {
 	return CreateAtlasSearchDeploymentApiRequest{
-		// ApiService:                 a,
+		ApiService:                 a,
 		ctx:                        ctx,
 		groupId:                    groupId,
 		clusterName:                clusterName,
@@ -624,7 +623,7 @@ func (a *AtlasSearchApiService) CreateAtlasSearchDeploymentExecute(r CreateAtlas
 type CreateAtlasSearchIndexApiRequest struct {
 	ctx                      context.Context
 	ApiService               AtlasSearchApi
-	// groupId                  string
+	groupId                  string
 	clusterName              string
 	searchIndexCreateRequest *SearchIndexCreateRequest
 }
@@ -639,7 +638,7 @@ func (a *AtlasSearchApiService) CreateAtlasSearchIndexWithParams(ctx context.Con
 	return CreateAtlasSearchIndexApiRequest{
 		ApiService:               a,
 		ctx:                      ctx,
-		// groupId:                  args.GroupId,
+		groupId:                  args.GroupId,
 		clusterName:              args.ClusterName,
 		searchIndexCreateRequest: args.SearchIndexCreateRequest,
 	}
@@ -663,7 +662,7 @@ func (a *AtlasSearchApiService) CreateAtlasSearchIndex(ctx context.Context, grou
 	return CreateAtlasSearchIndexApiRequest{
 		ApiService:               a,
 		ctx:                      ctx,
-		// groupId:                  groupId,
+		groupId:                  groupId,
 		clusterName:              clusterName,
 		searchIndexCreateRequest: searchIndexCreateRequest,
 	}
@@ -686,7 +685,7 @@ func (a *AtlasSearchApiService) CreateAtlasSearchIndexExecute(r CreateAtlasSearc
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes"
-	// localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -949,7 +948,6 @@ func (a *AtlasSearchApiService) DeleteAtlasSearchDeploymentExecute(r DeleteAtlas
 	localVarHTTPContentTypes := []string{}
 
 	// set Content-Type header
-	// adding tmp comment
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
 	if localVarHTTPContentType != "" {
 		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
