@@ -11,7 +11,7 @@ script_path=$(dirname "$0")
 source "$script_path/extract-version.sh"
 BASE_VERSION="github.com/mongodb/atlas-sdk-go/$SDK_MAJOR_VERSION@$SDK_VERSION"
 
-# echo "Installing gorelease"
+echo "Installing gorelease"
 go install golang.org/x/exp/cmd/gorelease@latest >/dev/null
 
 pushd "$script_path/../../../" || exit ## workaround for --repo-path="../" not working
