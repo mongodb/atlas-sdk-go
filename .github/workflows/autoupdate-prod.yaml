@@ -24,8 +24,6 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git add .
           git commit --allow-empty -m "fix: update OpenAPI spec"
-      # - name: Set old commit for SDK API diff
-      #   run: echo "API_DIFF_OLD_COMMIT=$(git rev-parse HEAD)" >> $GITHUB_ENV
       - name: Run generation
         working-directory: ./tools
         run: |
@@ -50,7 +48,10 @@ jobs:
       - name: Release updates
         if: steps.verify-changed-files.outputs.files_changed == 'true'
         working-directory: ./tools
-        run: make new-version  
+        run: |
+          export LC_ALL=C.UTF-8
+          export LANG=C.UTF-8
+          make new-version  
       - name: Ensure all markdown code is formatted
         if: steps.verify-changed-files.outputs.files_changed == 'true'
         working-directory: ./tools
