@@ -21,6 +21,7 @@ set +e
 RAW_BREAKING_CHANGES=$(gorelease -base "$BASE_VERSION")
 echo "gorelease -base $BASE_VERSION"
 echo "raw breaking changes:  $RAW_BREAKING_CHANGES"
+echo "raw breaking changes end...."
 
 BREAKING_CHANGES=$(echo "$RAW_BREAKING_CHANGES" | awk '
     /^# go\./ {header="## " substr($0, 3); print header; next}
