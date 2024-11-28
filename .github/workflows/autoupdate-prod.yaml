@@ -45,13 +45,18 @@ jobs:
       # - name: Set new commit for SDK API diff
       #   if: steps.verify-changed-files.outputs.files_changed == 'true'
       #   run: echo "API_DIFF_NEW_COMMIT=$(git rev-parse HEAD)" >> $GITHUB_ENV
+      # - name: Debug directory contents
+      #   run: |
+      #     echo "Current working directory:"
+      #     pwd
+      #     echo "Contents of tools:"
+      #     ls -al ./tools
+      #     echo "Contents of admin:"
+      #     ls -al ./tools/admin
       - name: Release updates
         if: steps.verify-changed-files.outputs.files_changed == 'true'
         working-directory: ./tools
-        run: |
-          export LC_ALL=C.UTF-8
-          export LANG=C.UTF-8
-          make new-version  
+        run: make new-version
       - name: Ensure all markdown code is formatted
         if: steps.verify-changed-files.outputs.files_changed == 'true'
         working-directory: ./tools
