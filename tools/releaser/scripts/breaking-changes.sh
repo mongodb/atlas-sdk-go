@@ -47,6 +47,3 @@ else
       >"$script_path/../breaking_changes/${TARGET_BREAKING_CHANGES_FILE}.md"
   fi
 fi
-
-# gorelease -base github.com/mongodb/atlas-sdk-go/v20241113001@v20241113001.0.0
-# ./releaser/scripts/breaking-changes.sh
