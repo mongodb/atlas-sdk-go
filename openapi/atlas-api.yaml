@@ -21,7 +21,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: b4af03887e4a47b0e7a2b40cb24ecb8a926f9512
+  x-xgen-sha: f611126a305b6658a7cb45c1331f485910e7c298
 servers:
 - url: https://cloud.mongodb.com
 security:
@@ -2917,9 +2917,9 @@ paths:
       - Clusters
   /api/atlas/v2/groups/{groupId}/clusters/tenantUpgrade:
     post:
-      description: "Upgrades a shared-tier cluster in the specified project. To use\
-        \ this resource, the requesting API key must have the Project Cluster Manager\
-        \ role. Each project supports up to 25 clusters."
+      description: "Upgrades a shared-tier cluster to a dedicated cluster (M10+) in\
+        \ the specified project. To use this resource, the requesting API key must\
+        \ have the Project Cluster Manager role. Each project supports up to 25 clusters."
       operationId: upgradeSharedCluster
       parameters:
       - $ref: "#/components/parameters/envelope"
@@ -9548,8 +9548,9 @@ paths:
       - Flex Snapshots
   /api/atlas/v2/groups/{groupId}/flexClusters:tenantUpgrade:
     post:
-      description: "Upgrades a flex cluster in the specified project. To use this\
-        \ resource, the requesting API key must have the Project Cluster Manager role."
+      description: "Upgrades a flex cluster to a dedicated cluster (M10+) in the specified\
+        \ project. To use this resource, the requesting API key must have the Project\
+        \ Cluster Manager role."
       operationId: upgradeFlexCluster
       parameters:
       - $ref: "#/components/parameters/envelope"
@@ -9559,7 +9560,7 @@ paths:
         content:
           application/vnd.atlas.2024-11-13+json:
             schema:
-              $ref: "#/components/schemas/FlexClusterDescription20241113"
+              $ref: "#/components/schemas/AtlasTenantClusterUpgradeRequest20240805"
         description: Details of the flex cluster upgrade in the specified project.
         required: true
       responses:
@@ -23377,6 +23378,282 @@ components:
       - name
       - tokenizer
       title: Atlas Search Analyzer
+    AtlasTenantClusterUpgradeRequest20240805:
+      type: object
+      description: Request containing target state of tenant cluster to be upgraded
+      properties:
+        acceptDataRisksAndForceReplicaSetReconfig:
+          type: string
+          format: date-time
+          description: "If reconfiguration is necessary to regain a primary due to\
+            \ a regional outage, submit this field alongside your topology reconfiguration\
+            \ to request a new regional outage resistant topology. Forced reconfigurations\
+            \ during an outage of the majority of electable nodes carry a risk of\
+            \ data loss if replicated writes (even majority committed writes) have\
+            \ not been replicated to the new primary node. MongoDB Atlas docs contain\
+            \ more information. To proceed with an operation which carries that risk,\
+            \ set **acceptDataRisksAndForceReplicaSetReconfig** to the current date."
+          externalDocs:
+            description: Reconfiguring a Replica Set during a regional outage
+            url: https://dochub.mongodb.org/core/regional-outage-reconfigure-replica-set
+        backupEnabled:
+          type: boolean
+          default: false
+          description: "Flag that indicates whether the cluster can perform backups.\
+            \ If set to `true`, the cluster can perform backups. You must set this\
+            \ value to `true` for NVMe clusters. Backup uses [Cloud Backups](https://docs.atlas.mongodb.com/backup/cloud-backup/overview/)\
+            \ for dedicated clusters and [Shared Cluster Backups](https://docs.atlas.mongodb.com/backup/shared-tier/overview/)\
+            \ for tenant clusters. If set to `false`, the cluster doesn't use backups."
+        biConnector:
+          $ref: "#/components/schemas/BiConnector"
+        clusterType:
+          type: string
+          description: Configuration of nodes that comprise the cluster.
+          enum:
+          - REPLICASET
+          - SHARDED
+          - GEOSHARDED
+        configServerManagementMode:
+          type: string
+          default: ATLAS_MANAGED
+          description: |-
+            Config Server Management Mode for creating or updating a sharded cluster.
+
+            When configured as ATLAS_MANAGED, atlas may automatically switch the cluster's config server type for optimal performance and savings.
+
+            When configured as FIXED_TO_DEDICATED, the cluster will always use a dedicated config server.
+          enum:
+          - ATLAS_MANAGED
+          - FIXED_TO_DEDICATED
+          externalDocs:
+            description: MongoDB Sharded Cluster Config Servers
+            url: https://dochub.mongodb.org/docs/manual/core/sharded-cluster-config-servers
+        configServerType:
+          type: string
+          description: Describes a sharded cluster's config server type.
+          enum:
+          - DEDICATED
+          - EMBEDDED
+          externalDocs:
+            description: MongoDB Sharded Cluster Config Servers
+            url: https://dochub.mongodb.org/docs/manual/core/sharded-cluster-config-servers
+          readOnly: true
+        connectionStrings:
+          $ref: "#/components/schemas/ClusterConnectionStrings"
+        createDate:
+          type: string
+          format: date-time
+          description: Date and time when MongoDB Cloud created this cluster. This
+            parameter expresses its value in ISO 8601 format in UTC.
+          readOnly: true
+        diskWarmingMode:
+          type: string
+          default: FULLY_WARMED
+          description: Disk warming mode selection.
+          enum:
+          - FULLY_WARMED
+          - VISIBLE_EARLIER
+          externalDocs:
+            description: Reduce Secondary Disk Warming Impact
+            url: https://docs.atlas.mongodb.com/reference/replica-set-tags/#reduce-secondary-disk-warming-impact
+        encryptionAtRestProvider:
+          type: string
+          description: "Cloud service provider that manages your customer keys to\
+            \ provide an additional layer of encryption at rest for the cluster. To\
+            \ enable customer key management for encryption at rest, the cluster **replicationSpecs[n].regionConfigs[m].{type}Specs.instanceSize**\
+            \ setting must be `M10` or higher and `\"backupEnabled\" : false` or omitted\
+            \ entirely."
+          enum:
+          - NONE
+          - AWS
+          - AZURE
+          - GCP
+          externalDocs:
+            description: Encryption at Rest using Customer Key Management
+            url: https://www.mongodb.com/docs/atlas/security-kms-encryption/
+        featureCompatibilityVersion:
+          type: string
+          description: Feature compatibility version of the cluster. This will always
+            appear regardless of whether FCV is pinned.
+          readOnly: true
+        featureCompatibilityVersionExpirationDate:
+          type: string
+          format: date-time
+          description: Feature compatibility version expiration date. Will only appear
+            if FCV is pinned.
+          readOnly: true
+        globalClusterSelfManagedSharding:
+          type: boolean
+          description: |-
+            Set this field to configure the Sharding Management Mode when creating a new Global Cluster.
+
+            When set to false, the management mode is set to Atlas-Managed Sharding. This mode fully manages the sharding of your Global Cluster and is built to provide a seamless deployment experience.
+
+            When set to true, the management mode is set to Self-Managed Sharding. This mode leaves the management of shards in your hands and is built to provide an advanced and flexible deployment experience.
+
+            This setting cannot be changed once the cluster is deployed.
+          externalDocs:
+            description: Creating a Global Cluster
+            url: https://dochub.mongodb.org/core/global-cluster-management
+        groupId:
+          type: string
+          description: Unique 24-hexadecimal character string that identifies the
+            project.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+          readOnly: true
+        id:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the cluster.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+          readOnly: true
+        labels:
+          type: array
+          deprecated: true
+          description: |-
+            Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster. The MongoDB Cloud console doesn't display your labels.
+
+            Cluster labels are deprecated and will be removed in a future release. We strongly recommend that you use [resource tags](https://dochub.mongodb.org/core/add-cluster-tag-atlas) instead.
+          items:
+            $ref: "#/components/schemas/ComponentLabel"
+        links:
+          type: array
+          description: "List of one or more Uniform Resource Locators (URLs) that\
+            \ point to API sub-resources, related API resources, or both. RFC 5988\
+            \ outlines these relationships."
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        mongoDBEmployeeAccessGrant:
+          $ref: "#/components/schemas/EmployeeAccessGrantView"
+        mongoDBMajorVersion:
+          type: string
+          description: "MongoDB major version of the cluster. Set to the binary major\
+            \ version. \n\nOn creation: Choose from the available versions of MongoDB,\
+            \ or leave unspecified for the current recommended default in the MongoDB\
+            \ Cloud platform. The recommended version is a recent Long Term Support\
+            \ version. The default is not guaranteed to be the most recently released\
+            \ version throughout the entire release cycle. For versions available\
+            \ in a specific project, see the linked documentation or use the API endpoint\
+            \ for [project LTS versions endpoint](#tag/Projects/operation/getProjectLTSVersions).\n\
+            \n On update: Increase version only by 1 major version at a time. If the\
+            \ cluster is pinned to a MongoDB feature compatibility version exactly\
+            \ one major version below the current MongoDB version, the MongoDB version\
+            \ can be downgraded to the previous major version."
+          externalDocs:
+            description: Available MongoDB Versions in Atlas
+            url: https://www.mongodb.com/docs/atlas/reference/faq/database/#which-versions-of-mongodb-do-service-clusters-use-
+        mongoDBVersion:
+          type: string
+          description: Version of MongoDB that the cluster runs.
+          pattern: "([\\d]+\\.[\\d]+\\.[\\d]+)"
+          readOnly: true
+        name:
+          type: string
+          description: Human-readable label that identifies the cluster.
+          maxLength: 64
+          minLength: 1
+          pattern: "^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$"
+        paused:
+          type: boolean
+          description: Flag that indicates whether the cluster is paused.
+        pitEnabled:
+          type: boolean
+          description: Flag that indicates whether the cluster uses continuous cloud
+            backups.
+          externalDocs:
+            description: Continuous Cloud Backups
+            url: https://docs.atlas.mongodb.com/backup/cloud-backup/overview/
+        redactClientLogData:
+          type: boolean
+          description: |-
+            Enable or disable log redaction.
+
+            This setting configures the ``mongod`` or ``mongos`` to redact any document field contents from a message accompanying a given log event before logging. This prevents the program from writing potentially sensitive data stored on the database to the diagnostic log. Metadata such as error or operation codes, line numbers, and source file names are still visible in the logs.
+
+            Use ``redactClientLogData`` in conjunction with Encryption at Rest and TLS/SSL (Transport Encryption) to assist compliance with regulatory requirements.
+
+            *Note*: changing this setting on a cluster will trigger a rolling restart as soon as the cluster is updated.
+          externalDocs:
+            description: Log Redaction
+            url: https://www.mongodb.com/docs/manual/administration/monitoring/#log-redaction
+        replicaSetScalingStrategy:
+          type: string
+          default: WORKLOAD_TYPE
+          description: |-
+            Set this field to configure the replica set scaling mode for your cluster.
+
+            By default, Atlas scales under WORKLOAD_TYPE. This mode allows Atlas to scale your analytics nodes in parallel to your operational nodes.
+
+            When configured as SEQUENTIAL, Atlas scales all nodes sequentially. This mode is intended for steady-state workloads and applications performing latency-sensitive secondary reads.
+
+            When configured as NODE_TYPE, Atlas scales your electable nodes in parallel with your read-only and analytics nodes. This mode is intended for large, dynamic workloads requiring frequent and timely cluster tier scaling. This is the fastest scaling strategy, but it might impact latency of workloads when performing extensive secondary reads.
+          enum:
+          - SEQUENTIAL
+          - WORKLOAD_TYPE
+          - NODE_TYPE
+          externalDocs:
+            description: Modify the Replica Set Scaling Mode
+            url: https://dochub.mongodb.org/core/scale-nodes
+        replicationSpecs:
+          type: array
+          description: List of settings that configure your cluster regions. This
+            array has one object per shard representing node configurations in each
+            shard. For replica sets there is only one object representing node configurations.
+          items:
+            $ref: "#/components/schemas/ReplicationSpec20240805"
+        rootCertType:
+          type: string
+          default: ISRGROOTX1
+          description: Root Certificate Authority that MongoDB Cloud cluster uses.
+            MongoDB Cloud supports Internet Security Research Group.
+          enum:
+          - ISRGROOTX1
+        stateName:
+          type: string
+          description: Human-readable label that indicates the current operating condition
+            of this cluster.
+          enum:
+          - IDLE
+          - CREATING
+          - UPDATING
+          - DELETING
+          - REPAIRING
+          readOnly: true
+        tags:
+          type: array
+          description: List that contains key-value pairs between 1 to 255 characters
+            in length for tagging and categorizing the cluster.
+          externalDocs:
+            description: Resource Tags
+            url: https://dochub.mongodb.org/core/add-cluster-tag-atlas
+          items:
+            $ref: "#/components/schemas/ResourceTag"
+        terminationProtectionEnabled:
+          type: boolean
+          default: false
+          description: "Flag that indicates whether termination protection is enabled\
+            \ on the cluster. If set to `true`, MongoDB Cloud won't delete the cluster.\
+            \ If set to `false`, MongoDB Cloud will delete the cluster."
+        versionReleaseSystem:
+          type: string
+          default: LTS
+          description: "Method by which the cluster maintains the MongoDB versions.\
+            \ If value is `CONTINUOUS`, you must not specify **mongoDBMajorVersion**."
+          enum:
+          - LTS
+          - CONTINUOUS
+      required:
+      - name
+      title: Tenant Cluster Upgrade Request
     AuditLog:
       type: object
       properties:
@@ -28724,12 +29001,14 @@ components:
             url: https://www.mongodb.com/docs/atlas/security-kms-encryption/
         featureCompatibilityVersion:
           type: string
-          description: Feature compatibility version of the cluster.
+          description: Feature compatibility version of the cluster. This will always
+            appear regardless of whether FCV is pinned.
           readOnly: true
         featureCompatibilityVersionExpirationDate:
           type: string
           format: date-time
-          description: Feature compatibility version expiration date.
+          description: Feature compatibility version expiration date. Will only appear
+            if FCV is pinned.
           readOnly: true
         globalClusterSelfManagedSharding:
           type: boolean
@@ -28785,12 +29064,18 @@ components:
           $ref: "#/components/schemas/EmployeeAccessGrantView"
         mongoDBMajorVersion:
           type: string
-          description: |-
-            MongoDB major version of the cluster.
-
-            On creation: Choose from the available versions of MongoDB, or leave unspecified for the current recommended default in the MongoDB Cloud platform. The recommended version is a recent Long Term Support version. The default is not guaranteed to be the most recently released version throughout the entire release cycle. For versions available in a specific project, see the linked documentation or use the API endpoint for [project LTS versions endpoint](#tag/Projects/operation/getProjectLTSVersions).
-
-             On update: Increase version only by 1 major version at a time. If the cluster is pinned to a MongoDB feature compatibility version exactly one major version below the current MongoDB version, the MongoDB version can be downgraded to the previous major version.
+          description: "MongoDB major version of the cluster. Set to the binary major\
+            \ version. \n\nOn creation: Choose from the available versions of MongoDB,\
+            \ or leave unspecified for the current recommended default in the MongoDB\
+            \ Cloud platform. The recommended version is a recent Long Term Support\
+            \ version. The default is not guaranteed to be the most recently released\
+            \ version throughout the entire release cycle. For versions available\
+            \ in a specific project, see the linked documentation or use the API endpoint\
+            \ for [project LTS versions endpoint](#tag/Projects/operation/getProjectLTSVersions).\n\
+            \n On update: Increase version only by 1 major version at a time. If the\
+            \ cluster is pinned to a MongoDB feature compatibility version exactly\
+            \ one major version below the current MongoDB version, the MongoDB version\
+            \ can be downgraded to the previous major version."
           externalDocs:
             description: Available MongoDB Versions in Atlas
             url: https://www.mongodb.com/docs/atlas/reference/faq/database/#which-versions-of-mongodb-do-service-clusters-use-
@@ -32504,6 +32789,7 @@ components:
           - BYPASS_DOCUMENT_VALIDATION
           - USE_UUID
           - KILL_OP
+          - BYPASS_DEFAULT_MAX_TIME_MS
           - CREATE_COLLECTION
           - CREATE_INDEX
           - DROP_COLLECTION
@@ -36592,6 +36878,9 @@ components:
         - ORG_SERVICE_ACCOUNT_SECRETS_NO_LONGER_EXPIRED
         - ORG_SERVICE_ACCOUNT_SECRETS_EXPIRING
         - ORG_SERVICE_ACCOUNT_SECRETS_NO_LONGER_EXPIRING
+        - ORG_MONGODB_VERSION_EOL_EXTENSION_ACCEPTED
+        - ORG_MONGODB_VERSION_EOL_EXTENSION_PENDING
+        - ORG_MONGODB_VERSION_EOL_EXTENSION_CANCELLED
         title: Org Event Types
       - type: string
         enum:
@@ -46181,6 +46470,9 @@ components:
       - ORG_SERVICE_ACCOUNT_SECRETS_NO_LONGER_EXPIRED
       - ORG_SERVICE_ACCOUNT_SECRETS_EXPIRING
       - ORG_SERVICE_ACCOUNT_SECRETS_NO_LONGER_EXPIRING
+      - ORG_MONGODB_VERSION_EOL_EXTENSION_ACCEPTED
+      - ORG_MONGODB_VERSION_EOL_EXTENSION_PENDING
+      - ORG_MONGODB_VERSION_EOL_EXTENSION_CANCELLED
       example: ORG_CREATED
       title: Org Event Types
     OrgEventViewForOrg:
