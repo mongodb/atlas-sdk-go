@@ -488,6 +488,7 @@ Class        | Method        | HTTP request  | Description   |
  - [AtlasClusterOutageSimulationOutageFilter](./docs/AtlasClusterOutageSimulationOutageFilter.md)
  - [AtlasOrganization](./docs/AtlasOrganization.md)
  - [AtlasSearchAnalyzer](./docs/AtlasSearchAnalyzer.md)
+ - [AtlasTenantClusterUpgradeRequest20240805](./docs/AtlasTenantClusterUpgradeRequest20240805.md)
  - [AuditLog](./docs/AuditLog.md)
  - [AuthFederationRoleMapping](./docs/AuthFederationRoleMapping.md)
  - [AutoExportPolicy](./docs/AutoExportPolicy.md)

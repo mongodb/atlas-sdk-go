@@ -6,8 +6,8 @@ import (
 	"time"
 )
 
-// ClusterDescription20240805 struct for ClusterDescription20240805
-type ClusterDescription20240805 struct {
+// AtlasTenantClusterUpgradeRequest20240805 Request containing target state of tenant cluster to be upgraded
+type AtlasTenantClusterUpgradeRequest20240805 struct {
 	// If reconfiguration is necessary to regain a primary due to a regional outage, submit this field alongside your topology reconfiguration to request a new regional outage resistant topology. Forced reconfigurations during an outage of the majority of electable nodes carry a risk of data loss if replicated writes (even majority committed writes) have not been replicated to the new primary node. MongoDB Atlas docs contain more information. To proceed with an operation which carries that risk, set **acceptDataRisksAndForceReplicaSetReconfig** to the current date.
 	AcceptDataRisksAndForceReplicaSetReconfig *time.Time `json:"acceptDataRisksAndForceReplicaSetReconfig,omitempty"`
 	// Flag that indicates whether the cluster can perform backups. If set to `true`, the cluster can perform backups. You must set this value to `true` for NVMe clusters. Backup uses [Cloud Backups](https://docs.atlas.mongodb.com/backup/cloud-backup/overview/) for dedicated clusters and [Shared Cluster Backups](https://docs.atlas.mongodb.com/backup/shared-tier/overview/) for tenant clusters. If set to `false`, the cluster doesn't use backups.
@@ -55,7 +55,7 @@ type ClusterDescription20240805 struct {
 	// Read only field.
 	MongoDBVersion *string `json:"mongoDBVersion,omitempty"`
 	// Human-readable label that identifies the cluster.
-	Name *string `json:"name,omitempty"`
+	Name string `json:"name"`
 	// Flag that indicates whether the cluster is paused.
 	Paused *bool `json:"paused,omitempty"`
 	// Flag that indicates whether the cluster uses continuous cloud backups.
@@ -79,18 +79,19 @@ type ClusterDescription20240805 struct {
 	VersionReleaseSystem *string `json:"versionReleaseSystem,omitempty"`
 }
 
-// NewClusterDescription20240805 instantiates a new ClusterDescription20240805 object
+// NewAtlasTenantClusterUpgradeRequest20240805 instantiates a new AtlasTenantClusterUpgradeRequest20240805 object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewClusterDescription20240805() *ClusterDescription20240805 {
-	this := ClusterDescription20240805{}
+func NewAtlasTenantClusterUpgradeRequest20240805(name string) *AtlasTenantClusterUpgradeRequest20240805 {
+	this := AtlasTenantClusterUpgradeRequest20240805{}
 	var backupEnabled bool = false
 	this.BackupEnabled = &backupEnabled
 	var configServerManagementMode string = "ATLAS_MANAGED"
 	this.ConfigServerManagementMode = &configServerManagementMode
 	var diskWarmingMode string = "FULLY_WARMED"
 	this.DiskWarmingMode = &diskWarmingMode
+	this.Name = name
 	var replicaSetScalingStrategy string = "WORKLOAD_TYPE"
 	this.ReplicaSetScalingStrategy = &replicaSetScalingStrategy
 	var rootCertType string = "ISRGROOTX1"
@@ -102,11 +103,11 @@ func NewClusterDescription20240805() *ClusterDescription20240805 {
 	return &this
 }
 
-// NewClusterDescription20240805WithDefaults instantiates a new ClusterDescription20240805 object
+// NewAtlasTenantClusterUpgradeRequest20240805WithDefaults instantiates a new AtlasTenantClusterUpgradeRequest20240805 object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewClusterDescription20240805WithDefaults() *ClusterDescription20240805 {
-	this := ClusterDescription20240805{}
+func NewAtlasTenantClusterUpgradeRequest20240805WithDefaults() *AtlasTenantClusterUpgradeRequest20240805 {
+	this := AtlasTenantClusterUpgradeRequest20240805{}
 	var backupEnabled bool = false
 	this.BackupEnabled = &backupEnabled
 	var configServerManagementMode string = "ATLAS_MANAGED"
@@ -125,7 +126,7 @@ func NewClusterDescription20240805WithDefaults() *ClusterDescription20240805 {
 }
 
 // GetAcceptDataRisksAndForceReplicaSetReconfig returns the AcceptDataRisksAndForceReplicaSetReconfig field value if set, zero value otherwise
-func (o *ClusterDescription20240805) GetAcceptDataRisksAndForceReplicaSetReconfig() time.Time {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetAcceptDataRisksAndForceReplicaSetReconfig() time.Time {
 	if o == nil || IsNil(o.AcceptDataRisksAndForceReplicaSetReconfig) {
 		var ret time.Time
 		return ret
@@ -135,7 +136,7 @@ func (o *ClusterDescription20240805) GetAcceptDataRisksAndForceReplicaSetReconfi
 
 // GetAcceptDataRisksAndForceReplicaSetReconfigOk returns a tuple with the AcceptDataRisksAndForceReplicaSetReconfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterDescription20240805) GetAcceptDataRisksAndForceReplicaSetReconfigOk() (*time.Time, bool) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetAcceptDataRisksAndForceReplicaSetReconfigOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.AcceptDataRisksAndForceReplicaSetReconfig) {
 		return nil, false
 	}
@@ -144,7 +145,7 @@ func (o *ClusterDescription20240805) GetAcceptDataRisksAndForceReplicaSetReconfi
 }
 
 // HasAcceptDataRisksAndForceReplicaSetReconfig returns a boolean if a field has been set.
-func (o *ClusterDescription20240805) HasAcceptDataRisksAndForceReplicaSetReconfig() bool {
+func (o *AtlasTenantClusterUpgradeRequest20240805) HasAcceptDataRisksAndForceReplicaSetReconfig() bool {
 	if o != nil && !IsNil(o.AcceptDataRisksAndForceReplicaSetReconfig) {
 		return true
 	}
@@ -153,12 +154,12 @@ func (o *ClusterDescription20240805) HasAcceptDataRisksAndForceReplicaSetReconfi
 }
 
 // SetAcceptDataRisksAndForceReplicaSetReconfig gets a reference to the given time.Time and assigns it to the AcceptDataRisksAndForceReplicaSetReconfig field.
-func (o *ClusterDescription20240805) SetAcceptDataRisksAndForceReplicaSetReconfig(v time.Time) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) SetAcceptDataRisksAndForceReplicaSetReconfig(v time.Time) {
 	o.AcceptDataRisksAndForceReplicaSetReconfig = &v
 }
 
 // GetBackupEnabled returns the BackupEnabled field value if set, zero value otherwise
-func (o *ClusterDescription20240805) GetBackupEnabled() bool {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetBackupEnabled() bool {
 	if o == nil || IsNil(o.BackupEnabled) {
 		var ret bool
 		return ret
@@ -168,7 +169,7 @@ func (o *ClusterDescription20240805) GetBackupEnabled() bool {
 
 // GetBackupEnabledOk returns a tuple with the BackupEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterDescription20240805) GetBackupEnabledOk() (*bool, bool) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetBackupEnabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.BackupEnabled) {
 		return nil, false
 	}
@@ -177,7 +178,7 @@ func (o *ClusterDescription20240805) GetBackupEnabledOk() (*bool, bool) {
 }
 
 // HasBackupEnabled returns a boolean if a field has been set.
-func (o *ClusterDescription20240805) HasBackupEnabled() bool {
+func (o *AtlasTenantClusterUpgradeRequest20240805) HasBackupEnabled() bool {
 	if o != nil && !IsNil(o.BackupEnabled) {
 		return true
 	}
@@ -186,12 +187,12 @@ func (o *ClusterDescription20240805) HasBackupEnabled() bool {
 }
 
 // SetBackupEnabled gets a reference to the given bool and assigns it to the BackupEnabled field.
-func (o *ClusterDescription20240805) SetBackupEnabled(v bool) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) SetBackupEnabled(v bool) {
 	o.BackupEnabled = &v
 }
 
 // GetBiConnector returns the BiConnector field value if set, zero value otherwise
-func (o *ClusterDescription20240805) GetBiConnector() BiConnector {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetBiConnector() BiConnector {
 	if o == nil || IsNil(o.BiConnector) {
 		var ret BiConnector
 		return ret
@@ -201,7 +202,7 @@ func (o *ClusterDescription20240805) GetBiConnector() BiConnector {
 
 // GetBiConnectorOk returns a tuple with the BiConnector field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterDescription20240805) GetBiConnectorOk() (*BiConnector, bool) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetBiConnectorOk() (*BiConnector, bool) {
 	if o == nil || IsNil(o.BiConnector) {
 		return nil, false
 	}
@@ -210,7 +211,7 @@ func (o *ClusterDescription20240805) GetBiConnectorOk() (*BiConnector, bool) {
 }
 
 // HasBiConnector returns a boolean if a field has been set.
-func (o *ClusterDescription20240805) HasBiConnector() bool {
+func (o *AtlasTenantClusterUpgradeRequest20240805) HasBiConnector() bool {
 	if o != nil && !IsNil(o.BiConnector) {
 		return true
 	}
@@ -219,12 +220,12 @@ func (o *ClusterDescription20240805) HasBiConnector() bool {
 }
 
 // SetBiConnector gets a reference to the given BiConnector and assigns it to the BiConnector field.
-func (o *ClusterDescription20240805) SetBiConnector(v BiConnector) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) SetBiConnector(v BiConnector) {
 	o.BiConnector = &v
 }
 
 // GetClusterType returns the ClusterType field value if set, zero value otherwise
-func (o *ClusterDescription20240805) GetClusterType() string {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetClusterType() string {
 	if o == nil || IsNil(o.ClusterType) {
 		var ret string
 		return ret
@@ -234,7 +235,7 @@ func (o *ClusterDescription20240805) GetClusterType() string {
 
 // GetClusterTypeOk returns a tuple with the ClusterType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterDescription20240805) GetClusterTypeOk() (*string, bool) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetClusterTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.ClusterType) {
 		return nil, false
 	}
@@ -243,7 +244,7 @@ func (o *ClusterDescription20240805) GetClusterTypeOk() (*string, bool) {
 }
 
 // HasClusterType returns a boolean if a field has been set.
-func (o *ClusterDescription20240805) HasClusterType() bool {
+func (o *AtlasTenantClusterUpgradeRequest20240805) HasClusterType() bool {
 	if o != nil && !IsNil(o.ClusterType) {
 		return true
 	}
@@ -252,12 +253,12 @@ func (o *ClusterDescription20240805) HasClusterType() bool {
 }
 
 // SetClusterType gets a reference to the given string and assigns it to the ClusterType field.
-func (o *ClusterDescription20240805) SetClusterType(v string) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) SetClusterType(v string) {
 	o.ClusterType = &v
 }
 
 // GetConfigServerManagementMode returns the ConfigServerManagementMode field value if set, zero value otherwise
-func (o *ClusterDescription20240805) GetConfigServerManagementMode() string {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetConfigServerManagementMode() string {
 	if o == nil || IsNil(o.ConfigServerManagementMode) {
 		var ret string
 		return ret
@@ -267,7 +268,7 @@ func (o *ClusterDescription20240805) GetConfigServerManagementMode() string {
 
 // GetConfigServerManagementModeOk returns a tuple with the ConfigServerManagementMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterDescription20240805) GetConfigServerManagementModeOk() (*string, bool) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetConfigServerManagementModeOk() (*string, bool) {
 	if o == nil || IsNil(o.ConfigServerManagementMode) {
 		return nil, false
 	}
@@ -276,7 +277,7 @@ func (o *ClusterDescription20240805) GetConfigServerManagementModeOk() (*string,
 }
 
 // HasConfigServerManagementMode returns a boolean if a field has been set.
-func (o *ClusterDescription20240805) HasConfigServerManagementMode() bool {
+func (o *AtlasTenantClusterUpgradeRequest20240805) HasConfigServerManagementMode() bool {
 	if o != nil && !IsNil(o.ConfigServerManagementMode) {
 		return true
 	}
@@ -285,12 +286,12 @@ func (o *ClusterDescription20240805) HasConfigServerManagementMode() bool {
 }
 
 // SetConfigServerManagementMode gets a reference to the given string and assigns it to the ConfigServerManagementMode field.
-func (o *ClusterDescription20240805) SetConfigServerManagementMode(v string) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) SetConfigServerManagementMode(v string) {
 	o.ConfigServerManagementMode = &v
 }
 
 // GetConfigServerType returns the ConfigServerType field value if set, zero value otherwise
-func (o *ClusterDescription20240805) GetConfigServerType() string {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetConfigServerType() string {
 	if o == nil || IsNil(o.ConfigServerType) {
 		var ret string
 		return ret
@@ -300,7 +301,7 @@ func (o *ClusterDescription20240805) GetConfigServerType() string {
 
 // GetConfigServerTypeOk returns a tuple with the ConfigServerType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterDescription20240805) GetConfigServerTypeOk() (*string, bool) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetConfigServerTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.ConfigServerType) {
 		return nil, false
 	}
@@ -309,7 +310,7 @@ func (o *ClusterDescription20240805) GetConfigServerTypeOk() (*string, bool) {
 }
 
 // HasConfigServerType returns a boolean if a field has been set.
-func (o *ClusterDescription20240805) HasConfigServerType() bool {
+func (o *AtlasTenantClusterUpgradeRequest20240805) HasConfigServerType() bool {
 	if o != nil && !IsNil(o.ConfigServerType) {
 		return true
 	}
@@ -318,12 +319,12 @@ func (o *ClusterDescription20240805) HasConfigServerType() bool {
 }
 
 // SetConfigServerType gets a reference to the given string and assigns it to the ConfigServerType field.
-func (o *ClusterDescription20240805) SetConfigServerType(v string) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) SetConfigServerType(v string) {
 	o.ConfigServerType = &v
 }
 
 // GetConnectionStrings returns the ConnectionStrings field value if set, zero value otherwise
-func (o *ClusterDescription20240805) GetConnectionStrings() ClusterConnectionStrings {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetConnectionStrings() ClusterConnectionStrings {
 	if o == nil || IsNil(o.ConnectionStrings) {
 		var ret ClusterConnectionStrings
 		return ret
@@ -333,7 +334,7 @@ func (o *ClusterDescription20240805) GetConnectionStrings() ClusterConnectionStr
 
 // GetConnectionStringsOk returns a tuple with the ConnectionStrings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterDescription20240805) GetConnectionStringsOk() (*ClusterConnectionStrings, bool) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetConnectionStringsOk() (*ClusterConnectionStrings, bool) {
 	if o == nil || IsNil(o.ConnectionStrings) {
 		return nil, false
 	}
@@ -342,7 +343,7 @@ func (o *ClusterDescription20240805) GetConnectionStringsOk() (*ClusterConnectio
 }
 
 // HasConnectionStrings returns a boolean if a field has been set.
-func (o *ClusterDescription20240805) HasConnectionStrings() bool {
+func (o *AtlasTenantClusterUpgradeRequest20240805) HasConnectionStrings() bool {
 	if o != nil && !IsNil(o.ConnectionStrings) {
 		return true
 	}
@@ -351,12 +352,12 @@ func (o *ClusterDescription20240805) HasConnectionStrings() bool {
 }
 
 // SetConnectionStrings gets a reference to the given ClusterConnectionStrings and assigns it to the ConnectionStrings field.
-func (o *ClusterDescription20240805) SetConnectionStrings(v ClusterConnectionStrings) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) SetConnectionStrings(v ClusterConnectionStrings) {
 	o.ConnectionStrings = &v
 }
 
 // GetCreateDate returns the CreateDate field value if set, zero value otherwise
-func (o *ClusterDescription20240805) GetCreateDate() time.Time {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetCreateDate() time.Time {
 	if o == nil || IsNil(o.CreateDate) {
 		var ret time.Time
 		return ret
@@ -366,7 +367,7 @@ func (o *ClusterDescription20240805) GetCreateDate() time.Time {
 
 // GetCreateDateOk returns a tuple with the CreateDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterDescription20240805) GetCreateDateOk() (*time.Time, bool) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetCreateDateOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.CreateDate) {
 		return nil, false
 	}
@@ -375,7 +376,7 @@ func (o *ClusterDescription20240805) GetCreateDateOk() (*time.Time, bool) {
 }
 
 // HasCreateDate returns a boolean if a field has been set.
-func (o *ClusterDescription20240805) HasCreateDate() bool {
+func (o *AtlasTenantClusterUpgradeRequest20240805) HasCreateDate() bool {
 	if o != nil && !IsNil(o.CreateDate) {
 		return true
 	}
@@ -384,12 +385,12 @@ func (o *ClusterDescription20240805) HasCreateDate() bool {
 }
 
 // SetCreateDate gets a reference to the given time.Time and assigns it to the CreateDate field.
-func (o *ClusterDescription20240805) SetCreateDate(v time.Time) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) SetCreateDate(v time.Time) {
 	o.CreateDate = &v
 }
 
 // GetDiskWarmingMode returns the DiskWarmingMode field value if set, zero value otherwise
-func (o *ClusterDescription20240805) GetDiskWarmingMode() string {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetDiskWarmingMode() string {
 	if o == nil || IsNil(o.DiskWarmingMode) {
 		var ret string
 		return ret
@@ -399,7 +400,7 @@ func (o *ClusterDescription20240805) GetDiskWarmingMode() string {
 
 // GetDiskWarmingModeOk returns a tuple with the DiskWarmingMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterDescription20240805) GetDiskWarmingModeOk() (*string, bool) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetDiskWarmingModeOk() (*string, bool) {
 	if o == nil || IsNil(o.DiskWarmingMode) {
 		return nil, false
 	}
@@ -408,7 +409,7 @@ func (o *ClusterDescription20240805) GetDiskWarmingModeOk() (*string, bool) {
 }
 
 // HasDiskWarmingMode returns a boolean if a field has been set.
-func (o *ClusterDescription20240805) HasDiskWarmingMode() bool {
+func (o *AtlasTenantClusterUpgradeRequest20240805) HasDiskWarmingMode() bool {
 	if o != nil && !IsNil(o.DiskWarmingMode) {
 		return true
 	}
@@ -417,12 +418,12 @@ func (o *ClusterDescription20240805) HasDiskWarmingMode() bool {
 }
 
 // SetDiskWarmingMode gets a reference to the given string and assigns it to the DiskWarmingMode field.
-func (o *ClusterDescription20240805) SetDiskWarmingMode(v string) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) SetDiskWarmingMode(v string) {
 	o.DiskWarmingMode = &v
 }
 
 // GetEncryptionAtRestProvider returns the EncryptionAtRestProvider field value if set, zero value otherwise
-func (o *ClusterDescription20240805) GetEncryptionAtRestProvider() string {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetEncryptionAtRestProvider() string {
 	if o == nil || IsNil(o.EncryptionAtRestProvider) {
 		var ret string
 		return ret
@@ -432,7 +433,7 @@ func (o *ClusterDescription20240805) GetEncryptionAtRestProvider() string {
 
 // GetEncryptionAtRestProviderOk returns a tuple with the EncryptionAtRestProvider field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterDescription20240805) GetEncryptionAtRestProviderOk() (*string, bool) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetEncryptionAtRestProviderOk() (*string, bool) {
 	if o == nil || IsNil(o.EncryptionAtRestProvider) {
 		return nil, false
 	}
@@ -441,7 +442,7 @@ func (o *ClusterDescription20240805) GetEncryptionAtRestProviderOk() (*string, b
 }
 
 // HasEncryptionAtRestProvider returns a boolean if a field has been set.
-func (o *ClusterDescription20240805) HasEncryptionAtRestProvider() bool {
+func (o *AtlasTenantClusterUpgradeRequest20240805) HasEncryptionAtRestProvider() bool {
 	if o != nil && !IsNil(o.EncryptionAtRestProvider) {
 		return true
 	}
@@ -450,12 +451,12 @@ func (o *ClusterDescription20240805) HasEncryptionAtRestProvider() bool {
 }
 
 // SetEncryptionAtRestProvider gets a reference to the given string and assigns it to the EncryptionAtRestProvider field.
-func (o *ClusterDescription20240805) SetEncryptionAtRestProvider(v string) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) SetEncryptionAtRestProvider(v string) {
 	o.EncryptionAtRestProvider = &v
 }
 
 // GetFeatureCompatibilityVersion returns the FeatureCompatibilityVersion field value if set, zero value otherwise
-func (o *ClusterDescription20240805) GetFeatureCompatibilityVersion() string {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetFeatureCompatibilityVersion() string {
 	if o == nil || IsNil(o.FeatureCompatibilityVersion) {
 		var ret string
 		return ret
@@ -465,7 +466,7 @@ func (o *ClusterDescription20240805) GetFeatureCompatibilityVersion() string {
 
 // GetFeatureCompatibilityVersionOk returns a tuple with the FeatureCompatibilityVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterDescription20240805) GetFeatureCompatibilityVersionOk() (*string, bool) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetFeatureCompatibilityVersionOk() (*string, bool) {
 	if o == nil || IsNil(o.FeatureCompatibilityVersion) {
 		return nil, false
 	}
@@ -474,7 +475,7 @@ func (o *ClusterDescription20240805) GetFeatureCompatibilityVersionOk() (*string
 }
 
 // HasFeatureCompatibilityVersion returns a boolean if a field has been set.
-func (o *ClusterDescription20240805) HasFeatureCompatibilityVersion() bool {
+func (o *AtlasTenantClusterUpgradeRequest20240805) HasFeatureCompatibilityVersion() bool {
 	if o != nil && !IsNil(o.FeatureCompatibilityVersion) {
 		return true
 	}
@@ -483,12 +484,12 @@ func (o *ClusterDescription20240805) HasFeatureCompatibilityVersion() bool {
 }
 
 // SetFeatureCompatibilityVersion gets a reference to the given string and assigns it to the FeatureCompatibilityVersion field.
-func (o *ClusterDescription20240805) SetFeatureCompatibilityVersion(v string) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) SetFeatureCompatibilityVersion(v string) {
 	o.FeatureCompatibilityVersion = &v
 }
 
 // GetFeatureCompatibilityVersionExpirationDate returns the FeatureCompatibilityVersionExpirationDate field value if set, zero value otherwise
-func (o *ClusterDescription20240805) GetFeatureCompatibilityVersionExpirationDate() time.Time {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetFeatureCompatibilityVersionExpirationDate() time.Time {
 	if o == nil || IsNil(o.FeatureCompatibilityVersionExpirationDate) {
 		var ret time.Time
 		return ret
@@ -498,7 +499,7 @@ func (o *ClusterDescription20240805) GetFeatureCompatibilityVersionExpirationDat
 
 // GetFeatureCompatibilityVersionExpirationDateOk returns a tuple with the FeatureCompatibilityVersionExpirationDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterDescription20240805) GetFeatureCompatibilityVersionExpirationDateOk() (*time.Time, bool) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetFeatureCompatibilityVersionExpirationDateOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.FeatureCompatibilityVersionExpirationDate) {
 		return nil, false
 	}
@@ -507,7 +508,7 @@ func (o *ClusterDescription20240805) GetFeatureCompatibilityVersionExpirationDat
 }
 
 // HasFeatureCompatibilityVersionExpirationDate returns a boolean if a field has been set.
-func (o *ClusterDescription20240805) HasFeatureCompatibilityVersionExpirationDate() bool {
+func (o *AtlasTenantClusterUpgradeRequest20240805) HasFeatureCompatibilityVersionExpirationDate() bool {
 	if o != nil && !IsNil(o.FeatureCompatibilityVersionExpirationDate) {
 		return true
 	}
@@ -516,12 +517,12 @@ func (o *ClusterDescription20240805) HasFeatureCompatibilityVersionExpirationDat
 }
 
 // SetFeatureCompatibilityVersionExpirationDate gets a reference to the given time.Time and assigns it to the FeatureCompatibilityVersionExpirationDate field.
-func (o *ClusterDescription20240805) SetFeatureCompatibilityVersionExpirationDate(v time.Time) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) SetFeatureCompatibilityVersionExpirationDate(v time.Time) {
 	o.FeatureCompatibilityVersionExpirationDate = &v
 }
 
 // GetGlobalClusterSelfManagedSharding returns the GlobalClusterSelfManagedSharding field value if set, zero value otherwise
-func (o *ClusterDescription20240805) GetGlobalClusterSelfManagedSharding() bool {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetGlobalClusterSelfManagedSharding() bool {
 	if o == nil || IsNil(o.GlobalClusterSelfManagedSharding) {
 		var ret bool
 		return ret
@@ -531,7 +532,7 @@ func (o *ClusterDescription20240805) GetGlobalClusterSelfManagedSharding() bool 
 
 // GetGlobalClusterSelfManagedShardingOk returns a tuple with the GlobalClusterSelfManagedSharding field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterDescription20240805) GetGlobalClusterSelfManagedShardingOk() (*bool, bool) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetGlobalClusterSelfManagedShardingOk() (*bool, bool) {
 	if o == nil || IsNil(o.GlobalClusterSelfManagedSharding) {
 		return nil, false
 	}
@@ -540,7 +541,7 @@ func (o *ClusterDescription20240805) GetGlobalClusterSelfManagedShardingOk() (*b
 }
 
 // HasGlobalClusterSelfManagedSharding returns a boolean if a field has been set.
-func (o *ClusterDescription20240805) HasGlobalClusterSelfManagedSharding() bool {
+func (o *AtlasTenantClusterUpgradeRequest20240805) HasGlobalClusterSelfManagedSharding() bool {
 	if o != nil && !IsNil(o.GlobalClusterSelfManagedSharding) {
 		return true
 	}
@@ -549,12 +550,12 @@ func (o *ClusterDescription20240805) HasGlobalClusterSelfManagedSharding() bool 
 }
 
 // SetGlobalClusterSelfManagedSharding gets a reference to the given bool and assigns it to the GlobalClusterSelfManagedSharding field.
-func (o *ClusterDescription20240805) SetGlobalClusterSelfManagedSharding(v bool) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) SetGlobalClusterSelfManagedSharding(v bool) {
 	o.GlobalClusterSelfManagedSharding = &v
 }
 
 // GetGroupId returns the GroupId field value if set, zero value otherwise
-func (o *ClusterDescription20240805) GetGroupId() string {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetGroupId() string {
 	if o == nil || IsNil(o.GroupId) {
 		var ret string
 		return ret
@@ -564,7 +565,7 @@ func (o *ClusterDescription20240805) GetGroupId() string {
 
 // GetGroupIdOk returns a tuple with the GroupId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterDescription20240805) GetGroupIdOk() (*string, bool) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetGroupIdOk() (*string, bool) {
 	if o == nil || IsNil(o.GroupId) {
 		return nil, false
 	}
@@ -573,7 +574,7 @@ func (o *ClusterDescription20240805) GetGroupIdOk() (*string, bool) {
 }
 
 // HasGroupId returns a boolean if a field has been set.
-func (o *ClusterDescription20240805) HasGroupId() bool {
+func (o *AtlasTenantClusterUpgradeRequest20240805) HasGroupId() bool {
 	if o != nil && !IsNil(o.GroupId) {
 		return true
 	}
@@ -582,12 +583,12 @@ func (o *ClusterDescription20240805) HasGroupId() bool {
 }
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
-func (o *ClusterDescription20240805) SetGroupId(v string) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) SetGroupId(v string) {
 	o.GroupId = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise
-func (o *ClusterDescription20240805) GetId() string {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
@@ -597,7 +598,7 @@ func (o *ClusterDescription20240805) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterDescription20240805) GetIdOk() (*string, bool) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -606,7 +607,7 @@ func (o *ClusterDescription20240805) GetIdOk() (*string, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *ClusterDescription20240805) HasId() bool {
+func (o *AtlasTenantClusterUpgradeRequest20240805) HasId() bool {
 	if o != nil && !IsNil(o.Id) {
 		return true
 	}
@@ -615,13 +616,13 @@ func (o *ClusterDescription20240805) HasId() bool {
 }
 
 // SetId gets a reference to the given string and assigns it to the Id field.
-func (o *ClusterDescription20240805) SetId(v string) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) SetId(v string) {
 	o.Id = &v
 }
 
 // GetLabels returns the Labels field value if set, zero value otherwise
 // Deprecated
-func (o *ClusterDescription20240805) GetLabels() []ComponentLabel {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetLabels() []ComponentLabel {
 	if o == nil || IsNil(o.Labels) {
 		var ret []ComponentLabel
 		return ret
@@ -632,7 +633,7 @@ func (o *ClusterDescription20240805) GetLabels() []ComponentLabel {
 // GetLabelsOk returns a tuple with the Labels field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // Deprecated
-func (o *ClusterDescription20240805) GetLabelsOk() (*[]ComponentLabel, bool) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetLabelsOk() (*[]ComponentLabel, bool) {
 	if o == nil || IsNil(o.Labels) {
 		return nil, false
 	}
@@ -641,7 +642,7 @@ func (o *ClusterDescription20240805) GetLabelsOk() (*[]ComponentLabel, bool) {
 }
 
 // HasLabels returns a boolean if a field has been set.
-func (o *ClusterDescription20240805) HasLabels() bool {
+func (o *AtlasTenantClusterUpgradeRequest20240805) HasLabels() bool {
 	if o != nil && !IsNil(o.Labels) {
 		return true
 	}
@@ -651,12 +652,12 @@ func (o *ClusterDescription20240805) HasLabels() bool {
 
 // SetLabels gets a reference to the given []ComponentLabel and assigns it to the Labels field.
 // Deprecated
-func (o *ClusterDescription20240805) SetLabels(v []ComponentLabel) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) SetLabels(v []ComponentLabel) {
 	o.Labels = &v
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
-func (o *ClusterDescription20240805) GetLinks() []Link {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
 		return ret
@@ -666,7 +667,7 @@ func (o *ClusterDescription20240805) GetLinks() []Link {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterDescription20240805) GetLinksOk() (*[]Link, bool) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -675,7 +676,7 @@ func (o *ClusterDescription20240805) GetLinksOk() (*[]Link, bool) {
 }
 
 // HasLinks returns a boolean if a field has been set.
-func (o *ClusterDescription20240805) HasLinks() bool {
+func (o *AtlasTenantClusterUpgradeRequest20240805) HasLinks() bool {
 	if o != nil && !IsNil(o.Links) {
 		return true
 	}
@@ -684,12 +685,12 @@ func (o *ClusterDescription20240805) HasLinks() bool {
 }
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
-func (o *ClusterDescription20240805) SetLinks(v []Link) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) SetLinks(v []Link) {
 	o.Links = &v
 }
 
 // GetMongoDBEmployeeAccessGrant returns the MongoDBEmployeeAccessGrant field value if set, zero value otherwise
-func (o *ClusterDescription20240805) GetMongoDBEmployeeAccessGrant() EmployeeAccessGrant {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetMongoDBEmployeeAccessGrant() EmployeeAccessGrant {
 	if o == nil || IsNil(o.MongoDBEmployeeAccessGrant) {
 		var ret EmployeeAccessGrant
 		return ret
@@ -699,7 +700,7 @@ func (o *ClusterDescription20240805) GetMongoDBEmployeeAccessGrant() EmployeeAcc
 
 // GetMongoDBEmployeeAccessGrantOk returns a tuple with the MongoDBEmployeeAccessGrant field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterDescription20240805) GetMongoDBEmployeeAccessGrantOk() (*EmployeeAccessGrant, bool) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetMongoDBEmployeeAccessGrantOk() (*EmployeeAccessGrant, bool) {
 	if o == nil || IsNil(o.MongoDBEmployeeAccessGrant) {
 		return nil, false
 	}
@@ -708,7 +709,7 @@ func (o *ClusterDescription20240805) GetMongoDBEmployeeAccessGrantOk() (*Employe
 }
 
 // HasMongoDBEmployeeAccessGrant returns a boolean if a field has been set.
-func (o *ClusterDescription20240805) HasMongoDBEmployeeAccessGrant() bool {
+func (o *AtlasTenantClusterUpgradeRequest20240805) HasMongoDBEmployeeAccessGrant() bool {
 	if o != nil && !IsNil(o.MongoDBEmployeeAccessGrant) {
 		return true
 	}
@@ -717,12 +718,12 @@ func (o *ClusterDescription20240805) HasMongoDBEmployeeAccessGrant() bool {
 }
 
 // SetMongoDBEmployeeAccessGrant gets a reference to the given EmployeeAccessGrant and assigns it to the MongoDBEmployeeAccessGrant field.
-func (o *ClusterDescription20240805) SetMongoDBEmployeeAccessGrant(v EmployeeAccessGrant) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) SetMongoDBEmployeeAccessGrant(v EmployeeAccessGrant) {
 	o.MongoDBEmployeeAccessGrant = &v
 }
 
 // GetMongoDBMajorVersion returns the MongoDBMajorVersion field value if set, zero value otherwise
-func (o *ClusterDescription20240805) GetMongoDBMajorVersion() string {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetMongoDBMajorVersion() string {
 	if o == nil || IsNil(o.MongoDBMajorVersion) {
 		var ret string
 		return ret
@@ -732,7 +733,7 @@ func (o *ClusterDescription20240805) GetMongoDBMajorVersion() string {
 
 // GetMongoDBMajorVersionOk returns a tuple with the MongoDBMajorVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterDescription20240805) GetMongoDBMajorVersionOk() (*string, bool) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetMongoDBMajorVersionOk() (*string, bool) {
 	if o == nil || IsNil(o.MongoDBMajorVersion) {
 		return nil, false
 	}
@@ -741,7 +742,7 @@ func (o *ClusterDescription20240805) GetMongoDBMajorVersionOk() (*string, bool) 
 }
 
 // HasMongoDBMajorVersion returns a boolean if a field has been set.
-func (o *ClusterDescription20240805) HasMongoDBMajorVersion() bool {
+func (o *AtlasTenantClusterUpgradeRequest20240805) HasMongoDBMajorVersion() bool {
 	if o != nil && !IsNil(o.MongoDBMajorVersion) {
 		return true
 	}
@@ -750,12 +751,12 @@ func (o *ClusterDescription20240805) HasMongoDBMajorVersion() bool {
 }
 
 // SetMongoDBMajorVersion gets a reference to the given string and assigns it to the MongoDBMajorVersion field.
-func (o *ClusterDescription20240805) SetMongoDBMajorVersion(v string) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) SetMongoDBMajorVersion(v string) {
 	o.MongoDBMajorVersion = &v
 }
 
 // GetMongoDBVersion returns the MongoDBVersion field value if set, zero value otherwise
-func (o *ClusterDescription20240805) GetMongoDBVersion() string {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetMongoDBVersion() string {
 	if o == nil || IsNil(o.MongoDBVersion) {
 		var ret string
 		return ret
@@ -765,7 +766,7 @@ func (o *ClusterDescription20240805) GetMongoDBVersion() string {
 
 // GetMongoDBVersionOk returns a tuple with the MongoDBVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterDescription20240805) GetMongoDBVersionOk() (*string, bool) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetMongoDBVersionOk() (*string, bool) {
 	if o == nil || IsNil(o.MongoDBVersion) {
 		return nil, false
 	}
@@ -774,7 +775,7 @@ func (o *ClusterDescription20240805) GetMongoDBVersionOk() (*string, bool) {
 }
 
 // HasMongoDBVersion returns a boolean if a field has been set.
-func (o *ClusterDescription20240805) HasMongoDBVersion() bool {
+func (o *AtlasTenantClusterUpgradeRequest20240805) HasMongoDBVersion() bool {
 	if o != nil && !IsNil(o.MongoDBVersion) {
 		return true
 	}
@@ -783,45 +784,36 @@ func (o *ClusterDescription20240805) HasMongoDBVersion() bool {
 }
 
 // SetMongoDBVersion gets a reference to the given string and assigns it to the MongoDBVersion field.
-func (o *ClusterDescription20240805) SetMongoDBVersion(v string) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) SetMongoDBVersion(v string) {
 	o.MongoDBVersion = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise
-func (o *ClusterDescription20240805) GetName() string {
-	if o == nil || IsNil(o.Name) {
+// GetName returns the Name field value
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetName() string {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *ClusterDescription20240805) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetNameOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.Name, true
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *ClusterDescription20240805) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
-func (o *ClusterDescription20240805) SetName(v string) {
-	o.Name = &v
+// SetName sets field value
+func (o *AtlasTenantClusterUpgradeRequest20240805) SetName(v string) {
+	o.Name = v
 }
 
 // GetPaused returns the Paused field value if set, zero value otherwise
-func (o *ClusterDescription20240805) GetPaused() bool {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetPaused() bool {
 	if o == nil || IsNil(o.Paused) {
 		var ret bool
 		return ret
@@ -831,7 +823,7 @@ func (o *ClusterDescription20240805) GetPaused() bool {
 
 // GetPausedOk returns a tuple with the Paused field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterDescription20240805) GetPausedOk() (*bool, bool) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetPausedOk() (*bool, bool) {
 	if o == nil || IsNil(o.Paused) {
 		return nil, false
 	}
@@ -840,7 +832,7 @@ func (o *ClusterDescription20240805) GetPausedOk() (*bool, bool) {
 }
 
 // HasPaused returns a boolean if a field has been set.
-func (o *ClusterDescription20240805) HasPaused() bool {
+func (o *AtlasTenantClusterUpgradeRequest20240805) HasPaused() bool {
 	if o != nil && !IsNil(o.Paused) {
 		return true
 	}
@@ -849,12 +841,12 @@ func (o *ClusterDescription20240805) HasPaused() bool {
 }
 
 // SetPaused gets a reference to the given bool and assigns it to the Paused field.
-func (o *ClusterDescription20240805) SetPaused(v bool) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) SetPaused(v bool) {
 	o.Paused = &v
 }
 
 // GetPitEnabled returns the PitEnabled field value if set, zero value otherwise
-func (o *ClusterDescription20240805) GetPitEnabled() bool {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetPitEnabled() bool {
 	if o == nil || IsNil(o.PitEnabled) {
 		var ret bool
 		return ret
@@ -864,7 +856,7 @@ func (o *ClusterDescription20240805) GetPitEnabled() bool {
 
 // GetPitEnabledOk returns a tuple with the PitEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterDescription20240805) GetPitEnabledOk() (*bool, bool) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetPitEnabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.PitEnabled) {
 		return nil, false
 	}
@@ -873,7 +865,7 @@ func (o *ClusterDescription20240805) GetPitEnabledOk() (*bool, bool) {
 }
 
 // HasPitEnabled returns a boolean if a field has been set.
-func (o *ClusterDescription20240805) HasPitEnabled() bool {
+func (o *AtlasTenantClusterUpgradeRequest20240805) HasPitEnabled() bool {
 	if o != nil && !IsNil(o.PitEnabled) {
 		return true
 	}
@@ -882,12 +874,12 @@ func (o *ClusterDescription20240805) HasPitEnabled() bool {
 }
 
 // SetPitEnabled gets a reference to the given bool and assigns it to the PitEnabled field.
-func (o *ClusterDescription20240805) SetPitEnabled(v bool) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) SetPitEnabled(v bool) {
 	o.PitEnabled = &v
 }
 
 // GetRedactClientLogData returns the RedactClientLogData field value if set, zero value otherwise
-func (o *ClusterDescription20240805) GetRedactClientLogData() bool {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetRedactClientLogData() bool {
 	if o == nil || IsNil(o.RedactClientLogData) {
 		var ret bool
 		return ret
@@ -897,7 +889,7 @@ func (o *ClusterDescription20240805) GetRedactClientLogData() bool {
 
 // GetRedactClientLogDataOk returns a tuple with the RedactClientLogData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterDescription20240805) GetRedactClientLogDataOk() (*bool, bool) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetRedactClientLogDataOk() (*bool, bool) {
 	if o == nil || IsNil(o.RedactClientLogData) {
 		return nil, false
 	}
@@ -906,7 +898,7 @@ func (o *ClusterDescription20240805) GetRedactClientLogDataOk() (*bool, bool) {
 }
 
 // HasRedactClientLogData returns a boolean if a field has been set.
-func (o *ClusterDescription20240805) HasRedactClientLogData() bool {
+func (o *AtlasTenantClusterUpgradeRequest20240805) HasRedactClientLogData() bool {
 	if o != nil && !IsNil(o.RedactClientLogData) {
 		return true
 	}
@@ -915,12 +907,12 @@ func (o *ClusterDescription20240805) HasRedactClientLogData() bool {
 }
 
 // SetRedactClientLogData gets a reference to the given bool and assigns it to the RedactClientLogData field.
-func (o *ClusterDescription20240805) SetRedactClientLogData(v bool) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) SetRedactClientLogData(v bool) {
 	o.RedactClientLogData = &v
 }
 
 // GetReplicaSetScalingStrategy returns the ReplicaSetScalingStrategy field value if set, zero value otherwise
-func (o *ClusterDescription20240805) GetReplicaSetScalingStrategy() string {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetReplicaSetScalingStrategy() string {
 	if o == nil || IsNil(o.ReplicaSetScalingStrategy) {
 		var ret string
 		return ret
@@ -930,7 +922,7 @@ func (o *ClusterDescription20240805) GetReplicaSetScalingStrategy() string {
 
 // GetReplicaSetScalingStrategyOk returns a tuple with the ReplicaSetScalingStrategy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterDescription20240805) GetReplicaSetScalingStrategyOk() (*string, bool) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetReplicaSetScalingStrategyOk() (*string, bool) {
 	if o == nil || IsNil(o.ReplicaSetScalingStrategy) {
 		return nil, false
 	}
@@ -939,7 +931,7 @@ func (o *ClusterDescription20240805) GetReplicaSetScalingStrategyOk() (*string, 
 }
 
 // HasReplicaSetScalingStrategy returns a boolean if a field has been set.
-func (o *ClusterDescription20240805) HasReplicaSetScalingStrategy() bool {
+func (o *AtlasTenantClusterUpgradeRequest20240805) HasReplicaSetScalingStrategy() bool {
 	if o != nil && !IsNil(o.ReplicaSetScalingStrategy) {
 		return true
 	}
@@ -948,12 +940,12 @@ func (o *ClusterDescription20240805) HasReplicaSetScalingStrategy() bool {
 }
 
 // SetReplicaSetScalingStrategy gets a reference to the given string and assigns it to the ReplicaSetScalingStrategy field.
-func (o *ClusterDescription20240805) SetReplicaSetScalingStrategy(v string) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) SetReplicaSetScalingStrategy(v string) {
 	o.ReplicaSetScalingStrategy = &v
 }
 
 // GetReplicationSpecs returns the ReplicationSpecs field value if set, zero value otherwise
-func (o *ClusterDescription20240805) GetReplicationSpecs() []ReplicationSpec20240805 {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetReplicationSpecs() []ReplicationSpec20240805 {
 	if o == nil || IsNil(o.ReplicationSpecs) {
 		var ret []ReplicationSpec20240805
 		return ret
@@ -963,7 +955,7 @@ func (o *ClusterDescription20240805) GetReplicationSpecs() []ReplicationSpec2024
 
 // GetReplicationSpecsOk returns a tuple with the ReplicationSpecs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterDescription20240805) GetReplicationSpecsOk() (*[]ReplicationSpec20240805, bool) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetReplicationSpecsOk() (*[]ReplicationSpec20240805, bool) {
 	if o == nil || IsNil(o.ReplicationSpecs) {
 		return nil, false
 	}
@@ -972,7 +964,7 @@ func (o *ClusterDescription20240805) GetReplicationSpecsOk() (*[]ReplicationSpec
 }
 
 // HasReplicationSpecs returns a boolean if a field has been set.
-func (o *ClusterDescription20240805) HasReplicationSpecs() bool {
+func (o *AtlasTenantClusterUpgradeRequest20240805) HasReplicationSpecs() bool {
 	if o != nil && !IsNil(o.ReplicationSpecs) {
 		return true
 	}
@@ -981,12 +973,12 @@ func (o *ClusterDescription20240805) HasReplicationSpecs() bool {
 }
 
 // SetReplicationSpecs gets a reference to the given []ReplicationSpec20240805 and assigns it to the ReplicationSpecs field.
-func (o *ClusterDescription20240805) SetReplicationSpecs(v []ReplicationSpec20240805) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) SetReplicationSpecs(v []ReplicationSpec20240805) {
 	o.ReplicationSpecs = &v
 }
 
 // GetRootCertType returns the RootCertType field value if set, zero value otherwise
-func (o *ClusterDescription20240805) GetRootCertType() string {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetRootCertType() string {
 	if o == nil || IsNil(o.RootCertType) {
 		var ret string
 		return ret
@@ -996,7 +988,7 @@ func (o *ClusterDescription20240805) GetRootCertType() string {
 
 // GetRootCertTypeOk returns a tuple with the RootCertType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterDescription20240805) GetRootCertTypeOk() (*string, bool) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetRootCertTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.RootCertType) {
 		return nil, false
 	}
@@ -1005,7 +997,7 @@ func (o *ClusterDescription20240805) GetRootCertTypeOk() (*string, bool) {
 }
 
 // HasRootCertType returns a boolean if a field has been set.
-func (o *ClusterDescription20240805) HasRootCertType() bool {
+func (o *AtlasTenantClusterUpgradeRequest20240805) HasRootCertType() bool {
 	if o != nil && !IsNil(o.RootCertType) {
 		return true
 	}
@@ -1014,12 +1006,12 @@ func (o *ClusterDescription20240805) HasRootCertType() bool {
 }
 
 // SetRootCertType gets a reference to the given string and assigns it to the RootCertType field.
-func (o *ClusterDescription20240805) SetRootCertType(v string) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) SetRootCertType(v string) {
 	o.RootCertType = &v
 }
 
 // GetStateName returns the StateName field value if set, zero value otherwise
-func (o *ClusterDescription20240805) GetStateName() string {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetStateName() string {
 	if o == nil || IsNil(o.StateName) {
 		var ret string
 		return ret
@@ -1029,7 +1021,7 @@ func (o *ClusterDescription20240805) GetStateName() string {
 
 // GetStateNameOk returns a tuple with the StateName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterDescription20240805) GetStateNameOk() (*string, bool) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetStateNameOk() (*string, bool) {
 	if o == nil || IsNil(o.StateName) {
 		return nil, false
 	}
@@ -1038,7 +1030,7 @@ func (o *ClusterDescription20240805) GetStateNameOk() (*string, bool) {
 }
 
 // HasStateName returns a boolean if a field has been set.
-func (o *ClusterDescription20240805) HasStateName() bool {
+func (o *AtlasTenantClusterUpgradeRequest20240805) HasStateName() bool {
 	if o != nil && !IsNil(o.StateName) {
 		return true
 	}
@@ -1047,12 +1039,12 @@ func (o *ClusterDescription20240805) HasStateName() bool {
 }
 
 // SetStateName gets a reference to the given string and assigns it to the StateName field.
-func (o *ClusterDescription20240805) SetStateName(v string) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) SetStateName(v string) {
 	o.StateName = &v
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise
-func (o *ClusterDescription20240805) GetTags() []ResourceTag {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetTags() []ResourceTag {
 	if o == nil || IsNil(o.Tags) {
 		var ret []ResourceTag
 		return ret
@@ -1062,7 +1054,7 @@ func (o *ClusterDescription20240805) GetTags() []ResourceTag {
 
 // GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterDescription20240805) GetTagsOk() (*[]ResourceTag, bool) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetTagsOk() (*[]ResourceTag, bool) {
 	if o == nil || IsNil(o.Tags) {
 		return nil, false
 	}
@@ -1071,7 +1063,7 @@ func (o *ClusterDescription20240805) GetTagsOk() (*[]ResourceTag, bool) {
 }
 
 // HasTags returns a boolean if a field has been set.
-func (o *ClusterDescription20240805) HasTags() bool {
+func (o *AtlasTenantClusterUpgradeRequest20240805) HasTags() bool {
 	if o != nil && !IsNil(o.Tags) {
 		return true
 	}
@@ -1080,12 +1072,12 @@ func (o *ClusterDescription20240805) HasTags() bool {
 }
 
 // SetTags gets a reference to the given []ResourceTag and assigns it to the Tags field.
-func (o *ClusterDescription20240805) SetTags(v []ResourceTag) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) SetTags(v []ResourceTag) {
 	o.Tags = &v
 }
 
 // GetTerminationProtectionEnabled returns the TerminationProtectionEnabled field value if set, zero value otherwise
-func (o *ClusterDescription20240805) GetTerminationProtectionEnabled() bool {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetTerminationProtectionEnabled() bool {
 	if o == nil || IsNil(o.TerminationProtectionEnabled) {
 		var ret bool
 		return ret
@@ -1095,7 +1087,7 @@ func (o *ClusterDescription20240805) GetTerminationProtectionEnabled() bool {
 
 // GetTerminationProtectionEnabledOk returns a tuple with the TerminationProtectionEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterDescription20240805) GetTerminationProtectionEnabledOk() (*bool, bool) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetTerminationProtectionEnabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.TerminationProtectionEnabled) {
 		return nil, false
 	}
@@ -1104,7 +1096,7 @@ func (o *ClusterDescription20240805) GetTerminationProtectionEnabledOk() (*bool,
 }
 
 // HasTerminationProtectionEnabled returns a boolean if a field has been set.
-func (o *ClusterDescription20240805) HasTerminationProtectionEnabled() bool {
+func (o *AtlasTenantClusterUpgradeRequest20240805) HasTerminationProtectionEnabled() bool {
 	if o != nil && !IsNil(o.TerminationProtectionEnabled) {
 		return true
 	}
@@ -1113,12 +1105,12 @@ func (o *ClusterDescription20240805) HasTerminationProtectionEnabled() bool {
 }
 
 // SetTerminationProtectionEnabled gets a reference to the given bool and assigns it to the TerminationProtectionEnabled field.
-func (o *ClusterDescription20240805) SetTerminationProtectionEnabled(v bool) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) SetTerminationProtectionEnabled(v bool) {
 	o.TerminationProtectionEnabled = &v
 }
 
 // GetVersionReleaseSystem returns the VersionReleaseSystem field value if set, zero value otherwise
-func (o *ClusterDescription20240805) GetVersionReleaseSystem() string {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetVersionReleaseSystem() string {
 	if o == nil || IsNil(o.VersionReleaseSystem) {
 		var ret string
 		return ret
@@ -1128,7 +1120,7 @@ func (o *ClusterDescription20240805) GetVersionReleaseSystem() string {
 
 // GetVersionReleaseSystemOk returns a tuple with the VersionReleaseSystem field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterDescription20240805) GetVersionReleaseSystemOk() (*string, bool) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetVersionReleaseSystemOk() (*string, bool) {
 	if o == nil || IsNil(o.VersionReleaseSystem) {
 		return nil, false
 	}
@@ -1137,7 +1129,7 @@ func (o *ClusterDescription20240805) GetVersionReleaseSystemOk() (*string, bool)
 }
 
 // HasVersionReleaseSystem returns a boolean if a field has been set.
-func (o *ClusterDescription20240805) HasVersionReleaseSystem() bool {
+func (o *AtlasTenantClusterUpgradeRequest20240805) HasVersionReleaseSystem() bool {
 	if o != nil && !IsNil(o.VersionReleaseSystem) {
 		return true
 	}
@@ -1146,6 +1138,6 @@ func (o *ClusterDescription20240805) HasVersionReleaseSystem() bool {
 }
 
 // SetVersionReleaseSystem gets a reference to the given string and assigns it to the VersionReleaseSystem field.
-func (o *ClusterDescription20240805) SetVersionReleaseSystem(v string) {
+func (o *AtlasTenantClusterUpgradeRequest20240805) SetVersionReleaseSystem(v string) {
 	o.VersionReleaseSystem = &v
 }
