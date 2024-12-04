@@ -30,7 +30,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113001/admin"
+    "go.mongodb.org/atlas-sdk/v20241113002/admin"
 )
 
 func main() {
@@ -112,7 +112,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113001/admin"
+    "go.mongodb.org/atlas-sdk/v20241113002/admin"
 )
 
 func main() {
@@ -195,7 +195,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113001/admin"
+    "go.mongodb.org/atlas-sdk/v20241113002/admin"
 )
 
 func main() {
@@ -278,7 +278,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113001/admin"
+    "go.mongodb.org/atlas-sdk/v20241113002/admin"
 )
 
 func main() {
@@ -364,7 +364,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113001/admin"
+    "go.mongodb.org/atlas-sdk/v20241113002/admin"
 )
 
 func main() {
@@ -434,7 +434,7 @@ Name | Type | Description  | Notes
 
 ## UpgradeFlexCluster
 
-> FlexClusterDescription20241113 UpgradeFlexCluster(ctx, groupId, flexClusterDescription20241113 FlexClusterDescription20241113).Execute()
+> FlexClusterDescription20241113 UpgradeFlexCluster(ctx, groupId, atlasTenantClusterUpgradeRequest20240805 AtlasTenantClusterUpgradeRequest20240805).Execute()
 
 Upgrade One Flex Cluster
 
@@ -449,7 +449,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113001/admin"
+    "go.mongodb.org/atlas-sdk/v20241113002/admin"
 )
 
 func main() {
@@ -463,9 +463,9 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    flexClusterDescription20241113 := *openapiclient.NewFlexClusterDescription20241113(*openapiclient.NewFlexProviderSettings20241113()) // FlexClusterDescription20241113 | 
+    atlasTenantClusterUpgradeRequest20240805 := *openapiclient.NewAtlasTenantClusterUpgradeRequest20240805("Name_example") // AtlasTenantClusterUpgradeRequest20240805 | 
 
-    resp, r, err := sdk.FlexClustersApi.UpgradeFlexCluster(context.Background(), groupId, &flexClusterDescription20241113).Execute()
+    resp, r, err := sdk.FlexClustersApi.UpgradeFlexCluster(context.Background(), groupId, &atlasTenantClusterUpgradeRequest20240805).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FlexClustersApi.UpgradeFlexCluster`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -495,7 +495,7 @@ Other parameters are passed through a pointer to a apiUpgradeFlexClusterRequest 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **flexClusterDescription20241113** | [**FlexClusterDescription20241113**](FlexClusterDescription20241113.md) | Details of the flex cluster upgrade in the specified project. | 
+ **atlasTenantClusterUpgradeRequest20240805** | [**AtlasTenantClusterUpgradeRequest20240805**](AtlasTenantClusterUpgradeRequest20240805.md) | Details of the flex cluster upgrade in the specified project. | 
 
 ### Return type
 
