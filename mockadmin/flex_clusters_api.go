@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20241113001/admin"
+	admin "go.mongodb.org/atlas-sdk/v20241113002/admin"
 
 	http "net/http"
 
@@ -835,17 +835,17 @@ func (_c *FlexClustersApi_UpdateFlexClusterWithParams_Call) RunAndReturn(run fun
 	return _c
 }
 
-// UpgradeFlexCluster provides a mock function with given fields: ctx, groupId, flexClusterDescription20241113
-func (_m *FlexClustersApi) UpgradeFlexCluster(ctx context.Context, groupId string, flexClusterDescription20241113 *admin.FlexClusterDescription20241113) admin.UpgradeFlexClusterApiRequest {
-	ret := _m.Called(ctx, groupId, flexClusterDescription20241113)
+// UpgradeFlexCluster provides a mock function with given fields: ctx, groupId, atlasTenantClusterUpgradeRequest20240805
+func (_m *FlexClustersApi) UpgradeFlexCluster(ctx context.Context, groupId string, atlasTenantClusterUpgradeRequest20240805 *admin.AtlasTenantClusterUpgradeRequest20240805) admin.UpgradeFlexClusterApiRequest {
+	ret := _m.Called(ctx, groupId, atlasTenantClusterUpgradeRequest20240805)
 
 	if len(ret) == 0 {
 		panic("no return value specified for UpgradeFlexCluster")
 	}
 
 	var r0 admin.UpgradeFlexClusterApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.FlexClusterDescription20241113) admin.UpgradeFlexClusterApiRequest); ok {
-		r0 = rf(ctx, groupId, flexClusterDescription20241113)
+	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.AtlasTenantClusterUpgradeRequest20240805) admin.UpgradeFlexClusterApiRequest); ok {
+		r0 = rf(ctx, groupId, atlasTenantClusterUpgradeRequest20240805)
 	} else {
 		r0 = ret.Get(0).(admin.UpgradeFlexClusterApiRequest)
 	}
@@ -861,14 +861,14 @@ type FlexClustersApi_UpgradeFlexCluster_Call struct {
 // UpgradeFlexCluster is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-//   - flexClusterDescription20241113 *admin.FlexClusterDescription20241113
-func (_e *FlexClustersApi_Expecter) UpgradeFlexCluster(ctx any, groupId any, flexClusterDescription20241113 any) *FlexClustersApi_UpgradeFlexCluster_Call {
-	return &FlexClustersApi_UpgradeFlexCluster_Call{Call: _e.mock.On("UpgradeFlexCluster", ctx, groupId, flexClusterDescription20241113)}
+//   - atlasTenantClusterUpgradeRequest20240805 *admin.AtlasTenantClusterUpgradeRequest20240805
+func (_e *FlexClustersApi_Expecter) UpgradeFlexCluster(ctx any, groupId any, atlasTenantClusterUpgradeRequest20240805 any) *FlexClustersApi_UpgradeFlexCluster_Call {
+	return &FlexClustersApi_UpgradeFlexCluster_Call{Call: _e.mock.On("UpgradeFlexCluster", ctx, groupId, atlasTenantClusterUpgradeRequest20240805)}
 }
 
-func (_c *FlexClustersApi_UpgradeFlexCluster_Call) Run(run func(ctx context.Context, groupId string, flexClusterDescription20241113 *admin.FlexClusterDescription20241113)) *FlexClustersApi_UpgradeFlexCluster_Call {
+func (_c *FlexClustersApi_UpgradeFlexCluster_Call) Run(run func(ctx context.Context, groupId string, atlasTenantClusterUpgradeRequest20240805 *admin.AtlasTenantClusterUpgradeRequest20240805)) *FlexClustersApi_UpgradeFlexCluster_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(*admin.FlexClusterDescription20241113))
+		run(args[0].(context.Context), args[1].(string), args[2].(*admin.AtlasTenantClusterUpgradeRequest20240805))
 	})
 	return _c
 }
@@ -878,7 +878,7 @@ func (_c *FlexClustersApi_UpgradeFlexCluster_Call) Return(_a0 admin.UpgradeFlexC
 	return _c
 }
 
-func (_c *FlexClustersApi_UpgradeFlexCluster_Call) RunAndReturn(run func(context.Context, string, *admin.FlexClusterDescription20241113) admin.UpgradeFlexClusterApiRequest) *FlexClustersApi_UpgradeFlexCluster_Call {
+func (_c *FlexClustersApi_UpgradeFlexCluster_Call) RunAndReturn(run func(context.Context, string, *admin.AtlasTenantClusterUpgradeRequest20240805) admin.UpgradeFlexClusterApiRequest) *FlexClustersApi_UpgradeFlexCluster_Call {
 	_c.Call.Return(run)
 	return _c
 }
