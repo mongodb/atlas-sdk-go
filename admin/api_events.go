@@ -116,7 +116,7 @@ type EventsApi interface {
 	/*
 			ListProjectEvents Return All Events from One Project
 
-			Returns one event for the specified project. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting API Key must have the Project Read Only role.
+			Returns all events for the specified project. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting API Key must have the Project Read Only role.
 
 		This resource remains under revision and may change.
 
@@ -888,7 +888,7 @@ func (r ListProjectEventsApiRequest) Execute() (*GroupPaginatedEvent, *http.Resp
 /*
 ListProjectEvents Return All Events from One Project
 
-Returns one event for the specified project. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting API Key must have the Project Read Only role.
+Returns all events for the specified project. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting API Key must have the Project Read Only role.
 
 This resource remains under revision and may change.
 

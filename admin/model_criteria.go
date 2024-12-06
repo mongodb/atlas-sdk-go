@@ -10,7 +10,7 @@ type Criteria struct {
 	Query *string `json:"query,omitempty"`
 	// Indexed database parameter that stores the date that determines when data moves to the online archive. MongoDB Cloud archives the data when the current date exceeds the date in this database parameter plus the number of days specified through the **expireAfterDays** parameter. Set this parameter when you set `\"criteria.type\" : \"DATE\"`.
 	DateField *string `json:"dateField,omitempty"`
-	// Syntax used to write the date after which data moves to the online archive. Date can be expressed as ISO 8601 or Epoch timestamps. The Epoch timestamp can be expressed as nanoseconds, milliseconds, or seconds. Set this parameter when **\"criteria.type\" : \"DATE\"**. You must set **\"criteria.type\" : \"DATE\"** if **\"collectionType\": \"TIMESERIES\"**.
+	// Syntax used to write the date after which data moves to the online archive. Date can be expressed as ISO 8601, Epoch timestamps, or ObjectId. The Epoch timestamp can be expressed as nanoseconds, milliseconds, or seconds. Set this parameter when **\"criteria.type\" : \"DATE\"**. You must set **\"criteria.type\" : \"DATE\"** if **\"collectionType\": \"TIMESERIES\"**.
 	DateFormat *string `json:"dateFormat,omitempty"`
 	// Number of days after the value in the **criteria.dateField** when MongoDB Cloud archives data in the specified cluster. Set this parameter when you set **\"criteria.type\" : \"DATE\"**.
 	ExpireAfterDays *int `json:"expireAfterDays,omitempty"`
