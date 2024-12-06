@@ -6,6 +6,8 @@ package admin
 type VectorSearchIndexDefinition struct {
 	// Settings that configure the fields, one per object, to index. You must define at least one \"vector\" type field. You can optionally define \"filter\" type fields also.
 	Fields *[]any `json:"fields,omitempty"`
+	// Number of index partitions. Note: This feature is currently in preview.
+	NumPartitions *int `json:"numPartitions,omitempty"`
 }
 
 // NewVectorSearchIndexDefinition instantiates a new VectorSearchIndexDefinition object
@@ -14,6 +16,8 @@ type VectorSearchIndexDefinition struct {
 // will change when the set of required properties is changed
 func NewVectorSearchIndexDefinition() *VectorSearchIndexDefinition {
 	this := VectorSearchIndexDefinition{}
+	var numPartitions int = 1
+	this.NumPartitions = &numPartitions
 	return &this
 }
 
@@ -22,6 +26,8 @@ func NewVectorSearchIndexDefinition() *VectorSearchIndexDefinition {
 // but it doesn't guarantee that properties required by API are set
 func NewVectorSearchIndexDefinitionWithDefaults() *VectorSearchIndexDefinition {
 	this := VectorSearchIndexDefinition{}
+	var numPartitions int = 1
+	this.NumPartitions = &numPartitions
 	return &this
 }
 
@@ -56,4 +62,37 @@ func (o *VectorSearchIndexDefinition) HasFields() bool {
 // SetFields gets a reference to the given []any and assigns it to the Fields field.
 func (o *VectorSearchIndexDefinition) SetFields(v []any) {
 	o.Fields = &v
+}
+
+// GetNumPartitions returns the NumPartitions field value if set, zero value otherwise
+func (o *VectorSearchIndexDefinition) GetNumPartitions() int {
+	if o == nil || IsNil(o.NumPartitions) {
+		var ret int
+		return ret
+	}
+	return *o.NumPartitions
+}
+
+// GetNumPartitionsOk returns a tuple with the NumPartitions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VectorSearchIndexDefinition) GetNumPartitionsOk() (*int, bool) {
+	if o == nil || IsNil(o.NumPartitions) {
+		return nil, false
+	}
+
+	return o.NumPartitions, true
+}
+
+// HasNumPartitions returns a boolean if a field has been set.
+func (o *VectorSearchIndexDefinition) HasNumPartitions() bool {
+	if o != nil && !IsNil(o.NumPartitions) {
+		return true
+	}
+
+	return false
+}
+
+// SetNumPartitions gets a reference to the given int and assigns it to the NumPartitions field.
+func (o *VectorSearchIndexDefinition) SetNumPartitions(v int) {
+	o.NumPartitions = &v
 }

@@ -8,7 +8,7 @@ info:
     ```
     curl --user "{PUBLIC-KEY}:{PRIVATE-KEY}" \
       --digest \
-      --header "Accept: application/vnd.atlas.2024-11-13+json" \
+      --header "Accept: application/vnd.atlas.2043-01-01+json" \
       -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/dbAccessHistory/clusters/{clusterName}?pretty=true"
     ```
 
@@ -21,7 +21,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: f611126a305b6658a7cb45c1331f485910e7c298
+  x-xgen-sha: 85131f44d5543a6c42acbe9e9d942aba7dd6156b
 servers:
 - url: https://cloud.mongodb.com
 security:
@@ -2788,29 +2788,35 @@ paths:
                         autoIndexing:
                           enabled: false
                         compute:
-                          enabled: false
+                          enabled: true
+                          maxInstanceSize: M40
+                          minInstanceSize: M30
+                          scaleDownEnabled: true
                         diskGB:
                           enabled: true
                       analyticsSpecs:
                         diskSizeGB: 10.0
-                        instanceSize: M30
+                        instanceSize: M40
                         nodeCount: 0
                       autoScaling:
                         autoIndexing:
                           enabled: false
                         compute:
-                          enabled: false
+                          enabled: true
+                          maxInstanceSize: M60
+                          minInstanceSize: M30
+                          scaleDownEnabled: true
                         diskGB:
                           enabled: true
                       electableSpecs:
                         diskSizeGB: 10.0
-                        instanceSize: M30
+                        instanceSize: M60
                         nodeCount: 3
                       priority: 7
                       providerName: AWS
                       readOnlySpecs:
                         diskSizeGB: 10.0
-                        instanceSize: M30
+                        instanceSize: M60
                         nodeCount: 0
                       regionName: US_EAST_1
                     zoneName: Zone 1
@@ -2819,29 +2825,35 @@ paths:
                         autoIndexing:
                           enabled: false
                         compute:
-                          enabled: false
+                          enabled: true
+                          maxInstanceSize: M40
+                          minInstanceSize: M30
+                          scaleDownEnabled: true
                         diskGB:
                           enabled: true
                       analyticsSpecs:
                         diskSizeGB: 10.0
-                        instanceSize: M10
+                        instanceSize: M30
                         nodeCount: 0
                       autoScaling:
                         autoIndexing:
                           enabled: false
                         compute:
-                          enabled: false
+                          enabled: true
+                          maxInstanceSize: M60
+                          minInstanceSize: M30
+                          scaleDownEnabled: true
                         diskGB:
                           enabled: true
                       electableSpecs:
                         diskSizeGB: 10.0
-                        instanceSize: M10
+                        instanceSize: M40
                         nodeCount: 3
                       priority: 7
                       providerName: AWS
                       readOnlySpecs:
                         diskSizeGB: 10.0
-                        instanceSize: M10
+                        instanceSize: M40
                         nodeCount: 0
                       regionName: US_EAST_1
                     zoneName: Zone 1
@@ -5516,6 +5528,162 @@ paths:
       summary: Start an Outage Simulation
       tags:
       - Cluster Outage Simulation
+  /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/performanceAdvisor/dropIndexSuggestions:
+    get:
+      description: "Returns the indexes that the Performance Advisor suggests to drop.\
+        \ The Performance Advisor suggests dropping unused, redundant, and hidden\
+        \ indexes to improve write performance and increase storage space. To use\
+        \ this resource, the requesting API Key must have the Project Read Only role."
+      operationId: listDropIndexes
+      parameters:
+      - $ref: "#/components/parameters/groupId"
+      - description: Human-readable label that identifies the cluster.
+        in: path
+        name: clusterName
+        required: true
+        schema:
+          type: string
+          maxLength: 64
+          minLength: 1
+          pattern: "^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/PerformanceAdvisorResponse"
+              x-xgen-version: 2024-08-05
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Returns Suggested Indexes to Drop
+      tags:
+      - Performance Advisor
+  /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/performanceAdvisor/schemaAdvice:
+    get:
+      description: "Returns the schema suggestions that the Performance Advisor detects.\
+        \ The Performance Advisor provides holistic schema recommendations for your\
+        \ cluster by sampling documents in your most active collections and collections\
+        \ with slow-running queries. To use this resource, the requesting API Key\
+        \ must have the Project Read Only role."
+      operationId: listSchemaAdvice
+      parameters:
+      - $ref: "#/components/parameters/groupId"
+      - description: Human-readable label that identifies the cluster.
+        in: path
+        name: clusterName
+        required: true
+        schema:
+          type: string
+          maxLength: 64
+          minLength: 1
+          pattern: "^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/PerformanceAdvisorResponse"
+              x-xgen-version: 2024-08-05
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return Schema Advice
+      tags:
+      - Performance Advisor
+  /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/performanceAdvisor/suggestedIndexes:
+    get:
+      description: "Returns the indexes that the Performance Advisor suggests. The\
+        \ Performance Advisor monitors queries that MongoDB considers slow and suggests\
+        \ new indexes to improve query performance. To use this resource, the requesting\
+        \ API Key must have the Project Read Only role."
+      operationId: listClusterSuggestedIndexes
+      parameters:
+      - $ref: "#/components/parameters/groupId"
+      - description: Human-readable label that identifies the cluster.
+        in: path
+        name: clusterName
+        required: true
+        schema:
+          type: string
+          maxLength: 64
+          minLength: 1
+          pattern: "^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$"
+      - description: "ProcessIds from which to retrieve suggested indexes. A processId\
+          \ is a combination of host and port that serves the MongoDB process. The\
+          \ host must be the hostname, FQDN, IPv4 address, or IPv6 address of the\
+          \ host that runs the MongoDB process (`mongod` or `mongos`). The port must\
+          \ be the IANA port on which the MongoDB process listens for requests. To\
+          \ include multiple processIds, pass the parameter multiple times delimited\
+          \ with an ampersand (`&`) between each processId."
+        in: query
+        name: processIds
+        schema:
+          type: array
+          items:
+            type: string
+            pattern: "^([0-9]{1,3}\\.){3}[0-9]{1,3}|([0-9a-f]{1,4}\\:){7}([0-9a-f]{1,4})|(([a-z0-9]+\\\
+              .){1,10}[a-z]+)?(\\:[0-9]{4,5})$"
+        style: form
+      - description: "Namespaces from which to retrieve suggested indexes. A namespace\
+          \ consists of one database and one collection resource written as `.`: `<database>.<collection>`.\
+          \ To include multiple namespaces, pass the parameter multiple times delimited\
+          \ with an ampersand (`&`) between each namespace. Omit this parameter to\
+          \ return results for all namespaces."
+        in: query
+        name: namespaces
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+      - description: |-
+          Date and time from which the query retrieves the suggested indexes. This parameter expresses its value in the number of milliseconds that have elapsed since the [UNIX epoch](https://en.wikipedia.org/wiki/Unix_time).
+
+          - If you don't specify the **until** parameter, the endpoint returns data covering from the **since** value and the current time.
+          - If you specify neither the **since** nor the **until** parameters, the endpoint returns data from the previous 24 hours.
+        in: query
+        name: since
+        schema:
+          type: integer
+          format: int64
+          minimum: 1199145600000
+      - description: |-
+          Date and time up until which the query retrieves the suggested indexes. This parameter expresses its value in the number of milliseconds that have elapsed since the [UNIX epoch](https://en.wikipedia.org/wiki/Unix_time).
+
+          - If you specify the **until** parameter, you must specify the **since** parameter.
+          - If you specify neither the **since** nor the **until** parameters, the endpoint returns data from the previous 24 hours.
+        in: query
+        name: until
+        schema:
+          type: integer
+          format: int64
+          minimum: 1199145600000
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/PerformanceAdvisorResponse"
+              x-xgen-version: 2024-08-05
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return Suggested Indexes
+      tags:
+      - Performance Advisor
   /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/processArgs:
     get:
       description: "Returns the advanced configuration details for one cluster in\
@@ -8966,7 +9134,7 @@ paths:
   /api/atlas/v2/groups/{groupId}/events:
     get:
       description: |-
-        Returns one event for the specified project. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting API Key must have the Project Read Only role.
+        Returns all events for the specified project. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting API Key must have the Project Read Only role.
 
         This resource remains under revision and may change.
       operationId: listProjectEvents
@@ -15669,6 +15837,55 @@ paths:
       summary: Get One Stream Processor
       tags:
       - Streams
+    patch:
+      description: "Modify one existing Stream Processor within the specified stream\
+        \ instance. To use this resource, the requesting API Key must have the Project\
+        \ Owner role or Project Stream Processing Owner role."
+      operationId: modifyStreamProcessor
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/pretty"
+      - $ref: "#/components/parameters/groupId"
+      - description: Human-readable label that identifies the stream instance.
+        in: path
+        name: tenantName
+        required: true
+        schema:
+          type: string
+      - description: Human-readable label that identifies the stream processor.
+        in: path
+        name: processorName
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/vnd.atlas.2024-05-30+json:
+            schema:
+              $ref: "#/components/schemas/StreamsModifyStreamProcessor"
+        description: Modifications to apply to the stream processor.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-05-30+json:
+              schema:
+                $ref: "#/components/schemas/StreamsProcessorWithStats"
+              x-xgen-version: 2024-05-30
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Modify One Stream Processor
+      tags:
+      - Streams
   /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:start:
     post:
       description: "Start a Stream Processor within the specified stream instance.\
@@ -16227,10 +16444,56 @@ paths:
       summary: Return All Users in One Project
       tags:
       - Projects
+    post:
+      description: "Adds one MongoDB Cloud user to one project. To use this resource,\
+        \ the requesting API Key must have the Group User Admin role. \n- If the user\
+        \ has a pending invitation to join the project's organization, MongoDB Cloud\
+        \ modifies it and grants project access. \n- If the user doesn't have an invitation\
+        \ to join the organization, MongoDB Cloud sends a new invitation that grants\
+        \ the user organization and project access. \n- If the user is already active\
+        \ in the project's organization, MongoDB Cloud grants access to the project.\
+        \ \n"
+      operationId: addProjectUser
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/groupId"
+      - $ref: "#/components/parameters/pretty"
+      requestBody:
+        content:
+          application/vnd.atlas.2043-01-01+json:
+            schema:
+              $ref: "#/components/schemas/GroupUserRequest"
+        description: The active or pending MongoDB Cloud user that you want to add
+          to the specified project.
+        required: true
+      responses:
+        "201":
+          content:
+            application/vnd.atlas.2043-01-01+json:
+              schema:
+                $ref: "#/components/schemas/GroupUserResponse"
+              x-xgen-version: 2043-01-01
+          description: Created
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Add One MongoDB Cloud User to One Project
+      tags:
+      - MongoDB Cloud Users
   /api/atlas/v2/groups/{groupId}/users/{userId}:
     delete:
       description: "Removes the specified user from the specified project. To use\
-        \ this resource, the requesting API Key must have the Project Owner role."
+        \ this resource, the requesting API Key must have the Project Owner role.\
+        \ Deprecated versions: v2-{2023-01-01}"
       operationId: removeProjectUser
       parameters:
       - $ref: "#/components/parameters/envelope"
@@ -16251,8 +16514,10 @@ paths:
       responses:
         "204":
           content:
-            application/vnd.atlas.2023-01-01+json:
-              x-xgen-version: 2023-01-01
+            application/vnd.atlas.2043-01-01+json:
+              schema:
+                $ref: "#/components/schemas/NoBody"
+              x-xgen-version: 2043-01-01
           description: This endpoint does not return a response body.
         "400":
           $ref: "#/components/responses/badRequest"
@@ -16265,6 +16530,51 @@ paths:
       summary: Remove One User from One Project
       tags:
       - Projects
+    get:
+      description: |-
+        Returns information about the specified MongoDB Cloud user within the context of the specified project. To use this resource, the requesting API Key must have the Group Read Only role.
+
+        **Note**: You can only use this resource to fetch information about MongoDB Cloud human users. To return information about an API Key, use the [Return One Organization API Key](#tag/Programmatic-API-Keys/operation/getApiKey) endpoint.
+
+        **Note**: This resource does not return information about pending users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
+      operationId: getProjectUser
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/groupId"
+      - $ref: "#/components/parameters/pretty"
+      - description: "Unique 24-hexadecimal digit string that identifies the pending\
+          \ or active user in the project. If you need to lookup a user's userId or\
+          \ verify a user's status in the organization, use the Return All MongoDB\
+          \ Cloud Users in One Project resource and filter by username."
+        in: path
+        name: userId
+        required: true
+        schema:
+          type: string
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2043-01-01+json:
+              schema:
+                $ref: "#/components/schemas/GroupUserResponse"
+              x-xgen-version: 2043-01-01
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return One MongoDB Cloud User in One Project
+      tags:
+      - MongoDB Cloud Users
   /api/atlas/v2/groups/{groupId}/users/{userId}/roles:
     put:
       description: "Updates the roles of the specified user in the specified project.\
@@ -16312,6 +16622,112 @@ paths:
       summary: Update Project Roles for One MongoDB Cloud User
       tags:
       - Projects
+  /api/atlas/v2/groups/{groupId}/users/{userId}:addRole:
+    post:
+      description: |-
+        Adds one project-level role to the MongoDB Cloud user. You can add a role to an active user or a user that has been invited to join the project. To use this resource, the requesting API Key must have the Project Owner role.
+
+        **Note**: This resource cannot be used to add a role to users invited using the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
+      operationId: addProjectRole
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/groupId"
+      - $ref: "#/components/parameters/pretty"
+      - description: "Unique 24-hexadecimal digit string that identifies the pending\
+          \ or active user in the project. If you need to lookup a user's userId or\
+          \ verify a user's status in the organization, use the Return All MongoDB\
+          \ Cloud Users in One Project resource and filter by username."
+        in: path
+        name: userId
+        required: true
+        schema:
+          type: string
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+      requestBody:
+        content:
+          application/vnd.atlas.2043-01-01+json:
+            schema:
+              $ref: "#/components/schemas/AddOrRemoveGroupRole"
+        description: Project-level role to assign to the MongoDB Cloud user.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2043-01-01+json:
+              schema:
+                $ref: "#/components/schemas/OrgUserResponse"
+              x-xgen-version: 2043-01-01
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Add One Project Role to One MongoDB Cloud User
+      tags:
+      - MongoDB Cloud Users
+  /api/atlas/v2/groups/{groupId}/users/{userId}:removeRole:
+    post:
+      description: |-
+        Removes one project-level role from the MongoDB Cloud user. You can remove a role from an active user or a user that has been invited to join the project. To replace a user's only role, add the new role before removing the old role. A user must have at least one role at all times. To use this resource, the requesting API Key must have the Project Owner role.
+
+        **Note**: This resource cannot be used to remove a role from users invited using the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
+      operationId: removeProjectRole
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/groupId"
+      - $ref: "#/components/parameters/pretty"
+      - description: "Unique 24-hexadecimal digit string that identifies the pending\
+          \ or active user in the project. If you need to lookup a user's userId or\
+          \ verify a user's status in the organization, use the Return All MongoDB\
+          \ Cloud Users in One Project resource and filter by username."
+        in: path
+        name: userId
+        required: true
+        schema:
+          type: string
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+      requestBody:
+        content:
+          application/vnd.atlas.2043-01-01+json:
+            schema:
+              $ref: "#/components/schemas/AddOrRemoveGroupRole"
+        description: Project-level role to remove from the MongoDB Cloud user.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2043-01-01+json:
+              schema:
+                $ref: "#/components/schemas/OrgUserResponse"
+              x-xgen-version: 2043-01-01
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Remove One Project Role from One MongoDB Cloud User
+      tags:
+      - MongoDB Cloud Users
   /api/atlas/v2/groups/{groupId}:migrate:
     post:
       description: "Migrates a project from its current organization to another organization.\
@@ -16495,9 +16911,9 @@ paths:
       tags:
       - Organizations
     patch:
-      description: "Renames one organization. To use this resource, the requesting\
+      description: "Updates one organization. To use this resource, the requesting\
         \ API Key must have the Organization Owner role."
-      operationId: renameOrganization
+      operationId: updateOrganization
       parameters:
       - $ref: "#/components/parameters/envelope"
       - $ref: "#/components/parameters/orgId"
@@ -16527,7 +16943,7 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      summary: Rename One Organization
+      summary: Update One Organization
       tags:
       - Organizations
   /api/atlas/v2/orgs/{orgId}/apiKeys:
@@ -18791,7 +19207,7 @@ paths:
         \ using its unique 24-hexadecimal digit identifier. This team belongs to one\
         \ organization. Teams enable you to grant project access roles to MongoDB\
         \ Cloud users. To use this resource, the requesting API Key must have the\
-        \ Organization Member role."
+        \ Organization Member role. Deprecated versions: v2-{2023-01-01}"
       externalDocs:
         description: Manage Organization Teams
         url: https://docs.atlas.mongodb.com/access/manage-teams-in-orgs/#std-label-manage-teams
@@ -18815,10 +19231,10 @@ paths:
       responses:
         "200":
           content:
-            application/vnd.atlas.2023-01-01+json:
+            application/vnd.atlas.2043-01-01+json:
               schema:
-                $ref: "#/components/schemas/PaginatedAppUserView"
-              x-xgen-version: 2023-01-01
+                $ref: "#/components/schemas/PaginatedOrgUserView"
+              x-xgen-version: 2043-01-01
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
@@ -18939,13 +19355,113 @@ paths:
       summary: Remove One MongoDB Cloud User from One Team
       tags:
       - Teams
+  /api/atlas/v2/orgs/{orgId}/teams/{teamId}:addUser:
+    post:
+      description: |-
+        Adds one MongoDB Cloud user to one team. You can add an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting API Key must have the Organization Owner role.
+
+        **Note**: This resource cannot be used to add a user invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
+      operationId: addUserToTeam
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/orgId"
+      - $ref: "#/components/parameters/pretty"
+      - description: Unique 24-hexadecimal digit string that identifies the team to
+          add the MongoDB Cloud user to.
+        in: path
+        name: teamId
+        required: true
+        schema:
+          type: string
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+      requestBody:
+        content:
+          application/vnd.atlas.2043-01-01+json:
+            schema:
+              $ref: "#/components/schemas/AddOrRemoveUserFromTeam"
+        description: The active or pending MongoDB Cloud user that you want to add
+          to the specified team.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2043-01-01+json:
+              schema:
+                $ref: "#/components/schemas/OrgUserResponse"
+              x-xgen-version: 2043-01-01
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Add One MongoDB Cloud User to One Team
+      tags:
+      - MongoDB Cloud Users
+  /api/atlas/v2/orgs/{orgId}/teams/{teamId}:removeUser:
+    post:
+      description: |-
+        Removes one MongoDB Cloud user from one team. You can remove an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting API Key must have the Organization Owner role.
+
+        **Note**: This resource cannot be used to remove a user invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
+      operationId: removeUserFromTeam
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/orgId"
+      - $ref: "#/components/parameters/pretty"
+      - description: Unique 24-hexadecimal digit string that identifies the team to
+          remove the MongoDB user from.
+        in: path
+        name: teamId
+        required: true
+        schema:
+          type: string
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+      requestBody:
+        content:
+          application/vnd.atlas.2043-01-01+json:
+            schema:
+              $ref: "#/components/schemas/AddOrRemoveUserFromTeam"
+        description: The id of the active or pending MongoDB Cloud user that you want
+          to remove from the specified team.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2043-01-01+json:
+              schema:
+                $ref: "#/components/schemas/OrgUserResponse"
+              x-xgen-version: 2043-01-01
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Remove One MongoDB Cloud User from One Team
+      tags:
+      - MongoDB Cloud Users
   /api/atlas/v2/orgs/{orgId}/users:
     get:
       description: "Returns details about the MongoDB Cloud users associated with\
         \ the specified organization. Each MongoDB Cloud user returned must belong\
         \ to the specified organization or to a project within the specified organization.\
         \ To use this resource, the requesting API Key must have the Organization\
-        \ Member role."
+        \ Member role. Deprecated versions: v2-{2023-01-01}"
       operationId: listOrganizationUsers
       parameters:
       - $ref: "#/components/parameters/envelope"
@@ -18957,10 +19473,10 @@ paths:
       responses:
         "200":
           content:
-            application/vnd.atlas.2023-01-01+json:
+            application/vnd.atlas.2043-01-01+json:
               schema:
-                $ref: "#/components/schemas/PaginatedAppUserView"
-              x-xgen-version: 2023-01-01
+                $ref: "#/components/schemas/PaginatedOrgUserView"
+              x-xgen-version: 2043-01-01
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
@@ -18973,11 +19489,51 @@ paths:
       summary: Return All MongoDB Cloud Users in One Organization
       tags:
       - Organizations
+    post:
+      description: |-
+        Invites one new or existing MongoDB Cloud user to join the organization. The invitation to join the organization will be sent to the username provided and must be accepted within 30 days. To use this resource, the requesting API Key must have the Organization Owner role.
+
+        **Note**: If the user does not have an existing MongoDB Cloud account, they will be prompted to finish setting up an account upon accepting the invitation. If the user already has an account, they will still receive an invitation to access the organization.
+      operationId: createOrganizationUser
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/orgId"
+      - $ref: "#/components/parameters/pretty"
+      requestBody:
+        content:
+          application/vnd.atlas.2043-01-01+json:
+            schema:
+              $ref: "#/components/schemas/OrgUserRequest"
+        description: Represents the MongoDB Cloud user to be created within the organization.
+        required: true
+      responses:
+        "201":
+          content:
+            application/vnd.atlas.2043-01-01+json:
+              schema:
+                $ref: "#/components/schemas/OrgUserResponse"
+              x-xgen-version: 2043-01-01
+          description: Created
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Create One MongoDB Cloud User in One Organization
+      tags:
+      - MongoDB Cloud Users
   /api/atlas/v2/orgs/{orgId}/users/{userId}:
     delete:
       description: "Removes one MongoDB Cloud user from the specified organization.\
         \ To use this resource, the requesting API Key must have the Organization\
-        \ User Admin role."
+        \ User Admin role. Deprecated versions: v2-{2023-01-01}"
       operationId: removeOrganizationUser
       parameters:
       - $ref: "#/components/parameters/envelope"
@@ -18996,10 +19552,10 @@ paths:
       responses:
         "204":
           content:
-            application/vnd.atlas.2023-01-01+json:
+            application/vnd.atlas.2043-01-01+json:
               schema:
                 $ref: "#/components/schemas/NoBody"
-              x-xgen-version: 2023-01-01
+              x-xgen-version: 2043-01-01
           description: This endpoint does not return a response body.
         "400":
           $ref: "#/components/responses/badRequest"
@@ -19014,6 +19570,103 @@ paths:
       summary: Remove One MongoDB Cloud User From One Organization
       tags:
       - Organizations
+    get:
+      description: |-
+        Returns information about the specified MongoDB Cloud user within the context of the specified organization. To use this resource, the requesting API Key must have the Organization Read Only role.
+
+        **Note**: This resource can only be used to fetch information about MongoDB Cloud human users. To return information about an API Key, use the [Return One Organization API Key](#tag/Programmatic-API-Keys/operation/getApiKey) endpoint.
+
+        **Note**: This resource does not return information about pending users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
+      operationId: getOrganizationUser
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/orgId"
+      - $ref: "#/components/parameters/pretty"
+      - description: "Unique 24-hexadecimal digit string that identifies the pending\
+          \ or active user in the organization. If you need to lookup a user's userId\
+          \ or verify a user's status in the organization, use the Return All MongoDB\
+          \ Cloud Users in One Organization resource and filter by username."
+        in: path
+        name: userId
+        required: true
+        schema:
+          type: string
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2043-01-01+json:
+              schema:
+                $ref: "#/components/schemas/OrgUserResponse"
+              x-xgen-version: 2043-01-01
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return One MongoDB Cloud User in One Organization
+      tags:
+      - MongoDB Cloud Users
+    patch:
+      description: |-
+        Updates one MongoDB Cloud user in the specified organization. You can update an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting API Key must have the Organization Owner role.
+
+        **Note**: Only include the fields you wish to update in the request body. Supplying a field with an empty value will reset that field on the user.
+
+        **Note**: This resource cannot be used to update pending users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
+      operationId: updateOrganizationUser
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/orgId"
+      - $ref: "#/components/parameters/pretty"
+      - description: "Unique 24-hexadecimal digit string that identifies the pending\
+          \ or active user in the organization. If you need to lookup a user's userId\
+          \ or verify a user's status in the organization, use the Return All MongoDB\
+          \ Cloud Users in One Organization resource and filter by username."
+        in: path
+        name: userId
+        required: true
+        schema:
+          type: string
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+      requestBody:
+        content:
+          application/vnd.atlas.2043-01-01+json:
+            schema:
+              $ref: "#/components/schemas/OrgUserUpdateRequest"
+        description: Represents the roles and teams to assign the MongoDB Cloud user.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2043-01-01+json:
+              schema:
+                $ref: "#/components/schemas/OrgUserResponse"
+              x-xgen-version: 2043-01-01
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Update One MongoDB Cloud User in One Organization
+      tags:
+      - MongoDB Cloud Users
   /api/atlas/v2/orgs/{orgId}/users/{userId}/roles:
     put:
       description: "Updates the roles of the specified user in the specified organization.\
@@ -19061,6 +19714,114 @@ paths:
       summary: Update Organization Roles for One MongoDB Cloud User
       tags:
       - Organizations
+  /api/atlas/v2/orgs/{orgId}/users/{userId}:addRole:
+    post:
+      description: |-
+        Adds one organization-level role to the MongoDB Cloud user. You can add a role to an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting API Key must have the Organization Owner role.
+
+        **Note**: This operation is atomic.
+
+        **Note**: This resource cannot be used to add a role to users invited using the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
+      operationId: addOrganizationRole
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/orgId"
+      - $ref: "#/components/parameters/pretty"
+      - description: "Unique 24-hexadecimal digit string that identifies the pending\
+          \ or active user in the organization. If you need to lookup a user's userId\
+          \ or verify a user's status in the organization, use the Return All MongoDB\
+          \ Cloud Users in One Organization resource and filter by username."
+        in: path
+        name: userId
+        required: true
+        schema:
+          type: string
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+      requestBody:
+        content:
+          application/vnd.atlas.2043-01-01+json:
+            schema:
+              $ref: "#/components/schemas/AddOrRemoveOrgRole"
+        description: Organization-level role to assign to the MongoDB Cloud user.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2043-01-01+json:
+              schema:
+                $ref: "#/components/schemas/OrgUserResponse"
+              x-xgen-version: 2043-01-01
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Add One Organization Role to One MongoDB Cloud User
+      tags:
+      - MongoDB Cloud Users
+  /api/atlas/v2/orgs/{orgId}/users/{userId}:removeRole:
+    post:
+      description: |-
+        Removes one organization-level role from the MongoDB Cloud user. You can remove a role from an active user or a user that has not yet accepted the invitation to join the organization. To replace a user's only role, add the new role before removing the old role. A user must have at least one role at all times. To use this resource, the requesting API Key must have the Organization Owner role.
+
+        **Note**: This operation is atomic.
+
+        **Note**: This resource cannot be used to remove a role from users invited using the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
+      operationId: removeOrganizationRole
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/orgId"
+      - $ref: "#/components/parameters/pretty"
+      - description: "Unique 24-hexadecimal digit string that identifies the pending\
+          \ or active user in the organization. If you need to lookup a user's userId\
+          \ or verify a user's status in the organization, use the Return All MongoDB\
+          \ Cloud Users in One Organization resource and filter by username."
+        in: path
+        name: userId
+        required: true
+        schema:
+          type: string
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+      requestBody:
+        content:
+          application/vnd.atlas.2043-01-01+json:
+            schema:
+              $ref: "#/components/schemas/AddOrRemoveOrgRole"
+        description: Organization-level role to remove from the MongoDB Cloud user.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2043-01-01+json:
+              schema:
+                $ref: "#/components/schemas/OrgUserResponse"
+              x-xgen-version: 2043-01-01
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Remove One Organization Role from One MongoDB Cloud User
+      tags:
+      - MongoDB Cloud Users
   /api/atlas/v2/unauth/controlPlaneIPAddresses:
     get:
       description: Returns all control plane IP addresses.
@@ -19081,6 +19842,44 @@ paths:
       summary: Return All Control Plane IP Addresses
       tags:
       - Root
+  /api/atlas/v2/unauth/openapi/versions:
+    get:
+      description: API that provides a list of available versionsfor a given environment.
+      operationId: getApiVersions
+      parameters:
+      - $ref: "#/components/parameters/envelope"
+      - $ref: "#/components/parameters/itemsPerPage"
+      - $ref: "#/components/parameters/pageNum"
+      - $ref: "#/components/parameters/pretty"
+      - description: "The environment to get the versions from. If not provided, it\
+          \ returnsthe versions for the given MongoDB URL. (E.g. prod for cloud.mongodb.com)"
+        in: query
+        name: env
+        schema:
+          type: string
+          enum:
+          - dev
+          - qa
+          - prod
+          - stage
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedApiVersions"
+              x-xgen-version: 2024-08-05
+            application/vnd.atlas.2024-08-05+yaml:
+              schema:
+                $ref: "#/components/schemas/PaginatedApiVersions"
+              x-xgen-version: 2024-08-05
+          description: OK
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security: []
+      summary: Provides a list of versions for a given environment.
+      tags:
+      - OpenAPI
   /api/atlas/v2/users:
     post:
       description: |-
@@ -19515,6 +20314,9 @@ components:
         awsAccountId:
           type: string
           description: The AWS Account ID.
+        cidrBlock:
+          type: string
+          description: The VPC CIDR Block.
         links:
           type: array
           description: "List of one or more Uniform Resource Locators (URLs) that\
@@ -20301,6 +21103,23 @@ components:
             \ alert. By default this value is set to false. If set to true, it will\
             \ override the acknowledgedUntil parameter."
       title: Acknowledge Alert
+    AddOrRemoveGroupRole:
+      type: object
+      properties:
+        groupRole:
+          type: string
+          description: Project-level role.
+          enum:
+          - GROUP_OWNER
+          - GROUP_CLUSTER_MANAGER
+          - GROUP_STREAM_PROCESSING_OWNER
+          - GROUP_DATA_ACCESS_ADMIN
+          - GROUP_DATA_ACCESS_READ_WRITE
+          - GROUP_DATA_ACCESS_READ_ONLY
+          - GROUP_READ_ONLY
+          - GROUP_SEARCH_INDEX_EDITOR
+      required:
+      - groupRole
     AddOrRemoveOrgRole:
       type: object
       properties:
@@ -20648,6 +21467,7 @@ components:
           type: string
           description: Unique 24-hexadecimal digit string that identifies this backup
             policy.
+          example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
           pattern: "^([a-f0-9]{24})$"
@@ -23216,6 +24036,11 @@ components:
           maxLength: 64
           minLength: 1
           pattern: "^[\\p{L}\\p{N}\\-_.(),:&@+']{1,64}$"
+        skipDefaultAlertsSettings:
+          type: boolean
+          default: false
+          description: "Disables automatic alert creation. When set to true, no organization\
+            \ level alerts will be created automatically."
       required:
       - name
     AtlasResourcePolicyAuditForOrg:
@@ -23543,7 +24368,7 @@ components:
             \ version. The default is not guaranteed to be the most recently released\
             \ version throughout the entire release cycle. For versions available\
             \ in a specific project, see the linked documentation or use the API endpoint\
-            \ for [project LTS versions endpoint](#tag/Projects/operation/getProjectLTSVersions).\n\
+            \ for [project LTS versions endpoint](#tag/Projects/operation/getProjectLtsVersions).\n\
             \n On update: Increase version only by 1 major version at a time. If the\
             \ cluster is pinned to a MongoDB feature compatibility version exactly\
             \ one major version below the current MongoDB version, the MongoDB version\
@@ -24915,6 +25740,7 @@ components:
           type: string
           description: Unique 24-hexadecimal digit string that identifies this backup
             policy item.
+          example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
           pattern: "^([a-f0-9]{24})$"
@@ -25002,6 +25828,7 @@ components:
           type: string
           description: Unique 24-hexadecimal digit string that identifies this backup
             policy item.
+          example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
           pattern: "^([a-f0-9]{24})$"
@@ -25839,9 +26666,8 @@ components:
       - $ref: "#/components/schemas/AtlasDataFederationGCPRegion"
     BaseCloudProviderInstanceSize:
       type: object
-      description: "Minimum instance size to which your cluster can automatically\
-        \ scale. MongoDB Cloud requires this parameter if `\"replicationSpecs[n].regionConfigs[m].autoScaling.compute.scaleDownEnabled\"\
-        \ : true`."
+      description: Instance size boundary to which your cluster can automatically
+        scale.
       oneOf:
       - type: string
         enum:
@@ -26749,6 +27575,7 @@ components:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the payment
             that the organization had made.
+          example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
           pattern: "^([a-f0-9]{24})$"
@@ -27874,6 +28701,8 @@ components:
         roleId:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the role.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
           readOnly: true
       required:
       - providerName
@@ -29071,7 +29900,7 @@ components:
             \ version. The default is not guaranteed to be the most recently released\
             \ version throughout the entire release cycle. For versions available\
             \ in a specific project, see the linked documentation or use the API endpoint\
-            \ for [project LTS versions endpoint](#tag/Projects/operation/getProjectLTSVersions).\n\
+            \ for [project LTS versions endpoint](#tag/Projects/operation/getProjectLtsVersions).\n\
             \n On update: Increase version only by 1 major version at a time. If the\
             \ cluster is pinned to a MongoDB feature compatibility version exactly\
             \ one major version below the current MongoDB version, the MongoDB version\
@@ -29284,6 +30113,19 @@ components:
             description: This option corresponds to the `chunkMigrationConcurrency`
               `mongod` configuration file option.
             url: https://www.mongodb.com/docs/manual/reference/parameters/#mongodb-parameter-param.chunkMigrationConcurrency
+        customOpensslCipherConfigTls12:
+          type: array
+          description: The custom OpenSSL cipher suite list for TLS 1.2. This field
+            is only valid when `tlsCipherConfigMode` is set to `CUSTOM`.
+          externalDocs:
+            description: This option corresponds to the `opensslCipherConfig` `mongod`
+              configuration file option.
+            url: https://www.mongodb.com/docs/manual/reference/parameters/#mongodb-parameter-param.opensslCipherConfig
+          items:
+            type: string
+            enum:
+            - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+            - TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
         defaultMaxTimeMS:
           type: integer
           format: int32
@@ -29410,6 +30252,14 @@ components:
             description: This option corresponds to the `sampleSize` `mongosqld` option.
             url: https://docs.mongodb.com/bi-connector/current/reference/mongosqld/#std-option-mongosqld.--sampleSize
           minimum: 0
+        tlsCipherConfigMode:
+          type: string
+          description: The TLS cipher suite configuration mode. The default mode uses
+            the default cipher suites. The custom mode allows you to specify custom
+            cipher suites for both TLS 1.2 and TLS 1.3.
+          enum:
+          - CUSTOM
+          - DEFAULT
         transactionLifetimeLimitSeconds:
           type: integer
           format: int64
@@ -29452,6 +30302,19 @@ components:
             description: This option corresponds to the `chunkMigrationConcurrency`
               `mongod` configuration file option.
             url: https://www.mongodb.com/docs/manual/reference/parameters/#mongodb-parameter-param.chunkMigrationConcurrency
+        customOpensslCipherConfigTls12:
+          type: array
+          description: The custom OpenSSL cipher suite list for TLS 1.2. This field
+            is only valid when `tlsCipherConfigMode` is set to `CUSTOM`.
+          externalDocs:
+            description: This option corresponds to the `opensslCipherConfig` `mongod`
+              configuration file option.
+            url: https://www.mongodb.com/docs/manual/reference/parameters/#mongodb-parameter-param.opensslCipherConfig
+          items:
+            type: string
+            enum:
+            - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+            - TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
         defaultMaxTimeMS:
           type: integer
           format: int32
@@ -29552,6 +30415,14 @@ components:
             description: This option corresponds to the `sampleSize` `mongosqld` option.
             url: https://docs.mongodb.com/bi-connector/current/reference/mongosqld/#std-option-mongosqld.--sampleSize
           minimum: 0
+        tlsCipherConfigMode:
+          type: string
+          description: The TLS cipher suite configuration mode. The default mode uses
+            the default cipher suites. The custom mode allows you to specify custom
+            cipher suites for both TLS 1.2 and TLS 1.3.
+          enum:
+          - CUSTOM
+          - DEFAULT
         transactionLifetimeLimitSeconds:
           type: integer
           format: int64
@@ -29696,6 +30567,17 @@ components:
             - AWS
             - GCP
             - AZURE
+          effectiveInstanceSizeName:
+            type: string
+            description: The true tenant instance size. This is present to support
+              backwards compatibility for deprecated provider types and/or instance
+              sizes.
+            enum:
+            - FLEX
+            - M2
+            - M5
+            - M0
+            readOnly: true
           instanceSizeName:
             type: string
             description: "Cluster tier, with a default storage and memory capacity,\
@@ -29893,6 +30775,12 @@ components:
           type: string
           description: "Human-readable label that identifies this index. Within each\
             \ namespace, names of all indexes in the namespace must be unique."
+        numPartitions:
+          type: integer
+          format: int32
+          default: 1
+          description: "Number of index partitions. Note: This feature is currently\
+            \ in preview."
         status:
           type: string
           description: |
@@ -29969,6 +30857,8 @@ components:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the request
             project.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
           readOnly: true
         identifierId:
           type: string
@@ -30320,6 +31210,8 @@ components:
           - 61cfdfd00000000000000000
           items:
             type: string
+            example: 32b6e34b3d91647abb20e7b8
+            pattern: "^([a-f0-9]{24})$"
         endDate:
           type: string
           format: date
@@ -30349,6 +31241,8 @@ components:
           - 61cfdfd00000000000000000
           items:
             type: string
+            example: 32b6e34b3d91647abb20e7b8
+            pattern: "^([a-f0-9]{24})$"
         projects:
           type: array
           description: The list of projects to be included in the Cost Explorer Query.
@@ -30357,6 +31251,8 @@ components:
           - 61cfdfd00000000000000000
           items:
             type: string
+            example: 32b6e34b3d91647abb20e7b8
+            pattern: "^([a-f0-9]{24})$"
         services:
           type: array
           description: The list of projects to be included in the Cost Explorer Query.
@@ -30709,6 +31605,11 @@ components:
           maxLength: 24
           minLength: 24
           pattern: "^([a-f0-9]{24})$"
+        skipDefaultAlertsSettings:
+          type: boolean
+          default: false
+          description: "Disables automatic alert creation. When set to true, no organization\
+            \ level alerts will be created automatically."
       required:
       - name
     CreateOrganizationResponse:
@@ -30736,6 +31637,11 @@ components:
           readOnly: true
         organization:
           $ref: "#/components/schemas/AtlasOrganization"
+        skipDefaultAlertsSettings:
+          type: boolean
+          default: false
+          description: "Disables automatic alert creation. When set to true, no organization\
+            \ level alerts will be created automatically."
     CreatePushBasedLogExportProjectRequest:
       type: object
       properties:
@@ -30747,6 +31653,8 @@ components:
           type: string
           description: ID of the AWS IAM role that will be used to write to the S3
             bucket.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
         links:
           type: array
           description: "List of one or more Uniform Resource Locators (URLs) that\
@@ -31088,6 +31996,8 @@ components:
           type: string
           description: Unique identifier of the role that Data Federation can use
             to access the data stores. Required if specifying cloudProviderConfig.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
         servicePrincipalId:
           type: string
           description: The ID of the Service Principal for which there is an access
@@ -31114,6 +32024,8 @@ components:
           type: string
           description: Unique identifier of the role that Data Federation can use
             to access the data stores. Required if specifying cloudProviderConfig.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
       required:
       - roleId
     DataFederationLimit:
@@ -31294,6 +32206,8 @@ components:
           type: string
           description: Unique identifier of the role that the data lake can use to
             access the data stores.Required if specifying cloudProviderConfig.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
         testS3Bucket:
           type: string
           description: Name of the S3 data bucket that the provided role ID is authorized
@@ -32357,6 +33271,14 @@ components:
           readOnly: true
         currentValue:
           $ref: "#/components/schemas/DataMetricValueView"
+        deskLocation:
+          type: string
+          description: Desk location of MongoDB employee associated with the event.
+          readOnly: true
+        employeeIdentifier:
+          type: string
+          description: Identifier of MongoDB employee associated with the event.
+          readOnly: true
         eventTypeName:
           $ref: "#/components/schemas/HostMetricEventTypeView"
         groupId:
@@ -32967,6 +33889,17 @@ components:
           - US5
           - AP1
           - US1_FED
+        sendCollectionLatencyMetrics:
+          type: boolean
+          default: false
+          description: "Toggle sending collection latency metrics that includes database\
+            \ names and collection namesand latency metrics on reads, writes, commands,\
+            \ and transactions."
+        sendDatabaseMetrics:
+          type: boolean
+          default: false
+          description: "Toggle sending database metrics that includes database names\
+            \ and metrics on the number of collections, storage size, and index size."
         type:
           type: string
           description: Human-readable label that identifies the service to which you
@@ -33031,6 +33964,7 @@ components:
             to each notification method. This is needed when updating third-party
             notifications without requiring explicit authentication credentials.
           example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
         typeName:
           type: string
           description: Human-readable label that displays the alert notification type.
@@ -33084,13 +34018,14 @@ components:
             type: string
             default: ISODATE
             description: |-
-              Syntax used to write the date after which data moves to the online archive. Date can be expressed as ISO 8601 or Epoch timestamps. The Epoch timestamp can be expressed as nanoseconds, milliseconds, or seconds. Set this parameter when **"criteria.type" : "DATE"**.
+              Syntax used to write the date after which data moves to the online archive. Date can be expressed as ISO 8601, Epoch timestamps, or ObjectId. The Epoch timestamp can be expressed as nanoseconds, milliseconds, or seconds. Set this parameter when **"criteria.type" : "DATE"**.
               You must set **"criteria.type" : "DATE"** if **"collectionType": "TIMESERIES"**.
             enum:
             - ISODATE
             - EPOCH_SECONDS
             - EPOCH_MILLIS
             - EPOCH_NANOSECONDS
+            - OBJECT_ID
           expireAfterDays:
             type: integer
             format: int32
@@ -33190,6 +34125,15 @@ components:
             - CPS_SNAPSHOT_DOWNLOAD_REQUEST_FAILED
             - CPS_OPLOG_CAUGHT_UP
             title: Cps Backup Event Types
+          - type: string
+            enum:
+            - CPS_DATA_PROTECTION_ENABLE_REQUESTED
+            - CPS_DATA_PROTECTION_ENABLED
+            - CPS_DATA_PROTECTION_UPDATE_REQUESTED
+            - CPS_DATA_PROTECTION_UPDATED
+            - CPS_DATA_PROTECTION_DISABLE_REQUESTED
+            - CPS_DATA_PROTECTION_DISABLED
+            title: Data Protection Event Types
           - type: string
             enum:
             - FTS_INDEX_DELETION_FAILED
@@ -33467,6 +34411,15 @@ components:
             - DISK_AUTO_SCALE_MAX_DISK_SIZE_FAIL
             - DISK_AUTO_SCALE_OPLOG_FAIL
             title: NDS Auto Scaling Audit Types
+          - type: string
+            enum:
+            - CPS_DATA_PROTECTION_ENABLE_REQUESTED
+            - CPS_DATA_PROTECTION_ENABLED
+            - CPS_DATA_PROTECTION_UPDATE_REQUESTED
+            - CPS_DATA_PROTECTION_UPDATED
+            - CPS_DATA_PROTECTION_DISABLE_REQUESTED
+            - CPS_DATA_PROTECTION_DISABLED
+            title: Data Protection Event Types
           readOnly: true
         groupId:
           type: string
@@ -33608,6 +34561,7 @@ components:
             - CLUSTER_CONNECTION_AGGREGATE
             - CLUSTER_CONNECTION_CREATE_COLLECTION
             - CLUSTER_CONNECTION_SAMPLE_COLLECTION_FIELD_NAMES
+            - CLUSTER_CONNECTION_SAMPLE_COLLECTION_FIELD_NAMES_AND_TYPES
             title: Cluster Connection Audit Types
           - type: string
             enum:
@@ -33864,6 +34818,10 @@ components:
             - CLUSTER_OS_FIXED
             - CLUSTER_OS_UNFIXED
             title: Version Audit Types
+          - type: string
+            enum:
+            - EMPLOYEE_DOWNLOADED_CLUSTER_LOGS
+            title: Access Event Types
         groupId:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the project
@@ -34192,6 +35150,8 @@ components:
             \ there is only one zone in the cluster. To find the Replication Spec\
             \ Id, do a GET request to Return One Cluster in One Project and consult\
             \ the replicationSpecs array [Return One Cluster in One Project](#operation/getLegacyCluster)."
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
           writeOnly: true
         zoneId:
           type: string
@@ -34201,6 +35161,8 @@ components:
             \ zone in the cluster. To find the Zone Id, do a GET request to Return\
             \ One Cluster from One Project and consult the replicationSpecs array\
             \ [Return One Cluster from One Project](#operation/getCluster)."
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
           writeOnly: true
       writeOnly: true
     DeleteCopiedBackups20240805:
@@ -34231,6 +35193,8 @@ components:
             \ zone in the cluster. To find the Zone Id, do a GET request to Return\
             \ One Cluster from One Project and consult the replicationSpecs array\
             \ [Return One Cluster from One Project](#operation/getCluster)."
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
           writeOnly: true
       writeOnly: true
     Destination:
@@ -34328,6 +35292,7 @@ components:
           type: string
           description: Unique 24-hexadecimal digit string that identifies this backup
             policy item.
+          example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
           pattern: "^([a-f0-9]{24})$"
@@ -34390,6 +35355,8 @@ components:
             \ there is only one zone in the cluster. To find the Replication Spec\
             \ Id, do a GET request to Return One Cluster in One Project and consult\
             \ the replicationSpecs array [Return One Cluster in One Project](#operation/getLegacyCluster)."
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
         shouldCopyOplogs:
           type: boolean
           description: Flag that indicates whether to copy the oplogs to the target
@@ -34435,6 +35402,8 @@ components:
             \ zone in the cluster. To find the Zone Id, do a GET request to Return\
             \ One Cluster from One Project and consult the replicationSpecs array\
             \ [Return One Cluster From One Project](#operation/getCluster)."
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
       required:
       - zoneId
     DiskBackupExportJob:
@@ -34521,6 +35490,8 @@ components:
           - Queued
           - Successful
           readOnly: true
+        stateReason:
+          $ref: "#/components/schemas/StateReason"
       required:
       - exportBucketId
     DiskBackupExportJobRequest:
@@ -35631,14 +36602,6 @@ components:
       type: object
       additionalProperties:
         type: object
-        description: The stats associated with the stream processor.
-        externalDocs:
-          url: https://www.mongodb.com/docs/atlas/atlas-stream-processing/manage-stream-processor/#view-statistics-of-a-stream-processor
-        readOnly: true
-      description: The stats associated with the stream processor.
-      externalDocs:
-        url: https://www.mongodb.com/docs/atlas/atlas-stream-processing/manage-stream-processor/#view-statistics-of-a-stream-processor
-      readOnly: true
     EARPrivateEndpoint:
       type: object
       description: Encryption At Rest Private Endpoint.
@@ -35772,6 +36735,7 @@ components:
             to each notification method. This is needed when updating third-party
             notifications without requiring explicit authentication credentials.
           example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
         typeName:
           type: string
           description: Human-readable label that displays the alert notification type.
@@ -36074,6 +37038,7 @@ components:
         - CLUSTER_CONNECTION_AGGREGATE
         - CLUSTER_CONNECTION_CREATE_COLLECTION
         - CLUSTER_CONNECTION_SAMPLE_COLLECTION_FIELD_NAMES
+        - CLUSTER_CONNECTION_SAMPLE_COLLECTION_FIELD_NAMES_AND_TYPES
         title: Cluster Connection Audit Types
       - type: string
         enum:
@@ -36222,6 +37187,11 @@ components:
         - HOST_MONGOT_STOP_REPLICATION
         - HOST_ENOUGH_DISK_SPACE
         - HOST_NOT_ENOUGH_DISK_SPACE
+        - SSH_KEY_NDS_HOST_ACCESS_REQUESTED
+        - SSH_KEY_NDS_HOST_ACCESS_REFRESHED
+        - SSH_KEY_NDS_HOST_ACCESS_ATTEMPT
+        - SSH_KEY_NDS_HOST_ACCESS_GRANTED
+        - HOST_SSH_SESSION_ENDED
         title: Host Event Types
       - type: string
         enum:
@@ -36327,6 +37297,7 @@ components:
         - OS_MAINTENANCE_REPLACEMENT
         - FREE_UPGRADE_STARTED
         - FLEX_UPGRADE_STARTED
+        - SERVERLESS_UPGRADE_STARTED
         - TEST_FAILOVER_REQUESTED
         - USER_SECURITY_SETTINGS_UPDATED
         - AUDIT_LOG_CONFIGURATION_UPDATED
@@ -36441,6 +37412,8 @@ components:
         - CLUSTER_INSTANCE_DISABLED
         - CLUSTER_INSTANCE_ENABLED
         - KMIP_KEY_ROTATION_SCHEDULED
+        - SSL_CERTIFICATE_ISSUED
+        - PROJECT_SCHEDULED_MAINTENANCE_OUTSIDE_OF_PROTECTED_HOURS
         title: NDS Audit Types
       - type: string
         enum:
@@ -36653,6 +37626,10 @@ components:
         - TAGS_MODIFIED
         - GROUP_TAGS_MODIFIED
         title: Resource Event Types
+      - type: string
+        enum:
+        - EMPLOYEE_DOWNLOADED_CLUSTER_LOGS
+        title: Access Event Types
     EventTypeForOrg:
       type: object
       oneOf:
@@ -37261,6 +38238,7 @@ components:
         userId:
           type: string
           description: Unique 24-hexadecimal digit string that identifies this user.
+          example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
           pattern: "^([a-f0-9]{24})$"
@@ -39218,6 +40196,8 @@ components:
                The 24-hexadecimal string corresponds to a `Replication Specifications` `id` property.
 
               This parameter returns an empty object if no custom zones exist.
+            example: 32b6e34b3d91647abb20e7b8
+            pattern: "^([a-f0-9]{24})$"
             readOnly: true
           description: |-
             List that contains comma-separated key value pairs to map zones to geographic regions. These pairs map an ISO 3166-1a2 location code, with an ISO 3166-2 subdivision code when possible, to a unique 24-hexadecimal string that identifies the custom zone.
@@ -39254,6 +40234,8 @@ components:
                The 24-hexadecimal string corresponds to a `Replication Specifications` `zoneId` property.
 
               This parameter returns an empty object if no custom zones exist.
+            example: 32b6e34b3d91647abb20e7b8
+            pattern: "^([a-f0-9]{24})$"
             readOnly: true
           description: |-
             List that contains comma-separated key value pairs to map zones to geographic regions. These pairs map an ISO 3166-1a2 location code, with an ISO 3166-2 subdivision code when possible, to a unique 24-hexadecimal string that identifies the custom zone.
@@ -39764,6 +40746,8 @@ components:
           description: Number of times the current maintenance event for this project
             has been deferred.
           readOnly: true
+        protectedHours:
+          $ref: "#/components/schemas/ProtectedHours"
         startASAP:
           type: boolean
           description: "Flag that indicates whether MongoDB Cloud starts the maintenance\
@@ -39771,6 +40755,11 @@ components:
             \ window immediately for your project, MongoDB Cloud must have maintenance\
             \ scheduled and you must set a maintenance window. This flag resets to\
             \ `false` after MongoDB Cloud completes maintenance."
+        timeZoneId:
+          type: string
+          description: Identifier for the current time zone of the maintenance window.
+            This can only be updated via the Project Settings UI.
+          readOnly: true
       required:
       - dayOfWeek
     GroupMigrationRequest:
@@ -39836,6 +40825,7 @@ components:
             to each notification method. This is needed when updating third-party
             notifications without requiring explicit authentication credentials.
           example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
         roles:
           type: array
           description: "List that contains the one or more [organization](https://dochub.mongodb.org/core/atlas-org-roles)\
@@ -39902,7 +40892,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     GroupPendingUserResponse:
@@ -40191,6 +41182,37 @@ components:
             url: https://www.mongodb.com/docs/atlas/tags
           items:
             $ref: "#/components/schemas/ResourceTag"
+    GroupUserRequest:
+      type: object
+      properties:
+        roles:
+          type: array
+          description: One or more project-level roles to assign the MongoDB Cloud
+            user.
+          items:
+            type: string
+            description: Project-level role.
+            enum:
+            - GROUP_OWNER
+            - GROUP_CLUSTER_MANAGER
+            - GROUP_STREAM_PROCESSING_OWNER
+            - GROUP_DATA_ACCESS_ADMIN
+            - GROUP_DATA_ACCESS_READ_WRITE
+            - GROUP_DATA_ACCESS_READ_ONLY
+            - GROUP_READ_ONLY
+            - GROUP_SEARCH_INDEX_EDITOR
+          minItems: 1
+          uniqueItems: true
+          writeOnly: true
+        username:
+          type: string
+          format: email
+          description: Email address that represents the username of the MongoDB Cloud
+            user.
+          writeOnly: true
+      required:
+      - roles
+      - username
     GroupUserResponse:
       type: object
       discriminator:
@@ -40327,6 +41349,7 @@ components:
             to each notification method. This is needed when updating third-party
             notifications without requiring explicit authentication credentials.
           example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
         roomName:
           type: string
           description: "HipChat API room name to which MongoDB Cloud sends alert notifications.\
@@ -40581,6 +41604,11 @@ components:
       - HOST_MONGOT_STOP_REPLICATION
       - HOST_ENOUGH_DISK_SPACE
       - HOST_NOT_ENOUGH_DISK_SPACE
+      - SSH_KEY_NDS_HOST_ACCESS_REQUESTED
+      - SSH_KEY_NDS_HOST_ACCESS_REFRESHED
+      - SSH_KEY_NDS_HOST_ACCESS_ATTEMPT
+      - SSH_KEY_NDS_HOST_ACCESS_GRANTED
+      - HOST_SSH_SESSION_ENDED
       example: HOST_DOWN
       title: Host Event Types
     HostEventTypeViewForNdsGroupAlertable:
@@ -40592,6 +41620,8 @@ components:
       - HOST_MONGOT_CRASHING_OOM
       - HOST_MONGOT_STOP_REPLICATION
       - HOST_NOT_ENOUGH_DISK_SPACE
+      - SSH_KEY_NDS_HOST_ACCESS_REQUESTED
+      - SSH_KEY_NDS_HOST_ACCESS_REFRESHED
       example: HOST_DOWN
       title: Host Event Types
     HostEventViewForNdsGroup:
@@ -40615,6 +41645,14 @@ components:
           description: Date and time when this event occurred. This parameter expresses
             its value in the <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank"
             rel="noopener noreferrer">ISO 8601</a> timestamp format in UTC.
+          readOnly: true
+        deskLocation:
+          type: string
+          description: Desk location of MongoDB employee associated with the event.
+          readOnly: true
+        employeeIdentifier:
+          type: string
+          description: Identifier of MongoDB employee associated with the event.
           readOnly: true
         eventTypeName:
           $ref: "#/components/schemas/HostEventTypeViewForNdsGroup"
@@ -41349,6 +42387,14 @@ components:
           readOnly: true
         currentValue:
           $ref: "#/components/schemas/HostMetricValue"
+        deskLocation:
+          type: string
+          description: Desk location of MongoDB employee associated with the event.
+          readOnly: true
+        employeeIdentifier:
+          type: string
+          description: Identifier of MongoDB employee associated with the event.
+          readOnly: true
         eventTypeName:
           $ref: "#/components/schemas/HostMetricEventTypeView"
         groupId:
@@ -42437,6 +43483,7 @@ components:
           - ATLAS_ENTERPRISE_AUDITING
           - ATLAS_FREE_SUPPORT
           - ATLAS_SUPPORT
+          - ATLAS_NDS_BACKFILL_SUPPORT
           - STITCH_DATA_DOWNLOADED_FREE_TIER
           - STITCH_DATA_DOWNLOADED
           - STITCH_COMPUTE_FREE_TIER
@@ -44616,6 +45663,7 @@ components:
             to each notification method. This is needed when updating third-party
             notifications without requiring explicit authentication credentials.
           example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
         typeName:
           type: string
           description: Human-readable label that displays the alert notification type.
@@ -44819,6 +45867,7 @@ components:
       - OS_MAINTENANCE_REPLACEMENT
       - FREE_UPGRADE_STARTED
       - FLEX_UPGRADE_STARTED
+      - SERVERLESS_UPGRADE_STARTED
       - TEST_FAILOVER_REQUESTED
       - USER_SECURITY_SETTINGS_UPDATED
       - AUDIT_LOG_CONFIGURATION_UPDATED
@@ -44933,6 +45982,8 @@ components:
       - CLUSTER_INSTANCE_DISABLED
       - CLUSTER_INSTANCE_ENABLED
       - KMIP_KEY_ROTATION_SCHEDULED
+      - SSL_CERTIFICATE_ISSUED
+      - PROJECT_SCHEDULED_MAINTENANCE_OUTSIDE_OF_PROTECTED_HOURS
       example: CLUSTER_CREATED
       title: NDS Audit Types
     NDSAuditTypeViewForOrg:
@@ -45326,6 +46377,7 @@ components:
             to each notification method. This is needed when updating third-party
             notifications without requiring explicit authentication credentials.
           example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
         severity:
           type: string
           description: Degree of seriousness given to this notification.
@@ -46049,6 +47101,14 @@ components:
           readOnly: true
         currentValue:
           $ref: "#/components/schemas/NumberMetricValueView"
+        deskLocation:
+          type: string
+          description: Desk location of MongoDB employee associated with the event.
+          readOnly: true
+        employeeIdentifier:
+          type: string
+          description: Identifier of MongoDB employee associated with the event.
+          readOnly: true
         eventTypeName:
           $ref: "#/components/schemas/HostMetricEventTypeView"
         groupId:
@@ -46335,6 +47395,7 @@ components:
             to each notification method. This is needed when updating third-party
             notifications without requiring explicit authentication credentials.
           example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
         opsGenieApiKey:
           type: string
           description: |-
@@ -46714,6 +47775,7 @@ components:
             to each notification method. This is needed when updating third-party
             notifications without requiring explicit authentication credentials.
           example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
         roles:
           type: array
           description: "List that contains the one or more [organization](https://dochub.mongodb.org/core/atlas-org-roles)\
@@ -46780,7 +47842,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     OrgPendingUserResponse:
@@ -47443,6 +48506,7 @@ components:
             to each notification method. This is needed when updating third-party
             notifications without requiring explicit authentication credentials.
           example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
         region:
           type: string
           default: US
@@ -47495,7 +48559,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedAlertConfigView:
@@ -47523,7 +48588,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedAlertView:
@@ -47551,7 +48617,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiApiUserView:
@@ -47579,7 +48646,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiAppUserView:
@@ -47607,7 +48675,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiAtlasCheckpointView:
@@ -47635,7 +48704,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiAtlasDatabaseUserView:
@@ -47665,7 +48735,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiAtlasDiskBackupExportJobView:
@@ -47693,7 +48764,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiAtlasEARPrivateEndpointView:
@@ -47721,7 +48793,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiAtlasFlexBackupRestoreJob20241113View:
@@ -47749,7 +48822,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiAtlasFlexBackupSnapshot20241113View:
@@ -47777,7 +48851,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiAtlasProviderRegionsView:
@@ -47805,7 +48880,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiAtlasServerlessBackupRestoreJobView:
@@ -47833,7 +48909,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiAtlasServerlessBackupSnapshotView:
@@ -47861,7 +48938,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiInvoiceMetadataView:
@@ -47889,7 +48967,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiInvoiceView:
@@ -47917,7 +48996,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiStreamsConnectionView:
@@ -47945,7 +49025,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiStreamsPrivateLinkView:
@@ -47973,7 +49054,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiStreamsStreamProcessorWithStatsView:
@@ -48001,7 +49083,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiStreamsTenantView:
@@ -48029,7 +49112,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiUserAccessListResponseView:
@@ -48057,7 +49141,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiVersions:
@@ -48085,7 +49170,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedAppUserView:
@@ -48113,7 +49199,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedAtlasGroupView:
@@ -48141,7 +49228,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedAvailableVersionView:
@@ -48169,7 +49257,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedBackupSnapshotExportBucketView:
@@ -48197,7 +49286,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedBackupSnapshotExportBucketsView:
@@ -48225,7 +49315,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedBackupSnapshotView:
@@ -48253,7 +49344,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedCloudBackupReplicaSetView:
@@ -48281,7 +49373,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedCloudBackupRestoreJobView:
@@ -48309,7 +49402,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedCloudBackupShardedClusterSnapshotView:
@@ -48337,7 +49431,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedCloudProviderContainerView:
@@ -48366,7 +49461,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
       title: Network Peering
@@ -48395,7 +49491,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedConnectedOrgConfigsView:
@@ -48423,7 +49520,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedContainerPeerView:
@@ -48452,7 +49550,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedDatabaseView:
@@ -48480,7 +49579,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedDiskPartitionView:
@@ -48508,7 +49608,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedEventTypeDetailsResponse:
@@ -48536,7 +49637,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedFederationIdentityProvider:
@@ -48564,7 +49666,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedFlexClusters20241113:
@@ -48592,7 +49695,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedGroupServiceAccounts:
@@ -48621,7 +49725,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedHostView_Atlas:
@@ -48649,7 +49754,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedIntegrationView:
@@ -48677,7 +49783,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedLegacyClusterView:
@@ -48705,7 +49812,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedNetworkAccessView:
@@ -48733,7 +49841,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedOnlineArchiveView:
@@ -48761,7 +49870,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedOrgGroupView:
@@ -48789,7 +49899,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedOrgServiceAccounts:
@@ -48818,7 +49929,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedOrgUserView:
@@ -48846,7 +49958,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedOrganizationView:
@@ -48874,7 +49987,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedPipelineRunView:
@@ -48902,7 +50016,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedPrivateNetworkEndpointIdEntryView:
@@ -48930,7 +50045,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedPublicApiUsageDetailsLineItemView:
@@ -48958,7 +50074,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedRestoreJobView:
@@ -48986,7 +50103,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedRoleMappingView:
@@ -49016,7 +50134,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedServerlessInstanceDescriptionView:
@@ -49044,7 +50163,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedServiceAccountGroup:
@@ -49073,7 +50193,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedServiceAccountIPAccessEntryView:
@@ -49101,7 +50222,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedSnapshotView:
@@ -49129,7 +50251,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedTeamRoleView:
@@ -49157,7 +50280,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedTeamView:
@@ -49185,7 +50309,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedTenantRestoreView:
@@ -49213,7 +50338,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedTenantSnapshotView:
@@ -49241,7 +50367,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedUserCertView:
@@ -49269,7 +50396,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this
-            value if `includeCount` is set to `false`.
+            value if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PartialFilter:
@@ -49365,6 +50493,7 @@ components:
         id:
           type: string
           description: Unique 24-hexadecimal digit string that identifies this index.
+          example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
           pattern: "^([a-f0-9]{24})$"
@@ -49500,6 +50629,7 @@ components:
           type: string
           description: Unique 24-hexadecimal digit string that identifies this shape.
             This string exists only for the duration of this API request.
+          example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
           pattern: "^([a-f0-9]{24})$"
@@ -49610,11 +50740,15 @@ components:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the request
             cluster.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
           readOnly: true
         groupId:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the request
             project.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
           readOnly: true
         pinnedNamespaces:
           type: array
@@ -49870,6 +51004,24 @@ components:
       - serviceDiscovery
       - username
       title: PROMETHEUS
+    ProtectedHours:
+      type: object
+      description: Defines the a window where maintenance will not begin within.
+      properties:
+        endHourOfDay:
+          type: integer
+          format: int32
+          description: Zero-based integer that represents the end hour of the of the
+            day that the maintenance will not begin in.
+          maximum: 23
+          minimum: 0
+        startHourOfDay:
+          type: integer
+          format: int32
+          description: Zero-based integer that represents the beginning hour of the
+            of the day that the maintenance will not begin in.
+          maximum: 23
+          minimum: 0
     PublicApiUsageDetailsLineItemView:
       type: object
       properties:
@@ -49887,6 +51039,8 @@ components:
         groupId:
           type: string
           description: Group id associated with the line item.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
         quantity:
           type: number
           format: double
@@ -49921,6 +51075,8 @@ components:
           type: string
           description: ID of the AWS IAM role that will be used to write to the S3
             bucket.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
         links:
           type: array
           description: "List of one or more Uniform Resource Locators (URLs) that\
@@ -50158,6 +51314,14 @@ components:
           readOnly: true
         currentValue:
           $ref: "#/components/schemas/RawMetricValueView"
+        deskLocation:
+          type: string
+          description: Desk location of MongoDB employee associated with the event.
+          readOnly: true
+        employeeIdentifier:
+          type: string
+          description: Identifier of MongoDB employee associated with the event.
+          readOnly: true
         eventTypeName:
           $ref: "#/components/schemas/HostMetricEventTypeView"
         groupId:
@@ -51246,6 +52410,7 @@ components:
             to each notification method. This is needed when updating third-party
             notifications without requiring explicit authentication credentials.
           example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
         typeName:
           type: string
           description: Human-readable label that displays the alert notification type.
@@ -51640,6 +52805,13 @@ components:
     SearchIndexDefinition:
       type: object
       description: The search index definition set by the user.
+      properties:
+        numPartitions:
+          type: integer
+          format: int32
+          default: 1
+          description: "Number of index partitions. Note: This feature is currently\
+            \ in preview."
       title: Search Index Definition
     SearchIndexDefinitionVersion:
       type: object
@@ -53298,6 +54470,7 @@ components:
             to each notification method. This is needed when updating third-party
             notifications without requiring explicit authentication credentials.
           example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
         typeName:
           type: string
           description: Human-readable label that displays the alert notification type.
@@ -53347,6 +54520,17 @@ components:
       - groupId
       - managedAuthentication
       - ssl
+    StateReason:
+      type: object
+      description: State reason of the Job. This is set when the job state is "Failed".
+      properties:
+        errorCode:
+          type: string
+          description: Error code relating to state.
+        message:
+          type: string
+          description: Message describing error or state.
+      readOnly: true
     StorageEngine:
       type: object
       additionalProperties:
@@ -53732,15 +54916,15 @@ components:
       discriminator:
         mapping:
           Cluster: "#/components/schemas/StreamsClusterConnection"
+          Https: "#/components/schemas/StreamsHttpsConnection"
           Kafka: "#/components/schemas/StreamsKafkaConnection"
           Sample: "#/components/schemas/StreamsSampleConnection"
-          WebAPI: "#/components/schemas/StreamsWebAPIConnection"
         propertyName: type
       oneOf:
       - $ref: "#/components/schemas/StreamsSampleConnection"
       - $ref: "#/components/schemas/StreamsClusterConnection"
       - $ref: "#/components/schemas/StreamsKafkaConnection"
-      - $ref: "#/components/schemas/StreamsWebAPIConnection"
+      - $ref: "#/components/schemas/StreamsHttpsConnection"
       properties:
         links:
           type: array
@@ -53764,7 +54948,7 @@ components:
           - Kafka
           - Cluster
           - Sample
-          - WebAPI
+          - Https
       readOnly: true
     StreamsDLQ:
       type: object
@@ -53895,6 +55079,23 @@ components:
       - eventTypeName
       - id
       title: Streams Events
+    StreamsHttpsConnection:
+      type: object
+      allOf:
+      - $ref: "#/components/schemas/StreamsConnection"
+      - type: object
+        properties:
+          headers:
+            type: object
+            additionalProperties:
+              type: string
+              description: A map of key-value pairs that will be passed as headers
+                for the request.
+            description: A map of key-value pairs that will be passed as headers for
+              the request.
+          url:
+            type: string
+            description: The url to be used for the request.
     StreamsKafkaAuthentication:
       type: object
       description: "User credentials required to connect to a Kafka Cluster. Includes\
@@ -54068,6 +55269,55 @@ components:
       - PROCESSOR_NAME
       example: INSTANCE_NAME
       title: Streams Matcher Fields
+    StreamsModifyStreamProcessor:
+      type: object
+      description: A request to modify an existing stream processor
+      properties:
+        links:
+          type: array
+          description: "List of one or more Uniform Resource Locators (URLs) that\
+            \ point to API sub-resources, related API resources, or both. RFC 5988\
+            \ outlines these relationships."
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        name:
+          type: string
+          description: New name for the stream processor.
+        options:
+          $ref: "#/components/schemas/StreamsModifyStreamProcessorOptions"
+        pipeline:
+          type: array
+          description: New pipeline for the stream processor.
+          externalDocs:
+            description: Supported Aggregation Pipeline Stages
+            url: https://www.mongodb.com/docs/atlas/atlas-stream-processing/stream-aggregation/#std-label-stream-aggregation
+          items:
+            $ref: "#/components/schemas/Document"
+    StreamsModifyStreamProcessorOptions:
+      type: object
+      description: Additional options for modifying a stream processor.
+      properties:
+        dlq:
+          $ref: "#/components/schemas/StreamsDLQ"
+        links:
+          type: array
+          description: "List of one or more Uniform Resource Locators (URLs) that\
+            \ point to API sub-resources, related API resources, or both. RFC 5988\
+            \ outlines these relationships."
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        resumeFromCheckpoint:
+          type: boolean
+          description: "When true, the modified stream processor resumes from its\
+            \ last checkpoint."
     StreamsOptions:
       type: object
       description: Optional configuration for the stream processor.
@@ -54092,6 +55342,8 @@ components:
         _id:
           type: string
           description: The ID of the Private Link connection.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
         dnsDomain:
           type: string
           description: Domain name of Privatelink connected cluster.
@@ -54307,31 +55559,6 @@ components:
           $ref: "#/components/schemas/StreamsSampleConnections"
         streamConfig:
           $ref: "#/components/schemas/StreamConfig"
-    StreamsWebAPIConnection:
-      type: object
-      allOf:
-      - $ref: "#/components/schemas/StreamsConnection"
-      - type: object
-        properties:
-          connectionTimeoutSec:
-            type: integer
-            format: int32
-            description: The amount of seconds to wait before timing out a connection.
-          headers:
-            type: object
-            additionalProperties:
-              type: string
-              description: A map of key-value pairs that will be passed as headers
-                for the request.
-            description: A map of key-value pairs that will be passed as headers for
-              the request.
-          requestTimeoutSec:
-            type: integer
-            format: int32
-            description: The amount of seconds to wait before timing out a request.
-          url:
-            type: string
-            description: The url to be used for the request.
     SummaryNotification:
       type: object
       description: Summary notification configuration for MongoDB Cloud to send information
@@ -54368,6 +55595,7 @@ components:
             to each notification method. This is needed when updating third-party
             notifications without requiring explicit authentication credentials.
           example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
         typeName:
           type: string
           description: Human-readable label that displays the alert notification type.
@@ -54502,11 +55730,10 @@ components:
           items:
             type: string
             format: email
-            description: List that contains email addresses that identify MongoDB
-              Cloud users to in this team.
           uniqueItems: true
       required:
       - name
+      - usernames
     TeamEvent:
       type: object
       description: Team event identifies different activities around organization
@@ -54793,6 +56020,7 @@ components:
             to each notification method. This is needed when updating third-party
             notifications without requiring explicit authentication credentials.
           example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
         smsEnabled:
           type: boolean
           description: |-
@@ -54908,6 +56136,16 @@ components:
     TenantHardwareSpec:
       type: object
       properties:
+        effectiveInstanceSize:
+          type: string
+          description: The true tenant instance size. This is present to support backwards
+            compatibility for deprecated provider types and/or instance sizes.
+          enum:
+          - FLEX
+          - M2
+          - M5
+          - M0
+          readOnly: true
         instanceSize:
           type: string
           description: Hardware specification for the instances in this M0/M2/M5 tier
@@ -54935,6 +56173,16 @@ components:
             \ upgrading your cluster to a higher tier."
           maximum: 4096
           minimum: 10
+        effectiveInstanceSize:
+          type: string
+          description: The true tenant instance size. This is present to support backwards
+            compatibility for deprecated provider types and/or instance sizes.
+          enum:
+          - FLEX
+          - M2
+          - M5
+          - M0
+          readOnly: true
         instanceSize:
           type: string
           description: Hardware specification for the instances in this M0/M2/M5 tier
@@ -55230,6 +56478,12 @@ components:
             $ref: "#/components/schemas/AtlasSearchAnalyzer"
         mappings:
           $ref: "#/components/schemas/SearchMappings"
+        numPartitions:
+          type: integer
+          format: int32
+          default: 1
+          description: "Number of index partitions. Note: This feature is currently\
+            \ in preview."
         searchAnalyzer:
           type: string
           default: lucene.standard
@@ -55606,6 +56860,14 @@ components:
           readOnly: true
         currentValue:
           $ref: "#/components/schemas/TimeMetricValueView"
+        deskLocation:
+          type: string
+          description: Desk location of MongoDB employee associated with the event.
+          readOnly: true
+        employeeIdentifier:
+          type: string
+          description: Identifier of MongoDB employee associated with the event.
+          readOnly: true
         eventTypeName:
           $ref: "#/components/schemas/HostMetricEventTypeView"
         groupId:
@@ -56097,6 +57359,8 @@ components:
           - 650dd6200000000000000000
           items:
             type: string
+            example: 32b6e34b3d91647abb20e7b8
+            pattern: "^([a-f0-9]{24})$"
           uniqueItems: true
         groupIds:
           type: array
@@ -56106,6 +57370,8 @@ components:
           - 650dd6200000000000000000
           items:
             type: string
+            example: 32b6e34b3d91647abb20e7b8
+            pattern: "^([a-f0-9]{24})$"
           uniqueItems: true
         includeZeroCentLineItems:
           type: boolean
@@ -56252,6 +57518,7 @@ components:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the organization
             API key.
+          example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
           pattern: "^([a-f0-9]{24})$"
@@ -56624,6 +57891,7 @@ components:
             to each notification method. This is needed when updating third-party
             notifications without requiring explicit authentication credentials.
           example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
         smsEnabled:
           type: boolean
           description: |-
@@ -56821,6 +58089,12 @@ components:
             url: https://dochub.mongodb.org/core/avs-vector-type
           items:
             $ref: "#/components/schemas/BasicDBObject"
+        numPartitions:
+          type: integer
+          format: int32
+          default: 1
+          description: "Number of index partitions. Note: This feature is currently\
+            \ in preview."
       title: Vector Search Index Definition
     VectorSearchIndexResponse:
       type: object
@@ -56936,6 +58210,7 @@ components:
             to each notification method. This is needed when updating third-party
             notifications without requiring explicit authentication credentials.
           example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
         typeName:
           type: string
           description: Human-readable label that displays the alert notification type.
@@ -57024,6 +58299,7 @@ components:
             to each notification method. This is needed when updating third-party
             notifications without requiring explicit authentication credentials.
           example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
         typeName:
           type: string
           description: Human-readable label that displays the alert notification type.
