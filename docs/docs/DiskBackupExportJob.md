@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **Prefix** | Pointer to **string** | Prefix used for all blob storage objects uploaded as part of the Export Job. | [optional] [readonly] 
 **SnapshotId** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the snapshot. | [optional] 
 **State** | Pointer to **string** | State of the Export Job. | [optional] [readonly] 
+**StateReason** | Pointer to [**StateReason**](StateReason.md) |  | [optional] 
 
 ## Methods
 
@@ -294,6 +295,30 @@ SetState sets State field to given value.
 `func (o *DiskBackupExportJob) HasState() bool`
 
 HasState returns a boolean if a field has been set.
+### GetStateReason
+
+`func (o *DiskBackupExportJob) GetStateReason() StateReason`
+
+GetStateReason returns the StateReason field if non-nil, zero value otherwise.
+
+### GetStateReasonOk
+
+`func (o *DiskBackupExportJob) GetStateReasonOk() (*StateReason, bool)`
+
+GetStateReasonOk returns a tuple with the StateReason field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStateReason
+
+`func (o *DiskBackupExportJob) SetStateReason(v StateReason)`
+
+SetStateReason sets StateReason field to given value.
+
+### HasStateReason
+
+`func (o *DiskBackupExportJob) HasStateReason() bool`
+
+HasStateReason returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

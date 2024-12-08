@@ -6,9 +6,9 @@ package admin
 type AdvancedComputeAutoScaling struct {
 	// Flag that indicates whether someone enabled instance size auto-scaling.  - Set to `true` to enable instance size auto-scaling. If enabled, you must specify a value for **replicationSpecs[n].regionConfigs[m].autoScaling.compute.maxInstanceSize**. - Set to `false` to disable instance size automatic scaling.
 	Enabled *bool `json:"enabled,omitempty"`
-	// Minimum instance size to which your cluster can automatically scale. MongoDB Cloud requires this parameter if `\"replicationSpecs[n].regionConfigs[m].autoScaling.compute.scaleDownEnabled\" : true`.
+	// Instance size boundary to which your cluster can automatically scale.
 	MaxInstanceSize *string `json:"maxInstanceSize,omitempty"`
-	// Minimum instance size to which your cluster can automatically scale. MongoDB Cloud requires this parameter if `\"replicationSpecs[n].regionConfigs[m].autoScaling.compute.scaleDownEnabled\" : true`.
+	// Instance size boundary to which your cluster can automatically scale.
 	MinInstanceSize *string `json:"minInstanceSize,omitempty"`
 	// Flag that indicates whether the instance size may scale down. MongoDB Cloud requires this parameter if `\"replicationSpecs[n].regionConfigs[m].autoScaling.compute.enabled\" : true`. If you enable this option, specify a value for **replicationSpecs[n].regionConfigs[m].autoScaling.compute.minInstanceSize**.
 	ScaleDownEnabled *bool `json:"scaleDownEnabled,omitempty"`

@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **IsDeleted** | Pointer to **bool** | Flag that indicates whether this organization has been deleted. | [optional] [readonly] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **Name** | **string** | Human-readable label that identifies the organization. | 
+**SkipDefaultAlertsSettings** | Pointer to **bool** | Disables automatic alert creation. When set to true, no organization level alerts will be created automatically. | [optional] [default to false]
 
 ## Methods
 
@@ -119,6 +120,30 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+### GetSkipDefaultAlertsSettings
+
+`func (o *AtlasOrganization) GetSkipDefaultAlertsSettings() bool`
+
+GetSkipDefaultAlertsSettings returns the SkipDefaultAlertsSettings field if non-nil, zero value otherwise.
+
+### GetSkipDefaultAlertsSettingsOk
+
+`func (o *AtlasOrganization) GetSkipDefaultAlertsSettingsOk() (*bool, bool)`
+
+GetSkipDefaultAlertsSettingsOk returns a tuple with the SkipDefaultAlertsSettings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSkipDefaultAlertsSettings
+
+`func (o *AtlasOrganization) SetSkipDefaultAlertsSettings(v bool)`
+
+SetSkipDefaultAlertsSettings sets SkipDefaultAlertsSettings field to given value.
+
+### HasSkipDefaultAlertsSettings
+
+`func (o *AtlasOrganization) HasSkipDefaultAlertsSettings() bool`
+
+HasSkipDefaultAlertsSettings returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

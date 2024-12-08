@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **FederationSettingsId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the federation to link the newly created organization to. If specified, the proposed Organization Owner of the new organization must have the Organization Owner role in an organization associated with the federation. | [optional] 
 **Name** | **string** | Human-readable label that identifies the organization. | 
 **OrgOwnerId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the MongoDB Cloud user that you want to assign the Organization Owner role. This user must be a member of the same organization as the calling API key. If you provide &#x60;federationSettingsId&#x60;,  this user must instead have the Organization Owner role on an organization in the specified federation. This parameter is required only when you authenticate with Programmatic API Keys. | [optional] 
+**SkipDefaultAlertsSettings** | Pointer to **bool** | Disables automatic alert creation. When set to true, no organization level alerts will be created automatically. | [optional] [default to false]
 
 ## Methods
 
@@ -119,6 +120,30 @@ SetOrgOwnerId sets OrgOwnerId field to given value.
 `func (o *CreateOrganizationRequest) HasOrgOwnerId() bool`
 
 HasOrgOwnerId returns a boolean if a field has been set.
+### GetSkipDefaultAlertsSettings
+
+`func (o *CreateOrganizationRequest) GetSkipDefaultAlertsSettings() bool`
+
+GetSkipDefaultAlertsSettings returns the SkipDefaultAlertsSettings field if non-nil, zero value otherwise.
+
+### GetSkipDefaultAlertsSettingsOk
+
+`func (o *CreateOrganizationRequest) GetSkipDefaultAlertsSettingsOk() (*bool, bool)`
+
+GetSkipDefaultAlertsSettingsOk returns a tuple with the SkipDefaultAlertsSettings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSkipDefaultAlertsSettings
+
+`func (o *CreateOrganizationRequest) SetSkipDefaultAlertsSettings(v bool)`
+
+SetSkipDefaultAlertsSettings sets SkipDefaultAlertsSettings field to given value.
+
+### HasSkipDefaultAlertsSettings
+
+`func (o *CreateOrganizationRequest) HasSkipDefaultAlertsSettings() bool`
+
+HasSkipDefaultAlertsSettings returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

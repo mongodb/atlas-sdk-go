@@ -303,28 +303,28 @@ type OrganizationsApi interface {
 	RemoveOrganizationUserExecute(r RemoveOrganizationUserApiRequest) (any, *http.Response, error)
 
 	/*
-		RenameOrganization Rename One Organization
+		UpdateOrganization Update One Organization
 
-		Renames one organization. To use this resource, the requesting API Key must have the Organization Owner role.
+		Updates one organization. To use this resource, the requesting API Key must have the Organization Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@param atlasOrganization Details to update on the specified organization.
-		@return RenameOrganizationApiRequest
+		@return UpdateOrganizationApiRequest
 	*/
-	RenameOrganization(ctx context.Context, orgId string, atlasOrganization *AtlasOrganization) RenameOrganizationApiRequest
+	UpdateOrganization(ctx context.Context, orgId string, atlasOrganization *AtlasOrganization) UpdateOrganizationApiRequest
 	/*
-		RenameOrganization Rename One Organization
+		UpdateOrganization Update One Organization
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param RenameOrganizationApiParams - Parameters for the request
-		@return RenameOrganizationApiRequest
+		@param UpdateOrganizationApiParams - Parameters for the request
+		@return UpdateOrganizationApiRequest
 	*/
-	RenameOrganizationWithParams(ctx context.Context, args *RenameOrganizationApiParams) RenameOrganizationApiRequest
+	UpdateOrganizationWithParams(ctx context.Context, args *UpdateOrganizationApiParams) UpdateOrganizationApiRequest
 
 	// Method available only for mocking purposes
-	RenameOrganizationExecute(r RenameOrganizationApiRequest) (*AtlasOrganization, *http.Response, error)
+	UpdateOrganizationExecute(r UpdateOrganizationApiRequest) (*AtlasOrganization, *http.Response, error)
 
 	/*
 		UpdateOrganizationInvitation Update One Organization Invitation
@@ -1976,20 +1976,20 @@ func (a *OrganizationsApiService) RemoveOrganizationUserExecute(r RemoveOrganiza
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type RenameOrganizationApiRequest struct {
+type UpdateOrganizationApiRequest struct {
 	ctx               context.Context
 	ApiService        OrganizationsApi
 	orgId             string
 	atlasOrganization *AtlasOrganization
 }
 
-type RenameOrganizationApiParams struct {
+type UpdateOrganizationApiParams struct {
 	OrgId             string
 	AtlasOrganization *AtlasOrganization
 }
 
-func (a *OrganizationsApiService) RenameOrganizationWithParams(ctx context.Context, args *RenameOrganizationApiParams) RenameOrganizationApiRequest {
-	return RenameOrganizationApiRequest{
+func (a *OrganizationsApiService) UpdateOrganizationWithParams(ctx context.Context, args *UpdateOrganizationApiParams) UpdateOrganizationApiRequest {
+	return UpdateOrganizationApiRequest{
 		ApiService:        a,
 		ctx:               ctx,
 		orgId:             args.OrgId,
@@ -1997,21 +1997,21 @@ func (a *OrganizationsApiService) RenameOrganizationWithParams(ctx context.Conte
 	}
 }
 
-func (r RenameOrganizationApiRequest) Execute() (*AtlasOrganization, *http.Response, error) {
-	return r.ApiService.RenameOrganizationExecute(r)
+func (r UpdateOrganizationApiRequest) Execute() (*AtlasOrganization, *http.Response, error) {
+	return r.ApiService.UpdateOrganizationExecute(r)
 }
 
 /*
-RenameOrganization Rename One Organization
+UpdateOrganization Update One Organization
 
-Renames one organization. To use this resource, the requesting API Key must have the Organization Owner role.
+Updates one organization. To use this resource, the requesting API Key must have the Organization Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-	@return RenameOrganizationApiRequest
+	@return UpdateOrganizationApiRequest
 */
-func (a *OrganizationsApiService) RenameOrganization(ctx context.Context, orgId string, atlasOrganization *AtlasOrganization) RenameOrganizationApiRequest {
-	return RenameOrganizationApiRequest{
+func (a *OrganizationsApiService) UpdateOrganization(ctx context.Context, orgId string, atlasOrganization *AtlasOrganization) UpdateOrganizationApiRequest {
+	return UpdateOrganizationApiRequest{
 		ApiService:        a,
 		ctx:               ctx,
 		orgId:             orgId,
@@ -2019,10 +2019,10 @@ func (a *OrganizationsApiService) RenameOrganization(ctx context.Context, orgId 
 	}
 }
 
-// RenameOrganizationExecute executes the request
+// UpdateOrganizationExecute executes the request
 //
 //	@return AtlasOrganization
-func (a *OrganizationsApiService) RenameOrganizationExecute(r RenameOrganizationApiRequest) (*AtlasOrganization, *http.Response, error) {
+func (a *OrganizationsApiService) UpdateOrganizationExecute(r UpdateOrganizationApiRequest) (*AtlasOrganization, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -2030,7 +2030,7 @@ func (a *OrganizationsApiService) RenameOrganizationExecute(r RenameOrganization
 		localVarReturnValue *AtlasOrganization
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.RenameOrganization")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.UpdateOrganization")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
