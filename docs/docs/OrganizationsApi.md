@@ -16,7 +16,7 @@ Method | HTTP request | Description
 [**ListOrganizationUsers**](OrganizationsApi.md#ListOrganizationUsers) | **Get** /api/atlas/v2/orgs/{orgId}/users | Return All MongoDB Cloud Users in One Organization
 [**ListOrganizations**](OrganizationsApi.md#ListOrganizations) | **Get** /api/atlas/v2/orgs | Return All Organizations
 [**RemoveOrganizationUser**](OrganizationsApi.md#RemoveOrganizationUser) | **Delete** /api/atlas/v2/orgs/{orgId}/users/{userId} | Remove One MongoDB Cloud User From One Organization
-[**RenameOrganization**](OrganizationsApi.md#RenameOrganization) | **Patch** /api/atlas/v2/orgs/{orgId} | Rename One Organization
+[**UpdateOrganization**](OrganizationsApi.md#UpdateOrganization) | **Patch** /api/atlas/v2/orgs/{orgId} | Update One Organization
 [**UpdateOrganizationInvitation**](OrganizationsApi.md#UpdateOrganizationInvitation) | **Patch** /api/atlas/v2/orgs/{orgId}/invites | Update One Organization Invitation
 [**UpdateOrganizationInvitationById**](OrganizationsApi.md#UpdateOrganizationInvitationById) | **Patch** /api/atlas/v2/orgs/{orgId}/invites/{invitationId} | Update One Organization Invitation by Invitation ID
 [**UpdateOrganizationRoles**](OrganizationsApi.md#UpdateOrganizationRoles) | **Put** /api/atlas/v2/orgs/{orgId}/users/{userId}/roles | Update Organization Roles for One MongoDB Cloud User
@@ -1009,11 +1009,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## RenameOrganization
+## UpdateOrganization
 
-> AtlasOrganization RenameOrganization(ctx, orgId, atlasOrganization AtlasOrganization).Execute()
+> AtlasOrganization UpdateOrganization(ctx, orgId, atlasOrganization AtlasOrganization).Execute()
 
-Rename One Organization
+Update One Organization
 
 
 ### Example
@@ -1042,17 +1042,17 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     atlasOrganization := *openapiclient.NewAtlasOrganization("Name_example") // AtlasOrganization | 
 
-    resp, r, err := sdk.OrganizationsApi.RenameOrganization(context.Background(), orgId, &atlasOrganization).Execute()
+    resp, r, err := sdk.OrganizationsApi.UpdateOrganization(context.Background(), orgId, &atlasOrganization).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.RenameOrganization`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.UpdateOrganization`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `RenameOrganization`: AtlasOrganization
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.RenameOrganization`: %v (%v)\n", resp, r)
+    // response from `UpdateOrganization`: AtlasOrganization
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.UpdateOrganization`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1066,7 +1066,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiRenameOrganizationRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateOrganizationRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

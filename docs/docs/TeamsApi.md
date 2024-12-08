@@ -218,7 +218,7 @@ func main() {
     }
 
     orgId := "4888442a3354817a7320eb61" // string | 
-    team := *openapiclient.NewTeam("Name_example") // Team | 
+    team := *openapiclient.NewTeam("Name_example", []string{"Usernames_example"}) // Team | 
 
     resp, r, err := sdk.TeamsApi.CreateTeam(context.Background(), orgId, &team).Execute()
     if err != nil {

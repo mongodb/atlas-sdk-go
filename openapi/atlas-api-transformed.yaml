@@ -27,7 +27,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: f611126a305b6658a7cb45c1331f485910e7c298
+  x-xgen-sha: 242018939c903b554d80a3ddb640394b701c7832
 servers:
   - url: https://cloud.mongodb.com
 security:
@@ -2774,29 +2774,35 @@ paths:
                             autoIndexing:
                               enabled: false
                             compute:
-                              enabled: false
+                              enabled: true
+                              maxInstanceSize: M40
+                              minInstanceSize: M30
+                              scaleDownEnabled: true
                             diskGB:
                               enabled: true
                           analyticsSpecs:
                             diskSizeGB: 10
-                            instanceSize: M30
+                            instanceSize: M40
                             nodeCount: 0
                           autoScaling:
                             autoIndexing:
                               enabled: false
                             compute:
-                              enabled: false
+                              enabled: true
+                              maxInstanceSize: M60
+                              minInstanceSize: M30
+                              scaleDownEnabled: true
                             diskGB:
                               enabled: true
                           electableSpecs:
                             diskSizeGB: 10
-                            instanceSize: M30
+                            instanceSize: M60
                             nodeCount: 3
                           priority: 7
                           providerName: AWS
                           readOnlySpecs:
                             diskSizeGB: 10
-                            instanceSize: M30
+                            instanceSize: M60
                             nodeCount: 0
                           regionName: US_EAST_1
                       zoneName: Zone 1
@@ -2805,29 +2811,35 @@ paths:
                             autoIndexing:
                               enabled: false
                             compute:
-                              enabled: false
+                              enabled: true
+                              maxInstanceSize: M40
+                              minInstanceSize: M30
+                              scaleDownEnabled: true
                             diskGB:
                               enabled: true
                           analyticsSpecs:
                             diskSizeGB: 10
-                            instanceSize: M10
+                            instanceSize: M30
                             nodeCount: 0
                           autoScaling:
                             autoIndexing:
                               enabled: false
                             compute:
-                              enabled: false
+                              enabled: true
+                              maxInstanceSize: M60
+                              minInstanceSize: M30
+                              scaleDownEnabled: true
                             diskGB:
                               enabled: true
                           electableSpecs:
                             diskSizeGB: 10
-                            instanceSize: M10
+                            instanceSize: M40
                             nodeCount: 3
                           priority: 7
                           providerName: AWS
                           readOnlySpecs:
                             diskSizeGB: 10
-                            instanceSize: M10
+                            instanceSize: M40
                             nodeCount: 0
                           regionName: US_EAST_1
                       zoneName: Zone 1
@@ -5427,6 +5439,102 @@ paths:
       summary: Start an Outage Simulation
       tags:
         - Cluster Outage Simulation
+  "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/performanceAdvisor/suggestedIndexes":
+    get:
+      description: Returns the indexes that the Performance Advisor suggests. The
+        Performance Advisor monitors queries that MongoDB considers slow and
+        suggests new indexes to improve query performance. To use this resource,
+        the requesting API Key must have the Project Read Only role.
+      operationId: listClusterSuggestedIndexes
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Human-readable label that identifies the cluster.
+          in: path
+          name: clusterName
+          required: true
+          schema:
+            type: string
+            maxLength: 64
+            minLength: 1
+            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+        - description: ProcessIds from which to retrieve suggested indexes. A processId is
+            a combination of host and port that serves the MongoDB process. The
+            host must be the hostname, FQDN, IPv4 address, or IPv6 address of
+            the host that runs the MongoDB process (`mongod` or `mongos`). The
+            port must be the IANA port on which the MongoDB process listens for
+            requests. To include multiple processIds, pass the parameter
+            multiple times delimited with an ampersand (`&`) between each
+            processId.
+          in: query
+          name: processIds
+          schema:
+            type: array
+            items:
+              type: string
+              pattern: ^([0-9]{1,3}\.){3}[0-9]{1,3}|([0-9a-f]{1,4}\:){7}([0-9a-f]{1,4})|(([a-z0-9]+\.){1,10}[a-z]+)?(\:[0-9]{4,5})$
+          style: form
+        - description: "Namespaces from which to retrieve suggested indexes. A namespace
+            consists of one database and one collection resource written as `.`:
+            `<database>.<collection>`. To include multiple namespaces, pass the
+            parameter multiple times delimited with an ampersand (`&`) between
+            each namespace. Omit this parameter to return results for all
+            namespaces."
+          in: query
+          name: namespaces
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+        - description: >-
+            Date and time from which the query retrieves the suggested indexes.
+            This parameter expresses its value in the number of milliseconds
+            that have elapsed since the [UNIX
+            epoch](https://en.wikipedia.org/wiki/Unix_time).
+
+
+            - If you don't specify the **until** parameter, the endpoint returns data covering from the **since** value and the current time.
+
+            - If you specify neither the **since** nor the **until** parameters, the endpoint returns data from the previous 24 hours.
+          in: query
+          name: since
+          schema:
+            type: integer
+            format: int64
+            minimum: 1199145600000
+        - description: >-
+            Date and time up until which the query retrieves the suggested
+            indexes. This parameter expresses its value in the number of
+            milliseconds that have elapsed since the [UNIX
+            epoch](https://en.wikipedia.org/wiki/Unix_time).
+
+
+            - If you specify the **until** parameter, you must specify the **since** parameter.
+
+            - If you specify neither the **since** nor the **until** parameters, the endpoint returns data from the previous 24 hours.
+          in: query
+          name: until
+          schema:
+            type: integer
+            format: int64
+            minimum: 1199145600000
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/PerformanceAdvisorResponse"
+              x-xgen-version: 2024-08-05
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return Suggested Indexes
+      tags:
+        - Performance Advisor
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/processArgs":
     get:
       description: "Returns the advanced configuration details for one cluster in the
@@ -8789,9 +8897,10 @@ paths:
   "/api/atlas/v2/groups/{groupId}/events":
     get:
       description: >-
-        Returns one event for the specified project. Events identify significant
-        database, billing, or security activities or status changes. To use this
-        resource, the requesting API Key must have the Project Read Only role.
+        Returns all events for the specified project. Events identify
+        significant database, billing, or security activities or status changes.
+        To use this resource, the requesting API Key must have the Project Read
+        Only role.
 
 
         This resource remains under revision and may change.
@@ -14975,6 +15084,53 @@ paths:
       summary: Get One Stream Processor
       tags:
         - Streams
+    patch:
+      description: Modify one existing Stream Processor within the specified stream
+        instance. To use this resource, the requesting API Key must have the
+        Project Owner role or Project Stream Processing Owner role.
+      operationId: modifyStreamProcessor
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Human-readable label that identifies the stream instance.
+          in: path
+          name: tenantName
+          required: true
+          schema:
+            type: string
+        - description: Human-readable label that identifies the stream processor.
+          in: path
+          name: processorName
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/vnd.atlas.2024-05-30+json:
+            schema:
+              $ref: "#/components/schemas/StreamsModifyStreamProcessor"
+        description: Modifications to apply to the stream processor.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-05-30+json:
+              schema:
+                $ref: "#/components/schemas/StreamsProcessorWithStats"
+              x-xgen-version: 2024-05-30
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Modify One Stream Processor
+      tags:
+        - Streams
   "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:start":
     post:
       description: Start a Stream Processor within the specified stream instance. To
@@ -15771,9 +15927,9 @@ paths:
       tags:
         - Organizations
     patch:
-      description: Renames one organization. To use this resource, the requesting API
+      description: Updates one organization. To use this resource, the requesting API
         Key must have the Organization Owner role.
-      operationId: renameOrganization
+      operationId: updateOrganization
       parameters:
         - $ref: "#/components/parameters/orgId"
       requestBody:
@@ -15801,7 +15957,7 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      summary: Rename One Organization
+      summary: Update One Organization
       tags:
         - Organizations
   "/api/atlas/v2/orgs/{orgId}/apiKeys":
@@ -18706,6 +18862,9 @@ components:
         awsAccountId:
           type: string
           description: The AWS Account ID.
+        cidrBlock:
+          type: string
+          description: The VPC CIDR Block.
         links:
           type: array
           description: List of one or more Uniform Resource Locators (URLs) that point to
@@ -19808,6 +19967,11 @@ components:
           maxLength: 64
           minLength: 1
           pattern: ^[\p{L}\p{N}\-_.(),:&@+']{1,64}$
+        skipDefaultAlertsSettings:
+          type: boolean
+          default: false
+          description: Disables automatic alert creation. When set to true, no
+            organization level alerts will be created automatically.
       required:
         - name
     AtlasSearchAnalyzer:
@@ -20010,7 +20174,7 @@ components:
             version. 
 
 
-            On creation: Choose from the available versions of MongoDB, or leave unspecified for the current recommended default in the MongoDB Cloud platform. The recommended version is a recent Long Term Support version. The default is not guaranteed to be the most recently released version throughout the entire release cycle. For versions available in a specific project, see the linked documentation or use the API endpoint for [project LTS versions endpoint](#tag/Projects/operation/getProjectLTSVersions).
+            On creation: Choose from the available versions of MongoDB, or leave unspecified for the current recommended default in the MongoDB Cloud platform. The recommended version is a recent Long Term Support version. The default is not guaranteed to be the most recently released version throughout the entire release cycle. For versions available in a specific project, see the linked documentation or use the API endpoint for [project LTS versions endpoint](#tag/Projects/operation/getProjectLtsVersions).
 
              On update: Increase version only by 1 major version at a time. If the cluster is pinned to a MongoDB feature compatibility version exactly one major version below the current MongoDB version, the MongoDB version can be downgraded to the previous major version.
           externalDocs:
@@ -21244,10 +21408,7 @@ components:
       description: Name of the region to which the data lake routes client connections.
     BaseCloudProviderInstanceSize:
       type: string
-      description: 'Minimum instance size to which your cluster can automatically
-        scale. MongoDB Cloud requires this parameter if
-        `"replicationSpecs[n].regionConfigs[m].autoScaling.compute.scaleDownEnabled"
-        : true`.'
+      description: Instance size boundary to which your cluster can automatically scale.
     BaseNetworkPeeringConnectionSettings:
       type: object
       properties:
@@ -23347,7 +23508,7 @@ components:
             version. 
 
 
-            On creation: Choose from the available versions of MongoDB, or leave unspecified for the current recommended default in the MongoDB Cloud platform. The recommended version is a recent Long Term Support version. The default is not guaranteed to be the most recently released version throughout the entire release cycle. For versions available in a specific project, see the linked documentation or use the API endpoint for [project LTS versions endpoint](#tag/Projects/operation/getProjectLTSVersions).
+            On creation: Choose from the available versions of MongoDB, or leave unspecified for the current recommended default in the MongoDB Cloud platform. The recommended version is a recent Long Term Support version. The default is not guaranteed to be the most recently released version throughout the entire release cycle. For versions available in a specific project, see the linked documentation or use the API endpoint for [project LTS versions endpoint](#tag/Projects/operation/getProjectLtsVersions).
 
              On update: Increase version only by 1 major version at a time. If the cluster is pinned to a MongoDB feature compatibility version exactly one major version below the current MongoDB version, the MongoDB version can be downgraded to the previous major version.
           externalDocs:
@@ -23551,6 +23712,16 @@ components:
             description: This option corresponds to the `chunkMigrationConcurrency` `mongod`
               configuration file option.
             url: https://www.mongodb.com/docs/manual/reference/parameters/#mongodb-parameter-param.chunkMigrationConcurrency
+        customOpensslCipherConfigTls12:
+          type: array
+          description: The custom OpenSSL cipher suite list for TLS 1.2. This field is
+            only valid when `tlsCipherConfigMode` is set to `CUSTOM`.
+          externalDocs:
+            description: This option corresponds to the `opensslCipherConfig` `mongod`
+              configuration file option.
+            url: https://www.mongodb.com/docs/manual/reference/parameters/#mongodb-parameter-param.opensslCipherConfig
+          items:
+            type: string
         defaultMaxTimeMS:
           type: integer
           format: int32
@@ -23645,6 +23816,11 @@ components:
             description: This option corresponds to the `sampleSize` `mongosqld` option.
             url: https://docs.mongodb.com/bi-connector/current/reference/mongosqld/#std-option-mongosqld.--sampleSize
           minimum: 0
+        tlsCipherConfigMode:
+          type: string
+          description: The TLS cipher suite configuration mode. The default mode uses the
+            default cipher suites. The custom mode allows you to specify custom
+            cipher suites for both TLS 1.2 and TLS 1.3.
         transactionLifetimeLimitSeconds:
           type: integer
           format: int64
@@ -23816,6 +23992,11 @@ components:
             multi-tenant host. The resource returns this parameter when
             **providerSettings.providerName** is `FLEX` and
             **providerSetting.instanceSizeName** is `FLEX`.
+        effectiveInstanceSizeName:
+          type: string
+          description: The true tenant instance size. This is present to support backwards
+            compatibility for deprecated provider types and/or instance sizes.
+          readOnly: true
       required:
         - providerName
       title: Cloud Service Provider Settings for a Cluster
@@ -23843,6 +24024,12 @@ components:
           type: string
           description: Human-readable label that identifies this index. Within each
             namespace, names of all indexes in the namespace must be unique.
+        numPartitions:
+          type: integer
+          format: int32
+          default: 1
+          description: "Number of index partitions. Note: This feature is currently in
+            preview."
         status:
           type: string
           description: >
@@ -24401,6 +24588,11 @@ components:
           maxLength: 24
           minLength: 24
           pattern: ^([a-f0-9]{24})$
+        skipDefaultAlertsSettings:
+          type: boolean
+          default: false
+          description: Disables automatic alert creation. When set to true, no
+            organization level alerts will be created automatically.
       required:
         - name
     CreateOrganizationResponse:
@@ -24429,6 +24621,11 @@ components:
           readOnly: true
         organization:
           $ref: "#/components/schemas/AtlasOrganization"
+        skipDefaultAlertsSettings:
+          type: boolean
+          default: false
+          description: Disables automatic alert creation. When set to true, no
+            organization level alerts will be created automatically.
     CreatePushBasedLogExportProjectRequest:
       type: object
       properties:
@@ -25674,6 +25871,8 @@ components:
           type: string
           description: State of the Export Job.
           readOnly: true
+        stateReason:
+          $ref: "#/components/schemas/StateReason"
       required:
         - exportBucketId
     DiskBackupExportJobRequest:
@@ -26568,10 +26767,6 @@ components:
             oplog size can limit storage auto-scaling.
     Document:
       type: object
-      description: The stats associated with the stream processor.
-      externalDocs:
-        url: https://www.mongodb.com/docs/atlas/atlas-stream-processing/manage-stream-processor/#view-statistics-of-a-stream-processor
-      readOnly: true
     EARPrivateEndpoint:
       type: object
       description: Encryption At Rest Private Endpoint.
@@ -26908,6 +27103,14 @@ components:
             triggered. The response returns this parameter when `eventTypeName"
             : "DATA_EXPLORER"`.'
           example: insertDocument
+          readOnly: true
+        deskLocation:
+          type: string
+          description: Desk location of MongoDB employee associated with the event.
+          readOnly: true
+        employeeIdentifier:
+          type: string
+          description: Identifier of MongoDB employee associated with the event.
           readOnly: true
         port:
           type: integer
@@ -28670,6 +28873,8 @@ components:
           description: Number of times the current maintenance event for this project has
             been deferred.
           readOnly: true
+        protectedHours:
+          $ref: "#/components/schemas/ProtectedHours"
         startASAP:
           type: boolean
           description: Flag that indicates whether MongoDB Cloud starts the maintenance
@@ -28678,6 +28883,11 @@ components:
             have maintenance scheduled and you must set a maintenance window.
             This flag resets to `false` after MongoDB Cloud completes
             maintenance.
+        timeZoneId:
+          type: string
+          description: Identifier for the current time zone of the maintenance window.
+            This can only be updated via the Project Settings UI.
+          readOnly: true
       required:
         - dayOfWeek
     GroupMigrationRequest:
@@ -28972,6 +29182,11 @@ components:
           format: int32
           description: Number of nodes of the given type for MongoDB Cloud to deploy to
             the region.
+        effectiveInstanceSize:
+          type: string
+          description: The true tenant instance size. This is present to support backwards
+            compatibility for deprecated provider types and/or instance sizes.
+          readOnly: true
     InboundControlPlaneCloudProviderIPAddresses:
       type: object
       description: List of inbound IP addresses to the Atlas control plane,
@@ -32408,6 +32623,24 @@ components:
             with this private endpoint.
       required:
         - endpointId
+    ProtectedHours:
+      type: object
+      description: Defines the a window where maintenance will not begin within.
+      properties:
+        endHourOfDay:
+          type: integer
+          format: int32
+          description: Zero-based integer that represents the end hour of the of the day
+            that the maintenance will not begin in.
+          maximum: 23
+          minimum: 0
+        startHourOfDay:
+          type: integer
+          format: int32
+          description: Zero-based integer that represents the beginning hour of the of the
+            day that the maintenance will not begin in.
+          maximum: 23
+          minimum: 0
     PushBasedLogExportProject:
       type: object
       properties:
@@ -32848,6 +33081,12 @@ components:
                 $ref: "#/components/schemas/AtlasSearchAnalyzer"
             mappings:
               $ref: "#/components/schemas/SearchMappings"
+            numPartitions:
+              type: integer
+              format: int32
+              default: 1
+              description: "Number of index partitions. Note: This feature is currently in
+                preview."
             searchAnalyzer:
               type: string
               default: lucene.standard
@@ -33686,6 +33925,17 @@ components:
         - groupId
         - managedAuthentication
         - ssl
+    StateReason:
+      type: object
+      description: State reason of the Job. This is set when the job state is "Failed".
+      properties:
+        errorCode:
+          type: string
+          description: Error code relating to state.
+        message:
+          type: string
+          description: Message describing error or state.
+      readOnly: true
     StreamConfig:
       type: object
       description: Configuration options for an Atlas Stream Processing Instance.
@@ -33764,10 +34014,6 @@ components:
           $ref: "#/components/schemas/StreamsKafkaNetworking"
         security:
           $ref: "#/components/schemas/StreamsKafkaSecurity"
-        connectionTimeoutSec:
-          type: integer
-          format: int32
-          description: The amount of seconds to wait before timing out a connection.
         headers:
           type: object
           additionalProperties:
@@ -33776,10 +34022,6 @@ components:
               request.
           description: A map of key-value pairs that will be passed as headers for the
             request.
-        requestTimeoutSec:
-          type: integer
-          format: int32
-          description: The amount of seconds to wait before timing out a request.
         url:
           type: string
           description: The url to be used for the request.
@@ -33967,6 +34209,55 @@ components:
         for alert configurations.
       example: INSTANCE_NAME
       title: Streams Matcher Fields
+    StreamsModifyStreamProcessor:
+      type: object
+      description: A request to modify an existing stream processor
+      properties:
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        name:
+          type: string
+          description: New name for the stream processor.
+        options:
+          $ref: "#/components/schemas/StreamsModifyStreamProcessorOptions"
+        pipeline:
+          type: array
+          description: New pipeline for the stream processor.
+          externalDocs:
+            description: Supported Aggregation Pipeline Stages
+            url: https://www.mongodb.com/docs/atlas/atlas-stream-processing/stream-aggregation/#std-label-stream-aggregation
+          items:
+            $ref: "#/components/schemas/Document"
+    StreamsModifyStreamProcessorOptions:
+      type: object
+      description: Additional options for modifying a stream processor.
+      properties:
+        dlq:
+          $ref: "#/components/schemas/StreamsDLQ"
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        resumeFromCheckpoint:
+          type: boolean
+          description: When true, the modified stream processor resumes from its last
+            checkpoint.
     StreamsOptions:
       type: object
       description: Optional configuration for the stream processor.
@@ -34306,11 +34597,10 @@ components:
           items:
             type: string
             format: email
-            description: List that contains email addresses that identify MongoDB Cloud
-              users to in this team.
           uniqueItems: true
       required:
         - name
+        - usernames
     TeamResponse:
       type: object
       properties:
@@ -34526,6 +34816,17 @@ components:
           type: string
           description: PagerDuty region that indicates the API Uniform Resource Locator
             (URL) to use.
+        sendCollectionLatencyMetrics:
+          type: boolean
+          default: false
+          description: Toggle sending collection latency metrics that includes database
+            names and collection namesand latency metrics on reads, writes,
+            commands, and transactions.
+        sendDatabaseMetrics:
+          type: boolean
+          default: false
+          description: Toggle sending database metrics that includes database names and
+            metrics on the number of collections, storage size, and index size.
         microsoftTeamsWebhookUrl:
           type: string
           description: >-
@@ -35112,6 +35413,12 @@ components:
             url: https://dochub.mongodb.org/core/avs-vector-type
           items:
             $ref: "#/components/schemas/BasicDBObject"
+        numPartitions:
+          type: integer
+          format: int32
+          default: 1
+          description: "Number of index partitions. Note: This feature is currently in
+            preview."
       title: Vector Search Index Definition
     VectorSearchIndexStatusDetail:
       type: object
@@ -35300,6 +35607,12 @@ components:
             $ref: "#/components/schemas/AtlasSearchAnalyzer"
         mappings:
           $ref: "#/components/schemas/SearchMappings"
+        numPartitions:
+          type: integer
+          format: int32
+          default: 1
+          description: "Number of index partitions. Note: This feature is currently in
+            preview."
         searchAnalyzer:
           type: string
           default: lucene.standard
@@ -35377,6 +35690,12 @@ components:
             $ref: "#/components/schemas/AtlasSearchAnalyzer"
         mappings:
           $ref: "#/components/schemas/SearchMappings"
+        numPartitions:
+          type: integer
+          format: int32
+          default: 1
+          description: "Number of index partitions. Note: This feature is currently in
+            preview."
         searchAnalyzer:
           type: string
           default: lucene.standard
