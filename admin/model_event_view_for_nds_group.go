@@ -68,6 +68,12 @@ type EventViewForNdsGroup struct {
 	// Action that the database attempted to execute when the event triggered. The response returns this parameter when `eventTypeName\" : \"DATA_EXPLORER\"`.
 	// Read only field.
 	OpType *string `json:"opType,omitempty"`
+	// Desk location of MongoDB employee associated with the event.
+	// Read only field.
+	DeskLocation *string `json:"deskLocation,omitempty"`
+	// Identifier of MongoDB employee associated with the event.
+	// Read only field.
+	EmployeeIdentifier *string `json:"employeeIdentifier,omitempty"`
 	// IANA port on which the MongoDB process listens for requests.
 	// Read only field.
 	Port *int `json:"port,omitempty"`
@@ -823,6 +829,72 @@ func (o *EventViewForNdsGroup) HasOpType() bool {
 // SetOpType gets a reference to the given string and assigns it to the OpType field.
 func (o *EventViewForNdsGroup) SetOpType(v string) {
 	o.OpType = &v
+}
+
+// GetDeskLocation returns the DeskLocation field value if set, zero value otherwise
+func (o *EventViewForNdsGroup) GetDeskLocation() string {
+	if o == nil || IsNil(o.DeskLocation) {
+		var ret string
+		return ret
+	}
+	return *o.DeskLocation
+}
+
+// GetDeskLocationOk returns a tuple with the DeskLocation field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EventViewForNdsGroup) GetDeskLocationOk() (*string, bool) {
+	if o == nil || IsNil(o.DeskLocation) {
+		return nil, false
+	}
+
+	return o.DeskLocation, true
+}
+
+// HasDeskLocation returns a boolean if a field has been set.
+func (o *EventViewForNdsGroup) HasDeskLocation() bool {
+	if o != nil && !IsNil(o.DeskLocation) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeskLocation gets a reference to the given string and assigns it to the DeskLocation field.
+func (o *EventViewForNdsGroup) SetDeskLocation(v string) {
+	o.DeskLocation = &v
+}
+
+// GetEmployeeIdentifier returns the EmployeeIdentifier field value if set, zero value otherwise
+func (o *EventViewForNdsGroup) GetEmployeeIdentifier() string {
+	if o == nil || IsNil(o.EmployeeIdentifier) {
+		var ret string
+		return ret
+	}
+	return *o.EmployeeIdentifier
+}
+
+// GetEmployeeIdentifierOk returns a tuple with the EmployeeIdentifier field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EventViewForNdsGroup) GetEmployeeIdentifierOk() (*string, bool) {
+	if o == nil || IsNil(o.EmployeeIdentifier) {
+		return nil, false
+	}
+
+	return o.EmployeeIdentifier, true
+}
+
+// HasEmployeeIdentifier returns a boolean if a field has been set.
+func (o *EventViewForNdsGroup) HasEmployeeIdentifier() bool {
+	if o != nil && !IsNil(o.EmployeeIdentifier) {
+		return true
+	}
+
+	return false
+}
+
+// SetEmployeeIdentifier gets a reference to the given string and assigns it to the EmployeeIdentifier field.
+func (o *EventViewForNdsGroup) SetEmployeeIdentifier(v string) {
+	o.EmployeeIdentifier = &v
 }
 
 // GetPort returns the Port field value if set, zero value otherwise

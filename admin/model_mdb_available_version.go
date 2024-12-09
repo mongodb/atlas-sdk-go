@@ -8,7 +8,7 @@ type MdbAvailableVersion struct {
 	CloudProvider *string `json:"cloudProvider,omitempty"`
 	// Whether the version is the current default for the Instance Size and Cloud Provider.
 	DefaultStatus *string `json:"defaultStatus,omitempty"`
-	// Minimum instance size to which your cluster can automatically scale. MongoDB Cloud requires this parameter if `\"replicationSpecs[n].regionConfigs[m].autoScaling.compute.scaleDownEnabled\" : true`.
+	// Instance size boundary to which your cluster can automatically scale.
 	InstanceSize *string `json:"instanceSize,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.

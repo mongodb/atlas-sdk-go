@@ -12,7 +12,7 @@ info:
 
     curl --user "{PUBLIC-KEY}:{PRIVATE-KEY}" \
       --digest \
-      --header "Accept: application/vnd.atlas.2024-11-13+json" \
+      --header "Accept: application/vnd.atlas.2043-01-01+json" \
       -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/dbAccessHistory/clusters/{clusterName}?pretty=true"
     ```
 
@@ -27,7 +27,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: f611126a305b6658a7cb45c1331f485910e7c298
+  x-xgen-sha: f289db382bb0299a3980fd6badca897697272f4a
 servers:
   - url: https://cloud.mongodb.com
 security:
@@ -2473,6 +2473,35 @@ paths:
       tags:
         - Cloud Backups
   "/api/atlas/v2/groups/{groupId}/backupCompliancePolicy":
+    delete:
+      description: Disables the Backup Compliance Policy settings with the specified
+        project. As a prerequisite, a support ticket needs to be file first,
+        instructions in
+        https://www.mongodb.com/docs/atlas/backup/cloud-backup/backup-compliance-policy/.
+        To use this resource, the requesting API Key must have the Project Owner
+        role.
+      operationId: disableDataProtectionSettings
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+      responses:
+        "204":
+          content:
+            application/vnd.atlas.2024-11-13+json:
+              schema:
+                $ref: "#/components/schemas/NoBody"
+              x-xgen-version: 2024-11-13
+          description: This endpoint does not return a response body.
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Disable the Backup Compliance Policy settings
+      tags:
+        - Cloud Backups
     get:
       description: "Returns the Backup Compliance Policy settings with the specified
         project. To use this resource, the requesting API Key must have the
@@ -2774,29 +2803,35 @@ paths:
                             autoIndexing:
                               enabled: false
                             compute:
-                              enabled: false
+                              enabled: true
+                              maxInstanceSize: M40
+                              minInstanceSize: M30
+                              scaleDownEnabled: true
                             diskGB:
                               enabled: true
                           analyticsSpecs:
                             diskSizeGB: 10
-                            instanceSize: M30
+                            instanceSize: M40
                             nodeCount: 0
                           autoScaling:
                             autoIndexing:
                               enabled: false
                             compute:
-                              enabled: false
+                              enabled: true
+                              maxInstanceSize: M60
+                              minInstanceSize: M30
+                              scaleDownEnabled: true
                             diskGB:
                               enabled: true
                           electableSpecs:
                             diskSizeGB: 10
-                            instanceSize: M30
+                            instanceSize: M60
                             nodeCount: 3
                           priority: 7
                           providerName: AWS
                           readOnlySpecs:
                             diskSizeGB: 10
-                            instanceSize: M30
+                            instanceSize: M60
                             nodeCount: 0
                           regionName: US_EAST_1
                       zoneName: Zone 1
@@ -2805,29 +2840,35 @@ paths:
                             autoIndexing:
                               enabled: false
                             compute:
-                              enabled: false
+                              enabled: true
+                              maxInstanceSize: M40
+                              minInstanceSize: M30
+                              scaleDownEnabled: true
                             diskGB:
                               enabled: true
                           analyticsSpecs:
                             diskSizeGB: 10
-                            instanceSize: M10
+                            instanceSize: M30
                             nodeCount: 0
                           autoScaling:
                             autoIndexing:
                               enabled: false
                             compute:
-                              enabled: false
+                              enabled: true
+                              maxInstanceSize: M60
+                              minInstanceSize: M30
+                              scaleDownEnabled: true
                             diskGB:
                               enabled: true
                           electableSpecs:
                             diskSizeGB: 10
-                            instanceSize: M10
+                            instanceSize: M40
                             nodeCount: 3
                           priority: 7
                           providerName: AWS
                           readOnlySpecs:
                             diskSizeGB: 10
-                            instanceSize: M10
+                            instanceSize: M40
                             nodeCount: 0
                           regionName: US_EAST_1
                       zoneName: Zone 1
@@ -2994,7 +3035,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Flag that indicates whether to retain backup snapshots for the
             deleted dedicated cluster.
           in: query
@@ -3038,7 +3079,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -3081,7 +3122,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2024-10-23+json:
@@ -3130,7 +3171,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -3161,7 +3202,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -3206,7 +3247,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal character string that identifies the Export
             Job.
           in: path
@@ -3253,7 +3294,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -3289,7 +3330,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -3334,7 +3375,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal digit string that identifies the restore job
             to remove.
           in: path
@@ -3378,7 +3419,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal digit string that identifies the restore job
             to return.
           in: path
@@ -3422,7 +3463,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -3457,7 +3498,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -3490,7 +3531,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2024-08-05+json:
@@ -3539,7 +3580,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -3577,7 +3618,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -3618,7 +3659,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal digit string that identifies the desired
             snapshot.
           in: path
@@ -3659,7 +3700,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal digit string that identifies the desired
             snapshot.
           in: path
@@ -3703,7 +3744,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -3736,7 +3777,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal digit string that identifies the desired
             snapshot.
           in: path
@@ -3778,7 +3819,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal digit string that identifies the desired
             snapshot.
           in: path
@@ -3820,7 +3861,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal digit string that identifies the desired
             snapshot.
           in: path
@@ -3873,7 +3914,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - $ref: "#/components/parameters/groupId"
       requestBody:
         content:
@@ -3924,7 +3965,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - $ref: "#/components/parameters/groupId"
       requestBody:
         content:
@@ -3969,7 +4010,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - $ref: "#/components/parameters/groupId"
       responses:
         "200":
@@ -4002,7 +4043,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - $ref: "#/components/parameters/groupId"
         - description: Unique 24-hexadecimal digit string that identifies the restore job
             to return.
@@ -4047,7 +4088,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -4081,7 +4122,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal digit string that identifies the desired
             snapshot.
           in: path
@@ -4130,7 +4171,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -4173,7 +4214,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -4210,7 +4251,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -4246,7 +4287,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2023-11-15+json:
@@ -4298,7 +4339,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2023-11-15+json:
@@ -4349,7 +4390,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2023-11-15+json:
@@ -4400,7 +4441,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -4450,7 +4491,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Name of the collection that contains one or more Atlas Search
             indexes.
           in: path
@@ -4504,7 +4545,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal digit string that identifies the Atlas Search
             index. Use the [Get All Atlas Search Indexes for a Collection
             API](https://docs.atlas.mongodb.com/reference/api/fts-indexes-get-all/)
@@ -4557,7 +4598,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal digit string that identifies the Application
             Search
             [index](https://dochub.mongodb.org/core/index-definitions-fts). Use
@@ -4609,7 +4650,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal digit string that identifies the Atlas Search
             [index](https://dochub.mongodb.org/core/index-definitions-fts). Use
             the [Get All Atlas Search Indexes for a Collection
@@ -4671,7 +4712,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -4710,7 +4751,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -4747,7 +4788,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2024-08-05+json:
@@ -4794,7 +4835,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - $ref: "#/components/parameters/groupId"
         - description: Human-readable label that identifies the database that contains the
             collection.
@@ -4845,7 +4886,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2024-08-05+json:
@@ -4896,7 +4937,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -5007,7 +5048,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -5042,7 +5083,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -5119,7 +5160,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Flag that indicates whether to download logs for queries against
             your online archive only or both your online archive and cluster.
           in: query
@@ -5183,7 +5224,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "204":
           content:
@@ -5231,7 +5272,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -5281,7 +5322,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -5328,7 +5369,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -5365,7 +5406,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -5402,7 +5443,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -5427,6 +5468,175 @@ paths:
       summary: Start an Outage Simulation
       tags:
         - Cluster Outage Simulation
+  "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/performanceAdvisor/dropIndexSuggestions":
+    get:
+      description: Returns the indexes that the Performance Advisor suggests to drop.
+        The Performance Advisor suggests dropping unused, redundant, and hidden
+        indexes to improve write performance and increase storage space. To use
+        this resource, the requesting API Key must have the Project Read Only
+        role.
+      operationId: listDropIndexes
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Human-readable label that identifies the cluster.
+          in: path
+          name: clusterName
+          required: true
+          schema:
+            type: string
+            maxLength: 64
+            minLength: 1
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/PerformanceAdvisorResponse"
+              x-xgen-version: 2024-08-05
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Returns Suggested Indexes to Drop
+      tags:
+        - Performance Advisor
+  "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/performanceAdvisor/schemaAdvice":
+    get:
+      description: Returns the schema suggestions that the Performance Advisor
+        detects. The Performance Advisor provides holistic schema
+        recommendations for your cluster by sampling documents in your most
+        active collections and collections with slow-running queries. To use
+        this resource, the requesting API Key must have the Project Read Only
+        role.
+      operationId: listSchemaAdvice
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Human-readable label that identifies the cluster.
+          in: path
+          name: clusterName
+          required: true
+          schema:
+            type: string
+            maxLength: 64
+            minLength: 1
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/PerformanceAdvisorResponse"
+              x-xgen-version: 2024-08-05
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return Schema Advice
+      tags:
+        - Performance Advisor
+  "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/performanceAdvisor/suggestedIndexes":
+    get:
+      description: Returns the indexes that the Performance Advisor suggests. The
+        Performance Advisor monitors queries that MongoDB considers slow and
+        suggests new indexes to improve query performance. To use this resource,
+        the requesting API Key must have the Project Read Only role.
+      operationId: listClusterSuggestedIndexes
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Human-readable label that identifies the cluster.
+          in: path
+          name: clusterName
+          required: true
+          schema:
+            type: string
+            maxLength: 64
+            minLength: 1
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+        - description: ProcessIds from which to retrieve suggested indexes. A processId is
+            a combination of host and port that serves the MongoDB process. The
+            host must be the hostname, FQDN, IPv4 address, or IPv6 address of
+            the host that runs the MongoDB process (`mongod` or `mongos`). The
+            port must be the IANA port on which the MongoDB process listens for
+            requests. To include multiple processIds, pass the parameter
+            multiple times delimited with an ampersand (`&`) between each
+            processId.
+          in: query
+          name: processIds
+          schema:
+            type: array
+            items:
+              type: string
+              pattern: ^([0-9]{1,3}\.){3}[0-9]{1,3}|([0-9a-f]{1,4}\:){7}([0-9a-f]{1,4})|(([a-z0-9]+\.){1,10}[a-z]+)?(\:[0-9]{4,5})$
+          style: form
+        - description: "Namespaces from which to retrieve suggested indexes. A namespace
+            consists of one database and one collection resource written as `.`:
+            `<database>.<collection>`. To include multiple namespaces, pass the
+            parameter multiple times delimited with an ampersand (`&`) between
+            each namespace. Omit this parameter to return results for all
+            namespaces."
+          in: query
+          name: namespaces
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+        - description: >-
+            Date and time from which the query retrieves the suggested indexes.
+            This parameter expresses its value in the number of milliseconds
+            that have elapsed since the [UNIX
+            epoch](https://en.wikipedia.org/wiki/Unix_time).
+
+
+            - If you don't specify the **until** parameter, the endpoint returns data covering from the **since** value and the current time.
+
+            - If you specify neither the **since** nor the **until** parameters, the endpoint returns data from the previous 24 hours.
+          in: query
+          name: since
+          schema:
+            type: integer
+            format: int64
+            minimum: 1199145600000
+        - description: >-
+            Date and time up until which the query retrieves the suggested
+            indexes. This parameter expresses its value in the number of
+            milliseconds that have elapsed since the [UNIX
+            epoch](https://en.wikipedia.org/wiki/Unix_time).
+
+
+            - If you specify the **until** parameter, you must specify the **since** parameter.
+
+            - If you specify neither the **since** nor the **until** parameters, the endpoint returns data from the previous 24 hours.
+          in: query
+          name: until
+          schema:
+            type: integer
+            format: int64
+            minimum: 1199145600000
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/PerformanceAdvisorResponse"
+              x-xgen-version: 2024-08-05
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return Suggested Indexes
+      tags:
+        - Performance Advisor
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/processArgs":
     get:
       description: "Returns the advanced configuration details for one cluster in the
@@ -5451,7 +5661,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -5492,7 +5702,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2024-08-05+json:
@@ -5541,7 +5751,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -5592,7 +5802,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -5641,7 +5851,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -5687,7 +5897,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal digit string that identifies the restore job.
           in: path
           name: jobId
@@ -5728,7 +5938,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "204":
           content:
@@ -5762,7 +5972,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -5794,7 +6004,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2024-05-30+json:
@@ -5834,7 +6044,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2024-05-30+json:
@@ -5882,7 +6092,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -5929,7 +6139,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2024-05-30+json:
@@ -5977,7 +6187,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Name of the collection that contains one or more Atlas Search
             indexes.
           in: path
@@ -6038,7 +6248,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Name of the collection that contains one or more Atlas Search
             indexes.
           in: path
@@ -6097,7 +6307,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Name of the collection that contains one or more Atlas Search
             indexes.
           in: path
@@ -6156,7 +6366,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Name of the collection that contains one or more Atlas Search
             indexes.
           in: path
@@ -6223,7 +6433,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal digit string that identifies the Atlas Search
             index. Use the [Get All Atlas Search Indexes for a Collection
             API](https://docs.atlas.mongodb.com/reference/api/fts-indexes-get-all/)
@@ -6274,7 +6484,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal digit string that identifies the Application
             Search
             [index](https://dochub.mongodb.org/core/index-definitions-fts). Use
@@ -6332,7 +6542,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal digit string that identifies the Atlas Search
             [index](https://dochub.mongodb.org/core/index-definitions-fts). Use
             the [Get All Atlas Search Indexes for a Collection
@@ -6393,7 +6603,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -6429,7 +6639,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -6480,7 +6690,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Human-readable label that specifies whether to return only
             completed, incomplete, or all snapshots. By default, MongoDB Cloud
             only returns completed snapshots.
@@ -6529,7 +6739,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal digit string that identifies the desired
             snapshot.
           in: path
@@ -6581,7 +6791,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal digit string that identifies the desired
             snapshot.
           in: path
@@ -6631,7 +6841,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal digit string that identifies the desired
             snapshot.
           in: path
@@ -6682,7 +6892,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -6714,7 +6924,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Human-readable label that identifies the cluster topology to
             retrieve metrics for.
           in: path
@@ -6756,7 +6966,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Human-readable label that identifies the cluster topology to
             retrieve metrics for.
           in: path
@@ -6816,7 +7026,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2024-08-05+json:
@@ -6863,7 +7073,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2024-05-30+json:
@@ -6906,7 +7116,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "204":
           content:
@@ -6943,7 +7153,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "204":
           content:
@@ -8425,7 +8635,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Date and time when to stop retrieving database history. If you
             specify **end**, you must also specify **start**. This parameter
             uses UNIX epoch time in milliseconds.
@@ -8789,9 +8999,10 @@ paths:
   "/api/atlas/v2/groups/{groupId}/events":
     get:
       description: >-
-        Returns one event for the specified project. Events identify significant
-        database, billing, or security activities or status changes. To use this
-        resource, the requesting API Key must have the Project Read Only role.
+        Returns all events for the specified project. Events identify
+        significant database, billing, or security activities or status changes.
+        To use this resource, the requesting API Key must have the Project Read
+        Only role.
 
 
         This resource remains under revision and may change.
@@ -8810,7 +9021,7 @@ paths:
               type: string
               maxLength: 64
               minLength: 1
-              pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+              pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
           style: form
         - description: >-
             Category of incident recorded at this moment in time.
@@ -9002,7 +9213,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "204":
           content:
@@ -9037,7 +9248,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -9071,7 +9282,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2024-11-13+json:
@@ -9113,7 +9324,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - $ref: "#/components/parameters/groupId"
       requestBody:
         content:
@@ -9164,7 +9375,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -9198,7 +9409,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2024-11-13+json:
@@ -9243,7 +9454,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal digit string that identifies the restore job
             to return.
           in: path
@@ -9290,7 +9501,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -9324,7 +9535,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal digit string that identifies the desired
             snapshot.
           in: path
@@ -11530,7 +11741,7 @@ paths:
           schema:
             type: string
             maxLength: 64
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -11570,7 +11781,7 @@ paths:
           schema:
             type: string
             maxLength: 64
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -11611,7 +11822,7 @@ paths:
           schema:
             type: string
             maxLength: 64
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal digit string that identifies the tenant
             endpoint which will be removed.
           in: path
@@ -11654,7 +11865,7 @@ paths:
           schema:
             type: string
             maxLength: 64
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal digit string that identifies the tenant
             endpoint.
           in: path
@@ -11696,7 +11907,7 @@ paths:
           schema:
             type: string
             maxLength: 64
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal digit string that identifies the tenant
             endpoint which will be updated.
           in: path
@@ -13138,7 +13349,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "201":
           content:
@@ -13268,7 +13479,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -13302,7 +13513,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -13348,7 +13559,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal digit string that identifies the restore job
             to return.
           in: path
@@ -13395,7 +13606,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -13429,7 +13640,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal digit string that identifies the desired
             snapshot.
           in: path
@@ -13472,7 +13683,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -13501,7 +13712,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Value that we want to set for the Serverless Auto Indexing toggle.
           in: query
           name: enable
@@ -13540,7 +13751,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "202":
           content:
@@ -13575,7 +13786,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -13609,7 +13820,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -14975,6 +15186,53 @@ paths:
       summary: Get One Stream Processor
       tags:
         - Streams
+    patch:
+      description: Modify one existing Stream Processor within the specified stream
+        instance. To use this resource, the requesting API Key must have the
+        Project Owner role or Project Stream Processing Owner role.
+      operationId: modifyStreamProcessor
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Human-readable label that identifies the stream instance.
+          in: path
+          name: tenantName
+          required: true
+          schema:
+            type: string
+        - description: Human-readable label that identifies the stream processor.
+          in: path
+          name: processorName
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/vnd.atlas.2024-05-30+json:
+            schema:
+              $ref: "#/components/schemas/StreamsModifyStreamProcessor"
+        description: Modifications to apply to the stream processor.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-05-30+json:
+              schema:
+                $ref: "#/components/schemas/StreamsProcessorWithStats"
+              x-xgen-version: 2024-05-30
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Modify One Stream Processor
+      tags:
+        - Streams
   "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:start":
     post:
       description: Start a Stream Processor within the specified stream instance. To
@@ -15511,10 +15769,55 @@ paths:
       summary: Return All Users in One Project
       tags:
         - Projects
+    post:
+      description: >
+        Adds one MongoDB Cloud user to one project. To use this resource, the
+        requesting API Key must have the Group User Admin role. 
+
+        - If the user has a pending invitation to join the project's organization, MongoDB Cloud modifies it and grants project access. 
+
+        - If the user doesn't have an invitation to join the organization, MongoDB Cloud sends a new invitation that grants the user organization and project access. 
+
+        - If the user is already active in the project's organization, MongoDB Cloud grants access to the project. 
+      operationId: addProjectUser
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+      requestBody:
+        content:
+          application/vnd.atlas.2043-01-01+json:
+            schema:
+              $ref: "#/components/schemas/GroupUserRequest"
+        description: The active or pending MongoDB Cloud user that you want to add to
+          the specified project.
+        required: true
+      responses:
+        "201":
+          content:
+            application/vnd.atlas.2043-01-01+json:
+              schema:
+                $ref: "#/components/schemas/GroupUserResponse"
+              x-xgen-version: 2043-01-01
+          description: Created
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Add One MongoDB Cloud User to One Project
+      tags:
+        - MongoDB Cloud Users
   "/api/atlas/v2/groups/{groupId}/users/{userId}":
     delete:
-      description: Removes the specified user from the specified project. To use this
+      description: "Removes the specified user from the specified project. To use this
         resource, the requesting API Key must have the Project Owner role.
+        Deprecated versions: v2-{2023-01-01}"
       operationId: removeProjectUser
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -15533,8 +15836,10 @@ paths:
       responses:
         "204":
           content:
-            application/vnd.atlas.2023-01-01+json:
-              x-xgen-version: 2023-01-01
+            application/vnd.atlas.2043-01-01+json:
+              schema:
+                $ref: "#/components/schemas/NoBody"
+              x-xgen-version: 2043-01-01
           description: This endpoint does not return a response body.
         "400":
           $ref: "#/components/responses/badRequest"
@@ -15547,6 +15852,53 @@ paths:
       summary: Remove One User from One Project
       tags:
         - Projects
+    get:
+      description: >-
+        Returns information about the specified MongoDB Cloud user within the
+        context of the specified project. To use this resource, the requesting
+        API Key must have the Group Read Only role.
+
+
+        **Note**: You can only use this resource to fetch information about MongoDB Cloud human users. To return information about an API Key, use the [Return One Organization API Key](#tag/Programmatic-API-Keys/operation/getApiKey) endpoint.
+
+
+        **Note**: This resource does not return information about pending users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
+      operationId: getProjectUser
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Unique 24-hexadecimal digit string that identifies the pending or
+            active user in the project. If you need to lookup a user's userId or
+            verify a user's status in the organization, use the Return All
+            MongoDB Cloud Users in One Project resource and filter by username.
+          in: path
+          name: userId
+          required: true
+          schema:
+            type: string
+            maxLength: 24
+            minLength: 24
+            pattern: ^([a-f0-9]{24})$
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2043-01-01+json:
+              schema:
+                $ref: "#/components/schemas/GroupUserResponse"
+              x-xgen-version: 2043-01-01
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return One MongoDB Cloud User in One Project
+      tags:
+        - MongoDB Cloud Users
   "/api/atlas/v2/groups/{groupId}/users/{userId}/roles":
     put:
       description: Updates the roles of the specified user in the specified project.
@@ -15592,6 +15944,118 @@ paths:
       summary: Update Project Roles for One MongoDB Cloud User
       tags:
         - Projects
+  "/api/atlas/v2/groups/{groupId}/users/{userId}:addRole":
+    post:
+      description: >-
+        Adds one project-level role to the MongoDB Cloud user. You can add a
+        role to an active user or a user that has been invited to join the
+        project. To use this resource, the requesting API Key must have the
+        Project Owner role.
+
+
+        **Note**: This resource cannot be used to add a role to users invited using the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
+      operationId: addProjectRole
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Unique 24-hexadecimal digit string that identifies the pending or
+            active user in the project. If you need to lookup a user's userId or
+            verify a user's status in the organization, use the Return All
+            MongoDB Cloud Users in One Project resource and filter by username.
+          in: path
+          name: userId
+          required: true
+          schema:
+            type: string
+            maxLength: 24
+            minLength: 24
+            pattern: ^([a-f0-9]{24})$
+      requestBody:
+        content:
+          application/vnd.atlas.2043-01-01+json:
+            schema:
+              $ref: "#/components/schemas/AddOrRemoveGroupRole"
+        description: Project-level role to assign to the MongoDB Cloud user.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2043-01-01+json:
+              schema:
+                $ref: "#/components/schemas/OrgUserResponse"
+              x-xgen-version: 2043-01-01
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Add One Project Role to One MongoDB Cloud User
+      tags:
+        - MongoDB Cloud Users
+  "/api/atlas/v2/groups/{groupId}/users/{userId}:removeRole":
+    post:
+      description: >-
+        Removes one project-level role from the MongoDB Cloud user. You can
+        remove a role from an active user or a user that has been invited to
+        join the project. To replace a user's only role, add the new role before
+        removing the old role. A user must have at least one role at all times.
+        To use this resource, the requesting API Key must have the Project Owner
+        role.
+
+
+        **Note**: This resource cannot be used to remove a role from users invited using the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
+      operationId: removeProjectRole
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Unique 24-hexadecimal digit string that identifies the pending or
+            active user in the project. If you need to lookup a user's userId or
+            verify a user's status in the organization, use the Return All
+            MongoDB Cloud Users in One Project resource and filter by username.
+          in: path
+          name: userId
+          required: true
+          schema:
+            type: string
+            maxLength: 24
+            minLength: 24
+            pattern: ^([a-f0-9]{24})$
+      requestBody:
+        content:
+          application/vnd.atlas.2043-01-01+json:
+            schema:
+              $ref: "#/components/schemas/AddOrRemoveGroupRole"
+        description: Project-level role to remove from the MongoDB Cloud user.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2043-01-01+json:
+              schema:
+                $ref: "#/components/schemas/OrgUserResponse"
+              x-xgen-version: 2043-01-01
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Remove One Project Role from One MongoDB Cloud User
+      tags:
+        - MongoDB Cloud Users
   "/api/atlas/v2/groups/{groupId}:migrate":
     post:
       description: Migrates a project from its current organization to another
@@ -15771,9 +16235,9 @@ paths:
       tags:
         - Organizations
     patch:
-      description: Renames one organization. To use this resource, the requesting API
+      description: Updates one organization. To use this resource, the requesting API
         Key must have the Organization Owner role.
-      operationId: renameOrganization
+      operationId: updateOrganization
       parameters:
         - $ref: "#/components/parameters/orgId"
       requestBody:
@@ -15801,7 +16265,7 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      summary: Rename One Organization
+      summary: Update One Organization
       tags:
         - Organizations
   "/api/atlas/v2/orgs/{orgId}/apiKeys":
@@ -17988,11 +18452,11 @@ paths:
         - Teams
   "/api/atlas/v2/orgs/{orgId}/teams/{teamId}/users":
     get:
-      description: Returns all MongoDB Cloud users assigned to the team specified
+      description: "Returns all MongoDB Cloud users assigned to the team specified
         using its unique 24-hexadecimal digit identifier. This team belongs to
         one organization. Teams enable you to grant project access roles to
         MongoDB Cloud users. To use this resource, the requesting API Key must
-        have the Organization Member role.
+        have the Organization Member role. Deprecated versions: v2-{2023-01-01}"
       externalDocs:
         description: Manage Organization Teams
         url: https://docs.atlas.mongodb.com/access/manage-teams-in-orgs/#std-label-manage-teams
@@ -18014,10 +18478,10 @@ paths:
       responses:
         "200":
           content:
-            application/vnd.atlas.2023-01-01+json:
+            application/vnd.atlas.2043-01-01+json:
               schema:
-                $ref: "#/components/schemas/PaginatedAppUser"
-              x-xgen-version: 2023-01-01
+                $ref: "#/components/schemas/PaginatedOrgUser"
+              x-xgen-version: 2043-01-01
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
@@ -18134,13 +18598,117 @@ paths:
       summary: Remove One MongoDB Cloud User from One Team
       tags:
         - Teams
+  "/api/atlas/v2/orgs/{orgId}/teams/{teamId}:addUser":
+    post:
+      description: >-
+        Adds one MongoDB Cloud user to one team. You can add an active user or a
+        user that has not yet accepted the invitation to join the organization.
+        To use this resource, the requesting API Key must have the Organization
+        Owner role.
+
+
+        **Note**: This resource cannot be used to add a user invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
+      operationId: addUserToTeam
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - description: Unique 24-hexadecimal digit string that identifies the team to add
+            the MongoDB Cloud user to.
+          in: path
+          name: teamId
+          required: true
+          schema:
+            type: string
+            maxLength: 24
+            minLength: 24
+            pattern: ^([a-f0-9]{24})$
+      requestBody:
+        content:
+          application/vnd.atlas.2043-01-01+json:
+            schema:
+              $ref: "#/components/schemas/AddOrRemoveUserFromTeam"
+        description: The active or pending MongoDB Cloud user that you want to add to
+          the specified team.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2043-01-01+json:
+              schema:
+                $ref: "#/components/schemas/OrgUserResponse"
+              x-xgen-version: 2043-01-01
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Add One MongoDB Cloud User to One Team
+      tags:
+        - MongoDB Cloud Users
+  "/api/atlas/v2/orgs/{orgId}/teams/{teamId}:removeUser":
+    post:
+      description: >-
+        Removes one MongoDB Cloud user from one team. You can remove an active
+        user or a user that has not yet accepted the invitation to join the
+        organization. To use this resource, the requesting API Key must have the
+        Organization Owner role.
+
+
+        **Note**: This resource cannot be used to remove a user invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
+      operationId: removeUserFromTeam
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - description: Unique 24-hexadecimal digit string that identifies the team to
+            remove the MongoDB user from.
+          in: path
+          name: teamId
+          required: true
+          schema:
+            type: string
+            maxLength: 24
+            minLength: 24
+            pattern: ^([a-f0-9]{24})$
+      requestBody:
+        content:
+          application/vnd.atlas.2043-01-01+json:
+            schema:
+              $ref: "#/components/schemas/AddOrRemoveUserFromTeam"
+        description: The id of the active or pending MongoDB Cloud user that you want to
+          remove from the specified team.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2043-01-01+json:
+              schema:
+                $ref: "#/components/schemas/OrgUserResponse"
+              x-xgen-version: 2043-01-01
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Remove One MongoDB Cloud User from One Team
+      tags:
+        - MongoDB Cloud Users
   "/api/atlas/v2/orgs/{orgId}/users":
     get:
-      description: Returns details about the MongoDB Cloud users associated with the
+      description: "Returns details about the MongoDB Cloud users associated with the
         specified organization. Each MongoDB Cloud user returned must belong to
         the specified organization or to a project within the specified
         organization. To use this resource, the requesting API Key must have the
-        Organization Member role.
+        Organization Member role. Deprecated versions: v2-{2023-01-01}"
       operationId: listOrganizationUsers
       parameters:
         - $ref: "#/components/parameters/orgId"
@@ -18150,10 +18718,10 @@ paths:
       responses:
         "200":
           content:
-            application/vnd.atlas.2023-01-01+json:
+            application/vnd.atlas.2043-01-01+json:
               schema:
-                $ref: "#/components/schemas/PaginatedAppUser"
-              x-xgen-version: 2023-01-01
+                $ref: "#/components/schemas/PaginatedOrgUser"
+              x-xgen-version: 2043-01-01
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
@@ -18166,11 +18734,54 @@ paths:
       summary: Return All MongoDB Cloud Users in One Organization
       tags:
         - Organizations
+    post:
+      description: >-
+        Invites one new or existing MongoDB Cloud user to join the organization.
+        The invitation to join the organization will be sent to the username
+        provided and must be accepted within 30 days. To use this resource, the
+        requesting API Key must have the Organization Owner role.
+
+
+        **Note**: If the user does not have an existing MongoDB Cloud account, they will be prompted to finish setting up an account upon accepting the invitation. If the user already has an account, they will still receive an invitation to access the organization.
+      operationId: createOrganizationUser
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+      requestBody:
+        content:
+          application/vnd.atlas.2043-01-01+json:
+            schema:
+              $ref: "#/components/schemas/OrgUserRequest"
+        description: Represents the MongoDB Cloud user to be created within the
+          organization.
+        required: true
+      responses:
+        "201":
+          content:
+            application/vnd.atlas.2043-01-01+json:
+              schema:
+                $ref: "#/components/schemas/OrgUserResponse"
+              x-xgen-version: 2043-01-01
+          description: Created
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Create One MongoDB Cloud User in One Organization
+      tags:
+        - MongoDB Cloud Users
   "/api/atlas/v2/orgs/{orgId}/users/{userId}":
     delete:
-      description: Removes one MongoDB Cloud user from the specified organization. To
+      description: "Removes one MongoDB Cloud user from the specified organization. To
         use this resource, the requesting API Key must have the Organization
-        User Admin role.
+        User Admin role. Deprecated versions: v2-{2023-01-01}"
       operationId: removeOrganizationUser
       parameters:
         - $ref: "#/components/parameters/orgId"
@@ -18187,10 +18798,10 @@ paths:
       responses:
         "204":
           content:
-            application/vnd.atlas.2023-01-01+json:
+            application/vnd.atlas.2043-01-01+json:
               schema:
                 $ref: "#/components/schemas/NoBody"
-              x-xgen-version: 2023-01-01
+              x-xgen-version: 2043-01-01
           description: This endpoint does not return a response body.
         "400":
           $ref: "#/components/responses/badRequest"
@@ -18205,6 +18816,110 @@ paths:
       summary: Remove One MongoDB Cloud User From One Organization
       tags:
         - Organizations
+    get:
+      description: >-
+        Returns information about the specified MongoDB Cloud user within the
+        context of the specified organization. To use this resource, the
+        requesting API Key must have the Organization Read Only role.
+
+
+        **Note**: This resource can only be used to fetch information about MongoDB Cloud human users. To return information about an API Key, use the [Return One Organization API Key](#tag/Programmatic-API-Keys/operation/getApiKey) endpoint.
+
+
+        **Note**: This resource does not return information about pending users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
+      operationId: getOrganizationUser
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - description: Unique 24-hexadecimal digit string that identifies the pending or
+            active user in the organization. If you need to lookup a user's
+            userId or verify a user's status in the organization, use the Return
+            All MongoDB Cloud Users in One Organization resource and filter by
+            username.
+          in: path
+          name: userId
+          required: true
+          schema:
+            type: string
+            maxLength: 24
+            minLength: 24
+            pattern: ^([a-f0-9]{24})$
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2043-01-01+json:
+              schema:
+                $ref: "#/components/schemas/OrgUserResponse"
+              x-xgen-version: 2043-01-01
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return One MongoDB Cloud User in One Organization
+      tags:
+        - MongoDB Cloud Users
+    patch:
+      description: >-
+        Updates one MongoDB Cloud user in the specified organization. You can
+        update an active user or a user that has not yet accepted the invitation
+        to join the organization. To use this resource, the requesting API Key
+        must have the Organization Owner role.
+
+
+        **Note**: Only include the fields you wish to update in the request body. Supplying a field with an empty value will reset that field on the user.
+
+
+        **Note**: This resource cannot be used to update pending users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
+      operationId: updateOrganizationUser
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - description: Unique 24-hexadecimal digit string that identifies the pending or
+            active user in the organization. If you need to lookup a user's
+            userId or verify a user's status in the organization, use the Return
+            All MongoDB Cloud Users in One Organization resource and filter by
+            username.
+          in: path
+          name: userId
+          required: true
+          schema:
+            type: string
+            maxLength: 24
+            minLength: 24
+            pattern: ^([a-f0-9]{24})$
+      requestBody:
+        content:
+          application/vnd.atlas.2043-01-01+json:
+            schema:
+              $ref: "#/components/schemas/OrgUserUpdateRequest"
+        description: Represents the roles and teams to assign the MongoDB Cloud user.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2043-01-01+json:
+              schema:
+                $ref: "#/components/schemas/OrgUserResponse"
+              x-xgen-version: 2043-01-01
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Update One MongoDB Cloud User in One Organization
+      tags:
+        - MongoDB Cloud Users
   "/api/atlas/v2/orgs/{orgId}/users/{userId}/roles":
     put:
       description: Updates the roles of the specified user in the specified
@@ -18251,6 +18966,124 @@ paths:
       summary: Update Organization Roles for One MongoDB Cloud User
       tags:
         - Organizations
+  "/api/atlas/v2/orgs/{orgId}/users/{userId}:addRole":
+    post:
+      description: >-
+        Adds one organization-level role to the MongoDB Cloud user. You can add
+        a role to an active user or a user that has not yet accepted the
+        invitation to join the organization. To use this resource, the
+        requesting API Key must have the Organization Owner role.
+
+
+        **Note**: This operation is atomic.
+
+
+        **Note**: This resource cannot be used to add a role to users invited using the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
+      operationId: addOrganizationRole
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - description: Unique 24-hexadecimal digit string that identifies the pending or
+            active user in the organization. If you need to lookup a user's
+            userId or verify a user's status in the organization, use the Return
+            All MongoDB Cloud Users in One Organization resource and filter by
+            username.
+          in: path
+          name: userId
+          required: true
+          schema:
+            type: string
+            maxLength: 24
+            minLength: 24
+            pattern: ^([a-f0-9]{24})$
+      requestBody:
+        content:
+          application/vnd.atlas.2043-01-01+json:
+            schema:
+              $ref: "#/components/schemas/AddOrRemoveOrgRole"
+        description: Organization-level role to assign to the MongoDB Cloud user.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2043-01-01+json:
+              schema:
+                $ref: "#/components/schemas/OrgUserResponse"
+              x-xgen-version: 2043-01-01
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Add One Organization Role to One MongoDB Cloud User
+      tags:
+        - MongoDB Cloud Users
+  "/api/atlas/v2/orgs/{orgId}/users/{userId}:removeRole":
+    post:
+      description: >-
+        Removes one organization-level role from the MongoDB Cloud user. You can
+        remove a role from an active user or a user that has not yet accepted
+        the invitation to join the organization. To replace a user's only role,
+        add the new role before removing the old role. A user must have at least
+        one role at all times. To use this resource, the requesting API Key must
+        have the Organization Owner role.
+
+
+        **Note**: This operation is atomic.
+
+
+        **Note**: This resource cannot be used to remove a role from users invited using the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
+      operationId: removeOrganizationRole
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - description: Unique 24-hexadecimal digit string that identifies the pending or
+            active user in the organization. If you need to lookup a user's
+            userId or verify a user's status in the organization, use the Return
+            All MongoDB Cloud Users in One Organization resource and filter by
+            username.
+          in: path
+          name: userId
+          required: true
+          schema:
+            type: string
+            maxLength: 24
+            minLength: 24
+            pattern: ^([a-f0-9]{24})$
+      requestBody:
+        content:
+          application/vnd.atlas.2043-01-01+json:
+            schema:
+              $ref: "#/components/schemas/AddOrRemoveOrgRole"
+        description: Organization-level role to remove from the MongoDB Cloud user.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2043-01-01+json:
+              schema:
+                $ref: "#/components/schemas/OrgUserResponse"
+              x-xgen-version: 2043-01-01
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Remove One Organization Role from One MongoDB Cloud User
+      tags:
+        - MongoDB Cloud Users
   /api/atlas/v2/unauth/controlPlaneIPAddresses:
     get:
       description: Returns all control plane IP addresses.
@@ -18270,6 +19103,38 @@ paths:
       summary: Return All Control Plane IP Addresses
       tags:
         - Root
+  /api/atlas/v2/unauth/openapi/versions:
+    get:
+      description: API that provides a list of available versionsfor a given environment.
+      operationId: getApiVersions
+      parameters:
+        - $ref: "#/components/parameters/itemsPerPage"
+        - $ref: "#/components/parameters/pageNum"
+        - description: The environment to get the versions from. If not provided, it
+            returnsthe versions for the given MongoDB URL. (E.g. prod for
+            cloud.mongodb.com)
+          in: query
+          name: env
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedApiVersions"
+              x-xgen-version: 2024-08-05
+            application/vnd.atlas.2024-08-05+yaml:
+              schema:
+                $ref: "#/components/schemas/PaginatedApiVersions"
+              x-xgen-version: 2024-08-05
+          description: OK
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security: []
+      summary: Provides a list of versions for a given environment.
+      tags:
+        - OpenAPI
   /api/atlas/v2/users:
     post:
       description: >-
@@ -18706,6 +19571,9 @@ components:
         awsAccountId:
           type: string
           description: The AWS Account ID.
+        cidrBlock:
+          type: string
+          description: The VPC CIDR Block.
         links:
           type: array
           description: List of one or more Uniform Resource Locators (URLs) that point to
@@ -18823,6 +19691,36 @@ components:
             alert. By default this value is set to false. If set to true, it
             will override the acknowledgedUntil parameter.
       title: Acknowledge Alert
+    AddOrRemoveGroupRole:
+      type: object
+      properties:
+        groupRole:
+          type: string
+          description: Project-level role.
+      required:
+        - groupRole
+    AddOrRemoveOrgRole:
+      type: object
+      properties:
+        orgRole:
+          type: string
+          description: Organization-level role.
+      required:
+        - orgRole
+    AddOrRemoveUserFromTeam:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the MongoDB
+            Cloud user.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          writeOnly: true
+      required:
+        - id
     AddUserToTeam:
       type: object
       properties:
@@ -18880,6 +19778,7 @@ components:
           type: string
           description: Unique 24-hexadecimal digit string that identifies this backup
             policy.
+          example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
           pattern: ^([a-f0-9]{24})$
@@ -19018,7 +19917,7 @@ components:
           example: cluster1
           maxLength: 64
           minLength: 1
-          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
           readOnly: true
         hostnameAndPort:
           type: string
@@ -19159,6 +20058,7 @@ components:
             each notification method. This is needed when updating third-party
             notifications without requiring explicit authentication credentials.
           example: 32b6e34b3d91647abb20e7b8
+          pattern: ^([a-f0-9]{24})$
         typeName:
           type: string
           description: Human-readable label that displays the alert notification type.
@@ -19757,6 +20657,12 @@ components:
           type: string
           description: Specify the sort order (ascending / descending) used to specify how
             to sort query results. Defaults to descending.
+    ApiVersion:
+      type: object
+      properties:
+        version:
+          type: string
+          description: Object representing a version of the Atlas Admin API.
     AtlasClusterOutageSimulationOutageFilter:
       type: object
       properties:
@@ -19808,6 +20714,11 @@ components:
           maxLength: 64
           minLength: 1
           pattern: ^[\p{L}\p{N}\-_.(),:&@+']{1,64}$
+        skipDefaultAlertsSettings:
+          type: boolean
+          default: false
+          description: Disables automatic alert creation. When set to true, no
+            organization level alerts will be created automatically.
       required:
         - name
     AtlasSearchAnalyzer:
@@ -20010,7 +20921,7 @@ components:
             version. 
 
 
-            On creation: Choose from the available versions of MongoDB, or leave unspecified for the current recommended default in the MongoDB Cloud platform. The recommended version is a recent Long Term Support version. The default is not guaranteed to be the most recently released version throughout the entire release cycle. For versions available in a specific project, see the linked documentation or use the API endpoint for [project LTS versions endpoint](#tag/Projects/operation/getProjectLTSVersions).
+            On creation: Choose from the available versions of MongoDB, or leave unspecified for the current recommended default in the MongoDB Cloud platform. The recommended version is a recent Long Term Support version. The default is not guaranteed to be the most recently released version throughout the entire release cycle. For versions available in a specific project, see the linked documentation or use the API endpoint for [project LTS versions endpoint](#tag/Projects/operation/getProjectLtsVersions).
 
              On update: Increase version only by 1 major version at a time. If the cluster is pinned to a MongoDB feature compatibility version exactly one major version below the current MongoDB version, the MongoDB version can be downgraded to the previous major version.
           externalDocs:
@@ -20026,7 +20937,7 @@ components:
           description: Human-readable label that identifies the cluster.
           maxLength: 64
           minLength: 1
-          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         paused:
           type: boolean
           description: Flag that indicates whether the cluster is paused.
@@ -20348,6 +21259,7 @@ components:
           type: string
           description: Unique 24-hexadecimal digit string that identifies this backup
             policy item.
+          example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
           pattern: ^([a-f0-9]{24})$
@@ -20404,6 +21316,7 @@ components:
           type: string
           description: Unique 24-hexadecimal digit string that identifies this backup
             policy item.
+          example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
           pattern: ^([a-f0-9]{24})$
@@ -20459,7 +21372,7 @@ components:
             collection for which you want to create an online archive.
           maxLength: 64
           minLength: 1
-          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
           readOnly: true
         collName:
           type: string
@@ -20574,7 +21487,7 @@ components:
             collection for which you want to create an online archive.
           maxLength: 64
           minLength: 1
-          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
           readOnly: true
         collName:
           type: string
@@ -20722,7 +21635,7 @@ components:
             snapshots you want to retrieve.
           maxLength: 64
           minLength: 1
-          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
           readOnly: true
         created:
           type: string
@@ -20947,7 +21860,7 @@ components:
             To return a response with the **clusterId** parameter, either use the **delivery.targetClusterName** parameter or enable backup on the target cluster.
           maxLength: 64
           minLength: 1
-          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         targetGroupId:
           type: string
           description: 'Unique 24-hexadecimal digit string that identifies the project
@@ -21244,10 +22157,7 @@ components:
       description: Name of the region to which the data lake routes client connections.
     BaseCloudProviderInstanceSize:
       type: string
-      description: 'Minimum instance size to which your cluster can automatically
-        scale. MongoDB Cloud requires this parameter if
-        `"replicationSpecs[n].regionConfigs[m].autoScaling.compute.scaleDownEnabled"
-        : true`.'
+      description: Instance size boundary to which your cluster can automatically scale.
     BaseNetworkPeeringConnectionSettings:
       type: object
       properties:
@@ -21805,6 +22715,7 @@ components:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the payment that
             the organization had made.
+          example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
           pattern: ^([a-f0-9]{24})$
@@ -22033,7 +22944,7 @@ components:
           description: Human-readable label that identifies the cluster.
           maxLength: 64
           minLength: 1
-          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
           readOnly: true
         nodeCount:
           type: integer
@@ -22601,6 +23512,8 @@ components:
         roleId:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the role.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: ^([a-f0-9]{24})$
           readOnly: true
         _id:
           type: string
@@ -23347,7 +24260,7 @@ components:
             version. 
 
 
-            On creation: Choose from the available versions of MongoDB, or leave unspecified for the current recommended default in the MongoDB Cloud platform. The recommended version is a recent Long Term Support version. The default is not guaranteed to be the most recently released version throughout the entire release cycle. For versions available in a specific project, see the linked documentation or use the API endpoint for [project LTS versions endpoint](#tag/Projects/operation/getProjectLTSVersions).
+            On creation: Choose from the available versions of MongoDB, or leave unspecified for the current recommended default in the MongoDB Cloud platform. The recommended version is a recent Long Term Support version. The default is not guaranteed to be the most recently released version throughout the entire release cycle. For versions available in a specific project, see the linked documentation or use the API endpoint for [project LTS versions endpoint](#tag/Projects/operation/getProjectLtsVersions).
 
              On update: Increase version only by 1 major version at a time. If the cluster is pinned to a MongoDB feature compatibility version exactly one major version below the current MongoDB version, the MongoDB version can be downgraded to the previous major version.
           externalDocs:
@@ -23363,7 +24276,7 @@ components:
           description: Human-readable label that identifies the cluster.
           maxLength: 64
           minLength: 1
-          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         paused:
           type: boolean
           description: Flag that indicates whether the cluster is paused.
@@ -23551,6 +24464,16 @@ components:
             description: This option corresponds to the `chunkMigrationConcurrency` `mongod`
               configuration file option.
             url: https://www.mongodb.com/docs/manual/reference/parameters/#mongodb-parameter-param.chunkMigrationConcurrency
+        customOpensslCipherConfigTls12:
+          type: array
+          description: The custom OpenSSL cipher suite list for TLS 1.2. This field is
+            only valid when `tlsCipherConfigMode` is set to `CUSTOM`.
+          externalDocs:
+            description: This option corresponds to the `opensslCipherConfig` `mongod`
+              configuration file option.
+            url: https://www.mongodb.com/docs/manual/reference/parameters/#mongodb-parameter-param.opensslCipherConfig
+          items:
+            type: string
         defaultMaxTimeMS:
           type: integer
           format: int32
@@ -23645,6 +24568,11 @@ components:
             description: This option corresponds to the `sampleSize` `mongosqld` option.
             url: https://docs.mongodb.com/bi-connector/current/reference/mongosqld/#std-option-mongosqld.--sampleSize
           minimum: 0
+        tlsCipherConfigMode:
+          type: string
+          description: The TLS cipher suite configuration mode. The default mode uses the
+            default cipher suites. The custom mode allows you to specify custom
+            cipher suites for both TLS 1.2 and TLS 1.3.
         transactionLifetimeLimitSeconds:
           type: integer
           format: int64
@@ -23698,7 +24626,7 @@ components:
             outage simulation.
           maxLength: 64
           minLength: 1
-          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
           readOnly: true
         groupId:
           type: string
@@ -23816,6 +24744,11 @@ components:
             multi-tenant host. The resource returns this parameter when
             **providerSettings.providerName** is `FLEX` and
             **providerSetting.instanceSizeName** is `FLEX`.
+        effectiveInstanceSizeName:
+          type: string
+          description: The true tenant instance size. This is present to support backwards
+            compatibility for deprecated provider types and/or instance sizes.
+          readOnly: true
       required:
         - providerName
       title: Cloud Service Provider Settings for a Cluster
@@ -23843,6 +24776,12 @@ components:
           type: string
           description: Human-readable label that identifies this index. Within each
             namespace, names of all indexes in the namespace must be unique.
+        numPartitions:
+          type: integer
+          format: int32
+          default: 1
+          description: "Number of index partitions. Note: This feature is currently in
+            preview."
         status:
           type: string
           description: >
@@ -24219,6 +25158,8 @@ components:
             - 61cfdfd00000000000000000
           items:
             type: string
+            example: 32b6e34b3d91647abb20e7b8
+            pattern: ^([a-f0-9]{24})$
         endDate:
           type: string
           format: date
@@ -24243,6 +25184,8 @@ components:
             - 61cfdfd00000000000000000
           items:
             type: string
+            example: 32b6e34b3d91647abb20e7b8
+            pattern: ^([a-f0-9]{24})$
         projects:
           type: array
           description: The list of projects to be included in the Cost Explorer Query.
@@ -24251,6 +25194,8 @@ components:
             - 61cfdfd00000000000000000
           items:
             type: string
+            example: 32b6e34b3d91647abb20e7b8
+            pattern: ^([a-f0-9]{24})$
         services:
           type: array
           description: The list of projects to be included in the Cost Explorer Query.
@@ -24401,6 +25346,11 @@ components:
           maxLength: 24
           minLength: 24
           pattern: ^([a-f0-9]{24})$
+        skipDefaultAlertsSettings:
+          type: boolean
+          default: false
+          description: Disables automatic alert creation. When set to true, no
+            organization level alerts will be created automatically.
       required:
         - name
     CreateOrganizationResponse:
@@ -24429,6 +25379,11 @@ components:
           readOnly: true
         organization:
           $ref: "#/components/schemas/AtlasOrganization"
+        skipDefaultAlertsSettings:
+          type: boolean
+          default: false
+          description: Disables automatic alert creation. When set to true, no
+            organization level alerts will be created automatically.
     CreatePushBasedLogExportProjectRequest:
       type: object
       properties:
@@ -24438,6 +25393,8 @@ components:
         iamRoleId:
           type: string
           description: ID of the AWS IAM role that will be used to write to the S3 bucket.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: ^([a-f0-9]{24})$
         links:
           type: array
           description: List of one or more Uniform Resource Locators (URLs) that point to
@@ -24530,6 +25487,8 @@ components:
           type: string
           description: Unique identifier of the role that Data Federation can use to
             access the data stores. Required if specifying cloudProviderConfig.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: ^([a-f0-9]{24})$
         servicePrincipalId:
           type: string
           description: The ID of the Service Principal for which there is an access policy
@@ -24556,6 +25515,8 @@ components:
           type: string
           description: Unique identifier of the role that Data Federation can use to
             access the data stores. Required if specifying cloudProviderConfig.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: ^([a-f0-9]{24})$
       required:
         - roleId
     DataFederationLimit:
@@ -24684,6 +25645,8 @@ components:
           type: string
           description: Unique identifier of the role that the data lake can use to access
             the data stores.Required if specifying cloudProviderConfig.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: ^([a-f0-9]{24})$
         testS3Bucket:
           type: string
           description: Name of the S3 data bucket that the provided role ID is authorized
@@ -25153,6 +26116,16 @@ components:
           description: Flag that indicates whether to prevent cluster users from deleting
             backups copied to other regions, even if those additional snapshot
             regions are removed. If unspecified, this value defaults to false.
+        deletable:
+          type: boolean
+          default: false
+          description: Flag that indicates whether the Backup Compliance Policy is allowed
+            to be disabled. It is default to false and a support ticket needs to
+            be filed to request setting to true.
+          externalDocs:
+            description: Configure a Backup Compliance Policy
+            url: https://www.mongodb.com/docs/atlas/backup/cloud-backup/backup-compliance-policy/
+          readOnly: true
         encryptionAtRestEnabled:
           type: boolean
           default: false
@@ -25479,6 +26452,8 @@ components:
             one zone in the cluster. To find the Zone Id, do a GET request to
             Return One Cluster from One Project and consult the replicationSpecs
             array [Return One Cluster from One Project](#operation/getCluster).
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: ^([a-f0-9]{24})$
           writeOnly: true
       writeOnly: true
     Destination:
@@ -25541,6 +26516,7 @@ components:
           type: string
           description: Unique 24-hexadecimal digit string that identifies this backup
             policy item.
+          example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
           pattern: ^([a-f0-9]{24})$
@@ -25595,6 +26571,8 @@ components:
             one zone in the cluster. To find the Zone Id, do a GET request to
             Return One Cluster from One Project and consult the replicationSpecs
             array [Return One Cluster From One Project](#operation/getCluster).
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: ^([a-f0-9]{24})$
       required:
         - zoneId
     DiskBackupExportJob:
@@ -25674,6 +26652,8 @@ components:
           type: string
           description: State of the Export Job.
           readOnly: true
+        stateReason:
+          $ref: "#/components/schemas/StateReason"
       required:
         - exportBucketId
     DiskBackupExportJobRequest:
@@ -26441,7 +27421,7 @@ components:
             `automated` and `pointInTime` restore types.
           maxLength: 64
           minLength: 1
-          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         targetGroupId:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the target
@@ -26482,7 +27462,7 @@ components:
             you want to return.
           maxLength: 64
           minLength: 1
-          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
           readOnly: true
         copySettings:
           type: array
@@ -26568,10 +27548,6 @@ components:
             oplog size can limit storage auto-scaling.
     Document:
       type: object
-      description: The stats associated with the stream processor.
-      externalDocs:
-        url: https://www.mongodb.com/docs/atlas/atlas-stream-processing/manage-stream-processor/#view-statistics-of-a-stream-processor
-      readOnly: true
     EARPrivateEndpoint:
       type: object
       description: Encryption At Rest Private Endpoint.
@@ -26908,6 +27884,14 @@ components:
             triggered. The response returns this parameter when `eventTypeName"
             : "DATA_EXPLORER"`.'
           example: insertDocument
+          readOnly: true
+        deskLocation:
+          type: string
+          description: Desk location of MongoDB employee associated with the event.
+          readOnly: true
+        employeeIdentifier:
+          type: string
+          description: Identifier of MongoDB employee associated with the event.
           readOnly: true
         port:
           type: integer
@@ -27267,6 +28251,7 @@ components:
         userId:
           type: string
           description: Unique 24-hexadecimal digit string that identifies this user.
+          example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
           pattern: ^([a-f0-9]{24})$
@@ -27664,7 +28649,7 @@ components:
           description: Human-readable label that identifies the source instance.
           maxLength: 64
           minLength: 1
-          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
           readOnly: true
         links:
           type: array
@@ -27806,7 +28791,7 @@ components:
           description: Human-readable label that identifies the source instance.
           maxLength: 64
           minLength: 1
-          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
           readOnly: true
         links:
           type: array
@@ -28023,7 +29008,7 @@ components:
           description: Human-readable label that identifies the instance.
           maxLength: 64
           minLength: 1
-          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
           readOnly: true
         providerSettings:
           $ref: "#/components/schemas/FlexProviderSettings20241113"
@@ -28075,7 +29060,7 @@ components:
           description: Human-readable label that identifies the instance.
           maxLength: 64
           minLength: 1
-          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
           writeOnly: true
         providerSettings:
           $ref: "#/components/schemas/FlexProviderSettingsCreate20241113"
@@ -28276,6 +29261,8 @@ components:
                The 24-hexadecimal string corresponds to a `Replication Specifications` `zoneId` property.
 
               This parameter returns an empty object if no custom zones exist.
+            example: 32b6e34b3d91647abb20e7b8
+            pattern: ^([a-f0-9]{24})$
             readOnly: true
           description: >-
             List that contains comma-separated key value pairs to map zones to
@@ -28670,6 +29657,8 @@ components:
           description: Number of times the current maintenance event for this project has
             been deferred.
           readOnly: true
+        protectedHours:
+          $ref: "#/components/schemas/ProtectedHours"
         startASAP:
           type: boolean
           description: Flag that indicates whether MongoDB Cloud starts the maintenance
@@ -28678,6 +29667,11 @@ components:
             have maintenance scheduled and you must set a maintenance window.
             This flag resets to `false` after MongoDB Cloud completes
             maintenance.
+        timeZoneId:
+          type: string
+          description: Identifier for the current time zone of the maintenance window.
+            This can only be updated via the Project Settings UI.
+          readOnly: true
       required:
         - dayOfWeek
     GroupMigrationRequest:
@@ -28749,6 +29743,24 @@ components:
 
             * GROUP_STREAM_PROCESSING_OWNER
 
+    GroupRoleAssignment:
+      type: object
+      properties:
+        groupId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the project to
+            which these roles belong.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+        groupRoles:
+          type: array
+          description: One or more project-level roles assigned to the MongoDB Cloud user.
+          items:
+            type: string
+            description: Project-level role.
+          uniqueItems: true
     GroupService:
       type: object
       description: List of IP addresses in a project categorized by services.
@@ -28903,6 +29915,116 @@ components:
             url: https://www.mongodb.com/docs/atlas/tags
           items:
             $ref: "#/components/schemas/ResourceTag"
+    GroupUserRequest:
+      type: object
+      properties:
+        roles:
+          type: array
+          description: One or more project-level roles to assign the MongoDB Cloud user.
+          items:
+            type: string
+            description: Project-level role.
+          minItems: 1
+          uniqueItems: true
+          writeOnly: true
+        username:
+          type: string
+          format: email
+          description: Email address that represents the username of the MongoDB Cloud user.
+          writeOnly: true
+      required:
+        - roles
+        - username
+    GroupUserResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the MongoDB
+            Cloud user.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        orgMembershipStatus:
+          type: string
+          description: String enum that indicates whether the MongoDB Cloud user has a
+            pending invitation to join the organization or they are already
+            active in the organization.
+          readOnly: true
+        roles:
+          type: array
+          description: One or more project-level roles assigned to the MongoDB Cloud user.
+          items:
+            type: string
+            description: Project-level role.
+          readOnly: true
+          uniqueItems: true
+        username:
+          type: string
+          format: email
+          description: Email address that represents the username of the MongoDB Cloud user.
+          readOnly: true
+        invitationCreatedAt:
+          type: string
+          format: date-time
+          description: Date and time when MongoDB Cloud sent the invitation. MongoDB Cloud
+            represents this timestamp in ISO 8601 format in UTC.
+          readOnly: true
+        invitationExpiresAt:
+          type: string
+          format: date-time
+          description: Date and time when the invitation from MongoDB Cloud expires.
+            MongoDB Cloud represents this timestamp in ISO 8601 format in UTC.
+          readOnly: true
+        inviterUsername:
+          type: string
+          format: email
+          description: Username of the MongoDB Cloud user who sent the invitation to join
+            the organization.
+          readOnly: true
+        country:
+          type: string
+          description: Two-character alphabetical string that identifies the MongoDB Cloud
+            user's geographic location. This parameter uses the ISO 3166-1a2
+            code format.
+          example: US
+          pattern: ^([A-Z]{2})$
+          readOnly: true
+        createdAt:
+          type: string
+          format: date-time
+          description: Date and time when MongoDB Cloud created the current account. This
+            value is in the ISO 8601 timestamp format in UTC.
+          readOnly: true
+        firstName:
+          type: string
+          description: First or given name that belongs to the MongoDB Cloud user.
+          example: John
+          readOnly: true
+        lastAuth:
+          type: string
+          format: date-time
+          description: Date and time when the current account last authenticated. This
+            value is in the ISO 8601 timestamp format in UTC.
+          readOnly: true
+        lastName:
+          type: string
+          description: Last name, family name, or surname that belongs to the MongoDB
+            Cloud user.
+          example: Doe
+          readOnly: true
+        mobileNumber:
+          type: string
+          description: Mobile phone number that belongs to the MongoDB Cloud user.
+          pattern: (?:(?:\\+?1\\s*(?:[.-]\\s*)?)?(?:(\\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\\s*)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\\s*(?:[.-]\\s*)?)([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\\s*(?:[.-]\\s*)?([0-9]{4})$
+          readOnly: true
+      required:
+        - id
+        - orgMembershipStatus
+        - roles
+        - username
     HardwareSpec20240805:
       type: object
       description: Hardware specifications for all electable nodes deployed in the
@@ -28972,6 +30094,11 @@ components:
           format: int32
           description: Number of nodes of the given type for MongoDB Cloud to deploy to
             the region.
+        effectiveInstanceSize:
+          type: string
+          description: The true tenant instance size. This is present to support backwards
+            compatibility for deprecated provider types and/or instance sizes.
+          readOnly: true
     InboundControlPlaneCloudProviderIPAddresses:
       type: object
       description: List of inbound IP addresses to the Atlas control plane,
@@ -29348,7 +30475,7 @@ components:
             charge.
           maxLength: 64
           minLength: 1
-          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
           readOnly: true
         created:
           type: string
@@ -29905,7 +31032,7 @@ components:
           description: Human-readable label that identifies the cluster.
           maxLength: 64
           minLength: 1
-          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         numShards:
           type: integer
           format: int32
@@ -30231,7 +31358,7 @@ components:
           description: Human-readable label that identifies the cluster.
           maxLength: 64
           minLength: 1
-          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         numShards:
           type: integer
           format: int32
@@ -31522,6 +32649,187 @@ components:
           items:
             type: string
             description: Organization roles available for Service Accounts.
+    OrgUserRequest:
+      type: object
+      properties:
+        roles:
+          $ref: "#/components/schemas/OrgUserRolesRequest"
+        teamIds:
+          type: array
+          description: List of unique 24-hexadecimal digit strings that identifies the
+            teams to which this MongoDB Cloud user belongs.
+          items:
+            type: string
+            example: 32b6e34b3d91647abb20e7b8
+            maxLength: 24
+            minLength: 24
+            pattern: ^([a-f0-9]{24})$
+          uniqueItems: true
+          writeOnly: true
+        username:
+          type: string
+          format: email
+          description: Email address that represents the username of the MongoDB Cloud user.
+          writeOnly: true
+      required:
+        - roles
+        - username
+    OrgUserResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the MongoDB
+            Cloud user.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        orgMembershipStatus:
+          type: string
+          description: String enum that indicates whether the MongoDB Cloud user has a
+            pending invitation to join the organization or they are already
+            active in the organization.
+          readOnly: true
+        roles:
+          $ref: "#/components/schemas/OrgUserRolesResponse"
+        teamIds:
+          type: array
+          description: List of unique 24-hexadecimal digit strings that identifies the
+            teams to which this MongoDB Cloud user belongs.
+          items:
+            type: string
+            example: 32b6e34b3d91647abb20e7b8
+            maxLength: 24
+            minLength: 24
+            pattern: ^([a-f0-9]{24})$
+          readOnly: true
+          uniqueItems: true
+        username:
+          type: string
+          format: email
+          description: Email address that represents the username of the MongoDB Cloud user.
+          readOnly: true
+        invitationCreatedAt:
+          type: string
+          format: date-time
+          description: Date and time when MongoDB Cloud sent the invitation. MongoDB Cloud
+            represents this timestamp in ISO 8601 format in UTC.
+          readOnly: true
+        invitationExpiresAt:
+          type: string
+          format: date-time
+          description: Date and time when the invitation from MongoDB Cloud expires.
+            MongoDB Cloud represents this timestamp in ISO 8601 format in UTC.
+          readOnly: true
+        inviterUsername:
+          type: string
+          format: email
+          description: Username of the MongoDB Cloud user who sent the invitation to join
+            the organization.
+          readOnly: true
+        country:
+          type: string
+          description: Two-character alphabetical string that identifies the MongoDB Cloud
+            user's geographic location. This parameter uses the ISO 3166-1a2
+            code format.
+          example: US
+          pattern: ^([A-Z]{2})$
+          readOnly: true
+        createdAt:
+          type: string
+          format: date-time
+          description: Date and time when MongoDB Cloud created the current account. This
+            value is in the ISO 8601 timestamp format in UTC.
+          readOnly: true
+        firstName:
+          type: string
+          description: First or given name that belongs to the MongoDB Cloud user.
+          example: John
+          readOnly: true
+        lastAuth:
+          type: string
+          format: date-time
+          description: Date and time when the current account last authenticated. This
+            value is in the ISO 8601 timestamp format in UTC.
+          readOnly: true
+        lastName:
+          type: string
+          description: Last name, family name, or surname that belongs to the MongoDB
+            Cloud user.
+          example: Doe
+          readOnly: true
+        mobileNumber:
+          type: string
+          description: Mobile phone number that belongs to the MongoDB Cloud user.
+          pattern: (?:(?:\\+?1\\s*(?:[.-]\\s*)?)?(?:(\\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\\s*)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\\s*(?:[.-]\\s*)?)([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\\s*(?:[.-]\\s*)?([0-9]{4})$
+          readOnly: true
+      required:
+        - id
+        - orgMembershipStatus
+        - roles
+        - username
+    OrgUserRolesRequest:
+      type: object
+      description: Organization and project level roles to assign the MongoDB Cloud
+        user within one organization.
+      properties:
+        groupRoleAssignments:
+          type: array
+          description: List of project level role assignments to assign the MongoDB Cloud
+            user.
+          items:
+            $ref: "#/components/schemas/GroupRoleAssignment"
+        orgRoles:
+          type: array
+          description: One or more organization level roles to assign the MongoDB Cloud
+            user.
+          items:
+            type: string
+            description: Organization-level role.
+          minItems: 1
+          uniqueItems: true
+      required:
+        - orgRoles
+      writeOnly: true
+    OrgUserRolesResponse:
+      type: object
+      description: Organization- and project-level roles assigned to one MongoDB Cloud
+        user within one organization.
+      properties:
+        groupRoleAssignments:
+          type: array
+          description: List of project-level role assignments assigned to the MongoDB
+            Cloud user.
+          items:
+            $ref: "#/components/schemas/GroupRoleAssignment"
+        orgRoles:
+          type: array
+          description: One or more organization-level roles assigned to the MongoDB Cloud
+            user.
+          items:
+            type: string
+            description: Organization-level role.
+          uniqueItems: true
+      readOnly: true
+    OrgUserUpdateRequest:
+      type: object
+      properties:
+        roles:
+          $ref: "#/components/schemas/OrgUserRolesRequest"
+        teamIds:
+          type: array
+          description: List of unique 24-hexadecimal digit strings that identifies the
+            teams to assign the MongoDB Cloud user.
+          items:
+            type: string
+            example: 32b6e34b3d91647abb20e7b8
+            maxLength: 24
+            minLength: 24
+            pattern: ^([a-f0-9]{24})$
+          uniqueItems: true
+          writeOnly: true
     OrganizationInvitation:
       type: object
       properties:
@@ -31799,6 +33107,35 @@ components:
           readOnly: true
       readOnly: true
       title: Outbound Control Plane IP Addresses By Cloud Provider
+    PaginatedApiVersions:
+      type: object
+      properties:
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        results:
+          type: array
+          description: List of returned documents that MongoDB Cloud provides when
+            completing this request.
+          items:
+            $ref: "#/components/schemas/ApiVersion"
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
+          minimum: 0
+          readOnly: true
     PaginatedClusterDescription20240805:
       type: object
       properties:
@@ -31824,7 +33161,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedEventTypeDetailsResponse:
@@ -31852,7 +33190,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedFederationIdentityProvider:
@@ -31880,7 +33219,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedFlexClusters20241113:
@@ -31908,7 +33248,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedGroupServiceAccounts:
@@ -31937,7 +33278,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedHostView_Atlas:
@@ -31965,7 +33307,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedOrgServiceAccounts:
@@ -31994,7 +33337,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedServiceAccountGroup:
@@ -32023,7 +33367,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PemFileInfo:
@@ -32061,6 +33406,7 @@ components:
         id:
           type: string
           description: Unique 24-hexadecimal digit string that identifies this index.
+          example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
           pattern: ^([a-f0-9]{24})$
@@ -32176,6 +33522,7 @@ components:
           type: string
           description: Unique 24-hexadecimal digit string that identifies this shape. This
             string exists only for the duration of this API request.
+          example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
           pattern: ^([a-f0-9]{24})$
@@ -32234,11 +33581,15 @@ components:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the request
             cluster.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: ^([a-f0-9]{24})$
           readOnly: true
         groupId:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the request
             project.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: ^([a-f0-9]{24})$
           readOnly: true
         pinnedNamespaces:
           type: array
@@ -32408,6 +33759,24 @@ components:
             with this private endpoint.
       required:
         - endpointId
+    ProtectedHours:
+      type: object
+      description: Defines the a window where maintenance will not begin within.
+      properties:
+        endHourOfDay:
+          type: integer
+          format: int32
+          description: Zero-based integer that represents the end hour of the of the day
+            that the maintenance will not begin in.
+          maximum: 23
+          minimum: 0
+        startHourOfDay:
+          type: integer
+          format: int32
+          description: Zero-based integer that represents the beginning hour of the of the
+            day that the maintenance will not begin in.
+          maximum: 23
+          minimum: 0
     PushBasedLogExportProject:
       type: object
       properties:
@@ -32422,6 +33791,8 @@ components:
         iamRoleId:
           type: string
           description: ID of the AWS IAM role that will be used to write to the S3 bucket.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: ^([a-f0-9]{24})$
         links:
           type: array
           description: List of one or more Uniform Resource Locators (URLs) that point to
@@ -32674,7 +34045,7 @@ components:
             loaded the sample dataset.
           maxLength: 64
           minLength: 1
-          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
           readOnly: true
         completeDate:
           type: string
@@ -32848,6 +34219,12 @@ components:
                 $ref: "#/components/schemas/AtlasSearchAnalyzer"
             mappings:
               $ref: "#/components/schemas/SearchMappings"
+            numPartitions:
+              type: integer
+              format: int32
+              default: 1
+              description: "Number of index partitions. Note: This feature is currently in
+                preview."
             searchAnalyzer:
               type: string
               default: lucene.standard
@@ -33030,7 +34407,7 @@ components:
             parameter when `"deliveryType":` `"automated"`.
           maxLength: 64
           minLength: 1
-          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         targetGroupId:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the target
@@ -33101,7 +34478,7 @@ components:
             MongoDB Cloud took this snapshot.
           maxLength: 64
           minLength: 1
-          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
           readOnly: true
         snapshotType:
           type: string
@@ -33213,7 +34590,7 @@ components:
           description: Human-readable label that identifies the serverless instance.
           maxLength: 64
           minLength: 1
-          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         providerSettings:
           $ref: "#/components/schemas/ServerlessProviderSettings"
         serverlessBackupOptions:
@@ -33276,7 +34653,7 @@ components:
           description: Human-readable label that identifies the serverless instance.
           maxLength: 64
           minLength: 1
-          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
           writeOnly: true
         providerSettings:
           $ref: "#/components/schemas/ServerlessProviderSettings"
@@ -33686,6 +35063,17 @@ components:
         - groupId
         - managedAuthentication
         - ssl
+    StateReason:
+      type: object
+      description: State reason of the Job. This is set when the job state is "Failed".
+      properties:
+        errorCode:
+          type: string
+          description: Error code relating to state.
+        message:
+          type: string
+          description: Message describing error or state.
+      readOnly: true
     StreamConfig:
       type: object
       description: Configuration options for an Atlas Stream Processing Instance.
@@ -33764,10 +35152,6 @@ components:
           $ref: "#/components/schemas/StreamsKafkaNetworking"
         security:
           $ref: "#/components/schemas/StreamsKafkaSecurity"
-        connectionTimeoutSec:
-          type: integer
-          format: int32
-          description: The amount of seconds to wait before timing out a connection.
         headers:
           type: object
           additionalProperties:
@@ -33776,10 +35160,6 @@ components:
               request.
           description: A map of key-value pairs that will be passed as headers for the
             request.
-        requestTimeoutSec:
-          type: integer
-          format: int32
-          description: The amount of seconds to wait before timing out a request.
         url:
           type: string
           description: The url to be used for the request.
@@ -33967,6 +35347,55 @@ components:
         for alert configurations.
       example: INSTANCE_NAME
       title: Streams Matcher Fields
+    StreamsModifyStreamProcessor:
+      type: object
+      description: A request to modify an existing stream processor
+      properties:
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        name:
+          type: string
+          description: New name for the stream processor.
+        options:
+          $ref: "#/components/schemas/StreamsModifyStreamProcessorOptions"
+        pipeline:
+          type: array
+          description: New pipeline for the stream processor.
+          externalDocs:
+            description: Supported Aggregation Pipeline Stages
+            url: https://www.mongodb.com/docs/atlas/atlas-stream-processing/stream-aggregation/#std-label-stream-aggregation
+          items:
+            $ref: "#/components/schemas/Document"
+    StreamsModifyStreamProcessorOptions:
+      type: object
+      description: Additional options for modifying a stream processor.
+      properties:
+        dlq:
+          $ref: "#/components/schemas/StreamsDLQ"
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        resumeFromCheckpoint:
+          type: boolean
+          description: When true, the modified stream processor resumes from its last
+            checkpoint.
     StreamsOptions:
       type: object
       description: Optional configuration for the stream processor.
@@ -33991,6 +35420,8 @@ components:
         _id:
           type: string
           description: The ID of the Private Link connection.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: ^([a-f0-9]{24})$
         dnsDomain:
           type: string
           description: Domain name of Privatelink connected cluster.
@@ -34306,11 +35737,10 @@ components:
           items:
             type: string
             format: email
-            description: List that contains email addresses that identify MongoDB Cloud
-              users to in this team.
           uniqueItems: true
       required:
         - name
+        - usernames
     TeamResponse:
       type: object
       properties:
@@ -34392,7 +35822,7 @@ components:
           description: Human-readable label that identifies the source cluster.
           maxLength: 64
           minLength: 1
-          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
           readOnly: true
         deliveryType:
           type: string
@@ -34526,6 +35956,17 @@ components:
           type: string
           description: PagerDuty region that indicates the API Uniform Resource Locator
             (URL) to use.
+        sendCollectionLatencyMetrics:
+          type: boolean
+          default: false
+          description: Toggle sending collection latency metrics that includes database
+            names and collection namesand latency metrics on reads, writes,
+            commands, and transactions.
+        sendDatabaseMetrics:
+          type: boolean
+          default: false
+          description: Toggle sending database metrics that includes database names and
+            metrics on the number of collections, storage size, and index size.
         microsoftTeamsWebhookUrl:
           type: string
           description: >-
@@ -34774,6 +36215,8 @@ components:
             - 650dd6200000000000000000
           items:
             type: string
+            example: 32b6e34b3d91647abb20e7b8
+            pattern: ^([a-f0-9]{24})$
           uniqueItems: true
         groupIds:
           type: array
@@ -34783,6 +36226,8 @@ components:
             - 650dd6200000000000000000
           items:
             type: string
+            example: 32b6e34b3d91647abb20e7b8
+            pattern: ^([a-f0-9]{24})$
           uniqueItems: true
         includeZeroCentLineItems:
           type: boolean
@@ -34902,6 +36347,7 @@ components:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the organization
             API key.
+          example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
           pattern: ^([a-f0-9]{24})$
@@ -34992,7 +36438,7 @@ components:
             Data Lake that this database user can access.
           maxLength: 64
           minLength: 1
-          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         type:
           type: string
           description: Category of resource that this database user can access.
@@ -35112,6 +36558,12 @@ components:
             url: https://dochub.mongodb.org/core/avs-vector-type
           items:
             $ref: "#/components/schemas/BasicDBObject"
+        numPartitions:
+          type: integer
+          format: int32
+          default: 1
+          description: "Number of index partitions. Note: This feature is currently in
+            preview."
       title: Vector Search Index Definition
     VectorSearchIndexStatusDetail:
       type: object
@@ -35300,6 +36752,12 @@ components:
             $ref: "#/components/schemas/AtlasSearchAnalyzer"
         mappings:
           $ref: "#/components/schemas/SearchMappings"
+        numPartitions:
+          type: integer
+          format: int32
+          default: 1
+          description: "Number of index partitions. Note: This feature is currently in
+            preview."
         searchAnalyzer:
           type: string
           default: lucene.standard
@@ -35377,6 +36835,12 @@ components:
             $ref: "#/components/schemas/AtlasSearchAnalyzer"
         mappings:
           $ref: "#/components/schemas/SearchMappings"
+        numPartitions:
+          type: integer
+          format: int32
+          default: 1
+          description: "Number of index partitions. Note: This feature is currently in
+            preview."
         searchAnalyzer:
           type: string
           default: lucene.standard
@@ -35979,6 +37443,8 @@ components:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the request
             project.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: ^([a-f0-9]{24})$
           readOnly: true
         identifierId:
           type: string
@@ -36062,9 +37528,10 @@ components:
           default: ISODATE
           description: >-
             Syntax used to write the date after which data moves to the online
-            archive. Date can be expressed as ISO 8601 or Epoch timestamps. The
-            Epoch timestamp can be expressed as nanoseconds, milliseconds, or
-            seconds. Set this parameter when **"criteria.type" : "DATE"**.
+            archive. Date can be expressed as ISO 8601, Epoch timestamps, or
+            ObjectId. The Epoch timestamp can be expressed as nanoseconds,
+            milliseconds, or seconds. Set this parameter when **"criteria.type"
+            : "DATE"**.
 
             You must set **"criteria.type" : "DATE"** if **"collectionType": "TIMESERIES"**.
         expireAfterDays:
@@ -36150,7 +37617,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     MatcherField:
@@ -36194,7 +37662,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedAlertConfig:
@@ -36222,7 +37691,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedAlert:
@@ -36250,7 +37720,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiApiUser:
@@ -36278,7 +37749,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiAppUser:
@@ -36306,7 +37778,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiAtlasCheckpoint:
@@ -36334,7 +37807,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiAtlasDatabaseUser:
@@ -36364,7 +37838,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiAtlasDiskBackupExportJob:
@@ -36392,7 +37867,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiAtlasEARPrivateEndpoint:
@@ -36420,7 +37896,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiAtlasFlexBackupRestoreJob20241113:
@@ -36448,7 +37925,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiAtlasFlexBackupSnapshot20241113:
@@ -36476,7 +37954,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiAtlasProviderRegions:
@@ -36504,7 +37983,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiAtlasServerlessBackupRestoreJob:
@@ -36532,7 +38012,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiAtlasServerlessBackupSnapshot:
@@ -36560,7 +38041,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiInvoiceMetadata:
@@ -36588,7 +38070,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiInvoice:
@@ -36616,7 +38099,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiStreamsConnection:
@@ -36644,7 +38128,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiStreamsPrivateLink:
@@ -36672,7 +38157,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiStreamsStreamProcessorWithStats:
@@ -36700,7 +38186,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiStreamsTenant:
@@ -36728,7 +38215,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiUserAccessListResponse:
@@ -36756,7 +38244,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedAppUser:
@@ -36784,7 +38273,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedAtlasGroup:
@@ -36812,7 +38302,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedAvailableVersion:
@@ -36840,7 +38331,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedBackupSnapshotExportBuckets:
@@ -36868,7 +38360,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedBackupSnapshot:
@@ -36896,7 +38389,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedCloudBackupReplicaSet:
@@ -36924,7 +38418,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedCloudBackupRestoreJob:
@@ -36952,7 +38447,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedCloudBackupShardedClusterSnapshot:
@@ -36980,7 +38476,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedCloudProviderContainer:
@@ -37009,7 +38506,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
       title: Network Peering
@@ -37038,7 +38536,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedContainerPeer:
@@ -37067,7 +38566,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedDatabase:
@@ -37095,7 +38595,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedDiskPartition:
@@ -37123,7 +38624,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedIntegration:
@@ -37151,7 +38653,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedNetworkAccess:
@@ -37179,7 +38682,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedOnlineArchive:
@@ -37207,7 +38711,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedOrgGroup:
@@ -37235,7 +38740,37 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
+          minimum: 0
+          readOnly: true
+    PaginatedOrgUser:
+      type: object
+      properties:
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        results:
+          type: array
+          description: List of returned documents that MongoDB Cloud provides when
+            completing this request.
+          items:
+            $ref: "#/components/schemas/OrgUserResponse"
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+          description: Total number of documents available. MongoDB Cloud omits this value
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedOrganization:
@@ -37263,7 +38798,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedPipelineRun:
@@ -37291,7 +38827,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedPrivateNetworkEndpointIdEntry:
@@ -37319,7 +38856,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedPublicApiUsageDetailsLineItem:
@@ -37347,7 +38885,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedRestoreJob:
@@ -37375,7 +38914,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedRoleMapping:
@@ -37405,7 +38945,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedServerlessInstanceDescription:
@@ -37433,7 +38974,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedServiceAccountIPAccessEntry:
@@ -37461,7 +39003,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedSnapshot:
@@ -37489,7 +39032,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedTeamRole:
@@ -37517,7 +39061,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedTeam:
@@ -37545,7 +39090,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedTenantRestore:
@@ -37573,7 +39119,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedTenantSnapshot:
@@ -37601,7 +39148,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedUserCert:
@@ -37629,7 +39177,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PartitionField:
@@ -37749,6 +39298,8 @@ components:
         groupId:
           type: string
           description: Group id associated with the line item.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: ^([a-f0-9]{24})$
         quantity:
           type: number
           format: double
