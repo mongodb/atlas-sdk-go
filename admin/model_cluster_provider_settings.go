@@ -21,6 +21,9 @@ type ClusterProviderSettings struct {
 	DiskTypeName *string `json:"diskTypeName,omitempty"`
 	// Cloud service provider on which MongoDB Cloud provisioned the multi-tenant host. The resource returns this parameter when **providerSettings.providerName** is `FLEX` and **providerSetting.instanceSizeName** is `FLEX`.
 	BackingProviderName *string `json:"backingProviderName,omitempty"`
+	// The true tenant instance size. This is present to support backwards compatibility for deprecated provider types and/or instance sizes.
+	// Read only field.
+	EffectiveInstanceSizeName *string `json:"effectiveInstanceSizeName,omitempty"`
 }
 
 // NewClusterProviderSettings instantiates a new ClusterProviderSettings object
@@ -334,4 +337,37 @@ func (o *ClusterProviderSettings) HasBackingProviderName() bool {
 // SetBackingProviderName gets a reference to the given string and assigns it to the BackingProviderName field.
 func (o *ClusterProviderSettings) SetBackingProviderName(v string) {
 	o.BackingProviderName = &v
+}
+
+// GetEffectiveInstanceSizeName returns the EffectiveInstanceSizeName field value if set, zero value otherwise
+func (o *ClusterProviderSettings) GetEffectiveInstanceSizeName() string {
+	if o == nil || IsNil(o.EffectiveInstanceSizeName) {
+		var ret string
+		return ret
+	}
+	return *o.EffectiveInstanceSizeName
+}
+
+// GetEffectiveInstanceSizeNameOk returns a tuple with the EffectiveInstanceSizeName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterProviderSettings) GetEffectiveInstanceSizeNameOk() (*string, bool) {
+	if o == nil || IsNil(o.EffectiveInstanceSizeName) {
+		return nil, false
+	}
+
+	return o.EffectiveInstanceSizeName, true
+}
+
+// HasEffectiveInstanceSizeName returns a boolean if a field has been set.
+func (o *ClusterProviderSettings) HasEffectiveInstanceSizeName() bool {
+	if o != nil && !IsNil(o.EffectiveInstanceSizeName) {
+		return true
+	}
+
+	return false
+}
+
+// SetEffectiveInstanceSizeName gets a reference to the given string and assigns it to the EffectiveInstanceSizeName field.
+func (o *ClusterProviderSettings) SetEffectiveInstanceSizeName(v string) {
+	o.EffectiveInstanceSizeName = &v
 }
