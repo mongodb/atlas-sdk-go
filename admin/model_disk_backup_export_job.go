@@ -36,7 +36,8 @@ type DiskBackupExportJob struct {
 	SnapshotId *string `json:"snapshotId,omitempty"`
 	// State of the Export Job.
 	// Read only field.
-	State *string `json:"state,omitempty"`
+	State       *string      `json:"state,omitempty"`
+	StateReason *StateReason `json:"stateReason,omitempty"`
 }
 
 // NewDiskBackupExportJob instantiates a new DiskBackupExportJob object
@@ -409,4 +410,37 @@ func (o *DiskBackupExportJob) HasState() bool {
 // SetState gets a reference to the given string and assigns it to the State field.
 func (o *DiskBackupExportJob) SetState(v string) {
 	o.State = &v
+}
+
+// GetStateReason returns the StateReason field value if set, zero value otherwise
+func (o *DiskBackupExportJob) GetStateReason() StateReason {
+	if o == nil || IsNil(o.StateReason) {
+		var ret StateReason
+		return ret
+	}
+	return *o.StateReason
+}
+
+// GetStateReasonOk returns a tuple with the StateReason field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DiskBackupExportJob) GetStateReasonOk() (*StateReason, bool) {
+	if o == nil || IsNil(o.StateReason) {
+		return nil, false
+	}
+
+	return o.StateReason, true
+}
+
+// HasStateReason returns a boolean if a field has been set.
+func (o *DiskBackupExportJob) HasStateReason() bool {
+	if o != nil && !IsNil(o.StateReason) {
+		return true
+	}
+
+	return false
+}
+
+// SetStateReason gets a reference to the given StateReason and assigns it to the StateReason field.
+func (o *DiskBackupExportJob) SetStateReason(v StateReason) {
+	o.StateReason = &v
 }

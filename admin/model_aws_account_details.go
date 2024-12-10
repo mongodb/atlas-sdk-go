@@ -6,6 +6,8 @@ package admin
 type AWSAccountDetails struct {
 	// The AWS Account ID.
 	AwsAccountId *string `json:"awsAccountId,omitempty"`
+	// The VPC CIDR Block.
+	CidrBlock *string `json:"cidrBlock,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
@@ -61,6 +63,39 @@ func (o *AWSAccountDetails) HasAwsAccountId() bool {
 // SetAwsAccountId gets a reference to the given string and assigns it to the AwsAccountId field.
 func (o *AWSAccountDetails) SetAwsAccountId(v string) {
 	o.AwsAccountId = &v
+}
+
+// GetCidrBlock returns the CidrBlock field value if set, zero value otherwise
+func (o *AWSAccountDetails) GetCidrBlock() string {
+	if o == nil || IsNil(o.CidrBlock) {
+		var ret string
+		return ret
+	}
+	return *o.CidrBlock
+}
+
+// GetCidrBlockOk returns a tuple with the CidrBlock field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AWSAccountDetails) GetCidrBlockOk() (*string, bool) {
+	if o == nil || IsNil(o.CidrBlock) {
+		return nil, false
+	}
+
+	return o.CidrBlock, true
+}
+
+// HasCidrBlock returns a boolean if a field has been set.
+func (o *AWSAccountDetails) HasCidrBlock() bool {
+	if o != nil && !IsNil(o.CidrBlock) {
+		return true
+	}
+
+	return false
+}
+
+// SetCidrBlock gets a reference to the given string and assigns it to the CidrBlock field.
+func (o *AWSAccountDetails) SetCidrBlock(v string) {
+	o.CidrBlock = &v
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
