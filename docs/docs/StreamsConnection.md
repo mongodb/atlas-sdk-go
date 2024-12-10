@@ -14,9 +14,7 @@ Name | Type | Description | Notes
 **Config** | Pointer to **map[string]string** | A map of Kafka key-value pairs for optional configuration. This is a flat object, and keys can have &#39;.&#39; characters. | [optional] 
 **Networking** | Pointer to [**StreamsKafkaNetworking**](StreamsKafkaNetworking.md) |  | [optional] 
 **Security** | Pointer to [**StreamsKafkaSecurity**](StreamsKafkaSecurity.md) |  | [optional] 
-**ConnectionTimeoutSec** | Pointer to **int** | The amount of seconds to wait before timing out a connection. | [optional] 
 **Headers** | Pointer to **map[string]string** | A map of key-value pairs that will be passed as headers for the request. | [optional] 
-**RequestTimeoutSec** | Pointer to **int** | The amount of seconds to wait before timing out a request. | [optional] 
 **Url** | Pointer to **string** | The url to be used for the request. | [optional] 
 
 ## Methods
@@ -278,30 +276,6 @@ SetSecurity sets Security field to given value.
 `func (o *StreamsConnection) HasSecurity() bool`
 
 HasSecurity returns a boolean if a field has been set.
-### GetConnectionTimeoutSec
-
-`func (o *StreamsConnection) GetConnectionTimeoutSec() int`
-
-GetConnectionTimeoutSec returns the ConnectionTimeoutSec field if non-nil, zero value otherwise.
-
-### GetConnectionTimeoutSecOk
-
-`func (o *StreamsConnection) GetConnectionTimeoutSecOk() (*int, bool)`
-
-GetConnectionTimeoutSecOk returns a tuple with the ConnectionTimeoutSec field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetConnectionTimeoutSec
-
-`func (o *StreamsConnection) SetConnectionTimeoutSec(v int)`
-
-SetConnectionTimeoutSec sets ConnectionTimeoutSec field to given value.
-
-### HasConnectionTimeoutSec
-
-`func (o *StreamsConnection) HasConnectionTimeoutSec() bool`
-
-HasConnectionTimeoutSec returns a boolean if a field has been set.
 ### GetHeaders
 
 `func (o *StreamsConnection) GetHeaders() map[string]string`
@@ -326,30 +300,6 @@ SetHeaders sets Headers field to given value.
 `func (o *StreamsConnection) HasHeaders() bool`
 
 HasHeaders returns a boolean if a field has been set.
-### GetRequestTimeoutSec
-
-`func (o *StreamsConnection) GetRequestTimeoutSec() int`
-
-GetRequestTimeoutSec returns the RequestTimeoutSec field if non-nil, zero value otherwise.
-
-### GetRequestTimeoutSecOk
-
-`func (o *StreamsConnection) GetRequestTimeoutSecOk() (*int, bool)`
-
-GetRequestTimeoutSecOk returns a tuple with the RequestTimeoutSec field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRequestTimeoutSec
-
-`func (o *StreamsConnection) SetRequestTimeoutSec(v int)`
-
-SetRequestTimeoutSec sets RequestTimeoutSec field to given value.
-
-### HasRequestTimeoutSec
-
-`func (o *StreamsConnection) HasRequestTimeoutSec() bool`
-
-HasRequestTimeoutSec returns a boolean if a field has been set.
 ### GetUrl
 
 `func (o *StreamsConnection) GetUrl() string`

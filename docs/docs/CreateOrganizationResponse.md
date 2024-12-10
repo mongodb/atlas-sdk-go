@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **FederationSettingsId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the federation that you linked the newly created organization to. | [optional] [readonly] 
 **OrgOwnerId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the MongoDB Cloud user that you assigned the Organization Owner role in the new organization. | [optional] [readonly] 
 **Organization** | Pointer to [**AtlasOrganization**](AtlasOrganization.md) |  | [optional] 
+**SkipDefaultAlertsSettings** | Pointer to **bool** | Disables automatic alert creation. When set to true, no organization level alerts will be created automatically. | [optional] [default to false]
 
 ## Methods
 
@@ -124,6 +125,30 @@ SetOrganization sets Organization field to given value.
 `func (o *CreateOrganizationResponse) HasOrganization() bool`
 
 HasOrganization returns a boolean if a field has been set.
+### GetSkipDefaultAlertsSettings
+
+`func (o *CreateOrganizationResponse) GetSkipDefaultAlertsSettings() bool`
+
+GetSkipDefaultAlertsSettings returns the SkipDefaultAlertsSettings field if non-nil, zero value otherwise.
+
+### GetSkipDefaultAlertsSettingsOk
+
+`func (o *CreateOrganizationResponse) GetSkipDefaultAlertsSettingsOk() (*bool, bool)`
+
+GetSkipDefaultAlertsSettingsOk returns a tuple with the SkipDefaultAlertsSettings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSkipDefaultAlertsSettings
+
+`func (o *CreateOrganizationResponse) SetSkipDefaultAlertsSettings(v bool)`
+
+SetSkipDefaultAlertsSettings sets SkipDefaultAlertsSettings field to given value.
+
+### HasSkipDefaultAlertsSettings
+
+`func (o *CreateOrganizationResponse) HasSkipDefaultAlertsSettings() bool`
+
+HasSkipDefaultAlertsSettings returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
