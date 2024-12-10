@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AwsAccountId** | Pointer to **string** | The AWS Account ID. | [optional] 
+**CidrBlock** | Pointer to **string** | The VPC CIDR Block. | [optional] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **VpcId** | Pointer to **string** | The VPC ID. | [optional] 
 
@@ -51,6 +52,30 @@ SetAwsAccountId sets AwsAccountId field to given value.
 `func (o *AWSAccountDetails) HasAwsAccountId() bool`
 
 HasAwsAccountId returns a boolean if a field has been set.
+### GetCidrBlock
+
+`func (o *AWSAccountDetails) GetCidrBlock() string`
+
+GetCidrBlock returns the CidrBlock field if non-nil, zero value otherwise.
+
+### GetCidrBlockOk
+
+`func (o *AWSAccountDetails) GetCidrBlockOk() (*string, bool)`
+
+GetCidrBlockOk returns a tuple with the CidrBlock field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCidrBlock
+
+`func (o *AWSAccountDetails) SetCidrBlock(v string)`
+
+SetCidrBlock sets CidrBlock field to given value.
+
+### HasCidrBlock
+
+`func (o *AWSAccountDetails) HasCidrBlock() bool`
+
+HasCidrBlock returns a boolean if a field has been set.
 ### GetLinks
 
 `func (o *AWSAccountDetails) GetLinks() []Link`

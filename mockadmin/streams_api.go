@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20241113002/admin"
+	admin "go.mongodb.org/atlas-sdk/v20241113003/admin"
 
 	http "net/http"
 
@@ -3572,6 +3572,170 @@ func (_c *StreamsApi_ListStreamProcessorsWithParams_Call) Return(_a0 admin.ListS
 }
 
 func (_c *StreamsApi_ListStreamProcessorsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListStreamProcessorsApiParams) admin.ListStreamProcessorsApiRequest) *StreamsApi_ListStreamProcessorsWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ModifyStreamProcessor provides a mock function with given fields: ctx, groupId, tenantName, processorName, streamsModifyStreamProcessor
+func (_m *StreamsApi) ModifyStreamProcessor(ctx context.Context, groupId string, tenantName string, processorName string, streamsModifyStreamProcessor *admin.StreamsModifyStreamProcessor) admin.ModifyStreamProcessorApiRequest {
+	ret := _m.Called(ctx, groupId, tenantName, processorName, streamsModifyStreamProcessor)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ModifyStreamProcessor")
+	}
+
+	var r0 admin.ModifyStreamProcessorApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, string, *admin.StreamsModifyStreamProcessor) admin.ModifyStreamProcessorApiRequest); ok {
+		r0 = rf(ctx, groupId, tenantName, processorName, streamsModifyStreamProcessor)
+	} else {
+		r0 = ret.Get(0).(admin.ModifyStreamProcessorApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsApi_ModifyStreamProcessor_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ModifyStreamProcessor'
+type StreamsApi_ModifyStreamProcessor_Call struct {
+	*mock.Call
+}
+
+// ModifyStreamProcessor is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - tenantName string
+//   - processorName string
+//   - streamsModifyStreamProcessor *admin.StreamsModifyStreamProcessor
+func (_e *StreamsApi_Expecter) ModifyStreamProcessor(ctx any, groupId any, tenantName any, processorName any, streamsModifyStreamProcessor any) *StreamsApi_ModifyStreamProcessor_Call {
+	return &StreamsApi_ModifyStreamProcessor_Call{Call: _e.mock.On("ModifyStreamProcessor", ctx, groupId, tenantName, processorName, streamsModifyStreamProcessor)}
+}
+
+func (_c *StreamsApi_ModifyStreamProcessor_Call) Run(run func(ctx context.Context, groupId string, tenantName string, processorName string, streamsModifyStreamProcessor *admin.StreamsModifyStreamProcessor)) *StreamsApi_ModifyStreamProcessor_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(string), args[4].(*admin.StreamsModifyStreamProcessor))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_ModifyStreamProcessor_Call) Return(_a0 admin.ModifyStreamProcessorApiRequest) *StreamsApi_ModifyStreamProcessor_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsApi_ModifyStreamProcessor_Call) RunAndReturn(run func(context.Context, string, string, string, *admin.StreamsModifyStreamProcessor) admin.ModifyStreamProcessorApiRequest) *StreamsApi_ModifyStreamProcessor_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ModifyStreamProcessorExecute provides a mock function with given fields: r
+func (_m *StreamsApi) ModifyStreamProcessorExecute(r admin.ModifyStreamProcessorApiRequest) (*admin.StreamsProcessorWithStats, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ModifyStreamProcessorExecute")
+	}
+
+	var r0 *admin.StreamsProcessorWithStats
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.ModifyStreamProcessorApiRequest) (*admin.StreamsProcessorWithStats, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.ModifyStreamProcessorApiRequest) *admin.StreamsProcessorWithStats); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.StreamsProcessorWithStats)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.ModifyStreamProcessorApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.ModifyStreamProcessorApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// StreamsApi_ModifyStreamProcessorExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ModifyStreamProcessorExecute'
+type StreamsApi_ModifyStreamProcessorExecute_Call struct {
+	*mock.Call
+}
+
+// ModifyStreamProcessorExecute is a helper method to define mock.On call
+//   - r admin.ModifyStreamProcessorApiRequest
+func (_e *StreamsApi_Expecter) ModifyStreamProcessorExecute(r any) *StreamsApi_ModifyStreamProcessorExecute_Call {
+	return &StreamsApi_ModifyStreamProcessorExecute_Call{Call: _e.mock.On("ModifyStreamProcessorExecute", r)}
+}
+
+func (_c *StreamsApi_ModifyStreamProcessorExecute_Call) Run(run func(r admin.ModifyStreamProcessorApiRequest)) *StreamsApi_ModifyStreamProcessorExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.ModifyStreamProcessorApiRequest))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_ModifyStreamProcessorExecute_Call) Return(_a0 *admin.StreamsProcessorWithStats, _a1 *http.Response, _a2 error) *StreamsApi_ModifyStreamProcessorExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *StreamsApi_ModifyStreamProcessorExecute_Call) RunAndReturn(run func(admin.ModifyStreamProcessorApiRequest) (*admin.StreamsProcessorWithStats, *http.Response, error)) *StreamsApi_ModifyStreamProcessorExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ModifyStreamProcessorWithParams provides a mock function with given fields: ctx, args
+func (_m *StreamsApi) ModifyStreamProcessorWithParams(ctx context.Context, args *admin.ModifyStreamProcessorApiParams) admin.ModifyStreamProcessorApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ModifyStreamProcessorWithParams")
+	}
+
+	var r0 admin.ModifyStreamProcessorApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ModifyStreamProcessorApiParams) admin.ModifyStreamProcessorApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.ModifyStreamProcessorApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsApi_ModifyStreamProcessorWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ModifyStreamProcessorWithParams'
+type StreamsApi_ModifyStreamProcessorWithParams_Call struct {
+	*mock.Call
+}
+
+// ModifyStreamProcessorWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.ModifyStreamProcessorApiParams
+func (_e *StreamsApi_Expecter) ModifyStreamProcessorWithParams(ctx any, args any) *StreamsApi_ModifyStreamProcessorWithParams_Call {
+	return &StreamsApi_ModifyStreamProcessorWithParams_Call{Call: _e.mock.On("ModifyStreamProcessorWithParams", ctx, args)}
+}
+
+func (_c *StreamsApi_ModifyStreamProcessorWithParams_Call) Run(run func(ctx context.Context, args *admin.ModifyStreamProcessorApiParams)) *StreamsApi_ModifyStreamProcessorWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.ModifyStreamProcessorApiParams))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_ModifyStreamProcessorWithParams_Call) Return(_a0 admin.ModifyStreamProcessorApiRequest) *StreamsApi_ModifyStreamProcessorWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsApi_ModifyStreamProcessorWithParams_Call) RunAndReturn(run func(context.Context, *admin.ModifyStreamProcessorApiParams) admin.ModifyStreamProcessorApiRequest) *StreamsApi_ModifyStreamProcessorWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }

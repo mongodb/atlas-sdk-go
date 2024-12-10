@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **VolumeType** | Pointer to **string** | Disk Input/Output Operations per Second (IOPS) setting for Amazon Web Services (AWS) storage that you configure only for abbr title&#x3D;\&quot;Amazon Web Services\&quot;&gt;AWS&lt;/abbr&gt;. Specify whether Disk Input/Output Operations per Second (IOPS) must not exceed the default Input/Output Operations per Second (IOPS) rate for the selected volume size (&#x60;STANDARD&#x60;), or must fall within the allowable Input/Output Operations per Second (IOPS) range for the selected volume size (&#x60;PROVISIONED&#x60;). You must set this value to (&#x60;PROVISIONED&#x60;) for NVMe clusters. | [optional] 
 **DiskTypeName** | Pointer to **string** | Disk type that corresponds to the host&#39;s root volume for Azure instances. If omitted, the default disk type for the selected **providerSettings.instanceSizeName** applies. | [optional] 
 **BackingProviderName** | Pointer to **string** | Cloud service provider on which MongoDB Cloud provisioned the multi-tenant host. The resource returns this parameter when **providerSettings.providerName** is &#x60;FLEX&#x60; and **providerSetting.instanceSizeName** is &#x60;FLEX&#x60;. | [optional] 
+**EffectiveInstanceSizeName** | Pointer to **string** | The true tenant instance size. This is present to support backwards compatibility for deprecated provider types and/or instance sizes. | [optional] [readonly] 
 
 ## Methods
 
@@ -244,6 +245,30 @@ SetBackingProviderName sets BackingProviderName field to given value.
 `func (o *ClusterProviderSettings) HasBackingProviderName() bool`
 
 HasBackingProviderName returns a boolean if a field has been set.
+### GetEffectiveInstanceSizeName
+
+`func (o *ClusterProviderSettings) GetEffectiveInstanceSizeName() string`
+
+GetEffectiveInstanceSizeName returns the EffectiveInstanceSizeName field if non-nil, zero value otherwise.
+
+### GetEffectiveInstanceSizeNameOk
+
+`func (o *ClusterProviderSettings) GetEffectiveInstanceSizeNameOk() (*string, bool)`
+
+GetEffectiveInstanceSizeNameOk returns a tuple with the EffectiveInstanceSizeName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEffectiveInstanceSizeName
+
+`func (o *ClusterProviderSettings) SetEffectiveInstanceSizeName(v string)`
+
+SetEffectiveInstanceSizeName sets EffectiveInstanceSizeName field to given value.
+
+### HasEffectiveInstanceSizeName
+
+`func (o *ClusterProviderSettings) HasEffectiveInstanceSizeName() bool`
+
+HasEffectiveInstanceSizeName returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
