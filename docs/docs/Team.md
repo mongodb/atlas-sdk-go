@@ -7,13 +7,13 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies this team. | [optional] [readonly] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **Name** | **string** | Human-readable label that identifies the team. | 
-**Usernames** | Pointer to **[]string** | List that contains the MongoDB Cloud users in this team. | [optional] 
+**Usernames** | **[]string** | List that contains the MongoDB Cloud users in this team. | 
 
 ## Methods
 
 ### NewTeam
 
-`func NewTeam(name string, ) *Team`
+`func NewTeam(name string, usernames []string, ) *Team`
 
 NewTeam instantiates a new Team object
 This constructor will assign default values to properties that have it defined,
@@ -114,11 +114,6 @@ and a boolean to check if the value has been set.
 
 SetUsernames sets Usernames field to given value.
 
-### HasUsernames
-
-`func (o *Team) HasUsernames() bool`
-
-HasUsernames returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -27,7 +27,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: b4af03887e4a47b0e7a2b40cb24ecb8a926f9512
+  x-xgen-sha: 250de29f4a410f2895ff9ae84ba6ae026a644059
 servers:
   - url: https://cloud.mongodb.com
 security:
@@ -2774,29 +2774,35 @@ paths:
                             autoIndexing:
                               enabled: false
                             compute:
-                              enabled: false
+                              enabled: true
+                              maxInstanceSize: M40
+                              minInstanceSize: M30
+                              scaleDownEnabled: true
                             diskGB:
                               enabled: true
                           analyticsSpecs:
                             diskSizeGB: 10
-                            instanceSize: M30
+                            instanceSize: M40
                             nodeCount: 0
                           autoScaling:
                             autoIndexing:
                               enabled: false
                             compute:
-                              enabled: false
+                              enabled: true
+                              maxInstanceSize: M60
+                              minInstanceSize: M30
+                              scaleDownEnabled: true
                             diskGB:
                               enabled: true
                           electableSpecs:
                             diskSizeGB: 10
-                            instanceSize: M30
+                            instanceSize: M60
                             nodeCount: 3
                           priority: 7
                           providerName: AWS
                           readOnlySpecs:
                             diskSizeGB: 10
-                            instanceSize: M30
+                            instanceSize: M60
                             nodeCount: 0
                           regionName: US_EAST_1
                       zoneName: Zone 1
@@ -2805,29 +2811,35 @@ paths:
                             autoIndexing:
                               enabled: false
                             compute:
-                              enabled: false
+                              enabled: true
+                              maxInstanceSize: M40
+                              minInstanceSize: M30
+                              scaleDownEnabled: true
                             diskGB:
                               enabled: true
                           analyticsSpecs:
                             diskSizeGB: 10
-                            instanceSize: M10
+                            instanceSize: M30
                             nodeCount: 0
                           autoScaling:
                             autoIndexing:
                               enabled: false
                             compute:
-                              enabled: false
+                              enabled: true
+                              maxInstanceSize: M60
+                              minInstanceSize: M30
+                              scaleDownEnabled: true
                             diskGB:
                               enabled: true
                           electableSpecs:
                             diskSizeGB: 10
-                            instanceSize: M10
+                            instanceSize: M40
                             nodeCount: 3
                           priority: 7
                           providerName: AWS
                           readOnlySpecs:
                             diskSizeGB: 10
-                            instanceSize: M10
+                            instanceSize: M40
                             nodeCount: 0
                           regionName: US_EAST_1
                       zoneName: Zone 1
@@ -2901,9 +2913,10 @@ paths:
         - Clusters
   "/api/atlas/v2/groups/{groupId}/clusters/tenantUpgrade":
     post:
-      description: Upgrades a shared-tier cluster in the specified project. To use
-        this resource, the requesting API key must have the Project Cluster
-        Manager role. Each project supports up to 25 clusters.
+      description: Upgrades a shared-tier cluster to a dedicated cluster (M10+) in the
+        specified project. To use this resource, the requesting API key must
+        have the Project Cluster Manager role. Each project supports up to 25
+        clusters.
       operationId: upgradeSharedCluster
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -2993,7 +3006,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Flag that indicates whether to retain backup snapshots for the
             deleted dedicated cluster.
           in: query
@@ -3037,7 +3050,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -3080,7 +3093,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2024-10-23+json:
@@ -3129,7 +3142,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -3160,7 +3173,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -3205,7 +3218,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal character string that identifies the Export
             Job.
           in: path
@@ -3252,7 +3265,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -3288,7 +3301,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -3333,7 +3346,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal digit string that identifies the restore job
             to remove.
           in: path
@@ -3377,7 +3390,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal digit string that identifies the restore job
             to return.
           in: path
@@ -3421,7 +3434,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -3456,7 +3469,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -3489,7 +3502,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2024-08-05+json:
@@ -3538,7 +3551,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -3576,7 +3589,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -3617,7 +3630,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal digit string that identifies the desired
             snapshot.
           in: path
@@ -3658,7 +3671,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal digit string that identifies the desired
             snapshot.
           in: path
@@ -3702,7 +3715,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -3735,7 +3748,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal digit string that identifies the desired
             snapshot.
           in: path
@@ -3777,7 +3790,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal digit string that identifies the desired
             snapshot.
           in: path
@@ -3819,7 +3832,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal digit string that identifies the desired
             snapshot.
           in: path
@@ -3872,7 +3885,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - $ref: "#/components/parameters/groupId"
       requestBody:
         content:
@@ -3923,7 +3936,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - $ref: "#/components/parameters/groupId"
       requestBody:
         content:
@@ -3968,7 +3981,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - $ref: "#/components/parameters/groupId"
       responses:
         "200":
@@ -4001,7 +4014,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - $ref: "#/components/parameters/groupId"
         - description: Unique 24-hexadecimal digit string that identifies the restore job
             to return.
@@ -4046,7 +4059,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -4080,7 +4093,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal digit string that identifies the desired
             snapshot.
           in: path
@@ -4129,7 +4142,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -4172,7 +4185,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -4209,7 +4222,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -4245,7 +4258,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2023-11-15+json:
@@ -4297,7 +4310,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2023-11-15+json:
@@ -4348,7 +4361,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2023-11-15+json:
@@ -4399,7 +4412,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -4449,7 +4462,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Name of the collection that contains one or more Atlas Search
             indexes.
           in: path
@@ -4503,7 +4516,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal digit string that identifies the Atlas Search
             index. Use the [Get All Atlas Search Indexes for a Collection
             API](https://docs.atlas.mongodb.com/reference/api/fts-indexes-get-all/)
@@ -4556,7 +4569,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal digit string that identifies the Application
             Search
             [index](https://dochub.mongodb.org/core/index-definitions-fts). Use
@@ -4608,7 +4621,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal digit string that identifies the Atlas Search
             [index](https://dochub.mongodb.org/core/index-definitions-fts). Use
             the [Get All Atlas Search Indexes for a Collection
@@ -4670,7 +4683,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -4709,7 +4722,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -4746,7 +4759,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2024-08-05+json:
@@ -4793,7 +4806,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - $ref: "#/components/parameters/groupId"
         - description: Human-readable label that identifies the database that contains the
             collection.
@@ -4844,7 +4857,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2024-08-05+json:
@@ -4895,7 +4908,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -5006,7 +5019,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -5041,7 +5054,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -5118,7 +5131,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Flag that indicates whether to download logs for queries against
             your online archive only or both your online archive and cluster.
           in: query
@@ -5182,7 +5195,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "204":
           content:
@@ -5230,7 +5243,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -5280,7 +5293,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -5327,7 +5340,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -5364,7 +5377,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -5401,7 +5414,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -5426,6 +5439,102 @@ paths:
       summary: Start an Outage Simulation
       tags:
         - Cluster Outage Simulation
+  "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/performanceAdvisor/suggestedIndexes":
+    get:
+      description: Returns the indexes that the Performance Advisor suggests. The
+        Performance Advisor monitors queries that MongoDB considers slow and
+        suggests new indexes to improve query performance. To use this resource,
+        the requesting API Key must have the Project Read Only role.
+      operationId: listClusterSuggestedIndexes
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Human-readable label that identifies the cluster.
+          in: path
+          name: clusterName
+          required: true
+          schema:
+            type: string
+            maxLength: 64
+            minLength: 1
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+        - description: ProcessIds from which to retrieve suggested indexes. A processId is
+            a combination of host and port that serves the MongoDB process. The
+            host must be the hostname, FQDN, IPv4 address, or IPv6 address of
+            the host that runs the MongoDB process (`mongod` or `mongos`). The
+            port must be the IANA port on which the MongoDB process listens for
+            requests. To include multiple processIds, pass the parameter
+            multiple times delimited with an ampersand (`&`) between each
+            processId.
+          in: query
+          name: processIds
+          schema:
+            type: array
+            items:
+              type: string
+              pattern: ^([0-9]{1,3}\.){3}[0-9]{1,3}|([0-9a-f]{1,4}\:){7}([0-9a-f]{1,4})|(([a-z0-9]+\.){1,10}[a-z]+)?(\:[0-9]{4,5})$
+          style: form
+        - description: "Namespaces from which to retrieve suggested indexes. A namespace
+            consists of one database and one collection resource written as `.`:
+            `<database>.<collection>`. To include multiple namespaces, pass the
+            parameter multiple times delimited with an ampersand (`&`) between
+            each namespace. Omit this parameter to return results for all
+            namespaces."
+          in: query
+          name: namespaces
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+        - description: >-
+            Date and time from which the query retrieves the suggested indexes.
+            This parameter expresses its value in the number of milliseconds
+            that have elapsed since the [UNIX
+            epoch](https://en.wikipedia.org/wiki/Unix_time).
+
+
+            - If you don't specify the **until** parameter, the endpoint returns data covering from the **since** value and the current time.
+
+            - If you specify neither the **since** nor the **until** parameters, the endpoint returns data from the previous 24 hours.
+          in: query
+          name: since
+          schema:
+            type: integer
+            format: int64
+            minimum: 1199145600000
+        - description: >-
+            Date and time up until which the query retrieves the suggested
+            indexes. This parameter expresses its value in the number of
+            milliseconds that have elapsed since the [UNIX
+            epoch](https://en.wikipedia.org/wiki/Unix_time).
+
+
+            - If you specify the **until** parameter, you must specify the **since** parameter.
+
+            - If you specify neither the **since** nor the **until** parameters, the endpoint returns data from the previous 24 hours.
+          in: query
+          name: until
+          schema:
+            type: integer
+            format: int64
+            minimum: 1199145600000
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/PerformanceAdvisorResponse"
+              x-xgen-version: 2024-08-05
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return Suggested Indexes
+      tags:
+        - Performance Advisor
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/processArgs":
     get:
       description: "Returns the advanced configuration details for one cluster in the
@@ -5450,7 +5559,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -5491,7 +5600,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2024-08-05+json:
@@ -5540,7 +5649,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -5591,7 +5700,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -5640,7 +5749,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -5686,7 +5795,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal digit string that identifies the restore job.
           in: path
           name: jobId
@@ -5727,7 +5836,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "204":
           content:
@@ -5761,7 +5870,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -5793,7 +5902,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2024-05-30+json:
@@ -5833,7 +5942,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2024-05-30+json:
@@ -5881,7 +5990,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -5928,7 +6037,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2024-05-30+json:
@@ -5976,7 +6085,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Name of the collection that contains one or more Atlas Search
             indexes.
           in: path
@@ -6037,7 +6146,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Name of the collection that contains one or more Atlas Search
             indexes.
           in: path
@@ -6096,7 +6205,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Name of the collection that contains one or more Atlas Search
             indexes.
           in: path
@@ -6155,7 +6264,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Name of the collection that contains one or more Atlas Search
             indexes.
           in: path
@@ -6222,7 +6331,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal digit string that identifies the Atlas Search
             index. Use the [Get All Atlas Search Indexes for a Collection
             API](https://docs.atlas.mongodb.com/reference/api/fts-indexes-get-all/)
@@ -6273,7 +6382,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal digit string that identifies the Application
             Search
             [index](https://dochub.mongodb.org/core/index-definitions-fts). Use
@@ -6331,7 +6440,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal digit string that identifies the Atlas Search
             [index](https://dochub.mongodb.org/core/index-definitions-fts). Use
             the [Get All Atlas Search Indexes for a Collection
@@ -6392,7 +6501,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -6428,7 +6537,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -6479,7 +6588,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Human-readable label that specifies whether to return only
             completed, incomplete, or all snapshots. By default, MongoDB Cloud
             only returns completed snapshots.
@@ -6528,7 +6637,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal digit string that identifies the desired
             snapshot.
           in: path
@@ -6580,7 +6689,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal digit string that identifies the desired
             snapshot.
           in: path
@@ -6630,7 +6739,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal digit string that identifies the desired
             snapshot.
           in: path
@@ -6681,7 +6790,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -6713,7 +6822,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Human-readable label that identifies the cluster topology to
             retrieve metrics for.
           in: path
@@ -6755,7 +6864,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Human-readable label that identifies the cluster topology to
             retrieve metrics for.
           in: path
@@ -6815,7 +6924,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2024-08-05+json:
@@ -6862,7 +6971,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2024-05-30+json:
@@ -6905,7 +7014,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "204":
           content:
@@ -6942,7 +7051,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "204":
           content:
@@ -8424,7 +8533,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Date and time when to stop retrieving database history. If you
             specify **end**, you must also specify **start**. This parameter
             uses UNIX epoch time in milliseconds.
@@ -8788,9 +8897,10 @@ paths:
   "/api/atlas/v2/groups/{groupId}/events":
     get:
       description: >-
-        Returns one event for the specified project. Events identify significant
-        database, billing, or security activities or status changes. To use this
-        resource, the requesting API Key must have the Project Read Only role.
+        Returns all events for the specified project. Events identify
+        significant database, billing, or security activities or status changes.
+        To use this resource, the requesting API Key must have the Project Read
+        Only role.
 
 
         This resource remains under revision and may change.
@@ -8809,7 +8919,7 @@ paths:
               type: string
               maxLength: 64
               minLength: 1
-              pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+              pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
           style: form
         - description: >-
             Category of incident recorded at this moment in time.
@@ -9001,7 +9111,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "204":
           content:
@@ -9036,7 +9146,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -9070,7 +9180,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2024-11-13+json:
@@ -9112,7 +9222,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - $ref: "#/components/parameters/groupId"
       requestBody:
         content:
@@ -9163,7 +9273,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -9197,7 +9307,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2024-11-13+json:
@@ -9242,7 +9352,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal digit string that identifies the restore job
             to return.
           in: path
@@ -9289,7 +9399,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -9323,7 +9433,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal digit string that identifies the desired
             snapshot.
           in: path
@@ -9354,9 +9464,9 @@ paths:
         - Flex Snapshots
   "/api/atlas/v2/groups/{groupId}/flexClusters:tenantUpgrade":
     post:
-      description: Upgrades a flex cluster in the specified project. To use this
-        resource, the requesting API key must have the Project Cluster Manager
-        role.
+      description: Upgrades a flex cluster to a dedicated cluster (M10+) in the
+        specified project. To use this resource, the requesting API key must
+        have the Project Cluster Manager role.
       operationId: upgradeFlexCluster
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -9364,7 +9474,7 @@ paths:
         content:
           application/vnd.atlas.2024-11-13+json:
             schema:
-              $ref: "#/components/schemas/FlexClusterDescription20241113"
+              $ref: "#/components/schemas/AtlasTenantClusterUpgradeRequest20240805"
         description: Details of the flex cluster upgrade in the specified project.
         required: true
       responses:
@@ -11529,7 +11639,7 @@ paths:
           schema:
             type: string
             maxLength: 64
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -11569,7 +11679,7 @@ paths:
           schema:
             type: string
             maxLength: 64
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -11610,7 +11720,7 @@ paths:
           schema:
             type: string
             maxLength: 64
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal digit string that identifies the tenant
             endpoint which will be removed.
           in: path
@@ -11653,7 +11763,7 @@ paths:
           schema:
             type: string
             maxLength: 64
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal digit string that identifies the tenant
             endpoint.
           in: path
@@ -11695,7 +11805,7 @@ paths:
           schema:
             type: string
             maxLength: 64
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal digit string that identifies the tenant
             endpoint which will be updated.
           in: path
@@ -13137,7 +13247,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "201":
           content:
@@ -13267,7 +13377,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -13301,7 +13411,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -13347,7 +13457,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal digit string that identifies the restore job
             to return.
           in: path
@@ -13394,7 +13504,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -13428,7 +13538,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Unique 24-hexadecimal digit string that identifies the desired
             snapshot.
           in: path
@@ -13471,7 +13581,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -13500,7 +13610,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         - description: Value that we want to set for the Serverless Auto Indexing toggle.
           in: query
           name: enable
@@ -13539,7 +13649,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "202":
           content:
@@ -13574,7 +13684,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
         "200":
           content:
@@ -13608,7 +13718,7 @@ paths:
             type: string
             maxLength: 64
             minLength: 1
-            pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -14974,6 +15084,53 @@ paths:
       summary: Get One Stream Processor
       tags:
         - Streams
+    patch:
+      description: Modify one existing Stream Processor within the specified stream
+        instance. To use this resource, the requesting API Key must have the
+        Project Owner role or Project Stream Processing Owner role.
+      operationId: modifyStreamProcessor
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Human-readable label that identifies the stream instance.
+          in: path
+          name: tenantName
+          required: true
+          schema:
+            type: string
+        - description: Human-readable label that identifies the stream processor.
+          in: path
+          name: processorName
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/vnd.atlas.2024-05-30+json:
+            schema:
+              $ref: "#/components/schemas/StreamsModifyStreamProcessor"
+        description: Modifications to apply to the stream processor.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-05-30+json:
+              schema:
+                $ref: "#/components/schemas/StreamsProcessorWithStats"
+              x-xgen-version: 2024-05-30
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Modify One Stream Processor
+      tags:
+        - Streams
   "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:start":
     post:
       description: Start a Stream Processor within the specified stream instance. To
@@ -15770,9 +15927,9 @@ paths:
       tags:
         - Organizations
     patch:
-      description: Renames one organization. To use this resource, the requesting API
+      description: Updates one organization. To use this resource, the requesting API
         Key must have the Organization Owner role.
-      operationId: renameOrganization
+      operationId: updateOrganization
       parameters:
         - $ref: "#/components/parameters/orgId"
       requestBody:
@@ -15800,7 +15957,7 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
-      summary: Rename One Organization
+      summary: Update One Organization
       tags:
         - Organizations
   "/api/atlas/v2/orgs/{orgId}/apiKeys":
@@ -18705,6 +18862,9 @@ components:
         awsAccountId:
           type: string
           description: The AWS Account ID.
+        cidrBlock:
+          type: string
+          description: The VPC CIDR Block.
         links:
           type: array
           description: List of one or more Uniform Resource Locators (URLs) that point to
@@ -19017,7 +19177,7 @@ components:
           example: cluster1
           maxLength: 64
           minLength: 1
-          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
           readOnly: true
         hostnameAndPort:
           type: string
@@ -19807,6 +19967,11 @@ components:
           maxLength: 64
           minLength: 1
           pattern: ^[\p{L}\p{N}\-_.(),:&@+']{1,64}$
+        skipDefaultAlertsSettings:
+          type: boolean
+          default: false
+          description: Disables automatic alert creation. When set to true, no
+            organization level alerts will be created automatically.
       required:
         - name
     AtlasSearchAnalyzer:
@@ -19850,6 +20015,267 @@ components:
         - name
         - tokenizer
       title: Atlas Search Analyzer
+    AtlasTenantClusterUpgradeRequest20240805:
+      type: object
+      description: Request containing target state of tenant cluster to be upgraded
+      properties:
+        acceptDataRisksAndForceReplicaSetReconfig:
+          type: string
+          format: date-time
+          description: If reconfiguration is necessary to regain a primary due to a
+            regional outage, submit this field alongside your topology
+            reconfiguration to request a new regional outage resistant topology.
+            Forced reconfigurations during an outage of the majority of
+            electable nodes carry a risk of data loss if replicated writes (even
+            majority committed writes) have not been replicated to the new
+            primary node. MongoDB Atlas docs contain more information. To
+            proceed with an operation which carries that risk, set
+            **acceptDataRisksAndForceReplicaSetReconfig** to the current date.
+          externalDocs:
+            description: Reconfiguring a Replica Set during a regional outage
+            url: https://dochub.mongodb.org/core/regional-outage-reconfigure-replica-set
+        backupEnabled:
+          type: boolean
+          default: false
+          description: Flag that indicates whether the cluster can perform backups. If set
+            to `true`, the cluster can perform backups. You must set this value
+            to `true` for NVMe clusters. Backup uses [Cloud
+            Backups](https://docs.atlas.mongodb.com/backup/cloud-backup/overview/)
+            for dedicated clusters and [Shared Cluster
+            Backups](https://docs.atlas.mongodb.com/backup/shared-tier/overview/)
+            for tenant clusters. If set to `false`, the cluster doesn't use
+            backups.
+        biConnector:
+          $ref: "#/components/schemas/BiConnector"
+        clusterType:
+          type: string
+          description: Configuration of nodes that comprise the cluster.
+        configServerManagementMode:
+          type: string
+          default: ATLAS_MANAGED
+          description: >-
+            Config Server Management Mode for creating or updating a sharded
+            cluster.
+
+
+            When configured as ATLAS_MANAGED, atlas may automatically switch the cluster's config server type for optimal performance and savings.
+
+
+            When configured as FIXED_TO_DEDICATED, the cluster will always use a dedicated config server.
+          externalDocs:
+            description: MongoDB Sharded Cluster Config Servers
+            url: https://dochub.mongodb.org/docs/manual/core/sharded-cluster-config-servers
+        configServerType:
+          type: string
+          description: Describes a sharded cluster's config server type.
+          externalDocs:
+            description: MongoDB Sharded Cluster Config Servers
+            url: https://dochub.mongodb.org/docs/manual/core/sharded-cluster-config-servers
+          readOnly: true
+        connectionStrings:
+          $ref: "#/components/schemas/ClusterConnectionStrings"
+        createDate:
+          type: string
+          format: date-time
+          description: Date and time when MongoDB Cloud created this cluster. This
+            parameter expresses its value in ISO 8601 format in UTC.
+          readOnly: true
+        diskWarmingMode:
+          type: string
+          default: FULLY_WARMED
+          description: Disk warming mode selection.
+          externalDocs:
+            description: Reduce Secondary Disk Warming Impact
+            url: https://docs.atlas.mongodb.com/reference/replica-set-tags/#reduce-secondary-disk-warming-impact
+        encryptionAtRestProvider:
+          type: string
+          description: 'Cloud service provider that manages your customer keys to provide
+            an additional layer of encryption at rest for the cluster. To enable
+            customer key management for encryption at rest, the cluster
+            **replicationSpecs[n].regionConfigs[m].{type}Specs.instanceSize**
+            setting must be `M10` or higher and `"backupEnabled" : false` or
+            omitted entirely.'
+          externalDocs:
+            description: Encryption at Rest using Customer Key Management
+            url: https://www.mongodb.com/docs/atlas/security-kms-encryption/
+        featureCompatibilityVersion:
+          type: string
+          description: Feature compatibility version of the cluster. This will always
+            appear regardless of whether FCV is pinned.
+          readOnly: true
+        featureCompatibilityVersionExpirationDate:
+          type: string
+          format: date-time
+          description: Feature compatibility version expiration date. Will only appear if
+            FCV is pinned.
+          readOnly: true
+        globalClusterSelfManagedSharding:
+          type: boolean
+          description: >-
+            Set this field to configure the Sharding Management Mode when
+            creating a new Global Cluster.
+
+
+            When set to false, the management mode is set to Atlas-Managed Sharding. This mode fully manages the sharding of your Global Cluster and is built to provide a seamless deployment experience.
+
+
+            When set to true, the management mode is set to Self-Managed Sharding. This mode leaves the management of shards in your hands and is built to provide an advanced and flexible deployment experience.
+
+
+            This setting cannot be changed once the cluster is deployed.
+          externalDocs:
+            description: Creating a Global Cluster
+            url: https://dochub.mongodb.org/core/global-cluster-management
+        groupId:
+          type: string
+          description: Unique 24-hexadecimal character string that identifies the project.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        id:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the cluster.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        labels:
+          type: array
+          deprecated: true
+          description: >-
+            Collection of key-value pairs between 1 to 255 characters in length
+            that tag and categorize the cluster. The MongoDB Cloud console
+            doesn't display your labels.
+
+
+            Cluster labels are deprecated and will be removed in a future release. We strongly recommend that you use [resource tags](https://dochub.mongodb.org/core/add-cluster-tag-atlas) instead.
+          items:
+            $ref: "#/components/schemas/ComponentLabel"
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        mongoDBEmployeeAccessGrant:
+          $ref: "#/components/schemas/EmployeeAccessGrant"
+        mongoDBMajorVersion:
+          type: string
+          description: >-
+            MongoDB major version of the cluster. Set to the binary major
+            version. 
+
+
+            On creation: Choose from the available versions of MongoDB, or leave unspecified for the current recommended default in the MongoDB Cloud platform. The recommended version is a recent Long Term Support version. The default is not guaranteed to be the most recently released version throughout the entire release cycle. For versions available in a specific project, see the linked documentation or use the API endpoint for [project LTS versions endpoint](#tag/Projects/operation/getProjectLtsVersions).
+
+             On update: Increase version only by 1 major version at a time. If the cluster is pinned to a MongoDB feature compatibility version exactly one major version below the current MongoDB version, the MongoDB version can be downgraded to the previous major version.
+          externalDocs:
+            description: Available MongoDB Versions in Atlas
+            url: https://www.mongodb.com/docs/atlas/reference/faq/database/#which-versions-of-mongodb-do-service-clusters-use-
+        mongoDBVersion:
+          type: string
+          description: Version of MongoDB that the cluster runs.
+          pattern: ([\d]+\.[\d]+\.[\d]+)
+          readOnly: true
+        name:
+          type: string
+          description: Human-readable label that identifies the cluster.
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+        paused:
+          type: boolean
+          description: Flag that indicates whether the cluster is paused.
+        pitEnabled:
+          type: boolean
+          description: Flag that indicates whether the cluster uses continuous cloud
+            backups.
+          externalDocs:
+            description: Continuous Cloud Backups
+            url: https://docs.atlas.mongodb.com/backup/cloud-backup/overview/
+        redactClientLogData:
+          type: boolean
+          description: >-
+            Enable or disable log redaction.
+
+
+            This setting configures the ``mongod`` or ``mongos`` to redact any document field contents from a message accompanying a given log event before logging. This prevents the program from writing potentially sensitive data stored on the database to the diagnostic log. Metadata such as error or operation codes, line numbers, and source file names are still visible in the logs.
+
+
+            Use ``redactClientLogData`` in conjunction with Encryption at Rest and TLS/SSL (Transport Encryption) to assist compliance with regulatory requirements.
+
+
+            *Note*: changing this setting on a cluster will trigger a rolling restart as soon as the cluster is updated.
+          externalDocs:
+            description: Log Redaction
+            url: https://www.mongodb.com/docs/manual/administration/monitoring/#log-redaction
+        replicaSetScalingStrategy:
+          type: string
+          default: WORKLOAD_TYPE
+          description: >-
+            Set this field to configure the replica set scaling mode for your
+            cluster.
+
+
+            By default, Atlas scales under WORKLOAD_TYPE. This mode allows Atlas to scale your analytics nodes in parallel to your operational nodes.
+
+
+            When configured as SEQUENTIAL, Atlas scales all nodes sequentially. This mode is intended for steady-state workloads and applications performing latency-sensitive secondary reads.
+
+
+            When configured as NODE_TYPE, Atlas scales your electable nodes in parallel with your read-only and analytics nodes. This mode is intended for large, dynamic workloads requiring frequent and timely cluster tier scaling. This is the fastest scaling strategy, but it might impact latency of workloads when performing extensive secondary reads.
+          externalDocs:
+            description: Modify the Replica Set Scaling Mode
+            url: https://dochub.mongodb.org/core/scale-nodes
+        replicationSpecs:
+          type: array
+          description: List of settings that configure your cluster regions. This array
+            has one object per shard representing node configurations in each
+            shard. For replica sets there is only one object representing node
+            configurations.
+          items:
+            $ref: "#/components/schemas/ReplicationSpec20240805"
+        rootCertType:
+          type: string
+          default: ISRGROOTX1
+          description: Root Certificate Authority that MongoDB Cloud cluster uses. MongoDB
+            Cloud supports Internet Security Research Group.
+        stateName:
+          type: string
+          description: Human-readable label that indicates the current operating condition
+            of this cluster.
+          readOnly: true
+        tags:
+          type: array
+          description: List that contains key-value pairs between 1 to 255 characters in
+            length for tagging and categorizing the cluster.
+          externalDocs:
+            description: Resource Tags
+            url: https://dochub.mongodb.org/core/add-cluster-tag-atlas
+          items:
+            $ref: "#/components/schemas/ResourceTag"
+        terminationProtectionEnabled:
+          type: boolean
+          default: false
+          description: Flag that indicates whether termination protection is enabled on
+            the cluster. If set to `true`, MongoDB Cloud won't delete the
+            cluster. If set to `false`, MongoDB Cloud will delete the cluster.
+        versionReleaseSystem:
+          type: string
+          default: LTS
+          description: Method by which the cluster maintains the MongoDB versions. If
+            value is `CONTINUOUS`, you must not specify **mongoDBMajorVersion**.
+      required:
+        - name
+      title: Tenant Cluster Upgrade Request
     AuditLog:
       type: object
       properties:
@@ -20197,7 +20623,7 @@ components:
             collection for which you want to create an online archive.
           maxLength: 64
           minLength: 1
-          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
           readOnly: true
         collName:
           type: string
@@ -20312,7 +20738,7 @@ components:
             collection for which you want to create an online archive.
           maxLength: 64
           minLength: 1
-          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
           readOnly: true
         collName:
           type: string
@@ -20460,7 +20886,7 @@ components:
             snapshots you want to retrieve.
           maxLength: 64
           minLength: 1
-          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
           readOnly: true
         created:
           type: string
@@ -20685,7 +21111,7 @@ components:
             To return a response with the **clusterId** parameter, either use the **delivery.targetClusterName** parameter or enable backup on the target cluster.
           maxLength: 64
           minLength: 1
-          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         targetGroupId:
           type: string
           description: 'Unique 24-hexadecimal digit string that identifies the project
@@ -20982,10 +21408,7 @@ components:
       description: Name of the region to which the data lake routes client connections.
     BaseCloudProviderInstanceSize:
       type: string
-      description: 'Minimum instance size to which your cluster can automatically
-        scale. MongoDB Cloud requires this parameter if
-        `"replicationSpecs[n].regionConfigs[m].autoScaling.compute.scaleDownEnabled"
-        : true`.'
+      description: Instance size boundary to which your cluster can automatically scale.
     BaseNetworkPeeringConnectionSettings:
       type: object
       properties:
@@ -21771,7 +22194,7 @@ components:
           description: Human-readable label that identifies the cluster.
           maxLength: 64
           minLength: 1
-          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
           readOnly: true
         nodeCount:
           type: integer
@@ -23011,12 +23434,14 @@ components:
             url: https://www.mongodb.com/docs/atlas/security-kms-encryption/
         featureCompatibilityVersion:
           type: string
-          description: Feature compatibility version of the cluster.
+          description: Feature compatibility version of the cluster. This will always
+            appear regardless of whether FCV is pinned.
           readOnly: true
         featureCompatibilityVersionExpirationDate:
           type: string
           format: date-time
-          description: Feature compatibility version expiration date.
+          description: Feature compatibility version expiration date. Will only appear if
+            FCV is pinned.
           readOnly: true
         globalClusterSelfManagedSharding:
           type: boolean
@@ -23079,10 +23504,11 @@ components:
         mongoDBMajorVersion:
           type: string
           description: >-
-            MongoDB major version of the cluster.
+            MongoDB major version of the cluster. Set to the binary major
+            version. 
 
 
-            On creation: Choose from the available versions of MongoDB, or leave unspecified for the current recommended default in the MongoDB Cloud platform. The recommended version is a recent Long Term Support version. The default is not guaranteed to be the most recently released version throughout the entire release cycle. For versions available in a specific project, see the linked documentation or use the API endpoint for [project LTS versions endpoint](#tag/Projects/operation/getProjectLTSVersions).
+            On creation: Choose from the available versions of MongoDB, or leave unspecified for the current recommended default in the MongoDB Cloud platform. The recommended version is a recent Long Term Support version. The default is not guaranteed to be the most recently released version throughout the entire release cycle. For versions available in a specific project, see the linked documentation or use the API endpoint for [project LTS versions endpoint](#tag/Projects/operation/getProjectLtsVersions).
 
              On update: Increase version only by 1 major version at a time. If the cluster is pinned to a MongoDB feature compatibility version exactly one major version below the current MongoDB version, the MongoDB version can be downgraded to the previous major version.
           externalDocs:
@@ -23098,7 +23524,7 @@ components:
           description: Human-readable label that identifies the cluster.
           maxLength: 64
           minLength: 1
-          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         paused:
           type: boolean
           description: Flag that indicates whether the cluster is paused.
@@ -23286,6 +23712,16 @@ components:
             description: This option corresponds to the `chunkMigrationConcurrency` `mongod`
               configuration file option.
             url: https://www.mongodb.com/docs/manual/reference/parameters/#mongodb-parameter-param.chunkMigrationConcurrency
+        customOpensslCipherConfigTls12:
+          type: array
+          description: The custom OpenSSL cipher suite list for TLS 1.2. This field is
+            only valid when `tlsCipherConfigMode` is set to `CUSTOM`.
+          externalDocs:
+            description: This option corresponds to the `opensslCipherConfig` `mongod`
+              configuration file option.
+            url: https://www.mongodb.com/docs/manual/reference/parameters/#mongodb-parameter-param.opensslCipherConfig
+          items:
+            type: string
         defaultMaxTimeMS:
           type: integer
           format: int32
@@ -23380,6 +23816,11 @@ components:
             description: This option corresponds to the `sampleSize` `mongosqld` option.
             url: https://docs.mongodb.com/bi-connector/current/reference/mongosqld/#std-option-mongosqld.--sampleSize
           minimum: 0
+        tlsCipherConfigMode:
+          type: string
+          description: The TLS cipher suite configuration mode. The default mode uses the
+            default cipher suites. The custom mode allows you to specify custom
+            cipher suites for both TLS 1.2 and TLS 1.3.
         transactionLifetimeLimitSeconds:
           type: integer
           format: int64
@@ -23433,7 +23874,7 @@ components:
             outage simulation.
           maxLength: 64
           minLength: 1
-          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
           readOnly: true
         groupId:
           type: string
@@ -23551,6 +23992,11 @@ components:
             multi-tenant host. The resource returns this parameter when
             **providerSettings.providerName** is `FLEX` and
             **providerSetting.instanceSizeName** is `FLEX`.
+        effectiveInstanceSizeName:
+          type: string
+          description: The true tenant instance size. This is present to support backwards
+            compatibility for deprecated provider types and/or instance sizes.
+          readOnly: true
       required:
         - providerName
       title: Cloud Service Provider Settings for a Cluster
@@ -23578,6 +24024,12 @@ components:
           type: string
           description: Human-readable label that identifies this index. Within each
             namespace, names of all indexes in the namespace must be unique.
+        numPartitions:
+          type: integer
+          format: int32
+          default: 1
+          description: "Number of index partitions. Note: This feature is currently in
+            preview."
         status:
           type: string
           description: >
@@ -24136,6 +24588,11 @@ components:
           maxLength: 24
           minLength: 24
           pattern: ^([a-f0-9]{24})$
+        skipDefaultAlertsSettings:
+          type: boolean
+          default: false
+          description: Disables automatic alert creation. When set to true, no
+            organization level alerts will be created automatically.
       required:
         - name
     CreateOrganizationResponse:
@@ -24164,6 +24621,11 @@ components:
           readOnly: true
         organization:
           $ref: "#/components/schemas/AtlasOrganization"
+        skipDefaultAlertsSettings:
+          type: boolean
+          default: false
+          description: Disables automatic alert creation. When set to true, no
+            organization level alerts will be created automatically.
     CreatePushBasedLogExportProjectRequest:
       type: object
       properties:
@@ -25409,6 +25871,8 @@ components:
           type: string
           description: State of the Export Job.
           readOnly: true
+        stateReason:
+          $ref: "#/components/schemas/StateReason"
       required:
         - exportBucketId
     DiskBackupExportJobRequest:
@@ -26176,7 +26640,7 @@ components:
             `automated` and `pointInTime` restore types.
           maxLength: 64
           minLength: 1
-          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         targetGroupId:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the target
@@ -26217,7 +26681,7 @@ components:
             you want to return.
           maxLength: 64
           minLength: 1
-          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
           readOnly: true
         copySettings:
           type: array
@@ -26303,10 +26767,6 @@ components:
             oplog size can limit storage auto-scaling.
     Document:
       type: object
-      description: The stats associated with the stream processor.
-      externalDocs:
-        url: https://www.mongodb.com/docs/atlas/atlas-stream-processing/manage-stream-processor/#view-statistics-of-a-stream-processor
-      readOnly: true
     EARPrivateEndpoint:
       type: object
       description: Encryption At Rest Private Endpoint.
@@ -26643,6 +27103,14 @@ components:
             triggered. The response returns this parameter when `eventTypeName"
             : "DATA_EXPLORER"`.'
           example: insertDocument
+          readOnly: true
+        deskLocation:
+          type: string
+          description: Desk location of MongoDB employee associated with the event.
+          readOnly: true
+        employeeIdentifier:
+          type: string
+          description: Identifier of MongoDB employee associated with the event.
           readOnly: true
         port:
           type: integer
@@ -27399,7 +27867,7 @@ components:
           description: Human-readable label that identifies the source instance.
           maxLength: 64
           minLength: 1
-          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
           readOnly: true
         links:
           type: array
@@ -27541,7 +28009,7 @@ components:
           description: Human-readable label that identifies the source instance.
           maxLength: 64
           minLength: 1
-          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
           readOnly: true
         links:
           type: array
@@ -27758,7 +28226,7 @@ components:
           description: Human-readable label that identifies the instance.
           maxLength: 64
           minLength: 1
-          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
           readOnly: true
         providerSettings:
           $ref: "#/components/schemas/FlexProviderSettings20241113"
@@ -27810,7 +28278,7 @@ components:
           description: Human-readable label that identifies the instance.
           maxLength: 64
           minLength: 1
-          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
           writeOnly: true
         providerSettings:
           $ref: "#/components/schemas/FlexProviderSettingsCreate20241113"
@@ -28405,6 +28873,8 @@ components:
           description: Number of times the current maintenance event for this project has
             been deferred.
           readOnly: true
+        protectedHours:
+          $ref: "#/components/schemas/ProtectedHours"
         startASAP:
           type: boolean
           description: Flag that indicates whether MongoDB Cloud starts the maintenance
@@ -28413,6 +28883,11 @@ components:
             have maintenance scheduled and you must set a maintenance window.
             This flag resets to `false` after MongoDB Cloud completes
             maintenance.
+        timeZoneId:
+          type: string
+          description: Identifier for the current time zone of the maintenance window.
+            This can only be updated via the Project Settings UI.
+          readOnly: true
       required:
         - dayOfWeek
     GroupMigrationRequest:
@@ -28707,6 +29182,11 @@ components:
           format: int32
           description: Number of nodes of the given type for MongoDB Cloud to deploy to
             the region.
+        effectiveInstanceSize:
+          type: string
+          description: The true tenant instance size. This is present to support backwards
+            compatibility for deprecated provider types and/or instance sizes.
+          readOnly: true
     InboundControlPlaneCloudProviderIPAddresses:
       type: object
       description: List of inbound IP addresses to the Atlas control plane,
@@ -29083,7 +29563,7 @@ components:
             charge.
           maxLength: 64
           minLength: 1
-          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
           readOnly: true
         created:
           type: string
@@ -29640,7 +30120,7 @@ components:
           description: Human-readable label that identifies the cluster.
           maxLength: 64
           minLength: 1
-          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         numShards:
           type: integer
           format: int32
@@ -29966,7 +30446,7 @@ components:
           description: Human-readable label that identifies the cluster.
           maxLength: 64
           minLength: 1
-          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         numShards:
           type: integer
           format: int32
@@ -32143,6 +32623,24 @@ components:
             with this private endpoint.
       required:
         - endpointId
+    ProtectedHours:
+      type: object
+      description: Defines the a window where maintenance will not begin within.
+      properties:
+        endHourOfDay:
+          type: integer
+          format: int32
+          description: Zero-based integer that represents the end hour of the of the day
+            that the maintenance will not begin in.
+          maximum: 23
+          minimum: 0
+        startHourOfDay:
+          type: integer
+          format: int32
+          description: Zero-based integer that represents the beginning hour of the of the
+            day that the maintenance will not begin in.
+          maximum: 23
+          minimum: 0
     PushBasedLogExportProject:
       type: object
       properties:
@@ -32409,7 +32907,7 @@ components:
             loaded the sample dataset.
           maxLength: 64
           minLength: 1
-          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
           readOnly: true
         completeDate:
           type: string
@@ -32583,6 +33081,12 @@ components:
                 $ref: "#/components/schemas/AtlasSearchAnalyzer"
             mappings:
               $ref: "#/components/schemas/SearchMappings"
+            numPartitions:
+              type: integer
+              format: int32
+              default: 1
+              description: "Number of index partitions. Note: This feature is currently in
+                preview."
             searchAnalyzer:
               type: string
               default: lucene.standard
@@ -32765,7 +33269,7 @@ components:
             parameter when `"deliveryType":` `"automated"`.
           maxLength: 64
           minLength: 1
-          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         targetGroupId:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the target
@@ -32836,7 +33340,7 @@ components:
             MongoDB Cloud took this snapshot.
           maxLength: 64
           minLength: 1
-          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
           readOnly: true
         snapshotType:
           type: string
@@ -32948,7 +33452,7 @@ components:
           description: Human-readable label that identifies the serverless instance.
           maxLength: 64
           minLength: 1
-          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         providerSettings:
           $ref: "#/components/schemas/ServerlessProviderSettings"
         serverlessBackupOptions:
@@ -33011,7 +33515,7 @@ components:
           description: Human-readable label that identifies the serverless instance.
           maxLength: 64
           minLength: 1
-          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
           writeOnly: true
         providerSettings:
           $ref: "#/components/schemas/ServerlessProviderSettings"
@@ -33421,6 +33925,17 @@ components:
         - groupId
         - managedAuthentication
         - ssl
+    StateReason:
+      type: object
+      description: State reason of the Job. This is set when the job state is "Failed".
+      properties:
+        errorCode:
+          type: string
+          description: Error code relating to state.
+        message:
+          type: string
+          description: Message describing error or state.
+      readOnly: true
     StreamConfig:
       type: object
       description: Configuration options for an Atlas Stream Processing Instance.
@@ -33499,10 +34014,6 @@ components:
           $ref: "#/components/schemas/StreamsKafkaNetworking"
         security:
           $ref: "#/components/schemas/StreamsKafkaSecurity"
-        connectionTimeoutSec:
-          type: integer
-          format: int32
-          description: The amount of seconds to wait before timing out a connection.
         headers:
           type: object
           additionalProperties:
@@ -33511,10 +34022,6 @@ components:
               request.
           description: A map of key-value pairs that will be passed as headers for the
             request.
-        requestTimeoutSec:
-          type: integer
-          format: int32
-          description: The amount of seconds to wait before timing out a request.
         url:
           type: string
           description: The url to be used for the request.
@@ -33702,6 +34209,55 @@ components:
         for alert configurations.
       example: INSTANCE_NAME
       title: Streams Matcher Fields
+    StreamsModifyStreamProcessor:
+      type: object
+      description: A request to modify an existing stream processor
+      properties:
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        name:
+          type: string
+          description: New name for the stream processor.
+        options:
+          $ref: "#/components/schemas/StreamsModifyStreamProcessorOptions"
+        pipeline:
+          type: array
+          description: New pipeline for the stream processor.
+          externalDocs:
+            description: Supported Aggregation Pipeline Stages
+            url: https://www.mongodb.com/docs/atlas/atlas-stream-processing/stream-aggregation/#std-label-stream-aggregation
+          items:
+            $ref: "#/components/schemas/Document"
+    StreamsModifyStreamProcessorOptions:
+      type: object
+      description: Additional options for modifying a stream processor.
+      properties:
+        dlq:
+          $ref: "#/components/schemas/StreamsDLQ"
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        resumeFromCheckpoint:
+          type: boolean
+          description: When true, the modified stream processor resumes from its last
+            checkpoint.
     StreamsOptions:
       type: object
       description: Optional configuration for the stream processor.
@@ -34041,11 +34597,10 @@ components:
           items:
             type: string
             format: email
-            description: List that contains email addresses that identify MongoDB Cloud
-              users to in this team.
           uniqueItems: true
       required:
         - name
+        - usernames
     TeamResponse:
       type: object
       properties:
@@ -34127,7 +34682,7 @@ components:
           description: Human-readable label that identifies the source cluster.
           maxLength: 64
           minLength: 1
-          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
           readOnly: true
         deliveryType:
           type: string
@@ -34261,6 +34816,17 @@ components:
           type: string
           description: PagerDuty region that indicates the API Uniform Resource Locator
             (URL) to use.
+        sendCollectionLatencyMetrics:
+          type: boolean
+          default: false
+          description: Toggle sending collection latency metrics that includes database
+            names and collection namesand latency metrics on reads, writes,
+            commands, and transactions.
+        sendDatabaseMetrics:
+          type: boolean
+          default: false
+          description: Toggle sending database metrics that includes database names and
+            metrics on the number of collections, storage size, and index size.
         microsoftTeamsWebhookUrl:
           type: string
           description: >-
@@ -34727,7 +35293,7 @@ components:
             Data Lake that this database user can access.
           maxLength: 64
           minLength: 1
-          pattern: ^([a-zA-Z0-9][a-zA-Z0-9-]*)?[a-zA-Z0-9]+$
+          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         type:
           type: string
           description: Category of resource that this database user can access.
@@ -34847,6 +35413,12 @@ components:
             url: https://dochub.mongodb.org/core/avs-vector-type
           items:
             $ref: "#/components/schemas/BasicDBObject"
+        numPartitions:
+          type: integer
+          format: int32
+          default: 1
+          description: "Number of index partitions. Note: This feature is currently in
+            preview."
       title: Vector Search Index Definition
     VectorSearchIndexStatusDetail:
       type: object
@@ -35035,6 +35607,12 @@ components:
             $ref: "#/components/schemas/AtlasSearchAnalyzer"
         mappings:
           $ref: "#/components/schemas/SearchMappings"
+        numPartitions:
+          type: integer
+          format: int32
+          default: 1
+          description: "Number of index partitions. Note: This feature is currently in
+            preview."
         searchAnalyzer:
           type: string
           default: lucene.standard
@@ -35112,6 +35690,12 @@ components:
             $ref: "#/components/schemas/AtlasSearchAnalyzer"
         mappings:
           $ref: "#/components/schemas/SearchMappings"
+        numPartitions:
+          type: integer
+          format: int32
+          default: 1
+          description: "Number of index partitions. Note: This feature is currently in
+            preview."
         searchAnalyzer:
           type: string
           default: lucene.standard

@@ -25,6 +25,8 @@ Name | Type | Description | Notes
 **Collection** | Pointer to **string** | Human-readable label of the collection on which the event occurred. The resource returns this parameter when the **eventTypeName** includes &#x60;DATA_EXPLORER&#x60;. | [optional] [readonly] 
 **Database** | Pointer to **string** | Human-readable label of the database on which this incident occurred. The resource returns this parameter when &#x60;\&quot;eventTypeName\&quot; : \&quot;DATA_EXPLORER\&quot;&#x60; or &#x60;\&quot;eventTypeName\&quot; : \&quot;DATA_EXPLORER_CRUD\&quot;&#x60;. | [optional] [readonly] 
 **OpType** | Pointer to **string** | Action that the database attempted to execute when the event triggered. The response returns this parameter when &#x60;eventTypeName\&quot; : \&quot;DATA_EXPLORER\&quot;&#x60;. | [optional] [readonly] 
+**DeskLocation** | Pointer to **string** | Desk location of MongoDB employee associated with the event. | [optional] [readonly] 
+**EmployeeIdentifier** | Pointer to **string** | Identifier of MongoDB employee associated with the event. | [optional] [readonly] 
 **Port** | Pointer to **int** | IANA port on which the MongoDB process listens for requests. | [optional] [readonly] 
 **ReplicaSetName** | Pointer to **string** | Human-readable label of the replica set associated with the event. | [optional] [readonly] 
 **CurrentValue** | Pointer to [**NumberMetricValue**](NumberMetricValue.md) |  | [optional] 
@@ -565,6 +567,54 @@ SetOpType sets OpType field to given value.
 `func (o *EventViewForNdsGroup) HasOpType() bool`
 
 HasOpType returns a boolean if a field has been set.
+### GetDeskLocation
+
+`func (o *EventViewForNdsGroup) GetDeskLocation() string`
+
+GetDeskLocation returns the DeskLocation field if non-nil, zero value otherwise.
+
+### GetDeskLocationOk
+
+`func (o *EventViewForNdsGroup) GetDeskLocationOk() (*string, bool)`
+
+GetDeskLocationOk returns a tuple with the DeskLocation field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeskLocation
+
+`func (o *EventViewForNdsGroup) SetDeskLocation(v string)`
+
+SetDeskLocation sets DeskLocation field to given value.
+
+### HasDeskLocation
+
+`func (o *EventViewForNdsGroup) HasDeskLocation() bool`
+
+HasDeskLocation returns a boolean if a field has been set.
+### GetEmployeeIdentifier
+
+`func (o *EventViewForNdsGroup) GetEmployeeIdentifier() string`
+
+GetEmployeeIdentifier returns the EmployeeIdentifier field if non-nil, zero value otherwise.
+
+### GetEmployeeIdentifierOk
+
+`func (o *EventViewForNdsGroup) GetEmployeeIdentifierOk() (*string, bool)`
+
+GetEmployeeIdentifierOk returns a tuple with the EmployeeIdentifier field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEmployeeIdentifier
+
+`func (o *EventViewForNdsGroup) SetEmployeeIdentifier(v string)`
+
+SetEmployeeIdentifier sets EmployeeIdentifier field to given value.
+
+### HasEmployeeIdentifier
+
+`func (o *EventViewForNdsGroup) HasEmployeeIdentifier() bool`
+
+HasEmployeeIdentifier returns a boolean if a field has been set.
 ### GetPort
 
 `func (o *EventViewForNdsGroup) GetPort() int`

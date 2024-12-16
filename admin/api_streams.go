@@ -544,6 +544,32 @@ type StreamsApi interface {
 	ListStreamProcessorsExecute(r ListStreamProcessorsApiRequest) (*PaginatedApiStreamsStreamProcessorWithStats, *http.Response, error)
 
 	/*
+		ModifyStreamProcessor Modify One Stream Processor
+
+		Modify one existing Stream Processor within the specified stream instance. To use this resource, the requesting API Key must have the Project Owner role or Project Stream Processing Owner role.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param tenantName Human-readable label that identifies the stream instance.
+		@param processorName Human-readable label that identifies the stream processor.
+		@param streamsModifyStreamProcessor Modifications to apply to the stream processor.
+		@return ModifyStreamProcessorApiRequest
+	*/
+	ModifyStreamProcessor(ctx context.Context, groupId string, tenantName string, processorName string, streamsModifyStreamProcessor *StreamsModifyStreamProcessor) ModifyStreamProcessorApiRequest
+	/*
+		ModifyStreamProcessor Modify One Stream Processor
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ModifyStreamProcessorApiParams - Parameters for the request
+		@return ModifyStreamProcessorApiRequest
+	*/
+	ModifyStreamProcessorWithParams(ctx context.Context, args *ModifyStreamProcessorApiParams) ModifyStreamProcessorApiRequest
+
+	// Method available only for mocking purposes
+	ModifyStreamProcessorExecute(r ModifyStreamProcessorApiRequest) (*StreamsProcessorWithStats, *http.Response, error)
+
+	/*
 		RejectVpcPeeringConnection Requests the rejection of an incoming VPC Peering connection.
 
 		Requests the rejection of an incoming VPC Peering connection.
@@ -3467,6 +3493,138 @@ func (a *StreamsApiService) ListStreamProcessorsExecute(r ListStreamProcessorsAp
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ModifyStreamProcessorApiRequest struct {
+	ctx                          context.Context
+	ApiService                   StreamsApi
+	groupId                      string
+	tenantName                   string
+	processorName                string
+	streamsModifyStreamProcessor *StreamsModifyStreamProcessor
+}
+
+type ModifyStreamProcessorApiParams struct {
+	GroupId                      string
+	TenantName                   string
+	ProcessorName                string
+	StreamsModifyStreamProcessor *StreamsModifyStreamProcessor
+}
+
+func (a *StreamsApiService) ModifyStreamProcessorWithParams(ctx context.Context, args *ModifyStreamProcessorApiParams) ModifyStreamProcessorApiRequest {
+	return ModifyStreamProcessorApiRequest{
+		ApiService:                   a,
+		ctx:                          ctx,
+		groupId:                      args.GroupId,
+		tenantName:                   args.TenantName,
+		processorName:                args.ProcessorName,
+		streamsModifyStreamProcessor: args.StreamsModifyStreamProcessor,
+	}
+}
+
+func (r ModifyStreamProcessorApiRequest) Execute() (*StreamsProcessorWithStats, *http.Response, error) {
+	return r.ApiService.ModifyStreamProcessorExecute(r)
+}
+
+/*
+ModifyStreamProcessor Modify One Stream Processor
+
+Modify one existing Stream Processor within the specified stream instance. To use this resource, the requesting API Key must have the Project Owner role or Project Stream Processing Owner role.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param tenantName Human-readable label that identifies the stream instance.
+	@param processorName Human-readable label that identifies the stream processor.
+	@return ModifyStreamProcessorApiRequest
+*/
+func (a *StreamsApiService) ModifyStreamProcessor(ctx context.Context, groupId string, tenantName string, processorName string, streamsModifyStreamProcessor *StreamsModifyStreamProcessor) ModifyStreamProcessorApiRequest {
+	return ModifyStreamProcessorApiRequest{
+		ApiService:                   a,
+		ctx:                          ctx,
+		groupId:                      groupId,
+		tenantName:                   tenantName,
+		processorName:                processorName,
+		streamsModifyStreamProcessor: streamsModifyStreamProcessor,
+	}
+}
+
+// ModifyStreamProcessorExecute executes the request
+//
+//	@return StreamsProcessorWithStats
+func (a *StreamsApiService) ModifyStreamProcessorExecute(r ModifyStreamProcessorApiRequest) (*StreamsProcessorWithStats, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *StreamsProcessorWithStats
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.ModifyStreamProcessor")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}"
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"processorName"+"}", url.PathEscape(r.processorName), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.streamsModifyStreamProcessor == nil {
+		return localVarReturnValue, nil, reportError("streamsModifyStreamProcessor is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2024-05-30+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-05-30+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.streamsModifyStreamProcessor
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20241113001/admin"
+	admin "go.mongodb.org/atlas-sdk/v20241113003/admin"
 
 	http "net/http"
 
@@ -637,6 +637,168 @@ func (_c *PerformanceAdvisorApi_GetServerlessAutoIndexingWithParams_Call) Return
 }
 
 func (_c *PerformanceAdvisorApi_GetServerlessAutoIndexingWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetServerlessAutoIndexingApiParams) admin.GetServerlessAutoIndexingApiRequest) *PerformanceAdvisorApi_GetServerlessAutoIndexingWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListClusterSuggestedIndexes provides a mock function with given fields: ctx, groupId, clusterName
+func (_m *PerformanceAdvisorApi) ListClusterSuggestedIndexes(ctx context.Context, groupId string, clusterName string) admin.ListClusterSuggestedIndexesApiRequest {
+	ret := _m.Called(ctx, groupId, clusterName)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListClusterSuggestedIndexes")
+	}
+
+	var r0 admin.ListClusterSuggestedIndexesApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.ListClusterSuggestedIndexesApiRequest); ok {
+		r0 = rf(ctx, groupId, clusterName)
+	} else {
+		r0 = ret.Get(0).(admin.ListClusterSuggestedIndexesApiRequest)
+	}
+
+	return r0
+}
+
+// PerformanceAdvisorApi_ListClusterSuggestedIndexes_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListClusterSuggestedIndexes'
+type PerformanceAdvisorApi_ListClusterSuggestedIndexes_Call struct {
+	*mock.Call
+}
+
+// ListClusterSuggestedIndexes is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - clusterName string
+func (_e *PerformanceAdvisorApi_Expecter) ListClusterSuggestedIndexes(ctx any, groupId any, clusterName any) *PerformanceAdvisorApi_ListClusterSuggestedIndexes_Call {
+	return &PerformanceAdvisorApi_ListClusterSuggestedIndexes_Call{Call: _e.mock.On("ListClusterSuggestedIndexes", ctx, groupId, clusterName)}
+}
+
+func (_c *PerformanceAdvisorApi_ListClusterSuggestedIndexes_Call) Run(run func(ctx context.Context, groupId string, clusterName string)) *PerformanceAdvisorApi_ListClusterSuggestedIndexes_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string))
+	})
+	return _c
+}
+
+func (_c *PerformanceAdvisorApi_ListClusterSuggestedIndexes_Call) Return(_a0 admin.ListClusterSuggestedIndexesApiRequest) *PerformanceAdvisorApi_ListClusterSuggestedIndexes_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *PerformanceAdvisorApi_ListClusterSuggestedIndexes_Call) RunAndReturn(run func(context.Context, string, string) admin.ListClusterSuggestedIndexesApiRequest) *PerformanceAdvisorApi_ListClusterSuggestedIndexes_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListClusterSuggestedIndexesExecute provides a mock function with given fields: r
+func (_m *PerformanceAdvisorApi) ListClusterSuggestedIndexesExecute(r admin.ListClusterSuggestedIndexesApiRequest) (*admin.PerformanceAdvisorResponse, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListClusterSuggestedIndexesExecute")
+	}
+
+	var r0 *admin.PerformanceAdvisorResponse
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.ListClusterSuggestedIndexesApiRequest) (*admin.PerformanceAdvisorResponse, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.ListClusterSuggestedIndexesApiRequest) *admin.PerformanceAdvisorResponse); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.PerformanceAdvisorResponse)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.ListClusterSuggestedIndexesApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.ListClusterSuggestedIndexesApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// PerformanceAdvisorApi_ListClusterSuggestedIndexesExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListClusterSuggestedIndexesExecute'
+type PerformanceAdvisorApi_ListClusterSuggestedIndexesExecute_Call struct {
+	*mock.Call
+}
+
+// ListClusterSuggestedIndexesExecute is a helper method to define mock.On call
+//   - r admin.ListClusterSuggestedIndexesApiRequest
+func (_e *PerformanceAdvisorApi_Expecter) ListClusterSuggestedIndexesExecute(r any) *PerformanceAdvisorApi_ListClusterSuggestedIndexesExecute_Call {
+	return &PerformanceAdvisorApi_ListClusterSuggestedIndexesExecute_Call{Call: _e.mock.On("ListClusterSuggestedIndexesExecute", r)}
+}
+
+func (_c *PerformanceAdvisorApi_ListClusterSuggestedIndexesExecute_Call) Run(run func(r admin.ListClusterSuggestedIndexesApiRequest)) *PerformanceAdvisorApi_ListClusterSuggestedIndexesExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.ListClusterSuggestedIndexesApiRequest))
+	})
+	return _c
+}
+
+func (_c *PerformanceAdvisorApi_ListClusterSuggestedIndexesExecute_Call) Return(_a0 *admin.PerformanceAdvisorResponse, _a1 *http.Response, _a2 error) *PerformanceAdvisorApi_ListClusterSuggestedIndexesExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *PerformanceAdvisorApi_ListClusterSuggestedIndexesExecute_Call) RunAndReturn(run func(admin.ListClusterSuggestedIndexesApiRequest) (*admin.PerformanceAdvisorResponse, *http.Response, error)) *PerformanceAdvisorApi_ListClusterSuggestedIndexesExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListClusterSuggestedIndexesWithParams provides a mock function with given fields: ctx, args
+func (_m *PerformanceAdvisorApi) ListClusterSuggestedIndexesWithParams(ctx context.Context, args *admin.ListClusterSuggestedIndexesApiParams) admin.ListClusterSuggestedIndexesApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListClusterSuggestedIndexesWithParams")
+	}
+
+	var r0 admin.ListClusterSuggestedIndexesApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListClusterSuggestedIndexesApiParams) admin.ListClusterSuggestedIndexesApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.ListClusterSuggestedIndexesApiRequest)
+	}
+
+	return r0
+}
+
+// PerformanceAdvisorApi_ListClusterSuggestedIndexesWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListClusterSuggestedIndexesWithParams'
+type PerformanceAdvisorApi_ListClusterSuggestedIndexesWithParams_Call struct {
+	*mock.Call
+}
+
+// ListClusterSuggestedIndexesWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.ListClusterSuggestedIndexesApiParams
+func (_e *PerformanceAdvisorApi_Expecter) ListClusterSuggestedIndexesWithParams(ctx any, args any) *PerformanceAdvisorApi_ListClusterSuggestedIndexesWithParams_Call {
+	return &PerformanceAdvisorApi_ListClusterSuggestedIndexesWithParams_Call{Call: _e.mock.On("ListClusterSuggestedIndexesWithParams", ctx, args)}
+}
+
+func (_c *PerformanceAdvisorApi_ListClusterSuggestedIndexesWithParams_Call) Run(run func(ctx context.Context, args *admin.ListClusterSuggestedIndexesApiParams)) *PerformanceAdvisorApi_ListClusterSuggestedIndexesWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.ListClusterSuggestedIndexesApiParams))
+	})
+	return _c
+}
+
+func (_c *PerformanceAdvisorApi_ListClusterSuggestedIndexesWithParams_Call) Return(_a0 admin.ListClusterSuggestedIndexesApiRequest) *PerformanceAdvisorApi_ListClusterSuggestedIndexesWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *PerformanceAdvisorApi_ListClusterSuggestedIndexesWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListClusterSuggestedIndexesApiParams) admin.ListClusterSuggestedIndexesApiRequest) *PerformanceAdvisorApi_ListClusterSuggestedIndexesWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }

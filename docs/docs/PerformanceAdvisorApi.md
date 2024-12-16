@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**EnableSlowOperationThresholding**](PerformanceAdvisorApi.md#EnableSlowOperationThresholding) | **Post** /api/atlas/v2/groups/{groupId}/managedSlowMs/enable | Enable Managed Slow Operation Threshold
 [**GetManagedSlowMs**](PerformanceAdvisorApi.md#GetManagedSlowMs) | **Get** /api/atlas/v2/groups/{groupId}/managedSlowMs | Return Managed Slow MS enabled
 [**GetServerlessAutoIndexing**](PerformanceAdvisorApi.md#GetServerlessAutoIndexing) | **Get** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/performanceAdvisor/autoIndexing | Return Serverless Auto Indexing Enabled
+[**ListClusterSuggestedIndexes**](PerformanceAdvisorApi.md#ListClusterSuggestedIndexes) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/performanceAdvisor/suggestedIndexes | Return Suggested Indexes
 [**ListSlowQueries**](PerformanceAdvisorApi.md#ListSlowQueries) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/performanceAdvisor/slowQueryLogs | Return Slow Queries
 [**ListSlowQueryNamespaces**](PerformanceAdvisorApi.md#ListSlowQueryNamespaces) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/performanceAdvisor/namespaces | Return All Namespaces for One Host
 [**ListSuggestedIndexes**](PerformanceAdvisorApi.md#ListSuggestedIndexes) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/performanceAdvisor/suggestedIndexes | Return Suggested Indexes
@@ -32,7 +33,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113001/admin"
+    "go.mongodb.org/atlas-sdk/v20241113003/admin"
 )
 
 func main() {
@@ -110,7 +111,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113001/admin"
+    "go.mongodb.org/atlas-sdk/v20241113003/admin"
 )
 
 func main() {
@@ -188,7 +189,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113001/admin"
+    "go.mongodb.org/atlas-sdk/v20241113003/admin"
 )
 
 func main() {
@@ -266,7 +267,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113001/admin"
+    "go.mongodb.org/atlas-sdk/v20241113003/admin"
 )
 
 func main() {
@@ -332,6 +333,97 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## ListClusterSuggestedIndexes
+
+> PerformanceAdvisorResponse ListClusterSuggestedIndexes(ctx, groupId, clusterName).ProcessIds(processIds).Namespaces(namespaces).Since(since).Until(until).Execute()
+
+Return Suggested Indexes
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20241113003/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    clusterName := "clusterName_example" // string | 
+    processIds := []string{"Inner_example"} // []string |  (optional)
+    namespaces := []string{"Inner_example"} // []string |  (optional)
+    since := int64(789) // int64 |  (optional)
+    until := int64(789) // int64 |  (optional)
+
+    resp, r, err := sdk.PerformanceAdvisorApi.ListClusterSuggestedIndexes(context.Background(), groupId, clusterName).ProcessIds(processIds).Namespaces(namespaces).Since(since).Until(until).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorApi.ListClusterSuggestedIndexes`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `ListClusterSuggestedIndexes`: PerformanceAdvisorResponse
+    fmt.Fprintf(os.Stdout, "Response from `PerformanceAdvisorApi.ListClusterSuggestedIndexes`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**clusterName** | **string** | Human-readable label that identifies the cluster. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListClusterSuggestedIndexesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **processIds** | **[]string** | ProcessIds from which to retrieve suggested indexes. A processId is a combination of host and port that serves the MongoDB process. The host must be the hostname, FQDN, IPv4 address, or IPv6 address of the host that runs the MongoDB process (&#x60;mongod&#x60; or &#x60;mongos&#x60;). The port must be the IANA port on which the MongoDB process listens for requests. To include multiple processIds, pass the parameter multiple times delimited with an ampersand (&#x60;&amp;&#x60;) between each processId. | 
+ **namespaces** | **[]string** | Namespaces from which to retrieve suggested indexes. A namespace consists of one database and one collection resource written as &#x60;.&#x60;: &#x60;&lt;database&gt;.&lt;collection&gt;&#x60;. To include multiple namespaces, pass the parameter multiple times delimited with an ampersand (&#x60;&amp;&#x60;) between each namespace. Omit this parameter to return results for all namespaces. | 
+ **since** | **int64** | Date and time from which the query retrieves the suggested indexes. This parameter expresses its value in the number of milliseconds that have elapsed since the [UNIX epoch](https://en.wikipedia.org/wiki/Unix_time).  - If you don&#39;t specify the **until** parameter, the endpoint returns data covering from the **since** value and the current time. - If you specify neither the **since** nor the **until** parameters, the endpoint returns data from the previous 24 hours. | 
+ **until** | **int64** | Date and time up until which the query retrieves the suggested indexes. This parameter expresses its value in the number of milliseconds that have elapsed since the [UNIX epoch](https://en.wikipedia.org/wiki/Unix_time).  - If you specify the **until** parameter, you must specify the **since** parameter. - If you specify neither the **since** nor the **until** parameters, the endpoint returns data from the previous 24 hours. | 
+
+### Return type
+
+[**PerformanceAdvisorResponse**](PerformanceAdvisorResponse.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2024-08-05+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ListSlowQueries
 
 > PerformanceAdvisorSlowQueryList ListSlowQueries(ctx, groupId, processId).Duration(duration).Namespaces(namespaces).NLogs(nLogs).Since(since).Execute()
@@ -349,7 +441,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113001/admin"
+    "go.mongodb.org/atlas-sdk/v20241113003/admin"
 )
 
 func main() {
@@ -440,7 +532,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113001/admin"
+    "go.mongodb.org/atlas-sdk/v20241113003/admin"
 )
 
 func main() {
@@ -527,7 +619,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113001/admin"
+    "go.mongodb.org/atlas-sdk/v20241113003/admin"
 )
 
 func main() {
@@ -626,7 +718,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113001/admin"
+    "go.mongodb.org/atlas-sdk/v20241113003/admin"
 )
 
 func main() {
