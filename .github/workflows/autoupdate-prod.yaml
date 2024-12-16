@@ -47,9 +47,6 @@ jobs:
       - name: Temp check Git SHA
         run: |
           git rev-parse HEAD
-          git config --global user.name "github-actions[bot]"
-          git add .
-          git commit --allow-empty -m "fix: update OpenAPI spec"
       - name: Release updates
         if: steps.verify-changed-files.outputs.files_changed == 'true'
         working-directory: ./tools
