@@ -50,7 +50,7 @@ jobs:
       #   run: |
       #     git rev-parse HEAD
       - name: Release updates
-        if: steps.verify-changed-files.outputs.files_changed == 'true'
+        # if: steps.verify-changed-files.outputs.files_changed == 'true'
         working-directory: ./tools
         run: make new-version
       - name: Ensure all markdown code is formatted
