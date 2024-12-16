@@ -1,6 +1,6 @@
 #!/bin/bash
 set -eux
-GOPATH=$(go env GOPATH)
+# GOPATH=$(go env GOPATH)
 
 # Inputs:
 # TARGET_BREAKING_CHANGES_FILE - file to save breaking changes
