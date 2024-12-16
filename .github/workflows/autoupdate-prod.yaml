@@ -11,7 +11,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with: 
-          fetch-depth: '0'
+          fetch-depth: '2'
+      - name: Temp check Git SHA after checkout depth 2
+        run: |
+          git rev-parse HEAD
       - uses: actions/setup-go@v5
         with:
           go-version-file: 'go.mod'
@@ -25,7 +28,6 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
           git add .
-          git commit --allow-empty -m "fix: update OpenAPI spec"
       - name: Run generation
         working-directory: ./tools
         run: |
@@ -43,8 +45,8 @@ jobs:
       - name: Commit Generator Changes
         if: steps.verify-changed-files.outputs.files_changed == 'true'
         run: |
-          git add . && git commit -m "fix: Generated SDK source code and docs"
-      - name: Temp check Git SHA
+          git add . && git commit --allow-empty -m "fix: Generated SDK source code and docs & update OpenAPI spe"
+      - name: Temp check Git SHA after OpenAPI & code-gen changes
         run: |
           git rev-parse HEAD
       - name: Release updates
