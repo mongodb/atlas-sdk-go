@@ -33,22 +33,22 @@ jobs:
         run: |
           export PATH=${PATH}:`go env GOPATH`/bin
           make clean_and_generate
-      - name: Verify Changed files
-        uses: tj-actions/verify-changed-files@530d86d0a237225c87beaa000750988f8965ee31
-        id: verify-changed-files
-        with:
-          files: |
-             ./admin/**/*
-      - name: Run docs generation
-        if: steps.verify-changed-files.outputs.files_changed == 'true'
-        run: make gen-docs
-      - name: Commit Generator Changes
-        if: steps.verify-changed-files.outputs.files_changed == 'true'
-        run: |
-          git add . && git commit --allow-empty -m "fix: Generated SDK source code and docs & update OpenAPI spe"
-      - name: Temp check Git SHA after OpenAPI & code-gen changes
-        run: |
-          git rev-parse HEAD
+      # - name: Verify Changed files
+      #   uses: tj-actions/verify-changed-files@530d86d0a237225c87beaa000750988f8965ee31
+      #   id: verify-changed-files
+      #   with:
+      #     files: |
+      #        ./admin/**/*
+      # - name: Run docs generation
+      #   if: steps.verify-changed-files.outputs.files_changed == 'true'
+      #   run: make gen-docs
+      # - name: Commit Generator Changes
+      #   if: steps.verify-changed-files.outputs.files_changed == 'true'
+      #   run: |
+      #     git add . && git commit --allow-empty -m "fix: Generated SDK source code and docs & update OpenAPI spe"
+      # - name: Temp check Git SHA after OpenAPI & code-gen changes
+      #   run: |
+      #     git rev-parse HEAD
       - name: Release updates
         if: steps.verify-changed-files.outputs.files_changed == 'true'
         working-directory: ./tools
