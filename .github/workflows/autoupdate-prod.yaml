@@ -22,12 +22,12 @@ jobs:
       - run: make install-goimports
       - name: Fetch changes
         working-directory: ./tools
-        run: make fetch_openapi
-      - name: Commit OpenAPI changes
-        run: |
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "github-actions[bot]"
-          git add .
+      #   run: make fetch_openapi
+      # - name: Commit OpenAPI changes
+      #   run: |
+      #     git config --global user.email "github-actions[bot]@users.noreply.github.com"
+      #     git config --global user.name "github-actions[bot]"
+      #     git add .
       - name: Run generation
         working-directory: ./tools
         run: |
@@ -46,9 +46,9 @@ jobs:
       #   if: steps.verify-changed-files.outputs.files_changed == 'true'
       #   run: |
       #     git add . && git commit --allow-empty -m "fix: Generated SDK source code and docs & update OpenAPI spe"
-      # - name: Temp check Git SHA after OpenAPI & code-gen changes
-      #   run: |
-      #     git rev-parse HEAD
+      - name: Temp check Git SHA after OpenAPI & code-gen changes
+        run: |
+          git rev-parse HEAD
       - name: Release updates
         # if: steps.verify-changed-files.outputs.files_changed == 'true'
         working-directory: ./tools
