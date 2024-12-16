@@ -20,8 +20,8 @@ jobs:
           go-version-file: 'go.mod'
           cache: false
       - run: make install-goimports
-      - name: Fetch changes
-        working-directory: ./tools
+      # - name: Fetch changes
+      #   working-directory: ./tools
       #   run: make fetch_openapi
       # - name: Commit OpenAPI changes
       #   run: |
