@@ -10,6 +10,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with: 
+          fetch-depth: '2'
+      - name: Temp check Git SHA after checkout depth 3
+        run: |
+          git rev-parse HEAD
       - uses: actions/setup-go@v5
         with:
           go-version-file: 'go.mod'
@@ -23,8 +28,8 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git add .
           git commit --allow-empty -m "fix: update OpenAPI spec"
-      - name: Set old commit for SDK API diff
-        run: echo "API_DIFF_OLD_COMMIT=$(git rev-parse HEAD)" >> $GITHUB_ENV
+      # - name: Set old commit for SDK API diff
+      #   run: echo "API_DIFF_OLD_COMMIT=$(git rev-parse HEAD)" >> $GITHUB_ENV
       - name: Run generation
         working-directory: ./tools
         run: |

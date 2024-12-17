@@ -495,8 +495,8 @@ type AtlasSearchApi interface {
 type AtlasSearchApiService service
 
 type CreateAtlasSearchDeploymentApiRequest struct {
-	ctx                        context.Context
-	ApiService                 AtlasSearchApi
+	ctx context.Context
+	// ApiService                 AtlasSearchApi
 	groupId                    string
 	clusterName                string
 	apiSearchDeploymentRequest *ApiSearchDeploymentRequest
@@ -510,7 +510,7 @@ type CreateAtlasSearchDeploymentApiParams struct {
 
 func (a *AtlasSearchApiService) CreateAtlasSearchDeploymentWithParams(ctx context.Context, args *CreateAtlasSearchDeploymentApiParams) CreateAtlasSearchDeploymentApiRequest {
 	return CreateAtlasSearchDeploymentApiRequest{
-		ApiService:                 a,
+		// ApiService:                 a,
 		ctx:                        ctx,
 		groupId:                    args.GroupId,
 		clusterName:                args.ClusterName,
@@ -519,7 +519,8 @@ func (a *AtlasSearchApiService) CreateAtlasSearchDeploymentWithParams(ctx contex
 }
 
 func (r CreateAtlasSearchDeploymentApiRequest) Execute() (*ApiSearchDeploymentResponse, *http.Response, error) {
-	return r.ApiService.CreateAtlasSearchDeploymentExecute(r)
+	// return r.ApiService.CreateAtlasSearchDeploymentExecute(r)
+	return nil, nil, nil
 }
 
 /*
@@ -534,7 +535,7 @@ Creates Search Nodes for the specified cluster.
 */
 func (a *AtlasSearchApiService) CreateAtlasSearchDeployment(ctx context.Context, groupId string, clusterName string, apiSearchDeploymentRequest *ApiSearchDeploymentRequest) CreateAtlasSearchDeploymentApiRequest {
 	return CreateAtlasSearchDeploymentApiRequest{
-		ApiService:                 a,
+		// ApiService:                 a,
 		ctx:                        ctx,
 		groupId:                    groupId,
 		clusterName:                clusterName,
