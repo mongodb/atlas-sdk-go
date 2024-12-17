@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20241113003/admin"
+	admin "go.mongodb.org/atlas-sdk/v20241113004/admin"
 
 	http "net/http"
 
