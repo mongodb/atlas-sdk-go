@@ -21,7 +21,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 250de29f4a410f2895ff9ae84ba6ae026a644059
+  x-xgen-sha: 7f87fecf3b0ec832d2e6878e487c431a24d67c24
 servers:
 - url: https://cloud.mongodb.com
 security:
