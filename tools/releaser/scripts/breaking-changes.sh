@@ -18,6 +18,9 @@ set +e
 
 RAW_BREAKING_CHANGES=$(gorelease -base "$BASE_VERSION")
 
+echo "raw changes from lib ------------"
+echo "$RAW_BREAKING_CHANGES"
+
 BREAKING_CHANGES=$(echo "$RAW_BREAKING_CHANGES" | awk '
     /## incompatible changes/ {print "### incompatible changes"; collecting=1; next}
     collecting && /^#/ {collecting=0}
