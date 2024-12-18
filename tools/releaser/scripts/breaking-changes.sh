@@ -16,12 +16,11 @@ pushd "$script_path/../../../" || exit ## workaround for --repo-path="../" not w
 echo "Changed directory to $(pwd)"
 set +e
 
-RAW_BREAKING_CHANGES=$(gorelease -base "$BASE_VERSION")
+RAW_CHANGES=$(gorelease -base "$BASE_VERSION")
+echo "Changes detected from BASE_VERSION $BASE_VERSION:"
+echo "$RAW_CHANGES"
 
-echo "raw changes from lib ------------"
-echo "$RAW_BREAKING_CHANGES"
-
-BREAKING_CHANGES=$(echo "$RAW_BREAKING_CHANGES" | awk '
+BREAKING_CHANGES=$(echo "$RAW_CHANGES" | awk '
     /## incompatible changes/ {print "### incompatible changes"; collecting=1; next}
     collecting && /^#/ {collecting=0}
     collecting && NF {print "- "$0}
