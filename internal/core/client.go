@@ -53,7 +53,6 @@ type ErrorResponse struct {
 	Reason string `json:"reason"`
 	// Detail is more detailed description of the error.
 	Detail string `json:"detail,omitempty"`
-	Temp   string `json:"temp,omitempty"`
 }
 
 func (r *ErrorResponse) Error() string {
