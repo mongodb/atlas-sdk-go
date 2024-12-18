@@ -59,7 +59,7 @@ func main() {
         return
     }
 
-    clientId := "mdb_sa_id_667066535bc75b03c37b3038" // string | 
+    clientId := "mdb_sa_id_1234567890abcdef12345678" // string | 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     groupServiceAccountRoleAssignment := []openapiclient.GroupServiceAccountRoleAssignment{*openapiclient.NewGroupServiceAccountRoleAssignment([]string{"Roles_example"})} // []GroupServiceAccountRoleAssignment | 
 
@@ -145,7 +145,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    groupServiceAccountRequest := *openapiclient.NewGroupServiceAccountRequest("Description_example", "Name_example", []string{"Roles_example"}, int(123)) // GroupServiceAccountRequest | 
+    groupServiceAccountRequest := *openapiclient.NewGroupServiceAccountRequest("Description_example", "Name_example", []string{"Roles_example"}, int(8)) // GroupServiceAccountRequest | 
 
     resp, r, err := sdk.ServiceAccountsApi.CreateProjectServiceAccount(context.Background(), groupId, &groupServiceAccountRequest).Execute()
     if err != nil {
@@ -227,7 +227,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    clientId := "mdb_sa_id_667066535bc75b03c37b3038" // string | 
+    clientId := "mdb_sa_id_1234567890abcdef12345678" // string | 
     serviceAccountIPAccessListEntry := []openapiclient.ServiceAccountIPAccessListEntry{*openapiclient.NewServiceAccountIPAccessListEntry()} // []ServiceAccountIPAccessListEntry | 
     includeCount := true // bool |  (optional) (default to true)
     itemsPerPage := int(100) // int |  (optional) (default to 100)
@@ -318,8 +318,8 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    clientId := "mdb_sa_id_667066535bc75b03c37b3038" // string | 
-    serviceAccountSecretRequest := *openapiclient.NewServiceAccountSecretRequest(int(123)) // ServiceAccountSecretRequest | 
+    clientId := "mdb_sa_id_1234567890abcdef12345678" // string | 
+    serviceAccountSecretRequest := *openapiclient.NewServiceAccountSecretRequest(int(8)) // ServiceAccountSecretRequest | 
 
     resp, r, err := sdk.ServiceAccountsApi.CreateProjectServiceAccountSecret(context.Background(), groupId, clientId, &serviceAccountSecretRequest).Execute()
     if err != nil {
@@ -403,7 +403,7 @@ func main() {
     }
 
     orgId := "4888442a3354817a7320eb61" // string | 
-    orgServiceAccountRequest := *openapiclient.NewOrgServiceAccountRequest("Description_example", "Name_example", []string{"Roles_example"}, int(123)) // OrgServiceAccountRequest | 
+    orgServiceAccountRequest := *openapiclient.NewOrgServiceAccountRequest("Description_example", "Name_example", []string{"Roles_example"}, int(8)) // OrgServiceAccountRequest | 
 
     resp, r, err := sdk.ServiceAccountsApi.CreateServiceAccount(context.Background(), orgId, &orgServiceAccountRequest).Execute()
     if err != nil {
@@ -485,7 +485,7 @@ func main() {
     }
 
     orgId := "4888442a3354817a7320eb61" // string | 
-    clientId := "mdb_sa_id_667066535bc75b03c37b3038" // string | 
+    clientId := "mdb_sa_id_1234567890abcdef12345678" // string | 
     serviceAccountIPAccessListEntry := []openapiclient.ServiceAccountIPAccessListEntry{*openapiclient.NewServiceAccountIPAccessListEntry()} // []ServiceAccountIPAccessListEntry | 
     includeCount := true // bool |  (optional) (default to true)
     itemsPerPage := int(100) // int |  (optional) (default to 100)
@@ -576,8 +576,8 @@ func main() {
     }
 
     orgId := "4888442a3354817a7320eb61" // string | 
-    clientId := "mdb_sa_id_667066535bc75b03c37b3038" // string | 
-    serviceAccountSecretRequest := *openapiclient.NewServiceAccountSecretRequest(int(123)) // ServiceAccountSecretRequest | 
+    clientId := "mdb_sa_id_1234567890abcdef12345678" // string | 
+    serviceAccountSecretRequest := *openapiclient.NewServiceAccountSecretRequest(int(8)) // ServiceAccountSecretRequest | 
 
     resp, r, err := sdk.ServiceAccountsApi.CreateServiceAccountSecret(context.Background(), orgId, clientId, &serviceAccountSecretRequest).Execute()
     if err != nil {
@@ -660,7 +660,7 @@ func main() {
         return
     }
 
-    clientId := "mdb_sa_id_667066535bc75b03c37b3038" // string | 
+    clientId := "mdb_sa_id_1234567890abcdef12345678" // string | 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
     resp, r, err := sdk.ServiceAccountsApi.DeleteProjectServiceAccount(context.Background(), clientId, groupId).Execute()
@@ -744,7 +744,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    clientId := "mdb_sa_id_667066535bc75b03c37b3038" // string | 
+    clientId := "mdb_sa_id_1234567890abcdef12345678" // string | 
     ipAddress := "192.0.2.0%2F24" // string | 
 
     r, err := sdk.ServiceAccountsApi.DeleteProjectServiceAccountAccessListEntry(context.Background(), groupId, clientId, ipAddress).Execute()
@@ -827,7 +827,7 @@ func main() {
         return
     }
 
-    clientId := "mdb_sa_id_667066535bc75b03c37b3038" // string | 
+    clientId := "mdb_sa_id_1234567890abcdef12345678" // string | 
     secretId := "secretId_example" // string | 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
@@ -911,7 +911,7 @@ func main() {
         return
     }
 
-    clientId := "mdb_sa_id_667066535bc75b03c37b3038" // string | 
+    clientId := "mdb_sa_id_1234567890abcdef12345678" // string | 
     orgId := "4888442a3354817a7320eb61" // string | 
 
     r, err := sdk.ServiceAccountsApi.DeleteServiceAccount(context.Background(), clientId, orgId).Execute()
@@ -993,7 +993,7 @@ func main() {
     }
 
     orgId := "4888442a3354817a7320eb61" // string | 
-    clientId := "mdb_sa_id_667066535bc75b03c37b3038" // string | 
+    clientId := "mdb_sa_id_1234567890abcdef12345678" // string | 
     ipAddress := "192.0.2.0%2F24" // string | 
 
     r, err := sdk.ServiceAccountsApi.DeleteServiceAccountAccessListEntry(context.Background(), orgId, clientId, ipAddress).Execute()
@@ -1076,7 +1076,7 @@ func main() {
         return
     }
 
-    clientId := "mdb_sa_id_667066535bc75b03c37b3038" // string | 
+    clientId := "mdb_sa_id_1234567890abcdef12345678" // string | 
     secretId := "secretId_example" // string | 
     orgId := "4888442a3354817a7320eb61" // string | 
 
@@ -1161,7 +1161,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    clientId := "mdb_sa_id_667066535bc75b03c37b3038" // string | 
+    clientId := "mdb_sa_id_1234567890abcdef12345678" // string | 
 
     resp, r, err := sdk.ServiceAccountsApi.GetProjectServiceAccount(context.Background(), groupId, clientId).Execute()
     if err != nil {
@@ -1244,7 +1244,7 @@ func main() {
     }
 
     orgId := "4888442a3354817a7320eb61" // string | 
-    clientId := "mdb_sa_id_667066535bc75b03c37b3038" // string | 
+    clientId := "mdb_sa_id_1234567890abcdef12345678" // string | 
 
     resp, r, err := sdk.ServiceAccountsApi.GetServiceAccount(context.Background(), orgId, clientId).Execute()
     if err != nil {
@@ -1327,7 +1327,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    clientId := "mdb_sa_id_667066535bc75b03c37b3038" // string | 
+    clientId := "mdb_sa_id_1234567890abcdef12345678" // string | 
     includeCount := true // bool |  (optional) (default to true)
     itemsPerPage := int(100) // int |  (optional) (default to 100)
     pageNum := int(1) // int |  (optional) (default to 1)
@@ -1500,7 +1500,7 @@ func main() {
     }
 
     orgId := "4888442a3354817a7320eb61" // string | 
-    clientId := "mdb_sa_id_667066535bc75b03c37b3038" // string | 
+    clientId := "mdb_sa_id_1234567890abcdef12345678" // string | 
     includeCount := true // bool |  (optional) (default to true)
     itemsPerPage := int(100) // int |  (optional) (default to 100)
     pageNum := int(1) // int |  (optional) (default to 1)
@@ -1589,7 +1589,7 @@ func main() {
     }
 
     orgId := "4888442a3354817a7320eb61" // string | 
-    clientId := "mdb_sa_id_667066535bc75b03c37b3038" // string | 
+    clientId := "mdb_sa_id_1234567890abcdef12345678" // string | 
     itemsPerPage := int(100) // int |  (optional) (default to 100)
     pageNum := int(1) // int |  (optional) (default to 1)
 
@@ -1759,7 +1759,7 @@ func main() {
         return
     }
 
-    clientId := "mdb_sa_id_667066535bc75b03c37b3038" // string | 
+    clientId := "mdb_sa_id_1234567890abcdef12345678" // string | 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     groupServiceAccountUpdateRequest := *openapiclient.NewGroupServiceAccountUpdateRequest() // GroupServiceAccountUpdateRequest | 
 
@@ -1844,7 +1844,7 @@ func main() {
         return
     }
 
-    clientId := "mdb_sa_id_667066535bc75b03c37b3038" // string | 
+    clientId := "mdb_sa_id_1234567890abcdef12345678" // string | 
     orgId := "4888442a3354817a7320eb61" // string | 
     orgServiceAccountUpdateRequest := *openapiclient.NewOrgServiceAccountUpdateRequest() // OrgServiceAccountUpdateRequest | 
 

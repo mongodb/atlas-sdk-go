@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**SecretExpiresAfterHours** | **int** | The expiration time of the new Service Account secret. The expiration is provided in hours. | 
+**SecretExpiresAfterHours** | **int** | The expiration time of the new Service Account secret, provided in hours. The minimum and maximum allowed expiration times are subject to change and are controlled by the organization&#39;s settings. | 
 
 ## Methods
 

@@ -4,12 +4,12 @@ package admin
 
 // FlexBackupSnapshotDownloadCreate20241113 Details for one backup snapshot download of a flex cluster.
 type FlexBackupSnapshotDownloadCreate20241113 struct {
-	// Unique 24-hexadecimal digit string that identifies the snapshot to download.
-	// Write only field.
-	SnapshotId string `json:"_snapshotId"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
+	// Unique 24-hexadecimal digit string that identifies the snapshot to download.
+	// Write only field.
+	SnapshotId string `json:"snapshotId"`
 }
 
 // NewFlexBackupSnapshotDownloadCreate20241113 instantiates a new FlexBackupSnapshotDownloadCreate20241113 object
@@ -28,30 +28,6 @@ func NewFlexBackupSnapshotDownloadCreate20241113(snapshotId string) *FlexBackupS
 func NewFlexBackupSnapshotDownloadCreate20241113WithDefaults() *FlexBackupSnapshotDownloadCreate20241113 {
 	this := FlexBackupSnapshotDownloadCreate20241113{}
 	return &this
-}
-
-// GetSnapshotId returns the SnapshotId field value
-func (o *FlexBackupSnapshotDownloadCreate20241113) GetSnapshotId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.SnapshotId
-}
-
-// GetSnapshotIdOk returns a tuple with the SnapshotId field value
-// and a boolean to check if the value has been set.
-func (o *FlexBackupSnapshotDownloadCreate20241113) GetSnapshotIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.SnapshotId, true
-}
-
-// SetSnapshotId sets field value
-func (o *FlexBackupSnapshotDownloadCreate20241113) SetSnapshotId(v string) {
-	o.SnapshotId = v
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -85,4 +61,28 @@ func (o *FlexBackupSnapshotDownloadCreate20241113) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *FlexBackupSnapshotDownloadCreate20241113) SetLinks(v []Link) {
 	o.Links = &v
+}
+
+// GetSnapshotId returns the SnapshotId field value
+func (o *FlexBackupSnapshotDownloadCreate20241113) GetSnapshotId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.SnapshotId
+}
+
+// GetSnapshotIdOk returns a tuple with the SnapshotId field value
+// and a boolean to check if the value has been set.
+func (o *FlexBackupSnapshotDownloadCreate20241113) GetSnapshotIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.SnapshotId, true
+}
+
+// SetSnapshotId sets field value
+func (o *FlexBackupSnapshotDownloadCreate20241113) SetSnapshotId(v string) {
+	o.SnapshotId = v
 }
