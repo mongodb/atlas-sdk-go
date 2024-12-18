@@ -22461,15 +22461,6 @@ components:
           items:
             $ref: "#/components/schemas/ApiSearchDeploymentSpecView"
           readOnly: true
-        stateName:
-          type: string
-          description: Human-readable label that indicates the current operating condition
-            of this search deployment.
-          enum:
-          - IDLE
-          - PAUSED
-          - UPDATING
-          readOnly: true
     ApiSearchDeploymentSpecView:
       type: object
       properties:
@@ -50827,12 +50818,6 @@ components:
             - To acknowledge this alert forever, set the parameter value to 100 years in the future.
 
             - To unacknowledge a previously acknowledged alert, do not set this parameter value.
-        acknowledgementComment:
-          type: string
-          description: Comment that a MongoDB Cloud user submitted when acknowledging
-            the alert.
-          example: Expiration on 3/19.  Silencing for 7days.
-          maxLength: 200
         acknowledgingUsername:
           type: string
           format: email
