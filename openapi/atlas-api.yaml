@@ -22040,7 +22040,7 @@ components:
           description: Human-readable label that identifies the replica set to which
             this checkpoint applies.
           readOnly: true
-        shardNameUpdated:
+        shardName:
           type: string
           description: Human-readable label that identifies the shard to which this
             checkpoint applies.
@@ -22460,6 +22460,15 @@ components:
           description: List of settings that configure the Search Nodes for your cluster.
           items:
             $ref: "#/components/schemas/ApiSearchDeploymentSpecView"
+          readOnly: true
+        stateName:
+          type: string
+          description: Human-readable label that indicates the current operating condition
+            of this search deployment.
+          enum:
+          - IDLE
+          - PAUSED
+          - UPDATING
           readOnly: true
     ApiSearchDeploymentSpecView:
       type: object

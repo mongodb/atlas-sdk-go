@@ -1,5 +1,5 @@
 #!/bin/bash
-set -eux
+set -eu
 
 # Inputs:
 TARGET_BREAKING_CHANGES_FILE=${TARGET_BREAKING_CHANGES_FILE:-""}

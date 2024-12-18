@@ -22,77 +22,77 @@ import (
 	"github.com/go-test/deep"
 )
 
-// func TestConfig_RequestCode(t *testing.T) {
-// 	config, mux, teardown := setup()
-// 	defer teardown()
+func TestConfig_RequestCode(t *testing.T) {
+	config, mux, teardown := setup()
+	defer teardown()
 
-// 	mux.HandleFunc("/api/private/unauth/account/device/authorize", func(w http.ResponseWriter, r *http.Request) {
-// 		testMethod(t, r)
-// 		fmt.Fprintf(w, `{
-// 		  "user_code": "QW3PYV7R",
-// 		  "verification_uri": "%s/account/connect",
-// 		  "device_code": "61eef18e310968047ff5e02a",
-// 		  "expires_in": 600,
-// 		  "interval": 10
-// 		}`, baseURLPath)
-// 	})
+	mux.HandleFunc("/api/private/unauth/account/device/authorize", func(w http.ResponseWriter, r *http.Request) {
+		testMethod(t, r)
+		fmt.Fprintf(w, `{
+		  "user_code": "QW3PYV7R",
+		  "verification_uri": "%s/account/connect",
+		  "device_code": "61eef18e310968047ff5e02a",
+		  "expires_in": 600,
+		  "interval": 10
+		}`, baseURLPath)
+	})
 
-// 	results, _, err := config.RequestCode(ctx)
-// 	if err != nil {
-// 		t.Fatalf("RequestCode returned error: %v", err)
-// 	}
+	results, _, err := config.RequestCode(ctx)
+	if err != nil {
+		t.Fatalf("RequestCode returned error: %v", err)
+	}
 
-// 	expected := &DeviceCode{
-// 		UserCode:        "QW3PYV7R",
-// 		VerificationURI: baseURLPath + "/account/connect",
-// 		DeviceCode:      "61eef18e310968047ff5e02a",
-// 		ExpiresIn:       600,
-// 		Interval:        10,
-// 	}
+	expected := &DeviceCode{
+		UserCode:        "QW3PYV7R",
+		VerificationURI: baseURLPath + "/account/connect",
+		DeviceCode:      "61eef18e310968047ff5e02a",
+		ExpiresIn:       600,
+		Interval:        10,
+	}
 
-// 	if diff := deep.Equal(results, expected); diff != nil {
-// 		t.Error(diff)
-// 	}
-// }
+	if diff := deep.Equal(results, expected); diff != nil {
+		t.Error(diff)
+	}
+}
 
-// func TestConfig_GetToken(t *testing.T) {
-// 	config, mux, teardown := setup()
-// 	defer teardown()
+func TestConfig_GetToken(t *testing.T) {
+	config, mux, teardown := setup()
+	defer teardown()
 
-// 	mux.HandleFunc("/api/private/unauth/account/device/token", func(w http.ResponseWriter, r *http.Request) {
-// 		testMethod(t, r)
-// 		fmt.Fprint(w, `{
-// 		  "access_token": "secret1",
-// 		  "refresh_token": "secret2",
-// 		  "scope": "openid",
-// 		  "id_token": "idtoken",
-// 		  "token_type": "Bearer",
-// 		  "expires_in": 3600
-// 		}`)
-// 	})
-// 	code := &DeviceCode{
-// 		DeviceCode: "61eef18e310968047ff5e02a",
-// 		ExpiresIn:  600,
-// 		Interval:   10,
-// 	}
-// 	results, _, err := config.GetToken(ctx, code.DeviceCode)
-// 	if err != nil {
-// 		t.Fatalf("GetToken returned error: %v", err)
-// 	}
+	mux.HandleFunc("/api/private/unauth/account/device/token", func(w http.ResponseWriter, r *http.Request) {
+		testMethod(t, r)
+		fmt.Fprint(w, `{
+		  "access_token": "secret1",
+		  "refresh_token": "secret2",
+		  "scope": "openid",
+		  "id_token": "idtoken",
+		  "token_type": "Bearer",
+		  "expires_in": 3600
+		}`)
+	})
+	code := &DeviceCode{
+		DeviceCode: "61eef18e310968047ff5e02a",
+		ExpiresIn:  600,
+		Interval:   10,
+	}
+	results, _, err := config.GetToken(ctx, code.DeviceCode)
+	if err != nil {
+		t.Fatalf("GetToken returned error: %v", err)
+	}
 
-// 	expected := &Token{
-// 		AccessToken:  "secret1",
-// 		RefreshToken: "secret2",
-// 		Scope:        "openid",
-// 		IDToken:      "idtoken",
-// 		TokenType:    "Bearer",
-// 		ExpiresIn:    3600,
-// 	}
+	expected := &Token{
+		AccessToken:  "secret1",
+		RefreshToken: "secret2",
+		Scope:        "openid",
+		IDToken:      "idtoken",
+		TokenType:    "Bearer",
+		ExpiresIn:    3600,
+	}
 
-// 	if diff := deep.Equal(results, expected); diff != nil {
-// 		t.Error(diff)
-// 	}
-// }
+	if diff := deep.Equal(results, expected); diff != nil {
+		t.Error(diff)
+	}
+}
 
 func TestConfig_RefreshToken(t *testing.T) {
 	config, mux, teardown := setup()
@@ -129,44 +129,44 @@ func TestConfig_RefreshToken(t *testing.T) {
 	}
 }
 
-// func TestConfig_PollToken(t *testing.T) {
-// 	config, mux, teardown := setup()
-// 	defer teardown()
+func TestConfig_PollToken(t *testing.T) {
+	config, mux, teardown := setup()
+	defer teardown()
 
-// 	mux.HandleFunc("/api/private/unauth/account/device/token", func(w http.ResponseWriter, r *http.Request) {
-// 		testMethod(t, r)
-// 		fmt.Fprint(w, `{
-// 		  "access_token": "secret1",
-// 		  "refresh_token": "secret2",
-// 		  "scope": "openid",
-// 		  "id_token": "idtoken",
-// 		  "token_type": "Bearer",
-// 		  "expires_in": 3600
-// 		}`)
-// 	})
-// 	code := &DeviceCode{
-// 		DeviceCode: "61eef18e310968047ff5e02a",
-// 		ExpiresIn:  600,
-// 		Interval:   10,
-// 	}
-// 	results, _, err := config.PollToken(ctx, code)
-// 	if err != nil {
-// 		t.Fatalf("PollToken returned error: %v", err)
-// 	}
+	mux.HandleFunc("/api/private/unauth/account/device/token", func(w http.ResponseWriter, r *http.Request) {
+		testMethod(t, r)
+		fmt.Fprint(w, `{
+		  "access_token": "secret1",
+		  "refresh_token": "secret2",
+		  "scope": "openid",
+		  "id_token": "idtoken",
+		  "token_type": "Bearer",
+		  "expires_in": 3600
+		}`)
+	})
+	code := &DeviceCode{
+		DeviceCode: "61eef18e310968047ff5e02a",
+		ExpiresIn:  600,
+		Interval:   10,
+	}
+	results, _, err := config.PollToken(ctx, code)
+	if err != nil {
+		t.Fatalf("PollToken returned error: %v", err)
+	}
 
-// 	expected := &Token{
-// 		AccessToken:  "secret1",
-// 		RefreshToken: "secret2",
-// 		Scope:        "openid",
-// 		IDToken:      "idtoken",
-// 		TokenType:    "Bearer",
-// 		ExpiresIn:    3600,
-// 	}
+	expected := &Token{
+		AccessToken:  "secret1",
+		RefreshToken: "secret2",
+		Scope:        "openid",
+		IDToken:      "idtoken",
+		TokenType:    "Bearer",
+		ExpiresIn:    3600,
+	}
 
-// 	if diff := deep.Equal(results, expected); diff != nil {
-// 		t.Error(diff)
-// 	}
-// }
+	if diff := deep.Equal(results, expected); diff != nil {
+		t.Error(diff)
+	}
+}
 
 func TestConfig_RevokeToken(t *testing.T) {
 	config, mux, teardown := setup()

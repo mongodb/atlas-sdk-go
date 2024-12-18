@@ -40,10 +40,6 @@ jobs:
       - name: Commit Generator Changes
         if: steps.verify-changed-files.outputs.files_changed == 'true'
         run: |
-          echo "running git status:................................................"
-          git status
-          echo "running git diff:................................................"
-          git diff
           git add . && git commit -m "fix: Generated SDK source code and docs"
       - name: Release updates
         if: steps.verify-changed-files.outputs.files_changed == 'true'
