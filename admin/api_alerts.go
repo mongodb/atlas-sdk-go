@@ -130,7 +130,7 @@ type AcknowledgeAlertApiRequest struct {
 
 type AcknowledgeAlertApiParams struct {
 	GroupId          string
-	// AlertId          string
+	AlertId          string
 	AcknowledgeAlert *AcknowledgeAlert
 }
 
@@ -139,7 +139,7 @@ func (a *AlertsApiService) AcknowledgeAlertWithParams(ctx context.Context, args 
 		ApiService:       a,
 		ctx:              ctx,
 		groupId:          args.GroupId,
-		// alertId:          args.AlertId,
+		alertId:          args.AlertId,
 		acknowledgeAlert: args.AcknowledgeAlert,
 	}
 }
