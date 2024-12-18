@@ -17,7 +17,6 @@ type AcknowledgeAlert struct {
 	Links *[]Link `json:"links,omitempty"`
 	// Flag that indicates to unacknowledge a previously acknowledged alert. By default this value is set to false. If set to true, it will override the acknowledgedUntil parameter.
 	UnacknowledgeAlert *bool `json:"unacknowledgeAlert,omitempty"`
-	Temp *string `json:"temp,omitempty"`
 }
 
 // NewAcknowledgeAlert instantiates a new AcknowledgeAlert object
