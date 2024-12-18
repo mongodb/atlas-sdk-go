@@ -8,7 +8,7 @@ import (
 
 // GroupAlertsConfig struct for GroupAlertsConfig
 type GroupAlertsConfig struct {
-	// Date and time when MongoDB Cloud created the alert configuration. This parameter expresses its value in the <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\" rel=\"noopener noreferrer\">ISO 8601</a> timestamp format in UTC.
+	// Date and time when MongoDB Cloud created the alert configuration. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	Created *time.Time `json:"created,omitempty"`
 	// Flag that indicates whether someone enabled this alert configuration for the specified project.
@@ -28,7 +28,7 @@ type GroupAlertsConfig struct {
 	Matchers *[]StreamsMatcher `json:"matchers,omitempty"`
 	// List that contains the targets that MongoDB Cloud sends notifications.
 	Notifications *[]AlertsNotificationRootForGroup `json:"notifications,omitempty"`
-	// Date and time when someone last updated this alert configuration. This parameter expresses its value in the <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\" rel=\"noopener noreferrer\">ISO 8601</a> timestamp format in UTC.
+	// Date and time when someone last updated this alert configuration. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	Updated         *time.Time                 `json:"updated,omitempty"`
 	MetricThreshold *ServerlessMetricThreshold `json:"metricThreshold,omitempty"`

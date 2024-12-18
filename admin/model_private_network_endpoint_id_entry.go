@@ -4,8 +4,6 @@ package admin
 
 // PrivateNetworkEndpointIdEntry struct for PrivateNetworkEndpointIdEntry
 type PrivateNetworkEndpointIdEntry struct {
-	// Connection name that identifies the Azure private endpoint connection.
-	AzureConnectionName *string `json:"azureConnectionName,omitempty"`
 	// Link ID that identifies the Azure private endpoint connection.
 	AzureLinkId *string `json:"azureLinkId,omitempty"`
 	// Human-readable string to associate with this private endpoint.
@@ -52,39 +50,6 @@ func NewPrivateNetworkEndpointIdEntryWithDefaults() *PrivateNetworkEndpointIdEnt
 	var type_ string = "DATA_LAKE"
 	this.Type = &type_
 	return &this
-}
-
-// GetAzureConnectionName returns the AzureConnectionName field value if set, zero value otherwise
-func (o *PrivateNetworkEndpointIdEntry) GetAzureConnectionName() string {
-	if o == nil || IsNil(o.AzureConnectionName) {
-		var ret string
-		return ret
-	}
-	return *o.AzureConnectionName
-}
-
-// GetAzureConnectionNameOk returns a tuple with the AzureConnectionName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PrivateNetworkEndpointIdEntry) GetAzureConnectionNameOk() (*string, bool) {
-	if o == nil || IsNil(o.AzureConnectionName) {
-		return nil, false
-	}
-
-	return o.AzureConnectionName, true
-}
-
-// HasAzureConnectionName returns a boolean if a field has been set.
-func (o *PrivateNetworkEndpointIdEntry) HasAzureConnectionName() bool {
-	if o != nil && !IsNil(o.AzureConnectionName) {
-		return true
-	}
-
-	return false
-}
-
-// SetAzureConnectionName gets a reference to the given string and assigns it to the AzureConnectionName field.
-func (o *PrivateNetworkEndpointIdEntry) SetAzureConnectionName(v string) {
-	o.AzureConnectionName = &v
 }
 
 // GetAzureLinkId returns the AzureLinkId field value if set, zero value otherwise
