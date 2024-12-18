@@ -19,8 +19,8 @@ set +e
 RAW_BREAKING_CHANGES=$(gorelease -base "$BASE_VERSION")
 
 BREAKING_CHANGES=$(echo "$RAW_BREAKING_CHANGES" | awk '
-    /^# go\./ {header="## " substr($0, 3); print header; next}
-    /## incompatible changes/ {print "### incompatible changes"; collecting=1; next}
+    /^# go\./ {header="### " substr($0, 3); print header; next}
+    /## incompatible changes/ {print "#### incompatible changes"; collecting=1; next}
     collecting && /^#/ {collecting=0}
     collecting && NF {print "- "$0}
 ')
