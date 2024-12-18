@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 **GroupId** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the project. | [optional] [readonly] 
 **Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the search deployment. | [optional] [readonly] 
 **Specs** | Pointer to [**[]ApiSearchDeploymentSpec**](ApiSearchDeploymentSpec.md) | List of settings that configure the Search Nodes for your cluster. | [optional] [readonly] 
-**StateName** | Pointer to **string** | Human-readable label that indicates the current operating condition of this search deployment. | [optional] [readonly] 
 
 ## Methods
 
@@ -100,30 +99,6 @@ SetSpecs sets Specs field to given value.
 `func (o *ApiSearchDeploymentResponse) HasSpecs() bool`
 
 HasSpecs returns a boolean if a field has been set.
-### GetStateName
-
-`func (o *ApiSearchDeploymentResponse) GetStateName() string`
-
-GetStateName returns the StateName field if non-nil, zero value otherwise.
-
-### GetStateNameOk
-
-`func (o *ApiSearchDeploymentResponse) GetStateNameOk() (*string, bool)`
-
-GetStateNameOk returns a tuple with the StateName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStateName
-
-`func (o *ApiSearchDeploymentResponse) SetStateName(v string)`
-
-SetStateName sets StateName field to given value.
-
-### HasStateName
-
-`func (o *ApiSearchDeploymentResponse) HasStateName() bool`
-
-HasStateName returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

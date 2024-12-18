@@ -13,9 +13,6 @@ type ApiSearchDeploymentResponse struct {
 	// List of settings that configure the Search Nodes for your cluster.
 	// Read only field.
 	Specs *[]ApiSearchDeploymentSpec `json:"specs,omitempty"`
-	// Human-readable label that indicates the current operating condition of this search deployment.
-	// Read only field.
-	StateName *string `json:"stateName,omitempty"`
 }
 
 // NewApiSearchDeploymentResponse instantiates a new ApiSearchDeploymentResponse object
@@ -132,37 +129,4 @@ func (o *ApiSearchDeploymentResponse) HasSpecs() bool {
 // SetSpecs gets a reference to the given []ApiSearchDeploymentSpec and assigns it to the Specs field.
 func (o *ApiSearchDeploymentResponse) SetSpecs(v []ApiSearchDeploymentSpec) {
 	o.Specs = &v
-}
-
-// GetStateName returns the StateName field value if set, zero value otherwise
-func (o *ApiSearchDeploymentResponse) GetStateName() string {
-	if o == nil || IsNil(o.StateName) {
-		var ret string
-		return ret
-	}
-	return *o.StateName
-}
-
-// GetStateNameOk returns a tuple with the StateName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ApiSearchDeploymentResponse) GetStateNameOk() (*string, bool) {
-	if o == nil || IsNil(o.StateName) {
-		return nil, false
-	}
-
-	return o.StateName, true
-}
-
-// HasStateName returns a boolean if a field has been set.
-func (o *ApiSearchDeploymentResponse) HasStateName() bool {
-	if o != nil && !IsNil(o.StateName) {
-		return true
-	}
-
-	return false
-}
-
-// SetStateName gets a reference to the given string and assigns it to the StateName field.
-func (o *ApiSearchDeploymentResponse) SetStateName(v string) {
-	o.StateName = &v
 }
