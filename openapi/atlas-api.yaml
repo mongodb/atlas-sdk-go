@@ -22040,7 +22040,7 @@ components:
           description: Human-readable label that identifies the replica set to which
             this checkpoint applies.
           readOnly: true
-        shardName:
+        shardNameUpdated:
           type: string
           description: Human-readable label that identifies the shard to which this
             checkpoint applies.
@@ -50818,6 +50818,12 @@ components:
             - To acknowledge this alert forever, set the parameter value to 100 years in the future.
 
             - To unacknowledge a previously acknowledged alert, do not set this parameter value.
+        acknowledgementComment:
+          type: string
+          description: Comment that a MongoDB Cloud user submitted when acknowledging
+            the alert.
+          example: Expiration on 3/19.  Silencing for 7days.
+          maxLength: 200
         acknowledgingUsername:
           type: string
           format: email
