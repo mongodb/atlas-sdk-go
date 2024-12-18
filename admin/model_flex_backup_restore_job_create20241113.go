@@ -8,15 +8,6 @@ import (
 
 // FlexBackupRestoreJobCreate20241113 Details to create one restore job of a flex cluster.
 type FlexBackupRestoreJobCreate20241113 struct {
-	// Unique 24-hexadecimal digit string that identifies the snapshot to restore.
-	// Write only field.
-	SnapshotId string `json:"_snapshotId"`
-	// Human-readable label that identifies the instance or cluster on the target project to which you want to restore the snapshot. You can restore the snapshot to another flex cluster or dedicated cluster tier.
-	// Write only field.
-	TargetDeploymentItemName string `json:"_targetDeploymentItemName"`
-	// Unique 24-hexadecimal digit string that identifies the project that contains the instance or cluster to which you want to restore the snapshot.
-	// Write only field.
-	TargetProjectId *string `json:"_targetProjectId,omitempty"`
 	// Means by which this resource returns the snapshot to the requesting MongoDB Cloud user.
 	// Read only field.
 	DeliveryType *string `json:"deliveryType,omitempty"`
@@ -44,12 +35,21 @@ type FlexBackupRestoreJobCreate20241113 struct {
 	// Date and time when MongoDB Cloud completed writing this snapshot. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	SnapshotFinishedDate *time.Time `json:"snapshotFinishedDate,omitempty"`
+	// Unique 24-hexadecimal digit string that identifies the snapshot to restore.
+	// Write only field.
+	SnapshotId string `json:"snapshotId"`
 	// Internet address from which you can download the compressed snapshot files. The resource returns this parameter when  `\"deliveryType\" : \"DOWNLOAD\"`.
 	// Read only field.
 	SnapshotUrl *string `json:"snapshotUrl,omitempty"`
 	// Phase of the restore workflow for this job at the time this resource made this request.
 	// Read only field.
 	Status *string `json:"status,omitempty"`
+	// Human-readable label that identifies the instance or cluster on the target project to which you want to restore the snapshot. You can restore the snapshot to another flex cluster or dedicated cluster tier.
+	// Write only field.
+	TargetDeploymentItemName string `json:"targetDeploymentItemName"`
+	// Unique 24-hexadecimal digit string that identifies the project that contains the instance or cluster to which you want to restore the snapshot.
+	// Write only field.
+	TargetProjectId *string `json:"targetProjectId,omitempty"`
 }
 
 // NewFlexBackupRestoreJobCreate20241113 instantiates a new FlexBackupRestoreJobCreate20241113 object
@@ -69,87 +69,6 @@ func NewFlexBackupRestoreJobCreate20241113(snapshotId string, targetDeploymentIt
 func NewFlexBackupRestoreJobCreate20241113WithDefaults() *FlexBackupRestoreJobCreate20241113 {
 	this := FlexBackupRestoreJobCreate20241113{}
 	return &this
-}
-
-// GetSnapshotId returns the SnapshotId field value
-func (o *FlexBackupRestoreJobCreate20241113) GetSnapshotId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.SnapshotId
-}
-
-// GetSnapshotIdOk returns a tuple with the SnapshotId field value
-// and a boolean to check if the value has been set.
-func (o *FlexBackupRestoreJobCreate20241113) GetSnapshotIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.SnapshotId, true
-}
-
-// SetSnapshotId sets field value
-func (o *FlexBackupRestoreJobCreate20241113) SetSnapshotId(v string) {
-	o.SnapshotId = v
-}
-
-// GetTargetDeploymentItemName returns the TargetDeploymentItemName field value
-func (o *FlexBackupRestoreJobCreate20241113) GetTargetDeploymentItemName() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.TargetDeploymentItemName
-}
-
-// GetTargetDeploymentItemNameOk returns a tuple with the TargetDeploymentItemName field value
-// and a boolean to check if the value has been set.
-func (o *FlexBackupRestoreJobCreate20241113) GetTargetDeploymentItemNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.TargetDeploymentItemName, true
-}
-
-// SetTargetDeploymentItemName sets field value
-func (o *FlexBackupRestoreJobCreate20241113) SetTargetDeploymentItemName(v string) {
-	o.TargetDeploymentItemName = v
-}
-
-// GetTargetProjectId returns the TargetProjectId field value if set, zero value otherwise
-func (o *FlexBackupRestoreJobCreate20241113) GetTargetProjectId() string {
-	if o == nil || IsNil(o.TargetProjectId) {
-		var ret string
-		return ret
-	}
-	return *o.TargetProjectId
-}
-
-// GetTargetProjectIdOk returns a tuple with the TargetProjectId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *FlexBackupRestoreJobCreate20241113) GetTargetProjectIdOk() (*string, bool) {
-	if o == nil || IsNil(o.TargetProjectId) {
-		return nil, false
-	}
-
-	return o.TargetProjectId, true
-}
-
-// HasTargetProjectId returns a boolean if a field has been set.
-func (o *FlexBackupRestoreJobCreate20241113) HasTargetProjectId() bool {
-	if o != nil && !IsNil(o.TargetProjectId) {
-		return true
-	}
-
-	return false
-}
-
-// SetTargetProjectId gets a reference to the given string and assigns it to the TargetProjectId field.
-func (o *FlexBackupRestoreJobCreate20241113) SetTargetProjectId(v string) {
-	o.TargetProjectId = &v
 }
 
 // GetDeliveryType returns the DeliveryType field value if set, zero value otherwise
@@ -449,6 +368,30 @@ func (o *FlexBackupRestoreJobCreate20241113) SetSnapshotFinishedDate(v time.Time
 	o.SnapshotFinishedDate = &v
 }
 
+// GetSnapshotId returns the SnapshotId field value
+func (o *FlexBackupRestoreJobCreate20241113) GetSnapshotId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.SnapshotId
+}
+
+// GetSnapshotIdOk returns a tuple with the SnapshotId field value
+// and a boolean to check if the value has been set.
+func (o *FlexBackupRestoreJobCreate20241113) GetSnapshotIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.SnapshotId, true
+}
+
+// SetSnapshotId sets field value
+func (o *FlexBackupRestoreJobCreate20241113) SetSnapshotId(v string) {
+	o.SnapshotId = v
+}
+
 // GetSnapshotUrl returns the SnapshotUrl field value if set, zero value otherwise
 func (o *FlexBackupRestoreJobCreate20241113) GetSnapshotUrl() string {
 	if o == nil || IsNil(o.SnapshotUrl) {
@@ -513,4 +456,61 @@ func (o *FlexBackupRestoreJobCreate20241113) HasStatus() bool {
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *FlexBackupRestoreJobCreate20241113) SetStatus(v string) {
 	o.Status = &v
+}
+
+// GetTargetDeploymentItemName returns the TargetDeploymentItemName field value
+func (o *FlexBackupRestoreJobCreate20241113) GetTargetDeploymentItemName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.TargetDeploymentItemName
+}
+
+// GetTargetDeploymentItemNameOk returns a tuple with the TargetDeploymentItemName field value
+// and a boolean to check if the value has been set.
+func (o *FlexBackupRestoreJobCreate20241113) GetTargetDeploymentItemNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.TargetDeploymentItemName, true
+}
+
+// SetTargetDeploymentItemName sets field value
+func (o *FlexBackupRestoreJobCreate20241113) SetTargetDeploymentItemName(v string) {
+	o.TargetDeploymentItemName = v
+}
+
+// GetTargetProjectId returns the TargetProjectId field value if set, zero value otherwise
+func (o *FlexBackupRestoreJobCreate20241113) GetTargetProjectId() string {
+	if o == nil || IsNil(o.TargetProjectId) {
+		var ret string
+		return ret
+	}
+	return *o.TargetProjectId
+}
+
+// GetTargetProjectIdOk returns a tuple with the TargetProjectId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FlexBackupRestoreJobCreate20241113) GetTargetProjectIdOk() (*string, bool) {
+	if o == nil || IsNil(o.TargetProjectId) {
+		return nil, false
+	}
+
+	return o.TargetProjectId, true
+}
+
+// HasTargetProjectId returns a boolean if a field has been set.
+func (o *FlexBackupRestoreJobCreate20241113) HasTargetProjectId() bool {
+	if o != nil && !IsNil(o.TargetProjectId) {
+		return true
+	}
+
+	return false
+}
+
+// SetTargetProjectId gets a reference to the given string and assigns it to the TargetProjectId field.
+func (o *FlexBackupRestoreJobCreate20241113) SetTargetProjectId(v string) {
+	o.TargetProjectId = &v
 }
