@@ -1180,7 +1180,7 @@ Name | Type | Description  | Notes
 
 ## ListProjectUsers
 
-> PaginatedAppUser ListProjectUsers(ctx, groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).FlattenTeams(flattenTeams).IncludeOrgUsers(includeOrgUsers).Execute()
+> PaginatedAppUser ListProjectUsers(ctx, groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).FlattenTeams(flattenTeams).IncludeOrgUsers(includeOrgUsers).OrgMembershipStatus(orgMembershipStatus).Execute()
 
 Return All Users in One Project
 
@@ -1214,8 +1214,9 @@ func main() {
     pageNum := int(1) // int |  (optional) (default to 1)
     flattenTeams := true // bool |  (optional) (default to false)
     includeOrgUsers := true // bool |  (optional) (default to false)
+    orgMembershipStatus := "ACTIVE" // string |  (optional)
 
-    resp, r, err := sdk.ProjectsApi.ListProjectUsers(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).FlattenTeams(flattenTeams).IncludeOrgUsers(includeOrgUsers).Execute()
+    resp, r, err := sdk.ProjectsApi.ListProjectUsers(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).FlattenTeams(flattenTeams).IncludeOrgUsers(includeOrgUsers).OrgMembershipStatus(orgMembershipStatus).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.ListProjectUsers`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -1250,6 +1251,7 @@ Name | Type | Description  | Notes
  **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
  **flattenTeams** | **bool** | Flag that indicates whether the returned list should include users who belong to a team with a role in this project. You might not have assigned the individual users a role in this project. If &#x60;\&quot;flattenTeams\&quot; : false&#x60;, this resource returns only users with a role in the project.  If &#x60;\&quot;flattenTeams\&quot; : true&#x60;, this resource returns both users with roles in the project and users who belong to teams with roles in the project. | [default to false]
  **includeOrgUsers** | **bool** | Flag that indicates whether the returned list should include users with implicit access to the project, the Organization Owner or Organization Read Only role. You might not have assigned the individual users a role in this project. If &#x60;\&quot;includeOrgUsers\&quot;: false&#x60;, this resource returns only users with a role in the project. If &#x60;\&quot;includeOrgUsers\&quot;: true&#x60;, this resource returns both users with roles in the project and users who have implicit access to the project through their organization role. | [default to false]
+ **orgMembershipStatus** | **string** | Flag that indicates whether to filter the returned list by users organization membership status. If you exclude this parameter, this resource returns both pending and active users. | 
 
 ### Return type
 

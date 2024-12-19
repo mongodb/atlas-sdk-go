@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AzureConnectionName** | Pointer to **string** | Connection name that identifies the Azure private endpoint connection. | [optional] 
 **AzureLinkId** | Pointer to **string** | Link ID that identifies the Azure private endpoint connection. | [optional] 
 **Comment** | Pointer to **string** | Human-readable string to associate with this private endpoint. | [optional] 
 **CustomerEndpointDNSName** | Pointer to **string** | Human-readable label to identify customer&#39;s VPC endpoint DNS name. If defined, you must also specify a value for **region**. | [optional] 
@@ -35,30 +34,6 @@ NewPrivateNetworkEndpointIdEntryWithDefaults instantiates a new PrivateNetworkEn
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetAzureConnectionName
-
-`func (o *PrivateNetworkEndpointIdEntry) GetAzureConnectionName() string`
-
-GetAzureConnectionName returns the AzureConnectionName field if non-nil, zero value otherwise.
-
-### GetAzureConnectionNameOk
-
-`func (o *PrivateNetworkEndpointIdEntry) GetAzureConnectionNameOk() (*string, bool)`
-
-GetAzureConnectionNameOk returns a tuple with the AzureConnectionName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAzureConnectionName
-
-`func (o *PrivateNetworkEndpointIdEntry) SetAzureConnectionName(v string)`
-
-SetAzureConnectionName sets AzureConnectionName field to given value.
-
-### HasAzureConnectionName
-
-`func (o *PrivateNetworkEndpointIdEntry) HasAzureConnectionName() bool`
-
-HasAzureConnectionName returns a boolean if a field has been set.
 ### GetAzureLinkId
 
 `func (o *PrivateNetworkEndpointIdEntry) GetAzureLinkId() string`

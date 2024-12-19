@@ -4,7 +4,7 @@ package admin
 
 // ServiceAccountSecretRequest struct for ServiceAccountSecretRequest
 type ServiceAccountSecretRequest struct {
-	// The expiration time of the new Service Account secret. The expiration is provided in hours.
+	// The expiration time of the new Service Account secret, provided in hours. The minimum and maximum allowed expiration times are subject to change and are controlled by the organization's settings.
 	SecretExpiresAfterHours int `json:"secretExpiresAfterHours"`
 }
 
