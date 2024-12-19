@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**DeleteExportBucket**](CloudBackupsApi.md#DeleteExportBucket) | **Delete** /api/atlas/v2/groups/{groupId}/backup/exportBuckets/{exportBucketId} | Delete One Snapshot Export Bucket
 [**DeleteReplicaSetBackup**](CloudBackupsApi.md#DeleteReplicaSetBackup) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId} | Remove One Replica Set Cloud Backup
 [**DeleteShardedClusterBackup**](CloudBackupsApi.md#DeleteShardedClusterBackup) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/shardedCluster/{snapshotId} | Remove One Sharded Cluster Cloud Backup
+[**DisableDataProtectionSettings**](CloudBackupsApi.md#DisableDataProtectionSettings) | **Delete** /api/atlas/v2/groups/{groupId}/backupCompliancePolicy | Disable the Backup Compliance Policy settings
 [**GetBackupExportJob**](CloudBackupsApi.md#GetBackupExportJob) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/exports/{exportId} | Return One Snapshot Export Job
 [**GetBackupRestoreJob**](CloudBackupsApi.md#GetBackupRestoreJob) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/restoreJobs/{restoreJobId} | Return One Restore Job of One Cluster
 [**GetBackupSchedule**](CloudBackupsApi.md#GetBackupSchedule) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/schedule | Return One Cloud Backup Schedule
@@ -53,7 +54,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113003/admin"
+    "go.mongodb.org/atlas-sdk/v20241113004/admin"
 )
 
 func main() {
@@ -139,7 +140,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113003/admin"
+    "go.mongodb.org/atlas-sdk/v20241113004/admin"
 )
 
 func main() {
@@ -224,7 +225,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113003/admin"
+    "go.mongodb.org/atlas-sdk/v20241113004/admin"
 )
 
 func main() {
@@ -309,7 +310,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113003/admin"
+    "go.mongodb.org/atlas-sdk/v20241113004/admin"
 )
 
 func main() {
@@ -391,7 +392,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113003/admin"
+    "go.mongodb.org/atlas-sdk/v20241113004/admin"
 )
 
 func main() {
@@ -476,7 +477,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113003/admin"
+    "go.mongodb.org/atlas-sdk/v20241113004/admin"
 )
 
 func main() {
@@ -559,7 +560,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113003/admin"
+    "go.mongodb.org/atlas-sdk/v20241113004/admin"
 )
 
 func main() {
@@ -642,7 +643,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113003/admin"
+    "go.mongodb.org/atlas-sdk/v20241113004/admin"
 )
 
 func main() {
@@ -728,7 +729,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113003/admin"
+    "go.mongodb.org/atlas-sdk/v20241113004/admin"
 )
 
 func main() {
@@ -797,6 +798,86 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## DisableDataProtectionSettings
+
+> any DisableDataProtectionSettings(ctx, groupId).Execute()
+
+Disable the Backup Compliance Policy settings
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20241113004/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+
+    resp, r, err := sdk.CloudBackupsApi.DisableDataProtectionSettings(context.Background(), groupId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.DisableDataProtectionSettings`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `DisableDataProtectionSettings`: any
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.DisableDataProtectionSettings`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDisableDataProtectionSettingsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+**any**
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2024-11-13+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetBackupExportJob
 
 > DiskBackupExportJob GetBackupExportJob(ctx, groupId, clusterName, exportId).Execute()
@@ -814,7 +895,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113003/admin"
+    "go.mongodb.org/atlas-sdk/v20241113004/admin"
 )
 
 func main() {
@@ -900,7 +981,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113003/admin"
+    "go.mongodb.org/atlas-sdk/v20241113004/admin"
 )
 
 func main() {
@@ -986,7 +1067,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113003/admin"
+    "go.mongodb.org/atlas-sdk/v20241113004/admin"
 )
 
 func main() {
@@ -1069,7 +1150,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113003/admin"
+    "go.mongodb.org/atlas-sdk/v20241113004/admin"
 )
 
 func main() {
@@ -1149,7 +1230,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113003/admin"
+    "go.mongodb.org/atlas-sdk/v20241113004/admin"
 )
 
 func main() {
@@ -1232,7 +1313,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113003/admin"
+    "go.mongodb.org/atlas-sdk/v20241113004/admin"
 )
 
 func main() {
@@ -1318,7 +1399,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113003/admin"
+    "go.mongodb.org/atlas-sdk/v20241113004/admin"
 )
 
 func main() {
@@ -1404,7 +1485,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113003/admin"
+    "go.mongodb.org/atlas-sdk/v20241113004/admin"
 )
 
 func main() {
@@ -1490,7 +1571,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113003/admin"
+    "go.mongodb.org/atlas-sdk/v20241113004/admin"
 )
 
 func main() {
@@ -1576,7 +1657,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113003/admin"
+    "go.mongodb.org/atlas-sdk/v20241113004/admin"
 )
 
 func main() {
@@ -1665,7 +1746,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113003/admin"
+    "go.mongodb.org/atlas-sdk/v20241113004/admin"
 )
 
 func main() {
@@ -1754,7 +1835,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113003/admin"
+    "go.mongodb.org/atlas-sdk/v20241113004/admin"
 )
 
 func main() {
@@ -1840,7 +1921,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113003/admin"
+    "go.mongodb.org/atlas-sdk/v20241113004/admin"
 )
 
 func main() {
@@ -1929,7 +2010,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113003/admin"
+    "go.mongodb.org/atlas-sdk/v20241113004/admin"
 )
 
 func main() {
@@ -2018,7 +2099,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113003/admin"
+    "go.mongodb.org/atlas-sdk/v20241113004/admin"
 )
 
 func main() {
@@ -2107,7 +2188,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113003/admin"
+    "go.mongodb.org/atlas-sdk/v20241113004/admin"
 )
 
 func main() {
@@ -2190,7 +2271,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113003/admin"
+    "go.mongodb.org/atlas-sdk/v20241113004/admin"
 )
 
 func main() {
@@ -2275,7 +2356,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113003/admin"
+    "go.mongodb.org/atlas-sdk/v20241113004/admin"
 )
 
 func main() {
@@ -2360,7 +2441,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113003/admin"
+    "go.mongodb.org/atlas-sdk/v20241113004/admin"
 )
 
 func main() {
@@ -2444,7 +2525,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113003/admin"
+    "go.mongodb.org/atlas-sdk/v20241113004/admin"
 )
 
 func main() {

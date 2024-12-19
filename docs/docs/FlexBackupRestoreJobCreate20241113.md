@@ -4,9 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**SnapshotId** | **string** | Unique 24-hexadecimal digit string that identifies the snapshot to restore. | 
-**TargetDeploymentItemName** | **string** | Human-readable label that identifies the instance or cluster on the target project to which you want to restore the snapshot. You can restore the snapshot to another flex cluster or dedicated cluster tier. | 
-**TargetProjectId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the project that contains the instance or cluster to which you want to restore the snapshot. | [optional] 
 **DeliveryType** | Pointer to **string** | Means by which this resource returns the snapshot to the requesting MongoDB Cloud user. | [optional] [readonly] 
 **ExpirationDate** | Pointer to **time.Time** | Date and time when the download link no longer works. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
 **Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the restore job. | [optional] [readonly] 
@@ -16,8 +13,11 @@ Name | Type | Description | Notes
 **RestoreFinishedDate** | Pointer to **time.Time** | Date and time when MongoDB Cloud completed writing this snapshot. MongoDB Cloud changes the status of the restore job to &#x60;CLOSED&#x60;. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
 **RestoreScheduledDate** | Pointer to **time.Time** | Date and time when MongoDB Cloud will restore this snapshot. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
 **SnapshotFinishedDate** | Pointer to **time.Time** | Date and time when MongoDB Cloud completed writing this snapshot. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
+**SnapshotId** | **string** | Unique 24-hexadecimal digit string that identifies the snapshot to restore. | 
 **SnapshotUrl** | Pointer to **string** | Internet address from which you can download the compressed snapshot files. The resource returns this parameter when  &#x60;\&quot;deliveryType\&quot; : \&quot;DOWNLOAD\&quot;&#x60;. | [optional] [readonly] 
 **Status** | Pointer to **string** | Phase of the restore workflow for this job at the time this resource made this request. | [optional] [readonly] 
+**TargetDeploymentItemName** | **string** | Human-readable label that identifies the instance or cluster on the target project to which you want to restore the snapshot. You can restore the snapshot to another flex cluster or dedicated cluster tier. | 
+**TargetProjectId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the project that contains the instance or cluster to which you want to restore the snapshot. | [optional] 
 
 ## Methods
 
@@ -38,68 +38,6 @@ NewFlexBackupRestoreJobCreate20241113WithDefaults instantiates a new FlexBackupR
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetSnapshotId
-
-`func (o *FlexBackupRestoreJobCreate20241113) GetSnapshotId() string`
-
-GetSnapshotId returns the SnapshotId field if non-nil, zero value otherwise.
-
-### GetSnapshotIdOk
-
-`func (o *FlexBackupRestoreJobCreate20241113) GetSnapshotIdOk() (*string, bool)`
-
-GetSnapshotIdOk returns a tuple with the SnapshotId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSnapshotId
-
-`func (o *FlexBackupRestoreJobCreate20241113) SetSnapshotId(v string)`
-
-SetSnapshotId sets SnapshotId field to given value.
-
-### GetTargetDeploymentItemName
-
-`func (o *FlexBackupRestoreJobCreate20241113) GetTargetDeploymentItemName() string`
-
-GetTargetDeploymentItemName returns the TargetDeploymentItemName field if non-nil, zero value otherwise.
-
-### GetTargetDeploymentItemNameOk
-
-`func (o *FlexBackupRestoreJobCreate20241113) GetTargetDeploymentItemNameOk() (*string, bool)`
-
-GetTargetDeploymentItemNameOk returns a tuple with the TargetDeploymentItemName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTargetDeploymentItemName
-
-`func (o *FlexBackupRestoreJobCreate20241113) SetTargetDeploymentItemName(v string)`
-
-SetTargetDeploymentItemName sets TargetDeploymentItemName field to given value.
-
-### GetTargetProjectId
-
-`func (o *FlexBackupRestoreJobCreate20241113) GetTargetProjectId() string`
-
-GetTargetProjectId returns the TargetProjectId field if non-nil, zero value otherwise.
-
-### GetTargetProjectIdOk
-
-`func (o *FlexBackupRestoreJobCreate20241113) GetTargetProjectIdOk() (*string, bool)`
-
-GetTargetProjectIdOk returns a tuple with the TargetProjectId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTargetProjectId
-
-`func (o *FlexBackupRestoreJobCreate20241113) SetTargetProjectId(v string)`
-
-SetTargetProjectId sets TargetProjectId field to given value.
-
-### HasTargetProjectId
-
-`func (o *FlexBackupRestoreJobCreate20241113) HasTargetProjectId() bool`
-
-HasTargetProjectId returns a boolean if a field has been set.
 ### GetDeliveryType
 
 `func (o *FlexBackupRestoreJobCreate20241113) GetDeliveryType() string`
@@ -316,6 +254,25 @@ SetSnapshotFinishedDate sets SnapshotFinishedDate field to given value.
 `func (o *FlexBackupRestoreJobCreate20241113) HasSnapshotFinishedDate() bool`
 
 HasSnapshotFinishedDate returns a boolean if a field has been set.
+### GetSnapshotId
+
+`func (o *FlexBackupRestoreJobCreate20241113) GetSnapshotId() string`
+
+GetSnapshotId returns the SnapshotId field if non-nil, zero value otherwise.
+
+### GetSnapshotIdOk
+
+`func (o *FlexBackupRestoreJobCreate20241113) GetSnapshotIdOk() (*string, bool)`
+
+GetSnapshotIdOk returns a tuple with the SnapshotId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSnapshotId
+
+`func (o *FlexBackupRestoreJobCreate20241113) SetSnapshotId(v string)`
+
+SetSnapshotId sets SnapshotId field to given value.
+
 ### GetSnapshotUrl
 
 `func (o *FlexBackupRestoreJobCreate20241113) GetSnapshotUrl() string`
@@ -364,6 +321,49 @@ SetStatus sets Status field to given value.
 `func (o *FlexBackupRestoreJobCreate20241113) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+### GetTargetDeploymentItemName
+
+`func (o *FlexBackupRestoreJobCreate20241113) GetTargetDeploymentItemName() string`
+
+GetTargetDeploymentItemName returns the TargetDeploymentItemName field if non-nil, zero value otherwise.
+
+### GetTargetDeploymentItemNameOk
+
+`func (o *FlexBackupRestoreJobCreate20241113) GetTargetDeploymentItemNameOk() (*string, bool)`
+
+GetTargetDeploymentItemNameOk returns a tuple with the TargetDeploymentItemName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTargetDeploymentItemName
+
+`func (o *FlexBackupRestoreJobCreate20241113) SetTargetDeploymentItemName(v string)`
+
+SetTargetDeploymentItemName sets TargetDeploymentItemName field to given value.
+
+### GetTargetProjectId
+
+`func (o *FlexBackupRestoreJobCreate20241113) GetTargetProjectId() string`
+
+GetTargetProjectId returns the TargetProjectId field if non-nil, zero value otherwise.
+
+### GetTargetProjectIdOk
+
+`func (o *FlexBackupRestoreJobCreate20241113) GetTargetProjectIdOk() (*string, bool)`
+
+GetTargetProjectIdOk returns a tuple with the TargetProjectId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTargetProjectId
+
+`func (o *FlexBackupRestoreJobCreate20241113) SetTargetProjectId(v string)`
+
+SetTargetProjectId sets TargetProjectId field to given value.
+
+### HasTargetProjectId
+
+`func (o *FlexBackupRestoreJobCreate20241113) HasTargetProjectId() bool`
+
+HasTargetProjectId returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

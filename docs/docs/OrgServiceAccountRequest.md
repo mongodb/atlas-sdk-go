@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Description** | **string** | Human readable description for the Service Account. | 
 **Name** | **string** | Human-readable name for the Service Account. The name is modifiable and does not have to be unique. | 
 **Roles** | **[]string** | A list of organization-level roles for the Service Account. | 
-**SecretExpiresAfterHours** | **int** | The expiration time of the new Service Account secret. The expiration is provided in hours. | 
+**SecretExpiresAfterHours** | **int** | The expiration time of the new Service Account secret, provided in hours. The minimum and maximum allowed expiration times are subject to change and are controlled by the organization&#39;s settings. | 
 
 ## Methods
 

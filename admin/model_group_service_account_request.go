@@ -10,7 +10,7 @@ type GroupServiceAccountRequest struct {
 	Name string `json:"name"`
 	// A list of project-level roles for the Service Account.
 	Roles []string `json:"roles"`
-	// The expiration time of the new Service Account secret. The expiration is provided in hours.
+	// The expiration time of the new Service Account secret, provided in hours. The minimum and maximum allowed expiration times are subject to change and are controlled by the organization's settings.
 	SecretExpiresAfterHours int `json:"secretExpiresAfterHours"`
 }
 

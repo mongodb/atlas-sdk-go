@@ -27,7 +27,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 250de29f4a410f2895ff9ae84ba6ae026a644059
+  x-xgen-sha: f2d3832722b696c6611b5666215a7e36d52aac95
 servers:
   - url: https://cloud.mongodb.com
 security:
@@ -2473,6 +2473,35 @@ paths:
       tags:
         - Cloud Backups
   "/api/atlas/v2/groups/{groupId}/backupCompliancePolicy":
+    delete:
+      description: Disables the Backup Compliance Policy settings with the specified
+        project. As a prerequisite, a support ticket needs to be file first,
+        instructions in
+        https://www.mongodb.com/docs/atlas/backup/cloud-backup/backup-compliance-policy/.
+        To use this resource, the requesting API Key must have the Project Owner
+        role.
+      operationId: disableDataProtectionSettings
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+      responses:
+        "204":
+          content:
+            application/vnd.atlas.2024-11-13+json:
+              schema:
+                $ref: "#/components/schemas/NoBody"
+              x-xgen-version: 2024-11-13
+          description: This endpoint does not return a response body.
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Disable the Backup Compliance Policy settings
+      tags:
+        - Cloud Backups
     get:
       description: "Returns the Backup Compliance Policy settings with the specified
         project. To use this resource, the requesting API Key must have the
@@ -5542,9 +5571,9 @@ paths:
         same data set. Advanced configuration details include the read/write
         concern, index and oplog limits, and other database settings. This
         feature isn't available for `M0` free clusters, `M2` and `M5`
-        shared-tier clusters, or serverless clusters. To use this resource, the
-        requesting API Key must have the Project Read Only role. Deprecated
-        versions: v2-{2023-01-01}"
+        shared-tier clusters, flex clusters, or serverless clusters. To use this
+        resource, the requesting API Key must have the Project Read Only role.
+        Deprecated versions: v2-{2023-01-01}"
       externalDocs:
         description: Global Clusters
         url: https://www.mongodb.com/docs/atlas/global-clusters/
@@ -5584,8 +5613,8 @@ paths:
         concern, index and oplog limits, and other database settings. To use
         this resource, the requesting API Key must have the Project Cluster
         Manager role. This feature isn't available for `M0` free clusters, `M2`
-        and `M5` shared-tier clusters, or serverless clusters. Deprecated
-        versions: v2-{2023-01-01}"
+        and `M5` shared-tier clusters, flex clusters, or serverless clusters.
+        Deprecated versions: v2-{2023-01-01}"
       externalDocs:
         description: Global Clusters
         url: https://www.mongodb.com/docs/atlas/global-clusters/
@@ -7084,12 +7113,13 @@ paths:
         in length, but this duration may vary. If you poll the API for log
         files, we recommend polling every five minutes even though consecutive
         polls could contain some overlapping logs. This feature isn't available
-        for `M0` free clusters, `M2`, `M5`, or serverless clusters. To use this
-        resource, the requesting API Key must have the Project Data Access Read
-        Only or higher role. The API does not support direct calls with the json
-        response schema. You must request a gzip response schema using an accept
-        header of the format: \"Accept: application/vnd.atlas.YYYY-MM-DD+gzip\".
-        Deprecated versions: v2-{2023-01-01}"
+        for `M0` free clusters, `M2`, `M5`, flex, or serverless clusters. To use
+        this resource, the requesting API Key must have the Project Data Access
+        Read Only or higher role. The API does not support direct calls with the
+        json response schema. You must request a gzip response schema using an
+        accept header of the format: \"Accept:
+        application/vnd.atlas.YYYY-MM-DD+gzip\". Deprecated versions:
+        v2-{2023-01-01}"
       operationId: getHostLogs
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -13816,7 +13846,7 @@ paths:
           required: true
           schema:
             type: string
-            example: mdb_sa_id_667066535bc75b03c37b3038
+            example: mdb_sa_id_1234567890abcdef12345678
             pattern: ^mdb_sa_id_[a-fA-F\d]{24}$
         - $ref: "#/components/parameters/groupId"
       responses:
@@ -13849,7 +13879,7 @@ paths:
           required: true
           schema:
             type: string
-            example: mdb_sa_id_667066535bc75b03c37b3038
+            example: mdb_sa_id_1234567890abcdef12345678
             pattern: ^mdb_sa_id_[a-fA-F\d]{24}$
       responses:
         "200":
@@ -13879,7 +13909,7 @@ paths:
           required: true
           schema:
             type: string
-            example: mdb_sa_id_667066535bc75b03c37b3038
+            example: mdb_sa_id_1234567890abcdef12345678
             pattern: ^mdb_sa_id_[a-fA-F\d]{24}$
         - $ref: "#/components/parameters/groupId"
       requestBody:
@@ -13925,7 +13955,7 @@ paths:
           required: true
           schema:
             type: string
-            example: mdb_sa_id_667066535bc75b03c37b3038
+            example: mdb_sa_id_1234567890abcdef12345678
             pattern: ^mdb_sa_id_[a-fA-F\d]{24}$
       responses:
         "200":
@@ -13958,7 +13988,7 @@ paths:
           required: true
           schema:
             type: string
-            example: mdb_sa_id_667066535bc75b03c37b3038
+            example: mdb_sa_id_1234567890abcdef12345678
             pattern: ^mdb_sa_id_[a-fA-F\d]{24}$
       requestBody:
         content:
@@ -14004,7 +14034,7 @@ paths:
           required: true
           schema:
             type: string
-            example: mdb_sa_id_667066535bc75b03c37b3038
+            example: mdb_sa_id_1234567890abcdef12345678
             pattern: ^mdb_sa_id_[a-fA-F\d]{24}$
         - description: One IP address or multiple IP addresses represented as one CIDR
             block. When specifying a CIDR block with a subnet mask, such as
@@ -14046,7 +14076,7 @@ paths:
           required: true
           schema:
             type: string
-            example: mdb_sa_id_667066535bc75b03c37b3038
+            example: mdb_sa_id_1234567890abcdef12345678
             pattern: ^mdb_sa_id_[a-fA-F\d]{24}$
       requestBody:
         content:
@@ -14084,7 +14114,7 @@ paths:
           required: true
           schema:
             type: string
-            example: mdb_sa_id_667066535bc75b03c37b3038
+            example: mdb_sa_id_1234567890abcdef12345678
             pattern: ^mdb_sa_id_[a-fA-F\d]{24}$
         - description: Unique 24-hexadecimal digit string that identifies the secret.
           in: path
@@ -14120,7 +14150,7 @@ paths:
           required: true
           schema:
             type: string
-            example: mdb_sa_id_667066535bc75b03c37b3038
+            example: mdb_sa_id_1234567890abcdef12345678
             pattern: ^mdb_sa_id_[a-fA-F\d]{24}$
         - $ref: "#/components/parameters/groupId"
       requestBody:
@@ -14871,6 +14901,8 @@ paths:
           $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Delete One Stream Connection
@@ -14961,6 +14993,8 @@ paths:
           $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Update One Stream Connection
@@ -15618,6 +15652,7 @@ paths:
         - LDAP Configuration
   "/api/atlas/v2/groups/{groupId}/users":
     get:
+      deprecated: true
       description: Returns details about all users in the specified project. Users
         belong to an organization. To use this resource, the requesting API Key
         must have the Project Read Only role.
@@ -15652,6 +15687,14 @@ paths:
           schema:
             type: boolean
             default: false
+        - description: Flag that indicates whether to filter the returned list by users
+            organization membership status. If you exclude this parameter, this
+            resource returns both pending and active users.
+          in: query
+          name: orgMembershipStatus
+          schema:
+            type: string
+            example: ACTIVE
       responses:
         "200":
           content:
@@ -15667,6 +15710,7 @@ paths:
       summary: Return All Users in One Project
       tags:
         - Projects
+      x-sunset: 2044-01-01
   "/api/atlas/v2/groups/{groupId}/users/{userId}":
     delete:
       description: Removes the specified user from the specified project. To use this
@@ -17518,7 +17562,7 @@ paths:
           required: true
           schema:
             type: string
-            example: mdb_sa_id_667066535bc75b03c37b3038
+            example: mdb_sa_id_1234567890abcdef12345678
             pattern: ^mdb_sa_id_[a-fA-F\d]{24}$
         - $ref: "#/components/parameters/orgId"
       responses:
@@ -17547,7 +17591,7 @@ paths:
           required: true
           schema:
             type: string
-            example: mdb_sa_id_667066535bc75b03c37b3038
+            example: mdb_sa_id_1234567890abcdef12345678
             pattern: ^mdb_sa_id_[a-fA-F\d]{24}$
       responses:
         "200":
@@ -17577,7 +17621,7 @@ paths:
           required: true
           schema:
             type: string
-            example: mdb_sa_id_667066535bc75b03c37b3038
+            example: mdb_sa_id_1234567890abcdef12345678
             pattern: ^mdb_sa_id_[a-fA-F\d]{24}$
         - $ref: "#/components/parameters/orgId"
       requestBody:
@@ -17623,7 +17667,7 @@ paths:
           required: true
           schema:
             type: string
-            example: mdb_sa_id_667066535bc75b03c37b3038
+            example: mdb_sa_id_1234567890abcdef12345678
             pattern: ^mdb_sa_id_[a-fA-F\d]{24}$
       responses:
         "200":
@@ -17656,7 +17700,7 @@ paths:
           required: true
           schema:
             type: string
-            example: mdb_sa_id_667066535bc75b03c37b3038
+            example: mdb_sa_id_1234567890abcdef12345678
             pattern: ^mdb_sa_id_[a-fA-F\d]{24}$
       requestBody:
         content:
@@ -17702,7 +17746,7 @@ paths:
           required: true
           schema:
             type: string
-            example: mdb_sa_id_667066535bc75b03c37b3038
+            example: mdb_sa_id_1234567890abcdef12345678
             pattern: ^mdb_sa_id_[a-fA-F\d]{24}$
         - description: One IP address or multiple IP addresses represented as one CIDR
             block. When specifying a CIDR block with a subnet mask, such as
@@ -17744,7 +17788,7 @@ paths:
           required: true
           schema:
             type: string
-            example: mdb_sa_id_667066535bc75b03c37b3038
+            example: mdb_sa_id_1234567890abcdef12345678
             pattern: ^mdb_sa_id_[a-fA-F\d]{24}$
         - $ref: "#/components/parameters/itemsPerPage"
         - $ref: "#/components/parameters/pageNum"
@@ -17778,7 +17822,7 @@ paths:
           required: true
           schema:
             type: string
-            example: mdb_sa_id_667066535bc75b03c37b3038
+            example: mdb_sa_id_1234567890abcdef12345678
             pattern: ^mdb_sa_id_[a-fA-F\d]{24}$
       requestBody:
         content:
@@ -17816,7 +17860,7 @@ paths:
           required: true
           schema:
             type: string
-            example: mdb_sa_id_667066535bc75b03c37b3038
+            example: mdb_sa_id_1234567890abcdef12345678
             pattern: ^mdb_sa_id_[a-fA-F\d]{24}$
         - description: Unique 24-hexadecimal digit string that identifies the secret.
           in: path
@@ -19039,6 +19083,7 @@ components:
           type: string
           description: Unique 24-hexadecimal digit string that identifies this backup
             policy.
+          example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
           pattern: ^([a-f0-9]{24})$
@@ -19318,6 +19363,7 @@ components:
             each notification method. This is needed when updating third-party
             notifications without requiring explicit authentication credentials.
           example: 32b6e34b3d91647abb20e7b8
+          pattern: ^([a-f0-9]{24})$
         typeName:
           type: string
           description: Human-readable label that displays the alert notification type.
@@ -20512,6 +20558,7 @@ components:
           type: string
           description: Unique 24-hexadecimal digit string that identifies this backup
             policy item.
+          example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
           pattern: ^([a-f0-9]{24})$
@@ -20568,6 +20615,7 @@ components:
           type: string
           description: Unique 24-hexadecimal digit string that identifies this backup
             policy item.
+          example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
           pattern: ^([a-f0-9]{24})$
@@ -21477,18 +21525,14 @@ components:
           pattern: ^vpc-[0-9a-f]{17}$
         azureDirectoryId:
           type: string
+          format: uuid
           description: Unique string that identifies the Azure AD directory in which the
             VNet peered with the MongoDB Cloud VNet resides.
-          maxLength: 32
-          minLength: 32
-          pattern: ^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$
         azureSubscriptionId:
           type: string
+          format: uuid
           description: Unique string that identifies the Azure subscription in which the
             VNet you peered with the MongoDB Cloud VNet resides.
-          maxLength: 32
-          minLength: 32
-          pattern: ^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$
         errorState:
           type: string
           description: 'Error message returned when a requested Azure network peering
@@ -21966,6 +22010,7 @@ components:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the payment that
             the organization had made.
+          example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
           pattern: ^([a-f0-9]{24})$
@@ -22103,6 +22148,7 @@ components:
           pattern: (?:(?:\\+?1\\s*(?:[.-]\\s*)?)?(?:(\\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\\s*)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\\s*(?:[.-]\\s*)?)([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\\s*(?:[.-]\\s*)?([0-9]{4})$
         password:
           type: string
+          format: password
           description: Password applied with the username to log in to MongoDB Cloud.
             MongoDB Cloud does not return this parameter except in response to
             creating a new MongoDB Cloud user. Only the MongoDB Cloud user can
@@ -22125,8 +22171,6 @@ components:
             description: Unique 24-hexadecimal digit string that identifies the team to
               which this MongoDB Cloud user belongs.
             example: 32b6e34b3d91647abb20e7b8
-            maxLength: 24
-            minLength: 24
             pattern: ^([a-f0-9]{24})$
           readOnly: true
           uniqueItems: true
@@ -22496,10 +22540,8 @@ components:
               readOnly: true
             atlasAzureAppId:
               type: string
+              format: uuid
               description: Azure Active Directory Application ID of Atlas.
-              maxLength: 36
-              minLength: 32
-              pattern: ^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$
             createdDate:
               type: string
               format: date-time
@@ -22523,16 +22565,12 @@ components:
               readOnly: true
             servicePrincipalId:
               type: string
+              format: uuid
               description: UUID string that identifies the Azure Service Principal.
-              maxLength: 36
-              minLength: 32
-              pattern: ^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$
             tenantId:
               type: string
+              format: uuid
               description: UUID String that identifies the Azure Active Directory Tenant ID.
-              maxLength: 36
-              minLength: 32
-              pattern: ^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$
       description: Details that describe the features linked to the Azure Service Principal.
       required:
         - providerName
@@ -22547,10 +22585,8 @@ components:
           readOnly: true
         atlasAzureAppId:
           type: string
+          format: uuid
           description: Azure Active Directory Application ID of Atlas.
-          maxLength: 36
-          minLength: 32
-          pattern: ^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$
         createdDate:
           type: string
           format: date-time
@@ -22574,16 +22610,12 @@ components:
           readOnly: true
         servicePrincipalId:
           type: string
+          format: uuid
           description: UUID string that identifies the Azure Service Principal.
-          maxLength: 36
-          minLength: 32
-          pattern: ^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$
         tenantId:
           type: string
+          format: uuid
           description: UUID String that identifies the Azure Active Directory Tenant ID.
-          maxLength: 36
-          minLength: 32
-          pattern: ^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$
     CloudProviderAccessFeatureUsage:
       type: object
       description: MongoDB Cloud features associated with this Amazon Web Services
@@ -22685,10 +22717,8 @@ components:
           readOnly: true
         atlasAzureAppId:
           type: string
+          format: uuid
           description: Azure Active Directory Application ID of Atlas.
-          maxLength: 36
-          minLength: 32
-          pattern: ^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$
         lastUpdatedDate:
           type: string
           format: date-time
@@ -22698,16 +22728,12 @@ components:
           readOnly: true
         servicePrincipalId:
           type: string
+          format: uuid
           description: UUID string that identifies the Azure Service Principal.
-          maxLength: 36
-          minLength: 32
-          pattern: ^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$
         tenantId:
           type: string
+          format: uuid
           description: UUID String that identifies the Azure Active Directory Tenant ID.
-          maxLength: 36
-          minLength: 32
-          pattern: ^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$
         gcpServiceAccountForAtlas:
           type: string
           description: Email address for the Google Service Account created by Atlas.
@@ -22762,6 +22788,8 @@ components:
         roleId:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the role.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: ^([a-f0-9]{24})$
           readOnly: true
         _id:
           type: string
@@ -22773,10 +22801,8 @@ components:
           readOnly: true
         atlasAzureAppId:
           type: string
+          format: uuid
           description: Azure Active Directory Application ID of Atlas.
-          maxLength: 36
-          minLength: 32
-          pattern: ^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$
         lastUpdatedDate:
           type: string
           format: date-time
@@ -22786,16 +22812,12 @@ components:
           readOnly: true
         servicePrincipalId:
           type: string
+          format: uuid
           description: UUID string that identifies the Azure Service Principal.
-          maxLength: 36
-          minLength: 32
-          pattern: ^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$
         tenantId:
           type: string
+          format: uuid
           description: UUID String that identifies the Azure Active Directory Tenant ID.
-          maxLength: 36
-          minLength: 32
-          pattern: ^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$
         gcpServiceAccountForAtlas:
           type: string
           description: ID string that identifies the GCP Service Account used by Atlas.
@@ -22871,10 +22893,8 @@ components:
           readOnly: true
         atlasAzureAppId:
           type: string
+          format: uuid
           description: Azure Active Directory Application ID of Atlas.
-          maxLength: 36
-          minLength: 32
-          pattern: ^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$
         lastUpdatedDate:
           type: string
           format: date-time
@@ -22884,16 +22904,12 @@ components:
           readOnly: true
         servicePrincipalId:
           type: string
+          format: uuid
           description: UUID string that identifies the Azure Service Principal.
-          maxLength: 36
-          minLength: 32
-          pattern: ^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$
         tenantId:
           type: string
+          format: uuid
           description: UUID String that identifies the Azure Active Directory Tenant ID.
-          maxLength: 36
-          minLength: 32
-          pattern: ^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$
       required:
         - providerName
     CloudProviderAccessRoles:
@@ -24406,6 +24422,8 @@ components:
             - 61cfdfd00000000000000000
           items:
             type: string
+            example: 32b6e34b3d91647abb20e7b8
+            pattern: ^([a-f0-9]{24})$
         endDate:
           type: string
           format: date
@@ -24430,6 +24448,8 @@ components:
             - 61cfdfd00000000000000000
           items:
             type: string
+            example: 32b6e34b3d91647abb20e7b8
+            pattern: ^([a-f0-9]{24})$
         projects:
           type: array
           description: The list of projects to be included in the Cost Explorer Query.
@@ -24438,6 +24458,8 @@ components:
             - 61cfdfd00000000000000000
           items:
             type: string
+            example: 32b6e34b3d91647abb20e7b8
+            pattern: ^([a-f0-9]{24})$
         services:
           type: array
           description: The list of projects to be included in the Cost Explorer Query.
@@ -24635,6 +24657,8 @@ components:
         iamRoleId:
           type: string
           description: ID of the AWS IAM role that will be used to write to the S3 bucket.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: ^([a-f0-9]{24})$
         links:
           type: array
           description: List of one or more Uniform Resource Locators (URLs) that point to
@@ -24727,6 +24751,8 @@ components:
           type: string
           description: Unique identifier of the role that Data Federation can use to
             access the data stores. Required if specifying cloudProviderConfig.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: ^([a-f0-9]{24})$
         servicePrincipalId:
           type: string
           description: The ID of the Service Principal for which there is an access policy
@@ -24753,6 +24779,8 @@ components:
           type: string
           description: Unique identifier of the role that Data Federation can use to
             access the data stores. Required if specifying cloudProviderConfig.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: ^([a-f0-9]{24})$
       required:
         - roleId
     DataFederationLimit:
@@ -24881,6 +24909,8 @@ components:
           type: string
           description: Unique identifier of the role that the data lake can use to access
             the data stores.Required if specifying cloudProviderConfig.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: ^([a-f0-9]{24})$
         testS3Bucket:
           type: string
           description: Name of the S3 data bucket that the provided role ID is authorized
@@ -25350,6 +25380,16 @@ components:
           description: Flag that indicates whether to prevent cluster users from deleting
             backups copied to other regions, even if those additional snapshot
             regions are removed. If unspecified, this value defaults to false.
+        deletable:
+          type: boolean
+          default: false
+          description: Flag that indicates whether the Backup Compliance Policy is allowed
+            to be disabled. It is default to false and a support ticket needs to
+            be filed to request setting to true.
+          externalDocs:
+            description: Configure a Backup Compliance Policy
+            url: https://www.mongodb.com/docs/atlas/backup/cloud-backup/backup-compliance-policy/
+          readOnly: true
         encryptionAtRestEnabled:
           type: boolean
           default: false
@@ -25676,6 +25716,8 @@ components:
             one zone in the cluster. To find the Zone Id, do a GET request to
             Return One Cluster from One Project and consult the replicationSpecs
             array [Return One Cluster from One Project](#operation/getCluster).
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: ^([a-f0-9]{24})$
           writeOnly: true
       writeOnly: true
     Destination:
@@ -25738,6 +25780,7 @@ components:
           type: string
           description: Unique 24-hexadecimal digit string that identifies this backup
             policy item.
+          example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
           pattern: ^([a-f0-9]{24})$
@@ -25792,6 +25835,8 @@ components:
             one zone in the cluster. To find the Zone Id, do a GET request to
             Return One Cluster from One Project and consult the replicationSpecs
             array [Return One Cluster From One Project](#operation/getCluster).
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: ^([a-f0-9]{24})$
       required:
         - zoneId
     DiskBackupExportJob:
@@ -26436,14 +26481,11 @@ components:
           minLength: 33
         tenantId:
           type: string
+          format: uuid
           deprecated: true
           description: "UUID that identifies the Azure Active Directory Tenant ID.
             Deprecated: this field is ignored; the tenantId of the Cloud
             Provider Access role (from roleId) is used."
-          example: 4297fc77-1592-4de8-a6d5-a8c32401df87
-          maxLength: 36
-          minLength: 36
-          pattern: ^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$
       required:
         - bucketName
         - cloudProvider
@@ -26509,12 +26551,9 @@ components:
           minLength: 33
         tenantId:
           type: string
+          format: uuid
           description: UUID that identifies the Azure Active Directory Tenant ID used
             during exports.
-          example: 4297fc77-1592-4de8-a6d5-a8c32401df87
-          maxLength: 36
-          minLength: 36
-          pattern: ^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$
       required:
         - _id
         - bucketName
@@ -27470,6 +27509,7 @@ components:
         userId:
           type: string
           description: Unique 24-hexadecimal digit string that identifies this user.
+          example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
           pattern: ^([a-f0-9]{24})$
@@ -27955,35 +27995,6 @@ components:
       type: object
       description: Details to create one restore job of a flex cluster.
       properties:
-        _snapshotId:
-          type: string
-          description: Unique 24-hexadecimal digit string that identifies the snapshot to
-            restore.
-          example: 32b6e34b3d91647abb20e7b8
-          maxLength: 24
-          minLength: 24
-          pattern: ^([a-f0-9]{24})$
-          writeOnly: true
-        _targetDeploymentItemName:
-          type: string
-          description: Human-readable label that identifies the instance or cluster on the
-            target project to which you want to restore the snapshot. You can
-            restore the snapshot to another flex cluster or dedicated cluster
-            tier.
-          maxLength: 64
-          minLength: 1
-          pattern: ^[\p{L}\p{N}\-_.(),:&@+']{1,64}$
-          writeOnly: true
-        _targetProjectId:
-          type: string
-          description: Unique 24-hexadecimal digit string that identifies the project that
-            contains the instance or cluster to which you want to restore the
-            snapshot.
-          example: 32b6e34b3d91647abb20e7b8
-          maxLength: 24
-          minLength: 24
-          pattern: ^([a-f0-9]{24})$
-          writeOnly: true
         deliveryType:
           type: string
           description: Means by which this resource returns the snapshot to the requesting
@@ -28053,6 +28064,15 @@ components:
             This parameter expresses its value in the ISO 8601 timestamp format
             in UTC.
           readOnly: true
+        snapshotId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the snapshot to
+            restore.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          writeOnly: true
         snapshotUrl:
           type: string
           description: 'Internet address from which you can download the compressed
@@ -28064,9 +28084,29 @@ components:
           description: Phase of the restore workflow for this job at the time this
             resource made this request.
           readOnly: true
+        targetDeploymentItemName:
+          type: string
+          description: Human-readable label that identifies the instance or cluster on the
+            target project to which you want to restore the snapshot. You can
+            restore the snapshot to another flex cluster or dedicated cluster
+            tier.
+          maxLength: 64
+          minLength: 1
+          pattern: ^[\p{L}\p{N}\-_.(),:&@+']{1,64}$
+          writeOnly: true
+        targetProjectId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the project that
+            contains the instance or cluster to which you want to restore the
+            snapshot.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          writeOnly: true
       required:
-        - _snapshotId
-        - _targetDeploymentItemName
+        - snapshotId
+        - targetDeploymentItemName
       title: Create Flex Backup Restore Job
     FlexBackupSettings20241113:
       type: object
@@ -28148,15 +28188,6 @@ components:
       type: object
       description: Details for one backup snapshot download of a flex cluster.
       properties:
-        _snapshotId:
-          type: string
-          description: Unique 24-hexadecimal digit string that identifies the snapshot to
-            download.
-          example: 32b6e34b3d91647abb20e7b8
-          maxLength: 24
-          minLength: 24
-          pattern: ^([a-f0-9]{24})$
-          writeOnly: true
         links:
           type: array
           description: List of one or more Uniform Resource Locators (URLs) that point to
@@ -28168,8 +28199,17 @@ components:
           items:
             $ref: "#/components/schemas/Link"
           readOnly: true
+        snapshotId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the snapshot to
+            download.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          writeOnly: true
       required:
-        - _snapshotId
+        - snapshotId
       title: Flex Backup Snapshot Download Create
     FlexClusterDescription20241113:
       type: object
@@ -28479,6 +28519,8 @@ components:
                The 24-hexadecimal string corresponds to a `Replication Specifications` `zoneId` property.
 
               This parameter returns an empty object if no custom zones exist.
+            example: 32b6e34b3d91647abb20e7b8
+            pattern: ^([a-f0-9]{24})$
             readOnly: true
           description: >-
             List that contains comma-separated key value pairs to map zones to
@@ -28977,6 +29019,7 @@ components:
         clientId:
           type: string
           description: The Client ID of the Service Account.
+          example: mdb_sa_id_1234567890abcdef12345678
           pattern: ^mdb_sa_id_[a-fA-F\d]{24}$
         createdAt:
           type: string
@@ -29026,8 +29069,10 @@ components:
         secretExpiresAfterHours:
           type: integer
           format: int32
-          description: The expiration time of the new Service Account secret. The
-            expiration is provided in hours.
+          description: The expiration time of the new Service Account secret, provided in
+            hours. The minimum and maximum allowed expiration times are subject
+            to change and are controlled by the organization's settings.
+          example: 8
       required:
         - description
         - name
@@ -31659,6 +31704,7 @@ components:
         clientId:
           type: string
           description: The Client ID of the Service Account.
+          example: mdb_sa_id_1234567890abcdef12345678
           pattern: ^mdb_sa_id_[a-fA-F\d]{24}$
         createdAt:
           type: string
@@ -31708,8 +31754,10 @@ components:
         secretExpiresAfterHours:
           type: integer
           format: int32
-          description: The expiration time of the new Service Account secret. The
-            expiration is provided in hours.
+          description: The expiration time of the new Service Account secret, provided in
+            hours. The minimum and maximum allowed expiration times are subject
+            to change and are controlled by the organization's settings.
+          example: 8
       required:
         - description
         - name
@@ -31926,6 +31974,8 @@ components:
           description: Number that represents the maximum period before expiry in hours
             for new Atlas Admin API Service Account secrets within the specified
             organization.
+          maximum: 8760
+          minimum: 8
         multiFactorAuthRequired:
           type: boolean
           description: "Flag that indicates whether to require users to set up
@@ -32039,7 +32089,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedEventTypeDetailsResponse:
@@ -32067,7 +32118,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedFederationIdentityProvider:
@@ -32095,7 +32147,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedFlexClusters20241113:
@@ -32123,7 +32176,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedGroupServiceAccounts:
@@ -32152,7 +32206,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedHostView_Atlas:
@@ -32180,7 +32235,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedOrgServiceAccounts:
@@ -32209,7 +32265,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedServiceAccountGroup:
@@ -32238,7 +32295,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PemFileInfo:
@@ -32276,6 +32334,7 @@ components:
         id:
           type: string
           description: Unique 24-hexadecimal digit string that identifies this index.
+          example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
           pattern: ^([a-f0-9]{24})$
@@ -32391,6 +32450,7 @@ components:
           type: string
           description: Unique 24-hexadecimal digit string that identifies this shape. This
             string exists only for the duration of this API request.
+          example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
           pattern: ^([a-f0-9]{24})$
@@ -32449,11 +32509,15 @@ components:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the request
             cluster.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: ^([a-f0-9]{24})$
           readOnly: true
         groupId:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the request
             project.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: ^([a-f0-9]{24})$
           readOnly: true
         pinnedNamespaces:
           type: array
@@ -32568,10 +32632,6 @@ components:
     PrivateNetworkEndpointIdEntry:
       type: object
       properties:
-        azureConnectionName:
-          type: string
-          description: Connection name that identifies the Azure private endpoint
-            connection.
         azureLinkId:
           type: string
           description: Link ID that identifies the Azure private endpoint connection.
@@ -32655,6 +32715,8 @@ components:
         iamRoleId:
           type: string
           description: ID of the AWS IAM role that will be used to write to the S3 bucket.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: ^([a-f0-9]{24})$
         links:
           type: array
           description: List of one or more Uniform Resource Locators (URLs) that point to
@@ -33761,6 +33823,7 @@ components:
             This parameter requires the address to be expressed as one Internet
             Protocol version 4 or version 6 address. The resource returns this
             parameter after this IP address makes at least one request.
+          example: 203.0.113.10
           readOnly: true
         lastUsedAt:
           type: string
@@ -33804,13 +33867,13 @@ components:
         maskedSecretValue:
           type: string
           description: The masked Service Account secret.
-          example: mdb_ic_sk_...12ce
+          example: mdb_sa_sk_...
           readOnly: true
         secret:
           type: string
           description: The secret for the Service Account. It will be returned only the
             first time after creation.
-          pattern: ^mdb_sa_sk_[0-9a-zA-Z_-]{40}$
+          example: mdb_sa_sk_...
           readOnly: true
       required:
         - createdAt
@@ -33822,8 +33885,10 @@ components:
         secretExpiresAfterHours:
           type: integer
           format: int32
-          description: The expiration time of the new Service Account secret. The
-            expiration is provided in hours.
+          description: The expiration time of the new Service Account secret, provided in
+            hours. The minimum and maximum allowed expiration times are subject
+            to change and are controlled by the organization's settings.
+          example: 8
       required:
         - secretExpiresAfterHours
     ShardEntry:
@@ -34282,6 +34347,8 @@ components:
         _id:
           type: string
           description: The ID of the Private Link connection.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: ^([a-f0-9]{24})$
         dnsDomain:
           type: string
           description: Domain name of Privatelink connected cluster.
@@ -34392,7 +34459,8 @@ components:
           type: array
           description: Stream aggregation pipeline you want to apply to your streaming data.
           items:
-            $ref: "#/components/schemas/Document"
+            type: object
+            readOnly: true
           readOnly: true
         state:
           type: string
@@ -35075,6 +35143,8 @@ components:
             - 650dd6200000000000000000
           items:
             type: string
+            example: 32b6e34b3d91647abb20e7b8
+            pattern: ^([a-f0-9]{24})$
           uniqueItems: true
         groupIds:
           type: array
@@ -35084,6 +35154,8 @@ components:
             - 650dd6200000000000000000
           items:
             type: string
+            example: 32b6e34b3d91647abb20e7b8
+            pattern: ^([a-f0-9]{24})$
           uniqueItems: true
         includeZeroCentLineItems:
           type: boolean
@@ -35137,7 +35209,7 @@ components:
           description: Range of IP addresses in Classless Inter-Domain Routing (CIDR)
             notation in the access list for the API key.
           example: 203.0.113.0/24
-          pattern: ^((([0-9]{1,3}\.){3}[0-9]{1,3})|([\:]{0,2}([0-9a-f]{1,4}\:){0,7}[0-9a-f]{1,4}[\:]{0,2}))((%2[fF]|\/)[0-9]{1,3})+$
+          pattern: ^((([0-9]{1,3}\.){3}[0-9]{1,3})|(:{0,2}([0-9a-f]{1,4}:){0,7}[0-9a-f]{1,4}[:]{0,2}))((%2[fF]|/)[0-9]{1,3})+$
         count:
           type: integer
           format: int32
@@ -35157,7 +35229,7 @@ components:
           type: string
           description: Network address in the access list for the API key.
           example: 203.0.113.10
-          pattern: ^((([0-9]{1,3}\.){3}[0-9]{1,3})|([\:]{0,2}([0-9a-f]{1,4}\:){0,7}[0-9a-f]{1,4}[\:]{0,2}))$
+          pattern: ^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)(\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$
         lastUsed:
           type: string
           format: date-time
@@ -35176,7 +35248,6 @@ components:
             Protocol version 4 or version 6 address. The resource returns this
             parameter after this IP address made at least one request.
           example: 203.0.113.10
-          pattern: ^((([0-9]{1,3}\.){3}[0-9]{1,3})|([\:]{0,2}([0-9a-f]{1,4}\:){0,7}[0-9a-f]{1,4}[\:]{0,2}))$
           readOnly: true
         links:
           type: array
@@ -35203,6 +35274,7 @@ components:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the organization
             API key.
+          example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
           pattern: ^([a-f0-9]{24})$
@@ -36298,6 +36370,8 @@ components:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the request
             project.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: ^([a-f0-9]{24})$
           readOnly: true
         identifierId:
           type: string
@@ -36381,9 +36455,10 @@ components:
           default: ISODATE
           description: >-
             Syntax used to write the date after which data moves to the online
-            archive. Date can be expressed as ISO 8601 or Epoch timestamps. The
-            Epoch timestamp can be expressed as nanoseconds, milliseconds, or
-            seconds. Set this parameter when **"criteria.type" : "DATE"**.
+            archive. Date can be expressed as ISO 8601, Epoch timestamps, or
+            ObjectId. The Epoch timestamp can be expressed as nanoseconds,
+            milliseconds, or seconds. Set this parameter when **"criteria.type"
+            : "DATE"**.
 
             You must set **"criteria.type" : "DATE"** if **"collectionType": "TIMESERIES"**.
         expireAfterDays:
@@ -36469,7 +36544,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     MatcherField:
@@ -36513,7 +36589,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedAlertConfig:
@@ -36541,7 +36618,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedAlert:
@@ -36569,7 +36647,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiApiUser:
@@ -36597,7 +36676,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiAppUser:
@@ -36625,7 +36705,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiAtlasCheckpoint:
@@ -36653,7 +36734,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiAtlasDatabaseUser:
@@ -36683,7 +36765,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiAtlasDiskBackupExportJob:
@@ -36711,7 +36794,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiAtlasEARPrivateEndpoint:
@@ -36739,7 +36823,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiAtlasFlexBackupRestoreJob20241113:
@@ -36767,7 +36852,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiAtlasFlexBackupSnapshot20241113:
@@ -36795,7 +36881,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiAtlasProviderRegions:
@@ -36823,7 +36910,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiAtlasServerlessBackupRestoreJob:
@@ -36851,7 +36939,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiAtlasServerlessBackupSnapshot:
@@ -36879,7 +36968,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiInvoiceMetadata:
@@ -36907,7 +36997,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiInvoice:
@@ -36935,7 +37026,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiStreamsConnection:
@@ -36963,7 +37055,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiStreamsPrivateLink:
@@ -36991,7 +37084,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiStreamsStreamProcessorWithStats:
@@ -37019,7 +37113,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiStreamsTenant:
@@ -37047,7 +37142,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedApiUserAccessListResponse:
@@ -37075,7 +37171,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedAppUser:
@@ -37103,7 +37200,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedAtlasGroup:
@@ -37131,7 +37229,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedAvailableVersion:
@@ -37159,7 +37258,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedBackupSnapshotExportBuckets:
@@ -37187,7 +37287,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedBackupSnapshot:
@@ -37215,7 +37316,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedCloudBackupReplicaSet:
@@ -37243,7 +37345,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedCloudBackupRestoreJob:
@@ -37271,7 +37374,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedCloudBackupShardedClusterSnapshot:
@@ -37299,7 +37403,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedCloudProviderContainer:
@@ -37328,7 +37433,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
       title: Network Peering
@@ -37357,7 +37463,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedContainerPeer:
@@ -37386,7 +37493,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedDatabase:
@@ -37414,7 +37522,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedDiskPartition:
@@ -37442,7 +37551,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedIntegration:
@@ -37470,7 +37580,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedNetworkAccess:
@@ -37498,7 +37609,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedOnlineArchive:
@@ -37526,7 +37638,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedOrgGroup:
@@ -37554,7 +37667,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedOrganization:
@@ -37582,7 +37696,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedPipelineRun:
@@ -37610,7 +37725,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedPrivateNetworkEndpointIdEntry:
@@ -37638,7 +37754,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedPublicApiUsageDetailsLineItem:
@@ -37666,7 +37783,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedRestoreJob:
@@ -37694,7 +37812,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedRoleMapping:
@@ -37724,7 +37843,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedServerlessInstanceDescription:
@@ -37752,7 +37872,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedServiceAccountIPAccessEntry:
@@ -37780,7 +37901,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedSnapshot:
@@ -37808,7 +37930,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedTeamRole:
@@ -37836,7 +37959,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedTeam:
@@ -37864,7 +37988,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedTenantRestore:
@@ -37892,7 +38017,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedTenantSnapshot:
@@ -37920,7 +38046,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PaginatedUserCert:
@@ -37948,7 +38075,8 @@ components:
           type: integer
           format: int32
           description: Total number of documents available. MongoDB Cloud omits this value
-            if `includeCount` is set to `false`.
+            if `includeCount` is set to `false`. The total number is an estimate
+            and may not be exact.
           minimum: 0
           readOnly: true
     PartitionField:
@@ -38068,6 +38196,8 @@ components:
         groupId:
           type: string
           description: Group id associated with the line item.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: ^([a-f0-9]{24})$
         quantity:
           type: number
           format: double
