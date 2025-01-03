@@ -10,7 +10,7 @@ type ApiSearchDeploymentResponse struct {
 	// Unique 24-hexadecimal digit string that identifies the search deployment.
 	// Read only field.
 	Id *string `json:"id,omitempty"`
-	// List of settings that configure the Search Nodes for your cluster.
+	// List of settings that configure the Search Nodes for your cluster. The configuration will be returned for each region and shard.
 	// Read only field.
 	Specs *[]ApiSearchDeploymentSpec `json:"specs,omitempty"`
 	// Human-readable label that indicates the current operating condition of this search deployment.
