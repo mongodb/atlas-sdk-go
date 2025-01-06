@@ -27,7 +27,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: f2d3832722b696c6611b5666215a7e36d52aac95
+  x-xgen-sha: b30dca0a1318cf8279cab906a13fd2bfa4889cea
 servers:
   - url: https://cloud.mongodb.com
 security:
@@ -23861,6 +23861,24 @@ components:
         clusterName:
           type: string
           description: Human-readable label that identifies the cluster.
+          readOnly: true
+        futureInbound:
+          type: array
+          description: List of future inbound IP addresses associated with the cluster. If
+            your network allows outbound HTTP requests only to specific IP
+            addresses, you must allow access to the following IP addresses so
+            that your application can connect to your Atlas cluster.
+          items:
+            type: string
+          readOnly: true
+        futureOutbound:
+          type: array
+          description: List of future outbound IP addresses associated with the cluster.
+            If your network allows inbound HTTP requests only from specific IP
+            addresses, you must allow access from the following IP addresses so
+            that your Atlas cluster can communicate with your webhooks and KMS.
+          items:
+            type: string
           readOnly: true
         inbound:
           type: array
