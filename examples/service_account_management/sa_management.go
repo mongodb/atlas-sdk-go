@@ -11,7 +11,7 @@ import (
 
 // Example for Service Account Management API
 // Example uses Service Account to create Service Account.
-// Please ensure that Service Account has organizational admin permission.
+// Please ensure that Service Account has ORG_OWNER permission.
 
 // Required env variables to run example:
 // export MONGODB_ATLAS_CLIENT_ID="your_client_id"
@@ -58,7 +58,7 @@ func main() {
 		admin.NewOrgServiceAccountRequest(
 			"SA created by sdk-example",
 			"example",
-			[]string{"ORG_OWNER"},
+			[]string{"ORG_READ_ONLY"},
 			365*24,
 		),
 	)
@@ -110,4 +110,5 @@ func main() {
 
 	// 6. Remove created Service Account. We would not be able to use it afterward without access to Secret value.
 	sdk.ServiceAccountsApi.DeleteServiceAccount(ctx, sa.GetClientId(), orgID)
+	fmt.Printf("Created service account was deleted.")
 }
