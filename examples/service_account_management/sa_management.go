@@ -66,6 +66,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("Error: %v", err)
 	}
+	fmt.Printf("Created new service account.")
 
 	// 2. Rotate secret
 	newSecret, _, err := sdk.ServiceAccountsApi.CreateServiceAccountSecret(
