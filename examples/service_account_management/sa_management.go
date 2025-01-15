@@ -111,5 +111,5 @@ func main() {
 
 	// 6. Remove created Service Account. We would not be able to use it afterward without access to Secret value.
 	sdk.ServiceAccountsApi.DeleteServiceAccount(ctx, sa.GetClientId(), orgID)
-	fmt.Printf("Created service account was deleted.")
+	fmt.Println("Created service account was deleted.")
 }
