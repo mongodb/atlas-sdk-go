@@ -12,7 +12,7 @@ require (
 	go.mongodb.org/atlas-sdk/v20241113004 v20241113004.1.0
 )
 
-require golang.org/x/oauth2 v0.24.0 // indirect
+require golang.org/x/oauth2 v0.25.0 // indirect
 
 require (
 	github.com/davecgh/go-spew v1.1.1 // indirect

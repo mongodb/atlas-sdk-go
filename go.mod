@@ -5,7 +5,7 @@ go 1.22.0
 require (
 	github.com/go-test/deep v1.1.1
 	github.com/mongodb-forks/digest v1.1.0
-	golang.org/x/oauth2 v0.24.0
+	golang.org/x/oauth2 v0.25.0
 )
 
 require (
