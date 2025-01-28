@@ -68,6 +68,9 @@ type EventViewForNdsGroup struct {
 	// Action that the database attempted to execute when the event triggered. The response returns this parameter when `eventTypeName\" : \"DATA_EXPLORER\"`.
 	// Read only field.
 	OpType *string `json:"opType,omitempty"`
+	// Unique 24-hexadecimal digit string that identifies the Data Explorer session associated with the event.
+	// Read only field.
+	SessionId *string `json:"sessionId,omitempty"`
 	// Desk location of MongoDB employee associated with the event.
 	// Read only field.
 	DeskLocation *string `json:"deskLocation,omitempty"`
@@ -829,6 +832,39 @@ func (o *EventViewForNdsGroup) HasOpType() bool {
 // SetOpType gets a reference to the given string and assigns it to the OpType field.
 func (o *EventViewForNdsGroup) SetOpType(v string) {
 	o.OpType = &v
+}
+
+// GetSessionId returns the SessionId field value if set, zero value otherwise
+func (o *EventViewForNdsGroup) GetSessionId() string {
+	if o == nil || IsNil(o.SessionId) {
+		var ret string
+		return ret
+	}
+	return *o.SessionId
+}
+
+// GetSessionIdOk returns a tuple with the SessionId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EventViewForNdsGroup) GetSessionIdOk() (*string, bool) {
+	if o == nil || IsNil(o.SessionId) {
+		return nil, false
+	}
+
+	return o.SessionId, true
+}
+
+// HasSessionId returns a boolean if a field has been set.
+func (o *EventViewForNdsGroup) HasSessionId() bool {
+	if o != nil && !IsNil(o.SessionId) {
+		return true
+	}
+
+	return false
+}
+
+// SetSessionId gets a reference to the given string and assigns it to the SessionId field.
+func (o *EventViewForNdsGroup) SetSessionId(v string) {
+	o.SessionId = &v
 }
 
 // GetDeskLocation returns the DeskLocation field value if set, zero value otherwise

@@ -225,7 +225,7 @@ type TeamsApi interface {
 	ListTeamUsersWithParams(ctx context.Context, args *ListTeamUsersApiParams) ListTeamUsersApiRequest
 
 	// Method available only for mocking purposes
-	ListTeamUsersExecute(r ListTeamUsersApiRequest) (*PaginatedAppUser, *http.Response, error)
+	ListTeamUsersExecute(r ListTeamUsersApiRequest) (*PaginatedOrgUser, *http.Response, error)
 
 	/*
 		RemoveProjectTeam Remove One Team from One Project
@@ -1404,7 +1404,7 @@ func (r ListTeamUsersApiRequest) PageNum(pageNum int) ListTeamUsersApiRequest {
 	return r
 }
 
-func (r ListTeamUsersApiRequest) Execute() (*PaginatedAppUser, *http.Response, error) {
+func (r ListTeamUsersApiRequest) Execute() (*PaginatedOrgUser, *http.Response, error) {
 	return r.ApiService.ListTeamUsersExecute(r)
 }
 
@@ -1429,13 +1429,13 @@ func (a *TeamsApiService) ListTeamUsers(ctx context.Context, orgId string, teamI
 
 // ListTeamUsersExecute executes the request
 //
-//	@return PaginatedAppUser
-func (a *TeamsApiService) ListTeamUsersExecute(r ListTeamUsersApiRequest) (*PaginatedAppUser, *http.Response, error) {
+//	@return PaginatedOrgUser
+func (a *TeamsApiService) ListTeamUsersExecute(r ListTeamUsersApiRequest) (*PaginatedOrgUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue *PaginatedAppUser
+		localVarReturnValue *PaginatedOrgUser
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamsApiService.ListTeamUsers")
@@ -1475,7 +1475,7 @@ func (a *TeamsApiService) ListTeamUsersExecute(r ListTeamUsersApiRequest) (*Pagi
 	}
 
 	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2043-01-01+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)

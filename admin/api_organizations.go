@@ -254,7 +254,7 @@ type OrganizationsApi interface {
 	ListOrganizationUsersWithParams(ctx context.Context, args *ListOrganizationUsersApiParams) ListOrganizationUsersApiRequest
 
 	// Method available only for mocking purposes
-	ListOrganizationUsersExecute(r ListOrganizationUsersApiRequest) (*PaginatedAppUser, *http.Response, error)
+	ListOrganizationUsersExecute(r ListOrganizationUsersApiRequest) (*PaginatedOrgUser, *http.Response, error)
 
 	/*
 		ListOrganizations Return All Organizations
@@ -1580,7 +1580,7 @@ func (r ListOrganizationUsersApiRequest) PageNum(pageNum int) ListOrganizationUs
 	return r
 }
 
-func (r ListOrganizationUsersApiRequest) Execute() (*PaginatedAppUser, *http.Response, error) {
+func (r ListOrganizationUsersApiRequest) Execute() (*PaginatedOrgUser, *http.Response, error) {
 	return r.ApiService.ListOrganizationUsersExecute(r)
 }
 
@@ -1603,13 +1603,13 @@ func (a *OrganizationsApiService) ListOrganizationUsers(ctx context.Context, org
 
 // ListOrganizationUsersExecute executes the request
 //
-//	@return PaginatedAppUser
-func (a *OrganizationsApiService) ListOrganizationUsersExecute(r ListOrganizationUsersApiRequest) (*PaginatedAppUser, *http.Response, error) {
+//	@return PaginatedOrgUser
+func (a *OrganizationsApiService) ListOrganizationUsersExecute(r ListOrganizationUsersApiRequest) (*PaginatedOrgUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue *PaginatedAppUser
+		localVarReturnValue *PaginatedOrgUser
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.ListOrganizationUsers")
@@ -1655,7 +1655,7 @@ func (a *OrganizationsApiService) ListOrganizationUsersExecute(r ListOrganizatio
 	}
 
 	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2043-01-01+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -1937,7 +1937,7 @@ func (a *OrganizationsApiService) RemoveOrganizationUserExecute(r RemoveOrganiza
 	}
 
 	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2043-01-01+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
