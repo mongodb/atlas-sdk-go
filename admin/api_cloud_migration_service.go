@@ -45,14 +45,14 @@ type CloudMigrationServiceApi interface {
 
 		 You can use this API endpoint for push live migrations only. Your API Key must have the Organization Owner role to successfully call this resource.
 
-		 **NOTE**: Migrating time-series collections is not yet supported on MongoDB 6.0 or higher. Migrations on MongoDB 6.0 or higher will skip any time-series collections on the source cluster. Deprecated versions: v2-{2023-01-01}
+		 **NOTE**: Migrating time-series collections is not yet supported on MongoDB 6.0 or higher. Migrations on MongoDB 6.0 or higher will skip any time-series collections on the source cluster.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-			@param liveMigrationRequest20240530 One migration to be created.
+			@param liveMigrationRequest One migration to be created.
 			@return CreatePushMigrationApiRequest
 	*/
-	CreatePushMigration(ctx context.Context, groupId string, liveMigrationRequest20240530 *LiveMigrationRequest20240530) CreatePushMigrationApiRequest
+	CreatePushMigration(ctx context.Context, groupId string, liveMigrationRequest *LiveMigrationRequest) CreatePushMigrationApiRequest
 	/*
 		CreatePushMigration Migrate One Local Managed Cluster to MongoDB Atlas
 
@@ -187,14 +187,14 @@ type CloudMigrationServiceApi interface {
 	/*
 		ValidateMigration Validate One Migration Request
 
-		Verifies whether the provided credentials, available disk space, MongoDB versions, and so on meet the requirements of the migration request. If the check passes, the migration can proceed. Your API Key must have the Organization Owner role to successfully call this resource. Deprecated versions: v2-{2023-01-01}
+		Verifies whether the provided credentials, available disk space, MongoDB versions, and so on meet the requirements of the migration request. If the check passes, the migration can proceed. Your API Key must have the Organization Owner role to successfully call this resource.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param liveMigrationRequest20240530 One migration to be validated.
+		@param liveMigrationRequest One migration to be validated.
 		@return ValidateMigrationApiRequest
 	*/
-	ValidateMigration(ctx context.Context, groupId string, liveMigrationRequest20240530 *LiveMigrationRequest20240530) ValidateMigrationApiRequest
+	ValidateMigration(ctx context.Context, groupId string, liveMigrationRequest *LiveMigrationRequest) ValidateMigrationApiRequest
 	/*
 		ValidateMigration Validate One Migration Request
 
@@ -333,23 +333,23 @@ func (a *CloudMigrationServiceApiService) CreateLinkTokenExecute(r CreateLinkTok
 }
 
 type CreatePushMigrationApiRequest struct {
-	ctx                          context.Context
-	ApiService                   CloudMigrationServiceApi
-	groupId                      string
-	liveMigrationRequest20240530 *LiveMigrationRequest20240530
+	ctx                  context.Context
+	ApiService           CloudMigrationServiceApi
+	groupId              string
+	liveMigrationRequest *LiveMigrationRequest
 }
 
 type CreatePushMigrationApiParams struct {
-	GroupId                      string
-	LiveMigrationRequest20240530 *LiveMigrationRequest20240530
+	GroupId              string
+	LiveMigrationRequest *LiveMigrationRequest
 }
 
 func (a *CloudMigrationServiceApiService) CreatePushMigrationWithParams(ctx context.Context, args *CreatePushMigrationApiParams) CreatePushMigrationApiRequest {
 	return CreatePushMigrationApiRequest{
-		ApiService:                   a,
-		ctx:                          ctx,
-		groupId:                      args.GroupId,
-		liveMigrationRequest20240530: args.LiveMigrationRequest20240530,
+		ApiService:           a,
+		ctx:                  ctx,
+		groupId:              args.GroupId,
+		liveMigrationRequest: args.LiveMigrationRequest,
 	}
 }
 
@@ -366,18 +366,18 @@ Migrate one cluster that Cloud or Ops Manager manages to MongoDB Atlas.
 
 	You can use this API endpoint for push live migrations only. Your API Key must have the Organization Owner role to successfully call this resource.
 
-	**NOTE**: Migrating time-series collections is not yet supported on MongoDB 6.0 or higher. Migrations on MongoDB 6.0 or higher will skip any time-series collections on the source cluster. Deprecated versions: v2-{2023-01-01}
+	**NOTE**: Migrating time-series collections is not yet supported on MongoDB 6.0 or higher. Migrations on MongoDB 6.0 or higher will skip any time-series collections on the source cluster.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return CreatePushMigrationApiRequest
 */
-func (a *CloudMigrationServiceApiService) CreatePushMigration(ctx context.Context, groupId string, liveMigrationRequest20240530 *LiveMigrationRequest20240530) CreatePushMigrationApiRequest {
+func (a *CloudMigrationServiceApiService) CreatePushMigration(ctx context.Context, groupId string, liveMigrationRequest *LiveMigrationRequest) CreatePushMigrationApiRequest {
 	return CreatePushMigrationApiRequest{
-		ApiService:                   a,
-		ctx:                          ctx,
-		groupId:                      groupId,
-		liveMigrationRequest20240530: liveMigrationRequest20240530,
+		ApiService:           a,
+		ctx:                  ctx,
+		groupId:              groupId,
+		liveMigrationRequest: liveMigrationRequest,
 	}
 }
 
@@ -403,12 +403,12 @@ func (a *CloudMigrationServiceApiService) CreatePushMigrationExecute(r CreatePus
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.liveMigrationRequest20240530 == nil {
-		return localVarReturnValue, nil, reportError("liveMigrationRequest20240530 is required and must be specified")
+	if r.liveMigrationRequest == nil {
+		return localVarReturnValue, nil, reportError("liveMigrationRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.atlas.2024-05-30+json"}
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json", "application/vnd.atlas.2024-05-30+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -425,7 +425,7 @@ func (a *CloudMigrationServiceApiService) CreatePushMigrationExecute(r CreatePus
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.liveMigrationRequest20240530
+	localVarPostBody = r.liveMigrationRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1015,23 +1015,23 @@ func (a *CloudMigrationServiceApiService) ListSourceProjectsExecute(r ListSource
 }
 
 type ValidateMigrationApiRequest struct {
-	ctx                          context.Context
-	ApiService                   CloudMigrationServiceApi
-	groupId                      string
-	liveMigrationRequest20240530 *LiveMigrationRequest20240530
+	ctx                  context.Context
+	ApiService           CloudMigrationServiceApi
+	groupId              string
+	liveMigrationRequest *LiveMigrationRequest
 }
 
 type ValidateMigrationApiParams struct {
-	GroupId                      string
-	LiveMigrationRequest20240530 *LiveMigrationRequest20240530
+	GroupId              string
+	LiveMigrationRequest *LiveMigrationRequest
 }
 
 func (a *CloudMigrationServiceApiService) ValidateMigrationWithParams(ctx context.Context, args *ValidateMigrationApiParams) ValidateMigrationApiRequest {
 	return ValidateMigrationApiRequest{
-		ApiService:                   a,
-		ctx:                          ctx,
-		groupId:                      args.GroupId,
-		liveMigrationRequest20240530: args.LiveMigrationRequest20240530,
+		ApiService:           a,
+		ctx:                  ctx,
+		groupId:              args.GroupId,
+		liveMigrationRequest: args.LiveMigrationRequest,
 	}
 }
 
@@ -1042,18 +1042,18 @@ func (r ValidateMigrationApiRequest) Execute() (*LiveImportValidation, *http.Res
 /*
 ValidateMigration Validate One Migration Request
 
-Verifies whether the provided credentials, available disk space, MongoDB versions, and so on meet the requirements of the migration request. If the check passes, the migration can proceed. Your API Key must have the Organization Owner role to successfully call this resource. Deprecated versions: v2-{2023-01-01}
+Verifies whether the provided credentials, available disk space, MongoDB versions, and so on meet the requirements of the migration request. If the check passes, the migration can proceed. Your API Key must have the Organization Owner role to successfully call this resource.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return ValidateMigrationApiRequest
 */
-func (a *CloudMigrationServiceApiService) ValidateMigration(ctx context.Context, groupId string, liveMigrationRequest20240530 *LiveMigrationRequest20240530) ValidateMigrationApiRequest {
+func (a *CloudMigrationServiceApiService) ValidateMigration(ctx context.Context, groupId string, liveMigrationRequest *LiveMigrationRequest) ValidateMigrationApiRequest {
 	return ValidateMigrationApiRequest{
-		ApiService:                   a,
-		ctx:                          ctx,
-		groupId:                      groupId,
-		liveMigrationRequest20240530: liveMigrationRequest20240530,
+		ApiService:           a,
+		ctx:                  ctx,
+		groupId:              groupId,
+		liveMigrationRequest: liveMigrationRequest,
 	}
 }
 
@@ -1079,12 +1079,12 @@ func (a *CloudMigrationServiceApiService) ValidateMigrationExecute(r ValidateMig
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.liveMigrationRequest20240530 == nil {
-		return localVarReturnValue, nil, reportError("liveMigrationRequest20240530 is required and must be specified")
+	if r.liveMigrationRequest == nil {
+		return localVarReturnValue, nil, reportError("liveMigrationRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.atlas.2024-05-30+json"}
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json", "application/vnd.atlas.2024-05-30+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -1101,7 +1101,7 @@ func (a *CloudMigrationServiceApiService) ValidateMigrationExecute(r ValidateMig
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.liveMigrationRequest20240530
+	localVarPostBody = r.liveMigrationRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

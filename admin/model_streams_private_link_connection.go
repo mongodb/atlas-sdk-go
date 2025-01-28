@@ -5,12 +5,19 @@ package admin
 // StreamsPrivateLinkConnection Container for metadata needed to create a Private Link connection.
 type StreamsPrivateLinkConnection struct {
 	// The ID of the Private Link connection.
+	// Read only field.
 	Id *string `json:"_id,omitempty"`
+	// Amazon Resource Name (ARN).
+	Arn *string `json:"arn,omitempty"`
 	// Domain name of Privatelink connected cluster.
 	DnsDomain *string `json:"dnsDomain,omitempty"`
 	// Sub-Domain name of Confluent cluster. These are typically your availability zones.
 	DnsSubDomain *[]string `json:"dnsSubDomain,omitempty"`
+	// Error message if the state is FAILED.
+	// Read only field.
+	ErrorMessage *string `json:"errorMessage,omitempty"`
 	// Interface endpoint ID that is created from the service endpoint ID provided.
+	// Read only field.
 	InterfaceEndpointId *string `json:"interfaceEndpointId,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
@@ -22,6 +29,7 @@ type StreamsPrivateLinkConnection struct {
 	// Service Endpoint ID.
 	ServiceEndpointId *string `json:"serviceEndpointId,omitempty"`
 	// State the connection is in.
+	// Read only field.
 	State *string `json:"state,omitempty"`
 	// Vendor who manages the Kafka cluster.
 	Vendor *string `json:"vendor,omitempty"`
@@ -75,6 +83,39 @@ func (o *StreamsPrivateLinkConnection) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *StreamsPrivateLinkConnection) SetId(v string) {
 	o.Id = &v
+}
+
+// GetArn returns the Arn field value if set, zero value otherwise
+func (o *StreamsPrivateLinkConnection) GetArn() string {
+	if o == nil || IsNil(o.Arn) {
+		var ret string
+		return ret
+	}
+	return *o.Arn
+}
+
+// GetArnOk returns a tuple with the Arn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsPrivateLinkConnection) GetArnOk() (*string, bool) {
+	if o == nil || IsNil(o.Arn) {
+		return nil, false
+	}
+
+	return o.Arn, true
+}
+
+// HasArn returns a boolean if a field has been set.
+func (o *StreamsPrivateLinkConnection) HasArn() bool {
+	if o != nil && !IsNil(o.Arn) {
+		return true
+	}
+
+	return false
+}
+
+// SetArn gets a reference to the given string and assigns it to the Arn field.
+func (o *StreamsPrivateLinkConnection) SetArn(v string) {
+	o.Arn = &v
 }
 
 // GetDnsDomain returns the DnsDomain field value if set, zero value otherwise
@@ -141,6 +182,39 @@ func (o *StreamsPrivateLinkConnection) HasDnsSubDomain() bool {
 // SetDnsSubDomain gets a reference to the given []string and assigns it to the DnsSubDomain field.
 func (o *StreamsPrivateLinkConnection) SetDnsSubDomain(v []string) {
 	o.DnsSubDomain = &v
+}
+
+// GetErrorMessage returns the ErrorMessage field value if set, zero value otherwise
+func (o *StreamsPrivateLinkConnection) GetErrorMessage() string {
+	if o == nil || IsNil(o.ErrorMessage) {
+		var ret string
+		return ret
+	}
+	return *o.ErrorMessage
+}
+
+// GetErrorMessageOk returns a tuple with the ErrorMessage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsPrivateLinkConnection) GetErrorMessageOk() (*string, bool) {
+	if o == nil || IsNil(o.ErrorMessage) {
+		return nil, false
+	}
+
+	return o.ErrorMessage, true
+}
+
+// HasErrorMessage returns a boolean if a field has been set.
+func (o *StreamsPrivateLinkConnection) HasErrorMessage() bool {
+	if o != nil && !IsNil(o.ErrorMessage) {
+		return true
+	}
+
+	return false
+}
+
+// SetErrorMessage gets a reference to the given string and assigns it to the ErrorMessage field.
+func (o *StreamsPrivateLinkConnection) SetErrorMessage(v string) {
+	o.ErrorMessage = &v
 }
 
 // GetInterfaceEndpointId returns the InterfaceEndpointId field value if set, zero value otherwise

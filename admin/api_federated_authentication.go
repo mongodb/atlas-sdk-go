@@ -188,7 +188,7 @@ type FederatedAuthenticationApi interface {
 	/*
 		GetIdentityProvider Return One Identity Provider by ID
 
-		Returns one identity provider in the specified federation by the identity provider's id. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations. Deprecated versions: v2-{2023-01-01}
+		Returns one identity provider in the specified federation by the identity provider's id. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
@@ -416,15 +416,15 @@ type FederatedAuthenticationApi interface {
 
 			Updates one identity provider in the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
 
-		**Note**: Changing authorization types and/or updating authorization claims can prevent current users and/or groups from accessing the database. Deprecated versions: v2-{2023-01-01}
+		**Note**: Changing authorization types and/or updating authorization claims can prevent current users and/or groups from accessing the database.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
 			@param identityProviderId Unique string that identifies the identity provider to connect. If using an API version before 11-15-2023, use the legacy 20-hexadecimal digit id. This id can be found within the Federation Management Console > Identity Providers tab by clicking the info icon in the IdP ID row of a configured identity provider. For all other versions, use the 24-hexadecimal digit id.
-			@param federationIdentityProviderUpdate The identity provider that you want to update.
+			@param federationSamlIdentityProviderUpdate The identity provider that you want to update.
 			@return UpdateIdentityProviderApiRequest
 	*/
-	UpdateIdentityProvider(ctx context.Context, federationSettingsId string, identityProviderId string, federationIdentityProviderUpdate *FederationIdentityProviderUpdate) UpdateIdentityProviderApiRequest
+	UpdateIdentityProvider(ctx context.Context, federationSettingsId string, identityProviderId string, federationSamlIdentityProviderUpdate *FederationSamlIdentityProviderUpdate) UpdateIdentityProviderApiRequest
 	/*
 		UpdateIdentityProvider Update One Identity Provider
 
@@ -1274,7 +1274,7 @@ func (r GetIdentityProviderApiRequest) Execute() (*FederationIdentityProvider, *
 /*
 GetIdentityProvider Return One Identity Provider by ID
 
-Returns one identity provider in the specified federation by the identity provider's id. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations. Deprecated versions: v2-{2023-01-01}
+Returns one identity provider in the specified federation by the identity provider's id. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
@@ -2392,26 +2392,26 @@ func (a *FederatedAuthenticationApiService) UpdateConnectedOrgConfigExecute(r Up
 }
 
 type UpdateIdentityProviderApiRequest struct {
-	ctx                              context.Context
-	ApiService                       FederatedAuthenticationApi
-	federationSettingsId             string
-	identityProviderId               string
-	federationIdentityProviderUpdate *FederationIdentityProviderUpdate
+	ctx                                  context.Context
+	ApiService                           FederatedAuthenticationApi
+	federationSettingsId                 string
+	identityProviderId                   string
+	federationSamlIdentityProviderUpdate *FederationSamlIdentityProviderUpdate
 }
 
 type UpdateIdentityProviderApiParams struct {
-	FederationSettingsId             string
-	IdentityProviderId               string
-	FederationIdentityProviderUpdate *FederationIdentityProviderUpdate
+	FederationSettingsId                 string
+	IdentityProviderId                   string
+	FederationSamlIdentityProviderUpdate *FederationSamlIdentityProviderUpdate
 }
 
 func (a *FederatedAuthenticationApiService) UpdateIdentityProviderWithParams(ctx context.Context, args *UpdateIdentityProviderApiParams) UpdateIdentityProviderApiRequest {
 	return UpdateIdentityProviderApiRequest{
-		ApiService:                       a,
-		ctx:                              ctx,
-		federationSettingsId:             args.FederationSettingsId,
-		identityProviderId:               args.IdentityProviderId,
-		federationIdentityProviderUpdate: args.FederationIdentityProviderUpdate,
+		ApiService:                           a,
+		ctx:                                  ctx,
+		federationSettingsId:                 args.FederationSettingsId,
+		identityProviderId:                   args.IdentityProviderId,
+		federationSamlIdentityProviderUpdate: args.FederationSamlIdentityProviderUpdate,
 	}
 }
 
@@ -2424,20 +2424,20 @@ UpdateIdentityProvider Update One Identity Provider
 
 Updates one identity provider in the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
 
-**Note**: Changing authorization types and/or updating authorization claims can prevent current users and/or groups from accessing the database. Deprecated versions: v2-{2023-01-01}
+**Note**: Changing authorization types and/or updating authorization claims can prevent current users and/or groups from accessing the database.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
 	@param identityProviderId Unique string that identifies the identity provider to connect. If using an API version before 11-15-2023, use the legacy 20-hexadecimal digit id. This id can be found within the Federation Management Console > Identity Providers tab by clicking the info icon in the IdP ID row of a configured identity provider. For all other versions, use the 24-hexadecimal digit id.
 	@return UpdateIdentityProviderApiRequest
 */
-func (a *FederatedAuthenticationApiService) UpdateIdentityProvider(ctx context.Context, federationSettingsId string, identityProviderId string, federationIdentityProviderUpdate *FederationIdentityProviderUpdate) UpdateIdentityProviderApiRequest {
+func (a *FederatedAuthenticationApiService) UpdateIdentityProvider(ctx context.Context, federationSettingsId string, identityProviderId string, federationSamlIdentityProviderUpdate *FederationSamlIdentityProviderUpdate) UpdateIdentityProviderApiRequest {
 	return UpdateIdentityProviderApiRequest{
-		ApiService:                       a,
-		ctx:                              ctx,
-		federationSettingsId:             federationSettingsId,
-		identityProviderId:               identityProviderId,
-		federationIdentityProviderUpdate: federationIdentityProviderUpdate,
+		ApiService:                           a,
+		ctx:                                  ctx,
+		federationSettingsId:                 federationSettingsId,
+		identityProviderId:                   identityProviderId,
+		federationSamlIdentityProviderUpdate: federationSamlIdentityProviderUpdate,
 	}
 }
 
@@ -2464,12 +2464,12 @@ func (a *FederatedAuthenticationApiService) UpdateIdentityProviderExecute(r Upda
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.federationIdentityProviderUpdate == nil {
-		return localVarReturnValue, nil, reportError("federationIdentityProviderUpdate is required and must be specified")
+	if r.federationSamlIdentityProviderUpdate == nil {
+		return localVarReturnValue, nil, reportError("federationSamlIdentityProviderUpdate is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-11-15+json"}
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json", "application/vnd.atlas.2023-11-15+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -2486,7 +2486,7 @@ func (a *FederatedAuthenticationApiService) UpdateIdentityProviderExecute(r Upda
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.federationIdentityProviderUpdate
+	localVarPostBody = r.federationSamlIdentityProviderUpdate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
