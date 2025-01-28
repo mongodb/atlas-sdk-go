@@ -1,34 +1,25 @@
-const { applyAllOfTransformations, transformAllOf } = require("./allOf");
-const { applyModelNameTransformations } = require("./name");
-const {
-  applyOneOfTransformations,
-  transformOneOf,
-  transformOneOfProperties,
-} = require("./oneOf");
-const { applyDiscriminatorTransformations } = require("./discriminator");
-const { applyArrayTransformations } = require("./swapArray");
-const { applyRemoveEnumsTransformations } = require("./removeEnums");
-const {
-  applyRemoveObjectAdditionalProperties,
-} = require("./additionalPropertiesObject");
+const { applyAllOfTransformations } = require("./allOf");
+const { applyOneOfTransformations } = require("./oneOf");
 const { applyAnyOfTransformations } = require("./anyOf");
+const { applyModelNameTransformations } = require("./name");
+const { applyDiscriminatorTransformations } = require("./discriminator");
+const { applyRemoveEnumsTransformations } = require("./removeEnums");
+const { applyRemoveObjectAdditionalProperties } = require("./additionalPropertiesObject");
 const { applyRemoveNullableTransformations } = require("./removeNullable");
 const { removeRefsFromParameters } = require("./removeInvalidParams");
 const { reorderResponseBodies } = require("./reorderResponseBodies");
+const { applyFieldTransformations } = require("./fields");
 
 module.exports = {
-  applyModelNameTransformations,
-  transformAllOf,
-  transformOneOf,
-  transformOneOfProperties,
   applyAllOfTransformations,
   applyOneOfTransformations,
+  applyAnyOfTransformations,
+  applyModelNameTransformations,
   applyDiscriminatorTransformations,
-  applyArrayTransformations,
   applyRemoveEnumsTransformations,
   applyRemoveObjectAdditionalProperties,
-  applyAnyOfTransformations,
   applyRemoveNullableTransformations,
   removeRefsFromParameters,
   reorderResponseBodies,
+  applyFieldTransformations,
 };

@@ -9,6 +9,7 @@ const {
   applyRemoveNullableTransformations,
   removeRefsFromParameters,
   reorderResponseBodies,
+  applyFieldTransformations,
 } = require("./transformations");
 const { resolveOpenAPIReference } = require("./engine/transformers");
 
@@ -29,6 +30,7 @@ module.exports = function runTransformations(openapi) {
   openapi = applyRemoveNullableTransformations(openapi);
   openapi = applyRemoveObjectAdditionalProperties(openapi);
   openapi = reorderResponseBodies(openapi);
+  openapi = applyFieldTransformations(openapi);
 
   openapi = applyModelNameTransformations(
     openapi,
@@ -98,9 +100,9 @@ function searchAPIIssuesTransformation(openapi) {
 
     if (responseParent.discriminator && responseParent.discriminator.mapping) {
       const transformedModel = (openapi.components.schemas[model.newModelName] =
-        {
-          oneOf: [],
-        });
+      {
+        oneOf: [],
+      });
       responseParent.properties[model.property] = {
         $ref: "#/components/schemas/" + model.newModelName,
       };

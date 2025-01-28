@@ -1,0 +1,7 @@
+{
+	"optionalFields": {
+		"StreamProcessorMetricThreshold": [
+			"metricName"
+		]
+	}
+}
