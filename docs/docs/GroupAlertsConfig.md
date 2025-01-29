@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Created** | Pointer to **time.Time** | Date and time when MongoDB Cloud created the alert configuration. This parameter expresses its value in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/ISO_8601\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;ISO 8601&lt;/a&gt; timestamp format in UTC. | [optional] [readonly] 
+**Created** | Pointer to **time.Time** | Date and time when MongoDB Cloud created the alert configuration. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
 **Enabled** | Pointer to **bool** | Flag that indicates whether someone enabled this alert configuration for the specified project. | [optional] [default to false]
 **EventTypeName** | Pointer to **string** | Event type that triggers an alert. | [optional] 
 **GroupId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the project that owns this alert configuration. | [optional] [readonly] 
@@ -12,8 +12,8 @@ Name | Type | Description | Notes
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **Matchers** | Pointer to [**[]StreamsMatcher**](StreamsMatcher.md) | List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. | [optional] 
 **Notifications** | Pointer to [**[]AlertsNotificationRootForGroup**](AlertsNotificationRootForGroup.md) | List that contains the targets that MongoDB Cloud sends notifications. | [optional] 
-**Updated** | Pointer to **time.Time** | Date and time when someone last updated this alert configuration. This parameter expresses its value in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/ISO_8601\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;ISO 8601&lt;/a&gt; timestamp format in UTC. | [optional] [readonly] 
-**MetricThreshold** | Pointer to [**ServerlessMetricThreshold**](ServerlessMetricThreshold.md) |  | [optional] 
+**Updated** | Pointer to **time.Time** | Date and time when someone last updated this alert configuration. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
+**MetricThreshold** | Pointer to [**FlexClusterMetricThreshold**](FlexClusterMetricThreshold.md) |  | [optional] 
 **Threshold** | Pointer to [**GreaterThanRawThreshold**](GreaterThanRawThreshold.md) |  | [optional] 
 
 ## Methods
@@ -253,20 +253,20 @@ SetUpdated sets Updated field to given value.
 HasUpdated returns a boolean if a field has been set.
 ### GetMetricThreshold
 
-`func (o *GroupAlertsConfig) GetMetricThreshold() ServerlessMetricThreshold`
+`func (o *GroupAlertsConfig) GetMetricThreshold() FlexClusterMetricThreshold`
 
 GetMetricThreshold returns the MetricThreshold field if non-nil, zero value otherwise.
 
 ### GetMetricThresholdOk
 
-`func (o *GroupAlertsConfig) GetMetricThresholdOk() (*ServerlessMetricThreshold, bool)`
+`func (o *GroupAlertsConfig) GetMetricThresholdOk() (*FlexClusterMetricThreshold, bool)`
 
 GetMetricThresholdOk returns a tuple with the MetricThreshold field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetricThreshold
 
-`func (o *GroupAlertsConfig) SetMetricThreshold(v ServerlessMetricThreshold)`
+`func (o *GroupAlertsConfig) SetMetricThreshold(v FlexClusterMetricThreshold)`
 
 SetMetricThreshold sets MetricThreshold field to given value.
 

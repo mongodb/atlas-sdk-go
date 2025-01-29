@@ -27,7 +27,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: b30dca0a1318cf8279cab906a13fd2bfa4889cea
+  x-xgen-sha: 0906e5963ddb386a23db07545bd3bae97c3c9ca1
 servers:
   - url: https://cloud.mongodb.com
 security:
@@ -299,6 +299,8 @@ paths:
       summary: Get All Alert Configuration Matchers Field Names
       tags:
         - Alert Configurations
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   /api/atlas/v2/clusters:
     get:
       description: Returns the details for all clusters in all projects to which you
@@ -972,6 +974,8 @@ paths:
       summary: Revoke the JWKS from One OIDC Identity Provider
       tags:
         - Federated Authentication
+    x-xgen-IPA-exception:
+      xgen-IPA-104-resource-has-GET: API predates IPA validation
   "/api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}/metadata.xml":
     get:
       description: Returns the metadata of one identity provider in the specified
@@ -1116,6 +1120,8 @@ paths:
       summary: Return One Project using Its Name
       tags:
         - Projects
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}":
     delete:
       description: Removes the specified project. Projects group clusters into logical
@@ -1245,6 +1251,8 @@ paths:
       summary: Add One MongoDB Cloud User to One Project
       tags:
         - Projects
+    x-xgen-IPA-exception:
+      xgen-IPA-104-resource-has-GET: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/accessList":
     get:
       description: Returns all access list entries from the specified project's IP
@@ -2037,6 +2045,8 @@ paths:
       summary: Create and Assign One Organization API Key to One Project
       tags:
         - Programmatic API Keys
+    x-xgen-IPA-exception:
+      xgen-IPA-104-resource-has-GET: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/apiKeys/{apiUserId}":
     delete:
       description: Removes one organization API key from the specified project. To use
@@ -2375,6 +2385,8 @@ paths:
       summary: Create One Snapshot Export Bucket
       tags:
         - Cloud Backups
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/backup/exportBuckets/{exportBucketId}":
     delete:
       description: Deletes an Export Bucket. Auto export must be disabled on all
@@ -2472,6 +2484,8 @@ paths:
       summary: Return One Snapshot Export Bucket
       tags:
         - Cloud Backups
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/backupCompliancePolicy":
     delete:
       description: Disables the Backup Compliance Policy settings with the specified
@@ -2662,6 +2676,8 @@ paths:
       summary: Deauthorize One Cloud Provider Access Role
       tags:
         - Cloud Provider Access
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/cloudProviderAccess/{roleId}":
     get:
       description: Returns the access role with the specified id and with access to
@@ -2940,6 +2956,8 @@ paths:
       summary: Return All Cloud Provider Regions
       tags:
         - Clusters
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/clusters/tenantUpgrade":
     post:
       description: Upgrades a shared-tier cluster to a dedicated cluster (M10+) in the
@@ -2979,6 +2997,9 @@ paths:
       summary: Upgrade One Shared-tier Cluster
       tags:
         - Clusters
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
+      xgen-IPA-104-resource-has-GET: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/clusters/tenantUpgradeToServerless":
     post:
       description: Upgrades a shared-tier cluster to a serverless instance in the
@@ -3017,6 +3038,9 @@ paths:
       summary: Upgrades One Shared-Tier Cluster to the Serverless Instance
       tags:
         - Clusters
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
+      xgen-IPA-104-resource-has-GET: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}":
     delete:
       description: "Removes one cluster from the specified project. The cluster must
@@ -3231,6 +3255,8 @@ paths:
       summary: Create One Snapshot Export Job
       tags:
         - Cloud Backups
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/exports/{exportId}":
     get:
       description: Returns one Cloud Backup Snapshot Export Job associated with the
@@ -3274,6 +3300,8 @@ paths:
       summary: Return One Snapshot Export Job
       tags:
         - Cloud Backups
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/restoreJobs":
     get:
       description: Returns all cloud backup restore jobs for one cluster from the
@@ -3359,6 +3387,8 @@ paths:
       summary: Restore One Snapshot of One Cluster
       tags:
         - Cloud Backups
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/restoreJobs/{restoreJobId}":
     delete:
       description: Cancels one cloud backup restore job of one cluster from the
@@ -3445,6 +3475,8 @@ paths:
       summary: Return One Restore Job of One Cluster
       tags:
         - Cloud Backups
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/schedule":
     delete:
       description: "Removes all cloud backup schedules for the specified cluster. This
@@ -3561,6 +3593,8 @@ paths:
       summary: Update Cloud Backup Schedule for One Cluster
       tags:
         - Cloud Backups
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots":
     get:
       description: Returns all snapshots of one cluster from the specified project. To
@@ -3643,6 +3677,8 @@ paths:
       summary: Take One On-Demand Snapshot
       tags:
         - Cloud Backups
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/shardedCluster/{snapshotId}":
     delete:
       description: Removes one snapshot of one sharded cluster from the specified
@@ -3728,6 +3764,8 @@ paths:
       summary: Return One Sharded Cluster Cloud Backup
       tags:
         - Cloud Backups
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/shardedClusters":
     get:
       description: Returns all snapshots of one sharded cluster from the specified
@@ -3762,6 +3800,8 @@ paths:
       summary: Return All Sharded Cluster Cloud Backups
       tags:
         - Cloud Backups
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId}":
     delete:
       description: Removes the specified snapshot. To use this resource, the
@@ -3897,6 +3937,8 @@ paths:
       summary: Change Expiration Date for One Cloud Backup
       tags:
         - Cloud Backups
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/download":
     post:
       description: Requests one snapshot for the specified shared cluster. This
@@ -3946,6 +3988,9 @@ paths:
       summary: Download One M2 or M5 Cluster Snapshot
       tags:
         - Shared-Tier Snapshots
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
+      xgen-IPA-104-resource-has-GET: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/restore":
     post:
       description: Restores the specified cluster. MongoDB Cloud limits which clusters
@@ -3995,6 +4040,9 @@ paths:
       summary: Create One Restore Job from One M2 or M5 Cluster
       tags:
         - Shared-Tier Restore Jobs
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
+      xgen-IPA-104-resource-has-GET: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/restores":
     get:
       description: Returns all restore jobs for the specified M2 or M5 cluster.
@@ -4029,6 +4077,8 @@ paths:
       summary: Return All Restore Jobs for One M2 or M5 Cluster
       tags:
         - Shared-Tier Restore Jobs
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/restores/{restoreId}":
     get:
       description: Returns the specified restore job. To use this resource, the
@@ -4072,6 +4122,8 @@ paths:
       summary: Return One Restore Job for One M2 or M5 Cluster
       tags:
         - Shared-Tier Restore Jobs
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/snapshots":
     get:
       description: Returns details for all snapshots for the specified shared cluster.
@@ -4106,6 +4158,8 @@ paths:
       summary: Return All Snapshots for One M2 or M5 Cluster
       tags:
         - Shared-Tier Snapshots
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/snapshots/{snapshotId}":
     get:
       description: Returns details for one snapshot for the specified shared cluster.
@@ -4150,6 +4204,8 @@ paths:
       summary: Return One Snapshot for One M2 or M5 Cluster
       tags:
         - Shared-Tier Snapshots
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backupCheckpoints":
     get:
       deprecated: true
@@ -4374,6 +4430,8 @@ paths:
       summary: Pin Namespaces
       tags:
         - Collection Level Metrics
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collStats/unpin":
     patch:
       description: Unpin provided list of namespaces for collection-level latency
@@ -4418,6 +4476,9 @@ paths:
       summary: Unpin namespaces
       tags:
         - Collection Level Metrics
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
+      xgen-IPA-104-resource-has-GET: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes":
     post:
       deprecated: true
@@ -4469,6 +4530,8 @@ paths:
       tags:
         - Atlas Search
       x-sunset: 2025-06-01
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes/{databaseName}/{collectionName}":
     get:
       deprecated: true
@@ -4524,6 +4587,8 @@ paths:
       tags:
         - Atlas Search
       x-sunset: 2025-06-01
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes/{indexId}":
     delete:
       deprecated: true
@@ -4691,6 +4756,8 @@ paths:
       tags:
         - Atlas Search
       x-sunset: 2025-06-01
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites":
     get:
       description: "Returns one managed namespace within the specified global cluster.
@@ -4814,6 +4881,9 @@ paths:
       summary: Add One Entry to One Custom Zone Mapping
       tags:
         - Global Clusters
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
+      xgen-IPA-104-resource-has-GET: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/managedNamespaces":
     delete:
       description: "Removes one managed namespace within the specified global cluster.
@@ -4914,6 +4984,9 @@ paths:
       summary: Create One Managed Namespace in One Global Cluster
       tags:
         - Global Clusters
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
+      xgen-IPA-104-resource-has-GET: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/index":
     post:
       description: Creates an index on the cluster identified by its name in a rolling
@@ -5025,6 +5098,8 @@ paths:
       summary: Create One Rolling Index
       tags:
         - Rolling Index
+    x-xgen-IPA-exception:
+      xgen-IPA-104-resource-has-GET: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives":
     get:
       description: Returns details of all online archives. This archive stores data
@@ -5194,6 +5269,8 @@ paths:
       summary: Download Online Archive Query Logs
       tags:
         - Online Archive
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/{archiveId}":
     delete:
       description: Removes one online archive. This archive stores data from one
@@ -5564,6 +5641,8 @@ paths:
       summary: Return Suggested Indexes
       tags:
         - Performance Advisor
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/processArgs":
     get:
       description: "Returns the advanced configuration details for one cluster in the
@@ -5692,6 +5771,8 @@ paths:
       summary: Test Failover for One Cluster
       tags:
         - Clusters
+    x-xgen-IPA-exception:
+      xgen-IPA-104-resource-has-GET: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/restoreJobs":
     get:
       deprecated: true
@@ -5998,6 +6079,8 @@ paths:
       summary: Create Search Nodes
       tags:
         - Atlas Search
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes":
     get:
       description: Returns all Atlas Search indexes on the specified cluster. Atlas
@@ -6093,6 +6176,8 @@ paths:
       summary: Create One Atlas Search Index
       tags:
         - Atlas Search
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{databaseName}/{collectionName}":
     get:
       description: Returns all Atlas Search indexes on the specified collection. Atlas
@@ -6154,6 +6239,8 @@ paths:
       summary: Return All Atlas Search Indexes for One Collection
       tags:
         - Atlas Search
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{databaseName}/{collectionName}/{indexName}":
     delete:
       description: Removes one Atlas Search index that you identified with its
@@ -6340,6 +6427,8 @@ paths:
       summary: Update One Atlas Search Index By Name
       tags:
         - Atlas Search
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{indexId}":
     delete:
       description: Removes one Atlas Search index that you identified with its unique
@@ -6509,6 +6598,8 @@ paths:
       summary: Update One Atlas Search Index By ID
       tags:
         - Atlas Search
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/snapshotSchedule":
     get:
       deprecated: true
@@ -6877,6 +6968,8 @@ paths:
       summary: Return Ranked Namespaces from a Cluster
       tags:
         - Collection Level Metrics
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/{clusterView}/{databaseName}/{collectionName}/collStats/measurements":
     get:
       description: Get a list of the Coll Stats Latency cluster-level measurements for
@@ -6938,6 +7031,8 @@ paths:
       summary: Return Cluster-Level Query Latency
       tags:
         - Collection Level Metrics
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}:grantMongoDBEmployeeAccess":
     post:
       description: Grants MongoDB employee cluster access for the given duration and
@@ -6983,6 +7078,8 @@ paths:
       summary: Grant MongoDB employee cluster access for one cluster.
       tags:
         - Clusters
+    x-xgen-IPA-exception:
+      xgen-IPA-109-custom-method-must-use-camel-case: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}:pinFeatureCompatibilityVersion":
     post:
       description: Pins the Feature Compatibility Version (FCV) to the current MongoDB
@@ -7065,6 +7162,8 @@ paths:
       summary: Revoke granted MongoDB employee cluster access for one cluster.
       tags:
         - Clusters
+    x-xgen-IPA-exception:
+      xgen-IPA-109-custom-method-must-use-camel-case: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}:unpinFeatureCompatibilityVersion":
     post:
       description: Unpins the current fixed Feature Compatibility Version (FCV). This
@@ -7190,6 +7289,8 @@ paths:
       summary: Download Logs for One Cluster Host in One Project
       tags:
         - Monitoring and Logs
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/collStats/metrics":
     get:
       description: Returns all available Coll Stats Latency metric names and their
@@ -7216,6 +7317,8 @@ paths:
       summary: Return all metric names
       tags:
         - Collection Level Metrics
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/containers":
     get:
       description: Returns details about all network peering containers in the
@@ -7322,6 +7425,8 @@ paths:
       summary: Return All Network Peering Containers in One Project
       tags:
         - Network Peering
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/containers/{containerId}":
     delete:
       description: Removes one network peering container in the specified project. To
@@ -7471,7 +7576,9 @@ paths:
         - Custom Database Roles
     post:
       description: Creates one custom role in the specified project. To use this
-        resource, the requesting API Key must have the Project Owner role.
+        resource, the requesting API Key must have the Project Owner role,
+        Project Stream Processing Owner role, or the Project Database Access
+        Admin role.
       operationId: createCustomDatabaseRole
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -7505,13 +7612,16 @@ paths:
       summary: Create One Custom Role
       tags:
         - Custom Database Roles
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/customDBRoles/roles/{roleName}":
     delete:
       description: Removes one custom role from the specified project. You can't
         remove a custom role that would leave one or more child roles with no
         parent roles or actions. You also can't remove a custom role that would
         leave one or more database users without roles. To use this resource,
-        the requesting API Key must have the Project Atlas Admin role.
+        the requesting API Key must have the Project Owner role, Project Stream
+        Processing Owner role, or the Project Database Access Admin role.
       operationId: deleteCustomDatabaseRole
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -7573,7 +7683,9 @@ paths:
         - Custom Database Roles
     patch:
       description: Updates one custom role in the specified project. To use this
-        resource, the requesting API Key must have the Project Owner role.
+        resource, the requesting API Key must have the Project Owner role, the
+        Project Stream Processing Owner role, or the Project Database Access
+        Admin role.
       operationId: updateCustomDatabaseRole
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -7614,6 +7726,8 @@ paths:
       summary: Update One Custom Role in One Project
       tags:
         - Custom Database Roles
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/dataFederation":
     get:
       description: Returns the details of all federated database instances in the
@@ -8085,8 +8199,9 @@ paths:
         Cloud supports a maximum of 100 database users per project. If you
         require more than 100 database users on a project, contact
         [Support](https://cloud.mongodb.com/support). To use this resource, the
-        requesting API Key must have the Project Owner or Project Charts Admin
-        roles.
+        requesting API Key must have the Project Owner role, the Project Charts
+        Admin role, Project Stream Processing Owner role, or the Project
+        Database Access Admin role.
       operationId: createDatabaseUser
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -8214,7 +8329,9 @@ paths:
   "/api/atlas/v2/groups/{groupId}/databaseUsers/{databaseName}/{username}":
     delete:
       description: Removes one database user from the specified project. To use this
-        resource, the requesting API Key must have the Project Owner role.
+        resource, the requesting API Key must have the Project Owner role, the
+        Project Stream Processing Owner role, or the Project Database Access
+        Admin role.
       operationId: deleteDatabaseUser
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -8359,8 +8476,9 @@ paths:
         - Database Users
     patch:
       description: Updates one database user that belongs to the specified project. To
-        use this resource, the requesting API Key must have the Project Owner or
-        Project Charts Admin roles.
+        use this resource, the requesting API Key must have the Project Owner
+        role, Project Charts Admin role, Project Stream Processing Owner role,
+        or the Project Database Access Admin role.
       operationId: updateDatabaseUser
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -8442,6 +8560,8 @@ paths:
       summary: Update One Database User in One Project
       tags:
         - Database Users
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/databaseUsers/{username}/certs":
     get:
       description: Returns all unexpired X.509 certificates for the specified MongoDB
@@ -8542,7 +8662,7 @@ paths:
         name. Access logs contain a list of authentication requests made against
         your cluster. You can't use this feature on tenant-tier clusters (M0,
         M2, M5). To use this resource, the requesting API Key must have the
-        Project Monitoring Admin role.
+        Project Monitoring Admin role or the Project Database Access Admin role.
       externalDocs:
         description: Database Access History
         url: https://docs.atlas.mongodb.com/access-tracking/
@@ -8613,13 +8733,16 @@ paths:
       summary: Return Database Access History for One Cluster using Its Cluster Name
       tags:
         - Access Tracking
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/dbAccessHistory/processes/{hostname}":
     get:
       description: Returns the access logs of one cluster identified by the cluster's
         hostname. Access logs contain a list of authentication requests made
         against your clusters. You can't use this feature on tenant-tier
         clusters (M0, M2, M5). To use this resource, the requesting API Key must
-        have the Project Monitoring Admin role.
+        have the Project Monitoring Admin role or the Project Database Access
+        Admin role.
       externalDocs:
         description: Database Access History
         url: https://docs.atlas.mongodb.com/access-tracking/
@@ -8688,6 +8811,8 @@ paths:
       summary: Return Database Access History for One Cluster using Its Hostname
       tags:
         - Access Tracking
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/encryptionAtRest":
     get:
       description: >-
@@ -9284,6 +9409,9 @@ paths:
       summary: Download One Flex Cluster Snapshot
       tags:
         - Flex Snapshots
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
+      xgen-IPA-104-resource-has-GET: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/restoreJobs":
     get:
       description: Returns all restore jobs for one flex cluster from the specified
@@ -9366,6 +9494,8 @@ paths:
       summary: Restore One Snapshot of One Flex Cluster
       tags:
         - Flex Restore Jobs
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/restoreJobs/{restoreJobId}":
     get:
       description: Returns one restore job for one flex cluster from the specified
@@ -9410,6 +9540,8 @@ paths:
       summary: Return One Restore Job for One Flex Cluster
       tags:
         - Flex Restore Jobs
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/snapshots":
     get:
       description: Returns all snapshots of one flex cluster from the specified
@@ -9447,6 +9579,8 @@ paths:
       summary: Return All Snapshots of One Flex Cluster
       tags:
         - Flex Snapshots
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/snapshots/{snapshotId}":
     get:
       description: Returns one snapshot of one flex cluster from the specified
@@ -9492,6 +9626,8 @@ paths:
       summary: Return One Snapshot of One Flex Cluster
       tags:
         - Flex Snapshots
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/flexClusters:tenantUpgrade":
     post:
       description: Upgrades a flex cluster to a dedicated cluster (M10+) in the
@@ -9556,6 +9692,8 @@ paths:
       summary: Return All Atlas Search Metric Types for One Process
       tags:
         - Monitoring and Logs
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics/indexes/{databaseName}/{collectionName}/measurements":
     get:
       description: Returns the Atlas Search index metrics within the specified time
@@ -9601,6 +9739,8 @@ paths:
       summary: Return All Atlas Search Index Metrics for One Namespace
       tags:
         - Monitoring and Logs
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics/indexes/{databaseName}/{collectionName}/{indexName}/measurements":
     get:
       description: Returns the Atlas Search metrics data series within the provided
@@ -9649,6 +9789,8 @@ paths:
       summary: Return Atlas Search Metrics for One Index in One Specified Namespace
       tags:
         - Monitoring and Logs
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics/measurements":
     get:
       description: Returns the Atlas Search hardware and status data series within the
@@ -9698,6 +9840,8 @@ paths:
       summary: Return Atlas Search Hardware and Status Metrics
       tags:
         - Monitoring and Logs
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/integrations":
     get:
       description: Returns the settings that permit integrations with all configured
@@ -10456,6 +10600,8 @@ paths:
       summary: Validate One Migration Request
       tags:
         - Cloud Migration Service
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/liveMigrations/validate/{validationId}":
     get:
       description: Return the status of one migration validation job. Your API Key
@@ -10496,6 +10642,8 @@ paths:
       summary: Return One Migration Validation Job
       tags:
         - Cloud Migration Service
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/liveMigrations/{liveMigrationId}":
     get:
       description: Return details of one cluster migration job. Each push live
@@ -10554,6 +10702,8 @@ paths:
       summary: Cut Over the Migrated Cluster
       tags:
         - Cloud Migration Service
+    x-xgen-IPA-exception:
+      xgen-IPA-104-resource-has-GET: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/maintenanceWindow":
     delete:
       description: Resets the maintenance window for the specified project. To use
@@ -10676,6 +10826,9 @@ paths:
       summary: Toggle Automatic Deferral of Maintenance for One Project
       tags:
         - Maintenance Windows
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
+      xgen-IPA-104-resource-has-GET: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/maintenanceWindow/defer":
     post:
       description: Defers the maintenance window for the specified project. Urgent
@@ -10707,6 +10860,9 @@ paths:
       summary: Defer One Maintenance Window for One Project
       tags:
         - Maintenance Windows
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
+      xgen-IPA-104-resource-has-GET: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/managedSlowMs":
     get:
       description: Get whether the Managed Slow MS feature is enabled.
@@ -10758,6 +10914,9 @@ paths:
       summary: Disable Managed Slow Operation Threshold
       tags:
         - Performance Advisor
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
+      xgen-IPA-104-resource-has-GET: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/managedSlowMs/enable":
     post:
       description: Enables MongoDB Cloud to use its slow operation threshold for the
@@ -10788,6 +10947,9 @@ paths:
       summary: Enable Managed Slow Operation Threshold
       tags:
         - Performance Advisor
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
+      xgen-IPA-104-resource-has-GET: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/mongoDBVersions":
     get:
       description: Returns the MongoDB Long Term Support Major Versions available to
@@ -11337,6 +11499,8 @@ paths:
       tags:
         - Data Lake Pipelines
       x-sunset: 2025-09-09
+    x-xgen-IPA-exception:
+      xgen-IPA-104-resource-has-GET: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/resume":
     post:
       deprecated: true
@@ -11373,6 +11537,8 @@ paths:
       tags:
         - Data Lake Pipelines
       x-sunset: 2025-09-09
+    x-xgen-IPA-exception:
+      xgen-IPA-104-resource-has-GET: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/runs":
     get:
       deprecated: true
@@ -11551,6 +11717,8 @@ paths:
       tags:
         - Data Lake Pipelines
       x-sunset: 2025-09-09
+    x-xgen-IPA-exception:
+      xgen-IPA-104-resource-has-GET: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/privateEndpoint/endpointService":
     post:
       description: Creates one private endpoint service for the specified cloud
@@ -11589,6 +11757,9 @@ paths:
       summary: Create One Private Endpoint Service for One Provider
       tags:
         - Private Endpoint Services
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
+      xgen-IPA-104-resource-has-GET: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/privateEndpoint/regionalMode":
     get:
       description: Checks whether each region in the specified cloud service provider
@@ -11653,6 +11824,8 @@ paths:
       summary: Toggle Regionalized Private Endpoint Status
       tags:
         - Private Endpoint Services
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint":
     get:
       description: Returns all private endpoints for one serverless instance. You must
@@ -11735,6 +11908,8 @@ paths:
       summary: Create One Private Endpoint for One Serverless Instance
       tags:
         - Serverless Private Endpoints
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint/{endpointId}":
     delete:
       description: Remove one private endpoint from one serverless instance. To use
@@ -11870,6 +12045,8 @@ paths:
       summary: Update One Private Endpoint for One Serverless Instance
       tags:
         - Serverless Private Endpoints
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService":
     get:
       description: Returns the name, interfaces, and state of all private endpoint
@@ -12300,6 +12477,8 @@ paths:
         Endpoint for One Project
       tags:
         - Data Federation
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/privateNetworkSettings/endpointIds/{endpointId}":
     delete:
       description: Removes one private endpoint for Federated Database Instances and
@@ -12376,6 +12555,8 @@ paths:
         Endpoint in One Project
       tags:
         - Data Federation
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/processes":
     get:
       description: Returns details of all processes for the specified project. A
@@ -12464,6 +12645,8 @@ paths:
       summary: Return Ranked Namespaces from a Host
       tags:
         - Collection Level Metrics
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/processes/{processId}/databases":
     get:
       description: Returns the list of databases running on the specified host for the
@@ -12913,6 +13096,8 @@ paths:
       summary: Return All Namespaces for One Host
       tags:
         - Performance Advisor
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/processes/{processId}/performanceAdvisor/slowQueryLogs":
     get:
       description: Returns log lines for slow queries that the Performance Advisor and
@@ -12921,7 +13106,8 @@ paths:
         performance. MongoDB Cloud bases the threshold for slow queries on the
         average time of operations on your cluster. This enables
         workload-relevant recommendations. To use this resource, the requesting
-        API Key must have the Project Data Access Read Write role.
+        API Key must have any Project Data Access role or the Project
+        Observability Viewer role.
       operationId: listSlowQueries
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -13003,6 +13189,8 @@ paths:
       summary: Return Slow Queries
       tags:
         - Performance Advisor
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/processes/{processId}/performanceAdvisor/suggestedIndexes":
     get:
       description: Returns the indexes that the Performance Advisor suggests. The
@@ -13098,6 +13286,8 @@ paths:
       summary: Return Suggested Indexes
       tags:
         - Performance Advisor
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/processes/{processId}/{databaseName}/{collectionName}/collStats/measurements":
     get:
       description: Get a list of the Coll Stats Latency process-level measurements for
@@ -13141,6 +13331,8 @@ paths:
       summary: Return Host-Level Query Latency
       tags:
         - Collection Level Metrics
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/pushBasedLogExport":
     delete:
       description: Disables the push-based log export feature by resetting the project
@@ -13471,6 +13663,8 @@ paths:
       summary: Restore One Snapshot of One Serverless Instance
       tags:
         - Cloud Backups
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/restoreJobs/{restoreJobId}":
     get:
       description: Returns one restore job for one serverless instance from the
@@ -13515,6 +13709,8 @@ paths:
       summary: Return One Restore Job for One Serverless Instance
       tags:
         - Cloud Backups
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/snapshots":
     get:
       description: Returns all snapshots of one serverless instance from the specified
@@ -13552,6 +13748,8 @@ paths:
       summary: Return All Snapshots of One Serverless Instance
       tags:
         - Cloud Backups
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/snapshots/{snapshotId}":
     get:
       description: Returns one snapshot of one serverless instance from the specified
@@ -13597,6 +13795,8 @@ paths:
       summary: Return One Snapshot of One Serverless Instance
       tags:
         - Cloud Backups
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/serverless/{clusterName}/performanceAdvisor/autoIndexing":
     get:
       description: Get whether the Serverless Auto Indexing feature is enabled.
@@ -13662,6 +13862,8 @@ paths:
       summary: Set Serverless Auto Indexing
       tags:
         - Performance Advisor
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/serverless/{name}":
     delete:
       description: Removes one serverless instance from the specified project. The
@@ -14020,6 +14222,8 @@ paths:
       summary: Add Access List entries for one Project Service Account
       tags:
         - Service Accounts
+    x-xgen-IPA-exception:
+      xgen-IPA-104-resource-has-GET: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/accessList/{ipAddress}":
     delete:
       description: Removes the specified access list entry from the specified Service
@@ -14102,6 +14306,8 @@ paths:
       summary: Create one Project Service Account Secret
       tags:
         - Service Accounts
+    x-xgen-IPA-exception:
+      xgen-IPA-104-resource-has-GET: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/secrets/{secretId}":
     delete:
       description: Deletes the specified Service Account secret. Available as a
@@ -14337,6 +14543,31 @@ paths:
         specified.
       tags:
         - Streams
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
+  "/api/atlas/v2/groups/{groupId}/streams/activeVpcPeeringConnections":
+    get:
+      description: Returns a list of active incoming VPC Peering Connections.
+      operationId: getActiveVpcPeeringConnections
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - $ref: "#/components/parameters/itemsPerPage"
+        - $ref: "#/components/parameters/pageNum"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-11-13+json:
+              x-xgen-version: 2024-11-13
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Returns all the active incoming VPC Peering Connections.
+      tags:
+        - Streams
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/streams/privateLinkConnections":
     get:
       description: Returns all Private Link connections for the specified project.To
@@ -14404,6 +14635,8 @@ paths:
       x-xgen-changelog:
         2024-10-02: The MongoDB Atlas Streams Processing Private Link API is now exposed
           as part of private preview, but is subject to change until GA.
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/streams/privateLinkConnections/{connectionId}":
     delete:
       description: Deletes one Private Link in the specified project. To use this
@@ -14473,6 +14706,8 @@ paths:
       x-xgen-changelog:
         2024-10-02: The MongoDB Atlas Streams Processing Private Link API is now exposed
           as part of private preview, but is subject to change until GA.
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections":
     get:
       description: Returns a list of incoming VPC Peering Connections.
@@ -14500,6 +14735,9 @@ paths:
       summary: Return All VPC Peering Connections.
       tags:
         - Streams
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
+      xgen-IPA-104-resource-has-GET: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}":
     delete:
       description: Deletes an incoming VPC Peering connection.
@@ -14531,6 +14769,8 @@ paths:
       summary: Deletes an incoming VPC Peering connection.
       tags:
         - Streams
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}:accept":
     post:
       description: Requests the acceptance of an incoming VPC Peering connection.
@@ -14570,6 +14810,8 @@ paths:
       summary: Requests the acceptance of an incoming VPC Peering connection.
       tags:
         - Streams
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}:reject":
     post:
       description: Requests the rejection of an incoming VPC Peering connection.
@@ -14601,6 +14843,8 @@ paths:
       summary: Requests the rejection of an incoming VPC Peering connection.
       tags:
         - Streams
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/streams/{tenantName}":
     delete:
       description: Delete one stream instance in the specified project. To use this
@@ -15387,6 +15631,8 @@ paths:
       summary: Add One or More Teams to One Project
       tags:
         - Teams
+    x-xgen-IPA-exception:
+      xgen-IPA-104-resource-has-GET: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/teams/{teamId}":
     delete:
       description: Removes one team specified using its unique 24-hexadecimal digit
@@ -15560,6 +15806,9 @@ paths:
       summary: Disable Customer-Managed X.509
       tags:
         - X.509 Authentication
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
+      xgen-IPA-104-resource-has-GET: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/userSecurity/ldap/userToDNMapping":
     delete:
       description: Removes the current LDAP Distinguished Name mapping captured in the
@@ -15584,6 +15833,9 @@ paths:
       summary: Remove the Current LDAP User to DN Mapping
       tags:
         - LDAP Configuration
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
+      xgen-IPA-104-resource-has-GET: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/userSecurity/ldap/verify":
     post:
       description: Verifies the LDAP configuration for the specified project. To use
@@ -15616,6 +15868,8 @@ paths:
       summary: Verify the LDAP Configuration in One Project
       tags:
         - LDAP Configuration
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/userSecurity/ldap/verify/{requestId}":
     get:
       description: Returns the status of one request to verify one LDAP configuration
@@ -15650,9 +15904,10 @@ paths:
       summary: Return the Status of One Verify LDAP Configuration Request
       tags:
         - LDAP Configuration
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}/users":
     get:
-      deprecated: true
       description: Returns details about all users in the specified project. Users
         belong to an organization. To use this resource, the requesting API Key
         must have the Project Read Only role.
@@ -15687,14 +15942,6 @@ paths:
           schema:
             type: boolean
             default: false
-        - description: Flag that indicates whether to filter the returned list by users
-            organization membership status. If you exclude this parameter, this
-            resource returns both pending and active users.
-          in: query
-          name: orgMembershipStatus
-          schema:
-            type: string
-            example: ACTIVE
       responses:
         "200":
           content:
@@ -15710,7 +15957,6 @@ paths:
       summary: Return All Users in One Project
       tags:
         - Projects
-      x-sunset: 2044-01-01
   "/api/atlas/v2/groups/{groupId}/users/{userId}":
     delete:
       description: Removes the specified user from the specified project. To use this
@@ -15792,6 +16038,8 @@ paths:
       summary: Update Project Roles for One MongoDB Cloud User
       tags:
         - Projects
+    x-xgen-IPA-exception:
+      xgen-IPA-104-resource-has-GET: API predates IPA validation
   "/api/atlas/v2/groups/{groupId}:migrate":
     post:
       description: Migrates a project from its current organization to another
@@ -16416,6 +16664,8 @@ paths:
       summary: Create Cost Explorer query process
       tags:
         - Invoices
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/orgs/{orgId}/billing/costExplorer/usage/{token}":
     get:
       description: Returns the usage details for a Cost Explorer query, if the query
@@ -16460,6 +16710,8 @@ paths:
         results are not ready yet.
       tags:
         - Invoices
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/orgs/{orgId}/events":
     get:
       description: >-
@@ -16988,6 +17240,8 @@ paths:
       summary: Return All Pending Invoices for One Organization
       tags:
         - Invoices
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}":
     get:
       description: >-
@@ -17157,6 +17411,8 @@ paths:
       summary: Return All Projects Available for Migration
       tags:
         - Cloud Migration Service
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/orgs/{orgId}/liveMigrations/linkTokens":
     delete:
       description: Remove one organization link and its associated public API key.
@@ -17217,6 +17473,9 @@ paths:
       summary: Create One Link-Token
       tags:
         - Cloud Migration Service
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
+      xgen-IPA-104-resource-has-GET: API predates IPA validation
   "/api/atlas/v2/orgs/{orgId}/nonCompliantResources":
     get:
       description: Return all non-compliant resources for an org.
@@ -17732,6 +17991,8 @@ paths:
       summary: Add Access List entries for one Organization Service Account
       tags:
         - Service Accounts
+    x-xgen-IPA-exception:
+      xgen-IPA-104-resource-has-GET: API predates IPA validation
   "/api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/accessList/{ipAddress}":
     delete:
       description: Removes the specified access list entry from the specified Service
@@ -17848,6 +18109,8 @@ paths:
       summary: Create one Organization Service Account Secret
       tags:
         - Service Accounts
+    x-xgen-IPA-exception:
+      xgen-IPA-104-resource-has-GET: API predates IPA validation
   "/api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/secrets/{secretId}":
     delete:
       description: Deletes the specified Service Account secret. Available as a
@@ -18056,6 +18319,8 @@ paths:
       summary: Return One Team using its Name
       tags:
         - Teams
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/orgs/{orgId}/teams/{teamId}":
     delete:
       description: Removes one team specified using its unique 24-hexadecimal digit
@@ -18285,6 +18550,8 @@ paths:
       summary: Assign MongoDB Cloud Users from One Organization to One Team
       tags:
         - Teams
+    x-xgen-IPA-exception:
+      xgen-IPA-104-resource-has-GET: API predates IPA validation
   "/api/atlas/v2/orgs/{orgId}/teams/{teamId}/users/{userId}":
     delete:
       description: Removes one MongoDB Cloud user from the specified team. This team
@@ -18451,6 +18718,8 @@ paths:
       summary: Update Organization Roles for One MongoDB Cloud User
       tags:
         - Organizations
+    x-xgen-IPA-exception:
+      xgen-IPA-104-resource-has-GET: API predates IPA validation
   /api/atlas/v2/unauth/controlPlaneIPAddresses:
     get:
       description: Returns all control plane IP addresses.
@@ -18544,6 +18813,8 @@ paths:
       summary: Return One MongoDB Cloud User using Their Username
       tags:
         - MongoDB Cloud Users
+    x-xgen-IPA-exception:
+      xgen-IPA-102-path-alternate-resource-name-path-param: API predates IPA validation
   "/api/atlas/v2/users/{userId}":
     get:
       description: Returns the details for one MongoDB Cloud user account with the
@@ -19329,13 +19600,12 @@ components:
         datadogRegion:
           type: string
           default: US
-          description: >-
-            Datadog region that indicates which API Uniform Resource Locator
+          description: 'Datadog region that indicates which API Uniform Resource Locator
             (URL) to use. The resource requires this parameter when
-            `"notifications.[n].typeName" : "DATADOG"`.
-
-
-            To learn more about Datadog's regions, see <a href="https://docs.datadoghq.com/getting_started/site/" target="_blank" rel="noopener noreferrer">Datadog Sites</a>.
+            `"notifications.[n].typeName" : "DATADOG"`.'
+          externalDocs:
+            description: Datadog regions
+            url: https://docs.datadoghq.com/getting_started/site/
         delayMin:
           type: integer
           format: int32
@@ -19591,6 +19861,7 @@ components:
           example: test routing
         webhookSecret:
           type: string
+          format: password
           description: >-
             Authentication secret for a webhook-based alert.
 
@@ -19599,11 +19870,13 @@ components:
 
             * You set `notification.[n].webhookSecret` to a non-empty string
 
-            * You set a default webhookSecret either on the [Integrations](https://www.mongodb.com/docs/atlas/tutorial/third-party-service-integrations/#std-label-third-party-integrations) page, or with the [Integrations API](#tag/Third-Party-Service-Integrations/operation/createIntegration)
+            * You set a default webhookSecret either on the Integrations page, or with the [Integrations API](#tag/Third-Party-Service-Integrations/operation/createIntegration)
 
 
             **NOTE**: When you view or edit the alert for a webhook notification, the secret appears completely redacted.
-          example: "******"
+          externalDocs:
+            description: Integrations page
+            url: https://www.mongodb.com/docs/atlas/tutorial/third-party-service-integrations/#std-label-third-party-integrations
         webhookUrl:
           type: string
           description: >-
@@ -25376,6 +25649,12 @@ components:
           readOnly: true
         storage:
           $ref: "#/components/schemas/DataLakeStorage"
+    DataMetricUnits:
+      type: string
+      description: Element used to express the quantity. This can be an element of
+        time, storage capacity, and the like.
+      example: BYTES
+      title: Data Metric Units
     DataProtectionSettings20231001:
       type: object
       properties:
@@ -28390,6 +28669,33 @@ components:
             the cluster. If set to `true`, MongoDB Cloud won't delete the
             cluster. If set to `false`, MongoDB Cloud will delete the cluster.
       title: Flex Cluster Description Update
+    FlexClusterMetricThreshold:
+      type: object
+      description: Threshold for the metric that, when exceeded, triggers an alert.
+        The metric threshold pertains to event types which reflects changes of
+        measurements and metrics about the serverless database.
+      properties:
+        metricName:
+          type: string
+          description: Human-readable label that identifies the metric against which
+            MongoDB Cloud checks the configured **metricThreshold.threshold**.
+        mode:
+          type: string
+          description: MongoDB Cloud computes the current metric value as an average.
+        operator:
+          type: string
+          description: Comparison operator to apply when checking the current metric value.
+        threshold:
+          type: number
+          format: double
+          description: Value of metric that, when exceeded, triggers an alert.
+        units:
+          $ref: "#/components/schemas/DataMetricUnits"
+          description: Element used to express the quantity. This can be an element of
+            time, storage capacity, and the like.
+      required:
+        - metricName
+      title: Flex Cluster Metric Threshold
     FlexConnectionStrings20241113:
       type: object
       description: Collection of Uniform Resource Locators that point to the MongoDB
@@ -28712,9 +29018,11 @@ components:
           type: string
           format: date-time
           description: Date and time when MongoDB Cloud created the alert configuration.
-            This parameter expresses its value in the <a
-            href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank"
-            rel="noopener noreferrer">ISO 8601</a> timestamp format in UTC.
+            This parameter expresses its value in the ISO 8601 timestamp format
+            in UTC.
+          externalDocs:
+            description: ISO 8601
+            url: https://en.wikipedia.org/wiki/ISO_8601
           readOnly: true
         enabled:
           type: boolean
@@ -28769,12 +29077,14 @@ components:
           type: string
           format: date-time
           description: Date and time when someone last updated this alert configuration.
-            This parameter expresses its value in the <a
-            href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank"
-            rel="noopener noreferrer">ISO 8601</a> timestamp format in UTC.
+            This parameter expresses its value in the ISO 8601 timestamp format
+            in UTC.
+          externalDocs:
+            description: ISO 8601
+            url: https://en.wikipedia.org/wiki/ISO_8601
           readOnly: true
         metricThreshold:
-          $ref: "#/components/schemas/ServerlessMetricThreshold"
+          $ref: "#/components/schemas/FlexClusterMetricThreshold"
         threshold:
           $ref: "#/components/schemas/GreaterThanRawThreshold"
     GroupIPAddresses:
@@ -33644,39 +33954,6 @@ components:
             delete the serverless instance. If set to `false`, MongoDB Cloud
             will delete the serverless instance.
       title: Serverless Instance Description Update
-    ServerlessMetricThreshold:
-      type: object
-      description: Threshold for the metric that, when exceeded, triggers an alert.
-        The metric threshold pertains to event types which reflects changes of
-        measurements and metrics about the serverless database.
-      properties:
-        metricName:
-          type: string
-          description: Human-readable label that identifies the metric against which
-            MongoDB Cloud checks the configured **metricThreshold.threshold**.
-        mode:
-          type: string
-          description: MongoDB Cloud computes the current metric value as an average.
-        operator:
-          type: string
-          description: Comparison operator to apply when checking the current metric value.
-        threshold:
-          type: number
-          format: double
-          description: Value of metric that, when exceeded, triggers an alert.
-        units:
-          $ref: "#/components/schemas/ServerlessMetricUnits"
-          description: Element used to express the quantity. This can be an element of
-            time, storage capacity, and the like.
-      required:
-        - metricName
-      title: Serverless Metric Threshold
-    ServerlessMetricUnits:
-      type: string
-      description: Element used to express the quantity. This can be an element of
-        time, storage capacity, and the like.
-      example: RPU
-      title: Serverless Metric Units
     ServerlessProviderSettings:
       type: object
       description: Group of cloud provider settings that configure the provisioned
@@ -35019,13 +35296,13 @@ components:
           example: test routing
         secret:
           type: string
+          format: password
           description: >-
             An optional field returned if your webhook is configured with a
             secret.
 
 
             **NOTE**: When you view or edit the alert for a webhook notification, the secret appears completely redacted.
-          example: "******"
         url:
           type: string
           description: >-
@@ -36310,7 +36587,10 @@ components:
       properties:
         specs:
           type: array
-          description: List of settings that configure the Search Nodes for your cluster.
+          description: |-
+            List of settings that configure the Search Nodes for your cluster.
+
+            **NOTE**: We accept a single configuration for all nodes currently.
           items:
             $ref: "#/components/schemas/ApiSearchDeploymentSpec"
           maxItems: 1
@@ -36340,6 +36620,7 @@ components:
         specs:
           type: array
           description: List of settings that configure the Search Nodes for your cluster.
+            The configuration will be returned for each region and shard.
           items:
             $ref: "#/components/schemas/ApiSearchDeploymentSpec"
           readOnly: true
