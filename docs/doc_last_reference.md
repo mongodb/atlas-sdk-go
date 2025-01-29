@@ -407,6 +407,7 @@ Class        | Method        | HTTP request  | Description   |
 *StreamsApi* | [DeleteVpcPeeringConnection](./docs/StreamsApi.md#deletevpcpeeringconnection) | **Delete** /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id} | Deletes an incoming VPC Peering connection. |
 *StreamsApi* | [DownloadStreamTenantAuditLogs](./docs/StreamsApi.md#downloadstreamtenantauditlogs) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/auditLogs | Download Audit Logs for One Atlas Stream Processing Instance |
 *StreamsApi* | [GetAccountDetails](./docs/StreamsApi.md#getaccountdetails) | **Get** /api/atlas/v2/groups/{groupId}/streams/accountDetails | Returns the Account ID, and the VPC ID for the group and region specified. |
+*StreamsApi* | [GetActiveVpcPeeringConnections](./docs/StreamsApi.md#getactivevpcpeeringconnections) | **Get** /api/atlas/v2/groups/{groupId}/streams/activeVpcPeeringConnections | Returns all the active incoming VPC Peering Connections. |
 *StreamsApi* | [GetPrivateLinkConnection](./docs/StreamsApi.md#getprivatelinkconnection) | **Get** /api/atlas/v2/groups/{groupId}/streams/privateLinkConnections/{connectionId} | Return One PrivateLink Connection |
 *StreamsApi* | [GetStreamConnection](./docs/StreamsApi.md#getstreamconnection) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName} | Return One Stream Connection |
 *StreamsApi* | [GetStreamInstance](./docs/StreamsApi.md#getstreaminstance) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Return One Stream Instance |
@@ -643,6 +644,7 @@ Class        | Method        | HTTP request  | Description   |
  - [FlexClusterDescription20241113](./docs/FlexClusterDescription20241113.md)
  - [FlexClusterDescriptionCreate20241113](./docs/FlexClusterDescriptionCreate20241113.md)
  - [FlexClusterDescriptionUpdate20241113](./docs/FlexClusterDescriptionUpdate20241113.md)
+ - [FlexClusterMetricThreshold](./docs/FlexClusterMetricThreshold.md)
  - [FlexConnectionStrings20241113](./docs/FlexConnectionStrings20241113.md)
  - [FlexProviderSettings20241113](./docs/FlexProviderSettings20241113.md)
  - [FlexProviderSettingsCreate20241113](./docs/FlexProviderSettingsCreate20241113.md)
@@ -823,7 +825,6 @@ Class        | Method        | HTTP request  | Description   |
  - [ServerlessInstanceDescriptionConnectionStrings](./docs/ServerlessInstanceDescriptionConnectionStrings.md)
  - [ServerlessInstanceDescriptionCreate](./docs/ServerlessInstanceDescriptionCreate.md)
  - [ServerlessInstanceDescriptionUpdate](./docs/ServerlessInstanceDescriptionUpdate.md)
- - [ServerlessMetricThreshold](./docs/ServerlessMetricThreshold.md)
  - [ServerlessProviderSettings](./docs/ServerlessProviderSettings.md)
  - [ServerlessTenantCreateRequest](./docs/ServerlessTenantCreateRequest.md)
  - [ServerlessTenantEndpoint](./docs/ServerlessTenantEndpoint.md)
