@@ -4,6 +4,8 @@ package admin
 
 // ApiAtlasResourcePolicyCreate struct for ApiAtlasResourcePolicyCreate
 type ApiAtlasResourcePolicyCreate struct {
+	// Description of the atlas resource policy.
+	Description *string `json:"description,omitempty"`
 	// Human-readable label that describes the atlas resource policy.
 	Name string `json:"name"`
 	// List of policies that make up the atlas resource policy.
@@ -27,6 +29,39 @@ func NewApiAtlasResourcePolicyCreate(name string, policies []ApiAtlasPolicyCreat
 func NewApiAtlasResourcePolicyCreateWithDefaults() *ApiAtlasResourcePolicyCreate {
 	this := ApiAtlasResourcePolicyCreate{}
 	return &this
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise
+func (o *ApiAtlasResourcePolicyCreate) GetDescription() string {
+	if o == nil || IsNil(o.Description) {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApiAtlasResourcePolicyCreate) GetDescriptionOk() (*string, bool) {
+	if o == nil || IsNil(o.Description) {
+		return nil, false
+	}
+
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *ApiAtlasResourcePolicyCreate) HasDescription() bool {
+	if o != nil && !IsNil(o.Description) {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *ApiAtlasResourcePolicyCreate) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetName returns the Name field value

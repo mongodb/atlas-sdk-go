@@ -19,6 +19,8 @@ type ServerlessPrivateEndpointsApi interface {
 
 		 A new endpoint won't be immediately available after creation.  Read the steps in the linked tutorial for detailed guidance.
 
+		This feature does not work for Flex clusters. To continue using Private Endpoints once Serverless is replaced by Flex, please use a Dedicated cluster instead.
+
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 			@param instanceName Human-readable label that identifies the serverless instance for which the tenant endpoint will be created.
@@ -40,15 +42,17 @@ type ServerlessPrivateEndpointsApi interface {
 	CreateServerlessPrivateEndpointExecute(r CreateServerlessPrivateEndpointApiRequest) (*ServerlessTenantEndpoint, *http.Response, error)
 
 	/*
-		DeleteServerlessPrivateEndpoint Remove One Private Endpoint for One Serverless Instance
+			DeleteServerlessPrivateEndpoint Remove One Private Endpoint for One Serverless Instance
 
-		Remove one private endpoint from one serverless instance. To use this resource, the requesting API Key must have the Project Owner role.
+			Remove one private endpoint from one serverless instance. To use this resource, the requesting API Key must have the Project Owner role.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param instanceName Human-readable label that identifies the serverless instance from which the tenant endpoint will be removed.
-		@param endpointId Unique 24-hexadecimal digit string that identifies the tenant endpoint which will be removed.
-		@return DeleteServerlessPrivateEndpointApiRequest
+		This feature does not work for Flex clusters. To continue using Private Endpoints once Serverless is replaced by Flex, please use a Dedicated cluster instead.
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param instanceName Human-readable label that identifies the serverless instance from which the tenant endpoint will be removed.
+			@param endpointId Unique 24-hexadecimal digit string that identifies the tenant endpoint which will be removed.
+			@return DeleteServerlessPrivateEndpointApiRequest
 	*/
 	DeleteServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string, endpointId string) DeleteServerlessPrivateEndpointApiRequest
 	/*
@@ -65,15 +69,17 @@ type ServerlessPrivateEndpointsApi interface {
 	DeleteServerlessPrivateEndpointExecute(r DeleteServerlessPrivateEndpointApiRequest) (any, *http.Response, error)
 
 	/*
-		GetServerlessPrivateEndpoint Return One Private Endpoint for One Serverless Instance
+			GetServerlessPrivateEndpoint Return One Private Endpoint for One Serverless Instance
 
-		Return one private endpoint for one serverless instance. Identify this endpoint using its unique ID. You must have at least the Project Read Only role for the project to successfully call this resource.
+			Return one private endpoint for one serverless instance. Identify this endpoint using its unique ID. You must have at least the Project Read Only role for the project to successfully call this resource.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param instanceName Human-readable label that identifies the serverless instance associated with the tenant endpoint.
-		@param endpointId Unique 24-hexadecimal digit string that identifies the tenant endpoint.
-		@return GetServerlessPrivateEndpointApiRequest
+		This feature does not work for Flex clusters. To continue using Private Endpoints once Serverless is replaced by Flex, please use a Dedicated cluster instead.
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param instanceName Human-readable label that identifies the serverless instance associated with the tenant endpoint.
+			@param endpointId Unique 24-hexadecimal digit string that identifies the tenant endpoint.
+			@return GetServerlessPrivateEndpointApiRequest
 	*/
 	GetServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string, endpointId string) GetServerlessPrivateEndpointApiRequest
 	/*
@@ -90,14 +96,16 @@ type ServerlessPrivateEndpointsApi interface {
 	GetServerlessPrivateEndpointExecute(r GetServerlessPrivateEndpointApiRequest) (*ServerlessTenantEndpoint, *http.Response, error)
 
 	/*
-		ListServerlessPrivateEndpoints Return All Private Endpoints for One Serverless Instance
+			ListServerlessPrivateEndpoints Return All Private Endpoints for One Serverless Instance
 
-		Returns all private endpoints for one serverless instance. You must have at least the Project Read Only role for the project to successfully call this resource.
+			Returns all private endpoints for one serverless instance. You must have at least the Project Read Only role for the project to successfully call this resource.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param instanceName Human-readable label that identifies the serverless instance associated with the tenant endpoint.
-		@return ListServerlessPrivateEndpointsApiRequest
+		This feature does not work for Flex clusters. To continue using Private Endpoints once Serverless is replaced by Flex, please use a Dedicated cluster instead.
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param instanceName Human-readable label that identifies the serverless instance associated with the tenant endpoint.
+			@return ListServerlessPrivateEndpointsApiRequest
 	*/
 	ListServerlessPrivateEndpoints(ctx context.Context, groupId string, instanceName string) ListServerlessPrivateEndpointsApiRequest
 	/*
@@ -114,16 +122,18 @@ type ServerlessPrivateEndpointsApi interface {
 	ListServerlessPrivateEndpointsExecute(r ListServerlessPrivateEndpointsApiRequest) ([]ServerlessTenantEndpoint, *http.Response, error)
 
 	/*
-		UpdateServerlessPrivateEndpoint Update One Private Endpoint for One Serverless Instance
+			UpdateServerlessPrivateEndpoint Update One Private Endpoint for One Serverless Instance
 
-		Updates one private endpoint for one serverless instance. To use this resource, the requesting API Key must have the Project Owner role.
+			Updates one private endpoint for one serverless instance. To use this resource, the requesting API Key must have the Project Owner role.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param instanceName Human-readable label that identifies the serverless instance associated with the tenant endpoint that will be updated.
-		@param endpointId Unique 24-hexadecimal digit string that identifies the tenant endpoint which will be updated.
-		@param serverlessTenantEndpointUpdate Object used for update.
-		@return UpdateServerlessPrivateEndpointApiRequest
+		This feature does not work for Flex clusters. To continue using Private Endpoints once Serverless is replaced by Flex, please use a Dedicated cluster instead.
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param instanceName Human-readable label that identifies the serverless instance associated with the tenant endpoint that will be updated.
+			@param endpointId Unique 24-hexadecimal digit string that identifies the tenant endpoint which will be updated.
+			@param serverlessTenantEndpointUpdate Object used for update.
+			@return UpdateServerlessPrivateEndpointApiRequest
 	*/
 	UpdateServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string, endpointId string, serverlessTenantEndpointUpdate *ServerlessTenantEndpointUpdate) UpdateServerlessPrivateEndpointApiRequest
 	/*
@@ -177,6 +187,8 @@ CreateServerlessPrivateEndpoint Create One Private Endpoint for One Serverless I
 Creates one private endpoint for one serverless instance. To use this resource, the requesting API Key must have the Project Owner role.
 
 	A new endpoint won't be immediately available after creation.  Read the steps in the linked tutorial for detailed guidance.
+
+This feature does not work for Flex clusters. To continue using Private Endpoints once Serverless is replaced by Flex, please use a Dedicated cluster instead.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -304,6 +316,8 @@ DeleteServerlessPrivateEndpoint Remove One Private Endpoint for One Serverless I
 
 Remove one private endpoint from one serverless instance. To use this resource, the requesting API Key must have the Project Owner role.
 
+This feature does not work for Flex clusters. To continue using Private Endpoints once Serverless is replaced by Flex, please use a Dedicated cluster instead.
+
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param instanceName Human-readable label that identifies the serverless instance from which the tenant endpoint will be removed.
@@ -427,6 +441,8 @@ GetServerlessPrivateEndpoint Return One Private Endpoint for One Serverless Inst
 
 Return one private endpoint for one serverless instance. Identify this endpoint using its unique ID. You must have at least the Project Read Only role for the project to successfully call this resource.
 
+This feature does not work for Flex clusters. To continue using Private Endpoints once Serverless is replaced by Flex, please use a Dedicated cluster instead.
+
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param instanceName Human-readable label that identifies the serverless instance associated with the tenant endpoint.
@@ -546,6 +562,8 @@ func (r ListServerlessPrivateEndpointsApiRequest) Execute() ([]ServerlessTenantE
 ListServerlessPrivateEndpoints Return All Private Endpoints for One Serverless Instance
 
 Returns all private endpoints for one serverless instance. You must have at least the Project Read Only role for the project to successfully call this resource.
+
+This feature does not work for Flex clusters. To continue using Private Endpoints once Serverless is replaced by Flex, please use a Dedicated cluster instead.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -669,6 +687,8 @@ func (r UpdateServerlessPrivateEndpointApiRequest) Execute() (*ServerlessTenantE
 UpdateServerlessPrivateEndpoint Update One Private Endpoint for One Serverless Instance
 
 Updates one private endpoint for one serverless instance. To use this resource, the requesting API Key must have the Project Owner role.
+
+This feature does not work for Flex clusters. To continue using Private Endpoints once Serverless is replaced by Flex, please use a Dedicated cluster instead.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
