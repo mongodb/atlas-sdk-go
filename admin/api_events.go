@@ -634,13 +634,13 @@ func (r ListOrganizationEventsApiRequest) IncludeRaw(includeRaw bool) ListOrgani
 	return r
 }
 
-// Date and time from when MongoDB Cloud stops returning events. This parameter uses the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/ISO_8601\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;ISO 8601&lt;/a&gt; timestamp format in UTC.
+// Date and time from when MongoDB Cloud stops returning events. This parameter uses the ISO 8601 timestamp format in UTC.
 func (r ListOrganizationEventsApiRequest) MaxDate(maxDate time.Time) ListOrganizationEventsApiRequest {
 	r.maxDate = &maxDate
 	return r
 }
 
-// Date and time from when MongoDB Cloud starts returning events. This parameter uses the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/ISO_8601\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;ISO 8601&lt;/a&gt; timestamp format in UTC.
+// Date and time from when MongoDB Cloud starts returning events. This parameter uses the ISO 8601 timestamp format in UTC.
 func (r ListOrganizationEventsApiRequest) MinDate(minDate time.Time) ListOrganizationEventsApiRequest {
 	r.minDate = &minDate
 	return r
@@ -869,13 +869,13 @@ func (r ListProjectEventsApiRequest) IncludeRaw(includeRaw bool) ListProjectEven
 	return r
 }
 
-// Date and time from when MongoDB Cloud stops returning events. This parameter uses the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/ISO_8601\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;ISO 8601&lt;/a&gt; timestamp format in UTC.
+// Date and time from when MongoDB Cloud stops returning events. This parameter uses the ISO 8601 timestamp format in UTC.
 func (r ListProjectEventsApiRequest) MaxDate(maxDate time.Time) ListProjectEventsApiRequest {
 	r.maxDate = &maxDate
 	return r
 }
 
-// Date and time from when MongoDB Cloud starts returning events. This parameter uses the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/ISO_8601\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;ISO 8601&lt;/a&gt; timestamp format in UTC.
+// Date and time from when MongoDB Cloud starts returning events. This parameter uses the ISO 8601 timestamp format in UTC.
 func (r ListProjectEventsApiRequest) MinDate(minDate time.Time) ListProjectEventsApiRequest {
 	r.minDate = &minDate
 	return r

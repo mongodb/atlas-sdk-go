@@ -21,6 +21,8 @@ type ProjectsApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param groupInvitationRequest Adds one MongoDB Cloud user to the specified project.
 		@return AddUserToProjectApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for ProjectsApi
 	*/
 	AddUserToProject(ctx context.Context, groupId string, groupInvitationRequest *GroupInvitationRequest) AddUserToProjectApiRequest
 	/*
@@ -30,6 +32,8 @@ type ProjectsApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param AddUserToProjectApiParams - Parameters for the request
 		@return AddUserToProjectApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for ProjectsApi
 	*/
 	AddUserToProjectWithParams(ctx context.Context, args *AddUserToProjectApiParams) AddUserToProjectApiRequest
 
@@ -359,13 +363,11 @@ type ProjectsApi interface {
 	/*
 		ListProjectUsers Return All Users in One Project
 
-		Returns details about all users in the specified project. Users belong to an organization. To use this resource, the requesting API Key must have the Project Read Only role.
+		Returns details about all users in the specified project. Users belong to an organization. To use this resource, the requesting API Key must have the Project Read Only role. Deprecated versions: v2-{2023-01-01}
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@return ListProjectUsersApiRequest
-
-		Deprecated: this method has been deprecated. Please check the latest resource version for ProjectsApi
 	*/
 	ListProjectUsers(ctx context.Context, groupId string) ListProjectUsersApiRequest
 	/*
@@ -375,13 +377,11 @@ type ProjectsApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param ListProjectUsersApiParams - Parameters for the request
 		@return ListProjectUsersApiRequest
-
-		Deprecated: this method has been deprecated. Please check the latest resource version for ProjectsApi
 	*/
 	ListProjectUsersWithParams(ctx context.Context, args *ListProjectUsersApiParams) ListProjectUsersApiRequest
 
 	// Method available only for mocking purposes
-	ListProjectUsersExecute(r ListProjectUsersApiRequest) (*PaginatedAppUser, *http.Response, error)
+	ListProjectUsersExecute(r ListProjectUsersApiRequest) (*PaginatedGroupUser, *http.Response, error)
 
 	/*
 		ListProjects Return All Projects
@@ -432,7 +432,7 @@ type ProjectsApi interface {
 	/*
 		RemoveProjectUser Remove One User from One Project
 
-		Removes the specified user from the specified project. To use this resource, the requesting API Key must have the Project Owner role.
+		Removes the specified user from the specified project. To use this resource, the requesting API Key must have the Project Owner role. Deprecated versions: v2-{2023-01-01}
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -451,7 +451,7 @@ type ProjectsApi interface {
 	RemoveProjectUserWithParams(ctx context.Context, args *RemoveProjectUserApiParams) RemoveProjectUserApiRequest
 
 	// Method available only for mocking purposes
-	RemoveProjectUserExecute(r RemoveProjectUserApiRequest) (*http.Response, error)
+	RemoveProjectUserExecute(r RemoveProjectUserApiRequest) (any, *http.Response, error)
 
 	/*
 		ReturnAllIpAddresses Return All IP Addresses for One Project
@@ -594,6 +594,8 @@ type ProjectsApi interface {
 		@param userId Unique 24-hexadecimal digit string that identifies the user to modify.
 		@param updateGroupRolesForUser Roles to update for the specified user.
 		@return UpdateProjectRolesApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for ProjectsApi
 	*/
 	UpdateProjectRoles(ctx context.Context, groupId string, userId string, updateGroupRolesForUser *UpdateGroupRolesForUser) UpdateProjectRolesApiRequest
 	/*
@@ -603,6 +605,8 @@ type ProjectsApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param UpdateProjectRolesApiParams - Parameters for the request
 		@return UpdateProjectRolesApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for ProjectsApi
 	*/
 	UpdateProjectRolesWithParams(ctx context.Context, args *UpdateProjectRolesApiParams) UpdateProjectRolesApiRequest
 
@@ -670,6 +674,8 @@ Adds one MongoDB Cloud user to the specified project. If the MongoDB Cloud user 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return AddUserToProjectApiRequest
+
+Deprecated
 */
 func (a *ProjectsApiService) AddUserToProject(ctx context.Context, groupId string, groupInvitationRequest *GroupInvitationRequest) AddUserToProjectApiRequest {
 	return AddUserToProjectApiRequest{
@@ -683,6 +689,8 @@ func (a *ProjectsApiService) AddUserToProject(ctx context.Context, groupId strin
 // AddUserToProjectExecute executes the request
 //
 //	@return OrganizationInvitation
+//
+// Deprecated
 func (a *ProjectsApiService) AddUserToProjectExecute(r AddUserToProjectApiRequest) (*OrganizationInvitation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -2345,38 +2353,35 @@ func (a *ProjectsApiService) ListProjectLimitsExecute(r ListProjectLimitsApiRequ
 }
 
 type ListProjectUsersApiRequest struct {
-	ctx                 context.Context
-	ApiService          ProjectsApi
-	groupId             string
-	includeCount        *bool
-	itemsPerPage        *int
-	pageNum             *int
-	flattenTeams        *bool
-	includeOrgUsers     *bool
-	orgMembershipStatus *string
+	ctx             context.Context
+	ApiService      ProjectsApi
+	groupId         string
+	includeCount    *bool
+	itemsPerPage    *int
+	pageNum         *int
+	flattenTeams    *bool
+	includeOrgUsers *bool
 }
 
 type ListProjectUsersApiParams struct {
-	GroupId             string
-	IncludeCount        *bool
-	ItemsPerPage        *int
-	PageNum             *int
-	FlattenTeams        *bool
-	IncludeOrgUsers     *bool
-	OrgMembershipStatus *string
+	GroupId         string
+	IncludeCount    *bool
+	ItemsPerPage    *int
+	PageNum         *int
+	FlattenTeams    *bool
+	IncludeOrgUsers *bool
 }
 
 func (a *ProjectsApiService) ListProjectUsersWithParams(ctx context.Context, args *ListProjectUsersApiParams) ListProjectUsersApiRequest {
 	return ListProjectUsersApiRequest{
-		ApiService:          a,
-		ctx:                 ctx,
-		groupId:             args.GroupId,
-		includeCount:        args.IncludeCount,
-		itemsPerPage:        args.ItemsPerPage,
-		pageNum:             args.PageNum,
-		flattenTeams:        args.FlattenTeams,
-		includeOrgUsers:     args.IncludeOrgUsers,
-		orgMembershipStatus: args.OrgMembershipStatus,
+		ApiService:      a,
+		ctx:             ctx,
+		groupId:         args.GroupId,
+		includeCount:    args.IncludeCount,
+		itemsPerPage:    args.ItemsPerPage,
+		pageNum:         args.PageNum,
+		flattenTeams:    args.FlattenTeams,
+		includeOrgUsers: args.IncludeOrgUsers,
 	}
 }
 
@@ -2410,26 +2415,18 @@ func (r ListProjectUsersApiRequest) IncludeOrgUsers(includeOrgUsers bool) ListPr
 	return r
 }
 
-// Flag that indicates whether to filter the returned list by users organization membership status. If you exclude this parameter, this resource returns both pending and active users.
-func (r ListProjectUsersApiRequest) OrgMembershipStatus(orgMembershipStatus string) ListProjectUsersApiRequest {
-	r.orgMembershipStatus = &orgMembershipStatus
-	return r
-}
-
-func (r ListProjectUsersApiRequest) Execute() (*PaginatedAppUser, *http.Response, error) {
+func (r ListProjectUsersApiRequest) Execute() (*PaginatedGroupUser, *http.Response, error) {
 	return r.ApiService.ListProjectUsersExecute(r)
 }
 
 /*
 ListProjectUsers Return All Users in One Project
 
-Returns details about all users in the specified project. Users belong to an organization. To use this resource, the requesting API Key must have the Project Read Only role.
+Returns details about all users in the specified project. Users belong to an organization. To use this resource, the requesting API Key must have the Project Read Only role. Deprecated versions: v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return ListProjectUsersApiRequest
-
-Deprecated
 */
 func (a *ProjectsApiService) ListProjectUsers(ctx context.Context, groupId string) ListProjectUsersApiRequest {
 	return ListProjectUsersApiRequest{
@@ -2441,15 +2438,13 @@ func (a *ProjectsApiService) ListProjectUsers(ctx context.Context, groupId strin
 
 // ListProjectUsersExecute executes the request
 //
-//	@return PaginatedAppUser
-//
-// Deprecated
-func (a *ProjectsApiService) ListProjectUsersExecute(r ListProjectUsersApiRequest) (*PaginatedAppUser, *http.Response, error) {
+//	@return PaginatedGroupUser
+func (a *ProjectsApiService) ListProjectUsersExecute(r ListProjectUsersApiRequest) (*PaginatedGroupUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue *PaginatedAppUser
+		localVarReturnValue *PaginatedGroupUser
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.ListProjectUsers")
@@ -2499,9 +2494,6 @@ func (a *ProjectsApiService) ListProjectUsersExecute(r ListProjectUsersApiReques
 		r.includeOrgUsers = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "includeOrgUsers", r.includeOrgUsers, "")
 	}
-	if r.orgMembershipStatus != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "orgMembershipStatus", r.orgMembershipStatus, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -2512,7 +2504,7 @@ func (a *ProjectsApiService) ListProjectUsersExecute(r ListProjectUsersApiReques
 	}
 
 	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2043-01-01+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -2845,14 +2837,14 @@ func (a *ProjectsApiService) RemoveProjectUserWithParams(ctx context.Context, ar
 	}
 }
 
-func (r RemoveProjectUserApiRequest) Execute() (*http.Response, error) {
+func (r RemoveProjectUserApiRequest) Execute() (any, *http.Response, error) {
 	return r.ApiService.RemoveProjectUserExecute(r)
 }
 
 /*
 RemoveProjectUser Remove One User from One Project
 
-Removes the specified user from the specified project. To use this resource, the requesting API Key must have the Project Owner role.
+Removes the specified user from the specified project. To use this resource, the requesting API Key must have the Project Owner role. Deprecated versions: v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -2869,16 +2861,19 @@ func (a *ProjectsApiService) RemoveProjectUser(ctx context.Context, groupId stri
 }
 
 // RemoveProjectUserExecute executes the request
-func (a *ProjectsApiService) RemoveProjectUserExecute(r RemoveProjectUserApiRequest) (*http.Response, error) {
+//
+//	@return any
+func (a *ProjectsApiService) RemoveProjectUserExecute(r RemoveProjectUserApiRequest) (any, *http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   any
-		formFiles          []formFile
+		localVarHTTPMethod  = http.MethodDelete
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue any
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.RemoveProjectUser")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/users/{userId}"
@@ -2899,7 +2894,7 @@ func (a *ProjectsApiService) RemoveProjectUserExecute(r RemoveProjectUserApiRequ
 	}
 
 	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2043-01-01+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -2908,20 +2903,34 @@ func (a *ProjectsApiService) RemoveProjectUserExecute(r RemoveProjectUserApiRequ
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
 		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ReturnAllIpAddressesApiRequest struct {
@@ -3574,6 +3583,8 @@ Updates the roles of the specified user in the specified project. To specify the
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param userId Unique 24-hexadecimal digit string that identifies the user to modify.
 	@return UpdateProjectRolesApiRequest
+
+Deprecated
 */
 func (a *ProjectsApiService) UpdateProjectRoles(ctx context.Context, groupId string, userId string, updateGroupRolesForUser *UpdateGroupRolesForUser) UpdateProjectRolesApiRequest {
 	return UpdateProjectRolesApiRequest{
@@ -3588,6 +3599,8 @@ func (a *ProjectsApiService) UpdateProjectRoles(ctx context.Context, groupId str
 // UpdateProjectRolesExecute executes the request
 //
 //	@return UpdateGroupRolesForUser
+//
+// Deprecated
 func (a *ProjectsApiService) UpdateProjectRolesExecute(r UpdateProjectRolesApiRequest) (*UpdateGroupRolesForUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut

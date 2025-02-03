@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20241113004/admin"
+	admin "github.com/mongodb/atlas-sdk-go/admin"
 
 	http "net/http"
 
@@ -2333,24 +2333,24 @@ func (_c *ProjectsApi_ListProjectUsers_Call) RunAndReturn(run func(context.Conte
 }
 
 // ListProjectUsersExecute provides a mock function with given fields: r
-func (_m *ProjectsApi) ListProjectUsersExecute(r admin.ListProjectUsersApiRequest) (*admin.PaginatedAppUser, *http.Response, error) {
+func (_m *ProjectsApi) ListProjectUsersExecute(r admin.ListProjectUsersApiRequest) (*admin.PaginatedGroupUser, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for ListProjectUsersExecute")
 	}
 
-	var r0 *admin.PaginatedAppUser
+	var r0 *admin.PaginatedGroupUser
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListProjectUsersApiRequest) (*admin.PaginatedAppUser, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListProjectUsersApiRequest) (*admin.PaginatedGroupUser, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.ListProjectUsersApiRequest) *admin.PaginatedAppUser); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListProjectUsersApiRequest) *admin.PaginatedGroupUser); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.PaginatedAppUser)
+			r0 = ret.Get(0).(*admin.PaginatedGroupUser)
 		}
 	}
 
@@ -2389,12 +2389,12 @@ func (_c *ProjectsApi_ListProjectUsersExecute_Call) Run(run func(r admin.ListPro
 	return _c
 }
 
-func (_c *ProjectsApi_ListProjectUsersExecute_Call) Return(_a0 *admin.PaginatedAppUser, _a1 *http.Response, _a2 error) *ProjectsApi_ListProjectUsersExecute_Call {
+func (_c *ProjectsApi_ListProjectUsersExecute_Call) Return(_a0 *admin.PaginatedGroupUser, _a1 *http.Response, _a2 error) *ProjectsApi_ListProjectUsersExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ProjectsApi_ListProjectUsersExecute_Call) RunAndReturn(run func(admin.ListProjectUsersApiRequest) (*admin.PaginatedAppUser, *http.Response, error)) *ProjectsApi_ListProjectUsersExecute_Call {
+func (_c *ProjectsApi_ListProjectUsersExecute_Call) RunAndReturn(run func(admin.ListProjectUsersApiRequest) (*admin.PaginatedGroupUser, *http.Response, error)) *ProjectsApi_ListProjectUsersExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -2817,33 +2817,42 @@ func (_c *ProjectsApi_RemoveProjectUser_Call) RunAndReturn(run func(context.Cont
 }
 
 // RemoveProjectUserExecute provides a mock function with given fields: r
-func (_m *ProjectsApi) RemoveProjectUserExecute(r admin.RemoveProjectUserApiRequest) (*http.Response, error) {
+func (_m *ProjectsApi) RemoveProjectUserExecute(r admin.RemoveProjectUserApiRequest) (any, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for RemoveProjectUserExecute")
 	}
 
-	var r0 *http.Response
-	var r1 error
-	if rf, ok := ret.Get(0).(func(admin.RemoveProjectUserApiRequest) (*http.Response, error)); ok {
+	var r0 any
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.RemoveProjectUserApiRequest) (any, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.RemoveProjectUserApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(0).(func(admin.RemoveProjectUserApiRequest) any); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*http.Response)
+			r0 = ret.Get(0).(any)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.RemoveProjectUserApiRequest) error); ok {
+	if rf, ok := ret.Get(1).(func(admin.RemoveProjectUserApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
-		r1 = ret.Error(1)
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
 	}
 
-	return r0, r1
+	if rf, ok := ret.Get(2).(func(admin.RemoveProjectUserApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
 }
 
 // ProjectsApi_RemoveProjectUserExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RemoveProjectUserExecute'
@@ -2864,12 +2873,12 @@ func (_c *ProjectsApi_RemoveProjectUserExecute_Call) Run(run func(r admin.Remove
 	return _c
 }
 
-func (_c *ProjectsApi_RemoveProjectUserExecute_Call) Return(_a0 *http.Response, _a1 error) *ProjectsApi_RemoveProjectUserExecute_Call {
-	_c.Call.Return(_a0, _a1)
+func (_c *ProjectsApi_RemoveProjectUserExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *ProjectsApi_RemoveProjectUserExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ProjectsApi_RemoveProjectUserExecute_Call) RunAndReturn(run func(admin.RemoveProjectUserApiRequest) (*http.Response, error)) *ProjectsApi_RemoveProjectUserExecute_Call {
+func (_c *ProjectsApi_RemoveProjectUserExecute_Call) RunAndReturn(run func(admin.RemoveProjectUserApiRequest) (any, *http.Response, error)) *ProjectsApi_RemoveProjectUserExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }

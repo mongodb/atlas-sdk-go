@@ -13,15 +13,17 @@ import (
 type SharedTierSnapshotsApi interface {
 
 	/*
-		DownloadSharedClusterBackup Download One M2 or M5 Cluster Snapshot
+			DownloadSharedClusterBackup Download One M2 or M5 Cluster Snapshot
 
-		Requests one snapshot for the specified shared cluster. This resource returns a `snapshotURL` that you can use to download the snapshot. This `snapshotURL` remains active for four hours after you make the request. To use this resource, the requesting API Key must have the Project Owner role.
+			Requests one snapshot for the specified shared cluster. This resource returns a `snapshotURL` that you can use to download the snapshot. This `snapshotURL` remains active for four hours after you make the request. To use this resource, the requesting API Key must have the Project Owner role.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param clusterName Human-readable label that identifies the cluster.
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param tenantRestore Snapshot to be downloaded.
-		@return DownloadSharedClusterBackupApiRequest
+		This endpoint can also be used on Flex clusters that were created using the [createCluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) endpoint or former M2/M5 clusters that have been migrated to Flex clusters until January 2026, after which this endpoint will be sunset. Please use the downloadFlexBackup endpoint instead.
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param clusterName Human-readable label that identifies the cluster.
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param tenantRestore Snapshot to be downloaded.
+			@return DownloadSharedClusterBackupApiRequest
 	*/
 	DownloadSharedClusterBackup(ctx context.Context, clusterName string, groupId string, tenantRestore *TenantRestore) DownloadSharedClusterBackupApiRequest
 	/*
@@ -38,15 +40,17 @@ type SharedTierSnapshotsApi interface {
 	DownloadSharedClusterBackupExecute(r DownloadSharedClusterBackupApiRequest) (*TenantRestore, *http.Response, error)
 
 	/*
-		GetSharedClusterBackup Return One Snapshot for One M2 or M5 Cluster
+			GetSharedClusterBackup Return One Snapshot for One M2 or M5 Cluster
 
-		Returns details for one snapshot for the specified shared cluster. To use this resource, the requesting API Key must have the Project Read Only role.
+			Returns details for one snapshot for the specified shared cluster. To use this resource, the requesting API Key must have the Project Read Only role.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param clusterName Human-readable label that identifies the cluster.
-		@param snapshotId Unique 24-hexadecimal digit string that identifies the desired snapshot.
-		@return GetSharedClusterBackupApiRequest
+		This endpoint can also be used on Flex clusters that were created using the [createCluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) endpoint or former M2/M5 clusters that have been migrated to Flex clusters until January 2026, after which this endpoint will be sunset. Please use the getFlexBackup endpoint instead.
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param clusterName Human-readable label that identifies the cluster.
+			@param snapshotId Unique 24-hexadecimal digit string that identifies the desired snapshot.
+			@return GetSharedClusterBackupApiRequest
 	*/
 	GetSharedClusterBackup(ctx context.Context, groupId string, clusterName string, snapshotId string) GetSharedClusterBackupApiRequest
 	/*
@@ -63,14 +67,16 @@ type SharedTierSnapshotsApi interface {
 	GetSharedClusterBackupExecute(r GetSharedClusterBackupApiRequest) (*BackupTenantSnapshot, *http.Response, error)
 
 	/*
-		ListSharedClusterBackups Return All Snapshots for One M2 or M5 Cluster
+			ListSharedClusterBackups Return All Snapshots for One M2 or M5 Cluster
 
-		Returns details for all snapshots for the specified shared cluster. To use this resource, the requesting API Key must have the Project Read Only role.
+			Returns details for all snapshots for the specified shared cluster. To use this resource, the requesting API Key must have the Project Read Only role.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param clusterName Human-readable label that identifies the cluster.
-		@return ListSharedClusterBackupsApiRequest
+		This API also works for Flex clusters that were created using the [createCluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) endpoint or former M2/M5 clusters that have been migrated to Flex clusters, until January 2026, after which this endpoint will be sunset. Please use the listFlexBackups endpoint instead.
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param clusterName Human-readable label that identifies the cluster.
+			@return ListSharedClusterBackupsApiRequest
 	*/
 	ListSharedClusterBackups(ctx context.Context, groupId string, clusterName string) ListSharedClusterBackupsApiRequest
 	/*
@@ -122,6 +128,8 @@ func (r DownloadSharedClusterBackupApiRequest) Execute() (*TenantRestore, *http.
 DownloadSharedClusterBackup Download One M2 or M5 Cluster Snapshot
 
 Requests one snapshot for the specified shared cluster. This resource returns a `snapshotURL` that you can use to download the snapshot. This `snapshotURL` remains active for four hours after you make the request. To use this resource, the requesting API Key must have the Project Owner role.
+
+This endpoint can also be used on Flex clusters that were created using the [createCluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) endpoint or former M2/M5 clusters that have been migrated to Flex clusters until January 2026, after which this endpoint will be sunset. Please use the downloadFlexBackup endpoint instead.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param clusterName Human-readable label that identifies the cluster.
@@ -249,6 +257,8 @@ GetSharedClusterBackup Return One Snapshot for One M2 or M5 Cluster
 
 Returns details for one snapshot for the specified shared cluster. To use this resource, the requesting API Key must have the Project Read Only role.
 
+This endpoint can also be used on Flex clusters that were created using the [createCluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) endpoint or former M2/M5 clusters that have been migrated to Flex clusters until January 2026, after which this endpoint will be sunset. Please use the getFlexBackup endpoint instead.
+
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param clusterName Human-readable label that identifies the cluster.
@@ -368,6 +378,8 @@ func (r ListSharedClusterBackupsApiRequest) Execute() (*PaginatedTenantSnapshot,
 ListSharedClusterBackups Return All Snapshots for One M2 or M5 Cluster
 
 Returns details for all snapshots for the specified shared cluster. To use this resource, the requesting API Key must have the Project Read Only role.
+
+This API also works for Flex clusters that were created using the [createCluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) endpoint or former M2/M5 clusters that have been migrated to Flex clusters, until January 2026, after which this endpoint will be sunset. Please use the listFlexBackups endpoint instead.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
