@@ -8,7 +8,7 @@ import (
 
 // GroupAlertsConfig struct for GroupAlertsConfig
 type GroupAlertsConfig struct {
-	// Date and time when MongoDB Cloud created the alert configuration. This parameter expresses its value in the <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\" rel=\"noopener noreferrer\">ISO 8601</a> timestamp format in UTC.
+	// Date and time when MongoDB Cloud created the alert configuration. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	Created *time.Time `json:"created,omitempty"`
 	// Flag that indicates whether someone enabled this alert configuration for the specified project.
@@ -28,11 +28,11 @@ type GroupAlertsConfig struct {
 	Matchers *[]StreamsMatcher `json:"matchers,omitempty"`
 	// List that contains the targets that MongoDB Cloud sends notifications.
 	Notifications *[]AlertsNotificationRootForGroup `json:"notifications,omitempty"`
-	// Date and time when someone last updated this alert configuration. This parameter expresses its value in the <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\" rel=\"noopener noreferrer\">ISO 8601</a> timestamp format in UTC.
+	// Date and time when someone last updated this alert configuration. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
-	Updated         *time.Time                 `json:"updated,omitempty"`
-	MetricThreshold *ServerlessMetricThreshold `json:"metricThreshold,omitempty"`
-	Threshold       *GreaterThanRawThreshold   `json:"threshold,omitempty"`
+	Updated         *time.Time                  `json:"updated,omitempty"`
+	MetricThreshold *FlexClusterMetricThreshold `json:"metricThreshold,omitempty"`
+	Threshold       *GreaterThanRawThreshold    `json:"threshold,omitempty"`
 }
 
 // NewGroupAlertsConfig instantiates a new GroupAlertsConfig object
@@ -354,9 +354,9 @@ func (o *GroupAlertsConfig) SetUpdated(v time.Time) {
 }
 
 // GetMetricThreshold returns the MetricThreshold field value if set, zero value otherwise
-func (o *GroupAlertsConfig) GetMetricThreshold() ServerlessMetricThreshold {
+func (o *GroupAlertsConfig) GetMetricThreshold() FlexClusterMetricThreshold {
 	if o == nil || IsNil(o.MetricThreshold) {
-		var ret ServerlessMetricThreshold
+		var ret FlexClusterMetricThreshold
 		return ret
 	}
 	return *o.MetricThreshold
@@ -364,7 +364,7 @@ func (o *GroupAlertsConfig) GetMetricThreshold() ServerlessMetricThreshold {
 
 // GetMetricThresholdOk returns a tuple with the MetricThreshold field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GroupAlertsConfig) GetMetricThresholdOk() (*ServerlessMetricThreshold, bool) {
+func (o *GroupAlertsConfig) GetMetricThresholdOk() (*FlexClusterMetricThreshold, bool) {
 	if o == nil || IsNil(o.MetricThreshold) {
 		return nil, false
 	}
@@ -381,8 +381,8 @@ func (o *GroupAlertsConfig) HasMetricThreshold() bool {
 	return false
 }
 
-// SetMetricThreshold gets a reference to the given ServerlessMetricThreshold and assigns it to the MetricThreshold field.
-func (o *GroupAlertsConfig) SetMetricThreshold(v ServerlessMetricThreshold) {
+// SetMetricThreshold gets a reference to the given FlexClusterMetricThreshold and assigns it to the MetricThreshold field.
+func (o *GroupAlertsConfig) SetMetricThreshold(v FlexClusterMetricThreshold) {
 	o.MetricThreshold = &v
 }
 

@@ -17,15 +17,15 @@ type AlertsApi interface {
 
 			Confirms receipt of one existing alert. This alert applies to any component in one project. Acknowledging an alert prevents successive notifications. You receive an alert when a monitored component meets or exceeds a value you set until you acknowledge the alert. To use this resource, the requesting API Key must have the Organization Owner or Project Owner role.
 
-		This resource remains under revision and may change. Deprecated versions: v2-{2023-01-01}
+		This resource remains under revision and may change.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 			@param alertId Unique 24-hexadecimal digit string that identifies the alert. Use the [/alerts](#tag/Alerts/operation/listAlerts) endpoint to retrieve all alerts to which the authenticated user has access.
-			@param acknowledgeAlert Acknowledges or unacknowledges one alert.
+			@param alert Acknowledges or unacknowledges one alert.
 			@return AcknowledgeAlertApiRequest
 	*/
-	AcknowledgeAlert(ctx context.Context, groupId string, alertId string, acknowledgeAlert *AcknowledgeAlert) AcknowledgeAlertApiRequest
+	AcknowledgeAlert(ctx context.Context, groupId string, alertId string, alert *Alert) AcknowledgeAlertApiRequest
 	/*
 		AcknowledgeAlert Acknowledge One Alert from One Project
 
@@ -121,26 +121,26 @@ type AlertsApi interface {
 type AlertsApiService service
 
 type AcknowledgeAlertApiRequest struct {
-	ctx              context.Context
-	ApiService       AlertsApi
-	groupId          string
-	alertId          string
-	acknowledgeAlert *AcknowledgeAlert
+	ctx        context.Context
+	ApiService AlertsApi
+	groupId    string
+	alertId    string
+	alert      *Alert
 }
 
 type AcknowledgeAlertApiParams struct {
-	GroupId          string
-	AlertId          string
-	AcknowledgeAlert *AcknowledgeAlert
+	GroupId string
+	AlertId string
+	Alert   *Alert
 }
 
 func (a *AlertsApiService) AcknowledgeAlertWithParams(ctx context.Context, args *AcknowledgeAlertApiParams) AcknowledgeAlertApiRequest {
 	return AcknowledgeAlertApiRequest{
-		ApiService:       a,
-		ctx:              ctx,
-		groupId:          args.GroupId,
-		alertId:          args.AlertId,
-		acknowledgeAlert: args.AcknowledgeAlert,
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    args.GroupId,
+		alertId:    args.AlertId,
+		alert:      args.Alert,
 	}
 }
 
@@ -153,20 +153,20 @@ AcknowledgeAlert Acknowledge One Alert from One Project
 
 Confirms receipt of one existing alert. This alert applies to any component in one project. Acknowledging an alert prevents successive notifications. You receive an alert when a monitored component meets or exceeds a value you set until you acknowledge the alert. To use this resource, the requesting API Key must have the Organization Owner or Project Owner role.
 
-This resource remains under revision and may change. Deprecated versions: v2-{2023-01-01}
+This resource remains under revision and may change.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param alertId Unique 24-hexadecimal digit string that identifies the alert. Use the [/alerts](#tag/Alerts/operation/listAlerts) endpoint to retrieve all alerts to which the authenticated user has access.
 	@return AcknowledgeAlertApiRequest
 */
-func (a *AlertsApiService) AcknowledgeAlert(ctx context.Context, groupId string, alertId string, acknowledgeAlert *AcknowledgeAlert) AcknowledgeAlertApiRequest {
+func (a *AlertsApiService) AcknowledgeAlert(ctx context.Context, groupId string, alertId string, alert *Alert) AcknowledgeAlertApiRequest {
 	return AcknowledgeAlertApiRequest{
-		ApiService:       a,
-		ctx:              ctx,
-		groupId:          groupId,
-		alertId:          alertId,
-		acknowledgeAlert: acknowledgeAlert,
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    groupId,
+		alertId:    alertId,
+		alert:      alert,
 	}
 }
 
@@ -193,12 +193,12 @@ func (a *AlertsApiService) AcknowledgeAlertExecute(r AcknowledgeAlertApiRequest)
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.acknowledgeAlert == nil {
-		return localVarReturnValue, nil, reportError("acknowledgeAlert is required and must be specified")
+	if r.alert == nil {
+		return localVarReturnValue, nil, reportError("alert is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.atlas.2024-05-30+json"}
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json", "application/vnd.atlas.2024-05-30+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -215,7 +215,7 @@ func (a *AlertsApiService) AcknowledgeAlertExecute(r AcknowledgeAlertApiRequest)
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.acknowledgeAlert
+	localVarPostBody = r.alert
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
