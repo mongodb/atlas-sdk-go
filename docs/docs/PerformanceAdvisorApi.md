@@ -33,7 +33,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113004/admin"
+    "go.mongodb.org/atlas-sdk/v20241113005/admin"
 )
 
 func main() {
@@ -111,7 +111,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113004/admin"
+    "go.mongodb.org/atlas-sdk/v20241113005/admin"
 )
 
 func main() {
@@ -174,7 +174,7 @@ Name | Type | Description  | Notes
 
 ## GetManagedSlowMs
 
-> GetManagedSlowMs(ctx, groupId).Execute()
+> bool GetManagedSlowMs(ctx, groupId).Execute()
 
 Return Managed Slow MS enabled
 
@@ -189,7 +189,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113004/admin"
+    "go.mongodb.org/atlas-sdk/v20241113005/admin"
 )
 
 func main() {
@@ -204,7 +204,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    r, err := sdk.PerformanceAdvisorApi.GetManagedSlowMs(context.Background(), groupId).Execute()
+    resp, r, err := sdk.PerformanceAdvisorApi.GetManagedSlowMs(context.Background(), groupId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorApi.GetManagedSlowMs`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -213,6 +213,8 @@ func main() {
         }
         return
     }
+    // response from `GetManagedSlowMs`: bool
+    fmt.Fprintf(os.Stdout, "Response from `PerformanceAdvisorApi.GetManagedSlowMs`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -235,7 +237,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**bool**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -267,7 +269,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113004/admin"
+    "go.mongodb.org/atlas-sdk/v20241113005/admin"
 )
 
 func main() {
@@ -350,7 +352,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113004/admin"
+    "go.mongodb.org/atlas-sdk/v20241113005/admin"
 )
 
 func main() {
@@ -441,7 +443,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113004/admin"
+    "go.mongodb.org/atlas-sdk/v20241113005/admin"
 )
 
 func main() {
@@ -532,7 +534,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113004/admin"
+    "go.mongodb.org/atlas-sdk/v20241113005/admin"
 )
 
 func main() {
@@ -619,7 +621,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113004/admin"
+    "go.mongodb.org/atlas-sdk/v20241113005/admin"
 )
 
 func main() {
@@ -718,7 +720,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113004/admin"
+    "go.mongodb.org/atlas-sdk/v20241113005/admin"
 )
 
 func main() {

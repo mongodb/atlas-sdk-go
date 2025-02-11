@@ -4,15 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | The ID of the Private Link connection. | [optional] 
+**Id** | Pointer to **string** | The ID of the Private Link connection. | [optional] [readonly] 
+**Arn** | Pointer to **string** | Amazon Resource Name (ARN). | [optional] 
 **DnsDomain** | Pointer to **string** | Domain name of Privatelink connected cluster. | [optional] 
 **DnsSubDomain** | Pointer to **[]string** | Sub-Domain name of Confluent cluster. These are typically your availability zones. | [optional] 
-**InterfaceEndpointId** | Pointer to **string** | Interface endpoint ID that is created from the service endpoint ID provided. | [optional] 
+**ErrorMessage** | Pointer to **string** | Error message if the state is FAILED. | [optional] [readonly] 
+**InterfaceEndpointId** | Pointer to **string** | Interface endpoint ID that is created from the service endpoint ID provided. | [optional] [readonly] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **Provider** | Pointer to **string** | Provider where the Kafka cluster is deployed. | [optional] 
+**ProviderAccountId** | Pointer to **string** | Account ID from the cloud provider. | [optional] [readonly] 
 **Region** | Pointer to **string** | Domain name of Confluent cluster. | [optional] 
 **ServiceEndpointId** | Pointer to **string** | Service Endpoint ID. | [optional] 
-**State** | Pointer to **string** | State the connection is in. | [optional] 
+**State** | Pointer to **string** | State the connection is in. | [optional] [readonly] 
 **Vendor** | Pointer to **string** | Vendor who manages the Kafka cluster. | [optional] 
 
 ## Methods
@@ -58,6 +61,30 @@ SetId sets Id field to given value.
 `func (o *StreamsPrivateLinkConnection) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+### GetArn
+
+`func (o *StreamsPrivateLinkConnection) GetArn() string`
+
+GetArn returns the Arn field if non-nil, zero value otherwise.
+
+### GetArnOk
+
+`func (o *StreamsPrivateLinkConnection) GetArnOk() (*string, bool)`
+
+GetArnOk returns a tuple with the Arn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetArn
+
+`func (o *StreamsPrivateLinkConnection) SetArn(v string)`
+
+SetArn sets Arn field to given value.
+
+### HasArn
+
+`func (o *StreamsPrivateLinkConnection) HasArn() bool`
+
+HasArn returns a boolean if a field has been set.
 ### GetDnsDomain
 
 `func (o *StreamsPrivateLinkConnection) GetDnsDomain() string`
@@ -106,6 +133,30 @@ SetDnsSubDomain sets DnsSubDomain field to given value.
 `func (o *StreamsPrivateLinkConnection) HasDnsSubDomain() bool`
 
 HasDnsSubDomain returns a boolean if a field has been set.
+### GetErrorMessage
+
+`func (o *StreamsPrivateLinkConnection) GetErrorMessage() string`
+
+GetErrorMessage returns the ErrorMessage field if non-nil, zero value otherwise.
+
+### GetErrorMessageOk
+
+`func (o *StreamsPrivateLinkConnection) GetErrorMessageOk() (*string, bool)`
+
+GetErrorMessageOk returns a tuple with the ErrorMessage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetErrorMessage
+
+`func (o *StreamsPrivateLinkConnection) SetErrorMessage(v string)`
+
+SetErrorMessage sets ErrorMessage field to given value.
+
+### HasErrorMessage
+
+`func (o *StreamsPrivateLinkConnection) HasErrorMessage() bool`
+
+HasErrorMessage returns a boolean if a field has been set.
 ### GetInterfaceEndpointId
 
 `func (o *StreamsPrivateLinkConnection) GetInterfaceEndpointId() string`
@@ -178,6 +229,30 @@ SetProvider sets Provider field to given value.
 `func (o *StreamsPrivateLinkConnection) HasProvider() bool`
 
 HasProvider returns a boolean if a field has been set.
+### GetProviderAccountId
+
+`func (o *StreamsPrivateLinkConnection) GetProviderAccountId() string`
+
+GetProviderAccountId returns the ProviderAccountId field if non-nil, zero value otherwise.
+
+### GetProviderAccountIdOk
+
+`func (o *StreamsPrivateLinkConnection) GetProviderAccountIdOk() (*string, bool)`
+
+GetProviderAccountIdOk returns a tuple with the ProviderAccountId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProviderAccountId
+
+`func (o *StreamsPrivateLinkConnection) SetProviderAccountId(v string)`
+
+SetProviderAccountId sets ProviderAccountId field to given value.
+
+### HasProviderAccountId
+
+`func (o *StreamsPrivateLinkConnection) HasProviderAccountId() bool`
+
+HasProviderAccountId returns a boolean if a field has been set.
 ### GetRegion
 
 `func (o *StreamsPrivateLinkConnection) GetRegion() string`

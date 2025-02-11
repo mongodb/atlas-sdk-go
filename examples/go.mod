@@ -1,15 +1,15 @@
-module go.mongodb.org/atlas-sdk/v20241113004/examples
+module go.mongodb.org/atlas-sdk/v20241113005/examples
 
 go 1.22.0
 
 toolchain go1.23.1
 
-replace go.mongodb.org/atlas-sdk/v20241113004 => ../
+replace go.mongodb.org/atlas-sdk/v20241113005 => ../
 
 require (
 	github.com/hashicorp/go-retryablehttp v0.7.7
 	github.com/mongodb-forks/digest v1.1.0
-	go.mongodb.org/atlas-sdk/v20241113004 v20241113004.1.0
+	go.mongodb.org/atlas-sdk/v20241113005 v20241113005.1.0
 )
 
 require golang.org/x/oauth2 v0.25.0 // indirect

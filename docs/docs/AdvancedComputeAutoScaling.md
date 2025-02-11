@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Enabled** | Pointer to **bool** | Flag that indicates whether someone enabled instance size auto-scaling.  - Set to &#x60;true&#x60; to enable instance size auto-scaling. If enabled, you must specify a value for **replicationSpecs[n].regionConfigs[m].autoScaling.compute.maxInstanceSize**. - Set to &#x60;false&#x60; to disable instance size automatic scaling. | [optional] 
-**MaxInstanceSize** | Pointer to **string** | Instance size boundary to which your cluster can automatically scale. | [optional] 
-**MinInstanceSize** | Pointer to **string** | Instance size boundary to which your cluster can automatically scale. | [optional] 
+**MaxInstanceSize** | Pointer to **string** | Instance size boundary to which your cluster can automatically scale. | [optional] [readonly] 
+**MinInstanceSize** | Pointer to **string** | Instance size boundary to which your cluster can automatically scale. | [optional] [readonly] 
 **ScaleDownEnabled** | Pointer to **bool** | Flag that indicates whether the instance size may scale down. MongoDB Cloud requires this parameter if &#x60;\&quot;replicationSpecs[n].regionConfigs[m].autoScaling.compute.enabled\&quot; : true&#x60;. If you enable this option, specify a value for **replicationSpecs[n].regionConfigs[m].autoScaling.compute.minInstanceSize**. | [optional] 
 
 ## Methods

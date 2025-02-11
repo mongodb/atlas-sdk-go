@@ -364,8 +364,6 @@ type ProjectsApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@return ListProjectUsersApiRequest
-
-		Deprecated: this method has been deprecated. Please check the latest resource version for ProjectsApi
 	*/
 	ListProjectUsers(ctx context.Context, groupId string) ListProjectUsersApiRequest
 	/*
@@ -375,8 +373,6 @@ type ProjectsApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param ListProjectUsersApiParams - Parameters for the request
 		@return ListProjectUsersApiRequest
-
-		Deprecated: this method has been deprecated. Please check the latest resource version for ProjectsApi
 	*/
 	ListProjectUsersWithParams(ctx context.Context, args *ListProjectUsersApiParams) ListProjectUsersApiRequest
 
@@ -2345,38 +2341,35 @@ func (a *ProjectsApiService) ListProjectLimitsExecute(r ListProjectLimitsApiRequ
 }
 
 type ListProjectUsersApiRequest struct {
-	ctx                 context.Context
-	ApiService          ProjectsApi
-	groupId             string
-	includeCount        *bool
-	itemsPerPage        *int
-	pageNum             *int
-	flattenTeams        *bool
-	includeOrgUsers     *bool
-	orgMembershipStatus *string
+	ctx             context.Context
+	ApiService      ProjectsApi
+	groupId         string
+	includeCount    *bool
+	itemsPerPage    *int
+	pageNum         *int
+	flattenTeams    *bool
+	includeOrgUsers *bool
 }
 
 type ListProjectUsersApiParams struct {
-	GroupId             string
-	IncludeCount        *bool
-	ItemsPerPage        *int
-	PageNum             *int
-	FlattenTeams        *bool
-	IncludeOrgUsers     *bool
-	OrgMembershipStatus *string
+	GroupId         string
+	IncludeCount    *bool
+	ItemsPerPage    *int
+	PageNum         *int
+	FlattenTeams    *bool
+	IncludeOrgUsers *bool
 }
 
 func (a *ProjectsApiService) ListProjectUsersWithParams(ctx context.Context, args *ListProjectUsersApiParams) ListProjectUsersApiRequest {
 	return ListProjectUsersApiRequest{
-		ApiService:          a,
-		ctx:                 ctx,
-		groupId:             args.GroupId,
-		includeCount:        args.IncludeCount,
-		itemsPerPage:        args.ItemsPerPage,
-		pageNum:             args.PageNum,
-		flattenTeams:        args.FlattenTeams,
-		includeOrgUsers:     args.IncludeOrgUsers,
-		orgMembershipStatus: args.OrgMembershipStatus,
+		ApiService:      a,
+		ctx:             ctx,
+		groupId:         args.GroupId,
+		includeCount:    args.IncludeCount,
+		itemsPerPage:    args.ItemsPerPage,
+		pageNum:         args.PageNum,
+		flattenTeams:    args.FlattenTeams,
+		includeOrgUsers: args.IncludeOrgUsers,
 	}
 }
 
@@ -2410,12 +2403,6 @@ func (r ListProjectUsersApiRequest) IncludeOrgUsers(includeOrgUsers bool) ListPr
 	return r
 }
 
-// Flag that indicates whether to filter the returned list by users organization membership status. If you exclude this parameter, this resource returns both pending and active users.
-func (r ListProjectUsersApiRequest) OrgMembershipStatus(orgMembershipStatus string) ListProjectUsersApiRequest {
-	r.orgMembershipStatus = &orgMembershipStatus
-	return r
-}
-
 func (r ListProjectUsersApiRequest) Execute() (*PaginatedAppUser, *http.Response, error) {
 	return r.ApiService.ListProjectUsersExecute(r)
 }
@@ -2428,8 +2415,6 @@ Returns details about all users in the specified project. Users belong to an org
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return ListProjectUsersApiRequest
-
-Deprecated
 */
 func (a *ProjectsApiService) ListProjectUsers(ctx context.Context, groupId string) ListProjectUsersApiRequest {
 	return ListProjectUsersApiRequest{
@@ -2442,8 +2427,6 @@ func (a *ProjectsApiService) ListProjectUsers(ctx context.Context, groupId strin
 // ListProjectUsersExecute executes the request
 //
 //	@return PaginatedAppUser
-//
-// Deprecated
 func (a *ProjectsApiService) ListProjectUsersExecute(r ListProjectUsersApiRequest) (*PaginatedAppUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -2498,9 +2481,6 @@ func (a *ProjectsApiService) ListProjectUsersExecute(r ListProjectUsersApiReques
 		var defaultValue bool = false
 		r.includeOrgUsers = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "includeOrgUsers", r.includeOrgUsers, "")
-	}
-	if r.orgMembershipStatus != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "orgMembershipStatus", r.orgMembershipStatus, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

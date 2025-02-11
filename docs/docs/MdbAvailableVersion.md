@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CloudProvider** | Pointer to **string** | Cloud service provider on which MongoDB Cloud provisions the hosts. Set dedicated clusters to &#x60;AWS&#x60;, &#x60;GCP&#x60;, &#x60;AZURE&#x60; or &#x60;TENANT&#x60;. | [optional] 
 **DefaultStatus** | Pointer to **string** | Whether the version is the current default for the Instance Size and Cloud Provider. | [optional] 
-**InstanceSize** | Pointer to **string** | Instance size boundary to which your cluster can automatically scale. | [optional] 
+**InstanceSize** | Pointer to **string** | Instance size boundary to which your cluster can automatically scale. | [optional] [readonly] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **Version** | Pointer to **string** | The MongoDB Major Version in question. | [optional] 
 
