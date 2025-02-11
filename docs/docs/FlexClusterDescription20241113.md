@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BackupSettings** | Pointer to [**FlexBackupSettings20241113**](FlexBackupSettings20241113.md) |  | [optional] 
-**ClusterType** | Pointer to **string** | Flex cluster topology. | [optional] [readonly] 
+**ClusterType** | Pointer to **string** | Flex cluster topology. | [optional] [readonly] [default to "REPLICASET"]
 **ConnectionStrings** | Pointer to [**FlexConnectionStrings20241113**](FlexConnectionStrings20241113.md) |  | [optional] 
 **CreateDate** | Pointer to **time.Time** | Date and time when MongoDB Cloud created this instance. This parameter expresses its value in ISO 8601 format in UTC. | [optional] [readonly] 
 **GroupId** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the project. | [optional] [readonly] 

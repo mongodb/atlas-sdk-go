@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CloudProvider** | Pointer to **string** | Human-readable label that identifies the Cloud service provider where you wish to store your archived data. **AZURE** or **GCP** may be selected only if it is the Cloud service provider for the cluster and no archives for any other cloud provider have been created for the cluster. **GCP** is currently only supported in [private preview](https://www.mongodb.com/community/forums/t/invitation-to-participate-in-the-private-preview-program-of-online-archive-on-gcp). | [optional] 
+**CloudProvider** | Pointer to **string** | Human-readable label that identifies the Cloud service provider where you wish to store your archived data. **AZURE** or **GCP** may be selected only if it is the Cloud service provider for the cluster and no archives for any other cloud provider have been created for the cluster. | [optional] 
 **Region** | Pointer to **string** | Human-readable label that identifies the geographic location of the region where you wish to store your archived data. | [optional] 
 
 ## Methods

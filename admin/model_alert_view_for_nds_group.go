@@ -8,7 +8,7 @@ import (
 
 // AlertViewForNdsGroup struct for AlertViewForNdsGroup
 type AlertViewForNdsGroup struct {
-	// Date and time until which this alert has been acknowledged. This parameter expresses its value in the <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\" rel=\"noopener noreferrer\">ISO 8601</a> timestamp format in UTC. The resource returns this parameter if a MongoDB User previously acknowledged this alert.  - To acknowledge this alert forever, set the parameter value to 100 years in the future.  - To unacknowledge a previously acknowledged alert, do not set this parameter value.
+	// Date and time until which this alert has been acknowledged. This parameter expresses its value in the ISO 8601 timestamp format in UTC. The resource returns this parameter if a MongoDB User previously acknowledged this alert.  - To acknowledge this alert forever, set the parameter value to 100 years in the future.  - To unacknowledge a previously acknowledged alert, do not set this parameter value.
 	AcknowledgedUntil *time.Time `json:"acknowledgedUntil,omitempty"`
 	// Comment that a MongoDB Cloud user submitted when acknowledging the alert.
 	AcknowledgementComment *string `json:"acknowledgementComment,omitempty"`
@@ -18,7 +18,7 @@ type AlertViewForNdsGroup struct {
 	// Unique 24-hexadecimal digit string that identifies the alert configuration that sets this alert.
 	// Read only field.
 	AlertConfigId *string `json:"alertConfigId,omitempty"`
-	// Date and time when MongoDB Cloud created this alert. This parameter expresses its value in the <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\" rel=\"noopener noreferrer\">ISO 8601</a> timestamp format in UTC.
+	// Date and time when MongoDB Cloud created this alert. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	Created *time.Time `json:"created,omitempty"`
 	// Incident that triggered this alert.
@@ -30,7 +30,7 @@ type AlertViewForNdsGroup struct {
 	// Unique 24-hexadecimal digit string that identifies this alert.
 	// Read only field.
 	Id *string `json:"id,omitempty"`
-	// Date and time that any notifications were last sent for this alert. This parameter expresses its value in the <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\" rel=\"noopener noreferrer\">ISO 8601</a> timestamp format in UTC. The resource returns this parameter if MongoDB Cloud has sent notifications for this alert.
+	// Date and time that any notifications were last sent for this alert. This parameter expresses its value in the ISO 8601 timestamp format in UTC. The resource returns this parameter if MongoDB Cloud has sent notifications for this alert.
 	// Read only field.
 	LastNotified *time.Time `json:"lastNotified,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
@@ -39,13 +39,13 @@ type AlertViewForNdsGroup struct {
 	// Unique 24-hexadecimal character string that identifies the organization that owns the project to which this alert applies.
 	// Read only field.
 	OrgId *string `json:"orgId,omitempty"`
-	// Date and time that this alert changed to `\"status\" : \"CLOSED\"`. This parameter expresses its value in the <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\" rel=\"noopener noreferrer\">ISO 8601</a> timestamp format in UTC. The resource returns this parameter once `\"status\" : \"CLOSED\"`.
+	// Date and time that this alert changed to `\"status\" : \"CLOSED\"`. This parameter expresses its value in the ISO 8601 timestamp format in UTC. The resource returns this parameter once `\"status\" : \"CLOSED\"`.
 	// Read only field.
 	Resolved *time.Time `json:"resolved,omitempty"`
 	// State of this alert at the time you requested its details.
 	// Read only field.
 	Status *string `json:"status,omitempty"`
-	// Date and time when someone last updated this alert. This parameter expresses its value in the <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\" rel=\"noopener noreferrer\">ISO 8601</a> timestamp format in UTC.
+	// Date and time when someone last updated this alert. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	Updated *time.Time `json:"updated,omitempty"`
 	// Human-readable label that identifies the cluster to which this alert applies. This resource returns this parameter for alerts of events impacting backups, replica sets, or sharded clusters.

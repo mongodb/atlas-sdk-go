@@ -4,7 +4,7 @@ package admin
 
 // StreamsDataProcessRegion Information about the cloud provider region in which MongoDB Cloud processes the stream.
 type StreamsDataProcessRegion struct {
-	// Label that identifies the cloud service provider where MongoDB Cloud performs stream processing. Currently, this parameter supports AWS only.
+	// Label that identifies the cloud service provider where MongoDB Cloud performs stream processing. Currently, this parameter only supports AWS and AZURE.
 	CloudProvider string `json:"cloudProvider"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.

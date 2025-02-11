@@ -14,14 +14,16 @@ import (
 type ClustersApi interface {
 
 	/*
-		CreateCluster Create One Cluster from One Project
+			CreateCluster Create One Cluster from One Project
 
-		Creates one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. This resource can create clusters with asymmetrically-sized shards. Each project supports up to 25 database deployments. To use this resource, the requesting API Key must have the Project Owner role. This feature is not available for serverless clusters. Deprecated versions: v2-{2024-08-05}, v2-{2023-02-01}, v2-{2023-01-01}
+			Creates one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. This resource can create clusters with asymmetrically-sized shards. Each project supports up to 25 database deployments. To use this resource, the requesting API Key must have the Project Owner role. This feature is not available for serverless clusters.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param clusterDescription20240805 Cluster to create in this project.
-		@return CreateClusterApiRequest
+		Please note that using an instanceSize of M2 or M5 will create a Flex cluster instead. Support for the instanceSize of M2 or M5 will be discontinued in January 2026. We recommend using the createFlexCluster API for such configurations moving forward. Deprecated versions: v2-{2024-08-05}, v2-{2023-02-01}, v2-{2023-01-01}
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param clusterDescription20240805 Cluster to create in this project.
+			@return CreateClusterApiRequest
 	*/
 	CreateCluster(ctx context.Context, groupId string, clusterDescription20240805 *ClusterDescription20240805) CreateClusterApiRequest
 	/*
@@ -38,14 +40,16 @@ type ClustersApi interface {
 	CreateClusterExecute(r CreateClusterApiRequest) (*ClusterDescription20240805, *http.Response, error)
 
 	/*
-		DeleteCluster Remove One Cluster from One Project
+			DeleteCluster Remove One Cluster from One Project
 
-		Removes one cluster from the specified project. The cluster must have termination protection disabled in order to be deleted. To use this resource, the requesting API Key must have the Project Owner role. This feature is not available for serverless clusters. Deprecated versions: v2-{2023-01-01}
+			Removes one cluster from the specified project. The cluster must have termination protection disabled in order to be deleted. To use this resource, the requesting API Key must have the Project Owner role. This feature is not available for serverless clusters.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param clusterName Human-readable label that identifies the cluster.
-		@return DeleteClusterApiRequest
+		This endpoint can also be used on Flex clusters that were created using the [createCluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) endpoint or former M2/M5 clusters that have been migrated to Flex clusters until January 2026. Please use the deleteFlexCluster endpoint for Flex clusters instead. Deprecated versions: v2-{2023-01-01}
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param clusterName Human-readable label that identifies the cluster.
+			@return DeleteClusterApiRequest
 	*/
 	DeleteCluster(ctx context.Context, groupId string, clusterName string) DeleteClusterApiRequest
 	/*
@@ -62,14 +66,16 @@ type ClustersApi interface {
 	DeleteClusterExecute(r DeleteClusterApiRequest) (*http.Response, error)
 
 	/*
-		GetCluster Return One Cluster from One Project
+			GetCluster Return One Cluster from One Project
 
-		Returns the details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. The response includes clusters with asymmetrically-sized shards. To use this resource, the requesting API Key must have the Project Read Only role. This feature is not available for serverless clusters. Deprecated versions: v2-{2023-02-01}, v2-{2023-01-01}
+			Returns the details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. The response includes clusters with asymmetrically-sized shards. To use this resource, the requesting API Key must have the Project Read Only role. This feature is not available for serverless clusters.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param clusterName Human-readable label that identifies this cluster.
-		@return GetClusterApiRequest
+		This endpoint can also be used on Flex clusters that were created using the [createCluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) endpoint or former M2/M5 clusters that have been migrated to Flex clusters until January 2026. Please use the getFlexCluster endpoint for Flex clusters instead. Deprecated versions: v2-{2023-02-01}, v2-{2023-01-01}
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param clusterName Human-readable label that identifies this cluster.
+			@return GetClusterApiRequest
 	*/
 	GetCluster(ctx context.Context, groupId string, clusterName string) GetClusterApiRequest
 	/*
@@ -206,13 +212,15 @@ type ClustersApi interface {
 	ListCloudProviderRegionsExecute(r ListCloudProviderRegionsApiRequest) (*PaginatedApiAtlasProviderRegions, *http.Response, error)
 
 	/*
-		ListClusters Return All Clusters in One Project
+			ListClusters Return All Clusters in One Project
 
-		Returns the details for all clusters in the specific project to which you have access. Clusters contain a group of hosts that maintain the same data set. The response includes clusters with asymmetrically-sized shards. To use this resource, the requesting API Key must have the Project Read Only role. This feature is not  available for serverless clusters. Deprecated versions: v2-{2023-02-01}, v2-{2023-01-01}
+			Returns the details for all clusters in the specific project to which you have access. Clusters contain a group of hosts that maintain the same data set. The response includes clusters with asymmetrically-sized shards. To use this resource, the requesting API Key must have the Project Read Only role. This feature is not  available for serverless clusters.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@return ListClustersApiRequest
+		This endpoint can also be used on Flex clusters that were created using the [createCluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) endpoint or former M2/M5 clusters that have been migrated to Flex clusters until January 2026. Please use the listFlexClusters endpoint for Flex clusters instead. Deprecated versions: v2-{2023-02-01}, v2-{2023-01-01}
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@return ListClustersApiRequest
 	*/
 	ListClusters(ctx context.Context, groupId string) ListClustersApiRequest
 	/*
@@ -422,14 +430,16 @@ type ClustersApi interface {
 	UpdateClusterAdvancedConfigurationExecute(r UpdateClusterAdvancedConfigurationApiRequest) (*ClusterDescriptionProcessArgs20240805, *http.Response, error)
 
 	/*
-		UpgradeSharedCluster Upgrade One Shared-tier Cluster
+			UpgradeSharedCluster Upgrade One Shared-tier Cluster
 
-		Upgrades a shared-tier cluster to a dedicated cluster (M10+) in the specified project. To use this resource, the requesting API key must have the Project Cluster Manager role. Each project supports up to 25 clusters.
+			Upgrades a shared-tier cluster to a Flex or Dedicated (M10+) cluster in the specified project. To use this resource, the requesting API key must have the Project Cluster Manager role. Each project supports up to 25 clusters.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param legacyAtlasTenantClusterUpgradeRequest Details of the shared-tier cluster upgrade in the specified project.
-		@return UpgradeSharedClusterApiRequest
+		This endpoint can also be used to upgrade Flex clusters that were created using the [createCluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) API or former M2/M5 clusters that have been migrated to Flex clusters, using instanceSizeName to “M2” or “M5” until January 2026. This functionality will be available until January 2026, after which it will only be available for M0 clusters. Please use the upgradeFlexCluster endpoint instead.
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param legacyAtlasTenantClusterUpgradeRequest Details of the shared-tier cluster upgrade in the specified project.
+			@return UpgradeSharedClusterApiRequest
 	*/
 	UpgradeSharedCluster(ctx context.Context, groupId string, legacyAtlasTenantClusterUpgradeRequest *LegacyAtlasTenantClusterUpgradeRequest) UpgradeSharedClusterApiRequest
 	/*
@@ -446,14 +456,18 @@ type ClustersApi interface {
 	UpgradeSharedClusterExecute(r UpgradeSharedClusterApiRequest) (*LegacyAtlasCluster, *http.Response, error)
 
 	/*
-		UpgradeSharedClusterToServerless Upgrades One Shared-Tier Cluster to the Serverless Instance
+			UpgradeSharedClusterToServerless Upgrades One Shared-Tier Cluster to the Serverless Instance
 
-		Upgrades a shared-tier cluster to a serverless instance in the specified project. To use this resource, the requesting API key must have the Project Cluster Manager role.
+			This endpoint has been deprecated as of February 2025 as we no longer support the creation of new serverless instances. Please use the upgradeFlexCluster endpoint to upgrade Flex clusters.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param serverlessInstanceDescription Details of the shared-tier cluster upgrade in the specified project.
-		@return UpgradeSharedClusterToServerlessApiRequest
+		 Upgrades a shared-tier cluster to a serverless instance in the specified project. To use this resource, the requesting API key must have the Project Cluster Manager role.
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param serverlessInstanceDescription Details of the shared-tier cluster upgrade in the specified project.
+			@return UpgradeSharedClusterToServerlessApiRequest
+
+			Deprecated: this method has been deprecated. Please check the latest resource version for ClustersApi
 	*/
 	UpgradeSharedClusterToServerless(ctx context.Context, groupId string, serverlessInstanceDescription *ServerlessInstanceDescription) UpgradeSharedClusterToServerlessApiRequest
 	/*
@@ -463,6 +477,8 @@ type ClustersApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param UpgradeSharedClusterToServerlessApiParams - Parameters for the request
 		@return UpgradeSharedClusterToServerlessApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for ClustersApi
 	*/
 	UpgradeSharedClusterToServerlessWithParams(ctx context.Context, args *UpgradeSharedClusterToServerlessApiParams) UpgradeSharedClusterToServerlessApiRequest
 
@@ -501,7 +517,9 @@ func (r CreateClusterApiRequest) Execute() (*ClusterDescription20240805, *http.R
 /*
 CreateCluster Create One Cluster from One Project
 
-Creates one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. This resource can create clusters with asymmetrically-sized shards. Each project supports up to 25 database deployments. To use this resource, the requesting API Key must have the Project Owner role. This feature is not available for serverless clusters. Deprecated versions: v2-{2024-08-05}, v2-{2023-02-01}, v2-{2023-01-01}
+Creates one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. This resource can create clusters with asymmetrically-sized shards. Each project supports up to 25 database deployments. To use this resource, the requesting API Key must have the Project Owner role. This feature is not available for serverless clusters.
+
+Please note that using an instanceSize of M2 or M5 will create a Flex cluster instead. Support for the instanceSize of M2 or M5 will be discontinued in January 2026. We recommend using the createFlexCluster API for such configurations moving forward. Deprecated versions: v2-{2024-08-05}, v2-{2023-02-01}, v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -630,7 +648,9 @@ func (r DeleteClusterApiRequest) Execute() (*http.Response, error) {
 /*
 DeleteCluster Remove One Cluster from One Project
 
-Removes one cluster from the specified project. The cluster must have termination protection disabled in order to be deleted. To use this resource, the requesting API Key must have the Project Owner role. This feature is not available for serverless clusters. Deprecated versions: v2-{2023-01-01}
+Removes one cluster from the specified project. The cluster must have termination protection disabled in order to be deleted. To use this resource, the requesting API Key must have the Project Owner role. This feature is not available for serverless clusters.
+
+This endpoint can also be used on Flex clusters that were created using the [createCluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) endpoint or former M2/M5 clusters that have been migrated to Flex clusters until January 2026. Please use the deleteFlexCluster endpoint for Flex clusters instead. Deprecated versions: v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -733,7 +753,9 @@ func (r GetClusterApiRequest) Execute() (*ClusterDescription20240805, *http.Resp
 /*
 GetCluster Return One Cluster from One Project
 
-Returns the details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. The response includes clusters with asymmetrically-sized shards. To use this resource, the requesting API Key must have the Project Read Only role. This feature is not available for serverless clusters. Deprecated versions: v2-{2023-02-01}, v2-{2023-01-01}
+Returns the details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. The response includes clusters with asymmetrically-sized shards. To use this resource, the requesting API Key must have the Project Read Only role. This feature is not available for serverless clusters.
+
+This endpoint can also be used on Flex clusters that were created using the [createCluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) endpoint or former M2/M5 clusters that have been migrated to Flex clusters until January 2026. Please use the getFlexCluster endpoint for Flex clusters instead. Deprecated versions: v2-{2023-02-01}, v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -1547,7 +1569,9 @@ func (r ListClustersApiRequest) Execute() (*PaginatedClusterDescription20240805,
 /*
 ListClusters Return All Clusters in One Project
 
-Returns the details for all clusters in the specific project to which you have access. Clusters contain a group of hosts that maintain the same data set. The response includes clusters with asymmetrically-sized shards. To use this resource, the requesting API Key must have the Project Read Only role. This feature is not  available for serverless clusters. Deprecated versions: v2-{2023-02-01}, v2-{2023-01-01}
+Returns the details for all clusters in the specific project to which you have access. Clusters contain a group of hosts that maintain the same data set. The response includes clusters with asymmetrically-sized shards. To use this resource, the requesting API Key must have the Project Read Only role. This feature is not  available for serverless clusters.
+
+This endpoint can also be used on Flex clusters that were created using the [createCluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) endpoint or former M2/M5 clusters that have been migrated to Flex clusters until January 2026. Please use the listFlexClusters endpoint for Flex clusters instead. Deprecated versions: v2-{2023-02-01}, v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -2668,7 +2692,9 @@ func (r UpgradeSharedClusterApiRequest) Execute() (*LegacyAtlasCluster, *http.Re
 /*
 UpgradeSharedCluster Upgrade One Shared-tier Cluster
 
-Upgrades a shared-tier cluster to a dedicated cluster (M10+) in the specified project. To use this resource, the requesting API key must have the Project Cluster Manager role. Each project supports up to 25 clusters.
+Upgrades a shared-tier cluster to a Flex or Dedicated (M10+) cluster in the specified project. To use this resource, the requesting API key must have the Project Cluster Manager role. Each project supports up to 25 clusters.
+
+This endpoint can also be used to upgrade Flex clusters that were created using the [createCluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) API or former M2/M5 clusters that have been migrated to Flex clusters, using instanceSizeName to “M2” or “M5” until January 2026. This functionality will be available until January 2026, after which it will only be available for M0 clusters. Please use the upgradeFlexCluster endpoint instead.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -2788,11 +2814,15 @@ func (r UpgradeSharedClusterToServerlessApiRequest) Execute() (*ServerlessInstan
 /*
 UpgradeSharedClusterToServerless Upgrades One Shared-Tier Cluster to the Serverless Instance
 
-Upgrades a shared-tier cluster to a serverless instance in the specified project. To use this resource, the requesting API key must have the Project Cluster Manager role.
+This endpoint has been deprecated as of February 2025 as we no longer support the creation of new serverless instances. Please use the upgradeFlexCluster endpoint to upgrade Flex clusters.
+
+	Upgrades a shared-tier cluster to a serverless instance in the specified project. To use this resource, the requesting API key must have the Project Cluster Manager role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return UpgradeSharedClusterToServerlessApiRequest
+
+Deprecated
 */
 func (a *ClustersApiService) UpgradeSharedClusterToServerless(ctx context.Context, groupId string, serverlessInstanceDescription *ServerlessInstanceDescription) UpgradeSharedClusterToServerlessApiRequest {
 	return UpgradeSharedClusterToServerlessApiRequest{
@@ -2806,6 +2836,8 @@ func (a *ClustersApiService) UpgradeSharedClusterToServerless(ctx context.Contex
 // UpgradeSharedClusterToServerlessExecute executes the request
 //
 //	@return ServerlessInstanceDescription
+//
+// Deprecated
 func (a *ClustersApiService) UpgradeSharedClusterToServerlessExecute(r UpgradeSharedClusterToServerlessApiRequest) (*ServerlessInstanceDescription, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost

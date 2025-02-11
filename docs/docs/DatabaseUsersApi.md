@@ -43,7 +43,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    cloudDatabaseUser := *openapiclient.NewCloudDatabaseUser("DatabaseName_example", "32b6e34b3d91647abb20e7b8", "Username_example") // CloudDatabaseUser | 
+    cloudDatabaseUser := *openapiclient.NewCloudDatabaseUser("DatabaseName_example", "GroupId_example", "Username_example") // CloudDatabaseUser | 
 
     resp, r, err := sdk.DatabaseUsersApi.CreateDatabaseUser(context.Background(), groupId, &cloudDatabaseUser).Execute()
     if err != nil {
@@ -385,7 +385,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     databaseName := "databaseName_example" // string | 
     username := "SCRAM-SHA: dylan or AWS IAM: arn:aws:iam::123456789012:user/sales/enterprise/DylanBloggs or x.509/LDAP: CN=Dylan Bloggs,OU=Enterprise,OU=Sales,DC=Example,DC=COM or OIDC: IdPIdentifier/IdPGroupName" // string | 
-    cloudDatabaseUser := *openapiclient.NewCloudDatabaseUser("DatabaseName_example", "32b6e34b3d91647abb20e7b8", "Username_example") // CloudDatabaseUser | 
+    cloudDatabaseUser := *openapiclient.NewCloudDatabaseUser("DatabaseName_example", "GroupId_example", "Username_example") // CloudDatabaseUser | 
 
     resp, r, err := sdk.DatabaseUsersApi.UpdateDatabaseUser(context.Background(), groupId, databaseName, username, &cloudDatabaseUser).Execute()
     if err != nil {
