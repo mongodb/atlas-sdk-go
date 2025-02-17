@@ -4,7 +4,7 @@ package admin
 
 // GroupInvitationUpdateRequest struct for GroupInvitationUpdateRequest
 type GroupInvitationUpdateRequest struct {
-	// One or more organization or project level roles to assign to the MongoDB Cloud user.
+	// One or more project-level roles to assign to the MongoDB Cloud user.
 	Roles *[]string `json:"roles,omitempty"`
 }
 

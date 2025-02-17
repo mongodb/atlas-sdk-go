@@ -24,7 +24,8 @@ type StreamsConnection struct {
 	// A map of key-value pairs that will be passed as headers for the request.
 	Headers *map[string]string `json:"headers,omitempty"`
 	// The url to be used for the request.
-	Url *string `json:"url,omitempty"`
+	Url *string                         `json:"url,omitempty"`
+	Aws *StreamsAWSConnectionBaseConfig `json:"aws,omitempty"`
 }
 
 // NewStreamsConnection instantiates a new StreamsConnection object
@@ -438,4 +439,37 @@ func (o *StreamsConnection) HasUrl() bool {
 // SetUrl gets a reference to the given string and assigns it to the Url field.
 func (o *StreamsConnection) SetUrl(v string) {
 	o.Url = &v
+}
+
+// GetAws returns the Aws field value if set, zero value otherwise
+func (o *StreamsConnection) GetAws() StreamsAWSConnectionBaseConfig {
+	if o == nil || IsNil(o.Aws) {
+		var ret StreamsAWSConnectionBaseConfig
+		return ret
+	}
+	return *o.Aws
+}
+
+// GetAwsOk returns a tuple with the Aws field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsConnection) GetAwsOk() (*StreamsAWSConnectionBaseConfig, bool) {
+	if o == nil || IsNil(o.Aws) {
+		return nil, false
+	}
+
+	return o.Aws, true
+}
+
+// HasAws returns a boolean if a field has been set.
+func (o *StreamsConnection) HasAws() bool {
+	if o != nil && !IsNil(o.Aws) {
+		return true
+	}
+
+	return false
+}
+
+// SetAws gets a reference to the given StreamsAWSConnectionBaseConfig and assigns it to the Aws field.
+func (o *StreamsConnection) SetAws(v StreamsAWSConnectionBaseConfig) {
+	o.Aws = &v
 }

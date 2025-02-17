@@ -18,7 +18,7 @@ type EARPrivateEndpoint struct {
 	// State of the Encryption At Rest private endpoint.
 	// Read only field.
 	Status *string `json:"status,omitempty"`
-	// Connection name of the Azure Private Endpoint.
+	// Resource Id of the Aws Private Endpoint.
 	// Read only field.
 	PrivateEndpointConnectionName *string `json:"privateEndpointConnectionName,omitempty"`
 }
