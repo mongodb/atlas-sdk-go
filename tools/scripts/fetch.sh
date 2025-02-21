@@ -20,6 +20,8 @@ OPENAPI_FILE_NAME=${OPENAPI_FILE_NAME:-"atlas-api.yaml"}
 ## Folder used for fetching files
 OPENAPI_FOLDER=${OPENAPI_FOLDER:-"../openapi"}
 
+
+# Base URL for fetching the openapi file
 API_BASE_URL=${API_BASE_URL:https://raw.githubusercontent.com/mongodb/openapi/refs/heads/main/openapi/v2
 versions_file="versions.json"
 
