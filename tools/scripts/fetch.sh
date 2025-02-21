@@ -22,7 +22,7 @@ OPENAPI_FOLDER=${OPENAPI_FOLDER:-"../openapi"}
 
 
 # Base URL for fetching the openapi file
-API_BASE_URL=${API_BASE_URL:}https://raw.githubusercontent.com/mongodb/openapi/refs/heads/main/openapi/v2
+API_BASE_URL=${API_BASE_URL:-}https://raw.githubusercontent.com/mongodb/openapi/refs/heads/dev/openapi/v2
 versions_file="versions.json"
 
 pushd "${OPENAPI_FOLDER}"
@@ -31,6 +31,10 @@ echo "Fetching versions from $versions_url"
 
 curl --show-error --fail --silent -o "${versions_file}" \
      -H "Accept: application/json" "${versions_url}"
+
+# Remove "preview" from versions file if it exists and update the file
+jq 'map(select(. != "preview"))' < "./${versions_file}" > "./${versions_file}.tmp"
+mv "./${versions_file}.tmp" "./${versions_file}"
 
 ## Dynamic Versioned API Version
 CURRENT_API_REVISION=$(jq -r '.[-1]' < "./${versions_file}")
