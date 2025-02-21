@@ -20,17 +20,11 @@ OPENAPI_FILE_NAME=${OPENAPI_FILE_NAME:-"atlas-api.yaml"}
 ## Folder used for fetching files
 OPENAPI_FOLDER=${OPENAPI_FOLDER:-"../openapi"}
 
-## Root V2 URL
-if [ "${BRANCH_NAME:-"main"}" == "dev-latest" ]; then
-    root_v2_url=https://raw.githubusercontent.com/mongodb/openapi/refs/heads/dev/openapi/v2
-else
-    root_v2_url=https://raw.githubusercontent.com/mongodb/openapi/refs/heads/main/openapi/v2
-fi
-
+API_BASE_URL=${API_BASE_URL:https://raw.githubusercontent.com/mongodb/openapi/refs/heads/main/openapi/v2
 versions_file="versions.json"
 
 pushd "${OPENAPI_FOLDER}"
-versions_url="${root_v2_url}/${versions_file}"
+versions_url="${API_BASE_URL}/${versions_file}"
 echo "Fetching versions from $versions_url"
 
 curl --show-error --fail --silent -o "${versions_file}" \
@@ -40,7 +34,7 @@ curl --show-error --fail --silent -o "${versions_file}" \
 CURRENT_API_REVISION=$(jq -r '.[-1]' < "./${versions_file}")
 
 echo "Fetching OAS file for version $CURRENT_API_REVISION"
-openapi_url=${root_v2_url}/openapi-${CURRENT_API_REVISION}.yaml
+openapi_url=${API_BASE_URL}/openapi-${CURRENT_API_REVISION}.yaml
 
 echo "Fetching api from $openapi_url to $OPENAPI_FILE_NAME"
 
