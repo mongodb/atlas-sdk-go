@@ -13,9 +13,7 @@ Method | HTTP request | Description
 [**GetOrganizationSettings**](OrganizationsApi.md#GetOrganizationSettings) | **Get** /api/atlas/v2/orgs/{orgId}/settings | Return Settings for One Organization
 [**ListOrganizationInvitations**](OrganizationsApi.md#ListOrganizationInvitations) | **Get** /api/atlas/v2/orgs/{orgId}/invites | Return All Organization Invitations
 [**ListOrganizationProjects**](OrganizationsApi.md#ListOrganizationProjects) | **Get** /api/atlas/v2/orgs/{orgId}/groups | Return One or More Projects in One Organization
-[**ListOrganizationUsers**](OrganizationsApi.md#ListOrganizationUsers) | **Get** /api/atlas/v2/orgs/{orgId}/users | Return All MongoDB Cloud Users in One Organization
 [**ListOrganizations**](OrganizationsApi.md#ListOrganizations) | **Get** /api/atlas/v2/orgs | Return All Organizations
-[**RemoveOrganizationUser**](OrganizationsApi.md#RemoveOrganizationUser) | **Delete** /api/atlas/v2/orgs/{orgId}/users/{userId} | Remove One MongoDB Cloud User From One Organization
 [**UpdateOrganization**](OrganizationsApi.md#UpdateOrganization) | **Patch** /api/atlas/v2/orgs/{orgId} | Update One Organization
 [**UpdateOrganizationInvitation**](OrganizationsApi.md#UpdateOrganizationInvitation) | **Patch** /api/atlas/v2/orgs/{orgId}/invites | Update One Organization Invitation
 [**UpdateOrganizationInvitationById**](OrganizationsApi.md#UpdateOrganizationInvitationById) | **Patch** /api/atlas/v2/orgs/{orgId}/invites/{invitationId} | Update One Organization Invitation by Invitation ID
@@ -41,7 +39,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113005/admin"
+    "go.mongodb.org/atlas-sdk/v20250219001/admin"
 )
 
 func main() {
@@ -117,7 +115,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113005/admin"
+    "go.mongodb.org/atlas-sdk/v20250219001/admin"
 )
 
 func main() {
@@ -199,7 +197,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113005/admin"
+    "go.mongodb.org/atlas-sdk/v20250219001/admin"
 )
 
 func main() {
@@ -279,7 +277,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113005/admin"
+    "go.mongodb.org/atlas-sdk/v20250219001/admin"
 )
 
 func main() {
@@ -362,7 +360,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113005/admin"
+    "go.mongodb.org/atlas-sdk/v20250219001/admin"
 )
 
 func main() {
@@ -442,7 +440,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113005/admin"
+    "go.mongodb.org/atlas-sdk/v20250219001/admin"
 )
 
 func main() {
@@ -525,7 +523,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113005/admin"
+    "go.mongodb.org/atlas-sdk/v20250219001/admin"
 )
 
 func main() {
@@ -605,7 +603,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113005/admin"
+    "go.mongodb.org/atlas-sdk/v20250219001/admin"
 )
 
 func main() {
@@ -687,7 +685,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113005/admin"
+    "go.mongodb.org/atlas-sdk/v20250219001/admin"
 )
 
 func main() {
@@ -758,92 +756,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListOrganizationUsers
-
-> PaginatedAppUser ListOrganizationUsers(ctx, orgId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
-
-Return All MongoDB Cloud Users in One Organization
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-
-    "go.mongodb.org/atlas-sdk/v20241113005/admin"
-)
-
-func main() {
-    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
-    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
-
-    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
-        return
-    }
-
-    orgId := "4888442a3354817a7320eb61" // string | 
-    includeCount := true // bool |  (optional) (default to true)
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
-
-    resp, r, err := sdk.OrganizationsApi.ListOrganizationUsers(context.Background(), orgId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.ListOrganizationUsers`: %v (%v)\n", err, r)
-        apiError, ok := admin.AsError(err)
-        if ok {
-            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
-        }
-        return
-    }
-    // response from `ListOrganizationUsers`: PaginatedAppUser
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.ListOrganizationUsers`: %v (%v)\n", resp, r)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiListOrganizationUsersRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (**totalCount**) in the response. | [default to true]
- **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
- **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
-
-### Return type
-
-[**PaginatedAppUser**](PaginatedAppUser.md)
-
-### Authorization
-[DigestAuth](../README.md#Authentication)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-01-01+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## ListOrganizations
 
 > PaginatedOrganization ListOrganizations(ctx).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Name(name).Execute()
@@ -861,7 +773,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113005/admin"
+    "go.mongodb.org/atlas-sdk/v20250219001/admin"
 )
 
 func main() {
@@ -926,89 +838,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## RemoveOrganizationUser
-
-> any RemoveOrganizationUser(ctx, orgId, userId).Execute()
-
-Remove One MongoDB Cloud User From One Organization
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-
-    "go.mongodb.org/atlas-sdk/v20241113005/admin"
-)
-
-func main() {
-    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
-    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
-
-    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
-        return
-    }
-
-    orgId := "4888442a3354817a7320eb61" // string | 
-    userId := "userId_example" // string | 
-
-    resp, r, err := sdk.OrganizationsApi.RemoveOrganizationUser(context.Background(), orgId, userId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.RemoveOrganizationUser`: %v (%v)\n", err, r)
-        apiError, ok := admin.AsError(err)
-        if ok {
-            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
-        }
-        return
-    }
-    // response from `RemoveOrganizationUser`: any
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.RemoveOrganizationUser`: %v (%v)\n", resp, r)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
-**userId** | **string** | Unique 24-hexadecimal digit string that identifies the user to be deleted. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiRemoveOrganizationUserRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
-**any**
-
-### Authorization
-[DigestAuth](../README.md#Authentication)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-01-01+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## UpdateOrganization
 
 > AtlasOrganization UpdateOrganization(ctx, orgId, atlasOrganization AtlasOrganization).Execute()
@@ -1026,7 +855,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113005/admin"
+    "go.mongodb.org/atlas-sdk/v20250219001/admin"
 )
 
 func main() {
@@ -1108,7 +937,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113005/admin"
+    "go.mongodb.org/atlas-sdk/v20250219001/admin"
 )
 
 func main() {
@@ -1190,7 +1019,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113005/admin"
+    "go.mongodb.org/atlas-sdk/v20250219001/admin"
 )
 
 func main() {
@@ -1275,7 +1104,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113005/admin"
+    "go.mongodb.org/atlas-sdk/v20250219001/admin"
 )
 
 func main() {
@@ -1360,7 +1189,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113005/admin"
+    "go.mongodb.org/atlas-sdk/v20250219001/admin"
 )
 
 func main() {

@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **Security** | Pointer to [**StreamsKafkaSecurity**](StreamsKafkaSecurity.md) |  | [optional] 
 **Headers** | Pointer to **map[string]string** | A map of key-value pairs that will be passed as headers for the request. | [optional] 
 **Url** | Pointer to **string** | The url to be used for the request. | [optional] 
+**Aws** | Pointer to [**StreamsAWSConnectionBaseConfig**](StreamsAWSConnectionBaseConfig.md) |  | [optional] 
 
 ## Methods
 
@@ -324,6 +325,30 @@ SetUrl sets Url field to given value.
 `func (o *StreamsConnection) HasUrl() bool`
 
 HasUrl returns a boolean if a field has been set.
+### GetAws
+
+`func (o *StreamsConnection) GetAws() StreamsAWSConnectionBaseConfig`
+
+GetAws returns the Aws field if non-nil, zero value otherwise.
+
+### GetAwsOk
+
+`func (o *StreamsConnection) GetAwsOk() (*StreamsAWSConnectionBaseConfig, bool)`
+
+GetAwsOk returns a tuple with the Aws field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAws
+
+`func (o *StreamsConnection) SetAws(v StreamsAWSConnectionBaseConfig)`
+
+SetAws sets Aws field to given value.
+
+### HasAws
+
+`func (o *StreamsConnection) HasAws() bool`
+
+HasAws returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

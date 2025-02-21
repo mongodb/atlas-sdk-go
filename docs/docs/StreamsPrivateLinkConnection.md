@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **DnsSubDomain** | Pointer to **[]string** | Sub-Domain name of Confluent cluster. These are typically your availability zones. | [optional] 
 **ErrorMessage** | Pointer to **string** | Error message if the state is FAILED. | [optional] [readonly] 
 **InterfaceEndpointId** | Pointer to **string** | Interface endpoint ID that is created from the service endpoint ID provided. | [optional] [readonly] 
+**InterfaceEndpointName** | Pointer to **string** | Interface endpoint name that is created from the service endpoint ID provided. | [optional] [readonly] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **Provider** | Pointer to **string** | Provider where the Kafka cluster is deployed. | [optional] 
 **ProviderAccountId** | Pointer to **string** | Account ID from the cloud provider. | [optional] [readonly] 
@@ -181,6 +182,30 @@ SetInterfaceEndpointId sets InterfaceEndpointId field to given value.
 `func (o *StreamsPrivateLinkConnection) HasInterfaceEndpointId() bool`
 
 HasInterfaceEndpointId returns a boolean if a field has been set.
+### GetInterfaceEndpointName
+
+`func (o *StreamsPrivateLinkConnection) GetInterfaceEndpointName() string`
+
+GetInterfaceEndpointName returns the InterfaceEndpointName field if non-nil, zero value otherwise.
+
+### GetInterfaceEndpointNameOk
+
+`func (o *StreamsPrivateLinkConnection) GetInterfaceEndpointNameOk() (*string, bool)`
+
+GetInterfaceEndpointNameOk returns a tuple with the InterfaceEndpointName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInterfaceEndpointName
+
+`func (o *StreamsPrivateLinkConnection) SetInterfaceEndpointName(v string)`
+
+SetInterfaceEndpointName sets InterfaceEndpointName field to given value.
+
+### HasInterfaceEndpointName
+
+`func (o *StreamsPrivateLinkConnection) HasInterfaceEndpointName() bool`
+
+HasInterfaceEndpointName returns a boolean if a field has been set.
 ### GetLinks
 
 `func (o *StreamsPrivateLinkConnection) GetLinks() []Link`

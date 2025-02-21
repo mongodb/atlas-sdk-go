@@ -2,38 +2,38 @@
 
 package admin
 
-// PaginatedAppUser struct for PaginatedAppUser
-type PaginatedAppUser struct {
+// PaginatedGroupUser struct for PaginatedGroupUser
+type PaginatedGroupUser struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
 	// List of returned documents that MongoDB Cloud provides when completing this request.
 	// Read only field.
-	Results *[]CloudAppUser `json:"results,omitempty"`
+	Results *[]GroupUserResponse `json:"results,omitempty"`
 	// Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact.
 	// Read only field.
 	TotalCount *int `json:"totalCount,omitempty"`
 }
 
-// NewPaginatedAppUser instantiates a new PaginatedAppUser object
+// NewPaginatedGroupUser instantiates a new PaginatedGroupUser object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedAppUser() *PaginatedAppUser {
-	this := PaginatedAppUser{}
+func NewPaginatedGroupUser() *PaginatedGroupUser {
+	this := PaginatedGroupUser{}
 	return &this
 }
 
-// NewPaginatedAppUserWithDefaults instantiates a new PaginatedAppUser object
+// NewPaginatedGroupUserWithDefaults instantiates a new PaginatedGroupUser object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewPaginatedAppUserWithDefaults() *PaginatedAppUser {
-	this := PaginatedAppUser{}
+func NewPaginatedGroupUserWithDefaults() *PaginatedGroupUser {
+	this := PaginatedGroupUser{}
 	return &this
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
-func (o *PaginatedAppUser) GetLinks() []Link {
+func (o *PaginatedGroupUser) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
 		return ret
@@ -43,7 +43,7 @@ func (o *PaginatedAppUser) GetLinks() []Link {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedAppUser) GetLinksOk() (*[]Link, bool) {
+func (o *PaginatedGroupUser) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -52,7 +52,7 @@ func (o *PaginatedAppUser) GetLinksOk() (*[]Link, bool) {
 }
 
 // HasLinks returns a boolean if a field has been set.
-func (o *PaginatedAppUser) HasLinks() bool {
+func (o *PaginatedGroupUser) HasLinks() bool {
 	if o != nil && !IsNil(o.Links) {
 		return true
 	}
@@ -61,14 +61,14 @@ func (o *PaginatedAppUser) HasLinks() bool {
 }
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
-func (o *PaginatedAppUser) SetLinks(v []Link) {
+func (o *PaginatedGroupUser) SetLinks(v []Link) {
 	o.Links = &v
 }
 
 // GetResults returns the Results field value if set, zero value otherwise
-func (o *PaginatedAppUser) GetResults() []CloudAppUser {
+func (o *PaginatedGroupUser) GetResults() []GroupUserResponse {
 	if o == nil || IsNil(o.Results) {
-		var ret []CloudAppUser
+		var ret []GroupUserResponse
 		return ret
 	}
 	return *o.Results
@@ -76,7 +76,7 @@ func (o *PaginatedAppUser) GetResults() []CloudAppUser {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedAppUser) GetResultsOk() (*[]CloudAppUser, bool) {
+func (o *PaginatedGroupUser) GetResultsOk() (*[]GroupUserResponse, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
@@ -85,7 +85,7 @@ func (o *PaginatedAppUser) GetResultsOk() (*[]CloudAppUser, bool) {
 }
 
 // HasResults returns a boolean if a field has been set.
-func (o *PaginatedAppUser) HasResults() bool {
+func (o *PaginatedGroupUser) HasResults() bool {
 	if o != nil && !IsNil(o.Results) {
 		return true
 	}
@@ -93,13 +93,13 @@ func (o *PaginatedAppUser) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []CloudAppUser and assigns it to the Results field.
-func (o *PaginatedAppUser) SetResults(v []CloudAppUser) {
+// SetResults gets a reference to the given []GroupUserResponse and assigns it to the Results field.
+func (o *PaginatedGroupUser) SetResults(v []GroupUserResponse) {
 	o.Results = &v
 }
 
 // GetTotalCount returns the TotalCount field value if set, zero value otherwise
-func (o *PaginatedAppUser) GetTotalCount() int {
+func (o *PaginatedGroupUser) GetTotalCount() int {
 	if o == nil || IsNil(o.TotalCount) {
 		var ret int
 		return ret
@@ -109,7 +109,7 @@ func (o *PaginatedAppUser) GetTotalCount() int {
 
 // GetTotalCountOk returns a tuple with the TotalCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedAppUser) GetTotalCountOk() (*int, bool) {
+func (o *PaginatedGroupUser) GetTotalCountOk() (*int, bool) {
 	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
@@ -118,7 +118,7 @@ func (o *PaginatedAppUser) GetTotalCountOk() (*int, bool) {
 }
 
 // HasTotalCount returns a boolean if a field has been set.
-func (o *PaginatedAppUser) HasTotalCount() bool {
+func (o *PaginatedGroupUser) HasTotalCount() bool {
 	if o != nil && !IsNil(o.TotalCount) {
 		return true
 	}
@@ -127,6 +127,6 @@ func (o *PaginatedAppUser) HasTotalCount() bool {
 }
 
 // SetTotalCount gets a reference to the given int and assigns it to the TotalCount field.
-func (o *PaginatedAppUser) SetTotalCount(v int) {
+func (o *PaginatedGroupUser) SetTotalCount(v int) {
 	o.TotalCount = &v
 }

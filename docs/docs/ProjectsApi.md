@@ -18,10 +18,8 @@ Method | HTTP request | Description
 [**GetProjectSettings**](ProjectsApi.md#GetProjectSettings) | **Get** /api/atlas/v2/groups/{groupId}/settings | Return One Project Settings
 [**ListProjectInvitations**](ProjectsApi.md#ListProjectInvitations) | **Get** /api/atlas/v2/groups/{groupId}/invites | Return All Project Invitations
 [**ListProjectLimits**](ProjectsApi.md#ListProjectLimits) | **Get** /api/atlas/v2/groups/{groupId}/limits | Return All Limits for One Project
-[**ListProjectUsers**](ProjectsApi.md#ListProjectUsers) | **Get** /api/atlas/v2/groups/{groupId}/users | Return All Users in One Project
 [**ListProjects**](ProjectsApi.md#ListProjects) | **Get** /api/atlas/v2/groups | Return All Projects
 [**MigrateProjectToAnotherOrg**](ProjectsApi.md#MigrateProjectToAnotherOrg) | **Post** /api/atlas/v2/groups/{groupId}:migrate | Migrate One Project to Another Organization
-[**RemoveProjectUser**](ProjectsApi.md#RemoveProjectUser) | **Delete** /api/atlas/v2/groups/{groupId}/users/{userId} | Remove One User from One Project
 [**ReturnAllIpAddresses**](ProjectsApi.md#ReturnAllIpAddresses) | **Get** /api/atlas/v2/groups/{groupId}/ipAddresses | Return All IP Addresses for One Project
 [**SetProjectLimit**](ProjectsApi.md#SetProjectLimit) | **Patch** /api/atlas/v2/groups/{groupId}/limits/{limitName} | Set One Project Limit
 [**UpdateProject**](ProjectsApi.md#UpdateProject) | **Patch** /api/atlas/v2/groups/{groupId} | Update One Project
@@ -49,7 +47,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113005/admin"
+    "go.mongodb.org/atlas-sdk/v20250219001/admin"
 )
 
 func main() {
@@ -131,7 +129,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113005/admin"
+    "go.mongodb.org/atlas-sdk/v20250219001/admin"
 )
 
 func main() {
@@ -209,7 +207,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113005/admin"
+    "go.mongodb.org/atlas-sdk/v20250219001/admin"
 )
 
 func main() {
@@ -291,7 +289,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113005/admin"
+    "go.mongodb.org/atlas-sdk/v20250219001/admin"
 )
 
 func main() {
@@ -371,7 +369,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113005/admin"
+    "go.mongodb.org/atlas-sdk/v20250219001/admin"
 )
 
 func main() {
@@ -454,7 +452,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113005/admin"
+    "go.mongodb.org/atlas-sdk/v20250219001/admin"
 )
 
 func main() {
@@ -537,7 +535,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113005/admin"
+    "go.mongodb.org/atlas-sdk/v20250219001/admin"
 )
 
 func main() {
@@ -617,7 +615,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113005/admin"
+    "go.mongodb.org/atlas-sdk/v20250219001/admin"
 )
 
 func main() {
@@ -697,7 +695,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113005/admin"
+    "go.mongodb.org/atlas-sdk/v20250219001/admin"
 )
 
 func main() {
@@ -780,7 +778,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113005/admin"
+    "go.mongodb.org/atlas-sdk/v20250219001/admin"
 )
 
 func main() {
@@ -863,7 +861,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113005/admin"
+    "go.mongodb.org/atlas-sdk/v20250219001/admin"
 )
 
 func main() {
@@ -953,7 +951,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113005/admin"
+    "go.mongodb.org/atlas-sdk/v20250219001/admin"
 )
 
 func main() {
@@ -1033,7 +1031,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113005/admin"
+    "go.mongodb.org/atlas-sdk/v20250219001/admin"
 )
 
 func main() {
@@ -1115,7 +1113,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113005/admin"
+    "go.mongodb.org/atlas-sdk/v20250219001/admin"
 )
 
 func main() {
@@ -1178,96 +1176,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListProjectUsers
-
-> PaginatedAppUser ListProjectUsers(ctx, groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).FlattenTeams(flattenTeams).IncludeOrgUsers(includeOrgUsers).Execute()
-
-Return All Users in One Project
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-
-    "go.mongodb.org/atlas-sdk/v20241113005/admin"
-)
-
-func main() {
-    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
-    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
-
-    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
-        return
-    }
-
-    groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    includeCount := true // bool |  (optional) (default to true)
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
-    flattenTeams := true // bool |  (optional) (default to false)
-    includeOrgUsers := true // bool |  (optional) (default to false)
-
-    resp, r, err := sdk.ProjectsApi.ListProjectUsers(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).FlattenTeams(flattenTeams).IncludeOrgUsers(includeOrgUsers).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.ListProjectUsers`: %v (%v)\n", err, r)
-        apiError, ok := admin.AsError(err)
-        if ok {
-            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
-        }
-        return
-    }
-    // response from `ListProjectUsers`: PaginatedAppUser
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.ListProjectUsers`: %v (%v)\n", resp, r)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiListProjectUsersRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (**totalCount**) in the response. | [default to true]
- **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
- **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
- **flattenTeams** | **bool** | Flag that indicates whether the returned list should include users who belong to a team with a role in this project. You might not have assigned the individual users a role in this project. If &#x60;\&quot;flattenTeams\&quot; : false&#x60;, this resource returns only users with a role in the project.  If &#x60;\&quot;flattenTeams\&quot; : true&#x60;, this resource returns both users with roles in the project and users who belong to teams with roles in the project. | [default to false]
- **includeOrgUsers** | **bool** | Flag that indicates whether the returned list should include users with implicit access to the project, the Organization Owner or Organization Read Only role. You might not have assigned the individual users a role in this project. If &#x60;\&quot;includeOrgUsers\&quot;: false&#x60;, this resource returns only users with a role in the project. If &#x60;\&quot;includeOrgUsers\&quot;: true&#x60;, this resource returns both users with roles in the project and users who have implicit access to the project through their organization role. | [default to false]
-
-### Return type
-
-[**PaginatedAppUser**](PaginatedAppUser.md)
-
-### Authorization
-[DigestAuth](../README.md#Authentication)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-01-01+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## ListProjects
 
 > PaginatedAtlasGroup ListProjects(ctx).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
@@ -1285,7 +1193,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113005/admin"
+    "go.mongodb.org/atlas-sdk/v20250219001/admin"
 )
 
 func main() {
@@ -1365,7 +1273,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113005/admin"
+    "go.mongodb.org/atlas-sdk/v20250219001/admin"
 )
 
 func main() {
@@ -1430,87 +1338,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## RemoveProjectUser
-
-> RemoveProjectUser(ctx, groupId, userId).Execute()
-
-Remove One User from One Project
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-
-    "go.mongodb.org/atlas-sdk/v20241113005/admin"
-)
-
-func main() {
-    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
-    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
-
-    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
-        return
-    }
-
-    groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    userId := "userId_example" // string | 
-
-    r, err := sdk.ProjectsApi.RemoveProjectUser(context.Background(), groupId, userId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.RemoveProjectUser`: %v (%v)\n", err, r)
-        apiError, ok := admin.AsError(err)
-        if ok {
-            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
-        }
-        return
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**userId** | **string** | Unique 24-hexadecimal string that identifies MongoDB Cloud user you want to remove from the specified project. To return a application user&#39;s ID using their application username, use the Get All application users in One Project endpoint. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiRemoveProjectUserRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
- (empty response body)
-
-### Authorization
-[DigestAuth](../README.md#Authentication)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-01-01+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## ReturnAllIpAddresses
 
 > GroupIPAddresses ReturnAllIpAddresses(ctx, groupId).Execute()
@@ -1528,7 +1355,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113005/admin"
+    "go.mongodb.org/atlas-sdk/v20250219001/admin"
 )
 
 func main() {
@@ -1608,7 +1435,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113005/admin"
+    "go.mongodb.org/atlas-sdk/v20250219001/admin"
 )
 
 func main() {
@@ -1693,7 +1520,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113005/admin"
+    "go.mongodb.org/atlas-sdk/v20250219001/admin"
 )
 
 func main() {
@@ -1775,7 +1602,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113005/admin"
+    "go.mongodb.org/atlas-sdk/v20250219001/admin"
 )
 
 func main() {
@@ -1857,7 +1684,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113005/admin"
+    "go.mongodb.org/atlas-sdk/v20250219001/admin"
 )
 
 func main() {
@@ -1942,7 +1769,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113005/admin"
+    "go.mongodb.org/atlas-sdk/v20250219001/admin"
 )
 
 func main() {
@@ -2027,7 +1854,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20241113005/admin"
+    "go.mongodb.org/atlas-sdk/v20250219001/admin"
 )
 
 func main() {
