@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **OrgId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the organization. | [optional] [readonly] 
 **OrgName** | **string** | Human-readable label that identifies this organization. | 
-**Roles** | Pointer to **[]string** | One or more organization level roles to assign to the MongoDB Cloud user. | [optional] 
+**Roles** | Pointer to **[]string** | One or more organization-level roles to assign to the MongoDB Cloud user. | [optional] 
 **TeamIds** | Pointer to **[]string** | List of unique 24-hexadecimal digit strings that identifies each team. | [optional] [readonly] 
 **Username** | Pointer to **string** | Email address of the MongoDB Cloud user invited to join the organization. | [optional] 
 

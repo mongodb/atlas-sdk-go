@@ -44,6 +44,8 @@ type OrganizationsApi interface {
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@param organizationInvitationRequest Invites one MongoDB Cloud user to join the specified organization.
 		@return CreateOrganizationInvitationApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsApi
 	*/
 	CreateOrganizationInvitation(ctx context.Context, orgId string, organizationInvitationRequest *OrganizationInvitationRequest) CreateOrganizationInvitationApiRequest
 	/*
@@ -53,6 +55,8 @@ type OrganizationsApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param CreateOrganizationInvitationApiParams - Parameters for the request
 		@return CreateOrganizationInvitationApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsApi
 	*/
 	CreateOrganizationInvitationWithParams(ctx context.Context, args *CreateOrganizationInvitationApiParams) CreateOrganizationInvitationApiRequest
 
@@ -95,6 +99,8 @@ type OrganizationsApi interface {
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@param invitationId Unique 24-hexadecimal digit string that identifies the invitation.
 		@return DeleteOrganizationInvitationApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsApi
 	*/
 	DeleteOrganizationInvitation(ctx context.Context, orgId string, invitationId string) DeleteOrganizationInvitationApiRequest
 	/*
@@ -104,6 +110,8 @@ type OrganizationsApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param DeleteOrganizationInvitationApiParams - Parameters for the request
 		@return DeleteOrganizationInvitationApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsApi
 	*/
 	DeleteOrganizationInvitationWithParams(ctx context.Context, args *DeleteOrganizationInvitationApiParams) DeleteOrganizationInvitationApiRequest
 
@@ -142,6 +150,8 @@ type OrganizationsApi interface {
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@param invitationId Unique 24-hexadecimal digit string that identifies the invitation.
 		@return GetOrganizationInvitationApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsApi
 	*/
 	GetOrganizationInvitation(ctx context.Context, orgId string, invitationId string) GetOrganizationInvitationApiRequest
 	/*
@@ -151,6 +161,8 @@ type OrganizationsApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param GetOrganizationInvitationApiParams - Parameters for the request
 		@return GetOrganizationInvitationApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsApi
 	*/
 	GetOrganizationInvitationWithParams(ctx context.Context, args *GetOrganizationInvitationApiParams) GetOrganizationInvitationApiRequest
 
@@ -188,6 +200,8 @@ type OrganizationsApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@return ListOrganizationInvitationsApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsApi
 	*/
 	ListOrganizationInvitations(ctx context.Context, orgId string) ListOrganizationInvitationsApiRequest
 	/*
@@ -197,6 +211,8 @@ type OrganizationsApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param ListOrganizationInvitationsApiParams - Parameters for the request
 		@return ListOrganizationInvitationsApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsApi
 	*/
 	ListOrganizationInvitationsWithParams(ctx context.Context, args *ListOrganizationInvitationsApiParams) ListOrganizationInvitationsApiRequest
 
@@ -234,29 +250,6 @@ type OrganizationsApi interface {
 	ListOrganizationProjectsExecute(r ListOrganizationProjectsApiRequest) (*PaginatedAtlasGroup, *http.Response, error)
 
 	/*
-		ListOrganizationUsers Return All MongoDB Cloud Users in One Organization
-
-		Returns details about the MongoDB Cloud users associated with the specified organization. Each MongoDB Cloud user returned must belong to the specified organization or to a project within the specified organization. To use this resource, the requesting API Key must have the Organization Member role.
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-		@return ListOrganizationUsersApiRequest
-	*/
-	ListOrganizationUsers(ctx context.Context, orgId string) ListOrganizationUsersApiRequest
-	/*
-		ListOrganizationUsers Return All MongoDB Cloud Users in One Organization
-
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param ListOrganizationUsersApiParams - Parameters for the request
-		@return ListOrganizationUsersApiRequest
-	*/
-	ListOrganizationUsersWithParams(ctx context.Context, args *ListOrganizationUsersApiParams) ListOrganizationUsersApiRequest
-
-	// Method available only for mocking purposes
-	ListOrganizationUsersExecute(r ListOrganizationUsersApiRequest) (*PaginatedAppUser, *http.Response, error)
-
-	/*
 		ListOrganizations Return All Organizations
 
 		Returns all organizations to which the requesting API Key has access. To use this resource, the requesting API Key must have the Organization Member role.
@@ -277,30 +270,6 @@ type OrganizationsApi interface {
 
 	// Method available only for mocking purposes
 	ListOrganizationsExecute(r ListOrganizationsApiRequest) (*PaginatedOrganization, *http.Response, error)
-
-	/*
-		RemoveOrganizationUser Remove One MongoDB Cloud User From One Organization
-
-		Removes one MongoDB Cloud user from the specified organization. To use this resource, the requesting API Key must have the Organization User Admin role.
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-		@param userId Unique 24-hexadecimal digit string that identifies the user to be deleted.
-		@return RemoveOrganizationUserApiRequest
-	*/
-	RemoveOrganizationUser(ctx context.Context, orgId string, userId string) RemoveOrganizationUserApiRequest
-	/*
-		RemoveOrganizationUser Remove One MongoDB Cloud User From One Organization
-
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param RemoveOrganizationUserApiParams - Parameters for the request
-		@return RemoveOrganizationUserApiRequest
-	*/
-	RemoveOrganizationUserWithParams(ctx context.Context, args *RemoveOrganizationUserApiParams) RemoveOrganizationUserApiRequest
-
-	// Method available only for mocking purposes
-	RemoveOrganizationUserExecute(r RemoveOrganizationUserApiRequest) (any, *http.Response, error)
 
 	/*
 		UpdateOrganization Update One Organization
@@ -335,6 +304,8 @@ type OrganizationsApi interface {
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@param organizationInvitationRequest Updates the details of one pending invitation to the specified organization.
 		@return UpdateOrganizationInvitationApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsApi
 	*/
 	UpdateOrganizationInvitation(ctx context.Context, orgId string, organizationInvitationRequest *OrganizationInvitationRequest) UpdateOrganizationInvitationApiRequest
 	/*
@@ -344,6 +315,8 @@ type OrganizationsApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param UpdateOrganizationInvitationApiParams - Parameters for the request
 		@return UpdateOrganizationInvitationApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsApi
 	*/
 	UpdateOrganizationInvitationWithParams(ctx context.Context, args *UpdateOrganizationInvitationApiParams) UpdateOrganizationInvitationApiRequest
 
@@ -360,6 +333,8 @@ type OrganizationsApi interface {
 		@param invitationId Unique 24-hexadecimal digit string that identifies the invitation.
 		@param organizationInvitationUpdateRequest Updates the details of one pending invitation to the specified organization.
 		@return UpdateOrganizationInvitationByIdApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsApi
 	*/
 	UpdateOrganizationInvitationById(ctx context.Context, orgId string, invitationId string, organizationInvitationUpdateRequest *OrganizationInvitationUpdateRequest) UpdateOrganizationInvitationByIdApiRequest
 	/*
@@ -369,6 +344,8 @@ type OrganizationsApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param UpdateOrganizationInvitationByIdApiParams - Parameters for the request
 		@return UpdateOrganizationInvitationByIdApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsApi
 	*/
 	UpdateOrganizationInvitationByIdWithParams(ctx context.Context, args *UpdateOrganizationInvitationByIdApiParams) UpdateOrganizationInvitationByIdApiRequest
 
@@ -385,6 +362,8 @@ type OrganizationsApi interface {
 		@param userId Unique 24-hexadecimal digit string that identifies the user to modify.
 		@param updateOrgRolesForUser Roles to update for the specified user.
 		@return UpdateOrganizationRolesApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsApi
 	*/
 	UpdateOrganizationRoles(ctx context.Context, orgId string, userId string, updateOrgRolesForUser *UpdateOrgRolesForUser) UpdateOrganizationRolesApiRequest
 	/*
@@ -394,6 +373,8 @@ type OrganizationsApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param UpdateOrganizationRolesApiParams - Parameters for the request
 		@return UpdateOrganizationRolesApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsApi
 	*/
 	UpdateOrganizationRolesWithParams(ctx context.Context, args *UpdateOrganizationRolesApiParams) UpdateOrganizationRolesApiRequest
 
@@ -575,6 +556,8 @@ Invites one MongoDB Cloud user to join the specified organization. The user must
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return CreateOrganizationInvitationApiRequest
+
+Deprecated
 */
 func (a *OrganizationsApiService) CreateOrganizationInvitation(ctx context.Context, orgId string, organizationInvitationRequest *OrganizationInvitationRequest) CreateOrganizationInvitationApiRequest {
 	return CreateOrganizationInvitationApiRequest{
@@ -588,6 +571,8 @@ func (a *OrganizationsApiService) CreateOrganizationInvitation(ctx context.Conte
 // CreateOrganizationInvitationExecute executes the request
 //
 //	@return OrganizationInvitation
+//
+// Deprecated
 func (a *OrganizationsApiService) CreateOrganizationInvitationExecute(r CreateOrganizationInvitationApiRequest) (*OrganizationInvitation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -812,6 +797,8 @@ Cancels one pending invitation sent to the specified MongoDB Cloud user to join 
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@param invitationId Unique 24-hexadecimal digit string that identifies the invitation.
 	@return DeleteOrganizationInvitationApiRequest
+
+Deprecated
 */
 func (a *OrganizationsApiService) DeleteOrganizationInvitation(ctx context.Context, orgId string, invitationId string) DeleteOrganizationInvitationApiRequest {
 	return DeleteOrganizationInvitationApiRequest{
@@ -825,6 +812,8 @@ func (a *OrganizationsApiService) DeleteOrganizationInvitation(ctx context.Conte
 // DeleteOrganizationInvitationExecute executes the request
 //
 //	@return any
+//
+// Deprecated
 func (a *OrganizationsApiService) DeleteOrganizationInvitationExecute(r DeleteOrganizationInvitationApiRequest) (any, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
@@ -1040,6 +1029,8 @@ Returns the details of one pending invitation to the specified organization. To 
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@param invitationId Unique 24-hexadecimal digit string that identifies the invitation.
 	@return GetOrganizationInvitationApiRequest
+
+Deprecated
 */
 func (a *OrganizationsApiService) GetOrganizationInvitation(ctx context.Context, orgId string, invitationId string) GetOrganizationInvitationApiRequest {
 	return GetOrganizationInvitationApiRequest{
@@ -1053,6 +1044,8 @@ func (a *OrganizationsApiService) GetOrganizationInvitation(ctx context.Context,
 // GetOrganizationInvitationExecute executes the request
 //
 //	@return OrganizationInvitation
+//
+// Deprecated
 func (a *OrganizationsApiService) GetOrganizationInvitationExecute(r GetOrganizationInvitationApiRequest) (*OrganizationInvitation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1273,6 +1266,8 @@ Returns all pending invitations to the specified organization. To use this resou
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return ListOrganizationInvitationsApiRequest
+
+Deprecated
 */
 func (a *OrganizationsApiService) ListOrganizationInvitations(ctx context.Context, orgId string) ListOrganizationInvitationsApiRequest {
 	return ListOrganizationInvitationsApiRequest{
@@ -1285,6 +1280,8 @@ func (a *OrganizationsApiService) ListOrganizationInvitations(ctx context.Contex
 // ListOrganizationInvitationsExecute executes the request
 //
 //	@return []OrganizationInvitation
+//
+// Deprecated
 func (a *OrganizationsApiService) ListOrganizationInvitationsExecute(r ListOrganizationInvitationsApiRequest) ([]OrganizationInvitation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1535,165 +1532,6 @@ func (a *OrganizationsApiService) ListOrganizationProjectsExecute(r ListOrganiza
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ListOrganizationUsersApiRequest struct {
-	ctx          context.Context
-	ApiService   OrganizationsApi
-	orgId        string
-	includeCount *bool
-	itemsPerPage *int
-	pageNum      *int
-}
-
-type ListOrganizationUsersApiParams struct {
-	OrgId        string
-	IncludeCount *bool
-	ItemsPerPage *int
-	PageNum      *int
-}
-
-func (a *OrganizationsApiService) ListOrganizationUsersWithParams(ctx context.Context, args *ListOrganizationUsersApiParams) ListOrganizationUsersApiRequest {
-	return ListOrganizationUsersApiRequest{
-		ApiService:   a,
-		ctx:          ctx,
-		orgId:        args.OrgId,
-		includeCount: args.IncludeCount,
-		itemsPerPage: args.ItemsPerPage,
-		pageNum:      args.PageNum,
-	}
-}
-
-// Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
-func (r ListOrganizationUsersApiRequest) IncludeCount(includeCount bool) ListOrganizationUsersApiRequest {
-	r.includeCount = &includeCount
-	return r
-}
-
-// Number of items that the response returns per page.
-func (r ListOrganizationUsersApiRequest) ItemsPerPage(itemsPerPage int) ListOrganizationUsersApiRequest {
-	r.itemsPerPage = &itemsPerPage
-	return r
-}
-
-// Number of the page that displays the current set of the total objects that the response returns.
-func (r ListOrganizationUsersApiRequest) PageNum(pageNum int) ListOrganizationUsersApiRequest {
-	r.pageNum = &pageNum
-	return r
-}
-
-func (r ListOrganizationUsersApiRequest) Execute() (*PaginatedAppUser, *http.Response, error) {
-	return r.ApiService.ListOrganizationUsersExecute(r)
-}
-
-/*
-ListOrganizationUsers Return All MongoDB Cloud Users in One Organization
-
-Returns details about the MongoDB Cloud users associated with the specified organization. Each MongoDB Cloud user returned must belong to the specified organization or to a project within the specified organization. To use this resource, the requesting API Key must have the Organization Member role.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-	@return ListOrganizationUsersApiRequest
-*/
-func (a *OrganizationsApiService) ListOrganizationUsers(ctx context.Context, orgId string) ListOrganizationUsersApiRequest {
-	return ListOrganizationUsersApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
-	}
-}
-
-// ListOrganizationUsersExecute executes the request
-//
-//	@return PaginatedAppUser
-func (a *OrganizationsApiService) ListOrganizationUsersExecute(r ListOrganizationUsersApiRequest) (*PaginatedAppUser, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue *PaginatedAppUser
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.ListOrganizationUsers")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/users"
-	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.includeCount != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
-	} else {
-		var defaultValue bool = true
-		r.includeCount = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
-	}
-	if r.itemsPerPage != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
-	} else {
-		var defaultValue int = 100
-		r.itemsPerPage = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
-	}
-	if r.pageNum != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
-	} else {
-		var defaultValue int = 1
-		r.pageNum = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
 type ListOrganizationsApiRequest struct {
 	ctx          context.Context
 	ApiService   OrganizationsApi
@@ -1810,123 +1648,6 @@ func (a *OrganizationsApiService) ListOrganizationsExecute(r ListOrganizationsAp
 	if r.name != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type RemoveOrganizationUserApiRequest struct {
-	ctx        context.Context
-	ApiService OrganizationsApi
-	orgId      string
-	userId     string
-}
-
-type RemoveOrganizationUserApiParams struct {
-	OrgId  string
-	UserId string
-}
-
-func (a *OrganizationsApiService) RemoveOrganizationUserWithParams(ctx context.Context, args *RemoveOrganizationUserApiParams) RemoveOrganizationUserApiRequest {
-	return RemoveOrganizationUserApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		orgId:      args.OrgId,
-		userId:     args.UserId,
-	}
-}
-
-func (r RemoveOrganizationUserApiRequest) Execute() (any, *http.Response, error) {
-	return r.ApiService.RemoveOrganizationUserExecute(r)
-}
-
-/*
-RemoveOrganizationUser Remove One MongoDB Cloud User From One Organization
-
-Removes one MongoDB Cloud user from the specified organization. To use this resource, the requesting API Key must have the Organization User Admin role.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-	@param userId Unique 24-hexadecimal digit string that identifies the user to be deleted.
-	@return RemoveOrganizationUserApiRequest
-*/
-func (a *OrganizationsApiService) RemoveOrganizationUser(ctx context.Context, orgId string, userId string) RemoveOrganizationUserApiRequest {
-	return RemoveOrganizationUserApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		orgId:      orgId,
-		userId:     userId,
-	}
-}
-
-// RemoveOrganizationUserExecute executes the request
-//
-//	@return any
-func (a *OrganizationsApiService) RemoveOrganizationUserExecute(r RemoveOrganizationUserApiRequest) (any, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue any
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.RemoveOrganizationUser")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/users/{userId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"userId"+"}", url.PathEscape(r.userId), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -2129,6 +1850,8 @@ Updates the details of one pending invitation to the specified organization. To 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return UpdateOrganizationInvitationApiRequest
+
+Deprecated
 */
 func (a *OrganizationsApiService) UpdateOrganizationInvitation(ctx context.Context, orgId string, organizationInvitationRequest *OrganizationInvitationRequest) UpdateOrganizationInvitationApiRequest {
 	return UpdateOrganizationInvitationApiRequest{
@@ -2142,6 +1865,8 @@ func (a *OrganizationsApiService) UpdateOrganizationInvitation(ctx context.Conte
 // UpdateOrganizationInvitationExecute executes the request
 //
 //	@return OrganizationInvitation
+//
+// Deprecated
 func (a *OrganizationsApiService) UpdateOrganizationInvitationExecute(r UpdateOrganizationInvitationApiRequest) (*OrganizationInvitation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -2253,6 +1978,8 @@ Updates the details of one pending invitation to the specified organization. To 
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@param invitationId Unique 24-hexadecimal digit string that identifies the invitation.
 	@return UpdateOrganizationInvitationByIdApiRequest
+
+Deprecated
 */
 func (a *OrganizationsApiService) UpdateOrganizationInvitationById(ctx context.Context, orgId string, invitationId string, organizationInvitationUpdateRequest *OrganizationInvitationUpdateRequest) UpdateOrganizationInvitationByIdApiRequest {
 	return UpdateOrganizationInvitationByIdApiRequest{
@@ -2267,6 +1994,8 @@ func (a *OrganizationsApiService) UpdateOrganizationInvitationById(ctx context.C
 // UpdateOrganizationInvitationByIdExecute executes the request
 //
 //	@return OrganizationInvitation
+//
+// Deprecated
 func (a *OrganizationsApiService) UpdateOrganizationInvitationByIdExecute(r UpdateOrganizationInvitationByIdApiRequest) (*OrganizationInvitation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -2379,6 +2108,8 @@ Updates the roles of the specified user in the specified organization. To specif
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@param userId Unique 24-hexadecimal digit string that identifies the user to modify.
 	@return UpdateOrganizationRolesApiRequest
+
+Deprecated
 */
 func (a *OrganizationsApiService) UpdateOrganizationRoles(ctx context.Context, orgId string, userId string, updateOrgRolesForUser *UpdateOrgRolesForUser) UpdateOrganizationRolesApiRequest {
 	return UpdateOrganizationRolesApiRequest{
@@ -2393,6 +2124,8 @@ func (a *OrganizationsApiService) UpdateOrganizationRoles(ctx context.Context, o
 // UpdateOrganizationRolesExecute executes the request
 //
 //	@return UpdateOrgRolesForUser
+//
+// Deprecated
 func (a *OrganizationsApiService) UpdateOrganizationRolesExecute(r UpdateOrganizationRolesApiRequest) (*UpdateOrgRolesForUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut

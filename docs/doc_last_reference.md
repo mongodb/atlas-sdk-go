@@ -227,9 +227,25 @@ Class        | Method        | HTTP request  | Description   |
 *MaintenanceWindowsApi* | [ResetMaintenanceWindow](./docs/MaintenanceWindowsApi.md#resetmaintenancewindow) | **Delete** /api/atlas/v2/groups/{groupId}/maintenanceWindow | Reset One Maintenance Window for One Project |
 *MaintenanceWindowsApi* | [ToggleMaintenanceAutoDefer](./docs/MaintenanceWindowsApi.md#togglemaintenanceautodefer) | **Post** /api/atlas/v2/groups/{groupId}/maintenanceWindow/autoDefer | Toggle Automatic Deferral of Maintenance for One Project |
 *MaintenanceWindowsApi* | [UpdateMaintenanceWindow](./docs/MaintenanceWindowsApi.md#updatemaintenancewindow) | **Patch** /api/atlas/v2/groups/{groupId}/maintenanceWindow | Update Maintenance Window for One Project |
+*MongoDBCloudUsersApi* | [AddOrganizationRole](./docs/MongoDBCloudUsersApi.md#addorganizationrole) | **Post** /api/atlas/v2/orgs/{orgId}/users/{userId}:addRole | Add One Organization Role to One MongoDB Cloud User |
+*MongoDBCloudUsersApi* | [AddProjectRole](./docs/MongoDBCloudUsersApi.md#addprojectrole) | **Post** /api/atlas/v2/groups/{groupId}/users/{userId}:addRole | Add One Project Role to One MongoDB Cloud User |
+*MongoDBCloudUsersApi* | [AddProjectUser](./docs/MongoDBCloudUsersApi.md#addprojectuser) | **Post** /api/atlas/v2/groups/{groupId}/users | Add One MongoDB Cloud User to One Project |
+*MongoDBCloudUsersApi* | [AddUserToTeam](./docs/MongoDBCloudUsersApi.md#addusertoteam) | **Post** /api/atlas/v2/orgs/{orgId}/teams/{teamId}:addUser | Add One MongoDB Cloud User to One Team |
+*MongoDBCloudUsersApi* | [CreateOrganizationUser](./docs/MongoDBCloudUsersApi.md#createorganizationuser) | **Post** /api/atlas/v2/orgs/{orgId}/users | Add One MongoDB Cloud User to One Organization |
 *MongoDBCloudUsersApi* | [CreateUser](./docs/MongoDBCloudUsersApi.md#createuser) | **Post** /api/atlas/v2/users | Create One MongoDB Cloud User |
+*MongoDBCloudUsersApi* | [GetOrganizationUser](./docs/MongoDBCloudUsersApi.md#getorganizationuser) | **Get** /api/atlas/v2/orgs/{orgId}/users/{userId} | Return One MongoDB Cloud User in One Organization |
+*MongoDBCloudUsersApi* | [GetProjectUser](./docs/MongoDBCloudUsersApi.md#getprojectuser) | **Get** /api/atlas/v2/groups/{groupId}/users/{userId} | Return One MongoDB Cloud User in One Project |
 *MongoDBCloudUsersApi* | [GetUser](./docs/MongoDBCloudUsersApi.md#getuser) | **Get** /api/atlas/v2/users/{userId} | Return One MongoDB Cloud User using Its ID |
 *MongoDBCloudUsersApi* | [GetUserByUsername](./docs/MongoDBCloudUsersApi.md#getuserbyusername) | **Get** /api/atlas/v2/users/byName/{userName} | Return One MongoDB Cloud User using Their Username |
+*MongoDBCloudUsersApi* | [ListOrganizationUsers](./docs/MongoDBCloudUsersApi.md#listorganizationusers) | **Get** /api/atlas/v2/orgs/{orgId}/users | Return All MongoDB Cloud Users in One Organization |
+*MongoDBCloudUsersApi* | [ListProjectUsers](./docs/MongoDBCloudUsersApi.md#listprojectusers) | **Get** /api/atlas/v2/groups/{groupId}/users | Return All MongoDB Cloud Users in One Project |
+*MongoDBCloudUsersApi* | [ListTeamUsers](./docs/MongoDBCloudUsersApi.md#listteamusers) | **Get** /api/atlas/v2/orgs/{orgId}/teams/{teamId}/users | Return All MongoDB Cloud Users Assigned to One Team |
+*MongoDBCloudUsersApi* | [RemoveOrganizationRole](./docs/MongoDBCloudUsersApi.md#removeorganizationrole) | **Post** /api/atlas/v2/orgs/{orgId}/users/{userId}:removeRole | Remove One Organization Role from One MongoDB Cloud User |
+*MongoDBCloudUsersApi* | [RemoveOrganizationUser](./docs/MongoDBCloudUsersApi.md#removeorganizationuser) | **Delete** /api/atlas/v2/orgs/{orgId}/users/{userId} | Remove One MongoDB Cloud User From One Organization |
+*MongoDBCloudUsersApi* | [RemoveProjectRole](./docs/MongoDBCloudUsersApi.md#removeprojectrole) | **Post** /api/atlas/v2/groups/{groupId}/users/{userId}:removeRole | Remove One Project Role from One MongoDB Cloud User |
+*MongoDBCloudUsersApi* | [RemoveProjectUser](./docs/MongoDBCloudUsersApi.md#removeprojectuser) | **Delete** /api/atlas/v2/groups/{groupId}/users/{userId} | Remove One MongoDB Cloud User from One Project |
+*MongoDBCloudUsersApi* | [RemoveUserFromTeam](./docs/MongoDBCloudUsersApi.md#removeuserfromteam) | **Post** /api/atlas/v2/orgs/{orgId}/teams/{teamId}:removeUser | Remove One MongoDB Cloud User from One Team |
+*MongoDBCloudUsersApi* | [UpdateOrganizationUser](./docs/MongoDBCloudUsersApi.md#updateorganizationuser) | **Patch** /api/atlas/v2/orgs/{orgId}/users/{userId} | Update One MongoDB Cloud User in One Organization |
 *MonitoringAndLogsApi* | [GetAtlasProcess](./docs/MonitoringAndLogsApi.md#getatlasprocess) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId} | Return One MongoDB Process by ID |
 *MonitoringAndLogsApi* | [GetDatabase](./docs/MonitoringAndLogsApi.md#getdatabase) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/databases/{databaseName} | Return One Database for a MongoDB Process |
 *MonitoringAndLogsApi* | [GetDatabaseMeasurements](./docs/MonitoringAndLogsApi.md#getdatabasemeasurements) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/databases/{databaseName}/measurements | Return Measurements of One Database for One MongoDB Process |
@@ -272,9 +288,7 @@ Class        | Method        | HTTP request  | Description   |
 *OrganizationsApi* | [GetOrganizationSettings](./docs/OrganizationsApi.md#getorganizationsettings) | **Get** /api/atlas/v2/orgs/{orgId}/settings | Return Settings for One Organization |
 *OrganizationsApi* | [ListOrganizationInvitations](./docs/OrganizationsApi.md#listorganizationinvitations) | **Get** /api/atlas/v2/orgs/{orgId}/invites | Return All Organization Invitations |
 *OrganizationsApi* | [ListOrganizationProjects](./docs/OrganizationsApi.md#listorganizationprojects) | **Get** /api/atlas/v2/orgs/{orgId}/groups | Return One or More Projects in One Organization |
-*OrganizationsApi* | [ListOrganizationUsers](./docs/OrganizationsApi.md#listorganizationusers) | **Get** /api/atlas/v2/orgs/{orgId}/users | Return All MongoDB Cloud Users in One Organization |
 *OrganizationsApi* | [ListOrganizations](./docs/OrganizationsApi.md#listorganizations) | **Get** /api/atlas/v2/orgs | Return All Organizations |
-*OrganizationsApi* | [RemoveOrganizationUser](./docs/OrganizationsApi.md#removeorganizationuser) | **Delete** /api/atlas/v2/orgs/{orgId}/users/{userId} | Remove One MongoDB Cloud User From One Organization |
 *OrganizationsApi* | [UpdateOrganization](./docs/OrganizationsApi.md#updateorganization) | **Patch** /api/atlas/v2/orgs/{orgId} | Update One Organization |
 *OrganizationsApi* | [UpdateOrganizationInvitation](./docs/OrganizationsApi.md#updateorganizationinvitation) | **Patch** /api/atlas/v2/orgs/{orgId}/invites | Update One Organization Invitation |
 *OrganizationsApi* | [UpdateOrganizationInvitationById](./docs/OrganizationsApi.md#updateorganizationinvitationbyid) | **Patch** /api/atlas/v2/orgs/{orgId}/invites/{invitationId} | Update One Organization Invitation by Invitation ID |
@@ -285,6 +299,8 @@ Class        | Method        | HTTP request  | Description   |
 *PerformanceAdvisorApi* | [GetManagedSlowMs](./docs/PerformanceAdvisorApi.md#getmanagedslowms) | **Get** /api/atlas/v2/groups/{groupId}/managedSlowMs | Return Managed Slow MS enabled |
 *PerformanceAdvisorApi* | [GetServerlessAutoIndexing](./docs/PerformanceAdvisorApi.md#getserverlessautoindexing) | **Get** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/performanceAdvisor/autoIndexing | Return Serverless Auto Indexing Enabled |
 *PerformanceAdvisorApi* | [ListClusterSuggestedIndexes](./docs/PerformanceAdvisorApi.md#listclustersuggestedindexes) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/performanceAdvisor/suggestedIndexes | Return Suggested Indexes |
+*PerformanceAdvisorApi* | [ListDropIndexes](./docs/PerformanceAdvisorApi.md#listdropindexes) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/performanceAdvisor/dropIndexSuggestions | Returns Suggested Indexes to Drop |
+*PerformanceAdvisorApi* | [ListSchemaAdvice](./docs/PerformanceAdvisorApi.md#listschemaadvice) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/performanceAdvisor/schemaAdvice | Return Schema Advice |
 *PerformanceAdvisorApi* | [ListSlowQueries](./docs/PerformanceAdvisorApi.md#listslowqueries) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/performanceAdvisor/slowQueryLogs | Return Slow Queries |
 *PerformanceAdvisorApi* | [ListSlowQueryNamespaces](./docs/PerformanceAdvisorApi.md#listslowquerynamespaces) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/performanceAdvisor/namespaces | Return All Namespaces for One Host |
 *PerformanceAdvisorApi* | [ListSuggestedIndexes](./docs/PerformanceAdvisorApi.md#listsuggestedindexes) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/performanceAdvisor/suggestedIndexes | Return Suggested Indexes |
@@ -331,10 +347,8 @@ Class        | Method        | HTTP request  | Description   |
 *ProjectsApi* | [GetProjectSettings](./docs/ProjectsApi.md#getprojectsettings) | **Get** /api/atlas/v2/groups/{groupId}/settings | Return One Project Settings |
 *ProjectsApi* | [ListProjectInvitations](./docs/ProjectsApi.md#listprojectinvitations) | **Get** /api/atlas/v2/groups/{groupId}/invites | Return All Project Invitations |
 *ProjectsApi* | [ListProjectLimits](./docs/ProjectsApi.md#listprojectlimits) | **Get** /api/atlas/v2/groups/{groupId}/limits | Return All Limits for One Project |
-*ProjectsApi* | [ListProjectUsers](./docs/ProjectsApi.md#listprojectusers) | **Get** /api/atlas/v2/groups/{groupId}/users | Return All Users in One Project |
 *ProjectsApi* | [ListProjects](./docs/ProjectsApi.md#listprojects) | **Get** /api/atlas/v2/groups | Return All Projects |
 *ProjectsApi* | [MigrateProjectToAnotherOrg](./docs/ProjectsApi.md#migrateprojecttoanotherorg) | **Post** /api/atlas/v2/groups/{groupId}:migrate | Migrate One Project to Another Organization |
-*ProjectsApi* | [RemoveProjectUser](./docs/ProjectsApi.md#removeprojectuser) | **Delete** /api/atlas/v2/groups/{groupId}/users/{userId} | Remove One User from One Project |
 *ProjectsApi* | [ReturnAllIpAddresses](./docs/ProjectsApi.md#returnallipaddresses) | **Get** /api/atlas/v2/groups/{groupId}/ipAddresses | Return All IP Addresses for One Project |
 *ProjectsApi* | [SetProjectLimit](./docs/ProjectsApi.md#setprojectlimit) | **Patch** /api/atlas/v2/groups/{groupId}/limits/{limitName} | Set One Project Limit |
 *ProjectsApi* | [UpdateProject](./docs/ProjectsApi.md#updateproject) | **Patch** /api/atlas/v2/groups/{groupId} | Update One Project |
@@ -431,7 +445,6 @@ Class        | Method        | HTTP request  | Description   |
 *TeamsApi* | [GetTeamByName](./docs/TeamsApi.md#getteambyname) | **Get** /api/atlas/v2/orgs/{orgId}/teams/byName/{teamName} | Return One Team using its Name |
 *TeamsApi* | [ListOrganizationTeams](./docs/TeamsApi.md#listorganizationteams) | **Get** /api/atlas/v2/orgs/{orgId}/teams | Return All Teams in One Organization |
 *TeamsApi* | [ListProjectTeams](./docs/TeamsApi.md#listprojectteams) | **Get** /api/atlas/v2/groups/{groupId}/teams | Return All Teams in One Project |
-*TeamsApi* | [ListTeamUsers](./docs/TeamsApi.md#listteamusers) | **Get** /api/atlas/v2/orgs/{orgId}/teams/{teamId}/users | Return All MongoDB Cloud Users Assigned to One Team |
 *TeamsApi* | [RemoveProjectTeam](./docs/TeamsApi.md#removeprojectteam) | **Delete** /api/atlas/v2/groups/{groupId}/teams/{teamId} | Remove One Team from One Project |
 *TeamsApi* | [RemoveTeamUser](./docs/TeamsApi.md#removeteamuser) | **Delete** /api/atlas/v2/orgs/{orgId}/teams/{teamId}/users/{userId} | Remove One MongoDB Cloud User from One Team |
 *TeamsApi* | [RenameTeam](./docs/TeamsApi.md#renameteam) | **Patch** /api/atlas/v2/orgs/{orgId}/teams/{teamId} | Rename One Team |
@@ -453,6 +466,9 @@ Class        | Method        | HTTP request  | Description   |
  - [AWSKMSConfiguration](./docs/AWSKMSConfiguration.md)
  - [AccessListItem](./docs/AccessListItem.md)
  - [AcknowledgeAlert](./docs/AcknowledgeAlert.md)
+ - [AddOrRemoveGroupRole](./docs/AddOrRemoveGroupRole.md)
+ - [AddOrRemoveOrgRole](./docs/AddOrRemoveOrgRole.md)
+ - [AddOrRemoveUserFromTeam](./docs/AddOrRemoveUserFromTeam.md)
  - [AddUserToTeam](./docs/AddUserToTeam.md)
  - [AdvancedAutoScalingSettings](./docs/AdvancedAutoScalingSettings.md)
  - [AdvancedComputeAutoScaling](./docs/AdvancedComputeAutoScaling.md)
@@ -619,6 +635,8 @@ Class        | Method        | HTTP request  | Description   |
  - [DiskBackupSnapshotRestoreJob](./docs/DiskBackupSnapshotRestoreJob.md)
  - [DiskBackupSnapshotSchedule20240805](./docs/DiskBackupSnapshotSchedule20240805.md)
  - [DiskGBAutoScaling](./docs/DiskGBAutoScaling.md)
+ - [DropIndexSuggestionsIndex](./docs/DropIndexSuggestionsIndex.md)
+ - [DropIndexSuggestionsResponse](./docs/DropIndexSuggestionsResponse.md)
  - [EARPrivateEndpoint](./docs/EARPrivateEndpoint.md)
  - [EmployeeAccessGrant](./docs/EmployeeAccessGrant.md)
  - [EncryptionAtRest](./docs/EncryptionAtRest.md)
@@ -663,6 +681,7 @@ Class        | Method        | HTTP request  | Description   |
  - [GroupMigrationRequest](./docs/GroupMigrationRequest.md)
  - [GroupPaginatedEvent](./docs/GroupPaginatedEvent.md)
  - [GroupRole](./docs/GroupRole.md)
+ - [GroupRoleAssignment](./docs/GroupRoleAssignment.md)
  - [GroupService](./docs/GroupService.md)
  - [GroupServiceAccount](./docs/GroupServiceAccount.md)
  - [GroupServiceAccountRequest](./docs/GroupServiceAccountRequest.md)
@@ -670,6 +689,8 @@ Class        | Method        | HTTP request  | Description   |
  - [GroupServiceAccountUpdateRequest](./docs/GroupServiceAccountUpdateRequest.md)
  - [GroupSettings](./docs/GroupSettings.md)
  - [GroupUpdate](./docs/GroupUpdate.md)
+ - [GroupUserRequest](./docs/GroupUserRequest.md)
+ - [GroupUserResponse](./docs/GroupUserResponse.md)
  - [HardwareSpec20240805](./docs/HardwareSpec20240805.md)
  - [InboundControlPlaneCloudProviderIPAddresses](./docs/InboundControlPlaneCloudProviderIPAddresses.md)
  - [IndexOptions](./docs/IndexOptions.md)
@@ -717,6 +738,11 @@ Class        | Method        | HTTP request  | Description   |
  - [OrgServiceAccount](./docs/OrgServiceAccount.md)
  - [OrgServiceAccountRequest](./docs/OrgServiceAccountRequest.md)
  - [OrgServiceAccountUpdateRequest](./docs/OrgServiceAccountUpdateRequest.md)
+ - [OrgUserRequest](./docs/OrgUserRequest.md)
+ - [OrgUserResponse](./docs/OrgUserResponse.md)
+ - [OrgUserRolesRequest](./docs/OrgUserRolesRequest.md)
+ - [OrgUserRolesResponse](./docs/OrgUserRolesResponse.md)
+ - [OrgUserUpdateRequest](./docs/OrgUserUpdateRequest.md)
  - [OrganizationInvitation](./docs/OrganizationInvitation.md)
  - [OrganizationInvitationGroupRoleAssignmentsRequest](./docs/OrganizationInvitationGroupRoleAssignmentsRequest.md)
  - [OrganizationInvitationRequest](./docs/OrganizationInvitationRequest.md)
@@ -743,7 +769,6 @@ Class        | Method        | HTTP request  | Description   |
  - [PaginatedApiStreamsStreamProcessorWithStats](./docs/PaginatedApiStreamsStreamProcessorWithStats.md)
  - [PaginatedApiStreamsTenant](./docs/PaginatedApiStreamsTenant.md)
  - [PaginatedApiUserAccessListResponse](./docs/PaginatedApiUserAccessListResponse.md)
- - [PaginatedAppUser](./docs/PaginatedAppUser.md)
  - [PaginatedAtlasGroup](./docs/PaginatedAtlasGroup.md)
  - [PaginatedAvailableVersion](./docs/PaginatedAvailableVersion.md)
  - [PaginatedBackupSnapshot](./docs/PaginatedBackupSnapshot.md)
@@ -761,12 +786,14 @@ Class        | Method        | HTTP request  | Description   |
  - [PaginatedFederationIdentityProvider](./docs/PaginatedFederationIdentityProvider.md)
  - [PaginatedFlexClusters20241113](./docs/PaginatedFlexClusters20241113.md)
  - [PaginatedGroupServiceAccounts](./docs/PaginatedGroupServiceAccounts.md)
+ - [PaginatedGroupUser](./docs/PaginatedGroupUser.md)
  - [PaginatedHostViewAtlas](./docs/PaginatedHostViewAtlas.md)
  - [PaginatedIntegration](./docs/PaginatedIntegration.md)
  - [PaginatedNetworkAccess](./docs/PaginatedNetworkAccess.md)
  - [PaginatedOnlineArchive](./docs/PaginatedOnlineArchive.md)
  - [PaginatedOrgGroup](./docs/PaginatedOrgGroup.md)
  - [PaginatedOrgServiceAccounts](./docs/PaginatedOrgServiceAccounts.md)
+ - [PaginatedOrgUser](./docs/PaginatedOrgUser.md)
  - [PaginatedOrganization](./docs/PaginatedOrganization.md)
  - [PaginatedPipelineRun](./docs/PaginatedPipelineRun.md)
  - [PaginatedPrivateNetworkEndpointIdEntry](./docs/PaginatedPrivateNetworkEndpointIdEntry.md)
@@ -810,6 +837,10 @@ Class        | Method        | HTTP request  | Description   |
  - [RestoreJobFileHash](./docs/RestoreJobFileHash.md)
  - [RoleAssignment](./docs/RoleAssignment.md)
  - [SampleDatasetStatus](./docs/SampleDatasetStatus.md)
+ - [SchemaAdvisorItemRecommendation](./docs/SchemaAdvisorItemRecommendation.md)
+ - [SchemaAdvisorNamespaceTriggers](./docs/SchemaAdvisorNamespaceTriggers.md)
+ - [SchemaAdvisorResponse](./docs/SchemaAdvisorResponse.md)
+ - [SchemaAdvisorTriggerDetails](./docs/SchemaAdvisorTriggerDetails.md)
  - [SearchIndexCreateRequest](./docs/SearchIndexCreateRequest.md)
  - [SearchIndexDefinitionVersion](./docs/SearchIndexDefinitionVersion.md)
  - [SearchIndexResponse](./docs/SearchIndexResponse.md)
@@ -839,6 +870,7 @@ Class        | Method        | HTTP request  | Description   |
  - [Source](./docs/Source.md)
  - [StateReason](./docs/StateReason.md)
  - [StreamConfig](./docs/StreamConfig.md)
+ - [StreamsAWSConnectionBaseConfig](./docs/StreamsAWSConnectionBaseConfig.md)
  - [StreamsConnection](./docs/StreamsConnection.md)
  - [StreamsDLQ](./docs/StreamsDLQ.md)
  - [StreamsDataProcessRegion](./docs/StreamsDataProcessRegion.md)
