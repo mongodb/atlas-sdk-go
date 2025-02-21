@@ -19,6 +19,9 @@ type StreamsPrivateLinkConnection struct {
 	// Interface endpoint ID that is created from the service endpoint ID provided.
 	// Read only field.
 	InterfaceEndpointId *string `json:"interfaceEndpointId,omitempty"`
+	// Interface endpoint name that is created from the service endpoint ID provided.
+	// Read only field.
+	InterfaceEndpointName *string `json:"interfaceEndpointName,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
@@ -251,6 +254,39 @@ func (o *StreamsPrivateLinkConnection) HasInterfaceEndpointId() bool {
 // SetInterfaceEndpointId gets a reference to the given string and assigns it to the InterfaceEndpointId field.
 func (o *StreamsPrivateLinkConnection) SetInterfaceEndpointId(v string) {
 	o.InterfaceEndpointId = &v
+}
+
+// GetInterfaceEndpointName returns the InterfaceEndpointName field value if set, zero value otherwise
+func (o *StreamsPrivateLinkConnection) GetInterfaceEndpointName() string {
+	if o == nil || IsNil(o.InterfaceEndpointName) {
+		var ret string
+		return ret
+	}
+	return *o.InterfaceEndpointName
+}
+
+// GetInterfaceEndpointNameOk returns a tuple with the InterfaceEndpointName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsPrivateLinkConnection) GetInterfaceEndpointNameOk() (*string, bool) {
+	if o == nil || IsNil(o.InterfaceEndpointName) {
+		return nil, false
+	}
+
+	return o.InterfaceEndpointName, true
+}
+
+// HasInterfaceEndpointName returns a boolean if a field has been set.
+func (o *StreamsPrivateLinkConnection) HasInterfaceEndpointName() bool {
+	if o != nil && !IsNil(o.InterfaceEndpointName) {
+		return true
+	}
+
+	return false
+}
+
+// SetInterfaceEndpointName gets a reference to the given string and assigns it to the InterfaceEndpointName field.
+func (o *StreamsPrivateLinkConnection) SetInterfaceEndpointName(v string) {
+	o.InterfaceEndpointName = &v
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
