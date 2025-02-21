@@ -19,7 +19,6 @@ jobs:
         run: make fetch_openapi
         env:
           API_BASE_URL:  https://raw.githubusercontent.com/mongodb/openapi/refs/heads/dev/openapi/v2
-          BRANCH_NAME: ${{ github.head_ref || github.ref_name }} 
       - name: Verify Changed files
         uses: tj-actions/verify-changed-files@6b59fb7cbb8d9a6ecc10ee556496d0078a9ed957
         id: verify-changed-files
