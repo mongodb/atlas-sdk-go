@@ -17,32 +17,30 @@ set -o nounset
 ## OpenAPI file (latest)
 OPENAPI_FILE_NAME=${OPENAPI_FILE_NAME:-"atlas-api.yaml"}
 
-## Base URL
-API_BASE_URL=${API_BASE_URL:-"https://cloud.mongodb.com"}
-
 ## Folder used for fetching files
 OPENAPI_FOLDER=${OPENAPI_FOLDER:-"../openapi"}
 
-## S3 bucket where the spec is hosted
-S3_BUCKET=${S3_BUCKET:-"mongodb-mms-prod-build-server"}
 
-versions_url="${API_BASE_URL}/api/openapi/versions"
+# Base URL for fetching the openapi file
+API_BASE_URL=${API_BASE_URL:-}https://raw.githubusercontent.com/mongodb/openapi/refs/heads/main/openapi/v2
 versions_file="versions.json"
 
 pushd "${OPENAPI_FOLDER}"
+versions_url="${API_BASE_URL}/${versions_file}"
 echo "Fetching versions from $versions_url"
 
 curl --show-error --fail --silent -o "${versions_file}" \
      -H "Accept: application/json" "${versions_url}"
 
+# Remove "preview" from versions file if it exists and update the file
+jq 'map(select(. != "preview"))' < "./${versions_file}" > "./${versions_file}.tmp"
+mv "./${versions_file}.tmp" "./${versions_file}"
+
 ## Dynamic Versioned API Version
-CURRENT_API_REVISION=$(jq -r '.versions."2.0" | .[-1]' < "./${versions_file}")
+CURRENT_API_REVISION=$(jq -r '.[-1]' < "./${versions_file}")
 
-echo "Fetching OpenAPI release sha"
-sha=$(curl --show-error --fail --silent -H "Accept: text/plain" "${API_BASE_URL}/api/private/unauth/version")
-
-echo "Fetching OAS file for ${sha}"
-openapi_url="https://${S3_BUCKET}.s3.amazonaws.com/openapi/${sha}-v2-${CURRENT_API_REVISION}.yaml"
+echo "Fetching OAS file for version $CURRENT_API_REVISION"
+openapi_url=${API_BASE_URL}/openapi-${CURRENT_API_REVISION}.yaml
 
 echo "Fetching api from $openapi_url to $OPENAPI_FILE_NAME"
 

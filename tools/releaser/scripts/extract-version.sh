@@ -13,7 +13,7 @@ SDK_MINOR_VERSION=$(echo "$SDK_VERSION" | awk -F'.' '{print $2}')
 SDK_MAJOR_VERSION=$(echo "$SDK_VERSION" | awk -F'.' '{print $1}')
 
 # Extract the last version from the versions.json file
-HYPEN_RESOURCE_VERSION=$(cat $versions_file_path | jq -r '.versions."2.0" | .[-1]')
+HYPEN_RESOURCE_VERSION=$(cat $versions_file_path | jq -r ' .[-1]')
 NEW_RESOURCE_VERSION=$(echo "$HYPEN_RESOURCE_VERSION" | tr -d '-')
 
 echo "Extracted version from version.go file: '$SDK_VERSION'. Resource Version: '$SDK_RESOURCE_VERSION'"
