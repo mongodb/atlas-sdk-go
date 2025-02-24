@@ -22,7 +22,7 @@ OPENAPI_FOLDER=${OPENAPI_FOLDER:-"../openapi"}
 
 
 # Base URL for fetching the openapi file
-API_BASE_URL=${API_BASE_URL:-}https://raw.githubusercontent.com/mongodb/openapi/refs/heads/main/openapi/v2
+API_BASE_URL=${API_BASE_URL:-https://raw.githubusercontent.com/mongodb/openapi/refs/heads/main/openapi/v2}
 versions_file="versions.json"
 
 pushd "${OPENAPI_FOLDER}"
