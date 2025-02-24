@@ -14,7 +14,7 @@ breakingChanges() {
 	# shellcheck source=/dev/null
 	# Create an isolated subshell to contain the sourcing otherwise SDK_VERSION will be overwritten
 	local breaking_changes=$(
-		source "$script_path/breaking-changes.sh"
+		source "$script_path/breaking-changes.sh" >&2
 		# Output only the variable we want
 		echo "$BREAKING_CHANGES"
 	)
