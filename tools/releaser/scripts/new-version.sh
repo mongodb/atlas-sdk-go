@@ -11,14 +11,22 @@ source "$script_path/extract-version.sh"
 source "$script_path/version-paths.sh"
 
 breakingChanges() {
-	# shellcheck source=/dev/null
-	# Create an isolated subshell to contain the sourcing otherwise SDK_VERSION will be overwritten
-	local breaking_changes=$(
-		source "$script_path/breaking-changes.sh" >&2
-		# Output only the variable we want
-		echo "$BREAKING_CHANGES"
-	)
-	export BREAKING_CHANGES="$breaking_changes"
+	local breaking_changes
+    # Create an isolated subshell to contain the sourcing otherwise SDK_VERSION will be overwritten
+	breaking_changes=$(
+        {
+			# shellcheck source=/dev/null
+            source "$script_path/breaking-changes.sh" >&2
+            # Output only the variable we want
+            echo "$BREAKING_CHANGES"
+        }
+    )
+    local ret_val=$?
+    if [ $ret_val -ne 0 ]; then
+        echo "Error when sourcing breaking-changes.sh" >&2
+        return $ret_val
+    fi
+    export BREAKING_CHANGES="$breaking_changes"
 }
 
 # Update the version.go file with the new version
