@@ -10,25 +10,6 @@ source "$script_path/extract-version.sh"
 # shellcheck source=/dev/null
 source "$script_path/version-paths.sh"
 
-breakingChanges() {
-	local breaking_changes
-    # Create an isolated subshell to contain the sourcing otherwise SDK_VERSION will be overwritten
-	breaking_changes=$(
-        {
-			# shellcheck source=/dev/null
-            source "$script_path/breaking-changes.sh" >&2
-            # Output only the variable we want
-            echo "$BREAKING_CHANGES"
-        }
-    )
-    local ret_val=$?
-    if [ $ret_val -ne 0 ]; then
-        echo "Error when sourcing breaking-changes.sh" >&2
-        return $ret_val
-    fi
-    export BREAKING_CHANGES="$breaking_changes"
-}
-
 # Update the version.go file with the new version
 if [ "$NEW_RESOURCE_VERSION" == "$SDK_RESOURCE_VERSION" ]; then
 	echo "Resource Version is already up to date. Changing minor version."
@@ -38,7 +19,8 @@ if [ "$NEW_RESOURCE_VERSION" == "$SDK_RESOURCE_VERSION" ]; then
 	SDK_VERSION="${SDK_MAJOR_VERSION}.${new_minor_version}.0"
 
 	echo "Print breaking changes"	
-	breakingChanges
+	# shellcheck source=/dev/null
+	source "$script_path/breaking-changes.sh"
 	if [ -n "$BREAKING_CHANGES" ]; then
 		echo "BREAKING CHANGES DETECTED FOR NON MAJOR VERSION BUMP"
 		# shellcheck source=/dev/null
@@ -52,7 +34,8 @@ else
 	SDK_VERSION="${NEW_MAJOR_VERSION}.0.0" 
 	echo "generate breaking changes file"	
 	export TARGET_BREAKING_CHANGES_FILE=${NEW_MAJOR_VERSION}
-	breakingChanges
+	# shellcheck source=/dev/null
+	source "$script_path/breaking-changes.sh"
 
 	echo "Modifying all instances of version from $SDK_RESOURCE_VERSION to $NEW_RESOURCE_VERSION across the repository."
 	npm install
