@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **Security** | Pointer to [**StreamsKafkaSecurity**](StreamsKafkaSecurity.md) |  | [optional] 
 **Headers** | Pointer to **map[string]string** | A map of key-value pairs that will be passed as headers for the request. | [optional] 
 **Url** | Pointer to **string** | The url to be used for the request. | [optional] 
-**Aws** | Pointer to [**StreamsAWSConnectionBaseConfig**](StreamsAWSConnectionBaseConfig.md) |  | [optional] 
+**Aws** | Pointer to [**StreamsAWSConnectionConfig**](StreamsAWSConnectionConfig.md) |  | [optional] 
 
 ## Methods
 
@@ -327,20 +327,20 @@ SetUrl sets Url field to given value.
 HasUrl returns a boolean if a field has been set.
 ### GetAws
 
-`func (o *StreamsConnection) GetAws() StreamsAWSConnectionBaseConfig`
+`func (o *StreamsConnection) GetAws() StreamsAWSConnectionConfig`
 
 GetAws returns the Aws field if non-nil, zero value otherwise.
 
 ### GetAwsOk
 
-`func (o *StreamsConnection) GetAwsOk() (*StreamsAWSConnectionBaseConfig, bool)`
+`func (o *StreamsConnection) GetAwsOk() (*StreamsAWSConnectionConfig, bool)`
 
 GetAwsOk returns a tuple with the Aws field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAws
 
-`func (o *StreamsConnection) SetAws(v StreamsAWSConnectionBaseConfig)`
+`func (o *StreamsConnection) SetAws(v StreamsAWSConnectionConfig)`
 
 SetAws sets Aws field to given value.
 

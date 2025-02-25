@@ -2,8 +2,8 @@
 
 package admin
 
-// StreamsAWSConnectionBaseConfig The base configuration of AWS connection used in stream processors.
-type StreamsAWSConnectionBaseConfig struct {
+// StreamsAWSConnectionConfig The configuration of AWS connection used in stream processors.
+type StreamsAWSConnectionConfig struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
@@ -11,25 +11,25 @@ type StreamsAWSConnectionBaseConfig struct {
 	RoleArn *string `json:"roleArn,omitempty"`
 }
 
-// NewStreamsAWSConnectionBaseConfig instantiates a new StreamsAWSConnectionBaseConfig object
+// NewStreamsAWSConnectionConfig instantiates a new StreamsAWSConnectionConfig object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStreamsAWSConnectionBaseConfig() *StreamsAWSConnectionBaseConfig {
-	this := StreamsAWSConnectionBaseConfig{}
+func NewStreamsAWSConnectionConfig() *StreamsAWSConnectionConfig {
+	this := StreamsAWSConnectionConfig{}
 	return &this
 }
 
-// NewStreamsAWSConnectionBaseConfigWithDefaults instantiates a new StreamsAWSConnectionBaseConfig object
+// NewStreamsAWSConnectionConfigWithDefaults instantiates a new StreamsAWSConnectionConfig object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewStreamsAWSConnectionBaseConfigWithDefaults() *StreamsAWSConnectionBaseConfig {
-	this := StreamsAWSConnectionBaseConfig{}
+func NewStreamsAWSConnectionConfigWithDefaults() *StreamsAWSConnectionConfig {
+	this := StreamsAWSConnectionConfig{}
 	return &this
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
-func (o *StreamsAWSConnectionBaseConfig) GetLinks() []Link {
+func (o *StreamsAWSConnectionConfig) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
 		return ret
@@ -39,7 +39,7 @@ func (o *StreamsAWSConnectionBaseConfig) GetLinks() []Link {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StreamsAWSConnectionBaseConfig) GetLinksOk() (*[]Link, bool) {
+func (o *StreamsAWSConnectionConfig) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -48,7 +48,7 @@ func (o *StreamsAWSConnectionBaseConfig) GetLinksOk() (*[]Link, bool) {
 }
 
 // HasLinks returns a boolean if a field has been set.
-func (o *StreamsAWSConnectionBaseConfig) HasLinks() bool {
+func (o *StreamsAWSConnectionConfig) HasLinks() bool {
 	if o != nil && !IsNil(o.Links) {
 		return true
 	}
@@ -57,12 +57,12 @@ func (o *StreamsAWSConnectionBaseConfig) HasLinks() bool {
 }
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
-func (o *StreamsAWSConnectionBaseConfig) SetLinks(v []Link) {
+func (o *StreamsAWSConnectionConfig) SetLinks(v []Link) {
 	o.Links = &v
 }
 
 // GetRoleArn returns the RoleArn field value if set, zero value otherwise
-func (o *StreamsAWSConnectionBaseConfig) GetRoleArn() string {
+func (o *StreamsAWSConnectionConfig) GetRoleArn() string {
 	if o == nil || IsNil(o.RoleArn) {
 		var ret string
 		return ret
@@ -72,7 +72,7 @@ func (o *StreamsAWSConnectionBaseConfig) GetRoleArn() string {
 
 // GetRoleArnOk returns a tuple with the RoleArn field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StreamsAWSConnectionBaseConfig) GetRoleArnOk() (*string, bool) {
+func (o *StreamsAWSConnectionConfig) GetRoleArnOk() (*string, bool) {
 	if o == nil || IsNil(o.RoleArn) {
 		return nil, false
 	}
@@ -81,7 +81,7 @@ func (o *StreamsAWSConnectionBaseConfig) GetRoleArnOk() (*string, bool) {
 }
 
 // HasRoleArn returns a boolean if a field has been set.
-func (o *StreamsAWSConnectionBaseConfig) HasRoleArn() bool {
+func (o *StreamsAWSConnectionConfig) HasRoleArn() bool {
 	if o != nil && !IsNil(o.RoleArn) {
 		return true
 	}
@@ -90,6 +90,6 @@ func (o *StreamsAWSConnectionBaseConfig) HasRoleArn() bool {
 }
 
 // SetRoleArn gets a reference to the given string and assigns it to the RoleArn field.
-func (o *StreamsAWSConnectionBaseConfig) SetRoleArn(v string) {
+func (o *StreamsAWSConnectionConfig) SetRoleArn(v string) {
 	o.RoleArn = &v
 }
