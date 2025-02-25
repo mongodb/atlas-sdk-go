@@ -1,4 +1,4 @@
-# StreamsAWSConnectionBaseConfig
+# StreamsAWSConnectionConfig
 
 ## Properties
 
@@ -9,69 +9,69 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewStreamsAWSConnectionBaseConfig
+### NewStreamsAWSConnectionConfig
 
-`func NewStreamsAWSConnectionBaseConfig() *StreamsAWSConnectionBaseConfig`
+`func NewStreamsAWSConnectionConfig() *StreamsAWSConnectionConfig`
 
-NewStreamsAWSConnectionBaseConfig instantiates a new StreamsAWSConnectionBaseConfig object
+NewStreamsAWSConnectionConfig instantiates a new StreamsAWSConnectionConfig object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewStreamsAWSConnectionBaseConfigWithDefaults
+### NewStreamsAWSConnectionConfigWithDefaults
 
-`func NewStreamsAWSConnectionBaseConfigWithDefaults() *StreamsAWSConnectionBaseConfig`
+`func NewStreamsAWSConnectionConfigWithDefaults() *StreamsAWSConnectionConfig`
 
-NewStreamsAWSConnectionBaseConfigWithDefaults instantiates a new StreamsAWSConnectionBaseConfig object
+NewStreamsAWSConnectionConfigWithDefaults instantiates a new StreamsAWSConnectionConfig object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *StreamsAWSConnectionBaseConfig) GetLinks() []Link`
+`func (o *StreamsAWSConnectionConfig) GetLinks() []Link`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *StreamsAWSConnectionBaseConfig) GetLinksOk() (*[]Link, bool)`
+`func (o *StreamsAWSConnectionConfig) GetLinksOk() (*[]Link, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *StreamsAWSConnectionBaseConfig) SetLinks(v []Link)`
+`func (o *StreamsAWSConnectionConfig) SetLinks(v []Link)`
 
 SetLinks sets Links field to given value.
 
 ### HasLinks
 
-`func (o *StreamsAWSConnectionBaseConfig) HasLinks() bool`
+`func (o *StreamsAWSConnectionConfig) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
 ### GetRoleArn
 
-`func (o *StreamsAWSConnectionBaseConfig) GetRoleArn() string`
+`func (o *StreamsAWSConnectionConfig) GetRoleArn() string`
 
 GetRoleArn returns the RoleArn field if non-nil, zero value otherwise.
 
 ### GetRoleArnOk
 
-`func (o *StreamsAWSConnectionBaseConfig) GetRoleArnOk() (*string, bool)`
+`func (o *StreamsAWSConnectionConfig) GetRoleArnOk() (*string, bool)`
 
 GetRoleArnOk returns a tuple with the RoleArn field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRoleArn
 
-`func (o *StreamsAWSConnectionBaseConfig) SetRoleArn(v string)`
+`func (o *StreamsAWSConnectionConfig) SetRoleArn(v string)`
 
 SetRoleArn sets RoleArn field to given value.
 
 ### HasRoleArn
 
-`func (o *StreamsAWSConnectionBaseConfig) HasRoleArn() bool`
+`func (o *StreamsAWSConnectionConfig) HasRoleArn() bool`
 
 HasRoleArn returns a boolean if a field has been set.
 

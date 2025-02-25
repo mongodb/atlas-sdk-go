@@ -870,7 +870,7 @@ Class        | Method        | HTTP request  | Description   |
  - [Source](./docs/Source.md)
  - [StateReason](./docs/StateReason.md)
  - [StreamConfig](./docs/StreamConfig.md)
- - [StreamsAWSConnectionBaseConfig](./docs/StreamsAWSConnectionBaseConfig.md)
+ - [StreamsAWSConnectionConfig](./docs/StreamsAWSConnectionConfig.md)
  - [StreamsConnection](./docs/StreamsConnection.md)
  - [StreamsDLQ](./docs/StreamsDLQ.md)
  - [StreamsDataProcessRegion](./docs/StreamsDataProcessRegion.md)
