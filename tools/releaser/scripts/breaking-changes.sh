@@ -5,9 +5,26 @@ set -eu
 TARGET_BREAKING_CHANGES_FILE=${TARGET_BREAKING_CHANGES_FILE:-""}
 script_path=$(dirname "$0")
 
-# shellcheck source=/dev/null
-source "$script_path/extract-version.sh"
-BASE_VERSION="github.com/mongodb/atlas-sdk-go/$SDK_MAJOR_VERSION@$SDK_VERSION"
+baseVersion() {
+	local base_version
+    # Create an isolated subshell to contain the sourcing to avoid overwritting version vars
+	base_version=$(
+        {
+			# shellcheck source=/dev/null
+            source "$script_path/extract-version.sh" >&2
+            # Output only the variable we want
+            echo "github.com/mongodb/atlas-sdk-go/$SDK_MAJOR_VERSION@$SDK_VERSION"
+        }
+    )
+    local ret_val=$?
+    if [ $ret_val -ne 0 ]; then
+        echo "Error when sourcing extract-version.sh" >&2
+        return $ret_val
+    fi
+    export BASE_VERSION="$base_version"
+}
+
+baseVersion
 
 echo "Installing gorelease"
 go install golang.org/x/exp/cmd/gorelease@latest >/dev/null
