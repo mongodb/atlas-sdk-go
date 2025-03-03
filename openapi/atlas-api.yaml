@@ -1163,6 +1163,8 @@ components:
                         url: https://dochub.mongodb.org/core/regional-outage-reconfigure-replica-set
                     format: date-time
                     type: string
+                advancedConfiguration:
+                    $ref: '#/components/schemas/ApiAtlasClusterAdvancedConfigurationView'
                 backupEnabled:
                     default: false
                     description: Flag that indicates whether the cluster can perform backups. If set to `true`, the cluster can perform backups. You must set this value to `true` for NVMe clusters. Backup uses [Cloud Backups](https://docs.atlas.mongodb.com/backup/cloud-backup/overview/) for dedicated clusters and [Shared Cluster Backups](https://docs.atlas.mongodb.com/backup/shared-tier/overview/) for tenant clusters. If set to `false`, the cluster doesn't use backups.
@@ -1382,17 +1384,24 @@ components:
             properties:
                 enabled:
                     description: |-
-                        Flag that indicates whether someone enabled instance size auto-scaling.
+                        Flag that indicates whether instance size reactive auto-scaling is enabled.
 
-                        - Set to `true` to enable instance size auto-scaling. If enabled, you must specify a value for **replicationSpecs[n].regionConfigs[m].autoScaling.compute.maxInstanceSize**.
-                        - Set to `false` to disable instance size automatic scaling.
+                        - Set to `true` to enable instance size reactive auto-scaling. If enabled, you must specify a value for **replicationSpecs[n].regionConfigs[m].autoScaling.compute.maxInstanceSize**.
+                        - Set to `false` to disable instance size reactive auto-scaling.
                     type: boolean
                 maxInstanceSize:
                     $ref: '#/components/schemas/BaseCloudProviderInstanceSize'
                 minInstanceSize:
                     $ref: '#/components/schemas/BaseCloudProviderInstanceSize'
+                predictiveEnabled:
+                    description: |-
+                        Flag that indicates whether predictive instance size auto-scaling is enabled.
+
+                        - Set to `true` to enable predictive instance size auto-scaling. MongoDB Cloud requires **replicationSpecs[n].regionConfigs[m].autoScaling.compute.enabled** to be `true` in order to enable this feature.
+                        - Set to `false` to disable predictive instance size auto-scaling.
+                    type: boolean
                 scaleDownEnabled:
-                    description: 'Flag that indicates whether the instance size may scale down. MongoDB Cloud requires this parameter if `"replicationSpecs[n].regionConfigs[m].autoScaling.compute.enabled" : true`. If you enable this option, specify a value for **replicationSpecs[n].regionConfigs[m].autoScaling.compute.minInstanceSize**.'
+                    description: Flag that indicates whether the instance size may scale down via reactive auto-scaling. MongoDB Cloud requires this parameter if **replicationSpecs[n].regionConfigs[m].autoScaling.compute.enabled** is `true`. If you enable this option, specify a value for **replicationSpecs[n].regionConfigs[m].autoScaling.compute.minInstanceSize**.
                     type: boolean
             title: Automatic Compute Scaling Settings
             type: object
@@ -1969,6 +1978,37 @@ components:
             description: Object that contains the identifying characteristics of the Amazon Web Services (AWS) Key Management Service (KMS). This field always returns a null value.
             nullable: true
             type: object
+        ApiAtlasClusterAdvancedConfigurationView:
+            description: Group of settings that configures a subset of the advanced configuration details.
+            properties:
+                customOpensslCipherConfigTls12:
+                    description: The custom OpenSSL cipher suite list for TLS 1.2. This field is only valid when `tlsCipherConfigMode` is set to `CUSTOM`.
+                    externalDocs:
+                        description: This option corresponds to the `opensslCipherConfig` `mongod` configuration file option.
+                        url: https://www.mongodb.com/docs/manual/reference/parameters/#mongodb-parameter-param.opensslCipherConfig
+                    items:
+                        enum:
+                            - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+                            - TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+                        type: string
+                    type: array
+                minimumEnabledTlsProtocol:
+                    description: Minimum Transport Layer Security (TLS) version that the cluster accepts for incoming connections. Clusters using TLS 1.0 or 1.1 should consider setting TLS 1.2 as the minimum TLS protocol version.
+                    enum:
+                        - TLS1_0
+                        - TLS1_1
+                        - TLS1_2
+                    externalDocs:
+                        description: This option corresponds to the `net.ssl.disabledProtocols` `mongod` configuration file option.
+                        url: https://docs.mongodb.com/upcoming/reference/configuration-options/#mongodb-setting-net.ssl.disabledProtocols
+                    type: string
+                tlsCipherConfigMode:
+                    description: The TLS cipher suite configuration mode. The default mode uses the default cipher suites. The custom mode allows you to specify custom cipher suites for both TLS 1.2 and TLS 1.3.
+                    enum:
+                        - CUSTOM
+                        - DEFAULT
+                    type: string
+            type: object
         ApiAtlasDataLakeAWSRegionView:
             description: Atlas Data Federation AWS Regions.
             enum:
@@ -2270,7 +2310,6 @@ components:
                     $ref: '#/components/schemas/ApiAtlasUserMetadataView'
                 createdDate:
                     description: Date and time in UTC when the atlas resource policy was created.
-                    example: "2022-01-01T00:00:00Z"
                     format: date-time
                     readOnly: true
                     type: string
@@ -2288,7 +2327,6 @@ components:
                     $ref: '#/components/schemas/ApiAtlasUserMetadataView'
                 lastUpdatedDate:
                     description: Date and time in UTC when the atlas resource policy was last updated.
-                    example: "2022-01-01T00:00:00Z"
                     format: date-time
                     readOnly: true
                     type: string
@@ -2468,20 +2506,6 @@ components:
                     type: integer
             readOnly: true
             title: BSON Timestamp
-            type: object
-        ApiChartsDashboardImportRequestView20430101:
-            description: Details to import or override a dashboard.
-            properties:
-                dashboardId:
-                    description: Optional field that contains the ID of the dashboard to override. If `override=true`, you must provide this field.
-                    type: string
-                override:
-                    description: Flag that indicates whether to override a dashboard.
-                    type: boolean
-                template:
-                    description: Template of the dashboard to import, which corresponds to the returned response schema from calling the Dashboard Export API.
-                    format: binary
-                    type: string
             type: object
         ApiChartsDashboardImportResponseView20430101:
             description: Imported dashboard and associated imported items.
@@ -2813,6 +2837,20 @@ components:
             type: object
         ApiSearchDeploymentResponseView:
             properties:
+                encryptionAtRestProvider:
+                    description: Cloud service provider that manages your customer keys to provide an additional layer of Encryption At Rest for the cluster.
+                    enum:
+                        - NONE
+                        - AWS
+                        - AZURE
+                        - GCP
+                    externalDocs:
+                        description: Encryption at Rest using Customer Key Management
+                        url: https://www.mongodb.com/docs/atlas/security-kms-encryption/
+                    readOnly: true
+                    type: string
+                    x-xgen-hidden-env:
+                        envs: qa,prod,stage
                 groupId:
                     description: Unique 24-hexadecimal character string that identifies the project.
                     example: 32b6e34b3d91647abb20e7b8
@@ -3792,6 +3830,8 @@ components:
                         url: https://dochub.mongodb.org/core/regional-outage-reconfigure-replica-set
                     format: date-time
                     type: string
+                advancedConfiguration:
+                    $ref: '#/components/schemas/ApiAtlasClusterAdvancedConfigurationView'
                 backupEnabled:
                     default: false
                     description: Flag that indicates whether the cluster can perform backups. If set to `true`, the cluster can perform backups. You must set this value to `true` for NVMe clusters. Backup uses [Cloud Backups](https://docs.atlas.mongodb.com/backup/cloud-backup/overview/) for dedicated clusters and [Shared Cluster Backups](https://docs.atlas.mongodb.com/backup/shared-tier/overview/) for tenant clusters. If set to `false`, the cluster doesn't use backups.
@@ -6604,7 +6644,6 @@ components:
                         - PARTIAL_PAID
                         - CANCELLED
                         - INVOICED
-                        - ERROR
                         - FAILED_AUTHENTICATION
                         - PROCESSING
                         - PENDING_REVERSAL
@@ -6714,6 +6753,96 @@ components:
                 - notifications
             title: Billing Threshold Alert Configuration
             type: object
+        ChartsAudit:
+            description: Audit events related to Atlas Charts
+            properties:
+                apiKeyId:
+                    description: Unique 24-hexadecimal digit string that identifies the API Key that triggered the event. If this resource returns this parameter, it doesn't return the **userId** parameter.
+                    example: 32b6e34b3d91647abb20e7b8
+                    pattern: ^([a-f0-9]{24})$
+                    readOnly: true
+                    type: string
+                created:
+                    description: Date and time when this event occurred. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
+                    externalDocs:
+                        description: ISO 8601
+                        url: https://en.wikipedia.org/wiki/ISO_8601
+                    format: date-time
+                    readOnly: true
+                    type: string
+                eventTypeName:
+                    $ref: '#/components/schemas/ChartsAuditTypeView'
+                groupId:
+                    description: Unique 24-hexadecimal digit string that identifies the project in which the event occurred. The **eventId** identifies the specific event.
+                    example: 32b6e34b3d91647abb20e7b8
+                    pattern: ^([a-f0-9]{24})$
+                    readOnly: true
+                    type: string
+                id:
+                    description: Unique 24-hexadecimal digit string that identifies the event.
+                    example: 32b6e34b3d91647abb20e7b8
+                    pattern: ^([a-f0-9]{24})$
+                    readOnly: true
+                    type: string
+                isGlobalAdmin:
+                    default: false
+                    description: Flag that indicates whether a MongoDB employee triggered the specified event.
+                    readOnly: true
+                    type: boolean
+                links:
+                    description: List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
+                    externalDocs:
+                        description: Web Linking Specification (RFC 5988)
+                        url: https://datatracker.ietf.org/doc/html/rfc5988
+                    items:
+                        $ref: '#/components/schemas/Link'
+                    readOnly: true
+                    type: array
+                orgId:
+                    description: Unique 24-hexadecimal digit string that identifies the organization to which these events apply.
+                    example: 32b6e34b3d91647abb20e7b8
+                    pattern: ^([a-f0-9]{24})$
+                    readOnly: true
+                    type: string
+                publicKey:
+                    description: Public part of the API Key that triggered the event. If this resource returns this parameter, it doesn't return the **username** parameter.
+                    externalDocs:
+                        url: https://dochub.mongodb.org/core/atlas-create-prog-api-key
+                    format: email
+                    readOnly: true
+                    type: string
+                raw:
+                    $ref: '#/components/schemas/raw'
+                remoteAddress:
+                    description: IPv4 or IPv6 address from which the user triggered this event.
+                    example: 216.172.40.186
+                    pattern: ^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)(\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$
+                    readOnly: true
+                    type: string
+                userId:
+                    description: Unique 24-hexadecimal digit string that identifies the console user who triggered the event. If this resource returns this parameter, it doesn't return the **apiKeyId** parameter.
+                    example: 32b6e34b3d91647abb20e7b8
+                    pattern: ^([a-f0-9]{24})$
+                    readOnly: true
+                    type: string
+                username:
+                    description: Email address for the user who triggered this event. If this resource returns this parameter, it doesn't return the **publicApiKey** parameter.
+                    format: email
+                    readOnly: true
+                    type: string
+            required:
+                - created
+                - eventTypeName
+                - id
+            type: object
+        ChartsAuditTypeView:
+            description: Unique identifier of event type.
+            enum:
+                - CHARTS_API_SUCCESS
+                - CHARTS_API_FAILURE
+            example: CHARTS_API_SUCCESS
+            title: Charts Api Call Audit Types
+            type: string
         CloudAccessRoleAssignment:
             description: MongoDB Cloud user's roles and the corresponding organization or project to which that role applies. Each role can apply to one organization or one project but not both.
             properties:
@@ -8341,11 +8470,23 @@ components:
             properties:
                 enabled:
                     default: false
-                    description: Flag that indicates whether cluster tier auto-scaling is enabled. Set to `true` to enable cluster tier auto-scaling. If enabled, you must specify a value for **providerSettings.autoScaling.compute.maxInstanceSize** also. Set to `false` to disable cluster tier auto-scaling.
+                    description: |-
+                        Flag that indicates whether instance size reactive auto-scaling is enabled.
+
+                        - Set to `true` to enable instance size reactive auto-scaling. If enabled, you must specify a value for **providerSettings.autoScaling.compute.maxInstanceSize**.
+                        - Set to `false` to disable instance size reactive auto-scaling.
+                    type: boolean
+                predictiveEnabled:
+                    default: false
+                    description: |-
+                        Flag that indicates whether predictive instance size auto-scaling is enabled.
+
+                        - Set to `true` to enable predictive instance size auto-scaling. MongoDB Cloud requires **autoScaling.compute.enabled** is `true` in order to enable this feature.
+                        - Set to `false` to disable predictive instance size auto-scaling.
                     type: boolean
                 scaleDownEnabled:
                     default: false
-                    description: Flag that indicates whether the cluster tier can scale down. This is required if **autoScaling.compute.enabled** is `true`. If you enable this option, specify a value for **providerSettings.autoScaling.compute.minInstanceSize**.
+                    description: Flag that indicates whether the cluster tier can scale down via reactive auto-scaling. This is required if **autoScaling.compute.enabled** is `true`. If you enable this option, specify a value for **providerSettings.autoScaling.compute.minInstanceSize**.
                     type: boolean
             type: object
         ClusterConnectionStrings:
@@ -8428,6 +8569,8 @@ components:
                         url: https://dochub.mongodb.org/core/regional-outage-reconfigure-replica-set
                     format: date-time
                     type: string
+                advancedConfiguration:
+                    $ref: '#/components/schemas/ApiAtlasClusterAdvancedConfigurationView'
                 backupEnabled:
                     default: false
                     description: Flag that indicates whether the cluster can perform backups. If set to `true`, the cluster can perform backups. You must set this value to `true` for NVMe clusters. Backup uses [Cloud Backups](https://docs.atlas.mongodb.com/backup/cloud-backup/overview/) for dedicated clusters and [Shared Cluster Backups](https://docs.atlas.mongodb.com/backup/shared-tier/overview/) for tenant clusters. If set to `false`, the cluster doesn't use backups.
@@ -9182,7 +9325,6 @@ components:
                     type: array
                 startRequestDate:
                     description: Date and time when MongoDB Cloud started the regional outage simulation.
-                    example: "2022-01-01T00:00:00Z"
                     format: date-time
                     readOnly: true
                     type: string
@@ -9650,9 +9792,6 @@ components:
             properties:
                 clusters:
                     description: The list of projects to be included in the Cost Explorer Query.
-                    example:
-                        - 5feeac500000000000000000
-                        - 61cfdfd00000000000000000
                     items:
                         example: 32b6e34b3d91647abb20e7b8
                         pattern: ^([a-f0-9]{24})$
@@ -9660,7 +9799,6 @@ components:
                     type: array
                 endDate:
                     description: The exclusive ending date for the Cost Explorer query. The date must be the start of a month.
-                    example: "2022-02-01"
                     format: date
                     type: string
                 groupBy:
@@ -9676,9 +9814,6 @@ components:
                     type: boolean
                 organizations:
                     description: The list of organizations to be included in the Cost Explorer Query.
-                    example:
-                        - 5feeac500000000000000000
-                        - 61cfdfd00000000000000000
                     items:
                         example: 32b6e34b3d91647abb20e7b8
                         pattern: ^([a-f0-9]{24})$
@@ -9686,9 +9821,6 @@ components:
                     type: array
                 projects:
                     description: The list of projects to be included in the Cost Explorer Query.
-                    example:
-                        - 5feeac500000000000000000
-                        - 61cfdfd00000000000000000
                     items:
                         example: 32b6e34b3d91647abb20e7b8
                         pattern: ^([a-f0-9]{24})$
@@ -9696,9 +9828,6 @@ components:
                     type: array
                 services:
                     description: The list of projects to be included in the Cost Explorer Query.
-                    example:
-                        - Data Transfer
-                        - Atlas Data Federation
                     items:
                         enum:
                             - Atlas
@@ -9723,7 +9852,6 @@ components:
                     type: array
                 startDate:
                     description: The inclusive starting date for the Cost Explorer query. The date must be the start of a month.
-                    example: "2022-02-01"
                     format: date
                     type: string
             required:
@@ -9865,6 +9993,7 @@ components:
                 roles:
                     description: List of roles to grant this API key. If you provide this list, provide a minimum of one role and ensure each role applies to this project.
                     items:
+                        description: Human-readable label that identifies the collection of privileges that MongoDB Cloud grants a specific API key, MongoDB Cloud user, or MongoDB Cloud team. These roles include organization- and project-level roles.
                         enum:
                             - ORG_MEMBER
                             - ORG_READ_ONLY
@@ -12294,6 +12423,7 @@ components:
                         - enum:
                             - USERS_WITHOUT_MULTI_FACTOR_AUTH
                             - ENCRYPTION_AT_REST_KMS_NETWORK_ACCESS_DENIED
+                            - ENCRYPTION_AT_REST_CONFIG_NO_LONGER_VALID
                           title: Group Event Types
                           type: string
                         - enum:
@@ -12333,7 +12463,7 @@ components:
                           type: string
                         - enum:
                             - STREAM_PROCESSOR_STATE_IS_FAILED
-                            - STREAM_PROCESSOR_KAFKA_LAG_BEHIND
+                            - OUTSIDE_STREAM_PROCESSOR_METRIC_THRESHOLD
                           title: Stream Processor Event Types
                           type: string
                         - enum:
@@ -12486,6 +12616,7 @@ components:
                         - enum:
                             - USERS_WITHOUT_MULTI_FACTOR_AUTH
                             - ENCRYPTION_AT_REST_KMS_NETWORK_ACCESS_DENIED
+                            - ENCRYPTION_AT_REST_CONFIG_NO_LONGER_VALID
                           title: Group Event Types
                           type: string
                         - enum:
@@ -12539,7 +12670,7 @@ components:
                           type: string
                         - enum:
                             - STREAM_PROCESSOR_STATE_IS_FAILED
-                            - STREAM_PROCESSOR_KAFKA_LAG_BEHIND
+                            - OUTSIDE_STREAM_PROCESSOR_METRIC_THRESHOLD
                           title: Stream Processor Event Types
                           type: string
                         - enum:
@@ -12796,6 +12927,8 @@ components:
                             - USERS_WITHOUT_MULTI_FACTOR_AUTH
                             - ENCRYPTION_AT_REST_KMS_NETWORK_ACCESS_DENIED
                             - ENCRYPTION_AT_REST_KMS_NETWORK_ACCESS_RESTORED
+                            - ENCRYPTION_AT_REST_CONFIG_NO_LONGER_VALID
+                            - ENCRYPTION_AT_REST_CONFIG_IS_VALID
                           title: Group Event Types
                           type: string
                         - enum:
@@ -12918,8 +13051,8 @@ components:
                           type: string
                         - enum:
                             - STREAM_PROCESSOR_STATE_IS_FAILED
-                            - STREAM_PROCESSOR_KAFKA_LAG_BEHIND
-                            - STREAM_PROCESSOR_KAFKA_LAG_CURRENT
+                            - INSIDE_STREAM_PROCESSOR_METRIC_THRESHOLD
+                            - OUTSIDE_STREAM_PROCESSOR_METRIC_THRESHOLD
                           title: Stream Processor Event Types
                           type: string
                         - enum:
@@ -14673,6 +14806,12 @@ components:
                     $ref: '#/components/schemas/AWSKMSConfiguration'
                 azureKeyVault:
                     $ref: '#/components/schemas/AzureKeyVault'
+                enabledForSearchNodes:
+                    description: Flag that indicates whether Encryption at Rest for Dedicated Search Nodes is enabled in the specified project.
+                    nullable: true
+                    type: boolean
+                    x-xgen-hidden-env:
+                        envs: qa,prod,stage
                 googleCloudKms:
                     $ref: '#/components/schemas/GoogleCloudKMS'
             type: object
@@ -15049,6 +15188,8 @@ components:
                     - USERS_WITHOUT_MULTI_FACTOR_AUTH
                     - ENCRYPTION_AT_REST_KMS_NETWORK_ACCESS_DENIED
                     - ENCRYPTION_AT_REST_KMS_NETWORK_ACCESS_RESTORED
+                    - ENCRYPTION_AT_REST_CONFIG_NO_LONGER_VALID
+                    - ENCRYPTION_AT_REST_CONFIG_IS_VALID
                   title: Group Event Types
                   type: string
                 - enum:
@@ -15479,8 +15620,8 @@ components:
                   type: string
                 - enum:
                     - STREAM_PROCESSOR_STATE_IS_FAILED
-                    - STREAM_PROCESSOR_KAFKA_LAG_BEHIND
-                    - STREAM_PROCESSOR_KAFKA_LAG_CURRENT
+                    - INSIDE_STREAM_PROCESSOR_METRIC_THRESHOLD
+                    - OUTSIDE_STREAM_PROCESSOR_METRIC_THRESHOLD
                   title: Stream Processor Event Types
                   type: string
                 - enum:
@@ -15545,6 +15686,11 @@ components:
                 - enum:
                     - EMPLOYEE_DOWNLOADED_CLUSTER_LOGS
                   title: Access Event Types
+                  type: string
+                - enum:
+                    - CHARTS_API_SUCCESS
+                    - CHARTS_API_FAILURE
+                  title: Charts Api Call Audit Types
                   type: string
             type: object
         EventTypeForOrg:
@@ -15856,6 +16002,7 @@ components:
                 - $ref: '#/components/schemas/ResourceEventViewForNdsGroup'
                 - $ref: '#/components/schemas/StreamsEventViewForNdsGroup'
                 - $ref: '#/components/schemas/StreamProcessorEventViewForNdsGroup'
+                - $ref: '#/components/schemas/ChartsAudit'
             type: object
         EventViewForOrg:
             oneOf:
@@ -18241,6 +18388,7 @@ components:
                 - $ref: '#/components/schemas/ServerlessMetricAlertConfigViewForNdsGroup'
                 - $ref: '#/components/schemas/FlexMetricAlertConfigViewForNdsGroup'
                 - $ref: '#/components/schemas/StreamProcessorAlertConfigViewForNdsGroup'
+                - $ref: '#/components/schemas/StreamProcessorMetricAlertConfigViewForNdsGroup'
             type: object
         GroupIPAddresses:
             description: List of IP addresses in a project.
@@ -20738,6 +20886,11 @@ components:
                         - ATLAS_AWS_SEARCH_INSTANCE_S90_MEMORY_NVME
                         - ATLAS_AWS_SEARCH_INSTANCE_S100_MEMORY_NVME
                         - ATLAS_AWS_SEARCH_INSTANCE_S110_MEMORY_NVME
+                        - ATLAS_AWS_SEARCH_INSTANCE_S40_STORAGE_NVME
+                        - ATLAS_AWS_SEARCH_INSTANCE_S50_STORAGE_NVME
+                        - ATLAS_AWS_SEARCH_INSTANCE_S60_STORAGE_NVME
+                        - ATLAS_AWS_SEARCH_INSTANCE_S80_STORAGE_NVME
+                        - ATLAS_AWS_SEARCH_INSTANCE_S90_STORAGE_NVME
                         - ATLAS_AWS_STORAGE_PROVISIONED
                         - ATLAS_AWS_STORAGE_STANDARD
                         - ATLAS_AWS_STORAGE_STANDARD_GP3
@@ -21289,6 +21442,8 @@ components:
                         url: https://dochub.mongodb.org/core/regional-outage-reconfigure-replica-set
                     format: date-time
                     type: string
+                advancedConfiguration:
+                    $ref: '#/components/schemas/ApiAtlasClusterAdvancedConfigurationView'
                 autoScaling:
                     $ref: '#/components/schemas/ClusterAutoScalingSettings'
                 backupEnabled:
@@ -21577,6 +21732,8 @@ components:
                         url: https://dochub.mongodb.org/core/regional-outage-reconfigure-replica-set
                     format: date-time
                     type: string
+                advancedConfiguration:
+                    $ref: '#/components/schemas/ApiAtlasClusterAdvancedConfigurationView'
                 autoScaling:
                     $ref: '#/components/schemas/ClusterAutoScalingSettings'
                 backupEnabled:
@@ -30393,7 +30550,7 @@ components:
                     description: Flag that indicates whether someone enabled this alert configuration for the specified project.
                     type: boolean
                 eventTypeName:
-                    $ref: '#/components/schemas/StreamProcessorEventTypeViewAlertable'
+                    $ref: '#/components/schemas/StreamProcessorEventTypeViewAlertableNoThreshold'
                 groupId:
                     description: Unique 24-hexadecimal digit string that identifies the project that owns this alert configuration.
                     example: 32b6e34b3d91647abb20e7b8
@@ -30569,20 +30726,26 @@ components:
                 - updated
             title: Stream Processor Alerts
             type: object
-        StreamProcessorEventTypeViewAlertable:
+        StreamProcessorEventTypeViewAlertableNoThreshold:
             description: Event type that triggers an alert.
             enum:
                 - STREAM_PROCESSOR_STATE_IS_FAILED
-                - STREAM_PROCESSOR_KAFKA_LAG_BEHIND
             example: STREAM_PROCESSOR_STATE_IS_FAILED
+            title: Stream Processor Event Types
+            type: string
+        StreamProcessorEventTypeViewAlertableWithThreshold:
+            description: Event type that triggers an alert.
+            enum:
+                - OUTSIDE_STREAM_PROCESSOR_METRIC_THRESHOLD
+            example: OUTSIDE_STREAM_PROCESSOR_METRIC_THRESHOLD
             title: Stream Processor Event Types
             type: string
         StreamProcessorEventTypeViewForNdsGroup:
             description: Unique identifier of event type.
             enum:
                 - STREAM_PROCESSOR_STATE_IS_FAILED
-                - STREAM_PROCESSOR_KAFKA_LAG_BEHIND
-                - STREAM_PROCESSOR_KAFKA_LAG_CURRENT
+                - INSIDE_STREAM_PROCESSOR_METRIC_THRESHOLD
+                - OUTSIDE_STREAM_PROCESSOR_METRIC_THRESHOLD
             example: STREAM_PROCESSOR_STATE_IS_FAILED
             title: Stream Processor Event Types
             type: string
@@ -30654,8 +30817,139 @@ components:
                 - id
             title: Stream Processor Events
             type: object
+        StreamProcessorMetricAlertConfigViewForNdsGroup:
+            description: Stream Processor threshold alert configuration allows to select thresholds on metrics which trigger alerts and how users are notified.
+            properties:
+                created:
+                    description: Date and time when MongoDB Cloud created the alert configuration. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
+                    externalDocs:
+                        description: ISO 8601
+                        url: https://en.wikipedia.org/wiki/ISO_8601
+                    format: date-time
+                    readOnly: true
+                    type: string
+                enabled:
+                    default: false
+                    description: Flag that indicates whether someone enabled this alert configuration for the specified project.
+                    type: boolean
+                eventTypeName:
+                    $ref: '#/components/schemas/StreamProcessorEventTypeViewAlertableWithThreshold'
+                groupId:
+                    description: Unique 24-hexadecimal digit string that identifies the project that owns this alert configuration.
+                    example: 32b6e34b3d91647abb20e7b8
+                    pattern: ^([a-f0-9]{24})$
+                    readOnly: true
+                    type: string
+                id:
+                    description: Unique 24-hexadecimal digit string that identifies this alert configuration.
+                    example: 32b6e34b3d91647abb20e7b8
+                    pattern: ^([a-f0-9]{24})$
+                    readOnly: true
+                    type: string
+                links:
+                    description: List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
+                    externalDocs:
+                        description: Web Linking Specification (RFC 5988)
+                        url: https://datatracker.ietf.org/doc/html/rfc5988
+                    items:
+                        $ref: '#/components/schemas/Link'
+                    readOnly: true
+                    type: array
+                matchers:
+                    description: List of rules that determine whether MongoDB Cloud checks an object for the alert configuration.
+                    items:
+                        $ref: '#/components/schemas/StreamsMatcher'
+                    type: array
+                notifications:
+                    description: List that contains the targets that MongoDB Cloud sends notifications.
+                    items:
+                        $ref: '#/components/schemas/AlertsNotificationRootForGroup'
+                    type: array
+                threshold:
+                    $ref: '#/components/schemas/StreamProcessorMetricThreshold'
+                updated:
+                    description: Date and time when someone last updated this alert configuration. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
+                    externalDocs:
+                        description: ISO 8601
+                        url: https://en.wikipedia.org/wiki/ISO_8601
+                    format: date-time
+                    readOnly: true
+                    type: string
+            required:
+                - eventTypeName
+                - notifications
+            title: Stream Processor Metric Alert Configuration
+            type: object
+        StreamProcessorMetricThreshold:
+            description: Threshold for the metric that, when exceeded, triggers an alert. The metric threshold pertains to event types which reflects changes of measurements and metrics in stream processors.
+            discriminator:
+                mapping:
+                    STREAM_PROCESSOR_CHANGE_STREAM_LAG: '#/components/schemas/TimeMetricThresholdView'
+                    STREAM_PROCESSOR_DLQ_MESSAGE_COUNT: '#/components/schemas/RawMetricThresholdView'
+                    STREAM_PROCESSOR_KAFKA_LAG: '#/components/schemas/RawMetricThresholdView'
+                    STREAM_PROCESSOR_OUTPUT_MESSAGE_COUNT: '#/components/schemas/RawMetricThresholdView'
+                propertyName: metricName
+            properties:
+                metricName:
+                    description: Human-readable label that identifies the metric against which MongoDB Cloud checks the configured **metricThreshold.threshold**.
+                    type: string
+                mode:
+                    description: MongoDB Cloud computes the current metric value as an average.
+                    enum:
+                        - AVERAGE
+                    type: string
+                operator:
+                    description: Comparison operator to apply when checking the current metric value.
+                    enum:
+                        - LESS_THAN
+                        - GREATER_THAN
+                    type: string
+                threshold:
+                    description: Value of metric that, when exceeded, triggers an alert.
+                    format: double
+                    type: number
+                units:
+                    description: Element used to express the quantity. This can be an element of time, storage capacity, and the like.
+                    enum:
+                        - bits
+                        - Kbits
+                        - Mbits
+                        - Gbits
+                        - bytes
+                        - KB
+                        - MB
+                        - GB
+                        - TB
+                        - PB
+                        - nsec
+                        - msec
+                        - sec
+                        - min
+                        - hours
+                        - million minutes
+                        - days
+                        - requests
+                        - 1000 requests
+                        - GB seconds
+                        - GB hours
+                        - GB days
+                        - RPU
+                        - thousand RPU
+                        - million RPU
+                        - WPU
+                        - thousand WPU
+                        - million WPU
+                        - count
+                        - thousand
+                        - million
+                        - billion
+                    type: string
+            required:
+                - metricName
+            title: Stream Processor Metric Threshold
+            type: object
         StreamsAWSConnectionConfig:
-            description: The configuration of AWS connection used in stream processors.
+            description: AWS configurations for AWS-based connection types.
             properties:
                 links:
                     description: List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
@@ -30668,6 +30962,9 @@ components:
                     type: array
                 roleArn:
                     description: Amazon Resource Name (ARN) that identifies the Amazon Web Services (AWS) Identity and Access Management (IAM) role that MongoDB Cloud assumes when it accesses resources in your AWS account.
+                    type: string
+                testBucket:
+                    description: The name of an S3 bucket used to check authorization of the passed-in IAM role ARN.
                     type: string
             type: object
         StreamsAWSLambdaConnection:
@@ -30698,6 +30995,7 @@ components:
                     Cluster: '#/components/schemas/StreamsClusterConnection'
                     Https: '#/components/schemas/StreamsHttpsConnection'
                     Kafka: '#/components/schemas/StreamsKafkaConnection'
+                    S3: '#/components/schemas/StreamsS3Connection'
                     Sample: '#/components/schemas/StreamsSampleConnection'
                 propertyName: type
             oneOf:
@@ -30706,6 +31004,7 @@ components:
                 - $ref: '#/components/schemas/StreamsKafkaConnection'
                 - $ref: '#/components/schemas/StreamsHttpsConnection'
                 - $ref: '#/components/schemas/StreamsAWSLambdaConnection'
+                - $ref: '#/components/schemas/StreamsS3Connection'
             properties:
                 links:
                     description: List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
@@ -30720,7 +31019,7 @@ components:
                     description: Human-readable label that identifies the stream connection. In the case of the Sample type, this is the name of the sample source.
                     type: string
                 type:
-                    description: Type of the connection. Can be either Cluster or Kafka.
+                    description: Type of the connection.
                     enum:
                         - Kafka
                         - Cluster
@@ -31210,6 +31509,15 @@ components:
                 - name
                 - pipeline
                 - state
+            type: object
+        StreamsS3Connection:
+            allOf:
+                - $ref: '#/components/schemas/StreamsConnection'
+                - properties:
+                    aws:
+                        $ref: '#/components/schemas/StreamsAWSConnectionConfig'
+                  type: object
+            description: The configuration for S3 connections.
             type: object
         StreamsSampleConnection:
             allOf:
@@ -32829,19 +33137,14 @@ components:
             properties:
                 billEndDate:
                     description: The inclusive billing start date for usage details filter.
-                    example: "2023-02-01"
                     format: date
                     type: string
                 billStartDate:
                     description: The inclusive billing start date for usage details filter.
-                    example: "2023-02-01"
                     format: date
                     type: string
                 clusterIds:
                     description: The list of unique cluster ids to be included in the Usage Details filter.
-                    example:
-                        - 650d11400000000000000000
-                        - 650dd6200000000000000000
                     items:
                         example: 32b6e34b3d91647abb20e7b8
                         pattern: ^([a-f0-9]{24})$
@@ -32850,9 +33153,6 @@ components:
                     uniqueItems: true
                 groupIds:
                     description: The list of groups to be included in the Usage Details filter.
-                    example:
-                        - 650d11400000000000000000
-                        - 650dd6200000000000000000
                     items:
                         example: 32b6e34b3d91647abb20e7b8
                         pattern: ^([a-f0-9]{24})$
@@ -32864,10 +33164,6 @@ components:
                     type: boolean
                 skuServices:
                     description: The list of projects to be included in the Cost Explorer Query.
-                    example:
-                        - Atlas
-                        - Clusters
-                        - Storage
                     items:
                         enum:
                             - Atlas
@@ -32893,12 +33189,10 @@ components:
                     uniqueItems: true
                 usageEndDate:
                     description: The inclusive billing start date for usage details filter.
-                    example: "2023-02-01"
                     format: date
                     type: string
                 usageStartDate:
                     description: The inclusive usage start date for usage details filter.
-                    example: "2023-02-01"
                     format: date
                     type: string
             type: object
@@ -34384,7 +34678,7 @@ info:
         ```
         curl --user "{PUBLIC-KEY}:{PRIVATE-KEY}" \
           --digest \
-          --header "Accept: application/vnd.atlas.2025-02-19+json" \
+          --header "Accept: application/vnd.atlas.2043-01-01+json" \
           -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/dbAccessHistory/clusters/{clusterName}?pretty=true"
         ```
 
@@ -34397,7 +34691,7 @@ info:
     termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
     title: MongoDB Atlas Administration API
     version: "2.0"
-    x-xgen-sha: efc8d18171380b9901494e43d224eb94e69263f6
+    x-xgen-sha: 56bf8b597679ceb049d842513b51613ba00592be
 openapi: 3.0.1
 paths:
     /api/atlas/v2:
@@ -34438,6 +34732,8 @@ paths:
                                 items:
                                     $ref: '#/components/schemas/MatcherFieldView'
                                 type: array
+                            x-xgen-IPA-exception:
+                                xgen-IPA-104-get-method-returns-single-resource: API predates IPA validation
                             x-xgen-version: "2023-01-01"
                     description: OK
                 "401":
@@ -34464,6 +34760,8 @@ paths:
                         application/vnd.atlas.2023-01-01+json:
                             schema:
                                 $ref: '#/components/schemas/PaginatedOrgGroupView'
+                            x-xgen-IPA-exception:
+                                xgen-IPA-104-get-method-returns-single-resource: API predates IPA validation
                             x-xgen-version: "2023-01-01"
                     description: OK
                 "401":
@@ -34490,6 +34788,8 @@ paths:
                         application/vnd.atlas.2023-01-01+json:
                             schema:
                                 $ref: '#/components/schemas/PaginatedEventTypeDetailsResponse'
+                            x-xgen-IPA-exception:
+                                xgen-IPA-104-get-method-returns-single-resource: API predates IPA validation
                             x-xgen-version: "2023-01-01"
                     description: OK
                 "401":
@@ -35736,6 +36036,8 @@ paths:
                         application/vnd.atlas.2023-01-01+json:
                             schema:
                                 $ref: '#/components/schemas/PaginatedAlertView'
+                            x-xgen-IPA-exception:
+                                xgen-IPA-104-get-method-returns-single-resource: API predates IPA validation
                             x-xgen-version: "2023-01-01"
                     description: OK
                 "401":
@@ -35896,6 +36198,8 @@ paths:
                         application/vnd.atlas.2023-01-01+json:
                             schema:
                                 $ref: '#/components/schemas/PaginatedAlertConfigView'
+                            x-xgen-IPA-exception:
+                                xgen-IPA-104-get-method-returns-single-resource: API predates IPA validation
                             x-xgen-version: "2023-01-01"
                     description: OK
                 "401":
@@ -36477,6 +36781,106 @@ paths:
             tags:
                 - Cloud Backups
             x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Cloud-Backups/operation/updateDataProtectionSettings
+    /api/atlas/v2/groups/{groupId}/chartsDashboards/{dashboardId}:export:
+        get:
+            description: Exports the specified Charts dashboard. To use this resource, the requesting API Key must have the Project Read Only role.
+            operationId: exportChartsDashboard
+            parameters:
+                - $ref: '#/components/parameters/envelope'
+                - $ref: '#/components/parameters/groupId'
+                - description: ID of the dashboard to export.
+                  in: path
+                  name: dashboardId
+                  required: true
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    content:
+                        application/vnd.atlas.2043-01-01+json:
+                            schema:
+                                description: This resource returns an exported Charts dashboard. You can use this response to import to the Charts Dashboard Import endpoint.
+                                type: string
+                            x-xgen-version: "2043-01-01"
+                    description: OK
+                "400":
+                    $ref: '#/components/responses/badRequest'
+                "401":
+                    $ref: '#/components/responses/unauthorized'
+                "500":
+                    $ref: '#/components/responses/internalServerError'
+            summary: Export One Charts Dashboard
+            tags:
+                - Charts Dashboards
+            x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Charts-Dashboards/operation/exportChartsDashboard
+    /api/atlas/v2/groups/{groupId}/chartsDashboards:import:
+        post:
+            description: Imports the Charts dashboard that the template specifies. Optionally, you can specify a `dashboardId` with `override=true` to import into an existing dashboard. To use this resource, the requesting API Key must have the Project Data Access Read Only role.
+            operationId: importChartsDashboard
+            parameters:
+                - $ref: '#/components/parameters/envelope'
+                - $ref: '#/components/parameters/groupId'
+                - description: Setting this to true enables importing into an existing dashboard.
+                  in: query
+                  name: override
+                  schema:
+                    type: boolean
+                - description: Id of the dashboard to override on import.
+                  in: query
+                  name: dashboardId
+                  schema:
+                    type: string
+            requestBody:
+                content:
+                    application/vnd.atlas.2043-01-01+json:
+                        examples:
+                            Sample import response body:
+                                description: Sample import response body
+                                value:
+                                    dashboards:
+                                        dashboard-1:
+                                            description: Dashboard description
+                                            embedding:
+                                                anonymousAuthEnabled: true
+                                            filters: []
+                                            layout: []
+                                            title: Dashboard title
+                                    dataSources:
+                                        data-source-1:
+                                            alias: 'Sample Data: Movies'
+                                            collection: movies
+                                            database: sample_data
+                                            deployment: sample-data-cluster
+                                            sourceType: cluster
+                                    exportVersion: 9
+                                    items:
+                                        item-1:
+                                            calculatedFields: []
+                                            query: null
+                                            sample: false
+                                    queries: {}
+                        schema:
+                            type: object
+                description: Schema corresponding to the response fetched from an exported dashboard.
+                required: true
+            responses:
+                "200":
+                    content:
+                        application/vnd.atlas.2043-01-01+json:
+                            schema:
+                                $ref: '#/components/schemas/ApiChartsDashboardImportResponseView20430101'
+                            x-xgen-version: "2043-01-01"
+                    description: OK
+                "400":
+                    $ref: '#/components/responses/badRequest'
+                "401":
+                    $ref: '#/components/responses/unauthorized'
+                "500":
+                    $ref: '#/components/responses/internalServerError'
+            summary: Import One Charts Dashboard
+            tags:
+                - Charts Dashboards
+            x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Charts-Dashboards/operation/importChartsDashboard
     /api/atlas/v2/groups/{groupId}/cloudProviderAccess:
         get:
             description: Returns all cloud provider access roles with access to the specified project. To use this resource, the requesting API Key must have the Project Owner role.
@@ -37749,6 +38153,8 @@ paths:
                         application/vnd.atlas.2023-01-01+json:
                             schema:
                                 $ref: '#/components/schemas/PaginatedCloudBackupShardedClusterSnapshotView'
+                            x-xgen-IPA-exception:
+                                xgen-IPA-104-get-method-returns-single-resource: API predates IPA validation
                             x-xgen-version: "2023-01-01"
                     description: OK
                 "400":
@@ -38366,6 +38772,8 @@ paths:
                                 items:
                                     $ref: '#/components/schemas/ClusterSearchIndex'
                                 type: array
+                            x-xgen-IPA-exception:
+                                xgen-IPA-104-get-method-returns-single-resource: API predates IPA validation
                             x-xgen-version: "2023-01-01"
                     description: OK
                 "404":
@@ -39636,7 +40044,7 @@ paths:
                 - Atlas Search
             x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Atlas-Search/operation/deleteAtlasSearchDeployment
         get:
-            description: 'Return the Search Nodes for the specified cluster. Deprecated versions: v2-{2023-01-01}'
+            description: 'Returns the Search Nodes for the specified cluster. Deprecated versions: v2-{2024-05-30}, v2-{2023-01-01}'
             operationId: getAtlasSearchDeployment
             parameters:
                 - $ref: '#/components/parameters/envelope'
@@ -39652,10 +40060,10 @@ paths:
             responses:
                 "200":
                     content:
-                        application/vnd.atlas.2024-05-30+json:
+                        application/vnd.atlas.2025-03-12+json:
                             schema:
                                 $ref: '#/components/schemas/ApiSearchDeploymentResponseView'
-                            x-xgen-version: "2024-05-30"
+                            x-xgen-version: "2025-03-12"
                     description: OK
                 "400":
                     $ref: '#/components/responses/badRequest'
@@ -39875,6 +40283,8 @@ paths:
                                 items:
                                     $ref: '#/components/schemas/SearchIndexResponse'
                                 type: array
+                            x-xgen-IPA-exception:
+                                xgen-IPA-104-get-method-returns-single-resource: API predates IPA validation
                             x-xgen-version: "2024-05-30"
                     description: OK
                 "400":
@@ -40742,6 +41152,8 @@ paths:
                         application/vnd.atlas.2023-01-01+json:
                             schema:
                                 $ref: '#/components/schemas/PaginatedApiAtlasProviderRegionsView'
+                            x-xgen-IPA-exception:
+                                xgen-IPA-104-get-method-returns-single-resource: API predates IPA validation
                             x-xgen-version: "2023-01-01"
                     description: OK
                 "401":
@@ -41078,6 +41490,8 @@ paths:
                         application/vnd.atlas.2023-01-01+json:
                             schema:
                                 $ref: '#/components/schemas/PaginatedCloudProviderContainerView'
+                            x-xgen-IPA-exception:
+                                xgen-IPA-104-get-method-returns-single-resource: API predates IPA validation
                             x-xgen-version: "2023-01-01"
                     description: OK
                 "401":
@@ -41697,6 +42111,8 @@ paths:
                         application/vnd.atlas.2023-01-01+json:
                             schema:
                                 $ref: '#/components/schemas/PaginatedApiAtlasDatabaseUserView'
+                            x-xgen-IPA-exception:
+                                xgen-IPA-104-get-method-returns-single-resource: API predates IPA validation
                             x-xgen-version: "2023-01-01"
                     description: OK
                 "401":
@@ -42028,6 +42444,8 @@ paths:
                         application/vnd.atlas.2023-01-01+json:
                             schema:
                                 $ref: '#/components/schemas/PaginatedUserCertView'
+                            x-xgen-IPA-exception:
+                                xgen-IPA-104-get-method-returns-single-resource: API predates IPA validation
                             x-xgen-version: "2023-01-01"
                     description: OK
                 "400":
@@ -44360,6 +44778,8 @@ paths:
                         application/vnd.atlas.2023-01-01+json:
                             schema:
                                 $ref: '#/components/schemas/PaginatedAvailableVersionView'
+                            x-xgen-IPA-exception:
+                                xgen-IPA-104-get-method-returns-single-resource: API predates IPA validation
                             x-xgen-version: "2023-01-01"
                     description: OK
                 "400":
@@ -44767,6 +45187,8 @@ paths:
                                 items:
                                     $ref: '#/components/schemas/DiskBackupApiPolicyItem'
                                 type: array
+                            x-xgen-IPA-exception:
+                                xgen-IPA-104-get-method-returns-single-resource: API predates IPA validation
                             x-xgen-version: "2023-01-01"
                     description: OK
                 "400":
@@ -44796,7 +45218,6 @@ paths:
                   in: query
                   name: completedAfter
                   schema:
-                    example: "2022-01-01T00:00:00Z"
                     format: date-time
                     type: string
                 - description: Human-readable label that identifies the Data Lake Pipeline.
@@ -44812,6 +45233,8 @@ paths:
                         application/vnd.atlas.2023-01-01+json:
                             schema:
                                 $ref: '#/components/schemas/PaginatedBackupSnapshotView'
+                            x-xgen-IPA-exception:
+                                xgen-IPA-104-get-method-returns-single-resource: API predates IPA validation
                             x-xgen-version: "2023-01-01"
                     description: OK
                 "400":
@@ -44911,7 +45334,6 @@ paths:
                   in: query
                   name: createdBefore
                   schema:
-                    example: "2022-01-01T00:00:00Z"
                     format: date-time
                     type: string
                 - description: Human-readable label that identifies the Data Lake Pipeline.
@@ -48583,6 +49005,8 @@ paths:
                         application/vnd.atlas.2024-05-30+json:
                             schema:
                                 $ref: '#/components/schemas/PaginatedApiStreamsStreamProcessorWithStatsView'
+                            x-xgen-IPA-exception:
+                                xgen-IPA-104-get-method-returns-single-resource: API predates IPA validation
                             x-xgen-version: "2024-05-30"
                     description: OK
                 "400":
@@ -49296,7 +49720,7 @@ paths:
 
                 **Note**: This resource cannot be used to view details about users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
 
-                **Note**: If using a deprecated version, only active users will be returned. Deprecated versions: v2-{2023-01-01}
+                **Note**: To return both pending and active users, use v2-{2025-02-19} or later. If using a deprecated version, only active users will be returned. Deprecated versions: v2-{2023-01-01}
             operationId: listProjectUsers
             parameters:
                 - $ref: '#/components/parameters/envelope'
@@ -49390,7 +49814,7 @@ paths:
 
                 **Note**: This resource cannot be used to remove pending users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
 
-                **Note**: If using a deprecated version, only active users can be removed. Deprecated versions: v2-{2023-01-01}
+                **Note**: To remove pending or active users, use v2-{2025-02-19} or later. If using a deprecated version, only active users can be removed. Deprecated versions: v2-{2023-01-01}
             operationId: removeProjectUser
             parameters:
                 - $ref: '#/components/parameters/envelope'
@@ -49673,6 +50097,27 @@ paths:
             tags:
                 - Projects
             x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Projects/operation/getProjectByName
+    /api/atlas/v2/openapi/info:
+        get:
+            description: 'This resource returns general information about the MongoDB Atlas Administration API OpenAPI Specification. Deprecated versions: v2-{2024-08-05}, v2-{2024-05-30}'
+            operationId: getOpenApiInfo
+            parameters:
+                - $ref: '#/components/parameters/pretty'
+            responses:
+                "200":
+                    content:
+                        application/vnd.atlas.preview+json:
+                            schema:
+                                $ref: '#/components/schemas/OpenApiInfo'
+                            x-xgen-preview:
+                                public: "true"
+                            x-xgen-version: preview
+                    description: OK
+                "500":
+                    $ref: '#/components/responses/internalServerError'
+            summary: Return general information about the MongoDB Atlas Administration API OpenAPI Specification.
+            tags:
+                - OpenAPI
     /api/atlas/v2/orgs:
         get:
             description: Returns all organizations to which the requesting API Key has access. To use this resource, the requesting API Key must have the Organization Member role.
@@ -50430,6 +50875,8 @@ paths:
                         application/vnd.atlas.2023-01-01+json:
                             schema:
                                 $ref: '#/components/schemas/PaginatedAtlasGroupView'
+                            x-xgen-IPA-exception:
+                                xgen-IPA-104-get-method-returns-single-resource: API predates IPA validation
                             x-xgen-version: "2023-01-01"
                     description: OK
                 "400":
@@ -50447,7 +50894,10 @@ paths:
     /api/atlas/v2/orgs/{orgId}/invites:
         get:
             deprecated: true
-            description: Returns all pending invitations to the specified organization. To use this resource, the requesting API Key must have the Organization Owner role.
+            description: |-
+                Returns all pending invitations to the specified organization. To use this resource, the requesting API Key must have the Organization Owner role.
+
+                **Note**: Invitation management APIs are deprecated. Use [Return All MongoDB Cloud Users in One Organization](#tag/MongoDB-Cloud-Users/operation/listOrganizationUsers) and filter by `orgMembershipStatus` to return all pending users.
             operationId: listOrganizationInvitations
             parameters:
                 - $ref: '#/components/parameters/envelope'
@@ -50484,7 +50934,10 @@ paths:
             x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Organizations/operation/listOrganizationInvitations
         patch:
             deprecated: true
-            description: Updates the details of one pending invitation to the specified organization. To specify which invitation, provide the username of the invited user. To use this resource, the requesting API Key must have the Organization Owner role.
+            description: |-
+                Updates the details of one pending invitation to the specified organization. To specify which invitation, provide the username of the invited user. To use this resource, the requesting API Key must have the Organization Owner role.
+
+                **Note**:  Invitation management are deprecated. Use [Update One MongoDB Cloud User in One Organization](#tag/MongoDB-Cloud-Users/operation/updateOrganizationUser) to update a pending user.
             operationId: updateOrganizationInvitation
             parameters:
                 - $ref: '#/components/parameters/envelope'
@@ -50520,7 +50973,10 @@ paths:
             x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Organizations/operation/updateOrganizationInvitation
         post:
             deprecated: true
-            description: Invites one MongoDB Cloud user to join the specified organization. The user must accept the invitation to access information within the specified organization. To use this resource, the requesting API Key must have the Organization Owner role.
+            description: |-
+                Invites one MongoDB Cloud user to join the specified organization. The user must accept the invitation to access information within the specified organization. To use this resource, the requesting API Key must have the Organization Owner role.
+
+                **Note**: Invitation management APIs are deprecated. Use [Add One MongoDB Cloud User to One Organization](#tag/MongoDB-Cloud-Users/operation/createOrganizationUser) to invite a user.
             operationId: createOrganizationInvitation
             parameters:
                 - $ref: '#/components/parameters/envelope'
@@ -50557,7 +51013,10 @@ paths:
     /api/atlas/v2/orgs/{orgId}/invites/{invitationId}:
         delete:
             deprecated: true
-            description: Cancels one pending invitation sent to the specified MongoDB Cloud user to join an organization. You can't cancel an invitation that the user accepted. To use this resource, the requesting API Key must have the Organization Owner role.
+            description: |-
+                Cancels one pending invitation sent to the specified MongoDB Cloud user to join an organization. You can't cancel an invitation that the user accepted. To use this resource, the requesting API Key must have the Organization Owner role.
+
+                **Note**: Invitation management APIs are deprecated. Use [Remove One MongoDB Cloud User From One Organization](#tag/MongoDB-Cloud-Users/operation/removeOrganizationUser) to remove a pending user.
             operationId: deleteOrganizationInvitation
             parameters:
                 - $ref: '#/components/parameters/envelope'
@@ -50592,7 +51051,10 @@ paths:
             x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Organizations/operation/deleteOrganizationInvitation
         get:
             deprecated: true
-            description: Returns the details of one pending invitation to the specified organization. To use this resource, the requesting API Key must have the Organization Owner role.
+            description: |-
+                Returns the details of one pending invitation to the specified organization. To use this resource, the requesting API Key must have the Organization Owner role.
+
+                **Note**: Invitation management APIs are deprecated. Use [Return One MongoDB Cloud User in One Organization](#tag/MongoDB-Cloud-Users/operation/getOrganizationUser) to return a pending user.
             operationId: getOrganizationInvitation
             parameters:
                 - $ref: '#/components/parameters/envelope'
@@ -50627,7 +51089,10 @@ paths:
             x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Organizations/operation/getOrganizationInvitation
         patch:
             deprecated: true
-            description: Updates the details of one pending invitation to the specified organization. To specify which invitation, provide the unique identification string for that invitation. Use the Return All Organization Invitations endpoint to retrieve IDs for all pending organization invitations. To use this resource, the requesting API Key must have the Organization Owner role.
+            description: |-
+                Updates the details of one pending invitation to the specified organization. To specify which invitation, provide the unique identification string for that invitation. Use the Return All Organization Invitations endpoint to retrieve IDs for all pending organization invitations. To use this resource, the requesting API Key must have the Organization Owner role.
+
+                **Note**: Invitation management APIs are deprecated. Use [Update One MongoDB Cloud User in One Organization](#tag/MongoDB-Cloud-Users/operation/updateOrganizationUser) to update a pending user.
             operationId: updateOrganizationInvitationById
             parameters:
                 - $ref: '#/components/parameters/envelope'
@@ -50686,7 +51151,6 @@ paths:
                   name: viewLinkedInvoices
                   schema:
                     default: true
-                    example: true
                     type: boolean
                 - description: Statuses of the invoice to be retrieved. Omit to return invoices of all statuses.
                   in: query
@@ -50892,6 +51356,8 @@ paths:
                         application/vnd.atlas.2023-01-01+json:
                             schema:
                                 $ref: '#/components/schemas/PaginatedApiInvoiceView'
+                            x-xgen-IPA-exception:
+                                xgen-IPA-104-get-method-returns-single-resource: API predates IPA validation
                             x-xgen-version: "2023-01-01"
                     description: OK
                 "401":
@@ -50920,6 +51386,8 @@ paths:
                                 items:
                                     $ref: '#/components/schemas/LiveImportAvailableProject'
                                 type: array
+                            x-xgen-IPA-exception:
+                                xgen-IPA-104-get-method-returns-single-resource: API predates IPA validation
                             x-xgen-version: "2023-01-01"
                     description: OK
                 "400":
@@ -51008,6 +51476,8 @@ paths:
                                 items:
                                     $ref: '#/components/schemas/ApiAtlasNonCompliantResourceView'
                                 type: array
+                            x-xgen-IPA-exception:
+                                xgen-IPA-104-get-method-returns-single-resource: API predates IPA validation
                             x-xgen-version: "2024-08-05"
                     description: OK
                 "400":
@@ -51592,6 +52062,8 @@ paths:
                         application/vnd.atlas.2024-08-05+json:
                             schema:
                                 $ref: '#/components/schemas/PaginatedServiceAccountGroup'
+                            x-xgen-IPA-exception:
+                                xgen-IPA-104-get-method-returns-single-resource: API predates IPA validation
                             x-xgen-version: "2024-08-05"
                     description: OK
                 "401":
@@ -51944,9 +52416,11 @@ paths:
     /api/atlas/v2/orgs/{orgId}/teams/{teamId}/users:
         get:
             description: |-
-                Returns details about the pending and active MongoDB Cloud users associated with the specified team in the organization. Teams enable you to grant project access roles to MongoDB Cloud users. To use this resource, the requesting API Key must have the Organization Member role.**Note**: This resource cannot be used to view details about users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
+                Returns details about the pending and active MongoDB Cloud users associated with the specified team in the organization. Teams enable you to grant project access roles to MongoDB Cloud users. To use this resource, the requesting API Key must have the Organization Member role.
 
-                **Note**: If using a deprecated version, only active users will be returned. Deprecated versions: v2-{2023-01-01}
+                **Note**: This resource cannot be used to view details about users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
+
+                **Note**: To return both pending and active users, use v2-{2025-02-19} or later. If using a deprecated version, only active users will be returned. Deprecated versions: v2-{2023-01-01}
             externalDocs:
                 description: Manage Organization Teams
                 url: https://docs.atlas.mongodb.com/access/manage-teams-in-orgs/#std-label-manage-teams
@@ -52000,7 +52474,10 @@ paths:
             x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/MongoDB-Cloud-Users/operation/listTeamUsers
         post:
             deprecated: true
-            description: Adds one or more MongoDB Cloud users from the specified organization to the specified team. Teams enable you to grant project access roles to MongoDB Cloud users. You can assign up to 250 MongoDB Cloud users from one organization to one team. To use this resource, the requesting API Key must have the Organization Owner role.
+            description: |-
+                Adds one or more MongoDB Cloud users from the specified organization to the specified team. Teams enable you to grant project access roles to MongoDB Cloud users. You can assign up to 250 MongoDB Cloud users from one organization to one team. To use this resource, the requesting API Key must have the Organization Owner role.
+
+                **Note**: This endpoint is deprecated. Use [Add One MongoDB Cloud User to One Team](#tag/MongoDB-Cloud-Users/operation/addUserToTeam) to add an active or pending user to a team.
             externalDocs:
                 description: Manage Organization Teams
                 url: https://docs.atlas.mongodb.com/access/manage-teams-in-orgs/#std-label-manage-teams
@@ -52051,7 +52528,10 @@ paths:
     /api/atlas/v2/orgs/{orgId}/teams/{teamId}/users/{userId}:
         delete:
             deprecated: true
-            description: Removes one MongoDB Cloud user from the specified team. This team belongs to one organization. Teams enable you to grant project access roles to MongoDB Cloud users. To use this resource, the requesting API Key must have the Organization Owner role.
+            description: |-
+                Removes one MongoDB Cloud user from the specified team. This team belongs to one organization. Teams enable you to grant project access roles to MongoDB Cloud users. To use this resource, the requesting API Key must have the Organization Owner role.
+
+                **Note**: This endpoint is deprecated. Use [Remove One MongoDB Cloud User from One Team](#tag/MongoDB-Cloud-Users/operation/removeUserFromTeam) to remove an active or pending user from a team.
             externalDocs:
                 description: Manage Organization Teams
                 url: https://docs.atlas.mongodb.com/access/manage-teams-in-orgs/#std-label-manage-teams
@@ -52231,7 +52711,7 @@ paths:
 
                 **Note**: This resource cannot be used to view details about users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
 
-                **Note**: If using a deprecated version, only active users will be returned. Deprecated versions: v2-{2023-01-01}
+                **Note**: To return both pending and active users, use v2-{2025-02-19} or later. If using a deprecated version, only active users will be returned. Deprecated versions: v2-{2023-01-01}
             operationId: listOrganizationUsers
             parameters:
                 - $ref: '#/components/parameters/envelope'
@@ -52320,7 +52800,7 @@ paths:
 
                 **Note**: This resource cannot be used to remove pending users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
 
-                **Note**: If using a deprecated version, only active users can be removed. Deprecated versions: v2-{2023-01-01}
+                **Note**: To remove pending or active users, use v2-{2025-02-19} or later. If using a deprecated version, only active users can be removed. Deprecated versions: v2-{2023-01-01}
             operationId: removeOrganizationUser
             parameters:
                 - $ref: '#/components/parameters/envelope'
@@ -52609,6 +53089,50 @@ paths:
             tags:
                 - Root
             x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Root/operation/returnAllControlPlaneIpAddresses
+    /api/atlas/v2/unauth/openapi/versions:
+        get:
+            description: 'API that provides a list of available versionsfor a given environment. Deprecated versions: v2-{2024-08-05}'
+            operationId: getApiVersions
+            parameters:
+                - $ref: '#/components/parameters/envelope'
+                - $ref: '#/components/parameters/itemsPerPage'
+                - $ref: '#/components/parameters/pageNum'
+                - $ref: '#/components/parameters/pretty'
+                - description: The environment to get the versions from. If not provided, it returnsthe versions for the given MongoDB URL. (E.g. prod for cloud.mongodb.com)
+                  in: query
+                  name: env
+                  schema:
+                    enum:
+                        - dev
+                        - qa
+                        - prod
+                        - stage
+                    type: string
+            responses:
+                "200":
+                    content:
+                        application/vnd.atlas.preview+json:
+                            schema:
+                                $ref: '#/components/schemas/PaginatedApiVersions'
+                            x-xgen-IPA-exception:
+                                xgen-IPA-104-get-method-returns-single-resource: API predates IPA validation
+                            x-xgen-preview:
+                                name: version-resource
+                            x-xgen-version: private-preview-version-resource
+                        application/vnd.atlas.preview+yaml:
+                            schema:
+                                $ref: '#/components/schemas/PaginatedApiVersions'
+                            x-xgen-IPA-exception:
+                                xgen-IPA-104-get-method-returns-single-resource: API predates IPA validation
+                            x-xgen-preview:
+                                name: version-resource
+                            x-xgen-version: private-preview-version-resource
+                    description: OK
+                "500":
+                    $ref: '#/components/responses/internalServerError'
+            summary: Provides a list of versions for a given environment.
+            tags:
+                - OpenAPI
     /api/atlas/v2/users:
         post:
             deprecated: true
@@ -52734,6 +53258,8 @@ tags:
       name: Auditing
     - description: Returns and edits custom DNS configurations for MongoDB Cloud database deployments on AWS. The resource requires your Project ID. If you use the VPC peering on AWS and you use your own DNS servers instead of Amazon Route 53, enable custom DNS. Before 31 March 2020, applications deployed within AWS using custom DNS services and VPC-peered with MongoDB Cloud couldn't connect over private IP addresses. Custom DNS resolved to public IP addresses. AWS internal DNS resolved to private IP addresses. Applications deployed with custom DNS services in AWS should use Private IP for Peering connection strings.
       name: AWS Clusters DNS
+    - description: Returns, adds, and edits Charts Dashboard instances. This resource applies only to projects with a Charts tenant, and requires your Project ID.
+      name: Charts Dashboards
     - description: Manages Cloud Backup snapshots, snapshot export buckets, restore jobs, and schedules. This resource applies only to clusters that use Cloud Backups.
       name: Cloud Backups
     - description: Manages the Cloud Migration Service. Source organizations, projects, and MongoDB clusters reside on Cloud Manager or Ops Manager. Destination organizations, projects, and MongoDB clusters reside on MongoDB Cloud. Source databases can't use any authentication except SCRAM-SHA.
@@ -52791,6 +53317,8 @@ tags:
       name: Network Peering
     - description: Returns, adds, edits, or removes an online archive.
       name: Online Archive
+    - description: Returns information about the MongoDB Atlas Specification.
+      name: OpenAPI
     - description: Returns, adds, and edits organizational units in MongoDB Cloud.
       name: Organizations
     - description: Returns suggested indexes and slow query data for a database deployment. Also enables or disables MongoDB Cloud-managed slow operation thresholds. To view field values in a sample query, you must have the Project Data Access Read Only role or higher. Otherwise, MongoDB Cloud returns redacted data rather than the field values.
