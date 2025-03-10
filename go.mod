@@ -1,11 +1,12 @@
 module go.mongodb.org/atlas-sdk/v20250219001
 
 go 1.22.0
+toolchain go1.23.7
 
 require (
 	github.com/go-test/deep v1.1.1
 	github.com/mongodb-forks/digest v1.1.0
-	golang.org/x/oauth2 v0.25.0
+	golang.org/x/oauth2 v0.28.0
 )
 
 require (
