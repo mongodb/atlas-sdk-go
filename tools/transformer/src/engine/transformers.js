@@ -5,11 +5,11 @@ const {
 
 function filterObjectProperties(object, filter = (_k, _v) => true) {
   return Object.keys(object)
-  .filter((key) => filter(key, object[key]))
-  .reduce((aggregationObj, key) => {
-    aggregationObj[key] = object[key];
-    return aggregationObj;
-  }, {});
+    .filter((key) => filter(key, object[key]))
+    .reduce((aggregationObj, key) => {
+      aggregationObj[key] = object[key];
+      return aggregationObj;
+    }, {});
 }
 
 // Detects duplicates in array of object properties
@@ -23,18 +23,18 @@ function detectDuplicates(objArray) {
       for (const key of Object.keys(obj)) {
         const currentEntry = obj[key];
         let currentValue = currentEntry.type;
-        if(currentEntry.$ref){
-          const curRef = getObjectFromReference(currentEntry.$ref)
-          if(!curRef.enum){
+        if (currentEntry.$ref) {
+          const curRef = getObjectFromReference(currentEntry.$ref);
+          if (!curRef.enum) {
             currentValue = currentEntry.$ref;
           }
         }
         if (allKeys[key]) {
           const previousEntry = allKeys[key];
           let previousValue = previousEntry.type;
-          if(previousEntry.$ref){
-            const prevRef = getObjectFromReference(previousEntry.$ref)
-            if(!prevRef.enum){
+          if (previousEntry.$ref) {
+            const prevRef = getObjectFromReference(previousEntry.$ref);
+            if (!prevRef.enum) {
               previousValue = previousEntry.$ref;
             }
           }

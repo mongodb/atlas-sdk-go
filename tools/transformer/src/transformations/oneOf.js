@@ -188,7 +188,7 @@ function mergeDuplicates(
     if (
       parentProperty.description &&
       childProperty.description !== parentProperty.description
-    ){
+    ) {
       childProperty.description = parentProperty.description;
     }
   }
