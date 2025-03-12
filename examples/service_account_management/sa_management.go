@@ -50,7 +50,7 @@ func main() {
 		}
 		orgID = orgs.GetResults()[0].GetId()
 	}
-
+	const oneYearHours = 365 * 24
 	// 1. Create Service Account
 	request := sdk.ServiceAccountsApi.CreateServiceAccount(
 		ctx,
@@ -59,7 +59,7 @@ func main() {
 			"SA created by sdk-example",
 			"example",
 			[]string{"ORG_READ_ONLY"},
-			365*24,
+			oneYearHours,
 		),
 	)
 	sa, _, err := request.Execute()
@@ -74,7 +74,7 @@ func main() {
 		orgID,
 		sa.GetClientId(),
 		&admin.ServiceAccountSecretRequest{
-			SecretExpiresAfterHours: 365 * 24,
+			SecretExpiresAfterHours: oneYearHours,
 		},
 	).Execute()
 	if err != nil {
@@ -99,10 +99,14 @@ func main() {
 		//  might have up to 2 secrets
 		admin.UseOAuthAuth(ctx, sa.GetClientId(), newSecret.GetSecret()),
 	)
-
+	if err != nil {
+		log.Fatalf("Error: %v", err)
+	}
 	// 5. Make request using new Service Account
-	projects, _, err := newSDK.ProjectsApi.ListProjectsWithParams(ctx,
-		&admin.ListProjectsApiParams{}).Execute()
+	projects, _, err := newSDK.ProjectsApi.ListProjectsWithParams(
+		ctx,
+		&admin.ListProjectsApiParams{},
+	).Execute()
 	if err != nil {
 		log.Fatalf("Error: %v", err)
 	}
