@@ -23,7 +23,8 @@
                   "$ref": "#/components/schemas/ApiAtlasClusterDescriptionV15View"
                 }
               }
-            }
+            },
+            "description": "a"
           }
         },
         "summary": "Create One Multi-Cloud Cluster from One Project",
@@ -42,7 +43,8 @@
                   "$ref": "#/components/schemas/ExampleResourceResponseView20230201"
                 }
               }
-            }
+            },
+            "description": "a"
           }
         }
       }
@@ -554,5 +556,11 @@
         "type": "object"
       }
     }
+  },
+  "info": {
+    "contact": {
+    },
+    "title": "",
+    "version": ""
   }
 }

@@ -93,7 +93,7 @@ function transformOneOfProperties(parentObject, api) {
       // When we missing props, we need to look at the allOf parent child inheritance
       if (childObject.allOf) {
         childObject.properties = {};
-        for (allOfItem of childObject.allOf) {
+        for (let allOfItem of childObject.allOf) {
           // We only add properties.
           if (allOfItem.properties) {
             childObject.properties = {
@@ -181,19 +181,20 @@ function mergeDuplicates(
       duplicates,
     )}\n`,
   );
-  for (duplicate of duplicates) {
+  for (let duplicate of duplicates) {
     const childProperty = childObject.properties[duplicate.key];
     const parentProperty = parentObject.properties[duplicate.key];
 
     if (
       parentProperty.description &&
       childProperty.description !== parentProperty.description
-    )
+    ){
       childProperty.description = parentProperty.description;
+    }
   }
 }
 
-function canApplyOneOfTransformation(obj, api) {
+function canApplyOneOfTransformation(obj, _) {
   return !!obj.oneOf;
 }
 
