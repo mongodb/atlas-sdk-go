@@ -70,11 +70,11 @@ function getAllObjects(object, filter = (_obj) => true) {
 
 function filterObjectProperties(object, filter = (_k, _v) => true) {
   return Object.keys(object)
-  .filter((key) => filter(key, object[key]))
-  .reduce((aggregationObj, key) => {
-    aggregationObj[key] = object[key];
-    return aggregationObj;
-  }, {});
+    .filter((key) => filter(key, object[key]))
+    .reduce((aggregationObj, key) => {
+      aggregationObj[key] = object[key];
+      return aggregationObj;
+    }, {});
 }
 
 function getObjectProperties(obj) {
