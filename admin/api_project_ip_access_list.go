@@ -58,7 +58,7 @@ type ProjectIPAccessListApi interface {
 	DeleteProjectIpAccessListWithParams(ctx context.Context, args *DeleteProjectIpAccessListApiParams) DeleteProjectIpAccessListApiRequest
 
 	// Method available only for mocking purposes
-	DeleteProjectIpAccessListExecute(r DeleteProjectIpAccessListApiRequest) (any, *http.Response, error)
+	DeleteProjectIpAccessListExecute(r DeleteProjectIpAccessListApiRequest) (*http.Response, error)
 
 	/*
 		GetProjectIpAccessListStatus Return Status of One Project IP Access List Entry
@@ -324,7 +324,7 @@ func (a *ProjectIPAccessListApiService) DeleteProjectIpAccessListWithParams(ctx 
 	}
 }
 
-func (r DeleteProjectIpAccessListApiRequest) Execute() (any, *http.Response, error) {
+func (r DeleteProjectIpAccessListApiRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteProjectIpAccessListExecute(r)
 }
 
@@ -348,19 +348,16 @@ func (a *ProjectIPAccessListApiService) DeleteProjectIpAccessList(ctx context.Co
 }
 
 // DeleteProjectIpAccessListExecute executes the request
-//
-//	@return any
-func (a *ProjectIPAccessListApiService) DeleteProjectIpAccessListExecute(r DeleteProjectIpAccessListApiRequest) (any, *http.Response, error) {
+func (a *ProjectIPAccessListApiService) DeleteProjectIpAccessListExecute(r DeleteProjectIpAccessListApiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue any
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   any
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectIPAccessListApiService.DeleteProjectIpAccessList")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/accessList/{entryValue}"
@@ -390,34 +387,20 @@ func (a *ProjectIPAccessListApiService) DeleteProjectIpAccessListExecute(r Delet
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
 		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
 
 type GetProjectIpAccessListStatusApiRequest struct {

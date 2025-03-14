@@ -272,7 +272,7 @@ type PerformanceAdvisorApi interface {
 	SetServerlessAutoIndexingWithParams(ctx context.Context, args *SetServerlessAutoIndexingApiParams) SetServerlessAutoIndexingApiRequest
 
 	// Method available only for mocking purposes
-	SetServerlessAutoIndexingExecute(r SetServerlessAutoIndexingApiRequest) (any, *http.Response, error)
+	SetServerlessAutoIndexingExecute(r SetServerlessAutoIndexingApiRequest) (*http.Response, error)
 }
 
 // PerformanceAdvisorApiService PerformanceAdvisorApi service
@@ -1678,7 +1678,7 @@ func (r SetServerlessAutoIndexingApiRequest) Enable(enable bool) SetServerlessAu
 	return r
 }
 
-func (r SetServerlessAutoIndexingApiRequest) Execute() (any, *http.Response, error) {
+func (r SetServerlessAutoIndexingApiRequest) Execute() (*http.Response, error) {
 	return r.ApiService.SetServerlessAutoIndexingExecute(r)
 }
 
@@ -1702,19 +1702,16 @@ func (a *PerformanceAdvisorApiService) SetServerlessAutoIndexing(ctx context.Con
 }
 
 // SetServerlessAutoIndexingExecute executes the request
-//
-//	@return any
-func (a *PerformanceAdvisorApiService) SetServerlessAutoIndexingExecute(r SetServerlessAutoIndexingApiRequest) (any, *http.Response, error) {
+func (a *PerformanceAdvisorApiService) SetServerlessAutoIndexingExecute(r SetServerlessAutoIndexingApiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue any
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   any
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PerformanceAdvisorApiService.SetServerlessAutoIndexing")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/serverless/{clusterName}/performanceAdvisor/autoIndexing"
@@ -1725,7 +1722,7 @@ func (a *PerformanceAdvisorApiService) SetServerlessAutoIndexingExecute(r SetSer
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 	if r.enable == nil {
-		return localVarReturnValue, nil, reportError("enable is required and must be specified")
+		return nil, reportError("enable is required and must be specified")
 	}
 
 	parameterAddToHeaderOrQuery(localVarQueryParams, "enable", r.enable, "")
@@ -1748,32 +1745,18 @@ func (a *PerformanceAdvisorApiService) SetServerlessAutoIndexingExecute(r SetSer
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
 		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }

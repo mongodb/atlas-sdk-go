@@ -60,7 +60,7 @@ type OnlineArchiveApi interface {
 	DeleteOnlineArchiveWithParams(ctx context.Context, args *DeleteOnlineArchiveApiParams) DeleteOnlineArchiveApiRequest
 
 	// Method available only for mocking purposes
-	DeleteOnlineArchiveExecute(r DeleteOnlineArchiveApiRequest) (any, *http.Response, error)
+	DeleteOnlineArchiveExecute(r DeleteOnlineArchiveApiRequest) (*http.Response, error)
 
 	/*
 		DownloadOnlineArchiveQueryLogs Download Online Archive Query Logs
@@ -315,7 +315,7 @@ func (a *OnlineArchiveApiService) DeleteOnlineArchiveWithParams(ctx context.Cont
 	}
 }
 
-func (r DeleteOnlineArchiveApiRequest) Execute() (any, *http.Response, error) {
+func (r DeleteOnlineArchiveApiRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteOnlineArchiveExecute(r)
 }
 
@@ -341,19 +341,16 @@ func (a *OnlineArchiveApiService) DeleteOnlineArchive(ctx context.Context, group
 }
 
 // DeleteOnlineArchiveExecute executes the request
-//
-//	@return any
-func (a *OnlineArchiveApiService) DeleteOnlineArchiveExecute(r DeleteOnlineArchiveApiRequest) (any, *http.Response, error) {
+func (a *OnlineArchiveApiService) DeleteOnlineArchiveExecute(r DeleteOnlineArchiveApiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue any
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   any
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OnlineArchiveApiService.DeleteOnlineArchive")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/{archiveId}"
@@ -384,34 +381,20 @@ func (a *OnlineArchiveApiService) DeleteOnlineArchiveExecute(r DeleteOnlineArchi
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
 		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
 
 type DownloadOnlineArchiveQueryLogsApiRequest struct {

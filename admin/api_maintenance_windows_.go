@@ -126,7 +126,7 @@ type MaintenanceWindowsApi interface {
 	UpdateMaintenanceWindowWithParams(ctx context.Context, args *UpdateMaintenanceWindowApiParams) UpdateMaintenanceWindowApiRequest
 
 	// Method available only for mocking purposes
-	UpdateMaintenanceWindowExecute(r UpdateMaintenanceWindowApiRequest) (any, *http.Response, error)
+	UpdateMaintenanceWindowExecute(r UpdateMaintenanceWindowApiRequest) (*http.Response, error)
 }
 
 // MaintenanceWindowsApiService MaintenanceWindowsApi service
@@ -546,7 +546,7 @@ func (a *MaintenanceWindowsApiService) UpdateMaintenanceWindowWithParams(ctx con
 	}
 }
 
-func (r UpdateMaintenanceWindowApiRequest) Execute() (any, *http.Response, error) {
+func (r UpdateMaintenanceWindowApiRequest) Execute() (*http.Response, error) {
 	return r.ApiService.UpdateMaintenanceWindowExecute(r)
 }
 
@@ -569,19 +569,16 @@ func (a *MaintenanceWindowsApiService) UpdateMaintenanceWindow(ctx context.Conte
 }
 
 // UpdateMaintenanceWindowExecute executes the request
-//
-//	@return any
-func (a *MaintenanceWindowsApiService) UpdateMaintenanceWindowExecute(r UpdateMaintenanceWindowApiRequest) (any, *http.Response, error) {
+func (a *MaintenanceWindowsApiService) UpdateMaintenanceWindowExecute(r UpdateMaintenanceWindowApiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue any
+		localVarHTTPMethod = http.MethodPatch
+		localVarPostBody   any
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MaintenanceWindowsApiService.UpdateMaintenanceWindow")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/maintenanceWindow"
@@ -591,7 +588,7 @@ func (a *MaintenanceWindowsApiService) UpdateMaintenanceWindowExecute(r UpdateMa
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 	if r.groupMaintenanceWindow == nil {
-		return localVarReturnValue, nil, reportError("groupMaintenanceWindow is required and must be specified")
+		return nil, reportError("groupMaintenanceWindow is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -615,32 +612,18 @@ func (a *MaintenanceWindowsApiService) UpdateMaintenanceWindowExecute(r UpdateMa
 	localVarPostBody = r.groupMaintenanceWindow
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
 		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }

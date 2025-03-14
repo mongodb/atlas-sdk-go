@@ -35,7 +35,7 @@ type CloudBackupsApi interface {
 	CancelBackupRestoreJobWithParams(ctx context.Context, args *CancelBackupRestoreJobApiParams) CancelBackupRestoreJobApiRequest
 
 	// Method available only for mocking purposes
-	CancelBackupRestoreJobExecute(r CancelBackupRestoreJobApiRequest) (any, *http.Response, error)
+	CancelBackupRestoreJobExecute(r CancelBackupRestoreJobApiRequest) (*http.Response, error)
 
 	/*
 		CreateBackupExportJob Create One Snapshot Export Job
@@ -186,7 +186,7 @@ type CloudBackupsApi interface {
 	DeleteExportBucketWithParams(ctx context.Context, args *DeleteExportBucketApiParams) DeleteExportBucketApiRequest
 
 	// Method available only for mocking purposes
-	DeleteExportBucketExecute(r DeleteExportBucketApiRequest) (any, *http.Response, error)
+	DeleteExportBucketExecute(r DeleteExportBucketApiRequest) (*http.Response, error)
 
 	/*
 		DeleteReplicaSetBackup Remove One Replica Set Cloud Backup
@@ -211,7 +211,7 @@ type CloudBackupsApi interface {
 	DeleteReplicaSetBackupWithParams(ctx context.Context, args *DeleteReplicaSetBackupApiParams) DeleteReplicaSetBackupApiRequest
 
 	// Method available only for mocking purposes
-	DeleteReplicaSetBackupExecute(r DeleteReplicaSetBackupApiRequest) (any, *http.Response, error)
+	DeleteReplicaSetBackupExecute(r DeleteReplicaSetBackupApiRequest) (*http.Response, error)
 
 	/*
 		DeleteShardedClusterBackup Remove One Sharded Cluster Cloud Backup
@@ -236,7 +236,7 @@ type CloudBackupsApi interface {
 	DeleteShardedClusterBackupWithParams(ctx context.Context, args *DeleteShardedClusterBackupApiParams) DeleteShardedClusterBackupApiRequest
 
 	// Method available only for mocking purposes
-	DeleteShardedClusterBackupExecute(r DeleteShardedClusterBackupApiRequest) (any, *http.Response, error)
+	DeleteShardedClusterBackupExecute(r DeleteShardedClusterBackupApiRequest) (*http.Response, error)
 
 	/*
 		DisableDataProtectionSettings Disable the Backup Compliance Policy settings
@@ -259,7 +259,7 @@ type CloudBackupsApi interface {
 	DisableDataProtectionSettingsWithParams(ctx context.Context, args *DisableDataProtectionSettingsApiParams) DisableDataProtectionSettingsApiRequest
 
 	// Method available only for mocking purposes
-	DisableDataProtectionSettingsExecute(r DisableDataProtectionSettingsApiRequest) (any, *http.Response, error)
+	DisableDataProtectionSettingsExecute(r DisableDataProtectionSettingsApiRequest) (*http.Response, error)
 
 	/*
 		GetBackupExportJob Return One Snapshot Export Job
@@ -787,7 +787,7 @@ func (a *CloudBackupsApiService) CancelBackupRestoreJobWithParams(ctx context.Co
 	}
 }
 
-func (r CancelBackupRestoreJobApiRequest) Execute() (any, *http.Response, error) {
+func (r CancelBackupRestoreJobApiRequest) Execute() (*http.Response, error) {
 	return r.ApiService.CancelBackupRestoreJobExecute(r)
 }
 
@@ -813,19 +813,16 @@ func (a *CloudBackupsApiService) CancelBackupRestoreJob(ctx context.Context, gro
 }
 
 // CancelBackupRestoreJobExecute executes the request
-//
-//	@return any
-func (a *CloudBackupsApiService) CancelBackupRestoreJobExecute(r CancelBackupRestoreJobApiRequest) (any, *http.Response, error) {
+func (a *CloudBackupsApiService) CancelBackupRestoreJobExecute(r CancelBackupRestoreJobApiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue any
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   any
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudBackupsApiService.CancelBackupRestoreJob")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/restoreJobs/{restoreJobId}"
@@ -856,34 +853,20 @@ func (a *CloudBackupsApiService) CancelBackupRestoreJobExecute(r CancelBackupRes
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
 		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
 
 type CreateBackupExportJobApiRequest struct {
@@ -1526,7 +1509,7 @@ func (a *CloudBackupsApiService) DeleteExportBucketWithParams(ctx context.Contex
 	}
 }
 
-func (r DeleteExportBucketApiRequest) Execute() (any, *http.Response, error) {
+func (r DeleteExportBucketApiRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteExportBucketExecute(r)
 }
 
@@ -1550,19 +1533,16 @@ func (a *CloudBackupsApiService) DeleteExportBucket(ctx context.Context, groupId
 }
 
 // DeleteExportBucketExecute executes the request
-//
-//	@return any
-func (a *CloudBackupsApiService) DeleteExportBucketExecute(r DeleteExportBucketApiRequest) (any, *http.Response, error) {
+func (a *CloudBackupsApiService) DeleteExportBucketExecute(r DeleteExportBucketApiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue any
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   any
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudBackupsApiService.DeleteExportBucket")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/backup/exportBuckets/{exportBucketId}"
@@ -1592,34 +1572,20 @@ func (a *CloudBackupsApiService) DeleteExportBucketExecute(r DeleteExportBucketA
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
 		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
 
 type DeleteReplicaSetBackupApiRequest struct {
@@ -1646,7 +1612,7 @@ func (a *CloudBackupsApiService) DeleteReplicaSetBackupWithParams(ctx context.Co
 	}
 }
 
-func (r DeleteReplicaSetBackupApiRequest) Execute() (any, *http.Response, error) {
+func (r DeleteReplicaSetBackupApiRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteReplicaSetBackupExecute(r)
 }
 
@@ -1672,19 +1638,16 @@ func (a *CloudBackupsApiService) DeleteReplicaSetBackup(ctx context.Context, gro
 }
 
 // DeleteReplicaSetBackupExecute executes the request
-//
-//	@return any
-func (a *CloudBackupsApiService) DeleteReplicaSetBackupExecute(r DeleteReplicaSetBackupApiRequest) (any, *http.Response, error) {
+func (a *CloudBackupsApiService) DeleteReplicaSetBackupExecute(r DeleteReplicaSetBackupApiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue any
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   any
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudBackupsApiService.DeleteReplicaSetBackup")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId}"
@@ -1715,34 +1678,20 @@ func (a *CloudBackupsApiService) DeleteReplicaSetBackupExecute(r DeleteReplicaSe
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
 		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
 
 type DeleteShardedClusterBackupApiRequest struct {
@@ -1769,7 +1718,7 @@ func (a *CloudBackupsApiService) DeleteShardedClusterBackupWithParams(ctx contex
 	}
 }
 
-func (r DeleteShardedClusterBackupApiRequest) Execute() (any, *http.Response, error) {
+func (r DeleteShardedClusterBackupApiRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteShardedClusterBackupExecute(r)
 }
 
@@ -1795,19 +1744,16 @@ func (a *CloudBackupsApiService) DeleteShardedClusterBackup(ctx context.Context,
 }
 
 // DeleteShardedClusterBackupExecute executes the request
-//
-//	@return any
-func (a *CloudBackupsApiService) DeleteShardedClusterBackupExecute(r DeleteShardedClusterBackupApiRequest) (any, *http.Response, error) {
+func (a *CloudBackupsApiService) DeleteShardedClusterBackupExecute(r DeleteShardedClusterBackupApiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue any
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   any
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudBackupsApiService.DeleteShardedClusterBackup")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/shardedCluster/{snapshotId}"
@@ -1838,34 +1784,20 @@ func (a *CloudBackupsApiService) DeleteShardedClusterBackupExecute(r DeleteShard
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
 		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
 
 type DisableDataProtectionSettingsApiRequest struct {
@@ -1886,7 +1818,7 @@ func (a *CloudBackupsApiService) DisableDataProtectionSettingsWithParams(ctx con
 	}
 }
 
-func (r DisableDataProtectionSettingsApiRequest) Execute() (any, *http.Response, error) {
+func (r DisableDataProtectionSettingsApiRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DisableDataProtectionSettingsExecute(r)
 }
 
@@ -1908,19 +1840,16 @@ func (a *CloudBackupsApiService) DisableDataProtectionSettings(ctx context.Conte
 }
 
 // DisableDataProtectionSettingsExecute executes the request
-//
-//	@return any
-func (a *CloudBackupsApiService) DisableDataProtectionSettingsExecute(r DisableDataProtectionSettingsApiRequest) (any, *http.Response, error) {
+func (a *CloudBackupsApiService) DisableDataProtectionSettingsExecute(r DisableDataProtectionSettingsApiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue any
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   any
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudBackupsApiService.DisableDataProtectionSettings")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/backupCompliancePolicy"
@@ -1949,34 +1878,20 @@ func (a *CloudBackupsApiService) DisableDataProtectionSettingsExecute(r DisableD
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
 		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
 
 type GetBackupExportJobApiRequest struct {
