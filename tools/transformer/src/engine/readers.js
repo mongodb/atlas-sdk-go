@@ -9,11 +9,11 @@
 function getAllObjectsWithProperty(
   apiObject,
   key,
-  predicate = (_k, _v) => true
+  predicate = (_k, _v) => true,
 ) {
   return getAllObjects(
     apiObject,
-    (obj) => key in obj && predicate(key, obj[key])
+    (obj) => key in obj && predicate(key, obj[key]),
   );
 }
 

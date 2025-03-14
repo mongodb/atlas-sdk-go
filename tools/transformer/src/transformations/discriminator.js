@@ -20,7 +20,7 @@ function applyDiscriminatorTransformations(api) {
 
   console.info(
     "# Discriminator transformations: ",
-    transformations.map((e) => e.path)
+    transformations.map((e) => e.path),
   );
 
   for (let { path } of transformations) {
@@ -44,7 +44,7 @@ function transformDiscriminatorOneOf(objectPath, api) {
       Please consider adding oneOf or discriminator mapping section to object: ${parentName}`);
     }
     console.info(
-      `Setting oneOf based on discriminator for allOf transformation in ${parentName}`
+      `Setting oneOf based on discriminator for allOf transformation in ${parentName}`,
     );
     // Ignore objects that point to themselves
     oneOfReferences = Object.values(parentObject.discriminator.mapping);

@@ -34,13 +34,13 @@ module.exports = function runTransformations(openapi) {
     openapi,
     "",
     "Manual",
-    ignoredModelNames
+    ignoredModelNames,
   );
   openapi = applyModelNameTransformations(
     openapi,
     "",
     "View",
-    ignoredModelNames
+    ignoredModelNames,
   );
 
   if (openapi.components.schemas.ApiAtlasFTSAnalyzers) {
