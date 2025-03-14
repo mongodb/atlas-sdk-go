@@ -22,15 +22,25 @@ function detectDuplicates(objArray) {
     if (obj) {
       for (const key of Object.keys(obj)) {
         const currentEntry = obj[key];
-        const currentValue = currentEntry.type || currentEntry.$ref;
-
+        let currentValue = currentEntry.type;
+        if (currentEntry.$ref) {
+          const curRef = getObjectFromReference(currentEntry.$ref);
+          if (!curRef.enum) {
+            currentValue = currentEntry.$ref;
+          }
+        }
         if (allKeys[key]) {
           const previousEntry = allKeys[key];
-          const previousValue = previousEntry.type || previousEntry.$ref;
+          let previousValue = previousEntry.type;
+          if (previousEntry.$ref) {
+            const prevRef = getObjectFromReference(previousEntry.$ref);
+            if (!prevRef.enum) {
+              previousValue = previousEntry.$ref;
+            }
+          }
 
           // Check for typeRefMismatch
           const isTypeRefMismatch = previousValue !== currentValue;
-
           if (isTypeRefMismatch) {
             duplicates.push({
               key,
@@ -117,7 +127,6 @@ function removeParentFromAllOf(child, parentName) {
     const objName = getObjectNameFromReference(childAllOfItem);
     return objName !== parentName;
   });
-
   return initialLength !== child.allOf.length;
 }
 
