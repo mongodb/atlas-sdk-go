@@ -24,7 +24,7 @@ function applyOneOfTransformations(api) {
   transformationPaths = oneOfTransformations.map((e) => e.path);
   console.info(
     "# OneOf transformations: " +
-      JSON.stringify(transformationPaths, undefined, 2)
+      JSON.stringify(transformationPaths, undefined, 2),
   );
 
   for (let { path } of oneOfTransformations) {
@@ -44,11 +44,11 @@ function transformOneOf(objectPath, api) {
 
   // Expand references
   const childObjects = parentObject.oneOf.map((childRef) =>
-    getObjectFromReference(childRef, api)
+    getObjectFromReference(childRef, api),
   );
   const isEnum = childObjects.reduce(
     (isEnum, childObject) => isEnum && childObject.enum,
-    true
+    true,
   );
 
   if (isEnum) {
@@ -61,7 +61,7 @@ function transformOneOf(objectPath, api) {
 // Moves all the enum values of the children into the parent
 function transformOneOfEnum(parentObject, api) {
   const childObjects = parentObject.oneOf.map((childRef) =>
-    getObjectFromReference(childRef, api)
+    getObjectFromReference(childRef, api),
   );
 
   if (!parentObject.enum) {
@@ -86,7 +86,7 @@ function transformOneOfEnum(parentObject, api) {
 // Moves all the propertis of the children into the parent
 function transformOneOfProperties(parentObject, api) {
   const childObjects = parentObject.oneOf.map((childRef) =>
-    getObjectFromReference(childRef, api)
+    getObjectFromReference(childRef, api),
   );
 
   for (let childObject of childObjects) {
@@ -106,10 +106,10 @@ function transformOneOfProperties(parentObject, api) {
       } else {
         // Otherwise this situation require human intervention
         console.error(
-          "OpenAPI object is missing properties or allOf field. This is usually an error in the OpenAPI spec."
+          "OpenAPI object is missing properties or allOf field. This is usually an error in the OpenAPI spec.",
         );
         console.error(
-          "Please ensure that elements of oneOf schema are objects (classes) instead of single types (bool, string etc.)."
+          "Please ensure that elements of oneOf schema are objects (classes) instead of single types (bool, string etc.).",
         );
         throw new Error(`${JSON.stringify(childObject, "", 2)}`);
       }
@@ -144,8 +144,8 @@ function handleDuplicates(parentObject, childObject) {
           `${duplicatesSource} mismatch type detected: ${JSON.stringify(
             mismatches,
             undefined,
-            2
-          )}`
+            2,
+          )}`,
         );
       }
     }
@@ -160,7 +160,7 @@ function filterReferenceOrTypeMissmatch(mismatches) {
       if (mismatch.key === ignoredProperty) {
         console.warn(
           "Type mismatch found when merging base types. Ignoring due to known mismatches",
-          JSON.stringify(mismatch, undefined, 2)
+          JSON.stringify(mismatch, undefined, 2),
         );
         return false;
       }
@@ -175,12 +175,12 @@ function mergeDuplicates(
   duplicatesSourceLabel,
   duplicates,
   childObject,
-  parentObject
+  parentObject,
 ) {
   console.info(
     `## ${duplicatesSourceLabel} - Detected properties that would be overriden: ${JSON.stringify(
-      duplicates
-    )}\n`
+      duplicates,
+    )}\n`,
   );
   for (duplicate of duplicates) {
     childProperty = childObject.properties[duplicate.key];

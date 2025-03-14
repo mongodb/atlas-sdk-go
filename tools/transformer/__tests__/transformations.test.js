@@ -15,27 +15,27 @@ beforeEach(() => {
 test("Transform oneOf enum", () => {
   transformOneOf(
     ".components.schemas.ApiAtlasRegionConfigView.properties.regionName",
-    api
+    api,
   );
   expect(
-    api.components.schemas.ApiAtlasRegionConfigView.properties.regionName
+    api.components.schemas.ApiAtlasRegionConfigView.properties.regionName,
   ).toMatchInlineSnapshot(cases.EnumOneOf);
 });
 
 test("Transform oneOf model", () => {
   transformOneOf(".components.schemas.ApiAtlasHardwareSpecView", api);
   expect(
-    api.components.schemas.ApiAtlasHardwareSpecView.properties
+    api.components.schemas.ApiAtlasHardwareSpecView.properties,
   ).toMatchInlineSnapshot(cases.PropertiesOneOf);
 });
 
 test("Transform AllOf model", () => {
   transformAllOf(".components.schemas.ApiAtlasRegionConfigView", api);
   expect(api.components.schemas.ApiAtlasRegionConfigView).toMatchInlineSnapshot(
-    cases.ParentAllOf
+    cases.ParentAllOf,
   );
   expect(
-    api.components.schemas.ApiAtlasAWSRegionConfigView
+    api.components.schemas.ApiAtlasAWSRegionConfigView,
   ).toMatchInlineSnapshot(cases.ChildAllOf);
 });
 
@@ -46,10 +46,10 @@ test("Transform already transformed model ", () => {
   transformAllOf(".components.schemas.ApiAtlasRegionConfigView", api);
 
   expect(api.components.schemas.ApiAtlasRegionConfigView).toMatchInlineSnapshot(
-    cases.ParentAllOf
+    cases.ParentAllOf,
   );
   expect(
-    api.components.schemas.ApiAtlasAWSRegionConfigView
+    api.components.schemas.ApiAtlasAWSRegionConfigView,
   ).toMatchInlineSnapshot(cases.ChildAllOf);
 });
 

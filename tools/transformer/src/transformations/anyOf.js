@@ -22,7 +22,7 @@ function applyAnyOfTransformations(api) {
 
   console.info(
     "# AnyOf transformations: " +
-      JSON.stringify(transformationPaths, undefined, 2)
+      JSON.stringify(transformationPaths, undefined, 2),
   );
 
   for (let { path } of anyOfTransformations) {
@@ -42,11 +42,11 @@ function transformAnyOf(objectPath, api) {
 
   // Expand references
   const childObjects = parentObject.anyOf.map((childRef) =>
-    getObjectFromReference(childRef, api)
+    getObjectFromReference(childRef, api),
   );
   const isEnum = childObjects.reduce(
     (isEnum, childObject) => isEnum && childObject.enum,
-    true
+    true,
   );
 
   if (isEnum) {
@@ -59,7 +59,7 @@ function transformAnyOf(objectPath, api) {
 // Moves all the enum values of the children into the parent
 function transformAnyOfEnum(parentObject, api) {
   const childObjects = parentObject.anyOf.map((childRef) =>
-    getObjectFromReference(childRef, api)
+    getObjectFromReference(childRef, api),
   );
 
   if (!parentObject.enum) {
@@ -84,7 +84,7 @@ function transformAnyOfEnum(parentObject, api) {
 // Moves all the propertis of the children into the parent
 function transformAnyOfProperties(parentObject, api) {
   const childObjects = parentObject.anyOf.map((childRef) =>
-    getObjectFromReference(childRef, api)
+    getObjectFromReference(childRef, api),
   );
 
   for (let childObject of childObjects) {
@@ -115,7 +115,7 @@ function transformAnyOfProperties(parentObject, api) {
     if (duplicates.length > 0) {
       const duplicatesSource = childObject.title || "";
       console.info(
-        `## ${duplicatesSource} - Detected properties that would be overriden: ${duplicates}\n`
+        `## ${duplicatesSource} - Detected properties that would be overriden: ${duplicates}\n`,
       );
     }
     parentObject.properties = {

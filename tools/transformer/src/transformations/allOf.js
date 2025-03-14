@@ -25,7 +25,7 @@ function applyAllOfTransformations(api) {
 
   console.info(
     "# AllOf transformations: ",
-    allOfTransformations.map((e) => e.path)
+    allOfTransformations.map((e) => e.path),
   );
 
   for (let { path } of allOfTransformations) {
@@ -52,12 +52,12 @@ function transformAllOf(objectPath, api) {
     const childName = getObjectNameFromReference(childRef);
     if (!childObject) {
       throw new Error(
-        `Missing object reference: ${childRef} for ${parentName}`
+        `Missing object reference: ${childRef} for ${parentName}`,
       );
     }
     if (removeParentFromAllOf(childObject, parentName)) {
       console.debug(
-        `AllOf: Moving ${parentName} (parent) properties into ${childName} (child) properties`
+        `AllOf: Moving ${parentName} (parent) properties into ${childName} (child) properties`,
       );
       if (!childObject.allOf) {
         childObject.allOf = {};

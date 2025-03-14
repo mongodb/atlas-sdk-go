@@ -28,7 +28,7 @@ function applyModelNameTransformations(api, prefix, suffix, ignoreModels) {
         .replace(suffix, "");
       if (api.components.schemas[schemaTransformedName]) {
         throw new Error(
-          `components.schemas already contain key ${schemaTransformedName}. Please rename ${schemaKey} object to avoid name overlap.`
+          `components.schemas already contain key ${schemaTransformedName}. Please rename ${schemaKey} object to avoid name overlap.`,
         );
       }
       api.components.schemas[schemaTransformedName] =
