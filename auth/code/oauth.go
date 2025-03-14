@@ -196,9 +196,6 @@ func (c *Config) NewRequest(ctx context.Context, method, urlStr string, v url.Va
 	if c.UserAgent != "" {
 		req.Header.Set("User-Agent", c.UserAgent)
 	}
-	if err != nil {
-		return nil, err
-	}
 
 	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 	req.Header.Add("Accept", "application/json")
