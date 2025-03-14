@@ -9,7 +9,7 @@ const { applyDiscriminatorTransformations } = require("./discriminator");
 const { applyArrayTransformations } = require("./swapArray");
 const { applyRemoveEnumsTransformations } = require("./removeEnums");
 const {
-  applyRemoveObjectAdditonalProperties,
+  applyRemoveObjectAdditionalProperties,
 } = require("./additionalPropertiesObject");
 const { applyAnyOfTransformations } = require("./anyOf");
 const { applyRemoveNullableTransformations } = require("./removeNullable");
@@ -26,7 +26,7 @@ module.exports = {
   applyDiscriminatorTransformations,
   applyArrayTransformations,
   applyRemoveEnumsTransformations,
-  applyRemoveObjectAdditonalProperties,
+  applyRemoveObjectAdditionalProperties,
   applyAnyOfTransformations,
   applyRemoveNullableTransformations,
   removeRefsFromParameters,

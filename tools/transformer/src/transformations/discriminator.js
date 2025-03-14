@@ -47,12 +47,12 @@ function transformDiscriminatorOneOf(objectPath, api) {
       `Setting oneOf based on discriminator for allOf transformation in ${parentName}`,
     );
     // Ignore objects that point to themselves
-    oneOfReferences = Object.values(parentObject.discriminator.mapping);
-    // Remove duplicates in referneces
+    let oneOfReferences = Object.values(parentObject.discriminator.mapping);
+    // Remove duplicates in references
     oneOfReferences = [...new Set(oneOfReferences)];
 
     for (referenceObj of oneOfReferences) {
-      if (getObjectNameFromReferenceString(referenceObj) == parentName) {
+      if (getObjectNameFromReferenceString(referenceObj) === parentName) {
         if (isModelIgnored(parentName, ignoreModels)) {
           console.warn("Ignored discriminator reference for: " + parentName);
           return;

@@ -52,7 +52,7 @@ function getAllObjects(object, filter = (_obj) => true) {
         }
       }
     }
-    // Add all properties of the object to the recurssion stack
+    // Add all properties of the object to the recursion stack
     else {
       for (let key of Object.keys(currentObj)) {
         if (typeof currentObj[key] === "object" && currentObj[key]) {
@@ -69,14 +69,12 @@ function getAllObjects(object, filter = (_obj) => true) {
 }
 
 function filterObjectProperties(object, filter = (_k, _v) => true) {
-  const filteredObj = Object.keys(object)
+  return Object.keys(object)
     .filter((key) => filter(key, object[key]))
     .reduce((aggregationObj, key) => {
       aggregationObj[key] = object[key];
       return aggregationObj;
     }, {});
-
-  return filteredObj;
 }
 
 function getObjectProperties(obj) {
@@ -149,11 +147,11 @@ function isSchema(path) {
   const pathStack = path.split(".").reverse();
   pathStack.pop();
 
-  if (pathStack.length != 3) {
+  if (pathStack.length !== 3) {
     return false;
   }
 
-  return pathStack.pop() == "components" && pathStack.pop() == "schemas";
+  return pathStack.pop() === "components" && pathStack.pop() === "schemas";
 }
 
 module.exports = {

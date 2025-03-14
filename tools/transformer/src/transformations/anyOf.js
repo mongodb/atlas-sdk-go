@@ -10,7 +10,6 @@ const { detectDuplicates } = require("../engine/transformers");
  * Transforms provided API JSON file using anyOf transformation
  *
  * @param {*} api OpenAPI JSON File
- * @param {*} anyOfTransformations array of transformations to apply
  * @returns OpenAPI JSON File
  */
 function applyAnyOfTransformations(api) {
@@ -18,7 +17,7 @@ function applyAnyOfTransformations(api) {
     return canApplyAnyOfTransformation(obj, api);
   });
 
-  transformationPaths = anyOfTransformations.map((e) => e.path);
+  const transformationPaths = anyOfTransformations.map((e) => e.path);
 
   console.info(
     "# AnyOf transformations: " +
@@ -81,7 +80,7 @@ function transformAnyOfEnum(parentObject, api) {
   delete parentObject.anyOf;
 }
 
-// Moves all the propertis of the children into the parent
+// Moves all the properties of the children into the parent
 function transformAnyOfProperties(parentObject, api) {
   const childObjects = parentObject.anyOf.map((childRef) =>
     getObjectFromReference(childRef, api),
@@ -129,11 +128,8 @@ function transformAnyOfProperties(parentObject, api) {
   delete parentObject.anyOf;
 }
 
-function canApplyAnyOfTransformation(obj, api) {
-  if (obj.anyOf) {
-    return true;
-  }
-  return false;
+function canApplyAnyOfTransformation(obj, _) {
+  return !!obj.anyOf;
 }
 
 module.exports = {
