@@ -59,7 +59,7 @@ type DatabaseUsersApi interface {
 	DeleteDatabaseUserWithParams(ctx context.Context, args *DeleteDatabaseUserApiParams) DeleteDatabaseUserApiRequest
 
 	// Method available only for mocking purposes
-	DeleteDatabaseUserExecute(r DeleteDatabaseUserApiRequest) (any, *http.Response, error)
+	DeleteDatabaseUserExecute(r DeleteDatabaseUserApiRequest) (*http.Response, error)
 
 	/*
 		GetDatabaseUser Return One Database User from One Project
@@ -283,7 +283,7 @@ func (a *DatabaseUsersApiService) DeleteDatabaseUserWithParams(ctx context.Conte
 	}
 }
 
-func (r DeleteDatabaseUserApiRequest) Execute() (any, *http.Response, error) {
+func (r DeleteDatabaseUserApiRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteDatabaseUserExecute(r)
 }
 
@@ -309,19 +309,16 @@ func (a *DatabaseUsersApiService) DeleteDatabaseUser(ctx context.Context, groupI
 }
 
 // DeleteDatabaseUserExecute executes the request
-//
-//	@return any
-func (a *DatabaseUsersApiService) DeleteDatabaseUserExecute(r DeleteDatabaseUserApiRequest) (any, *http.Response, error) {
+func (a *DatabaseUsersApiService) DeleteDatabaseUserExecute(r DeleteDatabaseUserApiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue any
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   any
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseUsersApiService.DeleteDatabaseUser")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/databaseUsers/{databaseName}/{username}"
@@ -352,34 +349,20 @@ func (a *DatabaseUsersApiService) DeleteDatabaseUserExecute(r DeleteDatabaseUser
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
 		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
 
 type GetDatabaseUserApiRequest struct {

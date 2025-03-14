@@ -35,7 +35,7 @@ type ProgrammaticAPIKeysApi interface {
 	AddProjectApiKeyWithParams(ctx context.Context, args *AddProjectApiKeyApiParams) AddProjectApiKeyApiRequest
 
 	// Method available only for mocking purposes
-	AddProjectApiKeyExecute(r AddProjectApiKeyApiRequest) (any, *http.Response, error)
+	AddProjectApiKeyExecute(r AddProjectApiKeyApiRequest) (*http.Response, error)
 
 	/*
 		CreateApiKey Create One Organization API Key
@@ -132,7 +132,7 @@ type ProgrammaticAPIKeysApi interface {
 	DeleteApiKeyWithParams(ctx context.Context, args *DeleteApiKeyApiParams) DeleteApiKeyApiRequest
 
 	// Method available only for mocking purposes
-	DeleteApiKeyExecute(r DeleteApiKeyApiRequest) (any, *http.Response, error)
+	DeleteApiKeyExecute(r DeleteApiKeyApiRequest) (*http.Response, error)
 
 	/*
 		DeleteApiKeyAccessListEntry Remove One Access List Entry for One Organization API Key
@@ -157,7 +157,7 @@ type ProgrammaticAPIKeysApi interface {
 	DeleteApiKeyAccessListEntryWithParams(ctx context.Context, args *DeleteApiKeyAccessListEntryApiParams) DeleteApiKeyAccessListEntryApiRequest
 
 	// Method available only for mocking purposes
-	DeleteApiKeyAccessListEntryExecute(r DeleteApiKeyAccessListEntryApiRequest) (any, *http.Response, error)
+	DeleteApiKeyAccessListEntryExecute(r DeleteApiKeyAccessListEntryApiRequest) (*http.Response, error)
 
 	/*
 		GetApiKey Return One Organization API Key
@@ -300,7 +300,7 @@ type ProgrammaticAPIKeysApi interface {
 	RemoveProjectApiKeyWithParams(ctx context.Context, args *RemoveProjectApiKeyApiParams) RemoveProjectApiKeyApiRequest
 
 	// Method available only for mocking purposes
-	RemoveProjectApiKeyExecute(r RemoveProjectApiKeyApiRequest) (any, *http.Response, error)
+	RemoveProjectApiKeyExecute(r RemoveProjectApiKeyApiRequest) (*http.Response, error)
 
 	/*
 		UpdateApiKey Update One Organization API Key
@@ -380,7 +380,7 @@ func (a *ProgrammaticAPIKeysApiService) AddProjectApiKeyWithParams(ctx context.C
 	}
 }
 
-func (r AddProjectApiKeyApiRequest) Execute() (any, *http.Response, error) {
+func (r AddProjectApiKeyApiRequest) Execute() (*http.Response, error) {
 	return r.ApiService.AddProjectApiKeyExecute(r)
 }
 
@@ -405,19 +405,16 @@ func (a *ProgrammaticAPIKeysApiService) AddProjectApiKey(ctx context.Context, gr
 }
 
 // AddProjectApiKeyExecute executes the request
-//
-//	@return any
-func (a *ProgrammaticAPIKeysApiService) AddProjectApiKeyExecute(r AddProjectApiKeyApiRequest) (any, *http.Response, error) {
+func (a *ProgrammaticAPIKeysApiService) AddProjectApiKeyExecute(r AddProjectApiKeyApiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue any
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   any
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProgrammaticAPIKeysApiService.AddProjectApiKey")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/apiKeys/{apiUserId}"
@@ -428,7 +425,7 @@ func (a *ProgrammaticAPIKeysApiService) AddProjectApiKeyExecute(r AddProjectApiK
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 	if r.userAccessRoleAssignment == nil {
-		return localVarReturnValue, nil, reportError("userAccessRoleAssignment is required and must be specified")
+		return nil, reportError("userAccessRoleAssignment is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -452,34 +449,20 @@ func (a *ProgrammaticAPIKeysApiService) AddProjectApiKeyExecute(r AddProjectApiK
 	localVarPostBody = r.userAccessRoleAssignment
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
 		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
 
 type CreateApiKeyApiRequest struct {
@@ -917,7 +900,7 @@ func (a *ProgrammaticAPIKeysApiService) DeleteApiKeyWithParams(ctx context.Conte
 	}
 }
 
-func (r DeleteApiKeyApiRequest) Execute() (any, *http.Response, error) {
+func (r DeleteApiKeyApiRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteApiKeyExecute(r)
 }
 
@@ -941,19 +924,16 @@ func (a *ProgrammaticAPIKeysApiService) DeleteApiKey(ctx context.Context, orgId 
 }
 
 // DeleteApiKeyExecute executes the request
-//
-//	@return any
-func (a *ProgrammaticAPIKeysApiService) DeleteApiKeyExecute(r DeleteApiKeyApiRequest) (any, *http.Response, error) {
+func (a *ProgrammaticAPIKeysApiService) DeleteApiKeyExecute(r DeleteApiKeyApiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue any
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   any
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProgrammaticAPIKeysApiService.DeleteApiKey")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}"
@@ -983,34 +963,20 @@ func (a *ProgrammaticAPIKeysApiService) DeleteApiKeyExecute(r DeleteApiKeyApiReq
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
 		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
 
 type DeleteApiKeyAccessListEntryApiRequest struct {
@@ -1037,7 +1003,7 @@ func (a *ProgrammaticAPIKeysApiService) DeleteApiKeyAccessListEntryWithParams(ct
 	}
 }
 
-func (r DeleteApiKeyAccessListEntryApiRequest) Execute() (any, *http.Response, error) {
+func (r DeleteApiKeyAccessListEntryApiRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteApiKeyAccessListEntryExecute(r)
 }
 
@@ -1063,19 +1029,16 @@ func (a *ProgrammaticAPIKeysApiService) DeleteApiKeyAccessListEntry(ctx context.
 }
 
 // DeleteApiKeyAccessListEntryExecute executes the request
-//
-//	@return any
-func (a *ProgrammaticAPIKeysApiService) DeleteApiKeyAccessListEntryExecute(r DeleteApiKeyAccessListEntryApiRequest) (any, *http.Response, error) {
+func (a *ProgrammaticAPIKeysApiService) DeleteApiKeyAccessListEntryExecute(r DeleteApiKeyAccessListEntryApiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue any
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   any
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProgrammaticAPIKeysApiService.DeleteApiKeyAccessListEntry")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}/accessList/{ipAddress}"
@@ -1106,34 +1069,20 @@ func (a *ProgrammaticAPIKeysApiService) DeleteApiKeyAccessListEntryExecute(r Del
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
 		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
 
 type GetApiKeyApiRequest struct {
@@ -1880,7 +1829,7 @@ func (a *ProgrammaticAPIKeysApiService) RemoveProjectApiKeyWithParams(ctx contex
 	}
 }
 
-func (r RemoveProjectApiKeyApiRequest) Execute() (any, *http.Response, error) {
+func (r RemoveProjectApiKeyApiRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RemoveProjectApiKeyExecute(r)
 }
 
@@ -1904,19 +1853,16 @@ func (a *ProgrammaticAPIKeysApiService) RemoveProjectApiKey(ctx context.Context,
 }
 
 // RemoveProjectApiKeyExecute executes the request
-//
-//	@return any
-func (a *ProgrammaticAPIKeysApiService) RemoveProjectApiKeyExecute(r RemoveProjectApiKeyApiRequest) (any, *http.Response, error) {
+func (a *ProgrammaticAPIKeysApiService) RemoveProjectApiKeyExecute(r RemoveProjectApiKeyApiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue any
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   any
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProgrammaticAPIKeysApiService.RemoveProjectApiKey")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/apiKeys/{apiUserId}"
@@ -1946,34 +1892,20 @@ func (a *ProgrammaticAPIKeysApiService) RemoveProjectApiKeyExecute(r RemoveProje
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
 		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
 
 type UpdateApiKeyApiRequest struct {

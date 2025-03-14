@@ -126,7 +126,7 @@ type DataFederationApi interface {
 	DeleteDataFederationPrivateEndpointWithParams(ctx context.Context, args *DeleteDataFederationPrivateEndpointApiParams) DeleteDataFederationPrivateEndpointApiRequest
 
 	// Method available only for mocking purposes
-	DeleteDataFederationPrivateEndpointExecute(r DeleteDataFederationPrivateEndpointApiRequest) (any, *http.Response, error)
+	DeleteDataFederationPrivateEndpointExecute(r DeleteDataFederationPrivateEndpointApiRequest) (*http.Response, error)
 
 	/*
 		DeleteFederatedDatabase Remove One Federated Database Instance from One Project
@@ -150,7 +150,7 @@ type DataFederationApi interface {
 	DeleteFederatedDatabaseWithParams(ctx context.Context, args *DeleteFederatedDatabaseApiParams) DeleteFederatedDatabaseApiRequest
 
 	// Method available only for mocking purposes
-	DeleteFederatedDatabaseExecute(r DeleteFederatedDatabaseApiRequest) (any, *http.Response, error)
+	DeleteFederatedDatabaseExecute(r DeleteFederatedDatabaseApiRequest) (*http.Response, error)
 
 	/*
 		DeleteOneDataFederationInstanceQueryLimit Delete One Query Limit For One Federated Database Instance
@@ -175,7 +175,7 @@ type DataFederationApi interface {
 	DeleteOneDataFederationInstanceQueryLimitWithParams(ctx context.Context, args *DeleteOneDataFederationInstanceQueryLimitApiParams) DeleteOneDataFederationInstanceQueryLimitApiRequest
 
 	// Method available only for mocking purposes
-	DeleteOneDataFederationInstanceQueryLimitExecute(r DeleteOneDataFederationInstanceQueryLimitApiRequest) (any, *http.Response, error)
+	DeleteOneDataFederationInstanceQueryLimitExecute(r DeleteOneDataFederationInstanceQueryLimitApiRequest) (*http.Response, error)
 
 	/*
 		DownloadFederatedDatabaseQueryLogs Download Query Logs for One Federated Database Instance
@@ -800,7 +800,7 @@ func (a *DataFederationApiService) DeleteDataFederationPrivateEndpointWithParams
 	}
 }
 
-func (r DeleteDataFederationPrivateEndpointApiRequest) Execute() (any, *http.Response, error) {
+func (r DeleteDataFederationPrivateEndpointApiRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteDataFederationPrivateEndpointExecute(r)
 }
 
@@ -824,19 +824,16 @@ func (a *DataFederationApiService) DeleteDataFederationPrivateEndpoint(ctx conte
 }
 
 // DeleteDataFederationPrivateEndpointExecute executes the request
-//
-//	@return any
-func (a *DataFederationApiService) DeleteDataFederationPrivateEndpointExecute(r DeleteDataFederationPrivateEndpointApiRequest) (any, *http.Response, error) {
+func (a *DataFederationApiService) DeleteDataFederationPrivateEndpointExecute(r DeleteDataFederationPrivateEndpointApiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue any
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   any
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataFederationApiService.DeleteDataFederationPrivateEndpoint")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/privateNetworkSettings/endpointIds/{endpointId}"
@@ -866,34 +863,20 @@ func (a *DataFederationApiService) DeleteDataFederationPrivateEndpointExecute(r 
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
 		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
 
 type DeleteFederatedDatabaseApiRequest struct {
@@ -917,7 +900,7 @@ func (a *DataFederationApiService) DeleteFederatedDatabaseWithParams(ctx context
 	}
 }
 
-func (r DeleteFederatedDatabaseApiRequest) Execute() (any, *http.Response, error) {
+func (r DeleteFederatedDatabaseApiRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteFederatedDatabaseExecute(r)
 }
 
@@ -941,19 +924,16 @@ func (a *DataFederationApiService) DeleteFederatedDatabase(ctx context.Context, 
 }
 
 // DeleteFederatedDatabaseExecute executes the request
-//
-//	@return any
-func (a *DataFederationApiService) DeleteFederatedDatabaseExecute(r DeleteFederatedDatabaseApiRequest) (any, *http.Response, error) {
+func (a *DataFederationApiService) DeleteFederatedDatabaseExecute(r DeleteFederatedDatabaseApiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue any
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   any
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataFederationApiService.DeleteFederatedDatabase")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}"
@@ -983,34 +963,20 @@ func (a *DataFederationApiService) DeleteFederatedDatabaseExecute(r DeleteFedera
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
 		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
 
 type DeleteOneDataFederationInstanceQueryLimitApiRequest struct {
@@ -1037,7 +1003,7 @@ func (a *DataFederationApiService) DeleteOneDataFederationInstanceQueryLimitWith
 	}
 }
 
-func (r DeleteOneDataFederationInstanceQueryLimitApiRequest) Execute() (any, *http.Response, error) {
+func (r DeleteOneDataFederationInstanceQueryLimitApiRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteOneDataFederationInstanceQueryLimitExecute(r)
 }
 
@@ -1063,19 +1029,16 @@ func (a *DataFederationApiService) DeleteOneDataFederationInstanceQueryLimit(ctx
 }
 
 // DeleteOneDataFederationInstanceQueryLimitExecute executes the request
-//
-//	@return any
-func (a *DataFederationApiService) DeleteOneDataFederationInstanceQueryLimitExecute(r DeleteOneDataFederationInstanceQueryLimitApiRequest) (any, *http.Response, error) {
+func (a *DataFederationApiService) DeleteOneDataFederationInstanceQueryLimitExecute(r DeleteOneDataFederationInstanceQueryLimitApiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue any
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   any
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataFederationApiService.DeleteOneDataFederationInstanceQueryLimit")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/limits/{limitName}"
@@ -1106,34 +1069,20 @@ func (a *DataFederationApiService) DeleteOneDataFederationInstanceQueryLimitExec
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
 		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
 
 type DownloadFederatedDatabaseQueryLogsApiRequest struct {

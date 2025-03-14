@@ -14,6 +14,34 @@ import (
 type ClustersApi interface {
 
 	/*
+		AutoScalingConfiguration Get cluster internal configuration of sharded cluster AutoScaling operations
+
+		Returns the internal configuration of AutoScaling for sharded clusters. This endpoint can be used for diagnostic purposes to ensure that sharded clusters updated from older APIs have gained support for AutoScaling each shard independently.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param clusterName Human-readable label that identifies this cluster.
+		@return AutoScalingConfigurationApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for ClustersApi
+	*/
+	AutoScalingConfiguration(ctx context.Context, groupId string, clusterName string) AutoScalingConfigurationApiRequest
+	/*
+		AutoScalingConfiguration Get cluster internal configuration of sharded cluster AutoScaling operations
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param AutoScalingConfigurationApiParams - Parameters for the request
+		@return AutoScalingConfigurationApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for ClustersApi
+	*/
+	AutoScalingConfigurationWithParams(ctx context.Context, args *AutoScalingConfigurationApiParams) AutoScalingConfigurationApiRequest
+
+	// Method available only for mocking purposes
+	AutoScalingConfigurationExecute(r AutoScalingConfigurationApiRequest) (*ClusterDescriptionAutoScalingModeConfiguration, *http.Response, error)
+
+	/*
 			CreateCluster Create One Cluster from One Project
 
 			Creates one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. This resource can create clusters with asymmetrically-sized shards. Each project supports up to 25 database deployments. To use this resource, the requesting API Key must have the Project Owner role. This feature is not available for serverless clusters.
@@ -186,7 +214,7 @@ type ClustersApi interface {
 	GrantMongoDbEmployeeAccessWithParams(ctx context.Context, args *GrantMongoDbEmployeeAccessApiParams) GrantMongoDbEmployeeAccessApiRequest
 
 	// Method available only for mocking purposes
-	GrantMongoDbEmployeeAccessExecute(r GrantMongoDbEmployeeAccessApiRequest) (any, *http.Response, error)
+	GrantMongoDbEmployeeAccessExecute(r GrantMongoDbEmployeeAccessApiRequest) (*http.Response, error)
 
 	/*
 		ListCloudProviderRegions Return All Cloud Provider Regions
@@ -305,7 +333,7 @@ type ClustersApi interface {
 	PinFeatureCompatibilityVersionWithParams(ctx context.Context, args *PinFeatureCompatibilityVersionApiParams) PinFeatureCompatibilityVersionApiRequest
 
 	// Method available only for mocking purposes
-	PinFeatureCompatibilityVersionExecute(r PinFeatureCompatibilityVersionApiRequest) (any, *http.Response, error)
+	PinFeatureCompatibilityVersionExecute(r PinFeatureCompatibilityVersionApiRequest) (*http.Response, error)
 
 	/*
 		RevokeMongoDbEmployeeAccess Revoke granted MongoDB employee cluster access for one cluster.
@@ -329,7 +357,7 @@ type ClustersApi interface {
 	RevokeMongoDbEmployeeAccessWithParams(ctx context.Context, args *RevokeMongoDbEmployeeAccessApiParams) RevokeMongoDbEmployeeAccessApiRequest
 
 	// Method available only for mocking purposes
-	RevokeMongoDbEmployeeAccessExecute(r RevokeMongoDbEmployeeAccessApiRequest) (any, *http.Response, error)
+	RevokeMongoDbEmployeeAccessExecute(r RevokeMongoDbEmployeeAccessApiRequest) (*http.Response, error)
 
 	/*
 		TestFailover Test Failover for One Cluster
@@ -377,7 +405,7 @@ type ClustersApi interface {
 	UnpinFeatureCompatibilityVersionWithParams(ctx context.Context, args *UnpinFeatureCompatibilityVersionApiParams) UnpinFeatureCompatibilityVersionApiRequest
 
 	// Method available only for mocking purposes
-	UnpinFeatureCompatibilityVersionExecute(r UnpinFeatureCompatibilityVersionApiRequest) (any, *http.Response, error)
+	UnpinFeatureCompatibilityVersionExecute(r UnpinFeatureCompatibilityVersionApiRequest) (*http.Response, error)
 
 	/*
 		UpdateCluster Modify One Cluster from One Project
@@ -488,6 +516,127 @@ type ClustersApi interface {
 
 // ClustersApiService ClustersApi service
 type ClustersApiService service
+
+type AutoScalingConfigurationApiRequest struct {
+	ctx         context.Context
+	ApiService  ClustersApi
+	groupId     string
+	clusterName string
+}
+
+type AutoScalingConfigurationApiParams struct {
+	GroupId     string
+	ClusterName string
+}
+
+func (a *ClustersApiService) AutoScalingConfigurationWithParams(ctx context.Context, args *AutoScalingConfigurationApiParams) AutoScalingConfigurationApiRequest {
+	return AutoScalingConfigurationApiRequest{
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     args.GroupId,
+		clusterName: args.ClusterName,
+	}
+}
+
+func (r AutoScalingConfigurationApiRequest) Execute() (*ClusterDescriptionAutoScalingModeConfiguration, *http.Response, error) {
+	return r.ApiService.AutoScalingConfigurationExecute(r)
+}
+
+/*
+AutoScalingConfiguration Get cluster internal configuration of sharded cluster AutoScaling operations
+
+Returns the internal configuration of AutoScaling for sharded clusters. This endpoint can be used for diagnostic purposes to ensure that sharded clusters updated from older APIs have gained support for AutoScaling each shard independently.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param clusterName Human-readable label that identifies this cluster.
+	@return AutoScalingConfigurationApiRequest
+
+Deprecated
+*/
+func (a *ClustersApiService) AutoScalingConfiguration(ctx context.Context, groupId string, clusterName string) AutoScalingConfigurationApiRequest {
+	return AutoScalingConfigurationApiRequest{
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     groupId,
+		clusterName: clusterName,
+	}
+}
+
+// AutoScalingConfigurationExecute executes the request
+//
+//	@return ClusterDescriptionAutoScalingModeConfiguration
+//
+// Deprecated
+func (a *ClustersApiService) AutoScalingConfigurationExecute(r AutoScalingConfigurationApiRequest) (*ClusterDescriptionAutoScalingModeConfiguration, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *ClusterDescriptionAutoScalingModeConfiguration
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.AutoScalingConfiguration")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/autoScalingConfiguration"
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-08-05+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
 
 type CreateClusterApiRequest struct {
 	ctx                        context.Context
@@ -1219,7 +1368,7 @@ func (a *ClustersApiService) GrantMongoDbEmployeeAccessWithParams(ctx context.Co
 	}
 }
 
-func (r GrantMongoDbEmployeeAccessApiRequest) Execute() (any, *http.Response, error) {
+func (r GrantMongoDbEmployeeAccessApiRequest) Execute() (*http.Response, error) {
 	return r.ApiService.GrantMongoDbEmployeeAccessExecute(r)
 }
 
@@ -1244,19 +1393,16 @@ func (a *ClustersApiService) GrantMongoDbEmployeeAccess(ctx context.Context, gro
 }
 
 // GrantMongoDbEmployeeAccessExecute executes the request
-//
-//	@return any
-func (a *ClustersApiService) GrantMongoDbEmployeeAccessExecute(r GrantMongoDbEmployeeAccessApiRequest) (any, *http.Response, error) {
+func (a *ClustersApiService) GrantMongoDbEmployeeAccessExecute(r GrantMongoDbEmployeeAccessApiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue any
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   any
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.GrantMongoDbEmployeeAccess")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}:grantMongoDBEmployeeAccess"
@@ -1267,7 +1413,7 @@ func (a *ClustersApiService) GrantMongoDbEmployeeAccessExecute(r GrantMongoDbEmp
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 	if r.employeeAccessGrant == nil {
-		return localVarReturnValue, nil, reportError("employeeAccessGrant is required and must be specified")
+		return nil, reportError("employeeAccessGrant is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1291,34 +1437,20 @@ func (a *ClustersApiService) GrantMongoDbEmployeeAccessExecute(r GrantMongoDbEmp
 	localVarPostBody = r.employeeAccessGrant
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
 		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
 
 type ListCloudProviderRegionsApiRequest struct {
@@ -1979,7 +2111,7 @@ func (a *ClustersApiService) PinFeatureCompatibilityVersionWithParams(ctx contex
 	}
 }
 
-func (r PinFeatureCompatibilityVersionApiRequest) Execute() (any, *http.Response, error) {
+func (r PinFeatureCompatibilityVersionApiRequest) Execute() (*http.Response, error) {
 	return r.ApiService.PinFeatureCompatibilityVersionExecute(r)
 }
 
@@ -2004,19 +2136,16 @@ func (a *ClustersApiService) PinFeatureCompatibilityVersion(ctx context.Context,
 }
 
 // PinFeatureCompatibilityVersionExecute executes the request
-//
-//	@return any
-func (a *ClustersApiService) PinFeatureCompatibilityVersionExecute(r PinFeatureCompatibilityVersionApiRequest) (any, *http.Response, error) {
+func (a *ClustersApiService) PinFeatureCompatibilityVersionExecute(r PinFeatureCompatibilityVersionApiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue any
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   any
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.PinFeatureCompatibilityVersion")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}:pinFeatureCompatibilityVersion"
@@ -2048,34 +2177,20 @@ func (a *ClustersApiService) PinFeatureCompatibilityVersionExecute(r PinFeatureC
 	localVarPostBody = r.pinFCV
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
 		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
 
 type RevokeMongoDbEmployeeAccessApiRequest struct {
@@ -2099,7 +2214,7 @@ func (a *ClustersApiService) RevokeMongoDbEmployeeAccessWithParams(ctx context.C
 	}
 }
 
-func (r RevokeMongoDbEmployeeAccessApiRequest) Execute() (any, *http.Response, error) {
+func (r RevokeMongoDbEmployeeAccessApiRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RevokeMongoDbEmployeeAccessExecute(r)
 }
 
@@ -2123,19 +2238,16 @@ func (a *ClustersApiService) RevokeMongoDbEmployeeAccess(ctx context.Context, gr
 }
 
 // RevokeMongoDbEmployeeAccessExecute executes the request
-//
-//	@return any
-func (a *ClustersApiService) RevokeMongoDbEmployeeAccessExecute(r RevokeMongoDbEmployeeAccessApiRequest) (any, *http.Response, error) {
+func (a *ClustersApiService) RevokeMongoDbEmployeeAccessExecute(r RevokeMongoDbEmployeeAccessApiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue any
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   any
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.RevokeMongoDbEmployeeAccess")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}:revokeMongoDBEmployeeAccess"
@@ -2165,34 +2277,20 @@ func (a *ClustersApiService) RevokeMongoDbEmployeeAccessExecute(r RevokeMongoDbE
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
 		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
 
 type TestFailoverApiRequest struct {
@@ -2316,7 +2414,7 @@ func (a *ClustersApiService) UnpinFeatureCompatibilityVersionWithParams(ctx cont
 	}
 }
 
-func (r UnpinFeatureCompatibilityVersionApiRequest) Execute() (any, *http.Response, error) {
+func (r UnpinFeatureCompatibilityVersionApiRequest) Execute() (*http.Response, error) {
 	return r.ApiService.UnpinFeatureCompatibilityVersionExecute(r)
 }
 
@@ -2340,19 +2438,16 @@ func (a *ClustersApiService) UnpinFeatureCompatibilityVersion(ctx context.Contex
 }
 
 // UnpinFeatureCompatibilityVersionExecute executes the request
-//
-//	@return any
-func (a *ClustersApiService) UnpinFeatureCompatibilityVersionExecute(r UnpinFeatureCompatibilityVersionApiRequest) (any, *http.Response, error) {
+func (a *ClustersApiService) UnpinFeatureCompatibilityVersionExecute(r UnpinFeatureCompatibilityVersionApiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue any
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   any
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.UnpinFeatureCompatibilityVersion")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}:unpinFeatureCompatibilityVersion"
@@ -2382,34 +2477,20 @@ func (a *ClustersApiService) UnpinFeatureCompatibilityVersionExecute(r UnpinFeat
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
 		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
 
 type UpdateClusterApiRequest struct {

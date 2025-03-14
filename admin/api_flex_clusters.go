@@ -58,7 +58,7 @@ type FlexClustersApi interface {
 	DeleteFlexClusterWithParams(ctx context.Context, args *DeleteFlexClusterApiParams) DeleteFlexClusterApiRequest
 
 	// Method available only for mocking purposes
-	DeleteFlexClusterExecute(r DeleteFlexClusterApiRequest) (any, *http.Response, error)
+	DeleteFlexClusterExecute(r DeleteFlexClusterApiRequest) (*http.Response, error)
 
 	/*
 		GetFlexCluster Return One Flex Cluster from One Project
@@ -301,7 +301,7 @@ func (a *FlexClustersApiService) DeleteFlexClusterWithParams(ctx context.Context
 	}
 }
 
-func (r DeleteFlexClusterApiRequest) Execute() (any, *http.Response, error) {
+func (r DeleteFlexClusterApiRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteFlexClusterExecute(r)
 }
 
@@ -325,19 +325,16 @@ func (a *FlexClustersApiService) DeleteFlexCluster(ctx context.Context, groupId 
 }
 
 // DeleteFlexClusterExecute executes the request
-//
-//	@return any
-func (a *FlexClustersApiService) DeleteFlexClusterExecute(r DeleteFlexClusterApiRequest) (any, *http.Response, error) {
+func (a *FlexClustersApiService) DeleteFlexClusterExecute(r DeleteFlexClusterApiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue any
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   any
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlexClustersApiService.DeleteFlexCluster")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/flexClusters/{name}"
@@ -367,34 +364,20 @@ func (a *FlexClustersApiService) DeleteFlexClusterExecute(r DeleteFlexClusterApi
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
 		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
 
 type GetFlexClusterApiRequest struct {

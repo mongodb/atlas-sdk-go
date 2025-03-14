@@ -88,7 +88,7 @@ type CollectionLevelMetricsApi interface {
 	GetCollStatsLatencyNamespaceMetricsWithParams(ctx context.Context, args *GetCollStatsLatencyNamespaceMetricsApiParams) GetCollStatsLatencyNamespaceMetricsApiRequest
 
 	// Method available only for mocking purposes
-	GetCollStatsLatencyNamespaceMetricsExecute(r GetCollStatsLatencyNamespaceMetricsApiRequest) (any, *http.Response, error)
+	GetCollStatsLatencyNamespaceMetricsExecute(r GetCollStatsLatencyNamespaceMetricsApiRequest) (*http.Response, error)
 
 	/*
 		GetCollStatsLatencyNamespacesForCluster Return Ranked Namespaces from a Cluster
@@ -628,7 +628,7 @@ func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespaceMetricsWi
 	}
 }
 
-func (r GetCollStatsLatencyNamespaceMetricsApiRequest) Execute() (any, *http.Response, error) {
+func (r GetCollStatsLatencyNamespaceMetricsApiRequest) Execute() (*http.Response, error) {
 	return r.ApiService.GetCollStatsLatencyNamespaceMetricsExecute(r)
 }
 
@@ -650,19 +650,16 @@ func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespaceMetrics(c
 }
 
 // GetCollStatsLatencyNamespaceMetricsExecute executes the request
-//
-//	@return any
-func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespaceMetricsExecute(r GetCollStatsLatencyNamespaceMetricsApiRequest) (any, *http.Response, error) {
+func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespaceMetricsExecute(r GetCollStatsLatencyNamespaceMetricsApiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue any
+		localVarHTTPMethod = http.MethodGet
+		localVarPostBody   any
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionLevelMetricsApiService.GetCollStatsLatencyNamespaceMetrics")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/collStats/metrics"
@@ -691,34 +688,20 @@ func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespaceMetricsEx
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
 		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
 
 type GetCollStatsLatencyNamespacesForClusterApiRequest struct {

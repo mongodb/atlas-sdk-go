@@ -297,7 +297,7 @@ type MongoDBCloudUsersApi interface {
 
 		**Note**: This resource cannot be used to view details about users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
 
-		**Note**: If using a deprecated version, only active users will be returned. Deprecated versions: v2-{2023-01-01}
+		**Note**: To return both pending and active users, use v2-{2025-02-19} or later. If using a deprecated version, only active users will be returned. Deprecated versions: v2-{2023-01-01}
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -324,7 +324,7 @@ type MongoDBCloudUsersApi interface {
 
 		**Note**: This resource cannot be used to view details about users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
 
-		**Note**: If using a deprecated version, only active users will be returned. Deprecated versions: v2-{2023-01-01}
+		**Note**: To return both pending and active users, use v2-{2025-02-19} or later. If using a deprecated version, only active users will be returned. Deprecated versions: v2-{2023-01-01}
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -347,9 +347,11 @@ type MongoDBCloudUsersApi interface {
 	/*
 			ListTeamUsers Return All MongoDB Cloud Users Assigned to One Team
 
-			Returns details about the pending and active MongoDB Cloud users associated with the specified team in the organization. Teams enable you to grant project access roles to MongoDB Cloud users. To use this resource, the requesting API Key must have the Organization Member role.**Note**: This resource cannot be used to view details about users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
+			Returns details about the pending and active MongoDB Cloud users associated with the specified team in the organization. Teams enable you to grant project access roles to MongoDB Cloud users. To use this resource, the requesting API Key must have the Organization Member role.
 
-		**Note**: If using a deprecated version, only active users will be returned. Deprecated versions: v2-{2023-01-01}
+		**Note**: This resource cannot be used to view details about users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
+
+		**Note**: To return both pending and active users, use v2-{2025-02-19} or later. If using a deprecated version, only active users will be returned. Deprecated versions: v2-{2023-01-01}
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -406,7 +408,7 @@ type MongoDBCloudUsersApi interface {
 
 		**Note**: This resource cannot be used to remove pending users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
 
-		**Note**: If using a deprecated version, only active users can be removed. Deprecated versions: v2-{2023-01-01}
+		**Note**: To remove pending or active users, use v2-{2025-02-19} or later. If using a deprecated version, only active users can be removed. Deprecated versions: v2-{2023-01-01}
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -425,7 +427,7 @@ type MongoDBCloudUsersApi interface {
 	RemoveOrganizationUserWithParams(ctx context.Context, args *RemoveOrganizationUserApiParams) RemoveOrganizationUserApiRequest
 
 	// Method available only for mocking purposes
-	RemoveOrganizationUserExecute(r RemoveOrganizationUserApiRequest) (any, *http.Response, error)
+	RemoveOrganizationUserExecute(r RemoveOrganizationUserApiRequest) (*http.Response, error)
 
 	/*
 			RemoveProjectRole Remove One Project Role from One MongoDB Cloud User
@@ -461,7 +463,7 @@ type MongoDBCloudUsersApi interface {
 
 		**Note**: This resource cannot be used to remove pending users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
 
-		**Note**: If using a deprecated version, only active users can be removed. Deprecated versions: v2-{2023-01-01}
+		**Note**: To remove pending or active users, use v2-{2025-02-19} or later. If using a deprecated version, only active users can be removed. Deprecated versions: v2-{2023-01-01}
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -480,7 +482,7 @@ type MongoDBCloudUsersApi interface {
 	RemoveProjectUserWithParams(ctx context.Context, args *RemoveProjectUserApiParams) RemoveProjectUserApiRequest
 
 	// Method available only for mocking purposes
-	RemoveProjectUserExecute(r RemoveProjectUserApiRequest) (any, *http.Response, error)
+	RemoveProjectUserExecute(r RemoveProjectUserApiRequest) (*http.Response, error)
 
 	/*
 			RemoveUserFromTeam Remove One MongoDB Cloud User from One Team
@@ -1841,7 +1843,7 @@ Returns details about the pending and active MongoDB Cloud users associated with
 
 **Note**: This resource cannot be used to view details about users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
 
-**Note**: If using a deprecated version, only active users will be returned. Deprecated versions: v2-{2023-01-01}
+**Note**: To return both pending and active users, use v2-{2025-02-19} or later. If using a deprecated version, only active users will be returned. Deprecated versions: v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -2046,7 +2048,7 @@ Returns details about the pending and active MongoDB Cloud users associated with
 
 **Note**: This resource cannot be used to view details about users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
 
-**Note**: If using a deprecated version, only active users will be returned. Deprecated versions: v2-{2023-01-01}
+**Note**: To return both pending and active users, use v2-{2025-02-19} or later. If using a deprecated version, only active users will be returned. Deprecated versions: v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -2237,9 +2239,11 @@ func (r ListTeamUsersApiRequest) Execute() (*PaginatedOrgUser, *http.Response, e
 /*
 ListTeamUsers Return All MongoDB Cloud Users Assigned to One Team
 
-Returns details about the pending and active MongoDB Cloud users associated with the specified team in the organization. Teams enable you to grant project access roles to MongoDB Cloud users. To use this resource, the requesting API Key must have the Organization Member role.**Note**: This resource cannot be used to view details about users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
+Returns details about the pending and active MongoDB Cloud users associated with the specified team in the organization. Teams enable you to grant project access roles to MongoDB Cloud users. To use this resource, the requesting API Key must have the Organization Member role.
 
-**Note**: If using a deprecated version, only active users will be returned. Deprecated versions: v2-{2023-01-01}
+**Note**: This resource cannot be used to view details about users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
+
+**Note**: To return both pending and active users, use v2-{2025-02-19} or later. If using a deprecated version, only active users will be returned. Deprecated versions: v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -2499,7 +2503,7 @@ func (a *MongoDBCloudUsersApiService) RemoveOrganizationUserWithParams(ctx conte
 	}
 }
 
-func (r RemoveOrganizationUserApiRequest) Execute() (any, *http.Response, error) {
+func (r RemoveOrganizationUserApiRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RemoveOrganizationUserExecute(r)
 }
 
@@ -2510,7 +2514,7 @@ Removes one MongoDB Cloud user in the specified organization. You can remove an 
 
 **Note**: This resource cannot be used to remove pending users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
 
-**Note**: If using a deprecated version, only active users can be removed. Deprecated versions: v2-{2023-01-01}
+**Note**: To remove pending or active users, use v2-{2025-02-19} or later. If using a deprecated version, only active users can be removed. Deprecated versions: v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -2527,19 +2531,16 @@ func (a *MongoDBCloudUsersApiService) RemoveOrganizationUser(ctx context.Context
 }
 
 // RemoveOrganizationUserExecute executes the request
-//
-//	@return any
-func (a *MongoDBCloudUsersApiService) RemoveOrganizationUserExecute(r RemoveOrganizationUserApiRequest) (any, *http.Response, error) {
+func (a *MongoDBCloudUsersApiService) RemoveOrganizationUserExecute(r RemoveOrganizationUserApiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue any
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   any
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.RemoveOrganizationUser")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/users/{userId}"
@@ -2569,34 +2570,20 @@ func (a *MongoDBCloudUsersApiService) RemoveOrganizationUserExecute(r RemoveOrga
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
 		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
 
 type RemoveProjectRoleApiRequest struct {
@@ -2748,7 +2735,7 @@ func (a *MongoDBCloudUsersApiService) RemoveProjectUserWithParams(ctx context.Co
 	}
 }
 
-func (r RemoveProjectUserApiRequest) Execute() (any, *http.Response, error) {
+func (r RemoveProjectUserApiRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RemoveProjectUserExecute(r)
 }
 
@@ -2759,7 +2746,7 @@ Removes one MongoDB Cloud user from the specified project. You can remove an act
 
 **Note**: This resource cannot be used to remove pending users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
 
-**Note**: If using a deprecated version, only active users can be removed. Deprecated versions: v2-{2023-01-01}
+**Note**: To remove pending or active users, use v2-{2025-02-19} or later. If using a deprecated version, only active users can be removed. Deprecated versions: v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -2776,19 +2763,16 @@ func (a *MongoDBCloudUsersApiService) RemoveProjectUser(ctx context.Context, gro
 }
 
 // RemoveProjectUserExecute executes the request
-//
-//	@return any
-func (a *MongoDBCloudUsersApiService) RemoveProjectUserExecute(r RemoveProjectUserApiRequest) (any, *http.Response, error) {
+func (a *MongoDBCloudUsersApiService) RemoveProjectUserExecute(r RemoveProjectUserApiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue any
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   any
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.RemoveProjectUser")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/users/{userId}"
@@ -2818,34 +2802,20 @@ func (a *MongoDBCloudUsersApiService) RemoveProjectUserExecute(r RemoveProjectUs
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
 		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
 
 type RemoveUserFromTeamApiRequest struct {

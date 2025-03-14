@@ -37,17 +37,19 @@ type TeamsApi interface {
 	AddAllTeamsToProjectExecute(r AddAllTeamsToProjectApiRequest) (*PaginatedTeamRole, *http.Response, error)
 
 	/*
-		AddTeamUser Assign MongoDB Cloud Users from One Organization to One Team
+			AddTeamUser Assign MongoDB Cloud Users from One Organization to One Team
 
-		Adds one or more MongoDB Cloud users from the specified organization to the specified team. Teams enable you to grant project access roles to MongoDB Cloud users. You can assign up to 250 MongoDB Cloud users from one organization to one team. To use this resource, the requesting API Key must have the Organization Owner role.
+			Adds one or more MongoDB Cloud users from the specified organization to the specified team. Teams enable you to grant project access roles to MongoDB Cloud users. You can assign up to 250 MongoDB Cloud users from one organization to one team. To use this resource, the requesting API Key must have the Organization Owner role.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-		@param teamId Unique 24-hexadecimal character string that identifies the team to which you want to add MongoDB Cloud users.
-		@param addUserToTeam One or more MongoDB Cloud users that you want to add to the specified team.
-		@return AddTeamUserApiRequest
+		**Note**: This endpoint is deprecated. Use [Add One MongoDB Cloud User to One Team](#tag/MongoDB-Cloud-Users/operation/addUserToTeam) to add an active or pending user to a team.
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for TeamsApi
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+			@param teamId Unique 24-hexadecimal character string that identifies the team to which you want to add MongoDB Cloud users.
+			@param addUserToTeam One or more MongoDB Cloud users that you want to add to the specified team.
+			@return AddTeamUserApiRequest
+
+			Deprecated: this method has been deprecated. Please check the latest resource version for TeamsApi
 	*/
 	AddTeamUser(ctx context.Context, orgId string, teamId string, addUserToTeam *[]AddUserToTeam) AddTeamUserApiRequest
 	/*
@@ -111,7 +113,7 @@ type TeamsApi interface {
 	DeleteTeamWithParams(ctx context.Context, args *DeleteTeamApiParams) DeleteTeamApiRequest
 
 	// Method available only for mocking purposes
-	DeleteTeamExecute(r DeleteTeamApiRequest) (any, *http.Response, error)
+	DeleteTeamExecute(r DeleteTeamApiRequest) (*http.Response, error)
 
 	/*
 		GetTeamById Return One Team using its ID
@@ -232,17 +234,19 @@ type TeamsApi interface {
 	RemoveProjectTeamExecute(r RemoveProjectTeamApiRequest) (*http.Response, error)
 
 	/*
-		RemoveTeamUser Remove One MongoDB Cloud User from One Team
+			RemoveTeamUser Remove One MongoDB Cloud User from One Team
 
-		Removes one MongoDB Cloud user from the specified team. This team belongs to one organization. Teams enable you to grant project access roles to MongoDB Cloud users. To use this resource, the requesting API Key must have the Organization Owner role.
+			Removes one MongoDB Cloud user from the specified team. This team belongs to one organization. Teams enable you to grant project access roles to MongoDB Cloud users. To use this resource, the requesting API Key must have the Organization Owner role.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-		@param teamId Unique 24-hexadecimal digit string that identifies the team from which you want to remove one database application user.
-		@param userId Unique 24-hexadecimal digit string that identifies MongoDB Cloud user that you want to remove from the specified team.
-		@return RemoveTeamUserApiRequest
+		**Note**: This endpoint is deprecated. Use [Remove One MongoDB Cloud User from One Team](#tag/MongoDB-Cloud-Users/operation/removeUserFromTeam) to remove an active or pending user from a team.
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for TeamsApi
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+			@param teamId Unique 24-hexadecimal digit string that identifies the team from which you want to remove one database application user.
+			@param userId Unique 24-hexadecimal digit string that identifies MongoDB Cloud user that you want to remove from the specified team.
+			@return RemoveTeamUserApiRequest
+
+			Deprecated: this method has been deprecated. Please check the latest resource version for TeamsApi
 	*/
 	RemoveTeamUser(ctx context.Context, orgId string, teamId string, userId string) RemoveTeamUserApiRequest
 	/*
@@ -466,6 +470,8 @@ func (r AddTeamUserApiRequest) Execute() (*PaginatedApiAppUser, *http.Response, 
 AddTeamUser Assign MongoDB Cloud Users from One Organization to One Team
 
 Adds one or more MongoDB Cloud users from the specified organization to the specified team. Teams enable you to grant project access roles to MongoDB Cloud users. You can assign up to 250 MongoDB Cloud users from one organization to one team. To use this resource, the requesting API Key must have the Organization Owner role.
+
+**Note**: This endpoint is deprecated. Use [Add One MongoDB Cloud User to One Team](#tag/MongoDB-Cloud-Users/operation/addUserToTeam) to add an active or pending user to a team.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -705,7 +711,7 @@ func (a *TeamsApiService) DeleteTeamWithParams(ctx context.Context, args *Delete
 	}
 }
 
-func (r DeleteTeamApiRequest) Execute() (any, *http.Response, error) {
+func (r DeleteTeamApiRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteTeamExecute(r)
 }
 
@@ -729,19 +735,16 @@ func (a *TeamsApiService) DeleteTeam(ctx context.Context, orgId string, teamId s
 }
 
 // DeleteTeamExecute executes the request
-//
-//	@return any
-func (a *TeamsApiService) DeleteTeamExecute(r DeleteTeamApiRequest) (any, *http.Response, error) {
+func (a *TeamsApiService) DeleteTeamExecute(r DeleteTeamApiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue any
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   any
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamsApiService.DeleteTeam")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/teams/{teamId}"
@@ -771,34 +774,20 @@ func (a *TeamsApiService) DeleteTeamExecute(r DeleteTeamApiRequest) (any, *http.
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
 		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
 
 type GetTeamByIdApiRequest struct {
@@ -1485,6 +1474,8 @@ func (r RemoveTeamUserApiRequest) Execute() (*http.Response, error) {
 RemoveTeamUser Remove One MongoDB Cloud User from One Team
 
 Removes one MongoDB Cloud user from the specified team. This team belongs to one organization. Teams enable you to grant project access roles to MongoDB Cloud users. To use this resource, the requesting API Key must have the Organization Owner role.
+
+**Note**: This endpoint is deprecated. Use [Remove One MongoDB Cloud User from One Team](#tag/MongoDB-Cloud-Users/operation/removeUserFromTeam) to remove an active or pending user from a team.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.

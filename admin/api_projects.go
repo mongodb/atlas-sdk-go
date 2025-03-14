@@ -112,7 +112,7 @@ type ProjectsApi interface {
 	DeleteProjectWithParams(ctx context.Context, args *DeleteProjectApiParams) DeleteProjectApiRequest
 
 	// Method available only for mocking purposes
-	DeleteProjectExecute(r DeleteProjectApiRequest) (any, *http.Response, error)
+	DeleteProjectExecute(r DeleteProjectApiRequest) (*http.Response, error)
 
 	/*
 		DeleteProjectInvitation Cancel One Project Invitation
@@ -140,7 +140,7 @@ type ProjectsApi interface {
 	DeleteProjectInvitationWithParams(ctx context.Context, args *DeleteProjectInvitationApiParams) DeleteProjectInvitationApiRequest
 
 	// Method available only for mocking purposes
-	DeleteProjectInvitationExecute(r DeleteProjectInvitationApiRequest) (any, *http.Response, error)
+	DeleteProjectInvitationExecute(r DeleteProjectInvitationApiRequest) (*http.Response, error)
 
 	/*
 		DeleteProjectLimit Remove One Project Limit
@@ -164,7 +164,7 @@ type ProjectsApi interface {
 	DeleteProjectLimitWithParams(ctx context.Context, args *DeleteProjectLimitApiParams) DeleteProjectLimitApiRequest
 
 	// Method available only for mocking purposes
-	DeleteProjectLimitExecute(r DeleteProjectLimitApiRequest) (any, *http.Response, error)
+	DeleteProjectLimitExecute(r DeleteProjectLimitApiRequest) (*http.Response, error)
 
 	/*
 		GetProject Return One Project
@@ -986,7 +986,7 @@ func (a *ProjectsApiService) DeleteProjectWithParams(ctx context.Context, args *
 	}
 }
 
-func (r DeleteProjectApiRequest) Execute() (any, *http.Response, error) {
+func (r DeleteProjectApiRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteProjectExecute(r)
 }
 
@@ -1008,19 +1008,16 @@ func (a *ProjectsApiService) DeleteProject(ctx context.Context, groupId string) 
 }
 
 // DeleteProjectExecute executes the request
-//
-//	@return any
-func (a *ProjectsApiService) DeleteProjectExecute(r DeleteProjectApiRequest) (any, *http.Response, error) {
+func (a *ProjectsApiService) DeleteProjectExecute(r DeleteProjectApiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue any
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   any
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.DeleteProject")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}"
@@ -1049,34 +1046,20 @@ func (a *ProjectsApiService) DeleteProjectExecute(r DeleteProjectApiRequest) (an
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
 		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
 
 type DeleteProjectInvitationApiRequest struct {
@@ -1100,7 +1083,7 @@ func (a *ProjectsApiService) DeleteProjectInvitationWithParams(ctx context.Conte
 	}
 }
 
-func (r DeleteProjectInvitationApiRequest) Execute() (any, *http.Response, error) {
+func (r DeleteProjectInvitationApiRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteProjectInvitationExecute(r)
 }
 
@@ -1126,21 +1109,17 @@ func (a *ProjectsApiService) DeleteProjectInvitation(ctx context.Context, groupI
 }
 
 // DeleteProjectInvitationExecute executes the request
-//
-//	@return any
-//
 // Deprecated
-func (a *ProjectsApiService) DeleteProjectInvitationExecute(r DeleteProjectInvitationApiRequest) (any, *http.Response, error) {
+func (a *ProjectsApiService) DeleteProjectInvitationExecute(r DeleteProjectInvitationApiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue any
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   any
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.DeleteProjectInvitation")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/invites/{invitationId}"
@@ -1170,34 +1149,20 @@ func (a *ProjectsApiService) DeleteProjectInvitationExecute(r DeleteProjectInvit
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
 		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
 
 type DeleteProjectLimitApiRequest struct {
@@ -1221,7 +1186,7 @@ func (a *ProjectsApiService) DeleteProjectLimitWithParams(ctx context.Context, a
 	}
 }
 
-func (r DeleteProjectLimitApiRequest) Execute() (any, *http.Response, error) {
+func (r DeleteProjectLimitApiRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteProjectLimitExecute(r)
 }
 
@@ -1245,19 +1210,16 @@ func (a *ProjectsApiService) DeleteProjectLimit(ctx context.Context, limitName s
 }
 
 // DeleteProjectLimitExecute executes the request
-//
-//	@return any
-func (a *ProjectsApiService) DeleteProjectLimitExecute(r DeleteProjectLimitApiRequest) (any, *http.Response, error) {
+func (a *ProjectsApiService) DeleteProjectLimitExecute(r DeleteProjectLimitApiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue any
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   any
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.DeleteProjectLimit")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/limits/{limitName}"
@@ -1287,34 +1249,20 @@ func (a *ProjectsApiService) DeleteProjectLimitExecute(r DeleteProjectLimitApiRe
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
 		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
 
 type GetProjectApiRequest struct {

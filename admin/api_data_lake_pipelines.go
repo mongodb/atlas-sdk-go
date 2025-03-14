@@ -67,7 +67,7 @@ type DataLakePipelinesApi interface {
 	DeletePipelineWithParams(ctx context.Context, args *DeletePipelineApiParams) DeletePipelineApiRequest
 
 	// Method available only for mocking purposes
-	DeletePipelineExecute(r DeletePipelineApiRequest) (any, *http.Response, error)
+	DeletePipelineExecute(r DeletePipelineApiRequest) (*http.Response, error)
 
 	/*
 		DeletePipelineRunDataset Delete Pipeline Run Dataset
@@ -529,7 +529,7 @@ func (a *DataLakePipelinesApiService) DeletePipelineWithParams(ctx context.Conte
 	}
 }
 
-func (r DeletePipelineApiRequest) Execute() (any, *http.Response, error) {
+func (r DeletePipelineApiRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeletePipelineExecute(r)
 }
 
@@ -555,21 +555,17 @@ func (a *DataLakePipelinesApiService) DeletePipeline(ctx context.Context, groupI
 }
 
 // DeletePipelineExecute executes the request
-//
-//	@return any
-//
 // Deprecated
-func (a *DataLakePipelinesApiService) DeletePipelineExecute(r DeletePipelineApiRequest) (any, *http.Response, error) {
+func (a *DataLakePipelinesApiService) DeletePipelineExecute(r DeletePipelineApiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue any
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   any
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataLakePipelinesApiService.DeletePipeline")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}"
@@ -599,34 +595,20 @@ func (a *DataLakePipelinesApiService) DeletePipelineExecute(r DeletePipelineApiR
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
 		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
 
 type DeletePipelineRunDatasetApiRequest struct {

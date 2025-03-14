@@ -350,7 +350,7 @@ type FederatedAuthenticationApi interface {
 	RemoveConnectedOrgConfigWithParams(ctx context.Context, args *RemoveConnectedOrgConfigApiParams) RemoveConnectedOrgConfigApiRequest
 
 	// Method available only for mocking purposes
-	RemoveConnectedOrgConfigExecute(r RemoveConnectedOrgConfigApiRequest) (any, *http.Response, error)
+	RemoveConnectedOrgConfigExecute(r RemoveConnectedOrgConfigApiRequest) (*http.Response, error)
 
 	/*
 			RevokeJwksFromIdentityProvider Revoke the JWKS from One OIDC Identity Provider
@@ -2059,7 +2059,7 @@ func (a *FederatedAuthenticationApiService) RemoveConnectedOrgConfigWithParams(c
 	}
 }
 
-func (r RemoveConnectedOrgConfigApiRequest) Execute() (any, *http.Response, error) {
+func (r RemoveConnectedOrgConfigApiRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RemoveConnectedOrgConfigExecute(r)
 }
 
@@ -2083,19 +2083,16 @@ func (a *FederatedAuthenticationApiService) RemoveConnectedOrgConfig(ctx context
 }
 
 // RemoveConnectedOrgConfigExecute executes the request
-//
-//	@return any
-func (a *FederatedAuthenticationApiService) RemoveConnectedOrgConfigExecute(r RemoveConnectedOrgConfigApiRequest) (any, *http.Response, error) {
+func (a *FederatedAuthenticationApiService) RemoveConnectedOrgConfigExecute(r RemoveConnectedOrgConfigApiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue any
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   any
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationApiService.RemoveConnectedOrgConfig")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}"
@@ -2125,34 +2122,20 @@ func (a *FederatedAuthenticationApiService) RemoveConnectedOrgConfigExecute(r Re
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
 		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
 
 type RevokeJwksFromIdentityProviderApiRequest struct {
