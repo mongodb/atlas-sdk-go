@@ -4,14 +4,12 @@ const {
 } = require("../engine/readers");
 
 function filterObjectProperties(object, filter = (_k, _v) => true) {
-  const filteredObj = Object.keys(object)
-    .filter((key) => filter(key, object[key]))
-    .reduce((aggregationObj, key) => {
-      aggregationObj[key] = object[key];
-      return aggregationObj;
-    }, {});
-
-  return filteredObj;
+  return Object.keys(object)
+  .filter((key) => filter(key, object[key]))
+  .reduce((aggregationObj, key) => {
+    aggregationObj[key] = object[key];
+    return aggregationObj;
+  }, {});
 }
 
 // Detects duplicates in array of object properties
@@ -120,11 +118,7 @@ function removeParentFromAllOf(child, parentName) {
     return objName !== parentName;
   });
 
-  if (initialLength === child.allOf.length) {
-    return false;
-  }
-
-  return true;
+  return initialLength !== child.allOf.length;
 }
 
 // For string reference fetch object from openapi

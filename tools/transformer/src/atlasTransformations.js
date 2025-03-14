@@ -4,7 +4,7 @@ const {
   applyModelNameTransformations,
   applyDiscriminatorTransformations,
   applyRemoveEnumsTransformations,
-  applyRemoveObjectAdditonalProperties,
+  applyRemoveObjectAdditionalProperties,
   applyAnyOfTransformations,
   applyRemoveNullableTransformations,
   removeRefsFromParameters,
@@ -27,7 +27,7 @@ module.exports = function runTransformations(openapi) {
   openapi = applyAllOfTransformations(openapi);
   openapi = applyRemoveEnumsTransformations(openapi);
   openapi = applyRemoveNullableTransformations(openapi);
-  openapi = applyRemoveObjectAdditonalProperties(openapi);
+  openapi = applyRemoveObjectAdditionalProperties(openapi);
   openapi = reorderResponseBodies(openapi);
 
   openapi = applyModelNameTransformations(

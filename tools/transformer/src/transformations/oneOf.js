@@ -13,7 +13,6 @@ const { detectDuplicates } = require("../engine/transformers");
  * Transforms provided API JSON file using oneOf transformation
  *
  * @param {*} api OpenAPI JSON File
- * @param {*} oneOfTransformations array of transformations to apply
  * @returns OpenAPI JSON File
  */
 function applyOneOfTransformations(api) {
@@ -21,7 +20,7 @@ function applyOneOfTransformations(api) {
     return canApplyOneOfTransformation(obj, api);
   }).filter((e) => !ignoreModels.includes(e.path));
 
-  transformationPaths = oneOfTransformations.map((e) => e.path);
+  const transformationPaths = oneOfTransformations.map((e) => e.path);
   console.info(
     "# OneOf transformations: " +
       JSON.stringify(transformationPaths, undefined, 2),
@@ -83,7 +82,7 @@ function transformOneOfEnum(parentObject, api) {
   delete parentObject.oneOf;
 }
 
-// Moves all the propertis of the children into the parent
+// Moves all the properties of the children into the parent
 function transformOneOfProperties(parentObject, api) {
   const childObjects = parentObject.oneOf.map((childRef) =>
     getObjectFromReference(childRef, api),
@@ -153,7 +152,7 @@ function handleDuplicates(parentObject, childObject) {
   }
 }
 
-// Uses ignore list for known missmatches and removes them
+// Uses ignore list for known mismatches and removes them
 function filterReferenceOrTypeMissmatch(mismatches) {
   return mismatches.filter((mismatch) => {
     for (const ignoredProperty of ignoredProperties) {
@@ -183,8 +182,8 @@ function mergeDuplicates(
     )}\n`,
   );
   for (duplicate of duplicates) {
-    childProperty = childObject.properties[duplicate.key];
-    parentProperty = parentObject.properties[duplicate.key];
+    const childProperty = childObject.properties[duplicate.key];
+    const parentProperty = parentObject.properties[duplicate.key];
 
     if (
       parentProperty.description &&
@@ -195,10 +194,7 @@ function mergeDuplicates(
 }
 
 function canApplyOneOfTransformation(obj, api) {
-  if (obj.oneOf) {
-    return true;
-  }
-  return false;
+  return !!obj.oneOf;
 }
 
 module.exports = {
