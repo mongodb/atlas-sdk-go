@@ -9,7 +9,8 @@ import (
 // AtlasTenantClusterUpgradeRequest20240805 Request containing target state of tenant cluster to be upgraded
 type AtlasTenantClusterUpgradeRequest20240805 struct {
 	// If reconfiguration is necessary to regain a primary due to a regional outage, submit this field alongside your topology reconfiguration to request a new regional outage resistant topology. Forced reconfigurations during an outage of the majority of electable nodes carry a risk of data loss if replicated writes (even majority committed writes) have not been replicated to the new primary node. MongoDB Atlas docs contain more information. To proceed with an operation which carries that risk, set **acceptDataRisksAndForceReplicaSetReconfig** to the current date.
-	AcceptDataRisksAndForceReplicaSetReconfig *time.Time `json:"acceptDataRisksAndForceReplicaSetReconfig,omitempty"`
+	AcceptDataRisksAndForceReplicaSetReconfig *time.Time                            `json:"acceptDataRisksAndForceReplicaSetReconfig,omitempty"`
+	AdvancedConfiguration                     *ApiAtlasClusterAdvancedConfiguration `json:"advancedConfiguration,omitempty"`
 	// Flag that indicates whether the cluster can perform backups. If set to `true`, the cluster can perform backups. You must set this value to `true` for NVMe clusters. Backup uses [Cloud Backups](https://docs.atlas.mongodb.com/backup/cloud-backup/overview/) for dedicated clusters and [Shared Cluster Backups](https://docs.atlas.mongodb.com/backup/shared-tier/overview/) for tenant clusters. If set to `false`, the cluster doesn't use backups.
 	BackupEnabled *bool        `json:"backupEnabled,omitempty"`
 	BiConnector   *BiConnector `json:"biConnector,omitempty"`
@@ -156,6 +157,39 @@ func (o *AtlasTenantClusterUpgradeRequest20240805) HasAcceptDataRisksAndForceRep
 // SetAcceptDataRisksAndForceReplicaSetReconfig gets a reference to the given time.Time and assigns it to the AcceptDataRisksAndForceReplicaSetReconfig field.
 func (o *AtlasTenantClusterUpgradeRequest20240805) SetAcceptDataRisksAndForceReplicaSetReconfig(v time.Time) {
 	o.AcceptDataRisksAndForceReplicaSetReconfig = &v
+}
+
+// GetAdvancedConfiguration returns the AdvancedConfiguration field value if set, zero value otherwise
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetAdvancedConfiguration() ApiAtlasClusterAdvancedConfiguration {
+	if o == nil || IsNil(o.AdvancedConfiguration) {
+		var ret ApiAtlasClusterAdvancedConfiguration
+		return ret
+	}
+	return *o.AdvancedConfiguration
+}
+
+// GetAdvancedConfigurationOk returns a tuple with the AdvancedConfiguration field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetAdvancedConfigurationOk() (*ApiAtlasClusterAdvancedConfiguration, bool) {
+	if o == nil || IsNil(o.AdvancedConfiguration) {
+		return nil, false
+	}
+
+	return o.AdvancedConfiguration, true
+}
+
+// HasAdvancedConfiguration returns a boolean if a field has been set.
+func (o *AtlasTenantClusterUpgradeRequest20240805) HasAdvancedConfiguration() bool {
+	if o != nil && !IsNil(o.AdvancedConfiguration) {
+		return true
+	}
+
+	return false
+}
+
+// SetAdvancedConfiguration gets a reference to the given ApiAtlasClusterAdvancedConfiguration and assigns it to the AdvancedConfiguration field.
+func (o *AtlasTenantClusterUpgradeRequest20240805) SetAdvancedConfiguration(v ApiAtlasClusterAdvancedConfiguration) {
+	o.AdvancedConfiguration = &v
 }
 
 // GetBackupEnabled returns the BackupEnabled field value if set, zero value otherwise
