@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AwsKms** | Pointer to [**AWSKMSConfiguration**](AWSKMSConfiguration.md) |  | [optional] 
 **AzureKeyVault** | Pointer to [**AzureKeyVault**](AzureKeyVault.md) |  | [optional] 
+**EnabledForSearchNodes** | Pointer to **bool** | Flag that indicates whether Encryption at Rest for Dedicated Search Nodes is enabled in the specified project. | [optional] 
 **GoogleCloudKms** | Pointer to [**GoogleCloudKMS**](GoogleCloudKMS.md) |  | [optional] 
 
 ## Methods
@@ -75,6 +76,30 @@ SetAzureKeyVault sets AzureKeyVault field to given value.
 `func (o *EncryptionAtRest) HasAzureKeyVault() bool`
 
 HasAzureKeyVault returns a boolean if a field has been set.
+### GetEnabledForSearchNodes
+
+`func (o *EncryptionAtRest) GetEnabledForSearchNodes() bool`
+
+GetEnabledForSearchNodes returns the EnabledForSearchNodes field if non-nil, zero value otherwise.
+
+### GetEnabledForSearchNodesOk
+
+`func (o *EncryptionAtRest) GetEnabledForSearchNodesOk() (*bool, bool)`
+
+GetEnabledForSearchNodesOk returns a tuple with the EnabledForSearchNodes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnabledForSearchNodes
+
+`func (o *EncryptionAtRest) SetEnabledForSearchNodes(v bool)`
+
+SetEnabledForSearchNodes sets EnabledForSearchNodes field to given value.
+
+### HasEnabledForSearchNodes
+
+`func (o *EncryptionAtRest) HasEnabledForSearchNodes() bool`
+
+HasEnabledForSearchNodes returns a boolean if a field has been set.
 ### GetGoogleCloudKms
 
 `func (o *EncryptionAtRest) GetGoogleCloudKms() GoogleCloudKMS`

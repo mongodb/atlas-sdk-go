@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**EncryptionAtRestProvider** | Pointer to **string** | Cloud service provider that manages your customer keys to provide an additional layer of Encryption At Rest for the cluster. | [optional] [readonly] 
 **GroupId** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the project. | [optional] [readonly] 
 **Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the search deployment. | [optional] [readonly] 
 **Specs** | Pointer to [**[]ApiSearchDeploymentSpec**](ApiSearchDeploymentSpec.md) | List of settings that configure the Search Nodes for your cluster. The configuration will be returned for each region and shard. | [optional] [readonly] 
@@ -28,6 +29,30 @@ NewApiSearchDeploymentResponseWithDefaults instantiates a new ApiSearchDeploymen
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
+### GetEncryptionAtRestProvider
+
+`func (o *ApiSearchDeploymentResponse) GetEncryptionAtRestProvider() string`
+
+GetEncryptionAtRestProvider returns the EncryptionAtRestProvider field if non-nil, zero value otherwise.
+
+### GetEncryptionAtRestProviderOk
+
+`func (o *ApiSearchDeploymentResponse) GetEncryptionAtRestProviderOk() (*string, bool)`
+
+GetEncryptionAtRestProviderOk returns a tuple with the EncryptionAtRestProvider field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEncryptionAtRestProvider
+
+`func (o *ApiSearchDeploymentResponse) SetEncryptionAtRestProvider(v string)`
+
+SetEncryptionAtRestProvider sets EncryptionAtRestProvider field to given value.
+
+### HasEncryptionAtRestProvider
+
+`func (o *ApiSearchDeploymentResponse) HasEncryptionAtRestProvider() bool`
+
+HasEncryptionAtRestProvider returns a boolean if a field has been set.
 ### GetGroupId
 
 `func (o *ApiSearchDeploymentResponse) GetGroupId() string`

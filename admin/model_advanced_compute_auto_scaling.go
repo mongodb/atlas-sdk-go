@@ -4,7 +4,7 @@ package admin
 
 // AdvancedComputeAutoScaling Options that determine how this cluster handles CPU scaling.
 type AdvancedComputeAutoScaling struct {
-	// Flag that indicates whether someone enabled instance size auto-scaling.  - Set to `true` to enable instance size auto-scaling. If enabled, you must specify a value for **replicationSpecs[n].regionConfigs[m].autoScaling.compute.maxInstanceSize**. - Set to `false` to disable instance size automatic scaling.
+	// Flag that indicates whether instance size reactive auto-scaling is enabled.  - Set to `true` to enable instance size reactive auto-scaling. If enabled, you must specify a value for **replicationSpecs[n].regionConfigs[m].autoScaling.compute.maxInstanceSize**. - Set to `false` to disable instance size reactive auto-scaling.
 	Enabled *bool `json:"enabled,omitempty"`
 	// Instance size boundary to which your cluster can automatically scale.
 	// Read only field.
@@ -12,7 +12,9 @@ type AdvancedComputeAutoScaling struct {
 	// Instance size boundary to which your cluster can automatically scale.
 	// Read only field.
 	MinInstanceSize *string `json:"minInstanceSize,omitempty"`
-	// Flag that indicates whether the instance size may scale down. MongoDB Cloud requires this parameter if `\"replicationSpecs[n].regionConfigs[m].autoScaling.compute.enabled\" : true`. If you enable this option, specify a value for **replicationSpecs[n].regionConfigs[m].autoScaling.compute.minInstanceSize**.
+	// Flag that indicates whether predictive instance size auto-scaling is enabled.  - Set to `true` to enable predictive instance size auto-scaling. MongoDB Cloud requires **replicationSpecs[n].regionConfigs[m].autoScaling.compute.enabled** to be `true` in order to enable this feature. - Set to `false` to disable predictive instance size auto-scaling.
+	PredictiveEnabled *bool `json:"predictiveEnabled,omitempty"`
+	// Flag that indicates whether the instance size may scale down via reactive auto-scaling. MongoDB Cloud requires this parameter if **replicationSpecs[n].regionConfigs[m].autoScaling.compute.enabled** is `true`. If you enable this option, specify a value for **replicationSpecs[n].regionConfigs[m].autoScaling.compute.minInstanceSize**.
 	ScaleDownEnabled *bool `json:"scaleDownEnabled,omitempty"`
 }
 
@@ -130,6 +132,39 @@ func (o *AdvancedComputeAutoScaling) HasMinInstanceSize() bool {
 // SetMinInstanceSize gets a reference to the given string and assigns it to the MinInstanceSize field.
 func (o *AdvancedComputeAutoScaling) SetMinInstanceSize(v string) {
 	o.MinInstanceSize = &v
+}
+
+// GetPredictiveEnabled returns the PredictiveEnabled field value if set, zero value otherwise
+func (o *AdvancedComputeAutoScaling) GetPredictiveEnabled() bool {
+	if o == nil || IsNil(o.PredictiveEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.PredictiveEnabled
+}
+
+// GetPredictiveEnabledOk returns a tuple with the PredictiveEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdvancedComputeAutoScaling) GetPredictiveEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.PredictiveEnabled) {
+		return nil, false
+	}
+
+	return o.PredictiveEnabled, true
+}
+
+// HasPredictiveEnabled returns a boolean if a field has been set.
+func (o *AdvancedComputeAutoScaling) HasPredictiveEnabled() bool {
+	if o != nil && !IsNil(o.PredictiveEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetPredictiveEnabled gets a reference to the given bool and assigns it to the PredictiveEnabled field.
+func (o *AdvancedComputeAutoScaling) SetPredictiveEnabled(v bool) {
+	o.PredictiveEnabled = &v
 }
 
 // GetScaleDownEnabled returns the ScaleDownEnabled field value if set, zero value otherwise
