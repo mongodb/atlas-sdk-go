@@ -88,6 +88,7 @@ Class        | Method        | HTTP request  | Description   |
 *ClusterOutageSimulationApi* | [EndOutageSimulation](./docs/ClusterOutageSimulationApi.md#endoutagesimulation) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/outageSimulation | End an Outage Simulation |
 *ClusterOutageSimulationApi* | [GetOutageSimulation](./docs/ClusterOutageSimulationApi.md#getoutagesimulation) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/outageSimulation | Return One Outage Simulation |
 *ClusterOutageSimulationApi* | [StartOutageSimulation](./docs/ClusterOutageSimulationApi.md#startoutagesimulation) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/outageSimulation | Start an Outage Simulation |
+*ClustersApi* | [AutoScalingConfiguration](./docs/ClustersApi.md#autoscalingconfiguration) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/autoScalingConfiguration | Get cluster internal configuration of sharded cluster AutoScaling operations |
 *ClustersApi* | [CreateCluster](./docs/ClustersApi.md#createcluster) | **Post** /api/atlas/v2/groups/{groupId}/clusters | Create One Cluster from One Project |
 *ClustersApi* | [DeleteCluster](./docs/ClustersApi.md#deletecluster) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName} | Remove One Cluster from One Project |
 *ClustersApi* | [GetCluster](./docs/ClustersApi.md#getcluster) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName} | Return One Cluster from One Project |
@@ -477,6 +478,7 @@ Class        | Method        | HTTP request  | Description   |
  - [AlertsNotificationRootForGroup](./docs/AlertsNotificationRootForGroup.md)
  - [AlertsToggle](./docs/AlertsToggle.md)
  - [ApiAtlasCheckpoint](./docs/ApiAtlasCheckpoint.md)
+ - [ApiAtlasClusterAdvancedConfiguration](./docs/ApiAtlasClusterAdvancedConfiguration.md)
  - [ApiAtlasFTSAnalyzers](./docs/ApiAtlasFTSAnalyzers.md)
  - [ApiAtlasFTSAnalyzersTokenizer](./docs/ApiAtlasFTSAnalyzersTokenizer.md)
  - [ApiAtlasFTSMappings](./docs/ApiAtlasFTSMappings.md)
@@ -559,6 +561,7 @@ Class        | Method        | HTTP request  | Description   |
  - [ClusterComputeAutoScaling](./docs/ClusterComputeAutoScaling.md)
  - [ClusterConnectionStrings](./docs/ClusterConnectionStrings.md)
  - [ClusterDescription20240805](./docs/ClusterDescription20240805.md)
+ - [ClusterDescriptionAutoScalingModeConfiguration](./docs/ClusterDescriptionAutoScalingModeConfiguration.md)
  - [ClusterDescriptionConnectionStringsPrivateEndpoint](./docs/ClusterDescriptionConnectionStringsPrivateEndpoint.md)
  - [ClusterDescriptionConnectionStringsPrivateEndpointEndpoint](./docs/ClusterDescriptionConnectionStringsPrivateEndpointEndpoint.md)
  - [ClusterDescriptionProcessArgs20240805](./docs/ClusterDescriptionProcessArgs20240805.md)
@@ -670,7 +673,6 @@ Class        | Method        | HTTP request  | Description   |
  - [GCPConsumerForwardingRule](./docs/GCPConsumerForwardingRule.md)
  - [GeoSharding20240805](./docs/GeoSharding20240805.md)
  - [GoogleCloudKMS](./docs/GoogleCloudKMS.md)
- - [GreaterThanRawThreshold](./docs/GreaterThanRawThreshold.md)
  - [Group](./docs/Group.md)
  - [GroupAlertsConfig](./docs/GroupAlertsConfig.md)
  - [GroupIPAddresses](./docs/GroupIPAddresses.md)
@@ -870,6 +872,7 @@ Class        | Method        | HTTP request  | Description   |
  - [Source](./docs/Source.md)
  - [StateReason](./docs/StateReason.md)
  - [StreamConfig](./docs/StreamConfig.md)
+ - [StreamProcessorMetricThreshold](./docs/StreamProcessorMetricThreshold.md)
  - [StreamsAWSConnectionConfig](./docs/StreamsAWSConnectionConfig.md)
  - [StreamsConnection](./docs/StreamsConnection.md)
  - [StreamsDLQ](./docs/StreamsDLQ.md)

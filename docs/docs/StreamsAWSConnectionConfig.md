@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **RoleArn** | Pointer to **string** | Amazon Resource Name (ARN) that identifies the Amazon Web Services (AWS) Identity and Access Management (IAM) role that MongoDB Cloud assumes when it accesses resources in your AWS account. | [optional] 
+**TestBucket** | Pointer to **string** | The name of an S3 bucket used to check authorization of the passed-in IAM role ARN. | [optional] 
 
 ## Methods
 
@@ -74,6 +75,30 @@ SetRoleArn sets RoleArn field to given value.
 `func (o *StreamsAWSConnectionConfig) HasRoleArn() bool`
 
 HasRoleArn returns a boolean if a field has been set.
+### GetTestBucket
+
+`func (o *StreamsAWSConnectionConfig) GetTestBucket() string`
+
+GetTestBucket returns the TestBucket field if non-nil, zero value otherwise.
+
+### GetTestBucketOk
+
+`func (o *StreamsAWSConnectionConfig) GetTestBucketOk() (*string, bool)`
+
+GetTestBucketOk returns a tuple with the TestBucket field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTestBucket
+
+`func (o *StreamsAWSConnectionConfig) SetTestBucket(v string)`
+
+SetTestBucket sets TestBucket field to given value.
+
+### HasTestBucket
+
+`func (o *StreamsAWSConnectionConfig) HasTestBucket() bool`
+
+HasTestBucket returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

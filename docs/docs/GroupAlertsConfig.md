@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **Notifications** | Pointer to [**[]AlertsNotificationRootForGroup**](AlertsNotificationRootForGroup.md) | List that contains the targets that MongoDB Cloud sends notifications. | [optional] 
 **Updated** | Pointer to **time.Time** | Date and time when someone last updated this alert configuration. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
 **MetricThreshold** | Pointer to [**FlexClusterMetricThreshold**](FlexClusterMetricThreshold.md) |  | [optional] 
-**Threshold** | Pointer to [**GreaterThanRawThreshold**](GreaterThanRawThreshold.md) |  | [optional] 
+**Threshold** | Pointer to [**StreamProcessorMetricThreshold**](StreamProcessorMetricThreshold.md) |  | [optional] 
 
 ## Methods
 
@@ -277,20 +277,20 @@ SetMetricThreshold sets MetricThreshold field to given value.
 HasMetricThreshold returns a boolean if a field has been set.
 ### GetThreshold
 
-`func (o *GroupAlertsConfig) GetThreshold() GreaterThanRawThreshold`
+`func (o *GroupAlertsConfig) GetThreshold() StreamProcessorMetricThreshold`
 
 GetThreshold returns the Threshold field if non-nil, zero value otherwise.
 
 ### GetThresholdOk
 
-`func (o *GroupAlertsConfig) GetThresholdOk() (*GreaterThanRawThreshold, bool)`
+`func (o *GroupAlertsConfig) GetThresholdOk() (*StreamProcessorMetricThreshold, bool)`
 
 GetThresholdOk returns a tuple with the Threshold field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetThreshold
 
-`func (o *GroupAlertsConfig) SetThreshold(v GreaterThanRawThreshold)`
+`func (o *GroupAlertsConfig) SetThreshold(v StreamProcessorMetricThreshold)`
 
 SetThreshold sets Threshold field to given value.
 

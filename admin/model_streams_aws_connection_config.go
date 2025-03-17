@@ -2,13 +2,15 @@
 
 package admin
 
-// StreamsAWSConnectionConfig The configuration of AWS connection used in stream processors.
+// StreamsAWSConnectionConfig AWS configurations for AWS-based connection types.
 type StreamsAWSConnectionConfig struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
 	// Amazon Resource Name (ARN) that identifies the Amazon Web Services (AWS) Identity and Access Management (IAM) role that MongoDB Cloud assumes when it accesses resources in your AWS account.
 	RoleArn *string `json:"roleArn,omitempty"`
+	// The name of an S3 bucket used to check authorization of the passed-in IAM role ARN.
+	TestBucket *string `json:"testBucket,omitempty"`
 }
 
 // NewStreamsAWSConnectionConfig instantiates a new StreamsAWSConnectionConfig object
@@ -92,4 +94,37 @@ func (o *StreamsAWSConnectionConfig) HasRoleArn() bool {
 // SetRoleArn gets a reference to the given string and assigns it to the RoleArn field.
 func (o *StreamsAWSConnectionConfig) SetRoleArn(v string) {
 	o.RoleArn = &v
+}
+
+// GetTestBucket returns the TestBucket field value if set, zero value otherwise
+func (o *StreamsAWSConnectionConfig) GetTestBucket() string {
+	if o == nil || IsNil(o.TestBucket) {
+		var ret string
+		return ret
+	}
+	return *o.TestBucket
+}
+
+// GetTestBucketOk returns a tuple with the TestBucket field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsAWSConnectionConfig) GetTestBucketOk() (*string, bool) {
+	if o == nil || IsNil(o.TestBucket) {
+		return nil, false
+	}
+
+	return o.TestBucket, true
+}
+
+// HasTestBucket returns a boolean if a field has been set.
+func (o *StreamsAWSConnectionConfig) HasTestBucket() bool {
+	if o != nil && !IsNil(o.TestBucket) {
+		return true
+	}
+
+	return false
+}
+
+// SetTestBucket gets a reference to the given string and assigns it to the TestBucket field.
+func (o *StreamsAWSConnectionConfig) SetTestBucket(v string) {
+	o.TestBucket = &v
 }
