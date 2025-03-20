@@ -31,7 +31,7 @@ type EventViewForNdsGroup struct {
 	// Unique 24-hexadecimal digit string that identifies the organization to which these events apply.
 	// Read only field.
 	OrgId *string `json:"orgId,omitempty"`
-	// Public part of the API key that triggered the event. If this resource returns this parameter, it doesn't return the **username** parameter.
+	// Public part of the API Key that triggered the event. If this resource returns this parameter, it doesn't return the **username** parameter.
 	// Read only field.
 	PublicKey *string `json:"publicKey,omitempty"`
 	Raw       *Raw    `json:"raw,omitempty"`

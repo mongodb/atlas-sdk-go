@@ -9,7 +9,7 @@ type StreamsConnection struct {
 	Links *[]Link `json:"links,omitempty"`
 	// Human-readable label that identifies the stream connection. In the case of the Sample type, this is the name of the sample source.
 	Name *string `json:"name,omitempty"`
-	// Type of the connection. Can be either Cluster or Kafka.
+	// Type of the connection.
 	Type *string `json:"type,omitempty"`
 	// Name of the cluster configured for this connection.
 	ClusterName     *string                     `json:"clusterName,omitempty"`

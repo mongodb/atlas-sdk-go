@@ -479,24 +479,34 @@ components:
       properties:
         enabled:
           description: >-
-            Flag that indicates whether someone enabled instance size
-            auto-scaling.
+            Flag that indicates whether instance size reactive auto-scaling is
+            enabled.
 
 
-            - Set to `true` to enable instance size auto-scaling. If enabled, you must specify a value for **replicationSpecs[n].regionConfigs[m].autoScaling.compute.maxInstanceSize**.
+            - Set to `true` to enable instance size reactive auto-scaling. If enabled, you must specify a value for **replicationSpecs[n].regionConfigs[m].autoScaling.compute.maxInstanceSize**.
 
-            - Set to `false` to disable instance size automatic scaling.
+            - Set to `false` to disable instance size reactive auto-scaling.
           type: boolean
         maxInstanceSize:
           $ref: "#/components/schemas/BaseCloudProviderInstanceSize"
         minInstanceSize:
           $ref: "#/components/schemas/BaseCloudProviderInstanceSize"
+        predictiveEnabled:
+          description: >-
+            Flag that indicates whether predictive instance size auto-scaling is
+            enabled.
+
+
+            - Set to `true` to enable predictive instance size auto-scaling. MongoDB Cloud requires **replicationSpecs[n].regionConfigs[m].autoScaling.compute.enabled** to be `true` in order to enable this feature.
+
+            - Set to `false` to disable predictive instance size auto-scaling.
+          type: boolean
         scaleDownEnabled:
-          description: 'Flag that indicates whether the instance size may scale down.
-            MongoDB Cloud requires this parameter if
-            `"replicationSpecs[n].regionConfigs[m].autoScaling.compute.enabled"
-            : true`. If you enable this option, specify a value for
-            **replicationSpecs[n].regionConfigs[m].autoScaling.compute.minInstanceSize**.'
+          description: Flag that indicates whether the instance size may scale down via
+            reactive auto-scaling. MongoDB Cloud requires this parameter if
+            **replicationSpecs[n].regionConfigs[m].autoScaling.compute.enabled**
+            is `true`. If you enable this option, specify a value for
+            **replicationSpecs[n].regionConfigs[m].autoScaling.compute.minInstanceSize**.
           type: boolean
       title: Automatic Compute Scaling Settings
       type: object
@@ -1480,6 +1490,8 @@ components:
             url: https://dochub.mongodb.org/core/regional-outage-reconfigure-replica-set
           format: date-time
           type: string
+        advancedConfiguration:
+          $ref: "#/components/schemas/ApiAtlasClusterAdvancedConfiguration"
         backupEnabled:
           default: false
           description: Flag that indicates whether the cluster can perform backups. If set
@@ -4473,17 +4485,32 @@ components:
       properties:
         enabled:
           default: false
-          description: Flag that indicates whether cluster tier auto-scaling is enabled.
-            Set to `true` to enable cluster tier auto-scaling. If enabled, you
-            must specify a value for
-            **providerSettings.autoScaling.compute.maxInstanceSize** also. Set
-            to `false` to disable cluster tier auto-scaling.
+          description: >-
+            Flag that indicates whether instance size reactive auto-scaling is
+            enabled.
+
+
+            - Set to `true` to enable instance size reactive auto-scaling. If enabled, you must specify a value for **providerSettings.autoScaling.compute.maxInstanceSize**.
+
+            - Set to `false` to disable instance size reactive auto-scaling.
+          type: boolean
+        predictiveEnabled:
+          default: false
+          description: >-
+            Flag that indicates whether predictive instance size auto-scaling is
+            enabled.
+
+
+            - Set to `true` to enable predictive instance size auto-scaling. MongoDB Cloud requires **autoScaling.compute.enabled** is `true` in order to enable this feature.
+
+            - Set to `false` to disable predictive instance size auto-scaling.
           type: boolean
         scaleDownEnabled:
           default: false
-          description: Flag that indicates whether the cluster tier can scale down. This
-            is required if **autoScaling.compute.enabled** is `true`. If you
-            enable this option, specify a value for
+          description: Flag that indicates whether the cluster tier can scale down via
+            reactive auto-scaling. This is required if
+            **autoScaling.compute.enabled** is `true`. If you enable this
+            option, specify a value for
             **providerSettings.autoScaling.compute.minInstanceSize**.
           type: boolean
       type: object
@@ -4634,6 +4661,8 @@ components:
             url: https://dochub.mongodb.org/core/regional-outage-reconfigure-replica-set
           format: date-time
           type: string
+        advancedConfiguration:
+          $ref: "#/components/schemas/ApiAtlasClusterAdvancedConfiguration"
         backupEnabled:
           default: false
           description: Flag that indicates whether the cluster can perform backups. If set
@@ -4867,6 +4896,15 @@ components:
           description: Method by which the cluster maintains the MongoDB versions. If
             value is `CONTINUOUS`, you must not specify **mongoDBMajorVersion**.
           type: string
+      type: object
+    ClusterDescriptionAutoScalingModeConfiguration:
+      description: Contains the internal configuration of AutoScaling on sharded clusters.
+      properties:
+        autoScalingMode:
+          description: Describes whether cluster nodes scale together across all shards or
+            independently.
+          type: string
+      title: Internal configuration of AutoScaling on sharded clusters
       type: object
     ClusterDescriptionConnectionStringsPrivateEndpoint:
       description: Private endpoint-aware connection string that you can use to
@@ -5175,7 +5213,6 @@ components:
         startRequestDate:
           description: Date and time when MongoDB Cloud started the regional outage
             simulation.
-          example: 2022-01-01T00:00:00Z
           format: date-time
           readOnly: true
           type: string
@@ -5662,9 +5699,6 @@ components:
       properties:
         clusters:
           description: The list of projects to be included in the Cost Explorer Query.
-          example:
-            - 5feeac500000000000000000
-            - 61cfdfd00000000000000000
           items:
             example: 32b6e34b3d91647abb20e7b8
             pattern: ^([a-f0-9]{24})$
@@ -5673,7 +5707,6 @@ components:
         endDate:
           description: The exclusive ending date for the Cost Explorer query. The date
             must be the start of a month.
-          example: 2022-02-01
           format: date
           type: string
         groupBy:
@@ -5688,9 +5721,6 @@ components:
           type: boolean
         organizations:
           description: The list of organizations to be included in the Cost Explorer Query.
-          example:
-            - 5feeac500000000000000000
-            - 61cfdfd00000000000000000
           items:
             example: 32b6e34b3d91647abb20e7b8
             pattern: ^([a-f0-9]{24})$
@@ -5698,9 +5728,6 @@ components:
           type: array
         projects:
           description: The list of projects to be included in the Cost Explorer Query.
-          example:
-            - 5feeac500000000000000000
-            - 61cfdfd00000000000000000
           items:
             example: 32b6e34b3d91647abb20e7b8
             pattern: ^([a-f0-9]{24})$
@@ -5708,16 +5735,12 @@ components:
           type: array
         services:
           description: The list of projects to be included in the Cost Explorer Query.
-          example:
-            - Data Transfer
-            - Atlas Data Federation
           items:
             type: string
           type: array
         startDate:
           description: The inclusive starting date for the Cost Explorer query. The date
             must be the start of a month.
-          example: 2022-02-01
           format: date
           type: string
       required:
@@ -5760,6 +5783,10 @@ components:
             provide a minimum of one role and ensure each role applies to this
             project.
           items:
+            description: Human-readable label that identifies the collection of privileges
+              that MongoDB Cloud grants a specific API key, MongoDB Cloud user,
+              or MongoDB Cloud team. These roles include organization- and
+              project-level roles.
             type: string
           minItems: 1
           type: array
@@ -6874,9 +6901,10 @@ components:
              Storage charge calculations depend on whether you choose the default value or a custom value.
 
              The maximum value for disk storage cannot exceed 50 times the maximum RAM for the selected cluster. If you require more storage space, consider upgrading your cluster to a higher tier.
+          externalDocs:
+            description: Customize Storage
+            url: https://dochub.mongodb.org/core/customize-storage
           format: double
-          maximum: 4096
-          minimum: 10
           type: number
         nodeCount:
           description: Number of nodes of the given type for MongoDB Cloud to deploy to
@@ -8231,7 +8259,7 @@ components:
           readOnly: true
           type: string
         eventTypeName:
-          $ref: "#/components/schemas/StreamProcessorEventTypeViewForNdsGroup"
+          $ref: "#/components/schemas/ChartsAuditType"
           description: Unique identifier of event type.
         groupId:
           description: Unique 24-hexadecimal digit string that identifies the project in
@@ -8272,7 +8300,7 @@ components:
           readOnly: true
           type: string
         publicKey:
-          description: Public part of the API key that triggered the event. If this
+          description: Public part of the API Key that triggered the event. If this
             resource returns this parameter, it doesn't return the **username**
             parameter.
           externalDocs:
@@ -8300,7 +8328,6 @@ components:
           description: Email address for the user who triggered this event. If this
             resource returns this parameter, it doesn't return the
             **publicApiKey** parameter.
-          example: test.user@mongodb.com
           format: email
           readOnly: true
           type: string
@@ -9753,20 +9780,6 @@ components:
           readOnly: true
           type: boolean
       type: object
-    GreaterThanRawThreshold:
-      description: A Limit that triggers an alert when greater than a number.
-      properties:
-        operator:
-          description: Comparison operator to apply when checking the current metric value.
-          type: string
-        threshold:
-          description: Value of metric that, when exceeded, triggers an alert.
-          format: int32
-          type: integer
-        units:
-          $ref: "#/components/schemas/RawMetricUnits"
-      title: Greater Than Raw Threshold
-      type: object
     Group:
       properties:
         clusterCount:
@@ -9872,7 +9885,7 @@ components:
             configuration for the specified project.
           type: boolean
         eventTypeName:
-          $ref: "#/components/schemas/StreamProcessorEventTypeViewAlertable"
+          $ref: "#/components/schemas/StreamProcessorEventTypeViewAlertableWithThreshold"
           description: Incident that triggered this alert.
         groupId:
           description: Unique 24-hexadecimal digit string that identifies the project that
@@ -9924,7 +9937,7 @@ components:
         metricThreshold:
           $ref: "#/components/schemas/FlexClusterMetricThreshold"
         threshold:
-          $ref: "#/components/schemas/GreaterThanRawThreshold"
+          $ref: "#/components/schemas/StreamProcessorMetricThreshold"
     GroupIPAddresses:
       description: List of IP addresses in a project.
       properties:
@@ -10446,9 +10459,10 @@ components:
              Storage charge calculations depend on whether you choose the default value or a custom value.
 
              The maximum value for disk storage cannot exceed 50 times the maximum RAM for the selected cluster. If you require more storage space, consider upgrading your cluster to a higher tier.
+          externalDocs:
+            description: Customize Storage
+            url: https://dochub.mongodb.org/core/customize-storage
           format: double
-          maximum: 4096
-          minimum: 10
           type: number
         diskIOPS:
           description: >-
@@ -11218,6 +11232,8 @@ components:
             url: https://dochub.mongodb.org/core/regional-outage-reconfigure-replica-set
           format: date-time
           type: string
+        advancedConfiguration:
+          $ref: "#/components/schemas/ApiAtlasClusterAdvancedConfiguration"
         autoScaling:
           $ref: "#/components/schemas/ClusterAutoScalingSettings"
         backupEnabled:
@@ -11538,6 +11554,8 @@ components:
             url: https://dochub.mongodb.org/core/regional-outage-reconfigure-replica-set
           format: date-time
           type: string
+        advancedConfiguration:
+          $ref: "#/components/schemas/ApiAtlasClusterAdvancedConfiguration"
         autoScaling:
           $ref: "#/components/schemas/ClusterAutoScalingSettings"
         backupEnabled:
@@ -15303,18 +15321,40 @@ components:
           title: Stream Instance Tier
           type: string
       type: object
-    StreamProcessorEventTypeViewAlertable:
+    StreamProcessorEventTypeViewAlertableWithThreshold:
       description: Event type that triggers an alert.
-      example: STREAM_PROCESSOR_STATE_IS_FAILED
+      example: OUTSIDE_STREAM_PROCESSOR_METRIC_THRESHOLD
       title: Stream Processor Event Types
       type: string
-    StreamProcessorEventTypeViewForNdsGroup:
-      description: Unique identifier of event type.
-      example: STREAM_PROCESSOR_STATE_IS_FAILED
-      title: Stream Processor Event Types
-      type: string
+    StreamProcessorMetricThreshold:
+      description: Threshold for the metric that, when exceeded, triggers an alert.
+        The metric threshold pertains to event types which reflects changes of
+        measurements and metrics in stream processors.
+      properties:
+        metricName:
+          description: Human-readable label that identifies the metric against which
+            MongoDB Cloud checks the configured **metricThreshold.threshold**.
+          type: string
+        mode:
+          description: MongoDB Cloud computes the current metric value as an average.
+          type: string
+        operator:
+          description: Comparison operator to apply when checking the current metric value.
+          type: string
+        threshold:
+          description: Value of metric that, when exceeded, triggers an alert.
+          format: double
+          type: number
+        units:
+          $ref: "#/components/schemas/RawMetricUnits"
+          description: Element used to express the quantity. This can be an element of
+            time, storage capacity, and the like.
+      required:
+        - metricName
+      title: Stream Processor Metric Threshold
+      type: object
     StreamsAWSConnectionConfig:
-      description: The configuration of AWS connection used in stream processors.
+      description: AWS configurations for AWS-based connection types.
       properties:
         links:
           description: List of one or more Uniform Resource Locators (URLs) that point to
@@ -15331,6 +15371,10 @@ components:
           description: Amazon Resource Name (ARN) that identifies the Amazon Web Services
             (AWS) Identity and Access Management (IAM) role that MongoDB Cloud
             assumes when it accesses resources in your AWS account.
+          type: string
+        testBucket:
+          description: The name of an S3 bucket used to check authorization of the
+            passed-in IAM role ARN.
           type: string
       type: object
     StreamsConnection:
@@ -15352,7 +15396,7 @@ components:
             case of the Sample type, this is the name of the sample source.
           type: string
         type:
-          description: Type of the connection. Can be either Cluster or Kafka.
+          description: Type of the connection.
           type: string
         clusterName:
           description: Name of the cluster configured for this connection.
@@ -16416,20 +16460,15 @@ components:
       properties:
         billEndDate:
           description: The inclusive billing start date for usage details filter.
-          example: 2023-02-01
           format: date
           type: string
         billStartDate:
           description: The inclusive billing start date for usage details filter.
-          example: 2023-02-01
           format: date
           type: string
         clusterIds:
           description: The list of unique cluster ids to be included in the Usage Details
             filter.
-          example:
-            - 650d11400000000000000000
-            - 650dd6200000000000000000
           items:
             example: 32b6e34b3d91647abb20e7b8
             pattern: ^([a-f0-9]{24})$
@@ -16438,9 +16477,6 @@ components:
           uniqueItems: true
         groupIds:
           description: The list of groups to be included in the Usage Details filter.
-          example:
-            - 650d11400000000000000000
-            - 650dd6200000000000000000
           items:
             example: 32b6e34b3d91647abb20e7b8
             pattern: ^([a-f0-9]{24})$
@@ -16452,22 +16488,16 @@ components:
           type: boolean
         skuServices:
           description: The list of projects to be included in the Cost Explorer Query.
-          example:
-            - Atlas
-            - Clusters
-            - Storage
           items:
             type: string
           type: array
           uniqueItems: true
         usageEndDate:
           description: The inclusive billing start date for usage details filter.
-          example: 2023-02-01
           format: date
           type: string
         usageStartDate:
           description: The inclusive usage start date for usage details filter.
-          example: 2023-02-01
           format: date
           type: string
       type: object
@@ -17185,6 +17215,35 @@ components:
           readOnly: true
           type: string
       type: object
+    ApiAtlasClusterAdvancedConfiguration:
+      description: Group of settings that configures a subset of the advanced
+        configuration details.
+      properties:
+        customOpensslCipherConfigTls12:
+          description: The custom OpenSSL cipher suite list for TLS 1.2. This field is
+            only valid when `tlsCipherConfigMode` is set to `CUSTOM`.
+          externalDocs:
+            description: This option corresponds to the `opensslCipherConfig` `mongod`
+              configuration file option.
+            url: https://www.mongodb.com/docs/manual/reference/parameters/#mongodb-parameter-param.opensslCipherConfig
+          items:
+            type: string
+          type: array
+        minimumEnabledTlsProtocol:
+          description: Minimum Transport Layer Security (TLS) version that the cluster
+            accepts for incoming connections. Clusters using TLS 1.0 or 1.1
+            should consider setting TLS 1.2 as the minimum TLS protocol version.
+          externalDocs:
+            description: This option corresponds to the `net.ssl.disabledProtocols` `mongod`
+              configuration file option.
+            url: https://docs.mongodb.com/upcoming/reference/configuration-options/#mongodb-setting-net.ssl.disabledProtocols
+          type: string
+        tlsCipherConfigMode:
+          description: The TLS cipher suite configuration mode. The default mode uses the
+            default cipher suites. The custom mode allows you to specify custom
+            cipher suites for both TLS 1.2 and TLS 1.3.
+          type: string
+      type: object
     ApiAtlasInvalidPolicyErrorDetail:
       properties:
         detail:
@@ -17366,7 +17425,6 @@ components:
           $ref: "#/components/schemas/ApiAtlasUserMetadata"
         createdDate:
           description: Date and time in UTC when the atlas resource policy was created.
-          example: 2022-01-01T00:00:00Z
           format: date-time
           readOnly: true
           type: string
@@ -17385,7 +17443,6 @@ components:
           $ref: "#/components/schemas/ApiAtlasUserMetadata"
         lastUpdatedDate:
           description: Date and time in UTC when the atlas resource policy was last updated.
-          example: 2022-01-01T00:00:00Z
           format: date-time
           readOnly: true
           type: string
@@ -17623,6 +17680,11 @@ components:
           type: string
       title: export
       type: object
+    ChartsAuditType:
+      description: Unique identifier of event type.
+      example: CHARTS_API_SUCCESS
+      title: Charts Api Call Audit Types
+      type: string
     CollStatsRankedNamespaces:
       properties:
         groupId:
@@ -19613,7 +19675,7 @@ info:
 
     curl --user "{PUBLIC-KEY}:{PRIVATE-KEY}" \
       --digest \
-      --header "Accept: application/vnd.atlas.2025-02-19+json" \
+      --header "Accept: application/vnd.atlas.2025-03-12+json" \
       -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/dbAccessHistory/clusters/{clusterName}?pretty=true"
     ```
 
@@ -19628,7 +19690,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: efc8d18171380b9901494e43d224eb94e69263f6
+  x-xgen-sha: d71f1dfdf088979b19632081af21ff0610b315c0
 openapi: 3.0.1
 paths:
   /api/atlas/v2:
@@ -19849,6 +19911,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/ConnectedOrgConfig"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -20042,6 +20106,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/AuthFederationRoleMapping"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -20253,6 +20319,8 @@ paths:
             application/vnd.atlas.2023-11-15+json:
               schema:
                 $ref: "#/components/schemas/FederationIdentityProvider"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-11-15
           description: OK
         "400":
@@ -20508,6 +20576,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/Group"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -20794,6 +20864,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/NetworkPermissionEntry"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -20833,6 +20905,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/NetworkPermissionEntryStatus"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -20988,6 +21062,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/GroupAlertsConfig"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -21144,6 +21220,9 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/PaginatedAlert"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-single-resource: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -21224,6 +21303,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/AlertViewForNdsGroup"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -21316,6 +21397,9 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/PaginatedAlertConfig"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-single-resource: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -21533,6 +21617,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/AuditLog"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "404":
@@ -21591,6 +21677,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/AWSCustomDNSEnabled"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -21873,6 +21961,8 @@ paths:
             application/vnd.atlas.2023-10-01+json:
               schema:
                 $ref: "#/components/schemas/DataProtectionSettings20231001"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-10-01
           description: OK
         "401":
@@ -22044,6 +22134,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/CloudProviderAccessRole"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "404":
@@ -22351,6 +22443,8 @@ paths:
             application/vnd.atlas.2024-08-05+json:
               schema:
                 $ref: "#/components/schemas/ClusterDescription20240805"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2024-08-05
           description: OK
         "401":
@@ -22518,6 +22612,46 @@ paths:
       tags:
         - Collection Level Metrics
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Collection-Level-Metrics/operation/getCollStatsLatencyNamespacesForCluster
+  "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/autoScalingConfiguration":
+    get:
+      deprecated: true
+      description: Returns the internal configuration of AutoScaling for sharded
+        clusters. This endpoint can be used for diagnostic purposes to ensure
+        that sharded clusters updated from older APIs have gained support for
+        AutoScaling each shard independently.
+      operationId: autoScalingConfiguration
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Human-readable label that identifies this cluster.
+          in: path
+          name: clusterName
+          required: true
+          schema:
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2024-08-05+json:
+              schema:
+                $ref: "#/components/schemas/ClusterDescriptionAutoScalingModeConfiguration"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+              x-xgen-version: 2024-08-05
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Get cluster internal configuration of sharded cluster AutoScaling
+        operations
+      tags:
+        - Clusters
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/autoScalingConfiguration
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/exports":
     get:
       description: Returns all Cloud Backup Snapshot Export Jobs associated with the
@@ -22625,6 +22759,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/DiskBackupExportJob"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "404":
@@ -22788,6 +22924,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/DiskBackupSnapshotRestoreJob"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "404":
@@ -23059,6 +23197,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/DiskBackupReplicaSet"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -23186,6 +23326,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/DiskBackupShardedClusterSnapshot"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -23417,6 +23559,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/TenantRestore"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -23505,6 +23649,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/BackupTenantSnapshot"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -23583,6 +23729,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/ApiAtlasCheckpoint"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -23825,7 +23973,7 @@ paths:
       summary: Create One Atlas Search Index
       tags:
         - Atlas Search
-      x-sunset: 2025-06-01
+      x-sunset: 2026-11-30
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Atlas-Search/operation/createAtlasSearchIndexDeprecated
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes/{databaseName}/{collectionName}":
     get:
@@ -23879,7 +24027,7 @@ paths:
       summary: Return All Atlas Search Indexes for One Collection
       tags:
         - Atlas Search
-      x-sunset: 2025-06-01
+      x-sunset: 2026-11-30
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Atlas-Search/operation/listAtlasSearchIndexesDeprecated
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes/{indexId}":
     delete:
@@ -23928,7 +24076,7 @@ paths:
       summary: Remove One Atlas Search Index
       tags:
         - Atlas Search
-      x-sunset: 2025-06-01
+      x-sunset: 2026-11-30
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Atlas-Search/operation/deleteAtlasSearchIndexDeprecated
     get:
       deprecated: true
@@ -23969,6 +24117,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/ClusterSearchIndex"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "404":
@@ -23978,7 +24128,7 @@ paths:
       summary: Return One Atlas Search Index
       tags:
         - Atlas Search
-      x-sunset: 2025-06-01
+      x-sunset: 2026-11-30
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Atlas-Search/operation/getAtlasSearchIndexDeprecated
     patch:
       deprecated: true
@@ -24037,7 +24187,7 @@ paths:
       summary: Update One Atlas Search Index
       tags:
         - Atlas Search
-      x-sunset: 2025-06-01
+      x-sunset: 2026-11-30
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Atlas-Search/operation/updateAtlasSearchIndexDeprecated
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites":
     get:
@@ -24065,6 +24215,8 @@ paths:
             application/vnd.atlas.2024-08-05+json:
               schema:
                 $ref: "#/components/schemas/GeoSharding20240805"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2024-08-05
           description: OK
         "401":
@@ -24533,6 +24685,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/BackupOnlineArchive"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -24990,6 +25144,8 @@ paths:
             application/vnd.atlas.2024-08-05+json:
               schema:
                 $ref: "#/components/schemas/ClusterDescriptionProcessArgs20240805"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2024-08-05
           description: OK
         "400":
@@ -25226,6 +25382,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/BackupRestoreJob"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -25272,8 +25430,8 @@ paths:
         - Atlas Search
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Atlas-Search/operation/deleteAtlasSearchDeployment
     get:
-      description: "Return the Search Nodes for the specified cluster. Deprecated
-        versions: v2-{2023-01-01}"
+      description: "Returns the Search Nodes for the specified cluster. Deprecated
+        versions: v2-{2024-05-30}, v2-{2023-01-01}"
       operationId: getAtlasSearchDeployment
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -25287,10 +25445,10 @@ paths:
       responses:
         "200":
           content:
-            application/vnd.atlas.2024-05-30+json:
+            application/vnd.atlas.2025-03-12+json:
               schema:
                 $ref: "#/components/schemas/ApiSearchDeploymentResponse"
-              x-xgen-version: 2024-05-30
+              x-xgen-version: 2025-03-12
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
@@ -25301,6 +25459,9 @@ paths:
       summary: Return Search Nodes
       tags:
         - Atlas Search
+      x-xgen-changelog:
+        2025-03-12: Updates the return of the API when no nodes exist, the endpoint
+          returns 200 with an empty JSON ({}) instead of 400.
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Atlas-Search/operation/getAtlasSearchDeployment
     patch:
       description: "Updates the Search Nodes for the specified cluster. Deprecated
@@ -25903,6 +26064,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/ApiAtlasSnapshotSchedule"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "404":
@@ -26093,6 +26256,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/BackupSnapshot"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -26180,6 +26345,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/ClusterStatus"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "404":
@@ -26744,6 +26911,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/CloudProviderContainer"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -26951,6 +27120,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/UserCustomDBRole"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -27133,6 +27304,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/DataLakeTenant"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -27323,6 +27496,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/DataFederationTenantQueryLimit"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -28016,6 +28191,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/MongoDBAccessLogsList"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -28093,6 +28270,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/MongoDBAccessLogsList"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -28124,6 +28303,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/EncryptionAtRest"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "404":
@@ -28330,6 +28511,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/EARPrivateEndpoint"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "403":
@@ -28473,6 +28656,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/EventViewForNdsGroup"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -28601,6 +28786,8 @@ paths:
             application/vnd.atlas.2024-11-13+json:
               schema:
                 $ref: "#/components/schemas/FlexClusterDescription20241113"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2024-11-13
           description: OK
         "400":
@@ -28810,6 +28997,8 @@ paths:
             application/vnd.atlas.2024-11-13+json:
               schema:
                 $ref: "#/components/schemas/FlexBackupRestoreJob20241113"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2024-11-13
           description: OK
         "400":
@@ -28888,6 +29077,8 @@ paths:
             application/vnd.atlas.2024-11-13+json:
               schema:
                 $ref: "#/components/schemas/FlexBackupSnapshot20241113"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2024-11-13
           description: OK
         "400":
@@ -29003,6 +29194,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/MeasurementsIndexes"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -29049,6 +29242,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/MeasurementsIndexes"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -29205,6 +29400,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/ThirdPartyIntegration"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -29473,6 +29670,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/GroupInvitation"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -29545,6 +29744,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/GroupIPAddresses"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -29705,6 +29906,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/DataFederationLimit"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -29964,6 +30167,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/LiveImportValidation"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -30032,6 +30237,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/GroupMaintenanceWindow"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "404":
@@ -30150,6 +30357,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 type: boolean
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -30264,6 +30473,9 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/PaginatedAvailableVersion"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-single-resource: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -30416,6 +30628,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/BaseNetworkPeeringConnectionSettings"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -30593,6 +30807,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/DataLakeIngestionPipeline"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -30673,6 +30889,9 @@ paths:
                 items:
                   $ref: "#/components/schemas/DiskBackupApiPolicyItem"
                 type: array
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-single-resource: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -30705,7 +30924,6 @@ paths:
           in: query
           name: completedAfter
           schema:
-            example: 2022-01-01T00:00:00Z
             format: date-time
             type: string
         - description: Human-readable label that identifies the Data Lake Pipeline.
@@ -30721,6 +30939,9 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/PaginatedBackupSnapshot"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-single-resource: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -30820,7 +31041,6 @@ paths:
           in: query
           name: createdBefore
           schema:
-            example: 2022-01-01T00:00:00Z
             format: date-time
             type: string
         - description: Human-readable label that identifies the Data Lake Pipeline.
@@ -30921,6 +31141,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/IngestionPipelineRun"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -31078,6 +31300,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/EndpointService"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -31236,6 +31460,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/PrivateLinkEndpoint"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -31519,6 +31745,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/ServerlessTenantEndpoint"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -31600,6 +31828,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/PrivateIPMode"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "404":
@@ -31797,6 +32027,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/PrivateNetworkEndpointIdEntry"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -31866,6 +32098,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/ApiHostView_Atlas"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -32024,6 +32258,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/MesurementsDatabase"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -32095,6 +32331,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/ApiMeasurementsGeneralView_Atlas"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -32179,6 +32417,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/MeasurementDiskPartition"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -32255,6 +32495,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/ApiMeasurementsGeneralView_Atlas"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -32327,6 +32569,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/ApiMeasurementsGeneralView_Atlas"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -32773,6 +33017,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/SampleDatasetStatus"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "404":
@@ -32991,6 +33237,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/ServerlessBackupRestoreJob"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -33083,6 +33331,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/ServerlessBackupSnapshot"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -33246,6 +33496,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/ServerlessInstanceDescription"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -33422,6 +33674,8 @@ paths:
             application/vnd.atlas.2024-08-05+json:
               schema:
                 $ref: "#/components/schemas/GroupServiceAccount"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2024-08-05
           description: OK
         "401":
@@ -33737,6 +33991,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/GroupSettings"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -33911,6 +34167,8 @@ paths:
             application/vnd.atlas.2023-02-01+json:
               schema:
                 $ref: "#/components/schemas/StreamsTenant"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-02-01
           description: OK
         "400":
@@ -34190,6 +34448,8 @@ paths:
             application/vnd.atlas.2023-02-01+json:
               schema:
                 $ref: "#/components/schemas/StreamsConnection"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-02-01
           description: OK
         "401":
@@ -34363,6 +34623,8 @@ paths:
             application/vnd.atlas.2024-05-30+json:
               schema:
                 $ref: "#/components/schemas/StreamsProcessorWithStats"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2024-05-30
           description: OK
         "400":
@@ -34528,6 +34790,9 @@ paths:
             application/vnd.atlas.2024-05-30+json:
               schema:
                 $ref: "#/components/schemas/PaginatedApiStreamsStreamProcessorWithStats"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-single-resource: API predates IPA validation
               x-xgen-version: 2024-05-30
           description: OK
         "400":
@@ -34726,6 +34991,8 @@ paths:
             application/vnd.atlas.2023-02-01+json:
               schema:
                 $ref: "#/components/schemas/StreamsPrivateLinkConnection"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-02-01
           description: OK
         "401":
@@ -35087,6 +35354,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/UserSecurity"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "404":
@@ -35239,6 +35508,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/LDAPVerifyConnectivityJobRequest"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "404":
@@ -35260,7 +35531,7 @@ paths:
         **Note**: This resource cannot be used to view details about users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
 
 
-        **Note**: If using a deprecated version, only active users will be returned. Deprecated versions: v2-{2023-01-01}
+        **Note**: To return both pending and active users, use v2-{2025-02-19} or later. If using a deprecated version, only active users will be returned. Deprecated versions: v2-{2023-01-01}
       operationId: listProjectUsers
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -35381,7 +35652,7 @@ paths:
         **Note**: This resource cannot be used to remove pending users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
 
 
-        **Note**: If using a deprecated version, only active users can be removed. Deprecated versions: v2-{2023-01-01}
+        **Note**: To remove pending or active users, use v2-{2025-02-19} or later. If using a deprecated version, only active users can be removed. Deprecated versions: v2-{2023-01-01}
       operationId: removeProjectUser
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -35680,6 +35951,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/Group"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -35825,6 +36098,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/AtlasOrganization"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -36003,6 +36278,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/ApiKeyUserDetails"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -36310,6 +36587,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/CostExplorerQueryResult"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
             application/vnd.atlas.2023-01-01+csv:
               schema:
@@ -36437,6 +36716,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/EventViewForOrg"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -36463,6 +36744,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/OrgFederationSettings"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -36513,6 +36796,9 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/PaginatedAtlasGroup"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-single-resource: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -36530,9 +36816,13 @@ paths:
   "/api/atlas/v2/orgs/{orgId}/invites":
     get:
       deprecated: true
-      description: Returns all pending invitations to the specified organization. To
-        use this resource, the requesting API Key must have the Organization
-        Owner role.
+      description: >-
+        Returns all pending invitations to the specified organization. To use
+        this resource, the requesting API Key must have the Organization Owner
+        role.
+
+
+        **Note**: Invitation management APIs are deprecated. Use [Return All MongoDB Cloud Users in One Organization](#tag/MongoDB-Cloud-Users/operation/listOrganizationUsers) and filter by `orgMembershipStatus` to return all pending users.
       operationId: listOrganizationInvitations
       parameters:
         - $ref: "#/components/parameters/orgId"
@@ -36569,10 +36859,14 @@ paths:
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Organizations/operation/listOrganizationInvitations
     patch:
       deprecated: true
-      description: Updates the details of one pending invitation to the specified
+      description: >-
+        Updates the details of one pending invitation to the specified
         organization. To specify which invitation, provide the username of the
         invited user. To use this resource, the requesting API Key must have the
         Organization Owner role.
+
+
+        **Note**:  Invitation management are deprecated. Use [Update One MongoDB Cloud User in One Organization](#tag/MongoDB-Cloud-Users/operation/updateOrganizationUser) to update a pending user.
       operationId: updateOrganizationInvitation
       parameters:
         - $ref: "#/components/parameters/orgId"
@@ -36607,10 +36901,14 @@ paths:
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Organizations/operation/updateOrganizationInvitation
     post:
       deprecated: true
-      description: Invites one MongoDB Cloud user to join the specified organization.
-        The user must accept the invitation to access information within the
+      description: >-
+        Invites one MongoDB Cloud user to join the specified organization. The
+        user must accept the invitation to access information within the
         specified organization. To use this resource, the requesting API Key
         must have the Organization Owner role.
+
+
+        **Note**: Invitation management APIs are deprecated. Use [Add One MongoDB Cloud User to One Organization](#tag/MongoDB-Cloud-Users/operation/createOrganizationUser) to invite a user.
       operationId: createOrganizationInvitation
       parameters:
         - $ref: "#/components/parameters/orgId"
@@ -36645,10 +36943,14 @@ paths:
   "/api/atlas/v2/orgs/{orgId}/invites/{invitationId}":
     delete:
       deprecated: true
-      description: Cancels one pending invitation sent to the specified MongoDB Cloud
-        user to join an organization. You can't cancel an invitation that the
-        user accepted. To use this resource, the requesting API Key must have
-        the Organization Owner role.
+      description: >-
+        Cancels one pending invitation sent to the specified MongoDB Cloud user
+        to join an organization. You can't cancel an invitation that the user
+        accepted. To use this resource, the requesting API Key must have the
+        Organization Owner role.
+
+
+        **Note**: Invitation management APIs are deprecated. Use [Remove One MongoDB Cloud User From One Organization](#tag/MongoDB-Cloud-Users/operation/removeOrganizationUser) to remove a pending user.
       operationId: deleteOrganizationInvitation
       parameters:
         - $ref: "#/components/parameters/orgId"
@@ -36681,9 +36983,13 @@ paths:
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Organizations/operation/deleteOrganizationInvitation
     get:
       deprecated: true
-      description: Returns the details of one pending invitation to the specified
+      description: >-
+        Returns the details of one pending invitation to the specified
         organization. To use this resource, the requesting API Key must have the
         Organization Owner role.
+
+
+        **Note**: Invitation management APIs are deprecated. Use [Return One MongoDB Cloud User in One Organization](#tag/MongoDB-Cloud-Users/operation/getOrganizationUser) to return a pending user.
       operationId: getOrganizationInvitation
       parameters:
         - $ref: "#/components/parameters/orgId"
@@ -36700,6 +37006,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/OrganizationInvitation"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -36717,12 +37025,16 @@ paths:
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Organizations/operation/getOrganizationInvitation
     patch:
       deprecated: true
-      description: Updates the details of one pending invitation to the specified
+      description: >-
+        Updates the details of one pending invitation to the specified
         organization. To specify which invitation, provide the unique
         identification string for that invitation. Use the Return All
         Organization Invitations endpoint to retrieve IDs for all pending
         organization invitations. To use this resource, the requesting API Key
         must have the Organization Owner role.
+
+
+        **Note**: Invitation management APIs are deprecated. Use [Update One MongoDB Cloud User in One Organization](#tag/MongoDB-Cloud-Users/operation/updateOrganizationUser) to update a pending user.
       operationId: updateOrganizationInvitationById
       parameters:
         - $ref: "#/components/parameters/orgId"
@@ -36785,7 +37097,6 @@ paths:
           name: viewLinkedInvoices
           schema:
             default: true
-            example: true
             type: boolean
         - description: Statuses of the invoice to be retrieved. Omit to return invoices of
             all statuses.
@@ -36877,6 +37188,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/BillingInvoice"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
             application/vnd.atlas.2023-01-01+csv:
               schema:
@@ -37033,6 +37346,8 @@ paths:
                 items:
                   $ref: "#/components/schemas/LiveImportAvailableProject"
                 type: array
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -37124,6 +37439,9 @@ paths:
                 items:
                   $ref: "#/components/schemas/ApiAtlasNonCompliantResource"
                 type: array
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-single-resource: API predates IPA validation
               x-xgen-version: 2024-08-05
           description: OK
         "400":
@@ -37277,6 +37595,8 @@ paths:
             application/vnd.atlas.2024-08-05+json:
               schema:
                 $ref: "#/components/schemas/ApiAtlasResourcePolicy"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2024-08-05
           description: OK
         "400":
@@ -37493,6 +37813,8 @@ paths:
             application/vnd.atlas.2024-08-05+json:
               schema:
                 $ref: "#/components/schemas/OrgServiceAccount"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2024-08-05
           description: OK
         "401":
@@ -37697,6 +38019,9 @@ paths:
             application/vnd.atlas.2024-08-05+json:
               schema:
                 $ref: "#/components/schemas/PaginatedServiceAccountGroup"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
+                xgen-IPA-104-get-method-returns-single-resource: API predates IPA validation
               x-xgen-version: 2024-08-05
           description: OK
         "401":
@@ -37800,6 +38125,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/OrganizationSettings"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -38058,13 +38385,13 @@ paths:
         Returns details about the pending and active MongoDB Cloud users
         associated with the specified team in the organization. Teams enable you
         to grant project access roles to MongoDB Cloud users. To use this
-        resource, the requesting API Key must have the Organization Member
-        role.**Note**: This resource cannot be used to view details about users
-        invited via the deprecated [Invite One MongoDB Cloud User to Join One
-        Project](#tag/Projects/operation/createProjectInvitation) endpoint.
+        resource, the requesting API Key must have the Organization Member role.
 
 
-        **Note**: If using a deprecated version, only active users will be returned. Deprecated versions: v2-{2023-01-01}
+        **Note**: This resource cannot be used to view details about users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
+
+
+        **Note**: To return both pending and active users, use v2-{2025-02-19} or later. If using a deprecated version, only active users will be returned. Deprecated versions: v2-{2023-01-01}
       externalDocs:
         description: Manage Organization Teams
         url: https://docs.atlas.mongodb.com/access/manage-teams-in-orgs/#std-label-manage-teams
@@ -38120,11 +38447,15 @@ paths:
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/MongoDB-Cloud-Users/operation/listTeamUsers
     post:
       deprecated: true
-      description: Adds one or more MongoDB Cloud users from the specified
-        organization to the specified team. Teams enable you to grant project
-        access roles to MongoDB Cloud users. You can assign up to 250 MongoDB
-        Cloud users from one organization to one team. To use this resource, the
-        requesting API Key must have the Organization Owner role.
+      description: >-
+        Adds one or more MongoDB Cloud users from the specified organization to
+        the specified team. Teams enable you to grant project access roles to
+        MongoDB Cloud users. You can assign up to 250 MongoDB Cloud users from
+        one organization to one team. To use this resource, the requesting API
+        Key must have the Organization Owner role.
+
+
+        **Note**: This endpoint is deprecated. Use [Add One MongoDB Cloud User to One Team](#tag/MongoDB-Cloud-Users/operation/addUserToTeam) to add an active or pending user to a team.
       externalDocs:
         description: Manage Organization Teams
         url: https://docs.atlas.mongodb.com/access/manage-teams-in-orgs/#std-label-manage-teams
@@ -38175,10 +38506,14 @@ paths:
   "/api/atlas/v2/orgs/{orgId}/teams/{teamId}/users/{userId}":
     delete:
       deprecated: true
-      description: Removes one MongoDB Cloud user from the specified team. This team
+      description: >-
+        Removes one MongoDB Cloud user from the specified team. This team
         belongs to one organization. Teams enable you to grant project access
         roles to MongoDB Cloud users. To use this resource, the requesting API
         Key must have the Organization Owner role.
+
+
+        **Note**: This endpoint is deprecated. Use [Remove One MongoDB Cloud User from One Team](#tag/MongoDB-Cloud-Users/operation/removeUserFromTeam) to remove an active or pending user from a team.
       externalDocs:
         description: Manage Organization Teams
         url: https://docs.atlas.mongodb.com/access/manage-teams-in-orgs/#std-label-manage-teams
@@ -38371,7 +38706,7 @@ paths:
         **Note**: This resource cannot be used to view details about users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
 
 
-        **Note**: If using a deprecated version, only active users will be returned. Deprecated versions: v2-{2023-01-01}
+        **Note**: To return both pending and active users, use v2-{2025-02-19} or later. If using a deprecated version, only active users will be returned. Deprecated versions: v2-{2023-01-01}
       operationId: listOrganizationUsers
       parameters:
         - $ref: "#/components/parameters/orgId"
@@ -38469,7 +38804,7 @@ paths:
         **Note**: This resource cannot be used to remove pending users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
 
 
-        **Note**: If using a deprecated version, only active users can be removed. Deprecated versions: v2-{2023-01-01}
+        **Note**: To remove pending or active users, use v2-{2025-02-19} or later. If using a deprecated version, only active users can be removed. Deprecated versions: v2-{2023-01-01}
       operationId: removeOrganizationUser
       parameters:
         - $ref: "#/components/parameters/orgId"
@@ -38861,6 +39196,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/CloudAppUser"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -38899,6 +39236,8 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/CloudAppUser"
+              x-xgen-IPA-exception:
+                xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "401":
