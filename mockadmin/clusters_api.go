@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250219001/admin"
+	admin "go.mongodb.org/atlas-sdk/v20250312001/admin"
 
 	http "net/http"
 
@@ -23,6 +23,168 @@ type ClustersApi_Expecter struct {
 
 func (_m *ClustersApi) EXPECT() *ClustersApi_Expecter {
 	return &ClustersApi_Expecter{mock: &_m.Mock}
+}
+
+// AutoScalingConfiguration provides a mock function with given fields: ctx, groupId, clusterName
+func (_m *ClustersApi) AutoScalingConfiguration(ctx context.Context, groupId string, clusterName string) admin.AutoScalingConfigurationApiRequest {
+	ret := _m.Called(ctx, groupId, clusterName)
+
+	if len(ret) == 0 {
+		panic("no return value specified for AutoScalingConfiguration")
+	}
+
+	var r0 admin.AutoScalingConfigurationApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.AutoScalingConfigurationApiRequest); ok {
+		r0 = rf(ctx, groupId, clusterName)
+	} else {
+		r0 = ret.Get(0).(admin.AutoScalingConfigurationApiRequest)
+	}
+
+	return r0
+}
+
+// ClustersApi_AutoScalingConfiguration_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'AutoScalingConfiguration'
+type ClustersApi_AutoScalingConfiguration_Call struct {
+	*mock.Call
+}
+
+// AutoScalingConfiguration is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - clusterName string
+func (_e *ClustersApi_Expecter) AutoScalingConfiguration(ctx any, groupId any, clusterName any) *ClustersApi_AutoScalingConfiguration_Call {
+	return &ClustersApi_AutoScalingConfiguration_Call{Call: _e.mock.On("AutoScalingConfiguration", ctx, groupId, clusterName)}
+}
+
+func (_c *ClustersApi_AutoScalingConfiguration_Call) Run(run func(ctx context.Context, groupId string, clusterName string)) *ClustersApi_AutoScalingConfiguration_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string))
+	})
+	return _c
+}
+
+func (_c *ClustersApi_AutoScalingConfiguration_Call) Return(_a0 admin.AutoScalingConfigurationApiRequest) *ClustersApi_AutoScalingConfiguration_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ClustersApi_AutoScalingConfiguration_Call) RunAndReturn(run func(context.Context, string, string) admin.AutoScalingConfigurationApiRequest) *ClustersApi_AutoScalingConfiguration_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// AutoScalingConfigurationExecute provides a mock function with given fields: r
+func (_m *ClustersApi) AutoScalingConfigurationExecute(r admin.AutoScalingConfigurationApiRequest) (*admin.ClusterDescriptionAutoScalingModeConfiguration, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for AutoScalingConfigurationExecute")
+	}
+
+	var r0 *admin.ClusterDescriptionAutoScalingModeConfiguration
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.AutoScalingConfigurationApiRequest) (*admin.ClusterDescriptionAutoScalingModeConfiguration, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.AutoScalingConfigurationApiRequest) *admin.ClusterDescriptionAutoScalingModeConfiguration); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.ClusterDescriptionAutoScalingModeConfiguration)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.AutoScalingConfigurationApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.AutoScalingConfigurationApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// ClustersApi_AutoScalingConfigurationExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'AutoScalingConfigurationExecute'
+type ClustersApi_AutoScalingConfigurationExecute_Call struct {
+	*mock.Call
+}
+
+// AutoScalingConfigurationExecute is a helper method to define mock.On call
+//   - r admin.AutoScalingConfigurationApiRequest
+func (_e *ClustersApi_Expecter) AutoScalingConfigurationExecute(r any) *ClustersApi_AutoScalingConfigurationExecute_Call {
+	return &ClustersApi_AutoScalingConfigurationExecute_Call{Call: _e.mock.On("AutoScalingConfigurationExecute", r)}
+}
+
+func (_c *ClustersApi_AutoScalingConfigurationExecute_Call) Run(run func(r admin.AutoScalingConfigurationApiRequest)) *ClustersApi_AutoScalingConfigurationExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.AutoScalingConfigurationApiRequest))
+	})
+	return _c
+}
+
+func (_c *ClustersApi_AutoScalingConfigurationExecute_Call) Return(_a0 *admin.ClusterDescriptionAutoScalingModeConfiguration, _a1 *http.Response, _a2 error) *ClustersApi_AutoScalingConfigurationExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *ClustersApi_AutoScalingConfigurationExecute_Call) RunAndReturn(run func(admin.AutoScalingConfigurationApiRequest) (*admin.ClusterDescriptionAutoScalingModeConfiguration, *http.Response, error)) *ClustersApi_AutoScalingConfigurationExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// AutoScalingConfigurationWithParams provides a mock function with given fields: ctx, args
+func (_m *ClustersApi) AutoScalingConfigurationWithParams(ctx context.Context, args *admin.AutoScalingConfigurationApiParams) admin.AutoScalingConfigurationApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for AutoScalingConfigurationWithParams")
+	}
+
+	var r0 admin.AutoScalingConfigurationApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.AutoScalingConfigurationApiParams) admin.AutoScalingConfigurationApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.AutoScalingConfigurationApiRequest)
+	}
+
+	return r0
+}
+
+// ClustersApi_AutoScalingConfigurationWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'AutoScalingConfigurationWithParams'
+type ClustersApi_AutoScalingConfigurationWithParams_Call struct {
+	*mock.Call
+}
+
+// AutoScalingConfigurationWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.AutoScalingConfigurationApiParams
+func (_e *ClustersApi_Expecter) AutoScalingConfigurationWithParams(ctx any, args any) *ClustersApi_AutoScalingConfigurationWithParams_Call {
+	return &ClustersApi_AutoScalingConfigurationWithParams_Call{Call: _e.mock.On("AutoScalingConfigurationWithParams", ctx, args)}
+}
+
+func (_c *ClustersApi_AutoScalingConfigurationWithParams_Call) Run(run func(ctx context.Context, args *admin.AutoScalingConfigurationApiParams)) *ClustersApi_AutoScalingConfigurationWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.AutoScalingConfigurationApiParams))
+	})
+	return _c
+}
+
+func (_c *ClustersApi_AutoScalingConfigurationWithParams_Call) Return(_a0 admin.AutoScalingConfigurationApiRequest) *ClustersApi_AutoScalingConfigurationWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ClustersApi_AutoScalingConfigurationWithParams_Call) RunAndReturn(run func(context.Context, *admin.AutoScalingConfigurationApiParams) admin.AutoScalingConfigurationApiRequest) *ClustersApi_AutoScalingConfigurationWithParams_Call {
+	_c.Call.Return(run)
+	return _c
 }
 
 // CreateCluster provides a mock function with given fields: ctx, groupId, clusterDescription20240805
