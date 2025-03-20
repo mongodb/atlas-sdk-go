@@ -10,8 +10,8 @@ import (
 	"net/url"
 	"strings"
 
-	"go.mongodb.org/atlas-sdk/v20250219001/auth"
-	"go.mongodb.org/atlas-sdk/v20250219001/internal/core"
+	"go.mongodb.org/atlas-sdk/v20250312001/auth"
+	"go.mongodb.org/atlas-sdk/v20250312001/internal/core"
 	"golang.org/x/oauth2/clientcredentials"
 )
 

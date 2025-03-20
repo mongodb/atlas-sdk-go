@@ -14,6 +14,34 @@ import (
 type ClustersApi interface {
 
 	/*
+		AutoScalingConfiguration Get cluster internal configuration of sharded cluster AutoScaling operations
+
+		Returns the internal configuration of AutoScaling for sharded clusters. This endpoint can be used for diagnostic purposes to ensure that sharded clusters updated from older APIs have gained support for AutoScaling each shard independently.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param clusterName Human-readable label that identifies this cluster.
+		@return AutoScalingConfigurationApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for ClustersApi
+	*/
+	AutoScalingConfiguration(ctx context.Context, groupId string, clusterName string) AutoScalingConfigurationApiRequest
+	/*
+		AutoScalingConfiguration Get cluster internal configuration of sharded cluster AutoScaling operations
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param AutoScalingConfigurationApiParams - Parameters for the request
+		@return AutoScalingConfigurationApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for ClustersApi
+	*/
+	AutoScalingConfigurationWithParams(ctx context.Context, args *AutoScalingConfigurationApiParams) AutoScalingConfigurationApiRequest
+
+	// Method available only for mocking purposes
+	AutoScalingConfigurationExecute(r AutoScalingConfigurationApiRequest) (*ClusterDescriptionAutoScalingModeConfiguration, *http.Response, error)
+
+	/*
 			CreateCluster Create One Cluster from One Project
 
 			Creates one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. This resource can create clusters with asymmetrically-sized shards. Each project supports up to 25 database deployments. To use this resource, the requesting API Key must have the Project Owner role. This feature is not available for serverless clusters.
@@ -488,6 +516,127 @@ type ClustersApi interface {
 
 // ClustersApiService ClustersApi service
 type ClustersApiService service
+
+type AutoScalingConfigurationApiRequest struct {
+	ctx         context.Context
+	ApiService  ClustersApi
+	groupId     string
+	clusterName string
+}
+
+type AutoScalingConfigurationApiParams struct {
+	GroupId     string
+	ClusterName string
+}
+
+func (a *ClustersApiService) AutoScalingConfigurationWithParams(ctx context.Context, args *AutoScalingConfigurationApiParams) AutoScalingConfigurationApiRequest {
+	return AutoScalingConfigurationApiRequest{
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     args.GroupId,
+		clusterName: args.ClusterName,
+	}
+}
+
+func (r AutoScalingConfigurationApiRequest) Execute() (*ClusterDescriptionAutoScalingModeConfiguration, *http.Response, error) {
+	return r.ApiService.AutoScalingConfigurationExecute(r)
+}
+
+/*
+AutoScalingConfiguration Get cluster internal configuration of sharded cluster AutoScaling operations
+
+Returns the internal configuration of AutoScaling for sharded clusters. This endpoint can be used for diagnostic purposes to ensure that sharded clusters updated from older APIs have gained support for AutoScaling each shard independently.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param clusterName Human-readable label that identifies this cluster.
+	@return AutoScalingConfigurationApiRequest
+
+Deprecated
+*/
+func (a *ClustersApiService) AutoScalingConfiguration(ctx context.Context, groupId string, clusterName string) AutoScalingConfigurationApiRequest {
+	return AutoScalingConfigurationApiRequest{
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     groupId,
+		clusterName: clusterName,
+	}
+}
+
+// AutoScalingConfigurationExecute executes the request
+//
+//	@return ClusterDescriptionAutoScalingModeConfiguration
+//
+// Deprecated
+func (a *ClustersApiService) AutoScalingConfigurationExecute(r AutoScalingConfigurationApiRequest) (*ClusterDescriptionAutoScalingModeConfiguration, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *ClusterDescriptionAutoScalingModeConfiguration
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.AutoScalingConfiguration")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/autoScalingConfiguration"
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-08-05+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
 
 type CreateClusterApiRequest struct {
 	ctx                        context.Context

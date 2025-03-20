@@ -30,9 +30,9 @@ type GroupAlertsConfig struct {
 	Notifications *[]AlertsNotificationRootForGroup `json:"notifications,omitempty"`
 	// Date and time when someone last updated this alert configuration. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
-	Updated         *time.Time                  `json:"updated,omitempty"`
-	MetricThreshold *FlexClusterMetricThreshold `json:"metricThreshold,omitempty"`
-	Threshold       *GreaterThanRawThreshold    `json:"threshold,omitempty"`
+	Updated         *time.Time                      `json:"updated,omitempty"`
+	MetricThreshold *FlexClusterMetricThreshold     `json:"metricThreshold,omitempty"`
+	Threshold       *StreamProcessorMetricThreshold `json:"threshold,omitempty"`
 }
 
 // NewGroupAlertsConfig instantiates a new GroupAlertsConfig object
@@ -387,9 +387,9 @@ func (o *GroupAlertsConfig) SetMetricThreshold(v FlexClusterMetricThreshold) {
 }
 
 // GetThreshold returns the Threshold field value if set, zero value otherwise
-func (o *GroupAlertsConfig) GetThreshold() GreaterThanRawThreshold {
+func (o *GroupAlertsConfig) GetThreshold() StreamProcessorMetricThreshold {
 	if o == nil || IsNil(o.Threshold) {
-		var ret GreaterThanRawThreshold
+		var ret StreamProcessorMetricThreshold
 		return ret
 	}
 	return *o.Threshold
@@ -397,7 +397,7 @@ func (o *GroupAlertsConfig) GetThreshold() GreaterThanRawThreshold {
 
 // GetThresholdOk returns a tuple with the Threshold field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GroupAlertsConfig) GetThresholdOk() (*GreaterThanRawThreshold, bool) {
+func (o *GroupAlertsConfig) GetThresholdOk() (*StreamProcessorMetricThreshold, bool) {
 	if o == nil || IsNil(o.Threshold) {
 		return nil, false
 	}
@@ -414,7 +414,7 @@ func (o *GroupAlertsConfig) HasThreshold() bool {
 	return false
 }
 
-// SetThreshold gets a reference to the given GreaterThanRawThreshold and assigns it to the Threshold field.
-func (o *GroupAlertsConfig) SetThreshold(v GreaterThanRawThreshold) {
+// SetThreshold gets a reference to the given StreamProcessorMetricThreshold and assigns it to the Threshold field.
+func (o *GroupAlertsConfig) SetThreshold(v StreamProcessorMetricThreshold) {
 	o.Threshold = &v
 }
