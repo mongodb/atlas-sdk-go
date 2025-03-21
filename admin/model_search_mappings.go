@@ -7,7 +7,7 @@ type SearchMappings struct {
 	// Flag that indicates whether the index uses dynamic or static mappings. Required if **mappings.fields** is omitted.
 	Dynamic *bool `json:"dynamic,omitempty"`
 	// One or more field specifications for the Atlas Search index. Required if **mappings.dynamic** is omitted or set to **false**.
-	Fields any `json:"fields,omitempty"`
+	Fields *map[string]any `json:"fields,omitempty"`
 }
 
 // NewSearchMappings instantiates a new SearchMappings object
@@ -61,20 +61,19 @@ func (o *SearchMappings) SetDynamic(v bool) {
 }
 
 // GetFields returns the Fields field value if set, zero value otherwise
-func (o *SearchMappings) GetFields() any {
+func (o *SearchMappings) GetFields() map[string]any {
 	if o == nil || IsNil(o.Fields) {
-		var ret any
+		var ret map[string]any
 		return ret
 	}
-	return o.Fields
+	return *o.Fields
 }
 
 // GetFieldsOk returns a tuple with the Fields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SearchMappings) GetFieldsOk() (any, bool) {
+func (o *SearchMappings) GetFieldsOk() (*map[string]any, bool) {
 	if o == nil || IsNil(o.Fields) {
-		var ret any
-		return ret, false
+		return nil, false
 	}
 
 	return o.Fields, true
@@ -89,7 +88,7 @@ func (o *SearchMappings) HasFields() bool {
 	return false
 }
 
-// SetFields gets a reference to the given any and assigns it to the Fields field.
-func (o *SearchMappings) SetFields(v any) {
-	o.Fields = v
+// SetFields gets a reference to the given map[string]any and assigns it to the Fields field.
+func (o *SearchMappings) SetFields(v map[string]any) {
+	o.Fields = &v
 }

@@ -4,18 +4,18 @@ package admin
 
 // DiskBackupSnapshotExportBucketRequest Disk backup snapshot Export Bucket Request.
 type DiskBackupSnapshotExportBucketRequest struct {
-	// The name of the Azure Storage Container to export to. Deprecated: provide the Container's URL in serviceUrl instead.
-	BucketName string `json:"bucketName"`
 	// Human-readable label that identifies the cloud provider that Snapshots are exported to.
 	CloudProvider string `json:"cloudProvider"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
+	// The name of the Azure Storage Container to export to. This can be omitted and computed from the serviceUrl if the serviceUrl includes a Azure Storage Container name. For example a serviceUrl of \"https://examplestorageaccount.blob.core.windows.net/exportcontainer\" will yield a computed bucketName of \"exportcontainer\". If the serviceUrl does not include a Container name, this field is required.
+	BucketName *string `json:"bucketName,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the Unified AWS Access role ID that MongoDB Cloud uses to access the AWS S3 bucket.
 	IamRoleId *string `json:"iamRoleId,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the Azure Cloud Provider Access Role that MongoDB Cloud uses to access the Azure Blob Storage Container.
 	RoleId *string `json:"roleId,omitempty"`
-	// URL of the Azure Storage Account to export to. For example: \"https://examplestorageaccount.blob.core.windows.net\". Only standard endpoints (with \"blob.core.windows.net\") are supported.
+	// URL of the Azure Storage Account to export to. For example: \"https://examplestorageaccount.blob.core.windows.net/exportcontainer\". Only standard endpoints (with \"blob.core.windows.net\") are supported.
 	ServiceUrl *string `json:"serviceUrl,omitempty"`
 	// UUID that identifies the Azure Active Directory Tenant ID. Deprecated: this field is ignored; the tenantId of the Cloud Provider Access role (from roleId) is used.
 	// Deprecated
@@ -26,9 +26,8 @@ type DiskBackupSnapshotExportBucketRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDiskBackupSnapshotExportBucketRequest(bucketName string, cloudProvider string) *DiskBackupSnapshotExportBucketRequest {
+func NewDiskBackupSnapshotExportBucketRequest(cloudProvider string) *DiskBackupSnapshotExportBucketRequest {
 	this := DiskBackupSnapshotExportBucketRequest{}
-	this.BucketName = bucketName
 	this.CloudProvider = cloudProvider
 	return &this
 }
@@ -39,30 +38,6 @@ func NewDiskBackupSnapshotExportBucketRequest(bucketName string, cloudProvider s
 func NewDiskBackupSnapshotExportBucketRequestWithDefaults() *DiskBackupSnapshotExportBucketRequest {
 	this := DiskBackupSnapshotExportBucketRequest{}
 	return &this
-}
-
-// GetBucketName returns the BucketName field value
-func (o *DiskBackupSnapshotExportBucketRequest) GetBucketName() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.BucketName
-}
-
-// GetBucketNameOk returns a tuple with the BucketName field value
-// and a boolean to check if the value has been set.
-func (o *DiskBackupSnapshotExportBucketRequest) GetBucketNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.BucketName, true
-}
-
-// SetBucketName sets field value
-func (o *DiskBackupSnapshotExportBucketRequest) SetBucketName(v string) {
-	o.BucketName = v
 }
 
 // GetCloudProvider returns the CloudProvider field value
@@ -120,6 +95,39 @@ func (o *DiskBackupSnapshotExportBucketRequest) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *DiskBackupSnapshotExportBucketRequest) SetLinks(v []Link) {
 	o.Links = &v
+}
+
+// GetBucketName returns the BucketName field value if set, zero value otherwise
+func (o *DiskBackupSnapshotExportBucketRequest) GetBucketName() string {
+	if o == nil || IsNil(o.BucketName) {
+		var ret string
+		return ret
+	}
+	return *o.BucketName
+}
+
+// GetBucketNameOk returns a tuple with the BucketName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DiskBackupSnapshotExportBucketRequest) GetBucketNameOk() (*string, bool) {
+	if o == nil || IsNil(o.BucketName) {
+		return nil, false
+	}
+
+	return o.BucketName, true
+}
+
+// HasBucketName returns a boolean if a field has been set.
+func (o *DiskBackupSnapshotExportBucketRequest) HasBucketName() bool {
+	if o != nil && !IsNil(o.BucketName) {
+		return true
+	}
+
+	return false
+}
+
+// SetBucketName gets a reference to the given string and assigns it to the BucketName field.
+func (o *DiskBackupSnapshotExportBucketRequest) SetBucketName(v string) {
+	o.BucketName = &v
 }
 
 // GetIamRoleId returns the IamRoleId field value if set, zero value otherwise
