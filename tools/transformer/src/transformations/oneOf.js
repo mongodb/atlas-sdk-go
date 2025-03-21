@@ -125,6 +125,7 @@ function transformOneOfProperties(parentObject, api) {
 
   // Remove invalid fields
   delete parentObject.discriminator;
+  delete parentObject.required;
   delete parentObject.oneOf;
 }
 
