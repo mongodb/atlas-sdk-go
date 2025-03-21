@@ -7,7 +7,7 @@ type DiskBackupSnapshotExportBucketRequest struct {
 	// The name of the Azure Storage Container to export to. Deprecated: provide the Container's URL in serviceUrl instead.
 	BucketName *string `json:"bucketName,omitempty"`
 	// Human-readable label that identifies the cloud provider that Snapshots are exported to.
-	CloudProvider *string `json:"cloudProvider,omitempty"`
+	CloudProvider string `json:"cloudProvider"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
@@ -26,8 +26,9 @@ type DiskBackupSnapshotExportBucketRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDiskBackupSnapshotExportBucketRequest() *DiskBackupSnapshotExportBucketRequest {
+func NewDiskBackupSnapshotExportBucketRequest(cloudProvider string) *DiskBackupSnapshotExportBucketRequest {
 	this := DiskBackupSnapshotExportBucketRequest{}
+	this.CloudProvider = cloudProvider
 	return &this
 }
 
@@ -72,37 +73,28 @@ func (o *DiskBackupSnapshotExportBucketRequest) SetBucketName(v string) {
 	o.BucketName = &v
 }
 
-// GetCloudProvider returns the CloudProvider field value if set, zero value otherwise
+// GetCloudProvider returns the CloudProvider field value
 func (o *DiskBackupSnapshotExportBucketRequest) GetCloudProvider() string {
-	if o == nil || IsNil(o.CloudProvider) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.CloudProvider
+
+	return o.CloudProvider
 }
 
-// GetCloudProviderOk returns a tuple with the CloudProvider field value if set, nil otherwise
+// GetCloudProviderOk returns a tuple with the CloudProvider field value
 // and a boolean to check if the value has been set.
 func (o *DiskBackupSnapshotExportBucketRequest) GetCloudProviderOk() (*string, bool) {
-	if o == nil || IsNil(o.CloudProvider) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.CloudProvider, true
+	return &o.CloudProvider, true
 }
 
-// HasCloudProvider returns a boolean if a field has been set.
-func (o *DiskBackupSnapshotExportBucketRequest) HasCloudProvider() bool {
-	if o != nil && !IsNil(o.CloudProvider) {
-		return true
-	}
-
-	return false
-}
-
-// SetCloudProvider gets a reference to the given string and assigns it to the CloudProvider field.
+// SetCloudProvider sets field value
 func (o *DiskBackupSnapshotExportBucketRequest) SetCloudProvider(v string) {
-	o.CloudProvider = &v
+	o.CloudProvider = v
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise

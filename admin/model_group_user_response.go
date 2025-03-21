@@ -10,16 +10,16 @@ import (
 type GroupUserResponse struct {
 	// Unique 24-hexadecimal digit string that identifies the MongoDB Cloud user.
 	// Read only field.
-	Id *string `json:"id,omitempty"`
+	Id string `json:"id"`
 	// String enum that indicates whether the MongoDB Cloud user has a pending invitation to join the organization or they are already active in the organization.
 	// Read only field.
-	OrgMembershipStatus *string `json:"orgMembershipStatus,omitempty"`
+	OrgMembershipStatus string `json:"orgMembershipStatus"`
 	// One or more project-level roles assigned to the MongoDB Cloud user.
 	// Read only field.
-	Roles *[]string `json:"roles,omitempty"`
+	Roles []string `json:"roles"`
 	// Email address that represents the username of the MongoDB Cloud user.
 	// Read only field.
-	Username *string `json:"username,omitempty"`
+	Username string `json:"username"`
 	// Date and time when MongoDB Cloud sent the invitation. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC.
 	// Read only field.
 	InvitationCreatedAt *time.Time `json:"invitationCreatedAt,omitempty"`
@@ -53,8 +53,12 @@ type GroupUserResponse struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGroupUserResponse() *GroupUserResponse {
+func NewGroupUserResponse(id string, orgMembershipStatus string, roles []string, username string) *GroupUserResponse {
 	this := GroupUserResponse{}
+	this.Id = id
+	this.OrgMembershipStatus = orgMembershipStatus
+	this.Roles = roles
+	this.Username = username
 	return &this
 }
 
@@ -66,136 +70,100 @@ func NewGroupUserResponseWithDefaults() *GroupUserResponse {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise
+// GetId returns the Id field value
 func (o *GroupUserResponse) GetId() string {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *GroupUserResponse) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *GroupUserResponse) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
+// SetId sets field value
 func (o *GroupUserResponse) SetId(v string) {
-	o.Id = &v
+	o.Id = v
 }
 
-// GetOrgMembershipStatus returns the OrgMembershipStatus field value if set, zero value otherwise
+// GetOrgMembershipStatus returns the OrgMembershipStatus field value
 func (o *GroupUserResponse) GetOrgMembershipStatus() string {
-	if o == nil || IsNil(o.OrgMembershipStatus) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.OrgMembershipStatus
+
+	return o.OrgMembershipStatus
 }
 
-// GetOrgMembershipStatusOk returns a tuple with the OrgMembershipStatus field value if set, nil otherwise
+// GetOrgMembershipStatusOk returns a tuple with the OrgMembershipStatus field value
 // and a boolean to check if the value has been set.
 func (o *GroupUserResponse) GetOrgMembershipStatusOk() (*string, bool) {
-	if o == nil || IsNil(o.OrgMembershipStatus) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.OrgMembershipStatus, true
+	return &o.OrgMembershipStatus, true
 }
 
-// HasOrgMembershipStatus returns a boolean if a field has been set.
-func (o *GroupUserResponse) HasOrgMembershipStatus() bool {
-	if o != nil && !IsNil(o.OrgMembershipStatus) {
-		return true
-	}
-
-	return false
-}
-
-// SetOrgMembershipStatus gets a reference to the given string and assigns it to the OrgMembershipStatus field.
+// SetOrgMembershipStatus sets field value
 func (o *GroupUserResponse) SetOrgMembershipStatus(v string) {
-	o.OrgMembershipStatus = &v
+	o.OrgMembershipStatus = v
 }
 
-// GetRoles returns the Roles field value if set, zero value otherwise
+// GetRoles returns the Roles field value
 func (o *GroupUserResponse) GetRoles() []string {
-	if o == nil || IsNil(o.Roles) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
-	return *o.Roles
+
+	return o.Roles
 }
 
-// GetRolesOk returns a tuple with the Roles field value if set, nil otherwise
+// GetRolesOk returns a tuple with the Roles field value
 // and a boolean to check if the value has been set.
 func (o *GroupUserResponse) GetRolesOk() (*[]string, bool) {
-	if o == nil || IsNil(o.Roles) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.Roles, true
+	return &o.Roles, true
 }
 
-// HasRoles returns a boolean if a field has been set.
-func (o *GroupUserResponse) HasRoles() bool {
-	if o != nil && !IsNil(o.Roles) {
-		return true
-	}
-
-	return false
-}
-
-// SetRoles gets a reference to the given []string and assigns it to the Roles field.
+// SetRoles sets field value
 func (o *GroupUserResponse) SetRoles(v []string) {
-	o.Roles = &v
+	o.Roles = v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise
+// GetUsername returns the Username field value
 func (o *GroupUserResponse) GetUsername() string {
-	if o == nil || IsNil(o.Username) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Username
+
+	return o.Username
 }
 
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
+// GetUsernameOk returns a tuple with the Username field value
 // and a boolean to check if the value has been set.
 func (o *GroupUserResponse) GetUsernameOk() (*string, bool) {
-	if o == nil || IsNil(o.Username) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.Username, true
+	return &o.Username, true
 }
 
-// HasUsername returns a boolean if a field has been set.
-func (o *GroupUserResponse) HasUsername() bool {
-	if o != nil && !IsNil(o.Username) {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given string and assigns it to the Username field.
+// SetUsername sets field value
 func (o *GroupUserResponse) SetUsername(v string) {
-	o.Username = &v
+	o.Username = v
 }
 
 // GetInvitationCreatedAt returns the InvitationCreatedAt field value if set, zero value otherwise

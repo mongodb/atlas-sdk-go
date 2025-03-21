@@ -5,14 +5,14 @@ package admin
 // ClusterSearchIndex struct for ClusterSearchIndex
 type ClusterSearchIndex struct {
 	// Human-readable label that identifies the collection that contains one or more Atlas Search indexes.
-	CollectionName *string `json:"collectionName,omitempty"`
+	CollectionName string `json:"collectionName"`
 	// Human-readable label that identifies the database that contains the collection with one or more Atlas Search indexes.
-	Database *string `json:"database,omitempty"`
+	Database string `json:"database"`
 	// Unique 24-hexadecimal digit string that identifies this Atlas Search index.
 	// Read only field.
 	IndexID *string `json:"indexID,omitempty"`
 	// Human-readable label that identifies this index. Within each namespace, names of all indexes in the namespace must be unique.
-	Name *string `json:"name,omitempty"`
+	Name string `json:"name"`
 	// Number of index partitions. Note: This feature is currently in preview.
 	NumPartitions *int `json:"numPartitions,omitempty"`
 	// Condition of the search index when you made this request.  | Status | Index Condition |  |---|---|  | IN_PROGRESS | Atlas is building or re-building the index after an edit. |  | STEADY | You can use this search index. |  | FAILED | Atlas could not build the index. |  | MIGRATING | Atlas is upgrading the underlying cluster tier and migrating indexes. |  | PAUSED | The cluster is paused. |
@@ -39,8 +39,11 @@ type ClusterSearchIndex struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewClusterSearchIndex() *ClusterSearchIndex {
+func NewClusterSearchIndex(collectionName string, database string, name string) *ClusterSearchIndex {
 	this := ClusterSearchIndex{}
+	this.CollectionName = collectionName
+	this.Database = database
+	this.Name = name
 	var numPartitions int = 1
 	this.NumPartitions = &numPartitions
 	var analyzer string = "lucene.standard"
@@ -64,70 +67,52 @@ func NewClusterSearchIndexWithDefaults() *ClusterSearchIndex {
 	return &this
 }
 
-// GetCollectionName returns the CollectionName field value if set, zero value otherwise
+// GetCollectionName returns the CollectionName field value
 func (o *ClusterSearchIndex) GetCollectionName() string {
-	if o == nil || IsNil(o.CollectionName) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.CollectionName
+
+	return o.CollectionName
 }
 
-// GetCollectionNameOk returns a tuple with the CollectionName field value if set, nil otherwise
+// GetCollectionNameOk returns a tuple with the CollectionName field value
 // and a boolean to check if the value has been set.
 func (o *ClusterSearchIndex) GetCollectionNameOk() (*string, bool) {
-	if o == nil || IsNil(o.CollectionName) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.CollectionName, true
+	return &o.CollectionName, true
 }
 
-// HasCollectionName returns a boolean if a field has been set.
-func (o *ClusterSearchIndex) HasCollectionName() bool {
-	if o != nil && !IsNil(o.CollectionName) {
-		return true
-	}
-
-	return false
-}
-
-// SetCollectionName gets a reference to the given string and assigns it to the CollectionName field.
+// SetCollectionName sets field value
 func (o *ClusterSearchIndex) SetCollectionName(v string) {
-	o.CollectionName = &v
+	o.CollectionName = v
 }
 
-// GetDatabase returns the Database field value if set, zero value otherwise
+// GetDatabase returns the Database field value
 func (o *ClusterSearchIndex) GetDatabase() string {
-	if o == nil || IsNil(o.Database) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Database
+
+	return o.Database
 }
 
-// GetDatabaseOk returns a tuple with the Database field value if set, nil otherwise
+// GetDatabaseOk returns a tuple with the Database field value
 // and a boolean to check if the value has been set.
 func (o *ClusterSearchIndex) GetDatabaseOk() (*string, bool) {
-	if o == nil || IsNil(o.Database) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.Database, true
+	return &o.Database, true
 }
 
-// HasDatabase returns a boolean if a field has been set.
-func (o *ClusterSearchIndex) HasDatabase() bool {
-	if o != nil && !IsNil(o.Database) {
-		return true
-	}
-
-	return false
-}
-
-// SetDatabase gets a reference to the given string and assigns it to the Database field.
+// SetDatabase sets field value
 func (o *ClusterSearchIndex) SetDatabase(v string) {
-	o.Database = &v
+	o.Database = v
 }
 
 // GetIndexID returns the IndexID field value if set, zero value otherwise
@@ -163,37 +148,28 @@ func (o *ClusterSearchIndex) SetIndexID(v string) {
 	o.IndexID = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise
+// GetName returns the Name field value
 func (o *ClusterSearchIndex) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *ClusterSearchIndex) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.Name, true
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *ClusterSearchIndex) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName sets field value
 func (o *ClusterSearchIndex) SetName(v string) {
-	o.Name = &v
+	o.Name = v
 }
 
 // GetNumPartitions returns the NumPartitions field value if set, zero value otherwise

@@ -2919,6 +2919,8 @@ components:
             MongoDB Cloud VPC.
           pattern: "[a-z]([-a-z0-9]{0,62}[a-z0-9]{0,1})?"
           type: string
+      required:
+        - containerId
       type: object
     BaseStreamsRegion:
       description: Name of the cloud provider region hosting Atlas Stream Processing.
@@ -4010,6 +4012,8 @@ components:
           description: Email address for the Google Service Account created by Atlas.
           pattern: ^mongodb-atlas-[0-9a-z]{16}@p-[0-9a-z]{24}.iam.gserviceaccount.com$
           type: string
+      required:
+        - providerName
       type: object
     CloudProviderAccessRoleRequest:
       description: Cloud provider access role.
@@ -4088,6 +4092,8 @@ components:
           description: ID string that identifies the GCP Service Account used by Atlas.
           readOnly: true
           type: string
+      required:
+        - providerName
       type: object
     CloudProviderAccessRoleRequestUpdate:
       description: Cloud provider access role.
@@ -4170,6 +4176,8 @@ components:
           description: UUID String that identifies the Azure Active Directory Tenant ID.
           format: uuid
           type: string
+      required:
+        - providerName
       type: object
     CloudProviderAccessRoles:
       properties:
@@ -5419,6 +5427,10 @@ components:
           items:
             $ref: "#/components/schemas/BasicDBObject"
           type: array
+      required:
+        - collectionName
+        - database
+        - name
       type: object
     ClusterServerlessBackupOptions:
       description: Group of settings that configure serverless backup.
@@ -6073,6 +6085,9 @@ components:
             because MongoDB Cloud stops the query when it exceeds the usage
             limit.
           type: string
+      required:
+        - name
+        - value
       title: Limits
       type: object
     DataFederationTenantQueryLimit:
@@ -7690,6 +7705,8 @@ components:
             Provider Access role (from roleId) is used."
           format: uuid
           type: string
+      required:
+        - cloudProvider
       type: object
     DiskBackupSnapshotExportBucketResponse:
       description: Disk backup snapshot Export Bucket.
@@ -7748,6 +7765,10 @@ components:
             during exports.
           format: uuid
           type: string
+      required:
+        - _id
+        - bucketName
+        - cloudProvider
       type: object
     DiskBackupSnapshotRestoreJob:
       properties:
@@ -8187,6 +8208,8 @@ components:
             pattern: https:\/\/([a-z0-9\.]+)+\.[a-z]{2,}(\/[a-z0-9\-]+)+\/projects\/p-[a-z0-9]+\/regions\/[a-z\-0-9]+\/serviceAttachments\/[a-z0-9\-]+
             type: string
           type: array
+      required:
+        - cloudProvider
       type: object
     EventTypeDetails:
       description: A singular type of event
@@ -8816,6 +8839,9 @@ components:
         userClaim:
           description: Identifier of the claim which contains the user ID in the token.
           type: string
+      required:
+        - id
+        - oktaIdpId
       type: object
     FederationIdentityProviderUpdate:
       properties:
@@ -8973,6 +8999,9 @@ components:
           items:
             type: string
           type: array
+      required:
+        - id
+        - oktaIdpId
       type: object
     FederationOidcIdentityProviderUpdate:
       properties:
@@ -9533,6 +9562,8 @@ components:
           $ref: "#/components/schemas/DataMetricUnits"
           description: Element used to express the quantity. This can be an element of
             time, storage capacity, and the like.
+      required:
+        - metricName
       title: Flex Cluster Metric Threshold
       type: object
     FlexConnectionStrings20241113:
@@ -10395,6 +10426,11 @@ components:
           pattern: (?:(?:\\+?1\\s*(?:[.-]\\s*)?)?(?:(\\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\\s*)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\\s*(?:[.-]\\s*)?)([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\\s*(?:[.-]\\s*)?([0-9]{4})$
           readOnly: true
           type: string
+      required:
+        - id
+        - orgMembershipStatus
+        - roles
+        - username
       type: object
     HardwareSpec20240805:
       description: Hardware specifications for all electable nodes deployed in the
@@ -12783,6 +12819,8 @@ components:
           maximum: 31
           minimum: 1
           type: integer
+      required:
+        - type
       title: Online Archive Schedule
       type: object
     OrgFederationSettings:
@@ -13050,6 +13088,11 @@ components:
           pattern: (?:(?:\\+?1\\s*(?:[.-]\\s*)?)?(?:(\\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\\s*)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\\s*(?:[.-]\\s*)?)([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\\s*(?:[.-]\\s*)?([0-9]{4})$
           readOnly: true
           type: string
+      required:
+        - id
+        - orgMembershipStatus
+        - roles
+        - username
       type: object
     OrgUserRolesRequest:
       description: Organization and project level roles to assign the MongoDB Cloud
@@ -13921,6 +13964,8 @@ components:
             $ref: "#/components/schemas/GCPConsumerForwardingRule"
           readOnly: true
           type: array
+      required:
+        - cloudProvider
       type: object
     PrivateNetworkEndpointIdEntry:
       properties:
@@ -14309,6 +14354,10 @@ components:
           type: string
         definition:
           $ref: "#/components/schemas/BaseSearchIndexCreateRequestDefinition"
+      required:
+        - collectionName
+        - database
+        - name
       type: object
     SearchIndexDefinitionVersion:
       description: Object which includes the version number of the index definition
@@ -15023,6 +15072,8 @@ components:
           pattern: ^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)(\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$
           type: string
           writeOnly: true
+      required:
+        - providerName
       type: object
     ServiceAccountGroup:
       properties:
@@ -15293,6 +15344,8 @@ components:
           $ref: "#/components/schemas/RawMetricUnits"
           description: Element used to express the quantity. This can be an element of
             time, storage capacity, and the like.
+      required:
+        - metricName
       title: Stream Processor Metric Threshold
       type: object
     StreamsAWSConnectionConfig:

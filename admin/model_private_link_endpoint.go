@@ -6,7 +6,7 @@ package admin
 type PrivateLinkEndpoint struct {
 	// Cloud service provider that serves the requested endpoint.
 	// Read only field.
-	CloudProvider *string `json:"cloudProvider,omitempty"`
+	CloudProvider string `json:"cloudProvider"`
 	// Flag that indicates whether MongoDB Cloud received a request to remove the specified private endpoint from the private endpoint service.
 	// Read only field.
 	DeleteRequested *bool `json:"deleteRequested,omitempty"`
@@ -42,8 +42,9 @@ type PrivateLinkEndpoint struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPrivateLinkEndpoint() *PrivateLinkEndpoint {
+func NewPrivateLinkEndpoint(cloudProvider string) *PrivateLinkEndpoint {
 	this := PrivateLinkEndpoint{}
+	this.CloudProvider = cloudProvider
 	return &this
 }
 
@@ -55,37 +56,28 @@ func NewPrivateLinkEndpointWithDefaults() *PrivateLinkEndpoint {
 	return &this
 }
 
-// GetCloudProvider returns the CloudProvider field value if set, zero value otherwise
+// GetCloudProvider returns the CloudProvider field value
 func (o *PrivateLinkEndpoint) GetCloudProvider() string {
-	if o == nil || IsNil(o.CloudProvider) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.CloudProvider
+
+	return o.CloudProvider
 }
 
-// GetCloudProviderOk returns a tuple with the CloudProvider field value if set, nil otherwise
+// GetCloudProviderOk returns a tuple with the CloudProvider field value
 // and a boolean to check if the value has been set.
 func (o *PrivateLinkEndpoint) GetCloudProviderOk() (*string, bool) {
-	if o == nil || IsNil(o.CloudProvider) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.CloudProvider, true
+	return &o.CloudProvider, true
 }
 
-// HasCloudProvider returns a boolean if a field has been set.
-func (o *PrivateLinkEndpoint) HasCloudProvider() bool {
-	if o != nil && !IsNil(o.CloudProvider) {
-		return true
-	}
-
-	return false
-}
-
-// SetCloudProvider gets a reference to the given string and assigns it to the CloudProvider field.
+// SetCloudProvider sets field value
 func (o *PrivateLinkEndpoint) SetCloudProvider(v string) {
-	o.CloudProvider = &v
+	o.CloudProvider = v
 }
 
 // GetDeleteRequested returns the DeleteRequested field value if set, zero value otherwise

@@ -88,6 +88,8 @@ function transformOneOfProperties(parentObject, api) {
     getObjectFromReference(childRef, api),
   );
 
+  let allRequiredFields = [];
+
   for (let childObject of childObjects) {
     if (!childObject.properties) {
       // When we missing props, we need to look at the allOf parent child inheritance
@@ -100,6 +102,12 @@ function transformOneOfProperties(parentObject, api) {
               ...childObject.properties,
               ...allOfItem.properties,
             };
+          }
+          if (allOfItem.required) {
+            childObject.required = [
+              ...(childObject.required || []),
+              ...allOfItem.required,
+            ];
           }
         }
       } else {
@@ -121,11 +129,28 @@ function transformOneOfProperties(parentObject, api) {
       ...parentObject.properties,
       ...childProperties,
     };
+
+    // Collect required fields from the child
+    if (childObject.required) {
+      allRequiredFields.push(childObject.required);
+    }
+  }
+
+  // Handle required properties
+  if (allRequiredFields.length > 0) {
+    const commonRequired = allRequiredFields.reduce((common, current) =>
+      common.filter((field) => current.includes(field)),
+    );
+    parentObject.required = commonRequired.filter((field) =>
+      childObjects.every((child) =>
+        child.properties && Object.keys(child.properties).includes(field),
+      ),
+    );
+    parentObject.required = parentObject.required.length > 0 ? parentObject.required : undefined;
   }
 
   // Remove invalid fields
   delete parentObject.discriminator;
-  delete parentObject.required;
   delete parentObject.oneOf;
 }
 

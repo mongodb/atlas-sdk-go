@@ -5,11 +5,11 @@ package admin
 // SearchIndexCreateRequest struct for SearchIndexCreateRequest
 type SearchIndexCreateRequest struct {
 	// Label that identifies the collection to create an Atlas Search index in.
-	CollectionName *string `json:"collectionName,omitempty"`
+	CollectionName string `json:"collectionName"`
 	// Label that identifies the database that contains the collection to create an Atlas Search index in.
-	Database *string `json:"database,omitempty"`
+	Database string `json:"database"`
 	// Label that identifies this index. Within each namespace, names of all indexes in the namespace must be unique.
-	Name *string `json:"name,omitempty"`
+	Name string `json:"name"`
 	// Type of the index. The default type is search.
 	Type       *string                                 `json:"type,omitempty"`
 	Definition *BaseSearchIndexCreateRequestDefinition `json:"definition,omitempty"`
@@ -19,8 +19,11 @@ type SearchIndexCreateRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSearchIndexCreateRequest() *SearchIndexCreateRequest {
+func NewSearchIndexCreateRequest(collectionName string, database string, name string) *SearchIndexCreateRequest {
 	this := SearchIndexCreateRequest{}
+	this.CollectionName = collectionName
+	this.Database = database
+	this.Name = name
 	return &this
 }
 
@@ -32,103 +35,76 @@ func NewSearchIndexCreateRequestWithDefaults() *SearchIndexCreateRequest {
 	return &this
 }
 
-// GetCollectionName returns the CollectionName field value if set, zero value otherwise
+// GetCollectionName returns the CollectionName field value
 func (o *SearchIndexCreateRequest) GetCollectionName() string {
-	if o == nil || IsNil(o.CollectionName) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.CollectionName
+
+	return o.CollectionName
 }
 
-// GetCollectionNameOk returns a tuple with the CollectionName field value if set, nil otherwise
+// GetCollectionNameOk returns a tuple with the CollectionName field value
 // and a boolean to check if the value has been set.
 func (o *SearchIndexCreateRequest) GetCollectionNameOk() (*string, bool) {
-	if o == nil || IsNil(o.CollectionName) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.CollectionName, true
+	return &o.CollectionName, true
 }
 
-// HasCollectionName returns a boolean if a field has been set.
-func (o *SearchIndexCreateRequest) HasCollectionName() bool {
-	if o != nil && !IsNil(o.CollectionName) {
-		return true
-	}
-
-	return false
-}
-
-// SetCollectionName gets a reference to the given string and assigns it to the CollectionName field.
+// SetCollectionName sets field value
 func (o *SearchIndexCreateRequest) SetCollectionName(v string) {
-	o.CollectionName = &v
+	o.CollectionName = v
 }
 
-// GetDatabase returns the Database field value if set, zero value otherwise
+// GetDatabase returns the Database field value
 func (o *SearchIndexCreateRequest) GetDatabase() string {
-	if o == nil || IsNil(o.Database) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Database
+
+	return o.Database
 }
 
-// GetDatabaseOk returns a tuple with the Database field value if set, nil otherwise
+// GetDatabaseOk returns a tuple with the Database field value
 // and a boolean to check if the value has been set.
 func (o *SearchIndexCreateRequest) GetDatabaseOk() (*string, bool) {
-	if o == nil || IsNil(o.Database) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.Database, true
+	return &o.Database, true
 }
 
-// HasDatabase returns a boolean if a field has been set.
-func (o *SearchIndexCreateRequest) HasDatabase() bool {
-	if o != nil && !IsNil(o.Database) {
-		return true
-	}
-
-	return false
-}
-
-// SetDatabase gets a reference to the given string and assigns it to the Database field.
+// SetDatabase sets field value
 func (o *SearchIndexCreateRequest) SetDatabase(v string) {
-	o.Database = &v
+	o.Database = v
 }
 
-// GetName returns the Name field value if set, zero value otherwise
+// GetName returns the Name field value
 func (o *SearchIndexCreateRequest) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *SearchIndexCreateRequest) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.Name, true
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *SearchIndexCreateRequest) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName sets field value
 func (o *SearchIndexCreateRequest) SetName(v string) {
-	o.Name = &v
+	o.Name = v
 }
 
 // GetType returns the Type field value if set, zero value otherwise
