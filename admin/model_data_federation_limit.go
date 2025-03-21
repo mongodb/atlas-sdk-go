@@ -19,9 +19,9 @@ type DataFederationLimit struct {
 	MaximumLimit *int64 `json:"maximumLimit,omitempty"`
 	// Human-readable label that identifies the user-managed limit to modify.
 	// Read only field.
-	Name string `json:"name"`
+	Name *string `json:"name,omitempty"`
 	// Amount to set the limit to.
-	Value int64 `json:"value"`
+	Value *int64 `json:"value,omitempty"`
 	// Only used for Data Federation limits. Timestamp that indicates when this usage limit was last modified. This field uses the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	LastModifiedDate *time.Time `json:"lastModifiedDate,omitempty"`
@@ -33,10 +33,8 @@ type DataFederationLimit struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDataFederationLimit(name string, value int64) *DataFederationLimit {
+func NewDataFederationLimit() *DataFederationLimit {
 	this := DataFederationLimit{}
-	this.Name = name
-	this.Value = value
 	return &this
 }
 
@@ -147,52 +145,70 @@ func (o *DataFederationLimit) SetMaximumLimit(v int64) {
 	o.MaximumLimit = &v
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise
 func (o *DataFederationLimit) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DataFederationLimit) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *DataFederationLimit) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *DataFederationLimit) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetValue returns the Value field value
+// GetValue returns the Value field value if set, zero value otherwise
 func (o *DataFederationLimit) GetValue() int64 {
-	if o == nil {
+	if o == nil || IsNil(o.Value) {
 		var ret int64
 		return ret
 	}
-
-	return o.Value
+	return *o.Value
 }
 
-// GetValueOk returns a tuple with the Value field value
+// GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DataFederationLimit) GetValueOk() (*int64, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
-	return &o.Value, true
+
+	return o.Value, true
 }
 
-// SetValue sets field value
+// HasValue returns a boolean if a field has been set.
+func (o *DataFederationLimit) HasValue() bool {
+	if o != nil && !IsNil(o.Value) {
+		return true
+	}
+
+	return false
+}
+
+// SetValue gets a reference to the given int64 and assigns it to the Value field.
 func (o *DataFederationLimit) SetValue(v int64) {
-	o.Value = v
+	o.Value = &v
 }
 
 // GetLastModifiedDate returns the LastModifiedDate field value if set, zero value otherwise

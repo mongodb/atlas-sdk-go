@@ -5,7 +5,7 @@ package admin
 // OnlineArchiveSchedule Regular frequency and duration when archiving process occurs.
 type OnlineArchiveSchedule struct {
 	// Type of schedule.
-	Type string `json:"type"`
+	Type *string `json:"type,omitempty"`
 	// Hour of the day when the scheduled window to run one online archive ends.
 	EndHour *int `json:"endHour,omitempty"`
 	// Minute of the hour when the scheduled window to run one online archive ends.
@@ -24,9 +24,8 @@ type OnlineArchiveSchedule struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOnlineArchiveSchedule(type_ string) *OnlineArchiveSchedule {
+func NewOnlineArchiveSchedule() *OnlineArchiveSchedule {
 	this := OnlineArchiveSchedule{}
-	this.Type = type_
 	return &this
 }
 
@@ -38,28 +37,37 @@ func NewOnlineArchiveScheduleWithDefaults() *OnlineArchiveSchedule {
 	return &this
 }
 
-// GetType returns the Type field value
+// GetType returns the Type field value if set, zero value otherwise
 func (o *OnlineArchiveSchedule) GetType() string {
-	if o == nil {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
-
-	return o.Type
+	return *o.Type
 }
 
-// GetTypeOk returns a tuple with the Type field value
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OnlineArchiveSchedule) GetTypeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
-	return &o.Type, true
+
+	return o.Type, true
 }
 
-// SetType sets field value
+// HasType returns a boolean if a field has been set.
+func (o *OnlineArchiveSchedule) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given string and assigns it to the Type field.
 func (o *OnlineArchiveSchedule) SetType(v string) {
-	o.Type = v
+	o.Type = &v
 }
 
 // GetEndHour returns the EndHour field value if set, zero value otherwise

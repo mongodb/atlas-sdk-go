@@ -5,7 +5,7 @@ package admin
 // FlexClusterMetricThreshold Threshold for the metric that, when exceeded, triggers an alert. The metric threshold pertains to event types which reflects changes of measurements and metrics about the serverless database.
 type FlexClusterMetricThreshold struct {
 	// Human-readable label that identifies the metric against which MongoDB Cloud checks the configured **metricThreshold.threshold**.
-	MetricName string `json:"metricName"`
+	MetricName *string `json:"metricName,omitempty"`
 	// MongoDB Cloud computes the current metric value as an average.
 	Mode *string `json:"mode,omitempty"`
 	// Comparison operator to apply when checking the current metric value.
@@ -20,9 +20,8 @@ type FlexClusterMetricThreshold struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFlexClusterMetricThreshold(metricName string) *FlexClusterMetricThreshold {
+func NewFlexClusterMetricThreshold() *FlexClusterMetricThreshold {
 	this := FlexClusterMetricThreshold{}
-	this.MetricName = metricName
 	return &this
 }
 
@@ -34,28 +33,37 @@ func NewFlexClusterMetricThresholdWithDefaults() *FlexClusterMetricThreshold {
 	return &this
 }
 
-// GetMetricName returns the MetricName field value
+// GetMetricName returns the MetricName field value if set, zero value otherwise
 func (o *FlexClusterMetricThreshold) GetMetricName() string {
-	if o == nil {
+	if o == nil || IsNil(o.MetricName) {
 		var ret string
 		return ret
 	}
-
-	return o.MetricName
+	return *o.MetricName
 }
 
-// GetMetricNameOk returns a tuple with the MetricName field value
+// GetMetricNameOk returns a tuple with the MetricName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FlexClusterMetricThreshold) GetMetricNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.MetricName) {
 		return nil, false
 	}
-	return &o.MetricName, true
+
+	return o.MetricName, true
 }
 
-// SetMetricName sets field value
+// HasMetricName returns a boolean if a field has been set.
+func (o *FlexClusterMetricThreshold) HasMetricName() bool {
+	if o != nil && !IsNil(o.MetricName) {
+		return true
+	}
+
+	return false
+}
+
+// SetMetricName gets a reference to the given string and assigns it to the MetricName field.
 func (o *FlexClusterMetricThreshold) SetMetricName(v string) {
-	o.MetricName = v
+	o.MetricName = &v
 }
 
 // GetMode returns the Mode field value if set, zero value otherwise

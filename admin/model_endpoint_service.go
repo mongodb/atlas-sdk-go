@@ -6,7 +6,7 @@ package admin
 type EndpointService struct {
 	// Cloud service provider that serves the requested endpoint service.
 	// Read only field.
-	CloudProvider string `json:"cloudProvider"`
+	CloudProvider *string `json:"cloudProvider,omitempty"`
 	// Error message returned when requesting private connection resource. The resource returns `null` if the request succeeded.
 	// Read only field.
 	ErrorMessage *string `json:"errorMessage,omitempty"`
@@ -44,9 +44,8 @@ type EndpointService struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEndpointService(cloudProvider string) *EndpointService {
+func NewEndpointService() *EndpointService {
 	this := EndpointService{}
-	this.CloudProvider = cloudProvider
 	return &this
 }
 
@@ -58,28 +57,37 @@ func NewEndpointServiceWithDefaults() *EndpointService {
 	return &this
 }
 
-// GetCloudProvider returns the CloudProvider field value
+// GetCloudProvider returns the CloudProvider field value if set, zero value otherwise
 func (o *EndpointService) GetCloudProvider() string {
-	if o == nil {
+	if o == nil || IsNil(o.CloudProvider) {
 		var ret string
 		return ret
 	}
-
-	return o.CloudProvider
+	return *o.CloudProvider
 }
 
-// GetCloudProviderOk returns a tuple with the CloudProvider field value
+// GetCloudProviderOk returns a tuple with the CloudProvider field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EndpointService) GetCloudProviderOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CloudProvider) {
 		return nil, false
 	}
-	return &o.CloudProvider, true
+
+	return o.CloudProvider, true
 }
 
-// SetCloudProvider sets field value
+// HasCloudProvider returns a boolean if a field has been set.
+func (o *EndpointService) HasCloudProvider() bool {
+	if o != nil && !IsNil(o.CloudProvider) {
+		return true
+	}
+
+	return false
+}
+
+// SetCloudProvider gets a reference to the given string and assigns it to the CloudProvider field.
 func (o *EndpointService) SetCloudProvider(v string) {
-	o.CloudProvider = v
+	o.CloudProvider = &v
 }
 
 // GetErrorMessage returns the ErrorMessage field value if set, zero value otherwise

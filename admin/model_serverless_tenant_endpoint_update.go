@@ -9,7 +9,7 @@ type ServerlessTenantEndpointUpdate struct {
 	Comment *string `json:"comment,omitempty"`
 	// Human-readable label that identifies the cloud provider of the tenant endpoint.
 	// Write only field.
-	ProviderName string `json:"providerName"`
+	ProviderName *string `json:"providerName,omitempty"`
 	// Unique string that identifies the Azure private endpoint's network interface for this private endpoint service.
 	// Write only field.
 	CloudProviderEndpointId *string `json:"cloudProviderEndpointId,omitempty"`
@@ -22,9 +22,8 @@ type ServerlessTenantEndpointUpdate struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewServerlessTenantEndpointUpdate(providerName string) *ServerlessTenantEndpointUpdate {
+func NewServerlessTenantEndpointUpdate() *ServerlessTenantEndpointUpdate {
 	this := ServerlessTenantEndpointUpdate{}
-	this.ProviderName = providerName
 	return &this
 }
 
@@ -69,28 +68,37 @@ func (o *ServerlessTenantEndpointUpdate) SetComment(v string) {
 	o.Comment = &v
 }
 
-// GetProviderName returns the ProviderName field value
+// GetProviderName returns the ProviderName field value if set, zero value otherwise
 func (o *ServerlessTenantEndpointUpdate) GetProviderName() string {
-	if o == nil {
+	if o == nil || IsNil(o.ProviderName) {
 		var ret string
 		return ret
 	}
-
-	return o.ProviderName
+	return *o.ProviderName
 }
 
-// GetProviderNameOk returns a tuple with the ProviderName field value
+// GetProviderNameOk returns a tuple with the ProviderName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServerlessTenantEndpointUpdate) GetProviderNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ProviderName) {
 		return nil, false
 	}
-	return &o.ProviderName, true
+
+	return o.ProviderName, true
 }
 
-// SetProviderName sets field value
+// HasProviderName returns a boolean if a field has been set.
+func (o *ServerlessTenantEndpointUpdate) HasProviderName() bool {
+	if o != nil && !IsNil(o.ProviderName) {
+		return true
+	}
+
+	return false
+}
+
+// SetProviderName gets a reference to the given string and assigns it to the ProviderName field.
 func (o *ServerlessTenantEndpointUpdate) SetProviderName(v string) {
-	o.ProviderName = v
+	o.ProviderName = &v
 }
 
 // GetCloudProviderEndpointId returns the CloudProviderEndpointId field value if set, zero value otherwise

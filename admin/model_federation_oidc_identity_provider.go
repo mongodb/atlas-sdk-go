@@ -25,13 +25,13 @@ type FederationOidcIdentityProvider struct {
 	GroupsClaim *string `json:"groupsClaim,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the identity provider.
 	// Read only field.
-	Id string `json:"id"`
+	Id *string `json:"id,omitempty"`
 	// String enum that indicates the type of the identity provider. Default is WORKFORCE.
 	IdpType *string `json:"idpType,omitempty"`
 	// Unique string that identifies the issuer of the SAML Assertion or OIDC metadata/discovery document URL.
 	IssuerUri *string `json:"issuerUri,omitempty"`
 	// Legacy 20-hexadecimal digit string that identifies the identity provider.
-	OktaIdpId string `json:"oktaIdpId"`
+	OktaIdpId *string `json:"oktaIdpId,omitempty"`
 	// String enum that indicates the protocol of the identity provider. Either SAML or OIDC.
 	Protocol *string `json:"protocol,omitempty"`
 	// Date that the identity provider was last updated on.
@@ -51,10 +51,8 @@ type FederationOidcIdentityProvider struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFederationOidcIdentityProvider(id string, oktaIdpId string) *FederationOidcIdentityProvider {
+func NewFederationOidcIdentityProvider() *FederationOidcIdentityProvider {
 	this := FederationOidcIdentityProvider{}
-	this.Id = id
-	this.OktaIdpId = oktaIdpId
 	return &this
 }
 
@@ -297,28 +295,37 @@ func (o *FederationOidcIdentityProvider) SetGroupsClaim(v string) {
 	o.GroupsClaim = &v
 }
 
-// GetId returns the Id field value
+// GetId returns the Id field value if set, zero value otherwise
 func (o *FederationOidcIdentityProvider) GetId() string {
-	if o == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
-
-	return o.Id
+	return *o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FederationOidcIdentityProvider) GetIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
-	return &o.Id, true
+
+	return o.Id, true
 }
 
-// SetId sets field value
+// HasId returns a boolean if a field has been set.
+func (o *FederationOidcIdentityProvider) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
 func (o *FederationOidcIdentityProvider) SetId(v string) {
-	o.Id = v
+	o.Id = &v
 }
 
 // GetIdpType returns the IdpType field value if set, zero value otherwise
@@ -387,28 +394,37 @@ func (o *FederationOidcIdentityProvider) SetIssuerUri(v string) {
 	o.IssuerUri = &v
 }
 
-// GetOktaIdpId returns the OktaIdpId field value
+// GetOktaIdpId returns the OktaIdpId field value if set, zero value otherwise
 func (o *FederationOidcIdentityProvider) GetOktaIdpId() string {
-	if o == nil {
+	if o == nil || IsNil(o.OktaIdpId) {
 		var ret string
 		return ret
 	}
-
-	return o.OktaIdpId
+	return *o.OktaIdpId
 }
 
-// GetOktaIdpIdOk returns a tuple with the OktaIdpId field value
+// GetOktaIdpIdOk returns a tuple with the OktaIdpId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FederationOidcIdentityProvider) GetOktaIdpIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OktaIdpId) {
 		return nil, false
 	}
-	return &o.OktaIdpId, true
+
+	return o.OktaIdpId, true
 }
 
-// SetOktaIdpId sets field value
+// HasOktaIdpId returns a boolean if a field has been set.
+func (o *FederationOidcIdentityProvider) HasOktaIdpId() bool {
+	if o != nil && !IsNil(o.OktaIdpId) {
+		return true
+	}
+
+	return false
+}
+
+// SetOktaIdpId gets a reference to the given string and assigns it to the OktaIdpId field.
 func (o *FederationOidcIdentityProvider) SetOktaIdpId(v string) {
-	o.OktaIdpId = v
+	o.OktaIdpId = &v
 }
 
 // GetProtocol returns the Protocol field value if set, zero value otherwise

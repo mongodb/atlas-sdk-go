@@ -10,17 +10,17 @@ import (
 type OrgUserResponse struct {
 	// Unique 24-hexadecimal digit string that identifies the MongoDB Cloud user.
 	// Read only field.
-	Id string `json:"id"`
+	Id *string `json:"id,omitempty"`
 	// String enum that indicates whether the MongoDB Cloud user has a pending invitation to join the organization or they are already active in the organization.
 	// Read only field.
-	OrgMembershipStatus string               `json:"orgMembershipStatus"`
-	Roles               OrgUserRolesResponse `json:"roles"`
+	OrgMembershipStatus *string               `json:"orgMembershipStatus,omitempty"`
+	Roles               *OrgUserRolesResponse `json:"roles,omitempty"`
 	// List of unique 24-hexadecimal digit strings that identifies the teams to which this MongoDB Cloud user belongs.
 	// Read only field.
 	TeamIds *[]string `json:"teamIds,omitempty"`
 	// Email address that represents the username of the MongoDB Cloud user.
 	// Read only field.
-	Username string `json:"username"`
+	Username *string `json:"username,omitempty"`
 	// Date and time when MongoDB Cloud sent the invitation. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC.
 	// Read only field.
 	InvitationCreatedAt *time.Time `json:"invitationCreatedAt,omitempty"`
@@ -54,12 +54,8 @@ type OrgUserResponse struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrgUserResponse(id string, orgMembershipStatus string, roles OrgUserRolesResponse, username string) *OrgUserResponse {
+func NewOrgUserResponse() *OrgUserResponse {
 	this := OrgUserResponse{}
-	this.Id = id
-	this.OrgMembershipStatus = orgMembershipStatus
-	this.Roles = roles
-	this.Username = username
 	return &this
 }
 
@@ -71,76 +67,103 @@ func NewOrgUserResponseWithDefaults() *OrgUserResponse {
 	return &this
 }
 
-// GetId returns the Id field value
+// GetId returns the Id field value if set, zero value otherwise
 func (o *OrgUserResponse) GetId() string {
-	if o == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
-
-	return o.Id
+	return *o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrgUserResponse) GetIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
-	return &o.Id, true
+
+	return o.Id, true
 }
 
-// SetId sets field value
+// HasId returns a boolean if a field has been set.
+func (o *OrgUserResponse) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
 func (o *OrgUserResponse) SetId(v string) {
-	o.Id = v
+	o.Id = &v
 }
 
-// GetOrgMembershipStatus returns the OrgMembershipStatus field value
+// GetOrgMembershipStatus returns the OrgMembershipStatus field value if set, zero value otherwise
 func (o *OrgUserResponse) GetOrgMembershipStatus() string {
-	if o == nil {
+	if o == nil || IsNil(o.OrgMembershipStatus) {
 		var ret string
 		return ret
 	}
-
-	return o.OrgMembershipStatus
+	return *o.OrgMembershipStatus
 }
 
-// GetOrgMembershipStatusOk returns a tuple with the OrgMembershipStatus field value
+// GetOrgMembershipStatusOk returns a tuple with the OrgMembershipStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrgUserResponse) GetOrgMembershipStatusOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OrgMembershipStatus) {
 		return nil, false
 	}
-	return &o.OrgMembershipStatus, true
+
+	return o.OrgMembershipStatus, true
 }
 
-// SetOrgMembershipStatus sets field value
+// HasOrgMembershipStatus returns a boolean if a field has been set.
+func (o *OrgUserResponse) HasOrgMembershipStatus() bool {
+	if o != nil && !IsNil(o.OrgMembershipStatus) {
+		return true
+	}
+
+	return false
+}
+
+// SetOrgMembershipStatus gets a reference to the given string and assigns it to the OrgMembershipStatus field.
 func (o *OrgUserResponse) SetOrgMembershipStatus(v string) {
-	o.OrgMembershipStatus = v
+	o.OrgMembershipStatus = &v
 }
 
-// GetRoles returns the Roles field value
+// GetRoles returns the Roles field value if set, zero value otherwise
 func (o *OrgUserResponse) GetRoles() OrgUserRolesResponse {
-	if o == nil {
+	if o == nil || IsNil(o.Roles) {
 		var ret OrgUserRolesResponse
 		return ret
 	}
-
-	return o.Roles
+	return *o.Roles
 }
 
-// GetRolesOk returns a tuple with the Roles field value
+// GetRolesOk returns a tuple with the Roles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrgUserResponse) GetRolesOk() (*OrgUserRolesResponse, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Roles) {
 		return nil, false
 	}
-	return &o.Roles, true
+
+	return o.Roles, true
 }
 
-// SetRoles sets field value
+// HasRoles returns a boolean if a field has been set.
+func (o *OrgUserResponse) HasRoles() bool {
+	if o != nil && !IsNil(o.Roles) {
+		return true
+	}
+
+	return false
+}
+
+// SetRoles gets a reference to the given OrgUserRolesResponse and assigns it to the Roles field.
 func (o *OrgUserResponse) SetRoles(v OrgUserRolesResponse) {
-	o.Roles = v
+	o.Roles = &v
 }
 
 // GetTeamIds returns the TeamIds field value if set, zero value otherwise
@@ -176,28 +199,37 @@ func (o *OrgUserResponse) SetTeamIds(v []string) {
 	o.TeamIds = &v
 }
 
-// GetUsername returns the Username field value
+// GetUsername returns the Username field value if set, zero value otherwise
 func (o *OrgUserResponse) GetUsername() string {
-	if o == nil {
+	if o == nil || IsNil(o.Username) {
 		var ret string
 		return ret
 	}
-
-	return o.Username
+	return *o.Username
 }
 
-// GetUsernameOk returns a tuple with the Username field value
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrgUserResponse) GetUsernameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Username) {
 		return nil, false
 	}
-	return &o.Username, true
+
+	return o.Username, true
 }
 
-// SetUsername sets field value
+// HasUsername returns a boolean if a field has been set.
+func (o *OrgUserResponse) HasUsername() bool {
+	if o != nil && !IsNil(o.Username) {
+		return true
+	}
+
+	return false
+}
+
+// SetUsername gets a reference to the given string and assigns it to the Username field.
 func (o *OrgUserResponse) SetUsername(v string) {
-	o.Username = v
+	o.Username = &v
 }
 
 // GetInvitationCreatedAt returns the InvitationCreatedAt field value if set, zero value otherwise

@@ -9,7 +9,7 @@ import (
 // CloudProviderAccessRole Cloud provider access role.
 type CloudProviderAccessRole struct {
 	// Human-readable label that identifies the cloud provider of the role.
-	ProviderName string `json:"providerName"`
+	ProviderName *string `json:"providerName,omitempty"`
 	// Amazon Resource Name that identifies the Amazon Web Services (AWS) user account that MongoDB Cloud uses when it assumes the Identity and Access Management (IAM) role.
 	// Read only field.
 	AtlasAWSAccountArn *string `json:"atlasAWSAccountArn,omitempty"`
@@ -50,9 +50,8 @@ type CloudProviderAccessRole struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCloudProviderAccessRole(providerName string) *CloudProviderAccessRole {
+func NewCloudProviderAccessRole() *CloudProviderAccessRole {
 	this := CloudProviderAccessRole{}
-	this.ProviderName = providerName
 	return &this
 }
 
@@ -64,28 +63,37 @@ func NewCloudProviderAccessRoleWithDefaults() *CloudProviderAccessRole {
 	return &this
 }
 
-// GetProviderName returns the ProviderName field value
+// GetProviderName returns the ProviderName field value if set, zero value otherwise
 func (o *CloudProviderAccessRole) GetProviderName() string {
-	if o == nil {
+	if o == nil || IsNil(o.ProviderName) {
 		var ret string
 		return ret
 	}
-
-	return o.ProviderName
+	return *o.ProviderName
 }
 
-// GetProviderNameOk returns a tuple with the ProviderName field value
+// GetProviderNameOk returns a tuple with the ProviderName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloudProviderAccessRole) GetProviderNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ProviderName) {
 		return nil, false
 	}
-	return &o.ProviderName, true
+
+	return o.ProviderName, true
 }
 
-// SetProviderName sets field value
+// HasProviderName returns a boolean if a field has been set.
+func (o *CloudProviderAccessRole) HasProviderName() bool {
+	if o != nil && !IsNil(o.ProviderName) {
+		return true
+	}
+
+	return false
+}
+
+// SetProviderName gets a reference to the given string and assigns it to the ProviderName field.
 func (o *CloudProviderAccessRole) SetProviderName(v string) {
-	o.ProviderName = v
+	o.ProviderName = &v
 }
 
 // GetAtlasAWSAccountArn returns the AtlasAWSAccountArn field value if set, zero value otherwise

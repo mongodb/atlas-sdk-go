@@ -5,11 +5,11 @@ package admin
 // DiskBackupSnapshotExportBucketResponse Disk backup snapshot Export Bucket.
 type DiskBackupSnapshotExportBucketResponse struct {
 	// Unique 24-hexadecimal character string that identifies the Export Bucket.
-	Id string `json:"_id"`
+	Id *string `json:"_id,omitempty"`
 	// The name of the AWS S3 Bucket or Azure Storage Container that Snapshots are exported to.
-	BucketName string `json:"bucketName"`
+	BucketName *string `json:"bucketName,omitempty"`
 	// Human-readable label that identifies the cloud provider that Snapshots will be exported to.
-	CloudProvider string `json:"cloudProvider"`
+	CloudProvider *string `json:"cloudProvider,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
@@ -27,11 +27,8 @@ type DiskBackupSnapshotExportBucketResponse struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDiskBackupSnapshotExportBucketResponse(id string, bucketName string, cloudProvider string) *DiskBackupSnapshotExportBucketResponse {
+func NewDiskBackupSnapshotExportBucketResponse() *DiskBackupSnapshotExportBucketResponse {
 	this := DiskBackupSnapshotExportBucketResponse{}
-	this.Id = id
-	this.BucketName = bucketName
-	this.CloudProvider = cloudProvider
 	return &this
 }
 
@@ -43,76 +40,103 @@ func NewDiskBackupSnapshotExportBucketResponseWithDefaults() *DiskBackupSnapshot
 	return &this
 }
 
-// GetId returns the Id field value
+// GetId returns the Id field value if set, zero value otherwise
 func (o *DiskBackupSnapshotExportBucketResponse) GetId() string {
-	if o == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
-
-	return o.Id
+	return *o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DiskBackupSnapshotExportBucketResponse) GetIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
-	return &o.Id, true
+
+	return o.Id, true
 }
 
-// SetId sets field value
+// HasId returns a boolean if a field has been set.
+func (o *DiskBackupSnapshotExportBucketResponse) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
 func (o *DiskBackupSnapshotExportBucketResponse) SetId(v string) {
-	o.Id = v
+	o.Id = &v
 }
 
-// GetBucketName returns the BucketName field value
+// GetBucketName returns the BucketName field value if set, zero value otherwise
 func (o *DiskBackupSnapshotExportBucketResponse) GetBucketName() string {
-	if o == nil {
+	if o == nil || IsNil(o.BucketName) {
 		var ret string
 		return ret
 	}
-
-	return o.BucketName
+	return *o.BucketName
 }
 
-// GetBucketNameOk returns a tuple with the BucketName field value
+// GetBucketNameOk returns a tuple with the BucketName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DiskBackupSnapshotExportBucketResponse) GetBucketNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.BucketName) {
 		return nil, false
 	}
-	return &o.BucketName, true
+
+	return o.BucketName, true
 }
 
-// SetBucketName sets field value
+// HasBucketName returns a boolean if a field has been set.
+func (o *DiskBackupSnapshotExportBucketResponse) HasBucketName() bool {
+	if o != nil && !IsNil(o.BucketName) {
+		return true
+	}
+
+	return false
+}
+
+// SetBucketName gets a reference to the given string and assigns it to the BucketName field.
 func (o *DiskBackupSnapshotExportBucketResponse) SetBucketName(v string) {
-	o.BucketName = v
+	o.BucketName = &v
 }
 
-// GetCloudProvider returns the CloudProvider field value
+// GetCloudProvider returns the CloudProvider field value if set, zero value otherwise
 func (o *DiskBackupSnapshotExportBucketResponse) GetCloudProvider() string {
-	if o == nil {
+	if o == nil || IsNil(o.CloudProvider) {
 		var ret string
 		return ret
 	}
-
-	return o.CloudProvider
+	return *o.CloudProvider
 }
 
-// GetCloudProviderOk returns a tuple with the CloudProvider field value
+// GetCloudProviderOk returns a tuple with the CloudProvider field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DiskBackupSnapshotExportBucketResponse) GetCloudProviderOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CloudProvider) {
 		return nil, false
 	}
-	return &o.CloudProvider, true
+
+	return o.CloudProvider, true
 }
 
-// SetCloudProvider sets field value
+// HasCloudProvider returns a boolean if a field has been set.
+func (o *DiskBackupSnapshotExportBucketResponse) HasCloudProvider() bool {
+	if o != nil && !IsNil(o.CloudProvider) {
+		return true
+	}
+
+	return false
+}
+
+// SetCloudProvider gets a reference to the given string and assigns it to the CloudProvider field.
 func (o *DiskBackupSnapshotExportBucketResponse) SetCloudProvider(v string) {
-	o.CloudProvider = v
+	o.CloudProvider = &v
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise

@@ -5,7 +5,7 @@ package admin
 // BaseNetworkPeeringConnectionSettings struct for BaseNetworkPeeringConnectionSettings
 type BaseNetworkPeeringConnectionSettings struct {
 	// Unique 24-hexadecimal digit string that identifies the MongoDB Cloud network container that contains the specified network peering connection.
-	ContainerId string `json:"containerId"`
+	ContainerId *string `json:"containerId,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the network peering connection.
 	// Read only field.
 	Id *string `json:"id,omitempty"`
@@ -55,9 +55,8 @@ type BaseNetworkPeeringConnectionSettings struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBaseNetworkPeeringConnectionSettings(containerId string) *BaseNetworkPeeringConnectionSettings {
+func NewBaseNetworkPeeringConnectionSettings() *BaseNetworkPeeringConnectionSettings {
 	this := BaseNetworkPeeringConnectionSettings{}
-	this.ContainerId = containerId
 	return &this
 }
 
@@ -69,28 +68,37 @@ func NewBaseNetworkPeeringConnectionSettingsWithDefaults() *BaseNetworkPeeringCo
 	return &this
 }
 
-// GetContainerId returns the ContainerId field value
+// GetContainerId returns the ContainerId field value if set, zero value otherwise
 func (o *BaseNetworkPeeringConnectionSettings) GetContainerId() string {
-	if o == nil {
+	if o == nil || IsNil(o.ContainerId) {
 		var ret string
 		return ret
 	}
-
-	return o.ContainerId
+	return *o.ContainerId
 }
 
-// GetContainerIdOk returns a tuple with the ContainerId field value
+// GetContainerIdOk returns a tuple with the ContainerId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BaseNetworkPeeringConnectionSettings) GetContainerIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ContainerId) {
 		return nil, false
 	}
-	return &o.ContainerId, true
+
+	return o.ContainerId, true
 }
 
-// SetContainerId sets field value
+// HasContainerId returns a boolean if a field has been set.
+func (o *BaseNetworkPeeringConnectionSettings) HasContainerId() bool {
+	if o != nil && !IsNil(o.ContainerId) {
+		return true
+	}
+
+	return false
+}
+
+// SetContainerId gets a reference to the given string and assigns it to the ContainerId field.
 func (o *BaseNetworkPeeringConnectionSettings) SetContainerId(v string) {
-	o.ContainerId = v
+	o.ContainerId = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise
