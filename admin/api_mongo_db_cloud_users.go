@@ -15,7 +15,7 @@ type MongoDBCloudUsersApi interface {
 	/*
 			AddOrganizationRole Add One Organization Role to One MongoDB Cloud User
 
-			Adds one organization-level role to the MongoDB Cloud user. You can add a role to an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting API Key must have the Organization Owner role.
+			Adds one organization-level role to the MongoDB Cloud user. You can add a role to an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
 		**Note**: This operation is atomic.
 
@@ -44,7 +44,7 @@ type MongoDBCloudUsersApi interface {
 	/*
 			AddProjectRole Add One Project Role to One MongoDB Cloud User
 
-			Adds one project-level role to the MongoDB Cloud user. You can add a role to an active user or a user that has been invited to join the project. To use this resource, the requesting API Key must have the Project Owner role.
+			Adds one project-level role to the MongoDB Cloud user. You can add a role to an active user or a user that has been invited to join the project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 		**Note**: This resource cannot be used to add a role to users invited using the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
 
@@ -71,7 +71,7 @@ type MongoDBCloudUsersApi interface {
 	/*
 			AddProjectUser Add One MongoDB Cloud User to One Project
 
-			Adds one MongoDB Cloud user to one project. To use this resource, the requesting API Key must have the Project Owner role.
+			Adds one MongoDB Cloud user to one project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 		- If the user has a pending invitation to join the project's organization, MongoDB Cloud modifies it and grants project access.
 		- If the user doesn't have an invitation to join the organization, MongoDB Cloud sends a new invitation that grants the user organization and project access.
 		- If the user is already active in the project's organization, MongoDB Cloud grants access to the project.
@@ -99,7 +99,7 @@ type MongoDBCloudUsersApi interface {
 	/*
 			AddUserToTeam Add One MongoDB Cloud User to One Team
 
-			Adds one MongoDB Cloud user to one team. You can add an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting API Key must have the Organization Owner role.
+			Adds one MongoDB Cloud user to one team. You can add an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
 		**Note**: This resource cannot be used to add a user invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
 
@@ -126,7 +126,7 @@ type MongoDBCloudUsersApi interface {
 	/*
 			CreateOrganizationUser Add One MongoDB Cloud User to One Organization
 
-			Invites one new or existing MongoDB Cloud user to join the organization. The invitation to join the organization will be sent to the username provided and must be accepted within 30 days. To use this resource, the requesting API Key must have the Organization Owner role.
+			Invites one new or existing MongoDB Cloud user to join the organization. The invitation to join the organization will be sent to the username provided and must be accepted within 30 days. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
 		**Note**: If the user does not have an existing MongoDB Cloud account, they will be prompted to finish setting up an account upon accepting the invitation. If the user already has an account, they will still receive an invitation to access the organization.
 
@@ -156,7 +156,7 @@ type MongoDBCloudUsersApi interface {
 
 		 MongoDB Cloud limits MongoDB Cloud user membership to a maximum of 250 MongoDB Cloud users per team. MongoDB Cloud limits MongoDB Cloud user membership to 500 MongoDB Cloud users per project and 500 MongoDB Cloud users per organization, which includes the combined membership of all projects in the organization. MongoDB Cloud raises an error if an operation exceeds these limits. For example, if you have an organization with five projects, and each project has 100 MongoDB Cloud users, and each MongoDB Cloud user belongs to only one project, you can't add any MongoDB Cloud users to this organization without first removing existing MongoDB Cloud users from the organization.
 
-		 To use this resource, the requesting API Key can have any role.
+		 To use this resource, the requesting Service Account or API Key can have any role.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param cloudAppUser MongoDB Cloud user account to create.
@@ -183,7 +183,7 @@ type MongoDBCloudUsersApi interface {
 	/*
 			GetOrganizationUser Return One MongoDB Cloud User in One Organization
 
-			Returns information about the specified MongoDB Cloud user within the context of the specified organization. To use this resource, the requesting API Key must have the Organization Member role.
+			Returns information about the specified MongoDB Cloud user within the context of the specified organization. To use this resource, the requesting Service Account or API Key must have the Organization Member role.
 
 		**Note**: This resource can only be used to fetch information about MongoDB Cloud human users. To return information about an API Key, use the [Return One Organization API Key](#tag/Programmatic-API-Keys/operation/getApiKey) endpoint.
 
@@ -211,7 +211,7 @@ type MongoDBCloudUsersApi interface {
 	/*
 			GetProjectUser Return One MongoDB Cloud User in One Project
 
-			Returns information about the specified MongoDB Cloud user within the context of the specified project. To use this resource, the requesting API Key must have the Project Read Only role.
+			Returns information about the specified MongoDB Cloud user within the context of the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
 		**Note**: You can only use this resource to fetch information about MongoDB Cloud human users. To return information about an API Key, use the [Return One Organization API Key](#tag/Programmatic-API-Keys/operation/getApiKey) endpoint.
 
@@ -239,7 +239,7 @@ type MongoDBCloudUsersApi interface {
 	/*
 		GetUser Return One MongoDB Cloud User using Its ID
 
-		Returns the details for one MongoDB Cloud user account with the specified unique identifier for the user. You can't use this endpoint to return information on an API Key. To return information about an API Key, use the [Return One Organization](#tag/Organizations/operation/getOrganization) API Key endpoint. You can always retrieve your own user account. If you are the owner of a MongoDB Cloud organization or project, you can also retrieve the user profile for any user with membership in that organization or project. To use this resource, the requesting API Key can have any role.
+		Returns the details for one MongoDB Cloud user account with the specified unique identifier for the user. You can't use this endpoint to return information on an API Key. To return information about an API Key, use the [Return One Organization](#tag/Organizations/operation/getOrganization) API Key endpoint. You can always retrieve your own user account. If you are the owner of a MongoDB Cloud organization or project, you can also retrieve the user profile for any user with membership in that organization or project. To use this resource, the requesting Service Account or API Key can have any role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param userId Unique 24-hexadecimal digit string that identifies this user.
@@ -266,7 +266,7 @@ type MongoDBCloudUsersApi interface {
 	/*
 		GetUserByUsername Return One MongoDB Cloud User using Their Username
 
-		Returns the details for one MongoDB Cloud user account with the specified username. You can't use this endpoint to return information about an API Key. To return information about an API Key, use the [Return One Organization](#tag/Organizations/operation/getOrganization) API Key endpoint. To use this resource, the requesting API Key can have any role.
+		Returns the details for one MongoDB Cloud user account with the specified username. You can't use this endpoint to return information about an API Key. To return information about an API Key, use the [Return One Organization](#tag/Organizations/operation/getOrganization) API Key endpoint. To use this resource, the requesting Service Account or API Key can have any role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param userName Email address that belongs to the MongoDB Cloud user account. You cannot modify this address after creating the user.
@@ -293,7 +293,7 @@ type MongoDBCloudUsersApi interface {
 	/*
 			ListOrganizationUsers Return All MongoDB Cloud Users in One Organization
 
-			Returns details about the pending and active MongoDB Cloud users associated with the specified organization. To use this resource, the requesting API Key must have the Organization Member role.
+			Returns details about the pending and active MongoDB Cloud users associated with the specified organization. To use this resource, the requesting Service Account or API Key must have the Organization Member role.
 
 		**Note**: This resource cannot be used to view details about users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
 
@@ -320,7 +320,7 @@ type MongoDBCloudUsersApi interface {
 	/*
 			ListProjectUsers Return All MongoDB Cloud Users in One Project
 
-			Returns details about the pending and active MongoDB Cloud users associated with the specified project. To use this resource, the requesting API Key must have the Project Read Only role.
+			Returns details about the pending and active MongoDB Cloud users associated with the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
 		**Note**: This resource cannot be used to view details about users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
 
@@ -347,7 +347,7 @@ type MongoDBCloudUsersApi interface {
 	/*
 			ListTeamUsers Return All MongoDB Cloud Users Assigned to One Team
 
-			Returns details about the pending and active MongoDB Cloud users associated with the specified team in the organization. Teams enable you to grant project access roles to MongoDB Cloud users. To use this resource, the requesting API Key must have the Organization Member role.
+			Returns details about the pending and active MongoDB Cloud users associated with the specified team in the organization. Teams enable you to grant project access roles to MongoDB Cloud users. To use this resource, the requesting Service Account or API Key must have the Organization Member role.
 
 		**Note**: This resource cannot be used to view details about users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
 
@@ -375,7 +375,7 @@ type MongoDBCloudUsersApi interface {
 	/*
 			RemoveOrganizationRole Remove One Organization Role from One MongoDB Cloud User
 
-			Removes one organization-level role from the MongoDB Cloud user. You can remove a role from an active user or a user that has not yet accepted the invitation to join the organization. To replace a user's only role, add the new role before removing the old role. A user must have at least one role at all times. To use this resource, the requesting API Key must have the Organization Owner role.
+			Removes one organization-level role from the MongoDB Cloud user. You can remove a role from an active user or a user that has not yet accepted the invitation to join the organization. To replace a user's only role, add the new role before removing the old role. A user must have at least one role at all times. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
 		**Note**: This operation is atomic.
 
@@ -404,7 +404,7 @@ type MongoDBCloudUsersApi interface {
 	/*
 			RemoveOrganizationUser Remove One MongoDB Cloud User From One Organization
 
-			Removes one MongoDB Cloud user in the specified organization. You can remove an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting API Key must have the Organization Owner role.
+			Removes one MongoDB Cloud user in the specified organization. You can remove an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
 		**Note**: This resource cannot be used to remove pending users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
 
@@ -427,12 +427,12 @@ type MongoDBCloudUsersApi interface {
 	RemoveOrganizationUserWithParams(ctx context.Context, args *RemoveOrganizationUserApiParams) RemoveOrganizationUserApiRequest
 
 	// Method available only for mocking purposes
-	RemoveOrganizationUserExecute(r RemoveOrganizationUserApiRequest) (any, *http.Response, error)
+	RemoveOrganizationUserExecute(r RemoveOrganizationUserApiRequest) (*http.Response, error)
 
 	/*
 			RemoveProjectRole Remove One Project Role from One MongoDB Cloud User
 
-			Removes one project-level role from the MongoDB Cloud user. You can remove a role from an active user or a user that has been invited to join the project. To replace a user's only role, add the new role before removing the old role. A user must have at least one role at all times. To use this resource, the requesting API Key must have the Project Owner role.
+			Removes one project-level role from the MongoDB Cloud user. You can remove a role from an active user or a user that has been invited to join the project. To replace a user's only role, add the new role before removing the old role. A user must have at least one role at all times. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 		**Note**: This resource cannot be used to remove a role from users invited using the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
 
@@ -459,7 +459,7 @@ type MongoDBCloudUsersApi interface {
 	/*
 			RemoveProjectUser Remove One MongoDB Cloud User from One Project
 
-			Removes one MongoDB Cloud user from the specified project. You can remove an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting API Key must have the Project Owner role.
+			Removes one MongoDB Cloud user from the specified project. You can remove an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 		**Note**: This resource cannot be used to remove pending users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
 
@@ -482,12 +482,12 @@ type MongoDBCloudUsersApi interface {
 	RemoveProjectUserWithParams(ctx context.Context, args *RemoveProjectUserApiParams) RemoveProjectUserApiRequest
 
 	// Method available only for mocking purposes
-	RemoveProjectUserExecute(r RemoveProjectUserApiRequest) (any, *http.Response, error)
+	RemoveProjectUserExecute(r RemoveProjectUserApiRequest) (*http.Response, error)
 
 	/*
 			RemoveUserFromTeam Remove One MongoDB Cloud User from One Team
 
-			Removes one MongoDB Cloud user from one team. You can remove an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting API Key must have the Organization Owner role.
+			Removes one MongoDB Cloud user from one team. You can remove an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
 		**Note**: This resource cannot be used to remove a user invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
 
@@ -514,7 +514,7 @@ type MongoDBCloudUsersApi interface {
 	/*
 			UpdateOrganizationUser Update One MongoDB Cloud User in One Organization
 
-			Updates one MongoDB Cloud user in the specified organization. You can update an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting API Key must have the Organization Owner role.
+			Updates one MongoDB Cloud user in the specified organization. You can update an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
 		**Note**: Only include the fields you wish to update in the request body. Supplying a field with an empty value will reset that field on the user.
 
@@ -575,7 +575,7 @@ func (r AddOrganizationRoleApiRequest) Execute() (*OrgUserResponse, *http.Respon
 /*
 AddOrganizationRole Add One Organization Role to One MongoDB Cloud User
 
-Adds one organization-level role to the MongoDB Cloud user. You can add a role to an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting API Key must have the Organization Owner role.
+Adds one organization-level role to the MongoDB Cloud user. You can add a role to an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
 **Note**: This operation is atomic.
 
@@ -705,7 +705,7 @@ func (r AddProjectRoleApiRequest) Execute() (*OrgUserResponse, *http.Response, e
 /*
 AddProjectRole Add One Project Role to One MongoDB Cloud User
 
-Adds one project-level role to the MongoDB Cloud user. You can add a role to an active user or a user that has been invited to join the project. To use this resource, the requesting API Key must have the Project Owner role.
+Adds one project-level role to the MongoDB Cloud user. You can add a role to an active user or a user that has been invited to join the project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 **Note**: This resource cannot be used to add a role to users invited using the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
 
@@ -830,7 +830,7 @@ func (r AddProjectUserApiRequest) Execute() (*GroupUserResponse, *http.Response,
 /*
 AddProjectUser Add One MongoDB Cloud User to One Project
 
-Adds one MongoDB Cloud user to one project. To use this resource, the requesting API Key must have the Project Owner role.
+Adds one MongoDB Cloud user to one project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 - If the user has a pending invitation to join the project's organization, MongoDB Cloud modifies it and grants project access.
 - If the user doesn't have an invitation to join the organization, MongoDB Cloud sends a new invitation that grants the user organization and project access.
 - If the user is already active in the project's organization, MongoDB Cloud grants access to the project.
@@ -956,7 +956,7 @@ func (r AddUserToTeamApiRequest) Execute() (*OrgUserResponse, *http.Response, er
 /*
 AddUserToTeam Add One MongoDB Cloud User to One Team
 
-Adds one MongoDB Cloud user to one team. You can add an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting API Key must have the Organization Owner role.
+Adds one MongoDB Cloud user to one team. You can add an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
 **Note**: This resource cannot be used to add a user invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
 
@@ -1081,7 +1081,7 @@ func (r CreateOrganizationUserApiRequest) Execute() (*OrgUserResponse, *http.Res
 /*
 CreateOrganizationUser Add One MongoDB Cloud User to One Organization
 
-Invites one new or existing MongoDB Cloud user to join the organization. The invitation to join the organization will be sent to the username provided and must be accepted within 30 days. To use this resource, the requesting API Key must have the Organization Owner role.
+Invites one new or existing MongoDB Cloud user to join the organization. The invitation to join the organization will be sent to the username provided and must be accepted within 30 days. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
 **Note**: If the user does not have an existing MongoDB Cloud account, they will be prompted to finish setting up an account upon accepting the invitation. If the user already has an account, they will still receive an invitation to access the organization.
 
@@ -1204,7 +1204,7 @@ Creates one MongoDB Cloud user account. A MongoDB Cloud user account grants acce
 
 	MongoDB Cloud limits MongoDB Cloud user membership to a maximum of 250 MongoDB Cloud users per team. MongoDB Cloud limits MongoDB Cloud user membership to 500 MongoDB Cloud users per project and 500 MongoDB Cloud users per organization, which includes the combined membership of all projects in the organization. MongoDB Cloud raises an error if an operation exceeds these limits. For example, if you have an organization with five projects, and each project has 100 MongoDB Cloud users, and each MongoDB Cloud user belongs to only one project, you can't add any MongoDB Cloud users to this organization without first removing existing MongoDB Cloud users from the organization.
 
-	To use this resource, the requesting API Key can have any role.
+	To use this resource, the requesting Service Account or API Key can have any role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return CreateUserApiRequest
@@ -1325,7 +1325,7 @@ func (r GetOrganizationUserApiRequest) Execute() (*OrgUserResponse, *http.Respon
 /*
 GetOrganizationUser Return One MongoDB Cloud User in One Organization
 
-Returns information about the specified MongoDB Cloud user within the context of the specified organization. To use this resource, the requesting API Key must have the Organization Member role.
+Returns information about the specified MongoDB Cloud user within the context of the specified organization. To use this resource, the requesting Service Account or API Key must have the Organization Member role.
 
 **Note**: This resource can only be used to fetch information about MongoDB Cloud human users. To return information about an API Key, use the [Return One Organization API Key](#tag/Programmatic-API-Keys/operation/getApiKey) endpoint.
 
@@ -1446,7 +1446,7 @@ func (r GetProjectUserApiRequest) Execute() (*GroupUserResponse, *http.Response,
 /*
 GetProjectUser Return One MongoDB Cloud User in One Project
 
-Returns information about the specified MongoDB Cloud user within the context of the specified project. To use this resource, the requesting API Key must have the Project Read Only role.
+Returns information about the specified MongoDB Cloud user within the context of the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
 **Note**: You can only use this resource to fetch information about MongoDB Cloud human users. To return information about an API Key, use the [Return One Organization API Key](#tag/Programmatic-API-Keys/operation/getApiKey) endpoint.
 
@@ -1564,7 +1564,7 @@ func (r GetUserApiRequest) Execute() (*CloudAppUser, *http.Response, error) {
 /*
 GetUser Return One MongoDB Cloud User using Its ID
 
-Returns the details for one MongoDB Cloud user account with the specified unique identifier for the user. You can't use this endpoint to return information on an API Key. To return information about an API Key, use the [Return One Organization](#tag/Organizations/operation/getOrganization) API Key endpoint. You can always retrieve your own user account. If you are the owner of a MongoDB Cloud organization or project, you can also retrieve the user profile for any user with membership in that organization or project. To use this resource, the requesting API Key can have any role.
+Returns the details for one MongoDB Cloud user account with the specified unique identifier for the user. You can't use this endpoint to return information on an API Key. To return information about an API Key, use the [Return One Organization](#tag/Organizations/operation/getOrganization) API Key endpoint. You can always retrieve your own user account. If you are the owner of a MongoDB Cloud organization or project, you can also retrieve the user profile for any user with membership in that organization or project. To use this resource, the requesting Service Account or API Key can have any role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param userId Unique 24-hexadecimal digit string that identifies this user.
@@ -1679,7 +1679,7 @@ func (r GetUserByUsernameApiRequest) Execute() (*CloudAppUser, *http.Response, e
 /*
 GetUserByUsername Return One MongoDB Cloud User using Their Username
 
-Returns the details for one MongoDB Cloud user account with the specified username. You can't use this endpoint to return information about an API Key. To return information about an API Key, use the [Return One Organization](#tag/Organizations/operation/getOrganization) API Key endpoint. To use this resource, the requesting API Key can have any role.
+Returns the details for one MongoDB Cloud user account with the specified username. You can't use this endpoint to return information about an API Key. To return information about an API Key, use the [Return One Organization](#tag/Organizations/operation/getOrganization) API Key endpoint. To use this resource, the requesting Service Account or API Key can have any role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param userName Email address that belongs to the MongoDB Cloud user account. You cannot modify this address after creating the user.
@@ -1839,7 +1839,7 @@ func (r ListOrganizationUsersApiRequest) Execute() (*PaginatedOrgUser, *http.Res
 /*
 ListOrganizationUsers Return All MongoDB Cloud Users in One Organization
 
-Returns details about the pending and active MongoDB Cloud users associated with the specified organization. To use this resource, the requesting API Key must have the Organization Member role.
+Returns details about the pending and active MongoDB Cloud users associated with the specified organization. To use this resource, the requesting Service Account or API Key must have the Organization Member role.
 
 **Note**: This resource cannot be used to view details about users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
 
@@ -2044,7 +2044,7 @@ func (r ListProjectUsersApiRequest) Execute() (*PaginatedGroupUser, *http.Respon
 /*
 ListProjectUsers Return All MongoDB Cloud Users in One Project
 
-Returns details about the pending and active MongoDB Cloud users associated with the specified project. To use this resource, the requesting API Key must have the Project Read Only role.
+Returns details about the pending and active MongoDB Cloud users associated with the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
 **Note**: This resource cannot be used to view details about users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
 
@@ -2239,7 +2239,7 @@ func (r ListTeamUsersApiRequest) Execute() (*PaginatedOrgUser, *http.Response, e
 /*
 ListTeamUsers Return All MongoDB Cloud Users Assigned to One Team
 
-Returns details about the pending and active MongoDB Cloud users associated with the specified team in the organization. Teams enable you to grant project access roles to MongoDB Cloud users. To use this resource, the requesting API Key must have the Organization Member role.
+Returns details about the pending and active MongoDB Cloud users associated with the specified team in the organization. Teams enable you to grant project access roles to MongoDB Cloud users. To use this resource, the requesting Service Account or API Key must have the Organization Member role.
 
 **Note**: This resource cannot be used to view details about users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
 
@@ -2383,7 +2383,7 @@ func (r RemoveOrganizationRoleApiRequest) Execute() (*OrgUserResponse, *http.Res
 /*
 RemoveOrganizationRole Remove One Organization Role from One MongoDB Cloud User
 
-Removes one organization-level role from the MongoDB Cloud user. You can remove a role from an active user or a user that has not yet accepted the invitation to join the organization. To replace a user's only role, add the new role before removing the old role. A user must have at least one role at all times. To use this resource, the requesting API Key must have the Organization Owner role.
+Removes one organization-level role from the MongoDB Cloud user. You can remove a role from an active user or a user that has not yet accepted the invitation to join the organization. To replace a user's only role, add the new role before removing the old role. A user must have at least one role at all times. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
 **Note**: This operation is atomic.
 
@@ -2503,14 +2503,14 @@ func (a *MongoDBCloudUsersApiService) RemoveOrganizationUserWithParams(ctx conte
 	}
 }
 
-func (r RemoveOrganizationUserApiRequest) Execute() (any, *http.Response, error) {
+func (r RemoveOrganizationUserApiRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RemoveOrganizationUserExecute(r)
 }
 
 /*
 RemoveOrganizationUser Remove One MongoDB Cloud User From One Organization
 
-Removes one MongoDB Cloud user in the specified organization. You can remove an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting API Key must have the Organization Owner role.
+Removes one MongoDB Cloud user in the specified organization. You can remove an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
 **Note**: This resource cannot be used to remove pending users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
 
@@ -2531,19 +2531,16 @@ func (a *MongoDBCloudUsersApiService) RemoveOrganizationUser(ctx context.Context
 }
 
 // RemoveOrganizationUserExecute executes the request
-//
-//	@return any
-func (a *MongoDBCloudUsersApiService) RemoveOrganizationUserExecute(r RemoveOrganizationUserApiRequest) (any, *http.Response, error) {
+func (a *MongoDBCloudUsersApiService) RemoveOrganizationUserExecute(r RemoveOrganizationUserApiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue any
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   any
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.RemoveOrganizationUser")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/users/{userId}"
@@ -2573,34 +2570,20 @@ func (a *MongoDBCloudUsersApiService) RemoveOrganizationUserExecute(r RemoveOrga
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
 		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
 
 type RemoveProjectRoleApiRequest struct {
@@ -2634,7 +2617,7 @@ func (r RemoveProjectRoleApiRequest) Execute() (*OrgUserResponse, *http.Response
 /*
 RemoveProjectRole Remove One Project Role from One MongoDB Cloud User
 
-Removes one project-level role from the MongoDB Cloud user. You can remove a role from an active user or a user that has been invited to join the project. To replace a user's only role, add the new role before removing the old role. A user must have at least one role at all times. To use this resource, the requesting API Key must have the Project Owner role.
+Removes one project-level role from the MongoDB Cloud user. You can remove a role from an active user or a user that has been invited to join the project. To replace a user's only role, add the new role before removing the old role. A user must have at least one role at all times. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 **Note**: This resource cannot be used to remove a role from users invited using the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
 
@@ -2752,14 +2735,14 @@ func (a *MongoDBCloudUsersApiService) RemoveProjectUserWithParams(ctx context.Co
 	}
 }
 
-func (r RemoveProjectUserApiRequest) Execute() (any, *http.Response, error) {
+func (r RemoveProjectUserApiRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RemoveProjectUserExecute(r)
 }
 
 /*
 RemoveProjectUser Remove One MongoDB Cloud User from One Project
 
-Removes one MongoDB Cloud user from the specified project. You can remove an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting API Key must have the Project Owner role.
+Removes one MongoDB Cloud user from the specified project. You can remove an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 **Note**: This resource cannot be used to remove pending users invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
 
@@ -2780,19 +2763,16 @@ func (a *MongoDBCloudUsersApiService) RemoveProjectUser(ctx context.Context, gro
 }
 
 // RemoveProjectUserExecute executes the request
-//
-//	@return any
-func (a *MongoDBCloudUsersApiService) RemoveProjectUserExecute(r RemoveProjectUserApiRequest) (any, *http.Response, error) {
+func (a *MongoDBCloudUsersApiService) RemoveProjectUserExecute(r RemoveProjectUserApiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue any
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   any
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.RemoveProjectUser")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/users/{userId}"
@@ -2822,34 +2802,20 @@ func (a *MongoDBCloudUsersApiService) RemoveProjectUserExecute(r RemoveProjectUs
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
 		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
 
 type RemoveUserFromTeamApiRequest struct {
@@ -2883,7 +2849,7 @@ func (r RemoveUserFromTeamApiRequest) Execute() (*OrgUserResponse, *http.Respons
 /*
 RemoveUserFromTeam Remove One MongoDB Cloud User from One Team
 
-Removes one MongoDB Cloud user from one team. You can remove an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting API Key must have the Organization Owner role.
+Removes one MongoDB Cloud user from one team. You can remove an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
 **Note**: This resource cannot be used to remove a user invited via the deprecated [Invite One MongoDB Cloud User to Join One Project](#tag/Projects/operation/createProjectInvitation) endpoint.
 
@@ -3011,7 +2977,7 @@ func (r UpdateOrganizationUserApiRequest) Execute() (*OrgUserResponse, *http.Res
 /*
 UpdateOrganizationUser Update One MongoDB Cloud User in One Organization
 
-Updates one MongoDB Cloud user in the specified organization. You can update an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting API Key must have the Organization Owner role.
+Updates one MongoDB Cloud user in the specified organization. You can update an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
 **Note**: Only include the fields you wish to update in the request body. Supplying a field with an empty value will reset that field on the user.
 

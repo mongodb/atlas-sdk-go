@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312001/admin"
+	admin "github.com/mongodb/atlas-sdk-go/admin"
 
 	http "net/http"
 
@@ -561,42 +561,33 @@ func (_c *TeamsApi_DeleteTeam_Call) RunAndReturn(run func(context.Context, strin
 }
 
 // DeleteTeamExecute provides a mock function with given fields: r
-func (_m *TeamsApi) DeleteTeamExecute(r admin.DeleteTeamApiRequest) (any, *http.Response, error) {
+func (_m *TeamsApi) DeleteTeamExecute(r admin.DeleteTeamApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteTeamExecute")
 	}
 
-	var r0 any
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteTeamApiRequest) (any, *http.Response, error)); ok {
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.DeleteTeamApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteTeamApiRequest) any); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteTeamApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(any)
+			r0 = ret.Get(0).(*http.Response)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeleteTeamApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.DeleteTeamApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
+		r1 = ret.Error(1)
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.DeleteTeamApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
+	return r0, r1
 }
 
 // TeamsApi_DeleteTeamExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteTeamExecute'
@@ -617,12 +608,12 @@ func (_c *TeamsApi_DeleteTeamExecute_Call) Run(run func(r admin.DeleteTeamApiReq
 	return _c
 }
 
-func (_c *TeamsApi_DeleteTeamExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *TeamsApi_DeleteTeamExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
+func (_c *TeamsApi_DeleteTeamExecute_Call) Return(_a0 *http.Response, _a1 error) *TeamsApi_DeleteTeamExecute_Call {
+	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *TeamsApi_DeleteTeamExecute_Call) RunAndReturn(run func(admin.DeleteTeamApiRequest) (any, *http.Response, error)) *TeamsApi_DeleteTeamExecute_Call {
+func (_c *TeamsApi_DeleteTeamExecute_Call) RunAndReturn(run func(admin.DeleteTeamApiRequest) (*http.Response, error)) *TeamsApi_DeleteTeamExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }

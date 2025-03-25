@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312001/admin"
+	admin "github.com/mongodb/atlas-sdk-go/admin"
 
 	http "net/http"
 
@@ -77,42 +77,33 @@ func (_c *StreamsApi_AcceptVpcPeeringConnection_Call) RunAndReturn(run func(cont
 }
 
 // AcceptVpcPeeringConnectionExecute provides a mock function with given fields: r
-func (_m *StreamsApi) AcceptVpcPeeringConnectionExecute(r admin.AcceptVpcPeeringConnectionApiRequest) (any, *http.Response, error) {
+func (_m *StreamsApi) AcceptVpcPeeringConnectionExecute(r admin.AcceptVpcPeeringConnectionApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for AcceptVpcPeeringConnectionExecute")
 	}
 
-	var r0 any
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.AcceptVpcPeeringConnectionApiRequest) (any, *http.Response, error)); ok {
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.AcceptVpcPeeringConnectionApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.AcceptVpcPeeringConnectionApiRequest) any); ok {
+	if rf, ok := ret.Get(0).(func(admin.AcceptVpcPeeringConnectionApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(any)
+			r0 = ret.Get(0).(*http.Response)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.AcceptVpcPeeringConnectionApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.AcceptVpcPeeringConnectionApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
+		r1 = ret.Error(1)
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.AcceptVpcPeeringConnectionApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
+	return r0, r1
 }
 
 // StreamsApi_AcceptVpcPeeringConnectionExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'AcceptVpcPeeringConnectionExecute'
@@ -133,12 +124,12 @@ func (_c *StreamsApi_AcceptVpcPeeringConnectionExecute_Call) Run(run func(r admi
 	return _c
 }
 
-func (_c *StreamsApi_AcceptVpcPeeringConnectionExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *StreamsApi_AcceptVpcPeeringConnectionExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
+func (_c *StreamsApi_AcceptVpcPeeringConnectionExecute_Call) Return(_a0 *http.Response, _a1 error) *StreamsApi_AcceptVpcPeeringConnectionExecute_Call {
+	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *StreamsApi_AcceptVpcPeeringConnectionExecute_Call) RunAndReturn(run func(admin.AcceptVpcPeeringConnectionApiRequest) (any, *http.Response, error)) *StreamsApi_AcceptVpcPeeringConnectionExecute_Call {
+func (_c *StreamsApi_AcceptVpcPeeringConnectionExecute_Call) RunAndReturn(run func(admin.AcceptVpcPeeringConnectionApiRequest) (*http.Response, error)) *StreamsApi_AcceptVpcPeeringConnectionExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1051,42 +1042,33 @@ func (_c *StreamsApi_DeletePrivateLinkConnection_Call) RunAndReturn(run func(con
 }
 
 // DeletePrivateLinkConnectionExecute provides a mock function with given fields: r
-func (_m *StreamsApi) DeletePrivateLinkConnectionExecute(r admin.DeletePrivateLinkConnectionApiRequest) (any, *http.Response, error) {
+func (_m *StreamsApi) DeletePrivateLinkConnectionExecute(r admin.DeletePrivateLinkConnectionApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeletePrivateLinkConnectionExecute")
 	}
 
-	var r0 any
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeletePrivateLinkConnectionApiRequest) (any, *http.Response, error)); ok {
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.DeletePrivateLinkConnectionApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeletePrivateLinkConnectionApiRequest) any); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeletePrivateLinkConnectionApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(any)
+			r0 = ret.Get(0).(*http.Response)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeletePrivateLinkConnectionApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.DeletePrivateLinkConnectionApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
+		r1 = ret.Error(1)
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.DeletePrivateLinkConnectionApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
+	return r0, r1
 }
 
 // StreamsApi_DeletePrivateLinkConnectionExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeletePrivateLinkConnectionExecute'
@@ -1107,12 +1089,12 @@ func (_c *StreamsApi_DeletePrivateLinkConnectionExecute_Call) Run(run func(r adm
 	return _c
 }
 
-func (_c *StreamsApi_DeletePrivateLinkConnectionExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *StreamsApi_DeletePrivateLinkConnectionExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
+func (_c *StreamsApi_DeletePrivateLinkConnectionExecute_Call) Return(_a0 *http.Response, _a1 error) *StreamsApi_DeletePrivateLinkConnectionExecute_Call {
+	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *StreamsApi_DeletePrivateLinkConnectionExecute_Call) RunAndReturn(run func(admin.DeletePrivateLinkConnectionApiRequest) (any, *http.Response, error)) *StreamsApi_DeletePrivateLinkConnectionExecute_Call {
+func (_c *StreamsApi_DeletePrivateLinkConnectionExecute_Call) RunAndReturn(run func(admin.DeletePrivateLinkConnectionApiRequest) (*http.Response, error)) *StreamsApi_DeletePrivateLinkConnectionExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1214,42 +1196,33 @@ func (_c *StreamsApi_DeleteStreamConnection_Call) RunAndReturn(run func(context.
 }
 
 // DeleteStreamConnectionExecute provides a mock function with given fields: r
-func (_m *StreamsApi) DeleteStreamConnectionExecute(r admin.DeleteStreamConnectionApiRequest) (any, *http.Response, error) {
+func (_m *StreamsApi) DeleteStreamConnectionExecute(r admin.DeleteStreamConnectionApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteStreamConnectionExecute")
 	}
 
-	var r0 any
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteStreamConnectionApiRequest) (any, *http.Response, error)); ok {
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.DeleteStreamConnectionApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteStreamConnectionApiRequest) any); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteStreamConnectionApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(any)
+			r0 = ret.Get(0).(*http.Response)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeleteStreamConnectionApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.DeleteStreamConnectionApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
+		r1 = ret.Error(1)
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.DeleteStreamConnectionApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
+	return r0, r1
 }
 
 // StreamsApi_DeleteStreamConnectionExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteStreamConnectionExecute'
@@ -1270,12 +1243,12 @@ func (_c *StreamsApi_DeleteStreamConnectionExecute_Call) Run(run func(r admin.De
 	return _c
 }
 
-func (_c *StreamsApi_DeleteStreamConnectionExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *StreamsApi_DeleteStreamConnectionExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
+func (_c *StreamsApi_DeleteStreamConnectionExecute_Call) Return(_a0 *http.Response, _a1 error) *StreamsApi_DeleteStreamConnectionExecute_Call {
+	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *StreamsApi_DeleteStreamConnectionExecute_Call) RunAndReturn(run func(admin.DeleteStreamConnectionApiRequest) (any, *http.Response, error)) *StreamsApi_DeleteStreamConnectionExecute_Call {
+func (_c *StreamsApi_DeleteStreamConnectionExecute_Call) RunAndReturn(run func(admin.DeleteStreamConnectionApiRequest) (*http.Response, error)) *StreamsApi_DeleteStreamConnectionExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1376,42 +1349,33 @@ func (_c *StreamsApi_DeleteStreamInstance_Call) RunAndReturn(run func(context.Co
 }
 
 // DeleteStreamInstanceExecute provides a mock function with given fields: r
-func (_m *StreamsApi) DeleteStreamInstanceExecute(r admin.DeleteStreamInstanceApiRequest) (any, *http.Response, error) {
+func (_m *StreamsApi) DeleteStreamInstanceExecute(r admin.DeleteStreamInstanceApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteStreamInstanceExecute")
 	}
 
-	var r0 any
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteStreamInstanceApiRequest) (any, *http.Response, error)); ok {
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.DeleteStreamInstanceApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteStreamInstanceApiRequest) any); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteStreamInstanceApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(any)
+			r0 = ret.Get(0).(*http.Response)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeleteStreamInstanceApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.DeleteStreamInstanceApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
+		r1 = ret.Error(1)
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.DeleteStreamInstanceApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
+	return r0, r1
 }
 
 // StreamsApi_DeleteStreamInstanceExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteStreamInstanceExecute'
@@ -1432,12 +1396,12 @@ func (_c *StreamsApi_DeleteStreamInstanceExecute_Call) Run(run func(r admin.Dele
 	return _c
 }
 
-func (_c *StreamsApi_DeleteStreamInstanceExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *StreamsApi_DeleteStreamInstanceExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
+func (_c *StreamsApi_DeleteStreamInstanceExecute_Call) Return(_a0 *http.Response, _a1 error) *StreamsApi_DeleteStreamInstanceExecute_Call {
+	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *StreamsApi_DeleteStreamInstanceExecute_Call) RunAndReturn(run func(admin.DeleteStreamInstanceApiRequest) (any, *http.Response, error)) *StreamsApi_DeleteStreamInstanceExecute_Call {
+func (_c *StreamsApi_DeleteStreamInstanceExecute_Call) RunAndReturn(run func(admin.DeleteStreamInstanceApiRequest) (*http.Response, error)) *StreamsApi_DeleteStreamInstanceExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1692,42 +1656,33 @@ func (_c *StreamsApi_DeleteVpcPeeringConnection_Call) RunAndReturn(run func(cont
 }
 
 // DeleteVpcPeeringConnectionExecute provides a mock function with given fields: r
-func (_m *StreamsApi) DeleteVpcPeeringConnectionExecute(r admin.DeleteVpcPeeringConnectionApiRequest) (any, *http.Response, error) {
+func (_m *StreamsApi) DeleteVpcPeeringConnectionExecute(r admin.DeleteVpcPeeringConnectionApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteVpcPeeringConnectionExecute")
 	}
 
-	var r0 any
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteVpcPeeringConnectionApiRequest) (any, *http.Response, error)); ok {
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.DeleteVpcPeeringConnectionApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteVpcPeeringConnectionApiRequest) any); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteVpcPeeringConnectionApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(any)
+			r0 = ret.Get(0).(*http.Response)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeleteVpcPeeringConnectionApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.DeleteVpcPeeringConnectionApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
+		r1 = ret.Error(1)
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.DeleteVpcPeeringConnectionApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
+	return r0, r1
 }
 
 // StreamsApi_DeleteVpcPeeringConnectionExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteVpcPeeringConnectionExecute'
@@ -1748,12 +1703,12 @@ func (_c *StreamsApi_DeleteVpcPeeringConnectionExecute_Call) Run(run func(r admi
 	return _c
 }
 
-func (_c *StreamsApi_DeleteVpcPeeringConnectionExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *StreamsApi_DeleteVpcPeeringConnectionExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
+func (_c *StreamsApi_DeleteVpcPeeringConnectionExecute_Call) Return(_a0 *http.Response, _a1 error) *StreamsApi_DeleteVpcPeeringConnectionExecute_Call {
+	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *StreamsApi_DeleteVpcPeeringConnectionExecute_Call) RunAndReturn(run func(admin.DeleteVpcPeeringConnectionApiRequest) (any, *http.Response, error)) *StreamsApi_DeleteVpcPeeringConnectionExecute_Call {
+func (_c *StreamsApi_DeleteVpcPeeringConnectionExecute_Call) RunAndReturn(run func(admin.DeleteVpcPeeringConnectionApiRequest) (*http.Response, error)) *StreamsApi_DeleteVpcPeeringConnectionExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -3941,42 +3896,33 @@ func (_c *StreamsApi_RejectVpcPeeringConnection_Call) RunAndReturn(run func(cont
 }
 
 // RejectVpcPeeringConnectionExecute provides a mock function with given fields: r
-func (_m *StreamsApi) RejectVpcPeeringConnectionExecute(r admin.RejectVpcPeeringConnectionApiRequest) (any, *http.Response, error) {
+func (_m *StreamsApi) RejectVpcPeeringConnectionExecute(r admin.RejectVpcPeeringConnectionApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for RejectVpcPeeringConnectionExecute")
 	}
 
-	var r0 any
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.RejectVpcPeeringConnectionApiRequest) (any, *http.Response, error)); ok {
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.RejectVpcPeeringConnectionApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.RejectVpcPeeringConnectionApiRequest) any); ok {
+	if rf, ok := ret.Get(0).(func(admin.RejectVpcPeeringConnectionApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(any)
+			r0 = ret.Get(0).(*http.Response)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.RejectVpcPeeringConnectionApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.RejectVpcPeeringConnectionApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
+		r1 = ret.Error(1)
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.RejectVpcPeeringConnectionApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
+	return r0, r1
 }
 
 // StreamsApi_RejectVpcPeeringConnectionExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RejectVpcPeeringConnectionExecute'
@@ -3997,12 +3943,12 @@ func (_c *StreamsApi_RejectVpcPeeringConnectionExecute_Call) Run(run func(r admi
 	return _c
 }
 
-func (_c *StreamsApi_RejectVpcPeeringConnectionExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *StreamsApi_RejectVpcPeeringConnectionExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
+func (_c *StreamsApi_RejectVpcPeeringConnectionExecute_Call) Return(_a0 *http.Response, _a1 error) *StreamsApi_RejectVpcPeeringConnectionExecute_Call {
+	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *StreamsApi_RejectVpcPeeringConnectionExecute_Call) RunAndReturn(run func(admin.RejectVpcPeeringConnectionApiRequest) (any, *http.Response, error)) *StreamsApi_RejectVpcPeeringConnectionExecute_Call {
+func (_c *StreamsApi_RejectVpcPeeringConnectionExecute_Call) RunAndReturn(run func(admin.RejectVpcPeeringConnectionApiRequest) (*http.Response, error)) *StreamsApi_RejectVpcPeeringConnectionExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -4104,42 +4050,33 @@ func (_c *StreamsApi_StartStreamProcessor_Call) RunAndReturn(run func(context.Co
 }
 
 // StartStreamProcessorExecute provides a mock function with given fields: r
-func (_m *StreamsApi) StartStreamProcessorExecute(r admin.StartStreamProcessorApiRequest) (any, *http.Response, error) {
+func (_m *StreamsApi) StartStreamProcessorExecute(r admin.StartStreamProcessorApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for StartStreamProcessorExecute")
 	}
 
-	var r0 any
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.StartStreamProcessorApiRequest) (any, *http.Response, error)); ok {
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.StartStreamProcessorApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.StartStreamProcessorApiRequest) any); ok {
+	if rf, ok := ret.Get(0).(func(admin.StartStreamProcessorApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(any)
+			r0 = ret.Get(0).(*http.Response)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.StartStreamProcessorApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.StartStreamProcessorApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
+		r1 = ret.Error(1)
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.StartStreamProcessorApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
+	return r0, r1
 }
 
 // StreamsApi_StartStreamProcessorExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'StartStreamProcessorExecute'
@@ -4160,12 +4097,12 @@ func (_c *StreamsApi_StartStreamProcessorExecute_Call) Run(run func(r admin.Star
 	return _c
 }
 
-func (_c *StreamsApi_StartStreamProcessorExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *StreamsApi_StartStreamProcessorExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
+func (_c *StreamsApi_StartStreamProcessorExecute_Call) Return(_a0 *http.Response, _a1 error) *StreamsApi_StartStreamProcessorExecute_Call {
+	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *StreamsApi_StartStreamProcessorExecute_Call) RunAndReturn(run func(admin.StartStreamProcessorApiRequest) (any, *http.Response, error)) *StreamsApi_StartStreamProcessorExecute_Call {
+func (_c *StreamsApi_StartStreamProcessorExecute_Call) RunAndReturn(run func(admin.StartStreamProcessorApiRequest) (*http.Response, error)) *StreamsApi_StartStreamProcessorExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -4267,42 +4204,33 @@ func (_c *StreamsApi_StopStreamProcessor_Call) RunAndReturn(run func(context.Con
 }
 
 // StopStreamProcessorExecute provides a mock function with given fields: r
-func (_m *StreamsApi) StopStreamProcessorExecute(r admin.StopStreamProcessorApiRequest) (any, *http.Response, error) {
+func (_m *StreamsApi) StopStreamProcessorExecute(r admin.StopStreamProcessorApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for StopStreamProcessorExecute")
 	}
 
-	var r0 any
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.StopStreamProcessorApiRequest) (any, *http.Response, error)); ok {
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.StopStreamProcessorApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.StopStreamProcessorApiRequest) any); ok {
+	if rf, ok := ret.Get(0).(func(admin.StopStreamProcessorApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(any)
+			r0 = ret.Get(0).(*http.Response)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.StopStreamProcessorApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.StopStreamProcessorApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
+		r1 = ret.Error(1)
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.StopStreamProcessorApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
+	return r0, r1
 }
 
 // StreamsApi_StopStreamProcessorExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'StopStreamProcessorExecute'
@@ -4323,12 +4251,12 @@ func (_c *StreamsApi_StopStreamProcessorExecute_Call) Run(run func(r admin.StopS
 	return _c
 }
 
-func (_c *StreamsApi_StopStreamProcessorExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *StreamsApi_StopStreamProcessorExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
+func (_c *StreamsApi_StopStreamProcessorExecute_Call) Return(_a0 *http.Response, _a1 error) *StreamsApi_StopStreamProcessorExecute_Call {
+	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *StreamsApi_StopStreamProcessorExecute_Call) RunAndReturn(run func(admin.StopStreamProcessorApiRequest) (any, *http.Response, error)) *StreamsApi_StopStreamProcessorExecute_Call {
+func (_c *StreamsApi_StopStreamProcessorExecute_Call) RunAndReturn(run func(admin.StopStreamProcessorApiRequest) (*http.Response, error)) *StreamsApi_StopStreamProcessorExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }

@@ -122,6 +122,14 @@ type EventViewForNdsGroup struct {
 	// State of the stream processor associated with the event.
 	// Read only field.
 	ProcessorState *string `json:"processorState,omitempty"`
+	// Unique 24-hexadecimal character string that identifies the resource policy.
+	// Read only field.
+	ResourcePolicyId *string `json:"resourcePolicyId,omitempty"`
+	// String representation of the violated resource policy ids.
+	ViolatedPolicies *[]string `json:"violatedPolicies,omitempty"`
+	// Resource policy action taken by the user and evaluated against the currently active policies.
+	// Read only field.
+	ViolationAction *string `json:"violationAction,omitempty"`
 }
 
 // NewEventViewForNdsGroup instantiates a new EventViewForNdsGroup object
@@ -1459,4 +1467,103 @@ func (o *EventViewForNdsGroup) HasProcessorState() bool {
 // SetProcessorState gets a reference to the given string and assigns it to the ProcessorState field.
 func (o *EventViewForNdsGroup) SetProcessorState(v string) {
 	o.ProcessorState = &v
+}
+
+// GetResourcePolicyId returns the ResourcePolicyId field value if set, zero value otherwise
+func (o *EventViewForNdsGroup) GetResourcePolicyId() string {
+	if o == nil || IsNil(o.ResourcePolicyId) {
+		var ret string
+		return ret
+	}
+	return *o.ResourcePolicyId
+}
+
+// GetResourcePolicyIdOk returns a tuple with the ResourcePolicyId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EventViewForNdsGroup) GetResourcePolicyIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ResourcePolicyId) {
+		return nil, false
+	}
+
+	return o.ResourcePolicyId, true
+}
+
+// HasResourcePolicyId returns a boolean if a field has been set.
+func (o *EventViewForNdsGroup) HasResourcePolicyId() bool {
+	if o != nil && !IsNil(o.ResourcePolicyId) {
+		return true
+	}
+
+	return false
+}
+
+// SetResourcePolicyId gets a reference to the given string and assigns it to the ResourcePolicyId field.
+func (o *EventViewForNdsGroup) SetResourcePolicyId(v string) {
+	o.ResourcePolicyId = &v
+}
+
+// GetViolatedPolicies returns the ViolatedPolicies field value if set, zero value otherwise
+func (o *EventViewForNdsGroup) GetViolatedPolicies() []string {
+	if o == nil || IsNil(o.ViolatedPolicies) {
+		var ret []string
+		return ret
+	}
+	return *o.ViolatedPolicies
+}
+
+// GetViolatedPoliciesOk returns a tuple with the ViolatedPolicies field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EventViewForNdsGroup) GetViolatedPoliciesOk() (*[]string, bool) {
+	if o == nil || IsNil(o.ViolatedPolicies) {
+		return nil, false
+	}
+
+	return o.ViolatedPolicies, true
+}
+
+// HasViolatedPolicies returns a boolean if a field has been set.
+func (o *EventViewForNdsGroup) HasViolatedPolicies() bool {
+	if o != nil && !IsNil(o.ViolatedPolicies) {
+		return true
+	}
+
+	return false
+}
+
+// SetViolatedPolicies gets a reference to the given []string and assigns it to the ViolatedPolicies field.
+func (o *EventViewForNdsGroup) SetViolatedPolicies(v []string) {
+	o.ViolatedPolicies = &v
+}
+
+// GetViolationAction returns the ViolationAction field value if set, zero value otherwise
+func (o *EventViewForNdsGroup) GetViolationAction() string {
+	if o == nil || IsNil(o.ViolationAction) {
+		var ret string
+		return ret
+	}
+	return *o.ViolationAction
+}
+
+// GetViolationActionOk returns a tuple with the ViolationAction field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EventViewForNdsGroup) GetViolationActionOk() (*string, bool) {
+	if o == nil || IsNil(o.ViolationAction) {
+		return nil, false
+	}
+
+	return o.ViolationAction, true
+}
+
+// HasViolationAction returns a boolean if a field has been set.
+func (o *EventViewForNdsGroup) HasViolationAction() bool {
+	if o != nil && !IsNil(o.ViolationAction) {
+		return true
+	}
+
+	return false
+}
+
+// SetViolationAction gets a reference to the given string and assigns it to the ViolationAction field.
+func (o *EventViewForNdsGroup) SetViolationAction(v string) {
+	o.ViolationAction = &v
 }
