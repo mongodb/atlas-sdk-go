@@ -20,7 +20,7 @@ jobs:
         env:
           API_BASE_URL:  https://raw.githubusercontent.com/mongodb/openapi/refs/heads/dev/openapi/v2
       - name: Verify Changed files
-        uses: mongodb/apix-action/verify-changed-files@82844ae9e10d8b07686f90f98d9257c4c38b54ca
+        uses: mongodb/apix-action/verify-changed-files@473f5409ae88400e6d3b5af5a32394f60a22867f
         id: verify-changed-files
         with:
           files: |
