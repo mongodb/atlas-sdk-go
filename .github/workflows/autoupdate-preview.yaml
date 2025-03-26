@@ -9,8 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
-      - uses: actions/setup-go@v5
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - uses: actions/setup-go@f111f3307d8850f501ac008e886eec1fd1932a34
         with:
           go-version-file: 'go.mod'
       - run: make install-goimports
@@ -30,7 +30,7 @@ jobs:
       - name: Run mock generation
         working-directory: ./tools
         run: make generate_mocks  
-      - uses: peter-evans/create-pull-request@v7
+      - uses: peter-evans/create-pull-request@271a8d0340265f705b14b6d32b9829c1cb33d45e
         with:
           token: ${{ secrets.APIX_BOT_PAT }}
           title: "APIBot: GO SDK Dev Preview"
