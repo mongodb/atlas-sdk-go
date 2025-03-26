@@ -19,28 +19,18 @@ jobs:
         run: make fetch_openapi
         env:
           API_BASE_URL:  https://raw.githubusercontent.com/mongodb/openapi/refs/heads/dev/openapi/v2
-      - name: Verify Changed files
-        uses: mongodb/apix-action/verify-changed-files@473f5409ae88400e6d3b5af5a32394f60a22867f
-        id: verify-changed-files
-        with:
-          files: |
-             **/atlas-api.yaml
       - name: Run generation
-        if: steps.verify-changed-files.outputs.files_changed == 'true'
         working-directory: ./tools
         run: |
           export PATH=${PATH}:`go env GOPATH`/bin
           make clean_and_generate
       - name: Update Preview version
-        if: steps.verify-changed-files.outputs.files_changed == 'true'
         working-directory: ./tools
         run: make preview-version  
       - name: Run mock generation
         working-directory: ./tools
-        if: steps.verify-changed-files.outputs.files_changed == 'true'
         run: make generate_mocks  
       - uses: peter-evans/create-pull-request@v7
-        if: steps.verify-changed-files.outputs.files_changed == 'true'
         with:
           token: ${{ secrets.APIX_BOT_PAT }}
           title: "APIBot: GO SDK Dev Preview"

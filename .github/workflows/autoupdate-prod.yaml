@@ -28,34 +28,22 @@ jobs:
         run: |
           export PATH=${PATH}:`go env GOPATH`/bin
           make clean_and_generate
-      - name: Verify Changed files
-        uses: mongodb/apix-action/verify-changed-files@473f5409ae88400e6d3b5af5a32394f60a22867f
-        id: verify-changed-files
-        with:
-          files: |
-             ./admin/**/*
       - name: Run docs generation
-        if: steps.verify-changed-files.outputs.files_changed == 'true'
         run: make gen-docs
       - name: Commit Generator Changes
-        if: steps.verify-changed-files.outputs.files_changed == 'true'
         run: |
           git add . && git commit -m "fix: Generated SDK source code and docs"
       - name: Release updates
-        if: steps.verify-changed-files.outputs.files_changed == 'true'
         working-directory: ./tools
         run: make new-version  
       - name: Ensure all markdown code is formatted
-        if: steps.verify-changed-files.outputs.files_changed == 'true'
         working-directory: ./tools
         run: |
           npm install && npm run format
       - name: Run mock generation
         working-directory: ./tools
-        if: steps.verify-changed-files.outputs.files_changed == 'true'
         run: make generate_mocks  
       - uses: peter-evans/create-pull-request@v7
-        if: steps.verify-changed-files.outputs.files_changed == 'true'
         with:
           token: ${{ secrets.APIX_BOT_PAT }}
           title: "APIBot: SDK update based on recent changes in Atlas API"
