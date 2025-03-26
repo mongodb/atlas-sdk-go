@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312001/admin"
+	admin "github.com/mongodb/atlas-sdk-go/admin"
 
 	http "net/http"
 
@@ -396,42 +396,33 @@ func (_c *OrganizationsApi_DeleteOrganization_Call) RunAndReturn(run func(contex
 }
 
 // DeleteOrganizationExecute provides a mock function with given fields: r
-func (_m *OrganizationsApi) DeleteOrganizationExecute(r admin.DeleteOrganizationApiRequest) (any, *http.Response, error) {
+func (_m *OrganizationsApi) DeleteOrganizationExecute(r admin.DeleteOrganizationApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteOrganizationExecute")
 	}
 
-	var r0 any
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteOrganizationApiRequest) (any, *http.Response, error)); ok {
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.DeleteOrganizationApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteOrganizationApiRequest) any); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteOrganizationApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(any)
+			r0 = ret.Get(0).(*http.Response)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeleteOrganizationApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.DeleteOrganizationApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
+		r1 = ret.Error(1)
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.DeleteOrganizationApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
+	return r0, r1
 }
 
 // OrganizationsApi_DeleteOrganizationExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteOrganizationExecute'
@@ -452,12 +443,12 @@ func (_c *OrganizationsApi_DeleteOrganizationExecute_Call) Run(run func(r admin.
 	return _c
 }
 
-func (_c *OrganizationsApi_DeleteOrganizationExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *OrganizationsApi_DeleteOrganizationExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
+func (_c *OrganizationsApi_DeleteOrganizationExecute_Call) Return(_a0 *http.Response, _a1 error) *OrganizationsApi_DeleteOrganizationExecute_Call {
+	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *OrganizationsApi_DeleteOrganizationExecute_Call) RunAndReturn(run func(admin.DeleteOrganizationApiRequest) (any, *http.Response, error)) *OrganizationsApi_DeleteOrganizationExecute_Call {
+func (_c *OrganizationsApi_DeleteOrganizationExecute_Call) RunAndReturn(run func(admin.DeleteOrganizationApiRequest) (*http.Response, error)) *OrganizationsApi_DeleteOrganizationExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -511,42 +502,33 @@ func (_c *OrganizationsApi_DeleteOrganizationInvitation_Call) RunAndReturn(run f
 }
 
 // DeleteOrganizationInvitationExecute provides a mock function with given fields: r
-func (_m *OrganizationsApi) DeleteOrganizationInvitationExecute(r admin.DeleteOrganizationInvitationApiRequest) (any, *http.Response, error) {
+func (_m *OrganizationsApi) DeleteOrganizationInvitationExecute(r admin.DeleteOrganizationInvitationApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteOrganizationInvitationExecute")
 	}
 
-	var r0 any
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteOrganizationInvitationApiRequest) (any, *http.Response, error)); ok {
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.DeleteOrganizationInvitationApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteOrganizationInvitationApiRequest) any); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteOrganizationInvitationApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(any)
+			r0 = ret.Get(0).(*http.Response)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeleteOrganizationInvitationApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.DeleteOrganizationInvitationApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
+		r1 = ret.Error(1)
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.DeleteOrganizationInvitationApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
+	return r0, r1
 }
 
 // OrganizationsApi_DeleteOrganizationInvitationExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteOrganizationInvitationExecute'
@@ -567,12 +549,12 @@ func (_c *OrganizationsApi_DeleteOrganizationInvitationExecute_Call) Run(run fun
 	return _c
 }
 
-func (_c *OrganizationsApi_DeleteOrganizationInvitationExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *OrganizationsApi_DeleteOrganizationInvitationExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
+func (_c *OrganizationsApi_DeleteOrganizationInvitationExecute_Call) Return(_a0 *http.Response, _a1 error) *OrganizationsApi_DeleteOrganizationInvitationExecute_Call {
+	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *OrganizationsApi_DeleteOrganizationInvitationExecute_Call) RunAndReturn(run func(admin.DeleteOrganizationInvitationApiRequest) (any, *http.Response, error)) *OrganizationsApi_DeleteOrganizationInvitationExecute_Call {
+func (_c *OrganizationsApi_DeleteOrganizationInvitationExecute_Call) RunAndReturn(run func(admin.DeleteOrganizationInvitationApiRequest) (*http.Response, error)) *OrganizationsApi_DeleteOrganizationInvitationExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }

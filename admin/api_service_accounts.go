@@ -207,7 +207,7 @@ type ServiceAccountsApi interface {
 	DeleteProjectServiceAccountWithParams(ctx context.Context, args *DeleteProjectServiceAccountApiParams) DeleteProjectServiceAccountApiRequest
 
 	// Method available only for mocking purposes
-	DeleteProjectServiceAccountExecute(r DeleteProjectServiceAccountApiRequest) (any, *http.Response, error)
+	DeleteProjectServiceAccountExecute(r DeleteProjectServiceAccountApiRequest) (*http.Response, error)
 
 	/*
 		DeleteProjectServiceAccountAccessListEntry Remove One Access List entry from one Project Service Account
@@ -1540,7 +1540,7 @@ func (a *ServiceAccountsApiService) DeleteProjectServiceAccountWithParams(ctx co
 	}
 }
 
-func (r DeleteProjectServiceAccountApiRequest) Execute() (any, *http.Response, error) {
+func (r DeleteProjectServiceAccountApiRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteProjectServiceAccountExecute(r)
 }
 
@@ -1564,19 +1564,16 @@ func (a *ServiceAccountsApiService) DeleteProjectServiceAccount(ctx context.Cont
 }
 
 // DeleteProjectServiceAccountExecute executes the request
-//
-//	@return any
-func (a *ServiceAccountsApiService) DeleteProjectServiceAccountExecute(r DeleteProjectServiceAccountApiRequest) (any, *http.Response, error) {
+func (a *ServiceAccountsApiService) DeleteProjectServiceAccountExecute(r DeleteProjectServiceAccountApiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue any
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   any
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.DeleteProjectServiceAccount")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}"
@@ -1606,34 +1603,20 @@ func (a *ServiceAccountsApiService) DeleteProjectServiceAccountExecute(r DeleteP
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
 		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
 
 type DeleteProjectServiceAccountAccessListEntryApiRequest struct {
