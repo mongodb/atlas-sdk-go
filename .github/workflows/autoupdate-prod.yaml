@@ -33,7 +33,7 @@ jobs:
         id: verify-changed-files
         with:
           files: |
-              ./admin/**/*  
+            ./admin/**/*
       - name: Run docs generation
         if: steps.verify-changed-files.outputs.files_changed == 'true'
         run: make gen-docs

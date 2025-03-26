@@ -24,7 +24,7 @@ jobs:
         id: verify-changed-files
         with:
           files: |
-              **/atlas-api.yaml
+            **/atlas-api.yaml
       - name: Run generation
         if: steps.verify-changed-files.outputs.files_changed == 'true'
         working-directory: ./tools
