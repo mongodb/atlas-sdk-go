@@ -9,8 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
-      - uses: actions/setup-go@v5
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - uses: actions/setup-go@f111f3307d8850f501ac008e886eec1fd1932a34
         with:
           go-version-file: 'go.mod'
       - run: make install-goimports
@@ -20,11 +20,11 @@ jobs:
         env:
           API_BASE_URL:  https://raw.githubusercontent.com/mongodb/openapi/refs/heads/dev/openapi/v2
       - name: Verify Changed files
-        uses: tj-actions/verify-changed-files@4a3570896cbdc5dca56a7a259fba88667845e18a
+        uses: mongodb/apix-action/verify-changed-files@473f5409ae88400e6d3b5af5a32394f60a22867f
         id: verify-changed-files
         with:
           files: |
-             **/atlas-api.yaml
+            **/atlas-api.yaml
       - name: Run generation
         if: steps.verify-changed-files.outputs.files_changed == 'true'
         working-directory: ./tools
@@ -39,7 +39,7 @@ jobs:
         working-directory: ./tools
         if: steps.verify-changed-files.outputs.files_changed == 'true'
         run: make generate_mocks  
-      - uses: peter-evans/create-pull-request@v7
+      - uses: peter-evans/create-pull-request@271a8d0340265f705b14b6d32b9829c1cb33d45e
         if: steps.verify-changed-files.outputs.files_changed == 'true'
         with:
           token: ${{ secrets.APIX_BOT_PAT }}
