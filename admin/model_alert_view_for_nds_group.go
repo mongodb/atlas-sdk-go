@@ -17,19 +17,19 @@ type AlertViewForNdsGroup struct {
 	AcknowledgingUsername *string `json:"acknowledgingUsername,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the alert configuration that sets this alert.
 	// Read only field.
-	AlertConfigId *string `json:"alertConfigId,omitempty"`
+	AlertConfigId string `json:"alertConfigId"`
 	// Date and time when MongoDB Cloud created this alert. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
-	Created *time.Time `json:"created,omitempty"`
+	Created time.Time `json:"created"`
 	// Incident that triggered this alert.
 	// Read only field.
-	EventTypeName *string `json:"eventTypeName,omitempty"`
+	EventTypeName string `json:"eventTypeName"`
 	// Unique 24-hexadecimal digit string that identifies the project that owns this alert.
 	// Read only field.
 	GroupId *string `json:"groupId,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies this alert.
 	// Read only field.
-	Id *string `json:"id,omitempty"`
+	Id string `json:"id"`
 	// Date and time that any notifications were last sent for this alert. This parameter expresses its value in the ISO 8601 timestamp format in UTC. The resource returns this parameter if MongoDB Cloud has sent notifications for this alert.
 	// Read only field.
 	LastNotified *time.Time `json:"lastNotified,omitempty"`
@@ -44,10 +44,10 @@ type AlertViewForNdsGroup struct {
 	Resolved *time.Time `json:"resolved,omitempty"`
 	// State of this alert at the time you requested its details.
 	// Read only field.
-	Status *string `json:"status,omitempty"`
+	Status string `json:"status"`
 	// Date and time when someone last updated this alert. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
-	Updated *time.Time `json:"updated,omitempty"`
+	Updated time.Time `json:"updated"`
 	// Human-readable label that identifies the cluster to which this alert applies. This resource returns this parameter for alerts of events impacting backups, replica sets, or sharded clusters.
 	// Read only field.
 	ClusterName *string `json:"clusterName,omitempty"`
@@ -85,8 +85,14 @@ type AlertViewForNdsGroup struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAlertViewForNdsGroup() *AlertViewForNdsGroup {
+func NewAlertViewForNdsGroup(alertConfigId string, created time.Time, eventTypeName string, id string, status string, updated time.Time) *AlertViewForNdsGroup {
 	this := AlertViewForNdsGroup{}
+	this.AlertConfigId = alertConfigId
+	this.Created = created
+	this.EventTypeName = eventTypeName
+	this.Id = id
+	this.Status = status
+	this.Updated = updated
 	return &this
 }
 
@@ -197,103 +203,76 @@ func (o *AlertViewForNdsGroup) SetAcknowledgingUsername(v string) {
 	o.AcknowledgingUsername = &v
 }
 
-// GetAlertConfigId returns the AlertConfigId field value if set, zero value otherwise
+// GetAlertConfigId returns the AlertConfigId field value
 func (o *AlertViewForNdsGroup) GetAlertConfigId() string {
-	if o == nil || IsNil(o.AlertConfigId) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.AlertConfigId
+
+	return o.AlertConfigId
 }
 
-// GetAlertConfigIdOk returns a tuple with the AlertConfigId field value if set, nil otherwise
+// GetAlertConfigIdOk returns a tuple with the AlertConfigId field value
 // and a boolean to check if the value has been set.
 func (o *AlertViewForNdsGroup) GetAlertConfigIdOk() (*string, bool) {
-	if o == nil || IsNil(o.AlertConfigId) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.AlertConfigId, true
+	return &o.AlertConfigId, true
 }
 
-// HasAlertConfigId returns a boolean if a field has been set.
-func (o *AlertViewForNdsGroup) HasAlertConfigId() bool {
-	if o != nil && !IsNil(o.AlertConfigId) {
-		return true
-	}
-
-	return false
-}
-
-// SetAlertConfigId gets a reference to the given string and assigns it to the AlertConfigId field.
+// SetAlertConfigId sets field value
 func (o *AlertViewForNdsGroup) SetAlertConfigId(v string) {
-	o.AlertConfigId = &v
+	o.AlertConfigId = v
 }
 
-// GetCreated returns the Created field value if set, zero value otherwise
+// GetCreated returns the Created field value
 func (o *AlertViewForNdsGroup) GetCreated() time.Time {
-	if o == nil || IsNil(o.Created) {
+	if o == nil {
 		var ret time.Time
 		return ret
 	}
-	return *o.Created
+
+	return o.Created
 }
 
-// GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
+// GetCreatedOk returns a tuple with the Created field value
 // and a boolean to check if the value has been set.
 func (o *AlertViewForNdsGroup) GetCreatedOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.Created) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.Created, true
+	return &o.Created, true
 }
 
-// HasCreated returns a boolean if a field has been set.
-func (o *AlertViewForNdsGroup) HasCreated() bool {
-	if o != nil && !IsNil(o.Created) {
-		return true
-	}
-
-	return false
-}
-
-// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
+// SetCreated sets field value
 func (o *AlertViewForNdsGroup) SetCreated(v time.Time) {
-	o.Created = &v
+	o.Created = v
 }
 
-// GetEventTypeName returns the EventTypeName field value if set, zero value otherwise
+// GetEventTypeName returns the EventTypeName field value
 func (o *AlertViewForNdsGroup) GetEventTypeName() string {
-	if o == nil || IsNil(o.EventTypeName) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.EventTypeName
+
+	return o.EventTypeName
 }
 
-// GetEventTypeNameOk returns a tuple with the EventTypeName field value if set, nil otherwise
+// GetEventTypeNameOk returns a tuple with the EventTypeName field value
 // and a boolean to check if the value has been set.
 func (o *AlertViewForNdsGroup) GetEventTypeNameOk() (*string, bool) {
-	if o == nil || IsNil(o.EventTypeName) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.EventTypeName, true
+	return &o.EventTypeName, true
 }
 
-// HasEventTypeName returns a boolean if a field has been set.
-func (o *AlertViewForNdsGroup) HasEventTypeName() bool {
-	if o != nil && !IsNil(o.EventTypeName) {
-		return true
-	}
-
-	return false
-}
-
-// SetEventTypeName gets a reference to the given string and assigns it to the EventTypeName field.
+// SetEventTypeName sets field value
 func (o *AlertViewForNdsGroup) SetEventTypeName(v string) {
-	o.EventTypeName = &v
+	o.EventTypeName = v
 }
 
 // GetGroupId returns the GroupId field value if set, zero value otherwise
@@ -329,37 +308,28 @@ func (o *AlertViewForNdsGroup) SetGroupId(v string) {
 	o.GroupId = &v
 }
 
-// GetId returns the Id field value if set, zero value otherwise
+// GetId returns the Id field value
 func (o *AlertViewForNdsGroup) GetId() string {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *AlertViewForNdsGroup) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *AlertViewForNdsGroup) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
+// SetId sets field value
 func (o *AlertViewForNdsGroup) SetId(v string) {
-	o.Id = &v
+	o.Id = v
 }
 
 // GetLastNotified returns the LastNotified field value if set, zero value otherwise
@@ -494,70 +464,52 @@ func (o *AlertViewForNdsGroup) SetResolved(v time.Time) {
 	o.Resolved = &v
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise
+// GetStatus returns the Status field value
 func (o *AlertViewForNdsGroup) GetStatus() string {
-	if o == nil || IsNil(o.Status) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Status
+
+	return o.Status
 }
 
-// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// GetStatusOk returns a tuple with the Status field value
 // and a boolean to check if the value has been set.
 func (o *AlertViewForNdsGroup) GetStatusOk() (*string, bool) {
-	if o == nil || IsNil(o.Status) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.Status, true
+	return &o.Status, true
 }
 
-// HasStatus returns a boolean if a field has been set.
-func (o *AlertViewForNdsGroup) HasStatus() bool {
-	if o != nil && !IsNil(o.Status) {
-		return true
-	}
-
-	return false
-}
-
-// SetStatus gets a reference to the given string and assigns it to the Status field.
+// SetStatus sets field value
 func (o *AlertViewForNdsGroup) SetStatus(v string) {
-	o.Status = &v
+	o.Status = v
 }
 
-// GetUpdated returns the Updated field value if set, zero value otherwise
+// GetUpdated returns the Updated field value
 func (o *AlertViewForNdsGroup) GetUpdated() time.Time {
-	if o == nil || IsNil(o.Updated) {
+	if o == nil {
 		var ret time.Time
 		return ret
 	}
-	return *o.Updated
+
+	return o.Updated
 }
 
-// GetUpdatedOk returns a tuple with the Updated field value if set, nil otherwise
+// GetUpdatedOk returns a tuple with the Updated field value
 // and a boolean to check if the value has been set.
 func (o *AlertViewForNdsGroup) GetUpdatedOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.Updated) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.Updated, true
+	return &o.Updated, true
 }
 
-// HasUpdated returns a boolean if a field has been set.
-func (o *AlertViewForNdsGroup) HasUpdated() bool {
-	if o != nil && !IsNil(o.Updated) {
-		return true
-	}
-
-	return false
-}
-
-// SetUpdated gets a reference to the given time.Time and assigns it to the Updated field.
+// SetUpdated sets field value
 func (o *AlertViewForNdsGroup) SetUpdated(v time.Time) {
-	o.Updated = &v
+	o.Updated = v
 }
 
 // GetClusterName returns the ClusterName field value if set, zero value otherwise

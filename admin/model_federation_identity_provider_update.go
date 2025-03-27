@@ -24,7 +24,7 @@ type FederationIdentityProviderUpdate struct {
 	// Custom SSO Url for the identity provider.
 	Slug *string `json:"slug,omitempty"`
 	// Flag that indicates whether the identity provider has SSO debug enabled.
-	SsoDebugEnabled *bool `json:"ssoDebugEnabled,omitempty"`
+	SsoDebugEnabled bool `json:"ssoDebugEnabled"`
 	// URL that points to the receiver of the SAML authentication request.
 	SsoUrl *string `json:"ssoUrl,omitempty"`
 	// String enum that indicates whether the identity provider is active.
@@ -47,8 +47,9 @@ type FederationIdentityProviderUpdate struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFederationIdentityProviderUpdate() *FederationIdentityProviderUpdate {
+func NewFederationIdentityProviderUpdate(ssoDebugEnabled bool) *FederationIdentityProviderUpdate {
 	this := FederationIdentityProviderUpdate{}
+	this.SsoDebugEnabled = ssoDebugEnabled
 	return &this
 }
 
@@ -390,37 +391,28 @@ func (o *FederationIdentityProviderUpdate) SetSlug(v string) {
 	o.Slug = &v
 }
 
-// GetSsoDebugEnabled returns the SsoDebugEnabled field value if set, zero value otherwise
+// GetSsoDebugEnabled returns the SsoDebugEnabled field value
 func (o *FederationIdentityProviderUpdate) GetSsoDebugEnabled() bool {
-	if o == nil || IsNil(o.SsoDebugEnabled) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.SsoDebugEnabled
+
+	return o.SsoDebugEnabled
 }
 
-// GetSsoDebugEnabledOk returns a tuple with the SsoDebugEnabled field value if set, nil otherwise
+// GetSsoDebugEnabledOk returns a tuple with the SsoDebugEnabled field value
 // and a boolean to check if the value has been set.
 func (o *FederationIdentityProviderUpdate) GetSsoDebugEnabledOk() (*bool, bool) {
-	if o == nil || IsNil(o.SsoDebugEnabled) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.SsoDebugEnabled, true
+	return &o.SsoDebugEnabled, true
 }
 
-// HasSsoDebugEnabled returns a boolean if a field has been set.
-func (o *FederationIdentityProviderUpdate) HasSsoDebugEnabled() bool {
-	if o != nil && !IsNil(o.SsoDebugEnabled) {
-		return true
-	}
-
-	return false
-}
-
-// SetSsoDebugEnabled gets a reference to the given bool and assigns it to the SsoDebugEnabled field.
+// SetSsoDebugEnabled sets field value
 func (o *FederationIdentityProviderUpdate) SetSsoDebugEnabled(v bool) {
-	o.SsoDebugEnabled = &v
+	o.SsoDebugEnabled = v
 }
 
 // GetSsoUrl returns the SsoUrl field value if set, zero value otherwise

@@ -11,19 +11,20 @@ type SearchIndexCreateRequest struct {
 	// Label that identifies this index. Within each namespace, names of all indexes in the namespace must be unique.
 	Name string `json:"name"`
 	// Type of the index. The default type is search.
-	Type       *string                                 `json:"type,omitempty"`
-	Definition *BaseSearchIndexCreateRequestDefinition `json:"definition,omitempty"`
+	Type       *string                                `json:"type,omitempty"`
+	Definition BaseSearchIndexCreateRequestDefinition `json:"definition"`
 }
 
 // NewSearchIndexCreateRequest instantiates a new SearchIndexCreateRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSearchIndexCreateRequest(collectionName string, database string, name string) *SearchIndexCreateRequest {
+func NewSearchIndexCreateRequest(collectionName string, database string, name string, definition BaseSearchIndexCreateRequestDefinition) *SearchIndexCreateRequest {
 	this := SearchIndexCreateRequest{}
 	this.CollectionName = collectionName
 	this.Database = database
 	this.Name = name
+	this.Definition = definition
 	return &this
 }
 
@@ -140,35 +141,26 @@ func (o *SearchIndexCreateRequest) SetType(v string) {
 	o.Type = &v
 }
 
-// GetDefinition returns the Definition field value if set, zero value otherwise
+// GetDefinition returns the Definition field value
 func (o *SearchIndexCreateRequest) GetDefinition() BaseSearchIndexCreateRequestDefinition {
-	if o == nil || IsNil(o.Definition) {
+	if o == nil {
 		var ret BaseSearchIndexCreateRequestDefinition
 		return ret
 	}
-	return *o.Definition
+
+	return o.Definition
 }
 
-// GetDefinitionOk returns a tuple with the Definition field value if set, nil otherwise
+// GetDefinitionOk returns a tuple with the Definition field value
 // and a boolean to check if the value has been set.
 func (o *SearchIndexCreateRequest) GetDefinitionOk() (*BaseSearchIndexCreateRequestDefinition, bool) {
-	if o == nil || IsNil(o.Definition) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.Definition, true
+	return &o.Definition, true
 }
 
-// HasDefinition returns a boolean if a field has been set.
-func (o *SearchIndexCreateRequest) HasDefinition() bool {
-	if o != nil && !IsNil(o.Definition) {
-		return true
-	}
-
-	return false
-}
-
-// SetDefinition gets a reference to the given BaseSearchIndexCreateRequestDefinition and assigns it to the Definition field.
+// SetDefinition sets field value
 func (o *SearchIndexCreateRequest) SetDefinition(v BaseSearchIndexCreateRequestDefinition) {
-	o.Definition = &v
+	o.Definition = v
 }

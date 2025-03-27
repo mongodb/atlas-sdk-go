@@ -141,12 +141,17 @@ function transformOneOfProperties(parentObject, api) {
     const commonRequired = allRequiredFields.reduce((common, current) =>
       common.filter((field) => current.includes(field)),
     );
+    // Merge parent's own required fields into common required from children
+    if (parentObject.required) {
+      commonRequired.push(parentObject.required);
+    }
+
     parentObject.required = commonRequired.filter((field) =>
-      childObjects.every((child) =>
-        child.properties && Object.keys(child.properties).includes(field),
-      ),
+      Object.keys(parentObject.properties).includes(field),
     );
-    parentObject.required = parentObject.required.length > 0 ? parentObject.required : undefined;
+    parentObject.required = parentObject.required.length > 0 ? [...new Set(parentObject.required)] : undefined;
+  } else {
+    parentObject.required = undefined;
   }
 
   // Remove invalid fields

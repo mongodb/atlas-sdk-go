@@ -731,6 +731,13 @@ components:
           example: STARTED
           readOnly: true
           type: string
+      required:
+        - alertConfigId
+        - created
+        - eventTypeName
+        - id
+        - status
+        - updated
     AlertsNotificationRootForGroup:
       description: One target that MongoDB Cloud sends notifications when an alert triggers.
       type: object
@@ -1044,6 +1051,8 @@ components:
             **NOTE**: When you view or edit the alert for a Webhook URL notification, the URL appears partially redacted.
           example: https://webhook.com/****
           type: string
+      required:
+        - typeName
     AlertsToggle:
       description: Enables or disables the specified alert configuration in the
         specified project.
@@ -8484,6 +8493,10 @@ components:
           example: FAILED
           readOnly: true
           type: string
+      required:
+        - created
+        - eventTypeName
+        - id
     EventViewForOrg:
       type: object
       properties:
@@ -8651,6 +8664,10 @@ components:
           pattern: ^([a-f0-9]{24})$
           readOnly: true
           type: string
+      required:
+        - created
+        - eventTypeName
+        - id
     ExportStatus:
       description: State of the Export Job.
       properties:
@@ -8921,6 +8938,8 @@ components:
           description: Identifier of the claim which contains the user ID in the token.
           type: string
       type: object
+      required:
+        - ssoDebugEnabled
     FederationOidcIdentityProvider:
       properties:
         associatedOrgs:
@@ -9933,6 +9952,9 @@ components:
           $ref: "#/components/schemas/FlexClusterMetricThreshold"
         threshold:
           $ref: "#/components/schemas/StreamProcessorMetricThreshold"
+      required:
+        - eventTypeName
+        - notifications
     GroupIPAddresses:
       description: List of IP addresses in a project.
       properties:
@@ -14357,6 +14379,7 @@ components:
       required:
         - collectionName
         - database
+        - definition
         - name
       type: object
     SearchIndexDefinitionVersion:
@@ -14525,6 +14548,8 @@ components:
               items:
                 $ref: "#/components/schemas/BasicDBObject"
               type: array
+          required:
+            - mappings
       required:
         - definition
       title: Search Index Update Request
@@ -17024,6 +17049,8 @@ components:
           items:
             $ref: "#/components/schemas/BasicDBObject"
           type: array
+      required:
+        - mappings
     BaseSearchIndexCreateRequestDefinition:
       properties:
         analyzer:
@@ -17107,6 +17134,8 @@ components:
           items:
             $ref: "#/components/schemas/BasicDBObject"
           type: array
+      required:
+        - mappings
     AWSCustomDNSEnabled:
       properties:
         enabled:
@@ -17783,6 +17812,8 @@ components:
           format: int32
           type: integer
       type: object
+      required:
+        - query
     DataExpirationRule:
       description: Rule for specifying when data should be deleted from the archive.
       properties:
@@ -19620,6 +19651,8 @@ components:
               description: Maximum number of characters in a single token. Tokens greater than
                 this length are split at this length into multiple tokens.
               type: integer
+          required:
+            - type
       required:
         - name
         - tokenizer

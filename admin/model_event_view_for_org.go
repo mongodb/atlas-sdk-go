@@ -13,15 +13,15 @@ type EventViewForOrg struct {
 	ApiKeyId *string `json:"apiKeyId,omitempty"`
 	// Date and time when this event occurred. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
-	Created *time.Time `json:"created,omitempty"`
+	Created time.Time `json:"created"`
 	// Unique identifier of event type.
-	EventTypeName *string `json:"eventTypeName,omitempty"`
+	EventTypeName string `json:"eventTypeName"`
 	// Unique 24-hexadecimal digit string that identifies the project in which the event occurred. The **eventId** identifies the specific event.
 	// Read only field.
 	GroupId *string `json:"groupId,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the event.
 	// Read only field.
-	Id *string `json:"id,omitempty"`
+	Id string `json:"id"`
 	// Flag that indicates whether a MongoDB employee triggered the specified event.
 	// Read only field.
 	IsGlobalAdmin *bool `json:"isGlobalAdmin,omitempty"`
@@ -82,8 +82,11 @@ type EventViewForOrg struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEventViewForOrg() *EventViewForOrg {
+func NewEventViewForOrg(created time.Time, eventTypeName string, id string) *EventViewForOrg {
 	this := EventViewForOrg{}
+	this.Created = created
+	this.EventTypeName = eventTypeName
+	this.Id = id
 	return &this
 }
 
@@ -128,70 +131,52 @@ func (o *EventViewForOrg) SetApiKeyId(v string) {
 	o.ApiKeyId = &v
 }
 
-// GetCreated returns the Created field value if set, zero value otherwise
+// GetCreated returns the Created field value
 func (o *EventViewForOrg) GetCreated() time.Time {
-	if o == nil || IsNil(o.Created) {
+	if o == nil {
 		var ret time.Time
 		return ret
 	}
-	return *o.Created
+
+	return o.Created
 }
 
-// GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
+// GetCreatedOk returns a tuple with the Created field value
 // and a boolean to check if the value has been set.
 func (o *EventViewForOrg) GetCreatedOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.Created) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.Created, true
+	return &o.Created, true
 }
 
-// HasCreated returns a boolean if a field has been set.
-func (o *EventViewForOrg) HasCreated() bool {
-	if o != nil && !IsNil(o.Created) {
-		return true
-	}
-
-	return false
-}
-
-// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
+// SetCreated sets field value
 func (o *EventViewForOrg) SetCreated(v time.Time) {
-	o.Created = &v
+	o.Created = v
 }
 
-// GetEventTypeName returns the EventTypeName field value if set, zero value otherwise
+// GetEventTypeName returns the EventTypeName field value
 func (o *EventViewForOrg) GetEventTypeName() string {
-	if o == nil || IsNil(o.EventTypeName) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.EventTypeName
+
+	return o.EventTypeName
 }
 
-// GetEventTypeNameOk returns a tuple with the EventTypeName field value if set, nil otherwise
+// GetEventTypeNameOk returns a tuple with the EventTypeName field value
 // and a boolean to check if the value has been set.
 func (o *EventViewForOrg) GetEventTypeNameOk() (*string, bool) {
-	if o == nil || IsNil(o.EventTypeName) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.EventTypeName, true
+	return &o.EventTypeName, true
 }
 
-// HasEventTypeName returns a boolean if a field has been set.
-func (o *EventViewForOrg) HasEventTypeName() bool {
-	if o != nil && !IsNil(o.EventTypeName) {
-		return true
-	}
-
-	return false
-}
-
-// SetEventTypeName gets a reference to the given string and assigns it to the EventTypeName field.
+// SetEventTypeName sets field value
 func (o *EventViewForOrg) SetEventTypeName(v string) {
-	o.EventTypeName = &v
+	o.EventTypeName = v
 }
 
 // GetGroupId returns the GroupId field value if set, zero value otherwise
@@ -227,37 +212,28 @@ func (o *EventViewForOrg) SetGroupId(v string) {
 	o.GroupId = &v
 }
 
-// GetId returns the Id field value if set, zero value otherwise
+// GetId returns the Id field value
 func (o *EventViewForOrg) GetId() string {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *EventViewForOrg) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *EventViewForOrg) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
+// SetId sets field value
 func (o *EventViewForOrg) SetId(v string) {
-	o.Id = &v
+	o.Id = v
 }
 
 // GetIsGlobalAdmin returns the IsGlobalAdmin field value if set, zero value otherwise

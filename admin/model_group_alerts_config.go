@@ -14,7 +14,7 @@ type GroupAlertsConfig struct {
 	// Flag that indicates whether someone enabled this alert configuration for the specified project.
 	Enabled *bool `json:"enabled,omitempty"`
 	// Event type that triggers an alert.
-	EventTypeName *string `json:"eventTypeName,omitempty"`
+	EventTypeName string `json:"eventTypeName"`
 	// Unique 24-hexadecimal digit string that identifies the project that owns this alert configuration.
 	// Read only field.
 	GroupId *string `json:"groupId,omitempty"`
@@ -27,7 +27,7 @@ type GroupAlertsConfig struct {
 	// List of rules that determine whether MongoDB Cloud checks an object for the alert configuration.
 	Matchers *[]StreamsMatcher `json:"matchers,omitempty"`
 	// List that contains the targets that MongoDB Cloud sends notifications.
-	Notifications *[]AlertsNotificationRootForGroup `json:"notifications,omitempty"`
+	Notifications []AlertsNotificationRootForGroup `json:"notifications"`
 	// Date and time when someone last updated this alert configuration. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	Updated         *time.Time                      `json:"updated,omitempty"`
@@ -39,10 +39,12 @@ type GroupAlertsConfig struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGroupAlertsConfig() *GroupAlertsConfig {
+func NewGroupAlertsConfig(eventTypeName string, notifications []AlertsNotificationRootForGroup) *GroupAlertsConfig {
 	this := GroupAlertsConfig{}
 	var enabled bool = false
 	this.Enabled = &enabled
+	this.EventTypeName = eventTypeName
+	this.Notifications = notifications
 	return &this
 }
 
@@ -122,37 +124,28 @@ func (o *GroupAlertsConfig) SetEnabled(v bool) {
 	o.Enabled = &v
 }
 
-// GetEventTypeName returns the EventTypeName field value if set, zero value otherwise
+// GetEventTypeName returns the EventTypeName field value
 func (o *GroupAlertsConfig) GetEventTypeName() string {
-	if o == nil || IsNil(o.EventTypeName) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.EventTypeName
+
+	return o.EventTypeName
 }
 
-// GetEventTypeNameOk returns a tuple with the EventTypeName field value if set, nil otherwise
+// GetEventTypeNameOk returns a tuple with the EventTypeName field value
 // and a boolean to check if the value has been set.
 func (o *GroupAlertsConfig) GetEventTypeNameOk() (*string, bool) {
-	if o == nil || IsNil(o.EventTypeName) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.EventTypeName, true
+	return &o.EventTypeName, true
 }
 
-// HasEventTypeName returns a boolean if a field has been set.
-func (o *GroupAlertsConfig) HasEventTypeName() bool {
-	if o != nil && !IsNil(o.EventTypeName) {
-		return true
-	}
-
-	return false
-}
-
-// SetEventTypeName gets a reference to the given string and assigns it to the EventTypeName field.
+// SetEventTypeName sets field value
 func (o *GroupAlertsConfig) SetEventTypeName(v string) {
-	o.EventTypeName = &v
+	o.EventTypeName = v
 }
 
 // GetGroupId returns the GroupId field value if set, zero value otherwise
@@ -287,37 +280,28 @@ func (o *GroupAlertsConfig) SetMatchers(v []StreamsMatcher) {
 	o.Matchers = &v
 }
 
-// GetNotifications returns the Notifications field value if set, zero value otherwise
+// GetNotifications returns the Notifications field value
 func (o *GroupAlertsConfig) GetNotifications() []AlertsNotificationRootForGroup {
-	if o == nil || IsNil(o.Notifications) {
+	if o == nil {
 		var ret []AlertsNotificationRootForGroup
 		return ret
 	}
-	return *o.Notifications
+
+	return o.Notifications
 }
 
-// GetNotificationsOk returns a tuple with the Notifications field value if set, nil otherwise
+// GetNotificationsOk returns a tuple with the Notifications field value
 // and a boolean to check if the value has been set.
 func (o *GroupAlertsConfig) GetNotificationsOk() (*[]AlertsNotificationRootForGroup, bool) {
-	if o == nil || IsNil(o.Notifications) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.Notifications, true
+	return &o.Notifications, true
 }
 
-// HasNotifications returns a boolean if a field has been set.
-func (o *GroupAlertsConfig) HasNotifications() bool {
-	if o != nil && !IsNil(o.Notifications) {
-		return true
-	}
-
-	return false
-}
-
-// SetNotifications gets a reference to the given []AlertsNotificationRootForGroup and assigns it to the Notifications field.
+// SetNotifications sets field value
 func (o *GroupAlertsConfig) SetNotifications(v []AlertsNotificationRootForGroup) {
-	o.Notifications = &v
+	o.Notifications = v
 }
 
 // GetUpdated returns the Updated field value if set, zero value otherwise

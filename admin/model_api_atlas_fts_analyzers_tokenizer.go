@@ -9,7 +9,7 @@ type ApiAtlasFTSAnalyzersTokenizer struct {
 	// Characters to include in the shortest token that Atlas Search creates.
 	MinGram *int `json:"minGram,omitempty"`
 	// Human-readable label that identifies this tokenizer type.
-	Type *string `json:"type,omitempty"`
+	Type string `json:"type"`
 	// Index of the character group within the matching expression to extract into tokens. Use `0` to extract all character groups.
 	Group *int `json:"group,omitempty"`
 	// Regular expression to match against.
@@ -22,8 +22,9 @@ type ApiAtlasFTSAnalyzersTokenizer struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApiAtlasFTSAnalyzersTokenizer() *ApiAtlasFTSAnalyzersTokenizer {
+func NewApiAtlasFTSAnalyzersTokenizer(type_ string) *ApiAtlasFTSAnalyzersTokenizer {
 	this := ApiAtlasFTSAnalyzersTokenizer{}
+	this.Type = type_
 	var maxTokenLength int = 255
 	this.MaxTokenLength = &maxTokenLength
 	return &this
@@ -105,37 +106,28 @@ func (o *ApiAtlasFTSAnalyzersTokenizer) SetMinGram(v int) {
 	o.MinGram = &v
 }
 
-// GetType returns the Type field value if set, zero value otherwise
+// GetType returns the Type field value
 func (o *ApiAtlasFTSAnalyzersTokenizer) GetType() string {
-	if o == nil || IsNil(o.Type) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Type
+
+	return o.Type
 }
 
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *ApiAtlasFTSAnalyzersTokenizer) GetTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.Type) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.Type, true
+	return &o.Type, true
 }
 
-// HasType returns a boolean if a field has been set.
-func (o *ApiAtlasFTSAnalyzersTokenizer) HasType() bool {
-	if o != nil && !IsNil(o.Type) {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given string and assigns it to the Type field.
+// SetType sets field value
 func (o *ApiAtlasFTSAnalyzersTokenizer) SetType(v string) {
-	o.Type = &v
+	o.Type = v
 }
 
 // GetGroup returns the Group field value if set, zero value otherwise

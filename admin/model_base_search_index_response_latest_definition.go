@@ -8,7 +8,7 @@ type BaseSearchIndexResponseLatestDefinition struct {
 	Analyzer *string `json:"analyzer,omitempty"`
 	// List of user-defined methods to convert database field text into searchable words.
 	Analyzers *[]AtlasSearchAnalyzer `json:"analyzers,omitempty"`
-	Mappings  *SearchMappings        `json:"mappings,omitempty"`
+	Mappings  SearchMappings         `json:"mappings"`
 	// Number of index partitions. Note: This feature is currently in preview.
 	NumPartitions *int `json:"numPartitions,omitempty"`
 	// Method applied to identify words when searching this index.
@@ -25,10 +25,11 @@ type BaseSearchIndexResponseLatestDefinition struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBaseSearchIndexResponseLatestDefinition() *BaseSearchIndexResponseLatestDefinition {
+func NewBaseSearchIndexResponseLatestDefinition(mappings SearchMappings) *BaseSearchIndexResponseLatestDefinition {
 	this := BaseSearchIndexResponseLatestDefinition{}
 	var analyzer string = "lucene.standard"
 	this.Analyzer = &analyzer
+	this.Mappings = mappings
 	var numPartitions int = 1
 	this.NumPartitions = &numPartitions
 	var searchAnalyzer string = "lucene.standard"
@@ -116,37 +117,28 @@ func (o *BaseSearchIndexResponseLatestDefinition) SetAnalyzers(v []AtlasSearchAn
 	o.Analyzers = &v
 }
 
-// GetMappings returns the Mappings field value if set, zero value otherwise
+// GetMappings returns the Mappings field value
 func (o *BaseSearchIndexResponseLatestDefinition) GetMappings() SearchMappings {
-	if o == nil || IsNil(o.Mappings) {
+	if o == nil {
 		var ret SearchMappings
 		return ret
 	}
-	return *o.Mappings
+
+	return o.Mappings
 }
 
-// GetMappingsOk returns a tuple with the Mappings field value if set, nil otherwise
+// GetMappingsOk returns a tuple with the Mappings field value
 // and a boolean to check if the value has been set.
 func (o *BaseSearchIndexResponseLatestDefinition) GetMappingsOk() (*SearchMappings, bool) {
-	if o == nil || IsNil(o.Mappings) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.Mappings, true
+	return &o.Mappings, true
 }
 
-// HasMappings returns a boolean if a field has been set.
-func (o *BaseSearchIndexResponseLatestDefinition) HasMappings() bool {
-	if o != nil && !IsNil(o.Mappings) {
-		return true
-	}
-
-	return false
-}
-
-// SetMappings gets a reference to the given SearchMappings and assigns it to the Mappings field.
+// SetMappings sets field value
 func (o *BaseSearchIndexResponseLatestDefinition) SetMappings(v SearchMappings) {
-	o.Mappings = &v
+	o.Mappings = v
 }
 
 // GetNumPartitions returns the NumPartitions field value if set, zero value otherwise
