@@ -4,7 +4,7 @@ package admin
 
 // ClusterProviderSettings Group of cloud provider settings that configure the provisioned MongoDB hosts.
 type ClusterProviderSettings struct {
-	ProviderName string                  `json:"providerName"`
+	ProviderName *string                 `json:"providerName,omitempty"`
 	AutoScaling  *ClusterFreeAutoScaling `json:"autoScaling,omitempty"`
 	// Maximum Disk Input/Output Operations per Second (IOPS) that the database host can perform.
 	DiskIOPS *int `json:"diskIOPS,omitempty"`
@@ -30,9 +30,8 @@ type ClusterProviderSettings struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewClusterProviderSettings(providerName string) *ClusterProviderSettings {
+func NewClusterProviderSettings() *ClusterProviderSettings {
 	this := ClusterProviderSettings{}
-	this.ProviderName = providerName
 	var encryptEBSVolume bool = true
 	this.EncryptEBSVolume = &encryptEBSVolume
 	return &this
@@ -48,28 +47,37 @@ func NewClusterProviderSettingsWithDefaults() *ClusterProviderSettings {
 	return &this
 }
 
-// GetProviderName returns the ProviderName field value
+// GetProviderName returns the ProviderName field value if set, zero value otherwise
 func (o *ClusterProviderSettings) GetProviderName() string {
-	if o == nil {
+	if o == nil || IsNil(o.ProviderName) {
 		var ret string
 		return ret
 	}
-
-	return o.ProviderName
+	return *o.ProviderName
 }
 
-// GetProviderNameOk returns a tuple with the ProviderName field value
+// GetProviderNameOk returns a tuple with the ProviderName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterProviderSettings) GetProviderNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ProviderName) {
 		return nil, false
 	}
-	return &o.ProviderName, true
+
+	return o.ProviderName, true
 }
 
-// SetProviderName sets field value
+// HasProviderName returns a boolean if a field has been set.
+func (o *ClusterProviderSettings) HasProviderName() bool {
+	if o != nil && !IsNil(o.ProviderName) {
+		return true
+	}
+
+	return false
+}
+
+// SetProviderName gets a reference to the given string and assigns it to the ProviderName field.
 func (o *ClusterProviderSettings) SetProviderName(v string) {
-	o.ProviderName = v
+	o.ProviderName = &v
 }
 
 // GetAutoScaling returns the AutoScaling field value if set, zero value otherwise

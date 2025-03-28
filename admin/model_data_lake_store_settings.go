@@ -6,7 +6,7 @@ package admin
 type DataLakeStoreSettings struct {
 	// Human-readable label that identifies the data store. The **databases.[n].collections.[n].dataSources.[n].storeName** field references this values as part of the mapping configuration. To use MongoDB Cloud as a data store, the data lake requires a serverless instance or an `M10` or higher cluster.
 	Name     *string `json:"name,omitempty"`
-	Provider string  `json:"provider"`
+	Provider *string `json:"provider,omitempty"`
 	// Collection of AWS S3 [storage classes](https://aws.amazon.com/s3/storage-classes/). Atlas Data Lake includes the files in these storage classes in the query results.
 	AdditionalStorageClasses *[]string `json:"additionalStorageClasses,omitempty"`
 	// Human-readable label that identifies the Google Cloud Storage bucket.
@@ -46,9 +46,8 @@ type DataLakeStoreSettings struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDataLakeStoreSettings(provider string) *DataLakeStoreSettings {
+func NewDataLakeStoreSettings() *DataLakeStoreSettings {
 	this := DataLakeStoreSettings{}
-	this.Provider = provider
 	var includeTags bool = false
 	this.IncludeTags = &includeTags
 	var public bool = false
@@ -105,28 +104,37 @@ func (o *DataLakeStoreSettings) SetName(v string) {
 	o.Name = &v
 }
 
-// GetProvider returns the Provider field value
+// GetProvider returns the Provider field value if set, zero value otherwise
 func (o *DataLakeStoreSettings) GetProvider() string {
-	if o == nil {
+	if o == nil || IsNil(o.Provider) {
 		var ret string
 		return ret
 	}
-
-	return o.Provider
+	return *o.Provider
 }
 
-// GetProviderOk returns a tuple with the Provider field value
+// GetProviderOk returns a tuple with the Provider field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DataLakeStoreSettings) GetProviderOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Provider) {
 		return nil, false
 	}
-	return &o.Provider, true
+
+	return o.Provider, true
 }
 
-// SetProvider sets field value
+// HasProvider returns a boolean if a field has been set.
+func (o *DataLakeStoreSettings) HasProvider() bool {
+	if o != nil && !IsNil(o.Provider) {
+		return true
+	}
+
+	return false
+}
+
+// SetProvider gets a reference to the given string and assigns it to the Provider field.
 func (o *DataLakeStoreSettings) SetProvider(v string) {
-	o.Provider = v
+	o.Provider = &v
 }
 
 // GetAdditionalStorageClasses returns the AdditionalStorageClasses field value if set, zero value otherwise

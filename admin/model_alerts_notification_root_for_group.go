@@ -17,7 +17,7 @@ type AlertsNotificationRootForGroup struct {
 	// The notifierId is a system-generated unique identifier assigned to each notification method. This is needed when updating third-party notifications without requiring explicit authentication credentials.
 	NotifierId *string `json:"notifierId,omitempty"`
 	// Human-readable label that displays the alert notification type.
-	TypeName *string `json:"typeName,omitempty"`
+	TypeName string `json:"typeName"`
 	// Email address to which MongoDB Cloud sends alert notifications. The resource requires this parameter when `\"notifications.[n].typeName\" : \"EMAIL\"`. You don't need to set this value to send emails to individual or groups of MongoDB Cloud users including:  - specific MongoDB Cloud users (`\"notifications.[n].typeName\" : \"USER\"`) - MongoDB Cloud users with specific project roles (`\"notifications.[n].typeName\" : \"GROUP\"`) - MongoDB Cloud users with specific organization roles (`\"notifications.[n].typeName\" : \"ORG\"`) - MongoDB Cloud teams (`\"notifications.[n].typeName\" : \"TEAM\"`)  To send emails to one MongoDB Cloud user or grouping of users, set the `notifications.[n].emailEnabled` parameter.
 	EmailAddress *string `json:"emailAddress,omitempty"`
 	// Flag that indicates whether MongoDB Cloud should send email notifications. The resource requires this parameter when one of the following values have been set:  - `\"notifications.[n].typeName\" : \"ORG\"` - `\"notifications.[n].typeName\" : \"GROUP\"` - `\"notifications.[n].typeName\" : \"USER\"`
@@ -66,10 +66,11 @@ type AlertsNotificationRootForGroup struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAlertsNotificationRootForGroup() *AlertsNotificationRootForGroup {
+func NewAlertsNotificationRootForGroup(typeName string) *AlertsNotificationRootForGroup {
 	this := AlertsNotificationRootForGroup{}
 	var datadogRegion string = "US"
 	this.DatadogRegion = &datadogRegion
+	this.TypeName = typeName
 	var opsGenieRegion string = "US"
 	this.OpsGenieRegion = &opsGenieRegion
 	var region string = "US"
@@ -289,37 +290,28 @@ func (o *AlertsNotificationRootForGroup) SetNotifierId(v string) {
 	o.NotifierId = &v
 }
 
-// GetTypeName returns the TypeName field value if set, zero value otherwise
+// GetTypeName returns the TypeName field value
 func (o *AlertsNotificationRootForGroup) GetTypeName() string {
-	if o == nil || IsNil(o.TypeName) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.TypeName
+
+	return o.TypeName
 }
 
-// GetTypeNameOk returns a tuple with the TypeName field value if set, nil otherwise
+// GetTypeNameOk returns a tuple with the TypeName field value
 // and a boolean to check if the value has been set.
 func (o *AlertsNotificationRootForGroup) GetTypeNameOk() (*string, bool) {
-	if o == nil || IsNil(o.TypeName) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.TypeName, true
+	return &o.TypeName, true
 }
 
-// HasTypeName returns a boolean if a field has been set.
-func (o *AlertsNotificationRootForGroup) HasTypeName() bool {
-	if o != nil && !IsNil(o.TypeName) {
-		return true
-	}
-
-	return false
-}
-
-// SetTypeName gets a reference to the given string and assigns it to the TypeName field.
+// SetTypeName sets field value
 func (o *AlertsNotificationRootForGroup) SetTypeName(v string) {
-	o.TypeName = &v
+	o.TypeName = v
 }
 
 // GetEmailAddress returns the EmailAddress field value if set, zero value otherwise
