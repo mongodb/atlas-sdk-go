@@ -12,6 +12,9 @@ type ApiAtlasResourcePolicy struct {
 	// Date and time in UTC when the atlas resource policy was created.
 	// Read only field.
 	CreatedDate *time.Time `json:"createdDate,omitempty"`
+	// Description of the atlas resource policy.
+	// Read only field.
+	Description *string `json:"description,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the atlas resource policy.
 	// Read only field.
 	Id                *string               `json:"id,omitempty"`
@@ -114,6 +117,39 @@ func (o *ApiAtlasResourcePolicy) HasCreatedDate() bool {
 // SetCreatedDate gets a reference to the given time.Time and assigns it to the CreatedDate field.
 func (o *ApiAtlasResourcePolicy) SetCreatedDate(v time.Time) {
 	o.CreatedDate = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise
+func (o *ApiAtlasResourcePolicy) GetDescription() string {
+	if o == nil || IsNil(o.Description) {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApiAtlasResourcePolicy) GetDescriptionOk() (*string, bool) {
+	if o == nil || IsNil(o.Description) {
+		return nil, false
+	}
+
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *ApiAtlasResourcePolicy) HasDescription() bool {
+	if o != nil && !IsNil(o.Description) {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *ApiAtlasResourcePolicy) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise

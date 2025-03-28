@@ -4,6 +4,8 @@ package admin
 
 // ApiAtlasResourcePolicyEdit struct for ApiAtlasResourcePolicyEdit
 type ApiAtlasResourcePolicyEdit struct {
+	// Description of the atlas resource policy.
+	Description *string `json:"description,omitempty"`
 	// Human-readable label that describes the atlas resource policy.
 	Name *string `json:"name,omitempty"`
 	// List of policies that make up the atlas resource policy.
@@ -25,6 +27,39 @@ func NewApiAtlasResourcePolicyEdit() *ApiAtlasResourcePolicyEdit {
 func NewApiAtlasResourcePolicyEditWithDefaults() *ApiAtlasResourcePolicyEdit {
 	this := ApiAtlasResourcePolicyEdit{}
 	return &this
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise
+func (o *ApiAtlasResourcePolicyEdit) GetDescription() string {
+	if o == nil || IsNil(o.Description) {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApiAtlasResourcePolicyEdit) GetDescriptionOk() (*string, bool) {
+	if o == nil || IsNil(o.Description) {
+		return nil, false
+	}
+
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *ApiAtlasResourcePolicyEdit) HasDescription() bool {
+	if o != nil && !IsNil(o.Description) {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *ApiAtlasResourcePolicyEdit) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise

@@ -8,7 +8,7 @@ import (
 
 // AcknowledgeAlert Acknowledging an alert prevents successive notifications. Specify the acknowledgeUntil date and optional comment or unacknowledgeAlert boolean.
 type AcknowledgeAlert struct {
-	// Date and time until which this alert has been acknowledged. This parameter expresses its value in the <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\" rel=\"noopener noreferrer\">ISO 8601</a> timestamp format in UTC. The resource returns this parameter if a MongoDB User previously acknowledged this alert.
+	// Date and time until which this alert has been acknowledged. This parameter expresses its value in the ISO 8601 timestamp format in UTC. The resource returns this parameter if a MongoDB User previously acknowledged this alert.
 	AcknowledgedUntil *time.Time `json:"acknowledgedUntil,omitempty"`
 	// Comment that a MongoDB Cloud user submitted when acknowledging the alert.
 	AcknowledgementComment *string `json:"acknowledgementComment,omitempty"`
