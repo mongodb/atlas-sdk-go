@@ -4,7 +4,7 @@ package admin
 
 // ApiSearchDeploymentRequest struct for ApiSearchDeploymentRequest
 type ApiSearchDeploymentRequest struct {
-	// List of settings that configure the Search Nodes for your cluster.
+	// List of settings that configure the Search Nodes for your cluster.  **NOTE**: We accept a single configuration for all nodes currently.
 	Specs []ApiSearchDeploymentSpec `json:"specs"`
 }
 

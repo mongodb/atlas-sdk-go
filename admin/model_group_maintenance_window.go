@@ -12,9 +12,13 @@ type GroupMaintenanceWindow struct {
 	HourOfDay *int `json:"hourOfDay,omitempty"`
 	// Number of times the current maintenance event for this project has been deferred.
 	// Read only field.
-	NumberOfDeferrals *int `json:"numberOfDeferrals,omitempty"`
+	NumberOfDeferrals *int            `json:"numberOfDeferrals,omitempty"`
+	ProtectedHours    *ProtectedHours `json:"protectedHours,omitempty"`
 	// Flag that indicates whether MongoDB Cloud starts the maintenance window immediately upon receiving this request. To start the maintenance window immediately for your project, MongoDB Cloud must have maintenance scheduled and you must set a maintenance window. This flag resets to `false` after MongoDB Cloud completes maintenance.
 	StartASAP *bool `json:"startASAP,omitempty"`
+	// Identifier for the current time zone of the maintenance window. This can only be updated via the Project Settings UI.
+	// Read only field.
+	TimeZoneId *string `json:"timeZoneId,omitempty"`
 }
 
 // NewGroupMaintenanceWindow instantiates a new GroupMaintenanceWindow object
@@ -158,6 +162,39 @@ func (o *GroupMaintenanceWindow) SetNumberOfDeferrals(v int) {
 	o.NumberOfDeferrals = &v
 }
 
+// GetProtectedHours returns the ProtectedHours field value if set, zero value otherwise
+func (o *GroupMaintenanceWindow) GetProtectedHours() ProtectedHours {
+	if o == nil || IsNil(o.ProtectedHours) {
+		var ret ProtectedHours
+		return ret
+	}
+	return *o.ProtectedHours
+}
+
+// GetProtectedHoursOk returns a tuple with the ProtectedHours field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GroupMaintenanceWindow) GetProtectedHoursOk() (*ProtectedHours, bool) {
+	if o == nil || IsNil(o.ProtectedHours) {
+		return nil, false
+	}
+
+	return o.ProtectedHours, true
+}
+
+// HasProtectedHours returns a boolean if a field has been set.
+func (o *GroupMaintenanceWindow) HasProtectedHours() bool {
+	if o != nil && !IsNil(o.ProtectedHours) {
+		return true
+	}
+
+	return false
+}
+
+// SetProtectedHours gets a reference to the given ProtectedHours and assigns it to the ProtectedHours field.
+func (o *GroupMaintenanceWindow) SetProtectedHours(v ProtectedHours) {
+	o.ProtectedHours = &v
+}
+
 // GetStartASAP returns the StartASAP field value if set, zero value otherwise
 func (o *GroupMaintenanceWindow) GetStartASAP() bool {
 	if o == nil || IsNil(o.StartASAP) {
@@ -189,4 +226,37 @@ func (o *GroupMaintenanceWindow) HasStartASAP() bool {
 // SetStartASAP gets a reference to the given bool and assigns it to the StartASAP field.
 func (o *GroupMaintenanceWindow) SetStartASAP(v bool) {
 	o.StartASAP = &v
+}
+
+// GetTimeZoneId returns the TimeZoneId field value if set, zero value otherwise
+func (o *GroupMaintenanceWindow) GetTimeZoneId() string {
+	if o == nil || IsNil(o.TimeZoneId) {
+		var ret string
+		return ret
+	}
+	return *o.TimeZoneId
+}
+
+// GetTimeZoneIdOk returns a tuple with the TimeZoneId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GroupMaintenanceWindow) GetTimeZoneIdOk() (*string, bool) {
+	if o == nil || IsNil(o.TimeZoneId) {
+		return nil, false
+	}
+
+	return o.TimeZoneId, true
+}
+
+// HasTimeZoneId returns a boolean if a field has been set.
+func (o *GroupMaintenanceWindow) HasTimeZoneId() bool {
+	if o != nil && !IsNil(o.TimeZoneId) {
+		return true
+	}
+
+	return false
+}
+
+// SetTimeZoneId gets a reference to the given string and assigns it to the TimeZoneId field.
+func (o *GroupMaintenanceWindow) SetTimeZoneId(v string) {
+	o.TimeZoneId = &v
 }
