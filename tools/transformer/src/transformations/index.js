@@ -32,5 +32,5 @@ module.exports = {
   applyRemoveNullableTransformations,
   removeRefsFromParameters,
   reorderResponseBodies,
-  applyFieldTransformations
+  applyFieldTransformations,
 };

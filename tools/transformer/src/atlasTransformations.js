@@ -100,9 +100,9 @@ function searchAPIIssuesTransformation(openapi) {
 
     if (responseParent.discriminator && responseParent.discriminator.mapping) {
       const transformedModel = (openapi.components.schemas[model.newModelName] =
-      {
-        oneOf: [],
-      });
+        {
+          oneOf: [],
+        });
       responseParent.properties[model.property] = {
         $ref: "#/components/schemas/" + model.newModelName,
       };

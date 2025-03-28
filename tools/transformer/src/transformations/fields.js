@@ -6,22 +6,24 @@ const fieldTransformations = require("../field.transformations.json");
  * @returns OpenAPI JSON File
  */
 function applyFieldTransformations(api) {
-	const { optionalFields } = fieldTransformations;
+  const { optionalFields } = fieldTransformations;
 
-	// Make specified fields optional in their schemas
-	for (const [schemaName, fields] of Object.entries(optionalFields)) {
-		const schema = api.components.schemas[schemaName];
-		if (schema && schema.required) {
-			schema.required = schema.required.filter(field => !fields.includes(field));
-			if (schema.required.length === 0) {
-				delete schema.required;
-			}
-		}
-	}
+  // Make specified fields optional in their schemas
+  for (const [schemaName, fields] of Object.entries(optionalFields)) {
+    const schema = api.components.schemas[schemaName];
+    if (schema && schema.required) {
+      schema.required = schema.required.filter(
+        (field) => !fields.includes(field),
+      );
+      if (schema.required.length === 0) {
+        delete schema.required;
+      }
+    }
+  }
 
-	return api;
+  return api;
 }
 
 module.exports = {
-	applyFieldTransformations,
-}; 
+  applyFieldTransformations,
+};
