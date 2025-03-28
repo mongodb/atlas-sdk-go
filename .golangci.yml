@@ -1,83 +1,85 @@
-linters-settings:
-  gocritic:
-    enabled-tags:
-      - diagnostic
-      - experimental
-      - opinionated
-      - performance
-      - style
-    disabled-checks:
-      - octalLiteral
-      # We cannot control openapi format
-      - hugeParam
-      # Types are dynamic/OpenAPI driven.
-      - paramTypeCombine
-      - wrapperFunc
-      - ptrToRefParam
-      - emptyFallthrough
-      - nestingReduce
-      - sloppyReassign
-      - typeAssertChain
-      - builtinShadow
-  gocyclo:
-    min-complexity: 15
-  revive:
-    # see https://github.com/mgechev/revive#available-rules for details.
-    ignore-generated-header: true
-    severity: warning
-    rules:
-      - name: blank-imports
-      - name: context-as-argument
-      - name: context-keys-type
-      - name: dot-imports
-      - name: error-return
-      - name: error-strings
-      - name: error-naming
-      - name: errorf
-      - name: exported
-      # - name: indent-error-flow
-      - name: if-return
-      - name: increment-decrement
-      # We want to maintain OpenAPI consistency and ignore golang standards
-      # - name: var-naming
-      # - name: var-declaration
-      # - name: receiver-naming
-      - name: package-comments
-      - name: range
-      - name: time-naming
-      - name: unexported-return
-      - name: errorf
-      - name: empty-block
-      - name: superfluous-else
-      - name: struct-tag
-      # OpenAPI paths can have 0 parameters
-      # - name: unused-parameter
-      # We still want empty methods for consistency - do not control if method will be empty.
-      # - name: unused-receiver
-      - name: unreachable-code
+version: "2"
 linters:
-  # please, do not use `enable-all`: it's deprecated and will be removed soon.
-  # inverted configuration with `enable-all` and `disable` is not scalable during updates of golangci-lint
-  disable-all: true
+  default: none
   enable:
-    - bodyclose # checks whether HTTP response body is closed successfully [fast: false, auto-fix: false]
-    - dogsled # Checks assignments with too many blank identifiers (e.g. x, _, _, _, := f()) [fast: true, auto-fix: false]
-    - errcheck # Errcheck is a program for checking for unchecked errors in go programs. These unchecked errors can be critical bugs in some cases [fast: false, auto-fix: false]
-    - errorlint # errorlint is a linter for that can be used to find code that will cause problems with the error wrapping scheme introduced in Go 1.13. [fast: false, auto-fix: false]
-    - gochecknoinits # Checks that no init functions are present in Go code [fast: true, auto-fix: false]
-    - gocritic # Provides many diagnostics that check for bugs, performance and style issues. [fast: false, auto-fix: false]
-    - goprintffuncname # Checks that printf-like functions are named with `f` at the end [fast: true, auto-fix: false]
-    - gosec # Inspects source code for security problems [fast: false, auto-fix: false]
-    - gosimple # Linter for Go source code that specializes in simplifying a code [fast: false, auto-fix: false]
-    - govet # Vet examines Go source code and reports suspicious constructs, such as Printf calls whose arguments do not align with the format string [fast: false, auto-fix: false]
-    - misspell # Finds commonly misspelled English words in comments [fast: true, auto-fix: true]
-    - nakedret # Finds naked returns in functions greater than a specified function length [fast: true, auto-fix: false]
-    - nolintlint # Reports ill-formed or insufficient nolint directives [fast: true, auto-fix: false]
-    - revive # Fast, configurable, extensible, flexible, and beautiful linter for Go. Drop-in replacement of golint. [fast: false, auto-fix: false]
-    - rowserrcheck # checks whether Err of rows is checked successfully [fast: false, auto-fix: false]
-    - staticcheck  # Staticcheck is a go vet on steroids, applying a ton of static analysis checks [fast: false, auto-fix: false]
-    - thelper # thelper detects golang test helpers without t.Helper() call and checks the consistency of test helpers [fast: false, auto-fix: false]
-    - typecheck # Like the front-end of a Go compiler, parses and type-checks Go code [fast: false, auto-fix: false]
-    - unconvert # Remove unnecessary type conversions [fast: false, auto-fix: false]
-    - unparam # Reports unused function parameters [fast: false, auto-fix: false]
-    - unused # Checks Go code for unused constants, variables, functions and types [fast: false, auto-fix: false]
+    - bodyclose
+    - dogsled
+    - errcheck
+    - errorlint
+    - gochecknoinits
+    - gocritic
+    - goprintffuncname
+    - gosec
+    - govet
+    - misspell
+    - nakedret
+    - nolintlint
+    - revive
+    - rowserrcheck
+    - staticcheck
+    - thelper
+    - unconvert
+    - unparam
+    - unused
+  settings:
+    gocritic:
+      disabled-checks:
+        - octalLiteral
+        - hugeParam
+        - paramTypeCombine
+        - wrapperFunc
+        - ptrToRefParam
+        - emptyFallthrough
+        - nestingReduce
+        - sloppyReassign
+        - typeAssertChain
+        - builtinShadow
+      enabled-tags:
+        - diagnostic
+        - experimental
+        - opinionated
+        - performance
+        - style
+    gocyclo:
+      min-complexity: 15
+    revive:
+      severity: warning
+      rules:
+        - name: blank-imports
+        - name: context-as-argument
+        - name: context-keys-type
+        - name: dot-imports
+        - name: error-return
+        - name: error-strings
+        - name: error-naming
+        - name: errorf
+        - name: exported
+        - name: if-return
+        - name: increment-decrement
+        - name: package-comments
+        - name: range
+        - name: time-naming
+        - name: unexported-return
+        - name: errorf
+        - name: empty-block
+        - name: superfluous-else
+        - name: struct-tag
+        - name: unreachable-code
+  exclusions:
+    generated: lax
+    presets:
+      - comments
+      - common-false-positives
+      - legacy
+      - std-error-handling
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
+formatters:
+  exclusions:
+    generated: lax
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
