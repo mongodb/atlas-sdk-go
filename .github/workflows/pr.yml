@@ -17,10 +17,9 @@ jobs:
           go-version-file: go.mod
           cache: false # see https://github.com/golangci/golangci-lint-action/issues/807
       - name: lint
-        uses: golangci/golangci-lint-action@v6.5.1
+        uses: golangci/golangci-lint-action@1481404843c368bc19ca9406f87d6e0fc97bdcfd
         with:
-          version: v1.64.7
-          args: --timeout=10m
+          version: v2.0.2 # Also update GOLANGCI_VERSION variable in Makefile when updating this version
       - name: tests
         run: make test
       - name: example-tests

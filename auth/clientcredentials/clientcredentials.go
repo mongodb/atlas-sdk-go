@@ -4,11 +4,12 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"golang.org/x/oauth2"
 	"io"
 	"net/http"
 	"net/url"
 	"strings"
+
+	"golang.org/x/oauth2"
 
 	"go.mongodb.org/atlas-sdk/v20250312001/auth"
 	"go.mongodb.org/atlas-sdk/v20250312001/internal/core"
