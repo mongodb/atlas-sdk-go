@@ -4,9 +4,11 @@ package admin
 
 // EncryptionAtRest struct for EncryptionAtRest
 type EncryptionAtRest struct {
-	AwsKms         *AWSKMSConfiguration `json:"awsKms,omitempty"`
-	AzureKeyVault  *AzureKeyVault       `json:"azureKeyVault,omitempty"`
-	GoogleCloudKms *GoogleCloudKMS      `json:"googleCloudKms,omitempty"`
+	AwsKms        *AWSKMSConfiguration `json:"awsKms,omitempty"`
+	AzureKeyVault *AzureKeyVault       `json:"azureKeyVault,omitempty"`
+	// Flag that indicates whether Encryption at Rest for Dedicated Search Nodes is enabled in the specified project.
+	EnabledForSearchNodes *bool           `json:"enabledForSearchNodes,omitempty"`
+	GoogleCloudKms        *GoogleCloudKMS `json:"googleCloudKms,omitempty"`
 }
 
 // NewEncryptionAtRest instantiates a new EncryptionAtRest object
@@ -90,6 +92,39 @@ func (o *EncryptionAtRest) HasAzureKeyVault() bool {
 // SetAzureKeyVault gets a reference to the given AzureKeyVault and assigns it to the AzureKeyVault field.
 func (o *EncryptionAtRest) SetAzureKeyVault(v AzureKeyVault) {
 	o.AzureKeyVault = &v
+}
+
+// GetEnabledForSearchNodes returns the EnabledForSearchNodes field value if set, zero value otherwise
+func (o *EncryptionAtRest) GetEnabledForSearchNodes() bool {
+	if o == nil || IsNil(o.EnabledForSearchNodes) {
+		var ret bool
+		return ret
+	}
+	return *o.EnabledForSearchNodes
+}
+
+// GetEnabledForSearchNodesOk returns a tuple with the EnabledForSearchNodes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EncryptionAtRest) GetEnabledForSearchNodesOk() (*bool, bool) {
+	if o == nil || IsNil(o.EnabledForSearchNodes) {
+		return nil, false
+	}
+
+	return o.EnabledForSearchNodes, true
+}
+
+// HasEnabledForSearchNodes returns a boolean if a field has been set.
+func (o *EncryptionAtRest) HasEnabledForSearchNodes() bool {
+	if o != nil && !IsNil(o.EnabledForSearchNodes) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnabledForSearchNodes gets a reference to the given bool and assigns it to the EnabledForSearchNodes field.
+func (o *EncryptionAtRest) SetEnabledForSearchNodes(v bool) {
+	o.EnabledForSearchNodes = &v
 }
 
 // GetGoogleCloudKms returns the GoogleCloudKms field value if set, zero value otherwise

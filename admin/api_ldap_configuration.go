@@ -15,7 +15,7 @@ type LDAPConfigurationApi interface {
 	/*
 		DeleteLdapConfiguration Remove the Current LDAP User to DN Mapping
 
-		Removes the current LDAP Distinguished Name mapping captured in the ``userToDNMapping`` document from the LDAP configuration for the specified project. To use this resource, the requesting API Key must have the Project Owner role.
+		Removes the current LDAP Distinguished Name mapping captured in the ``userToDNMapping`` document from the LDAP configuration for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -38,7 +38,7 @@ type LDAPConfigurationApi interface {
 	/*
 		GetLdapConfiguration Return the Current LDAP or X.509 Configuration
 
-		Returns the current LDAP configuration for the specified project. To use this resource, the requesting API Key must have the Project Owner role.
+		Returns the current LDAP configuration for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -61,11 +61,11 @@ type LDAPConfigurationApi interface {
 	/*
 		GetLdapConfigurationStatus Return the Status of One Verify LDAP Configuration Request
 
-		Returns the status of one request to verify one LDAP configuration for the specified project. To use this resource, the requesting API Key must have the Project Owner role.
+		Returns the status of one request to verify one LDAP configuration for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param requestId Unique string that identifies the request to verify an <abbr title=\"Lightweight Directory Access Protocol\">LDAP</abbr> configuration.
+		@param requestId Unique string that identifies the request to verify an Lightweight Directory Access Protocol (LDAP) configuration.
 		@return GetLdapConfigurationStatusApiRequest
 	*/
 	GetLdapConfigurationStatus(ctx context.Context, groupId string, requestId string) GetLdapConfigurationStatusApiRequest
@@ -85,7 +85,7 @@ type LDAPConfigurationApi interface {
 	/*
 			SaveLdapConfiguration Edit the LDAP or X.509 Configuration
 
-			Edits the LDAP configuration for the specified project. To use this resource, the requesting API Key must have the Project Owner role.
+			Edits the LDAP configuration for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 		Updating this configuration triggers a rolling restart of the database.
 
@@ -111,7 +111,7 @@ type LDAPConfigurationApi interface {
 	/*
 		VerifyLdapConfiguration Verify the LDAP Configuration in One Project
 
-		Verifies the LDAP configuration for the specified project. To use this resource, the requesting API Key must have the Project Owner role.
+		Verifies the LDAP configuration for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -161,7 +161,7 @@ func (r DeleteLdapConfigurationApiRequest) Execute() (*UserSecurity, *http.Respo
 /*
 DeleteLdapConfiguration Remove the Current LDAP User to DN Mapping
 
-Removes the current LDAP Distinguished Name mapping captured in the “userToDNMapping“ document from the LDAP configuration for the specified project. To use this resource, the requesting API Key must have the Project Owner role.
+Removes the current LDAP Distinguished Name mapping captured in the “userToDNMapping“ document from the LDAP configuration for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -272,7 +272,7 @@ func (r GetLdapConfigurationApiRequest) Execute() (*UserSecurity, *http.Response
 /*
 GetLdapConfiguration Return the Current LDAP or X.509 Configuration
 
-Returns the current LDAP configuration for the specified project. To use this resource, the requesting API Key must have the Project Owner role.
+Returns the current LDAP configuration for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -386,11 +386,11 @@ func (r GetLdapConfigurationStatusApiRequest) Execute() (*LDAPVerifyConnectivity
 /*
 GetLdapConfigurationStatus Return the Status of One Verify LDAP Configuration Request
 
-Returns the status of one request to verify one LDAP configuration for the specified project. To use this resource, the requesting API Key must have the Project Owner role.
+Returns the status of one request to verify one LDAP configuration for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param requestId Unique string that identifies the request to verify an <abbr title=\"Lightweight Directory Access Protocol\">LDAP</abbr> configuration.
+	@param requestId Unique string that identifies the request to verify an Lightweight Directory Access Protocol (LDAP) configuration.
 	@return GetLdapConfigurationStatusApiRequest
 */
 func (a *LDAPConfigurationApiService) GetLdapConfigurationStatus(ctx context.Context, groupId string, requestId string) GetLdapConfigurationStatusApiRequest {
@@ -503,7 +503,7 @@ func (r SaveLdapConfigurationApiRequest) Execute() (*UserSecurity, *http.Respons
 /*
 SaveLdapConfiguration Edit the LDAP or X.509 Configuration
 
-Edits the LDAP configuration for the specified project. To use this resource, the requesting API Key must have the Project Owner role.
+Edits the LDAP configuration for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 Updating this configuration triggers a rolling restart of the database.
 
@@ -625,7 +625,7 @@ func (r VerifyLdapConfigurationApiRequest) Execute() (*LDAPVerifyConnectivityJob
 /*
 VerifyLdapConfiguration Verify the LDAP Configuration in One Project
 
-Verifies the LDAP configuration for the specified project. To use this resource, the requesting API Key must have the Project Owner role.
+Verifies the LDAP configuration for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.

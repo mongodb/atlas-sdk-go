@@ -2,7 +2,7 @@
 
 package admin
 
-// FlexBackupSettings20241113 Flex backup configuration
+// FlexBackupSettings20241113 Flex backup configuration.
 type FlexBackupSettings20241113 struct {
 	// Flag that indicates whether backups are performed for this flex cluster. Backup uses flex cluster backups.
 	// Read only field.

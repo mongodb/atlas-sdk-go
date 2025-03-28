@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312001/admin"
+	admin "github.com/mongodb/atlas-sdk-go/admin"
 
 	http "net/http"
 
@@ -75,42 +75,33 @@ func (_c *CloudBackupsApi_CancelBackupRestoreJob_Call) RunAndReturn(run func(con
 }
 
 // CancelBackupRestoreJobExecute provides a mock function with given fields: r
-func (_m *CloudBackupsApi) CancelBackupRestoreJobExecute(r admin.CancelBackupRestoreJobApiRequest) (any, *http.Response, error) {
+func (_m *CloudBackupsApi) CancelBackupRestoreJobExecute(r admin.CancelBackupRestoreJobApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for CancelBackupRestoreJobExecute")
 	}
 
-	var r0 any
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.CancelBackupRestoreJobApiRequest) (any, *http.Response, error)); ok {
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.CancelBackupRestoreJobApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.CancelBackupRestoreJobApiRequest) any); ok {
+	if rf, ok := ret.Get(0).(func(admin.CancelBackupRestoreJobApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(any)
+			r0 = ret.Get(0).(*http.Response)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.CancelBackupRestoreJobApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.CancelBackupRestoreJobApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
+		r1 = ret.Error(1)
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.CancelBackupRestoreJobApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
+	return r0, r1
 }
 
 // CloudBackupsApi_CancelBackupRestoreJobExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CancelBackupRestoreJobExecute'
@@ -131,12 +122,12 @@ func (_c *CloudBackupsApi_CancelBackupRestoreJobExecute_Call) Run(run func(r adm
 	return _c
 }
 
-func (_c *CloudBackupsApi_CancelBackupRestoreJobExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *CloudBackupsApi_CancelBackupRestoreJobExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
+func (_c *CloudBackupsApi_CancelBackupRestoreJobExecute_Call) Return(_a0 *http.Response, _a1 error) *CloudBackupsApi_CancelBackupRestoreJobExecute_Call {
+	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *CloudBackupsApi_CancelBackupRestoreJobExecute_Call) RunAndReturn(run func(admin.CancelBackupRestoreJobApiRequest) (any, *http.Response, error)) *CloudBackupsApi_CancelBackupRestoreJobExecute_Call {
+func (_c *CloudBackupsApi_CancelBackupRestoreJobExecute_Call) RunAndReturn(run func(admin.CancelBackupRestoreJobApiRequest) (*http.Response, error)) *CloudBackupsApi_CancelBackupRestoreJobExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1050,42 +1041,33 @@ func (_c *CloudBackupsApi_DeleteExportBucket_Call) RunAndReturn(run func(context
 }
 
 // DeleteExportBucketExecute provides a mock function with given fields: r
-func (_m *CloudBackupsApi) DeleteExportBucketExecute(r admin.DeleteExportBucketApiRequest) (any, *http.Response, error) {
+func (_m *CloudBackupsApi) DeleteExportBucketExecute(r admin.DeleteExportBucketApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteExportBucketExecute")
 	}
 
-	var r0 any
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteExportBucketApiRequest) (any, *http.Response, error)); ok {
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.DeleteExportBucketApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteExportBucketApiRequest) any); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteExportBucketApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(any)
+			r0 = ret.Get(0).(*http.Response)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeleteExportBucketApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.DeleteExportBucketApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
+		r1 = ret.Error(1)
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.DeleteExportBucketApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
+	return r0, r1
 }
 
 // CloudBackupsApi_DeleteExportBucketExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteExportBucketExecute'
@@ -1106,12 +1088,12 @@ func (_c *CloudBackupsApi_DeleteExportBucketExecute_Call) Run(run func(r admin.D
 	return _c
 }
 
-func (_c *CloudBackupsApi_DeleteExportBucketExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *CloudBackupsApi_DeleteExportBucketExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
+func (_c *CloudBackupsApi_DeleteExportBucketExecute_Call) Return(_a0 *http.Response, _a1 error) *CloudBackupsApi_DeleteExportBucketExecute_Call {
+	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *CloudBackupsApi_DeleteExportBucketExecute_Call) RunAndReturn(run func(admin.DeleteExportBucketApiRequest) (any, *http.Response, error)) *CloudBackupsApi_DeleteExportBucketExecute_Call {
+func (_c *CloudBackupsApi_DeleteExportBucketExecute_Call) RunAndReturn(run func(admin.DeleteExportBucketApiRequest) (*http.Response, error)) *CloudBackupsApi_DeleteExportBucketExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1213,42 +1195,33 @@ func (_c *CloudBackupsApi_DeleteReplicaSetBackup_Call) RunAndReturn(run func(con
 }
 
 // DeleteReplicaSetBackupExecute provides a mock function with given fields: r
-func (_m *CloudBackupsApi) DeleteReplicaSetBackupExecute(r admin.DeleteReplicaSetBackupApiRequest) (any, *http.Response, error) {
+func (_m *CloudBackupsApi) DeleteReplicaSetBackupExecute(r admin.DeleteReplicaSetBackupApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteReplicaSetBackupExecute")
 	}
 
-	var r0 any
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteReplicaSetBackupApiRequest) (any, *http.Response, error)); ok {
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.DeleteReplicaSetBackupApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteReplicaSetBackupApiRequest) any); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteReplicaSetBackupApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(any)
+			r0 = ret.Get(0).(*http.Response)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeleteReplicaSetBackupApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.DeleteReplicaSetBackupApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
+		r1 = ret.Error(1)
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.DeleteReplicaSetBackupApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
+	return r0, r1
 }
 
 // CloudBackupsApi_DeleteReplicaSetBackupExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteReplicaSetBackupExecute'
@@ -1269,12 +1242,12 @@ func (_c *CloudBackupsApi_DeleteReplicaSetBackupExecute_Call) Run(run func(r adm
 	return _c
 }
 
-func (_c *CloudBackupsApi_DeleteReplicaSetBackupExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *CloudBackupsApi_DeleteReplicaSetBackupExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
+func (_c *CloudBackupsApi_DeleteReplicaSetBackupExecute_Call) Return(_a0 *http.Response, _a1 error) *CloudBackupsApi_DeleteReplicaSetBackupExecute_Call {
+	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *CloudBackupsApi_DeleteReplicaSetBackupExecute_Call) RunAndReturn(run func(admin.DeleteReplicaSetBackupApiRequest) (any, *http.Response, error)) *CloudBackupsApi_DeleteReplicaSetBackupExecute_Call {
+func (_c *CloudBackupsApi_DeleteReplicaSetBackupExecute_Call) RunAndReturn(run func(admin.DeleteReplicaSetBackupApiRequest) (*http.Response, error)) *CloudBackupsApi_DeleteReplicaSetBackupExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1376,42 +1349,33 @@ func (_c *CloudBackupsApi_DeleteShardedClusterBackup_Call) RunAndReturn(run func
 }
 
 // DeleteShardedClusterBackupExecute provides a mock function with given fields: r
-func (_m *CloudBackupsApi) DeleteShardedClusterBackupExecute(r admin.DeleteShardedClusterBackupApiRequest) (any, *http.Response, error) {
+func (_m *CloudBackupsApi) DeleteShardedClusterBackupExecute(r admin.DeleteShardedClusterBackupApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteShardedClusterBackupExecute")
 	}
 
-	var r0 any
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteShardedClusterBackupApiRequest) (any, *http.Response, error)); ok {
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.DeleteShardedClusterBackupApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteShardedClusterBackupApiRequest) any); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteShardedClusterBackupApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(any)
+			r0 = ret.Get(0).(*http.Response)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeleteShardedClusterBackupApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.DeleteShardedClusterBackupApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
+		r1 = ret.Error(1)
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.DeleteShardedClusterBackupApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
+	return r0, r1
 }
 
 // CloudBackupsApi_DeleteShardedClusterBackupExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteShardedClusterBackupExecute'
@@ -1432,12 +1396,12 @@ func (_c *CloudBackupsApi_DeleteShardedClusterBackupExecute_Call) Run(run func(r
 	return _c
 }
 
-func (_c *CloudBackupsApi_DeleteShardedClusterBackupExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *CloudBackupsApi_DeleteShardedClusterBackupExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
+func (_c *CloudBackupsApi_DeleteShardedClusterBackupExecute_Call) Return(_a0 *http.Response, _a1 error) *CloudBackupsApi_DeleteShardedClusterBackupExecute_Call {
+	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *CloudBackupsApi_DeleteShardedClusterBackupExecute_Call) RunAndReturn(run func(admin.DeleteShardedClusterBackupApiRequest) (any, *http.Response, error)) *CloudBackupsApi_DeleteShardedClusterBackupExecute_Call {
+func (_c *CloudBackupsApi_DeleteShardedClusterBackupExecute_Call) RunAndReturn(run func(admin.DeleteShardedClusterBackupApiRequest) (*http.Response, error)) *CloudBackupsApi_DeleteShardedClusterBackupExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1537,42 +1501,33 @@ func (_c *CloudBackupsApi_DisableDataProtectionSettings_Call) RunAndReturn(run f
 }
 
 // DisableDataProtectionSettingsExecute provides a mock function with given fields: r
-func (_m *CloudBackupsApi) DisableDataProtectionSettingsExecute(r admin.DisableDataProtectionSettingsApiRequest) (any, *http.Response, error) {
+func (_m *CloudBackupsApi) DisableDataProtectionSettingsExecute(r admin.DisableDataProtectionSettingsApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DisableDataProtectionSettingsExecute")
 	}
 
-	var r0 any
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DisableDataProtectionSettingsApiRequest) (any, *http.Response, error)); ok {
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.DisableDataProtectionSettingsApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DisableDataProtectionSettingsApiRequest) any); ok {
+	if rf, ok := ret.Get(0).(func(admin.DisableDataProtectionSettingsApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(any)
+			r0 = ret.Get(0).(*http.Response)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DisableDataProtectionSettingsApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.DisableDataProtectionSettingsApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
+		r1 = ret.Error(1)
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.DisableDataProtectionSettingsApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
+	return r0, r1
 }
 
 // CloudBackupsApi_DisableDataProtectionSettingsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DisableDataProtectionSettingsExecute'
@@ -1593,12 +1548,12 @@ func (_c *CloudBackupsApi_DisableDataProtectionSettingsExecute_Call) Run(run fun
 	return _c
 }
 
-func (_c *CloudBackupsApi_DisableDataProtectionSettingsExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *CloudBackupsApi_DisableDataProtectionSettingsExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
+func (_c *CloudBackupsApi_DisableDataProtectionSettingsExecute_Call) Return(_a0 *http.Response, _a1 error) *CloudBackupsApi_DisableDataProtectionSettingsExecute_Call {
+	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *CloudBackupsApi_DisableDataProtectionSettingsExecute_Call) RunAndReturn(run func(admin.DisableDataProtectionSettingsApiRequest) (any, *http.Response, error)) *CloudBackupsApi_DisableDataProtectionSettingsExecute_Call {
+func (_c *CloudBackupsApi_DisableDataProtectionSettingsExecute_Call) RunAndReturn(run func(admin.DisableDataProtectionSettingsApiRequest) (*http.Response, error)) *CloudBackupsApi_DisableDataProtectionSettingsExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
