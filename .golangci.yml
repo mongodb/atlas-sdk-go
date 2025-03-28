@@ -25,7 +25,9 @@ linters:
     gocritic:
       disabled-checks:
         - octalLiteral
+        # We cannot control OpenAPI format
         - hugeParam
+        # Types are dynamic/OpenAPI driven.
         - paramTypeCombine
         - wrapperFunc
         - ptrToRefParam
@@ -64,7 +66,15 @@ linters:
         - name: empty-block
         - name: superfluous-else
         - name: struct-tag
+        # OpenAPI paths can have 0 parameters
+        # - name: unused-parameter
+        # We still want empty methods for consistency - do not control if method will be empty.
+        # - name: unused-receiver
         - name: unreachable-code
+        # We want to maintain OpenAPI consistency and ignore golang standards
+        # - name: var-naming
+        # - name: var-declaration
+        # - name: receiver-naming
   exclusions:
     generated: lax
     presets:
@@ -72,14 +82,17 @@ linters:
       - common-false-positives
       - legacy
       - std-error-handling
-    paths:
-      - third_party$
-      - builtin$
-      - examples$
+    rules: # Exceptions for auto-generated code from OpenAPI spec
+      - text: "ST1023:"
+        path: (.+)\.go$
+        comment: "ST1023: should omit type XXX from declaration; it will be inferred from the right-hand side (staticcheck)"
+      - text: "QF1011:"
+        path: (.+)\.go$
+        comment: "QF1011: could omit type XXX from declaration; it will be inferred from the right-hand side (staticcheck)"
+      - text: "QF1004:"
+        path: (.+)\.go$
+        comment: "QF1004: could use strings.ReplaceAll instead (staticcheck)"
 formatters:
-  exclusions:
-    generated: lax
-    paths:
-      - third_party$
-      - builtin$
-      - examples$
+  enable:
+    - gofmt
+    - goimports
