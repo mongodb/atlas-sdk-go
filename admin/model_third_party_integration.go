@@ -12,11 +12,15 @@ type ThirdPartyIntegration struct {
 	ApiKey *string `json:"apiKey,omitempty"`
 	// PagerDuty region that indicates the API Uniform Resource Locator (URL) to use.
 	Region *string `json:"region,omitempty"`
+	// Toggle sending collection latency metrics that includes database names and collection namesand latency metrics on reads, writes, commands, and transactions.
+	SendCollectionLatencyMetrics *bool `json:"sendCollectionLatencyMetrics,omitempty"`
+	// Toggle sending database metrics that includes database names and metrics on the number of collections, storage size, and index size.
+	SendDatabaseMetrics *bool `json:"sendDatabaseMetrics,omitempty"`
 	// Endpoint web address of the Microsoft Teams webhook to which MongoDB Cloud sends notifications.  **NOTE**: When you view or edit the alert for a Microsoft Teams notification, the URL appears partially redacted.
 	MicrosoftTeamsWebhookUrl *string `json:"microsoftTeamsWebhookUrl,omitempty"`
 	// Unique 40-hexadecimal digit string that identifies your New Relic account.
 	AccountId *string `json:"accountId,omitempty"`
-	// Unique 40-hexadecimal digit string that identifies your New Relic license.  **IMPORTANT**: Effective Wednesday, June 16th, 2021, New Relic no longer supports the plugin-based integration with MongoDB. We do not recommend that you sign up for the plugin-based integration. To learn more, see the <a href=\"https://discuss.newrelic.com/t/new-relic-plugin-eol-wednesday-june-16th-2021/127267\" target=\"_blank\">New Relic Plugin EOL Statement</a> Consider configuring an alternative monitoring integration before June 16th to maintain visibility into your MongoDB deployments.
+	// Unique 40-hexadecimal digit string that identifies your New Relic license.  **IMPORTANT**: Effective Wednesday, June 16th, 2021, New Relic no longer supports the plugin-based integration with MongoDB. We do not recommend that you sign up for the plugin-based integration. Consider configuring an alternative monitoring integration before June 16th to maintain visibility into your MongoDB deployments.
 	LicenseKey *string `json:"licenseKey,omitempty"`
 	// Query key used to access your New Relic account.
 	ReadToken *string `json:"readToken,omitempty"`
@@ -53,6 +57,10 @@ type ThirdPartyIntegration struct {
 // will change when the set of required properties is changed
 func NewThirdPartyIntegration() *ThirdPartyIntegration {
 	this := ThirdPartyIntegration{}
+	var sendCollectionLatencyMetrics bool = false
+	this.SendCollectionLatencyMetrics = &sendCollectionLatencyMetrics
+	var sendDatabaseMetrics bool = false
+	this.SendDatabaseMetrics = &sendDatabaseMetrics
 	return &this
 }
 
@@ -61,6 +69,10 @@ func NewThirdPartyIntegration() *ThirdPartyIntegration {
 // but it doesn't guarantee that properties required by API are set
 func NewThirdPartyIntegrationWithDefaults() *ThirdPartyIntegration {
 	this := ThirdPartyIntegration{}
+	var sendCollectionLatencyMetrics bool = false
+	this.SendCollectionLatencyMetrics = &sendCollectionLatencyMetrics
+	var sendDatabaseMetrics bool = false
+	this.SendDatabaseMetrics = &sendDatabaseMetrics
 	return &this
 }
 
@@ -194,6 +206,72 @@ func (o *ThirdPartyIntegration) HasRegion() bool {
 // SetRegion gets a reference to the given string and assigns it to the Region field.
 func (o *ThirdPartyIntegration) SetRegion(v string) {
 	o.Region = &v
+}
+
+// GetSendCollectionLatencyMetrics returns the SendCollectionLatencyMetrics field value if set, zero value otherwise
+func (o *ThirdPartyIntegration) GetSendCollectionLatencyMetrics() bool {
+	if o == nil || IsNil(o.SendCollectionLatencyMetrics) {
+		var ret bool
+		return ret
+	}
+	return *o.SendCollectionLatencyMetrics
+}
+
+// GetSendCollectionLatencyMetricsOk returns a tuple with the SendCollectionLatencyMetrics field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ThirdPartyIntegration) GetSendCollectionLatencyMetricsOk() (*bool, bool) {
+	if o == nil || IsNil(o.SendCollectionLatencyMetrics) {
+		return nil, false
+	}
+
+	return o.SendCollectionLatencyMetrics, true
+}
+
+// HasSendCollectionLatencyMetrics returns a boolean if a field has been set.
+func (o *ThirdPartyIntegration) HasSendCollectionLatencyMetrics() bool {
+	if o != nil && !IsNil(o.SendCollectionLatencyMetrics) {
+		return true
+	}
+
+	return false
+}
+
+// SetSendCollectionLatencyMetrics gets a reference to the given bool and assigns it to the SendCollectionLatencyMetrics field.
+func (o *ThirdPartyIntegration) SetSendCollectionLatencyMetrics(v bool) {
+	o.SendCollectionLatencyMetrics = &v
+}
+
+// GetSendDatabaseMetrics returns the SendDatabaseMetrics field value if set, zero value otherwise
+func (o *ThirdPartyIntegration) GetSendDatabaseMetrics() bool {
+	if o == nil || IsNil(o.SendDatabaseMetrics) {
+		var ret bool
+		return ret
+	}
+	return *o.SendDatabaseMetrics
+}
+
+// GetSendDatabaseMetricsOk returns a tuple with the SendDatabaseMetrics field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ThirdPartyIntegration) GetSendDatabaseMetricsOk() (*bool, bool) {
+	if o == nil || IsNil(o.SendDatabaseMetrics) {
+		return nil, false
+	}
+
+	return o.SendDatabaseMetrics, true
+}
+
+// HasSendDatabaseMetrics returns a boolean if a field has been set.
+func (o *ThirdPartyIntegration) HasSendDatabaseMetrics() bool {
+	if o != nil && !IsNil(o.SendDatabaseMetrics) {
+		return true
+	}
+
+	return false
+}
+
+// SetSendDatabaseMetrics gets a reference to the given bool and assigns it to the SendDatabaseMetrics field.
+func (o *ThirdPartyIntegration) SetSendDatabaseMetrics(v bool) {
+	o.SendDatabaseMetrics = &v
 }
 
 // GetMicrosoftTeamsWebhookUrl returns the MicrosoftTeamsWebhookUrl field value if set, zero value otherwise

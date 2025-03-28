@@ -9,6 +9,8 @@ type SearchIndexUpdateRequestDefinition struct {
 	// List of user-defined methods to convert database field text into searchable words.
 	Analyzers *[]AtlasSearchAnalyzer `json:"analyzers,omitempty"`
 	Mappings  *SearchMappings        `json:"mappings,omitempty"`
+	// Number of index partitions. Note: This feature is currently in preview.
+	NumPartitions *int `json:"numPartitions,omitempty"`
 	// Method applied to identify words when searching this index.
 	SearchAnalyzer *string `json:"searchAnalyzer,omitempty"`
 	// Flag that indicates whether to store all fields (true) on Atlas Search. By default, Atlas doesn't store (false) the fields on Atlas Search.  Alternatively, you can specify an object that only contains the list of fields to store (include) or not store (exclude) on Atlas Search. To learn more, see Stored Source Fields.
@@ -27,6 +29,8 @@ func NewSearchIndexUpdateRequestDefinition() *SearchIndexUpdateRequestDefinition
 	this := SearchIndexUpdateRequestDefinition{}
 	var analyzer string = "lucene.standard"
 	this.Analyzer = &analyzer
+	var numPartitions int = 1
+	this.NumPartitions = &numPartitions
 	var searchAnalyzer string = "lucene.standard"
 	this.SearchAnalyzer = &searchAnalyzer
 	return &this
@@ -39,6 +43,8 @@ func NewSearchIndexUpdateRequestDefinitionWithDefaults() *SearchIndexUpdateReque
 	this := SearchIndexUpdateRequestDefinition{}
 	var analyzer string = "lucene.standard"
 	this.Analyzer = &analyzer
+	var numPartitions int = 1
+	this.NumPartitions = &numPartitions
 	var searchAnalyzer string = "lucene.standard"
 	this.SearchAnalyzer = &searchAnalyzer
 	return &this
@@ -141,6 +147,39 @@ func (o *SearchIndexUpdateRequestDefinition) HasMappings() bool {
 // SetMappings gets a reference to the given SearchMappings and assigns it to the Mappings field.
 func (o *SearchIndexUpdateRequestDefinition) SetMappings(v SearchMappings) {
 	o.Mappings = &v
+}
+
+// GetNumPartitions returns the NumPartitions field value if set, zero value otherwise
+func (o *SearchIndexUpdateRequestDefinition) GetNumPartitions() int {
+	if o == nil || IsNil(o.NumPartitions) {
+		var ret int
+		return ret
+	}
+	return *o.NumPartitions
+}
+
+// GetNumPartitionsOk returns a tuple with the NumPartitions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SearchIndexUpdateRequestDefinition) GetNumPartitionsOk() (*int, bool) {
+	if o == nil || IsNil(o.NumPartitions) {
+		return nil, false
+	}
+
+	return o.NumPartitions, true
+}
+
+// HasNumPartitions returns a boolean if a field has been set.
+func (o *SearchIndexUpdateRequestDefinition) HasNumPartitions() bool {
+	if o != nil && !IsNil(o.NumPartitions) {
+		return true
+	}
+
+	return false
+}
+
+// SetNumPartitions gets a reference to the given int and assigns it to the NumPartitions field.
+func (o *SearchIndexUpdateRequestDefinition) SetNumPartitions(v int) {
+	o.NumPartitions = &v
 }
 
 // GetSearchAnalyzer returns the SearchAnalyzer field value if set, zero value otherwise

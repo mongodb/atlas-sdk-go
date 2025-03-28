@@ -30,7 +30,7 @@ type OrganizationInvitation struct {
 	OrgId *string `json:"orgId,omitempty"`
 	// Human-readable label that identifies this organization.
 	OrgName string `json:"orgName"`
-	// One or more organization level roles to assign to the MongoDB Cloud user.
+	// One or more organization-level roles to assign to the MongoDB Cloud user.
 	Roles *[]string `json:"roles,omitempty"`
 	// List of unique 24-hexadecimal digit strings that identifies each team.
 	// Read only field.

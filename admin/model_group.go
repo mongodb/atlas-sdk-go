@@ -45,6 +45,8 @@ func NewGroup(clusterCount int64, created time.Time, name string, orgId string) 
 	this.OrgId = orgId
 	var regionUsageRestrictions string = "COMMERCIAL_FEDRAMP_REGIONS_ONLY"
 	this.RegionUsageRestrictions = &regionUsageRestrictions
+	var withDefaultAlertsSettings bool = true
+	this.WithDefaultAlertsSettings = &withDefaultAlertsSettings
 	return &this
 }
 
@@ -55,6 +57,8 @@ func NewGroupWithDefaults() *Group {
 	this := Group{}
 	var regionUsageRestrictions string = "COMMERCIAL_FEDRAMP_REGIONS_ONLY"
 	this.RegionUsageRestrictions = &regionUsageRestrictions
+	var withDefaultAlertsSettings bool = true
+	this.WithDefaultAlertsSettings = &withDefaultAlertsSettings
 	return &this
 }
 

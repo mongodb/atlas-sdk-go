@@ -8,10 +8,10 @@ import (
 
 // EventViewForNdsGroup struct for EventViewForNdsGroup
 type EventViewForNdsGroup struct {
-	// Unique 24-hexadecimal digit string that identifies the [API Key](https://dochub.mongodb.org/core/atlas-create-prog-api-key) that triggered the event. If this resource returns this parameter, it doesn't return the **userId** parameter.
+	// Unique 24-hexadecimal digit string that identifies the API Key that triggered the event. If this resource returns this parameter, it doesn't return the **userId** parameter.
 	// Read only field.
 	ApiKeyId *string `json:"apiKeyId,omitempty"`
-	// Date and time when this event occurred. This parameter expresses its value in the <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\" rel=\"noopener noreferrer\">ISO 8601</a> timestamp format in UTC.
+	// Date and time when this event occurred. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	Created *time.Time `json:"created,omitempty"`
 	// Unique identifier of event type.
@@ -31,7 +31,7 @@ type EventViewForNdsGroup struct {
 	// Unique 24-hexadecimal digit string that identifies the organization to which these events apply.
 	// Read only field.
 	OrgId *string `json:"orgId,omitempty"`
-	// Public part of the [API Key](https://dochub.mongodb.org/core/atlas-create-prog-api-key) that triggered the event. If this resource returns this parameter, it doesn't return the **username** parameter.
+	// Public part of the API Key that triggered the event. If this resource returns this parameter, it doesn't return the **username** parameter.
 	// Read only field.
 	PublicKey *string `json:"publicKey,omitempty"`
 	Raw       *Raw    `json:"raw,omitempty"`
@@ -68,6 +68,15 @@ type EventViewForNdsGroup struct {
 	// Action that the database attempted to execute when the event triggered. The response returns this parameter when `eventTypeName\" : \"DATA_EXPLORER\"`.
 	// Read only field.
 	OpType *string `json:"opType,omitempty"`
+	// Unique 24-hexadecimal digit string that identifies the Data Explorer session associated with the event.
+	// Read only field.
+	SessionId *string `json:"sessionId,omitempty"`
+	// Desk location of MongoDB employee associated with the event.
+	// Read only field.
+	DeskLocation *string `json:"deskLocation,omitempty"`
+	// Identifier of MongoDB employee associated with the event.
+	// Read only field.
+	EmployeeIdentifier *string `json:"employeeIdentifier,omitempty"`
 	// IANA port on which the MongoDB process listens for requests.
 	// Read only field.
 	Port *int `json:"port,omitempty"`
@@ -823,6 +832,105 @@ func (o *EventViewForNdsGroup) HasOpType() bool {
 // SetOpType gets a reference to the given string and assigns it to the OpType field.
 func (o *EventViewForNdsGroup) SetOpType(v string) {
 	o.OpType = &v
+}
+
+// GetSessionId returns the SessionId field value if set, zero value otherwise
+func (o *EventViewForNdsGroup) GetSessionId() string {
+	if o == nil || IsNil(o.SessionId) {
+		var ret string
+		return ret
+	}
+	return *o.SessionId
+}
+
+// GetSessionIdOk returns a tuple with the SessionId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EventViewForNdsGroup) GetSessionIdOk() (*string, bool) {
+	if o == nil || IsNil(o.SessionId) {
+		return nil, false
+	}
+
+	return o.SessionId, true
+}
+
+// HasSessionId returns a boolean if a field has been set.
+func (o *EventViewForNdsGroup) HasSessionId() bool {
+	if o != nil && !IsNil(o.SessionId) {
+		return true
+	}
+
+	return false
+}
+
+// SetSessionId gets a reference to the given string and assigns it to the SessionId field.
+func (o *EventViewForNdsGroup) SetSessionId(v string) {
+	o.SessionId = &v
+}
+
+// GetDeskLocation returns the DeskLocation field value if set, zero value otherwise
+func (o *EventViewForNdsGroup) GetDeskLocation() string {
+	if o == nil || IsNil(o.DeskLocation) {
+		var ret string
+		return ret
+	}
+	return *o.DeskLocation
+}
+
+// GetDeskLocationOk returns a tuple with the DeskLocation field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EventViewForNdsGroup) GetDeskLocationOk() (*string, bool) {
+	if o == nil || IsNil(o.DeskLocation) {
+		return nil, false
+	}
+
+	return o.DeskLocation, true
+}
+
+// HasDeskLocation returns a boolean if a field has been set.
+func (o *EventViewForNdsGroup) HasDeskLocation() bool {
+	if o != nil && !IsNil(o.DeskLocation) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeskLocation gets a reference to the given string and assigns it to the DeskLocation field.
+func (o *EventViewForNdsGroup) SetDeskLocation(v string) {
+	o.DeskLocation = &v
+}
+
+// GetEmployeeIdentifier returns the EmployeeIdentifier field value if set, zero value otherwise
+func (o *EventViewForNdsGroup) GetEmployeeIdentifier() string {
+	if o == nil || IsNil(o.EmployeeIdentifier) {
+		var ret string
+		return ret
+	}
+	return *o.EmployeeIdentifier
+}
+
+// GetEmployeeIdentifierOk returns a tuple with the EmployeeIdentifier field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EventViewForNdsGroup) GetEmployeeIdentifierOk() (*string, bool) {
+	if o == nil || IsNil(o.EmployeeIdentifier) {
+		return nil, false
+	}
+
+	return o.EmployeeIdentifier, true
+}
+
+// HasEmployeeIdentifier returns a boolean if a field has been set.
+func (o *EventViewForNdsGroup) HasEmployeeIdentifier() bool {
+	if o != nil && !IsNil(o.EmployeeIdentifier) {
+		return true
+	}
+
+	return false
+}
+
+// SetEmployeeIdentifier gets a reference to the given string and assigns it to the EmployeeIdentifier field.
+func (o *EventViewForNdsGroup) SetEmployeeIdentifier(v string) {
+	o.EmployeeIdentifier = &v
 }
 
 // GetPort returns the Port field value if set, zero value otherwise

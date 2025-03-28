@@ -4,13 +4,17 @@ package admin
 
 // GroupSettings Collection of settings that configures the project.
 type GroupSettings struct {
-	// Flag that indicates whether to collect database-specific metrics  for the specified project.
+	// Flag that indicates whether to collect database-specific metrics for the specified project.
 	IsCollectDatabaseSpecificsStatisticsEnabled *bool `json:"isCollectDatabaseSpecificsStatisticsEnabled,omitempty"`
 	// Flag that indicates whether to enable the Data Explorer for the specified project.
 	IsDataExplorerEnabled *bool `json:"isDataExplorerEnabled,omitempty"`
-	// Flag that indicates whether to enable extended storage sizes  for the specified project.
+	// Flag that indicates whether to enable the use of generative AI features which make requests to 3rd party services in Data Explorer for the specified project.
+	IsDataExplorerGenAIFeaturesEnabled *bool `json:"isDataExplorerGenAIFeaturesEnabled,omitempty"`
+	// Flag that indicates whether to enable the passing of sample field values with the use of generative AI features in the Data Explorer for the specified project.
+	IsDataExplorerGenAISampleDocumentPassingEnabled *bool `json:"isDataExplorerGenAISampleDocumentPassingEnabled,omitempty"`
+	// Flag that indicates whether to enable extended storage sizes for the specified project.
 	IsExtendedStorageSizesEnabled *bool `json:"isExtendedStorageSizesEnabled,omitempty"`
-	// Flag that indicates whether to enable the Performance Advisor and Profiler  for the specified project.
+	// Flag that indicates whether to enable the Performance Advisor and Profiler for the specified project.
 	IsPerformanceAdvisorEnabled *bool `json:"isPerformanceAdvisorEnabled,omitempty"`
 	// Flag that indicates whether to enable the Real Time Performance Panel for the specified project.
 	IsRealtimePerformancePanelEnabled *bool `json:"isRealtimePerformancePanelEnabled,omitempty"`
@@ -24,6 +28,8 @@ type GroupSettings struct {
 // will change when the set of required properties is changed
 func NewGroupSettings() *GroupSettings {
 	this := GroupSettings{}
+	var isDataExplorerGenAISampleDocumentPassingEnabled bool = false
+	this.IsDataExplorerGenAISampleDocumentPassingEnabled = &isDataExplorerGenAISampleDocumentPassingEnabled
 	return &this
 }
 
@@ -32,6 +38,8 @@ func NewGroupSettings() *GroupSettings {
 // but it doesn't guarantee that properties required by API are set
 func NewGroupSettingsWithDefaults() *GroupSettings {
 	this := GroupSettings{}
+	var isDataExplorerGenAISampleDocumentPassingEnabled bool = false
+	this.IsDataExplorerGenAISampleDocumentPassingEnabled = &isDataExplorerGenAISampleDocumentPassingEnabled
 	return &this
 }
 
@@ -99,6 +107,72 @@ func (o *GroupSettings) HasIsDataExplorerEnabled() bool {
 // SetIsDataExplorerEnabled gets a reference to the given bool and assigns it to the IsDataExplorerEnabled field.
 func (o *GroupSettings) SetIsDataExplorerEnabled(v bool) {
 	o.IsDataExplorerEnabled = &v
+}
+
+// GetIsDataExplorerGenAIFeaturesEnabled returns the IsDataExplorerGenAIFeaturesEnabled field value if set, zero value otherwise
+func (o *GroupSettings) GetIsDataExplorerGenAIFeaturesEnabled() bool {
+	if o == nil || IsNil(o.IsDataExplorerGenAIFeaturesEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.IsDataExplorerGenAIFeaturesEnabled
+}
+
+// GetIsDataExplorerGenAIFeaturesEnabledOk returns a tuple with the IsDataExplorerGenAIFeaturesEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GroupSettings) GetIsDataExplorerGenAIFeaturesEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsDataExplorerGenAIFeaturesEnabled) {
+		return nil, false
+	}
+
+	return o.IsDataExplorerGenAIFeaturesEnabled, true
+}
+
+// HasIsDataExplorerGenAIFeaturesEnabled returns a boolean if a field has been set.
+func (o *GroupSettings) HasIsDataExplorerGenAIFeaturesEnabled() bool {
+	if o != nil && !IsNil(o.IsDataExplorerGenAIFeaturesEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsDataExplorerGenAIFeaturesEnabled gets a reference to the given bool and assigns it to the IsDataExplorerGenAIFeaturesEnabled field.
+func (o *GroupSettings) SetIsDataExplorerGenAIFeaturesEnabled(v bool) {
+	o.IsDataExplorerGenAIFeaturesEnabled = &v
+}
+
+// GetIsDataExplorerGenAISampleDocumentPassingEnabled returns the IsDataExplorerGenAISampleDocumentPassingEnabled field value if set, zero value otherwise
+func (o *GroupSettings) GetIsDataExplorerGenAISampleDocumentPassingEnabled() bool {
+	if o == nil || IsNil(o.IsDataExplorerGenAISampleDocumentPassingEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.IsDataExplorerGenAISampleDocumentPassingEnabled
+}
+
+// GetIsDataExplorerGenAISampleDocumentPassingEnabledOk returns a tuple with the IsDataExplorerGenAISampleDocumentPassingEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GroupSettings) GetIsDataExplorerGenAISampleDocumentPassingEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsDataExplorerGenAISampleDocumentPassingEnabled) {
+		return nil, false
+	}
+
+	return o.IsDataExplorerGenAISampleDocumentPassingEnabled, true
+}
+
+// HasIsDataExplorerGenAISampleDocumentPassingEnabled returns a boolean if a field has been set.
+func (o *GroupSettings) HasIsDataExplorerGenAISampleDocumentPassingEnabled() bool {
+	if o != nil && !IsNil(o.IsDataExplorerGenAISampleDocumentPassingEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsDataExplorerGenAISampleDocumentPassingEnabled gets a reference to the given bool and assigns it to the IsDataExplorerGenAISampleDocumentPassingEnabled field.
+func (o *GroupSettings) SetIsDataExplorerGenAISampleDocumentPassingEnabled(v bool) {
+	o.IsDataExplorerGenAISampleDocumentPassingEnabled = &v
 }
 
 // GetIsExtendedStorageSizesEnabled returns the IsExtendedStorageSizesEnabled field value if set, zero value otherwise
