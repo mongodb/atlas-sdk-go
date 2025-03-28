@@ -15,6 +15,7 @@ const { applyAnyOfTransformations } = require("./anyOf");
 const { applyRemoveNullableTransformations } = require("./removeNullable");
 const { removeRefsFromParameters } = require("./removeInvalidParams");
 const { reorderResponseBodies } = require("./reorderResponseBodies");
+const { applyFieldTransformations } = require("./fields");
 
 module.exports = {
   applyModelNameTransformations,
@@ -31,4 +32,5 @@ module.exports = {
   applyRemoveNullableTransformations,
   removeRefsFromParameters,
   reorderResponseBodies,
+  applyFieldTransformations,
 };

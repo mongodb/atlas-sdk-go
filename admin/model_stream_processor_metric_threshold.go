@@ -5,7 +5,7 @@ package admin
 // StreamProcessorMetricThreshold Threshold for the metric that, when exceeded, triggers an alert. The metric threshold pertains to event types which reflects changes of measurements and metrics in stream processors.
 type StreamProcessorMetricThreshold struct {
 	// Human-readable label that identifies the metric against which MongoDB Cloud checks the configured **metricThreshold.threshold**.
-	MetricName string `json:"metricName"`
+	MetricName *string `json:"metricName,omitempty"`
 	// MongoDB Cloud computes the current metric value as an average.
 	Mode *string `json:"mode,omitempty"`
 	// Comparison operator to apply when checking the current metric value.
@@ -20,9 +20,8 @@ type StreamProcessorMetricThreshold struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStreamProcessorMetricThreshold(metricName string) *StreamProcessorMetricThreshold {
+func NewStreamProcessorMetricThreshold() *StreamProcessorMetricThreshold {
 	this := StreamProcessorMetricThreshold{}
-	this.MetricName = metricName
 	var units string = "RAW"
 	this.Units = &units
 	return &this
@@ -38,28 +37,37 @@ func NewStreamProcessorMetricThresholdWithDefaults() *StreamProcessorMetricThres
 	return &this
 }
 
-// GetMetricName returns the MetricName field value
+// GetMetricName returns the MetricName field value if set, zero value otherwise
 func (o *StreamProcessorMetricThreshold) GetMetricName() string {
-	if o == nil {
+	if o == nil || IsNil(o.MetricName) {
 		var ret string
 		return ret
 	}
-
-	return o.MetricName
+	return *o.MetricName
 }
 
-// GetMetricNameOk returns a tuple with the MetricName field value
+// GetMetricNameOk returns a tuple with the MetricName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StreamProcessorMetricThreshold) GetMetricNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.MetricName) {
 		return nil, false
 	}
-	return &o.MetricName, true
+
+	return o.MetricName, true
 }
 
-// SetMetricName sets field value
+// HasMetricName returns a boolean if a field has been set.
+func (o *StreamProcessorMetricThreshold) HasMetricName() bool {
+	if o != nil && !IsNil(o.MetricName) {
+		return true
+	}
+
+	return false
+}
+
+// SetMetricName gets a reference to the given string and assigns it to the MetricName field.
 func (o *StreamProcessorMetricThreshold) SetMetricName(v string) {
-	o.MetricName = v
+	o.MetricName = &v
 }
 
 // GetMode returns the Mode field value if set, zero value otherwise

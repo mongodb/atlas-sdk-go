@@ -15349,8 +15349,6 @@ components:
           $ref: "#/components/schemas/RawMetricUnits"
           description: Element used to express the quantity. This can be an element of
             time, storage capacity, and the like.
-      required:
-        - metricName
       title: Stream Processor Metric Threshold
       type: object
     StreamsAWSConnectionConfig:
