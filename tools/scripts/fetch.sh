@@ -36,16 +36,17 @@ curl --show-error --fail --silent -o "${versions_file}" \
      -H "Accept: application/json" "${versions_url}"
 
 ## Dynamic Versioned API Version
-CURRENT_API_REVISION=$(jq -r '.versions."2.0" | .[-1]' < "./${versions_file}")
+# CURRENT_API_REVISION=$(jq -r '.versions."2.0" | .[-1]' < "./${versions_file}")
 
 echo "Fetching OpenAPI release sha"
 sha=$(curl --show-error --fail --silent -H "Accept: text/plain" "${API_BASE_URL}/api/private/unauth/version")
 
 echo "Fetching OAS file for ${sha}"
-openapi_url="https://${S3_BUCKET}.s3.amazonaws.com/openapi/${sha}-v2-${CURRENT_API_REVISION}.yaml"
+# openapi_url="https://${S3_BUCKET}.s3.amazonaws.com/openapi/${sha}-v2-${CURRENT_API_REVISION}.yaml"
+openapi_url="https://raw.githubusercontent.com/mongodb/openapi/refs/heads/main/openapi/v2/openapi-2024-08-05.yaml"
 
 echo "Fetching api from $openapi_url to $OPENAPI_FILE_NAME"
 
 curl --show-error --fail --silent -o "$OPENAPI_FILE_NAME" "$openapi_url"
 
-popd -0 
+popd -0
