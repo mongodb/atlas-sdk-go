@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312001/admin"
+	admin "github.com/mongodb/atlas-sdk-go/admin"
 
 	http "net/http"
 
@@ -564,42 +564,33 @@ func (_c *DataFederationApi_DeleteDataFederationPrivateEndpoint_Call) RunAndRetu
 }
 
 // DeleteDataFederationPrivateEndpointExecute provides a mock function with given fields: r
-func (_m *DataFederationApi) DeleteDataFederationPrivateEndpointExecute(r admin.DeleteDataFederationPrivateEndpointApiRequest) (any, *http.Response, error) {
+func (_m *DataFederationApi) DeleteDataFederationPrivateEndpointExecute(r admin.DeleteDataFederationPrivateEndpointApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteDataFederationPrivateEndpointExecute")
 	}
 
-	var r0 any
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteDataFederationPrivateEndpointApiRequest) (any, *http.Response, error)); ok {
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.DeleteDataFederationPrivateEndpointApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteDataFederationPrivateEndpointApiRequest) any); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteDataFederationPrivateEndpointApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(any)
+			r0 = ret.Get(0).(*http.Response)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeleteDataFederationPrivateEndpointApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.DeleteDataFederationPrivateEndpointApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
+		r1 = ret.Error(1)
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.DeleteDataFederationPrivateEndpointApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
+	return r0, r1
 }
 
 // DataFederationApi_DeleteDataFederationPrivateEndpointExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteDataFederationPrivateEndpointExecute'
@@ -620,12 +611,12 @@ func (_c *DataFederationApi_DeleteDataFederationPrivateEndpointExecute_Call) Run
 	return _c
 }
 
-func (_c *DataFederationApi_DeleteDataFederationPrivateEndpointExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *DataFederationApi_DeleteDataFederationPrivateEndpointExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
+func (_c *DataFederationApi_DeleteDataFederationPrivateEndpointExecute_Call) Return(_a0 *http.Response, _a1 error) *DataFederationApi_DeleteDataFederationPrivateEndpointExecute_Call {
+	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *DataFederationApi_DeleteDataFederationPrivateEndpointExecute_Call) RunAndReturn(run func(admin.DeleteDataFederationPrivateEndpointApiRequest) (any, *http.Response, error)) *DataFederationApi_DeleteDataFederationPrivateEndpointExecute_Call {
+func (_c *DataFederationApi_DeleteDataFederationPrivateEndpointExecute_Call) RunAndReturn(run func(admin.DeleteDataFederationPrivateEndpointApiRequest) (*http.Response, error)) *DataFederationApi_DeleteDataFederationPrivateEndpointExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -726,42 +717,33 @@ func (_c *DataFederationApi_DeleteFederatedDatabase_Call) RunAndReturn(run func(
 }
 
 // DeleteFederatedDatabaseExecute provides a mock function with given fields: r
-func (_m *DataFederationApi) DeleteFederatedDatabaseExecute(r admin.DeleteFederatedDatabaseApiRequest) (any, *http.Response, error) {
+func (_m *DataFederationApi) DeleteFederatedDatabaseExecute(r admin.DeleteFederatedDatabaseApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteFederatedDatabaseExecute")
 	}
 
-	var r0 any
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteFederatedDatabaseApiRequest) (any, *http.Response, error)); ok {
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.DeleteFederatedDatabaseApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteFederatedDatabaseApiRequest) any); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteFederatedDatabaseApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(any)
+			r0 = ret.Get(0).(*http.Response)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeleteFederatedDatabaseApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.DeleteFederatedDatabaseApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
+		r1 = ret.Error(1)
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.DeleteFederatedDatabaseApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
+	return r0, r1
 }
 
 // DataFederationApi_DeleteFederatedDatabaseExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteFederatedDatabaseExecute'
@@ -782,12 +764,12 @@ func (_c *DataFederationApi_DeleteFederatedDatabaseExecute_Call) Run(run func(r 
 	return _c
 }
 
-func (_c *DataFederationApi_DeleteFederatedDatabaseExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *DataFederationApi_DeleteFederatedDatabaseExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
+func (_c *DataFederationApi_DeleteFederatedDatabaseExecute_Call) Return(_a0 *http.Response, _a1 error) *DataFederationApi_DeleteFederatedDatabaseExecute_Call {
+	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *DataFederationApi_DeleteFederatedDatabaseExecute_Call) RunAndReturn(run func(admin.DeleteFederatedDatabaseApiRequest) (any, *http.Response, error)) *DataFederationApi_DeleteFederatedDatabaseExecute_Call {
+func (_c *DataFederationApi_DeleteFederatedDatabaseExecute_Call) RunAndReturn(run func(admin.DeleteFederatedDatabaseApiRequest) (*http.Response, error)) *DataFederationApi_DeleteFederatedDatabaseExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -889,42 +871,33 @@ func (_c *DataFederationApi_DeleteOneDataFederationInstanceQueryLimit_Call) RunA
 }
 
 // DeleteOneDataFederationInstanceQueryLimitExecute provides a mock function with given fields: r
-func (_m *DataFederationApi) DeleteOneDataFederationInstanceQueryLimitExecute(r admin.DeleteOneDataFederationInstanceQueryLimitApiRequest) (any, *http.Response, error) {
+func (_m *DataFederationApi) DeleteOneDataFederationInstanceQueryLimitExecute(r admin.DeleteOneDataFederationInstanceQueryLimitApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteOneDataFederationInstanceQueryLimitExecute")
 	}
 
-	var r0 any
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteOneDataFederationInstanceQueryLimitApiRequest) (any, *http.Response, error)); ok {
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.DeleteOneDataFederationInstanceQueryLimitApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteOneDataFederationInstanceQueryLimitApiRequest) any); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteOneDataFederationInstanceQueryLimitApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(any)
+			r0 = ret.Get(0).(*http.Response)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeleteOneDataFederationInstanceQueryLimitApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.DeleteOneDataFederationInstanceQueryLimitApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
+		r1 = ret.Error(1)
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.DeleteOneDataFederationInstanceQueryLimitApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
+	return r0, r1
 }
 
 // DataFederationApi_DeleteOneDataFederationInstanceQueryLimitExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteOneDataFederationInstanceQueryLimitExecute'
@@ -945,12 +918,12 @@ func (_c *DataFederationApi_DeleteOneDataFederationInstanceQueryLimitExecute_Cal
 	return _c
 }
 
-func (_c *DataFederationApi_DeleteOneDataFederationInstanceQueryLimitExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *DataFederationApi_DeleteOneDataFederationInstanceQueryLimitExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
+func (_c *DataFederationApi_DeleteOneDataFederationInstanceQueryLimitExecute_Call) Return(_a0 *http.Response, _a1 error) *DataFederationApi_DeleteOneDataFederationInstanceQueryLimitExecute_Call {
+	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *DataFederationApi_DeleteOneDataFederationInstanceQueryLimitExecute_Call) RunAndReturn(run func(admin.DeleteOneDataFederationInstanceQueryLimitApiRequest) (any, *http.Response, error)) *DataFederationApi_DeleteOneDataFederationInstanceQueryLimitExecute_Call {
+func (_c *DataFederationApi_DeleteOneDataFederationInstanceQueryLimitExecute_Call) RunAndReturn(run func(admin.DeleteOneDataFederationInstanceQueryLimitApiRequest) (*http.Response, error)) *DataFederationApi_DeleteOneDataFederationInstanceQueryLimitExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }

@@ -15,7 +15,7 @@ type FlexClustersApi interface {
 	/*
 		CreateFlexCluster Create One Flex Cluster in One Project
 
-		Creates one flex cluster in the specified project. To use this resource, the requesting API Key must have the Project Owner role.
+		Creates one flex cluster in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -39,7 +39,7 @@ type FlexClustersApi interface {
 	/*
 		DeleteFlexCluster Remove One Flex Cluster from One Project
 
-		Removes one flex cluster from the specified project. The flex cluster must have termination protection disabled in order to be deleted. To use this resource, the requesting API Key must have the Project Owner role.
+		Removes one flex cluster from the specified project. The flex cluster must have termination protection disabled in order to be deleted. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -58,12 +58,12 @@ type FlexClustersApi interface {
 	DeleteFlexClusterWithParams(ctx context.Context, args *DeleteFlexClusterApiParams) DeleteFlexClusterApiRequest
 
 	// Method available only for mocking purposes
-	DeleteFlexClusterExecute(r DeleteFlexClusterApiRequest) (any, *http.Response, error)
+	DeleteFlexClusterExecute(r DeleteFlexClusterApiRequest) (*http.Response, error)
 
 	/*
 		GetFlexCluster Return One Flex Cluster from One Project
 
-		Returns details for one flex cluster in the specified project. To use this resource, the requesting API Key must have the Project Read Only role.
+		Returns details for one flex cluster in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -87,7 +87,7 @@ type FlexClustersApi interface {
 	/*
 		ListFlexClusters Return All Flex Clusters from One Project
 
-		Returns details for all flex clusters in the specified project. To use this resource, the requesting API Key must have the Project Read Only role.
+		Returns details for all flex clusters in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -110,7 +110,7 @@ type FlexClustersApi interface {
 	/*
 		UpdateFlexCluster Update One Flex Cluster in One Project
 
-		Updates one flex cluster in the specified project. To use this resource, the requesting API Key must have the Project Owner role.
+		Updates one flex cluster in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -135,7 +135,7 @@ type FlexClustersApi interface {
 	/*
 		UpgradeFlexCluster Upgrade One Flex Cluster
 
-		Upgrades a flex cluster to a dedicated cluster (M10+) in the specified project. To use this resource, the requesting API key must have the Project Cluster Manager role.
+		Upgrades a flex cluster to a dedicated cluster (M10+) in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Cluster Manager role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -188,7 +188,7 @@ func (r CreateFlexClusterApiRequest) Execute() (*FlexClusterDescription20241113,
 /*
 CreateFlexCluster Create One Flex Cluster in One Project
 
-Creates one flex cluster in the specified project. To use this resource, the requesting API Key must have the Project Owner role.
+Creates one flex cluster in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -301,14 +301,14 @@ func (a *FlexClustersApiService) DeleteFlexClusterWithParams(ctx context.Context
 	}
 }
 
-func (r DeleteFlexClusterApiRequest) Execute() (any, *http.Response, error) {
+func (r DeleteFlexClusterApiRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteFlexClusterExecute(r)
 }
 
 /*
 DeleteFlexCluster Remove One Flex Cluster from One Project
 
-Removes one flex cluster from the specified project. The flex cluster must have termination protection disabled in order to be deleted. To use this resource, the requesting API Key must have the Project Owner role.
+Removes one flex cluster from the specified project. The flex cluster must have termination protection disabled in order to be deleted. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -325,19 +325,16 @@ func (a *FlexClustersApiService) DeleteFlexCluster(ctx context.Context, groupId 
 }
 
 // DeleteFlexClusterExecute executes the request
-//
-//	@return any
-func (a *FlexClustersApiService) DeleteFlexClusterExecute(r DeleteFlexClusterApiRequest) (any, *http.Response, error) {
+func (a *FlexClustersApiService) DeleteFlexClusterExecute(r DeleteFlexClusterApiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    any
-		formFiles           []formFile
-		localVarReturnValue any
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   any
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlexClustersApiService.DeleteFlexCluster")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/flexClusters/{name}"
@@ -367,34 +364,20 @@ func (a *FlexClustersApiService) DeleteFlexClusterExecute(r DeleteFlexClusterApi
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
 		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		defer localVarHTTPResponse.Body.Close()
-		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
-		if readErr != nil {
-			err = readErr
-		}
-		newErr := &GenericOpenAPIError{
-			body:  buf,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
 
 type GetFlexClusterApiRequest struct {
@@ -425,7 +408,7 @@ func (r GetFlexClusterApiRequest) Execute() (*FlexClusterDescription20241113, *h
 /*
 GetFlexCluster Return One Flex Cluster from One Project
 
-Returns details for one flex cluster in the specified project. To use this resource, the requesting API Key must have the Project Read Only role.
+Returns details for one flex cluster in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -566,7 +549,7 @@ func (r ListFlexClustersApiRequest) Execute() (*PaginatedFlexClusters20241113, *
 /*
 ListFlexClusters Return All Flex Clusters from One Project
 
-Returns details for all flex clusters in the specified project. To use this resource, the requesting API Key must have the Project Read Only role.
+Returns details for all flex clusters in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -704,7 +687,7 @@ func (r UpdateFlexClusterApiRequest) Execute() (*FlexClusterDescription20241113,
 /*
 UpdateFlexCluster Update One Flex Cluster in One Project
 
-Updates one flex cluster in the specified project. To use this resource, the requesting API Key must have the Project Owner role.
+Updates one flex cluster in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -827,7 +810,7 @@ func (r UpgradeFlexClusterApiRequest) Execute() (*FlexClusterDescription20241113
 /*
 UpgradeFlexCluster Upgrade One Flex Cluster
 
-Upgrades a flex cluster to a dedicated cluster (M10+) in the specified project. To use this resource, the requesting API key must have the Project Cluster Manager role.
+Upgrades a flex cluster to a dedicated cluster (M10+) in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Cluster Manager role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
