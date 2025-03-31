@@ -8,11 +8,11 @@ type DiskBackupCopySetting20240805 struct {
 	CloudProvider *string `json:"cloudProvider,omitempty"`
 	// List that describes which types of snapshots to copy.
 	Frequencies *[]string `json:"frequencies,omitempty"`
-	// Target region to copy snapshots belonging to zoneId. Please supply the 'Atlas Region' which can be found under [Cloud Providers](https://www.mongodb.com/docs/atlas/reference/cloud-providers/) 'regions' link.
+	// Target region to copy snapshots belonging to zoneId. Please supply the 'Atlas Region'.
 	RegionName *string `json:"regionName,omitempty"`
 	// Flag that indicates whether to copy the oplogs to the target region. You can use the oplogs to perform point-in-time restores.
 	ShouldCopyOplogs *bool `json:"shouldCopyOplogs,omitempty"`
-	// Unique 24-hexadecimal digit string that identifies the zone in a cluster. For global clusters, there can be multiple zones to choose from. For sharded clusters and replica set clusters, there is only one zone in the cluster. To find the Zone Id, do a GET request to Return One Cluster from One Project and consult the replicationSpecs array [Return One Cluster From One Project](#operation/getCluster).
+	// Unique 24-hexadecimal digit string that identifies the zone in a cluster. For global clusters, there can be multiple zones to choose from. For sharded clusters and replica set clusters, there is only one zone in the cluster. To find the Zone Id, do a GET request to Return One Cluster from One Project and consult the replicationSpecs array.
 	ZoneId string `json:"zoneId"`
 }
 

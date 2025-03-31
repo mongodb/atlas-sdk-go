@@ -6,7 +6,7 @@ package admin
 type VectorSearchIndexDefinition struct {
 	// Settings that configure the fields, one per object, to index. You must define at least one \"vector\" type field. You can optionally define \"filter\" type fields also.
 	Fields *[]any `json:"fields,omitempty"`
-	// Number of index partitions. Note: This feature is currently in preview.
+	// Number of index partitions. Allowed values are [1, 2, 4].
 	NumPartitions *int `json:"numPartitions,omitempty"`
 }
 

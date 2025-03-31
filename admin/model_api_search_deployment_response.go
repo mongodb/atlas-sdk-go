@@ -4,6 +4,9 @@ package admin
 
 // ApiSearchDeploymentResponse struct for ApiSearchDeploymentResponse
 type ApiSearchDeploymentResponse struct {
+	// Cloud service provider that manages your customer keys to provide an additional layer of Encryption At Rest for the cluster.
+	// Read only field.
+	EncryptionAtRestProvider *string `json:"encryptionAtRestProvider,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the project.
 	// Read only field.
 	GroupId *string `json:"groupId,omitempty"`
@@ -33,6 +36,39 @@ func NewApiSearchDeploymentResponse() *ApiSearchDeploymentResponse {
 func NewApiSearchDeploymentResponseWithDefaults() *ApiSearchDeploymentResponse {
 	this := ApiSearchDeploymentResponse{}
 	return &this
+}
+
+// GetEncryptionAtRestProvider returns the EncryptionAtRestProvider field value if set, zero value otherwise
+func (o *ApiSearchDeploymentResponse) GetEncryptionAtRestProvider() string {
+	if o == nil || IsNil(o.EncryptionAtRestProvider) {
+		var ret string
+		return ret
+	}
+	return *o.EncryptionAtRestProvider
+}
+
+// GetEncryptionAtRestProviderOk returns a tuple with the EncryptionAtRestProvider field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApiSearchDeploymentResponse) GetEncryptionAtRestProviderOk() (*string, bool) {
+	if o == nil || IsNil(o.EncryptionAtRestProvider) {
+		return nil, false
+	}
+
+	return o.EncryptionAtRestProvider, true
+}
+
+// HasEncryptionAtRestProvider returns a boolean if a field has been set.
+func (o *ApiSearchDeploymentResponse) HasEncryptionAtRestProvider() bool {
+	if o != nil && !IsNil(o.EncryptionAtRestProvider) {
+		return true
+	}
+
+	return false
+}
+
+// SetEncryptionAtRestProvider gets a reference to the given string and assigns it to the EncryptionAtRestProvider field.
+func (o *ApiSearchDeploymentResponse) SetEncryptionAtRestProvider(v string) {
+	o.EncryptionAtRestProvider = &v
 }
 
 // GetGroupId returns the GroupId field value if set, zero value otherwise

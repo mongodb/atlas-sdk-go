@@ -22,7 +22,7 @@ type AlertsNotificationRootForGroup struct {
 	EmailAddress *string `json:"emailAddress,omitempty"`
 	// Flag that indicates whether MongoDB Cloud should send email notifications. The resource requires this parameter when one of the following values have been set:  - `\"notifications.[n].typeName\" : \"ORG\"` - `\"notifications.[n].typeName\" : \"GROUP\"` - `\"notifications.[n].typeName\" : \"USER\"`
 	EmailEnabled *bool `json:"emailEnabled,omitempty"`
-	// List that contains the one or more [organization roles](https://dochub.mongodb.org/core/atlas-org-roles) that receive the configured alert. This parameter is available when `\"notifications.[n].typeName\" : \"GROUP\"` or `\"notifications.[n].typeName\" : \"ORG\"`. If you include this parameter, MongoDB Cloud sends alerts only to users assigned the roles you specify in the array. If you omit this parameter, MongoDB Cloud sends alerts to users assigned any role.
+	// List that contains the one or more organization roles that receive the configured alert. This parameter is available when `\"notifications.[n].typeName\" : \"GROUP\"` or `\"notifications.[n].typeName\" : \"ORG\"`. If you include this parameter, MongoDB Cloud sends alerts only to users assigned the roles you specify in the array. If you omit this parameter, MongoDB Cloud sends alerts to users assigned any role.
 	Roles *[]string `json:"roles,omitempty"`
 	// Flag that indicates whether MongoDB Cloud should send text message notifications. The resource requires this parameter when one of the following values have been set:  - `\"notifications.[n].typeName\" : \"ORG\"` - `\"notifications.[n].typeName\" : \"GROUP\"` - `\"notifications.[n].typeName\" : \"USER\"`
 	SmsEnabled *bool `json:"smsEnabled,omitempty"`
