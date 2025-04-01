@@ -13,7 +13,7 @@ import (
 type AccessTrackingApi interface {
 
 	/*
-		ListAccessLogsByClusterName Return Database Access History for One Cluster using Its Cluster Name
+		tmpListAccessLogsByClusterName Return Database Access History for One Cluster using Its Cluster Name
 
 		Returns the access logs of one cluster identified by the cluster's name. Access logs contain a list of authentication requests made against your cluster. You can't use this feature on tenant-tier clusters (M0, M2, M5). To use this resource, the requesting API Key must have the Project Monitoring Admin role or the Project Database Access Admin role.
 
