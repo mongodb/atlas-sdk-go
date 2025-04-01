@@ -199,12 +199,14 @@ type AtlasSearchApi interface {
 	/*
 		GetAtlasSearchDeployment Return Search Nodes
 
-		Return the Search Nodes for the specified cluster. Deprecated versions: v2-{2023-01-01}
+		Returns the Search Nodes for the specified cluster. Deprecated versions: v2-{2023-01-01}
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param clusterName Label that identifies the cluster to return the Search Nodes for.
 		@return GetAtlasSearchDeploymentApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for AtlasSearchApi
 	*/
 	GetAtlasSearchDeployment(ctx context.Context, groupId string, clusterName string) GetAtlasSearchDeploymentApiRequest
 	/*
@@ -214,6 +216,8 @@ type AtlasSearchApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param GetAtlasSearchDeploymentApiParams - Parameters for the request
 		@return GetAtlasSearchDeploymentApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for AtlasSearchApi
 	*/
 	GetAtlasSearchDeploymentWithParams(ctx context.Context, args *GetAtlasSearchDeploymentApiParams) GetAtlasSearchDeploymentApiRequest
 
@@ -1406,12 +1410,14 @@ func (r GetAtlasSearchDeploymentApiRequest) Execute() (*ApiSearchDeploymentRespo
 /*
 GetAtlasSearchDeployment Return Search Nodes
 
-Return the Search Nodes for the specified cluster. Deprecated versions: v2-{2023-01-01}
+Returns the Search Nodes for the specified cluster. Deprecated versions: v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param clusterName Label that identifies the cluster to return the Search Nodes for.
 	@return GetAtlasSearchDeploymentApiRequest
+
+Deprecated
 */
 func (a *AtlasSearchApiService) GetAtlasSearchDeployment(ctx context.Context, groupId string, clusterName string) GetAtlasSearchDeploymentApiRequest {
 	return GetAtlasSearchDeploymentApiRequest{
@@ -1425,6 +1431,8 @@ func (a *AtlasSearchApiService) GetAtlasSearchDeployment(ctx context.Context, gr
 // GetAtlasSearchDeploymentExecute executes the request
 //
 //	@return ApiSearchDeploymentResponse
+//
+// Deprecated
 func (a *AtlasSearchApiService) GetAtlasSearchDeploymentExecute(r GetAtlasSearchDeploymentApiRequest) (*ApiSearchDeploymentResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
