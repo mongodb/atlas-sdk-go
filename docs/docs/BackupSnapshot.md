@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ClusterId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the cluster with the snapshots you want to return. | [optional] [readonly] 
+**ClusterName** | Pointer to **string** | Human-readable label that identifies the cluster. | [optional] [readonly] 
 **Complete** | Pointer to **bool** | Flag that indicates whether the snapshot exists. This flag returns &#x60;false&#x60; while MongoDB Cloud creates the snapshot. | [optional] [readonly] 
 **Created** | Pointer to [**ApiBSONTimestamp**](ApiBSONTimestamp.md) |  | [optional] 
 **DoNotDelete** | Pointer to **bool** | Flag that indicates whether someone can delete this snapshot. You can&#39;t set &#x60;\&quot;doNotDelete\&quot; : true&#x60; and set a timestamp for **expires** in the same request. | [optional] 
@@ -59,6 +60,30 @@ SetClusterId sets ClusterId field to given value.
 `func (o *BackupSnapshot) HasClusterId() bool`
 
 HasClusterId returns a boolean if a field has been set.
+### GetClusterName
+
+`func (o *BackupSnapshot) GetClusterName() string`
+
+GetClusterName returns the ClusterName field if non-nil, zero value otherwise.
+
+### GetClusterNameOk
+
+`func (o *BackupSnapshot) GetClusterNameOk() (*string, bool)`
+
+GetClusterNameOk returns a tuple with the ClusterName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClusterName
+
+`func (o *BackupSnapshot) SetClusterName(v string)`
+
+SetClusterName sets ClusterName field to given value.
+
+### HasClusterName
+
+`func (o *BackupSnapshot) HasClusterName() bool`
+
+HasClusterName returns a boolean if a field has been set.
 ### GetComplete
 
 `func (o *BackupSnapshot) GetComplete() bool`
