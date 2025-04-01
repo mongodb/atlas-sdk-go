@@ -1,37 +1,62 @@
 #!/bin/bash
 set -eu
-GOPATH=$(go env GOPATH)
 
 # Inputs:
-# API_DIFF_OLD_COMMIT: commit before the API changes to compare with. If not provided, script will fail with "unbound variable" error
-# API_DIFF_NEW_COMMIT: commit with the new API changes. If not provided, script will fail with "unbound variable" error
-# TARGET_BREAKING_CHANGES_FILE - file to save breaking changes
 TARGET_BREAKING_CHANGES_FILE=${TARGET_BREAKING_CHANGES_FILE:-""}
 script_path=$(dirname "$0")
 
-echo "Installing go-apidiff"
-go install github.com/joelanford/go-apidiff@latest > /dev/null
+baseVersion() {
+  local base_version
+  # Create an isolated subshell to contain the sourcing to avoid overwritting version vars
+  base_version=$(
+    {
+      # shellcheck source=/dev/null
+      source "$script_path/extract-version.sh" >&2
+      # Output only the variable we want
+      echo "github.com/mongodb/atlas-sdk-go/$SDK_MAJOR_VERSION@$SDK_VERSION"
+    }
+  )
+  local ret_val=$?
+  if [ $ret_val -ne 0 ]; then
+    echo "Error when sourcing extract-version.sh" >&2
+    return $ret_val
+  fi
+  export BASE_VERSION="$base_version"
+}
 
-echo "Running breaking changes check comparing commits ${API_DIFF_OLD_COMMIT} and ${API_DIFF_NEW_COMMIT}"
+baseVersion
+
+echo "Installing gorelease"
+go install golang.org/x/exp/cmd/gorelease@latest >/dev/null
 
 pushd "$script_path/../../../" || exit ## workaround for --repo-path="../" not working
 echo "Changed directory to $(pwd)"
 set +e
-BREAKING_CHANGES=$("$GOPATH/bin/go-apidiff" "${API_DIFF_OLD_COMMIT}" "${API_DIFF_NEW_COMMIT}" --compare-imports="false" --print-compatible="false")
+
+RAW_CHANGES=$(gorelease -base "$BASE_VERSION")
+echo "Changes detected from BASE_VERSION $BASE_VERSION:"
+echo "$RAW_CHANGES"
+
+BREAKING_CHANGES=$(echo "$RAW_CHANGES" | awk '
+    /## incompatible changes/ {print "### incompatible changes"; collecting=1; next}
+    collecting && /^#/ {collecting=0}
+    collecting && NF {print "- "$0}
+')
+
 set -e
 popd || exit
 
 if [ -z "$BREAKING_CHANGES" ]; then
-    echo "No major breaking changes detected"
+  echo "No major breaking changes detected"
 else
-    echo "Detected major breaking changes in the release"
-    if [ -z "$TARGET_BREAKING_CHANGES_FILE" ]; then
-      echo "Breaking changes for the major release"
-      echo "$BREAKING_CHANGES"
-    else
-      echo "Creating the breaking changes file with following breaking changes:"
-      echo "$BREAKING_CHANGES"
-      echo -e "# Breaking Changes\n## SDK changes\n$BREAKING_CHANGES\n## API Changelog\n https://www.mongodb.com/docs/atlas/reference/api-resources-spec/changelog" \
-      > "$script_path/../breaking_changes/${TARGET_BREAKING_CHANGES_FILE}.md"
-    fi
+  echo "Detected major breaking changes in the release"
+  if [ -z "$TARGET_BREAKING_CHANGES_FILE" ]; then
+    echo "Breaking changes for the major release"
+    echo "$BREAKING_CHANGES"
+  else
+    echo "Creating the breaking changes file with following breaking changes:"
+    echo "$BREAKING_CHANGES"
+    echo -e "# Breaking Changes\n## SDK changes\n$BREAKING_CHANGES\n## API Changelog\n https://www.mongodb.com/docs/atlas/reference/api-resources-spec/changelog" \
+      >"$script_path/../breaking_changes/${TARGET_BREAKING_CHANGES_FILE}.md"
+  fi
 fi
