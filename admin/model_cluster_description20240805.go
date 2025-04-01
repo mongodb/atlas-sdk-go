@@ -9,7 +9,8 @@ import (
 // ClusterDescription20240805 struct for ClusterDescription20240805
 type ClusterDescription20240805 struct {
 	// If reconfiguration is necessary to regain a primary due to a regional outage, submit this field alongside your topology reconfiguration to request a new regional outage resistant topology. Forced reconfigurations during an outage of the majority of electable nodes carry a risk of data loss if replicated writes (even majority committed writes) have not been replicated to the new primary node. MongoDB Atlas docs contain more information. To proceed with an operation which carries that risk, set **acceptDataRisksAndForceReplicaSetReconfig** to the current date.
-	AcceptDataRisksAndForceReplicaSetReconfig *time.Time `json:"acceptDataRisksAndForceReplicaSetReconfig,omitempty"`
+	AcceptDataRisksAndForceReplicaSetReconfig *time.Time                            `json:"acceptDataRisksAndForceReplicaSetReconfig,omitempty"`
+	AdvancedConfiguration                     *ApiAtlasClusterAdvancedConfiguration `json:"advancedConfiguration,omitempty"`
 	// Flag that indicates whether the cluster can perform backups. If set to `true`, the cluster can perform backups. You must set this value to `true` for NVMe clusters. Backup uses [Cloud Backups](https://docs.atlas.mongodb.com/backup/cloud-backup/overview/) for dedicated clusters and [Shared Cluster Backups](https://docs.atlas.mongodb.com/backup/shared-tier/overview/) for tenant clusters. If set to `false`, the cluster doesn't use backups.
 	BackupEnabled *bool        `json:"backupEnabled,omitempty"`
 	BiConnector   *BiConnector `json:"biConnector,omitempty"`
@@ -28,10 +29,10 @@ type ClusterDescription20240805 struct {
 	DiskWarmingMode *string `json:"diskWarmingMode,omitempty"`
 	// Cloud service provider that manages your customer keys to provide an additional layer of encryption at rest for the cluster. To enable customer key management for encryption at rest, the cluster **replicationSpecs[n].regionConfigs[m].{type}Specs.instanceSize** setting must be `M10` or higher and `\"backupEnabled\" : false` or omitted entirely.
 	EncryptionAtRestProvider *string `json:"encryptionAtRestProvider,omitempty"`
-	// Feature compatibility version of the cluster.
+	// Feature compatibility version of the cluster. This will always appear regardless of whether FCV is pinned.
 	// Read only field.
 	FeatureCompatibilityVersion *string `json:"featureCompatibilityVersion,omitempty"`
-	// Feature compatibility version expiration date.
+	// Feature compatibility version expiration date. Will only appear if FCV is pinned.
 	// Read only field.
 	FeatureCompatibilityVersionExpirationDate *time.Time `json:"featureCompatibilityVersionExpirationDate,omitempty"`
 	// Set this field to configure the Sharding Management Mode when creating a new Global Cluster.  When set to false, the management mode is set to Atlas-Managed Sharding. This mode fully manages the sharding of your Global Cluster and is built to provide a seamless deployment experience.  When set to true, the management mode is set to Self-Managed Sharding. This mode leaves the management of shards in your hands and is built to provide an advanced and flexible deployment experience.  This setting cannot be changed once the cluster is deployed.
@@ -49,7 +50,7 @@ type ClusterDescription20240805 struct {
 	// Read only field.
 	Links                      *[]Link              `json:"links,omitempty"`
 	MongoDBEmployeeAccessGrant *EmployeeAccessGrant `json:"mongoDBEmployeeAccessGrant,omitempty"`
-	// MongoDB major version of the cluster.  On creation: Choose from the available versions of MongoDB, or leave unspecified for the current recommended default in the MongoDB Cloud platform. The recommended version is a recent Long Term Support version. The default is not guaranteed to be the most recently released version throughout the entire release cycle. For versions available in a specific project, see the linked documentation or use the API endpoint for [project LTS versions endpoint](#tag/Projects/operation/getProjectLTSVersions).   On update: Increase version only by 1 major version at a time. If the cluster is pinned to a MongoDB feature compatibility version exactly one major version below the current MongoDB version, the MongoDB version can be downgraded to the previous major version.
+	// MongoDB major version of the cluster. Set to the binary major version.   On creation: Choose from the available versions of MongoDB, or leave unspecified for the current recommended default in the MongoDB Cloud platform. The recommended version is a recent Long Term Support version. The default is not guaranteed to be the most recently released version throughout the entire release cycle. For versions available in a specific project, see the linked documentation or use the API endpoint for [project LTS versions endpoint](#tag/Projects/operation/getProjectLtsVersions).   On update: Increase version only by 1 major version at a time. If the cluster is pinned to a MongoDB feature compatibility version exactly one major version below the current MongoDB version, the MongoDB version can be downgraded to the previous major version.
 	MongoDBMajorVersion *string `json:"mongoDBMajorVersion,omitempty"`
 	// Version of MongoDB that the cluster runs.
 	// Read only field.
@@ -155,6 +156,39 @@ func (o *ClusterDescription20240805) HasAcceptDataRisksAndForceReplicaSetReconfi
 // SetAcceptDataRisksAndForceReplicaSetReconfig gets a reference to the given time.Time and assigns it to the AcceptDataRisksAndForceReplicaSetReconfig field.
 func (o *ClusterDescription20240805) SetAcceptDataRisksAndForceReplicaSetReconfig(v time.Time) {
 	o.AcceptDataRisksAndForceReplicaSetReconfig = &v
+}
+
+// GetAdvancedConfiguration returns the AdvancedConfiguration field value if set, zero value otherwise
+func (o *ClusterDescription20240805) GetAdvancedConfiguration() ApiAtlasClusterAdvancedConfiguration {
+	if o == nil || IsNil(o.AdvancedConfiguration) {
+		var ret ApiAtlasClusterAdvancedConfiguration
+		return ret
+	}
+	return *o.AdvancedConfiguration
+}
+
+// GetAdvancedConfigurationOk returns a tuple with the AdvancedConfiguration field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterDescription20240805) GetAdvancedConfigurationOk() (*ApiAtlasClusterAdvancedConfiguration, bool) {
+	if o == nil || IsNil(o.AdvancedConfiguration) {
+		return nil, false
+	}
+
+	return o.AdvancedConfiguration, true
+}
+
+// HasAdvancedConfiguration returns a boolean if a field has been set.
+func (o *ClusterDescription20240805) HasAdvancedConfiguration() bool {
+	if o != nil && !IsNil(o.AdvancedConfiguration) {
+		return true
+	}
+
+	return false
+}
+
+// SetAdvancedConfiguration gets a reference to the given ApiAtlasClusterAdvancedConfiguration and assigns it to the AdvancedConfiguration field.
+func (o *ClusterDescription20240805) SetAdvancedConfiguration(v ApiAtlasClusterAdvancedConfiguration) {
+	o.AdvancedConfiguration = &v
 }
 
 // GetBackupEnabled returns the BackupEnabled field value if set, zero value otherwise

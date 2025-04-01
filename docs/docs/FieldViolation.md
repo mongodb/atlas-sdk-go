@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Description** | Pointer to **string** | A description of why the request element is bad. | [optional] 
-**Field** | Pointer to **string** | A path that leads to a field in the request body. | [optional] 
+**Description** | **string** | A description of why the request element is bad. | 
+**Field** | **string** | A path that leads to a field in the request body. | 
 
 ## Methods
 
 ### NewFieldViolation
 
-`func NewFieldViolation() *FieldViolation`
+`func NewFieldViolation(description string, field string, ) *FieldViolation`
 
 NewFieldViolation instantiates a new FieldViolation object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetDescription sets Description field to given value.
 
-### HasDescription
-
-`func (o *FieldViolation) HasDescription() bool`
-
-HasDescription returns a boolean if a field has been set.
 ### GetField
 
 `func (o *FieldViolation) GetField() string`
@@ -69,11 +64,6 @@ and a boolean to check if the value has been set.
 
 SetField sets Field field to given value.
 
-### HasField
-
-`func (o *FieldViolation) HasField() bool`
-
-HasField returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -15,6 +15,8 @@ type AtlasOrganization struct {
 	Links *[]Link `json:"links,omitempty"`
 	// Human-readable label that identifies the organization.
 	Name string `json:"name"`
+	// Disables automatic alert creation. When set to true, no organization level alerts will be created automatically.
+	SkipDefaultAlertsSettings *bool `json:"skipDefaultAlertsSettings,omitempty"`
 }
 
 // NewAtlasOrganization instantiates a new AtlasOrganization object
@@ -24,6 +26,8 @@ type AtlasOrganization struct {
 func NewAtlasOrganization(name string) *AtlasOrganization {
 	this := AtlasOrganization{}
 	this.Name = name
+	var skipDefaultAlertsSettings bool = false
+	this.SkipDefaultAlertsSettings = &skipDefaultAlertsSettings
 	return &this
 }
 
@@ -32,6 +36,8 @@ func NewAtlasOrganization(name string) *AtlasOrganization {
 // but it doesn't guarantee that properties required by API are set
 func NewAtlasOrganizationWithDefaults() *AtlasOrganization {
 	this := AtlasOrganization{}
+	var skipDefaultAlertsSettings bool = false
+	this.SkipDefaultAlertsSettings = &skipDefaultAlertsSettings
 	return &this
 }
 
@@ -156,4 +162,37 @@ func (o *AtlasOrganization) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *AtlasOrganization) SetName(v string) {
 	o.Name = v
+}
+
+// GetSkipDefaultAlertsSettings returns the SkipDefaultAlertsSettings field value if set, zero value otherwise
+func (o *AtlasOrganization) GetSkipDefaultAlertsSettings() bool {
+	if o == nil || IsNil(o.SkipDefaultAlertsSettings) {
+		var ret bool
+		return ret
+	}
+	return *o.SkipDefaultAlertsSettings
+}
+
+// GetSkipDefaultAlertsSettingsOk returns a tuple with the SkipDefaultAlertsSettings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AtlasOrganization) GetSkipDefaultAlertsSettingsOk() (*bool, bool) {
+	if o == nil || IsNil(o.SkipDefaultAlertsSettings) {
+		return nil, false
+	}
+
+	return o.SkipDefaultAlertsSettings, true
+}
+
+// HasSkipDefaultAlertsSettings returns a boolean if a field has been set.
+func (o *AtlasOrganization) HasSkipDefaultAlertsSettings() bool {
+	if o != nil && !IsNil(o.SkipDefaultAlertsSettings) {
+		return true
+	}
+
+	return false
+}
+
+// SetSkipDefaultAlertsSettings gets a reference to the given bool and assigns it to the SkipDefaultAlertsSettings field.
+func (o *AtlasOrganization) SetSkipDefaultAlertsSettings(v bool) {
+	o.SkipDefaultAlertsSettings = &v
 }

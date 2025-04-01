@@ -38,31 +38,7 @@ type InvoicesApi interface {
 	CreateCostExplorerQueryProcessExecute(r CreateCostExplorerQueryProcessApiRequest) (*CostExplorerFilterResponse, *http.Response, error)
 
 	/*
-		CreateCostExplorerQueryProcess1 Return results from a given Cost Explorer query, or notify that the results are not ready yet.
-
-		Returns the usage details for a Cost Explorer query, if the query is finished and the data is ready to be viewed. If the data is not ready, a 'processing' response willindicate that another request should be sent later to view the data.
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-		@param token Unique 64 digit string that identifies the Cost Explorer query.
-		@return CreateCostExplorerQueryProcess1ApiRequest
-	*/
-	CreateCostExplorerQueryProcess1(ctx context.Context, orgId string, token string) CreateCostExplorerQueryProcess1ApiRequest
-	/*
-		CreateCostExplorerQueryProcess1 Return results from a given Cost Explorer query, or notify that the results are not ready yet.
-
-
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param CreateCostExplorerQueryProcess1ApiParams - Parameters for the request
-		@return CreateCostExplorerQueryProcess1ApiRequest
-	*/
-	CreateCostExplorerQueryProcess1WithParams(ctx context.Context, args *CreateCostExplorerQueryProcess1ApiParams) CreateCostExplorerQueryProcess1ApiRequest
-
-	// Method available only for mocking purposes
-	CreateCostExplorerQueryProcess1Execute(r CreateCostExplorerQueryProcess1ApiRequest) (string, *http.Response, error)
-
-	/*
-			DownloadInvoiceCSV Return One Organization Invoice as CSV
+			DownloadInvoiceCsv Return One Organization Invoice as CSV
 
 			Returns one invoice that MongoDB issued to the specified organization in CSV format. A unique 24-hexadecimal digit string identifies the invoice. To use this resource, the requesting API Key have at least the Organization Billing Viewer, Organization Billing Admin, or Organization Owner role. If you have a cross-organization setup, you can query for a linked invoice if you have the Organization Billing Admin or Organization Owner Role.
 		 To compute the total owed amount of the invoice - sum up total owed amount of each payment included into the invoice. To compute payment's owed amount - use formula *totalBilledCents* * *unitPrice* + *salesTax* - *startingBalanceCents*.
@@ -70,21 +46,45 @@ type InvoicesApi interface {
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 			@param invoiceId Unique 24-hexadecimal digit string that identifies the invoice submitted to the specified organization. Charges typically post the next day.
-			@return DownloadInvoiceCSVApiRequest
+			@return DownloadInvoiceCsvApiRequest
 	*/
-	DownloadInvoiceCSV(ctx context.Context, orgId string, invoiceId string) DownloadInvoiceCSVApiRequest
+	DownloadInvoiceCsv(ctx context.Context, orgId string, invoiceId string) DownloadInvoiceCsvApiRequest
 	/*
-		DownloadInvoiceCSV Return One Organization Invoice as CSV
+		DownloadInvoiceCsv Return One Organization Invoice as CSV
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param DownloadInvoiceCSVApiParams - Parameters for the request
-		@return DownloadInvoiceCSVApiRequest
+		@param DownloadInvoiceCsvApiParams - Parameters for the request
+		@return DownloadInvoiceCsvApiRequest
 	*/
-	DownloadInvoiceCSVWithParams(ctx context.Context, args *DownloadInvoiceCSVApiParams) DownloadInvoiceCSVApiRequest
+	DownloadInvoiceCsvWithParams(ctx context.Context, args *DownloadInvoiceCsvApiParams) DownloadInvoiceCsvApiRequest
 
 	// Method available only for mocking purposes
-	DownloadInvoiceCSVExecute(r DownloadInvoiceCSVApiRequest) (string, *http.Response, error)
+	DownloadInvoiceCsvExecute(r DownloadInvoiceCsvApiRequest) (string, *http.Response, error)
+
+	/*
+		GetCostExplorerQueryProcess Return results from a given Cost Explorer query, or notify that the results are not ready yet.
+
+		Returns the usage details for a Cost Explorer query, if the query is finished and the data is ready to be viewed. If the data is not ready, a 'processing' response willindicate that another request should be sent later to view the data.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param token Unique 64 digit string that identifies the Cost Explorer query.
+		@return GetCostExplorerQueryProcessApiRequest
+	*/
+	GetCostExplorerQueryProcess(ctx context.Context, orgId string, token string) GetCostExplorerQueryProcessApiRequest
+	/*
+		GetCostExplorerQueryProcess Return results from a given Cost Explorer query, or notify that the results are not ready yet.
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetCostExplorerQueryProcessApiParams - Parameters for the request
+		@return GetCostExplorerQueryProcessApiRequest
+	*/
+	GetCostExplorerQueryProcessWithParams(ctx context.Context, args *GetCostExplorerQueryProcessApiParams) GetCostExplorerQueryProcessApiRequest
+
+	// Method available only for mocking purposes
+	GetCostExplorerQueryProcessExecute(r GetCostExplorerQueryProcessApiRequest) (string, *http.Response, error)
 
 	/*
 			GetInvoice Return One Organization Invoice
@@ -307,54 +307,56 @@ func (a *InvoicesApiService) CreateCostExplorerQueryProcessExecute(r CreateCostE
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type CreateCostExplorerQueryProcess1ApiRequest struct {
+type DownloadInvoiceCsvApiRequest struct {
 	ctx        context.Context
 	ApiService InvoicesApi
 	orgId      string
-	token      string
+	invoiceId  string
 }
 
-type CreateCostExplorerQueryProcess1ApiParams struct {
-	OrgId string
-	Token string
+type DownloadInvoiceCsvApiParams struct {
+	OrgId     string
+	InvoiceId string
 }
 
-func (a *InvoicesApiService) CreateCostExplorerQueryProcess1WithParams(ctx context.Context, args *CreateCostExplorerQueryProcess1ApiParams) CreateCostExplorerQueryProcess1ApiRequest {
-	return CreateCostExplorerQueryProcess1ApiRequest{
+func (a *InvoicesApiService) DownloadInvoiceCsvWithParams(ctx context.Context, args *DownloadInvoiceCsvApiParams) DownloadInvoiceCsvApiRequest {
+	return DownloadInvoiceCsvApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		orgId:      args.OrgId,
-		token:      args.Token,
+		invoiceId:  args.InvoiceId,
 	}
 }
 
-func (r CreateCostExplorerQueryProcess1ApiRequest) Execute() (string, *http.Response, error) {
-	return r.ApiService.CreateCostExplorerQueryProcess1Execute(r)
+func (r DownloadInvoiceCsvApiRequest) Execute() (string, *http.Response, error) {
+	return r.ApiService.DownloadInvoiceCsvExecute(r)
 }
 
 /*
-CreateCostExplorerQueryProcess1 Return results from a given Cost Explorer query, or notify that the results are not ready yet.
+DownloadInvoiceCsv Return One Organization Invoice as CSV
 
-Returns the usage details for a Cost Explorer query, if the query is finished and the data is ready to be viewed. If the data is not ready, a 'processing' response willindicate that another request should be sent later to view the data.
+Returns one invoice that MongoDB issued to the specified organization in CSV format. A unique 24-hexadecimal digit string identifies the invoice. To use this resource, the requesting API Key have at least the Organization Billing Viewer, Organization Billing Admin, or Organization Owner role. If you have a cross-organization setup, you can query for a linked invoice if you have the Organization Billing Admin or Organization Owner Role.
+
+	To compute the total owed amount of the invoice - sum up total owed amount of each payment included into the invoice. To compute payment's owed amount - use formula *totalBilledCents* * *unitPrice* + *salesTax* - *startingBalanceCents*.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-	@param token Unique 64 digit string that identifies the Cost Explorer query.
-	@return CreateCostExplorerQueryProcess1ApiRequest
+	@param invoiceId Unique 24-hexadecimal digit string that identifies the invoice submitted to the specified organization. Charges typically post the next day.
+	@return DownloadInvoiceCsvApiRequest
 */
-func (a *InvoicesApiService) CreateCostExplorerQueryProcess1(ctx context.Context, orgId string, token string) CreateCostExplorerQueryProcess1ApiRequest {
-	return CreateCostExplorerQueryProcess1ApiRequest{
+func (a *InvoicesApiService) DownloadInvoiceCsv(ctx context.Context, orgId string, invoiceId string) DownloadInvoiceCsvApiRequest {
+	return DownloadInvoiceCsvApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		orgId:      orgId,
-		token:      token,
+		invoiceId:  invoiceId,
 	}
 }
 
-// CreateCostExplorerQueryProcess1Execute executes the request
+// DownloadInvoiceCsvExecute executes the request
 //
 //	@return string
-func (a *InvoicesApiService) CreateCostExplorerQueryProcess1Execute(r CreateCostExplorerQueryProcess1ApiRequest) (string, *http.Response, error) {
+func (a *InvoicesApiService) DownloadInvoiceCsvExecute(r DownloadInvoiceCsvApiRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -362,14 +364,14 @@ func (a *InvoicesApiService) CreateCostExplorerQueryProcess1Execute(r CreateCost
 		localVarReturnValue string
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InvoicesApiService.CreateCostExplorerQueryProcess1")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InvoicesApiService.DownloadInvoiceCsv")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/billing/costExplorer/usage/{token}"
+	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/csv"
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"token"+"}", url.PathEscape(r.token), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"invoiceId"+"}", url.PathEscape(r.invoiceId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -385,7 +387,7 @@ func (a *InvoicesApiService) CreateCostExplorerQueryProcess1Execute(r CreateCost
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+csv", "application/vnd.atlas.2023-01-01+json", "application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+csv", "application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -424,56 +426,54 @@ func (a *InvoicesApiService) CreateCostExplorerQueryProcess1Execute(r CreateCost
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type DownloadInvoiceCSVApiRequest struct {
+type GetCostExplorerQueryProcessApiRequest struct {
 	ctx        context.Context
 	ApiService InvoicesApi
 	orgId      string
-	invoiceId  string
+	token      string
 }
 
-type DownloadInvoiceCSVApiParams struct {
-	OrgId     string
-	InvoiceId string
+type GetCostExplorerQueryProcessApiParams struct {
+	OrgId string
+	Token string
 }
 
-func (a *InvoicesApiService) DownloadInvoiceCSVWithParams(ctx context.Context, args *DownloadInvoiceCSVApiParams) DownloadInvoiceCSVApiRequest {
-	return DownloadInvoiceCSVApiRequest{
+func (a *InvoicesApiService) GetCostExplorerQueryProcessWithParams(ctx context.Context, args *GetCostExplorerQueryProcessApiParams) GetCostExplorerQueryProcessApiRequest {
+	return GetCostExplorerQueryProcessApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		orgId:      args.OrgId,
-		invoiceId:  args.InvoiceId,
+		token:      args.Token,
 	}
 }
 
-func (r DownloadInvoiceCSVApiRequest) Execute() (string, *http.Response, error) {
-	return r.ApiService.DownloadInvoiceCSVExecute(r)
+func (r GetCostExplorerQueryProcessApiRequest) Execute() (string, *http.Response, error) {
+	return r.ApiService.GetCostExplorerQueryProcessExecute(r)
 }
 
 /*
-DownloadInvoiceCSV Return One Organization Invoice as CSV
+GetCostExplorerQueryProcess Return results from a given Cost Explorer query, or notify that the results are not ready yet.
 
-Returns one invoice that MongoDB issued to the specified organization in CSV format. A unique 24-hexadecimal digit string identifies the invoice. To use this resource, the requesting API Key have at least the Organization Billing Viewer, Organization Billing Admin, or Organization Owner role. If you have a cross-organization setup, you can query for a linked invoice if you have the Organization Billing Admin or Organization Owner Role.
-
-	To compute the total owed amount of the invoice - sum up total owed amount of each payment included into the invoice. To compute payment's owed amount - use formula *totalBilledCents* * *unitPrice* + *salesTax* - *startingBalanceCents*.
+Returns the usage details for a Cost Explorer query, if the query is finished and the data is ready to be viewed. If the data is not ready, a 'processing' response willindicate that another request should be sent later to view the data.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-	@param invoiceId Unique 24-hexadecimal digit string that identifies the invoice submitted to the specified organization. Charges typically post the next day.
-	@return DownloadInvoiceCSVApiRequest
+	@param token Unique 64 digit string that identifies the Cost Explorer query.
+	@return GetCostExplorerQueryProcessApiRequest
 */
-func (a *InvoicesApiService) DownloadInvoiceCSV(ctx context.Context, orgId string, invoiceId string) DownloadInvoiceCSVApiRequest {
-	return DownloadInvoiceCSVApiRequest{
+func (a *InvoicesApiService) GetCostExplorerQueryProcess(ctx context.Context, orgId string, token string) GetCostExplorerQueryProcessApiRequest {
+	return GetCostExplorerQueryProcessApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		orgId:      orgId,
-		invoiceId:  invoiceId,
+		token:      token,
 	}
 }
 
-// DownloadInvoiceCSVExecute executes the request
+// GetCostExplorerQueryProcessExecute executes the request
 //
 //	@return string
-func (a *InvoicesApiService) DownloadInvoiceCSVExecute(r DownloadInvoiceCSVApiRequest) (string, *http.Response, error) {
+func (a *InvoicesApiService) GetCostExplorerQueryProcessExecute(r GetCostExplorerQueryProcessApiRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -481,14 +481,14 @@ func (a *InvoicesApiService) DownloadInvoiceCSVExecute(r DownloadInvoiceCSVApiRe
 		localVarReturnValue string
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InvoicesApiService.DownloadInvoiceCSV")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InvoicesApiService.GetCostExplorerQueryProcess")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/csv"
+	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/billing/costExplorer/usage/{token}"
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"invoiceId"+"}", url.PathEscape(r.invoiceId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"token"+"}", url.PathEscape(r.token), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -504,7 +504,7 @@ func (a *InvoicesApiService) DownloadInvoiceCSVExecute(r DownloadInvoiceCSVApiRe
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+csv", "application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+csv", "application/vnd.atlas.2023-01-01+json", "application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)

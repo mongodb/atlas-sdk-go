@@ -34,26 +34,26 @@ type RootApi interface {
 	GetSystemStatusExecute(r GetSystemStatusApiRequest) (*SystemStatus, *http.Response, error)
 
 	/*
-		ReturnAllControlPlaneIPAddresses Return All Control Plane IP Addresses
+		ReturnAllControlPlaneIpAddresses Return All Control Plane IP Addresses
 
-		Returns all control plane IP addresses. Currently, inbound Atlas control plane IP addresses are not yet available. The inbound IP address list in your API response is empty. To manually retrieve a list of inbound Atlas control plane IP addresses, see [Required Inbound Access](https://www.mongodb.com/docs/atlas/setup-cluster-security/#std-label-atlas-required-inbound-access).
+		Returns all control plane IP addresses.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ReturnAllControlPlaneIPAddressesApiRequest
+		@return ReturnAllControlPlaneIpAddressesApiRequest
 	*/
-	ReturnAllControlPlaneIPAddresses(ctx context.Context) ReturnAllControlPlaneIPAddressesApiRequest
+	ReturnAllControlPlaneIpAddresses(ctx context.Context) ReturnAllControlPlaneIpAddressesApiRequest
 	/*
-		ReturnAllControlPlaneIPAddresses Return All Control Plane IP Addresses
+		ReturnAllControlPlaneIpAddresses Return All Control Plane IP Addresses
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param ReturnAllControlPlaneIPAddressesApiParams - Parameters for the request
-		@return ReturnAllControlPlaneIPAddressesApiRequest
+		@param ReturnAllControlPlaneIpAddressesApiParams - Parameters for the request
+		@return ReturnAllControlPlaneIpAddressesApiRequest
 	*/
-	ReturnAllControlPlaneIPAddressesWithParams(ctx context.Context, args *ReturnAllControlPlaneIPAddressesApiParams) ReturnAllControlPlaneIPAddressesApiRequest
+	ReturnAllControlPlaneIpAddressesWithParams(ctx context.Context, args *ReturnAllControlPlaneIpAddressesApiParams) ReturnAllControlPlaneIpAddressesApiRequest
 
 	// Method available only for mocking purposes
-	ReturnAllControlPlaneIPAddressesExecute(r ReturnAllControlPlaneIPAddressesApiRequest) (*ControlPlaneIPAddresses, *http.Response, error)
+	ReturnAllControlPlaneIpAddressesExecute(r ReturnAllControlPlaneIpAddressesApiRequest) (*ControlPlaneIPAddresses, *http.Response, error)
 }
 
 // RootApiService RootApi service
@@ -164,44 +164,44 @@ func (a *RootApiService) GetSystemStatusExecute(r GetSystemStatusApiRequest) (*S
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ReturnAllControlPlaneIPAddressesApiRequest struct {
+type ReturnAllControlPlaneIpAddressesApiRequest struct {
 	ctx        context.Context
 	ApiService RootApi
 }
 
-type ReturnAllControlPlaneIPAddressesApiParams struct {
+type ReturnAllControlPlaneIpAddressesApiParams struct {
 }
 
-func (a *RootApiService) ReturnAllControlPlaneIPAddressesWithParams(ctx context.Context, args *ReturnAllControlPlaneIPAddressesApiParams) ReturnAllControlPlaneIPAddressesApiRequest {
-	return ReturnAllControlPlaneIPAddressesApiRequest{
+func (a *RootApiService) ReturnAllControlPlaneIpAddressesWithParams(ctx context.Context, args *ReturnAllControlPlaneIpAddressesApiParams) ReturnAllControlPlaneIpAddressesApiRequest {
+	return ReturnAllControlPlaneIpAddressesApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
 }
 
-func (r ReturnAllControlPlaneIPAddressesApiRequest) Execute() (*ControlPlaneIPAddresses, *http.Response, error) {
-	return r.ApiService.ReturnAllControlPlaneIPAddressesExecute(r)
+func (r ReturnAllControlPlaneIpAddressesApiRequest) Execute() (*ControlPlaneIPAddresses, *http.Response, error) {
+	return r.ApiService.ReturnAllControlPlaneIpAddressesExecute(r)
 }
 
 /*
-ReturnAllControlPlaneIPAddresses Return All Control Plane IP Addresses
+ReturnAllControlPlaneIpAddresses Return All Control Plane IP Addresses
 
-Returns all control plane IP addresses. Currently, inbound Atlas control plane IP addresses are not yet available. The inbound IP address list in your API response is empty. To manually retrieve a list of inbound Atlas control plane IP addresses, see [Required Inbound Access](https://www.mongodb.com/docs/atlas/setup-cluster-security/#std-label-atlas-required-inbound-access).
+Returns all control plane IP addresses.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ReturnAllControlPlaneIPAddressesApiRequest
+	@return ReturnAllControlPlaneIpAddressesApiRequest
 */
-func (a *RootApiService) ReturnAllControlPlaneIPAddresses(ctx context.Context) ReturnAllControlPlaneIPAddressesApiRequest {
-	return ReturnAllControlPlaneIPAddressesApiRequest{
+func (a *RootApiService) ReturnAllControlPlaneIpAddresses(ctx context.Context) ReturnAllControlPlaneIpAddressesApiRequest {
+	return ReturnAllControlPlaneIpAddressesApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
 }
 
-// ReturnAllControlPlaneIPAddressesExecute executes the request
+// ReturnAllControlPlaneIpAddressesExecute executes the request
 //
 //	@return ControlPlaneIPAddresses
-func (a *RootApiService) ReturnAllControlPlaneIPAddressesExecute(r ReturnAllControlPlaneIPAddressesApiRequest) (*ControlPlaneIPAddresses, *http.Response, error) {
+func (a *RootApiService) ReturnAllControlPlaneIpAddressesExecute(r ReturnAllControlPlaneIpAddressesApiRequest) (*ControlPlaneIPAddresses, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -209,7 +209,7 @@ func (a *RootApiService) ReturnAllControlPlaneIPAddressesExecute(r ReturnAllCont
 		localVarReturnValue *ControlPlaneIPAddresses
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RootApiService.ReturnAllControlPlaneIPAddresses")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RootApiService.ReturnAllControlPlaneIpAddresses")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
