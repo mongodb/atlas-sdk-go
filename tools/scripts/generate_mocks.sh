@@ -20,7 +20,7 @@ packages:
 EOF
 
 	# Run mockery with the temporary config
-	docker run --rm -u "$(id -u):$(id -g)" -v "$(dirname "$PWD")":/src --workdir=/src vektra/mockery:v2.42.1 --config=/src/temp_mockery.yaml
+	docker run --rm -u "$(id -u):$(id -g)" -v "$(dirname "$PWD")":/src --workdir=/src vektra/mockery:latest --config=/src/temp_mockery.yaml
 
 	# Clean up temp config
 	rm -f ../temp_mockery.yaml
