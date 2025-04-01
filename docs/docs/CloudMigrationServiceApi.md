@@ -128,7 +128,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    liveMigrationRequest20240530 := *openapiclient.NewLiveMigrationRequest20240530(*openapiclient.NewDestination("ClusterName_example", "9b43a5b329223c3a1591a678", "HostnameSchemaType_example"), *openapiclient.NewSource("ClusterName_example", "9b43a5b329223c3a1591a678", false, false)) // LiveMigrationRequest20240530 | 
+    liveMigrationRequest20240530 := *openapiclient.NewLiveMigrationRequest20240530(*openapiclient.NewDestination("ClusterName_example", "32b6e34b3d91647abb20e7b8", "HostnameSchemaType_example"), *openapiclient.NewSource("ClusterName_example", "32b6e34b3d91647abb20e7b8", false, false)) // LiveMigrationRequest20240530 | 
 
     resp, r, err := sdk.CloudMigrationServiceApi.CreatePushMigration(context.Background(), groupId, &liveMigrationRequest20240530).Execute()
     if err != nil {
@@ -617,7 +617,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    liveMigrationRequest20240530 := *openapiclient.NewLiveMigrationRequest20240530(*openapiclient.NewDestination("ClusterName_example", "9b43a5b329223c3a1591a678", "HostnameSchemaType_example"), *openapiclient.NewSource("ClusterName_example", "9b43a5b329223c3a1591a678", false, false)) // LiveMigrationRequest20240530 | 
+    liveMigrationRequest20240530 := *openapiclient.NewLiveMigrationRequest20240530(*openapiclient.NewDestination("ClusterName_example", "32b6e34b3d91647abb20e7b8", "HostnameSchemaType_example"), *openapiclient.NewSource("ClusterName_example", "32b6e34b3d91647abb20e7b8", false, false)) // LiveMigrationRequest20240530 | 
 
     resp, r, err := sdk.CloudMigrationServiceApi.ValidateMigration(context.Background(), groupId, &liveMigrationRequest20240530).Execute()
     if err != nil {
