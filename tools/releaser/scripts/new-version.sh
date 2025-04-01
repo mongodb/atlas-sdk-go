@@ -18,14 +18,14 @@ if [ "$NEW_RESOURCE_VERSION" == "$SDK_RESOURCE_VERSION" ]; then
 	# Update the SDK_VERSION
 	SDK_VERSION="${SDK_MAJOR_VERSION}.${new_minor_version}.0"
 
-	# echo "Print breaking changes"
-	# source "$script_path/breaking-changes.sh"
-	# if [ -n "$BREAKING_CHANGES" ]; then
-	# 	echo "BREAKING CHANGES DETECTED FOR NON MAJOR VERSION BUMP"
-	# 	# shellcheck source=/dev/null
-	# 	source "$script_path/update-version.sh"
-	# 	exit 0;
-	# fi
+	echo "Print breaking changes"
+	# shellcheck disable=SC1091
+	source "$script_path/breaking-changes.sh"
+	if [ -n "$BREAKING_CHANGES" ]; then
+		echo "BREAKING CHANGES DETECTED FOR NON MAJOR VERSION BUMP"
+		# source "$script_path/update-version.sh"	# we don't want to update the version so commenting this out for now
+		# exit 0;
+	fi
 else
 	# Update the SDK_VERSION
 	echo "Resource Version is not up to date. Changing major version."
