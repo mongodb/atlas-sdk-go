@@ -1,4 +1,4 @@
-name: Generate SDK
+name: Generate SDK from Tag
 on:
   workflow_dispatch:
     inputs:
@@ -14,12 +14,45 @@ jobs:
   generate-client:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      # First checkout your modified branch to access the modified scripts
+      - name: Checkout modified branch
+        uses: actions/checkout@v4
+        with:
+          ref: modify-workflow-for-tag-pr  # Replace with your actual branch name
+          path: modified-scripts
+
+      # Then checkout the tag to a different directory
+      - name: Checkout tag
         uses: actions/checkout@v4
         with:
           fetch-depth: 0  # Fetch all history to access tags
+          path: tag-checkout
 
+      # Copy your modified scripts to the tag directory
+      - name: Copy modified scripts
+        run: |
+          # Copy the modified scripts
+          cp modified-scripts/tools/releaser/scripts/extract-version.sh tag-checkout/tools/releaser/scripts/
+          cp modified-scripts/tools/releaser/scripts/breaking-changes.sh tag-checkout/tools/releaser/scripts/
+          cp modified-scripts/tools/scripts/fetch.sh tag-checkout/tools/scripts/
+          mkdir -p tag-checkout/openapi/
+          cp modified-scripts/openapi/versions.json tag-checkout/openapi/
+          
+          # Make scripts executable
+          chmod +x tag-checkout/tools/releaser/scripts/extract-version.sh
+          chmod +x tag-checkout/tools/releaser/scripts/breaking-changes.sh
+          chmod +x tag-checkout/tools/scripts/fetch.sh
+          
+          # Show what we've copied for verification
+          echo "Modified scripts copied:"
+          ls -la tag-checkout/tools/releaser/scripts/extract-version.sh
+          ls -la tag-checkout/tools/releaser/scripts/breaking-changes.sh
+          ls -la tag-checkout/tools/scripts/fetch.sh
+          ls -la tag-checkout/openapi/versions.json
+
+      # Set the working directory to the tag checkout for all subsequent steps
       - name: Set base reference
+        working-directory: tag-checkout
         run: |
           BASE_REF="${{ github.event.inputs.base_tag }}"
           echo "Using tag $BASE_REF as base"
@@ -30,15 +63,16 @@ jobs:
       
       - uses: actions/setup-go@v5
         with:
-          go-version-file: 'go.mod'
+          go-version-file: 'tag-checkout/go.mod'
           
-      - run: make install-goimports
+      - run: cd tag-checkout && make install-goimports
       
       - name: Fetch changes
-        working-directory: ./tools
+        working-directory: tag-checkout/tools
         run: make fetch_openapi
         
       - name: Commit OpenAPI changes
+        working-directory: tag-checkout
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
@@ -46,10 +80,11 @@ jobs:
           git commit --allow-empty -m "fix: update OpenAPI spec"
           
       - name: Set old commit for SDK API diff
+        working-directory: tag-checkout
         run: echo "API_DIFF_OLD_COMMIT=$(git rev-parse HEAD)" >> $GITHUB_ENV
         
       - name: Run generation
-        working-directory: ./tools
+        working-directory: tag-checkout/tools
         run: |
           export PATH=${PATH}:`go env GOPATH`/bin
           make clean_and_generate
@@ -59,44 +94,50 @@ jobs:
         id: verify-changed-files
         with:
           files: |
-             ./admin/**/*
+             tag-checkout/admin/**/*
              
       - name: Run docs generation
         if: steps.verify-changed-files.outputs.files_changed == 'true'
+        working-directory: tag-checkout
         run: make gen-docs
         
       - name: Commit Generator Changes
         if: steps.verify-changed-files.outputs.files_changed == 'true'
+        working-directory: tag-checkout
         run: |
           git add . && git commit -m "fix: Generated SDK source code and docs"
           
       - name: Set new commit for SDK API diff
         if: steps.verify-changed-files.outputs.files_changed == 'true'
+        working-directory: tag-checkout
         run: echo "API_DIFF_NEW_COMMIT=$(git rev-parse HEAD)" >> $GITHUB_ENV
         
       - name: Release updates
         if: steps.verify-changed-files.outputs.files_changed == 'true'
-        working-directory: ./tools
-        run: make new-release        
+        working-directory: tag-checkout/tools
+        run: make new-release
+        
       - name: Ensure all markdown code is formatted
         if: steps.verify-changed-files.outputs.files_changed == 'true'
-        working-directory: ./tools
+        working-directory: tag-checkout/tools
         run: |
           npm install && npm run format
           
       - name: Install dependencies for mocks
         if: steps.verify-changed-files.outputs.files_changed == 'true'
+        working-directory: tag-checkout
         run: |
           go mod tidy
           go get -u golang.org/x/oauth2
           
       - name: Run mock generation
-        working-directory: ./tools
+        working-directory: tag-checkout/tools
         if: steps.verify-changed-files.outputs.files_changed == 'true'
         run: make generate_mocks
         
       - name: Prepare for PR creation
         if: steps.verify-changed-files.outputs.files_changed == 'true'
+        working-directory: tag-checkout
         run: |
           # Make sure there are no untracked files or stashed changes
           git add .
@@ -112,6 +153,7 @@ jobs:
           delete-branch: false
           branch: ${{ github.event.inputs.target_branch }}
           base: temp-branch-from-tag
+          path: tag-checkout
           body: |
             Automatic update for MongoDB Atlas Go Client based on OpenAPI changes.
             PR contains autogenerated changes for the MongoDB Atlas client.
@@ -119,6 +161,7 @@ jobs:
             ## Source Information
             
             This PR was created using tag ${{ github.event.inputs.base_tag }} as the base.
+            This workflow used modified scripts to maintain compatibility with the v20240805 version.
             
             ## Automated checks
 
