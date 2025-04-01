@@ -77,12 +77,6 @@ type APIClient struct {
 
 	FederatedAuthenticationApi FederatedAuthenticationApi
 
-	FlexClustersApi FlexClustersApi
-
-	FlexRestoreJobsApi FlexRestoreJobsApi
-
-	FlexSnapshotsApi FlexSnapshotsApi
-
 	GlobalClustersApi GlobalClustersApi
 
 	InvoicesApi InvoicesApi
@@ -175,9 +169,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.EncryptionAtRestUsingCustomerKeyManagementApi = (*EncryptionAtRestUsingCustomerKeyManagementApiService)(&c.common)
 	c.EventsApi = (*EventsApiService)(&c.common)
 	c.FederatedAuthenticationApi = (*FederatedAuthenticationApiService)(&c.common)
-	c.FlexClustersApi = (*FlexClustersApiService)(&c.common)
-	c.FlexRestoreJobsApi = (*FlexRestoreJobsApiService)(&c.common)
-	c.FlexSnapshotsApi = (*FlexSnapshotsApiService)(&c.common)
 	c.GlobalClustersApi = (*GlobalClustersApiService)(&c.common)
 	c.InvoicesApi = (*InvoicesApiService)(&c.common)
 	c.LDAPConfigurationApi = (*LDAPConfigurationApiService)(&c.common)

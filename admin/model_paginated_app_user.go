@@ -2,38 +2,38 @@
 
 package admin
 
-// PaginatedFlexClusters20241113 struct for PaginatedFlexClusters20241113
-type PaginatedFlexClusters20241113 struct {
+// PaginatedAppUser struct for PaginatedAppUser
+type PaginatedAppUser struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
 	// List of returned documents that MongoDB Cloud provides when completing this request.
 	// Read only field.
-	Results *[]FlexClusterDescription20241113 `json:"results,omitempty"`
+	Results *[]CloudAppUser `json:"results,omitempty"`
 	// Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact.
 	// Read only field.
 	TotalCount *int `json:"totalCount,omitempty"`
 }
 
-// NewPaginatedFlexClusters20241113 instantiates a new PaginatedFlexClusters20241113 object
+// NewPaginatedAppUser instantiates a new PaginatedAppUser object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedFlexClusters20241113() *PaginatedFlexClusters20241113 {
-	this := PaginatedFlexClusters20241113{}
+func NewPaginatedAppUser() *PaginatedAppUser {
+	this := PaginatedAppUser{}
 	return &this
 }
 
-// NewPaginatedFlexClusters20241113WithDefaults instantiates a new PaginatedFlexClusters20241113 object
+// NewPaginatedAppUserWithDefaults instantiates a new PaginatedAppUser object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewPaginatedFlexClusters20241113WithDefaults() *PaginatedFlexClusters20241113 {
-	this := PaginatedFlexClusters20241113{}
+func NewPaginatedAppUserWithDefaults() *PaginatedAppUser {
+	this := PaginatedAppUser{}
 	return &this
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
-func (o *PaginatedFlexClusters20241113) GetLinks() []Link {
+func (o *PaginatedAppUser) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
 		return ret
@@ -43,7 +43,7 @@ func (o *PaginatedFlexClusters20241113) GetLinks() []Link {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedFlexClusters20241113) GetLinksOk() (*[]Link, bool) {
+func (o *PaginatedAppUser) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -52,7 +52,7 @@ func (o *PaginatedFlexClusters20241113) GetLinksOk() (*[]Link, bool) {
 }
 
 // HasLinks returns a boolean if a field has been set.
-func (o *PaginatedFlexClusters20241113) HasLinks() bool {
+func (o *PaginatedAppUser) HasLinks() bool {
 	if o != nil && !IsNil(o.Links) {
 		return true
 	}
@@ -61,14 +61,14 @@ func (o *PaginatedFlexClusters20241113) HasLinks() bool {
 }
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
-func (o *PaginatedFlexClusters20241113) SetLinks(v []Link) {
+func (o *PaginatedAppUser) SetLinks(v []Link) {
 	o.Links = &v
 }
 
 // GetResults returns the Results field value if set, zero value otherwise
-func (o *PaginatedFlexClusters20241113) GetResults() []FlexClusterDescription20241113 {
+func (o *PaginatedAppUser) GetResults() []CloudAppUser {
 	if o == nil || IsNil(o.Results) {
-		var ret []FlexClusterDescription20241113
+		var ret []CloudAppUser
 		return ret
 	}
 	return *o.Results
@@ -76,7 +76,7 @@ func (o *PaginatedFlexClusters20241113) GetResults() []FlexClusterDescription202
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedFlexClusters20241113) GetResultsOk() (*[]FlexClusterDescription20241113, bool) {
+func (o *PaginatedAppUser) GetResultsOk() (*[]CloudAppUser, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
@@ -85,7 +85,7 @@ func (o *PaginatedFlexClusters20241113) GetResultsOk() (*[]FlexClusterDescriptio
 }
 
 // HasResults returns a boolean if a field has been set.
-func (o *PaginatedFlexClusters20241113) HasResults() bool {
+func (o *PaginatedAppUser) HasResults() bool {
 	if o != nil && !IsNil(o.Results) {
 		return true
 	}
@@ -93,13 +93,13 @@ func (o *PaginatedFlexClusters20241113) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []FlexClusterDescription20241113 and assigns it to the Results field.
-func (o *PaginatedFlexClusters20241113) SetResults(v []FlexClusterDescription20241113) {
+// SetResults gets a reference to the given []CloudAppUser and assigns it to the Results field.
+func (o *PaginatedAppUser) SetResults(v []CloudAppUser) {
 	o.Results = &v
 }
 
 // GetTotalCount returns the TotalCount field value if set, zero value otherwise
-func (o *PaginatedFlexClusters20241113) GetTotalCount() int {
+func (o *PaginatedAppUser) GetTotalCount() int {
 	if o == nil || IsNil(o.TotalCount) {
 		var ret int
 		return ret
@@ -109,7 +109,7 @@ func (o *PaginatedFlexClusters20241113) GetTotalCount() int {
 
 // GetTotalCountOk returns a tuple with the TotalCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedFlexClusters20241113) GetTotalCountOk() (*int, bool) {
+func (o *PaginatedAppUser) GetTotalCountOk() (*int, bool) {
 	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
@@ -118,7 +118,7 @@ func (o *PaginatedFlexClusters20241113) GetTotalCountOk() (*int, bool) {
 }
 
 // HasTotalCount returns a boolean if a field has been set.
-func (o *PaginatedFlexClusters20241113) HasTotalCount() bool {
+func (o *PaginatedAppUser) HasTotalCount() bool {
 	if o != nil && !IsNil(o.TotalCount) {
 		return true
 	}
@@ -127,6 +127,6 @@ func (o *PaginatedFlexClusters20241113) HasTotalCount() bool {
 }
 
 // SetTotalCount gets a reference to the given int and assigns it to the TotalCount field.
-func (o *PaginatedFlexClusters20241113) SetTotalCount(v int) {
+func (o *PaginatedAppUser) SetTotalCount(v int) {
 	o.TotalCount = &v
 }
