@@ -57,6 +57,11 @@ jobs:
         working-directory: ./tools
         run: |
           npm install && npm run format
+      - name: Install dependencies for mocks
+        if: steps.verify-changed-files.outputs.files_changed == 'true'
+        run: |
+          go mod tidy
+          go get -u golang.org/x/oauth2
       - name: Run mock generation
         working-directory: ./tools
         if: steps.verify-changed-files.outputs.files_changed == 'true'
