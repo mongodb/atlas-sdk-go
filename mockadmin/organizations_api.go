@@ -1477,167 +1477,6 @@ func (_c *OrganizationsApi_ListOrganizationProjectsWithParams_Call) RunAndReturn
 	return _c
 }
 
-// ListOrganizationUsers provides a mock function with given fields: ctx, orgId
-func (_m *OrganizationsApi) ListOrganizationUsers(ctx context.Context, orgId string) admin.ListOrganizationUsersApiRequest {
-	ret := _m.Called(ctx, orgId)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListOrganizationUsers")
-	}
-
-	var r0 admin.ListOrganizationUsersApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string) admin.ListOrganizationUsersApiRequest); ok {
-		r0 = rf(ctx, orgId)
-	} else {
-		r0 = ret.Get(0).(admin.ListOrganizationUsersApiRequest)
-	}
-
-	return r0
-}
-
-// OrganizationsApi_ListOrganizationUsers_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListOrganizationUsers'
-type OrganizationsApi_ListOrganizationUsers_Call struct {
-	*mock.Call
-}
-
-// ListOrganizationUsers is a helper method to define mock.On call
-//   - ctx context.Context
-//   - orgId string
-func (_e *OrganizationsApi_Expecter) ListOrganizationUsers(ctx any, orgId any) *OrganizationsApi_ListOrganizationUsers_Call {
-	return &OrganizationsApi_ListOrganizationUsers_Call{Call: _e.mock.On("ListOrganizationUsers", ctx, orgId)}
-}
-
-func (_c *OrganizationsApi_ListOrganizationUsers_Call) Run(run func(ctx context.Context, orgId string)) *OrganizationsApi_ListOrganizationUsers_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string))
-	})
-	return _c
-}
-
-func (_c *OrganizationsApi_ListOrganizationUsers_Call) Return(_a0 admin.ListOrganizationUsersApiRequest) *OrganizationsApi_ListOrganizationUsers_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *OrganizationsApi_ListOrganizationUsers_Call) RunAndReturn(run func(context.Context, string) admin.ListOrganizationUsersApiRequest) *OrganizationsApi_ListOrganizationUsers_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ListOrganizationUsersExecute provides a mock function with given fields: r
-func (_m *OrganizationsApi) ListOrganizationUsersExecute(r admin.ListOrganizationUsersApiRequest) (*admin.PaginatedAppUser, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListOrganizationUsersExecute")
-	}
-
-	var r0 *admin.PaginatedAppUser
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListOrganizationUsersApiRequest) (*admin.PaginatedAppUser, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.ListOrganizationUsersApiRequest) *admin.PaginatedAppUser); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.PaginatedAppUser)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.ListOrganizationUsersApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.ListOrganizationUsersApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// OrganizationsApi_ListOrganizationUsersExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListOrganizationUsersExecute'
-type OrganizationsApi_ListOrganizationUsersExecute_Call struct {
-	*mock.Call
-}
-
-// ListOrganizationUsersExecute is a helper method to define mock.On call
-//   - r admin.ListOrganizationUsersApiRequest
-func (_e *OrganizationsApi_Expecter) ListOrganizationUsersExecute(r any) *OrganizationsApi_ListOrganizationUsersExecute_Call {
-	return &OrganizationsApi_ListOrganizationUsersExecute_Call{Call: _e.mock.On("ListOrganizationUsersExecute", r)}
-}
-
-func (_c *OrganizationsApi_ListOrganizationUsersExecute_Call) Run(run func(r admin.ListOrganizationUsersApiRequest)) *OrganizationsApi_ListOrganizationUsersExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ListOrganizationUsersApiRequest))
-	})
-	return _c
-}
-
-func (_c *OrganizationsApi_ListOrganizationUsersExecute_Call) Return(_a0 *admin.PaginatedAppUser, _a1 *http.Response, _a2 error) *OrganizationsApi_ListOrganizationUsersExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *OrganizationsApi_ListOrganizationUsersExecute_Call) RunAndReturn(run func(admin.ListOrganizationUsersApiRequest) (*admin.PaginatedAppUser, *http.Response, error)) *OrganizationsApi_ListOrganizationUsersExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ListOrganizationUsersWithParams provides a mock function with given fields: ctx, args
-func (_m *OrganizationsApi) ListOrganizationUsersWithParams(ctx context.Context, args *admin.ListOrganizationUsersApiParams) admin.ListOrganizationUsersApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListOrganizationUsersWithParams")
-	}
-
-	var r0 admin.ListOrganizationUsersApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListOrganizationUsersApiParams) admin.ListOrganizationUsersApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.ListOrganizationUsersApiRequest)
-	}
-
-	return r0
-}
-
-// OrganizationsApi_ListOrganizationUsersWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListOrganizationUsersWithParams'
-type OrganizationsApi_ListOrganizationUsersWithParams_Call struct {
-	*mock.Call
-}
-
-// ListOrganizationUsersWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.ListOrganizationUsersApiParams
-func (_e *OrganizationsApi_Expecter) ListOrganizationUsersWithParams(ctx any, args any) *OrganizationsApi_ListOrganizationUsersWithParams_Call {
-	return &OrganizationsApi_ListOrganizationUsersWithParams_Call{Call: _e.mock.On("ListOrganizationUsersWithParams", ctx, args)}
-}
-
-func (_c *OrganizationsApi_ListOrganizationUsersWithParams_Call) Run(run func(ctx context.Context, args *admin.ListOrganizationUsersApiParams)) *OrganizationsApi_ListOrganizationUsersWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ListOrganizationUsersApiParams))
-	})
-	return _c
-}
-
-func (_c *OrganizationsApi_ListOrganizationUsersWithParams_Call) Return(_a0 admin.ListOrganizationUsersApiRequest) *OrganizationsApi_ListOrganizationUsersWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *OrganizationsApi_ListOrganizationUsersWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListOrganizationUsersApiParams) admin.ListOrganizationUsersApiRequest) *OrganizationsApi_ListOrganizationUsersWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
 // ListOrganizations provides a mock function with given fields: ctx
 func (_m *OrganizationsApi) ListOrganizations(ctx context.Context) admin.ListOrganizationsApiRequest {
 	ret := _m.Called(ctx)
@@ -1798,231 +1637,69 @@ func (_c *OrganizationsApi_ListOrganizationsWithParams_Call) RunAndReturn(run fu
 	return _c
 }
 
-// RemoveOrganizationUser provides a mock function with given fields: ctx, orgId, userId
-func (_m *OrganizationsApi) RemoveOrganizationUser(ctx context.Context, orgId string, userId string) admin.RemoveOrganizationUserApiRequest {
-	ret := _m.Called(ctx, orgId, userId)
-
-	if len(ret) == 0 {
-		panic("no return value specified for RemoveOrganizationUser")
-	}
-
-	var r0 admin.RemoveOrganizationUserApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.RemoveOrganizationUserApiRequest); ok {
-		r0 = rf(ctx, orgId, userId)
-	} else {
-		r0 = ret.Get(0).(admin.RemoveOrganizationUserApiRequest)
-	}
-
-	return r0
-}
-
-// OrganizationsApi_RemoveOrganizationUser_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RemoveOrganizationUser'
-type OrganizationsApi_RemoveOrganizationUser_Call struct {
-	*mock.Call
-}
-
-// RemoveOrganizationUser is a helper method to define mock.On call
-//   - ctx context.Context
-//   - orgId string
-//   - userId string
-func (_e *OrganizationsApi_Expecter) RemoveOrganizationUser(ctx any, orgId any, userId any) *OrganizationsApi_RemoveOrganizationUser_Call {
-	return &OrganizationsApi_RemoveOrganizationUser_Call{Call: _e.mock.On("RemoveOrganizationUser", ctx, orgId, userId)}
-}
-
-func (_c *OrganizationsApi_RemoveOrganizationUser_Call) Run(run func(ctx context.Context, orgId string, userId string)) *OrganizationsApi_RemoveOrganizationUser_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string))
-	})
-	return _c
-}
-
-func (_c *OrganizationsApi_RemoveOrganizationUser_Call) Return(_a0 admin.RemoveOrganizationUserApiRequest) *OrganizationsApi_RemoveOrganizationUser_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *OrganizationsApi_RemoveOrganizationUser_Call) RunAndReturn(run func(context.Context, string, string) admin.RemoveOrganizationUserApiRequest) *OrganizationsApi_RemoveOrganizationUser_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// RemoveOrganizationUserExecute provides a mock function with given fields: r
-func (_m *OrganizationsApi) RemoveOrganizationUserExecute(r admin.RemoveOrganizationUserApiRequest) (any, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for RemoveOrganizationUserExecute")
-	}
-
-	var r0 any
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.RemoveOrganizationUserApiRequest) (any, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.RemoveOrganizationUserApiRequest) any); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(any)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.RemoveOrganizationUserApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.RemoveOrganizationUserApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// OrganizationsApi_RemoveOrganizationUserExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RemoveOrganizationUserExecute'
-type OrganizationsApi_RemoveOrganizationUserExecute_Call struct {
-	*mock.Call
-}
-
-// RemoveOrganizationUserExecute is a helper method to define mock.On call
-//   - r admin.RemoveOrganizationUserApiRequest
-func (_e *OrganizationsApi_Expecter) RemoveOrganizationUserExecute(r any) *OrganizationsApi_RemoveOrganizationUserExecute_Call {
-	return &OrganizationsApi_RemoveOrganizationUserExecute_Call{Call: _e.mock.On("RemoveOrganizationUserExecute", r)}
-}
-
-func (_c *OrganizationsApi_RemoveOrganizationUserExecute_Call) Run(run func(r admin.RemoveOrganizationUserApiRequest)) *OrganizationsApi_RemoveOrganizationUserExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.RemoveOrganizationUserApiRequest))
-	})
-	return _c
-}
-
-func (_c *OrganizationsApi_RemoveOrganizationUserExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *OrganizationsApi_RemoveOrganizationUserExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *OrganizationsApi_RemoveOrganizationUserExecute_Call) RunAndReturn(run func(admin.RemoveOrganizationUserApiRequest) (any, *http.Response, error)) *OrganizationsApi_RemoveOrganizationUserExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// RemoveOrganizationUserWithParams provides a mock function with given fields: ctx, args
-func (_m *OrganizationsApi) RemoveOrganizationUserWithParams(ctx context.Context, args *admin.RemoveOrganizationUserApiParams) admin.RemoveOrganizationUserApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for RemoveOrganizationUserWithParams")
-	}
-
-	var r0 admin.RemoveOrganizationUserApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.RemoveOrganizationUserApiParams) admin.RemoveOrganizationUserApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.RemoveOrganizationUserApiRequest)
-	}
-
-	return r0
-}
-
-// OrganizationsApi_RemoveOrganizationUserWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RemoveOrganizationUserWithParams'
-type OrganizationsApi_RemoveOrganizationUserWithParams_Call struct {
-	*mock.Call
-}
-
-// RemoveOrganizationUserWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.RemoveOrganizationUserApiParams
-func (_e *OrganizationsApi_Expecter) RemoveOrganizationUserWithParams(ctx any, args any) *OrganizationsApi_RemoveOrganizationUserWithParams_Call {
-	return &OrganizationsApi_RemoveOrganizationUserWithParams_Call{Call: _e.mock.On("RemoveOrganizationUserWithParams", ctx, args)}
-}
-
-func (_c *OrganizationsApi_RemoveOrganizationUserWithParams_Call) Run(run func(ctx context.Context, args *admin.RemoveOrganizationUserApiParams)) *OrganizationsApi_RemoveOrganizationUserWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.RemoveOrganizationUserApiParams))
-	})
-	return _c
-}
-
-func (_c *OrganizationsApi_RemoveOrganizationUserWithParams_Call) Return(_a0 admin.RemoveOrganizationUserApiRequest) *OrganizationsApi_RemoveOrganizationUserWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *OrganizationsApi_RemoveOrganizationUserWithParams_Call) RunAndReturn(run func(context.Context, *admin.RemoveOrganizationUserApiParams) admin.RemoveOrganizationUserApiRequest) *OrganizationsApi_RemoveOrganizationUserWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// RenameOrganization provides a mock function with given fields: ctx, orgId, atlasOrganization
-func (_m *OrganizationsApi) RenameOrganization(ctx context.Context, orgId string, atlasOrganization *admin.AtlasOrganization) admin.RenameOrganizationApiRequest {
+// UpdateOrganization provides a mock function with given fields: ctx, orgId, atlasOrganization
+func (_m *OrganizationsApi) UpdateOrganization(ctx context.Context, orgId string, atlasOrganization *admin.AtlasOrganization) admin.UpdateOrganizationApiRequest {
 	ret := _m.Called(ctx, orgId, atlasOrganization)
 
 	if len(ret) == 0 {
-		panic("no return value specified for RenameOrganization")
+		panic("no return value specified for UpdateOrganization")
 	}
 
-	var r0 admin.RenameOrganizationApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.AtlasOrganization) admin.RenameOrganizationApiRequest); ok {
+	var r0 admin.UpdateOrganizationApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.AtlasOrganization) admin.UpdateOrganizationApiRequest); ok {
 		r0 = rf(ctx, orgId, atlasOrganization)
 	} else {
-		r0 = ret.Get(0).(admin.RenameOrganizationApiRequest)
+		r0 = ret.Get(0).(admin.UpdateOrganizationApiRequest)
 	}
 
 	return r0
 }
 
-// OrganizationsApi_RenameOrganization_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RenameOrganization'
-type OrganizationsApi_RenameOrganization_Call struct {
+// OrganizationsApi_UpdateOrganization_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateOrganization'
+type OrganizationsApi_UpdateOrganization_Call struct {
 	*mock.Call
 }
 
-// RenameOrganization is a helper method to define mock.On call
+// UpdateOrganization is a helper method to define mock.On call
 //   - ctx context.Context
 //   - orgId string
 //   - atlasOrganization *admin.AtlasOrganization
-func (_e *OrganizationsApi_Expecter) RenameOrganization(ctx any, orgId any, atlasOrganization any) *OrganizationsApi_RenameOrganization_Call {
-	return &OrganizationsApi_RenameOrganization_Call{Call: _e.mock.On("RenameOrganization", ctx, orgId, atlasOrganization)}
+func (_e *OrganizationsApi_Expecter) UpdateOrganization(ctx any, orgId any, atlasOrganization any) *OrganizationsApi_UpdateOrganization_Call {
+	return &OrganizationsApi_UpdateOrganization_Call{Call: _e.mock.On("UpdateOrganization", ctx, orgId, atlasOrganization)}
 }
 
-func (_c *OrganizationsApi_RenameOrganization_Call) Run(run func(ctx context.Context, orgId string, atlasOrganization *admin.AtlasOrganization)) *OrganizationsApi_RenameOrganization_Call {
+func (_c *OrganizationsApi_UpdateOrganization_Call) Run(run func(ctx context.Context, orgId string, atlasOrganization *admin.AtlasOrganization)) *OrganizationsApi_UpdateOrganization_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(*admin.AtlasOrganization))
 	})
 	return _c
 }
 
-func (_c *OrganizationsApi_RenameOrganization_Call) Return(_a0 admin.RenameOrganizationApiRequest) *OrganizationsApi_RenameOrganization_Call {
+func (_c *OrganizationsApi_UpdateOrganization_Call) Return(_a0 admin.UpdateOrganizationApiRequest) *OrganizationsApi_UpdateOrganization_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *OrganizationsApi_RenameOrganization_Call) RunAndReturn(run func(context.Context, string, *admin.AtlasOrganization) admin.RenameOrganizationApiRequest) *OrganizationsApi_RenameOrganization_Call {
+func (_c *OrganizationsApi_UpdateOrganization_Call) RunAndReturn(run func(context.Context, string, *admin.AtlasOrganization) admin.UpdateOrganizationApiRequest) *OrganizationsApi_UpdateOrganization_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// RenameOrganizationExecute provides a mock function with given fields: r
-func (_m *OrganizationsApi) RenameOrganizationExecute(r admin.RenameOrganizationApiRequest) (*admin.AtlasOrganization, *http.Response, error) {
+// UpdateOrganizationExecute provides a mock function with given fields: r
+func (_m *OrganizationsApi) UpdateOrganizationExecute(r admin.UpdateOrganizationApiRequest) (*admin.AtlasOrganization, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for RenameOrganizationExecute")
+		panic("no return value specified for UpdateOrganizationExecute")
 	}
 
 	var r0 *admin.AtlasOrganization
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.RenameOrganizationApiRequest) (*admin.AtlasOrganization, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.UpdateOrganizationApiRequest) (*admin.AtlasOrganization, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.RenameOrganizationApiRequest) *admin.AtlasOrganization); ok {
+	if rf, ok := ret.Get(0).(func(admin.UpdateOrganizationApiRequest) *admin.AtlasOrganization); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -2030,7 +1707,7 @@ func (_m *OrganizationsApi) RenameOrganizationExecute(r admin.RenameOrganization
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.RenameOrganizationApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.UpdateOrganizationApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -2038,7 +1715,7 @@ func (_m *OrganizationsApi) RenameOrganizationExecute(r admin.RenameOrganization
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.RenameOrganizationApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.UpdateOrganizationApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -2047,77 +1724,30 @@ func (_m *OrganizationsApi) RenameOrganizationExecute(r admin.RenameOrganization
 	return r0, r1, r2
 }
 
-// OrganizationsApi_RenameOrganizationExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RenameOrganizationExecute'
-type OrganizationsApi_RenameOrganizationExecute_Call struct {
+// OrganizationsApi_UpdateOrganizationExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateOrganizationExecute'
+type OrganizationsApi_UpdateOrganizationExecute_Call struct {
 	*mock.Call
 }
 
-// RenameOrganizationExecute is a helper method to define mock.On call
-//   - r admin.RenameOrganizationApiRequest
-func (_e *OrganizationsApi_Expecter) RenameOrganizationExecute(r any) *OrganizationsApi_RenameOrganizationExecute_Call {
-	return &OrganizationsApi_RenameOrganizationExecute_Call{Call: _e.mock.On("RenameOrganizationExecute", r)}
+// UpdateOrganizationExecute is a helper method to define mock.On call
+//   - r admin.UpdateOrganizationApiRequest
+func (_e *OrganizationsApi_Expecter) UpdateOrganizationExecute(r any) *OrganizationsApi_UpdateOrganizationExecute_Call {
+	return &OrganizationsApi_UpdateOrganizationExecute_Call{Call: _e.mock.On("UpdateOrganizationExecute", r)}
 }
 
-func (_c *OrganizationsApi_RenameOrganizationExecute_Call) Run(run func(r admin.RenameOrganizationApiRequest)) *OrganizationsApi_RenameOrganizationExecute_Call {
+func (_c *OrganizationsApi_UpdateOrganizationExecute_Call) Run(run func(r admin.UpdateOrganizationApiRequest)) *OrganizationsApi_UpdateOrganizationExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.RenameOrganizationApiRequest))
+		run(args[0].(admin.UpdateOrganizationApiRequest))
 	})
 	return _c
 }
 
-func (_c *OrganizationsApi_RenameOrganizationExecute_Call) Return(_a0 *admin.AtlasOrganization, _a1 *http.Response, _a2 error) *OrganizationsApi_RenameOrganizationExecute_Call {
+func (_c *OrganizationsApi_UpdateOrganizationExecute_Call) Return(_a0 *admin.AtlasOrganization, _a1 *http.Response, _a2 error) *OrganizationsApi_UpdateOrganizationExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *OrganizationsApi_RenameOrganizationExecute_Call) RunAndReturn(run func(admin.RenameOrganizationApiRequest) (*admin.AtlasOrganization, *http.Response, error)) *OrganizationsApi_RenameOrganizationExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// RenameOrganizationWithParams provides a mock function with given fields: ctx, args
-func (_m *OrganizationsApi) RenameOrganizationWithParams(ctx context.Context, args *admin.RenameOrganizationApiParams) admin.RenameOrganizationApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for RenameOrganizationWithParams")
-	}
-
-	var r0 admin.RenameOrganizationApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.RenameOrganizationApiParams) admin.RenameOrganizationApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.RenameOrganizationApiRequest)
-	}
-
-	return r0
-}
-
-// OrganizationsApi_RenameOrganizationWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RenameOrganizationWithParams'
-type OrganizationsApi_RenameOrganizationWithParams_Call struct {
-	*mock.Call
-}
-
-// RenameOrganizationWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.RenameOrganizationApiParams
-func (_e *OrganizationsApi_Expecter) RenameOrganizationWithParams(ctx any, args any) *OrganizationsApi_RenameOrganizationWithParams_Call {
-	return &OrganizationsApi_RenameOrganizationWithParams_Call{Call: _e.mock.On("RenameOrganizationWithParams", ctx, args)}
-}
-
-func (_c *OrganizationsApi_RenameOrganizationWithParams_Call) Run(run func(ctx context.Context, args *admin.RenameOrganizationApiParams)) *OrganizationsApi_RenameOrganizationWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.RenameOrganizationApiParams))
-	})
-	return _c
-}
-
-func (_c *OrganizationsApi_RenameOrganizationWithParams_Call) Return(_a0 admin.RenameOrganizationApiRequest) *OrganizationsApi_RenameOrganizationWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *OrganizationsApi_RenameOrganizationWithParams_Call) RunAndReturn(run func(context.Context, *admin.RenameOrganizationApiParams) admin.RenameOrganizationApiRequest) *OrganizationsApi_RenameOrganizationWithParams_Call {
+func (_c *OrganizationsApi_UpdateOrganizationExecute_Call) RunAndReturn(run func(admin.UpdateOrganizationApiRequest) (*admin.AtlasOrganization, *http.Response, error)) *OrganizationsApi_UpdateOrganizationExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -2768,6 +2398,53 @@ func (_c *OrganizationsApi_UpdateOrganizationSettingsWithParams_Call) Return(_a0
 }
 
 func (_c *OrganizationsApi_UpdateOrganizationSettingsWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdateOrganizationSettingsApiParams) admin.UpdateOrganizationSettingsApiRequest) *OrganizationsApi_UpdateOrganizationSettingsWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateOrganizationWithParams provides a mock function with given fields: ctx, args
+func (_m *OrganizationsApi) UpdateOrganizationWithParams(ctx context.Context, args *admin.UpdateOrganizationApiParams) admin.UpdateOrganizationApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateOrganizationWithParams")
+	}
+
+	var r0 admin.UpdateOrganizationApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.UpdateOrganizationApiParams) admin.UpdateOrganizationApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.UpdateOrganizationApiRequest)
+	}
+
+	return r0
+}
+
+// OrganizationsApi_UpdateOrganizationWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateOrganizationWithParams'
+type OrganizationsApi_UpdateOrganizationWithParams_Call struct {
+	*mock.Call
+}
+
+// UpdateOrganizationWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.UpdateOrganizationApiParams
+func (_e *OrganizationsApi_Expecter) UpdateOrganizationWithParams(ctx any, args any) *OrganizationsApi_UpdateOrganizationWithParams_Call {
+	return &OrganizationsApi_UpdateOrganizationWithParams_Call{Call: _e.mock.On("UpdateOrganizationWithParams", ctx, args)}
+}
+
+func (_c *OrganizationsApi_UpdateOrganizationWithParams_Call) Run(run func(ctx context.Context, args *admin.UpdateOrganizationApiParams)) *OrganizationsApi_UpdateOrganizationWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.UpdateOrganizationApiParams))
+	})
+	return _c
+}
+
+func (_c *OrganizationsApi_UpdateOrganizationWithParams_Call) Return(_a0 admin.UpdateOrganizationApiRequest) *OrganizationsApi_UpdateOrganizationWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *OrganizationsApi_UpdateOrganizationWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdateOrganizationApiParams) admin.UpdateOrganizationApiRequest) *OrganizationsApi_UpdateOrganizationWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
