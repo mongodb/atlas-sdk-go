@@ -28,7 +28,7 @@ jobs:
         run: make test-examples
   
   build:
-    needs: code-health # only run if code-health passes
+    # needs: code-health # only run if code-health passes
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
