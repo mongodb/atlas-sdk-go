@@ -1,4 +1,4 @@
-name: Generate SDK from Tag
+name: Generate SDK
 on:
   workflow_dispatch:
     inputs:
