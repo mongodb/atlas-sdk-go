@@ -13,16 +13,17 @@ type Team struct {
 	// Human-readable label that identifies the team.
 	Name string `json:"name"`
 	// List that contains the MongoDB Cloud users in this team.
-	Usernames *[]string `json:"usernames,omitempty"`
+	Usernames []string `json:"usernames"`
 }
 
 // NewTeam instantiates a new Team object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTeam(name string) *Team {
+func NewTeam(name string, usernames []string) *Team {
 	this := Team{}
 	this.Name = name
+	this.Usernames = usernames
 	return &this
 }
 
@@ -124,35 +125,26 @@ func (o *Team) SetName(v string) {
 	o.Name = v
 }
 
-// GetUsernames returns the Usernames field value if set, zero value otherwise
+// GetUsernames returns the Usernames field value
 func (o *Team) GetUsernames() []string {
-	if o == nil || IsNil(o.Usernames) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
-	return *o.Usernames
+
+	return o.Usernames
 }
 
-// GetUsernamesOk returns a tuple with the Usernames field value if set, nil otherwise
+// GetUsernamesOk returns a tuple with the Usernames field value
 // and a boolean to check if the value has been set.
 func (o *Team) GetUsernamesOk() (*[]string, bool) {
-	if o == nil || IsNil(o.Usernames) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.Usernames, true
+	return &o.Usernames, true
 }
 
-// HasUsernames returns a boolean if a field has been set.
-func (o *Team) HasUsernames() bool {
-	if o != nil && !IsNil(o.Usernames) {
-		return true
-	}
-
-	return false
-}
-
-// SetUsernames gets a reference to the given []string and assigns it to the Usernames field.
+// SetUsernames sets field value
 func (o *Team) SetUsernames(v []string) {
-	o.Usernames = &v
+	o.Usernames = v
 }

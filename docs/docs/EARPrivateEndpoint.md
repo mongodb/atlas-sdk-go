@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the Private Endpoint Service. | [optional] [readonly] 
 **RegionName** | Pointer to **string** | Cloud provider region in which the Encryption At Rest private endpoint is located. | [optional] 
 **Status** | Pointer to **string** | State of the Encryption At Rest private endpoint. | [optional] [readonly] 
-**PrivateEndpointConnectionName** | Pointer to **string** | Connection name of the Azure Private Endpoint. | [optional] [readonly] 
+**PrivateEndpointConnectionName** | Pointer to **string** | Resource Id of the Aws Private Endpoint. | [optional] [readonly] 
 
 ## Methods
 

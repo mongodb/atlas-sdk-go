@@ -14,6 +14,9 @@ type HardwareSpec20240805 struct {
 	InstanceSize *string `json:"instanceSize,omitempty"`
 	// Number of nodes of the given type for MongoDB Cloud to deploy to the region.
 	NodeCount *int `json:"nodeCount,omitempty"`
+	// The true tenant instance size. This is present to support backwards compatibility for deprecated provider types and/or instance sizes.
+	// Read only field.
+	EffectiveInstanceSize *string `json:"effectiveInstanceSize,omitempty"`
 }
 
 // NewHardwareSpec20240805 instantiates a new HardwareSpec20240805 object
@@ -200,4 +203,37 @@ func (o *HardwareSpec20240805) HasNodeCount() bool {
 // SetNodeCount gets a reference to the given int and assigns it to the NodeCount field.
 func (o *HardwareSpec20240805) SetNodeCount(v int) {
 	o.NodeCount = &v
+}
+
+// GetEffectiveInstanceSize returns the EffectiveInstanceSize field value if set, zero value otherwise
+func (o *HardwareSpec20240805) GetEffectiveInstanceSize() string {
+	if o == nil || IsNil(o.EffectiveInstanceSize) {
+		var ret string
+		return ret
+	}
+	return *o.EffectiveInstanceSize
+}
+
+// GetEffectiveInstanceSizeOk returns a tuple with the EffectiveInstanceSize field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *HardwareSpec20240805) GetEffectiveInstanceSizeOk() (*string, bool) {
+	if o == nil || IsNil(o.EffectiveInstanceSize) {
+		return nil, false
+	}
+
+	return o.EffectiveInstanceSize, true
+}
+
+// HasEffectiveInstanceSize returns a boolean if a field has been set.
+func (o *HardwareSpec20240805) HasEffectiveInstanceSize() bool {
+	if o != nil && !IsNil(o.EffectiveInstanceSize) {
+		return true
+	}
+
+	return false
+}
+
+// SetEffectiveInstanceSize gets a reference to the given string and assigns it to the EffectiveInstanceSize field.
+func (o *HardwareSpec20240805) SetEffectiveInstanceSize(v string) {
+	o.EffectiveInstanceSize = &v
 }
