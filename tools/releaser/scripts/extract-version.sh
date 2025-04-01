@@ -20,4 +20,9 @@ echo "Extracted version from version.go file: '$SDK_VERSION'. Resource Version: 
 echo "Major: $SDK_MAJOR_VERSION' Minor: $SDK_MINOR_VERSION"
 echo "Extracted version versions.json: '$NEW_RESOURCE_VERSION'."
 
-
+# For version updates, always force using the same resource version
+# This allows detecting breaking changes but prevents major version bumps
+if [ "$NEW_RESOURCE_VERSION" != "$SDK_RESOURCE_VERSION" ]; then
+    echo "Forcing resource version to stay at: $SDK_RESOURCE_VERSION instead of changing to $NEW_RESOURCE_VERSION"
+    NEW_RESOURCE_VERSION=$SDK_RESOURCE_VERSION
+fi

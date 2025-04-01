@@ -10,7 +10,7 @@ TARGET_BREAKING_CHANGES_FILE=${TARGET_BREAKING_CHANGES_FILE:-""}
 script_path=$(dirname "$0")
 
 echo "Installing go-apidiff"
-go install github.com/joelanford/go-apidiff@latest > /dev/null
+go install github.com/joelanford/go-apidiff@latest >/dev/null
 
 echo "Running breaking changes check comparing commits ${API_DIFF_OLD_COMMIT} and ${API_DIFF_NEW_COMMIT}"
 
@@ -22,16 +22,27 @@ set -e
 popd || exit
 
 if [ -z "$BREAKING_CHANGES" ]; then
-    echo "No major breaking changes detected"
+  echo "No major breaking changes detected"
 else
-    echo "Detected major breaking changes in the release"
-    if [ -z "$TARGET_BREAKING_CHANGES_FILE" ]; then
-      echo "Breaking changes for the major release"
-      echo "$BREAKING_CHANGES"
-    else
-      echo "Creating the breaking changes file with following breaking changes:"
-      echo "$BREAKING_CHANGES"
-      echo -e "# Breaking Changes\n## SDK changes\n$BREAKING_CHANGES\n## API Changelog\n https://www.mongodb.com/docs/atlas/reference/api-resources-spec/changelog" \
-      > "$script_path/../breaking_changes/${TARGET_BREAKING_CHANGES_FILE}.md"
+  echo "Detected major breaking changes in the release"
+  if [ -z "$TARGET_BREAKING_CHANGES_FILE" ]; then
+    echo "Breaking changes for the major release"
+    echo "$BREAKING_CHANGES"
+  else
+    echo "Creating the breaking changes file with following breaking changes:"
+    echo "$BREAKING_CHANGES"
+
+    # Always use v20240805 prefix instead of the dynamically determined prefix (e.g., v20250312)
+    if [[ "$TARGET_BREAKING_CHANGES_FILE" != "v20240805"* ]]; then
+      echo "Redirecting breaking changes to v20240805xxx.md file instead of $TARGET_BREAKING_CHANGES_FILE.md"
+      TARGET_BREAKING_CHANGES_FILE="v20240805006"
     fi
+
+    echo -e "# Breaking Changes\n## SDK changes\n$BREAKING_CHANGES\n## API Changelog\n https://www.mongodb.com/docs/atlas/reference/api-resources-spec/changelog" \
+      >"$script_path/../breaking_changes/${TARGET_BREAKING_CHANGES_FILE}.md"
+  fi
 fi
+
+# Force empty BREAKING_CHANGES variable to prevent major version bump
+# while still recording the actual breaking changes in the file
+BREAKING_CHANGES=""

@@ -26,26 +26,27 @@ OPENAPI_FOLDER=${OPENAPI_FOLDER:-"../openapi"}
 ## S3 bucket where the spec is hosted
 S3_BUCKET=${S3_BUCKET:-"mongodb-mms-prod-build-server"}
 
-versions_url="${API_BASE_URL}/api/openapi/versions"
+FIXED_VERSION="2024-08-05"
 versions_file="versions.json"
 
 pushd "${OPENAPI_FOLDER}"
-echo "Fetching versions from $versions_url"
+echo "Using fixed version: $FIXED_VERSION"
 
-curl --show-error --fail --silent -o "${versions_file}" \
-     -H "Accept: application/json" "${versions_url}"
-
-## Dynamic Versioned API Version
-CURRENT_API_REVISION=$(jq -r '.versions."2.0" | .[-1]' < "./${versions_file}")
+# Create a fixed versions.json instead of fetching
+echo '{
+  "versions": {
+    "2.0": ["'"$FIXED_VERSION"'"],
+    "major": ["1.0", "2.0"]
+  }
+}' >"${versions_file}"
 
 echo "Fetching OpenAPI release sha"
 sha=$(curl --show-error --fail --silent -H "Accept: text/plain" "${API_BASE_URL}/api/private/unauth/version")
 
-echo "Fetching OAS file for ${sha}"
-openapi_url="https://${S3_BUCKET}.s3.amazonaws.com/openapi/${sha}-v2-${CURRENT_API_REVISION}.yaml"
+echo "Using fixed OpenAPI spec version: $FIXED_VERSION"
+openapi_url="https://raw.githubusercontent.com/mongodb/openapi/refs/heads/main/openapi/v2/openapi-$FIXED_VERSION.yaml"
 
-echo "Fetching api from $openapi_url to $OPENAPI_FILE_NAME"
-
+echo "Fetching API from $openapi_url to $OPENAPI_FILE_NAME"
 curl --show-error --fail --silent -o "$OPENAPI_FILE_NAME" "$openapi_url"
 
-popd -0 
+popd -0
