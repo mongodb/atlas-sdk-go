@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Description** | Pointer to **string** | Description of the atlas resource policy. | [optional] 
 **Name** | Pointer to **string** | Human-readable label that describes the atlas resource policy. | [optional] 
 **Policies** | Pointer to [**[]ApiAtlasPolicyCreate**](ApiAtlasPolicyCreate.md) | List of policies that make up the atlas resource policy. | [optional] 
 
@@ -26,6 +27,30 @@ NewApiAtlasResourcePolicyEditWithDefaults instantiates a new ApiAtlasResourcePol
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
+### GetDescription
+
+`func (o *ApiAtlasResourcePolicyEdit) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *ApiAtlasResourcePolicyEdit) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *ApiAtlasResourcePolicyEdit) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *ApiAtlasResourcePolicyEdit) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
 ### GetName
 
 `func (o *ApiAtlasResourcePolicyEdit) GetName() string`

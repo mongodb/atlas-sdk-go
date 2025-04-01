@@ -4,19 +4,20 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**AutoScalingConfiguration**](ClustersApi.md#AutoScalingConfiguration) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/autoScalingConfiguration | Get cluster internal configuration of sharded cluster AutoScaling operations
 [**CreateCluster**](ClustersApi.md#CreateCluster) | **Post** /api/atlas/v2/groups/{groupId}/clusters | Create One Cluster from One Project
 [**DeleteCluster**](ClustersApi.md#DeleteCluster) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName} | Remove One Cluster from One Project
 [**GetCluster**](ClustersApi.md#GetCluster) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName} | Return One Cluster from One Project
 [**GetClusterAdvancedConfiguration**](ClustersApi.md#GetClusterAdvancedConfiguration) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/processArgs | Return One Advanced Configuration Options for One Cluster
 [**GetClusterStatus**](ClustersApi.md#GetClusterStatus) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/status | Return Status of All Cluster Operations
 [**GetSampleDatasetLoadStatus**](ClustersApi.md#GetSampleDatasetLoadStatus) | **Get** /api/atlas/v2/groups/{groupId}/sampleDatasetLoad/{sampleDatasetId} | Check Status of Cluster Sample Dataset Request
-[**GrantMongoDBEmployeeAccess**](ClustersApi.md#GrantMongoDBEmployeeAccess) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}:grantMongoDBEmployeeAccess | Grant MongoDB employee cluster access for one cluster.
+[**GrantMongoDbEmployeeAccess**](ClustersApi.md#GrantMongoDbEmployeeAccess) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}:grantMongoDBEmployeeAccess | Grant MongoDB employee cluster access for one cluster.
 [**ListCloudProviderRegions**](ClustersApi.md#ListCloudProviderRegions) | **Get** /api/atlas/v2/groups/{groupId}/clusters/provider/regions | Return All Cloud Provider Regions
 [**ListClusters**](ClustersApi.md#ListClusters) | **Get** /api/atlas/v2/groups/{groupId}/clusters | Return All Clusters in One Project
 [**ListClustersForAllProjects**](ClustersApi.md#ListClustersForAllProjects) | **Get** /api/atlas/v2/clusters | Return All Authorized Clusters in All Projects
 [**LoadSampleDataset**](ClustersApi.md#LoadSampleDataset) | **Post** /api/atlas/v2/groups/{groupId}/sampleDatasetLoad/{name} | Load Sample Dataset Request into Cluster
 [**PinFeatureCompatibilityVersion**](ClustersApi.md#PinFeatureCompatibilityVersion) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}:pinFeatureCompatibilityVersion | Pin FCV for One Cluster from One Project
-[**RevokeMongoDBEmployeeAccess**](ClustersApi.md#RevokeMongoDBEmployeeAccess) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}:revokeMongoDBEmployeeAccess | Revoke granted MongoDB employee cluster access for one cluster.
+[**RevokeMongoDbEmployeeAccess**](ClustersApi.md#RevokeMongoDbEmployeeAccess) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}:revokeMongoDBEmployeeAccess | Revoke granted MongoDB employee cluster access for one cluster.
 [**TestFailover**](ClustersApi.md#TestFailover) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/restartPrimaries | Test Failover for One Cluster
 [**UnpinFeatureCompatibilityVersion**](ClustersApi.md#UnpinFeatureCompatibilityVersion) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}:unpinFeatureCompatibilityVersion | Unpins FCV for One Cluster from One Project
 [**UpdateCluster**](ClustersApi.md#UpdateCluster) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName} | Modify One Cluster from One Project
@@ -24,6 +25,89 @@ Method | HTTP request | Description
 [**UpgradeSharedCluster**](ClustersApi.md#UpgradeSharedCluster) | **Post** /api/atlas/v2/groups/{groupId}/clusters/tenantUpgrade | Upgrade One Shared-tier Cluster
 [**UpgradeSharedClusterToServerless**](ClustersApi.md#UpgradeSharedClusterToServerless) | **Post** /api/atlas/v2/groups/{groupId}/clusters/tenantUpgradeToServerless | Upgrades One Shared-Tier Cluster to the Serverless Instance
 
+
+
+## AutoScalingConfiguration
+
+> ClusterDescriptionAutoScalingModeConfiguration AutoScalingConfiguration(ctx, groupId, clusterName).Execute()
+
+Get cluster internal configuration of sharded cluster AutoScaling operations
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20240805005/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    clusterName := "clusterName_example" // string | 
+
+    resp, r, err := sdk.ClustersApi.AutoScalingConfiguration(context.Background(), groupId, clusterName).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.AutoScalingConfiguration`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `AutoScalingConfiguration`: ClusterDescriptionAutoScalingModeConfiguration
+    fmt.Fprintf(os.Stdout, "Response from `ClustersApi.AutoScalingConfiguration`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**clusterName** | **string** | Human-readable label that identifies this cluster. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAutoScalingConfigurationRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**ClusterDescriptionAutoScalingModeConfiguration**](ClusterDescriptionAutoScalingModeConfiguration.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2024-08-05+json, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## CreateCluster
@@ -89,7 +173,7 @@ Other parameters are passed through a pointer to a apiCreateClusterRequest struc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **clusterDescription20240805** | [**ClusterDescription20240805**](ClusterDescription20240805.md) | Cluster to create in the specific project. | 
+ **clusterDescription20240805** | [**ClusterDescription20240805**](ClusterDescription20240805.md) | Cluster to create in this project. | 
 
 ### Return type
 
@@ -523,9 +607,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GrantMongoDBEmployeeAccess
+## GrantMongoDbEmployeeAccess
 
-> any GrantMongoDBEmployeeAccess(ctx, groupId, clusterName, employeeAccessGrant EmployeeAccessGrant).Execute()
+> any GrantMongoDbEmployeeAccess(ctx, groupId, clusterName, employeeAccessGrant EmployeeAccessGrant).Execute()
 
 Grant MongoDB employee cluster access for one cluster.
 
@@ -557,17 +641,17 @@ func main() {
     clusterName := "clusterName_example" // string | 
     employeeAccessGrant := *openapiclient.NewEmployeeAccessGrant(time.Now(), "GrantType_example") // EmployeeAccessGrant | 
 
-    resp, r, err := sdk.ClustersApi.GrantMongoDBEmployeeAccess(context.Background(), groupId, clusterName, &employeeAccessGrant).Execute()
+    resp, r, err := sdk.ClustersApi.GrantMongoDbEmployeeAccess(context.Background(), groupId, clusterName, &employeeAccessGrant).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.GrantMongoDBEmployeeAccess`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.GrantMongoDbEmployeeAccess`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `GrantMongoDBEmployeeAccess`: any
-    fmt.Fprintf(os.Stdout, "Response from `ClustersApi.GrantMongoDBEmployeeAccess`: %v (%v)\n", resp, r)
+    // response from `GrantMongoDbEmployeeAccess`: any
+    fmt.Fprintf(os.Stdout, "Response from `ClustersApi.GrantMongoDbEmployeeAccess`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -582,7 +666,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGrantMongoDBEmployeeAccessRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGrantMongoDbEmployeeAccessRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -1034,9 +1118,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## RevokeMongoDBEmployeeAccess
+## RevokeMongoDbEmployeeAccess
 
-> any RevokeMongoDBEmployeeAccess(ctx, groupId, clusterName).Execute()
+> any RevokeMongoDbEmployeeAccess(ctx, groupId, clusterName).Execute()
 
 Revoke granted MongoDB employee cluster access for one cluster.
 
@@ -1067,17 +1151,17 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
 
-    resp, r, err := sdk.ClustersApi.RevokeMongoDBEmployeeAccess(context.Background(), groupId, clusterName).Execute()
+    resp, r, err := sdk.ClustersApi.RevokeMongoDbEmployeeAccess(context.Background(), groupId, clusterName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.RevokeMongoDBEmployeeAccess`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.RevokeMongoDbEmployeeAccess`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `RevokeMongoDBEmployeeAccess`: any
-    fmt.Fprintf(os.Stdout, "Response from `ClustersApi.RevokeMongoDBEmployeeAccess`: %v (%v)\n", resp, r)
+    // response from `RevokeMongoDbEmployeeAccess`: any
+    fmt.Fprintf(os.Stdout, "Response from `ClustersApi.RevokeMongoDbEmployeeAccess`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1092,7 +1176,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiRevokeMongoDBEmployeeAccessRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiRevokeMongoDbEmployeeAccessRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

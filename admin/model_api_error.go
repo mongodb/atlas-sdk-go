@@ -8,12 +8,16 @@ type ApiError struct {
 	// Describes the specific conditions or reasons that cause each type of error.
 	Detail *string `json:"detail,omitempty"`
 	// HTTP status code returned with this error.
-	Error *int `json:"error,omitempty"`
+	// Read only field.
+	Error int `json:"error"`
 	// Application error code returned with this error.
-	ErrorCode *string `json:"errorCode,omitempty"`
+	// Read only field.
+	ErrorCode string `json:"errorCode"`
 	// Parameters used to give more information about the error.
+	// Read only field.
 	Parameters *[]any `json:"parameters,omitempty"`
 	// Application error message returned with this error.
+	// Read only field.
 	Reason *string `json:"reason,omitempty"`
 }
 
@@ -21,8 +25,10 @@ type ApiError struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApiError() *ApiError {
+func NewApiError(error_ int, errorCode string) *ApiError {
 	this := ApiError{}
+	this.Error = error_
+	this.ErrorCode = errorCode
 	return &this
 }
 
@@ -100,70 +106,52 @@ func (o *ApiError) SetDetail(v string) {
 	o.Detail = &v
 }
 
-// GetError returns the Error field value if set, zero value otherwise
+// GetError returns the Error field value
 func (o *ApiError) GetError() int {
-	if o == nil || IsNil(o.Error) {
+	if o == nil {
 		var ret int
 		return ret
 	}
-	return *o.Error
+
+	return o.Error
 }
 
-// GetErrorOk returns a tuple with the Error field value if set, nil otherwise
+// GetErrorOk returns a tuple with the Error field value
 // and a boolean to check if the value has been set.
 func (o *ApiError) GetErrorOk() (*int, bool) {
-	if o == nil || IsNil(o.Error) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.Error, true
+	return &o.Error, true
 }
 
-// HasError returns a boolean if a field has been set.
-func (o *ApiError) HasError() bool {
-	if o != nil && !IsNil(o.Error) {
-		return true
-	}
-
-	return false
-}
-
-// SetError gets a reference to the given int and assigns it to the Error field.
+// SetError sets field value
 func (o *ApiError) SetError(v int) {
-	o.Error = &v
+	o.Error = v
 }
 
-// GetErrorCode returns the ErrorCode field value if set, zero value otherwise
+// GetErrorCode returns the ErrorCode field value
 func (o *ApiError) GetErrorCode() string {
-	if o == nil || IsNil(o.ErrorCode) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.ErrorCode
+
+	return o.ErrorCode
 }
 
-// GetErrorCodeOk returns a tuple with the ErrorCode field value if set, nil otherwise
+// GetErrorCodeOk returns a tuple with the ErrorCode field value
 // and a boolean to check if the value has been set.
 func (o *ApiError) GetErrorCodeOk() (*string, bool) {
-	if o == nil || IsNil(o.ErrorCode) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.ErrorCode, true
+	return &o.ErrorCode, true
 }
 
-// HasErrorCode returns a boolean if a field has been set.
-func (o *ApiError) HasErrorCode() bool {
-	if o != nil && !IsNil(o.ErrorCode) {
-		return true
-	}
-
-	return false
-}
-
-// SetErrorCode gets a reference to the given string and assigns it to the ErrorCode field.
+// SetErrorCode sets field value
 func (o *ApiError) SetErrorCode(v string) {
-	o.ErrorCode = &v
+	o.ErrorCode = v
 }
 
 // GetParameters returns the Parameters field value if set, zero value otherwise
