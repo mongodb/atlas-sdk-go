@@ -16,6 +16,10 @@ jobs:
         with:
           go-version-file: 'go.mod'
       - run: make install-goimports
+
+      - name: Install mockery locally
+        run: go install github.com/vektra/mockery/v2@v2.42.1
+
       - name: Fetch changes
         working-directory: ./tools
         run: make fetch_openapi
