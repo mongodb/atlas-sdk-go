@@ -21,6 +21,9 @@ echo "# Running generation pipeline"
 echo "# Running transformation based on $OPENAPI_FILE_NAME to the $transformed_file"
 cp "$OPENAPI_FOLDER/$OPENAPI_FILE_NAME" "$openapiFileLocation"
 
+npm cache clean -f
+npm config set registry https://registry.npmjs.org/
+
 npm install
 npm run sdk:transform -- "$openapiFileLocation"
 
@@ -30,16 +33,16 @@ npm exec openapi-generator-cli -- validate -i "$openapiFileLocation"
 echo "# Running Client Generation"
 
 npm exec openapi-generator-cli -- generate \
-    -c "./config/config.yaml" -i "$openapiFileLocation" -o "$SDK_FOLDER" \
-    --package-name="$client_package" \
-    --type-mappings=integer=int \
-    --type-mappings=object=interface{} \
-    --type-mappings=interface{}=any \
-    --type-mappings=file=io.ReadCloser \
-    --ignore-file-override=config/.go-ignore
+  -c "./config/config.yaml" -i "$openapiFileLocation" -o "$SDK_FOLDER" \
+  --package-name="$client_package" \
+  --type-mappings=integer=int \
+  --type-mappings=object=interface{} \
+  --type-mappings=interface{}=any \
+  --type-mappings=file=io.ReadCloser \
+  --ignore-file-override=config/.go-ignore
 
 # Check if goimports exists and is executable
-if ! command -v goimports &> /dev/null; then
+if ! command -v goimports &>/dev/null; then
   echo "Error: goimports command not found. Please install goimports by running 'make install-goimports' before running this script."
   exit 1
 fi
