@@ -6,10 +6,16 @@ package admin
 type OrganizationSettings struct {
 	// Flag that indicates whether to require API operations to originate from an IP Address added to the API access list for the specified organization.
 	ApiAccessListRequired *bool `json:"apiAccessListRequired,omitempty"`
+	// Flag that indicates whether this organization has access to generative AI features. This setting only applies to Atlas Commercial and is enabled by default. Once this setting is turned on, Project Owners may be able to enable or disable individual AI features at the project level.
+	GenAIFeaturesEnabled *bool `json:"genAIFeaturesEnabled,omitempty"`
+	// Number that represents the maximum period before expiry in hours for new Atlas Admin API Service Account secrets within the specified organization.
+	MaxServiceAccountSecretValidityInHours *int `json:"maxServiceAccountSecretValidityInHours,omitempty"`
 	// Flag that indicates whether to require users to set up Multi-Factor Authentication (MFA) before accessing the specified organization. To learn more, see: https://www.mongodb.com/docs/atlas/security-multi-factor-authentication/.
 	MultiFactorAuthRequired *bool `json:"multiFactorAuthRequired,omitempty"`
 	// Flag that indicates whether to block MongoDB Support from accessing Atlas infrastructure and cluster logs for any deployment in the specified organization without explicit permission. Once this setting is turned on, you can grant MongoDB Support a 24-hour bypass access to the Atlas deployment to resolve support issues. To learn more, see: https://www.mongodb.com/docs/atlas/security-restrict-support-access/.
 	RestrictEmployeeAccess *bool `json:"restrictEmployeeAccess,omitempty"`
+	// String that specifies a single email address for the specified organization to receive security-related notifications. Specifying a security contact does not grant them authorization or access to Atlas for security decisions or approvals. An empty string is valid and clears the existing security contact (if any).
+	SecurityContact *string `json:"securityContact,omitempty"`
 }
 
 // NewOrganizationSettings instantiates a new OrganizationSettings object
@@ -18,6 +24,8 @@ type OrganizationSettings struct {
 // will change when the set of required properties is changed
 func NewOrganizationSettings() *OrganizationSettings {
 	this := OrganizationSettings{}
+	var genAIFeaturesEnabled bool = true
+	this.GenAIFeaturesEnabled = &genAIFeaturesEnabled
 	return &this
 }
 
@@ -26,6 +34,8 @@ func NewOrganizationSettings() *OrganizationSettings {
 // but it doesn't guarantee that properties required by API are set
 func NewOrganizationSettingsWithDefaults() *OrganizationSettings {
 	this := OrganizationSettings{}
+	var genAIFeaturesEnabled bool = true
+	this.GenAIFeaturesEnabled = &genAIFeaturesEnabled
 	return &this
 }
 
@@ -60,6 +70,72 @@ func (o *OrganizationSettings) HasApiAccessListRequired() bool {
 // SetApiAccessListRequired gets a reference to the given bool and assigns it to the ApiAccessListRequired field.
 func (o *OrganizationSettings) SetApiAccessListRequired(v bool) {
 	o.ApiAccessListRequired = &v
+}
+
+// GetGenAIFeaturesEnabled returns the GenAIFeaturesEnabled field value if set, zero value otherwise
+func (o *OrganizationSettings) GetGenAIFeaturesEnabled() bool {
+	if o == nil || IsNil(o.GenAIFeaturesEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.GenAIFeaturesEnabled
+}
+
+// GetGenAIFeaturesEnabledOk returns a tuple with the GenAIFeaturesEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrganizationSettings) GetGenAIFeaturesEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.GenAIFeaturesEnabled) {
+		return nil, false
+	}
+
+	return o.GenAIFeaturesEnabled, true
+}
+
+// HasGenAIFeaturesEnabled returns a boolean if a field has been set.
+func (o *OrganizationSettings) HasGenAIFeaturesEnabled() bool {
+	if o != nil && !IsNil(o.GenAIFeaturesEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetGenAIFeaturesEnabled gets a reference to the given bool and assigns it to the GenAIFeaturesEnabled field.
+func (o *OrganizationSettings) SetGenAIFeaturesEnabled(v bool) {
+	o.GenAIFeaturesEnabled = &v
+}
+
+// GetMaxServiceAccountSecretValidityInHours returns the MaxServiceAccountSecretValidityInHours field value if set, zero value otherwise
+func (o *OrganizationSettings) GetMaxServiceAccountSecretValidityInHours() int {
+	if o == nil || IsNil(o.MaxServiceAccountSecretValidityInHours) {
+		var ret int
+		return ret
+	}
+	return *o.MaxServiceAccountSecretValidityInHours
+}
+
+// GetMaxServiceAccountSecretValidityInHoursOk returns a tuple with the MaxServiceAccountSecretValidityInHours field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrganizationSettings) GetMaxServiceAccountSecretValidityInHoursOk() (*int, bool) {
+	if o == nil || IsNil(o.MaxServiceAccountSecretValidityInHours) {
+		return nil, false
+	}
+
+	return o.MaxServiceAccountSecretValidityInHours, true
+}
+
+// HasMaxServiceAccountSecretValidityInHours returns a boolean if a field has been set.
+func (o *OrganizationSettings) HasMaxServiceAccountSecretValidityInHours() bool {
+	if o != nil && !IsNil(o.MaxServiceAccountSecretValidityInHours) {
+		return true
+	}
+
+	return false
+}
+
+// SetMaxServiceAccountSecretValidityInHours gets a reference to the given int and assigns it to the MaxServiceAccountSecretValidityInHours field.
+func (o *OrganizationSettings) SetMaxServiceAccountSecretValidityInHours(v int) {
+	o.MaxServiceAccountSecretValidityInHours = &v
 }
 
 // GetMultiFactorAuthRequired returns the MultiFactorAuthRequired field value if set, zero value otherwise
@@ -126,4 +202,37 @@ func (o *OrganizationSettings) HasRestrictEmployeeAccess() bool {
 // SetRestrictEmployeeAccess gets a reference to the given bool and assigns it to the RestrictEmployeeAccess field.
 func (o *OrganizationSettings) SetRestrictEmployeeAccess(v bool) {
 	o.RestrictEmployeeAccess = &v
+}
+
+// GetSecurityContact returns the SecurityContact field value if set, zero value otherwise
+func (o *OrganizationSettings) GetSecurityContact() string {
+	if o == nil || IsNil(o.SecurityContact) {
+		var ret string
+		return ret
+	}
+	return *o.SecurityContact
+}
+
+// GetSecurityContactOk returns a tuple with the SecurityContact field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrganizationSettings) GetSecurityContactOk() (*string, bool) {
+	if o == nil || IsNil(o.SecurityContact) {
+		return nil, false
+	}
+
+	return o.SecurityContact, true
+}
+
+// HasSecurityContact returns a boolean if a field has been set.
+func (o *OrganizationSettings) HasSecurityContact() bool {
+	if o != nil && !IsNil(o.SecurityContact) {
+		return true
+	}
+
+	return false
+}
+
+// SetSecurityContact gets a reference to the given string and assigns it to the SecurityContact field.
+func (o *OrganizationSettings) SetSecurityContact(v string) {
+	o.SecurityContact = &v
 }

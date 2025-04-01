@@ -12,16 +12,16 @@ type AzureKeyVault struct {
 	Enabled *bool `json:"enabled,omitempty"`
 	// Web address with a unique key that identifies for your Azure Key Vault.
 	KeyIdentifier *string `json:"keyIdentifier,omitempty"`
-	// Unique string that identifies the Azure Key Vault that contains your key.
+	// Unique string that identifies the Azure Key Vault that contains your key. This field cannot be modified when you enable and set up private endpoint connections to your Azure Key Vault.
 	KeyVaultName *string `json:"keyVaultName,omitempty"`
 	// Enable connection to your Azure Key Vault over private networking.
 	RequirePrivateNetworking *bool `json:"requirePrivateNetworking,omitempty"`
-	// Name of the Azure resource group that contains your Azure Key Vault.
+	// Name of the Azure resource group that contains your Azure Key Vault. This field cannot be modified when you enable and set up private endpoint connections to your Azure Key Vault.
 	ResourceGroupName *string `json:"resourceGroupName,omitempty"`
 	// Private data that you need secured and that belongs to the specified Azure Key Vault (AKV) tenant (**azureKeyVault.tenantID**). This data can include any type of sensitive data such as passwords, database connection strings, API keys, and the like. AKV stores this information as encrypted binary data.
 	// Write only field.
 	Secret *string `json:"secret,omitempty"`
-	// Unique 36-hexadecimal character string that identifies your Azure subscription.
+	// Unique 36-hexadecimal character string that identifies your Azure subscription. This field cannot be modified when you enable and set up private endpoint connections to your Azure Key Vault.
 	SubscriptionID *string `json:"subscriptionID,omitempty"`
 	// Unique 36-hexadecimal character string that identifies the Azure Active Directory tenant within your Azure subscription.
 	TenantID *string `json:"tenantID,omitempty"`
