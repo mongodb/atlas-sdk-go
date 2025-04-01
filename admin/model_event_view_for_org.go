@@ -8,10 +8,10 @@ import (
 
 // EventViewForOrg struct for EventViewForOrg
 type EventViewForOrg struct {
-	// Unique 24-hexadecimal digit string that identifies the [API Key](https://dochub.mongodb.org/core/atlas-create-prog-api-key) that triggered the event. If this resource returns this parameter, it doesn't return the **userId** parameter.
+	// Unique 24-hexadecimal digit string that identifies the API Key that triggered the event. If this resource returns this parameter, it doesn't return the **userId** parameter.
 	// Read only field.
 	ApiKeyId *string `json:"apiKeyId,omitempty"`
-	// Date and time when this event occurred. This parameter expresses its value in the <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\" rel=\"noopener noreferrer\">ISO 8601</a> timestamp format in UTC.
+	// Date and time when this event occurred. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	Created *time.Time `json:"created,omitempty"`
 	// Unique identifier of event type.
@@ -31,7 +31,7 @@ type EventViewForOrg struct {
 	// Unique 24-hexadecimal digit string that identifies the organization to which these events apply.
 	// Read only field.
 	OrgId *string `json:"orgId,omitempty"`
-	// Public part of the [API Key](https://dochub.mongodb.org/core/atlas-create-prog-api-key) that triggered the event. If this resource returns this parameter, it doesn't return the **username** parameter.
+	// Public part of the API Key that triggered the event. If this resource returns this parameter, it doesn't return the **username** parameter.
 	// Read only field.
 	PublicKey *string `json:"publicKey,omitempty"`
 	Raw       *Raw    `json:"raw,omitempty"`

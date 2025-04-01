@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Analyzer** | Pointer to **string** | Specific pre-defined method chosen to convert database field text into searchable words. This conversion reduces the text of fields into the smallest units of text. These units are called a **term** or **token**. This process, known as tokenization, involves making the following changes to the text in fields:  - extracting words - removing punctuation - removing accents - changing to lowercase - removing common words - reducing words to their root form (stemming) - changing words to their base form (lemmatization)  MongoDB Cloud uses the process you select to build the Atlas Search index. | [optional] [default to "lucene.standard"]
 **Analyzers** | Pointer to [**[]AtlasSearchAnalyzer**](AtlasSearchAnalyzer.md) | List of user-defined methods to convert database field text into searchable words. | [optional] 
 **Mappings** | Pointer to [**SearchMappings**](SearchMappings.md) |  | [optional] 
+**NumPartitions** | Pointer to **int** | Number of index partitions. Note: This feature is currently in preview. | [optional] [default to 1]
 **SearchAnalyzer** | Pointer to **string** | Method applied to identify words when searching this index. | [optional] [default to "lucene.standard"]
 **StoredSource** | Pointer to [**any**](interface{}.md) | Flag that indicates whether to store all fields (true) on Atlas Search. By default, Atlas doesn&#39;t store (false) the fields on Atlas Search.  Alternatively, you can specify an object that only contains the list of fields to store (include) or not store (exclude) on Atlas Search. To learn more, see Stored Source Fields. | [optional] 
 **Synonyms** | Pointer to [**[]SearchSynonymMappingDefinition**](SearchSynonymMappingDefinition.md) | Rule sets that map words to their synonyms in this index. | [optional] 
@@ -103,6 +104,30 @@ SetMappings sets Mappings field to given value.
 `func (o *SearchIndexUpdateRequestDefinition) HasMappings() bool`
 
 HasMappings returns a boolean if a field has been set.
+### GetNumPartitions
+
+`func (o *SearchIndexUpdateRequestDefinition) GetNumPartitions() int`
+
+GetNumPartitions returns the NumPartitions field if non-nil, zero value otherwise.
+
+### GetNumPartitionsOk
+
+`func (o *SearchIndexUpdateRequestDefinition) GetNumPartitionsOk() (*int, bool)`
+
+GetNumPartitionsOk returns a tuple with the NumPartitions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNumPartitions
+
+`func (o *SearchIndexUpdateRequestDefinition) SetNumPartitions(v int)`
+
+SetNumPartitions sets NumPartitions field to given value.
+
+### HasNumPartitions
+
+`func (o *SearchIndexUpdateRequestDefinition) HasNumPartitions() bool`
+
+HasNumPartitions returns a boolean if a field has been set.
 ### GetSearchAnalyzer
 
 `func (o *SearchIndexUpdateRequestDefinition) GetSearchAnalyzer() string`

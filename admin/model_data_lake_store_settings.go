@@ -9,7 +9,7 @@ type DataLakeStoreSettings struct {
 	Provider string  `json:"provider"`
 	// Collection of AWS S3 [storage classes](https://aws.amazon.com/s3/storage-classes/). Atlas Data Lake includes the files in these storage classes in the query results.
 	AdditionalStorageClasses *[]string `json:"additionalStorageClasses,omitempty"`
-	// Human-readable label that identifies the AWS S3 bucket. This label must exactly match the name of an S3 bucket that the data lake can access with the configured AWS Identity and Access Management (IAM) credentials.
+	// Human-readable label that identifies the Google Cloud Storage bucket.
 	Bucket *string `json:"bucket,omitempty"`
 	// Delimiter.
 	Delimiter *string `json:"delimiter,omitempty"`
@@ -17,9 +17,9 @@ type DataLakeStoreSettings struct {
 	IncludeTags *bool `json:"includeTags,omitempty"`
 	// Prefix.
 	Prefix *string `json:"prefix,omitempty"`
-	// Flag that indicates whether the blob store is public. If set to `true`, MongoDB Cloud doesn't use the configured Azure service principal to access the blob store. If set to `false`, the configured Azure service principal must include permissions to access the blob store.
+	// Flag that indicates whether the bucket is public. If set to `true`, MongoDB Cloud doesn't use the configured GCP service account to access the bucket. If set to `false`, the configured GCP service acccount must include permissions to access the bucket.
 	Public *bool `json:"public,omitempty"`
-	// Microsoft Azure Regions.
+	// Google Cloud Platform Regions.
 	Region *string `json:"region,omitempty"`
 	// Human-readable label of the MongoDB Cloud cluster on which the store is based.
 	ClusterName *string `json:"clusterName,omitempty"`
