@@ -20,27 +20,28 @@ jobs:
         env:
           API_BASE_URL:  https://raw.githubusercontent.com/mongodb/openapi/refs/heads/dev/openapi/v2
       - name: Verify Changed files
-        uses: tj-actions/verify-changed-files@4a3570896cbdc5dca56a7a259fba88667845e18a
-        id: verify-changed-files
-        with:
-          files: |
-             **/atlas-api.yaml
+        run: |
+          FILES_CHANGED=false
+          if git diff --name-only | grep -qE '^openapi/atlas-api.yaml'; then
+              FILES_CHANGED=true
+          fi
+          echo "FILES_CHANGED=${FILES_CHANGED}" >> "$GITHUB_ENV"
       - name: Run generation
-        if: steps.verify-changed-files.outputs.files_changed == 'true'
+        if: env.FILES_CHANGED == 'true'
         working-directory: ./tools
         run: |
           export PATH=${PATH}:`go env GOPATH`/bin
           make clean_and_generate
       - name: Update Preview version
-        if: steps.verify-changed-files.outputs.files_changed == 'true'
+        if: env.FILES_CHANGED == 'true'
         working-directory: ./tools
         run: make preview-version  
       - name: Run mock generation
         working-directory: ./tools
-        if: steps.verify-changed-files.outputs.files_changed == 'true'
+        if: env.FILES_CHANGED == 'true'
         run: make generate_mocks  
       - uses: peter-evans/create-pull-request@v7
-        if: steps.verify-changed-files.outputs.files_changed == 'true'
+        if: env.FILES_CHANGED == 'true'
         with:
           token: ${{ secrets.APIX_BOT_PAT }}
           title: "APIBot: GO SDK Dev Preview"
