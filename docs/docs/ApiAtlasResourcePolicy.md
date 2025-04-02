@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CreatedByUser** | Pointer to [**ApiAtlasUserMetadata**](ApiAtlasUserMetadata.md) |  | [optional] 
 **CreatedDate** | Pointer to **time.Time** | Date and time in UTC when the atlas resource policy was created. | [optional] [readonly] 
+**Description** | Pointer to **string** | Description of the atlas resource policy. | [optional] [readonly] 
 **Id** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the atlas resource policy. | [optional] [readonly] 
 **LastUpdatedByUser** | Pointer to [**ApiAtlasUserMetadata**](ApiAtlasUserMetadata.md) |  | [optional] 
 **LastUpdatedDate** | Pointer to **time.Time** | Date and time in UTC when the atlas resource policy was last updated. | [optional] [readonly] 
@@ -81,6 +82,30 @@ SetCreatedDate sets CreatedDate field to given value.
 `func (o *ApiAtlasResourcePolicy) HasCreatedDate() bool`
 
 HasCreatedDate returns a boolean if a field has been set.
+### GetDescription
+
+`func (o *ApiAtlasResourcePolicy) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *ApiAtlasResourcePolicy) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *ApiAtlasResourcePolicy) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *ApiAtlasResourcePolicy) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
 ### GetId
 
 `func (o *ApiAtlasResourcePolicy) GetId() string`

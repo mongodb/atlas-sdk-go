@@ -11,6 +11,9 @@ type BackupSnapshot struct {
 	// Unique 24-hexadecimal digit string that identifies the cluster with the snapshots you want to return.
 	// Read only field.
 	ClusterId *string `json:"clusterId,omitempty"`
+	// Human-readable label that identifies the cluster.
+	// Read only field.
+	ClusterName *string `json:"clusterName,omitempty"`
 	// Flag that indicates whether the snapshot exists. This flag returns `false` while MongoDB Cloud creates the snapshot.
 	// Read only field.
 	Complete *bool             `json:"complete,omitempty"`
@@ -85,6 +88,39 @@ func (o *BackupSnapshot) HasClusterId() bool {
 // SetClusterId gets a reference to the given string and assigns it to the ClusterId field.
 func (o *BackupSnapshot) SetClusterId(v string) {
 	o.ClusterId = &v
+}
+
+// GetClusterName returns the ClusterName field value if set, zero value otherwise
+func (o *BackupSnapshot) GetClusterName() string {
+	if o == nil || IsNil(o.ClusterName) {
+		var ret string
+		return ret
+	}
+	return *o.ClusterName
+}
+
+// GetClusterNameOk returns a tuple with the ClusterName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BackupSnapshot) GetClusterNameOk() (*string, bool) {
+	if o == nil || IsNil(o.ClusterName) {
+		return nil, false
+	}
+
+	return o.ClusterName, true
+}
+
+// HasClusterName returns a boolean if a field has been set.
+func (o *BackupSnapshot) HasClusterName() bool {
+	if o != nil && !IsNil(o.ClusterName) {
+		return true
+	}
+
+	return false
+}
+
+// SetClusterName gets a reference to the given string and assigns it to the ClusterName field.
+func (o *BackupSnapshot) SetClusterName(v string) {
+	o.ClusterName = &v
 }
 
 // GetComplete returns the Complete field value if set, zero value otherwise

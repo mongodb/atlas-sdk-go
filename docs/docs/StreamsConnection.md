@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **Name** | Pointer to **string** | Human-readable label that identifies the stream connection. In the case of the Sample type, this is the name of the sample source. | [optional] 
-**Type** | Pointer to **string** | Type of the connection. Can be either Cluster or Kafka. | [optional] 
+**Type** | Pointer to **string** | Type of the connection. | [optional] 
 **ClusterName** | Pointer to **string** | Name of the cluster configured for this connection. | [optional] 
 **DbRoleToExecute** | Pointer to [**DBRoleToExecute**](DBRoleToExecute.md) |  | [optional] 
 **Authentication** | Pointer to [**StreamsKafkaAuthentication**](StreamsKafkaAuthentication.md) |  | [optional] 
@@ -14,6 +14,9 @@ Name | Type | Description | Notes
 **Config** | Pointer to **map[string]string** | A map of Kafka key-value pairs for optional configuration. This is a flat object, and keys can have &#39;.&#39; characters. | [optional] 
 **Networking** | Pointer to [**StreamsKafkaNetworking**](StreamsKafkaNetworking.md) |  | [optional] 
 **Security** | Pointer to [**StreamsKafkaSecurity**](StreamsKafkaSecurity.md) |  | [optional] 
+**Headers** | Pointer to **map[string]string** | A map of key-value pairs that will be passed as headers for the request. | [optional] 
+**Url** | Pointer to **string** | The url to be used for the request. | [optional] 
+**Aws** | Pointer to [**StreamsAWSConnectionConfig**](StreamsAWSConnectionConfig.md) |  | [optional] 
 
 ## Methods
 
@@ -274,6 +277,78 @@ SetSecurity sets Security field to given value.
 `func (o *StreamsConnection) HasSecurity() bool`
 
 HasSecurity returns a boolean if a field has been set.
+### GetHeaders
+
+`func (o *StreamsConnection) GetHeaders() map[string]string`
+
+GetHeaders returns the Headers field if non-nil, zero value otherwise.
+
+### GetHeadersOk
+
+`func (o *StreamsConnection) GetHeadersOk() (*map[string]string, bool)`
+
+GetHeadersOk returns a tuple with the Headers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHeaders
+
+`func (o *StreamsConnection) SetHeaders(v map[string]string)`
+
+SetHeaders sets Headers field to given value.
+
+### HasHeaders
+
+`func (o *StreamsConnection) HasHeaders() bool`
+
+HasHeaders returns a boolean if a field has been set.
+### GetUrl
+
+`func (o *StreamsConnection) GetUrl() string`
+
+GetUrl returns the Url field if non-nil, zero value otherwise.
+
+### GetUrlOk
+
+`func (o *StreamsConnection) GetUrlOk() (*string, bool)`
+
+GetUrlOk returns a tuple with the Url field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUrl
+
+`func (o *StreamsConnection) SetUrl(v string)`
+
+SetUrl sets Url field to given value.
+
+### HasUrl
+
+`func (o *StreamsConnection) HasUrl() bool`
+
+HasUrl returns a boolean if a field has been set.
+### GetAws
+
+`func (o *StreamsConnection) GetAws() StreamsAWSConnectionConfig`
+
+GetAws returns the Aws field if non-nil, zero value otherwise.
+
+### GetAwsOk
+
+`func (o *StreamsConnection) GetAwsOk() (*StreamsAWSConnectionConfig, bool)`
+
+GetAwsOk returns a tuple with the Aws field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAws
+
+`func (o *StreamsConnection) SetAws(v StreamsAWSConnectionConfig)`
+
+SetAws sets Aws field to given value.
+
+### HasAws
+
+`func (o *StreamsConnection) HasAws() bool`
+
+HasAws returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

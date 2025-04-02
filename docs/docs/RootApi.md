@@ -5,7 +5,7 @@ All URIs are relative to *https://cloud.mongodb.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**GetSystemStatus**](RootApi.md#GetSystemStatus) | **Get** /api/atlas/v2 | Return the status of this MongoDB application
-[**ReturnAllControlPlaneIPAddresses**](RootApi.md#ReturnAllControlPlaneIPAddresses) | **Get** /api/atlas/v2/unauth/controlPlaneIPAddresses | Return All Control Plane IP Addresses
+[**ReturnAllControlPlaneIpAddresses**](RootApi.md#ReturnAllControlPlaneIpAddresses) | **Get** /api/atlas/v2/unauth/controlPlaneIPAddresses | Return All Control Plane IP Addresses
 
 
 
@@ -80,9 +80,9 @@ Other parameters are passed through a pointer to a apiGetSystemStatusRequest str
 [[Back to README]](../README.md)
 
 
-## ReturnAllControlPlaneIPAddresses
+## ReturnAllControlPlaneIpAddresses
 
-> ControlPlaneIPAddresses ReturnAllControlPlaneIPAddresses(ctx).Execute()
+> ControlPlaneIPAddresses ReturnAllControlPlaneIpAddresses(ctx).Execute()
 
 Return All Control Plane IP Addresses
 
@@ -111,17 +111,17 @@ func main() {
     }
 
 
-    resp, r, err := sdk.RootApi.ReturnAllControlPlaneIPAddresses(context.Background()).Execute()
+    resp, r, err := sdk.RootApi.ReturnAllControlPlaneIpAddresses(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RootApi.ReturnAllControlPlaneIPAddresses`: %v (%v)\n", err, r)
+        fmt.Fprintf(os.Stderr, "Error when calling `RootApi.ReturnAllControlPlaneIpAddresses`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
         if ok {
             fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
         }
         return
     }
-    // response from `ReturnAllControlPlaneIPAddresses`: ControlPlaneIPAddresses
-    fmt.Fprintf(os.Stdout, "Response from `RootApi.ReturnAllControlPlaneIPAddresses`: %v (%v)\n", resp, r)
+    // response from `ReturnAllControlPlaneIpAddresses`: ControlPlaneIPAddresses
+    fmt.Fprintf(os.Stdout, "Response from `RootApi.ReturnAllControlPlaneIpAddresses`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -131,7 +131,7 @@ This endpoint does not need any parameter.
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiReturnAllControlPlaneIPAddressesRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReturnAllControlPlaneIpAddressesRequest struct via the builder pattern
 
 
 ### Return type

@@ -8,6 +8,8 @@ type ClusterDescriptionProcessArgs20240805 struct {
 	ChangeStreamOptionsPreAndPostImagesExpireAfterSeconds *int `json:"changeStreamOptionsPreAndPostImagesExpireAfterSeconds,omitempty"`
 	// Number of threads on the source shard and the receiving shard for chunk migration. The number of threads should not exceed the half the total number of CPU cores in the sharded cluster.
 	ChunkMigrationConcurrency *int `json:"chunkMigrationConcurrency,omitempty"`
+	// The custom OpenSSL cipher suite list for TLS 1.2. This field is only valid when `tlsCipherConfigMode` is set to `CUSTOM`.
+	CustomOpensslCipherConfigTls12 *[]string `json:"customOpensslCipherConfigTls12,omitempty"`
 	// Default time limit in milliseconds for individual read operations to complete.
 	DefaultMaxTimeMS *int `json:"defaultMaxTimeMS,omitempty"`
 	// Default level of acknowledgment requested from MongoDB for write operations when none is specified by the driver.
@@ -28,6 +30,8 @@ type ClusterDescriptionProcessArgs20240805 struct {
 	SampleRefreshIntervalBIConnector *int `json:"sampleRefreshIntervalBIConnector,omitempty"`
 	// Number of documents per database to sample when gathering schema information.
 	SampleSizeBIConnector *int `json:"sampleSizeBIConnector,omitempty"`
+	// The TLS cipher suite configuration mode. The default mode uses the default cipher suites. The custom mode allows you to specify custom cipher suites for both TLS 1.2 and TLS 1.3.
+	TlsCipherConfigMode *string `json:"tlsCipherConfigMode,omitempty"`
 	// Lifetime, in seconds, of multi-document transactions. Atlas considers the transactions that exceed this limit as expired and so aborts them through a periodic cleanup process.
 	TransactionLifetimeLimitSeconds *int64 `json:"transactionLifetimeLimitSeconds,omitempty"`
 }
@@ -121,6 +125,39 @@ func (o *ClusterDescriptionProcessArgs20240805) HasChunkMigrationConcurrency() b
 // SetChunkMigrationConcurrency gets a reference to the given int and assigns it to the ChunkMigrationConcurrency field.
 func (o *ClusterDescriptionProcessArgs20240805) SetChunkMigrationConcurrency(v int) {
 	o.ChunkMigrationConcurrency = &v
+}
+
+// GetCustomOpensslCipherConfigTls12 returns the CustomOpensslCipherConfigTls12 field value if set, zero value otherwise
+func (o *ClusterDescriptionProcessArgs20240805) GetCustomOpensslCipherConfigTls12() []string {
+	if o == nil || IsNil(o.CustomOpensslCipherConfigTls12) {
+		var ret []string
+		return ret
+	}
+	return *o.CustomOpensslCipherConfigTls12
+}
+
+// GetCustomOpensslCipherConfigTls12Ok returns a tuple with the CustomOpensslCipherConfigTls12 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterDescriptionProcessArgs20240805) GetCustomOpensslCipherConfigTls12Ok() (*[]string, bool) {
+	if o == nil || IsNil(o.CustomOpensslCipherConfigTls12) {
+		return nil, false
+	}
+
+	return o.CustomOpensslCipherConfigTls12, true
+}
+
+// HasCustomOpensslCipherConfigTls12 returns a boolean if a field has been set.
+func (o *ClusterDescriptionProcessArgs20240805) HasCustomOpensslCipherConfigTls12() bool {
+	if o != nil && !IsNil(o.CustomOpensslCipherConfigTls12) {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomOpensslCipherConfigTls12 gets a reference to the given []string and assigns it to the CustomOpensslCipherConfigTls12 field.
+func (o *ClusterDescriptionProcessArgs20240805) SetCustomOpensslCipherConfigTls12(v []string) {
+	o.CustomOpensslCipherConfigTls12 = &v
 }
 
 // GetDefaultMaxTimeMS returns the DefaultMaxTimeMS field value if set, zero value otherwise
@@ -451,6 +488,39 @@ func (o *ClusterDescriptionProcessArgs20240805) HasSampleSizeBIConnector() bool 
 // SetSampleSizeBIConnector gets a reference to the given int and assigns it to the SampleSizeBIConnector field.
 func (o *ClusterDescriptionProcessArgs20240805) SetSampleSizeBIConnector(v int) {
 	o.SampleSizeBIConnector = &v
+}
+
+// GetTlsCipherConfigMode returns the TlsCipherConfigMode field value if set, zero value otherwise
+func (o *ClusterDescriptionProcessArgs20240805) GetTlsCipherConfigMode() string {
+	if o == nil || IsNil(o.TlsCipherConfigMode) {
+		var ret string
+		return ret
+	}
+	return *o.TlsCipherConfigMode
+}
+
+// GetTlsCipherConfigModeOk returns a tuple with the TlsCipherConfigMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterDescriptionProcessArgs20240805) GetTlsCipherConfigModeOk() (*string, bool) {
+	if o == nil || IsNil(o.TlsCipherConfigMode) {
+		return nil, false
+	}
+
+	return o.TlsCipherConfigMode, true
+}
+
+// HasTlsCipherConfigMode returns a boolean if a field has been set.
+func (o *ClusterDescriptionProcessArgs20240805) HasTlsCipherConfigMode() bool {
+	if o != nil && !IsNil(o.TlsCipherConfigMode) {
+		return true
+	}
+
+	return false
+}
+
+// SetTlsCipherConfigMode gets a reference to the given string and assigns it to the TlsCipherConfigMode field.
+func (o *ClusterDescriptionProcessArgs20240805) SetTlsCipherConfigMode(v string) {
+	o.TlsCipherConfigMode = &v
 }
 
 // GetTransactionLifetimeLimitSeconds returns the TransactionLifetimeLimitSeconds field value if set, zero value otherwise

@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **EbsVolumeType** | Pointer to **string** | Type of storage you want to attach to your AWS-provisioned cluster.  - &#x60;STANDARD&#x60; volume types can&#39;t exceed the default input/output operations per second (IOPS) rate for the selected volume size.   - &#x60;PROVISIONED&#x60; volume types must fall within the allowable IOPS range for the selected volume size. You must set this value to (&#x60;PROVISIONED&#x60;) for NVMe clusters. | [optional] [default to "STANDARD"]
 **InstanceSize** | Pointer to **string** | Hardware specification for the instances in this M0/M2/M5 tier cluster. | [optional] 
 **NodeCount** | Pointer to **int** | Number of nodes of the given type for MongoDB Cloud to deploy to the region. | [optional] 
+**EffectiveInstanceSize** | Pointer to **string** | The true tenant instance size. This is present to support backwards compatibility for deprecated provider types and/or instance sizes. | [optional] [readonly] 
 
 ## Methods
 
@@ -149,6 +150,30 @@ SetNodeCount sets NodeCount field to given value.
 `func (o *HardwareSpec20240805) HasNodeCount() bool`
 
 HasNodeCount returns a boolean if a field has been set.
+### GetEffectiveInstanceSize
+
+`func (o *HardwareSpec20240805) GetEffectiveInstanceSize() string`
+
+GetEffectiveInstanceSize returns the EffectiveInstanceSize field if non-nil, zero value otherwise.
+
+### GetEffectiveInstanceSizeOk
+
+`func (o *HardwareSpec20240805) GetEffectiveInstanceSizeOk() (*string, bool)`
+
+GetEffectiveInstanceSizeOk returns a tuple with the EffectiveInstanceSize field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEffectiveInstanceSize
+
+`func (o *HardwareSpec20240805) SetEffectiveInstanceSize(v string)`
+
+SetEffectiveInstanceSize sets EffectiveInstanceSize field to given value.
+
+### HasEffectiveInstanceSize
+
+`func (o *HardwareSpec20240805) HasEffectiveInstanceSize() bool`
+
+HasEffectiveInstanceSize returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

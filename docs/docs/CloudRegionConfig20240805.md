@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **AnalyticsSpecs** | Pointer to [**DedicatedHardwareSpec20240805**](DedicatedHardwareSpec20240805.md) |  | [optional] 
 **AutoScaling** | Pointer to [**AdvancedAutoScalingSettings**](AdvancedAutoScalingSettings.md) |  | [optional] 
 **ReadOnlySpecs** | Pointer to [**DedicatedHardwareSpec20240805**](DedicatedHardwareSpec20240805.md) |  | [optional] 
-**BackingProviderName** | Pointer to **string** | Cloud service provider on which MongoDB Cloud provisioned the multi-tenant cluster. The resource returns this parameter when **providerName** is &#x60;TENANT&#x60; and **electableSpecs.instanceSize** is &#x60;M0&#x60;, &#x60;M2&#x60; or &#x60;M5&#x60;. | [optional] 
+**BackingProviderName** | Pointer to **string** | Cloud service provider on which MongoDB Cloud provisioned the multi-tenant cluster. The resource returns this parameter when **providerName** is &#x60;TENANT&#x60; and **electableSpecs.instanceSize** is &#x60;M0&#x60;, &#x60;M2&#x60; or &#x60;M5&#x60;.   Please note that  using an instanceSize of M2 or M5 will create a Flex cluster instead. Support for the instanceSize of M2 or M5 will be discontinued in January 2026. We recommend using the createFlexCluster API for such configurations moving forward. | [optional] 
 
 ## Methods
 

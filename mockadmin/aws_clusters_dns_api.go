@@ -25,68 +25,68 @@ func (_m *AWSClustersDNSApi) EXPECT() *AWSClustersDNSApi_Expecter {
 	return &AWSClustersDNSApi_Expecter{mock: &_m.Mock}
 }
 
-// GetAWSCustomDNS provides a mock function with given fields: ctx, groupId
-func (_m *AWSClustersDNSApi) GetAWSCustomDNS(ctx context.Context, groupId string) admin.GetAWSCustomDNSApiRequest {
+// GetAwsCustomDns provides a mock function with given fields: ctx, groupId
+func (_m *AWSClustersDNSApi) GetAwsCustomDns(ctx context.Context, groupId string) admin.GetAwsCustomDnsApiRequest {
 	ret := _m.Called(ctx, groupId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetAWSCustomDNS")
+		panic("no return value specified for GetAwsCustomDns")
 	}
 
-	var r0 admin.GetAWSCustomDNSApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string) admin.GetAWSCustomDNSApiRequest); ok {
+	var r0 admin.GetAwsCustomDnsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.GetAwsCustomDnsApiRequest); ok {
 		r0 = rf(ctx, groupId)
 	} else {
-		r0 = ret.Get(0).(admin.GetAWSCustomDNSApiRequest)
+		r0 = ret.Get(0).(admin.GetAwsCustomDnsApiRequest)
 	}
 
 	return r0
 }
 
-// AWSClustersDNSApi_GetAWSCustomDNS_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetAWSCustomDNS'
-type AWSClustersDNSApi_GetAWSCustomDNS_Call struct {
+// AWSClustersDNSApi_GetAwsCustomDns_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetAwsCustomDns'
+type AWSClustersDNSApi_GetAwsCustomDns_Call struct {
 	*mock.Call
 }
 
-// GetAWSCustomDNS is a helper method to define mock.On call
+// GetAwsCustomDns is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *AWSClustersDNSApi_Expecter) GetAWSCustomDNS(ctx any, groupId any) *AWSClustersDNSApi_GetAWSCustomDNS_Call {
-	return &AWSClustersDNSApi_GetAWSCustomDNS_Call{Call: _e.mock.On("GetAWSCustomDNS", ctx, groupId)}
+func (_e *AWSClustersDNSApi_Expecter) GetAwsCustomDns(ctx any, groupId any) *AWSClustersDNSApi_GetAwsCustomDns_Call {
+	return &AWSClustersDNSApi_GetAwsCustomDns_Call{Call: _e.mock.On("GetAwsCustomDns", ctx, groupId)}
 }
 
-func (_c *AWSClustersDNSApi_GetAWSCustomDNS_Call) Run(run func(ctx context.Context, groupId string)) *AWSClustersDNSApi_GetAWSCustomDNS_Call {
+func (_c *AWSClustersDNSApi_GetAwsCustomDns_Call) Run(run func(ctx context.Context, groupId string)) *AWSClustersDNSApi_GetAwsCustomDns_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string))
 	})
 	return _c
 }
 
-func (_c *AWSClustersDNSApi_GetAWSCustomDNS_Call) Return(_a0 admin.GetAWSCustomDNSApiRequest) *AWSClustersDNSApi_GetAWSCustomDNS_Call {
+func (_c *AWSClustersDNSApi_GetAwsCustomDns_Call) Return(_a0 admin.GetAwsCustomDnsApiRequest) *AWSClustersDNSApi_GetAwsCustomDns_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *AWSClustersDNSApi_GetAWSCustomDNS_Call) RunAndReturn(run func(context.Context, string) admin.GetAWSCustomDNSApiRequest) *AWSClustersDNSApi_GetAWSCustomDNS_Call {
+func (_c *AWSClustersDNSApi_GetAwsCustomDns_Call) RunAndReturn(run func(context.Context, string) admin.GetAwsCustomDnsApiRequest) *AWSClustersDNSApi_GetAwsCustomDns_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetAWSCustomDNSExecute provides a mock function with given fields: r
-func (_m *AWSClustersDNSApi) GetAWSCustomDNSExecute(r admin.GetAWSCustomDNSApiRequest) (*admin.AWSCustomDNSEnabled, *http.Response, error) {
+// GetAwsCustomDnsExecute provides a mock function with given fields: r
+func (_m *AWSClustersDNSApi) GetAwsCustomDnsExecute(r admin.GetAwsCustomDnsApiRequest) (*admin.AWSCustomDNSEnabled, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetAWSCustomDNSExecute")
+		panic("no return value specified for GetAwsCustomDnsExecute")
 	}
 
 	var r0 *admin.AWSCustomDNSEnabled
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetAWSCustomDNSApiRequest) (*admin.AWSCustomDNSEnabled, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetAwsCustomDnsApiRequest) (*admin.AWSCustomDNSEnabled, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.GetAWSCustomDNSApiRequest) *admin.AWSCustomDNSEnabled); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetAwsCustomDnsApiRequest) *admin.AWSCustomDNSEnabled); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -94,7 +94,7 @@ func (_m *AWSClustersDNSApi) GetAWSCustomDNSExecute(r admin.GetAWSCustomDNSApiRe
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.GetAWSCustomDNSApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.GetAwsCustomDnsApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -102,7 +102,7 @@ func (_m *AWSClustersDNSApi) GetAWSCustomDNSExecute(r admin.GetAWSCustomDNSApiRe
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.GetAWSCustomDNSApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.GetAwsCustomDnsApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -111,144 +111,144 @@ func (_m *AWSClustersDNSApi) GetAWSCustomDNSExecute(r admin.GetAWSCustomDNSApiRe
 	return r0, r1, r2
 }
 
-// AWSClustersDNSApi_GetAWSCustomDNSExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetAWSCustomDNSExecute'
-type AWSClustersDNSApi_GetAWSCustomDNSExecute_Call struct {
+// AWSClustersDNSApi_GetAwsCustomDnsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetAwsCustomDnsExecute'
+type AWSClustersDNSApi_GetAwsCustomDnsExecute_Call struct {
 	*mock.Call
 }
 
-// GetAWSCustomDNSExecute is a helper method to define mock.On call
-//   - r admin.GetAWSCustomDNSApiRequest
-func (_e *AWSClustersDNSApi_Expecter) GetAWSCustomDNSExecute(r any) *AWSClustersDNSApi_GetAWSCustomDNSExecute_Call {
-	return &AWSClustersDNSApi_GetAWSCustomDNSExecute_Call{Call: _e.mock.On("GetAWSCustomDNSExecute", r)}
+// GetAwsCustomDnsExecute is a helper method to define mock.On call
+//   - r admin.GetAwsCustomDnsApiRequest
+func (_e *AWSClustersDNSApi_Expecter) GetAwsCustomDnsExecute(r any) *AWSClustersDNSApi_GetAwsCustomDnsExecute_Call {
+	return &AWSClustersDNSApi_GetAwsCustomDnsExecute_Call{Call: _e.mock.On("GetAwsCustomDnsExecute", r)}
 }
 
-func (_c *AWSClustersDNSApi_GetAWSCustomDNSExecute_Call) Run(run func(r admin.GetAWSCustomDNSApiRequest)) *AWSClustersDNSApi_GetAWSCustomDNSExecute_Call {
+func (_c *AWSClustersDNSApi_GetAwsCustomDnsExecute_Call) Run(run func(r admin.GetAwsCustomDnsApiRequest)) *AWSClustersDNSApi_GetAwsCustomDnsExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.GetAWSCustomDNSApiRequest))
+		run(args[0].(admin.GetAwsCustomDnsApiRequest))
 	})
 	return _c
 }
 
-func (_c *AWSClustersDNSApi_GetAWSCustomDNSExecute_Call) Return(_a0 *admin.AWSCustomDNSEnabled, _a1 *http.Response, _a2 error) *AWSClustersDNSApi_GetAWSCustomDNSExecute_Call {
+func (_c *AWSClustersDNSApi_GetAwsCustomDnsExecute_Call) Return(_a0 *admin.AWSCustomDNSEnabled, _a1 *http.Response, _a2 error) *AWSClustersDNSApi_GetAwsCustomDnsExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *AWSClustersDNSApi_GetAWSCustomDNSExecute_Call) RunAndReturn(run func(admin.GetAWSCustomDNSApiRequest) (*admin.AWSCustomDNSEnabled, *http.Response, error)) *AWSClustersDNSApi_GetAWSCustomDNSExecute_Call {
+func (_c *AWSClustersDNSApi_GetAwsCustomDnsExecute_Call) RunAndReturn(run func(admin.GetAwsCustomDnsApiRequest) (*admin.AWSCustomDNSEnabled, *http.Response, error)) *AWSClustersDNSApi_GetAwsCustomDnsExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetAWSCustomDNSWithParams provides a mock function with given fields: ctx, args
-func (_m *AWSClustersDNSApi) GetAWSCustomDNSWithParams(ctx context.Context, args *admin.GetAWSCustomDNSApiParams) admin.GetAWSCustomDNSApiRequest {
+// GetAwsCustomDnsWithParams provides a mock function with given fields: ctx, args
+func (_m *AWSClustersDNSApi) GetAwsCustomDnsWithParams(ctx context.Context, args *admin.GetAwsCustomDnsApiParams) admin.GetAwsCustomDnsApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetAWSCustomDNSWithParams")
+		panic("no return value specified for GetAwsCustomDnsWithParams")
 	}
 
-	var r0 admin.GetAWSCustomDNSApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetAWSCustomDNSApiParams) admin.GetAWSCustomDNSApiRequest); ok {
+	var r0 admin.GetAwsCustomDnsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetAwsCustomDnsApiParams) admin.GetAwsCustomDnsApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.GetAWSCustomDNSApiRequest)
+		r0 = ret.Get(0).(admin.GetAwsCustomDnsApiRequest)
 	}
 
 	return r0
 }
 
-// AWSClustersDNSApi_GetAWSCustomDNSWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetAWSCustomDNSWithParams'
-type AWSClustersDNSApi_GetAWSCustomDNSWithParams_Call struct {
+// AWSClustersDNSApi_GetAwsCustomDnsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetAwsCustomDnsWithParams'
+type AWSClustersDNSApi_GetAwsCustomDnsWithParams_Call struct {
 	*mock.Call
 }
 
-// GetAWSCustomDNSWithParams is a helper method to define mock.On call
+// GetAwsCustomDnsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.GetAWSCustomDNSApiParams
-func (_e *AWSClustersDNSApi_Expecter) GetAWSCustomDNSWithParams(ctx any, args any) *AWSClustersDNSApi_GetAWSCustomDNSWithParams_Call {
-	return &AWSClustersDNSApi_GetAWSCustomDNSWithParams_Call{Call: _e.mock.On("GetAWSCustomDNSWithParams", ctx, args)}
+//   - args *admin.GetAwsCustomDnsApiParams
+func (_e *AWSClustersDNSApi_Expecter) GetAwsCustomDnsWithParams(ctx any, args any) *AWSClustersDNSApi_GetAwsCustomDnsWithParams_Call {
+	return &AWSClustersDNSApi_GetAwsCustomDnsWithParams_Call{Call: _e.mock.On("GetAwsCustomDnsWithParams", ctx, args)}
 }
 
-func (_c *AWSClustersDNSApi_GetAWSCustomDNSWithParams_Call) Run(run func(ctx context.Context, args *admin.GetAWSCustomDNSApiParams)) *AWSClustersDNSApi_GetAWSCustomDNSWithParams_Call {
+func (_c *AWSClustersDNSApi_GetAwsCustomDnsWithParams_Call) Run(run func(ctx context.Context, args *admin.GetAwsCustomDnsApiParams)) *AWSClustersDNSApi_GetAwsCustomDnsWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.GetAWSCustomDNSApiParams))
+		run(args[0].(context.Context), args[1].(*admin.GetAwsCustomDnsApiParams))
 	})
 	return _c
 }
 
-func (_c *AWSClustersDNSApi_GetAWSCustomDNSWithParams_Call) Return(_a0 admin.GetAWSCustomDNSApiRequest) *AWSClustersDNSApi_GetAWSCustomDNSWithParams_Call {
+func (_c *AWSClustersDNSApi_GetAwsCustomDnsWithParams_Call) Return(_a0 admin.GetAwsCustomDnsApiRequest) *AWSClustersDNSApi_GetAwsCustomDnsWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *AWSClustersDNSApi_GetAWSCustomDNSWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetAWSCustomDNSApiParams) admin.GetAWSCustomDNSApiRequest) *AWSClustersDNSApi_GetAWSCustomDNSWithParams_Call {
+func (_c *AWSClustersDNSApi_GetAwsCustomDnsWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetAwsCustomDnsApiParams) admin.GetAwsCustomDnsApiRequest) *AWSClustersDNSApi_GetAwsCustomDnsWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ToggleAWSCustomDNS provides a mock function with given fields: ctx, groupId, aWSCustomDNSEnabled
-func (_m *AWSClustersDNSApi) ToggleAWSCustomDNS(ctx context.Context, groupId string, aWSCustomDNSEnabled *admin.AWSCustomDNSEnabled) admin.ToggleAWSCustomDNSApiRequest {
+// ToggleAwsCustomDns provides a mock function with given fields: ctx, groupId, aWSCustomDNSEnabled
+func (_m *AWSClustersDNSApi) ToggleAwsCustomDns(ctx context.Context, groupId string, aWSCustomDNSEnabled *admin.AWSCustomDNSEnabled) admin.ToggleAwsCustomDnsApiRequest {
 	ret := _m.Called(ctx, groupId, aWSCustomDNSEnabled)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ToggleAWSCustomDNS")
+		panic("no return value specified for ToggleAwsCustomDns")
 	}
 
-	var r0 admin.ToggleAWSCustomDNSApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.AWSCustomDNSEnabled) admin.ToggleAWSCustomDNSApiRequest); ok {
+	var r0 admin.ToggleAwsCustomDnsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.AWSCustomDNSEnabled) admin.ToggleAwsCustomDnsApiRequest); ok {
 		r0 = rf(ctx, groupId, aWSCustomDNSEnabled)
 	} else {
-		r0 = ret.Get(0).(admin.ToggleAWSCustomDNSApiRequest)
+		r0 = ret.Get(0).(admin.ToggleAwsCustomDnsApiRequest)
 	}
 
 	return r0
 }
 
-// AWSClustersDNSApi_ToggleAWSCustomDNS_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ToggleAWSCustomDNS'
-type AWSClustersDNSApi_ToggleAWSCustomDNS_Call struct {
+// AWSClustersDNSApi_ToggleAwsCustomDns_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ToggleAwsCustomDns'
+type AWSClustersDNSApi_ToggleAwsCustomDns_Call struct {
 	*mock.Call
 }
 
-// ToggleAWSCustomDNS is a helper method to define mock.On call
+// ToggleAwsCustomDns is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - aWSCustomDNSEnabled *admin.AWSCustomDNSEnabled
-func (_e *AWSClustersDNSApi_Expecter) ToggleAWSCustomDNS(ctx any, groupId any, aWSCustomDNSEnabled any) *AWSClustersDNSApi_ToggleAWSCustomDNS_Call {
-	return &AWSClustersDNSApi_ToggleAWSCustomDNS_Call{Call: _e.mock.On("ToggleAWSCustomDNS", ctx, groupId, aWSCustomDNSEnabled)}
+func (_e *AWSClustersDNSApi_Expecter) ToggleAwsCustomDns(ctx any, groupId any, aWSCustomDNSEnabled any) *AWSClustersDNSApi_ToggleAwsCustomDns_Call {
+	return &AWSClustersDNSApi_ToggleAwsCustomDns_Call{Call: _e.mock.On("ToggleAwsCustomDns", ctx, groupId, aWSCustomDNSEnabled)}
 }
 
-func (_c *AWSClustersDNSApi_ToggleAWSCustomDNS_Call) Run(run func(ctx context.Context, groupId string, aWSCustomDNSEnabled *admin.AWSCustomDNSEnabled)) *AWSClustersDNSApi_ToggleAWSCustomDNS_Call {
+func (_c *AWSClustersDNSApi_ToggleAwsCustomDns_Call) Run(run func(ctx context.Context, groupId string, aWSCustomDNSEnabled *admin.AWSCustomDNSEnabled)) *AWSClustersDNSApi_ToggleAwsCustomDns_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(*admin.AWSCustomDNSEnabled))
 	})
 	return _c
 }
 
-func (_c *AWSClustersDNSApi_ToggleAWSCustomDNS_Call) Return(_a0 admin.ToggleAWSCustomDNSApiRequest) *AWSClustersDNSApi_ToggleAWSCustomDNS_Call {
+func (_c *AWSClustersDNSApi_ToggleAwsCustomDns_Call) Return(_a0 admin.ToggleAwsCustomDnsApiRequest) *AWSClustersDNSApi_ToggleAwsCustomDns_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *AWSClustersDNSApi_ToggleAWSCustomDNS_Call) RunAndReturn(run func(context.Context, string, *admin.AWSCustomDNSEnabled) admin.ToggleAWSCustomDNSApiRequest) *AWSClustersDNSApi_ToggleAWSCustomDNS_Call {
+func (_c *AWSClustersDNSApi_ToggleAwsCustomDns_Call) RunAndReturn(run func(context.Context, string, *admin.AWSCustomDNSEnabled) admin.ToggleAwsCustomDnsApiRequest) *AWSClustersDNSApi_ToggleAwsCustomDns_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ToggleAWSCustomDNSExecute provides a mock function with given fields: r
-func (_m *AWSClustersDNSApi) ToggleAWSCustomDNSExecute(r admin.ToggleAWSCustomDNSApiRequest) (*admin.AWSCustomDNSEnabled, *http.Response, error) {
+// ToggleAwsCustomDnsExecute provides a mock function with given fields: r
+func (_m *AWSClustersDNSApi) ToggleAwsCustomDnsExecute(r admin.ToggleAwsCustomDnsApiRequest) (*admin.AWSCustomDNSEnabled, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ToggleAWSCustomDNSExecute")
+		panic("no return value specified for ToggleAwsCustomDnsExecute")
 	}
 
 	var r0 *admin.AWSCustomDNSEnabled
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ToggleAWSCustomDNSApiRequest) (*admin.AWSCustomDNSEnabled, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.ToggleAwsCustomDnsApiRequest) (*admin.AWSCustomDNSEnabled, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.ToggleAWSCustomDNSApiRequest) *admin.AWSCustomDNSEnabled); ok {
+	if rf, ok := ret.Get(0).(func(admin.ToggleAwsCustomDnsApiRequest) *admin.AWSCustomDNSEnabled); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -256,7 +256,7 @@ func (_m *AWSClustersDNSApi) ToggleAWSCustomDNSExecute(r admin.ToggleAWSCustomDN
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.ToggleAWSCustomDNSApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.ToggleAwsCustomDnsApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -264,7 +264,7 @@ func (_m *AWSClustersDNSApi) ToggleAWSCustomDNSExecute(r admin.ToggleAWSCustomDN
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.ToggleAWSCustomDNSApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.ToggleAwsCustomDnsApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -273,77 +273,77 @@ func (_m *AWSClustersDNSApi) ToggleAWSCustomDNSExecute(r admin.ToggleAWSCustomDN
 	return r0, r1, r2
 }
 
-// AWSClustersDNSApi_ToggleAWSCustomDNSExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ToggleAWSCustomDNSExecute'
-type AWSClustersDNSApi_ToggleAWSCustomDNSExecute_Call struct {
+// AWSClustersDNSApi_ToggleAwsCustomDnsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ToggleAwsCustomDnsExecute'
+type AWSClustersDNSApi_ToggleAwsCustomDnsExecute_Call struct {
 	*mock.Call
 }
 
-// ToggleAWSCustomDNSExecute is a helper method to define mock.On call
-//   - r admin.ToggleAWSCustomDNSApiRequest
-func (_e *AWSClustersDNSApi_Expecter) ToggleAWSCustomDNSExecute(r any) *AWSClustersDNSApi_ToggleAWSCustomDNSExecute_Call {
-	return &AWSClustersDNSApi_ToggleAWSCustomDNSExecute_Call{Call: _e.mock.On("ToggleAWSCustomDNSExecute", r)}
+// ToggleAwsCustomDnsExecute is a helper method to define mock.On call
+//   - r admin.ToggleAwsCustomDnsApiRequest
+func (_e *AWSClustersDNSApi_Expecter) ToggleAwsCustomDnsExecute(r any) *AWSClustersDNSApi_ToggleAwsCustomDnsExecute_Call {
+	return &AWSClustersDNSApi_ToggleAwsCustomDnsExecute_Call{Call: _e.mock.On("ToggleAwsCustomDnsExecute", r)}
 }
 
-func (_c *AWSClustersDNSApi_ToggleAWSCustomDNSExecute_Call) Run(run func(r admin.ToggleAWSCustomDNSApiRequest)) *AWSClustersDNSApi_ToggleAWSCustomDNSExecute_Call {
+func (_c *AWSClustersDNSApi_ToggleAwsCustomDnsExecute_Call) Run(run func(r admin.ToggleAwsCustomDnsApiRequest)) *AWSClustersDNSApi_ToggleAwsCustomDnsExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ToggleAWSCustomDNSApiRequest))
+		run(args[0].(admin.ToggleAwsCustomDnsApiRequest))
 	})
 	return _c
 }
 
-func (_c *AWSClustersDNSApi_ToggleAWSCustomDNSExecute_Call) Return(_a0 *admin.AWSCustomDNSEnabled, _a1 *http.Response, _a2 error) *AWSClustersDNSApi_ToggleAWSCustomDNSExecute_Call {
+func (_c *AWSClustersDNSApi_ToggleAwsCustomDnsExecute_Call) Return(_a0 *admin.AWSCustomDNSEnabled, _a1 *http.Response, _a2 error) *AWSClustersDNSApi_ToggleAwsCustomDnsExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *AWSClustersDNSApi_ToggleAWSCustomDNSExecute_Call) RunAndReturn(run func(admin.ToggleAWSCustomDNSApiRequest) (*admin.AWSCustomDNSEnabled, *http.Response, error)) *AWSClustersDNSApi_ToggleAWSCustomDNSExecute_Call {
+func (_c *AWSClustersDNSApi_ToggleAwsCustomDnsExecute_Call) RunAndReturn(run func(admin.ToggleAwsCustomDnsApiRequest) (*admin.AWSCustomDNSEnabled, *http.Response, error)) *AWSClustersDNSApi_ToggleAwsCustomDnsExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ToggleAWSCustomDNSWithParams provides a mock function with given fields: ctx, args
-func (_m *AWSClustersDNSApi) ToggleAWSCustomDNSWithParams(ctx context.Context, args *admin.ToggleAWSCustomDNSApiParams) admin.ToggleAWSCustomDNSApiRequest {
+// ToggleAwsCustomDnsWithParams provides a mock function with given fields: ctx, args
+func (_m *AWSClustersDNSApi) ToggleAwsCustomDnsWithParams(ctx context.Context, args *admin.ToggleAwsCustomDnsApiParams) admin.ToggleAwsCustomDnsApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ToggleAWSCustomDNSWithParams")
+		panic("no return value specified for ToggleAwsCustomDnsWithParams")
 	}
 
-	var r0 admin.ToggleAWSCustomDNSApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ToggleAWSCustomDNSApiParams) admin.ToggleAWSCustomDNSApiRequest); ok {
+	var r0 admin.ToggleAwsCustomDnsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ToggleAwsCustomDnsApiParams) admin.ToggleAwsCustomDnsApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.ToggleAWSCustomDNSApiRequest)
+		r0 = ret.Get(0).(admin.ToggleAwsCustomDnsApiRequest)
 	}
 
 	return r0
 }
 
-// AWSClustersDNSApi_ToggleAWSCustomDNSWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ToggleAWSCustomDNSWithParams'
-type AWSClustersDNSApi_ToggleAWSCustomDNSWithParams_Call struct {
+// AWSClustersDNSApi_ToggleAwsCustomDnsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ToggleAwsCustomDnsWithParams'
+type AWSClustersDNSApi_ToggleAwsCustomDnsWithParams_Call struct {
 	*mock.Call
 }
 
-// ToggleAWSCustomDNSWithParams is a helper method to define mock.On call
+// ToggleAwsCustomDnsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.ToggleAWSCustomDNSApiParams
-func (_e *AWSClustersDNSApi_Expecter) ToggleAWSCustomDNSWithParams(ctx any, args any) *AWSClustersDNSApi_ToggleAWSCustomDNSWithParams_Call {
-	return &AWSClustersDNSApi_ToggleAWSCustomDNSWithParams_Call{Call: _e.mock.On("ToggleAWSCustomDNSWithParams", ctx, args)}
+//   - args *admin.ToggleAwsCustomDnsApiParams
+func (_e *AWSClustersDNSApi_Expecter) ToggleAwsCustomDnsWithParams(ctx any, args any) *AWSClustersDNSApi_ToggleAwsCustomDnsWithParams_Call {
+	return &AWSClustersDNSApi_ToggleAwsCustomDnsWithParams_Call{Call: _e.mock.On("ToggleAwsCustomDnsWithParams", ctx, args)}
 }
 
-func (_c *AWSClustersDNSApi_ToggleAWSCustomDNSWithParams_Call) Run(run func(ctx context.Context, args *admin.ToggleAWSCustomDNSApiParams)) *AWSClustersDNSApi_ToggleAWSCustomDNSWithParams_Call {
+func (_c *AWSClustersDNSApi_ToggleAwsCustomDnsWithParams_Call) Run(run func(ctx context.Context, args *admin.ToggleAwsCustomDnsApiParams)) *AWSClustersDNSApi_ToggleAwsCustomDnsWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ToggleAWSCustomDNSApiParams))
+		run(args[0].(context.Context), args[1].(*admin.ToggleAwsCustomDnsApiParams))
 	})
 	return _c
 }
 
-func (_c *AWSClustersDNSApi_ToggleAWSCustomDNSWithParams_Call) Return(_a0 admin.ToggleAWSCustomDNSApiRequest) *AWSClustersDNSApi_ToggleAWSCustomDNSWithParams_Call {
+func (_c *AWSClustersDNSApi_ToggleAwsCustomDnsWithParams_Call) Return(_a0 admin.ToggleAwsCustomDnsApiRequest) *AWSClustersDNSApi_ToggleAwsCustomDnsWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *AWSClustersDNSApi_ToggleAWSCustomDNSWithParams_Call) RunAndReturn(run func(context.Context, *admin.ToggleAWSCustomDNSApiParams) admin.ToggleAWSCustomDNSApiRequest) *AWSClustersDNSApi_ToggleAWSCustomDNSWithParams_Call {
+func (_c *AWSClustersDNSApi_ToggleAwsCustomDnsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ToggleAwsCustomDnsApiParams) admin.ToggleAwsCustomDnsApiRequest) *AWSClustersDNSApi_ToggleAwsCustomDnsWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }

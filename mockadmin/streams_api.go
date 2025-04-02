@@ -27,70 +27,70 @@ func (_m *StreamsApi) EXPECT() *StreamsApi_Expecter {
 	return &StreamsApi_Expecter{mock: &_m.Mock}
 }
 
-// AcceptVPCPeeringConnection provides a mock function with given fields: ctx, groupId, id, vPCPeeringActionChallenge
-func (_m *StreamsApi) AcceptVPCPeeringConnection(ctx context.Context, groupId string, id string, vPCPeeringActionChallenge *admin.VPCPeeringActionChallenge) admin.AcceptVPCPeeringConnectionApiRequest {
+// AcceptVpcPeeringConnection provides a mock function with given fields: ctx, groupId, id, vPCPeeringActionChallenge
+func (_m *StreamsApi) AcceptVpcPeeringConnection(ctx context.Context, groupId string, id string, vPCPeeringActionChallenge *admin.VPCPeeringActionChallenge) admin.AcceptVpcPeeringConnectionApiRequest {
 	ret := _m.Called(ctx, groupId, id, vPCPeeringActionChallenge)
 
 	if len(ret) == 0 {
-		panic("no return value specified for AcceptVPCPeeringConnection")
+		panic("no return value specified for AcceptVpcPeeringConnection")
 	}
 
-	var r0 admin.AcceptVPCPeeringConnectionApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.VPCPeeringActionChallenge) admin.AcceptVPCPeeringConnectionApiRequest); ok {
+	var r0 admin.AcceptVpcPeeringConnectionApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.VPCPeeringActionChallenge) admin.AcceptVpcPeeringConnectionApiRequest); ok {
 		r0 = rf(ctx, groupId, id, vPCPeeringActionChallenge)
 	} else {
-		r0 = ret.Get(0).(admin.AcceptVPCPeeringConnectionApiRequest)
+		r0 = ret.Get(0).(admin.AcceptVpcPeeringConnectionApiRequest)
 	}
 
 	return r0
 }
 
-// StreamsApi_AcceptVPCPeeringConnection_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'AcceptVPCPeeringConnection'
-type StreamsApi_AcceptVPCPeeringConnection_Call struct {
+// StreamsApi_AcceptVpcPeeringConnection_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'AcceptVpcPeeringConnection'
+type StreamsApi_AcceptVpcPeeringConnection_Call struct {
 	*mock.Call
 }
 
-// AcceptVPCPeeringConnection is a helper method to define mock.On call
+// AcceptVpcPeeringConnection is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - id string
 //   - vPCPeeringActionChallenge *admin.VPCPeeringActionChallenge
-func (_e *StreamsApi_Expecter) AcceptVPCPeeringConnection(ctx any, groupId any, id any, vPCPeeringActionChallenge any) *StreamsApi_AcceptVPCPeeringConnection_Call {
-	return &StreamsApi_AcceptVPCPeeringConnection_Call{Call: _e.mock.On("AcceptVPCPeeringConnection", ctx, groupId, id, vPCPeeringActionChallenge)}
+func (_e *StreamsApi_Expecter) AcceptVpcPeeringConnection(ctx any, groupId any, id any, vPCPeeringActionChallenge any) *StreamsApi_AcceptVpcPeeringConnection_Call {
+	return &StreamsApi_AcceptVpcPeeringConnection_Call{Call: _e.mock.On("AcceptVpcPeeringConnection", ctx, groupId, id, vPCPeeringActionChallenge)}
 }
 
-func (_c *StreamsApi_AcceptVPCPeeringConnection_Call) Run(run func(ctx context.Context, groupId string, id string, vPCPeeringActionChallenge *admin.VPCPeeringActionChallenge)) *StreamsApi_AcceptVPCPeeringConnection_Call {
+func (_c *StreamsApi_AcceptVpcPeeringConnection_Call) Run(run func(ctx context.Context, groupId string, id string, vPCPeeringActionChallenge *admin.VPCPeeringActionChallenge)) *StreamsApi_AcceptVpcPeeringConnection_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.VPCPeeringActionChallenge))
 	})
 	return _c
 }
 
-func (_c *StreamsApi_AcceptVPCPeeringConnection_Call) Return(_a0 admin.AcceptVPCPeeringConnectionApiRequest) *StreamsApi_AcceptVPCPeeringConnection_Call {
+func (_c *StreamsApi_AcceptVpcPeeringConnection_Call) Return(_a0 admin.AcceptVpcPeeringConnectionApiRequest) *StreamsApi_AcceptVpcPeeringConnection_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *StreamsApi_AcceptVPCPeeringConnection_Call) RunAndReturn(run func(context.Context, string, string, *admin.VPCPeeringActionChallenge) admin.AcceptVPCPeeringConnectionApiRequest) *StreamsApi_AcceptVPCPeeringConnection_Call {
+func (_c *StreamsApi_AcceptVpcPeeringConnection_Call) RunAndReturn(run func(context.Context, string, string, *admin.VPCPeeringActionChallenge) admin.AcceptVpcPeeringConnectionApiRequest) *StreamsApi_AcceptVpcPeeringConnection_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// AcceptVPCPeeringConnectionExecute provides a mock function with given fields: r
-func (_m *StreamsApi) AcceptVPCPeeringConnectionExecute(r admin.AcceptVPCPeeringConnectionApiRequest) (any, *http.Response, error) {
+// AcceptVpcPeeringConnectionExecute provides a mock function with given fields: r
+func (_m *StreamsApi) AcceptVpcPeeringConnectionExecute(r admin.AcceptVpcPeeringConnectionApiRequest) (any, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for AcceptVPCPeeringConnectionExecute")
+		panic("no return value specified for AcceptVpcPeeringConnectionExecute")
 	}
 
 	var r0 any
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.AcceptVPCPeeringConnectionApiRequest) (any, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.AcceptVpcPeeringConnectionApiRequest) (any, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.AcceptVPCPeeringConnectionApiRequest) any); ok {
+	if rf, ok := ret.Get(0).(func(admin.AcceptVpcPeeringConnectionApiRequest) any); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -98,7 +98,7 @@ func (_m *StreamsApi) AcceptVPCPeeringConnectionExecute(r admin.AcceptVPCPeering
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.AcceptVPCPeeringConnectionApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.AcceptVpcPeeringConnectionApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -106,7 +106,7 @@ func (_m *StreamsApi) AcceptVPCPeeringConnectionExecute(r admin.AcceptVPCPeering
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.AcceptVPCPeeringConnectionApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.AcceptVpcPeeringConnectionApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -115,77 +115,239 @@ func (_m *StreamsApi) AcceptVPCPeeringConnectionExecute(r admin.AcceptVPCPeering
 	return r0, r1, r2
 }
 
-// StreamsApi_AcceptVPCPeeringConnectionExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'AcceptVPCPeeringConnectionExecute'
-type StreamsApi_AcceptVPCPeeringConnectionExecute_Call struct {
+// StreamsApi_AcceptVpcPeeringConnectionExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'AcceptVpcPeeringConnectionExecute'
+type StreamsApi_AcceptVpcPeeringConnectionExecute_Call struct {
 	*mock.Call
 }
 
-// AcceptVPCPeeringConnectionExecute is a helper method to define mock.On call
-//   - r admin.AcceptVPCPeeringConnectionApiRequest
-func (_e *StreamsApi_Expecter) AcceptVPCPeeringConnectionExecute(r any) *StreamsApi_AcceptVPCPeeringConnectionExecute_Call {
-	return &StreamsApi_AcceptVPCPeeringConnectionExecute_Call{Call: _e.mock.On("AcceptVPCPeeringConnectionExecute", r)}
+// AcceptVpcPeeringConnectionExecute is a helper method to define mock.On call
+//   - r admin.AcceptVpcPeeringConnectionApiRequest
+func (_e *StreamsApi_Expecter) AcceptVpcPeeringConnectionExecute(r any) *StreamsApi_AcceptVpcPeeringConnectionExecute_Call {
+	return &StreamsApi_AcceptVpcPeeringConnectionExecute_Call{Call: _e.mock.On("AcceptVpcPeeringConnectionExecute", r)}
 }
 
-func (_c *StreamsApi_AcceptVPCPeeringConnectionExecute_Call) Run(run func(r admin.AcceptVPCPeeringConnectionApiRequest)) *StreamsApi_AcceptVPCPeeringConnectionExecute_Call {
+func (_c *StreamsApi_AcceptVpcPeeringConnectionExecute_Call) Run(run func(r admin.AcceptVpcPeeringConnectionApiRequest)) *StreamsApi_AcceptVpcPeeringConnectionExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.AcceptVPCPeeringConnectionApiRequest))
+		run(args[0].(admin.AcceptVpcPeeringConnectionApiRequest))
 	})
 	return _c
 }
 
-func (_c *StreamsApi_AcceptVPCPeeringConnectionExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *StreamsApi_AcceptVPCPeeringConnectionExecute_Call {
+func (_c *StreamsApi_AcceptVpcPeeringConnectionExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *StreamsApi_AcceptVpcPeeringConnectionExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *StreamsApi_AcceptVPCPeeringConnectionExecute_Call) RunAndReturn(run func(admin.AcceptVPCPeeringConnectionApiRequest) (any, *http.Response, error)) *StreamsApi_AcceptVPCPeeringConnectionExecute_Call {
+func (_c *StreamsApi_AcceptVpcPeeringConnectionExecute_Call) RunAndReturn(run func(admin.AcceptVpcPeeringConnectionApiRequest) (any, *http.Response, error)) *StreamsApi_AcceptVpcPeeringConnectionExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// AcceptVPCPeeringConnectionWithParams provides a mock function with given fields: ctx, args
-func (_m *StreamsApi) AcceptVPCPeeringConnectionWithParams(ctx context.Context, args *admin.AcceptVPCPeeringConnectionApiParams) admin.AcceptVPCPeeringConnectionApiRequest {
+// AcceptVpcPeeringConnectionWithParams provides a mock function with given fields: ctx, args
+func (_m *StreamsApi) AcceptVpcPeeringConnectionWithParams(ctx context.Context, args *admin.AcceptVpcPeeringConnectionApiParams) admin.AcceptVpcPeeringConnectionApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for AcceptVPCPeeringConnectionWithParams")
+		panic("no return value specified for AcceptVpcPeeringConnectionWithParams")
 	}
 
-	var r0 admin.AcceptVPCPeeringConnectionApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.AcceptVPCPeeringConnectionApiParams) admin.AcceptVPCPeeringConnectionApiRequest); ok {
+	var r0 admin.AcceptVpcPeeringConnectionApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.AcceptVpcPeeringConnectionApiParams) admin.AcceptVpcPeeringConnectionApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.AcceptVPCPeeringConnectionApiRequest)
+		r0 = ret.Get(0).(admin.AcceptVpcPeeringConnectionApiRequest)
 	}
 
 	return r0
 }
 
-// StreamsApi_AcceptVPCPeeringConnectionWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'AcceptVPCPeeringConnectionWithParams'
-type StreamsApi_AcceptVPCPeeringConnectionWithParams_Call struct {
+// StreamsApi_AcceptVpcPeeringConnectionWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'AcceptVpcPeeringConnectionWithParams'
+type StreamsApi_AcceptVpcPeeringConnectionWithParams_Call struct {
 	*mock.Call
 }
 
-// AcceptVPCPeeringConnectionWithParams is a helper method to define mock.On call
+// AcceptVpcPeeringConnectionWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.AcceptVPCPeeringConnectionApiParams
-func (_e *StreamsApi_Expecter) AcceptVPCPeeringConnectionWithParams(ctx any, args any) *StreamsApi_AcceptVPCPeeringConnectionWithParams_Call {
-	return &StreamsApi_AcceptVPCPeeringConnectionWithParams_Call{Call: _e.mock.On("AcceptVPCPeeringConnectionWithParams", ctx, args)}
+//   - args *admin.AcceptVpcPeeringConnectionApiParams
+func (_e *StreamsApi_Expecter) AcceptVpcPeeringConnectionWithParams(ctx any, args any) *StreamsApi_AcceptVpcPeeringConnectionWithParams_Call {
+	return &StreamsApi_AcceptVpcPeeringConnectionWithParams_Call{Call: _e.mock.On("AcceptVpcPeeringConnectionWithParams", ctx, args)}
 }
 
-func (_c *StreamsApi_AcceptVPCPeeringConnectionWithParams_Call) Run(run func(ctx context.Context, args *admin.AcceptVPCPeeringConnectionApiParams)) *StreamsApi_AcceptVPCPeeringConnectionWithParams_Call {
+func (_c *StreamsApi_AcceptVpcPeeringConnectionWithParams_Call) Run(run func(ctx context.Context, args *admin.AcceptVpcPeeringConnectionApiParams)) *StreamsApi_AcceptVpcPeeringConnectionWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.AcceptVPCPeeringConnectionApiParams))
+		run(args[0].(context.Context), args[1].(*admin.AcceptVpcPeeringConnectionApiParams))
 	})
 	return _c
 }
 
-func (_c *StreamsApi_AcceptVPCPeeringConnectionWithParams_Call) Return(_a0 admin.AcceptVPCPeeringConnectionApiRequest) *StreamsApi_AcceptVPCPeeringConnectionWithParams_Call {
+func (_c *StreamsApi_AcceptVpcPeeringConnectionWithParams_Call) Return(_a0 admin.AcceptVpcPeeringConnectionApiRequest) *StreamsApi_AcceptVpcPeeringConnectionWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *StreamsApi_AcceptVPCPeeringConnectionWithParams_Call) RunAndReturn(run func(context.Context, *admin.AcceptVPCPeeringConnectionApiParams) admin.AcceptVPCPeeringConnectionApiRequest) *StreamsApi_AcceptVPCPeeringConnectionWithParams_Call {
+func (_c *StreamsApi_AcceptVpcPeeringConnectionWithParams_Call) RunAndReturn(run func(context.Context, *admin.AcceptVpcPeeringConnectionApiParams) admin.AcceptVpcPeeringConnectionApiRequest) *StreamsApi_AcceptVpcPeeringConnectionWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreatePrivateLinkConnection provides a mock function with given fields: ctx, groupId, streamsPrivateLinkConnection
+func (_m *StreamsApi) CreatePrivateLinkConnection(ctx context.Context, groupId string, streamsPrivateLinkConnection *admin.StreamsPrivateLinkConnection) admin.CreatePrivateLinkConnectionApiRequest {
+	ret := _m.Called(ctx, groupId, streamsPrivateLinkConnection)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreatePrivateLinkConnection")
+	}
+
+	var r0 admin.CreatePrivateLinkConnectionApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.StreamsPrivateLinkConnection) admin.CreatePrivateLinkConnectionApiRequest); ok {
+		r0 = rf(ctx, groupId, streamsPrivateLinkConnection)
+	} else {
+		r0 = ret.Get(0).(admin.CreatePrivateLinkConnectionApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsApi_CreatePrivateLinkConnection_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreatePrivateLinkConnection'
+type StreamsApi_CreatePrivateLinkConnection_Call struct {
+	*mock.Call
+}
+
+// CreatePrivateLinkConnection is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - streamsPrivateLinkConnection *admin.StreamsPrivateLinkConnection
+func (_e *StreamsApi_Expecter) CreatePrivateLinkConnection(ctx any, groupId any, streamsPrivateLinkConnection any) *StreamsApi_CreatePrivateLinkConnection_Call {
+	return &StreamsApi_CreatePrivateLinkConnection_Call{Call: _e.mock.On("CreatePrivateLinkConnection", ctx, groupId, streamsPrivateLinkConnection)}
+}
+
+func (_c *StreamsApi_CreatePrivateLinkConnection_Call) Run(run func(ctx context.Context, groupId string, streamsPrivateLinkConnection *admin.StreamsPrivateLinkConnection)) *StreamsApi_CreatePrivateLinkConnection_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(*admin.StreamsPrivateLinkConnection))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_CreatePrivateLinkConnection_Call) Return(_a0 admin.CreatePrivateLinkConnectionApiRequest) *StreamsApi_CreatePrivateLinkConnection_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsApi_CreatePrivateLinkConnection_Call) RunAndReturn(run func(context.Context, string, *admin.StreamsPrivateLinkConnection) admin.CreatePrivateLinkConnectionApiRequest) *StreamsApi_CreatePrivateLinkConnection_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreatePrivateLinkConnectionExecute provides a mock function with given fields: r
+func (_m *StreamsApi) CreatePrivateLinkConnectionExecute(r admin.CreatePrivateLinkConnectionApiRequest) (*admin.StreamsPrivateLinkConnection, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreatePrivateLinkConnectionExecute")
+	}
+
+	var r0 *admin.StreamsPrivateLinkConnection
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.CreatePrivateLinkConnectionApiRequest) (*admin.StreamsPrivateLinkConnection, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.CreatePrivateLinkConnectionApiRequest) *admin.StreamsPrivateLinkConnection); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.StreamsPrivateLinkConnection)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.CreatePrivateLinkConnectionApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.CreatePrivateLinkConnectionApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// StreamsApi_CreatePrivateLinkConnectionExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreatePrivateLinkConnectionExecute'
+type StreamsApi_CreatePrivateLinkConnectionExecute_Call struct {
+	*mock.Call
+}
+
+// CreatePrivateLinkConnectionExecute is a helper method to define mock.On call
+//   - r admin.CreatePrivateLinkConnectionApiRequest
+func (_e *StreamsApi_Expecter) CreatePrivateLinkConnectionExecute(r any) *StreamsApi_CreatePrivateLinkConnectionExecute_Call {
+	return &StreamsApi_CreatePrivateLinkConnectionExecute_Call{Call: _e.mock.On("CreatePrivateLinkConnectionExecute", r)}
+}
+
+func (_c *StreamsApi_CreatePrivateLinkConnectionExecute_Call) Run(run func(r admin.CreatePrivateLinkConnectionApiRequest)) *StreamsApi_CreatePrivateLinkConnectionExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.CreatePrivateLinkConnectionApiRequest))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_CreatePrivateLinkConnectionExecute_Call) Return(_a0 *admin.StreamsPrivateLinkConnection, _a1 *http.Response, _a2 error) *StreamsApi_CreatePrivateLinkConnectionExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *StreamsApi_CreatePrivateLinkConnectionExecute_Call) RunAndReturn(run func(admin.CreatePrivateLinkConnectionApiRequest) (*admin.StreamsPrivateLinkConnection, *http.Response, error)) *StreamsApi_CreatePrivateLinkConnectionExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreatePrivateLinkConnectionWithParams provides a mock function with given fields: ctx, args
+func (_m *StreamsApi) CreatePrivateLinkConnectionWithParams(ctx context.Context, args *admin.CreatePrivateLinkConnectionApiParams) admin.CreatePrivateLinkConnectionApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreatePrivateLinkConnectionWithParams")
+	}
+
+	var r0 admin.CreatePrivateLinkConnectionApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreatePrivateLinkConnectionApiParams) admin.CreatePrivateLinkConnectionApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.CreatePrivateLinkConnectionApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsApi_CreatePrivateLinkConnectionWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreatePrivateLinkConnectionWithParams'
+type StreamsApi_CreatePrivateLinkConnectionWithParams_Call struct {
+	*mock.Call
+}
+
+// CreatePrivateLinkConnectionWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.CreatePrivateLinkConnectionApiParams
+func (_e *StreamsApi_Expecter) CreatePrivateLinkConnectionWithParams(ctx any, args any) *StreamsApi_CreatePrivateLinkConnectionWithParams_Call {
+	return &StreamsApi_CreatePrivateLinkConnectionWithParams_Call{Call: _e.mock.On("CreatePrivateLinkConnectionWithParams", ctx, args)}
+}
+
+func (_c *StreamsApi_CreatePrivateLinkConnectionWithParams_Call) Run(run func(ctx context.Context, args *admin.CreatePrivateLinkConnectionApiParams)) *StreamsApi_CreatePrivateLinkConnectionWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.CreatePrivateLinkConnectionApiParams))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_CreatePrivateLinkConnectionWithParams_Call) Return(_a0 admin.CreatePrivateLinkConnectionApiRequest) *StreamsApi_CreatePrivateLinkConnectionWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsApi_CreatePrivateLinkConnectionWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreatePrivateLinkConnectionApiParams) admin.CreatePrivateLinkConnectionApiRequest) *StreamsApi_CreatePrivateLinkConnectionWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -840,6 +1002,168 @@ func (_c *StreamsApi_CreateStreamProcessorWithParams_Call) RunAndReturn(run func
 	return _c
 }
 
+// DeletePrivateLinkConnection provides a mock function with given fields: ctx, groupId, connectionId
+func (_m *StreamsApi) DeletePrivateLinkConnection(ctx context.Context, groupId string, connectionId string) admin.DeletePrivateLinkConnectionApiRequest {
+	ret := _m.Called(ctx, groupId, connectionId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeletePrivateLinkConnection")
+	}
+
+	var r0 admin.DeletePrivateLinkConnectionApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.DeletePrivateLinkConnectionApiRequest); ok {
+		r0 = rf(ctx, groupId, connectionId)
+	} else {
+		r0 = ret.Get(0).(admin.DeletePrivateLinkConnectionApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsApi_DeletePrivateLinkConnection_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeletePrivateLinkConnection'
+type StreamsApi_DeletePrivateLinkConnection_Call struct {
+	*mock.Call
+}
+
+// DeletePrivateLinkConnection is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - connectionId string
+func (_e *StreamsApi_Expecter) DeletePrivateLinkConnection(ctx any, groupId any, connectionId any) *StreamsApi_DeletePrivateLinkConnection_Call {
+	return &StreamsApi_DeletePrivateLinkConnection_Call{Call: _e.mock.On("DeletePrivateLinkConnection", ctx, groupId, connectionId)}
+}
+
+func (_c *StreamsApi_DeletePrivateLinkConnection_Call) Run(run func(ctx context.Context, groupId string, connectionId string)) *StreamsApi_DeletePrivateLinkConnection_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_DeletePrivateLinkConnection_Call) Return(_a0 admin.DeletePrivateLinkConnectionApiRequest) *StreamsApi_DeletePrivateLinkConnection_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsApi_DeletePrivateLinkConnection_Call) RunAndReturn(run func(context.Context, string, string) admin.DeletePrivateLinkConnectionApiRequest) *StreamsApi_DeletePrivateLinkConnection_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeletePrivateLinkConnectionExecute provides a mock function with given fields: r
+func (_m *StreamsApi) DeletePrivateLinkConnectionExecute(r admin.DeletePrivateLinkConnectionApiRequest) (any, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeletePrivateLinkConnectionExecute")
+	}
+
+	var r0 any
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.DeletePrivateLinkConnectionApiRequest) (any, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.DeletePrivateLinkConnectionApiRequest) any); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(any)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.DeletePrivateLinkConnectionApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.DeletePrivateLinkConnectionApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// StreamsApi_DeletePrivateLinkConnectionExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeletePrivateLinkConnectionExecute'
+type StreamsApi_DeletePrivateLinkConnectionExecute_Call struct {
+	*mock.Call
+}
+
+// DeletePrivateLinkConnectionExecute is a helper method to define mock.On call
+//   - r admin.DeletePrivateLinkConnectionApiRequest
+func (_e *StreamsApi_Expecter) DeletePrivateLinkConnectionExecute(r any) *StreamsApi_DeletePrivateLinkConnectionExecute_Call {
+	return &StreamsApi_DeletePrivateLinkConnectionExecute_Call{Call: _e.mock.On("DeletePrivateLinkConnectionExecute", r)}
+}
+
+func (_c *StreamsApi_DeletePrivateLinkConnectionExecute_Call) Run(run func(r admin.DeletePrivateLinkConnectionApiRequest)) *StreamsApi_DeletePrivateLinkConnectionExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.DeletePrivateLinkConnectionApiRequest))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_DeletePrivateLinkConnectionExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *StreamsApi_DeletePrivateLinkConnectionExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *StreamsApi_DeletePrivateLinkConnectionExecute_Call) RunAndReturn(run func(admin.DeletePrivateLinkConnectionApiRequest) (any, *http.Response, error)) *StreamsApi_DeletePrivateLinkConnectionExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeletePrivateLinkConnectionWithParams provides a mock function with given fields: ctx, args
+func (_m *StreamsApi) DeletePrivateLinkConnectionWithParams(ctx context.Context, args *admin.DeletePrivateLinkConnectionApiParams) admin.DeletePrivateLinkConnectionApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeletePrivateLinkConnectionWithParams")
+	}
+
+	var r0 admin.DeletePrivateLinkConnectionApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeletePrivateLinkConnectionApiParams) admin.DeletePrivateLinkConnectionApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.DeletePrivateLinkConnectionApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsApi_DeletePrivateLinkConnectionWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeletePrivateLinkConnectionWithParams'
+type StreamsApi_DeletePrivateLinkConnectionWithParams_Call struct {
+	*mock.Call
+}
+
+// DeletePrivateLinkConnectionWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.DeletePrivateLinkConnectionApiParams
+func (_e *StreamsApi_Expecter) DeletePrivateLinkConnectionWithParams(ctx any, args any) *StreamsApi_DeletePrivateLinkConnectionWithParams_Call {
+	return &StreamsApi_DeletePrivateLinkConnectionWithParams_Call{Call: _e.mock.On("DeletePrivateLinkConnectionWithParams", ctx, args)}
+}
+
+func (_c *StreamsApi_DeletePrivateLinkConnectionWithParams_Call) Run(run func(ctx context.Context, args *admin.DeletePrivateLinkConnectionApiParams)) *StreamsApi_DeletePrivateLinkConnectionWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.DeletePrivateLinkConnectionApiParams))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_DeletePrivateLinkConnectionWithParams_Call) Return(_a0 admin.DeletePrivateLinkConnectionApiRequest) *StreamsApi_DeletePrivateLinkConnectionWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsApi_DeletePrivateLinkConnectionWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeletePrivateLinkConnectionApiParams) admin.DeletePrivateLinkConnectionApiRequest) *StreamsApi_DeletePrivateLinkConnectionWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // DeleteStreamConnection provides a mock function with given fields: ctx, groupId, tenantName, connectionName
 func (_m *StreamsApi) DeleteStreamConnection(ctx context.Context, groupId string, tenantName string, connectionName string) admin.DeleteStreamConnectionApiRequest {
 	ret := _m.Called(ctx, groupId, tenantName, connectionName)
@@ -1319,69 +1643,69 @@ func (_c *StreamsApi_DeleteStreamProcessorWithParams_Call) RunAndReturn(run func
 	return _c
 }
 
-// DeleteVPCPeeringConnection provides a mock function with given fields: ctx, groupId, id
-func (_m *StreamsApi) DeleteVPCPeeringConnection(ctx context.Context, groupId string, id string) admin.DeleteVPCPeeringConnectionApiRequest {
+// DeleteVpcPeeringConnection provides a mock function with given fields: ctx, groupId, id
+func (_m *StreamsApi) DeleteVpcPeeringConnection(ctx context.Context, groupId string, id string) admin.DeleteVpcPeeringConnectionApiRequest {
 	ret := _m.Called(ctx, groupId, id)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeleteVPCPeeringConnection")
+		panic("no return value specified for DeleteVpcPeeringConnection")
 	}
 
-	var r0 admin.DeleteVPCPeeringConnectionApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.DeleteVPCPeeringConnectionApiRequest); ok {
+	var r0 admin.DeleteVpcPeeringConnectionApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.DeleteVpcPeeringConnectionApiRequest); ok {
 		r0 = rf(ctx, groupId, id)
 	} else {
-		r0 = ret.Get(0).(admin.DeleteVPCPeeringConnectionApiRequest)
+		r0 = ret.Get(0).(admin.DeleteVpcPeeringConnectionApiRequest)
 	}
 
 	return r0
 }
 
-// StreamsApi_DeleteVPCPeeringConnection_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteVPCPeeringConnection'
-type StreamsApi_DeleteVPCPeeringConnection_Call struct {
+// StreamsApi_DeleteVpcPeeringConnection_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteVpcPeeringConnection'
+type StreamsApi_DeleteVpcPeeringConnection_Call struct {
 	*mock.Call
 }
 
-// DeleteVPCPeeringConnection is a helper method to define mock.On call
+// DeleteVpcPeeringConnection is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - id string
-func (_e *StreamsApi_Expecter) DeleteVPCPeeringConnection(ctx any, groupId any, id any) *StreamsApi_DeleteVPCPeeringConnection_Call {
-	return &StreamsApi_DeleteVPCPeeringConnection_Call{Call: _e.mock.On("DeleteVPCPeeringConnection", ctx, groupId, id)}
+func (_e *StreamsApi_Expecter) DeleteVpcPeeringConnection(ctx any, groupId any, id any) *StreamsApi_DeleteVpcPeeringConnection_Call {
+	return &StreamsApi_DeleteVpcPeeringConnection_Call{Call: _e.mock.On("DeleteVpcPeeringConnection", ctx, groupId, id)}
 }
 
-func (_c *StreamsApi_DeleteVPCPeeringConnection_Call) Run(run func(ctx context.Context, groupId string, id string)) *StreamsApi_DeleteVPCPeeringConnection_Call {
+func (_c *StreamsApi_DeleteVpcPeeringConnection_Call) Run(run func(ctx context.Context, groupId string, id string)) *StreamsApi_DeleteVpcPeeringConnection_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string))
 	})
 	return _c
 }
 
-func (_c *StreamsApi_DeleteVPCPeeringConnection_Call) Return(_a0 admin.DeleteVPCPeeringConnectionApiRequest) *StreamsApi_DeleteVPCPeeringConnection_Call {
+func (_c *StreamsApi_DeleteVpcPeeringConnection_Call) Return(_a0 admin.DeleteVpcPeeringConnectionApiRequest) *StreamsApi_DeleteVpcPeeringConnection_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *StreamsApi_DeleteVPCPeeringConnection_Call) RunAndReturn(run func(context.Context, string, string) admin.DeleteVPCPeeringConnectionApiRequest) *StreamsApi_DeleteVPCPeeringConnection_Call {
+func (_c *StreamsApi_DeleteVpcPeeringConnection_Call) RunAndReturn(run func(context.Context, string, string) admin.DeleteVpcPeeringConnectionApiRequest) *StreamsApi_DeleteVpcPeeringConnection_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeleteVPCPeeringConnectionExecute provides a mock function with given fields: r
-func (_m *StreamsApi) DeleteVPCPeeringConnectionExecute(r admin.DeleteVPCPeeringConnectionApiRequest) (any, *http.Response, error) {
+// DeleteVpcPeeringConnectionExecute provides a mock function with given fields: r
+func (_m *StreamsApi) DeleteVpcPeeringConnectionExecute(r admin.DeleteVpcPeeringConnectionApiRequest) (any, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeleteVPCPeeringConnectionExecute")
+		panic("no return value specified for DeleteVpcPeeringConnectionExecute")
 	}
 
 	var r0 any
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteVPCPeeringConnectionApiRequest) (any, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteVpcPeeringConnectionApiRequest) (any, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteVPCPeeringConnectionApiRequest) any); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteVpcPeeringConnectionApiRequest) any); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -1389,7 +1713,7 @@ func (_m *StreamsApi) DeleteVPCPeeringConnectionExecute(r admin.DeleteVPCPeering
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeleteVPCPeeringConnectionApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.DeleteVpcPeeringConnectionApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -1397,7 +1721,7 @@ func (_m *StreamsApi) DeleteVPCPeeringConnectionExecute(r admin.DeleteVPCPeering
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.DeleteVPCPeeringConnectionApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.DeleteVpcPeeringConnectionApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -1406,77 +1730,77 @@ func (_m *StreamsApi) DeleteVPCPeeringConnectionExecute(r admin.DeleteVPCPeering
 	return r0, r1, r2
 }
 
-// StreamsApi_DeleteVPCPeeringConnectionExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteVPCPeeringConnectionExecute'
-type StreamsApi_DeleteVPCPeeringConnectionExecute_Call struct {
+// StreamsApi_DeleteVpcPeeringConnectionExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteVpcPeeringConnectionExecute'
+type StreamsApi_DeleteVpcPeeringConnectionExecute_Call struct {
 	*mock.Call
 }
 
-// DeleteVPCPeeringConnectionExecute is a helper method to define mock.On call
-//   - r admin.DeleteVPCPeeringConnectionApiRequest
-func (_e *StreamsApi_Expecter) DeleteVPCPeeringConnectionExecute(r any) *StreamsApi_DeleteVPCPeeringConnectionExecute_Call {
-	return &StreamsApi_DeleteVPCPeeringConnectionExecute_Call{Call: _e.mock.On("DeleteVPCPeeringConnectionExecute", r)}
+// DeleteVpcPeeringConnectionExecute is a helper method to define mock.On call
+//   - r admin.DeleteVpcPeeringConnectionApiRequest
+func (_e *StreamsApi_Expecter) DeleteVpcPeeringConnectionExecute(r any) *StreamsApi_DeleteVpcPeeringConnectionExecute_Call {
+	return &StreamsApi_DeleteVpcPeeringConnectionExecute_Call{Call: _e.mock.On("DeleteVpcPeeringConnectionExecute", r)}
 }
 
-func (_c *StreamsApi_DeleteVPCPeeringConnectionExecute_Call) Run(run func(r admin.DeleteVPCPeeringConnectionApiRequest)) *StreamsApi_DeleteVPCPeeringConnectionExecute_Call {
+func (_c *StreamsApi_DeleteVpcPeeringConnectionExecute_Call) Run(run func(r admin.DeleteVpcPeeringConnectionApiRequest)) *StreamsApi_DeleteVpcPeeringConnectionExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.DeleteVPCPeeringConnectionApiRequest))
+		run(args[0].(admin.DeleteVpcPeeringConnectionApiRequest))
 	})
 	return _c
 }
 
-func (_c *StreamsApi_DeleteVPCPeeringConnectionExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *StreamsApi_DeleteVPCPeeringConnectionExecute_Call {
+func (_c *StreamsApi_DeleteVpcPeeringConnectionExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *StreamsApi_DeleteVpcPeeringConnectionExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *StreamsApi_DeleteVPCPeeringConnectionExecute_Call) RunAndReturn(run func(admin.DeleteVPCPeeringConnectionApiRequest) (any, *http.Response, error)) *StreamsApi_DeleteVPCPeeringConnectionExecute_Call {
+func (_c *StreamsApi_DeleteVpcPeeringConnectionExecute_Call) RunAndReturn(run func(admin.DeleteVpcPeeringConnectionApiRequest) (any, *http.Response, error)) *StreamsApi_DeleteVpcPeeringConnectionExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeleteVPCPeeringConnectionWithParams provides a mock function with given fields: ctx, args
-func (_m *StreamsApi) DeleteVPCPeeringConnectionWithParams(ctx context.Context, args *admin.DeleteVPCPeeringConnectionApiParams) admin.DeleteVPCPeeringConnectionApiRequest {
+// DeleteVpcPeeringConnectionWithParams provides a mock function with given fields: ctx, args
+func (_m *StreamsApi) DeleteVpcPeeringConnectionWithParams(ctx context.Context, args *admin.DeleteVpcPeeringConnectionApiParams) admin.DeleteVpcPeeringConnectionApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeleteVPCPeeringConnectionWithParams")
+		panic("no return value specified for DeleteVpcPeeringConnectionWithParams")
 	}
 
-	var r0 admin.DeleteVPCPeeringConnectionApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteVPCPeeringConnectionApiParams) admin.DeleteVPCPeeringConnectionApiRequest); ok {
+	var r0 admin.DeleteVpcPeeringConnectionApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteVpcPeeringConnectionApiParams) admin.DeleteVpcPeeringConnectionApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.DeleteVPCPeeringConnectionApiRequest)
+		r0 = ret.Get(0).(admin.DeleteVpcPeeringConnectionApiRequest)
 	}
 
 	return r0
 }
 
-// StreamsApi_DeleteVPCPeeringConnectionWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteVPCPeeringConnectionWithParams'
-type StreamsApi_DeleteVPCPeeringConnectionWithParams_Call struct {
+// StreamsApi_DeleteVpcPeeringConnectionWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteVpcPeeringConnectionWithParams'
+type StreamsApi_DeleteVpcPeeringConnectionWithParams_Call struct {
 	*mock.Call
 }
 
-// DeleteVPCPeeringConnectionWithParams is a helper method to define mock.On call
+// DeleteVpcPeeringConnectionWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.DeleteVPCPeeringConnectionApiParams
-func (_e *StreamsApi_Expecter) DeleteVPCPeeringConnectionWithParams(ctx any, args any) *StreamsApi_DeleteVPCPeeringConnectionWithParams_Call {
-	return &StreamsApi_DeleteVPCPeeringConnectionWithParams_Call{Call: _e.mock.On("DeleteVPCPeeringConnectionWithParams", ctx, args)}
+//   - args *admin.DeleteVpcPeeringConnectionApiParams
+func (_e *StreamsApi_Expecter) DeleteVpcPeeringConnectionWithParams(ctx any, args any) *StreamsApi_DeleteVpcPeeringConnectionWithParams_Call {
+	return &StreamsApi_DeleteVpcPeeringConnectionWithParams_Call{Call: _e.mock.On("DeleteVpcPeeringConnectionWithParams", ctx, args)}
 }
 
-func (_c *StreamsApi_DeleteVPCPeeringConnectionWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteVPCPeeringConnectionApiParams)) *StreamsApi_DeleteVPCPeeringConnectionWithParams_Call {
+func (_c *StreamsApi_DeleteVpcPeeringConnectionWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteVpcPeeringConnectionApiParams)) *StreamsApi_DeleteVpcPeeringConnectionWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.DeleteVPCPeeringConnectionApiParams))
+		run(args[0].(context.Context), args[1].(*admin.DeleteVpcPeeringConnectionApiParams))
 	})
 	return _c
 }
 
-func (_c *StreamsApi_DeleteVPCPeeringConnectionWithParams_Call) Return(_a0 admin.DeleteVPCPeeringConnectionApiRequest) *StreamsApi_DeleteVPCPeeringConnectionWithParams_Call {
+func (_c *StreamsApi_DeleteVpcPeeringConnectionWithParams_Call) Return(_a0 admin.DeleteVpcPeeringConnectionApiRequest) *StreamsApi_DeleteVpcPeeringConnectionWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *StreamsApi_DeleteVPCPeeringConnectionWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteVPCPeeringConnectionApiParams) admin.DeleteVPCPeeringConnectionApiRequest) *StreamsApi_DeleteVPCPeeringConnectionWithParams_Call {
+func (_c *StreamsApi_DeleteVpcPeeringConnectionWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteVpcPeeringConnectionApiParams) admin.DeleteVpcPeeringConnectionApiRequest) *StreamsApi_DeleteVpcPeeringConnectionWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1639,6 +1963,168 @@ func (_c *StreamsApi_DownloadStreamTenantAuditLogsWithParams_Call) Return(_a0 ad
 }
 
 func (_c *StreamsApi_DownloadStreamTenantAuditLogsWithParams_Call) RunAndReturn(run func(context.Context, *admin.DownloadStreamTenantAuditLogsApiParams) admin.DownloadStreamTenantAuditLogsApiRequest) *StreamsApi_DownloadStreamTenantAuditLogsWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetPrivateLinkConnection provides a mock function with given fields: ctx, groupId, connectionId
+func (_m *StreamsApi) GetPrivateLinkConnection(ctx context.Context, groupId string, connectionId string) admin.GetPrivateLinkConnectionApiRequest {
+	ret := _m.Called(ctx, groupId, connectionId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetPrivateLinkConnection")
+	}
+
+	var r0 admin.GetPrivateLinkConnectionApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetPrivateLinkConnectionApiRequest); ok {
+		r0 = rf(ctx, groupId, connectionId)
+	} else {
+		r0 = ret.Get(0).(admin.GetPrivateLinkConnectionApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsApi_GetPrivateLinkConnection_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetPrivateLinkConnection'
+type StreamsApi_GetPrivateLinkConnection_Call struct {
+	*mock.Call
+}
+
+// GetPrivateLinkConnection is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - connectionId string
+func (_e *StreamsApi_Expecter) GetPrivateLinkConnection(ctx any, groupId any, connectionId any) *StreamsApi_GetPrivateLinkConnection_Call {
+	return &StreamsApi_GetPrivateLinkConnection_Call{Call: _e.mock.On("GetPrivateLinkConnection", ctx, groupId, connectionId)}
+}
+
+func (_c *StreamsApi_GetPrivateLinkConnection_Call) Run(run func(ctx context.Context, groupId string, connectionId string)) *StreamsApi_GetPrivateLinkConnection_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_GetPrivateLinkConnection_Call) Return(_a0 admin.GetPrivateLinkConnectionApiRequest) *StreamsApi_GetPrivateLinkConnection_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsApi_GetPrivateLinkConnection_Call) RunAndReturn(run func(context.Context, string, string) admin.GetPrivateLinkConnectionApiRequest) *StreamsApi_GetPrivateLinkConnection_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetPrivateLinkConnectionExecute provides a mock function with given fields: r
+func (_m *StreamsApi) GetPrivateLinkConnectionExecute(r admin.GetPrivateLinkConnectionApiRequest) (*admin.StreamsPrivateLinkConnection, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetPrivateLinkConnectionExecute")
+	}
+
+	var r0 *admin.StreamsPrivateLinkConnection
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.GetPrivateLinkConnectionApiRequest) (*admin.StreamsPrivateLinkConnection, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.GetPrivateLinkConnectionApiRequest) *admin.StreamsPrivateLinkConnection); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.StreamsPrivateLinkConnection)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.GetPrivateLinkConnectionApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.GetPrivateLinkConnectionApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// StreamsApi_GetPrivateLinkConnectionExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetPrivateLinkConnectionExecute'
+type StreamsApi_GetPrivateLinkConnectionExecute_Call struct {
+	*mock.Call
+}
+
+// GetPrivateLinkConnectionExecute is a helper method to define mock.On call
+//   - r admin.GetPrivateLinkConnectionApiRequest
+func (_e *StreamsApi_Expecter) GetPrivateLinkConnectionExecute(r any) *StreamsApi_GetPrivateLinkConnectionExecute_Call {
+	return &StreamsApi_GetPrivateLinkConnectionExecute_Call{Call: _e.mock.On("GetPrivateLinkConnectionExecute", r)}
+}
+
+func (_c *StreamsApi_GetPrivateLinkConnectionExecute_Call) Run(run func(r admin.GetPrivateLinkConnectionApiRequest)) *StreamsApi_GetPrivateLinkConnectionExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.GetPrivateLinkConnectionApiRequest))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_GetPrivateLinkConnectionExecute_Call) Return(_a0 *admin.StreamsPrivateLinkConnection, _a1 *http.Response, _a2 error) *StreamsApi_GetPrivateLinkConnectionExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *StreamsApi_GetPrivateLinkConnectionExecute_Call) RunAndReturn(run func(admin.GetPrivateLinkConnectionApiRequest) (*admin.StreamsPrivateLinkConnection, *http.Response, error)) *StreamsApi_GetPrivateLinkConnectionExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetPrivateLinkConnectionWithParams provides a mock function with given fields: ctx, args
+func (_m *StreamsApi) GetPrivateLinkConnectionWithParams(ctx context.Context, args *admin.GetPrivateLinkConnectionApiParams) admin.GetPrivateLinkConnectionApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetPrivateLinkConnectionWithParams")
+	}
+
+	var r0 admin.GetPrivateLinkConnectionApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetPrivateLinkConnectionApiParams) admin.GetPrivateLinkConnectionApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.GetPrivateLinkConnectionApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsApi_GetPrivateLinkConnectionWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetPrivateLinkConnectionWithParams'
+type StreamsApi_GetPrivateLinkConnectionWithParams_Call struct {
+	*mock.Call
+}
+
+// GetPrivateLinkConnectionWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.GetPrivateLinkConnectionApiParams
+func (_e *StreamsApi_Expecter) GetPrivateLinkConnectionWithParams(ctx any, args any) *StreamsApi_GetPrivateLinkConnectionWithParams_Call {
+	return &StreamsApi_GetPrivateLinkConnectionWithParams_Call{Call: _e.mock.On("GetPrivateLinkConnectionWithParams", ctx, args)}
+}
+
+func (_c *StreamsApi_GetPrivateLinkConnectionWithParams_Call) Run(run func(ctx context.Context, args *admin.GetPrivateLinkConnectionApiParams)) *StreamsApi_GetPrivateLinkConnectionWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.GetPrivateLinkConnectionApiParams))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_GetPrivateLinkConnectionWithParams_Call) Return(_a0 admin.GetPrivateLinkConnectionApiRequest) *StreamsApi_GetPrivateLinkConnectionWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsApi_GetPrivateLinkConnectionWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetPrivateLinkConnectionApiParams) admin.GetPrivateLinkConnectionApiRequest) *StreamsApi_GetPrivateLinkConnectionWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -2131,67 +2617,67 @@ func (_c *StreamsApi_GetStreamProcessorWithParams_Call) RunAndReturn(run func(co
 	return _c
 }
 
-// GetVPCPeeringConnections provides a mock function with given fields: ctx, groupId
-func (_m *StreamsApi) GetVPCPeeringConnections(ctx context.Context, groupId string) admin.GetVPCPeeringConnectionsApiRequest {
+// GetVpcPeeringConnections provides a mock function with given fields: ctx, groupId
+func (_m *StreamsApi) GetVpcPeeringConnections(ctx context.Context, groupId string) admin.GetVpcPeeringConnectionsApiRequest {
 	ret := _m.Called(ctx, groupId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetVPCPeeringConnections")
+		panic("no return value specified for GetVpcPeeringConnections")
 	}
 
-	var r0 admin.GetVPCPeeringConnectionsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string) admin.GetVPCPeeringConnectionsApiRequest); ok {
+	var r0 admin.GetVpcPeeringConnectionsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.GetVpcPeeringConnectionsApiRequest); ok {
 		r0 = rf(ctx, groupId)
 	} else {
-		r0 = ret.Get(0).(admin.GetVPCPeeringConnectionsApiRequest)
+		r0 = ret.Get(0).(admin.GetVpcPeeringConnectionsApiRequest)
 	}
 
 	return r0
 }
 
-// StreamsApi_GetVPCPeeringConnections_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetVPCPeeringConnections'
-type StreamsApi_GetVPCPeeringConnections_Call struct {
+// StreamsApi_GetVpcPeeringConnections_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetVpcPeeringConnections'
+type StreamsApi_GetVpcPeeringConnections_Call struct {
 	*mock.Call
 }
 
-// GetVPCPeeringConnections is a helper method to define mock.On call
+// GetVpcPeeringConnections is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *StreamsApi_Expecter) GetVPCPeeringConnections(ctx any, groupId any) *StreamsApi_GetVPCPeeringConnections_Call {
-	return &StreamsApi_GetVPCPeeringConnections_Call{Call: _e.mock.On("GetVPCPeeringConnections", ctx, groupId)}
+func (_e *StreamsApi_Expecter) GetVpcPeeringConnections(ctx any, groupId any) *StreamsApi_GetVpcPeeringConnections_Call {
+	return &StreamsApi_GetVpcPeeringConnections_Call{Call: _e.mock.On("GetVpcPeeringConnections", ctx, groupId)}
 }
 
-func (_c *StreamsApi_GetVPCPeeringConnections_Call) Run(run func(ctx context.Context, groupId string)) *StreamsApi_GetVPCPeeringConnections_Call {
+func (_c *StreamsApi_GetVpcPeeringConnections_Call) Run(run func(ctx context.Context, groupId string)) *StreamsApi_GetVpcPeeringConnections_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string))
 	})
 	return _c
 }
 
-func (_c *StreamsApi_GetVPCPeeringConnections_Call) Return(_a0 admin.GetVPCPeeringConnectionsApiRequest) *StreamsApi_GetVPCPeeringConnections_Call {
+func (_c *StreamsApi_GetVpcPeeringConnections_Call) Return(_a0 admin.GetVpcPeeringConnectionsApiRequest) *StreamsApi_GetVpcPeeringConnections_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *StreamsApi_GetVPCPeeringConnections_Call) RunAndReturn(run func(context.Context, string) admin.GetVPCPeeringConnectionsApiRequest) *StreamsApi_GetVPCPeeringConnections_Call {
+func (_c *StreamsApi_GetVpcPeeringConnections_Call) RunAndReturn(run func(context.Context, string) admin.GetVpcPeeringConnectionsApiRequest) *StreamsApi_GetVpcPeeringConnections_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetVPCPeeringConnectionsExecute provides a mock function with given fields: r
-func (_m *StreamsApi) GetVPCPeeringConnectionsExecute(r admin.GetVPCPeeringConnectionsApiRequest) (*http.Response, error) {
+// GetVpcPeeringConnectionsExecute provides a mock function with given fields: r
+func (_m *StreamsApi) GetVpcPeeringConnectionsExecute(r admin.GetVpcPeeringConnectionsApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetVPCPeeringConnectionsExecute")
+		panic("no return value specified for GetVpcPeeringConnectionsExecute")
 	}
 
 	var r0 *http.Response
 	var r1 error
-	if rf, ok := ret.Get(0).(func(admin.GetVPCPeeringConnectionsApiRequest) (*http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetVpcPeeringConnectionsApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.GetVPCPeeringConnectionsApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetVpcPeeringConnectionsApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -2199,7 +2685,7 @@ func (_m *StreamsApi) GetVPCPeeringConnectionsExecute(r admin.GetVPCPeeringConne
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.GetVPCPeeringConnectionsApiRequest) error); ok {
+	if rf, ok := ret.Get(1).(func(admin.GetVpcPeeringConnectionsApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
 		r1 = ret.Error(1)
@@ -2208,77 +2694,238 @@ func (_m *StreamsApi) GetVPCPeeringConnectionsExecute(r admin.GetVPCPeeringConne
 	return r0, r1
 }
 
-// StreamsApi_GetVPCPeeringConnectionsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetVPCPeeringConnectionsExecute'
-type StreamsApi_GetVPCPeeringConnectionsExecute_Call struct {
+// StreamsApi_GetVpcPeeringConnectionsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetVpcPeeringConnectionsExecute'
+type StreamsApi_GetVpcPeeringConnectionsExecute_Call struct {
 	*mock.Call
 }
 
-// GetVPCPeeringConnectionsExecute is a helper method to define mock.On call
-//   - r admin.GetVPCPeeringConnectionsApiRequest
-func (_e *StreamsApi_Expecter) GetVPCPeeringConnectionsExecute(r any) *StreamsApi_GetVPCPeeringConnectionsExecute_Call {
-	return &StreamsApi_GetVPCPeeringConnectionsExecute_Call{Call: _e.mock.On("GetVPCPeeringConnectionsExecute", r)}
+// GetVpcPeeringConnectionsExecute is a helper method to define mock.On call
+//   - r admin.GetVpcPeeringConnectionsApiRequest
+func (_e *StreamsApi_Expecter) GetVpcPeeringConnectionsExecute(r any) *StreamsApi_GetVpcPeeringConnectionsExecute_Call {
+	return &StreamsApi_GetVpcPeeringConnectionsExecute_Call{Call: _e.mock.On("GetVpcPeeringConnectionsExecute", r)}
 }
 
-func (_c *StreamsApi_GetVPCPeeringConnectionsExecute_Call) Run(run func(r admin.GetVPCPeeringConnectionsApiRequest)) *StreamsApi_GetVPCPeeringConnectionsExecute_Call {
+func (_c *StreamsApi_GetVpcPeeringConnectionsExecute_Call) Run(run func(r admin.GetVpcPeeringConnectionsApiRequest)) *StreamsApi_GetVpcPeeringConnectionsExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.GetVPCPeeringConnectionsApiRequest))
+		run(args[0].(admin.GetVpcPeeringConnectionsApiRequest))
 	})
 	return _c
 }
 
-func (_c *StreamsApi_GetVPCPeeringConnectionsExecute_Call) Return(_a0 *http.Response, _a1 error) *StreamsApi_GetVPCPeeringConnectionsExecute_Call {
+func (_c *StreamsApi_GetVpcPeeringConnectionsExecute_Call) Return(_a0 *http.Response, _a1 error) *StreamsApi_GetVpcPeeringConnectionsExecute_Call {
 	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *StreamsApi_GetVPCPeeringConnectionsExecute_Call) RunAndReturn(run func(admin.GetVPCPeeringConnectionsApiRequest) (*http.Response, error)) *StreamsApi_GetVPCPeeringConnectionsExecute_Call {
+func (_c *StreamsApi_GetVpcPeeringConnectionsExecute_Call) RunAndReturn(run func(admin.GetVpcPeeringConnectionsApiRequest) (*http.Response, error)) *StreamsApi_GetVpcPeeringConnectionsExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetVPCPeeringConnectionsWithParams provides a mock function with given fields: ctx, args
-func (_m *StreamsApi) GetVPCPeeringConnectionsWithParams(ctx context.Context, args *admin.GetVPCPeeringConnectionsApiParams) admin.GetVPCPeeringConnectionsApiRequest {
+// GetVpcPeeringConnectionsWithParams provides a mock function with given fields: ctx, args
+func (_m *StreamsApi) GetVpcPeeringConnectionsWithParams(ctx context.Context, args *admin.GetVpcPeeringConnectionsApiParams) admin.GetVpcPeeringConnectionsApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetVPCPeeringConnectionsWithParams")
+		panic("no return value specified for GetVpcPeeringConnectionsWithParams")
 	}
 
-	var r0 admin.GetVPCPeeringConnectionsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetVPCPeeringConnectionsApiParams) admin.GetVPCPeeringConnectionsApiRequest); ok {
+	var r0 admin.GetVpcPeeringConnectionsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetVpcPeeringConnectionsApiParams) admin.GetVpcPeeringConnectionsApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.GetVPCPeeringConnectionsApiRequest)
+		r0 = ret.Get(0).(admin.GetVpcPeeringConnectionsApiRequest)
 	}
 
 	return r0
 }
 
-// StreamsApi_GetVPCPeeringConnectionsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetVPCPeeringConnectionsWithParams'
-type StreamsApi_GetVPCPeeringConnectionsWithParams_Call struct {
+// StreamsApi_GetVpcPeeringConnectionsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetVpcPeeringConnectionsWithParams'
+type StreamsApi_GetVpcPeeringConnectionsWithParams_Call struct {
 	*mock.Call
 }
 
-// GetVPCPeeringConnectionsWithParams is a helper method to define mock.On call
+// GetVpcPeeringConnectionsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.GetVPCPeeringConnectionsApiParams
-func (_e *StreamsApi_Expecter) GetVPCPeeringConnectionsWithParams(ctx any, args any) *StreamsApi_GetVPCPeeringConnectionsWithParams_Call {
-	return &StreamsApi_GetVPCPeeringConnectionsWithParams_Call{Call: _e.mock.On("GetVPCPeeringConnectionsWithParams", ctx, args)}
+//   - args *admin.GetVpcPeeringConnectionsApiParams
+func (_e *StreamsApi_Expecter) GetVpcPeeringConnectionsWithParams(ctx any, args any) *StreamsApi_GetVpcPeeringConnectionsWithParams_Call {
+	return &StreamsApi_GetVpcPeeringConnectionsWithParams_Call{Call: _e.mock.On("GetVpcPeeringConnectionsWithParams", ctx, args)}
 }
 
-func (_c *StreamsApi_GetVPCPeeringConnectionsWithParams_Call) Run(run func(ctx context.Context, args *admin.GetVPCPeeringConnectionsApiParams)) *StreamsApi_GetVPCPeeringConnectionsWithParams_Call {
+func (_c *StreamsApi_GetVpcPeeringConnectionsWithParams_Call) Run(run func(ctx context.Context, args *admin.GetVpcPeeringConnectionsApiParams)) *StreamsApi_GetVpcPeeringConnectionsWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.GetVPCPeeringConnectionsApiParams))
+		run(args[0].(context.Context), args[1].(*admin.GetVpcPeeringConnectionsApiParams))
 	})
 	return _c
 }
 
-func (_c *StreamsApi_GetVPCPeeringConnectionsWithParams_Call) Return(_a0 admin.GetVPCPeeringConnectionsApiRequest) *StreamsApi_GetVPCPeeringConnectionsWithParams_Call {
+func (_c *StreamsApi_GetVpcPeeringConnectionsWithParams_Call) Return(_a0 admin.GetVpcPeeringConnectionsApiRequest) *StreamsApi_GetVpcPeeringConnectionsWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *StreamsApi_GetVPCPeeringConnectionsWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetVPCPeeringConnectionsApiParams) admin.GetVPCPeeringConnectionsApiRequest) *StreamsApi_GetVPCPeeringConnectionsWithParams_Call {
+func (_c *StreamsApi_GetVpcPeeringConnectionsWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetVpcPeeringConnectionsApiParams) admin.GetVpcPeeringConnectionsApiRequest) *StreamsApi_GetVpcPeeringConnectionsWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListPrivateLinkConnections provides a mock function with given fields: ctx, groupId
+func (_m *StreamsApi) ListPrivateLinkConnections(ctx context.Context, groupId string) admin.ListPrivateLinkConnectionsApiRequest {
+	ret := _m.Called(ctx, groupId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListPrivateLinkConnections")
+	}
+
+	var r0 admin.ListPrivateLinkConnectionsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.ListPrivateLinkConnectionsApiRequest); ok {
+		r0 = rf(ctx, groupId)
+	} else {
+		r0 = ret.Get(0).(admin.ListPrivateLinkConnectionsApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsApi_ListPrivateLinkConnections_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListPrivateLinkConnections'
+type StreamsApi_ListPrivateLinkConnections_Call struct {
+	*mock.Call
+}
+
+// ListPrivateLinkConnections is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+func (_e *StreamsApi_Expecter) ListPrivateLinkConnections(ctx any, groupId any) *StreamsApi_ListPrivateLinkConnections_Call {
+	return &StreamsApi_ListPrivateLinkConnections_Call{Call: _e.mock.On("ListPrivateLinkConnections", ctx, groupId)}
+}
+
+func (_c *StreamsApi_ListPrivateLinkConnections_Call) Run(run func(ctx context.Context, groupId string)) *StreamsApi_ListPrivateLinkConnections_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_ListPrivateLinkConnections_Call) Return(_a0 admin.ListPrivateLinkConnectionsApiRequest) *StreamsApi_ListPrivateLinkConnections_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsApi_ListPrivateLinkConnections_Call) RunAndReturn(run func(context.Context, string) admin.ListPrivateLinkConnectionsApiRequest) *StreamsApi_ListPrivateLinkConnections_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListPrivateLinkConnectionsExecute provides a mock function with given fields: r
+func (_m *StreamsApi) ListPrivateLinkConnectionsExecute(r admin.ListPrivateLinkConnectionsApiRequest) (*admin.PaginatedApiStreamsPrivateLink, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListPrivateLinkConnectionsExecute")
+	}
+
+	var r0 *admin.PaginatedApiStreamsPrivateLink
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.ListPrivateLinkConnectionsApiRequest) (*admin.PaginatedApiStreamsPrivateLink, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.ListPrivateLinkConnectionsApiRequest) *admin.PaginatedApiStreamsPrivateLink); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.PaginatedApiStreamsPrivateLink)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.ListPrivateLinkConnectionsApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.ListPrivateLinkConnectionsApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// StreamsApi_ListPrivateLinkConnectionsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListPrivateLinkConnectionsExecute'
+type StreamsApi_ListPrivateLinkConnectionsExecute_Call struct {
+	*mock.Call
+}
+
+// ListPrivateLinkConnectionsExecute is a helper method to define mock.On call
+//   - r admin.ListPrivateLinkConnectionsApiRequest
+func (_e *StreamsApi_Expecter) ListPrivateLinkConnectionsExecute(r any) *StreamsApi_ListPrivateLinkConnectionsExecute_Call {
+	return &StreamsApi_ListPrivateLinkConnectionsExecute_Call{Call: _e.mock.On("ListPrivateLinkConnectionsExecute", r)}
+}
+
+func (_c *StreamsApi_ListPrivateLinkConnectionsExecute_Call) Run(run func(r admin.ListPrivateLinkConnectionsApiRequest)) *StreamsApi_ListPrivateLinkConnectionsExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.ListPrivateLinkConnectionsApiRequest))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_ListPrivateLinkConnectionsExecute_Call) Return(_a0 *admin.PaginatedApiStreamsPrivateLink, _a1 *http.Response, _a2 error) *StreamsApi_ListPrivateLinkConnectionsExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *StreamsApi_ListPrivateLinkConnectionsExecute_Call) RunAndReturn(run func(admin.ListPrivateLinkConnectionsApiRequest) (*admin.PaginatedApiStreamsPrivateLink, *http.Response, error)) *StreamsApi_ListPrivateLinkConnectionsExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListPrivateLinkConnectionsWithParams provides a mock function with given fields: ctx, args
+func (_m *StreamsApi) ListPrivateLinkConnectionsWithParams(ctx context.Context, args *admin.ListPrivateLinkConnectionsApiParams) admin.ListPrivateLinkConnectionsApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListPrivateLinkConnectionsWithParams")
+	}
+
+	var r0 admin.ListPrivateLinkConnectionsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListPrivateLinkConnectionsApiParams) admin.ListPrivateLinkConnectionsApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.ListPrivateLinkConnectionsApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsApi_ListPrivateLinkConnectionsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListPrivateLinkConnectionsWithParams'
+type StreamsApi_ListPrivateLinkConnectionsWithParams_Call struct {
+	*mock.Call
+}
+
+// ListPrivateLinkConnectionsWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.ListPrivateLinkConnectionsApiParams
+func (_e *StreamsApi_Expecter) ListPrivateLinkConnectionsWithParams(ctx any, args any) *StreamsApi_ListPrivateLinkConnectionsWithParams_Call {
+	return &StreamsApi_ListPrivateLinkConnectionsWithParams_Call{Call: _e.mock.On("ListPrivateLinkConnectionsWithParams", ctx, args)}
+}
+
+func (_c *StreamsApi_ListPrivateLinkConnectionsWithParams_Call) Run(run func(ctx context.Context, args *admin.ListPrivateLinkConnectionsApiParams)) *StreamsApi_ListPrivateLinkConnectionsWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.ListPrivateLinkConnectionsApiParams))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_ListPrivateLinkConnectionsWithParams_Call) Return(_a0 admin.ListPrivateLinkConnectionsApiRequest) *StreamsApi_ListPrivateLinkConnectionsWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsApi_ListPrivateLinkConnectionsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListPrivateLinkConnectionsApiParams) admin.ListPrivateLinkConnectionsApiRequest) *StreamsApi_ListPrivateLinkConnectionsWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -2768,77 +3415,79 @@ func (_c *StreamsApi_ListStreamProcessorsWithParams_Call) RunAndReturn(run func(
 	return _c
 }
 
-// RejectVPCPeeringConnection provides a mock function with given fields: ctx, groupId, id
-func (_m *StreamsApi) RejectVPCPeeringConnection(ctx context.Context, groupId string, id string) admin.RejectVPCPeeringConnectionApiRequest {
-	ret := _m.Called(ctx, groupId, id)
+// ModifyStreamProcessor provides a mock function with given fields: ctx, groupId, tenantName, processorName, streamsModifyStreamProcessor
+func (_m *StreamsApi) ModifyStreamProcessor(ctx context.Context, groupId string, tenantName string, processorName string, streamsModifyStreamProcessor *admin.StreamsModifyStreamProcessor) admin.ModifyStreamProcessorApiRequest {
+	ret := _m.Called(ctx, groupId, tenantName, processorName, streamsModifyStreamProcessor)
 
 	if len(ret) == 0 {
-		panic("no return value specified for RejectVPCPeeringConnection")
+		panic("no return value specified for ModifyStreamProcessor")
 	}
 
-	var r0 admin.RejectVPCPeeringConnectionApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.RejectVPCPeeringConnectionApiRequest); ok {
-		r0 = rf(ctx, groupId, id)
+	var r0 admin.ModifyStreamProcessorApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, string, *admin.StreamsModifyStreamProcessor) admin.ModifyStreamProcessorApiRequest); ok {
+		r0 = rf(ctx, groupId, tenantName, processorName, streamsModifyStreamProcessor)
 	} else {
-		r0 = ret.Get(0).(admin.RejectVPCPeeringConnectionApiRequest)
+		r0 = ret.Get(0).(admin.ModifyStreamProcessorApiRequest)
 	}
 
 	return r0
 }
 
-// StreamsApi_RejectVPCPeeringConnection_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RejectVPCPeeringConnection'
-type StreamsApi_RejectVPCPeeringConnection_Call struct {
+// StreamsApi_ModifyStreamProcessor_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ModifyStreamProcessor'
+type StreamsApi_ModifyStreamProcessor_Call struct {
 	*mock.Call
 }
 
-// RejectVPCPeeringConnection is a helper method to define mock.On call
+// ModifyStreamProcessor is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-//   - id string
-func (_e *StreamsApi_Expecter) RejectVPCPeeringConnection(ctx any, groupId any, id any) *StreamsApi_RejectVPCPeeringConnection_Call {
-	return &StreamsApi_RejectVPCPeeringConnection_Call{Call: _e.mock.On("RejectVPCPeeringConnection", ctx, groupId, id)}
+//   - tenantName string
+//   - processorName string
+//   - streamsModifyStreamProcessor *admin.StreamsModifyStreamProcessor
+func (_e *StreamsApi_Expecter) ModifyStreamProcessor(ctx any, groupId any, tenantName any, processorName any, streamsModifyStreamProcessor any) *StreamsApi_ModifyStreamProcessor_Call {
+	return &StreamsApi_ModifyStreamProcessor_Call{Call: _e.mock.On("ModifyStreamProcessor", ctx, groupId, tenantName, processorName, streamsModifyStreamProcessor)}
 }
 
-func (_c *StreamsApi_RejectVPCPeeringConnection_Call) Run(run func(ctx context.Context, groupId string, id string)) *StreamsApi_RejectVPCPeeringConnection_Call {
+func (_c *StreamsApi_ModifyStreamProcessor_Call) Run(run func(ctx context.Context, groupId string, tenantName string, processorName string, streamsModifyStreamProcessor *admin.StreamsModifyStreamProcessor)) *StreamsApi_ModifyStreamProcessor_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string))
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(string), args[4].(*admin.StreamsModifyStreamProcessor))
 	})
 	return _c
 }
 
-func (_c *StreamsApi_RejectVPCPeeringConnection_Call) Return(_a0 admin.RejectVPCPeeringConnectionApiRequest) *StreamsApi_RejectVPCPeeringConnection_Call {
+func (_c *StreamsApi_ModifyStreamProcessor_Call) Return(_a0 admin.ModifyStreamProcessorApiRequest) *StreamsApi_ModifyStreamProcessor_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *StreamsApi_RejectVPCPeeringConnection_Call) RunAndReturn(run func(context.Context, string, string) admin.RejectVPCPeeringConnectionApiRequest) *StreamsApi_RejectVPCPeeringConnection_Call {
+func (_c *StreamsApi_ModifyStreamProcessor_Call) RunAndReturn(run func(context.Context, string, string, string, *admin.StreamsModifyStreamProcessor) admin.ModifyStreamProcessorApiRequest) *StreamsApi_ModifyStreamProcessor_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// RejectVPCPeeringConnectionExecute provides a mock function with given fields: r
-func (_m *StreamsApi) RejectVPCPeeringConnectionExecute(r admin.RejectVPCPeeringConnectionApiRequest) (any, *http.Response, error) {
+// ModifyStreamProcessorExecute provides a mock function with given fields: r
+func (_m *StreamsApi) ModifyStreamProcessorExecute(r admin.ModifyStreamProcessorApiRequest) (*admin.StreamsProcessorWithStats, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for RejectVPCPeeringConnectionExecute")
+		panic("no return value specified for ModifyStreamProcessorExecute")
 	}
 
-	var r0 any
+	var r0 *admin.StreamsProcessorWithStats
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.RejectVPCPeeringConnectionApiRequest) (any, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.ModifyStreamProcessorApiRequest) (*admin.StreamsProcessorWithStats, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.RejectVPCPeeringConnectionApiRequest) any); ok {
+	if rf, ok := ret.Get(0).(func(admin.ModifyStreamProcessorApiRequest) *admin.StreamsProcessorWithStats); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(any)
+			r0 = ret.Get(0).(*admin.StreamsProcessorWithStats)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.RejectVPCPeeringConnectionApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.ModifyStreamProcessorApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -2846,7 +3495,7 @@ func (_m *StreamsApi) RejectVPCPeeringConnectionExecute(r admin.RejectVPCPeering
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.RejectVPCPeeringConnectionApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.ModifyStreamProcessorApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -2855,77 +3504,239 @@ func (_m *StreamsApi) RejectVPCPeeringConnectionExecute(r admin.RejectVPCPeering
 	return r0, r1, r2
 }
 
-// StreamsApi_RejectVPCPeeringConnectionExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RejectVPCPeeringConnectionExecute'
-type StreamsApi_RejectVPCPeeringConnectionExecute_Call struct {
+// StreamsApi_ModifyStreamProcessorExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ModifyStreamProcessorExecute'
+type StreamsApi_ModifyStreamProcessorExecute_Call struct {
 	*mock.Call
 }
 
-// RejectVPCPeeringConnectionExecute is a helper method to define mock.On call
-//   - r admin.RejectVPCPeeringConnectionApiRequest
-func (_e *StreamsApi_Expecter) RejectVPCPeeringConnectionExecute(r any) *StreamsApi_RejectVPCPeeringConnectionExecute_Call {
-	return &StreamsApi_RejectVPCPeeringConnectionExecute_Call{Call: _e.mock.On("RejectVPCPeeringConnectionExecute", r)}
+// ModifyStreamProcessorExecute is a helper method to define mock.On call
+//   - r admin.ModifyStreamProcessorApiRequest
+func (_e *StreamsApi_Expecter) ModifyStreamProcessorExecute(r any) *StreamsApi_ModifyStreamProcessorExecute_Call {
+	return &StreamsApi_ModifyStreamProcessorExecute_Call{Call: _e.mock.On("ModifyStreamProcessorExecute", r)}
 }
 
-func (_c *StreamsApi_RejectVPCPeeringConnectionExecute_Call) Run(run func(r admin.RejectVPCPeeringConnectionApiRequest)) *StreamsApi_RejectVPCPeeringConnectionExecute_Call {
+func (_c *StreamsApi_ModifyStreamProcessorExecute_Call) Run(run func(r admin.ModifyStreamProcessorApiRequest)) *StreamsApi_ModifyStreamProcessorExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.RejectVPCPeeringConnectionApiRequest))
+		run(args[0].(admin.ModifyStreamProcessorApiRequest))
 	})
 	return _c
 }
 
-func (_c *StreamsApi_RejectVPCPeeringConnectionExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *StreamsApi_RejectVPCPeeringConnectionExecute_Call {
+func (_c *StreamsApi_ModifyStreamProcessorExecute_Call) Return(_a0 *admin.StreamsProcessorWithStats, _a1 *http.Response, _a2 error) *StreamsApi_ModifyStreamProcessorExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *StreamsApi_RejectVPCPeeringConnectionExecute_Call) RunAndReturn(run func(admin.RejectVPCPeeringConnectionApiRequest) (any, *http.Response, error)) *StreamsApi_RejectVPCPeeringConnectionExecute_Call {
+func (_c *StreamsApi_ModifyStreamProcessorExecute_Call) RunAndReturn(run func(admin.ModifyStreamProcessorApiRequest) (*admin.StreamsProcessorWithStats, *http.Response, error)) *StreamsApi_ModifyStreamProcessorExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// RejectVPCPeeringConnectionWithParams provides a mock function with given fields: ctx, args
-func (_m *StreamsApi) RejectVPCPeeringConnectionWithParams(ctx context.Context, args *admin.RejectVPCPeeringConnectionApiParams) admin.RejectVPCPeeringConnectionApiRequest {
+// ModifyStreamProcessorWithParams provides a mock function with given fields: ctx, args
+func (_m *StreamsApi) ModifyStreamProcessorWithParams(ctx context.Context, args *admin.ModifyStreamProcessorApiParams) admin.ModifyStreamProcessorApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for RejectVPCPeeringConnectionWithParams")
+		panic("no return value specified for ModifyStreamProcessorWithParams")
 	}
 
-	var r0 admin.RejectVPCPeeringConnectionApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.RejectVPCPeeringConnectionApiParams) admin.RejectVPCPeeringConnectionApiRequest); ok {
+	var r0 admin.ModifyStreamProcessorApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ModifyStreamProcessorApiParams) admin.ModifyStreamProcessorApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.RejectVPCPeeringConnectionApiRequest)
+		r0 = ret.Get(0).(admin.ModifyStreamProcessorApiRequest)
 	}
 
 	return r0
 }
 
-// StreamsApi_RejectVPCPeeringConnectionWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RejectVPCPeeringConnectionWithParams'
-type StreamsApi_RejectVPCPeeringConnectionWithParams_Call struct {
+// StreamsApi_ModifyStreamProcessorWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ModifyStreamProcessorWithParams'
+type StreamsApi_ModifyStreamProcessorWithParams_Call struct {
 	*mock.Call
 }
 
-// RejectVPCPeeringConnectionWithParams is a helper method to define mock.On call
+// ModifyStreamProcessorWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.RejectVPCPeeringConnectionApiParams
-func (_e *StreamsApi_Expecter) RejectVPCPeeringConnectionWithParams(ctx any, args any) *StreamsApi_RejectVPCPeeringConnectionWithParams_Call {
-	return &StreamsApi_RejectVPCPeeringConnectionWithParams_Call{Call: _e.mock.On("RejectVPCPeeringConnectionWithParams", ctx, args)}
+//   - args *admin.ModifyStreamProcessorApiParams
+func (_e *StreamsApi_Expecter) ModifyStreamProcessorWithParams(ctx any, args any) *StreamsApi_ModifyStreamProcessorWithParams_Call {
+	return &StreamsApi_ModifyStreamProcessorWithParams_Call{Call: _e.mock.On("ModifyStreamProcessorWithParams", ctx, args)}
 }
 
-func (_c *StreamsApi_RejectVPCPeeringConnectionWithParams_Call) Run(run func(ctx context.Context, args *admin.RejectVPCPeeringConnectionApiParams)) *StreamsApi_RejectVPCPeeringConnectionWithParams_Call {
+func (_c *StreamsApi_ModifyStreamProcessorWithParams_Call) Run(run func(ctx context.Context, args *admin.ModifyStreamProcessorApiParams)) *StreamsApi_ModifyStreamProcessorWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.RejectVPCPeeringConnectionApiParams))
+		run(args[0].(context.Context), args[1].(*admin.ModifyStreamProcessorApiParams))
 	})
 	return _c
 }
 
-func (_c *StreamsApi_RejectVPCPeeringConnectionWithParams_Call) Return(_a0 admin.RejectVPCPeeringConnectionApiRequest) *StreamsApi_RejectVPCPeeringConnectionWithParams_Call {
+func (_c *StreamsApi_ModifyStreamProcessorWithParams_Call) Return(_a0 admin.ModifyStreamProcessorApiRequest) *StreamsApi_ModifyStreamProcessorWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *StreamsApi_RejectVPCPeeringConnectionWithParams_Call) RunAndReturn(run func(context.Context, *admin.RejectVPCPeeringConnectionApiParams) admin.RejectVPCPeeringConnectionApiRequest) *StreamsApi_RejectVPCPeeringConnectionWithParams_Call {
+func (_c *StreamsApi_ModifyStreamProcessorWithParams_Call) RunAndReturn(run func(context.Context, *admin.ModifyStreamProcessorApiParams) admin.ModifyStreamProcessorApiRequest) *StreamsApi_ModifyStreamProcessorWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// RejectVpcPeeringConnection provides a mock function with given fields: ctx, groupId, id
+func (_m *StreamsApi) RejectVpcPeeringConnection(ctx context.Context, groupId string, id string) admin.RejectVpcPeeringConnectionApiRequest {
+	ret := _m.Called(ctx, groupId, id)
+
+	if len(ret) == 0 {
+		panic("no return value specified for RejectVpcPeeringConnection")
+	}
+
+	var r0 admin.RejectVpcPeeringConnectionApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.RejectVpcPeeringConnectionApiRequest); ok {
+		r0 = rf(ctx, groupId, id)
+	} else {
+		r0 = ret.Get(0).(admin.RejectVpcPeeringConnectionApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsApi_RejectVpcPeeringConnection_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RejectVpcPeeringConnection'
+type StreamsApi_RejectVpcPeeringConnection_Call struct {
+	*mock.Call
+}
+
+// RejectVpcPeeringConnection is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - id string
+func (_e *StreamsApi_Expecter) RejectVpcPeeringConnection(ctx any, groupId any, id any) *StreamsApi_RejectVpcPeeringConnection_Call {
+	return &StreamsApi_RejectVpcPeeringConnection_Call{Call: _e.mock.On("RejectVpcPeeringConnection", ctx, groupId, id)}
+}
+
+func (_c *StreamsApi_RejectVpcPeeringConnection_Call) Run(run func(ctx context.Context, groupId string, id string)) *StreamsApi_RejectVpcPeeringConnection_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_RejectVpcPeeringConnection_Call) Return(_a0 admin.RejectVpcPeeringConnectionApiRequest) *StreamsApi_RejectVpcPeeringConnection_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsApi_RejectVpcPeeringConnection_Call) RunAndReturn(run func(context.Context, string, string) admin.RejectVpcPeeringConnectionApiRequest) *StreamsApi_RejectVpcPeeringConnection_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// RejectVpcPeeringConnectionExecute provides a mock function with given fields: r
+func (_m *StreamsApi) RejectVpcPeeringConnectionExecute(r admin.RejectVpcPeeringConnectionApiRequest) (any, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for RejectVpcPeeringConnectionExecute")
+	}
+
+	var r0 any
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.RejectVpcPeeringConnectionApiRequest) (any, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.RejectVpcPeeringConnectionApiRequest) any); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(any)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.RejectVpcPeeringConnectionApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.RejectVpcPeeringConnectionApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// StreamsApi_RejectVpcPeeringConnectionExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RejectVpcPeeringConnectionExecute'
+type StreamsApi_RejectVpcPeeringConnectionExecute_Call struct {
+	*mock.Call
+}
+
+// RejectVpcPeeringConnectionExecute is a helper method to define mock.On call
+//   - r admin.RejectVpcPeeringConnectionApiRequest
+func (_e *StreamsApi_Expecter) RejectVpcPeeringConnectionExecute(r any) *StreamsApi_RejectVpcPeeringConnectionExecute_Call {
+	return &StreamsApi_RejectVpcPeeringConnectionExecute_Call{Call: _e.mock.On("RejectVpcPeeringConnectionExecute", r)}
+}
+
+func (_c *StreamsApi_RejectVpcPeeringConnectionExecute_Call) Run(run func(r admin.RejectVpcPeeringConnectionApiRequest)) *StreamsApi_RejectVpcPeeringConnectionExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.RejectVpcPeeringConnectionApiRequest))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_RejectVpcPeeringConnectionExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *StreamsApi_RejectVpcPeeringConnectionExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *StreamsApi_RejectVpcPeeringConnectionExecute_Call) RunAndReturn(run func(admin.RejectVpcPeeringConnectionApiRequest) (any, *http.Response, error)) *StreamsApi_RejectVpcPeeringConnectionExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// RejectVpcPeeringConnectionWithParams provides a mock function with given fields: ctx, args
+func (_m *StreamsApi) RejectVpcPeeringConnectionWithParams(ctx context.Context, args *admin.RejectVpcPeeringConnectionApiParams) admin.RejectVpcPeeringConnectionApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for RejectVpcPeeringConnectionWithParams")
+	}
+
+	var r0 admin.RejectVpcPeeringConnectionApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.RejectVpcPeeringConnectionApiParams) admin.RejectVpcPeeringConnectionApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.RejectVpcPeeringConnectionApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsApi_RejectVpcPeeringConnectionWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RejectVpcPeeringConnectionWithParams'
+type StreamsApi_RejectVpcPeeringConnectionWithParams_Call struct {
+	*mock.Call
+}
+
+// RejectVpcPeeringConnectionWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.RejectVpcPeeringConnectionApiParams
+func (_e *StreamsApi_Expecter) RejectVpcPeeringConnectionWithParams(ctx any, args any) *StreamsApi_RejectVpcPeeringConnectionWithParams_Call {
+	return &StreamsApi_RejectVpcPeeringConnectionWithParams_Call{Call: _e.mock.On("RejectVpcPeeringConnectionWithParams", ctx, args)}
+}
+
+func (_c *StreamsApi_RejectVpcPeeringConnectionWithParams_Call) Run(run func(ctx context.Context, args *admin.RejectVpcPeeringConnectionApiParams)) *StreamsApi_RejectVpcPeeringConnectionWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.RejectVpcPeeringConnectionApiParams))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_RejectVpcPeeringConnectionWithParams_Call) Return(_a0 admin.RejectVpcPeeringConnectionApiRequest) *StreamsApi_RejectVpcPeeringConnectionWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsApi_RejectVpcPeeringConnectionWithParams_Call) RunAndReturn(run func(context.Context, *admin.RejectVpcPeeringConnectionApiParams) admin.RejectVpcPeeringConnectionApiRequest) *StreamsApi_RejectVpcPeeringConnectionWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }

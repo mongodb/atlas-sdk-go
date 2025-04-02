@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ChangeStreamOptionsPreAndPostImagesExpireAfterSeconds** | Pointer to **int** | The minimum pre- and post-image retention time in seconds. | [optional] [default to -1]
 **ChunkMigrationConcurrency** | Pointer to **int** | Number of threads on the source shard and the receiving shard for chunk migration. The number of threads should not exceed the half the total number of CPU cores in the sharded cluster. | [optional] 
+**CustomOpensslCipherConfigTls12** | Pointer to **[]string** | The custom OpenSSL cipher suite list for TLS 1.2. This field is only valid when &#x60;tlsCipherConfigMode&#x60; is set to &#x60;CUSTOM&#x60;. | [optional] 
 **DefaultMaxTimeMS** | Pointer to **int** | Default time limit in milliseconds for individual read operations to complete. | [optional] 
 **DefaultWriteConcern** | Pointer to **string** | Default level of acknowledgment requested from MongoDB for write operations when none is specified by the driver. | [optional] 
 **JavascriptEnabled** | Pointer to **bool** | Flag that indicates whether the cluster allows execution of operations that perform server-side executions of JavaScript. When using 8.0+, we recommend disabling server-side JavaScript and using operators of aggregation pipeline as more performant alternative. | [optional] 
@@ -16,6 +17,7 @@ Name | Type | Description | Notes
 **QueryStatsLogVerbosity** | Pointer to **int** | May be set to 1 (disabled) or 3 (enabled). When set to 3, Atlas will include redacted and anonymized $queryStats output in MongoDB logs. $queryStats output does not contain literals or field values. Enabling this setting might impact the performance of your cluster. | [optional] 
 **SampleRefreshIntervalBIConnector** | Pointer to **int** | Interval in seconds at which the mongosqld process re-samples data to create its relational schema. | [optional] [default to 0]
 **SampleSizeBIConnector** | Pointer to **int** | Number of documents per database to sample when gathering schema information. | [optional] 
+**TlsCipherConfigMode** | Pointer to **string** | The TLS cipher suite configuration mode. The default mode uses the default cipher suites. The custom mode allows you to specify custom cipher suites for both TLS 1.2 and TLS 1.3. | [optional] 
 **TransactionLifetimeLimitSeconds** | Pointer to **int64** | Lifetime, in seconds, of multi-document transactions. Atlas considers the transactions that exceed this limit as expired and so aborts them through a periodic cleanup process. | [optional] 
 
 ## Methods
@@ -85,6 +87,30 @@ SetChunkMigrationConcurrency sets ChunkMigrationConcurrency field to given value
 `func (o *ClusterDescriptionProcessArgs20240805) HasChunkMigrationConcurrency() bool`
 
 HasChunkMigrationConcurrency returns a boolean if a field has been set.
+### GetCustomOpensslCipherConfigTls12
+
+`func (o *ClusterDescriptionProcessArgs20240805) GetCustomOpensslCipherConfigTls12() []string`
+
+GetCustomOpensslCipherConfigTls12 returns the CustomOpensslCipherConfigTls12 field if non-nil, zero value otherwise.
+
+### GetCustomOpensslCipherConfigTls12Ok
+
+`func (o *ClusterDescriptionProcessArgs20240805) GetCustomOpensslCipherConfigTls12Ok() (*[]string, bool)`
+
+GetCustomOpensslCipherConfigTls12Ok returns a tuple with the CustomOpensslCipherConfigTls12 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomOpensslCipherConfigTls12
+
+`func (o *ClusterDescriptionProcessArgs20240805) SetCustomOpensslCipherConfigTls12(v []string)`
+
+SetCustomOpensslCipherConfigTls12 sets CustomOpensslCipherConfigTls12 field to given value.
+
+### HasCustomOpensslCipherConfigTls12
+
+`func (o *ClusterDescriptionProcessArgs20240805) HasCustomOpensslCipherConfigTls12() bool`
+
+HasCustomOpensslCipherConfigTls12 returns a boolean if a field has been set.
 ### GetDefaultMaxTimeMS
 
 `func (o *ClusterDescriptionProcessArgs20240805) GetDefaultMaxTimeMS() int`
@@ -325,6 +351,30 @@ SetSampleSizeBIConnector sets SampleSizeBIConnector field to given value.
 `func (o *ClusterDescriptionProcessArgs20240805) HasSampleSizeBIConnector() bool`
 
 HasSampleSizeBIConnector returns a boolean if a field has been set.
+### GetTlsCipherConfigMode
+
+`func (o *ClusterDescriptionProcessArgs20240805) GetTlsCipherConfigMode() string`
+
+GetTlsCipherConfigMode returns the TlsCipherConfigMode field if non-nil, zero value otherwise.
+
+### GetTlsCipherConfigModeOk
+
+`func (o *ClusterDescriptionProcessArgs20240805) GetTlsCipherConfigModeOk() (*string, bool)`
+
+GetTlsCipherConfigModeOk returns a tuple with the TlsCipherConfigMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTlsCipherConfigMode
+
+`func (o *ClusterDescriptionProcessArgs20240805) SetTlsCipherConfigMode(v string)`
+
+SetTlsCipherConfigMode sets TlsCipherConfigMode field to given value.
+
+### HasTlsCipherConfigMode
+
+`func (o *ClusterDescriptionProcessArgs20240805) HasTlsCipherConfigMode() bool`
+
+HasTlsCipherConfigMode returns a boolean if a field has been set.
 ### GetTransactionLifetimeLimitSeconds
 
 `func (o *ClusterDescriptionProcessArgs20240805) GetTransactionLifetimeLimitSeconds() int64`

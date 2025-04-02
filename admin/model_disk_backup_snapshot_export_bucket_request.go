@@ -2,82 +2,47 @@
 
 package admin
 
-// DiskBackupSnapshotExportBucket Disk backup snapshot Export Bucket.
-type DiskBackupSnapshotExportBucket struct {
-	// Unique 24-hexadecimal character string that identifies the Export Bucket.
-	// Read only field.
-	Id *string `json:"_id,omitempty"`
-	// Human-readable label that identifies the AWS S3 Bucket or Azure Storage Container that the role is authorized to export to.
+// DiskBackupSnapshotExportBucketRequest Disk backup snapshot Export Bucket Request.
+type DiskBackupSnapshotExportBucketRequest struct {
+	// The name of the Azure Storage Container to export to. Deprecated: provide the Container's URL in serviceUrl instead.
 	BucketName string `json:"bucketName"`
-	// Human-readable label that identifies the cloud provider that Snapshots will be exported to.
+	// Human-readable label that identifies the cloud provider that Snapshots are exported to.
 	CloudProvider string `json:"cloudProvider"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
-	// Unique 24-hexadecimal character string that identifies the <a href='https://www.mongodb.com/docs/atlas/security/set-up-unified-aws-access/' target='_blank'>Unified AWS Access role ID</a>  that MongoDB Cloud uses to access the AWS S3 bucket.
+	// Unique 24-hexadecimal character string that identifies the Unified AWS Access role ID that MongoDB Cloud uses to access the AWS S3 bucket.
 	IamRoleId *string `json:"iamRoleId,omitempty"`
-	// Unique 24-hexadecimal digit string that identifies the Azure Service Principal that MongoDB Cloud uses to access the Azure Blob Storage Container.
+	// Unique 24-hexadecimal digit string that identifies the Azure Cloud Provider Access Role that MongoDB Cloud uses to access the Azure Blob Storage Container.
 	RoleId *string `json:"roleId,omitempty"`
-	// URL that identifies the blob Endpoint of the Azure Blob Storage Account.
+	// URL of the Azure Storage Account to export to. For example: \"https://examplestorageaccount.blob.core.windows.net\". Only standard endpoints (with \"blob.core.windows.net\") are supported.
 	ServiceUrl *string `json:"serviceUrl,omitempty"`
-	// UUID that identifies the Azure Active Directory Tenant ID.
+	// UUID that identifies the Azure Active Directory Tenant ID. Deprecated: this field is ignored; the tenantId of the Cloud Provider Access role (from roleId) is used.
+	// Deprecated
 	TenantId *string `json:"tenantId,omitempty"`
 }
 
-// NewDiskBackupSnapshotExportBucket instantiates a new DiskBackupSnapshotExportBucket object
+// NewDiskBackupSnapshotExportBucketRequest instantiates a new DiskBackupSnapshotExportBucketRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDiskBackupSnapshotExportBucket(bucketName string, cloudProvider string) *DiskBackupSnapshotExportBucket {
-	this := DiskBackupSnapshotExportBucket{}
+func NewDiskBackupSnapshotExportBucketRequest(bucketName string, cloudProvider string) *DiskBackupSnapshotExportBucketRequest {
+	this := DiskBackupSnapshotExportBucketRequest{}
 	this.BucketName = bucketName
 	this.CloudProvider = cloudProvider
 	return &this
 }
 
-// NewDiskBackupSnapshotExportBucketWithDefaults instantiates a new DiskBackupSnapshotExportBucket object
+// NewDiskBackupSnapshotExportBucketRequestWithDefaults instantiates a new DiskBackupSnapshotExportBucketRequest object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewDiskBackupSnapshotExportBucketWithDefaults() *DiskBackupSnapshotExportBucket {
-	this := DiskBackupSnapshotExportBucket{}
+func NewDiskBackupSnapshotExportBucketRequestWithDefaults() *DiskBackupSnapshotExportBucketRequest {
+	this := DiskBackupSnapshotExportBucketRequest{}
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise
-func (o *DiskBackupSnapshotExportBucket) GetId() string {
-	if o == nil || IsNil(o.Id) {
-		var ret string
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DiskBackupSnapshotExportBucket) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
-		return nil, false
-	}
-
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *DiskBackupSnapshotExportBucket) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *DiskBackupSnapshotExportBucket) SetId(v string) {
-	o.Id = &v
-}
-
 // GetBucketName returns the BucketName field value
-func (o *DiskBackupSnapshotExportBucket) GetBucketName() string {
+func (o *DiskBackupSnapshotExportBucketRequest) GetBucketName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -88,7 +53,7 @@ func (o *DiskBackupSnapshotExportBucket) GetBucketName() string {
 
 // GetBucketNameOk returns a tuple with the BucketName field value
 // and a boolean to check if the value has been set.
-func (o *DiskBackupSnapshotExportBucket) GetBucketNameOk() (*string, bool) {
+func (o *DiskBackupSnapshotExportBucketRequest) GetBucketNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -96,12 +61,12 @@ func (o *DiskBackupSnapshotExportBucket) GetBucketNameOk() (*string, bool) {
 }
 
 // SetBucketName sets field value
-func (o *DiskBackupSnapshotExportBucket) SetBucketName(v string) {
+func (o *DiskBackupSnapshotExportBucketRequest) SetBucketName(v string) {
 	o.BucketName = v
 }
 
 // GetCloudProvider returns the CloudProvider field value
-func (o *DiskBackupSnapshotExportBucket) GetCloudProvider() string {
+func (o *DiskBackupSnapshotExportBucketRequest) GetCloudProvider() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -112,7 +77,7 @@ func (o *DiskBackupSnapshotExportBucket) GetCloudProvider() string {
 
 // GetCloudProviderOk returns a tuple with the CloudProvider field value
 // and a boolean to check if the value has been set.
-func (o *DiskBackupSnapshotExportBucket) GetCloudProviderOk() (*string, bool) {
+func (o *DiskBackupSnapshotExportBucketRequest) GetCloudProviderOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -120,12 +85,12 @@ func (o *DiskBackupSnapshotExportBucket) GetCloudProviderOk() (*string, bool) {
 }
 
 // SetCloudProvider sets field value
-func (o *DiskBackupSnapshotExportBucket) SetCloudProvider(v string) {
+func (o *DiskBackupSnapshotExportBucketRequest) SetCloudProvider(v string) {
 	o.CloudProvider = v
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
-func (o *DiskBackupSnapshotExportBucket) GetLinks() []Link {
+func (o *DiskBackupSnapshotExportBucketRequest) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
 		return ret
@@ -135,7 +100,7 @@ func (o *DiskBackupSnapshotExportBucket) GetLinks() []Link {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiskBackupSnapshotExportBucket) GetLinksOk() (*[]Link, bool) {
+func (o *DiskBackupSnapshotExportBucketRequest) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -144,7 +109,7 @@ func (o *DiskBackupSnapshotExportBucket) GetLinksOk() (*[]Link, bool) {
 }
 
 // HasLinks returns a boolean if a field has been set.
-func (o *DiskBackupSnapshotExportBucket) HasLinks() bool {
+func (o *DiskBackupSnapshotExportBucketRequest) HasLinks() bool {
 	if o != nil && !IsNil(o.Links) {
 		return true
 	}
@@ -153,12 +118,12 @@ func (o *DiskBackupSnapshotExportBucket) HasLinks() bool {
 }
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
-func (o *DiskBackupSnapshotExportBucket) SetLinks(v []Link) {
+func (o *DiskBackupSnapshotExportBucketRequest) SetLinks(v []Link) {
 	o.Links = &v
 }
 
 // GetIamRoleId returns the IamRoleId field value if set, zero value otherwise
-func (o *DiskBackupSnapshotExportBucket) GetIamRoleId() string {
+func (o *DiskBackupSnapshotExportBucketRequest) GetIamRoleId() string {
 	if o == nil || IsNil(o.IamRoleId) {
 		var ret string
 		return ret
@@ -168,7 +133,7 @@ func (o *DiskBackupSnapshotExportBucket) GetIamRoleId() string {
 
 // GetIamRoleIdOk returns a tuple with the IamRoleId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiskBackupSnapshotExportBucket) GetIamRoleIdOk() (*string, bool) {
+func (o *DiskBackupSnapshotExportBucketRequest) GetIamRoleIdOk() (*string, bool) {
 	if o == nil || IsNil(o.IamRoleId) {
 		return nil, false
 	}
@@ -177,7 +142,7 @@ func (o *DiskBackupSnapshotExportBucket) GetIamRoleIdOk() (*string, bool) {
 }
 
 // HasIamRoleId returns a boolean if a field has been set.
-func (o *DiskBackupSnapshotExportBucket) HasIamRoleId() bool {
+func (o *DiskBackupSnapshotExportBucketRequest) HasIamRoleId() bool {
 	if o != nil && !IsNil(o.IamRoleId) {
 		return true
 	}
@@ -186,12 +151,12 @@ func (o *DiskBackupSnapshotExportBucket) HasIamRoleId() bool {
 }
 
 // SetIamRoleId gets a reference to the given string and assigns it to the IamRoleId field.
-func (o *DiskBackupSnapshotExportBucket) SetIamRoleId(v string) {
+func (o *DiskBackupSnapshotExportBucketRequest) SetIamRoleId(v string) {
 	o.IamRoleId = &v
 }
 
 // GetRoleId returns the RoleId field value if set, zero value otherwise
-func (o *DiskBackupSnapshotExportBucket) GetRoleId() string {
+func (o *DiskBackupSnapshotExportBucketRequest) GetRoleId() string {
 	if o == nil || IsNil(o.RoleId) {
 		var ret string
 		return ret
@@ -201,7 +166,7 @@ func (o *DiskBackupSnapshotExportBucket) GetRoleId() string {
 
 // GetRoleIdOk returns a tuple with the RoleId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiskBackupSnapshotExportBucket) GetRoleIdOk() (*string, bool) {
+func (o *DiskBackupSnapshotExportBucketRequest) GetRoleIdOk() (*string, bool) {
 	if o == nil || IsNil(o.RoleId) {
 		return nil, false
 	}
@@ -210,7 +175,7 @@ func (o *DiskBackupSnapshotExportBucket) GetRoleIdOk() (*string, bool) {
 }
 
 // HasRoleId returns a boolean if a field has been set.
-func (o *DiskBackupSnapshotExportBucket) HasRoleId() bool {
+func (o *DiskBackupSnapshotExportBucketRequest) HasRoleId() bool {
 	if o != nil && !IsNil(o.RoleId) {
 		return true
 	}
@@ -219,12 +184,12 @@ func (o *DiskBackupSnapshotExportBucket) HasRoleId() bool {
 }
 
 // SetRoleId gets a reference to the given string and assigns it to the RoleId field.
-func (o *DiskBackupSnapshotExportBucket) SetRoleId(v string) {
+func (o *DiskBackupSnapshotExportBucketRequest) SetRoleId(v string) {
 	o.RoleId = &v
 }
 
 // GetServiceUrl returns the ServiceUrl field value if set, zero value otherwise
-func (o *DiskBackupSnapshotExportBucket) GetServiceUrl() string {
+func (o *DiskBackupSnapshotExportBucketRequest) GetServiceUrl() string {
 	if o == nil || IsNil(o.ServiceUrl) {
 		var ret string
 		return ret
@@ -234,7 +199,7 @@ func (o *DiskBackupSnapshotExportBucket) GetServiceUrl() string {
 
 // GetServiceUrlOk returns a tuple with the ServiceUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiskBackupSnapshotExportBucket) GetServiceUrlOk() (*string, bool) {
+func (o *DiskBackupSnapshotExportBucketRequest) GetServiceUrlOk() (*string, bool) {
 	if o == nil || IsNil(o.ServiceUrl) {
 		return nil, false
 	}
@@ -243,7 +208,7 @@ func (o *DiskBackupSnapshotExportBucket) GetServiceUrlOk() (*string, bool) {
 }
 
 // HasServiceUrl returns a boolean if a field has been set.
-func (o *DiskBackupSnapshotExportBucket) HasServiceUrl() bool {
+func (o *DiskBackupSnapshotExportBucketRequest) HasServiceUrl() bool {
 	if o != nil && !IsNil(o.ServiceUrl) {
 		return true
 	}
@@ -252,12 +217,13 @@ func (o *DiskBackupSnapshotExportBucket) HasServiceUrl() bool {
 }
 
 // SetServiceUrl gets a reference to the given string and assigns it to the ServiceUrl field.
-func (o *DiskBackupSnapshotExportBucket) SetServiceUrl(v string) {
+func (o *DiskBackupSnapshotExportBucketRequest) SetServiceUrl(v string) {
 	o.ServiceUrl = &v
 }
 
 // GetTenantId returns the TenantId field value if set, zero value otherwise
-func (o *DiskBackupSnapshotExportBucket) GetTenantId() string {
+// Deprecated
+func (o *DiskBackupSnapshotExportBucketRequest) GetTenantId() string {
 	if o == nil || IsNil(o.TenantId) {
 		var ret string
 		return ret
@@ -267,7 +233,8 @@ func (o *DiskBackupSnapshotExportBucket) GetTenantId() string {
 
 // GetTenantIdOk returns a tuple with the TenantId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiskBackupSnapshotExportBucket) GetTenantIdOk() (*string, bool) {
+// Deprecated
+func (o *DiskBackupSnapshotExportBucketRequest) GetTenantIdOk() (*string, bool) {
 	if o == nil || IsNil(o.TenantId) {
 		return nil, false
 	}
@@ -276,7 +243,7 @@ func (o *DiskBackupSnapshotExportBucket) GetTenantIdOk() (*string, bool) {
 }
 
 // HasTenantId returns a boolean if a field has been set.
-func (o *DiskBackupSnapshotExportBucket) HasTenantId() bool {
+func (o *DiskBackupSnapshotExportBucketRequest) HasTenantId() bool {
 	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
@@ -285,6 +252,7 @@ func (o *DiskBackupSnapshotExportBucket) HasTenantId() bool {
 }
 
 // SetTenantId gets a reference to the given string and assigns it to the TenantId field.
-func (o *DiskBackupSnapshotExportBucket) SetTenantId(v string) {
+// Deprecated
+func (o *DiskBackupSnapshotExportBucketRequest) SetTenantId(v string) {
 	o.TenantId = &v
 }
