@@ -28,6 +28,7 @@ jobs:
         run: |
           export PATH=${PATH}:`go env GOPATH`/bin
           make clean_and_generate
+      - run: touch admin/hello.txt
       - name: Verify Changed files
         run: |
           FILES_CHANGED=false
