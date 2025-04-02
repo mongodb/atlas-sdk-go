@@ -11,13 +11,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Fetch all history for tags
+          fetch-depth: 0  # Fetch tags history
       - uses: actions/setup-go@v5
         with:
           go-version-file: 'go.mod'
       - run: make install-goimports
-
-      - name: Install mockery locally
+      
+      # Installing mockery manually as tools/scripts/generate_mocks.sh would error out even after go version update in go.mod
+      # err: exit status 1: stderr: go: go.mod requires go >= 1.23.0 (running go 1.22.1; GOTOOLCHAIN=local)\n" dry-run=false version=v2.42.1
+      - name: Install mockery
         run: go install github.com/vektra/mockery/v2@v2.42.1
 
       - name: Fetch changes
@@ -66,25 +68,12 @@ jobs:
         run: |
           go mod tidy
           go get -u golang.org/x/oauth2
-      # - name: Run mock generation
-      #   working-directory: ./tools
-      #   if: steps.verify-changed-files.outputs.files_changed == 'true'
-      #   run: make generate_mocks  
-      
+
       - name: Run mock generation
         working-directory: ./tools
         if: steps.verify-changed-files.outputs.files_changed == 'true'
-        run: |
-          # Try to run mock generation, but continue if it fails
-          make generate_mocks || echo "Mock generation had issues but continuing workflow"
-          
-          # Ensure mockadmin directory exists
-          mkdir -p ../mockadmin
-          
-          # Add empty file if directory is empty
-          if [ ! "$(ls -A ../mockadmin)" ]; then
-            echo "// Empty placeholder file" > ../mockadmin/placeholder.go
-          fi
+        run: make generate_mocks  
+      
       - uses: peter-evans/create-pull-request@v7
         if: steps.verify-changed-files.outputs.files_changed == 'true'
         with:
