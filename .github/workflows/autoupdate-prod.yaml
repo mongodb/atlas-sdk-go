@@ -29,33 +29,34 @@ jobs:
           export PATH=${PATH}:`go env GOPATH`/bin
           make clean_and_generate
       - name: Verify Changed files
-        uses: tj-actions/verify-changed-files@4a3570896cbdc5dca56a7a259fba88667845e18a
-        id: verify-changed-files
-        with:
-          files: |
-             ./admin/**/*
+        run: |
+          FILES_CHANGED=false
+          if git diff --name-only | grep -qE '^admin/'; then
+              FILES_CHANGED=true
+          fi
+          echo "FILES_CHANGED=${FILES_CHANGED}" >> "$GITHUB_ENV"
       - name: Run docs generation
-        if: steps.verify-changed-files.outputs.files_changed == 'true'
+        if: env.FILES_CHANGED == 'true'
         run: make gen-docs
       - name: Commit Generator Changes
-        if: steps.verify-changed-files.outputs.files_changed == 'true'
+        if: env.FILES_CHANGED == 'true'
         run: |
           git add . && git commit -m "fix: Generated SDK source code and docs"
       - name: Release updates
-        if: steps.verify-changed-files.outputs.files_changed == 'true'
+        if: env.FILES_CHANGED == 'true'
         working-directory: ./tools
         run: make new-version  
       - name: Ensure all markdown code is formatted
-        if: steps.verify-changed-files.outputs.files_changed == 'true'
+        if: env.FILES_CHANGED == 'true'
         working-directory: ./tools
         run: |
           npm install && npm run format
       - name: Run mock generation
         working-directory: ./tools
-        if: steps.verify-changed-files.outputs.files_changed == 'true'
+        if: env.FILES_CHANGED == 'true'
         run: make generate_mocks  
       - uses: peter-evans/create-pull-request@v7
-        if: steps.verify-changed-files.outputs.files_changed == 'true'
+        if: env.FILES_CHANGED == 'true'
         with:
           token: ${{ secrets.APIX_BOT_PAT }}
           title: "APIBot: SDK update based on recent changes in Atlas API"
