@@ -19,7 +19,7 @@ if [ "$NEW_RESOURCE_VERSION" == "$SDK_RESOURCE_VERSION" ]; then
 	SDK_VERSION="${SDK_MAJOR_VERSION}.${new_minor_version}.0"
 
 	echo "Print breaking changes"
-	# shellcheck disable=SC1091
+	# shellcheck source=/dev/null
 	source "$script_path/breaking-changes.sh"
 	if [ -n "$BREAKING_CHANGES" ]; then
 		echo "BREAKING CHANGES DETECTED FOR NON MAJOR VERSION BUMP"

@@ -7,15 +7,15 @@ import (
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
+
 	"go.mongodb.org/atlas-sdk/v20240805005/admin"
 	"go.mongodb.org/atlas-sdk/v20240805005/mockadmin"
 )
 
-
 func myFunctionCallingListClusters(clusterAPI admin.ClustersApi) (int, error) {
 	clusters, _, err := clusterAPI.ListClusters(context.Background(), "my_group_id").Execute()
-	if err !=nil {
-		return 0, err;
+	if err != nil {
+		return 0, err
 	}
 	return clusters.GetTotalCount(), err
 }
@@ -51,11 +51,10 @@ func TestListClustersErrorMocks(t *testing.T) {
 	apiError := admin.GenericOpenAPIError{}
 
 	apiError.SetModel(admin.ApiError{
-		Detail: admin.PtrString("Error when listing clusters"),
-		Error: admin.PtrInt(400),
+		Detail:    admin.PtrString("Error when listing clusters"),
+		Error:     admin.PtrInt(400),
 		ErrorCode: admin.PtrString("CLUSTERS_UNREACHABLE"),
-		Reason: admin.PtrString("Clusters unreachable"),
-		
+		Reason:    admin.PtrString("Clusters unreachable"),
 	})
 	apiError.SetError("Mocked error")
 	clusterAPI.EXPECT().ListClusters(mock.Anything, mock.Anything).Return(admin.ListClustersApiRequest{ApiService: clusterAPI})
@@ -66,5 +65,4 @@ func TestListClustersErrorMocks(t *testing.T) {
 
 	// Assert expectations.
 	assert.Equal(t, err, apiError)
-};
-
+}
