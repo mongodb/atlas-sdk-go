@@ -26,7 +26,7 @@ type UserCert struct {
 	// Date and time when this certificate expires. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	NotAfter *time.Time `json:"notAfter,omitempty"`
-	// Subject Alternative Name associated with this certificate. This parameter expresses its value as a distinguished name as defined in [RFC 2253](https://tools.ietf.org/html/2253).
+	// Subject Alternative Name associated with this certificate. This parameter expresses its value as a distinguished name as defined in RFC 2253.
 	// Read only field.
 	Subject *string `json:"subject,omitempty"`
 }
