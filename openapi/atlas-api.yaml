@@ -1155,232 +1155,6 @@ components:
                     $ref: '#/components/schemas/DiskGBAutoScaling'
             title: Automatic Scaling Settings
             type: object
-        AdvancedClusterDescription:
-            properties:
-                acceptDataRisksAndForceReplicaSetReconfig:
-                    description: If reconfiguration is necessary to regain a primary due to a regional outage, submit this field alongside your topology reconfiguration to request a new regional outage resistant topology. Forced reconfigurations during an outage of the majority of electable nodes carry a risk of data loss if replicated writes (even majority committed writes) have not been replicated to the new primary node. MongoDB Atlas docs contain more information. To proceed with an operation which carries that risk, set **acceptDataRisksAndForceReplicaSetReconfig** to the current date.
-                    externalDocs:
-                        description: Reconfiguring a Replica Set during a regional outage
-                        url: https://dochub.mongodb.org/core/regional-outage-reconfigure-replica-set
-                    format: date-time
-                    type: string
-                advancedConfiguration:
-                    $ref: '#/components/schemas/ApiAtlasClusterAdvancedConfigurationView'
-                backupEnabled:
-                    default: false
-                    description: Flag that indicates whether the cluster can perform backups. If set to `true`, the cluster can perform backups. You must set this value to `true` for NVMe clusters. Backup uses [Cloud Backups](https://docs.atlas.mongodb.com/backup/cloud-backup/overview/) for dedicated clusters and [Shared Cluster Backups](https://docs.atlas.mongodb.com/backup/shared-tier/overview/) for tenant clusters. If set to `false`, the cluster doesn't use backups.
-                    type: boolean
-                biConnector:
-                    $ref: '#/components/schemas/BiConnector'
-                clusterType:
-                    description: Configuration of nodes that comprise the cluster.
-                    enum:
-                        - REPLICASET
-                        - SHARDED
-                        - GEOSHARDED
-                    type: string
-                configServerManagementMode:
-                    default: ATLAS_MANAGED
-                    description: |-
-                        Config Server Management Mode for creating or updating a sharded cluster.
-
-                        When configured as ATLAS_MANAGED, atlas may automatically switch the cluster's config server type for optimal performance and savings.
-
-                        When configured as FIXED_TO_DEDICATED, the cluster will always use a dedicated config server.
-                    enum:
-                        - ATLAS_MANAGED
-                        - FIXED_TO_DEDICATED
-                    externalDocs:
-                        description: MongoDB Sharded Cluster Config Servers
-                        url: https://dochub.mongodb.org/docs/manual/core/sharded-cluster-config-servers
-                    type: string
-                configServerType:
-                    description: Describes a sharded cluster's config server type.
-                    enum:
-                        - DEDICATED
-                        - EMBEDDED
-                    externalDocs:
-                        description: MongoDB Sharded Cluster Config Servers
-                        url: https://dochub.mongodb.org/docs/manual/core/sharded-cluster-config-servers
-                    readOnly: true
-                    type: string
-                connectionStrings:
-                    $ref: '#/components/schemas/ClusterConnectionStrings'
-                createDate:
-                    description: Date and time when MongoDB Cloud created this cluster. This parameter expresses its value in ISO 8601 format in UTC.
-                    format: date-time
-                    readOnly: true
-                    type: string
-                diskSizeGB:
-                    description: "Storage capacity of instance data volumes expressed in gigabytes. Increase this number to add capacity.\n\n This value is not configurable on M0/M2/M5 clusters.\n\n MongoDB Cloud requires this parameter if you set **replicationSpecs**.\n\n If you specify a disk size below the minimum (10 GB), this parameter defaults to the minimum disk size value. \n\n Storage charge calculations depend on whether you choose the default value or a custom value.\n\n The maximum value for disk storage cannot exceed 50 times the maximum RAM for the selected cluster. If you require more storage space, consider upgrading your cluster to a higher tier."
-                    externalDocs:
-                        description: Customize Storage
-                        url: https://dochub.mongodb.org/core/customize-storage
-                    format: double
-                    type: number
-                diskWarmingMode:
-                    default: FULLY_WARMED
-                    description: Disk warming mode selection.
-                    enum:
-                        - FULLY_WARMED
-                        - VISIBLE_EARLIER
-                    externalDocs:
-                        description: Reduce Secondary Disk Warming Impact
-                        url: https://docs.atlas.mongodb.com/reference/replica-set-tags/#reduce-secondary-disk-warming-impact
-                    type: string
-                encryptionAtRestProvider:
-                    description: 'Cloud service provider that manages your customer keys to provide an additional layer of encryption at rest for the cluster. To enable customer key management for encryption at rest, the cluster **replicationSpecs[n].regionConfigs[m].{type}Specs.instanceSize** setting must be `M10` or higher and `"backupEnabled" : false` or omitted entirely.'
-                    enum:
-                        - NONE
-                        - AWS
-                        - AZURE
-                        - GCP
-                    externalDocs:
-                        description: Encryption at Rest using Customer Key Management
-                        url: https://www.mongodb.com/docs/atlas/security-kms-encryption/
-                    type: string
-                featureCompatibilityVersion:
-                    description: Feature compatibility version of the cluster.
-                    readOnly: true
-                    type: string
-                featureCompatibilityVersionExpirationDate:
-                    description: Feature compatibility version expiration date.
-                    format: date-time
-                    readOnly: true
-                    type: string
-                globalClusterSelfManagedSharding:
-                    description: |-
-                        Set this field to configure the Sharding Management Mode when creating a new Global Cluster.
-
-                        When set to false, the management mode is set to Atlas-Managed Sharding. This mode fully manages the sharding of your Global Cluster and is built to provide a seamless deployment experience.
-
-                        When set to true, the management mode is set to Self-Managed Sharding. This mode leaves the management of shards in your hands and is built to provide an advanced and flexible deployment experience.
-
-                        This setting cannot be changed once the cluster is deployed.
-                    externalDocs:
-                        description: Creating a Global Cluster
-                        url: https://dochub.mongodb.org/core/global-cluster-management
-                    type: boolean
-                groupId:
-                    description: Unique 24-hexadecimal character string that identifies the project.
-                    example: 32b6e34b3d91647abb20e7b8
-                    pattern: ^([a-f0-9]{24})$
-                    readOnly: true
-                    type: string
-                id:
-                    description: Unique 24-hexadecimal digit string that identifies the cluster.
-                    example: 32b6e34b3d91647abb20e7b8
-                    pattern: ^([a-f0-9]{24})$
-                    readOnly: true
-                    type: string
-                labels:
-                    deprecated: true
-                    description: |-
-                        Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster. The MongoDB Cloud console doesn't display your labels.
-
-                        Cluster labels are deprecated and will be removed in a future release. We strongly recommend that you use [resource tags](https://dochub.mongodb.org/core/add-cluster-tag-atlas) instead.
-                    items:
-                        $ref: '#/components/schemas/ComponentLabel'
-                    type: array
-                links:
-                    description: List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-                    externalDocs:
-                        description: Web Linking Specification (RFC 5988)
-                        url: https://datatracker.ietf.org/doc/html/rfc5988
-                    items:
-                        $ref: '#/components/schemas/Link'
-                    readOnly: true
-                    type: array
-                mongoDBEmployeeAccessGrant:
-                    $ref: '#/components/schemas/EmployeeAccessGrantView'
-                mongoDBMajorVersion:
-                    description: |-
-                        MongoDB major version of the cluster.
-
-                        On creation: Choose from the available versions of MongoDB, or leave unspecified for the current recommended default in the MongoDB Cloud platform. The recommended version is a recent Long Term Support version. The default is not guaranteed to be the most recently released version throughout the entire release cycle. For versions available in a specific project, see the linked documentation or use the API endpoint for [project LTS versions endpoint](#tag/Projects/operation/getProjectLTSVersions).
-
-                         On update: Increase version only by 1 major version at a time. If the cluster is pinned to a MongoDB feature compatibility version exactly one major version below the current MongoDB version, the MongoDB version can be downgraded to the previous major version.
-                    externalDocs:
-                        description: Available MongoDB Versions in Atlas
-                        url: https://www.mongodb.com/docs/atlas/reference/faq/database/#which-versions-of-mongodb-do-service-clusters-use-
-                    type: string
-                mongoDBVersion:
-                    description: Version of MongoDB that the cluster runs.
-                    pattern: ([\d]+\.[\d]+\.[\d]+)
-                    readOnly: true
-                    type: string
-                name:
-                    description: Human-readable label that identifies the advanced cluster.
-                    pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
-                    type: string
-                paused:
-                    description: Flag that indicates whether the cluster is paused.
-                    type: boolean
-                pitEnabled:
-                    description: Flag that indicates whether the cluster uses continuous cloud backups.
-                    externalDocs:
-                        description: Continuous Cloud Backups
-                        url: https://docs.atlas.mongodb.com/backup/cloud-backup/overview/
-                    type: boolean
-                replicaSetScalingStrategy:
-                    default: WORKLOAD_TYPE
-                    description: |-
-                        Set this field to configure the replica set scaling mode for your cluster.
-
-                        By default, Atlas scales under WORKLOAD_TYPE. This mode allows Atlas to scale your analytics nodes in parallel to your operational nodes.
-
-                        When configured as SEQUENTIAL, Atlas scales all nodes sequentially. This mode is intended for steady-state workloads and applications performing latency-sensitive secondary reads.
-
-                        When configured as NODE_TYPE, Atlas scales your electable nodes in parallel with your read-only and analytics nodes. This mode is intended for large, dynamic workloads requiring frequent and timely cluster tier scaling. This is the fastest scaling strategy, but it might impact latency of workloads when performing extensive secondary reads.
-                    enum:
-                        - SEQUENTIAL
-                        - WORKLOAD_TYPE
-                        - NODE_TYPE
-                    externalDocs:
-                        description: Modify the Replica Set Scaling Mode
-                        url: https://dochub.mongodb.org/core/scale-nodes
-                    type: string
-                replicationSpecs:
-                    description: List of settings that configure your cluster regions. For Global Clusters, each object in the array represents a zone where your clusters nodes deploy. For non-Global sharded clusters and replica sets, this array has one object representing where your clusters nodes deploy.
-                    items:
-                        $ref: '#/components/schemas/ReplicationSpec'
-                    type: array
-                rootCertType:
-                    default: ISRGROOTX1
-                    description: Root Certificate Authority that MongoDB Cloud cluster uses. MongoDB Cloud supports Internet Security Research Group.
-                    enum:
-                        - ISRGROOTX1
-                    type: string
-                stateName:
-                    description: Human-readable label that indicates the current operating condition of this cluster.
-                    enum:
-                        - IDLE
-                        - CREATING
-                        - UPDATING
-                        - DELETING
-                        - REPAIRING
-                    readOnly: true
-                    type: string
-                tags:
-                    description: List that contains key-value pairs between 1 to 255 characters in length for tagging and categorizing the cluster.
-                    externalDocs:
-                        description: Resource Tags
-                        url: https://dochub.mongodb.org/core/add-cluster-tag-atlas
-                    items:
-                        $ref: '#/components/schemas/ResourceTag'
-                    type: array
-                terminationProtectionEnabled:
-                    default: false
-                    description: Flag that indicates whether termination protection is enabled on the cluster. If set to `true`, MongoDB Cloud won't delete the cluster. If set to `false`, MongoDB Cloud will delete the cluster.
-                    type: boolean
-                versionReleaseSystem:
-                    default: LTS
-                    description: Method by which the cluster maintains the MongoDB versions. If value is `CONTINUOUS`, you must not specify **mongoDBMajorVersion**.
-                    enum:
-                        - LTS
-                        - CONTINUOUS
-                    type: string
-            type: object
         AdvancedComputeAutoScaling:
             description: Options that determine how this cluster handles CPU scaling.
             properties:
@@ -1618,67 +1392,6 @@ components:
             example: ALERT_CONFIG_ADDED_AUDIT
             title: Alert Audit Types
             type: string
-        AlertConfigView:
-            description: Alert settings allows to select which conditions trigger alerts and how users are notified.
-            properties:
-                created:
-                    description: Date and time when MongoDB Cloud created the alert configuration. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
-                    externalDocs:
-                        description: ISO 8601
-                        url: https://en.wikipedia.org/wiki/ISO_8601
-                    format: date-time
-                    readOnly: true
-                    type: string
-                enabled:
-                    default: false
-                    description: Flag that indicates whether someone enabled this alert configuration for the specified project.
-                    type: boolean
-                eventTypeName:
-                    description: Event type name.
-                    type: string
-                groupId:
-                    description: Unique 24-hexadecimal digit string that identifies the project that owns this alert configuration.
-                    example: 32b6e34b3d91647abb20e7b8
-                    pattern: ^([a-f0-9]{24})$
-                    readOnly: true
-                    type: string
-                id:
-                    description: Unique 24-hexadecimal digit string that identifies this alert configuration.
-                    example: 32b6e34b3d91647abb20e7b8
-                    pattern: ^([a-f0-9]{24})$
-                    readOnly: true
-                    type: string
-                links:
-                    description: List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-                    externalDocs:
-                        description: Web Linking Specification (RFC 5988)
-                        url: https://datatracker.ietf.org/doc/html/rfc5988
-                    items:
-                        $ref: '#/components/schemas/Link'
-                    readOnly: true
-                    type: array
-                matchers:
-                    description: Matching conditions for target resources.
-                    items:
-                        $ref: '#/components/schemas/AlertMatcher'
-                    type: array
-                notifications:
-                    description: List that contains the targets that MongoDB Cloud sends notifications.
-                    items:
-                        $ref: '#/components/schemas/AlertsNotificationBase'
-                    type: array
-                updated:
-                    description: Date and time when someone last updated this alert configuration. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
-                    externalDocs:
-                        description: ISO 8601
-                        url: https://en.wikipedia.org/wiki/ISO_8601
-                    format: date-time
-                    readOnly: true
-                    type: string
-            required:
-                - notifications
-            title: Alert Configuration
-            type: object
         AlertMatcher:
             description: Rules to apply when comparing an target instance against this alert configuration.
             properties:
@@ -1823,26 +1536,6 @@ components:
                 - $ref: '#/components/schemas/ReplicaSetAlertViewForNdsGroup'
                 - $ref: '#/components/schemas/StreamProcessorAlertViewForNdsGroup'
                 - $ref: '#/components/schemas/DefaultAlertViewForNdsGroup'
-            type: object
-        AlertsNotificationBase:
-            description: One target that MongoDB Cloud sends notifications when an alert triggers.
-            oneOf:
-                - $ref: '#/components/schemas/DatadogNotification'
-                - $ref: '#/components/schemas/EmailNotification'
-                - $ref: '#/components/schemas/GroupNotification'
-                - $ref: '#/components/schemas/HipChatNotification'
-                - $ref: '#/components/schemas/MicrosoftTeamsNotification'
-                - $ref: '#/components/schemas/NDSNotificationView'
-                - $ref: '#/components/schemas/OpsGenieNotification'
-                - $ref: '#/components/schemas/OrgNotification'
-                - $ref: '#/components/schemas/PagerDutyNotification'
-                - $ref: '#/components/schemas/SlackNotification'
-                - $ref: '#/components/schemas/SMSNotification'
-                - $ref: '#/components/schemas/SummaryNotification'
-                - $ref: '#/components/schemas/TeamNotification'
-                - $ref: '#/components/schemas/UserNotification'
-                - $ref: '#/components/schemas/VictorOpsNotification'
-                - $ref: '#/components/schemas/WebhookNotification'
             type: object
         AlertsNotificationRootForGroup:
             description: One target that MongoDB Cloud sends notifications when an alert triggers.
@@ -2026,8 +1719,6 @@ components:
                 - TOKYO_JPN
                 - SINGAPORE_SGP
             type: string
-        ApiAtlasDataLakeStorageView:
-            $ref: '#/components/schemas/DataLakeStorage'
         ApiAtlasFTSAnalyzersViewManual:
             description: Settings that describe one Atlas Search custom analyzer.
             properties:
@@ -2508,17 +2199,6 @@ components:
                     type: integer
             readOnly: true
             title: BSON Timestamp
-            type: object
-        ApiChartsDashboardImportResponseView:
-            description: Imported dashboard and associated imported items.
-            properties:
-                dashboard:
-                    $ref: '#/components/schemas/ImportedDashboard'
-                items:
-                    description: Imported items.
-                    items:
-                        $ref: '#/components/schemas/ImportedItem'
-                    type: array
             type: object
         ApiCheckpointPartView:
             description: Metadata contained in one document that describes the complete snapshot taken for this node.
@@ -3138,12 +2818,6 @@ components:
                 - eventTypeName
                 - id
             title: API User Events
-            type: object
-        ApiVersion:
-            properties:
-                version:
-                    description: Object representing a version of the Atlas Admin API.
-                    type: string
             type: object
         AppServiceAlertConfigViewForNdsGroup:
             description: App Services metric alert configuration allows to select which app service conditions and events trigger alerts and how users are notified.
@@ -6039,14 +5713,6 @@ components:
                 - $ref: '#/components/schemas/ApiStreamsAzureRegionView'
                 - $ref: '#/components/schemas/ApiStreamsGCPRegionView'
             type: object
-        BasicBSONList:
-            description: List that contains the search criteria that the query uses. To use the values in key-value pairs in these predicates requires **Project Data Access Read Only** permissions or greater. Otherwise, MongoDB Cloud redacts these values.
-            items:
-                description: List that contains the search criteria that the query uses. To use the values in key-value pairs in these predicates requires **Project Data Access Read Only** permissions or greater. Otherwise, MongoDB Cloud redacts these values.
-                readOnly: true
-                type: object
-            readOnly: true
-            type: array
         BasicDBObject:
             additionalProperties:
                 type: object
@@ -16036,49 +15702,6 @@ components:
                 - $ref: '#/components/schemas/ResourceEventViewForOrg'
                 - $ref: '#/components/schemas/AtlasResourcePolicyAuditForOrg'
             type: object
-        ExampleResourceResponse20230101:
-            properties:
-                data:
-                    description: Dummy data added as response.
-                    type: string
-                links:
-                    description: List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-                    externalDocs:
-                        description: Web Linking Specification (RFC 5988)
-                        url: https://datatracker.ietf.org/doc/html/rfc5988
-                    items:
-                        $ref: '#/components/schemas/Link'
-                    readOnly: true
-                    type: array
-            required:
-                - data
-            type: object
-        ExampleResourceResponse20230201:
-            properties:
-                additionalInfo:
-                    description: Dummy additional field added to the response.
-                    type: string
-                data:
-                    description: Array that contains the dummy metadata.
-                    items:
-                        description: Dummy data added as response.
-                        type: string
-                    type: array
-                description:
-                    description: Dummy description added as response.
-                    type: string
-                links:
-                    description: List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-                    externalDocs:
-                        description: Web Linking Specification (RFC 5988)
-                        url: https://datatracker.ietf.org/doc/html/rfc5988
-                    items:
-                        $ref: '#/components/schemas/Link'
-                    readOnly: true
-                    type: array
-            required:
-                - description
-            type: object
         ExportStatus:
             description: State of the Export Job.
             properties:
@@ -20441,38 +20064,6 @@ components:
                     type: string
             readOnly: true
             type: object
-        ImportedDashboard:
-            description: Imported dashboard.
-            properties:
-                embeddingId:
-                    description: Embedding ID of the item. This field only returns if embedding is enabled for the entity.
-                    type: string
-                id:
-                    description: ID of the dashboard.
-                    type: string
-                title:
-                    description: Title of the dashboard.
-                    type: string
-            required:
-                - id
-                - title
-            type: object
-        ImportedItem:
-            description: Imported Item.
-            properties:
-                embeddingId:
-                    description: Embedding ID of the item. This will only be returned if embedding is enabled for the entity.
-                    type: string
-                id:
-                    description: ID of the item.
-                    type: string
-                title:
-                    description: Title of the item.
-                    type: string
-            required:
-                - id
-                - title
-            type: object
         InboundControlPlaneCloudProviderIPAddresses:
             description: List of inbound IP addresses to the Atlas control plane, categorized by cloud provider. If your application allows outbound HTTP requests only to specific IP addresses, you must allow access to the following IP addresses so that your API requests can reach the Atlas control plane.
             properties:
@@ -20638,28 +20229,6 @@ components:
                     type: object
             type: object
             writeOnly: true
-        Info:
-            description: Information about the MongoDB Atlas Administration API OpenAPI Specification.
-            properties:
-                description:
-                    description: Description of the MongoDB Atlas Administration API.
-                    example: The MongoDB Atlas Administration API allows developers to manage all components in MongoDB Atlas.
-                    type: string
-                license:
-                    $ref: '#/components/schemas/License'
-                termsOfService:
-                    description: Terms of Service URL.
-                    example: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
-                    type: string
-                title:
-                    description: Title of the MongoDB Atlas Administration API.
-                    example: MongoDB Atlas Administration API.
-                    type: string
-                version:
-                    description: Version of the MongoDB Atlas Administration API.
-                    example: "2.0"
-                    type: string
-            type: object
         IngestionPipelineRun:
             description: Run details of a Data Lake Pipeline.
             properties:
@@ -22033,12 +21602,6 @@ components:
                 - name
             title: Tenant Cluster Upgrade Request
             type: object
-        LegacyRegionsConfig:
-            additionalProperties:
-                $ref: '#/components/schemas/RegionSpec'
-            description: Physical location where MongoDB Cloud provisions cluster nodes.
-            title: Region Configuration
-            type: object
         LegacyReplicationSpec:
             properties:
                 id:
@@ -22163,18 +21726,6 @@ components:
             required:
                 - eventTypeName
                 - notifications
-            type: object
-        License:
-            description: License information of the MongoDB Atlas Administration API.
-            properties:
-                name:
-                    description: Name of the license.
-                    example: CC BY-NC-SA 3.0 US
-                    type: string
-                url:
-                    description: URL of the license.
-                    example: https://creativecommons.org/licenses/by-nc-sa/3.0/us/
-                    type: string
             type: object
         Link:
             properties:
@@ -23530,42 +23081,6 @@ components:
                 - id
             title: NDS Auto Scaling Audits
             type: object
-        NDSNotificationView:
-            description: NDS notification configuration for MongoDB Cloud to send information when an event triggers an alert condition.
-            properties:
-                delayMin:
-                    description: Number of minutes that MongoDB Cloud waits after detecting an alert condition before it sends out the first notification.
-                    format: int32
-                    type: integer
-                intervalMin:
-                    description: |-
-                        Number of minutes to wait between successive notifications. MongoDB Cloud sends notifications until someone acknowledges the unacknowledged alert.
-
-                        PagerDuty, VictorOps, and OpsGenie notifications don't return this element. Configure and manage the notification interval within each of those services.
-                    format: int32
-                    minimum: 5
-                    type: integer
-                notifierId:
-                    description: The notifierId is a system-generated unique identifier assigned to each notification method. This is needed when updating third-party notifications without requiring explicit authentication credentials.
-                    example: 32b6e34b3d91647abb20e7b8
-                    pattern: ^([a-f0-9]{24})$
-                    type: string
-                severity:
-                    description: Degree of seriousness given to this notification.
-                    enum:
-                        - CRITICAL
-                        - ERROR
-                        - WARNING
-                    type: string
-                typeName:
-                    description: Human-readable label that displays the alert notification type.
-                    enum:
-                        - NDS
-                    type: string
-            required:
-                - typeName
-            title: NDS Notification
-            type: object
         NDSServerlessInstanceAuditTypeView:
             description: Unique identifier of event type.
             enum:
@@ -24291,9 +23806,6 @@ components:
             readOnly: true
             title: Number Metric Value
             type: object
-        ObjectCreated:
-            description: Created
-            type: object
         OnDemandCpsSnapshotSource:
             allOf:
                 - $ref: '#/components/schemas/IngestionSource'
@@ -24343,11 +23855,6 @@ components:
             required:
                 - type
             title: Online Archive Schedule
-            type: object
-        OpenApiInfo:
-            properties:
-                info:
-                    $ref: '#/components/schemas/Info'
             type: object
         Operator:
             description: Comparison operator to apply when checking the current metric value.
@@ -25366,30 +24873,6 @@ components:
                 - typeName
             title: PagerDuty Notification
             type: object
-        PaginatedAdvancedClusterDescriptionView:
-            properties:
-                links:
-                    description: List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-                    externalDocs:
-                        description: Web Linking Specification (RFC 5988)
-                        url: https://datatracker.ietf.org/doc/html/rfc5988
-                    items:
-                        $ref: '#/components/schemas/Link'
-                    readOnly: true
-                    type: array
-                results:
-                    description: List of returned documents that MongoDB Cloud provides when completing this request.
-                    items:
-                        $ref: '#/components/schemas/AdvancedClusterDescription'
-                    readOnly: true
-                    type: array
-                totalCount:
-                    description: Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact.
-                    format: int32
-                    minimum: 0
-                    readOnly: true
-                    type: integer
-            type: object
         PaginatedAlertConfigView:
             properties:
                 links:
@@ -25871,54 +25354,6 @@ components:
                     readOnly: true
                     type: integer
             type: object
-        PaginatedApiVersions:
-            properties:
-                links:
-                    description: List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-                    externalDocs:
-                        description: Web Linking Specification (RFC 5988)
-                        url: https://datatracker.ietf.org/doc/html/rfc5988
-                    items:
-                        $ref: '#/components/schemas/Link'
-                    readOnly: true
-                    type: array
-                results:
-                    description: List of returned documents that MongoDB Cloud provides when completing this request.
-                    items:
-                        $ref: '#/components/schemas/ApiVersion'
-                    readOnly: true
-                    type: array
-                totalCount:
-                    description: Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact.
-                    format: int32
-                    minimum: 0
-                    readOnly: true
-                    type: integer
-            type: object
-        PaginatedAppUserView:
-            properties:
-                links:
-                    description: List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-                    externalDocs:
-                        description: Web Linking Specification (RFC 5988)
-                        url: https://datatracker.ietf.org/doc/html/rfc5988
-                    items:
-                        $ref: '#/components/schemas/Link'
-                    readOnly: true
-                    type: array
-                results:
-                    description: List of returned documents that MongoDB Cloud provides when completing this request.
-                    items:
-                        $ref: '#/components/schemas/CloudAppUser'
-                    readOnly: true
-                    type: array
-                totalCount:
-                    description: Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact.
-                    format: int32
-                    minimum: 0
-                    readOnly: true
-                    type: integer
-            type: object
         PaginatedAtlasGroupView:
             properties:
                 links:
@@ -25958,30 +25393,6 @@ components:
                     description: List of returned documents that MongoDB Cloud provides when completing this request.
                     items:
                         $ref: '#/components/schemas/MdbAvailableVersion'
-                    readOnly: true
-                    type: array
-                totalCount:
-                    description: Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact.
-                    format: int32
-                    minimum: 0
-                    readOnly: true
-                    type: integer
-            type: object
-        PaginatedBackupSnapshotExportBucketView:
-            properties:
-                links:
-                    description: List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-                    externalDocs:
-                        description: Web Linking Specification (RFC 5988)
-                        url: https://datatracker.ietf.org/doc/html/rfc5988
-                    items:
-                        $ref: '#/components/schemas/Link'
-                    readOnly: true
-                    type: array
-                results:
-                    description: List of returned documents that MongoDB Cloud provides when completing this request.
-                    items:
-                        $ref: '#/components/schemas/DiskBackupSnapshotAWSExportBucketResponse'
                     readOnly: true
                     type: array
                 totalCount:
@@ -26418,30 +25829,6 @@ components:
                     description: List of returned documents that MongoDB Cloud provides when completing this request.
                     items:
                         $ref: '#/components/schemas/ThirdPartyIntegration'
-                    readOnly: true
-                    type: array
-                totalCount:
-                    description: Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact.
-                    format: int32
-                    minimum: 0
-                    readOnly: true
-                    type: integer
-            type: object
-        PaginatedLegacyClusterView:
-            properties:
-                links:
-                    description: List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-                    externalDocs:
-                        description: Web Linking Specification (RFC 5988)
-                        url: https://datatracker.ietf.org/doc/html/rfc5988
-                    items:
-                        $ref: '#/components/schemas/Link'
-                    readOnly: true
-                    type: array
-                results:
-                    description: List of returned documents that MongoDB Cloud provides when completing this request.
-                    items:
-                        $ref: '#/components/schemas/LegacyAtlasCluster'
                     readOnly: true
                     type: array
                 totalCount:
@@ -26933,28 +26320,6 @@ components:
                     minimum: 0
                     readOnly: true
                     type: integer
-            type: object
-        PartialFilter:
-            additionalProperties:
-                description: |-
-                    Rules that limit the documents that the index references to a filter expression. All MongoDB index types accept a **partialFilterExpression** option. **partialFilterExpression** can include following expressions:
-
-                    - equality (`"parameter" : "value"` or using the `$eq` operator)
-                    - `"$exists": true`
-                    , maximum: `$gt`, `$gte`, `$lt`, `$lte` comparisons
-                    - `$type`
-                    - `$and` (top-level only)
-                     This option applies to all index types.
-                type: object
-            description: |-
-                Rules that limit the documents that the index references to a filter expression. All MongoDB index types accept a **partialFilterExpression** option. **partialFilterExpression** can include following expressions:
-
-                - equality (`"parameter" : "value"` or using the `$eq` operator)
-                - `"$exists": true`
-                , maximum: `$gt`, `$gte`, `$lt`, `$lte` comparisons
-                - `$type`
-                - `$and` (top-level only)
-                 This option applies to all index types.
             type: object
         PartitionFieldView:
             description: Metadata to partition this online archive.
@@ -30341,12 +29706,6 @@ components:
             required:
                 - secretExpiresAfterHours
             type: object
-        ServiceVersionView:
-            properties:
-                gitsha:
-                    description: The service deployed gitSha.
-                    type: string
-            type: object
         ShardEntry:
             description: Sharding configuration for a collection to be sharded on the destination cluster.
             properties:
@@ -30523,18 +29882,6 @@ components:
                     description: Message describing error or state.
                     type: string
             readOnly: true
-            type: object
-        StorageEngine:
-            additionalProperties:
-                description: 'Storage engine set for the specific index. This value can be set only at creation. This option uses the following format: `"storageEngine" : { "<storage-engine-name>" : "<options>" }` MongoDB validates storage engine configuration options when creating indexes. To support replica sets with members with different storage engines, MongoDB logs these options to the oplog during replication. This option applies to all index types.'
-                externalDocs:
-                    description: MongoDB Server Storage Engines
-                    url: https://docs.mongodb.com/manual/core/storage-engines/
-                type: object
-            description: 'Storage engine set for the specific index. This value can be set only at creation. This option uses the following format: `"storageEngine" : { "<storage-engine-name>" : "<options>" }` MongoDB validates storage engine configuration options when creating indexes. To support replica sets with members with different storage engines, MongoDB logs these options to the oplog during replication. This option applies to all index types.'
-            externalDocs:
-                description: MongoDB Server Storage Engines
-                url: https://docs.mongodb.com/manual/core/storage-engines/
             type: object
         StreamConfig:
             description: Configuration options for an Atlas Stream Processing Instance.
@@ -31609,47 +30956,6 @@ components:
                     $ref: '#/components/schemas/StreamsSampleConnections'
                 streamConfig:
                     $ref: '#/components/schemas/StreamConfig'
-            type: object
-        SummaryNotification:
-            description: Summary notification configuration for MongoDB Cloud to send information when an event triggers an alert condition.
-            properties:
-                delayMin:
-                    description: Number of minutes that MongoDB Cloud waits after detecting an alert condition before it sends out the first notification.
-                    format: int32
-                    type: integer
-                emailAddress:
-                    description: |-
-                        Email address to which MongoDB Cloud sends alert notifications. The resource requires this parameter when `"notifications.[n].typeName" : "EMAIL"`. You don't need to set this value to send emails to individual or groups of MongoDB Cloud users including:
-
-                        - specific MongoDB Cloud users (`"notifications.[n].typeName" : "USER"`)
-                        - MongoDB Cloud users with specific project roles (`"notifications.[n].typeName" : "GROUP"`)
-                        - MongoDB Cloud users with specific organization roles (`"notifications.[n].typeName" : "ORG"`)
-                        - MongoDB Cloud teams (`"notifications.[n].typeName" : "TEAM"`)
-
-                        To send emails to one MongoDB Cloud user or grouping of users, set the **notifications.[n].emailEnabled** parameter.
-                    format: email
-                    type: string
-                intervalMin:
-                    description: |-
-                        Number of minutes to wait between successive notifications. MongoDB Cloud sends notifications until someone acknowledges the unacknowledged alert.
-
-                        PagerDuty, VictorOps, and OpsGenie notifications don't return this element. Configure and manage the notification interval within each of those services.
-                    format: int32
-                    minimum: 5
-                    type: integer
-                notifierId:
-                    description: The notifierId is a system-generated unique identifier assigned to each notification method. This is needed when updating third-party notifications without requiring explicit authentication credentials.
-                    example: 32b6e34b3d91647abb20e7b8
-                    pattern: ^([a-f0-9]{24})$
-                    type: string
-                typeName:
-                    description: Human-readable label that displays the alert notification type.
-                    enum:
-                        - SUMMARY
-                    type: string
-            required:
-                - typeName
-            title: Summary Notification
             type: object
         SynonymMappingStatusDetail:
             description: Contains the status of the index's synonym mappings on each search host. This field (and its subfields) only appear if the index has synonyms defined.
@@ -34038,12 +33344,6 @@ components:
             required:
                 - type
             type: object
-        Weights:
-            additionalProperties:
-                description: Relative importance to place upon provided index parameters. This object expresses this as key/value pairs of index parameter and weight to apply to that parameter. You can specify weights for some or all the indexed parameters. The weight must be an integer between 1 and 99,999. MongoDB 5.0 and later can apply **weights** to **text** indexes only.
-                type: object
-            description: Relative importance to place upon provided index parameters. This object expresses this as key/value pairs of index parameter and weight to apply to that parameter. You can specify weights for some or all the indexed parameters. The weight must be an integer between 1 and 99,999. MongoDB 5.0 and later can apply **weights** to **text** indexes only.
-            type: object
         X509Certificate:
             properties:
                 notAfter:
@@ -34715,7 +34015,7 @@ info:
     termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
     title: MongoDB Atlas Administration API
     version: "2.0"
-    x-xgen-sha: d71f1dfdf088979b19632081af21ff0610b315c0
+    x-xgen-sha: f586267786d3a04e970a5d6234e75b4a5b4e9cf4
 openapi: 3.0.1
 paths:
     /api/atlas/v2:
