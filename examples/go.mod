@@ -1,6 +1,6 @@
 module go.mongodb.org/atlas-sdk/v20240805005/examples
 
-go 1.22.0
+go 1.23.0
 
 toolchain go1.23.1
 
@@ -11,6 +11,8 @@ require (
 	github.com/mongodb-forks/digest v1.1.0
 	go.mongodb.org/atlas-sdk/v20240805005 v20240805005.1.0
 )
+
+require golang.org/x/oauth2 v0.28.0 // indirect
 
 require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
