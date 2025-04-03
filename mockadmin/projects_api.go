@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312001/admin"
+	admin "go.mongodb.org/atlas-sdk/v20250312002/admin"
 
 	http "net/http"
 
@@ -558,42 +558,33 @@ func (_c *ProjectsApi_DeleteProject_Call) RunAndReturn(run func(context.Context,
 }
 
 // DeleteProjectExecute provides a mock function with given fields: r
-func (_m *ProjectsApi) DeleteProjectExecute(r admin.DeleteProjectApiRequest) (any, *http.Response, error) {
+func (_m *ProjectsApi) DeleteProjectExecute(r admin.DeleteProjectApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteProjectExecute")
 	}
 
-	var r0 any
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteProjectApiRequest) (any, *http.Response, error)); ok {
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.DeleteProjectApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteProjectApiRequest) any); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteProjectApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(any)
+			r0 = ret.Get(0).(*http.Response)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeleteProjectApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.DeleteProjectApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
+		r1 = ret.Error(1)
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.DeleteProjectApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
+	return r0, r1
 }
 
 // ProjectsApi_DeleteProjectExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteProjectExecute'
@@ -614,12 +605,12 @@ func (_c *ProjectsApi_DeleteProjectExecute_Call) Run(run func(r admin.DeleteProj
 	return _c
 }
 
-func (_c *ProjectsApi_DeleteProjectExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *ProjectsApi_DeleteProjectExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
+func (_c *ProjectsApi_DeleteProjectExecute_Call) Return(_a0 *http.Response, _a1 error) *ProjectsApi_DeleteProjectExecute_Call {
+	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *ProjectsApi_DeleteProjectExecute_Call) RunAndReturn(run func(admin.DeleteProjectApiRequest) (any, *http.Response, error)) *ProjectsApi_DeleteProjectExecute_Call {
+func (_c *ProjectsApi_DeleteProjectExecute_Call) RunAndReturn(run func(admin.DeleteProjectApiRequest) (*http.Response, error)) *ProjectsApi_DeleteProjectExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -673,42 +664,33 @@ func (_c *ProjectsApi_DeleteProjectInvitation_Call) RunAndReturn(run func(contex
 }
 
 // DeleteProjectInvitationExecute provides a mock function with given fields: r
-func (_m *ProjectsApi) DeleteProjectInvitationExecute(r admin.DeleteProjectInvitationApiRequest) (any, *http.Response, error) {
+func (_m *ProjectsApi) DeleteProjectInvitationExecute(r admin.DeleteProjectInvitationApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteProjectInvitationExecute")
 	}
 
-	var r0 any
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteProjectInvitationApiRequest) (any, *http.Response, error)); ok {
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.DeleteProjectInvitationApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteProjectInvitationApiRequest) any); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteProjectInvitationApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(any)
+			r0 = ret.Get(0).(*http.Response)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeleteProjectInvitationApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.DeleteProjectInvitationApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
+		r1 = ret.Error(1)
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.DeleteProjectInvitationApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
+	return r0, r1
 }
 
 // ProjectsApi_DeleteProjectInvitationExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteProjectInvitationExecute'
@@ -729,12 +711,12 @@ func (_c *ProjectsApi_DeleteProjectInvitationExecute_Call) Run(run func(r admin.
 	return _c
 }
 
-func (_c *ProjectsApi_DeleteProjectInvitationExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *ProjectsApi_DeleteProjectInvitationExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
+func (_c *ProjectsApi_DeleteProjectInvitationExecute_Call) Return(_a0 *http.Response, _a1 error) *ProjectsApi_DeleteProjectInvitationExecute_Call {
+	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *ProjectsApi_DeleteProjectInvitationExecute_Call) RunAndReturn(run func(admin.DeleteProjectInvitationApiRequest) (any, *http.Response, error)) *ProjectsApi_DeleteProjectInvitationExecute_Call {
+func (_c *ProjectsApi_DeleteProjectInvitationExecute_Call) RunAndReturn(run func(admin.DeleteProjectInvitationApiRequest) (*http.Response, error)) *ProjectsApi_DeleteProjectInvitationExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -835,42 +817,33 @@ func (_c *ProjectsApi_DeleteProjectLimit_Call) RunAndReturn(run func(context.Con
 }
 
 // DeleteProjectLimitExecute provides a mock function with given fields: r
-func (_m *ProjectsApi) DeleteProjectLimitExecute(r admin.DeleteProjectLimitApiRequest) (any, *http.Response, error) {
+func (_m *ProjectsApi) DeleteProjectLimitExecute(r admin.DeleteProjectLimitApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteProjectLimitExecute")
 	}
 
-	var r0 any
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteProjectLimitApiRequest) (any, *http.Response, error)); ok {
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.DeleteProjectLimitApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteProjectLimitApiRequest) any); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteProjectLimitApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(any)
+			r0 = ret.Get(0).(*http.Response)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeleteProjectLimitApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.DeleteProjectLimitApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
+		r1 = ret.Error(1)
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.DeleteProjectLimitApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
+	return r0, r1
 }
 
 // ProjectsApi_DeleteProjectLimitExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteProjectLimitExecute'
@@ -891,12 +864,12 @@ func (_c *ProjectsApi_DeleteProjectLimitExecute_Call) Run(run func(r admin.Delet
 	return _c
 }
 
-func (_c *ProjectsApi_DeleteProjectLimitExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *ProjectsApi_DeleteProjectLimitExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
+func (_c *ProjectsApi_DeleteProjectLimitExecute_Call) Return(_a0 *http.Response, _a1 error) *ProjectsApi_DeleteProjectLimitExecute_Call {
+	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *ProjectsApi_DeleteProjectLimitExecute_Call) RunAndReturn(run func(admin.DeleteProjectLimitApiRequest) (any, *http.Response, error)) *ProjectsApi_DeleteProjectLimitExecute_Call {
+func (_c *ProjectsApi_DeleteProjectLimitExecute_Call) RunAndReturn(run func(admin.DeleteProjectLimitApiRequest) (*http.Response, error)) *ProjectsApi_DeleteProjectLimitExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
