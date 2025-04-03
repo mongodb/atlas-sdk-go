@@ -5,10 +5,36 @@ on:
     branches:
       - main
     paths: 
-      - "internal/core/version.go"
+      - "**/*.go"  # Trigger on any Go file changes
   
 jobs:
+  check-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      is_version_bump: ${{ steps.check-commit.outputs.is_version_bump }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Check if this is a version bump commit
+        id: check-commit
+        run: |
+          if [[ "${{ github.event.head_commit.message }}" == "chore: bump minor version to"* ]]; then
+            echo "is_version_bump=true" >> $GITHUB_OUTPUT
+          else
+            echo "is_version_bump=false" >> $GITHUB_OUTPUT
+          fi
+      - name: Check for non-breaking changes
+        if: steps.check-commit.outputs.is_version_bump == 'false'
+        working-directory: ./tools
+        run: |
+          ./releaser/scripts/breaking-changes.sh
+          ./releaser/scripts/update-minor-version.sh
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   release:
+    needs: check-changes
+    if: needs.check-changes.outputs.is_version_bump == 'false'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
