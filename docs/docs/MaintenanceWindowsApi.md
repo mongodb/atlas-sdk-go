@@ -328,7 +328,7 @@ Name | Type | Description  | Notes
 
 ## UpdateMaintenanceWindow
 
-> any UpdateMaintenanceWindow(ctx, groupId, groupMaintenanceWindow GroupMaintenanceWindow).Execute()
+> UpdateMaintenanceWindow(ctx, groupId, groupMaintenanceWindow GroupMaintenanceWindow).Execute()
 
 Update Maintenance Window for One Project
 
@@ -359,7 +359,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     groupMaintenanceWindow := *openapiclient.NewGroupMaintenanceWindow(int(123)) // GroupMaintenanceWindow | 
 
-    resp, r, err := sdk.MaintenanceWindowsApi.UpdateMaintenanceWindow(context.Background(), groupId, &groupMaintenanceWindow).Execute()
+    r, err := sdk.MaintenanceWindowsApi.UpdateMaintenanceWindow(context.Background(), groupId, &groupMaintenanceWindow).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MaintenanceWindowsApi.UpdateMaintenanceWindow`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -368,8 +368,6 @@ func main() {
         }
         return
     }
-    // response from `UpdateMaintenanceWindow`: any
-    fmt.Fprintf(os.Stdout, "Response from `MaintenanceWindowsApi.UpdateMaintenanceWindow`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -393,7 +391,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**any**
+ (empty response body)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

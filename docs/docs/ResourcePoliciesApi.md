@@ -105,7 +105,7 @@ Name | Type | Description  | Notes
 
 ## DeleteAtlasResourcePolicy
 
-> any DeleteAtlasResourcePolicy(ctx, orgId, resourcePolicyId).Execute()
+> DeleteAtlasResourcePolicy(ctx, orgId, resourcePolicyId).Execute()
 
 Delete one Atlas Resource Policy
 
@@ -136,7 +136,7 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     resourcePolicyId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.ResourcePoliciesApi.DeleteAtlasResourcePolicy(context.Background(), orgId, resourcePolicyId).Execute()
+    r, err := sdk.ResourcePoliciesApi.DeleteAtlasResourcePolicy(context.Background(), orgId, resourcePolicyId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ResourcePoliciesApi.DeleteAtlasResourcePolicy`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -145,8 +145,6 @@ func main() {
         }
         return
     }
-    // response from `DeleteAtlasResourcePolicy`: any
-    fmt.Fprintf(os.Stdout, "Response from `ResourcePoliciesApi.DeleteAtlasResourcePolicy`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -171,7 +169,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**any**
+ (empty response body)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

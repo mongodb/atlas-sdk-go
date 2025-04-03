@@ -46,8 +46,8 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     thirdPartyIntegration := *openapiclient.NewThirdPartyIntegration() // ThirdPartyIntegration | 
     includeCount := true // bool |  (optional) (default to true)
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
 
     resp, r, err := sdk.ThirdPartyIntegrationsApi.CreateThirdPartyIntegration(context.Background(), integrationType, groupId, &thirdPartyIntegration).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
@@ -105,7 +105,7 @@ Name | Type | Description  | Notes
 
 ## DeleteThirdPartyIntegration
 
-> any DeleteThirdPartyIntegration(ctx, integrationType, groupId).Execute()
+> DeleteThirdPartyIntegration(ctx, integrationType, groupId).Execute()
 
 Remove One Third-Party Service Integration
 
@@ -136,7 +136,7 @@ func main() {
     integrationType := "integrationType_example" // string | 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.ThirdPartyIntegrationsApi.DeleteThirdPartyIntegration(context.Background(), integrationType, groupId).Execute()
+    r, err := sdk.ThirdPartyIntegrationsApi.DeleteThirdPartyIntegration(context.Background(), integrationType, groupId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ThirdPartyIntegrationsApi.DeleteThirdPartyIntegration`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -145,8 +145,6 @@ func main() {
         }
         return
     }
-    // response from `DeleteThirdPartyIntegration`: any
-    fmt.Fprintf(os.Stdout, "Response from `ThirdPartyIntegrationsApi.DeleteThirdPartyIntegration`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -171,7 +169,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**any**
+ (empty response body)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -301,8 +299,8 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     includeCount := true // bool |  (optional) (default to true)
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
 
     resp, r, err := sdk.ThirdPartyIntegrationsApi.ListThirdPartyIntegrations(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
@@ -389,8 +387,8 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     thirdPartyIntegration := *openapiclient.NewThirdPartyIntegration() // ThirdPartyIntegration | 
     includeCount := true // bool |  (optional) (default to true)
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
 
     resp, r, err := sdk.ThirdPartyIntegrationsApi.UpdateThirdPartyIntegration(context.Background(), integrationType, groupId, &thirdPartyIntegration).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {

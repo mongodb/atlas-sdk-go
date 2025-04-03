@@ -297,8 +297,8 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     cloudProvider := "cloudProvider_example" // string | 
     includeCount := true // bool |  (optional) (default to true)
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
 
     resp, r, err := sdk.EncryptionAtRestUsingCustomerKeyManagementApi.GetEncryptionAtRestPrivateEndpointsForCloudProvider(context.Background(), groupId, cloudProvider).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
@@ -355,7 +355,7 @@ Name | Type | Description  | Notes
 
 ## RequestEncryptionAtRestPrivateEndpointDeletion
 
-> any RequestEncryptionAtRestPrivateEndpointDeletion(ctx, groupId, cloudProvider, endpointId).Execute()
+> RequestEncryptionAtRestPrivateEndpointDeletion(ctx, groupId, cloudProvider, endpointId).Execute()
 
 Delete Private Endpoint for Encryption at Rest Using Customer Key Management
 
@@ -387,7 +387,7 @@ func main() {
     cloudProvider := "cloudProvider_example" // string | 
     endpointId := "endpointId_example" // string | 
 
-    resp, r, err := sdk.EncryptionAtRestUsingCustomerKeyManagementApi.RequestEncryptionAtRestPrivateEndpointDeletion(context.Background(), groupId, cloudProvider, endpointId).Execute()
+    r, err := sdk.EncryptionAtRestUsingCustomerKeyManagementApi.RequestEncryptionAtRestPrivateEndpointDeletion(context.Background(), groupId, cloudProvider, endpointId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EncryptionAtRestUsingCustomerKeyManagementApi.RequestEncryptionAtRestPrivateEndpointDeletion`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -396,8 +396,6 @@ func main() {
         }
         return
     }
-    // response from `RequestEncryptionAtRestPrivateEndpointDeletion`: any
-    fmt.Fprintf(os.Stdout, "Response from `EncryptionAtRestUsingCustomerKeyManagementApi.RequestEncryptionAtRestPrivateEndpointDeletion`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -424,7 +422,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**any**
+ (empty response body)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

@@ -38,7 +38,7 @@ Method | HTTP request | Description
 
 ## AcceptVpcPeeringConnection
 
-> any AcceptVpcPeeringConnection(ctx, groupId, id, vPCPeeringActionChallenge VPCPeeringActionChallenge).Execute()
+> AcceptVpcPeeringConnection(ctx, groupId, id, vPCPeeringActionChallenge VPCPeeringActionChallenge).Execute()
 
 Requests the acceptance of an incoming VPC Peering connection.
 
@@ -70,7 +70,7 @@ func main() {
     id := "id_example" // string | 
     vPCPeeringActionChallenge := *openapiclient.NewVPCPeeringActionChallenge() // VPCPeeringActionChallenge | 
 
-    resp, r, err := sdk.StreamsApi.AcceptVpcPeeringConnection(context.Background(), groupId, id, &vPCPeeringActionChallenge).Execute()
+    r, err := sdk.StreamsApi.AcceptVpcPeeringConnection(context.Background(), groupId, id, &vPCPeeringActionChallenge).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.AcceptVpcPeeringConnection`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -79,8 +79,6 @@ func main() {
         }
         return
     }
-    // response from `AcceptVpcPeeringConnection`: any
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.AcceptVpcPeeringConnection`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -106,7 +104,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**any**
+ (empty response body)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -539,7 +537,7 @@ Name | Type | Description  | Notes
 
 ## DeletePrivateLinkConnection
 
-> any DeletePrivateLinkConnection(ctx, groupId, connectionId).Execute()
+> DeletePrivateLinkConnection(ctx, groupId, connectionId).Execute()
 
 Delete One Private Link connection
 
@@ -570,7 +568,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     connectionId := "connectionId_example" // string | 
 
-    resp, r, err := sdk.StreamsApi.DeletePrivateLinkConnection(context.Background(), groupId, connectionId).Execute()
+    r, err := sdk.StreamsApi.DeletePrivateLinkConnection(context.Background(), groupId, connectionId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.DeletePrivateLinkConnection`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -579,8 +577,6 @@ func main() {
         }
         return
     }
-    // response from `DeletePrivateLinkConnection`: any
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.DeletePrivateLinkConnection`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -605,7 +601,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**any**
+ (empty response body)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -622,7 +618,7 @@ Name | Type | Description  | Notes
 
 ## DeleteStreamConnection
 
-> any DeleteStreamConnection(ctx, groupId, tenantName, connectionName).Execute()
+> DeleteStreamConnection(ctx, groupId, tenantName, connectionName).Execute()
 
 Delete One Stream Connection
 
@@ -654,7 +650,7 @@ func main() {
     tenantName := "tenantName_example" // string | 
     connectionName := "connectionName_example" // string | 
 
-    resp, r, err := sdk.StreamsApi.DeleteStreamConnection(context.Background(), groupId, tenantName, connectionName).Execute()
+    r, err := sdk.StreamsApi.DeleteStreamConnection(context.Background(), groupId, tenantName, connectionName).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.DeleteStreamConnection`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -663,8 +659,6 @@ func main() {
         }
         return
     }
-    // response from `DeleteStreamConnection`: any
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.DeleteStreamConnection`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -691,7 +685,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**any**
+ (empty response body)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -708,7 +702,7 @@ Name | Type | Description  | Notes
 
 ## DeleteStreamInstance
 
-> any DeleteStreamInstance(ctx, groupId, tenantName).Execute()
+> DeleteStreamInstance(ctx, groupId, tenantName).Execute()
 
 Delete One Stream Instance
 
@@ -739,7 +733,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     tenantName := "tenantName_example" // string | 
 
-    resp, r, err := sdk.StreamsApi.DeleteStreamInstance(context.Background(), groupId, tenantName).Execute()
+    r, err := sdk.StreamsApi.DeleteStreamInstance(context.Background(), groupId, tenantName).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.DeleteStreamInstance`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -748,8 +742,6 @@ func main() {
         }
         return
     }
-    // response from `DeleteStreamInstance`: any
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.DeleteStreamInstance`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -774,7 +766,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**any**
+ (empty response body)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -875,7 +867,7 @@ Name | Type | Description  | Notes
 
 ## DeleteVpcPeeringConnection
 
-> any DeleteVpcPeeringConnection(ctx, groupId, id).Execute()
+> DeleteVpcPeeringConnection(ctx, groupId, id).Execute()
 
 Deletes an incoming VPC Peering connection.
 
@@ -906,7 +898,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     id := "id_example" // string | 
 
-    resp, r, err := sdk.StreamsApi.DeleteVpcPeeringConnection(context.Background(), groupId, id).Execute()
+    r, err := sdk.StreamsApi.DeleteVpcPeeringConnection(context.Background(), groupId, id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.DeleteVpcPeeringConnection`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -915,8 +907,6 @@ func main() {
         }
         return
     }
-    // response from `DeleteVpcPeeringConnection`: any
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.DeleteVpcPeeringConnection`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -941,7 +931,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**any**
+ (empty response body)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -1158,8 +1148,8 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
 
     r, err := sdk.StreamsApi.GetActiveVpcPeeringConnections(context.Background(), groupId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
@@ -1581,8 +1571,8 @@ func main() {
 
     requesterAccountId := "requesterAccountId_example" // string | 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
 
     r, err := sdk.StreamsApi.GetVpcPeeringConnections(context.Background(), groupId).RequesterAccountId(requesterAccountId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
@@ -1664,8 +1654,8 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
 
     resp, r, err := sdk.StreamsApi.ListPrivateLinkConnections(context.Background(), groupId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
@@ -1749,8 +1739,8 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     tenantName := "tenantName_example" // string | 
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
 
     resp, r, err := sdk.StreamsApi.ListStreamConnections(context.Background(), groupId, tenantName).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
@@ -1835,8 +1825,8 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
 
     resp, r, err := sdk.StreamsApi.ListStreamInstances(context.Background(), groupId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
@@ -1920,8 +1910,8 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     tenantName := "tenantName_example" // string | 
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
     includeCount := true // bool |  (optional) (default to true)
 
     resp, r, err := sdk.StreamsApi.ListStreamProcessors(context.Background(), groupId, tenantName).ItemsPerPage(itemsPerPage).PageNum(pageNum).IncludeCount(includeCount).Execute()
@@ -2067,7 +2057,7 @@ Name | Type | Description  | Notes
 
 ## RejectVpcPeeringConnection
 
-> any RejectVpcPeeringConnection(ctx, groupId, id).Execute()
+> RejectVpcPeeringConnection(ctx, groupId, id).Execute()
 
 Requests the rejection of an incoming VPC Peering connection.
 
@@ -2098,7 +2088,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     id := "id_example" // string | 
 
-    resp, r, err := sdk.StreamsApi.RejectVpcPeeringConnection(context.Background(), groupId, id).Execute()
+    r, err := sdk.StreamsApi.RejectVpcPeeringConnection(context.Background(), groupId, id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.RejectVpcPeeringConnection`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -2107,8 +2097,6 @@ func main() {
         }
         return
     }
-    // response from `RejectVpcPeeringConnection`: any
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.RejectVpcPeeringConnection`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -2133,7 +2121,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**any**
+ (empty response body)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -2150,7 +2138,7 @@ Name | Type | Description  | Notes
 
 ## StartStreamProcessor
 
-> any StartStreamProcessor(ctx, groupId, tenantName, processorName).Execute()
+> StartStreamProcessor(ctx, groupId, tenantName, processorName).Execute()
 
 Start One Stream Processor
 
@@ -2182,7 +2170,7 @@ func main() {
     tenantName := "tenantName_example" // string | 
     processorName := "processorName_example" // string | 
 
-    resp, r, err := sdk.StreamsApi.StartStreamProcessor(context.Background(), groupId, tenantName, processorName).Execute()
+    r, err := sdk.StreamsApi.StartStreamProcessor(context.Background(), groupId, tenantName, processorName).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.StartStreamProcessor`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -2191,8 +2179,6 @@ func main() {
         }
         return
     }
-    // response from `StartStreamProcessor`: any
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.StartStreamProcessor`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -2219,7 +2205,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**any**
+ (empty response body)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -2236,7 +2222,7 @@ Name | Type | Description  | Notes
 
 ## StopStreamProcessor
 
-> any StopStreamProcessor(ctx, groupId, tenantName, processorName).Execute()
+> StopStreamProcessor(ctx, groupId, tenantName, processorName).Execute()
 
 Stop One Stream Processor
 
@@ -2268,7 +2254,7 @@ func main() {
     tenantName := "tenantName_example" // string | 
     processorName := "processorName_example" // string | 
 
-    resp, r, err := sdk.StreamsApi.StopStreamProcessor(context.Background(), groupId, tenantName, processorName).Execute()
+    r, err := sdk.StreamsApi.StopStreamProcessor(context.Background(), groupId, tenantName, processorName).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.StopStreamProcessor`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -2277,8 +2263,6 @@ func main() {
         }
         return
     }
-    // response from `StopStreamProcessor`: any
-    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.StopStreamProcessor`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -2305,7 +2289,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**any**
+ (empty response body)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

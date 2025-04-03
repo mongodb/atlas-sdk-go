@@ -270,7 +270,7 @@ Name | Type | Description  | Notes
 
 ## DeleteTeam
 
-> any DeleteTeam(ctx, orgId, teamId).Execute()
+> DeleteTeam(ctx, orgId, teamId).Execute()
 
 Remove One Team from One Organization
 
@@ -301,7 +301,7 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     teamId := "teamId_example" // string | 
 
-    resp, r, err := sdk.TeamsApi.DeleteTeam(context.Background(), orgId, teamId).Execute()
+    r, err := sdk.TeamsApi.DeleteTeam(context.Background(), orgId, teamId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.DeleteTeam`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -310,8 +310,6 @@ func main() {
         }
         return
     }
-    // response from `DeleteTeam`: any
-    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.DeleteTeam`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -336,7 +334,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**any**
+ (empty response body)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -548,9 +546,9 @@ func main() {
     }
 
     orgId := "4888442a3354817a7320eb61" // string | 
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
     includeCount := true // bool |  (optional) (default to true)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    pageNum := int(56) // int |  (optional) (default to 1)
 
     resp, r, err := sdk.TeamsApi.ListOrganizationTeams(context.Background(), orgId).ItemsPerPage(itemsPerPage).IncludeCount(includeCount).PageNum(pageNum).Execute()
     if err != nil {
@@ -635,8 +633,8 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     includeCount := true // bool |  (optional) (default to true)
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
 
     resp, r, err := sdk.TeamsApi.ListProjectTeams(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {

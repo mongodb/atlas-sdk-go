@@ -269,7 +269,7 @@ Name | Type | Description  | Notes
 
 ## DeletePeeringContainer
 
-> any DeletePeeringContainer(ctx, groupId, containerId).Execute()
+> DeletePeeringContainer(ctx, groupId, containerId).Execute()
 
 Remove One Network Peering Container
 
@@ -300,7 +300,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     containerId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.NetworkPeeringApi.DeletePeeringContainer(context.Background(), groupId, containerId).Execute()
+    r, err := sdk.NetworkPeeringApi.DeletePeeringContainer(context.Background(), groupId, containerId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringApi.DeletePeeringContainer`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -309,8 +309,6 @@ func main() {
         }
         return
     }
-    // response from `DeletePeeringContainer`: any
-    fmt.Fprintf(os.Stdout, "Response from `NetworkPeeringApi.DeletePeeringContainer`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -335,7 +333,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**any**
+ (empty response body)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -630,8 +628,8 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     includeCount := true // bool |  (optional) (default to true)
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
     providerName := "providerName_example" // string |  (optional) (default to "AWS")
 
     resp, r, err := sdk.NetworkPeeringApi.ListPeeringConnections(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).ProviderName(providerName).Execute()
@@ -719,8 +717,8 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     providerName := "providerName_example" // string |  (default to "AWS")
     includeCount := true // bool |  (optional) (default to true)
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
 
     resp, r, err := sdk.NetworkPeeringApi.ListPeeringContainerByCloudProvider(context.Background(), groupId).ProviderName(providerName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
@@ -806,8 +804,8 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     includeCount := true // bool |  (optional) (default to true)
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
 
     resp, r, err := sdk.NetworkPeeringApi.ListPeeringContainers(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {

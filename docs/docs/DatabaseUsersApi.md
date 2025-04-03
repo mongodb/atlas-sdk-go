@@ -96,7 +96,7 @@ Name | Type | Description  | Notes
 
 ## DeleteDatabaseUser
 
-> any DeleteDatabaseUser(ctx, groupId, databaseName, username).Execute()
+> DeleteDatabaseUser(ctx, groupId, databaseName, username).Execute()
 
 Remove One Database User from One Project
 
@@ -128,7 +128,7 @@ func main() {
     databaseName := "databaseName_example" // string | 
     username := "SCRAM-SHA: dylan or AWS IAM: arn:aws:iam::123456789012:user/sales/enterprise/DylanBloggs or x.509/LDAP: CN=Dylan Bloggs,OU=Enterprise,OU=Sales,DC=Example,DC=COM or OIDC: IdPIdentifier/IdPGroupName" // string | 
 
-    resp, r, err := sdk.DatabaseUsersApi.DeleteDatabaseUser(context.Background(), groupId, databaseName, username).Execute()
+    r, err := sdk.DatabaseUsersApi.DeleteDatabaseUser(context.Background(), groupId, databaseName, username).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabaseUsersApi.DeleteDatabaseUser`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -137,8 +137,6 @@ func main() {
         }
         return
     }
-    // response from `DeleteDatabaseUser`: any
-    fmt.Fprintf(os.Stdout, "Response from `DatabaseUsersApi.DeleteDatabaseUser`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -165,7 +163,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**any**
+ (empty response body)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -298,8 +296,8 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     includeCount := true // bool |  (optional) (default to true)
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
 
     resp, r, err := sdk.DatabaseUsersApi.ListDatabaseUsers(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {

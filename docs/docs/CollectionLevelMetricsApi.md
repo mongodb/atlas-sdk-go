@@ -215,7 +215,7 @@ Name | Type | Description  | Notes
 
 ## GetCollStatsLatencyNamespaceMetrics
 
-> any GetCollStatsLatencyNamespaceMetrics(ctx, groupId).Execute()
+> GetCollStatsLatencyNamespaceMetrics(ctx, groupId).Execute()
 
 Return all metric names
 
@@ -245,7 +245,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.CollectionLevelMetricsApi.GetCollStatsLatencyNamespaceMetrics(context.Background(), groupId).Execute()
+    r, err := sdk.CollectionLevelMetricsApi.GetCollStatsLatencyNamespaceMetrics(context.Background(), groupId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CollectionLevelMetricsApi.GetCollStatsLatencyNamespaceMetrics`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -254,8 +254,6 @@ func main() {
         }
         return
     }
-    // response from `GetCollStatsLatencyNamespaceMetrics`: any
-    fmt.Fprintf(os.Stdout, "Response from `CollectionLevelMetricsApi.GetCollStatsLatencyNamespaceMetrics`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -278,7 +276,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**any**
+ (empty response body)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

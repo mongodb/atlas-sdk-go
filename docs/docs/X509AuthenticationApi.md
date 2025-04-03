@@ -208,8 +208,8 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     username := "username_example" // string | 
     includeCount := true // bool |  (optional) (default to true)
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
 
     resp, r, err := sdk.X509AuthenticationApi.ListDatabaseUserCertificates(context.Background(), groupId, username).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {

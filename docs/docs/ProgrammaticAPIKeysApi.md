@@ -23,7 +23,7 @@ Method | HTTP request | Description
 
 ## AddProjectApiKey
 
-> any AddProjectApiKey(ctx, groupId, apiUserId, userAccessRoleAssignment []UserAccessRoleAssignment).Execute()
+> AddProjectApiKey(ctx, groupId, apiUserId, userAccessRoleAssignment []UserAccessRoleAssignment).Execute()
 
 Assign One Organization API Key to One Project
 
@@ -55,7 +55,7 @@ func main() {
     apiUserId := "apiUserId_example" // string | 
     userAccessRoleAssignment := []openapiclient.UserAccessRoleAssignment{*openapiclient.NewUserAccessRoleAssignment()} // []UserAccessRoleAssignment | 
 
-    resp, r, err := sdk.ProgrammaticAPIKeysApi.AddProjectApiKey(context.Background(), groupId, apiUserId, &userAccessRoleAssignment).Execute()
+    r, err := sdk.ProgrammaticAPIKeysApi.AddProjectApiKey(context.Background(), groupId, apiUserId, &userAccessRoleAssignment).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.AddProjectApiKey`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -64,8 +64,6 @@ func main() {
         }
         return
     }
-    // response from `AddProjectApiKey`: any
-    fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.AddProjectApiKey`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -91,7 +89,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**any**
+ (empty response body)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -222,8 +220,8 @@ func main() {
     apiUserId := "apiUserId_example" // string | 
     userAccessListRequest := []openapiclient.UserAccessListRequest{*openapiclient.NewUserAccessListRequest()} // []UserAccessListRequest | 
     includeCount := true // bool |  (optional) (default to true)
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
 
     resp, r, err := sdk.ProgrammaticAPIKeysApi.CreateApiKeyAccessList(context.Background(), orgId, apiUserId, &userAccessListRequest).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
@@ -363,7 +361,7 @@ Name | Type | Description  | Notes
 
 ## DeleteApiKey
 
-> any DeleteApiKey(ctx, orgId, apiUserId).Execute()
+> DeleteApiKey(ctx, orgId, apiUserId).Execute()
 
 Remove One Organization API Key
 
@@ -394,7 +392,7 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     apiUserId := "apiUserId_example" // string | 
 
-    resp, r, err := sdk.ProgrammaticAPIKeysApi.DeleteApiKey(context.Background(), orgId, apiUserId).Execute()
+    r, err := sdk.ProgrammaticAPIKeysApi.DeleteApiKey(context.Background(), orgId, apiUserId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.DeleteApiKey`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -403,8 +401,6 @@ func main() {
         }
         return
     }
-    // response from `DeleteApiKey`: any
-    fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.DeleteApiKey`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -429,7 +425,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**any**
+ (empty response body)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -446,7 +442,7 @@ Name | Type | Description  | Notes
 
 ## DeleteApiKeyAccessListEntry
 
-> any DeleteApiKeyAccessListEntry(ctx, orgId, apiUserId, ipAddress).Execute()
+> DeleteApiKeyAccessListEntry(ctx, orgId, apiUserId, ipAddress).Execute()
 
 Remove One Access List Entry for One Organization API Key
 
@@ -478,7 +474,7 @@ func main() {
     apiUserId := "apiUserId_example" // string | 
     ipAddress := "192.0.2.0%2F24" // string | 
 
-    resp, r, err := sdk.ProgrammaticAPIKeysApi.DeleteApiKeyAccessListEntry(context.Background(), orgId, apiUserId, ipAddress).Execute()
+    r, err := sdk.ProgrammaticAPIKeysApi.DeleteApiKeyAccessListEntry(context.Background(), orgId, apiUserId, ipAddress).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.DeleteApiKeyAccessListEntry`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -487,8 +483,6 @@ func main() {
         }
         return
     }
-    // response from `DeleteApiKeyAccessListEntry`: any
-    fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.DeleteApiKeyAccessListEntry`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -515,7 +509,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**any**
+ (empty response body)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -732,8 +726,8 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     apiUserId := "apiUserId_example" // string | 
     includeCount := true // bool |  (optional) (default to true)
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
 
     resp, r, err := sdk.ProgrammaticAPIKeysApi.ListApiKeyAccessListsEntries(context.Background(), orgId, apiUserId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
@@ -820,8 +814,8 @@ func main() {
 
     orgId := "4888442a3354817a7320eb61" // string | 
     includeCount := true // bool |  (optional) (default to true)
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
 
     resp, r, err := sdk.ProgrammaticAPIKeysApi.ListApiKeys(context.Background(), orgId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
@@ -906,8 +900,8 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     includeCount := true // bool |  (optional) (default to true)
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
 
     resp, r, err := sdk.ProgrammaticAPIKeysApi.ListProjectApiKeys(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
@@ -962,7 +956,7 @@ Name | Type | Description  | Notes
 
 ## RemoveProjectApiKey
 
-> any RemoveProjectApiKey(ctx, groupId, apiUserId).Execute()
+> RemoveProjectApiKey(ctx, groupId, apiUserId).Execute()
 
 Unassign One Organization API Key from One Project
 
@@ -993,7 +987,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     apiUserId := "apiUserId_example" // string | 
 
-    resp, r, err := sdk.ProgrammaticAPIKeysApi.RemoveProjectApiKey(context.Background(), groupId, apiUserId).Execute()
+    r, err := sdk.ProgrammaticAPIKeysApi.RemoveProjectApiKey(context.Background(), groupId, apiUserId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.RemoveProjectApiKey`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -1002,8 +996,6 @@ func main() {
         }
         return
     }
-    // response from `RemoveProjectApiKey`: any
-    fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.RemoveProjectApiKey`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1028,7 +1020,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**any**
+ (empty response body)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -1161,8 +1153,8 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     apiUserId := "apiUserId_example" // string | 
     updateAtlasProjectApiKey := *openapiclient.NewUpdateAtlasProjectApiKey() // UpdateAtlasProjectApiKey | 
-    pageNum := int(1) // int |  (optional) (default to 1)
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
     includeCount := true // bool |  (optional) (default to true)
 
     resp, r, err := sdk.ProgrammaticAPIKeysApi.UpdateApiKeyRoles(context.Background(), groupId, apiUserId, &updateAtlasProjectApiKey).PageNum(pageNum).ItemsPerPage(itemsPerPage).IncludeCount(includeCount).Execute()

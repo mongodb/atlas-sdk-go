@@ -230,8 +230,8 @@ func main() {
     clientId := "mdb_sa_id_1234567890abcdef12345678" // string | 
     serviceAccountIPAccessListEntry := []openapiclient.ServiceAccountIPAccessListEntry{*openapiclient.NewServiceAccountIPAccessListEntry()} // []ServiceAccountIPAccessListEntry | 
     includeCount := true // bool |  (optional) (default to true)
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
 
     resp, r, err := sdk.ServiceAccountsApi.CreateProjectServiceAccountAccessList(context.Background(), groupId, clientId, &serviceAccountIPAccessListEntry).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
@@ -488,8 +488,8 @@ func main() {
     clientId := "mdb_sa_id_1234567890abcdef12345678" // string | 
     serviceAccountIPAccessListEntry := []openapiclient.ServiceAccountIPAccessListEntry{*openapiclient.NewServiceAccountIPAccessListEntry()} // []ServiceAccountIPAccessListEntry | 
     includeCount := true // bool |  (optional) (default to true)
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
 
     resp, r, err := sdk.ServiceAccountsApi.CreateServiceAccountAccessList(context.Background(), orgId, clientId, &serviceAccountIPAccessListEntry).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
@@ -632,7 +632,7 @@ Name | Type | Description  | Notes
 
 ## DeleteProjectServiceAccount
 
-> any DeleteProjectServiceAccount(ctx, clientId, groupId).Execute()
+> DeleteProjectServiceAccount(ctx, clientId, groupId).Execute()
 
 Unassign One Service Account from One Project
 
@@ -663,7 +663,7 @@ func main() {
     clientId := "mdb_sa_id_1234567890abcdef12345678" // string | 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.ServiceAccountsApi.DeleteProjectServiceAccount(context.Background(), clientId, groupId).Execute()
+    r, err := sdk.ServiceAccountsApi.DeleteProjectServiceAccount(context.Background(), clientId, groupId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsApi.DeleteProjectServiceAccount`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -672,8 +672,6 @@ func main() {
         }
         return
     }
-    // response from `DeleteProjectServiceAccount`: any
-    fmt.Fprintf(os.Stdout, "Response from `ServiceAccountsApi.DeleteProjectServiceAccount`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -698,7 +696,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**any**
+ (empty response body)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -1329,8 +1327,8 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clientId := "mdb_sa_id_1234567890abcdef12345678" // string | 
     includeCount := true // bool |  (optional) (default to true)
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
 
     resp, r, err := sdk.ServiceAccountsApi.ListProjectServiceAccountAccessList(context.Background(), groupId, clientId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
@@ -1416,8 +1414,8 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
 
     resp, r, err := sdk.ServiceAccountsApi.ListProjectServiceAccounts(context.Background(), groupId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
@@ -1502,8 +1500,8 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     clientId := "mdb_sa_id_1234567890abcdef12345678" // string | 
     includeCount := true // bool |  (optional) (default to true)
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
 
     resp, r, err := sdk.ServiceAccountsApi.ListServiceAccountAccessList(context.Background(), orgId, clientId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
@@ -1590,8 +1588,8 @@ func main() {
 
     orgId := "4888442a3354817a7320eb61" // string | 
     clientId := "mdb_sa_id_1234567890abcdef12345678" // string | 
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
 
     resp, r, err := sdk.ServiceAccountsApi.ListServiceAccountProjects(context.Background(), orgId, clientId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
@@ -1676,8 +1674,8 @@ func main() {
     }
 
     orgId := "4888442a3354817a7320eb61" // string | 
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
 
     resp, r, err := sdk.ServiceAccountsApi.ListServiceAccounts(context.Background(), orgId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {

@@ -9,10 +9,10 @@ Name | Type | Description | Notes
 **EventTypeName** | Pointer to **string** | Unique identifier of event type. | [optional] 
 **GroupId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the project in which the event occurred. The **eventId** identifies the specific event. | [optional] [readonly] 
 **Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the event. | [optional] [readonly] 
-**IsGlobalAdmin** | Pointer to **bool** | Flag that indicates whether a MongoDB employee triggered the specified event. | [optional] [readonly] [default to false]
+**IsGlobalAdmin** | Pointer to **bool** | Flag that indicates whether a MongoDB employee triggered the specified event. | [optional] [readonly] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **OrgId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the organization to which these events apply. | [optional] [readonly] 
-**PublicKey** | Pointer to **string** | Public part of the API Key that triggered the event. If this resource returns this parameter, it doesn&#39;t return the **username** parameter. | [optional] [readonly] 
+**PublicKey** | Pointer to **string** | Public part of the API key that triggered the event. If this resource returns this parameter, it doesn&#39;t return the **username** parameter. | [optional] [readonly] 
 **Raw** | Pointer to [**Raw**](Raw.md) |  | [optional] 
 **RemoteAddress** | Pointer to **string** | IPv4 or IPv6 address from which the user triggered this event. | [optional] [readonly] 
 **UserId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the console user who triggered the event. If this resource returns this parameter, it doesn&#39;t return the **apiKeyId** parameter. | [optional] [readonly] 
@@ -44,6 +44,9 @@ Name | Type | Description | Notes
 **ProcessorErrorMsg** | Pointer to **string** | Error message linked to the stream processor associated with the event. | [optional] [readonly] 
 **ProcessorName** | Pointer to **string** | Name of the stream processor associated with the event. | [optional] [readonly] 
 **ProcessorState** | Pointer to **string** | State of the stream processor associated with the event. | [optional] [readonly] 
+**ResourcePolicyId** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the resource policy. | [optional] [readonly] 
+**ViolatedPolicies** | Pointer to **[]string** | String representation of the violated resource policy ids. | [optional] 
+**ViolationAction** | Pointer to **string** | Resource policy action taken by the user and evaluated against the currently active policies. | [optional] [readonly] 
 
 ## Methods
 
@@ -1024,6 +1027,78 @@ SetProcessorState sets ProcessorState field to given value.
 `func (o *EventViewForNdsGroup) HasProcessorState() bool`
 
 HasProcessorState returns a boolean if a field has been set.
+### GetResourcePolicyId
+
+`func (o *EventViewForNdsGroup) GetResourcePolicyId() string`
+
+GetResourcePolicyId returns the ResourcePolicyId field if non-nil, zero value otherwise.
+
+### GetResourcePolicyIdOk
+
+`func (o *EventViewForNdsGroup) GetResourcePolicyIdOk() (*string, bool)`
+
+GetResourcePolicyIdOk returns a tuple with the ResourcePolicyId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetResourcePolicyId
+
+`func (o *EventViewForNdsGroup) SetResourcePolicyId(v string)`
+
+SetResourcePolicyId sets ResourcePolicyId field to given value.
+
+### HasResourcePolicyId
+
+`func (o *EventViewForNdsGroup) HasResourcePolicyId() bool`
+
+HasResourcePolicyId returns a boolean if a field has been set.
+### GetViolatedPolicies
+
+`func (o *EventViewForNdsGroup) GetViolatedPolicies() []string`
+
+GetViolatedPolicies returns the ViolatedPolicies field if non-nil, zero value otherwise.
+
+### GetViolatedPoliciesOk
+
+`func (o *EventViewForNdsGroup) GetViolatedPoliciesOk() (*[]string, bool)`
+
+GetViolatedPoliciesOk returns a tuple with the ViolatedPolicies field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetViolatedPolicies
+
+`func (o *EventViewForNdsGroup) SetViolatedPolicies(v []string)`
+
+SetViolatedPolicies sets ViolatedPolicies field to given value.
+
+### HasViolatedPolicies
+
+`func (o *EventViewForNdsGroup) HasViolatedPolicies() bool`
+
+HasViolatedPolicies returns a boolean if a field has been set.
+### GetViolationAction
+
+`func (o *EventViewForNdsGroup) GetViolationAction() string`
+
+GetViolationAction returns the ViolationAction field if non-nil, zero value otherwise.
+
+### GetViolationActionOk
+
+`func (o *EventViewForNdsGroup) GetViolationActionOk() (*string, bool)`
+
+GetViolationActionOk returns a tuple with the ViolationAction field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetViolationAction
+
+`func (o *EventViewForNdsGroup) SetViolationAction(v string)`
+
+SetViolationAction sets ViolationAction field to given value.
+
+### HasViolationAction
+
+`func (o *EventViewForNdsGroup) HasViolationAction() bool`
+
+HasViolationAction returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
