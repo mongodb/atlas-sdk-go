@@ -37,26 +37,52 @@ RAW_CHANGES=$(gorelease -base "$BASE_VERSION")
 echo "Changes detected from BASE_VERSION $BASE_VERSION:"
 echo "$RAW_CHANGES"
 
-BREAKING_CHANGES=$(echo "$RAW_CHANGES" | awk '
-    /## incompatible changes/ {print "### incompatible changes"; collecting=1; next}
-    collecting && /^#/ {collecting=0}
-    collecting && NF {print "- "$0}
-')
+# Function to extract changes by section
+extract_changes() {
+    local section=$1
+    echo "$RAW_CHANGES" | awk -v section="$section" '
+        $0 ~ section {print "### " section; collecting=1; next}
+        collecting && /^#/ {collecting=0}
+        collecting && NF {print "- "$0}
+    '
+}
+
+# Extract different types of changes
+BREAKING_CHANGES=$(extract_changes "incompatible changes")
+NEW_FEATURES=$(extract_changes "new features")
+BUG_FIXES=$(extract_changes "bug fixes")
+DEPRECATIONS=$(extract_changes "deprecations")
+OTHER_CHANGES=$(extract_changes "other changes")
+
+# Combine non-breaking changes for release notes
+NON_BREAKING_CHANGES=""
+[ ! -z "$NEW_FEATURES" ] && NON_BREAKING_CHANGES+="\n## New Features\n$NEW_FEATURES"
+[ ! -z "$BUG_FIXES" ] && NON_BREAKING_CHANGES+="\n## Bug Fixes\n$BUG_FIXES"
+[ ! -z "$DEPRECATIONS" ] && NON_BREAKING_CHANGES+="\n## Deprecations\n$DEPRECATIONS"
+[ ! -z "$OTHER_CHANGES" ] && NON_BREAKING_CHANGES+="\n## Other Changes\n$OTHER_CHANGES"
 
 set -e
 popd || exit
 
-if [ -z "$BREAKING_CHANGES" ]; then
-  echo "No major breaking changes detected"
+if [ -z "$BREAKING_CHANGES" ] && [ -z "$NON_BREAKING_CHANGES" ]; then
+  echo "No changes detected"
 else
-  echo "Detected major breaking changes in the release"
+  echo "Detected changes in the release"
   if [ -z "$TARGET_BREAKING_CHANGES_FILE" ]; then
-    echo "Breaking changes for the major release"
-    echo "$BREAKING_CHANGES"
+    echo "Changes for the release:"
+    [ ! -z "$BREAKING_CHANGES" ] && echo -e "\nBreaking Changes:\n$BREAKING_CHANGES"
+    [ ! -z "$NON_BREAKING_CHANGES" ] && echo -e "\nNon-Breaking Changes:$NON_BREAKING_CHANGES"
   else
-    echo "Creating the breaking changes file with following breaking changes:"
-    echo "$BREAKING_CHANGES"
-    echo -e "# Breaking Changes\n## SDK changes\n$BREAKING_CHANGES\n## API Changelog\n https://www.mongodb.com/docs/atlas/reference/api-resources-spec/changelog" \
-      >"$script_path/../breaking_changes/${TARGET_BREAKING_CHANGES_FILE}.md"
+    # Only create breaking changes file for major version bumps
+    if [ ! -z "$BREAKING_CHANGES" ]; then
+      echo "Creating the breaking changes file with following breaking changes:"
+      echo "$BREAKING_CHANGES"
+      echo -e "# Breaking Changes\n## SDK changes\n$BREAKING_CHANGES\n## API Changelog\n https://www.mongodb.com/docs/atlas/reference/api-resources-spec/changelog" \
+        >"$script_path/../breaking_changes/${TARGET_BREAKING_CHANGES_FILE}.md"
+    fi
   fi
 fi
+
+# Export variables for use in other scripts
+export BREAKING_CHANGES
+export NON_BREAKING_CHANGES
