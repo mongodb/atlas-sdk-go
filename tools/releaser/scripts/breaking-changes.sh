@@ -83,6 +83,5 @@ else
   fi
 fi
 
-# Export variables for use in other scripts
-export BREAKING_CHANGES
+# Export variable to use in other scripts
 export NON_BREAKING_CHANGES
