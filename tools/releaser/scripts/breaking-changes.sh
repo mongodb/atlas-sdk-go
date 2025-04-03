@@ -56,10 +56,10 @@ OTHER_CHANGES=$(extract_changes "other changes")
 
 # Combine non-breaking changes for release notes
 NON_BREAKING_CHANGES=""
-[ ! -z "$NEW_FEATURES" ] && NON_BREAKING_CHANGES+="\n## New Features\n$NEW_FEATURES"
-[ ! -z "$BUG_FIXES" ] && NON_BREAKING_CHANGES+="\n## Bug Fixes\n$BUG_FIXES"
-[ ! -z "$DEPRECATIONS" ] && NON_BREAKING_CHANGES+="\n## Deprecations\n$DEPRECATIONS"
-[ ! -z "$OTHER_CHANGES" ] && NON_BREAKING_CHANGES+="\n## Other Changes\n$OTHER_CHANGES"
+[ -n "$NEW_FEATURES" ] && NON_BREAKING_CHANGES+="\n## New Features\n$NEW_FEATURES"
+[ -n "$BUG_FIXES" ] && NON_BREAKING_CHANGES+="\n## Bug Fixes\n$BUG_FIXES"
+[ -n "$DEPRECATIONS" ] && NON_BREAKING_CHANGES+="\n## Deprecations\n$DEPRECATIONS"
+[ -n "$OTHER_CHANGES" ] && NON_BREAKING_CHANGES+="\n## Other Changes\n$OTHER_CHANGES"
 
 set -e
 popd || exit
@@ -70,11 +70,11 @@ else
   echo "Detected changes in the release"
   if [ -z "$TARGET_BREAKING_CHANGES_FILE" ]; then
     echo "Changes for the release:"
-    [ ! -z "$BREAKING_CHANGES" ] && echo -e "\nBreaking Changes:\n$BREAKING_CHANGES"
-    [ ! -z "$NON_BREAKING_CHANGES" ] && echo -e "\nNon-Breaking Changes:$NON_BREAKING_CHANGES"
+    [ -n "$BREAKING_CHANGES" ] && echo -e "\nBreaking Changes:\n$BREAKING_CHANGES"
+    [ -n "$NON_BREAKING_CHANGES" ] && echo -e "\nNon-Breaking Changes:$NON_BREAKING_CHANGES"
   else
     # Only create breaking changes file for major version bumps
-    if [ ! -z "$BREAKING_CHANGES" ]; then
+    if [ -n "$BREAKING_CHANGES" ]; then
       echo "Creating the breaking changes file with following breaking changes:"
       echo "$BREAKING_CHANGES"
       echo -e "# Breaking Changes\n## SDK changes\n$BREAKING_CHANGES\n## API Changelog\n https://www.mongodb.com/docs/atlas/reference/api-resources-spec/changelog" \
