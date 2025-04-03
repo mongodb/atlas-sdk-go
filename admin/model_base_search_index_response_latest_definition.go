@@ -9,7 +9,7 @@ type BaseSearchIndexResponseLatestDefinition struct {
 	// List of user-defined methods to convert database field text into searchable words.
 	Analyzers *[]AtlasSearchAnalyzer `json:"analyzers,omitempty"`
 	Mappings  *SearchMappings        `json:"mappings,omitempty"`
-	// Number of index partitions. Note: This feature is currently in preview.
+	// Number of index partitions. Allowed values are [1, 2, 4].
 	NumPartitions *int `json:"numPartitions,omitempty"`
 	// Method applied to identify words when searching this index.
 	SearchAnalyzer *string `json:"searchAnalyzer,omitempty"`

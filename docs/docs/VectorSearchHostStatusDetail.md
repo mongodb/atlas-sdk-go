@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **MainIndex** | Pointer to [**VectorSearchIndexStatusDetail**](VectorSearchIndexStatusDetail.md) |  | [optional] 
 **Queryable** | Pointer to **bool** | Flag that indicates whether the index is queryable on the host. | [optional] 
 **StagedIndex** | Pointer to [**VectorSearchIndexStatusDetail**](VectorSearchIndexStatusDetail.md) |  | [optional] 
-**Status** | Pointer to **string** | Condition of the search index when you made this request.   | Status | Index Condition |  |---|---|  | DELETING | The index is being deleted. |  | FAILED | The index build failed. Indexes can enter the FAILED state due to an invalid index definition. |  | STALE | The index is queryable but has stopped replicating data from the indexed collection. Searches on the index may return out-of-date data. |  | PENDING | Atlas has not yet started building the index. |  | BUILDING | Atlas is building or re-building the index after an edit. |  | READY | The index is ready and can support queries. |  | [optional] 
+**Status** | Pointer to **string** | Condition of the search index when you made this request.  - &#x60;DELETING&#x60;: The index is being deleted. - &#x60;FAILED&#x60; The index build failed. Indexes can enter the FAILED state due to an invalid index definition. - &#x60;STALE&#x60;: The index is queryable but has stopped replicating data from the indexed collection. Searches on the index may return out-of-date data. - &#x60;PENDING&#x60;: Atlas has not yet started building the index. - &#x60;BUILDING&#x60;: Atlas is building or re-building the index after an edit. - &#x60;READY&#x60;: The index is ready and can support queries. | [optional] 
 
 ## Methods
 

@@ -2,7 +2,7 @@
 
 package admin
 
-// StreamsKafkaNetworking Networking Access Type can either be 'PUBLIC' (default) or VPC. VPC type is in public preview, please file a support ticket to enable VPC Network Access
+// StreamsKafkaNetworking Networking Access Type can either be 'PUBLIC' (default) or VPC. VPC type is in public preview, please file a support ticket to enable VPC Network Access.
 type StreamsKafkaNetworking struct {
 	Access *StreamsKafkaNetworkingAccess `json:"access,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.

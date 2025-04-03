@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312001/admin"
+	admin "go.mongodb.org/atlas-sdk/v20250312002/admin"
 
 	http "net/http"
 
@@ -724,42 +724,33 @@ func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_RequestEncryptionAtRestP
 }
 
 // RequestEncryptionAtRestPrivateEndpointDeletionExecute provides a mock function with given fields: r
-func (_m *EncryptionAtRestUsingCustomerKeyManagementApi) RequestEncryptionAtRestPrivateEndpointDeletionExecute(r admin.RequestEncryptionAtRestPrivateEndpointDeletionApiRequest) (any, *http.Response, error) {
+func (_m *EncryptionAtRestUsingCustomerKeyManagementApi) RequestEncryptionAtRestPrivateEndpointDeletionExecute(r admin.RequestEncryptionAtRestPrivateEndpointDeletionApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for RequestEncryptionAtRestPrivateEndpointDeletionExecute")
 	}
 
-	var r0 any
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.RequestEncryptionAtRestPrivateEndpointDeletionApiRequest) (any, *http.Response, error)); ok {
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.RequestEncryptionAtRestPrivateEndpointDeletionApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.RequestEncryptionAtRestPrivateEndpointDeletionApiRequest) any); ok {
+	if rf, ok := ret.Get(0).(func(admin.RequestEncryptionAtRestPrivateEndpointDeletionApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(any)
+			r0 = ret.Get(0).(*http.Response)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.RequestEncryptionAtRestPrivateEndpointDeletionApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.RequestEncryptionAtRestPrivateEndpointDeletionApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
+		r1 = ret.Error(1)
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.RequestEncryptionAtRestPrivateEndpointDeletionApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
+	return r0, r1
 }
 
 // EncryptionAtRestUsingCustomerKeyManagementApi_RequestEncryptionAtRestPrivateEndpointDeletionExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RequestEncryptionAtRestPrivateEndpointDeletionExecute'
@@ -780,12 +771,12 @@ func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_RequestEncryptionAtRestP
 	return _c
 }
 
-func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_RequestEncryptionAtRestPrivateEndpointDeletionExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *EncryptionAtRestUsingCustomerKeyManagementApi_RequestEncryptionAtRestPrivateEndpointDeletionExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
+func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_RequestEncryptionAtRestPrivateEndpointDeletionExecute_Call) Return(_a0 *http.Response, _a1 error) *EncryptionAtRestUsingCustomerKeyManagementApi_RequestEncryptionAtRestPrivateEndpointDeletionExecute_Call {
+	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_RequestEncryptionAtRestPrivateEndpointDeletionExecute_Call) RunAndReturn(run func(admin.RequestEncryptionAtRestPrivateEndpointDeletionApiRequest) (any, *http.Response, error)) *EncryptionAtRestUsingCustomerKeyManagementApi_RequestEncryptionAtRestPrivateEndpointDeletionExecute_Call {
+func (_c *EncryptionAtRestUsingCustomerKeyManagementApi_RequestEncryptionAtRestPrivateEndpointDeletionExecute_Call) RunAndReturn(run func(admin.RequestEncryptionAtRestPrivateEndpointDeletionApiRequest) (*http.Response, error)) *EncryptionAtRestUsingCustomerKeyManagementApi_RequestEncryptionAtRestPrivateEndpointDeletionExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }

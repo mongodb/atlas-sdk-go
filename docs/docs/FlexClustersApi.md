@@ -30,7 +30,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -97,7 +97,7 @@ Name | Type | Description  | Notes
 
 ## DeleteFlexCluster
 
-> any DeleteFlexCluster(ctx, groupId, name).Execute()
+> DeleteFlexCluster(ctx, groupId, name).Execute()
 
 Remove One Flex Cluster from One Project
 
@@ -112,7 +112,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -128,7 +128,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     name := "name_example" // string | 
 
-    resp, r, err := sdk.FlexClustersApi.DeleteFlexCluster(context.Background(), groupId, name).Execute()
+    r, err := sdk.FlexClustersApi.DeleteFlexCluster(context.Background(), groupId, name).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FlexClustersApi.DeleteFlexCluster`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -137,8 +137,6 @@ func main() {
         }
         return
     }
-    // response from `DeleteFlexCluster`: any
-    fmt.Fprintf(os.Stdout, "Response from `FlexClustersApi.DeleteFlexCluster`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -163,7 +161,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**any**
+ (empty response body)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -195,7 +193,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -278,7 +276,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -293,8 +291,8 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     includeCount := true // bool |  (optional) (default to true)
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
 
     resp, r, err := sdk.FlexClustersApi.ListFlexClusters(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
@@ -364,7 +362,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -449,7 +447,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {

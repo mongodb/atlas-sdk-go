@@ -47,7 +47,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -129,7 +129,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -207,7 +207,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -274,7 +274,7 @@ Name | Type | Description  | Notes
 
 ## DeleteProject
 
-> any DeleteProject(ctx, groupId).Execute()
+> DeleteProject(ctx, groupId).Execute()
 
 Remove One Project
 
@@ -289,7 +289,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -304,7 +304,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.ProjectsApi.DeleteProject(context.Background(), groupId).Execute()
+    r, err := sdk.ProjectsApi.DeleteProject(context.Background(), groupId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.DeleteProject`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -313,8 +313,6 @@ func main() {
         }
         return
     }
-    // response from `DeleteProject`: any
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.DeleteProject`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -337,7 +335,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**any**
+ (empty response body)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -354,7 +352,7 @@ Name | Type | Description  | Notes
 
 ## DeleteProjectInvitation
 
-> any DeleteProjectInvitation(ctx, groupId, invitationId).Execute()
+> DeleteProjectInvitation(ctx, groupId, invitationId).Execute()
 
 Cancel One Project Invitation
 
@@ -369,7 +367,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -385,7 +383,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     invitationId := "invitationId_example" // string | 
 
-    resp, r, err := sdk.ProjectsApi.DeleteProjectInvitation(context.Background(), groupId, invitationId).Execute()
+    r, err := sdk.ProjectsApi.DeleteProjectInvitation(context.Background(), groupId, invitationId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.DeleteProjectInvitation`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -394,8 +392,6 @@ func main() {
         }
         return
     }
-    // response from `DeleteProjectInvitation`: any
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.DeleteProjectInvitation`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -420,7 +416,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**any**
+ (empty response body)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -437,7 +433,7 @@ Name | Type | Description  | Notes
 
 ## DeleteProjectLimit
 
-> any DeleteProjectLimit(ctx, limitName, groupId).Execute()
+> DeleteProjectLimit(ctx, limitName, groupId).Execute()
 
 Remove One Project Limit
 
@@ -452,7 +448,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -468,7 +464,7 @@ func main() {
     limitName := "limitName_example" // string | 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.ProjectsApi.DeleteProjectLimit(context.Background(), limitName, groupId).Execute()
+    r, err := sdk.ProjectsApi.DeleteProjectLimit(context.Background(), limitName, groupId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.DeleteProjectLimit`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -477,8 +473,6 @@ func main() {
         }
         return
     }
-    // response from `DeleteProjectLimit`: any
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.DeleteProjectLimit`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -503,7 +497,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**any**
+ (empty response body)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -535,7 +529,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -615,7 +609,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -695,7 +689,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -778,7 +772,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -861,7 +855,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -879,7 +873,7 @@ func main() {
     instanceSize := "M10" // string |  (optional)
     defaultStatus := "defaultStatus_example" // string |  (optional)
     itemsPerPage := int64(100) // int64 |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    pageNum := int(56) // int |  (optional) (default to 1)
 
     resp, r, err := sdk.ProjectsApi.GetProjectLtsVersions(context.Background(), groupId).CloudProvider(cloudProvider).InstanceSize(instanceSize).DefaultStatus(defaultStatus).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
@@ -951,7 +945,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -1031,7 +1025,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -1113,7 +1107,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -1193,7 +1187,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -1207,8 +1201,8 @@ func main() {
     }
 
     includeCount := true // bool |  (optional) (default to true)
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
 
     resp, r, err := sdk.ProjectsApi.ListProjects(context.Background()).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
@@ -1273,7 +1267,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -1355,7 +1349,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -1435,7 +1429,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -1520,7 +1514,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -1602,7 +1596,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -1684,7 +1678,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -1769,7 +1763,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -1854,7 +1848,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {

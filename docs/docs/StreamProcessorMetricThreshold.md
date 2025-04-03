@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**MetricName** | **string** | Human-readable label that identifies the metric against which MongoDB Cloud checks the configured **metricThreshold.threshold**. | 
+**MetricName** | Pointer to **string** | Human-readable label that identifies the metric against which MongoDB Cloud checks the configured **metricThreshold.threshold**. | [optional] 
 **Mode** | Pointer to **string** | MongoDB Cloud computes the current metric value as an average. | [optional] 
 **Operator** | Pointer to **string** | Comparison operator to apply when checking the current metric value. | [optional] 
 **Threshold** | Pointer to **float64** | Value of metric that, when exceeded, triggers an alert. | [optional] 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewStreamProcessorMetricThreshold
 
-`func NewStreamProcessorMetricThreshold(metricName string, ) *StreamProcessorMetricThreshold`
+`func NewStreamProcessorMetricThreshold() *StreamProcessorMetricThreshold`
 
 NewStreamProcessorMetricThreshold instantiates a new StreamProcessorMetricThreshold object
 This constructor will assign default values to properties that have it defined,
@@ -48,6 +48,11 @@ and a boolean to check if the value has been set.
 
 SetMetricName sets MetricName field to given value.
 
+### HasMetricName
+
+`func (o *StreamProcessorMetricThreshold) HasMetricName() bool`
+
+HasMetricName returns a boolean if a field has been set.
 ### GetMode
 
 `func (o *StreamProcessorMetricThreshold) GetMode() string`
