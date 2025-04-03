@@ -6,7 +6,7 @@ script_path=$(dirname "$0")
 source "$script_path/extract-version.sh"
 
 # Check if there are non-breaking changes
-if [ -n "$NON_BREAKING_CHANGES" ]; then
+if [ ! -z "$NON_BREAKING_CHANGES" ]; then
     # Increment minor version
     new_minor_version=$((SDK_MINOR_VERSION + 1))
     new_version="${SDK_MAJOR_VERSION}.${new_minor_version}.0"
