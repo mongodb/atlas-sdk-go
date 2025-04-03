@@ -316,8 +316,8 @@ func parameterAddToHeaderOrQuery(headerOrQueryParams any, keyPrefix string, obj 
 	}
 }
 
-// callAPI do the request.
-func (c *APIClient) callAPI(request *http.Request) (*http.Response, error) {
+// CallAPI do the request.
+func (c *APIClient) CallAPI(request *http.Request) (*http.Response, error) {
 	if c.cfg.Debug {
 		dump, err := httputil.DumpRequestOut(request, true)
 		if err != nil {
@@ -353,8 +353,8 @@ type formFile struct {
 	formFileName string
 }
 
-// prepareRequest build the request
-func (c *APIClient) prepareRequest(
+// PrepareRequest build the request
+func (c *APIClient) PrepareRequest(
 	ctx context.Context,
 	path string, method string,
 	postBody any,
