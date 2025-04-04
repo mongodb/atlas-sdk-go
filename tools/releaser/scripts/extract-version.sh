@@ -9,6 +9,7 @@ SDK_VERSION=$(grep -o 'Version = "[^"]*"' "$file_path" | awk -F'"' '{print $2}')
 SDK_RESOURCE_VERSION=$(grep -o 'Resource = "[^"]*"' "$file_path" | awk -F'"' '{print $2}')
 
 # Extract the minor and major parts of the version
+SDK_PATCH_VERSION=$(echo "$SDK_VERSION" | awk -F'.' '{print $3}')
 SDK_MINOR_VERSION=$(echo "$SDK_VERSION" | awk -F'.' '{print $2}')
 SDK_MAJOR_VERSION=$(echo "$SDK_VERSION" | awk -F'.' '{print $1}')
 
