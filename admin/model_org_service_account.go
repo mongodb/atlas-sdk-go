@@ -10,7 +10,7 @@ import (
 type OrgServiceAccount struct {
 	// The Client ID of the Service Account.
 	ClientId *string `json:"clientId,omitempty"`
-	// The date that the Service Account was created on.
+	// The date that the Service Account was created on. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// Human readable description for the Service Account.
 	Description *string `json:"description,omitempty"`
