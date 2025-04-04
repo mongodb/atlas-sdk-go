@@ -44,7 +44,7 @@ preview-version:
 .PHONY: update-version
 update-version:
 	## When manually updating major version
-	./releaser/scripts/update-version.sh
+	./releaser/scripts/update-major-version.sh
 
 .PHONY: generate_mocks
 generate_mocks:	
