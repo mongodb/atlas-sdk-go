@@ -24,7 +24,7 @@ EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
 RELEASE_NOTES=$(envsubst < "$script_path/../templates/RELEASE_NOTES.tmpl")
 
 # Check if this is a major version bump (when MINOR is 0)
-if [ "$SDK_MINOR_VERSION" = "0" -a "$SDK_PATCH_VERSION" = "0" ]; then
+if [ "$SDK_MINOR_VERSION" = "0" && "$SDK_PATCH_VERSION" = "0" ]; then
     # For major versions, include breaking changes from the file
     breaking_changes_path="$script_path/../breaking_changes/${SDK_MAJOR_VERSION}.md"
     if [ -f "$breaking_changes_path" ]; then
