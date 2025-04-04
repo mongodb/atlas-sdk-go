@@ -31,7 +31,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -113,7 +113,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -196,7 +196,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -279,7 +279,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -362,7 +362,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -377,8 +377,8 @@ func main() {
 
     orgId := "4888442a3354817a7320eb61" // string | 
     includeCount := true // bool |  (optional) (default to true)
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
     viewLinkedInvoices := true // bool |  (optional) (default to true)
     statusNames := []string{"Inner_example"} // []string |  (optional)
     fromDate := time.Now() // string |  (optional)
@@ -460,7 +460,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -540,7 +540,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -556,8 +556,8 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     invoiceId := "invoiceId_example" // string | 
     apiPublicUsageDetailsQueryRequest := *openapiclient.NewApiPublicUsageDetailsQueryRequest() // ApiPublicUsageDetailsQueryRequest | 
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
 
     resp, r, err := sdk.InvoicesApi.QueryLineItemsFromSingleInvoice(context.Background(), orgId, invoiceId, &apiPublicUsageDetailsQueryRequest).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {

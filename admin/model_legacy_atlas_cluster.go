@@ -30,7 +30,7 @@ type LegacyAtlasCluster struct {
 	DiskSizeGB *float64 `json:"diskSizeGB,omitempty"`
 	// Disk warming mode selection.
 	DiskWarmingMode *string `json:"diskWarmingMode,omitempty"`
-	// Cloud service provider that manages your customer keys to provide an additional layer of Encryption at Rest for the cluster.
+	// Cloud service provider that manages your customer keys to provide an additional layer of encryption at rest for the cluster. To enable customer key management for encryption at rest, the cluster **replicationSpecs[n].regionConfigs[m].{type}Specs.instanceSize** setting must be `M10` or higher and `\"backupEnabled\" : false` or omitted entirely.
 	EncryptionAtRestProvider *string `json:"encryptionAtRestProvider,omitempty"`
 	// Feature compatibility version of the cluster.
 	// Read only field.
@@ -46,7 +46,7 @@ type LegacyAtlasCluster struct {
 	// Unique 24-hexadecimal digit string that identifies the cluster.
 	// Read only field.
 	Id *string `json:"id,omitempty"`
-	// Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster. The MongoDB Cloud console doesn't display your labels.  Cluster labels are deprecated and will be removed in a future release. We strongly recommend that you use [resource tags](https://dochub.mongodb.org/core/add-cluster-tag-atlas) instead.
+	// Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster. The MongoDB Cloud console doesn't display your labels.  Cluster labels are deprecated and will be removed in a future release. We strongly recommend that you use Resource Tags instead.
 	// Deprecated
 	Labels *[]ComponentLabel `json:"labels,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.

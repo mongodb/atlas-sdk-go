@@ -17,13 +17,13 @@ type EventsApi interface {
 	/*
 			GetOrganizationEvent Return One Event from One Organization
 
-			Returns one event for the specified organization. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting API Key must have the Organization Member role.
+			Returns one event for the specified organization. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting Service Account or API Key must have the Organization Member role. Use the Return All Events from One Organization endpoint to retrieve all events to which the authenticated user has access.
 
 		This resource remains under revision and may change.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-			@param eventId Unique 24-hexadecimal digit string that identifies the event that you want to return. Use the [/events](#tag/Events/operation/listOrganizationEvents) endpoint to retrieve all events to which the authenticated user has access.
+			@param eventId Unique 24-hexadecimal digit string that identifies the event that you want to return.
 			@return GetOrganizationEventApiRequest
 	*/
 	GetOrganizationEvent(ctx context.Context, orgId string, eventId string) GetOrganizationEventApiRequest
@@ -43,13 +43,13 @@ type EventsApi interface {
 	/*
 			GetProjectEvent Return One Event from One Project
 
-			Returns one event for the specified project. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting API Key must have the Project Read Only role.
+			Returns one event for the specified project. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting Service Account or API Key must have the Project Read Only role. Use the Return All Events from One Project endpoint to retrieve all events to which the authenticated user has access.
 
 		This resource remains under revision and may change.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-			@param eventId Unique 24-hexadecimal digit string that identifies the event that you want to return. Use the [/events](#tag/Events/operation/listProjectEvents) endpoint to retrieve all events to which the authenticated user has access.
+			@param eventId Unique 24-hexadecimal digit string that identifies the event that you want to return.
 			@return GetProjectEventApiRequest
 	*/
 	GetProjectEvent(ctx context.Context, groupId string, eventId string) GetProjectEventApiRequest
@@ -91,7 +91,7 @@ type EventsApi interface {
 	/*
 			ListOrganizationEvents Return All Events from One Organization
 
-			Returns all events for the specified organization. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting API Key must have the Organization Member role.
+			Returns all events for the specified organization. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting Service Account or API Key must have the Organization Member role.
 
 		This resource remains under revision and may change.
 
@@ -116,7 +116,7 @@ type EventsApi interface {
 	/*
 			ListProjectEvents Return All Events from One Project
 
-			Returns all events for the specified project. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting API Key must have the Project Read Only role.
+			Returns all events for the specified project. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
 		This resource remains under revision and may change.
 
@@ -179,13 +179,13 @@ func (r GetOrganizationEventApiRequest) Execute() (*EventViewForOrg, *http.Respo
 /*
 GetOrganizationEvent Return One Event from One Organization
 
-Returns one event for the specified organization. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting API Key must have the Organization Member role.
+Returns one event for the specified organization. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting Service Account or API Key must have the Organization Member role. Use the Return All Events from One Organization endpoint to retrieve all events to which the authenticated user has access.
 
 This resource remains under revision and may change.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-	@param eventId Unique 24-hexadecimal digit string that identifies the event that you want to return. Use the [/events](#tag/Events/operation/listOrganizationEvents) endpoint to retrieve all events to which the authenticated user has access.
+	@param eventId Unique 24-hexadecimal digit string that identifies the event that you want to return.
 	@return GetOrganizationEventApiRequest
 */
 func (a *EventsApiService) GetOrganizationEvent(ctx context.Context, orgId string, eventId string) GetOrganizationEventApiRequest {
@@ -314,13 +314,13 @@ func (r GetProjectEventApiRequest) Execute() (*EventViewForNdsGroup, *http.Respo
 /*
 GetProjectEvent Return One Event from One Project
 
-Returns one event for the specified project. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting API Key must have the Project Read Only role.
+Returns one event for the specified project. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting Service Account or API Key must have the Project Read Only role. Use the Return All Events from One Project endpoint to retrieve all events to which the authenticated user has access.
 
 This resource remains under revision and may change.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param eventId Unique 24-hexadecimal digit string that identifies the event that you want to return. Use the [/events](#tag/Events/operation/listProjectEvents) endpoint to retrieve all events to which the authenticated user has access.
+	@param eventId Unique 24-hexadecimal digit string that identifies the event that you want to return.
 	@return GetProjectEventApiRequest
 */
 func (a *EventsApiService) GetProjectEvent(ctx context.Context, groupId string, eventId string) GetProjectEventApiRequest {
@@ -653,7 +653,7 @@ func (r ListOrganizationEventsApiRequest) Execute() (*OrgPaginatedEvent, *http.R
 /*
 ListOrganizationEvents Return All Events from One Organization
 
-Returns all events for the specified organization. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting API Key must have the Organization Member role.
+Returns all events for the specified organization. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting Service Account or API Key must have the Organization Member role.
 
 This resource remains under revision and may change.
 
@@ -888,7 +888,7 @@ func (r ListProjectEventsApiRequest) Execute() (*GroupPaginatedEvent, *http.Resp
 /*
 ListProjectEvents Return All Events from One Project
 
-Returns all events for the specified project. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting API Key must have the Project Read Only role.
+Returns all events for the specified project. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
 This resource remains under revision and may change.
 

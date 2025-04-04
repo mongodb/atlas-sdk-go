@@ -32,7 +32,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -114,7 +114,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -196,7 +196,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -262,7 +262,7 @@ Name | Type | Description  | Notes
 
 ## DeleteLinkToken
 
-> any DeleteLinkToken(ctx, orgId).Execute()
+> DeleteLinkToken(ctx, orgId).Execute()
 
 Remove One Link-Token
 
@@ -277,7 +277,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -292,7 +292,7 @@ func main() {
 
     orgId := "4888442a3354817a7320eb61" // string | 
 
-    resp, r, err := sdk.CloudMigrationServiceApi.DeleteLinkToken(context.Background(), orgId).Execute()
+    r, err := sdk.CloudMigrationServiceApi.DeleteLinkToken(context.Background(), orgId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CloudMigrationServiceApi.DeleteLinkToken`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -301,8 +301,6 @@ func main() {
         }
         return
     }
-    // response from `DeleteLinkToken`: any
-    fmt.Fprintf(os.Stdout, "Response from `CloudMigrationServiceApi.DeleteLinkToken`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -325,7 +323,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**any**
+ (empty response body)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -357,7 +355,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -440,7 +438,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -523,7 +521,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -603,7 +601,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {

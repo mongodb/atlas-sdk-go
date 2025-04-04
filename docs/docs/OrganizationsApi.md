@@ -39,7 +39,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -115,7 +115,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -182,7 +182,7 @@ Name | Type | Description  | Notes
 
 ## DeleteOrganization
 
-> any DeleteOrganization(ctx, orgId).Execute()
+> DeleteOrganization(ctx, orgId).Execute()
 
 Remove One Organization
 
@@ -197,7 +197,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -212,7 +212,7 @@ func main() {
 
     orgId := "4888442a3354817a7320eb61" // string | 
 
-    resp, r, err := sdk.OrganizationsApi.DeleteOrganization(context.Background(), orgId).Execute()
+    r, err := sdk.OrganizationsApi.DeleteOrganization(context.Background(), orgId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.DeleteOrganization`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -221,8 +221,6 @@ func main() {
         }
         return
     }
-    // response from `DeleteOrganization`: any
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.DeleteOrganization`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -245,7 +243,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**any**
+ (empty response body)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -262,7 +260,7 @@ Name | Type | Description  | Notes
 
 ## DeleteOrganizationInvitation
 
-> any DeleteOrganizationInvitation(ctx, orgId, invitationId).Execute()
+> DeleteOrganizationInvitation(ctx, orgId, invitationId).Execute()
 
 Cancel One Organization Invitation
 
@@ -277,7 +275,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -293,7 +291,7 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     invitationId := "invitationId_example" // string | 
 
-    resp, r, err := sdk.OrganizationsApi.DeleteOrganizationInvitation(context.Background(), orgId, invitationId).Execute()
+    r, err := sdk.OrganizationsApi.DeleteOrganizationInvitation(context.Background(), orgId, invitationId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.DeleteOrganizationInvitation`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -302,8 +300,6 @@ func main() {
         }
         return
     }
-    // response from `DeleteOrganizationInvitation`: any
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.DeleteOrganizationInvitation`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -328,7 +324,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**any**
+ (empty response body)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -360,7 +356,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -440,7 +436,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -523,7 +519,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -603,7 +599,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -685,7 +681,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -700,8 +696,8 @@ func main() {
 
     orgId := "4888442a3354817a7320eb61" // string | 
     includeCount := true // bool |  (optional) (default to true)
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
     name := "name_example" // string |  (optional)
 
     resp, r, err := sdk.OrganizationsApi.ListOrganizationProjects(context.Background(), orgId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Name(name).Execute()
@@ -773,7 +769,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -787,8 +783,8 @@ func main() {
     }
 
     includeCount := true // bool |  (optional) (default to true)
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
     name := "name_example" // string |  (optional)
 
     resp, r, err := sdk.OrganizationsApi.ListOrganizations(context.Background()).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Name(name).Execute()
@@ -855,7 +851,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -937,7 +933,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -1019,7 +1015,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -1104,7 +1100,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -1189,7 +1185,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {

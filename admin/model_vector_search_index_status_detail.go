@@ -10,7 +10,7 @@ type VectorSearchIndexStatusDetail struct {
 	Message *string `json:"message,omitempty"`
 	// Flag that indicates whether the index generation is queryable on the host.
 	Queryable *bool `json:"queryable,omitempty"`
-	// Condition of the search index when you made this request.   | Status | Index Condition |  |---|---|  | DELETING | The index is being deleted. |  | FAILED | The index build failed. Indexes can enter the FAILED state due to an invalid index definition. |  | STALE | The index is queryable but has stopped replicating data from the indexed collection. Searches on the index may return out-of-date data. |  | PENDING | Atlas has not yet started building the index. |  | BUILDING | Atlas is building or re-building the index after an edit. |  | READY | The index is ready and can support queries. |
+	// Condition of the search index when you made this request.  - `DELETING`: The index is being deleted. - `FAILED` The index build failed. Indexes can enter the FAILED state due to an invalid index definition. - `STALE`: The index is queryable but has stopped replicating data from the indexed collection. Searches on the index may return out-of-date data. - `PENDING`: Atlas has not yet started building the index. - `BUILDING`: Atlas is building or re-building the index after an edit. - `READY`: The index is ready and can support queries.
 	Status *string `json:"status,omitempty"`
 }
 

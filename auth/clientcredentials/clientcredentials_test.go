@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"github.com/stretchr/testify/assert"
-	"go.mongodb.org/atlas-sdk/v20250312001/auth"
+	"go.mongodb.org/atlas-sdk/v20250312002/auth"
 )
 
 // mockOAuthRevokeEndpoint creates a mock OAuth revoke endpoint,

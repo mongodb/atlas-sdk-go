@@ -44,7 +44,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -127,7 +127,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -209,7 +209,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -292,7 +292,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -375,7 +375,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -458,7 +458,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -541,7 +541,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -609,7 +609,7 @@ Name | Type | Description  | Notes
 
 ## GrantMongoDbEmployeeAccess
 
-> any GrantMongoDbEmployeeAccess(ctx, groupId, clusterName, employeeAccessGrant EmployeeAccessGrant).Execute()
+> GrantMongoDbEmployeeAccess(ctx, groupId, clusterName, employeeAccessGrant EmployeeAccessGrant).Execute()
 
 Grant MongoDB employee cluster access for one cluster.
 
@@ -624,7 +624,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -641,7 +641,7 @@ func main() {
     clusterName := "clusterName_example" // string | 
     employeeAccessGrant := *openapiclient.NewEmployeeAccessGrant(time.Now(), "GrantType_example") // EmployeeAccessGrant | 
 
-    resp, r, err := sdk.ClustersApi.GrantMongoDbEmployeeAccess(context.Background(), groupId, clusterName, &employeeAccessGrant).Execute()
+    r, err := sdk.ClustersApi.GrantMongoDbEmployeeAccess(context.Background(), groupId, clusterName, &employeeAccessGrant).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.GrantMongoDbEmployeeAccess`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -650,8 +650,6 @@ func main() {
         }
         return
     }
-    // response from `GrantMongoDbEmployeeAccess`: any
-    fmt.Fprintf(os.Stdout, "Response from `ClustersApi.GrantMongoDbEmployeeAccess`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -677,7 +675,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**any**
+ (empty response body)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -709,7 +707,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -724,8 +722,8 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     includeCount := true // bool |  (optional) (default to true)
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
     providers := []string{"Inner_example"} // []string |  (optional)
     tier := "tier_example" // string |  (optional)
 
@@ -799,7 +797,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -814,8 +812,8 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     includeCount := true // bool |  (optional) (default to true)
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
     includeDeletedWithRetainedBackups := true // bool |  (optional) (default to false)
 
     resp, r, err := sdk.ClustersApi.ListClusters(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).IncludeDeletedWithRetainedBackups(includeDeletedWithRetainedBackups).Execute()
@@ -887,7 +885,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -901,8 +899,8 @@ func main() {
     }
 
     includeCount := true // bool |  (optional) (default to true)
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
 
     resp, r, err := sdk.ClustersApi.ListClustersForAllProjects(context.Background()).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
@@ -967,7 +965,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -1035,7 +1033,7 @@ Name | Type | Description  | Notes
 
 ## PinFeatureCompatibilityVersion
 
-> any PinFeatureCompatibilityVersion(ctx, groupId, clusterName, pinFCV PinFCV).Execute()
+> PinFeatureCompatibilityVersion(ctx, groupId, clusterName, pinFCV PinFCV).Execute()
 
 Pin FCV for One Cluster from One Project
 
@@ -1050,7 +1048,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -1067,7 +1065,7 @@ func main() {
     clusterName := "clusterName_example" // string | 
     pinFCV := *openapiclient.NewPinFCV() // PinFCV |  (optional)
 
-    resp, r, err := sdk.ClustersApi.PinFeatureCompatibilityVersion(context.Background(), groupId, clusterName, &pinFCV).Execute()
+    r, err := sdk.ClustersApi.PinFeatureCompatibilityVersion(context.Background(), groupId, clusterName, &pinFCV).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.PinFeatureCompatibilityVersion`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -1076,8 +1074,6 @@ func main() {
         }
         return
     }
-    // response from `PinFeatureCompatibilityVersion`: any
-    fmt.Fprintf(os.Stdout, "Response from `ClustersApi.PinFeatureCompatibilityVersion`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1103,7 +1099,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**any**
+ (empty response body)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -1120,7 +1116,7 @@ Name | Type | Description  | Notes
 
 ## RevokeMongoDbEmployeeAccess
 
-> any RevokeMongoDbEmployeeAccess(ctx, groupId, clusterName).Execute()
+> RevokeMongoDbEmployeeAccess(ctx, groupId, clusterName).Execute()
 
 Revoke granted MongoDB employee cluster access for one cluster.
 
@@ -1135,7 +1131,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -1151,7 +1147,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
 
-    resp, r, err := sdk.ClustersApi.RevokeMongoDbEmployeeAccess(context.Background(), groupId, clusterName).Execute()
+    r, err := sdk.ClustersApi.RevokeMongoDbEmployeeAccess(context.Background(), groupId, clusterName).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.RevokeMongoDbEmployeeAccess`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -1160,8 +1156,6 @@ func main() {
         }
         return
     }
-    // response from `RevokeMongoDbEmployeeAccess`: any
-    fmt.Fprintf(os.Stdout, "Response from `ClustersApi.RevokeMongoDbEmployeeAccess`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1186,7 +1180,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**any**
+ (empty response body)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -1218,7 +1212,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -1284,7 +1278,7 @@ Name | Type | Description  | Notes
 
 ## UnpinFeatureCompatibilityVersion
 
-> any UnpinFeatureCompatibilityVersion(ctx, groupId, clusterName).Execute()
+> UnpinFeatureCompatibilityVersion(ctx, groupId, clusterName).Execute()
 
 Unpins FCV for One Cluster from One Project
 
@@ -1299,7 +1293,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -1315,7 +1309,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
 
-    resp, r, err := sdk.ClustersApi.UnpinFeatureCompatibilityVersion(context.Background(), groupId, clusterName).Execute()
+    r, err := sdk.ClustersApi.UnpinFeatureCompatibilityVersion(context.Background(), groupId, clusterName).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.UnpinFeatureCompatibilityVersion`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -1324,8 +1318,6 @@ func main() {
         }
         return
     }
-    // response from `UnpinFeatureCompatibilityVersion`: any
-    fmt.Fprintf(os.Stdout, "Response from `ClustersApi.UnpinFeatureCompatibilityVersion`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -1350,7 +1342,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**any**
+ (empty response body)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -1382,7 +1374,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -1467,7 +1459,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -1552,7 +1544,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -1634,7 +1626,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {

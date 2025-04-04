@@ -42,7 +42,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -127,7 +127,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -212,7 +212,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -282,7 +282,7 @@ Name | Type | Description  | Notes
 
 ## DeleteAtlasSearchDeployment
 
-> any DeleteAtlasSearchDeployment(ctx, groupId, clusterName).Execute()
+> DeleteAtlasSearchDeployment(ctx, groupId, clusterName).Execute()
 
 Delete Search Nodes
 
@@ -297,7 +297,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -313,7 +313,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
 
-    resp, r, err := sdk.AtlasSearchApi.DeleteAtlasSearchDeployment(context.Background(), groupId, clusterName).Execute()
+    r, err := sdk.AtlasSearchApi.DeleteAtlasSearchDeployment(context.Background(), groupId, clusterName).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.DeleteAtlasSearchDeployment`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -322,8 +322,6 @@ func main() {
         }
         return
     }
-    // response from `DeleteAtlasSearchDeployment`: any
-    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.DeleteAtlasSearchDeployment`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -348,7 +346,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**any**
+ (empty response body)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -365,7 +363,7 @@ Name | Type | Description  | Notes
 
 ## DeleteAtlasSearchIndex
 
-> any DeleteAtlasSearchIndex(ctx, groupId, clusterName, indexId).Execute()
+> DeleteAtlasSearchIndex(ctx, groupId, clusterName, indexId).Execute()
 
 Remove One Atlas Search Index by Id
 
@@ -380,7 +378,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -397,7 +395,7 @@ func main() {
     clusterName := "clusterName_example" // string | 
     indexId := "indexId_example" // string | 
 
-    resp, r, err := sdk.AtlasSearchApi.DeleteAtlasSearchIndex(context.Background(), groupId, clusterName, indexId).Execute()
+    r, err := sdk.AtlasSearchApi.DeleteAtlasSearchIndex(context.Background(), groupId, clusterName, indexId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.DeleteAtlasSearchIndex`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -406,8 +404,6 @@ func main() {
         }
         return
     }
-    // response from `DeleteAtlasSearchIndex`: any
-    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.DeleteAtlasSearchIndex`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -434,7 +430,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**any**
+ (empty response body)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -451,7 +447,7 @@ Name | Type | Description  | Notes
 
 ## DeleteAtlasSearchIndexByName
 
-> any DeleteAtlasSearchIndexByName(ctx, groupId, clusterName, collectionName, databaseName, indexName).Execute()
+> DeleteAtlasSearchIndexByName(ctx, groupId, clusterName, collectionName, databaseName, indexName).Execute()
 
 Remove One Atlas Search Index by Name
 
@@ -466,7 +462,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -485,7 +481,7 @@ func main() {
     databaseName := "databaseName_example" // string | 
     indexName := "indexName_example" // string | 
 
-    resp, r, err := sdk.AtlasSearchApi.DeleteAtlasSearchIndexByName(context.Background(), groupId, clusterName, collectionName, databaseName, indexName).Execute()
+    r, err := sdk.AtlasSearchApi.DeleteAtlasSearchIndexByName(context.Background(), groupId, clusterName, collectionName, databaseName, indexName).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.DeleteAtlasSearchIndexByName`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -494,8 +490,6 @@ func main() {
         }
         return
     }
-    // response from `DeleteAtlasSearchIndexByName`: any
-    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.DeleteAtlasSearchIndexByName`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -526,7 +520,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**any**
+ (empty response body)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -543,7 +537,7 @@ Name | Type | Description  | Notes
 
 ## DeleteAtlasSearchIndexDeprecated
 
-> any DeleteAtlasSearchIndexDeprecated(ctx, groupId, clusterName, indexId).Execute()
+> DeleteAtlasSearchIndexDeprecated(ctx, groupId, clusterName, indexId).Execute()
 
 Remove One Atlas Search Index
 
@@ -558,7 +552,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -575,7 +569,7 @@ func main() {
     clusterName := "clusterName_example" // string | 
     indexId := "indexId_example" // string | 
 
-    resp, r, err := sdk.AtlasSearchApi.DeleteAtlasSearchIndexDeprecated(context.Background(), groupId, clusterName, indexId).Execute()
+    r, err := sdk.AtlasSearchApi.DeleteAtlasSearchIndexDeprecated(context.Background(), groupId, clusterName, indexId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.DeleteAtlasSearchIndexDeprecated`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -584,8 +578,6 @@ func main() {
         }
         return
     }
-    // response from `DeleteAtlasSearchIndexDeprecated`: any
-    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.DeleteAtlasSearchIndexDeprecated`: %v (%v)\n", resp, r)
 }
 ```
 
@@ -612,7 +604,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**any**
+ (empty response body)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -644,7 +636,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -727,7 +719,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -813,7 +805,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -905,7 +897,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -991,7 +983,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -1080,7 +1072,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -1163,7 +1155,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -1252,7 +1244,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -1337,7 +1329,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -1425,7 +1417,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -1519,7 +1511,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {

@@ -11,7 +11,7 @@ type ClusterDescription20240805 struct {
 	// If reconfiguration is necessary to regain a primary due to a regional outage, submit this field alongside your topology reconfiguration to request a new regional outage resistant topology. Forced reconfigurations during an outage of the majority of electable nodes carry a risk of data loss if replicated writes (even majority committed writes) have not been replicated to the new primary node. MongoDB Atlas docs contain more information. To proceed with an operation which carries that risk, set **acceptDataRisksAndForceReplicaSetReconfig** to the current date.
 	AcceptDataRisksAndForceReplicaSetReconfig *time.Time                            `json:"acceptDataRisksAndForceReplicaSetReconfig,omitempty"`
 	AdvancedConfiguration                     *ApiAtlasClusterAdvancedConfiguration `json:"advancedConfiguration,omitempty"`
-	// Flag that indicates whether the cluster can perform backups. If set to `true`, the cluster can perform backups. You must set this value to `true` for NVMe clusters. Backup uses [Cloud Backups](https://docs.atlas.mongodb.com/backup/cloud-backup/overview/) for dedicated clusters and [Shared Cluster Backups](https://docs.atlas.mongodb.com/backup/shared-tier/overview/) for tenant clusters. If set to `false`, the cluster doesn't use backups.
+	// Flag that indicates whether the cluster can perform backups. If set to `true`, the cluster can perform backups. You must set this value to `true` for NVMe clusters. Backup uses Cloud Backups for dedicated clusters and [Shared Cluster Backups](https://docs.atlas.mongodb.com/backup/shared-tier/overview/) for tenant clusters. If set to `false`, the cluster doesn't use backups.
 	BackupEnabled *bool        `json:"backupEnabled,omitempty"`
 	BiConnector   *BiConnector `json:"biConnector,omitempty"`
 	// Configuration of nodes that comprise the cluster.
@@ -43,7 +43,7 @@ type ClusterDescription20240805 struct {
 	// Unique 24-hexadecimal digit string that identifies the cluster.
 	// Read only field.
 	Id *string `json:"id,omitempty"`
-	// Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster. The MongoDB Cloud console doesn't display your labels.  Cluster labels are deprecated and will be removed in a future release. We strongly recommend that you use [resource tags](https://dochub.mongodb.org/core/add-cluster-tag-atlas) instead.
+	// Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster. The MongoDB Cloud console doesn't display your labels.  Cluster labels are deprecated and will be removed in a future release. We strongly recommend that you use Resource Tags instead.
 	// Deprecated
 	Labels *[]ComponentLabel `json:"labels,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.

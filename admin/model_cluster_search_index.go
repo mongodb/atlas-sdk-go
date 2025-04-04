@@ -13,9 +13,9 @@ type ClusterSearchIndex struct {
 	IndexID *string `json:"indexID,omitempty"`
 	// Human-readable label that identifies this index. Within each namespace, names of all indexes in the namespace must be unique.
 	Name string `json:"name"`
-	// Number of index partitions. Note: This feature is currently in preview.
+	// Number of index partitions. Allowed values are [1, 2, 4].
 	NumPartitions *int `json:"numPartitions,omitempty"`
-	// Condition of the search index when you made this request.  | Status | Index Condition |  |---|---|  | IN_PROGRESS | Atlas is building or re-building the index after an edit. |  | STEADY | You can use this search index. |  | FAILED | Atlas could not build the index. |  | MIGRATING | Atlas is upgrading the underlying cluster tier and migrating indexes. |  | PAUSED | The cluster is paused. |
+	// Condition of the search index when you made this request.  - `IN_PROGRESS`: Atlas is building or re-building the index after an edit. - `STEADY`: You can use this search index. - `FAILED`: Atlas could not build the index. - `MIGRATING`: Atlas is upgrading the underlying cluster tier and migrating indexes. - `PAUSED`: The cluster is paused.
 	// Read only field.
 	Status *string `json:"status,omitempty"`
 	// Type of the index. Default type is search.

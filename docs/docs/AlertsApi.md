@@ -28,7 +28,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**alertId** | **string** | Unique 24-hexadecimal digit string that identifies the alert. Use the [/alerts](#tag/Alerts/operation/listAlerts) endpoint to retrieve all alerts to which the authenticated user has access. | 
+**alertId** | **string** | Unique 24-hexadecimal digit string that identifies the alert. | 
 
 ### Other Parameters
 
@@ -113,7 +113,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -150,7 +150,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**alertId** | **string** | Unique 24-hexadecimal digit string that identifies the alert. Use the [/alerts](#tag/Alerts/operation/listAlerts) endpoint to retrieve all alerts to which the authenticated user has access. | 
+**alertId** | **string** | Unique 24-hexadecimal digit string that identifies the alert. | 
 
 ### Other Parameters
 
@@ -196,7 +196,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -211,8 +211,8 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     includeCount := true // bool |  (optional) (default to true)
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
     status := "status_example" // string |  (optional)
 
     resp, r, err := sdk.AlertsApi.ListAlerts(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Status(status).Execute()
@@ -284,7 +284,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312001/admin"
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
 )
 
 func main() {
@@ -300,8 +300,8 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     alertConfigId := "32b6e34b3d91647abb20e7b8" // string | 
     includeCount := true // bool |  (optional) (default to true)
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
 
     resp, r, err := sdk.AlertsApi.ListAlertsByAlertConfigurationId(context.Background(), groupId, alertConfigId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
@@ -324,7 +324,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**alertConfigId** | **string** | Unique 24-hexadecimal digit string that identifies the alert configuration. Use the [/alertConfigs](#tag/Alert-Configurations/operation/listAlertConfigurations) endpoint to retrieve all alert configurations to which the authenticated user has access. | 
+**alertConfigId** | **string** | Unique 24-hexadecimal digit string that identifies the alert configuration. | 
 
 ### Other Parameters
 
