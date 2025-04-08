@@ -8,7 +8,7 @@ require (
 	github.com/go-test/deep v1.1.1
 	github.com/mongodb-forks/digest v1.1.0
 	github.com/stretchr/testify v1.10.0
-	golang.org/x/oauth2 v0.28.0
+	golang.org/x/oauth2 v0.29.0
 )
 
 require (
