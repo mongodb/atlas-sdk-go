@@ -185,7 +185,7 @@ func (a *ClusterOutageSimulationApiService) EndOutageSimulationExecute(r EndOuta
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		newErr := a.client.MakeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -302,7 +302,7 @@ func (a *ClusterOutageSimulationApiService) GetOutageSimulationExecute(r GetOuta
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		newErr := a.client.MakeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -428,7 +428,7 @@ func (a *ClusterOutageSimulationApiService) StartOutageSimulationExecute(r Start
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		newErr := a.client.MakeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 

@@ -408,7 +408,7 @@ func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespaceClusterMe
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		newErr := a.client.MakeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -589,7 +589,7 @@ func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespaceHostMeasu
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		newErr := a.client.MakeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -700,7 +700,7 @@ func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespaceMetricsEx
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		newErr := a.client.MakeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -859,7 +859,7 @@ func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespacesForClust
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		newErr := a.client.MakeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1012,7 +1012,7 @@ func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespacesForHostE
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		newErr := a.client.MakeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1129,7 +1129,7 @@ func (a *CollectionLevelMetricsApiService) GetPinnedNamespacesExecute(r GetPinne
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		newErr := a.client.MakeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1255,7 +1255,7 @@ func (a *CollectionLevelMetricsApiService) PinNamespacesPatchExecute(r PinNamesp
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		newErr := a.client.MakeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1381,7 +1381,7 @@ func (a *CollectionLevelMetricsApiService) PinNamespacesPutExecute(r PinNamespac
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		newErr := a.client.MakeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1507,7 +1507,7 @@ func (a *CollectionLevelMetricsApiService) UnpinNamespacesExecute(r UnpinNamespa
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		newErr := a.client.MakeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 

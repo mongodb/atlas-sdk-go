@@ -487,7 +487,7 @@ func (a *DataLakePipelinesApiService) CreatePipelineExecute(r CreatePipelineApiR
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		newErr := a.client.MakeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -608,7 +608,7 @@ func (a *DataLakePipelinesApiService) DeletePipelineExecute(r DeletePipelineApiR
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		newErr := a.client.MakeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -735,7 +735,7 @@ func (a *DataLakePipelinesApiService) DeletePipelineRunDatasetExecute(r DeletePi
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		newErr := a.client.MakeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -856,7 +856,7 @@ func (a *DataLakePipelinesApiService) GetPipelineExecute(r GetPipelineApiRequest
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		newErr := a.client.MakeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -983,7 +983,7 @@ func (a *DataLakePipelinesApiService) GetPipelineRunExecute(r GetPipelineRunApiR
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		newErr := a.client.MakeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1164,7 +1164,7 @@ func (a *DataLakePipelinesApiService) ListPipelineRunsExecute(r ListPipelineRuns
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		newErr := a.client.MakeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1285,7 +1285,7 @@ func (a *DataLakePipelinesApiService) ListPipelineSchedulesExecute(r ListPipelin
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		newErr := a.client.MakeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1466,7 +1466,7 @@ func (a *DataLakePipelinesApiService) ListPipelineSnapshotsExecute(r ListPipelin
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		newErr := a.client.MakeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1581,7 +1581,7 @@ func (a *DataLakePipelinesApiService) ListPipelinesExecute(r ListPipelinesApiReq
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		newErr := a.client.MakeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1702,7 +1702,7 @@ func (a *DataLakePipelinesApiService) PausePipelineExecute(r PausePipelineApiReq
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		newErr := a.client.MakeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1823,7 +1823,7 @@ func (a *DataLakePipelinesApiService) ResumePipelineExecute(r ResumePipelineApiR
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		newErr := a.client.MakeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1953,7 +1953,7 @@ func (a *DataLakePipelinesApiService) TriggerSnapshotIngestionExecute(r TriggerS
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		newErr := a.client.MakeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -2083,7 +2083,7 @@ func (a *DataLakePipelinesApiService) UpdatePipelineExecute(r UpdatePipelineApiR
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		newErr := a.client.MakeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 

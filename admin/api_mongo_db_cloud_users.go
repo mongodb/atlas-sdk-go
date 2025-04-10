@@ -653,7 +653,7 @@ func (a *MongoDBCloudUsersApiService) AddOrganizationRoleExecute(r AddOrganizati
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		newErr := a.client.MakeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -781,7 +781,7 @@ func (a *MongoDBCloudUsersApiService) AddProjectRoleExecute(r AddProjectRoleApiR
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		newErr := a.client.MakeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -904,7 +904,7 @@ func (a *MongoDBCloudUsersApiService) AddProjectUserExecute(r AddProjectUserApiR
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		newErr := a.client.MakeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1032,7 +1032,7 @@ func (a *MongoDBCloudUsersApiService) AddUserToTeamExecute(r AddUserToTeamApiReq
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		newErr := a.client.MakeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1154,7 +1154,7 @@ func (a *MongoDBCloudUsersApiService) CreateOrganizationUserExecute(r CreateOrga
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		newErr := a.client.MakeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1276,7 +1276,7 @@ func (a *MongoDBCloudUsersApiService) CreateUserExecute(r CreateUserApiRequest) 
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		newErr := a.client.MakeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1397,7 +1397,7 @@ func (a *MongoDBCloudUsersApiService) GetOrganizationUserExecute(r GetOrganizati
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		newErr := a.client.MakeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1518,7 +1518,7 @@ func (a *MongoDBCloudUsersApiService) GetProjectUserExecute(r GetProjectUserApiR
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		newErr := a.client.MakeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1633,7 +1633,7 @@ func (a *MongoDBCloudUsersApiService) GetUserExecute(r GetUserApiRequest) (*Clou
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		newErr := a.client.MakeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1748,7 +1748,7 @@ func (a *MongoDBCloudUsersApiService) GetUserByUsernameExecute(r GetUserByUserna
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		newErr := a.client.MakeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1935,7 +1935,7 @@ func (a *MongoDBCloudUsersApiService) ListOrganizationUsersExecute(r ListOrganiz
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		newErr := a.client.MakeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -2154,7 +2154,7 @@ func (a *MongoDBCloudUsersApiService) ListProjectUsersExecute(r ListProjectUsers
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		newErr := a.client.MakeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -2331,7 +2331,7 @@ func (a *MongoDBCloudUsersApiService) ListTeamUsersExecute(r ListTeamUsersApiReq
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		newErr := a.client.MakeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -2461,7 +2461,7 @@ func (a *MongoDBCloudUsersApiService) RemoveOrganizationRoleExecute(r RemoveOrga
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		newErr := a.client.MakeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -2582,7 +2582,7 @@ func (a *MongoDBCloudUsersApiService) RemoveOrganizationUserExecute(r RemoveOrga
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		newErr := a.client.MakeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -2710,7 +2710,7 @@ func (a *MongoDBCloudUsersApiService) RemoveProjectRoleExecute(r RemoveProjectRo
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		newErr := a.client.MakeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -2831,7 +2831,7 @@ func (a *MongoDBCloudUsersApiService) RemoveProjectUserExecute(r RemoveProjectUs
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		newErr := a.client.MakeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -2959,7 +2959,7 @@ func (a *MongoDBCloudUsersApiService) RemoveUserFromTeamExecute(r RemoveUserFrom
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		newErr := a.client.MakeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -3089,7 +3089,7 @@ func (a *MongoDBCloudUsersApiService) UpdateOrganizationUserExecute(r UpdateOrga
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		newErr := a.client.MakeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 

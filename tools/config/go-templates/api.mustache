@@ -288,7 +288,7 @@ func (a *{{{classname}}}Service) {{{nickname}}}Execute(r {{operationId}}ApiReque
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		newErr := a.client.MakeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
 		return {{#returnType}}localVarReturnValue, {{/returnType}}localVarHTTPResponse, newErr
 	}
 

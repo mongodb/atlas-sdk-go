@@ -497,7 +497,7 @@ func (c *APIClient) PrepareRequest(
 	return localVarRequest, nil
 }
 
-func (c *APIClient) makeApiError(res *http.Response, httpMethod, httpPath string) error {
+func (c *APIClient) MakeApiError(res *http.Response, httpMethod, httpPath string) error {
 	defer res.Body.Close()
 
 	newErr := &GenericOpenAPIError{
