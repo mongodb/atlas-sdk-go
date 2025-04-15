@@ -24,9 +24,6 @@ type BillingInvoice struct {
 	// Date and time when MongoDB Cloud finished the billing period that this invoice covers. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	EndDate *time.Time `json:"endDate,omitempty"`
-	// Unique 24-hexadecimal digit string that identifies the project associated to this invoice. This identifying string doesn't appear on all invoices.
-	// Read only field.
-	GroupId *string `json:"groupId,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the invoice submitted to the specified organization. Charges typically post the next day.
 	// Read only field.
 	Id *string `json:"id,omitempty"`
@@ -57,7 +54,7 @@ type BillingInvoice struct {
 	// Sum that the specified organization owed to MongoDB when MongoDB issued this invoice. This parameter expresses its value in US Dollars.
 	// Read only field.
 	StartingBalanceCents *int64 `json:"startingBalanceCents,omitempty"`
-	// Phase of payment processing in which this invoice exists when you made this request. Accepted phases include:  | Phase Value | Reason | |---|---| | CLOSED | MongoDB finalized all charges in the billing cycle but has yet to charge the customer. | | FAILED | MongoDB attempted to charge the provided credit card but charge for that amount failed. | | FORGIVEN | Customer initiated payment which MongoDB later forgave. | | FREE | All charges totalled zero so the customer won't be charged. | | INVOICED | MongoDB handled these charges using elastic invoicing. | | PAID | MongoDB succeeded in charging the provided credit card. | | PENDING | Invoice includes charges for the current billing cycle. | | PREPAID | Customer has a pre-paid plan so they won't be charged. |
+	// Phase of payment processing in which this invoice exists when you made this request. Accepted phases include:  - `CLOSED`: MongoDB finalized all charges in the billing cycle but has yet to charge the customer. - `FAILED`: MongoDB attempted to charge the provided credit card but charge for that amount failed. - `FORGIVEN`: Customer initiated payment which MongoDB later forgave. - `FREE`: All charges totalled zero so the customer won't be charged. - `INVOICED`: MongoDB handled these charges using elastic invoicing. - `PAID`: MongoDB succeeded in charging the provided credit card. - `PENDING`: Invoice includes charges for the current billing cycle. - `PREPAID`: Customer has a pre-paid plan so they won't be charged.
 	StatusName *string `json:"statusName,omitempty"`
 	// Sum of all positive invoice line items contained in this invoice. This parameter expresses its value in cents (100ths of one US Dollar).
 	// Read only field.
@@ -247,39 +244,6 @@ func (o *BillingInvoice) HasEndDate() bool {
 // SetEndDate gets a reference to the given time.Time and assigns it to the EndDate field.
 func (o *BillingInvoice) SetEndDate(v time.Time) {
 	o.EndDate = &v
-}
-
-// GetGroupId returns the GroupId field value if set, zero value otherwise
-func (o *BillingInvoice) GetGroupId() string {
-	if o == nil || IsNil(o.GroupId) {
-		var ret string
-		return ret
-	}
-	return *o.GroupId
-}
-
-// GetGroupIdOk returns a tuple with the GroupId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BillingInvoice) GetGroupIdOk() (*string, bool) {
-	if o == nil || IsNil(o.GroupId) {
-		return nil, false
-	}
-
-	return o.GroupId, true
-}
-
-// HasGroupId returns a boolean if a field has been set.
-func (o *BillingInvoice) HasGroupId() bool {
-	if o != nil && !IsNil(o.GroupId) {
-		return true
-	}
-
-	return false
-}
-
-// SetGroupId gets a reference to the given string and assigns it to the GroupId field.
-func (o *BillingInvoice) SetGroupId(v string) {
-	o.GroupId = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise

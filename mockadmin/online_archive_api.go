@@ -55,7 +55,7 @@ type OnlineArchiveApi_CreateOnlineArchive_Call struct {
 //   - groupId string
 //   - clusterName string
 //   - backupOnlineArchiveCreate *admin.BackupOnlineArchiveCreate
-func (_e *OnlineArchiveApi_Expecter) CreateOnlineArchive(ctx interface{}, groupId interface{}, clusterName interface{}, backupOnlineArchiveCreate interface{}) *OnlineArchiveApi_CreateOnlineArchive_Call {
+func (_e *OnlineArchiveApi_Expecter) CreateOnlineArchive(ctx any, groupId any, clusterName any, backupOnlineArchiveCreate any) *OnlineArchiveApi_CreateOnlineArchive_Call {
 	return &OnlineArchiveApi_CreateOnlineArchive_Call{Call: _e.mock.On("CreateOnlineArchive", ctx, groupId, clusterName, backupOnlineArchiveCreate)}
 }
 
@@ -122,7 +122,7 @@ type OnlineArchiveApi_CreateOnlineArchiveExecute_Call struct {
 
 // CreateOnlineArchiveExecute is a helper method to define mock.On call
 //   - r admin.CreateOnlineArchiveApiRequest
-func (_e *OnlineArchiveApi_Expecter) CreateOnlineArchiveExecute(r interface{}) *OnlineArchiveApi_CreateOnlineArchiveExecute_Call {
+func (_e *OnlineArchiveApi_Expecter) CreateOnlineArchiveExecute(r any) *OnlineArchiveApi_CreateOnlineArchiveExecute_Call {
 	return &OnlineArchiveApi_CreateOnlineArchiveExecute_Call{Call: _e.mock.On("CreateOnlineArchiveExecute", r)}
 }
 
@@ -169,7 +169,7 @@ type OnlineArchiveApi_CreateOnlineArchiveWithParams_Call struct {
 // CreateOnlineArchiveWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.CreateOnlineArchiveApiParams
-func (_e *OnlineArchiveApi_Expecter) CreateOnlineArchiveWithParams(ctx interface{}, args interface{}) *OnlineArchiveApi_CreateOnlineArchiveWithParams_Call {
+func (_e *OnlineArchiveApi_Expecter) CreateOnlineArchiveWithParams(ctx any, args any) *OnlineArchiveApi_CreateOnlineArchiveWithParams_Call {
 	return &OnlineArchiveApi_CreateOnlineArchiveWithParams_Call{Call: _e.mock.On("CreateOnlineArchiveWithParams", ctx, args)}
 }
 
@@ -218,7 +218,7 @@ type OnlineArchiveApi_DeleteOnlineArchive_Call struct {
 //   - groupId string
 //   - archiveId string
 //   - clusterName string
-func (_e *OnlineArchiveApi_Expecter) DeleteOnlineArchive(ctx interface{}, groupId interface{}, archiveId interface{}, clusterName interface{}) *OnlineArchiveApi_DeleteOnlineArchive_Call {
+func (_e *OnlineArchiveApi_Expecter) DeleteOnlineArchive(ctx any, groupId any, archiveId any, clusterName any) *OnlineArchiveApi_DeleteOnlineArchive_Call {
 	return &OnlineArchiveApi_DeleteOnlineArchive_Call{Call: _e.mock.On("DeleteOnlineArchive", ctx, groupId, archiveId, clusterName)}
 }
 
@@ -240,42 +240,33 @@ func (_c *OnlineArchiveApi_DeleteOnlineArchive_Call) RunAndReturn(run func(conte
 }
 
 // DeleteOnlineArchiveExecute provides a mock function with given fields: r
-func (_m *OnlineArchiveApi) DeleteOnlineArchiveExecute(r admin.DeleteOnlineArchiveApiRequest) (map[string]interface{}, *http.Response, error) {
+func (_m *OnlineArchiveApi) DeleteOnlineArchiveExecute(r admin.DeleteOnlineArchiveApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteOnlineArchiveExecute")
 	}
 
-	var r0 map[string]interface{}
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteOnlineArchiveApiRequest) (map[string]interface{}, *http.Response, error)); ok {
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.DeleteOnlineArchiveApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteOnlineArchiveApiRequest) map[string]interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteOnlineArchiveApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(map[string]interface{})
+			r0 = ret.Get(0).(*http.Response)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeleteOnlineArchiveApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.DeleteOnlineArchiveApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
+		r1 = ret.Error(1)
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.DeleteOnlineArchiveApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
+	return r0, r1
 }
 
 // OnlineArchiveApi_DeleteOnlineArchiveExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteOnlineArchiveExecute'
@@ -285,7 +276,7 @@ type OnlineArchiveApi_DeleteOnlineArchiveExecute_Call struct {
 
 // DeleteOnlineArchiveExecute is a helper method to define mock.On call
 //   - r admin.DeleteOnlineArchiveApiRequest
-func (_e *OnlineArchiveApi_Expecter) DeleteOnlineArchiveExecute(r interface{}) *OnlineArchiveApi_DeleteOnlineArchiveExecute_Call {
+func (_e *OnlineArchiveApi_Expecter) DeleteOnlineArchiveExecute(r any) *OnlineArchiveApi_DeleteOnlineArchiveExecute_Call {
 	return &OnlineArchiveApi_DeleteOnlineArchiveExecute_Call{Call: _e.mock.On("DeleteOnlineArchiveExecute", r)}
 }
 
@@ -296,12 +287,12 @@ func (_c *OnlineArchiveApi_DeleteOnlineArchiveExecute_Call) Run(run func(r admin
 	return _c
 }
 
-func (_c *OnlineArchiveApi_DeleteOnlineArchiveExecute_Call) Return(_a0 map[string]interface{}, _a1 *http.Response, _a2 error) *OnlineArchiveApi_DeleteOnlineArchiveExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
+func (_c *OnlineArchiveApi_DeleteOnlineArchiveExecute_Call) Return(_a0 *http.Response, _a1 error) *OnlineArchiveApi_DeleteOnlineArchiveExecute_Call {
+	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *OnlineArchiveApi_DeleteOnlineArchiveExecute_Call) RunAndReturn(run func(admin.DeleteOnlineArchiveApiRequest) (map[string]interface{}, *http.Response, error)) *OnlineArchiveApi_DeleteOnlineArchiveExecute_Call {
+func (_c *OnlineArchiveApi_DeleteOnlineArchiveExecute_Call) RunAndReturn(run func(admin.DeleteOnlineArchiveApiRequest) (*http.Response, error)) *OnlineArchiveApi_DeleteOnlineArchiveExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -332,7 +323,7 @@ type OnlineArchiveApi_DeleteOnlineArchiveWithParams_Call struct {
 // DeleteOnlineArchiveWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.DeleteOnlineArchiveApiParams
-func (_e *OnlineArchiveApi_Expecter) DeleteOnlineArchiveWithParams(ctx interface{}, args interface{}) *OnlineArchiveApi_DeleteOnlineArchiveWithParams_Call {
+func (_e *OnlineArchiveApi_Expecter) DeleteOnlineArchiveWithParams(ctx any, args any) *OnlineArchiveApi_DeleteOnlineArchiveWithParams_Call {
 	return &OnlineArchiveApi_DeleteOnlineArchiveWithParams_Call{Call: _e.mock.On("DeleteOnlineArchiveWithParams", ctx, args)}
 }
 
@@ -380,7 +371,7 @@ type OnlineArchiveApi_DownloadOnlineArchiveQueryLogs_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
-func (_e *OnlineArchiveApi_Expecter) DownloadOnlineArchiveQueryLogs(ctx interface{}, groupId interface{}, clusterName interface{}) *OnlineArchiveApi_DownloadOnlineArchiveQueryLogs_Call {
+func (_e *OnlineArchiveApi_Expecter) DownloadOnlineArchiveQueryLogs(ctx any, groupId any, clusterName any) *OnlineArchiveApi_DownloadOnlineArchiveQueryLogs_Call {
 	return &OnlineArchiveApi_DownloadOnlineArchiveQueryLogs_Call{Call: _e.mock.On("DownloadOnlineArchiveQueryLogs", ctx, groupId, clusterName)}
 }
 
@@ -447,7 +438,7 @@ type OnlineArchiveApi_DownloadOnlineArchiveQueryLogsExecute_Call struct {
 
 // DownloadOnlineArchiveQueryLogsExecute is a helper method to define mock.On call
 //   - r admin.DownloadOnlineArchiveQueryLogsApiRequest
-func (_e *OnlineArchiveApi_Expecter) DownloadOnlineArchiveQueryLogsExecute(r interface{}) *OnlineArchiveApi_DownloadOnlineArchiveQueryLogsExecute_Call {
+func (_e *OnlineArchiveApi_Expecter) DownloadOnlineArchiveQueryLogsExecute(r any) *OnlineArchiveApi_DownloadOnlineArchiveQueryLogsExecute_Call {
 	return &OnlineArchiveApi_DownloadOnlineArchiveQueryLogsExecute_Call{Call: _e.mock.On("DownloadOnlineArchiveQueryLogsExecute", r)}
 }
 
@@ -494,7 +485,7 @@ type OnlineArchiveApi_DownloadOnlineArchiveQueryLogsWithParams_Call struct {
 // DownloadOnlineArchiveQueryLogsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.DownloadOnlineArchiveQueryLogsApiParams
-func (_e *OnlineArchiveApi_Expecter) DownloadOnlineArchiveQueryLogsWithParams(ctx interface{}, args interface{}) *OnlineArchiveApi_DownloadOnlineArchiveQueryLogsWithParams_Call {
+func (_e *OnlineArchiveApi_Expecter) DownloadOnlineArchiveQueryLogsWithParams(ctx any, args any) *OnlineArchiveApi_DownloadOnlineArchiveQueryLogsWithParams_Call {
 	return &OnlineArchiveApi_DownloadOnlineArchiveQueryLogsWithParams_Call{Call: _e.mock.On("DownloadOnlineArchiveQueryLogsWithParams", ctx, args)}
 }
 
@@ -543,7 +534,7 @@ type OnlineArchiveApi_GetOnlineArchive_Call struct {
 //   - groupId string
 //   - archiveId string
 //   - clusterName string
-func (_e *OnlineArchiveApi_Expecter) GetOnlineArchive(ctx interface{}, groupId interface{}, archiveId interface{}, clusterName interface{}) *OnlineArchiveApi_GetOnlineArchive_Call {
+func (_e *OnlineArchiveApi_Expecter) GetOnlineArchive(ctx any, groupId any, archiveId any, clusterName any) *OnlineArchiveApi_GetOnlineArchive_Call {
 	return &OnlineArchiveApi_GetOnlineArchive_Call{Call: _e.mock.On("GetOnlineArchive", ctx, groupId, archiveId, clusterName)}
 }
 
@@ -610,7 +601,7 @@ type OnlineArchiveApi_GetOnlineArchiveExecute_Call struct {
 
 // GetOnlineArchiveExecute is a helper method to define mock.On call
 //   - r admin.GetOnlineArchiveApiRequest
-func (_e *OnlineArchiveApi_Expecter) GetOnlineArchiveExecute(r interface{}) *OnlineArchiveApi_GetOnlineArchiveExecute_Call {
+func (_e *OnlineArchiveApi_Expecter) GetOnlineArchiveExecute(r any) *OnlineArchiveApi_GetOnlineArchiveExecute_Call {
 	return &OnlineArchiveApi_GetOnlineArchiveExecute_Call{Call: _e.mock.On("GetOnlineArchiveExecute", r)}
 }
 
@@ -657,7 +648,7 @@ type OnlineArchiveApi_GetOnlineArchiveWithParams_Call struct {
 // GetOnlineArchiveWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetOnlineArchiveApiParams
-func (_e *OnlineArchiveApi_Expecter) GetOnlineArchiveWithParams(ctx interface{}, args interface{}) *OnlineArchiveApi_GetOnlineArchiveWithParams_Call {
+func (_e *OnlineArchiveApi_Expecter) GetOnlineArchiveWithParams(ctx any, args any) *OnlineArchiveApi_GetOnlineArchiveWithParams_Call {
 	return &OnlineArchiveApi_GetOnlineArchiveWithParams_Call{Call: _e.mock.On("GetOnlineArchiveWithParams", ctx, args)}
 }
 
@@ -705,7 +696,7 @@ type OnlineArchiveApi_ListOnlineArchives_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
-func (_e *OnlineArchiveApi_Expecter) ListOnlineArchives(ctx interface{}, groupId interface{}, clusterName interface{}) *OnlineArchiveApi_ListOnlineArchives_Call {
+func (_e *OnlineArchiveApi_Expecter) ListOnlineArchives(ctx any, groupId any, clusterName any) *OnlineArchiveApi_ListOnlineArchives_Call {
 	return &OnlineArchiveApi_ListOnlineArchives_Call{Call: _e.mock.On("ListOnlineArchives", ctx, groupId, clusterName)}
 }
 
@@ -772,7 +763,7 @@ type OnlineArchiveApi_ListOnlineArchivesExecute_Call struct {
 
 // ListOnlineArchivesExecute is a helper method to define mock.On call
 //   - r admin.ListOnlineArchivesApiRequest
-func (_e *OnlineArchiveApi_Expecter) ListOnlineArchivesExecute(r interface{}) *OnlineArchiveApi_ListOnlineArchivesExecute_Call {
+func (_e *OnlineArchiveApi_Expecter) ListOnlineArchivesExecute(r any) *OnlineArchiveApi_ListOnlineArchivesExecute_Call {
 	return &OnlineArchiveApi_ListOnlineArchivesExecute_Call{Call: _e.mock.On("ListOnlineArchivesExecute", r)}
 }
 
@@ -819,7 +810,7 @@ type OnlineArchiveApi_ListOnlineArchivesWithParams_Call struct {
 // ListOnlineArchivesWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListOnlineArchivesApiParams
-func (_e *OnlineArchiveApi_Expecter) ListOnlineArchivesWithParams(ctx interface{}, args interface{}) *OnlineArchiveApi_ListOnlineArchivesWithParams_Call {
+func (_e *OnlineArchiveApi_Expecter) ListOnlineArchivesWithParams(ctx any, args any) *OnlineArchiveApi_ListOnlineArchivesWithParams_Call {
 	return &OnlineArchiveApi_ListOnlineArchivesWithParams_Call{Call: _e.mock.On("ListOnlineArchivesWithParams", ctx, args)}
 }
 
@@ -869,7 +860,7 @@ type OnlineArchiveApi_UpdateOnlineArchive_Call struct {
 //   - archiveId string
 //   - clusterName string
 //   - backupOnlineArchive *admin.BackupOnlineArchive
-func (_e *OnlineArchiveApi_Expecter) UpdateOnlineArchive(ctx interface{}, groupId interface{}, archiveId interface{}, clusterName interface{}, backupOnlineArchive interface{}) *OnlineArchiveApi_UpdateOnlineArchive_Call {
+func (_e *OnlineArchiveApi_Expecter) UpdateOnlineArchive(ctx any, groupId any, archiveId any, clusterName any, backupOnlineArchive any) *OnlineArchiveApi_UpdateOnlineArchive_Call {
 	return &OnlineArchiveApi_UpdateOnlineArchive_Call{Call: _e.mock.On("UpdateOnlineArchive", ctx, groupId, archiveId, clusterName, backupOnlineArchive)}
 }
 
@@ -936,7 +927,7 @@ type OnlineArchiveApi_UpdateOnlineArchiveExecute_Call struct {
 
 // UpdateOnlineArchiveExecute is a helper method to define mock.On call
 //   - r admin.UpdateOnlineArchiveApiRequest
-func (_e *OnlineArchiveApi_Expecter) UpdateOnlineArchiveExecute(r interface{}) *OnlineArchiveApi_UpdateOnlineArchiveExecute_Call {
+func (_e *OnlineArchiveApi_Expecter) UpdateOnlineArchiveExecute(r any) *OnlineArchiveApi_UpdateOnlineArchiveExecute_Call {
 	return &OnlineArchiveApi_UpdateOnlineArchiveExecute_Call{Call: _e.mock.On("UpdateOnlineArchiveExecute", r)}
 }
 
@@ -983,7 +974,7 @@ type OnlineArchiveApi_UpdateOnlineArchiveWithParams_Call struct {
 // UpdateOnlineArchiveWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.UpdateOnlineArchiveApiParams
-func (_e *OnlineArchiveApi_Expecter) UpdateOnlineArchiveWithParams(ctx interface{}, args interface{}) *OnlineArchiveApi_UpdateOnlineArchiveWithParams_Call {
+func (_e *OnlineArchiveApi_Expecter) UpdateOnlineArchiveWithParams(ctx any, args any) *OnlineArchiveApi_UpdateOnlineArchiveWithParams_Call {
 	return &OnlineArchiveApi_UpdateOnlineArchiveWithParams_Call{Call: _e.mock.On("UpdateOnlineArchiveWithParams", ctx, args)}
 }
 

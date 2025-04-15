@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
-**Results** | Pointer to [**[]DiskBackupSnapshotAWSExportBucket**](DiskBackupSnapshotAWSExportBucket.md) | List of returned documents that MongoDB Cloud providers when completing this request. | [optional] [readonly] 
-**TotalCount** | Pointer to **int** | Total number of documents available. MongoDB Cloud omits this value if &#x60;includeCount&#x60; is set to &#x60;false&#x60;. | [optional] [readonly] 
+**Results** | Pointer to [**[]DiskBackupSnapshotAWSExportBucketResponse**](DiskBackupSnapshotAWSExportBucketResponse.md) | List of returned documents that MongoDB Cloud provides when completing this request. | [optional] [readonly] 
+**TotalCount** | Pointer to **int** | Total number of documents available. MongoDB Cloud omits this value if &#x60;includeCount&#x60; is set to &#x60;false&#x60;. The total number is an estimate and may not be exact. | [optional] [readonly] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ SetLinks sets Links field to given value.
 HasLinks returns a boolean if a field has been set.
 ### GetResults
 
-`func (o *PaginatedBackupSnapshotExportBucket) GetResults() []DiskBackupSnapshotAWSExportBucket`
+`func (o *PaginatedBackupSnapshotExportBucket) GetResults() []DiskBackupSnapshotAWSExportBucketResponse`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *PaginatedBackupSnapshotExportBucket) GetResultsOk() (*[]DiskBackupSnapshotAWSExportBucket, bool)`
+`func (o *PaginatedBackupSnapshotExportBucket) GetResultsOk() (*[]DiskBackupSnapshotAWSExportBucketResponse, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *PaginatedBackupSnapshotExportBucket) SetResults(v []DiskBackupSnapshotAWSExportBucket)`
+`func (o *PaginatedBackupSnapshotExportBucket) SetResults(v []DiskBackupSnapshotAWSExportBucketResponse)`
 
 SetResults sets Results field to given value.
 

@@ -10,7 +10,7 @@ import (
 type DatabaseUserRole struct {
 	// Collection on which this role applies.
 	CollectionName *string `json:"collectionName,omitempty"`
-	// Database against which the database user authenticates. Database users must provide both a username and authentication database to log into MongoDB.
+	// Database to which the user is granted access privileges.
 	DatabaseName string `json:"databaseName"`
 	// Human-readable label that identifies a group of privileges assigned to a database user. This value can either be a built-in role or a custom role.
 	RoleName string `json:"roleName"`

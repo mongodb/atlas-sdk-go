@@ -5,6 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ClusterName** | Pointer to **string** | Human-readable label that identifies the cluster. | [optional] [readonly] 
+**FutureInbound** | Pointer to **[]string** | List of future inbound IP addresses associated with the cluster. If your network allows outbound HTTP requests only to specific IP addresses, you must allow access to the following IP addresses so that your application can connect to your Atlas cluster. | [optional] [readonly] 
+**FutureOutbound** | Pointer to **[]string** | List of future outbound IP addresses associated with the cluster. If your network allows inbound HTTP requests only from specific IP addresses, you must allow access from the following IP addresses so that your Atlas cluster can communicate with your webhooks and KMS. | [optional] [readonly] 
 **Inbound** | Pointer to **[]string** | List of inbound IP addresses associated with the cluster. If your network allows outbound HTTP requests only to specific IP addresses, you must allow access to the following IP addresses so that your application can connect to your Atlas cluster. | [optional] [readonly] 
 **Outbound** | Pointer to **[]string** | List of outbound IP addresses associated with the cluster. If your network allows inbound HTTP requests only from specific IP addresses, you must allow access from the following IP addresses so that your Atlas cluster can communicate with your webhooks and KMS. | [optional] [readonly] 
 
@@ -51,6 +53,54 @@ SetClusterName sets ClusterName field to given value.
 `func (o *ClusterIPAddresses) HasClusterName() bool`
 
 HasClusterName returns a boolean if a field has been set.
+### GetFutureInbound
+
+`func (o *ClusterIPAddresses) GetFutureInbound() []string`
+
+GetFutureInbound returns the FutureInbound field if non-nil, zero value otherwise.
+
+### GetFutureInboundOk
+
+`func (o *ClusterIPAddresses) GetFutureInboundOk() (*[]string, bool)`
+
+GetFutureInboundOk returns a tuple with the FutureInbound field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFutureInbound
+
+`func (o *ClusterIPAddresses) SetFutureInbound(v []string)`
+
+SetFutureInbound sets FutureInbound field to given value.
+
+### HasFutureInbound
+
+`func (o *ClusterIPAddresses) HasFutureInbound() bool`
+
+HasFutureInbound returns a boolean if a field has been set.
+### GetFutureOutbound
+
+`func (o *ClusterIPAddresses) GetFutureOutbound() []string`
+
+GetFutureOutbound returns the FutureOutbound field if non-nil, zero value otherwise.
+
+### GetFutureOutboundOk
+
+`func (o *ClusterIPAddresses) GetFutureOutboundOk() (*[]string, bool)`
+
+GetFutureOutboundOk returns a tuple with the FutureOutbound field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFutureOutbound
+
+`func (o *ClusterIPAddresses) SetFutureOutbound(v []string)`
+
+SetFutureOutbound sets FutureOutbound field to given value.
+
+### HasFutureOutbound
+
+`func (o *ClusterIPAddresses) HasFutureOutbound() bool`
+
+HasFutureOutbound returns a boolean if a field has been set.
 ### GetInbound
 
 `func (o *ClusterIPAddresses) GetInbound() []string`

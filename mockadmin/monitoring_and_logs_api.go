@@ -54,7 +54,7 @@ type MonitoringAndLogsApi_GetAtlasProcess_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - processId string
-func (_e *MonitoringAndLogsApi_Expecter) GetAtlasProcess(ctx interface{}, groupId interface{}, processId interface{}) *MonitoringAndLogsApi_GetAtlasProcess_Call {
+func (_e *MonitoringAndLogsApi_Expecter) GetAtlasProcess(ctx any, groupId any, processId any) *MonitoringAndLogsApi_GetAtlasProcess_Call {
 	return &MonitoringAndLogsApi_GetAtlasProcess_Call{Call: _e.mock.On("GetAtlasProcess", ctx, groupId, processId)}
 }
 
@@ -121,7 +121,7 @@ type MonitoringAndLogsApi_GetAtlasProcessExecute_Call struct {
 
 // GetAtlasProcessExecute is a helper method to define mock.On call
 //   - r admin.GetAtlasProcessApiRequest
-func (_e *MonitoringAndLogsApi_Expecter) GetAtlasProcessExecute(r interface{}) *MonitoringAndLogsApi_GetAtlasProcessExecute_Call {
+func (_e *MonitoringAndLogsApi_Expecter) GetAtlasProcessExecute(r any) *MonitoringAndLogsApi_GetAtlasProcessExecute_Call {
 	return &MonitoringAndLogsApi_GetAtlasProcessExecute_Call{Call: _e.mock.On("GetAtlasProcessExecute", r)}
 }
 
@@ -168,7 +168,7 @@ type MonitoringAndLogsApi_GetAtlasProcessWithParams_Call struct {
 // GetAtlasProcessWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetAtlasProcessApiParams
-func (_e *MonitoringAndLogsApi_Expecter) GetAtlasProcessWithParams(ctx interface{}, args interface{}) *MonitoringAndLogsApi_GetAtlasProcessWithParams_Call {
+func (_e *MonitoringAndLogsApi_Expecter) GetAtlasProcessWithParams(ctx any, args any) *MonitoringAndLogsApi_GetAtlasProcessWithParams_Call {
 	return &MonitoringAndLogsApi_GetAtlasProcessWithParams_Call{Call: _e.mock.On("GetAtlasProcessWithParams", ctx, args)}
 }
 
@@ -217,7 +217,7 @@ type MonitoringAndLogsApi_GetDatabase_Call struct {
 //   - groupId string
 //   - databaseName string
 //   - processId string
-func (_e *MonitoringAndLogsApi_Expecter) GetDatabase(ctx interface{}, groupId interface{}, databaseName interface{}, processId interface{}) *MonitoringAndLogsApi_GetDatabase_Call {
+func (_e *MonitoringAndLogsApi_Expecter) GetDatabase(ctx any, groupId any, databaseName any, processId any) *MonitoringAndLogsApi_GetDatabase_Call {
 	return &MonitoringAndLogsApi_GetDatabase_Call{Call: _e.mock.On("GetDatabase", ctx, groupId, databaseName, processId)}
 }
 
@@ -284,7 +284,7 @@ type MonitoringAndLogsApi_GetDatabaseExecute_Call struct {
 
 // GetDatabaseExecute is a helper method to define mock.On call
 //   - r admin.GetDatabaseApiRequest
-func (_e *MonitoringAndLogsApi_Expecter) GetDatabaseExecute(r interface{}) *MonitoringAndLogsApi_GetDatabaseExecute_Call {
+func (_e *MonitoringAndLogsApi_Expecter) GetDatabaseExecute(r any) *MonitoringAndLogsApi_GetDatabaseExecute_Call {
 	return &MonitoringAndLogsApi_GetDatabaseExecute_Call{Call: _e.mock.On("GetDatabaseExecute", r)}
 }
 
@@ -333,7 +333,7 @@ type MonitoringAndLogsApi_GetDatabaseMeasurements_Call struct {
 //   - groupId string
 //   - databaseName string
 //   - processId string
-func (_e *MonitoringAndLogsApi_Expecter) GetDatabaseMeasurements(ctx interface{}, groupId interface{}, databaseName interface{}, processId interface{}) *MonitoringAndLogsApi_GetDatabaseMeasurements_Call {
+func (_e *MonitoringAndLogsApi_Expecter) GetDatabaseMeasurements(ctx any, groupId any, databaseName any, processId any) *MonitoringAndLogsApi_GetDatabaseMeasurements_Call {
 	return &MonitoringAndLogsApi_GetDatabaseMeasurements_Call{Call: _e.mock.On("GetDatabaseMeasurements", ctx, groupId, databaseName, processId)}
 }
 
@@ -400,7 +400,7 @@ type MonitoringAndLogsApi_GetDatabaseMeasurementsExecute_Call struct {
 
 // GetDatabaseMeasurementsExecute is a helper method to define mock.On call
 //   - r admin.GetDatabaseMeasurementsApiRequest
-func (_e *MonitoringAndLogsApi_Expecter) GetDatabaseMeasurementsExecute(r interface{}) *MonitoringAndLogsApi_GetDatabaseMeasurementsExecute_Call {
+func (_e *MonitoringAndLogsApi_Expecter) GetDatabaseMeasurementsExecute(r any) *MonitoringAndLogsApi_GetDatabaseMeasurementsExecute_Call {
 	return &MonitoringAndLogsApi_GetDatabaseMeasurementsExecute_Call{Call: _e.mock.On("GetDatabaseMeasurementsExecute", r)}
 }
 
@@ -447,7 +447,7 @@ type MonitoringAndLogsApi_GetDatabaseMeasurementsWithParams_Call struct {
 // GetDatabaseMeasurementsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetDatabaseMeasurementsApiParams
-func (_e *MonitoringAndLogsApi_Expecter) GetDatabaseMeasurementsWithParams(ctx interface{}, args interface{}) *MonitoringAndLogsApi_GetDatabaseMeasurementsWithParams_Call {
+func (_e *MonitoringAndLogsApi_Expecter) GetDatabaseMeasurementsWithParams(ctx any, args any) *MonitoringAndLogsApi_GetDatabaseMeasurementsWithParams_Call {
 	return &MonitoringAndLogsApi_GetDatabaseMeasurementsWithParams_Call{Call: _e.mock.On("GetDatabaseMeasurementsWithParams", ctx, args)}
 }
 
@@ -494,7 +494,7 @@ type MonitoringAndLogsApi_GetDatabaseWithParams_Call struct {
 // GetDatabaseWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetDatabaseApiParams
-func (_e *MonitoringAndLogsApi_Expecter) GetDatabaseWithParams(ctx interface{}, args interface{}) *MonitoringAndLogsApi_GetDatabaseWithParams_Call {
+func (_e *MonitoringAndLogsApi_Expecter) GetDatabaseWithParams(ctx any, args any) *MonitoringAndLogsApi_GetDatabaseWithParams_Call {
 	return &MonitoringAndLogsApi_GetDatabaseWithParams_Call{Call: _e.mock.On("GetDatabaseWithParams", ctx, args)}
 }
 
@@ -543,7 +543,7 @@ type MonitoringAndLogsApi_GetDiskMeasurements_Call struct {
 //   - groupId string
 //   - partitionName string
 //   - processId string
-func (_e *MonitoringAndLogsApi_Expecter) GetDiskMeasurements(ctx interface{}, groupId interface{}, partitionName interface{}, processId interface{}) *MonitoringAndLogsApi_GetDiskMeasurements_Call {
+func (_e *MonitoringAndLogsApi_Expecter) GetDiskMeasurements(ctx any, groupId any, partitionName any, processId any) *MonitoringAndLogsApi_GetDiskMeasurements_Call {
 	return &MonitoringAndLogsApi_GetDiskMeasurements_Call{Call: _e.mock.On("GetDiskMeasurements", ctx, groupId, partitionName, processId)}
 }
 
@@ -610,7 +610,7 @@ type MonitoringAndLogsApi_GetDiskMeasurementsExecute_Call struct {
 
 // GetDiskMeasurementsExecute is a helper method to define mock.On call
 //   - r admin.GetDiskMeasurementsApiRequest
-func (_e *MonitoringAndLogsApi_Expecter) GetDiskMeasurementsExecute(r interface{}) *MonitoringAndLogsApi_GetDiskMeasurementsExecute_Call {
+func (_e *MonitoringAndLogsApi_Expecter) GetDiskMeasurementsExecute(r any) *MonitoringAndLogsApi_GetDiskMeasurementsExecute_Call {
 	return &MonitoringAndLogsApi_GetDiskMeasurementsExecute_Call{Call: _e.mock.On("GetDiskMeasurementsExecute", r)}
 }
 
@@ -657,7 +657,7 @@ type MonitoringAndLogsApi_GetDiskMeasurementsWithParams_Call struct {
 // GetDiskMeasurementsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetDiskMeasurementsApiParams
-func (_e *MonitoringAndLogsApi_Expecter) GetDiskMeasurementsWithParams(ctx interface{}, args interface{}) *MonitoringAndLogsApi_GetDiskMeasurementsWithParams_Call {
+func (_e *MonitoringAndLogsApi_Expecter) GetDiskMeasurementsWithParams(ctx any, args any) *MonitoringAndLogsApi_GetDiskMeasurementsWithParams_Call {
 	return &MonitoringAndLogsApi_GetDiskMeasurementsWithParams_Call{Call: _e.mock.On("GetDiskMeasurementsWithParams", ctx, args)}
 }
 
@@ -706,7 +706,7 @@ type MonitoringAndLogsApi_GetHostLogs_Call struct {
 //   - groupId string
 //   - hostName string
 //   - logName string
-func (_e *MonitoringAndLogsApi_Expecter) GetHostLogs(ctx interface{}, groupId interface{}, hostName interface{}, logName interface{}) *MonitoringAndLogsApi_GetHostLogs_Call {
+func (_e *MonitoringAndLogsApi_Expecter) GetHostLogs(ctx any, groupId any, hostName any, logName any) *MonitoringAndLogsApi_GetHostLogs_Call {
 	return &MonitoringAndLogsApi_GetHostLogs_Call{Call: _e.mock.On("GetHostLogs", ctx, groupId, hostName, logName)}
 }
 
@@ -773,7 +773,7 @@ type MonitoringAndLogsApi_GetHostLogsExecute_Call struct {
 
 // GetHostLogsExecute is a helper method to define mock.On call
 //   - r admin.GetHostLogsApiRequest
-func (_e *MonitoringAndLogsApi_Expecter) GetHostLogsExecute(r interface{}) *MonitoringAndLogsApi_GetHostLogsExecute_Call {
+func (_e *MonitoringAndLogsApi_Expecter) GetHostLogsExecute(r any) *MonitoringAndLogsApi_GetHostLogsExecute_Call {
 	return &MonitoringAndLogsApi_GetHostLogsExecute_Call{Call: _e.mock.On("GetHostLogsExecute", r)}
 }
 
@@ -820,7 +820,7 @@ type MonitoringAndLogsApi_GetHostLogsWithParams_Call struct {
 // GetHostLogsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetHostLogsApiParams
-func (_e *MonitoringAndLogsApi_Expecter) GetHostLogsWithParams(ctx interface{}, args interface{}) *MonitoringAndLogsApi_GetHostLogsWithParams_Call {
+func (_e *MonitoringAndLogsApi_Expecter) GetHostLogsWithParams(ctx any, args any) *MonitoringAndLogsApi_GetHostLogsWithParams_Call {
 	return &MonitoringAndLogsApi_GetHostLogsWithParams_Call{Call: _e.mock.On("GetHostLogsWithParams", ctx, args)}
 }
 
@@ -868,7 +868,7 @@ type MonitoringAndLogsApi_GetHostMeasurements_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - processId string
-func (_e *MonitoringAndLogsApi_Expecter) GetHostMeasurements(ctx interface{}, groupId interface{}, processId interface{}) *MonitoringAndLogsApi_GetHostMeasurements_Call {
+func (_e *MonitoringAndLogsApi_Expecter) GetHostMeasurements(ctx any, groupId any, processId any) *MonitoringAndLogsApi_GetHostMeasurements_Call {
 	return &MonitoringAndLogsApi_GetHostMeasurements_Call{Call: _e.mock.On("GetHostMeasurements", ctx, groupId, processId)}
 }
 
@@ -935,7 +935,7 @@ type MonitoringAndLogsApi_GetHostMeasurementsExecute_Call struct {
 
 // GetHostMeasurementsExecute is a helper method to define mock.On call
 //   - r admin.GetHostMeasurementsApiRequest
-func (_e *MonitoringAndLogsApi_Expecter) GetHostMeasurementsExecute(r interface{}) *MonitoringAndLogsApi_GetHostMeasurementsExecute_Call {
+func (_e *MonitoringAndLogsApi_Expecter) GetHostMeasurementsExecute(r any) *MonitoringAndLogsApi_GetHostMeasurementsExecute_Call {
 	return &MonitoringAndLogsApi_GetHostMeasurementsExecute_Call{Call: _e.mock.On("GetHostMeasurementsExecute", r)}
 }
 
@@ -982,7 +982,7 @@ type MonitoringAndLogsApi_GetHostMeasurementsWithParams_Call struct {
 // GetHostMeasurementsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetHostMeasurementsApiParams
-func (_e *MonitoringAndLogsApi_Expecter) GetHostMeasurementsWithParams(ctx interface{}, args interface{}) *MonitoringAndLogsApi_GetHostMeasurementsWithParams_Call {
+func (_e *MonitoringAndLogsApi_Expecter) GetHostMeasurementsWithParams(ctx any, args any) *MonitoringAndLogsApi_GetHostMeasurementsWithParams_Call {
 	return &MonitoringAndLogsApi_GetHostMeasurementsWithParams_Call{Call: _e.mock.On("GetHostMeasurementsWithParams", ctx, args)}
 }
 
@@ -1033,7 +1033,7 @@ type MonitoringAndLogsApi_GetIndexMetrics_Call struct {
 //   - databaseName string
 //   - collectionName string
 //   - groupId string
-func (_e *MonitoringAndLogsApi_Expecter) GetIndexMetrics(ctx interface{}, processId interface{}, indexName interface{}, databaseName interface{}, collectionName interface{}, groupId interface{}) *MonitoringAndLogsApi_GetIndexMetrics_Call {
+func (_e *MonitoringAndLogsApi_Expecter) GetIndexMetrics(ctx any, processId any, indexName any, databaseName any, collectionName any, groupId any) *MonitoringAndLogsApi_GetIndexMetrics_Call {
 	return &MonitoringAndLogsApi_GetIndexMetrics_Call{Call: _e.mock.On("GetIndexMetrics", ctx, processId, indexName, databaseName, collectionName, groupId)}
 }
 
@@ -1100,7 +1100,7 @@ type MonitoringAndLogsApi_GetIndexMetricsExecute_Call struct {
 
 // GetIndexMetricsExecute is a helper method to define mock.On call
 //   - r admin.GetIndexMetricsApiRequest
-func (_e *MonitoringAndLogsApi_Expecter) GetIndexMetricsExecute(r interface{}) *MonitoringAndLogsApi_GetIndexMetricsExecute_Call {
+func (_e *MonitoringAndLogsApi_Expecter) GetIndexMetricsExecute(r any) *MonitoringAndLogsApi_GetIndexMetricsExecute_Call {
 	return &MonitoringAndLogsApi_GetIndexMetricsExecute_Call{Call: _e.mock.On("GetIndexMetricsExecute", r)}
 }
 
@@ -1147,7 +1147,7 @@ type MonitoringAndLogsApi_GetIndexMetricsWithParams_Call struct {
 // GetIndexMetricsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetIndexMetricsApiParams
-func (_e *MonitoringAndLogsApi_Expecter) GetIndexMetricsWithParams(ctx interface{}, args interface{}) *MonitoringAndLogsApi_GetIndexMetricsWithParams_Call {
+func (_e *MonitoringAndLogsApi_Expecter) GetIndexMetricsWithParams(ctx any, args any) *MonitoringAndLogsApi_GetIndexMetricsWithParams_Call {
 	return &MonitoringAndLogsApi_GetIndexMetricsWithParams_Call{Call: _e.mock.On("GetIndexMetricsWithParams", ctx, args)}
 }
 
@@ -1195,7 +1195,7 @@ type MonitoringAndLogsApi_GetMeasurements_Call struct {
 //   - ctx context.Context
 //   - processId string
 //   - groupId string
-func (_e *MonitoringAndLogsApi_Expecter) GetMeasurements(ctx interface{}, processId interface{}, groupId interface{}) *MonitoringAndLogsApi_GetMeasurements_Call {
+func (_e *MonitoringAndLogsApi_Expecter) GetMeasurements(ctx any, processId any, groupId any) *MonitoringAndLogsApi_GetMeasurements_Call {
 	return &MonitoringAndLogsApi_GetMeasurements_Call{Call: _e.mock.On("GetMeasurements", ctx, processId, groupId)}
 }
 
@@ -1262,7 +1262,7 @@ type MonitoringAndLogsApi_GetMeasurementsExecute_Call struct {
 
 // GetMeasurementsExecute is a helper method to define mock.On call
 //   - r admin.GetMeasurementsApiRequest
-func (_e *MonitoringAndLogsApi_Expecter) GetMeasurementsExecute(r interface{}) *MonitoringAndLogsApi_GetMeasurementsExecute_Call {
+func (_e *MonitoringAndLogsApi_Expecter) GetMeasurementsExecute(r any) *MonitoringAndLogsApi_GetMeasurementsExecute_Call {
 	return &MonitoringAndLogsApi_GetMeasurementsExecute_Call{Call: _e.mock.On("GetMeasurementsExecute", r)}
 }
 
@@ -1309,7 +1309,7 @@ type MonitoringAndLogsApi_GetMeasurementsWithParams_Call struct {
 // GetMeasurementsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetMeasurementsApiParams
-func (_e *MonitoringAndLogsApi_Expecter) GetMeasurementsWithParams(ctx interface{}, args interface{}) *MonitoringAndLogsApi_GetMeasurementsWithParams_Call {
+func (_e *MonitoringAndLogsApi_Expecter) GetMeasurementsWithParams(ctx any, args any) *MonitoringAndLogsApi_GetMeasurementsWithParams_Call {
 	return &MonitoringAndLogsApi_GetMeasurementsWithParams_Call{Call: _e.mock.On("GetMeasurementsWithParams", ctx, args)}
 }
 
@@ -1356,7 +1356,7 @@ type MonitoringAndLogsApi_ListAtlasProcesses_Call struct {
 // ListAtlasProcesses is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *MonitoringAndLogsApi_Expecter) ListAtlasProcesses(ctx interface{}, groupId interface{}) *MonitoringAndLogsApi_ListAtlasProcesses_Call {
+func (_e *MonitoringAndLogsApi_Expecter) ListAtlasProcesses(ctx any, groupId any) *MonitoringAndLogsApi_ListAtlasProcesses_Call {
 	return &MonitoringAndLogsApi_ListAtlasProcesses_Call{Call: _e.mock.On("ListAtlasProcesses", ctx, groupId)}
 }
 
@@ -1423,7 +1423,7 @@ type MonitoringAndLogsApi_ListAtlasProcessesExecute_Call struct {
 
 // ListAtlasProcessesExecute is a helper method to define mock.On call
 //   - r admin.ListAtlasProcessesApiRequest
-func (_e *MonitoringAndLogsApi_Expecter) ListAtlasProcessesExecute(r interface{}) *MonitoringAndLogsApi_ListAtlasProcessesExecute_Call {
+func (_e *MonitoringAndLogsApi_Expecter) ListAtlasProcessesExecute(r any) *MonitoringAndLogsApi_ListAtlasProcessesExecute_Call {
 	return &MonitoringAndLogsApi_ListAtlasProcessesExecute_Call{Call: _e.mock.On("ListAtlasProcessesExecute", r)}
 }
 
@@ -1470,7 +1470,7 @@ type MonitoringAndLogsApi_ListAtlasProcessesWithParams_Call struct {
 // ListAtlasProcessesWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListAtlasProcessesApiParams
-func (_e *MonitoringAndLogsApi_Expecter) ListAtlasProcessesWithParams(ctx interface{}, args interface{}) *MonitoringAndLogsApi_ListAtlasProcessesWithParams_Call {
+func (_e *MonitoringAndLogsApi_Expecter) ListAtlasProcessesWithParams(ctx any, args any) *MonitoringAndLogsApi_ListAtlasProcessesWithParams_Call {
 	return &MonitoringAndLogsApi_ListAtlasProcessesWithParams_Call{Call: _e.mock.On("ListAtlasProcessesWithParams", ctx, args)}
 }
 
@@ -1518,7 +1518,7 @@ type MonitoringAndLogsApi_ListDatabases_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - processId string
-func (_e *MonitoringAndLogsApi_Expecter) ListDatabases(ctx interface{}, groupId interface{}, processId interface{}) *MonitoringAndLogsApi_ListDatabases_Call {
+func (_e *MonitoringAndLogsApi_Expecter) ListDatabases(ctx any, groupId any, processId any) *MonitoringAndLogsApi_ListDatabases_Call {
 	return &MonitoringAndLogsApi_ListDatabases_Call{Call: _e.mock.On("ListDatabases", ctx, groupId, processId)}
 }
 
@@ -1585,7 +1585,7 @@ type MonitoringAndLogsApi_ListDatabasesExecute_Call struct {
 
 // ListDatabasesExecute is a helper method to define mock.On call
 //   - r admin.ListDatabasesApiRequest
-func (_e *MonitoringAndLogsApi_Expecter) ListDatabasesExecute(r interface{}) *MonitoringAndLogsApi_ListDatabasesExecute_Call {
+func (_e *MonitoringAndLogsApi_Expecter) ListDatabasesExecute(r any) *MonitoringAndLogsApi_ListDatabasesExecute_Call {
 	return &MonitoringAndLogsApi_ListDatabasesExecute_Call{Call: _e.mock.On("ListDatabasesExecute", r)}
 }
 
@@ -1632,7 +1632,7 @@ type MonitoringAndLogsApi_ListDatabasesWithParams_Call struct {
 // ListDatabasesWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListDatabasesApiParams
-func (_e *MonitoringAndLogsApi_Expecter) ListDatabasesWithParams(ctx interface{}, args interface{}) *MonitoringAndLogsApi_ListDatabasesWithParams_Call {
+func (_e *MonitoringAndLogsApi_Expecter) ListDatabasesWithParams(ctx any, args any) *MonitoringAndLogsApi_ListDatabasesWithParams_Call {
 	return &MonitoringAndLogsApi_ListDatabasesWithParams_Call{Call: _e.mock.On("ListDatabasesWithParams", ctx, args)}
 }
 
@@ -1681,7 +1681,7 @@ type MonitoringAndLogsApi_ListDiskMeasurements_Call struct {
 //   - partitionName string
 //   - groupId string
 //   - processId string
-func (_e *MonitoringAndLogsApi_Expecter) ListDiskMeasurements(ctx interface{}, partitionName interface{}, groupId interface{}, processId interface{}) *MonitoringAndLogsApi_ListDiskMeasurements_Call {
+func (_e *MonitoringAndLogsApi_Expecter) ListDiskMeasurements(ctx any, partitionName any, groupId any, processId any) *MonitoringAndLogsApi_ListDiskMeasurements_Call {
 	return &MonitoringAndLogsApi_ListDiskMeasurements_Call{Call: _e.mock.On("ListDiskMeasurements", ctx, partitionName, groupId, processId)}
 }
 
@@ -1748,7 +1748,7 @@ type MonitoringAndLogsApi_ListDiskMeasurementsExecute_Call struct {
 
 // ListDiskMeasurementsExecute is a helper method to define mock.On call
 //   - r admin.ListDiskMeasurementsApiRequest
-func (_e *MonitoringAndLogsApi_Expecter) ListDiskMeasurementsExecute(r interface{}) *MonitoringAndLogsApi_ListDiskMeasurementsExecute_Call {
+func (_e *MonitoringAndLogsApi_Expecter) ListDiskMeasurementsExecute(r any) *MonitoringAndLogsApi_ListDiskMeasurementsExecute_Call {
 	return &MonitoringAndLogsApi_ListDiskMeasurementsExecute_Call{Call: _e.mock.On("ListDiskMeasurementsExecute", r)}
 }
 
@@ -1795,7 +1795,7 @@ type MonitoringAndLogsApi_ListDiskMeasurementsWithParams_Call struct {
 // ListDiskMeasurementsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListDiskMeasurementsApiParams
-func (_e *MonitoringAndLogsApi_Expecter) ListDiskMeasurementsWithParams(ctx interface{}, args interface{}) *MonitoringAndLogsApi_ListDiskMeasurementsWithParams_Call {
+func (_e *MonitoringAndLogsApi_Expecter) ListDiskMeasurementsWithParams(ctx any, args any) *MonitoringAndLogsApi_ListDiskMeasurementsWithParams_Call {
 	return &MonitoringAndLogsApi_ListDiskMeasurementsWithParams_Call{Call: _e.mock.On("ListDiskMeasurementsWithParams", ctx, args)}
 }
 
@@ -1843,7 +1843,7 @@ type MonitoringAndLogsApi_ListDiskPartitions_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - processId string
-func (_e *MonitoringAndLogsApi_Expecter) ListDiskPartitions(ctx interface{}, groupId interface{}, processId interface{}) *MonitoringAndLogsApi_ListDiskPartitions_Call {
+func (_e *MonitoringAndLogsApi_Expecter) ListDiskPartitions(ctx any, groupId any, processId any) *MonitoringAndLogsApi_ListDiskPartitions_Call {
 	return &MonitoringAndLogsApi_ListDiskPartitions_Call{Call: _e.mock.On("ListDiskPartitions", ctx, groupId, processId)}
 }
 
@@ -1910,7 +1910,7 @@ type MonitoringAndLogsApi_ListDiskPartitionsExecute_Call struct {
 
 // ListDiskPartitionsExecute is a helper method to define mock.On call
 //   - r admin.ListDiskPartitionsApiRequest
-func (_e *MonitoringAndLogsApi_Expecter) ListDiskPartitionsExecute(r interface{}) *MonitoringAndLogsApi_ListDiskPartitionsExecute_Call {
+func (_e *MonitoringAndLogsApi_Expecter) ListDiskPartitionsExecute(r any) *MonitoringAndLogsApi_ListDiskPartitionsExecute_Call {
 	return &MonitoringAndLogsApi_ListDiskPartitionsExecute_Call{Call: _e.mock.On("ListDiskPartitionsExecute", r)}
 }
 
@@ -1957,7 +1957,7 @@ type MonitoringAndLogsApi_ListDiskPartitionsWithParams_Call struct {
 // ListDiskPartitionsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListDiskPartitionsApiParams
-func (_e *MonitoringAndLogsApi_Expecter) ListDiskPartitionsWithParams(ctx interface{}, args interface{}) *MonitoringAndLogsApi_ListDiskPartitionsWithParams_Call {
+func (_e *MonitoringAndLogsApi_Expecter) ListDiskPartitionsWithParams(ctx any, args any) *MonitoringAndLogsApi_ListDiskPartitionsWithParams_Call {
 	return &MonitoringAndLogsApi_ListDiskPartitionsWithParams_Call{Call: _e.mock.On("ListDiskPartitionsWithParams", ctx, args)}
 }
 
@@ -2007,7 +2007,7 @@ type MonitoringAndLogsApi_ListIndexMetrics_Call struct {
 //   - databaseName string
 //   - collectionName string
 //   - groupId string
-func (_e *MonitoringAndLogsApi_Expecter) ListIndexMetrics(ctx interface{}, processId interface{}, databaseName interface{}, collectionName interface{}, groupId interface{}) *MonitoringAndLogsApi_ListIndexMetrics_Call {
+func (_e *MonitoringAndLogsApi_Expecter) ListIndexMetrics(ctx any, processId any, databaseName any, collectionName any, groupId any) *MonitoringAndLogsApi_ListIndexMetrics_Call {
 	return &MonitoringAndLogsApi_ListIndexMetrics_Call{Call: _e.mock.On("ListIndexMetrics", ctx, processId, databaseName, collectionName, groupId)}
 }
 
@@ -2074,7 +2074,7 @@ type MonitoringAndLogsApi_ListIndexMetricsExecute_Call struct {
 
 // ListIndexMetricsExecute is a helper method to define mock.On call
 //   - r admin.ListIndexMetricsApiRequest
-func (_e *MonitoringAndLogsApi_Expecter) ListIndexMetricsExecute(r interface{}) *MonitoringAndLogsApi_ListIndexMetricsExecute_Call {
+func (_e *MonitoringAndLogsApi_Expecter) ListIndexMetricsExecute(r any) *MonitoringAndLogsApi_ListIndexMetricsExecute_Call {
 	return &MonitoringAndLogsApi_ListIndexMetricsExecute_Call{Call: _e.mock.On("ListIndexMetricsExecute", r)}
 }
 
@@ -2121,7 +2121,7 @@ type MonitoringAndLogsApi_ListIndexMetricsWithParams_Call struct {
 // ListIndexMetricsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListIndexMetricsApiParams
-func (_e *MonitoringAndLogsApi_Expecter) ListIndexMetricsWithParams(ctx interface{}, args interface{}) *MonitoringAndLogsApi_ListIndexMetricsWithParams_Call {
+func (_e *MonitoringAndLogsApi_Expecter) ListIndexMetricsWithParams(ctx any, args any) *MonitoringAndLogsApi_ListIndexMetricsWithParams_Call {
 	return &MonitoringAndLogsApi_ListIndexMetricsWithParams_Call{Call: _e.mock.On("ListIndexMetricsWithParams", ctx, args)}
 }
 
@@ -2169,7 +2169,7 @@ type MonitoringAndLogsApi_ListMetricTypes_Call struct {
 //   - ctx context.Context
 //   - processId string
 //   - groupId string
-func (_e *MonitoringAndLogsApi_Expecter) ListMetricTypes(ctx interface{}, processId interface{}, groupId interface{}) *MonitoringAndLogsApi_ListMetricTypes_Call {
+func (_e *MonitoringAndLogsApi_Expecter) ListMetricTypes(ctx any, processId any, groupId any) *MonitoringAndLogsApi_ListMetricTypes_Call {
 	return &MonitoringAndLogsApi_ListMetricTypes_Call{Call: _e.mock.On("ListMetricTypes", ctx, processId, groupId)}
 }
 
@@ -2236,7 +2236,7 @@ type MonitoringAndLogsApi_ListMetricTypesExecute_Call struct {
 
 // ListMetricTypesExecute is a helper method to define mock.On call
 //   - r admin.ListMetricTypesApiRequest
-func (_e *MonitoringAndLogsApi_Expecter) ListMetricTypesExecute(r interface{}) *MonitoringAndLogsApi_ListMetricTypesExecute_Call {
+func (_e *MonitoringAndLogsApi_Expecter) ListMetricTypesExecute(r any) *MonitoringAndLogsApi_ListMetricTypesExecute_Call {
 	return &MonitoringAndLogsApi_ListMetricTypesExecute_Call{Call: _e.mock.On("ListMetricTypesExecute", r)}
 }
 
@@ -2283,7 +2283,7 @@ type MonitoringAndLogsApi_ListMetricTypesWithParams_Call struct {
 // ListMetricTypesWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListMetricTypesApiParams
-func (_e *MonitoringAndLogsApi_Expecter) ListMetricTypesWithParams(ctx interface{}, args interface{}) *MonitoringAndLogsApi_ListMetricTypesWithParams_Call {
+func (_e *MonitoringAndLogsApi_Expecter) ListMetricTypesWithParams(ctx any, args any) *MonitoringAndLogsApi_ListMetricTypesWithParams_Call {
 	return &MonitoringAndLogsApi_ListMetricTypesWithParams_Call{Call: _e.mock.On("ListMetricTypesWithParams", ctx, args)}
 }
 

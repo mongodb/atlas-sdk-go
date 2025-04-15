@@ -9,12 +9,12 @@ import (
 
 // DiskBackupSnapshotSchedule struct for DiskBackupSnapshotSchedule
 type DiskBackupSnapshotSchedule struct {
-	// Flag that indicates whether MongoDB Cloud automatically exports cloud backup snapshots to the AWS bucket.
+	// Flag that indicates whether MongoDB Cloud automatically exports Cloud Backup Snapshots to the Export Bucket.
 	AutoExportEnabled *bool `json:"autoExportEnabled,omitempty"`
-	// Unique 24-hexadecimal digit string that identifies the cluster with the snapshot you want to return.
+	// Unique 24-hexadecimal digit string that identifies the cluster with the Snapshot you want to return.
 	// Read only field.
 	ClusterId *string `json:"clusterId,omitempty"`
-	// Human-readable label that identifies the cluster with the snapshot you want to return.
+	// Human-readable label that identifies the cluster with the Snapshot you want to return.
 	// Read only field.
 	ClusterName *string `json:"clusterName,omitempty"`
 	// List that contains a document for each copy setting item in the desired backup policy.
@@ -28,21 +28,21 @@ type DiskBackupSnapshotSchedule struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
-	// Date and time when MongoDB Cloud takes the next snapshot. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
+	// Date and time when MongoDB Cloud takes the next Snapshot. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	NextSnapshot *time.Time `json:"nextSnapshot,omitempty"`
 	// Rules set for this backup schedule.
 	Policies *[]AdvancedDiskBackupSnapshotSchedulePolicy `json:"policies,omitempty"`
-	// Hour of day in Coordinated Universal Time (UTC) that represents when MongoDB Cloud takes the snapshot.
+	// Hour of day in Coordinated Universal Time (UTC) that represents when MongoDB Cloud takes the Snapshot.
 	ReferenceHourOfDay *int `json:"referenceHourOfDay,omitempty"`
-	// Minute of the **referenceHourOfDay** that represents when MongoDB Cloud takes the snapshot.
+	// Minute of the **referenceHourOfDay** that represents when MongoDB Cloud takes the Snapshot.
 	ReferenceMinuteOfHour *int `json:"referenceMinuteOfHour,omitempty"`
-	// Number of previous days that you can restore back to with Continuous Cloud Backup accuracy. You must specify a positive, non-zero integer. This parameter applies to continuous cloud backups only.
+	// Number of previous days that you can restore back to with Continuous Cloud Backup accuracy. You must specify a positive, non-zero integer. This parameter applies to continuous Cloud Backups only.
 	RestoreWindowDays *int `json:"restoreWindowDays,omitempty"`
-	// Flag that indicates whether to apply the retention changes in the updated backup policy to snapshots that MongoDB Cloud took previously.
+	// Flag that indicates whether to apply the retention changes in the updated backup policy to Snapshots that MongoDB Cloud took previously.
 	// Write only field.
 	UpdateSnapshots *bool `json:"updateSnapshots,omitempty"`
-	// Flag that indicates whether to use organization and project names instead of organization and project UUIDs in the path to the metadata files that MongoDB Cloud uploads to your AWS bucket.
+	// Flag that indicates whether to use organization and project names instead of organization and project UUIDs in the path to the metadata files that MongoDB Cloud uploads to your Export Bucket.
 	UseOrgAndGroupNamesInExportPrefix *bool `json:"useOrgAndGroupNamesInExportPrefix,omitempty"`
 }
 

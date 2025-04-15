@@ -8,14 +8,17 @@ import (
 
 // HardwareSpec Hardware specifications for all electable nodes deployed in the region. Electable nodes can become the primary and can enable local reads. If you don't specify this option, MongoDB Cloud deploys no electable nodes to the region.
 type HardwareSpec struct {
-	// Target throughput desired for storage attached to your AWS-provisioned cluster. Change this parameter only if you:  - set `\"replicationSpecs[n].regionConfigs[m].providerName\" : \"AWS\"`. - set `\"replicationSpecs[n].regionConfigs[m].electableSpecs.instanceSize\" : \"M30\"` or greater not including `Mxx_NVME` tiers.  The maximum input/output operations per second (IOPS) depend on the selected **.instanceSize** and **.diskSizeGB**. This parameter defaults to the cluster tier's standard IOPS value. Changing this value impacts cluster cost. MongoDB Cloud enforces minimum ratios of storage capacity to system memory for given cluster tiers. This keeps cluster performance consistent with large datasets.  - Instance sizes `M10` to `M40` have a ratio of disk capacity to system memory of 60:1. - Instance sizes greater than `M40` have a ratio of 120:1.
+	// Target IOPS (Input/Output Operations Per Second) desired for storage attached to this hardware.   Change this parameter if you:  - set `\"replicationSpecs[n].regionConfigs[m].providerName\" to \"AWS\"`. - set `\"replicationSpecs[n].regionConfigs[m].electableSpecs.instanceSize\" to \"M30\"` or greater (not including `Mxx_NVME` tiers).  - set `\"replicationSpecs[n].regionConfigs[m].electableSpecs.ebsVolumeType\" to \"PROVISIONED\"`.  The maximum input/output operations per second (IOPS) depend on the selected **.instanceSize** and **.diskSizeGB**. This parameter defaults to the cluster tier's standard IOPS value. Changing this value impacts cluster cost. MongoDB Cloud enforces minimum ratios of storage capacity to system memory for given cluster tiers. This keeps cluster performance consistent with large datasets.  - Instance sizes `M10` to `M40` have a ratio of disk capacity to system memory of 60:1. - Instance sizes greater than `M40` have a ratio of 120:1.  Alternatively: Target throughput desired for storage attached to your Azure-provisioned cluster. Change this parameter if you:  - set `\"replicationSpecs[n].regionConfigs[m].providerName\" : \"Azure\"`. - set `\"replicationSpecs[n].regionConfigs[m].electableSpecs.instanceSize\" : \"M40\"` or greater not including `Mxx_NVME` tiers.  The maximum input/output operations per second (IOPS) depend on the selected **.instanceSize** and **.diskSizeGB**. This parameter defaults to the cluster tier's standard IOPS value. Changing this value impacts cluster cost.
 	DiskIOPS *int `json:"diskIOPS,omitempty"`
 	// Type of storage you want to attach to your AWS-provisioned cluster.  - `STANDARD` volume types can't exceed the default input/output operations per second (IOPS) rate for the selected volume size.   - `PROVISIONED` volume types must fall within the allowable IOPS range for the selected volume size. You must set this value to (`PROVISIONED`) for NVMe clusters.
 	EbsVolumeType *string `json:"ebsVolumeType,omitempty"`
-	// Hardware specification for the instance sizes in this region. Each instance size has a default storage and memory capacity. The instance size you select applies to all the data-bearing hosts in your instance size.
+	// Hardware specification for the instance sizes in this region. Each instance size has a default storage and memory capacity. The instance size you select applies to all the data-bearing hosts of the node type.  Alternatively: Hardware specification for the instances in this M0/M2/M5 tier cluster.
 	InstanceSize *string `json:"instanceSize,omitempty"`
 	// Number of nodes of the given type for MongoDB Cloud to deploy to the region.
 	NodeCount *int `json:"nodeCount,omitempty"`
+	// The true tenant instance size. This is present to support backwards compatibility for deprecated provider types and/or instance sizes.
+	// Read only field.
+	EffectiveInstanceSize *string `json:"effectiveInstanceSize,omitempty"`
 }
 
 // NewHardwareSpec instantiates a new HardwareSpec object
@@ -169,6 +172,39 @@ func (o *HardwareSpec) HasNodeCount() bool {
 // SetNodeCount gets a reference to the given int and assigns it to the NodeCount field.
 func (o *HardwareSpec) SetNodeCount(v int) {
 	o.NodeCount = &v
+}
+
+// GetEffectiveInstanceSize returns the EffectiveInstanceSize field value if set, zero value otherwise
+func (o *HardwareSpec) GetEffectiveInstanceSize() string {
+	if o == nil || IsNil(o.EffectiveInstanceSize) {
+		var ret string
+		return ret
+	}
+	return *o.EffectiveInstanceSize
+}
+
+// GetEffectiveInstanceSizeOk returns a tuple with the EffectiveInstanceSize field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *HardwareSpec) GetEffectiveInstanceSizeOk() (*string, bool) {
+	if o == nil || IsNil(o.EffectiveInstanceSize) {
+		return nil, false
+	}
+
+	return o.EffectiveInstanceSize, true
+}
+
+// HasEffectiveInstanceSize returns a boolean if a field has been set.
+func (o *HardwareSpec) HasEffectiveInstanceSize() bool {
+	if o != nil && !IsNil(o.EffectiveInstanceSize) {
+		return true
+	}
+
+	return false
+}
+
+// SetEffectiveInstanceSize gets a reference to the given string and assigns it to the EffectiveInstanceSize field.
+func (o *HardwareSpec) SetEffectiveInstanceSize(v string) {
+	o.EffectiveInstanceSize = &v
 }
 
 func (o HardwareSpec) MarshalJSONWithoutReadOnly() ([]byte, error) {

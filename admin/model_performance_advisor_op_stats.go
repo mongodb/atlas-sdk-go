@@ -17,7 +17,7 @@ type PerformanceAdvisorOpStats struct {
 	// Number of documents that the query read.
 	// Read only field.
 	NScanned *int64 `json:"nScanned,omitempty"`
-	// Date and time from which the query retrieves the suggested indexes. This parameter expresses its value in the number of seconds that have elapsed since the [UNIX epoch](https://en.wikipedia.org/wiki/Unix_time). This parameter relates to the **since** query parameter.
+	// Date and time from which the query retrieves the suggested indexes. This parameter expresses its value in the number of seconds that have elapsed since the UNIX epoch. This parameter relates to the **since** query parameter.
 	// Read only field.
 	Ts *int64 `json:"ts,omitempty"`
 }

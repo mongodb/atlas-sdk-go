@@ -15,16 +15,19 @@ type ClusterProviderSettings struct {
 	// Flag that indicates whether the Amazon Elastic Block Store (EBS) encryption feature encrypts the host's root volume for both data at rest within the volume and for data moving between the volume and the cluster. Clusters always have this setting enabled.
 	// Deprecated
 	EncryptEBSVolume *bool `json:"encryptEBSVolume,omitempty"`
-	// Cluster tier, with a default storage and memory capacity, that applies to all the data-bearing hosts in your cluster.  Alternatively: Cluster tier, with a default storage and memory capacity, that applies to all the data-bearing hosts in your cluster. You must set **providerSettings.providerName** to `TENANT` and specify the cloud service provider in **providerSettings.backingProviderName**.
+	// Cluster tier, with a default storage and memory capacity, that applies to all the data-bearing hosts in your cluster.  Alternatively: Cluster tier, with a default storage and memory capacity, that applies to all the data-bearing hosts in your cluster. You must set **providerSettings.providerName** to `TENANT` and specify the cloud service provider in **providerSettings.backingProviderName**.  Alternatively: Cluster tier, with a default storage and memory capacity, that applies to all the data-bearing hosts in your cluster. You must set **providerSettings.providerName** to `FLEX` and specify the cloud service provider in **providerSettings.backingProviderName**.
 	InstanceSizeName *string `json:"instanceSizeName,omitempty"`
-	// Physical location where MongoDB Cloud deploys your AWS-hosted MongoDB cluster nodes. The region you choose can affect network latency for clients accessing your databases. When MongoDB Cloud deploys a dedicated cluster, it checks if a VPC or VPC connection exists for that provider and region. If not, MongoDB Cloud creates them as part of the deployment. MongoDB Cloud assigns the VPC a CIDR block. To limit a new VPC peering connection to one CIDR block and region, create the connection first. Deploy the cluster after the connection starts.  Alternatively: Microsoft Azure Regions.  Alternatively: Google Compute Regions.  Alternatively: Human-readable label that identifies the geographic location of your MongoDB cluster. The region you choose can affect network latency for clients accessing your databases. For a complete list of region names, see [AWS](https://docs.atlas.mongodb.com/reference/amazon-aws/#std-label-amazon-aws), [GCP](https://docs.atlas.mongodb.com/reference/google-gcp/), and [Azure](https://docs.atlas.mongodb.com/reference/microsoft-azure/). For multi-region clusters, see **replicationSpec.{region}**.
+	// Physical location where MongoDB Cloud deploys your AWS-hosted MongoDB cluster nodes. The region you choose can affect network latency for clients accessing your databases. When MongoDB Cloud deploys a dedicated cluster, it checks if a VPC or VPC connection exists for that provider and region. If not, MongoDB Cloud creates them as part of the deployment. MongoDB Cloud assigns the VPC a CIDR block. To limit a new VPC peering connection to one CIDR block and region, create the connection first. Deploy the cluster after the connection starts.  Alternatively: Microsoft Azure Regions.  Alternatively: Google Compute Regions.  Alternatively: Human-readable label that identifies the geographic location of your MongoDB cluster. The region you choose can affect network latency for clients accessing your databases. For a complete list of region names, see [AWS](https://docs.atlas.mongodb.com/reference/amazon-aws/#std-label-amazon-aws), [GCP](https://docs.atlas.mongodb.com/reference/google-gcp/), and [Azure](https://docs.atlas.mongodb.com/reference/microsoft-azure/). For multi-region clusters, see **replicationSpec.{region}**.  Alternatively: Human-readable label that identifies the geographic location of your MongoDB cluster. The region you choose can affect network latency for clients accessing your databases. For a complete list of region names, see [AWS](https://docs.atlas.mongodb.com/reference/amazon-aws/#std-label-amazon-aws), [GCP](https://docs.atlas.mongodb.com/reference/google-gcp/), and [Azure](https://docs.atlas.mongodb.com/reference/microsoft-azure/).
 	RegionName *string `json:"regionName,omitempty"`
 	// Disk Input/Output Operations per Second (IOPS) setting for Amazon Web Services (AWS) storage that you configure only for abbr title=\"Amazon Web Services\">AWS</abbr>. Specify whether Disk Input/Output Operations per Second (IOPS) must not exceed the default Input/Output Operations per Second (IOPS) rate for the selected volume size (`STANDARD`), or must fall within the allowable Input/Output Operations per Second (IOPS) range for the selected volume size (`PROVISIONED`). You must set this value to (`PROVISIONED`) for NVMe clusters.
 	VolumeType *string `json:"volumeType,omitempty"`
 	// Disk type that corresponds to the host's root volume for Azure instances. If omitted, the default disk type for the selected **providerSettings.instanceSizeName** applies.
 	DiskTypeName *string `json:"diskTypeName,omitempty"`
-	// Cloud service provider on which MongoDB Cloud provisioned the multi-tenant host. The resource returns this parameter when **providerSettings.providerName** is `TENANT` and **providerSetting.instanceSizeName** is `M0`, `M2` or `M5`.
+	// Cloud service provider on which MongoDB Cloud provisioned the multi-tenant host. The resource returns this parameter when **providerSettings.providerName** is `TENANT` and **providerSetting.instanceSizeName** is `M0`, `M2` or `M5`.   Please note that using an instanceSize of M2 or M5 will create a Flex cluster instead. Support for the instanceSize of M2 or M5 will be discontinued in January 2026. We recommend using the createFlexCluster API for such configurations moving forward.  Alternatively: Cloud service provider on which MongoDB Cloud provisioned the multi-tenant host. The resource returns this parameter when **providerSettings.providerName** is `FLEX` and **providerSetting.instanceSizeName** is `FLEX`.
 	BackingProviderName *string `json:"backingProviderName,omitempty"`
+	// The true tenant instance size. This is present to support backwards compatibility for deprecated provider types and/or instance sizes.
+	// Read only field.
+	EffectiveInstanceSizeName *string `json:"effectiveInstanceSizeName,omitempty"`
 }
 
 // NewClusterProviderSettings instantiates a new ClusterProviderSettings object
@@ -338,6 +341,39 @@ func (o *ClusterProviderSettings) HasBackingProviderName() bool {
 // SetBackingProviderName gets a reference to the given string and assigns it to the BackingProviderName field.
 func (o *ClusterProviderSettings) SetBackingProviderName(v string) {
 	o.BackingProviderName = &v
+}
+
+// GetEffectiveInstanceSizeName returns the EffectiveInstanceSizeName field value if set, zero value otherwise
+func (o *ClusterProviderSettings) GetEffectiveInstanceSizeName() string {
+	if o == nil || IsNil(o.EffectiveInstanceSizeName) {
+		var ret string
+		return ret
+	}
+	return *o.EffectiveInstanceSizeName
+}
+
+// GetEffectiveInstanceSizeNameOk returns a tuple with the EffectiveInstanceSizeName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterProviderSettings) GetEffectiveInstanceSizeNameOk() (*string, bool) {
+	if o == nil || IsNil(o.EffectiveInstanceSizeName) {
+		return nil, false
+	}
+
+	return o.EffectiveInstanceSizeName, true
+}
+
+// HasEffectiveInstanceSizeName returns a boolean if a field has been set.
+func (o *ClusterProviderSettings) HasEffectiveInstanceSizeName() bool {
+	if o != nil && !IsNil(o.EffectiveInstanceSizeName) {
+		return true
+	}
+
+	return false
+}
+
+// SetEffectiveInstanceSizeName gets a reference to the given string and assigns it to the EffectiveInstanceSizeName field.
+func (o *ClusterProviderSettings) SetEffectiveInstanceSizeName(v string) {
+	o.EffectiveInstanceSizeName = &v
 }
 
 func (o ClusterProviderSettings) MarshalJSONWithoutReadOnly() ([]byte, error) {

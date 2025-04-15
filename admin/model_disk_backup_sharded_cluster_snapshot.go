@@ -9,7 +9,7 @@ import (
 
 // DiskBackupShardedClusterSnapshot Details of the sharded cluster snapshot that MongoDB Cloud created.
 type DiskBackupShardedClusterSnapshot struct {
-	// Human-readable label that identifies the config server type for this snapshot.
+	// Describes a sharded cluster's config server type.
 	// Read only field.
 	ConfigServerType *string `json:"configServerType,omitempty"`
 	// Date and time when MongoDB Cloud took the snapshot. This parameter expresses its value in the ISO 8601 timestamp format in UTC.

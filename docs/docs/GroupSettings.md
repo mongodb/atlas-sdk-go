@@ -4,10 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**IsCollectDatabaseSpecificsStatisticsEnabled** | Pointer to **bool** | Flag that indicates whether to collect database-specific metrics  for the specified project. | [optional] 
+**IsCollectDatabaseSpecificsStatisticsEnabled** | Pointer to **bool** | Flag that indicates whether to collect database-specific metrics for the specified project. | [optional] 
 **IsDataExplorerEnabled** | Pointer to **bool** | Flag that indicates whether to enable the Data Explorer for the specified project. | [optional] 
-**IsExtendedStorageSizesEnabled** | Pointer to **bool** | Flag that indicates whether to enable extended storage sizes  for the specified project. | [optional] 
-**IsPerformanceAdvisorEnabled** | Pointer to **bool** | Flag that indicates whether to enable the Performance Advisor and Profiler  for the specified project. | [optional] 
+**IsDataExplorerGenAIFeaturesEnabled** | Pointer to **bool** | Flag that indicates whether to enable the use of generative AI features which make requests to 3rd party services in Data Explorer for the specified project. | [optional] 
+**IsDataExplorerGenAISampleDocumentPassingEnabled** | Pointer to **bool** | Flag that indicates whether to enable the passing of sample field values with the use of generative AI features in the Data Explorer for the specified project. | [optional] [default to false]
+**IsExtendedStorageSizesEnabled** | Pointer to **bool** | Flag that indicates whether to enable extended storage sizes for the specified project. | [optional] 
+**IsPerformanceAdvisorEnabled** | Pointer to **bool** | Flag that indicates whether to enable the Performance Advisor and Profiler for the specified project. | [optional] 
 **IsRealtimePerformancePanelEnabled** | Pointer to **bool** | Flag that indicates whether to enable the Real Time Performance Panel for the specified project. | [optional] 
 **IsSchemaAdvisorEnabled** | Pointer to **bool** | Flag that indicates whether to enable the Schema Advisor for the specified project. | [optional] 
 
@@ -78,6 +80,54 @@ SetIsDataExplorerEnabled sets IsDataExplorerEnabled field to given value.
 `func (o *GroupSettings) HasIsDataExplorerEnabled() bool`
 
 HasIsDataExplorerEnabled returns a boolean if a field has been set.
+### GetIsDataExplorerGenAIFeaturesEnabled
+
+`func (o *GroupSettings) GetIsDataExplorerGenAIFeaturesEnabled() bool`
+
+GetIsDataExplorerGenAIFeaturesEnabled returns the IsDataExplorerGenAIFeaturesEnabled field if non-nil, zero value otherwise.
+
+### GetIsDataExplorerGenAIFeaturesEnabledOk
+
+`func (o *GroupSettings) GetIsDataExplorerGenAIFeaturesEnabledOk() (*bool, bool)`
+
+GetIsDataExplorerGenAIFeaturesEnabledOk returns a tuple with the IsDataExplorerGenAIFeaturesEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsDataExplorerGenAIFeaturesEnabled
+
+`func (o *GroupSettings) SetIsDataExplorerGenAIFeaturesEnabled(v bool)`
+
+SetIsDataExplorerGenAIFeaturesEnabled sets IsDataExplorerGenAIFeaturesEnabled field to given value.
+
+### HasIsDataExplorerGenAIFeaturesEnabled
+
+`func (o *GroupSettings) HasIsDataExplorerGenAIFeaturesEnabled() bool`
+
+HasIsDataExplorerGenAIFeaturesEnabled returns a boolean if a field has been set.
+### GetIsDataExplorerGenAISampleDocumentPassingEnabled
+
+`func (o *GroupSettings) GetIsDataExplorerGenAISampleDocumentPassingEnabled() bool`
+
+GetIsDataExplorerGenAISampleDocumentPassingEnabled returns the IsDataExplorerGenAISampleDocumentPassingEnabled field if non-nil, zero value otherwise.
+
+### GetIsDataExplorerGenAISampleDocumentPassingEnabledOk
+
+`func (o *GroupSettings) GetIsDataExplorerGenAISampleDocumentPassingEnabledOk() (*bool, bool)`
+
+GetIsDataExplorerGenAISampleDocumentPassingEnabledOk returns a tuple with the IsDataExplorerGenAISampleDocumentPassingEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsDataExplorerGenAISampleDocumentPassingEnabled
+
+`func (o *GroupSettings) SetIsDataExplorerGenAISampleDocumentPassingEnabled(v bool)`
+
+SetIsDataExplorerGenAISampleDocumentPassingEnabled sets IsDataExplorerGenAISampleDocumentPassingEnabled field to given value.
+
+### HasIsDataExplorerGenAISampleDocumentPassingEnabled
+
+`func (o *GroupSettings) HasIsDataExplorerGenAISampleDocumentPassingEnabled() bool`
+
+HasIsDataExplorerGenAISampleDocumentPassingEnabled returns a boolean if a field has been set.
 ### GetIsExtendedStorageSizesEnabled
 
 `func (o *GroupSettings) GetIsExtendedStorageSizesEnabled() bool`

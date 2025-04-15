@@ -52,7 +52,7 @@ type ProjectIPAccessListApi_CreateProjectIpAccessList_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - networkPermissionEntry *[]admin.NetworkPermissionEntry
-func (_e *ProjectIPAccessListApi_Expecter) CreateProjectIpAccessList(ctx interface{}, groupId interface{}, networkPermissionEntry interface{}) *ProjectIPAccessListApi_CreateProjectIpAccessList_Call {
+func (_e *ProjectIPAccessListApi_Expecter) CreateProjectIpAccessList(ctx any, groupId any, networkPermissionEntry any) *ProjectIPAccessListApi_CreateProjectIpAccessList_Call {
 	return &ProjectIPAccessListApi_CreateProjectIpAccessList_Call{Call: _e.mock.On("CreateProjectIpAccessList", ctx, groupId, networkPermissionEntry)}
 }
 
@@ -119,7 +119,7 @@ type ProjectIPAccessListApi_CreateProjectIpAccessListExecute_Call struct {
 
 // CreateProjectIpAccessListExecute is a helper method to define mock.On call
 //   - r admin.CreateProjectIpAccessListApiRequest
-func (_e *ProjectIPAccessListApi_Expecter) CreateProjectIpAccessListExecute(r interface{}) *ProjectIPAccessListApi_CreateProjectIpAccessListExecute_Call {
+func (_e *ProjectIPAccessListApi_Expecter) CreateProjectIpAccessListExecute(r any) *ProjectIPAccessListApi_CreateProjectIpAccessListExecute_Call {
 	return &ProjectIPAccessListApi_CreateProjectIpAccessListExecute_Call{Call: _e.mock.On("CreateProjectIpAccessListExecute", r)}
 }
 
@@ -166,7 +166,7 @@ type ProjectIPAccessListApi_CreateProjectIpAccessListWithParams_Call struct {
 // CreateProjectIpAccessListWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.CreateProjectIpAccessListApiParams
-func (_e *ProjectIPAccessListApi_Expecter) CreateProjectIpAccessListWithParams(ctx interface{}, args interface{}) *ProjectIPAccessListApi_CreateProjectIpAccessListWithParams_Call {
+func (_e *ProjectIPAccessListApi_Expecter) CreateProjectIpAccessListWithParams(ctx any, args any) *ProjectIPAccessListApi_CreateProjectIpAccessListWithParams_Call {
 	return &ProjectIPAccessListApi_CreateProjectIpAccessListWithParams_Call{Call: _e.mock.On("CreateProjectIpAccessListWithParams", ctx, args)}
 }
 
@@ -214,7 +214,7 @@ type ProjectIPAccessListApi_DeleteProjectIpAccessList_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - entryValue string
-func (_e *ProjectIPAccessListApi_Expecter) DeleteProjectIpAccessList(ctx interface{}, groupId interface{}, entryValue interface{}) *ProjectIPAccessListApi_DeleteProjectIpAccessList_Call {
+func (_e *ProjectIPAccessListApi_Expecter) DeleteProjectIpAccessList(ctx any, groupId any, entryValue any) *ProjectIPAccessListApi_DeleteProjectIpAccessList_Call {
 	return &ProjectIPAccessListApi_DeleteProjectIpAccessList_Call{Call: _e.mock.On("DeleteProjectIpAccessList", ctx, groupId, entryValue)}
 }
 
@@ -236,42 +236,33 @@ func (_c *ProjectIPAccessListApi_DeleteProjectIpAccessList_Call) RunAndReturn(ru
 }
 
 // DeleteProjectIpAccessListExecute provides a mock function with given fields: r
-func (_m *ProjectIPAccessListApi) DeleteProjectIpAccessListExecute(r admin.DeleteProjectIpAccessListApiRequest) (map[string]interface{}, *http.Response, error) {
+func (_m *ProjectIPAccessListApi) DeleteProjectIpAccessListExecute(r admin.DeleteProjectIpAccessListApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteProjectIpAccessListExecute")
 	}
 
-	var r0 map[string]interface{}
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteProjectIpAccessListApiRequest) (map[string]interface{}, *http.Response, error)); ok {
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.DeleteProjectIpAccessListApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteProjectIpAccessListApiRequest) map[string]interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteProjectIpAccessListApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(map[string]interface{})
+			r0 = ret.Get(0).(*http.Response)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeleteProjectIpAccessListApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.DeleteProjectIpAccessListApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
+		r1 = ret.Error(1)
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.DeleteProjectIpAccessListApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
+	return r0, r1
 }
 
 // ProjectIPAccessListApi_DeleteProjectIpAccessListExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteProjectIpAccessListExecute'
@@ -281,7 +272,7 @@ type ProjectIPAccessListApi_DeleteProjectIpAccessListExecute_Call struct {
 
 // DeleteProjectIpAccessListExecute is a helper method to define mock.On call
 //   - r admin.DeleteProjectIpAccessListApiRequest
-func (_e *ProjectIPAccessListApi_Expecter) DeleteProjectIpAccessListExecute(r interface{}) *ProjectIPAccessListApi_DeleteProjectIpAccessListExecute_Call {
+func (_e *ProjectIPAccessListApi_Expecter) DeleteProjectIpAccessListExecute(r any) *ProjectIPAccessListApi_DeleteProjectIpAccessListExecute_Call {
 	return &ProjectIPAccessListApi_DeleteProjectIpAccessListExecute_Call{Call: _e.mock.On("DeleteProjectIpAccessListExecute", r)}
 }
 
@@ -292,12 +283,12 @@ func (_c *ProjectIPAccessListApi_DeleteProjectIpAccessListExecute_Call) Run(run 
 	return _c
 }
 
-func (_c *ProjectIPAccessListApi_DeleteProjectIpAccessListExecute_Call) Return(_a0 map[string]interface{}, _a1 *http.Response, _a2 error) *ProjectIPAccessListApi_DeleteProjectIpAccessListExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
+func (_c *ProjectIPAccessListApi_DeleteProjectIpAccessListExecute_Call) Return(_a0 *http.Response, _a1 error) *ProjectIPAccessListApi_DeleteProjectIpAccessListExecute_Call {
+	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *ProjectIPAccessListApi_DeleteProjectIpAccessListExecute_Call) RunAndReturn(run func(admin.DeleteProjectIpAccessListApiRequest) (map[string]interface{}, *http.Response, error)) *ProjectIPAccessListApi_DeleteProjectIpAccessListExecute_Call {
+func (_c *ProjectIPAccessListApi_DeleteProjectIpAccessListExecute_Call) RunAndReturn(run func(admin.DeleteProjectIpAccessListApiRequest) (*http.Response, error)) *ProjectIPAccessListApi_DeleteProjectIpAccessListExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -328,7 +319,7 @@ type ProjectIPAccessListApi_DeleteProjectIpAccessListWithParams_Call struct {
 // DeleteProjectIpAccessListWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.DeleteProjectIpAccessListApiParams
-func (_e *ProjectIPAccessListApi_Expecter) DeleteProjectIpAccessListWithParams(ctx interface{}, args interface{}) *ProjectIPAccessListApi_DeleteProjectIpAccessListWithParams_Call {
+func (_e *ProjectIPAccessListApi_Expecter) DeleteProjectIpAccessListWithParams(ctx any, args any) *ProjectIPAccessListApi_DeleteProjectIpAccessListWithParams_Call {
 	return &ProjectIPAccessListApi_DeleteProjectIpAccessListWithParams_Call{Call: _e.mock.On("DeleteProjectIpAccessListWithParams", ctx, args)}
 }
 
@@ -376,7 +367,7 @@ type ProjectIPAccessListApi_GetProjectIpAccessListStatus_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - entryValue string
-func (_e *ProjectIPAccessListApi_Expecter) GetProjectIpAccessListStatus(ctx interface{}, groupId interface{}, entryValue interface{}) *ProjectIPAccessListApi_GetProjectIpAccessListStatus_Call {
+func (_e *ProjectIPAccessListApi_Expecter) GetProjectIpAccessListStatus(ctx any, groupId any, entryValue any) *ProjectIPAccessListApi_GetProjectIpAccessListStatus_Call {
 	return &ProjectIPAccessListApi_GetProjectIpAccessListStatus_Call{Call: _e.mock.On("GetProjectIpAccessListStatus", ctx, groupId, entryValue)}
 }
 
@@ -443,7 +434,7 @@ type ProjectIPAccessListApi_GetProjectIpAccessListStatusExecute_Call struct {
 
 // GetProjectIpAccessListStatusExecute is a helper method to define mock.On call
 //   - r admin.GetProjectIpAccessListStatusApiRequest
-func (_e *ProjectIPAccessListApi_Expecter) GetProjectIpAccessListStatusExecute(r interface{}) *ProjectIPAccessListApi_GetProjectIpAccessListStatusExecute_Call {
+func (_e *ProjectIPAccessListApi_Expecter) GetProjectIpAccessListStatusExecute(r any) *ProjectIPAccessListApi_GetProjectIpAccessListStatusExecute_Call {
 	return &ProjectIPAccessListApi_GetProjectIpAccessListStatusExecute_Call{Call: _e.mock.On("GetProjectIpAccessListStatusExecute", r)}
 }
 
@@ -490,7 +481,7 @@ type ProjectIPAccessListApi_GetProjectIpAccessListStatusWithParams_Call struct {
 // GetProjectIpAccessListStatusWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetProjectIpAccessListStatusApiParams
-func (_e *ProjectIPAccessListApi_Expecter) GetProjectIpAccessListStatusWithParams(ctx interface{}, args interface{}) *ProjectIPAccessListApi_GetProjectIpAccessListStatusWithParams_Call {
+func (_e *ProjectIPAccessListApi_Expecter) GetProjectIpAccessListStatusWithParams(ctx any, args any) *ProjectIPAccessListApi_GetProjectIpAccessListStatusWithParams_Call {
 	return &ProjectIPAccessListApi_GetProjectIpAccessListStatusWithParams_Call{Call: _e.mock.On("GetProjectIpAccessListStatusWithParams", ctx, args)}
 }
 
@@ -538,7 +529,7 @@ type ProjectIPAccessListApi_GetProjectIpList_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - entryValue string
-func (_e *ProjectIPAccessListApi_Expecter) GetProjectIpList(ctx interface{}, groupId interface{}, entryValue interface{}) *ProjectIPAccessListApi_GetProjectIpList_Call {
+func (_e *ProjectIPAccessListApi_Expecter) GetProjectIpList(ctx any, groupId any, entryValue any) *ProjectIPAccessListApi_GetProjectIpList_Call {
 	return &ProjectIPAccessListApi_GetProjectIpList_Call{Call: _e.mock.On("GetProjectIpList", ctx, groupId, entryValue)}
 }
 
@@ -605,7 +596,7 @@ type ProjectIPAccessListApi_GetProjectIpListExecute_Call struct {
 
 // GetProjectIpListExecute is a helper method to define mock.On call
 //   - r admin.GetProjectIpListApiRequest
-func (_e *ProjectIPAccessListApi_Expecter) GetProjectIpListExecute(r interface{}) *ProjectIPAccessListApi_GetProjectIpListExecute_Call {
+func (_e *ProjectIPAccessListApi_Expecter) GetProjectIpListExecute(r any) *ProjectIPAccessListApi_GetProjectIpListExecute_Call {
 	return &ProjectIPAccessListApi_GetProjectIpListExecute_Call{Call: _e.mock.On("GetProjectIpListExecute", r)}
 }
 
@@ -652,7 +643,7 @@ type ProjectIPAccessListApi_GetProjectIpListWithParams_Call struct {
 // GetProjectIpListWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetProjectIpListApiParams
-func (_e *ProjectIPAccessListApi_Expecter) GetProjectIpListWithParams(ctx interface{}, args interface{}) *ProjectIPAccessListApi_GetProjectIpListWithParams_Call {
+func (_e *ProjectIPAccessListApi_Expecter) GetProjectIpListWithParams(ctx any, args any) *ProjectIPAccessListApi_GetProjectIpListWithParams_Call {
 	return &ProjectIPAccessListApi_GetProjectIpListWithParams_Call{Call: _e.mock.On("GetProjectIpListWithParams", ctx, args)}
 }
 
@@ -699,7 +690,7 @@ type ProjectIPAccessListApi_ListProjectIpAccessLists_Call struct {
 // ListProjectIpAccessLists is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *ProjectIPAccessListApi_Expecter) ListProjectIpAccessLists(ctx interface{}, groupId interface{}) *ProjectIPAccessListApi_ListProjectIpAccessLists_Call {
+func (_e *ProjectIPAccessListApi_Expecter) ListProjectIpAccessLists(ctx any, groupId any) *ProjectIPAccessListApi_ListProjectIpAccessLists_Call {
 	return &ProjectIPAccessListApi_ListProjectIpAccessLists_Call{Call: _e.mock.On("ListProjectIpAccessLists", ctx, groupId)}
 }
 
@@ -766,7 +757,7 @@ type ProjectIPAccessListApi_ListProjectIpAccessListsExecute_Call struct {
 
 // ListProjectIpAccessListsExecute is a helper method to define mock.On call
 //   - r admin.ListProjectIpAccessListsApiRequest
-func (_e *ProjectIPAccessListApi_Expecter) ListProjectIpAccessListsExecute(r interface{}) *ProjectIPAccessListApi_ListProjectIpAccessListsExecute_Call {
+func (_e *ProjectIPAccessListApi_Expecter) ListProjectIpAccessListsExecute(r any) *ProjectIPAccessListApi_ListProjectIpAccessListsExecute_Call {
 	return &ProjectIPAccessListApi_ListProjectIpAccessListsExecute_Call{Call: _e.mock.On("ListProjectIpAccessListsExecute", r)}
 }
 
@@ -813,7 +804,7 @@ type ProjectIPAccessListApi_ListProjectIpAccessListsWithParams_Call struct {
 // ListProjectIpAccessListsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListProjectIpAccessListsApiParams
-func (_e *ProjectIPAccessListApi_Expecter) ListProjectIpAccessListsWithParams(ctx interface{}, args interface{}) *ProjectIPAccessListApi_ListProjectIpAccessListsWithParams_Call {
+func (_e *ProjectIPAccessListApi_Expecter) ListProjectIpAccessListsWithParams(ctx any, args any) *ProjectIPAccessListApi_ListProjectIpAccessListsWithParams_Call {
 	return &ProjectIPAccessListApi_ListProjectIpAccessListsWithParams_Call{Call: _e.mock.On("ListProjectIpAccessListsWithParams", ctx, args)}
 }
 

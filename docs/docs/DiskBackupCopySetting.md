@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CloudProvider** | Pointer to **string** | Human-readable label that identifies the cloud provider that stores the snapshot copy. | [optional] 
 **Frequencies** | Pointer to **[]string** | List that describes which types of snapshots to copy. | [optional] 
-**RegionName** | Pointer to **string** | Target region to copy snapshots belonging to replicationSpecId to. Please supply the &#39;Atlas Region&#39; which can be found under [Cloud Providers](https://www.mongodb.com/docs/atlas/reference/cloud-providers/) &#39;regions&#39; link. | [optional] 
-**ReplicationSpecId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the replication object for a zone in a cluster. For global clusters, there can be multiple zones to choose from. For sharded clusters and replica set clusters, there is only one zone in the cluster. To find the Replication Spec Id, do a GET request to Return One Cluster in One Project and consult the replicationSpecs array [Return One Cluster in One Project](#operation/getLegacyCluster). | [optional] 
+**RegionName** | Pointer to **string** | Target region to copy snapshots belonging to replicationSpecId to. Please supply the &#39;Atlas Region&#39;. | [optional] 
+**ReplicationSpecId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the replication object for a zone in a cluster. For global clusters, there can be multiple zones to choose from. For sharded clusters and replica set clusters, there is only one zone in the cluster. To find the Replication Spec Id, do a GET request to Return One Cluster from One Project and consult the replicationSpecs array. | [optional] 
 **ShouldCopyOplogs** | Pointer to **bool** | Flag that indicates whether to copy the oplogs to the target region. You can use the oplogs to perform point-in-time restores. | [optional] 
 
 ## Methods

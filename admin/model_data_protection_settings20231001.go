@@ -17,6 +17,9 @@ type DataProtectionSettings20231001 struct {
 	AuthorizedUserLastName string `json:"authorizedUserLastName"`
 	// Flag that indicates whether to prevent cluster users from deleting backups copied to other regions, even if those additional snapshot regions are removed. If unspecified, this value defaults to false.
 	CopyProtectionEnabled *bool `json:"copyProtectionEnabled,omitempty"`
+	// Flag that indicates whether the Backup Compliance Policy is allowed to be disabled. It is default to false and a support ticket needs to be filed to request setting to true.
+	// Read only field.
+	Deletable *bool `json:"deletable,omitempty"`
 	// Flag that indicates whether Encryption at Rest using Customer Key  Management is required for all clusters with a Backup Compliance Policy. If unspecified, this value defaults to false.
 	EncryptionAtRestEnabled *bool                               `json:"encryptionAtRestEnabled,omitempty"`
 	OnDemandPolicyItem      *BackupComplianceOnDemandPolicyItem `json:"onDemandPolicyItem,omitempty"`
@@ -174,6 +177,39 @@ func (o *DataProtectionSettings20231001) HasCopyProtectionEnabled() bool {
 // SetCopyProtectionEnabled gets a reference to the given bool and assigns it to the CopyProtectionEnabled field.
 func (o *DataProtectionSettings20231001) SetCopyProtectionEnabled(v bool) {
 	o.CopyProtectionEnabled = &v
+}
+
+// GetDeletable returns the Deletable field value if set, zero value otherwise
+func (o *DataProtectionSettings20231001) GetDeletable() bool {
+	if o == nil || IsNil(o.Deletable) {
+		var ret bool
+		return ret
+	}
+	return *o.Deletable
+}
+
+// GetDeletableOk returns a tuple with the Deletable field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DataProtectionSettings20231001) GetDeletableOk() (*bool, bool) {
+	if o == nil || IsNil(o.Deletable) {
+		return nil, false
+	}
+
+	return o.Deletable, true
+}
+
+// HasDeletable returns a boolean if a field has been set.
+func (o *DataProtectionSettings20231001) HasDeletable() bool {
+	if o != nil && !IsNil(o.Deletable) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeletable gets a reference to the given bool and assigns it to the Deletable field.
+func (o *DataProtectionSettings20231001) SetDeletable(v bool) {
+	o.Deletable = &v
 }
 
 // GetEncryptionAtRestEnabled returns the EncryptionAtRestEnabled field value if set, zero value otherwise

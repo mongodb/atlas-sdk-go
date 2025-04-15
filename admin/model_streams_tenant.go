@@ -25,8 +25,9 @@ type StreamsTenant struct {
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
 	// Human-readable label that identifies the stream instance.
-	Name         *string       `json:"name,omitempty"`
-	StreamConfig *StreamConfig `json:"streamConfig,omitempty"`
+	Name              *string                   `json:"name,omitempty"`
+	SampleConnections *StreamsSampleConnections `json:"sampleConnections,omitempty"`
+	StreamConfig      *StreamConfig             `json:"streamConfig,omitempty"`
 }
 
 // NewStreamsTenant instantiates a new StreamsTenant object
@@ -277,6 +278,39 @@ func (o *StreamsTenant) SetName(v string) {
 	o.Name = &v
 }
 
+// GetSampleConnections returns the SampleConnections field value if set, zero value otherwise
+func (o *StreamsTenant) GetSampleConnections() StreamsSampleConnections {
+	if o == nil || IsNil(o.SampleConnections) {
+		var ret StreamsSampleConnections
+		return ret
+	}
+	return *o.SampleConnections
+}
+
+// GetSampleConnectionsOk returns a tuple with the SampleConnections field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsTenant) GetSampleConnectionsOk() (*StreamsSampleConnections, bool) {
+	if o == nil || IsNil(o.SampleConnections) {
+		return nil, false
+	}
+
+	return o.SampleConnections, true
+}
+
+// HasSampleConnections returns a boolean if a field has been set.
+func (o *StreamsTenant) HasSampleConnections() bool {
+	if o != nil && !IsNil(o.SampleConnections) {
+		return true
+	}
+
+	return false
+}
+
+// SetSampleConnections gets a reference to the given StreamsSampleConnections and assigns it to the SampleConnections field.
+func (o *StreamsTenant) SetSampleConnections(v StreamsSampleConnections) {
+	o.SampleConnections = &v
+}
+
 // GetStreamConfig returns the StreamConfig field value if set, zero value otherwise
 func (o *StreamsTenant) GetStreamConfig() StreamConfig {
 	if o == nil || IsNil(o.StreamConfig) {
@@ -324,6 +358,9 @@ func (o StreamsTenant) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.SampleConnections) {
+		toSerialize["sampleConnections"] = o.SampleConnections
 	}
 	if !IsNil(o.StreamConfig) {
 		toSerialize["streamConfig"] = o.StreamConfig

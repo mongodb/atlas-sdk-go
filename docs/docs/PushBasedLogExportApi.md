@@ -43,7 +43,7 @@ func main() {
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    createPushBasedLogExportProjectRequest := *openapiclient.NewCreatePushBasedLogExportProjectRequest("BucketName_example", "IamRoleId_example", "PrefixPath_example") // CreatePushBasedLogExportProjectRequest | 
+    createPushBasedLogExportProjectRequest := *openapiclient.NewCreatePushBasedLogExportProjectRequest("BucketName_example", "32b6e34b3d91647abb20e7b8", "PrefixPath_example") // CreatePushBasedLogExportProjectRequest | 
 
     r, err := sdk.PushBasedLogExportApi.CreatePushBasedLogConfiguration(context.Background(), groupId, &createPushBasedLogExportProjectRequest).Execute()
     if err != nil {

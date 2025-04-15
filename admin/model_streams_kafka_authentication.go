@@ -16,6 +16,14 @@ type StreamsKafkaAuthentication struct {
 	// Password of the account to connect to the Kafka cluster.
 	// Write only field.
 	Password *string `json:"password,omitempty"`
+	// SSL certificate for client authentication to Kafka.
+	SslCertificate *string `json:"sslCertificate,omitempty"`
+	// SSL key for client authentication to Kafka.
+	// Write only field.
+	SslKey *string `json:"sslKey,omitempty"`
+	// Password for the SSL key, if it is password protected.
+	// Write only field.
+	SslKeyPassword *string `json:"sslKeyPassword,omitempty"`
 	// Username of the account to connect to the Kafka cluster.
 	Username *string `json:"username,omitempty"`
 }
@@ -136,6 +144,105 @@ func (o *StreamsKafkaAuthentication) SetPassword(v string) {
 	o.Password = &v
 }
 
+// GetSslCertificate returns the SslCertificate field value if set, zero value otherwise
+func (o *StreamsKafkaAuthentication) GetSslCertificate() string {
+	if o == nil || IsNil(o.SslCertificate) {
+		var ret string
+		return ret
+	}
+	return *o.SslCertificate
+}
+
+// GetSslCertificateOk returns a tuple with the SslCertificate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsKafkaAuthentication) GetSslCertificateOk() (*string, bool) {
+	if o == nil || IsNil(o.SslCertificate) {
+		return nil, false
+	}
+
+	return o.SslCertificate, true
+}
+
+// HasSslCertificate returns a boolean if a field has been set.
+func (o *StreamsKafkaAuthentication) HasSslCertificate() bool {
+	if o != nil && !IsNil(o.SslCertificate) {
+		return true
+	}
+
+	return false
+}
+
+// SetSslCertificate gets a reference to the given string and assigns it to the SslCertificate field.
+func (o *StreamsKafkaAuthentication) SetSslCertificate(v string) {
+	o.SslCertificate = &v
+}
+
+// GetSslKey returns the SslKey field value if set, zero value otherwise
+func (o *StreamsKafkaAuthentication) GetSslKey() string {
+	if o == nil || IsNil(o.SslKey) {
+		var ret string
+		return ret
+	}
+	return *o.SslKey
+}
+
+// GetSslKeyOk returns a tuple with the SslKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsKafkaAuthentication) GetSslKeyOk() (*string, bool) {
+	if o == nil || IsNil(o.SslKey) {
+		return nil, false
+	}
+
+	return o.SslKey, true
+}
+
+// HasSslKey returns a boolean if a field has been set.
+func (o *StreamsKafkaAuthentication) HasSslKey() bool {
+	if o != nil && !IsNil(o.SslKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetSslKey gets a reference to the given string and assigns it to the SslKey field.
+func (o *StreamsKafkaAuthentication) SetSslKey(v string) {
+	o.SslKey = &v
+}
+
+// GetSslKeyPassword returns the SslKeyPassword field value if set, zero value otherwise
+func (o *StreamsKafkaAuthentication) GetSslKeyPassword() string {
+	if o == nil || IsNil(o.SslKeyPassword) {
+		var ret string
+		return ret
+	}
+	return *o.SslKeyPassword
+}
+
+// GetSslKeyPasswordOk returns a tuple with the SslKeyPassword field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsKafkaAuthentication) GetSslKeyPasswordOk() (*string, bool) {
+	if o == nil || IsNil(o.SslKeyPassword) {
+		return nil, false
+	}
+
+	return o.SslKeyPassword, true
+}
+
+// HasSslKeyPassword returns a boolean if a field has been set.
+func (o *StreamsKafkaAuthentication) HasSslKeyPassword() bool {
+	if o != nil && !IsNil(o.SslKeyPassword) {
+		return true
+	}
+
+	return false
+}
+
+// SetSslKeyPassword gets a reference to the given string and assigns it to the SslKeyPassword field.
+func (o *StreamsKafkaAuthentication) SetSslKeyPassword(v string) {
+	o.SslKeyPassword = &v
+}
+
 // GetUsername returns the Username field value if set, zero value otherwise
 func (o *StreamsKafkaAuthentication) GetUsername() string {
 	if o == nil || IsNil(o.Username) {
@@ -183,6 +290,15 @@ func (o StreamsKafkaAuthentication) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Password) {
 		toSerialize["password"] = o.Password
+	}
+	if !IsNil(o.SslCertificate) {
+		toSerialize["sslCertificate"] = o.SslCertificate
+	}
+	if !IsNil(o.SslKey) {
+		toSerialize["sslKey"] = o.SslKey
+	}
+	if !IsNil(o.SslKeyPassword) {
+		toSerialize["sslKeyPassword"] = o.SslKeyPassword
 	}
 	if !IsNil(o.Username) {
 		toSerialize["username"] = o.Username

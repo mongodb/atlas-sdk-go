@@ -11,10 +11,10 @@ type PaginatedApiStreamsConnection struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
-	// List of returned documents that MongoDB Cloud providers when completing this request.
+	// List of returned documents that MongoDB Cloud provides when completing this request.
 	// Read only field.
 	Results *[]StreamsConnection `json:"results,omitempty"`
-	// Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`.
+	// Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact.
 	// Read only field.
 	TotalCount *int `json:"totalCount,omitempty"`
 }

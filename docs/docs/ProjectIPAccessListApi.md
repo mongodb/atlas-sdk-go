@@ -41,8 +41,8 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     networkPermissionEntry := []openapiclient.NetworkPermissionEntry{*openapiclient.NewNetworkPermissionEntry()} // []NetworkPermissionEntry | 
     includeCount := true // bool |  (optional) (default to true)
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
 
     resp, r, err := sdk.ProjectIPAccessListApi.CreateProjectIpAccessList(context.Background(), groupId, &networkPermissionEntry).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
@@ -95,7 +95,7 @@ Name | Type | Description  | Notes
 
 ## DeleteProjectIpAccessList
 
-> map[string]interface{} DeleteProjectIpAccessList(ctx, groupId, entryValue).Execute()
+> DeleteProjectIpAccessList(ctx, groupId, entryValue).Execute()
 
 Remove One Entry from One Project IP Access List
 
@@ -122,14 +122,12 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     entryValue := "IPv4: 192.0.2.0%2F24 or IPv6: 2001:db8:85a3:8d3:1319:8a2e:370:7348 or IPv4 CIDR: 198.51.100.0%2f24 or IPv6 CIDR: 2001:db8::%2f58 or AWS SG: sg-903004f8" // string | 
 
-    resp, r, err := sdk.ProjectIPAccessListApi.DeleteProjectIpAccessList(context.Background(), groupId, entryValue).Execute()
+    r, err := sdk.ProjectIPAccessListApi.DeleteProjectIpAccessList(context.Background(), groupId, entryValue).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectIPAccessListApi.DeleteProjectIpAccessList``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `DeleteProjectIpAccessList`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `ProjectIPAccessListApi.DeleteProjectIpAccessList`: %v\n", resp)
 }
 ```
 
@@ -154,7 +152,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -354,8 +352,8 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     includeCount := true // bool |  (optional) (default to true)
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
 
     resp, r, err := sdk.ProjectIPAccessListApi.ListProjectIpAccessLists(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {

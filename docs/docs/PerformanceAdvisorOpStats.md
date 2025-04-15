@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Ms** | Pointer to **int64** | Length of time expressed during which the query finds suggested indexes among the managed namespaces in the cluster. This parameter expresses its value in milliseconds. This parameter relates to the **duration** query parameter. | [optional] [readonly] 
 **NReturned** | Pointer to **int64** | Number of results that the query returns. | [optional] [readonly] 
 **NScanned** | Pointer to **int64** | Number of documents that the query read. | [optional] [readonly] 
-**Ts** | Pointer to **int64** | Date and time from which the query retrieves the suggested indexes. This parameter expresses its value in the number of seconds that have elapsed since the [UNIX epoch](https://en.wikipedia.org/wiki/Unix_time). This parameter relates to the **since** query parameter. | [optional] [readonly] 
+**Ts** | Pointer to **int64** | Date and time from which the query retrieves the suggested indexes. This parameter expresses its value in the number of seconds that have elapsed since the UNIX epoch. This parameter relates to the **since** query parameter. | [optional] [readonly] 
 
 ## Methods
 

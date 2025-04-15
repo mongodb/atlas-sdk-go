@@ -6,7 +6,7 @@ import (
 	"encoding/json"
 )
 
-// DataLakeAWSCloudProviderConfig Name of the cloud service that hosts the data lake's data stores.
+// DataLakeAWSCloudProviderConfig Configuration for running Data Federation in AWS.
 type DataLakeAWSCloudProviderConfig struct {
 	// Unique identifier associated with the Identity and Access Management (IAM) role that the data lake assumes when accessing the data stores.
 	// Read only field.

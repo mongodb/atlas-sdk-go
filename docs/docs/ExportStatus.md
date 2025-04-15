@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ExportedCollections** | Pointer to **int** | Number of collections on the replica set that MongoDB Cloud exported. | [optional] [readonly] 
-**TotalCollections** | Pointer to **int** | Total number of collections on the replica set to export. | [optional] [readonly] 
+**ExportedCollections** | Pointer to **int** | Count of collections whose documents were exported to the Export Bucket. | [optional] [readonly] 
+**TotalCollections** | Pointer to **int** | Total count of collections whose documents will be exported to the Export Bucket. | [optional] [readonly] 
 
 ## Methods
 

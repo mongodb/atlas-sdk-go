@@ -97,7 +97,7 @@ Name | Type | Description  | Notes
 
 ## CreateManagedNamespace
 
-> GeoSharding CreateManagedNamespace(ctx, groupId, clusterName, managedNamespace ManagedNamespace).Execute()
+> GeoSharding CreateManagedNamespace(ctx, groupId, clusterName, managedNamespaces ManagedNamespaces).Execute()
 
 Create One Managed Namespace in One Global Cluster
 
@@ -128,9 +128,9 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
-    managedNamespace := *openapiclient.NewManagedNamespace() // ManagedNamespace | 
+    managedNamespaces := *openapiclient.NewManagedNamespaces("Collection_example", "CustomShardKey_example", "Db_example") // ManagedNamespaces | 
 
-    resp, r, err := sdk.GlobalClustersApi.CreateManagedNamespace(context.Background(), groupId, clusterName, &managedNamespace).Execute()
+    resp, r, err := sdk.GlobalClustersApi.CreateManagedNamespace(context.Background(), groupId, clusterName, &managedNamespaces).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GlobalClustersApi.CreateManagedNamespace``: %v\n", err)
         apiError := admin.AsError(err)
@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **managedNamespace** | [**ManagedNamespace**](ManagedNamespace.md) | Managed namespace to create within the specified global cluster. | 
+ **managedNamespaces** | [**ManagedNamespaces**](ManagedNamespaces.md) | Managed namespace to create within the specified global cluster. | 
 
 ### Return type
 

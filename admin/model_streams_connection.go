@@ -13,7 +13,7 @@ type StreamsConnection struct {
 	Links *[]Link `json:"links,omitempty"`
 	// Human-readable label that identifies the stream connection. In the case of the Sample type, this is the name of the sample source.
 	Name *string `json:"name,omitempty"`
-	// Type of the connection. Can be either Cluster or Kafka.
+	// Type of the connection.
 	Type *string `json:"type,omitempty"`
 	// Name of the cluster configured for this connection.
 	ClusterName     *string                     `json:"clusterName,omitempty"`
@@ -22,8 +22,14 @@ type StreamsConnection struct {
 	// Comma separated list of server addresses.
 	BootstrapServers *string `json:"bootstrapServers,omitempty"`
 	// A map of Kafka key-value pairs for optional configuration. This is a flat object, and keys can have '.' characters.
-	Config   *map[string]string    `json:"config,omitempty"`
-	Security *StreamsKafkaSecurity `json:"security,omitempty"`
+	Config     *map[string]string      `json:"config,omitempty"`
+	Networking *StreamsKafkaNetworking `json:"networking,omitempty"`
+	Security   *StreamsKafkaSecurity   `json:"security,omitempty"`
+	// A map of key-value pairs that will be passed as headers for the request.
+	Headers *map[string]string `json:"headers,omitempty"`
+	// The url to be used for the request.
+	Url *string                     `json:"url,omitempty"`
+	Aws *StreamsAWSConnectionConfig `json:"aws,omitempty"`
 }
 
 // NewStreamsConnection instantiates a new StreamsConnection object
@@ -307,6 +313,39 @@ func (o *StreamsConnection) SetConfig(v map[string]string) {
 	o.Config = &v
 }
 
+// GetNetworking returns the Networking field value if set, zero value otherwise
+func (o *StreamsConnection) GetNetworking() StreamsKafkaNetworking {
+	if o == nil || IsNil(o.Networking) {
+		var ret StreamsKafkaNetworking
+		return ret
+	}
+	return *o.Networking
+}
+
+// GetNetworkingOk returns a tuple with the Networking field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsConnection) GetNetworkingOk() (*StreamsKafkaNetworking, bool) {
+	if o == nil || IsNil(o.Networking) {
+		return nil, false
+	}
+
+	return o.Networking, true
+}
+
+// HasNetworking returns a boolean if a field has been set.
+func (o *StreamsConnection) HasNetworking() bool {
+	if o != nil && !IsNil(o.Networking) {
+		return true
+	}
+
+	return false
+}
+
+// SetNetworking gets a reference to the given StreamsKafkaNetworking and assigns it to the Networking field.
+func (o *StreamsConnection) SetNetworking(v StreamsKafkaNetworking) {
+	o.Networking = &v
+}
+
 // GetSecurity returns the Security field value if set, zero value otherwise
 func (o *StreamsConnection) GetSecurity() StreamsKafkaSecurity {
 	if o == nil || IsNil(o.Security) {
@@ -340,6 +379,105 @@ func (o *StreamsConnection) SetSecurity(v StreamsKafkaSecurity) {
 	o.Security = &v
 }
 
+// GetHeaders returns the Headers field value if set, zero value otherwise
+func (o *StreamsConnection) GetHeaders() map[string]string {
+	if o == nil || IsNil(o.Headers) {
+		var ret map[string]string
+		return ret
+	}
+	return *o.Headers
+}
+
+// GetHeadersOk returns a tuple with the Headers field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsConnection) GetHeadersOk() (*map[string]string, bool) {
+	if o == nil || IsNil(o.Headers) {
+		return nil, false
+	}
+
+	return o.Headers, true
+}
+
+// HasHeaders returns a boolean if a field has been set.
+func (o *StreamsConnection) HasHeaders() bool {
+	if o != nil && !IsNil(o.Headers) {
+		return true
+	}
+
+	return false
+}
+
+// SetHeaders gets a reference to the given map[string]string and assigns it to the Headers field.
+func (o *StreamsConnection) SetHeaders(v map[string]string) {
+	o.Headers = &v
+}
+
+// GetUrl returns the Url field value if set, zero value otherwise
+func (o *StreamsConnection) GetUrl() string {
+	if o == nil || IsNil(o.Url) {
+		var ret string
+		return ret
+	}
+	return *o.Url
+}
+
+// GetUrlOk returns a tuple with the Url field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsConnection) GetUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.Url) {
+		return nil, false
+	}
+
+	return o.Url, true
+}
+
+// HasUrl returns a boolean if a field has been set.
+func (o *StreamsConnection) HasUrl() bool {
+	if o != nil && !IsNil(o.Url) {
+		return true
+	}
+
+	return false
+}
+
+// SetUrl gets a reference to the given string and assigns it to the Url field.
+func (o *StreamsConnection) SetUrl(v string) {
+	o.Url = &v
+}
+
+// GetAws returns the Aws field value if set, zero value otherwise
+func (o *StreamsConnection) GetAws() StreamsAWSConnectionConfig {
+	if o == nil || IsNil(o.Aws) {
+		var ret StreamsAWSConnectionConfig
+		return ret
+	}
+	return *o.Aws
+}
+
+// GetAwsOk returns a tuple with the Aws field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsConnection) GetAwsOk() (*StreamsAWSConnectionConfig, bool) {
+	if o == nil || IsNil(o.Aws) {
+		return nil, false
+	}
+
+	return o.Aws, true
+}
+
+// HasAws returns a boolean if a field has been set.
+func (o *StreamsConnection) HasAws() bool {
+	if o != nil && !IsNil(o.Aws) {
+		return true
+	}
+
+	return false
+}
+
+// SetAws gets a reference to the given StreamsAWSConnectionConfig and assigns it to the Aws field.
+func (o *StreamsConnection) SetAws(v StreamsAWSConnectionConfig) {
+	o.Aws = &v
+}
+
 func (o StreamsConnection) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -370,8 +508,20 @@ func (o StreamsConnection) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Config) {
 		toSerialize["config"] = o.Config
 	}
+	if !IsNil(o.Networking) {
+		toSerialize["networking"] = o.Networking
+	}
 	if !IsNil(o.Security) {
 		toSerialize["security"] = o.Security
+	}
+	if !IsNil(o.Headers) {
+		toSerialize["headers"] = o.Headers
+	}
+	if !IsNil(o.Url) {
+		toSerialize["url"] = o.Url
+	}
+	if !IsNil(o.Aws) {
+		toSerialize["aws"] = o.Aws
 	}
 	return toSerialize, nil
 }

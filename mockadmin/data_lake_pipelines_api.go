@@ -52,7 +52,7 @@ type DataLakePipelinesApi_CreatePipeline_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - dataLakeIngestionPipeline *admin.DataLakeIngestionPipeline
-func (_e *DataLakePipelinesApi_Expecter) CreatePipeline(ctx interface{}, groupId interface{}, dataLakeIngestionPipeline interface{}) *DataLakePipelinesApi_CreatePipeline_Call {
+func (_e *DataLakePipelinesApi_Expecter) CreatePipeline(ctx any, groupId any, dataLakeIngestionPipeline any) *DataLakePipelinesApi_CreatePipeline_Call {
 	return &DataLakePipelinesApi_CreatePipeline_Call{Call: _e.mock.On("CreatePipeline", ctx, groupId, dataLakeIngestionPipeline)}
 }
 
@@ -119,7 +119,7 @@ type DataLakePipelinesApi_CreatePipelineExecute_Call struct {
 
 // CreatePipelineExecute is a helper method to define mock.On call
 //   - r admin.CreatePipelineApiRequest
-func (_e *DataLakePipelinesApi_Expecter) CreatePipelineExecute(r interface{}) *DataLakePipelinesApi_CreatePipelineExecute_Call {
+func (_e *DataLakePipelinesApi_Expecter) CreatePipelineExecute(r any) *DataLakePipelinesApi_CreatePipelineExecute_Call {
 	return &DataLakePipelinesApi_CreatePipelineExecute_Call{Call: _e.mock.On("CreatePipelineExecute", r)}
 }
 
@@ -166,7 +166,7 @@ type DataLakePipelinesApi_CreatePipelineWithParams_Call struct {
 // CreatePipelineWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.CreatePipelineApiParams
-func (_e *DataLakePipelinesApi_Expecter) CreatePipelineWithParams(ctx interface{}, args interface{}) *DataLakePipelinesApi_CreatePipelineWithParams_Call {
+func (_e *DataLakePipelinesApi_Expecter) CreatePipelineWithParams(ctx any, args any) *DataLakePipelinesApi_CreatePipelineWithParams_Call {
 	return &DataLakePipelinesApi_CreatePipelineWithParams_Call{Call: _e.mock.On("CreatePipelineWithParams", ctx, args)}
 }
 
@@ -214,7 +214,7 @@ type DataLakePipelinesApi_DeletePipeline_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - pipelineName string
-func (_e *DataLakePipelinesApi_Expecter) DeletePipeline(ctx interface{}, groupId interface{}, pipelineName interface{}) *DataLakePipelinesApi_DeletePipeline_Call {
+func (_e *DataLakePipelinesApi_Expecter) DeletePipeline(ctx any, groupId any, pipelineName any) *DataLakePipelinesApi_DeletePipeline_Call {
 	return &DataLakePipelinesApi_DeletePipeline_Call{Call: _e.mock.On("DeletePipeline", ctx, groupId, pipelineName)}
 }
 
@@ -236,42 +236,33 @@ func (_c *DataLakePipelinesApi_DeletePipeline_Call) RunAndReturn(run func(contex
 }
 
 // DeletePipelineExecute provides a mock function with given fields: r
-func (_m *DataLakePipelinesApi) DeletePipelineExecute(r admin.DeletePipelineApiRequest) (map[string]interface{}, *http.Response, error) {
+func (_m *DataLakePipelinesApi) DeletePipelineExecute(r admin.DeletePipelineApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeletePipelineExecute")
 	}
 
-	var r0 map[string]interface{}
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeletePipelineApiRequest) (map[string]interface{}, *http.Response, error)); ok {
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.DeletePipelineApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeletePipelineApiRequest) map[string]interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeletePipelineApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(map[string]interface{})
+			r0 = ret.Get(0).(*http.Response)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeletePipelineApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.DeletePipelineApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
+		r1 = ret.Error(1)
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.DeletePipelineApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
+	return r0, r1
 }
 
 // DataLakePipelinesApi_DeletePipelineExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeletePipelineExecute'
@@ -281,7 +272,7 @@ type DataLakePipelinesApi_DeletePipelineExecute_Call struct {
 
 // DeletePipelineExecute is a helper method to define mock.On call
 //   - r admin.DeletePipelineApiRequest
-func (_e *DataLakePipelinesApi_Expecter) DeletePipelineExecute(r interface{}) *DataLakePipelinesApi_DeletePipelineExecute_Call {
+func (_e *DataLakePipelinesApi_Expecter) DeletePipelineExecute(r any) *DataLakePipelinesApi_DeletePipelineExecute_Call {
 	return &DataLakePipelinesApi_DeletePipelineExecute_Call{Call: _e.mock.On("DeletePipelineExecute", r)}
 }
 
@@ -292,12 +283,12 @@ func (_c *DataLakePipelinesApi_DeletePipelineExecute_Call) Run(run func(r admin.
 	return _c
 }
 
-func (_c *DataLakePipelinesApi_DeletePipelineExecute_Call) Return(_a0 map[string]interface{}, _a1 *http.Response, _a2 error) *DataLakePipelinesApi_DeletePipelineExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
+func (_c *DataLakePipelinesApi_DeletePipelineExecute_Call) Return(_a0 *http.Response, _a1 error) *DataLakePipelinesApi_DeletePipelineExecute_Call {
+	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *DataLakePipelinesApi_DeletePipelineExecute_Call) RunAndReturn(run func(admin.DeletePipelineApiRequest) (map[string]interface{}, *http.Response, error)) *DataLakePipelinesApi_DeletePipelineExecute_Call {
+func (_c *DataLakePipelinesApi_DeletePipelineExecute_Call) RunAndReturn(run func(admin.DeletePipelineApiRequest) (*http.Response, error)) *DataLakePipelinesApi_DeletePipelineExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -330,7 +321,7 @@ type DataLakePipelinesApi_DeletePipelineRunDataset_Call struct {
 //   - groupId string
 //   - pipelineName string
 //   - pipelineRunId string
-func (_e *DataLakePipelinesApi_Expecter) DeletePipelineRunDataset(ctx interface{}, groupId interface{}, pipelineName interface{}, pipelineRunId interface{}) *DataLakePipelinesApi_DeletePipelineRunDataset_Call {
+func (_e *DataLakePipelinesApi_Expecter) DeletePipelineRunDataset(ctx any, groupId any, pipelineName any, pipelineRunId any) *DataLakePipelinesApi_DeletePipelineRunDataset_Call {
 	return &DataLakePipelinesApi_DeletePipelineRunDataset_Call{Call: _e.mock.On("DeletePipelineRunDataset", ctx, groupId, pipelineName, pipelineRunId)}
 }
 
@@ -352,24 +343,24 @@ func (_c *DataLakePipelinesApi_DeletePipelineRunDataset_Call) RunAndReturn(run f
 }
 
 // DeletePipelineRunDatasetExecute provides a mock function with given fields: r
-func (_m *DataLakePipelinesApi) DeletePipelineRunDatasetExecute(r admin.DeletePipelineRunDatasetApiRequest) (map[string]interface{}, *http.Response, error) {
+func (_m *DataLakePipelinesApi) DeletePipelineRunDatasetExecute(r admin.DeletePipelineRunDatasetApiRequest) (map[string]any, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeletePipelineRunDatasetExecute")
 	}
 
-	var r0 map[string]interface{}
+	var r0 map[string]any
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeletePipelineRunDatasetApiRequest) (map[string]interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeletePipelineRunDatasetApiRequest) (map[string]any, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeletePipelineRunDatasetApiRequest) map[string]interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeletePipelineRunDatasetApiRequest) map[string]any); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(map[string]interface{})
+			r0 = ret.Get(0).(map[string]any)
 		}
 	}
 
@@ -397,7 +388,7 @@ type DataLakePipelinesApi_DeletePipelineRunDatasetExecute_Call struct {
 
 // DeletePipelineRunDatasetExecute is a helper method to define mock.On call
 //   - r admin.DeletePipelineRunDatasetApiRequest
-func (_e *DataLakePipelinesApi_Expecter) DeletePipelineRunDatasetExecute(r interface{}) *DataLakePipelinesApi_DeletePipelineRunDatasetExecute_Call {
+func (_e *DataLakePipelinesApi_Expecter) DeletePipelineRunDatasetExecute(r any) *DataLakePipelinesApi_DeletePipelineRunDatasetExecute_Call {
 	return &DataLakePipelinesApi_DeletePipelineRunDatasetExecute_Call{Call: _e.mock.On("DeletePipelineRunDatasetExecute", r)}
 }
 
@@ -408,12 +399,12 @@ func (_c *DataLakePipelinesApi_DeletePipelineRunDatasetExecute_Call) Run(run fun
 	return _c
 }
 
-func (_c *DataLakePipelinesApi_DeletePipelineRunDatasetExecute_Call) Return(_a0 map[string]interface{}, _a1 *http.Response, _a2 error) *DataLakePipelinesApi_DeletePipelineRunDatasetExecute_Call {
+func (_c *DataLakePipelinesApi_DeletePipelineRunDatasetExecute_Call) Return(_a0 map[string]any, _a1 *http.Response, _a2 error) *DataLakePipelinesApi_DeletePipelineRunDatasetExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *DataLakePipelinesApi_DeletePipelineRunDatasetExecute_Call) RunAndReturn(run func(admin.DeletePipelineRunDatasetApiRequest) (map[string]interface{}, *http.Response, error)) *DataLakePipelinesApi_DeletePipelineRunDatasetExecute_Call {
+func (_c *DataLakePipelinesApi_DeletePipelineRunDatasetExecute_Call) RunAndReturn(run func(admin.DeletePipelineRunDatasetApiRequest) (map[string]any, *http.Response, error)) *DataLakePipelinesApi_DeletePipelineRunDatasetExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -444,7 +435,7 @@ type DataLakePipelinesApi_DeletePipelineRunDatasetWithParams_Call struct {
 // DeletePipelineRunDatasetWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.DeletePipelineRunDatasetApiParams
-func (_e *DataLakePipelinesApi_Expecter) DeletePipelineRunDatasetWithParams(ctx interface{}, args interface{}) *DataLakePipelinesApi_DeletePipelineRunDatasetWithParams_Call {
+func (_e *DataLakePipelinesApi_Expecter) DeletePipelineRunDatasetWithParams(ctx any, args any) *DataLakePipelinesApi_DeletePipelineRunDatasetWithParams_Call {
 	return &DataLakePipelinesApi_DeletePipelineRunDatasetWithParams_Call{Call: _e.mock.On("DeletePipelineRunDatasetWithParams", ctx, args)}
 }
 
@@ -491,7 +482,7 @@ type DataLakePipelinesApi_DeletePipelineWithParams_Call struct {
 // DeletePipelineWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.DeletePipelineApiParams
-func (_e *DataLakePipelinesApi_Expecter) DeletePipelineWithParams(ctx interface{}, args interface{}) *DataLakePipelinesApi_DeletePipelineWithParams_Call {
+func (_e *DataLakePipelinesApi_Expecter) DeletePipelineWithParams(ctx any, args any) *DataLakePipelinesApi_DeletePipelineWithParams_Call {
 	return &DataLakePipelinesApi_DeletePipelineWithParams_Call{Call: _e.mock.On("DeletePipelineWithParams", ctx, args)}
 }
 
@@ -539,7 +530,7 @@ type DataLakePipelinesApi_GetPipeline_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - pipelineName string
-func (_e *DataLakePipelinesApi_Expecter) GetPipeline(ctx interface{}, groupId interface{}, pipelineName interface{}) *DataLakePipelinesApi_GetPipeline_Call {
+func (_e *DataLakePipelinesApi_Expecter) GetPipeline(ctx any, groupId any, pipelineName any) *DataLakePipelinesApi_GetPipeline_Call {
 	return &DataLakePipelinesApi_GetPipeline_Call{Call: _e.mock.On("GetPipeline", ctx, groupId, pipelineName)}
 }
 
@@ -606,7 +597,7 @@ type DataLakePipelinesApi_GetPipelineExecute_Call struct {
 
 // GetPipelineExecute is a helper method to define mock.On call
 //   - r admin.GetPipelineApiRequest
-func (_e *DataLakePipelinesApi_Expecter) GetPipelineExecute(r interface{}) *DataLakePipelinesApi_GetPipelineExecute_Call {
+func (_e *DataLakePipelinesApi_Expecter) GetPipelineExecute(r any) *DataLakePipelinesApi_GetPipelineExecute_Call {
 	return &DataLakePipelinesApi_GetPipelineExecute_Call{Call: _e.mock.On("GetPipelineExecute", r)}
 }
 
@@ -655,7 +646,7 @@ type DataLakePipelinesApi_GetPipelineRun_Call struct {
 //   - groupId string
 //   - pipelineName string
 //   - pipelineRunId string
-func (_e *DataLakePipelinesApi_Expecter) GetPipelineRun(ctx interface{}, groupId interface{}, pipelineName interface{}, pipelineRunId interface{}) *DataLakePipelinesApi_GetPipelineRun_Call {
+func (_e *DataLakePipelinesApi_Expecter) GetPipelineRun(ctx any, groupId any, pipelineName any, pipelineRunId any) *DataLakePipelinesApi_GetPipelineRun_Call {
 	return &DataLakePipelinesApi_GetPipelineRun_Call{Call: _e.mock.On("GetPipelineRun", ctx, groupId, pipelineName, pipelineRunId)}
 }
 
@@ -722,7 +713,7 @@ type DataLakePipelinesApi_GetPipelineRunExecute_Call struct {
 
 // GetPipelineRunExecute is a helper method to define mock.On call
 //   - r admin.GetPipelineRunApiRequest
-func (_e *DataLakePipelinesApi_Expecter) GetPipelineRunExecute(r interface{}) *DataLakePipelinesApi_GetPipelineRunExecute_Call {
+func (_e *DataLakePipelinesApi_Expecter) GetPipelineRunExecute(r any) *DataLakePipelinesApi_GetPipelineRunExecute_Call {
 	return &DataLakePipelinesApi_GetPipelineRunExecute_Call{Call: _e.mock.On("GetPipelineRunExecute", r)}
 }
 
@@ -769,7 +760,7 @@ type DataLakePipelinesApi_GetPipelineRunWithParams_Call struct {
 // GetPipelineRunWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetPipelineRunApiParams
-func (_e *DataLakePipelinesApi_Expecter) GetPipelineRunWithParams(ctx interface{}, args interface{}) *DataLakePipelinesApi_GetPipelineRunWithParams_Call {
+func (_e *DataLakePipelinesApi_Expecter) GetPipelineRunWithParams(ctx any, args any) *DataLakePipelinesApi_GetPipelineRunWithParams_Call {
 	return &DataLakePipelinesApi_GetPipelineRunWithParams_Call{Call: _e.mock.On("GetPipelineRunWithParams", ctx, args)}
 }
 
@@ -816,7 +807,7 @@ type DataLakePipelinesApi_GetPipelineWithParams_Call struct {
 // GetPipelineWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetPipelineApiParams
-func (_e *DataLakePipelinesApi_Expecter) GetPipelineWithParams(ctx interface{}, args interface{}) *DataLakePipelinesApi_GetPipelineWithParams_Call {
+func (_e *DataLakePipelinesApi_Expecter) GetPipelineWithParams(ctx any, args any) *DataLakePipelinesApi_GetPipelineWithParams_Call {
 	return &DataLakePipelinesApi_GetPipelineWithParams_Call{Call: _e.mock.On("GetPipelineWithParams", ctx, args)}
 }
 
@@ -864,7 +855,7 @@ type DataLakePipelinesApi_ListPipelineRuns_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - pipelineName string
-func (_e *DataLakePipelinesApi_Expecter) ListPipelineRuns(ctx interface{}, groupId interface{}, pipelineName interface{}) *DataLakePipelinesApi_ListPipelineRuns_Call {
+func (_e *DataLakePipelinesApi_Expecter) ListPipelineRuns(ctx any, groupId any, pipelineName any) *DataLakePipelinesApi_ListPipelineRuns_Call {
 	return &DataLakePipelinesApi_ListPipelineRuns_Call{Call: _e.mock.On("ListPipelineRuns", ctx, groupId, pipelineName)}
 }
 
@@ -931,7 +922,7 @@ type DataLakePipelinesApi_ListPipelineRunsExecute_Call struct {
 
 // ListPipelineRunsExecute is a helper method to define mock.On call
 //   - r admin.ListPipelineRunsApiRequest
-func (_e *DataLakePipelinesApi_Expecter) ListPipelineRunsExecute(r interface{}) *DataLakePipelinesApi_ListPipelineRunsExecute_Call {
+func (_e *DataLakePipelinesApi_Expecter) ListPipelineRunsExecute(r any) *DataLakePipelinesApi_ListPipelineRunsExecute_Call {
 	return &DataLakePipelinesApi_ListPipelineRunsExecute_Call{Call: _e.mock.On("ListPipelineRunsExecute", r)}
 }
 
@@ -978,7 +969,7 @@ type DataLakePipelinesApi_ListPipelineRunsWithParams_Call struct {
 // ListPipelineRunsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListPipelineRunsApiParams
-func (_e *DataLakePipelinesApi_Expecter) ListPipelineRunsWithParams(ctx interface{}, args interface{}) *DataLakePipelinesApi_ListPipelineRunsWithParams_Call {
+func (_e *DataLakePipelinesApi_Expecter) ListPipelineRunsWithParams(ctx any, args any) *DataLakePipelinesApi_ListPipelineRunsWithParams_Call {
 	return &DataLakePipelinesApi_ListPipelineRunsWithParams_Call{Call: _e.mock.On("ListPipelineRunsWithParams", ctx, args)}
 }
 
@@ -1026,7 +1017,7 @@ type DataLakePipelinesApi_ListPipelineSchedules_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - pipelineName string
-func (_e *DataLakePipelinesApi_Expecter) ListPipelineSchedules(ctx interface{}, groupId interface{}, pipelineName interface{}) *DataLakePipelinesApi_ListPipelineSchedules_Call {
+func (_e *DataLakePipelinesApi_Expecter) ListPipelineSchedules(ctx any, groupId any, pipelineName any) *DataLakePipelinesApi_ListPipelineSchedules_Call {
 	return &DataLakePipelinesApi_ListPipelineSchedules_Call{Call: _e.mock.On("ListPipelineSchedules", ctx, groupId, pipelineName)}
 }
 
@@ -1093,7 +1084,7 @@ type DataLakePipelinesApi_ListPipelineSchedulesExecute_Call struct {
 
 // ListPipelineSchedulesExecute is a helper method to define mock.On call
 //   - r admin.ListPipelineSchedulesApiRequest
-func (_e *DataLakePipelinesApi_Expecter) ListPipelineSchedulesExecute(r interface{}) *DataLakePipelinesApi_ListPipelineSchedulesExecute_Call {
+func (_e *DataLakePipelinesApi_Expecter) ListPipelineSchedulesExecute(r any) *DataLakePipelinesApi_ListPipelineSchedulesExecute_Call {
 	return &DataLakePipelinesApi_ListPipelineSchedulesExecute_Call{Call: _e.mock.On("ListPipelineSchedulesExecute", r)}
 }
 
@@ -1140,7 +1131,7 @@ type DataLakePipelinesApi_ListPipelineSchedulesWithParams_Call struct {
 // ListPipelineSchedulesWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListPipelineSchedulesApiParams
-func (_e *DataLakePipelinesApi_Expecter) ListPipelineSchedulesWithParams(ctx interface{}, args interface{}) *DataLakePipelinesApi_ListPipelineSchedulesWithParams_Call {
+func (_e *DataLakePipelinesApi_Expecter) ListPipelineSchedulesWithParams(ctx any, args any) *DataLakePipelinesApi_ListPipelineSchedulesWithParams_Call {
 	return &DataLakePipelinesApi_ListPipelineSchedulesWithParams_Call{Call: _e.mock.On("ListPipelineSchedulesWithParams", ctx, args)}
 }
 
@@ -1188,7 +1179,7 @@ type DataLakePipelinesApi_ListPipelineSnapshots_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - pipelineName string
-func (_e *DataLakePipelinesApi_Expecter) ListPipelineSnapshots(ctx interface{}, groupId interface{}, pipelineName interface{}) *DataLakePipelinesApi_ListPipelineSnapshots_Call {
+func (_e *DataLakePipelinesApi_Expecter) ListPipelineSnapshots(ctx any, groupId any, pipelineName any) *DataLakePipelinesApi_ListPipelineSnapshots_Call {
 	return &DataLakePipelinesApi_ListPipelineSnapshots_Call{Call: _e.mock.On("ListPipelineSnapshots", ctx, groupId, pipelineName)}
 }
 
@@ -1255,7 +1246,7 @@ type DataLakePipelinesApi_ListPipelineSnapshotsExecute_Call struct {
 
 // ListPipelineSnapshotsExecute is a helper method to define mock.On call
 //   - r admin.ListPipelineSnapshotsApiRequest
-func (_e *DataLakePipelinesApi_Expecter) ListPipelineSnapshotsExecute(r interface{}) *DataLakePipelinesApi_ListPipelineSnapshotsExecute_Call {
+func (_e *DataLakePipelinesApi_Expecter) ListPipelineSnapshotsExecute(r any) *DataLakePipelinesApi_ListPipelineSnapshotsExecute_Call {
 	return &DataLakePipelinesApi_ListPipelineSnapshotsExecute_Call{Call: _e.mock.On("ListPipelineSnapshotsExecute", r)}
 }
 
@@ -1302,7 +1293,7 @@ type DataLakePipelinesApi_ListPipelineSnapshotsWithParams_Call struct {
 // ListPipelineSnapshotsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListPipelineSnapshotsApiParams
-func (_e *DataLakePipelinesApi_Expecter) ListPipelineSnapshotsWithParams(ctx interface{}, args interface{}) *DataLakePipelinesApi_ListPipelineSnapshotsWithParams_Call {
+func (_e *DataLakePipelinesApi_Expecter) ListPipelineSnapshotsWithParams(ctx any, args any) *DataLakePipelinesApi_ListPipelineSnapshotsWithParams_Call {
 	return &DataLakePipelinesApi_ListPipelineSnapshotsWithParams_Call{Call: _e.mock.On("ListPipelineSnapshotsWithParams", ctx, args)}
 }
 
@@ -1349,7 +1340,7 @@ type DataLakePipelinesApi_ListPipelines_Call struct {
 // ListPipelines is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *DataLakePipelinesApi_Expecter) ListPipelines(ctx interface{}, groupId interface{}) *DataLakePipelinesApi_ListPipelines_Call {
+func (_e *DataLakePipelinesApi_Expecter) ListPipelines(ctx any, groupId any) *DataLakePipelinesApi_ListPipelines_Call {
 	return &DataLakePipelinesApi_ListPipelines_Call{Call: _e.mock.On("ListPipelines", ctx, groupId)}
 }
 
@@ -1416,7 +1407,7 @@ type DataLakePipelinesApi_ListPipelinesExecute_Call struct {
 
 // ListPipelinesExecute is a helper method to define mock.On call
 //   - r admin.ListPipelinesApiRequest
-func (_e *DataLakePipelinesApi_Expecter) ListPipelinesExecute(r interface{}) *DataLakePipelinesApi_ListPipelinesExecute_Call {
+func (_e *DataLakePipelinesApi_Expecter) ListPipelinesExecute(r any) *DataLakePipelinesApi_ListPipelinesExecute_Call {
 	return &DataLakePipelinesApi_ListPipelinesExecute_Call{Call: _e.mock.On("ListPipelinesExecute", r)}
 }
 
@@ -1463,7 +1454,7 @@ type DataLakePipelinesApi_ListPipelinesWithParams_Call struct {
 // ListPipelinesWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListPipelinesApiParams
-func (_e *DataLakePipelinesApi_Expecter) ListPipelinesWithParams(ctx interface{}, args interface{}) *DataLakePipelinesApi_ListPipelinesWithParams_Call {
+func (_e *DataLakePipelinesApi_Expecter) ListPipelinesWithParams(ctx any, args any) *DataLakePipelinesApi_ListPipelinesWithParams_Call {
 	return &DataLakePipelinesApi_ListPipelinesWithParams_Call{Call: _e.mock.On("ListPipelinesWithParams", ctx, args)}
 }
 
@@ -1511,7 +1502,7 @@ type DataLakePipelinesApi_PausePipeline_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - pipelineName string
-func (_e *DataLakePipelinesApi_Expecter) PausePipeline(ctx interface{}, groupId interface{}, pipelineName interface{}) *DataLakePipelinesApi_PausePipeline_Call {
+func (_e *DataLakePipelinesApi_Expecter) PausePipeline(ctx any, groupId any, pipelineName any) *DataLakePipelinesApi_PausePipeline_Call {
 	return &DataLakePipelinesApi_PausePipeline_Call{Call: _e.mock.On("PausePipeline", ctx, groupId, pipelineName)}
 }
 
@@ -1578,7 +1569,7 @@ type DataLakePipelinesApi_PausePipelineExecute_Call struct {
 
 // PausePipelineExecute is a helper method to define mock.On call
 //   - r admin.PausePipelineApiRequest
-func (_e *DataLakePipelinesApi_Expecter) PausePipelineExecute(r interface{}) *DataLakePipelinesApi_PausePipelineExecute_Call {
+func (_e *DataLakePipelinesApi_Expecter) PausePipelineExecute(r any) *DataLakePipelinesApi_PausePipelineExecute_Call {
 	return &DataLakePipelinesApi_PausePipelineExecute_Call{Call: _e.mock.On("PausePipelineExecute", r)}
 }
 
@@ -1625,7 +1616,7 @@ type DataLakePipelinesApi_PausePipelineWithParams_Call struct {
 // PausePipelineWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.PausePipelineApiParams
-func (_e *DataLakePipelinesApi_Expecter) PausePipelineWithParams(ctx interface{}, args interface{}) *DataLakePipelinesApi_PausePipelineWithParams_Call {
+func (_e *DataLakePipelinesApi_Expecter) PausePipelineWithParams(ctx any, args any) *DataLakePipelinesApi_PausePipelineWithParams_Call {
 	return &DataLakePipelinesApi_PausePipelineWithParams_Call{Call: _e.mock.On("PausePipelineWithParams", ctx, args)}
 }
 
@@ -1673,7 +1664,7 @@ type DataLakePipelinesApi_ResumePipeline_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - pipelineName string
-func (_e *DataLakePipelinesApi_Expecter) ResumePipeline(ctx interface{}, groupId interface{}, pipelineName interface{}) *DataLakePipelinesApi_ResumePipeline_Call {
+func (_e *DataLakePipelinesApi_Expecter) ResumePipeline(ctx any, groupId any, pipelineName any) *DataLakePipelinesApi_ResumePipeline_Call {
 	return &DataLakePipelinesApi_ResumePipeline_Call{Call: _e.mock.On("ResumePipeline", ctx, groupId, pipelineName)}
 }
 
@@ -1740,7 +1731,7 @@ type DataLakePipelinesApi_ResumePipelineExecute_Call struct {
 
 // ResumePipelineExecute is a helper method to define mock.On call
 //   - r admin.ResumePipelineApiRequest
-func (_e *DataLakePipelinesApi_Expecter) ResumePipelineExecute(r interface{}) *DataLakePipelinesApi_ResumePipelineExecute_Call {
+func (_e *DataLakePipelinesApi_Expecter) ResumePipelineExecute(r any) *DataLakePipelinesApi_ResumePipelineExecute_Call {
 	return &DataLakePipelinesApi_ResumePipelineExecute_Call{Call: _e.mock.On("ResumePipelineExecute", r)}
 }
 
@@ -1787,7 +1778,7 @@ type DataLakePipelinesApi_ResumePipelineWithParams_Call struct {
 // ResumePipelineWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ResumePipelineApiParams
-func (_e *DataLakePipelinesApi_Expecter) ResumePipelineWithParams(ctx interface{}, args interface{}) *DataLakePipelinesApi_ResumePipelineWithParams_Call {
+func (_e *DataLakePipelinesApi_Expecter) ResumePipelineWithParams(ctx any, args any) *DataLakePipelinesApi_ResumePipelineWithParams_Call {
 	return &DataLakePipelinesApi_ResumePipelineWithParams_Call{Call: _e.mock.On("ResumePipelineWithParams", ctx, args)}
 }
 
@@ -1836,7 +1827,7 @@ type DataLakePipelinesApi_TriggerSnapshotIngestion_Call struct {
 //   - groupId string
 //   - pipelineName string
 //   - triggerIngestionPipelineRequest *admin.TriggerIngestionPipelineRequest
-func (_e *DataLakePipelinesApi_Expecter) TriggerSnapshotIngestion(ctx interface{}, groupId interface{}, pipelineName interface{}, triggerIngestionPipelineRequest interface{}) *DataLakePipelinesApi_TriggerSnapshotIngestion_Call {
+func (_e *DataLakePipelinesApi_Expecter) TriggerSnapshotIngestion(ctx any, groupId any, pipelineName any, triggerIngestionPipelineRequest any) *DataLakePipelinesApi_TriggerSnapshotIngestion_Call {
 	return &DataLakePipelinesApi_TriggerSnapshotIngestion_Call{Call: _e.mock.On("TriggerSnapshotIngestion", ctx, groupId, pipelineName, triggerIngestionPipelineRequest)}
 }
 
@@ -1903,7 +1894,7 @@ type DataLakePipelinesApi_TriggerSnapshotIngestionExecute_Call struct {
 
 // TriggerSnapshotIngestionExecute is a helper method to define mock.On call
 //   - r admin.TriggerSnapshotIngestionApiRequest
-func (_e *DataLakePipelinesApi_Expecter) TriggerSnapshotIngestionExecute(r interface{}) *DataLakePipelinesApi_TriggerSnapshotIngestionExecute_Call {
+func (_e *DataLakePipelinesApi_Expecter) TriggerSnapshotIngestionExecute(r any) *DataLakePipelinesApi_TriggerSnapshotIngestionExecute_Call {
 	return &DataLakePipelinesApi_TriggerSnapshotIngestionExecute_Call{Call: _e.mock.On("TriggerSnapshotIngestionExecute", r)}
 }
 
@@ -1950,7 +1941,7 @@ type DataLakePipelinesApi_TriggerSnapshotIngestionWithParams_Call struct {
 // TriggerSnapshotIngestionWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.TriggerSnapshotIngestionApiParams
-func (_e *DataLakePipelinesApi_Expecter) TriggerSnapshotIngestionWithParams(ctx interface{}, args interface{}) *DataLakePipelinesApi_TriggerSnapshotIngestionWithParams_Call {
+func (_e *DataLakePipelinesApi_Expecter) TriggerSnapshotIngestionWithParams(ctx any, args any) *DataLakePipelinesApi_TriggerSnapshotIngestionWithParams_Call {
 	return &DataLakePipelinesApi_TriggerSnapshotIngestionWithParams_Call{Call: _e.mock.On("TriggerSnapshotIngestionWithParams", ctx, args)}
 }
 
@@ -1999,7 +1990,7 @@ type DataLakePipelinesApi_UpdatePipeline_Call struct {
 //   - groupId string
 //   - pipelineName string
 //   - dataLakeIngestionPipeline *admin.DataLakeIngestionPipeline
-func (_e *DataLakePipelinesApi_Expecter) UpdatePipeline(ctx interface{}, groupId interface{}, pipelineName interface{}, dataLakeIngestionPipeline interface{}) *DataLakePipelinesApi_UpdatePipeline_Call {
+func (_e *DataLakePipelinesApi_Expecter) UpdatePipeline(ctx any, groupId any, pipelineName any, dataLakeIngestionPipeline any) *DataLakePipelinesApi_UpdatePipeline_Call {
 	return &DataLakePipelinesApi_UpdatePipeline_Call{Call: _e.mock.On("UpdatePipeline", ctx, groupId, pipelineName, dataLakeIngestionPipeline)}
 }
 
@@ -2066,7 +2057,7 @@ type DataLakePipelinesApi_UpdatePipelineExecute_Call struct {
 
 // UpdatePipelineExecute is a helper method to define mock.On call
 //   - r admin.UpdatePipelineApiRequest
-func (_e *DataLakePipelinesApi_Expecter) UpdatePipelineExecute(r interface{}) *DataLakePipelinesApi_UpdatePipelineExecute_Call {
+func (_e *DataLakePipelinesApi_Expecter) UpdatePipelineExecute(r any) *DataLakePipelinesApi_UpdatePipelineExecute_Call {
 	return &DataLakePipelinesApi_UpdatePipelineExecute_Call{Call: _e.mock.On("UpdatePipelineExecute", r)}
 }
 
@@ -2113,7 +2104,7 @@ type DataLakePipelinesApi_UpdatePipelineWithParams_Call struct {
 // UpdatePipelineWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.UpdatePipelineApiParams
-func (_e *DataLakePipelinesApi_Expecter) UpdatePipelineWithParams(ctx interface{}, args interface{}) *DataLakePipelinesApi_UpdatePipelineWithParams_Call {
+func (_e *DataLakePipelinesApi_Expecter) UpdatePipelineWithParams(ctx any, args any) *DataLakePipelinesApi_UpdatePipelineWithParams_Call {
 	return &DataLakePipelinesApi_UpdatePipelineWithParams_Call{Call: _e.mock.On("UpdatePipelineWithParams", ctx, args)}
 }
 

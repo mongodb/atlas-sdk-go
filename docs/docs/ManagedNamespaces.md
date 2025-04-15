@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Collection** | **string** | Human-readable label of the collection to manage for this Global Cluster. | 
-**CustomShardKey** | **string** | Database parameter used to divide the *collection* into shards. Global clusters require a compound shard key. This compound shard key combines the location parameter and the user-selected custom key. | [readonly] 
+**CustomShardKey** | **string** | Database parameter used to divide the *collection* into shards. Global clusters require a compound shard key. This compound shard key combines the location parameter and the user-selected custom key. | 
 **Db** | **string** | Human-readable label of the database to manage for this Global Cluster. | 
 **IsCustomShardKeyHashed** | Pointer to **bool** | Flag that indicates whether someone hashed the custom shard key for the specified collection. If you set this value to &#x60;false&#x60;, MongoDB Cloud uses ranged sharding. | [optional] [default to false]
 **IsShardKeyUnique** | Pointer to **bool** | Flag that indicates whether someone [hashed](https://www.mongodb.com/docs/manual/reference/method/sh.shardCollection/#hashed-shard-keys) the custom shard key. If this parameter returns &#x60;false&#x60;, this cluster uses [ranged sharding](https://www.mongodb.com/docs/manual/core/ranged-sharding/). | [optional] [default to false]

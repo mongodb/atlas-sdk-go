@@ -51,7 +51,7 @@ type MongoDBCloudUsersApi_CreateUser_Call struct {
 // CreateUser is a helper method to define mock.On call
 //   - ctx context.Context
 //   - cloudAppUser *admin.CloudAppUser
-func (_e *MongoDBCloudUsersApi_Expecter) CreateUser(ctx interface{}, cloudAppUser interface{}) *MongoDBCloudUsersApi_CreateUser_Call {
+func (_e *MongoDBCloudUsersApi_Expecter) CreateUser(ctx any, cloudAppUser any) *MongoDBCloudUsersApi_CreateUser_Call {
 	return &MongoDBCloudUsersApi_CreateUser_Call{Call: _e.mock.On("CreateUser", ctx, cloudAppUser)}
 }
 
@@ -118,7 +118,7 @@ type MongoDBCloudUsersApi_CreateUserExecute_Call struct {
 
 // CreateUserExecute is a helper method to define mock.On call
 //   - r admin.CreateUserApiRequest
-func (_e *MongoDBCloudUsersApi_Expecter) CreateUserExecute(r interface{}) *MongoDBCloudUsersApi_CreateUserExecute_Call {
+func (_e *MongoDBCloudUsersApi_Expecter) CreateUserExecute(r any) *MongoDBCloudUsersApi_CreateUserExecute_Call {
 	return &MongoDBCloudUsersApi_CreateUserExecute_Call{Call: _e.mock.On("CreateUserExecute", r)}
 }
 
@@ -165,7 +165,7 @@ type MongoDBCloudUsersApi_CreateUserWithParams_Call struct {
 // CreateUserWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.CreateUserApiParams
-func (_e *MongoDBCloudUsersApi_Expecter) CreateUserWithParams(ctx interface{}, args interface{}) *MongoDBCloudUsersApi_CreateUserWithParams_Call {
+func (_e *MongoDBCloudUsersApi_Expecter) CreateUserWithParams(ctx any, args any) *MongoDBCloudUsersApi_CreateUserWithParams_Call {
 	return &MongoDBCloudUsersApi_CreateUserWithParams_Call{Call: _e.mock.On("CreateUserWithParams", ctx, args)}
 }
 
@@ -212,7 +212,7 @@ type MongoDBCloudUsersApi_GetUser_Call struct {
 // GetUser is a helper method to define mock.On call
 //   - ctx context.Context
 //   - userId string
-func (_e *MongoDBCloudUsersApi_Expecter) GetUser(ctx interface{}, userId interface{}) *MongoDBCloudUsersApi_GetUser_Call {
+func (_e *MongoDBCloudUsersApi_Expecter) GetUser(ctx any, userId any) *MongoDBCloudUsersApi_GetUser_Call {
 	return &MongoDBCloudUsersApi_GetUser_Call{Call: _e.mock.On("GetUser", ctx, userId)}
 }
 
@@ -259,7 +259,7 @@ type MongoDBCloudUsersApi_GetUserByUsername_Call struct {
 // GetUserByUsername is a helper method to define mock.On call
 //   - ctx context.Context
 //   - userName string
-func (_e *MongoDBCloudUsersApi_Expecter) GetUserByUsername(ctx interface{}, userName interface{}) *MongoDBCloudUsersApi_GetUserByUsername_Call {
+func (_e *MongoDBCloudUsersApi_Expecter) GetUserByUsername(ctx any, userName any) *MongoDBCloudUsersApi_GetUserByUsername_Call {
 	return &MongoDBCloudUsersApi_GetUserByUsername_Call{Call: _e.mock.On("GetUserByUsername", ctx, userName)}
 }
 
@@ -326,7 +326,7 @@ type MongoDBCloudUsersApi_GetUserByUsernameExecute_Call struct {
 
 // GetUserByUsernameExecute is a helper method to define mock.On call
 //   - r admin.GetUserByUsernameApiRequest
-func (_e *MongoDBCloudUsersApi_Expecter) GetUserByUsernameExecute(r interface{}) *MongoDBCloudUsersApi_GetUserByUsernameExecute_Call {
+func (_e *MongoDBCloudUsersApi_Expecter) GetUserByUsernameExecute(r any) *MongoDBCloudUsersApi_GetUserByUsernameExecute_Call {
 	return &MongoDBCloudUsersApi_GetUserByUsernameExecute_Call{Call: _e.mock.On("GetUserByUsernameExecute", r)}
 }
 
@@ -373,7 +373,7 @@ type MongoDBCloudUsersApi_GetUserByUsernameWithParams_Call struct {
 // GetUserByUsernameWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetUserByUsernameApiParams
-func (_e *MongoDBCloudUsersApi_Expecter) GetUserByUsernameWithParams(ctx interface{}, args interface{}) *MongoDBCloudUsersApi_GetUserByUsernameWithParams_Call {
+func (_e *MongoDBCloudUsersApi_Expecter) GetUserByUsernameWithParams(ctx any, args any) *MongoDBCloudUsersApi_GetUserByUsernameWithParams_Call {
 	return &MongoDBCloudUsersApi_GetUserByUsernameWithParams_Call{Call: _e.mock.On("GetUserByUsernameWithParams", ctx, args)}
 }
 
@@ -440,7 +440,7 @@ type MongoDBCloudUsersApi_GetUserExecute_Call struct {
 
 // GetUserExecute is a helper method to define mock.On call
 //   - r admin.GetUserApiRequest
-func (_e *MongoDBCloudUsersApi_Expecter) GetUserExecute(r interface{}) *MongoDBCloudUsersApi_GetUserExecute_Call {
+func (_e *MongoDBCloudUsersApi_Expecter) GetUserExecute(r any) *MongoDBCloudUsersApi_GetUserExecute_Call {
 	return &MongoDBCloudUsersApi_GetUserExecute_Call{Call: _e.mock.On("GetUserExecute", r)}
 }
 
@@ -487,7 +487,7 @@ type MongoDBCloudUsersApi_GetUserWithParams_Call struct {
 // GetUserWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetUserApiParams
-func (_e *MongoDBCloudUsersApi_Expecter) GetUserWithParams(ctx interface{}, args interface{}) *MongoDBCloudUsersApi_GetUserWithParams_Call {
+func (_e *MongoDBCloudUsersApi_Expecter) GetUserWithParams(ctx any, args any) *MongoDBCloudUsersApi_GetUserWithParams_Call {
 	return &MongoDBCloudUsersApi_GetUserWithParams_Call{Call: _e.mock.On("GetUserWithParams", ctx, args)}
 }
 
@@ -504,6 +504,796 @@ func (_c *MongoDBCloudUsersApi_GetUserWithParams_Call) Return(_a0 admin.GetUserA
 }
 
 func (_c *MongoDBCloudUsersApi_GetUserWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetUserApiParams) admin.GetUserApiRequest) *MongoDBCloudUsersApi_GetUserWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListOrganizationUsers provides a mock function with given fields: ctx, orgId
+func (_m *MongoDBCloudUsersApi) ListOrganizationUsers(ctx context.Context, orgId string) admin.ListOrganizationUsersApiRequest {
+	ret := _m.Called(ctx, orgId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListOrganizationUsers")
+	}
+
+	var r0 admin.ListOrganizationUsersApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.ListOrganizationUsersApiRequest); ok {
+		r0 = rf(ctx, orgId)
+	} else {
+		r0 = ret.Get(0).(admin.ListOrganizationUsersApiRequest)
+	}
+
+	return r0
+}
+
+// MongoDBCloudUsersApi_ListOrganizationUsers_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListOrganizationUsers'
+type MongoDBCloudUsersApi_ListOrganizationUsers_Call struct {
+	*mock.Call
+}
+
+// ListOrganizationUsers is a helper method to define mock.On call
+//   - ctx context.Context
+//   - orgId string
+func (_e *MongoDBCloudUsersApi_Expecter) ListOrganizationUsers(ctx any, orgId any) *MongoDBCloudUsersApi_ListOrganizationUsers_Call {
+	return &MongoDBCloudUsersApi_ListOrganizationUsers_Call{Call: _e.mock.On("ListOrganizationUsers", ctx, orgId)}
+}
+
+func (_c *MongoDBCloudUsersApi_ListOrganizationUsers_Call) Run(run func(ctx context.Context, orgId string)) *MongoDBCloudUsersApi_ListOrganizationUsers_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string))
+	})
+	return _c
+}
+
+func (_c *MongoDBCloudUsersApi_ListOrganizationUsers_Call) Return(_a0 admin.ListOrganizationUsersApiRequest) *MongoDBCloudUsersApi_ListOrganizationUsers_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *MongoDBCloudUsersApi_ListOrganizationUsers_Call) RunAndReturn(run func(context.Context, string) admin.ListOrganizationUsersApiRequest) *MongoDBCloudUsersApi_ListOrganizationUsers_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListOrganizationUsersExecute provides a mock function with given fields: r
+func (_m *MongoDBCloudUsersApi) ListOrganizationUsersExecute(r admin.ListOrganizationUsersApiRequest) (*admin.PaginatedAppUser, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListOrganizationUsersExecute")
+	}
+
+	var r0 *admin.PaginatedAppUser
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.ListOrganizationUsersApiRequest) (*admin.PaginatedAppUser, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.ListOrganizationUsersApiRequest) *admin.PaginatedAppUser); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.PaginatedAppUser)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.ListOrganizationUsersApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.ListOrganizationUsersApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// MongoDBCloudUsersApi_ListOrganizationUsersExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListOrganizationUsersExecute'
+type MongoDBCloudUsersApi_ListOrganizationUsersExecute_Call struct {
+	*mock.Call
+}
+
+// ListOrganizationUsersExecute is a helper method to define mock.On call
+//   - r admin.ListOrganizationUsersApiRequest
+func (_e *MongoDBCloudUsersApi_Expecter) ListOrganizationUsersExecute(r any) *MongoDBCloudUsersApi_ListOrganizationUsersExecute_Call {
+	return &MongoDBCloudUsersApi_ListOrganizationUsersExecute_Call{Call: _e.mock.On("ListOrganizationUsersExecute", r)}
+}
+
+func (_c *MongoDBCloudUsersApi_ListOrganizationUsersExecute_Call) Run(run func(r admin.ListOrganizationUsersApiRequest)) *MongoDBCloudUsersApi_ListOrganizationUsersExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.ListOrganizationUsersApiRequest))
+	})
+	return _c
+}
+
+func (_c *MongoDBCloudUsersApi_ListOrganizationUsersExecute_Call) Return(_a0 *admin.PaginatedAppUser, _a1 *http.Response, _a2 error) *MongoDBCloudUsersApi_ListOrganizationUsersExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *MongoDBCloudUsersApi_ListOrganizationUsersExecute_Call) RunAndReturn(run func(admin.ListOrganizationUsersApiRequest) (*admin.PaginatedAppUser, *http.Response, error)) *MongoDBCloudUsersApi_ListOrganizationUsersExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListOrganizationUsersWithParams provides a mock function with given fields: ctx, args
+func (_m *MongoDBCloudUsersApi) ListOrganizationUsersWithParams(ctx context.Context, args *admin.ListOrganizationUsersApiParams) admin.ListOrganizationUsersApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListOrganizationUsersWithParams")
+	}
+
+	var r0 admin.ListOrganizationUsersApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListOrganizationUsersApiParams) admin.ListOrganizationUsersApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.ListOrganizationUsersApiRequest)
+	}
+
+	return r0
+}
+
+// MongoDBCloudUsersApi_ListOrganizationUsersWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListOrganizationUsersWithParams'
+type MongoDBCloudUsersApi_ListOrganizationUsersWithParams_Call struct {
+	*mock.Call
+}
+
+// ListOrganizationUsersWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.ListOrganizationUsersApiParams
+func (_e *MongoDBCloudUsersApi_Expecter) ListOrganizationUsersWithParams(ctx any, args any) *MongoDBCloudUsersApi_ListOrganizationUsersWithParams_Call {
+	return &MongoDBCloudUsersApi_ListOrganizationUsersWithParams_Call{Call: _e.mock.On("ListOrganizationUsersWithParams", ctx, args)}
+}
+
+func (_c *MongoDBCloudUsersApi_ListOrganizationUsersWithParams_Call) Run(run func(ctx context.Context, args *admin.ListOrganizationUsersApiParams)) *MongoDBCloudUsersApi_ListOrganizationUsersWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.ListOrganizationUsersApiParams))
+	})
+	return _c
+}
+
+func (_c *MongoDBCloudUsersApi_ListOrganizationUsersWithParams_Call) Return(_a0 admin.ListOrganizationUsersApiRequest) *MongoDBCloudUsersApi_ListOrganizationUsersWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *MongoDBCloudUsersApi_ListOrganizationUsersWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListOrganizationUsersApiParams) admin.ListOrganizationUsersApiRequest) *MongoDBCloudUsersApi_ListOrganizationUsersWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListProjectUsers provides a mock function with given fields: ctx, groupId
+func (_m *MongoDBCloudUsersApi) ListProjectUsers(ctx context.Context, groupId string) admin.ListProjectUsersApiRequest {
+	ret := _m.Called(ctx, groupId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListProjectUsers")
+	}
+
+	var r0 admin.ListProjectUsersApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.ListProjectUsersApiRequest); ok {
+		r0 = rf(ctx, groupId)
+	} else {
+		r0 = ret.Get(0).(admin.ListProjectUsersApiRequest)
+	}
+
+	return r0
+}
+
+// MongoDBCloudUsersApi_ListProjectUsers_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListProjectUsers'
+type MongoDBCloudUsersApi_ListProjectUsers_Call struct {
+	*mock.Call
+}
+
+// ListProjectUsers is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+func (_e *MongoDBCloudUsersApi_Expecter) ListProjectUsers(ctx any, groupId any) *MongoDBCloudUsersApi_ListProjectUsers_Call {
+	return &MongoDBCloudUsersApi_ListProjectUsers_Call{Call: _e.mock.On("ListProjectUsers", ctx, groupId)}
+}
+
+func (_c *MongoDBCloudUsersApi_ListProjectUsers_Call) Run(run func(ctx context.Context, groupId string)) *MongoDBCloudUsersApi_ListProjectUsers_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string))
+	})
+	return _c
+}
+
+func (_c *MongoDBCloudUsersApi_ListProjectUsers_Call) Return(_a0 admin.ListProjectUsersApiRequest) *MongoDBCloudUsersApi_ListProjectUsers_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *MongoDBCloudUsersApi_ListProjectUsers_Call) RunAndReturn(run func(context.Context, string) admin.ListProjectUsersApiRequest) *MongoDBCloudUsersApi_ListProjectUsers_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListProjectUsersExecute provides a mock function with given fields: r
+func (_m *MongoDBCloudUsersApi) ListProjectUsersExecute(r admin.ListProjectUsersApiRequest) (*admin.PaginatedAppUser, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListProjectUsersExecute")
+	}
+
+	var r0 *admin.PaginatedAppUser
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.ListProjectUsersApiRequest) (*admin.PaginatedAppUser, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.ListProjectUsersApiRequest) *admin.PaginatedAppUser); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.PaginatedAppUser)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.ListProjectUsersApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.ListProjectUsersApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// MongoDBCloudUsersApi_ListProjectUsersExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListProjectUsersExecute'
+type MongoDBCloudUsersApi_ListProjectUsersExecute_Call struct {
+	*mock.Call
+}
+
+// ListProjectUsersExecute is a helper method to define mock.On call
+//   - r admin.ListProjectUsersApiRequest
+func (_e *MongoDBCloudUsersApi_Expecter) ListProjectUsersExecute(r any) *MongoDBCloudUsersApi_ListProjectUsersExecute_Call {
+	return &MongoDBCloudUsersApi_ListProjectUsersExecute_Call{Call: _e.mock.On("ListProjectUsersExecute", r)}
+}
+
+func (_c *MongoDBCloudUsersApi_ListProjectUsersExecute_Call) Run(run func(r admin.ListProjectUsersApiRequest)) *MongoDBCloudUsersApi_ListProjectUsersExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.ListProjectUsersApiRequest))
+	})
+	return _c
+}
+
+func (_c *MongoDBCloudUsersApi_ListProjectUsersExecute_Call) Return(_a0 *admin.PaginatedAppUser, _a1 *http.Response, _a2 error) *MongoDBCloudUsersApi_ListProjectUsersExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *MongoDBCloudUsersApi_ListProjectUsersExecute_Call) RunAndReturn(run func(admin.ListProjectUsersApiRequest) (*admin.PaginatedAppUser, *http.Response, error)) *MongoDBCloudUsersApi_ListProjectUsersExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListProjectUsersWithParams provides a mock function with given fields: ctx, args
+func (_m *MongoDBCloudUsersApi) ListProjectUsersWithParams(ctx context.Context, args *admin.ListProjectUsersApiParams) admin.ListProjectUsersApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListProjectUsersWithParams")
+	}
+
+	var r0 admin.ListProjectUsersApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListProjectUsersApiParams) admin.ListProjectUsersApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.ListProjectUsersApiRequest)
+	}
+
+	return r0
+}
+
+// MongoDBCloudUsersApi_ListProjectUsersWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListProjectUsersWithParams'
+type MongoDBCloudUsersApi_ListProjectUsersWithParams_Call struct {
+	*mock.Call
+}
+
+// ListProjectUsersWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.ListProjectUsersApiParams
+func (_e *MongoDBCloudUsersApi_Expecter) ListProjectUsersWithParams(ctx any, args any) *MongoDBCloudUsersApi_ListProjectUsersWithParams_Call {
+	return &MongoDBCloudUsersApi_ListProjectUsersWithParams_Call{Call: _e.mock.On("ListProjectUsersWithParams", ctx, args)}
+}
+
+func (_c *MongoDBCloudUsersApi_ListProjectUsersWithParams_Call) Run(run func(ctx context.Context, args *admin.ListProjectUsersApiParams)) *MongoDBCloudUsersApi_ListProjectUsersWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.ListProjectUsersApiParams))
+	})
+	return _c
+}
+
+func (_c *MongoDBCloudUsersApi_ListProjectUsersWithParams_Call) Return(_a0 admin.ListProjectUsersApiRequest) *MongoDBCloudUsersApi_ListProjectUsersWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *MongoDBCloudUsersApi_ListProjectUsersWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListProjectUsersApiParams) admin.ListProjectUsersApiRequest) *MongoDBCloudUsersApi_ListProjectUsersWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListTeamUsers provides a mock function with given fields: ctx, orgId, teamId
+func (_m *MongoDBCloudUsersApi) ListTeamUsers(ctx context.Context, orgId string, teamId string) admin.ListTeamUsersApiRequest {
+	ret := _m.Called(ctx, orgId, teamId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListTeamUsers")
+	}
+
+	var r0 admin.ListTeamUsersApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.ListTeamUsersApiRequest); ok {
+		r0 = rf(ctx, orgId, teamId)
+	} else {
+		r0 = ret.Get(0).(admin.ListTeamUsersApiRequest)
+	}
+
+	return r0
+}
+
+// MongoDBCloudUsersApi_ListTeamUsers_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListTeamUsers'
+type MongoDBCloudUsersApi_ListTeamUsers_Call struct {
+	*mock.Call
+}
+
+// ListTeamUsers is a helper method to define mock.On call
+//   - ctx context.Context
+//   - orgId string
+//   - teamId string
+func (_e *MongoDBCloudUsersApi_Expecter) ListTeamUsers(ctx any, orgId any, teamId any) *MongoDBCloudUsersApi_ListTeamUsers_Call {
+	return &MongoDBCloudUsersApi_ListTeamUsers_Call{Call: _e.mock.On("ListTeamUsers", ctx, orgId, teamId)}
+}
+
+func (_c *MongoDBCloudUsersApi_ListTeamUsers_Call) Run(run func(ctx context.Context, orgId string, teamId string)) *MongoDBCloudUsersApi_ListTeamUsers_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string))
+	})
+	return _c
+}
+
+func (_c *MongoDBCloudUsersApi_ListTeamUsers_Call) Return(_a0 admin.ListTeamUsersApiRequest) *MongoDBCloudUsersApi_ListTeamUsers_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *MongoDBCloudUsersApi_ListTeamUsers_Call) RunAndReturn(run func(context.Context, string, string) admin.ListTeamUsersApiRequest) *MongoDBCloudUsersApi_ListTeamUsers_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListTeamUsersExecute provides a mock function with given fields: r
+func (_m *MongoDBCloudUsersApi) ListTeamUsersExecute(r admin.ListTeamUsersApiRequest) (*admin.PaginatedAppUser, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListTeamUsersExecute")
+	}
+
+	var r0 *admin.PaginatedAppUser
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.ListTeamUsersApiRequest) (*admin.PaginatedAppUser, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.ListTeamUsersApiRequest) *admin.PaginatedAppUser); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.PaginatedAppUser)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.ListTeamUsersApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.ListTeamUsersApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// MongoDBCloudUsersApi_ListTeamUsersExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListTeamUsersExecute'
+type MongoDBCloudUsersApi_ListTeamUsersExecute_Call struct {
+	*mock.Call
+}
+
+// ListTeamUsersExecute is a helper method to define mock.On call
+//   - r admin.ListTeamUsersApiRequest
+func (_e *MongoDBCloudUsersApi_Expecter) ListTeamUsersExecute(r any) *MongoDBCloudUsersApi_ListTeamUsersExecute_Call {
+	return &MongoDBCloudUsersApi_ListTeamUsersExecute_Call{Call: _e.mock.On("ListTeamUsersExecute", r)}
+}
+
+func (_c *MongoDBCloudUsersApi_ListTeamUsersExecute_Call) Run(run func(r admin.ListTeamUsersApiRequest)) *MongoDBCloudUsersApi_ListTeamUsersExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.ListTeamUsersApiRequest))
+	})
+	return _c
+}
+
+func (_c *MongoDBCloudUsersApi_ListTeamUsersExecute_Call) Return(_a0 *admin.PaginatedAppUser, _a1 *http.Response, _a2 error) *MongoDBCloudUsersApi_ListTeamUsersExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *MongoDBCloudUsersApi_ListTeamUsersExecute_Call) RunAndReturn(run func(admin.ListTeamUsersApiRequest) (*admin.PaginatedAppUser, *http.Response, error)) *MongoDBCloudUsersApi_ListTeamUsersExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListTeamUsersWithParams provides a mock function with given fields: ctx, args
+func (_m *MongoDBCloudUsersApi) ListTeamUsersWithParams(ctx context.Context, args *admin.ListTeamUsersApiParams) admin.ListTeamUsersApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListTeamUsersWithParams")
+	}
+
+	var r0 admin.ListTeamUsersApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListTeamUsersApiParams) admin.ListTeamUsersApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.ListTeamUsersApiRequest)
+	}
+
+	return r0
+}
+
+// MongoDBCloudUsersApi_ListTeamUsersWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListTeamUsersWithParams'
+type MongoDBCloudUsersApi_ListTeamUsersWithParams_Call struct {
+	*mock.Call
+}
+
+// ListTeamUsersWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.ListTeamUsersApiParams
+func (_e *MongoDBCloudUsersApi_Expecter) ListTeamUsersWithParams(ctx any, args any) *MongoDBCloudUsersApi_ListTeamUsersWithParams_Call {
+	return &MongoDBCloudUsersApi_ListTeamUsersWithParams_Call{Call: _e.mock.On("ListTeamUsersWithParams", ctx, args)}
+}
+
+func (_c *MongoDBCloudUsersApi_ListTeamUsersWithParams_Call) Run(run func(ctx context.Context, args *admin.ListTeamUsersApiParams)) *MongoDBCloudUsersApi_ListTeamUsersWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.ListTeamUsersApiParams))
+	})
+	return _c
+}
+
+func (_c *MongoDBCloudUsersApi_ListTeamUsersWithParams_Call) Return(_a0 admin.ListTeamUsersApiRequest) *MongoDBCloudUsersApi_ListTeamUsersWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *MongoDBCloudUsersApi_ListTeamUsersWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListTeamUsersApiParams) admin.ListTeamUsersApiRequest) *MongoDBCloudUsersApi_ListTeamUsersWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// RemoveOrganizationUser provides a mock function with given fields: ctx, orgId, userId
+func (_m *MongoDBCloudUsersApi) RemoveOrganizationUser(ctx context.Context, orgId string, userId string) admin.RemoveOrganizationUserApiRequest {
+	ret := _m.Called(ctx, orgId, userId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for RemoveOrganizationUser")
+	}
+
+	var r0 admin.RemoveOrganizationUserApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.RemoveOrganizationUserApiRequest); ok {
+		r0 = rf(ctx, orgId, userId)
+	} else {
+		r0 = ret.Get(0).(admin.RemoveOrganizationUserApiRequest)
+	}
+
+	return r0
+}
+
+// MongoDBCloudUsersApi_RemoveOrganizationUser_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RemoveOrganizationUser'
+type MongoDBCloudUsersApi_RemoveOrganizationUser_Call struct {
+	*mock.Call
+}
+
+// RemoveOrganizationUser is a helper method to define mock.On call
+//   - ctx context.Context
+//   - orgId string
+//   - userId string
+func (_e *MongoDBCloudUsersApi_Expecter) RemoveOrganizationUser(ctx any, orgId any, userId any) *MongoDBCloudUsersApi_RemoveOrganizationUser_Call {
+	return &MongoDBCloudUsersApi_RemoveOrganizationUser_Call{Call: _e.mock.On("RemoveOrganizationUser", ctx, orgId, userId)}
+}
+
+func (_c *MongoDBCloudUsersApi_RemoveOrganizationUser_Call) Run(run func(ctx context.Context, orgId string, userId string)) *MongoDBCloudUsersApi_RemoveOrganizationUser_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string))
+	})
+	return _c
+}
+
+func (_c *MongoDBCloudUsersApi_RemoveOrganizationUser_Call) Return(_a0 admin.RemoveOrganizationUserApiRequest) *MongoDBCloudUsersApi_RemoveOrganizationUser_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *MongoDBCloudUsersApi_RemoveOrganizationUser_Call) RunAndReturn(run func(context.Context, string, string) admin.RemoveOrganizationUserApiRequest) *MongoDBCloudUsersApi_RemoveOrganizationUser_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// RemoveOrganizationUserExecute provides a mock function with given fields: r
+func (_m *MongoDBCloudUsersApi) RemoveOrganizationUserExecute(r admin.RemoveOrganizationUserApiRequest) (*http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for RemoveOrganizationUserExecute")
+	}
+
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.RemoveOrganizationUserApiRequest) (*http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.RemoveOrganizationUserApiRequest) *http.Response); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.RemoveOrganizationUserApiRequest) error); ok {
+		r1 = rf(r)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// MongoDBCloudUsersApi_RemoveOrganizationUserExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RemoveOrganizationUserExecute'
+type MongoDBCloudUsersApi_RemoveOrganizationUserExecute_Call struct {
+	*mock.Call
+}
+
+// RemoveOrganizationUserExecute is a helper method to define mock.On call
+//   - r admin.RemoveOrganizationUserApiRequest
+func (_e *MongoDBCloudUsersApi_Expecter) RemoveOrganizationUserExecute(r any) *MongoDBCloudUsersApi_RemoveOrganizationUserExecute_Call {
+	return &MongoDBCloudUsersApi_RemoveOrganizationUserExecute_Call{Call: _e.mock.On("RemoveOrganizationUserExecute", r)}
+}
+
+func (_c *MongoDBCloudUsersApi_RemoveOrganizationUserExecute_Call) Run(run func(r admin.RemoveOrganizationUserApiRequest)) *MongoDBCloudUsersApi_RemoveOrganizationUserExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.RemoveOrganizationUserApiRequest))
+	})
+	return _c
+}
+
+func (_c *MongoDBCloudUsersApi_RemoveOrganizationUserExecute_Call) Return(_a0 *http.Response, _a1 error) *MongoDBCloudUsersApi_RemoveOrganizationUserExecute_Call {
+	_c.Call.Return(_a0, _a1)
+	return _c
+}
+
+func (_c *MongoDBCloudUsersApi_RemoveOrganizationUserExecute_Call) RunAndReturn(run func(admin.RemoveOrganizationUserApiRequest) (*http.Response, error)) *MongoDBCloudUsersApi_RemoveOrganizationUserExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// RemoveOrganizationUserWithParams provides a mock function with given fields: ctx, args
+func (_m *MongoDBCloudUsersApi) RemoveOrganizationUserWithParams(ctx context.Context, args *admin.RemoveOrganizationUserApiParams) admin.RemoveOrganizationUserApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for RemoveOrganizationUserWithParams")
+	}
+
+	var r0 admin.RemoveOrganizationUserApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.RemoveOrganizationUserApiParams) admin.RemoveOrganizationUserApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.RemoveOrganizationUserApiRequest)
+	}
+
+	return r0
+}
+
+// MongoDBCloudUsersApi_RemoveOrganizationUserWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RemoveOrganizationUserWithParams'
+type MongoDBCloudUsersApi_RemoveOrganizationUserWithParams_Call struct {
+	*mock.Call
+}
+
+// RemoveOrganizationUserWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.RemoveOrganizationUserApiParams
+func (_e *MongoDBCloudUsersApi_Expecter) RemoveOrganizationUserWithParams(ctx any, args any) *MongoDBCloudUsersApi_RemoveOrganizationUserWithParams_Call {
+	return &MongoDBCloudUsersApi_RemoveOrganizationUserWithParams_Call{Call: _e.mock.On("RemoveOrganizationUserWithParams", ctx, args)}
+}
+
+func (_c *MongoDBCloudUsersApi_RemoveOrganizationUserWithParams_Call) Run(run func(ctx context.Context, args *admin.RemoveOrganizationUserApiParams)) *MongoDBCloudUsersApi_RemoveOrganizationUserWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.RemoveOrganizationUserApiParams))
+	})
+	return _c
+}
+
+func (_c *MongoDBCloudUsersApi_RemoveOrganizationUserWithParams_Call) Return(_a0 admin.RemoveOrganizationUserApiRequest) *MongoDBCloudUsersApi_RemoveOrganizationUserWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *MongoDBCloudUsersApi_RemoveOrganizationUserWithParams_Call) RunAndReturn(run func(context.Context, *admin.RemoveOrganizationUserApiParams) admin.RemoveOrganizationUserApiRequest) *MongoDBCloudUsersApi_RemoveOrganizationUserWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// RemoveProjectUser provides a mock function with given fields: ctx, groupId, userId
+func (_m *MongoDBCloudUsersApi) RemoveProjectUser(ctx context.Context, groupId string, userId string) admin.RemoveProjectUserApiRequest {
+	ret := _m.Called(ctx, groupId, userId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for RemoveProjectUser")
+	}
+
+	var r0 admin.RemoveProjectUserApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.RemoveProjectUserApiRequest); ok {
+		r0 = rf(ctx, groupId, userId)
+	} else {
+		r0 = ret.Get(0).(admin.RemoveProjectUserApiRequest)
+	}
+
+	return r0
+}
+
+// MongoDBCloudUsersApi_RemoveProjectUser_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RemoveProjectUser'
+type MongoDBCloudUsersApi_RemoveProjectUser_Call struct {
+	*mock.Call
+}
+
+// RemoveProjectUser is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - userId string
+func (_e *MongoDBCloudUsersApi_Expecter) RemoveProjectUser(ctx any, groupId any, userId any) *MongoDBCloudUsersApi_RemoveProjectUser_Call {
+	return &MongoDBCloudUsersApi_RemoveProjectUser_Call{Call: _e.mock.On("RemoveProjectUser", ctx, groupId, userId)}
+}
+
+func (_c *MongoDBCloudUsersApi_RemoveProjectUser_Call) Run(run func(ctx context.Context, groupId string, userId string)) *MongoDBCloudUsersApi_RemoveProjectUser_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string))
+	})
+	return _c
+}
+
+func (_c *MongoDBCloudUsersApi_RemoveProjectUser_Call) Return(_a0 admin.RemoveProjectUserApiRequest) *MongoDBCloudUsersApi_RemoveProjectUser_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *MongoDBCloudUsersApi_RemoveProjectUser_Call) RunAndReturn(run func(context.Context, string, string) admin.RemoveProjectUserApiRequest) *MongoDBCloudUsersApi_RemoveProjectUser_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// RemoveProjectUserExecute provides a mock function with given fields: r
+func (_m *MongoDBCloudUsersApi) RemoveProjectUserExecute(r admin.RemoveProjectUserApiRequest) (*http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for RemoveProjectUserExecute")
+	}
+
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.RemoveProjectUserApiRequest) (*http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.RemoveProjectUserApiRequest) *http.Response); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.RemoveProjectUserApiRequest) error); ok {
+		r1 = rf(r)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// MongoDBCloudUsersApi_RemoveProjectUserExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RemoveProjectUserExecute'
+type MongoDBCloudUsersApi_RemoveProjectUserExecute_Call struct {
+	*mock.Call
+}
+
+// RemoveProjectUserExecute is a helper method to define mock.On call
+//   - r admin.RemoveProjectUserApiRequest
+func (_e *MongoDBCloudUsersApi_Expecter) RemoveProjectUserExecute(r any) *MongoDBCloudUsersApi_RemoveProjectUserExecute_Call {
+	return &MongoDBCloudUsersApi_RemoveProjectUserExecute_Call{Call: _e.mock.On("RemoveProjectUserExecute", r)}
+}
+
+func (_c *MongoDBCloudUsersApi_RemoveProjectUserExecute_Call) Run(run func(r admin.RemoveProjectUserApiRequest)) *MongoDBCloudUsersApi_RemoveProjectUserExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.RemoveProjectUserApiRequest))
+	})
+	return _c
+}
+
+func (_c *MongoDBCloudUsersApi_RemoveProjectUserExecute_Call) Return(_a0 *http.Response, _a1 error) *MongoDBCloudUsersApi_RemoveProjectUserExecute_Call {
+	_c.Call.Return(_a0, _a1)
+	return _c
+}
+
+func (_c *MongoDBCloudUsersApi_RemoveProjectUserExecute_Call) RunAndReturn(run func(admin.RemoveProjectUserApiRequest) (*http.Response, error)) *MongoDBCloudUsersApi_RemoveProjectUserExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// RemoveProjectUserWithParams provides a mock function with given fields: ctx, args
+func (_m *MongoDBCloudUsersApi) RemoveProjectUserWithParams(ctx context.Context, args *admin.RemoveProjectUserApiParams) admin.RemoveProjectUserApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for RemoveProjectUserWithParams")
+	}
+
+	var r0 admin.RemoveProjectUserApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.RemoveProjectUserApiParams) admin.RemoveProjectUserApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.RemoveProjectUserApiRequest)
+	}
+
+	return r0
+}
+
+// MongoDBCloudUsersApi_RemoveProjectUserWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RemoveProjectUserWithParams'
+type MongoDBCloudUsersApi_RemoveProjectUserWithParams_Call struct {
+	*mock.Call
+}
+
+// RemoveProjectUserWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.RemoveProjectUserApiParams
+func (_e *MongoDBCloudUsersApi_Expecter) RemoveProjectUserWithParams(ctx any, args any) *MongoDBCloudUsersApi_RemoveProjectUserWithParams_Call {
+	return &MongoDBCloudUsersApi_RemoveProjectUserWithParams_Call{Call: _e.mock.On("RemoveProjectUserWithParams", ctx, args)}
+}
+
+func (_c *MongoDBCloudUsersApi_RemoveProjectUserWithParams_Call) Run(run func(ctx context.Context, args *admin.RemoveProjectUserApiParams)) *MongoDBCloudUsersApi_RemoveProjectUserWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.RemoveProjectUserApiParams))
+	})
+	return _c
+}
+
+func (_c *MongoDBCloudUsersApi_RemoveProjectUserWithParams_Call) Return(_a0 admin.RemoveProjectUserApiRequest) *MongoDBCloudUsersApi_RemoveProjectUserWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *MongoDBCloudUsersApi_RemoveProjectUserWithParams_Call) RunAndReturn(run func(context.Context, *admin.RemoveProjectUserApiParams) admin.RemoveProjectUserApiRequest) *MongoDBCloudUsersApi_RemoveProjectUserWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }

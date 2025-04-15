@@ -53,7 +53,7 @@ type CloudBackupsApi_CancelBackupRestoreJob_Call struct {
 //   - groupId string
 //   - clusterName string
 //   - restoreJobId string
-func (_e *CloudBackupsApi_Expecter) CancelBackupRestoreJob(ctx interface{}, groupId interface{}, clusterName interface{}, restoreJobId interface{}) *CloudBackupsApi_CancelBackupRestoreJob_Call {
+func (_e *CloudBackupsApi_Expecter) CancelBackupRestoreJob(ctx any, groupId any, clusterName any, restoreJobId any) *CloudBackupsApi_CancelBackupRestoreJob_Call {
 	return &CloudBackupsApi_CancelBackupRestoreJob_Call{Call: _e.mock.On("CancelBackupRestoreJob", ctx, groupId, clusterName, restoreJobId)}
 }
 
@@ -75,42 +75,33 @@ func (_c *CloudBackupsApi_CancelBackupRestoreJob_Call) RunAndReturn(run func(con
 }
 
 // CancelBackupRestoreJobExecute provides a mock function with given fields: r
-func (_m *CloudBackupsApi) CancelBackupRestoreJobExecute(r admin.CancelBackupRestoreJobApiRequest) (map[string]interface{}, *http.Response, error) {
+func (_m *CloudBackupsApi) CancelBackupRestoreJobExecute(r admin.CancelBackupRestoreJobApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for CancelBackupRestoreJobExecute")
 	}
 
-	var r0 map[string]interface{}
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.CancelBackupRestoreJobApiRequest) (map[string]interface{}, *http.Response, error)); ok {
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.CancelBackupRestoreJobApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.CancelBackupRestoreJobApiRequest) map[string]interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.CancelBackupRestoreJobApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(map[string]interface{})
+			r0 = ret.Get(0).(*http.Response)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.CancelBackupRestoreJobApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.CancelBackupRestoreJobApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
+		r1 = ret.Error(1)
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.CancelBackupRestoreJobApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
+	return r0, r1
 }
 
 // CloudBackupsApi_CancelBackupRestoreJobExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CancelBackupRestoreJobExecute'
@@ -120,7 +111,7 @@ type CloudBackupsApi_CancelBackupRestoreJobExecute_Call struct {
 
 // CancelBackupRestoreJobExecute is a helper method to define mock.On call
 //   - r admin.CancelBackupRestoreJobApiRequest
-func (_e *CloudBackupsApi_Expecter) CancelBackupRestoreJobExecute(r interface{}) *CloudBackupsApi_CancelBackupRestoreJobExecute_Call {
+func (_e *CloudBackupsApi_Expecter) CancelBackupRestoreJobExecute(r any) *CloudBackupsApi_CancelBackupRestoreJobExecute_Call {
 	return &CloudBackupsApi_CancelBackupRestoreJobExecute_Call{Call: _e.mock.On("CancelBackupRestoreJobExecute", r)}
 }
 
@@ -131,12 +122,12 @@ func (_c *CloudBackupsApi_CancelBackupRestoreJobExecute_Call) Run(run func(r adm
 	return _c
 }
 
-func (_c *CloudBackupsApi_CancelBackupRestoreJobExecute_Call) Return(_a0 map[string]interface{}, _a1 *http.Response, _a2 error) *CloudBackupsApi_CancelBackupRestoreJobExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
+func (_c *CloudBackupsApi_CancelBackupRestoreJobExecute_Call) Return(_a0 *http.Response, _a1 error) *CloudBackupsApi_CancelBackupRestoreJobExecute_Call {
+	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *CloudBackupsApi_CancelBackupRestoreJobExecute_Call) RunAndReturn(run func(admin.CancelBackupRestoreJobApiRequest) (map[string]interface{}, *http.Response, error)) *CloudBackupsApi_CancelBackupRestoreJobExecute_Call {
+func (_c *CloudBackupsApi_CancelBackupRestoreJobExecute_Call) RunAndReturn(run func(admin.CancelBackupRestoreJobApiRequest) (*http.Response, error)) *CloudBackupsApi_CancelBackupRestoreJobExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -167,7 +158,7 @@ type CloudBackupsApi_CancelBackupRestoreJobWithParams_Call struct {
 // CancelBackupRestoreJobWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.CancelBackupRestoreJobApiParams
-func (_e *CloudBackupsApi_Expecter) CancelBackupRestoreJobWithParams(ctx interface{}, args interface{}) *CloudBackupsApi_CancelBackupRestoreJobWithParams_Call {
+func (_e *CloudBackupsApi_Expecter) CancelBackupRestoreJobWithParams(ctx any, args any) *CloudBackupsApi_CancelBackupRestoreJobWithParams_Call {
 	return &CloudBackupsApi_CancelBackupRestoreJobWithParams_Call{Call: _e.mock.On("CancelBackupRestoreJobWithParams", ctx, args)}
 }
 
@@ -216,7 +207,7 @@ type CloudBackupsApi_CreateBackupExportJob_Call struct {
 //   - groupId string
 //   - clusterName string
 //   - diskBackupExportJobRequest *admin.DiskBackupExportJobRequest
-func (_e *CloudBackupsApi_Expecter) CreateBackupExportJob(ctx interface{}, groupId interface{}, clusterName interface{}, diskBackupExportJobRequest interface{}) *CloudBackupsApi_CreateBackupExportJob_Call {
+func (_e *CloudBackupsApi_Expecter) CreateBackupExportJob(ctx any, groupId any, clusterName any, diskBackupExportJobRequest any) *CloudBackupsApi_CreateBackupExportJob_Call {
 	return &CloudBackupsApi_CreateBackupExportJob_Call{Call: _e.mock.On("CreateBackupExportJob", ctx, groupId, clusterName, diskBackupExportJobRequest)}
 }
 
@@ -283,7 +274,7 @@ type CloudBackupsApi_CreateBackupExportJobExecute_Call struct {
 
 // CreateBackupExportJobExecute is a helper method to define mock.On call
 //   - r admin.CreateBackupExportJobApiRequest
-func (_e *CloudBackupsApi_Expecter) CreateBackupExportJobExecute(r interface{}) *CloudBackupsApi_CreateBackupExportJobExecute_Call {
+func (_e *CloudBackupsApi_Expecter) CreateBackupExportJobExecute(r any) *CloudBackupsApi_CreateBackupExportJobExecute_Call {
 	return &CloudBackupsApi_CreateBackupExportJobExecute_Call{Call: _e.mock.On("CreateBackupExportJobExecute", r)}
 }
 
@@ -330,7 +321,7 @@ type CloudBackupsApi_CreateBackupExportJobWithParams_Call struct {
 // CreateBackupExportJobWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.CreateBackupExportJobApiParams
-func (_e *CloudBackupsApi_Expecter) CreateBackupExportJobWithParams(ctx interface{}, args interface{}) *CloudBackupsApi_CreateBackupExportJobWithParams_Call {
+func (_e *CloudBackupsApi_Expecter) CreateBackupExportJobWithParams(ctx any, args any) *CloudBackupsApi_CreateBackupExportJobWithParams_Call {
 	return &CloudBackupsApi_CreateBackupExportJobWithParams_Call{Call: _e.mock.On("CreateBackupExportJobWithParams", ctx, args)}
 }
 
@@ -379,7 +370,7 @@ type CloudBackupsApi_CreateBackupRestoreJob_Call struct {
 //   - groupId string
 //   - clusterName string
 //   - diskBackupSnapshotRestoreJob *admin.DiskBackupSnapshotRestoreJob
-func (_e *CloudBackupsApi_Expecter) CreateBackupRestoreJob(ctx interface{}, groupId interface{}, clusterName interface{}, diskBackupSnapshotRestoreJob interface{}) *CloudBackupsApi_CreateBackupRestoreJob_Call {
+func (_e *CloudBackupsApi_Expecter) CreateBackupRestoreJob(ctx any, groupId any, clusterName any, diskBackupSnapshotRestoreJob any) *CloudBackupsApi_CreateBackupRestoreJob_Call {
 	return &CloudBackupsApi_CreateBackupRestoreJob_Call{Call: _e.mock.On("CreateBackupRestoreJob", ctx, groupId, clusterName, diskBackupSnapshotRestoreJob)}
 }
 
@@ -446,7 +437,7 @@ type CloudBackupsApi_CreateBackupRestoreJobExecute_Call struct {
 
 // CreateBackupRestoreJobExecute is a helper method to define mock.On call
 //   - r admin.CreateBackupRestoreJobApiRequest
-func (_e *CloudBackupsApi_Expecter) CreateBackupRestoreJobExecute(r interface{}) *CloudBackupsApi_CreateBackupRestoreJobExecute_Call {
+func (_e *CloudBackupsApi_Expecter) CreateBackupRestoreJobExecute(r any) *CloudBackupsApi_CreateBackupRestoreJobExecute_Call {
 	return &CloudBackupsApi_CreateBackupRestoreJobExecute_Call{Call: _e.mock.On("CreateBackupRestoreJobExecute", r)}
 }
 
@@ -493,7 +484,7 @@ type CloudBackupsApi_CreateBackupRestoreJobWithParams_Call struct {
 // CreateBackupRestoreJobWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.CreateBackupRestoreJobApiParams
-func (_e *CloudBackupsApi_Expecter) CreateBackupRestoreJobWithParams(ctx interface{}, args interface{}) *CloudBackupsApi_CreateBackupRestoreJobWithParams_Call {
+func (_e *CloudBackupsApi_Expecter) CreateBackupRestoreJobWithParams(ctx any, args any) *CloudBackupsApi_CreateBackupRestoreJobWithParams_Call {
 	return &CloudBackupsApi_CreateBackupRestoreJobWithParams_Call{Call: _e.mock.On("CreateBackupRestoreJobWithParams", ctx, args)}
 }
 
@@ -514,17 +505,17 @@ func (_c *CloudBackupsApi_CreateBackupRestoreJobWithParams_Call) RunAndReturn(ru
 	return _c
 }
 
-// CreateExportBucket provides a mock function with given fields: ctx, groupId, diskBackupSnapshotAWSExportBucket
-func (_m *CloudBackupsApi) CreateExportBucket(ctx context.Context, groupId string, diskBackupSnapshotAWSExportBucket *admin.DiskBackupSnapshotAWSExportBucket) admin.CreateExportBucketApiRequest {
-	ret := _m.Called(ctx, groupId, diskBackupSnapshotAWSExportBucket)
+// CreateExportBucket provides a mock function with given fields: ctx, groupId, diskBackupSnapshotAWSExportBucketRequest
+func (_m *CloudBackupsApi) CreateExportBucket(ctx context.Context, groupId string, diskBackupSnapshotAWSExportBucketRequest *admin.DiskBackupSnapshotAWSExportBucketRequest) admin.CreateExportBucketApiRequest {
+	ret := _m.Called(ctx, groupId, diskBackupSnapshotAWSExportBucketRequest)
 
 	if len(ret) == 0 {
 		panic("no return value specified for CreateExportBucket")
 	}
 
 	var r0 admin.CreateExportBucketApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.DiskBackupSnapshotAWSExportBucket) admin.CreateExportBucketApiRequest); ok {
-		r0 = rf(ctx, groupId, diskBackupSnapshotAWSExportBucket)
+	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.DiskBackupSnapshotAWSExportBucketRequest) admin.CreateExportBucketApiRequest); ok {
+		r0 = rf(ctx, groupId, diskBackupSnapshotAWSExportBucketRequest)
 	} else {
 		r0 = ret.Get(0).(admin.CreateExportBucketApiRequest)
 	}
@@ -540,14 +531,14 @@ type CloudBackupsApi_CreateExportBucket_Call struct {
 // CreateExportBucket is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-//   - diskBackupSnapshotAWSExportBucket *admin.DiskBackupSnapshotAWSExportBucket
-func (_e *CloudBackupsApi_Expecter) CreateExportBucket(ctx interface{}, groupId interface{}, diskBackupSnapshotAWSExportBucket interface{}) *CloudBackupsApi_CreateExportBucket_Call {
-	return &CloudBackupsApi_CreateExportBucket_Call{Call: _e.mock.On("CreateExportBucket", ctx, groupId, diskBackupSnapshotAWSExportBucket)}
+//   - diskBackupSnapshotAWSExportBucketRequest *admin.DiskBackupSnapshotAWSExportBucketRequest
+func (_e *CloudBackupsApi_Expecter) CreateExportBucket(ctx any, groupId any, diskBackupSnapshotAWSExportBucketRequest any) *CloudBackupsApi_CreateExportBucket_Call {
+	return &CloudBackupsApi_CreateExportBucket_Call{Call: _e.mock.On("CreateExportBucket", ctx, groupId, diskBackupSnapshotAWSExportBucketRequest)}
 }
 
-func (_c *CloudBackupsApi_CreateExportBucket_Call) Run(run func(ctx context.Context, groupId string, diskBackupSnapshotAWSExportBucket *admin.DiskBackupSnapshotAWSExportBucket)) *CloudBackupsApi_CreateExportBucket_Call {
+func (_c *CloudBackupsApi_CreateExportBucket_Call) Run(run func(ctx context.Context, groupId string, diskBackupSnapshotAWSExportBucketRequest *admin.DiskBackupSnapshotAWSExportBucketRequest)) *CloudBackupsApi_CreateExportBucket_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(*admin.DiskBackupSnapshotAWSExportBucket))
+		run(args[0].(context.Context), args[1].(string), args[2].(*admin.DiskBackupSnapshotAWSExportBucketRequest))
 	})
 	return _c
 }
@@ -557,30 +548,30 @@ func (_c *CloudBackupsApi_CreateExportBucket_Call) Return(_a0 admin.CreateExport
 	return _c
 }
 
-func (_c *CloudBackupsApi_CreateExportBucket_Call) RunAndReturn(run func(context.Context, string, *admin.DiskBackupSnapshotAWSExportBucket) admin.CreateExportBucketApiRequest) *CloudBackupsApi_CreateExportBucket_Call {
+func (_c *CloudBackupsApi_CreateExportBucket_Call) RunAndReturn(run func(context.Context, string, *admin.DiskBackupSnapshotAWSExportBucketRequest) admin.CreateExportBucketApiRequest) *CloudBackupsApi_CreateExportBucket_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
 // CreateExportBucketExecute provides a mock function with given fields: r
-func (_m *CloudBackupsApi) CreateExportBucketExecute(r admin.CreateExportBucketApiRequest) (*admin.DiskBackupSnapshotAWSExportBucket, *http.Response, error) {
+func (_m *CloudBackupsApi) CreateExportBucketExecute(r admin.CreateExportBucketApiRequest) (*admin.DiskBackupSnapshotAWSExportBucketResponse, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for CreateExportBucketExecute")
 	}
 
-	var r0 *admin.DiskBackupSnapshotAWSExportBucket
+	var r0 *admin.DiskBackupSnapshotAWSExportBucketResponse
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.CreateExportBucketApiRequest) (*admin.DiskBackupSnapshotAWSExportBucket, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.CreateExportBucketApiRequest) (*admin.DiskBackupSnapshotAWSExportBucketResponse, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.CreateExportBucketApiRequest) *admin.DiskBackupSnapshotAWSExportBucket); ok {
+	if rf, ok := ret.Get(0).(func(admin.CreateExportBucketApiRequest) *admin.DiskBackupSnapshotAWSExportBucketResponse); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.DiskBackupSnapshotAWSExportBucket)
+			r0 = ret.Get(0).(*admin.DiskBackupSnapshotAWSExportBucketResponse)
 		}
 	}
 
@@ -608,7 +599,7 @@ type CloudBackupsApi_CreateExportBucketExecute_Call struct {
 
 // CreateExportBucketExecute is a helper method to define mock.On call
 //   - r admin.CreateExportBucketApiRequest
-func (_e *CloudBackupsApi_Expecter) CreateExportBucketExecute(r interface{}) *CloudBackupsApi_CreateExportBucketExecute_Call {
+func (_e *CloudBackupsApi_Expecter) CreateExportBucketExecute(r any) *CloudBackupsApi_CreateExportBucketExecute_Call {
 	return &CloudBackupsApi_CreateExportBucketExecute_Call{Call: _e.mock.On("CreateExportBucketExecute", r)}
 }
 
@@ -619,12 +610,12 @@ func (_c *CloudBackupsApi_CreateExportBucketExecute_Call) Run(run func(r admin.C
 	return _c
 }
 
-func (_c *CloudBackupsApi_CreateExportBucketExecute_Call) Return(_a0 *admin.DiskBackupSnapshotAWSExportBucket, _a1 *http.Response, _a2 error) *CloudBackupsApi_CreateExportBucketExecute_Call {
+func (_c *CloudBackupsApi_CreateExportBucketExecute_Call) Return(_a0 *admin.DiskBackupSnapshotAWSExportBucketResponse, _a1 *http.Response, _a2 error) *CloudBackupsApi_CreateExportBucketExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *CloudBackupsApi_CreateExportBucketExecute_Call) RunAndReturn(run func(admin.CreateExportBucketApiRequest) (*admin.DiskBackupSnapshotAWSExportBucket, *http.Response, error)) *CloudBackupsApi_CreateExportBucketExecute_Call {
+func (_c *CloudBackupsApi_CreateExportBucketExecute_Call) RunAndReturn(run func(admin.CreateExportBucketApiRequest) (*admin.DiskBackupSnapshotAWSExportBucketResponse, *http.Response, error)) *CloudBackupsApi_CreateExportBucketExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -655,7 +646,7 @@ type CloudBackupsApi_CreateExportBucketWithParams_Call struct {
 // CreateExportBucketWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.CreateExportBucketApiParams
-func (_e *CloudBackupsApi_Expecter) CreateExportBucketWithParams(ctx interface{}, args interface{}) *CloudBackupsApi_CreateExportBucketWithParams_Call {
+func (_e *CloudBackupsApi_Expecter) CreateExportBucketWithParams(ctx any, args any) *CloudBackupsApi_CreateExportBucketWithParams_Call {
 	return &CloudBackupsApi_CreateExportBucketWithParams_Call{Call: _e.mock.On("CreateExportBucketWithParams", ctx, args)}
 }
 
@@ -704,7 +695,7 @@ type CloudBackupsApi_CreateServerlessBackupRestoreJob_Call struct {
 //   - groupId string
 //   - clusterName string
 //   - serverlessBackupRestoreJob *admin.ServerlessBackupRestoreJob
-func (_e *CloudBackupsApi_Expecter) CreateServerlessBackupRestoreJob(ctx interface{}, groupId interface{}, clusterName interface{}, serverlessBackupRestoreJob interface{}) *CloudBackupsApi_CreateServerlessBackupRestoreJob_Call {
+func (_e *CloudBackupsApi_Expecter) CreateServerlessBackupRestoreJob(ctx any, groupId any, clusterName any, serverlessBackupRestoreJob any) *CloudBackupsApi_CreateServerlessBackupRestoreJob_Call {
 	return &CloudBackupsApi_CreateServerlessBackupRestoreJob_Call{Call: _e.mock.On("CreateServerlessBackupRestoreJob", ctx, groupId, clusterName, serverlessBackupRestoreJob)}
 }
 
@@ -771,7 +762,7 @@ type CloudBackupsApi_CreateServerlessBackupRestoreJobExecute_Call struct {
 
 // CreateServerlessBackupRestoreJobExecute is a helper method to define mock.On call
 //   - r admin.CreateServerlessBackupRestoreJobApiRequest
-func (_e *CloudBackupsApi_Expecter) CreateServerlessBackupRestoreJobExecute(r interface{}) *CloudBackupsApi_CreateServerlessBackupRestoreJobExecute_Call {
+func (_e *CloudBackupsApi_Expecter) CreateServerlessBackupRestoreJobExecute(r any) *CloudBackupsApi_CreateServerlessBackupRestoreJobExecute_Call {
 	return &CloudBackupsApi_CreateServerlessBackupRestoreJobExecute_Call{Call: _e.mock.On("CreateServerlessBackupRestoreJobExecute", r)}
 }
 
@@ -818,7 +809,7 @@ type CloudBackupsApi_CreateServerlessBackupRestoreJobWithParams_Call struct {
 // CreateServerlessBackupRestoreJobWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.CreateServerlessBackupRestoreJobApiParams
-func (_e *CloudBackupsApi_Expecter) CreateServerlessBackupRestoreJobWithParams(ctx interface{}, args interface{}) *CloudBackupsApi_CreateServerlessBackupRestoreJobWithParams_Call {
+func (_e *CloudBackupsApi_Expecter) CreateServerlessBackupRestoreJobWithParams(ctx any, args any) *CloudBackupsApi_CreateServerlessBackupRestoreJobWithParams_Call {
 	return &CloudBackupsApi_CreateServerlessBackupRestoreJobWithParams_Call{Call: _e.mock.On("CreateServerlessBackupRestoreJobWithParams", ctx, args)}
 }
 
@@ -866,7 +857,7 @@ type CloudBackupsApi_DeleteAllBackupSchedules_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
-func (_e *CloudBackupsApi_Expecter) DeleteAllBackupSchedules(ctx interface{}, groupId interface{}, clusterName interface{}) *CloudBackupsApi_DeleteAllBackupSchedules_Call {
+func (_e *CloudBackupsApi_Expecter) DeleteAllBackupSchedules(ctx any, groupId any, clusterName any) *CloudBackupsApi_DeleteAllBackupSchedules_Call {
 	return &CloudBackupsApi_DeleteAllBackupSchedules_Call{Call: _e.mock.On("DeleteAllBackupSchedules", ctx, groupId, clusterName)}
 }
 
@@ -933,7 +924,7 @@ type CloudBackupsApi_DeleteAllBackupSchedulesExecute_Call struct {
 
 // DeleteAllBackupSchedulesExecute is a helper method to define mock.On call
 //   - r admin.DeleteAllBackupSchedulesApiRequest
-func (_e *CloudBackupsApi_Expecter) DeleteAllBackupSchedulesExecute(r interface{}) *CloudBackupsApi_DeleteAllBackupSchedulesExecute_Call {
+func (_e *CloudBackupsApi_Expecter) DeleteAllBackupSchedulesExecute(r any) *CloudBackupsApi_DeleteAllBackupSchedulesExecute_Call {
 	return &CloudBackupsApi_DeleteAllBackupSchedulesExecute_Call{Call: _e.mock.On("DeleteAllBackupSchedulesExecute", r)}
 }
 
@@ -980,7 +971,7 @@ type CloudBackupsApi_DeleteAllBackupSchedulesWithParams_Call struct {
 // DeleteAllBackupSchedulesWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.DeleteAllBackupSchedulesApiParams
-func (_e *CloudBackupsApi_Expecter) DeleteAllBackupSchedulesWithParams(ctx interface{}, args interface{}) *CloudBackupsApi_DeleteAllBackupSchedulesWithParams_Call {
+func (_e *CloudBackupsApi_Expecter) DeleteAllBackupSchedulesWithParams(ctx any, args any) *CloudBackupsApi_DeleteAllBackupSchedulesWithParams_Call {
 	return &CloudBackupsApi_DeleteAllBackupSchedulesWithParams_Call{Call: _e.mock.On("DeleteAllBackupSchedulesWithParams", ctx, args)}
 }
 
@@ -1028,7 +1019,7 @@ type CloudBackupsApi_DeleteExportBucket_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - exportBucketId string
-func (_e *CloudBackupsApi_Expecter) DeleteExportBucket(ctx interface{}, groupId interface{}, exportBucketId interface{}) *CloudBackupsApi_DeleteExportBucket_Call {
+func (_e *CloudBackupsApi_Expecter) DeleteExportBucket(ctx any, groupId any, exportBucketId any) *CloudBackupsApi_DeleteExportBucket_Call {
 	return &CloudBackupsApi_DeleteExportBucket_Call{Call: _e.mock.On("DeleteExportBucket", ctx, groupId, exportBucketId)}
 }
 
@@ -1050,42 +1041,33 @@ func (_c *CloudBackupsApi_DeleteExportBucket_Call) RunAndReturn(run func(context
 }
 
 // DeleteExportBucketExecute provides a mock function with given fields: r
-func (_m *CloudBackupsApi) DeleteExportBucketExecute(r admin.DeleteExportBucketApiRequest) (map[string]interface{}, *http.Response, error) {
+func (_m *CloudBackupsApi) DeleteExportBucketExecute(r admin.DeleteExportBucketApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteExportBucketExecute")
 	}
 
-	var r0 map[string]interface{}
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteExportBucketApiRequest) (map[string]interface{}, *http.Response, error)); ok {
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.DeleteExportBucketApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteExportBucketApiRequest) map[string]interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteExportBucketApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(map[string]interface{})
+			r0 = ret.Get(0).(*http.Response)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeleteExportBucketApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.DeleteExportBucketApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
+		r1 = ret.Error(1)
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.DeleteExportBucketApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
+	return r0, r1
 }
 
 // CloudBackupsApi_DeleteExportBucketExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteExportBucketExecute'
@@ -1095,7 +1077,7 @@ type CloudBackupsApi_DeleteExportBucketExecute_Call struct {
 
 // DeleteExportBucketExecute is a helper method to define mock.On call
 //   - r admin.DeleteExportBucketApiRequest
-func (_e *CloudBackupsApi_Expecter) DeleteExportBucketExecute(r interface{}) *CloudBackupsApi_DeleteExportBucketExecute_Call {
+func (_e *CloudBackupsApi_Expecter) DeleteExportBucketExecute(r any) *CloudBackupsApi_DeleteExportBucketExecute_Call {
 	return &CloudBackupsApi_DeleteExportBucketExecute_Call{Call: _e.mock.On("DeleteExportBucketExecute", r)}
 }
 
@@ -1106,12 +1088,12 @@ func (_c *CloudBackupsApi_DeleteExportBucketExecute_Call) Run(run func(r admin.D
 	return _c
 }
 
-func (_c *CloudBackupsApi_DeleteExportBucketExecute_Call) Return(_a0 map[string]interface{}, _a1 *http.Response, _a2 error) *CloudBackupsApi_DeleteExportBucketExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
+func (_c *CloudBackupsApi_DeleteExportBucketExecute_Call) Return(_a0 *http.Response, _a1 error) *CloudBackupsApi_DeleteExportBucketExecute_Call {
+	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *CloudBackupsApi_DeleteExportBucketExecute_Call) RunAndReturn(run func(admin.DeleteExportBucketApiRequest) (map[string]interface{}, *http.Response, error)) *CloudBackupsApi_DeleteExportBucketExecute_Call {
+func (_c *CloudBackupsApi_DeleteExportBucketExecute_Call) RunAndReturn(run func(admin.DeleteExportBucketApiRequest) (*http.Response, error)) *CloudBackupsApi_DeleteExportBucketExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1142,7 +1124,7 @@ type CloudBackupsApi_DeleteExportBucketWithParams_Call struct {
 // DeleteExportBucketWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.DeleteExportBucketApiParams
-func (_e *CloudBackupsApi_Expecter) DeleteExportBucketWithParams(ctx interface{}, args interface{}) *CloudBackupsApi_DeleteExportBucketWithParams_Call {
+func (_e *CloudBackupsApi_Expecter) DeleteExportBucketWithParams(ctx any, args any) *CloudBackupsApi_DeleteExportBucketWithParams_Call {
 	return &CloudBackupsApi_DeleteExportBucketWithParams_Call{Call: _e.mock.On("DeleteExportBucketWithParams", ctx, args)}
 }
 
@@ -1191,7 +1173,7 @@ type CloudBackupsApi_DeleteReplicaSetBackup_Call struct {
 //   - groupId string
 //   - clusterName string
 //   - snapshotId string
-func (_e *CloudBackupsApi_Expecter) DeleteReplicaSetBackup(ctx interface{}, groupId interface{}, clusterName interface{}, snapshotId interface{}) *CloudBackupsApi_DeleteReplicaSetBackup_Call {
+func (_e *CloudBackupsApi_Expecter) DeleteReplicaSetBackup(ctx any, groupId any, clusterName any, snapshotId any) *CloudBackupsApi_DeleteReplicaSetBackup_Call {
 	return &CloudBackupsApi_DeleteReplicaSetBackup_Call{Call: _e.mock.On("DeleteReplicaSetBackup", ctx, groupId, clusterName, snapshotId)}
 }
 
@@ -1213,42 +1195,33 @@ func (_c *CloudBackupsApi_DeleteReplicaSetBackup_Call) RunAndReturn(run func(con
 }
 
 // DeleteReplicaSetBackupExecute provides a mock function with given fields: r
-func (_m *CloudBackupsApi) DeleteReplicaSetBackupExecute(r admin.DeleteReplicaSetBackupApiRequest) (map[string]interface{}, *http.Response, error) {
+func (_m *CloudBackupsApi) DeleteReplicaSetBackupExecute(r admin.DeleteReplicaSetBackupApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteReplicaSetBackupExecute")
 	}
 
-	var r0 map[string]interface{}
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteReplicaSetBackupApiRequest) (map[string]interface{}, *http.Response, error)); ok {
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.DeleteReplicaSetBackupApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteReplicaSetBackupApiRequest) map[string]interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteReplicaSetBackupApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(map[string]interface{})
+			r0 = ret.Get(0).(*http.Response)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeleteReplicaSetBackupApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.DeleteReplicaSetBackupApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
+		r1 = ret.Error(1)
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.DeleteReplicaSetBackupApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
+	return r0, r1
 }
 
 // CloudBackupsApi_DeleteReplicaSetBackupExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteReplicaSetBackupExecute'
@@ -1258,7 +1231,7 @@ type CloudBackupsApi_DeleteReplicaSetBackupExecute_Call struct {
 
 // DeleteReplicaSetBackupExecute is a helper method to define mock.On call
 //   - r admin.DeleteReplicaSetBackupApiRequest
-func (_e *CloudBackupsApi_Expecter) DeleteReplicaSetBackupExecute(r interface{}) *CloudBackupsApi_DeleteReplicaSetBackupExecute_Call {
+func (_e *CloudBackupsApi_Expecter) DeleteReplicaSetBackupExecute(r any) *CloudBackupsApi_DeleteReplicaSetBackupExecute_Call {
 	return &CloudBackupsApi_DeleteReplicaSetBackupExecute_Call{Call: _e.mock.On("DeleteReplicaSetBackupExecute", r)}
 }
 
@@ -1269,12 +1242,12 @@ func (_c *CloudBackupsApi_DeleteReplicaSetBackupExecute_Call) Run(run func(r adm
 	return _c
 }
 
-func (_c *CloudBackupsApi_DeleteReplicaSetBackupExecute_Call) Return(_a0 map[string]interface{}, _a1 *http.Response, _a2 error) *CloudBackupsApi_DeleteReplicaSetBackupExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
+func (_c *CloudBackupsApi_DeleteReplicaSetBackupExecute_Call) Return(_a0 *http.Response, _a1 error) *CloudBackupsApi_DeleteReplicaSetBackupExecute_Call {
+	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *CloudBackupsApi_DeleteReplicaSetBackupExecute_Call) RunAndReturn(run func(admin.DeleteReplicaSetBackupApiRequest) (map[string]interface{}, *http.Response, error)) *CloudBackupsApi_DeleteReplicaSetBackupExecute_Call {
+func (_c *CloudBackupsApi_DeleteReplicaSetBackupExecute_Call) RunAndReturn(run func(admin.DeleteReplicaSetBackupApiRequest) (*http.Response, error)) *CloudBackupsApi_DeleteReplicaSetBackupExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1305,7 +1278,7 @@ type CloudBackupsApi_DeleteReplicaSetBackupWithParams_Call struct {
 // DeleteReplicaSetBackupWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.DeleteReplicaSetBackupApiParams
-func (_e *CloudBackupsApi_Expecter) DeleteReplicaSetBackupWithParams(ctx interface{}, args interface{}) *CloudBackupsApi_DeleteReplicaSetBackupWithParams_Call {
+func (_e *CloudBackupsApi_Expecter) DeleteReplicaSetBackupWithParams(ctx any, args any) *CloudBackupsApi_DeleteReplicaSetBackupWithParams_Call {
 	return &CloudBackupsApi_DeleteReplicaSetBackupWithParams_Call{Call: _e.mock.On("DeleteReplicaSetBackupWithParams", ctx, args)}
 }
 
@@ -1354,7 +1327,7 @@ type CloudBackupsApi_DeleteShardedClusterBackup_Call struct {
 //   - groupId string
 //   - clusterName string
 //   - snapshotId string
-func (_e *CloudBackupsApi_Expecter) DeleteShardedClusterBackup(ctx interface{}, groupId interface{}, clusterName interface{}, snapshotId interface{}) *CloudBackupsApi_DeleteShardedClusterBackup_Call {
+func (_e *CloudBackupsApi_Expecter) DeleteShardedClusterBackup(ctx any, groupId any, clusterName any, snapshotId any) *CloudBackupsApi_DeleteShardedClusterBackup_Call {
 	return &CloudBackupsApi_DeleteShardedClusterBackup_Call{Call: _e.mock.On("DeleteShardedClusterBackup", ctx, groupId, clusterName, snapshotId)}
 }
 
@@ -1376,42 +1349,33 @@ func (_c *CloudBackupsApi_DeleteShardedClusterBackup_Call) RunAndReturn(run func
 }
 
 // DeleteShardedClusterBackupExecute provides a mock function with given fields: r
-func (_m *CloudBackupsApi) DeleteShardedClusterBackupExecute(r admin.DeleteShardedClusterBackupApiRequest) (map[string]interface{}, *http.Response, error) {
+func (_m *CloudBackupsApi) DeleteShardedClusterBackupExecute(r admin.DeleteShardedClusterBackupApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteShardedClusterBackupExecute")
 	}
 
-	var r0 map[string]interface{}
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteShardedClusterBackupApiRequest) (map[string]interface{}, *http.Response, error)); ok {
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.DeleteShardedClusterBackupApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteShardedClusterBackupApiRequest) map[string]interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteShardedClusterBackupApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(map[string]interface{})
+			r0 = ret.Get(0).(*http.Response)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeleteShardedClusterBackupApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.DeleteShardedClusterBackupApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
+		r1 = ret.Error(1)
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.DeleteShardedClusterBackupApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
+	return r0, r1
 }
 
 // CloudBackupsApi_DeleteShardedClusterBackupExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteShardedClusterBackupExecute'
@@ -1421,7 +1385,7 @@ type CloudBackupsApi_DeleteShardedClusterBackupExecute_Call struct {
 
 // DeleteShardedClusterBackupExecute is a helper method to define mock.On call
 //   - r admin.DeleteShardedClusterBackupApiRequest
-func (_e *CloudBackupsApi_Expecter) DeleteShardedClusterBackupExecute(r interface{}) *CloudBackupsApi_DeleteShardedClusterBackupExecute_Call {
+func (_e *CloudBackupsApi_Expecter) DeleteShardedClusterBackupExecute(r any) *CloudBackupsApi_DeleteShardedClusterBackupExecute_Call {
 	return &CloudBackupsApi_DeleteShardedClusterBackupExecute_Call{Call: _e.mock.On("DeleteShardedClusterBackupExecute", r)}
 }
 
@@ -1432,12 +1396,12 @@ func (_c *CloudBackupsApi_DeleteShardedClusterBackupExecute_Call) Run(run func(r
 	return _c
 }
 
-func (_c *CloudBackupsApi_DeleteShardedClusterBackupExecute_Call) Return(_a0 map[string]interface{}, _a1 *http.Response, _a2 error) *CloudBackupsApi_DeleteShardedClusterBackupExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
+func (_c *CloudBackupsApi_DeleteShardedClusterBackupExecute_Call) Return(_a0 *http.Response, _a1 error) *CloudBackupsApi_DeleteShardedClusterBackupExecute_Call {
+	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *CloudBackupsApi_DeleteShardedClusterBackupExecute_Call) RunAndReturn(run func(admin.DeleteShardedClusterBackupApiRequest) (map[string]interface{}, *http.Response, error)) *CloudBackupsApi_DeleteShardedClusterBackupExecute_Call {
+func (_c *CloudBackupsApi_DeleteShardedClusterBackupExecute_Call) RunAndReturn(run func(admin.DeleteShardedClusterBackupApiRequest) (*http.Response, error)) *CloudBackupsApi_DeleteShardedClusterBackupExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1468,7 +1432,7 @@ type CloudBackupsApi_DeleteShardedClusterBackupWithParams_Call struct {
 // DeleteShardedClusterBackupWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.DeleteShardedClusterBackupApiParams
-func (_e *CloudBackupsApi_Expecter) DeleteShardedClusterBackupWithParams(ctx interface{}, args interface{}) *CloudBackupsApi_DeleteShardedClusterBackupWithParams_Call {
+func (_e *CloudBackupsApi_Expecter) DeleteShardedClusterBackupWithParams(ctx any, args any) *CloudBackupsApi_DeleteShardedClusterBackupWithParams_Call {
 	return &CloudBackupsApi_DeleteShardedClusterBackupWithParams_Call{Call: _e.mock.On("DeleteShardedClusterBackupWithParams", ctx, args)}
 }
 
@@ -1517,7 +1481,7 @@ type CloudBackupsApi_GetBackupExportJob_Call struct {
 //   - groupId string
 //   - clusterName string
 //   - exportId string
-func (_e *CloudBackupsApi_Expecter) GetBackupExportJob(ctx interface{}, groupId interface{}, clusterName interface{}, exportId interface{}) *CloudBackupsApi_GetBackupExportJob_Call {
+func (_e *CloudBackupsApi_Expecter) GetBackupExportJob(ctx any, groupId any, clusterName any, exportId any) *CloudBackupsApi_GetBackupExportJob_Call {
 	return &CloudBackupsApi_GetBackupExportJob_Call{Call: _e.mock.On("GetBackupExportJob", ctx, groupId, clusterName, exportId)}
 }
 
@@ -1584,7 +1548,7 @@ type CloudBackupsApi_GetBackupExportJobExecute_Call struct {
 
 // GetBackupExportJobExecute is a helper method to define mock.On call
 //   - r admin.GetBackupExportJobApiRequest
-func (_e *CloudBackupsApi_Expecter) GetBackupExportJobExecute(r interface{}) *CloudBackupsApi_GetBackupExportJobExecute_Call {
+func (_e *CloudBackupsApi_Expecter) GetBackupExportJobExecute(r any) *CloudBackupsApi_GetBackupExportJobExecute_Call {
 	return &CloudBackupsApi_GetBackupExportJobExecute_Call{Call: _e.mock.On("GetBackupExportJobExecute", r)}
 }
 
@@ -1631,7 +1595,7 @@ type CloudBackupsApi_GetBackupExportJobWithParams_Call struct {
 // GetBackupExportJobWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetBackupExportJobApiParams
-func (_e *CloudBackupsApi_Expecter) GetBackupExportJobWithParams(ctx interface{}, args interface{}) *CloudBackupsApi_GetBackupExportJobWithParams_Call {
+func (_e *CloudBackupsApi_Expecter) GetBackupExportJobWithParams(ctx any, args any) *CloudBackupsApi_GetBackupExportJobWithParams_Call {
 	return &CloudBackupsApi_GetBackupExportJobWithParams_Call{Call: _e.mock.On("GetBackupExportJobWithParams", ctx, args)}
 }
 
@@ -1680,7 +1644,7 @@ type CloudBackupsApi_GetBackupRestoreJob_Call struct {
 //   - groupId string
 //   - clusterName string
 //   - restoreJobId string
-func (_e *CloudBackupsApi_Expecter) GetBackupRestoreJob(ctx interface{}, groupId interface{}, clusterName interface{}, restoreJobId interface{}) *CloudBackupsApi_GetBackupRestoreJob_Call {
+func (_e *CloudBackupsApi_Expecter) GetBackupRestoreJob(ctx any, groupId any, clusterName any, restoreJobId any) *CloudBackupsApi_GetBackupRestoreJob_Call {
 	return &CloudBackupsApi_GetBackupRestoreJob_Call{Call: _e.mock.On("GetBackupRestoreJob", ctx, groupId, clusterName, restoreJobId)}
 }
 
@@ -1747,7 +1711,7 @@ type CloudBackupsApi_GetBackupRestoreJobExecute_Call struct {
 
 // GetBackupRestoreJobExecute is a helper method to define mock.On call
 //   - r admin.GetBackupRestoreJobApiRequest
-func (_e *CloudBackupsApi_Expecter) GetBackupRestoreJobExecute(r interface{}) *CloudBackupsApi_GetBackupRestoreJobExecute_Call {
+func (_e *CloudBackupsApi_Expecter) GetBackupRestoreJobExecute(r any) *CloudBackupsApi_GetBackupRestoreJobExecute_Call {
 	return &CloudBackupsApi_GetBackupRestoreJobExecute_Call{Call: _e.mock.On("GetBackupRestoreJobExecute", r)}
 }
 
@@ -1794,7 +1758,7 @@ type CloudBackupsApi_GetBackupRestoreJobWithParams_Call struct {
 // GetBackupRestoreJobWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetBackupRestoreJobApiParams
-func (_e *CloudBackupsApi_Expecter) GetBackupRestoreJobWithParams(ctx interface{}, args interface{}) *CloudBackupsApi_GetBackupRestoreJobWithParams_Call {
+func (_e *CloudBackupsApi_Expecter) GetBackupRestoreJobWithParams(ctx any, args any) *CloudBackupsApi_GetBackupRestoreJobWithParams_Call {
 	return &CloudBackupsApi_GetBackupRestoreJobWithParams_Call{Call: _e.mock.On("GetBackupRestoreJobWithParams", ctx, args)}
 }
 
@@ -1842,7 +1806,7 @@ type CloudBackupsApi_GetBackupSchedule_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
-func (_e *CloudBackupsApi_Expecter) GetBackupSchedule(ctx interface{}, groupId interface{}, clusterName interface{}) *CloudBackupsApi_GetBackupSchedule_Call {
+func (_e *CloudBackupsApi_Expecter) GetBackupSchedule(ctx any, groupId any, clusterName any) *CloudBackupsApi_GetBackupSchedule_Call {
 	return &CloudBackupsApi_GetBackupSchedule_Call{Call: _e.mock.On("GetBackupSchedule", ctx, groupId, clusterName)}
 }
 
@@ -1909,7 +1873,7 @@ type CloudBackupsApi_GetBackupScheduleExecute_Call struct {
 
 // GetBackupScheduleExecute is a helper method to define mock.On call
 //   - r admin.GetBackupScheduleApiRequest
-func (_e *CloudBackupsApi_Expecter) GetBackupScheduleExecute(r interface{}) *CloudBackupsApi_GetBackupScheduleExecute_Call {
+func (_e *CloudBackupsApi_Expecter) GetBackupScheduleExecute(r any) *CloudBackupsApi_GetBackupScheduleExecute_Call {
 	return &CloudBackupsApi_GetBackupScheduleExecute_Call{Call: _e.mock.On("GetBackupScheduleExecute", r)}
 }
 
@@ -1956,7 +1920,7 @@ type CloudBackupsApi_GetBackupScheduleWithParams_Call struct {
 // GetBackupScheduleWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetBackupScheduleApiParams
-func (_e *CloudBackupsApi_Expecter) GetBackupScheduleWithParams(ctx interface{}, args interface{}) *CloudBackupsApi_GetBackupScheduleWithParams_Call {
+func (_e *CloudBackupsApi_Expecter) GetBackupScheduleWithParams(ctx any, args any) *CloudBackupsApi_GetBackupScheduleWithParams_Call {
 	return &CloudBackupsApi_GetBackupScheduleWithParams_Call{Call: _e.mock.On("GetBackupScheduleWithParams", ctx, args)}
 }
 
@@ -2003,7 +1967,7 @@ type CloudBackupsApi_GetDataProtectionSettings_Call struct {
 // GetDataProtectionSettings is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *CloudBackupsApi_Expecter) GetDataProtectionSettings(ctx interface{}, groupId interface{}) *CloudBackupsApi_GetDataProtectionSettings_Call {
+func (_e *CloudBackupsApi_Expecter) GetDataProtectionSettings(ctx any, groupId any) *CloudBackupsApi_GetDataProtectionSettings_Call {
 	return &CloudBackupsApi_GetDataProtectionSettings_Call{Call: _e.mock.On("GetDataProtectionSettings", ctx, groupId)}
 }
 
@@ -2070,7 +2034,7 @@ type CloudBackupsApi_GetDataProtectionSettingsExecute_Call struct {
 
 // GetDataProtectionSettingsExecute is a helper method to define mock.On call
 //   - r admin.GetDataProtectionSettingsApiRequest
-func (_e *CloudBackupsApi_Expecter) GetDataProtectionSettingsExecute(r interface{}) *CloudBackupsApi_GetDataProtectionSettingsExecute_Call {
+func (_e *CloudBackupsApi_Expecter) GetDataProtectionSettingsExecute(r any) *CloudBackupsApi_GetDataProtectionSettingsExecute_Call {
 	return &CloudBackupsApi_GetDataProtectionSettingsExecute_Call{Call: _e.mock.On("GetDataProtectionSettingsExecute", r)}
 }
 
@@ -2117,7 +2081,7 @@ type CloudBackupsApi_GetDataProtectionSettingsWithParams_Call struct {
 // GetDataProtectionSettingsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetDataProtectionSettingsApiParams
-func (_e *CloudBackupsApi_Expecter) GetDataProtectionSettingsWithParams(ctx interface{}, args interface{}) *CloudBackupsApi_GetDataProtectionSettingsWithParams_Call {
+func (_e *CloudBackupsApi_Expecter) GetDataProtectionSettingsWithParams(ctx any, args any) *CloudBackupsApi_GetDataProtectionSettingsWithParams_Call {
 	return &CloudBackupsApi_GetDataProtectionSettingsWithParams_Call{Call: _e.mock.On("GetDataProtectionSettingsWithParams", ctx, args)}
 }
 
@@ -2165,7 +2129,7 @@ type CloudBackupsApi_GetExportBucket_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - exportBucketId string
-func (_e *CloudBackupsApi_Expecter) GetExportBucket(ctx interface{}, groupId interface{}, exportBucketId interface{}) *CloudBackupsApi_GetExportBucket_Call {
+func (_e *CloudBackupsApi_Expecter) GetExportBucket(ctx any, groupId any, exportBucketId any) *CloudBackupsApi_GetExportBucket_Call {
 	return &CloudBackupsApi_GetExportBucket_Call{Call: _e.mock.On("GetExportBucket", ctx, groupId, exportBucketId)}
 }
 
@@ -2187,24 +2151,24 @@ func (_c *CloudBackupsApi_GetExportBucket_Call) RunAndReturn(run func(context.Co
 }
 
 // GetExportBucketExecute provides a mock function with given fields: r
-func (_m *CloudBackupsApi) GetExportBucketExecute(r admin.GetExportBucketApiRequest) (*admin.DiskBackupSnapshotAWSExportBucket, *http.Response, error) {
+func (_m *CloudBackupsApi) GetExportBucketExecute(r admin.GetExportBucketApiRequest) (*admin.DiskBackupSnapshotAWSExportBucketResponse, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for GetExportBucketExecute")
 	}
 
-	var r0 *admin.DiskBackupSnapshotAWSExportBucket
+	var r0 *admin.DiskBackupSnapshotAWSExportBucketResponse
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetExportBucketApiRequest) (*admin.DiskBackupSnapshotAWSExportBucket, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetExportBucketApiRequest) (*admin.DiskBackupSnapshotAWSExportBucketResponse, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.GetExportBucketApiRequest) *admin.DiskBackupSnapshotAWSExportBucket); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetExportBucketApiRequest) *admin.DiskBackupSnapshotAWSExportBucketResponse); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.DiskBackupSnapshotAWSExportBucket)
+			r0 = ret.Get(0).(*admin.DiskBackupSnapshotAWSExportBucketResponse)
 		}
 	}
 
@@ -2232,7 +2196,7 @@ type CloudBackupsApi_GetExportBucketExecute_Call struct {
 
 // GetExportBucketExecute is a helper method to define mock.On call
 //   - r admin.GetExportBucketApiRequest
-func (_e *CloudBackupsApi_Expecter) GetExportBucketExecute(r interface{}) *CloudBackupsApi_GetExportBucketExecute_Call {
+func (_e *CloudBackupsApi_Expecter) GetExportBucketExecute(r any) *CloudBackupsApi_GetExportBucketExecute_Call {
 	return &CloudBackupsApi_GetExportBucketExecute_Call{Call: _e.mock.On("GetExportBucketExecute", r)}
 }
 
@@ -2243,12 +2207,12 @@ func (_c *CloudBackupsApi_GetExportBucketExecute_Call) Run(run func(r admin.GetE
 	return _c
 }
 
-func (_c *CloudBackupsApi_GetExportBucketExecute_Call) Return(_a0 *admin.DiskBackupSnapshotAWSExportBucket, _a1 *http.Response, _a2 error) *CloudBackupsApi_GetExportBucketExecute_Call {
+func (_c *CloudBackupsApi_GetExportBucketExecute_Call) Return(_a0 *admin.DiskBackupSnapshotAWSExportBucketResponse, _a1 *http.Response, _a2 error) *CloudBackupsApi_GetExportBucketExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *CloudBackupsApi_GetExportBucketExecute_Call) RunAndReturn(run func(admin.GetExportBucketApiRequest) (*admin.DiskBackupSnapshotAWSExportBucket, *http.Response, error)) *CloudBackupsApi_GetExportBucketExecute_Call {
+func (_c *CloudBackupsApi_GetExportBucketExecute_Call) RunAndReturn(run func(admin.GetExportBucketApiRequest) (*admin.DiskBackupSnapshotAWSExportBucketResponse, *http.Response, error)) *CloudBackupsApi_GetExportBucketExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -2279,7 +2243,7 @@ type CloudBackupsApi_GetExportBucketWithParams_Call struct {
 // GetExportBucketWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetExportBucketApiParams
-func (_e *CloudBackupsApi_Expecter) GetExportBucketWithParams(ctx interface{}, args interface{}) *CloudBackupsApi_GetExportBucketWithParams_Call {
+func (_e *CloudBackupsApi_Expecter) GetExportBucketWithParams(ctx any, args any) *CloudBackupsApi_GetExportBucketWithParams_Call {
 	return &CloudBackupsApi_GetExportBucketWithParams_Call{Call: _e.mock.On("GetExportBucketWithParams", ctx, args)}
 }
 
@@ -2328,7 +2292,7 @@ type CloudBackupsApi_GetReplicaSetBackup_Call struct {
 //   - groupId string
 //   - clusterName string
 //   - snapshotId string
-func (_e *CloudBackupsApi_Expecter) GetReplicaSetBackup(ctx interface{}, groupId interface{}, clusterName interface{}, snapshotId interface{}) *CloudBackupsApi_GetReplicaSetBackup_Call {
+func (_e *CloudBackupsApi_Expecter) GetReplicaSetBackup(ctx any, groupId any, clusterName any, snapshotId any) *CloudBackupsApi_GetReplicaSetBackup_Call {
 	return &CloudBackupsApi_GetReplicaSetBackup_Call{Call: _e.mock.On("GetReplicaSetBackup", ctx, groupId, clusterName, snapshotId)}
 }
 
@@ -2395,7 +2359,7 @@ type CloudBackupsApi_GetReplicaSetBackupExecute_Call struct {
 
 // GetReplicaSetBackupExecute is a helper method to define mock.On call
 //   - r admin.GetReplicaSetBackupApiRequest
-func (_e *CloudBackupsApi_Expecter) GetReplicaSetBackupExecute(r interface{}) *CloudBackupsApi_GetReplicaSetBackupExecute_Call {
+func (_e *CloudBackupsApi_Expecter) GetReplicaSetBackupExecute(r any) *CloudBackupsApi_GetReplicaSetBackupExecute_Call {
 	return &CloudBackupsApi_GetReplicaSetBackupExecute_Call{Call: _e.mock.On("GetReplicaSetBackupExecute", r)}
 }
 
@@ -2442,7 +2406,7 @@ type CloudBackupsApi_GetReplicaSetBackupWithParams_Call struct {
 // GetReplicaSetBackupWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetReplicaSetBackupApiParams
-func (_e *CloudBackupsApi_Expecter) GetReplicaSetBackupWithParams(ctx interface{}, args interface{}) *CloudBackupsApi_GetReplicaSetBackupWithParams_Call {
+func (_e *CloudBackupsApi_Expecter) GetReplicaSetBackupWithParams(ctx any, args any) *CloudBackupsApi_GetReplicaSetBackupWithParams_Call {
 	return &CloudBackupsApi_GetReplicaSetBackupWithParams_Call{Call: _e.mock.On("GetReplicaSetBackupWithParams", ctx, args)}
 }
 
@@ -2491,7 +2455,7 @@ type CloudBackupsApi_GetServerlessBackup_Call struct {
 //   - groupId string
 //   - clusterName string
 //   - snapshotId string
-func (_e *CloudBackupsApi_Expecter) GetServerlessBackup(ctx interface{}, groupId interface{}, clusterName interface{}, snapshotId interface{}) *CloudBackupsApi_GetServerlessBackup_Call {
+func (_e *CloudBackupsApi_Expecter) GetServerlessBackup(ctx any, groupId any, clusterName any, snapshotId any) *CloudBackupsApi_GetServerlessBackup_Call {
 	return &CloudBackupsApi_GetServerlessBackup_Call{Call: _e.mock.On("GetServerlessBackup", ctx, groupId, clusterName, snapshotId)}
 }
 
@@ -2558,7 +2522,7 @@ type CloudBackupsApi_GetServerlessBackupExecute_Call struct {
 
 // GetServerlessBackupExecute is a helper method to define mock.On call
 //   - r admin.GetServerlessBackupApiRequest
-func (_e *CloudBackupsApi_Expecter) GetServerlessBackupExecute(r interface{}) *CloudBackupsApi_GetServerlessBackupExecute_Call {
+func (_e *CloudBackupsApi_Expecter) GetServerlessBackupExecute(r any) *CloudBackupsApi_GetServerlessBackupExecute_Call {
 	return &CloudBackupsApi_GetServerlessBackupExecute_Call{Call: _e.mock.On("GetServerlessBackupExecute", r)}
 }
 
@@ -2607,7 +2571,7 @@ type CloudBackupsApi_GetServerlessBackupRestoreJob_Call struct {
 //   - groupId string
 //   - clusterName string
 //   - restoreJobId string
-func (_e *CloudBackupsApi_Expecter) GetServerlessBackupRestoreJob(ctx interface{}, groupId interface{}, clusterName interface{}, restoreJobId interface{}) *CloudBackupsApi_GetServerlessBackupRestoreJob_Call {
+func (_e *CloudBackupsApi_Expecter) GetServerlessBackupRestoreJob(ctx any, groupId any, clusterName any, restoreJobId any) *CloudBackupsApi_GetServerlessBackupRestoreJob_Call {
 	return &CloudBackupsApi_GetServerlessBackupRestoreJob_Call{Call: _e.mock.On("GetServerlessBackupRestoreJob", ctx, groupId, clusterName, restoreJobId)}
 }
 
@@ -2674,7 +2638,7 @@ type CloudBackupsApi_GetServerlessBackupRestoreJobExecute_Call struct {
 
 // GetServerlessBackupRestoreJobExecute is a helper method to define mock.On call
 //   - r admin.GetServerlessBackupRestoreJobApiRequest
-func (_e *CloudBackupsApi_Expecter) GetServerlessBackupRestoreJobExecute(r interface{}) *CloudBackupsApi_GetServerlessBackupRestoreJobExecute_Call {
+func (_e *CloudBackupsApi_Expecter) GetServerlessBackupRestoreJobExecute(r any) *CloudBackupsApi_GetServerlessBackupRestoreJobExecute_Call {
 	return &CloudBackupsApi_GetServerlessBackupRestoreJobExecute_Call{Call: _e.mock.On("GetServerlessBackupRestoreJobExecute", r)}
 }
 
@@ -2721,7 +2685,7 @@ type CloudBackupsApi_GetServerlessBackupRestoreJobWithParams_Call struct {
 // GetServerlessBackupRestoreJobWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetServerlessBackupRestoreJobApiParams
-func (_e *CloudBackupsApi_Expecter) GetServerlessBackupRestoreJobWithParams(ctx interface{}, args interface{}) *CloudBackupsApi_GetServerlessBackupRestoreJobWithParams_Call {
+func (_e *CloudBackupsApi_Expecter) GetServerlessBackupRestoreJobWithParams(ctx any, args any) *CloudBackupsApi_GetServerlessBackupRestoreJobWithParams_Call {
 	return &CloudBackupsApi_GetServerlessBackupRestoreJobWithParams_Call{Call: _e.mock.On("GetServerlessBackupRestoreJobWithParams", ctx, args)}
 }
 
@@ -2768,7 +2732,7 @@ type CloudBackupsApi_GetServerlessBackupWithParams_Call struct {
 // GetServerlessBackupWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetServerlessBackupApiParams
-func (_e *CloudBackupsApi_Expecter) GetServerlessBackupWithParams(ctx interface{}, args interface{}) *CloudBackupsApi_GetServerlessBackupWithParams_Call {
+func (_e *CloudBackupsApi_Expecter) GetServerlessBackupWithParams(ctx any, args any) *CloudBackupsApi_GetServerlessBackupWithParams_Call {
 	return &CloudBackupsApi_GetServerlessBackupWithParams_Call{Call: _e.mock.On("GetServerlessBackupWithParams", ctx, args)}
 }
 
@@ -2817,7 +2781,7 @@ type CloudBackupsApi_GetShardedClusterBackup_Call struct {
 //   - groupId string
 //   - clusterName string
 //   - snapshotId string
-func (_e *CloudBackupsApi_Expecter) GetShardedClusterBackup(ctx interface{}, groupId interface{}, clusterName interface{}, snapshotId interface{}) *CloudBackupsApi_GetShardedClusterBackup_Call {
+func (_e *CloudBackupsApi_Expecter) GetShardedClusterBackup(ctx any, groupId any, clusterName any, snapshotId any) *CloudBackupsApi_GetShardedClusterBackup_Call {
 	return &CloudBackupsApi_GetShardedClusterBackup_Call{Call: _e.mock.On("GetShardedClusterBackup", ctx, groupId, clusterName, snapshotId)}
 }
 
@@ -2884,7 +2848,7 @@ type CloudBackupsApi_GetShardedClusterBackupExecute_Call struct {
 
 // GetShardedClusterBackupExecute is a helper method to define mock.On call
 //   - r admin.GetShardedClusterBackupApiRequest
-func (_e *CloudBackupsApi_Expecter) GetShardedClusterBackupExecute(r interface{}) *CloudBackupsApi_GetShardedClusterBackupExecute_Call {
+func (_e *CloudBackupsApi_Expecter) GetShardedClusterBackupExecute(r any) *CloudBackupsApi_GetShardedClusterBackupExecute_Call {
 	return &CloudBackupsApi_GetShardedClusterBackupExecute_Call{Call: _e.mock.On("GetShardedClusterBackupExecute", r)}
 }
 
@@ -2931,7 +2895,7 @@ type CloudBackupsApi_GetShardedClusterBackupWithParams_Call struct {
 // GetShardedClusterBackupWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetShardedClusterBackupApiParams
-func (_e *CloudBackupsApi_Expecter) GetShardedClusterBackupWithParams(ctx interface{}, args interface{}) *CloudBackupsApi_GetShardedClusterBackupWithParams_Call {
+func (_e *CloudBackupsApi_Expecter) GetShardedClusterBackupWithParams(ctx any, args any) *CloudBackupsApi_GetShardedClusterBackupWithParams_Call {
 	return &CloudBackupsApi_GetShardedClusterBackupWithParams_Call{Call: _e.mock.On("GetShardedClusterBackupWithParams", ctx, args)}
 }
 
@@ -2979,7 +2943,7 @@ type CloudBackupsApi_ListBackupExportJobs_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
-func (_e *CloudBackupsApi_Expecter) ListBackupExportJobs(ctx interface{}, groupId interface{}, clusterName interface{}) *CloudBackupsApi_ListBackupExportJobs_Call {
+func (_e *CloudBackupsApi_Expecter) ListBackupExportJobs(ctx any, groupId any, clusterName any) *CloudBackupsApi_ListBackupExportJobs_Call {
 	return &CloudBackupsApi_ListBackupExportJobs_Call{Call: _e.mock.On("ListBackupExportJobs", ctx, groupId, clusterName)}
 }
 
@@ -3046,7 +3010,7 @@ type CloudBackupsApi_ListBackupExportJobsExecute_Call struct {
 
 // ListBackupExportJobsExecute is a helper method to define mock.On call
 //   - r admin.ListBackupExportJobsApiRequest
-func (_e *CloudBackupsApi_Expecter) ListBackupExportJobsExecute(r interface{}) *CloudBackupsApi_ListBackupExportJobsExecute_Call {
+func (_e *CloudBackupsApi_Expecter) ListBackupExportJobsExecute(r any) *CloudBackupsApi_ListBackupExportJobsExecute_Call {
 	return &CloudBackupsApi_ListBackupExportJobsExecute_Call{Call: _e.mock.On("ListBackupExportJobsExecute", r)}
 }
 
@@ -3093,7 +3057,7 @@ type CloudBackupsApi_ListBackupExportJobsWithParams_Call struct {
 // ListBackupExportJobsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListBackupExportJobsApiParams
-func (_e *CloudBackupsApi_Expecter) ListBackupExportJobsWithParams(ctx interface{}, args interface{}) *CloudBackupsApi_ListBackupExportJobsWithParams_Call {
+func (_e *CloudBackupsApi_Expecter) ListBackupExportJobsWithParams(ctx any, args any) *CloudBackupsApi_ListBackupExportJobsWithParams_Call {
 	return &CloudBackupsApi_ListBackupExportJobsWithParams_Call{Call: _e.mock.On("ListBackupExportJobsWithParams", ctx, args)}
 }
 
@@ -3141,7 +3105,7 @@ type CloudBackupsApi_ListBackupRestoreJobs_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
-func (_e *CloudBackupsApi_Expecter) ListBackupRestoreJobs(ctx interface{}, groupId interface{}, clusterName interface{}) *CloudBackupsApi_ListBackupRestoreJobs_Call {
+func (_e *CloudBackupsApi_Expecter) ListBackupRestoreJobs(ctx any, groupId any, clusterName any) *CloudBackupsApi_ListBackupRestoreJobs_Call {
 	return &CloudBackupsApi_ListBackupRestoreJobs_Call{Call: _e.mock.On("ListBackupRestoreJobs", ctx, groupId, clusterName)}
 }
 
@@ -3208,7 +3172,7 @@ type CloudBackupsApi_ListBackupRestoreJobsExecute_Call struct {
 
 // ListBackupRestoreJobsExecute is a helper method to define mock.On call
 //   - r admin.ListBackupRestoreJobsApiRequest
-func (_e *CloudBackupsApi_Expecter) ListBackupRestoreJobsExecute(r interface{}) *CloudBackupsApi_ListBackupRestoreJobsExecute_Call {
+func (_e *CloudBackupsApi_Expecter) ListBackupRestoreJobsExecute(r any) *CloudBackupsApi_ListBackupRestoreJobsExecute_Call {
 	return &CloudBackupsApi_ListBackupRestoreJobsExecute_Call{Call: _e.mock.On("ListBackupRestoreJobsExecute", r)}
 }
 
@@ -3255,7 +3219,7 @@ type CloudBackupsApi_ListBackupRestoreJobsWithParams_Call struct {
 // ListBackupRestoreJobsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListBackupRestoreJobsApiParams
-func (_e *CloudBackupsApi_Expecter) ListBackupRestoreJobsWithParams(ctx interface{}, args interface{}) *CloudBackupsApi_ListBackupRestoreJobsWithParams_Call {
+func (_e *CloudBackupsApi_Expecter) ListBackupRestoreJobsWithParams(ctx any, args any) *CloudBackupsApi_ListBackupRestoreJobsWithParams_Call {
 	return &CloudBackupsApi_ListBackupRestoreJobsWithParams_Call{Call: _e.mock.On("ListBackupRestoreJobsWithParams", ctx, args)}
 }
 
@@ -3302,7 +3266,7 @@ type CloudBackupsApi_ListExportBuckets_Call struct {
 // ListExportBuckets is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *CloudBackupsApi_Expecter) ListExportBuckets(ctx interface{}, groupId interface{}) *CloudBackupsApi_ListExportBuckets_Call {
+func (_e *CloudBackupsApi_Expecter) ListExportBuckets(ctx any, groupId any) *CloudBackupsApi_ListExportBuckets_Call {
 	return &CloudBackupsApi_ListExportBuckets_Call{Call: _e.mock.On("ListExportBuckets", ctx, groupId)}
 }
 
@@ -3369,7 +3333,7 @@ type CloudBackupsApi_ListExportBucketsExecute_Call struct {
 
 // ListExportBucketsExecute is a helper method to define mock.On call
 //   - r admin.ListExportBucketsApiRequest
-func (_e *CloudBackupsApi_Expecter) ListExportBucketsExecute(r interface{}) *CloudBackupsApi_ListExportBucketsExecute_Call {
+func (_e *CloudBackupsApi_Expecter) ListExportBucketsExecute(r any) *CloudBackupsApi_ListExportBucketsExecute_Call {
 	return &CloudBackupsApi_ListExportBucketsExecute_Call{Call: _e.mock.On("ListExportBucketsExecute", r)}
 }
 
@@ -3416,7 +3380,7 @@ type CloudBackupsApi_ListExportBucketsWithParams_Call struct {
 // ListExportBucketsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListExportBucketsApiParams
-func (_e *CloudBackupsApi_Expecter) ListExportBucketsWithParams(ctx interface{}, args interface{}) *CloudBackupsApi_ListExportBucketsWithParams_Call {
+func (_e *CloudBackupsApi_Expecter) ListExportBucketsWithParams(ctx any, args any) *CloudBackupsApi_ListExportBucketsWithParams_Call {
 	return &CloudBackupsApi_ListExportBucketsWithParams_Call{Call: _e.mock.On("ListExportBucketsWithParams", ctx, args)}
 }
 
@@ -3464,7 +3428,7 @@ type CloudBackupsApi_ListReplicaSetBackups_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
-func (_e *CloudBackupsApi_Expecter) ListReplicaSetBackups(ctx interface{}, groupId interface{}, clusterName interface{}) *CloudBackupsApi_ListReplicaSetBackups_Call {
+func (_e *CloudBackupsApi_Expecter) ListReplicaSetBackups(ctx any, groupId any, clusterName any) *CloudBackupsApi_ListReplicaSetBackups_Call {
 	return &CloudBackupsApi_ListReplicaSetBackups_Call{Call: _e.mock.On("ListReplicaSetBackups", ctx, groupId, clusterName)}
 }
 
@@ -3531,7 +3495,7 @@ type CloudBackupsApi_ListReplicaSetBackupsExecute_Call struct {
 
 // ListReplicaSetBackupsExecute is a helper method to define mock.On call
 //   - r admin.ListReplicaSetBackupsApiRequest
-func (_e *CloudBackupsApi_Expecter) ListReplicaSetBackupsExecute(r interface{}) *CloudBackupsApi_ListReplicaSetBackupsExecute_Call {
+func (_e *CloudBackupsApi_Expecter) ListReplicaSetBackupsExecute(r any) *CloudBackupsApi_ListReplicaSetBackupsExecute_Call {
 	return &CloudBackupsApi_ListReplicaSetBackupsExecute_Call{Call: _e.mock.On("ListReplicaSetBackupsExecute", r)}
 }
 
@@ -3578,7 +3542,7 @@ type CloudBackupsApi_ListReplicaSetBackupsWithParams_Call struct {
 // ListReplicaSetBackupsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListReplicaSetBackupsApiParams
-func (_e *CloudBackupsApi_Expecter) ListReplicaSetBackupsWithParams(ctx interface{}, args interface{}) *CloudBackupsApi_ListReplicaSetBackupsWithParams_Call {
+func (_e *CloudBackupsApi_Expecter) ListReplicaSetBackupsWithParams(ctx any, args any) *CloudBackupsApi_ListReplicaSetBackupsWithParams_Call {
 	return &CloudBackupsApi_ListReplicaSetBackupsWithParams_Call{Call: _e.mock.On("ListReplicaSetBackupsWithParams", ctx, args)}
 }
 
@@ -3626,7 +3590,7 @@ type CloudBackupsApi_ListServerlessBackupRestoreJobs_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
-func (_e *CloudBackupsApi_Expecter) ListServerlessBackupRestoreJobs(ctx interface{}, groupId interface{}, clusterName interface{}) *CloudBackupsApi_ListServerlessBackupRestoreJobs_Call {
+func (_e *CloudBackupsApi_Expecter) ListServerlessBackupRestoreJobs(ctx any, groupId any, clusterName any) *CloudBackupsApi_ListServerlessBackupRestoreJobs_Call {
 	return &CloudBackupsApi_ListServerlessBackupRestoreJobs_Call{Call: _e.mock.On("ListServerlessBackupRestoreJobs", ctx, groupId, clusterName)}
 }
 
@@ -3693,7 +3657,7 @@ type CloudBackupsApi_ListServerlessBackupRestoreJobsExecute_Call struct {
 
 // ListServerlessBackupRestoreJobsExecute is a helper method to define mock.On call
 //   - r admin.ListServerlessBackupRestoreJobsApiRequest
-func (_e *CloudBackupsApi_Expecter) ListServerlessBackupRestoreJobsExecute(r interface{}) *CloudBackupsApi_ListServerlessBackupRestoreJobsExecute_Call {
+func (_e *CloudBackupsApi_Expecter) ListServerlessBackupRestoreJobsExecute(r any) *CloudBackupsApi_ListServerlessBackupRestoreJobsExecute_Call {
 	return &CloudBackupsApi_ListServerlessBackupRestoreJobsExecute_Call{Call: _e.mock.On("ListServerlessBackupRestoreJobsExecute", r)}
 }
 
@@ -3740,7 +3704,7 @@ type CloudBackupsApi_ListServerlessBackupRestoreJobsWithParams_Call struct {
 // ListServerlessBackupRestoreJobsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListServerlessBackupRestoreJobsApiParams
-func (_e *CloudBackupsApi_Expecter) ListServerlessBackupRestoreJobsWithParams(ctx interface{}, args interface{}) *CloudBackupsApi_ListServerlessBackupRestoreJobsWithParams_Call {
+func (_e *CloudBackupsApi_Expecter) ListServerlessBackupRestoreJobsWithParams(ctx any, args any) *CloudBackupsApi_ListServerlessBackupRestoreJobsWithParams_Call {
 	return &CloudBackupsApi_ListServerlessBackupRestoreJobsWithParams_Call{Call: _e.mock.On("ListServerlessBackupRestoreJobsWithParams", ctx, args)}
 }
 
@@ -3788,7 +3752,7 @@ type CloudBackupsApi_ListServerlessBackups_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
-func (_e *CloudBackupsApi_Expecter) ListServerlessBackups(ctx interface{}, groupId interface{}, clusterName interface{}) *CloudBackupsApi_ListServerlessBackups_Call {
+func (_e *CloudBackupsApi_Expecter) ListServerlessBackups(ctx any, groupId any, clusterName any) *CloudBackupsApi_ListServerlessBackups_Call {
 	return &CloudBackupsApi_ListServerlessBackups_Call{Call: _e.mock.On("ListServerlessBackups", ctx, groupId, clusterName)}
 }
 
@@ -3855,7 +3819,7 @@ type CloudBackupsApi_ListServerlessBackupsExecute_Call struct {
 
 // ListServerlessBackupsExecute is a helper method to define mock.On call
 //   - r admin.ListServerlessBackupsApiRequest
-func (_e *CloudBackupsApi_Expecter) ListServerlessBackupsExecute(r interface{}) *CloudBackupsApi_ListServerlessBackupsExecute_Call {
+func (_e *CloudBackupsApi_Expecter) ListServerlessBackupsExecute(r any) *CloudBackupsApi_ListServerlessBackupsExecute_Call {
 	return &CloudBackupsApi_ListServerlessBackupsExecute_Call{Call: _e.mock.On("ListServerlessBackupsExecute", r)}
 }
 
@@ -3902,7 +3866,7 @@ type CloudBackupsApi_ListServerlessBackupsWithParams_Call struct {
 // ListServerlessBackupsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListServerlessBackupsApiParams
-func (_e *CloudBackupsApi_Expecter) ListServerlessBackupsWithParams(ctx interface{}, args interface{}) *CloudBackupsApi_ListServerlessBackupsWithParams_Call {
+func (_e *CloudBackupsApi_Expecter) ListServerlessBackupsWithParams(ctx any, args any) *CloudBackupsApi_ListServerlessBackupsWithParams_Call {
 	return &CloudBackupsApi_ListServerlessBackupsWithParams_Call{Call: _e.mock.On("ListServerlessBackupsWithParams", ctx, args)}
 }
 
@@ -3950,7 +3914,7 @@ type CloudBackupsApi_ListShardedClusterBackups_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
-func (_e *CloudBackupsApi_Expecter) ListShardedClusterBackups(ctx interface{}, groupId interface{}, clusterName interface{}) *CloudBackupsApi_ListShardedClusterBackups_Call {
+func (_e *CloudBackupsApi_Expecter) ListShardedClusterBackups(ctx any, groupId any, clusterName any) *CloudBackupsApi_ListShardedClusterBackups_Call {
 	return &CloudBackupsApi_ListShardedClusterBackups_Call{Call: _e.mock.On("ListShardedClusterBackups", ctx, groupId, clusterName)}
 }
 
@@ -4017,7 +3981,7 @@ type CloudBackupsApi_ListShardedClusterBackupsExecute_Call struct {
 
 // ListShardedClusterBackupsExecute is a helper method to define mock.On call
 //   - r admin.ListShardedClusterBackupsApiRequest
-func (_e *CloudBackupsApi_Expecter) ListShardedClusterBackupsExecute(r interface{}) *CloudBackupsApi_ListShardedClusterBackupsExecute_Call {
+func (_e *CloudBackupsApi_Expecter) ListShardedClusterBackupsExecute(r any) *CloudBackupsApi_ListShardedClusterBackupsExecute_Call {
 	return &CloudBackupsApi_ListShardedClusterBackupsExecute_Call{Call: _e.mock.On("ListShardedClusterBackupsExecute", r)}
 }
 
@@ -4064,7 +4028,7 @@ type CloudBackupsApi_ListShardedClusterBackupsWithParams_Call struct {
 // ListShardedClusterBackupsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListShardedClusterBackupsApiParams
-func (_e *CloudBackupsApi_Expecter) ListShardedClusterBackupsWithParams(ctx interface{}, args interface{}) *CloudBackupsApi_ListShardedClusterBackupsWithParams_Call {
+func (_e *CloudBackupsApi_Expecter) ListShardedClusterBackupsWithParams(ctx any, args any) *CloudBackupsApi_ListShardedClusterBackupsWithParams_Call {
 	return &CloudBackupsApi_ListShardedClusterBackupsWithParams_Call{Call: _e.mock.On("ListShardedClusterBackupsWithParams", ctx, args)}
 }
 
@@ -4113,7 +4077,7 @@ type CloudBackupsApi_TakeSnapshot_Call struct {
 //   - groupId string
 //   - clusterName string
 //   - diskBackupOnDemandSnapshotRequest *admin.DiskBackupOnDemandSnapshotRequest
-func (_e *CloudBackupsApi_Expecter) TakeSnapshot(ctx interface{}, groupId interface{}, clusterName interface{}, diskBackupOnDemandSnapshotRequest interface{}) *CloudBackupsApi_TakeSnapshot_Call {
+func (_e *CloudBackupsApi_Expecter) TakeSnapshot(ctx any, groupId any, clusterName any, diskBackupOnDemandSnapshotRequest any) *CloudBackupsApi_TakeSnapshot_Call {
 	return &CloudBackupsApi_TakeSnapshot_Call{Call: _e.mock.On("TakeSnapshot", ctx, groupId, clusterName, diskBackupOnDemandSnapshotRequest)}
 }
 
@@ -4180,7 +4144,7 @@ type CloudBackupsApi_TakeSnapshotExecute_Call struct {
 
 // TakeSnapshotExecute is a helper method to define mock.On call
 //   - r admin.TakeSnapshotApiRequest
-func (_e *CloudBackupsApi_Expecter) TakeSnapshotExecute(r interface{}) *CloudBackupsApi_TakeSnapshotExecute_Call {
+func (_e *CloudBackupsApi_Expecter) TakeSnapshotExecute(r any) *CloudBackupsApi_TakeSnapshotExecute_Call {
 	return &CloudBackupsApi_TakeSnapshotExecute_Call{Call: _e.mock.On("TakeSnapshotExecute", r)}
 }
 
@@ -4227,7 +4191,7 @@ type CloudBackupsApi_TakeSnapshotWithParams_Call struct {
 // TakeSnapshotWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.TakeSnapshotApiParams
-func (_e *CloudBackupsApi_Expecter) TakeSnapshotWithParams(ctx interface{}, args interface{}) *CloudBackupsApi_TakeSnapshotWithParams_Call {
+func (_e *CloudBackupsApi_Expecter) TakeSnapshotWithParams(ctx any, args any) *CloudBackupsApi_TakeSnapshotWithParams_Call {
 	return &CloudBackupsApi_TakeSnapshotWithParams_Call{Call: _e.mock.On("TakeSnapshotWithParams", ctx, args)}
 }
 
@@ -4276,7 +4240,7 @@ type CloudBackupsApi_UpdateBackupSchedule_Call struct {
 //   - groupId string
 //   - clusterName string
 //   - diskBackupSnapshotSchedule *admin.DiskBackupSnapshotSchedule
-func (_e *CloudBackupsApi_Expecter) UpdateBackupSchedule(ctx interface{}, groupId interface{}, clusterName interface{}, diskBackupSnapshotSchedule interface{}) *CloudBackupsApi_UpdateBackupSchedule_Call {
+func (_e *CloudBackupsApi_Expecter) UpdateBackupSchedule(ctx any, groupId any, clusterName any, diskBackupSnapshotSchedule any) *CloudBackupsApi_UpdateBackupSchedule_Call {
 	return &CloudBackupsApi_UpdateBackupSchedule_Call{Call: _e.mock.On("UpdateBackupSchedule", ctx, groupId, clusterName, diskBackupSnapshotSchedule)}
 }
 
@@ -4343,7 +4307,7 @@ type CloudBackupsApi_UpdateBackupScheduleExecute_Call struct {
 
 // UpdateBackupScheduleExecute is a helper method to define mock.On call
 //   - r admin.UpdateBackupScheduleApiRequest
-func (_e *CloudBackupsApi_Expecter) UpdateBackupScheduleExecute(r interface{}) *CloudBackupsApi_UpdateBackupScheduleExecute_Call {
+func (_e *CloudBackupsApi_Expecter) UpdateBackupScheduleExecute(r any) *CloudBackupsApi_UpdateBackupScheduleExecute_Call {
 	return &CloudBackupsApi_UpdateBackupScheduleExecute_Call{Call: _e.mock.On("UpdateBackupScheduleExecute", r)}
 }
 
@@ -4390,7 +4354,7 @@ type CloudBackupsApi_UpdateBackupScheduleWithParams_Call struct {
 // UpdateBackupScheduleWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.UpdateBackupScheduleApiParams
-func (_e *CloudBackupsApi_Expecter) UpdateBackupScheduleWithParams(ctx interface{}, args interface{}) *CloudBackupsApi_UpdateBackupScheduleWithParams_Call {
+func (_e *CloudBackupsApi_Expecter) UpdateBackupScheduleWithParams(ctx any, args any) *CloudBackupsApi_UpdateBackupScheduleWithParams_Call {
 	return &CloudBackupsApi_UpdateBackupScheduleWithParams_Call{Call: _e.mock.On("UpdateBackupScheduleWithParams", ctx, args)}
 }
 
@@ -4438,7 +4402,7 @@ type CloudBackupsApi_UpdateDataProtectionSettings_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - dataProtectionSettings20231001 *admin.DataProtectionSettings20231001
-func (_e *CloudBackupsApi_Expecter) UpdateDataProtectionSettings(ctx interface{}, groupId interface{}, dataProtectionSettings20231001 interface{}) *CloudBackupsApi_UpdateDataProtectionSettings_Call {
+func (_e *CloudBackupsApi_Expecter) UpdateDataProtectionSettings(ctx any, groupId any, dataProtectionSettings20231001 any) *CloudBackupsApi_UpdateDataProtectionSettings_Call {
 	return &CloudBackupsApi_UpdateDataProtectionSettings_Call{Call: _e.mock.On("UpdateDataProtectionSettings", ctx, groupId, dataProtectionSettings20231001)}
 }
 
@@ -4505,7 +4469,7 @@ type CloudBackupsApi_UpdateDataProtectionSettingsExecute_Call struct {
 
 // UpdateDataProtectionSettingsExecute is a helper method to define mock.On call
 //   - r admin.UpdateDataProtectionSettingsApiRequest
-func (_e *CloudBackupsApi_Expecter) UpdateDataProtectionSettingsExecute(r interface{}) *CloudBackupsApi_UpdateDataProtectionSettingsExecute_Call {
+func (_e *CloudBackupsApi_Expecter) UpdateDataProtectionSettingsExecute(r any) *CloudBackupsApi_UpdateDataProtectionSettingsExecute_Call {
 	return &CloudBackupsApi_UpdateDataProtectionSettingsExecute_Call{Call: _e.mock.On("UpdateDataProtectionSettingsExecute", r)}
 }
 
@@ -4552,7 +4516,7 @@ type CloudBackupsApi_UpdateDataProtectionSettingsWithParams_Call struct {
 // UpdateDataProtectionSettingsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.UpdateDataProtectionSettingsApiParams
-func (_e *CloudBackupsApi_Expecter) UpdateDataProtectionSettingsWithParams(ctx interface{}, args interface{}) *CloudBackupsApi_UpdateDataProtectionSettingsWithParams_Call {
+func (_e *CloudBackupsApi_Expecter) UpdateDataProtectionSettingsWithParams(ctx any, args any) *CloudBackupsApi_UpdateDataProtectionSettingsWithParams_Call {
 	return &CloudBackupsApi_UpdateDataProtectionSettingsWithParams_Call{Call: _e.mock.On("UpdateDataProtectionSettingsWithParams", ctx, args)}
 }
 
@@ -4602,7 +4566,7 @@ type CloudBackupsApi_UpdateSnapshotRetention_Call struct {
 //   - clusterName string
 //   - snapshotId string
 //   - backupSnapshotRetention *admin.BackupSnapshotRetention
-func (_e *CloudBackupsApi_Expecter) UpdateSnapshotRetention(ctx interface{}, groupId interface{}, clusterName interface{}, snapshotId interface{}, backupSnapshotRetention interface{}) *CloudBackupsApi_UpdateSnapshotRetention_Call {
+func (_e *CloudBackupsApi_Expecter) UpdateSnapshotRetention(ctx any, groupId any, clusterName any, snapshotId any, backupSnapshotRetention any) *CloudBackupsApi_UpdateSnapshotRetention_Call {
 	return &CloudBackupsApi_UpdateSnapshotRetention_Call{Call: _e.mock.On("UpdateSnapshotRetention", ctx, groupId, clusterName, snapshotId, backupSnapshotRetention)}
 }
 
@@ -4669,7 +4633,7 @@ type CloudBackupsApi_UpdateSnapshotRetentionExecute_Call struct {
 
 // UpdateSnapshotRetentionExecute is a helper method to define mock.On call
 //   - r admin.UpdateSnapshotRetentionApiRequest
-func (_e *CloudBackupsApi_Expecter) UpdateSnapshotRetentionExecute(r interface{}) *CloudBackupsApi_UpdateSnapshotRetentionExecute_Call {
+func (_e *CloudBackupsApi_Expecter) UpdateSnapshotRetentionExecute(r any) *CloudBackupsApi_UpdateSnapshotRetentionExecute_Call {
 	return &CloudBackupsApi_UpdateSnapshotRetentionExecute_Call{Call: _e.mock.On("UpdateSnapshotRetentionExecute", r)}
 }
 
@@ -4716,7 +4680,7 @@ type CloudBackupsApi_UpdateSnapshotRetentionWithParams_Call struct {
 // UpdateSnapshotRetentionWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.UpdateSnapshotRetentionApiParams
-func (_e *CloudBackupsApi_Expecter) UpdateSnapshotRetentionWithParams(ctx interface{}, args interface{}) *CloudBackupsApi_UpdateSnapshotRetentionWithParams_Call {
+func (_e *CloudBackupsApi_Expecter) UpdateSnapshotRetentionWithParams(ctx any, args any) *CloudBackupsApi_UpdateSnapshotRetentionWithParams_Call {
 	return &CloudBackupsApi_UpdateSnapshotRetentionWithParams_Call{Call: _e.mock.On("UpdateSnapshotRetentionWithParams", ctx, args)}
 }
 

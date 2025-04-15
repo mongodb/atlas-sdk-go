@@ -16,6 +16,8 @@ type AWSKMSConfiguration struct {
 	Enabled *bool `json:"enabled,omitempty"`
 	// Physical location where MongoDB Cloud deploys your AWS-hosted MongoDB cluster nodes. The region you choose can affect network latency for clients accessing your databases. When MongoDB Cloud deploys a dedicated cluster, it checks if a VPC or VPC connection exists for that provider and region. If not, MongoDB Cloud creates them as part of the deployment. MongoDB Cloud assigns the VPC a CIDR block. To limit a new VPC peering connection to one CIDR block and region, create the connection first. Deploy the cluster after the connection starts.
 	Region *string `json:"region,omitempty"`
+	// Enable connection to your Amazon Web Services (AWS) Key Management Service (KMS) over private networking.
+	RequirePrivateNetworking *bool `json:"requirePrivateNetworking,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies an Amazon Web Services (AWS) Identity and Access Management (IAM) role. This IAM role has the permissions required to manage your AWS customer master key.
 	// Write only field.
 	RoleId *string `json:"roleId,omitempty"`
@@ -176,6 +178,39 @@ func (o *AWSKMSConfiguration) SetRegion(v string) {
 	o.Region = &v
 }
 
+// GetRequirePrivateNetworking returns the RequirePrivateNetworking field value if set, zero value otherwise
+func (o *AWSKMSConfiguration) GetRequirePrivateNetworking() bool {
+	if o == nil || IsNil(o.RequirePrivateNetworking) {
+		var ret bool
+		return ret
+	}
+	return *o.RequirePrivateNetworking
+}
+
+// GetRequirePrivateNetworkingOk returns a tuple with the RequirePrivateNetworking field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AWSKMSConfiguration) GetRequirePrivateNetworkingOk() (*bool, bool) {
+	if o == nil || IsNil(o.RequirePrivateNetworking) {
+		return nil, false
+	}
+
+	return o.RequirePrivateNetworking, true
+}
+
+// HasRequirePrivateNetworking returns a boolean if a field has been set.
+func (o *AWSKMSConfiguration) HasRequirePrivateNetworking() bool {
+	if o != nil && !IsNil(o.RequirePrivateNetworking) {
+		return true
+	}
+
+	return false
+}
+
+// SetRequirePrivateNetworking gets a reference to the given bool and assigns it to the RequirePrivateNetworking field.
+func (o *AWSKMSConfiguration) SetRequirePrivateNetworking(v bool) {
+	o.RequirePrivateNetworking = &v
+}
+
 // GetRoleId returns the RoleId field value if set, zero value otherwise
 func (o *AWSKMSConfiguration) GetRoleId() string {
 	if o == nil || IsNil(o.RoleId) {
@@ -295,6 +330,9 @@ func (o AWSKMSConfiguration) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Region) {
 		toSerialize["region"] = o.Region
+	}
+	if !IsNil(o.RequirePrivateNetworking) {
+		toSerialize["requirePrivateNetworking"] = o.RequirePrivateNetworking
 	}
 	if !IsNil(o.RoleId) {
 		toSerialize["roleId"] = o.RoleId

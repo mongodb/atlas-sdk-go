@@ -53,7 +53,7 @@ type SharedTierRestoreJobsApi_CreateSharedClusterBackupRestoreJob_Call struct {
 //   - clusterName string
 //   - groupId string
 //   - tenantRestore *admin.TenantRestore
-func (_e *SharedTierRestoreJobsApi_Expecter) CreateSharedClusterBackupRestoreJob(ctx interface{}, clusterName interface{}, groupId interface{}, tenantRestore interface{}) *SharedTierRestoreJobsApi_CreateSharedClusterBackupRestoreJob_Call {
+func (_e *SharedTierRestoreJobsApi_Expecter) CreateSharedClusterBackupRestoreJob(ctx any, clusterName any, groupId any, tenantRestore any) *SharedTierRestoreJobsApi_CreateSharedClusterBackupRestoreJob_Call {
 	return &SharedTierRestoreJobsApi_CreateSharedClusterBackupRestoreJob_Call{Call: _e.mock.On("CreateSharedClusterBackupRestoreJob", ctx, clusterName, groupId, tenantRestore)}
 }
 
@@ -120,7 +120,7 @@ type SharedTierRestoreJobsApi_CreateSharedClusterBackupRestoreJobExecute_Call st
 
 // CreateSharedClusterBackupRestoreJobExecute is a helper method to define mock.On call
 //   - r admin.CreateSharedClusterBackupRestoreJobApiRequest
-func (_e *SharedTierRestoreJobsApi_Expecter) CreateSharedClusterBackupRestoreJobExecute(r interface{}) *SharedTierRestoreJobsApi_CreateSharedClusterBackupRestoreJobExecute_Call {
+func (_e *SharedTierRestoreJobsApi_Expecter) CreateSharedClusterBackupRestoreJobExecute(r any) *SharedTierRestoreJobsApi_CreateSharedClusterBackupRestoreJobExecute_Call {
 	return &SharedTierRestoreJobsApi_CreateSharedClusterBackupRestoreJobExecute_Call{Call: _e.mock.On("CreateSharedClusterBackupRestoreJobExecute", r)}
 }
 
@@ -167,7 +167,7 @@ type SharedTierRestoreJobsApi_CreateSharedClusterBackupRestoreJobWithParams_Call
 // CreateSharedClusterBackupRestoreJobWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.CreateSharedClusterBackupRestoreJobApiParams
-func (_e *SharedTierRestoreJobsApi_Expecter) CreateSharedClusterBackupRestoreJobWithParams(ctx interface{}, args interface{}) *SharedTierRestoreJobsApi_CreateSharedClusterBackupRestoreJobWithParams_Call {
+func (_e *SharedTierRestoreJobsApi_Expecter) CreateSharedClusterBackupRestoreJobWithParams(ctx any, args any) *SharedTierRestoreJobsApi_CreateSharedClusterBackupRestoreJobWithParams_Call {
 	return &SharedTierRestoreJobsApi_CreateSharedClusterBackupRestoreJobWithParams_Call{Call: _e.mock.On("CreateSharedClusterBackupRestoreJobWithParams", ctx, args)}
 }
 
@@ -216,7 +216,7 @@ type SharedTierRestoreJobsApi_GetSharedClusterBackupRestoreJob_Call struct {
 //   - clusterName string
 //   - groupId string
 //   - restoreId string
-func (_e *SharedTierRestoreJobsApi_Expecter) GetSharedClusterBackupRestoreJob(ctx interface{}, clusterName interface{}, groupId interface{}, restoreId interface{}) *SharedTierRestoreJobsApi_GetSharedClusterBackupRestoreJob_Call {
+func (_e *SharedTierRestoreJobsApi_Expecter) GetSharedClusterBackupRestoreJob(ctx any, clusterName any, groupId any, restoreId any) *SharedTierRestoreJobsApi_GetSharedClusterBackupRestoreJob_Call {
 	return &SharedTierRestoreJobsApi_GetSharedClusterBackupRestoreJob_Call{Call: _e.mock.On("GetSharedClusterBackupRestoreJob", ctx, clusterName, groupId, restoreId)}
 }
 
@@ -283,7 +283,7 @@ type SharedTierRestoreJobsApi_GetSharedClusterBackupRestoreJobExecute_Call struc
 
 // GetSharedClusterBackupRestoreJobExecute is a helper method to define mock.On call
 //   - r admin.GetSharedClusterBackupRestoreJobApiRequest
-func (_e *SharedTierRestoreJobsApi_Expecter) GetSharedClusterBackupRestoreJobExecute(r interface{}) *SharedTierRestoreJobsApi_GetSharedClusterBackupRestoreJobExecute_Call {
+func (_e *SharedTierRestoreJobsApi_Expecter) GetSharedClusterBackupRestoreJobExecute(r any) *SharedTierRestoreJobsApi_GetSharedClusterBackupRestoreJobExecute_Call {
 	return &SharedTierRestoreJobsApi_GetSharedClusterBackupRestoreJobExecute_Call{Call: _e.mock.On("GetSharedClusterBackupRestoreJobExecute", r)}
 }
 
@@ -330,7 +330,7 @@ type SharedTierRestoreJobsApi_GetSharedClusterBackupRestoreJobWithParams_Call st
 // GetSharedClusterBackupRestoreJobWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetSharedClusterBackupRestoreJobApiParams
-func (_e *SharedTierRestoreJobsApi_Expecter) GetSharedClusterBackupRestoreJobWithParams(ctx interface{}, args interface{}) *SharedTierRestoreJobsApi_GetSharedClusterBackupRestoreJobWithParams_Call {
+func (_e *SharedTierRestoreJobsApi_Expecter) GetSharedClusterBackupRestoreJobWithParams(ctx any, args any) *SharedTierRestoreJobsApi_GetSharedClusterBackupRestoreJobWithParams_Call {
 	return &SharedTierRestoreJobsApi_GetSharedClusterBackupRestoreJobWithParams_Call{Call: _e.mock.On("GetSharedClusterBackupRestoreJobWithParams", ctx, args)}
 }
 
@@ -378,7 +378,7 @@ type SharedTierRestoreJobsApi_ListSharedClusterBackupRestoreJobs_Call struct {
 //   - ctx context.Context
 //   - clusterName string
 //   - groupId string
-func (_e *SharedTierRestoreJobsApi_Expecter) ListSharedClusterBackupRestoreJobs(ctx interface{}, clusterName interface{}, groupId interface{}) *SharedTierRestoreJobsApi_ListSharedClusterBackupRestoreJobs_Call {
+func (_e *SharedTierRestoreJobsApi_Expecter) ListSharedClusterBackupRestoreJobs(ctx any, clusterName any, groupId any) *SharedTierRestoreJobsApi_ListSharedClusterBackupRestoreJobs_Call {
 	return &SharedTierRestoreJobsApi_ListSharedClusterBackupRestoreJobs_Call{Call: _e.mock.On("ListSharedClusterBackupRestoreJobs", ctx, clusterName, groupId)}
 }
 
@@ -445,7 +445,7 @@ type SharedTierRestoreJobsApi_ListSharedClusterBackupRestoreJobsExecute_Call str
 
 // ListSharedClusterBackupRestoreJobsExecute is a helper method to define mock.On call
 //   - r admin.ListSharedClusterBackupRestoreJobsApiRequest
-func (_e *SharedTierRestoreJobsApi_Expecter) ListSharedClusterBackupRestoreJobsExecute(r interface{}) *SharedTierRestoreJobsApi_ListSharedClusterBackupRestoreJobsExecute_Call {
+func (_e *SharedTierRestoreJobsApi_Expecter) ListSharedClusterBackupRestoreJobsExecute(r any) *SharedTierRestoreJobsApi_ListSharedClusterBackupRestoreJobsExecute_Call {
 	return &SharedTierRestoreJobsApi_ListSharedClusterBackupRestoreJobsExecute_Call{Call: _e.mock.On("ListSharedClusterBackupRestoreJobsExecute", r)}
 }
 
@@ -492,7 +492,7 @@ type SharedTierRestoreJobsApi_ListSharedClusterBackupRestoreJobsWithParams_Call 
 // ListSharedClusterBackupRestoreJobsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListSharedClusterBackupRestoreJobsApiParams
-func (_e *SharedTierRestoreJobsApi_Expecter) ListSharedClusterBackupRestoreJobsWithParams(ctx interface{}, args interface{}) *SharedTierRestoreJobsApi_ListSharedClusterBackupRestoreJobsWithParams_Call {
+func (_e *SharedTierRestoreJobsApi_Expecter) ListSharedClusterBackupRestoreJobsWithParams(ctx any, args any) *SharedTierRestoreJobsApi_ListSharedClusterBackupRestoreJobsWithParams_Call {
 	return &SharedTierRestoreJobsApi_ListSharedClusterBackupRestoreJobsWithParams_Call{Call: _e.mock.On("ListSharedClusterBackupRestoreJobsWithParams", ctx, args)}
 }
 

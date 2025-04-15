@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Collection** | **string** | Human-readable label that identifies the MongoDB collection that stores words and their applicable synonyms. | 
+**Collection** | **string** | Label that identifies the MongoDB collection that stores words and their applicable synonyms. | 
 
 ## Methods
 

@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **AuthorizedUserFirstName** | **string** | First name of the user who authorized to updated the Backup Compliance Policy  settings. | 
 **AuthorizedUserLastName** | **string** | Last name of the user who authorized to updated the Backup Compliance Policy  settings. | 
 **CopyProtectionEnabled** | Pointer to **bool** | Flag that indicates whether to prevent cluster users from deleting backups copied to other regions, even if those additional snapshot regions are removed. If unspecified, this value defaults to false. | [optional] [default to false]
+**Deletable** | Pointer to **bool** | Flag that indicates whether the Backup Compliance Policy is allowed to be disabled. It is default to false and a support ticket needs to be filed to request setting to true. | [optional] [readonly] [default to false]
 **EncryptionAtRestEnabled** | Pointer to **bool** | Flag that indicates whether Encryption at Rest using Customer Key  Management is required for all clusters with a Backup Compliance Policy. If unspecified, this value defaults to false. | [optional] [default to false]
 **OnDemandPolicyItem** | Pointer to [**BackupComplianceOnDemandPolicyItem**](BackupComplianceOnDemandPolicyItem.md) |  | [optional] 
 **PitEnabled** | Pointer to **bool** | Flag that indicates whether the cluster uses Continuous Cloud Backups with a Backup Compliance Policy. If unspecified, this value defaults to false. | [optional] [default to false]
@@ -118,6 +119,30 @@ SetCopyProtectionEnabled sets CopyProtectionEnabled field to given value.
 `func (o *DataProtectionSettings20231001) HasCopyProtectionEnabled() bool`
 
 HasCopyProtectionEnabled returns a boolean if a field has been set.
+### GetDeletable
+
+`func (o *DataProtectionSettings20231001) GetDeletable() bool`
+
+GetDeletable returns the Deletable field if non-nil, zero value otherwise.
+
+### GetDeletableOk
+
+`func (o *DataProtectionSettings20231001) GetDeletableOk() (*bool, bool)`
+
+GetDeletableOk returns a tuple with the Deletable field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeletable
+
+`func (o *DataProtectionSettings20231001) SetDeletable(v bool)`
+
+SetDeletable sets Deletable field to given value.
+
+### HasDeletable
+
+`func (o *DataProtectionSettings20231001) HasDeletable() bool`
+
+HasDeletable returns a boolean if a field has been set.
 ### GetEncryptionAtRestEnabled
 
 `func (o *DataProtectionSettings20231001) GetEncryptionAtRestEnabled() bool`

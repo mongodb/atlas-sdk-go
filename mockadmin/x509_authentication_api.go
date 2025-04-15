@@ -53,7 +53,7 @@ type X509AuthenticationApi_CreateDatabaseUserCertificate_Call struct {
 //   - groupId string
 //   - username string
 //   - userCert *admin.UserCert
-func (_e *X509AuthenticationApi_Expecter) CreateDatabaseUserCertificate(ctx interface{}, groupId interface{}, username interface{}, userCert interface{}) *X509AuthenticationApi_CreateDatabaseUserCertificate_Call {
+func (_e *X509AuthenticationApi_Expecter) CreateDatabaseUserCertificate(ctx any, groupId any, username any, userCert any) *X509AuthenticationApi_CreateDatabaseUserCertificate_Call {
 	return &X509AuthenticationApi_CreateDatabaseUserCertificate_Call{Call: _e.mock.On("CreateDatabaseUserCertificate", ctx, groupId, username, userCert)}
 }
 
@@ -118,7 +118,7 @@ type X509AuthenticationApi_CreateDatabaseUserCertificateExecute_Call struct {
 
 // CreateDatabaseUserCertificateExecute is a helper method to define mock.On call
 //   - r admin.CreateDatabaseUserCertificateApiRequest
-func (_e *X509AuthenticationApi_Expecter) CreateDatabaseUserCertificateExecute(r interface{}) *X509AuthenticationApi_CreateDatabaseUserCertificateExecute_Call {
+func (_e *X509AuthenticationApi_Expecter) CreateDatabaseUserCertificateExecute(r any) *X509AuthenticationApi_CreateDatabaseUserCertificateExecute_Call {
 	return &X509AuthenticationApi_CreateDatabaseUserCertificateExecute_Call{Call: _e.mock.On("CreateDatabaseUserCertificateExecute", r)}
 }
 
@@ -165,7 +165,7 @@ type X509AuthenticationApi_CreateDatabaseUserCertificateWithParams_Call struct {
 // CreateDatabaseUserCertificateWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.CreateDatabaseUserCertificateApiParams
-func (_e *X509AuthenticationApi_Expecter) CreateDatabaseUserCertificateWithParams(ctx interface{}, args interface{}) *X509AuthenticationApi_CreateDatabaseUserCertificateWithParams_Call {
+func (_e *X509AuthenticationApi_Expecter) CreateDatabaseUserCertificateWithParams(ctx any, args any) *X509AuthenticationApi_CreateDatabaseUserCertificateWithParams_Call {
 	return &X509AuthenticationApi_CreateDatabaseUserCertificateWithParams_Call{Call: _e.mock.On("CreateDatabaseUserCertificateWithParams", ctx, args)}
 }
 
@@ -212,7 +212,7 @@ type X509AuthenticationApi_DisableCustomerManagedX509_Call struct {
 // DisableCustomerManagedX509 is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *X509AuthenticationApi_Expecter) DisableCustomerManagedX509(ctx interface{}, groupId interface{}) *X509AuthenticationApi_DisableCustomerManagedX509_Call {
+func (_e *X509AuthenticationApi_Expecter) DisableCustomerManagedX509(ctx any, groupId any) *X509AuthenticationApi_DisableCustomerManagedX509_Call {
 	return &X509AuthenticationApi_DisableCustomerManagedX509_Call{Call: _e.mock.On("DisableCustomerManagedX509", ctx, groupId)}
 }
 
@@ -279,7 +279,7 @@ type X509AuthenticationApi_DisableCustomerManagedX509Execute_Call struct {
 
 // DisableCustomerManagedX509Execute is a helper method to define mock.On call
 //   - r admin.DisableCustomerManagedX509ApiRequest
-func (_e *X509AuthenticationApi_Expecter) DisableCustomerManagedX509Execute(r interface{}) *X509AuthenticationApi_DisableCustomerManagedX509Execute_Call {
+func (_e *X509AuthenticationApi_Expecter) DisableCustomerManagedX509Execute(r any) *X509AuthenticationApi_DisableCustomerManagedX509Execute_Call {
 	return &X509AuthenticationApi_DisableCustomerManagedX509Execute_Call{Call: _e.mock.On("DisableCustomerManagedX509Execute", r)}
 }
 
@@ -326,7 +326,7 @@ type X509AuthenticationApi_DisableCustomerManagedX509WithParams_Call struct {
 // DisableCustomerManagedX509WithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.DisableCustomerManagedX509ApiParams
-func (_e *X509AuthenticationApi_Expecter) DisableCustomerManagedX509WithParams(ctx interface{}, args interface{}) *X509AuthenticationApi_DisableCustomerManagedX509WithParams_Call {
+func (_e *X509AuthenticationApi_Expecter) DisableCustomerManagedX509WithParams(ctx any, args any) *X509AuthenticationApi_DisableCustomerManagedX509WithParams_Call {
 	return &X509AuthenticationApi_DisableCustomerManagedX509WithParams_Call{Call: _e.mock.On("DisableCustomerManagedX509WithParams", ctx, args)}
 }
 
@@ -374,7 +374,7 @@ type X509AuthenticationApi_ListDatabaseUserCertificates_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - username string
-func (_e *X509AuthenticationApi_Expecter) ListDatabaseUserCertificates(ctx interface{}, groupId interface{}, username interface{}) *X509AuthenticationApi_ListDatabaseUserCertificates_Call {
+func (_e *X509AuthenticationApi_Expecter) ListDatabaseUserCertificates(ctx any, groupId any, username any) *X509AuthenticationApi_ListDatabaseUserCertificates_Call {
 	return &X509AuthenticationApi_ListDatabaseUserCertificates_Call{Call: _e.mock.On("ListDatabaseUserCertificates", ctx, groupId, username)}
 }
 
@@ -441,7 +441,7 @@ type X509AuthenticationApi_ListDatabaseUserCertificatesExecute_Call struct {
 
 // ListDatabaseUserCertificatesExecute is a helper method to define mock.On call
 //   - r admin.ListDatabaseUserCertificatesApiRequest
-func (_e *X509AuthenticationApi_Expecter) ListDatabaseUserCertificatesExecute(r interface{}) *X509AuthenticationApi_ListDatabaseUserCertificatesExecute_Call {
+func (_e *X509AuthenticationApi_Expecter) ListDatabaseUserCertificatesExecute(r any) *X509AuthenticationApi_ListDatabaseUserCertificatesExecute_Call {
 	return &X509AuthenticationApi_ListDatabaseUserCertificatesExecute_Call{Call: _e.mock.On("ListDatabaseUserCertificatesExecute", r)}
 }
 
@@ -488,7 +488,7 @@ type X509AuthenticationApi_ListDatabaseUserCertificatesWithParams_Call struct {
 // ListDatabaseUserCertificatesWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListDatabaseUserCertificatesApiParams
-func (_e *X509AuthenticationApi_Expecter) ListDatabaseUserCertificatesWithParams(ctx interface{}, args interface{}) *X509AuthenticationApi_ListDatabaseUserCertificatesWithParams_Call {
+func (_e *X509AuthenticationApi_Expecter) ListDatabaseUserCertificatesWithParams(ctx any, args any) *X509AuthenticationApi_ListDatabaseUserCertificatesWithParams_Call {
 	return &X509AuthenticationApi_ListDatabaseUserCertificatesWithParams_Call{Call: _e.mock.On("ListDatabaseUserCertificatesWithParams", ctx, args)}
 }
 

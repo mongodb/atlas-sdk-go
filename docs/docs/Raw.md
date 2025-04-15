@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **T** | Pointer to **string** | Unique identifier of event type. | [optional] 
 **AlertConfigId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the alert configuration related to the event. | [optional] [readonly] 
 **Cid** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the project in which the event occurred. | [optional] [readonly] 
-**Cre** | Pointer to **time.Time** | Date and time when this event occurred. This parameter expresses its value in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/ISO_8601\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;ISO 8601&lt;/a&gt; timestamp format in UTC. | [optional] [readonly] 
+**Cre** | Pointer to **time.Time** | Date and time when this event occurred. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
 **Description** | Pointer to **string** | Description of the event. | [optional] 
 **Gn** | Pointer to **string** | Human-readable label that identifies the project. | [optional] 
 **Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the event. | [optional] [readonly] 

@@ -9,10 +9,10 @@ import (
 
 // EventViewForOrg struct for EventViewForOrg
 type EventViewForOrg struct {
-	// Unique 24-hexadecimal digit string that identifies the [API Key](https://dochub.mongodb.org/core/atlas-create-prog-api-key) that triggered the event. If this resource returns this parameter, it doesn't return the **userId** parameter.
+	// Unique 24-hexadecimal digit string that identifies the API Key that triggered the event. If this resource returns this parameter, it doesn't return the **userId** parameter.
 	// Read only field.
 	ApiKeyId *string `json:"apiKeyId,omitempty"`
-	// Date and time when this event occurred. This parameter expresses its value in the <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\" rel=\"noopener noreferrer\">ISO 8601</a> timestamp format in UTC.
+	// Date and time when this event occurred. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	Created *time.Time `json:"created,omitempty"`
 	// Unique identifier of event type.
@@ -32,7 +32,7 @@ type EventViewForOrg struct {
 	// Unique 24-hexadecimal digit string that identifies the organization to which these events apply.
 	// Read only field.
 	OrgId *string `json:"orgId,omitempty"`
-	// Public part of the [API Key](https://dochub.mongodb.org/core/atlas-create-prog-api-key) that triggered the event. If this resource returns this parameter, it doesn't return the **username** parameter.
+	// Public part of the API key that triggered the event. If this resource returns this parameter, it doesn't return the **username** parameter.
 	// Read only field.
 	PublicKey *string `json:"publicKey,omitempty"`
 	Raw       *Raw    `json:"raw,omitempty"`
@@ -74,6 +74,9 @@ type EventViewForOrg struct {
 	ResourceId *string `json:"resourceId,omitempty"`
 	// Unique identifier of resource type.
 	ResourceType *string `json:"resourceType,omitempty"`
+	// Unique 24-hexadecimal character string that identifies the resource policy.
+	// Read only field.
+	ResourcePolicyId *string `json:"resourcePolicyId,omitempty"`
 }
 
 // NewEventViewForOrg instantiates a new EventViewForOrg object
@@ -850,6 +853,39 @@ func (o *EventViewForOrg) HasResourceType() bool {
 // SetResourceType gets a reference to the given string and assigns it to the ResourceType field.
 func (o *EventViewForOrg) SetResourceType(v string) {
 	o.ResourceType = &v
+}
+
+// GetResourcePolicyId returns the ResourcePolicyId field value if set, zero value otherwise
+func (o *EventViewForOrg) GetResourcePolicyId() string {
+	if o == nil || IsNil(o.ResourcePolicyId) {
+		var ret string
+		return ret
+	}
+	return *o.ResourcePolicyId
+}
+
+// GetResourcePolicyIdOk returns a tuple with the ResourcePolicyId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EventViewForOrg) GetResourcePolicyIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ResourcePolicyId) {
+		return nil, false
+	}
+
+	return o.ResourcePolicyId, true
+}
+
+// HasResourcePolicyId returns a boolean if a field has been set.
+func (o *EventViewForOrg) HasResourcePolicyId() bool {
+	if o != nil && !IsNil(o.ResourcePolicyId) {
+		return true
+	}
+
+	return false
+}
+
+// SetResourcePolicyId gets a reference to the given string and assigns it to the ResourcePolicyId field.
+func (o *EventViewForOrg) SetResourcePolicyId(v string) {
+	o.ResourcePolicyId = &v
 }
 
 func (o EventViewForOrg) MarshalJSONWithoutReadOnly() ([]byte, error) {

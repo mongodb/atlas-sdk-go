@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **MonthsUntilExpiration** | Pointer to **int** | Number of months that the certificate remains valid until it expires. | [optional] [default to 3]
 **NotAfter** | Pointer to **time.Time** | Date and time when this certificate expires. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
-**Subject** | Pointer to **string** | Subject Alternative Name associated with this certificate. This parameter expresses its value as a distinguished name as defined in [RFC 2253](https://tools.ietf.org/html/2253). | [optional] [readonly] 
+**Subject** | Pointer to **string** | Subject Alternative Name associated with this certificate. This parameter expresses its value as a distinguished name as defined in RFC 2253. | [optional] [readonly] 
 
 ## Methods
 

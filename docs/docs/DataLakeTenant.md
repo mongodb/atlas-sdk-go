@@ -7,10 +7,10 @@ Name | Type | Description | Notes
 **CloudProviderConfig** | Pointer to [**DataLakeCloudProviderConfig**](DataLakeCloudProviderConfig.md) |  | [optional] 
 **DataProcessRegion** | Pointer to [**DataLakeDataProcessRegion**](DataLakeDataProcessRegion.md) |  | [optional] 
 **GroupId** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the project. | [optional] [readonly] 
-**Hostnames** | Pointer to **[]string** | List that contains the hostnames assigned to the Data Lake instance. | [optional] [readonly] 
-**Name** | Pointer to **string** | Human-readable label that identifies the data lake. | [optional] 
+**Hostnames** | Pointer to **[]string** | List that contains the hostnames assigned to the Federated Database Instance. | [optional] [readonly] 
+**Name** | Pointer to **string** | Human-readable label that identifies the Federated Database Instance. | [optional] 
 **PrivateEndpointHostnames** | Pointer to [**[]PrivateEndpointHostname**](PrivateEndpointHostname.md) | List that contains the sets of private endpoints and hostnames. | [optional] [readonly] 
-**State** | Pointer to **string** | Label that indicates the status of the Data Lake instance. | [optional] [readonly] 
+**State** | Pointer to **string** | Label that indicates the status of the Federated Database Instance. | [optional] [readonly] 
 **Storage** | Pointer to [**DataLakeStorage**](DataLakeStorage.md) |  | [optional] 
 
 ## Methods

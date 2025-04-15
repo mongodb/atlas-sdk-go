@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ClusterName** | **string** | Label that identifies the destination cluster. | 
 **GroupId** | **string** | Unique 24-hexadecimal digit string that identifies the destination project. | 
-**HostnameSchemaType** | **string** | The network type to use between the migration host and the target cluster. | [default to "PUBLIC"]
+**HostnameSchemaType** | **string** | The network type to use between the migration host and the destination cluster. | 
 **PrivateLinkId** | Pointer to **string** | Represents the endpoint to use when the host schema type is &#x60;PRIVATE_LINK&#x60;. | [optional] 
 
 ## Methods

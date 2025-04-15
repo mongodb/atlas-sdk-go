@@ -10,6 +10,8 @@ import (
 type CloudProviderAccessRoles struct {
 	// List that contains the Amazon Web Services (AWS) IAM roles registered and authorized with MongoDB Cloud.
 	AwsIamRoles *[]CloudProviderAccessAWSIAMRole `json:"awsIamRoles,omitempty"`
+	// List that contains the Azure Service Principals registered with MongoDB Cloud.
+	AzureServicePrincipals *[]CloudProviderAccessAzureServicePrincipal `json:"azureServicePrincipals,omitempty"`
 }
 
 // NewCloudProviderAccessRoles instantiates a new CloudProviderAccessRoles object
@@ -62,6 +64,39 @@ func (o *CloudProviderAccessRoles) SetAwsIamRoles(v []CloudProviderAccessAWSIAMR
 	o.AwsIamRoles = &v
 }
 
+// GetAzureServicePrincipals returns the AzureServicePrincipals field value if set, zero value otherwise
+func (o *CloudProviderAccessRoles) GetAzureServicePrincipals() []CloudProviderAccessAzureServicePrincipal {
+	if o == nil || IsNil(o.AzureServicePrincipals) {
+		var ret []CloudProviderAccessAzureServicePrincipal
+		return ret
+	}
+	return *o.AzureServicePrincipals
+}
+
+// GetAzureServicePrincipalsOk returns a tuple with the AzureServicePrincipals field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudProviderAccessRoles) GetAzureServicePrincipalsOk() (*[]CloudProviderAccessAzureServicePrincipal, bool) {
+	if o == nil || IsNil(o.AzureServicePrincipals) {
+		return nil, false
+	}
+
+	return o.AzureServicePrincipals, true
+}
+
+// HasAzureServicePrincipals returns a boolean if a field has been set.
+func (o *CloudProviderAccessRoles) HasAzureServicePrincipals() bool {
+	if o != nil && !IsNil(o.AzureServicePrincipals) {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureServicePrincipals gets a reference to the given []CloudProviderAccessAzureServicePrincipal and assigns it to the AzureServicePrincipals field.
+func (o *CloudProviderAccessRoles) SetAzureServicePrincipals(v []CloudProviderAccessAzureServicePrincipal) {
+	o.AzureServicePrincipals = &v
+}
+
 func (o CloudProviderAccessRoles) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -73,6 +108,9 @@ func (o CloudProviderAccessRoles) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.AwsIamRoles) {
 		toSerialize["awsIamRoles"] = o.AwsIamRoles
+	}
+	if !IsNil(o.AzureServicePrincipals) {
+		toSerialize["azureServicePrincipals"] = o.AzureServicePrincipals
 	}
 	return toSerialize, nil
 }

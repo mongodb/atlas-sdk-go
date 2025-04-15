@@ -4,21 +4,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AutoExportEnabled** | Pointer to **bool** | Flag that indicates whether MongoDB Cloud automatically exports cloud backup snapshots to the AWS bucket. | [optional] 
-**ClusterId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the cluster with the snapshot you want to return. | [optional] [readonly] 
-**ClusterName** | Pointer to **string** | Human-readable label that identifies the cluster with the snapshot you want to return. | [optional] [readonly] 
+**AutoExportEnabled** | Pointer to **bool** | Flag that indicates whether MongoDB Cloud automatically exports Cloud Backup Snapshots to the Export Bucket. | [optional] 
+**ClusterId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the cluster with the Snapshot you want to return. | [optional] [readonly] 
+**ClusterName** | Pointer to **string** | Human-readable label that identifies the cluster with the Snapshot you want to return. | [optional] [readonly] 
 **CopySettings** | Pointer to [**[]DiskBackupCopySetting**](DiskBackupCopySetting.md) | List that contains a document for each copy setting item in the desired backup policy. | [optional] 
 **DeleteCopiedBackups** | Pointer to [**[]DeleteCopiedBackups**](DeleteCopiedBackups.md) | List that contains a document for each deleted copy setting whose backup copies you want to delete. | [optional] 
 **Export** | Pointer to [**AutoExportPolicy**](AutoExportPolicy.md) |  | [optional] 
 **ExtraRetentionSettings** | Pointer to [**[]ExtraRetentionSetting**](ExtraRetentionSetting.md) | List that contains a document for each extra retention setting item in the desired backup policy. | [optional] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
-**NextSnapshot** | Pointer to **time.Time** | Date and time when MongoDB Cloud takes the next snapshot. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
+**NextSnapshot** | Pointer to **time.Time** | Date and time when MongoDB Cloud takes the next Snapshot. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
 **Policies** | Pointer to [**[]AdvancedDiskBackupSnapshotSchedulePolicy**](AdvancedDiskBackupSnapshotSchedulePolicy.md) | Rules set for this backup schedule. | [optional] 
-**ReferenceHourOfDay** | Pointer to **int** | Hour of day in Coordinated Universal Time (UTC) that represents when MongoDB Cloud takes the snapshot. | [optional] 
-**ReferenceMinuteOfHour** | Pointer to **int** | Minute of the **referenceHourOfDay** that represents when MongoDB Cloud takes the snapshot. | [optional] 
-**RestoreWindowDays** | Pointer to **int** | Number of previous days that you can restore back to with Continuous Cloud Backup accuracy. You must specify a positive, non-zero integer. This parameter applies to continuous cloud backups only. | [optional] 
-**UpdateSnapshots** | Pointer to **bool** | Flag that indicates whether to apply the retention changes in the updated backup policy to snapshots that MongoDB Cloud took previously. | [optional] 
-**UseOrgAndGroupNamesInExportPrefix** | Pointer to **bool** | Flag that indicates whether to use organization and project names instead of organization and project UUIDs in the path to the metadata files that MongoDB Cloud uploads to your AWS bucket. | [optional] 
+**ReferenceHourOfDay** | Pointer to **int** | Hour of day in Coordinated Universal Time (UTC) that represents when MongoDB Cloud takes the Snapshot. | [optional] 
+**ReferenceMinuteOfHour** | Pointer to **int** | Minute of the **referenceHourOfDay** that represents when MongoDB Cloud takes the Snapshot. | [optional] 
+**RestoreWindowDays** | Pointer to **int** | Number of previous days that you can restore back to with Continuous Cloud Backup accuracy. You must specify a positive, non-zero integer. This parameter applies to continuous Cloud Backups only. | [optional] 
+**UpdateSnapshots** | Pointer to **bool** | Flag that indicates whether to apply the retention changes in the updated backup policy to Snapshots that MongoDB Cloud took previously. | [optional] 
+**UseOrgAndGroupNamesInExportPrefix** | Pointer to **bool** | Flag that indicates whether to use organization and project names instead of organization and project UUIDs in the path to the metadata files that MongoDB Cloud uploads to your Export Bucket. | [optional] 
 
 ## Methods
 

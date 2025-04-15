@@ -8,16 +8,24 @@ import (
 
 // PrivateNetworkEndpointIdEntry struct for PrivateNetworkEndpointIdEntry
 type PrivateNetworkEndpointIdEntry struct {
+	// Link ID that identifies the Azure private endpoint connection.
+	AzureLinkId *string `json:"azureLinkId,omitempty"`
 	// Human-readable string to associate with this private endpoint.
 	Comment *string `json:"comment,omitempty"`
-	// Human-readable label to identify customer's VPC endpoint DNS name.
+	// Human-readable label to identify customer's VPC endpoint DNS name. If defined, you must also specify a value for **region**.
 	CustomerEndpointDNSName *string `json:"customerEndpointDNSName,omitempty"`
+	// IP address used to connect to the Azure private endpoint.
+	CustomerEndpointIPAddress *string `json:"customerEndpointIPAddress,omitempty"`
 	// Unique 22-character alphanumeric string that identifies the private endpoint.
 	EndpointId string `json:"endpointId"`
+	// Error message describing a failure approving the private endpoint request.
+	ErrorMessage *string `json:"errorMessage,omitempty"`
 	// Human-readable label that identifies the cloud service provider. Atlas Data Lake supports Amazon Web Services only.
 	Provider *string `json:"provider,omitempty"`
-	// Human-readable label to identify the region of customer's VPC endpoint.
+	// Human-readable label to identify the region of customer's VPC endpoint. If defined, you must also specify a value for **customerEndpointDNSName**.
 	Region *string `json:"region,omitempty"`
+	// Status of the private endpoint connection request.
+	Status *string `json:"status,omitempty"`
 	// Human-readable label that identifies the resource type associated with this private endpoint.
 	Type *string `json:"type,omitempty"`
 }
@@ -46,6 +54,39 @@ func NewPrivateNetworkEndpointIdEntryWithDefaults() *PrivateNetworkEndpointIdEnt
 	var type_ string = "DATA_LAKE"
 	this.Type = &type_
 	return &this
+}
+
+// GetAzureLinkId returns the AzureLinkId field value if set, zero value otherwise
+func (o *PrivateNetworkEndpointIdEntry) GetAzureLinkId() string {
+	if o == nil || IsNil(o.AzureLinkId) {
+		var ret string
+		return ret
+	}
+	return *o.AzureLinkId
+}
+
+// GetAzureLinkIdOk returns a tuple with the AzureLinkId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PrivateNetworkEndpointIdEntry) GetAzureLinkIdOk() (*string, bool) {
+	if o == nil || IsNil(o.AzureLinkId) {
+		return nil, false
+	}
+
+	return o.AzureLinkId, true
+}
+
+// HasAzureLinkId returns a boolean if a field has been set.
+func (o *PrivateNetworkEndpointIdEntry) HasAzureLinkId() bool {
+	if o != nil && !IsNil(o.AzureLinkId) {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureLinkId gets a reference to the given string and assigns it to the AzureLinkId field.
+func (o *PrivateNetworkEndpointIdEntry) SetAzureLinkId(v string) {
+	o.AzureLinkId = &v
 }
 
 // GetComment returns the Comment field value if set, zero value otherwise
@@ -114,6 +155,39 @@ func (o *PrivateNetworkEndpointIdEntry) SetCustomerEndpointDNSName(v string) {
 	o.CustomerEndpointDNSName = &v
 }
 
+// GetCustomerEndpointIPAddress returns the CustomerEndpointIPAddress field value if set, zero value otherwise
+func (o *PrivateNetworkEndpointIdEntry) GetCustomerEndpointIPAddress() string {
+	if o == nil || IsNil(o.CustomerEndpointIPAddress) {
+		var ret string
+		return ret
+	}
+	return *o.CustomerEndpointIPAddress
+}
+
+// GetCustomerEndpointIPAddressOk returns a tuple with the CustomerEndpointIPAddress field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PrivateNetworkEndpointIdEntry) GetCustomerEndpointIPAddressOk() (*string, bool) {
+	if o == nil || IsNil(o.CustomerEndpointIPAddress) {
+		return nil, false
+	}
+
+	return o.CustomerEndpointIPAddress, true
+}
+
+// HasCustomerEndpointIPAddress returns a boolean if a field has been set.
+func (o *PrivateNetworkEndpointIdEntry) HasCustomerEndpointIPAddress() bool {
+	if o != nil && !IsNil(o.CustomerEndpointIPAddress) {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomerEndpointIPAddress gets a reference to the given string and assigns it to the CustomerEndpointIPAddress field.
+func (o *PrivateNetworkEndpointIdEntry) SetCustomerEndpointIPAddress(v string) {
+	o.CustomerEndpointIPAddress = &v
+}
+
 // GetEndpointId returns the EndpointId field value
 func (o *PrivateNetworkEndpointIdEntry) GetEndpointId() string {
 	if o == nil {
@@ -136,6 +210,39 @@ func (o *PrivateNetworkEndpointIdEntry) GetEndpointIdOk() (*string, bool) {
 // SetEndpointId sets field value
 func (o *PrivateNetworkEndpointIdEntry) SetEndpointId(v string) {
 	o.EndpointId = v
+}
+
+// GetErrorMessage returns the ErrorMessage field value if set, zero value otherwise
+func (o *PrivateNetworkEndpointIdEntry) GetErrorMessage() string {
+	if o == nil || IsNil(o.ErrorMessage) {
+		var ret string
+		return ret
+	}
+	return *o.ErrorMessage
+}
+
+// GetErrorMessageOk returns a tuple with the ErrorMessage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PrivateNetworkEndpointIdEntry) GetErrorMessageOk() (*string, bool) {
+	if o == nil || IsNil(o.ErrorMessage) {
+		return nil, false
+	}
+
+	return o.ErrorMessage, true
+}
+
+// HasErrorMessage returns a boolean if a field has been set.
+func (o *PrivateNetworkEndpointIdEntry) HasErrorMessage() bool {
+	if o != nil && !IsNil(o.ErrorMessage) {
+		return true
+	}
+
+	return false
+}
+
+// SetErrorMessage gets a reference to the given string and assigns it to the ErrorMessage field.
+func (o *PrivateNetworkEndpointIdEntry) SetErrorMessage(v string) {
+	o.ErrorMessage = &v
 }
 
 // GetProvider returns the Provider field value if set, zero value otherwise
@@ -204,6 +311,39 @@ func (o *PrivateNetworkEndpointIdEntry) SetRegion(v string) {
 	o.Region = &v
 }
 
+// GetStatus returns the Status field value if set, zero value otherwise
+func (o *PrivateNetworkEndpointIdEntry) GetStatus() string {
+	if o == nil || IsNil(o.Status) {
+		var ret string
+		return ret
+	}
+	return *o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PrivateNetworkEndpointIdEntry) GetStatusOk() (*string, bool) {
+	if o == nil || IsNil(o.Status) {
+		return nil, false
+	}
+
+	return o.Status, true
+}
+
+// HasStatus returns a boolean if a field has been set.
+func (o *PrivateNetworkEndpointIdEntry) HasStatus() bool {
+	if o != nil && !IsNil(o.Status) {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given string and assigns it to the Status field.
+func (o *PrivateNetworkEndpointIdEntry) SetStatus(v string) {
+	o.Status = &v
+}
+
 // GetType returns the Type field value if set, zero value otherwise
 func (o *PrivateNetworkEndpointIdEntry) GetType() string {
 	if o == nil || IsNil(o.Type) {
@@ -246,18 +386,30 @@ func (o PrivateNetworkEndpointIdEntry) MarshalJSONWithoutReadOnly() ([]byte, err
 }
 func (o PrivateNetworkEndpointIdEntry) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AzureLinkId) {
+		toSerialize["azureLinkId"] = o.AzureLinkId
+	}
 	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
 	}
 	if !IsNil(o.CustomerEndpointDNSName) {
 		toSerialize["customerEndpointDNSName"] = o.CustomerEndpointDNSName
 	}
+	if !IsNil(o.CustomerEndpointIPAddress) {
+		toSerialize["customerEndpointIPAddress"] = o.CustomerEndpointIPAddress
+	}
 	toSerialize["endpointId"] = o.EndpointId
+	if !IsNil(o.ErrorMessage) {
+		toSerialize["errorMessage"] = o.ErrorMessage
+	}
 	if !IsNil(o.Provider) {
 		toSerialize["provider"] = o.Provider
 	}
 	if !IsNil(o.Region) {
 		toSerialize["region"] = o.Region
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
 	}
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type

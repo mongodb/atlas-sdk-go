@@ -5,24 +5,31 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AcceptDataRisksAndForceReplicaSetReconfig** | Pointer to **time.Time** | If reconfiguration is necessary to regain a primary due to a regional outage, submit this field alongside your topology reconfiguration to request a new regional outage resistant topology. Forced reconfigurations during an outage of the majority of electable nodes carry a risk of data loss if replicated writes (even majority committed writes) have not been replicated to the new primary node. MongoDB Atlas docs contain more information. To proceed with an operation which carries that risk, set **acceptDataRisksAndForceReplicaSetReconfig** to the current date. | [optional] 
+**AdvancedConfiguration** | Pointer to [**ApiAtlasClusterAdvancedConfiguration**](ApiAtlasClusterAdvancedConfiguration.md) |  | [optional] 
 **BackupEnabled** | Pointer to **bool** | Flag that indicates whether the cluster can perform backups. If set to &#x60;true&#x60;, the cluster can perform backups. You must set this value to &#x60;true&#x60; for NVMe clusters. Backup uses [Cloud Backups](https://docs.atlas.mongodb.com/backup/cloud-backup/overview/) for dedicated clusters and [Shared Cluster Backups](https://docs.atlas.mongodb.com/backup/shared-tier/overview/) for tenant clusters. If set to &#x60;false&#x60;, the cluster doesn&#39;t use backups. | [optional] [default to false]
 **BiConnector** | Pointer to [**BiConnector**](BiConnector.md) |  | [optional] 
 **ClusterType** | Pointer to **string** | Configuration of nodes that comprise the cluster. | [optional] 
+**ConfigServerManagementMode** | Pointer to **string** | Config Server Management Mode for creating or updating a sharded cluster.  When configured as ATLAS_MANAGED, atlas may automatically switch the cluster&#39;s config server type for optimal performance and savings.  When configured as FIXED_TO_DEDICATED, the cluster will always use a dedicated config server. | [optional] [default to "ATLAS_MANAGED"]
+**ConfigServerType** | Pointer to **string** | Describes a sharded cluster&#39;s config server type. | [optional] [readonly] 
 **ConnectionStrings** | Pointer to [**ClusterConnectionStrings**](ClusterConnectionStrings.md) |  | [optional] 
 **CreateDate** | Pointer to **time.Time** | Date and time when MongoDB Cloud created this cluster. This parameter expresses its value in ISO 8601 format in UTC. | [optional] [readonly] 
-**DiskSizeGB** | Pointer to **float64** | Storage capacity that the host&#39;s root volume possesses expressed in gigabytes. Increase this number to add capacity. MongoDB Cloud requires this parameter if you set **replicationSpecs**. If you specify a disk size below the minimum (10 GB), this parameter defaults to the minimum disk size value. Storage charge calculations depend on whether you choose the default value or a custom value.  The maximum value for disk storage cannot exceed 50 times the maximum RAM for the selected cluster. If you require more storage space, consider upgrading your cluster to a higher tier. | [optional] 
+**DiskSizeGB** | Pointer to **float64** | Storage capacity of instance data volumes expressed in gigabytes. Increase this number to add capacity.   This value is not configurable on M0/M2/M5 clusters.   MongoDB Cloud requires this parameter if you set **replicationSpecs**.   If you specify a disk size below the minimum (10 GB), this parameter defaults to the minimum disk size value.    Storage charge calculations depend on whether you choose the default value or a custom value.   The maximum value for disk storage cannot exceed 50 times the maximum RAM for the selected cluster. If you require more storage space, consider upgrading your cluster to a higher tier. | [optional] 
 **DiskWarmingMode** | Pointer to **string** | Disk warming mode selection. | [optional] [default to "FULLY_WARMED"]
 **EncryptionAtRestProvider** | Pointer to **string** | Cloud service provider that manages your customer keys to provide an additional layer of encryption at rest for the cluster. To enable customer key management for encryption at rest, the cluster **replicationSpecs[n].regionConfigs[m].{type}Specs.instanceSize** setting must be &#x60;M10&#x60; or higher and &#x60;\&quot;backupEnabled\&quot; : false&#x60; or omitted entirely. | [optional] 
+**FeatureCompatibilityVersion** | Pointer to **string** | Feature compatibility version of the cluster. | [optional] [readonly] 
+**FeatureCompatibilityVersionExpirationDate** | Pointer to **time.Time** | Feature compatibility version expiration date. | [optional] [readonly] 
 **GlobalClusterSelfManagedSharding** | Pointer to **bool** | Set this field to configure the Sharding Management Mode when creating a new Global Cluster.  When set to false, the management mode is set to Atlas-Managed Sharding. This mode fully manages the sharding of your Global Cluster and is built to provide a seamless deployment experience.  When set to true, the management mode is set to Self-Managed Sharding. This mode leaves the management of shards in your hands and is built to provide an advanced and flexible deployment experience.  This setting cannot be changed once the cluster is deployed. | [optional] 
 **GroupId** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the project. | [optional] [readonly] 
 **Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the cluster. | [optional] [readonly] 
-**Labels** | Pointer to [**[]ComponentLabel**](ComponentLabel.md) | Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster. The MongoDB Cloud console doesn&#39;t display your labels.  Cluster labels are deprecated and will be removed in a future release. We strongly recommend that you use [resource tags](https://dochub.mongodb.org/core/add-cluster-tag-atlas) instead. | [optional] 
+**Labels** | Pointer to [**[]ComponentLabel**](ComponentLabel.md) | Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster. The MongoDB Cloud console doesn&#39;t display your labels.  Cluster labels are deprecated and will be removed in a future release. We strongly recommend that you use Resource tags instead. | [optional] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
-**MongoDBMajorVersion** | Pointer to **string** | Major MongoDB version of the cluster. MongoDB Cloud deploys the cluster with the latest stable release of the specified version. | [optional] [default to "7.0"]
+**MongoDBEmployeeAccessGrant** | Pointer to [**EmployeeAccessGrant**](EmployeeAccessGrant.md) |  | [optional] 
+**MongoDBMajorVersion** | Pointer to **string** | MongoDB major version of the cluster.  On creation: Choose from the available versions of MongoDB, or leave unspecified for the current recommended default in the MongoDB Cloud platform. The recommended version is a recent Long Term Support version. The default is not guaranteed to be the most recently released version throughout the entire release cycle. For versions available in a specific project, see the linked documentation or use the API endpoint for [project LTS versions endpoint](#tag/Projects/operation/getProjectLTSVersions).   On update: Increase version only by 1 major version at a time. If the cluster is pinned to a MongoDB feature compatibility version exactly one major version below the current MongoDB version, the MongoDB version can be downgraded to the previous major version. | [optional] 
 **MongoDBVersion** | Pointer to **string** | Version of MongoDB that the cluster runs. | [optional] [readonly] 
 **Name** | Pointer to **string** | Human-readable label that identifies the advanced cluster. | [optional] 
 **Paused** | Pointer to **bool** | Flag that indicates whether the cluster is paused. | [optional] 
 **PitEnabled** | Pointer to **bool** | Flag that indicates whether the cluster uses continuous cloud backups. | [optional] 
+**ReplicaSetScalingStrategy** | Pointer to **string** | Set this field to configure the replica set scaling mode for your cluster.  By default, Atlas scales under WORKLOAD_TYPE. This mode allows Atlas to scale your analytics nodes in parallel to your operational nodes.  When configured as SEQUENTIAL, Atlas scales all nodes sequentially. This mode is intended for steady-state workloads and applications performing latency-sensitive secondary reads.  When configured as NODE_TYPE, Atlas scales your electable nodes in parallel with your read-only and analytics nodes. This mode is intended for large, dynamic workloads requiring frequent and timely cluster tier scaling. This is the fastest scaling strategy, but it might impact latency of workloads when performing extensive secondary reads. | [optional] [default to "WORKLOAD_TYPE"]
 **ReplicationSpecs** | Pointer to [**[]ReplicationSpec**](ReplicationSpec.md) | List of settings that configure your cluster regions. For Global Clusters, each object in the array represents a zone where your clusters nodes deploy. For non-Global sharded clusters and replica sets, this array has one object representing where your clusters nodes deploy. | [optional] 
 **RootCertType** | Pointer to **string** | Root Certificate Authority that MongoDB Cloud cluster uses. MongoDB Cloud supports Internet Security Research Group. | [optional] [default to "ISRGROOTX1"]
 **StateName** | Pointer to **string** | Human-readable label that indicates the current operating condition of this cluster. | [optional] [readonly] 
@@ -73,6 +80,30 @@ SetAcceptDataRisksAndForceReplicaSetReconfig sets AcceptDataRisksAndForceReplica
 `func (o *AdvancedClusterDescription) HasAcceptDataRisksAndForceReplicaSetReconfig() bool`
 
 HasAcceptDataRisksAndForceReplicaSetReconfig returns a boolean if a field has been set.
+### GetAdvancedConfiguration
+
+`func (o *AdvancedClusterDescription) GetAdvancedConfiguration() ApiAtlasClusterAdvancedConfiguration`
+
+GetAdvancedConfiguration returns the AdvancedConfiguration field if non-nil, zero value otherwise.
+
+### GetAdvancedConfigurationOk
+
+`func (o *AdvancedClusterDescription) GetAdvancedConfigurationOk() (*ApiAtlasClusterAdvancedConfiguration, bool)`
+
+GetAdvancedConfigurationOk returns a tuple with the AdvancedConfiguration field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdvancedConfiguration
+
+`func (o *AdvancedClusterDescription) SetAdvancedConfiguration(v ApiAtlasClusterAdvancedConfiguration)`
+
+SetAdvancedConfiguration sets AdvancedConfiguration field to given value.
+
+### HasAdvancedConfiguration
+
+`func (o *AdvancedClusterDescription) HasAdvancedConfiguration() bool`
+
+HasAdvancedConfiguration returns a boolean if a field has been set.
 ### GetBackupEnabled
 
 `func (o *AdvancedClusterDescription) GetBackupEnabled() bool`
@@ -145,6 +176,54 @@ SetClusterType sets ClusterType field to given value.
 `func (o *AdvancedClusterDescription) HasClusterType() bool`
 
 HasClusterType returns a boolean if a field has been set.
+### GetConfigServerManagementMode
+
+`func (o *AdvancedClusterDescription) GetConfigServerManagementMode() string`
+
+GetConfigServerManagementMode returns the ConfigServerManagementMode field if non-nil, zero value otherwise.
+
+### GetConfigServerManagementModeOk
+
+`func (o *AdvancedClusterDescription) GetConfigServerManagementModeOk() (*string, bool)`
+
+GetConfigServerManagementModeOk returns a tuple with the ConfigServerManagementMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConfigServerManagementMode
+
+`func (o *AdvancedClusterDescription) SetConfigServerManagementMode(v string)`
+
+SetConfigServerManagementMode sets ConfigServerManagementMode field to given value.
+
+### HasConfigServerManagementMode
+
+`func (o *AdvancedClusterDescription) HasConfigServerManagementMode() bool`
+
+HasConfigServerManagementMode returns a boolean if a field has been set.
+### GetConfigServerType
+
+`func (o *AdvancedClusterDescription) GetConfigServerType() string`
+
+GetConfigServerType returns the ConfigServerType field if non-nil, zero value otherwise.
+
+### GetConfigServerTypeOk
+
+`func (o *AdvancedClusterDescription) GetConfigServerTypeOk() (*string, bool)`
+
+GetConfigServerTypeOk returns a tuple with the ConfigServerType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConfigServerType
+
+`func (o *AdvancedClusterDescription) SetConfigServerType(v string)`
+
+SetConfigServerType sets ConfigServerType field to given value.
+
+### HasConfigServerType
+
+`func (o *AdvancedClusterDescription) HasConfigServerType() bool`
+
+HasConfigServerType returns a boolean if a field has been set.
 ### GetConnectionStrings
 
 `func (o *AdvancedClusterDescription) GetConnectionStrings() ClusterConnectionStrings`
@@ -265,6 +344,54 @@ SetEncryptionAtRestProvider sets EncryptionAtRestProvider field to given value.
 `func (o *AdvancedClusterDescription) HasEncryptionAtRestProvider() bool`
 
 HasEncryptionAtRestProvider returns a boolean if a field has been set.
+### GetFeatureCompatibilityVersion
+
+`func (o *AdvancedClusterDescription) GetFeatureCompatibilityVersion() string`
+
+GetFeatureCompatibilityVersion returns the FeatureCompatibilityVersion field if non-nil, zero value otherwise.
+
+### GetFeatureCompatibilityVersionOk
+
+`func (o *AdvancedClusterDescription) GetFeatureCompatibilityVersionOk() (*string, bool)`
+
+GetFeatureCompatibilityVersionOk returns a tuple with the FeatureCompatibilityVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFeatureCompatibilityVersion
+
+`func (o *AdvancedClusterDescription) SetFeatureCompatibilityVersion(v string)`
+
+SetFeatureCompatibilityVersion sets FeatureCompatibilityVersion field to given value.
+
+### HasFeatureCompatibilityVersion
+
+`func (o *AdvancedClusterDescription) HasFeatureCompatibilityVersion() bool`
+
+HasFeatureCompatibilityVersion returns a boolean if a field has been set.
+### GetFeatureCompatibilityVersionExpirationDate
+
+`func (o *AdvancedClusterDescription) GetFeatureCompatibilityVersionExpirationDate() time.Time`
+
+GetFeatureCompatibilityVersionExpirationDate returns the FeatureCompatibilityVersionExpirationDate field if non-nil, zero value otherwise.
+
+### GetFeatureCompatibilityVersionExpirationDateOk
+
+`func (o *AdvancedClusterDescription) GetFeatureCompatibilityVersionExpirationDateOk() (*time.Time, bool)`
+
+GetFeatureCompatibilityVersionExpirationDateOk returns a tuple with the FeatureCompatibilityVersionExpirationDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFeatureCompatibilityVersionExpirationDate
+
+`func (o *AdvancedClusterDescription) SetFeatureCompatibilityVersionExpirationDate(v time.Time)`
+
+SetFeatureCompatibilityVersionExpirationDate sets FeatureCompatibilityVersionExpirationDate field to given value.
+
+### HasFeatureCompatibilityVersionExpirationDate
+
+`func (o *AdvancedClusterDescription) HasFeatureCompatibilityVersionExpirationDate() bool`
+
+HasFeatureCompatibilityVersionExpirationDate returns a boolean if a field has been set.
 ### GetGlobalClusterSelfManagedSharding
 
 `func (o *AdvancedClusterDescription) GetGlobalClusterSelfManagedSharding() bool`
@@ -385,6 +512,30 @@ SetLinks sets Links field to given value.
 `func (o *AdvancedClusterDescription) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+### GetMongoDBEmployeeAccessGrant
+
+`func (o *AdvancedClusterDescription) GetMongoDBEmployeeAccessGrant() EmployeeAccessGrant`
+
+GetMongoDBEmployeeAccessGrant returns the MongoDBEmployeeAccessGrant field if non-nil, zero value otherwise.
+
+### GetMongoDBEmployeeAccessGrantOk
+
+`func (o *AdvancedClusterDescription) GetMongoDBEmployeeAccessGrantOk() (*EmployeeAccessGrant, bool)`
+
+GetMongoDBEmployeeAccessGrantOk returns a tuple with the MongoDBEmployeeAccessGrant field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMongoDBEmployeeAccessGrant
+
+`func (o *AdvancedClusterDescription) SetMongoDBEmployeeAccessGrant(v EmployeeAccessGrant)`
+
+SetMongoDBEmployeeAccessGrant sets MongoDBEmployeeAccessGrant field to given value.
+
+### HasMongoDBEmployeeAccessGrant
+
+`func (o *AdvancedClusterDescription) HasMongoDBEmployeeAccessGrant() bool`
+
+HasMongoDBEmployeeAccessGrant returns a boolean if a field has been set.
 ### GetMongoDBMajorVersion
 
 `func (o *AdvancedClusterDescription) GetMongoDBMajorVersion() string`
@@ -505,6 +656,30 @@ SetPitEnabled sets PitEnabled field to given value.
 `func (o *AdvancedClusterDescription) HasPitEnabled() bool`
 
 HasPitEnabled returns a boolean if a field has been set.
+### GetReplicaSetScalingStrategy
+
+`func (o *AdvancedClusterDescription) GetReplicaSetScalingStrategy() string`
+
+GetReplicaSetScalingStrategy returns the ReplicaSetScalingStrategy field if non-nil, zero value otherwise.
+
+### GetReplicaSetScalingStrategyOk
+
+`func (o *AdvancedClusterDescription) GetReplicaSetScalingStrategyOk() (*string, bool)`
+
+GetReplicaSetScalingStrategyOk returns a tuple with the ReplicaSetScalingStrategy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReplicaSetScalingStrategy
+
+`func (o *AdvancedClusterDescription) SetReplicaSetScalingStrategy(v string)`
+
+SetReplicaSetScalingStrategy sets ReplicaSetScalingStrategy field to given value.
+
+### HasReplicaSetScalingStrategy
+
+`func (o *AdvancedClusterDescription) HasReplicaSetScalingStrategy() bool`
+
+HasReplicaSetScalingStrategy returns a boolean if a field has been set.
 ### GetReplicationSpecs
 
 `func (o *AdvancedClusterDescription) GetReplicationSpecs() []ReplicationSpec`

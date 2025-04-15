@@ -12,7 +12,7 @@ type AtlasClusterOutageSimulationOutageFilter struct {
 	CloudProvider *string `json:"cloudProvider,omitempty"`
 	// The name of the region to undergo an outage simulation.
 	RegionName *string `json:"regionName,omitempty"`
-	// The type of cluster outage to simulate.  | Type       | Description | |------------|-------------| | `REGION`   | Simulates a cluster outage for a region.|
+	// The type of cluster outage to simulate. `REGION` simulates a cluster outage for a region.
 	Type *string `json:"type,omitempty"`
 }
 

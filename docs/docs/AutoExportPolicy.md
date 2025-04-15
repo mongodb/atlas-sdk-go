@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ExportBucketId** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the AWS Bucket. | [optional] 
+**ExportBucketId** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the Export Bucket. | [optional] 
 **FrequencyType** | Pointer to **string** | Human-readable label that indicates the rate at which the export policy item occurs. | [optional] 
 
 ## Methods

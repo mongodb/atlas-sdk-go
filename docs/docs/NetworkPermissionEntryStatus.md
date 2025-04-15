@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**STATUS** | **string** | State of the access list entry when MongoDB Cloud made this request.  | Status | Activity | |---|---| | &#x60;ACTIVE&#x60; | This access list entry applies to all relevant cloud providers. | | &#x60;PENDING&#x60; | MongoDB Cloud has started to add access list entry. This access list entry may not apply to all cloud providers at the time of this request. | | &#x60;FAILED&#x60; | MongoDB Cloud didn&#39;t succeed in adding this access list entry. |  | [readonly] 
+**STATUS** | **string** | State of the access list entry when MongoDB Cloud made this request.  &#x60;ACTIVE&#x60;: This access list entry applies to all relevant cloud providers.  &#x60;PENDING&#x60;: MongoDB Cloud has started to add access list entry. This access list entry may not apply to all cloud providers at the time of this request.  &#x60;FAILED&#x60;: MongoDB Cloud didn&#39;t succeed in adding this access list entry. | [readonly] 
 
 ## Methods
 

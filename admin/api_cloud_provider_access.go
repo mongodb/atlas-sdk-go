@@ -16,14 +16,14 @@ type CloudProviderAccessApi interface {
 	/*
 		AuthorizeCloudProviderAccessRole Authorize One Cloud Provider Access Role
 
-		Grants access to the specified project for the specified access role. To use this resource, the requesting API Key must have the Project Owner role. This API endpoint is one step in a procedure to create unified access for MongoDB Cloud services.
+		Grants access to the specified project for the specified access role. To use this resource, the requesting Service Account or API Key must have the Project Owner role. This API endpoint is one step in a procedure to create unified access for MongoDB Cloud services. This is not required for GCP service account access.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param roleId Unique 24-hexadecimal digit string that identifies the role.
 		@return AuthorizeCloudProviderAccessRoleApiRequest
 	*/
-	AuthorizeCloudProviderAccessRole(ctx context.Context, groupId string, roleId string, cloudProviderAccessRole *CloudProviderAccessRole) AuthorizeCloudProviderAccessRoleApiRequest
+	AuthorizeCloudProviderAccessRole(ctx context.Context, groupId string, roleId string, cloudProviderAccessRoleRequestUpdate *CloudProviderAccessRoleRequestUpdate) AuthorizeCloudProviderAccessRoleApiRequest
 	/*
 		AuthorizeCloudProviderAccessRole Authorize One Cloud Provider Access Role
 
@@ -40,13 +40,13 @@ type CloudProviderAccessApi interface {
 	/*
 		CreateCloudProviderAccessRole Create One Cloud Provider Access Role
 
-		Creates one access role for the specified cloud provider. Some MongoDB Cloud features use these cloud provider access roles for authentication. To use this resource, the requesting API Key must have the Project Owner role.
+		Creates one access role for the specified cloud provider. Some MongoDB Cloud features use these cloud provider access roles for authentication. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@return CreateCloudProviderAccessRoleApiRequest
 	*/
-	CreateCloudProviderAccessRole(ctx context.Context, groupId string, cloudProviderAccessRole *CloudProviderAccessRole) CreateCloudProviderAccessRoleApiRequest
+	CreateCloudProviderAccessRole(ctx context.Context, groupId string, cloudProviderAccessRoleRequest *CloudProviderAccessRoleRequest) CreateCloudProviderAccessRoleApiRequest
 	/*
 		CreateCloudProviderAccessRole Create One Cloud Provider Access Role
 
@@ -63,7 +63,7 @@ type CloudProviderAccessApi interface {
 	/*
 		DeauthorizeCloudProviderAccessRole Deauthorize One Cloud Provider Access Role
 
-		Revokes access to the specified project for the specified access role. To use this resource, the requesting API Key must have the Project Owner role.
+		Revokes access to the specified project for the specified access role. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -88,7 +88,7 @@ type CloudProviderAccessApi interface {
 	/*
 		GetCloudProviderAccessRole Return specified Cloud Provider Access Role
 
-		[experimental] Returns the access role with the specified id and with access to the specified project. To use this resource, the requesting API Key must have the Project Owner role.
+		[experimental] Returns the access role with the specified id and with access to the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -112,7 +112,7 @@ type CloudProviderAccessApi interface {
 	/*
 		ListCloudProviderAccessRoles Return All Cloud Provider Access Roles
 
-		Returns all cloud provider access roles with access to the specified project. To use this resource, the requesting API Key must have the Project Owner role.
+		Returns all cloud provider access roles with access to the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -137,26 +137,26 @@ type CloudProviderAccessApi interface {
 type CloudProviderAccessApiService service
 
 type AuthorizeCloudProviderAccessRoleApiRequest struct {
-	ctx                     context.Context
-	ApiService              CloudProviderAccessApi
-	groupId                 string
-	roleId                  string
-	cloudProviderAccessRole *CloudProviderAccessRole
+	ctx                                  context.Context
+	ApiService                           CloudProviderAccessApi
+	groupId                              string
+	roleId                               string
+	cloudProviderAccessRoleRequestUpdate *CloudProviderAccessRoleRequestUpdate
 }
 
 type AuthorizeCloudProviderAccessRoleApiParams struct {
-	GroupId                 string
-	RoleId                  string
-	CloudProviderAccessRole *CloudProviderAccessRole
+	GroupId                              string
+	RoleId                               string
+	CloudProviderAccessRoleRequestUpdate *CloudProviderAccessRoleRequestUpdate
 }
 
 func (a *CloudProviderAccessApiService) AuthorizeCloudProviderAccessRoleWithParams(ctx context.Context, args *AuthorizeCloudProviderAccessRoleApiParams) AuthorizeCloudProviderAccessRoleApiRequest {
 	return AuthorizeCloudProviderAccessRoleApiRequest{
-		ApiService:              a,
-		ctx:                     ctx,
-		groupId:                 args.GroupId,
-		roleId:                  args.RoleId,
-		cloudProviderAccessRole: args.CloudProviderAccessRole,
+		ApiService:                           a,
+		ctx:                                  ctx,
+		groupId:                              args.GroupId,
+		roleId:                               args.RoleId,
+		cloudProviderAccessRoleRequestUpdate: args.CloudProviderAccessRoleRequestUpdate,
 	}
 }
 
@@ -167,20 +167,20 @@ func (r AuthorizeCloudProviderAccessRoleApiRequest) Execute() (*CloudProviderAcc
 /*
 AuthorizeCloudProviderAccessRole Authorize One Cloud Provider Access Role
 
-Grants access to the specified project for the specified access role. To use this resource, the requesting API Key must have the Project Owner role. This API endpoint is one step in a procedure to create unified access for MongoDB Cloud services.
+Grants access to the specified project for the specified access role. To use this resource, the requesting Service Account or API Key must have the Project Owner role. This API endpoint is one step in a procedure to create unified access for MongoDB Cloud services. This is not required for GCP service account access.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param roleId Unique 24-hexadecimal digit string that identifies the role.
 	@return AuthorizeCloudProviderAccessRoleApiRequest
 */
-func (a *CloudProviderAccessApiService) AuthorizeCloudProviderAccessRole(ctx context.Context, groupId string, roleId string, cloudProviderAccessRole *CloudProviderAccessRole) AuthorizeCloudProviderAccessRoleApiRequest {
+func (a *CloudProviderAccessApiService) AuthorizeCloudProviderAccessRole(ctx context.Context, groupId string, roleId string, cloudProviderAccessRoleRequestUpdate *CloudProviderAccessRoleRequestUpdate) AuthorizeCloudProviderAccessRoleApiRequest {
 	return AuthorizeCloudProviderAccessRoleApiRequest{
-		ApiService:              a,
-		ctx:                     ctx,
-		groupId:                 groupId,
-		roleId:                  roleId,
-		cloudProviderAccessRole: cloudProviderAccessRole,
+		ApiService:                           a,
+		ctx:                                  ctx,
+		groupId:                              groupId,
+		roleId:                               roleId,
+		cloudProviderAccessRoleRequestUpdate: cloudProviderAccessRoleRequestUpdate,
 	}
 }
 
@@ -207,8 +207,8 @@ func (a *CloudProviderAccessApiService) AuthorizeCloudProviderAccessRoleExecute(
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.cloudProviderAccessRole == nil {
-		return localVarReturnValue, nil, reportError("cloudProviderAccessRole is required and must be specified")
+	if r.cloudProviderAccessRoleRequestUpdate == nil {
+		return localVarReturnValue, nil, reportError("cloudProviderAccessRoleRequestUpdate is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -229,7 +229,7 @@ func (a *CloudProviderAccessApiService) AuthorizeCloudProviderAccessRoleExecute(
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.cloudProviderAccessRole
+	localVarPostBody = r.cloudProviderAccessRoleRequestUpdate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -276,23 +276,23 @@ func (a *CloudProviderAccessApiService) AuthorizeCloudProviderAccessRoleExecute(
 }
 
 type CreateCloudProviderAccessRoleApiRequest struct {
-	ctx                     context.Context
-	ApiService              CloudProviderAccessApi
-	groupId                 string
-	cloudProviderAccessRole *CloudProviderAccessRole
+	ctx                            context.Context
+	ApiService                     CloudProviderAccessApi
+	groupId                        string
+	cloudProviderAccessRoleRequest *CloudProviderAccessRoleRequest
 }
 
 type CreateCloudProviderAccessRoleApiParams struct {
-	GroupId                 string
-	CloudProviderAccessRole *CloudProviderAccessRole
+	GroupId                        string
+	CloudProviderAccessRoleRequest *CloudProviderAccessRoleRequest
 }
 
 func (a *CloudProviderAccessApiService) CreateCloudProviderAccessRoleWithParams(ctx context.Context, args *CreateCloudProviderAccessRoleApiParams) CreateCloudProviderAccessRoleApiRequest {
 	return CreateCloudProviderAccessRoleApiRequest{
-		ApiService:              a,
-		ctx:                     ctx,
-		groupId:                 args.GroupId,
-		cloudProviderAccessRole: args.CloudProviderAccessRole,
+		ApiService:                     a,
+		ctx:                            ctx,
+		groupId:                        args.GroupId,
+		cloudProviderAccessRoleRequest: args.CloudProviderAccessRoleRequest,
 	}
 }
 
@@ -303,18 +303,18 @@ func (r CreateCloudProviderAccessRoleApiRequest) Execute() (*CloudProviderAccess
 /*
 CreateCloudProviderAccessRole Create One Cloud Provider Access Role
 
-Creates one access role for the specified cloud provider. Some MongoDB Cloud features use these cloud provider access roles for authentication. To use this resource, the requesting API Key must have the Project Owner role.
+Creates one access role for the specified cloud provider. Some MongoDB Cloud features use these cloud provider access roles for authentication. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return CreateCloudProviderAccessRoleApiRequest
 */
-func (a *CloudProviderAccessApiService) CreateCloudProviderAccessRole(ctx context.Context, groupId string, cloudProviderAccessRole *CloudProviderAccessRole) CreateCloudProviderAccessRoleApiRequest {
+func (a *CloudProviderAccessApiService) CreateCloudProviderAccessRole(ctx context.Context, groupId string, cloudProviderAccessRoleRequest *CloudProviderAccessRoleRequest) CreateCloudProviderAccessRoleApiRequest {
 	return CreateCloudProviderAccessRoleApiRequest{
-		ApiService:              a,
-		ctx:                     ctx,
-		groupId:                 groupId,
-		cloudProviderAccessRole: cloudProviderAccessRole,
+		ApiService:                     a,
+		ctx:                            ctx,
+		groupId:                        groupId,
+		cloudProviderAccessRoleRequest: cloudProviderAccessRoleRequest,
 	}
 }
 
@@ -340,8 +340,8 @@ func (a *CloudProviderAccessApiService) CreateCloudProviderAccessRoleExecute(r C
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.cloudProviderAccessRole == nil {
-		return localVarReturnValue, nil, reportError("cloudProviderAccessRole is required and must be specified")
+	if r.cloudProviderAccessRoleRequest == nil {
+		return localVarReturnValue, nil, reportError("cloudProviderAccessRoleRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -362,7 +362,7 @@ func (a *CloudProviderAccessApiService) CreateCloudProviderAccessRoleExecute(r C
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.cloudProviderAccessRole
+	localVarPostBody = r.cloudProviderAccessRoleRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -439,7 +439,7 @@ func (r DeauthorizeCloudProviderAccessRoleApiRequest) Execute() (*http.Response,
 /*
 DeauthorizeCloudProviderAccessRole Deauthorize One Cloud Provider Access Role
 
-Revokes access to the specified project for the specified access role. To use this resource, the requesting API Key must have the Project Owner role.
+Revokes access to the specified project for the specified access role. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -560,7 +560,7 @@ func (r GetCloudProviderAccessRoleApiRequest) Execute() (*CloudProviderAccessRol
 /*
 GetCloudProviderAccessRole Return specified Cloud Provider Access Role
 
-[experimental] Returns the access role with the specified id and with access to the specified project. To use this resource, the requesting API Key must have the Project Owner role.
+[experimental] Returns the access role with the specified id and with access to the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -687,7 +687,7 @@ func (r ListCloudProviderAccessRolesApiRequest) Execute() (*CloudProviderAccessR
 /*
 ListCloudProviderAccessRoles Return All Cloud Provider Access Roles
 
-Returns all cloud provider access roles with access to the specified project. To use this resource, the requesting API Key must have the Project Owner role.
+Returns all cloud provider access roles with access to the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.

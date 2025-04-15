@@ -13,15 +13,15 @@ type DataLakeTenant struct {
 	// Unique 24-hexadecimal character string that identifies the project.
 	// Read only field.
 	GroupId *string `json:"groupId,omitempty"`
-	// List that contains the hostnames assigned to the Data Lake instance.
+	// List that contains the hostnames assigned to the Federated Database Instance.
 	// Read only field.
 	Hostnames *[]string `json:"hostnames,omitempty"`
-	// Human-readable label that identifies the data lake.
+	// Human-readable label that identifies the Federated Database Instance.
 	Name *string `json:"name,omitempty"`
 	// List that contains the sets of private endpoints and hostnames.
 	// Read only field.
 	PrivateEndpointHostnames *[]PrivateEndpointHostname `json:"privateEndpointHostnames,omitempty"`
-	// Label that indicates the status of the Data Lake instance.
+	// Label that indicates the status of the Federated Database Instance.
 	// Read only field.
 	State   *string          `json:"state,omitempty"`
 	Storage *DataLakeStorage `json:"storage,omitempty"`

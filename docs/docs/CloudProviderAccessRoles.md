@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AwsIamRoles** | Pointer to [**[]CloudProviderAccessAWSIAMRole**](CloudProviderAccessAWSIAMRole.md) | List that contains the Amazon Web Services (AWS) IAM roles registered and authorized with MongoDB Cloud. | [optional] 
+**AzureServicePrincipals** | Pointer to [**[]CloudProviderAccessAzureServicePrincipal**](CloudProviderAccessAzureServicePrincipal.md) | List that contains the Azure Service Principals registered with MongoDB Cloud. | [optional] 
 
 ## Methods
 
@@ -49,6 +50,30 @@ SetAwsIamRoles sets AwsIamRoles field to given value.
 `func (o *CloudProviderAccessRoles) HasAwsIamRoles() bool`
 
 HasAwsIamRoles returns a boolean if a field has been set.
+### GetAzureServicePrincipals
+
+`func (o *CloudProviderAccessRoles) GetAzureServicePrincipals() []CloudProviderAccessAzureServicePrincipal`
+
+GetAzureServicePrincipals returns the AzureServicePrincipals field if non-nil, zero value otherwise.
+
+### GetAzureServicePrincipalsOk
+
+`func (o *CloudProviderAccessRoles) GetAzureServicePrincipalsOk() (*[]CloudProviderAccessAzureServicePrincipal, bool)`
+
+GetAzureServicePrincipalsOk returns a tuple with the AzureServicePrincipals field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAzureServicePrincipals
+
+`func (o *CloudProviderAccessRoles) SetAzureServicePrincipals(v []CloudProviderAccessAzureServicePrincipal)`
+
+SetAzureServicePrincipals sets AzureServicePrincipals field to given value.
+
+### HasAzureServicePrincipals
+
+`func (o *CloudProviderAccessRoles) HasAzureServicePrincipals() bool`
+
+HasAzureServicePrincipals returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

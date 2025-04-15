@@ -54,7 +54,7 @@ type PrivateEndpointServicesApi_CreatePrivateEndpoint_Call struct {
 //   - cloudProvider string
 //   - endpointServiceId string
 //   - createEndpointRequest *admin.CreateEndpointRequest
-func (_e *PrivateEndpointServicesApi_Expecter) CreatePrivateEndpoint(ctx interface{}, groupId interface{}, cloudProvider interface{}, endpointServiceId interface{}, createEndpointRequest interface{}) *PrivateEndpointServicesApi_CreatePrivateEndpoint_Call {
+func (_e *PrivateEndpointServicesApi_Expecter) CreatePrivateEndpoint(ctx any, groupId any, cloudProvider any, endpointServiceId any, createEndpointRequest any) *PrivateEndpointServicesApi_CreatePrivateEndpoint_Call {
 	return &PrivateEndpointServicesApi_CreatePrivateEndpoint_Call{Call: _e.mock.On("CreatePrivateEndpoint", ctx, groupId, cloudProvider, endpointServiceId, createEndpointRequest)}
 }
 
@@ -121,7 +121,7 @@ type PrivateEndpointServicesApi_CreatePrivateEndpointExecute_Call struct {
 
 // CreatePrivateEndpointExecute is a helper method to define mock.On call
 //   - r admin.CreatePrivateEndpointApiRequest
-func (_e *PrivateEndpointServicesApi_Expecter) CreatePrivateEndpointExecute(r interface{}) *PrivateEndpointServicesApi_CreatePrivateEndpointExecute_Call {
+func (_e *PrivateEndpointServicesApi_Expecter) CreatePrivateEndpointExecute(r any) *PrivateEndpointServicesApi_CreatePrivateEndpointExecute_Call {
 	return &PrivateEndpointServicesApi_CreatePrivateEndpointExecute_Call{Call: _e.mock.On("CreatePrivateEndpointExecute", r)}
 }
 
@@ -169,7 +169,7 @@ type PrivateEndpointServicesApi_CreatePrivateEndpointService_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - cloudProviderEndpointServiceRequest *admin.CloudProviderEndpointServiceRequest
-func (_e *PrivateEndpointServicesApi_Expecter) CreatePrivateEndpointService(ctx interface{}, groupId interface{}, cloudProviderEndpointServiceRequest interface{}) *PrivateEndpointServicesApi_CreatePrivateEndpointService_Call {
+func (_e *PrivateEndpointServicesApi_Expecter) CreatePrivateEndpointService(ctx any, groupId any, cloudProviderEndpointServiceRequest any) *PrivateEndpointServicesApi_CreatePrivateEndpointService_Call {
 	return &PrivateEndpointServicesApi_CreatePrivateEndpointService_Call{Call: _e.mock.On("CreatePrivateEndpointService", ctx, groupId, cloudProviderEndpointServiceRequest)}
 }
 
@@ -236,7 +236,7 @@ type PrivateEndpointServicesApi_CreatePrivateEndpointServiceExecute_Call struct 
 
 // CreatePrivateEndpointServiceExecute is a helper method to define mock.On call
 //   - r admin.CreatePrivateEndpointServiceApiRequest
-func (_e *PrivateEndpointServicesApi_Expecter) CreatePrivateEndpointServiceExecute(r interface{}) *PrivateEndpointServicesApi_CreatePrivateEndpointServiceExecute_Call {
+func (_e *PrivateEndpointServicesApi_Expecter) CreatePrivateEndpointServiceExecute(r any) *PrivateEndpointServicesApi_CreatePrivateEndpointServiceExecute_Call {
 	return &PrivateEndpointServicesApi_CreatePrivateEndpointServiceExecute_Call{Call: _e.mock.On("CreatePrivateEndpointServiceExecute", r)}
 }
 
@@ -283,7 +283,7 @@ type PrivateEndpointServicesApi_CreatePrivateEndpointServiceWithParams_Call stru
 // CreatePrivateEndpointServiceWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.CreatePrivateEndpointServiceApiParams
-func (_e *PrivateEndpointServicesApi_Expecter) CreatePrivateEndpointServiceWithParams(ctx interface{}, args interface{}) *PrivateEndpointServicesApi_CreatePrivateEndpointServiceWithParams_Call {
+func (_e *PrivateEndpointServicesApi_Expecter) CreatePrivateEndpointServiceWithParams(ctx any, args any) *PrivateEndpointServicesApi_CreatePrivateEndpointServiceWithParams_Call {
 	return &PrivateEndpointServicesApi_CreatePrivateEndpointServiceWithParams_Call{Call: _e.mock.On("CreatePrivateEndpointServiceWithParams", ctx, args)}
 }
 
@@ -330,7 +330,7 @@ type PrivateEndpointServicesApi_CreatePrivateEndpointWithParams_Call struct {
 // CreatePrivateEndpointWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.CreatePrivateEndpointApiParams
-func (_e *PrivateEndpointServicesApi_Expecter) CreatePrivateEndpointWithParams(ctx interface{}, args interface{}) *PrivateEndpointServicesApi_CreatePrivateEndpointWithParams_Call {
+func (_e *PrivateEndpointServicesApi_Expecter) CreatePrivateEndpointWithParams(ctx any, args any) *PrivateEndpointServicesApi_CreatePrivateEndpointWithParams_Call {
 	return &PrivateEndpointServicesApi_CreatePrivateEndpointWithParams_Call{Call: _e.mock.On("CreatePrivateEndpointWithParams", ctx, args)}
 }
 
@@ -380,7 +380,7 @@ type PrivateEndpointServicesApi_DeletePrivateEndpoint_Call struct {
 //   - cloudProvider string
 //   - endpointId string
 //   - endpointServiceId string
-func (_e *PrivateEndpointServicesApi_Expecter) DeletePrivateEndpoint(ctx interface{}, groupId interface{}, cloudProvider interface{}, endpointId interface{}, endpointServiceId interface{}) *PrivateEndpointServicesApi_DeletePrivateEndpoint_Call {
+func (_e *PrivateEndpointServicesApi_Expecter) DeletePrivateEndpoint(ctx any, groupId any, cloudProvider any, endpointId any, endpointServiceId any) *PrivateEndpointServicesApi_DeletePrivateEndpoint_Call {
 	return &PrivateEndpointServicesApi_DeletePrivateEndpoint_Call{Call: _e.mock.On("DeletePrivateEndpoint", ctx, groupId, cloudProvider, endpointId, endpointServiceId)}
 }
 
@@ -402,42 +402,33 @@ func (_c *PrivateEndpointServicesApi_DeletePrivateEndpoint_Call) RunAndReturn(ru
 }
 
 // DeletePrivateEndpointExecute provides a mock function with given fields: r
-func (_m *PrivateEndpointServicesApi) DeletePrivateEndpointExecute(r admin.DeletePrivateEndpointApiRequest) (map[string]interface{}, *http.Response, error) {
+func (_m *PrivateEndpointServicesApi) DeletePrivateEndpointExecute(r admin.DeletePrivateEndpointApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeletePrivateEndpointExecute")
 	}
 
-	var r0 map[string]interface{}
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeletePrivateEndpointApiRequest) (map[string]interface{}, *http.Response, error)); ok {
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.DeletePrivateEndpointApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeletePrivateEndpointApiRequest) map[string]interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeletePrivateEndpointApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(map[string]interface{})
+			r0 = ret.Get(0).(*http.Response)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeletePrivateEndpointApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.DeletePrivateEndpointApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
+		r1 = ret.Error(1)
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.DeletePrivateEndpointApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
+	return r0, r1
 }
 
 // PrivateEndpointServicesApi_DeletePrivateEndpointExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeletePrivateEndpointExecute'
@@ -447,7 +438,7 @@ type PrivateEndpointServicesApi_DeletePrivateEndpointExecute_Call struct {
 
 // DeletePrivateEndpointExecute is a helper method to define mock.On call
 //   - r admin.DeletePrivateEndpointApiRequest
-func (_e *PrivateEndpointServicesApi_Expecter) DeletePrivateEndpointExecute(r interface{}) *PrivateEndpointServicesApi_DeletePrivateEndpointExecute_Call {
+func (_e *PrivateEndpointServicesApi_Expecter) DeletePrivateEndpointExecute(r any) *PrivateEndpointServicesApi_DeletePrivateEndpointExecute_Call {
 	return &PrivateEndpointServicesApi_DeletePrivateEndpointExecute_Call{Call: _e.mock.On("DeletePrivateEndpointExecute", r)}
 }
 
@@ -458,12 +449,12 @@ func (_c *PrivateEndpointServicesApi_DeletePrivateEndpointExecute_Call) Run(run 
 	return _c
 }
 
-func (_c *PrivateEndpointServicesApi_DeletePrivateEndpointExecute_Call) Return(_a0 map[string]interface{}, _a1 *http.Response, _a2 error) *PrivateEndpointServicesApi_DeletePrivateEndpointExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
+func (_c *PrivateEndpointServicesApi_DeletePrivateEndpointExecute_Call) Return(_a0 *http.Response, _a1 error) *PrivateEndpointServicesApi_DeletePrivateEndpointExecute_Call {
+	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *PrivateEndpointServicesApi_DeletePrivateEndpointExecute_Call) RunAndReturn(run func(admin.DeletePrivateEndpointApiRequest) (map[string]interface{}, *http.Response, error)) *PrivateEndpointServicesApi_DeletePrivateEndpointExecute_Call {
+func (_c *PrivateEndpointServicesApi_DeletePrivateEndpointExecute_Call) RunAndReturn(run func(admin.DeletePrivateEndpointApiRequest) (*http.Response, error)) *PrivateEndpointServicesApi_DeletePrivateEndpointExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -496,7 +487,7 @@ type PrivateEndpointServicesApi_DeletePrivateEndpointService_Call struct {
 //   - groupId string
 //   - cloudProvider string
 //   - endpointServiceId string
-func (_e *PrivateEndpointServicesApi_Expecter) DeletePrivateEndpointService(ctx interface{}, groupId interface{}, cloudProvider interface{}, endpointServiceId interface{}) *PrivateEndpointServicesApi_DeletePrivateEndpointService_Call {
+func (_e *PrivateEndpointServicesApi_Expecter) DeletePrivateEndpointService(ctx any, groupId any, cloudProvider any, endpointServiceId any) *PrivateEndpointServicesApi_DeletePrivateEndpointService_Call {
 	return &PrivateEndpointServicesApi_DeletePrivateEndpointService_Call{Call: _e.mock.On("DeletePrivateEndpointService", ctx, groupId, cloudProvider, endpointServiceId)}
 }
 
@@ -518,42 +509,33 @@ func (_c *PrivateEndpointServicesApi_DeletePrivateEndpointService_Call) RunAndRe
 }
 
 // DeletePrivateEndpointServiceExecute provides a mock function with given fields: r
-func (_m *PrivateEndpointServicesApi) DeletePrivateEndpointServiceExecute(r admin.DeletePrivateEndpointServiceApiRequest) (map[string]interface{}, *http.Response, error) {
+func (_m *PrivateEndpointServicesApi) DeletePrivateEndpointServiceExecute(r admin.DeletePrivateEndpointServiceApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeletePrivateEndpointServiceExecute")
 	}
 
-	var r0 map[string]interface{}
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeletePrivateEndpointServiceApiRequest) (map[string]interface{}, *http.Response, error)); ok {
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.DeletePrivateEndpointServiceApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeletePrivateEndpointServiceApiRequest) map[string]interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeletePrivateEndpointServiceApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(map[string]interface{})
+			r0 = ret.Get(0).(*http.Response)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeletePrivateEndpointServiceApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.DeletePrivateEndpointServiceApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
+		r1 = ret.Error(1)
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.DeletePrivateEndpointServiceApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
+	return r0, r1
 }
 
 // PrivateEndpointServicesApi_DeletePrivateEndpointServiceExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeletePrivateEndpointServiceExecute'
@@ -563,7 +545,7 @@ type PrivateEndpointServicesApi_DeletePrivateEndpointServiceExecute_Call struct 
 
 // DeletePrivateEndpointServiceExecute is a helper method to define mock.On call
 //   - r admin.DeletePrivateEndpointServiceApiRequest
-func (_e *PrivateEndpointServicesApi_Expecter) DeletePrivateEndpointServiceExecute(r interface{}) *PrivateEndpointServicesApi_DeletePrivateEndpointServiceExecute_Call {
+func (_e *PrivateEndpointServicesApi_Expecter) DeletePrivateEndpointServiceExecute(r any) *PrivateEndpointServicesApi_DeletePrivateEndpointServiceExecute_Call {
 	return &PrivateEndpointServicesApi_DeletePrivateEndpointServiceExecute_Call{Call: _e.mock.On("DeletePrivateEndpointServiceExecute", r)}
 }
 
@@ -574,12 +556,12 @@ func (_c *PrivateEndpointServicesApi_DeletePrivateEndpointServiceExecute_Call) R
 	return _c
 }
 
-func (_c *PrivateEndpointServicesApi_DeletePrivateEndpointServiceExecute_Call) Return(_a0 map[string]interface{}, _a1 *http.Response, _a2 error) *PrivateEndpointServicesApi_DeletePrivateEndpointServiceExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
+func (_c *PrivateEndpointServicesApi_DeletePrivateEndpointServiceExecute_Call) Return(_a0 *http.Response, _a1 error) *PrivateEndpointServicesApi_DeletePrivateEndpointServiceExecute_Call {
+	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *PrivateEndpointServicesApi_DeletePrivateEndpointServiceExecute_Call) RunAndReturn(run func(admin.DeletePrivateEndpointServiceApiRequest) (map[string]interface{}, *http.Response, error)) *PrivateEndpointServicesApi_DeletePrivateEndpointServiceExecute_Call {
+func (_c *PrivateEndpointServicesApi_DeletePrivateEndpointServiceExecute_Call) RunAndReturn(run func(admin.DeletePrivateEndpointServiceApiRequest) (*http.Response, error)) *PrivateEndpointServicesApi_DeletePrivateEndpointServiceExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -610,7 +592,7 @@ type PrivateEndpointServicesApi_DeletePrivateEndpointServiceWithParams_Call stru
 // DeletePrivateEndpointServiceWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.DeletePrivateEndpointServiceApiParams
-func (_e *PrivateEndpointServicesApi_Expecter) DeletePrivateEndpointServiceWithParams(ctx interface{}, args interface{}) *PrivateEndpointServicesApi_DeletePrivateEndpointServiceWithParams_Call {
+func (_e *PrivateEndpointServicesApi_Expecter) DeletePrivateEndpointServiceWithParams(ctx any, args any) *PrivateEndpointServicesApi_DeletePrivateEndpointServiceWithParams_Call {
 	return &PrivateEndpointServicesApi_DeletePrivateEndpointServiceWithParams_Call{Call: _e.mock.On("DeletePrivateEndpointServiceWithParams", ctx, args)}
 }
 
@@ -657,7 +639,7 @@ type PrivateEndpointServicesApi_DeletePrivateEndpointWithParams_Call struct {
 // DeletePrivateEndpointWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.DeletePrivateEndpointApiParams
-func (_e *PrivateEndpointServicesApi_Expecter) DeletePrivateEndpointWithParams(ctx interface{}, args interface{}) *PrivateEndpointServicesApi_DeletePrivateEndpointWithParams_Call {
+func (_e *PrivateEndpointServicesApi_Expecter) DeletePrivateEndpointWithParams(ctx any, args any) *PrivateEndpointServicesApi_DeletePrivateEndpointWithParams_Call {
 	return &PrivateEndpointServicesApi_DeletePrivateEndpointWithParams_Call{Call: _e.mock.On("DeletePrivateEndpointWithParams", ctx, args)}
 }
 
@@ -707,7 +689,7 @@ type PrivateEndpointServicesApi_GetPrivateEndpoint_Call struct {
 //   - cloudProvider string
 //   - endpointId string
 //   - endpointServiceId string
-func (_e *PrivateEndpointServicesApi_Expecter) GetPrivateEndpoint(ctx interface{}, groupId interface{}, cloudProvider interface{}, endpointId interface{}, endpointServiceId interface{}) *PrivateEndpointServicesApi_GetPrivateEndpoint_Call {
+func (_e *PrivateEndpointServicesApi_Expecter) GetPrivateEndpoint(ctx any, groupId any, cloudProvider any, endpointId any, endpointServiceId any) *PrivateEndpointServicesApi_GetPrivateEndpoint_Call {
 	return &PrivateEndpointServicesApi_GetPrivateEndpoint_Call{Call: _e.mock.On("GetPrivateEndpoint", ctx, groupId, cloudProvider, endpointId, endpointServiceId)}
 }
 
@@ -774,7 +756,7 @@ type PrivateEndpointServicesApi_GetPrivateEndpointExecute_Call struct {
 
 // GetPrivateEndpointExecute is a helper method to define mock.On call
 //   - r admin.GetPrivateEndpointApiRequest
-func (_e *PrivateEndpointServicesApi_Expecter) GetPrivateEndpointExecute(r interface{}) *PrivateEndpointServicesApi_GetPrivateEndpointExecute_Call {
+func (_e *PrivateEndpointServicesApi_Expecter) GetPrivateEndpointExecute(r any) *PrivateEndpointServicesApi_GetPrivateEndpointExecute_Call {
 	return &PrivateEndpointServicesApi_GetPrivateEndpointExecute_Call{Call: _e.mock.On("GetPrivateEndpointExecute", r)}
 }
 
@@ -823,7 +805,7 @@ type PrivateEndpointServicesApi_GetPrivateEndpointService_Call struct {
 //   - groupId string
 //   - cloudProvider string
 //   - endpointServiceId string
-func (_e *PrivateEndpointServicesApi_Expecter) GetPrivateEndpointService(ctx interface{}, groupId interface{}, cloudProvider interface{}, endpointServiceId interface{}) *PrivateEndpointServicesApi_GetPrivateEndpointService_Call {
+func (_e *PrivateEndpointServicesApi_Expecter) GetPrivateEndpointService(ctx any, groupId any, cloudProvider any, endpointServiceId any) *PrivateEndpointServicesApi_GetPrivateEndpointService_Call {
 	return &PrivateEndpointServicesApi_GetPrivateEndpointService_Call{Call: _e.mock.On("GetPrivateEndpointService", ctx, groupId, cloudProvider, endpointServiceId)}
 }
 
@@ -890,7 +872,7 @@ type PrivateEndpointServicesApi_GetPrivateEndpointServiceExecute_Call struct {
 
 // GetPrivateEndpointServiceExecute is a helper method to define mock.On call
 //   - r admin.GetPrivateEndpointServiceApiRequest
-func (_e *PrivateEndpointServicesApi_Expecter) GetPrivateEndpointServiceExecute(r interface{}) *PrivateEndpointServicesApi_GetPrivateEndpointServiceExecute_Call {
+func (_e *PrivateEndpointServicesApi_Expecter) GetPrivateEndpointServiceExecute(r any) *PrivateEndpointServicesApi_GetPrivateEndpointServiceExecute_Call {
 	return &PrivateEndpointServicesApi_GetPrivateEndpointServiceExecute_Call{Call: _e.mock.On("GetPrivateEndpointServiceExecute", r)}
 }
 
@@ -937,7 +919,7 @@ type PrivateEndpointServicesApi_GetPrivateEndpointServiceWithParams_Call struct 
 // GetPrivateEndpointServiceWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetPrivateEndpointServiceApiParams
-func (_e *PrivateEndpointServicesApi_Expecter) GetPrivateEndpointServiceWithParams(ctx interface{}, args interface{}) *PrivateEndpointServicesApi_GetPrivateEndpointServiceWithParams_Call {
+func (_e *PrivateEndpointServicesApi_Expecter) GetPrivateEndpointServiceWithParams(ctx any, args any) *PrivateEndpointServicesApi_GetPrivateEndpointServiceWithParams_Call {
 	return &PrivateEndpointServicesApi_GetPrivateEndpointServiceWithParams_Call{Call: _e.mock.On("GetPrivateEndpointServiceWithParams", ctx, args)}
 }
 
@@ -984,7 +966,7 @@ type PrivateEndpointServicesApi_GetPrivateEndpointWithParams_Call struct {
 // GetPrivateEndpointWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetPrivateEndpointApiParams
-func (_e *PrivateEndpointServicesApi_Expecter) GetPrivateEndpointWithParams(ctx interface{}, args interface{}) *PrivateEndpointServicesApi_GetPrivateEndpointWithParams_Call {
+func (_e *PrivateEndpointServicesApi_Expecter) GetPrivateEndpointWithParams(ctx any, args any) *PrivateEndpointServicesApi_GetPrivateEndpointWithParams_Call {
 	return &PrivateEndpointServicesApi_GetPrivateEndpointWithParams_Call{Call: _e.mock.On("GetPrivateEndpointWithParams", ctx, args)}
 }
 
@@ -1031,7 +1013,7 @@ type PrivateEndpointServicesApi_GetRegionalizedPrivateEndpointSetting_Call struc
 // GetRegionalizedPrivateEndpointSetting is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *PrivateEndpointServicesApi_Expecter) GetRegionalizedPrivateEndpointSetting(ctx interface{}, groupId interface{}) *PrivateEndpointServicesApi_GetRegionalizedPrivateEndpointSetting_Call {
+func (_e *PrivateEndpointServicesApi_Expecter) GetRegionalizedPrivateEndpointSetting(ctx any, groupId any) *PrivateEndpointServicesApi_GetRegionalizedPrivateEndpointSetting_Call {
 	return &PrivateEndpointServicesApi_GetRegionalizedPrivateEndpointSetting_Call{Call: _e.mock.On("GetRegionalizedPrivateEndpointSetting", ctx, groupId)}
 }
 
@@ -1098,7 +1080,7 @@ type PrivateEndpointServicesApi_GetRegionalizedPrivateEndpointSettingExecute_Cal
 
 // GetRegionalizedPrivateEndpointSettingExecute is a helper method to define mock.On call
 //   - r admin.GetRegionalizedPrivateEndpointSettingApiRequest
-func (_e *PrivateEndpointServicesApi_Expecter) GetRegionalizedPrivateEndpointSettingExecute(r interface{}) *PrivateEndpointServicesApi_GetRegionalizedPrivateEndpointSettingExecute_Call {
+func (_e *PrivateEndpointServicesApi_Expecter) GetRegionalizedPrivateEndpointSettingExecute(r any) *PrivateEndpointServicesApi_GetRegionalizedPrivateEndpointSettingExecute_Call {
 	return &PrivateEndpointServicesApi_GetRegionalizedPrivateEndpointSettingExecute_Call{Call: _e.mock.On("GetRegionalizedPrivateEndpointSettingExecute", r)}
 }
 
@@ -1145,7 +1127,7 @@ type PrivateEndpointServicesApi_GetRegionalizedPrivateEndpointSettingWithParams_
 // GetRegionalizedPrivateEndpointSettingWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetRegionalizedPrivateEndpointSettingApiParams
-func (_e *PrivateEndpointServicesApi_Expecter) GetRegionalizedPrivateEndpointSettingWithParams(ctx interface{}, args interface{}) *PrivateEndpointServicesApi_GetRegionalizedPrivateEndpointSettingWithParams_Call {
+func (_e *PrivateEndpointServicesApi_Expecter) GetRegionalizedPrivateEndpointSettingWithParams(ctx any, args any) *PrivateEndpointServicesApi_GetRegionalizedPrivateEndpointSettingWithParams_Call {
 	return &PrivateEndpointServicesApi_GetRegionalizedPrivateEndpointSettingWithParams_Call{Call: _e.mock.On("GetRegionalizedPrivateEndpointSettingWithParams", ctx, args)}
 }
 
@@ -1193,7 +1175,7 @@ type PrivateEndpointServicesApi_ListPrivateEndpointServices_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - cloudProvider string
-func (_e *PrivateEndpointServicesApi_Expecter) ListPrivateEndpointServices(ctx interface{}, groupId interface{}, cloudProvider interface{}) *PrivateEndpointServicesApi_ListPrivateEndpointServices_Call {
+func (_e *PrivateEndpointServicesApi_Expecter) ListPrivateEndpointServices(ctx any, groupId any, cloudProvider any) *PrivateEndpointServicesApi_ListPrivateEndpointServices_Call {
 	return &PrivateEndpointServicesApi_ListPrivateEndpointServices_Call{Call: _e.mock.On("ListPrivateEndpointServices", ctx, groupId, cloudProvider)}
 }
 
@@ -1260,7 +1242,7 @@ type PrivateEndpointServicesApi_ListPrivateEndpointServicesExecute_Call struct {
 
 // ListPrivateEndpointServicesExecute is a helper method to define mock.On call
 //   - r admin.ListPrivateEndpointServicesApiRequest
-func (_e *PrivateEndpointServicesApi_Expecter) ListPrivateEndpointServicesExecute(r interface{}) *PrivateEndpointServicesApi_ListPrivateEndpointServicesExecute_Call {
+func (_e *PrivateEndpointServicesApi_Expecter) ListPrivateEndpointServicesExecute(r any) *PrivateEndpointServicesApi_ListPrivateEndpointServicesExecute_Call {
 	return &PrivateEndpointServicesApi_ListPrivateEndpointServicesExecute_Call{Call: _e.mock.On("ListPrivateEndpointServicesExecute", r)}
 }
 
@@ -1307,7 +1289,7 @@ type PrivateEndpointServicesApi_ListPrivateEndpointServicesWithParams_Call struc
 // ListPrivateEndpointServicesWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListPrivateEndpointServicesApiParams
-func (_e *PrivateEndpointServicesApi_Expecter) ListPrivateEndpointServicesWithParams(ctx interface{}, args interface{}) *PrivateEndpointServicesApi_ListPrivateEndpointServicesWithParams_Call {
+func (_e *PrivateEndpointServicesApi_Expecter) ListPrivateEndpointServicesWithParams(ctx any, args any) *PrivateEndpointServicesApi_ListPrivateEndpointServicesWithParams_Call {
 	return &PrivateEndpointServicesApi_ListPrivateEndpointServicesWithParams_Call{Call: _e.mock.On("ListPrivateEndpointServicesWithParams", ctx, args)}
 }
 
@@ -1355,7 +1337,7 @@ type PrivateEndpointServicesApi_ToggleRegionalizedPrivateEndpointSetting_Call st
 //   - ctx context.Context
 //   - groupId string
 //   - projectSettingItem *admin.ProjectSettingItem
-func (_e *PrivateEndpointServicesApi_Expecter) ToggleRegionalizedPrivateEndpointSetting(ctx interface{}, groupId interface{}, projectSettingItem interface{}) *PrivateEndpointServicesApi_ToggleRegionalizedPrivateEndpointSetting_Call {
+func (_e *PrivateEndpointServicesApi_Expecter) ToggleRegionalizedPrivateEndpointSetting(ctx any, groupId any, projectSettingItem any) *PrivateEndpointServicesApi_ToggleRegionalizedPrivateEndpointSetting_Call {
 	return &PrivateEndpointServicesApi_ToggleRegionalizedPrivateEndpointSetting_Call{Call: _e.mock.On("ToggleRegionalizedPrivateEndpointSetting", ctx, groupId, projectSettingItem)}
 }
 
@@ -1422,7 +1404,7 @@ type PrivateEndpointServicesApi_ToggleRegionalizedPrivateEndpointSettingExecute_
 
 // ToggleRegionalizedPrivateEndpointSettingExecute is a helper method to define mock.On call
 //   - r admin.ToggleRegionalizedPrivateEndpointSettingApiRequest
-func (_e *PrivateEndpointServicesApi_Expecter) ToggleRegionalizedPrivateEndpointSettingExecute(r interface{}) *PrivateEndpointServicesApi_ToggleRegionalizedPrivateEndpointSettingExecute_Call {
+func (_e *PrivateEndpointServicesApi_Expecter) ToggleRegionalizedPrivateEndpointSettingExecute(r any) *PrivateEndpointServicesApi_ToggleRegionalizedPrivateEndpointSettingExecute_Call {
 	return &PrivateEndpointServicesApi_ToggleRegionalizedPrivateEndpointSettingExecute_Call{Call: _e.mock.On("ToggleRegionalizedPrivateEndpointSettingExecute", r)}
 }
 
@@ -1469,7 +1451,7 @@ type PrivateEndpointServicesApi_ToggleRegionalizedPrivateEndpointSettingWithPara
 // ToggleRegionalizedPrivateEndpointSettingWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ToggleRegionalizedPrivateEndpointSettingApiParams
-func (_e *PrivateEndpointServicesApi_Expecter) ToggleRegionalizedPrivateEndpointSettingWithParams(ctx interface{}, args interface{}) *PrivateEndpointServicesApi_ToggleRegionalizedPrivateEndpointSettingWithParams_Call {
+func (_e *PrivateEndpointServicesApi_Expecter) ToggleRegionalizedPrivateEndpointSettingWithParams(ctx any, args any) *PrivateEndpointServicesApi_ToggleRegionalizedPrivateEndpointSettingWithParams_Call {
 	return &PrivateEndpointServicesApi_ToggleRegionalizedPrivateEndpointSettingWithParams_Call{Call: _e.mock.On("ToggleRegionalizedPrivateEndpointSettingWithParams", ctx, args)}
 }
 

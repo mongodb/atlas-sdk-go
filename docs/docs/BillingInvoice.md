@@ -9,7 +9,6 @@ Name | Type | Description | Notes
 **Created** | Pointer to **time.Time** | Date and time when MongoDB Cloud created this invoice. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
 **CreditsCents** | Pointer to **int64** | Sum that MongoDB credited the specified organization toward this invoice. This parameter expresses its value in cents (100ths of one US Dollar). | [optional] [readonly] 
 **EndDate** | Pointer to **time.Time** | Date and time when MongoDB Cloud finished the billing period that this invoice covers. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
-**GroupId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the project associated to this invoice. This identifying string doesn&#39;t appear on all invoices. | [optional] [readonly] 
 **Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the invoice submitted to the specified organization. Charges typically post the next day. | [optional] [readonly] 
 **LineItems** | Pointer to [**[]InvoiceLineItem**](InvoiceLineItem.md) | List that contains individual services included in this invoice. | [optional] [readonly] 
 **LinkedInvoices** | Pointer to [**[]BillingInvoice**](BillingInvoice.md) | List that contains the invoices for organizations linked to the paying organization. | [optional] [readonly] 
@@ -20,7 +19,7 @@ Name | Type | Description | Notes
 **SalesTaxCents** | Pointer to **int64** | Sum of sales tax applied to this invoice. This parameter expresses its value in cents (100ths of one US Dollar). | [optional] [readonly] 
 **StartDate** | Pointer to **time.Time** | Date and time when MongoDB Cloud began the billing period that this invoice covers. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
 **StartingBalanceCents** | Pointer to **int64** | Sum that the specified organization owed to MongoDB when MongoDB issued this invoice. This parameter expresses its value in US Dollars. | [optional] [readonly] 
-**StatusName** | Pointer to **string** | Phase of payment processing in which this invoice exists when you made this request. Accepted phases include:  | Phase Value | Reason | |---|---| | CLOSED | MongoDB finalized all charges in the billing cycle but has yet to charge the customer. | | FAILED | MongoDB attempted to charge the provided credit card but charge for that amount failed. | | FORGIVEN | Customer initiated payment which MongoDB later forgave. | | FREE | All charges totalled zero so the customer won&#39;t be charged. | | INVOICED | MongoDB handled these charges using elastic invoicing. | | PAID | MongoDB succeeded in charging the provided credit card. | | PENDING | Invoice includes charges for the current billing cycle. | | PREPAID | Customer has a pre-paid plan so they won&#39;t be charged. |  | [optional] 
+**StatusName** | Pointer to **string** | Phase of payment processing in which this invoice exists when you made this request. Accepted phases include:  - &#x60;CLOSED&#x60;: MongoDB finalized all charges in the billing cycle but has yet to charge the customer. - &#x60;FAILED&#x60;: MongoDB attempted to charge the provided credit card but charge for that amount failed. - &#x60;FORGIVEN&#x60;: Customer initiated payment which MongoDB later forgave. - &#x60;FREE&#x60;: All charges totalled zero so the customer won&#39;t be charged. - &#x60;INVOICED&#x60;: MongoDB handled these charges using elastic invoicing. - &#x60;PAID&#x60;: MongoDB succeeded in charging the provided credit card. - &#x60;PENDING&#x60;: Invoice includes charges for the current billing cycle. - &#x60;PREPAID&#x60;: Customer has a pre-paid plan so they won&#39;t be charged. | [optional] 
 **SubtotalCents** | Pointer to **int64** | Sum of all positive invoice line items contained in this invoice. This parameter expresses its value in cents (100ths of one US Dollar). | [optional] [readonly] 
 **Updated** | Pointer to **time.Time** | Date and time when MongoDB Cloud last updated the value of this payment. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
 
@@ -163,30 +162,6 @@ SetEndDate sets EndDate field to given value.
 `func (o *BillingInvoice) HasEndDate() bool`
 
 HasEndDate returns a boolean if a field has been set.
-### GetGroupId
-
-`func (o *BillingInvoice) GetGroupId() string`
-
-GetGroupId returns the GroupId field if non-nil, zero value otherwise.
-
-### GetGroupIdOk
-
-`func (o *BillingInvoice) GetGroupIdOk() (*string, bool)`
-
-GetGroupIdOk returns a tuple with the GroupId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGroupId
-
-`func (o *BillingInvoice) SetGroupId(v string)`
-
-SetGroupId sets GroupId field to given value.
-
-### HasGroupId
-
-`func (o *BillingInvoice) HasGroupId() bool`
-
-HasGroupId returns a boolean if a field has been set.
 ### GetId
 
 `func (o *BillingInvoice) GetId() string`

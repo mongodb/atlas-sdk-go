@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **CloudProvider** | Pointer to **string** | Human-readable label that identifies the cloud provider that stores this snapshot. The resource returns this parameter when &#x60;\&quot;type\&quot;: \&quot;replicaSet\&quot;&#x60;. | [optional] [readonly] 
 **CopyRegions** | Pointer to **[]string** | List that identifies the regions to which MongoDB Cloud copies the snapshot. | [optional] [readonly] 
 **ReplicaSetName** | Pointer to **string** | Human-readable label that identifies the replica set from which MongoDB Cloud took this snapshot. The resource returns this parameter when &#x60;\&quot;type\&quot;: \&quot;replicaSet\&quot;&#x60;. | [optional] [readonly] 
-**ConfigServerType** | Pointer to **string** | Human-readable label that identifies the config server type for this snapshot. | [optional] [readonly] 
+**ConfigServerType** | Pointer to **string** | Describes a sharded cluster&#39;s config server type. | [optional] [readonly] 
 **Members** | Pointer to [**[]DiskBackupShardedClusterSnapshotMember**](DiskBackupShardedClusterSnapshotMember.md) | List that includes the snapshots and the cloud provider that stores the snapshots. The resource returns this parameter when &#x60;\&quot;type\&quot; : \&quot;SHARDED_CLUSTER\&quot;&#x60;. | [optional] [readonly] 
 **SnapshotIds** | Pointer to **[]string** | List that contains the unique identifiers of the snapshots created for the shards and config host for a sharded cluster. The resource returns this parameter when &#x60;\&quot;type\&quot;: \&quot;SHARDED_CLUSTER\&quot;&#x60;. These identifiers should match the ones specified in the **members[n].id** parameters. This allows you to map a snapshot to its shard or config host name. | [optional] [readonly] 
 

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BrokerPublicCertificate** | Pointer to **string** | A trusted, public x509 certificate for connecting to Kafka over SSL. | [optional] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
-**Protocol** | Pointer to **string** | Describes the transport type. Can be either PLAINTEXT or SSL. | [optional] 
+**Protocol** | Pointer to **string** | Describes the transport type. Can be either SASL_PLAINTEXT, SASL_SSL, or SSL. | [optional] 
 
 ## Methods
 

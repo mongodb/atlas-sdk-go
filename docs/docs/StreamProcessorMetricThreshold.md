@@ -1,4 +1,4 @@
-# ServerlessMetricThreshold
+# StreamProcessorMetricThreshold
 
 ## Properties
 
@@ -8,140 +8,140 @@ Name | Type | Description | Notes
 **Mode** | Pointer to **string** | MongoDB Cloud computes the current metric value as an average. | [optional] 
 **Operator** | Pointer to **string** | Comparison operator to apply when checking the current metric value. | [optional] 
 **Threshold** | Pointer to **float64** | Value of metric that, when exceeded, triggers an alert. | [optional] 
-**Units** | Pointer to **string** | Element used to express the quantity. This can be an element of time, storage capacity, and the like. | [optional] 
+**Units** | Pointer to **string** | Element used to express the quantity. This can be an element of time, storage capacity, and the like. | [optional] [default to "RAW"]
 
 ## Methods
 
-### NewServerlessMetricThreshold
+### NewStreamProcessorMetricThreshold
 
-`func NewServerlessMetricThreshold(metricName string, ) *ServerlessMetricThreshold`
+`func NewStreamProcessorMetricThreshold(metricName string, ) *StreamProcessorMetricThreshold`
 
-NewServerlessMetricThreshold instantiates a new ServerlessMetricThreshold object
+NewStreamProcessorMetricThreshold instantiates a new StreamProcessorMetricThreshold object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewServerlessMetricThresholdWithDefaults
+### NewStreamProcessorMetricThresholdWithDefaults
 
-`func NewServerlessMetricThresholdWithDefaults() *ServerlessMetricThreshold`
+`func NewStreamProcessorMetricThresholdWithDefaults() *StreamProcessorMetricThreshold`
 
-NewServerlessMetricThresholdWithDefaults instantiates a new ServerlessMetricThreshold object
+NewStreamProcessorMetricThresholdWithDefaults instantiates a new StreamProcessorMetricThreshold object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetMetricName
 
-`func (o *ServerlessMetricThreshold) GetMetricName() string`
+`func (o *StreamProcessorMetricThreshold) GetMetricName() string`
 
 GetMetricName returns the MetricName field if non-nil, zero value otherwise.
 
 ### GetMetricNameOk
 
-`func (o *ServerlessMetricThreshold) GetMetricNameOk() (*string, bool)`
+`func (o *StreamProcessorMetricThreshold) GetMetricNameOk() (*string, bool)`
 
 GetMetricNameOk returns a tuple with the MetricName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetricName
 
-`func (o *ServerlessMetricThreshold) SetMetricName(v string)`
+`func (o *StreamProcessorMetricThreshold) SetMetricName(v string)`
 
 SetMetricName sets MetricName field to given value.
 
 ### GetMode
 
-`func (o *ServerlessMetricThreshold) GetMode() string`
+`func (o *StreamProcessorMetricThreshold) GetMode() string`
 
 GetMode returns the Mode field if non-nil, zero value otherwise.
 
 ### GetModeOk
 
-`func (o *ServerlessMetricThreshold) GetModeOk() (*string, bool)`
+`func (o *StreamProcessorMetricThreshold) GetModeOk() (*string, bool)`
 
 GetModeOk returns a tuple with the Mode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMode
 
-`func (o *ServerlessMetricThreshold) SetMode(v string)`
+`func (o *StreamProcessorMetricThreshold) SetMode(v string)`
 
 SetMode sets Mode field to given value.
 
 ### HasMode
 
-`func (o *ServerlessMetricThreshold) HasMode() bool`
+`func (o *StreamProcessorMetricThreshold) HasMode() bool`
 
 HasMode returns a boolean if a field has been set.
 ### GetOperator
 
-`func (o *ServerlessMetricThreshold) GetOperator() string`
+`func (o *StreamProcessorMetricThreshold) GetOperator() string`
 
 GetOperator returns the Operator field if non-nil, zero value otherwise.
 
 ### GetOperatorOk
 
-`func (o *ServerlessMetricThreshold) GetOperatorOk() (*string, bool)`
+`func (o *StreamProcessorMetricThreshold) GetOperatorOk() (*string, bool)`
 
 GetOperatorOk returns a tuple with the Operator field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOperator
 
-`func (o *ServerlessMetricThreshold) SetOperator(v string)`
+`func (o *StreamProcessorMetricThreshold) SetOperator(v string)`
 
 SetOperator sets Operator field to given value.
 
 ### HasOperator
 
-`func (o *ServerlessMetricThreshold) HasOperator() bool`
+`func (o *StreamProcessorMetricThreshold) HasOperator() bool`
 
 HasOperator returns a boolean if a field has been set.
 ### GetThreshold
 
-`func (o *ServerlessMetricThreshold) GetThreshold() float64`
+`func (o *StreamProcessorMetricThreshold) GetThreshold() float64`
 
 GetThreshold returns the Threshold field if non-nil, zero value otherwise.
 
 ### GetThresholdOk
 
-`func (o *ServerlessMetricThreshold) GetThresholdOk() (*float64, bool)`
+`func (o *StreamProcessorMetricThreshold) GetThresholdOk() (*float64, bool)`
 
 GetThresholdOk returns a tuple with the Threshold field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetThreshold
 
-`func (o *ServerlessMetricThreshold) SetThreshold(v float64)`
+`func (o *StreamProcessorMetricThreshold) SetThreshold(v float64)`
 
 SetThreshold sets Threshold field to given value.
 
 ### HasThreshold
 
-`func (o *ServerlessMetricThreshold) HasThreshold() bool`
+`func (o *StreamProcessorMetricThreshold) HasThreshold() bool`
 
 HasThreshold returns a boolean if a field has been set.
 ### GetUnits
 
-`func (o *ServerlessMetricThreshold) GetUnits() string`
+`func (o *StreamProcessorMetricThreshold) GetUnits() string`
 
 GetUnits returns the Units field if non-nil, zero value otherwise.
 
 ### GetUnitsOk
 
-`func (o *ServerlessMetricThreshold) GetUnitsOk() (*string, bool)`
+`func (o *StreamProcessorMetricThreshold) GetUnitsOk() (*string, bool)`
 
 GetUnitsOk returns a tuple with the Units field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUnits
 
-`func (o *ServerlessMetricThreshold) SetUnits(v string)`
+`func (o *StreamProcessorMetricThreshold) SetUnits(v string)`
 
 SetUnits sets Units field to given value.
 
 ### HasUnits
 
-`func (o *ServerlessMetricThreshold) HasUnits() bool`
+`func (o *StreamProcessorMetricThreshold) HasUnits() bool`
 
 HasUnits returns a boolean if a field has been set.
 

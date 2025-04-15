@@ -6,9 +6,9 @@ import (
 	"encoding/json"
 )
 
-// DataLakeDataProcessRegion Information about the cloud provider region to which the data lake routes client connections.
+// DataLakeDataProcessRegion Information about the cloud provider region to which the Federated Database Instance routes client connections.
 type DataLakeDataProcessRegion struct {
-	// Name of the cloud service that hosts the data lake's data stores.
+	// Name of the cloud service that hosts the Federated Database Instance's infrastructure.
 	CloudProvider string `json:"cloudProvider"`
 	// Name of the region to which the data lake routes client connections.
 	Region string `json:"region"`

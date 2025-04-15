@@ -25,7 +25,7 @@ type Group struct {
 	Name string `json:"name"`
 	// Unique 24-hexadecimal digit string that identifies the MongoDB Cloud organization to which the project belongs.
 	OrgId string `json:"orgId"`
-	// Applies to Atlas for Government only.  In Commercial Atlas, this field will be rejected in requests and missing in responses.  This field sets restrictions on available regions in the project.  | Value                             | Available Regions | |-----------------------------------|------------| | `COMMERCIAL_FEDRAMP_REGIONS_ONLY` | Only allows deployments in FedRAMP Moderate regions.| | `GOV_REGIONS_ONLY`                | Only allows deployments in GovCloud regions.|
+	// Applies to Atlas for Government only.  In Commercial Atlas, this field will be rejected in requests and missing in responses.  This field sets restrictions on available regions in the project.  `COMMERCIAL_FEDRAMP_REGIONS_ONLY`: Only allows deployments in FedRAMP Moderate regions.  `GOV_REGIONS_ONLY`: Only allows deployments in GovCloud regions.
 	RegionUsageRestrictions *string `json:"regionUsageRestrictions,omitempty"`
 	// List that contains key-value pairs between 1 to 255 characters in length for tagging and categorizing the project.
 	Tags *[]ResourceTag `json:"tags,omitempty"`
@@ -46,6 +46,8 @@ func NewGroup(clusterCount int64, created time.Time, name string, orgId string) 
 	this.OrgId = orgId
 	var regionUsageRestrictions string = "COMMERCIAL_FEDRAMP_REGIONS_ONLY"
 	this.RegionUsageRestrictions = &regionUsageRestrictions
+	var withDefaultAlertsSettings bool = true
+	this.WithDefaultAlertsSettings = &withDefaultAlertsSettings
 	return &this
 }
 
@@ -56,6 +58,8 @@ func NewGroupWithDefaults() *Group {
 	this := Group{}
 	var regionUsageRestrictions string = "COMMERCIAL_FEDRAMP_REGIONS_ONLY"
 	this.RegionUsageRestrictions = &regionUsageRestrictions
+	var withDefaultAlertsSettings bool = true
+	this.WithDefaultAlertsSettings = &withDefaultAlertsSettings
 	return &this
 }
 

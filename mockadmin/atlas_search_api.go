@@ -53,7 +53,7 @@ type AtlasSearchApi_CreateAtlasSearchDeployment_Call struct {
 //   - groupId string
 //   - clusterName string
 //   - apiSearchDeploymentRequest *admin.ApiSearchDeploymentRequest
-func (_e *AtlasSearchApi_Expecter) CreateAtlasSearchDeployment(ctx interface{}, groupId interface{}, clusterName interface{}, apiSearchDeploymentRequest interface{}) *AtlasSearchApi_CreateAtlasSearchDeployment_Call {
+func (_e *AtlasSearchApi_Expecter) CreateAtlasSearchDeployment(ctx any, groupId any, clusterName any, apiSearchDeploymentRequest any) *AtlasSearchApi_CreateAtlasSearchDeployment_Call {
 	return &AtlasSearchApi_CreateAtlasSearchDeployment_Call{Call: _e.mock.On("CreateAtlasSearchDeployment", ctx, groupId, clusterName, apiSearchDeploymentRequest)}
 }
 
@@ -120,7 +120,7 @@ type AtlasSearchApi_CreateAtlasSearchDeploymentExecute_Call struct {
 
 // CreateAtlasSearchDeploymentExecute is a helper method to define mock.On call
 //   - r admin.CreateAtlasSearchDeploymentApiRequest
-func (_e *AtlasSearchApi_Expecter) CreateAtlasSearchDeploymentExecute(r interface{}) *AtlasSearchApi_CreateAtlasSearchDeploymentExecute_Call {
+func (_e *AtlasSearchApi_Expecter) CreateAtlasSearchDeploymentExecute(r any) *AtlasSearchApi_CreateAtlasSearchDeploymentExecute_Call {
 	return &AtlasSearchApi_CreateAtlasSearchDeploymentExecute_Call{Call: _e.mock.On("CreateAtlasSearchDeploymentExecute", r)}
 }
 
@@ -167,7 +167,7 @@ type AtlasSearchApi_CreateAtlasSearchDeploymentWithParams_Call struct {
 // CreateAtlasSearchDeploymentWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.CreateAtlasSearchDeploymentApiParams
-func (_e *AtlasSearchApi_Expecter) CreateAtlasSearchDeploymentWithParams(ctx interface{}, args interface{}) *AtlasSearchApi_CreateAtlasSearchDeploymentWithParams_Call {
+func (_e *AtlasSearchApi_Expecter) CreateAtlasSearchDeploymentWithParams(ctx any, args any) *AtlasSearchApi_CreateAtlasSearchDeploymentWithParams_Call {
 	return &AtlasSearchApi_CreateAtlasSearchDeploymentWithParams_Call{Call: _e.mock.On("CreateAtlasSearchDeploymentWithParams", ctx, args)}
 }
 
@@ -188,70 +188,70 @@ func (_c *AtlasSearchApi_CreateAtlasSearchDeploymentWithParams_Call) RunAndRetur
 	return _c
 }
 
-// CreateAtlasSearchIndex provides a mock function with given fields: ctx, groupId, clusterName, clusterSearchIndex
-func (_m *AtlasSearchApi) CreateAtlasSearchIndex(ctx context.Context, groupId string, clusterName string, clusterSearchIndex *admin.ClusterSearchIndex) admin.CreateAtlasSearchIndexApiRequest {
+// CreateAtlasSearchIndexDeprecated provides a mock function with given fields: ctx, groupId, clusterName, clusterSearchIndex
+func (_m *AtlasSearchApi) CreateAtlasSearchIndexDeprecated(ctx context.Context, groupId string, clusterName string, clusterSearchIndex *admin.ClusterSearchIndex) admin.CreateAtlasSearchIndexDeprecatedApiRequest {
 	ret := _m.Called(ctx, groupId, clusterName, clusterSearchIndex)
 
 	if len(ret) == 0 {
-		panic("no return value specified for CreateAtlasSearchIndex")
+		panic("no return value specified for CreateAtlasSearchIndexDeprecated")
 	}
 
-	var r0 admin.CreateAtlasSearchIndexApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.ClusterSearchIndex) admin.CreateAtlasSearchIndexApiRequest); ok {
+	var r0 admin.CreateAtlasSearchIndexDeprecatedApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.ClusterSearchIndex) admin.CreateAtlasSearchIndexDeprecatedApiRequest); ok {
 		r0 = rf(ctx, groupId, clusterName, clusterSearchIndex)
 	} else {
-		r0 = ret.Get(0).(admin.CreateAtlasSearchIndexApiRequest)
+		r0 = ret.Get(0).(admin.CreateAtlasSearchIndexDeprecatedApiRequest)
 	}
 
 	return r0
 }
 
-// AtlasSearchApi_CreateAtlasSearchIndex_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateAtlasSearchIndex'
-type AtlasSearchApi_CreateAtlasSearchIndex_Call struct {
+// AtlasSearchApi_CreateAtlasSearchIndexDeprecated_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateAtlasSearchIndexDeprecated'
+type AtlasSearchApi_CreateAtlasSearchIndexDeprecated_Call struct {
 	*mock.Call
 }
 
-// CreateAtlasSearchIndex is a helper method to define mock.On call
+// CreateAtlasSearchIndexDeprecated is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
 //   - clusterSearchIndex *admin.ClusterSearchIndex
-func (_e *AtlasSearchApi_Expecter) CreateAtlasSearchIndex(ctx interface{}, groupId interface{}, clusterName interface{}, clusterSearchIndex interface{}) *AtlasSearchApi_CreateAtlasSearchIndex_Call {
-	return &AtlasSearchApi_CreateAtlasSearchIndex_Call{Call: _e.mock.On("CreateAtlasSearchIndex", ctx, groupId, clusterName, clusterSearchIndex)}
+func (_e *AtlasSearchApi_Expecter) CreateAtlasSearchIndexDeprecated(ctx any, groupId any, clusterName any, clusterSearchIndex any) *AtlasSearchApi_CreateAtlasSearchIndexDeprecated_Call {
+	return &AtlasSearchApi_CreateAtlasSearchIndexDeprecated_Call{Call: _e.mock.On("CreateAtlasSearchIndexDeprecated", ctx, groupId, clusterName, clusterSearchIndex)}
 }
 
-func (_c *AtlasSearchApi_CreateAtlasSearchIndex_Call) Run(run func(ctx context.Context, groupId string, clusterName string, clusterSearchIndex *admin.ClusterSearchIndex)) *AtlasSearchApi_CreateAtlasSearchIndex_Call {
+func (_c *AtlasSearchApi_CreateAtlasSearchIndexDeprecated_Call) Run(run func(ctx context.Context, groupId string, clusterName string, clusterSearchIndex *admin.ClusterSearchIndex)) *AtlasSearchApi_CreateAtlasSearchIndexDeprecated_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.ClusterSearchIndex))
 	})
 	return _c
 }
 
-func (_c *AtlasSearchApi_CreateAtlasSearchIndex_Call) Return(_a0 admin.CreateAtlasSearchIndexApiRequest) *AtlasSearchApi_CreateAtlasSearchIndex_Call {
+func (_c *AtlasSearchApi_CreateAtlasSearchIndexDeprecated_Call) Return(_a0 admin.CreateAtlasSearchIndexDeprecatedApiRequest) *AtlasSearchApi_CreateAtlasSearchIndexDeprecated_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *AtlasSearchApi_CreateAtlasSearchIndex_Call) RunAndReturn(run func(context.Context, string, string, *admin.ClusterSearchIndex) admin.CreateAtlasSearchIndexApiRequest) *AtlasSearchApi_CreateAtlasSearchIndex_Call {
+func (_c *AtlasSearchApi_CreateAtlasSearchIndexDeprecated_Call) RunAndReturn(run func(context.Context, string, string, *admin.ClusterSearchIndex) admin.CreateAtlasSearchIndexDeprecatedApiRequest) *AtlasSearchApi_CreateAtlasSearchIndexDeprecated_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// CreateAtlasSearchIndexExecute provides a mock function with given fields: r
-func (_m *AtlasSearchApi) CreateAtlasSearchIndexExecute(r admin.CreateAtlasSearchIndexApiRequest) (*admin.ClusterSearchIndex, *http.Response, error) {
+// CreateAtlasSearchIndexDeprecatedExecute provides a mock function with given fields: r
+func (_m *AtlasSearchApi) CreateAtlasSearchIndexDeprecatedExecute(r admin.CreateAtlasSearchIndexDeprecatedApiRequest) (*admin.ClusterSearchIndex, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for CreateAtlasSearchIndexExecute")
+		panic("no return value specified for CreateAtlasSearchIndexDeprecatedExecute")
 	}
 
 	var r0 *admin.ClusterSearchIndex
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.CreateAtlasSearchIndexApiRequest) (*admin.ClusterSearchIndex, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.CreateAtlasSearchIndexDeprecatedApiRequest) (*admin.ClusterSearchIndex, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.CreateAtlasSearchIndexApiRequest) *admin.ClusterSearchIndex); ok {
+	if rf, ok := ret.Get(0).(func(admin.CreateAtlasSearchIndexDeprecatedApiRequest) *admin.ClusterSearchIndex); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -259,7 +259,7 @@ func (_m *AtlasSearchApi) CreateAtlasSearchIndexExecute(r admin.CreateAtlasSearc
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.CreateAtlasSearchIndexApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.CreateAtlasSearchIndexDeprecatedApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -267,7 +267,7 @@ func (_m *AtlasSearchApi) CreateAtlasSearchIndexExecute(r admin.CreateAtlasSearc
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.CreateAtlasSearchIndexApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.CreateAtlasSearchIndexDeprecatedApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -276,77 +276,77 @@ func (_m *AtlasSearchApi) CreateAtlasSearchIndexExecute(r admin.CreateAtlasSearc
 	return r0, r1, r2
 }
 
-// AtlasSearchApi_CreateAtlasSearchIndexExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateAtlasSearchIndexExecute'
-type AtlasSearchApi_CreateAtlasSearchIndexExecute_Call struct {
+// AtlasSearchApi_CreateAtlasSearchIndexDeprecatedExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateAtlasSearchIndexDeprecatedExecute'
+type AtlasSearchApi_CreateAtlasSearchIndexDeprecatedExecute_Call struct {
 	*mock.Call
 }
 
-// CreateAtlasSearchIndexExecute is a helper method to define mock.On call
-//   - r admin.CreateAtlasSearchIndexApiRequest
-func (_e *AtlasSearchApi_Expecter) CreateAtlasSearchIndexExecute(r interface{}) *AtlasSearchApi_CreateAtlasSearchIndexExecute_Call {
-	return &AtlasSearchApi_CreateAtlasSearchIndexExecute_Call{Call: _e.mock.On("CreateAtlasSearchIndexExecute", r)}
+// CreateAtlasSearchIndexDeprecatedExecute is a helper method to define mock.On call
+//   - r admin.CreateAtlasSearchIndexDeprecatedApiRequest
+func (_e *AtlasSearchApi_Expecter) CreateAtlasSearchIndexDeprecatedExecute(r any) *AtlasSearchApi_CreateAtlasSearchIndexDeprecatedExecute_Call {
+	return &AtlasSearchApi_CreateAtlasSearchIndexDeprecatedExecute_Call{Call: _e.mock.On("CreateAtlasSearchIndexDeprecatedExecute", r)}
 }
 
-func (_c *AtlasSearchApi_CreateAtlasSearchIndexExecute_Call) Run(run func(r admin.CreateAtlasSearchIndexApiRequest)) *AtlasSearchApi_CreateAtlasSearchIndexExecute_Call {
+func (_c *AtlasSearchApi_CreateAtlasSearchIndexDeprecatedExecute_Call) Run(run func(r admin.CreateAtlasSearchIndexDeprecatedApiRequest)) *AtlasSearchApi_CreateAtlasSearchIndexDeprecatedExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.CreateAtlasSearchIndexApiRequest))
+		run(args[0].(admin.CreateAtlasSearchIndexDeprecatedApiRequest))
 	})
 	return _c
 }
 
-func (_c *AtlasSearchApi_CreateAtlasSearchIndexExecute_Call) Return(_a0 *admin.ClusterSearchIndex, _a1 *http.Response, _a2 error) *AtlasSearchApi_CreateAtlasSearchIndexExecute_Call {
+func (_c *AtlasSearchApi_CreateAtlasSearchIndexDeprecatedExecute_Call) Return(_a0 *admin.ClusterSearchIndex, _a1 *http.Response, _a2 error) *AtlasSearchApi_CreateAtlasSearchIndexDeprecatedExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *AtlasSearchApi_CreateAtlasSearchIndexExecute_Call) RunAndReturn(run func(admin.CreateAtlasSearchIndexApiRequest) (*admin.ClusterSearchIndex, *http.Response, error)) *AtlasSearchApi_CreateAtlasSearchIndexExecute_Call {
+func (_c *AtlasSearchApi_CreateAtlasSearchIndexDeprecatedExecute_Call) RunAndReturn(run func(admin.CreateAtlasSearchIndexDeprecatedApiRequest) (*admin.ClusterSearchIndex, *http.Response, error)) *AtlasSearchApi_CreateAtlasSearchIndexDeprecatedExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// CreateAtlasSearchIndexWithParams provides a mock function with given fields: ctx, args
-func (_m *AtlasSearchApi) CreateAtlasSearchIndexWithParams(ctx context.Context, args *admin.CreateAtlasSearchIndexApiParams) admin.CreateAtlasSearchIndexApiRequest {
+// CreateAtlasSearchIndexDeprecatedWithParams provides a mock function with given fields: ctx, args
+func (_m *AtlasSearchApi) CreateAtlasSearchIndexDeprecatedWithParams(ctx context.Context, args *admin.CreateAtlasSearchIndexDeprecatedApiParams) admin.CreateAtlasSearchIndexDeprecatedApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for CreateAtlasSearchIndexWithParams")
+		panic("no return value specified for CreateAtlasSearchIndexDeprecatedWithParams")
 	}
 
-	var r0 admin.CreateAtlasSearchIndexApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateAtlasSearchIndexApiParams) admin.CreateAtlasSearchIndexApiRequest); ok {
+	var r0 admin.CreateAtlasSearchIndexDeprecatedApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateAtlasSearchIndexDeprecatedApiParams) admin.CreateAtlasSearchIndexDeprecatedApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.CreateAtlasSearchIndexApiRequest)
+		r0 = ret.Get(0).(admin.CreateAtlasSearchIndexDeprecatedApiRequest)
 	}
 
 	return r0
 }
 
-// AtlasSearchApi_CreateAtlasSearchIndexWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateAtlasSearchIndexWithParams'
-type AtlasSearchApi_CreateAtlasSearchIndexWithParams_Call struct {
+// AtlasSearchApi_CreateAtlasSearchIndexDeprecatedWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateAtlasSearchIndexDeprecatedWithParams'
+type AtlasSearchApi_CreateAtlasSearchIndexDeprecatedWithParams_Call struct {
 	*mock.Call
 }
 
-// CreateAtlasSearchIndexWithParams is a helper method to define mock.On call
+// CreateAtlasSearchIndexDeprecatedWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.CreateAtlasSearchIndexApiParams
-func (_e *AtlasSearchApi_Expecter) CreateAtlasSearchIndexWithParams(ctx interface{}, args interface{}) *AtlasSearchApi_CreateAtlasSearchIndexWithParams_Call {
-	return &AtlasSearchApi_CreateAtlasSearchIndexWithParams_Call{Call: _e.mock.On("CreateAtlasSearchIndexWithParams", ctx, args)}
+//   - args *admin.CreateAtlasSearchIndexDeprecatedApiParams
+func (_e *AtlasSearchApi_Expecter) CreateAtlasSearchIndexDeprecatedWithParams(ctx any, args any) *AtlasSearchApi_CreateAtlasSearchIndexDeprecatedWithParams_Call {
+	return &AtlasSearchApi_CreateAtlasSearchIndexDeprecatedWithParams_Call{Call: _e.mock.On("CreateAtlasSearchIndexDeprecatedWithParams", ctx, args)}
 }
 
-func (_c *AtlasSearchApi_CreateAtlasSearchIndexWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateAtlasSearchIndexApiParams)) *AtlasSearchApi_CreateAtlasSearchIndexWithParams_Call {
+func (_c *AtlasSearchApi_CreateAtlasSearchIndexDeprecatedWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateAtlasSearchIndexDeprecatedApiParams)) *AtlasSearchApi_CreateAtlasSearchIndexDeprecatedWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.CreateAtlasSearchIndexApiParams))
+		run(args[0].(context.Context), args[1].(*admin.CreateAtlasSearchIndexDeprecatedApiParams))
 	})
 	return _c
 }
 
-func (_c *AtlasSearchApi_CreateAtlasSearchIndexWithParams_Call) Return(_a0 admin.CreateAtlasSearchIndexApiRequest) *AtlasSearchApi_CreateAtlasSearchIndexWithParams_Call {
+func (_c *AtlasSearchApi_CreateAtlasSearchIndexDeprecatedWithParams_Call) Return(_a0 admin.CreateAtlasSearchIndexDeprecatedApiRequest) *AtlasSearchApi_CreateAtlasSearchIndexDeprecatedWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *AtlasSearchApi_CreateAtlasSearchIndexWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateAtlasSearchIndexApiParams) admin.CreateAtlasSearchIndexApiRequest) *AtlasSearchApi_CreateAtlasSearchIndexWithParams_Call {
+func (_c *AtlasSearchApi_CreateAtlasSearchIndexDeprecatedWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateAtlasSearchIndexDeprecatedApiParams) admin.CreateAtlasSearchIndexDeprecatedApiRequest) *AtlasSearchApi_CreateAtlasSearchIndexDeprecatedWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -378,7 +378,7 @@ type AtlasSearchApi_DeleteAtlasSearchDeployment_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
-func (_e *AtlasSearchApi_Expecter) DeleteAtlasSearchDeployment(ctx interface{}, groupId interface{}, clusterName interface{}) *AtlasSearchApi_DeleteAtlasSearchDeployment_Call {
+func (_e *AtlasSearchApi_Expecter) DeleteAtlasSearchDeployment(ctx any, groupId any, clusterName any) *AtlasSearchApi_DeleteAtlasSearchDeployment_Call {
 	return &AtlasSearchApi_DeleteAtlasSearchDeployment_Call{Call: _e.mock.On("DeleteAtlasSearchDeployment", ctx, groupId, clusterName)}
 }
 
@@ -436,7 +436,7 @@ type AtlasSearchApi_DeleteAtlasSearchDeploymentExecute_Call struct {
 
 // DeleteAtlasSearchDeploymentExecute is a helper method to define mock.On call
 //   - r admin.DeleteAtlasSearchDeploymentApiRequest
-func (_e *AtlasSearchApi_Expecter) DeleteAtlasSearchDeploymentExecute(r interface{}) *AtlasSearchApi_DeleteAtlasSearchDeploymentExecute_Call {
+func (_e *AtlasSearchApi_Expecter) DeleteAtlasSearchDeploymentExecute(r any) *AtlasSearchApi_DeleteAtlasSearchDeploymentExecute_Call {
 	return &AtlasSearchApi_DeleteAtlasSearchDeploymentExecute_Call{Call: _e.mock.On("DeleteAtlasSearchDeploymentExecute", r)}
 }
 
@@ -483,7 +483,7 @@ type AtlasSearchApi_DeleteAtlasSearchDeploymentWithParams_Call struct {
 // DeleteAtlasSearchDeploymentWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.DeleteAtlasSearchDeploymentApiParams
-func (_e *AtlasSearchApi_Expecter) DeleteAtlasSearchDeploymentWithParams(ctx interface{}, args interface{}) *AtlasSearchApi_DeleteAtlasSearchDeploymentWithParams_Call {
+func (_e *AtlasSearchApi_Expecter) DeleteAtlasSearchDeploymentWithParams(ctx any, args any) *AtlasSearchApi_DeleteAtlasSearchDeploymentWithParams_Call {
 	return &AtlasSearchApi_DeleteAtlasSearchDeploymentWithParams_Call{Call: _e.mock.On("DeleteAtlasSearchDeploymentWithParams", ctx, args)}
 }
 
@@ -504,165 +504,156 @@ func (_c *AtlasSearchApi_DeleteAtlasSearchDeploymentWithParams_Call) RunAndRetur
 	return _c
 }
 
-// DeleteAtlasSearchIndex provides a mock function with given fields: ctx, groupId, clusterName, indexId
-func (_m *AtlasSearchApi) DeleteAtlasSearchIndex(ctx context.Context, groupId string, clusterName string, indexId string) admin.DeleteAtlasSearchIndexApiRequest {
+// DeleteAtlasSearchIndexDeprecated provides a mock function with given fields: ctx, groupId, clusterName, indexId
+func (_m *AtlasSearchApi) DeleteAtlasSearchIndexDeprecated(ctx context.Context, groupId string, clusterName string, indexId string) admin.DeleteAtlasSearchIndexDeprecatedApiRequest {
 	ret := _m.Called(ctx, groupId, clusterName, indexId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeleteAtlasSearchIndex")
+		panic("no return value specified for DeleteAtlasSearchIndexDeprecated")
 	}
 
-	var r0 admin.DeleteAtlasSearchIndexApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, string) admin.DeleteAtlasSearchIndexApiRequest); ok {
+	var r0 admin.DeleteAtlasSearchIndexDeprecatedApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, string) admin.DeleteAtlasSearchIndexDeprecatedApiRequest); ok {
 		r0 = rf(ctx, groupId, clusterName, indexId)
 	} else {
-		r0 = ret.Get(0).(admin.DeleteAtlasSearchIndexApiRequest)
+		r0 = ret.Get(0).(admin.DeleteAtlasSearchIndexDeprecatedApiRequest)
 	}
 
 	return r0
 }
 
-// AtlasSearchApi_DeleteAtlasSearchIndex_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteAtlasSearchIndex'
-type AtlasSearchApi_DeleteAtlasSearchIndex_Call struct {
+// AtlasSearchApi_DeleteAtlasSearchIndexDeprecated_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteAtlasSearchIndexDeprecated'
+type AtlasSearchApi_DeleteAtlasSearchIndexDeprecated_Call struct {
 	*mock.Call
 }
 
-// DeleteAtlasSearchIndex is a helper method to define mock.On call
+// DeleteAtlasSearchIndexDeprecated is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
 //   - indexId string
-func (_e *AtlasSearchApi_Expecter) DeleteAtlasSearchIndex(ctx interface{}, groupId interface{}, clusterName interface{}, indexId interface{}) *AtlasSearchApi_DeleteAtlasSearchIndex_Call {
-	return &AtlasSearchApi_DeleteAtlasSearchIndex_Call{Call: _e.mock.On("DeleteAtlasSearchIndex", ctx, groupId, clusterName, indexId)}
+func (_e *AtlasSearchApi_Expecter) DeleteAtlasSearchIndexDeprecated(ctx any, groupId any, clusterName any, indexId any) *AtlasSearchApi_DeleteAtlasSearchIndexDeprecated_Call {
+	return &AtlasSearchApi_DeleteAtlasSearchIndexDeprecated_Call{Call: _e.mock.On("DeleteAtlasSearchIndexDeprecated", ctx, groupId, clusterName, indexId)}
 }
 
-func (_c *AtlasSearchApi_DeleteAtlasSearchIndex_Call) Run(run func(ctx context.Context, groupId string, clusterName string, indexId string)) *AtlasSearchApi_DeleteAtlasSearchIndex_Call {
+func (_c *AtlasSearchApi_DeleteAtlasSearchIndexDeprecated_Call) Run(run func(ctx context.Context, groupId string, clusterName string, indexId string)) *AtlasSearchApi_DeleteAtlasSearchIndexDeprecated_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(string))
 	})
 	return _c
 }
 
-func (_c *AtlasSearchApi_DeleteAtlasSearchIndex_Call) Return(_a0 admin.DeleteAtlasSearchIndexApiRequest) *AtlasSearchApi_DeleteAtlasSearchIndex_Call {
+func (_c *AtlasSearchApi_DeleteAtlasSearchIndexDeprecated_Call) Return(_a0 admin.DeleteAtlasSearchIndexDeprecatedApiRequest) *AtlasSearchApi_DeleteAtlasSearchIndexDeprecated_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *AtlasSearchApi_DeleteAtlasSearchIndex_Call) RunAndReturn(run func(context.Context, string, string, string) admin.DeleteAtlasSearchIndexApiRequest) *AtlasSearchApi_DeleteAtlasSearchIndex_Call {
+func (_c *AtlasSearchApi_DeleteAtlasSearchIndexDeprecated_Call) RunAndReturn(run func(context.Context, string, string, string) admin.DeleteAtlasSearchIndexDeprecatedApiRequest) *AtlasSearchApi_DeleteAtlasSearchIndexDeprecated_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeleteAtlasSearchIndexExecute provides a mock function with given fields: r
-func (_m *AtlasSearchApi) DeleteAtlasSearchIndexExecute(r admin.DeleteAtlasSearchIndexApiRequest) (map[string]interface{}, *http.Response, error) {
+// DeleteAtlasSearchIndexDeprecatedExecute provides a mock function with given fields: r
+func (_m *AtlasSearchApi) DeleteAtlasSearchIndexDeprecatedExecute(r admin.DeleteAtlasSearchIndexDeprecatedApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeleteAtlasSearchIndexExecute")
+		panic("no return value specified for DeleteAtlasSearchIndexDeprecatedExecute")
 	}
 
-	var r0 map[string]interface{}
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteAtlasSearchIndexApiRequest) (map[string]interface{}, *http.Response, error)); ok {
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.DeleteAtlasSearchIndexDeprecatedApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteAtlasSearchIndexApiRequest) map[string]interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteAtlasSearchIndexDeprecatedApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(map[string]interface{})
+			r0 = ret.Get(0).(*http.Response)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeleteAtlasSearchIndexApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.DeleteAtlasSearchIndexDeprecatedApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
+		r1 = ret.Error(1)
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.DeleteAtlasSearchIndexApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
+	return r0, r1
 }
 
-// AtlasSearchApi_DeleteAtlasSearchIndexExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteAtlasSearchIndexExecute'
-type AtlasSearchApi_DeleteAtlasSearchIndexExecute_Call struct {
+// AtlasSearchApi_DeleteAtlasSearchIndexDeprecatedExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteAtlasSearchIndexDeprecatedExecute'
+type AtlasSearchApi_DeleteAtlasSearchIndexDeprecatedExecute_Call struct {
 	*mock.Call
 }
 
-// DeleteAtlasSearchIndexExecute is a helper method to define mock.On call
-//   - r admin.DeleteAtlasSearchIndexApiRequest
-func (_e *AtlasSearchApi_Expecter) DeleteAtlasSearchIndexExecute(r interface{}) *AtlasSearchApi_DeleteAtlasSearchIndexExecute_Call {
-	return &AtlasSearchApi_DeleteAtlasSearchIndexExecute_Call{Call: _e.mock.On("DeleteAtlasSearchIndexExecute", r)}
+// DeleteAtlasSearchIndexDeprecatedExecute is a helper method to define mock.On call
+//   - r admin.DeleteAtlasSearchIndexDeprecatedApiRequest
+func (_e *AtlasSearchApi_Expecter) DeleteAtlasSearchIndexDeprecatedExecute(r any) *AtlasSearchApi_DeleteAtlasSearchIndexDeprecatedExecute_Call {
+	return &AtlasSearchApi_DeleteAtlasSearchIndexDeprecatedExecute_Call{Call: _e.mock.On("DeleteAtlasSearchIndexDeprecatedExecute", r)}
 }
 
-func (_c *AtlasSearchApi_DeleteAtlasSearchIndexExecute_Call) Run(run func(r admin.DeleteAtlasSearchIndexApiRequest)) *AtlasSearchApi_DeleteAtlasSearchIndexExecute_Call {
+func (_c *AtlasSearchApi_DeleteAtlasSearchIndexDeprecatedExecute_Call) Run(run func(r admin.DeleteAtlasSearchIndexDeprecatedApiRequest)) *AtlasSearchApi_DeleteAtlasSearchIndexDeprecatedExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.DeleteAtlasSearchIndexApiRequest))
+		run(args[0].(admin.DeleteAtlasSearchIndexDeprecatedApiRequest))
 	})
 	return _c
 }
 
-func (_c *AtlasSearchApi_DeleteAtlasSearchIndexExecute_Call) Return(_a0 map[string]interface{}, _a1 *http.Response, _a2 error) *AtlasSearchApi_DeleteAtlasSearchIndexExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
+func (_c *AtlasSearchApi_DeleteAtlasSearchIndexDeprecatedExecute_Call) Return(_a0 *http.Response, _a1 error) *AtlasSearchApi_DeleteAtlasSearchIndexDeprecatedExecute_Call {
+	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *AtlasSearchApi_DeleteAtlasSearchIndexExecute_Call) RunAndReturn(run func(admin.DeleteAtlasSearchIndexApiRequest) (map[string]interface{}, *http.Response, error)) *AtlasSearchApi_DeleteAtlasSearchIndexExecute_Call {
+func (_c *AtlasSearchApi_DeleteAtlasSearchIndexDeprecatedExecute_Call) RunAndReturn(run func(admin.DeleteAtlasSearchIndexDeprecatedApiRequest) (*http.Response, error)) *AtlasSearchApi_DeleteAtlasSearchIndexDeprecatedExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// DeleteAtlasSearchIndexWithParams provides a mock function with given fields: ctx, args
-func (_m *AtlasSearchApi) DeleteAtlasSearchIndexWithParams(ctx context.Context, args *admin.DeleteAtlasSearchIndexApiParams) admin.DeleteAtlasSearchIndexApiRequest {
+// DeleteAtlasSearchIndexDeprecatedWithParams provides a mock function with given fields: ctx, args
+func (_m *AtlasSearchApi) DeleteAtlasSearchIndexDeprecatedWithParams(ctx context.Context, args *admin.DeleteAtlasSearchIndexDeprecatedApiParams) admin.DeleteAtlasSearchIndexDeprecatedApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for DeleteAtlasSearchIndexWithParams")
+		panic("no return value specified for DeleteAtlasSearchIndexDeprecatedWithParams")
 	}
 
-	var r0 admin.DeleteAtlasSearchIndexApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteAtlasSearchIndexApiParams) admin.DeleteAtlasSearchIndexApiRequest); ok {
+	var r0 admin.DeleteAtlasSearchIndexDeprecatedApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteAtlasSearchIndexDeprecatedApiParams) admin.DeleteAtlasSearchIndexDeprecatedApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.DeleteAtlasSearchIndexApiRequest)
+		r0 = ret.Get(0).(admin.DeleteAtlasSearchIndexDeprecatedApiRequest)
 	}
 
 	return r0
 }
 
-// AtlasSearchApi_DeleteAtlasSearchIndexWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteAtlasSearchIndexWithParams'
-type AtlasSearchApi_DeleteAtlasSearchIndexWithParams_Call struct {
+// AtlasSearchApi_DeleteAtlasSearchIndexDeprecatedWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteAtlasSearchIndexDeprecatedWithParams'
+type AtlasSearchApi_DeleteAtlasSearchIndexDeprecatedWithParams_Call struct {
 	*mock.Call
 }
 
-// DeleteAtlasSearchIndexWithParams is a helper method to define mock.On call
+// DeleteAtlasSearchIndexDeprecatedWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.DeleteAtlasSearchIndexApiParams
-func (_e *AtlasSearchApi_Expecter) DeleteAtlasSearchIndexWithParams(ctx interface{}, args interface{}) *AtlasSearchApi_DeleteAtlasSearchIndexWithParams_Call {
-	return &AtlasSearchApi_DeleteAtlasSearchIndexWithParams_Call{Call: _e.mock.On("DeleteAtlasSearchIndexWithParams", ctx, args)}
+//   - args *admin.DeleteAtlasSearchIndexDeprecatedApiParams
+func (_e *AtlasSearchApi_Expecter) DeleteAtlasSearchIndexDeprecatedWithParams(ctx any, args any) *AtlasSearchApi_DeleteAtlasSearchIndexDeprecatedWithParams_Call {
+	return &AtlasSearchApi_DeleteAtlasSearchIndexDeprecatedWithParams_Call{Call: _e.mock.On("DeleteAtlasSearchIndexDeprecatedWithParams", ctx, args)}
 }
 
-func (_c *AtlasSearchApi_DeleteAtlasSearchIndexWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteAtlasSearchIndexApiParams)) *AtlasSearchApi_DeleteAtlasSearchIndexWithParams_Call {
+func (_c *AtlasSearchApi_DeleteAtlasSearchIndexDeprecatedWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteAtlasSearchIndexDeprecatedApiParams)) *AtlasSearchApi_DeleteAtlasSearchIndexDeprecatedWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.DeleteAtlasSearchIndexApiParams))
+		run(args[0].(context.Context), args[1].(*admin.DeleteAtlasSearchIndexDeprecatedApiParams))
 	})
 	return _c
 }
 
-func (_c *AtlasSearchApi_DeleteAtlasSearchIndexWithParams_Call) Return(_a0 admin.DeleteAtlasSearchIndexApiRequest) *AtlasSearchApi_DeleteAtlasSearchIndexWithParams_Call {
+func (_c *AtlasSearchApi_DeleteAtlasSearchIndexDeprecatedWithParams_Call) Return(_a0 admin.DeleteAtlasSearchIndexDeprecatedApiRequest) *AtlasSearchApi_DeleteAtlasSearchIndexDeprecatedWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *AtlasSearchApi_DeleteAtlasSearchIndexWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteAtlasSearchIndexApiParams) admin.DeleteAtlasSearchIndexApiRequest) *AtlasSearchApi_DeleteAtlasSearchIndexWithParams_Call {
+func (_c *AtlasSearchApi_DeleteAtlasSearchIndexDeprecatedWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteAtlasSearchIndexDeprecatedApiParams) admin.DeleteAtlasSearchIndexDeprecatedApiRequest) *AtlasSearchApi_DeleteAtlasSearchIndexDeprecatedWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -694,7 +685,7 @@ type AtlasSearchApi_GetAtlasSearchDeployment_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
-func (_e *AtlasSearchApi_Expecter) GetAtlasSearchDeployment(ctx interface{}, groupId interface{}, clusterName interface{}) *AtlasSearchApi_GetAtlasSearchDeployment_Call {
+func (_e *AtlasSearchApi_Expecter) GetAtlasSearchDeployment(ctx any, groupId any, clusterName any) *AtlasSearchApi_GetAtlasSearchDeployment_Call {
 	return &AtlasSearchApi_GetAtlasSearchDeployment_Call{Call: _e.mock.On("GetAtlasSearchDeployment", ctx, groupId, clusterName)}
 }
 
@@ -761,7 +752,7 @@ type AtlasSearchApi_GetAtlasSearchDeploymentExecute_Call struct {
 
 // GetAtlasSearchDeploymentExecute is a helper method to define mock.On call
 //   - r admin.GetAtlasSearchDeploymentApiRequest
-func (_e *AtlasSearchApi_Expecter) GetAtlasSearchDeploymentExecute(r interface{}) *AtlasSearchApi_GetAtlasSearchDeploymentExecute_Call {
+func (_e *AtlasSearchApi_Expecter) GetAtlasSearchDeploymentExecute(r any) *AtlasSearchApi_GetAtlasSearchDeploymentExecute_Call {
 	return &AtlasSearchApi_GetAtlasSearchDeploymentExecute_Call{Call: _e.mock.On("GetAtlasSearchDeploymentExecute", r)}
 }
 
@@ -808,7 +799,7 @@ type AtlasSearchApi_GetAtlasSearchDeploymentWithParams_Call struct {
 // GetAtlasSearchDeploymentWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetAtlasSearchDeploymentApiParams
-func (_e *AtlasSearchApi_Expecter) GetAtlasSearchDeploymentWithParams(ctx interface{}, args interface{}) *AtlasSearchApi_GetAtlasSearchDeploymentWithParams_Call {
+func (_e *AtlasSearchApi_Expecter) GetAtlasSearchDeploymentWithParams(ctx any, args any) *AtlasSearchApi_GetAtlasSearchDeploymentWithParams_Call {
 	return &AtlasSearchApi_GetAtlasSearchDeploymentWithParams_Call{Call: _e.mock.On("GetAtlasSearchDeploymentWithParams", ctx, args)}
 }
 
@@ -829,70 +820,70 @@ func (_c *AtlasSearchApi_GetAtlasSearchDeploymentWithParams_Call) RunAndReturn(r
 	return _c
 }
 
-// GetAtlasSearchIndex provides a mock function with given fields: ctx, groupId, clusterName, indexId
-func (_m *AtlasSearchApi) GetAtlasSearchIndex(ctx context.Context, groupId string, clusterName string, indexId string) admin.GetAtlasSearchIndexApiRequest {
+// GetAtlasSearchIndexDeprecated provides a mock function with given fields: ctx, groupId, clusterName, indexId
+func (_m *AtlasSearchApi) GetAtlasSearchIndexDeprecated(ctx context.Context, groupId string, clusterName string, indexId string) admin.GetAtlasSearchIndexDeprecatedApiRequest {
 	ret := _m.Called(ctx, groupId, clusterName, indexId)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetAtlasSearchIndex")
+		panic("no return value specified for GetAtlasSearchIndexDeprecated")
 	}
 
-	var r0 admin.GetAtlasSearchIndexApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, string) admin.GetAtlasSearchIndexApiRequest); ok {
+	var r0 admin.GetAtlasSearchIndexDeprecatedApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, string) admin.GetAtlasSearchIndexDeprecatedApiRequest); ok {
 		r0 = rf(ctx, groupId, clusterName, indexId)
 	} else {
-		r0 = ret.Get(0).(admin.GetAtlasSearchIndexApiRequest)
+		r0 = ret.Get(0).(admin.GetAtlasSearchIndexDeprecatedApiRequest)
 	}
 
 	return r0
 }
 
-// AtlasSearchApi_GetAtlasSearchIndex_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetAtlasSearchIndex'
-type AtlasSearchApi_GetAtlasSearchIndex_Call struct {
+// AtlasSearchApi_GetAtlasSearchIndexDeprecated_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetAtlasSearchIndexDeprecated'
+type AtlasSearchApi_GetAtlasSearchIndexDeprecated_Call struct {
 	*mock.Call
 }
 
-// GetAtlasSearchIndex is a helper method to define mock.On call
+// GetAtlasSearchIndexDeprecated is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
 //   - indexId string
-func (_e *AtlasSearchApi_Expecter) GetAtlasSearchIndex(ctx interface{}, groupId interface{}, clusterName interface{}, indexId interface{}) *AtlasSearchApi_GetAtlasSearchIndex_Call {
-	return &AtlasSearchApi_GetAtlasSearchIndex_Call{Call: _e.mock.On("GetAtlasSearchIndex", ctx, groupId, clusterName, indexId)}
+func (_e *AtlasSearchApi_Expecter) GetAtlasSearchIndexDeprecated(ctx any, groupId any, clusterName any, indexId any) *AtlasSearchApi_GetAtlasSearchIndexDeprecated_Call {
+	return &AtlasSearchApi_GetAtlasSearchIndexDeprecated_Call{Call: _e.mock.On("GetAtlasSearchIndexDeprecated", ctx, groupId, clusterName, indexId)}
 }
 
-func (_c *AtlasSearchApi_GetAtlasSearchIndex_Call) Run(run func(ctx context.Context, groupId string, clusterName string, indexId string)) *AtlasSearchApi_GetAtlasSearchIndex_Call {
+func (_c *AtlasSearchApi_GetAtlasSearchIndexDeprecated_Call) Run(run func(ctx context.Context, groupId string, clusterName string, indexId string)) *AtlasSearchApi_GetAtlasSearchIndexDeprecated_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(string))
 	})
 	return _c
 }
 
-func (_c *AtlasSearchApi_GetAtlasSearchIndex_Call) Return(_a0 admin.GetAtlasSearchIndexApiRequest) *AtlasSearchApi_GetAtlasSearchIndex_Call {
+func (_c *AtlasSearchApi_GetAtlasSearchIndexDeprecated_Call) Return(_a0 admin.GetAtlasSearchIndexDeprecatedApiRequest) *AtlasSearchApi_GetAtlasSearchIndexDeprecated_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *AtlasSearchApi_GetAtlasSearchIndex_Call) RunAndReturn(run func(context.Context, string, string, string) admin.GetAtlasSearchIndexApiRequest) *AtlasSearchApi_GetAtlasSearchIndex_Call {
+func (_c *AtlasSearchApi_GetAtlasSearchIndexDeprecated_Call) RunAndReturn(run func(context.Context, string, string, string) admin.GetAtlasSearchIndexDeprecatedApiRequest) *AtlasSearchApi_GetAtlasSearchIndexDeprecated_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetAtlasSearchIndexExecute provides a mock function with given fields: r
-func (_m *AtlasSearchApi) GetAtlasSearchIndexExecute(r admin.GetAtlasSearchIndexApiRequest) (*admin.ClusterSearchIndex, *http.Response, error) {
+// GetAtlasSearchIndexDeprecatedExecute provides a mock function with given fields: r
+func (_m *AtlasSearchApi) GetAtlasSearchIndexDeprecatedExecute(r admin.GetAtlasSearchIndexDeprecatedApiRequest) (*admin.ClusterSearchIndex, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetAtlasSearchIndexExecute")
+		panic("no return value specified for GetAtlasSearchIndexDeprecatedExecute")
 	}
 
 	var r0 *admin.ClusterSearchIndex
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetAtlasSearchIndexApiRequest) (*admin.ClusterSearchIndex, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetAtlasSearchIndexDeprecatedApiRequest) (*admin.ClusterSearchIndex, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.GetAtlasSearchIndexApiRequest) *admin.ClusterSearchIndex); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetAtlasSearchIndexDeprecatedApiRequest) *admin.ClusterSearchIndex); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -900,7 +891,7 @@ func (_m *AtlasSearchApi) GetAtlasSearchIndexExecute(r admin.GetAtlasSearchIndex
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.GetAtlasSearchIndexApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.GetAtlasSearchIndexDeprecatedApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -908,7 +899,7 @@ func (_m *AtlasSearchApi) GetAtlasSearchIndexExecute(r admin.GetAtlasSearchIndex
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.GetAtlasSearchIndexApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.GetAtlasSearchIndexDeprecatedApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -917,146 +908,146 @@ func (_m *AtlasSearchApi) GetAtlasSearchIndexExecute(r admin.GetAtlasSearchIndex
 	return r0, r1, r2
 }
 
-// AtlasSearchApi_GetAtlasSearchIndexExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetAtlasSearchIndexExecute'
-type AtlasSearchApi_GetAtlasSearchIndexExecute_Call struct {
+// AtlasSearchApi_GetAtlasSearchIndexDeprecatedExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetAtlasSearchIndexDeprecatedExecute'
+type AtlasSearchApi_GetAtlasSearchIndexDeprecatedExecute_Call struct {
 	*mock.Call
 }
 
-// GetAtlasSearchIndexExecute is a helper method to define mock.On call
-//   - r admin.GetAtlasSearchIndexApiRequest
-func (_e *AtlasSearchApi_Expecter) GetAtlasSearchIndexExecute(r interface{}) *AtlasSearchApi_GetAtlasSearchIndexExecute_Call {
-	return &AtlasSearchApi_GetAtlasSearchIndexExecute_Call{Call: _e.mock.On("GetAtlasSearchIndexExecute", r)}
+// GetAtlasSearchIndexDeprecatedExecute is a helper method to define mock.On call
+//   - r admin.GetAtlasSearchIndexDeprecatedApiRequest
+func (_e *AtlasSearchApi_Expecter) GetAtlasSearchIndexDeprecatedExecute(r any) *AtlasSearchApi_GetAtlasSearchIndexDeprecatedExecute_Call {
+	return &AtlasSearchApi_GetAtlasSearchIndexDeprecatedExecute_Call{Call: _e.mock.On("GetAtlasSearchIndexDeprecatedExecute", r)}
 }
 
-func (_c *AtlasSearchApi_GetAtlasSearchIndexExecute_Call) Run(run func(r admin.GetAtlasSearchIndexApiRequest)) *AtlasSearchApi_GetAtlasSearchIndexExecute_Call {
+func (_c *AtlasSearchApi_GetAtlasSearchIndexDeprecatedExecute_Call) Run(run func(r admin.GetAtlasSearchIndexDeprecatedApiRequest)) *AtlasSearchApi_GetAtlasSearchIndexDeprecatedExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.GetAtlasSearchIndexApiRequest))
+		run(args[0].(admin.GetAtlasSearchIndexDeprecatedApiRequest))
 	})
 	return _c
 }
 
-func (_c *AtlasSearchApi_GetAtlasSearchIndexExecute_Call) Return(_a0 *admin.ClusterSearchIndex, _a1 *http.Response, _a2 error) *AtlasSearchApi_GetAtlasSearchIndexExecute_Call {
+func (_c *AtlasSearchApi_GetAtlasSearchIndexDeprecatedExecute_Call) Return(_a0 *admin.ClusterSearchIndex, _a1 *http.Response, _a2 error) *AtlasSearchApi_GetAtlasSearchIndexDeprecatedExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *AtlasSearchApi_GetAtlasSearchIndexExecute_Call) RunAndReturn(run func(admin.GetAtlasSearchIndexApiRequest) (*admin.ClusterSearchIndex, *http.Response, error)) *AtlasSearchApi_GetAtlasSearchIndexExecute_Call {
+func (_c *AtlasSearchApi_GetAtlasSearchIndexDeprecatedExecute_Call) RunAndReturn(run func(admin.GetAtlasSearchIndexDeprecatedApiRequest) (*admin.ClusterSearchIndex, *http.Response, error)) *AtlasSearchApi_GetAtlasSearchIndexDeprecatedExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// GetAtlasSearchIndexWithParams provides a mock function with given fields: ctx, args
-func (_m *AtlasSearchApi) GetAtlasSearchIndexWithParams(ctx context.Context, args *admin.GetAtlasSearchIndexApiParams) admin.GetAtlasSearchIndexApiRequest {
+// GetAtlasSearchIndexDeprecatedWithParams provides a mock function with given fields: ctx, args
+func (_m *AtlasSearchApi) GetAtlasSearchIndexDeprecatedWithParams(ctx context.Context, args *admin.GetAtlasSearchIndexDeprecatedApiParams) admin.GetAtlasSearchIndexDeprecatedApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for GetAtlasSearchIndexWithParams")
+		panic("no return value specified for GetAtlasSearchIndexDeprecatedWithParams")
 	}
 
-	var r0 admin.GetAtlasSearchIndexApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetAtlasSearchIndexApiParams) admin.GetAtlasSearchIndexApiRequest); ok {
+	var r0 admin.GetAtlasSearchIndexDeprecatedApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetAtlasSearchIndexDeprecatedApiParams) admin.GetAtlasSearchIndexDeprecatedApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.GetAtlasSearchIndexApiRequest)
+		r0 = ret.Get(0).(admin.GetAtlasSearchIndexDeprecatedApiRequest)
 	}
 
 	return r0
 }
 
-// AtlasSearchApi_GetAtlasSearchIndexWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetAtlasSearchIndexWithParams'
-type AtlasSearchApi_GetAtlasSearchIndexWithParams_Call struct {
+// AtlasSearchApi_GetAtlasSearchIndexDeprecatedWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetAtlasSearchIndexDeprecatedWithParams'
+type AtlasSearchApi_GetAtlasSearchIndexDeprecatedWithParams_Call struct {
 	*mock.Call
 }
 
-// GetAtlasSearchIndexWithParams is a helper method to define mock.On call
+// GetAtlasSearchIndexDeprecatedWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.GetAtlasSearchIndexApiParams
-func (_e *AtlasSearchApi_Expecter) GetAtlasSearchIndexWithParams(ctx interface{}, args interface{}) *AtlasSearchApi_GetAtlasSearchIndexWithParams_Call {
-	return &AtlasSearchApi_GetAtlasSearchIndexWithParams_Call{Call: _e.mock.On("GetAtlasSearchIndexWithParams", ctx, args)}
+//   - args *admin.GetAtlasSearchIndexDeprecatedApiParams
+func (_e *AtlasSearchApi_Expecter) GetAtlasSearchIndexDeprecatedWithParams(ctx any, args any) *AtlasSearchApi_GetAtlasSearchIndexDeprecatedWithParams_Call {
+	return &AtlasSearchApi_GetAtlasSearchIndexDeprecatedWithParams_Call{Call: _e.mock.On("GetAtlasSearchIndexDeprecatedWithParams", ctx, args)}
 }
 
-func (_c *AtlasSearchApi_GetAtlasSearchIndexWithParams_Call) Run(run func(ctx context.Context, args *admin.GetAtlasSearchIndexApiParams)) *AtlasSearchApi_GetAtlasSearchIndexWithParams_Call {
+func (_c *AtlasSearchApi_GetAtlasSearchIndexDeprecatedWithParams_Call) Run(run func(ctx context.Context, args *admin.GetAtlasSearchIndexDeprecatedApiParams)) *AtlasSearchApi_GetAtlasSearchIndexDeprecatedWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.GetAtlasSearchIndexApiParams))
+		run(args[0].(context.Context), args[1].(*admin.GetAtlasSearchIndexDeprecatedApiParams))
 	})
 	return _c
 }
 
-func (_c *AtlasSearchApi_GetAtlasSearchIndexWithParams_Call) Return(_a0 admin.GetAtlasSearchIndexApiRequest) *AtlasSearchApi_GetAtlasSearchIndexWithParams_Call {
+func (_c *AtlasSearchApi_GetAtlasSearchIndexDeprecatedWithParams_Call) Return(_a0 admin.GetAtlasSearchIndexDeprecatedApiRequest) *AtlasSearchApi_GetAtlasSearchIndexDeprecatedWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *AtlasSearchApi_GetAtlasSearchIndexWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetAtlasSearchIndexApiParams) admin.GetAtlasSearchIndexApiRequest) *AtlasSearchApi_GetAtlasSearchIndexWithParams_Call {
+func (_c *AtlasSearchApi_GetAtlasSearchIndexDeprecatedWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetAtlasSearchIndexDeprecatedApiParams) admin.GetAtlasSearchIndexDeprecatedApiRequest) *AtlasSearchApi_GetAtlasSearchIndexDeprecatedWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListAtlasSearchIndexes provides a mock function with given fields: ctx, groupId, clusterName, collectionName, databaseName
-func (_m *AtlasSearchApi) ListAtlasSearchIndexes(ctx context.Context, groupId string, clusterName string, collectionName string, databaseName string) admin.ListAtlasSearchIndexesApiRequest {
+// ListAtlasSearchIndexesDeprecated provides a mock function with given fields: ctx, groupId, clusterName, collectionName, databaseName
+func (_m *AtlasSearchApi) ListAtlasSearchIndexesDeprecated(ctx context.Context, groupId string, clusterName string, collectionName string, databaseName string) admin.ListAtlasSearchIndexesDeprecatedApiRequest {
 	ret := _m.Called(ctx, groupId, clusterName, collectionName, databaseName)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListAtlasSearchIndexes")
+		panic("no return value specified for ListAtlasSearchIndexesDeprecated")
 	}
 
-	var r0 admin.ListAtlasSearchIndexesApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, string, string) admin.ListAtlasSearchIndexesApiRequest); ok {
+	var r0 admin.ListAtlasSearchIndexesDeprecatedApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, string, string) admin.ListAtlasSearchIndexesDeprecatedApiRequest); ok {
 		r0 = rf(ctx, groupId, clusterName, collectionName, databaseName)
 	} else {
-		r0 = ret.Get(0).(admin.ListAtlasSearchIndexesApiRequest)
+		r0 = ret.Get(0).(admin.ListAtlasSearchIndexesDeprecatedApiRequest)
 	}
 
 	return r0
 }
 
-// AtlasSearchApi_ListAtlasSearchIndexes_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListAtlasSearchIndexes'
-type AtlasSearchApi_ListAtlasSearchIndexes_Call struct {
+// AtlasSearchApi_ListAtlasSearchIndexesDeprecated_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListAtlasSearchIndexesDeprecated'
+type AtlasSearchApi_ListAtlasSearchIndexesDeprecated_Call struct {
 	*mock.Call
 }
 
-// ListAtlasSearchIndexes is a helper method to define mock.On call
+// ListAtlasSearchIndexesDeprecated is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
 //   - collectionName string
 //   - databaseName string
-func (_e *AtlasSearchApi_Expecter) ListAtlasSearchIndexes(ctx interface{}, groupId interface{}, clusterName interface{}, collectionName interface{}, databaseName interface{}) *AtlasSearchApi_ListAtlasSearchIndexes_Call {
-	return &AtlasSearchApi_ListAtlasSearchIndexes_Call{Call: _e.mock.On("ListAtlasSearchIndexes", ctx, groupId, clusterName, collectionName, databaseName)}
+func (_e *AtlasSearchApi_Expecter) ListAtlasSearchIndexesDeprecated(ctx any, groupId any, clusterName any, collectionName any, databaseName any) *AtlasSearchApi_ListAtlasSearchIndexesDeprecated_Call {
+	return &AtlasSearchApi_ListAtlasSearchIndexesDeprecated_Call{Call: _e.mock.On("ListAtlasSearchIndexesDeprecated", ctx, groupId, clusterName, collectionName, databaseName)}
 }
 
-func (_c *AtlasSearchApi_ListAtlasSearchIndexes_Call) Run(run func(ctx context.Context, groupId string, clusterName string, collectionName string, databaseName string)) *AtlasSearchApi_ListAtlasSearchIndexes_Call {
+func (_c *AtlasSearchApi_ListAtlasSearchIndexesDeprecated_Call) Run(run func(ctx context.Context, groupId string, clusterName string, collectionName string, databaseName string)) *AtlasSearchApi_ListAtlasSearchIndexesDeprecated_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(string), args[4].(string))
 	})
 	return _c
 }
 
-func (_c *AtlasSearchApi_ListAtlasSearchIndexes_Call) Return(_a0 admin.ListAtlasSearchIndexesApiRequest) *AtlasSearchApi_ListAtlasSearchIndexes_Call {
+func (_c *AtlasSearchApi_ListAtlasSearchIndexesDeprecated_Call) Return(_a0 admin.ListAtlasSearchIndexesDeprecatedApiRequest) *AtlasSearchApi_ListAtlasSearchIndexesDeprecated_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *AtlasSearchApi_ListAtlasSearchIndexes_Call) RunAndReturn(run func(context.Context, string, string, string, string) admin.ListAtlasSearchIndexesApiRequest) *AtlasSearchApi_ListAtlasSearchIndexes_Call {
+func (_c *AtlasSearchApi_ListAtlasSearchIndexesDeprecated_Call) RunAndReturn(run func(context.Context, string, string, string, string) admin.ListAtlasSearchIndexesDeprecatedApiRequest) *AtlasSearchApi_ListAtlasSearchIndexesDeprecated_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListAtlasSearchIndexesExecute provides a mock function with given fields: r
-func (_m *AtlasSearchApi) ListAtlasSearchIndexesExecute(r admin.ListAtlasSearchIndexesApiRequest) ([]admin.ClusterSearchIndex, *http.Response, error) {
+// ListAtlasSearchIndexesDeprecatedExecute provides a mock function with given fields: r
+func (_m *AtlasSearchApi) ListAtlasSearchIndexesDeprecatedExecute(r admin.ListAtlasSearchIndexesDeprecatedApiRequest) ([]admin.ClusterSearchIndex, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListAtlasSearchIndexesExecute")
+		panic("no return value specified for ListAtlasSearchIndexesDeprecatedExecute")
 	}
 
 	var r0 []admin.ClusterSearchIndex
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListAtlasSearchIndexesApiRequest) ([]admin.ClusterSearchIndex, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListAtlasSearchIndexesDeprecatedApiRequest) ([]admin.ClusterSearchIndex, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.ListAtlasSearchIndexesApiRequest) []admin.ClusterSearchIndex); ok {
+	if rf, ok := ret.Get(0).(func(admin.ListAtlasSearchIndexesDeprecatedApiRequest) []admin.ClusterSearchIndex); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -1064,7 +1055,7 @@ func (_m *AtlasSearchApi) ListAtlasSearchIndexesExecute(r admin.ListAtlasSearchI
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.ListAtlasSearchIndexesApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.ListAtlasSearchIndexesDeprecatedApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -1072,7 +1063,7 @@ func (_m *AtlasSearchApi) ListAtlasSearchIndexesExecute(r admin.ListAtlasSearchI
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.ListAtlasSearchIndexesApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.ListAtlasSearchIndexesDeprecatedApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -1081,77 +1072,77 @@ func (_m *AtlasSearchApi) ListAtlasSearchIndexesExecute(r admin.ListAtlasSearchI
 	return r0, r1, r2
 }
 
-// AtlasSearchApi_ListAtlasSearchIndexesExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListAtlasSearchIndexesExecute'
-type AtlasSearchApi_ListAtlasSearchIndexesExecute_Call struct {
+// AtlasSearchApi_ListAtlasSearchIndexesDeprecatedExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListAtlasSearchIndexesDeprecatedExecute'
+type AtlasSearchApi_ListAtlasSearchIndexesDeprecatedExecute_Call struct {
 	*mock.Call
 }
 
-// ListAtlasSearchIndexesExecute is a helper method to define mock.On call
-//   - r admin.ListAtlasSearchIndexesApiRequest
-func (_e *AtlasSearchApi_Expecter) ListAtlasSearchIndexesExecute(r interface{}) *AtlasSearchApi_ListAtlasSearchIndexesExecute_Call {
-	return &AtlasSearchApi_ListAtlasSearchIndexesExecute_Call{Call: _e.mock.On("ListAtlasSearchIndexesExecute", r)}
+// ListAtlasSearchIndexesDeprecatedExecute is a helper method to define mock.On call
+//   - r admin.ListAtlasSearchIndexesDeprecatedApiRequest
+func (_e *AtlasSearchApi_Expecter) ListAtlasSearchIndexesDeprecatedExecute(r any) *AtlasSearchApi_ListAtlasSearchIndexesDeprecatedExecute_Call {
+	return &AtlasSearchApi_ListAtlasSearchIndexesDeprecatedExecute_Call{Call: _e.mock.On("ListAtlasSearchIndexesDeprecatedExecute", r)}
 }
 
-func (_c *AtlasSearchApi_ListAtlasSearchIndexesExecute_Call) Run(run func(r admin.ListAtlasSearchIndexesApiRequest)) *AtlasSearchApi_ListAtlasSearchIndexesExecute_Call {
+func (_c *AtlasSearchApi_ListAtlasSearchIndexesDeprecatedExecute_Call) Run(run func(r admin.ListAtlasSearchIndexesDeprecatedApiRequest)) *AtlasSearchApi_ListAtlasSearchIndexesDeprecatedExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ListAtlasSearchIndexesApiRequest))
+		run(args[0].(admin.ListAtlasSearchIndexesDeprecatedApiRequest))
 	})
 	return _c
 }
 
-func (_c *AtlasSearchApi_ListAtlasSearchIndexesExecute_Call) Return(_a0 []admin.ClusterSearchIndex, _a1 *http.Response, _a2 error) *AtlasSearchApi_ListAtlasSearchIndexesExecute_Call {
+func (_c *AtlasSearchApi_ListAtlasSearchIndexesDeprecatedExecute_Call) Return(_a0 []admin.ClusterSearchIndex, _a1 *http.Response, _a2 error) *AtlasSearchApi_ListAtlasSearchIndexesDeprecatedExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *AtlasSearchApi_ListAtlasSearchIndexesExecute_Call) RunAndReturn(run func(admin.ListAtlasSearchIndexesApiRequest) ([]admin.ClusterSearchIndex, *http.Response, error)) *AtlasSearchApi_ListAtlasSearchIndexesExecute_Call {
+func (_c *AtlasSearchApi_ListAtlasSearchIndexesDeprecatedExecute_Call) RunAndReturn(run func(admin.ListAtlasSearchIndexesDeprecatedApiRequest) ([]admin.ClusterSearchIndex, *http.Response, error)) *AtlasSearchApi_ListAtlasSearchIndexesDeprecatedExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// ListAtlasSearchIndexesWithParams provides a mock function with given fields: ctx, args
-func (_m *AtlasSearchApi) ListAtlasSearchIndexesWithParams(ctx context.Context, args *admin.ListAtlasSearchIndexesApiParams) admin.ListAtlasSearchIndexesApiRequest {
+// ListAtlasSearchIndexesDeprecatedWithParams provides a mock function with given fields: ctx, args
+func (_m *AtlasSearchApi) ListAtlasSearchIndexesDeprecatedWithParams(ctx context.Context, args *admin.ListAtlasSearchIndexesDeprecatedApiParams) admin.ListAtlasSearchIndexesDeprecatedApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for ListAtlasSearchIndexesWithParams")
+		panic("no return value specified for ListAtlasSearchIndexesDeprecatedWithParams")
 	}
 
-	var r0 admin.ListAtlasSearchIndexesApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListAtlasSearchIndexesApiParams) admin.ListAtlasSearchIndexesApiRequest); ok {
+	var r0 admin.ListAtlasSearchIndexesDeprecatedApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListAtlasSearchIndexesDeprecatedApiParams) admin.ListAtlasSearchIndexesDeprecatedApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.ListAtlasSearchIndexesApiRequest)
+		r0 = ret.Get(0).(admin.ListAtlasSearchIndexesDeprecatedApiRequest)
 	}
 
 	return r0
 }
 
-// AtlasSearchApi_ListAtlasSearchIndexesWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListAtlasSearchIndexesWithParams'
-type AtlasSearchApi_ListAtlasSearchIndexesWithParams_Call struct {
+// AtlasSearchApi_ListAtlasSearchIndexesDeprecatedWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListAtlasSearchIndexesDeprecatedWithParams'
+type AtlasSearchApi_ListAtlasSearchIndexesDeprecatedWithParams_Call struct {
 	*mock.Call
 }
 
-// ListAtlasSearchIndexesWithParams is a helper method to define mock.On call
+// ListAtlasSearchIndexesDeprecatedWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.ListAtlasSearchIndexesApiParams
-func (_e *AtlasSearchApi_Expecter) ListAtlasSearchIndexesWithParams(ctx interface{}, args interface{}) *AtlasSearchApi_ListAtlasSearchIndexesWithParams_Call {
-	return &AtlasSearchApi_ListAtlasSearchIndexesWithParams_Call{Call: _e.mock.On("ListAtlasSearchIndexesWithParams", ctx, args)}
+//   - args *admin.ListAtlasSearchIndexesDeprecatedApiParams
+func (_e *AtlasSearchApi_Expecter) ListAtlasSearchIndexesDeprecatedWithParams(ctx any, args any) *AtlasSearchApi_ListAtlasSearchIndexesDeprecatedWithParams_Call {
+	return &AtlasSearchApi_ListAtlasSearchIndexesDeprecatedWithParams_Call{Call: _e.mock.On("ListAtlasSearchIndexesDeprecatedWithParams", ctx, args)}
 }
 
-func (_c *AtlasSearchApi_ListAtlasSearchIndexesWithParams_Call) Run(run func(ctx context.Context, args *admin.ListAtlasSearchIndexesApiParams)) *AtlasSearchApi_ListAtlasSearchIndexesWithParams_Call {
+func (_c *AtlasSearchApi_ListAtlasSearchIndexesDeprecatedWithParams_Call) Run(run func(ctx context.Context, args *admin.ListAtlasSearchIndexesDeprecatedApiParams)) *AtlasSearchApi_ListAtlasSearchIndexesDeprecatedWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ListAtlasSearchIndexesApiParams))
+		run(args[0].(context.Context), args[1].(*admin.ListAtlasSearchIndexesDeprecatedApiParams))
 	})
 	return _c
 }
 
-func (_c *AtlasSearchApi_ListAtlasSearchIndexesWithParams_Call) Return(_a0 admin.ListAtlasSearchIndexesApiRequest) *AtlasSearchApi_ListAtlasSearchIndexesWithParams_Call {
+func (_c *AtlasSearchApi_ListAtlasSearchIndexesDeprecatedWithParams_Call) Return(_a0 admin.ListAtlasSearchIndexesDeprecatedApiRequest) *AtlasSearchApi_ListAtlasSearchIndexesDeprecatedWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *AtlasSearchApi_ListAtlasSearchIndexesWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListAtlasSearchIndexesApiParams) admin.ListAtlasSearchIndexesApiRequest) *AtlasSearchApi_ListAtlasSearchIndexesWithParams_Call {
+func (_c *AtlasSearchApi_ListAtlasSearchIndexesDeprecatedWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListAtlasSearchIndexesDeprecatedApiParams) admin.ListAtlasSearchIndexesDeprecatedApiRequest) *AtlasSearchApi_ListAtlasSearchIndexesDeprecatedWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1184,7 +1175,7 @@ type AtlasSearchApi_UpdateAtlasSearchDeployment_Call struct {
 //   - groupId string
 //   - clusterName string
 //   - apiSearchDeploymentRequest *admin.ApiSearchDeploymentRequest
-func (_e *AtlasSearchApi_Expecter) UpdateAtlasSearchDeployment(ctx interface{}, groupId interface{}, clusterName interface{}, apiSearchDeploymentRequest interface{}) *AtlasSearchApi_UpdateAtlasSearchDeployment_Call {
+func (_e *AtlasSearchApi_Expecter) UpdateAtlasSearchDeployment(ctx any, groupId any, clusterName any, apiSearchDeploymentRequest any) *AtlasSearchApi_UpdateAtlasSearchDeployment_Call {
 	return &AtlasSearchApi_UpdateAtlasSearchDeployment_Call{Call: _e.mock.On("UpdateAtlasSearchDeployment", ctx, groupId, clusterName, apiSearchDeploymentRequest)}
 }
 
@@ -1251,7 +1242,7 @@ type AtlasSearchApi_UpdateAtlasSearchDeploymentExecute_Call struct {
 
 // UpdateAtlasSearchDeploymentExecute is a helper method to define mock.On call
 //   - r admin.UpdateAtlasSearchDeploymentApiRequest
-func (_e *AtlasSearchApi_Expecter) UpdateAtlasSearchDeploymentExecute(r interface{}) *AtlasSearchApi_UpdateAtlasSearchDeploymentExecute_Call {
+func (_e *AtlasSearchApi_Expecter) UpdateAtlasSearchDeploymentExecute(r any) *AtlasSearchApi_UpdateAtlasSearchDeploymentExecute_Call {
 	return &AtlasSearchApi_UpdateAtlasSearchDeploymentExecute_Call{Call: _e.mock.On("UpdateAtlasSearchDeploymentExecute", r)}
 }
 
@@ -1298,7 +1289,7 @@ type AtlasSearchApi_UpdateAtlasSearchDeploymentWithParams_Call struct {
 // UpdateAtlasSearchDeploymentWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.UpdateAtlasSearchDeploymentApiParams
-func (_e *AtlasSearchApi_Expecter) UpdateAtlasSearchDeploymentWithParams(ctx interface{}, args interface{}) *AtlasSearchApi_UpdateAtlasSearchDeploymentWithParams_Call {
+func (_e *AtlasSearchApi_Expecter) UpdateAtlasSearchDeploymentWithParams(ctx any, args any) *AtlasSearchApi_UpdateAtlasSearchDeploymentWithParams_Call {
 	return &AtlasSearchApi_UpdateAtlasSearchDeploymentWithParams_Call{Call: _e.mock.On("UpdateAtlasSearchDeploymentWithParams", ctx, args)}
 }
 
@@ -1319,71 +1310,71 @@ func (_c *AtlasSearchApi_UpdateAtlasSearchDeploymentWithParams_Call) RunAndRetur
 	return _c
 }
 
-// UpdateAtlasSearchIndex provides a mock function with given fields: ctx, groupId, clusterName, indexId, clusterSearchIndex
-func (_m *AtlasSearchApi) UpdateAtlasSearchIndex(ctx context.Context, groupId string, clusterName string, indexId string, clusterSearchIndex *admin.ClusterSearchIndex) admin.UpdateAtlasSearchIndexApiRequest {
+// UpdateAtlasSearchIndexDeprecated provides a mock function with given fields: ctx, groupId, clusterName, indexId, clusterSearchIndex
+func (_m *AtlasSearchApi) UpdateAtlasSearchIndexDeprecated(ctx context.Context, groupId string, clusterName string, indexId string, clusterSearchIndex *admin.ClusterSearchIndex) admin.UpdateAtlasSearchIndexDeprecatedApiRequest {
 	ret := _m.Called(ctx, groupId, clusterName, indexId, clusterSearchIndex)
 
 	if len(ret) == 0 {
-		panic("no return value specified for UpdateAtlasSearchIndex")
+		panic("no return value specified for UpdateAtlasSearchIndexDeprecated")
 	}
 
-	var r0 admin.UpdateAtlasSearchIndexApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, string, *admin.ClusterSearchIndex) admin.UpdateAtlasSearchIndexApiRequest); ok {
+	var r0 admin.UpdateAtlasSearchIndexDeprecatedApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, string, *admin.ClusterSearchIndex) admin.UpdateAtlasSearchIndexDeprecatedApiRequest); ok {
 		r0 = rf(ctx, groupId, clusterName, indexId, clusterSearchIndex)
 	} else {
-		r0 = ret.Get(0).(admin.UpdateAtlasSearchIndexApiRequest)
+		r0 = ret.Get(0).(admin.UpdateAtlasSearchIndexDeprecatedApiRequest)
 	}
 
 	return r0
 }
 
-// AtlasSearchApi_UpdateAtlasSearchIndex_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateAtlasSearchIndex'
-type AtlasSearchApi_UpdateAtlasSearchIndex_Call struct {
+// AtlasSearchApi_UpdateAtlasSearchIndexDeprecated_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateAtlasSearchIndexDeprecated'
+type AtlasSearchApi_UpdateAtlasSearchIndexDeprecated_Call struct {
 	*mock.Call
 }
 
-// UpdateAtlasSearchIndex is a helper method to define mock.On call
+// UpdateAtlasSearchIndexDeprecated is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
 //   - indexId string
 //   - clusterSearchIndex *admin.ClusterSearchIndex
-func (_e *AtlasSearchApi_Expecter) UpdateAtlasSearchIndex(ctx interface{}, groupId interface{}, clusterName interface{}, indexId interface{}, clusterSearchIndex interface{}) *AtlasSearchApi_UpdateAtlasSearchIndex_Call {
-	return &AtlasSearchApi_UpdateAtlasSearchIndex_Call{Call: _e.mock.On("UpdateAtlasSearchIndex", ctx, groupId, clusterName, indexId, clusterSearchIndex)}
+func (_e *AtlasSearchApi_Expecter) UpdateAtlasSearchIndexDeprecated(ctx any, groupId any, clusterName any, indexId any, clusterSearchIndex any) *AtlasSearchApi_UpdateAtlasSearchIndexDeprecated_Call {
+	return &AtlasSearchApi_UpdateAtlasSearchIndexDeprecated_Call{Call: _e.mock.On("UpdateAtlasSearchIndexDeprecated", ctx, groupId, clusterName, indexId, clusterSearchIndex)}
 }
 
-func (_c *AtlasSearchApi_UpdateAtlasSearchIndex_Call) Run(run func(ctx context.Context, groupId string, clusterName string, indexId string, clusterSearchIndex *admin.ClusterSearchIndex)) *AtlasSearchApi_UpdateAtlasSearchIndex_Call {
+func (_c *AtlasSearchApi_UpdateAtlasSearchIndexDeprecated_Call) Run(run func(ctx context.Context, groupId string, clusterName string, indexId string, clusterSearchIndex *admin.ClusterSearchIndex)) *AtlasSearchApi_UpdateAtlasSearchIndexDeprecated_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(string), args[4].(*admin.ClusterSearchIndex))
 	})
 	return _c
 }
 
-func (_c *AtlasSearchApi_UpdateAtlasSearchIndex_Call) Return(_a0 admin.UpdateAtlasSearchIndexApiRequest) *AtlasSearchApi_UpdateAtlasSearchIndex_Call {
+func (_c *AtlasSearchApi_UpdateAtlasSearchIndexDeprecated_Call) Return(_a0 admin.UpdateAtlasSearchIndexDeprecatedApiRequest) *AtlasSearchApi_UpdateAtlasSearchIndexDeprecated_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *AtlasSearchApi_UpdateAtlasSearchIndex_Call) RunAndReturn(run func(context.Context, string, string, string, *admin.ClusterSearchIndex) admin.UpdateAtlasSearchIndexApiRequest) *AtlasSearchApi_UpdateAtlasSearchIndex_Call {
+func (_c *AtlasSearchApi_UpdateAtlasSearchIndexDeprecated_Call) RunAndReturn(run func(context.Context, string, string, string, *admin.ClusterSearchIndex) admin.UpdateAtlasSearchIndexDeprecatedApiRequest) *AtlasSearchApi_UpdateAtlasSearchIndexDeprecated_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// UpdateAtlasSearchIndexExecute provides a mock function with given fields: r
-func (_m *AtlasSearchApi) UpdateAtlasSearchIndexExecute(r admin.UpdateAtlasSearchIndexApiRequest) (*admin.ClusterSearchIndex, *http.Response, error) {
+// UpdateAtlasSearchIndexDeprecatedExecute provides a mock function with given fields: r
+func (_m *AtlasSearchApi) UpdateAtlasSearchIndexDeprecatedExecute(r admin.UpdateAtlasSearchIndexDeprecatedApiRequest) (*admin.ClusterSearchIndex, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
-		panic("no return value specified for UpdateAtlasSearchIndexExecute")
+		panic("no return value specified for UpdateAtlasSearchIndexDeprecatedExecute")
 	}
 
 	var r0 *admin.ClusterSearchIndex
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.UpdateAtlasSearchIndexApiRequest) (*admin.ClusterSearchIndex, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.UpdateAtlasSearchIndexDeprecatedApiRequest) (*admin.ClusterSearchIndex, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.UpdateAtlasSearchIndexApiRequest) *admin.ClusterSearchIndex); ok {
+	if rf, ok := ret.Get(0).(func(admin.UpdateAtlasSearchIndexDeprecatedApiRequest) *admin.ClusterSearchIndex); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
@@ -1391,7 +1382,7 @@ func (_m *AtlasSearchApi) UpdateAtlasSearchIndexExecute(r admin.UpdateAtlasSearc
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.UpdateAtlasSearchIndexApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.UpdateAtlasSearchIndexDeprecatedApiRequest) *http.Response); ok {
 		r1 = rf(r)
 	} else {
 		if ret.Get(1) != nil {
@@ -1399,7 +1390,7 @@ func (_m *AtlasSearchApi) UpdateAtlasSearchIndexExecute(r admin.UpdateAtlasSearc
 		}
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.UpdateAtlasSearchIndexApiRequest) error); ok {
+	if rf, ok := ret.Get(2).(func(admin.UpdateAtlasSearchIndexDeprecatedApiRequest) error); ok {
 		r2 = rf(r)
 	} else {
 		r2 = ret.Error(2)
@@ -1408,77 +1399,77 @@ func (_m *AtlasSearchApi) UpdateAtlasSearchIndexExecute(r admin.UpdateAtlasSearc
 	return r0, r1, r2
 }
 
-// AtlasSearchApi_UpdateAtlasSearchIndexExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateAtlasSearchIndexExecute'
-type AtlasSearchApi_UpdateAtlasSearchIndexExecute_Call struct {
+// AtlasSearchApi_UpdateAtlasSearchIndexDeprecatedExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateAtlasSearchIndexDeprecatedExecute'
+type AtlasSearchApi_UpdateAtlasSearchIndexDeprecatedExecute_Call struct {
 	*mock.Call
 }
 
-// UpdateAtlasSearchIndexExecute is a helper method to define mock.On call
-//   - r admin.UpdateAtlasSearchIndexApiRequest
-func (_e *AtlasSearchApi_Expecter) UpdateAtlasSearchIndexExecute(r interface{}) *AtlasSearchApi_UpdateAtlasSearchIndexExecute_Call {
-	return &AtlasSearchApi_UpdateAtlasSearchIndexExecute_Call{Call: _e.mock.On("UpdateAtlasSearchIndexExecute", r)}
+// UpdateAtlasSearchIndexDeprecatedExecute is a helper method to define mock.On call
+//   - r admin.UpdateAtlasSearchIndexDeprecatedApiRequest
+func (_e *AtlasSearchApi_Expecter) UpdateAtlasSearchIndexDeprecatedExecute(r any) *AtlasSearchApi_UpdateAtlasSearchIndexDeprecatedExecute_Call {
+	return &AtlasSearchApi_UpdateAtlasSearchIndexDeprecatedExecute_Call{Call: _e.mock.On("UpdateAtlasSearchIndexDeprecatedExecute", r)}
 }
 
-func (_c *AtlasSearchApi_UpdateAtlasSearchIndexExecute_Call) Run(run func(r admin.UpdateAtlasSearchIndexApiRequest)) *AtlasSearchApi_UpdateAtlasSearchIndexExecute_Call {
+func (_c *AtlasSearchApi_UpdateAtlasSearchIndexDeprecatedExecute_Call) Run(run func(r admin.UpdateAtlasSearchIndexDeprecatedApiRequest)) *AtlasSearchApi_UpdateAtlasSearchIndexDeprecatedExecute_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.UpdateAtlasSearchIndexApiRequest))
+		run(args[0].(admin.UpdateAtlasSearchIndexDeprecatedApiRequest))
 	})
 	return _c
 }
 
-func (_c *AtlasSearchApi_UpdateAtlasSearchIndexExecute_Call) Return(_a0 *admin.ClusterSearchIndex, _a1 *http.Response, _a2 error) *AtlasSearchApi_UpdateAtlasSearchIndexExecute_Call {
+func (_c *AtlasSearchApi_UpdateAtlasSearchIndexDeprecatedExecute_Call) Return(_a0 *admin.ClusterSearchIndex, _a1 *http.Response, _a2 error) *AtlasSearchApi_UpdateAtlasSearchIndexDeprecatedExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *AtlasSearchApi_UpdateAtlasSearchIndexExecute_Call) RunAndReturn(run func(admin.UpdateAtlasSearchIndexApiRequest) (*admin.ClusterSearchIndex, *http.Response, error)) *AtlasSearchApi_UpdateAtlasSearchIndexExecute_Call {
+func (_c *AtlasSearchApi_UpdateAtlasSearchIndexDeprecatedExecute_Call) RunAndReturn(run func(admin.UpdateAtlasSearchIndexDeprecatedApiRequest) (*admin.ClusterSearchIndex, *http.Response, error)) *AtlasSearchApi_UpdateAtlasSearchIndexDeprecatedExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
-// UpdateAtlasSearchIndexWithParams provides a mock function with given fields: ctx, args
-func (_m *AtlasSearchApi) UpdateAtlasSearchIndexWithParams(ctx context.Context, args *admin.UpdateAtlasSearchIndexApiParams) admin.UpdateAtlasSearchIndexApiRequest {
+// UpdateAtlasSearchIndexDeprecatedWithParams provides a mock function with given fields: ctx, args
+func (_m *AtlasSearchApi) UpdateAtlasSearchIndexDeprecatedWithParams(ctx context.Context, args *admin.UpdateAtlasSearchIndexDeprecatedApiParams) admin.UpdateAtlasSearchIndexDeprecatedApiRequest {
 	ret := _m.Called(ctx, args)
 
 	if len(ret) == 0 {
-		panic("no return value specified for UpdateAtlasSearchIndexWithParams")
+		panic("no return value specified for UpdateAtlasSearchIndexDeprecatedWithParams")
 	}
 
-	var r0 admin.UpdateAtlasSearchIndexApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.UpdateAtlasSearchIndexApiParams) admin.UpdateAtlasSearchIndexApiRequest); ok {
+	var r0 admin.UpdateAtlasSearchIndexDeprecatedApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.UpdateAtlasSearchIndexDeprecatedApiParams) admin.UpdateAtlasSearchIndexDeprecatedApiRequest); ok {
 		r0 = rf(ctx, args)
 	} else {
-		r0 = ret.Get(0).(admin.UpdateAtlasSearchIndexApiRequest)
+		r0 = ret.Get(0).(admin.UpdateAtlasSearchIndexDeprecatedApiRequest)
 	}
 
 	return r0
 }
 
-// AtlasSearchApi_UpdateAtlasSearchIndexWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateAtlasSearchIndexWithParams'
-type AtlasSearchApi_UpdateAtlasSearchIndexWithParams_Call struct {
+// AtlasSearchApi_UpdateAtlasSearchIndexDeprecatedWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateAtlasSearchIndexDeprecatedWithParams'
+type AtlasSearchApi_UpdateAtlasSearchIndexDeprecatedWithParams_Call struct {
 	*mock.Call
 }
 
-// UpdateAtlasSearchIndexWithParams is a helper method to define mock.On call
+// UpdateAtlasSearchIndexDeprecatedWithParams is a helper method to define mock.On call
 //   - ctx context.Context
-//   - args *admin.UpdateAtlasSearchIndexApiParams
-func (_e *AtlasSearchApi_Expecter) UpdateAtlasSearchIndexWithParams(ctx interface{}, args interface{}) *AtlasSearchApi_UpdateAtlasSearchIndexWithParams_Call {
-	return &AtlasSearchApi_UpdateAtlasSearchIndexWithParams_Call{Call: _e.mock.On("UpdateAtlasSearchIndexWithParams", ctx, args)}
+//   - args *admin.UpdateAtlasSearchIndexDeprecatedApiParams
+func (_e *AtlasSearchApi_Expecter) UpdateAtlasSearchIndexDeprecatedWithParams(ctx any, args any) *AtlasSearchApi_UpdateAtlasSearchIndexDeprecatedWithParams_Call {
+	return &AtlasSearchApi_UpdateAtlasSearchIndexDeprecatedWithParams_Call{Call: _e.mock.On("UpdateAtlasSearchIndexDeprecatedWithParams", ctx, args)}
 }
 
-func (_c *AtlasSearchApi_UpdateAtlasSearchIndexWithParams_Call) Run(run func(ctx context.Context, args *admin.UpdateAtlasSearchIndexApiParams)) *AtlasSearchApi_UpdateAtlasSearchIndexWithParams_Call {
+func (_c *AtlasSearchApi_UpdateAtlasSearchIndexDeprecatedWithParams_Call) Run(run func(ctx context.Context, args *admin.UpdateAtlasSearchIndexDeprecatedApiParams)) *AtlasSearchApi_UpdateAtlasSearchIndexDeprecatedWithParams_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.UpdateAtlasSearchIndexApiParams))
+		run(args[0].(context.Context), args[1].(*admin.UpdateAtlasSearchIndexDeprecatedApiParams))
 	})
 	return _c
 }
 
-func (_c *AtlasSearchApi_UpdateAtlasSearchIndexWithParams_Call) Return(_a0 admin.UpdateAtlasSearchIndexApiRequest) *AtlasSearchApi_UpdateAtlasSearchIndexWithParams_Call {
+func (_c *AtlasSearchApi_UpdateAtlasSearchIndexDeprecatedWithParams_Call) Return(_a0 admin.UpdateAtlasSearchIndexDeprecatedApiRequest) *AtlasSearchApi_UpdateAtlasSearchIndexDeprecatedWithParams_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *AtlasSearchApi_UpdateAtlasSearchIndexWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdateAtlasSearchIndexApiParams) admin.UpdateAtlasSearchIndexApiRequest) *AtlasSearchApi_UpdateAtlasSearchIndexWithParams_Call {
+func (_c *AtlasSearchApi_UpdateAtlasSearchIndexDeprecatedWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdateAtlasSearchIndexDeprecatedApiParams) admin.UpdateAtlasSearchIndexDeprecatedApiRequest) *AtlasSearchApi_UpdateAtlasSearchIndexDeprecatedWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }

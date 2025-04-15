@@ -16,6 +16,8 @@ type CreateOrganizationResponse struct {
 	// Read only field.
 	OrgOwnerId   *string            `json:"orgOwnerId,omitempty"`
 	Organization *AtlasOrganization `json:"organization,omitempty"`
+	// Disables automatic alert creation. When set to true, no organization level alerts will be created automatically.
+	SkipDefaultAlertsSettings *bool `json:"skipDefaultAlertsSettings,omitempty"`
 }
 
 // NewCreateOrganizationResponse instantiates a new CreateOrganizationResponse object
@@ -24,6 +26,8 @@ type CreateOrganizationResponse struct {
 // will change when the set of required properties is changed
 func NewCreateOrganizationResponse() *CreateOrganizationResponse {
 	this := CreateOrganizationResponse{}
+	var skipDefaultAlertsSettings bool = false
+	this.SkipDefaultAlertsSettings = &skipDefaultAlertsSettings
 	return &this
 }
 
@@ -32,6 +36,8 @@ func NewCreateOrganizationResponse() *CreateOrganizationResponse {
 // but it doesn't guarantee that properties required by API are set
 func NewCreateOrganizationResponseWithDefaults() *CreateOrganizationResponse {
 	this := CreateOrganizationResponse{}
+	var skipDefaultAlertsSettings bool = false
+	this.SkipDefaultAlertsSettings = &skipDefaultAlertsSettings
 	return &this
 }
 
@@ -167,6 +173,39 @@ func (o *CreateOrganizationResponse) SetOrganization(v AtlasOrganization) {
 	o.Organization = &v
 }
 
+// GetSkipDefaultAlertsSettings returns the SkipDefaultAlertsSettings field value if set, zero value otherwise
+func (o *CreateOrganizationResponse) GetSkipDefaultAlertsSettings() bool {
+	if o == nil || IsNil(o.SkipDefaultAlertsSettings) {
+		var ret bool
+		return ret
+	}
+	return *o.SkipDefaultAlertsSettings
+}
+
+// GetSkipDefaultAlertsSettingsOk returns a tuple with the SkipDefaultAlertsSettings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateOrganizationResponse) GetSkipDefaultAlertsSettingsOk() (*bool, bool) {
+	if o == nil || IsNil(o.SkipDefaultAlertsSettings) {
+		return nil, false
+	}
+
+	return o.SkipDefaultAlertsSettings, true
+}
+
+// HasSkipDefaultAlertsSettings returns a boolean if a field has been set.
+func (o *CreateOrganizationResponse) HasSkipDefaultAlertsSettings() bool {
+	if o != nil && !IsNil(o.SkipDefaultAlertsSettings) {
+		return true
+	}
+
+	return false
+}
+
+// SetSkipDefaultAlertsSettings gets a reference to the given bool and assigns it to the SkipDefaultAlertsSettings field.
+func (o *CreateOrganizationResponse) SetSkipDefaultAlertsSettings(v bool) {
+	o.SkipDefaultAlertsSettings = &v
+}
+
 func (o CreateOrganizationResponse) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -181,6 +220,9 @@ func (o CreateOrganizationResponse) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Organization) {
 		toSerialize["organization"] = o.Organization
+	}
+	if !IsNil(o.SkipDefaultAlertsSettings) {
+		toSerialize["skipDefaultAlertsSettings"] = o.SkipDefaultAlertsSettings
 	}
 	return toSerialize, nil
 }
