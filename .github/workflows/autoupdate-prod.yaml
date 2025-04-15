@@ -16,7 +16,7 @@ jobs:
         with:
           go-version-file: 'go.mod'
       # - run: make install-goimports
-      
+      # tmp
       # Installing mockery manually as tools/scripts/generate_mocks.sh would error out even after go version update in go.mod
       # err: exit status 1: stderr: go: go.mod requires go >= 1.23.0 (running go 1.22.1; GOTOOLCHAIN=local)\n" dry-run=false version=v2.42.1
       - name: Install mockery
