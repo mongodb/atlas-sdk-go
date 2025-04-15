@@ -53,7 +53,7 @@ type RollingIndexApi_CreateRollingIndex_Call struct {
 //   - groupId string
 //   - clusterName string
 //   - databaseRollingIndexRequest *admin.DatabaseRollingIndexRequest
-func (_e *RollingIndexApi_Expecter) CreateRollingIndex(ctx interface{}, groupId interface{}, clusterName interface{}, databaseRollingIndexRequest interface{}) *RollingIndexApi_CreateRollingIndex_Call {
+func (_e *RollingIndexApi_Expecter) CreateRollingIndex(ctx any, groupId any, clusterName any, databaseRollingIndexRequest any) *RollingIndexApi_CreateRollingIndex_Call {
 	return &RollingIndexApi_CreateRollingIndex_Call{Call: _e.mock.On("CreateRollingIndex", ctx, groupId, clusterName, databaseRollingIndexRequest)}
 }
 
@@ -111,7 +111,7 @@ type RollingIndexApi_CreateRollingIndexExecute_Call struct {
 
 // CreateRollingIndexExecute is a helper method to define mock.On call
 //   - r admin.CreateRollingIndexApiRequest
-func (_e *RollingIndexApi_Expecter) CreateRollingIndexExecute(r interface{}) *RollingIndexApi_CreateRollingIndexExecute_Call {
+func (_e *RollingIndexApi_Expecter) CreateRollingIndexExecute(r any) *RollingIndexApi_CreateRollingIndexExecute_Call {
 	return &RollingIndexApi_CreateRollingIndexExecute_Call{Call: _e.mock.On("CreateRollingIndexExecute", r)}
 }
 
@@ -158,7 +158,7 @@ type RollingIndexApi_CreateRollingIndexWithParams_Call struct {
 // CreateRollingIndexWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.CreateRollingIndexApiParams
-func (_e *RollingIndexApi_Expecter) CreateRollingIndexWithParams(ctx interface{}, args interface{}) *RollingIndexApi_CreateRollingIndexWithParams_Call {
+func (_e *RollingIndexApi_Expecter) CreateRollingIndexWithParams(ctx any, args any) *RollingIndexApi_CreateRollingIndexWithParams_Call {
 	return &RollingIndexApi_CreateRollingIndexWithParams_Call{Call: _e.mock.On("CreateRollingIndexWithParams", ctx, args)}
 }
 

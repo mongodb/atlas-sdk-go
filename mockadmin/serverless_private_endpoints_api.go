@@ -53,7 +53,7 @@ type ServerlessPrivateEndpointsApi_CreateServerlessPrivateEndpoint_Call struct {
 //   - groupId string
 //   - instanceName string
 //   - serverlessTenantCreateRequest *admin.ServerlessTenantCreateRequest
-func (_e *ServerlessPrivateEndpointsApi_Expecter) CreateServerlessPrivateEndpoint(ctx interface{}, groupId interface{}, instanceName interface{}, serverlessTenantCreateRequest interface{}) *ServerlessPrivateEndpointsApi_CreateServerlessPrivateEndpoint_Call {
+func (_e *ServerlessPrivateEndpointsApi_Expecter) CreateServerlessPrivateEndpoint(ctx any, groupId any, instanceName any, serverlessTenantCreateRequest any) *ServerlessPrivateEndpointsApi_CreateServerlessPrivateEndpoint_Call {
 	return &ServerlessPrivateEndpointsApi_CreateServerlessPrivateEndpoint_Call{Call: _e.mock.On("CreateServerlessPrivateEndpoint", ctx, groupId, instanceName, serverlessTenantCreateRequest)}
 }
 
@@ -120,7 +120,7 @@ type ServerlessPrivateEndpointsApi_CreateServerlessPrivateEndpointExecute_Call s
 
 // CreateServerlessPrivateEndpointExecute is a helper method to define mock.On call
 //   - r admin.CreateServerlessPrivateEndpointApiRequest
-func (_e *ServerlessPrivateEndpointsApi_Expecter) CreateServerlessPrivateEndpointExecute(r interface{}) *ServerlessPrivateEndpointsApi_CreateServerlessPrivateEndpointExecute_Call {
+func (_e *ServerlessPrivateEndpointsApi_Expecter) CreateServerlessPrivateEndpointExecute(r any) *ServerlessPrivateEndpointsApi_CreateServerlessPrivateEndpointExecute_Call {
 	return &ServerlessPrivateEndpointsApi_CreateServerlessPrivateEndpointExecute_Call{Call: _e.mock.On("CreateServerlessPrivateEndpointExecute", r)}
 }
 
@@ -167,7 +167,7 @@ type ServerlessPrivateEndpointsApi_CreateServerlessPrivateEndpointWithParams_Cal
 // CreateServerlessPrivateEndpointWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.CreateServerlessPrivateEndpointApiParams
-func (_e *ServerlessPrivateEndpointsApi_Expecter) CreateServerlessPrivateEndpointWithParams(ctx interface{}, args interface{}) *ServerlessPrivateEndpointsApi_CreateServerlessPrivateEndpointWithParams_Call {
+func (_e *ServerlessPrivateEndpointsApi_Expecter) CreateServerlessPrivateEndpointWithParams(ctx any, args any) *ServerlessPrivateEndpointsApi_CreateServerlessPrivateEndpointWithParams_Call {
 	return &ServerlessPrivateEndpointsApi_CreateServerlessPrivateEndpointWithParams_Call{Call: _e.mock.On("CreateServerlessPrivateEndpointWithParams", ctx, args)}
 }
 
@@ -216,7 +216,7 @@ type ServerlessPrivateEndpointsApi_DeleteServerlessPrivateEndpoint_Call struct {
 //   - groupId string
 //   - instanceName string
 //   - endpointId string
-func (_e *ServerlessPrivateEndpointsApi_Expecter) DeleteServerlessPrivateEndpoint(ctx interface{}, groupId interface{}, instanceName interface{}, endpointId interface{}) *ServerlessPrivateEndpointsApi_DeleteServerlessPrivateEndpoint_Call {
+func (_e *ServerlessPrivateEndpointsApi_Expecter) DeleteServerlessPrivateEndpoint(ctx any, groupId any, instanceName any, endpointId any) *ServerlessPrivateEndpointsApi_DeleteServerlessPrivateEndpoint_Call {
 	return &ServerlessPrivateEndpointsApi_DeleteServerlessPrivateEndpoint_Call{Call: _e.mock.On("DeleteServerlessPrivateEndpoint", ctx, groupId, instanceName, endpointId)}
 }
 
@@ -238,42 +238,33 @@ func (_c *ServerlessPrivateEndpointsApi_DeleteServerlessPrivateEndpoint_Call) Ru
 }
 
 // DeleteServerlessPrivateEndpointExecute provides a mock function with given fields: r
-func (_m *ServerlessPrivateEndpointsApi) DeleteServerlessPrivateEndpointExecute(r admin.DeleteServerlessPrivateEndpointApiRequest) (map[string]interface{}, *http.Response, error) {
+func (_m *ServerlessPrivateEndpointsApi) DeleteServerlessPrivateEndpointExecute(r admin.DeleteServerlessPrivateEndpointApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteServerlessPrivateEndpointExecute")
 	}
 
-	var r0 map[string]interface{}
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteServerlessPrivateEndpointApiRequest) (map[string]interface{}, *http.Response, error)); ok {
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.DeleteServerlessPrivateEndpointApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteServerlessPrivateEndpointApiRequest) map[string]interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteServerlessPrivateEndpointApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(map[string]interface{})
+			r0 = ret.Get(0).(*http.Response)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeleteServerlessPrivateEndpointApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.DeleteServerlessPrivateEndpointApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
+		r1 = ret.Error(1)
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.DeleteServerlessPrivateEndpointApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
+	return r0, r1
 }
 
 // ServerlessPrivateEndpointsApi_DeleteServerlessPrivateEndpointExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteServerlessPrivateEndpointExecute'
@@ -283,7 +274,7 @@ type ServerlessPrivateEndpointsApi_DeleteServerlessPrivateEndpointExecute_Call s
 
 // DeleteServerlessPrivateEndpointExecute is a helper method to define mock.On call
 //   - r admin.DeleteServerlessPrivateEndpointApiRequest
-func (_e *ServerlessPrivateEndpointsApi_Expecter) DeleteServerlessPrivateEndpointExecute(r interface{}) *ServerlessPrivateEndpointsApi_DeleteServerlessPrivateEndpointExecute_Call {
+func (_e *ServerlessPrivateEndpointsApi_Expecter) DeleteServerlessPrivateEndpointExecute(r any) *ServerlessPrivateEndpointsApi_DeleteServerlessPrivateEndpointExecute_Call {
 	return &ServerlessPrivateEndpointsApi_DeleteServerlessPrivateEndpointExecute_Call{Call: _e.mock.On("DeleteServerlessPrivateEndpointExecute", r)}
 }
 
@@ -294,12 +285,12 @@ func (_c *ServerlessPrivateEndpointsApi_DeleteServerlessPrivateEndpointExecute_C
 	return _c
 }
 
-func (_c *ServerlessPrivateEndpointsApi_DeleteServerlessPrivateEndpointExecute_Call) Return(_a0 map[string]interface{}, _a1 *http.Response, _a2 error) *ServerlessPrivateEndpointsApi_DeleteServerlessPrivateEndpointExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
+func (_c *ServerlessPrivateEndpointsApi_DeleteServerlessPrivateEndpointExecute_Call) Return(_a0 *http.Response, _a1 error) *ServerlessPrivateEndpointsApi_DeleteServerlessPrivateEndpointExecute_Call {
+	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *ServerlessPrivateEndpointsApi_DeleteServerlessPrivateEndpointExecute_Call) RunAndReturn(run func(admin.DeleteServerlessPrivateEndpointApiRequest) (map[string]interface{}, *http.Response, error)) *ServerlessPrivateEndpointsApi_DeleteServerlessPrivateEndpointExecute_Call {
+func (_c *ServerlessPrivateEndpointsApi_DeleteServerlessPrivateEndpointExecute_Call) RunAndReturn(run func(admin.DeleteServerlessPrivateEndpointApiRequest) (*http.Response, error)) *ServerlessPrivateEndpointsApi_DeleteServerlessPrivateEndpointExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -330,7 +321,7 @@ type ServerlessPrivateEndpointsApi_DeleteServerlessPrivateEndpointWithParams_Cal
 // DeleteServerlessPrivateEndpointWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.DeleteServerlessPrivateEndpointApiParams
-func (_e *ServerlessPrivateEndpointsApi_Expecter) DeleteServerlessPrivateEndpointWithParams(ctx interface{}, args interface{}) *ServerlessPrivateEndpointsApi_DeleteServerlessPrivateEndpointWithParams_Call {
+func (_e *ServerlessPrivateEndpointsApi_Expecter) DeleteServerlessPrivateEndpointWithParams(ctx any, args any) *ServerlessPrivateEndpointsApi_DeleteServerlessPrivateEndpointWithParams_Call {
 	return &ServerlessPrivateEndpointsApi_DeleteServerlessPrivateEndpointWithParams_Call{Call: _e.mock.On("DeleteServerlessPrivateEndpointWithParams", ctx, args)}
 }
 
@@ -379,7 +370,7 @@ type ServerlessPrivateEndpointsApi_GetServerlessPrivateEndpoint_Call struct {
 //   - groupId string
 //   - instanceName string
 //   - endpointId string
-func (_e *ServerlessPrivateEndpointsApi_Expecter) GetServerlessPrivateEndpoint(ctx interface{}, groupId interface{}, instanceName interface{}, endpointId interface{}) *ServerlessPrivateEndpointsApi_GetServerlessPrivateEndpoint_Call {
+func (_e *ServerlessPrivateEndpointsApi_Expecter) GetServerlessPrivateEndpoint(ctx any, groupId any, instanceName any, endpointId any) *ServerlessPrivateEndpointsApi_GetServerlessPrivateEndpoint_Call {
 	return &ServerlessPrivateEndpointsApi_GetServerlessPrivateEndpoint_Call{Call: _e.mock.On("GetServerlessPrivateEndpoint", ctx, groupId, instanceName, endpointId)}
 }
 
@@ -446,7 +437,7 @@ type ServerlessPrivateEndpointsApi_GetServerlessPrivateEndpointExecute_Call stru
 
 // GetServerlessPrivateEndpointExecute is a helper method to define mock.On call
 //   - r admin.GetServerlessPrivateEndpointApiRequest
-func (_e *ServerlessPrivateEndpointsApi_Expecter) GetServerlessPrivateEndpointExecute(r interface{}) *ServerlessPrivateEndpointsApi_GetServerlessPrivateEndpointExecute_Call {
+func (_e *ServerlessPrivateEndpointsApi_Expecter) GetServerlessPrivateEndpointExecute(r any) *ServerlessPrivateEndpointsApi_GetServerlessPrivateEndpointExecute_Call {
 	return &ServerlessPrivateEndpointsApi_GetServerlessPrivateEndpointExecute_Call{Call: _e.mock.On("GetServerlessPrivateEndpointExecute", r)}
 }
 
@@ -493,7 +484,7 @@ type ServerlessPrivateEndpointsApi_GetServerlessPrivateEndpointWithParams_Call s
 // GetServerlessPrivateEndpointWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetServerlessPrivateEndpointApiParams
-func (_e *ServerlessPrivateEndpointsApi_Expecter) GetServerlessPrivateEndpointWithParams(ctx interface{}, args interface{}) *ServerlessPrivateEndpointsApi_GetServerlessPrivateEndpointWithParams_Call {
+func (_e *ServerlessPrivateEndpointsApi_Expecter) GetServerlessPrivateEndpointWithParams(ctx any, args any) *ServerlessPrivateEndpointsApi_GetServerlessPrivateEndpointWithParams_Call {
 	return &ServerlessPrivateEndpointsApi_GetServerlessPrivateEndpointWithParams_Call{Call: _e.mock.On("GetServerlessPrivateEndpointWithParams", ctx, args)}
 }
 
@@ -541,7 +532,7 @@ type ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpoints_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - instanceName string
-func (_e *ServerlessPrivateEndpointsApi_Expecter) ListServerlessPrivateEndpoints(ctx interface{}, groupId interface{}, instanceName interface{}) *ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpoints_Call {
+func (_e *ServerlessPrivateEndpointsApi_Expecter) ListServerlessPrivateEndpoints(ctx any, groupId any, instanceName any) *ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpoints_Call {
 	return &ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpoints_Call{Call: _e.mock.On("ListServerlessPrivateEndpoints", ctx, groupId, instanceName)}
 }
 
@@ -608,7 +599,7 @@ type ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpointsExecute_Call st
 
 // ListServerlessPrivateEndpointsExecute is a helper method to define mock.On call
 //   - r admin.ListServerlessPrivateEndpointsApiRequest
-func (_e *ServerlessPrivateEndpointsApi_Expecter) ListServerlessPrivateEndpointsExecute(r interface{}) *ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpointsExecute_Call {
+func (_e *ServerlessPrivateEndpointsApi_Expecter) ListServerlessPrivateEndpointsExecute(r any) *ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpointsExecute_Call {
 	return &ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpointsExecute_Call{Call: _e.mock.On("ListServerlessPrivateEndpointsExecute", r)}
 }
 
@@ -655,7 +646,7 @@ type ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpointsWithParams_Call
 // ListServerlessPrivateEndpointsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListServerlessPrivateEndpointsApiParams
-func (_e *ServerlessPrivateEndpointsApi_Expecter) ListServerlessPrivateEndpointsWithParams(ctx interface{}, args interface{}) *ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpointsWithParams_Call {
+func (_e *ServerlessPrivateEndpointsApi_Expecter) ListServerlessPrivateEndpointsWithParams(ctx any, args any) *ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpointsWithParams_Call {
 	return &ServerlessPrivateEndpointsApi_ListServerlessPrivateEndpointsWithParams_Call{Call: _e.mock.On("ListServerlessPrivateEndpointsWithParams", ctx, args)}
 }
 
@@ -705,7 +696,7 @@ type ServerlessPrivateEndpointsApi_UpdateServerlessPrivateEndpoint_Call struct {
 //   - instanceName string
 //   - endpointId string
 //   - serverlessTenantEndpointUpdate *admin.ServerlessTenantEndpointUpdate
-func (_e *ServerlessPrivateEndpointsApi_Expecter) UpdateServerlessPrivateEndpoint(ctx interface{}, groupId interface{}, instanceName interface{}, endpointId interface{}, serverlessTenantEndpointUpdate interface{}) *ServerlessPrivateEndpointsApi_UpdateServerlessPrivateEndpoint_Call {
+func (_e *ServerlessPrivateEndpointsApi_Expecter) UpdateServerlessPrivateEndpoint(ctx any, groupId any, instanceName any, endpointId any, serverlessTenantEndpointUpdate any) *ServerlessPrivateEndpointsApi_UpdateServerlessPrivateEndpoint_Call {
 	return &ServerlessPrivateEndpointsApi_UpdateServerlessPrivateEndpoint_Call{Call: _e.mock.On("UpdateServerlessPrivateEndpoint", ctx, groupId, instanceName, endpointId, serverlessTenantEndpointUpdate)}
 }
 
@@ -772,7 +763,7 @@ type ServerlessPrivateEndpointsApi_UpdateServerlessPrivateEndpointExecute_Call s
 
 // UpdateServerlessPrivateEndpointExecute is a helper method to define mock.On call
 //   - r admin.UpdateServerlessPrivateEndpointApiRequest
-func (_e *ServerlessPrivateEndpointsApi_Expecter) UpdateServerlessPrivateEndpointExecute(r interface{}) *ServerlessPrivateEndpointsApi_UpdateServerlessPrivateEndpointExecute_Call {
+func (_e *ServerlessPrivateEndpointsApi_Expecter) UpdateServerlessPrivateEndpointExecute(r any) *ServerlessPrivateEndpointsApi_UpdateServerlessPrivateEndpointExecute_Call {
 	return &ServerlessPrivateEndpointsApi_UpdateServerlessPrivateEndpointExecute_Call{Call: _e.mock.On("UpdateServerlessPrivateEndpointExecute", r)}
 }
 
@@ -819,7 +810,7 @@ type ServerlessPrivateEndpointsApi_UpdateServerlessPrivateEndpointWithParams_Cal
 // UpdateServerlessPrivateEndpointWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.UpdateServerlessPrivateEndpointApiParams
-func (_e *ServerlessPrivateEndpointsApi_Expecter) UpdateServerlessPrivateEndpointWithParams(ctx interface{}, args interface{}) *ServerlessPrivateEndpointsApi_UpdateServerlessPrivateEndpointWithParams_Call {
+func (_e *ServerlessPrivateEndpointsApi_Expecter) UpdateServerlessPrivateEndpointWithParams(ctx any, args any) *ServerlessPrivateEndpointsApi_UpdateServerlessPrivateEndpointWithParams_Call {
 	return &ServerlessPrivateEndpointsApi_UpdateServerlessPrivateEndpointWithParams_Call{Call: _e.mock.On("UpdateServerlessPrivateEndpointWithParams", ctx, args)}
 }
 

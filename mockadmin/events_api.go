@@ -52,7 +52,7 @@ type EventsApi_GetOrganizationEvent_Call struct {
 //   - ctx context.Context
 //   - orgId string
 //   - eventId string
-func (_e *EventsApi_Expecter) GetOrganizationEvent(ctx interface{}, orgId interface{}, eventId interface{}) *EventsApi_GetOrganizationEvent_Call {
+func (_e *EventsApi_Expecter) GetOrganizationEvent(ctx any, orgId any, eventId any) *EventsApi_GetOrganizationEvent_Call {
 	return &EventsApi_GetOrganizationEvent_Call{Call: _e.mock.On("GetOrganizationEvent", ctx, orgId, eventId)}
 }
 
@@ -119,7 +119,7 @@ type EventsApi_GetOrganizationEventExecute_Call struct {
 
 // GetOrganizationEventExecute is a helper method to define mock.On call
 //   - r admin.GetOrganizationEventApiRequest
-func (_e *EventsApi_Expecter) GetOrganizationEventExecute(r interface{}) *EventsApi_GetOrganizationEventExecute_Call {
+func (_e *EventsApi_Expecter) GetOrganizationEventExecute(r any) *EventsApi_GetOrganizationEventExecute_Call {
 	return &EventsApi_GetOrganizationEventExecute_Call{Call: _e.mock.On("GetOrganizationEventExecute", r)}
 }
 
@@ -166,7 +166,7 @@ type EventsApi_GetOrganizationEventWithParams_Call struct {
 // GetOrganizationEventWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetOrganizationEventApiParams
-func (_e *EventsApi_Expecter) GetOrganizationEventWithParams(ctx interface{}, args interface{}) *EventsApi_GetOrganizationEventWithParams_Call {
+func (_e *EventsApi_Expecter) GetOrganizationEventWithParams(ctx any, args any) *EventsApi_GetOrganizationEventWithParams_Call {
 	return &EventsApi_GetOrganizationEventWithParams_Call{Call: _e.mock.On("GetOrganizationEventWithParams", ctx, args)}
 }
 
@@ -214,7 +214,7 @@ type EventsApi_GetProjectEvent_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - eventId string
-func (_e *EventsApi_Expecter) GetProjectEvent(ctx interface{}, groupId interface{}, eventId interface{}) *EventsApi_GetProjectEvent_Call {
+func (_e *EventsApi_Expecter) GetProjectEvent(ctx any, groupId any, eventId any) *EventsApi_GetProjectEvent_Call {
 	return &EventsApi_GetProjectEvent_Call{Call: _e.mock.On("GetProjectEvent", ctx, groupId, eventId)}
 }
 
@@ -281,7 +281,7 @@ type EventsApi_GetProjectEventExecute_Call struct {
 
 // GetProjectEventExecute is a helper method to define mock.On call
 //   - r admin.GetProjectEventApiRequest
-func (_e *EventsApi_Expecter) GetProjectEventExecute(r interface{}) *EventsApi_GetProjectEventExecute_Call {
+func (_e *EventsApi_Expecter) GetProjectEventExecute(r any) *EventsApi_GetProjectEventExecute_Call {
 	return &EventsApi_GetProjectEventExecute_Call{Call: _e.mock.On("GetProjectEventExecute", r)}
 }
 
@@ -328,7 +328,7 @@ type EventsApi_GetProjectEventWithParams_Call struct {
 // GetProjectEventWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetProjectEventApiParams
-func (_e *EventsApi_Expecter) GetProjectEventWithParams(ctx interface{}, args interface{}) *EventsApi_GetProjectEventWithParams_Call {
+func (_e *EventsApi_Expecter) GetProjectEventWithParams(ctx any, args any) *EventsApi_GetProjectEventWithParams_Call {
 	return &EventsApi_GetProjectEventWithParams_Call{Call: _e.mock.On("GetProjectEventWithParams", ctx, args)}
 }
 
@@ -345,6 +345,166 @@ func (_c *EventsApi_GetProjectEventWithParams_Call) Return(_a0 admin.GetProjectE
 }
 
 func (_c *EventsApi_GetProjectEventWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetProjectEventApiParams) admin.GetProjectEventApiRequest) *EventsApi_GetProjectEventWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListEventTypes provides a mock function with given fields: ctx
+func (_m *EventsApi) ListEventTypes(ctx context.Context) admin.ListEventTypesApiRequest {
+	ret := _m.Called(ctx)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListEventTypes")
+	}
+
+	var r0 admin.ListEventTypesApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context) admin.ListEventTypesApiRequest); ok {
+		r0 = rf(ctx)
+	} else {
+		r0 = ret.Get(0).(admin.ListEventTypesApiRequest)
+	}
+
+	return r0
+}
+
+// EventsApi_ListEventTypes_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListEventTypes'
+type EventsApi_ListEventTypes_Call struct {
+	*mock.Call
+}
+
+// ListEventTypes is a helper method to define mock.On call
+//   - ctx context.Context
+func (_e *EventsApi_Expecter) ListEventTypes(ctx any) *EventsApi_ListEventTypes_Call {
+	return &EventsApi_ListEventTypes_Call{Call: _e.mock.On("ListEventTypes", ctx)}
+}
+
+func (_c *EventsApi_ListEventTypes_Call) Run(run func(ctx context.Context)) *EventsApi_ListEventTypes_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context))
+	})
+	return _c
+}
+
+func (_c *EventsApi_ListEventTypes_Call) Return(_a0 admin.ListEventTypesApiRequest) *EventsApi_ListEventTypes_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *EventsApi_ListEventTypes_Call) RunAndReturn(run func(context.Context) admin.ListEventTypesApiRequest) *EventsApi_ListEventTypes_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListEventTypesExecute provides a mock function with given fields: r
+func (_m *EventsApi) ListEventTypesExecute(r admin.ListEventTypesApiRequest) (*admin.PaginatedEventTypeDetailsResponse, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListEventTypesExecute")
+	}
+
+	var r0 *admin.PaginatedEventTypeDetailsResponse
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.ListEventTypesApiRequest) (*admin.PaginatedEventTypeDetailsResponse, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.ListEventTypesApiRequest) *admin.PaginatedEventTypeDetailsResponse); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.PaginatedEventTypeDetailsResponse)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.ListEventTypesApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.ListEventTypesApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// EventsApi_ListEventTypesExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListEventTypesExecute'
+type EventsApi_ListEventTypesExecute_Call struct {
+	*mock.Call
+}
+
+// ListEventTypesExecute is a helper method to define mock.On call
+//   - r admin.ListEventTypesApiRequest
+func (_e *EventsApi_Expecter) ListEventTypesExecute(r any) *EventsApi_ListEventTypesExecute_Call {
+	return &EventsApi_ListEventTypesExecute_Call{Call: _e.mock.On("ListEventTypesExecute", r)}
+}
+
+func (_c *EventsApi_ListEventTypesExecute_Call) Run(run func(r admin.ListEventTypesApiRequest)) *EventsApi_ListEventTypesExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.ListEventTypesApiRequest))
+	})
+	return _c
+}
+
+func (_c *EventsApi_ListEventTypesExecute_Call) Return(_a0 *admin.PaginatedEventTypeDetailsResponse, _a1 *http.Response, _a2 error) *EventsApi_ListEventTypesExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *EventsApi_ListEventTypesExecute_Call) RunAndReturn(run func(admin.ListEventTypesApiRequest) (*admin.PaginatedEventTypeDetailsResponse, *http.Response, error)) *EventsApi_ListEventTypesExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListEventTypesWithParams provides a mock function with given fields: ctx, args
+func (_m *EventsApi) ListEventTypesWithParams(ctx context.Context, args *admin.ListEventTypesApiParams) admin.ListEventTypesApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListEventTypesWithParams")
+	}
+
+	var r0 admin.ListEventTypesApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListEventTypesApiParams) admin.ListEventTypesApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.ListEventTypesApiRequest)
+	}
+
+	return r0
+}
+
+// EventsApi_ListEventTypesWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListEventTypesWithParams'
+type EventsApi_ListEventTypesWithParams_Call struct {
+	*mock.Call
+}
+
+// ListEventTypesWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.ListEventTypesApiParams
+func (_e *EventsApi_Expecter) ListEventTypesWithParams(ctx any, args any) *EventsApi_ListEventTypesWithParams_Call {
+	return &EventsApi_ListEventTypesWithParams_Call{Call: _e.mock.On("ListEventTypesWithParams", ctx, args)}
+}
+
+func (_c *EventsApi_ListEventTypesWithParams_Call) Run(run func(ctx context.Context, args *admin.ListEventTypesApiParams)) *EventsApi_ListEventTypesWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.ListEventTypesApiParams))
+	})
+	return _c
+}
+
+func (_c *EventsApi_ListEventTypesWithParams_Call) Return(_a0 admin.ListEventTypesApiRequest) *EventsApi_ListEventTypesWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *EventsApi_ListEventTypesWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListEventTypesApiParams) admin.ListEventTypesApiRequest) *EventsApi_ListEventTypesWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -375,7 +535,7 @@ type EventsApi_ListOrganizationEvents_Call struct {
 // ListOrganizationEvents is a helper method to define mock.On call
 //   - ctx context.Context
 //   - orgId string
-func (_e *EventsApi_Expecter) ListOrganizationEvents(ctx interface{}, orgId interface{}) *EventsApi_ListOrganizationEvents_Call {
+func (_e *EventsApi_Expecter) ListOrganizationEvents(ctx any, orgId any) *EventsApi_ListOrganizationEvents_Call {
 	return &EventsApi_ListOrganizationEvents_Call{Call: _e.mock.On("ListOrganizationEvents", ctx, orgId)}
 }
 
@@ -442,7 +602,7 @@ type EventsApi_ListOrganizationEventsExecute_Call struct {
 
 // ListOrganizationEventsExecute is a helper method to define mock.On call
 //   - r admin.ListOrganizationEventsApiRequest
-func (_e *EventsApi_Expecter) ListOrganizationEventsExecute(r interface{}) *EventsApi_ListOrganizationEventsExecute_Call {
+func (_e *EventsApi_Expecter) ListOrganizationEventsExecute(r any) *EventsApi_ListOrganizationEventsExecute_Call {
 	return &EventsApi_ListOrganizationEventsExecute_Call{Call: _e.mock.On("ListOrganizationEventsExecute", r)}
 }
 
@@ -489,7 +649,7 @@ type EventsApi_ListOrganizationEventsWithParams_Call struct {
 // ListOrganizationEventsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListOrganizationEventsApiParams
-func (_e *EventsApi_Expecter) ListOrganizationEventsWithParams(ctx interface{}, args interface{}) *EventsApi_ListOrganizationEventsWithParams_Call {
+func (_e *EventsApi_Expecter) ListOrganizationEventsWithParams(ctx any, args any) *EventsApi_ListOrganizationEventsWithParams_Call {
 	return &EventsApi_ListOrganizationEventsWithParams_Call{Call: _e.mock.On("ListOrganizationEventsWithParams", ctx, args)}
 }
 
@@ -536,7 +696,7 @@ type EventsApi_ListProjectEvents_Call struct {
 // ListProjectEvents is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *EventsApi_Expecter) ListProjectEvents(ctx interface{}, groupId interface{}) *EventsApi_ListProjectEvents_Call {
+func (_e *EventsApi_Expecter) ListProjectEvents(ctx any, groupId any) *EventsApi_ListProjectEvents_Call {
 	return &EventsApi_ListProjectEvents_Call{Call: _e.mock.On("ListProjectEvents", ctx, groupId)}
 }
 
@@ -603,7 +763,7 @@ type EventsApi_ListProjectEventsExecute_Call struct {
 
 // ListProjectEventsExecute is a helper method to define mock.On call
 //   - r admin.ListProjectEventsApiRequest
-func (_e *EventsApi_Expecter) ListProjectEventsExecute(r interface{}) *EventsApi_ListProjectEventsExecute_Call {
+func (_e *EventsApi_Expecter) ListProjectEventsExecute(r any) *EventsApi_ListProjectEventsExecute_Call {
 	return &EventsApi_ListProjectEventsExecute_Call{Call: _e.mock.On("ListProjectEventsExecute", r)}
 }
 
@@ -650,7 +810,7 @@ type EventsApi_ListProjectEventsWithParams_Call struct {
 // ListProjectEventsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListProjectEventsApiParams
-func (_e *EventsApi_Expecter) ListProjectEventsWithParams(ctx interface{}, args interface{}) *EventsApi_ListProjectEventsWithParams_Call {
+func (_e *EventsApi_Expecter) ListProjectEventsWithParams(ctx any, args any) *EventsApi_ListProjectEventsWithParams_Call {
 	return &EventsApi_ListProjectEventsWithParams_Call{Call: _e.mock.On("ListProjectEventsWithParams", ctx, args)}
 }
 

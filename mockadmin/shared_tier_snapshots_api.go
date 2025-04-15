@@ -53,7 +53,7 @@ type SharedTierSnapshotsApi_DownloadSharedClusterBackup_Call struct {
 //   - clusterName string
 //   - groupId string
 //   - tenantRestore *admin.TenantRestore
-func (_e *SharedTierSnapshotsApi_Expecter) DownloadSharedClusterBackup(ctx interface{}, clusterName interface{}, groupId interface{}, tenantRestore interface{}) *SharedTierSnapshotsApi_DownloadSharedClusterBackup_Call {
+func (_e *SharedTierSnapshotsApi_Expecter) DownloadSharedClusterBackup(ctx any, clusterName any, groupId any, tenantRestore any) *SharedTierSnapshotsApi_DownloadSharedClusterBackup_Call {
 	return &SharedTierSnapshotsApi_DownloadSharedClusterBackup_Call{Call: _e.mock.On("DownloadSharedClusterBackup", ctx, clusterName, groupId, tenantRestore)}
 }
 
@@ -120,7 +120,7 @@ type SharedTierSnapshotsApi_DownloadSharedClusterBackupExecute_Call struct {
 
 // DownloadSharedClusterBackupExecute is a helper method to define mock.On call
 //   - r admin.DownloadSharedClusterBackupApiRequest
-func (_e *SharedTierSnapshotsApi_Expecter) DownloadSharedClusterBackupExecute(r interface{}) *SharedTierSnapshotsApi_DownloadSharedClusterBackupExecute_Call {
+func (_e *SharedTierSnapshotsApi_Expecter) DownloadSharedClusterBackupExecute(r any) *SharedTierSnapshotsApi_DownloadSharedClusterBackupExecute_Call {
 	return &SharedTierSnapshotsApi_DownloadSharedClusterBackupExecute_Call{Call: _e.mock.On("DownloadSharedClusterBackupExecute", r)}
 }
 
@@ -167,7 +167,7 @@ type SharedTierSnapshotsApi_DownloadSharedClusterBackupWithParams_Call struct {
 // DownloadSharedClusterBackupWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.DownloadSharedClusterBackupApiParams
-func (_e *SharedTierSnapshotsApi_Expecter) DownloadSharedClusterBackupWithParams(ctx interface{}, args interface{}) *SharedTierSnapshotsApi_DownloadSharedClusterBackupWithParams_Call {
+func (_e *SharedTierSnapshotsApi_Expecter) DownloadSharedClusterBackupWithParams(ctx any, args any) *SharedTierSnapshotsApi_DownloadSharedClusterBackupWithParams_Call {
 	return &SharedTierSnapshotsApi_DownloadSharedClusterBackupWithParams_Call{Call: _e.mock.On("DownloadSharedClusterBackupWithParams", ctx, args)}
 }
 
@@ -216,7 +216,7 @@ type SharedTierSnapshotsApi_GetSharedClusterBackup_Call struct {
 //   - groupId string
 //   - clusterName string
 //   - snapshotId string
-func (_e *SharedTierSnapshotsApi_Expecter) GetSharedClusterBackup(ctx interface{}, groupId interface{}, clusterName interface{}, snapshotId interface{}) *SharedTierSnapshotsApi_GetSharedClusterBackup_Call {
+func (_e *SharedTierSnapshotsApi_Expecter) GetSharedClusterBackup(ctx any, groupId any, clusterName any, snapshotId any) *SharedTierSnapshotsApi_GetSharedClusterBackup_Call {
 	return &SharedTierSnapshotsApi_GetSharedClusterBackup_Call{Call: _e.mock.On("GetSharedClusterBackup", ctx, groupId, clusterName, snapshotId)}
 }
 
@@ -283,7 +283,7 @@ type SharedTierSnapshotsApi_GetSharedClusterBackupExecute_Call struct {
 
 // GetSharedClusterBackupExecute is a helper method to define mock.On call
 //   - r admin.GetSharedClusterBackupApiRequest
-func (_e *SharedTierSnapshotsApi_Expecter) GetSharedClusterBackupExecute(r interface{}) *SharedTierSnapshotsApi_GetSharedClusterBackupExecute_Call {
+func (_e *SharedTierSnapshotsApi_Expecter) GetSharedClusterBackupExecute(r any) *SharedTierSnapshotsApi_GetSharedClusterBackupExecute_Call {
 	return &SharedTierSnapshotsApi_GetSharedClusterBackupExecute_Call{Call: _e.mock.On("GetSharedClusterBackupExecute", r)}
 }
 
@@ -330,7 +330,7 @@ type SharedTierSnapshotsApi_GetSharedClusterBackupWithParams_Call struct {
 // GetSharedClusterBackupWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetSharedClusterBackupApiParams
-func (_e *SharedTierSnapshotsApi_Expecter) GetSharedClusterBackupWithParams(ctx interface{}, args interface{}) *SharedTierSnapshotsApi_GetSharedClusterBackupWithParams_Call {
+func (_e *SharedTierSnapshotsApi_Expecter) GetSharedClusterBackupWithParams(ctx any, args any) *SharedTierSnapshotsApi_GetSharedClusterBackupWithParams_Call {
 	return &SharedTierSnapshotsApi_GetSharedClusterBackupWithParams_Call{Call: _e.mock.On("GetSharedClusterBackupWithParams", ctx, args)}
 }
 
@@ -378,7 +378,7 @@ type SharedTierSnapshotsApi_ListSharedClusterBackups_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
-func (_e *SharedTierSnapshotsApi_Expecter) ListSharedClusterBackups(ctx interface{}, groupId interface{}, clusterName interface{}) *SharedTierSnapshotsApi_ListSharedClusterBackups_Call {
+func (_e *SharedTierSnapshotsApi_Expecter) ListSharedClusterBackups(ctx any, groupId any, clusterName any) *SharedTierSnapshotsApi_ListSharedClusterBackups_Call {
 	return &SharedTierSnapshotsApi_ListSharedClusterBackups_Call{Call: _e.mock.On("ListSharedClusterBackups", ctx, groupId, clusterName)}
 }
 
@@ -445,7 +445,7 @@ type SharedTierSnapshotsApi_ListSharedClusterBackupsExecute_Call struct {
 
 // ListSharedClusterBackupsExecute is a helper method to define mock.On call
 //   - r admin.ListSharedClusterBackupsApiRequest
-func (_e *SharedTierSnapshotsApi_Expecter) ListSharedClusterBackupsExecute(r interface{}) *SharedTierSnapshotsApi_ListSharedClusterBackupsExecute_Call {
+func (_e *SharedTierSnapshotsApi_Expecter) ListSharedClusterBackupsExecute(r any) *SharedTierSnapshotsApi_ListSharedClusterBackupsExecute_Call {
 	return &SharedTierSnapshotsApi_ListSharedClusterBackupsExecute_Call{Call: _e.mock.On("ListSharedClusterBackupsExecute", r)}
 }
 
@@ -492,7 +492,7 @@ type SharedTierSnapshotsApi_ListSharedClusterBackupsWithParams_Call struct {
 // ListSharedClusterBackupsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListSharedClusterBackupsApiParams
-func (_e *SharedTierSnapshotsApi_Expecter) ListSharedClusterBackupsWithParams(ctx interface{}, args interface{}) *SharedTierSnapshotsApi_ListSharedClusterBackupsWithParams_Call {
+func (_e *SharedTierSnapshotsApi_Expecter) ListSharedClusterBackupsWithParams(ctx any, args any) *SharedTierSnapshotsApi_ListSharedClusterBackupsWithParams_Call {
 	return &SharedTierSnapshotsApi_ListSharedClusterBackupsWithParams_Call{Call: _e.mock.On("ListSharedClusterBackupsWithParams", ctx, args)}
 }
 

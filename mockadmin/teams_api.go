@@ -52,7 +52,7 @@ type TeamsApi_AddAllTeamsToProject_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - teamRole *[]admin.TeamRole
-func (_e *TeamsApi_Expecter) AddAllTeamsToProject(ctx interface{}, groupId interface{}, teamRole interface{}) *TeamsApi_AddAllTeamsToProject_Call {
+func (_e *TeamsApi_Expecter) AddAllTeamsToProject(ctx any, groupId any, teamRole any) *TeamsApi_AddAllTeamsToProject_Call {
 	return &TeamsApi_AddAllTeamsToProject_Call{Call: _e.mock.On("AddAllTeamsToProject", ctx, groupId, teamRole)}
 }
 
@@ -119,7 +119,7 @@ type TeamsApi_AddAllTeamsToProjectExecute_Call struct {
 
 // AddAllTeamsToProjectExecute is a helper method to define mock.On call
 //   - r admin.AddAllTeamsToProjectApiRequest
-func (_e *TeamsApi_Expecter) AddAllTeamsToProjectExecute(r interface{}) *TeamsApi_AddAllTeamsToProjectExecute_Call {
+func (_e *TeamsApi_Expecter) AddAllTeamsToProjectExecute(r any) *TeamsApi_AddAllTeamsToProjectExecute_Call {
 	return &TeamsApi_AddAllTeamsToProjectExecute_Call{Call: _e.mock.On("AddAllTeamsToProjectExecute", r)}
 }
 
@@ -166,7 +166,7 @@ type TeamsApi_AddAllTeamsToProjectWithParams_Call struct {
 // AddAllTeamsToProjectWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.AddAllTeamsToProjectApiParams
-func (_e *TeamsApi_Expecter) AddAllTeamsToProjectWithParams(ctx interface{}, args interface{}) *TeamsApi_AddAllTeamsToProjectWithParams_Call {
+func (_e *TeamsApi_Expecter) AddAllTeamsToProjectWithParams(ctx any, args any) *TeamsApi_AddAllTeamsToProjectWithParams_Call {
 	return &TeamsApi_AddAllTeamsToProjectWithParams_Call{Call: _e.mock.On("AddAllTeamsToProjectWithParams", ctx, args)}
 }
 
@@ -215,7 +215,7 @@ type TeamsApi_AddTeamUser_Call struct {
 //   - orgId string
 //   - teamId string
 //   - addUserToTeam *[]admin.AddUserToTeam
-func (_e *TeamsApi_Expecter) AddTeamUser(ctx interface{}, orgId interface{}, teamId interface{}, addUserToTeam interface{}) *TeamsApi_AddTeamUser_Call {
+func (_e *TeamsApi_Expecter) AddTeamUser(ctx any, orgId any, teamId any, addUserToTeam any) *TeamsApi_AddTeamUser_Call {
 	return &TeamsApi_AddTeamUser_Call{Call: _e.mock.On("AddTeamUser", ctx, orgId, teamId, addUserToTeam)}
 }
 
@@ -282,7 +282,7 @@ type TeamsApi_AddTeamUserExecute_Call struct {
 
 // AddTeamUserExecute is a helper method to define mock.On call
 //   - r admin.AddTeamUserApiRequest
-func (_e *TeamsApi_Expecter) AddTeamUserExecute(r interface{}) *TeamsApi_AddTeamUserExecute_Call {
+func (_e *TeamsApi_Expecter) AddTeamUserExecute(r any) *TeamsApi_AddTeamUserExecute_Call {
 	return &TeamsApi_AddTeamUserExecute_Call{Call: _e.mock.On("AddTeamUserExecute", r)}
 }
 
@@ -329,7 +329,7 @@ type TeamsApi_AddTeamUserWithParams_Call struct {
 // AddTeamUserWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.AddTeamUserApiParams
-func (_e *TeamsApi_Expecter) AddTeamUserWithParams(ctx interface{}, args interface{}) *TeamsApi_AddTeamUserWithParams_Call {
+func (_e *TeamsApi_Expecter) AddTeamUserWithParams(ctx any, args any) *TeamsApi_AddTeamUserWithParams_Call {
 	return &TeamsApi_AddTeamUserWithParams_Call{Call: _e.mock.On("AddTeamUserWithParams", ctx, args)}
 }
 
@@ -377,7 +377,7 @@ type TeamsApi_CreateTeam_Call struct {
 //   - ctx context.Context
 //   - orgId string
 //   - team *admin.Team
-func (_e *TeamsApi_Expecter) CreateTeam(ctx interface{}, orgId interface{}, team interface{}) *TeamsApi_CreateTeam_Call {
+func (_e *TeamsApi_Expecter) CreateTeam(ctx any, orgId any, team any) *TeamsApi_CreateTeam_Call {
 	return &TeamsApi_CreateTeam_Call{Call: _e.mock.On("CreateTeam", ctx, orgId, team)}
 }
 
@@ -444,7 +444,7 @@ type TeamsApi_CreateTeamExecute_Call struct {
 
 // CreateTeamExecute is a helper method to define mock.On call
 //   - r admin.CreateTeamApiRequest
-func (_e *TeamsApi_Expecter) CreateTeamExecute(r interface{}) *TeamsApi_CreateTeamExecute_Call {
+func (_e *TeamsApi_Expecter) CreateTeamExecute(r any) *TeamsApi_CreateTeamExecute_Call {
 	return &TeamsApi_CreateTeamExecute_Call{Call: _e.mock.On("CreateTeamExecute", r)}
 }
 
@@ -491,7 +491,7 @@ type TeamsApi_CreateTeamWithParams_Call struct {
 // CreateTeamWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.CreateTeamApiParams
-func (_e *TeamsApi_Expecter) CreateTeamWithParams(ctx interface{}, args interface{}) *TeamsApi_CreateTeamWithParams_Call {
+func (_e *TeamsApi_Expecter) CreateTeamWithParams(ctx any, args any) *TeamsApi_CreateTeamWithParams_Call {
 	return &TeamsApi_CreateTeamWithParams_Call{Call: _e.mock.On("CreateTeamWithParams", ctx, args)}
 }
 
@@ -539,7 +539,7 @@ type TeamsApi_DeleteTeam_Call struct {
 //   - ctx context.Context
 //   - orgId string
 //   - teamId string
-func (_e *TeamsApi_Expecter) DeleteTeam(ctx interface{}, orgId interface{}, teamId interface{}) *TeamsApi_DeleteTeam_Call {
+func (_e *TeamsApi_Expecter) DeleteTeam(ctx any, orgId any, teamId any) *TeamsApi_DeleteTeam_Call {
 	return &TeamsApi_DeleteTeam_Call{Call: _e.mock.On("DeleteTeam", ctx, orgId, teamId)}
 }
 
@@ -561,42 +561,33 @@ func (_c *TeamsApi_DeleteTeam_Call) RunAndReturn(run func(context.Context, strin
 }
 
 // DeleteTeamExecute provides a mock function with given fields: r
-func (_m *TeamsApi) DeleteTeamExecute(r admin.DeleteTeamApiRequest) (map[string]interface{}, *http.Response, error) {
+func (_m *TeamsApi) DeleteTeamExecute(r admin.DeleteTeamApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteTeamExecute")
 	}
 
-	var r0 map[string]interface{}
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteTeamApiRequest) (map[string]interface{}, *http.Response, error)); ok {
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.DeleteTeamApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteTeamApiRequest) map[string]interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteTeamApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(map[string]interface{})
+			r0 = ret.Get(0).(*http.Response)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeleteTeamApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.DeleteTeamApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
+		r1 = ret.Error(1)
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.DeleteTeamApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
+	return r0, r1
 }
 
 // TeamsApi_DeleteTeamExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteTeamExecute'
@@ -606,7 +597,7 @@ type TeamsApi_DeleteTeamExecute_Call struct {
 
 // DeleteTeamExecute is a helper method to define mock.On call
 //   - r admin.DeleteTeamApiRequest
-func (_e *TeamsApi_Expecter) DeleteTeamExecute(r interface{}) *TeamsApi_DeleteTeamExecute_Call {
+func (_e *TeamsApi_Expecter) DeleteTeamExecute(r any) *TeamsApi_DeleteTeamExecute_Call {
 	return &TeamsApi_DeleteTeamExecute_Call{Call: _e.mock.On("DeleteTeamExecute", r)}
 }
 
@@ -617,12 +608,12 @@ func (_c *TeamsApi_DeleteTeamExecute_Call) Run(run func(r admin.DeleteTeamApiReq
 	return _c
 }
 
-func (_c *TeamsApi_DeleteTeamExecute_Call) Return(_a0 map[string]interface{}, _a1 *http.Response, _a2 error) *TeamsApi_DeleteTeamExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
+func (_c *TeamsApi_DeleteTeamExecute_Call) Return(_a0 *http.Response, _a1 error) *TeamsApi_DeleteTeamExecute_Call {
+	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *TeamsApi_DeleteTeamExecute_Call) RunAndReturn(run func(admin.DeleteTeamApiRequest) (map[string]interface{}, *http.Response, error)) *TeamsApi_DeleteTeamExecute_Call {
+func (_c *TeamsApi_DeleteTeamExecute_Call) RunAndReturn(run func(admin.DeleteTeamApiRequest) (*http.Response, error)) *TeamsApi_DeleteTeamExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -653,7 +644,7 @@ type TeamsApi_DeleteTeamWithParams_Call struct {
 // DeleteTeamWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.DeleteTeamApiParams
-func (_e *TeamsApi_Expecter) DeleteTeamWithParams(ctx interface{}, args interface{}) *TeamsApi_DeleteTeamWithParams_Call {
+func (_e *TeamsApi_Expecter) DeleteTeamWithParams(ctx any, args any) *TeamsApi_DeleteTeamWithParams_Call {
 	return &TeamsApi_DeleteTeamWithParams_Call{Call: _e.mock.On("DeleteTeamWithParams", ctx, args)}
 }
 
@@ -701,7 +692,7 @@ type TeamsApi_GetTeamById_Call struct {
 //   - ctx context.Context
 //   - orgId string
 //   - teamId string
-func (_e *TeamsApi_Expecter) GetTeamById(ctx interface{}, orgId interface{}, teamId interface{}) *TeamsApi_GetTeamById_Call {
+func (_e *TeamsApi_Expecter) GetTeamById(ctx any, orgId any, teamId any) *TeamsApi_GetTeamById_Call {
 	return &TeamsApi_GetTeamById_Call{Call: _e.mock.On("GetTeamById", ctx, orgId, teamId)}
 }
 
@@ -768,7 +759,7 @@ type TeamsApi_GetTeamByIdExecute_Call struct {
 
 // GetTeamByIdExecute is a helper method to define mock.On call
 //   - r admin.GetTeamByIdApiRequest
-func (_e *TeamsApi_Expecter) GetTeamByIdExecute(r interface{}) *TeamsApi_GetTeamByIdExecute_Call {
+func (_e *TeamsApi_Expecter) GetTeamByIdExecute(r any) *TeamsApi_GetTeamByIdExecute_Call {
 	return &TeamsApi_GetTeamByIdExecute_Call{Call: _e.mock.On("GetTeamByIdExecute", r)}
 }
 
@@ -815,7 +806,7 @@ type TeamsApi_GetTeamByIdWithParams_Call struct {
 // GetTeamByIdWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetTeamByIdApiParams
-func (_e *TeamsApi_Expecter) GetTeamByIdWithParams(ctx interface{}, args interface{}) *TeamsApi_GetTeamByIdWithParams_Call {
+func (_e *TeamsApi_Expecter) GetTeamByIdWithParams(ctx any, args any) *TeamsApi_GetTeamByIdWithParams_Call {
 	return &TeamsApi_GetTeamByIdWithParams_Call{Call: _e.mock.On("GetTeamByIdWithParams", ctx, args)}
 }
 
@@ -863,7 +854,7 @@ type TeamsApi_GetTeamByName_Call struct {
 //   - ctx context.Context
 //   - orgId string
 //   - teamName string
-func (_e *TeamsApi_Expecter) GetTeamByName(ctx interface{}, orgId interface{}, teamName interface{}) *TeamsApi_GetTeamByName_Call {
+func (_e *TeamsApi_Expecter) GetTeamByName(ctx any, orgId any, teamName any) *TeamsApi_GetTeamByName_Call {
 	return &TeamsApi_GetTeamByName_Call{Call: _e.mock.On("GetTeamByName", ctx, orgId, teamName)}
 }
 
@@ -930,7 +921,7 @@ type TeamsApi_GetTeamByNameExecute_Call struct {
 
 // GetTeamByNameExecute is a helper method to define mock.On call
 //   - r admin.GetTeamByNameApiRequest
-func (_e *TeamsApi_Expecter) GetTeamByNameExecute(r interface{}) *TeamsApi_GetTeamByNameExecute_Call {
+func (_e *TeamsApi_Expecter) GetTeamByNameExecute(r any) *TeamsApi_GetTeamByNameExecute_Call {
 	return &TeamsApi_GetTeamByNameExecute_Call{Call: _e.mock.On("GetTeamByNameExecute", r)}
 }
 
@@ -977,7 +968,7 @@ type TeamsApi_GetTeamByNameWithParams_Call struct {
 // GetTeamByNameWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetTeamByNameApiParams
-func (_e *TeamsApi_Expecter) GetTeamByNameWithParams(ctx interface{}, args interface{}) *TeamsApi_GetTeamByNameWithParams_Call {
+func (_e *TeamsApi_Expecter) GetTeamByNameWithParams(ctx any, args any) *TeamsApi_GetTeamByNameWithParams_Call {
 	return &TeamsApi_GetTeamByNameWithParams_Call{Call: _e.mock.On("GetTeamByNameWithParams", ctx, args)}
 }
 
@@ -1024,7 +1015,7 @@ type TeamsApi_ListOrganizationTeams_Call struct {
 // ListOrganizationTeams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - orgId string
-func (_e *TeamsApi_Expecter) ListOrganizationTeams(ctx interface{}, orgId interface{}) *TeamsApi_ListOrganizationTeams_Call {
+func (_e *TeamsApi_Expecter) ListOrganizationTeams(ctx any, orgId any) *TeamsApi_ListOrganizationTeams_Call {
 	return &TeamsApi_ListOrganizationTeams_Call{Call: _e.mock.On("ListOrganizationTeams", ctx, orgId)}
 }
 
@@ -1091,7 +1082,7 @@ type TeamsApi_ListOrganizationTeamsExecute_Call struct {
 
 // ListOrganizationTeamsExecute is a helper method to define mock.On call
 //   - r admin.ListOrganizationTeamsApiRequest
-func (_e *TeamsApi_Expecter) ListOrganizationTeamsExecute(r interface{}) *TeamsApi_ListOrganizationTeamsExecute_Call {
+func (_e *TeamsApi_Expecter) ListOrganizationTeamsExecute(r any) *TeamsApi_ListOrganizationTeamsExecute_Call {
 	return &TeamsApi_ListOrganizationTeamsExecute_Call{Call: _e.mock.On("ListOrganizationTeamsExecute", r)}
 }
 
@@ -1138,7 +1129,7 @@ type TeamsApi_ListOrganizationTeamsWithParams_Call struct {
 // ListOrganizationTeamsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListOrganizationTeamsApiParams
-func (_e *TeamsApi_Expecter) ListOrganizationTeamsWithParams(ctx interface{}, args interface{}) *TeamsApi_ListOrganizationTeamsWithParams_Call {
+func (_e *TeamsApi_Expecter) ListOrganizationTeamsWithParams(ctx any, args any) *TeamsApi_ListOrganizationTeamsWithParams_Call {
 	return &TeamsApi_ListOrganizationTeamsWithParams_Call{Call: _e.mock.On("ListOrganizationTeamsWithParams", ctx, args)}
 }
 
@@ -1185,7 +1176,7 @@ type TeamsApi_ListProjectTeams_Call struct {
 // ListProjectTeams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *TeamsApi_Expecter) ListProjectTeams(ctx interface{}, groupId interface{}) *TeamsApi_ListProjectTeams_Call {
+func (_e *TeamsApi_Expecter) ListProjectTeams(ctx any, groupId any) *TeamsApi_ListProjectTeams_Call {
 	return &TeamsApi_ListProjectTeams_Call{Call: _e.mock.On("ListProjectTeams", ctx, groupId)}
 }
 
@@ -1252,7 +1243,7 @@ type TeamsApi_ListProjectTeamsExecute_Call struct {
 
 // ListProjectTeamsExecute is a helper method to define mock.On call
 //   - r admin.ListProjectTeamsApiRequest
-func (_e *TeamsApi_Expecter) ListProjectTeamsExecute(r interface{}) *TeamsApi_ListProjectTeamsExecute_Call {
+func (_e *TeamsApi_Expecter) ListProjectTeamsExecute(r any) *TeamsApi_ListProjectTeamsExecute_Call {
 	return &TeamsApi_ListProjectTeamsExecute_Call{Call: _e.mock.On("ListProjectTeamsExecute", r)}
 }
 
@@ -1299,7 +1290,7 @@ type TeamsApi_ListProjectTeamsWithParams_Call struct {
 // ListProjectTeamsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListProjectTeamsApiParams
-func (_e *TeamsApi_Expecter) ListProjectTeamsWithParams(ctx interface{}, args interface{}) *TeamsApi_ListProjectTeamsWithParams_Call {
+func (_e *TeamsApi_Expecter) ListProjectTeamsWithParams(ctx any, args any) *TeamsApi_ListProjectTeamsWithParams_Call {
 	return &TeamsApi_ListProjectTeamsWithParams_Call{Call: _e.mock.On("ListProjectTeamsWithParams", ctx, args)}
 }
 
@@ -1316,168 +1307,6 @@ func (_c *TeamsApi_ListProjectTeamsWithParams_Call) Return(_a0 admin.ListProject
 }
 
 func (_c *TeamsApi_ListProjectTeamsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListProjectTeamsApiParams) admin.ListProjectTeamsApiRequest) *TeamsApi_ListProjectTeamsWithParams_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ListTeamUsers provides a mock function with given fields: ctx, orgId, teamId
-func (_m *TeamsApi) ListTeamUsers(ctx context.Context, orgId string, teamId string) admin.ListTeamUsersApiRequest {
-	ret := _m.Called(ctx, orgId, teamId)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListTeamUsers")
-	}
-
-	var r0 admin.ListTeamUsersApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.ListTeamUsersApiRequest); ok {
-		r0 = rf(ctx, orgId, teamId)
-	} else {
-		r0 = ret.Get(0).(admin.ListTeamUsersApiRequest)
-	}
-
-	return r0
-}
-
-// TeamsApi_ListTeamUsers_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListTeamUsers'
-type TeamsApi_ListTeamUsers_Call struct {
-	*mock.Call
-}
-
-// ListTeamUsers is a helper method to define mock.On call
-//   - ctx context.Context
-//   - orgId string
-//   - teamId string
-func (_e *TeamsApi_Expecter) ListTeamUsers(ctx interface{}, orgId interface{}, teamId interface{}) *TeamsApi_ListTeamUsers_Call {
-	return &TeamsApi_ListTeamUsers_Call{Call: _e.mock.On("ListTeamUsers", ctx, orgId, teamId)}
-}
-
-func (_c *TeamsApi_ListTeamUsers_Call) Run(run func(ctx context.Context, orgId string, teamId string)) *TeamsApi_ListTeamUsers_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string))
-	})
-	return _c
-}
-
-func (_c *TeamsApi_ListTeamUsers_Call) Return(_a0 admin.ListTeamUsersApiRequest) *TeamsApi_ListTeamUsers_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *TeamsApi_ListTeamUsers_Call) RunAndReturn(run func(context.Context, string, string) admin.ListTeamUsersApiRequest) *TeamsApi_ListTeamUsers_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ListTeamUsersExecute provides a mock function with given fields: r
-func (_m *TeamsApi) ListTeamUsersExecute(r admin.ListTeamUsersApiRequest) (*admin.PaginatedApiAppUser, *http.Response, error) {
-	ret := _m.Called(r)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListTeamUsersExecute")
-	}
-
-	var r0 *admin.PaginatedApiAppUser
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.ListTeamUsersApiRequest) (*admin.PaginatedApiAppUser, *http.Response, error)); ok {
-		return rf(r)
-	}
-	if rf, ok := ret.Get(0).(func(admin.ListTeamUsersApiRequest) *admin.PaginatedApiAppUser); ok {
-		r0 = rf(r)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.PaginatedApiAppUser)
-		}
-	}
-
-	if rf, ok := ret.Get(1).(func(admin.ListTeamUsersApiRequest) *http.Response); ok {
-		r1 = rf(r)
-	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
-	}
-
-	if rf, ok := ret.Get(2).(func(admin.ListTeamUsersApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
-}
-
-// TeamsApi_ListTeamUsersExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListTeamUsersExecute'
-type TeamsApi_ListTeamUsersExecute_Call struct {
-	*mock.Call
-}
-
-// ListTeamUsersExecute is a helper method to define mock.On call
-//   - r admin.ListTeamUsersApiRequest
-func (_e *TeamsApi_Expecter) ListTeamUsersExecute(r interface{}) *TeamsApi_ListTeamUsersExecute_Call {
-	return &TeamsApi_ListTeamUsersExecute_Call{Call: _e.mock.On("ListTeamUsersExecute", r)}
-}
-
-func (_c *TeamsApi_ListTeamUsersExecute_Call) Run(run func(r admin.ListTeamUsersApiRequest)) *TeamsApi_ListTeamUsersExecute_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(admin.ListTeamUsersApiRequest))
-	})
-	return _c
-}
-
-func (_c *TeamsApi_ListTeamUsersExecute_Call) Return(_a0 *admin.PaginatedApiAppUser, _a1 *http.Response, _a2 error) *TeamsApi_ListTeamUsersExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
-	return _c
-}
-
-func (_c *TeamsApi_ListTeamUsersExecute_Call) RunAndReturn(run func(admin.ListTeamUsersApiRequest) (*admin.PaginatedApiAppUser, *http.Response, error)) *TeamsApi_ListTeamUsersExecute_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// ListTeamUsersWithParams provides a mock function with given fields: ctx, args
-func (_m *TeamsApi) ListTeamUsersWithParams(ctx context.Context, args *admin.ListTeamUsersApiParams) admin.ListTeamUsersApiRequest {
-	ret := _m.Called(ctx, args)
-
-	if len(ret) == 0 {
-		panic("no return value specified for ListTeamUsersWithParams")
-	}
-
-	var r0 admin.ListTeamUsersApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListTeamUsersApiParams) admin.ListTeamUsersApiRequest); ok {
-		r0 = rf(ctx, args)
-	} else {
-		r0 = ret.Get(0).(admin.ListTeamUsersApiRequest)
-	}
-
-	return r0
-}
-
-// TeamsApi_ListTeamUsersWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListTeamUsersWithParams'
-type TeamsApi_ListTeamUsersWithParams_Call struct {
-	*mock.Call
-}
-
-// ListTeamUsersWithParams is a helper method to define mock.On call
-//   - ctx context.Context
-//   - args *admin.ListTeamUsersApiParams
-func (_e *TeamsApi_Expecter) ListTeamUsersWithParams(ctx interface{}, args interface{}) *TeamsApi_ListTeamUsersWithParams_Call {
-	return &TeamsApi_ListTeamUsersWithParams_Call{Call: _e.mock.On("ListTeamUsersWithParams", ctx, args)}
-}
-
-func (_c *TeamsApi_ListTeamUsersWithParams_Call) Run(run func(ctx context.Context, args *admin.ListTeamUsersApiParams)) *TeamsApi_ListTeamUsersWithParams_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(*admin.ListTeamUsersApiParams))
-	})
-	return _c
-}
-
-func (_c *TeamsApi_ListTeamUsersWithParams_Call) Return(_a0 admin.ListTeamUsersApiRequest) *TeamsApi_ListTeamUsersWithParams_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
-func (_c *TeamsApi_ListTeamUsersWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListTeamUsersApiParams) admin.ListTeamUsersApiRequest) *TeamsApi_ListTeamUsersWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1509,7 +1338,7 @@ type TeamsApi_RemoveProjectTeam_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - teamId string
-func (_e *TeamsApi_Expecter) RemoveProjectTeam(ctx interface{}, groupId interface{}, teamId interface{}) *TeamsApi_RemoveProjectTeam_Call {
+func (_e *TeamsApi_Expecter) RemoveProjectTeam(ctx any, groupId any, teamId any) *TeamsApi_RemoveProjectTeam_Call {
 	return &TeamsApi_RemoveProjectTeam_Call{Call: _e.mock.On("RemoveProjectTeam", ctx, groupId, teamId)}
 }
 
@@ -1567,7 +1396,7 @@ type TeamsApi_RemoveProjectTeamExecute_Call struct {
 
 // RemoveProjectTeamExecute is a helper method to define mock.On call
 //   - r admin.RemoveProjectTeamApiRequest
-func (_e *TeamsApi_Expecter) RemoveProjectTeamExecute(r interface{}) *TeamsApi_RemoveProjectTeamExecute_Call {
+func (_e *TeamsApi_Expecter) RemoveProjectTeamExecute(r any) *TeamsApi_RemoveProjectTeamExecute_Call {
 	return &TeamsApi_RemoveProjectTeamExecute_Call{Call: _e.mock.On("RemoveProjectTeamExecute", r)}
 }
 
@@ -1614,7 +1443,7 @@ type TeamsApi_RemoveProjectTeamWithParams_Call struct {
 // RemoveProjectTeamWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.RemoveProjectTeamApiParams
-func (_e *TeamsApi_Expecter) RemoveProjectTeamWithParams(ctx interface{}, args interface{}) *TeamsApi_RemoveProjectTeamWithParams_Call {
+func (_e *TeamsApi_Expecter) RemoveProjectTeamWithParams(ctx any, args any) *TeamsApi_RemoveProjectTeamWithParams_Call {
 	return &TeamsApi_RemoveProjectTeamWithParams_Call{Call: _e.mock.On("RemoveProjectTeamWithParams", ctx, args)}
 }
 
@@ -1663,7 +1492,7 @@ type TeamsApi_RemoveTeamUser_Call struct {
 //   - orgId string
 //   - teamId string
 //   - userId string
-func (_e *TeamsApi_Expecter) RemoveTeamUser(ctx interface{}, orgId interface{}, teamId interface{}, userId interface{}) *TeamsApi_RemoveTeamUser_Call {
+func (_e *TeamsApi_Expecter) RemoveTeamUser(ctx any, orgId any, teamId any, userId any) *TeamsApi_RemoveTeamUser_Call {
 	return &TeamsApi_RemoveTeamUser_Call{Call: _e.mock.On("RemoveTeamUser", ctx, orgId, teamId, userId)}
 }
 
@@ -1721,7 +1550,7 @@ type TeamsApi_RemoveTeamUserExecute_Call struct {
 
 // RemoveTeamUserExecute is a helper method to define mock.On call
 //   - r admin.RemoveTeamUserApiRequest
-func (_e *TeamsApi_Expecter) RemoveTeamUserExecute(r interface{}) *TeamsApi_RemoveTeamUserExecute_Call {
+func (_e *TeamsApi_Expecter) RemoveTeamUserExecute(r any) *TeamsApi_RemoveTeamUserExecute_Call {
 	return &TeamsApi_RemoveTeamUserExecute_Call{Call: _e.mock.On("RemoveTeamUserExecute", r)}
 }
 
@@ -1768,7 +1597,7 @@ type TeamsApi_RemoveTeamUserWithParams_Call struct {
 // RemoveTeamUserWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.RemoveTeamUserApiParams
-func (_e *TeamsApi_Expecter) RemoveTeamUserWithParams(ctx interface{}, args interface{}) *TeamsApi_RemoveTeamUserWithParams_Call {
+func (_e *TeamsApi_Expecter) RemoveTeamUserWithParams(ctx any, args any) *TeamsApi_RemoveTeamUserWithParams_Call {
 	return &TeamsApi_RemoveTeamUserWithParams_Call{Call: _e.mock.On("RemoveTeamUserWithParams", ctx, args)}
 }
 
@@ -1817,7 +1646,7 @@ type TeamsApi_RenameTeam_Call struct {
 //   - orgId string
 //   - teamId string
 //   - teamUpdate *admin.TeamUpdate
-func (_e *TeamsApi_Expecter) RenameTeam(ctx interface{}, orgId interface{}, teamId interface{}, teamUpdate interface{}) *TeamsApi_RenameTeam_Call {
+func (_e *TeamsApi_Expecter) RenameTeam(ctx any, orgId any, teamId any, teamUpdate any) *TeamsApi_RenameTeam_Call {
 	return &TeamsApi_RenameTeam_Call{Call: _e.mock.On("RenameTeam", ctx, orgId, teamId, teamUpdate)}
 }
 
@@ -1884,7 +1713,7 @@ type TeamsApi_RenameTeamExecute_Call struct {
 
 // RenameTeamExecute is a helper method to define mock.On call
 //   - r admin.RenameTeamApiRequest
-func (_e *TeamsApi_Expecter) RenameTeamExecute(r interface{}) *TeamsApi_RenameTeamExecute_Call {
+func (_e *TeamsApi_Expecter) RenameTeamExecute(r any) *TeamsApi_RenameTeamExecute_Call {
 	return &TeamsApi_RenameTeamExecute_Call{Call: _e.mock.On("RenameTeamExecute", r)}
 }
 
@@ -1931,7 +1760,7 @@ type TeamsApi_RenameTeamWithParams_Call struct {
 // RenameTeamWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.RenameTeamApiParams
-func (_e *TeamsApi_Expecter) RenameTeamWithParams(ctx interface{}, args interface{}) *TeamsApi_RenameTeamWithParams_Call {
+func (_e *TeamsApi_Expecter) RenameTeamWithParams(ctx any, args any) *TeamsApi_RenameTeamWithParams_Call {
 	return &TeamsApi_RenameTeamWithParams_Call{Call: _e.mock.On("RenameTeamWithParams", ctx, args)}
 }
 
@@ -1980,7 +1809,7 @@ type TeamsApi_UpdateTeamRoles_Call struct {
 //   - groupId string
 //   - teamId string
 //   - teamRole *admin.TeamRole
-func (_e *TeamsApi_Expecter) UpdateTeamRoles(ctx interface{}, groupId interface{}, teamId interface{}, teamRole interface{}) *TeamsApi_UpdateTeamRoles_Call {
+func (_e *TeamsApi_Expecter) UpdateTeamRoles(ctx any, groupId any, teamId any, teamRole any) *TeamsApi_UpdateTeamRoles_Call {
 	return &TeamsApi_UpdateTeamRoles_Call{Call: _e.mock.On("UpdateTeamRoles", ctx, groupId, teamId, teamRole)}
 }
 
@@ -2047,7 +1876,7 @@ type TeamsApi_UpdateTeamRolesExecute_Call struct {
 
 // UpdateTeamRolesExecute is a helper method to define mock.On call
 //   - r admin.UpdateTeamRolesApiRequest
-func (_e *TeamsApi_Expecter) UpdateTeamRolesExecute(r interface{}) *TeamsApi_UpdateTeamRolesExecute_Call {
+func (_e *TeamsApi_Expecter) UpdateTeamRolesExecute(r any) *TeamsApi_UpdateTeamRolesExecute_Call {
 	return &TeamsApi_UpdateTeamRolesExecute_Call{Call: _e.mock.On("UpdateTeamRolesExecute", r)}
 }
 
@@ -2094,7 +1923,7 @@ type TeamsApi_UpdateTeamRolesWithParams_Call struct {
 // UpdateTeamRolesWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.UpdateTeamRolesApiParams
-func (_e *TeamsApi_Expecter) UpdateTeamRolesWithParams(ctx interface{}, args interface{}) *TeamsApi_UpdateTeamRolesWithParams_Call {
+func (_e *TeamsApi_Expecter) UpdateTeamRolesWithParams(ctx any, args any) *TeamsApi_UpdateTeamRolesWithParams_Call {
 	return &TeamsApi_UpdateTeamRolesWithParams_Call{Call: _e.mock.On("UpdateTeamRolesWithParams", ctx, args)}
 }
 

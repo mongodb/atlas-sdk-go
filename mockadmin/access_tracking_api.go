@@ -52,7 +52,7 @@ type AccessTrackingApi_ListAccessLogsByClusterName_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
-func (_e *AccessTrackingApi_Expecter) ListAccessLogsByClusterName(ctx interface{}, groupId interface{}, clusterName interface{}) *AccessTrackingApi_ListAccessLogsByClusterName_Call {
+func (_e *AccessTrackingApi_Expecter) ListAccessLogsByClusterName(ctx any, groupId any, clusterName any) *AccessTrackingApi_ListAccessLogsByClusterName_Call {
 	return &AccessTrackingApi_ListAccessLogsByClusterName_Call{Call: _e.mock.On("ListAccessLogsByClusterName", ctx, groupId, clusterName)}
 }
 
@@ -119,7 +119,7 @@ type AccessTrackingApi_ListAccessLogsByClusterNameExecute_Call struct {
 
 // ListAccessLogsByClusterNameExecute is a helper method to define mock.On call
 //   - r admin.ListAccessLogsByClusterNameApiRequest
-func (_e *AccessTrackingApi_Expecter) ListAccessLogsByClusterNameExecute(r interface{}) *AccessTrackingApi_ListAccessLogsByClusterNameExecute_Call {
+func (_e *AccessTrackingApi_Expecter) ListAccessLogsByClusterNameExecute(r any) *AccessTrackingApi_ListAccessLogsByClusterNameExecute_Call {
 	return &AccessTrackingApi_ListAccessLogsByClusterNameExecute_Call{Call: _e.mock.On("ListAccessLogsByClusterNameExecute", r)}
 }
 
@@ -166,7 +166,7 @@ type AccessTrackingApi_ListAccessLogsByClusterNameWithParams_Call struct {
 // ListAccessLogsByClusterNameWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListAccessLogsByClusterNameApiParams
-func (_e *AccessTrackingApi_Expecter) ListAccessLogsByClusterNameWithParams(ctx interface{}, args interface{}) *AccessTrackingApi_ListAccessLogsByClusterNameWithParams_Call {
+func (_e *AccessTrackingApi_Expecter) ListAccessLogsByClusterNameWithParams(ctx any, args any) *AccessTrackingApi_ListAccessLogsByClusterNameWithParams_Call {
 	return &AccessTrackingApi_ListAccessLogsByClusterNameWithParams_Call{Call: _e.mock.On("ListAccessLogsByClusterNameWithParams", ctx, args)}
 }
 
@@ -214,7 +214,7 @@ type AccessTrackingApi_ListAccessLogsByHostname_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - hostname string
-func (_e *AccessTrackingApi_Expecter) ListAccessLogsByHostname(ctx interface{}, groupId interface{}, hostname interface{}) *AccessTrackingApi_ListAccessLogsByHostname_Call {
+func (_e *AccessTrackingApi_Expecter) ListAccessLogsByHostname(ctx any, groupId any, hostname any) *AccessTrackingApi_ListAccessLogsByHostname_Call {
 	return &AccessTrackingApi_ListAccessLogsByHostname_Call{Call: _e.mock.On("ListAccessLogsByHostname", ctx, groupId, hostname)}
 }
 
@@ -281,7 +281,7 @@ type AccessTrackingApi_ListAccessLogsByHostnameExecute_Call struct {
 
 // ListAccessLogsByHostnameExecute is a helper method to define mock.On call
 //   - r admin.ListAccessLogsByHostnameApiRequest
-func (_e *AccessTrackingApi_Expecter) ListAccessLogsByHostnameExecute(r interface{}) *AccessTrackingApi_ListAccessLogsByHostnameExecute_Call {
+func (_e *AccessTrackingApi_Expecter) ListAccessLogsByHostnameExecute(r any) *AccessTrackingApi_ListAccessLogsByHostnameExecute_Call {
 	return &AccessTrackingApi_ListAccessLogsByHostnameExecute_Call{Call: _e.mock.On("ListAccessLogsByHostnameExecute", r)}
 }
 
@@ -328,7 +328,7 @@ type AccessTrackingApi_ListAccessLogsByHostnameWithParams_Call struct {
 // ListAccessLogsByHostnameWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListAccessLogsByHostnameApiParams
-func (_e *AccessTrackingApi_Expecter) ListAccessLogsByHostnameWithParams(ctx interface{}, args interface{}) *AccessTrackingApi_ListAccessLogsByHostnameWithParams_Call {
+func (_e *AccessTrackingApi_Expecter) ListAccessLogsByHostnameWithParams(ctx any, args any) *AccessTrackingApi_ListAccessLogsByHostnameWithParams_Call {
 	return &AccessTrackingApi_ListAccessLogsByHostnameWithParams_Call{Call: _e.mock.On("ListAccessLogsByHostnameWithParams", ctx, args)}
 }
 

@@ -52,7 +52,7 @@ type CustomDatabaseRolesApi_CreateCustomDatabaseRole_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - userCustomDBRole *admin.UserCustomDBRole
-func (_e *CustomDatabaseRolesApi_Expecter) CreateCustomDatabaseRole(ctx interface{}, groupId interface{}, userCustomDBRole interface{}) *CustomDatabaseRolesApi_CreateCustomDatabaseRole_Call {
+func (_e *CustomDatabaseRolesApi_Expecter) CreateCustomDatabaseRole(ctx any, groupId any, userCustomDBRole any) *CustomDatabaseRolesApi_CreateCustomDatabaseRole_Call {
 	return &CustomDatabaseRolesApi_CreateCustomDatabaseRole_Call{Call: _e.mock.On("CreateCustomDatabaseRole", ctx, groupId, userCustomDBRole)}
 }
 
@@ -119,7 +119,7 @@ type CustomDatabaseRolesApi_CreateCustomDatabaseRoleExecute_Call struct {
 
 // CreateCustomDatabaseRoleExecute is a helper method to define mock.On call
 //   - r admin.CreateCustomDatabaseRoleApiRequest
-func (_e *CustomDatabaseRolesApi_Expecter) CreateCustomDatabaseRoleExecute(r interface{}) *CustomDatabaseRolesApi_CreateCustomDatabaseRoleExecute_Call {
+func (_e *CustomDatabaseRolesApi_Expecter) CreateCustomDatabaseRoleExecute(r any) *CustomDatabaseRolesApi_CreateCustomDatabaseRoleExecute_Call {
 	return &CustomDatabaseRolesApi_CreateCustomDatabaseRoleExecute_Call{Call: _e.mock.On("CreateCustomDatabaseRoleExecute", r)}
 }
 
@@ -166,7 +166,7 @@ type CustomDatabaseRolesApi_CreateCustomDatabaseRoleWithParams_Call struct {
 // CreateCustomDatabaseRoleWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.CreateCustomDatabaseRoleApiParams
-func (_e *CustomDatabaseRolesApi_Expecter) CreateCustomDatabaseRoleWithParams(ctx interface{}, args interface{}) *CustomDatabaseRolesApi_CreateCustomDatabaseRoleWithParams_Call {
+func (_e *CustomDatabaseRolesApi_Expecter) CreateCustomDatabaseRoleWithParams(ctx any, args any) *CustomDatabaseRolesApi_CreateCustomDatabaseRoleWithParams_Call {
 	return &CustomDatabaseRolesApi_CreateCustomDatabaseRoleWithParams_Call{Call: _e.mock.On("CreateCustomDatabaseRoleWithParams", ctx, args)}
 }
 
@@ -214,7 +214,7 @@ type CustomDatabaseRolesApi_DeleteCustomDatabaseRole_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - roleName string
-func (_e *CustomDatabaseRolesApi_Expecter) DeleteCustomDatabaseRole(ctx interface{}, groupId interface{}, roleName interface{}) *CustomDatabaseRolesApi_DeleteCustomDatabaseRole_Call {
+func (_e *CustomDatabaseRolesApi_Expecter) DeleteCustomDatabaseRole(ctx any, groupId any, roleName any) *CustomDatabaseRolesApi_DeleteCustomDatabaseRole_Call {
 	return &CustomDatabaseRolesApi_DeleteCustomDatabaseRole_Call{Call: _e.mock.On("DeleteCustomDatabaseRole", ctx, groupId, roleName)}
 }
 
@@ -272,7 +272,7 @@ type CustomDatabaseRolesApi_DeleteCustomDatabaseRoleExecute_Call struct {
 
 // DeleteCustomDatabaseRoleExecute is a helper method to define mock.On call
 //   - r admin.DeleteCustomDatabaseRoleApiRequest
-func (_e *CustomDatabaseRolesApi_Expecter) DeleteCustomDatabaseRoleExecute(r interface{}) *CustomDatabaseRolesApi_DeleteCustomDatabaseRoleExecute_Call {
+func (_e *CustomDatabaseRolesApi_Expecter) DeleteCustomDatabaseRoleExecute(r any) *CustomDatabaseRolesApi_DeleteCustomDatabaseRoleExecute_Call {
 	return &CustomDatabaseRolesApi_DeleteCustomDatabaseRoleExecute_Call{Call: _e.mock.On("DeleteCustomDatabaseRoleExecute", r)}
 }
 
@@ -319,7 +319,7 @@ type CustomDatabaseRolesApi_DeleteCustomDatabaseRoleWithParams_Call struct {
 // DeleteCustomDatabaseRoleWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.DeleteCustomDatabaseRoleApiParams
-func (_e *CustomDatabaseRolesApi_Expecter) DeleteCustomDatabaseRoleWithParams(ctx interface{}, args interface{}) *CustomDatabaseRolesApi_DeleteCustomDatabaseRoleWithParams_Call {
+func (_e *CustomDatabaseRolesApi_Expecter) DeleteCustomDatabaseRoleWithParams(ctx any, args any) *CustomDatabaseRolesApi_DeleteCustomDatabaseRoleWithParams_Call {
 	return &CustomDatabaseRolesApi_DeleteCustomDatabaseRoleWithParams_Call{Call: _e.mock.On("DeleteCustomDatabaseRoleWithParams", ctx, args)}
 }
 
@@ -367,7 +367,7 @@ type CustomDatabaseRolesApi_GetCustomDatabaseRole_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - roleName string
-func (_e *CustomDatabaseRolesApi_Expecter) GetCustomDatabaseRole(ctx interface{}, groupId interface{}, roleName interface{}) *CustomDatabaseRolesApi_GetCustomDatabaseRole_Call {
+func (_e *CustomDatabaseRolesApi_Expecter) GetCustomDatabaseRole(ctx any, groupId any, roleName any) *CustomDatabaseRolesApi_GetCustomDatabaseRole_Call {
 	return &CustomDatabaseRolesApi_GetCustomDatabaseRole_Call{Call: _e.mock.On("GetCustomDatabaseRole", ctx, groupId, roleName)}
 }
 
@@ -434,7 +434,7 @@ type CustomDatabaseRolesApi_GetCustomDatabaseRoleExecute_Call struct {
 
 // GetCustomDatabaseRoleExecute is a helper method to define mock.On call
 //   - r admin.GetCustomDatabaseRoleApiRequest
-func (_e *CustomDatabaseRolesApi_Expecter) GetCustomDatabaseRoleExecute(r interface{}) *CustomDatabaseRolesApi_GetCustomDatabaseRoleExecute_Call {
+func (_e *CustomDatabaseRolesApi_Expecter) GetCustomDatabaseRoleExecute(r any) *CustomDatabaseRolesApi_GetCustomDatabaseRoleExecute_Call {
 	return &CustomDatabaseRolesApi_GetCustomDatabaseRoleExecute_Call{Call: _e.mock.On("GetCustomDatabaseRoleExecute", r)}
 }
 
@@ -481,7 +481,7 @@ type CustomDatabaseRolesApi_GetCustomDatabaseRoleWithParams_Call struct {
 // GetCustomDatabaseRoleWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetCustomDatabaseRoleApiParams
-func (_e *CustomDatabaseRolesApi_Expecter) GetCustomDatabaseRoleWithParams(ctx interface{}, args interface{}) *CustomDatabaseRolesApi_GetCustomDatabaseRoleWithParams_Call {
+func (_e *CustomDatabaseRolesApi_Expecter) GetCustomDatabaseRoleWithParams(ctx any, args any) *CustomDatabaseRolesApi_GetCustomDatabaseRoleWithParams_Call {
 	return &CustomDatabaseRolesApi_GetCustomDatabaseRoleWithParams_Call{Call: _e.mock.On("GetCustomDatabaseRoleWithParams", ctx, args)}
 }
 
@@ -528,7 +528,7 @@ type CustomDatabaseRolesApi_ListCustomDatabaseRoles_Call struct {
 // ListCustomDatabaseRoles is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *CustomDatabaseRolesApi_Expecter) ListCustomDatabaseRoles(ctx interface{}, groupId interface{}) *CustomDatabaseRolesApi_ListCustomDatabaseRoles_Call {
+func (_e *CustomDatabaseRolesApi_Expecter) ListCustomDatabaseRoles(ctx any, groupId any) *CustomDatabaseRolesApi_ListCustomDatabaseRoles_Call {
 	return &CustomDatabaseRolesApi_ListCustomDatabaseRoles_Call{Call: _e.mock.On("ListCustomDatabaseRoles", ctx, groupId)}
 }
 
@@ -595,7 +595,7 @@ type CustomDatabaseRolesApi_ListCustomDatabaseRolesExecute_Call struct {
 
 // ListCustomDatabaseRolesExecute is a helper method to define mock.On call
 //   - r admin.ListCustomDatabaseRolesApiRequest
-func (_e *CustomDatabaseRolesApi_Expecter) ListCustomDatabaseRolesExecute(r interface{}) *CustomDatabaseRolesApi_ListCustomDatabaseRolesExecute_Call {
+func (_e *CustomDatabaseRolesApi_Expecter) ListCustomDatabaseRolesExecute(r any) *CustomDatabaseRolesApi_ListCustomDatabaseRolesExecute_Call {
 	return &CustomDatabaseRolesApi_ListCustomDatabaseRolesExecute_Call{Call: _e.mock.On("ListCustomDatabaseRolesExecute", r)}
 }
 
@@ -642,7 +642,7 @@ type CustomDatabaseRolesApi_ListCustomDatabaseRolesWithParams_Call struct {
 // ListCustomDatabaseRolesWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListCustomDatabaseRolesApiParams
-func (_e *CustomDatabaseRolesApi_Expecter) ListCustomDatabaseRolesWithParams(ctx interface{}, args interface{}) *CustomDatabaseRolesApi_ListCustomDatabaseRolesWithParams_Call {
+func (_e *CustomDatabaseRolesApi_Expecter) ListCustomDatabaseRolesWithParams(ctx any, args any) *CustomDatabaseRolesApi_ListCustomDatabaseRolesWithParams_Call {
 	return &CustomDatabaseRolesApi_ListCustomDatabaseRolesWithParams_Call{Call: _e.mock.On("ListCustomDatabaseRolesWithParams", ctx, args)}
 }
 
@@ -691,7 +691,7 @@ type CustomDatabaseRolesApi_UpdateCustomDatabaseRole_Call struct {
 //   - groupId string
 //   - roleName string
 //   - updateCustomDBRole *admin.UpdateCustomDBRole
-func (_e *CustomDatabaseRolesApi_Expecter) UpdateCustomDatabaseRole(ctx interface{}, groupId interface{}, roleName interface{}, updateCustomDBRole interface{}) *CustomDatabaseRolesApi_UpdateCustomDatabaseRole_Call {
+func (_e *CustomDatabaseRolesApi_Expecter) UpdateCustomDatabaseRole(ctx any, groupId any, roleName any, updateCustomDBRole any) *CustomDatabaseRolesApi_UpdateCustomDatabaseRole_Call {
 	return &CustomDatabaseRolesApi_UpdateCustomDatabaseRole_Call{Call: _e.mock.On("UpdateCustomDatabaseRole", ctx, groupId, roleName, updateCustomDBRole)}
 }
 
@@ -758,7 +758,7 @@ type CustomDatabaseRolesApi_UpdateCustomDatabaseRoleExecute_Call struct {
 
 // UpdateCustomDatabaseRoleExecute is a helper method to define mock.On call
 //   - r admin.UpdateCustomDatabaseRoleApiRequest
-func (_e *CustomDatabaseRolesApi_Expecter) UpdateCustomDatabaseRoleExecute(r interface{}) *CustomDatabaseRolesApi_UpdateCustomDatabaseRoleExecute_Call {
+func (_e *CustomDatabaseRolesApi_Expecter) UpdateCustomDatabaseRoleExecute(r any) *CustomDatabaseRolesApi_UpdateCustomDatabaseRoleExecute_Call {
 	return &CustomDatabaseRolesApi_UpdateCustomDatabaseRoleExecute_Call{Call: _e.mock.On("UpdateCustomDatabaseRoleExecute", r)}
 }
 
@@ -805,7 +805,7 @@ type CustomDatabaseRolesApi_UpdateCustomDatabaseRoleWithParams_Call struct {
 // UpdateCustomDatabaseRoleWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.UpdateCustomDatabaseRoleApiParams
-func (_e *CustomDatabaseRolesApi_Expecter) UpdateCustomDatabaseRoleWithParams(ctx interface{}, args interface{}) *CustomDatabaseRolesApi_UpdateCustomDatabaseRoleWithParams_Call {
+func (_e *CustomDatabaseRolesApi_Expecter) UpdateCustomDatabaseRoleWithParams(ctx any, args any) *CustomDatabaseRolesApi_UpdateCustomDatabaseRoleWithParams_Call {
 	return &CustomDatabaseRolesApi_UpdateCustomDatabaseRoleWithParams_Call{Call: _e.mock.On("UpdateCustomDatabaseRoleWithParams", ctx, args)}
 }
 

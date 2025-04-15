@@ -52,7 +52,7 @@ type ClusterOutageSimulationApi_EndOutageSimulation_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
-func (_e *ClusterOutageSimulationApi_Expecter) EndOutageSimulation(ctx interface{}, groupId interface{}, clusterName interface{}) *ClusterOutageSimulationApi_EndOutageSimulation_Call {
+func (_e *ClusterOutageSimulationApi_Expecter) EndOutageSimulation(ctx any, groupId any, clusterName any) *ClusterOutageSimulationApi_EndOutageSimulation_Call {
 	return &ClusterOutageSimulationApi_EndOutageSimulation_Call{Call: _e.mock.On("EndOutageSimulation", ctx, groupId, clusterName)}
 }
 
@@ -119,7 +119,7 @@ type ClusterOutageSimulationApi_EndOutageSimulationExecute_Call struct {
 
 // EndOutageSimulationExecute is a helper method to define mock.On call
 //   - r admin.EndOutageSimulationApiRequest
-func (_e *ClusterOutageSimulationApi_Expecter) EndOutageSimulationExecute(r interface{}) *ClusterOutageSimulationApi_EndOutageSimulationExecute_Call {
+func (_e *ClusterOutageSimulationApi_Expecter) EndOutageSimulationExecute(r any) *ClusterOutageSimulationApi_EndOutageSimulationExecute_Call {
 	return &ClusterOutageSimulationApi_EndOutageSimulationExecute_Call{Call: _e.mock.On("EndOutageSimulationExecute", r)}
 }
 
@@ -166,7 +166,7 @@ type ClusterOutageSimulationApi_EndOutageSimulationWithParams_Call struct {
 // EndOutageSimulationWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.EndOutageSimulationApiParams
-func (_e *ClusterOutageSimulationApi_Expecter) EndOutageSimulationWithParams(ctx interface{}, args interface{}) *ClusterOutageSimulationApi_EndOutageSimulationWithParams_Call {
+func (_e *ClusterOutageSimulationApi_Expecter) EndOutageSimulationWithParams(ctx any, args any) *ClusterOutageSimulationApi_EndOutageSimulationWithParams_Call {
 	return &ClusterOutageSimulationApi_EndOutageSimulationWithParams_Call{Call: _e.mock.On("EndOutageSimulationWithParams", ctx, args)}
 }
 
@@ -214,7 +214,7 @@ type ClusterOutageSimulationApi_GetOutageSimulation_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
-func (_e *ClusterOutageSimulationApi_Expecter) GetOutageSimulation(ctx interface{}, groupId interface{}, clusterName interface{}) *ClusterOutageSimulationApi_GetOutageSimulation_Call {
+func (_e *ClusterOutageSimulationApi_Expecter) GetOutageSimulation(ctx any, groupId any, clusterName any) *ClusterOutageSimulationApi_GetOutageSimulation_Call {
 	return &ClusterOutageSimulationApi_GetOutageSimulation_Call{Call: _e.mock.On("GetOutageSimulation", ctx, groupId, clusterName)}
 }
 
@@ -281,7 +281,7 @@ type ClusterOutageSimulationApi_GetOutageSimulationExecute_Call struct {
 
 // GetOutageSimulationExecute is a helper method to define mock.On call
 //   - r admin.GetOutageSimulationApiRequest
-func (_e *ClusterOutageSimulationApi_Expecter) GetOutageSimulationExecute(r interface{}) *ClusterOutageSimulationApi_GetOutageSimulationExecute_Call {
+func (_e *ClusterOutageSimulationApi_Expecter) GetOutageSimulationExecute(r any) *ClusterOutageSimulationApi_GetOutageSimulationExecute_Call {
 	return &ClusterOutageSimulationApi_GetOutageSimulationExecute_Call{Call: _e.mock.On("GetOutageSimulationExecute", r)}
 }
 
@@ -328,7 +328,7 @@ type ClusterOutageSimulationApi_GetOutageSimulationWithParams_Call struct {
 // GetOutageSimulationWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetOutageSimulationApiParams
-func (_e *ClusterOutageSimulationApi_Expecter) GetOutageSimulationWithParams(ctx interface{}, args interface{}) *ClusterOutageSimulationApi_GetOutageSimulationWithParams_Call {
+func (_e *ClusterOutageSimulationApi_Expecter) GetOutageSimulationWithParams(ctx any, args any) *ClusterOutageSimulationApi_GetOutageSimulationWithParams_Call {
 	return &ClusterOutageSimulationApi_GetOutageSimulationWithParams_Call{Call: _e.mock.On("GetOutageSimulationWithParams", ctx, args)}
 }
 
@@ -377,7 +377,7 @@ type ClusterOutageSimulationApi_StartOutageSimulation_Call struct {
 //   - groupId string
 //   - clusterName string
 //   - clusterOutageSimulation *admin.ClusterOutageSimulation
-func (_e *ClusterOutageSimulationApi_Expecter) StartOutageSimulation(ctx interface{}, groupId interface{}, clusterName interface{}, clusterOutageSimulation interface{}) *ClusterOutageSimulationApi_StartOutageSimulation_Call {
+func (_e *ClusterOutageSimulationApi_Expecter) StartOutageSimulation(ctx any, groupId any, clusterName any, clusterOutageSimulation any) *ClusterOutageSimulationApi_StartOutageSimulation_Call {
 	return &ClusterOutageSimulationApi_StartOutageSimulation_Call{Call: _e.mock.On("StartOutageSimulation", ctx, groupId, clusterName, clusterOutageSimulation)}
 }
 
@@ -444,7 +444,7 @@ type ClusterOutageSimulationApi_StartOutageSimulationExecute_Call struct {
 
 // StartOutageSimulationExecute is a helper method to define mock.On call
 //   - r admin.StartOutageSimulationApiRequest
-func (_e *ClusterOutageSimulationApi_Expecter) StartOutageSimulationExecute(r interface{}) *ClusterOutageSimulationApi_StartOutageSimulationExecute_Call {
+func (_e *ClusterOutageSimulationApi_Expecter) StartOutageSimulationExecute(r any) *ClusterOutageSimulationApi_StartOutageSimulationExecute_Call {
 	return &ClusterOutageSimulationApi_StartOutageSimulationExecute_Call{Call: _e.mock.On("StartOutageSimulationExecute", r)}
 }
 
@@ -491,7 +491,7 @@ type ClusterOutageSimulationApi_StartOutageSimulationWithParams_Call struct {
 // StartOutageSimulationWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.StartOutageSimulationApiParams
-func (_e *ClusterOutageSimulationApi_Expecter) StartOutageSimulationWithParams(ctx interface{}, args interface{}) *ClusterOutageSimulationApi_StartOutageSimulationWithParams_Call {
+func (_e *ClusterOutageSimulationApi_Expecter) StartOutageSimulationWithParams(ctx any, args any) *ClusterOutageSimulationApi_StartOutageSimulationWithParams_Call {
 	return &ClusterOutageSimulationApi_StartOutageSimulationWithParams_Call{Call: _e.mock.On("StartOutageSimulationWithParams", ctx, args)}
 }
 

@@ -54,7 +54,7 @@ type DataFederationApi_CreateDataFederationPrivateEndpoint_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - privateNetworkEndpointIdEntry *admin.PrivateNetworkEndpointIdEntry
-func (_e *DataFederationApi_Expecter) CreateDataFederationPrivateEndpoint(ctx interface{}, groupId interface{}, privateNetworkEndpointIdEntry interface{}) *DataFederationApi_CreateDataFederationPrivateEndpoint_Call {
+func (_e *DataFederationApi_Expecter) CreateDataFederationPrivateEndpoint(ctx any, groupId any, privateNetworkEndpointIdEntry any) *DataFederationApi_CreateDataFederationPrivateEndpoint_Call {
 	return &DataFederationApi_CreateDataFederationPrivateEndpoint_Call{Call: _e.mock.On("CreateDataFederationPrivateEndpoint", ctx, groupId, privateNetworkEndpointIdEntry)}
 }
 
@@ -121,7 +121,7 @@ type DataFederationApi_CreateDataFederationPrivateEndpointExecute_Call struct {
 
 // CreateDataFederationPrivateEndpointExecute is a helper method to define mock.On call
 //   - r admin.CreateDataFederationPrivateEndpointApiRequest
-func (_e *DataFederationApi_Expecter) CreateDataFederationPrivateEndpointExecute(r interface{}) *DataFederationApi_CreateDataFederationPrivateEndpointExecute_Call {
+func (_e *DataFederationApi_Expecter) CreateDataFederationPrivateEndpointExecute(r any) *DataFederationApi_CreateDataFederationPrivateEndpointExecute_Call {
 	return &DataFederationApi_CreateDataFederationPrivateEndpointExecute_Call{Call: _e.mock.On("CreateDataFederationPrivateEndpointExecute", r)}
 }
 
@@ -168,7 +168,7 @@ type DataFederationApi_CreateDataFederationPrivateEndpointWithParams_Call struct
 // CreateDataFederationPrivateEndpointWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.CreateDataFederationPrivateEndpointApiParams
-func (_e *DataFederationApi_Expecter) CreateDataFederationPrivateEndpointWithParams(ctx interface{}, args interface{}) *DataFederationApi_CreateDataFederationPrivateEndpointWithParams_Call {
+func (_e *DataFederationApi_Expecter) CreateDataFederationPrivateEndpointWithParams(ctx any, args any) *DataFederationApi_CreateDataFederationPrivateEndpointWithParams_Call {
 	return &DataFederationApi_CreateDataFederationPrivateEndpointWithParams_Call{Call: _e.mock.On("CreateDataFederationPrivateEndpointWithParams", ctx, args)}
 }
 
@@ -216,7 +216,7 @@ type DataFederationApi_CreateFederatedDatabase_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - dataLakeTenant *admin.DataLakeTenant
-func (_e *DataFederationApi_Expecter) CreateFederatedDatabase(ctx interface{}, groupId interface{}, dataLakeTenant interface{}) *DataFederationApi_CreateFederatedDatabase_Call {
+func (_e *DataFederationApi_Expecter) CreateFederatedDatabase(ctx any, groupId any, dataLakeTenant any) *DataFederationApi_CreateFederatedDatabase_Call {
 	return &DataFederationApi_CreateFederatedDatabase_Call{Call: _e.mock.On("CreateFederatedDatabase", ctx, groupId, dataLakeTenant)}
 }
 
@@ -283,7 +283,7 @@ type DataFederationApi_CreateFederatedDatabaseExecute_Call struct {
 
 // CreateFederatedDatabaseExecute is a helper method to define mock.On call
 //   - r admin.CreateFederatedDatabaseApiRequest
-func (_e *DataFederationApi_Expecter) CreateFederatedDatabaseExecute(r interface{}) *DataFederationApi_CreateFederatedDatabaseExecute_Call {
+func (_e *DataFederationApi_Expecter) CreateFederatedDatabaseExecute(r any) *DataFederationApi_CreateFederatedDatabaseExecute_Call {
 	return &DataFederationApi_CreateFederatedDatabaseExecute_Call{Call: _e.mock.On("CreateFederatedDatabaseExecute", r)}
 }
 
@@ -330,7 +330,7 @@ type DataFederationApi_CreateFederatedDatabaseWithParams_Call struct {
 // CreateFederatedDatabaseWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.CreateFederatedDatabaseApiParams
-func (_e *DataFederationApi_Expecter) CreateFederatedDatabaseWithParams(ctx interface{}, args interface{}) *DataFederationApi_CreateFederatedDatabaseWithParams_Call {
+func (_e *DataFederationApi_Expecter) CreateFederatedDatabaseWithParams(ctx any, args any) *DataFederationApi_CreateFederatedDatabaseWithParams_Call {
 	return &DataFederationApi_CreateFederatedDatabaseWithParams_Call{Call: _e.mock.On("CreateFederatedDatabaseWithParams", ctx, args)}
 }
 
@@ -380,7 +380,7 @@ type DataFederationApi_CreateOneDataFederationQueryLimit_Call struct {
 //   - tenantName string
 //   - limitName string
 //   - dataFederationTenantQueryLimit *admin.DataFederationTenantQueryLimit
-func (_e *DataFederationApi_Expecter) CreateOneDataFederationQueryLimit(ctx interface{}, groupId interface{}, tenantName interface{}, limitName interface{}, dataFederationTenantQueryLimit interface{}) *DataFederationApi_CreateOneDataFederationQueryLimit_Call {
+func (_e *DataFederationApi_Expecter) CreateOneDataFederationQueryLimit(ctx any, groupId any, tenantName any, limitName any, dataFederationTenantQueryLimit any) *DataFederationApi_CreateOneDataFederationQueryLimit_Call {
 	return &DataFederationApi_CreateOneDataFederationQueryLimit_Call{Call: _e.mock.On("CreateOneDataFederationQueryLimit", ctx, groupId, tenantName, limitName, dataFederationTenantQueryLimit)}
 }
 
@@ -447,7 +447,7 @@ type DataFederationApi_CreateOneDataFederationQueryLimitExecute_Call struct {
 
 // CreateOneDataFederationQueryLimitExecute is a helper method to define mock.On call
 //   - r admin.CreateOneDataFederationQueryLimitApiRequest
-func (_e *DataFederationApi_Expecter) CreateOneDataFederationQueryLimitExecute(r interface{}) *DataFederationApi_CreateOneDataFederationQueryLimitExecute_Call {
+func (_e *DataFederationApi_Expecter) CreateOneDataFederationQueryLimitExecute(r any) *DataFederationApi_CreateOneDataFederationQueryLimitExecute_Call {
 	return &DataFederationApi_CreateOneDataFederationQueryLimitExecute_Call{Call: _e.mock.On("CreateOneDataFederationQueryLimitExecute", r)}
 }
 
@@ -494,7 +494,7 @@ type DataFederationApi_CreateOneDataFederationQueryLimitWithParams_Call struct {
 // CreateOneDataFederationQueryLimitWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.CreateOneDataFederationQueryLimitApiParams
-func (_e *DataFederationApi_Expecter) CreateOneDataFederationQueryLimitWithParams(ctx interface{}, args interface{}) *DataFederationApi_CreateOneDataFederationQueryLimitWithParams_Call {
+func (_e *DataFederationApi_Expecter) CreateOneDataFederationQueryLimitWithParams(ctx any, args any) *DataFederationApi_CreateOneDataFederationQueryLimitWithParams_Call {
 	return &DataFederationApi_CreateOneDataFederationQueryLimitWithParams_Call{Call: _e.mock.On("CreateOneDataFederationQueryLimitWithParams", ctx, args)}
 }
 
@@ -542,7 +542,7 @@ type DataFederationApi_DeleteDataFederationPrivateEndpoint_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - endpointId string
-func (_e *DataFederationApi_Expecter) DeleteDataFederationPrivateEndpoint(ctx interface{}, groupId interface{}, endpointId interface{}) *DataFederationApi_DeleteDataFederationPrivateEndpoint_Call {
+func (_e *DataFederationApi_Expecter) DeleteDataFederationPrivateEndpoint(ctx any, groupId any, endpointId any) *DataFederationApi_DeleteDataFederationPrivateEndpoint_Call {
 	return &DataFederationApi_DeleteDataFederationPrivateEndpoint_Call{Call: _e.mock.On("DeleteDataFederationPrivateEndpoint", ctx, groupId, endpointId)}
 }
 
@@ -564,42 +564,33 @@ func (_c *DataFederationApi_DeleteDataFederationPrivateEndpoint_Call) RunAndRetu
 }
 
 // DeleteDataFederationPrivateEndpointExecute provides a mock function with given fields: r
-func (_m *DataFederationApi) DeleteDataFederationPrivateEndpointExecute(r admin.DeleteDataFederationPrivateEndpointApiRequest) (map[string]interface{}, *http.Response, error) {
+func (_m *DataFederationApi) DeleteDataFederationPrivateEndpointExecute(r admin.DeleteDataFederationPrivateEndpointApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteDataFederationPrivateEndpointExecute")
 	}
 
-	var r0 map[string]interface{}
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteDataFederationPrivateEndpointApiRequest) (map[string]interface{}, *http.Response, error)); ok {
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.DeleteDataFederationPrivateEndpointApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteDataFederationPrivateEndpointApiRequest) map[string]interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteDataFederationPrivateEndpointApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(map[string]interface{})
+			r0 = ret.Get(0).(*http.Response)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeleteDataFederationPrivateEndpointApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.DeleteDataFederationPrivateEndpointApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
+		r1 = ret.Error(1)
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.DeleteDataFederationPrivateEndpointApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
+	return r0, r1
 }
 
 // DataFederationApi_DeleteDataFederationPrivateEndpointExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteDataFederationPrivateEndpointExecute'
@@ -609,7 +600,7 @@ type DataFederationApi_DeleteDataFederationPrivateEndpointExecute_Call struct {
 
 // DeleteDataFederationPrivateEndpointExecute is a helper method to define mock.On call
 //   - r admin.DeleteDataFederationPrivateEndpointApiRequest
-func (_e *DataFederationApi_Expecter) DeleteDataFederationPrivateEndpointExecute(r interface{}) *DataFederationApi_DeleteDataFederationPrivateEndpointExecute_Call {
+func (_e *DataFederationApi_Expecter) DeleteDataFederationPrivateEndpointExecute(r any) *DataFederationApi_DeleteDataFederationPrivateEndpointExecute_Call {
 	return &DataFederationApi_DeleteDataFederationPrivateEndpointExecute_Call{Call: _e.mock.On("DeleteDataFederationPrivateEndpointExecute", r)}
 }
 
@@ -620,12 +611,12 @@ func (_c *DataFederationApi_DeleteDataFederationPrivateEndpointExecute_Call) Run
 	return _c
 }
 
-func (_c *DataFederationApi_DeleteDataFederationPrivateEndpointExecute_Call) Return(_a0 map[string]interface{}, _a1 *http.Response, _a2 error) *DataFederationApi_DeleteDataFederationPrivateEndpointExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
+func (_c *DataFederationApi_DeleteDataFederationPrivateEndpointExecute_Call) Return(_a0 *http.Response, _a1 error) *DataFederationApi_DeleteDataFederationPrivateEndpointExecute_Call {
+	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *DataFederationApi_DeleteDataFederationPrivateEndpointExecute_Call) RunAndReturn(run func(admin.DeleteDataFederationPrivateEndpointApiRequest) (map[string]interface{}, *http.Response, error)) *DataFederationApi_DeleteDataFederationPrivateEndpointExecute_Call {
+func (_c *DataFederationApi_DeleteDataFederationPrivateEndpointExecute_Call) RunAndReturn(run func(admin.DeleteDataFederationPrivateEndpointApiRequest) (*http.Response, error)) *DataFederationApi_DeleteDataFederationPrivateEndpointExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -656,7 +647,7 @@ type DataFederationApi_DeleteDataFederationPrivateEndpointWithParams_Call struct
 // DeleteDataFederationPrivateEndpointWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.DeleteDataFederationPrivateEndpointApiParams
-func (_e *DataFederationApi_Expecter) DeleteDataFederationPrivateEndpointWithParams(ctx interface{}, args interface{}) *DataFederationApi_DeleteDataFederationPrivateEndpointWithParams_Call {
+func (_e *DataFederationApi_Expecter) DeleteDataFederationPrivateEndpointWithParams(ctx any, args any) *DataFederationApi_DeleteDataFederationPrivateEndpointWithParams_Call {
 	return &DataFederationApi_DeleteDataFederationPrivateEndpointWithParams_Call{Call: _e.mock.On("DeleteDataFederationPrivateEndpointWithParams", ctx, args)}
 }
 
@@ -704,7 +695,7 @@ type DataFederationApi_DeleteFederatedDatabase_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - tenantName string
-func (_e *DataFederationApi_Expecter) DeleteFederatedDatabase(ctx interface{}, groupId interface{}, tenantName interface{}) *DataFederationApi_DeleteFederatedDatabase_Call {
+func (_e *DataFederationApi_Expecter) DeleteFederatedDatabase(ctx any, groupId any, tenantName any) *DataFederationApi_DeleteFederatedDatabase_Call {
 	return &DataFederationApi_DeleteFederatedDatabase_Call{Call: _e.mock.On("DeleteFederatedDatabase", ctx, groupId, tenantName)}
 }
 
@@ -726,42 +717,33 @@ func (_c *DataFederationApi_DeleteFederatedDatabase_Call) RunAndReturn(run func(
 }
 
 // DeleteFederatedDatabaseExecute provides a mock function with given fields: r
-func (_m *DataFederationApi) DeleteFederatedDatabaseExecute(r admin.DeleteFederatedDatabaseApiRequest) (map[string]interface{}, *http.Response, error) {
+func (_m *DataFederationApi) DeleteFederatedDatabaseExecute(r admin.DeleteFederatedDatabaseApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteFederatedDatabaseExecute")
 	}
 
-	var r0 map[string]interface{}
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteFederatedDatabaseApiRequest) (map[string]interface{}, *http.Response, error)); ok {
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.DeleteFederatedDatabaseApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteFederatedDatabaseApiRequest) map[string]interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteFederatedDatabaseApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(map[string]interface{})
+			r0 = ret.Get(0).(*http.Response)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeleteFederatedDatabaseApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.DeleteFederatedDatabaseApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
+		r1 = ret.Error(1)
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.DeleteFederatedDatabaseApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
+	return r0, r1
 }
 
 // DataFederationApi_DeleteFederatedDatabaseExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteFederatedDatabaseExecute'
@@ -771,7 +753,7 @@ type DataFederationApi_DeleteFederatedDatabaseExecute_Call struct {
 
 // DeleteFederatedDatabaseExecute is a helper method to define mock.On call
 //   - r admin.DeleteFederatedDatabaseApiRequest
-func (_e *DataFederationApi_Expecter) DeleteFederatedDatabaseExecute(r interface{}) *DataFederationApi_DeleteFederatedDatabaseExecute_Call {
+func (_e *DataFederationApi_Expecter) DeleteFederatedDatabaseExecute(r any) *DataFederationApi_DeleteFederatedDatabaseExecute_Call {
 	return &DataFederationApi_DeleteFederatedDatabaseExecute_Call{Call: _e.mock.On("DeleteFederatedDatabaseExecute", r)}
 }
 
@@ -782,12 +764,12 @@ func (_c *DataFederationApi_DeleteFederatedDatabaseExecute_Call) Run(run func(r 
 	return _c
 }
 
-func (_c *DataFederationApi_DeleteFederatedDatabaseExecute_Call) Return(_a0 map[string]interface{}, _a1 *http.Response, _a2 error) *DataFederationApi_DeleteFederatedDatabaseExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
+func (_c *DataFederationApi_DeleteFederatedDatabaseExecute_Call) Return(_a0 *http.Response, _a1 error) *DataFederationApi_DeleteFederatedDatabaseExecute_Call {
+	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *DataFederationApi_DeleteFederatedDatabaseExecute_Call) RunAndReturn(run func(admin.DeleteFederatedDatabaseApiRequest) (map[string]interface{}, *http.Response, error)) *DataFederationApi_DeleteFederatedDatabaseExecute_Call {
+func (_c *DataFederationApi_DeleteFederatedDatabaseExecute_Call) RunAndReturn(run func(admin.DeleteFederatedDatabaseApiRequest) (*http.Response, error)) *DataFederationApi_DeleteFederatedDatabaseExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -818,7 +800,7 @@ type DataFederationApi_DeleteFederatedDatabaseWithParams_Call struct {
 // DeleteFederatedDatabaseWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.DeleteFederatedDatabaseApiParams
-func (_e *DataFederationApi_Expecter) DeleteFederatedDatabaseWithParams(ctx interface{}, args interface{}) *DataFederationApi_DeleteFederatedDatabaseWithParams_Call {
+func (_e *DataFederationApi_Expecter) DeleteFederatedDatabaseWithParams(ctx any, args any) *DataFederationApi_DeleteFederatedDatabaseWithParams_Call {
 	return &DataFederationApi_DeleteFederatedDatabaseWithParams_Call{Call: _e.mock.On("DeleteFederatedDatabaseWithParams", ctx, args)}
 }
 
@@ -867,7 +849,7 @@ type DataFederationApi_DeleteOneDataFederationInstanceQueryLimit_Call struct {
 //   - groupId string
 //   - tenantName string
 //   - limitName string
-func (_e *DataFederationApi_Expecter) DeleteOneDataFederationInstanceQueryLimit(ctx interface{}, groupId interface{}, tenantName interface{}, limitName interface{}) *DataFederationApi_DeleteOneDataFederationInstanceQueryLimit_Call {
+func (_e *DataFederationApi_Expecter) DeleteOneDataFederationInstanceQueryLimit(ctx any, groupId any, tenantName any, limitName any) *DataFederationApi_DeleteOneDataFederationInstanceQueryLimit_Call {
 	return &DataFederationApi_DeleteOneDataFederationInstanceQueryLimit_Call{Call: _e.mock.On("DeleteOneDataFederationInstanceQueryLimit", ctx, groupId, tenantName, limitName)}
 }
 
@@ -889,42 +871,33 @@ func (_c *DataFederationApi_DeleteOneDataFederationInstanceQueryLimit_Call) RunA
 }
 
 // DeleteOneDataFederationInstanceQueryLimitExecute provides a mock function with given fields: r
-func (_m *DataFederationApi) DeleteOneDataFederationInstanceQueryLimitExecute(r admin.DeleteOneDataFederationInstanceQueryLimitApiRequest) (map[string]interface{}, *http.Response, error) {
+func (_m *DataFederationApi) DeleteOneDataFederationInstanceQueryLimitExecute(r admin.DeleteOneDataFederationInstanceQueryLimitApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteOneDataFederationInstanceQueryLimitExecute")
 	}
 
-	var r0 map[string]interface{}
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteOneDataFederationInstanceQueryLimitApiRequest) (map[string]interface{}, *http.Response, error)); ok {
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.DeleteOneDataFederationInstanceQueryLimitApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteOneDataFederationInstanceQueryLimitApiRequest) map[string]interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteOneDataFederationInstanceQueryLimitApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(map[string]interface{})
+			r0 = ret.Get(0).(*http.Response)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeleteOneDataFederationInstanceQueryLimitApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.DeleteOneDataFederationInstanceQueryLimitApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
+		r1 = ret.Error(1)
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.DeleteOneDataFederationInstanceQueryLimitApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
+	return r0, r1
 }
 
 // DataFederationApi_DeleteOneDataFederationInstanceQueryLimitExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteOneDataFederationInstanceQueryLimitExecute'
@@ -934,7 +907,7 @@ type DataFederationApi_DeleteOneDataFederationInstanceQueryLimitExecute_Call str
 
 // DeleteOneDataFederationInstanceQueryLimitExecute is a helper method to define mock.On call
 //   - r admin.DeleteOneDataFederationInstanceQueryLimitApiRequest
-func (_e *DataFederationApi_Expecter) DeleteOneDataFederationInstanceQueryLimitExecute(r interface{}) *DataFederationApi_DeleteOneDataFederationInstanceQueryLimitExecute_Call {
+func (_e *DataFederationApi_Expecter) DeleteOneDataFederationInstanceQueryLimitExecute(r any) *DataFederationApi_DeleteOneDataFederationInstanceQueryLimitExecute_Call {
 	return &DataFederationApi_DeleteOneDataFederationInstanceQueryLimitExecute_Call{Call: _e.mock.On("DeleteOneDataFederationInstanceQueryLimitExecute", r)}
 }
 
@@ -945,12 +918,12 @@ func (_c *DataFederationApi_DeleteOneDataFederationInstanceQueryLimitExecute_Cal
 	return _c
 }
 
-func (_c *DataFederationApi_DeleteOneDataFederationInstanceQueryLimitExecute_Call) Return(_a0 map[string]interface{}, _a1 *http.Response, _a2 error) *DataFederationApi_DeleteOneDataFederationInstanceQueryLimitExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
+func (_c *DataFederationApi_DeleteOneDataFederationInstanceQueryLimitExecute_Call) Return(_a0 *http.Response, _a1 error) *DataFederationApi_DeleteOneDataFederationInstanceQueryLimitExecute_Call {
+	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *DataFederationApi_DeleteOneDataFederationInstanceQueryLimitExecute_Call) RunAndReturn(run func(admin.DeleteOneDataFederationInstanceQueryLimitApiRequest) (map[string]interface{}, *http.Response, error)) *DataFederationApi_DeleteOneDataFederationInstanceQueryLimitExecute_Call {
+func (_c *DataFederationApi_DeleteOneDataFederationInstanceQueryLimitExecute_Call) RunAndReturn(run func(admin.DeleteOneDataFederationInstanceQueryLimitApiRequest) (*http.Response, error)) *DataFederationApi_DeleteOneDataFederationInstanceQueryLimitExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -981,7 +954,7 @@ type DataFederationApi_DeleteOneDataFederationInstanceQueryLimitWithParams_Call 
 // DeleteOneDataFederationInstanceQueryLimitWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.DeleteOneDataFederationInstanceQueryLimitApiParams
-func (_e *DataFederationApi_Expecter) DeleteOneDataFederationInstanceQueryLimitWithParams(ctx interface{}, args interface{}) *DataFederationApi_DeleteOneDataFederationInstanceQueryLimitWithParams_Call {
+func (_e *DataFederationApi_Expecter) DeleteOneDataFederationInstanceQueryLimitWithParams(ctx any, args any) *DataFederationApi_DeleteOneDataFederationInstanceQueryLimitWithParams_Call {
 	return &DataFederationApi_DeleteOneDataFederationInstanceQueryLimitWithParams_Call{Call: _e.mock.On("DeleteOneDataFederationInstanceQueryLimitWithParams", ctx, args)}
 }
 
@@ -1029,7 +1002,7 @@ type DataFederationApi_DownloadFederatedDatabaseQueryLogs_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - tenantName string
-func (_e *DataFederationApi_Expecter) DownloadFederatedDatabaseQueryLogs(ctx interface{}, groupId interface{}, tenantName interface{}) *DataFederationApi_DownloadFederatedDatabaseQueryLogs_Call {
+func (_e *DataFederationApi_Expecter) DownloadFederatedDatabaseQueryLogs(ctx any, groupId any, tenantName any) *DataFederationApi_DownloadFederatedDatabaseQueryLogs_Call {
 	return &DataFederationApi_DownloadFederatedDatabaseQueryLogs_Call{Call: _e.mock.On("DownloadFederatedDatabaseQueryLogs", ctx, groupId, tenantName)}
 }
 
@@ -1096,7 +1069,7 @@ type DataFederationApi_DownloadFederatedDatabaseQueryLogsExecute_Call struct {
 
 // DownloadFederatedDatabaseQueryLogsExecute is a helper method to define mock.On call
 //   - r admin.DownloadFederatedDatabaseQueryLogsApiRequest
-func (_e *DataFederationApi_Expecter) DownloadFederatedDatabaseQueryLogsExecute(r interface{}) *DataFederationApi_DownloadFederatedDatabaseQueryLogsExecute_Call {
+func (_e *DataFederationApi_Expecter) DownloadFederatedDatabaseQueryLogsExecute(r any) *DataFederationApi_DownloadFederatedDatabaseQueryLogsExecute_Call {
 	return &DataFederationApi_DownloadFederatedDatabaseQueryLogsExecute_Call{Call: _e.mock.On("DownloadFederatedDatabaseQueryLogsExecute", r)}
 }
 
@@ -1143,7 +1116,7 @@ type DataFederationApi_DownloadFederatedDatabaseQueryLogsWithParams_Call struct 
 // DownloadFederatedDatabaseQueryLogsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.DownloadFederatedDatabaseQueryLogsApiParams
-func (_e *DataFederationApi_Expecter) DownloadFederatedDatabaseQueryLogsWithParams(ctx interface{}, args interface{}) *DataFederationApi_DownloadFederatedDatabaseQueryLogsWithParams_Call {
+func (_e *DataFederationApi_Expecter) DownloadFederatedDatabaseQueryLogsWithParams(ctx any, args any) *DataFederationApi_DownloadFederatedDatabaseQueryLogsWithParams_Call {
 	return &DataFederationApi_DownloadFederatedDatabaseQueryLogsWithParams_Call{Call: _e.mock.On("DownloadFederatedDatabaseQueryLogsWithParams", ctx, args)}
 }
 
@@ -1191,7 +1164,7 @@ type DataFederationApi_GetDataFederationPrivateEndpoint_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - endpointId string
-func (_e *DataFederationApi_Expecter) GetDataFederationPrivateEndpoint(ctx interface{}, groupId interface{}, endpointId interface{}) *DataFederationApi_GetDataFederationPrivateEndpoint_Call {
+func (_e *DataFederationApi_Expecter) GetDataFederationPrivateEndpoint(ctx any, groupId any, endpointId any) *DataFederationApi_GetDataFederationPrivateEndpoint_Call {
 	return &DataFederationApi_GetDataFederationPrivateEndpoint_Call{Call: _e.mock.On("GetDataFederationPrivateEndpoint", ctx, groupId, endpointId)}
 }
 
@@ -1258,7 +1231,7 @@ type DataFederationApi_GetDataFederationPrivateEndpointExecute_Call struct {
 
 // GetDataFederationPrivateEndpointExecute is a helper method to define mock.On call
 //   - r admin.GetDataFederationPrivateEndpointApiRequest
-func (_e *DataFederationApi_Expecter) GetDataFederationPrivateEndpointExecute(r interface{}) *DataFederationApi_GetDataFederationPrivateEndpointExecute_Call {
+func (_e *DataFederationApi_Expecter) GetDataFederationPrivateEndpointExecute(r any) *DataFederationApi_GetDataFederationPrivateEndpointExecute_Call {
 	return &DataFederationApi_GetDataFederationPrivateEndpointExecute_Call{Call: _e.mock.On("GetDataFederationPrivateEndpointExecute", r)}
 }
 
@@ -1305,7 +1278,7 @@ type DataFederationApi_GetDataFederationPrivateEndpointWithParams_Call struct {
 // GetDataFederationPrivateEndpointWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetDataFederationPrivateEndpointApiParams
-func (_e *DataFederationApi_Expecter) GetDataFederationPrivateEndpointWithParams(ctx interface{}, args interface{}) *DataFederationApi_GetDataFederationPrivateEndpointWithParams_Call {
+func (_e *DataFederationApi_Expecter) GetDataFederationPrivateEndpointWithParams(ctx any, args any) *DataFederationApi_GetDataFederationPrivateEndpointWithParams_Call {
 	return &DataFederationApi_GetDataFederationPrivateEndpointWithParams_Call{Call: _e.mock.On("GetDataFederationPrivateEndpointWithParams", ctx, args)}
 }
 
@@ -1353,7 +1326,7 @@ type DataFederationApi_GetFederatedDatabase_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - tenantName string
-func (_e *DataFederationApi_Expecter) GetFederatedDatabase(ctx interface{}, groupId interface{}, tenantName interface{}) *DataFederationApi_GetFederatedDatabase_Call {
+func (_e *DataFederationApi_Expecter) GetFederatedDatabase(ctx any, groupId any, tenantName any) *DataFederationApi_GetFederatedDatabase_Call {
 	return &DataFederationApi_GetFederatedDatabase_Call{Call: _e.mock.On("GetFederatedDatabase", ctx, groupId, tenantName)}
 }
 
@@ -1420,7 +1393,7 @@ type DataFederationApi_GetFederatedDatabaseExecute_Call struct {
 
 // GetFederatedDatabaseExecute is a helper method to define mock.On call
 //   - r admin.GetFederatedDatabaseApiRequest
-func (_e *DataFederationApi_Expecter) GetFederatedDatabaseExecute(r interface{}) *DataFederationApi_GetFederatedDatabaseExecute_Call {
+func (_e *DataFederationApi_Expecter) GetFederatedDatabaseExecute(r any) *DataFederationApi_GetFederatedDatabaseExecute_Call {
 	return &DataFederationApi_GetFederatedDatabaseExecute_Call{Call: _e.mock.On("GetFederatedDatabaseExecute", r)}
 }
 
@@ -1467,7 +1440,7 @@ type DataFederationApi_GetFederatedDatabaseWithParams_Call struct {
 // GetFederatedDatabaseWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetFederatedDatabaseApiParams
-func (_e *DataFederationApi_Expecter) GetFederatedDatabaseWithParams(ctx interface{}, args interface{}) *DataFederationApi_GetFederatedDatabaseWithParams_Call {
+func (_e *DataFederationApi_Expecter) GetFederatedDatabaseWithParams(ctx any, args any) *DataFederationApi_GetFederatedDatabaseWithParams_Call {
 	return &DataFederationApi_GetFederatedDatabaseWithParams_Call{Call: _e.mock.On("GetFederatedDatabaseWithParams", ctx, args)}
 }
 
@@ -1514,7 +1487,7 @@ type DataFederationApi_ListDataFederationPrivateEndpoints_Call struct {
 // ListDataFederationPrivateEndpoints is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *DataFederationApi_Expecter) ListDataFederationPrivateEndpoints(ctx interface{}, groupId interface{}) *DataFederationApi_ListDataFederationPrivateEndpoints_Call {
+func (_e *DataFederationApi_Expecter) ListDataFederationPrivateEndpoints(ctx any, groupId any) *DataFederationApi_ListDataFederationPrivateEndpoints_Call {
 	return &DataFederationApi_ListDataFederationPrivateEndpoints_Call{Call: _e.mock.On("ListDataFederationPrivateEndpoints", ctx, groupId)}
 }
 
@@ -1581,7 +1554,7 @@ type DataFederationApi_ListDataFederationPrivateEndpointsExecute_Call struct {
 
 // ListDataFederationPrivateEndpointsExecute is a helper method to define mock.On call
 //   - r admin.ListDataFederationPrivateEndpointsApiRequest
-func (_e *DataFederationApi_Expecter) ListDataFederationPrivateEndpointsExecute(r interface{}) *DataFederationApi_ListDataFederationPrivateEndpointsExecute_Call {
+func (_e *DataFederationApi_Expecter) ListDataFederationPrivateEndpointsExecute(r any) *DataFederationApi_ListDataFederationPrivateEndpointsExecute_Call {
 	return &DataFederationApi_ListDataFederationPrivateEndpointsExecute_Call{Call: _e.mock.On("ListDataFederationPrivateEndpointsExecute", r)}
 }
 
@@ -1628,7 +1601,7 @@ type DataFederationApi_ListDataFederationPrivateEndpointsWithParams_Call struct 
 // ListDataFederationPrivateEndpointsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListDataFederationPrivateEndpointsApiParams
-func (_e *DataFederationApi_Expecter) ListDataFederationPrivateEndpointsWithParams(ctx interface{}, args interface{}) *DataFederationApi_ListDataFederationPrivateEndpointsWithParams_Call {
+func (_e *DataFederationApi_Expecter) ListDataFederationPrivateEndpointsWithParams(ctx any, args any) *DataFederationApi_ListDataFederationPrivateEndpointsWithParams_Call {
 	return &DataFederationApi_ListDataFederationPrivateEndpointsWithParams_Call{Call: _e.mock.On("ListDataFederationPrivateEndpointsWithParams", ctx, args)}
 }
 
@@ -1675,7 +1648,7 @@ type DataFederationApi_ListFederatedDatabases_Call struct {
 // ListFederatedDatabases is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *DataFederationApi_Expecter) ListFederatedDatabases(ctx interface{}, groupId interface{}) *DataFederationApi_ListFederatedDatabases_Call {
+func (_e *DataFederationApi_Expecter) ListFederatedDatabases(ctx any, groupId any) *DataFederationApi_ListFederatedDatabases_Call {
 	return &DataFederationApi_ListFederatedDatabases_Call{Call: _e.mock.On("ListFederatedDatabases", ctx, groupId)}
 }
 
@@ -1742,7 +1715,7 @@ type DataFederationApi_ListFederatedDatabasesExecute_Call struct {
 
 // ListFederatedDatabasesExecute is a helper method to define mock.On call
 //   - r admin.ListFederatedDatabasesApiRequest
-func (_e *DataFederationApi_Expecter) ListFederatedDatabasesExecute(r interface{}) *DataFederationApi_ListFederatedDatabasesExecute_Call {
+func (_e *DataFederationApi_Expecter) ListFederatedDatabasesExecute(r any) *DataFederationApi_ListFederatedDatabasesExecute_Call {
 	return &DataFederationApi_ListFederatedDatabasesExecute_Call{Call: _e.mock.On("ListFederatedDatabasesExecute", r)}
 }
 
@@ -1789,7 +1762,7 @@ type DataFederationApi_ListFederatedDatabasesWithParams_Call struct {
 // ListFederatedDatabasesWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListFederatedDatabasesApiParams
-func (_e *DataFederationApi_Expecter) ListFederatedDatabasesWithParams(ctx interface{}, args interface{}) *DataFederationApi_ListFederatedDatabasesWithParams_Call {
+func (_e *DataFederationApi_Expecter) ListFederatedDatabasesWithParams(ctx any, args any) *DataFederationApi_ListFederatedDatabasesWithParams_Call {
 	return &DataFederationApi_ListFederatedDatabasesWithParams_Call{Call: _e.mock.On("ListFederatedDatabasesWithParams", ctx, args)}
 }
 
@@ -1838,7 +1811,7 @@ type DataFederationApi_ReturnFederatedDatabaseQueryLimit_Call struct {
 //   - groupId string
 //   - tenantName string
 //   - limitName string
-func (_e *DataFederationApi_Expecter) ReturnFederatedDatabaseQueryLimit(ctx interface{}, groupId interface{}, tenantName interface{}, limitName interface{}) *DataFederationApi_ReturnFederatedDatabaseQueryLimit_Call {
+func (_e *DataFederationApi_Expecter) ReturnFederatedDatabaseQueryLimit(ctx any, groupId any, tenantName any, limitName any) *DataFederationApi_ReturnFederatedDatabaseQueryLimit_Call {
 	return &DataFederationApi_ReturnFederatedDatabaseQueryLimit_Call{Call: _e.mock.On("ReturnFederatedDatabaseQueryLimit", ctx, groupId, tenantName, limitName)}
 }
 
@@ -1905,7 +1878,7 @@ type DataFederationApi_ReturnFederatedDatabaseQueryLimitExecute_Call struct {
 
 // ReturnFederatedDatabaseQueryLimitExecute is a helper method to define mock.On call
 //   - r admin.ReturnFederatedDatabaseQueryLimitApiRequest
-func (_e *DataFederationApi_Expecter) ReturnFederatedDatabaseQueryLimitExecute(r interface{}) *DataFederationApi_ReturnFederatedDatabaseQueryLimitExecute_Call {
+func (_e *DataFederationApi_Expecter) ReturnFederatedDatabaseQueryLimitExecute(r any) *DataFederationApi_ReturnFederatedDatabaseQueryLimitExecute_Call {
 	return &DataFederationApi_ReturnFederatedDatabaseQueryLimitExecute_Call{Call: _e.mock.On("ReturnFederatedDatabaseQueryLimitExecute", r)}
 }
 
@@ -1952,7 +1925,7 @@ type DataFederationApi_ReturnFederatedDatabaseQueryLimitWithParams_Call struct {
 // ReturnFederatedDatabaseQueryLimitWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ReturnFederatedDatabaseQueryLimitApiParams
-func (_e *DataFederationApi_Expecter) ReturnFederatedDatabaseQueryLimitWithParams(ctx interface{}, args interface{}) *DataFederationApi_ReturnFederatedDatabaseQueryLimitWithParams_Call {
+func (_e *DataFederationApi_Expecter) ReturnFederatedDatabaseQueryLimitWithParams(ctx any, args any) *DataFederationApi_ReturnFederatedDatabaseQueryLimitWithParams_Call {
 	return &DataFederationApi_ReturnFederatedDatabaseQueryLimitWithParams_Call{Call: _e.mock.On("ReturnFederatedDatabaseQueryLimitWithParams", ctx, args)}
 }
 
@@ -2000,7 +1973,7 @@ type DataFederationApi_ReturnFederatedDatabaseQueryLimits_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - tenantName string
-func (_e *DataFederationApi_Expecter) ReturnFederatedDatabaseQueryLimits(ctx interface{}, groupId interface{}, tenantName interface{}) *DataFederationApi_ReturnFederatedDatabaseQueryLimits_Call {
+func (_e *DataFederationApi_Expecter) ReturnFederatedDatabaseQueryLimits(ctx any, groupId any, tenantName any) *DataFederationApi_ReturnFederatedDatabaseQueryLimits_Call {
 	return &DataFederationApi_ReturnFederatedDatabaseQueryLimits_Call{Call: _e.mock.On("ReturnFederatedDatabaseQueryLimits", ctx, groupId, tenantName)}
 }
 
@@ -2067,7 +2040,7 @@ type DataFederationApi_ReturnFederatedDatabaseQueryLimitsExecute_Call struct {
 
 // ReturnFederatedDatabaseQueryLimitsExecute is a helper method to define mock.On call
 //   - r admin.ReturnFederatedDatabaseQueryLimitsApiRequest
-func (_e *DataFederationApi_Expecter) ReturnFederatedDatabaseQueryLimitsExecute(r interface{}) *DataFederationApi_ReturnFederatedDatabaseQueryLimitsExecute_Call {
+func (_e *DataFederationApi_Expecter) ReturnFederatedDatabaseQueryLimitsExecute(r any) *DataFederationApi_ReturnFederatedDatabaseQueryLimitsExecute_Call {
 	return &DataFederationApi_ReturnFederatedDatabaseQueryLimitsExecute_Call{Call: _e.mock.On("ReturnFederatedDatabaseQueryLimitsExecute", r)}
 }
 
@@ -2114,7 +2087,7 @@ type DataFederationApi_ReturnFederatedDatabaseQueryLimitsWithParams_Call struct 
 // ReturnFederatedDatabaseQueryLimitsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ReturnFederatedDatabaseQueryLimitsApiParams
-func (_e *DataFederationApi_Expecter) ReturnFederatedDatabaseQueryLimitsWithParams(ctx interface{}, args interface{}) *DataFederationApi_ReturnFederatedDatabaseQueryLimitsWithParams_Call {
+func (_e *DataFederationApi_Expecter) ReturnFederatedDatabaseQueryLimitsWithParams(ctx any, args any) *DataFederationApi_ReturnFederatedDatabaseQueryLimitsWithParams_Call {
 	return &DataFederationApi_ReturnFederatedDatabaseQueryLimitsWithParams_Call{Call: _e.mock.On("ReturnFederatedDatabaseQueryLimitsWithParams", ctx, args)}
 }
 
@@ -2163,7 +2136,7 @@ type DataFederationApi_UpdateFederatedDatabase_Call struct {
 //   - groupId string
 //   - tenantName string
 //   - dataLakeTenant *admin.DataLakeTenant
-func (_e *DataFederationApi_Expecter) UpdateFederatedDatabase(ctx interface{}, groupId interface{}, tenantName interface{}, dataLakeTenant interface{}) *DataFederationApi_UpdateFederatedDatabase_Call {
+func (_e *DataFederationApi_Expecter) UpdateFederatedDatabase(ctx any, groupId any, tenantName any, dataLakeTenant any) *DataFederationApi_UpdateFederatedDatabase_Call {
 	return &DataFederationApi_UpdateFederatedDatabase_Call{Call: _e.mock.On("UpdateFederatedDatabase", ctx, groupId, tenantName, dataLakeTenant)}
 }
 
@@ -2230,7 +2203,7 @@ type DataFederationApi_UpdateFederatedDatabaseExecute_Call struct {
 
 // UpdateFederatedDatabaseExecute is a helper method to define mock.On call
 //   - r admin.UpdateFederatedDatabaseApiRequest
-func (_e *DataFederationApi_Expecter) UpdateFederatedDatabaseExecute(r interface{}) *DataFederationApi_UpdateFederatedDatabaseExecute_Call {
+func (_e *DataFederationApi_Expecter) UpdateFederatedDatabaseExecute(r any) *DataFederationApi_UpdateFederatedDatabaseExecute_Call {
 	return &DataFederationApi_UpdateFederatedDatabaseExecute_Call{Call: _e.mock.On("UpdateFederatedDatabaseExecute", r)}
 }
 
@@ -2277,7 +2250,7 @@ type DataFederationApi_UpdateFederatedDatabaseWithParams_Call struct {
 // UpdateFederatedDatabaseWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.UpdateFederatedDatabaseApiParams
-func (_e *DataFederationApi_Expecter) UpdateFederatedDatabaseWithParams(ctx interface{}, args interface{}) *DataFederationApi_UpdateFederatedDatabaseWithParams_Call {
+func (_e *DataFederationApi_Expecter) UpdateFederatedDatabaseWithParams(ctx any, args any) *DataFederationApi_UpdateFederatedDatabaseWithParams_Call {
 	return &DataFederationApi_UpdateFederatedDatabaseWithParams_Call{Call: _e.mock.On("UpdateFederatedDatabaseWithParams", ctx, args)}
 }
 

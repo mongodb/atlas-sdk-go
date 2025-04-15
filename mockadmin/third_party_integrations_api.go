@@ -53,7 +53,7 @@ type ThirdPartyIntegrationsApi_CreateThirdPartyIntegration_Call struct {
 //   - integrationType string
 //   - groupId string
 //   - thirdPartyIntegration *admin.ThirdPartyIntegration
-func (_e *ThirdPartyIntegrationsApi_Expecter) CreateThirdPartyIntegration(ctx interface{}, integrationType interface{}, groupId interface{}, thirdPartyIntegration interface{}) *ThirdPartyIntegrationsApi_CreateThirdPartyIntegration_Call {
+func (_e *ThirdPartyIntegrationsApi_Expecter) CreateThirdPartyIntegration(ctx any, integrationType any, groupId any, thirdPartyIntegration any) *ThirdPartyIntegrationsApi_CreateThirdPartyIntegration_Call {
 	return &ThirdPartyIntegrationsApi_CreateThirdPartyIntegration_Call{Call: _e.mock.On("CreateThirdPartyIntegration", ctx, integrationType, groupId, thirdPartyIntegration)}
 }
 
@@ -120,7 +120,7 @@ type ThirdPartyIntegrationsApi_CreateThirdPartyIntegrationExecute_Call struct {
 
 // CreateThirdPartyIntegrationExecute is a helper method to define mock.On call
 //   - r admin.CreateThirdPartyIntegrationApiRequest
-func (_e *ThirdPartyIntegrationsApi_Expecter) CreateThirdPartyIntegrationExecute(r interface{}) *ThirdPartyIntegrationsApi_CreateThirdPartyIntegrationExecute_Call {
+func (_e *ThirdPartyIntegrationsApi_Expecter) CreateThirdPartyIntegrationExecute(r any) *ThirdPartyIntegrationsApi_CreateThirdPartyIntegrationExecute_Call {
 	return &ThirdPartyIntegrationsApi_CreateThirdPartyIntegrationExecute_Call{Call: _e.mock.On("CreateThirdPartyIntegrationExecute", r)}
 }
 
@@ -167,7 +167,7 @@ type ThirdPartyIntegrationsApi_CreateThirdPartyIntegrationWithParams_Call struct
 // CreateThirdPartyIntegrationWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.CreateThirdPartyIntegrationApiParams
-func (_e *ThirdPartyIntegrationsApi_Expecter) CreateThirdPartyIntegrationWithParams(ctx interface{}, args interface{}) *ThirdPartyIntegrationsApi_CreateThirdPartyIntegrationWithParams_Call {
+func (_e *ThirdPartyIntegrationsApi_Expecter) CreateThirdPartyIntegrationWithParams(ctx any, args any) *ThirdPartyIntegrationsApi_CreateThirdPartyIntegrationWithParams_Call {
 	return &ThirdPartyIntegrationsApi_CreateThirdPartyIntegrationWithParams_Call{Call: _e.mock.On("CreateThirdPartyIntegrationWithParams", ctx, args)}
 }
 
@@ -215,7 +215,7 @@ type ThirdPartyIntegrationsApi_DeleteThirdPartyIntegration_Call struct {
 //   - ctx context.Context
 //   - integrationType string
 //   - groupId string
-func (_e *ThirdPartyIntegrationsApi_Expecter) DeleteThirdPartyIntegration(ctx interface{}, integrationType interface{}, groupId interface{}) *ThirdPartyIntegrationsApi_DeleteThirdPartyIntegration_Call {
+func (_e *ThirdPartyIntegrationsApi_Expecter) DeleteThirdPartyIntegration(ctx any, integrationType any, groupId any) *ThirdPartyIntegrationsApi_DeleteThirdPartyIntegration_Call {
 	return &ThirdPartyIntegrationsApi_DeleteThirdPartyIntegration_Call{Call: _e.mock.On("DeleteThirdPartyIntegration", ctx, integrationType, groupId)}
 }
 
@@ -237,42 +237,33 @@ func (_c *ThirdPartyIntegrationsApi_DeleteThirdPartyIntegration_Call) RunAndRetu
 }
 
 // DeleteThirdPartyIntegrationExecute provides a mock function with given fields: r
-func (_m *ThirdPartyIntegrationsApi) DeleteThirdPartyIntegrationExecute(r admin.DeleteThirdPartyIntegrationApiRequest) (map[string]interface{}, *http.Response, error) {
+func (_m *ThirdPartyIntegrationsApi) DeleteThirdPartyIntegrationExecute(r admin.DeleteThirdPartyIntegrationApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteThirdPartyIntegrationExecute")
 	}
 
-	var r0 map[string]interface{}
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteThirdPartyIntegrationApiRequest) (map[string]interface{}, *http.Response, error)); ok {
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.DeleteThirdPartyIntegrationApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteThirdPartyIntegrationApiRequest) map[string]interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteThirdPartyIntegrationApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(map[string]interface{})
+			r0 = ret.Get(0).(*http.Response)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeleteThirdPartyIntegrationApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.DeleteThirdPartyIntegrationApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
+		r1 = ret.Error(1)
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.DeleteThirdPartyIntegrationApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
+	return r0, r1
 }
 
 // ThirdPartyIntegrationsApi_DeleteThirdPartyIntegrationExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteThirdPartyIntegrationExecute'
@@ -282,7 +273,7 @@ type ThirdPartyIntegrationsApi_DeleteThirdPartyIntegrationExecute_Call struct {
 
 // DeleteThirdPartyIntegrationExecute is a helper method to define mock.On call
 //   - r admin.DeleteThirdPartyIntegrationApiRequest
-func (_e *ThirdPartyIntegrationsApi_Expecter) DeleteThirdPartyIntegrationExecute(r interface{}) *ThirdPartyIntegrationsApi_DeleteThirdPartyIntegrationExecute_Call {
+func (_e *ThirdPartyIntegrationsApi_Expecter) DeleteThirdPartyIntegrationExecute(r any) *ThirdPartyIntegrationsApi_DeleteThirdPartyIntegrationExecute_Call {
 	return &ThirdPartyIntegrationsApi_DeleteThirdPartyIntegrationExecute_Call{Call: _e.mock.On("DeleteThirdPartyIntegrationExecute", r)}
 }
 
@@ -293,12 +284,12 @@ func (_c *ThirdPartyIntegrationsApi_DeleteThirdPartyIntegrationExecute_Call) Run
 	return _c
 }
 
-func (_c *ThirdPartyIntegrationsApi_DeleteThirdPartyIntegrationExecute_Call) Return(_a0 map[string]interface{}, _a1 *http.Response, _a2 error) *ThirdPartyIntegrationsApi_DeleteThirdPartyIntegrationExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
+func (_c *ThirdPartyIntegrationsApi_DeleteThirdPartyIntegrationExecute_Call) Return(_a0 *http.Response, _a1 error) *ThirdPartyIntegrationsApi_DeleteThirdPartyIntegrationExecute_Call {
+	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *ThirdPartyIntegrationsApi_DeleteThirdPartyIntegrationExecute_Call) RunAndReturn(run func(admin.DeleteThirdPartyIntegrationApiRequest) (map[string]interface{}, *http.Response, error)) *ThirdPartyIntegrationsApi_DeleteThirdPartyIntegrationExecute_Call {
+func (_c *ThirdPartyIntegrationsApi_DeleteThirdPartyIntegrationExecute_Call) RunAndReturn(run func(admin.DeleteThirdPartyIntegrationApiRequest) (*http.Response, error)) *ThirdPartyIntegrationsApi_DeleteThirdPartyIntegrationExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -329,7 +320,7 @@ type ThirdPartyIntegrationsApi_DeleteThirdPartyIntegrationWithParams_Call struct
 // DeleteThirdPartyIntegrationWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.DeleteThirdPartyIntegrationApiParams
-func (_e *ThirdPartyIntegrationsApi_Expecter) DeleteThirdPartyIntegrationWithParams(ctx interface{}, args interface{}) *ThirdPartyIntegrationsApi_DeleteThirdPartyIntegrationWithParams_Call {
+func (_e *ThirdPartyIntegrationsApi_Expecter) DeleteThirdPartyIntegrationWithParams(ctx any, args any) *ThirdPartyIntegrationsApi_DeleteThirdPartyIntegrationWithParams_Call {
 	return &ThirdPartyIntegrationsApi_DeleteThirdPartyIntegrationWithParams_Call{Call: _e.mock.On("DeleteThirdPartyIntegrationWithParams", ctx, args)}
 }
 
@@ -377,7 +368,7 @@ type ThirdPartyIntegrationsApi_GetThirdPartyIntegration_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - integrationType string
-func (_e *ThirdPartyIntegrationsApi_Expecter) GetThirdPartyIntegration(ctx interface{}, groupId interface{}, integrationType interface{}) *ThirdPartyIntegrationsApi_GetThirdPartyIntegration_Call {
+func (_e *ThirdPartyIntegrationsApi_Expecter) GetThirdPartyIntegration(ctx any, groupId any, integrationType any) *ThirdPartyIntegrationsApi_GetThirdPartyIntegration_Call {
 	return &ThirdPartyIntegrationsApi_GetThirdPartyIntegration_Call{Call: _e.mock.On("GetThirdPartyIntegration", ctx, groupId, integrationType)}
 }
 
@@ -444,7 +435,7 @@ type ThirdPartyIntegrationsApi_GetThirdPartyIntegrationExecute_Call struct {
 
 // GetThirdPartyIntegrationExecute is a helper method to define mock.On call
 //   - r admin.GetThirdPartyIntegrationApiRequest
-func (_e *ThirdPartyIntegrationsApi_Expecter) GetThirdPartyIntegrationExecute(r interface{}) *ThirdPartyIntegrationsApi_GetThirdPartyIntegrationExecute_Call {
+func (_e *ThirdPartyIntegrationsApi_Expecter) GetThirdPartyIntegrationExecute(r any) *ThirdPartyIntegrationsApi_GetThirdPartyIntegrationExecute_Call {
 	return &ThirdPartyIntegrationsApi_GetThirdPartyIntegrationExecute_Call{Call: _e.mock.On("GetThirdPartyIntegrationExecute", r)}
 }
 
@@ -491,7 +482,7 @@ type ThirdPartyIntegrationsApi_GetThirdPartyIntegrationWithParams_Call struct {
 // GetThirdPartyIntegrationWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetThirdPartyIntegrationApiParams
-func (_e *ThirdPartyIntegrationsApi_Expecter) GetThirdPartyIntegrationWithParams(ctx interface{}, args interface{}) *ThirdPartyIntegrationsApi_GetThirdPartyIntegrationWithParams_Call {
+func (_e *ThirdPartyIntegrationsApi_Expecter) GetThirdPartyIntegrationWithParams(ctx any, args any) *ThirdPartyIntegrationsApi_GetThirdPartyIntegrationWithParams_Call {
 	return &ThirdPartyIntegrationsApi_GetThirdPartyIntegrationWithParams_Call{Call: _e.mock.On("GetThirdPartyIntegrationWithParams", ctx, args)}
 }
 
@@ -538,7 +529,7 @@ type ThirdPartyIntegrationsApi_ListThirdPartyIntegrations_Call struct {
 // ListThirdPartyIntegrations is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *ThirdPartyIntegrationsApi_Expecter) ListThirdPartyIntegrations(ctx interface{}, groupId interface{}) *ThirdPartyIntegrationsApi_ListThirdPartyIntegrations_Call {
+func (_e *ThirdPartyIntegrationsApi_Expecter) ListThirdPartyIntegrations(ctx any, groupId any) *ThirdPartyIntegrationsApi_ListThirdPartyIntegrations_Call {
 	return &ThirdPartyIntegrationsApi_ListThirdPartyIntegrations_Call{Call: _e.mock.On("ListThirdPartyIntegrations", ctx, groupId)}
 }
 
@@ -605,7 +596,7 @@ type ThirdPartyIntegrationsApi_ListThirdPartyIntegrationsExecute_Call struct {
 
 // ListThirdPartyIntegrationsExecute is a helper method to define mock.On call
 //   - r admin.ListThirdPartyIntegrationsApiRequest
-func (_e *ThirdPartyIntegrationsApi_Expecter) ListThirdPartyIntegrationsExecute(r interface{}) *ThirdPartyIntegrationsApi_ListThirdPartyIntegrationsExecute_Call {
+func (_e *ThirdPartyIntegrationsApi_Expecter) ListThirdPartyIntegrationsExecute(r any) *ThirdPartyIntegrationsApi_ListThirdPartyIntegrationsExecute_Call {
 	return &ThirdPartyIntegrationsApi_ListThirdPartyIntegrationsExecute_Call{Call: _e.mock.On("ListThirdPartyIntegrationsExecute", r)}
 }
 
@@ -652,7 +643,7 @@ type ThirdPartyIntegrationsApi_ListThirdPartyIntegrationsWithParams_Call struct 
 // ListThirdPartyIntegrationsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListThirdPartyIntegrationsApiParams
-func (_e *ThirdPartyIntegrationsApi_Expecter) ListThirdPartyIntegrationsWithParams(ctx interface{}, args interface{}) *ThirdPartyIntegrationsApi_ListThirdPartyIntegrationsWithParams_Call {
+func (_e *ThirdPartyIntegrationsApi_Expecter) ListThirdPartyIntegrationsWithParams(ctx any, args any) *ThirdPartyIntegrationsApi_ListThirdPartyIntegrationsWithParams_Call {
 	return &ThirdPartyIntegrationsApi_ListThirdPartyIntegrationsWithParams_Call{Call: _e.mock.On("ListThirdPartyIntegrationsWithParams", ctx, args)}
 }
 
@@ -701,7 +692,7 @@ type ThirdPartyIntegrationsApi_UpdateThirdPartyIntegration_Call struct {
 //   - integrationType string
 //   - groupId string
 //   - thirdPartyIntegration *admin.ThirdPartyIntegration
-func (_e *ThirdPartyIntegrationsApi_Expecter) UpdateThirdPartyIntegration(ctx interface{}, integrationType interface{}, groupId interface{}, thirdPartyIntegration interface{}) *ThirdPartyIntegrationsApi_UpdateThirdPartyIntegration_Call {
+func (_e *ThirdPartyIntegrationsApi_Expecter) UpdateThirdPartyIntegration(ctx any, integrationType any, groupId any, thirdPartyIntegration any) *ThirdPartyIntegrationsApi_UpdateThirdPartyIntegration_Call {
 	return &ThirdPartyIntegrationsApi_UpdateThirdPartyIntegration_Call{Call: _e.mock.On("UpdateThirdPartyIntegration", ctx, integrationType, groupId, thirdPartyIntegration)}
 }
 
@@ -768,7 +759,7 @@ type ThirdPartyIntegrationsApi_UpdateThirdPartyIntegrationExecute_Call struct {
 
 // UpdateThirdPartyIntegrationExecute is a helper method to define mock.On call
 //   - r admin.UpdateThirdPartyIntegrationApiRequest
-func (_e *ThirdPartyIntegrationsApi_Expecter) UpdateThirdPartyIntegrationExecute(r interface{}) *ThirdPartyIntegrationsApi_UpdateThirdPartyIntegrationExecute_Call {
+func (_e *ThirdPartyIntegrationsApi_Expecter) UpdateThirdPartyIntegrationExecute(r any) *ThirdPartyIntegrationsApi_UpdateThirdPartyIntegrationExecute_Call {
 	return &ThirdPartyIntegrationsApi_UpdateThirdPartyIntegrationExecute_Call{Call: _e.mock.On("UpdateThirdPartyIntegrationExecute", r)}
 }
 
@@ -815,7 +806,7 @@ type ThirdPartyIntegrationsApi_UpdateThirdPartyIntegrationWithParams_Call struct
 // UpdateThirdPartyIntegrationWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.UpdateThirdPartyIntegrationApiParams
-func (_e *ThirdPartyIntegrationsApi_Expecter) UpdateThirdPartyIntegrationWithParams(ctx interface{}, args interface{}) *ThirdPartyIntegrationsApi_UpdateThirdPartyIntegrationWithParams_Call {
+func (_e *ThirdPartyIntegrationsApi_Expecter) UpdateThirdPartyIntegrationWithParams(ctx any, args any) *ThirdPartyIntegrationsApi_UpdateThirdPartyIntegrationWithParams_Call {
 	return &ThirdPartyIntegrationsApi_UpdateThirdPartyIntegrationWithParams_Call{Call: _e.mock.On("UpdateThirdPartyIntegrationWithParams", ctx, args)}
 }
 

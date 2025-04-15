@@ -51,7 +51,7 @@ type AuditingApi_GetAuditingConfiguration_Call struct {
 // GetAuditingConfiguration is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *AuditingApi_Expecter) GetAuditingConfiguration(ctx interface{}, groupId interface{}) *AuditingApi_GetAuditingConfiguration_Call {
+func (_e *AuditingApi_Expecter) GetAuditingConfiguration(ctx any, groupId any) *AuditingApi_GetAuditingConfiguration_Call {
 	return &AuditingApi_GetAuditingConfiguration_Call{Call: _e.mock.On("GetAuditingConfiguration", ctx, groupId)}
 }
 
@@ -118,7 +118,7 @@ type AuditingApi_GetAuditingConfigurationExecute_Call struct {
 
 // GetAuditingConfigurationExecute is a helper method to define mock.On call
 //   - r admin.GetAuditingConfigurationApiRequest
-func (_e *AuditingApi_Expecter) GetAuditingConfigurationExecute(r interface{}) *AuditingApi_GetAuditingConfigurationExecute_Call {
+func (_e *AuditingApi_Expecter) GetAuditingConfigurationExecute(r any) *AuditingApi_GetAuditingConfigurationExecute_Call {
 	return &AuditingApi_GetAuditingConfigurationExecute_Call{Call: _e.mock.On("GetAuditingConfigurationExecute", r)}
 }
 
@@ -165,7 +165,7 @@ type AuditingApi_GetAuditingConfigurationWithParams_Call struct {
 // GetAuditingConfigurationWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetAuditingConfigurationApiParams
-func (_e *AuditingApi_Expecter) GetAuditingConfigurationWithParams(ctx interface{}, args interface{}) *AuditingApi_GetAuditingConfigurationWithParams_Call {
+func (_e *AuditingApi_Expecter) GetAuditingConfigurationWithParams(ctx any, args any) *AuditingApi_GetAuditingConfigurationWithParams_Call {
 	return &AuditingApi_GetAuditingConfigurationWithParams_Call{Call: _e.mock.On("GetAuditingConfigurationWithParams", ctx, args)}
 }
 
@@ -213,7 +213,7 @@ type AuditingApi_UpdateAuditingConfiguration_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - auditLog *admin.AuditLog
-func (_e *AuditingApi_Expecter) UpdateAuditingConfiguration(ctx interface{}, groupId interface{}, auditLog interface{}) *AuditingApi_UpdateAuditingConfiguration_Call {
+func (_e *AuditingApi_Expecter) UpdateAuditingConfiguration(ctx any, groupId any, auditLog any) *AuditingApi_UpdateAuditingConfiguration_Call {
 	return &AuditingApi_UpdateAuditingConfiguration_Call{Call: _e.mock.On("UpdateAuditingConfiguration", ctx, groupId, auditLog)}
 }
 
@@ -280,7 +280,7 @@ type AuditingApi_UpdateAuditingConfigurationExecute_Call struct {
 
 // UpdateAuditingConfigurationExecute is a helper method to define mock.On call
 //   - r admin.UpdateAuditingConfigurationApiRequest
-func (_e *AuditingApi_Expecter) UpdateAuditingConfigurationExecute(r interface{}) *AuditingApi_UpdateAuditingConfigurationExecute_Call {
+func (_e *AuditingApi_Expecter) UpdateAuditingConfigurationExecute(r any) *AuditingApi_UpdateAuditingConfigurationExecute_Call {
 	return &AuditingApi_UpdateAuditingConfigurationExecute_Call{Call: _e.mock.On("UpdateAuditingConfigurationExecute", r)}
 }
 
@@ -327,7 +327,7 @@ type AuditingApi_UpdateAuditingConfigurationWithParams_Call struct {
 // UpdateAuditingConfigurationWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.UpdateAuditingConfigurationApiParams
-func (_e *AuditingApi_Expecter) UpdateAuditingConfigurationWithParams(ctx interface{}, args interface{}) *AuditingApi_UpdateAuditingConfigurationWithParams_Call {
+func (_e *AuditingApi_Expecter) UpdateAuditingConfigurationWithParams(ctx any, args any) *AuditingApi_UpdateAuditingConfigurationWithParams_Call {
 	return &AuditingApi_UpdateAuditingConfigurationWithParams_Call{Call: _e.mock.On("UpdateAuditingConfigurationWithParams", ctx, args)}
 }
 

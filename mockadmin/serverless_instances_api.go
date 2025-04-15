@@ -52,7 +52,7 @@ type ServerlessInstancesApi_CreateServerlessInstance_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - serverlessInstanceDescriptionCreate *admin.ServerlessInstanceDescriptionCreate
-func (_e *ServerlessInstancesApi_Expecter) CreateServerlessInstance(ctx interface{}, groupId interface{}, serverlessInstanceDescriptionCreate interface{}) *ServerlessInstancesApi_CreateServerlessInstance_Call {
+func (_e *ServerlessInstancesApi_Expecter) CreateServerlessInstance(ctx any, groupId any, serverlessInstanceDescriptionCreate any) *ServerlessInstancesApi_CreateServerlessInstance_Call {
 	return &ServerlessInstancesApi_CreateServerlessInstance_Call{Call: _e.mock.On("CreateServerlessInstance", ctx, groupId, serverlessInstanceDescriptionCreate)}
 }
 
@@ -119,7 +119,7 @@ type ServerlessInstancesApi_CreateServerlessInstanceExecute_Call struct {
 
 // CreateServerlessInstanceExecute is a helper method to define mock.On call
 //   - r admin.CreateServerlessInstanceApiRequest
-func (_e *ServerlessInstancesApi_Expecter) CreateServerlessInstanceExecute(r interface{}) *ServerlessInstancesApi_CreateServerlessInstanceExecute_Call {
+func (_e *ServerlessInstancesApi_Expecter) CreateServerlessInstanceExecute(r any) *ServerlessInstancesApi_CreateServerlessInstanceExecute_Call {
 	return &ServerlessInstancesApi_CreateServerlessInstanceExecute_Call{Call: _e.mock.On("CreateServerlessInstanceExecute", r)}
 }
 
@@ -166,7 +166,7 @@ type ServerlessInstancesApi_CreateServerlessInstanceWithParams_Call struct {
 // CreateServerlessInstanceWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.CreateServerlessInstanceApiParams
-func (_e *ServerlessInstancesApi_Expecter) CreateServerlessInstanceWithParams(ctx interface{}, args interface{}) *ServerlessInstancesApi_CreateServerlessInstanceWithParams_Call {
+func (_e *ServerlessInstancesApi_Expecter) CreateServerlessInstanceWithParams(ctx any, args any) *ServerlessInstancesApi_CreateServerlessInstanceWithParams_Call {
 	return &ServerlessInstancesApi_CreateServerlessInstanceWithParams_Call{Call: _e.mock.On("CreateServerlessInstanceWithParams", ctx, args)}
 }
 
@@ -214,7 +214,7 @@ type ServerlessInstancesApi_DeleteServerlessInstance_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - name string
-func (_e *ServerlessInstancesApi_Expecter) DeleteServerlessInstance(ctx interface{}, groupId interface{}, name interface{}) *ServerlessInstancesApi_DeleteServerlessInstance_Call {
+func (_e *ServerlessInstancesApi_Expecter) DeleteServerlessInstance(ctx any, groupId any, name any) *ServerlessInstancesApi_DeleteServerlessInstance_Call {
 	return &ServerlessInstancesApi_DeleteServerlessInstance_Call{Call: _e.mock.On("DeleteServerlessInstance", ctx, groupId, name)}
 }
 
@@ -236,24 +236,24 @@ func (_c *ServerlessInstancesApi_DeleteServerlessInstance_Call) RunAndReturn(run
 }
 
 // DeleteServerlessInstanceExecute provides a mock function with given fields: r
-func (_m *ServerlessInstancesApi) DeleteServerlessInstanceExecute(r admin.DeleteServerlessInstanceApiRequest) (map[string]interface{}, *http.Response, error) {
+func (_m *ServerlessInstancesApi) DeleteServerlessInstanceExecute(r admin.DeleteServerlessInstanceApiRequest) (map[string]any, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteServerlessInstanceExecute")
 	}
 
-	var r0 map[string]interface{}
+	var r0 map[string]any
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteServerlessInstanceApiRequest) (map[string]interface{}, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteServerlessInstanceApiRequest) (map[string]any, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteServerlessInstanceApiRequest) map[string]interface{}); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteServerlessInstanceApiRequest) map[string]any); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(map[string]interface{})
+			r0 = ret.Get(0).(map[string]any)
 		}
 	}
 
@@ -281,7 +281,7 @@ type ServerlessInstancesApi_DeleteServerlessInstanceExecute_Call struct {
 
 // DeleteServerlessInstanceExecute is a helper method to define mock.On call
 //   - r admin.DeleteServerlessInstanceApiRequest
-func (_e *ServerlessInstancesApi_Expecter) DeleteServerlessInstanceExecute(r interface{}) *ServerlessInstancesApi_DeleteServerlessInstanceExecute_Call {
+func (_e *ServerlessInstancesApi_Expecter) DeleteServerlessInstanceExecute(r any) *ServerlessInstancesApi_DeleteServerlessInstanceExecute_Call {
 	return &ServerlessInstancesApi_DeleteServerlessInstanceExecute_Call{Call: _e.mock.On("DeleteServerlessInstanceExecute", r)}
 }
 
@@ -292,12 +292,12 @@ func (_c *ServerlessInstancesApi_DeleteServerlessInstanceExecute_Call) Run(run f
 	return _c
 }
 
-func (_c *ServerlessInstancesApi_DeleteServerlessInstanceExecute_Call) Return(_a0 map[string]interface{}, _a1 *http.Response, _a2 error) *ServerlessInstancesApi_DeleteServerlessInstanceExecute_Call {
+func (_c *ServerlessInstancesApi_DeleteServerlessInstanceExecute_Call) Return(_a0 map[string]any, _a1 *http.Response, _a2 error) *ServerlessInstancesApi_DeleteServerlessInstanceExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ServerlessInstancesApi_DeleteServerlessInstanceExecute_Call) RunAndReturn(run func(admin.DeleteServerlessInstanceApiRequest) (map[string]interface{}, *http.Response, error)) *ServerlessInstancesApi_DeleteServerlessInstanceExecute_Call {
+func (_c *ServerlessInstancesApi_DeleteServerlessInstanceExecute_Call) RunAndReturn(run func(admin.DeleteServerlessInstanceApiRequest) (map[string]any, *http.Response, error)) *ServerlessInstancesApi_DeleteServerlessInstanceExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -328,7 +328,7 @@ type ServerlessInstancesApi_DeleteServerlessInstanceWithParams_Call struct {
 // DeleteServerlessInstanceWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.DeleteServerlessInstanceApiParams
-func (_e *ServerlessInstancesApi_Expecter) DeleteServerlessInstanceWithParams(ctx interface{}, args interface{}) *ServerlessInstancesApi_DeleteServerlessInstanceWithParams_Call {
+func (_e *ServerlessInstancesApi_Expecter) DeleteServerlessInstanceWithParams(ctx any, args any) *ServerlessInstancesApi_DeleteServerlessInstanceWithParams_Call {
 	return &ServerlessInstancesApi_DeleteServerlessInstanceWithParams_Call{Call: _e.mock.On("DeleteServerlessInstanceWithParams", ctx, args)}
 }
 
@@ -376,7 +376,7 @@ type ServerlessInstancesApi_GetServerlessInstance_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - name string
-func (_e *ServerlessInstancesApi_Expecter) GetServerlessInstance(ctx interface{}, groupId interface{}, name interface{}) *ServerlessInstancesApi_GetServerlessInstance_Call {
+func (_e *ServerlessInstancesApi_Expecter) GetServerlessInstance(ctx any, groupId any, name any) *ServerlessInstancesApi_GetServerlessInstance_Call {
 	return &ServerlessInstancesApi_GetServerlessInstance_Call{Call: _e.mock.On("GetServerlessInstance", ctx, groupId, name)}
 }
 
@@ -443,7 +443,7 @@ type ServerlessInstancesApi_GetServerlessInstanceExecute_Call struct {
 
 // GetServerlessInstanceExecute is a helper method to define mock.On call
 //   - r admin.GetServerlessInstanceApiRequest
-func (_e *ServerlessInstancesApi_Expecter) GetServerlessInstanceExecute(r interface{}) *ServerlessInstancesApi_GetServerlessInstanceExecute_Call {
+func (_e *ServerlessInstancesApi_Expecter) GetServerlessInstanceExecute(r any) *ServerlessInstancesApi_GetServerlessInstanceExecute_Call {
 	return &ServerlessInstancesApi_GetServerlessInstanceExecute_Call{Call: _e.mock.On("GetServerlessInstanceExecute", r)}
 }
 
@@ -490,7 +490,7 @@ type ServerlessInstancesApi_GetServerlessInstanceWithParams_Call struct {
 // GetServerlessInstanceWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetServerlessInstanceApiParams
-func (_e *ServerlessInstancesApi_Expecter) GetServerlessInstanceWithParams(ctx interface{}, args interface{}) *ServerlessInstancesApi_GetServerlessInstanceWithParams_Call {
+func (_e *ServerlessInstancesApi_Expecter) GetServerlessInstanceWithParams(ctx any, args any) *ServerlessInstancesApi_GetServerlessInstanceWithParams_Call {
 	return &ServerlessInstancesApi_GetServerlessInstanceWithParams_Call{Call: _e.mock.On("GetServerlessInstanceWithParams", ctx, args)}
 }
 
@@ -537,7 +537,7 @@ type ServerlessInstancesApi_ListServerlessInstances_Call struct {
 // ListServerlessInstances is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-func (_e *ServerlessInstancesApi_Expecter) ListServerlessInstances(ctx interface{}, groupId interface{}) *ServerlessInstancesApi_ListServerlessInstances_Call {
+func (_e *ServerlessInstancesApi_Expecter) ListServerlessInstances(ctx any, groupId any) *ServerlessInstancesApi_ListServerlessInstances_Call {
 	return &ServerlessInstancesApi_ListServerlessInstances_Call{Call: _e.mock.On("ListServerlessInstances", ctx, groupId)}
 }
 
@@ -604,7 +604,7 @@ type ServerlessInstancesApi_ListServerlessInstancesExecute_Call struct {
 
 // ListServerlessInstancesExecute is a helper method to define mock.On call
 //   - r admin.ListServerlessInstancesApiRequest
-func (_e *ServerlessInstancesApi_Expecter) ListServerlessInstancesExecute(r interface{}) *ServerlessInstancesApi_ListServerlessInstancesExecute_Call {
+func (_e *ServerlessInstancesApi_Expecter) ListServerlessInstancesExecute(r any) *ServerlessInstancesApi_ListServerlessInstancesExecute_Call {
 	return &ServerlessInstancesApi_ListServerlessInstancesExecute_Call{Call: _e.mock.On("ListServerlessInstancesExecute", r)}
 }
 
@@ -651,7 +651,7 @@ type ServerlessInstancesApi_ListServerlessInstancesWithParams_Call struct {
 // ListServerlessInstancesWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.ListServerlessInstancesApiParams
-func (_e *ServerlessInstancesApi_Expecter) ListServerlessInstancesWithParams(ctx interface{}, args interface{}) *ServerlessInstancesApi_ListServerlessInstancesWithParams_Call {
+func (_e *ServerlessInstancesApi_Expecter) ListServerlessInstancesWithParams(ctx any, args any) *ServerlessInstancesApi_ListServerlessInstancesWithParams_Call {
 	return &ServerlessInstancesApi_ListServerlessInstancesWithParams_Call{Call: _e.mock.On("ListServerlessInstancesWithParams", ctx, args)}
 }
 
@@ -700,7 +700,7 @@ type ServerlessInstancesApi_UpdateServerlessInstance_Call struct {
 //   - groupId string
 //   - name string
 //   - serverlessInstanceDescriptionUpdate *admin.ServerlessInstanceDescriptionUpdate
-func (_e *ServerlessInstancesApi_Expecter) UpdateServerlessInstance(ctx interface{}, groupId interface{}, name interface{}, serverlessInstanceDescriptionUpdate interface{}) *ServerlessInstancesApi_UpdateServerlessInstance_Call {
+func (_e *ServerlessInstancesApi_Expecter) UpdateServerlessInstance(ctx any, groupId any, name any, serverlessInstanceDescriptionUpdate any) *ServerlessInstancesApi_UpdateServerlessInstance_Call {
 	return &ServerlessInstancesApi_UpdateServerlessInstance_Call{Call: _e.mock.On("UpdateServerlessInstance", ctx, groupId, name, serverlessInstanceDescriptionUpdate)}
 }
 
@@ -767,7 +767,7 @@ type ServerlessInstancesApi_UpdateServerlessInstanceExecute_Call struct {
 
 // UpdateServerlessInstanceExecute is a helper method to define mock.On call
 //   - r admin.UpdateServerlessInstanceApiRequest
-func (_e *ServerlessInstancesApi_Expecter) UpdateServerlessInstanceExecute(r interface{}) *ServerlessInstancesApi_UpdateServerlessInstanceExecute_Call {
+func (_e *ServerlessInstancesApi_Expecter) UpdateServerlessInstanceExecute(r any) *ServerlessInstancesApi_UpdateServerlessInstanceExecute_Call {
 	return &ServerlessInstancesApi_UpdateServerlessInstanceExecute_Call{Call: _e.mock.On("UpdateServerlessInstanceExecute", r)}
 }
 
@@ -814,7 +814,7 @@ type ServerlessInstancesApi_UpdateServerlessInstanceWithParams_Call struct {
 // UpdateServerlessInstanceWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.UpdateServerlessInstanceApiParams
-func (_e *ServerlessInstancesApi_Expecter) UpdateServerlessInstanceWithParams(ctx interface{}, args interface{}) *ServerlessInstancesApi_UpdateServerlessInstanceWithParams_Call {
+func (_e *ServerlessInstancesApi_Expecter) UpdateServerlessInstanceWithParams(ctx any, args any) *ServerlessInstancesApi_UpdateServerlessInstanceWithParams_Call {
 	return &ServerlessInstancesApi_UpdateServerlessInstanceWithParams_Call{Call: _e.mock.On("UpdateServerlessInstanceWithParams", ctx, args)}
 }
 

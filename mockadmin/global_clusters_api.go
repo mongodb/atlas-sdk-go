@@ -53,7 +53,7 @@ type GlobalClustersApi_CreateCustomZoneMapping_Call struct {
 //   - groupId string
 //   - clusterName string
 //   - customZoneMappings *admin.CustomZoneMappings
-func (_e *GlobalClustersApi_Expecter) CreateCustomZoneMapping(ctx interface{}, groupId interface{}, clusterName interface{}, customZoneMappings interface{}) *GlobalClustersApi_CreateCustomZoneMapping_Call {
+func (_e *GlobalClustersApi_Expecter) CreateCustomZoneMapping(ctx any, groupId any, clusterName any, customZoneMappings any) *GlobalClustersApi_CreateCustomZoneMapping_Call {
 	return &GlobalClustersApi_CreateCustomZoneMapping_Call{Call: _e.mock.On("CreateCustomZoneMapping", ctx, groupId, clusterName, customZoneMappings)}
 }
 
@@ -120,7 +120,7 @@ type GlobalClustersApi_CreateCustomZoneMappingExecute_Call struct {
 
 // CreateCustomZoneMappingExecute is a helper method to define mock.On call
 //   - r admin.CreateCustomZoneMappingApiRequest
-func (_e *GlobalClustersApi_Expecter) CreateCustomZoneMappingExecute(r interface{}) *GlobalClustersApi_CreateCustomZoneMappingExecute_Call {
+func (_e *GlobalClustersApi_Expecter) CreateCustomZoneMappingExecute(r any) *GlobalClustersApi_CreateCustomZoneMappingExecute_Call {
 	return &GlobalClustersApi_CreateCustomZoneMappingExecute_Call{Call: _e.mock.On("CreateCustomZoneMappingExecute", r)}
 }
 
@@ -167,7 +167,7 @@ type GlobalClustersApi_CreateCustomZoneMappingWithParams_Call struct {
 // CreateCustomZoneMappingWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.CreateCustomZoneMappingApiParams
-func (_e *GlobalClustersApi_Expecter) CreateCustomZoneMappingWithParams(ctx interface{}, args interface{}) *GlobalClustersApi_CreateCustomZoneMappingWithParams_Call {
+func (_e *GlobalClustersApi_Expecter) CreateCustomZoneMappingWithParams(ctx any, args any) *GlobalClustersApi_CreateCustomZoneMappingWithParams_Call {
 	return &GlobalClustersApi_CreateCustomZoneMappingWithParams_Call{Call: _e.mock.On("CreateCustomZoneMappingWithParams", ctx, args)}
 }
 
@@ -188,17 +188,17 @@ func (_c *GlobalClustersApi_CreateCustomZoneMappingWithParams_Call) RunAndReturn
 	return _c
 }
 
-// CreateManagedNamespace provides a mock function with given fields: ctx, groupId, clusterName, managedNamespace
-func (_m *GlobalClustersApi) CreateManagedNamespace(ctx context.Context, groupId string, clusterName string, managedNamespace *admin.ManagedNamespace) admin.CreateManagedNamespaceApiRequest {
-	ret := _m.Called(ctx, groupId, clusterName, managedNamespace)
+// CreateManagedNamespace provides a mock function with given fields: ctx, groupId, clusterName, managedNamespaces
+func (_m *GlobalClustersApi) CreateManagedNamespace(ctx context.Context, groupId string, clusterName string, managedNamespaces *admin.ManagedNamespaces) admin.CreateManagedNamespaceApiRequest {
+	ret := _m.Called(ctx, groupId, clusterName, managedNamespaces)
 
 	if len(ret) == 0 {
 		panic("no return value specified for CreateManagedNamespace")
 	}
 
 	var r0 admin.CreateManagedNamespaceApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.ManagedNamespace) admin.CreateManagedNamespaceApiRequest); ok {
-		r0 = rf(ctx, groupId, clusterName, managedNamespace)
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.ManagedNamespaces) admin.CreateManagedNamespaceApiRequest); ok {
+		r0 = rf(ctx, groupId, clusterName, managedNamespaces)
 	} else {
 		r0 = ret.Get(0).(admin.CreateManagedNamespaceApiRequest)
 	}
@@ -215,14 +215,14 @@ type GlobalClustersApi_CreateManagedNamespace_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
-//   - managedNamespace *admin.ManagedNamespace
-func (_e *GlobalClustersApi_Expecter) CreateManagedNamespace(ctx interface{}, groupId interface{}, clusterName interface{}, managedNamespace interface{}) *GlobalClustersApi_CreateManagedNamespace_Call {
-	return &GlobalClustersApi_CreateManagedNamespace_Call{Call: _e.mock.On("CreateManagedNamespace", ctx, groupId, clusterName, managedNamespace)}
+//   - managedNamespaces *admin.ManagedNamespaces
+func (_e *GlobalClustersApi_Expecter) CreateManagedNamespace(ctx any, groupId any, clusterName any, managedNamespaces any) *GlobalClustersApi_CreateManagedNamespace_Call {
+	return &GlobalClustersApi_CreateManagedNamespace_Call{Call: _e.mock.On("CreateManagedNamespace", ctx, groupId, clusterName, managedNamespaces)}
 }
 
-func (_c *GlobalClustersApi_CreateManagedNamespace_Call) Run(run func(ctx context.Context, groupId string, clusterName string, managedNamespace *admin.ManagedNamespace)) *GlobalClustersApi_CreateManagedNamespace_Call {
+func (_c *GlobalClustersApi_CreateManagedNamespace_Call) Run(run func(ctx context.Context, groupId string, clusterName string, managedNamespaces *admin.ManagedNamespaces)) *GlobalClustersApi_CreateManagedNamespace_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.ManagedNamespace))
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.ManagedNamespaces))
 	})
 	return _c
 }
@@ -232,7 +232,7 @@ func (_c *GlobalClustersApi_CreateManagedNamespace_Call) Return(_a0 admin.Create
 	return _c
 }
 
-func (_c *GlobalClustersApi_CreateManagedNamespace_Call) RunAndReturn(run func(context.Context, string, string, *admin.ManagedNamespace) admin.CreateManagedNamespaceApiRequest) *GlobalClustersApi_CreateManagedNamespace_Call {
+func (_c *GlobalClustersApi_CreateManagedNamespace_Call) RunAndReturn(run func(context.Context, string, string, *admin.ManagedNamespaces) admin.CreateManagedNamespaceApiRequest) *GlobalClustersApi_CreateManagedNamespace_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -283,7 +283,7 @@ type GlobalClustersApi_CreateManagedNamespaceExecute_Call struct {
 
 // CreateManagedNamespaceExecute is a helper method to define mock.On call
 //   - r admin.CreateManagedNamespaceApiRequest
-func (_e *GlobalClustersApi_Expecter) CreateManagedNamespaceExecute(r interface{}) *GlobalClustersApi_CreateManagedNamespaceExecute_Call {
+func (_e *GlobalClustersApi_Expecter) CreateManagedNamespaceExecute(r any) *GlobalClustersApi_CreateManagedNamespaceExecute_Call {
 	return &GlobalClustersApi_CreateManagedNamespaceExecute_Call{Call: _e.mock.On("CreateManagedNamespaceExecute", r)}
 }
 
@@ -330,7 +330,7 @@ type GlobalClustersApi_CreateManagedNamespaceWithParams_Call struct {
 // CreateManagedNamespaceWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.CreateManagedNamespaceApiParams
-func (_e *GlobalClustersApi_Expecter) CreateManagedNamespaceWithParams(ctx interface{}, args interface{}) *GlobalClustersApi_CreateManagedNamespaceWithParams_Call {
+func (_e *GlobalClustersApi_Expecter) CreateManagedNamespaceWithParams(ctx any, args any) *GlobalClustersApi_CreateManagedNamespaceWithParams_Call {
 	return &GlobalClustersApi_CreateManagedNamespaceWithParams_Call{Call: _e.mock.On("CreateManagedNamespaceWithParams", ctx, args)}
 }
 
@@ -378,7 +378,7 @@ type GlobalClustersApi_DeleteAllCustomZoneMappings_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
-func (_e *GlobalClustersApi_Expecter) DeleteAllCustomZoneMappings(ctx interface{}, groupId interface{}, clusterName interface{}) *GlobalClustersApi_DeleteAllCustomZoneMappings_Call {
+func (_e *GlobalClustersApi_Expecter) DeleteAllCustomZoneMappings(ctx any, groupId any, clusterName any) *GlobalClustersApi_DeleteAllCustomZoneMappings_Call {
 	return &GlobalClustersApi_DeleteAllCustomZoneMappings_Call{Call: _e.mock.On("DeleteAllCustomZoneMappings", ctx, groupId, clusterName)}
 }
 
@@ -445,7 +445,7 @@ type GlobalClustersApi_DeleteAllCustomZoneMappingsExecute_Call struct {
 
 // DeleteAllCustomZoneMappingsExecute is a helper method to define mock.On call
 //   - r admin.DeleteAllCustomZoneMappingsApiRequest
-func (_e *GlobalClustersApi_Expecter) DeleteAllCustomZoneMappingsExecute(r interface{}) *GlobalClustersApi_DeleteAllCustomZoneMappingsExecute_Call {
+func (_e *GlobalClustersApi_Expecter) DeleteAllCustomZoneMappingsExecute(r any) *GlobalClustersApi_DeleteAllCustomZoneMappingsExecute_Call {
 	return &GlobalClustersApi_DeleteAllCustomZoneMappingsExecute_Call{Call: _e.mock.On("DeleteAllCustomZoneMappingsExecute", r)}
 }
 
@@ -492,7 +492,7 @@ type GlobalClustersApi_DeleteAllCustomZoneMappingsWithParams_Call struct {
 // DeleteAllCustomZoneMappingsWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.DeleteAllCustomZoneMappingsApiParams
-func (_e *GlobalClustersApi_Expecter) DeleteAllCustomZoneMappingsWithParams(ctx interface{}, args interface{}) *GlobalClustersApi_DeleteAllCustomZoneMappingsWithParams_Call {
+func (_e *GlobalClustersApi_Expecter) DeleteAllCustomZoneMappingsWithParams(ctx any, args any) *GlobalClustersApi_DeleteAllCustomZoneMappingsWithParams_Call {
 	return &GlobalClustersApi_DeleteAllCustomZoneMappingsWithParams_Call{Call: _e.mock.On("DeleteAllCustomZoneMappingsWithParams", ctx, args)}
 }
 
@@ -540,7 +540,7 @@ type GlobalClustersApi_DeleteManagedNamespace_Call struct {
 //   - ctx context.Context
 //   - clusterName string
 //   - groupId string
-func (_e *GlobalClustersApi_Expecter) DeleteManagedNamespace(ctx interface{}, clusterName interface{}, groupId interface{}) *GlobalClustersApi_DeleteManagedNamespace_Call {
+func (_e *GlobalClustersApi_Expecter) DeleteManagedNamespace(ctx any, clusterName any, groupId any) *GlobalClustersApi_DeleteManagedNamespace_Call {
 	return &GlobalClustersApi_DeleteManagedNamespace_Call{Call: _e.mock.On("DeleteManagedNamespace", ctx, clusterName, groupId)}
 }
 
@@ -607,7 +607,7 @@ type GlobalClustersApi_DeleteManagedNamespaceExecute_Call struct {
 
 // DeleteManagedNamespaceExecute is a helper method to define mock.On call
 //   - r admin.DeleteManagedNamespaceApiRequest
-func (_e *GlobalClustersApi_Expecter) DeleteManagedNamespaceExecute(r interface{}) *GlobalClustersApi_DeleteManagedNamespaceExecute_Call {
+func (_e *GlobalClustersApi_Expecter) DeleteManagedNamespaceExecute(r any) *GlobalClustersApi_DeleteManagedNamespaceExecute_Call {
 	return &GlobalClustersApi_DeleteManagedNamespaceExecute_Call{Call: _e.mock.On("DeleteManagedNamespaceExecute", r)}
 }
 
@@ -654,7 +654,7 @@ type GlobalClustersApi_DeleteManagedNamespaceWithParams_Call struct {
 // DeleteManagedNamespaceWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.DeleteManagedNamespaceApiParams
-func (_e *GlobalClustersApi_Expecter) DeleteManagedNamespaceWithParams(ctx interface{}, args interface{}) *GlobalClustersApi_DeleteManagedNamespaceWithParams_Call {
+func (_e *GlobalClustersApi_Expecter) DeleteManagedNamespaceWithParams(ctx any, args any) *GlobalClustersApi_DeleteManagedNamespaceWithParams_Call {
 	return &GlobalClustersApi_DeleteManagedNamespaceWithParams_Call{Call: _e.mock.On("DeleteManagedNamespaceWithParams", ctx, args)}
 }
 
@@ -702,7 +702,7 @@ type GlobalClustersApi_GetManagedNamespace_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
-func (_e *GlobalClustersApi_Expecter) GetManagedNamespace(ctx interface{}, groupId interface{}, clusterName interface{}) *GlobalClustersApi_GetManagedNamespace_Call {
+func (_e *GlobalClustersApi_Expecter) GetManagedNamespace(ctx any, groupId any, clusterName any) *GlobalClustersApi_GetManagedNamespace_Call {
 	return &GlobalClustersApi_GetManagedNamespace_Call{Call: _e.mock.On("GetManagedNamespace", ctx, groupId, clusterName)}
 }
 
@@ -769,7 +769,7 @@ type GlobalClustersApi_GetManagedNamespaceExecute_Call struct {
 
 // GetManagedNamespaceExecute is a helper method to define mock.On call
 //   - r admin.GetManagedNamespaceApiRequest
-func (_e *GlobalClustersApi_Expecter) GetManagedNamespaceExecute(r interface{}) *GlobalClustersApi_GetManagedNamespaceExecute_Call {
+func (_e *GlobalClustersApi_Expecter) GetManagedNamespaceExecute(r any) *GlobalClustersApi_GetManagedNamespaceExecute_Call {
 	return &GlobalClustersApi_GetManagedNamespaceExecute_Call{Call: _e.mock.On("GetManagedNamespaceExecute", r)}
 }
 
@@ -816,7 +816,7 @@ type GlobalClustersApi_GetManagedNamespaceWithParams_Call struct {
 // GetManagedNamespaceWithParams is a helper method to define mock.On call
 //   - ctx context.Context
 //   - args *admin.GetManagedNamespaceApiParams
-func (_e *GlobalClustersApi_Expecter) GetManagedNamespaceWithParams(ctx interface{}, args interface{}) *GlobalClustersApi_GetManagedNamespaceWithParams_Call {
+func (_e *GlobalClustersApi_Expecter) GetManagedNamespaceWithParams(ctx any, args any) *GlobalClustersApi_GetManagedNamespaceWithParams_Call {
 	return &GlobalClustersApi_GetManagedNamespaceWithParams_Call{Call: _e.mock.On("GetManagedNamespaceWithParams", ctx, args)}
 }
 
