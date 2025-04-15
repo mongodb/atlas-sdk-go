@@ -14,13 +14,13 @@ type LiveMigrationResponse struct {
 	// Replication lag between the source and destination clusters. Atlas returns this setting only during an active migration, before the cutover phase.
 	// Read only field.
 	LagTimeSeconds *int64 `json:"lagTimeSeconds,omitempty"`
-	// List of hosts running MongoDB Agents. These Agents can transfer your MongoDB data between one source and one target cluster.
+	// List of hosts running MongoDB Agents. These Agents can transfer your MongoDB data between one source and one destination cluster.
 	// Read only field.
 	MigrationHosts *[]string `json:"migrationHosts,omitempty"`
 	// Flag that indicates the migrated cluster can be cut over to MongoDB Atlas.
 	// Read only field.
 	ReadyForCutover *bool `json:"readyForCutover,omitempty"`
-	// Progress made in migrating one cluster to MongoDB Atlas.  | Status   | Explanation | |----------|-------------| | NEW      | Someone scheduled a local cluster migration to MongoDB Atlas. | | FAILED   | The cluster migration to MongoDB Atlas failed.                | | COMPLETE | The cluster migration to MongoDB Atlas succeeded.             | | EXPIRED  | MongoDB Atlas prepares to begin the cut over of the migrating cluster when source and target clusters have almost synchronized. If `\"readyForCutover\" : true`, this synchronization starts a timer of 120 hours. You can extend this timer. If the timer expires, MongoDB Atlas returns this status. | | WORKING  | The cluster migration to MongoDB Atlas is performing one of the following tasks:<ul><li>Preparing connections to source and target clusters</li><li>Replicating data from source to target</li><li>Verifying MongoDB Atlas connection settings</li><li>Stopping replication after the cut over</li></ul> |
+	// Progress made in migrating one cluster to MongoDB Atlas.  `NEW`: Someone scheduled a local cluster migration to MongoDB Atlas.  `FAILED`: The cluster migration to MongoDB Atlas failed.  `COMPLETE`: The cluster migration to MongoDB Atlas succeeded.  `EXPIRED`: MongoDB Atlas prepares to begin the cut over of the migrating cluster when source and destination clusters have almost synchronized. If `\"readyForCutover\" : true`, this synchronization starts a timer of 120 hours. You can extend this timer. If the timer expires, MongoDB Atlas returns this status.  `WORKING`: The cluster migration to MongoDB Atlas is performing one of the following tasks:  - Preparing connections to source and destination clusters. - Replicating data from source to destination. - Verifying MongoDB Atlas connection settings. - Stopping replication after the cut over.
 	// Read only field.
 	Status *string `json:"status,omitempty"`
 }

@@ -248,7 +248,7 @@ Name | Type | Description  | Notes
 
 ## DeletePeeringContainer
 
-> map[string]interface{} DeletePeeringContainer(ctx, groupId, containerId).Execute()
+> DeletePeeringContainer(ctx, groupId, containerId).Execute()
 
 Remove One Network Peering Container
 
@@ -275,14 +275,12 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     containerId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.NetworkPeeringApi.DeletePeeringContainer(context.Background(), groupId, containerId).Execute()
+    r, err := sdk.NetworkPeeringApi.DeletePeeringContainer(context.Background(), groupId, containerId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringApi.DeletePeeringContainer``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `DeletePeeringContainer`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `NetworkPeeringApi.DeletePeeringContainer`: %v\n", resp)
 }
 ```
 
@@ -307,7 +305,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -525,7 +523,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**containerId** | **string** | Unique 24-hexadecimal digit string that identifies the MongoDB Cloud network container that you want to remove. | 
+**containerId** | **string** | Unique 24-hexadecimal digit string that identifies the MongoDB Cloud network container. | 
 
 ### Other Parameters
 
@@ -582,8 +580,8 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     includeCount := true // bool |  (optional) (default to true)
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
     providerName := "providerName_example" // string |  (optional) (default to "AWS")
 
     resp, r, err := sdk.NetworkPeeringApi.ListPeeringConnections(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).ProviderName(providerName).Execute()
@@ -664,8 +662,8 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     providerName := "providerName_example" // string |  (default to "AWS")
     includeCount := true // bool |  (optional) (default to true)
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
 
     resp, r, err := sdk.NetworkPeeringApi.ListPeeringContainerByCloudProvider(context.Background(), groupId).ProviderName(providerName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
@@ -744,8 +742,8 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     includeCount := true // bool |  (optional) (default to true)
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
 
     resp, r, err := sdk.NetworkPeeringApi.ListPeeringContainers(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {

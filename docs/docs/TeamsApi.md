@@ -12,7 +12,6 @@ Method | HTTP request | Description
 [**GetTeamByName**](TeamsApi.md#GetTeamByName) | **Get** /api/atlas/v2/orgs/{orgId}/teams/byName/{teamName} | Return One Team using its Name
 [**ListOrganizationTeams**](TeamsApi.md#ListOrganizationTeams) | **Get** /api/atlas/v2/orgs/{orgId}/teams | Return All Teams in One Organization
 [**ListProjectTeams**](TeamsApi.md#ListProjectTeams) | **Get** /api/atlas/v2/groups/{groupId}/teams | Return All Teams in One Project
-[**ListTeamUsers**](TeamsApi.md#ListTeamUsers) | **Get** /api/atlas/v2/orgs/{orgId}/teams/{teamId}/users | Return All MongoDB Cloud Users Assigned to One Team
 [**RemoveProjectTeam**](TeamsApi.md#RemoveProjectTeam) | **Delete** /api/atlas/v2/groups/{groupId}/teams/{teamId} | Remove One Team from One Project
 [**RemoveTeamUser**](TeamsApi.md#RemoveTeamUser) | **Delete** /api/atlas/v2/orgs/{orgId}/teams/{teamId}/users/{userId} | Remove One MongoDB Cloud User from One Team
 [**RenameTeam**](TeamsApi.md#RenameTeam) | **Patch** /api/atlas/v2/orgs/{orgId}/teams/{teamId} | Rename One Team
@@ -200,7 +199,7 @@ func main() {
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
     orgId := "4888442a3354817a7320eb61" // string | 
-    team := *openapiclient.NewTeam("Name_example") // Team | 
+    team := *openapiclient.NewTeam("Name_example", []string{"Usernames_example"}) // Team | 
 
     resp, r, err := sdk.TeamsApi.CreateTeam(context.Background(), orgId, &team).Execute()
     if err != nil {
@@ -250,7 +249,7 @@ Name | Type | Description  | Notes
 
 ## DeleteTeam
 
-> map[string]interface{} DeleteTeam(ctx, orgId, teamId).Execute()
+> DeleteTeam(ctx, orgId, teamId).Execute()
 
 Remove One Team from One Organization
 
@@ -277,14 +276,12 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     teamId := "teamId_example" // string | 
 
-    resp, r, err := sdk.TeamsApi.DeleteTeam(context.Background(), orgId, teamId).Execute()
+    r, err := sdk.TeamsApi.DeleteTeam(context.Background(), orgId, teamId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.DeleteTeam``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `DeleteTeam`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.DeleteTeam`: %v\n", resp)
 }
 ```
 
@@ -309,7 +306,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -503,9 +500,9 @@ func main() {
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
     orgId := "4888442a3354817a7320eb61" // string | 
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
     includeCount := true // bool |  (optional) (default to true)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    pageNum := int(56) // int |  (optional) (default to 1)
 
     resp, r, err := sdk.TeamsApi.ListOrganizationTeams(context.Background(), orgId).ItemsPerPage(itemsPerPage).IncludeCount(includeCount).PageNum(pageNum).Execute()
     if err != nil {
@@ -583,8 +580,8 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     includeCount := true // bool |  (optional) (default to true)
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
 
     resp, r, err := sdk.TeamsApi.ListProjectTeams(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
@@ -620,86 +617,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**PaginatedTeamRole**](PaginatedTeamRole.md)
-
-### Authorization
-[DigestAuth](../README.md#Authentication)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-01-01+json, application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ListTeamUsers
-
-> PaginatedApiAppUser ListTeamUsers(ctx, orgId, teamId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
-
-Return All MongoDB Cloud Users Assigned to One Team
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-
-    "go.mongodb.org/atlas-sdk/v20231115014/admin"
-)
-
-func main() {
-    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
-    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
-
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
-
-    orgId := "4888442a3354817a7320eb61" // string | 
-    teamId := "teamId_example" // string | 
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
-
-    resp, r, err := sdk.TeamsApi.ListTeamUsers(context.Background(), orgId, teamId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.ListTeamUsers``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
-    }
-    // response from `ListTeamUsers`: PaginatedApiAppUser
-    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.ListTeamUsers`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
-**teamId** | **string** | Unique 24-hexadecimal digit string that identifies the team whose application users you want to return. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiListTeamUsersRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
- **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
- **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
-
-### Return type
-
-[**PaginatedApiAppUser**](PaginatedApiAppUser.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

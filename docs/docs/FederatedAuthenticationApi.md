@@ -862,8 +862,8 @@ func main() {
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
     federationSettingsId := "55fa922fb343282757d9554e" // string | 
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
 
     resp, r, err := sdk.FederatedAuthenticationApi.ListConnectedOrgConfigs(context.Background(), federationSettingsId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
@@ -944,8 +944,8 @@ func main() {
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
     federationSettingsId := "55fa922fb343282757d9554e" // string | 
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
     protocol := []string{"Inner_example"} // []string |  (optional)
     idpType := []string{"Inner_example"} // []string |  (optional)
 
@@ -1081,7 +1081,7 @@ Name | Type | Description  | Notes
 
 ## RemoveConnectedOrgConfig
 
-> map[string]interface{} RemoveConnectedOrgConfig(ctx, federationSettingsId, orgId).Execute()
+> RemoveConnectedOrgConfig(ctx, federationSettingsId, orgId).Execute()
 
 Remove One Org Config Connected to One Federation
 
@@ -1113,14 +1113,12 @@ func main() {
     federationSettingsId := "55fa922fb343282757d9554e" // string | 
     orgId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.FederatedAuthenticationApi.RemoveConnectedOrgConfig(context.Background(), federationSettingsId, orgId).Execute()
+    r, err := sdk.FederatedAuthenticationApi.RemoveConnectedOrgConfig(context.Background(), federationSettingsId, orgId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.RemoveConnectedOrgConfig``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `RemoveConnectedOrgConfig`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.RemoveConnectedOrgConfig`: %v\n", resp)
 }
 ```
 
@@ -1145,7 +1143,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

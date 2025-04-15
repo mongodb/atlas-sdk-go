@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ApiUserId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the organization API key. | [optional] [readonly] 
 **Roles** | Pointer to **[]string** | List of roles to grant this API key. If you provide this list, provide a minimum of one role and ensure each role applies to this project. | [optional] 
+**UserId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the organization API key. | [optional] [readonly] 
 
 ## Methods
 
@@ -26,30 +26,6 @@ NewUserAccessRoleAssignmentWithDefaults instantiates a new UserAccessRoleAssignm
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetApiUserId
-
-`func (o *UserAccessRoleAssignment) GetApiUserId() string`
-
-GetApiUserId returns the ApiUserId field if non-nil, zero value otherwise.
-
-### GetApiUserIdOk
-
-`func (o *UserAccessRoleAssignment) GetApiUserIdOk() (*string, bool)`
-
-GetApiUserIdOk returns a tuple with the ApiUserId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetApiUserId
-
-`func (o *UserAccessRoleAssignment) SetApiUserId(v string)`
-
-SetApiUserId sets ApiUserId field to given value.
-
-### HasApiUserId
-
-`func (o *UserAccessRoleAssignment) HasApiUserId() bool`
-
-HasApiUserId returns a boolean if a field has been set.
 ### GetRoles
 
 `func (o *UserAccessRoleAssignment) GetRoles() []string`
@@ -74,6 +50,30 @@ SetRoles sets Roles field to given value.
 `func (o *UserAccessRoleAssignment) HasRoles() bool`
 
 HasRoles returns a boolean if a field has been set.
+### GetUserId
+
+`func (o *UserAccessRoleAssignment) GetUserId() string`
+
+GetUserId returns the UserId field if non-nil, zero value otherwise.
+
+### GetUserIdOk
+
+`func (o *UserAccessRoleAssignment) GetUserIdOk() (*string, bool)`
+
+GetUserIdOk returns a tuple with the UserId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUserId
+
+`func (o *UserAccessRoleAssignment) SetUserId(v string)`
+
+SetUserId sets UserId field to given value.
+
+### HasUserId
+
+`func (o *UserAccessRoleAssignment) HasUserId() bool`
+
+HasUserId returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

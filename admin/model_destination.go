@@ -12,7 +12,7 @@ type Destination struct {
 	ClusterName string `json:"clusterName"`
 	// Unique 24-hexadecimal digit string that identifies the destination project.
 	GroupId string `json:"groupId"`
-	// The network type to use between the migration host and the target cluster.
+	// The network type to use between the migration host and the destination cluster.
 	HostnameSchemaType string `json:"hostnameSchemaType"`
 	// Represents the endpoint to use when the host schema type is `PRIVATE_LINK`.
 	PrivateLinkId *string `json:"privateLinkId,omitempty"`
@@ -35,8 +35,6 @@ func NewDestination(clusterName string, groupId string, hostnameSchemaType strin
 // but it doesn't guarantee that properties required by API are set
 func NewDestinationWithDefaults() *Destination {
 	this := Destination{}
-	var hostnameSchemaType string = "PUBLIC"
-	this.HostnameSchemaType = hostnameSchemaType
 	return &this
 }
 

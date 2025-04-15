@@ -93,7 +93,7 @@ Name | Type | Description  | Notes
 
 ## DeleteOnlineArchive
 
-> map[string]interface{} DeleteOnlineArchive(ctx, groupId, archiveId, clusterName).Execute()
+> DeleteOnlineArchive(ctx, groupId, archiveId, clusterName).Execute()
 
 Remove One Online Archive
 
@@ -121,14 +121,12 @@ func main() {
     archiveId := "archiveId_example" // string | 
     clusterName := "clusterName_example" // string | 
 
-    resp, r, err := sdk.OnlineArchiveApi.DeleteOnlineArchive(context.Background(), groupId, archiveId, clusterName).Execute()
+    r, err := sdk.OnlineArchiveApi.DeleteOnlineArchive(context.Background(), groupId, archiveId, clusterName).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OnlineArchiveApi.DeleteOnlineArchive``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `DeleteOnlineArchive`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `OnlineArchiveApi.DeleteOnlineArchive`: %v\n", resp)
 }
 ```
 
@@ -155,7 +153,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -365,8 +363,8 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
     includeCount := true // bool |  (optional) (default to true)
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
 
     resp, r, err := sdk.OnlineArchiveApi.ListOnlineArchives(context.Background(), groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {

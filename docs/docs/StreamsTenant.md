@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Hostnames** | Pointer to **[]string** | List that contains the hostnames assigned to the stream instance. | [optional] [readonly] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **Name** | Pointer to **string** | Human-readable label that identifies the stream instance. | [optional] 
+**SampleConnections** | Pointer to [**StreamsSampleConnections**](StreamsSampleConnections.md) |  | [optional] 
 **StreamConfig** | Pointer to [**StreamConfig**](StreamConfig.md) |  | [optional] 
 
 ## Methods
@@ -200,6 +201,30 @@ SetName sets Name field to given value.
 `func (o *StreamsTenant) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+### GetSampleConnections
+
+`func (o *StreamsTenant) GetSampleConnections() StreamsSampleConnections`
+
+GetSampleConnections returns the SampleConnections field if non-nil, zero value otherwise.
+
+### GetSampleConnectionsOk
+
+`func (o *StreamsTenant) GetSampleConnectionsOk() (*StreamsSampleConnections, bool)`
+
+GetSampleConnectionsOk returns a tuple with the SampleConnections field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSampleConnections
+
+`func (o *StreamsTenant) SetSampleConnections(v StreamsSampleConnections)`
+
+SetSampleConnections sets SampleConnections field to given value.
+
+### HasSampleConnections
+
+`func (o *StreamsTenant) HasSampleConnections() bool`
+
+HasSampleConnections returns a boolean if a field has been set.
 ### GetStreamConfig
 
 `func (o *StreamsTenant) GetStreamConfig() StreamConfig`

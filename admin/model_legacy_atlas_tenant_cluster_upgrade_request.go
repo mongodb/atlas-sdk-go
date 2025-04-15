@@ -10,23 +10,35 @@ import (
 // LegacyAtlasTenantClusterUpgradeRequest Request containing target state of tenant cluster to be upgraded
 type LegacyAtlasTenantClusterUpgradeRequest struct {
 	// If reconfiguration is necessary to regain a primary due to a regional outage, submit this field alongside your topology reconfiguration to request a new regional outage resistant topology. Forced reconfigurations during an outage of the majority of electable nodes carry a risk of data loss if replicated writes (even majority committed writes) have not been replicated to the new primary node. MongoDB Atlas docs contain more information. To proceed with an operation which carries that risk, set **acceptDataRisksAndForceReplicaSetReconfig** to the current date.
-	AcceptDataRisksAndForceReplicaSetReconfig *time.Time                  `json:"acceptDataRisksAndForceReplicaSetReconfig,omitempty"`
-	AutoScaling                               *ClusterAutoScalingSettings `json:"autoScaling,omitempty"`
+	AcceptDataRisksAndForceReplicaSetReconfig *time.Time                            `json:"acceptDataRisksAndForceReplicaSetReconfig,omitempty"`
+	AdvancedConfiguration                     *ApiAtlasClusterAdvancedConfiguration `json:"advancedConfiguration,omitempty"`
+	AutoScaling                               *ClusterAutoScalingSettings           `json:"autoScaling,omitempty"`
 	// Flag that indicates whether the cluster can perform backups. If set to `true`, the cluster can perform backups. You must set this value to `true` for NVMe clusters. Backup uses Cloud Backups for dedicated clusters and Shared Cluster Backups for tenant clusters. If set to `false`, the cluster doesn't use MongoDB Cloud backups.
 	BackupEnabled *bool        `json:"backupEnabled,omitempty"`
 	BiConnector   *BiConnector `json:"biConnector,omitempty"`
 	// Configuration of nodes that comprise the cluster.
-	ClusterType       *string                   `json:"clusterType,omitempty"`
+	ClusterType *string `json:"clusterType,omitempty"`
+	// Config Server Management Mode for creating or updating a sharded cluster.  When configured as ATLAS_MANAGED, atlas may automatically switch the cluster's config server type for optimal performance and savings.  When configured as FIXED_TO_DEDICATED, the cluster will always use a dedicated config server.
+	ConfigServerManagementMode *string `json:"configServerManagementMode,omitempty"`
+	// Describes a sharded cluster's config server type.
+	// Read only field.
+	ConfigServerType  *string                   `json:"configServerType,omitempty"`
 	ConnectionStrings *ClusterConnectionStrings `json:"connectionStrings,omitempty"`
 	// Date and time when MongoDB Cloud created this serverless instance. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC.
 	// Read only field.
 	CreateDate *time.Time `json:"createDate,omitempty"`
-	// Storage capacity that the host's root volume possesses expressed in gigabytes. Increase this number to add capacity. MongoDB Cloud requires this parameter if you set **replicationSpecs**. If you specify a disk size below the minimum (10 GB), this parameter defaults to the minimum disk size value. Storage charge calculations depend on whether you choose the default value or a custom value.  The maximum value for disk storage cannot exceed 50 times the maximum RAM for the selected cluster. If you require more storage space, consider upgrading your cluster to a higher tier.
+	// Storage capacity of instance data volumes expressed in gigabytes. Increase this number to add capacity.   This value is not configurable on M0/M2/M5 clusters.   MongoDB Cloud requires this parameter if you set **replicationSpecs**.   If you specify a disk size below the minimum (10 GB), this parameter defaults to the minimum disk size value.    Storage charge calculations depend on whether you choose the default value or a custom value.   The maximum value for disk storage cannot exceed 50 times the maximum RAM for the selected cluster. If you require more storage space, consider upgrading your cluster to a higher tier.
 	DiskSizeGB *float64 `json:"diskSizeGB,omitempty"`
 	// Disk warming mode selection.
 	DiskWarmingMode *string `json:"diskWarmingMode,omitempty"`
-	// Cloud service provider that manages your customer keys to provide an additional layer of Encryption at Rest for the cluster.
+	// Cloud service provider that manages your customer keys to provide an additional layer of encryption at rest for the cluster. To enable customer key management for encryption at rest, the cluster **replicationSpecs[n].regionConfigs[m].{type}Specs.instanceSize** setting must be `M10` or higher and `\"backupEnabled\" : false` or omitted entirely.
 	EncryptionAtRestProvider *string `json:"encryptionAtRestProvider,omitempty"`
+	// Feature compatibility version of the cluster.
+	// Read only field.
+	FeatureCompatibilityVersion *string `json:"featureCompatibilityVersion,omitempty"`
+	// Feature compatibility version expiration date.
+	// Read only field.
+	FeatureCompatibilityVersionExpirationDate *time.Time `json:"featureCompatibilityVersionExpirationDate,omitempty"`
 	// Set this field to configure the Sharding Management Mode when creating a new Global Cluster.  When set to false, the management mode is set to Atlas-Managed Sharding. This mode fully manages the sharding of your Global Cluster and is built to provide a seamless deployment experience.  When set to true, the management mode is set to Self-Managed Sharding. This mode leaves the management of shards in your hands and is built to provide an advanced and flexible deployment experience.  This setting cannot be changed once the cluster is deployed.
 	GlobalClusterSelfManagedSharding *bool `json:"globalClusterSelfManagedSharding,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the project.
@@ -35,13 +47,14 @@ type LegacyAtlasTenantClusterUpgradeRequest struct {
 	// Unique 24-hexadecimal digit string that identifies the cluster.
 	// Read only field.
 	Id *string `json:"id,omitempty"`
-	// Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster. The MongoDB Cloud console doesn't display your labels.  Cluster labels are deprecated and will be removed in a future release. We strongly recommend that you use [resource tags](https://dochub.mongodb.org/core/add-cluster-tag-atlas) instead.
+	// Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster. The MongoDB Cloud console doesn't display your labels.  Cluster labels are deprecated and will be removed in a future release. We strongly recommend that you use Resource Tags instead.
 	// Deprecated
 	Labels *[]ComponentLabel `json:"labels,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
-	Links *[]Link `json:"links,omitempty"`
-	// Major MongoDB version of the cluster. MongoDB Cloud deploys the cluster with the latest stable release of the specified version.
+	Links                      *[]Link              `json:"links,omitempty"`
+	MongoDBEmployeeAccessGrant *EmployeeAccessGrant `json:"mongoDBEmployeeAccessGrant,omitempty"`
+	// MongoDB major version of the cluster.  On creation: Choose from the available versions of MongoDB, or leave unspecified for the current recommended default in the MongoDB Cloud platform. The recommended version is a recent Long Term Support version. The default is not guaranteed to be the most recently released version throughout the entire release cycle. For versions available in a specific project, see the linked documentation or use the API endpoint for [project LTS versions endpoint](#tag/Projects/operation/getProjectLTSVersions).   On update: Increase version only by 1 major version at a time. If the cluster is pinned to a MongoDB feature compatibility version exactly one major version below the current MongoDB version, the MongoDB version can be downgraded to the previous major version.
 	MongoDBMajorVersion *string `json:"mongoDBMajorVersion,omitempty"`
 	// Version of MongoDB that the cluster runs.
 	MongoDBVersion *string `json:"mongoDBVersion,omitempty"`
@@ -65,6 +78,8 @@ type LegacyAtlasTenantClusterUpgradeRequest struct {
 	// Flag that indicates whether the M10 or higher cluster can perform Cloud Backups. If set to `true`, the cluster can perform backups. If this and **backupEnabled** are set to `false`, the cluster doesn't use MongoDB Cloud backups.
 	ProviderBackupEnabled *bool                    `json:"providerBackupEnabled,omitempty"`
 	ProviderSettings      *ClusterProviderSettings `json:"providerSettings,omitempty"`
+	// Set this field to configure the replica set scaling mode for your cluster.  By default, Atlas scales under WORKLOAD_TYPE. This mode allows Atlas to scale your analytics nodes in parallel to your operational nodes.  When configured as SEQUENTIAL, Atlas scales all nodes sequentially. This mode is intended for steady-state workloads and applications performing latency-sensitive secondary reads.  When configured as NODE_TYPE, Atlas scales your electable nodes in parallel with your read-only and analytics nodes. This mode is intended for large, dynamic workloads requiring frequent and timely cluster tier scaling. This is the fastest scaling strategy, but it might impact latency of workloads when performing extensive secondary reads.
+	ReplicaSetScalingStrategy *string `json:"replicaSetScalingStrategy,omitempty"`
 	// Number of members that belong to the replica set. Each member retains a copy of your databases, providing high availability and data redundancy. Use **replicationSpecs** instead.
 	// Deprecated
 	ReplicationFactor *int `json:"replicationFactor,omitempty"`
@@ -94,13 +109,15 @@ type LegacyAtlasTenantClusterUpgradeRequest struct {
 // will change when the set of required properties is changed
 func NewLegacyAtlasTenantClusterUpgradeRequest(name string) *LegacyAtlasTenantClusterUpgradeRequest {
 	this := LegacyAtlasTenantClusterUpgradeRequest{}
+	var configServerManagementMode string = "ATLAS_MANAGED"
+	this.ConfigServerManagementMode = &configServerManagementMode
 	var diskWarmingMode string = "FULLY_WARMED"
 	this.DiskWarmingMode = &diskWarmingMode
-	var mongoDBMajorVersion string = "7.0"
-	this.MongoDBMajorVersion = &mongoDBMajorVersion
 	this.Name = name
 	var numShards int = 1
 	this.NumShards = &numShards
+	var replicaSetScalingStrategy string = "WORKLOAD_TYPE"
+	this.ReplicaSetScalingStrategy = &replicaSetScalingStrategy
 	var replicationFactor int = 3
 	this.ReplicationFactor = &replicationFactor
 	var rootCertType string = "ISRGROOTX1"
@@ -117,12 +134,14 @@ func NewLegacyAtlasTenantClusterUpgradeRequest(name string) *LegacyAtlasTenantCl
 // but it doesn't guarantee that properties required by API are set
 func NewLegacyAtlasTenantClusterUpgradeRequestWithDefaults() *LegacyAtlasTenantClusterUpgradeRequest {
 	this := LegacyAtlasTenantClusterUpgradeRequest{}
+	var configServerManagementMode string = "ATLAS_MANAGED"
+	this.ConfigServerManagementMode = &configServerManagementMode
 	var diskWarmingMode string = "FULLY_WARMED"
 	this.DiskWarmingMode = &diskWarmingMode
-	var mongoDBMajorVersion string = "7.0"
-	this.MongoDBMajorVersion = &mongoDBMajorVersion
 	var numShards int = 1
 	this.NumShards = &numShards
+	var replicaSetScalingStrategy string = "WORKLOAD_TYPE"
+	this.ReplicaSetScalingStrategy = &replicaSetScalingStrategy
 	var replicationFactor int = 3
 	this.ReplicationFactor = &replicationFactor
 	var rootCertType string = "ISRGROOTX1"
@@ -165,6 +184,39 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) HasAcceptDataRisksAndForceRepli
 // SetAcceptDataRisksAndForceReplicaSetReconfig gets a reference to the given time.Time and assigns it to the AcceptDataRisksAndForceReplicaSetReconfig field.
 func (o *LegacyAtlasTenantClusterUpgradeRequest) SetAcceptDataRisksAndForceReplicaSetReconfig(v time.Time) {
 	o.AcceptDataRisksAndForceReplicaSetReconfig = &v
+}
+
+// GetAdvancedConfiguration returns the AdvancedConfiguration field value if set, zero value otherwise
+func (o *LegacyAtlasTenantClusterUpgradeRequest) GetAdvancedConfiguration() ApiAtlasClusterAdvancedConfiguration {
+	if o == nil || IsNil(o.AdvancedConfiguration) {
+		var ret ApiAtlasClusterAdvancedConfiguration
+		return ret
+	}
+	return *o.AdvancedConfiguration
+}
+
+// GetAdvancedConfigurationOk returns a tuple with the AdvancedConfiguration field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LegacyAtlasTenantClusterUpgradeRequest) GetAdvancedConfigurationOk() (*ApiAtlasClusterAdvancedConfiguration, bool) {
+	if o == nil || IsNil(o.AdvancedConfiguration) {
+		return nil, false
+	}
+
+	return o.AdvancedConfiguration, true
+}
+
+// HasAdvancedConfiguration returns a boolean if a field has been set.
+func (o *LegacyAtlasTenantClusterUpgradeRequest) HasAdvancedConfiguration() bool {
+	if o != nil && !IsNil(o.AdvancedConfiguration) {
+		return true
+	}
+
+	return false
+}
+
+// SetAdvancedConfiguration gets a reference to the given ApiAtlasClusterAdvancedConfiguration and assigns it to the AdvancedConfiguration field.
+func (o *LegacyAtlasTenantClusterUpgradeRequest) SetAdvancedConfiguration(v ApiAtlasClusterAdvancedConfiguration) {
+	o.AdvancedConfiguration = &v
 }
 
 // GetAutoScaling returns the AutoScaling field value if set, zero value otherwise
@@ -297,6 +349,72 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) HasClusterType() bool {
 // SetClusterType gets a reference to the given string and assigns it to the ClusterType field.
 func (o *LegacyAtlasTenantClusterUpgradeRequest) SetClusterType(v string) {
 	o.ClusterType = &v
+}
+
+// GetConfigServerManagementMode returns the ConfigServerManagementMode field value if set, zero value otherwise
+func (o *LegacyAtlasTenantClusterUpgradeRequest) GetConfigServerManagementMode() string {
+	if o == nil || IsNil(o.ConfigServerManagementMode) {
+		var ret string
+		return ret
+	}
+	return *o.ConfigServerManagementMode
+}
+
+// GetConfigServerManagementModeOk returns a tuple with the ConfigServerManagementMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LegacyAtlasTenantClusterUpgradeRequest) GetConfigServerManagementModeOk() (*string, bool) {
+	if o == nil || IsNil(o.ConfigServerManagementMode) {
+		return nil, false
+	}
+
+	return o.ConfigServerManagementMode, true
+}
+
+// HasConfigServerManagementMode returns a boolean if a field has been set.
+func (o *LegacyAtlasTenantClusterUpgradeRequest) HasConfigServerManagementMode() bool {
+	if o != nil && !IsNil(o.ConfigServerManagementMode) {
+		return true
+	}
+
+	return false
+}
+
+// SetConfigServerManagementMode gets a reference to the given string and assigns it to the ConfigServerManagementMode field.
+func (o *LegacyAtlasTenantClusterUpgradeRequest) SetConfigServerManagementMode(v string) {
+	o.ConfigServerManagementMode = &v
+}
+
+// GetConfigServerType returns the ConfigServerType field value if set, zero value otherwise
+func (o *LegacyAtlasTenantClusterUpgradeRequest) GetConfigServerType() string {
+	if o == nil || IsNil(o.ConfigServerType) {
+		var ret string
+		return ret
+	}
+	return *o.ConfigServerType
+}
+
+// GetConfigServerTypeOk returns a tuple with the ConfigServerType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LegacyAtlasTenantClusterUpgradeRequest) GetConfigServerTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.ConfigServerType) {
+		return nil, false
+	}
+
+	return o.ConfigServerType, true
+}
+
+// HasConfigServerType returns a boolean if a field has been set.
+func (o *LegacyAtlasTenantClusterUpgradeRequest) HasConfigServerType() bool {
+	if o != nil && !IsNil(o.ConfigServerType) {
+		return true
+	}
+
+	return false
+}
+
+// SetConfigServerType gets a reference to the given string and assigns it to the ConfigServerType field.
+func (o *LegacyAtlasTenantClusterUpgradeRequest) SetConfigServerType(v string) {
+	o.ConfigServerType = &v
 }
 
 // GetConnectionStrings returns the ConnectionStrings field value if set, zero value otherwise
@@ -462,6 +580,72 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) HasEncryptionAtRestProvider() b
 // SetEncryptionAtRestProvider gets a reference to the given string and assigns it to the EncryptionAtRestProvider field.
 func (o *LegacyAtlasTenantClusterUpgradeRequest) SetEncryptionAtRestProvider(v string) {
 	o.EncryptionAtRestProvider = &v
+}
+
+// GetFeatureCompatibilityVersion returns the FeatureCompatibilityVersion field value if set, zero value otherwise
+func (o *LegacyAtlasTenantClusterUpgradeRequest) GetFeatureCompatibilityVersion() string {
+	if o == nil || IsNil(o.FeatureCompatibilityVersion) {
+		var ret string
+		return ret
+	}
+	return *o.FeatureCompatibilityVersion
+}
+
+// GetFeatureCompatibilityVersionOk returns a tuple with the FeatureCompatibilityVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LegacyAtlasTenantClusterUpgradeRequest) GetFeatureCompatibilityVersionOk() (*string, bool) {
+	if o == nil || IsNil(o.FeatureCompatibilityVersion) {
+		return nil, false
+	}
+
+	return o.FeatureCompatibilityVersion, true
+}
+
+// HasFeatureCompatibilityVersion returns a boolean if a field has been set.
+func (o *LegacyAtlasTenantClusterUpgradeRequest) HasFeatureCompatibilityVersion() bool {
+	if o != nil && !IsNil(o.FeatureCompatibilityVersion) {
+		return true
+	}
+
+	return false
+}
+
+// SetFeatureCompatibilityVersion gets a reference to the given string and assigns it to the FeatureCompatibilityVersion field.
+func (o *LegacyAtlasTenantClusterUpgradeRequest) SetFeatureCompatibilityVersion(v string) {
+	o.FeatureCompatibilityVersion = &v
+}
+
+// GetFeatureCompatibilityVersionExpirationDate returns the FeatureCompatibilityVersionExpirationDate field value if set, zero value otherwise
+func (o *LegacyAtlasTenantClusterUpgradeRequest) GetFeatureCompatibilityVersionExpirationDate() time.Time {
+	if o == nil || IsNil(o.FeatureCompatibilityVersionExpirationDate) {
+		var ret time.Time
+		return ret
+	}
+	return *o.FeatureCompatibilityVersionExpirationDate
+}
+
+// GetFeatureCompatibilityVersionExpirationDateOk returns a tuple with the FeatureCompatibilityVersionExpirationDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LegacyAtlasTenantClusterUpgradeRequest) GetFeatureCompatibilityVersionExpirationDateOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.FeatureCompatibilityVersionExpirationDate) {
+		return nil, false
+	}
+
+	return o.FeatureCompatibilityVersionExpirationDate, true
+}
+
+// HasFeatureCompatibilityVersionExpirationDate returns a boolean if a field has been set.
+func (o *LegacyAtlasTenantClusterUpgradeRequest) HasFeatureCompatibilityVersionExpirationDate() bool {
+	if o != nil && !IsNil(o.FeatureCompatibilityVersionExpirationDate) {
+		return true
+	}
+
+	return false
+}
+
+// SetFeatureCompatibilityVersionExpirationDate gets a reference to the given time.Time and assigns it to the FeatureCompatibilityVersionExpirationDate field.
+func (o *LegacyAtlasTenantClusterUpgradeRequest) SetFeatureCompatibilityVersionExpirationDate(v time.Time) {
+	o.FeatureCompatibilityVersionExpirationDate = &v
 }
 
 // GetGlobalClusterSelfManagedSharding returns the GlobalClusterSelfManagedSharding field value if set, zero value otherwise
@@ -630,6 +814,39 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *LegacyAtlasTenantClusterUpgradeRequest) SetLinks(v []Link) {
 	o.Links = &v
+}
+
+// GetMongoDBEmployeeAccessGrant returns the MongoDBEmployeeAccessGrant field value if set, zero value otherwise
+func (o *LegacyAtlasTenantClusterUpgradeRequest) GetMongoDBEmployeeAccessGrant() EmployeeAccessGrant {
+	if o == nil || IsNil(o.MongoDBEmployeeAccessGrant) {
+		var ret EmployeeAccessGrant
+		return ret
+	}
+	return *o.MongoDBEmployeeAccessGrant
+}
+
+// GetMongoDBEmployeeAccessGrantOk returns a tuple with the MongoDBEmployeeAccessGrant field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LegacyAtlasTenantClusterUpgradeRequest) GetMongoDBEmployeeAccessGrantOk() (*EmployeeAccessGrant, bool) {
+	if o == nil || IsNil(o.MongoDBEmployeeAccessGrant) {
+		return nil, false
+	}
+
+	return o.MongoDBEmployeeAccessGrant, true
+}
+
+// HasMongoDBEmployeeAccessGrant returns a boolean if a field has been set.
+func (o *LegacyAtlasTenantClusterUpgradeRequest) HasMongoDBEmployeeAccessGrant() bool {
+	if o != nil && !IsNil(o.MongoDBEmployeeAccessGrant) {
+		return true
+	}
+
+	return false
+}
+
+// SetMongoDBEmployeeAccessGrant gets a reference to the given EmployeeAccessGrant and assigns it to the MongoDBEmployeeAccessGrant field.
+func (o *LegacyAtlasTenantClusterUpgradeRequest) SetMongoDBEmployeeAccessGrant(v EmployeeAccessGrant) {
+	o.MongoDBEmployeeAccessGrant = &v
 }
 
 // GetMongoDBMajorVersion returns the MongoDBMajorVersion field value if set, zero value otherwise
@@ -986,6 +1203,39 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) SetProviderSettings(v ClusterPr
 	o.ProviderSettings = &v
 }
 
+// GetReplicaSetScalingStrategy returns the ReplicaSetScalingStrategy field value if set, zero value otherwise
+func (o *LegacyAtlasTenantClusterUpgradeRequest) GetReplicaSetScalingStrategy() string {
+	if o == nil || IsNil(o.ReplicaSetScalingStrategy) {
+		var ret string
+		return ret
+	}
+	return *o.ReplicaSetScalingStrategy
+}
+
+// GetReplicaSetScalingStrategyOk returns a tuple with the ReplicaSetScalingStrategy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LegacyAtlasTenantClusterUpgradeRequest) GetReplicaSetScalingStrategyOk() (*string, bool) {
+	if o == nil || IsNil(o.ReplicaSetScalingStrategy) {
+		return nil, false
+	}
+
+	return o.ReplicaSetScalingStrategy, true
+}
+
+// HasReplicaSetScalingStrategy returns a boolean if a field has been set.
+func (o *LegacyAtlasTenantClusterUpgradeRequest) HasReplicaSetScalingStrategy() bool {
+	if o != nil && !IsNil(o.ReplicaSetScalingStrategy) {
+		return true
+	}
+
+	return false
+}
+
+// SetReplicaSetScalingStrategy gets a reference to the given string and assigns it to the ReplicaSetScalingStrategy field.
+func (o *LegacyAtlasTenantClusterUpgradeRequest) SetReplicaSetScalingStrategy(v string) {
+	o.ReplicaSetScalingStrategy = &v
+}
+
 // GetReplicationFactor returns the ReplicationFactor field value if set, zero value otherwise
 // Deprecated
 func (o *LegacyAtlasTenantClusterUpgradeRequest) GetReplicationFactor() int {
@@ -1298,6 +1548,9 @@ func (o LegacyAtlasTenantClusterUpgradeRequest) ToMap() (map[string]interface{},
 	if !IsNil(o.AcceptDataRisksAndForceReplicaSetReconfig) {
 		toSerialize["acceptDataRisksAndForceReplicaSetReconfig"] = o.AcceptDataRisksAndForceReplicaSetReconfig
 	}
+	if !IsNil(o.AdvancedConfiguration) {
+		toSerialize["advancedConfiguration"] = o.AdvancedConfiguration
+	}
 	if !IsNil(o.AutoScaling) {
 		toSerialize["autoScaling"] = o.AutoScaling
 	}
@@ -1309,6 +1562,9 @@ func (o LegacyAtlasTenantClusterUpgradeRequest) ToMap() (map[string]interface{},
 	}
 	if !IsNil(o.ClusterType) {
 		toSerialize["clusterType"] = o.ClusterType
+	}
+	if !IsNil(o.ConfigServerManagementMode) {
+		toSerialize["configServerManagementMode"] = o.ConfigServerManagementMode
 	}
 	if !IsNil(o.ConnectionStrings) {
 		toSerialize["connectionStrings"] = o.ConnectionStrings
@@ -1327,6 +1583,9 @@ func (o LegacyAtlasTenantClusterUpgradeRequest) ToMap() (map[string]interface{},
 	}
 	if !IsNil(o.Labels) {
 		toSerialize["labels"] = o.Labels
+	}
+	if !IsNil(o.MongoDBEmployeeAccessGrant) {
+		toSerialize["mongoDBEmployeeAccessGrant"] = o.MongoDBEmployeeAccessGrant
 	}
 	if !IsNil(o.MongoDBMajorVersion) {
 		toSerialize["mongoDBMajorVersion"] = o.MongoDBMajorVersion
@@ -1349,6 +1608,9 @@ func (o LegacyAtlasTenantClusterUpgradeRequest) ToMap() (map[string]interface{},
 	}
 	if !IsNil(o.ProviderSettings) {
 		toSerialize["providerSettings"] = o.ProviderSettings
+	}
+	if !IsNil(o.ReplicaSetScalingStrategy) {
+		toSerialize["replicaSetScalingStrategy"] = o.ReplicaSetScalingStrategy
 	}
 	if !IsNil(o.ReplicationFactor) {
 		toSerialize["replicationFactor"] = o.ReplicationFactor

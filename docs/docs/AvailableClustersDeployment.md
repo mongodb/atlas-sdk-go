@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **AgentVersion** | Pointer to **string** | Version of MongoDB Agent that monitors/manages the cluster. | [optional] [readonly] 
 **ClusterId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the cluster. | [optional] [readonly] 
 **DbSizeBytes** | Pointer to **int64** | Size of this database on disk at the time of the request expressed in bytes. | [optional] [readonly] 
-**FeatureCompatibilityVersion** | **string** | Version of MongoDB [features](https://docs.mongodb.com/manual/reference/command/setFeatureCompatibilityVersion) that this cluster supports. | [readonly] 
+**FeatureCompatibilityVersion** | **string** | Version of MongoDB features that this cluster supports. | [readonly] 
 **Managed** | **bool** | Flag that indicates whether Automation manages this cluster. | [readonly] 
 **MongoDBVersion** | **string** | Version of MongoDB that this cluster runs. | [readonly] 
 **Name** | **string** | Human-readable label that identifies this cluster. | [readonly] 

@@ -15,6 +15,8 @@ type CreateOrganizationRequest struct {
 	Name string `json:"name"`
 	// Unique 24-hexadecimal digit string that identifies the MongoDB Cloud user that you want to assign the Organization Owner role. This user must be a member of the same organization as the calling API key. If you provide `federationSettingsId`,  this user must instead have the Organization Owner role on an organization in the specified federation. This parameter is required only when you authenticate with Programmatic API Keys.
 	OrgOwnerId *string `json:"orgOwnerId,omitempty"`
+	// Disables automatic alert creation. When set to true, no organization level alerts will be created automatically.
+	SkipDefaultAlertsSettings *bool `json:"skipDefaultAlertsSettings,omitempty"`
 }
 
 // NewCreateOrganizationRequest instantiates a new CreateOrganizationRequest object
@@ -24,6 +26,8 @@ type CreateOrganizationRequest struct {
 func NewCreateOrganizationRequest(name string) *CreateOrganizationRequest {
 	this := CreateOrganizationRequest{}
 	this.Name = name
+	var skipDefaultAlertsSettings bool = false
+	this.SkipDefaultAlertsSettings = &skipDefaultAlertsSettings
 	return &this
 }
 
@@ -32,6 +36,8 @@ func NewCreateOrganizationRequest(name string) *CreateOrganizationRequest {
 // but it doesn't guarantee that properties required by API are set
 func NewCreateOrganizationRequestWithDefaults() *CreateOrganizationRequest {
 	this := CreateOrganizationRequest{}
+	var skipDefaultAlertsSettings bool = false
+	this.SkipDefaultAlertsSettings = &skipDefaultAlertsSettings
 	return &this
 }
 
@@ -158,6 +164,39 @@ func (o *CreateOrganizationRequest) SetOrgOwnerId(v string) {
 	o.OrgOwnerId = &v
 }
 
+// GetSkipDefaultAlertsSettings returns the SkipDefaultAlertsSettings field value if set, zero value otherwise
+func (o *CreateOrganizationRequest) GetSkipDefaultAlertsSettings() bool {
+	if o == nil || IsNil(o.SkipDefaultAlertsSettings) {
+		var ret bool
+		return ret
+	}
+	return *o.SkipDefaultAlertsSettings
+}
+
+// GetSkipDefaultAlertsSettingsOk returns a tuple with the SkipDefaultAlertsSettings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateOrganizationRequest) GetSkipDefaultAlertsSettingsOk() (*bool, bool) {
+	if o == nil || IsNil(o.SkipDefaultAlertsSettings) {
+		return nil, false
+	}
+
+	return o.SkipDefaultAlertsSettings, true
+}
+
+// HasSkipDefaultAlertsSettings returns a boolean if a field has been set.
+func (o *CreateOrganizationRequest) HasSkipDefaultAlertsSettings() bool {
+	if o != nil && !IsNil(o.SkipDefaultAlertsSettings) {
+		return true
+	}
+
+	return false
+}
+
+// SetSkipDefaultAlertsSettings gets a reference to the given bool and assigns it to the SkipDefaultAlertsSettings field.
+func (o *CreateOrganizationRequest) SetSkipDefaultAlertsSettings(v bool) {
+	o.SkipDefaultAlertsSettings = &v
+}
+
 func (o CreateOrganizationRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -176,6 +215,9 @@ func (o CreateOrganizationRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name
 	if !IsNil(o.OrgOwnerId) {
 		toSerialize["orgOwnerId"] = o.OrgOwnerId
+	}
+	if !IsNil(o.SkipDefaultAlertsSettings) {
+		toSerialize["skipDefaultAlertsSettings"] = o.SkipDefaultAlertsSettings
 	}
 	return toSerialize, nil
 }

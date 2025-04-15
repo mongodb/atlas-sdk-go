@@ -13,10 +13,8 @@ Method | HTTP request | Description
 [**GetOrganizationSettings**](OrganizationsApi.md#GetOrganizationSettings) | **Get** /api/atlas/v2/orgs/{orgId}/settings | Return Settings for One Organization
 [**ListOrganizationInvitations**](OrganizationsApi.md#ListOrganizationInvitations) | **Get** /api/atlas/v2/orgs/{orgId}/invites | Return All Organization Invitations
 [**ListOrganizationProjects**](OrganizationsApi.md#ListOrganizationProjects) | **Get** /api/atlas/v2/orgs/{orgId}/groups | Return One or More Projects in One Organization
-[**ListOrganizationUsers**](OrganizationsApi.md#ListOrganizationUsers) | **Get** /api/atlas/v2/orgs/{orgId}/users | Return All MongoDB Cloud Users in One Organization
 [**ListOrganizations**](OrganizationsApi.md#ListOrganizations) | **Get** /api/atlas/v2/orgs | Return All Organizations
-[**RemoveOrganizationUser**](OrganizationsApi.md#RemoveOrganizationUser) | **Delete** /api/atlas/v2/orgs/{orgId}/users/{userId} | Remove One MongoDB Cloud User from One Organization
-[**RenameOrganization**](OrganizationsApi.md#RenameOrganization) | **Patch** /api/atlas/v2/orgs/{orgId} | Rename One Organization
+[**UpdateOrganization**](OrganizationsApi.md#UpdateOrganization) | **Patch** /api/atlas/v2/orgs/{orgId} | Update One Organization
 [**UpdateOrganizationInvitation**](OrganizationsApi.md#UpdateOrganizationInvitation) | **Patch** /api/atlas/v2/orgs/{orgId}/invites | Update One Organization Invitation
 [**UpdateOrganizationInvitationById**](OrganizationsApi.md#UpdateOrganizationInvitationById) | **Patch** /api/atlas/v2/orgs/{orgId}/invites/{invitationId} | Update One Organization Invitation by Invitation ID
 [**UpdateOrganizationRoles**](OrganizationsApi.md#UpdateOrganizationRoles) | **Put** /api/atlas/v2/orgs/{orgId}/users/{userId}/roles | Update Organization Roles for One MongoDB Cloud User
@@ -170,7 +168,7 @@ Name | Type | Description  | Notes
 
 ## DeleteOrganization
 
-> map[string]interface{} DeleteOrganization(ctx, orgId).Execute()
+> DeleteOrganization(ctx, orgId).Execute()
 
 Remove One Organization
 
@@ -196,14 +194,12 @@ func main() {
 
     orgId := "4888442a3354817a7320eb61" // string | 
 
-    resp, r, err := sdk.OrganizationsApi.DeleteOrganization(context.Background(), orgId).Execute()
+    r, err := sdk.OrganizationsApi.DeleteOrganization(context.Background(), orgId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.DeleteOrganization``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `DeleteOrganization`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.DeleteOrganization`: %v\n", resp)
 }
 ```
 
@@ -226,7 +222,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -243,7 +239,7 @@ Name | Type | Description  | Notes
 
 ## DeleteOrganizationInvitation
 
-> map[string]interface{} DeleteOrganizationInvitation(ctx, orgId, invitationId).Execute()
+> DeleteOrganizationInvitation(ctx, orgId, invitationId).Execute()
 
 Cancel One Organization Invitation
 
@@ -270,14 +266,12 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     invitationId := "invitationId_example" // string | 
 
-    resp, r, err := sdk.OrganizationsApi.DeleteOrganizationInvitation(context.Background(), orgId, invitationId).Execute()
+    r, err := sdk.OrganizationsApi.DeleteOrganizationInvitation(context.Background(), orgId, invitationId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.DeleteOrganizationInvitation``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `DeleteOrganizationInvitation`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.DeleteOrganizationInvitation`: %v\n", resp)
 }
 ```
 
@@ -302,7 +296,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -647,8 +641,8 @@ func main() {
 
     orgId := "4888442a3354817a7320eb61" // string | 
     includeCount := true // bool |  (optional) (default to true)
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
     name := "name_example" // string |  (optional)
 
     resp, r, err := sdk.OrganizationsApi.ListOrganizationProjects(context.Background(), orgId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Name(name).Execute()
@@ -700,85 +694,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListOrganizationUsers
-
-> PaginatedAppUser ListOrganizationUsers(ctx, orgId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
-
-Return All MongoDB Cloud Users in One Organization
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-
-    "go.mongodb.org/atlas-sdk/v20231115014/admin"
-)
-
-func main() {
-    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
-    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
-
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
-
-    orgId := "4888442a3354817a7320eb61" // string | 
-    includeCount := true // bool |  (optional) (default to true)
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
-
-    resp, r, err := sdk.OrganizationsApi.ListOrganizationUsers(context.Background(), orgId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.ListOrganizationUsers``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
-    }
-    // response from `ListOrganizationUsers`: PaginatedAppUser
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.ListOrganizationUsers`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiListOrganizationUsersRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (**totalCount**) in the response. | [default to true]
- **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
- **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
-
-### Return type
-
-[**PaginatedAppUser**](PaginatedAppUser.md)
-
-### Authorization
-[DigestAuth](../README.md#Authentication)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-01-01+json, application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## ListOrganizations
 
 > PaginatedOrganization ListOrganizations(ctx).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Name(name).Execute()
@@ -806,8 +721,8 @@ func main() {
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
     includeCount := true // bool |  (optional) (default to true)
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
     name := "name_example" // string |  (optional)
 
     resp, r, err := sdk.OrganizationsApi.ListOrganizations(context.Background()).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Name(name).Execute()
@@ -854,92 +769,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## RemoveOrganizationUser
+## UpdateOrganization
 
-> map[string]interface{} RemoveOrganizationUser(ctx, orgId, userId).Execute()
+> AtlasOrganization UpdateOrganization(ctx, orgId, atlasOrganization AtlasOrganization).Execute()
 
-Remove One MongoDB Cloud User from One Organization
-
-
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-
-    "go.mongodb.org/atlas-sdk/v20231115014/admin"
-)
-
-func main() {
-    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
-    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
-
-    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
-
-    orgId := "4888442a3354817a7320eb61" // string | 
-    userId := "userId_example" // string | 
-
-    resp, r, err := sdk.OrganizationsApi.RemoveOrganizationUser(context.Background(), orgId, userId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.RemoveOrganizationUser``: %v\n", err)
-        apiError := admin.AsError(err)
-        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
-    }
-    // response from `RemoveOrganizationUser`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.RemoveOrganizationUser`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
-**userId** | **string** | Unique 24-hexadecimal digit string that identifies the user to be deleted. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiRemoveOrganizationUserRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
-**map[string]interface{}**
-
-### Authorization
-[DigestAuth](../README.md#Authentication)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-01-01+json, application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## RenameOrganization
-
-> AtlasOrganization RenameOrganization(ctx, orgId, atlasOrganization AtlasOrganization).Execute()
-
-Rename One Organization
+Update One Organization
 
 
 ## Experimental
@@ -969,14 +803,14 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     atlasOrganization := *openapiclient.NewAtlasOrganization("Name_example") // AtlasOrganization | 
 
-    resp, r, err := sdk.OrganizationsApi.RenameOrganization(context.Background(), orgId, &atlasOrganization).Execute()
+    resp, r, err := sdk.OrganizationsApi.UpdateOrganization(context.Background(), orgId, &atlasOrganization).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.RenameOrganization``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.UpdateOrganization``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `RenameOrganization`: AtlasOrganization
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.RenameOrganization`: %v\n", resp)
+    // response from `UpdateOrganization`: AtlasOrganization
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.UpdateOrganization`: %v\n", resp)
 }
 ```
 
@@ -990,7 +824,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiRenameOrganizationRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateOrganizationRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

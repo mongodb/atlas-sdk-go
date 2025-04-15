@@ -4,21 +4,26 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DeleteLDAPConfiguration**](LDAPConfigurationApi.md#DeleteLDAPConfiguration) | **Delete** /api/atlas/v2/groups/{groupId}/userSecurity/ldap/userToDNMapping | Remove the Current LDAP User to DN Mapping
-[**GetLDAPConfiguration**](LDAPConfigurationApi.md#GetLDAPConfiguration) | **Get** /api/atlas/v2/groups/{groupId}/userSecurity | Return the Current LDAP or X.509 Configuration
-[**GetLDAPConfigurationStatus**](LDAPConfigurationApi.md#GetLDAPConfigurationStatus) | **Get** /api/atlas/v2/groups/{groupId}/userSecurity/ldap/verify/{requestId} | Return the Status of One Verify LDAP Configuration Request
-[**SaveLDAPConfiguration**](LDAPConfigurationApi.md#SaveLDAPConfiguration) | **Patch** /api/atlas/v2/groups/{groupId}/userSecurity | Edit the LDAP or X.509 Configuration
-[**VerifyLDAPConfiguration**](LDAPConfigurationApi.md#VerifyLDAPConfiguration) | **Post** /api/atlas/v2/groups/{groupId}/userSecurity/ldap/verify | Verify the LDAP Configuration in One Project
+[**DeleteLdapConfiguration**](LDAPConfigurationApi.md#DeleteLdapConfiguration) | **Delete** /api/atlas/v2/groups/{groupId}/userSecurity/ldap/userToDNMapping | Remove the Current LDAP User to DN Mapping
+[**GetLdapConfiguration**](LDAPConfigurationApi.md#GetLdapConfiguration) | **Get** /api/atlas/v2/groups/{groupId}/userSecurity | Return the Current LDAP or X.509 Configuration
+[**GetLdapConfigurationStatus**](LDAPConfigurationApi.md#GetLdapConfigurationStatus) | **Get** /api/atlas/v2/groups/{groupId}/userSecurity/ldap/verify/{requestId} | Return the Status of One Verify LDAP Configuration Request
+[**SaveLdapConfiguration**](LDAPConfigurationApi.md#SaveLdapConfiguration) | **Patch** /api/atlas/v2/groups/{groupId}/userSecurity | Edit the LDAP or X.509 Configuration
+[**VerifyLdapConfiguration**](LDAPConfigurationApi.md#VerifyLdapConfiguration) | **Post** /api/atlas/v2/groups/{groupId}/userSecurity/ldap/verify | Verify the LDAP Configuration in One Project
 
 
 
-## DeleteLDAPConfiguration
+## DeleteLdapConfiguration
 
-> UserSecurity DeleteLDAPConfiguration(ctx, groupId).Execute()
+> UserSecurity DeleteLdapConfiguration(ctx, groupId).Execute()
 
 Remove the Current LDAP User to DN Mapping
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
+
 ### Example
 
 ```go
@@ -40,14 +45,14 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.LDAPConfigurationApi.DeleteLDAPConfiguration(context.Background(), groupId).Execute()
+    resp, r, err := sdk.LDAPConfigurationApi.DeleteLdapConfiguration(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LDAPConfigurationApi.DeleteLDAPConfiguration``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `LDAPConfigurationApi.DeleteLdapConfiguration``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `DeleteLDAPConfiguration`: UserSecurity
-    fmt.Fprintf(os.Stdout, "Response from `LDAPConfigurationApi.DeleteLDAPConfiguration`: %v\n", resp)
+    // response from `DeleteLdapConfiguration`: UserSecurity
+    fmt.Fprintf(os.Stdout, "Response from `LDAPConfigurationApi.DeleteLdapConfiguration`: %v\n", resp)
 }
 ```
 
@@ -61,7 +66,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDeleteLDAPConfigurationRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteLdapConfigurationRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -85,13 +90,18 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetLDAPConfiguration
+## GetLdapConfiguration
 
-> UserSecurity GetLDAPConfiguration(ctx, groupId).Execute()
+> UserSecurity GetLdapConfiguration(ctx, groupId).Execute()
 
 Return the Current LDAP or X.509 Configuration
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
+
 ### Example
 
 ```go
@@ -113,14 +123,14 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.LDAPConfigurationApi.GetLDAPConfiguration(context.Background(), groupId).Execute()
+    resp, r, err := sdk.LDAPConfigurationApi.GetLdapConfiguration(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LDAPConfigurationApi.GetLDAPConfiguration``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `LDAPConfigurationApi.GetLdapConfiguration``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `GetLDAPConfiguration`: UserSecurity
-    fmt.Fprintf(os.Stdout, "Response from `LDAPConfigurationApi.GetLDAPConfiguration`: %v\n", resp)
+    // response from `GetLdapConfiguration`: UserSecurity
+    fmt.Fprintf(os.Stdout, "Response from `LDAPConfigurationApi.GetLdapConfiguration`: %v\n", resp)
 }
 ```
 
@@ -134,7 +144,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetLDAPConfigurationRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetLdapConfigurationRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -158,12 +168,17 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetLDAPConfigurationStatus
+## GetLdapConfigurationStatus
 
-> LDAPVerifyConnectivityJobRequest GetLDAPConfigurationStatus(ctx, groupId, requestId).Execute()
+> LDAPVerifyConnectivityJobRequest GetLdapConfigurationStatus(ctx, groupId, requestId).Execute()
 
 Return the Status of One Verify LDAP Configuration Request
 
+
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -187,14 +202,14 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     requestId := "requestId_example" // string | 
 
-    resp, r, err := sdk.LDAPConfigurationApi.GetLDAPConfigurationStatus(context.Background(), groupId, requestId).Execute()
+    resp, r, err := sdk.LDAPConfigurationApi.GetLdapConfigurationStatus(context.Background(), groupId, requestId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LDAPConfigurationApi.GetLDAPConfigurationStatus``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `LDAPConfigurationApi.GetLdapConfigurationStatus``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `GetLDAPConfigurationStatus`: LDAPVerifyConnectivityJobRequest
-    fmt.Fprintf(os.Stdout, "Response from `LDAPConfigurationApi.GetLDAPConfigurationStatus`: %v\n", resp)
+    // response from `GetLdapConfigurationStatus`: LDAPVerifyConnectivityJobRequest
+    fmt.Fprintf(os.Stdout, "Response from `LDAPConfigurationApi.GetLdapConfigurationStatus`: %v\n", resp)
 }
 ```
 
@@ -205,11 +220,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**requestId** | **string** | Unique string that identifies the request to verify an &lt;abbr title&#x3D;\&quot;Lightweight Directory Access Protocol\&quot;&gt;LDAP&lt;/abbr&gt; configuration. | 
+**requestId** | **string** | Unique string that identifies the request to verify an Lightweight Directory Access Protocol (LDAP) configuration. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetLDAPConfigurationStatusRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetLdapConfigurationStatusRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -234,12 +249,17 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SaveLDAPConfiguration
+## SaveLdapConfiguration
 
-> UserSecurity SaveLDAPConfiguration(ctx, groupId, userSecurity UserSecurity).Execute()
+> UserSecurity SaveLdapConfiguration(ctx, groupId, userSecurity UserSecurity).Execute()
 
 Edit the LDAP or X.509 Configuration
 
+
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -263,14 +283,14 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     userSecurity := *openapiclient.NewUserSecurity() // UserSecurity | 
 
-    resp, r, err := sdk.LDAPConfigurationApi.SaveLDAPConfiguration(context.Background(), groupId, &userSecurity).Execute()
+    resp, r, err := sdk.LDAPConfigurationApi.SaveLdapConfiguration(context.Background(), groupId, &userSecurity).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LDAPConfigurationApi.SaveLDAPConfiguration``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `LDAPConfigurationApi.SaveLdapConfiguration``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `SaveLDAPConfiguration`: UserSecurity
-    fmt.Fprintf(os.Stdout, "Response from `LDAPConfigurationApi.SaveLDAPConfiguration`: %v\n", resp)
+    // response from `SaveLdapConfiguration`: UserSecurity
+    fmt.Fprintf(os.Stdout, "Response from `LDAPConfigurationApi.SaveLdapConfiguration`: %v\n", resp)
 }
 ```
 
@@ -284,7 +304,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSaveLDAPConfigurationRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiSaveLdapConfigurationRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -309,12 +329,17 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## VerifyLDAPConfiguration
+## VerifyLdapConfiguration
 
-> LDAPVerifyConnectivityJobRequest VerifyLDAPConfiguration(ctx, groupId, lDAPVerifyConnectivityJobRequestParams LDAPVerifyConnectivityJobRequestParams).Execute()
+> LDAPVerifyConnectivityJobRequest VerifyLdapConfiguration(ctx, groupId, lDAPVerifyConnectivityJobRequestParams LDAPVerifyConnectivityJobRequestParams).Execute()
 
 Verify the LDAP Configuration in One Project
 
+
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -338,14 +363,14 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     lDAPVerifyConnectivityJobRequestParams := *openapiclient.NewLDAPVerifyConnectivityJobRequestParams("BindPassword_example", "CN=BindUser,CN=Users,DC=myldapserver,DC=mycompany,DC=com", "Hostname_example", int(123)) // LDAPVerifyConnectivityJobRequestParams | 
 
-    resp, r, err := sdk.LDAPConfigurationApi.VerifyLDAPConfiguration(context.Background(), groupId, &lDAPVerifyConnectivityJobRequestParams).Execute()
+    resp, r, err := sdk.LDAPConfigurationApi.VerifyLdapConfiguration(context.Background(), groupId, &lDAPVerifyConnectivityJobRequestParams).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LDAPConfigurationApi.VerifyLDAPConfiguration``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `LDAPConfigurationApi.VerifyLdapConfiguration``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `VerifyLDAPConfiguration`: LDAPVerifyConnectivityJobRequest
-    fmt.Fprintf(os.Stdout, "Response from `LDAPConfigurationApi.VerifyLDAPConfiguration`: %v\n", resp)
+    // response from `VerifyLdapConfiguration`: LDAPVerifyConnectivityJobRequest
+    fmt.Fprintf(os.Stdout, "Response from `LDAPConfigurationApi.VerifyLdapConfiguration`: %v\n", resp)
 }
 ```
 
@@ -359,7 +384,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiVerifyLDAPConfigurationRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiVerifyLdapConfigurationRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

@@ -5,14 +5,14 @@ All URIs are relative to *https://cloud.mongodb.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateAtlasSearchDeployment**](AtlasSearchApi.md#CreateAtlasSearchDeployment) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/deployment | Create Search Nodes
-[**CreateAtlasSearchIndex**](AtlasSearchApi.md#CreateAtlasSearchIndex) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes | Create One Atlas Search Index
+[**CreateAtlasSearchIndexDeprecated**](AtlasSearchApi.md#CreateAtlasSearchIndexDeprecated) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes | Create One Atlas Search Index
 [**DeleteAtlasSearchDeployment**](AtlasSearchApi.md#DeleteAtlasSearchDeployment) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/deployment | Delete Search Nodes
-[**DeleteAtlasSearchIndex**](AtlasSearchApi.md#DeleteAtlasSearchIndex) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes/{indexId} | Remove One Atlas Search Index
+[**DeleteAtlasSearchIndexDeprecated**](AtlasSearchApi.md#DeleteAtlasSearchIndexDeprecated) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes/{indexId} | Remove One Atlas Search Index
 [**GetAtlasSearchDeployment**](AtlasSearchApi.md#GetAtlasSearchDeployment) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/deployment | Return Search Nodes
-[**GetAtlasSearchIndex**](AtlasSearchApi.md#GetAtlasSearchIndex) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes/{indexId} | Return One Atlas Search Index
-[**ListAtlasSearchIndexes**](AtlasSearchApi.md#ListAtlasSearchIndexes) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes/{databaseName}/{collectionName} | Return All Atlas Search Indexes for One Collection
+[**GetAtlasSearchIndexDeprecated**](AtlasSearchApi.md#GetAtlasSearchIndexDeprecated) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes/{indexId} | Return One Atlas Search Index
+[**ListAtlasSearchIndexesDeprecated**](AtlasSearchApi.md#ListAtlasSearchIndexesDeprecated) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes/{databaseName}/{collectionName} | Return All Atlas Search Indexes for One Collection
 [**UpdateAtlasSearchDeployment**](AtlasSearchApi.md#UpdateAtlasSearchDeployment) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/deployment | Update Search Nodes
-[**UpdateAtlasSearchIndex**](AtlasSearchApi.md#UpdateAtlasSearchIndex) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes/{indexId} | Update One Atlas Search Index
+[**UpdateAtlasSearchIndexDeprecated**](AtlasSearchApi.md#UpdateAtlasSearchIndexDeprecated) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes/{indexId} | Update One Atlas Search Index
 
 
 
@@ -99,12 +99,17 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## CreateAtlasSearchIndex
+## CreateAtlasSearchIndexDeprecated
 
-> ClusterSearchIndex CreateAtlasSearchIndex(ctx, groupId, clusterName, clusterSearchIndex ClusterSearchIndex).Execute()
+> ClusterSearchIndex CreateAtlasSearchIndexDeprecated(ctx, groupId, clusterName, clusterSearchIndex ClusterSearchIndex).Execute()
 
 Create One Atlas Search Index
 
+
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -129,14 +134,14 @@ func main() {
     clusterName := "clusterName_example" // string | 
     clusterSearchIndex := *openapiclient.NewClusterSearchIndex("CollectionName_example", "Database_example", "Name_example") // ClusterSearchIndex | 
 
-    resp, r, err := sdk.AtlasSearchApi.CreateAtlasSearchIndex(context.Background(), groupId, clusterName, &clusterSearchIndex).Execute()
+    resp, r, err := sdk.AtlasSearchApi.CreateAtlasSearchIndexDeprecated(context.Background(), groupId, clusterName, &clusterSearchIndex).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.CreateAtlasSearchIndex``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.CreateAtlasSearchIndexDeprecated``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `CreateAtlasSearchIndex`: ClusterSearchIndex
-    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.CreateAtlasSearchIndex`: %v\n", resp)
+    // response from `CreateAtlasSearchIndexDeprecated`: ClusterSearchIndex
+    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.CreateAtlasSearchIndexDeprecated`: %v\n", resp)
 }
 ```
 
@@ -151,7 +156,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCreateAtlasSearchIndexRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateAtlasSearchIndexDeprecatedRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -256,12 +261,17 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteAtlasSearchIndex
+## DeleteAtlasSearchIndexDeprecated
 
-> map[string]interface{} DeleteAtlasSearchIndex(ctx, groupId, clusterName, indexId).Execute()
+> DeleteAtlasSearchIndexDeprecated(ctx, groupId, clusterName, indexId).Execute()
 
 Remove One Atlas Search Index
 
+
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -286,14 +296,12 @@ func main() {
     clusterName := "clusterName_example" // string | 
     indexId := "indexId_example" // string | 
 
-    resp, r, err := sdk.AtlasSearchApi.DeleteAtlasSearchIndex(context.Background(), groupId, clusterName, indexId).Execute()
+    r, err := sdk.AtlasSearchApi.DeleteAtlasSearchIndexDeprecated(context.Background(), groupId, clusterName, indexId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.DeleteAtlasSearchIndex``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.DeleteAtlasSearchIndexDeprecated``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `DeleteAtlasSearchIndex`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.DeleteAtlasSearchIndex`: %v\n", resp)
 }
 ```
 
@@ -309,7 +317,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDeleteAtlasSearchIndexRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteAtlasSearchIndexDeprecatedRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -320,7 +328,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -416,12 +424,17 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetAtlasSearchIndex
+## GetAtlasSearchIndexDeprecated
 
-> ClusterSearchIndex GetAtlasSearchIndex(ctx, groupId, clusterName, indexId).Execute()
+> ClusterSearchIndex GetAtlasSearchIndexDeprecated(ctx, groupId, clusterName, indexId).Execute()
 
 Return One Atlas Search Index
 
+
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -446,14 +459,14 @@ func main() {
     clusterName := "clusterName_example" // string | 
     indexId := "indexId_example" // string | 
 
-    resp, r, err := sdk.AtlasSearchApi.GetAtlasSearchIndex(context.Background(), groupId, clusterName, indexId).Execute()
+    resp, r, err := sdk.AtlasSearchApi.GetAtlasSearchIndexDeprecated(context.Background(), groupId, clusterName, indexId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.GetAtlasSearchIndex``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.GetAtlasSearchIndexDeprecated``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `GetAtlasSearchIndex`: ClusterSearchIndex
-    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.GetAtlasSearchIndex`: %v\n", resp)
+    // response from `GetAtlasSearchIndexDeprecated`: ClusterSearchIndex
+    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.GetAtlasSearchIndexDeprecated`: %v\n", resp)
 }
 ```
 
@@ -469,7 +482,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetAtlasSearchIndexRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetAtlasSearchIndexDeprecatedRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -495,12 +508,17 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListAtlasSearchIndexes
+## ListAtlasSearchIndexesDeprecated
 
-> []ClusterSearchIndex ListAtlasSearchIndexes(ctx, groupId, clusterName, collectionName, databaseName).Execute()
+> []ClusterSearchIndex ListAtlasSearchIndexesDeprecated(ctx, groupId, clusterName, collectionName, databaseName).Execute()
 
 Return All Atlas Search Indexes for One Collection
 
+
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -526,14 +544,14 @@ func main() {
     collectionName := "collectionName_example" // string | 
     databaseName := "databaseName_example" // string | 
 
-    resp, r, err := sdk.AtlasSearchApi.ListAtlasSearchIndexes(context.Background(), groupId, clusterName, collectionName, databaseName).Execute()
+    resp, r, err := sdk.AtlasSearchApi.ListAtlasSearchIndexesDeprecated(context.Background(), groupId, clusterName, collectionName, databaseName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.ListAtlasSearchIndexes``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.ListAtlasSearchIndexesDeprecated``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `ListAtlasSearchIndexes`: []ClusterSearchIndex
-    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.ListAtlasSearchIndexes`: %v\n", resp)
+    // response from `ListAtlasSearchIndexesDeprecated`: []ClusterSearchIndex
+    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.ListAtlasSearchIndexesDeprecated`: %v\n", resp)
 }
 ```
 
@@ -550,7 +568,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListAtlasSearchIndexesRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListAtlasSearchIndexesDeprecatedRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -660,12 +678,17 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpdateAtlasSearchIndex
+## UpdateAtlasSearchIndexDeprecated
 
-> ClusterSearchIndex UpdateAtlasSearchIndex(ctx, groupId, clusterName, indexId, clusterSearchIndex ClusterSearchIndex).Execute()
+> ClusterSearchIndex UpdateAtlasSearchIndexDeprecated(ctx, groupId, clusterName, indexId, clusterSearchIndex ClusterSearchIndex).Execute()
 
 Update One Atlas Search Index
 
+
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -691,14 +714,14 @@ func main() {
     indexId := "indexId_example" // string | 
     clusterSearchIndex := *openapiclient.NewClusterSearchIndex("CollectionName_example", "Database_example", "Name_example") // ClusterSearchIndex | 
 
-    resp, r, err := sdk.AtlasSearchApi.UpdateAtlasSearchIndex(context.Background(), groupId, clusterName, indexId, &clusterSearchIndex).Execute()
+    resp, r, err := sdk.AtlasSearchApi.UpdateAtlasSearchIndexDeprecated(context.Background(), groupId, clusterName, indexId, &clusterSearchIndex).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.UpdateAtlasSearchIndex``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.UpdateAtlasSearchIndexDeprecated``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `UpdateAtlasSearchIndex`: ClusterSearchIndex
-    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.UpdateAtlasSearchIndex`: %v\n", resp)
+    // response from `UpdateAtlasSearchIndexDeprecated`: ClusterSearchIndex
+    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.UpdateAtlasSearchIndexDeprecated`: %v\n", resp)
 }
 ```
 
@@ -714,7 +737,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUpdateAtlasSearchIndexRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateAtlasSearchIndexDeprecatedRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

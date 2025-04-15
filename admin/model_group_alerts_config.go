@@ -9,7 +9,7 @@ import (
 
 // GroupAlertsConfig struct for GroupAlertsConfig
 type GroupAlertsConfig struct {
-	// Date and time when MongoDB Cloud created the alert configuration. This parameter expresses its value in the <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\" rel=\"noopener noreferrer\">ISO 8601</a> timestamp format in UTC.
+	// Date and time when MongoDB Cloud created the alert configuration. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	Created *time.Time `json:"created,omitempty"`
 	// Flag that indicates whether someone enabled this alert configuration for the specified project.
@@ -25,15 +25,15 @@ type GroupAlertsConfig struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
-	// No matchers are available for these alert types. The list is always empty.  Alternatively: List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. You can filter using the matchers array if the **eventTypeName** specifies an event for a host, replica set, or sharded cluster.  Alternatively: List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. You can filter using the matchers array if the **eventTypeName** specifies an event for a host, replica set, or sharded cluster.  Alternatively: No matchers are available for these alert types. The list is always empty.  Alternatively: List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. You can filter using the matchers array if the **eventTypeName** specifies an event for a host, replica set, or sharded cluster.  Alternatively: No matchers are available for these alert types. The list is always empty.  Alternatively: No matchers are available for these alert types. The list is always empty.  Alternatively: List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. You can filter using the matchers array if the **eventTypeName** specifies an event for a host, replica set, or sharded cluster.  Alternatively: List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. You can filter using the matchers array if the **eventTypeName** specifies an event for a host, replica set, or sharded cluster.  Alternatively: No matchers are available for these alert types. The list is always empty.  Alternatively: List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. You can filter using the matchers array if the **eventTypeName** specifies an event for a host, replica set, or sharded cluster.  Alternatively: List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. You can filter using the matchers array if the **eventTypeName** specifies an event for a host, replica set, or sharded cluster.  Alternatively: No matchers are available for these alert types. The list is always empty.  Alternatively: List of rules that determine whether MongoDB Cloud checks an object for the alert configuration.
+	// Matching conditions for target resources.  Alternatively: List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. You can filter using the matchers array if the **eventTypeName** specifies an event for a host, replica set, or sharded cluster.  Alternatively: List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. You can filter using the matchers array if the **eventTypeName** specifies an event for a host, replica set, or sharded cluster.  Alternatively: Matching conditions for target resources.  Alternatively: List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. You can filter using the matchers array if the **eventTypeName** specifies an event for a host, replica set, or sharded cluster.  Alternatively: Matching conditions for target resources.  Alternatively: Matching conditions for target resources.  Alternatively: List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. You can filter using the matchers array if the **eventTypeName** specifies an event for a host, replica set, or sharded cluster.  Alternatively: List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. You can filter using the matchers array if the **eventTypeName** specifies an event for a host, replica set, or sharded cluster.  Alternatively: Matching conditions for target resources.  Alternatively: List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. You can filter using the matchers array if the **eventTypeName** specifies an event for a host, replica set, or sharded cluster.  Alternatively: List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. You can filter using the matchers array if the **eventTypeName** specifies an event for a host, replica set, or sharded cluster.  Alternatively: Matching conditions for target resources.  Alternatively: Matching conditions for target resources.  Alternatively: List of rules that determine whether MongoDB Cloud checks an object for the alert configuration.  Alternatively: List of rules that determine whether MongoDB Cloud checks an object for the alert configuration.
 	Matchers *[]StreamsMatcher `json:"matchers,omitempty"`
 	// List that contains the targets that MongoDB Cloud sends notifications.
 	Notifications *[]AlertsNotificationRootForGroup `json:"notifications,omitempty"`
-	// Date and time when someone last updated this alert configuration. This parameter expresses its value in the <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\" rel=\"noopener noreferrer\">ISO 8601</a> timestamp format in UTC.
+	// Date and time when someone last updated this alert configuration. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
-	Updated         *time.Time                 `json:"updated,omitempty"`
-	MetricThreshold *ServerlessMetricThreshold `json:"metricThreshold,omitempty"`
-	Threshold       *GreaterThanRawThreshold   `json:"threshold,omitempty"`
+	Updated         *time.Time                      `json:"updated,omitempty"`
+	MetricThreshold *FlexClusterMetricThreshold     `json:"metricThreshold,omitempty"`
+	Threshold       *StreamProcessorMetricThreshold `json:"threshold,omitempty"`
 }
 
 // NewGroupAlertsConfig instantiates a new GroupAlertsConfig object
@@ -355,9 +355,9 @@ func (o *GroupAlertsConfig) SetUpdated(v time.Time) {
 }
 
 // GetMetricThreshold returns the MetricThreshold field value if set, zero value otherwise
-func (o *GroupAlertsConfig) GetMetricThreshold() ServerlessMetricThreshold {
+func (o *GroupAlertsConfig) GetMetricThreshold() FlexClusterMetricThreshold {
 	if o == nil || IsNil(o.MetricThreshold) {
-		var ret ServerlessMetricThreshold
+		var ret FlexClusterMetricThreshold
 		return ret
 	}
 	return *o.MetricThreshold
@@ -365,7 +365,7 @@ func (o *GroupAlertsConfig) GetMetricThreshold() ServerlessMetricThreshold {
 
 // GetMetricThresholdOk returns a tuple with the MetricThreshold field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GroupAlertsConfig) GetMetricThresholdOk() (*ServerlessMetricThreshold, bool) {
+func (o *GroupAlertsConfig) GetMetricThresholdOk() (*FlexClusterMetricThreshold, bool) {
 	if o == nil || IsNil(o.MetricThreshold) {
 		return nil, false
 	}
@@ -382,15 +382,15 @@ func (o *GroupAlertsConfig) HasMetricThreshold() bool {
 	return false
 }
 
-// SetMetricThreshold gets a reference to the given ServerlessMetricThreshold and assigns it to the MetricThreshold field.
-func (o *GroupAlertsConfig) SetMetricThreshold(v ServerlessMetricThreshold) {
+// SetMetricThreshold gets a reference to the given FlexClusterMetricThreshold and assigns it to the MetricThreshold field.
+func (o *GroupAlertsConfig) SetMetricThreshold(v FlexClusterMetricThreshold) {
 	o.MetricThreshold = &v
 }
 
 // GetThreshold returns the Threshold field value if set, zero value otherwise
-func (o *GroupAlertsConfig) GetThreshold() GreaterThanRawThreshold {
+func (o *GroupAlertsConfig) GetThreshold() StreamProcessorMetricThreshold {
 	if o == nil || IsNil(o.Threshold) {
-		var ret GreaterThanRawThreshold
+		var ret StreamProcessorMetricThreshold
 		return ret
 	}
 	return *o.Threshold
@@ -398,7 +398,7 @@ func (o *GroupAlertsConfig) GetThreshold() GreaterThanRawThreshold {
 
 // GetThresholdOk returns a tuple with the Threshold field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GroupAlertsConfig) GetThresholdOk() (*GreaterThanRawThreshold, bool) {
+func (o *GroupAlertsConfig) GetThresholdOk() (*StreamProcessorMetricThreshold, bool) {
 	if o == nil || IsNil(o.Threshold) {
 		return nil, false
 	}
@@ -415,8 +415,8 @@ func (o *GroupAlertsConfig) HasThreshold() bool {
 	return false
 }
 
-// SetThreshold gets a reference to the given GreaterThanRawThreshold and assigns it to the Threshold field.
-func (o *GroupAlertsConfig) SetThreshold(v GreaterThanRawThreshold) {
+// SetThreshold gets a reference to the given StreamProcessorMetricThreshold and assigns it to the Threshold field.
+func (o *GroupAlertsConfig) SetThreshold(v StreamProcessorMetricThreshold) {
 	o.Threshold = &v
 }
 

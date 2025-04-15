@@ -5,10 +5,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AutoDeferOnceEnabled** | Pointer to **bool** | Flag that indicates whether MongoDB Cloud should defer all maintenance windows for one week after you enable them. | [optional] 
-**DayOfWeek** | **int** | One-based integer that represents the day of the week that the maintenance window starts.  | Value | Day of Week | |---|---| | &#x60;1&#x60; | Sunday | | &#x60;2&#x60; | Monday | | &#x60;3&#x60; | Tuesday | | &#x60;4&#x60; | Wednesday | | &#x60;5&#x60; | Thursday | | &#x60;6&#x60; | Friday | | &#x60;7&#x60; | Saturday |  | 
+**DayOfWeek** | **int** | One-based integer that represents the day of the week that the maintenance window starts.  - &#x60;1&#x60;: Sunday. - &#x60;2&#x60;: Monday. - &#x60;3&#x60;: Tuesday. - &#x60;4&#x60;: Wednesday. - &#x60;5&#x60;: Thursday. - &#x60;6&#x60;: Friday. - &#x60;7&#x60;: Saturday. | 
 **HourOfDay** | Pointer to **int** | Zero-based integer that represents the hour of the of the day that the maintenance window starts according to a 24-hour clock. Use &#x60;0&#x60; for midnight and &#x60;12&#x60; for noon. | [optional] 
 **NumberOfDeferrals** | Pointer to **int** | Number of times the current maintenance event for this project has been deferred. | [optional] [readonly] 
+**ProtectedHours** | Pointer to [**ProtectedHours**](ProtectedHours.md) |  | [optional] 
 **StartASAP** | Pointer to **bool** | Flag that indicates whether MongoDB Cloud starts the maintenance window immediately upon receiving this request. To start the maintenance window immediately for your project, MongoDB Cloud must have maintenance scheduled and you must set a maintenance window. This flag resets to &#x60;false&#x60; after MongoDB Cloud completes maintenance. | [optional] 
+**TimeZoneId** | Pointer to **string** | Identifier for the current time zone of the maintenance window. This can only be updated via the Project Settings UI. | [optional] [readonly] 
 
 ## Methods
 
@@ -120,6 +122,30 @@ SetNumberOfDeferrals sets NumberOfDeferrals field to given value.
 `func (o *GroupMaintenanceWindow) HasNumberOfDeferrals() bool`
 
 HasNumberOfDeferrals returns a boolean if a field has been set.
+### GetProtectedHours
+
+`func (o *GroupMaintenanceWindow) GetProtectedHours() ProtectedHours`
+
+GetProtectedHours returns the ProtectedHours field if non-nil, zero value otherwise.
+
+### GetProtectedHoursOk
+
+`func (o *GroupMaintenanceWindow) GetProtectedHoursOk() (*ProtectedHours, bool)`
+
+GetProtectedHoursOk returns a tuple with the ProtectedHours field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProtectedHours
+
+`func (o *GroupMaintenanceWindow) SetProtectedHours(v ProtectedHours)`
+
+SetProtectedHours sets ProtectedHours field to given value.
+
+### HasProtectedHours
+
+`func (o *GroupMaintenanceWindow) HasProtectedHours() bool`
+
+HasProtectedHours returns a boolean if a field has been set.
 ### GetStartASAP
 
 `func (o *GroupMaintenanceWindow) GetStartASAP() bool`
@@ -144,6 +170,30 @@ SetStartASAP sets StartASAP field to given value.
 `func (o *GroupMaintenanceWindow) HasStartASAP() bool`
 
 HasStartASAP returns a boolean if a field has been set.
+### GetTimeZoneId
+
+`func (o *GroupMaintenanceWindow) GetTimeZoneId() string`
+
+GetTimeZoneId returns the TimeZoneId field if non-nil, zero value otherwise.
+
+### GetTimeZoneIdOk
+
+`func (o *GroupMaintenanceWindow) GetTimeZoneIdOk() (*string, bool)`
+
+GetTimeZoneIdOk returns a tuple with the TimeZoneId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTimeZoneId
+
+`func (o *GroupMaintenanceWindow) SetTimeZoneId(v string)`
+
+SetTimeZoneId sets TimeZoneId field to given value.
+
+### HasTimeZoneId
+
+`func (o *GroupMaintenanceWindow) HasTimeZoneId() bool`
+
+HasTimeZoneId returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -4,10 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DiskIOPS** | Pointer to **int** | Target throughput desired for storage attached to your AWS-provisioned cluster. Change this parameter only if you:  - set &#x60;\&quot;replicationSpecs[n].regionConfigs[m].providerName\&quot; : \&quot;AWS\&quot;&#x60;. - set &#x60;\&quot;replicationSpecs[n].regionConfigs[m].electableSpecs.instanceSize\&quot; : \&quot;M30\&quot;&#x60; or greater not including &#x60;Mxx_NVME&#x60; tiers.  The maximum input/output operations per second (IOPS) depend on the selected **.instanceSize** and **.diskSizeGB**. This parameter defaults to the cluster tier&#39;s standard IOPS value. Changing this value impacts cluster cost. MongoDB Cloud enforces minimum ratios of storage capacity to system memory for given cluster tiers. This keeps cluster performance consistent with large datasets.  - Instance sizes &#x60;M10&#x60; to &#x60;M40&#x60; have a ratio of disk capacity to system memory of 60:1. - Instance sizes greater than &#x60;M40&#x60; have a ratio of 120:1. | [optional] 
+**DiskIOPS** | Pointer to **int** | Target IOPS (Input/Output Operations Per Second) desired for storage attached to this hardware.   Change this parameter if you:  - set &#x60;\&quot;replicationSpecs[n].regionConfigs[m].providerName\&quot; to \&quot;AWS\&quot;&#x60;. - set &#x60;\&quot;replicationSpecs[n].regionConfigs[m].electableSpecs.instanceSize\&quot; to \&quot;M30\&quot;&#x60; or greater (not including &#x60;Mxx_NVME&#x60; tiers).  - set &#x60;\&quot;replicationSpecs[n].regionConfigs[m].electableSpecs.ebsVolumeType\&quot; to \&quot;PROVISIONED\&quot;&#x60;.  The maximum input/output operations per second (IOPS) depend on the selected **.instanceSize** and **.diskSizeGB**. This parameter defaults to the cluster tier&#39;s standard IOPS value. Changing this value impacts cluster cost. MongoDB Cloud enforces minimum ratios of storage capacity to system memory for given cluster tiers. This keeps cluster performance consistent with large datasets.  - Instance sizes &#x60;M10&#x60; to &#x60;M40&#x60; have a ratio of disk capacity to system memory of 60:1. - Instance sizes greater than &#x60;M40&#x60; have a ratio of 120:1.  Alternatively: Target throughput desired for storage attached to your Azure-provisioned cluster. Change this parameter if you:  - set &#x60;\&quot;replicationSpecs[n].regionConfigs[m].providerName\&quot; : \&quot;Azure\&quot;&#x60;. - set &#x60;\&quot;replicationSpecs[n].regionConfigs[m].electableSpecs.instanceSize\&quot; : \&quot;M40\&quot;&#x60; or greater not including &#x60;Mxx_NVME&#x60; tiers.  The maximum input/output operations per second (IOPS) depend on the selected **.instanceSize** and **.diskSizeGB**. This parameter defaults to the cluster tier&#39;s standard IOPS value. Changing this value impacts cluster cost. | [optional] 
 **EbsVolumeType** | Pointer to **string** | Type of storage you want to attach to your AWS-provisioned cluster.  - &#x60;STANDARD&#x60; volume types can&#39;t exceed the default input/output operations per second (IOPS) rate for the selected volume size.   - &#x60;PROVISIONED&#x60; volume types must fall within the allowable IOPS range for the selected volume size. You must set this value to (&#x60;PROVISIONED&#x60;) for NVMe clusters. | [optional] [default to "STANDARD"]
-**InstanceSize** | Pointer to **string** | Hardware specification for the instance sizes in this region. Each instance size has a default storage and memory capacity. The instance size you select applies to all the data-bearing hosts in your instance size. | [optional] 
+**InstanceSize** | Pointer to **string** | Hardware specification for the instance sizes in this region. Each instance size has a default storage and memory capacity. The instance size you select applies to all the data-bearing hosts of the node type.  Alternatively: Hardware specification for the instances in this M0/M2/M5 tier cluster. | [optional] 
 **NodeCount** | Pointer to **int** | Number of nodes of the given type for MongoDB Cloud to deploy to the region. | [optional] 
+**EffectiveInstanceSize** | Pointer to **string** | The true tenant instance size. This is present to support backwards compatibility for deprecated provider types and/or instance sizes. | [optional] [readonly] 
 
 ## Methods
 
@@ -124,6 +125,30 @@ SetNodeCount sets NodeCount field to given value.
 `func (o *HardwareSpec) HasNodeCount() bool`
 
 HasNodeCount returns a boolean if a field has been set.
+### GetEffectiveInstanceSize
+
+`func (o *HardwareSpec) GetEffectiveInstanceSize() string`
+
+GetEffectiveInstanceSize returns the EffectiveInstanceSize field if non-nil, zero value otherwise.
+
+### GetEffectiveInstanceSizeOk
+
+`func (o *HardwareSpec) GetEffectiveInstanceSizeOk() (*string, bool)`
+
+GetEffectiveInstanceSizeOk returns a tuple with the EffectiveInstanceSize field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEffectiveInstanceSize
+
+`func (o *HardwareSpec) SetEffectiveInstanceSize(v string)`
+
+SetEffectiveInstanceSize sets EffectiveInstanceSize field to given value.
+
+### HasEffectiveInstanceSize
+
+`func (o *HardwareSpec) HasEffectiveInstanceSize() bool`
+
+HasEffectiveInstanceSize returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

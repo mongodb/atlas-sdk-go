@@ -97,7 +97,7 @@ Name | Type | Description  | Notes
 
 ## DeleteServerlessPrivateEndpoint
 
-> map[string]interface{} DeleteServerlessPrivateEndpoint(ctx, groupId, instanceName, endpointId).Execute()
+> DeleteServerlessPrivateEndpoint(ctx, groupId, instanceName, endpointId).Execute()
 
 Remove One Private Endpoint for One Serverless Instance
 
@@ -130,14 +130,12 @@ func main() {
     instanceName := "instanceName_example" // string | 
     endpointId := "endpointId_example" // string | 
 
-    resp, r, err := sdk.ServerlessPrivateEndpointsApi.DeleteServerlessPrivateEndpoint(context.Background(), groupId, instanceName, endpointId).Execute()
+    r, err := sdk.ServerlessPrivateEndpointsApi.DeleteServerlessPrivateEndpoint(context.Background(), groupId, instanceName, endpointId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ServerlessPrivateEndpointsApi.DeleteServerlessPrivateEndpoint``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `DeleteServerlessPrivateEndpoint`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `ServerlessPrivateEndpointsApi.DeleteServerlessPrivateEndpoint`: %v\n", resp)
 }
 ```
 
@@ -164,7 +162,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

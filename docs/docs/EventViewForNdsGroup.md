@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ApiKeyId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the [API Key](https://dochub.mongodb.org/core/atlas-create-prog-api-key) that triggered the event. If this resource returns this parameter, it doesn&#39;t return the **userId** parameter. | [optional] [readonly] 
-**Created** | Pointer to **time.Time** | Date and time when this event occurred. This parameter expresses its value in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/ISO_8601\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;ISO 8601&lt;/a&gt; timestamp format in UTC. | [optional] [readonly] 
+**ApiKeyId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the API Key that triggered the event. If this resource returns this parameter, it doesn&#39;t return the **userId** parameter. | [optional] [readonly] 
+**Created** | Pointer to **time.Time** | Date and time when this event occurred. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
 **EventTypeName** | Pointer to **string** | Unique identifier of event type. | [optional] 
 **GroupId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the project in which the event occurred. The **eventId** identifies the specific event. | [optional] [readonly] 
 **Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the event. | [optional] [readonly] 
-**IsGlobalAdmin** | Pointer to **bool** | Flag that indicates whether a MongoDB employee triggered the specified event. | [optional] [readonly] [default to false]
+**IsGlobalAdmin** | Pointer to **bool** | Flag that indicates whether a MongoDB employee triggered the specified event. | [optional] [readonly] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **OrgId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the organization to which these events apply. | [optional] [readonly] 
-**PublicKey** | Pointer to **string** | Public part of the [API Key](https://dochub.mongodb.org/core/atlas-create-prog-api-key) that triggered the event. If this resource returns this parameter, it doesn&#39;t return the **username** parameter. | [optional] [readonly] 
+**PublicKey** | Pointer to **string** | Public part of the API key that triggered the event. If this resource returns this parameter, it doesn&#39;t return the **username** parameter. | [optional] [readonly] 
 **Raw** | Pointer to [**Raw**](Raw.md) |  | [optional] 
 **RemoteAddress** | Pointer to **string** | IPv4 or IPv6 address from which the user triggered this event. | [optional] [readonly] 
 **UserId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the console user who triggered the event. If this resource returns this parameter, it doesn&#39;t return the **apiKeyId** parameter. | [optional] [readonly] 
@@ -25,6 +25,9 @@ Name | Type | Description | Notes
 **Collection** | Pointer to **string** | Human-readable label of the collection on which the event occurred. The resource returns this parameter when the **eventTypeName** includes &#x60;DATA_EXPLORER&#x60;. | [optional] [readonly] 
 **Database** | Pointer to **string** | Human-readable label of the database on which this incident occurred. The resource returns this parameter when &#x60;\&quot;eventTypeName\&quot; : \&quot;DATA_EXPLORER\&quot;&#x60; or &#x60;\&quot;eventTypeName\&quot; : \&quot;DATA_EXPLORER_CRUD\&quot;&#x60;. | [optional] [readonly] 
 **OpType** | Pointer to **string** | Action that the database attempted to execute when the event triggered. The response returns this parameter when &#x60;eventTypeName\&quot; : \&quot;DATA_EXPLORER\&quot;&#x60;. | [optional] [readonly] 
+**SessionId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the Data Explorer session associated with the event. | [optional] [readonly] 
+**DeskLocation** | Pointer to **string** | Desk location of MongoDB employee associated with the event. | [optional] [readonly] 
+**EmployeeIdentifier** | Pointer to **string** | Identifier of MongoDB employee associated with the event. | [optional] [readonly] 
 **Port** | Pointer to **int** | IANA port on which the MongoDB process listens for requests. | [optional] [readonly] 
 **ReplicaSetName** | Pointer to **string** | Human-readable label of the replica set associated with the event. | [optional] [readonly] 
 **CurrentValue** | Pointer to [**NumberMetricValue**](NumberMetricValue.md) |  | [optional] 
@@ -41,6 +44,9 @@ Name | Type | Description | Notes
 **ProcessorErrorMsg** | Pointer to **string** | Error message linked to the stream processor associated with the event. | [optional] [readonly] 
 **ProcessorName** | Pointer to **string** | Name of the stream processor associated with the event. | [optional] [readonly] 
 **ProcessorState** | Pointer to **string** | State of the stream processor associated with the event. | [optional] [readonly] 
+**ResourcePolicyId** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the resource policy. | [optional] [readonly] 
+**ViolatedPolicies** | Pointer to **[]string** | String representation of the violated resource policy ids. | [optional] 
+**ViolationAction** | Pointer to **string** | Resource policy action taken by the user and evaluated against the currently active policies. | [optional] [readonly] 
 
 ## Methods
 
@@ -565,6 +571,78 @@ SetOpType sets OpType field to given value.
 `func (o *EventViewForNdsGroup) HasOpType() bool`
 
 HasOpType returns a boolean if a field has been set.
+### GetSessionId
+
+`func (o *EventViewForNdsGroup) GetSessionId() string`
+
+GetSessionId returns the SessionId field if non-nil, zero value otherwise.
+
+### GetSessionIdOk
+
+`func (o *EventViewForNdsGroup) GetSessionIdOk() (*string, bool)`
+
+GetSessionIdOk returns a tuple with the SessionId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSessionId
+
+`func (o *EventViewForNdsGroup) SetSessionId(v string)`
+
+SetSessionId sets SessionId field to given value.
+
+### HasSessionId
+
+`func (o *EventViewForNdsGroup) HasSessionId() bool`
+
+HasSessionId returns a boolean if a field has been set.
+### GetDeskLocation
+
+`func (o *EventViewForNdsGroup) GetDeskLocation() string`
+
+GetDeskLocation returns the DeskLocation field if non-nil, zero value otherwise.
+
+### GetDeskLocationOk
+
+`func (o *EventViewForNdsGroup) GetDeskLocationOk() (*string, bool)`
+
+GetDeskLocationOk returns a tuple with the DeskLocation field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeskLocation
+
+`func (o *EventViewForNdsGroup) SetDeskLocation(v string)`
+
+SetDeskLocation sets DeskLocation field to given value.
+
+### HasDeskLocation
+
+`func (o *EventViewForNdsGroup) HasDeskLocation() bool`
+
+HasDeskLocation returns a boolean if a field has been set.
+### GetEmployeeIdentifier
+
+`func (o *EventViewForNdsGroup) GetEmployeeIdentifier() string`
+
+GetEmployeeIdentifier returns the EmployeeIdentifier field if non-nil, zero value otherwise.
+
+### GetEmployeeIdentifierOk
+
+`func (o *EventViewForNdsGroup) GetEmployeeIdentifierOk() (*string, bool)`
+
+GetEmployeeIdentifierOk returns a tuple with the EmployeeIdentifier field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEmployeeIdentifier
+
+`func (o *EventViewForNdsGroup) SetEmployeeIdentifier(v string)`
+
+SetEmployeeIdentifier sets EmployeeIdentifier field to given value.
+
+### HasEmployeeIdentifier
+
+`func (o *EventViewForNdsGroup) HasEmployeeIdentifier() bool`
+
+HasEmployeeIdentifier returns a boolean if a field has been set.
 ### GetPort
 
 `func (o *EventViewForNdsGroup) GetPort() int`
@@ -949,6 +1027,78 @@ SetProcessorState sets ProcessorState field to given value.
 `func (o *EventViewForNdsGroup) HasProcessorState() bool`
 
 HasProcessorState returns a boolean if a field has been set.
+### GetResourcePolicyId
+
+`func (o *EventViewForNdsGroup) GetResourcePolicyId() string`
+
+GetResourcePolicyId returns the ResourcePolicyId field if non-nil, zero value otherwise.
+
+### GetResourcePolicyIdOk
+
+`func (o *EventViewForNdsGroup) GetResourcePolicyIdOk() (*string, bool)`
+
+GetResourcePolicyIdOk returns a tuple with the ResourcePolicyId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetResourcePolicyId
+
+`func (o *EventViewForNdsGroup) SetResourcePolicyId(v string)`
+
+SetResourcePolicyId sets ResourcePolicyId field to given value.
+
+### HasResourcePolicyId
+
+`func (o *EventViewForNdsGroup) HasResourcePolicyId() bool`
+
+HasResourcePolicyId returns a boolean if a field has been set.
+### GetViolatedPolicies
+
+`func (o *EventViewForNdsGroup) GetViolatedPolicies() []string`
+
+GetViolatedPolicies returns the ViolatedPolicies field if non-nil, zero value otherwise.
+
+### GetViolatedPoliciesOk
+
+`func (o *EventViewForNdsGroup) GetViolatedPoliciesOk() (*[]string, bool)`
+
+GetViolatedPoliciesOk returns a tuple with the ViolatedPolicies field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetViolatedPolicies
+
+`func (o *EventViewForNdsGroup) SetViolatedPolicies(v []string)`
+
+SetViolatedPolicies sets ViolatedPolicies field to given value.
+
+### HasViolatedPolicies
+
+`func (o *EventViewForNdsGroup) HasViolatedPolicies() bool`
+
+HasViolatedPolicies returns a boolean if a field has been set.
+### GetViolationAction
+
+`func (o *EventViewForNdsGroup) GetViolationAction() string`
+
+GetViolationAction returns the ViolationAction field if non-nil, zero value otherwise.
+
+### GetViolationActionOk
+
+`func (o *EventViewForNdsGroup) GetViolationActionOk() (*string, bool)`
+
+GetViolationActionOk returns a tuple with the ViolationAction field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetViolationAction
+
+`func (o *EventViewForNdsGroup) SetViolationAction(v string)`
+
+SetViolationAction sets ViolationAction field to given value.
+
+### HasViolationAction
+
+`func (o *EventViewForNdsGroup) HasViolationAction() bool`
+
+HasViolationAction returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

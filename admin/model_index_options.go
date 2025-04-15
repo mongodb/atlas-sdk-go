@@ -40,8 +40,6 @@ type IndexOptions struct {
 	StorageEngine map[string]interface{} `json:"storageEngine,omitempty"`
 	// Version applied to this text index. MongoDB 3.2 and later use version `3`. Use this option to override the default version number. This option applies to the **text** index type only.
 	TextIndexVersion *int `json:"textIndexVersion,omitempty"`
-	// Flag that indicates whether this index can accept insertion or update of documents when the index key value matches an existing index key value. Set `\"unique\" : true` to set this index as unique. You can't set a hashed index to be unique. This option applies to all index types. This option is unsupported for rolling indexes.
-	Unique *bool `json:"unique,omitempty"`
 	// Relative importance to place upon provided index parameters. This object expresses this as key/value pairs of index parameter and weight to apply to that parameter. You can specify weights for some or all the indexed parameters. The weight must be an integer between 1 and 99,999. MongoDB 5.0 and later can apply **weights** to **text** indexes only.
 	Weights map[string]interface{} `json:"weights,omitempty"`
 }
@@ -72,8 +70,6 @@ func NewIndexOptions() *IndexOptions {
 	this.Sparse = &sparse
 	var textIndexVersion int = 3
 	this.TextIndexVersion = &textIndexVersion
-	var unique bool = false
-	this.Unique = &unique
 	return &this
 }
 
@@ -102,8 +98,6 @@ func NewIndexOptionsWithDefaults() *IndexOptions {
 	this.Sparse = &sparse
 	var textIndexVersion int = 3
 	this.TextIndexVersion = &textIndexVersion
-	var unique bool = false
-	this.Unique = &unique
 	return &this
 }
 
@@ -635,39 +629,6 @@ func (o *IndexOptions) SetTextIndexVersion(v int) {
 	o.TextIndexVersion = &v
 }
 
-// GetUnique returns the Unique field value if set, zero value otherwise
-func (o *IndexOptions) GetUnique() bool {
-	if o == nil || IsNil(o.Unique) {
-		var ret bool
-		return ret
-	}
-	return *o.Unique
-}
-
-// GetUniqueOk returns a tuple with the Unique field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *IndexOptions) GetUniqueOk() (*bool, bool) {
-	if o == nil || IsNil(o.Unique) {
-		return nil, false
-	}
-
-	return o.Unique, true
-}
-
-// HasUnique returns a boolean if a field has been set.
-func (o *IndexOptions) HasUnique() bool {
-	if o != nil && !IsNil(o.Unique) {
-		return true
-	}
-
-	return false
-}
-
-// SetUnique gets a reference to the given bool and assigns it to the Unique field.
-func (o *IndexOptions) SetUnique(v bool) {
-	o.Unique = &v
-}
-
 // GetWeights returns the Weights field value if set, zero value otherwise
 func (o *IndexOptions) GetWeights() map[string]interface{} {
 	if o == nil || IsNil(o.Weights) {
@@ -757,9 +718,6 @@ func (o IndexOptions) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.TextIndexVersion) {
 		toSerialize["textIndexVersion"] = o.TextIndexVersion
-	}
-	if !IsNil(o.Unique) {
-		toSerialize["unique"] = o.Unique
 	}
 	if !IsNil(o.Weights) {
 		toSerialize["weights"] = o.Weights

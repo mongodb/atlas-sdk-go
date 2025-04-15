@@ -8,8 +8,14 @@ import (
 
 // ClusterDescriptionProcessArgs struct for ClusterDescriptionProcessArgs
 type ClusterDescriptionProcessArgs struct {
+	// The minimum pre- and post-image retention time in seconds.
+	ChangeStreamOptionsPreAndPostImagesExpireAfterSeconds *int `json:"changeStreamOptionsPreAndPostImagesExpireAfterSeconds,omitempty"`
 	// Number of threads on the source shard and the receiving shard for chunk migration. The number of threads should not exceed the half the total number of CPU cores in the sharded cluster.
 	ChunkMigrationConcurrency *int `json:"chunkMigrationConcurrency,omitempty"`
+	// The custom OpenSSL cipher suite list for TLS 1.2. This field is only valid when `tlsCipherConfigMode` is set to `CUSTOM`.
+	CustomOpensslCipherConfigTls12 *[]string `json:"customOpensslCipherConfigTls12,omitempty"`
+	// Default time limit in milliseconds for individual read operations to complete.
+	DefaultMaxTimeMS *int `json:"defaultMaxTimeMS,omitempty"`
 	// Default level of acknowledgment requested from MongoDB for read operations set for this cluster.  MongoDB 4.4 clusters default to `available`. MongoDB 5.0 and later clusters default to `local`.
 	DefaultReadConcern *string `json:"defaultReadConcern,omitempty"`
 	// Default level of acknowledgment requested from MongoDB for write operations when none is specified by the driver.
@@ -17,7 +23,7 @@ type ClusterDescriptionProcessArgs struct {
 	// Flag that indicates whether you can insert or update documents where all indexed entries don't exceed 1024 bytes. If you set this to false, [mongod](https://docs.mongodb.com/upcoming/reference/program/mongod/#mongodb-binary-bin.mongod) writes documents that exceed this limit but doesn't index them. This parameter has been removed as of [MongoDB 4.4](https://www.mongodb.com/docs/manual/reference/parameters/#mongodb-parameter-param.failIndexKeyTooLong).
 	// Deprecated
 	FailIndexKeyTooLong *bool `json:"failIndexKeyTooLong,omitempty"`
-	// Flag that indicates whether the cluster allows execution of operations that perform server-side executions of JavaScript.
+	// Flag that indicates whether the cluster allows execution of operations that perform server-side executions of JavaScript. When using 8.0+, we recommend disabling server-side JavaScript and using operators of aggregation pipeline as more performant alternative.
 	JavascriptEnabled *bool `json:"javascriptEnabled,omitempty"`
 	// Minimum Transport Layer Security (TLS) version that the cluster accepts for incoming connections. Clusters using TLS 1.0 or 1.1 should consider setting TLS 1.2 as the minimum TLS protocol version.
 	MinimumEnabledTlsProtocol *string `json:"minimumEnabledTlsProtocol,omitempty"`
@@ -33,6 +39,8 @@ type ClusterDescriptionProcessArgs struct {
 	SampleRefreshIntervalBIConnector *int `json:"sampleRefreshIntervalBIConnector,omitempty"`
 	// Number of documents per database to sample when gathering schema information.
 	SampleSizeBIConnector *int `json:"sampleSizeBIConnector,omitempty"`
+	// The TLS cipher suite configuration mode. The default mode uses the default cipher suites. The custom mode allows you to specify custom cipher suites for both TLS 1.2 and TLS 1.3.
+	TlsCipherConfigMode *string `json:"tlsCipherConfigMode,omitempty"`
 	// Lifetime, in seconds, of multi-document transactions. Atlas considers the transactions that exceed this limit as expired and so aborts them through a periodic cleanup process.
 	TransactionLifetimeLimitSeconds *int64 `json:"transactionLifetimeLimitSeconds,omitempty"`
 }
@@ -43,6 +51,8 @@ type ClusterDescriptionProcessArgs struct {
 // will change when the set of required properties is changed
 func NewClusterDescriptionProcessArgs() *ClusterDescriptionProcessArgs {
 	this := ClusterDescriptionProcessArgs{}
+	var changeStreamOptionsPreAndPostImagesExpireAfterSeconds int = -1
+	this.ChangeStreamOptionsPreAndPostImagesExpireAfterSeconds = &changeStreamOptionsPreAndPostImagesExpireAfterSeconds
 	var defaultReadConcern string = "available"
 	this.DefaultReadConcern = &defaultReadConcern
 	var failIndexKeyTooLong bool = true
@@ -57,6 +67,8 @@ func NewClusterDescriptionProcessArgs() *ClusterDescriptionProcessArgs {
 // but it doesn't guarantee that properties required by API are set
 func NewClusterDescriptionProcessArgsWithDefaults() *ClusterDescriptionProcessArgs {
 	this := ClusterDescriptionProcessArgs{}
+	var changeStreamOptionsPreAndPostImagesExpireAfterSeconds int = -1
+	this.ChangeStreamOptionsPreAndPostImagesExpireAfterSeconds = &changeStreamOptionsPreAndPostImagesExpireAfterSeconds
 	var defaultReadConcern string = "available"
 	this.DefaultReadConcern = &defaultReadConcern
 	var failIndexKeyTooLong bool = true
@@ -64,6 +76,39 @@ func NewClusterDescriptionProcessArgsWithDefaults() *ClusterDescriptionProcessAr
 	var sampleRefreshIntervalBIConnector int = 0
 	this.SampleRefreshIntervalBIConnector = &sampleRefreshIntervalBIConnector
 	return &this
+}
+
+// GetChangeStreamOptionsPreAndPostImagesExpireAfterSeconds returns the ChangeStreamOptionsPreAndPostImagesExpireAfterSeconds field value if set, zero value otherwise
+func (o *ClusterDescriptionProcessArgs) GetChangeStreamOptionsPreAndPostImagesExpireAfterSeconds() int {
+	if o == nil || IsNil(o.ChangeStreamOptionsPreAndPostImagesExpireAfterSeconds) {
+		var ret int
+		return ret
+	}
+	return *o.ChangeStreamOptionsPreAndPostImagesExpireAfterSeconds
+}
+
+// GetChangeStreamOptionsPreAndPostImagesExpireAfterSecondsOk returns a tuple with the ChangeStreamOptionsPreAndPostImagesExpireAfterSeconds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterDescriptionProcessArgs) GetChangeStreamOptionsPreAndPostImagesExpireAfterSecondsOk() (*int, bool) {
+	if o == nil || IsNil(o.ChangeStreamOptionsPreAndPostImagesExpireAfterSeconds) {
+		return nil, false
+	}
+
+	return o.ChangeStreamOptionsPreAndPostImagesExpireAfterSeconds, true
+}
+
+// HasChangeStreamOptionsPreAndPostImagesExpireAfterSeconds returns a boolean if a field has been set.
+func (o *ClusterDescriptionProcessArgs) HasChangeStreamOptionsPreAndPostImagesExpireAfterSeconds() bool {
+	if o != nil && !IsNil(o.ChangeStreamOptionsPreAndPostImagesExpireAfterSeconds) {
+		return true
+	}
+
+	return false
+}
+
+// SetChangeStreamOptionsPreAndPostImagesExpireAfterSeconds gets a reference to the given int and assigns it to the ChangeStreamOptionsPreAndPostImagesExpireAfterSeconds field.
+func (o *ClusterDescriptionProcessArgs) SetChangeStreamOptionsPreAndPostImagesExpireAfterSeconds(v int) {
+	o.ChangeStreamOptionsPreAndPostImagesExpireAfterSeconds = &v
 }
 
 // GetChunkMigrationConcurrency returns the ChunkMigrationConcurrency field value if set, zero value otherwise
@@ -97,6 +142,72 @@ func (o *ClusterDescriptionProcessArgs) HasChunkMigrationConcurrency() bool {
 // SetChunkMigrationConcurrency gets a reference to the given int and assigns it to the ChunkMigrationConcurrency field.
 func (o *ClusterDescriptionProcessArgs) SetChunkMigrationConcurrency(v int) {
 	o.ChunkMigrationConcurrency = &v
+}
+
+// GetCustomOpensslCipherConfigTls12 returns the CustomOpensslCipherConfigTls12 field value if set, zero value otherwise
+func (o *ClusterDescriptionProcessArgs) GetCustomOpensslCipherConfigTls12() []string {
+	if o == nil || IsNil(o.CustomOpensslCipherConfigTls12) {
+		var ret []string
+		return ret
+	}
+	return *o.CustomOpensslCipherConfigTls12
+}
+
+// GetCustomOpensslCipherConfigTls12Ok returns a tuple with the CustomOpensslCipherConfigTls12 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterDescriptionProcessArgs) GetCustomOpensslCipherConfigTls12Ok() (*[]string, bool) {
+	if o == nil || IsNil(o.CustomOpensslCipherConfigTls12) {
+		return nil, false
+	}
+
+	return o.CustomOpensslCipherConfigTls12, true
+}
+
+// HasCustomOpensslCipherConfigTls12 returns a boolean if a field has been set.
+func (o *ClusterDescriptionProcessArgs) HasCustomOpensslCipherConfigTls12() bool {
+	if o != nil && !IsNil(o.CustomOpensslCipherConfigTls12) {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomOpensslCipherConfigTls12 gets a reference to the given []string and assigns it to the CustomOpensslCipherConfigTls12 field.
+func (o *ClusterDescriptionProcessArgs) SetCustomOpensslCipherConfigTls12(v []string) {
+	o.CustomOpensslCipherConfigTls12 = &v
+}
+
+// GetDefaultMaxTimeMS returns the DefaultMaxTimeMS field value if set, zero value otherwise
+func (o *ClusterDescriptionProcessArgs) GetDefaultMaxTimeMS() int {
+	if o == nil || IsNil(o.DefaultMaxTimeMS) {
+		var ret int
+		return ret
+	}
+	return *o.DefaultMaxTimeMS
+}
+
+// GetDefaultMaxTimeMSOk returns a tuple with the DefaultMaxTimeMS field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterDescriptionProcessArgs) GetDefaultMaxTimeMSOk() (*int, bool) {
+	if o == nil || IsNil(o.DefaultMaxTimeMS) {
+		return nil, false
+	}
+
+	return o.DefaultMaxTimeMS, true
+}
+
+// HasDefaultMaxTimeMS returns a boolean if a field has been set.
+func (o *ClusterDescriptionProcessArgs) HasDefaultMaxTimeMS() bool {
+	if o != nil && !IsNil(o.DefaultMaxTimeMS) {
+		return true
+	}
+
+	return false
+}
+
+// SetDefaultMaxTimeMS gets a reference to the given int and assigns it to the DefaultMaxTimeMS field.
+func (o *ClusterDescriptionProcessArgs) SetDefaultMaxTimeMS(v int) {
+	o.DefaultMaxTimeMS = &v
 }
 
 // GetDefaultReadConcern returns the DefaultReadConcern field value if set, zero value otherwise
@@ -465,6 +576,39 @@ func (o *ClusterDescriptionProcessArgs) SetSampleSizeBIConnector(v int) {
 	o.SampleSizeBIConnector = &v
 }
 
+// GetTlsCipherConfigMode returns the TlsCipherConfigMode field value if set, zero value otherwise
+func (o *ClusterDescriptionProcessArgs) GetTlsCipherConfigMode() string {
+	if o == nil || IsNil(o.TlsCipherConfigMode) {
+		var ret string
+		return ret
+	}
+	return *o.TlsCipherConfigMode
+}
+
+// GetTlsCipherConfigModeOk returns a tuple with the TlsCipherConfigMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterDescriptionProcessArgs) GetTlsCipherConfigModeOk() (*string, bool) {
+	if o == nil || IsNil(o.TlsCipherConfigMode) {
+		return nil, false
+	}
+
+	return o.TlsCipherConfigMode, true
+}
+
+// HasTlsCipherConfigMode returns a boolean if a field has been set.
+func (o *ClusterDescriptionProcessArgs) HasTlsCipherConfigMode() bool {
+	if o != nil && !IsNil(o.TlsCipherConfigMode) {
+		return true
+	}
+
+	return false
+}
+
+// SetTlsCipherConfigMode gets a reference to the given string and assigns it to the TlsCipherConfigMode field.
+func (o *ClusterDescriptionProcessArgs) SetTlsCipherConfigMode(v string) {
+	o.TlsCipherConfigMode = &v
+}
+
 // GetTransactionLifetimeLimitSeconds returns the TransactionLifetimeLimitSeconds field value if set, zero value otherwise
 func (o *ClusterDescriptionProcessArgs) GetTransactionLifetimeLimitSeconds() int64 {
 	if o == nil || IsNil(o.TransactionLifetimeLimitSeconds) {
@@ -507,8 +651,17 @@ func (o ClusterDescriptionProcessArgs) MarshalJSONWithoutReadOnly() ([]byte, err
 }
 func (o ClusterDescriptionProcessArgs) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ChangeStreamOptionsPreAndPostImagesExpireAfterSeconds) {
+		toSerialize["changeStreamOptionsPreAndPostImagesExpireAfterSeconds"] = o.ChangeStreamOptionsPreAndPostImagesExpireAfterSeconds
+	}
 	if !IsNil(o.ChunkMigrationConcurrency) {
 		toSerialize["chunkMigrationConcurrency"] = o.ChunkMigrationConcurrency
+	}
+	if !IsNil(o.CustomOpensslCipherConfigTls12) {
+		toSerialize["customOpensslCipherConfigTls12"] = o.CustomOpensslCipherConfigTls12
+	}
+	if !IsNil(o.DefaultMaxTimeMS) {
+		toSerialize["defaultMaxTimeMS"] = o.DefaultMaxTimeMS
 	}
 	if !IsNil(o.DefaultReadConcern) {
 		toSerialize["defaultReadConcern"] = o.DefaultReadConcern
@@ -542,6 +695,9 @@ func (o ClusterDescriptionProcessArgs) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SampleSizeBIConnector) {
 		toSerialize["sampleSizeBIConnector"] = o.SampleSizeBIConnector
+	}
+	if !IsNil(o.TlsCipherConfigMode) {
+		toSerialize["tlsCipherConfigMode"] = o.TlsCipherConfigMode
 	}
 	if !IsNil(o.TransactionLifetimeLimitSeconds) {
 		toSerialize["transactionLifetimeLimitSeconds"] = o.TransactionLifetimeLimitSeconds

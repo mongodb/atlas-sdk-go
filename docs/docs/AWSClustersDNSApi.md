@@ -4,17 +4,22 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetAWSCustomDNS**](AWSClustersDNSApi.md#GetAWSCustomDNS) | **Get** /api/atlas/v2/groups/{groupId}/awsCustomDNS | Return One Custom DNS Configuration for Atlas Clusters on AWS
-[**ToggleAWSCustomDNS**](AWSClustersDNSApi.md#ToggleAWSCustomDNS) | **Patch** /api/atlas/v2/groups/{groupId}/awsCustomDNS | Toggle State of One Custom DNS Configuration for Atlas Clusters on AWS
+[**GetAwsCustomDns**](AWSClustersDNSApi.md#GetAwsCustomDns) | **Get** /api/atlas/v2/groups/{groupId}/awsCustomDNS | Return One Custom DNS Configuration for Atlas Clusters on AWS
+[**ToggleAwsCustomDns**](AWSClustersDNSApi.md#ToggleAwsCustomDns) | **Patch** /api/atlas/v2/groups/{groupId}/awsCustomDNS | Toggle State of One Custom DNS Configuration for Atlas Clusters on AWS
 
 
 
-## GetAWSCustomDNS
+## GetAwsCustomDns
 
-> AWSCustomDNSEnabled GetAWSCustomDNS(ctx, groupId).Execute()
+> AWSCustomDNSEnabled GetAwsCustomDns(ctx, groupId).Execute()
 
 Return One Custom DNS Configuration for Atlas Clusters on AWS
 
+
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -37,14 +42,14 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.AWSClustersDNSApi.GetAWSCustomDNS(context.Background(), groupId).Execute()
+    resp, r, err := sdk.AWSClustersDNSApi.GetAwsCustomDns(context.Background(), groupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AWSClustersDNSApi.GetAWSCustomDNS``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AWSClustersDNSApi.GetAwsCustomDns``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `GetAWSCustomDNS`: AWSCustomDNSEnabled
-    fmt.Fprintf(os.Stdout, "Response from `AWSClustersDNSApi.GetAWSCustomDNS`: %v\n", resp)
+    // response from `GetAwsCustomDns`: AWSCustomDNSEnabled
+    fmt.Fprintf(os.Stdout, "Response from `AWSClustersDNSApi.GetAwsCustomDns`: %v\n", resp)
 }
 ```
 
@@ -58,7 +63,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetAWSCustomDNSRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetAwsCustomDnsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -82,12 +87,17 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ToggleAWSCustomDNS
+## ToggleAwsCustomDns
 
-> AWSCustomDNSEnabled ToggleAWSCustomDNS(ctx, groupId, aWSCustomDNSEnabled AWSCustomDNSEnabled).Execute()
+> AWSCustomDNSEnabled ToggleAwsCustomDns(ctx, groupId, aWSCustomDNSEnabled AWSCustomDNSEnabled).Execute()
 
 Toggle State of One Custom DNS Configuration for Atlas Clusters on AWS
 
+
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -111,14 +121,14 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     aWSCustomDNSEnabled := *openapiclient.NewAWSCustomDNSEnabled(false) // AWSCustomDNSEnabled | 
 
-    resp, r, err := sdk.AWSClustersDNSApi.ToggleAWSCustomDNS(context.Background(), groupId, &aWSCustomDNSEnabled).Execute()
+    resp, r, err := sdk.AWSClustersDNSApi.ToggleAwsCustomDns(context.Background(), groupId, &aWSCustomDNSEnabled).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AWSClustersDNSApi.ToggleAWSCustomDNS``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AWSClustersDNSApi.ToggleAwsCustomDns``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `ToggleAWSCustomDNS`: AWSCustomDNSEnabled
-    fmt.Fprintf(os.Stdout, "Response from `AWSClustersDNSApi.ToggleAWSCustomDNS`: %v\n", resp)
+    // response from `ToggleAwsCustomDns`: AWSCustomDNSEnabled
+    fmt.Fprintf(os.Stdout, "Response from `AWSClustersDNSApi.ToggleAwsCustomDns`: %v\n", resp)
 }
 ```
 
@@ -132,7 +142,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiToggleAWSCustomDNSRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiToggleAwsCustomDnsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

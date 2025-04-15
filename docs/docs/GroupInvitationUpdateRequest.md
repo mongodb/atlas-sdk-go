@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Roles** | Pointer to **[]string** | One or more organization or project level roles to assign to the MongoDB Cloud user. | [optional] 
+**Roles** | Pointer to **[]string** | One or more project-level roles to assign to the MongoDB Cloud user. | [optional] 
 
 ## Methods
 

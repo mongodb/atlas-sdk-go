@@ -13,7 +13,7 @@ type StreamsKafkaSecurity struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
-	// Describes the transport type. Can be either PLAINTEXT or SSL.
+	// Describes the transport type. Can be either SASL_PLAINTEXT, SASL_SSL, or SSL.
 	Protocol *string `json:"protocol,omitempty"`
 }
 

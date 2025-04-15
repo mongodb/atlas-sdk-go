@@ -6,12 +6,12 @@ import (
 	"encoding/json"
 )
 
-// ExportStatus State of the export job for the collections on the replica set only.
+// ExportStatus State of the Export Job.
 type ExportStatus struct {
-	// Number of collections on the replica set that MongoDB Cloud exported.
+	// Count of collections whose documents were exported to the Export Bucket.
 	// Read only field.
 	ExportedCollections *int `json:"exportedCollections,omitempty"`
-	// Total number of collections on the replica set to export.
+	// Total count of collections whose documents will be exported to the Export Bucket.
 	// Read only field.
 	TotalCollections *int `json:"totalCollections,omitempty"`
 }

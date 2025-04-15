@@ -8,11 +8,11 @@ import (
 
 // UserAccessRoleAssignment struct for UserAccessRoleAssignment
 type UserAccessRoleAssignment struct {
-	// Unique 24-hexadecimal digit string that identifies the organization API key.
-	// Read only field.
-	ApiUserId *string `json:"apiUserId,omitempty"`
 	// List of roles to grant this API key. If you provide this list, provide a minimum of one role and ensure each role applies to this project.
 	Roles *[]string `json:"roles,omitempty"`
+	// Unique 24-hexadecimal digit string that identifies the organization API key.
+	// Read only field.
+	UserId *string `json:"userId,omitempty"`
 }
 
 // NewUserAccessRoleAssignment instantiates a new UserAccessRoleAssignment object
@@ -30,39 +30,6 @@ func NewUserAccessRoleAssignment() *UserAccessRoleAssignment {
 func NewUserAccessRoleAssignmentWithDefaults() *UserAccessRoleAssignment {
 	this := UserAccessRoleAssignment{}
 	return &this
-}
-
-// GetApiUserId returns the ApiUserId field value if set, zero value otherwise
-func (o *UserAccessRoleAssignment) GetApiUserId() string {
-	if o == nil || IsNil(o.ApiUserId) {
-		var ret string
-		return ret
-	}
-	return *o.ApiUserId
-}
-
-// GetApiUserIdOk returns a tuple with the ApiUserId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UserAccessRoleAssignment) GetApiUserIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ApiUserId) {
-		return nil, false
-	}
-
-	return o.ApiUserId, true
-}
-
-// HasApiUserId returns a boolean if a field has been set.
-func (o *UserAccessRoleAssignment) HasApiUserId() bool {
-	if o != nil && !IsNil(o.ApiUserId) {
-		return true
-	}
-
-	return false
-}
-
-// SetApiUserId gets a reference to the given string and assigns it to the ApiUserId field.
-func (o *UserAccessRoleAssignment) SetApiUserId(v string) {
-	o.ApiUserId = &v
 }
 
 // GetRoles returns the Roles field value if set, zero value otherwise
@@ -96,6 +63,39 @@ func (o *UserAccessRoleAssignment) HasRoles() bool {
 // SetRoles gets a reference to the given []string and assigns it to the Roles field.
 func (o *UserAccessRoleAssignment) SetRoles(v []string) {
 	o.Roles = &v
+}
+
+// GetUserId returns the UserId field value if set, zero value otherwise
+func (o *UserAccessRoleAssignment) GetUserId() string {
+	if o == nil || IsNil(o.UserId) {
+		var ret string
+		return ret
+	}
+	return *o.UserId
+}
+
+// GetUserIdOk returns a tuple with the UserId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UserAccessRoleAssignment) GetUserIdOk() (*string, bool) {
+	if o == nil || IsNil(o.UserId) {
+		return nil, false
+	}
+
+	return o.UserId, true
+}
+
+// HasUserId returns a boolean if a field has been set.
+func (o *UserAccessRoleAssignment) HasUserId() bool {
+	if o != nil && !IsNil(o.UserId) {
+		return true
+	}
+
+	return false
+}
+
+// SetUserId gets a reference to the given string and assigns it to the UserId field.
+func (o *UserAccessRoleAssignment) SetUserId(v string) {
+	o.UserId = &v
 }
 
 func (o UserAccessRoleAssignment) MarshalJSONWithoutReadOnly() ([]byte, error) {

@@ -39,7 +39,7 @@ func main() {
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    cloudDatabaseUser := *openapiclient.NewCloudDatabaseUser("DatabaseName_example", "32b6e34b3d91647abb20e7b8", "Username_example") // CloudDatabaseUser | 
+    cloudDatabaseUser := *openapiclient.NewCloudDatabaseUser("DatabaseName_example", "GroupId_example", "Username_example") // CloudDatabaseUser | 
 
     resp, r, err := sdk.DatabaseUsersApi.CreateDatabaseUser(context.Background(), groupId, &cloudDatabaseUser).Execute()
     if err != nil {
@@ -89,7 +89,7 @@ Name | Type | Description  | Notes
 
 ## DeleteDatabaseUser
 
-> map[string]interface{} DeleteDatabaseUser(ctx, groupId, databaseName, username).Execute()
+> DeleteDatabaseUser(ctx, groupId, databaseName, username).Execute()
 
 Remove One Database User from One Project
 
@@ -117,14 +117,12 @@ func main() {
     databaseName := "databaseName_example" // string | 
     username := "SCRAM-SHA: dylan or AWS IAM: arn:aws:iam::123456789012:user/sales/enterprise/DylanBloggs or x.509/LDAP: CN=Dylan Bloggs,OU=Enterprise,OU=Sales,DC=Example,DC=COM or OIDC: IdPIdentifier/IdPGroupName" // string | 
 
-    resp, r, err := sdk.DatabaseUsersApi.DeleteDatabaseUser(context.Background(), groupId, databaseName, username).Execute()
+    r, err := sdk.DatabaseUsersApi.DeleteDatabaseUser(context.Background(), groupId, databaseName, username).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabaseUsersApi.DeleteDatabaseUser``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `DeleteDatabaseUser`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `DatabaseUsersApi.DeleteDatabaseUser`: %v\n", resp)
 }
 ```
 
@@ -151,7 +149,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -273,8 +271,8 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     includeCount := true // bool |  (optional) (default to true)
-    itemsPerPage := int(100) // int |  (optional) (default to 100)
-    pageNum := int(1) // int |  (optional) (default to 1)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
 
     resp, r, err := sdk.DatabaseUsersApi.ListDatabaseUsers(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
@@ -353,7 +351,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     databaseName := "databaseName_example" // string | 
     username := "SCRAM-SHA: dylan or AWS IAM: arn:aws:iam::123456789012:user/sales/enterprise/DylanBloggs or x.509/LDAP: CN=Dylan Bloggs,OU=Enterprise,OU=Sales,DC=Example,DC=COM or OIDC: IdPIdentifier/IdPGroupName" // string | 
-    cloudDatabaseUser := *openapiclient.NewCloudDatabaseUser("DatabaseName_example", "32b6e34b3d91647abb20e7b8", "Username_example") // CloudDatabaseUser | 
+    cloudDatabaseUser := *openapiclient.NewCloudDatabaseUser("DatabaseName_example", "GroupId_example", "Username_example") // CloudDatabaseUser | 
 
     resp, r, err := sdk.DatabaseUsersApi.UpdateDatabaseUser(context.Background(), groupId, databaseName, username, &cloudDatabaseUser).Execute()
     if err != nil {

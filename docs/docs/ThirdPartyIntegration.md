@@ -5,12 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | Integration id. | [optional] 
-**Type** | Pointer to **string** | Integration type  Alternatively: Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the third-party service integration type.  Alternatively: Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the third-party service integration type.  Alternatively: Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the third-party service integration type.  Alternatively: Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the third-party service integration type.  Alternatively: Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the third-party service integration type.  Alternatively: Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the third-party service integration type.  Alternatively: Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the third-party service integration type.  Alternatively: Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the third-party service integration type.  Alternatively: Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the third-party service integration type. | [optional] 
+**Type** | Pointer to **string** | Integration type.  Alternatively: Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the third-party service integration type.  Alternatively: Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the third-party service integration type.  Alternatively: Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the third-party service integration type.  Alternatively: Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the third-party service integration type.  Alternatively: Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the third-party service integration type.  Alternatively: Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the third-party service integration type.  Alternatively: Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the third-party service integration type.  Alternatively: Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the third-party service integration type.  Alternatively: Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the third-party service integration type. | [optional] 
 **ApiKey** | Pointer to **string** | Key that allows MongoDB Cloud to access your Datadog account.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API.  Alternatively: Key that allows MongoDB Cloud to access your Opsgenie account.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API.  Alternatively: Key that allows MongoDB Cloud to access your VictorOps account.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API. | [optional] 
-**Region** | Pointer to **string** | Two-letter code that indicates which regional URL MongoDB uses to access the Datadog API.  To learn more about Datadog&#39;s regions, see &lt;a href&#x3D;\&quot;https://docs.datadoghq.com/getting_started/site/\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;Datadog Sites&lt;/a&gt;.  Alternatively: Two-letter code that indicates which regional URL MongoDB uses to access the Opsgenie API.  Alternatively: PagerDuty region that indicates the API Uniform Resource Locator (URL) to use. | [optional] 
+**Region** | Pointer to **string** | Two-letter code that indicates which regional URL MongoDB uses to access the Datadog API.  Alternatively: Two-letter code that indicates which regional URL MongoDB uses to access the Opsgenie API.  Alternatively: PagerDuty region that indicates the API Uniform Resource Locator (URL) to use. | [optional] 
+**SendCollectionLatencyMetrics** | Pointer to **bool** | Toggle sending collection latency metrics that includes database names and collection namesand latency metrics on reads, writes, commands, and transactions. | [optional] [default to false]
+**SendDatabaseMetrics** | Pointer to **bool** | Toggle sending database metrics that includes database names and metrics on the number of collections, storage size, and index size. | [optional] [default to false]
 **MicrosoftTeamsWebhookUrl** | Pointer to **string** | Endpoint web address of the Microsoft Teams webhook to which MongoDB Cloud sends notifications.  **NOTE**: When you view or edit the alert for a Microsoft Teams notification, the URL appears partially redacted. | [optional] 
 **AccountId** | Pointer to **string** | Unique 40-hexadecimal digit string that identifies your New Relic account. | [optional] 
-**LicenseKey** | Pointer to **string** | Unique 40-hexadecimal digit string that identifies your New Relic license.  **IMPORTANT**: Effective Wednesday, June 16th, 2021, New Relic no longer supports the plugin-based integration with MongoDB. We do not recommend that you sign up for the plugin-based integration. To learn more, see the &lt;a href&#x3D;\&quot;https://discuss.newrelic.com/t/new-relic-plugin-eol-wednesday-june-16th-2021/127267\&quot; target&#x3D;\&quot;_blank\&quot;&gt;New Relic Plugin EOL Statement&lt;/a&gt; Consider configuring an alternative monitoring integration before June 16th to maintain visibility into your MongoDB deployments. | [optional] 
+**LicenseKey** | Pointer to **string** | Unique 40-hexadecimal digit string that identifies your New Relic license.  **IMPORTANT**: Effective Wednesday, June 16th, 2021, New Relic no longer supports the plugin-based integration with MongoDB. We do not recommend that you sign up for the plugin-based integration. Consider configuring an alternative monitoring integration before June 16th to maintain visibility into your MongoDB deployments. | [optional] 
 **ReadToken** | Pointer to **string** | Query key used to access your New Relic account. | [optional] 
 **WriteToken** | Pointer to **string** | Insert key associated with your New Relic account. | [optional] 
 **ServiceKey** | Pointer to **string** | Service key associated with your PagerDuty account.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API. | [optional] 
@@ -140,6 +142,54 @@ SetRegion sets Region field to given value.
 `func (o *ThirdPartyIntegration) HasRegion() bool`
 
 HasRegion returns a boolean if a field has been set.
+### GetSendCollectionLatencyMetrics
+
+`func (o *ThirdPartyIntegration) GetSendCollectionLatencyMetrics() bool`
+
+GetSendCollectionLatencyMetrics returns the SendCollectionLatencyMetrics field if non-nil, zero value otherwise.
+
+### GetSendCollectionLatencyMetricsOk
+
+`func (o *ThirdPartyIntegration) GetSendCollectionLatencyMetricsOk() (*bool, bool)`
+
+GetSendCollectionLatencyMetricsOk returns a tuple with the SendCollectionLatencyMetrics field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSendCollectionLatencyMetrics
+
+`func (o *ThirdPartyIntegration) SetSendCollectionLatencyMetrics(v bool)`
+
+SetSendCollectionLatencyMetrics sets SendCollectionLatencyMetrics field to given value.
+
+### HasSendCollectionLatencyMetrics
+
+`func (o *ThirdPartyIntegration) HasSendCollectionLatencyMetrics() bool`
+
+HasSendCollectionLatencyMetrics returns a boolean if a field has been set.
+### GetSendDatabaseMetrics
+
+`func (o *ThirdPartyIntegration) GetSendDatabaseMetrics() bool`
+
+GetSendDatabaseMetrics returns the SendDatabaseMetrics field if non-nil, zero value otherwise.
+
+### GetSendDatabaseMetricsOk
+
+`func (o *ThirdPartyIntegration) GetSendDatabaseMetricsOk() (*bool, bool)`
+
+GetSendDatabaseMetricsOk returns a tuple with the SendDatabaseMetrics field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSendDatabaseMetrics
+
+`func (o *ThirdPartyIntegration) SetSendDatabaseMetrics(v bool)`
+
+SetSendDatabaseMetrics sets SendDatabaseMetrics field to given value.
+
+### HasSendDatabaseMetrics
+
+`func (o *ThirdPartyIntegration) HasSendDatabaseMetrics() bool`
+
+HasSendDatabaseMetrics returns a boolean if a field has been set.
 ### GetMicrosoftTeamsWebhookUrl
 
 `func (o *ThirdPartyIntegration) GetMicrosoftTeamsWebhookUrl() string`

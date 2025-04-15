@@ -8,8 +8,7 @@ import (
 
 // ClusterFreeAutoScaling Range of instance sizes to which your cluster can scale.
 type ClusterFreeAutoScaling struct {
-	// Collection of settings that configures how a cluster might scale its cluster tier and whether the cluster can scale down.
-	Compute *string `json:"compute,omitempty"`
+	Compute *FreeComputeAutoScalingRules `json:"compute,omitempty"`
 }
 
 // NewClusterFreeAutoScaling instantiates a new ClusterFreeAutoScaling object
@@ -30,9 +29,9 @@ func NewClusterFreeAutoScalingWithDefaults() *ClusterFreeAutoScaling {
 }
 
 // GetCompute returns the Compute field value if set, zero value otherwise
-func (o *ClusterFreeAutoScaling) GetCompute() string {
+func (o *ClusterFreeAutoScaling) GetCompute() FreeComputeAutoScalingRules {
 	if o == nil || IsNil(o.Compute) {
-		var ret string
+		var ret FreeComputeAutoScalingRules
 		return ret
 	}
 	return *o.Compute
@@ -40,7 +39,7 @@ func (o *ClusterFreeAutoScaling) GetCompute() string {
 
 // GetComputeOk returns a tuple with the Compute field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterFreeAutoScaling) GetComputeOk() (*string, bool) {
+func (o *ClusterFreeAutoScaling) GetComputeOk() (*FreeComputeAutoScalingRules, bool) {
 	if o == nil || IsNil(o.Compute) {
 		return nil, false
 	}
@@ -57,8 +56,8 @@ func (o *ClusterFreeAutoScaling) HasCompute() bool {
 	return false
 }
 
-// SetCompute gets a reference to the given string and assigns it to the Compute field.
-func (o *ClusterFreeAutoScaling) SetCompute(v string) {
+// SetCompute gets a reference to the given FreeComputeAutoScalingRules and assigns it to the Compute field.
+func (o *ClusterFreeAutoScaling) SetCompute(v FreeComputeAutoScalingRules) {
 	o.Compute = &v
 }
 

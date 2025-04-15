@@ -17,7 +17,9 @@ type ClusterSearchIndex struct {
 	IndexID *string `json:"indexID,omitempty"`
 	// Human-readable label that identifies this index. Within each namespace, names of all indexes in the namespace must be unique.
 	Name string `json:"name"`
-	// Condition of the search index when you made this request.  | Status | Index Condition |  |---|---|  | IN_PROGRESS | Atlas is building or re-building the index after an edit. |  | STEADY | You can use this search index. |  | FAILED | Atlas could not build the index. |  | MIGRATING | Atlas is upgrading the underlying cluster tier and migrating indexes. |  | PAUSED | The cluster is paused. |
+	// Number of index partitions. Allowed values are [1, 2, 4].
+	NumPartitions *int `json:"numPartitions,omitempty"`
+	// Condition of the search index when you made this request.  - `IN_PROGRESS`: Atlas is building or re-building the index after an edit. - `STEADY`: You can use this search index. - `FAILED`: Atlas could not build the index. - `MIGRATING`: Atlas is upgrading the underlying cluster tier and migrating indexes. - `PAUSED`: The cluster is paused.
 	// Read only field.
 	Status *string `json:"status,omitempty"`
 	// Type of the index. Default type is search.
@@ -46,6 +48,8 @@ func NewClusterSearchIndex(collectionName string, database string, name string) 
 	this.CollectionName = collectionName
 	this.Database = database
 	this.Name = name
+	var numPartitions int = 1
+	this.NumPartitions = &numPartitions
 	var analyzer string = "lucene.standard"
 	this.Analyzer = &analyzer
 	var searchAnalyzer string = "lucene.standard"
@@ -58,6 +62,8 @@ func NewClusterSearchIndex(collectionName string, database string, name string) 
 // but it doesn't guarantee that properties required by API are set
 func NewClusterSearchIndexWithDefaults() *ClusterSearchIndex {
 	this := ClusterSearchIndex{}
+	var numPartitions int = 1
+	this.NumPartitions = &numPartitions
 	var analyzer string = "lucene.standard"
 	this.Analyzer = &analyzer
 	var searchAnalyzer string = "lucene.standard"
@@ -168,6 +174,39 @@ func (o *ClusterSearchIndex) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *ClusterSearchIndex) SetName(v string) {
 	o.Name = v
+}
+
+// GetNumPartitions returns the NumPartitions field value if set, zero value otherwise
+func (o *ClusterSearchIndex) GetNumPartitions() int {
+	if o == nil || IsNil(o.NumPartitions) {
+		var ret int
+		return ret
+	}
+	return *o.NumPartitions
+}
+
+// GetNumPartitionsOk returns a tuple with the NumPartitions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterSearchIndex) GetNumPartitionsOk() (*int, bool) {
+	if o == nil || IsNil(o.NumPartitions) {
+		return nil, false
+	}
+
+	return o.NumPartitions, true
+}
+
+// HasNumPartitions returns a boolean if a field has been set.
+func (o *ClusterSearchIndex) HasNumPartitions() bool {
+	if o != nil && !IsNil(o.NumPartitions) {
+		return true
+	}
+
+	return false
+}
+
+// SetNumPartitions gets a reference to the given int and assigns it to the NumPartitions field.
+func (o *ClusterSearchIndex) SetNumPartitions(v int) {
+	o.NumPartitions = &v
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise
@@ -479,6 +518,9 @@ func (o ClusterSearchIndex) ToMap() (map[string]interface{}, error) {
 	toSerialize["collectionName"] = o.CollectionName
 	toSerialize["database"] = o.Database
 	toSerialize["name"] = o.Name
+	if !IsNil(o.NumPartitions) {
+		toSerialize["numPartitions"] = o.NumPartitions
+	}
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}

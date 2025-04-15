@@ -4,6 +4,7 @@ package admin
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // BackupSnapshotPart Characteristics that identify this snapshot.
@@ -11,6 +12,9 @@ type BackupSnapshotPart struct {
 	// Unique 24-hexadecimal digit string that identifies the cluster with the snapshots you want to return.
 	// Read only field.
 	ClusterId *string `json:"clusterId,omitempty"`
+	// Date and time when the snapshot completed.
+	// Read only field.
+	CompletedTime *time.Time `json:"completedTime,omitempty"`
 	// Human-readable label that identifies the method of compression for the snapshot.
 	// Read only field.
 	CompressionSetting *string `json:"compressionSetting,omitempty"`
@@ -20,9 +24,15 @@ type BackupSnapshotPart struct {
 	// Flag that indicates whether someone encrypted this snapshot.
 	// Read only field.
 	EncryptionEnabled *bool `json:"encryptionEnabled,omitempty"`
+	// Number that indicates the feature compatibility version of MongoDB that the replica set primary ran when MongoDB Cloud created the snapshot.
+	// Read only field.
+	Fcv *string `json:"fcv,omitempty"`
 	// Number that indicates the total size of the data files in bytes.
 	// Read only field.
 	FileSizeBytes *int64 `json:"fileSizeBytes,omitempty"`
+	// Hostname and port that indicate the node on which MongoDB Cloud created the snapshot.
+	// Read only field.
+	MachineId *string `json:"machineId,omitempty"`
 	// Unique string that identifies the Key Management Interoperability (KMIP) master key used to encrypt the snapshot data. The resource returns this parameter when `\"parts.encryptionEnabled\" : true`.
 	// Read only field.
 	MasterKeyUUID *string `json:"masterKeyUUID,omitempty"`
@@ -32,6 +42,9 @@ type BackupSnapshotPart struct {
 	// Human-readable label that identifies the replica set.
 	// Read only field.
 	ReplicaSetName *string `json:"replicaSetName,omitempty"`
+	// The node's role at the time when snapshot process began.
+	// Read only field.
+	ReplicaState *string `json:"replicaState,omitempty"`
 	// Number that indicates the total size of space allocated for document storage.
 	// Read only field.
 	StorageSizeBytes *int64 `json:"storageSizeBytes,omitempty"`
@@ -88,6 +101,39 @@ func (o *BackupSnapshotPart) HasClusterId() bool {
 // SetClusterId gets a reference to the given string and assigns it to the ClusterId field.
 func (o *BackupSnapshotPart) SetClusterId(v string) {
 	o.ClusterId = &v
+}
+
+// GetCompletedTime returns the CompletedTime field value if set, zero value otherwise
+func (o *BackupSnapshotPart) GetCompletedTime() time.Time {
+	if o == nil || IsNil(o.CompletedTime) {
+		var ret time.Time
+		return ret
+	}
+	return *o.CompletedTime
+}
+
+// GetCompletedTimeOk returns a tuple with the CompletedTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BackupSnapshotPart) GetCompletedTimeOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.CompletedTime) {
+		return nil, false
+	}
+
+	return o.CompletedTime, true
+}
+
+// HasCompletedTime returns a boolean if a field has been set.
+func (o *BackupSnapshotPart) HasCompletedTime() bool {
+	if o != nil && !IsNil(o.CompletedTime) {
+		return true
+	}
+
+	return false
+}
+
+// SetCompletedTime gets a reference to the given time.Time and assigns it to the CompletedTime field.
+func (o *BackupSnapshotPart) SetCompletedTime(v time.Time) {
+	o.CompletedTime = &v
 }
 
 // GetCompressionSetting returns the CompressionSetting field value if set, zero value otherwise
@@ -189,6 +235,39 @@ func (o *BackupSnapshotPart) SetEncryptionEnabled(v bool) {
 	o.EncryptionEnabled = &v
 }
 
+// GetFcv returns the Fcv field value if set, zero value otherwise
+func (o *BackupSnapshotPart) GetFcv() string {
+	if o == nil || IsNil(o.Fcv) {
+		var ret string
+		return ret
+	}
+	return *o.Fcv
+}
+
+// GetFcvOk returns a tuple with the Fcv field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BackupSnapshotPart) GetFcvOk() (*string, bool) {
+	if o == nil || IsNil(o.Fcv) {
+		return nil, false
+	}
+
+	return o.Fcv, true
+}
+
+// HasFcv returns a boolean if a field has been set.
+func (o *BackupSnapshotPart) HasFcv() bool {
+	if o != nil && !IsNil(o.Fcv) {
+		return true
+	}
+
+	return false
+}
+
+// SetFcv gets a reference to the given string and assigns it to the Fcv field.
+func (o *BackupSnapshotPart) SetFcv(v string) {
+	o.Fcv = &v
+}
+
 // GetFileSizeBytes returns the FileSizeBytes field value if set, zero value otherwise
 func (o *BackupSnapshotPart) GetFileSizeBytes() int64 {
 	if o == nil || IsNil(o.FileSizeBytes) {
@@ -220,6 +299,39 @@ func (o *BackupSnapshotPart) HasFileSizeBytes() bool {
 // SetFileSizeBytes gets a reference to the given int64 and assigns it to the FileSizeBytes field.
 func (o *BackupSnapshotPart) SetFileSizeBytes(v int64) {
 	o.FileSizeBytes = &v
+}
+
+// GetMachineId returns the MachineId field value if set, zero value otherwise
+func (o *BackupSnapshotPart) GetMachineId() string {
+	if o == nil || IsNil(o.MachineId) {
+		var ret string
+		return ret
+	}
+	return *o.MachineId
+}
+
+// GetMachineIdOk returns a tuple with the MachineId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BackupSnapshotPart) GetMachineIdOk() (*string, bool) {
+	if o == nil || IsNil(o.MachineId) {
+		return nil, false
+	}
+
+	return o.MachineId, true
+}
+
+// HasMachineId returns a boolean if a field has been set.
+func (o *BackupSnapshotPart) HasMachineId() bool {
+	if o != nil && !IsNil(o.MachineId) {
+		return true
+	}
+
+	return false
+}
+
+// SetMachineId gets a reference to the given string and assigns it to the MachineId field.
+func (o *BackupSnapshotPart) SetMachineId(v string) {
+	o.MachineId = &v
 }
 
 // GetMasterKeyUUID returns the MasterKeyUUID field value if set, zero value otherwise
@@ -319,6 +431,39 @@ func (o *BackupSnapshotPart) HasReplicaSetName() bool {
 // SetReplicaSetName gets a reference to the given string and assigns it to the ReplicaSetName field.
 func (o *BackupSnapshotPart) SetReplicaSetName(v string) {
 	o.ReplicaSetName = &v
+}
+
+// GetReplicaState returns the ReplicaState field value if set, zero value otherwise
+func (o *BackupSnapshotPart) GetReplicaState() string {
+	if o == nil || IsNil(o.ReplicaState) {
+		var ret string
+		return ret
+	}
+	return *o.ReplicaState
+}
+
+// GetReplicaStateOk returns a tuple with the ReplicaState field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BackupSnapshotPart) GetReplicaStateOk() (*string, bool) {
+	if o == nil || IsNil(o.ReplicaState) {
+		return nil, false
+	}
+
+	return o.ReplicaState, true
+}
+
+// HasReplicaState returns a boolean if a field has been set.
+func (o *BackupSnapshotPart) HasReplicaState() bool {
+	if o != nil && !IsNil(o.ReplicaState) {
+		return true
+	}
+
+	return false
+}
+
+// SetReplicaState gets a reference to the given string and assigns it to the ReplicaState field.
+func (o *BackupSnapshotPart) SetReplicaState(v string) {
+	o.ReplicaState = &v
 }
 
 // GetStorageSizeBytes returns the StorageSizeBytes field value if set, zero value otherwise

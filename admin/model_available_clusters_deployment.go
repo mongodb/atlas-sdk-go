@@ -17,7 +17,7 @@ type AvailableClustersDeployment struct {
 	// Size of this database on disk at the time of the request expressed in bytes.
 	// Read only field.
 	DbSizeBytes *int64 `json:"dbSizeBytes,omitempty"`
-	// Version of MongoDB [features](https://docs.mongodb.com/manual/reference/command/setFeatureCompatibilityVersion) that this cluster supports.
+	// Version of MongoDB features that this cluster supports.
 	// Read only field.
 	FeatureCompatibilityVersion string `json:"featureCompatibilityVersion"`
 	// Flag that indicates whether Automation manages this cluster.

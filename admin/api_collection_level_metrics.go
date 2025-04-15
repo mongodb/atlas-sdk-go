@@ -45,7 +45,7 @@ type CollectionLevelMetricsApi interface {
 	/*
 		GetCollStatsLatencyNamespaceHostMeasurements Return Host-Level Query Latency
 
-		[experimental] Get a list of the Coll Stats Latency process-level measurements for the given namespace
+		[experimental] Get a list of the Coll Stats Latency process-level measurements for the given namespace.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -89,7 +89,7 @@ type CollectionLevelMetricsApi interface {
 	GetCollStatsLatencyNamespaceMetricsWithParams(ctx context.Context, args *GetCollStatsLatencyNamespaceMetricsApiParams) GetCollStatsLatencyNamespaceMetricsApiRequest
 
 	// Method available only for mocking purposes
-	GetCollStatsLatencyNamespaceMetricsExecute(r GetCollStatsLatencyNamespaceMetricsApiRequest) (map[string]interface{}, *http.Response, error)
+	GetCollStatsLatencyNamespaceMetricsExecute(r GetCollStatsLatencyNamespaceMetricsApiRequest) (*http.Response, error)
 
 	/*
 		GetCollStatsLatencyNamespacesForCluster Return Ranked Namespaces from a Cluster
@@ -167,7 +167,7 @@ type CollectionLevelMetricsApi interface {
 	/*
 		PinNamespacesPatch Add Pinned Namespaces
 
-		[experimental] Add provided list of namespaces to existing pinned namespaces list for collection-level latency metrics collection for the given Group and Cluster
+		[experimental] Add provided list of namespaces to existing pinned namespaces list for collection-level latency metrics collection for the given Group and Cluster.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -215,7 +215,7 @@ type CollectionLevelMetricsApi interface {
 	/*
 		UnpinNamespaces Unpin namespaces
 
-		[experimental] Unpin provided list of namespaces for collection-level latency metrics collection for the given Group and Cluster
+		[experimental] Unpin provided list of namespaces for collection-level latency metrics collection for the given Group and Cluster.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -510,7 +510,7 @@ func (r GetCollStatsLatencyNamespaceHostMeasurementsApiRequest) Execute() (*Meas
 /*
 GetCollStatsLatencyNamespaceHostMeasurements Return Host-Level Query Latency
 
-[experimental] Get a list of the Coll Stats Latency process-level measurements for the given namespace
+[experimental] Get a list of the Coll Stats Latency process-level measurements for the given namespace.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -652,7 +652,7 @@ func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespaceMetricsWi
 	}
 }
 
-func (r GetCollStatsLatencyNamespaceMetricsApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r GetCollStatsLatencyNamespaceMetricsApiRequest) Execute() (*http.Response, error) {
 	return r.ApiService.GetCollStatsLatencyNamespaceMetricsExecute(r)
 }
 
@@ -674,19 +674,16 @@ func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespaceMetrics(c
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
-func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespaceMetricsExecute(r GetCollStatsLatencyNamespaceMetricsApiRequest) (map[string]interface{}, *http.Response, error) {
+func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespaceMetricsExecute(r GetCollStatsLatencyNamespaceMetricsApiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod = http.MethodGet
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionLevelMetricsApiService.GetCollStatsLatencyNamespaceMetrics")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/collStats/metrics"
@@ -715,19 +712,19 @@ func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespaceMetricsEx
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -739,23 +736,14 @@ func (a *CollectionLevelMetricsApiService) GetCollStatsLatencyNamespaceMetricsEx
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
+			return localVarHTTPResponse, newErr
 		}
 		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
 		newErr.model = v
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
 
 type GetCollStatsLatencyNamespacesForClusterApiRequest struct {
@@ -1257,7 +1245,7 @@ func (r PinNamespacesPatchApiRequest) Execute() (*PinnedNamespaces, *http.Respon
 /*
 PinNamespacesPatch Add Pinned Namespaces
 
-[experimental] Add provided list of namespaces to existing pinned namespaces list for collection-level latency metrics collection for the given Group and Cluster
+[experimental] Add provided list of namespaces to existing pinned namespaces list for collection-level latency metrics collection for the given Group and Cluster.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -1535,7 +1523,7 @@ func (r UnpinNamespacesApiRequest) Execute() (*PinnedNamespaces, *http.Response,
 /*
 UnpinNamespaces Unpin namespaces
 
-[experimental] Unpin provided list of namespaces for collection-level latency metrics collection for the given Group and Cluster
+[experimental] Unpin provided list of namespaces for collection-level latency metrics collection for the given Group and Cluster.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.

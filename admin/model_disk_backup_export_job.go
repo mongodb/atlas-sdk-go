@@ -11,20 +11,17 @@ import (
 type DiskBackupExportJob struct {
 	// Information on the export job for each replica set in the sharded cluster.
 	// Read only field.
-	Components *[]DiskBackupBaseRestoreMember `json:"components,omitempty"`
-	// Date and time when someone created this export job. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC.
+	Components *[]DiskBackupExportMember `json:"components,omitempty"`
+	// Date and time when a user or Atlas created the Export Job. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC.
 	// Read only field.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
-	// Collection of key-value pairs that represent custom data for the metadata file that MongoDB Cloud uploads to the bucket when the export job finishes.
+	// Collection of key-value pairs that represent custom data for the metadata file that MongoDB Cloud uploads when the Export Job finishes.
 	CustomData *[]BackupLabel `json:"customData,omitempty"`
-	// One or more Uniform Resource Locators (URLs) that point to the compressed snapshot files for manual download. MongoDB Cloud returns this parameter when `\"deliveryType\" : \"download\"`.
-	// Read only field.
-	DeliveryUrl *[]string `json:"deliveryUrl,omitempty"`
-	// Unique 24-hexadecimal character string that identifies the AWS bucket to which MongoDB Cloud exports the Cloud Backup snapshot.
+	// Unique 24-hexadecimal character string that identifies the Export Bucket.
 	// Read only field.
 	ExportBucketId string        `json:"exportBucketId"`
 	ExportStatus   *ExportStatus `json:"exportStatus,omitempty"`
-	// Date and time when this export job completed. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC.
+	// Date and time when this Export Job completed. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC.
 	// Read only field.
 	FinishedAt *time.Time `json:"finishedAt,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the restore job.
@@ -33,14 +30,15 @@ type DiskBackupExportJob struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
-	// Full path on the cloud provider bucket to the folder where the snapshot is exported.
+	// Prefix used for all blob storage objects uploaded as part of the Export Job.
 	// Read only field.
 	Prefix *string `json:"prefix,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the snapshot.
 	SnapshotId *string `json:"snapshotId,omitempty"`
-	// State of the export job.
+	// State of the Export Job.
 	// Read only field.
-	State *string `json:"state,omitempty"`
+	State       *string      `json:"state,omitempty"`
+	StateReason *StateReason `json:"stateReason,omitempty"`
 }
 
 // NewDiskBackupExportJob instantiates a new DiskBackupExportJob object
@@ -62,9 +60,9 @@ func NewDiskBackupExportJobWithDefaults() *DiskBackupExportJob {
 }
 
 // GetComponents returns the Components field value if set, zero value otherwise
-func (o *DiskBackupExportJob) GetComponents() []DiskBackupBaseRestoreMember {
+func (o *DiskBackupExportJob) GetComponents() []DiskBackupExportMember {
 	if o == nil || IsNil(o.Components) {
-		var ret []DiskBackupBaseRestoreMember
+		var ret []DiskBackupExportMember
 		return ret
 	}
 	return *o.Components
@@ -72,7 +70,7 @@ func (o *DiskBackupExportJob) GetComponents() []DiskBackupBaseRestoreMember {
 
 // GetComponentsOk returns a tuple with the Components field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiskBackupExportJob) GetComponentsOk() (*[]DiskBackupBaseRestoreMember, bool) {
+func (o *DiskBackupExportJob) GetComponentsOk() (*[]DiskBackupExportMember, bool) {
 	if o == nil || IsNil(o.Components) {
 		return nil, false
 	}
@@ -89,8 +87,8 @@ func (o *DiskBackupExportJob) HasComponents() bool {
 	return false
 }
 
-// SetComponents gets a reference to the given []DiskBackupBaseRestoreMember and assigns it to the Components field.
-func (o *DiskBackupExportJob) SetComponents(v []DiskBackupBaseRestoreMember) {
+// SetComponents gets a reference to the given []DiskBackupExportMember and assigns it to the Components field.
+func (o *DiskBackupExportJob) SetComponents(v []DiskBackupExportMember) {
 	o.Components = &v
 }
 
@@ -158,39 +156,6 @@ func (o *DiskBackupExportJob) HasCustomData() bool {
 // SetCustomData gets a reference to the given []BackupLabel and assigns it to the CustomData field.
 func (o *DiskBackupExportJob) SetCustomData(v []BackupLabel) {
 	o.CustomData = &v
-}
-
-// GetDeliveryUrl returns the DeliveryUrl field value if set, zero value otherwise
-func (o *DiskBackupExportJob) GetDeliveryUrl() []string {
-	if o == nil || IsNil(o.DeliveryUrl) {
-		var ret []string
-		return ret
-	}
-	return *o.DeliveryUrl
-}
-
-// GetDeliveryUrlOk returns a tuple with the DeliveryUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DiskBackupExportJob) GetDeliveryUrlOk() (*[]string, bool) {
-	if o == nil || IsNil(o.DeliveryUrl) {
-		return nil, false
-	}
-
-	return o.DeliveryUrl, true
-}
-
-// HasDeliveryUrl returns a boolean if a field has been set.
-func (o *DiskBackupExportJob) HasDeliveryUrl() bool {
-	if o != nil && !IsNil(o.DeliveryUrl) {
-		return true
-	}
-
-	return false
-}
-
-// SetDeliveryUrl gets a reference to the given []string and assigns it to the DeliveryUrl field.
-func (o *DiskBackupExportJob) SetDeliveryUrl(v []string) {
-	o.DeliveryUrl = &v
 }
 
 // GetExportBucketId returns the ExportBucketId field value
@@ -448,6 +413,39 @@ func (o *DiskBackupExportJob) SetState(v string) {
 	o.State = &v
 }
 
+// GetStateReason returns the StateReason field value if set, zero value otherwise
+func (o *DiskBackupExportJob) GetStateReason() StateReason {
+	if o == nil || IsNil(o.StateReason) {
+		var ret StateReason
+		return ret
+	}
+	return *o.StateReason
+}
+
+// GetStateReasonOk returns a tuple with the StateReason field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DiskBackupExportJob) GetStateReasonOk() (*StateReason, bool) {
+	if o == nil || IsNil(o.StateReason) {
+		return nil, false
+	}
+
+	return o.StateReason, true
+}
+
+// HasStateReason returns a boolean if a field has been set.
+func (o *DiskBackupExportJob) HasStateReason() bool {
+	if o != nil && !IsNil(o.StateReason) {
+		return true
+	}
+
+	return false
+}
+
+// SetStateReason gets a reference to the given StateReason and assigns it to the StateReason field.
+func (o *DiskBackupExportJob) SetStateReason(v StateReason) {
+	o.StateReason = &v
+}
+
 func (o DiskBackupExportJob) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -465,6 +463,9 @@ func (o DiskBackupExportJob) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SnapshotId) {
 		toSerialize["snapshotId"] = o.SnapshotId
+	}
+	if !IsNil(o.StateReason) {
+		toSerialize["stateReason"] = o.StateReason
 	}
 	return toSerialize, nil
 }

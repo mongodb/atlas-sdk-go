@@ -11,10 +11,10 @@ type PaginatedBackupSnapshotExportBucket struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
-	// List of returned documents that MongoDB Cloud providers when completing this request.
+	// List of returned documents that MongoDB Cloud provides when completing this request.
 	// Read only field.
-	Results *[]DiskBackupSnapshotAWSExportBucket `json:"results,omitempty"`
-	// Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`.
+	Results *[]DiskBackupSnapshotAWSExportBucketResponse `json:"results,omitempty"`
+	// Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact.
 	// Read only field.
 	TotalCount *int `json:"totalCount,omitempty"`
 }
@@ -70,9 +70,9 @@ func (o *PaginatedBackupSnapshotExportBucket) SetLinks(v []Link) {
 }
 
 // GetResults returns the Results field value if set, zero value otherwise
-func (o *PaginatedBackupSnapshotExportBucket) GetResults() []DiskBackupSnapshotAWSExportBucket {
+func (o *PaginatedBackupSnapshotExportBucket) GetResults() []DiskBackupSnapshotAWSExportBucketResponse {
 	if o == nil || IsNil(o.Results) {
-		var ret []DiskBackupSnapshotAWSExportBucket
+		var ret []DiskBackupSnapshotAWSExportBucketResponse
 		return ret
 	}
 	return *o.Results
@@ -80,7 +80,7 @@ func (o *PaginatedBackupSnapshotExportBucket) GetResults() []DiskBackupSnapshotA
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedBackupSnapshotExportBucket) GetResultsOk() (*[]DiskBackupSnapshotAWSExportBucket, bool) {
+func (o *PaginatedBackupSnapshotExportBucket) GetResultsOk() (*[]DiskBackupSnapshotAWSExportBucketResponse, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
@@ -97,8 +97,8 @@ func (o *PaginatedBackupSnapshotExportBucket) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []DiskBackupSnapshotAWSExportBucket and assigns it to the Results field.
-func (o *PaginatedBackupSnapshotExportBucket) SetResults(v []DiskBackupSnapshotAWSExportBucket) {
+// SetResults gets a reference to the given []DiskBackupSnapshotAWSExportBucketResponse and assigns it to the Results field.
+func (o *PaginatedBackupSnapshotExportBucket) SetResults(v []DiskBackupSnapshotAWSExportBucketResponse) {
 	o.Results = &v
 }
 
