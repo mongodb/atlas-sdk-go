@@ -126,7 +126,7 @@ func createClusterRequest(projectId string) *admin.ClusterDescription20240805 {
 	// Size
 	priority := int(7)
 	nodeCount := int(3)
-	instanceSize := "M10"
+	instanceSize := "M30"
 
 	return &admin.ClusterDescription20240805{
 		Name:        &clusterName,
