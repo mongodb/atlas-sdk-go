@@ -10,7 +10,7 @@ import (
 type PushBasedLogExportProject struct {
 	// The name of the bucket to which the agent will send the logs to.
 	BucketName *string `json:"bucketName,omitempty"`
-	// Date and time that this feature was enabled on.
+	// Date and time that this feature was enabled on. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	CreateDate *time.Time `json:"createDate,omitempty"`
 	// ID of the AWS IAM role that will be used to write to the S3 bucket.

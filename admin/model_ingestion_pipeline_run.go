@@ -14,7 +14,7 @@ type IngestionPipelineRun struct {
 	// Backup schedule interval of the Data Lake Pipeline.
 	// Read only field.
 	BackupFrequencyType *string `json:"backupFrequencyType,omitempty"`
-	// Timestamp that indicates when the pipeline run was created.
+	// Timestamp that indicates when the pipeline run was created. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	CreatedDate *time.Time `json:"createdDate,omitempty"`
 	// Human-readable label that identifies the dataset that Atlas generates during this pipeline run. You can use this dataset as a `dataSource` in a Federated Database collection.
@@ -24,7 +24,7 @@ type IngestionPipelineRun struct {
 	// Unique 24-hexadecimal character string that identifies the project.
 	// Read only field.
 	GroupId *string `json:"groupId,omitempty"`
-	// Timestamp that indicates the last time that the pipeline run was updated.
+	// Timestamp that indicates the last time that the pipeline run was updated. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	LastUpdatedDate *time.Time `json:"lastUpdatedDate,omitempty"`
 	// Processing phase of the Data Lake Pipeline.
@@ -33,7 +33,7 @@ type IngestionPipelineRun struct {
 	// Unique 24-hexadecimal character string that identifies a Data Lake Pipeline.
 	// Read only field.
 	PipelineId *string `json:"pipelineId,omitempty"`
-	// Timestamp that indicates when the pipeline run will expire and its dataset will be deleted.
+	// Timestamp that indicates when the pipeline run will expire and its dataset will be deleted. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	ScheduledDeletionDate *time.Time `json:"scheduledDeletionDate,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the snapshot of a cluster.

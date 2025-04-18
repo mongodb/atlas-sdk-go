@@ -9,6 +9,8 @@ type StreamsPrivateLinkConnection struct {
 	Id *string `json:"_id,omitempty"`
 	// Amazon Resource Name (ARN).
 	Arn *string `json:"arn,omitempty"`
+	// Azure Resource IDs of each availability zone for the Azure Confluent cluster.
+	AzureResourceIds *[]string `json:"azureResourceIds,omitempty"`
 	// Domain name of Privatelink connected cluster.
 	DnsDomain *string `json:"dnsDomain,omitempty"`
 	// Sub-Domain name of Confluent cluster. These are typically your availability zones.
@@ -122,6 +124,39 @@ func (o *StreamsPrivateLinkConnection) HasArn() bool {
 // SetArn gets a reference to the given string and assigns it to the Arn field.
 func (o *StreamsPrivateLinkConnection) SetArn(v string) {
 	o.Arn = &v
+}
+
+// GetAzureResourceIds returns the AzureResourceIds field value if set, zero value otherwise
+func (o *StreamsPrivateLinkConnection) GetAzureResourceIds() []string {
+	if o == nil || IsNil(o.AzureResourceIds) {
+		var ret []string
+		return ret
+	}
+	return *o.AzureResourceIds
+}
+
+// GetAzureResourceIdsOk returns a tuple with the AzureResourceIds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsPrivateLinkConnection) GetAzureResourceIdsOk() (*[]string, bool) {
+	if o == nil || IsNil(o.AzureResourceIds) {
+		return nil, false
+	}
+
+	return o.AzureResourceIds, true
+}
+
+// HasAzureResourceIds returns a boolean if a field has been set.
+func (o *StreamsPrivateLinkConnection) HasAzureResourceIds() bool {
+	if o != nil && !IsNil(o.AzureResourceIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureResourceIds gets a reference to the given []string and assigns it to the AzureResourceIds field.
+func (o *StreamsPrivateLinkConnection) SetAzureResourceIds(v []string) {
+	o.AzureResourceIds = &v
 }
 
 // GetDnsDomain returns the DnsDomain field value if set, zero value otherwise
