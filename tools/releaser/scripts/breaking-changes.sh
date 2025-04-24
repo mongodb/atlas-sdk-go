@@ -24,6 +24,18 @@ baseVersion() {
     export BASE_VERSION="$base_version"
 }
 
+# Extract changes based on pattern
+extractChanges() {
+    local raw_changes=$1
+    local pattern=$2
+    local header=$3
+    echo "$raw_changes" | awk -v pattern="$pattern" -v header="$header" '
+        $0 ~ pattern {print header; collecting=1; next}
+        collecting && /^#/ {collecting=0}
+        collecting && NF {print "- "$0}
+    '
+}
+
 baseVersion
 
 echo "Installing gorelease"
@@ -37,16 +49,8 @@ RAW_CHANGES=$(gorelease -base "$BASE_VERSION")
 echo "Changes detected from BASE_VERSION $BASE_VERSION:"
 echo "$RAW_CHANGES"
 
-BREAKING_CHANGES=$(echo "$RAW_CHANGES" | awk '
-    /## incompatible changes/ {print "### incompatible changes"; collecting=1; next}
-    collecting && /^#/ {collecting=0}
-    collecting && NF {print "- "$0}
-')
-NON_BREAKING_CHANGES=$(echo "$RAW_CHANGES" | awk '
-    /## compatible changes/ {print "### compatible changes"; collecting=1; next}
-    collecting && /^#/ {collecting=0}
-    collecting && NF {print "- "$0}
-')
+BREAKING_CHANGES=$(extractChanges "$RAW_CHANGES" "## incompatible changes" "### incompatible changes")
+NON_BREAKING_CHANGES=$(extractChanges "$RAW_CHANGES" "## compatible changes" "### compatible changes")
 
 set -e
 popd || exit
@@ -56,10 +60,9 @@ if [ -z "$BREAKING_CHANGES" ] && [ -z "$NON_BREAKING_CHANGES" ]; then
 else
   echo "Detected changes in the release"
   if [ -z "$TARGET_BREAKING_CHANGES_FILE" ]; then
-    echo "Breaking changes for the release:"
-    [ -n "$BREAKING_CHANGES" ] && printf "\nBreaking Changes:\n%s" "$BREAKING_CHANGES"
-    echo "Non-breaking changes for the release:"
-    [ -n "$NON_BREAKING_CHANGES" ] && printf "\nNon-Breaking Changes:%s" "$NON_BREAKING_CHANGES"
+    echo "Changes for the release:"
+    [ -n "$BREAKING_CHANGES" ] && echo -e "\nBreaking Changes:\n$BREAKING_CHANGES"
+    [ -n "$NON_BREAKING_CHANGES" ] && echo -e "\nNon-Breaking Changes:\n$NON_BREAKING_CHANGES"
   else
     # Only create breaking changes file for major version bumps
     if [ -n "$BREAKING_CHANGES" ]; then
