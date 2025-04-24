@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BucketName** | Pointer to **string** | The name of the bucket to which the agent will send the logs to. | [optional] 
-**CreateDate** | Pointer to **time.Time** | Date and time that this feature was enabled on. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
+**CreateDate** | Pointer to **time.Time** | Date and time that this feature was enabled on. | [optional] [readonly] 
 **IamRoleId** | Pointer to **string** | ID of the AWS IAM role that will be used to write to the S3 bucket. | [optional] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **PrefixPath** | Pointer to **string** | S3 directory in which vector will write to in order to store the logs. An empty string denotes the root directory. | [optional] 

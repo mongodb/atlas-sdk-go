@@ -14,7 +14,7 @@ type FederationOidcIdentityProvider struct {
 	Audience *string `json:"audience,omitempty"`
 	// Indicates whether authorization is granted based on group membership or user ID.
 	AuthorizationType *string `json:"authorizationType,omitempty"`
-	// Date that the identity provider was created on. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
+	// Date that the identity provider was created on.
 	// Read only field.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// The description of the identity provider.
@@ -34,7 +34,7 @@ type FederationOidcIdentityProvider struct {
 	OktaIdpId string `json:"oktaIdpId"`
 	// String enum that indicates the protocol of the identity provider. Either SAML or OIDC.
 	Protocol *string `json:"protocol,omitempty"`
-	// Date that the identity provider was last updated on. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
+	// Date that the identity provider was last updated on.
 	// Read only field.
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 	// Identifier of the claim which contains the user ID in the token.

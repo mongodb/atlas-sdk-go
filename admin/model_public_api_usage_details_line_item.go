@@ -8,7 +8,7 @@ import (
 
 // PublicApiUsageDetailsLineItem struct for PublicApiUsageDetailsLineItem
 type PublicApiUsageDetailsLineItem struct {
-	// Billing date of the line item. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
+	// Billing date of the line item.
 	BillDate *time.Time `json:"billDate,omitempty"`
 	// Cluster associated with the line item.
 	ClusterName *string `json:"clusterName,omitempty"`
@@ -23,7 +23,7 @@ type PublicApiUsageDetailsLineItem struct {
 	TotalPriceCents *int64 `json:"totalPriceCents,omitempty"`
 	// Price in units associated with the SKU for the line item.
 	UnitPriceDollars *float64 `json:"unitPriceDollars,omitempty"`
-	// Usage date of the line item. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
+	// Usage date of the line item.
 	UsageDate *time.Time `json:"usageDate,omitempty"`
 }
 

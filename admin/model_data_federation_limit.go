@@ -2,6 +2,10 @@
 
 package admin
 
+import (
+	"time"
+)
+
 // DataFederationLimit Details of user managed limits.
 type DataFederationLimit struct {
 	// Amount that indicates the current usage of the limit.
@@ -18,6 +22,11 @@ type DataFederationLimit struct {
 	Name string `json:"name"`
 	// Amount to set the limit to.
 	Value int64 `json:"value"`
+	// Only used for Data Federation limits. Timestamp that indicates when this usage limit was last modified. This field uses the ISO 8601 timestamp format in UTC.
+	// Read only field.
+	LastModifiedDate *time.Time `json:"lastModifiedDate,omitempty"`
+	// Only used for Data Federation limits. Action to take when the usage limit is exceeded. If limit span is set to QUERY, this is ignored because MongoDB Cloud stops the query when it exceeds the usage limit.
+	OverrunPolicy *string `json:"overrunPolicy,omitempty"`
 }
 
 // NewDataFederationLimit instantiates a new DataFederationLimit object
@@ -184,4 +193,70 @@ func (o *DataFederationLimit) GetValueOk() (*int64, bool) {
 // SetValue sets field value
 func (o *DataFederationLimit) SetValue(v int64) {
 	o.Value = v
+}
+
+// GetLastModifiedDate returns the LastModifiedDate field value if set, zero value otherwise
+func (o *DataFederationLimit) GetLastModifiedDate() time.Time {
+	if o == nil || IsNil(o.LastModifiedDate) {
+		var ret time.Time
+		return ret
+	}
+	return *o.LastModifiedDate
+}
+
+// GetLastModifiedDateOk returns a tuple with the LastModifiedDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DataFederationLimit) GetLastModifiedDateOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.LastModifiedDate) {
+		return nil, false
+	}
+
+	return o.LastModifiedDate, true
+}
+
+// HasLastModifiedDate returns a boolean if a field has been set.
+func (o *DataFederationLimit) HasLastModifiedDate() bool {
+	if o != nil && !IsNil(o.LastModifiedDate) {
+		return true
+	}
+
+	return false
+}
+
+// SetLastModifiedDate gets a reference to the given time.Time and assigns it to the LastModifiedDate field.
+func (o *DataFederationLimit) SetLastModifiedDate(v time.Time) {
+	o.LastModifiedDate = &v
+}
+
+// GetOverrunPolicy returns the OverrunPolicy field value if set, zero value otherwise
+func (o *DataFederationLimit) GetOverrunPolicy() string {
+	if o == nil || IsNil(o.OverrunPolicy) {
+		var ret string
+		return ret
+	}
+	return *o.OverrunPolicy
+}
+
+// GetOverrunPolicyOk returns a tuple with the OverrunPolicy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DataFederationLimit) GetOverrunPolicyOk() (*string, bool) {
+	if o == nil || IsNil(o.OverrunPolicy) {
+		return nil, false
+	}
+
+	return o.OverrunPolicy, true
+}
+
+// HasOverrunPolicy returns a boolean if a field has been set.
+func (o *DataFederationLimit) HasOverrunPolicy() bool {
+	if o != nil && !IsNil(o.OverrunPolicy) {
+		return true
+	}
+
+	return false
+}
+
+// SetOverrunPolicy gets a reference to the given string and assigns it to the OverrunPolicy field.
+func (o *DataFederationLimit) SetOverrunPolicy(v string) {
+	o.OverrunPolicy = &v
 }

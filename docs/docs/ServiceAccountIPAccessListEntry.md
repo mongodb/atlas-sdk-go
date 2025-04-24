@@ -5,10 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CidrBlock** | Pointer to **string** | Range of network addresses in the access list for the Service Account. This parameter requires the range to be expressed in Classless Inter-Domain Routing (CIDR) notation of Internet Protocol version 4 or version 6 addresses. You can set a value for this parameter or **ipAddress**, but not for both in the same request. | [optional] 
-**CreatedAt** | Pointer to **time.Time** | Date MongoDB Cloud added the entry was added to the Access List. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
+**CreatedAt** | Pointer to **time.Time** | Date MongoDB Cloud added the entry was added to the Access List. | [optional] [readonly] 
 **IpAddress** | Pointer to **string** | Network address in the access list for the Service Account. This parameter requires the address to be expressed as one Internet Protocol version 4 or version 6 address. You can set a value for this parameter or **cidrBlock**, but not for both in the same request. | [optional] 
 **LastUsedAddress** | Pointer to **string** | Network address that issued the most recent request to the API. This parameter requires the address to be expressed as one Internet Protocol version 4 or version 6 address. The resource returns this parameter after this IP address makes at least one request. | [optional] [readonly] 
-**LastUsedAt** | Pointer to **time.Time** | Date when MongoDB Cloud received the most recent request that originated from this Internet Protocol version 4 or version 6 address. The resource returns this parameter when at least one request originates from this IP address. MongoDB Cloud updates this parameter each time a client accesses the permitted resource, with a delay of up to 5 minutes. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
+**LastUsedAt** | Pointer to **time.Time** | Date when MongoDB Cloud received the most recent request that originated from this Internet Protocol version 4 or version 6 address. The resource returns this parameter when at least one request originates from this IP address. MongoDB Cloud updates this parameter each time a client accesses the permitted resource, with a delay of up to 5 minutes. | [optional] [readonly] 
 **RequestCount** | Pointer to **int** | The number of requests that has originated from this network address. | [optional] [readonly] 
 
 ## Methods

@@ -7,13 +7,11 @@ type StreamsPrivateLinkConnection struct {
 	// The ID of the Private Link connection.
 	// Read only field.
 	Id *string `json:"_id,omitempty"`
-	// Amazon Resource Name (ARN). Required for AWS Provider and MSK vendor.
+	// Amazon Resource Name (ARN).
 	Arn *string `json:"arn,omitempty"`
-	// Azure Resource IDs of each availability zone for the Azure Confluent cluster.
-	AzureResourceIds *[]string `json:"azureResourceIds,omitempty"`
-	// The domain hostname. Required for the following provider and vendor combinations: - AWS provider with CONFLUENT vendor. - AZURE provider with EVENTHUB or CONFLUENT vendor.
+	// Domain name of Privatelink connected cluster.
 	DnsDomain *string `json:"dnsDomain,omitempty"`
-	// Sub-Domain name of Confluent cluster. These are typically your availability zones. Required for AWS Provider and CONFLUENT vendor, if your AWS CONFLUENT cluster doesn't use subdomains, you must set this to the empty array [].
+	// Sub-Domain name of Confluent cluster. These are typically your availability zones.
 	DnsSubDomain *[]string `json:"dnsSubDomain,omitempty"`
 	// Error message if the state is FAILED.
 	// Read only field.
@@ -27,19 +25,19 @@ type StreamsPrivateLinkConnection struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
-	// Provider where the Kafka cluster is deployed. Valid values are AWS and AZURE.
-	Provider string `json:"provider"`
+	// Provider where the Kafka cluster is deployed.
+	Provider *string `json:"provider,omitempty"`
 	// Account ID from the cloud provider.
 	// Read only field.
 	ProviderAccountId *string `json:"providerAccountId,omitempty"`
-	// The region of the Provider’s cluster. See [AZURE](https://www.mongodb.com/docs/atlas/reference/microsoft-azure/#stream-processing-instances) and [AWS](https://www.mongodb.com/docs/atlas/reference/amazon-aws/#stream-processing-instances) supported regions.
+	// Domain name of Confluent cluster.
 	Region *string `json:"region,omitempty"`
-	// For AZURE EVENTHUB, this is the [namespace endpoint ID](https://learn.microsoft.com/en-us/rest/api/eventhub/namespaces/get). For AWS CONFLUENT cluster, this is the [VPC Endpoint service name](https://docs.confluent.io/cloud/current/networking/private-links/aws-privatelink.html).
+	// Service Endpoint ID.
 	ServiceEndpointId *string `json:"serviceEndpointId,omitempty"`
 	// State the connection is in.
 	// Read only field.
 	State *string `json:"state,omitempty"`
-	// Vendor that manages the Kafka cluster. The following are the vendor values per provider: - MSK and CONFLUENT for the AWS provider. - EVENTHUB and CONFLUENT for the AZURE provider.  **NOTE** Omitting the vendor field will default to using the EVENTHUB vendor for the AZURE provider.
+	// Vendor who manages the Kafka cluster.
 	Vendor *string `json:"vendor,omitempty"`
 }
 
@@ -47,9 +45,8 @@ type StreamsPrivateLinkConnection struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStreamsPrivateLinkConnection(provider string) *StreamsPrivateLinkConnection {
+func NewStreamsPrivateLinkConnection() *StreamsPrivateLinkConnection {
 	this := StreamsPrivateLinkConnection{}
-	this.Provider = provider
 	return &this
 }
 
@@ -125,39 +122,6 @@ func (o *StreamsPrivateLinkConnection) HasArn() bool {
 // SetArn gets a reference to the given string and assigns it to the Arn field.
 func (o *StreamsPrivateLinkConnection) SetArn(v string) {
 	o.Arn = &v
-}
-
-// GetAzureResourceIds returns the AzureResourceIds field value if set, zero value otherwise
-func (o *StreamsPrivateLinkConnection) GetAzureResourceIds() []string {
-	if o == nil || IsNil(o.AzureResourceIds) {
-		var ret []string
-		return ret
-	}
-	return *o.AzureResourceIds
-}
-
-// GetAzureResourceIdsOk returns a tuple with the AzureResourceIds field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *StreamsPrivateLinkConnection) GetAzureResourceIdsOk() (*[]string, bool) {
-	if o == nil || IsNil(o.AzureResourceIds) {
-		return nil, false
-	}
-
-	return o.AzureResourceIds, true
-}
-
-// HasAzureResourceIds returns a boolean if a field has been set.
-func (o *StreamsPrivateLinkConnection) HasAzureResourceIds() bool {
-	if o != nil && !IsNil(o.AzureResourceIds) {
-		return true
-	}
-
-	return false
-}
-
-// SetAzureResourceIds gets a reference to the given []string and assigns it to the AzureResourceIds field.
-func (o *StreamsPrivateLinkConnection) SetAzureResourceIds(v []string) {
-	o.AzureResourceIds = &v
 }
 
 // GetDnsDomain returns the DnsDomain field value if set, zero value otherwise
@@ -358,28 +322,37 @@ func (o *StreamsPrivateLinkConnection) SetLinks(v []Link) {
 	o.Links = &v
 }
 
-// GetProvider returns the Provider field value
+// GetProvider returns the Provider field value if set, zero value otherwise
 func (o *StreamsPrivateLinkConnection) GetProvider() string {
-	if o == nil {
+	if o == nil || IsNil(o.Provider) {
 		var ret string
 		return ret
 	}
-
-	return o.Provider
+	return *o.Provider
 }
 
-// GetProviderOk returns a tuple with the Provider field value
+// GetProviderOk returns a tuple with the Provider field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StreamsPrivateLinkConnection) GetProviderOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Provider) {
 		return nil, false
 	}
-	return &o.Provider, true
+
+	return o.Provider, true
 }
 
-// SetProvider sets field value
+// HasProvider returns a boolean if a field has been set.
+func (o *StreamsPrivateLinkConnection) HasProvider() bool {
+	if o != nil && !IsNil(o.Provider) {
+		return true
+	}
+
+	return false
+}
+
+// SetProvider gets a reference to the given string and assigns it to the Provider field.
 func (o *StreamsPrivateLinkConnection) SetProvider(v string) {
-	o.Provider = v
+	o.Provider = &v
 }
 
 // GetProviderAccountId returns the ProviderAccountId field value if set, zero value otherwise

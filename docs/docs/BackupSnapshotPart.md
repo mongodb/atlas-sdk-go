@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ClusterId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the cluster with the snapshots you want to return. | [optional] [readonly] 
-**CompletedTime** | Pointer to **time.Time** | Date and time when the snapshot completed. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
+**CompletedTime** | Pointer to **time.Time** | Date and time when the snapshot completed. | [optional] [readonly] 
 **CompressionSetting** | Pointer to **string** | Human-readable label that identifies the method of compression for the snapshot. | [optional] [readonly] 
 **DataSizeBytes** | Pointer to **int64** | Total size of the data stored on each node in the cluster. This parameter expresses its value in bytes. | [optional] [readonly] 
 **EncryptionEnabled** | Pointer to **bool** | Flag that indicates whether someone encrypted this snapshot. | [optional] [readonly] 

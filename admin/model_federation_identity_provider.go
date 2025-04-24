@@ -10,7 +10,7 @@ import (
 type FederationIdentityProvider struct {
 	// List that contains the connected organization configurations associated with the identity provider.
 	AssociatedOrgs *[]ConnectedOrgConfig `json:"associatedOrgs,omitempty"`
-	// Date that the identity provider was created on. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
+	// Date that the identity provider was created on.
 	// Read only field.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// The description of the identity provider.
@@ -28,7 +28,7 @@ type FederationIdentityProvider struct {
 	OktaIdpId string `json:"oktaIdpId"`
 	// String enum that indicates the protocol of the identity provider. Either SAML or OIDC.
 	Protocol *string `json:"protocol,omitempty"`
-	// Date that the identity provider was last updated on. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
+	// Date that the identity provider was last updated on.
 	// Read only field.
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 	// URL that points to where to send the SAML response.

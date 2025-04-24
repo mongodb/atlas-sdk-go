@@ -298,6 +298,29 @@ components:
             $ref: "#/components/schemas/ApiError"
       description: Unauthorized.
   schemas:
+    AWSAccountDetails:
+      properties:
+        awsAccountId:
+          description: The AWS Account ID.
+          type: string
+        cidrBlock:
+          description: The VPC CIDR Block.
+          type: string
+        links:
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+          type: array
+        vpcId:
+          description: The VPC ID.
+          type: string
+      type: object
     AWSKMSConfiguration:
       description: Amazon Web Services (AWS) KMS configuration details and encryption
         at rest configuration set for the specified project.
@@ -365,39 +388,6 @@ components:
           readOnly: true
           type: boolean
       type: object
-    AccountDetails:
-      description: Account details for the group, region, and provider.
-      type: object
-      properties:
-        awsAccountId:
-          description: The AWS Account ID.
-          type: string
-        cidrBlock:
-          description: The VPC CIDR Block.
-          type: string
-        cloudProvider:
-          description: Cloud provider.
-          type: string
-        links:
-          description: List of one or more Uniform Resource Locators (URLs) that point to
-            API sub-resources, related API resources, or both. RFC 5988 outlines
-            these relationships.
-          externalDocs:
-            description: Web Linking Specification (RFC 5988)
-            url: https://datatracker.ietf.org/doc/html/rfc5988
-          items:
-            $ref: "#/components/schemas/Link"
-          readOnly: true
-          type: array
-        vpcId:
-          description: The VPC ID.
-          type: string
-        azureSubscriptionId:
-          description: The Azure Subscription ID.
-          type: string
-        virtualNetworkName:
-          description: The name of the virtual network.
-          type: string
     AcknowledgeAlert:
       description: Acknowledging an alert prevents successive notifications. Specify
         the acknowledgeUntil date and optional comment or unacknowledgeAlert
@@ -1494,8 +1484,6 @@ components:
             primary node. MongoDB Atlas docs contain more information. To
             proceed with an operation which carries that risk, set
             **acceptDataRisksAndForceReplicaSetReconfig** to the current date.
-            This parameter expresses its value in the ISO 8601 timestamp format
-            in UTC.
           externalDocs:
             description: Reconfiguring a Replica Set during a regional outage
             url: https://dochub.mongodb.org/core/regional-outage-reconfigure-replica-set
@@ -1576,8 +1564,7 @@ components:
           type: string
         featureCompatibilityVersionExpirationDate:
           description: Feature compatibility version expiration date. Will only appear if
-            FCV is pinned. This parameter expresses its value in the ISO 8601
-            timestamp format in UTC.
+            FCV is pinned.
           format: date-time
           readOnly: true
           type: string
@@ -2603,8 +2590,7 @@ components:
         expires:
           description: 'Date and time when MongoDB Cloud deletes the snapshot. If
             `"doNotDelete" : true`, MongoDB Cloud removes any value set for this
-            parameter. This parameter expresses its value in the ISO 8601
-            timestamp format in UTC.'
+            parameter.'
           format: date-time
           type: string
         groupId:
@@ -2661,8 +2647,7 @@ components:
           readOnly: true
           type: string
         completedTime:
-          description: Date and time when the snapshot completed. This parameter expresses
-            its value in the ISO 8601 timestamp format in UTC.
+          description: Date and time when the snapshot completed.
           format: date-time
           readOnly: true
           type: string
@@ -4294,8 +4279,6 @@ components:
               MongoDB Cloud clusters to other GCP regions, create additional
               projects.
             type: string
-            x-xgen-IPA-exception:
-              xgen-IPA-123-allowable-enum-values-should-not-exceed-20: Schema predates IPA validation
           type: array
         regionName:
           description: Geographic area that Amazon Web Services (AWS) defines to which
@@ -4665,8 +4648,6 @@ components:
             primary node. MongoDB Atlas docs contain more information. To
             proceed with an operation which carries that risk, set
             **acceptDataRisksAndForceReplicaSetReconfig** to the current date.
-            This parameter expresses its value in the ISO 8601 timestamp format
-            in UTC.
           externalDocs:
             description: Reconfiguring a Replica Set during a regional outage
             url: https://dochub.mongodb.org/core/regional-outage-reconfigure-replica-set
@@ -4747,8 +4728,7 @@ components:
           type: string
         featureCompatibilityVersionExpirationDate:
           description: Feature compatibility version expiration date. Will only appear if
-            FCV is pinned. This parameter expresses its value in the ISO 8601
-            timestamp format in UTC.
+            FCV is pinned.
           format: date-time
           readOnly: true
           type: string
@@ -5229,8 +5209,7 @@ components:
           type: array
         startRequestDate:
           description: Date and time when MongoDB Cloud started the regional outage
-            simulation. This parameter expresses its value in the ISO 8601
-            timestamp format in UTC.
+            simulation.
           format: date-time
           readOnly: true
           type: string
@@ -6056,6 +6035,19 @@ components:
           description: Amount to set the limit to.
           format: int64
           type: integer
+        lastModifiedDate:
+          description: Only used for Data Federation limits. Timestamp that indicates when
+            this usage limit was last modified. This field uses the ISO 8601
+            timestamp format in UTC.
+          format: date-time
+          readOnly: true
+          type: string
+        overrunPolicy:
+          description: Only used for Data Federation limits. Action to take when the usage
+            limit is exceeded. If limit span is set to QUERY, this is ignored
+            because MongoDB Cloud stops the query when it exceeds the usage
+            limit.
+          type: string
       required:
         - name
         - value
@@ -6376,8 +6368,6 @@ components:
           type: string
         createdDate:
           description: Timestamp that indicates when the Data Lake Pipeline was created.
-            This parameter expresses its value in the ISO 8601 timestamp format
-            in UTC.
           format: date-time
           readOnly: true
           type: string
@@ -6391,8 +6381,7 @@ components:
           type: string
         lastUpdatedDate:
           description: Timestamp that indicates the last time that the Data Lake Pipeline
-            was updated. This parameter expresses its value in the ISO 8601
-            timestamp format in UTC.
+            was updated.
           format: date-time
           readOnly: true
           type: string
@@ -6832,8 +6821,7 @@ components:
       description: Dataset Retention Policy for a Scheduled Data Lake Pipeline.
       properties:
         lastModifiedDate:
-          description: Date when retention policy was last modified. This parameter
-            expresses its value in the ISO 8601 timestamp format in UTC.
+          description: Date when retention policy was last modified.
           format: date-time
           readOnly: true
           type: string
@@ -7652,9 +7640,14 @@ components:
           readOnly: true
           type: array
         bucketName:
-          description: Human-readable label that identifies the Google Cloud Storage
-            Bucket that the role is authorized to export to.
-          example: export-bucket
+          description: The name of the Azure Storage Container to export to. This can be
+            omitted and computed from the serviceUrl if the serviceUrl includes
+            a Azure Storage Container name. For example a serviceUrl of
+            "https://examplestorageaccount.blob.core.windows.net/exportcontainer"
+            will yield a computed bucketName of "exportcontainer". If the
+            serviceUrl does not include a Container name, this field is
+            required.
+          example: exportcontainer
           maxLength: 63
           minLength: 3
           type: string
@@ -7669,9 +7662,9 @@ components:
           pattern: ^([a-f0-9]{24})$
           type: string
         roleId:
-          description: Unique 24-hexadecimal digit string that identifies the GCP Cloud
-            Provider Access Role that MongoDB Cloud uses to access the Google
-            Cloud Storage Bucket.
+          description: Unique 24-hexadecimal digit string that identifies the Azure Cloud
+            Provider Access Role that MongoDB Cloud uses to access the Azure
+            Blob Storage Container.
           example: 32b6e34b3d91647abb20e7b8
           pattern: ^([a-f0-9]{24})$
           type: string
@@ -7704,8 +7697,8 @@ components:
           pattern: ^([a-f0-9]{24})$
           type: string
         bucketName:
-          description: The name of the AWS S3 Bucket, Azure Storage Container, or Google
-            Cloud Storage Bucket that Snapshots are exported to.
+          description: The name of the AWS S3 Bucket or Azure Storage Container that
+            Snapshots are exported to.
           example: export-bucket
           maxLength: 63
           minLength: 3
@@ -7736,9 +7729,9 @@ components:
           pattern: ^([a-f0-9]{24})$
           type: string
         roleId:
-          description: Unique 24-hexadecimal digit string that identifies the GCP Cloud
-            Provider Access Role that MongoDB Cloud uses to access the Google
-            Cloud Storage Bucket.
+          description: Unique 24-hexadecimal digit string that identifies the Azure Cloud
+            Provider Access Role that MongoDB Cloud uses to access the Azure
+            Blob Storage Container.
           example: 32b6e34b3d91647abb20e7b8
           pattern: ^([a-f0-9]{24})$
           type: string
@@ -8010,8 +8003,6 @@ components:
               sort order. Keys in indexes with multiple keys appear in the same
               order that they appear in the index.
             type: object
-            x-xgen-IPA-exception:
-              xgen-IPA-117-objects-must-be-well-defined: Schema predates IPA validation
           type: array
         name:
           description: Name of index.
@@ -8029,8 +8020,7 @@ components:
             type: string
           type: array
         since:
-          description: Date of most recent usage of index. This parameter expresses its
-            value in the ISO 8601 timestamp format in UTC.
+          description: Date of most recent usage of index.
           format: date-time
           type: string
         sizeBytes:
@@ -8757,8 +8747,7 @@ components:
           type: array
           uniqueItems: true
         createdAt:
-          description: Date that the identity provider was created on. This parameter
-            expresses its value in the ISO 8601 timestamp format in UTC.
+          description: Date that the identity provider was created on.
           format: date-time
           readOnly: true
           type: string
@@ -8793,8 +8782,7 @@ components:
             Either SAML or OIDC.
           type: string
         updatedAt:
-          description: Date that the identity provider was last updated on. This parameter
-            expresses its value in the ISO 8601 timestamp format in UTC.
+          description: Date that the identity provider was last updated on.
           format: date-time
           readOnly: true
           type: string
@@ -8957,8 +8945,7 @@ components:
             membership or user ID.
           type: string
         createdAt:
-          description: Date that the identity provider was created on. This parameter
-            expresses its value in the ISO 8601 timestamp format in UTC.
+          description: Date that the identity provider was created on.
           format: date-time
           readOnly: true
           type: string
@@ -8996,8 +8983,7 @@ components:
             Either SAML or OIDC.
           type: string
         updatedAt:
-          description: Date that the identity provider was last updated on. This parameter
-            expresses its value in the ISO 8601 timestamp format in UTC.
+          description: Date that the identity provider was last updated on.
           format: date-time
           readOnly: true
           type: string
@@ -10195,8 +10181,7 @@ components:
           pattern: ^mdb_sa_id_[a-fA-F\d]{24}$
           type: string
         createdAt:
-          description: The date that the Service Account was created on. This parameter
-            expresses its value in the ISO 8601 timestamp format in UTC.
+          description: The date that the Service Account was created on.
           format: date-time
           type: string
         description:
@@ -10773,9 +10758,7 @@ components:
           readOnly: true
           type: string
         createdDate:
-          description: Timestamp that indicates when the pipeline run was created. This
-            parameter expresses its value in the ISO 8601 timestamp format in
-            UTC.
+          description: Timestamp that indicates when the pipeline run was created.
           format: date-time
           readOnly: true
           type: string
@@ -10796,8 +10779,7 @@ components:
           type: string
         lastUpdatedDate:
           description: Timestamp that indicates the last time that the pipeline run was
-            updated. This parameter expresses its value in the ISO 8601
-            timestamp format in UTC.
+            updated.
           format: date-time
           readOnly: true
           type: string
@@ -10814,8 +10796,7 @@ components:
           type: string
         scheduledDeletionDate:
           description: Timestamp that indicates when the pipeline run will expire and its
-            dataset will be deleted. This parameter expresses its value in the
-            ISO 8601 timestamp format in UTC.
+            dataset will be deleted.
           format: date-time
           readOnly: true
           type: string
@@ -11246,8 +11227,6 @@ components:
             primary node. MongoDB Atlas docs contain more information. To
             proceed with an operation which carries that risk, set
             **acceptDataRisksAndForceReplicaSetReconfig** to the current date.
-            This parameter expresses its value in the ISO 8601 timestamp format
-            in UTC.
           externalDocs:
             description: Reconfiguring a Replica Set during a regional outage
             url: https://dochub.mongodb.org/core/regional-outage-reconfigure-replica-set
@@ -11340,8 +11319,7 @@ components:
           readOnly: true
           type: string
         featureCompatibilityVersionExpirationDate:
-          description: Feature compatibility version expiration date. This parameter
-            expresses its value in the ISO 8601 timestamp format in UTC.
+          description: Feature compatibility version expiration date.
           format: date-time
           readOnly: true
           type: string
@@ -11578,8 +11556,6 @@ components:
             primary node. MongoDB Atlas docs contain more information. To
             proceed with an operation which carries that risk, set
             **acceptDataRisksAndForceReplicaSetReconfig** to the current date.
-            This parameter expresses its value in the ISO 8601 timestamp format
-            in UTC.
           externalDocs:
             description: Reconfiguring a Replica Set during a regional outage
             url: https://dochub.mongodb.org/core/regional-outage-reconfigure-replica-set
@@ -11672,8 +11648,7 @@ components:
           readOnly: true
           type: string
         featureCompatibilityVersionExpirationDate:
-          description: Feature compatibility version expiration date. This parameter
-            expresses its value in the ISO 8601 timestamp format in UTC.
+          description: Feature compatibility version expiration date.
           format: date-time
           readOnly: true
           type: string
@@ -12950,8 +12925,7 @@ components:
           pattern: ^mdb_sa_id_[a-fA-F\d]{24}$
           type: string
         createdAt:
-          description: The date that the Service Account was created on. This parameter
-            expresses its value in the ISO 8601 timestamp format in UTC.
+          description: The date that the Service Account was created on.
           format: date-time
           type: string
         description:
@@ -14094,8 +14068,7 @@ components:
           description: The name of the bucket to which the agent will send the logs to.
           type: string
         createDate:
-          description: Date and time that this feature was enabled on. This parameter
-            expresses its value in the ISO 8601 timestamp format in UTC.
+          description: Date and time that this feature was enabled on.
           format: date-time
           readOnly: true
           type: string
@@ -14416,8 +14389,7 @@ components:
         and the time that the index definition was created.
       properties:
         createdAt:
-          description: The time at which this index definition was created. This parameter
-            expresses its value in the ISO 8601 timestamp format in UTC.
+          description: The time at which this index definition was created.
           format: date-time
           type: string
         version:
@@ -15159,8 +15131,6 @@ components:
           type: string
         createdAt:
           description: Date MongoDB Cloud added the entry was added to the Access List.
-            This parameter expresses its value in the ISO 8601 timestamp format
-            in UTC.
           format: date-time
           readOnly: true
           type: string
@@ -15187,8 +15157,7 @@ components:
             address. The resource returns this parameter when at least one
             request originates from this IP address. MongoDB Cloud updates this
             parameter each time a client accesses the permitted resource, with a
-            delay of up to 5 minutes. This parameter expresses its value in the
-            ISO 8601 timestamp format in UTC.
+            delay of up to 5 minutes.
           format: date-time
           readOnly: true
           type: string
@@ -15201,14 +15170,12 @@ components:
     ServiceAccountSecret:
       properties:
         createdAt:
-          description: The date that the secret was created on. This parameter expresses
-            its value in the ISO 8601 timestamp format in UTC.
+          description: The date that the secret was created on.
           format: date-time
           readOnly: true
           type: string
         expiresAt:
-          description: The date for the expiration of the secret. This parameter expresses
-            its value in the ISO 8601 timestamp format in UTC.
+          description: The date for the expiration of the secret.
           format: date-time
           readOnly: true
           type: string
@@ -15219,8 +15186,7 @@ components:
           readOnly: true
           type: string
         lastUsedAt:
-          description: The last time the secret was used. This parameter expresses its
-            value in the ISO 8601 timestamp format in UTC.
+          description: The last time the secret was used.
           format: date-time
           readOnly: true
           type: string
@@ -15630,20 +15596,13 @@ components:
         name:
           description: Reserved. Will be used by PRIVATE_LINK connection type.
           type: string
-        tgwId:
-          description: Reserved. Will be used by TRANSIT_GATEWAY connection type.
-          pattern: ^(tgw-)[0-9a-zA-Z]+$
-          type: string
         type:
-          description: Selected networking type. Either PUBLIC, VPC, PRIVATE_LINK, or
-            TRANSIT_GATEWAY. Defaults to PUBLIC. For VPC, ensure that VPC
-            peering exists and connectivity has been established between Atlas
-            VPC and the VPC where Kafka cluster is hosted for the connection to
-            function properly. TRANSIT_GATEWAY support is coming soon.
+          description: Selected networking type. Either PUBLIC, VPC or PRIVATE_LINK.
+            Defaults to PUBLIC. For VPC, ensure that VPC peering exists and
+            connectivity has been established between Atlas VPC and the VPC
+            where Kafka cluster is hosted for the connection to function
+            properly. PRIVATE_LINK support is coming soon.
           title: Networking Access Type
-          type: string
-        vpcCIDR:
-          description: Reserved. Will be used by TRANSIT_GATEWAY connection type.
           type: string
       type: object
     StreamsKafkaSecurity:
@@ -15772,29 +15731,14 @@ components:
           readOnly: true
           type: string
         arn:
-          description: Amazon Resource Name (ARN). Required for AWS Provider and MSK vendor.
-          pattern: ^arn:aws:kafka
+          description: Amazon Resource Name (ARN).
           type: string
-        azureResourceIds:
-          description: Azure Resource IDs of each availability zone for the Azure
-            Confluent cluster.
-          items:
-            type: string
-          type: array
         dnsDomain:
-          description: >-
-            The domain hostname. Required for the following provider and vendor
-            combinations:
-
-            - AWS provider with CONFLUENT vendor.
-
-            - AZURE provider with EVENTHUB or CONFLUENT vendor.
+          description: Domain name of Privatelink connected cluster.
           type: string
         dnsSubDomain:
           description: Sub-Domain name of Confluent cluster. These are typically your
-            availability zones. Required for AWS Provider and CONFLUENT vendor,
-            if your AWS CONFLUENT cluster doesn't use subdomains, you must set
-            this to the empty array [].
+            availability zones.
           items:
             type: string
           type: array
@@ -15824,44 +15768,25 @@ components:
           readOnly: true
           type: array
         provider:
-          description: Provider where the Kafka cluster is deployed. Valid values are AWS
-            and AZURE.
+          description: Provider where the Kafka cluster is deployed.
           type: string
         providerAccountId:
           description: Account ID from the cloud provider.
           readOnly: true
           type: string
         region:
-          description: The region of the Provider’s cluster. See
-            [AZURE](https://www.mongodb.com/docs/atlas/reference/microsoft-azure/#stream-processing-instances)
-            and
-            [AWS](https://www.mongodb.com/docs/atlas/reference/amazon-aws/#stream-processing-instances)
-            supported regions.
+          description: Domain name of Confluent cluster.
           type: string
         serviceEndpointId:
-          description: For AZURE EVENTHUB, this is the [namespace endpoint
-            ID](https://learn.microsoft.com/en-us/rest/api/eventhub/namespaces/get).
-            For AWS CONFLUENT cluster, this is the [VPC Endpoint service
-            name](https://docs.confluent.io/cloud/current/networking/private-links/aws-privatelink.html).
+          description: Service Endpoint ID.
           type: string
         state:
           description: State the connection is in.
           readOnly: true
           type: string
         vendor:
-          description: >-
-            Vendor that manages the Kafka cluster. The following are the vendor
-            values per provider:
-
-            - MSK and CONFLUENT for the AWS provider.
-
-            - EVENTHUB and CONFLUENT for the AZURE provider.
-
-
-            **NOTE** Omitting the vendor field will default to using the EVENTHUB vendor for the AZURE provider.
+          description: Vendor who manages the Kafka cluster.
           type: string
-      required:
-        - provider
       type: object
     StreamsProcessor:
       description: An atlas stream processor.
@@ -16959,13 +16884,11 @@ components:
     X509Certificate:
       properties:
         notAfter:
-          description: Latest date that the certificate is valid. This parameter expresses
-            its value in the ISO 8601 timestamp format in UTC.
+          description: Latest date that the certificate is valid.
           format: date-time
           type: string
         notBefore:
-          description: Earliest date that the certificate is valid. This parameter
-            expresses its value in the ISO 8601 timestamp format in UTC.
+          description: Earliest date that the certificate is valid.
           format: date-time
           type: string
       type: object
@@ -16975,13 +16898,11 @@ components:
           description: Certificate content.
           type: string
         notAfter:
-          description: Latest date that the certificate is valid. This parameter expresses
-            its value in the ISO 8601 timestamp format in UTC.
+          description: Latest date that the certificate is valid.
           format: date-time
           type: string
         notBefore:
-          description: Earliest date that the certificate is valid. This parameter
-            expresses its value in the ISO 8601 timestamp format in UTC.
+          description: Earliest date that the certificate is valid.
           format: date-time
           type: string
       type: object
@@ -17944,8 +17865,7 @@ components:
       description: MongoDB employee granted access level and expiration for a cluster.
       properties:
         expirationTime:
-          description: Expiration date for the employee access grant. This parameter
-            expresses its value in the ISO 8601 timestamp format in UTC.
+          description: Expiration date for the employee access grant.
           format: date-time
           type: string
         grantType:
@@ -19601,9 +19521,6 @@ components:
               Otherwise, MongoDB Cloud redacts these values.
             readOnly: true
             type: object
-            x-xgen-IPA-exception:
-              xgen-IPA-117-objects-must-be-well-defined: Schema predates IPA validation
-              xgen-IPA-124-array-max-items: Schema predates IPA validation
           readOnly: true
           type: array
         stats:
@@ -19615,8 +19532,7 @@ components:
           description: Expiration date of the fixed FCV. If not specified, the expiration
             date will default to 4 weeks from the date FCV was originally
             pinned. Note that this field cannot exceed 4 weeks from the pinned
-            date. This parameter expresses its value in the ISO 8601 timestamp
-            format in UTC.
+            date.
           format: date-time
           type: string
         links:
@@ -19664,8 +19580,7 @@ components:
     PublicApiUsageDetailsLineItem:
       properties:
         billDate:
-          description: Billing date of the line item. This parameter expresses its value
-            in the ISO 8601 timestamp format in UTC.
+          description: Billing date of the line item.
           format: date-time
           type: string
         clusterName:
@@ -19695,8 +19610,7 @@ components:
           format: double
           type: number
         usageDate:
-          description: Usage date of the line item. This parameter expresses its value in
-            the ISO 8601 timestamp format in UTC.
+          description: Usage date of the line item.
           format: date-time
           type: string
       type: object
@@ -19824,7 +19738,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 42e48b637c2a485ebd8c235364465ec6f8481033
+  x-xgen-sha: 4ad744921d0ffe1f5aa00ae9ace92c3b16bc582b
 openapi: 3.0.1
 paths:
   /api/atlas/v2:
@@ -19843,8 +19757,6 @@ paths:
           description: OK
         "401":
           description: Unauthorized.
-        "403":
-          $ref: "#/components/responses/forbidden"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return the status of this MongoDB application
@@ -19866,14 +19778,10 @@ paths:
                 items:
                   $ref: "#/components/schemas/MatcherField"
                 type: array
-                x-xgen-IPA-exception:
-                  xgen-IPA-124-array-max-items: Schema predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Get All Alert Configuration Matchers Field Names
@@ -19902,8 +19810,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return All Authorized Clusters in All Projects
@@ -19929,8 +19835,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: List All Possible Event Types
@@ -19958,8 +19862,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -19990,8 +19892,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -20029,8 +19929,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -20069,8 +19967,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -20127,8 +20023,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -20158,8 +20052,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -20195,8 +20087,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -20233,8 +20123,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -20274,8 +20162,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -20320,8 +20206,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -20373,8 +20257,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -20454,8 +20336,6 @@ paths:
           description: No Response
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
         "403":
           $ref: "#/components/responses/forbidden"
         "404":
@@ -20550,8 +20430,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
         "403":
           $ref: "#/components/responses/forbidden"
         "404":
@@ -20593,8 +20471,6 @@ paths:
           description: No Response
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
         "403":
           $ref: "#/components/responses/forbidden"
         "404":
@@ -20627,8 +20503,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -20659,10 +20533,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -20738,10 +20608,6 @@ paths:
           description: This endpoint does not return a response body.
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "409":
@@ -20775,10 +20641,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -20860,10 +20722,6 @@ paths:
           description: No Content
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Add One MongoDB Cloud User to One Project
@@ -20904,10 +20762,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return Project IP Access List
@@ -20961,8 +20815,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "403":
           $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Add Entries to Project IP Access List
@@ -21021,8 +20873,6 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               x-xgen-version: 2023-01-01
           description: This endpoint does not return a response body.
-        "401":
-          $ref: "#/components/responses/unauthorized"
         "403":
           $ref: "#/components/responses/forbidden"
         "404":
@@ -21159,10 +21009,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return All Alert Configurations for One Project
@@ -21200,10 +21046,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Create One Alert Configuration in One Project
@@ -21244,8 +21086,6 @@ paths:
           description: No Content
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -21291,8 +21131,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -21348,8 +21186,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -21404,8 +21240,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -21459,8 +21293,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -21503,10 +21335,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return All Alerts from One Project
@@ -21550,8 +21378,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -21605,8 +21431,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -21655,8 +21479,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -21691,10 +21513,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return All Organization API Keys Assigned to One Project
@@ -21728,10 +21546,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Create and Assign One Organization API Key to One Project
@@ -21767,8 +21581,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -21817,10 +21629,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Update Roles of One Organization API Key to One Project
@@ -21861,10 +21669,6 @@ paths:
           description: This endpoint does not return a response body.
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Assign One Organization API Key to One Project
@@ -21891,10 +21695,6 @@ paths:
                 xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -21929,10 +21729,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -21961,10 +21757,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return One Custom DNS Configuration for Atlas Clusters on AWS
@@ -21997,10 +21789,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Toggle State of One Custom DNS Configuration for Atlas Clusters on AWS
@@ -22028,10 +21816,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return All Snapshot Export Buckets
@@ -22039,12 +21823,12 @@ paths:
         - Cloud Backups
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Cloud-Backups/operation/listExportBuckets
     post:
-      description: "Creates a Snapshot Export Bucket for an AWS S3 Bucket, Azure Blob
-        Storage Container, or Google Cloud Storage Bucket. Once created, an
-        snapshots can be exported to the Export Bucket and its referenced AWS S3
-        Bucket, Azure Blob Storage Container, or Google Cloud Storage Bucket. To
-        use this resource, the requesting Service Account or API Key must have
-        the Project Owner role. Deprecated versions: v2-{2023-01-01}"
+      description: "Creates a Snapshot Export Bucket for an AWS S3 Bucket or Azure
+        Blob Storage Container. Once created, an snapshots can be exported to
+        the Export Bucket and its referenced AWS S3 Bucket or Azure Blob Storage
+        Container. To use this resource, the requesting Service Account or API
+        Key must have the Project Owner role. Deprecated versions:
+        v2-{2023-01-01}"
       operationId: createExportBucket
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -22065,18 +21849,11 @@ paths:
                   cloudProvider: AZURE
                   roleId: 668c5f0ed436263134491592
                   serviceUrl: https://examplestorageaccount.blob.core.windows.net/examplecontainer
-              GCP:
-                description: GCP
-                value:
-                  bucketName: export-bucket
-                  cloudProvider: GCP
-                  roleId: 668c5f0ed436263134491592
             schema:
               $ref: "#/components/schemas/DiskBackupSnapshotExportBucketRequest"
             x-xgen-version: 2024-05-30
-        description: Specifies the role and AWS S3 Bucket, Azure Blob Storage Container,
-          or Google Cloud Storage Bucket that the Export Bucket should
-          reference.
+        description: Specifies the role and AWS S3 Bucket or Azure Blob Storage
+          Container that the Export Bucket should reference.
         required: true
       responses:
         "200":
@@ -22105,16 +21882,6 @@ paths:
                     roleId: 668c5f0ed436263134491592
                     serviceUrl: https://examplestorageaccount.blob.core.windows.net/examplecontainer
                     tenantId: 4297fc77-1592-4de8-a6d5-a8c32401df87
-                GCP:
-                  description: GCP
-                  value:
-                    _id: 32b6e34b3d91647abb20e7b8
-                    bucketName: export-bucket
-                    cloudProvider: GCP
-                    links:
-                      - href: https://cloud.mongodb.com/api/atlas
-                        rel: self
-                    roleId: 668c5f0ed436263134491592
               schema:
                 $ref: "#/components/schemas/DiskBackupSnapshotExportBucketResponse"
               x-xgen-version: 2024-05-30
@@ -22123,8 +21890,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -22161,8 +21926,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -22214,24 +21977,12 @@ paths:
                     roleId: 668c5f0ed436263134491592
                     serviceUrl: https://examplestorageaccount.blob.core.windows.net/examplecontainer
                     tenantId: 4297fc77-1592-4de8-a6d5-a8c32401df87
-                GCP:
-                  description: GCP
-                  value:
-                    _id: 32b6e34b3d91647abb20e7b8
-                    bucketName: export-bucket
-                    cloudProvider: GCP
-                    links:
-                      - href: https://cloud.mongodb.com/api/atlas
-                        rel: self
-                    roleId: 668c5f0ed436263134491592
               schema:
                 $ref: "#/components/schemas/DiskBackupSnapshotExportBucketResponse"
               x-xgen-version: 2024-05-30
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -22261,8 +22012,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -22290,8 +22039,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -22334,8 +22081,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -22364,10 +22109,6 @@ paths:
                 xgen-IPA-110-collections-use-paginated-prefix: Content predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -22402,10 +22143,6 @@ paths:
                 $ref: "#/components/schemas/CloudProviderAccessRole"
               x-xgen-version: 2023-01-01
           description: OK
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -22444,10 +22181,6 @@ paths:
           description: No Content
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -22481,10 +22214,6 @@ paths:
                 xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -22529,10 +22258,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "409":
@@ -22580,10 +22305,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return All Clusters in One Project
@@ -22712,8 +22433,6 @@ paths:
           $ref: "#/components/responses/paymentRequired"
         "403":
           $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "409":
           $ref: "#/components/responses/conflict"
         "500":
@@ -22762,8 +22481,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "409":
@@ -22810,8 +22527,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "409":
@@ -22865,8 +22580,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "409":
@@ -22927,8 +22640,6 @@ paths:
           description: Succeeded
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
         "403":
           $ref: "#/components/responses/forbidden"
         "404":
@@ -22972,12 +22683,8 @@ paths:
                 $ref: "#/components/schemas/CollStatsRankedNamespaces"
               x-xgen-version: 2023-11-15
           description: Succeeded
-        "401":
-          $ref: "#/components/responses/unauthorized"
         "403":
           $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return Ranked Namespaces from a Cluster
@@ -23013,8 +22720,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "409":
@@ -23052,10 +22757,6 @@ paths:
                 $ref: "#/components/schemas/PaginatedApiAtlasDiskBackupExportJob"
               x-xgen-version: 2023-01-01
           description: OK
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -23095,8 +22796,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
         "403":
           $ref: "#/components/responses/forbidden"
         "404":
@@ -23141,10 +22840,6 @@ paths:
                 $ref: "#/components/schemas/DiskBackupExportJob"
               x-xgen-version: 2023-01-01
           description: OK
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -23180,10 +22875,6 @@ paths:
                 $ref: "#/components/schemas/PaginatedCloudBackupRestoreJob"
               x-xgen-version: 2023-01-01
           description: OK
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -23228,8 +22919,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
         "403":
           $ref: "#/components/responses/forbidden"
         "404":
@@ -23273,12 +22962,6 @@ paths:
           description: This endpoint does not return a response body.
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "405":
           $ref: "#/components/responses/methodNotAllowed"
         "500":
@@ -23318,10 +23001,6 @@ paths:
                 $ref: "#/components/schemas/DiskBackupSnapshotRestoreJob"
               x-xgen-version: 2023-01-01
           description: OK
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -23357,10 +23036,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -23393,10 +23068,6 @@ paths:
                 $ref: "#/components/schemas/DiskBackupSnapshotSchedule20240805"
               x-xgen-version: 2024-08-05
           description: OK
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -23443,10 +23114,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -23483,10 +23150,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -23531,10 +23194,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -23574,10 +23233,6 @@ paths:
           description: This endpoint does not return a response body.
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -23620,10 +23275,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -23672,10 +23323,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -23713,10 +23360,6 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               x-xgen-version: 2023-01-01
           description: This endpoint does not return a response body.
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -23759,10 +23402,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -23796,10 +23435,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -23906,8 +23541,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
         "403":
           $ref: "#/components/responses/forbidden"
         "404":
@@ -23953,10 +23586,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -24005,10 +23634,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -24049,10 +23674,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -24101,10 +23722,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -24143,10 +23760,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return All Legacy Backup Checkpoints
@@ -24191,8 +23804,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -24227,8 +23838,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
         "403":
           $ref: "#/components/responses/forbidden"
         "404":
@@ -24279,8 +23888,6 @@ paths:
           description: Created
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
         "403":
           $ref: "#/components/responses/forbidden"
         "404":
@@ -24332,8 +23939,6 @@ paths:
           description: Created
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
         "403":
           $ref: "#/components/responses/forbidden"
         "404":
@@ -24377,8 +23982,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
         "403":
           $ref: "#/components/responses/forbidden"
         "404":
@@ -24428,10 +24031,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "409":
@@ -24486,14 +24085,8 @@ paths:
                 items:
                   $ref: "#/components/schemas/ClusterSearchIndex"
                 type: array
-                x-xgen-IPA-exception:
-                  xgen-IPA-124-array-max-items: Schema predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -24543,10 +24136,6 @@ paths:
           description: This endpoint does not return a response body.
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -24599,10 +24188,6 @@ paths:
                 $ref: "#/components/schemas/ClusterSearchIndex"
               x-xgen-version: 2023-01-01
           description: OK
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -24663,10 +24248,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "409":
@@ -24710,10 +24291,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return One Managed Namespace in One Global Cluster
@@ -24752,10 +24329,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Remove All Custom Zone Mappings from One Global Cluster
@@ -24802,10 +24375,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Add One Entry to One Custom Zone Mapping
@@ -24858,10 +24427,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Remove One Managed Namespace from One Global Cluster
@@ -24907,10 +24472,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "405":
           $ref: "#/components/responses/methodNotAllowed"
         "500":
@@ -25021,10 +24582,6 @@ paths:
           description: Accepted
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -25066,10 +24623,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return All Online Archives for One Cluster
@@ -25113,8 +24666,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "409":
@@ -25163,8 +24714,6 @@ paths:
           description: This endpoint does not return a response body.
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -25215,8 +24764,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -25272,8 +24819,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "409":
@@ -25359,8 +24904,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -25398,8 +24941,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -25440,8 +24981,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -25485,10 +25024,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Start an Outage Simulation
@@ -25524,10 +25059,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Returns Suggested Indexes to Drop
@@ -25564,10 +25095,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return Schema Advice
@@ -25668,10 +25195,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return Suggested Indexes
@@ -25715,10 +25238,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return One Advanced Configuration Options for One Cluster
@@ -25768,8 +25287,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -25805,10 +25322,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Test Failover for One Cluster
@@ -25862,10 +25375,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -25923,10 +25432,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -25978,10 +25483,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -26011,10 +25512,6 @@ paths:
           description: This endpoint does not return a response body.
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "409":
@@ -26048,10 +25545,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -26093,10 +25586,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "409":
@@ -26136,10 +25625,6 @@ paths:
           description: Created
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "409":
@@ -26178,16 +25663,10 @@ paths:
                 items:
                   $ref: "#/components/schemas/SearchIndexResponse"
                 type: array
-                x-xgen-IPA-exception:
-                  xgen-IPA-124-array-max-items: Schema predates IPA validation
               x-xgen-version: 2024-05-30
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -26239,10 +25718,6 @@ paths:
           description: Created
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "409":
@@ -26295,16 +25770,10 @@ paths:
                 items:
                   $ref: "#/components/schemas/SearchIndexResponse"
                 type: array
-                x-xgen-IPA-exception:
-                  xgen-IPA-124-array-max-items: Schema predates IPA validation
               x-xgen-version: 2024-05-30
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -26367,10 +25836,6 @@ paths:
           description: This endpoint does not return a response body.
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -26429,10 +25894,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -26498,10 +25959,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "409":
@@ -26552,10 +26009,6 @@ paths:
           description: This endpoint does not return a response body.
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -26608,10 +26061,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -26676,10 +26125,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "409":
@@ -26723,10 +26168,6 @@ paths:
                 xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -26774,12 +26215,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Update Snapshot Schedule for One Cluster
@@ -26834,10 +26269,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return All Legacy Backup Snapshots
@@ -26889,8 +26320,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -26945,10 +26374,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return One Legacy Backup Snapshot
@@ -27006,10 +26431,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Change One Legacy Backup Snapshot Expiration
@@ -27044,10 +26465,6 @@ paths:
                 xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -27088,8 +26505,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "409":
@@ -27133,8 +26548,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "409":
@@ -27168,8 +26581,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "409":
@@ -27208,8 +26619,6 @@ paths:
           $ref: "#/components/responses/paymentRequired"
         "403":
           $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "409":
           $ref: "#/components/responses/conflict"
         "500":
@@ -27340,10 +26749,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return All Cloud Provider Regions
@@ -27389,8 +26794,6 @@ paths:
           $ref: "#/components/responses/paymentRequired"
         "403":
           $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "409":
           $ref: "#/components/responses/conflict"
         "500":
@@ -27437,8 +26840,6 @@ paths:
           $ref: "#/components/responses/paymentRequired"
         "403":
           $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "409":
           $ref: "#/components/responses/conflict"
         "500":
@@ -27463,8 +26864,6 @@ paths:
           description: Succeeded
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
         "403":
           $ref: "#/components/responses/forbidden"
         "404":
@@ -27497,8 +26896,6 @@ paths:
           schema:
             default: AWS
             type: string
-          x-xgen-IPA-exception:
-            xgen-IPA-119-no-default-for-cloud-providers: Schema predates IPA validation
       responses:
         "200":
           content:
@@ -27509,8 +26906,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -27588,8 +26983,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "409":
@@ -27629,10 +27022,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return One Network Peering Container
@@ -27709,10 +27098,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return All Network Peering Containers in One Project
@@ -27735,16 +27120,10 @@ paths:
                 items:
                   $ref: "#/components/schemas/UserCustomDBRole"
                 type: array
-                x-xgen-IPA-exception:
-                  xgen-IPA-124-array-max-items: Schema predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return All Custom Roles in One Project
@@ -27819,8 +27198,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "409":
@@ -27855,8 +27232,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -27933,8 +27308,6 @@ paths:
                 items:
                   $ref: "#/components/schemas/DataLakeTenant"
                 type: array
-                x-xgen-IPA-exception:
-                  xgen-IPA-124-array-max-items: Schema predates IPA validation
               x-xgen-IPA-exception:
                 xgen-IPA-110-collections-response-define-links-array: Content predates IPA validation
                 xgen-IPA-110-collections-response-define-results-array: Content predates IPA validation
@@ -27943,10 +27316,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return All Federated Database Instances in One Project
@@ -27988,12 +27357,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Create One Federated Database Instance in One Project
@@ -28021,10 +27384,6 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               x-xgen-version: 2023-01-01
           description: This endpoint does not return a response body.
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -28063,8 +27422,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -28114,10 +27471,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -28149,8 +27502,6 @@ paths:
                 items:
                   $ref: "#/components/schemas/DataFederationTenantQueryLimit"
                 type: array
-                x-xgen-IPA-exception:
-                  xgen-IPA-124-array-max-items: Schema predates IPA validation
               x-xgen-IPA-exception:
                 xgen-IPA-110-collections-response-define-links-array: Content predates IPA validation
                 xgen-IPA-110-collections-response-define-results-array: Content predates IPA validation
@@ -28159,8 +27510,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -28213,10 +27562,6 @@ paths:
           description: This endpoint does not return a response body.
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -28273,10 +27618,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return One Federated Database Instance Query Limit for One Project
@@ -28337,8 +27678,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -28432,10 +27771,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return All Database Users from One Project
@@ -28725,8 +28060,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -28857,10 +28190,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return All X.509 Certificates Assigned to One MongoDB User
@@ -28997,10 +28326,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return Database Access History for One Cluster using Its Cluster Name
@@ -29076,8 +28401,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -29111,10 +28434,6 @@ paths:
                 xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -29169,8 +28488,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
         "403":
           $ref: "#/components/responses/forbidden"
         "404":
@@ -29209,12 +28526,8 @@ paths:
                 $ref: "#/components/schemas/PaginatedApiAtlasEARPrivateEndpoint"
               x-xgen-version: 2023-01-01
           description: OK
-        "401":
-          $ref: "#/components/responses/unauthorized"
         "403":
           $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return Private Endpoints of a Cloud Provider for Encryption at Rest
@@ -29250,12 +28563,8 @@ paths:
                 $ref: "#/components/schemas/EARPrivateEndpoint"
               x-xgen-version: 2023-01-01
           description: Accepted
-        "401":
-          $ref: "#/components/responses/unauthorized"
         "403":
           $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Create One Private Endpoint in a Specified Region for Encryption at
@@ -29291,8 +28600,6 @@ paths:
             application/vnd.atlas.2023-01-01+json:
               x-xgen-version: 2023-01-01
           description: This endpoint does not return a response body.
-        "401":
-          $ref: "#/components/responses/unauthorized"
         "403":
           $ref: "#/components/responses/forbidden"
         "404":
@@ -29335,8 +28642,6 @@ paths:
                 xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
-        "401":
-          $ref: "#/components/responses/unauthorized"
         "403":
           $ref: "#/components/responses/forbidden"
         "404":
@@ -29438,10 +28743,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return All Events from One Project
@@ -29494,8 +28795,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -29523,12 +28822,6 @@ paths:
                 $ref: "#/components/schemas/PaginatedFlexClusters20241113"
               x-xgen-version: 2024-11-13
           description: OK
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "409":
           $ref: "#/components/responses/conflict"
         "500":
@@ -29561,14 +28854,8 @@ paths:
           description: Created
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
         "402":
           $ref: "#/components/responses/paymentRequired"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "409":
           $ref: "#/components/responses/conflict"
         "500":
@@ -29601,10 +28888,6 @@ paths:
           description: This endpoint does not return a response body.
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "409":
@@ -29641,10 +28924,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "409":
@@ -29686,14 +28965,8 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
         "402":
           $ref: "#/components/responses/paymentRequired"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "409":
           $ref: "#/components/responses/conflict"
       summary: Update One Flex Cluster in One Project
@@ -29776,10 +29049,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -29820,8 +29089,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
         "403":
           $ref: "#/components/responses/forbidden"
         "404":
@@ -29867,10 +29134,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -29907,10 +29170,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -29953,10 +29212,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -29996,8 +29251,6 @@ paths:
           $ref: "#/components/responses/paymentRequired"
         "403":
           $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "409":
           $ref: "#/components/responses/conflict"
         "500":
@@ -30025,10 +29278,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -30080,10 +29329,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -30132,10 +29377,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -30186,10 +29427,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -30223,8 +29460,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -30264,8 +29499,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -30305,8 +29538,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -30355,8 +29586,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "409":
@@ -30408,8 +29637,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -30441,8 +29668,6 @@ paths:
                 items:
                   $ref: "#/components/schemas/GroupInvitation"
                 type: array
-                x-xgen-IPA-exception:
-                  xgen-IPA-124-array-max-items: Schema predates IPA validation
               x-xgen-IPA-exception:
                 xgen-IPA-110-collections-response-define-links-array: Content predates IPA validation
                 xgen-IPA-110-collections-response-define-results-array: Content predates IPA validation
@@ -30451,10 +29676,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return All Project Invitations
@@ -30490,8 +29711,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -30527,10 +29746,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Invite One MongoDB Cloud User to Join One Project
@@ -30563,8 +29778,6 @@ paths:
           description: This endpoint does not return a response body.
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -30601,8 +29814,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -30649,8 +29860,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -30680,8 +29889,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -30706,8 +29913,6 @@ paths:
                 items:
                   $ref: "#/components/schemas/DataFederationLimit"
                 type: array
-                x-xgen-IPA-exception:
-                  xgen-IPA-124-array-max-items: Schema predates IPA validation
               x-xgen-IPA-exception:
                 xgen-IPA-110-collections-response-define-links-array: Content predates IPA validation
                 xgen-IPA-110-collections-response-define-results-array: Content predates IPA validation
@@ -30718,8 +29923,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "409":
@@ -30785,10 +29988,6 @@ paths:
           description: This endpoint does not return a response body.
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "409":
@@ -30858,8 +30057,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "409":
@@ -30937,8 +30134,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "409":
@@ -31160,10 +30355,6 @@ paths:
           description: This endpoint does not return a response body.
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -31195,10 +30386,6 @@ paths:
                 xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -31238,10 +30425,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -31266,10 +30449,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -31302,10 +30481,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -31334,8 +30509,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "403":
           $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return Managed Slow MS enabled
@@ -31367,8 +30540,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "403":
           $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Disable Managed Slow Operation Threshold
@@ -31400,8 +30571,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "403":
           $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Enable Managed Slow Operation Threshold
@@ -31488,8 +30657,6 @@ paths:
           schema:
             default: AWS
             type: string
-          x-xgen-IPA-exception:
-            xgen-IPA-119-no-default-for-cloud-providers: Schema predates IPA validation
       responses:
         "200":
           content:
@@ -31500,10 +30667,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -31542,8 +30705,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
         "403":
           $ref: "#/components/responses/forbidden"
         "404":
@@ -31582,10 +30743,6 @@ paths:
                 $ref: "#/components/schemas/RequestAccepted"
               x-xgen-version: 2023-01-01
           description: Accepted
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "409":
@@ -31623,10 +30780,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -31667,8 +30820,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
         "403":
           $ref: "#/components/responses/forbidden"
         "404":
@@ -31698,8 +30849,6 @@ paths:
                 items:
                   $ref: "#/components/schemas/DataLakeIngestionPipeline"
                 type: array
-                x-xgen-IPA-exception:
-                  xgen-IPA-124-array-max-items: Schema predates IPA validation
               x-xgen-IPA-exception:
                 xgen-IPA-110-collections-response-define-links-array: Content predates IPA validation
                 xgen-IPA-110-collections-response-define-results-array: Content predates IPA validation
@@ -31708,10 +30857,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -31750,8 +30895,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -31783,8 +30926,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -31821,10 +30962,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -31866,8 +31003,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "409":
@@ -31903,8 +31038,6 @@ paths:
                 items:
                   $ref: "#/components/schemas/DiskBackupApiPolicyItem"
                 type: array
-                x-xgen-IPA-exception:
-                  xgen-IPA-124-array-max-items: Schema predates IPA validation
               x-xgen-IPA-exception:
                 xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
                 xgen-IPA-104-get-method-returns-single-resource: API predates IPA validation
@@ -31912,10 +31045,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -31966,10 +31095,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -32005,10 +31130,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -32044,10 +31165,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -32076,8 +31193,6 @@ paths:
           schema:
             format: date-time
             type: string
-          x-xgen-IPA-exception:
-            xgen-IPA-121-date-time-fields-mention-iso-8601: Schema predates IPA validation
         - description: Human-readable label that identifies the Data Lake Pipeline.
           in: path
           name: pipelineName
@@ -32095,10 +31210,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -32141,10 +31252,6 @@ paths:
           description: Accepted
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -32190,10 +31297,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -32234,10 +31337,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -32264,8 +31363,6 @@ paths:
           schema:
             default: AWS
             type: string
-          x-xgen-IPA-exception:
-            xgen-IPA-119-no-default-for-cloud-providers: Schema predates IPA validation
       responses:
         "200":
           content:
@@ -32274,8 +31371,6 @@ paths:
                 items:
                   $ref: "#/components/schemas/EndpointService"
                 type: array
-                x-xgen-IPA-exception:
-                  xgen-IPA-124-array-max-items: Schema predates IPA validation
               x-xgen-IPA-exception:
                 xgen-IPA-110-collections-response-define-links-array: Content predates IPA validation
                 xgen-IPA-110-collections-response-define-results-array: Content predates IPA validation
@@ -32284,12 +31379,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return All Private Endpoint Services for One Provider
@@ -32312,8 +31401,6 @@ paths:
           schema:
             default: AWS
             type: string
-          x-xgen-IPA-exception:
-            xgen-IPA-119-no-default-for-cloud-providers: Schema predates IPA validation
         - description: Unique 24-hexadecimal digit string that identifies the private
             endpoint service that you want to delete.
           in: path
@@ -32330,10 +31417,6 @@ paths:
           description: This endpoint does not return a response body.
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -32358,8 +31441,6 @@ paths:
           schema:
             default: AWS
             type: string
-          x-xgen-IPA-exception:
-            xgen-IPA-119-no-default-for-cloud-providers: Schema predates IPA validation
         - description: Unique 24-hexadecimal digit string that identifies the private
             endpoint service that you want to return.
           in: path
@@ -32380,10 +31461,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -32411,8 +31488,6 @@ paths:
           schema:
             default: AWS
             type: string
-          x-xgen-IPA-exception:
-            xgen-IPA-119-no-default-for-cloud-providers: Schema predates IPA validation
         - description: Unique 24-hexadecimal digit string that identifies the private
             endpoint service for which you want to create a private endpoint.
           in: path
@@ -32438,12 +31513,8 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
         "402":
           $ref: "#/components/responses/paymentRequired"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "409":
@@ -32472,8 +31543,6 @@ paths:
           schema:
             default: AWS
             type: string
-          x-xgen-IPA-exception:
-            xgen-IPA-119-no-default-for-cloud-providers: Schema predates IPA validation
         - description: Unique string that identifies the private endpoint you want to
             delete. The format of the **endpointId** parameter differs for AWS
             and Azure. You must URL encode the **endpointId** for Azure private
@@ -32500,10 +31569,6 @@ paths:
           description: This endpoint does not return a response body.
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -32528,8 +31593,6 @@ paths:
           schema:
             default: AWS
             type: string
-          x-xgen-IPA-exception:
-            xgen-IPA-119-no-default-for-cloud-providers: Schema predates IPA validation
         - description: Unique string that identifies the private endpoint you want to
             return. The format of the **endpointId** parameter differs for AWS
             and Azure. You must URL encode the **endpointId** for Azure private
@@ -32560,10 +31623,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -32606,12 +31665,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Create One Private Endpoint Service for One Provider
@@ -32636,8 +31689,6 @@ paths:
                 $ref: "#/components/schemas/ProjectSettingItem"
               x-xgen-version: 2023-01-01
           description: OK
-        "401":
-          $ref: "#/components/responses/unauthorized"
         "403":
           $ref: "#/components/responses/forbidden"
         "404":
@@ -32677,10 +31728,6 @@ paths:
                 $ref: "#/components/schemas/ProjectSettingItem"
               x-xgen-version: 2023-01-01
           description: OK
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "409":
@@ -32719,8 +31766,6 @@ paths:
                 items:
                   $ref: "#/components/schemas/ServerlessTenantEndpoint"
                 type: array
-                x-xgen-IPA-exception:
-                  xgen-IPA-124-array-max-items: Schema predates IPA validation
               x-xgen-IPA-exception:
                 xgen-IPA-110-collections-response-define-links-array: Content predates IPA validation
                 xgen-IPA-110-collections-response-define-results-array: Content predates IPA validation
@@ -32729,10 +31774,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -32782,10 +31823,6 @@ paths:
           description: Created
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -32830,10 +31867,6 @@ paths:
           description: This endpoint does not return a response body.
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -32881,10 +31914,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -32937,10 +31966,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -32971,10 +31996,6 @@ paths:
                 xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -33011,10 +32032,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -33047,8 +32064,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -33110,10 +32125,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Create One Federated Database Instance and Online Archive Private
@@ -33146,8 +32157,6 @@ paths:
           description: This endpoint does not return a response body.
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -33186,8 +32195,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -33219,10 +32226,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return All MongoDB Processes in One Project
@@ -33262,10 +32265,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return One MongoDB Process by ID
@@ -33306,8 +32305,6 @@ paths:
           description: Succeeded
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
         "403":
           $ref: "#/components/responses/forbidden"
         "404":
@@ -33337,12 +32334,8 @@ paths:
                 $ref: "#/components/schemas/CollStatsRankedNamespaces"
               x-xgen-version: 2023-11-15
           description: Succeeded
-        "401":
-          $ref: "#/components/responses/unauthorized"
         "403":
           $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return Ranked Namespaces from a Host
@@ -33388,10 +32381,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return Available Databases for One MongoDB Process
@@ -33438,10 +32427,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return One Database for a MongoDB Process
@@ -33516,10 +32501,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return Measurements of One Database for One MongoDB Process
@@ -33560,10 +32541,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return Available Disks for One MongoDB Process
@@ -33611,10 +32588,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return Measurements of One Disk
@@ -33693,10 +32666,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return Measurements of One Disk for One MongoDB Process
@@ -33771,10 +32740,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return Measurements for One MongoDB Process
@@ -33845,10 +32810,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return All Namespaces for One Host
@@ -33943,10 +32904,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return Slow Queries
@@ -34046,10 +33003,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return Suggested Indexes
@@ -34208,10 +33161,6 @@ paths:
           description: Created
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "409":
@@ -34248,10 +33197,6 @@ paths:
                 xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -34286,12 +33231,6 @@ paths:
                 $ref: "#/components/schemas/PaginatedServerlessInstanceDescription"
               x-xgen-version: 2023-01-01
           description: OK
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "409":
           $ref: "#/components/responses/conflict"
         "500":
@@ -34333,14 +33272,8 @@ paths:
           description: Created
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
         "402":
           $ref: "#/components/responses/paymentRequired"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "409":
           $ref: "#/components/responses/conflict"
         "500":
@@ -34384,10 +33317,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -34436,8 +33365,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
         "403":
           $ref: "#/components/responses/forbidden"
         "404":
@@ -34492,10 +33419,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -34539,10 +33462,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -34594,10 +33513,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -34637,10 +33552,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return Serverless Auto Indexing Enabled
@@ -34681,10 +33592,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Set Serverless Auto Indexing
@@ -34724,10 +33631,6 @@ paths:
           description: Accepted
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "409":
@@ -34771,10 +33674,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "409":
@@ -34823,14 +33722,8 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
         "402":
           $ref: "#/components/responses/paymentRequired"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "409":
           $ref: "#/components/responses/conflict"
       summary: Update One Serverless Instance in One Project
@@ -34839,7 +33732,8 @@ paths:
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Serverless-Instances/operation/updateServerlessInstance
   "/api/atlas/v2/groups/{groupId}/serviceAccounts":
     get:
-      description: Returns all Service Accounts for the specified Project.
+      description: Returns all Service Accounts for the specified Project. Available
+        as a preview feature.
       operationId: listProjectServiceAccounts
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -34857,8 +33751,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "403":
           $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: List All Project Service Accounts
@@ -34868,7 +33760,8 @@ paths:
     post:
       description: Creates one Service Account for the specified Project. The Service
         Account will automatically be added as an Organization Member to the
-        Organization that the specified Project is a part of.
+        Organization that the specified Project is a part of. Available as a
+        preview feature.
       operationId: createProjectServiceAccount
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -34892,10 +33785,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Create and Assign one Service Account to one Project
@@ -34907,7 +33796,7 @@ paths:
       description: Removes the specified Service Account from the specified project.
         The Service Account will still be a part of the Organization it was
         created in, and the credentials will remain active until expired or
-        manually revoked.
+        manually revoked. Available as a preview feature.
       operationId: deleteProjectServiceAccount
       parameters:
         - description: The Client ID of the Service Account.
@@ -34928,8 +33817,6 @@ paths:
           x-xgen-version: 2024-08-05
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -34939,7 +33826,8 @@ paths:
         - Service Accounts
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Service-Accounts/operation/deleteProjectServiceAccount
     get:
-      description: Returns one Service Account in the specified Project.
+      description: Returns one Service Account in the specified Project. Available as
+        a preview feature.
       operationId: getProjectServiceAccount
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -34963,8 +33851,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -34974,7 +33860,8 @@ paths:
         - Service Accounts
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Service-Accounts/operation/getProjectServiceAccount
     patch:
-      description: Updates one Service Account in the specified Project.
+      description: Updates one Service Account in the specified Project. Available as
+        a preview feature.
       operationId: updateProjectServiceAccount
       parameters:
         - description: The Client ID of the Service Account.
@@ -35005,8 +33892,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -35018,7 +33903,8 @@ paths:
   "/api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/accessList":
     get:
       description: Returns all access list entries that you configured for the
-        specified Service Account for the project.
+        specified Service Account for the project. Available as a preview
+        feature.
       operationId: listProjectServiceAccountAccessList
       parameters:
         - $ref: "#/components/parameters/includeCount"
@@ -35043,10 +33929,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return All Access List entries for one Project Service Account
@@ -35056,7 +33938,7 @@ paths:
     post:
       description: Add Access List Entries for the specified Service Account for the
         project. Resources require all API requests to originate from IP
-        addresses on the API access list.
+        addresses on the API access list. Available as a preview feature.
       operationId: createProjectServiceAccountAccessList
       parameters:
         - $ref: "#/components/parameters/includeCount"
@@ -35077,7 +33959,6 @@ paths:
             schema:
               items:
                 $ref: "#/components/schemas/ServiceAccountIPAccessListEntry"
-              maxItems: 200
               type: array
             x-xgen-version: 2024-08-05
         description: A list of access list entries to add to the access list of the
@@ -35095,10 +33976,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "409":
           $ref: "#/components/responses/conflict"
         "500":
@@ -35111,7 +33988,7 @@ paths:
     delete:
       description: Removes the specified access list entry from the specified Service
         Account for the project. You can't remove the requesting IP address from
-        the access list.
+        the access list. Available as a preview feature.
       operationId: deleteProjectServiceAccountAccessListEntry
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -35143,8 +34020,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -35156,7 +34031,7 @@ paths:
   "/api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/secrets":
     post:
       description: Create a secret for the specified Service Account in the specified
-        Project.
+        Project. Available as a preview feature.
       operationId: createProjectServiceAccountSecret
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -35187,10 +34062,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Create one Project Service Account Secret
@@ -35199,7 +34070,8 @@ paths:
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Service-Accounts/operation/createProjectServiceAccountSecret
   "/api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/secrets/{secretId}":
     delete:
-      description: Deletes the specified Service Account secret.
+      description: Deletes the specified Service Account secret. Available as a
+        preview feature.
       operationId: deleteProjectServiceAccountSecret
       parameters:
         - description: The Client ID of the Service Account.
@@ -35225,8 +34097,6 @@ paths:
           description: This endpoint does not return a response body.
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -35238,6 +34108,7 @@ paths:
   "/api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}:invite":
     post:
       description: Assigns the specified Service Account to the specified Project.
+        Available as a preview feature.
       operationId: addProjectServiceAccount
       parameters:
         - description: The Client ID of the Service Account.
@@ -35270,8 +34141,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -35363,10 +34232,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return All Project Stream Instances
@@ -35403,10 +34268,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Create One Stream Instance
@@ -35486,8 +34347,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -35638,8 +34497,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -35684,10 +34541,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "409":
           $ref: "#/components/responses/unauthorized"
         "500":
@@ -35773,8 +34626,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -35874,10 +34725,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "409":
           $ref: "#/components/responses/unauthorized"
         "500":
@@ -35957,8 +34804,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -36124,8 +34969,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -36159,15 +35002,11 @@ paths:
           content:
             application/vnd.atlas.2024-11-13+json:
               schema:
-                $ref: "#/components/schemas/AccountDetails"
+                $ref: "#/components/schemas/AWSAccountDetails"
               x-xgen-version: 2024-11-13
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Returns the Account ID, and the VPC ID for the group and region
@@ -36191,10 +35030,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Returns all the active incoming VPC Peering Connections.
@@ -36222,8 +35057,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -36261,10 +35094,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "409":
           $ref: "#/components/responses/unauthorized"
         "500":
@@ -36334,8 +35163,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -36369,10 +35196,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return All VPC Peering Connections.
@@ -36505,10 +35328,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Create One Stream Instance With Sample Connections
@@ -36701,10 +35520,6 @@ paths:
                 xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -36741,10 +35556,6 @@ paths:
           description: Accepted
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -36771,10 +35582,6 @@ paths:
                 $ref: "#/components/schemas/UserSecurity"
               x-xgen-version: 2023-01-01
           description: Accepted
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -36800,10 +35607,6 @@ paths:
                 $ref: "#/components/schemas/UserSecurity"
               x-xgen-version: 2023-01-01
           description: Accepted
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -36838,10 +35641,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -36874,10 +35673,6 @@ paths:
                 $ref: "#/components/schemas/LDAPVerifyConnectivityJobRequest"
               x-xgen-version: 2023-01-01
           description: OK
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -36959,10 +35754,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return All MongoDB Cloud Users in One Project
@@ -37055,8 +35846,6 @@ paths:
           description: This endpoint does not return a response body.
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
         "403":
           $ref: "#/components/responses/forbidden"
         "404":
@@ -37308,10 +36097,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Migrate One Project to Another Organization
@@ -37348,8 +36133,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "409":
@@ -37389,8 +36172,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "409":
@@ -37503,8 +36284,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "409":
@@ -37540,8 +36319,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "409":
@@ -37578,10 +36355,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return All Organization API Keys
@@ -37616,10 +36389,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Create One Organization API Key
@@ -37655,8 +36424,6 @@ paths:
           description: This endpoint does not return a response body.
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -37697,10 +36464,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return One Organization API Key
@@ -37746,10 +36509,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Update One Organization API Key
@@ -37789,10 +36548,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return All Access List Entries for One Organization API Key
@@ -37841,10 +36596,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "409":
           $ref: "#/components/responses/conflict"
         "500":
@@ -37897,8 +36648,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -37949,8 +36698,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -37986,10 +36733,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Create Cost Explorer query process
@@ -38026,16 +36769,12 @@ paths:
             application/vnd.atlas.2023-01-01+csv:
               schema:
                 type: string
-              x-xgen-IPA-exception:
-                xgen-IPA-117-plaintext-response-must-have-example: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -38112,12 +36851,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return All Events from One Organization
@@ -38170,8 +36903,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -38202,8 +36933,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -38258,8 +36987,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -38300,8 +37027,6 @@ paths:
                 items:
                   $ref: "#/components/schemas/OrganizationInvitation"
                 type: array
-                x-xgen-IPA-exception:
-                  xgen-IPA-124-array-max-items: Schema predates IPA validation
               x-xgen-IPA-exception:
                 xgen-IPA-110-collections-response-define-links-array: Content predates IPA validation
                 xgen-IPA-110-collections-response-define-results-array: Content predates IPA validation
@@ -38312,8 +37037,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -38359,8 +37082,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -38405,8 +37126,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -38449,8 +37168,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -38496,8 +37213,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -38552,8 +37267,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -38642,8 +37355,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -38689,14 +37400,10 @@ paths:
             application/vnd.atlas.2023-01-01+csv:
               schema:
                 type: string
-              x-xgen-IPA-exception:
-                xgen-IPA-117-plaintext-response-must-have-example: API predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -38749,8 +37456,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -38798,10 +37503,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Query lineItems of the specified invoiceId
@@ -38829,8 +37530,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -38853,16 +37552,10 @@ paths:
                 items:
                   $ref: "#/components/schemas/LiveImportAvailableProject"
                 type: array
-                x-xgen-IPA-exception:
-                  xgen-IPA-124-array-max-items: Schema predates IPA validation
               x-xgen-version: 2023-01-01
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -38889,10 +37582,6 @@ paths:
           description: This endpoint does not return a response body.
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -38927,10 +37616,6 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -38956,8 +37641,6 @@ paths:
                 items:
                   $ref: "#/components/schemas/ApiAtlasNonCompliantResource"
                 type: array
-                x-xgen-IPA-exception:
-                  xgen-IPA-124-array-max-items: Schema predates IPA validation
               x-xgen-IPA-exception:
                 xgen-IPA-104-get-method-returns-response-suffixed-object: API predates IPA validation
                 xgen-IPA-104-get-method-returns-single-resource: API predates IPA validation
@@ -38967,8 +37650,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -38994,8 +37675,6 @@ paths:
                 items:
                   $ref: "#/components/schemas/ApiAtlasResourcePolicy"
                 type: array
-                x-xgen-IPA-exception:
-                  xgen-IPA-124-array-max-items: Schema predates IPA validation
               x-xgen-IPA-exception:
                 xgen-IPA-110-collections-response-define-links-array: Content predates IPA validation
                 xgen-IPA-110-collections-response-define-results-array: Content predates IPA validation
@@ -39006,8 +37685,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -39049,8 +37726,6 @@ paths:
           description: Bad request.
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -39090,8 +37765,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -39134,8 +37807,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -39189,8 +37860,6 @@ paths:
           description: Bad request.
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -39233,8 +37902,6 @@ paths:
           description: Bad request.
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -39246,6 +37913,7 @@ paths:
   "/api/atlas/v2/orgs/{orgId}/serviceAccounts":
     get:
       description: Returns all Service Accounts for the specified Organization.
+        Available as a preview feature.
       operationId: listServiceAccounts
       parameters:
         - $ref: "#/components/parameters/orgId"
@@ -39263,8 +37931,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "403":
           $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: List All Organization Service Accounts
@@ -39273,6 +37939,7 @@ paths:
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Service-Accounts/operation/listServiceAccounts
     post:
       description: Creates one Service Account for the specified Organization.
+        Available as a preview feature.
       operationId: createServiceAccount
       parameters:
         - $ref: "#/components/parameters/orgId"
@@ -39295,10 +37962,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Create one Organization Service Account
@@ -39307,7 +37970,7 @@ paths:
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Service-Accounts/operation/createServiceAccount
   "/api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}":
     delete:
-      description: Deletes the specified Service Account.
+      description: Deletes the specified Service Account. Available as a preview feature.
       operationId: deleteServiceAccount
       parameters:
         - description: The Client ID of the Service Account.
@@ -39327,8 +37990,6 @@ paths:
           description: This endpoint does not return a response body.
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -39338,7 +37999,7 @@ paths:
         - Service Accounts
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Service-Accounts/operation/deleteServiceAccount
     get:
-      description: Returns the specified Service Account.
+      description: Returns the specified Service Account. Available as a preview feature.
       operationId: getServiceAccount
       parameters:
         - $ref: "#/components/parameters/orgId"
@@ -39362,8 +38023,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -39373,7 +38032,8 @@ paths:
         - Service Accounts
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Service-Accounts/operation/getServiceAccount
     patch:
-      description: Updates the specified Service Account in the specified Organization.
+      description: Updates the specified Service Account in the specified
+        Organization. Available as a preview feature.
       operationId: updateServiceAccount
       parameters:
         - description: The Client ID of the Service Account.
@@ -39404,8 +38064,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -39417,7 +38075,8 @@ paths:
   "/api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/accessList":
     get:
       description: Returns all access list entries that you configured for the
-        specified Service Account for the organization.
+        specified Service Account for the organization. Available as a preview
+        feature.
       operationId: listServiceAccountAccessList
       parameters:
         - $ref: "#/components/parameters/includeCount"
@@ -39442,10 +38101,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return All Access List entries for one Organization Service Account
@@ -39455,7 +38110,7 @@ paths:
     post:
       description: Add Access List Entries for the specified Service Account for the
         organization. Resources require all API requests to originate from IP
-        addresses on the API access list.
+        addresses on the API access list. Available as a preview feature.
       operationId: createServiceAccountAccessList
       parameters:
         - $ref: "#/components/parameters/includeCount"
@@ -39476,7 +38131,6 @@ paths:
             schema:
               items:
                 $ref: "#/components/schemas/ServiceAccountIPAccessListEntry"
-              maxItems: 200
               type: array
             x-xgen-version: 2024-08-05
         description: A list of access list entries to add to the access list of the
@@ -39494,10 +38148,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "409":
           $ref: "#/components/responses/conflict"
         "500":
@@ -39510,7 +38160,7 @@ paths:
     delete:
       description: Removes the specified access list entry from the specified Service
         Account for the organization. You can't remove the requesting IP address
-        from the access list.
+        from the access list. Available as a preview feature.
       operationId: deleteServiceAccountAccessListEntry
       parameters:
         - $ref: "#/components/parameters/orgId"
@@ -39542,8 +38192,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -39555,7 +38203,7 @@ paths:
   "/api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/groups":
     get:
       description: Returns a list of all projects the specified Service Account is a
-        part of.
+        part of. Available as a preview feature.
       operationId: listServiceAccountProjects
       parameters:
         - $ref: "#/components/parameters/orgId"
@@ -39584,8 +38232,6 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "403":
           $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Return All Service Account Project assignments
@@ -39594,7 +38240,8 @@ paths:
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Service-Accounts/operation/listServiceAccountProjects
   "/api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/secrets":
     post:
-      description: Create a secret for the specified Service Account.
+      description: Create a secret for the specified Service Account. Available as a
+        preview feature.
       operationId: createServiceAccountSecret
       parameters:
         - $ref: "#/components/parameters/orgId"
@@ -39625,10 +38272,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       summary: Create one Organization Service Account Secret
@@ -39637,7 +38280,8 @@ paths:
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Service-Accounts/operation/createServiceAccountSecret
   "/api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/secrets/{secretId}":
     delete:
-      description: Deletes the specified Service Account secret.
+      description: Deletes the specified Service Account secret. Available as a
+        preview feature.
       operationId: deleteServiceAccountSecret
       parameters:
         - description: The Client ID of the Service Account.
@@ -39663,8 +38307,6 @@ paths:
           description: This endpoint does not return a response body.
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -39767,8 +38409,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -39808,8 +38448,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "409":
@@ -39850,8 +38488,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -39892,8 +38528,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -39940,8 +38574,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "409":
@@ -40009,8 +38641,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "409":
@@ -40068,8 +38698,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "409":
@@ -40124,8 +38752,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -40275,8 +38901,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -40334,8 +38958,6 @@ paths:
           $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -40771,8 +39393,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -40817,8 +39437,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -40858,8 +39476,6 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -41057,7 +39673,8 @@ tags:
     name: Serverless Private Endpoints
   - description: Endpoints for managing Service Accounts and secrets. Service
       Accounts are used for programmatic access to the Atlas Admin API through
-      the OAuth 2.0 Client Credentials flow.
+      the OAuth 2.0 Client Credentials flow. This feature is available as a
+      Preview feature.
     externalDocs:
       description: Get Started with the Atlas Administration API
       url: https://www.mongodb.com/docs/atlas/configure-api-access/

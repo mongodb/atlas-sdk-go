@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ExpirationTime** | **time.Time** | Expiration date for the employee access grant. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | 
+**ExpirationTime** | **time.Time** | Expiration date for the employee access grant. | 
 **GrantType** | **string** | Level of access to grant to MongoDB Employees. | 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**LastModifiedDate** | Pointer to **time.Time** | Date when retention policy was last modified. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
+**LastModifiedDate** | Pointer to **time.Time** | Date when retention policy was last modified. | [optional] [readonly] 
 **Units** | **string** | Quantity of time in which the Data Lake Pipeline measures dataset retention. | 
 **Value** | **int** | Number that indicates the amount of days, weeks, or months that the Data Lake Pipeline will retain datasets. | 
 

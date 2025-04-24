@@ -10,9 +10,9 @@ import (
 type X509CertificateUpdate struct {
 	// Certificate content.
 	Content *string `json:"content,omitempty"`
-	// Latest date that the certificate is valid. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
+	// Latest date that the certificate is valid.
 	NotAfter *time.Time `json:"notAfter,omitempty"`
-	// Earliest date that the certificate is valid. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
+	// Earliest date that the certificate is valid.
 	NotBefore *time.Time `json:"notBefore,omitempty"`
 }
 

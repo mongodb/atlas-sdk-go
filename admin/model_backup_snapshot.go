@@ -20,7 +20,7 @@ type BackupSnapshot struct {
 	Created  *ApiBSONTimestamp `json:"created,omitempty"`
 	// Flag that indicates whether someone can delete this snapshot. You can't set `\"doNotDelete\" : true` and set a timestamp for **expires** in the same request.
 	DoNotDelete *bool `json:"doNotDelete,omitempty"`
-	// Date and time when MongoDB Cloud deletes the snapshot. If `\"doNotDelete\" : true`, MongoDB Cloud removes any value set for this parameter. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
+	// Date and time when MongoDB Cloud deletes the snapshot. If `\"doNotDelete\" : true`, MongoDB Cloud removes any value set for this parameter.
 	Expires *time.Time `json:"expires,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the project that owns the snapshots.
 	// Read only field.

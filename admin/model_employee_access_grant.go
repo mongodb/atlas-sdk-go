@@ -8,7 +8,7 @@ import (
 
 // EmployeeAccessGrant MongoDB employee granted access level and expiration for a cluster.
 type EmployeeAccessGrant struct {
-	// Expiration date for the employee access grant. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
+	// Expiration date for the employee access grant.
 	ExpirationTime time.Time `json:"expirationTime"`
 	// Level of access to grant to MongoDB Employees.
 	GrantType string `json:"grantType"`

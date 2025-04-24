@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**BillDate** | Pointer to **time.Time** | Billing date of the line item. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] 
+**BillDate** | Pointer to **time.Time** | Billing date of the line item. | [optional] 
 **ClusterName** | Pointer to **string** | Cluster associated with the line item. | [optional] 
 **Description** | Pointer to **string** | Description of the line item, which can include SKU name and other identifying information. | [optional] 
 **GroupId** | Pointer to **string** | Group id associated with the line item. | [optional] 
 **Quantity** | Pointer to **float64** | Quantity of line item in units associated with SKU. | [optional] [readonly] 
 **TotalPriceCents** | Pointer to **int64** | Price * quantity in applicable units, expressed as an integral number of cents. | [optional] 
 **UnitPriceDollars** | Pointer to **float64** | Price in units associated with the SKU for the line item. | [optional] 
-**UsageDate** | Pointer to **time.Time** | Usage date of the line item. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] 
+**UsageDate** | Pointer to **time.Time** | Usage date of the line item. | [optional] 
 
 ## Methods
 

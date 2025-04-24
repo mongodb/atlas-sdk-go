@@ -462,10 +462,10 @@ Class        | Method        | HTTP request  | Description   |
 
 ## Documentation For Models
 
+ - [AWSAccountDetails](./docs/AWSAccountDetails.md)
  - [AWSCustomDNSEnabled](./docs/AWSCustomDNSEnabled.md)
  - [AWSKMSConfiguration](./docs/AWSKMSConfiguration.md)
  - [AccessListItem](./docs/AccessListItem.md)
- - [AccountDetails](./docs/AccountDetails.md)
  - [AcknowledgeAlert](./docs/AcknowledgeAlert.md)
  - [AddOrRemoveGroupRole](./docs/AddOrRemoveGroupRole.md)
  - [AddOrRemoveOrgRole](./docs/AddOrRemoveOrgRole.md)

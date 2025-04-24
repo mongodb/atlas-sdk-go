@@ -9,6 +9,8 @@ Name | Type | Description | Notes
 **MaximumLimit** | Pointer to **int64** | Maximum value of the limit. | [optional] [readonly] 
 **Name** | **string** | Human-readable label that identifies the user-managed limit to modify. | [readonly] 
 **Value** | **int64** | Amount to set the limit to. | 
+**LastModifiedDate** | Pointer to **time.Time** | Only used for Data Federation limits. Timestamp that indicates when this usage limit was last modified. This field uses the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
+**OverrunPolicy** | Pointer to **string** | Only used for Data Federation limits. Action to take when the usage limit is exceeded. If limit span is set to QUERY, this is ignored because MongoDB Cloud stops the query when it exceeds the usage limit. | [optional] 
 
 ## Methods
 
@@ -139,6 +141,54 @@ and a boolean to check if the value has been set.
 
 SetValue sets Value field to given value.
 
+### GetLastModifiedDate
+
+`func (o *DataFederationLimit) GetLastModifiedDate() time.Time`
+
+GetLastModifiedDate returns the LastModifiedDate field if non-nil, zero value otherwise.
+
+### GetLastModifiedDateOk
+
+`func (o *DataFederationLimit) GetLastModifiedDateOk() (*time.Time, bool)`
+
+GetLastModifiedDateOk returns a tuple with the LastModifiedDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastModifiedDate
+
+`func (o *DataFederationLimit) SetLastModifiedDate(v time.Time)`
+
+SetLastModifiedDate sets LastModifiedDate field to given value.
+
+### HasLastModifiedDate
+
+`func (o *DataFederationLimit) HasLastModifiedDate() bool`
+
+HasLastModifiedDate returns a boolean if a field has been set.
+### GetOverrunPolicy
+
+`func (o *DataFederationLimit) GetOverrunPolicy() string`
+
+GetOverrunPolicy returns the OverrunPolicy field if non-nil, zero value otherwise.
+
+### GetOverrunPolicyOk
+
+`func (o *DataFederationLimit) GetOverrunPolicyOk() (*string, bool)`
+
+GetOverrunPolicyOk returns a tuple with the OverrunPolicy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOverrunPolicy
+
+`func (o *DataFederationLimit) SetOverrunPolicy(v string)`
+
+SetOverrunPolicy sets OverrunPolicy field to given value.
+
+### HasOverrunPolicy
+
+`func (o *DataFederationLimit) HasOverrunPolicy() bool`
+
+HasOverrunPolicy returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

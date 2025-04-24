@@ -18,7 +18,7 @@ type DropIndexSuggestionsIndex struct {
 	Namespace *string `json:"namespace,omitempty"`
 	// List that contains strings that specifies the shards where the index is found.
 	Shards *[]string `json:"shards,omitempty"`
-	// Date of most recent usage of index. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
+	// Date of most recent usage of index.
 	Since *time.Time `json:"since,omitempty"`
 	// Size of index.
 	SizeBytes *int64 `json:"sizeBytes,omitempty"`
