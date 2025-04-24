@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **GroupId** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the project that contains the cluster to undergo outage simulation. | [optional] [readonly] 
 **Id** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the outage simulation. | [optional] [readonly] 
 **OutageFilters** | Pointer to [**[]AtlasClusterOutageSimulationOutageFilter**](AtlasClusterOutageSimulationOutageFilter.md) | List of settings that specify the type of cluster outage simulation. | [optional] 
-**StartRequestDate** | Pointer to **time.Time** | Date and time when MongoDB Cloud started the regional outage simulation. | [optional] [readonly] 
+**StartRequestDate** | Pointer to **time.Time** | Date and time when MongoDB Cloud started the regional outage simulation. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
 **State** | Pointer to **string** | Phase of the outage simulation.  | State       | Indication | |-------------|------------| | &#x60;START_REQUESTED&#x60;    | User has requested cluster outage simulation.| | &#x60;STARTING&#x60;           | MongoDB Cloud is starting cluster outage simulation.| | &#x60;SIMULATING&#x60;         | MongoDB Cloud is simulating cluster outage.| | &#x60;RECOVERY_REQUESTED&#x60; | User has requested recovery from the simulated outage.| | &#x60;RECOVERING&#x60;         | MongoDB Cloud is recovering the cluster from the simulated outage.| | &#x60;COMPLETE&#x60;           | MongoDB Cloud has completed the cluster outage simulation.| | [optional] [readonly] 
 
 ## Methods

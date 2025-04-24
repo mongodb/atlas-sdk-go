@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CreatedAt** | Pointer to **time.Time** | The time at which this index definition was created. | [optional] 
+**CreatedAt** | Pointer to **time.Time** | The time at which this index definition was created. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] 
 **Version** | Pointer to **int64** | The version number associated with this index definition when it was created. | [optional] 
 
 ## Methods

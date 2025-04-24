@@ -150,7 +150,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    streamsPrivateLinkConnection := *openapiclient.NewStreamsPrivateLinkConnection() // StreamsPrivateLinkConnection | 
+    streamsPrivateLinkConnection := *openapiclient.NewStreamsPrivateLinkConnection("Provider_example") // StreamsPrivateLinkConnection | 
 
     resp, r, err := sdk.StreamsApi.CreatePrivateLinkConnection(context.Background(), groupId, &streamsPrivateLinkConnection).Execute()
     if err != nil {
@@ -1035,7 +1035,7 @@ Name | Type | Description  | Notes
 
 ## GetAccountDetails
 
-> AWSAccountDetails GetAccountDetails(ctx, groupId).CloudProvider(cloudProvider).RegionName(regionName).Execute()
+> AccountDetails GetAccountDetails(ctx, groupId).CloudProvider(cloudProvider).RegionName(regionName).Execute()
 
 Returns the Account ID, and the VPC ID for the group and region specified.
 
@@ -1076,7 +1076,7 @@ func main() {
         }
         return
     }
-    // response from `GetAccountDetails`: AWSAccountDetails
+    // response from `GetAccountDetails`: AccountDetails
     fmt.Fprintf(os.Stdout, "Response from `StreamsApi.GetAccountDetails`: %v (%v)\n", resp, r)
 }
 ```
@@ -1102,7 +1102,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AWSAccountDetails**](AWSAccountDetails.md)
+[**AccountDetails**](AccountDetails.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

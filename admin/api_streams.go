@@ -326,7 +326,7 @@ type StreamsApi interface {
 	GetAccountDetailsWithParams(ctx context.Context, args *GetAccountDetailsApiParams) GetAccountDetailsApiRequest
 
 	// Method available only for mocking purposes
-	GetAccountDetailsExecute(r GetAccountDetailsApiRequest) (*AWSAccountDetails, *http.Response, error)
+	GetAccountDetailsExecute(r GetAccountDetailsApiRequest) (*AccountDetails, *http.Response, error)
 
 	/*
 		GetActiveVpcPeeringConnections Returns all the active incoming VPC Peering Connections.
@@ -2131,7 +2131,7 @@ func (r GetAccountDetailsApiRequest) RegionName(regionName string) GetAccountDet
 	return r
 }
 
-func (r GetAccountDetailsApiRequest) Execute() (*AWSAccountDetails, *http.Response, error) {
+func (r GetAccountDetailsApiRequest) Execute() (*AccountDetails, *http.Response, error) {
 	return r.ApiService.GetAccountDetailsExecute(r)
 }
 
@@ -2154,13 +2154,13 @@ func (a *StreamsApiService) GetAccountDetails(ctx context.Context, groupId strin
 
 // GetAccountDetailsExecute executes the request
 //
-//	@return AWSAccountDetails
-func (a *StreamsApiService) GetAccountDetailsExecute(r GetAccountDetailsApiRequest) (*AWSAccountDetails, *http.Response, error) {
+//	@return AccountDetails
+func (a *StreamsApiService) GetAccountDetailsExecute(r GetAccountDetailsApiRequest) (*AccountDetails, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue *AWSAccountDetails
+		localVarReturnValue *AccountDetails
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.GetAccountDetails")
