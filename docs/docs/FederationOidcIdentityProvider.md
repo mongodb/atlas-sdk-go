@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **AssociatedOrgs** | Pointer to [**[]ConnectedOrgConfig**](ConnectedOrgConfig.md) | List that contains the connected organization configurations associated with the identity provider. | [optional] 
 **Audience** | Pointer to **string** | Identifier of the intended recipient of the token. | [optional] 
 **AuthorizationType** | Pointer to **string** | Indicates whether authorization is granted based on group membership or user ID. | [optional] 
-**CreatedAt** | Pointer to **time.Time** | Date that the identity provider was created on. | [optional] [readonly] 
+**CreatedAt** | Pointer to **time.Time** | Date that the identity provider was created on. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
 **Description** | Pointer to **string** | The description of the identity provider. | [optional] 
 **DisplayName** | Pointer to **string** | Human-readable label that identifies the identity provider. | [optional] 
 **GroupsClaim** | Pointer to **string** | Identifier of the claim which contains IdP Group IDs in the token. | [optional] 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **IssuerUri** | Pointer to **string** | Unique string that identifies the issuer of the SAML Assertion or OIDC metadata/discovery document URL. | [optional] 
 **OktaIdpId** | **string** | Legacy 20-hexadecimal digit string that identifies the identity provider. | 
 **Protocol** | Pointer to **string** | String enum that indicates the protocol of the identity provider. Either SAML or OIDC. | [optional] 
-**UpdatedAt** | Pointer to **time.Time** | Date that the identity provider was last updated on. | [optional] [readonly] 
+**UpdatedAt** | Pointer to **time.Time** | Date that the identity provider was last updated on. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
 **UserClaim** | Pointer to **string** | Identifier of the claim which contains the user ID in the token. | [optional] 
 **AssociatedDomains** | Pointer to **[]string** | List that contains the domains associated with the identity provider. | [optional] 
 **ClientId** | Pointer to **string** | Client identifier that is assigned to an application by the Identity Provider. | [optional] 

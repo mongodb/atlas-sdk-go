@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Content** | Pointer to **string** | Certificate content. | [optional] 
-**NotAfter** | Pointer to **time.Time** | Latest date that the certificate is valid. | [optional] 
-**NotBefore** | Pointer to **time.Time** | Earliest date that the certificate is valid. | [optional] 
+**NotAfter** | Pointer to **time.Time** | Latest date that the certificate is valid. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] 
+**NotBefore** | Pointer to **time.Time** | Earliest date that the certificate is valid. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] 
 
 ## Methods
 

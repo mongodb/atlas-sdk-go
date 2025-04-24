@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CreatedAt** | **time.Time** | The date that the secret was created on. | [readonly] 
-**ExpiresAt** | **time.Time** | The date for the expiration of the secret. | [readonly] 
+**CreatedAt** | **time.Time** | The date that the secret was created on. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [readonly] 
+**ExpiresAt** | **time.Time** | The date for the expiration of the secret. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [readonly] 
 **Id** | **string** | Unique 24-hexadecimal digit string that identifies the secret. | [readonly] 
-**LastUsedAt** | Pointer to **time.Time** | The last time the secret was used. | [optional] [readonly] 
+**LastUsedAt** | Pointer to **time.Time** | The last time the secret was used. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
 **MaskedSecretValue** | Pointer to **string** | The masked Service Account secret. | [optional] [readonly] 
 **Secret** | Pointer to **string** | The secret for the Service Account. It will be returned only the first time after creation. | [optional] [readonly] 
 

@@ -354,7 +354,7 @@ Other parameters are passed through a pointer to a apiCreateExportBucketRequest 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **diskBackupSnapshotExportBucketRequest** | [**DiskBackupSnapshotExportBucketRequest**](DiskBackupSnapshotExportBucketRequest.md) | Specifies the role and AWS S3 Bucket or Azure Blob Storage Container that the Export Bucket should reference. | 
+ **diskBackupSnapshotExportBucketRequest** | [**DiskBackupSnapshotExportBucketRequest**](DiskBackupSnapshotExportBucketRequest.md) | Specifies the role and AWS S3 Bucket, Azure Blob Storage Container, or Google Cloud Storage Bucket that the Export Bucket should reference. | 
 
 ### Return type
 
