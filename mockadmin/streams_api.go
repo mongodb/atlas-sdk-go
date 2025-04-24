@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312002/admin"
+	admin "go.mongodb.org/atlas-sdk/v20250312003/admin"
 
 	http "net/http"
 
@@ -1970,24 +1970,24 @@ func (_c *StreamsApi_GetAccountDetails_Call) RunAndReturn(run func(context.Conte
 }
 
 // GetAccountDetailsExecute provides a mock function with given fields: r
-func (_m *StreamsApi) GetAccountDetailsExecute(r admin.GetAccountDetailsApiRequest) (*admin.AWSAccountDetails, *http.Response, error) {
+func (_m *StreamsApi) GetAccountDetailsExecute(r admin.GetAccountDetailsApiRequest) (*admin.AccountDetails, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for GetAccountDetailsExecute")
 	}
 
-	var r0 *admin.AWSAccountDetails
+	var r0 *admin.AccountDetails
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetAccountDetailsApiRequest) (*admin.AWSAccountDetails, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetAccountDetailsApiRequest) (*admin.AccountDetails, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.GetAccountDetailsApiRequest) *admin.AWSAccountDetails); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetAccountDetailsApiRequest) *admin.AccountDetails); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.AWSAccountDetails)
+			r0 = ret.Get(0).(*admin.AccountDetails)
 		}
 	}
 
@@ -2026,12 +2026,12 @@ func (_c *StreamsApi_GetAccountDetailsExecute_Call) Run(run func(r admin.GetAcco
 	return _c
 }
 
-func (_c *StreamsApi_GetAccountDetailsExecute_Call) Return(_a0 *admin.AWSAccountDetails, _a1 *http.Response, _a2 error) *StreamsApi_GetAccountDetailsExecute_Call {
+func (_c *StreamsApi_GetAccountDetailsExecute_Call) Return(_a0 *admin.AccountDetails, _a1 *http.Response, _a2 error) *StreamsApi_GetAccountDetailsExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *StreamsApi_GetAccountDetailsExecute_Call) RunAndReturn(run func(admin.GetAccountDetailsApiRequest) (*admin.AWSAccountDetails, *http.Response, error)) *StreamsApi_GetAccountDetailsExecute_Call {
+func (_c *StreamsApi_GetAccountDetailsExecute_Call) RunAndReturn(run func(admin.GetAccountDetailsApiRequest) (*admin.AccountDetails, *http.Response, error)) *StreamsApi_GetAccountDetailsExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
