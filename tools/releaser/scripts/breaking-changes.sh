@@ -37,29 +37,16 @@ RAW_CHANGES=$(gorelease -base "$BASE_VERSION")
 echo "Changes detected from BASE_VERSION $BASE_VERSION:"
 echo "$RAW_CHANGES"
 
-# Function to extract changes by section
-extract_changes() {
-    local section=$1
-    echo "$RAW_CHANGES" | awk -v section="$section" '
-        $0 ~ section {print "### " section; collecting=1; next}
-        collecting && /^#/ {collecting=0}
-        collecting && NF {print "- "$0}
-    '
-}
-
-# Extract different types of changes
-BREAKING_CHANGES=$(extract_changes "incompatible changes")
-NEW_FEATURES=$(extract_changes "new features")
-BUG_FIXES=$(extract_changes "bug fixes")
-DEPRECATIONS=$(extract_changes "deprecations")
-OTHER_CHANGES=$(extract_changes "other changes")
-
-# Combine non-breaking changes for release notes
-NON_BREAKING_CHANGES=""
-[ -n "$NEW_FEATURES" ] && NON_BREAKING_CHANGES+="\n## New Features\n$NEW_FEATURES"
-[ -n "$BUG_FIXES" ] && NON_BREAKING_CHANGES+="\n## Bug Fixes\n$BUG_FIXES"
-[ -n "$DEPRECATIONS" ] && NON_BREAKING_CHANGES+="\n## Deprecations\n$DEPRECATIONS"
-[ -n "$OTHER_CHANGES" ] && NON_BREAKING_CHANGES+="\n## Other Changes\n$OTHER_CHANGES"
+BREAKING_CHANGES=$(echo "$RAW_CHANGES" | awk '
+    /## incompatible changes/ {print "### incompatible changes"; collecting=1; next}
+    collecting && /^#/ {collecting=0}
+    collecting && NF {print "- "$0}
+')
+NON_BREAKING_CHANGES=$(echo "$RAW_CHANGES" | awk '
+    /## compatible changes/ {print "### compatible changes"; collecting=1; next}
+    collecting && /^#/ {collecting=0}
+    collecting && NF {print "- "$0}
+')
 
 set -e
 popd || exit
