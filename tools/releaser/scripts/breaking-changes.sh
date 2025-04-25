@@ -24,6 +24,18 @@ baseVersion() {
     export BASE_VERSION="$base_version"
 }
 
+# Extract changes based on pattern
+extractChanges() {
+    local raw_changes=$1
+    local pattern=$2
+    local header=$3
+    echo "$raw_changes" | awk -v pattern="$pattern" -v header="$header" '
+        $0 ~ pattern {print header; collecting=1; next}
+        collecting && /^#/ {collecting=0}
+        collecting && NF {print "- "$0}
+    '
+}
+
 baseVersion
 
 echo "Installing gorelease"
@@ -37,29 +49,8 @@ RAW_CHANGES=$(gorelease -base "$BASE_VERSION")
 echo "Changes detected from BASE_VERSION $BASE_VERSION:"
 echo "$RAW_CHANGES"
 
-# Function to extract changes by section
-extract_changes() {
-    local section=$1
-    echo "$RAW_CHANGES" | awk -v section="$section" '
-        $0 ~ section {print "### " section; collecting=1; next}
-        collecting && /^#/ {collecting=0}
-        collecting && NF {print "- "$0}
-    '
-}
-
-# Extract different types of changes
-BREAKING_CHANGES=$(extract_changes "incompatible changes")
-NEW_FEATURES=$(extract_changes "new features")
-BUG_FIXES=$(extract_changes "bug fixes")
-DEPRECATIONS=$(extract_changes "deprecations")
-OTHER_CHANGES=$(extract_changes "other changes")
-
-# Combine non-breaking changes for release notes
-NON_BREAKING_CHANGES=""
-[ -n "$NEW_FEATURES" ] && NON_BREAKING_CHANGES+="\n## New Features\n$NEW_FEATURES"
-[ -n "$BUG_FIXES" ] && NON_BREAKING_CHANGES+="\n## Bug Fixes\n$BUG_FIXES"
-[ -n "$DEPRECATIONS" ] && NON_BREAKING_CHANGES+="\n## Deprecations\n$DEPRECATIONS"
-[ -n "$OTHER_CHANGES" ] && NON_BREAKING_CHANGES+="\n## Other Changes\n$OTHER_CHANGES"
+BREAKING_CHANGES=$(extractChanges "$RAW_CHANGES" "## incompatible changes" "### incompatible changes")
+NON_BREAKING_CHANGES=$(extractChanges "$RAW_CHANGES" "## compatible changes" "### compatible changes")
 
 set -e
 popd || exit
@@ -71,7 +62,7 @@ else
   if [ -z "$TARGET_BREAKING_CHANGES_FILE" ]; then
     echo "Changes for the release:"
     [ -n "$BREAKING_CHANGES" ] && echo -e "\nBreaking Changes:\n$BREAKING_CHANGES"
-    [ -n "$NON_BREAKING_CHANGES" ] && echo -e "\nNon-Breaking Changes:$NON_BREAKING_CHANGES"
+    [ -n "$NON_BREAKING_CHANGES" ] && echo -e "\nNon-Breaking Changes:\n$NON_BREAKING_CHANGES"
   else
     # Only create breaking changes file for major version bumps
     if [ -n "$BREAKING_CHANGES" ]; then
