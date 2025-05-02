@@ -29,7 +29,7 @@ function getAPI(apiFileLocation) {
  * @param {*} apiFileLocation location to save
  */
 function saveAPI(doc, apiFileLocation) {
-  writeFileSync(apiFileLocation, stringify(doc, {lineWidth: 9999}));
+  writeFileSync(apiFileLocation, stringify(doc, { lineWidth: 9999 }));
 }
 
 module.exports = { getAPI, saveAPI };
