@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CloudProvider** | Pointer to **string** | The cloud provider of the region that undergoes the outage simulation. | [optional] 
 **RegionName** | Pointer to **string** | The name of the region to undergo an outage simulation. | [optional] 
-**Type** | Pointer to **string** | The type of cluster outage to simulate.  | Type       | Description | |------------|-------------| | &#x60;REGION&#x60;   | Simulates a cluster outage for a region.| | [optional] 
+**Type** | Pointer to **string** | The type of cluster outage to simulate. &#x60;REGION&#x60; simulates a cluster outage for a region. | [optional] 
 
 ## Methods
 

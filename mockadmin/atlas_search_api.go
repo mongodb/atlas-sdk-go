@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312001/admin"
+	admin "go.mongodb.org/atlas-sdk/v20250312002/admin"
 
 	http "net/http"
 
@@ -563,42 +563,33 @@ func (_c *AtlasSearchApi_DeleteAtlasSearchDeployment_Call) RunAndReturn(run func
 }
 
 // DeleteAtlasSearchDeploymentExecute provides a mock function with given fields: r
-func (_m *AtlasSearchApi) DeleteAtlasSearchDeploymentExecute(r admin.DeleteAtlasSearchDeploymentApiRequest) (any, *http.Response, error) {
+func (_m *AtlasSearchApi) DeleteAtlasSearchDeploymentExecute(r admin.DeleteAtlasSearchDeploymentApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteAtlasSearchDeploymentExecute")
 	}
 
-	var r0 any
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteAtlasSearchDeploymentApiRequest) (any, *http.Response, error)); ok {
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.DeleteAtlasSearchDeploymentApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteAtlasSearchDeploymentApiRequest) any); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteAtlasSearchDeploymentApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(any)
+			r0 = ret.Get(0).(*http.Response)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeleteAtlasSearchDeploymentApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.DeleteAtlasSearchDeploymentApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
+		r1 = ret.Error(1)
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.DeleteAtlasSearchDeploymentApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
+	return r0, r1
 }
 
 // AtlasSearchApi_DeleteAtlasSearchDeploymentExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteAtlasSearchDeploymentExecute'
@@ -619,12 +610,12 @@ func (_c *AtlasSearchApi_DeleteAtlasSearchDeploymentExecute_Call) Run(run func(r
 	return _c
 }
 
-func (_c *AtlasSearchApi_DeleteAtlasSearchDeploymentExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *AtlasSearchApi_DeleteAtlasSearchDeploymentExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
+func (_c *AtlasSearchApi_DeleteAtlasSearchDeploymentExecute_Call) Return(_a0 *http.Response, _a1 error) *AtlasSearchApi_DeleteAtlasSearchDeploymentExecute_Call {
+	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *AtlasSearchApi_DeleteAtlasSearchDeploymentExecute_Call) RunAndReturn(run func(admin.DeleteAtlasSearchDeploymentApiRequest) (any, *http.Response, error)) *AtlasSearchApi_DeleteAtlasSearchDeploymentExecute_Call {
+func (_c *AtlasSearchApi_DeleteAtlasSearchDeploymentExecute_Call) RunAndReturn(run func(admin.DeleteAtlasSearchDeploymentApiRequest) (*http.Response, error)) *AtlasSearchApi_DeleteAtlasSearchDeploymentExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -777,42 +768,33 @@ func (_c *AtlasSearchApi_DeleteAtlasSearchIndexByName_Call) RunAndReturn(run fun
 }
 
 // DeleteAtlasSearchIndexByNameExecute provides a mock function with given fields: r
-func (_m *AtlasSearchApi) DeleteAtlasSearchIndexByNameExecute(r admin.DeleteAtlasSearchIndexByNameApiRequest) (any, *http.Response, error) {
+func (_m *AtlasSearchApi) DeleteAtlasSearchIndexByNameExecute(r admin.DeleteAtlasSearchIndexByNameApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteAtlasSearchIndexByNameExecute")
 	}
 
-	var r0 any
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteAtlasSearchIndexByNameApiRequest) (any, *http.Response, error)); ok {
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.DeleteAtlasSearchIndexByNameApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteAtlasSearchIndexByNameApiRequest) any); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteAtlasSearchIndexByNameApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(any)
+			r0 = ret.Get(0).(*http.Response)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeleteAtlasSearchIndexByNameApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.DeleteAtlasSearchIndexByNameApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
+		r1 = ret.Error(1)
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.DeleteAtlasSearchIndexByNameApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
+	return r0, r1
 }
 
 // AtlasSearchApi_DeleteAtlasSearchIndexByNameExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteAtlasSearchIndexByNameExecute'
@@ -833,12 +815,12 @@ func (_c *AtlasSearchApi_DeleteAtlasSearchIndexByNameExecute_Call) Run(run func(
 	return _c
 }
 
-func (_c *AtlasSearchApi_DeleteAtlasSearchIndexByNameExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *AtlasSearchApi_DeleteAtlasSearchIndexByNameExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
+func (_c *AtlasSearchApi_DeleteAtlasSearchIndexByNameExecute_Call) Return(_a0 *http.Response, _a1 error) *AtlasSearchApi_DeleteAtlasSearchIndexByNameExecute_Call {
+	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *AtlasSearchApi_DeleteAtlasSearchIndexByNameExecute_Call) RunAndReturn(run func(admin.DeleteAtlasSearchIndexByNameApiRequest) (any, *http.Response, error)) *AtlasSearchApi_DeleteAtlasSearchIndexByNameExecute_Call {
+func (_c *AtlasSearchApi_DeleteAtlasSearchIndexByNameExecute_Call) RunAndReturn(run func(admin.DeleteAtlasSearchIndexByNameApiRequest) (*http.Response, error)) *AtlasSearchApi_DeleteAtlasSearchIndexByNameExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -940,42 +922,33 @@ func (_c *AtlasSearchApi_DeleteAtlasSearchIndexDeprecated_Call) RunAndReturn(run
 }
 
 // DeleteAtlasSearchIndexDeprecatedExecute provides a mock function with given fields: r
-func (_m *AtlasSearchApi) DeleteAtlasSearchIndexDeprecatedExecute(r admin.DeleteAtlasSearchIndexDeprecatedApiRequest) (any, *http.Response, error) {
+func (_m *AtlasSearchApi) DeleteAtlasSearchIndexDeprecatedExecute(r admin.DeleteAtlasSearchIndexDeprecatedApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteAtlasSearchIndexDeprecatedExecute")
 	}
 
-	var r0 any
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteAtlasSearchIndexDeprecatedApiRequest) (any, *http.Response, error)); ok {
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.DeleteAtlasSearchIndexDeprecatedApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteAtlasSearchIndexDeprecatedApiRequest) any); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteAtlasSearchIndexDeprecatedApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(any)
+			r0 = ret.Get(0).(*http.Response)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeleteAtlasSearchIndexDeprecatedApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.DeleteAtlasSearchIndexDeprecatedApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
+		r1 = ret.Error(1)
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.DeleteAtlasSearchIndexDeprecatedApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
+	return r0, r1
 }
 
 // AtlasSearchApi_DeleteAtlasSearchIndexDeprecatedExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteAtlasSearchIndexDeprecatedExecute'
@@ -996,12 +969,12 @@ func (_c *AtlasSearchApi_DeleteAtlasSearchIndexDeprecatedExecute_Call) Run(run f
 	return _c
 }
 
-func (_c *AtlasSearchApi_DeleteAtlasSearchIndexDeprecatedExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *AtlasSearchApi_DeleteAtlasSearchIndexDeprecatedExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
+func (_c *AtlasSearchApi_DeleteAtlasSearchIndexDeprecatedExecute_Call) Return(_a0 *http.Response, _a1 error) *AtlasSearchApi_DeleteAtlasSearchIndexDeprecatedExecute_Call {
+	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *AtlasSearchApi_DeleteAtlasSearchIndexDeprecatedExecute_Call) RunAndReturn(run func(admin.DeleteAtlasSearchIndexDeprecatedApiRequest) (any, *http.Response, error)) *AtlasSearchApi_DeleteAtlasSearchIndexDeprecatedExecute_Call {
+func (_c *AtlasSearchApi_DeleteAtlasSearchIndexDeprecatedExecute_Call) RunAndReturn(run func(admin.DeleteAtlasSearchIndexDeprecatedApiRequest) (*http.Response, error)) *AtlasSearchApi_DeleteAtlasSearchIndexDeprecatedExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1054,42 +1027,33 @@ func (_c *AtlasSearchApi_DeleteAtlasSearchIndexDeprecatedWithParams_Call) RunAnd
 }
 
 // DeleteAtlasSearchIndexExecute provides a mock function with given fields: r
-func (_m *AtlasSearchApi) DeleteAtlasSearchIndexExecute(r admin.DeleteAtlasSearchIndexApiRequest) (any, *http.Response, error) {
+func (_m *AtlasSearchApi) DeleteAtlasSearchIndexExecute(r admin.DeleteAtlasSearchIndexApiRequest) (*http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for DeleteAtlasSearchIndexExecute")
 	}
 
-	var r0 any
-	var r1 *http.Response
-	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.DeleteAtlasSearchIndexApiRequest) (any, *http.Response, error)); ok {
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.DeleteAtlasSearchIndexApiRequest) (*http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.DeleteAtlasSearchIndexApiRequest) any); ok {
+	if rf, ok := ret.Get(0).(func(admin.DeleteAtlasSearchIndexApiRequest) *http.Response); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(any)
+			r0 = ret.Get(0).(*http.Response)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(admin.DeleteAtlasSearchIndexApiRequest) *http.Response); ok {
+	if rf, ok := ret.Get(1).(func(admin.DeleteAtlasSearchIndexApiRequest) error); ok {
 		r1 = rf(r)
 	} else {
-		if ret.Get(1) != nil {
-			r1 = ret.Get(1).(*http.Response)
-		}
+		r1 = ret.Error(1)
 	}
 
-	if rf, ok := ret.Get(2).(func(admin.DeleteAtlasSearchIndexApiRequest) error); ok {
-		r2 = rf(r)
-	} else {
-		r2 = ret.Error(2)
-	}
-
-	return r0, r1, r2
+	return r0, r1
 }
 
 // AtlasSearchApi_DeleteAtlasSearchIndexExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteAtlasSearchIndexExecute'
@@ -1110,12 +1074,12 @@ func (_c *AtlasSearchApi_DeleteAtlasSearchIndexExecute_Call) Run(run func(r admi
 	return _c
 }
 
-func (_c *AtlasSearchApi_DeleteAtlasSearchIndexExecute_Call) Return(_a0 any, _a1 *http.Response, _a2 error) *AtlasSearchApi_DeleteAtlasSearchIndexExecute_Call {
-	_c.Call.Return(_a0, _a1, _a2)
+func (_c *AtlasSearchApi_DeleteAtlasSearchIndexExecute_Call) Return(_a0 *http.Response, _a1 error) *AtlasSearchApi_DeleteAtlasSearchIndexExecute_Call {
+	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *AtlasSearchApi_DeleteAtlasSearchIndexExecute_Call) RunAndReturn(run func(admin.DeleteAtlasSearchIndexApiRequest) (any, *http.Response, error)) *AtlasSearchApi_DeleteAtlasSearchIndexExecute_Call {
+func (_c *AtlasSearchApi_DeleteAtlasSearchIndexExecute_Call) RunAndReturn(run func(admin.DeleteAtlasSearchIndexApiRequest) (*http.Response, error)) *AtlasSearchApi_DeleteAtlasSearchIndexExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
