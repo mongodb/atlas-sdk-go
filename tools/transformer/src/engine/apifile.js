@@ -29,7 +29,7 @@ function getAPI(apiFileLocation) {
  * @param {*} apiFileLocation location to save
  */
 function saveAPI(doc, apiFileLocation) {
-  writeFileSync(apiFileLocation, stringify(doc));
+  writeFileSync(apiFileLocation, stringify(doc, { lineWidth: 9999 })); // default is 80 and would add newlines, we want to stay close to the original that uses long lines.
 }
 
 module.exports = { getAPI, saveAPI };
