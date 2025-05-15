@@ -567,6 +567,11 @@ func (e *GenericOpenAPIError) SetError(errorString string) {
 	e.error = errorString;
 }
 
+// SetModel sets error string: Should be only used for testing
+func (e *GenericOpenAPIError) SetModel(model ApiError) {
+	e.model = model;
+}
+
 // FormatErrorMessageWithDetails formats error message using error struct fields. It should be only used for testing.
 func FormatErrorMessageWithDetails(status, path, method string, v ApiError) string {
 	badRequestDetailString := ""

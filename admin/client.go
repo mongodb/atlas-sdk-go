@@ -22,13 +22,14 @@ import (
 	"strconv"
 	"strings"
 	"time"
+
 )
 
 var (
-	jsonCheck       = regexp.MustCompile(`(?i:(?:application|text)/(?:vnd\.[^;]+\+)?json)`)
-	xmlCheck        = regexp.MustCompile(`(?i:(?:application|text)/xml)`)
+	jsonCheck = regexp.MustCompile(`(?i:(?:application|text)/(?:vnd\.[^;]+\+)?json)`)
+	xmlCheck  = regexp.MustCompile(`(?i:(?:application|text)/xml)`)
 	queryParamSplit = regexp.MustCompile(`(^|&)([^&]+)`)
-	queryDescape    = strings.NewReplacer("%5B", "[", "%5D", "]")
+	queryDescape    = strings.NewReplacer( "%5B", "[", "%5D", "]" )
 )
 
 // APIClient manages communication with the MongoDB Atlas Administration API API
@@ -248,71 +249,71 @@ func parameterAddToHeaderOrQuery(headerOrQueryParams any, keyPrefix string, obj 
 		value = "null"
 	} else {
 		switch v.Kind() {
-		case reflect.Invalid:
-			value = "invalid"
+			case reflect.Invalid:
+				value = "invalid"
 
-		case reflect.Struct:
-			if t, ok := obj.(time.Time); ok {
-				parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefix, t.Format(time.RFC3339), collectionType)
+			case reflect.Struct:
+				if t, ok := obj.(time.Time); ok {
+					parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefix, t.Format(time.RFC3339), collectionType)
+					return
+				}
+				value = v.Type().String() + " value"
+			case reflect.Slice:
+				var indValue = reflect.ValueOf(obj)
+				if indValue == reflect.ValueOf(nil) {
+					return
+				}
+				var lenIndValue = indValue.Len()
+				for i:=0;i<lenIndValue;i++ {
+					var arrayValue = indValue.Index(i)
+					parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefix, arrayValue.Interface(), collectionType)
+				}
 				return
-			}
-			value = v.Type().String() + " value"
-		case reflect.Slice:
-			var indValue = reflect.ValueOf(obj)
-			if indValue == reflect.ValueOf(nil) {
+
+			case reflect.Map:
+				var indValue = reflect.ValueOf(obj)
+				if indValue == reflect.ValueOf(nil) {
+					return
+				}
+				iter := indValue.MapRange()
+				for iter.Next() {
+					mapKey, mapValue := iter.Key(), iter.Value()
+					parameterAddToHeaderOrQuery(headerOrQueryParams, fmt.Sprintf("%s[%s]", keyPrefix, mapKey.String()), mapValue.Interface(), collectionType)
+				}
 				return
-			}
-			var lenIndValue = indValue.Len()
-			for i := 0; i < lenIndValue; i++ {
-				var arrayValue = indValue.Index(i)
-				parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefix, arrayValue.Interface(), collectionType)
-			}
-			return
 
-		case reflect.Map:
-			var indValue = reflect.ValueOf(obj)
-			if indValue == reflect.ValueOf(nil) {
+			case reflect.Interface:
+				fallthrough
+			case reflect.Ptr:
+				parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefix, v.Elem().Interface(), collectionType)
 				return
-			}
-			iter := indValue.MapRange()
-			for iter.Next() {
-				mapKey, mapValue := iter.Key(), iter.Value()
-				parameterAddToHeaderOrQuery(headerOrQueryParams, fmt.Sprintf("%s[%s]", keyPrefix, mapKey.String()), mapValue.Interface(), collectionType)
-			}
-			return
 
-		case reflect.Interface:
-			fallthrough
-		case reflect.Ptr:
-			parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefix, v.Elem().Interface(), collectionType)
-			return
-
-		case reflect.Int, reflect.Int8, reflect.Int16,
-			reflect.Int32, reflect.Int64:
-			value = strconv.FormatInt(v.Int(), 10)
-		case reflect.Uint, reflect.Uint8, reflect.Uint16,
-			reflect.Uint32, reflect.Uint64, reflect.Uintptr:
-			value = strconv.FormatUint(v.Uint(), 10)
-		case reflect.Float32, reflect.Float64:
-			value = strconv.FormatFloat(v.Float(), 'g', -1, 32)
-		case reflect.Bool:
-			value = strconv.FormatBool(v.Bool())
-		case reflect.String:
-			value = v.String()
-		default:
-			value = v.Type().String() + " value"
+			case reflect.Int, reflect.Int8, reflect.Int16,
+				reflect.Int32, reflect.Int64:
+				value = strconv.FormatInt(v.Int(), 10)
+			case reflect.Uint, reflect.Uint8, reflect.Uint16,
+				reflect.Uint32, reflect.Uint64, reflect.Uintptr:
+				value = strconv.FormatUint(v.Uint(), 10)
+			case reflect.Float32, reflect.Float64:
+				value = strconv.FormatFloat(v.Float(), 'g', -1, 32)
+			case reflect.Bool:
+				value = strconv.FormatBool(v.Bool())
+			case reflect.String:
+				value = v.String()
+			default:
+				value = v.Type().String() + " value"
 		}
 	}
 
 	switch valuesMap := headerOrQueryParams.(type) {
-	case url.Values:
-		if collectionType == "csv" && valuesMap.Get(keyPrefix) != "" {
-			valuesMap.Set(keyPrefix, valuesMap.Get(keyPrefix)+","+value)
-		} else {
-			valuesMap.Add(keyPrefix, value)
-		}
-	case map[string]string:
-		valuesMap[keyPrefix] = value
+		case url.Values:
+			if collectionType == "csv" && valuesMap.Get(keyPrefix) != "" {
+				valuesMap.Set(keyPrefix, valuesMap.Get(keyPrefix) + "," + value)
+			} else {
+				valuesMap.Add(keyPrefix, value)
+			}
+		case map[string]string:
+			valuesMap[keyPrefix] = value
 	}
 }
 
@@ -348,9 +349,9 @@ func (c *APIClient) GetConfig() *Configuration {
 }
 
 type formFile struct {
-	fileBytes    []byte
-	fileName     string
-	formFileName string
+		fileBytes []byte
+		fileName string
+		formFileName string
 }
 
 // prepareRequest build the request
@@ -406,11 +407,11 @@ func (c *APIClient) prepareRequest(
 				w.Boundary()
 				part, err1 := w.CreateFormFile(formFile.formFileName, filepath.Base(formFile.fileName))
 				if err1 != nil {
-					return nil, err
+						return nil, err
 				}
 				_, err1 = part.Write(formFile.fileBytes)
 				if err1 != nil {
-					return nil, err
+						return nil, err
 				}
 			}
 		}
@@ -548,7 +549,7 @@ func (c *APIClient) decode(v any, b io.ReadCloser, contentType string) (err erro
 			return nil
 		}
 		if xmlCheck.MatchString(contentType) {
-			return xml.Unmarshal(buf, v)
+			return xml.Unmarshal(buf, v);
 		}
 		if jsonCheck.MatchString(contentType) {
 			if actualObj, ok := v.(interface{ GetActualInstance() any }); ok { // oneOf, anyOf schemas
@@ -669,12 +670,17 @@ func (e GenericOpenAPIError) Model() ApiError {
 
 // SetModel sets model instance: Should be only used for testing
 func (e *GenericOpenAPIError) SetModel(errorModel ApiError) {
-	e.model = errorModel
+	e.model = errorModel;
 }
 
 // SetError sets error string: Should be only used for testing
 func (e *GenericOpenAPIError) SetError(errorString string) {
-	e.error = errorString
+	e.error = errorString;
+}
+
+// SetModel sets error string: Should be only used for testing
+func (e *GenericOpenAPIError) SetModel(model ApiError) {
+	e.model = model;
 }
 
 // FormatErrorMessageWithDetails formats error message using error struct fields. It should be only used for testing.
