@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AssociatedOrgs** | Pointer to [**[]ConnectedOrgConfig**](ConnectedOrgConfig.md) | List that contains the connected organization configurations associated with the identity provider. | [optional] 
-**CreatedAt** | Pointer to **time.Time** | Date that the identity provider was created on. | [optional] [readonly] 
+**CreatedAt** | Pointer to **time.Time** | Date that the identity provider was created on. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
 **Description** | Pointer to **string** | The description of the identity provider. | [optional] 
 **DisplayName** | Pointer to **string** | Human-readable label that identifies the identity provider. | [optional] 
 **Id** | **string** | Unique 24-hexadecimal digit string that identifies the identity provider. | [readonly] 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **IssuerUri** | Pointer to **string** | Unique string that identifies the issuer of the SAML Assertion or OIDC metadata/discovery document URL. | [optional] 
 **OktaIdpId** | **string** | Legacy 20-hexadecimal digit string that identifies the identity provider. | 
 **Protocol** | Pointer to **string** | String enum that indicates the protocol of the identity provider. Either SAML or OIDC. | [optional] 
-**UpdatedAt** | Pointer to **time.Time** | Date that the identity provider was last updated on. | [optional] [readonly] 
+**UpdatedAt** | Pointer to **time.Time** | Date that the identity provider was last updated on. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
 **AcsUrl** | Pointer to **string** | URL that points to where to send the SAML response. | [optional] 
 **AssociatedDomains** | Pointer to **[]string** | List that contains the domains associated with the identity provider. | [optional] 
 **AudienceUri** | Pointer to **string** | Unique string that identifies the intended audience of the SAML assertion. | [optional] 

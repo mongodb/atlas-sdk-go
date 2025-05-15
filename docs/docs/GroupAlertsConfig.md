@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **Matchers** | Pointer to [**[]StreamsMatcher**](StreamsMatcher.md) | List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. | [optional] 
 **Notifications** | Pointer to [**[]AlertsNotificationRootForGroup**](AlertsNotificationRootForGroup.md) | List that contains the targets that MongoDB Cloud sends notifications. | [optional] 
+**SeverityOverride** | Pointer to **string** | Severity of the event. | [optional] 
 **Updated** | Pointer to **time.Time** | Date and time when someone last updated this alert configuration. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
 **MetricThreshold** | Pointer to [**FlexClusterMetricThreshold**](FlexClusterMetricThreshold.md) |  | [optional] 
 **Threshold** | Pointer to [**StreamProcessorMetricThreshold**](StreamProcessorMetricThreshold.md) |  | [optional] 
@@ -227,6 +228,30 @@ SetNotifications sets Notifications field to given value.
 `func (o *GroupAlertsConfig) HasNotifications() bool`
 
 HasNotifications returns a boolean if a field has been set.
+### GetSeverityOverride
+
+`func (o *GroupAlertsConfig) GetSeverityOverride() string`
+
+GetSeverityOverride returns the SeverityOverride field if non-nil, zero value otherwise.
+
+### GetSeverityOverrideOk
+
+`func (o *GroupAlertsConfig) GetSeverityOverrideOk() (*string, bool)`
+
+GetSeverityOverrideOk returns a tuple with the SeverityOverride field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSeverityOverride
+
+`func (o *GroupAlertsConfig) SetSeverityOverride(v string)`
+
+SetSeverityOverride sets SeverityOverride field to given value.
+
+### HasSeverityOverride
+
+`func (o *GroupAlertsConfig) HasSeverityOverride() bool`
+
+HasSeverityOverride returns a boolean if a field has been set.
 ### GetUpdated
 
 `func (o *GroupAlertsConfig) GetUpdated() time.Time`

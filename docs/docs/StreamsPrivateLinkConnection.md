@@ -5,25 +5,26 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | The ID of the Private Link connection. | [optional] [readonly] 
-**Arn** | Pointer to **string** | Amazon Resource Name (ARN). | [optional] 
-**DnsDomain** | Pointer to **string** | Domain name of Privatelink connected cluster. | [optional] 
-**DnsSubDomain** | Pointer to **[]string** | Sub-Domain name of Confluent cluster. These are typically your availability zones. | [optional] 
+**Arn** | Pointer to **string** | Amazon Resource Name (ARN). Required for AWS Provider and MSK vendor. | [optional] 
+**AzureResourceIds** | Pointer to **[]string** | Azure Resource IDs of each availability zone for the Azure Confluent cluster. | [optional] 
+**DnsDomain** | Pointer to **string** | The domain hostname. Required for the following provider and vendor combinations: - AWS provider with CONFLUENT vendor. - AZURE provider with EVENTHUB or CONFLUENT vendor. | [optional] 
+**DnsSubDomain** | Pointer to **[]string** | Sub-Domain name of Confluent cluster. These are typically your availability zones. Required for AWS Provider and CONFLUENT vendor, if your AWS CONFLUENT cluster doesn&#39;t use subdomains, you must set this to the empty array []. | [optional] 
 **ErrorMessage** | Pointer to **string** | Error message if the state is FAILED. | [optional] [readonly] 
 **InterfaceEndpointId** | Pointer to **string** | Interface endpoint ID that is created from the service endpoint ID provided. | [optional] [readonly] 
 **InterfaceEndpointName** | Pointer to **string** | Interface endpoint name that is created from the service endpoint ID provided. | [optional] [readonly] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
-**Provider** | Pointer to **string** | Provider where the Kafka cluster is deployed. | [optional] 
+**Provider** | **string** | Provider where the Kafka cluster is deployed. Valid values are AWS and AZURE. | 
 **ProviderAccountId** | Pointer to **string** | Account ID from the cloud provider. | [optional] [readonly] 
-**Region** | Pointer to **string** | Domain name of Confluent cluster. | [optional] 
-**ServiceEndpointId** | Pointer to **string** | Service Endpoint ID. | [optional] 
+**Region** | Pointer to **string** | The region of the Provider’s cluster. See [AZURE](https://www.mongodb.com/docs/atlas/reference/microsoft-azure/#stream-processing-instances) and [AWS](https://www.mongodb.com/docs/atlas/reference/amazon-aws/#stream-processing-instances) supported regions. | [optional] 
+**ServiceEndpointId** | Pointer to **string** | For AZURE EVENTHUB, this is the [namespace endpoint ID](https://learn.microsoft.com/en-us/rest/api/eventhub/namespaces/get). For AWS CONFLUENT cluster, this is the [VPC Endpoint service name](https://docs.confluent.io/cloud/current/networking/private-links/aws-privatelink.html). | [optional] 
 **State** | Pointer to **string** | State the connection is in. | [optional] [readonly] 
-**Vendor** | Pointer to **string** | Vendor who manages the Kafka cluster. | [optional] 
+**Vendor** | Pointer to **string** | Vendor that manages the Kafka cluster. The following are the vendor values per provider: - MSK and CONFLUENT for the AWS provider. - EVENTHUB and CONFLUENT for the AZURE provider.  **NOTE** Omitting the vendor field will default to using the EVENTHUB vendor for the AZURE provider. | [optional] 
 
 ## Methods
 
 ### NewStreamsPrivateLinkConnection
 
-`func NewStreamsPrivateLinkConnection() *StreamsPrivateLinkConnection`
+`func NewStreamsPrivateLinkConnection(provider string, ) *StreamsPrivateLinkConnection`
 
 NewStreamsPrivateLinkConnection instantiates a new StreamsPrivateLinkConnection object
 This constructor will assign default values to properties that have it defined,
@@ -86,6 +87,30 @@ SetArn sets Arn field to given value.
 `func (o *StreamsPrivateLinkConnection) HasArn() bool`
 
 HasArn returns a boolean if a field has been set.
+### GetAzureResourceIds
+
+`func (o *StreamsPrivateLinkConnection) GetAzureResourceIds() []string`
+
+GetAzureResourceIds returns the AzureResourceIds field if non-nil, zero value otherwise.
+
+### GetAzureResourceIdsOk
+
+`func (o *StreamsPrivateLinkConnection) GetAzureResourceIdsOk() (*[]string, bool)`
+
+GetAzureResourceIdsOk returns a tuple with the AzureResourceIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAzureResourceIds
+
+`func (o *StreamsPrivateLinkConnection) SetAzureResourceIds(v []string)`
+
+SetAzureResourceIds sets AzureResourceIds field to given value.
+
+### HasAzureResourceIds
+
+`func (o *StreamsPrivateLinkConnection) HasAzureResourceIds() bool`
+
+HasAzureResourceIds returns a boolean if a field has been set.
 ### GetDnsDomain
 
 `func (o *StreamsPrivateLinkConnection) GetDnsDomain() string`
@@ -249,11 +274,6 @@ and a boolean to check if the value has been set.
 
 SetProvider sets Provider field to given value.
 
-### HasProvider
-
-`func (o *StreamsPrivateLinkConnection) HasProvider() bool`
-
-HasProvider returns a boolean if a field has been set.
 ### GetProviderAccountId
 
 `func (o *StreamsPrivateLinkConnection) GetProviderAccountId() string`

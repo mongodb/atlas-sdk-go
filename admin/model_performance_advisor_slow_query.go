@@ -6,10 +6,17 @@ package admin
 type PerformanceAdvisorSlowQuery struct {
 	// Text of the MongoDB log related to this slow query.
 	// Read only field.
-	Line *string `json:"line,omitempty"`
+	Line    *string                             `json:"line,omitempty"`
+	Metrics *PerformanceAdvisorSlowQueryMetrics `json:"metrics,omitempty"`
 	// Human-readable label that identifies the namespace on the specified host. The resource expresses this parameter value as `<database>.<collection>`.
 	// Read only field.
 	Namespace *string `json:"namespace,omitempty"`
+	// Operation type (read/write/command) associated with this slow query log.
+	// Read only field.
+	OpType *string `json:"opType,omitempty"`
+	// Replica state associated with this slow query log.
+	// Read only field.
+	ReplicaState *string `json:"replicaState,omitempty"`
 }
 
 // NewPerformanceAdvisorSlowQuery instantiates a new PerformanceAdvisorSlowQuery object
@@ -62,6 +69,39 @@ func (o *PerformanceAdvisorSlowQuery) SetLine(v string) {
 	o.Line = &v
 }
 
+// GetMetrics returns the Metrics field value if set, zero value otherwise
+func (o *PerformanceAdvisorSlowQuery) GetMetrics() PerformanceAdvisorSlowQueryMetrics {
+	if o == nil || IsNil(o.Metrics) {
+		var ret PerformanceAdvisorSlowQueryMetrics
+		return ret
+	}
+	return *o.Metrics
+}
+
+// GetMetricsOk returns a tuple with the Metrics field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PerformanceAdvisorSlowQuery) GetMetricsOk() (*PerformanceAdvisorSlowQueryMetrics, bool) {
+	if o == nil || IsNil(o.Metrics) {
+		return nil, false
+	}
+
+	return o.Metrics, true
+}
+
+// HasMetrics returns a boolean if a field has been set.
+func (o *PerformanceAdvisorSlowQuery) HasMetrics() bool {
+	if o != nil && !IsNil(o.Metrics) {
+		return true
+	}
+
+	return false
+}
+
+// SetMetrics gets a reference to the given PerformanceAdvisorSlowQueryMetrics and assigns it to the Metrics field.
+func (o *PerformanceAdvisorSlowQuery) SetMetrics(v PerformanceAdvisorSlowQueryMetrics) {
+	o.Metrics = &v
+}
+
 // GetNamespace returns the Namespace field value if set, zero value otherwise
 func (o *PerformanceAdvisorSlowQuery) GetNamespace() string {
 	if o == nil || IsNil(o.Namespace) {
@@ -93,4 +133,70 @@ func (o *PerformanceAdvisorSlowQuery) HasNamespace() bool {
 // SetNamespace gets a reference to the given string and assigns it to the Namespace field.
 func (o *PerformanceAdvisorSlowQuery) SetNamespace(v string) {
 	o.Namespace = &v
+}
+
+// GetOpType returns the OpType field value if set, zero value otherwise
+func (o *PerformanceAdvisorSlowQuery) GetOpType() string {
+	if o == nil || IsNil(o.OpType) {
+		var ret string
+		return ret
+	}
+	return *o.OpType
+}
+
+// GetOpTypeOk returns a tuple with the OpType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PerformanceAdvisorSlowQuery) GetOpTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.OpType) {
+		return nil, false
+	}
+
+	return o.OpType, true
+}
+
+// HasOpType returns a boolean if a field has been set.
+func (o *PerformanceAdvisorSlowQuery) HasOpType() bool {
+	if o != nil && !IsNil(o.OpType) {
+		return true
+	}
+
+	return false
+}
+
+// SetOpType gets a reference to the given string and assigns it to the OpType field.
+func (o *PerformanceAdvisorSlowQuery) SetOpType(v string) {
+	o.OpType = &v
+}
+
+// GetReplicaState returns the ReplicaState field value if set, zero value otherwise
+func (o *PerformanceAdvisorSlowQuery) GetReplicaState() string {
+	if o == nil || IsNil(o.ReplicaState) {
+		var ret string
+		return ret
+	}
+	return *o.ReplicaState
+}
+
+// GetReplicaStateOk returns a tuple with the ReplicaState field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PerformanceAdvisorSlowQuery) GetReplicaStateOk() (*string, bool) {
+	if o == nil || IsNil(o.ReplicaState) {
+		return nil, false
+	}
+
+	return o.ReplicaState, true
+}
+
+// HasReplicaState returns a boolean if a field has been set.
+func (o *PerformanceAdvisorSlowQuery) HasReplicaState() bool {
+	if o != nil && !IsNil(o.ReplicaState) {
+		return true
+	}
+
+	return false
+}
+
+// SetReplicaState gets a reference to the given string and assigns it to the ReplicaState field.
+func (o *PerformanceAdvisorSlowQuery) SetReplicaState(v string) {
+	o.ReplicaState = &v
 }

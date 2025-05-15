@@ -1,4 +1,4 @@
-# RoleAssignment
+# ConnectedOrgConfigRoleAssignment
 
 ## Properties
 
@@ -10,93 +10,93 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewRoleAssignment
+### NewConnectedOrgConfigRoleAssignment
 
-`func NewRoleAssignment() *RoleAssignment`
+`func NewConnectedOrgConfigRoleAssignment() *ConnectedOrgConfigRoleAssignment`
 
-NewRoleAssignment instantiates a new RoleAssignment object
+NewConnectedOrgConfigRoleAssignment instantiates a new ConnectedOrgConfigRoleAssignment object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewRoleAssignmentWithDefaults
+### NewConnectedOrgConfigRoleAssignmentWithDefaults
 
-`func NewRoleAssignmentWithDefaults() *RoleAssignment`
+`func NewConnectedOrgConfigRoleAssignmentWithDefaults() *ConnectedOrgConfigRoleAssignment`
 
-NewRoleAssignmentWithDefaults instantiates a new RoleAssignment object
+NewConnectedOrgConfigRoleAssignmentWithDefaults instantiates a new ConnectedOrgConfigRoleAssignment object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetGroupId
 
-`func (o *RoleAssignment) GetGroupId() string`
+`func (o *ConnectedOrgConfigRoleAssignment) GetGroupId() string`
 
 GetGroupId returns the GroupId field if non-nil, zero value otherwise.
 
 ### GetGroupIdOk
 
-`func (o *RoleAssignment) GetGroupIdOk() (*string, bool)`
+`func (o *ConnectedOrgConfigRoleAssignment) GetGroupIdOk() (*string, bool)`
 
 GetGroupIdOk returns a tuple with the GroupId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGroupId
 
-`func (o *RoleAssignment) SetGroupId(v string)`
+`func (o *ConnectedOrgConfigRoleAssignment) SetGroupId(v string)`
 
 SetGroupId sets GroupId field to given value.
 
 ### HasGroupId
 
-`func (o *RoleAssignment) HasGroupId() bool`
+`func (o *ConnectedOrgConfigRoleAssignment) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
 ### GetOrgId
 
-`func (o *RoleAssignment) GetOrgId() string`
+`func (o *ConnectedOrgConfigRoleAssignment) GetOrgId() string`
 
 GetOrgId returns the OrgId field if non-nil, zero value otherwise.
 
 ### GetOrgIdOk
 
-`func (o *RoleAssignment) GetOrgIdOk() (*string, bool)`
+`func (o *ConnectedOrgConfigRoleAssignment) GetOrgIdOk() (*string, bool)`
 
 GetOrgIdOk returns a tuple with the OrgId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOrgId
 
-`func (o *RoleAssignment) SetOrgId(v string)`
+`func (o *ConnectedOrgConfigRoleAssignment) SetOrgId(v string)`
 
 SetOrgId sets OrgId field to given value.
 
 ### HasOrgId
 
-`func (o *RoleAssignment) HasOrgId() bool`
+`func (o *ConnectedOrgConfigRoleAssignment) HasOrgId() bool`
 
 HasOrgId returns a boolean if a field has been set.
 ### GetRole
 
-`func (o *RoleAssignment) GetRole() string`
+`func (o *ConnectedOrgConfigRoleAssignment) GetRole() string`
 
 GetRole returns the Role field if non-nil, zero value otherwise.
 
 ### GetRoleOk
 
-`func (o *RoleAssignment) GetRoleOk() (*string, bool)`
+`func (o *ConnectedOrgConfigRoleAssignment) GetRoleOk() (*string, bool)`
 
 GetRoleOk returns a tuple with the Role field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRole
 
-`func (o *RoleAssignment) SetRole(v string)`
+`func (o *ConnectedOrgConfigRoleAssignment) SetRole(v string)`
 
 SetRole sets Role field to given value.
 
 ### HasRole
 
-`func (o *RoleAssignment) HasRole() bool`
+`func (o *ConnectedOrgConfigRoleAssignment) HasRole() bool`
 
 HasRole returns a boolean if a field has been set.
 

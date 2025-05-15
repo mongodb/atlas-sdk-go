@@ -31,7 +31,7 @@ Method | HTTP request | Description
 
 ## AddProjectServiceAccount
 
-> GroupServiceAccount AddProjectServiceAccount(ctx, clientId, groupId, groupServiceAccountRoleAssignment []GroupServiceAccountRoleAssignment).Execute()
+> GroupServiceAccount AddProjectServiceAccount(ctx, clientId, groupId, groupServiceAccountRoleAssignment GroupServiceAccountRoleAssignment).Execute()
 
 Assign One Service Account to One Project
 
@@ -61,7 +61,7 @@ func main() {
 
     clientId := "mdb_sa_id_1234567890abcdef12345678" // string | 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    groupServiceAccountRoleAssignment := []openapiclient.GroupServiceAccountRoleAssignment{*openapiclient.NewGroupServiceAccountRoleAssignment([]string{"Roles_example"})} // []GroupServiceAccountRoleAssignment | 
+    groupServiceAccountRoleAssignment := *openapiclient.NewGroupServiceAccountRoleAssignment([]string{"Roles_example"}) // GroupServiceAccountRoleAssignment | 
 
     resp, r, err := sdk.ServiceAccountsApi.AddProjectServiceAccount(context.Background(), clientId, groupId, &groupServiceAccountRoleAssignment).Execute()
     if err != nil {
@@ -95,7 +95,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **groupServiceAccountRoleAssignment** | [**[]GroupServiceAccountRoleAssignment**](GroupServiceAccountRoleAssignment.md) | The Project permissions for the Service Account in the specified Project. | 
+ **groupServiceAccountRoleAssignment** | [**GroupServiceAccountRoleAssignment**](GroupServiceAccountRoleAssignment.md) | The Project permissions for the Service Account in the specified Project. | 
 
 ### Return type
 

@@ -8,7 +8,7 @@ import (
 
 // SearchIndexDefinitionVersion Object which includes the version number of the index definition and the time that the index definition was created.
 type SearchIndexDefinitionVersion struct {
-	// The time at which this index definition was created.
+	// The time at which this index definition was created. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// The version number associated with this index definition when it was created.
 	Version *int64 `json:"version,omitempty"`
