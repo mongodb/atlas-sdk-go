@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312002/admin"
+	admin "go.mongodb.org/atlas-sdk/v20250312003/admin"
 
 	http "net/http"
 
@@ -26,7 +26,7 @@ func (_m *ServiceAccountsApi) EXPECT() *ServiceAccountsApi_Expecter {
 }
 
 // AddProjectServiceAccount provides a mock function with given fields: ctx, clientId, groupId, groupServiceAccountRoleAssignment
-func (_m *ServiceAccountsApi) AddProjectServiceAccount(ctx context.Context, clientId string, groupId string, groupServiceAccountRoleAssignment *[]admin.GroupServiceAccountRoleAssignment) admin.AddProjectServiceAccountApiRequest {
+func (_m *ServiceAccountsApi) AddProjectServiceAccount(ctx context.Context, clientId string, groupId string, groupServiceAccountRoleAssignment *admin.GroupServiceAccountRoleAssignment) admin.AddProjectServiceAccountApiRequest {
 	ret := _m.Called(ctx, clientId, groupId, groupServiceAccountRoleAssignment)
 
 	if len(ret) == 0 {
@@ -34,7 +34,7 @@ func (_m *ServiceAccountsApi) AddProjectServiceAccount(ctx context.Context, clie
 	}
 
 	var r0 admin.AddProjectServiceAccountApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, *[]admin.GroupServiceAccountRoleAssignment) admin.AddProjectServiceAccountApiRequest); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.GroupServiceAccountRoleAssignment) admin.AddProjectServiceAccountApiRequest); ok {
 		r0 = rf(ctx, clientId, groupId, groupServiceAccountRoleAssignment)
 	} else {
 		r0 = ret.Get(0).(admin.AddProjectServiceAccountApiRequest)
@@ -52,14 +52,14 @@ type ServiceAccountsApi_AddProjectServiceAccount_Call struct {
 //   - ctx context.Context
 //   - clientId string
 //   - groupId string
-//   - groupServiceAccountRoleAssignment *[]admin.GroupServiceAccountRoleAssignment
+//   - groupServiceAccountRoleAssignment *admin.GroupServiceAccountRoleAssignment
 func (_e *ServiceAccountsApi_Expecter) AddProjectServiceAccount(ctx any, clientId any, groupId any, groupServiceAccountRoleAssignment any) *ServiceAccountsApi_AddProjectServiceAccount_Call {
 	return &ServiceAccountsApi_AddProjectServiceAccount_Call{Call: _e.mock.On("AddProjectServiceAccount", ctx, clientId, groupId, groupServiceAccountRoleAssignment)}
 }
 
-func (_c *ServiceAccountsApi_AddProjectServiceAccount_Call) Run(run func(ctx context.Context, clientId string, groupId string, groupServiceAccountRoleAssignment *[]admin.GroupServiceAccountRoleAssignment)) *ServiceAccountsApi_AddProjectServiceAccount_Call {
+func (_c *ServiceAccountsApi_AddProjectServiceAccount_Call) Run(run func(ctx context.Context, clientId string, groupId string, groupServiceAccountRoleAssignment *admin.GroupServiceAccountRoleAssignment)) *ServiceAccountsApi_AddProjectServiceAccount_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*[]admin.GroupServiceAccountRoleAssignment))
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.GroupServiceAccountRoleAssignment))
 	})
 	return _c
 }
@@ -69,7 +69,7 @@ func (_c *ServiceAccountsApi_AddProjectServiceAccount_Call) Return(_a0 admin.Add
 	return _c
 }
 
-func (_c *ServiceAccountsApi_AddProjectServiceAccount_Call) RunAndReturn(run func(context.Context, string, string, *[]admin.GroupServiceAccountRoleAssignment) admin.AddProjectServiceAccountApiRequest) *ServiceAccountsApi_AddProjectServiceAccount_Call {
+func (_c *ServiceAccountsApi_AddProjectServiceAccount_Call) RunAndReturn(run func(context.Context, string, string, *admin.GroupServiceAccountRoleAssignment) admin.AddProjectServiceAccountApiRequest) *ServiceAccountsApi_AddProjectServiceAccount_Call {
 	_c.Call.Return(run)
 	return _c
 }
