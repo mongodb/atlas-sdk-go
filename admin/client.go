@@ -34,8 +34,9 @@ var (
 // APIClient manages communication with the MongoDB Atlas Administration API API
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
-	cfg    *Configuration
-	common service // Reuse a single struct instead of allocating one for each service on the heap.
+	cfg           *Configuration
+	common        service       // Reuse a single struct instead of allocating one for each service on the heap.
+	UntypedClient UntypedClient // Make callls withouth a model.
 
 	// API Services
 
@@ -154,6 +155,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c := &APIClient{}
 	c.cfg = cfg
 	c.common.client = c
+	c.UntypedClient.client = c
 
 	// API Services
 	c.AWSClustersDNSApi = (*AWSClustersDNSApiService)(&c.common)
@@ -356,7 +358,8 @@ type formFile struct {
 // prepareRequest build the request
 func (c *APIClient) prepareRequest(
 	ctx context.Context,
-	path string, method string,
+	path string,
+	method string,
 	postBody any,
 	headerParams map[string]string,
 	queryParams url.Values,
@@ -688,4 +691,28 @@ func FormatErrorMessageWithDetails(status, path, method string, v ApiError) stri
 	return fmt.Sprintf("%v %v: HTTP %v (Error code: %q) Detail: %v Reason: %v. Params: %v, BadRequestDetail: %v",
 		method, path, status, v.GetErrorCode(),
 		v.GetDetail(), v.GetReason(), v.GetParameters(), badRequestDetailString)
+}
+
+type UntypedClient struct {
+	client *APIClient
+}
+
+func (c *UntypedClient) PrepareRequest(
+	ctx context.Context,
+	path string,
+	method string,
+	postBody any,
+	headerParams map[string]string,
+	queryParams url.Values,
+	formParams url.Values,
+	formFiles []formFile) (localVarRequest *http.Request, err error) {
+	return c.client.prepareRequest(ctx, path, method, postBody, headerParams, queryParams, formParams, formFiles)
+}
+
+func (c *UntypedClient) CallAPI(request *http.Request) (*http.Response, error) {
+	return c.client.callAPI(request)
+}
+
+func (c *UntypedClient) MakeApiError(res *http.Response, httpMethod, httpPath string) error {
+	return c.client.makeApiError(res, httpMethod, httpPath)
 }
