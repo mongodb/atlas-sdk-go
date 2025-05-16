@@ -40,7 +40,7 @@ var (
 type APIClient struct {
 	cfg    *Configuration
 	common service // Reuse a single struct instead of allocating one for each service on the heap.
-	UntypedClient UntypedClient // Make callls withouth a model.
+	UntypedClient UntypedClient // Make API calls without using a typed model.
 
 	// API Services
 {{#apiInfo}}
