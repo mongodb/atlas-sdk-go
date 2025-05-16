@@ -28,6 +28,8 @@ type GroupAlertsConfig struct {
 	Matchers *[]StreamsMatcher `json:"matchers,omitempty"`
 	// List that contains the targets that MongoDB Cloud sends notifications.
 	Notifications *[]AlertsNotificationRootForGroup `json:"notifications,omitempty"`
+	// Severity of the event.
+	SeverityOverride *string `json:"severityOverride,omitempty"`
 	// Date and time when someone last updated this alert configuration. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	Updated         *time.Time                      `json:"updated,omitempty"`
@@ -318,6 +320,39 @@ func (o *GroupAlertsConfig) HasNotifications() bool {
 // SetNotifications gets a reference to the given []AlertsNotificationRootForGroup and assigns it to the Notifications field.
 func (o *GroupAlertsConfig) SetNotifications(v []AlertsNotificationRootForGroup) {
 	o.Notifications = &v
+}
+
+// GetSeverityOverride returns the SeverityOverride field value if set, zero value otherwise
+func (o *GroupAlertsConfig) GetSeverityOverride() string {
+	if o == nil || IsNil(o.SeverityOverride) {
+		var ret string
+		return ret
+	}
+	return *o.SeverityOverride
+}
+
+// GetSeverityOverrideOk returns a tuple with the SeverityOverride field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GroupAlertsConfig) GetSeverityOverrideOk() (*string, bool) {
+	if o == nil || IsNil(o.SeverityOverride) {
+		return nil, false
+	}
+
+	return o.SeverityOverride, true
+}
+
+// HasSeverityOverride returns a boolean if a field has been set.
+func (o *GroupAlertsConfig) HasSeverityOverride() bool {
+	if o != nil && !IsNil(o.SeverityOverride) {
+		return true
+	}
+
+	return false
+}
+
+// SetSeverityOverride gets a reference to the given string and assigns it to the SeverityOverride field.
+func (o *GroupAlertsConfig) SetSeverityOverride(v string) {
+	o.SeverityOverride = &v
 }
 
 // GetUpdated returns the Updated field value if set, zero value otherwise

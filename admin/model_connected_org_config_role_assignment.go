@@ -2,8 +2,8 @@
 
 package admin
 
-// RoleAssignment struct for RoleAssignment
-type RoleAssignment struct {
+// ConnectedOrgConfigRoleAssignment struct for ConnectedOrgConfigRoleAssignment
+type ConnectedOrgConfigRoleAssignment struct {
 	// Unique 24-hexadecimal digit string that identifies the project to which this role belongs. Each element within **roleAssignments** can have a value for **groupId** or **orgId**, but not both.
 	GroupId *string `json:"groupId,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the organization to which this role belongs. Each element within **roleAssignments** can have a value for **orgId** or **groupId**, but not both.
@@ -12,25 +12,25 @@ type RoleAssignment struct {
 	Role *string `json:"role,omitempty"`
 }
 
-// NewRoleAssignment instantiates a new RoleAssignment object
+// NewConnectedOrgConfigRoleAssignment instantiates a new ConnectedOrgConfigRoleAssignment object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRoleAssignment() *RoleAssignment {
-	this := RoleAssignment{}
+func NewConnectedOrgConfigRoleAssignment() *ConnectedOrgConfigRoleAssignment {
+	this := ConnectedOrgConfigRoleAssignment{}
 	return &this
 }
 
-// NewRoleAssignmentWithDefaults instantiates a new RoleAssignment object
+// NewConnectedOrgConfigRoleAssignmentWithDefaults instantiates a new ConnectedOrgConfigRoleAssignment object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewRoleAssignmentWithDefaults() *RoleAssignment {
-	this := RoleAssignment{}
+func NewConnectedOrgConfigRoleAssignmentWithDefaults() *ConnectedOrgConfigRoleAssignment {
+	this := ConnectedOrgConfigRoleAssignment{}
 	return &this
 }
 
 // GetGroupId returns the GroupId field value if set, zero value otherwise
-func (o *RoleAssignment) GetGroupId() string {
+func (o *ConnectedOrgConfigRoleAssignment) GetGroupId() string {
 	if o == nil || IsNil(o.GroupId) {
 		var ret string
 		return ret
@@ -40,7 +40,7 @@ func (o *RoleAssignment) GetGroupId() string {
 
 // GetGroupIdOk returns a tuple with the GroupId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RoleAssignment) GetGroupIdOk() (*string, bool) {
+func (o *ConnectedOrgConfigRoleAssignment) GetGroupIdOk() (*string, bool) {
 	if o == nil || IsNil(o.GroupId) {
 		return nil, false
 	}
@@ -49,7 +49,7 @@ func (o *RoleAssignment) GetGroupIdOk() (*string, bool) {
 }
 
 // HasGroupId returns a boolean if a field has been set.
-func (o *RoleAssignment) HasGroupId() bool {
+func (o *ConnectedOrgConfigRoleAssignment) HasGroupId() bool {
 	if o != nil && !IsNil(o.GroupId) {
 		return true
 	}
@@ -58,12 +58,12 @@ func (o *RoleAssignment) HasGroupId() bool {
 }
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
-func (o *RoleAssignment) SetGroupId(v string) {
+func (o *ConnectedOrgConfigRoleAssignment) SetGroupId(v string) {
 	o.GroupId = &v
 }
 
 // GetOrgId returns the OrgId field value if set, zero value otherwise
-func (o *RoleAssignment) GetOrgId() string {
+func (o *ConnectedOrgConfigRoleAssignment) GetOrgId() string {
 	if o == nil || IsNil(o.OrgId) {
 		var ret string
 		return ret
@@ -73,7 +73,7 @@ func (o *RoleAssignment) GetOrgId() string {
 
 // GetOrgIdOk returns a tuple with the OrgId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RoleAssignment) GetOrgIdOk() (*string, bool) {
+func (o *ConnectedOrgConfigRoleAssignment) GetOrgIdOk() (*string, bool) {
 	if o == nil || IsNil(o.OrgId) {
 		return nil, false
 	}
@@ -82,7 +82,7 @@ func (o *RoleAssignment) GetOrgIdOk() (*string, bool) {
 }
 
 // HasOrgId returns a boolean if a field has been set.
-func (o *RoleAssignment) HasOrgId() bool {
+func (o *ConnectedOrgConfigRoleAssignment) HasOrgId() bool {
 	if o != nil && !IsNil(o.OrgId) {
 		return true
 	}
@@ -91,12 +91,12 @@ func (o *RoleAssignment) HasOrgId() bool {
 }
 
 // SetOrgId gets a reference to the given string and assigns it to the OrgId field.
-func (o *RoleAssignment) SetOrgId(v string) {
+func (o *ConnectedOrgConfigRoleAssignment) SetOrgId(v string) {
 	o.OrgId = &v
 }
 
 // GetRole returns the Role field value if set, zero value otherwise
-func (o *RoleAssignment) GetRole() string {
+func (o *ConnectedOrgConfigRoleAssignment) GetRole() string {
 	if o == nil || IsNil(o.Role) {
 		var ret string
 		return ret
@@ -106,7 +106,7 @@ func (o *RoleAssignment) GetRole() string {
 
 // GetRoleOk returns a tuple with the Role field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RoleAssignment) GetRoleOk() (*string, bool) {
+func (o *ConnectedOrgConfigRoleAssignment) GetRoleOk() (*string, bool) {
 	if o == nil || IsNil(o.Role) {
 		return nil, false
 	}
@@ -115,7 +115,7 @@ func (o *RoleAssignment) GetRoleOk() (*string, bool) {
 }
 
 // HasRole returns a boolean if a field has been set.
-func (o *RoleAssignment) HasRole() bool {
+func (o *ConnectedOrgConfigRoleAssignment) HasRole() bool {
 	if o != nil && !IsNil(o.Role) {
 		return true
 	}
@@ -124,6 +124,6 @@ func (o *RoleAssignment) HasRole() bool {
 }
 
 // SetRole gets a reference to the given string and assigns it to the Role field.
-func (o *RoleAssignment) SetRole(v string) {
+func (o *ConnectedOrgConfigRoleAssignment) SetRole(v string) {
 	o.Role = &v
 }

@@ -326,7 +326,7 @@ type StreamsApi interface {
 	GetAccountDetailsWithParams(ctx context.Context, args *GetAccountDetailsApiParams) GetAccountDetailsApiRequest
 
 	// Method available only for mocking purposes
-	GetAccountDetailsExecute(r GetAccountDetailsApiRequest) (*AWSAccountDetails, *http.Response, error)
+	GetAccountDetailsExecute(r GetAccountDetailsApiRequest) (*AccountDetails, *http.Response, error)
 
 	/*
 		GetActiveVpcPeeringConnections Returns all the active incoming VPC Peering Connections.
@@ -640,6 +640,32 @@ type StreamsApi interface {
 
 	// Method available only for mocking purposes
 	StartStreamProcessorExecute(r StartStreamProcessorApiRequest) (*http.Response, error)
+
+	/*
+		StartStreamProcessorWith Start One Stream Processor With Options
+
+		Start a Stream Processor within the specified stream instance. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Stream Processing Owner role.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param tenantName Human-readable label that identifies the stream instance.
+		@param processorName Human-readable label that identifies the stream processor.
+		@param streamsStartStreamProcessorWith Options for starting a stream processor.
+		@return StartStreamProcessorWithApiRequest
+	*/
+	StartStreamProcessorWith(ctx context.Context, groupId string, tenantName string, processorName string, streamsStartStreamProcessorWith *StreamsStartStreamProcessorWith) StartStreamProcessorWithApiRequest
+	/*
+		StartStreamProcessorWith Start One Stream Processor With Options
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param StartStreamProcessorWithApiParams - Parameters for the request
+		@return StartStreamProcessorWithApiRequest
+	*/
+	StartStreamProcessorWithWithParams(ctx context.Context, args *StartStreamProcessorWithApiParams) StartStreamProcessorWithApiRequest
+
+	// Method available only for mocking purposes
+	StartStreamProcessorWithExecute(r StartStreamProcessorWithApiRequest) (*http.Response, error)
 
 	/*
 		StopStreamProcessor Stop One Stream Processor
@@ -2131,7 +2157,7 @@ func (r GetAccountDetailsApiRequest) RegionName(regionName string) GetAccountDet
 	return r
 }
 
-func (r GetAccountDetailsApiRequest) Execute() (*AWSAccountDetails, *http.Response, error) {
+func (r GetAccountDetailsApiRequest) Execute() (*AccountDetails, *http.Response, error) {
 	return r.ApiService.GetAccountDetailsExecute(r)
 }
 
@@ -2154,13 +2180,13 @@ func (a *StreamsApiService) GetAccountDetails(ctx context.Context, groupId strin
 
 // GetAccountDetailsExecute executes the request
 //
-//	@return AWSAccountDetails
-func (a *StreamsApiService) GetAccountDetailsExecute(r GetAccountDetailsApiRequest) (*AWSAccountDetails, *http.Response, error) {
+//	@return AccountDetails
+func (a *StreamsApiService) GetAccountDetailsExecute(r GetAccountDetailsApiRequest) (*AccountDetails, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue *AWSAccountDetails
+		localVarReturnValue *AccountDetails
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.GetAccountDetails")
@@ -3909,6 +3935,118 @@ func (a *StreamsApiService) StartStreamProcessorExecute(r StartStreamProcessorAp
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type StartStreamProcessorWithApiRequest struct {
+	ctx                             context.Context
+	ApiService                      StreamsApi
+	groupId                         string
+	tenantName                      string
+	processorName                   string
+	streamsStartStreamProcessorWith *StreamsStartStreamProcessorWith
+}
+
+type StartStreamProcessorWithApiParams struct {
+	GroupId                         string
+	TenantName                      string
+	ProcessorName                   string
+	StreamsStartStreamProcessorWith *StreamsStartStreamProcessorWith
+}
+
+func (a *StreamsApiService) StartStreamProcessorWithWithParams(ctx context.Context, args *StartStreamProcessorWithApiParams) StartStreamProcessorWithApiRequest {
+	return StartStreamProcessorWithApiRequest{
+		ApiService:                      a,
+		ctx:                             ctx,
+		groupId:                         args.GroupId,
+		tenantName:                      args.TenantName,
+		processorName:                   args.ProcessorName,
+		streamsStartStreamProcessorWith: args.StreamsStartStreamProcessorWith,
+	}
+}
+
+func (r StartStreamProcessorWithApiRequest) Execute() (*http.Response, error) {
+	return r.ApiService.StartStreamProcessorWithExecute(r)
+}
+
+/*
+StartStreamProcessorWith Start One Stream Processor With Options
+
+Start a Stream Processor within the specified stream instance. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Stream Processing Owner role.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param tenantName Human-readable label that identifies the stream instance.
+	@param processorName Human-readable label that identifies the stream processor.
+	@return StartStreamProcessorWithApiRequest
+*/
+func (a *StreamsApiService) StartStreamProcessorWith(ctx context.Context, groupId string, tenantName string, processorName string, streamsStartStreamProcessorWith *StreamsStartStreamProcessorWith) StartStreamProcessorWithApiRequest {
+	return StartStreamProcessorWithApiRequest{
+		ApiService:                      a,
+		ctx:                             ctx,
+		groupId:                         groupId,
+		tenantName:                      tenantName,
+		processorName:                   processorName,
+		streamsStartStreamProcessorWith: streamsStartStreamProcessorWith,
+	}
+}
+
+// StartStreamProcessorWithExecute executes the request
+func (a *StreamsApiService) StartStreamProcessorWithExecute(r StartStreamProcessorWithApiRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   any
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.StartStreamProcessorWith")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:startWith"
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"processorName"+"}", url.PathEscape(r.processorName), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2025-03-12+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.streamsStartStreamProcessorWith
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err

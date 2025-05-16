@@ -8,16 +8,16 @@ import (
 
 // ServiceAccountSecret struct for ServiceAccountSecret
 type ServiceAccountSecret struct {
-	// The date that the secret was created on.
+	// The date that the secret was created on. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	CreatedAt time.Time `json:"createdAt"`
-	// The date for the expiration of the secret.
+	// The date for the expiration of the secret. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	ExpiresAt time.Time `json:"expiresAt"`
 	// Unique 24-hexadecimal digit string that identifies the secret.
 	// Read only field.
 	Id string `json:"id"`
-	// The last time the secret was used.
+	// The last time the secret was used. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	LastUsedAt *time.Time `json:"lastUsedAt,omitempty"`
 	// The masked Service Account secret.

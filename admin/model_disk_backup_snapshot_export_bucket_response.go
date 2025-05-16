@@ -6,7 +6,7 @@ package admin
 type DiskBackupSnapshotExportBucketResponse struct {
 	// Unique 24-hexadecimal character string that identifies the Export Bucket.
 	Id string `json:"_id"`
-	// The name of the AWS S3 Bucket or Azure Storage Container that Snapshots are exported to.
+	// The name of the AWS S3 Bucket, Azure Storage Container, or Google Cloud Storage Bucket that Snapshots are exported to.
 	BucketName string `json:"bucketName"`
 	// Human-readable label that identifies the cloud provider that Snapshots will be exported to.
 	CloudProvider string `json:"cloudProvider"`
@@ -15,7 +15,7 @@ type DiskBackupSnapshotExportBucketResponse struct {
 	Links *[]Link `json:"links,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the Unified AWS Access role ID that MongoDB Cloud uses to access the AWS S3 bucket.
 	IamRoleId *string `json:"iamRoleId,omitempty"`
-	// Unique 24-hexadecimal digit string that identifies the Azure Cloud Provider Access Role that MongoDB Cloud uses to access the Azure Blob Storage Container.
+	// Unique 24-hexadecimal digit string that identifies the GCP Cloud Provider Access Role that MongoDB Cloud uses to access the Google Cloud Storage Bucket.
 	RoleId *string `json:"roleId,omitempty"`
 	// URL of the Azure Storage Account to export to. Only standard endpoints (with \"blob.core.windows.net\") are supported.
 	ServiceUrl *string `json:"serviceUrl,omitempty"`

@@ -8,7 +8,7 @@ import (
 
 // LegacyAtlasTenantClusterUpgradeRequest Request containing target state of tenant cluster to be upgraded
 type LegacyAtlasTenantClusterUpgradeRequest struct {
-	// If reconfiguration is necessary to regain a primary due to a regional outage, submit this field alongside your topology reconfiguration to request a new regional outage resistant topology. Forced reconfigurations during an outage of the majority of electable nodes carry a risk of data loss if replicated writes (even majority committed writes) have not been replicated to the new primary node. MongoDB Atlas docs contain more information. To proceed with an operation which carries that risk, set **acceptDataRisksAndForceReplicaSetReconfig** to the current date.
+	// If reconfiguration is necessary to regain a primary due to a regional outage, submit this field alongside your topology reconfiguration to request a new regional outage resistant topology. Forced reconfigurations during an outage of the majority of electable nodes carry a risk of data loss if replicated writes (even majority committed writes) have not been replicated to the new primary node. MongoDB Atlas docs contain more information. To proceed with an operation which carries that risk, set **acceptDataRisksAndForceReplicaSetReconfig** to the current date. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	AcceptDataRisksAndForceReplicaSetReconfig *time.Time                            `json:"acceptDataRisksAndForceReplicaSetReconfig,omitempty"`
 	AdvancedConfiguration                     *ApiAtlasClusterAdvancedConfiguration `json:"advancedConfiguration,omitempty"`
 	AutoScaling                               *ClusterAutoScalingSettings           `json:"autoScaling,omitempty"`
@@ -35,7 +35,7 @@ type LegacyAtlasTenantClusterUpgradeRequest struct {
 	// Feature compatibility version of the cluster.
 	// Read only field.
 	FeatureCompatibilityVersion *string `json:"featureCompatibilityVersion,omitempty"`
-	// Feature compatibility version expiration date.
+	// Feature compatibility version expiration date. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	FeatureCompatibilityVersionExpirationDate *time.Time `json:"featureCompatibilityVersionExpirationDate,omitempty"`
 	// Set this field to configure the Sharding Management Mode when creating a new Global Cluster.  When set to false, the management mode is set to Atlas-Managed Sharding. This mode fully manages the sharding of your Global Cluster and is built to provide a seamless deployment experience.  When set to true, the management mode is set to Self-Managed Sharding. This mode leaves the management of shards in your hands and is built to provide an advanced and flexible deployment experience.  This setting cannot be changed once the cluster is deployed.
@@ -86,7 +86,7 @@ type LegacyAtlasTenantClusterUpgradeRequest struct {
 	ReplicationSpec *map[string]RegionSpec `json:"replicationSpec,omitempty"`
 	// List of settings that configure your cluster regions.  - For Global Clusters, each object in the array represents one zone where MongoDB Cloud deploys your clusters nodes. - For non-Global sharded clusters and replica sets, the single object represents where MongoDB Cloud deploys your clusters nodes.
 	ReplicationSpecs *[]LegacyReplicationSpec `json:"replicationSpecs,omitempty"`
-	// Root Certificate Authority that MongoDB Atlas clusters uses. MongoDB Cloud supports Internet Security Research Group.
+	// Root Certificate Authority that MongoDB Atlas cluster uses. MongoDB Cloud supports Internet Security Research Group.
 	RootCertType *string `json:"rootCertType,omitempty"`
 	// Connection string that you can use to connect to the cluster. The `+srv` modifier forces the connection to use Transport Layer Security (TLS). The `mongoURI` parameter lists additional options.
 	// Read only field.
