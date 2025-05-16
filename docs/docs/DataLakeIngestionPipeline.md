@@ -5,10 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the Data Lake Pipeline. | [optional] [readonly] 
-**CreatedDate** | Pointer to **time.Time** | Timestamp that indicates when the Data Lake Pipeline was created. | [optional] [readonly] 
+**CreatedDate** | Pointer to **time.Time** | Timestamp that indicates when the Data Lake Pipeline was created. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
 **DatasetRetentionPolicy** | Pointer to [**DatasetRetentionPolicy**](DatasetRetentionPolicy.md) |  | [optional] 
 **GroupId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the group. | [optional] [readonly] 
-**LastUpdatedDate** | Pointer to **time.Time** | Timestamp that indicates the last time that the Data Lake Pipeline was updated. | [optional] [readonly] 
+**LastUpdatedDate** | Pointer to **time.Time** | Timestamp that indicates the last time that the Data Lake Pipeline was updated. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
 **Name** | Pointer to **string** | Name of this Data Lake Pipeline. | [optional] 
 **Sink** | Pointer to [**IngestionSink**](IngestionSink.md) |  | [optional] 
 **Source** | Pointer to [**IngestionSource**](IngestionSource.md) |  | [optional] 

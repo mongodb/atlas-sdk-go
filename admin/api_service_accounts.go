@@ -15,7 +15,7 @@ type ServiceAccountsApi interface {
 	/*
 		AddProjectServiceAccount Assign One Service Account to One Project
 
-		Assigns the specified Service Account to the specified Project. Available as a preview feature.
+		Assigns the specified Service Account to the specified Project.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param clientId The Client ID of the Service Account.
@@ -23,7 +23,7 @@ type ServiceAccountsApi interface {
 		@param groupServiceAccountRoleAssignment The Project permissions for the Service Account in the specified Project.
 		@return AddProjectServiceAccountApiRequest
 	*/
-	AddProjectServiceAccount(ctx context.Context, clientId string, groupId string, groupServiceAccountRoleAssignment *[]GroupServiceAccountRoleAssignment) AddProjectServiceAccountApiRequest
+	AddProjectServiceAccount(ctx context.Context, clientId string, groupId string, groupServiceAccountRoleAssignment *GroupServiceAccountRoleAssignment) AddProjectServiceAccountApiRequest
 	/*
 		AddProjectServiceAccount Assign One Service Account to One Project
 
@@ -40,7 +40,7 @@ type ServiceAccountsApi interface {
 	/*
 		CreateProjectServiceAccount Create and Assign one Service Account to one Project
 
-		Creates one Service Account for the specified Project. The Service Account will automatically be added as an Organization Member to the Organization that the specified Project is a part of. Available as a preview feature.
+		Creates one Service Account for the specified Project. The Service Account will automatically be added as an Organization Member to the Organization that the specified Project is a part of.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -64,7 +64,7 @@ type ServiceAccountsApi interface {
 	/*
 		CreateProjectServiceAccountAccessList Add Access List entries for one Project Service Account
 
-		Add Access List Entries for the specified Service Account for the project. Resources require all API requests to originate from IP addresses on the API access list. Available as a preview feature.
+		Add Access List Entries for the specified Service Account for the project. Resources require all API requests to originate from IP addresses on the API access list.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -89,7 +89,7 @@ type ServiceAccountsApi interface {
 	/*
 		CreateProjectServiceAccountSecret Create one Project Service Account Secret
 
-		Create a secret for the specified Service Account in the specified Project. Available as a preview feature.
+		Create a secret for the specified Service Account in the specified Project.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -114,7 +114,7 @@ type ServiceAccountsApi interface {
 	/*
 		CreateServiceAccount Create one Organization Service Account
 
-		Creates one Service Account for the specified Organization. Available as a preview feature.
+		Creates one Service Account for the specified Organization.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -138,7 +138,7 @@ type ServiceAccountsApi interface {
 	/*
 		CreateServiceAccountAccessList Add Access List entries for one Organization Service Account
 
-		Add Access List Entries for the specified Service Account for the organization. Resources require all API requests to originate from IP addresses on the API access list. Available as a preview feature.
+		Add Access List Entries for the specified Service Account for the organization. Resources require all API requests to originate from IP addresses on the API access list.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -163,7 +163,7 @@ type ServiceAccountsApi interface {
 	/*
 		CreateServiceAccountSecret Create one Organization Service Account Secret
 
-		Create a secret for the specified Service Account. Available as a preview feature.
+		Create a secret for the specified Service Account.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -188,7 +188,7 @@ type ServiceAccountsApi interface {
 	/*
 		DeleteProjectServiceAccount Unassign One Service Account from One Project
 
-		Removes the specified Service Account from the specified project. The Service Account will still be a part of the Organization it was created in, and the credentials will remain active until expired or manually revoked. Available as a preview feature.
+		Removes the specified Service Account from the specified project. The Service Account will still be a part of the Organization it was created in, and the credentials will remain active until expired or manually revoked.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param clientId The Client ID of the Service Account.
@@ -212,7 +212,7 @@ type ServiceAccountsApi interface {
 	/*
 		DeleteProjectServiceAccountAccessListEntry Remove One Access List entry from one Project Service Account
 
-		Removes the specified access list entry from the specified Service Account for the project. You can't remove the requesting IP address from the access list. Available as a preview feature.
+		Removes the specified access list entry from the specified Service Account for the project. You can't remove the requesting IP address from the access list.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -237,7 +237,7 @@ type ServiceAccountsApi interface {
 	/*
 		DeleteProjectServiceAccountSecret Delete one Project Service Account Secret
 
-		Deletes the specified Service Account secret. Available as a preview feature.
+		Deletes the specified Service Account secret.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param clientId The Client ID of the Service Account.
@@ -262,7 +262,7 @@ type ServiceAccountsApi interface {
 	/*
 		DeleteServiceAccount Delete one Organization Service Account
 
-		Deletes the specified Service Account. Available as a preview feature.
+		Deletes the specified Service Account.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param clientId The Client ID of the Service Account.
@@ -286,7 +286,7 @@ type ServiceAccountsApi interface {
 	/*
 		DeleteServiceAccountAccessListEntry Remove One Access List entry from one Organization Service Account
 
-		Removes the specified access list entry from the specified Service Account for the organization. You can't remove the requesting IP address from the access list. Available as a preview feature.
+		Removes the specified access list entry from the specified Service Account for the organization. You can't remove the requesting IP address from the access list.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -311,7 +311,7 @@ type ServiceAccountsApi interface {
 	/*
 		DeleteServiceAccountSecret Delete a Organization Service Account Secret
 
-		Deletes the specified Service Account secret. Available as a preview feature.
+		Deletes the specified Service Account secret.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param clientId The Client ID of the Service Account.
@@ -336,7 +336,7 @@ type ServiceAccountsApi interface {
 	/*
 		GetProjectServiceAccount Get one Project Service Account
 
-		Returns one Service Account in the specified Project. Available as a preview feature.
+		Returns one Service Account in the specified Project.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -360,7 +360,7 @@ type ServiceAccountsApi interface {
 	/*
 		GetServiceAccount Get one Organization Service Account
 
-		Returns the specified Service Account. Available as a preview feature.
+		Returns the specified Service Account.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -384,7 +384,7 @@ type ServiceAccountsApi interface {
 	/*
 		ListProjectServiceAccountAccessList Return All Access List entries for one Project Service Account
 
-		Returns all access list entries that you configured for the specified Service Account for the project. Available as a preview feature.
+		Returns all access list entries that you configured for the specified Service Account for the project.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -408,7 +408,7 @@ type ServiceAccountsApi interface {
 	/*
 		ListProjectServiceAccounts List All Project Service Accounts
 
-		Returns all Service Accounts for the specified Project. Available as a preview feature.
+		Returns all Service Accounts for the specified Project.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -431,7 +431,7 @@ type ServiceAccountsApi interface {
 	/*
 		ListServiceAccountAccessList Return All Access List entries for one Organization Service Account
 
-		Returns all access list entries that you configured for the specified Service Account for the organization. Available as a preview feature.
+		Returns all access list entries that you configured for the specified Service Account for the organization.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -455,7 +455,7 @@ type ServiceAccountsApi interface {
 	/*
 		ListServiceAccountProjects Return All Service Account Project assignments
 
-		Returns a list of all projects the specified Service Account is a part of. Available as a preview feature.
+		Returns a list of all projects the specified Service Account is a part of.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -479,7 +479,7 @@ type ServiceAccountsApi interface {
 	/*
 		ListServiceAccounts List All Organization Service Accounts
 
-		Returns all Service Accounts for the specified Organization. Available as a preview feature.
+		Returns all Service Accounts for the specified Organization.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -502,7 +502,7 @@ type ServiceAccountsApi interface {
 	/*
 		UpdateProjectServiceAccount Update one Project Service Account
 
-		Updates one Service Account in the specified Project. Available as a preview feature.
+		Updates one Service Account in the specified Project.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param clientId The Client ID of the Service Account.
@@ -527,7 +527,7 @@ type ServiceAccountsApi interface {
 	/*
 		UpdateServiceAccount Update one Organization Service Account
 
-		Updates the specified Service Account in the specified Organization. Available as a preview feature.
+		Updates the specified Service Account in the specified Organization.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param clientId The Client ID of the Service Account.
@@ -558,13 +558,13 @@ type AddProjectServiceAccountApiRequest struct {
 	ApiService                        ServiceAccountsApi
 	clientId                          string
 	groupId                           string
-	groupServiceAccountRoleAssignment *[]GroupServiceAccountRoleAssignment
+	groupServiceAccountRoleAssignment *GroupServiceAccountRoleAssignment
 }
 
 type AddProjectServiceAccountApiParams struct {
 	ClientId                          string
 	GroupId                           string
-	GroupServiceAccountRoleAssignment *[]GroupServiceAccountRoleAssignment
+	GroupServiceAccountRoleAssignment *GroupServiceAccountRoleAssignment
 }
 
 func (a *ServiceAccountsApiService) AddProjectServiceAccountWithParams(ctx context.Context, args *AddProjectServiceAccountApiParams) AddProjectServiceAccountApiRequest {
@@ -584,14 +584,14 @@ func (r AddProjectServiceAccountApiRequest) Execute() (*GroupServiceAccount, *ht
 /*
 AddProjectServiceAccount Assign One Service Account to One Project
 
-Assigns the specified Service Account to the specified Project. Available as a preview feature.
+Assigns the specified Service Account to the specified Project.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param clientId The Client ID of the Service Account.
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return AddProjectServiceAccountApiRequest
 */
-func (a *ServiceAccountsApiService) AddProjectServiceAccount(ctx context.Context, clientId string, groupId string, groupServiceAccountRoleAssignment *[]GroupServiceAccountRoleAssignment) AddProjectServiceAccountApiRequest {
+func (a *ServiceAccountsApiService) AddProjectServiceAccount(ctx context.Context, clientId string, groupId string, groupServiceAccountRoleAssignment *GroupServiceAccountRoleAssignment) AddProjectServiceAccountApiRequest {
 	return AddProjectServiceAccountApiRequest{
 		ApiService:                        a,
 		ctx:                               ctx,
@@ -707,7 +707,7 @@ func (r CreateProjectServiceAccountApiRequest) Execute() (*GroupServiceAccount, 
 /*
 CreateProjectServiceAccount Create and Assign one Service Account to one Project
 
-Creates one Service Account for the specified Project. The Service Account will automatically be added as an Organization Member to the Organization that the specified Project is a part of. Available as a preview feature.
+Creates one Service Account for the specified Project. The Service Account will automatically be added as an Organization Member to the Organization that the specified Project is a part of.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -857,7 +857,7 @@ func (r CreateProjectServiceAccountAccessListApiRequest) Execute() (*PaginatedSe
 /*
 CreateProjectServiceAccountAccessList Add Access List entries for one Project Service Account
 
-Add Access List Entries for the specified Service Account for the project. Resources require all API requests to originate from IP addresses on the API access list. Available as a preview feature.
+Add Access List Entries for the specified Service Account for the project. Resources require all API requests to originate from IP addresses on the API access list.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -1004,7 +1004,7 @@ func (r CreateProjectServiceAccountSecretApiRequest) Execute() (*ServiceAccountS
 /*
 CreateProjectServiceAccountSecret Create one Project Service Account Secret
 
-Create a secret for the specified Service Account in the specified Project. Available as a preview feature.
+Create a secret for the specified Service Account in the specified Project.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -1127,7 +1127,7 @@ func (r CreateServiceAccountApiRequest) Execute() (*OrgServiceAccount, *http.Res
 /*
 CreateServiceAccount Create one Organization Service Account
 
-Creates one Service Account for the specified Organization. Available as a preview feature.
+Creates one Service Account for the specified Organization.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -1277,7 +1277,7 @@ func (r CreateServiceAccountAccessListApiRequest) Execute() (*PaginatedServiceAc
 /*
 CreateServiceAccountAccessList Add Access List entries for one Organization Service Account
 
-Add Access List Entries for the specified Service Account for the organization. Resources require all API requests to originate from IP addresses on the API access list. Available as a preview feature.
+Add Access List Entries for the specified Service Account for the organization. Resources require all API requests to originate from IP addresses on the API access list.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -1424,7 +1424,7 @@ func (r CreateServiceAccountSecretApiRequest) Execute() (*ServiceAccountSecret, 
 /*
 CreateServiceAccountSecret Create one Organization Service Account Secret
 
-Create a secret for the specified Service Account. Available as a preview feature.
+Create a secret for the specified Service Account.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -1547,7 +1547,7 @@ func (r DeleteProjectServiceAccountApiRequest) Execute() (*http.Response, error)
 /*
 DeleteProjectServiceAccount Unassign One Service Account from One Project
 
-Removes the specified Service Account from the specified project. The Service Account will still be a part of the Organization it was created in, and the credentials will remain active until expired or manually revoked. Available as a preview feature.
+Removes the specified Service Account from the specified project. The Service Account will still be a part of the Organization it was created in, and the credentials will remain active until expired or manually revoked.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param clientId The Client ID of the Service Account.
@@ -1650,7 +1650,7 @@ func (r DeleteProjectServiceAccountAccessListEntryApiRequest) Execute() (*http.R
 /*
 DeleteProjectServiceAccountAccessListEntry Remove One Access List entry from one Project Service Account
 
-Removes the specified access list entry from the specified Service Account for the project. You can't remove the requesting IP address from the access list. Available as a preview feature.
+Removes the specified access list entry from the specified Service Account for the project. You can't remove the requesting IP address from the access list.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -1756,7 +1756,7 @@ func (r DeleteProjectServiceAccountSecretApiRequest) Execute() (*http.Response, 
 /*
 DeleteProjectServiceAccountSecret Delete one Project Service Account Secret
 
-Deletes the specified Service Account secret. Available as a preview feature.
+Deletes the specified Service Account secret.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param clientId The Client ID of the Service Account.
@@ -1859,7 +1859,7 @@ func (r DeleteServiceAccountApiRequest) Execute() (*http.Response, error) {
 /*
 DeleteServiceAccount Delete one Organization Service Account
 
-Deletes the specified Service Account. Available as a preview feature.
+Deletes the specified Service Account.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param clientId The Client ID of the Service Account.
@@ -1962,7 +1962,7 @@ func (r DeleteServiceAccountAccessListEntryApiRequest) Execute() (*http.Response
 /*
 DeleteServiceAccountAccessListEntry Remove One Access List entry from one Organization Service Account
 
-Removes the specified access list entry from the specified Service Account for the organization. You can't remove the requesting IP address from the access list. Available as a preview feature.
+Removes the specified access list entry from the specified Service Account for the organization. You can't remove the requesting IP address from the access list.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -2068,7 +2068,7 @@ func (r DeleteServiceAccountSecretApiRequest) Execute() (*http.Response, error) 
 /*
 DeleteServiceAccountSecret Delete a Organization Service Account Secret
 
-Deletes the specified Service Account secret. Available as a preview feature.
+Deletes the specified Service Account secret.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param clientId The Client ID of the Service Account.
@@ -2171,7 +2171,7 @@ func (r GetProjectServiceAccountApiRequest) Execute() (*GroupServiceAccount, *ht
 /*
 GetProjectServiceAccount Get one Project Service Account
 
-Returns one Service Account in the specified Project. Available as a preview feature.
+Returns one Service Account in the specified Project.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -2288,7 +2288,7 @@ func (r GetServiceAccountApiRequest) Execute() (*OrgServiceAccount, *http.Respon
 /*
 GetServiceAccount Get one Organization Service Account
 
-Returns the specified Service Account. Available as a preview feature.
+Returns the specified Service Account.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -2432,7 +2432,7 @@ func (r ListProjectServiceAccountAccessListApiRequest) Execute() (*PaginatedServ
 /*
 ListProjectServiceAccountAccessList Return All Access List entries for one Project Service Account
 
-Returns all access list entries that you configured for the specified Service Account for the project. Available as a preview feature.
+Returns all access list entries that you configured for the specified Service Account for the project.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -2585,7 +2585,7 @@ func (r ListProjectServiceAccountsApiRequest) Execute() (*PaginatedGroupServiceA
 /*
 ListProjectServiceAccounts List All Project Service Accounts
 
-Returns all Service Accounts for the specified Project. Available as a preview feature.
+Returns all Service Accounts for the specified Project.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -2740,7 +2740,7 @@ func (r ListServiceAccountAccessListApiRequest) Execute() (*PaginatedServiceAcco
 /*
 ListServiceAccountAccessList Return All Access List entries for one Organization Service Account
 
-Returns all access list entries that you configured for the specified Service Account for the organization. Available as a preview feature.
+Returns all access list entries that you configured for the specified Service Account for the organization.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -2896,7 +2896,7 @@ func (r ListServiceAccountProjectsApiRequest) Execute() (*PaginatedServiceAccoun
 /*
 ListServiceAccountProjects Return All Service Account Project assignments
 
-Returns a list of all projects the specified Service Account is a part of. Available as a preview feature.
+Returns a list of all projects the specified Service Account is a part of.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -3042,7 +3042,7 @@ func (r ListServiceAccountsApiRequest) Execute() (*PaginatedOrgServiceAccounts, 
 /*
 ListServiceAccounts List All Organization Service Accounts
 
-Returns all Service Accounts for the specified Organization. Available as a preview feature.
+Returns all Service Accounts for the specified Organization.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -3173,7 +3173,7 @@ func (r UpdateProjectServiceAccountApiRequest) Execute() (*GroupServiceAccount, 
 /*
 UpdateProjectServiceAccount Update one Project Service Account
 
-Updates one Service Account in the specified Project. Available as a preview feature.
+Updates one Service Account in the specified Project.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param clientId The Client ID of the Service Account.
@@ -3299,7 +3299,7 @@ func (r UpdateServiceAccountApiRequest) Execute() (*OrgServiceAccount, *http.Res
 /*
 UpdateServiceAccount Update one Organization Service Account
 
-Updates the specified Service Account in the specified Organization. Available as a preview feature.
+Updates the specified Service Account in the specified Organization.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param clientId The Client ID of the Service Account.

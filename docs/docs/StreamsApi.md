@@ -30,6 +30,7 @@ Method | HTTP request | Description
 [**ModifyStreamProcessor**](StreamsApi.md#ModifyStreamProcessor) | **Patch** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName} | Modify One Stream Processor
 [**RejectVpcPeeringConnection**](StreamsApi.md#RejectVpcPeeringConnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}:reject | Requests the rejection of an incoming VPC Peering connection.
 [**StartStreamProcessor**](StreamsApi.md#StartStreamProcessor) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:start | Start One Stream Processor
+[**StartStreamProcessorWith**](StreamsApi.md#StartStreamProcessorWith) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:startWith | Start One Stream Processor With Options
 [**StopStreamProcessor**](StreamsApi.md#StopStreamProcessor) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:stop | Stop One Stream Processor
 [**UpdateStreamConnection**](StreamsApi.md#UpdateStreamConnection) | **Patch** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName} | Update One Stream Connection
 [**UpdateStreamInstance**](StreamsApi.md#UpdateStreamInstance) | **Patch** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Update One Stream Instance
@@ -150,7 +151,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    streamsPrivateLinkConnection := *openapiclient.NewStreamsPrivateLinkConnection() // StreamsPrivateLinkConnection | 
+    streamsPrivateLinkConnection := *openapiclient.NewStreamsPrivateLinkConnection("Provider_example") // StreamsPrivateLinkConnection | 
 
     resp, r, err := sdk.StreamsApi.CreatePrivateLinkConnection(context.Background(), groupId, &streamsPrivateLinkConnection).Execute()
     if err != nil {
@@ -1035,7 +1036,7 @@ Name | Type | Description  | Notes
 
 ## GetAccountDetails
 
-> AWSAccountDetails GetAccountDetails(ctx, groupId).CloudProvider(cloudProvider).RegionName(regionName).Execute()
+> AccountDetails GetAccountDetails(ctx, groupId).CloudProvider(cloudProvider).RegionName(regionName).Execute()
 
 Returns the Account ID, and the VPC ID for the group and region specified.
 
@@ -1076,7 +1077,7 @@ func main() {
         }
         return
     }
-    // response from `GetAccountDetails`: AWSAccountDetails
+    // response from `GetAccountDetails`: AccountDetails
     fmt.Fprintf(os.Stdout, "Response from `StreamsApi.GetAccountDetails`: %v (%v)\n", resp, r)
 }
 ```
@@ -1102,7 +1103,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AWSAccountDetails**](AWSAccountDetails.md)
+[**AccountDetails**](AccountDetails.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -2214,6 +2215,92 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/vnd.atlas.2024-05-30+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StartStreamProcessorWith
+
+> StartStreamProcessorWith(ctx, groupId, tenantName, processorName, streamsStartStreamProcessorWith StreamsStartStreamProcessorWith).Execute()
+
+Start One Stream Processor With Options
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312002/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    tenantName := "tenantName_example" // string | 
+    processorName := "processorName_example" // string | 
+    streamsStartStreamProcessorWith := *openapiclient.NewStreamsStartStreamProcessorWith() // StreamsStartStreamProcessorWith |  (optional)
+
+    r, err := sdk.StreamsApi.StartStreamProcessorWith(context.Background(), groupId, tenantName, processorName, &streamsStartStreamProcessorWith).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.StartStreamProcessorWith`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**tenantName** | **string** | Human-readable label that identifies the stream instance. | 
+**processorName** | **string** | Human-readable label that identifies the stream processor. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStartStreamProcessorWithRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+ **streamsStartStreamProcessorWith** | [**StreamsStartStreamProcessorWith**](StreamsStartStreamProcessorWith.md) | Options for starting a stream processor. | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: application/vnd.atlas.2025-03-12+json
+- **Accept**: application/vnd.atlas.2025-03-12+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

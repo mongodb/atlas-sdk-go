@@ -7,7 +7,9 @@ Name | Type | Description | Notes
 **ConnectionId** | Pointer to **string** | Reserved. Will be used by PRIVATE_LINK connection type. | [optional] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **Name** | Pointer to **string** | Reserved. Will be used by PRIVATE_LINK connection type. | [optional] 
-**Type** | Pointer to **string** | Selected networking type. Either PUBLIC, VPC or PRIVATE_LINK. Defaults to PUBLIC. For VPC, ensure that VPC peering exists and connectivity has been established between Atlas VPC and the VPC where Kafka cluster is hosted for the connection to function properly. PRIVATE_LINK support is coming soon. | [optional] 
+**TgwId** | Pointer to **string** | Reserved. Will be used by TRANSIT_GATEWAY connection type. | [optional] 
+**Type** | Pointer to **string** | Selected networking type. Either PUBLIC, VPC, PRIVATE_LINK, or TRANSIT_GATEWAY. Defaults to PUBLIC. For VPC, ensure that VPC peering exists and connectivity has been established between Atlas VPC and the VPC where Kafka cluster is hosted for the connection to function properly. TRANSIT_GATEWAY support is coming soon. | [optional] 
+**VpcCIDR** | Pointer to **string** | Reserved. Will be used by TRANSIT_GATEWAY connection type. | [optional] 
 
 ## Methods
 
@@ -100,6 +102,30 @@ SetName sets Name field to given value.
 `func (o *StreamsKafkaNetworkingAccess) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+### GetTgwId
+
+`func (o *StreamsKafkaNetworkingAccess) GetTgwId() string`
+
+GetTgwId returns the TgwId field if non-nil, zero value otherwise.
+
+### GetTgwIdOk
+
+`func (o *StreamsKafkaNetworkingAccess) GetTgwIdOk() (*string, bool)`
+
+GetTgwIdOk returns a tuple with the TgwId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTgwId
+
+`func (o *StreamsKafkaNetworkingAccess) SetTgwId(v string)`
+
+SetTgwId sets TgwId field to given value.
+
+### HasTgwId
+
+`func (o *StreamsKafkaNetworkingAccess) HasTgwId() bool`
+
+HasTgwId returns a boolean if a field has been set.
 ### GetType
 
 `func (o *StreamsKafkaNetworkingAccess) GetType() string`
@@ -124,6 +150,30 @@ SetType sets Type field to given value.
 `func (o *StreamsKafkaNetworkingAccess) HasType() bool`
 
 HasType returns a boolean if a field has been set.
+### GetVpcCIDR
+
+`func (o *StreamsKafkaNetworkingAccess) GetVpcCIDR() string`
+
+GetVpcCIDR returns the VpcCIDR field if non-nil, zero value otherwise.
+
+### GetVpcCIDROk
+
+`func (o *StreamsKafkaNetworkingAccess) GetVpcCIDROk() (*string, bool)`
+
+GetVpcCIDROk returns a tuple with the VpcCIDR field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVpcCIDR
+
+`func (o *StreamsKafkaNetworkingAccess) SetVpcCIDR(v string)`
+
+SetVpcCIDR sets VpcCIDR field to given value.
+
+### HasVpcCIDR
+
+`func (o *StreamsKafkaNetworkingAccess) HasVpcCIDR() bool`
+
+HasVpcCIDR returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

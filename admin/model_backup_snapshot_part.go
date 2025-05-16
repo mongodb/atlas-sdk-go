@@ -11,7 +11,7 @@ type BackupSnapshotPart struct {
 	// Unique 24-hexadecimal digit string that identifies the cluster with the snapshots you want to return.
 	// Read only field.
 	ClusterId *string `json:"clusterId,omitempty"`
-	// Date and time when the snapshot completed.
+	// Date and time when the snapshot completed. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	CompletedTime *time.Time `json:"completedTime,omitempty"`
 	// Human-readable label that identifies the method of compression for the snapshot.
