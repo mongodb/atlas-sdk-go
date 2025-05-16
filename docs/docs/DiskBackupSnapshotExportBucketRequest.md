@@ -6,9 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CloudProvider** | **string** | Human-readable label that identifies the cloud provider that Snapshots are exported to. | 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
-**BucketName** | Pointer to **string** | The name of the Azure Storage Container to export to. This can be omitted and computed from the serviceUrl if the serviceUrl includes a Azure Storage Container name. For example a serviceUrl of \&quot;https://examplestorageaccount.blob.core.windows.net/exportcontainer\&quot; will yield a computed bucketName of \&quot;exportcontainer\&quot;. If the serviceUrl does not include a Container name, this field is required. | [optional] 
+**BucketName** | Pointer to **string** | Human-readable label that identifies the Google Cloud Storage Bucket that the role is authorized to export to. | [optional] 
 **IamRoleId** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the Unified AWS Access role ID that MongoDB Cloud uses to access the AWS S3 bucket. | [optional] 
-**RoleId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the Azure Cloud Provider Access Role that MongoDB Cloud uses to access the Azure Blob Storage Container. | [optional] 
+**RoleId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the GCP Cloud Provider Access Role that MongoDB Cloud uses to access the Google Cloud Storage Bucket. | [optional] 
 **ServiceUrl** | Pointer to **string** | URL of the Azure Storage Account to export to. For example: \&quot;https://examplestorageaccount.blob.core.windows.net/exportcontainer\&quot;. Only standard endpoints (with \&quot;blob.core.windows.net\&quot;) are supported. | [optional] 
 **TenantId** | Pointer to **string** | UUID that identifies the Azure Active Directory Tenant ID. Deprecated: this field is ignored; the tenantId of the Cloud Provider Access role (from roleId) is used. | [optional] 
 

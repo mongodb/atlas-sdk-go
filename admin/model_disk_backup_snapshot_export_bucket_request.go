@@ -9,11 +9,11 @@ type DiskBackupSnapshotExportBucketRequest struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
-	// The name of the Azure Storage Container to export to. This can be omitted and computed from the serviceUrl if the serviceUrl includes a Azure Storage Container name. For example a serviceUrl of \"https://examplestorageaccount.blob.core.windows.net/exportcontainer\" will yield a computed bucketName of \"exportcontainer\". If the serviceUrl does not include a Container name, this field is required.
+	// Human-readable label that identifies the Google Cloud Storage Bucket that the role is authorized to export to.
 	BucketName *string `json:"bucketName,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the Unified AWS Access role ID that MongoDB Cloud uses to access the AWS S3 bucket.
 	IamRoleId *string `json:"iamRoleId,omitempty"`
-	// Unique 24-hexadecimal digit string that identifies the Azure Cloud Provider Access Role that MongoDB Cloud uses to access the Azure Blob Storage Container.
+	// Unique 24-hexadecimal digit string that identifies the GCP Cloud Provider Access Role that MongoDB Cloud uses to access the Google Cloud Storage Bucket.
 	RoleId *string `json:"roleId,omitempty"`
 	// URL of the Azure Storage Account to export to. For example: \"https://examplestorageaccount.blob.core.windows.net/exportcontainer\". Only standard endpoints (with \"blob.core.windows.net\") are supported.
 	ServiceUrl *string `json:"serviceUrl,omitempty"`

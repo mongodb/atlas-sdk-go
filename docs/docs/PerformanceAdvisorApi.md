@@ -35,7 +35,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312002/admin"
+    "go.mongodb.org/atlas-sdk/v20250312003/admin"
 )
 
 func main() {
@@ -113,7 +113,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312002/admin"
+    "go.mongodb.org/atlas-sdk/v20250312003/admin"
 )
 
 func main() {
@@ -191,7 +191,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312002/admin"
+    "go.mongodb.org/atlas-sdk/v20250312003/admin"
 )
 
 func main() {
@@ -271,7 +271,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312002/admin"
+    "go.mongodb.org/atlas-sdk/v20250312003/admin"
 )
 
 func main() {
@@ -354,7 +354,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312002/admin"
+    "go.mongodb.org/atlas-sdk/v20250312003/admin"
 )
 
 func main() {
@@ -445,7 +445,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312002/admin"
+    "go.mongodb.org/atlas-sdk/v20250312003/admin"
 )
 
 func main() {
@@ -528,7 +528,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312002/admin"
+    "go.mongodb.org/atlas-sdk/v20250312003/admin"
 )
 
 func main() {
@@ -596,7 +596,7 @@ Name | Type | Description  | Notes
 
 ## ListSlowQueries
 
-> PerformanceAdvisorSlowQueryList ListSlowQueries(ctx, groupId, processId).Duration(duration).Namespaces(namespaces).NLogs(nLogs).Since(since).Execute()
+> PerformanceAdvisorSlowQueryList ListSlowQueries(ctx, groupId, processId).Duration(duration).Namespaces(namespaces).NLogs(nLogs).Since(since).IncludeMetrics(includeMetrics).IncludeReplicaState(includeReplicaState).IncludeOpType(includeOpType).Execute()
 
 Return Slow Queries
 
@@ -611,7 +611,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312002/admin"
+    "go.mongodb.org/atlas-sdk/v20250312003/admin"
 )
 
 func main() {
@@ -630,8 +630,11 @@ func main() {
     namespaces := []string{"Inner_example"} // []string |  (optional)
     nLogs := int64(789) // int64 |  (optional) (default to 20000)
     since := int64(789) // int64 |  (optional)
+    includeMetrics := true // bool |  (optional) (default to false)
+    includeReplicaState := true // bool |  (optional) (default to false)
+    includeOpType := true // bool |  (optional) (default to false)
 
-    resp, r, err := sdk.PerformanceAdvisorApi.ListSlowQueries(context.Background(), groupId, processId).Duration(duration).Namespaces(namespaces).NLogs(nLogs).Since(since).Execute()
+    resp, r, err := sdk.PerformanceAdvisorApi.ListSlowQueries(context.Background(), groupId, processId).Duration(duration).Namespaces(namespaces).NLogs(nLogs).Since(since).IncludeMetrics(includeMetrics).IncludeReplicaState(includeReplicaState).IncludeOpType(includeOpType).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorApi.ListSlowQueries`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -667,6 +670,9 @@ Name | Type | Description  | Notes
  **namespaces** | **[]string** | Namespaces from which to retrieve slow queries. A namespace consists of one database and one collection resource written as &#x60;.&#x60;: &#x60;&lt;database&gt;.&lt;collection&gt;&#x60;. To include multiple namespaces, pass the parameter multiple times delimited with an ampersand (&#x60;&amp;&#x60;) between each namespace. Omit this parameter to return results for all namespaces. | 
  **nLogs** | **int64** | Maximum number of lines from the log to return. | [default to 20000]
  **since** | **int64** | Date and time from which the query retrieves the slow queries. This parameter expresses its value in the number of milliseconds that have elapsed since the [UNIX epoch](https://en.wikipedia.org/wiki/Unix_time).  - If you don&#39;t specify the **duration** parameter, the endpoint returns data covering from the **since** value and the current time. - If you specify neither the **duration** nor the **since** parameters, the endpoint returns data from the previous 24 hours. | 
+ **includeMetrics** | **bool** | Whether or not to include metrics extracted from the slow query log as separate fields. | [default to false]
+ **includeReplicaState** | **bool** | Whether or not to include the replica state of the host when the slow query log was generated as a separate field. | [default to false]
+ **includeOpType** | **bool** | Whether or not to include the operation type (read/write/command) extracted from the slow query log as a separate field. | [default to false]
 
 ### Return type
 
@@ -702,7 +708,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312002/admin"
+    "go.mongodb.org/atlas-sdk/v20250312003/admin"
 )
 
 func main() {
@@ -789,7 +795,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312002/admin"
+    "go.mongodb.org/atlas-sdk/v20250312003/admin"
 )
 
 func main() {
@@ -888,7 +894,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312002/admin"
+    "go.mongodb.org/atlas-sdk/v20250312003/admin"
 )
 
 func main() {

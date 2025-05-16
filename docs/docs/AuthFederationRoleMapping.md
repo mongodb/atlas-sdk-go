@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ExternalGroupName** | **string** | Unique human-readable label that identifies the identity provider group to which this role mapping applies. | 
 **Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies this role mapping. | [optional] [readonly] 
-**RoleAssignments** | Pointer to [**[]RoleAssignment**](RoleAssignment.md) | Atlas roles and the unique identifiers of the groups and organizations associated with each role. The array must include at least one element with an Organization role and its respective **orgId**. Each element in the array can have a value for **orgId** or **groupId**, but not both. | [optional] 
+**RoleAssignments** | Pointer to [**[]ConnectedOrgConfigRoleAssignment**](ConnectedOrgConfigRoleAssignment.md) | Atlas roles and the unique identifiers of the groups and organizations associated with each role. The array must include at least one element with an Organization role and its respective **orgId**. Each element in the array can have a value for **orgId** or **groupId**, but not both. | [optional] 
 
 ## Methods
 
@@ -72,20 +72,20 @@ SetId sets Id field to given value.
 HasId returns a boolean if a field has been set.
 ### GetRoleAssignments
 
-`func (o *AuthFederationRoleMapping) GetRoleAssignments() []RoleAssignment`
+`func (o *AuthFederationRoleMapping) GetRoleAssignments() []ConnectedOrgConfigRoleAssignment`
 
 GetRoleAssignments returns the RoleAssignments field if non-nil, zero value otherwise.
 
 ### GetRoleAssignmentsOk
 
-`func (o *AuthFederationRoleMapping) GetRoleAssignmentsOk() (*[]RoleAssignment, bool)`
+`func (o *AuthFederationRoleMapping) GetRoleAssignmentsOk() (*[]ConnectedOrgConfigRoleAssignment, bool)`
 
 GetRoleAssignmentsOk returns a tuple with the RoleAssignments field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRoleAssignments
 
-`func (o *AuthFederationRoleMapping) SetRoleAssignments(v []RoleAssignment)`
+`func (o *AuthFederationRoleMapping) SetRoleAssignments(v []ConnectedOrgConfigRoleAssignment)`
 
 SetRoleAssignments sets RoleAssignments field to given value.
 

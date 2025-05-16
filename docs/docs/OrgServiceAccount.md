@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ClientId** | Pointer to **string** | The Client ID of the Service Account. | [optional] 
-**CreatedAt** | Pointer to **time.Time** | The date that the Service Account was created on. | [optional] 
+**CreatedAt** | Pointer to **time.Time** | The date that the Service Account was created on. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] 
 **Description** | Pointer to **string** | Human readable description for the Service Account. | [optional] 
 **Name** | Pointer to **string** | Human-readable name for the Service Account. | [optional] 
 **Roles** | Pointer to **[]string** | A list of Organization roles associated with the Service Account. | [optional] 

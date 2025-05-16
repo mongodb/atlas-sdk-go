@@ -5,11 +5,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | Unique 24-hexadecimal character string that identifies the Export Bucket. | 
-**BucketName** | **string** | The name of the AWS S3 Bucket or Azure Storage Container that Snapshots are exported to. | 
+**BucketName** | **string** | The name of the AWS S3 Bucket, Azure Storage Container, or Google Cloud Storage Bucket that Snapshots are exported to. | 
 **CloudProvider** | **string** | Human-readable label that identifies the cloud provider that Snapshots will be exported to. | 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **IamRoleId** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the Unified AWS Access role ID that MongoDB Cloud uses to access the AWS S3 bucket. | [optional] 
-**RoleId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the Azure Cloud Provider Access Role that MongoDB Cloud uses to access the Azure Blob Storage Container. | [optional] 
+**RoleId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the GCP Cloud Provider Access Role that MongoDB Cloud uses to access the Google Cloud Storage Bucket. | [optional] 
 **ServiceUrl** | Pointer to **string** | URL of the Azure Storage Account to export to. Only standard endpoints (with \&quot;blob.core.windows.net\&quot;) are supported. | [optional] 
 **TenantId** | Pointer to **string** | UUID that identifies the Azure Active Directory Tenant ID used during exports. | [optional] 
 

@@ -1102,35 +1102,44 @@ func (a *PerformanceAdvisorApiService) ListSchemaAdviceExecute(r ListSchemaAdvic
 }
 
 type ListSlowQueriesApiRequest struct {
-	ctx        context.Context
-	ApiService PerformanceAdvisorApi
-	groupId    string
-	processId  string
-	duration   *int64
-	namespaces *[]string
-	nLogs      *int64
-	since      *int64
+	ctx                 context.Context
+	ApiService          PerformanceAdvisorApi
+	groupId             string
+	processId           string
+	duration            *int64
+	namespaces          *[]string
+	nLogs               *int64
+	since               *int64
+	includeMetrics      *bool
+	includeReplicaState *bool
+	includeOpType       *bool
 }
 
 type ListSlowQueriesApiParams struct {
-	GroupId    string
-	ProcessId  string
-	Duration   *int64
-	Namespaces *[]string
-	NLogs      *int64
-	Since      *int64
+	GroupId             string
+	ProcessId           string
+	Duration            *int64
+	Namespaces          *[]string
+	NLogs               *int64
+	Since               *int64
+	IncludeMetrics      *bool
+	IncludeReplicaState *bool
+	IncludeOpType       *bool
 }
 
 func (a *PerformanceAdvisorApiService) ListSlowQueriesWithParams(ctx context.Context, args *ListSlowQueriesApiParams) ListSlowQueriesApiRequest {
 	return ListSlowQueriesApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		groupId:    args.GroupId,
-		processId:  args.ProcessId,
-		duration:   args.Duration,
-		namespaces: args.Namespaces,
-		nLogs:      args.NLogs,
-		since:      args.Since,
+		ApiService:          a,
+		ctx:                 ctx,
+		groupId:             args.GroupId,
+		processId:           args.ProcessId,
+		duration:            args.Duration,
+		namespaces:          args.Namespaces,
+		nLogs:               args.NLogs,
+		since:               args.Since,
+		includeMetrics:      args.IncludeMetrics,
+		includeReplicaState: args.IncludeReplicaState,
+		includeOpType:       args.IncludeOpType,
 	}
 }
 
@@ -1155,6 +1164,24 @@ func (r ListSlowQueriesApiRequest) NLogs(nLogs int64) ListSlowQueriesApiRequest 
 // Date and time from which the query retrieves the slow queries. This parameter expresses its value in the number of milliseconds that have elapsed since the [UNIX epoch](https://en.wikipedia.org/wiki/Unix_time).  - If you don&#39;t specify the **duration** parameter, the endpoint returns data covering from the **since** value and the current time. - If you specify neither the **duration** nor the **since** parameters, the endpoint returns data from the previous 24 hours.
 func (r ListSlowQueriesApiRequest) Since(since int64) ListSlowQueriesApiRequest {
 	r.since = &since
+	return r
+}
+
+// Whether or not to include metrics extracted from the slow query log as separate fields.
+func (r ListSlowQueriesApiRequest) IncludeMetrics(includeMetrics bool) ListSlowQueriesApiRequest {
+	r.includeMetrics = &includeMetrics
+	return r
+}
+
+// Whether or not to include the replica state of the host when the slow query log was generated as a separate field.
+func (r ListSlowQueriesApiRequest) IncludeReplicaState(includeReplicaState bool) ListSlowQueriesApiRequest {
+	r.includeReplicaState = &includeReplicaState
+	return r
+}
+
+// Whether or not to include the operation type (read/write/command) extracted from the slow query log as a separate field.
+func (r ListSlowQueriesApiRequest) IncludeOpType(includeOpType bool) ListSlowQueriesApiRequest {
+	r.includeOpType = &includeOpType
 	return r
 }
 
@@ -1224,6 +1251,27 @@ func (a *PerformanceAdvisorApiService) ListSlowQueriesExecute(r ListSlowQueriesA
 	}
 	if r.since != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "since", r.since, "")
+	}
+	if r.includeMetrics != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeMetrics", r.includeMetrics, "")
+	} else {
+		var defaultValue bool = false
+		r.includeMetrics = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeMetrics", r.includeMetrics, "")
+	}
+	if r.includeReplicaState != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeReplicaState", r.includeReplicaState, "")
+	} else {
+		var defaultValue bool = false
+		r.includeReplicaState = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeReplicaState", r.includeReplicaState, "")
+	}
+	if r.includeOpType != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeOpType", r.includeOpType, "")
+	} else {
+		var defaultValue bool = false
+		r.includeOpType = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeOpType", r.includeOpType, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

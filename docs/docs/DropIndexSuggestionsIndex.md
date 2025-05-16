@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | Name of index. | [optional] 
 **Namespace** | Pointer to **string** | Human-readable label that identifies the namespace on the specified host. The resource expresses this parameter value as &#x60;&lt;database&gt;.&lt;collection&gt;&#x60;. | [optional] 
 **Shards** | Pointer to **[]string** | List that contains strings that specifies the shards where the index is found. | [optional] 
-**Since** | Pointer to **time.Time** | Date of most recent usage of index. | [optional] 
+**Since** | Pointer to **time.Time** | Date of most recent usage of index. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] 
 **SizeBytes** | Pointer to **int64** | Size of index. | [optional] 
 
 ## Methods

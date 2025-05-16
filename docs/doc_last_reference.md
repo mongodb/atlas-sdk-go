@@ -435,6 +435,7 @@ Class        | Method        | HTTP request  | Description   |
 *StreamsApi* | [ModifyStreamProcessor](./docs/StreamsApi.md#modifystreamprocessor) | **Patch** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName} | Modify One Stream Processor |
 *StreamsApi* | [RejectVpcPeeringConnection](./docs/StreamsApi.md#rejectvpcpeeringconnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}:reject | Requests the rejection of an incoming VPC Peering connection. |
 *StreamsApi* | [StartStreamProcessor](./docs/StreamsApi.md#startstreamprocessor) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:start | Start One Stream Processor |
+*StreamsApi* | [StartStreamProcessorWith](./docs/StreamsApi.md#startstreamprocessorwith) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:startWith | Start One Stream Processor With Options |
 *StreamsApi* | [StopStreamProcessor](./docs/StreamsApi.md#stopstreamprocessor) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:stop | Stop One Stream Processor |
 *StreamsApi* | [UpdateStreamConnection](./docs/StreamsApi.md#updatestreamconnection) | **Patch** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName} | Update One Stream Connection |
 *StreamsApi* | [UpdateStreamInstance](./docs/StreamsApi.md#updatestreaminstance) | **Patch** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Update One Stream Instance |
@@ -462,10 +463,10 @@ Class        | Method        | HTTP request  | Description   |
 
 ## Documentation For Models
 
- - [AWSAccountDetails](./docs/AWSAccountDetails.md)
  - [AWSCustomDNSEnabled](./docs/AWSCustomDNSEnabled.md)
  - [AWSKMSConfiguration](./docs/AWSKMSConfiguration.md)
  - [AccessListItem](./docs/AccessListItem.md)
+ - [AccountDetails](./docs/AccountDetails.md)
  - [AcknowledgeAlert](./docs/AcknowledgeAlert.md)
  - [AddOrRemoveGroupRole](./docs/AddOrRemoveGroupRole.md)
  - [AddOrRemoveOrgRole](./docs/AddOrRemoveOrgRole.md)
@@ -576,6 +577,7 @@ Class        | Method        | HTTP request  | Description   |
  - [Collation](./docs/Collation.md)
  - [ComponentLabel](./docs/ComponentLabel.md)
  - [ConnectedOrgConfig](./docs/ConnectedOrgConfig.md)
+ - [ConnectedOrgConfigRoleAssignment](./docs/ConnectedOrgConfigRoleAssignment.md)
  - [ControlPlaneIPAddresses](./docs/ControlPlaneIPAddresses.md)
  - [CostExplorerFilterRequestBody](./docs/CostExplorerFilterRequestBody.md)
  - [CostExplorerFilterResponse](./docs/CostExplorerFilterResponse.md)
@@ -821,6 +823,7 @@ Class        | Method        | HTTP request  | Description   |
  - [PerformanceAdvisorShape](./docs/PerformanceAdvisorShape.md)
  - [PerformanceAdvisorSlowQuery](./docs/PerformanceAdvisorSlowQuery.md)
  - [PerformanceAdvisorSlowQueryList](./docs/PerformanceAdvisorSlowQueryList.md)
+ - [PerformanceAdvisorSlowQueryMetrics](./docs/PerformanceAdvisorSlowQueryMetrics.md)
  - [PinFCV](./docs/PinFCV.md)
  - [PinnedNamespaces](./docs/PinnedNamespaces.md)
  - [PipelineRunStats](./docs/PipelineRunStats.md)
@@ -837,7 +840,6 @@ Class        | Method        | HTTP request  | Description   |
  - [ReplicationSpec20240805](./docs/ReplicationSpec20240805.md)
  - [ResourceTag](./docs/ResourceTag.md)
  - [RestoreJobFileHash](./docs/RestoreJobFileHash.md)
- - [RoleAssignment](./docs/RoleAssignment.md)
  - [SampleDatasetStatus](./docs/SampleDatasetStatus.md)
  - [SchemaAdvisorItemRecommendation](./docs/SchemaAdvisorItemRecommendation.md)
  - [SchemaAdvisorNamespaceTriggers](./docs/SchemaAdvisorNamespaceTriggers.md)
@@ -889,6 +891,7 @@ Class        | Method        | HTTP request  | Description   |
  - [StreamsProcessor](./docs/StreamsProcessor.md)
  - [StreamsProcessorWithStats](./docs/StreamsProcessorWithStats.md)
  - [StreamsSampleConnections](./docs/StreamsSampleConnections.md)
+ - [StreamsStartStreamProcessorWith](./docs/StreamsStartStreamProcessorWith.md)
  - [StreamsTenant](./docs/StreamsTenant.md)
  - [SynonymMappingStatusDetail](./docs/SynonymMappingStatusDetail.md)
  - [SynonymSource](./docs/SynonymSource.md)
