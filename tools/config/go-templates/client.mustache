@@ -587,7 +587,7 @@ type UntypedClient struct {
 	client *APIClient
 }
 
-func (c *UntypedClient) PrepareRequest(
+func (u *UntypedClient) PrepareRequest(
 	ctx context.Context,
 	path string, 
 	method string,
@@ -596,13 +596,13 @@ func (c *UntypedClient) PrepareRequest(
 	queryParams url.Values,
 	formParams url.Values,
 	formFiles []formFile) (localVarRequest *http.Request, err error) {
-		return c.client.prepareRequest(ctx, path, method, postBody, headerParams, queryParams, formParams, formFiles)
+		return u.client.prepareRequest(ctx, path, method, postBody, headerParams, queryParams, formParams, formFiles)
 }
 
-func (c *UntypedClient) CallAPI(request *http.Request) (*http.Response, error) {
-	return c.client.callAPI(request)
+func (u *UntypedClient) CallAPI(request *http.Request) (*http.Response, error) {
+	return u.client.callAPI(request)
 }
 
-func (c *UntypedClient) MakeApiError(res *http.Response, httpMethod, httpPath string) error {
-	return c.client.makeApiError(res, httpMethod, httpPath)
+func (u *UntypedClient) MakeApiError(res *http.Response, httpMethod, httpPath string) error {
+	return u.client.makeApiError(res, httpMethod, httpPath)
 }
