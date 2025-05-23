@@ -36,7 +36,7 @@ type AWSClustersDNSApi interface {
 	GetAwsCustomDnsExecute(r GetAwsCustomDnsApiRequest) (*AWSCustomDNSEnabled, *http.Response, error)
 
 	/*
-		ToggleAwsCustomDns Toggle State of One Custom DNS Configuration for Atlas Clusters on AWS
+		ToggleAwsCustomDns Update State of One Custom DNS Configuration for Atlas Clusters on AWS
 
 		Enables or disables the custom DNS configuration for AWS clusters in the specified project. Enable custom DNS if you use AWS VPC peering and use your own DNS servers. To use this resource, the requesting Service Account or API Key must have the Project Atlas Admin role.
 
@@ -47,7 +47,7 @@ type AWSClustersDNSApi interface {
 	*/
 	ToggleAwsCustomDns(ctx context.Context, groupId string, aWSCustomDNSEnabled *AWSCustomDNSEnabled) ToggleAwsCustomDnsApiRequest
 	/*
-		ToggleAwsCustomDns Toggle State of One Custom DNS Configuration for Atlas Clusters on AWS
+		ToggleAwsCustomDns Update State of One Custom DNS Configuration for Atlas Clusters on AWS
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -200,7 +200,7 @@ func (r ToggleAwsCustomDnsApiRequest) Execute() (*AWSCustomDNSEnabled, *http.Res
 }
 
 /*
-ToggleAwsCustomDns Toggle State of One Custom DNS Configuration for Atlas Clusters on AWS
+ToggleAwsCustomDns Update State of One Custom DNS Configuration for Atlas Clusters on AWS
 
 Enables or disables the custom DNS configuration for AWS clusters in the specified project. Enable custom DNS if you use AWS VPC peering and use your own DNS servers. To use this resource, the requesting Service Account or API Key must have the Project Atlas Admin role.
 

@@ -13,7 +13,7 @@ import (
 type ClusterOutageSimulationApi interface {
 
 	/*
-		EndOutageSimulation End an Outage Simulation
+		EndOutageSimulation End One Outage Simulation
 
 		Ends a cluster outage simulation.
 
@@ -24,7 +24,7 @@ type ClusterOutageSimulationApi interface {
 	*/
 	EndOutageSimulation(ctx context.Context, groupId string, clusterName string) EndOutageSimulationApiRequest
 	/*
-		EndOutageSimulation End an Outage Simulation
+		EndOutageSimulation End One Outage Simulation
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -61,7 +61,7 @@ type ClusterOutageSimulationApi interface {
 	GetOutageSimulationExecute(r GetOutageSimulationApiRequest) (*ClusterOutageSimulation, *http.Response, error)
 
 	/*
-		StartOutageSimulation Start an Outage Simulation
+		StartOutageSimulation Start One Outage Simulation
 
 		Starts a cluster outage simulation.
 
@@ -73,7 +73,7 @@ type ClusterOutageSimulationApi interface {
 	*/
 	StartOutageSimulation(ctx context.Context, groupId string, clusterName string, clusterOutageSimulation *ClusterOutageSimulation) StartOutageSimulationApiRequest
 	/*
-		StartOutageSimulation Start an Outage Simulation
+		StartOutageSimulation Start One Outage Simulation
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -115,7 +115,7 @@ func (r EndOutageSimulationApiRequest) Execute() (*ClusterOutageSimulation, *htt
 }
 
 /*
-EndOutageSimulation End an Outage Simulation
+EndOutageSimulation End One Outage Simulation
 
 Ends a cluster outage simulation.
 
@@ -352,7 +352,7 @@ func (r StartOutageSimulationApiRequest) Execute() (*ClusterOutageSimulation, *h
 }
 
 /*
-StartOutageSimulation Start an Outage Simulation
+StartOutageSimulation Start One Outage Simulation
 
 Starts a cluster outage simulation.
 

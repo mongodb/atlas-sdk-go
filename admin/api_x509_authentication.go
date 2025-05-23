@@ -13,7 +13,7 @@ import (
 type X509AuthenticationApi interface {
 
 	/*
-			CreateDatabaseUserCertificate Create One X.509 Certificate for One MongoDB User
+			CreateDatabaseUserCertificate Create One X.509 Certificate for One Database User
 
 			Generates one X.509 certificate for the specified MongoDB user. Atlas manages the certificate and MongoDB user that belong to one project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -29,7 +29,7 @@ type X509AuthenticationApi interface {
 	*/
 	CreateDatabaseUserCertificate(ctx context.Context, groupId string, username string, userCert *UserCert) CreateDatabaseUserCertificateApiRequest
 	/*
-		CreateDatabaseUserCertificate Create One X.509 Certificate for One MongoDB User
+		CreateDatabaseUserCertificate Create One X.509 Certificate for One Database User
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -67,7 +67,7 @@ type X509AuthenticationApi interface {
 	DisableCustomerManagedX509Execute(r DisableCustomerManagedX509ApiRequest) (*UserSecurity, *http.Response, error)
 
 	/*
-		ListDatabaseUserCertificates Return All X.509 Certificates Assigned to One MongoDB User
+		ListDatabaseUserCertificates Return All X.509 Certificates Assigned to One Database User
 
 		Returns all unexpired X.509 certificates for the specified MongoDB user. This MongoDB user belongs to one project. Atlas manages these certificates and the MongoDB user. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
@@ -78,7 +78,7 @@ type X509AuthenticationApi interface {
 	*/
 	ListDatabaseUserCertificates(ctx context.Context, groupId string, username string) ListDatabaseUserCertificatesApiRequest
 	/*
-		ListDatabaseUserCertificates Return All X.509 Certificates Assigned to One MongoDB User
+		ListDatabaseUserCertificates Return All X.509 Certificates Assigned to One Database User
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -123,7 +123,7 @@ func (r CreateDatabaseUserCertificateApiRequest) Execute() (string, *http.Respon
 }
 
 /*
-CreateDatabaseUserCertificate Create One X.509 Certificate for One MongoDB User
+CreateDatabaseUserCertificate Create One X.509 Certificate for One Database User
 
 Generates one X.509 certificate for the specified MongoDB user. Atlas manages the certificate and MongoDB user that belong to one project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -390,7 +390,7 @@ func (r ListDatabaseUserCertificatesApiRequest) Execute() (*PaginatedUserCert, *
 }
 
 /*
-ListDatabaseUserCertificates Return All X.509 Certificates Assigned to One MongoDB User
+ListDatabaseUserCertificates Return All X.509 Certificates Assigned to One Database User
 
 Returns all unexpired X.509 certificates for the specified MongoDB user. This MongoDB user belongs to one project. Atlas manages these certificates and the MongoDB user. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
