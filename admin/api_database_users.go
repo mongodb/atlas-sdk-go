@@ -87,7 +87,7 @@ type DatabaseUsersApi interface {
 	GetDatabaseUserExecute(r GetDatabaseUserApiRequest) (*CloudDatabaseUser, *http.Response, error)
 
 	/*
-		ListDatabaseUsers Return All Database Users from One Project
+		ListDatabaseUsers Return All Database Users in One Project
 
 		Returns all database users that belong to the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
@@ -97,7 +97,7 @@ type DatabaseUsersApi interface {
 	*/
 	ListDatabaseUsers(ctx context.Context, groupId string) ListDatabaseUsersApiRequest
 	/*
-		ListDatabaseUsers Return All Database Users from One Project
+		ListDatabaseUsers Return All Database Users in One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -538,7 +538,7 @@ func (r ListDatabaseUsersApiRequest) Execute() (*PaginatedApiAtlasDatabaseUser, 
 }
 
 /*
-ListDatabaseUsers Return All Database Users from One Project
+ListDatabaseUsers Return All Database Users in One Project
 
 Returns all database users that belong to the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 

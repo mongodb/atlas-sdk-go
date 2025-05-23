@@ -13,7 +13,7 @@ import (
 type AuditingApi interface {
 
 	/*
-		GetAuditingConfiguration Return the Auditing Configuration for One Project
+		GetAuditingConfiguration Return Auditing Configuration for One Project
 
 		Returns the auditing configuration for the specified project. The auditing configuration defines the events that MongoDB Cloud records in the audit log. To use this resource, the requesting Service Account or API Key must have the Project Owner role. This feature isn't available for `M0`, `M2`, `M5`, or serverless clusters.
 
@@ -23,7 +23,7 @@ type AuditingApi interface {
 	*/
 	GetAuditingConfiguration(ctx context.Context, groupId string) GetAuditingConfigurationApiRequest
 	/*
-		GetAuditingConfiguration Return the Auditing Configuration for One Project
+		GetAuditingConfiguration Return Auditing Configuration for One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -86,7 +86,7 @@ func (r GetAuditingConfigurationApiRequest) Execute() (*AuditLog, *http.Response
 }
 
 /*
-GetAuditingConfiguration Return the Auditing Configuration for One Project
+GetAuditingConfiguration Return Auditing Configuration for One Project
 
 Returns the auditing configuration for the specified project. The auditing configuration defines the events that MongoDB Cloud records in the audit log. To use this resource, the requesting Service Account or API Key must have the Project Owner role. This feature isn't available for `M0`, `M2`, `M5`, or serverless clusters.
 

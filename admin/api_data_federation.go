@@ -153,7 +153,7 @@ type DataFederationApi interface {
 	DeleteFederatedDatabaseExecute(r DeleteFederatedDatabaseApiRequest) (*http.Response, error)
 
 	/*
-		DeleteOneDataFederationInstanceQueryLimit Delete One Query Limit For One Federated Database Instance
+		DeleteOneDataFederationInstanceQueryLimit Delete One Query Limit for One Federated Database Instance
 
 		Deletes one query limit for one federated database instance. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -165,7 +165,7 @@ type DataFederationApi interface {
 	*/
 	DeleteOneDataFederationInstanceQueryLimit(ctx context.Context, groupId string, tenantName string, limitName string) DeleteOneDataFederationInstanceQueryLimitApiRequest
 	/*
-		DeleteOneDataFederationInstanceQueryLimit Delete One Query Limit For One Federated Database Instance
+		DeleteOneDataFederationInstanceQueryLimit Delete One Query Limit for One Federated Database Instance
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -1008,7 +1008,7 @@ func (r DeleteOneDataFederationInstanceQueryLimitApiRequest) Execute() (*http.Re
 }
 
 /*
-DeleteOneDataFederationInstanceQueryLimit Delete One Query Limit For One Federated Database Instance
+DeleteOneDataFederationInstanceQueryLimit Delete One Query Limit for One Federated Database Instance
 
 Deletes one query limit for one federated database instance. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
