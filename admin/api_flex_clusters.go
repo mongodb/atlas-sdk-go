@@ -220,6 +220,9 @@ func (a *FlexClustersApiService) CreateFlexClusterExecute(r CreateFlexClusterApi
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/flexClusters"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -338,7 +341,13 @@ func (a *FlexClustersApiService) DeleteFlexClusterExecute(r DeleteFlexClusterApi
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/flexClusters/{name}"
+	if r.groupId == "" {
+		return nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.name == "" {
+		return nil, reportError("name is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", url.PathEscape(r.name), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -441,7 +450,13 @@ func (a *FlexClustersApiService) GetFlexClusterExecute(r GetFlexClusterApiReques
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/flexClusters/{name}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.name == "" {
+		return localVarReturnValue, nil, reportError("name is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", url.PathEscape(r.name), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -580,6 +595,9 @@ func (a *FlexClustersApiService) ListFlexClustersExecute(r ListFlexClustersApiRe
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/flexClusters"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -721,7 +739,13 @@ func (a *FlexClustersApiService) UpdateFlexClusterExecute(r UpdateFlexClusterApi
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/flexClusters/{name}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.name == "" {
+		return localVarReturnValue, nil, reportError("name is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", url.PathEscape(r.name), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -842,6 +866,9 @@ func (a *FlexClustersApiService) UpgradeFlexClusterExecute(r UpgradeFlexClusterA
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/flexClusters:tenantUpgrade"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)

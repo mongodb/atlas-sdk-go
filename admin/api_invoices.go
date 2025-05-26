@@ -247,6 +247,9 @@ func (a *InvoicesApiService) CreateCostExplorerQueryProcessExecute(r CreateCostE
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/billing/costExplorer/usage"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -370,7 +373,13 @@ func (a *InvoicesApiService) DownloadInvoiceCsvExecute(r DownloadInvoiceCsvApiRe
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/csv"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+	if r.invoiceId == "" {
+		return localVarReturnValue, nil, reportError("invoiceId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"invoiceId"+"}", url.PathEscape(r.invoiceId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -487,7 +496,13 @@ func (a *InvoicesApiService) GetCostExplorerQueryProcessExecute(r GetCostExplore
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/billing/costExplorer/usage/{token}"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+	if r.token == "" {
+		return localVarReturnValue, nil, reportError("token is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"token"+"}", url.PathEscape(r.token), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -605,7 +620,13 @@ func (a *InvoicesApiService) GetInvoiceExecute(r GetInvoiceApiRequest) (*Billing
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+	if r.invoiceId == "" {
+		return localVarReturnValue, nil, reportError("invoiceId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"invoiceId"+"}", url.PathEscape(r.invoiceId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -799,6 +820,9 @@ func (a *InvoicesApiService) ListInvoicesExecute(r ListInvoicesApiRequest) (*Pag
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/invoices"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -965,6 +989,9 @@ func (a *InvoicesApiService) ListPendingInvoicesExecute(r ListPendingInvoicesApi
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/invoices/pending"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1103,7 +1130,13 @@ func (a *InvoicesApiService) QueryLineItemsFromSingleInvoiceExecute(r QueryLineI
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/lineItems:search"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+	if r.invoiceId == "" {
+		return localVarReturnValue, nil, reportError("invoiceId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"invoiceId"+"}", url.PathEscape(r.invoiceId), -1)
 
 	localVarHeaderParams := make(map[string]string)

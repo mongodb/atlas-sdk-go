@@ -155,7 +155,13 @@ func (a *FlexSnapshotsApiService) DownloadFlexBackupExecute(r DownloadFlexBackup
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/download"
+	if r.name == "" {
+		return localVarReturnValue, nil, reportError("name is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", url.PathEscape(r.name), -1)
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -282,8 +288,17 @@ func (a *FlexSnapshotsApiService) GetFlexBackupExecute(r GetFlexBackupApiRequest
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/snapshots/{snapshotId}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.name == "" {
+		return localVarReturnValue, nil, reportError("name is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", url.PathEscape(r.name), -1)
+	if r.snapshotId == "" {
+		return localVarReturnValue, nil, reportError("snapshotId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"snapshotId"+"}", url.PathEscape(r.snapshotId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -427,7 +442,13 @@ func (a *FlexSnapshotsApiService) ListFlexBackupsExecute(r ListFlexBackupsApiReq
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/snapshots"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.name == "" {
+		return localVarReturnValue, nil, reportError("name is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", url.PathEscape(r.name), -1)
 
 	localVarHeaderParams := make(map[string]string)

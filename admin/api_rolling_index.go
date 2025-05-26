@@ -102,7 +102,13 @@ func (a *RollingIndexApiService) CreateRollingIndexExecute(r CreateRollingIndexA
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/index"
+	if r.groupId == "" {
+		return nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.clusterName == "" {
+		return nil, reportError("clusterName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
 
 	localVarHeaderParams := make(map[string]string)

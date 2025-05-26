@@ -378,6 +378,9 @@ func (a *TeamsApiService) AddAllTeamsToProjectExecute(r AddAllTeamsToProjectApiR
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/teams"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -509,7 +512,13 @@ func (a *TeamsApiService) AddTeamUserExecute(r AddTeamUserApiRequest) (*Paginate
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/teams/{teamId}/users"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+	if r.teamId == "" {
+		return localVarReturnValue, nil, reportError("teamId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"teamId"+"}", url.PathEscape(r.teamId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -630,6 +639,9 @@ func (a *TeamsApiService) CreateTeamExecute(r CreateTeamApiRequest) (*Team, *htt
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/teams"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -748,7 +760,13 @@ func (a *TeamsApiService) DeleteTeamExecute(r DeleteTeamApiRequest) (*http.Respo
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/teams/{teamId}"
+	if r.orgId == "" {
+		return nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+	if r.teamId == "" {
+		return nil, reportError("teamId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"teamId"+"}", url.PathEscape(r.teamId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -851,7 +869,13 @@ func (a *TeamsApiService) GetTeamByIdExecute(r GetTeamByIdApiRequest) (*TeamResp
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/teams/{teamId}"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+	if r.teamId == "" {
+		return localVarReturnValue, nil, reportError("teamId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"teamId"+"}", url.PathEscape(r.teamId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -968,7 +992,13 @@ func (a *TeamsApiService) GetTeamByNameExecute(r GetTeamByNameApiRequest) (*Team
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/teams/byName/{teamName}"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+	if r.teamName == "" {
+		return localVarReturnValue, nil, reportError("teamName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"teamName"+"}", url.PathEscape(r.teamName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1107,6 +1137,9 @@ func (a *TeamsApiService) ListOrganizationTeamsExecute(r ListOrganizationTeamsAp
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/teams"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1266,6 +1299,9 @@ func (a *TeamsApiService) ListProjectTeamsExecute(r ListProjectTeamsApiRequest) 
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/teams"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1400,7 +1436,13 @@ func (a *TeamsApiService) RemoveProjectTeamExecute(r RemoveProjectTeamApiRequest
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/teams/{teamId}"
+	if r.groupId == "" {
+		return nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.teamId == "" {
+		return nil, reportError("teamId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"teamId"+"}", url.PathEscape(r.teamId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1510,8 +1552,17 @@ func (a *TeamsApiService) RemoveTeamUserExecute(r RemoveTeamUserApiRequest) (*ht
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/teams/{teamId}/users/{userId}"
+	if r.orgId == "" {
+		return nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+	if r.teamId == "" {
+		return nil, reportError("teamId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"teamId"+"}", url.PathEscape(r.teamId), -1)
+	if r.userId == "" {
+		return nil, reportError("userId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"userId"+"}", url.PathEscape(r.userId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1618,7 +1669,13 @@ func (a *TeamsApiService) RenameTeamExecute(r RenameTeamApiRequest) (*TeamRespon
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/teams/{teamId}"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+	if r.teamId == "" {
+		return localVarReturnValue, nil, reportError("teamId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"teamId"+"}", url.PathEscape(r.teamId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1744,7 +1801,13 @@ func (a *TeamsApiService) UpdateTeamRolesExecute(r UpdateTeamRolesApiRequest) (*
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/teams/{teamId}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.teamId == "" {
+		return localVarReturnValue, nil, reportError("teamId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"teamId"+"}", url.PathEscape(r.teamId), -1)
 
 	localVarHeaderParams := make(map[string]string)

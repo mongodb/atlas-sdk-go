@@ -208,6 +208,9 @@ func (a *ServerlessInstancesApiService) CreateServerlessInstanceExecute(r Create
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/serverless"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -331,7 +334,13 @@ func (a *ServerlessInstancesApiService) DeleteServerlessInstanceExecute(r Delete
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/serverless/{name}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.name == "" {
+		return localVarReturnValue, nil, reportError("name is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", url.PathEscape(r.name), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -450,7 +459,13 @@ func (a *ServerlessInstancesApiService) GetServerlessInstanceExecute(r GetServer
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/serverless/{name}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.name == "" {
+		return localVarReturnValue, nil, reportError("name is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", url.PathEscape(r.name), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -591,6 +606,9 @@ func (a *ServerlessInstancesApiService) ListServerlessInstancesExecute(r ListSer
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/serverless"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -734,7 +752,13 @@ func (a *ServerlessInstancesApiService) UpdateServerlessInstanceExecute(r Update
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/serverless/{name}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.name == "" {
+		return localVarReturnValue, nil, reportError("name is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", url.PathEscape(r.name), -1)
 
 	localVarHeaderParams := make(map[string]string)

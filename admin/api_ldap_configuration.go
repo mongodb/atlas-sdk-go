@@ -192,6 +192,9 @@ func (a *LDAPConfigurationApiService) DeleteLdapConfigurationExecute(r DeleteLda
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/userSecurity/ldap/userToDNMapping"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -303,6 +306,9 @@ func (a *LDAPConfigurationApiService) GetLdapConfigurationExecute(r GetLdapConfi
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/userSecurity"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -419,7 +425,13 @@ func (a *LDAPConfigurationApiService) GetLdapConfigurationStatusExecute(r GetLda
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/userSecurity/ldap/verify/{requestId}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.requestId == "" {
+		return localVarReturnValue, nil, reportError("requestId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"requestId"+"}", url.PathEscape(r.requestId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -537,6 +549,9 @@ func (a *LDAPConfigurationApiService) SaveLdapConfigurationExecute(r SaveLdapCon
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/userSecurity"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -657,6 +672,9 @@ func (a *LDAPConfigurationApiService) VerifyLdapConfigurationExecute(r VerifyLda
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/userSecurity/ldap/verify"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)

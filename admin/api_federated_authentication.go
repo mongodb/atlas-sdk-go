@@ -530,6 +530,9 @@ func (a *FederatedAuthenticationApiService) CreateIdentityProviderExecute(r Crea
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders"
+	if r.federationSettingsId == "" {
+		return localVarReturnValue, nil, reportError("federationSettingsId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(r.federationSettingsId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -655,7 +658,13 @@ func (a *FederatedAuthenticationApiService) CreateRoleMappingExecute(r CreateRol
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings"
+	if r.federationSettingsId == "" {
+		return localVarReturnValue, nil, reportError("federationSettingsId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(r.federationSettingsId), -1)
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -769,6 +778,9 @@ func (a *FederatedAuthenticationApiService) DeleteFederationAppExecute(r DeleteF
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/federationSettings/{federationSettingsId}"
+	if r.federationSettingsId == "" {
+		return nil, reportError("federationSettingsId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(r.federationSettingsId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -870,7 +882,13 @@ func (a *FederatedAuthenticationApiService) DeleteIdentityProviderExecute(r Dele
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}"
+	if r.federationSettingsId == "" {
+		return nil, reportError("federationSettingsId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(r.federationSettingsId), -1)
+	if r.identityProviderId == "" {
+		return nil, reportError("identityProviderId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"identityProviderId"+"}", url.PathEscape(r.identityProviderId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -975,8 +993,17 @@ func (a *FederatedAuthenticationApiService) DeleteRoleMappingExecute(r DeleteRol
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings/{id}"
+	if r.federationSettingsId == "" {
+		return nil, reportError("federationSettingsId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(r.federationSettingsId), -1)
+	if r.id == "" {
+		return nil, reportError("id is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(r.id), -1)
+	if r.orgId == "" {
+		return nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1079,7 +1106,13 @@ func (a *FederatedAuthenticationApiService) GetConnectedOrgConfigExecute(r GetCo
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}"
+	if r.federationSettingsId == "" {
+		return localVarReturnValue, nil, reportError("federationSettingsId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(r.federationSettingsId), -1)
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1191,6 +1224,9 @@ func (a *FederatedAuthenticationApiService) GetFederationSettingsExecute(r GetFe
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/federationSettings"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1307,7 +1343,13 @@ func (a *FederatedAuthenticationApiService) GetIdentityProviderExecute(r GetIden
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}"
+	if r.federationSettingsId == "" {
+		return localVarReturnValue, nil, reportError("federationSettingsId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(r.federationSettingsId), -1)
+	if r.identityProviderId == "" {
+		return localVarReturnValue, nil, reportError("identityProviderId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"identityProviderId"+"}", url.PathEscape(r.identityProviderId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1424,7 +1466,13 @@ func (a *FederatedAuthenticationApiService) GetIdentityProviderMetadataExecute(r
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}/metadata.xml"
+	if r.federationSettingsId == "" {
+		return localVarReturnValue, nil, reportError("federationSettingsId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(r.federationSettingsId), -1)
+	if r.identityProviderId == "" {
+		return localVarReturnValue, nil, reportError("identityProviderId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"identityProviderId"+"}", url.PathEscape(r.identityProviderId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1546,8 +1594,17 @@ func (a *FederatedAuthenticationApiService) GetRoleMappingExecute(r GetRoleMappi
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings/{id}"
+	if r.federationSettingsId == "" {
+		return localVarReturnValue, nil, reportError("federationSettingsId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(r.federationSettingsId), -1)
+	if r.id == "" {
+		return localVarReturnValue, nil, reportError("id is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(r.id), -1)
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1677,6 +1734,9 @@ func (a *FederatedAuthenticationApiService) ListConnectedOrgConfigsExecute(r Lis
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs"
+	if r.federationSettingsId == "" {
+		return localVarReturnValue, nil, reportError("federationSettingsId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(r.federationSettingsId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1838,6 +1898,9 @@ func (a *FederatedAuthenticationApiService) ListIdentityProvidersExecute(r ListI
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders"
+	if r.federationSettingsId == "" {
+		return localVarReturnValue, nil, reportError("federationSettingsId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(r.federationSettingsId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1982,7 +2045,13 @@ func (a *FederatedAuthenticationApiService) ListRoleMappingsExecute(r ListRoleMa
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings"
+	if r.federationSettingsId == "" {
+		return localVarReturnValue, nil, reportError("federationSettingsId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(r.federationSettingsId), -1)
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2096,7 +2165,13 @@ func (a *FederatedAuthenticationApiService) RemoveConnectedOrgConfigExecute(r Re
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}"
+	if r.federationSettingsId == "" {
+		return nil, reportError("federationSettingsId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(r.federationSettingsId), -1)
+	if r.orgId == "" {
+		return nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2198,7 +2273,13 @@ func (a *FederatedAuthenticationApiService) RevokeJwksFromIdentityProviderExecut
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}/jwks"
+	if r.federationSettingsId == "" {
+		return nil, reportError("federationSettingsId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(r.federationSettingsId), -1)
+	if r.identityProviderId == "" {
+		return nil, reportError("identityProviderId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"identityProviderId"+"}", url.PathEscape(r.identityProviderId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2313,7 +2394,13 @@ func (a *FederatedAuthenticationApiService) UpdateConnectedOrgConfigExecute(r Up
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}"
+	if r.federationSettingsId == "" {
+		return localVarReturnValue, nil, reportError("federationSettingsId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(r.federationSettingsId), -1)
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2441,7 +2528,13 @@ func (a *FederatedAuthenticationApiService) UpdateIdentityProviderExecute(r Upda
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}"
+	if r.federationSettingsId == "" {
+		return localVarReturnValue, nil, reportError("federationSettingsId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(r.federationSettingsId), -1)
+	if r.identityProviderId == "" {
+		return localVarReturnValue, nil, reportError("identityProviderId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"identityProviderId"+"}", url.PathEscape(r.identityProviderId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2572,8 +2665,17 @@ func (a *FederatedAuthenticationApiService) UpdateRoleMappingExecute(r UpdateRol
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings/{id}"
+	if r.federationSettingsId == "" {
+		return localVarReturnValue, nil, reportError("federationSettingsId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(r.federationSettingsId), -1)
+	if r.id == "" {
+		return localVarReturnValue, nil, reportError("id is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(r.id), -1)
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)

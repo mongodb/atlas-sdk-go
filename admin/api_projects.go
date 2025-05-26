@@ -658,6 +658,9 @@ func (a *ProjectsApiService) AddUserToProjectExecute(r AddUserToProjectApiReques
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/access"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -908,6 +911,9 @@ func (a *ProjectsApiService) CreateProjectInvitationExecute(r CreateProjectInvit
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/invites"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1021,6 +1027,9 @@ func (a *ProjectsApiService) DeleteProjectExecute(r DeleteProjectApiRequest) (*h
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}"
+	if r.groupId == "" {
+		return nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1123,7 +1132,13 @@ func (a *ProjectsApiService) DeleteProjectInvitationExecute(r DeleteProjectInvit
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/invites/{invitationId}"
+	if r.groupId == "" {
+		return nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.invitationId == "" {
+		return nil, reportError("invitationId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"invitationId"+"}", url.PathEscape(r.invitationId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1223,7 +1238,13 @@ func (a *ProjectsApiService) DeleteProjectLimitExecute(r DeleteProjectLimitApiRe
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/limits/{limitName}"
+	if r.limitName == "" {
+		return nil, reportError("limitName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"limitName"+"}", url.PathEscape(r.limitName), -1)
+	if r.groupId == "" {
+		return nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1321,6 +1342,9 @@ func (a *ProjectsApiService) GetProjectExecute(r GetProjectApiRequest) (*Group, 
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1432,6 +1456,9 @@ func (a *ProjectsApiService) GetProjectByNameExecute(r GetProjectByNameApiReques
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/byName/{groupName}"
+	if r.groupName == "" {
+		return localVarReturnValue, nil, reportError("groupName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupName"+"}", url.PathEscape(r.groupName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1552,7 +1579,13 @@ func (a *ProjectsApiService) GetProjectInvitationExecute(r GetProjectInvitationA
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/invites/{invitationId}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.invitationId == "" {
+		return localVarReturnValue, nil, reportError("invitationId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"invitationId"+"}", url.PathEscape(r.invitationId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1669,7 +1702,13 @@ func (a *ProjectsApiService) GetProjectLimitExecute(r GetProjectLimitApiRequest)
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/limits/{limitName}"
+	if r.limitName == "" {
+		return localVarReturnValue, nil, reportError("limitName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"limitName"+"}", url.PathEscape(r.limitName), -1)
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1826,6 +1865,9 @@ func (a *ProjectsApiService) GetProjectLtsVersionsExecute(r GetProjectLtsVersion
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/mongoDBVersions"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1960,6 +2002,9 @@ func (a *ProjectsApiService) GetProjectSettingsExecute(r GetProjectSettingsApiRe
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/settings"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2084,6 +2129,9 @@ func (a *ProjectsApiService) ListProjectInvitationsExecute(r ListProjectInvitati
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/invites"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2198,6 +2246,9 @@ func (a *ProjectsApiService) ListProjectLimitsExecute(r ListProjectLimitsApiRequ
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/limits"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2466,6 +2517,9 @@ func (a *ProjectsApiService) MigrateProjectToAnotherOrgExecute(r MigrateProjectT
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}:migrate"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2582,6 +2636,9 @@ func (a *ProjectsApiService) ReturnAllIpAddressesExecute(r ReturnAllIpAddressesA
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/ipAddresses"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2704,7 +2761,13 @@ func (a *ProjectsApiService) SetProjectLimitExecute(r SetProjectLimitApiRequest)
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/limits/{limitName}"
+	if r.limitName == "" {
+		return localVarReturnValue, nil, reportError("limitName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"limitName"+"}", url.PathEscape(r.limitName), -1)
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2825,6 +2888,9 @@ func (a *ProjectsApiService) UpdateProjectExecute(r UpdateProjectApiRequest) (*G
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2949,6 +3015,9 @@ func (a *ProjectsApiService) UpdateProjectInvitationExecute(r UpdateProjectInvit
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/invites"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -3078,7 +3147,13 @@ func (a *ProjectsApiService) UpdateProjectInvitationByIdExecute(r UpdateProjectI
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/invites/{invitationId}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.invitationId == "" {
+		return localVarReturnValue, nil, reportError("invitationId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"invitationId"+"}", url.PathEscape(r.invitationId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -3208,7 +3283,13 @@ func (a *ProjectsApiService) UpdateProjectRolesExecute(r UpdateProjectRolesApiRe
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/users/{userId}/roles"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.userId == "" {
+		return localVarReturnValue, nil, reportError("userId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"userId"+"}", url.PathEscape(r.userId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -3329,6 +3410,9 @@ func (a *ProjectsApiService) UpdateProjectSettingsExecute(r UpdateProjectSetting
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/settings"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)

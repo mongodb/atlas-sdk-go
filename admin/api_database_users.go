@@ -199,6 +199,9 @@ func (a *DatabaseUsersApiService) CreateDatabaseUserExecute(r CreateDatabaseUser
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/databaseUsers"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -322,8 +325,17 @@ func (a *DatabaseUsersApiService) DeleteDatabaseUserExecute(r DeleteDatabaseUser
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/databaseUsers/{databaseName}/{username}"
+	if r.groupId == "" {
+		return nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.databaseName == "" {
+		return nil, reportError("databaseName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"databaseName"+"}", url.PathEscape(r.databaseName), -1)
+	if r.username == "" {
+		return nil, reportError("username is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"username"+"}", url.PathEscape(r.username), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -431,8 +443,17 @@ func (a *DatabaseUsersApiService) GetDatabaseUserExecute(r GetDatabaseUserApiReq
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/databaseUsers/{databaseName}/{username}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.databaseName == "" {
+		return localVarReturnValue, nil, reportError("databaseName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"databaseName"+"}", url.PathEscape(r.databaseName), -1)
+	if r.username == "" {
+		return localVarReturnValue, nil, reportError("username is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"username"+"}", url.PathEscape(r.username), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -571,6 +592,9 @@ func (a *DatabaseUsersApiService) ListDatabaseUsersExecute(r ListDatabaseUsersAp
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/databaseUsers"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -717,8 +741,17 @@ func (a *DatabaseUsersApiService) UpdateDatabaseUserExecute(r UpdateDatabaseUser
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/databaseUsers/{databaseName}/{username}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.databaseName == "" {
+		return localVarReturnValue, nil, reportError("databaseName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"databaseName"+"}", url.PathEscape(r.databaseName), -1)
+	if r.username == "" {
+		return localVarReturnValue, nil, reportError("username is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"username"+"}", url.PathEscape(r.username), -1)
 
 	localVarHeaderParams := make(map[string]string)

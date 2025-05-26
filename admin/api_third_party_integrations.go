@@ -229,7 +229,13 @@ func (a *ThirdPartyIntegrationsApiService) CreateThirdPartyIntegrationExecute(r 
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/integrations/{integrationType}"
+	if r.integrationType == "" {
+		return localVarReturnValue, nil, reportError("integrationType is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"integrationType"+"}", url.PathEscape(r.integrationType), -1)
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -369,7 +375,13 @@ func (a *ThirdPartyIntegrationsApiService) DeleteThirdPartyIntegrationExecute(r 
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/integrations/{integrationType}"
+	if r.integrationType == "" {
+		return nil, reportError("integrationType is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"integrationType"+"}", url.PathEscape(r.integrationType), -1)
+	if r.groupId == "" {
+		return nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -472,7 +484,13 @@ func (a *ThirdPartyIntegrationsApiService) GetThirdPartyIntegrationExecute(r Get
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/integrations/{integrationType}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.integrationType == "" {
+		return localVarReturnValue, nil, reportError("integrationType is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"integrationType"+"}", url.PathEscape(r.integrationType), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -611,6 +629,9 @@ func (a *ThirdPartyIntegrationsApiService) ListThirdPartyIntegrationsExecute(r L
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/integrations"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -779,7 +800,13 @@ func (a *ThirdPartyIntegrationsApiService) UpdateThirdPartyIntegrationExecute(r 
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/integrations/{integrationType}"
+	if r.integrationType == "" {
+		return localVarReturnValue, nil, reportError("integrationType is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"integrationType"+"}", url.PathEscape(r.integrationType), -1)
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)

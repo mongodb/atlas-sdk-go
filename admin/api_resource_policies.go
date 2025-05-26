@@ -243,6 +243,9 @@ func (a *ResourcePoliciesApiService) CreateAtlasResourcePolicyExecute(r CreateAt
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/resourcePolicies"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -361,7 +364,13 @@ func (a *ResourcePoliciesApiService) DeleteAtlasResourcePolicyExecute(r DeleteAt
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId}"
+	if r.orgId == "" {
+		return nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+	if r.resourcePolicyId == "" {
+		return nil, reportError("resourcePolicyId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"resourcePolicyId"+"}", url.PathEscape(r.resourcePolicyId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -459,6 +468,9 @@ func (a *ResourcePoliciesApiService) GetAtlasResourcePoliciesExecute(r GetAtlasR
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/resourcePolicies"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -575,7 +587,13 @@ func (a *ResourcePoliciesApiService) GetAtlasResourcePolicyExecute(r GetAtlasRes
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId}"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+	if r.resourcePolicyId == "" {
+		return localVarReturnValue, nil, reportError("resourcePolicyId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"resourcePolicyId"+"}", url.PathEscape(r.resourcePolicyId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -687,6 +705,9 @@ func (a *ResourcePoliciesApiService) GetResourcesNonCompliantExecute(r GetResour
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/nonCompliantResources"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -807,7 +828,13 @@ func (a *ResourcePoliciesApiService) UpdateAtlasResourcePolicyExecute(r UpdateAt
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId}"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+	if r.resourcePolicyId == "" {
+		return localVarReturnValue, nil, reportError("resourcePolicyId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"resourcePolicyId"+"}", url.PathEscape(r.resourcePolicyId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -928,6 +955,9 @@ func (a *ResourcePoliciesApiService) ValidateAtlasResourcePolicyExecute(r Valida
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/resourcePolicies:validate"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)

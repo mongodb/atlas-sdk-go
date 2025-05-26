@@ -185,6 +185,9 @@ func (a *MaintenanceWindowsApiService) DeferMaintenanceWindowExecute(r DeferMain
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/maintenanceWindow/defer"
+	if r.groupId == "" {
+		return nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -282,6 +285,9 @@ func (a *MaintenanceWindowsApiService) GetMaintenanceWindowExecute(r GetMaintena
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/maintenanceWindow"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -390,6 +396,9 @@ func (a *MaintenanceWindowsApiService) ResetMaintenanceWindowExecute(r ResetMain
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/maintenanceWindow"
+	if r.groupId == "" {
+		return nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -484,6 +493,9 @@ func (a *MaintenanceWindowsApiService) ToggleMaintenanceAutoDeferExecute(r Toggl
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/maintenanceWindow/autoDefer"
+	if r.groupId == "" {
+		return nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -582,6 +594,9 @@ func (a *MaintenanceWindowsApiService) UpdateMaintenanceWindowExecute(r UpdateMa
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/maintenanceWindow"
+	if r.groupId == "" {
+		return nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)

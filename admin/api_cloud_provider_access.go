@@ -202,7 +202,13 @@ func (a *CloudProviderAccessApiService) AuthorizeCloudProviderAccessRoleExecute(
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/cloudProviderAccess/{roleId}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.roleId == "" {
+		return localVarReturnValue, nil, reportError("roleId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"roleId"+"}", url.PathEscape(r.roleId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -323,6 +329,9 @@ func (a *CloudProviderAccessApiService) CreateCloudProviderAccessRoleExecute(r C
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/cloudProviderAccess"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -446,8 +455,17 @@ func (a *CloudProviderAccessApiService) DeauthorizeCloudProviderAccessRoleExecut
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/cloudProviderAccess/{cloudProvider}/{roleId}"
+	if r.groupId == "" {
+		return nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.cloudProvider == "" {
+		return nil, reportError("cloudProvider is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"cloudProvider"+"}", url.PathEscape(r.cloudProvider), -1)
+	if r.roleId == "" {
+		return nil, reportError("roleId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"roleId"+"}", url.PathEscape(r.roleId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -550,7 +568,13 @@ func (a *CloudProviderAccessApiService) GetCloudProviderAccessRoleExecute(r GetC
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/cloudProviderAccess/{roleId}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.roleId == "" {
+		return localVarReturnValue, nil, reportError("roleId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"roleId"+"}", url.PathEscape(r.roleId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -662,6 +686,9 @@ func (a *CloudProviderAccessApiService) ListCloudProviderAccessRolesExecute(r Li
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/cloudProviderAccess"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)

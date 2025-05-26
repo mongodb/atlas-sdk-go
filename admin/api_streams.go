@@ -809,7 +809,13 @@ func (a *StreamsApiService) AcceptVpcPeeringConnectionExecute(r AcceptVpcPeering
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}:accept"
+	if r.groupId == "" {
+		return nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.id == "" {
+		return nil, reportError("id is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(r.id), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -916,6 +922,9 @@ func (a *StreamsApiService) CreatePrivateLinkConnectionExecute(r CreatePrivateLi
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/privateLinkConnections"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1041,7 +1050,13 @@ func (a *StreamsApiService) CreateStreamConnectionExecute(r CreateStreamConnecti
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.tenantName == "" {
+		return localVarReturnValue, nil, reportError("tenantName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1162,6 +1177,9 @@ func (a *StreamsApiService) CreateStreamInstanceExecute(r CreateStreamInstanceAp
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1282,6 +1300,9 @@ func (a *StreamsApiService) CreateStreamInstanceWithSampleConnectionsExecute(r C
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams:withSampleConnections"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1407,7 +1428,13 @@ func (a *StreamsApiService) CreateStreamProcessorExecute(r CreateStreamProcessor
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.tenantName == "" {
+		return localVarReturnValue, nil, reportError("tenantName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1526,7 +1553,13 @@ func (a *StreamsApiService) DeletePrivateLinkConnectionExecute(r DeletePrivateLi
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/privateLinkConnections/{connectionId}"
+	if r.groupId == "" {
+		return nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.connectionId == "" {
+		return nil, reportError("connectionId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"connectionId"+"}", url.PathEscape(r.connectionId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1631,8 +1664,17 @@ func (a *StreamsApiService) DeleteStreamConnectionExecute(r DeleteStreamConnecti
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}"
+	if r.groupId == "" {
+		return nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.tenantName == "" {
+		return nil, reportError("tenantName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
+	if r.connectionName == "" {
+		return nil, reportError("connectionName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"connectionName"+"}", url.PathEscape(r.connectionName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1732,7 +1774,13 @@ func (a *StreamsApiService) DeleteStreamInstanceExecute(r DeleteStreamInstanceAp
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/{tenantName}"
+	if r.groupId == "" {
+		return nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.tenantName == "" {
+		return nil, reportError("tenantName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1837,8 +1885,17 @@ func (a *StreamsApiService) DeleteStreamProcessorExecute(r DeleteStreamProcessor
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}"
+	if r.groupId == "" {
+		return nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.tenantName == "" {
+		return nil, reportError("tenantName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
+	if r.processorName == "" {
+		return nil, reportError("processorName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"processorName"+"}", url.PathEscape(r.processorName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1938,7 +1995,13 @@ func (a *StreamsApiService) DeleteVpcPeeringConnectionExecute(r DeleteVpcPeering
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}"
+	if r.groupId == "" {
+		return nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.id == "" {
+		return nil, reportError("id is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(r.id), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2059,7 +2122,13 @@ func (a *StreamsApiService) DownloadStreamTenantAuditLogsExecute(r DownloadStrea
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/auditLogs"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.tenantName == "" {
+		return localVarReturnValue, nil, reportError("tenantName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2195,6 +2264,9 @@ func (a *StreamsApiService) GetAccountDetailsExecute(r GetAccountDetailsApiReque
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/accountDetails"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2329,6 +2401,9 @@ func (a *StreamsApiService) GetActiveVpcPeeringConnectionsExecute(r GetActiveVpc
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/activeVpcPeeringConnections"
+	if r.groupId == "" {
+		return nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2445,7 +2520,13 @@ func (a *StreamsApiService) GetPrivateLinkConnectionExecute(r GetPrivateLinkConn
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/privateLinkConnections/{connectionId}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.connectionId == "" {
+		return localVarReturnValue, nil, reportError("connectionId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"connectionId"+"}", url.PathEscape(r.connectionId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2567,8 +2648,17 @@ func (a *StreamsApiService) GetStreamConnectionExecute(r GetStreamConnectionApiR
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.tenantName == "" {
+		return localVarReturnValue, nil, reportError("tenantName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
+	if r.connectionName == "" {
+		return localVarReturnValue, nil, reportError("connectionName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"connectionName"+"}", url.PathEscape(r.connectionName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2694,7 +2784,13 @@ func (a *StreamsApiService) GetStreamInstanceExecute(r GetStreamInstanceApiReque
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/{tenantName}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.tenantName == "" {
+		return localVarReturnValue, nil, reportError("tenantName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2819,8 +2915,17 @@ func (a *StreamsApiService) GetStreamProcessorExecute(r GetStreamProcessorApiReq
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.tenantName == "" {
+		return localVarReturnValue, nil, reportError("tenantName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
+	if r.processorName == "" {
+		return localVarReturnValue, nil, reportError("processorName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"processorName"+"}", url.PathEscape(r.processorName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2956,6 +3061,9 @@ func (a *StreamsApiService) GetVpcPeeringConnectionsExecute(r GetVpcPeeringConne
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections"
+	if r.groupId == "" {
+		return nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -3089,6 +3197,9 @@ func (a *StreamsApiService) ListPrivateLinkConnectionsExecute(r ListPrivateLinkC
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/privateLinkConnections"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -3237,7 +3348,13 @@ func (a *StreamsApiService) ListStreamConnectionsExecute(r ListStreamConnections
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.tenantName == "" {
+		return localVarReturnValue, nil, reportError("tenantName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -3381,6 +3498,9 @@ func (a *StreamsApiService) ListStreamInstancesExecute(r ListStreamInstancesApiR
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -3538,7 +3658,13 @@ func (a *StreamsApiService) ListStreamProcessorsExecute(r ListStreamProcessorsAp
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/processors"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.tenantName == "" {
+		return localVarReturnValue, nil, reportError("tenantName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -3685,8 +3811,17 @@ func (a *StreamsApiService) ModifyStreamProcessorExecute(r ModifyStreamProcessor
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.tenantName == "" {
+		return localVarReturnValue, nil, reportError("tenantName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
+	if r.processorName == "" {
+		return localVarReturnValue, nil, reportError("processorName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"processorName"+"}", url.PathEscape(r.processorName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -3805,7 +3940,13 @@ func (a *StreamsApiService) RejectVpcPeeringConnectionExecute(r RejectVpcPeering
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}:reject"
+	if r.groupId == "" {
+		return nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.id == "" {
+		return nil, reportError("id is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(r.id), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -3910,8 +4051,17 @@ func (a *StreamsApiService) StartStreamProcessorExecute(r StartStreamProcessorAp
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:start"
+	if r.groupId == "" {
+		return nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.tenantName == "" {
+		return nil, reportError("tenantName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
+	if r.processorName == "" {
+		return nil, reportError("processorName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"processorName"+"}", url.PathEscape(r.processorName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -4020,8 +4170,17 @@ func (a *StreamsApiService) StartStreamProcessorWithExecute(r StartStreamProcess
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:startWith"
+	if r.groupId == "" {
+		return nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.tenantName == "" {
+		return nil, reportError("tenantName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
+	if r.processorName == "" {
+		return nil, reportError("processorName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"processorName"+"}", url.PathEscape(r.processorName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -4128,8 +4287,17 @@ func (a *StreamsApiService) StopStreamProcessorExecute(r StopStreamProcessorApiR
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:stop"
+	if r.groupId == "" {
+		return nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.tenantName == "" {
+		return nil, reportError("tenantName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
+	if r.processorName == "" {
+		return nil, reportError("processorName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"processorName"+"}", url.PathEscape(r.processorName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -4241,8 +4409,17 @@ func (a *StreamsApiService) UpdateStreamConnectionExecute(r UpdateStreamConnecti
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.tenantName == "" {
+		return localVarReturnValue, nil, reportError("tenantName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
+	if r.connectionName == "" {
+		return localVarReturnValue, nil, reportError("connectionName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"connectionName"+"}", url.PathEscape(r.connectionName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -4368,7 +4545,13 @@ func (a *StreamsApiService) UpdateStreamInstanceExecute(r UpdateStreamInstanceAp
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/{tenantName}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.tenantName == "" {
+		return localVarReturnValue, nil, reportError("tenantName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
 
 	localVarHeaderParams := make(map[string]string)
