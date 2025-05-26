@@ -601,6 +601,9 @@ func (a *OrganizationsApiService) CreateOrganizationInvitationExecute(r CreateOr
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/invites"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -719,6 +722,9 @@ func (a *OrganizationsApiService) DeleteOrganizationExecute(r DeleteOrganization
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}"
+	if r.orgId == "" {
+		return nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -823,7 +829,13 @@ func (a *OrganizationsApiService) DeleteOrganizationInvitationExecute(r DeleteOr
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/invites/{invitationId}"
+	if r.orgId == "" {
+		return nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+	if r.invitationId == "" {
+		return nil, reportError("invitationId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"invitationId"+"}", url.PathEscape(r.invitationId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -921,6 +933,9 @@ func (a *OrganizationsApiService) GetOrganizationExecute(r GetOrganizationApiReq
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1043,7 +1058,13 @@ func (a *OrganizationsApiService) GetOrganizationInvitationExecute(r GetOrganiza
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/invites/{invitationId}"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+	if r.invitationId == "" {
+		return localVarReturnValue, nil, reportError("invitationId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"invitationId"+"}", url.PathEscape(r.invitationId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1155,6 +1176,9 @@ func (a *OrganizationsApiService) GetOrganizationSettingsExecute(r GetOrganizati
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/settings"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1281,6 +1305,9 @@ func (a *OrganizationsApiService) ListOrganizationInvitationsExecute(r ListOrgan
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/invites"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1438,6 +1465,9 @@ func (a *OrganizationsApiService) ListOrganizationProjectsExecute(r ListOrganiza
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/groups"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1742,6 +1772,9 @@ func (a *OrganizationsApiService) UpdateOrganizationExecute(r UpdateOrganization
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1868,6 +1901,9 @@ func (a *OrganizationsApiService) UpdateOrganizationInvitationExecute(r UpdateOr
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/invites"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1999,7 +2035,13 @@ func (a *OrganizationsApiService) UpdateOrganizationInvitationByIdExecute(r Upda
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/invites/{invitationId}"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+	if r.invitationId == "" {
+		return localVarReturnValue, nil, reportError("invitationId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"invitationId"+"}", url.PathEscape(r.invitationId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2129,7 +2171,13 @@ func (a *OrganizationsApiService) UpdateOrganizationRolesExecute(r UpdateOrganiz
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/users/{userId}/roles"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+	if r.userId == "" {
+		return localVarReturnValue, nil, reportError("userId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"userId"+"}", url.PathEscape(r.userId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2250,6 +2298,9 @@ func (a *OrganizationsApiService) UpdateOrganizationSettingsExecute(r UpdateOrga
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/settings"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)

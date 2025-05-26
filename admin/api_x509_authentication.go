@@ -163,7 +163,13 @@ func (a *X509AuthenticationApiService) CreateDatabaseUserCertificateExecute(r Cr
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/databaseUsers/{username}/certs"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.username == "" {
+		return localVarReturnValue, nil, reportError("username is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"username"+"}", url.PathEscape(r.username), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -282,6 +288,9 @@ func (a *X509AuthenticationApiService) DisableCustomerManagedX509Execute(r Disab
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/userSecurity/customerX509"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -425,7 +434,13 @@ func (a *X509AuthenticationApiService) ListDatabaseUserCertificatesExecute(r Lis
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/databaseUsers/{username}/certs"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.username == "" {
+		return localVarReturnValue, nil, reportError("username is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"username"+"}", url.PathEscape(r.username), -1)
 
 	localVarHeaderParams := make(map[string]string)

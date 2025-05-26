@@ -170,7 +170,13 @@ func (a *AccessTrackingApiService) ListAccessLogsByClusterNameExecute(r ListAcce
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/dbAccessHistory/clusters/{clusterName}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.clusterName == "" {
+		return localVarReturnValue, nil, reportError("clusterName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -351,7 +357,13 @@ func (a *AccessTrackingApiService) ListAccessLogsByHostnameExecute(r ListAccessL
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/dbAccessHistory/processes/{hostname}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.hostname == "" {
+		return localVarReturnValue, nil, reportError("hostname is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"hostname"+"}", url.PathEscape(r.hostname), -1)
 
 	localVarHeaderParams := make(map[string]string)

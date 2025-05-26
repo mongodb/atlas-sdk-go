@@ -448,6 +448,9 @@ func (a *DataLakePipelinesApiService) CreatePipelineExecute(r CreatePipelineApiR
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/pipelines"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -569,7 +572,13 @@ func (a *DataLakePipelinesApiService) DeletePipelineExecute(r DeletePipelineApiR
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}"
+	if r.groupId == "" {
+		return nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.pipelineName == "" {
+		return nil, reportError("pipelineName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"pipelineName"+"}", url.PathEscape(r.pipelineName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -681,8 +690,17 @@ func (a *DataLakePipelinesApiService) DeletePipelineRunDatasetExecute(r DeletePi
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/runs/{pipelineRunId}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.pipelineName == "" {
+		return localVarReturnValue, nil, reportError("pipelineName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"pipelineName"+"}", url.PathEscape(r.pipelineName), -1)
+	if r.pipelineRunId == "" {
+		return localVarReturnValue, nil, reportError("pipelineRunId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"pipelineRunId"+"}", url.PathEscape(r.pipelineRunId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -803,7 +821,13 @@ func (a *DataLakePipelinesApiService) GetPipelineExecute(r GetPipelineApiRequest
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.pipelineName == "" {
+		return localVarReturnValue, nil, reportError("pipelineName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"pipelineName"+"}", url.PathEscape(r.pipelineName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -929,8 +953,17 @@ func (a *DataLakePipelinesApiService) GetPipelineRunExecute(r GetPipelineRunApiR
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/runs/{pipelineRunId}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.pipelineName == "" {
+		return localVarReturnValue, nil, reportError("pipelineName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"pipelineName"+"}", url.PathEscape(r.pipelineName), -1)
+	if r.pipelineRunId == "" {
+		return localVarReturnValue, nil, reportError("pipelineRunId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"pipelineRunId"+"}", url.PathEscape(r.pipelineRunId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1087,7 +1120,13 @@ func (a *DataLakePipelinesApiService) ListPipelineRunsExecute(r ListPipelineRuns
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/runs"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.pipelineName == "" {
+		return localVarReturnValue, nil, reportError("pipelineName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"pipelineName"+"}", url.PathEscape(r.pipelineName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1232,7 +1271,13 @@ func (a *DataLakePipelinesApiService) ListPipelineSchedulesExecute(r ListPipelin
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/availableSchedules"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.pipelineName == "" {
+		return localVarReturnValue, nil, reportError("pipelineName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"pipelineName"+"}", url.PathEscape(r.pipelineName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1389,7 +1434,13 @@ func (a *DataLakePipelinesApiService) ListPipelineSnapshotsExecute(r ListPipelin
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/availableSnapshots"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.pipelineName == "" {
+		return localVarReturnValue, nil, reportError("pipelineName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"pipelineName"+"}", url.PathEscape(r.pipelineName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1529,6 +1580,9 @@ func (a *DataLakePipelinesApiService) ListPipelinesExecute(r ListPipelinesApiReq
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/pipelines"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1649,7 +1703,13 @@ func (a *DataLakePipelinesApiService) PausePipelineExecute(r PausePipelineApiReq
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/pause"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.pipelineName == "" {
+		return localVarReturnValue, nil, reportError("pipelineName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"pipelineName"+"}", url.PathEscape(r.pipelineName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1770,7 +1830,13 @@ func (a *DataLakePipelinesApiService) ResumePipelineExecute(r ResumePipelineApiR
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/resume"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.pipelineName == "" {
+		return localVarReturnValue, nil, reportError("pipelineName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"pipelineName"+"}", url.PathEscape(r.pipelineName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1895,7 +1961,13 @@ func (a *DataLakePipelinesApiService) TriggerSnapshotIngestionExecute(r TriggerS
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/trigger"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.pipelineName == "" {
+		return localVarReturnValue, nil, reportError("pipelineName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"pipelineName"+"}", url.PathEscape(r.pipelineName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2025,7 +2097,13 @@ func (a *DataLakePipelinesApiService) UpdatePipelineExecute(r UpdatePipelineApiR
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.pipelineName == "" {
+		return localVarReturnValue, nil, reportError("pipelineName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"pipelineName"+"}", url.PathEscape(r.pipelineName), -1)
 
 	localVarHeaderParams := make(map[string]string)

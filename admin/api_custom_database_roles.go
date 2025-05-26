@@ -196,6 +196,9 @@ func (a *CustomDatabaseRolesApiService) CreateCustomDatabaseRoleExecute(r Create
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/customDBRoles/roles"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -314,7 +317,13 @@ func (a *CustomDatabaseRolesApiService) DeleteCustomDatabaseRoleExecute(r Delete
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/customDBRoles/roles/{roleName}"
+	if r.groupId == "" {
+		return nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.roleName == "" {
+		return nil, reportError("roleName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"roleName"+"}", url.PathEscape(r.roleName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -417,7 +426,13 @@ func (a *CustomDatabaseRolesApiService) GetCustomDatabaseRoleExecute(r GetCustom
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/customDBRoles/roles/{roleName}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.roleName == "" {
+		return localVarReturnValue, nil, reportError("roleName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"roleName"+"}", url.PathEscape(r.roleName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -529,6 +544,9 @@ func (a *CustomDatabaseRolesApiService) ListCustomDatabaseRolesExecute(r ListCus
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/customDBRoles/roles"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -649,7 +667,13 @@ func (a *CustomDatabaseRolesApiService) UpdateCustomDatabaseRoleExecute(r Update
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/customDBRoles/roles/{roleName}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.roleName == "" {
+		return localVarReturnValue, nil, reportError("roleName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"roleName"+"}", url.PathEscape(r.roleName), -1)
 
 	localVarHeaderParams := make(map[string]string)

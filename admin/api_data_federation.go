@@ -451,6 +451,9 @@ func (a *DataFederationApiService) CreateDataFederationPrivateEndpointExecute(r 
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/privateNetworkSettings/endpointIds"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -580,6 +583,9 @@ func (a *DataFederationApiService) CreateFederatedDatabaseExecute(r CreateFedera
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/dataFederation"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -717,8 +723,17 @@ func (a *DataFederationApiService) CreateOneDataFederationQueryLimitExecute(r Cr
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/limits/{limitName}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.tenantName == "" {
+		return localVarReturnValue, nil, reportError("tenantName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
+	if r.limitName == "" {
+		return localVarReturnValue, nil, reportError("limitName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"limitName"+"}", url.PathEscape(r.limitName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -837,7 +852,13 @@ func (a *DataFederationApiService) DeleteDataFederationPrivateEndpointExecute(r 
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/privateNetworkSettings/endpointIds/{endpointId}"
+	if r.groupId == "" {
+		return nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.endpointId == "" {
+		return nil, reportError("endpointId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"endpointId"+"}", url.PathEscape(r.endpointId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -937,7 +958,13 @@ func (a *DataFederationApiService) DeleteFederatedDatabaseExecute(r DeleteFedera
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}"
+	if r.groupId == "" {
+		return nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.tenantName == "" {
+		return nil, reportError("tenantName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1042,8 +1069,17 @@ func (a *DataFederationApiService) DeleteOneDataFederationInstanceQueryLimitExec
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/limits/{limitName}"
+	if r.groupId == "" {
+		return nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.tenantName == "" {
+		return nil, reportError("tenantName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
+	if r.limitName == "" {
+		return nil, reportError("limitName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"limitName"+"}", url.PathEscape(r.limitName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1164,7 +1200,13 @@ func (a *DataFederationApiService) DownloadFederatedDatabaseQueryLogsExecute(r D
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/queryLogs.gz"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.tenantName == "" {
+		return localVarReturnValue, nil, reportError("tenantName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1287,7 +1329,13 @@ func (a *DataFederationApiService) GetDataFederationPrivateEndpointExecute(r Get
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/privateNetworkSettings/endpointIds/{endpointId}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.endpointId == "" {
+		return localVarReturnValue, nil, reportError("endpointId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"endpointId"+"}", url.PathEscape(r.endpointId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1404,7 +1452,13 @@ func (a *DataFederationApiService) GetFederatedDatabaseExecute(r GetFederatedDat
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.tenantName == "" {
+		return localVarReturnValue, nil, reportError("tenantName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1543,6 +1597,9 @@ func (a *DataFederationApiService) ListDataFederationPrivateEndpointsExecute(r L
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/privateNetworkSettings/endpointIds"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1684,6 +1741,9 @@ func (a *DataFederationApiService) ListFederatedDatabasesExecute(r ListFederated
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/dataFederation"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1812,8 +1872,17 @@ func (a *DataFederationApiService) ReturnFederatedDatabaseQueryLimitExecute(r Re
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/limits/{limitName}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.tenantName == "" {
+		return localVarReturnValue, nil, reportError("tenantName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
+	if r.limitName == "" {
+		return localVarReturnValue, nil, reportError("limitName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"limitName"+"}", url.PathEscape(r.limitName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1930,7 +1999,13 @@ func (a *DataFederationApiService) ReturnFederatedDatabaseQueryLimitsExecute(r R
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/limits"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.tenantName == "" {
+		return localVarReturnValue, nil, reportError("tenantName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2060,7 +2135,13 @@ func (a *DataFederationApiService) UpdateFederatedDatabaseExecute(r UpdateFedera
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.tenantName == "" {
+		return localVarReturnValue, nil, reportError("tenantName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
 
 	localVarHeaderParams := make(map[string]string)

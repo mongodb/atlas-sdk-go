@@ -222,7 +222,13 @@ func (a *ServerlessPrivateEndpointsApiService) CreateServerlessPrivateEndpointEx
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.instanceName == "" {
+		return localVarReturnValue, nil, reportError("instanceName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"instanceName"+"}", url.PathEscape(r.instanceName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -348,8 +354,17 @@ func (a *ServerlessPrivateEndpointsApiService) DeleteServerlessPrivateEndpointEx
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint/{endpointId}"
+	if r.groupId == "" {
+		return nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.instanceName == "" {
+		return nil, reportError("instanceName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"instanceName"+"}", url.PathEscape(r.instanceName), -1)
+	if r.endpointId == "" {
+		return nil, reportError("endpointId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"endpointId"+"}", url.PathEscape(r.endpointId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -459,8 +474,17 @@ func (a *ServerlessPrivateEndpointsApiService) GetServerlessPrivateEndpointExecu
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint/{endpointId}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.instanceName == "" {
+		return localVarReturnValue, nil, reportError("instanceName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"instanceName"+"}", url.PathEscape(r.instanceName), -1)
+	if r.endpointId == "" {
+		return localVarReturnValue, nil, reportError("endpointId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"endpointId"+"}", url.PathEscape(r.endpointId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -579,7 +603,13 @@ func (a *ServerlessPrivateEndpointsApiService) ListServerlessPrivateEndpointsExe
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.instanceName == "" {
+		return localVarReturnValue, nil, reportError("instanceName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"instanceName"+"}", url.PathEscape(r.instanceName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -707,8 +737,17 @@ func (a *ServerlessPrivateEndpointsApiService) UpdateServerlessPrivateEndpointEx
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint/{endpointId}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.instanceName == "" {
+		return localVarReturnValue, nil, reportError("instanceName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"instanceName"+"}", url.PathEscape(r.instanceName), -1)
+	if r.endpointId == "" {
+		return localVarReturnValue, nil, reportError("endpointId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"endpointId"+"}", url.PathEscape(r.endpointId), -1)
 
 	localVarHeaderParams := make(map[string]string)

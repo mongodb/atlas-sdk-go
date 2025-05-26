@@ -394,6 +394,9 @@ func (a *NetworkPeeringApiService) CreatePeeringConnectionExecute(r CreatePeerin
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/peers"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -514,6 +517,9 @@ func (a *NetworkPeeringApiService) CreatePeeringContainerExecute(r CreatePeering
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/containers"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -635,7 +641,13 @@ func (a *NetworkPeeringApiService) DeletePeeringConnectionExecute(r DeletePeerin
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/peers/{peerId}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.peerId == "" {
+		return localVarReturnValue, nil, reportError("peerId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"peerId"+"}", url.PathEscape(r.peerId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -749,7 +761,13 @@ func (a *NetworkPeeringApiService) DeletePeeringContainerExecute(r DeletePeering
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/containers/{containerId}"
+	if r.groupId == "" {
+		return nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.containerId == "" {
+		return nil, reportError("containerId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(r.containerId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -855,6 +873,9 @@ func (a *NetworkPeeringApiService) DisablePeeringExecute(r DisablePeeringApiRequ
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/privateIpMode"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -976,7 +997,13 @@ func (a *NetworkPeeringApiService) GetPeeringConnectionExecute(r GetPeeringConne
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/peers/{peerId}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.peerId == "" {
+		return localVarReturnValue, nil, reportError("peerId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"peerId"+"}", url.PathEscape(r.peerId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1093,7 +1120,13 @@ func (a *NetworkPeeringApiService) GetPeeringContainerExecute(r GetPeeringContai
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/containers/{containerId}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.containerId == "" {
+		return localVarReturnValue, nil, reportError("containerId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(r.containerId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1241,6 +1274,9 @@ func (a *NetworkPeeringApiService) ListPeeringConnectionsExecute(r ListPeeringCo
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/peers"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1416,6 +1452,9 @@ func (a *NetworkPeeringApiService) ListPeeringContainerByCloudProviderExecute(r 
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/containers"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1579,6 +1618,9 @@ func (a *NetworkPeeringApiService) ListPeeringContainersExecute(r ListPeeringCon
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/containers/all"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1720,7 +1762,13 @@ func (a *NetworkPeeringApiService) UpdatePeeringConnectionExecute(r UpdatePeerin
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/peers/{peerId}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.peerId == "" {
+		return localVarReturnValue, nil, reportError("peerId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"peerId"+"}", url.PathEscape(r.peerId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1846,7 +1894,13 @@ func (a *NetworkPeeringApiService) UpdatePeeringContainerExecute(r UpdatePeering
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/containers/{containerId}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.containerId == "" {
+		return localVarReturnValue, nil, reportError("containerId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(r.containerId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1967,6 +2021,9 @@ func (a *NetworkPeeringApiService) VerifyConnectViaPeeringOnlyModeForOneProjectE
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/privateIpMode"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)

@@ -613,7 +613,13 @@ func (a *MongoDBCloudUsersApiService) AddOrganizationRoleExecute(r AddOrganizati
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/users/{userId}:addRole"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+	if r.userId == "" {
+		return localVarReturnValue, nil, reportError("userId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"userId"+"}", url.PathEscape(r.userId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -741,7 +747,13 @@ func (a *MongoDBCloudUsersApiService) AddProjectRoleExecute(r AddProjectRoleApiR
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/users/{userId}:addRole"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.userId == "" {
+		return localVarReturnValue, nil, reportError("userId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"userId"+"}", url.PathEscape(r.userId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -865,6 +877,9 @@ func (a *MongoDBCloudUsersApiService) AddProjectUserExecute(r AddProjectUserApiR
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/users"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -992,7 +1007,13 @@ func (a *MongoDBCloudUsersApiService) AddUserToTeamExecute(r AddUserToTeamApiReq
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/teams/{teamId}:addUser"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+	if r.teamId == "" {
+		return localVarReturnValue, nil, reportError("teamId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"teamId"+"}", url.PathEscape(r.teamId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1115,6 +1136,9 @@ func (a *MongoDBCloudUsersApiService) CreateOrganizationUserExecute(r CreateOrga
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/users"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1362,7 +1386,13 @@ func (a *MongoDBCloudUsersApiService) GetOrganizationUserExecute(r GetOrganizati
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/users/{userId}"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+	if r.userId == "" {
+		return localVarReturnValue, nil, reportError("userId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"userId"+"}", url.PathEscape(r.userId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1483,7 +1513,13 @@ func (a *MongoDBCloudUsersApiService) GetProjectUserExecute(r GetProjectUserApiR
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/users/{userId}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.userId == "" {
+		return localVarReturnValue, nil, reportError("userId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"userId"+"}", url.PathEscape(r.userId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1599,6 +1635,9 @@ func (a *MongoDBCloudUsersApiService) GetUserExecute(r GetUserApiRequest) (*Clou
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/users/{userId}"
+	if r.userId == "" {
+		return localVarReturnValue, nil, reportError("userId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"userId"+"}", url.PathEscape(r.userId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1714,6 +1753,9 @@ func (a *MongoDBCloudUsersApiService) GetUserByUsernameExecute(r GetUserByUserna
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/users/byName/{userName}"
+	if r.userName == "" {
+		return localVarReturnValue, nil, reportError("userName is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"userName"+"}", url.PathEscape(r.userName), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1874,6 +1916,9 @@ func (a *MongoDBCloudUsersApiService) ListOrganizationUsersExecute(r ListOrganiz
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/users"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2079,6 +2124,9 @@ func (a *MongoDBCloudUsersApiService) ListProjectUsersExecute(r ListProjectUsers
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/users"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2276,7 +2324,13 @@ func (a *MongoDBCloudUsersApiService) ListTeamUsersExecute(r ListTeamUsersApiReq
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/teams/{teamId}/users"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+	if r.teamId == "" {
+		return localVarReturnValue, nil, reportError("teamId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"teamId"+"}", url.PathEscape(r.teamId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2421,7 +2475,13 @@ func (a *MongoDBCloudUsersApiService) RemoveOrganizationRoleExecute(r RemoveOrga
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/users/{userId}:removeRole"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+	if r.userId == "" {
+		return localVarReturnValue, nil, reportError("userId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"userId"+"}", url.PathEscape(r.userId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2544,7 +2604,13 @@ func (a *MongoDBCloudUsersApiService) RemoveOrganizationUserExecute(r RemoveOrga
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/users/{userId}"
+	if r.orgId == "" {
+		return nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+	if r.userId == "" {
+		return nil, reportError("userId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"userId"+"}", url.PathEscape(r.userId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2653,7 +2719,13 @@ func (a *MongoDBCloudUsersApiService) RemoveProjectRoleExecute(r RemoveProjectRo
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/users/{userId}:removeRole"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.userId == "" {
+		return localVarReturnValue, nil, reportError("userId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"userId"+"}", url.PathEscape(r.userId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2776,7 +2848,13 @@ func (a *MongoDBCloudUsersApiService) RemoveProjectUserExecute(r RemoveProjectUs
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/users/{userId}"
+	if r.groupId == "" {
+		return nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.userId == "" {
+		return nil, reportError("userId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"userId"+"}", url.PathEscape(r.userId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2885,7 +2963,13 @@ func (a *MongoDBCloudUsersApiService) RemoveUserFromTeamExecute(r RemoveUserFrom
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/teams/{teamId}:removeUser"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+	if r.teamId == "" {
+		return localVarReturnValue, nil, reportError("teamId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"teamId"+"}", url.PathEscape(r.teamId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -3015,7 +3099,13 @@ func (a *MongoDBCloudUsersApiService) UpdateOrganizationUserExecute(r UpdateOrga
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/users/{userId}"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+	if r.userId == "" {
+		return localVarReturnValue, nil, reportError("userId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"userId"+"}", url.PathEscape(r.userId), -1)
 
 	localVarHeaderParams := make(map[string]string)

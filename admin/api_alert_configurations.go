@@ -287,6 +287,9 @@ func (a *AlertConfigurationsApiService) CreateAlertConfigurationExecute(r Create
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/alertConfigs"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -407,7 +410,13 @@ func (a *AlertConfigurationsApiService) DeleteAlertConfigurationExecute(r Delete
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId}"
+	if r.groupId == "" {
+		return nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.alertConfigId == "" {
+		return nil, reportError("alertConfigId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"alertConfigId"+"}", url.PathEscape(r.alertConfigId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -512,7 +521,13 @@ func (a *AlertConfigurationsApiService) GetAlertConfigurationExecute(r GetAlertC
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.alertConfigId == "" {
+		return localVarReturnValue, nil, reportError("alertConfigId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"alertConfigId"+"}", url.PathEscape(r.alertConfigId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -758,6 +773,9 @@ func (a *AlertConfigurationsApiService) ListAlertConfigurationsExecute(r ListAle
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/alertConfigs"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -924,7 +942,13 @@ func (a *AlertConfigurationsApiService) ListAlertConfigurationsByAlertIdExecute(
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/alerts/{alertId}/alertConfigs"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.alertId == "" {
+		return localVarReturnValue, nil, reportError("alertId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"alertId"+"}", url.PathEscape(r.alertId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1070,7 +1094,13 @@ func (a *AlertConfigurationsApiService) ToggleAlertConfigurationExecute(r Toggle
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.alertConfigId == "" {
+		return localVarReturnValue, nil, reportError("alertConfigId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"alertConfigId"+"}", url.PathEscape(r.alertConfigId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1200,7 +1230,13 @@ func (a *AlertConfigurationsApiService) UpdateAlertConfigurationExecute(r Update
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.alertConfigId == "" {
+		return localVarReturnValue, nil, reportError("alertConfigId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"alertConfigId"+"}", url.PathEscape(r.alertConfigId), -1)
 
 	localVarHeaderParams := make(map[string]string)

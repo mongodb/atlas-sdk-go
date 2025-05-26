@@ -272,6 +272,9 @@ func (a *CloudMigrationServiceApiService) CreateLinkTokenExecute(r CreateLinkTok
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/liveMigrations/linkTokens"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -398,6 +401,9 @@ func (a *CloudMigrationServiceApiService) CreatePushMigrationExecute(r CreatePus
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/liveMigrations"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -516,7 +522,13 @@ func (a *CloudMigrationServiceApiService) CutoverMigrationExecute(r CutoverMigra
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/liveMigrations/{liveMigrationId}/cutover"
+	if r.groupId == "" {
+		return nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.liveMigrationId == "" {
+		return nil, reportError("liveMigrationId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"liveMigrationId"+"}", url.PathEscape(r.liveMigrationId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -611,6 +623,9 @@ func (a *CloudMigrationServiceApiService) DeleteLinkTokenExecute(r DeleteLinkTok
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/liveMigrations/linkTokens"
+	if r.orgId == "" {
+		return nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -713,7 +728,13 @@ func (a *CloudMigrationServiceApiService) GetPushMigrationExecute(r GetPushMigra
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/liveMigrations/{liveMigrationId}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.liveMigrationId == "" {
+		return localVarReturnValue, nil, reportError("liveMigrationId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"liveMigrationId"+"}", url.PathEscape(r.liveMigrationId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -830,7 +851,13 @@ func (a *CloudMigrationServiceApiService) GetValidationStatusExecute(r GetValida
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/liveMigrations/validate/{validationId}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.validationId == "" {
+		return localVarReturnValue, nil, reportError("validationId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"validationId"+"}", url.PathEscape(r.validationId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -942,6 +969,9 @@ func (a *CloudMigrationServiceApiService) ListSourceProjectsExecute(r ListSource
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/liveMigrations/availableProjects"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1057,6 +1087,9 @@ func (a *CloudMigrationServiceApiService) ValidateMigrationExecute(r ValidateMig
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/liveMigrations/validate"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)

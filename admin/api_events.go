@@ -214,7 +214,13 @@ func (a *EventsApiService) GetOrganizationEventExecute(r GetOrganizationEventApi
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/events/{eventId}"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+	if r.eventId == "" {
+		return localVarReturnValue, nil, reportError("eventId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"eventId"+"}", url.PathEscape(r.eventId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -349,7 +355,13 @@ func (a *EventsApiService) GetProjectEventExecute(r GetProjectEventApiRequest) (
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/events/{eventId}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.eventId == "" {
+		return localVarReturnValue, nil, reportError("eventId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"eventId"+"}", url.PathEscape(r.eventId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -686,6 +698,9 @@ func (a *EventsApiService) ListOrganizationEventsExecute(r ListOrganizationEvent
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/events"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -921,6 +936,9 @@ func (a *EventsApiService) ListProjectEventsExecute(r ListProjectEventsApiReques
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/events"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)

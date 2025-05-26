@@ -119,6 +119,9 @@ func (a *AuditingApiService) GetAuditingConfigurationExecute(r GetAuditingConfig
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/auditLog"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -234,6 +237,9 @@ func (a *AuditingApiService) UpdateAuditingConfigurationExecute(r UpdateAuditing
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/auditLog"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)

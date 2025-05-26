@@ -119,6 +119,9 @@ func (a *AWSClustersDNSApiService) GetAwsCustomDnsExecute(r GetAwsCustomDnsApiRe
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/awsCustomDNS"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -234,6 +237,9 @@ func (a *AWSClustersDNSApiService) ToggleAwsCustomDnsExecute(r ToggleAwsCustomDn
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/awsCustomDNS"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
