@@ -13,7 +13,7 @@ import (
 type PushBasedLogExportApi interface {
 
 	/*
-		CreatePushBasedLogConfiguration Enable the push-based log export feature for a project
+		CreatePushBasedLogConfiguration Enable Push-Based Log Export for One Project
 
 		Configures the project level settings for the push-based log export feature.
 
@@ -24,7 +24,7 @@ type PushBasedLogExportApi interface {
 	*/
 	CreatePushBasedLogConfiguration(ctx context.Context, groupId string, createPushBasedLogExportProjectRequest *CreatePushBasedLogExportProjectRequest) CreatePushBasedLogConfigurationApiRequest
 	/*
-		CreatePushBasedLogConfiguration Enable the push-based log export feature for a project
+		CreatePushBasedLogConfiguration Enable Push-Based Log Export for One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -37,7 +37,7 @@ type PushBasedLogExportApi interface {
 	CreatePushBasedLogConfigurationExecute(r CreatePushBasedLogConfigurationApiRequest) (*http.Response, error)
 
 	/*
-		DeletePushBasedLogConfiguration Disable the push-based log export feature for a project
+		DeletePushBasedLogConfiguration Disable Push-Based Log Export for One Project
 
 		Disables the push-based log export feature by resetting the project level settings to its default configuration.
 
@@ -47,7 +47,7 @@ type PushBasedLogExportApi interface {
 	*/
 	DeletePushBasedLogConfiguration(ctx context.Context, groupId string) DeletePushBasedLogConfigurationApiRequest
 	/*
-		DeletePushBasedLogConfiguration Disable the push-based log export feature for a project
+		DeletePushBasedLogConfiguration Disable Push-Based Log Export for One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -60,7 +60,7 @@ type PushBasedLogExportApi interface {
 	DeletePushBasedLogConfigurationExecute(r DeletePushBasedLogConfigurationApiRequest) (*http.Response, error)
 
 	/*
-		GetPushBasedLogConfiguration Get the push-based log export configuration for a project
+		GetPushBasedLogConfiguration Return Push-Based Log Export Configuration for One Project
 
 		Fetches the current project level settings for the push-based log export feature.
 
@@ -70,7 +70,7 @@ type PushBasedLogExportApi interface {
 	*/
 	GetPushBasedLogConfiguration(ctx context.Context, groupId string) GetPushBasedLogConfigurationApiRequest
 	/*
-		GetPushBasedLogConfiguration Get the push-based log export configuration for a project
+		GetPushBasedLogConfiguration Return Push-Based Log Export Configuration for One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -83,7 +83,7 @@ type PushBasedLogExportApi interface {
 	GetPushBasedLogConfigurationExecute(r GetPushBasedLogConfigurationApiRequest) (*PushBasedLogExportProject, *http.Response, error)
 
 	/*
-		UpdatePushBasedLogConfiguration Update the push-based log export feature for a project
+		UpdatePushBasedLogConfiguration Update Push-Based Log Export for One Project
 
 		Updates the project level settings for the push-based log export feature.
 
@@ -94,7 +94,7 @@ type PushBasedLogExportApi interface {
 	*/
 	UpdatePushBasedLogConfiguration(ctx context.Context, groupId string, pushBasedLogExportProject *PushBasedLogExportProject) UpdatePushBasedLogConfigurationApiRequest
 	/*
-		UpdatePushBasedLogConfiguration Update the push-based log export feature for a project
+		UpdatePushBasedLogConfiguration Update Push-Based Log Export for One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -136,7 +136,7 @@ func (r CreatePushBasedLogConfigurationApiRequest) Execute() (*http.Response, er
 }
 
 /*
-CreatePushBasedLogConfiguration Enable the push-based log export feature for a project
+CreatePushBasedLogConfiguration Enable Push-Based Log Export for One Project
 
 Configures the project level settings for the push-based log export feature.
 
@@ -236,7 +236,7 @@ func (r DeletePushBasedLogConfigurationApiRequest) Execute() (*http.Response, er
 }
 
 /*
-DeletePushBasedLogConfiguration Disable the push-based log export feature for a project
+DeletePushBasedLogConfiguration Disable Push-Based Log Export for One Project
 
 Disables the push-based log export feature by resetting the project level settings to its default configuration.
 
@@ -330,7 +330,7 @@ func (r GetPushBasedLogConfigurationApiRequest) Execute() (*PushBasedLogExportPr
 }
 
 /*
-GetPushBasedLogConfiguration Get the push-based log export configuration for a project
+GetPushBasedLogConfiguration Return Push-Based Log Export Configuration for One Project
 
 Fetches the current project level settings for the push-based log export feature.
 
@@ -444,7 +444,7 @@ func (r UpdatePushBasedLogConfigurationApiRequest) Execute() (*http.Response, er
 }
 
 /*
-UpdatePushBasedLogConfiguration Update the push-based log export feature for a project
+UpdatePushBasedLogConfiguration Update Push-Based Log Export for One Project
 
 Updates the project level settings for the push-based log export feature.
 

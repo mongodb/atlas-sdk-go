@@ -36,7 +36,7 @@ type OrganizationsApi interface {
 	CreateOrganizationExecute(r CreateOrganizationApiRequest) (*CreateOrganizationResponse, *http.Response, error)
 
 	/*
-			CreateOrganizationInvitation Invite One MongoDB Cloud User to Join One Atlas Organization
+			CreateOrganizationInvitation Invite One MongoDB Cloud User to One Atlas Organization
 
 			Invites one MongoDB Cloud user to join the specified organization. The user must accept the invitation to access information within the specified organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
@@ -51,7 +51,7 @@ type OrganizationsApi interface {
 	*/
 	CreateOrganizationInvitation(ctx context.Context, orgId string, organizationInvitationRequest *OrganizationInvitationRequest) CreateOrganizationInvitationApiRequest
 	/*
-		CreateOrganizationInvitation Invite One MongoDB Cloud User to Join One Atlas Organization
+		CreateOrganizationInvitation Invite One MongoDB Cloud User to One Atlas Organization
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -93,7 +93,7 @@ type OrganizationsApi interface {
 	DeleteOrganizationExecute(r DeleteOrganizationApiRequest) (*http.Response, error)
 
 	/*
-			DeleteOrganizationInvitation Cancel One Organization Invitation
+			DeleteOrganizationInvitation Remove One Organization Invitation
 
 			Cancels one pending invitation sent to the specified MongoDB Cloud user to join an organization. You can't cancel an invitation that the user accepted. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
@@ -108,7 +108,7 @@ type OrganizationsApi interface {
 	*/
 	DeleteOrganizationInvitation(ctx context.Context, orgId string, invitationId string) DeleteOrganizationInvitationApiRequest
 	/*
-		DeleteOrganizationInvitation Cancel One Organization Invitation
+		DeleteOrganizationInvitation Remove One Organization Invitation
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -228,7 +228,7 @@ type OrganizationsApi interface {
 	ListOrganizationInvitationsExecute(r ListOrganizationInvitationsApiRequest) ([]OrganizationInvitation, *http.Response, error)
 
 	/*
-			ListOrganizationProjects Return One or More Projects in One Organization
+			ListOrganizationProjects Return All Projects in One Organization
 
 			Returns multiple projects in the specified organization. Each organization can have multiple projects. Use projects to:
 
@@ -245,7 +245,7 @@ type OrganizationsApi interface {
 	*/
 	ListOrganizationProjects(ctx context.Context, orgId string) ListOrganizationProjectsApiRequest
 	/*
-		ListOrganizationProjects Return One or More Projects in One Organization
+		ListOrganizationProjects Return All Projects in One Organization
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -561,7 +561,7 @@ func (r CreateOrganizationInvitationApiRequest) Execute() (*OrganizationInvitati
 }
 
 /*
-CreateOrganizationInvitation Invite One MongoDB Cloud User to Join One Atlas Organization
+CreateOrganizationInvitation Invite One MongoDB Cloud User to One Atlas Organization
 
 Invites one MongoDB Cloud user to join the specified organization. The user must accept the invitation to access information within the specified organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
@@ -786,7 +786,7 @@ func (r DeleteOrganizationInvitationApiRequest) Execute() (*http.Response, error
 }
 
 /*
-DeleteOrganizationInvitation Cancel One Organization Invitation
+DeleteOrganizationInvitation Remove One Organization Invitation
 
 Cancels one pending invitation sent to the specified MongoDB Cloud user to join an organization. You can't cancel an invitation that the user accepted. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
@@ -1398,7 +1398,7 @@ func (r ListOrganizationProjectsApiRequest) Execute() (*PaginatedAtlasGroup, *ht
 }
 
 /*
-ListOrganizationProjects Return One or More Projects in One Organization
+ListOrganizationProjects Return All Projects in One Organization
 
 Returns multiple projects in the specified organization. Each organization can have multiple projects. Use projects to:
 

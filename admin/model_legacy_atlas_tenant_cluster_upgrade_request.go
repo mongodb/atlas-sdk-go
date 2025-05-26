@@ -86,7 +86,7 @@ type LegacyAtlasTenantClusterUpgradeRequest struct {
 	ReplicationSpec *map[string]RegionSpec `json:"replicationSpec,omitempty"`
 	// List of settings that configure your cluster regions.  - For Global Clusters, each object in the array represents one zone where MongoDB Cloud deploys your clusters nodes. - For non-Global sharded clusters and replica sets, the single object represents where MongoDB Cloud deploys your clusters nodes.
 	ReplicationSpecs *[]LegacyReplicationSpec `json:"replicationSpecs,omitempty"`
-	// Root Certificate Authority that MongoDB Atlas clusters uses. MongoDB Cloud supports Internet Security Research Group.
+	// Root Certificate Authority that MongoDB Atlas cluster uses. MongoDB Cloud supports Internet Security Research Group.
 	RootCertType *string `json:"rootCertType,omitempty"`
 	// Connection string that you can use to connect to the cluster. The `+srv` modifier forces the connection to use Transport Layer Security (TLS). The `mongoURI` parameter lists additional options.
 	// Read only field.

@@ -70,7 +70,7 @@ type DataLakePipelinesApi interface {
 	DeletePipelineExecute(r DeletePipelineApiRequest) (*http.Response, error)
 
 	/*
-		DeletePipelineRunDataset Delete Pipeline Run Dataset
+		DeletePipelineRunDataset Delete One Pipeline Run Dataset
 
 		Deletes dataset that Atlas generated during the specified pipeline run.
 
@@ -84,7 +84,7 @@ type DataLakePipelinesApi interface {
 	*/
 	DeletePipelineRunDataset(ctx context.Context, groupId string, pipelineName string, pipelineRunId string) DeletePipelineRunDatasetApiRequest
 	/*
-		DeletePipelineRunDataset Delete Pipeline Run Dataset
+		DeletePipelineRunDataset Delete One Pipeline Run Dataset
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -156,7 +156,7 @@ type DataLakePipelinesApi interface {
 	GetPipelineRunExecute(r GetPipelineRunApiRequest) (*IngestionPipelineRun, *http.Response, error)
 
 	/*
-		ListPipelineRuns Return All Data Lake Pipeline Runs from One Project
+		ListPipelineRuns Return All Data Lake Pipeline Runs in One Project
 
 		Returns a list of past Data Lake Pipeline runs. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
@@ -169,7 +169,7 @@ type DataLakePipelinesApi interface {
 	*/
 	ListPipelineRuns(ctx context.Context, groupId string, pipelineName string) ListPipelineRunsApiRequest
 	/*
-		ListPipelineRuns Return All Data Lake Pipeline Runs from One Project
+		ListPipelineRuns Return All Data Lake Pipeline Runs in One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -184,7 +184,7 @@ type DataLakePipelinesApi interface {
 	ListPipelineRunsExecute(r ListPipelineRunsApiRequest) (*PaginatedPipelineRun, *http.Response, error)
 
 	/*
-		ListPipelineSchedules Return Available Ingestion Schedules for One Data Lake Pipeline
+		ListPipelineSchedules Return All Ingestion Schedules for One Data Lake Pipeline
 
 		Returns a list of backup schedule policy items that you can use as a Data Lake Pipeline source. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
@@ -197,7 +197,7 @@ type DataLakePipelinesApi interface {
 	*/
 	ListPipelineSchedules(ctx context.Context, groupId string, pipelineName string) ListPipelineSchedulesApiRequest
 	/*
-		ListPipelineSchedules Return Available Ingestion Schedules for One Data Lake Pipeline
+		ListPipelineSchedules Return All Ingestion Schedules for One Data Lake Pipeline
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -212,7 +212,7 @@ type DataLakePipelinesApi interface {
 	ListPipelineSchedulesExecute(r ListPipelineSchedulesApiRequest) ([]DiskBackupApiPolicyItem, *http.Response, error)
 
 	/*
-		ListPipelineSnapshots Return Available Backup Snapshots for One Data Lake Pipeline
+		ListPipelineSnapshots Return All Backup Snapshots for One Data Lake Pipeline
 
 		Returns a list of backup snapshots that you can use to trigger an on demand pipeline run. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
@@ -225,7 +225,7 @@ type DataLakePipelinesApi interface {
 	*/
 	ListPipelineSnapshots(ctx context.Context, groupId string, pipelineName string) ListPipelineSnapshotsApiRequest
 	/*
-		ListPipelineSnapshots Return Available Backup Snapshots for One Data Lake Pipeline
+		ListPipelineSnapshots Return All Backup Snapshots for One Data Lake Pipeline
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -240,7 +240,7 @@ type DataLakePipelinesApi interface {
 	ListPipelineSnapshotsExecute(r ListPipelineSnapshotsApiRequest) (*PaginatedBackupSnapshot, *http.Response, error)
 
 	/*
-		ListPipelines Return All Data Lake Pipelines from One Project
+		ListPipelines Return All Data Lake Pipelines in One Project
 
 		Returns a list of Data Lake Pipelines. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
@@ -252,7 +252,7 @@ type DataLakePipelinesApi interface {
 	*/
 	ListPipelines(ctx context.Context, groupId string) ListPipelinesApiRequest
 	/*
-		ListPipelines Return All Data Lake Pipelines from One Project
+		ListPipelines Return All Data Lake Pipelines in One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -323,7 +323,7 @@ type DataLakePipelinesApi interface {
 	ResumePipelineExecute(r ResumePipelineApiRequest) (*DataLakeIngestionPipeline, *http.Response, error)
 
 	/*
-		TriggerSnapshotIngestion Trigger on demand snapshot ingestion
+		TriggerSnapshotIngestion Trigger On-Demand Snapshot Ingestion
 
 		Triggers a Data Lake Pipeline ingestion of a specified snapshot.
 
@@ -337,7 +337,7 @@ type DataLakePipelinesApi interface {
 	*/
 	TriggerSnapshotIngestion(ctx context.Context, groupId string, pipelineName string, triggerIngestionPipelineRequest *TriggerIngestionPipelineRequest) TriggerSnapshotIngestionApiRequest
 	/*
-		TriggerSnapshotIngestion Trigger on demand snapshot ingestion
+		TriggerSnapshotIngestion Trigger On-Demand Snapshot Ingestion
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -640,7 +640,7 @@ func (r DeletePipelineRunDatasetApiRequest) Execute() (any, *http.Response, erro
 }
 
 /*
-DeletePipelineRunDataset Delete Pipeline Run Dataset
+DeletePipelineRunDataset Delete One Pipeline Run Dataset
 
 Deletes dataset that Atlas generated during the specified pipeline run.
 
@@ -1048,7 +1048,7 @@ func (r ListPipelineRunsApiRequest) Execute() (*PaginatedPipelineRun, *http.Resp
 }
 
 /*
-ListPipelineRuns Return All Data Lake Pipeline Runs from One Project
+ListPipelineRuns Return All Data Lake Pipeline Runs in One Project
 
 Returns a list of past Data Lake Pipeline runs. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
@@ -1193,7 +1193,7 @@ func (r ListPipelineSchedulesApiRequest) Execute() ([]DiskBackupApiPolicyItem, *
 }
 
 /*
-ListPipelineSchedules Return Available Ingestion Schedules for One Data Lake Pipeline
+ListPipelineSchedules Return All Ingestion Schedules for One Data Lake Pipeline
 
 Returns a list of backup schedule policy items that you can use as a Data Lake Pipeline source. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
@@ -1350,7 +1350,7 @@ func (r ListPipelineSnapshotsApiRequest) Execute() (*PaginatedBackupSnapshot, *h
 }
 
 /*
-ListPipelineSnapshots Return Available Backup Snapshots for One Data Lake Pipeline
+ListPipelineSnapshots Return All Backup Snapshots for One Data Lake Pipeline
 
 Returns a list of backup snapshots that you can use to trigger an on demand pipeline run. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
@@ -1492,7 +1492,7 @@ func (r ListPipelinesApiRequest) Execute() ([]DataLakeIngestionPipeline, *http.R
 }
 
 /*
-ListPipelines Return All Data Lake Pipelines from One Project
+ListPipelines Return All Data Lake Pipelines in One Project
 
 Returns a list of Data Lake Pipelines. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
@@ -1855,7 +1855,7 @@ func (r TriggerSnapshotIngestionApiRequest) Execute() (*IngestionPipelineRun, *h
 }
 
 /*
-TriggerSnapshotIngestion Trigger on demand snapshot ingestion
+TriggerSnapshotIngestion Trigger On-Demand Snapshot Ingestion
 
 Triggers a Data Lake Pipeline ingestion of a specified snapshot.
 

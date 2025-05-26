@@ -13,7 +13,7 @@ import (
 type TeamsApi interface {
 
 	/*
-		AddAllTeamsToProject Add One or More Teams to One Project
+		AddAllTeamsToProject Add Teams to One Project
 
 		Adds one team to the specified project. All members of the team share the same project access. MongoDB Cloud limits the number of users to a maximum of 100 teams per project and a maximum of 250 teams per organization. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -24,7 +24,7 @@ type TeamsApi interface {
 	*/
 	AddAllTeamsToProject(ctx context.Context, groupId string, teamRole *[]TeamRole) AddAllTeamsToProjectApiRequest
 	/*
-		AddAllTeamsToProject Add One or More Teams to One Project
+		AddAllTeamsToProject Add Teams to One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -37,7 +37,7 @@ type TeamsApi interface {
 	AddAllTeamsToProjectExecute(r AddAllTeamsToProjectApiRequest) (*PaginatedTeamRole, *http.Response, error)
 
 	/*
-			AddTeamUser Assign MongoDB Cloud Users from One Organization to One Team
+			AddTeamUser Assign MongoDB Cloud Users in One Organization to One Team
 
 			Adds one or more MongoDB Cloud users from the specified organization to the specified team. Teams enable you to grant project access roles to MongoDB Cloud users. You can assign up to 250 MongoDB Cloud users from one organization to one team. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
@@ -53,7 +53,7 @@ type TeamsApi interface {
 	*/
 	AddTeamUser(ctx context.Context, orgId string, teamId string, addUserToTeam *[]AddUserToTeam) AddTeamUserApiRequest
 	/*
-		AddTeamUser Assign MongoDB Cloud Users from One Organization to One Team
+		AddTeamUser Assign MongoDB Cloud Users in One Organization to One Team
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -116,7 +116,7 @@ type TeamsApi interface {
 	DeleteTeamExecute(r DeleteTeamApiRequest) (*http.Response, error)
 
 	/*
-		GetTeamById Return One Team using its ID
+		GetTeamById Return One Team by ID
 
 		Returns one team that you identified using its unique 24-hexadecimal digit ID. This team belongs to one organization. Teams enable you to grant project access roles to MongoDB Cloud users. To use this resource, the requesting Service Account or API Key must have the Organization Member role.
 
@@ -127,7 +127,7 @@ type TeamsApi interface {
 	*/
 	GetTeamById(ctx context.Context, orgId string, teamId string) GetTeamByIdApiRequest
 	/*
-		GetTeamById Return One Team using its ID
+		GetTeamById Return One Team by ID
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -140,7 +140,7 @@ type TeamsApi interface {
 	GetTeamByIdExecute(r GetTeamByIdApiRequest) (*TeamResponse, *http.Response, error)
 
 	/*
-		GetTeamByName Return One Team using its Name
+		GetTeamByName Return One Team by Name
 
 		Returns one team that you identified using its human-readable name. This team belongs to one organization. Teams enable you to grant project access roles to MongoDB Cloud users. To use this resource, the requesting Service Account or API Key must have the Organization Member role.
 
@@ -151,7 +151,7 @@ type TeamsApi interface {
 	*/
 	GetTeamByName(ctx context.Context, orgId string, teamName string) GetTeamByNameApiRequest
 	/*
-		GetTeamByName Return One Team using its Name
+		GetTeamByName Return One Team by Name
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -344,7 +344,7 @@ func (r AddAllTeamsToProjectApiRequest) Execute() (*PaginatedTeamRole, *http.Res
 }
 
 /*
-AddAllTeamsToProject Add One or More Teams to One Project
+AddAllTeamsToProject Add Teams to One Project
 
 Adds one team to the specified project. All members of the team share the same project access. MongoDB Cloud limits the number of users to a maximum of 100 teams per project and a maximum of 250 teams per organization. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -467,7 +467,7 @@ func (r AddTeamUserApiRequest) Execute() (*PaginatedApiAppUser, *http.Response, 
 }
 
 /*
-AddTeamUser Assign MongoDB Cloud Users from One Organization to One Team
+AddTeamUser Assign MongoDB Cloud Users in One Organization to One Team
 
 Adds one or more MongoDB Cloud users from the specified organization to the specified team. Teams enable you to grant project access roles to MongoDB Cloud users. You can assign up to 250 MongoDB Cloud users from one organization to one team. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
 
@@ -816,7 +816,7 @@ func (r GetTeamByIdApiRequest) Execute() (*TeamResponse, *http.Response, error) 
 }
 
 /*
-GetTeamById Return One Team using its ID
+GetTeamById Return One Team by ID
 
 Returns one team that you identified using its unique 24-hexadecimal digit ID. This team belongs to one organization. Teams enable you to grant project access roles to MongoDB Cloud users. To use this resource, the requesting Service Account or API Key must have the Organization Member role.
 
@@ -933,7 +933,7 @@ func (r GetTeamByNameApiRequest) Execute() (*TeamResponse, *http.Response, error
 }
 
 /*
-GetTeamByName Return One Team using its Name
+GetTeamByName Return One Team by Name
 
 Returns one team that you identified using its human-readable name. This team belongs to one organization. Teams enable you to grant project access roles to MongoDB Cloud users. To use this resource, the requesting Service Account or API Key must have the Organization Member role.
 

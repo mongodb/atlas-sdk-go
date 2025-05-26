@@ -112,7 +112,7 @@ type EncryptionAtRestUsingCustomerKeyManagementApi interface {
 	GetEncryptionAtRestPrivateEndpointsForCloudProviderExecute(r GetEncryptionAtRestPrivateEndpointsForCloudProviderApiRequest) (*PaginatedApiAtlasEARPrivateEndpoint, *http.Response, error)
 
 	/*
-		RequestEncryptionAtRestPrivateEndpointDeletion Delete Private Endpoint for Encryption at Rest Using Customer Key Management
+		RequestEncryptionAtRestPrivateEndpointDeletion Delete One Private Endpoint for Encryption at Rest Using Customer Key Management
 
 		Deletes one private endpoint, identified by its ID, for encryption at rest using Customer Key Management.
 
@@ -124,7 +124,7 @@ type EncryptionAtRestUsingCustomerKeyManagementApi interface {
 	*/
 	RequestEncryptionAtRestPrivateEndpointDeletion(ctx context.Context, groupId string, cloudProvider string, endpointId string) RequestEncryptionAtRestPrivateEndpointDeletionApiRequest
 	/*
-		RequestEncryptionAtRestPrivateEndpointDeletion Delete Private Endpoint for Encryption at Rest Using Customer Key Management
+		RequestEncryptionAtRestPrivateEndpointDeletion Delete One Private Endpoint for Encryption at Rest Using Customer Key Management
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -137,7 +137,7 @@ type EncryptionAtRestUsingCustomerKeyManagementApi interface {
 	RequestEncryptionAtRestPrivateEndpointDeletionExecute(r RequestEncryptionAtRestPrivateEndpointDeletionApiRequest) (*http.Response, error)
 
 	/*
-			UpdateEncryptionAtRest Update Configuration for Encryption at Rest using Customer-Managed Keys for One Project
+			UpdateEncryptionAtRest Update Encryption at Rest Configuration for One Project
 
 			Updates the configuration for encryption at rest using the keys you manage through your cloud provider. MongoDB Cloud encrypts all storage even if you don't use your own key management. This resource requires the requesting Service Account or API Key to have the Project Owner role. This feature isn't available for `M0` free clusters, `M2`, `M5`, or serverless clusters.
 
@@ -150,7 +150,7 @@ type EncryptionAtRestUsingCustomerKeyManagementApi interface {
 	*/
 	UpdateEncryptionAtRest(ctx context.Context, groupId string, encryptionAtRest *EncryptionAtRest) UpdateEncryptionAtRestApiRequest
 	/*
-		UpdateEncryptionAtRest Update Configuration for Encryption at Rest using Customer-Managed Keys for One Project
+		UpdateEncryptionAtRest Update Encryption at Rest Configuration for One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -722,7 +722,7 @@ func (r RequestEncryptionAtRestPrivateEndpointDeletionApiRequest) Execute() (*ht
 }
 
 /*
-RequestEncryptionAtRestPrivateEndpointDeletion Delete Private Endpoint for Encryption at Rest Using Customer Key Management
+RequestEncryptionAtRestPrivateEndpointDeletion Delete One Private Endpoint for Encryption at Rest Using Customer Key Management
 
 Deletes one private endpoint, identified by its ID, for encryption at rest using Customer Key Management.
 
@@ -825,7 +825,7 @@ func (r UpdateEncryptionAtRestApiRequest) Execute() (*EncryptionAtRest, *http.Re
 }
 
 /*
-UpdateEncryptionAtRest Update Configuration for Encryption at Rest using Customer-Managed Keys for One Project
+UpdateEncryptionAtRest Update Encryption at Rest Configuration for One Project
 
 Updates the configuration for encryption at rest using the keys you manage through your cloud provider. MongoDB Cloud encrypts all storage even if you don't use your own key management. This resource requires the requesting Service Account or API Key to have the Project Owner role. This feature isn't available for `M0` free clusters, `M2`, `M5`, or serverless clusters.
 

@@ -17,7 +17,7 @@ type EventsApi interface {
 	/*
 			GetOrganizationEvent Return One Event from One Organization
 
-			Returns one event for the specified organization. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting Service Account or API Key must have the Organization Member role. Use the Return All Events from One Organization endpoint to retrieve all events to which the authenticated user has access.
+			Returns one event for the specified organization. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting Service Account or API Key must have the Organization Member role. Use the Return Events from One Organization endpoint to retrieve all events to which the authenticated user has access.
 
 		This resource remains under revision and may change.
 
@@ -43,7 +43,7 @@ type EventsApi interface {
 	/*
 			GetProjectEvent Return One Event from One Project
 
-			Returns one event for the specified project. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting Service Account or API Key must have the Project Read Only role. Use the Return All Events from One Project endpoint to retrieve all events to which the authenticated user has access.
+			Returns one event for the specified project. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting Service Account or API Key must have the Project Read Only role. Use the Return Events from One Project endpoint to retrieve all events to which the authenticated user has access.
 
 		This resource remains under revision and may change.
 
@@ -67,7 +67,7 @@ type EventsApi interface {
 	GetProjectEventExecute(r GetProjectEventApiRequest) (*EventViewForNdsGroup, *http.Response, error)
 
 	/*
-		ListEventTypes List All Possible Event Types
+		ListEventTypes Return All Event Types
 
 		Returns a list of all event types, along with a description and additional metadata about each event.
 
@@ -76,7 +76,7 @@ type EventsApi interface {
 	*/
 	ListEventTypes(ctx context.Context) ListEventTypesApiRequest
 	/*
-		ListEventTypes List All Possible Event Types
+		ListEventTypes Return All Event Types
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -89,9 +89,9 @@ type EventsApi interface {
 	ListEventTypesExecute(r ListEventTypesApiRequest) (*PaginatedEventTypeDetailsResponse, *http.Response, error)
 
 	/*
-			ListOrganizationEvents Return All Events from One Organization
+			ListOrganizationEvents Return Events from One Organization
 
-			Returns all events for the specified organization. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting Service Account or API Key must have the Organization Member role.
+			Returns events for the specified organization. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting Service Account or API Key must have the Organization Member role.
 
 		This resource remains under revision and may change.
 
@@ -101,7 +101,7 @@ type EventsApi interface {
 	*/
 	ListOrganizationEvents(ctx context.Context, orgId string) ListOrganizationEventsApiRequest
 	/*
-		ListOrganizationEvents Return All Events from One Organization
+		ListOrganizationEvents Return Events from One Organization
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -114,9 +114,9 @@ type EventsApi interface {
 	ListOrganizationEventsExecute(r ListOrganizationEventsApiRequest) (*OrgPaginatedEvent, *http.Response, error)
 
 	/*
-			ListProjectEvents Return All Events from One Project
+			ListProjectEvents Return Events from One Project
 
-			Returns all events for the specified project. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+			Returns events for the specified project. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
 		This resource remains under revision and may change.
 
@@ -126,7 +126,7 @@ type EventsApi interface {
 	*/
 	ListProjectEvents(ctx context.Context, groupId string) ListProjectEventsApiRequest
 	/*
-		ListProjectEvents Return All Events from One Project
+		ListProjectEvents Return Events from One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -179,7 +179,7 @@ func (r GetOrganizationEventApiRequest) Execute() (*EventViewForOrg, *http.Respo
 /*
 GetOrganizationEvent Return One Event from One Organization
 
-Returns one event for the specified organization. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting Service Account or API Key must have the Organization Member role. Use the Return All Events from One Organization endpoint to retrieve all events to which the authenticated user has access.
+Returns one event for the specified organization. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting Service Account or API Key must have the Organization Member role. Use the Return Events from One Organization endpoint to retrieve all events to which the authenticated user has access.
 
 This resource remains under revision and may change.
 
@@ -314,7 +314,7 @@ func (r GetProjectEventApiRequest) Execute() (*EventViewForNdsGroup, *http.Respo
 /*
 GetProjectEvent Return One Event from One Project
 
-Returns one event for the specified project. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting Service Account or API Key must have the Project Read Only role. Use the Return All Events from One Project endpoint to retrieve all events to which the authenticated user has access.
+Returns one event for the specified project. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting Service Account or API Key must have the Project Read Only role. Use the Return Events from One Project endpoint to retrieve all events to which the authenticated user has access.
 
 This resource remains under revision and may change.
 
@@ -459,7 +459,7 @@ func (r ListEventTypesApiRequest) Execute() (*PaginatedEventTypeDetailsResponse,
 }
 
 /*
-ListEventTypes List All Possible Event Types
+ListEventTypes Return All Event Types
 
 Returns a list of all event types, along with a description and additional metadata about each event.
 
@@ -651,9 +651,9 @@ func (r ListOrganizationEventsApiRequest) Execute() (*OrgPaginatedEvent, *http.R
 }
 
 /*
-ListOrganizationEvents Return All Events from One Organization
+ListOrganizationEvents Return Events from One Organization
 
-Returns all events for the specified organization. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting Service Account or API Key must have the Organization Member role.
+Returns events for the specified organization. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting Service Account or API Key must have the Organization Member role.
 
 This resource remains under revision and may change.
 
@@ -886,9 +886,9 @@ func (r ListProjectEventsApiRequest) Execute() (*GroupPaginatedEvent, *http.Resp
 }
 
 /*
-ListProjectEvents Return All Events from One Project
+ListProjectEvents Return Events from One Project
 
-Returns all events for the specified project. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+Returns events for the specified project. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
 This resource remains under revision and may change.
 

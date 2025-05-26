@@ -13,7 +13,7 @@ import (
 type SharedTierRestoreJobsApi interface {
 
 	/*
-			CreateSharedClusterBackupRestoreJob Create One Restore Job from One M2 or M5 Cluster
+			CreateSharedClusterBackupRestoreJob Create One Restore Job for One M2 or M5 Cluster
 
 			Restores the specified M2 or M5 cluster. MongoDB Cloud limits which clusters can be the target clusters of a restore. The target cluster can't use encryption at rest, run a major release MongoDB version different than the snapshot, or receive client requests during restores. MongoDB Cloud deletes all existing data on the target cluster prior to the restore operation. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -27,7 +27,7 @@ type SharedTierRestoreJobsApi interface {
 	*/
 	CreateSharedClusterBackupRestoreJob(ctx context.Context, clusterName string, groupId string, tenantRestore *TenantRestore) CreateSharedClusterBackupRestoreJobApiRequest
 	/*
-		CreateSharedClusterBackupRestoreJob Create One Restore Job from One M2 or M5 Cluster
+		CreateSharedClusterBackupRestoreJob Create One Restore Job for One M2 or M5 Cluster
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -125,7 +125,7 @@ func (r CreateSharedClusterBackupRestoreJobApiRequest) Execute() (*TenantRestore
 }
 
 /*
-CreateSharedClusterBackupRestoreJob Create One Restore Job from One M2 or M5 Cluster
+CreateSharedClusterBackupRestoreJob Create One Restore Job for One M2 or M5 Cluster
 
 Restores the specified M2 or M5 cluster. MongoDB Cloud limits which clusters can be the target clusters of a restore. The target cluster can't use encryption at rest, run a major release MongoDB version different than the snapshot, or receive client requests during restores. MongoDB Cloud deletes all existing data on the target cluster prior to the restore operation. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 

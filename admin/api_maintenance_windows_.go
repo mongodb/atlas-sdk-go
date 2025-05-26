@@ -105,7 +105,7 @@ type MaintenanceWindowsApi interface {
 	ToggleMaintenanceAutoDeferExecute(r ToggleMaintenanceAutoDeferApiRequest) (*http.Response, error)
 
 	/*
-		UpdateMaintenanceWindow Update Maintenance Window for One Project
+		UpdateMaintenanceWindow Update One Maintenance Window for One Project
 
 		Updates the maintenance window for the specified project. Urgent maintenance activities such as security patches can't wait for your chosen window. MongoDB Cloud starts those maintenance activities when needed. After you schedule maintenance for your cluster, you can't change your maintenance window until the current maintenance efforts complete. The maintenance procedure that MongoDB Cloud performs requires at least one replica set election during the maintenance window per replica set. Maintenance always begins as close to the scheduled hour as possible, but in-progress cluster updates or unexpected system issues could delay the start time. Updating the maintenance window will reset any maintenance deferrals for this project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -116,7 +116,7 @@ type MaintenanceWindowsApi interface {
 	*/
 	UpdateMaintenanceWindow(ctx context.Context, groupId string, groupMaintenanceWindow *GroupMaintenanceWindow) UpdateMaintenanceWindowApiRequest
 	/*
-		UpdateMaintenanceWindow Update Maintenance Window for One Project
+		UpdateMaintenanceWindow Update One Maintenance Window for One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -551,7 +551,7 @@ func (r UpdateMaintenanceWindowApiRequest) Execute() (*http.Response, error) {
 }
 
 /*
-UpdateMaintenanceWindow Update Maintenance Window for One Project
+UpdateMaintenanceWindow Update One Maintenance Window for One Project
 
 Updates the maintenance window for the specified project. Urgent maintenance activities such as security patches can't wait for your chosen window. MongoDB Cloud starts those maintenance activities when needed. After you schedule maintenance for your cluster, you can't change your maintenance window until the current maintenance efforts complete. The maintenance procedure that MongoDB Cloud performs requires at least one replica set election during the maintenance window per replica set. Maintenance always begins as close to the scheduled hour as possible, but in-progress cluster updates or unexpected system issues could delay the start time. Updating the maintenance window will reset any maintenance deferrals for this project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 

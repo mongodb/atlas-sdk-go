@@ -14,7 +14,7 @@ import (
 type InvoicesApi interface {
 
 	/*
-		CreateCostExplorerQueryProcess Create Cost Explorer query process
+		CreateCostExplorerQueryProcess Create One Cost Explorer Query Process
 
 		Creates a query process within the Cost Explorer for the given parameters. A token is returned that can be used to poll the status of the query and eventually retrieve the results.
 
@@ -25,7 +25,7 @@ type InvoicesApi interface {
 	*/
 	CreateCostExplorerQueryProcess(ctx context.Context, orgId string, costExplorerFilterRequestBody *CostExplorerFilterRequestBody) CreateCostExplorerQueryProcessApiRequest
 	/*
-		CreateCostExplorerQueryProcess Create Cost Explorer query process
+		CreateCostExplorerQueryProcess Create One Cost Explorer Query Process
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -38,7 +38,7 @@ type InvoicesApi interface {
 	CreateCostExplorerQueryProcessExecute(r CreateCostExplorerQueryProcessApiRequest) (*CostExplorerFilterResponse, *http.Response, error)
 
 	/*
-			DownloadInvoiceCsv Return One Organization Invoice as CSV
+			DownloadInvoiceCsv Return One Invoice as CSV for One Organization
 
 			Returns one invoice that MongoDB issued to the specified organization in CSV format. A unique 24-hexadecimal digit string identifies the invoice. To use this resource, the requesting Service Account or API Key have at least the Organization Billing Viewer, Organization Billing Admin, or Organization Owner role. If you have a cross-organization setup, you can query for a linked invoice if you have the Organization Billing Admin or Organization Owner Role.
 		 To compute the total owed amount of the invoice - sum up total owed amount of each payment included into the invoice. To compute payment's owed amount - use formula *totalBilledCents* * *unitPrice* + *salesTax* - *startingBalanceCents*.
@@ -50,7 +50,7 @@ type InvoicesApi interface {
 	*/
 	DownloadInvoiceCsv(ctx context.Context, orgId string, invoiceId string) DownloadInvoiceCsvApiRequest
 	/*
-		DownloadInvoiceCsv Return One Organization Invoice as CSV
+		DownloadInvoiceCsv Return One Invoice as CSV for One Organization
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -87,7 +87,7 @@ type InvoicesApi interface {
 	GetCostExplorerQueryProcessExecute(r GetCostExplorerQueryProcessApiRequest) (any, *http.Response, error)
 
 	/*
-			GetInvoice Return One Organization Invoice
+			GetInvoice Return One Invoice for One Organization
 
 			Returns one invoice that MongoDB issued to the specified organization. A unique 24-hexadecimal digit string identifies the invoice. You can choose to receive this invoice in JSON or CSV format. To use this resource, the requesting Service Account or API Key must have the Organization Billing Viewer, Organization Billing Admin, or Organization Owner role. If you have a cross-organization setup, you can query for a linked invoice if you have the Organization Billing Admin or Organization Owner role.
 		To compute the total owed amount of the invoice - sum up total owed amount of each payment included into the invoice. To compute payment's owed amount - use formula *totalBilledCents* * *unitPrice* + *salesTax* - *startingBalanceCents*.
@@ -99,7 +99,7 @@ type InvoicesApi interface {
 	*/
 	GetInvoice(ctx context.Context, orgId string, invoiceId string) GetInvoiceApiRequest
 	/*
-		GetInvoice Return One Organization Invoice
+		GetInvoice Return One Invoice for One Organization
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -159,7 +159,7 @@ type InvoicesApi interface {
 	ListPendingInvoicesExecute(r ListPendingInvoicesApiRequest) (*PaginatedApiInvoice, *http.Response, error)
 
 	/*
-		QueryLineItemsFromSingleInvoice Query lineItems of the specified invoiceId
+		QueryLineItemsFromSingleInvoice Return All Line Items for One Invoice by Invoice ID
 
 		Query the lineItems of the specified invoice and return the result JSON. A unique 24-hexadecimal digit string identifies the invoice.
 
@@ -171,7 +171,7 @@ type InvoicesApi interface {
 	*/
 	QueryLineItemsFromSingleInvoice(ctx context.Context, orgId string, invoiceId string, apiPublicUsageDetailsQueryRequest *ApiPublicUsageDetailsQueryRequest) QueryLineItemsFromSingleInvoiceApiRequest
 	/*
-		QueryLineItemsFromSingleInvoice Query lineItems of the specified invoiceId
+		QueryLineItemsFromSingleInvoice Return All Line Items for One Invoice by Invoice ID
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -213,7 +213,7 @@ func (r CreateCostExplorerQueryProcessApiRequest) Execute() (*CostExplorerFilter
 }
 
 /*
-CreateCostExplorerQueryProcess Create Cost Explorer query process
+CreateCostExplorerQueryProcess Create One Cost Explorer Query Process
 
 Creates a query process within the Cost Explorer for the given parameters. A token is returned that can be used to poll the status of the query and eventually retrieve the results.
 
@@ -333,7 +333,7 @@ func (r DownloadInvoiceCsvApiRequest) Execute() (string, *http.Response, error) 
 }
 
 /*
-DownloadInvoiceCsv Return One Organization Invoice as CSV
+DownloadInvoiceCsv Return One Invoice as CSV for One Organization
 
 Returns one invoice that MongoDB issued to the specified organization in CSV format. A unique 24-hexadecimal digit string identifies the invoice. To use this resource, the requesting Service Account or API Key have at least the Organization Billing Viewer, Organization Billing Admin, or Organization Owner role. If you have a cross-organization setup, you can query for a linked invoice if you have the Organization Billing Admin or Organization Owner Role.
 
@@ -569,7 +569,7 @@ func (r GetInvoiceApiRequest) Execute() (*BillingInvoice, *http.Response, error)
 }
 
 /*
-GetInvoice Return One Organization Invoice
+GetInvoice Return One Invoice for One Organization
 
 Returns one invoice that MongoDB issued to the specified organization. A unique 24-hexadecimal digit string identifies the invoice. You can choose to receive this invoice in JSON or CSV format. To use this resource, the requesting Service Account or API Key must have the Organization Billing Viewer, Organization Billing Admin, or Organization Owner role. If you have a cross-organization setup, you can query for a linked invoice if you have the Organization Billing Admin or Organization Owner role.
 To compute the total owed amount of the invoice - sum up total owed amount of each payment included into the invoice. To compute payment's owed amount - use formula *totalBilledCents* * *unitPrice* + *salesTax* - *startingBalanceCents*.
@@ -1067,7 +1067,7 @@ func (r QueryLineItemsFromSingleInvoiceApiRequest) Execute() (*PaginatedPublicAp
 }
 
 /*
-QueryLineItemsFromSingleInvoice Query lineItems of the specified invoiceId
+QueryLineItemsFromSingleInvoice Return All Line Items for One Invoice by Invoice ID
 
 Query the lineItems of the specified invoice and return the result JSON. A unique 24-hexadecimal digit string identifies the invoice.
 
