@@ -13,7 +13,7 @@ import (
 type NetworkPeeringApi interface {
 
 	/*
-		CreatePeeringConnection Create One New Network Peering Connection
+		CreatePeeringConnection Create One Network Peering Connection
 
 		Creates one new network peering connection in the specified project. Network peering allows multiple cloud-hosted applications to securely connect to the same project. To use this resource, the requesting Service Account or API Key must have the Project Owner role. To learn more about considerations and prerequisites, see the Network Peering Documentation.
 
@@ -24,7 +24,7 @@ type NetworkPeeringApi interface {
 	*/
 	CreatePeeringConnection(ctx context.Context, groupId string, baseNetworkPeeringConnectionSettings *BaseNetworkPeeringConnectionSettings) CreatePeeringConnectionApiRequest
 	/*
-		CreatePeeringConnection Create One New Network Peering Connection
+		CreatePeeringConnection Create One Network Peering Connection
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -37,7 +37,7 @@ type NetworkPeeringApi interface {
 	CreatePeeringConnectionExecute(r CreatePeeringConnectionApiRequest) (*BaseNetworkPeeringConnectionSettings, *http.Response, error)
 
 	/*
-		CreatePeeringContainer Create One New Network Peering Container
+		CreatePeeringContainer Create One Network Peering Container
 
 		Creates one new network peering container in the specified project. MongoDB Cloud can deploy Network Peering connections in a network peering container. GCP can have one container per project. AWS and Azure can have one container per cloud provider region. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -48,7 +48,7 @@ type NetworkPeeringApi interface {
 	*/
 	CreatePeeringContainer(ctx context.Context, groupId string, cloudProviderContainer *CloudProviderContainer) CreatePeeringContainerApiRequest
 	/*
-		CreatePeeringContainer Create One New Network Peering Container
+		CreatePeeringContainer Create One Network Peering Container
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -61,7 +61,7 @@ type NetworkPeeringApi interface {
 	CreatePeeringContainerExecute(r CreatePeeringContainerApiRequest) (*CloudProviderContainer, *http.Response, error)
 
 	/*
-		DeletePeeringConnection Remove One Existing Network Peering Connection
+		DeletePeeringConnection Remove One Network Peering Connection
 
 		Removes one network peering connection in the specified project. If you Removes the last network peering connection associated with a project, MongoDB Cloud also removes any AWS security groups from the project IP access list. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -72,7 +72,7 @@ type NetworkPeeringApi interface {
 	*/
 	DeletePeeringConnection(ctx context.Context, groupId string, peerId string) DeletePeeringConnectionApiRequest
 	/*
-		DeletePeeringConnection Remove One Existing Network Peering Connection
+		DeletePeeringConnection Remove One Network Peering Connection
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -109,7 +109,7 @@ type NetworkPeeringApi interface {
 	DeletePeeringContainerExecute(r DeletePeeringContainerApiRequest) (*http.Response, error)
 
 	/*
-		DisablePeering Disable Connect via Peering Only Mode for One Project
+		DisablePeering Disable Connect via Peering-Only Mode for One Project
 
 		Disables Connect via Peering Only mode for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -122,7 +122,7 @@ type NetworkPeeringApi interface {
 	*/
 	DisablePeering(ctx context.Context, groupId string, privateIPMode *PrivateIPMode) DisablePeeringApiRequest
 	/*
-		DisablePeering Disable Connect via Peering Only Mode for One Project
+		DisablePeering Disable Connect via Peering-Only Mode for One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -254,7 +254,7 @@ type NetworkPeeringApi interface {
 	ListPeeringContainersExecute(r ListPeeringContainersApiRequest) (*PaginatedCloudProviderContainer, *http.Response, error)
 
 	/*
-		UpdatePeeringConnection Update One New Network Peering Connection
+		UpdatePeeringConnection Update One Network Peering Connection
 
 		Updates one specified network peering connection in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -266,7 +266,7 @@ type NetworkPeeringApi interface {
 	*/
 	UpdatePeeringConnection(ctx context.Context, groupId string, peerId string, baseNetworkPeeringConnectionSettings *BaseNetworkPeeringConnectionSettings) UpdatePeeringConnectionApiRequest
 	/*
-		UpdatePeeringConnection Update One New Network Peering Connection
+		UpdatePeeringConnection Update One Network Peering Connection
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -304,7 +304,7 @@ type NetworkPeeringApi interface {
 	UpdatePeeringContainerExecute(r UpdatePeeringContainerApiRequest) (*CloudProviderContainer, *http.Response, error)
 
 	/*
-		VerifyConnectViaPeeringOnlyModeForOneProject Verify Connect via Peering Only Mode for One Project
+		VerifyConnectViaPeeringOnlyModeForOneProject Verify Connect via Peering-Only Mode for One Project
 
 		Verifies if someone set the specified project to **Connect via Peering Only** mode. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
@@ -316,7 +316,7 @@ type NetworkPeeringApi interface {
 	*/
 	VerifyConnectViaPeeringOnlyModeForOneProject(ctx context.Context, groupId string) VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest
 	/*
-		VerifyConnectViaPeeringOnlyModeForOneProject Verify Connect via Peering Only Mode for One Project
+		VerifyConnectViaPeeringOnlyModeForOneProject Verify Connect via Peering-Only Mode for One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -360,7 +360,7 @@ func (r CreatePeeringConnectionApiRequest) Execute() (*BaseNetworkPeeringConnect
 }
 
 /*
-CreatePeeringConnection Create One New Network Peering Connection
+CreatePeeringConnection Create One Network Peering Connection
 
 Creates one new network peering connection in the specified project. Network peering allows multiple cloud-hosted applications to securely connect to the same project. To use this resource, the requesting Service Account or API Key must have the Project Owner role. To learn more about considerations and prerequisites, see the Network Peering Documentation.
 
@@ -483,7 +483,7 @@ func (r CreatePeeringContainerApiRequest) Execute() (*CloudProviderContainer, *h
 }
 
 /*
-CreatePeeringContainer Create One New Network Peering Container
+CreatePeeringContainer Create One Network Peering Container
 
 Creates one new network peering container in the specified project. MongoDB Cloud can deploy Network Peering connections in a network peering container. GCP can have one container per project. AWS and Azure can have one container per cloud provider region. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -606,7 +606,7 @@ func (r DeletePeeringConnectionApiRequest) Execute() (any, *http.Response, error
 }
 
 /*
-DeletePeeringConnection Remove One Existing Network Peering Connection
+DeletePeeringConnection Remove One Network Peering Connection
 
 Removes one network peering connection in the specified project. If you Removes the last network peering connection associated with a project, MongoDB Cloud also removes any AWS security groups from the project IP access list. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -835,7 +835,7 @@ func (r DisablePeeringApiRequest) Execute() (*PrivateIPMode, *http.Response, err
 }
 
 /*
-DisablePeering Disable Connect via Peering Only Mode for One Project
+DisablePeering Disable Connect via Peering-Only Mode for One Project
 
 Disables Connect via Peering Only mode for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -1726,7 +1726,7 @@ func (r UpdatePeeringConnectionApiRequest) Execute() (*BaseNetworkPeeringConnect
 }
 
 /*
-UpdatePeeringConnection Update One New Network Peering Connection
+UpdatePeeringConnection Update One Network Peering Connection
 
 Updates one specified network peering connection in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -1984,7 +1984,7 @@ func (r VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest) Execute() (*Priv
 }
 
 /*
-VerifyConnectViaPeeringOnlyModeForOneProject Verify Connect via Peering Only Mode for One Project
+VerifyConnectViaPeeringOnlyModeForOneProject Verify Connect via Peering-Only Mode for One Project
 
 Verifies if someone set the specified project to **Connect via Peering Only** mode. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 

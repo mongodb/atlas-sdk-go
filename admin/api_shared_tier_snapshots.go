@@ -40,7 +40,7 @@ type SharedTierSnapshotsApi interface {
 	DownloadSharedClusterBackupExecute(r DownloadSharedClusterBackupApiRequest) (*TenantRestore, *http.Response, error)
 
 	/*
-			GetSharedClusterBackup Return One Snapshot for One M2 or M5 Cluster
+			GetSharedClusterBackup Return One Snapshot of One M2 or M5 Cluster
 
 			Returns details for one snapshot for the specified shared cluster. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
@@ -54,7 +54,7 @@ type SharedTierSnapshotsApi interface {
 	*/
 	GetSharedClusterBackup(ctx context.Context, groupId string, clusterName string, snapshotId string) GetSharedClusterBackupApiRequest
 	/*
-		GetSharedClusterBackup Return One Snapshot for One M2 or M5 Cluster
+		GetSharedClusterBackup Return One Snapshot of One M2 or M5 Cluster
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -259,7 +259,7 @@ func (r GetSharedClusterBackupApiRequest) Execute() (*BackupTenantSnapshot, *htt
 }
 
 /*
-GetSharedClusterBackup Return One Snapshot for One M2 or M5 Cluster
+GetSharedClusterBackup Return One Snapshot of One M2 or M5 Cluster
 
 Returns details for one snapshot for the specified shared cluster. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
