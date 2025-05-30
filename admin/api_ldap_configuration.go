@@ -13,7 +13,7 @@ import (
 type LDAPConfigurationApi interface {
 
 	/*
-		DeleteLdapConfiguration Remove the Current LDAP User to DN Mapping
+		DeleteLdapConfiguration Remove LDAP User to DN Mapping
 
 		Removes the current LDAP Distinguished Name mapping captured in the ``userToDNMapping`` document from the LDAP configuration for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -23,7 +23,7 @@ type LDAPConfigurationApi interface {
 	*/
 	DeleteLdapConfiguration(ctx context.Context, groupId string) DeleteLdapConfigurationApiRequest
 	/*
-		DeleteLdapConfiguration Remove the Current LDAP User to DN Mapping
+		DeleteLdapConfiguration Remove LDAP User to DN Mapping
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -36,7 +36,7 @@ type LDAPConfigurationApi interface {
 	DeleteLdapConfigurationExecute(r DeleteLdapConfigurationApiRequest) (*UserSecurity, *http.Response, error)
 
 	/*
-		GetLdapConfiguration Return the Current LDAP or X.509 Configuration
+		GetLdapConfiguration Return LDAP or X.509 Configuration
 
 		Returns the current LDAP configuration for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -46,7 +46,7 @@ type LDAPConfigurationApi interface {
 	*/
 	GetLdapConfiguration(ctx context.Context, groupId string) GetLdapConfigurationApiRequest
 	/*
-		GetLdapConfiguration Return the Current LDAP or X.509 Configuration
+		GetLdapConfiguration Return LDAP or X.509 Configuration
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -59,7 +59,7 @@ type LDAPConfigurationApi interface {
 	GetLdapConfigurationExecute(r GetLdapConfigurationApiRequest) (*UserSecurity, *http.Response, error)
 
 	/*
-		GetLdapConfigurationStatus Return the Status of One Verify LDAP Configuration Request
+		GetLdapConfigurationStatus Return Status of LDAP Configuration Verification in One Project
 
 		Returns the status of one request to verify one LDAP configuration for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -70,7 +70,7 @@ type LDAPConfigurationApi interface {
 	*/
 	GetLdapConfigurationStatus(ctx context.Context, groupId string, requestId string) GetLdapConfigurationStatusApiRequest
 	/*
-		GetLdapConfigurationStatus Return the Status of One Verify LDAP Configuration Request
+		GetLdapConfigurationStatus Return Status of LDAP Configuration Verification in One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -83,7 +83,7 @@ type LDAPConfigurationApi interface {
 	GetLdapConfigurationStatusExecute(r GetLdapConfigurationStatusApiRequest) (*LDAPVerifyConnectivityJobRequest, *http.Response, error)
 
 	/*
-			SaveLdapConfiguration Edit the LDAP or X.509 Configuration
+			SaveLdapConfiguration Update LDAP or X.509 Configuration
 
 			Edits the LDAP configuration for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -96,7 +96,7 @@ type LDAPConfigurationApi interface {
 	*/
 	SaveLdapConfiguration(ctx context.Context, groupId string, userSecurity *UserSecurity) SaveLdapConfigurationApiRequest
 	/*
-		SaveLdapConfiguration Edit the LDAP or X.509 Configuration
+		SaveLdapConfiguration Update LDAP or X.509 Configuration
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -109,7 +109,7 @@ type LDAPConfigurationApi interface {
 	SaveLdapConfigurationExecute(r SaveLdapConfigurationApiRequest) (*UserSecurity, *http.Response, error)
 
 	/*
-		VerifyLdapConfiguration Verify the LDAP Configuration in One Project
+		VerifyLdapConfiguration Verify LDAP Configuration in One Project
 
 		Verifies the LDAP configuration for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -120,7 +120,7 @@ type LDAPConfigurationApi interface {
 	*/
 	VerifyLdapConfiguration(ctx context.Context, groupId string, lDAPVerifyConnectivityJobRequestParams *LDAPVerifyConnectivityJobRequestParams) VerifyLdapConfigurationApiRequest
 	/*
-		VerifyLdapConfiguration Verify the LDAP Configuration in One Project
+		VerifyLdapConfiguration Verify LDAP Configuration in One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -159,7 +159,7 @@ func (r DeleteLdapConfigurationApiRequest) Execute() (*UserSecurity, *http.Respo
 }
 
 /*
-DeleteLdapConfiguration Remove the Current LDAP User to DN Mapping
+DeleteLdapConfiguration Remove LDAP User to DN Mapping
 
 Removes the current LDAP Distinguished Name mapping captured in the “userToDNMapping“ document from the LDAP configuration for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -273,7 +273,7 @@ func (r GetLdapConfigurationApiRequest) Execute() (*UserSecurity, *http.Response
 }
 
 /*
-GetLdapConfiguration Return the Current LDAP or X.509 Configuration
+GetLdapConfiguration Return LDAP or X.509 Configuration
 
 Returns the current LDAP configuration for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -390,7 +390,7 @@ func (r GetLdapConfigurationStatusApiRequest) Execute() (*LDAPVerifyConnectivity
 }
 
 /*
-GetLdapConfigurationStatus Return the Status of One Verify LDAP Configuration Request
+GetLdapConfigurationStatus Return Status of LDAP Configuration Verification in One Project
 
 Returns the status of one request to verify one LDAP configuration for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -513,7 +513,7 @@ func (r SaveLdapConfigurationApiRequest) Execute() (*UserSecurity, *http.Respons
 }
 
 /*
-SaveLdapConfiguration Edit the LDAP or X.509 Configuration
+SaveLdapConfiguration Update LDAP or X.509 Configuration
 
 Edits the LDAP configuration for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -638,7 +638,7 @@ func (r VerifyLdapConfigurationApiRequest) Execute() (*LDAPVerifyConnectivityJob
 }
 
 /*
-VerifyLdapConfiguration Verify the LDAP Configuration in One Project
+VerifyLdapConfiguration Verify LDAP Configuration in One Project
 
 Verifies the LDAP configuration for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
