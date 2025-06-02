@@ -1,9 +1,6 @@
 SOURCE_FILES?=./...
 GOLANGCI_VERSION=v2.1.6 # Also update golangci-lint GH action in pr.yml when updating this version
 
-GOIMPORTS_VERSION=v0.21.0
-COVERAGE=coverage.out
-
 export GO111MODULE := on
 export PATH := ./bin:$(PATH)
 
@@ -20,7 +17,7 @@ build:
 
 .PHONY: test
 test:
-	go test $(SOURCE_FILES) -coverprofile $(COVERAGE) -timeout=30s -parallel=4 -cover -race
+	go test $(SOURCE_FILES) -timeout=30s -parallel=4 -race
 
 .PHONY: test-examples
 test-examples:
@@ -48,7 +45,7 @@ install-golangci-lint:
 
 .PHONY: install-goimports
 install-goimports:
-	go install golang.org/x/tools/cmd/goimports@$(GOIMPORTS_VERSION)
+	go install golang.org/x/tools/cmd/goimports@latest
 
 .PHONY: tools
 tools: install-golangci-lint install-goimports
