@@ -20,4 +20,3 @@ npm exec -c "replace-in-file '/$OLD_PACKAGE/g' '$NEW_PACKAGE' $VERSION_UPDATE_PA
 
 echo "Add preview version to examples go.mod"
 (cd "$examples_path" && go get $NEW_PACKAGE)
-
