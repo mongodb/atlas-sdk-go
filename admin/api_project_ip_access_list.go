@@ -109,7 +109,7 @@ type ProjectIPAccessListApi interface {
 	GetProjectIpListExecute(r GetProjectIpListApiRequest) (*NetworkPermissionEntry, *http.Response, error)
 
 	/*
-		ListProjectIpAccessLists Return Project IP Access List
+		ListProjectIpAccessLists Return All Project IP Access List Entries
 
 		Returns all access list entries from the specified project's IP access list. Each entry in the project's IP access list contains either one IP address or one CIDR-notated block of IP addresses. MongoDB Cloud only allows client connections to the cluster from entries in the project's IP access list. To use this resource, the requesting Service Account or API Key must have the Project Read Only or Project Charts Admin roles. This resource replaces the whitelist resource. MongoDB Cloud removed whitelists in July 2021. Update your applications to use this new resource. The `/groups/{GROUP-ID}/accessList` endpoint manages the database IP access list. This endpoint is distinct from the `orgs/{ORG-ID}/apiKeys/{API-KEY-ID}/accesslist` endpoint, which manages the access list for MongoDB Cloud organizations.
 
@@ -119,7 +119,7 @@ type ProjectIPAccessListApi interface {
 	*/
 	ListProjectIpAccessLists(ctx context.Context, groupId string) ListProjectIpAccessListsApiRequest
 	/*
-		ListProjectIpAccessLists Return Project IP Access List
+		ListProjectIpAccessLists Return All Project IP Access List Entries
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -708,7 +708,7 @@ func (r ListProjectIpAccessListsApiRequest) Execute() (*PaginatedNetworkAccess, 
 }
 
 /*
-ListProjectIpAccessLists Return Project IP Access List
+ListProjectIpAccessLists Return All Project IP Access List Entries
 
 Returns all access list entries from the specified project's IP access list. Each entry in the project's IP access list contains either one IP address or one CIDR-notated block of IP addresses. MongoDB Cloud only allows client connections to the cluster from entries in the project's IP access list. To use this resource, the requesting Service Account or API Key must have the Project Read Only or Project Charts Admin roles. This resource replaces the whitelist resource. MongoDB Cloud removed whitelists in July 2021. Update your applications to use this new resource. The `/groups/{GROUP-ID}/accessList` endpoint manages the database IP access list. This endpoint is distinct from the `orgs/{ORG-ID}/apiKeys/{API-KEY-ID}/accesslist` endpoint, which manages the access list for MongoDB Cloud organizations.
 

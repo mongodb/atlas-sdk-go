@@ -38,7 +38,7 @@ type ServiceAccountsApi interface {
 	AddProjectServiceAccountExecute(r AddProjectServiceAccountApiRequest) (*GroupServiceAccount, *http.Response, error)
 
 	/*
-		CreateProjectServiceAccount Create and Assign one Service Account to one Project
+		CreateProjectServiceAccount Create One Project Service Account
 
 		Creates one Service Account for the specified Project. The Service Account will automatically be added as an Organization Member to the Organization that the specified Project is a part of.
 
@@ -49,7 +49,7 @@ type ServiceAccountsApi interface {
 	*/
 	CreateProjectServiceAccount(ctx context.Context, groupId string, groupServiceAccountRequest *GroupServiceAccountRequest) CreateProjectServiceAccountApiRequest
 	/*
-		CreateProjectServiceAccount Create and Assign one Service Account to one Project
+		CreateProjectServiceAccount Create One Project Service Account
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -62,7 +62,7 @@ type ServiceAccountsApi interface {
 	CreateProjectServiceAccountExecute(r CreateProjectServiceAccountApiRequest) (*GroupServiceAccount, *http.Response, error)
 
 	/*
-		CreateProjectServiceAccountAccessList Add Access List entries for one Project Service Account
+		CreateProjectServiceAccountAccessList Add Access List Entries for One Project Service Account
 
 		Add Access List Entries for the specified Service Account for the project. Resources require all API requests to originate from IP addresses on the API access list.
 
@@ -74,7 +74,7 @@ type ServiceAccountsApi interface {
 	*/
 	CreateProjectServiceAccountAccessList(ctx context.Context, groupId string, clientId string, serviceAccountIPAccessListEntry *[]ServiceAccountIPAccessListEntry) CreateProjectServiceAccountAccessListApiRequest
 	/*
-		CreateProjectServiceAccountAccessList Add Access List entries for one Project Service Account
+		CreateProjectServiceAccountAccessList Add Access List Entries for One Project Service Account
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -87,7 +87,7 @@ type ServiceAccountsApi interface {
 	CreateProjectServiceAccountAccessListExecute(r CreateProjectServiceAccountAccessListApiRequest) (*PaginatedServiceAccountIPAccessEntry, *http.Response, error)
 
 	/*
-		CreateProjectServiceAccountSecret Create one Project Service Account Secret
+		CreateProjectServiceAccountSecret Create One Project Service Account Secret
 
 		Create a secret for the specified Service Account in the specified Project.
 
@@ -99,7 +99,7 @@ type ServiceAccountsApi interface {
 	*/
 	CreateProjectServiceAccountSecret(ctx context.Context, groupId string, clientId string, serviceAccountSecretRequest *ServiceAccountSecretRequest) CreateProjectServiceAccountSecretApiRequest
 	/*
-		CreateProjectServiceAccountSecret Create one Project Service Account Secret
+		CreateProjectServiceAccountSecret Create One Project Service Account Secret
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -112,7 +112,7 @@ type ServiceAccountsApi interface {
 	CreateProjectServiceAccountSecretExecute(r CreateProjectServiceAccountSecretApiRequest) (*ServiceAccountSecret, *http.Response, error)
 
 	/*
-		CreateServiceAccount Create one Organization Service Account
+		CreateServiceAccount Create One Organization Service Account
 
 		Creates one Service Account for the specified Organization.
 
@@ -123,7 +123,7 @@ type ServiceAccountsApi interface {
 	*/
 	CreateServiceAccount(ctx context.Context, orgId string, orgServiceAccountRequest *OrgServiceAccountRequest) CreateServiceAccountApiRequest
 	/*
-		CreateServiceAccount Create one Organization Service Account
+		CreateServiceAccount Create One Organization Service Account
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -136,7 +136,7 @@ type ServiceAccountsApi interface {
 	CreateServiceAccountExecute(r CreateServiceAccountApiRequest) (*OrgServiceAccount, *http.Response, error)
 
 	/*
-		CreateServiceAccountAccessList Add Access List entries for one Organization Service Account
+		CreateServiceAccountAccessList Add Access List Entries for One Organization Service Account
 
 		Add Access List Entries for the specified Service Account for the organization. Resources require all API requests to originate from IP addresses on the API access list.
 
@@ -148,7 +148,7 @@ type ServiceAccountsApi interface {
 	*/
 	CreateServiceAccountAccessList(ctx context.Context, orgId string, clientId string, serviceAccountIPAccessListEntry *[]ServiceAccountIPAccessListEntry) CreateServiceAccountAccessListApiRequest
 	/*
-		CreateServiceAccountAccessList Add Access List entries for one Organization Service Account
+		CreateServiceAccountAccessList Add Access List Entries for One Organization Service Account
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -161,7 +161,7 @@ type ServiceAccountsApi interface {
 	CreateServiceAccountAccessListExecute(r CreateServiceAccountAccessListApiRequest) (*PaginatedServiceAccountIPAccessEntry, *http.Response, error)
 
 	/*
-		CreateServiceAccountSecret Create one Organization Service Account Secret
+		CreateServiceAccountSecret Create One Organization Service Account Secret
 
 		Create a secret for the specified Service Account.
 
@@ -173,7 +173,7 @@ type ServiceAccountsApi interface {
 	*/
 	CreateServiceAccountSecret(ctx context.Context, orgId string, clientId string, serviceAccountSecretRequest *ServiceAccountSecretRequest) CreateServiceAccountSecretApiRequest
 	/*
-		CreateServiceAccountSecret Create one Organization Service Account Secret
+		CreateServiceAccountSecret Create One Organization Service Account Secret
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -186,7 +186,7 @@ type ServiceAccountsApi interface {
 	CreateServiceAccountSecretExecute(r CreateServiceAccountSecretApiRequest) (*ServiceAccountSecret, *http.Response, error)
 
 	/*
-		DeleteProjectServiceAccount Unassign One Service Account from One Project
+		DeleteProjectServiceAccount Remove One Project Service Account
 
 		Removes the specified Service Account from the specified project. The Service Account will still be a part of the Organization it was created in, and the credentials will remain active until expired or manually revoked.
 
@@ -197,7 +197,7 @@ type ServiceAccountsApi interface {
 	*/
 	DeleteProjectServiceAccount(ctx context.Context, clientId string, groupId string) DeleteProjectServiceAccountApiRequest
 	/*
-		DeleteProjectServiceAccount Unassign One Service Account from One Project
+		DeleteProjectServiceAccount Remove One Project Service Account
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -210,7 +210,7 @@ type ServiceAccountsApi interface {
 	DeleteProjectServiceAccountExecute(r DeleteProjectServiceAccountApiRequest) (*http.Response, error)
 
 	/*
-		DeleteProjectServiceAccountAccessListEntry Remove One Access List entry from one Project Service Account
+		DeleteProjectServiceAccountAccessListEntry Remove One Access List Entry from One Project Service Account
 
 		Removes the specified access list entry from the specified Service Account for the project. You can't remove the requesting IP address from the access list.
 
@@ -222,7 +222,7 @@ type ServiceAccountsApi interface {
 	*/
 	DeleteProjectServiceAccountAccessListEntry(ctx context.Context, groupId string, clientId string, ipAddress string) DeleteProjectServiceAccountAccessListEntryApiRequest
 	/*
-		DeleteProjectServiceAccountAccessListEntry Remove One Access List entry from one Project Service Account
+		DeleteProjectServiceAccountAccessListEntry Remove One Access List Entry from One Project Service Account
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -235,7 +235,7 @@ type ServiceAccountsApi interface {
 	DeleteProjectServiceAccountAccessListEntryExecute(r DeleteProjectServiceAccountAccessListEntryApiRequest) (*http.Response, error)
 
 	/*
-		DeleteProjectServiceAccountSecret Delete one Project Service Account Secret
+		DeleteProjectServiceAccountSecret Delete One Project Service Account Secret
 
 		Deletes the specified Service Account secret.
 
@@ -247,7 +247,7 @@ type ServiceAccountsApi interface {
 	*/
 	DeleteProjectServiceAccountSecret(ctx context.Context, clientId string, secretId string, groupId string) DeleteProjectServiceAccountSecretApiRequest
 	/*
-		DeleteProjectServiceAccountSecret Delete one Project Service Account Secret
+		DeleteProjectServiceAccountSecret Delete One Project Service Account Secret
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -260,7 +260,7 @@ type ServiceAccountsApi interface {
 	DeleteProjectServiceAccountSecretExecute(r DeleteProjectServiceAccountSecretApiRequest) (*http.Response, error)
 
 	/*
-		DeleteServiceAccount Delete one Organization Service Account
+		DeleteServiceAccount Delete One Organization Service Account
 
 		Deletes the specified Service Account.
 
@@ -271,7 +271,7 @@ type ServiceAccountsApi interface {
 	*/
 	DeleteServiceAccount(ctx context.Context, clientId string, orgId string) DeleteServiceAccountApiRequest
 	/*
-		DeleteServiceAccount Delete one Organization Service Account
+		DeleteServiceAccount Delete One Organization Service Account
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -284,7 +284,7 @@ type ServiceAccountsApi interface {
 	DeleteServiceAccountExecute(r DeleteServiceAccountApiRequest) (*http.Response, error)
 
 	/*
-		DeleteServiceAccountAccessListEntry Remove One Access List entry from one Organization Service Account
+		DeleteServiceAccountAccessListEntry Remove One Access List Entry from One Organization Service Account
 
 		Removes the specified access list entry from the specified Service Account for the organization. You can't remove the requesting IP address from the access list.
 
@@ -296,7 +296,7 @@ type ServiceAccountsApi interface {
 	*/
 	DeleteServiceAccountAccessListEntry(ctx context.Context, orgId string, clientId string, ipAddress string) DeleteServiceAccountAccessListEntryApiRequest
 	/*
-		DeleteServiceAccountAccessListEntry Remove One Access List entry from one Organization Service Account
+		DeleteServiceAccountAccessListEntry Remove One Access List Entry from One Organization Service Account
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -309,7 +309,7 @@ type ServiceAccountsApi interface {
 	DeleteServiceAccountAccessListEntryExecute(r DeleteServiceAccountAccessListEntryApiRequest) (*http.Response, error)
 
 	/*
-		DeleteServiceAccountSecret Delete a Organization Service Account Secret
+		DeleteServiceAccountSecret Delete One Organization Service Account Secret
 
 		Deletes the specified Service Account secret.
 
@@ -321,7 +321,7 @@ type ServiceAccountsApi interface {
 	*/
 	DeleteServiceAccountSecret(ctx context.Context, clientId string, secretId string, orgId string) DeleteServiceAccountSecretApiRequest
 	/*
-		DeleteServiceAccountSecret Delete a Organization Service Account Secret
+		DeleteServiceAccountSecret Delete One Organization Service Account Secret
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -334,7 +334,7 @@ type ServiceAccountsApi interface {
 	DeleteServiceAccountSecretExecute(r DeleteServiceAccountSecretApiRequest) (*http.Response, error)
 
 	/*
-		GetProjectServiceAccount Get one Project Service Account
+		GetProjectServiceAccount Return One Project Service Account
 
 		Returns one Service Account in the specified Project.
 
@@ -345,7 +345,7 @@ type ServiceAccountsApi interface {
 	*/
 	GetProjectServiceAccount(ctx context.Context, groupId string, clientId string) GetProjectServiceAccountApiRequest
 	/*
-		GetProjectServiceAccount Get one Project Service Account
+		GetProjectServiceAccount Return One Project Service Account
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -358,7 +358,7 @@ type ServiceAccountsApi interface {
 	GetProjectServiceAccountExecute(r GetProjectServiceAccountApiRequest) (*GroupServiceAccount, *http.Response, error)
 
 	/*
-		GetServiceAccount Get one Organization Service Account
+		GetServiceAccount Return One Organization Service Account
 
 		Returns the specified Service Account.
 
@@ -369,7 +369,7 @@ type ServiceAccountsApi interface {
 	*/
 	GetServiceAccount(ctx context.Context, orgId string, clientId string) GetServiceAccountApiRequest
 	/*
-		GetServiceAccount Get one Organization Service Account
+		GetServiceAccount Return One Organization Service Account
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -382,7 +382,7 @@ type ServiceAccountsApi interface {
 	GetServiceAccountExecute(r GetServiceAccountApiRequest) (*OrgServiceAccount, *http.Response, error)
 
 	/*
-		ListProjectServiceAccountAccessList Return All Access List entries for one Project Service Account
+		ListProjectServiceAccountAccessList Return All Access List Entries for One Project Service Account
 
 		Returns all access list entries that you configured for the specified Service Account for the project.
 
@@ -393,7 +393,7 @@ type ServiceAccountsApi interface {
 	*/
 	ListProjectServiceAccountAccessList(ctx context.Context, groupId string, clientId string) ListProjectServiceAccountAccessListApiRequest
 	/*
-		ListProjectServiceAccountAccessList Return All Access List entries for one Project Service Account
+		ListProjectServiceAccountAccessList Return All Access List Entries for One Project Service Account
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -406,7 +406,7 @@ type ServiceAccountsApi interface {
 	ListProjectServiceAccountAccessListExecute(r ListProjectServiceAccountAccessListApiRequest) (*PaginatedServiceAccountIPAccessEntry, *http.Response, error)
 
 	/*
-		ListProjectServiceAccounts List All Project Service Accounts
+		ListProjectServiceAccounts Return All Project Service Accounts
 
 		Returns all Service Accounts for the specified Project.
 
@@ -416,7 +416,7 @@ type ServiceAccountsApi interface {
 	*/
 	ListProjectServiceAccounts(ctx context.Context, groupId string) ListProjectServiceAccountsApiRequest
 	/*
-		ListProjectServiceAccounts List All Project Service Accounts
+		ListProjectServiceAccounts Return All Project Service Accounts
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -429,7 +429,7 @@ type ServiceAccountsApi interface {
 	ListProjectServiceAccountsExecute(r ListProjectServiceAccountsApiRequest) (*PaginatedGroupServiceAccounts, *http.Response, error)
 
 	/*
-		ListServiceAccountAccessList Return All Access List entries for one Organization Service Account
+		ListServiceAccountAccessList Return All Access List Entries for One Organization Service Account
 
 		Returns all access list entries that you configured for the specified Service Account for the organization.
 
@@ -440,7 +440,7 @@ type ServiceAccountsApi interface {
 	*/
 	ListServiceAccountAccessList(ctx context.Context, orgId string, clientId string) ListServiceAccountAccessListApiRequest
 	/*
-		ListServiceAccountAccessList Return All Access List entries for one Organization Service Account
+		ListServiceAccountAccessList Return All Access List Entries for One Organization Service Account
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -453,7 +453,7 @@ type ServiceAccountsApi interface {
 	ListServiceAccountAccessListExecute(r ListServiceAccountAccessListApiRequest) (*PaginatedServiceAccountIPAccessEntry, *http.Response, error)
 
 	/*
-		ListServiceAccountProjects Return All Service Account Project assignments
+		ListServiceAccountProjects Return All Service Account Project Assignments
 
 		Returns a list of all projects the specified Service Account is a part of.
 
@@ -464,7 +464,7 @@ type ServiceAccountsApi interface {
 	*/
 	ListServiceAccountProjects(ctx context.Context, orgId string, clientId string) ListServiceAccountProjectsApiRequest
 	/*
-		ListServiceAccountProjects Return All Service Account Project assignments
+		ListServiceAccountProjects Return All Service Account Project Assignments
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -477,7 +477,7 @@ type ServiceAccountsApi interface {
 	ListServiceAccountProjectsExecute(r ListServiceAccountProjectsApiRequest) (*PaginatedServiceAccountGroup, *http.Response, error)
 
 	/*
-		ListServiceAccounts List All Organization Service Accounts
+		ListServiceAccounts Return All Organization Service Accounts
 
 		Returns all Service Accounts for the specified Organization.
 
@@ -487,7 +487,7 @@ type ServiceAccountsApi interface {
 	*/
 	ListServiceAccounts(ctx context.Context, orgId string) ListServiceAccountsApiRequest
 	/*
-		ListServiceAccounts List All Organization Service Accounts
+		ListServiceAccounts Return All Organization Service Accounts
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -500,7 +500,7 @@ type ServiceAccountsApi interface {
 	ListServiceAccountsExecute(r ListServiceAccountsApiRequest) (*PaginatedOrgServiceAccounts, *http.Response, error)
 
 	/*
-		UpdateProjectServiceAccount Update one Project Service Account
+		UpdateProjectServiceAccount Update One Project Service Account
 
 		Updates one Service Account in the specified Project.
 
@@ -512,7 +512,7 @@ type ServiceAccountsApi interface {
 	*/
 	UpdateProjectServiceAccount(ctx context.Context, clientId string, groupId string, groupServiceAccountUpdateRequest *GroupServiceAccountUpdateRequest) UpdateProjectServiceAccountApiRequest
 	/*
-		UpdateProjectServiceAccount Update one Project Service Account
+		UpdateProjectServiceAccount Update One Project Service Account
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -525,7 +525,7 @@ type ServiceAccountsApi interface {
 	UpdateProjectServiceAccountExecute(r UpdateProjectServiceAccountApiRequest) (*GroupServiceAccount, *http.Response, error)
 
 	/*
-		UpdateServiceAccount Update one Organization Service Account
+		UpdateServiceAccount Update One Organization Service Account
 
 		Updates the specified Service Account in the specified Organization.
 
@@ -537,7 +537,7 @@ type ServiceAccountsApi interface {
 	*/
 	UpdateServiceAccount(ctx context.Context, clientId string, orgId string, orgServiceAccountUpdateRequest *OrgServiceAccountUpdateRequest) UpdateServiceAccountApiRequest
 	/*
-		UpdateServiceAccount Update one Organization Service Account
+		UpdateServiceAccount Update One Organization Service Account
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -711,7 +711,7 @@ func (r CreateProjectServiceAccountApiRequest) Execute() (*GroupServiceAccount, 
 }
 
 /*
-CreateProjectServiceAccount Create and Assign one Service Account to one Project
+CreateProjectServiceAccount Create One Project Service Account
 
 Creates one Service Account for the specified Project. The Service Account will automatically be added as an Organization Member to the Organization that the specified Project is a part of.
 
@@ -864,7 +864,7 @@ func (r CreateProjectServiceAccountAccessListApiRequest) Execute() (*PaginatedSe
 }
 
 /*
-CreateProjectServiceAccountAccessList Add Access List entries for one Project Service Account
+CreateProjectServiceAccountAccessList Add Access List Entries for One Project Service Account
 
 Add Access List Entries for the specified Service Account for the project. Resources require all API requests to originate from IP addresses on the API access list.
 
@@ -1017,7 +1017,7 @@ func (r CreateProjectServiceAccountSecretApiRequest) Execute() (*ServiceAccountS
 }
 
 /*
-CreateProjectServiceAccountSecret Create one Project Service Account Secret
+CreateProjectServiceAccountSecret Create One Project Service Account Secret
 
 Create a secret for the specified Service Account in the specified Project.
 
@@ -1146,7 +1146,7 @@ func (r CreateServiceAccountApiRequest) Execute() (*OrgServiceAccount, *http.Res
 }
 
 /*
-CreateServiceAccount Create one Organization Service Account
+CreateServiceAccount Create One Organization Service Account
 
 Creates one Service Account for the specified Organization.
 
@@ -1299,7 +1299,7 @@ func (r CreateServiceAccountAccessListApiRequest) Execute() (*PaginatedServiceAc
 }
 
 /*
-CreateServiceAccountAccessList Add Access List entries for one Organization Service Account
+CreateServiceAccountAccessList Add Access List Entries for One Organization Service Account
 
 Add Access List Entries for the specified Service Account for the organization. Resources require all API requests to originate from IP addresses on the API access list.
 
@@ -1452,7 +1452,7 @@ func (r CreateServiceAccountSecretApiRequest) Execute() (*ServiceAccountSecret, 
 }
 
 /*
-CreateServiceAccountSecret Create one Organization Service Account Secret
+CreateServiceAccountSecret Create One Organization Service Account Secret
 
 Create a secret for the specified Service Account.
 
@@ -1581,7 +1581,7 @@ func (r DeleteProjectServiceAccountApiRequest) Execute() (*http.Response, error)
 }
 
 /*
-DeleteProjectServiceAccount Unassign One Service Account from One Project
+DeleteProjectServiceAccount Remove One Project Service Account
 
 Removes the specified Service Account from the specified project. The Service Account will still be a part of the Organization it was created in, and the credentials will remain active until expired or manually revoked.
 
@@ -1690,7 +1690,7 @@ func (r DeleteProjectServiceAccountAccessListEntryApiRequest) Execute() (*http.R
 }
 
 /*
-DeleteProjectServiceAccountAccessListEntry Remove One Access List entry from one Project Service Account
+DeleteProjectServiceAccountAccessListEntry Remove One Access List Entry from One Project Service Account
 
 Removes the specified access list entry from the specified Service Account for the project. You can't remove the requesting IP address from the access list.
 
@@ -1805,7 +1805,7 @@ func (r DeleteProjectServiceAccountSecretApiRequest) Execute() (*http.Response, 
 }
 
 /*
-DeleteProjectServiceAccountSecret Delete one Project Service Account Secret
+DeleteProjectServiceAccountSecret Delete One Project Service Account Secret
 
 Deletes the specified Service Account secret.
 
@@ -1917,7 +1917,7 @@ func (r DeleteServiceAccountApiRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteServiceAccount Delete one Organization Service Account
+DeleteServiceAccount Delete One Organization Service Account
 
 Deletes the specified Service Account.
 
@@ -2026,7 +2026,7 @@ func (r DeleteServiceAccountAccessListEntryApiRequest) Execute() (*http.Response
 }
 
 /*
-DeleteServiceAccountAccessListEntry Remove One Access List entry from one Organization Service Account
+DeleteServiceAccountAccessListEntry Remove One Access List Entry from One Organization Service Account
 
 Removes the specified access list entry from the specified Service Account for the organization. You can't remove the requesting IP address from the access list.
 
@@ -2141,7 +2141,7 @@ func (r DeleteServiceAccountSecretApiRequest) Execute() (*http.Response, error) 
 }
 
 /*
-DeleteServiceAccountSecret Delete a Organization Service Account Secret
+DeleteServiceAccountSecret Delete One Organization Service Account Secret
 
 Deletes the specified Service Account secret.
 
@@ -2253,7 +2253,7 @@ func (r GetProjectServiceAccountApiRequest) Execute() (*GroupServiceAccount, *ht
 }
 
 /*
-GetProjectServiceAccount Get one Project Service Account
+GetProjectServiceAccount Return One Project Service Account
 
 Returns one Service Account in the specified Project.
 
@@ -2376,7 +2376,7 @@ func (r GetServiceAccountApiRequest) Execute() (*OrgServiceAccount, *http.Respon
 }
 
 /*
-GetServiceAccount Get one Organization Service Account
+GetServiceAccount Return One Organization Service Account
 
 Returns the specified Service Account.
 
@@ -2526,7 +2526,7 @@ func (r ListProjectServiceAccountAccessListApiRequest) Execute() (*PaginatedServ
 }
 
 /*
-ListProjectServiceAccountAccessList Return All Access List entries for one Project Service Account
+ListProjectServiceAccountAccessList Return All Access List Entries for One Project Service Account
 
 Returns all access list entries that you configured for the specified Service Account for the project.
 
@@ -2685,7 +2685,7 @@ func (r ListProjectServiceAccountsApiRequest) Execute() (*PaginatedGroupServiceA
 }
 
 /*
-ListProjectServiceAccounts List All Project Service Accounts
+ListProjectServiceAccounts Return All Project Service Accounts
 
 Returns all Service Accounts for the specified Project.
 
@@ -2843,7 +2843,7 @@ func (r ListServiceAccountAccessListApiRequest) Execute() (*PaginatedServiceAcco
 }
 
 /*
-ListServiceAccountAccessList Return All Access List entries for one Organization Service Account
+ListServiceAccountAccessList Return All Access List Entries for One Organization Service Account
 
 Returns all access list entries that you configured for the specified Service Account for the organization.
 
@@ -3005,7 +3005,7 @@ func (r ListServiceAccountProjectsApiRequest) Execute() (*PaginatedServiceAccoun
 }
 
 /*
-ListServiceAccountProjects Return All Service Account Project assignments
+ListServiceAccountProjects Return All Service Account Project Assignments
 
 Returns a list of all projects the specified Service Account is a part of.
 
@@ -3157,7 +3157,7 @@ func (r ListServiceAccountsApiRequest) Execute() (*PaginatedOrgServiceAccounts, 
 }
 
 /*
-ListServiceAccounts List All Organization Service Accounts
+ListServiceAccounts Return All Organization Service Accounts
 
 Returns all Service Accounts for the specified Organization.
 
@@ -3291,7 +3291,7 @@ func (r UpdateProjectServiceAccountApiRequest) Execute() (*GroupServiceAccount, 
 }
 
 /*
-UpdateProjectServiceAccount Update one Project Service Account
+UpdateProjectServiceAccount Update One Project Service Account
 
 Updates one Service Account in the specified Project.
 
@@ -3423,7 +3423,7 @@ func (r UpdateServiceAccountApiRequest) Execute() (*OrgServiceAccount, *http.Res
 }
 
 /*
-UpdateServiceAccount Update one Organization Service Account
+UpdateServiceAccount Update One Organization Service Account
 
 Updates the specified Service Account in the specified Organization.
 

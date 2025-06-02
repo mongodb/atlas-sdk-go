@@ -276,7 +276,7 @@ type LegacyBackupApi interface {
 	ListLegacySnapshotsExecute(r ListLegacySnapshotsApiRequest) (*PaginatedSnapshot, *http.Response, error)
 
 	/*
-		UpdateLegacySnapshotRetention Change One Legacy Backup Snapshot Expiration
+		UpdateLegacySnapshotRetention Update Expiration Date for One Legacy Backup Snapshot
 
 		Changes the expiration date for one legacy backup snapshot for one cluster in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role. Effective 23 March 2020, all new clusters can use only Cloud Backups. When you upgrade to 4.2, your backup system upgrades to cloud backup if it is currently set to legacy backup. After this upgrade, all your existing legacy backup snapshots remain available. They expire over time in accordance with your retention policy. Your backup policy resets to the default schedule. If you had a custom backup policy in place with legacy backups, you must re-create it with the procedure outlined in the Cloud Backup documentation.
 
@@ -291,7 +291,7 @@ type LegacyBackupApi interface {
 	*/
 	UpdateLegacySnapshotRetention(ctx context.Context, groupId string, clusterName string, snapshotId string, backupSnapshot *BackupSnapshot) UpdateLegacySnapshotRetentionApiRequest
 	/*
-		UpdateLegacySnapshotRetention Change One Legacy Backup Snapshot Expiration
+		UpdateLegacySnapshotRetention Update Expiration Date for One Legacy Backup Snapshot
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -1720,7 +1720,7 @@ func (r UpdateLegacySnapshotRetentionApiRequest) Execute() (*BackupSnapshot, *ht
 }
 
 /*
-UpdateLegacySnapshotRetention Change One Legacy Backup Snapshot Expiration
+UpdateLegacySnapshotRetention Update Expiration Date for One Legacy Backup Snapshot
 
 Changes the expiration date for one legacy backup snapshot for one cluster in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role. Effective 23 March 2020, all new clusters can use only Cloud Backups. When you upgrade to 4.2, your backup system upgrades to cloud backup if it is currently set to legacy backup. After this upgrade, all your existing legacy backup snapshots remain available. They expire over time in accordance with your retention policy. Your backup policy resets to the default schedule. If you had a custom backup policy in place with legacy backups, you must re-create it with the procedure outlined in the Cloud Backup documentation.
 

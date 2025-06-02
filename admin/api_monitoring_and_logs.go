@@ -39,7 +39,7 @@ type MonitoringAndLogsApi interface {
 	GetAtlasProcessExecute(r GetAtlasProcessApiRequest) (*ApiHostViewAtlas, *http.Response, error)
 
 	/*
-		GetDatabase Return One Database for a MongoDB Process
+		GetDatabase Return One Database for One MongoDB Process
 
 		Returns one database running on the specified host for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
@@ -51,7 +51,7 @@ type MonitoringAndLogsApi interface {
 	*/
 	GetDatabase(ctx context.Context, groupId string, databaseName string, processId string) GetDatabaseApiRequest
 	/*
-		GetDatabase Return One Database for a MongoDB Process
+		GetDatabase Return One Database for One MongoDB Process
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -64,7 +64,7 @@ type MonitoringAndLogsApi interface {
 	GetDatabaseExecute(r GetDatabaseApiRequest) (*MesurementsDatabase, *http.Response, error)
 
 	/*
-		GetDatabaseMeasurements Return Measurements of One Database for One MongoDB Process
+		GetDatabaseMeasurements Return Measurements for One Database in One MongoDB Process
 
 		Returns the measurements of one database for the specified host for the specified project. Returns the database's on-disk storage space based on the MongoDB `dbStats` command output. To calculate some metric series, Atlas takes the rate between every two adjacent points. For these metric series, the first data point has a null value because Atlas can't calculate a rate for the first data point given the query time range. Atlas retrieves database metrics every 20 minutes but reduces frequency when necessary to optimize database performance. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
@@ -76,7 +76,7 @@ type MonitoringAndLogsApi interface {
 	*/
 	GetDatabaseMeasurements(ctx context.Context, groupId string, databaseName string, processId string) GetDatabaseMeasurementsApiRequest
 	/*
-		GetDatabaseMeasurements Return Measurements of One Database for One MongoDB Process
+		GetDatabaseMeasurements Return Measurements for One Database in One MongoDB Process
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -176,7 +176,7 @@ type MonitoringAndLogsApi interface {
 	GetHostMeasurementsExecute(r GetHostMeasurementsApiRequest) (*ApiMeasurementsGeneralViewAtlas, *http.Response, error)
 
 	/*
-		GetIndexMetrics Return Atlas Search Metrics for One Index in One Specified Namespace
+		GetIndexMetrics Return Atlas Search Metrics for One Index in One Namespace
 
 		Returns the Atlas Search metrics data series within the provided time range for one namespace and index name on the specified process. You must have the Project Read Only or higher role to view the Atlas Search metric types.
 
@@ -190,7 +190,7 @@ type MonitoringAndLogsApi interface {
 	*/
 	GetIndexMetrics(ctx context.Context, processId string, indexName string, databaseName string, collectionName string, groupId string) GetIndexMetricsApiRequest
 	/*
-		GetIndexMetrics Return Atlas Search Metrics for One Index in One Specified Namespace
+		GetIndexMetrics Return Atlas Search Metrics for One Index in One Namespace
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -274,7 +274,7 @@ type MonitoringAndLogsApi interface {
 	ListDatabasesExecute(r ListDatabasesApiRequest) (*PaginatedDatabase, *http.Response, error)
 
 	/*
-		ListDiskMeasurements Return Measurements of One Disk
+		ListDiskMeasurements Return Measurements for One Disk
 
 		Returns measurement details for one disk or partition for the specified host for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
@@ -286,7 +286,7 @@ type MonitoringAndLogsApi interface {
 	*/
 	ListDiskMeasurements(ctx context.Context, partitionName string, groupId string, processId string) ListDiskMeasurementsApiRequest
 	/*
-		ListDiskMeasurements Return Measurements of One Disk
+		ListDiskMeasurements Return Measurements for One Disk
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -528,7 +528,7 @@ func (r GetDatabaseApiRequest) Execute() (*MesurementsDatabase, *http.Response, 
 }
 
 /*
-GetDatabase Return One Database for a MongoDB Process
+GetDatabase Return One Database for One MongoDB Process
 
 Returns one database running on the specified host for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
@@ -705,7 +705,7 @@ func (r GetDatabaseMeasurementsApiRequest) Execute() (*ApiMeasurementsGeneralVie
 }
 
 /*
-GetDatabaseMeasurements Return Measurements of One Database for One MongoDB Process
+GetDatabaseMeasurements Return Measurements for One Database in One MongoDB Process
 
 Returns the measurements of one database for the specified host for the specified project. Returns the database's on-disk storage space based on the MongoDB `dbStats` command output. To calculate some metric series, Atlas takes the rate between every two adjacent points. For these metric series, the first data point has a null value because Atlas can't calculate a rate for the first data point given the query time range. Atlas retrieves database metrics every 20 minutes but reduces frequency when necessary to optimize database performance. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
@@ -1462,7 +1462,7 @@ func (r GetIndexMetricsApiRequest) Execute() (*MeasurementsIndexes, *http.Respon
 }
 
 /*
-GetIndexMetrics Return Atlas Search Metrics for One Index in One Specified Namespace
+GetIndexMetrics Return Atlas Search Metrics for One Index in One Namespace
 
 Returns the Atlas Search metrics data series within the provided time range for one namespace and index name on the specified process. You must have the Project Read Only or higher role to view the Atlas Search metric types.
 
@@ -2151,7 +2151,7 @@ func (r ListDiskMeasurementsApiRequest) Execute() (*MeasurementDiskPartition, *h
 }
 
 /*
-ListDiskMeasurements Return Measurements of One Disk
+ListDiskMeasurements Return Measurements for One Disk
 
 Returns measurement details for one disk or partition for the specified host for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 

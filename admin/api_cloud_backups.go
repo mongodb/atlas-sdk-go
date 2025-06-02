@@ -13,7 +13,7 @@ import (
 type CloudBackupsApi interface {
 
 	/*
-		CancelBackupRestoreJob Cancel One Restore Job of One Cluster
+		CancelBackupRestoreJob Cancel One Restore Job for One Cluster
 
 		Cancels one cloud backup restore job of one cluster from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Backup Manager role.
 
@@ -25,7 +25,7 @@ type CloudBackupsApi interface {
 	*/
 	CancelBackupRestoreJob(ctx context.Context, groupId string, clusterName string, restoreJobId string) CancelBackupRestoreJobApiRequest
 	/*
-		CancelBackupRestoreJob Cancel One Restore Job of One Cluster
+		CancelBackupRestoreJob Cancel One Restore Job for One Cluster
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -239,7 +239,7 @@ type CloudBackupsApi interface {
 	DeleteShardedClusterBackupExecute(r DeleteShardedClusterBackupApiRequest) (*http.Response, error)
 
 	/*
-		DisableDataProtectionSettings Disable the Backup Compliance Policy settings
+		DisableDataProtectionSettings Disable Backup Compliance Policy Settings
 
 		Disables the Backup Compliance Policy settings with the specified project. As a prerequisite, a support ticket needs to be file first, instructions in https://www.mongodb.com/docs/atlas/backup/cloud-backup/backup-compliance-policy/. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -249,7 +249,7 @@ type CloudBackupsApi interface {
 	*/
 	DisableDataProtectionSettings(ctx context.Context, groupId string) DisableDataProtectionSettingsApiRequest
 	/*
-		DisableDataProtectionSettings Disable the Backup Compliance Policy settings
+		DisableDataProtectionSettings Disable Backup Compliance Policy Settings
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -287,7 +287,7 @@ type CloudBackupsApi interface {
 	GetBackupExportJobExecute(r GetBackupExportJobApiRequest) (*DiskBackupExportJob, *http.Response, error)
 
 	/*
-		GetBackupRestoreJob Return One Restore Job of One Cluster
+		GetBackupRestoreJob Return One Restore Job for One Cluster
 
 		Returns one cloud backup restore job for one cluster from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Backup Manager role.
 
@@ -299,7 +299,7 @@ type CloudBackupsApi interface {
 	*/
 	GetBackupRestoreJob(ctx context.Context, groupId string, clusterName string, restoreJobId string) GetBackupRestoreJobApiRequest
 	/*
-		GetBackupRestoreJob Return One Restore Job of One Cluster
+		GetBackupRestoreJob Return One Restore Job for One Cluster
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -336,7 +336,7 @@ type CloudBackupsApi interface {
 	GetBackupScheduleExecute(r GetBackupScheduleApiRequest) (*DiskBackupSnapshotSchedule20240805, *http.Response, error)
 
 	/*
-		GetDataProtectionSettings Return the Backup Compliance Policy settings
+		GetDataProtectionSettings Return Backup Compliance Policy Settings
 
 		Returns the Backup Compliance Policy settings with the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role. Deprecated versions: v2-{2023-01-01}
 
@@ -346,7 +346,7 @@ type CloudBackupsApi interface {
 	*/
 	GetDataProtectionSettings(ctx context.Context, groupId string) GetDataProtectionSettingsApiRequest
 	/*
-		GetDataProtectionSettings Return the Backup Compliance Policy settings
+		GetDataProtectionSettings Return Backup Compliance Policy Settings
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -710,7 +710,7 @@ type CloudBackupsApi interface {
 	UpdateBackupScheduleExecute(r UpdateBackupScheduleApiRequest) (*DiskBackupSnapshotSchedule20240805, *http.Response, error)
 
 	/*
-		UpdateDataProtectionSettings Update or enable the Backup Compliance Policy settings
+		UpdateDataProtectionSettings Update Backup Compliance Policy Settings
 
 		Updates the Backup Compliance Policy settings for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role. Deprecated versions: v2-{2023-01-01}
 
@@ -721,7 +721,7 @@ type CloudBackupsApi interface {
 	*/
 	UpdateDataProtectionSettings(ctx context.Context, groupId string, dataProtectionSettings20231001 *DataProtectionSettings20231001) UpdateDataProtectionSettingsApiRequest
 	/*
-		UpdateDataProtectionSettings Update or enable the Backup Compliance Policy settings
+		UpdateDataProtectionSettings Update Backup Compliance Policy Settings
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -734,7 +734,7 @@ type CloudBackupsApi interface {
 	UpdateDataProtectionSettingsExecute(r UpdateDataProtectionSettingsApiRequest) (*DataProtectionSettings20231001, *http.Response, error)
 
 	/*
-		UpdateSnapshotRetention Change Expiration Date for One Cloud Backup
+		UpdateSnapshotRetention Update Expiration Date for One Cloud Backup
 
 		Changes the expiration date for one cloud backup snapshot for one cluster in the specified project, the requesting Service Account or API Key must have the Project Backup Manager role.
 
@@ -747,7 +747,7 @@ type CloudBackupsApi interface {
 	*/
 	UpdateSnapshotRetention(ctx context.Context, groupId string, clusterName string, snapshotId string, backupSnapshotRetention *BackupSnapshotRetention) UpdateSnapshotRetentionApiRequest
 	/*
-		UpdateSnapshotRetention Change Expiration Date for One Cloud Backup
+		UpdateSnapshotRetention Update Expiration Date for One Cloud Backup
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -792,7 +792,7 @@ func (r CancelBackupRestoreJobApiRequest) Execute() (*http.Response, error) {
 }
 
 /*
-CancelBackupRestoreJob Cancel One Restore Job of One Cluster
+CancelBackupRestoreJob Cancel One Restore Job for One Cluster
 
 Cancels one cloud backup restore job of one cluster from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Backup Manager role.
 
@@ -1883,7 +1883,7 @@ func (r DisableDataProtectionSettingsApiRequest) Execute() (*http.Response, erro
 }
 
 /*
-DisableDataProtectionSettings Disable the Backup Compliance Policy settings
+DisableDataProtectionSettings Disable Backup Compliance Policy Settings
 
 Disables the Backup Compliance Policy settings with the specified project. As a prerequisite, a support ticket needs to be file first, instructions in https://www.mongodb.com/docs/atlas/backup/cloud-backup/backup-compliance-policy/. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -2118,7 +2118,7 @@ func (r GetBackupRestoreJobApiRequest) Execute() (*DiskBackupSnapshotRestoreJob,
 }
 
 /*
-GetBackupRestoreJob Return One Restore Job of One Cluster
+GetBackupRestoreJob Return One Restore Job for One Cluster
 
 Returns one cloud backup restore job for one cluster from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Backup Manager role.
 
@@ -2367,7 +2367,7 @@ func (r GetDataProtectionSettingsApiRequest) Execute() (*DataProtectionSettings2
 }
 
 /*
-GetDataProtectionSettings Return the Backup Compliance Policy settings
+GetDataProtectionSettings Return Backup Compliance Policy Settings
 
 Returns the Backup Compliance Policy settings with the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role. Deprecated versions: v2-{2023-01-01}
 
@@ -4558,7 +4558,7 @@ func (r UpdateDataProtectionSettingsApiRequest) Execute() (*DataProtectionSettin
 }
 
 /*
-UpdateDataProtectionSettings Update or enable the Backup Compliance Policy settings
+UpdateDataProtectionSettings Update Backup Compliance Policy Settings
 
 Updates the Backup Compliance Policy settings for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role. Deprecated versions: v2-{2023-01-01}
 
@@ -4694,7 +4694,7 @@ func (r UpdateSnapshotRetentionApiRequest) Execute() (*DiskBackupReplicaSet, *ht
 }
 
 /*
-UpdateSnapshotRetention Change Expiration Date for One Cloud Backup
+UpdateSnapshotRetention Update Expiration Date for One Cloud Backup
 
 Changes the expiration date for one cloud backup snapshot for one cluster in the specified project, the requesting Service Account or API Key must have the Project Backup Manager role.
 
