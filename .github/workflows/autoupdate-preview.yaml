@@ -40,6 +40,8 @@ jobs:
         working-directory: ./tools
         if: env.FILES_CHANGED == 'true'
         run: make generate_mocks  
+      - name: Fix import order issues
+        run: goimports -l -w .
       - uses: peter-evans/create-pull-request@271a8d0340265f705b14b6d32b9829c1cb33d45e
         if: env.FILES_CHANGED == 'true'
         with:
