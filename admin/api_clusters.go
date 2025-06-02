@@ -14,7 +14,7 @@ import (
 type ClustersApi interface {
 
 	/*
-		AutoScalingConfiguration Get cluster internal configuration of sharded cluster AutoScaling operations
+		AutoScalingConfiguration Return Auto Scaling Configuration for One Sharded Cluster
 
 		Returns the internal configuration of AutoScaling for sharded clusters. This endpoint can be used for diagnostic purposes to ensure that sharded clusters updated from older APIs have gained support for AutoScaling each shard independently.
 
@@ -27,7 +27,7 @@ type ClustersApi interface {
 	*/
 	AutoScalingConfiguration(ctx context.Context, groupId string, clusterName string) AutoScalingConfigurationApiRequest
 	/*
-		AutoScalingConfiguration Get cluster internal configuration of sharded cluster AutoScaling operations
+		AutoScalingConfiguration Return Auto Scaling Configuration for One Sharded Cluster
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -42,7 +42,7 @@ type ClustersApi interface {
 	AutoScalingConfigurationExecute(r AutoScalingConfigurationApiRequest) (*ClusterDescriptionAutoScalingModeConfiguration, *http.Response, error)
 
 	/*
-			CreateCluster Create One Cluster from One Project
+			CreateCluster Create One Cluster in One Project
 
 			Creates one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. This resource can create clusters with asymmetrically-sized shards. Each project supports up to 25 database deployments. To use this resource, the requesting Service Account or API Key must have the Project Owner role. This feature is not available for serverless clusters.
 
@@ -55,7 +55,7 @@ type ClustersApi interface {
 	*/
 	CreateCluster(ctx context.Context, groupId string, clusterDescription20240805 *ClusterDescription20240805) CreateClusterApiRequest
 	/*
-		CreateCluster Create One Cluster from One Project
+		CreateCluster Create One Cluster in One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -120,7 +120,7 @@ type ClustersApi interface {
 	GetClusterExecute(r GetClusterApiRequest) (*ClusterDescription20240805, *http.Response, error)
 
 	/*
-		GetClusterAdvancedConfiguration Return One Advanced Configuration Options for One Cluster
+		GetClusterAdvancedConfiguration Return Advanced Configuration Options for One Cluster
 
 		Returns the advanced configuration details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. Advanced configuration details include the read/write concern, index and oplog limits, and other database settings. This feature isn't available for `M0` free clusters, `M2` and `M5` shared-tier clusters, flex clusters, or serverless clusters. To use this resource, the requesting Service Account or API Key must have the Project Read Only role. Deprecated versions: v2-{2023-01-01}
 
@@ -131,7 +131,7 @@ type ClustersApi interface {
 	*/
 	GetClusterAdvancedConfiguration(ctx context.Context, groupId string, clusterName string) GetClusterAdvancedConfigurationApiRequest
 	/*
-		GetClusterAdvancedConfiguration Return One Advanced Configuration Options for One Cluster
+		GetClusterAdvancedConfiguration Return Advanced Configuration Options for One Cluster
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -168,7 +168,7 @@ type ClustersApi interface {
 	GetClusterStatusExecute(r GetClusterStatusApiRequest) (*ClusterStatus, *http.Response, error)
 
 	/*
-		GetSampleDatasetLoadStatus Check Status of Cluster Sample Dataset Request
+		GetSampleDatasetLoadStatus Return Status of Sample Dataset Load for One Cluster
 
 		Checks the progress of loading the sample dataset into one cluster. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -179,7 +179,7 @@ type ClustersApi interface {
 	*/
 	GetSampleDatasetLoadStatus(ctx context.Context, groupId string, sampleDatasetId string) GetSampleDatasetLoadStatusApiRequest
 	/*
-		GetSampleDatasetLoadStatus Check Status of Cluster Sample Dataset Request
+		GetSampleDatasetLoadStatus Return Status of Sample Dataset Load for One Cluster
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -192,7 +192,7 @@ type ClustersApi interface {
 	GetSampleDatasetLoadStatusExecute(r GetSampleDatasetLoadStatusApiRequest) (*SampleDatasetStatus, *http.Response, error)
 
 	/*
-		GrantMongoDbEmployeeAccess Grant MongoDB employee cluster access for one cluster.
+		GrantMongoDbEmployeeAccess Grant MongoDB Employee Cluster Access for One Cluster
 
 		Grants MongoDB employee cluster access for the given duration and at the specified level for one cluster.
 
@@ -204,7 +204,7 @@ type ClustersApi interface {
 	*/
 	GrantMongoDbEmployeeAccess(ctx context.Context, groupId string, clusterName string, employeeAccessGrant *EmployeeAccessGrant) GrantMongoDbEmployeeAccessApiRequest
 	/*
-		GrantMongoDbEmployeeAccess Grant MongoDB employee cluster access for one cluster.
+		GrantMongoDbEmployeeAccess Grant MongoDB Employee Cluster Access for One Cluster
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -287,7 +287,7 @@ type ClustersApi interface {
 	ListClustersForAllProjectsExecute(r ListClustersForAllProjectsApiRequest) (*PaginatedOrgGroup, *http.Response, error)
 
 	/*
-		LoadSampleDataset Load Sample Dataset Request into Cluster
+		LoadSampleDataset Load Sample Dataset into One Cluster
 
 		Requests loading the MongoDB sample dataset into the specified cluster. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -298,7 +298,7 @@ type ClustersApi interface {
 	*/
 	LoadSampleDataset(ctx context.Context, groupId string, name string) LoadSampleDatasetApiRequest
 	/*
-		LoadSampleDataset Load Sample Dataset Request into Cluster
+		LoadSampleDataset Load Sample Dataset into One Cluster
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -311,7 +311,7 @@ type ClustersApi interface {
 	LoadSampleDatasetExecute(r LoadSampleDatasetApiRequest) (*SampleDatasetStatus, *http.Response, error)
 
 	/*
-		PinFeatureCompatibilityVersion Pin FCV for One Cluster from One Project
+		PinFeatureCompatibilityVersion Pin Feature Compatibility Version for One Cluster in One Project
 
 		Pins the Feature Compatibility Version (FCV) to the current MongoDB version and sets the pin expiration date. If an FCV pin already exists for the cluster, calling this method will only update the expiration date of the existing pin and will not repin the FCV.
 
@@ -323,7 +323,7 @@ type ClustersApi interface {
 	*/
 	PinFeatureCompatibilityVersion(ctx context.Context, groupId string, clusterName string, pinFCV *PinFCV) PinFeatureCompatibilityVersionApiRequest
 	/*
-		PinFeatureCompatibilityVersion Pin FCV for One Cluster from One Project
+		PinFeatureCompatibilityVersion Pin Feature Compatibility Version for One Cluster in One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -336,7 +336,7 @@ type ClustersApi interface {
 	PinFeatureCompatibilityVersionExecute(r PinFeatureCompatibilityVersionApiRequest) (*http.Response, error)
 
 	/*
-		RevokeMongoDbEmployeeAccess Revoke granted MongoDB employee cluster access for one cluster.
+		RevokeMongoDbEmployeeAccess Revoke MongoDB Employee Cluster Access for One Cluster
 
 		Revokes a previously granted MongoDB employee cluster access.
 
@@ -347,7 +347,7 @@ type ClustersApi interface {
 	*/
 	RevokeMongoDbEmployeeAccess(ctx context.Context, groupId string, clusterName string) RevokeMongoDbEmployeeAccessApiRequest
 	/*
-		RevokeMongoDbEmployeeAccess Revoke granted MongoDB employee cluster access for one cluster.
+		RevokeMongoDbEmployeeAccess Revoke MongoDB Employee Cluster Access for One Cluster
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -384,7 +384,7 @@ type ClustersApi interface {
 	TestFailoverExecute(r TestFailoverApiRequest) (*http.Response, error)
 
 	/*
-		UnpinFeatureCompatibilityVersion Unpins FCV for One Cluster from One Project
+		UnpinFeatureCompatibilityVersion Unpin Feature Compatibility Version for One Cluster in One Project
 
 		Unpins the current fixed Feature Compatibility Version (FCV). This feature is not available for clusters on rapid release.
 
@@ -395,7 +395,7 @@ type ClustersApi interface {
 	*/
 	UnpinFeatureCompatibilityVersion(ctx context.Context, groupId string, clusterName string) UnpinFeatureCompatibilityVersionApiRequest
 	/*
-		UnpinFeatureCompatibilityVersion Unpins FCV for One Cluster from One Project
+		UnpinFeatureCompatibilityVersion Unpin Feature Compatibility Version for One Cluster in One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -408,7 +408,7 @@ type ClustersApi interface {
 	UnpinFeatureCompatibilityVersionExecute(r UnpinFeatureCompatibilityVersionApiRequest) (*http.Response, error)
 
 	/*
-		UpdateCluster Modify One Cluster from One Project
+		UpdateCluster Update One Cluster in One Project
 
 		Updates the details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. This resource can update clusters with asymmetrically-sized shards. To update a cluster's termination protection, the requesting Service Account or API Key must have the Project Owner role. For all other updates, the requesting Service Account or API Key must have the Project Cluster Manager role. You can't modify a paused cluster (`paused : true`). You must call this endpoint to set `paused : false`. After this endpoint responds with `paused : false`, you can call it again with the changes you want to make to the cluster. This feature is not available for serverless clusters. Deprecated versions: v2-{2024-08-05}, v2-{2023-02-01}, v2-{2023-01-01}
 
@@ -420,7 +420,7 @@ type ClustersApi interface {
 	*/
 	UpdateCluster(ctx context.Context, groupId string, clusterName string, clusterDescription20240805 *ClusterDescription20240805) UpdateClusterApiRequest
 	/*
-		UpdateCluster Modify One Cluster from One Project
+		UpdateCluster Update One Cluster in One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -458,7 +458,7 @@ type ClustersApi interface {
 	UpdateClusterAdvancedConfigurationExecute(r UpdateClusterAdvancedConfigurationApiRequest) (*ClusterDescriptionProcessArgs20240805, *http.Response, error)
 
 	/*
-			UpgradeSharedCluster Upgrade One Shared-tier Cluster
+			UpgradeSharedCluster Upgrade One Shared-Tier Cluster
 
 			Upgrades a shared-tier cluster to a Flex or Dedicated (M10+) cluster in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Cluster Manager role. Each project supports up to 25 clusters.
 
@@ -471,7 +471,7 @@ type ClustersApi interface {
 	*/
 	UpgradeSharedCluster(ctx context.Context, groupId string, legacyAtlasTenantClusterUpgradeRequest *LegacyAtlasTenantClusterUpgradeRequest) UpgradeSharedClusterApiRequest
 	/*
-		UpgradeSharedCluster Upgrade One Shared-tier Cluster
+		UpgradeSharedCluster Upgrade One Shared-Tier Cluster
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -484,7 +484,7 @@ type ClustersApi interface {
 	UpgradeSharedClusterExecute(r UpgradeSharedClusterApiRequest) (*LegacyAtlasCluster, *http.Response, error)
 
 	/*
-			UpgradeSharedClusterToServerless Upgrades One Shared-Tier Cluster to the Serverless Instance
+			UpgradeSharedClusterToServerless Upgrade One Shared-Tier Cluster to One Serverless Instance
 
 			This endpoint has been deprecated as of February 2025 as we no longer support the creation of new serverless instances. Please use the upgradeFlexCluster endpoint to upgrade Flex clusters.
 
@@ -499,7 +499,7 @@ type ClustersApi interface {
 	*/
 	UpgradeSharedClusterToServerless(ctx context.Context, groupId string, serverlessInstanceDescription *ServerlessInstanceDescription) UpgradeSharedClusterToServerlessApiRequest
 	/*
-		UpgradeSharedClusterToServerless Upgrades One Shared-Tier Cluster to the Serverless Instance
+		UpgradeSharedClusterToServerless Upgrade One Shared-Tier Cluster to One Serverless Instance
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -543,7 +543,7 @@ func (r AutoScalingConfigurationApiRequest) Execute() (*ClusterDescriptionAutoSc
 }
 
 /*
-AutoScalingConfiguration Get cluster internal configuration of sharded cluster AutoScaling operations
+AutoScalingConfiguration Return Auto Scaling Configuration for One Sharded Cluster
 
 Returns the internal configuration of AutoScaling for sharded clusters. This endpoint can be used for diagnostic purposes to ensure that sharded clusters updated from older APIs have gained support for AutoScaling each shard independently.
 
@@ -670,7 +670,7 @@ func (r CreateClusterApiRequest) Execute() (*ClusterDescription20240805, *http.R
 }
 
 /*
-CreateCluster Create One Cluster from One Project
+CreateCluster Create One Cluster in One Project
 
 Creates one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. This resource can create clusters with asymmetrically-sized shards. Each project supports up to 25 database deployments. To use this resource, the requesting Service Account or API Key must have the Project Owner role. This feature is not available for serverless clusters.
 
@@ -1040,7 +1040,7 @@ func (r GetClusterAdvancedConfigurationApiRequest) Execute() (*ClusterDescriptio
 }
 
 /*
-GetClusterAdvancedConfiguration Return One Advanced Configuration Options for One Cluster
+GetClusterAdvancedConfiguration Return Advanced Configuration Options for One Cluster
 
 Returns the advanced configuration details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. Advanced configuration details include the read/write concern, index and oplog limits, and other database settings. This feature isn't available for `M0` free clusters, `M2` and `M5` shared-tier clusters, flex clusters, or serverless clusters. To use this resource, the requesting Service Account or API Key must have the Project Read Only role. Deprecated versions: v2-{2023-01-01}
 
@@ -1286,7 +1286,7 @@ func (r GetSampleDatasetLoadStatusApiRequest) Execute() (*SampleDatasetStatus, *
 }
 
 /*
-GetSampleDatasetLoadStatus Check Status of Cluster Sample Dataset Request
+GetSampleDatasetLoadStatus Return Status of Sample Dataset Load for One Cluster
 
 Checks the progress of loading the sample dataset into one cluster. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -1412,7 +1412,7 @@ func (r GrantMongoDbEmployeeAccessApiRequest) Execute() (*http.Response, error) 
 }
 
 /*
-GrantMongoDbEmployeeAccess Grant MongoDB employee cluster access for one cluster.
+GrantMongoDbEmployeeAccess Grant MongoDB Employee Cluster Access for One Cluster
 
 Grants MongoDB employee cluster access for the given duration and at the specified level for one cluster.
 
@@ -2047,7 +2047,7 @@ func (r LoadSampleDatasetApiRequest) Execute() (*SampleDatasetStatus, *http.Resp
 }
 
 /*
-LoadSampleDataset Load Sample Dataset Request into Cluster
+LoadSampleDataset Load Sample Dataset into One Cluster
 
 Requests loading the MongoDB sample dataset into the specified cluster. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -2173,7 +2173,7 @@ func (r PinFeatureCompatibilityVersionApiRequest) Execute() (*http.Response, err
 }
 
 /*
-PinFeatureCompatibilityVersion Pin FCV for One Cluster from One Project
+PinFeatureCompatibilityVersion Pin Feature Compatibility Version for One Cluster in One Project
 
 Pins the Feature Compatibility Version (FCV) to the current MongoDB version and sets the pin expiration date. If an FCV pin already exists for the cluster, calling this method will only update the expiration date of the existing pin and will not repin the FCV.
 
@@ -2282,7 +2282,7 @@ func (r RevokeMongoDbEmployeeAccessApiRequest) Execute() (*http.Response, error)
 }
 
 /*
-RevokeMongoDbEmployeeAccess Revoke granted MongoDB employee cluster access for one cluster.
+RevokeMongoDbEmployeeAccess Revoke MongoDB Employee Cluster Access for One Cluster
 
 Revokes a previously granted MongoDB employee cluster access.
 
@@ -2494,7 +2494,7 @@ func (r UnpinFeatureCompatibilityVersionApiRequest) Execute() (*http.Response, e
 }
 
 /*
-UnpinFeatureCompatibilityVersion Unpins FCV for One Cluster from One Project
+UnpinFeatureCompatibilityVersion Unpin Feature Compatibility Version for One Cluster in One Project
 
 Unpins the current fixed Feature Compatibility Version (FCV). This feature is not available for clusters on rapid release.
 
@@ -2603,7 +2603,7 @@ func (r UpdateClusterApiRequest) Execute() (*ClusterDescription20240805, *http.R
 }
 
 /*
-UpdateCluster Modify One Cluster from One Project
+UpdateCluster Update One Cluster in One Project
 
 Updates the details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. This resource can update clusters with asymmetrically-sized shards. To update a cluster's termination protection, the requesting Service Account or API Key must have the Project Owner role. For all other updates, the requesting Service Account or API Key must have the Project Cluster Manager role. You can't modify a paused cluster (`paused : true`). You must call this endpoint to set `paused : false`. After this endpoint responds with `paused : false`, you can call it again with the changes you want to make to the cluster. This feature is not available for serverless clusters. Deprecated versions: v2-{2024-08-05}, v2-{2023-02-01}, v2-{2023-01-01}
 
@@ -2864,7 +2864,7 @@ func (r UpgradeSharedClusterApiRequest) Execute() (*LegacyAtlasCluster, *http.Re
 }
 
 /*
-UpgradeSharedCluster Upgrade One Shared-tier Cluster
+UpgradeSharedCluster Upgrade One Shared-Tier Cluster
 
 Upgrades a shared-tier cluster to a Flex or Dedicated (M10+) cluster in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Cluster Manager role. Each project supports up to 25 clusters.
 
@@ -2989,7 +2989,7 @@ func (r UpgradeSharedClusterToServerlessApiRequest) Execute() (*ServerlessInstan
 }
 
 /*
-UpgradeSharedClusterToServerless Upgrades One Shared-Tier Cluster to the Serverless Instance
+UpgradeSharedClusterToServerless Upgrade One Shared-Tier Cluster to One Serverless Instance
 
 This endpoint has been deprecated as of February 2025 as we no longer support the creation of new serverless instances. Please use the upgradeFlexCluster endpoint to upgrade Flex clusters.
 

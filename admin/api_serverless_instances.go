@@ -91,7 +91,7 @@ type ServerlessInstancesApi interface {
 	GetServerlessInstanceExecute(r GetServerlessInstanceApiRequest) (*ServerlessInstanceDescription, *http.Response, error)
 
 	/*
-			ListServerlessInstances Return All Serverless Instances from One Project
+			ListServerlessInstances Return All Serverless Instances in One Project
 
 			Returns details for all serverless instances in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
@@ -103,7 +103,7 @@ type ServerlessInstancesApi interface {
 	*/
 	ListServerlessInstances(ctx context.Context, groupId string) ListServerlessInstancesApiRequest
 	/*
-		ListServerlessInstances Return All Serverless Instances from One Project
+		ListServerlessInstances Return All Serverless Instances in One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -571,7 +571,7 @@ func (r ListServerlessInstancesApiRequest) Execute() (*PaginatedServerlessInstan
 }
 
 /*
-ListServerlessInstances Return All Serverless Instances from One Project
+ListServerlessInstances Return All Serverless Instances in One Project
 
 Returns details for all serverless instances in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
