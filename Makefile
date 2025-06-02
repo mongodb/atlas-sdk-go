@@ -1,5 +1,5 @@
 SOURCE_FILES?=./...
-GOLANGCI_VERSION=v2.0.2 # Also update golangci-lint GH action in pr.yml when updating this version
+GOLANGCI_VERSION=v2.1.6 # Also update golangci-lint GH action in pr.yml when updating this version
 
 GOIMPORTS_VERSION=v0.21.0
 COVERAGE=coverage.out
