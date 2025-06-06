@@ -32,8 +32,8 @@ echo "Fetching versions from $versions_url"
 curl --show-error --fail --silent -o "${versions_file}" \
      -H "Accept: application/json" "${versions_url}"
 
-# Remove "preview" from versions file if it exists and update the file
-jq 'map(select(. != "preview"))' < "./${versions_file}" > "./${versions_file}.tmp"
+# Remove "preview" and versions with ".upcoming" suffix from versions file and update the file
+jq 'map(select(. != "preview" and (endswith(".upcoming") | not)))' < "./${versions_file}" > "./${versions_file}.tmp"
 mv "./${versions_file}.tmp" "./${versions_file}"
 
 ## Dynamic Versioned API Version
