@@ -64,7 +64,7 @@ type ProjectsApi interface {
 	CreateProjectExecute(r CreateProjectApiRequest) (*Group, *http.Response, error)
 
 	/*
-		CreateProjectInvitation Invite One MongoDB Cloud User to Join One Project
+		CreateProjectInvitation Invite One MongoDB Cloud User to One Project
 
 		Invites one MongoDB Cloud user to join the specified project. The MongoDB Cloud user must accept the invitation to access information within the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -77,7 +77,7 @@ type ProjectsApi interface {
 	*/
 	CreateProjectInvitation(ctx context.Context, groupId string, groupInvitationRequest *GroupInvitationRequest) CreateProjectInvitationApiRequest
 	/*
-		CreateProjectInvitation Invite One MongoDB Cloud User to Join One Project
+		CreateProjectInvitation Invite One MongoDB Cloud User to One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -115,7 +115,7 @@ type ProjectsApi interface {
 	DeleteProjectExecute(r DeleteProjectApiRequest) (*http.Response, error)
 
 	/*
-		DeleteProjectInvitation Cancel One Project Invitation
+		DeleteProjectInvitation Remove One Project Invitation
 
 		Cancels one pending invitation sent to the specified MongoDB Cloud user to join a project. You can't cancel an invitation that the user accepted. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -128,7 +128,7 @@ type ProjectsApi interface {
 	*/
 	DeleteProjectInvitation(ctx context.Context, groupId string, invitationId string) DeleteProjectInvitationApiRequest
 	/*
-		DeleteProjectInvitation Cancel One Project Invitation
+		DeleteProjectInvitation Remove One Project Invitation
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -190,7 +190,7 @@ type ProjectsApi interface {
 	GetProjectExecute(r GetProjectApiRequest) (*Group, *http.Response, error)
 
 	/*
-		GetProjectByName Return One Project using Its Name
+		GetProjectByName Return One Project by Name
 
 		Returns details about the specified project. Projects group clusters into logical collections that support an application environment, workload, or both. Each project can have its own users, teams, security, tags, and alert settings. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
@@ -200,7 +200,7 @@ type ProjectsApi interface {
 	*/
 	GetProjectByName(ctx context.Context, groupName string) GetProjectByNameApiRequest
 	/*
-		GetProjectByName Return One Project using Its Name
+		GetProjectByName Return One Project by Name
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -265,7 +265,7 @@ type ProjectsApi interface {
 	GetProjectLimitExecute(r GetProjectLimitApiRequest) (*DataFederationLimit, *http.Response, error)
 
 	/*
-		GetProjectLtsVersions Return Available MongoDB LTS Versions for clusters in One Project
+		GetProjectLtsVersions Return All Available MongoDB LTS Versions for Clusters in One Project
 
 		Returns the MongoDB Long Term Support Major Versions available to new clusters in this project.
 
@@ -275,7 +275,7 @@ type ProjectsApi interface {
 	*/
 	GetProjectLtsVersions(ctx context.Context, groupId string) GetProjectLtsVersionsApiRequest
 	/*
-		GetProjectLtsVersions Return Available MongoDB LTS Versions for clusters in One Project
+		GetProjectLtsVersions Return All Available MongoDB LTS Versions for Clusters in One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -288,7 +288,7 @@ type ProjectsApi interface {
 	GetProjectLtsVersionsExecute(r GetProjectLtsVersionsApiRequest) (*PaginatedAvailableVersion, *http.Response, error)
 
 	/*
-		GetProjectSettings Return One Project Settings
+		GetProjectSettings Return Project Settings
 
 		Returns details about the specified project's settings. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
@@ -298,7 +298,7 @@ type ProjectsApi interface {
 	*/
 	GetProjectSettings(ctx context.Context, groupId string) GetProjectSettingsApiRequest
 	/*
-		GetProjectSettings Return One Project Settings
+		GetProjectSettings Return Project Settings
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -567,7 +567,7 @@ type ProjectsApi interface {
 	UpdateProjectRolesExecute(r UpdateProjectRolesApiRequest) (*UpdateGroupRolesForUser, *http.Response, error)
 
 	/*
-		UpdateProjectSettings Update One Project Settings
+		UpdateProjectSettings Update Project Settings
 
 		Updates the settings of the specified project. You can update any of the options available. MongoDB cloud only updates the options provided in the request. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -578,7 +578,7 @@ type ProjectsApi interface {
 	*/
 	UpdateProjectSettings(ctx context.Context, groupId string, groupSettings *GroupSettings) UpdateProjectSettingsApiRequest
 	/*
-		UpdateProjectSettings Update One Project Settings
+		UpdateProjectSettings Update Project Settings
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -873,7 +873,7 @@ func (r CreateProjectInvitationApiRequest) Execute() (*GroupInvitation, *http.Re
 }
 
 /*
-CreateProjectInvitation Invite One MongoDB Cloud User to Join One Project
+CreateProjectInvitation Invite One MongoDB Cloud User to One Project
 
 Invites one MongoDB Cloud user to join the specified project. The MongoDB Cloud user must accept the invitation to access information within the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -1097,7 +1097,7 @@ func (r DeleteProjectInvitationApiRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteProjectInvitation Cancel One Project Invitation
+DeleteProjectInvitation Remove One Project Invitation
 
 Cancels one pending invitation sent to the specified MongoDB Cloud user to join a project. You can't cancel an invitation that the user accepted. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 
@@ -1423,7 +1423,7 @@ func (r GetProjectByNameApiRequest) Execute() (*Group, *http.Response, error) {
 }
 
 /*
-GetProjectByName Return One Project using Its Name
+GetProjectByName Return One Project by Name
 
 Returns details about the specified project. Projects group clusters into logical collections that support an application environment, workload, or both. Each project can have its own users, teams, security, tags, and alert settings. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
@@ -1832,7 +1832,7 @@ func (r GetProjectLtsVersionsApiRequest) Execute() (*PaginatedAvailableVersion, 
 }
 
 /*
-GetProjectLtsVersions Return Available MongoDB LTS Versions for clusters in One Project
+GetProjectLtsVersions Return All Available MongoDB LTS Versions for Clusters in One Project
 
 Returns the MongoDB Long Term Support Major Versions available to new clusters in this project.
 
@@ -1969,7 +1969,7 @@ func (r GetProjectSettingsApiRequest) Execute() (*GroupSettings, *http.Response,
 }
 
 /*
-GetProjectSettings Return One Project Settings
+GetProjectSettings Return Project Settings
 
 Returns details about the specified project's settings. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
@@ -3376,7 +3376,7 @@ func (r UpdateProjectSettingsApiRequest) Execute() (*GroupSettings, *http.Respon
 }
 
 /*
-UpdateProjectSettings Update One Project Settings
+UpdateProjectSettings Update Project Settings
 
 Updates the settings of the specified project. You can update any of the options available. MongoDB cloud only updates the options provided in the request. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
 

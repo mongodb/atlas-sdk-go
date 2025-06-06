@@ -91,7 +91,7 @@ type AlertConfigurationsApi interface {
 	GetAlertConfigurationExecute(r GetAlertConfigurationApiRequest) (*GroupAlertsConfig, *http.Response, error)
 
 	/*
-		ListAlertConfigurationMatchersFieldNames Get All Alert Configuration Matchers Field Names
+		ListAlertConfigurationMatchersFieldNames Return All Alert Configuration Matchers Field Names
 
 		Get all field names that the `matchers.fieldName` parameter accepts when you create or update an Alert Configuration. You can successfully call this endpoint with any assigned role.
 
@@ -100,7 +100,7 @@ type AlertConfigurationsApi interface {
 	*/
 	ListAlertConfigurationMatchersFieldNames(ctx context.Context) ListAlertConfigurationMatchersFieldNamesApiRequest
 	/*
-		ListAlertConfigurationMatchersFieldNames Get All Alert Configuration Matchers Field Names
+		ListAlertConfigurationMatchersFieldNames Return All Alert Configuration Matchers Field Names
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -113,7 +113,7 @@ type AlertConfigurationsApi interface {
 	ListAlertConfigurationMatchersFieldNamesExecute(r ListAlertConfigurationMatchersFieldNamesApiRequest) ([]string, *http.Response, error)
 
 	/*
-			ListAlertConfigurations Return All Alert Configurations for One Project
+			ListAlertConfigurations Return All Alert Configurations in One Project
 
 			Returns all alert configurations for one project. These alert configurations apply to any component in the project. Alert configurations define the triggers and notification methods for alerts. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
@@ -125,7 +125,7 @@ type AlertConfigurationsApi interface {
 	*/
 	ListAlertConfigurations(ctx context.Context, groupId string) ListAlertConfigurationsApiRequest
 	/*
-		ListAlertConfigurations Return All Alert Configurations for One Project
+		ListAlertConfigurations Return All Alert Configurations in One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -164,7 +164,7 @@ type AlertConfigurationsApi interface {
 	ListAlertConfigurationsByAlertIdExecute(r ListAlertConfigurationsByAlertIdApiRequest) (*PaginatedAlertConfig, *http.Response, error)
 
 	/*
-			ToggleAlertConfiguration Toggle One State of One Alert Configuration in One Project
+			ToggleAlertConfiguration Toggle State of One Alert Configuration in One Project
 
 			Enables or disables the specified alert configuration in the specified project. The resource enables the specified alert configuration if currently enabled. The resource disables the specified alert configuration if currently disabled. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role.
 
@@ -180,7 +180,7 @@ type AlertConfigurationsApi interface {
 	*/
 	ToggleAlertConfiguration(ctx context.Context, groupId string, alertConfigId string, alertsToggle *AlertsToggle) ToggleAlertConfigurationApiRequest
 	/*
-		ToggleAlertConfiguration Toggle One State of One Alert Configuration in One Project
+		ToggleAlertConfiguration Toggle State of One Alert Configuration in One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -193,7 +193,7 @@ type AlertConfigurationsApi interface {
 	ToggleAlertConfigurationExecute(r ToggleAlertConfigurationApiRequest) (*GroupAlertsConfig, *http.Response, error)
 
 	/*
-			UpdateAlertConfiguration Update One Alert Configuration for One Project
+			UpdateAlertConfiguration Update One Alert Configuration in One Project
 
 			Updates one alert configuration in the specified project. Alert configurations define the triggers and notification methods for alerts. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role.
 
@@ -209,7 +209,7 @@ type AlertConfigurationsApi interface {
 	*/
 	UpdateAlertConfiguration(ctx context.Context, groupId string, alertConfigId string, groupAlertsConfig *GroupAlertsConfig) UpdateAlertConfigurationApiRequest
 	/*
-		UpdateAlertConfiguration Update One Alert Configuration for One Project
+		UpdateAlertConfiguration Update One Alert Configuration in One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -603,7 +603,7 @@ func (r ListAlertConfigurationMatchersFieldNamesApiRequest) Execute() ([]string,
 }
 
 /*
-ListAlertConfigurationMatchersFieldNames Get All Alert Configuration Matchers Field Names
+ListAlertConfigurationMatchersFieldNames Return All Alert Configuration Matchers Field Names
 
 Get all field names that the `matchers.fieldName` parameter accepts when you create or update an Alert Configuration. You can successfully call this endpoint with any assigned role.
 
@@ -738,7 +738,7 @@ func (r ListAlertConfigurationsApiRequest) Execute() (*PaginatedAlertConfig, *ht
 }
 
 /*
-ListAlertConfigurations Return All Alert Configurations for One Project
+ListAlertConfigurations Return All Alert Configurations in One Project
 
 Returns all alert configurations for one project. These alert configurations apply to any component in the project. Alert configurations define the triggers and notification methods for alerts. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
 
@@ -1054,7 +1054,7 @@ func (r ToggleAlertConfigurationApiRequest) Execute() (*GroupAlertsConfig, *http
 }
 
 /*
-ToggleAlertConfiguration Toggle One State of One Alert Configuration in One Project
+ToggleAlertConfiguration Toggle State of One Alert Configuration in One Project
 
 Enables or disables the specified alert configuration in the specified project. The resource enables the specified alert configuration if currently enabled. The resource disables the specified alert configuration if currently disabled. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role.
 
@@ -1190,7 +1190,7 @@ func (r UpdateAlertConfigurationApiRequest) Execute() (*GroupAlertsConfig, *http
 }
 
 /*
-UpdateAlertConfiguration Update One Alert Configuration for One Project
+UpdateAlertConfiguration Update One Alert Configuration in One Project
 
 Updates one alert configuration in the specified project. Alert configurations define the triggers and notification methods for alerts. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role.
 
