@@ -67,7 +67,7 @@ type AtlasTenantClusterUpgradeRequest20240805 struct {
 	ReplicaSetScalingStrategy *string `json:"replicaSetScalingStrategy,omitempty"`
 	// List of settings that configure your cluster regions. This array has one object per shard representing node configurations in each shard. For replica sets there is only one object representing node configurations.
 	ReplicationSpecs *[]ReplicationSpec20240805 `json:"replicationSpecs,omitempty"`
-	// Root Certificate Authority that MongoDB Cloud cluster uses. MongoDB Cloud supports Internet Security Research Group.
+	// Root Certificate Authority that MongoDB Atlas cluster uses. MongoDB Cloud supports Internet Security Research Group.
 	RootCertType *string `json:"rootCertType,omitempty"`
 	// Human-readable label that indicates the current operating condition of this cluster.
 	// Read only field.

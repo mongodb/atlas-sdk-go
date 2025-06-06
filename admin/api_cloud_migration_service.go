@@ -67,7 +67,7 @@ type CloudMigrationServiceApi interface {
 	CreatePushMigrationExecute(r CreatePushMigrationApiRequest) (*LiveMigrationResponse, *http.Response, error)
 
 	/*
-		CutoverMigration Cut Over the Migrated Cluster
+		CutoverMigration Cut Over One Migrated Cluster
 
 		Cut over the migrated cluster to MongoDB Atlas. Confirm when the cut over completes. When the cut over completes, MongoDB Atlas completes the live migration process and stops synchronizing with the source cluster. Your API Key must have the Organization Owner role to successfully call this resource.
 
@@ -78,7 +78,7 @@ type CloudMigrationServiceApi interface {
 	*/
 	CutoverMigration(ctx context.Context, groupId string, liveMigrationId string) CutoverMigrationApiRequest
 	/*
-		CutoverMigration Cut Over the Migrated Cluster
+		CutoverMigration Cut Over One Migrated Cluster
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -490,7 +490,7 @@ func (r CutoverMigrationApiRequest) Execute() (*http.Response, error) {
 }
 
 /*
-CutoverMigration Cut Over the Migrated Cluster
+CutoverMigration Cut Over One Migrated Cluster
 
 Cut over the migrated cluster to MongoDB Atlas. Confirm when the cut over completes. When the cut over completes, MongoDB Atlas completes the live migration process and stops synchronizing with the source cluster. Your API Key must have the Organization Owner role to successfully call this resource.
 

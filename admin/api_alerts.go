@@ -91,7 +91,7 @@ type AlertsApi interface {
 	ListAlertsExecute(r ListAlertsApiRequest) (*PaginatedAlert, *http.Response, error)
 
 	/*
-			ListAlertsByAlertConfigurationId Return All Open Alerts for Alert Configuration
+			ListAlertsByAlertConfigurationId Return All Open Alerts for One Alert Configuration
 
 			Returns all open alerts that the specified alert configuration triggers. These alert configurations apply to the specified project only. Alert configurations define the triggers and notification methods for alerts. Open alerts have been triggered but remain unacknowledged. To use this resource, the requesting Service Account or API Key must have the Project Read Only role. Use the Return All Alert Configurations for One Project endpoint to retrieve all alert configurations to which the authenticated user has access.
 
@@ -104,7 +104,7 @@ type AlertsApi interface {
 	*/
 	ListAlertsByAlertConfigurationId(ctx context.Context, groupId string, alertConfigId string) ListAlertsByAlertConfigurationIdApiRequest
 	/*
-		ListAlertsByAlertConfigurationId Return All Open Alerts for Alert Configuration
+		ListAlertsByAlertConfigurationId Return All Open Alerts for One Alert Configuration
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -608,7 +608,7 @@ func (r ListAlertsByAlertConfigurationIdApiRequest) Execute() (*PaginatedAlert, 
 }
 
 /*
-ListAlertsByAlertConfigurationId Return All Open Alerts for Alert Configuration
+ListAlertsByAlertConfigurationId Return All Open Alerts for One Alert Configuration
 
 Returns all open alerts that the specified alert configuration triggers. These alert configurations apply to the specified project only. Alert configurations define the triggers and notification methods for alerts. Open alerts have been triggered but remain unacknowledged. To use this resource, the requesting Service Account or API Key must have the Project Read Only role. Use the Return All Alert Configurations for One Project endpoint to retrieve all alert configurations to which the authenticated user has access.
 
